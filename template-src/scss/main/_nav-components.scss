@@ -31,6 +31,9 @@
         list-style: outside none none;
         position: relative;
         font-size: $nav-breadcrump-font-size;
+        @if ($nav-breadcrump-font-family != $font-family-base) {
+            font-family: $nav-breadcrump-font-family;
+        }
 
         &:not(:last-child) {
             &::after {

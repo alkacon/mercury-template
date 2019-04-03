@@ -18,23 +18,18 @@ var autoprefixerOptionsOld = { browsers: [
     'last 1 Android versions' // chrome is used on most anyway, adds too much crap if we go back further
 ]}
 
-var npmTask = require('./npmtasks.js');
+var npmTask = require('./npmpostcss.js');
 
 // postcss configuration
 module.exports = {
     plugins : [
         require('autoprefixer')(autoprefixerOptions), // add vendor prefixes
-        // require('postcss-sorting')({"sort-order": 'default'}), // sort the rules in the output
-        // require('stylefmt')(), // pretty-print the output
         require('postcss-urlrewrite')({
             imports:  true,
             properties: ['src', 'background', 'background-image'],
             rules: [{
                 from: '../photoswipe/',
                 to: npmTask.resourcePath('photoswipe/')
-            },{
-                from: '../revolution-slider/',
-                to: npmTask.resourcePath('../alkacon.mercury.xtensions/revolution-slider/')
             },{
                 from: '../fonts/',
                 to: npmTask.resourcePath('fonts/')

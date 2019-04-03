@@ -46,11 +46,14 @@
             > a {
                 bottom: 0;
                 color: $nav-text;
-                font-size: $nav-mobile-font-size;
                 line-height: $nav-mobile-line-height;
-                font-weight: normal;
                 padding: $nav-mobile-line-padding #{$grid-gutter-width / 2};
                 border-bottom: solid 1px $nav-border;
+                font-weight: normal;
+                font-size: $nav-mobile-font-size;
+                @if ($nav-mobile-font-family != $font-family-base) {
+                    font-family: $nav-mobile-font-family;
+                }
 
                 &:hover {
                     text-decoration: none;
@@ -538,7 +541,7 @@
                 font-size: $nav-header-font-size;
                 font-weight: $nav-header-font-weight;
                 line-height: $nav-header-line-height;
-                font-family: $nav-header-font;
+                font-family: $nav-header-font-family;
                 position: relative;
                 padding: $nav-header-padding;
                 @if ($nav-header-set-bg-color == true) {
@@ -698,6 +701,9 @@
                 width: 100%;
                 font-size: $nav-font-size;
                 font-weight: $nav-menu-font-weight;
+                @if ($nav-menu-font-family != $font-family-base) {
+                    font-family: $nav-menu-font-family;
+                }
                 padding: $nav-menu-padding;
 
                 &:hover {

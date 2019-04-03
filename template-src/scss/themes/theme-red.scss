@@ -33,6 +33,7 @@ $focus-outline-color:           rgba(77,144,255,.5);
 
 $font-family-headings:          "Open Sans", sans-serif !default;
 $font-family-base:              "Montserrat", sans-serif !default;
+// $font-family-base:              "Merriweather", serif !default;
 $font-weight-base:              300 !default;
 $font-weight-headings:          600 !default;
 $font-size-base:                1.6rem !default;
@@ -45,7 +46,7 @@ $text-dark:                     #555 !default;
 $headings-color:                #222 !default;
 $headings-margin-bottom:        1.5rem !default;
 
-$nav-header-font:               $font-family-headings !default;
+$nav-header-font-family:        $font-family-headings !default;
 $nav-breadcrump-padding:        5px 0 !default;
 $nav-menu-font-weight:          300 !default;
 $nav-menu-entry-border-bottom:  none !default;

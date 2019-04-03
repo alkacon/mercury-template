@@ -26,26 +26,6 @@ var glob = require("glob");
 var CleanCSS = require('clean-css');
 var lineBreak = require('os').EOL;
 
-var packageConfig = require('./package.json');
-
-// target path of the generated CSS in OpenCms
-var deployTargetVfsDir = packageConfig.config.deployTargetVfsDir ? packageConfig.config.deployTargetVfsDir : "/system/modules/alkacon.mercury.theme/css/";
-
-// the folder where the static template resources are located
-var mercuryBaseVfsDir =  packageConfig.config.mercuryBaseVfsDir ? packageConfig.config.mercuryBaseVfsDir : "/system/modules/alkacon.mercury.theme/";
-
-// function to calculate the relative file path for the generated CSS to the static template folder in the OpenCms VFS
-// it's is required to use relative paths here to make sure static export works as expected
-exports.resourcePath = function(target) {
-    var resPath = path.normalize(path.relative(deployTargetVfsDir, mercuryBaseVfsDir) + '/'
-            + target)
-    if (path.sep == '\\') {
-        resPath = resPath.replace(/\\/g, '/');
-    }
-    console.log('Rewriting path:' + target + ' to:' + resPath);
-    return resPath;
-}
-
 // options used by clean-css
 var cleanCssOptions = {
     compatibility : 'ie10+',
@@ -103,11 +83,10 @@ function cleanCssMinify(options, inputFile, outputFile) {
     });
 }
 
-console.log('#');
-console.log('# Mercury deploy target : ' + deployTargetVfsDir);
-console.log('# Mercury base directory: ' + mercuryBaseVfsDir);
-console.log('#');
-
 if (argv.cleancss) {
+    console.log('#');
+    console.log('# Mercury clean CSS input : ' + argv.inputFiles);
+    console.log('# Mercury clean CSS output: ' + argv.outputDir);
+    console.log('#');
     cleanCss(argv.inputFiles, argv.outputDir);
 }

@@ -143,6 +143,9 @@
             flex-direction: row;
             justify-content: flex-end;
             font-size: $nav-meta-font-size;
+            @if ($nav-meta-font-family != $font-family-base) {
+                font-family: $nav-meta-font-family;
+            }
 
             > li {
                 &:not(:last-child) {

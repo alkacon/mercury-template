@@ -39,6 +39,13 @@ $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use l
 // Checks if a specific font is required by this SCSS configuration
 @function require-font($name) {
     @return (
+        (str-index(quote($nav-font-family), $name) != null) or
+        (str-index(quote($nav-header-font-family), $name) != null) or
+        (str-index(quote($nav-menu-font-family), $name) != null) or
+        (str-index(quote($nav-mobile-font-family), $name) != null) or
+        (str-index(quote($nav-meta-font-family), $name) != null) or
+        (str-index(quote($nav-breadcrump-font-family), $name) != null) or
+
         (str-index(quote($font-family-headings), $name) != null) or
         (str-index(quote($font-family-base), $name) != null) or
         (str-index(quote($font-family-gui), $name) != null)

@@ -1,0 +1,50 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.xtensions/schemas/nested/asset-dataview.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/image.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd" />
+
+    <xsd:element name="ImgurSections" type="OpenCmsImgurSections"/>
+
+    <xsd:complexType name="OpenCmsImgurSections">
+        <xsd:sequence>
+            <xsd:element name="ImgurSection" type="OpenCmsImgurSection" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsImgurSection">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Item" type="OpenCmsDataviewItem" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="Text" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
+    </xsd:complexType>
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.xtensions.imagur-asset.messages"/>
+            <mappings>
+                <mapping element="GalleryTitle" mapto="property:Title" useDefault="true" />
+                <mapping element="GalleryTitle" mapto="urlName" useDefault="true" />
+            </mappings>
+            <defaults>
+                <default element="Title" value="%(key.type.m-imgur-asset.title)" />
+                <default element="GalleryTitle" value="%(page_title)%(no_prefix:: )%(value:Title)" resolveMacros="false" />
+            </defaults>
+            <layouts>
+                <layout element="Item" widget="org.opencms.widgets.CmsDataViewWidget" configuration="{class: 'alkacon.mercury.xtensions.imgur.CmsImgurDataView', multiselect: true, preview: true, config: '5e0552daca1b0c9'} }"/>
+                <layout element="Text" widget="HtmlWidget" configuration="height:400px,link,anchor,source,downloadgallery,formatselect" />
+            </layouts>
+            <validationrules />
+            <searchsettings containerPageOnly="true">
+                <searchsetting element="Item" searchcontent="false" />
+                <searchsetting element="GalleryTitle" searchcontent="false" />
+            </searchsettings>
+            <visibilities>
+                <visibility element="GalleryTitle" params="ROLE.WORKPLACE_USER" />
+            </visibilities>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

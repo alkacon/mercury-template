@@ -1,0 +1,115 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _linksequence.scss.
+ */
+
+%ls-icon-base {
+    padding-left: 2.0rem;
+    &::before {
+        float: left;
+        margin-left: -2.0rem;
+        display: inline-block;
+        line-height: $target-line-height;
+    }
+}
+
+%ls-icon-custom {
+    @extend %ls-icon-base;
+    &::before {
+        font-family: FontAwesome;
+        font-size: inherit;
+        line-height: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+%ls-icon-default {
+    @extend %ls-icon-base;
+    &::before {
+        font-family: sans-serif;
+        font-size: 2.0rem;
+        content: "\2022";
+    }
+}
+
+.ls-bullets,
+.ls-row {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &.custom-icon li {
+        @extend %ls-icon-custom;
+    }
+
+    &.default-icon li {
+        @extend %ls-icon-default;
+    }
+}
+
+.ls-row {
+    li {
+        display: inline;
+        list-style: outside none none;
+        position: relative;
+    }
+
+    &.no-icon {
+        li:not(:last-child) {
+            &::after {
+                content: "|";
+                margin: 0 $default-margin-verysmall;
+            }
+        }
+    }
+
+    &.custom-icon,
+    &.default-icon {
+        li {
+            &::before {
+                float: none;
+                padding-right: $default-margin-small;
+            }
+            + li {
+                &::before {
+                    padding-left: $default-margin-small;
+                }
+            }
+        }
+    }
+}
+
+.ls-navigation {
+    &.custom-icon {
+        li a {
+            @extend %ls-icon-custom;
+            padding-left: 2.3rem;
+        }
+    }
+    &.default-icon {
+        li a {
+            @extend %ls-icon-default;
+            padding-left: 2.3rem;
+        }
+    }
+}

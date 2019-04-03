@@ -1,0 +1,114 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="PrivacyPolicyData" type="OpenCmsPrivacyPolicyData"/>
+
+    <xsd:complexType name="OpenCmsPrivacyPolicyData">
+        <xsd:sequence>
+            <xsd:element name="PrivacyPolicy" type="OpenCmsPrivacyPolicy" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsPrivacyPolicy">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="PolicyText" type="OpenCmsHtml" />
+            <xsd:element name="DisabledMessage" type="OpenCmsString" />
+            <xsd:element name="AcceptButtonText" type="OpenCmsString" />
+            <xsd:element name="DeclineButtonText" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="CookieExpirationDays" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ToggleLabel" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-privacypolicy.title)]]></Default>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType><![CDATA[error]]></RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>PolicyText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.PolicyText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.PolicyText.help)]]></Description>
+                    <Widget>html</Widget>
+                    <WidgetConfig><![CDATA[link,source,formatselect]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>DisabledMessage</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.DisabledMessage)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.DisabledMessage.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>AcceptButtonText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.AcceptButtonText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.AcceptButtonText.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.label.PrivacyPolicy.AcceptButtonText.default)]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>DeclineButtonText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.DeclineButtonText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.DeclineButtonText.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.label.PrivacyPolicy.DeclineButtonText.default)]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>CookieExpirationDays</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.CookieExpirationDays)]]></DisplayName>
+                    <Widget>selectcombo</Widget>
+                    <Default><![CDATA[1]]></Default>
+                    <WidgetConfig><![CDATA[
+                        1:%(key.label.PrivacyPolicy.CookieExpirationDays.1day)|
+                        7:%(key.label.PrivacyPolicy.CookieExpirationDays.7days)|
+                        30:%(key.label.PrivacyPolicy.CookieExpirationDays.30days)|
+                        180:%(key.label.PrivacyPolicy.CookieExpirationDays.180days)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>ToggleLabel</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.ToggleLabel)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.ToggleLabel.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <Default><![CDATA[%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                        <MapTo>property:Title</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

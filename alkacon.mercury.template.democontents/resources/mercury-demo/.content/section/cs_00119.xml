@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[CSS Visualizer]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/mercury-template]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>The Mercury template provides supports a "CSS selectors" setting on many element formatters. This page shows several wrapper classes which are part of the default CSS and frequently used in this demo. The Mercury template sources are available on <a href="%(link0)">GitHub</a>, so with a little effort you can create your own customized Mercury CSS version.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

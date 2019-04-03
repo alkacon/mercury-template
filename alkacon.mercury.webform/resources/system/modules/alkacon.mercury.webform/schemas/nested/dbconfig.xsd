@@ -1,0 +1,85 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+	<xsd:element name="WebFormDatabaseConfigurations" type="OpenCmsWebFormDatabaseConfigurations"/>
+
+	<xsd:complexType name="OpenCmsWebFormDatabaseConfigurations">
+		<xsd:sequence>
+			<xsd:element name="WebFormDatabaseConfiguration" type="OpenCmsWebFormDatabaseConfiguration" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpenCmsWebFormDatabaseConfiguration">
+		<xsd:sequence>
+
+           <xsd:element name="UserForGuest" type="OpenCmsString" />
+           <xsd:element name="ProjectGroup" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+           <xsd:element name="ContentPath" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+           <!-- xsd:element name="UploadPath" type="OpenCmsVfsFile" minOccurs="0" maxOccurs="1" / -->
+           <!-- xsd:element name="ValidExtensions" type="OpenCmsString" minOccurs="0" maxOccurs="1" / -->
+           <!-- xsd:element name="MaxUploadSize" type="OpenCmsString" minOccurs="0" maxOccurs="1" / -->
+           <xsd:element name="MaxRegularDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+           <xsd:element name="MaxWaitlistDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+           <xsd:element name="NumOtherDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+           <!-- xsd:element name="QueueWaitTime" type="OpenCmsString" minOccurs="0" maxOccurs="1" / -->
+           <!-- xsd:element name="QueueMaxLength" type="OpenCmsString" minOccurs="0" maxOccurs="1" / -->
+           <xsd:element name="DatasetTitle" type="OpenCmsString" />
+		</xsd:sequence>
+		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+	</xsd:complexType>
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<resourcebundle name="alkacon.mercury.webform.messages"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>UserForGuest</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.UserForGuest)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.UserForGuest.help)]]></Description>
+                    <Default>%(currentuser.name)</Default>
+                    <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>ProjectGroup</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.ProjectGroup)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.ProjectGroup.help)]]></Description>
+                    <Widget>GroupWidget</Widget>
+                    <WidgetConfig><![CDATA[]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>ContentPath</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.ContentPath)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.ContentPath.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MaxRegularDatasets</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.MaxRegularDatasets)]]></DisplayName>
+                    <RuleRegex><![CDATA[\d{1,4}]]></RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.invalidnumber.0.9999)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>MaxWaitlistDatasets</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.MaxWaitlistDatasets)]]></DisplayName>
+                    <RuleRegex><![CDATA[\d{1,4}]]></RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.invalidnumber.0.9999)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>NumOtherDatasets</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.NumOtherDatasets)]]></DisplayName>
+                    <RuleRegex><![CDATA[\d{1,4}]]></RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.invalidnumber.0.9999)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>DatasetTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.DatasetTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.DatasetTitle.help)]]></Description>
+                </Setting>
+            </FieldSettings>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+</xsd:schema>

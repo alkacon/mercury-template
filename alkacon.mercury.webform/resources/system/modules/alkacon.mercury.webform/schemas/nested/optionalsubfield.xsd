@@ -1,0 +1,52 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+	<xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/inputfield.xsd"/>
+
+	<xsd:element name="OptionalWebFormSubFields" type="OpenCmsOptionalWebFormSubFields"/>
+
+	<xsd:complexType name="OpenCmsOptionalWebFormSubFields">
+		<xsd:sequence>
+			<xsd:element name="OptionalWebFormSubField" type="OpenCmsOptionalWebFormSubField" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpenCmsOptionalWebFormSubField">
+		<xsd:sequence>
+			<xsd:element name="ParentField" type="OpenCmsString" />
+			<xsd:element name="Value" type="OpenCmsString" />
+			<xsd:element name="InputField" type="OpenCmsWebFormInputField" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+	</xsd:complexType>
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<resourcebundle name="alkacon.mercury.webform.messages"/>
+			<FieldSettings>
+			    <Setting>
+	                <PropertyName>ParentField</PropertyName>
+	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormSubField.ParentField)]]></DisplayName>
+	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormSubField.ParentField.help)]]></Description>
+	                <Widget>org.opencms.widgets.CmsDependentSelectWidget</Widget>
+	                <WidgetConfig>InputField|FieldLabel</WidgetConfig>
+			  	</Setting>
+			    <Setting>
+	                <PropertyName>Value</PropertyName>
+	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormSubField.Value)]]></DisplayName>
+	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormSubField.Value.help)]]></Description>
+	                <RuleRegex><![CDATA[.+]]></RuleRegex>
+	                <RuleType>warning</RuleType>
+	                <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+			  	</Setting>
+			    <Setting>
+	                <PropertyName>InputField</PropertyName>
+	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormSubField.InputField)]]></DisplayName>
+	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormSubField.InputField.help)]]></Description>
+			  	</Setting>
+			</FieldSettings>
+
+		</xsd:appinfo>
+	</xsd:annotation>
+
+</xsd:schema>

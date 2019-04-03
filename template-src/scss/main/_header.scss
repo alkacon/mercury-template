@@ -1,0 +1,284 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _header.scss
+ */
+
+.area-header {
+    @if ($nav-header-margin-bottom > 0) {
+        margin-bottom: $nav-header-margin-bottom;
+    }
+
+    // Positioning for "logo-left" header
+
+    &.logo-left {
+        .header-links,
+        .header-title {
+            display: none;
+        }
+
+        .col-head-logo {
+            padding-top: $default-margin-verysmall;
+            padding-bottom: $default-margin-verysmall;
+
+            @include make-col(9);
+            max-width: $header-logo-xs-width;
+        }
+
+        @if ($header-image-bg != none) {
+            .header-image {
+                background-color: $header-image-bg;
+            }
+        }
+
+        .visual-top-bg {
+            background-color: $header-image-ribbon-bg;
+        }
+
+        @include media-breakpoint-up(sm) {
+            .col-head-logo {
+                @include make-col(6);
+
+                .header-image {
+                    max-width: none;
+                }
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            .col-head-logo {
+                @include make-col(5);
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            .col-head-logo {
+                 @include make-col(4);
+
+                .header-image {
+                    max-width: none;
+                }
+            }
+
+            .isfixed {
+                .col-head-logo {
+                    max-width: $header-logo-fixed-width;
+                }
+                .visual-top-bg {
+                    display: none;
+                }
+                .pull-up-fixed {
+                    margin-top: -1 * $nav-header-total-height;
+                }
+            }
+
+            .header-group {
+                border-bottom: 1px solid $nav-side-border;
+            }
+
+            .nav-main-container,
+            .header-links,
+            .header-title {
+                display: flex;
+                align-self: flex-end;
+                flex-direction: column;
+            }
+
+            .col-head-info {
+                padding-top: $default-margin-verysmall;
+                padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
+                display: flex;
+                flex-direction: column;
+            }
+
+            .header-title {
+                padding-top: $default-margin-verysmall;
+                padding-bottom: $default-margin-verysmall;
+                flex-basis: auto;
+                flex-grow: 10;
+                justify-content: center;
+                font-family: $font-family-headings;
+                font-weight: $font-weight-headings;
+                font-size: $h4-font-size;
+                line-height: 1;
+                text-align: right;
+            }
+
+            .nav-main-container {
+                // padding-top: $default-margin-verysmall;
+                flex-basis: auto;
+                flex-grow: 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+
+    // Header formatted link sequence
+
+    .header-links {
+        margin: 0;
+        &.oc-small-element {
+            min-height: auto !important;
+        }
+
+        > ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            font-size: $nav-meta-font-size;
+
+            > li {
+                &:not(:last-child) {
+                    &::after {
+                        border-right-color: $nav-border;
+                    }
+                }
+
+                > a {
+                    color: $nav-meta-text;
+                    text-transform: uppercase;
+
+                    &:hover {
+                        text-decoration: none;
+                        color: $nav-meta-text-hover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Header formatting for desktop size
+
+@include media-breakpoint-up(lg) {
+
+    .area-header {
+        background: $nav-head-bg;
+        position: relative;
+
+        .head {
+            position: relative;
+            min-height: $nav-header-total-height;
+        }
+
+        // Fixed headers
+
+        // Note: Fixed headers are not available on small screens!
+        // Reason: Fixed headers do not scroll.
+        // So it is not possible on small screens (mobiles) to scroll the navigation down if is is
+        // longer than the screen.
+        .sticky {
+            // hide optional areas if css class is set
+            > .isfixed .hidden-fixed,
+            > .notfixed .hidden-notfixed {
+                display: none;
+            }
+        }
+
+        %stickyAlways, // required because we need to extend this later
+        .sticky.always,
+        .sticky.upscroll {
+            // this requires JavaScript found in script-navigation.js to work properly
+            > .isfixed {
+                position: fixed;
+                top: 0;
+                padding-top: 0;
+                width: 100%;
+                z-index: $above-oc-z-index; // z-index of sticky header must be well above OC points plus other elements
+                animation-duration: 1s;
+                animation-name: fixHeader;
+                opacity: $nav-head-fixed-opacity;
+                background: $nav-head-bg;
+                box-shadow: $nav-head-fixed-shadow;
+            }
+        }
+
+        @if ($nav-setting-fixheader != false) {
+            .sticky.csssetting {
+                @extend %stickyAlways;
+            }
+        }
+    }
+
+    html.opencms-page-editor {
+        // fix head below toolbar in edit mode
+        .area-header {
+            %stickyAlways, // required because we need to extend this later
+            .sticky.always,
+            .sticky.upscroll {
+                > .isfixed {
+                    padding-top: $opencms-toolbar-height;
+                }
+            }
+
+            @if ($nav-setting-fixheader != false) {
+                .sticky.csssetting {
+                    @extend %stickyAlways;
+                }
+            }
+        }
+    }
+
+    html.noscript {
+        // JavaScript disabled navigation
+        // displays the menu elements on hover if JavaScript is disabled
+        .area-header .nav-main-items li[aria-expanded]:hover > .nav-menu {
+            display: block;
+        }
+    }
+}
+
+// Adjustments for header in model group editor
+
+html.opencms-group-editor {
+
+    &.opencms-page-editor {
+        // in group editor AND page edit mode is active
+
+        .area-header .sticky {
+            // overrule all hidden / fixed elements if edit mode is active
+            > .isfixed .hidden-fixed,
+            > .notfixed .hidden-notfixed {
+                display: block;
+                opacity: .5;
+                background-image: $disabled-bg;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+
+            .area-header {
+                .hidden-md,
+                .hidden-lg,
+                .hidden-xl {
+                    display: flex !important;
+                    opacity: .5;
+                    background-image: $disabled-bg;
+                }
+            }
+        }
+    }
+
+    .area-head {
+        // remove default head bottom margin in model group editor */
+        margin-bottom: 0;
+    }
+}

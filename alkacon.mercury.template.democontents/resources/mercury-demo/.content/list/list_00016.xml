@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
+  <ListConfig language="en">
+    <Title><![CDATA[Text tile list with all supported Types]]></Title>
+    <TypesToCollect>m-article:04fff1a9-01cb-41c8-bd70-d438540e63fd</TypesToCollect>
+    <TypesToCollect>m-decoy:a6d383c5-21f4-4cb4-8826-a305ce75fefa</TypesToCollect>
+    <TypesToCollect>m-event:2811daab-5d46-4a15-87cb-473bbb7d0017</TypesToCollect>
+    <TypesToCollect>m-media:0f65d461-09b9-43e3-8f78-f731cce7dac4</TypesToCollect>
+    <TypesToCollect>m-job:cf8438b5-c7db-46d5-a1b7-d6fc8a3da32f</TypesToCollect>
+    <TypesToCollect>m-faq:0bc55ee2-e595-4263-8b30-fa6ef3f7d125</TypesToCollect>
+    <TypesToCollect>m-imageseries:e617f1f1-36c3-4925-b09c-5b77f6ef56bd</TypesToCollect>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/mercury-demo/]]></target>
+        <uuid>acb43685-5224-11e5-9495-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <Category/>
+    <CategoryMode><![CDATA[OR]]></CategoryMode>
+    <SortOrder><![CDATA[DATE_DESC]]></SortOrder>
+    <DateRestriction>
+      <Range>
+        <To>1577790000000</To>
+      </Range>
+    </DateRestriction>
+  </ListConfig>
+</ListConfigs>

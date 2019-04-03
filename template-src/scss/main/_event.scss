@@ -1,0 +1,227 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _event.scss
+ */
+
+// Calendar sheet base
+
+.calendar-sheet {
+
+    background: $calendar-sheet-bgcolor;
+    font-family: $font-family-headings;
+
+    > span {
+        color: get-text-color($calendar-sheet-bgcolor);
+    }
+
+    > .day-number {
+        font-size: 24px;
+        font-weight: $font-weight-bold;
+        color: $main-theme;
+        line-height: 30px;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+
+    .calendar-sheet-piece,
+    .calendar-sheet-parent {
+        .image-src-box.presized {
+            padding-bottom: 0 !important;
+            height: auto;
+        }
+    }
+
+    .calendar-sheet {
+        border-bottom: 2px solid $calendar-sheet-barcolor;
+        display: inline-block;
+        width: 100%;
+        padding: 10px 0;
+
+        .day-name {
+            margin-right: $grid-gutter-width / 2;
+            float: right;
+        }
+
+        .month-year,
+        .day-number {
+            margin-left: $grid-gutter-width / 2;
+            float: left;
+        }
+
+        .day-name,
+        .day-number,
+        .month-year {
+            line-height: 30px;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+
+    .calendar-sheet-piece.fixed {
+        > .visual {
+            min-width: 135px + $grid-gutter-width;
+            max-width: 135px + $grid-gutter-width;
+        }
+        > .body {
+            flex: 0 0 calc(100% - #{135px + $grid-gutter-width});
+            max-width: calc(100% - #{135px + $grid-gutter-width});
+        }
+    }
+
+    .calendar-sheet {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border:     1px solid $calendar-sheet-border;
+        @include round-corners($calendar-sheet-border-radius);
+        box-shadow: $panel-shadow;
+        text-align: center;
+
+        &::before {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: $calendar-sheet-margin;
+            height: 15px;
+            border-bottom: none;
+            margin: 0;
+            background-color: $calendar-sheet-barcolor;
+            width: calc(100% - #{2 * $calendar-sheet-margin});
+            @if ($calendar-sheet-margin == 0) {
+                border-top-left-radius: $calendar-sheet-border-radius;
+                border-top-right-radius: $calendar-sheet-border-radius;
+            }
+        }
+        & > span {
+            display: block;
+        }
+
+        .day-name,
+        .month-year {
+            padding: 10px;
+        }
+    }
+}
+
+// Colored calendar sheets
+
+@each $type-name, $bg-color, $highlight-color in $reduced-colors {
+
+    .color-#{""+$type-name} {
+
+        .calendar-sheet {
+            &:before {
+                background-color: $bg-color;
+                border-color: $bg-color;
+            }
+
+            .day-number {
+                color: $bg-color;
+            }
+        }
+    }
+}
+
+// Event booking submissions
+
+table.submissions {
+    table-layout: fixed;
+    width: 100%;
+
+    tr > td:last-of-type {
+        font-weight: $font-weight-bold;
+    }
+
+    tr.emphasize > td {
+        font-weight: $font-weight-bold;
+        font-style: italic;
+    }
+
+    td {
+        padding-bottom: $default-margin-verysmall;
+        vertical-align: top;
+    }
+}
+
+// Event booking status information
+
+.book-info {
+
+    > span {
+        display: inline-block;
+    }
+
+    .book-msg {
+        background-color: $calendar-sheet-bgcolor;
+        font-weight: normal;
+        @include round-corners($default-border-radius);
+    }
+
+    .oct-meta-info {
+        margin-left: 10px;
+    }
+}
+
+
+.detail-page .book-info {
+
+    .oct-meta-info,
+    .book-msg {
+        padding: $btn-def-padding;
+    }
+}
+
+.teaser .book-info,
+.accordion .book-info {
+
+    font-size: round($font-size-base * 0.75);
+    line-height: round($target-line-height * 0.75);
+    margin: 8px 0;
+
+    .oct-meta-info,
+    .book-msg {
+        display: inline-block;
+        padding: 1px 8px;
+    }
+}
+
+.accordion .book-info {
+    .oct-meta-info {
+        bottom: 3px;
+    }
+}
+
+.tile-col .book-info {
+    .book-msg {
+        &::after {
+            content: "\A";
+            white-space: pre;
+        }
+    }
+    .oct-meta-info, {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+}

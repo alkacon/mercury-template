@@ -1,0 +1,197 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _sitemap.scss
+ */
+
+.type-sitemap {
+
+    margin-bottom: $default-margin-small; // sitemap itself has a padding-bottom
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+
+        a {
+            color: $sitemap-sub-text-color;
+            background-color: $sitemap-sub-bg-color;
+            font-size: $sitemap-font-size;
+            line-height: $sitemap-line-height;
+            padding: $sitemap-ver-padding $sitemap-hor-padding;
+            width: 100%;
+            display: block;
+            text-decoration: none;
+
+            &:hover {
+                color: $sitemap-hover-text-color;
+                background-color: $sitemap-hover-bg-color;
+                text-decoration: none;
+            }
+
+            &.tree-toggle {
+
+                position: relative;
+                padding-right: 3 * $sitemap-hor-padding;
+
+                &:after {
+                    position: absolute;
+                    display: inline-block;
+                    font-family: FontAwesome;
+                    font-weight: normal;
+                    content: "\f078";
+                    top: $sitemap-ver-padding;
+                    right: 0.9rem;
+                    line-height: $sitemap-line-height;
+                    transform: rotate(-180deg) translate(0,0);
+                    transition: transform .33s;
+                }
+                &.collapsed:after {
+                    transform: rotate(0) translate(0,0);
+                    transition: transform 0.33s;
+                }
+            }
+        }
+
+        &.top {
+            float: left;
+            width: 100%;
+            margin-bottom: $default-margin-small;
+            @include round-corners($sitemap-border-radius, true);
+
+            > a {
+                color: $sitemap-top-text-color;
+                background-color: $sitemap-top-bg-color;
+                font-weight: $font-weight-bold;
+            }
+            &::after {
+                content: ' ';
+                display: block;
+                float: left;
+                padding-right: $sitemap-hor-padding;
+            }
+        }
+    }
+
+    .sitemap-col-6 > li.top {
+        @include media-breakpoint-up(lg) {
+            width: calc(50% - #{$sitemap-hor-padding});
+            margin-right: $sitemap-hor-padding;
+
+            &:nth-of-type(2n+1) {
+                clear: both;
+            }
+        }
+    }
+
+    .sitemap-col-4 > li.top {
+        @include media-breakpoint-only(lg) {
+            width: calc(50% - #{$sitemap-hor-padding});
+            margin-right: $sitemap-hor-padding;
+            &:nth-of-type(2n+1) {
+                clear: both;
+            }
+        }
+
+        @include media-breakpoint-up(xl) {
+            width: calc(33.333333% - #{$sitemap-hor-padding});
+            margin-right: $sitemap-hor-padding;
+            &:nth-of-type(3n+1) {
+                clear: both;
+            }
+        }
+    }
+
+    .sitemap-col-3 > li.top {
+        @include media-breakpoint-only(md) {
+            width: calc(50% - #{$sitemap-hor-padding});
+            margin-right: $sitemap-hor-padding;
+            &:nth-of-type(2n+1) {
+                clear: both;
+            }
+        }
+
+        @include media-breakpoint-only(lg) {
+            width: calc(33.333333% - #{$sitemap-hor-padding});
+            margin-right: $sitemap-hor-padding;
+            &:nth-of-type(3n+1) {
+                clear: both;
+            }
+        }
+
+       @include media-breakpoint-up(xl) {
+            width: calc(25% - #{$sitemap-hor-padding});
+            margin-right: $sitemap-hor-padding;
+            &:nth-of-type(4n+1) {
+                clear: both;
+            }
+        }
+    }
+
+    li.top > ul > li {
+        > ul {
+            // add padding for 3nd level
+            li a {
+                padding-left: 2 * $sitemap-hor-padding;
+            }
+
+            > li > ul {
+                // add padding for 4rd level
+                li a {
+                    padding-left: 3 * $sitemap-hor-padding;
+                }
+
+                > li > ul {
+                    // add padding for 5th level
+                    li a {
+                        padding-left: 4 * $sitemap-hor-padding;
+                    }
+
+                    > li > ul {
+                        // add padding for 6th level
+                        li a {
+                            padding-left: 5 * $sitemap-hor-padding;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Colored sitemap options
+
+@each $type-name, $bg-color, $highlight-color in $reduced-colors {
+
+    .type-sitemap.color-#{""+$type-name} {
+        li a,
+        li.top > a {
+            color: get-text-color($bg-color);
+            background-color: $bg-color;
+
+            &:hover {
+                color: get-text-color($highlight-color);
+                background-color: $highlight-color;
+            }
+        }
+    }
+}

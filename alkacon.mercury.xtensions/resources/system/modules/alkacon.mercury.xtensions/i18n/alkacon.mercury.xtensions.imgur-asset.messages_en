@@ -1,0 +1,8 @@
+msg.page.imgur-section.link=Show on Imgur
+msg.setting.imgur-section.usetitle=Use imgur title
+type.m-imgur-asset.description=An image loaded from the Imgur online service.
+type.m-imgur-asset.name=Asset connection > Imgur
+type.m-imgur-asset.formatter.default=Default asset connection > Imgur
+label.ImgurSection.Item=Imgur Image
+label.ImgurSection.Text=Text
+type.m-imgur-asset.title=New Asset connection > Imgur

@@ -1,0 +1,67 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="ContactNameData" type="OpenCmsContactNameData" />
+
+    <xsd:complexType name="OpenCmsContactNameData">
+        <xsd:sequence>
+            <xsd:element name="ContactName" type="OpenCmsContactName" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsContactName">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="FirstName" type="OpenCmsString" />
+            <xsd:element name="MiddleName" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="LastName" type="OpenCmsString" />
+            <xsd:element name="Suffix" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactName.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactName.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>FirstName</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactName.FirstName)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactName.FirstName.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.contact.firstname)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>MiddleName</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactName.MiddleName)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactName.MiddleName.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>LastName</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactName.LastName)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactName.LastName.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.contact.lastname)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>Suffix</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactName.Suffix)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactName.Suffix.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+
+    </xsd:annotation>
+</xsd:schema>

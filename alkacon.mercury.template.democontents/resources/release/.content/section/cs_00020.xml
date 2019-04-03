@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Release Notes for OpenCms 10.5.1]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/apollo-template]]></target>
+        </link>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
+        </link>
+      </links>
+      <content><![CDATA[<p>February 15, 2017: OpenCms 10.5.1 is a maintenance update that fixes several issues that persisted in the 10.5.0 release. This version focuses on security and stability, also adding some new features and enhancements.</p>
+<h2>New in OpenCms 10.5.1</h2>
+<ul>
+<li><span class="label label-warning">#</span> Rewritten and improved source search app.</li>
+<li><span class="label label-warning">#</span> Apollo Template: Mayor optimization of all formatters, CSS and JavsScript.</li>
+<li>Rewritten and improved integrated source code editor.</li>
+<li>Page editor now offers filter options in most tabs of the "Add content" dialog.</li>
+</ul>
+<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<h2>Improved in OpenCms 10.5.1</h2>
+<ul>
+<li>Apollo Template: Improved CSS, reduced size by more then 100kb.</li>
+<li>Apollo Template: Optimized and rewrote most JavaScript functions.</li>
+<li>Apollo Template: Updated to jQuery 3.1.1, Bootstrap 3.3.7, Font-Awesome 4.7.0.</li>
+<li>Page editor: Added access to context menu in element settings dialog.</li>
+<li>Page editor: Added option to configure the element deletion default in the "remove element" dialog.</li>
+<li>Localization: Formatter names can now be localized.</li>
+<li>Localization: Bundle translator now stores message properties in alphabetical order.</li>
+<li>Localization: Bundle translator now offers a direct publish button in the toolbar.</li>
+<li>Localization: Allowing locale specific detail only container contents.</li>
+<li>Sitemap editor: Copy function now allows manual editing of target folder.</li>
+<li>Template API: Added multiple utility functions to the &lt;cms&gt; taglib.</li>
+<li>Detail pages: Settings on matching elements are now reused for detail content display.</li>
+<li>Detail pages: &lt;cms:link&gt; tag now supports manually forcing a specific detail page.</li>
+<li>Properties: Added text area widget option for editing properties.</li>
+<li>Improved the project management app.</li>
+<li>Improved writing of container pages to store containers and element settings in a reproducible order.</li>
+<li>Improved handling of model groups.</li>
+<li>Improved handling of locales with country variant.</li>
+<li>Improved email validation regex to allow more valid email addresses.</li>
+<li>Improved touch function to use automatic XML correction.</li>
+<li>Improved copy element function to use automatic XML correction.</li>
+<li>Improved link generation for static resources to use VFS prefix settings.</li>
+<li>Updated CMIS Java libraries.</li>
+<li>Defined calendar mime-type for .ics files, PR provided by gallardo.</li>
+<li>Removed password output from standard out, PR provided by adrianrm.</li>
+<li>Improved message in delete dialog if deleting is not allowed, PR provided by AnnJul.</li>
+<li>Renamed copy dialog label 'Target folder' to 'Target', PR provided by gallardo.</li>
+<li>Fixed issue with element settings not being saved on newly placed content elements.</li>
+<li>Fixed issue with double conversion of dates in search field mappings for attributes.</li>
+<li>Fixed issue with order of content elements mapped to multi-valued Solr-fields.</li>
+<li>Fixed issue with context menu for deleted resources in publish dialog not displaying correctly.</li>
+<li>Fixed issue with project tool tip not being displayed in file tables.</li>
+<li>Fixed issue #408 with permanent redirects.</li>
+<li>Fixed issue #457 in the Apollo template where user blog articles generation failed.</li>
+<li>Fixed issue #462 where gallery dialog would not open on preselected values.</li>
+<li>Fixed issue #475 where dynamic functions disappeared from a containerpage.</li>
+<li>Fixed issue #477 where create containerpage with content elements would not work for non Admin users.</li>
+</ul>
+<h2>General OpenCms features</h2>
+<ul>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
+<li>The form based editor allows editing of structured content in a well defined form mask.</li>
+<li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
+<li>Responsive "Apollo" default template based on Bootstrap 3 with many features.</li>
+<li>Content creation for mobile devices with preview and device specific content control.</li>
+<li>Structured contents can be defined using a simple XML schema.</li>
+<li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
+<li>Link management for all internal resources with broken link detection.</li>
+<li>Integrated image scaling and cropping.</li>
+<li>SEO features with automatic sitemap.xml generation and page alias support.</li>
+<li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
+<li>Allows management of multiple websites within one installation.</li>
+<li>Contents can be served dynamically or exported to static HTML files.</li>
+<li>Direct access to the OpenCms content repository over a shared network drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
+<li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
+<li>Extensions can be added through a flexible module system.</li>
+<li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
+<li>JSP integration for dynamic functionality in templates, dynamic forms etc.</li>
+<li>... and many more</li>
+</ul>
+<h3>Backward compatibility</h3>
+<p>OpenCms 10.5.1 is fully backward compatible with all 9.0, 9.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.1.</p>
+<p><span class="label label-danger">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.1. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
+<h3>About the Apollo Template</h3>
+<p>The Apollo template is our main demo showcase. It is build using best practices of the latest OpenCms version. The Apollo template sources are available on Github at <a href="%(link1)">https://github.com/alkacon/apollo-template</a>.</p>
+<h3>Compatibility with Java versions, servlet containers and databases</h3>
+<p>OpenCms 10.5 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8 or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<h3>Regarding version numbers and build tags</h3>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-info">branch_10_5_x</span>. The 10.5.1 release is tagged <span class="label label-info">build_10_5_1</span>.</p>
+<h3>How you can help</h3>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

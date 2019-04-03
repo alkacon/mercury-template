@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[FAQ]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content/>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_06.jpg]]></target>
+          <uuid>f37a0985-3a95-11e9-bd84-0242ac11002b</uuid>
+          <query><![CDATA[__scale=h:280,w:1500,cx:0,cy:9,ch:360,cw:1920]]></query>
+        </link>
+      </Image>
+      <Title><![CDATA[FAQ]]></Title>
+    </Image>
+  </ContentSection>
+</ContentSectionData>

@@ -1,0 +1,49 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="ShariffMailConfigChoiceMailData" type="OpenCmsShariffMailConfigChoiceMailData"/>
+
+    <xsd:complexType name="OpenCmsShariffMailConfigChoiceMailData">
+        <xsd:sequence>
+            <xsd:element name="ShariffMailConfigChoiceMail" type="OpenCmsShariffMailConfigChoiceMail" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsShariffMailConfigChoiceMail">
+        <xsd:sequence>
+            <xsd:element name="MailTo" type="OpenCmsString" />
+            <xsd:element name="Subject" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Body" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>MailTo</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Shariff.MailTo)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Shariff.MailTo.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Subject</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Shariff.Subject)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Shariff.Subject.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Body</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Shariff.Body)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Shariff.Body.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

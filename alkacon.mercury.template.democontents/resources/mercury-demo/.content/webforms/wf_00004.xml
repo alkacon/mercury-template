@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WebForms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/form.xsd">
+  <WebForm language="de">
+    <Title><![CDATA[Beispiel-Formular]]></Title>
+    <FormText name="FormText0">
+      <links/>
+      <content><![CDATA[<h3>Dies ist eine Beispiel-Formularkonfiguration die zeigt, wie die verschiedenen Feldtypen genutzt werden können.</h3>]]></content>
+    </FormText>
+    <FormMiddleText name="FormMiddleText0">
+      <links/>
+      <content><![CDATA[<h3>Dies ist der Zwischentext!</h3>]]></content>
+    </FormMiddleText>
+    <FormFooterText name="FormFooterText0">
+      <links/>
+      <content><![CDATA[<h3>Dies ist der Fußtext!</h3>]]></content>
+    </FormFooterText>
+    <FormConfirmation name="FormConfirmation0">
+      <links/>
+      <content><![CDATA[<p>Das Formular wurde abgeschickt.</p>]]></content>
+    </FormConfirmation>
+    <FormCaptcha>
+      <FieldLabel><![CDATA[Captcha als Sicherheitsoption]]></FieldLabel>
+      <Preset><![CDATA[/system/modules/org.opencms.apollo.template.webform/captcha/alkacon-dict-de.captchapreset]]></Preset>
+    </FormCaptcha>
+    <OptionalFormConfiguration>
+      <ShowCheck>true</ShowCheck>
+      <CheckText name="CheckText0">
+        <links/>
+        <content><![CDATA[<h3>Bitte überprüfen Sie ihre Angaben.</h3>]]></content>
+      </CheckText>
+      <ShowMandatory>true</ShowMandatory>
+      <ShowReset>true</ShowReset>
+    </OptionalFormConfiguration>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Textfeld]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Textfeld mit Icon and Platzhalter]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=user|position=append|placeholder=Dies ist ein Textfeld mit Icon und Platzhalter]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[radio]]></FieldType>
+      <FieldLabel><![CDATA[Radio-Buttons untereinander (Standard)]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[a:Option A|*b:Option B|c:Option C]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[radio]]></FieldType>
+      <FieldLabel><![CDATA[Radio-Buttons mit Toggle-Auswahl]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[x:Option X|y:Option Y|*z:Option Z]]></FieldDefault>
+      <FieldParams><![CDATA[toggle=true]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[checkbox]]></FieldType>
+      <FieldLabel><![CDATA[Checkbox]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[confirm*:Ich bestätige, dass ich diese Checkbox ausgewählt habe.]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[checkbox]]></FieldType>
+      <FieldLabel><![CDATA[Checkbox (multiple)]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[confirm1:Ich habe dies ausgewählt|confirm2*:Ich habe das ausgewählt|confirm3*:Ich habe was anderes ausgewählt]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[paging]]></FieldType>
+      <FieldLabel><![CDATA[Seite 2]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[empty]]></FieldType>
+      <FieldLabel><![CDATA[Leeres Feld]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[Der Standardwert dieses Feldes wird angezeigt, aber nicht mit dem Formular abgeschickt. Lässt man den Standardwert leer, erzeugt das Feld nur einen extra Abstand.]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[select]]></FieldType>
+      <FieldLabel><![CDATA[Select-Box]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[:--- Bitte wählen ---|1:Option 1|2:Option 2|3:Option 3]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[password]]></FieldType>
+      <FieldLabel><![CDATA[Passwort Feld]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=key|position=append]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[paging]]></FieldType>
+      <FieldLabel><![CDATA[Seite 3]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[file]]></FieldType>
+      <FieldLabel><![CDATA[Datei Upload]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=folder|position=append|placeholder=Bitte wählen Sie eine Datei zum hochladen aus]]></FieldParams>
+      <FieldValidation><![CDATA[<500kb|doc,pdf,jpg,txt]]></FieldValidation>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email]]></FieldType>
+      <FieldLabel><![CDATA[E-Mail Feld]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=envelope|position=append|placeholder=Dies ist ein E-Mail-Eingabefeld]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email_select]]></FieldType>
+      <FieldLabel><![CDATA[E-Mail-Auswahl]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[:--- Bitte wählen Sie eine verschleierte E-Mail-Adresse ---|teo@test.org:Teos E-Mail|xaver@mutant.org:Xavers E-Mail|hans@test.org:Hans E-Mail]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[privacy]]></FieldType>
+      <FieldLabel><![CDATA[Anerkennung der Datenschutzrichtline]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[Ich bestätige, dass ich die Datenschutzrichtlinie gelesen habe.:http://www.alkacon.com/en/privacy.html]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Mehrzeiliges Textfeld]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=truck|position=append|placeholder=Dies ist ein mehrzeiliges Textfeld]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[parameter]]></FieldType>
+      <FieldLabel><![CDATA[Parameter-Feld mit dem Wert des Parameters "special"]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[special]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[hidden]]></FieldType>
+      <FieldLabel><![CDATA[Verstecktes Feld]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[Dieser Wert ist versteckt, wird übermittelt, aber nicht vom Ausfüllenden angepasst.]]></FieldDefault>
+    </InputField>
+    <OptionalFieldText>
+      <InputField><![CDATA[Verstecktes Feld]]></InputField>
+      <Column><![CDATA[1]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Über diesem Text ist ein vestecktes Feld, dessen Wert in den Formulardaten gespeichert wird.</em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[Textfeld]]></InputField>
+      <Column><![CDATA[1]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Dieser Text wird links unter dem ersten Eingabefeld angezeigt. Unter jedem Eingabefeld kann ein HTML-Text eingeblendet werden.<br /></em></p>
+<p>&nbsp;</p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[Textfeld mit Icon and Platzhalter]]></InputField>
+      <Column><![CDATA[0]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Nachfolgend sehen Sie verschiedene Versionen von Radio-Buttons, wo nur einer ausgewählt werden kann.</em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[Radio-Buttons mit Toggle-Auswahl]]></InputField>
+      <Column><![CDATA[0]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Nachfolgend sehen Sie Checkbox-Felder. Bei diesen können mehrere Optionen ausgewählt werden. Bevor das erste Checkbox-Feld erscheint kann noch ein "Abhängiges Feld" erscheinen - abhängig vom Wert des Feldes "Radio-Buttons mit Toggle-Auswahl.</em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[File upload]]></InputField>
+      <Column><![CDATA[2]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Dieses Upload-Feld ist so konfiguriert, dass nur doc-, pdf-, jpg- oder txt-Dateien unter 500KB Göße hochgeladen werden können.</em></p>
+<p><em><strong>Beachten Sie, dass Uploads aktuell nur als Anhang der Administrations-Email verschickt, aber nicht in der Datenbank gespeichert werden.</strong></em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalSubField>
+      <ParentField><![CDATA[Radio-Buttons mit Toggle-Auswahl]]></ParentField>
+      <Value><![CDATA[y]]></Value>
+      <InputField>
+        <FieldType><![CDATA[text]]></FieldType>
+        <FieldLabel><![CDATA[Nur für "Option Y" angezeigt]]></FieldLabel>
+        <FieldMandatory>true</FieldMandatory>
+      </InputField>
+    </OptionalSubField>
+    <OptionalSubField>
+      <ParentField><![CDATA[Radio-Buttons mit Toggle-Auswahl]]></ParentField>
+      <Value><![CDATA[z]]></Value>
+      <InputField>
+        <FieldType><![CDATA[email]]></FieldType>
+        <FieldLabel><![CDATA[Nur für "Option Z" angezeigt]]></FieldLabel>
+        <FieldMandatory>false</FieldMandatory>
+      </InputField>
+    </OptionalSubField>
+    <MailFrom/>
+    <MailTo/>
+    <MailSubject><![CDATA[Mercury Webform - Eingereichte Daten]]></MailSubject>
+    <MailText name="MailText0">
+      <links/>
+      <content><![CDATA[<p>Das Alkacon OpenCms Mercury Demo Formular wurde mit folgenden Daten eingereicht:</p>]]></content>
+    </MailText>
+    <OptionalConfirmationMail>
+      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
+      <ConfirmationMailOptional>true</ConfirmationMailOptional>
+      <ConfirmationCheckboxLabel><![CDATA[Ich möchte eine Bestätigungs-Mail erhalten]]></ConfirmationCheckboxLabel>
+      <ConfirmationField><![CDATA[Email field]]></ConfirmationField>
+      <ConfirmationMailFrom><![CDATA[sampleform@alkacon.com]]></ConfirmationMailFrom>
+      <ConfirmationMailFromName><![CDATA[Sample Form Bestätigungs-Mail]]></ConfirmationMailFromName>
+      <ConfirmationMailSubject><![CDATA[Bestätigungsmail]]></ConfirmationMailSubject>
+      <ConfirmationMailText name="ConfirmationMailText0">
+        <links/>
+        <content><![CDATA[<p>Hallo %(Email field), dies ist die Bestätigungsmail. Sie wurde mit speziellen Makros erzeugt.</p>
+<p>Sie haben das Formular "%(content.Title)" um %(date) mit den Daten:</p>
+<p>%(formdata)</p>
+<p>ausgefüllt.</p>
+<p>&nbsp;</p>
+<p>%(mail.waitlist.info)</p>
+<p>&nbsp;</p>
+<p>Bye!</p>]]></content>
+      </ConfirmationMailText>
+    </OptionalConfirmationMail>
+    <DBConfig>
+      <UserForGuest><![CDATA[Admin]]></UserForGuest>
+      <MaxRegularDatasets><![CDATA[5]]></MaxRegularDatasets>
+      <MaxWaitlistDatasets><![CDATA[2]]></MaxWaitlistDatasets>
+      <NumOtherDatasets><![CDATA[1]]></NumOtherDatasets>
+      <DatasetTitle><![CDATA[%(Textfeld) - %(E-Mail Feld)]]></DatasetTitle>
+    </DBConfig>
+  </WebForm>
+  <WebForm language="en">
+    <Title><![CDATA[Sample form]]></Title>
+    <FormText name="FormText0">
+      <links/>
+      <content><![CDATA[<p><em><strong>This is a sample form configuration that shows how to use different input field types</strong></em></p>]]></content>
+    </FormText>
+    <FormMiddleText name="FormMiddleText0">
+      <links/>
+      <content><![CDATA[<p><em><strong>This is the middle text!</strong></em></p>]]></content>
+    </FormMiddleText>
+    <FormFooterText name="FormFooterText0">
+      <links/>
+      <content><![CDATA[<p><em><strong>This is the footer text!</strong></em></p>]]></content>
+    </FormFooterText>
+    <FormConfirmation name="FormConfirmation0">
+      <links/>
+      <content><![CDATA[<p>The form has been submitted!</p>]]></content>
+    </FormConfirmation>
+    <FormCaptcha>
+      <FieldLabel><![CDATA[The captcha for security reasons]]></FieldLabel>
+      <Preset><![CDATA[/system/modules/alkacon.mercury.webform/captcha/alkacon-dict-de.captchapreset]]></Preset>
+    </FormCaptcha>
+    <OptionalFormConfiguration>
+      <ShowCheck>true</ShowCheck>
+      <CheckText name="CheckText0">
+        <links/>
+        <content><![CDATA[<h3>Please check your input</h3>]]></content>
+      </CheckText>
+      <ShowMandatory>true</ShowMandatory>
+      <ShowReset>true</ShowReset>
+    </OptionalFormConfiguration>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Text input]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Text input with icon and placefolder]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=user|position=append|placeholder=This is a text input field with an icon and a placeholder]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[radio]]></FieldType>
+      <FieldLabel><![CDATA[Radio buttons as columns (default)]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[a:Option A|*b:Option B|c:Option C]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[radio]]></FieldType>
+      <FieldLabel><![CDATA[Radio buttons with toggle]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[x:Option X|y:Option Y|*z:Option Z]]></FieldDefault>
+      <FieldParams><![CDATA[toggle=true]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[checkbox]]></FieldType>
+      <FieldLabel><![CDATA[Checkbox]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[confirm*:I confirm to have checked the checkbox]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[checkbox]]></FieldType>
+      <FieldLabel><![CDATA[Checkbox (multiple)]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[confirm1:I have checked this|confirm2*:I have checked that|confirm3*:I have checked either|confirm4:I have checked nothing]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[paging]]></FieldType>
+      <FieldLabel><![CDATA[Page 2]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[empty]]></FieldType>
+      <FieldLabel><![CDATA[Empty field]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[The default value text of the empty field is shown in the form, but not submitted. If the default value is empty, only additional space between two fields is produced.]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[select]]></FieldType>
+      <FieldLabel><![CDATA[Select box]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[:--- Please choose ---|1:Option 1|2:Option 2|3:Option 3]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[password]]></FieldType>
+      <FieldLabel><![CDATA[Password field]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=key|position=append]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[paging]]></FieldType>
+      <FieldLabel><![CDATA[Page 3]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[file]]></FieldType>
+      <FieldLabel><![CDATA[File upload]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=folder|position=append|placeholder=Please select a file for upload]]></FieldParams>
+      <FieldValidation><![CDATA[<500kb|doc,pdf,jpg,txt]]></FieldValidation>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email]]></FieldType>
+      <FieldLabel><![CDATA[Email field]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=envelope|position=append|placeholder=This is an email input field]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email_select]]></FieldType>
+      <FieldLabel><![CDATA[Email selection]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[:--- Please choose a obfuscated email ---|teo@test.org:Teos email|xaver@mutant.org:Xavers email|hans@test.org:Hans email]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[privacy]]></FieldType>
+      <FieldLabel><![CDATA[Privacy policy confirmation]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[I confirm I have read the privacy policy:http://www.alkacon.com/en/privacy.html]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Text area]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=truck|position=append|placeholder=This is a text area]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[parameter]]></FieldType>
+      <FieldLabel><![CDATA[Value of Request-Parameter special]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[special]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[hidden]]></FieldType>
+      <FieldLabel><![CDATA[Hidden field]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldDefault><![CDATA[Value not editable by the user]]></FieldDefault>
+    </InputField>
+    <OptionalFieldText>
+      <InputField><![CDATA[Hidden field]]></InputField>
+      <Column><![CDATA[1]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Above there is a hidden field, who's value will be stored with the form.</em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[Text input]]></InputField>
+      <Column><![CDATA[1]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>This text is shown left below the first input field. Below each field, you can add a text with HTML markup.</em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[Text input with icon and placefolder]]></InputField>
+      <Column><![CDATA[0]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Next, you see different versions of radio buttons, where only one option can be checked.</em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[Radio buttons with toggle]]></InputField>
+      <Column><![CDATA[0]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>The radio buttons / toggles above have a "dependend fields" configuration. Depending on the selection, different fields are shown below this text.</em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalFieldText>
+      <InputField><![CDATA[File upload]]></InputField>
+      <Column><![CDATA[2]]></Column>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><em>Note that the upload field is configured thus that you can only upload doc, pdf, jpg or txt files that are smaller than 500KB.</em></p>
+<p><em><strong>Note that files are currently not stored in the database, but only send as attachment in the administration email.</strong></em></p>]]></content>
+      </Text>
+    </OptionalFieldText>
+    <OptionalSubField>
+      <ParentField><![CDATA[Radio buttons with toggle]]></ParentField>
+      <Value><![CDATA[y]]></Value>
+      <InputField>
+        <FieldType><![CDATA[text]]></FieldType>
+        <FieldLabel><![CDATA[Shown only for Option Y]]></FieldLabel>
+        <FieldMandatory>true</FieldMandatory>
+      </InputField>
+    </OptionalSubField>
+    <OptionalSubField>
+      <ParentField><![CDATA[Radio buttons with toggle]]></ParentField>
+      <Value><![CDATA[z]]></Value>
+      <InputField>
+        <FieldType><![CDATA[email]]></FieldType>
+        <FieldLabel><![CDATA[Shown only for Option Z]]></FieldLabel>
+        <FieldMandatory>false</FieldMandatory>
+      </InputField>
+    </OptionalSubField>
+    <MailFrom/>
+    <MailTo/>
+    <MailSubject><![CDATA[Mercury webform - Submitted data]]></MailSubject>
+    <MailText name="MailText0">
+      <links/>
+      <content><![CDATA[<p>The Alkacon OpenCms Mercury demo webform has been submitted with the following data:</p>]]></content>
+    </MailText>
+    <OptionalConfirmationMail>
+      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
+      <ConfirmationMailOptional>true</ConfirmationMailOptional>
+      <ConfirmationCheckboxLabel><![CDATA[I want a confirmation mail]]></ConfirmationCheckboxLabel>
+      <ConfirmationField><![CDATA[Email field]]></ConfirmationField>
+      <ConfirmationMailFrom><![CDATA[sampleform@alkacon.com]]></ConfirmationMailFrom>
+      <ConfirmationMailFromName><![CDATA[Sample Form Confirmation Mail]]></ConfirmationMailFromName>
+      <ConfirmationMailSubject><![CDATA[Confirmation mail]]></ConfirmationMailSubject>
+      <ConfirmationMailText name="ConfirmationMailText0">
+        <links/>
+        <content><![CDATA[<p>Hello %(Email field), this is a confirmation mail using specific macros.</p>
+<p>You filled out form&nbsp; %(content.Title) at %(date) with data:</p>
+<p>%(formdata)</p>
+<p>&nbsp;</p>
+<p>You are registered. Here's the waitlist information:</p>
+<p>%(mail.waitlist.info)</p>
+<p>&nbsp;</p>
+<p>Bye!</p>]]></content>
+      </ConfirmationMailText>
+    </OptionalConfirmationMail>
+    <DBConfig>
+      <UserForGuest><![CDATA[Admin]]></UserForGuest>
+      <MaxRegularDatasets><![CDATA[2]]></MaxRegularDatasets>
+      <MaxWaitlistDatasets><![CDATA[1]]></MaxWaitlistDatasets>
+      <NumOtherDatasets><![CDATA[0]]></NumOtherDatasets>
+      <DatasetTitle><![CDATA[%(Text input)]]></DatasetTitle>
+    </DBConfig>
+  </WebForm>
+</WebForms>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Über OpenCms]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>OpenCms ist großartig. Einfach zu benutzen. Es macht Spass damit zu arbeiten. Trotzdem mit vielen mächtigen Funktionen versehen. Das verwendungsfertige Mercury-Template ist auch gleich mit dabei.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[Mehr erfahren]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/home/]]></target>
+          <uuid>f4c48a55-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[About OpenCms]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>OpenCms is great. Easy to use. Fun to work with. Simple and intuitive. Yet full featured and powerful. Comes with the ready-to-use Mercury template to get your new website online&nbsp;quickly.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[Read more]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/home/]]></target>
+          <uuid>f4c48a55-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

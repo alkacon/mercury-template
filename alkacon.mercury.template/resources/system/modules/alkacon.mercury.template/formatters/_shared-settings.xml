@@ -1,0 +1,1980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SettingsConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/settings_config.xsd">
+  <SettingsConfig language="en">
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.cssWrapper)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.cssWrapper.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapperInner.default]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapperInner]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.cssWrapperInner)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.cssWrapperInner.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[formCssWrapper.default]]></IncludeName>
+      <PropertyName><![CDATA[formCssWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.formCssWrapper)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.formCssWrapper.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            border:                         %(key.msg.setting.formCssWrapper.border)|
+            compact:                        %(key.msg.setting.formCssWrapper.compact)|
+            no-border:                      %(key.msg.setting.formCssWrapper.no-border)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
+      <PropertyName><![CDATA[cssVisibility]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.cssVisibility.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[always]]></Default>
+      <WidgetConfig><![CDATA[
+        always:%(key.msg.setting.cssVisibility.always)|
+        hidden-xs:%(key.msg.setting.cssVisibility.hidden-xs)|
+        hidden-xs hidden-sm:%(key.msg.setting.cssVisibility.hidden-xs-sm)|
+        hidden-xs hidden-sm hidden-md:%(key.msg.setting.cssVisibility.hidden-xs-sm-md)
+       ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showCalendar.true]]></IncludeName>
+      <PropertyName><![CDATA[showCalendar]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showCalendar)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showCalendar.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentIndividual]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showCalendar.false]]></IncludeName>
+      <PropertyName><![CDATA[showCalendar]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showCalendar)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showCalendar.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentIndividual]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
+      <PropertyName><![CDATA[bookingOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.bookingOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.bookingOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:       %(key.msg.setting.bookingOption.none)|
+            simple:     %(key.msg.setting.bookingOption.simple)|
+            places:     %(key.msg.setting.bookingOption.places)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
+      <PropertyName><![CDATA[dateFormat]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.dateFormat)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.dateFormat.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[fmt-SHORT]]></Default>
+      <WidgetConfig><![CDATA[
+            none:               %(key.msg.setting.dateFormat.NONE.text)|
+            fmt-NUMSHORT:       %(key.msg.setting.dateFormat.NUMSHORT.text)|
+            fmt-NUMSHORT-TIME:  %(key.msg.setting.dateFormat.NUMSHORT-TIME.text)|
+            fmt-NUMLONG:        %(key.msg.setting.dateFormat.NUMLONG.text)|
+            fmt-NUMLONG-TIME:   %(key.msg.setting.dateFormat.NUMLONG-TIME.text)|
+            fmt-SHORT:          %(key.msg.setting.dateFormat.SHORT.text)|
+            fmt-SHORT-TIME:     %(key.msg.setting.dateFormat.SHORT-TIME.text)|
+            fmt-SHORT-DAY:      %(key.msg.setting.dateFormat.SHORT-DAY.text)|
+            fmt-SHORT-DAY-TIME: %(key.msg.setting.dateFormat.SHORT-DAY-TIME.text)|
+            fmt-LONG:           %(key.msg.setting.dateFormat.LONG.text)|
+            fmt-LONG-TIME:      %(key.msg.setting.dateFormat.LONG-TIME.text)|
+            fmt-LONG-DAY:       %(key.msg.setting.dateFormat.LONG-DAY.text)|
+            fmt-LONG-DAY-TIME:  %(key.msg.setting.dateFormat.LONG-DAY-TIME.text)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+      <PropertyName><![CDATA[imageRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:   %(key.msg.setting.imageRatio.none)|
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>
+      <PropertyName><![CDATA[imageRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[1-1]]></Default>
+      <WidgetConfig><![CDATA[
+            none:   %(key.msg.setting.imageRatio.none)|
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.media]]></IncludeName>
+      <PropertyName><![CDATA[imageRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[16-9]]></Default>
+      <WidgetConfig><![CDATA[
+            none:   %(key.msg.setting.imageRatio.none)|
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.imageflip]]></IncludeName>
+      <PropertyName><![CDATA[imageRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[1-1]]></Default>
+      <WidgetConfig><![CDATA[
+            1-1:    %(key.msg.setting.imageRatio.1-1)
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.square]]></IncludeName>
+      <PropertyName><![CDATA[imageRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[4-3]]></Default>
+      <WidgetConfig><![CDATA[
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[squareGrid.square]]></IncludeName>
+      <PropertyName><![CDATA[squareGrid]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.squareGrid)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.squareGrid.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[4]]></Default>
+      <WidgetConfig><![CDATA[
+        3:%(key.msg.setting.squareGrid.3)|
+        4:%(key.msg.setting.squareGrid.4)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[firstSquare.square]]></IncludeName>
+      <PropertyName><![CDATA[firstSquare]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.firstSquare)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.firstSquare.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[firstOnPageFlip]]></Default>
+      <WidgetConfig><![CDATA[
+        allSmall:%(key.msg.setting.firstSquare.allSmall)|
+        firstOnlyLarge:%(key.msg.setting.firstSquare.firstOnlyLarge)|
+        firstOnPageLarge:%(key.msg.setting.firstSquare.firstOnPageLarge)|
+        firstOnPageFlip:%(key.msg.setting.firstSquare.firstOnPageFlip)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.default]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                           %(key.msg.setting.effect.none)|
+            effect-rotate:                  %(key.msg.setting.effect.rotate)|
+            effect-raise:                   %(key.msg.setting.effect.raise)|
+            effect-raise effect-rotate:     %(key.msg.setting.effect.raise-rotate)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.imageflip]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                           %(key.msg.setting.effect.none)|
+            effect-flipraise:               %(key.msg.setting.effect.imageflip-enlarge)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                           %(key.msg.setting.effect.none)|
+            effect-shadow:                  %(key.msg.setting.effect.shadow)|
+            effect-inset:                   %(key.msg.setting.effect.inset)|
+            effect-raise:                   %(key.msg.setting.effect.raise)|
+            effect-rotate:                  %(key.msg.setting.effect.rotate)|
+            effect-shadow effect-rotate:    %(key.msg.setting.effect.shadow-rotate)|
+            effect-inset effect-rotate:     %(key.msg.setting.effect.inset-rotate)|
+            effect-raise effect-rotate:     %(key.msg.setting.effect.raise-rotate)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.section.text-image]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                                       %(key.msg.setting.effect.none)|
+            effect-shadow:                              %(key.msg.setting.effect.shadow) %(key.msg.setting.effect.onimage)|
+            effect-raise:                               %(key.msg.setting.effect.raise) %(key.msg.setting.effect.onimage)|
+            effect-rotate:                              %(key.msg.setting.effect.rotate)|
+            effect-shadow effect-rotate:                %(key.msg.setting.effect.shadow-rotate) %(key.msg.setting.effect.onimage)|
+            effect-raise effect-rotate:                 %(key.msg.setting.effect.raise-rotate)  %(key.msg.setting.effect.onimage)|
+            effect-piece effect-shadow:                 %(key.msg.setting.effect.shadow) %(key.msg.setting.effect.onpiece)|
+            effect-piece effect-inset:                  %(key.msg.setting.effect.inset) %(key.msg.setting.effect.onpiece)|
+            effect-piece effect-raise:                  %(key.msg.setting.effect.raise) %(key.msg.setting.effect.onpiece)|
+            effect-piece effect-shadow effect-rotate:   %(key.msg.setting.effect.shadow-rotate) %(key.msg.setting.effect.onpiece)|
+            effect-piece effect-inset effect-rotate:    %(key.msg.setting.effect.inset-rotate) %(key.msg.setting.effect.onpiece)|
+            effect-piece effect-raise effect-rotate:    %(key.msg.setting.effect.raise-rotate) %(key.msg.setting.effect.onpiece)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.section.image-only]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                           %(key.msg.setting.effect.none)|
+            effect-shadow:                  %(key.msg.setting.effect.shadow)|
+            effect-raise:                   %(key.msg.setting.effect.raise)|
+            effect-rotate:                  %(key.msg.setting.effect.rotate)|
+            effect-shadow effect-rotate:    %(key.msg.setting.effect.shadow-rotate)|
+            effect-raise effect-rotate:     %(key.msg.setting.effect.raise-rotate)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.section.text-only]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                           %(key.msg.setting.effect.none)|
+            effect-piece effect-shadow:                 %(key.msg.setting.effect.shadow)|
+            effect-piece effect-inset:                  %(key.msg.setting.effect.inset)|
+            effect-piece effect-raise:                  %(key.msg.setting.effect.raise)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.2]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[2]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.3]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[3]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.list.teaser)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.list.teaser.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[3]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.detail]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[1]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.detailWith0]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.element)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.element.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[1]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)|
+            0:  %(key.msg.setting.hsize.hidden)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.fixed.0]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[0]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.element.0]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.element)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.element.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[0]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)|
+            0:  %(key.msg.setting.hsize.hidden)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.element)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.element.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[2]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)|
+            0:  %(key.msg.setting.hsize.hidden)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.element.3]]></IncludeName>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.element)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.element.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[3]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)|
+            0:  %(key.msg.setting.hsize.hidden)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listHsize.2]]></IncludeName>
+      <PropertyName><![CDATA[listHsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.list)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.list.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[2]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)|
+            0:  %(key.msg.setting.hsize.hidden)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTextFirst.false]]></IncludeName>
+      <PropertyName><![CDATA[showTextFirst]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageFlip.showTextFirst)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageFlip.showTextFirst.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[doNotFlip.false]]></IncludeName>
+      <PropertyName><![CDATA[doNotFlip]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageFlip.doNotFlip)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageFlip.doNotFlip.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[flipColor.grey]]></IncludeName>
+      <PropertyName><![CDATA[flipColor]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageFlip.flipColor)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageFlip.flipColor.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[color-grey]]></Default>
+      <WidgetConfig><![CDATA[
+        color-grey:%(key.msg.setting.imageFlip.flipColor.grey)|
+        color-white:%(key.msg.setting.imageFlip.flipColor.white)|
+        color-theme:%(key.msg.setting.imageFlip.flipColor.theme)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[dateFormatAddTime.true]]></IncludeName>
+      <PropertyName><![CDATA[dateFormatAddTime]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.dateFormatAddTime)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.dateFormatAddTime.help)]]></Description>
+      <Visibility><![CDATA[parentIndividual]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[titleOption.default]]></IncludeName>
+      <PropertyName><![CDATA[titleOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.titleOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.titleOption.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[showIntro]]></Default>
+      <WidgetConfig><![CDATA[
+            none:               %(key.msg.setting.titleOption.none)|
+            showIntro:          %(key.msg.setting.titleOption.showIntro)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textOption.default]]></IncludeName>
+      <PropertyName><![CDATA[textOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.textOption.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+            default:            %(key.msg.setting.textOption.default)|
+            lead:               %(key.msg.setting.textOption.lead)|
+            none:               %(key.msg.setting.textOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textLength.compact]]></IncludeName>
+      <PropertyName><![CDATA[textLength]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textLength)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.textLength.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[175]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>
+      <PropertyName><![CDATA[textLength]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textLength)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.textLength.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[250]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textLength.tile]]></IncludeName>
+      <PropertyName><![CDATA[textLength]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textLength)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.textLength.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[200]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+      <PropertyName><![CDATA[buttonText]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.buttonText)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.buttonText.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
+      <PropertyName><![CDATA[firstOpen]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.firstOpen)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.firstOpen.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[autoPlay.false]]></IncludeName>
+      <PropertyName><![CDATA[autoPlay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.media.autoPlay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.media.autoPlay.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[autoLoad.false]]></IncludeName>
+      <PropertyName><![CDATA[autoLoad]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageseries.autoLoad)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageseries.autoLoad.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
+      <PropertyName><![CDATA[showImageZoom]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageZoom)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageZoom.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+      <PropertyName><![CDATA[showImageCopyright]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageCopyright)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageCopyright.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
+      <PropertyName><![CDATA[showImageSubtitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageSubtitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageSubtitle.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageCount.true]]></IncludeName>
+      <PropertyName><![CDATA[showImageCount]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageCount)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageCount.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageLink.false]]></IncludeName>
+      <PropertyName><![CDATA[showImageLink]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageLink)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageLink.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showText.true]]></IncludeName>
+      <PropertyName><![CDATA[showText]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showText)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showText.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDescription.true]]></IncludeName>
+      <PropertyName><![CDATA[showDescription]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showDescription)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showDescription.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTitle.true]]></IncludeName>
+      <PropertyName><![CDATA[showTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showTitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showTitle.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showPreface.true]]></IncludeName>
+      <PropertyName><![CDATA[showPreface]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showPreface)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showPreface.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showMap.true]]></IncludeName>
+      <PropertyName><![CDATA[showMap]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showMap)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showMap.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showLink.true]]></IncludeName>
+      <PropertyName><![CDATA[showLink]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showLink)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showLink.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showAuthor.true]]></IncludeName>
+      <PropertyName><![CDATA[showAuthor]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showAuthor)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showAuthor.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showLocation.true]]></IncludeName>
+      <PropertyName><![CDATA[showLocation]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showLocation)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showLocation.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showCombinedDownloads.true]]></IncludeName>
+      <PropertyName><![CDATA[showCombinedDownloads]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showCombinedDownloads)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showCombinedDownloads.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showArrows.true]]></IncludeName>
+      <PropertyName><![CDATA[showArrows]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.showArrows)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.showArrows.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDots.true]]></IncludeName>
+      <PropertyName><![CDATA[showDots]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.showDots)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.showDots.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pauseOnHover.true]]></IncludeName>
+      <PropertyName><![CDATA[pauseOnHover]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.pauseOnHover)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.pauseOnHover.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[rotationTime.default]]></IncludeName>
+      <PropertyName><![CDATA[rotationTime]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.rotationTime)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.rotationTime.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[3000]]></Default>
+      <WidgetConfig><![CDATA[
+        0:      %(key.msg.setting.slider.rotationTime.none)|
+        1000:   1 %(key.msg.setting.slider.rotationTime.sec)|
+        2000:   2 %(key.msg.setting.slider.rotationTime.secs)|
+        3000:   3 %(key.msg.setting.slider.rotationTime.secs)|
+        5000:   5 %(key.msg.setting.slider.rotationTime.secs)|
+        8000:   8 %(key.msg.setting.slider.rotationTime.secs)|
+        10000:  10 %(key.msg.setting.slider.rotationTime.secs)|
+        15000:  15 %(key.msg.setting.slider.rotationTime.secs)|
+        20000:  20 %(key.msg.setting.slider.rotationTime.secs)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pageSize.default]]></IncludeName>
+      <PropertyName><![CDATA[pageSize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.pageSize)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.pageSize.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[12]]></Default>
+      <RuleRegex><![CDATA[[0-9]+]]></RuleRegex>
+      <RuleType><![CDATA[error]]></RuleType>
+      <Error><![CDATA[%(key.msg.error.pageSize)]]></Error>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pageSize.imageseries]]></IncludeName>
+      <PropertyName><![CDATA[pageSize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageseries.pageSize)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageseries.pageSize.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[12]]></Default>
+      <RuleRegex><![CDATA[[0-9]+]]></RuleRegex>
+      <RuleType><![CDATA[error]]></RuleType>
+      <Error><![CDATA[%(key.msg.error.pageSize)]]></Error>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceLayout.elaborate]]></IncludeName>
+      <PropertyName><![CDATA[pieceLayoutList]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[6]]></Default>
+      <WidgetConfig><![CDATA[
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)|
+            2:      %(key.msg.setting.pieceLayout.2)|
+            3:      %(key.msg.setting.pieceLayout.3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
+      <PropertyName><![CDATA[pieceSizeDesktop]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.visualOption.piece.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[99]]></Default>
+      <WidgetConfig><![CDATA[
+            99:     %(key.msg.setting.visualOption.piece.default)|
+            3:      %(key.msg.setting.visualOption.3)|
+            4:      %(key.msg.setting.visualOption.4)|
+            5:      %(key.msg.setting.visualOption.5)|
+            6:      %(key.msg.setting.visualOption.6)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
+      <PropertyName><![CDATA[pieceLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[4]]></Default>
+      <WidgetConfig><![CDATA[
+            0:      %(key.msg.setting.pieceLayout.0)|
+            1:      %(key.msg.setting.pieceLayout.1)|
+            2:      %(key.msg.setting.pieceLayout.2)|
+            3:      %(key.msg.setting.pieceLayout.3)|
+            4:      %(key.msg.setting.pieceLayout.4)|
+            5:      %(key.msg.setting.pieceLayout.5)|
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)|
+            8:      %(key.msg.setting.pieceLayout.8)|
+            9:      %(key.msg.setting.pieceLayout.9)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceLayout.fixed.0]]></IncludeName>
+      <PropertyName><![CDATA[pieceLayout]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[0]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceLayout.onlyInlineHeadings]]></IncludeName>
+      <PropertyName><![CDATA[pieceLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[1]]></Default>
+      <WidgetConfig><![CDATA[
+            1:      %(key.msg.setting.pieceLayout.1)|
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)|
+            8:      %(key.msg.setting.pieceLayout.8)|
+            9:      %(key.msg.setting.pieceLayout.9)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceLayout.detail]]></IncludeName>
+      <PropertyName><![CDATA[pieceLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption.paragraphs)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[4]]></Default>
+      <WidgetConfig><![CDATA[
+            0:      %(key.msg.setting.pieceLayout.0)|
+            1:      %(key.msg.setting.pieceLayout.1)|
+            2:      %(key.msg.setting.pieceLayout.2)|
+            3:      %(key.msg.setting.pieceLayout.3)|
+            4:      %(key.msg.setting.pieceLayout.4)|
+            5:      %(key.msg.setting.pieceLayout.5)|
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)|
+            8:      %(key.msg.setting.pieceLayout.8)|
+            9:      %(key.msg.setting.pieceLayout.9)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[keyPieceLayout.detail]]></IncludeName>
+      <PropertyName><![CDATA[keyPieceLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.keyVisualOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.keyVisualOption.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[50]]></Default>
+      <WidgetConfig><![CDATA[
+            50:      %(key.msg.setting.keyVisualOption.imageOverlay)|
+            0:       %(key.msg.setting.keyVisualOption.noImageOverlay)|
+            4:       %(key.msg.setting.keyVisualOption.sideImageLeft)|
+            5:       %(key.msg.setting.keyVisualOption.sideImageRight)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
+      <PropertyName><![CDATA[visualOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.visualOption.piece.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[99]]></Default>
+      <WidgetConfig><![CDATA[
+            99:     %(key.msg.setting.visualOption.piece.default)|
+            3:      %(key.msg.setting.visualOption.3)|
+            4:      %(key.msg.setting.visualOption.4)|
+            5:      %(key.msg.setting.visualOption.5)|
+            6:      %(key.msg.setting.visualOption.6)|
+            0:      %(key.msg.setting.visualOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.fixed.0]]></IncludeName>
+      <PropertyName><![CDATA[visualOption]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[0]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[keyVisualOption.detail]]></IncludeName>
+      <PropertyName><![CDATA[keyVisualOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.keyVisualOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.keyVisualOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[visual-over]]></Default>
+      <WidgetConfig><![CDATA[
+            visual-over:        %(key.msg.setting.keyVisualOption.imageOverlay)|
+            visual-full:        %(key.msg.setting.keyVisualOption.noImageOverlay)|
+            visual-float right: %(key.msg.setting.keyVisualOption.sideImageRight)|
+            visual-float left:  %(key.msg.setting.keyVisualOption.sideImageLeft)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.tile]]></IncludeName>
+      <PropertyName><![CDATA[visualOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[show]]></Default>
+      <WidgetConfig><![CDATA[
+            show:               %(key.msg.setting.visualOption.show)|
+            none:               %(key.msg.setting.visualOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headlineOption.section]]></IncludeName>
+      <PropertyName><![CDATA[headlineOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.headlineOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.headlineOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[full]]></Default>
+      <WidgetConfig><![CDATA[
+            full:               %(key.msg.setting.headlineOption.full)|
+            inline:             %(key.msg.setting.headlineOption.inline)|
+            none:               %(key.msg.setting.headlineOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headlineOption.hideOnly]]></IncludeName>
+      <PropertyName><![CDATA[headlineOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.headlineOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.headlineOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[full]]></Default>
+      <WidgetConfig><![CDATA[
+            full:               %(key.msg.setting.headlineOption.show)|
+            none:               %(key.msg.setting.headlineOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapZoom.default]]></IncludeName>
+      <PropertyName><![CDATA[mapZoom]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.map.zoom)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.map.zoom.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[firstMarker]]></Default>
+      <WidgetConfig><![CDATA[
+        firstMarker:%(key.msg.setting.map.zoom.firstPoi)|
+        20:20|19:19|18:18|17:17|16:16|15:15|14:14|13:13|12:12|11:11|10:10|9:9|8:8|7:7|6:6|5:5|4:4|3:3|2:2|1:1
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showGroupButtons.true]]></IncludeName>
+      <PropertyName><![CDATA[showGroupButtons]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.map.showGroupButtons)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.map.showGroupButtons.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showMapRoute.false]]></IncludeName>
+      <PropertyName><![CDATA[showMapRoute]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.map.route)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.map.route.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapType.default]]></IncludeName>
+      <PropertyName><![CDATA[mapType]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.map.type)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.map.type.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[ROADMAP]]></Default>
+      <WidgetConfig><![CDATA[
+        ROADMAP:%(key.msg.setting.map.type.roadmap)|
+        SATELLITE:%(key.msg.setting.map.type.satellite)|
+        HYBRID:%(key.msg.setting.map.type.hybrid)|
+        TERRAIN:%(key.msg.setting.map.type.terrain)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapRatio.default]]></IncludeName>
+      <PropertyName><![CDATA[mapRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.map.ratio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.map.ratio.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[16-9]]></Default>
+      <WidgetConfig><![CDATA[
+        1-1:    %(key.msg.setting.imageRatio.1-1)|
+        4-3:    %(key.msg.setting.imageRatio.4-3)|
+        3-2:    %(key.msg.setting.imageRatio.3-2)|
+        16-9:   %(key.msg.setting.imageRatio.16-9)|
+        2-1:    %(key.msg.setting.imageRatio.2-1)|
+        2,35-1: %(key.msg.setting.imageRatio.235-1)|
+        3-1:    %(key.msg.setting.imageRatio.3-1)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageSeriesCss.default]]></IncludeName>
+      <PropertyName><![CDATA[imageSeriesCss]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageseries.css)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageseries.css.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[square-xs-6 square-lg-3]]></Default>
+      <WidgetConfig><![CDATA[
+        square-xs-6 square-lg-3:                        %(key.msg.setting.imageseries.css.xs6-lg3)|
+        square-xs-6 square-lg-4 square-xl-3:            %(key.msg.setting.imageseries.css.xs6-lg4-xl3)|
+        square-xs-6 square-md-4 square-lg-3:            %(key.msg.setting.imageseries.css.xs6-md4-lg3)|
+        square-xs-6 square-md-4 square-lg-3 square-xl-2:%(key.msg.setting.imageseries.css.xs6-md4-lg3-xl2)|
+        square-xs-6 square-md-4 square-xl-2:            %(key.msg.setting.imageseries.css.xs6-md4-xl2)|
+        square-md-6 square-lg-4 square-xl-3:            %(key.msg.setting.imageseries.css.md6-lg4-xl3)|
+        square-md-6 square-xl-4:                        %(key.msg.setting.imageseries.css.md6-xl4)|
+        square-lg-6:                                    %(key.msg.setting.imageseries.css.lg6)|
+        square-md-6:                                    %(key.msg.setting.imageseries.css.md6)|
+        square-xs-12:                                   %(key.msg.setting.imageseries.css.xs12)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[iconClass.iconbox]]></IncludeName>
+      <PropertyName><![CDATA[iconClass]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.iconClass)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.iconClass.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[info]]></Default>
+      <WidgetConfig><![CDATA[
+        thumbs-o-up:%(key.msg.icon.thumbs-up)|
+        info:%(key.msg.icon.info)|
+        heart:%(key.msg.icon.heart)|
+        lightbulb-o:%(key.msg.icon.lightbulb)|
+        key:%(key.msg.icon.key)|
+        bookmark:%(key.msg.icon.bookmark)|
+        globe:%(key.msg.icon.globe)|
+        bullhorn:%(key.msg.icon.megaphone)|
+        cloud:%(key.msg.icon.cloud)|
+        exclamation-circle:%(key.msg.icon.exclamation-circle)|
+        star:%(key.msg.icon.star)|
+        tag:%(key.msg.icon.tag)|
+        paper-plane:%(key.msg.icon.paper-plane)|
+        chevron-up:%(key.msg.icon.chevron)|
+        arrow-up:%(key.msg.icon.arrow)|
+        check:%(key.msg.icon.check)|
+        flash:%(key.msg.icon.flash)|
+        music:%(key.msg.icon.music)|
+        file-text-o:%(key.msg.icon.document)|
+        folder-o:%(key.msg.icon.folder)|
+        link:%(key.msg.icon.link)|
+        download:%(key.msg.icon.download)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[iconClass.linksequence]]></IncludeName>
+      <PropertyName><![CDATA[iconClass]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.iconClass)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.iconClass.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[caret-right]]></Default>
+      <WidgetConfig><![CDATA[
+        none:%(key.msg.icon.none)|
+        default:%(key.msg.icon.default-li)|
+        caret-right:%(key.msg.icon.caret)|
+        angle-right:%(key.msg.icon.angle)|
+        angle-double-right:%(key.msg.icon.angle-double)|
+        chevron-right:%(key.msg.icon.chevron)|
+        arrow-right:%(key.msg.icon.arrow)|
+        hand-o-right:%(key.msg.icon.hand)|
+        info:%(key.msg.icon.info)|
+        check:%(key.msg.icon.check)|
+        globe:%(key.msg.icon.globe)|
+        file-text-o:%(key.msg.icon.document)|
+        file-pdf-o:%(key.msg.icon.pdf)|
+        folder-o:%(key.msg.icon.folder)|
+        link:%(key.msg.icon.link)|
+        external-link:%(key.msg.icon.external-link)|
+        external-link-square:%(key.msg.icon.external-link-square)|
+        download:%(key.msg.icon.download)|
+        cloud-download:%(key.msg.icon.cloud-download)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[isTile.fixed.true]]></IncludeName>
+      <PropertyName><![CDATA[isTile]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
+      <PropertyName><![CDATA[fullOverlay]]></PropertyName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textOption.fixed.none]]></IncludeName>
+      <PropertyName><![CDATA[textOption]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[none]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.fixed.none]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[none]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.linkOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[button]]></Default>
+      <WidgetConfig><![CDATA[
+            button:         %(key.msg.setting.linkOption.button)|
+            button-full:    %(key.msg.setting.linkOption.button-full)|
+            text:           %(key.msg.setting.linkOption.text)|
+            none:           %(key.msg.setting.linkOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.tile]]></IncludeName>
+      <PropertyName><![CDATA[listEntryWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCss)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCss.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[teaser-tile tile-col col-md-6 col-lg-4 col-xl-3]]></Default>
+      <WidgetConfig><![CDATA[
+            teaser-tile tile-col col-6 col-md-4 col-lg-3 col-xl-2:  %(key.msg.setting.tileCss.xs6-md4-lg3-xl2)|
+            teaser-tile tile-col col-6 col-md-4 col-xl-2:           %(key.msg.setting.tileCss.xs6-md4-xl2)|
+            teaser-tile tile-col col-md-6 col-lg-4 col-xl-3:        %(key.msg.setting.tileCss.md6-lg4-xl3)|
+            teaser-tile tile-col col-md-6 col-xl-4:                 %(key.msg.setting.tileCss.md6-xl4)|
+            teaser-tile tile-col col-md-6 col-xl-3:                 %(key.msg.setting.tileCss.md6-xl3)|
+            teaser-tile tile-col col-md-6 col-lg-3:                 %(key.msg.setting.tileCss.md6-lg3)|
+            teaser-tile tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
+            teaser-tile tile-col col-md-6:                          %(key.msg.setting.tileCss.md6)|
+            teaser-tile tile-col col-12:                            %(key.msg.setting.tileCss.xs12)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.tile]]></IncludeName>
+      <PropertyName><![CDATA[listWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[row-tile tile-margin-15]]></Default>
+      <WidgetConfig><![CDATA[
+            row-tile tile-margin-0:   0|
+            row-tile tile-margin-2:   4|
+            row-tile tile-margin-5:   10|
+            row-tile tile-margin-10:  20|
+            row-tile tile-margin-15:  30
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.download]]></IncludeName>
+      <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.download.displayFormat)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.download.displayFormat.help)]]></Description>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[type-download-list dl-list-compact]]></Default>
+      <WidgetConfig><![CDATA[
+        download-list dl-list-compact:%(key.msg.setting.download.displayFormat.compact)|
+        download-list dl-list-elaborate:%(key.msg.setting.download.displayFormat.elaborate)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showFile.true]]></IncludeName>
+      <PropertyName><![CDATA[showFile]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.download.showFile)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.download.showFile.help)]]></Description>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.0]]></IncludeName>
+      <PropertyName><![CDATA[listEntryMinHeight]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[0]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+      <PropertyName><![CDATA[listEntryMinHeight]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[125]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[requiredListWrapper.group]]></IncludeName>
+      <PropertyName><![CDATA[requiredListWrapper]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[list-with-groups]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[requiredCssWrapper.textTile]]></IncludeName>
+      <PropertyName><![CDATA[requiredCssWrapper]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[animated-teaser effect-piece]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.masonry]]></IncludeName>
+      <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[masonry-list]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.accordion]]></IncludeName>
+      <PropertyName><![CDATA[listWrapper]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[accordion-items]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.accordion]]></IncludeName>
+      <PropertyName><![CDATA[listEntryWrapper]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[none]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listTag.accordion]]></IncludeName>
+      <PropertyName><![CDATA[listTag]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[div]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.imageTile]]></IncludeName>
+      <PropertyName><![CDATA[listWrapper]]></PropertyName>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[row-square square-m-20]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.imageTile]]></IncludeName>
+      <PropertyName><![CDATA[listEntryMinHeight]]></PropertyName>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[452-total]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.imageTile]]></IncludeName>
+      <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[square-col-list]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[itemsPerPage.static]]></IncludeName>
+      <PropertyName><![CDATA[itemsPerPage]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.itemsPerPage.static)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.itemsPerPage.static.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[6]]></Default>
+      <RuleRegex><![CDATA[([1-9]\d{0,3}){0,1}]]></RuleRegex>
+      <RuleType><![CDATA[error]]></RuleType>
+      <Error><![CDATA[%(key.msg.error.list.itemsPerPage.static)]]></Error>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[itemsPerPage.dynamic]]></IncludeName>
+      <PropertyName><![CDATA[itemsPerPage]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.itemsPerPage.dynamic)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.itemsPerPage.dynamic.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[6]]></Default>
+      <RuleRegex><![CDATA[[1-9]\d{0,3}(-[1-9]\d{0,3})*]]></RuleRegex>
+      <RuleType><![CDATA[error]]></RuleType>
+      <Error><![CDATA[%(key.msg.error.list.itemsPerPage.dynamic)]]></Error>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[appendSwitch.dynamic]]></IncludeName>
+      <PropertyName><![CDATA[appendSwitch]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.appendSwitch)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.appendSwitch.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[sm-xs]]></Default>
+      <WidgetConfig><![CDATA[
+              never:            %(key.msg.option.list.appendSwitch.never)|
+              xs:               %(key.msg.option.list.appendSwitch.xs)|
+              sm-xs:            %(key.msg.option.list.appendSwitch.sm)|
+              md-sm-xs:         %(key.msg.option.list.appendSwitch.md)|
+              md-sm-xs-lg:      %(key.msg.option.list.appendSwitch.lg)|
+              md-sm-xs-lg-xl:   %(key.msg.option.list.appendSwitch.always)|
+              disable:          %(key.msg.option.list.appendSwitch.disable)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listPaginationPosition.dynamic]]></IncludeName>
+      <PropertyName><![CDATA[listPaginationPosition]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.appendPaginationPosition)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.appendPaginationPosition.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[pagination-left]]></Default>
+      <WidgetConfig><![CDATA[
+              pagination-left:      %(key.msg.option.position.left)|
+              pagination-center:    %(key.msg.option.position.center)|
+              pagination-right:     %(key.msg.option.position.right)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[appendOption.dynamic]]></IncludeName>
+      <PropertyName><![CDATA[appendOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.appendOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.appendOption.help)]]></Description>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[clickonly]]></Default>
+      <WidgetConfig><![CDATA[
+              clickonly:  %(key.msg.option.list.append.clickonly)|
+              clickfirst: %(key.msg.option.list.append.clickfirst)|
+              noclick:    %(key.msg.option.list.append.noclick)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listButtonText.dynamic]]></IncludeName>
+      <PropertyName><![CDATA[listButtonText]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.appendButtonText)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.appendButtonText.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showsearch.filter]]></IncludeName>
+      <PropertyName><![CDATA[showsearch]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showSearchFilter)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showSearchFilter.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[true]]></Default>
+      <WidgetConfig><![CDATA[
+              true:           %(key.msg.option.show)|
+              false:          %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showarchive.filter]]></IncludeName>
+      <PropertyName><![CDATA[showarchive]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showCalendarFilter)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showCalendarFilter.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[opened]]></Default>
+      <WidgetConfig><![CDATA[
+              opened:          %(key.msg.option.show.unfolded)|
+              closed:          %(key.msg.option.show.folded)|
+              hidden:          %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showfolders.filter]]></IncludeName>
+      <PropertyName><![CDATA[showfolders]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showFolderFilter)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showFolderFilter.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[hidden]]></Default>
+      <WidgetConfig><![CDATA[
+              opened:          %(key.msg.option.show.unfolded)|
+              closed:          %(key.msg.option.show.folded)|
+              hidden:          %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showcategories.filter]]></IncludeName>
+      <PropertyName><![CDATA[showcategories]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showCategoryFilter)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showCategoryFilter.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[opened]]></Default>
+      <WidgetConfig><![CDATA[
+              opened:          %(key.msg.option.show.unfolded)|
+              closed:          %(key.msg.option.show.folded)|
+              hidden:          %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[combine.filter]]></IncludeName>
+      <PropertyName><![CDATA[combine]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.combineFilters)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.combineFilters.help)]]></Description>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headline.filter]]></IncludeName>
+      <PropertyName><![CDATA[headline]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.categoryFilterLabel)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.categoryFilterLabel.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[catdisplayoptions.filter]]></IncludeName>
+      <PropertyName><![CDATA[catdisplayoptions]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.categoryFilterShowPaths)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.categoryFilterShowPaths.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+              default:            %(key.msg.option.list.categories.allnopath)|
+              onlyleafs:          %(key.msg.option.list.categories.leafsnopath)|
+              fullpath:           %(key.msg.option.list.categories.allpath)|
+              onlyleafs,fullpath: %(key.msg.option.list.categories.leafspath)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[catfilters.filter]]></IncludeName>
+      <PropertyName><![CDATA[catfilters]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.categoryFilterSelection)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.categoryFilterSelection.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showsorttitle.true]]></IncludeName>
+      <PropertyName><![CDATA[showsorttitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showTitleSortoption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showTitleSortoption.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showsortdate.true]]></IncludeName>
+      <PropertyName><![CDATA[showsortdate]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showDateSortoption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showDateSortoption.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showfacetcategory.false]]></IncludeName>
+      <PropertyName><![CDATA[showfacetcategory]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showCategorySortoption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showCategorySortoption.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showsortorder.false]]></IncludeName>
+      <PropertyName><![CDATA[showsortorder]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showOrderSortoption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showOrderSortoption.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.contact]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+        none:                           %(key.msg.setting.effect.none)|
+        no-img:                         %(key.msg.setting.contact.noimage)|
+        effect-shadow:                  %(key.msg.setting.effect.shadow)|
+        effect-inset:                   %(key.msg.setting.effect.inset)|
+        effect-raise:                   %(key.msg.setting.effect.raise)|
+        effect-rotate:                  %(key.msg.setting.effect.rotate)|
+        effect-shadow effect-rotate:    %(key.msg.setting.effect.shadow-rotate)|
+        effect-inset effect-rotate:     %(key.msg.setting.effect.inset-rotate)|
+        effect-raise effect-rotate:     %(key.msg.setting.effect.raise-rotate)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.contact]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.linkOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[text]]></Default>
+      <WidgetConfig><![CDATA[
+        button:         %(key.msg.setting.linkOption.button)|
+        text:           %(key.msg.setting.linkOption.text)|
+        none:           %(key.msg.setting.linkOption.none)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[labels.contact]]></IncludeName>
+      <PropertyName><![CDATA[labels]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.labels)]]></DisplayName>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[label-text]]></Default>
+      <WidgetConfig><![CDATA[
+        label-min:%(key.msg.setting.contact.labels.min)|
+        label-text:%(key.msg.setting.contact.labels.text)|
+        label-icon:%(key.msg.setting.contact.labels.icons)|
+        label-text-label-icon:%(key.msg.setting.contact.labels.texticons)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showAddress.contact]]></IncludeName>
+      <PropertyName><![CDATA[showAddress]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showAddress)]]></DisplayName>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[always]]></Default>
+      <WidgetConfig><![CDATA[
+        always:%(key.msg.setting.contact.address.always)|
+        true:%(key.msg.setting.contact.address.true)|
+        false:%(key.msg.setting.contact.address.false)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
+      <PropertyName><![CDATA[compactLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.compactLayout)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.compactLayout.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
+      <PropertyName><![CDATA[showPosition]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showPosition)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
+      <PropertyName><![CDATA[showOrganization]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganization)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
+      <PropertyName><![CDATA[showDescription]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showPhone.contact]]></IncludeName>
+      <PropertyName><![CDATA[showPhone]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showPhone)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showWebsite.contact]]></IncludeName>
+      <PropertyName><![CDATA[showWebsite]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showWebsite)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showEmail.contact]]></IncludeName>
+      <PropertyName><![CDATA[showEmail]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showEmail)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showVcard.contact]]></IncludeName>
+      <PropertyName><![CDATA[showVcard]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showVcard)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[transition.slider]]></IncludeName>
+      <PropertyName><![CDATA[transition]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.transition)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.transition.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[swipe]]></Default>
+      <WidgetConfig><![CDATA[
+        swipe:      %(key.msg.setting.slider.transition.swipe)|
+        fade:       %(key.msg.setting.slider.transition.fade)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textDisplay.slider]]></IncludeName>
+      <PropertyName><![CDATA[textDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.textDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.textDisplay.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[text-below-on-xs]]></Default>
+      <WidgetConfig><![CDATA[
+        text-below-on-xs:     %(key.msg.setting.slider.textDisplay.belowOnXs)|
+        text-always-on-slide: %(key.msg.setting.slider.textDisplay.alwaysOnSlide)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textColorHead.slider]]></IncludeName>
+      <PropertyName><![CDATA[textColorHead]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.textColorHead)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.textColor.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[css]]></Default>
+      <WidgetConfig><![CDATA[
+        css:                %(key.msg.setting.slider.textColor.css)|
+        transparent:        %(key.msg.setting.slider.textColor.transparent)|
+        #aaa:               %(key.msg.setting.slider.textColor.lightGrey)|
+        #555:               %(key.msg.setting.slider.textColor.darkGrey)|
+        #000:               %(key.msg.setting.slider.textColor.black)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textColorSub.slider]]></IncludeName>
+      <PropertyName><![CDATA[textColorSub]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.textColorSub)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.textColor.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[css]]></Default>
+      <WidgetConfig><![CDATA[
+        css:                %(key.msg.setting.slider.textColor.css)|
+        transparent:        %(key.msg.setting.slider.textColor.transparent)|
+        #aaa:               %(key.msg.setting.slider.textColor.lightGrey)|
+        #555:               %(key.msg.setting.slider.textColor.darkGrey)|
+        #000:               %(key.msg.setting.slider.textColor.black)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visibleSlides.slider]]></IncludeName>
+      <PropertyName><![CDATA[visibleSlides]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.visibleSlides)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.visibleSlides.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[4-6-8-10]]></Default>
+      <WidgetConfig><![CDATA[
+        4-6-8-10-12:    %(key.msg.setting.slider.visibleSlides.4-6-8-10-12)|
+        3-4-6-8-10:     %(key.msg.setting.slider.visibleSlides.3-4-6-8-10)|
+        3-4-5-6-8:      %(key.msg.setting.slider.visibleSlides.3-4-5-6-8)|
+        2-3-4-5-6:      %(key.msg.setting.slider.visibleSlides.2-3-4-5-6)|
+        2-2-3-4-4:      %(key.msg.setting.slider.visibleSlides.2-3-3-4-4)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[slickType.slider.hero]]></IncludeName>
+      <PropertyName><![CDATA[slickType]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[hero]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[slickType.slider.logo]]></IncludeName>
+      <PropertyName><![CDATA[slickType]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[logo]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatioSmall.slider.hero]]></IncludeName>
+      <PropertyName><![CDATA[imageRatioSmall]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio.small)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.small.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[1-1]]></Default>
+      <WidgetConfig><![CDATA[
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatioSmall.slider.logo]]></IncludeName>
+      <PropertyName><![CDATA[imageRatioSmall]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[1-1]]></Default>
+      <WidgetConfig><![CDATA[
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatioLarge.slider.hero]]></IncludeName>
+      <PropertyName><![CDATA[imageRatioLarge]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio.large)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.large.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[2,35-1]]></Default>
+      <WidgetConfig><![CDATA[
+            none:   %(key.msg.setting.imageRatio.none)|
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.slider.logo]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[effect-remove-margin]]></Default>
+      <WidgetConfig><![CDATA[
+        none:                   %(key.msg.setting.effect.none)|
+        effect-remove-margin:   %(key.msg.setting.effect.raise)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linksequenceType.linksequence]]></IncludeName>
+      <PropertyName><![CDATA[linksequenceType]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linksequence.linksequenceType)]]></DisplayName>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[ls-bullets]]></Default>
+      <WidgetConfig><![CDATA[
+        ls-bullets:      %(key.msg.setting.linksequence.linksequenceType.bullets)|
+        ls-row:          %(key.msg.setting.linksequence.linksequenceType.row)|
+        ls-navigation:   %(key.msg.setting.linksequence.linksequenceType.navigation)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[theme.shariff]]></IncludeName>
+      <PropertyName><![CDATA[theme]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.shariff.theme)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.shariff.theme.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+        default:%(key.msg.setting.shariff.theme.grey)|
+        colored:%(key.msg.setting.shariff.theme.colored)|
+        themed:%(key.msg.setting.shariff.theme.themed)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[orientation.shariff]]></IncludeName>
+      <PropertyName><![CDATA[orientation]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.shariff.orientation)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.shariff.orientation.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+        default:            %(key.msg.setting.shariff.orientation.horizontal)|
+        stacked:            %(key.msg.setting.shariff.orientation.vertical)|
+        stacked-sm:         %(key.msg.setting.shariff.orientation.vertical-sm)|
+        stacked-md:         %(key.msg.setting.shariff.orientation.vertical-md)|
+        stacked-lg:         %(key.msg.setting.shariff.orientation.vertical-lg)|
+        stacked-xl:         %(key.msg.setting.shariff.orientation.vertical-xl)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[verbose.shariff]]></IncludeName>
+      <PropertyName><![CDATA[verbose]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.shariff.text)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.shariff.text.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+        default:            %(key.msg.setting.shariff.text.notext)|
+        verbose:            %(key.msg.setting.shariff.text.verbose)|
+        verbose-sm:         %(key.msg.setting.shariff.text.verbose-sm)|
+        verbose-md:         %(key.msg.setting.shariff.text.verbose-md)|
+        verbose-lg:         %(key.msg.setting.shariff.text.verbose-lg)|
+        verbose-xl:         %(key.msg.setting.shariff.text.verbose-xl)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[displayOption.sitemap]]></IncludeName>
+      <PropertyName><![CDATA[displayOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.sitemap.displayOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.sitemap.displayOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[closed]]></Default>
+      <WidgetConfig><![CDATA[
+            closed:             %(key.msg.setting.sitemap.displayOption.closed)|
+            open-first:         %(key.msg.setting.sitemap.displayOption.openFirst)|
+            open-all:           %(key.msg.setting.sitemap.displayOption.openAll)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cols.sitemap]]></IncludeName>
+      <PropertyName><![CDATA[cols]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.sitemap.cols)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.sitemap.cols.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[4]]></Default>
+      <WidgetConfig><![CDATA[12:1|6:2|4:3|3:4]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[breadcrumbsIncludeHidden.navigation]]></IncludeName>
+      <PropertyName><![CDATA[breadcrumbsIncludeHidden]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.nav.breadcrumbsIncludeHidden)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.nav.breadcrumbsIncludeHidden.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[breadcrumbsFromRoot.navigation]]></IncludeName>
+      <PropertyName><![CDATA[breadcrumbsFromRoot]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.nav.breadcrumbsFromRoot)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.nav.breadcrumbsFromRoot.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[detailContainer.layout]]></IncludeName>
+      <PropertyName><![CDATA[detailContainer]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.detailContainer)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.detailContainer.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:       %(key.msg.setting.detailContainer.none)|
+            maincol:    %(key.msg.setting.detailContainer.maincol)|
+            sidecol:    %(key.msg.setting.detailContainer.sidecol)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[useFlex.layout]]></IncludeName>
+      <PropertyName><![CDATA[useFlex]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.useFlex)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.useFlex.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:useFlex)]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[tileCss.layout]]></IncludeName>
+      <PropertyName><![CDATA[tileCss]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCss)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCss.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(stringtemplate:isTile)]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                                       %(key.msg.setting.tileCss.none)|
+            tile-col col-6 col-md-4 col-lg-3 col-xl-2:  %(key.msg.setting.tileCss.xs6-md4-lg3-xl2)|
+            tile-col col-6 col-md-4 col-xl-2:           %(key.msg.setting.tileCss.xs6-md4-xl2)|
+            tile-col col-md-6 col-lg-4 col-xl-3:        %(key.msg.setting.tileCss.md6-lg4-xl3)|
+            tile-col col-md-6 col-xl-4:                 %(key.msg.setting.tileCss.md6-xl4)|
+            tile-col col-md-6 col-xl-3:                 %(key.msg.setting.tileCss.md6-xl3)|
+            tile-col col-md-6 col-lg-3:                 %(key.msg.setting.tileCss.md6-lg3)|
+            tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
+            tile-col col-md-6:                          %(key.msg.setting.tileCss.md6)|
+            tile-col col-12:                            %(key.msg.setting.tileCss.xs12)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[tileMargin.layout]]></IncludeName>
+      <PropertyName><![CDATA[tileMargin]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(stringtemplate:isTile)]]></Widget>
+      <Default><![CDATA[tile-margin-0]]></Default>
+      <WidgetConfig><![CDATA[
+            tile-margin-0:   0|
+            tile-margin-2:   4|
+            tile-margin-5:   10|
+            tile-margin-10:  20|
+            tile-margin-15:  30
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headerPosition.layout]]></IncludeName>
+      <PropertyName><![CDATA[headerPosition]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.position)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.position.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:useFixedHeader)]]></Widget>
+      <Default><![CDATA[css]]></Default>
+      <WidgetConfig><![CDATA[
+        css:        %(key.msg.setting.header.position.css)|
+        upscroll:   %(key.msg.setting.header.position.upscroll)|
+        fixed:      %(key.msg.setting.header.position.fixed)|
+        static:     %(key.msg.setting.header.position.static)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showBreadcrumbs.layout]]></IncludeName>
+      <PropertyName><![CDATA[showBreadcrumbs]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.nav.showBreadcrumbs)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.nav.showBreadcrumbs.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:useBreadcrumbs)]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bgImage.layout]]></IncludeName>
+      <PropertyName><![CDATA[bgImage]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.bgImage)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.bgImage.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:needBgImage)]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bgColor.layout]]></IncludeName>
+      <PropertyName><![CDATA[bgColor]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.bgColor.area)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.bgColor.area.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:needBgColor)]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                                       %(key.msg.setting.bgColor.area.none)|
+            bg-grey:                                    %(key.msg.setting.bgColor.area.grey)|
+            bg-theme:                                   %(key.msg.setting.bgColor.area.theme)|
+            bg-switch:                                  %(key.msg.setting.bgColor.area.switching)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[loginproject.login]]></IncludeName>
+      <PropertyName><![CDATA[loginproject]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.login.project)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.login.project.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[loginou.login]]></IncludeName>
+      <PropertyName><![CDATA[loginou]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.login.ou)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.login.ou.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[disqusSite.disqus]]></IncludeName>
+      <PropertyName><![CDATA[disqusSite]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.disqus.disqusSite)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.disqus.disqusSite.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[clickToLoad.disqus]]></IncludeName>
+      <PropertyName><![CDATA[clickToLoad]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.disqus.clickToLoad)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.disqus.clickToLoad.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[anchor.anchor]]></IncludeName>
+      <PropertyName><![CDATA[anchor]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.anchor)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.anchor.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[searchscope.search]]></IncludeName>
+      <PropertyName><![CDATA[searchscope]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.scope)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.scope.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[site]]></Default>
+      <WidgetConfig><![CDATA[site:%(key.msg.setting.search.scope.site)|subsite:%(key.msg.setting.search.scope.subsite)]]></WidgetConfig>
+    </Setting>
+  </SettingsConfig>
+</SettingsConfigs>

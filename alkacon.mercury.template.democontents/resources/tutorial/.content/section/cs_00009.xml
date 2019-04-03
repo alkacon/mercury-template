@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Working with the sitemap]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>To create new pages or change the navigation structure of existing pages OpenCms offers the <em><strong>Sitemap</strong></em> editor. To open the sitemap, click on the <em><strong>Quick launch</strong></em> (rocket)&nbsp;icon located on the right of the toolbar.</p>
+<p>In the Sitemap, select <em><strong>Add pages</strong></em> to get a list of available page templates. In the tutorial there is only one: <strong>Mercury: Left Navigation</strong>. But, there can be more - as you see when opening the sitemap in the Mercury Demo.</p>
+<p>Drag the template (at the "Move to page" icon) from the list and drop it anywhere in the sitemap tree. You have just created a new page.</p>
+<p>To edit the title of the page that is also used for Navigation, just click on the page name in the sitemap.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

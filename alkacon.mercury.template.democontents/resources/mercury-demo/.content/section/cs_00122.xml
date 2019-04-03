@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[The List element]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The&nbsp;<em>List&nbsp;</em>element enables you to show&nbsp;automatically&nbsp;generated&nbsp;lists of content elements on a page. In the list configuration, you must&nbsp;set the list&nbsp;type&nbsp;and&nbsp;the source folder for the list elements. If required, you can also set&nbsp;additional&nbsp;filters or search criteria.</p>
+<p>Often a list displays only a short 'teaser' form of the result element. The&nbsp;full content of the result&nbsp;elements in this case is&nbsp;displayed on a&nbsp;<em>Detail page</em>. The&nbsp;detail page must be configured&nbsp;in the sitemap.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

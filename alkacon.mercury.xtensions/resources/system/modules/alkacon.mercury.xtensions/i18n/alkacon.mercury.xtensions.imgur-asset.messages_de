@@ -1,0 +1,8 @@
+msg.page.imgur-section.link=Auf Imgur anzeigen
+msg.setting.imgur-section.usetitle=Benutze Imgur Titel
+type.m-imgur-asset.description=Ein Bild, welches über den Imgur Online-Dienst geladen wird.
+type.m-imgur-asset.name=Asset Connection > Imgur
+type.m-imgur-asset.formatter.default=Standard Asset Connection > Imgur
+label.ImgurSection.Item=Imgur Bild
+label.ImgurSection.Text=Text
+type.m-imgur-asset.title=Neue Asset Connection > Imgur

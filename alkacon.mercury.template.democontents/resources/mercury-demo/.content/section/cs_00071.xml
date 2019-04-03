@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Mehr Informationen]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://documentation.opencms.org/central/]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/de/products/]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p><a href="%(link0)">OpenCms Dokumentation</a><br />Tutorials and Anleitungen für OpenCms.</p>
+<p><a href="%(link1)">OpenCms Leistungen von Alkacon Software</a><br />Wir von Alkacon sind voll auf OpenCms spezialisiert und bieten unseren Kunden Service, Support und Zusatzprodukte für OpenCms an.</p>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[More information]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://documentation.opencms.org/central/]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/en/products/]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p><a href="%(link0)">OpenCms Documentation Central</a><br />Tutorials and HowTos for OpenCms.</p>
+<p><a href="%(link1)">OpenCms Services by Alkacon Software</a><br />Alkacon Software's focus area is to develop OpenCms extensions and provide professional support for OpenCms projects.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

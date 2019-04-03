@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MapData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/map.xsd">
+  <Map language="en">
+    <Title><![CDATA[Map with multiple groups]]></Title>
+    <GalleryTitle><![CDATA[Map with multiple groups]]></GalleryTitle>
+    <MapCoord>
+      <Caption><![CDATA[Cologne Cathedral]]></Caption>
+      <Address><![CDATA[Domkloster 4
+50667 Köln]]></Address>
+      <MarkerGroup><![CDATA[C]]></MarkerGroup>
+      <Coord><![CDATA[{"lat":50.94127839999999,"lng":6.958281400000033,"zoom":14,"type":"roadmap","mode":"dynamic","address":"Cologne Cathedral, Domkloster 4, 50667 Köln, Germany"}]]></Coord>
+    </MapCoord>
+    <MapCoord>
+      <Caption><![CDATA[KOMED]]></Caption>
+      <Address><![CDATA[Im Mediapark 6C
+50670 Köln]]></Address>
+      <MarkerGroup><![CDATA[B]]></MarkerGroup>
+      <Coord><![CDATA[{"lat":50.94851,"lng":6.94417,"zoom":14,"type":"roadmap","mode":"dynamic","address":"Im Mediapark 6Z, 50670 Köln, Germany","height":0,"width":0}]]></Coord>
+    </MapCoord>
+  </Map>
+</MapData>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+  <Flexible language="en">
+    <Title><![CDATA[CSS Color Classes]]></Title>
+    <Code name="Code0">
+      <links/>
+      <content><![CDATA[<!--
+
+Visualization of all available color options.
+Output is created from JavaScript using the color coded compiled into the theme.
+HTML for the boxes is using Mercury tiles.
+
+-->
+<div id="coloroptions" class="row-tile tile-margin-2 template-info sample reduced-colors">
+<div class="tile-col col-md-6 col-lg-4 col-xl-3">
+
+<div class="bo-1 bo-grey color-$(name)">
+<div class="lead">color-$(name)</div>
+<button class="btn">Button in $(value)</button>
+</div>
+
+</div>
+</div>]]></content>
+    </Code>
+  </Flexible>
+</FlexibleData>

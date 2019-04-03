@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MapData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/map.xsd">
+  <Map language="en">
+    <Title><![CDATA[Location of the property]]></Title>
+    <GalleryTitle><![CDATA[ETH Zürich]]></GalleryTitle>
+    <MapCoord>
+      <Caption><![CDATA[My dream house]]></Caption>
+      <Coord><![CDATA[{"lat":47.3763166,"lng":8.5454812,"zoom":14,"type":"roadmap","mode":"dynamic","address":"ETH Zürich"}]]></Coord>
+    </MapCoord>
+  </Map>
+</MapData>

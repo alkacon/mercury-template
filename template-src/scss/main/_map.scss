@@ -1,0 +1,149 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _map.scss
+ */
+
+.type-map {
+
+    .mapbuttons {
+        margin-top: 15px;
+
+        .btn {
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+    }
+
+    .presized {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+
+        .mapwindow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include round-corners($map-border-radius, true);
+
+            &.element-hide,
+            &.placeholder {
+                background-color: $grey-light;
+
+                &::after {
+                    position: absolute;
+                    display: block;
+                    bottom: 0;
+                    left: 50%;
+                    top: 50%;
+                    width: 50px;
+                    height: 50px;
+                    font-family: FontAwesome;
+                    font-weight: normal;
+                    font-size: 40px;
+                    content: "\f279";
+                    color: transparentize($black, 0.5);
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .map-marker {
+        color: $map-text-color;
+        font-family: $font-family-base;
+        font-size: $map-text-size;
+
+        .markhead {
+            font-family: $font-family-headings;
+            font-size: $map-header-size;
+            font-weight: normal;
+            margin-bottom: $default-margin-verysmall;
+        }
+
+        .marktxt {
+            line-height: 1.2;
+        }
+
+        .markroute {
+            .head {
+                margin-top: 5px;
+                font-weight: normal;
+            }
+            .btn {
+                margin-top: 5px;
+            }
+            .form-control {
+                margin-top: 5px;
+                height: 27px;
+                padding: 3px 6px;
+            }
+        }
+    }
+}
+
+.map-osm {
+    .mapboxgl-map {
+        color: $map-text-color;
+        font-family: $font-family-base;
+        font-size: 1.0rem;
+        font-weight: $font-weight-base;
+        line-height: 1.2;
+    }
+
+    .mapboxgl-marker {
+        cursor: pointer;
+    }
+
+    .mapboxgl-popup-content {
+        border-radius: $map-border-radius;
+        padding: 10px 20px 10px 10px;
+    }
+
+    .mapboxgl-popup-close-button {
+        font-size: 20px;
+        &:hover {
+            background-color: $white;
+            opacity: 0.8;
+            color: $main-theme;
+        }
+    }
+}
+
+// extending the theme JSON object with the map colors
+$themeMAP: ', "map-color":[';
+@each $color in $map-colors {
+    $themeMAP: $themeMAP + '"' + $color + '",'
+}
+// ugly but quick: add grey as last color, so I don't have to find out
+// about the last index to avoid trailing comma ","
+$themeMAP: $themeMAP + '"' + $grey + '"]';
+$themeJSON: $themeJSON + $themeMAP;
+
+// styled maps for google maps (from https://snazzymaps.com)
+// this is optional, in case the themeStyleMAP JSON is empty, the default map theme will be used
+// use https://www.freeformatter.com/json-formatter.html to compact the JSON to one line
+$themeStyleMAP: ', "map-style":'+
+'[{"featureType":"all","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"' + $map-text-color + '"}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"lightness":"75"},{"gamma":"1.00"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#d8ded8"},{"saturation":"-30"},{"lightness":"0"},{"gamma":"1"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#d8ded8"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#fafafa"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#a5b1be"}]}]';
+
+$themeJSON: $themeJSON + $themeStyleMAP;
+

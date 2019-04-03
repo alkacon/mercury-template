@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<export>
+	<info>
+		<infoproject>Offline</infoproject>
+		<export_version>10</export_version>
+	</info>
+	<module>
+		<name>alkacon.mercury.webform</name>
+		<nicename><![CDATA[Mercury template: Webform]]></nicename>
+		<group>Mercury template</group>
+		<class>alkacon.mercury.webform.CmsWebformModuleAction</class>
+		<import-site>/</import-site>
+		<export-mode name="reduced"/>
+		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
+		<version>10.9.9.2</version>
+		<autoincrement>true</autoincrement>
+		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
+		<authoremail/>
+		<datecreated/>
+		<userinstalled/>
+		<dateinstalled/>
+		<dependencies>
+			<dependency name="alkacon.mercury.template" version="10.9.9"/>
+		</dependencies>
+		<exportpoints>
+			<exportpoint uri="/system/modules/alkacon.mercury.webform/classes/" destination="WEB-INF/classes/"/>
+			<exportpoint uri="/system/modules/alkacon.mercury.webform/tags/" destination="WEB-INF/tags/mercury/"/>
+			<exportpoint uri="/system/modules/alkacon.mercury.webform/captchabackgrounds/" destination="resources/captchabackgrounds/mercuryform/"/>
+		</exportpoints>
+		<resources>
+			<resource uri="/system/modules/alkacon.mercury.webform/"/>
+		</resources>
+		<excluderesources/>
+		<parameters>
+			<param name="uploadfolder">/system/shared/webform</param>
+			<param name="uploadproject">Offline</param>
+			<param name="uploadvfs">true</param>
+			<param name="usergroup">Users</param>
+		</parameters>
+		<resourcetypes>
+			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-webform" id="8600">
+				<param name="schema">/system/modules/alkacon.mercury.webform/schemas/form.xsd</param>
+			</type>
+			<type class="org.opencms.file.types.CmsResourceTypeLocaleIndependentXmlContent" name="m-webform-data" id="8601">
+				<properties>
+					<property>
+						<name>locale-available</name>
+						<value><![CDATA[en]]></value>
+						<value type="shared"><![CDATA[en]]></value>
+					</property>
+					<property>
+						<name>locale</name>
+						<value><![CDATA[en]]></value>
+						<value type="shared"><![CDATA[en]]></value>
+					</property>
+				</properties>
+				<param name="schema">/system/modules/alkacon.mercury.webform/schemas/formdata.xsd</param>
+			</type>
+		</resourcetypes>
+		<explorertypes>
+			<explorertype name="m-webform-data" key="type.m-webform-data.name" smalliconstyle="oc-icon-16-default" bigiconstyle="oc-icon-24-default" reference="xmlcontent">
+				<newresource noncreatable="false" order="120" autosetnavigation="false" autosettitle="false" info="type.m-webform-data.description" key="type.m-webform-data.title"/>
+			</explorertype>
+			<explorertype name="m-webform" key="type.m-webform.name" smalliconstyle="m-icon-16-webform" bigiconstyle="m-icon-24-webform" reference="xmlcontent">
+				<newresource noncreatable="false" order="110" autosetnavigation="false" autosettitle="false" info="type.m-webform.description" key="type.m-webform.title"/>
+			</explorertype>
+		</explorertypes>
+	</module>
+	<files>
+		<file>
+			<destination>system</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/modules</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform</destination>
+			<type>folder</type>
+			<uuidstructure>c9180905-1b14-4f89-bd41-27645dc45860</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:43:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/.config</source>
+			<destination>system/modules/alkacon.mercury.webform/.config</destination>
+			<type>module_config</type>
+			<uuidstructure>9f79c665-7af4-44c0-926d-538c10c05a2f</uuidstructure>
+			<uuidresource>807276c9-6b03-4d53-81a4-8d4a4d4eaf22</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/captcha</destination>
+			<type>folder</type>
+			<uuidstructure>eeb65706-217e-4b88-a095-4d69c7dab231</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Configuration for captcha fields]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol>
+				<accessentry>
+					<uuidprincipal>ALL_OTHERS</uuidprincipal>
+					<flags>134</flags>
+					<permissionset>
+						<allowed>1</allowed>
+						<denied>0</denied>
+					</permissionset>
+				</accessentry>
+			</accesscontrol>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captcha/alkacon-dict-de.captchapreset</source>
+			<destination>system/modules/alkacon.mercury.webform/captcha/alkacon-dict-de.captchapreset</destination>
+			<type>xmlcontent</type>
+			<uuidstructure>7a36e355-705e-4f7f-8955-7d7abbd01cf9</uuidstructure>
+			<uuidresource>f12c2bb0-eede-45ef-b298-7c4d4a9368c5</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Light - German words]]></value>
+				</property>
+				<property>
+					<name>collector.priority</name>
+					<value><![CDATA[2]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captcha/alkacon-dict-en.captchapreset</source>
+			<destination>system/modules/alkacon.mercury.webform/captcha/alkacon-dict-en.captchapreset</destination>
+			<type>xmlcontent</type>
+			<uuidstructure>eb596e69-7f3d-4313-a680-319d0338e961</uuidstructure>
+			<uuidresource>360ba790-e2e1-4194-9bcf-0cafff4c54fd</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Light - English words]]></value>
+				</property>
+				<property>
+					<name>collector.priority</name>
+					<value><![CDATA[2]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captcha/math.captchapreset</source>
+			<destination>system/modules/alkacon.mercury.webform/captcha/math.captchapreset</destination>
+			<type>xmlcontent</type>
+			<uuidstructure>f16752db-207d-470e-bdb4-6c91354a987f</uuidstructure>
+			<uuidresource>3f450430-7f3d-4734-9c82-e4afac8c5a19</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Math captcha - User has to solve a simple Math task]]></value>
+				</property>
+				<property>
+					<name>collector.priority</name>
+					<value><![CDATA[9]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captcha/medium.captchapreset</source>
+			<destination>system/modules/alkacon.mercury.webform/captcha/medium.captchapreset</destination>
+			<type>xmlcontent</type>
+			<uuidstructure>0775c0fe-b789-4ccd-9e4c-db3198256992</uuidstructure>
+			<uuidresource>e2c7bf31-b3b3-4b1c-94eb-2ec64701cb13</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Medium - Random letters]]></value>
+				</property>
+				<property>
+					<name>collector.priority</name>
+					<value><![CDATA[3]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captcha/strong.captchapreset</source>
+			<destination>system/modules/alkacon.mercury.webform/captcha/strong.captchapreset</destination>
+			<type>xmlcontent</type>
+			<uuidstructure>3eb741f0-83a6-49c1-9e40-7773d86cae6f</uuidstructure>
+			<uuidresource>24e9f69e-730d-47f2-8865-91566b5601b9</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Strong - Random letters]]></value>
+				</property>
+				<property>
+					<name>collector.priority</name>
+					<value><![CDATA[4]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds</destination>
+			<type>folder</type>
+			<uuidstructure>bb93a8cf-97af-4ec1-9613-95e53684cd9f</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background1.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background1.jpg</destination>
+			<type>image</type>
+			<uuidstructure>7f9e2952-379d-4252-bea2-4a487f8e4f22</uuidstructure>
+			<uuidresource>911c8c57-d64a-45b6-a220-1ee220ef8d34</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Distortion background 1]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:200,h:35]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background2.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background2.jpg</destination>
+			<type>image</type>
+			<uuidstructure>8e4e4d88-40c7-440d-be06-ac2c9434a6df</uuidstructure>
+			<uuidresource>2431ddb4-7877-4d94-bd5a-be8a432c80a5</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Distortion background 2]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:200,h:35]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background3.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background3.jpg</destination>
+			<type>image</type>
+			<uuidstructure>e22a7d88-6860-4b2b-a362-39da2fcf240e</uuidstructure>
+			<uuidresource>a60f8259-96e6-4eb2-ac0e-c8f120e4d7e6</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Distortion background 3]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:200,h:35]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background4.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background4.jpg</destination>
+			<type>image</type>
+			<uuidstructure>d10645f0-5fa5-49a6-80aa-0aa987aac5de</uuidstructure>
+			<uuidresource>5bb2a18d-821a-4741-af7d-d90178ff4f12</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Distortion background 4]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:200,h:35]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background5.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background5.jpg</destination>
+			<type>image</type>
+			<uuidstructure>cfd0b74c-b010-4803-b909-4554b05399dd</uuidstructure>
+			<uuidresource>08c01c5e-8b8f-45ba-b585-4c02459407af</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Distortion background 5]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:200,h:35]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background6.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background6.jpg</destination>
+			<type>image</type>
+			<uuidstructure>e2ca5604-dd90-4e56-ad15-2e4cb3774eb5</uuidstructure>
+			<uuidresource>207b7f54-34c6-4e55-8ed0-3ac338e0993c</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Grey leaf]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:149,h:271]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background7.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background7.jpg</destination>
+			<type>image</type>
+			<uuidstructure>25412574-f611-4d69-92d9-d8ebee3bb797</uuidstructure>
+			<uuidresource>8c238236-a1d6-446e-a039-58693f49f673</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Green leaf]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:180,h:209]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/captchabackgrounds/background8.jpg</source>
+			<destination>system/modules/alkacon.mercury.webform/captchabackgrounds/background8.jpg</destination>
+			<type>image</type>
+			<uuidstructure>87dbd594-09e5-4d54-8c51-da6d59af1f00</uuidstructure>
+			<uuidresource>4e293ca1-7f74-4a16-9531-43aeaf32af97</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Fractal raindrop small]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:328,h:499]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/classes</destination>
+			<type>folder</type>
+			<uuidstructure>f73b6bf2-195f-4c81-9b24-f566b3d2efe4</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/classes/alkacon</destination>
+			<type>folder</type>
+			<uuidstructure>da643e60-c216-4804-8682-18d85737d8bf</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:47:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/classes/alkacon/mercury</destination>
+			<type>folder</type>
+			<uuidstructure>c980b583-c2d8-42a1-9a15-10d83aab0d3d</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:47:24 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/classes/alkacon/mercury/webform</destination>
+			<type>folder</type>
+			<uuidstructure>1657a90f-e9a1-417d-9034-a03d0ed85348</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:47:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/classes/alkacon/mercury/webform/dict-de.properties</source>
+			<destination>system/modules/alkacon.mercury.webform/classes/alkacon/mercury/webform/dict-de.properties</destination>
+			<type>plain</type>
+			<uuidstructure>cc5998f4-0bac-46ad-99b3-5d4764eae7dc</uuidstructure>
+			<uuidresource>cdab51d1-36e1-40f2-abc6-d1bb5558ba1a</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/classes/alkacon/mercury/webform/dict-en.properties</source>
+			<destination>system/modules/alkacon.mercury.webform/classes/alkacon/mercury/webform/dict-en.properties</destination>
+			<type>plain</type>
+			<uuidstructure>1c797b96-e9a8-482f-a2a3-89662083ab1f</uuidstructure>
+			<uuidresource>29ffd551-1a11-449f-abb8-0b5cecc271a4</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/elements</destination>
+			<type>folder</type>
+			<uuidstructure>61cdca47-a480-414f-ad3b-372cb57d2a18</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/elements/captcha.jsp</source>
+			<destination>system/modules/alkacon.mercury.webform/elements/captcha.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>daaa75e9-44db-40d2-9c90-91c573ee9f43</uuidstructure>
+			<uuidresource>6aba7689-3fb4-4213-bdf4-f24866728a3d</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Renders captcha images]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[never]]></value>
+				</property>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/elements/formdata.csv</source>
+			<destination>system/modules/alkacon.mercury.webform/elements/formdata.csv</destination>
+			<type>jsp</type>
+			<uuidstructure>0ac17f85-911c-43c9-81e0-96da44a819a8</uuidstructure>
+			<uuidresource>b56a0bcf-3c57-4b01-98d3-f063fbb01056</uuidresource>
+			<datecreated>Wed, 20 Feb 2019 16:01:17 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Exports submission data of webforms]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[bypass]]></value>
+				</property>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[utf-8]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/elements/keepsession.jsp</source>
+			<destination>system/modules/alkacon.mercury.webform/elements/keepsession.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>c33b70c2-f353-4303-9f31-dc63e82a0120</uuidstructure>
+			<uuidresource>88d5cfcc-ff58-4925-90bf-470feb424bd4</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Trigger JSP to keep the session (optional)]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/i18n</destination>
+			<type>folder</type>
+			<uuidstructure>137f5d72-d285-4d20-9948-e1733fe2c387</uuidstructure>
+			<datecreated>Wed, 09 Jan 2019 10:10:06 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/i18n/alkacon.mercury.webform.messages_de</source>
+			<destination>system/modules/alkacon.mercury.webform/i18n/alkacon.mercury.webform.messages_de</destination>
+			<type>propertyvfsbundle</type>
+			<uuidstructure>f7834053-e4c7-4ce6-8fa6-3bbf1cf4ca19</uuidstructure>
+			<uuidresource>6031f636-6591-4374-8e41-1868b09bebd6</uuidresource>
+			<datecreated>Wed, 09 Jan 2019 10:18:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property type="shared">
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/i18n/alkacon.mercury.webform.messages_en</source>
+			<destination>system/modules/alkacon.mercury.webform/i18n/alkacon.mercury.webform.messages_en</destination>
+			<type>propertyvfsbundle</type>
+			<uuidstructure>e5c56845-bb84-49ac-acf6-4b675d678b8e</uuidstructure>
+			<uuidresource>fd76106b-92b0-47ce-ab4c-9b137ef81aad</uuidresource>
+			<datecreated>Wed, 09 Jan 2019 10:18:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property type="shared">
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/resources</destination>
+			<type>folder</type>
+			<uuidstructure>16c6f2a4-c0b2-4b4a-bc99-b5c69e3f7444</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/resources/formtemplates</destination>
+			<type>folder</type>
+			<uuidstructure>8b790245-67d1-4f76-a18f-f6dbe0a07bb8</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/resources/formtemplates/default.st</source>
+			<destination>system/modules/alkacon.mercury.webform/resources/formtemplates/default.st</destination>
+			<type>plain</type>
+			<uuidstructure>8822be37-dff9-4836-b829-13c547718a9d</uuidstructure>
+			<uuidresource>65843aa8-92f5-4e98-899b-b11ea0486f9a</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Default form templates]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/resources/formtemplates/error.st</source>
+			<destination>system/modules/alkacon.mercury.webform/resources/formtemplates/error.st</destination>
+			<type>plain</type>
+			<uuidstructure>fb4c2beb-751e-49e4-955d-721b9a7f79af</uuidstructure>
+			<uuidresource>58f9286d-809e-496a-9b55-a42178847cd7</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Error template]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/resources/js</destination>
+			<type>folder</type>
+			<uuidstructure>c922afc9-3912-4f35-8510-631ae0dc5214</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/resources/js/dateformat.js</source>
+			<destination>system/modules/alkacon.mercury.webform/resources/js/dateformat.js</destination>
+			<type>plain</type>
+			<uuidstructure>41389b0e-829a-4f68-ac20-f11ee08ccf9a</uuidstructure>
+			<uuidresource>8fd68173-f29a-434d-9ce7-d60e555bbc12</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[JS to format a date]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/resources/js/keepsession.js</source>
+			<destination>system/modules/alkacon.mercury.webform/resources/js/keepsession.js</destination>
+			<type>plain</type>
+			<uuidstructure>a597ebc9-a41f-4de4-92ca-de2cb96fa66b</uuidstructure>
+			<uuidresource>77bae956-4ceb-407c-9065-049136935787</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[JS to send a request for session keeping]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/resources/js/subfields.js</source>
+			<destination>system/modules/alkacon.mercury.webform/resources/js/subfields.js</destination>
+			<type>plain</type>
+			<uuidstructure>78b9dc3b-5f77-4b21-b5c5-9f805bdfbc0a</uuidstructure>
+			<uuidresource>7014a901-a43f-4f57-b58c-12cfe091d598</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[JS for sub field functionality]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/schemas</destination>
+			<type>folder</type>
+			<uuidstructure>ce283f51-61e3-476e-a39d-b396a89c7b2b</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/captchapreset.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/captchapreset.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>61da94c4-8ea8-4a76-9abf-c4280ff22557</uuidstructure>
+			<uuidresource>5b8e411e-2d7c-48c3-91a5-3418d46ef1f8</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for captcha image presets]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/form.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/form.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>309a9baf-82a1-4a95-9cef-7e1427eb5766</uuidstructure>
+			<uuidresource>2072d717-065e-4dff-b40d-8ef5c9ebe72e</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for online forms]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/formdata.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/formdata.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>7ec2ea9c-0fd3-42ab-9f4c-5c4fb37267f7</uuidstructure>
+			<uuidresource>91ebb359-73b7-49b6-8fab-9956493f23bc</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for online forms]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested</destination>
+			<type>folder</type>
+			<uuidstructure>1a4f7cda-12fc-4503-99ed-4fc2a44e2a68</uuidstructure>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/dbconfig.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/dbconfig.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>93aacf91-b396-490c-a7ee-c5ecfc4c1874</uuidstructure>
+			<uuidresource>16de37dc-68a4-4a91-a588-9b73919e5d05</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/inputfield.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/inputfield.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>b2b16672-01be-4423-a5f1-83d2c35e1d25</uuidstructure>
+			<uuidresource>e0efc58c-de9b-4776-91ab-d8281a0c0ade</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for a form input field]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/keyvaluepair.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/keyvaluepair.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>0cd93e1c-2038-46ae-a0d2-f928aac08154</uuidstructure>
+			<uuidresource>282c53dd-f418-453e-ae83-1093ad668c39</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional sub field]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalconfig.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalconfig.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>acdfa14c-273c-496b-a02f-23a49857eb92</uuidstructure>
+			<uuidresource>d64fc14c-b622-4254-9ef4-7438270fd40f</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional configurations]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalconfirmation.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalconfirmation.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>a56ecf08-b48b-49ff-a4f8-bf66889b2064</uuidstructure>
+			<uuidresource>5727bfe4-7f86-4f42-b00d-56e66127e212</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional confirmation email]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalexpiration.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalexpiration.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>2dc8d1d5-437d-4324-ab6d-a30ab03c09ae</uuidstructure>
+			<uuidresource>aac8ad27-a6d6-482d-a885-7de193949baa</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional expiration]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalfieldtext.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalfieldtext.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>d1b3f7d3-dd45-4cd0-bb5e-9fd0b7ed5916</uuidstructure>
+			<uuidresource>112dfca3-f792-454c-aa96-4b87615ae312</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional field texts]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalformcaptcha.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalformcaptcha.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>60101a99-374c-441c-9cf1-872462c4158b</uuidstructure>
+			<uuidresource>5e6e0dfa-05e9-4db0-b4b5-6e9c3599794e</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional captcha images]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalrelease.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalrelease.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>e169e835-38e0-4c94-b3ec-10a10a4bc8c0</uuidstructure>
+			<uuidresource>5bc3a2e6-3e83-4105-b883-7c3b629c0a46</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional release]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalsubfield.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalsubfield.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>c6994ccd-7bc6-45a4-b50a-49de219db096</uuidstructure>
+			<uuidresource>eea5ed27-08c0-4bd2-8b07-2080067d7bba</uuidresource>
+			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional sub field]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+	</files>
+</export>

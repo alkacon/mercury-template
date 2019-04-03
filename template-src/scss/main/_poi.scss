@@ -1,0 +1,82 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _poi.scss
+ */
+
+.accessible {
+    margin-bottom: $default-margin-small;
+}
+
+@include media-breakpoint-up(md) {
+
+    .element .poi-head {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+.acc-icon {
+    position: relative;
+    width: $acc-icon-size;
+    padding: 0 0 $acc-icon-size 0!important;
+    display: inline-block;
+    color: $acc-icon-text-color;
+    background-color: $acc-icon-bg-color;
+    border-radius: $acc-icon-border-radius;
+    margin-right: 10px;
+    font-size: $h3-font-size;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    .acc-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: flex;
+    }
+
+    .fa {
+        font-weight: normal;
+    }
+
+    .fa-male {
+        position: relative;
+        margin: 0 1px 0 2px;
+        font-weight: normal;
+
+        &::after {
+            display: block;
+            content: "";
+            border-right: 1px solid $acc-icon-text-color;
+            position: absolute;
+            height: 100%;
+            bottom: 0;
+            right: -2px;
+        }
+    }
+
+    .fa-female {
+        font-weight: normal;
+        transform: scale(0.85, 1);
+    }
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SliderData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/slider.xsd">
+  <Slider language="en">
+    <Title><![CDATA[Simple slider example]]></Title>
+    <Position>
+      <Top><![CDATA[top]]></Top>
+      <Left><![CDATA[left]]></Left>
+    </Position>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_06.jpg]]></target>
+          <uuid>f37a0985-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[OpenCms rocks! ]]></SuperTitle>
+      <TitleLine1><![CDATA[Because it is so cool.]]></TitleLine1>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_01.jpg]]></target>
+          <uuid>f3676bce-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[OpenCms is great]]></SuperTitle>
+      <TitleLine1><![CDATA[Take website editing to a new level!]]></TitleLine1>
+      <TitleLine2/>
+      <Position>
+        <Top><![CDATA[center]]></Top>
+        <Left><![CDATA[center]]></Left>
+      </Position>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_02.jpg]]></target>
+          <uuid>f36a7913-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[OpenCms is easy to use]]></SuperTitle>
+      <TitleLine1><![CDATA[It's just fun.]]></TitleLine1>
+      <TitleLine2><![CDATA[Intuitive to and fast to learn.]]></TitleLine2>
+      <Position>
+        <Top><![CDATA[bottom]]></Top>
+        <Left><![CDATA[right]]></Left>
+      </Position>
+    </Image>
+  </Slider>
+</SliderData>

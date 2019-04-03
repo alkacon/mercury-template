@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SliderData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/slider.xsd">
+  <Slider language="en">
+    <Title><![CDATA[Logo Slider]]></Title>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/15.png]]></target>
+          <uuid>f0105164-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/04.png]]></target>
+          <uuid>efe45f36-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/19.png]]></target>
+          <uuid>f01f4594-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/01.png]]></target>
+          <uuid>efd19a7a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/03.png]]></target>
+          <uuid>efdda872-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/05.png]]></target>
+          <uuid>efe7ba9a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/13.png]]></target>
+          <uuid>f007299b-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/14.png]]></target>
+          <uuid>f00afa30-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/17.png]]></target>
+          <uuid>f0192b0c-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/cliparts/02.png]]></target>
+          <uuid>efd6ca9e-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle/>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+  </Slider>
+</SliderData>

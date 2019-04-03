@@ -1,0 +1,99 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _contact.scss
+ */
+
+.type-contact {
+
+    .fn,
+    .org,
+    .adr,
+    .title,
+    .note,
+    .mail,
+    .vcard {
+        margin-top: $contact-margins;
+        margin-bottom: $contact-margins;
+    }
+
+    > * > .image-src-box {
+        // this will not add bottom margin if piece grid is used
+        margin-bottom: 2 * $contact-margins;
+    }
+
+    .contactlink {
+        margin-top: $contact-margins;
+    }
+
+    &.compact {
+        .fn.n,
+        .pos {
+            @extend .default-font;
+        }
+
+        .fn.n {
+            font-weight: $font-weight-bold;
+        }
+
+        .fn,
+        .org,
+        .adr,
+        .title,
+        .note,
+        .contactlink:not(.btn),
+        .mail {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .vcard {
+            margin-bottom: 0;
+        }
+    }
+
+    .fn {
+        margin-top: 0;
+    }
+
+    .title {
+        font-style: italic;
+    }
+
+    .tablerow {
+        display: table-row;
+
+        > span {
+            padding-right: $default-margin-verysmall;
+            display: table-cell;
+        }
+    }
+
+    .only-icon {
+        padding-left: $default-margin-verysmall;
+    }
+
+    .fa {
+       margin-right: $default-margin-verysmall;
+       width: $default-margin;
+    }
+
+    .img-responsive {
+        width: 100%;
+    }
+}

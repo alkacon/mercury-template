@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Using the form based editor]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>All content in OpenCms is stored in structured content elements. You can open a form based editor that shows all elements by either clicking the pen icon that is shown on the "edit point" menu that appears on the upper right of an element, or by clicking the pen icon in the toolbar while you edit content inline.</p>
+<p>Using either the form based editor or the inline editor is a matter of preference.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[Continue with step 3: Fun with Formatters]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/tutorial/step-3-fun-with-formatters/]]></target>
+          <uuid>f58a4b78-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

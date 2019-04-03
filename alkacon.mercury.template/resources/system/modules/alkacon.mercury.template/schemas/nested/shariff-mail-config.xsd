@@ -1,0 +1,39 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/shariff-mail-config-email.xsd"/>
+
+    <xsd:element name="ShariffMailConfigChoiceData" type="OpenCmsShariffMailConfigChoiceData"/>
+
+    <xsd:complexType name="OpenCmsShariffMailConfigChoiceData">
+        <xsd:sequence>
+            <xsd:element name="ShariffMailConfigChoice" type="OpenCmsShariffMailConfigChoice" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsShariffMailConfigChoice">
+        <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="Mail" type="OpenCmsShariffMailConfigChoiceMail" minOccurs="0" />
+            <xsd:element name="FormLink" type="OpenCmsVarLink" minOccurs="0" />
+        </xsd:choice>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Mail</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Shariff.Mail)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Shariff.Mail.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>FormLink</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Shariff.FormLink)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Shariff.FormLink.help)]]></Description>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

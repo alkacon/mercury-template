@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
+  <FunctionConfig language="en">
+    <NiceName><![CDATA[%(key.function.search)]]></NiceName>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/search.jsp]]></target>
+        <uuid>8df7382d-36cb-46a3-b0d3-09b779ec3249</uuid>
+      </link>
+    </Jsp>
+    <Description><![CDATA[%(key.function.search.help)]]></Description>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+      </Types>
+    </Match>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[searchscope.search]]></IncludeName>
+    </Setting>
+  </FunctionConfig>
+</FunctionConfigs>

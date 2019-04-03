@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[The Slider element]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>This page demonstrates&nbsp;the three versions of the <em>Simple Slider</em> element. You can select the appearance by choosing the formatter.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

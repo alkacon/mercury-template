@@ -1,0 +1,163 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/teaser-data.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address-choice-extended.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
+
+    <xsd:element name="JobData" type="OpenCmsJobData"/>
+
+    <xsd:complexType name="OpenCmsJobData">
+        <xsd:sequence>
+            <xsd:element name="Job" type="OpenCmsJob" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsJob">
+        <xsd:sequence>
+            <xsd:element name="Intro" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Date" type="OpenCmsDateTime" />
+            <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Introduction" type="OpenCmsParagraph" />
+            <xsd:element name="Text" type="OpenCmsParagraph"  minOccurs="0" maxOccurs="100" />
+            <xsd:element name="AddressChoice" type="OpenCmsAddressExtendedChoice" minOccurs="0" />
+            <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
+            <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
+            <xsd:element name="Category" type="OpenCmsDynamicCategory" />
+            <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <tabs>
+                <tab element="Intro" collapse="false" name="%(key.tab.Job)" />
+                <tab element="AddressChoice" collapse="false" name="%(key.tab.Location)" />
+                <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
+                <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
+            </tabs>
+            <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Text*/Image*/Image" configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Intro</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Intro.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-job.title)]]></Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>listtitle</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Date</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Job.Date)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Job.Date.help)]]></Description>
+                    <Widget>datetime</Widget>
+                    <Default><![CDATA[%(currenttime)]]></Default>
+                    <Search>listdate</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>Type</PropertyName>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Introduction</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Job.Introduction)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Job.Introduction.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Text</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Job.Text)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Job.Text.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>AddressChoice</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.AddressChoice)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.AddressChoice.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>LocationNote</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LocationNote)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LocationNote.help)]]></Description>
+                    <Widget>html</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Category</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Category)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Category.help)]]></Description>
+                    <Widget>category</Widget>
+                    <WidgetConfig>onlyleafs=false</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>TeaserData</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.TeaserData)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.TeaserData.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MetaInfo</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Availability</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Order</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^[-+]?\d+$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Order)]]></Error>
+                    <Search>listorder</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

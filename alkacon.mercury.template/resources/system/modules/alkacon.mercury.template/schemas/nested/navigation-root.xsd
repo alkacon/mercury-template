@@ -1,0 +1,54 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd"/>
+
+    <xsd:element name="NavigationRootData" type="OpenCmsNavigationRootData"/>
+
+    <xsd:complexType name="OpenCmsNavigationRootData">
+        <xsd:sequence>
+            <xsd:element name="NavigationRoot" type="OpenCmsNavigationRoot" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsNavigationRoot">
+        <xsd:choice>
+            <xsd:element name="NavStartLevel" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="NavFolder" type="OpenCmsVfsFile" minOccurs="0" />
+        </xsd:choice>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>NavStartLevel</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Navigation.NavStartLevel)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Navigation.NavStartLevel.help)]]></Description>
+                    <Widget>select</Widget>
+                    <Default>1</Default>
+                    <WidgetConfig><![CDATA[
+                        0:%(key.msg.option.navigation.navstartlevel.0)|
+                        1:%(key.msg.option.navigation.navstartlevel.1)|
+                        2:%(key.msg.option.navigation.navstartlevel.2)|
+                        3:%(key.msg.option.navigation.navstartlevel.3)|
+                        4:%(key.msg.option.navigation.navstartlevel.4)|
+                        5:%(key.msg.option.navigation.navstartlevel.5)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                    <Display>wide</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>NavFolder</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Navigation.NavFolder)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Navigation.NavFolder.help)]]></Description>
+                    <Widget>file</Widget>
+                    <Search>false</Search>
+                    <Display>wide</Display>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

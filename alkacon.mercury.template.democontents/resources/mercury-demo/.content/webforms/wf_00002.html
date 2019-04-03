@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WebForms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/form.xsd">
+  <WebForm language="en">
+    <Title><![CDATA[Contact us]]></Title>
+    <FormText name="FormText0">
+      <links/>
+      <content><![CDATA[<h2>Contact us</h2>]]></content>
+    </FormText>
+    <FormConfirmation name="FormConfirmation0">
+      <links/>
+      <content><![CDATA[<h3>Confirmation</h3>
+<p><strong>Thank you for your request!</strong></p>]]></content>
+    </FormConfirmation>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Your Message]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[select]]></FieldType>
+      <FieldLabel><![CDATA[Salutation]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldDefault><![CDATA[mrs:Mrs|mr:Mr]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[First Name]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Last Name]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email]]></FieldType>
+      <FieldLabel><![CDATA[Email]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Phone]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldValidation><![CDATA[(\+?(?:[0-9] ?){6,14}[0-9]$){0,1}]]></FieldValidation>
+      <FieldErrorMessage><![CDATA[Please enter a valid phone number.]]></FieldErrorMessage>
+    </InputField>
+    <MailFrom><![CDATA[demo@alkacon.com]]></MailFrom>
+    <MailTo><![CDATA[info@property-paradise.com]]></MailTo>
+    <MailSubject><![CDATA[Property request]]></MailSubject>
+    <MailText name="MailText0">
+      <links/>
+      <content><![CDATA[<p>A property request has been file at %(date).</p>
+<p>&nbsp;</p>
+<p><strong>Request:</strong></p>
+<p>&nbsp;</p>
+<p><strong>%(formdata)</strong></p>]]></content>
+    </MailText>
+    <OptionalConfirmationMail>
+      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
+      <ConfirmationMailOptional>false</ConfirmationMailOptional>
+      <ConfirmationField/>
+      <ConfirmationMailSubject><![CDATA[Thank you for your request.]]></ConfirmationMailSubject>
+      <ConfirmationMailText name="ConfirmationMailText0">
+        <links/>
+        <content><![CDATA[<p>You send us a request at %(date) with content:</p>
+<p>&nbsp;</p>
+<p>%(formdata)</p>
+<p>&nbsp;</p>
+<p>Will will reply shortly.</p>]]></content>
+      </ConfirmationMailText>
+    </OptionalConfirmationMail>
+  </WebForm>
+</WebForms>

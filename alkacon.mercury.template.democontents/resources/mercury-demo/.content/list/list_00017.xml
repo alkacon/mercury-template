@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
+  <ListConfig language="en">
+    <Title><![CDATA[Image tile list with all supported types]]></Title>
+    <TypesToCollect>m-article:794441db-3bfa-11e9-a38a-0242ac11002b</TypesToCollect>
+    <TypesToCollect>m-decoy:7eef8557-3bfa-11e9-a38a-0242ac11002b</TypesToCollect>
+    <TypesToCollect>m-event:8489fff3-3bfa-11e9-a38a-0242ac11002b</TypesToCollect>
+    <TypesToCollect>m-media:9064f91e-3bfa-11e9-a38a-0242ac11002b</TypesToCollect>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/mercury-demo/]]></target>
+        <uuid>acb43685-5224-11e5-9495-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <Category/>
+    <CategoryMode><![CDATA[OR]]></CategoryMode>
+    <SortOrder><![CDATA[DATE_DESC]]></SortOrder>
+    <DateRestriction>
+      <FromToday>
+        <Count><![CDATA[12]]></Count>
+        <Unit><![CDATA[MONTHS]]></Unit>
+        <Direction><![CDATA[future]]></Direction>
+      </FromToday>
+    </DateRestriction>
+  </ListConfig>
+</ListConfigs>

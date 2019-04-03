@@ -1,0 +1,237 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _nav-components.scss
+ */
+
+// Breadcrumb navigation
+
+.nav-breadcrumbs {
+    list-style-type: none;
+    margin: 0;
+    padding: $default-margin-verysmall 0 0 0;
+
+    > li {
+        display: inline;
+        list-style: outside none none;
+        position: relative;
+        font-size: $nav-breadcrump-font-size;
+
+        &:not(:last-child) {
+            &::after {
+                content: "";
+                display: inline-block;
+                margin-right: $nav-breadcrump-space-left;
+            }
+        }
+
+        + li {
+            &::before {
+                content: "\f0da";
+                display: inline-block;
+                font-family: FontAwesome;
+                margin-right: $nav-breadcrump-space-right;
+                color: $nav-breadcrump-separator-color;
+            }
+        }
+
+        a {
+            color: $nav-breadcrump-text-color;
+
+            &:hover {
+                color: $nav-breadcrump-text-hover-color;
+            }
+        }
+    }
+}
+
+
+// Side navigation
+
+.nav-side {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+
+    @if ($nav-side-boxed) {
+       @include media-breakpoint-up(md) {
+            border: 1px solid $nav-side-border;
+            box-shadow: $panel-shadow;
+            @include round-corners($nav-side-border-radius, true);
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        // remove bootstap gutter on small screens
+        // we expect to be in "full width" mode here
+        margin-left: -0.5 * $grid-gutter-width;
+        margin-right: -0.5 * $grid-gutter-width;
+        border-left: none;
+        border-right: none;
+    }
+
+    > li {
+        &:first-child {
+            // remove top border from the very first element
+            border-top: none;
+        }
+    }
+
+    li {
+        position: relative;
+        display: block;
+        border-top: 1px solid $nav-side-border;
+        @if ($nav-side-font-size != $font-size-base) {
+            font-size: $nav-side-font-size;
+        }
+
+        &.currentpage > a {
+            // highlight the current page
+            background: $nav-side-bg-active;
+            @if ($nav-side-text-active != $nav-side-text) {
+                color: $nav-side-text-active;
+            }
+        }
+
+        > a {
+            cursor: pointer;
+            display: block;
+            padding: $nav-side-padding;
+
+            @if ($nav-side-boxed == false) {
+                @include media-breakpoint-down(xs) {
+                    padding-left: $grid-gutter-width / 2;
+                }
+            }
+
+            &:not(.btn) { // not(btn) required to make the color rules strong enough in the footer
+                color: $nav-side-text;
+
+                &:focus,
+                &:hover {
+                    color: $nav-side-text-hover;
+                    background: $nav-side-bg-hover;
+                    text-decoration: none;
+                }
+            }
+
+            &[aria-expanded] {
+                // add caret labels to menus that have submenus
+                &[aria-controls] {
+                    &::after {
+                        position: absolute;
+                        display: inline-block;
+                        font-family: FontAwesome;
+                        right: 0;
+                        width: $nav-handle-right-padding;
+                        content: "\f107";
+                        font-weight: normal;
+                        text-align: center;
+                        transform: rotate(0) translate(0px, 0px);
+                        transition: transform $nav-animation-time;
+                    }
+                }
+            }
+
+            &[aria-expanded=true] {
+                &[aria-controls] {
+                    &::after {
+                        transform: rotate(-180deg) translate(0px, 2px);
+                        transition: transform $nav-animation-time;
+                    }
+                }
+            }
+
+            &.nav-label + a[aria-controls] {
+                position: absolute;
+                display: inline-block;
+                border: none;
+                width: $nav-handle-right-padding;
+                padding-left: 0;
+                padding-right: 0;
+                top: 0;
+                right: 0;
+
+                &::after {
+                    left: 0;
+                    width: 100%;
+                }
+            }
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        > ul > li {
+            > a {
+                // add padding for 2nd level
+                padding-left: 2 * $nav-side-left-padding-step;
+            }
+            > ul > li {
+                > a {
+                    // add padding for 3rd level
+                    padding-left:  3 * $nav-side-left-padding-step;
+                }
+                > ul > li {
+                    // add padding for 4th level
+                    > a {
+                        padding-left:  4 * $nav-side-left-padding-step;
+                    }
+                    > ul > li {
+                        // add padding for 5th level
+                        a {
+                            padding-left: 5 * $nav-side-left-padding-step;
+                        }
+                    }
+                }
+            }
+        }
+
+        @if ($nav-side-left-padding-start != $nav-side-left-padding-step) {
+            @include media-breakpoint-up(md) {
+                > ul > li {
+                    > a {
+                        // add padding for 2nd level
+                        padding-left: $nav-side-left-padding-start + 1 * $nav-side-left-padding-step;
+                    }
+                    > ul > li {
+                        > a {
+                            // add padding for 3rd level
+                            padding-left:  $nav-side-left-padding-start + 2 * $nav-side-left-padding-step;
+                        }
+                        > ul > li {
+                            // add padding for 4th level
+                            > a {
+                                padding-left:  $nav-side-left-padding-start + 3 * $nav-side-left-padding-step;
+                            }
+                            > ul > li {
+                                // add padding for 5th level
+                                a {
+                                    padding-left:  $nav-side-left-padding-start + 4 * $nav-side-left-padding-step;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImageSeriesData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/imageseries.xsd">
+  <ImageSeries language="de">
+    <Title><![CDATA[Gebäude, Maschinen, Dinge]]></Title>
+    <Date>1575633600000</Date>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/57.jpg]]></target>
+          <uuid>f35a736f-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Herz-Hände]]></Title>
+      <Copyright><![CDATA[Gefunden auf unsplash.com - CC0 Public Domain]]></Copyright>
+    </Image>
+    <ImageFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.galleries/samples/]]></target>
+        <uuid>f1d09f2f-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </ImageFolder>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </ImageSeries>
+  <ImageSeries language="en">
+    <Intro><![CDATA[Get visual]]></Intro>
+    <Title><![CDATA[Buildings, Machines, Things]]></Title>
+    <Preface><![CDATA[A series of images to be used in this example website.]]></Preface>
+    <Date>1575633600000</Date>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.&nbsp;</p>]]></content>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/57.jpg]]></target>
+          <uuid>f35a736f-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Heart hands]]></Title>
+      <Copyright><![CDATA[Found at unsplash.com - CC0 Public Domain]]></Copyright>
+    </Image>
+    <ImageFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.galleries/samples/]]></target>
+        <uuid>f1d09f2f-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </ImageFolder>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </ImageSeries>
+</ImageSeriesData>

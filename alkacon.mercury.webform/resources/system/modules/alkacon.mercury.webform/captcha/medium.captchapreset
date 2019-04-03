@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CaptchaPresets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/captchapreset.xsd">
+  <CaptchaPreset language="en">
+    <Name><![CDATA[Medium - Random letters]]></Name>
+    <ImageWidth><![CDATA[300]]></ImageWidth>
+    <ImageHeight><![CDATA[60]]></ImageHeight>
+    <MinPhraseLength><![CDATA[5]]></MinPhraseLength>
+    <MaxPhraseLength><![CDATA[7]]></MaxPhraseLength>
+    <MinFontSize><![CDATA[20]]></MinFontSize>
+    <MaxFontSize><![CDATA[35]]></MaxFontSize>
+    <FontColor>#b31b34</FontColor>
+    <HolesPerGlyph><![CDATA[0]]></HolesPerGlyph>
+    <FilterAmplitude><![CDATA[5]]></FilterAmplitude>
+    <FilterWaveLength><![CDATA[180]]></FilterWaveLength>
+  </CaptchaPreset>
+</CaptchaPresets>

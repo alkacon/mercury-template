@@ -1,0 +1,122 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _pagination.scss
+ */
+
+.pagination {
+
+    display: initial;
+    margin: 0;
+    padding-left: 0;
+
+    > li {
+        display: inline-block;
+
+        > a {
+            display: inline-block;
+            position: relative;
+            background-color: $pagination-background;
+            border: 1px solid $pagination-border;
+            margin-left: 0;
+            margin-right: -1px;
+            color: $pagination-text;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px 12px;
+            font-size: $font-size-base;
+            line-height: $target-line-height;
+            min-width: calc(#{$target-line-height} + 10px); // 10px = top+bottom padding
+
+            .number {
+                font-weight: normal;
+            }
+        }
+
+        &.previous {
+            margin-right: $default-margin-small;
+        }
+        &.next {
+            margin-left: $default-margin-small;
+        }
+        &.first {
+            &.gap::after {
+                content: "...";
+                display: inline-block;
+                margin: 0 $default-margin-small;
+            }
+        }
+    }
+
+    > li:first-child > a {
+        border-top-left-radius: $pagination-border-radius;
+        border-bottom-left-radius: $pagination-border-radius;
+    }
+
+    > li:last-child > a {
+        margin-right: 0;
+        border-top-right-radius: $pagination-border-radius;
+        border-bottom-right-radius: $pagination-border-radius;
+    }
+
+    > li > a,
+    > li.active > a {
+        &:hover {
+            color: $text-light;
+            background: $pagination-hover;
+            border-color: $pagination-hover;
+        }
+    }
+
+    > li.active > a {
+        color: $text-light;
+        background-color: $main-theme;
+        border-color: $main-theme;
+    }
+
+    > .disabled {
+        > a,
+        > a:hover,
+        > a:focus {
+            background-color: $pagination-background;
+            border-color: $pagination-border;
+            color: $pagination-border;
+            cursor: $cursor-disabled;
+        }
+    }
+}
+
+// Colored pagination
+
+@each $type-name, $bg-color, $highlight-color in $reduced-colors {
+
+    .color-#{""+$type-name} {
+        // list pagination
+        .pagination {
+            > li.active > a:not(:hover)  {
+                background-color: $bg-color;
+                border-color: $bg-color;
+            }
+            > li:not(.disabled) > a:hover {
+                background: $highlight-color;
+                border-color: $highlight-color;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,391 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _slider.scss
+ */
+
+// import the slick-carousel distribution SCSS
+@import '../../plugins/slick-carousel/slick-theme';
+@import '../../plugins/slick-carousel/slick';
+
+// Slick slider settings
+
+.type-slick-slider {
+
+    // add fade in/out effects to text in slider
+    // if only one slide, this will not be active since .slick-slide will be missing
+    .slick-slide .slide-wrapper {
+        .caption {
+            &.foreground,
+            &.background {
+                opacity: 0;
+            }
+        }
+    }
+    .slick-slide.slick-current.slick-active .slide-wrapper   {
+        .caption {
+            &.foreground,
+            &.background {
+                transition: opacity 1.5s linear;
+            }
+            &.foreground {
+                opacity: 1.0;
+            }
+            &.background {
+                opacity: 0.75;
+            }
+        }
+    }
+
+    .slick-slide > div {
+        // removes strange 5px extra bottom margin
+        display: flex;
+    }
+
+    &.hero-slider {
+        // make sure followiung slides are hidden while loading
+        .slide-definitions:not(.slick-initialized) .slide-wrapper.hide-noscript {
+            visibiliy: hidden;
+            max-height: 0;
+        }
+    }
+
+    &.logo-slider {
+        // optional paddings for logo sliders
+        @each $space in $logo-slider-paddings {
+            > .lm-#{$space} {
+                margin-left: -#{$space}px;
+                margin-right: -#{$space}px;
+                .slide-wrapper .visual {
+                    margin: #{$space}px;
+                }
+            }
+        }
+
+        .slide-definitions {
+            max-height: 0;
+            overflow: hidden;
+            &.slick-initialized {
+                max-height: none;
+                overflow: visible;
+            }
+        }
+    }
+
+    .slider-box {
+        // must set round corner here in case a custom bg color for caption has been set
+        // JSP does this as inline style attribute
+        // can not hide overflow because of dot buttons in XS view
+        @include round-corners($slider-slide-border-radius, false);
+    }
+
+    .slide-wrapper {
+        position: relative;
+        @include round-corners($slider-slide-border-radius, true);
+
+        .visual {
+            position: relative;
+        }
+
+        .img-responsive {
+            width: 100%;
+        }
+
+        img {
+            // slider conflicts with lazy loading background color, so disable this
+            &.lazyloading,
+            &.lazyload {
+                background-color: transparent;
+                opacity: 1;
+            }
+            &.lazyloaded {
+                transition: none;
+            }
+        }
+
+        a,
+        a:focus,
+        a:hover {
+            text-decoration: none;
+        }
+
+        .caption {
+            padding: $slider-caption-padding;
+            position: absolute;
+            max-width: calc(100% - #{$default-margin * 3});
+            background-color: $main-theme;
+            @include round-corners($slider-caption-border-radius, true);
+
+            &.background {
+                opacity: 0.75;
+                background-color: $main-theme;
+            }
+
+            &.foreground {
+                background-color: transparent;
+            }
+
+            &.bottom {
+                bottom: $default-margin;
+            }
+            &.top {
+                top: $default-margin;
+            }
+            &.middle {
+                top: 50%;
+                transform: translate(0,-50%);
+            }
+
+            &.left {
+                left: $default-margin;
+            }
+            &.right {
+                right: $default-margin;
+                text-align: right;
+            }
+            &.center {
+                text-align: center;
+                white-space: nowrap;
+                left: 50%;
+                transform: translate(-50%,0);
+            }
+
+            &.middle.center {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+            }
+
+            .subcaption br {
+                display: none;
+            }
+
+            strong,
+            small {
+                display: block;
+                margin: 0;
+                padding: 0 $default-margin-small;
+                color: transparent;
+                font-family: $font-family-headings;
+                font-weight: $font-weight-headings;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            &.foreground {
+                strong,
+                small {
+                    color: get-text-color($main-theme);
+                    text-shadow: $slider-text-shadow;
+                }
+            }
+
+            strong {
+                font-size: $h4-font-size;
+                line-height: $line-height-headings;
+            }
+            small {
+                font-family: $font-family-base;
+                font-size: $font-size-base;
+                line-height: $line-height-base;
+                margin-top: $default-margin-verysmall;
+
+                ~ small {
+                    margin-top: 0;
+                }
+            }
+
+            @include media-breakpoint-up(sm) {
+                strong {
+                    font-size: $h2-font-size;
+                }
+            }
+
+            @include media-breakpoint-up(md) {
+                strong {
+                    font-size: $h1-font-size;
+                }
+                small {
+                    font-size: $h3-font-size;
+                    line-height: $line-height-headings;
+                }
+            }
+        }
+
+        &.custom .caption {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+
+            strong,
+            small {
+                display: inline-block;
+                float: left;
+                clear: both;
+            }
+            &.right {
+                strong,
+                small {
+                    float: right;
+                }
+            }
+            &.center {
+                strong,
+                small {
+                    float: none;
+                }
+            }
+            &.background {
+                strong,
+                small {
+                    background-color: $main-theme;
+                }
+            }
+            strong {
+                padding-top: $default-margin-verysmall;
+                padding-bottom: $default-margin-verysmall;
+            }
+            small {
+                padding-top: 2px;
+                padding-bottom: 2px;
+                margin-top: $default-margin-verysmall;
+                &:nth-of-type(2) {
+                    margin-top: 0;
+                }
+            }
+
+            @include media-breakpoint-up(md) {
+                &.center .subcaption br {
+                    display: block;
+                }
+                strong,
+                small {
+                    @include round-corners($slider-caption-border-radius, false);
+                }
+            }
+        }
+
+        .copyright {
+             @include image-copyright;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        &.text-below-on-xs {
+
+            .slide-wrapper,
+            .image-src-box {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .slick-dots {
+                bottom: -10px;
+            }
+
+            .slick-arrow {
+                display: none !important;
+            }
+
+            .slider-box {
+                background-color: $main-theme;
+            }
+
+            .slider-box.custom .slick-list {
+                background-color: transparent;
+            }
+
+            .slide-wrapper {
+                .caption {
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                    position: static;
+                    max-width: initial;
+                    min-height: calc(#{ceil($line-height-headings + 2 * $target-line-height)} + 10px);
+                    background-color: $main-theme;
+                    opacity: 1 !important;
+                    text-align: initial !important;
+                    white-space: initial !important;
+                    transform: initial !important;
+
+                    &.foreground {
+                        display: none;
+                    }
+                    &.background {
+                        strong,
+                        small {
+                            color: get-text-color($main-theme);
+                            text-shadow: $slider-text-shadow;
+                        }
+                    }
+                }
+                strong {
+                    font-size: $h2-font-size;
+                    line-height: $line-height-headings;
+                    font-weight: $font-weight-headings;
+                }
+                small {
+                    display: inline;
+                    padding: 0;
+                }
+                small ~ small {
+                    &::before {
+                        display: inline-block;
+                        content: "\2013"; // ndash
+                        margin: 0 $default-margin-verysmall;
+                    }
+                }
+                &.custom {
+                    .caption {
+                        background-color: transparent;
+                        strong {
+                            display: block;
+                            padding: 7px 10px;
+                        }
+                        strong, small {
+                            float: none;
+                            clear: none;
+                        }
+                        small {
+                            display: inline;
+                            margin-top: 0;
+                        }
+                    }
+                }
+                .subcaption {
+                    display: block;
+                    padding: 4px 10px;
+                }
+            }
+        }
+    }
+}
+
+
+// Width restritions for slick slider
+html.noscript  {
+    .slide-count {
+        float: left;
+    }
+    @for $cols from 1 through 12 {
+        .slide-count-#{$cols} {
+            @extend .slide-count;
+            width: 100% / $cols;
+        }
+    }
+}

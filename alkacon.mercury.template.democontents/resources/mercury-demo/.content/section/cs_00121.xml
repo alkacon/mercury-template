@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Flex formatters]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://stringtemplate.org]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>Flex formatters can be used to create output that requires special formatting which is not available from a default formatter. Flex formatters use the powerful <a href="%(link0)" target="_blank" rel="noopener noreferrer">StingTemplate</a>&nbsp;engine and allow to create <em>custom HTML</em> with <em>access to the content element values</em> and <em>support for if...else...endif conditionals</em>. With a little exra effort, even direct edit in the page is supported in flex formatters.</p>
+<p>This page shows examples of flex formatters. On the left a sample output is shown, while on the right details about the same content element is displayed. Check out the source code of the flex formatters used on this page in order to see how these can be extended.&nbsp;</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

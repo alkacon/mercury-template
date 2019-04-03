@@ -1,0 +1,45 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="MediaYoutubeData" type="OpenCmsMediaYoutubeData"/>
+
+    <xsd:complexType name="OpenCmsMediaYoutubeData">
+        <xsd:sequence>
+            <xsd:element name="MediaYoutube" type="OpenCmsMediaYoutube" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsMediaYoutube">
+        <xsd:sequence>
+            <xsd:element name="YouTubeId" type="OpenCmsString" />
+            <xsd:element name="YouTubePreview" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>YouTubeId</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MediaYoutube.YouTubeId)]]></DisplayName>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>YouTubePreview</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MediaYoutube.YouTubePreview)]]></DisplayName>
+                    <Widget>select</Widget>
+                    <Default>hqdefault.jpg</Default>
+                    <WidgetConfig><![CDATA[
+                        hqdefault.jpg:%(key.msg.option.media.youtube.hqdefault)|
+                        sddefault.jpg:%(key.msg.option.media.youtube.sddefault)|
+                        maxresdefault.jpg:%(key.msg.option.media.youtube.maxresdefault)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

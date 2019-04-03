@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SliderData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/slider.xsd">
+  <Slider language="de">
+    <Title><![CDATA[OpenCms Promo Slider]]></Title>
+    <Position>
+      <Top><![CDATA[bottom]]></Top>
+      <Left><![CDATA[center]]></Left>
+    </Position>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_06.jpg]]></target>
+          <uuid>f37a0985-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[OpenCms 11]]></SuperTitle>
+      <TitleLine1><![CDATA[Content Management einfach gemacht]]></TitleLine1>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_02.jpg]]></target>
+          <uuid>f36a7913-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Mercury Template]]></SuperTitle>
+      <TitleLine1><![CDATA[Umfangreiches, konfigurierbares Template]]></TitleLine1>
+      <TitleLine2><![CDATA[Erstellen Sie responsive Webseiten schnell und einfach]]></TitleLine2>
+      <Position>
+        <Top><![CDATA[center]]></Top>
+        <Left><![CDATA[center]]></Left>
+      </Position>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_04.jpg]]></target>
+          <uuid>f37156ec-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[100% Open Source ]]></SuperTitle>
+      <TitleLine1><![CDATA[Umfassender professioneller Support verfügbar]]></TitleLine1>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_03.jpg]]></target>
+          <uuid>f36d8658-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Vollgepackt mit Funktionen]]></SuperTitle>
+      <TitleLine1><![CDATA[Erstellen und bearbeiten Sie Webseiten via Drag & Drop]]></TitleLine1>
+      <TitleLine2><![CDATA[Umfangreiches Berechtigungssystem und administrative Oberfläche]]></TitleLine2>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_05.jpg]]></target>
+          <uuid>f375c3c1-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Warten Sie nicht!]]></SuperTitle>
+      <TitleLine1><![CDATA[Starten Sie noch heute mit OpenCms]]></TitleLine1>
+      <TitleLine2/>
+      <Position>
+        <Top><![CDATA[center]]></Top>
+        <Left><![CDATA[center]]></Left>
+      </Position>
+    </Image>
+  </Slider>
+  <Slider language="en">
+    <Title><![CDATA[OpenCms Promo Slider]]></Title>
+    <Position>
+      <Top><![CDATA[bottom]]></Top>
+      <Left><![CDATA[center]]></Left>
+    </Position>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_06.jpg]]></target>
+          <uuid>f37a0985-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[OpenCms 11]]></SuperTitle>
+      <TitleLine1><![CDATA[Content management made easy]]></TitleLine1>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_02.jpg]]></target>
+          <uuid>f36a7913-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Mercury Template]]></SuperTitle>
+      <TitleLine1><![CDATA[Powerful configurable template]]></TitleLine1>
+      <TitleLine2><![CDATA[Build responsive websites fast and easy]]></TitleLine2>
+      <Position>
+        <Top><![CDATA[center]]></Top>
+        <Left><![CDATA[center]]></Left>
+      </Position>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_04.jpg]]></target>
+          <uuid>f37156ec-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[100% Open Source ]]></SuperTitle>
+      <TitleLine1><![CDATA[OpenCms commercial support fully available]]></TitleLine1>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_03.jpg]]></target>
+          <uuid>f36d8658-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Packed with features]]></SuperTitle>
+      <TitleLine1><![CDATA[Create and edit pages with drag and drop]]></TitleLine1>
+      <TitleLine2><![CDATA[Strong permission system and administrative interface]]></TitleLine2>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/bg_sl_05.jpg]]></target>
+          <uuid>f375c3c1-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Don't wait!]]></SuperTitle>
+      <TitleLine1><![CDATA[Start using OpenCms today]]></TitleLine1>
+      <TitleLine2/>
+      <Position>
+        <Top><![CDATA[center]]></Top>
+        <Left><![CDATA[center]]></Left>
+      </Position>
+    </Image>
+  </Slider>
+</SliderData>

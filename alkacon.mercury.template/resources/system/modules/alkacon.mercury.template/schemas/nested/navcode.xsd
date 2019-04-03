@@ -1,0 +1,50 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="NavigationCodeData" type="OpenCmsNavigationCodeData"/>
+
+    <xsd:complexType name="OpenCmsNavigationCodeData">
+        <xsd:sequence>
+            <xsd:element name="NavigationCode" type="OpenCmsNavigationCode" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsNavigationCode">
+        <xsd:sequence>
+            <xsd:element name="RequiredCss" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="CodeBefore" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="CodeAfter" type="OpenCmsHtml" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>RequiredCss</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NavigationCode.RequiredCss)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NavigationCode.RequiredCss.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>CodeBefore</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NavigationCode.CodeBefore)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NavigationCode.CodeBefore.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>CodeAfter</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NavigationCode.CodeAfter)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NavigationCode.CodeAfter.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

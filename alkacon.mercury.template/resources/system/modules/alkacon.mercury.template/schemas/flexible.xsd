@@ -1,0 +1,78 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="FlexibleData" type="OpenCmsFlexibleData"/>
+
+    <xsd:complexType name="OpenCmsFlexibleData">
+        <xsd:sequence>
+            <xsd:element name="Flexible" type="OpenCmsFlexible" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsFlexible">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Code" type="OpenCmsHtml" />
+            <xsd:element name="RequireReload" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-flexible.title)]]></Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>listtitle</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Code</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Code)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Code.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>12</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>RequireReload</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.RequireReload)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.RequireReload.help)]]></Description>
+                    <Widget>checkbox</Widget>
+                    <Default>false</Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[OpenCms Beginners Tutorial]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Click here for a guided tour that explains in 6 simple steps how to edit content, create pages and work with OpenCms in general.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[Tutorial]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/tutorial/]]></target>
+          <uuid>f51baae8-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+    <GalleryTitle><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></GalleryTitle>
+  </ContentSection>
+</ContentSectionData>

@@ -1,0 +1,167 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _media.scss
+ */
+
+.type-media {
+    &.square-col {
+        .preview {
+            height: 100%;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        &.text-below-on-xs {
+            &.square-col .preview .image-src-box {
+                position: relative;
+
+                > img {
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    transition: none !important;
+                }
+            }
+            &.square-4-3 .preview .image-src-box {
+                padding-bottom: 75%;
+            }
+            &.square-16-9 .preview .image-src-box {
+                padding-bottom: 56.25%;
+            }
+        }
+    }
+
+    .media-box {
+        position: relative;
+    }
+
+    .preview {
+        position: relative;
+        cursor: pointer;
+        height: 100%;
+
+        .centered {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .icon {
+            color: #fff;
+            text-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+            font-size: 16px;
+            text-align: center;
+            z-index: #{$overflow-z-index + 1};
+
+            span {
+                opacity: 0.7;
+                display: block;
+                font-size: 60px;
+            }
+            div {
+                opacity: 1.0;
+            }
+        }
+
+        .media-overlay-top,
+        .media-overlay-bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 16px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 1px #000;
+            margin: 0;
+            color: #fff;
+            z-index: #{$overflow-z-index + 1};
+        }
+        .media-overlay-top {
+            top: 10px;
+            bottom: initial;
+            max-height: 75%;
+            overflow: hidden;
+
+            > .main-header > .title,
+            > .sub-header,
+            h1, h2, h3 {
+                color: #fff;
+                text-shadow: 1px 1px 1px #000;
+            }
+        }
+
+        .media-date {
+            float: right;
+        }
+
+        &:hover {
+            .icon span {
+                color: $main-theme;
+            }
+        }
+    }
+
+    .col-visual,
+    .teaser-visual {
+        position: relative;
+    }
+
+    .content {
+        @include round-corners($image-border-radius);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #000;
+        z-index: $overflow-z-index;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    // special adjustment for YouTube media element in 16x9 squares
+    .preview.video .centered.image {
+        width: 101%;
+    }
+    @include media-breakpoint-up(xl) {
+        &.square-large.square-16-9 .preview.video .centered.image {
+            width: 104%;
+        }
+    }
+
+    .presized {
+        position: relative;
+        width: 100%;
+        height: initial;
+        padding-bottom: 100%;
+        overflow: hidden;
+    }
+}
+

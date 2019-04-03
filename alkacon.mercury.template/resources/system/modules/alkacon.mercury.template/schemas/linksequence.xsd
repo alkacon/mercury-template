@@ -1,0 +1,74 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd"/>
+
+    <xsd:element name="LinkSequenceData" type="OpenCmsLinkSequenceData"/>
+
+    <xsd:complexType name="OpenCmsLinkSequenceData">
+        <xsd:sequence>
+            <xsd:element name="LinkSequence" type="OpenCmsLinkSequence" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsLinkSequence">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Text" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="LinkEntry" type="OpenCmsNestedLink" maxOccurs="50" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true" />
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-linksequence.title)]]></Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>Text</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LinkSequence.Text)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LinkSequence.Text.help)]]></Description>
+                    <Widget>html</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkEntry</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LinkSequence.LinkEntry)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LinkSequence.LinkEntry.help)]]></Description>
+                </Setting>
+                 <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

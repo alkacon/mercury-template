@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Image tile list]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>This is a list of image tiles. These tiles float around each other.</p>
+<p>In order to float correctly, the height of the tiles has been precisely calculated in the CSS. Therefore this list will only display correctly if it is used inside a "Row 1 column (12 - full)".</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

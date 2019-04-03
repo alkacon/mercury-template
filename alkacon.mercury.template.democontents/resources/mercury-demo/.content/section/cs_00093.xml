@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[The Form element]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>This page demonstrates the usage and capabilities of the <em>Form</em> element that is part of the Mercury template. With the <em>Form</em> element, you can create from simple to complex forms for your pages. When the&nbsp;form is submitted, an email is send to a specified address containing the data entered. A variety of processing options can be set in the form content.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

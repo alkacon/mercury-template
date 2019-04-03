@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-privacypolicy.formatter.settings)]]></NiceName>
+    <Type><![CDATA[m-privacypolicy]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/privacy-policy/settings.jsp]]></target>
+        <uuid>705cda71-6e28-4335-950c-bc119156c6d5</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[1000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[privacypolicy]]></ContainerType>
+      </Types>
+    </Match>
+    <Display><![CDATA[false]]></Display>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>false</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <Preview>true</Preview>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

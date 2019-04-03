@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
+  <ListConfig language="en">
+    <Title><![CDATA[Downloads]]></Title>
+    <TypesToCollect>binary:b9c37262-48db-49d6-a321-d632c0799deb</TypesToCollect>
+    <TypesToCollect>image:27c28bc5-78cb-461b-bd6f-ee1a52488c34</TypesToCollect>
+    <TypesToCollect>plain:f0225114-6a9a-4898-a2d2-2b5168f94b92</TypesToCollect>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/mercury-demo/.galleries/Downloads/]]></target>
+        <uuid>f46468e6-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <Category/>
+    <CategoryMode><![CDATA[OR]]></CategoryMode>
+    <SortOrder><![CDATA[TITLE_ASC]]></SortOrder>
+    <ShowExpired>true</ShowExpired>
+  </ListConfig>
+</ListConfigs>

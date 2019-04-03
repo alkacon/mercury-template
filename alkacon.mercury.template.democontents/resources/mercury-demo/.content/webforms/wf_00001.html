@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WebForms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/form.xsd">
+  <WebForm language="de">
+    <Title><![CDATA[Kontakt Formular]]></Title>
+    <FormText name="FormText0">
+      <links/>
+      <content/>
+    </FormText>
+    <FormConfirmation name="FormConfirmation0">
+      <links/>
+      <content><![CDATA[<h2>Vielen Dank!</h2>
+<p>Wir werden Sie so schnell wie möglich kontaktieren.Die folgenden daten wurden eingegeben:</p>]]></content>
+    </FormConfirmation>
+    <FormCaptcha>
+      <FieldLabel><![CDATA[Spamkontrolle: Bitte geben Sie die Buchstaben im Feld unten ein]]></FieldLabel>
+      <Preset><![CDATA[/system/modules/org.opencms.apollo.template.webform/captcha/alkacon-dict-de.captchapreset]]></Preset>
+    </FormCaptcha>
+    <OptionalFormConfiguration>
+      <ShowCheck>false</ShowCheck>
+      <CheckText name="CheckText0">
+        <links/>
+        <content/>
+      </CheckText>
+      <ShowMandatory>true</ShowMandatory>
+      <ShowReset>false</ShowReset>
+    </OptionalFormConfiguration>
+    <InputField>
+      <FieldType><![CDATA[radio]]></FieldType>
+      <FieldLabel><![CDATA[Anrede]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldDefault><![CDATA[mrs:Frau|mr:Herr]]></FieldDefault>
+      <FieldParams><![CDATA[toggle=true]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Name]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=user|position=append|placeholder=Bitte geben Sie Ihren Vor- und Nachnamen ein]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email]]></FieldType>
+      <FieldLabel><![CDATA[E-Mail]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=envelope|position=append|placeholder=Bitte geben Sie Ihre E-Mail Adresse ein]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Adresse]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=truck|position=append|placeholder=Bitte geben Sie Ihre vollständige Anschrift ein]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[select]]></FieldType>
+      <FieldLabel><![CDATA[Ihr Anliegen]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldDefault><![CDATA[:--- Bitte auswählen ---|general:Allgemeine Fragen|info:Information|inquiry:Anfrage|other:Anderes Thema]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Nachricht oder Kommentar]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=comment|position=append|placeholder=Bitte geben Sie hier Ihre Nachricht oder einen Kommentar ein]]></FieldParams>
+    </InputField>
+    <MailFrom><![CDATA[sender@example.org]]></MailFrom>
+    <MailTo><![CDATA[recipient@example.org]]></MailTo>
+    <MailSubject><![CDATA[Mercury Formular- Gesendete Daten]]></MailSubject>
+    <MailText name="MailText0">
+      <links/>
+      <content><![CDATA[<p>Das Alkacon OpenCms Mercury Demo Formular wurde mit folgenden Daten abgeschickt:</p>]]></content>
+    </MailText>
+  </WebForm>
+  <WebForm language="en">
+    <Title><![CDATA[Contact form]]></Title>
+    <FormText name="FormText0">
+      <links/>
+      <content/>
+    </FormText>
+    <FormConfirmation name="FormConfirmation0">
+      <links/>
+      <content><![CDATA[<h2>Thank you!</h2>
+<p>We will contact you as soon as possible. The following data has been submitted:</p>]]></content>
+    </FormConfirmation>
+    <FormCaptcha>
+      <FieldLabel><![CDATA[Spam control: Please enter the letters in the field below]]></FieldLabel>
+      <Preset><![CDATA[/system/modules/org.opencms.apollo.template.webform/captcha/alkacon-dict-en.captchapreset]]></Preset>
+    </FormCaptcha>
+    <OptionalFormConfiguration>
+      <ShowCheck>false</ShowCheck>
+      <CheckText name="CheckText0">
+        <links/>
+        <content/>
+      </CheckText>
+      <ShowMandatory>true</ShowMandatory>
+      <ShowReset>false</ShowReset>
+    </OptionalFormConfiguration>
+    <InputField>
+      <FieldType><![CDATA[radio]]></FieldType>
+      <FieldLabel><![CDATA[Salutation]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldDefault><![CDATA[mrs:Mrs|mr:Mr]]></FieldDefault>
+      <FieldParams><![CDATA[toggle=true]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Full name]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=user|position=append|placeholder=Please provide your first and last name]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email]]></FieldType>
+      <FieldLabel><![CDATA[Email]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=envelope|position=append|placeholder=Please enter your email address]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Address]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=truck|position=append|placeholder=Please enter your full postal address]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[select]]></FieldType>
+      <FieldLabel><![CDATA[Your request]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldDefault><![CDATA[:--- Please choose ---|general:General questions|info:Information|inquiry:Inquiry|other:Other topic]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Message or comment]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=comment|position=append|placeholder=Please enter your message or comment here]]></FieldParams>
+    </InputField>
+    <MailFrom><![CDATA[sender@example.org]]></MailFrom>
+    <MailTo><![CDATA[recipient@example.org]]></MailTo>
+    <MailSubject><![CDATA[Mercury webform - Submitted data]]></MailSubject>
+    <MailText name="MailText0">
+      <links/>
+      <content><![CDATA[<p>The Alkacon OpenCms Mercury demo webform has been submitted with the following data:</p>]]></content>
+    </MailText>
+  </WebForm>
+</WebForms>

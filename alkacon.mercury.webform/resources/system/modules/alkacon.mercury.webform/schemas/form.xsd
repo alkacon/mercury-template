@@ -1,0 +1,216 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/inputfield.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalconfig.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalconfirmation.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalexpiration.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalrelease.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalfieldtext.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalformcaptcha.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalsubfield.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/dbconfig.xsd"/>
+
+    <xsd:element name="WebForms" type="OpenCmsWebForms"/>
+
+    <xsd:complexType name="OpenCmsWebForms">
+        <xsd:sequence>
+            <xsd:element name="WebForm" type="OpenCmsWebForm" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsWebForm">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="FormText" type="OpenCmsHtml" />
+            <xsd:element name="FormMiddleText" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="FormFooterText" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="FormConfirmation" type="OpenCmsHtml" />
+            <xsd:element name="FormCaptcha" type="OpenCmsWebFormCaptcha" minOccurs="0" />
+            <xsd:element name="OptionalFormRelease" type="OpenCmsOptionalWebFormRelease" minOccurs="0" />
+            <xsd:element name="OptionalFormExpiration" type="OpenCmsOptionalWebFormExpiration" minOccurs="0" />
+            <xsd:element name="OptionalFormConfiguration" type="OpenCmsOptionalWebFormConfiguration" minOccurs="0" />
+
+            <xsd:element name="InputField" type="OpenCmsWebFormInputField" maxOccurs="unbounded" />
+            <xsd:element name="OptionalFieldText" type="OpenCmsOptionalWebFormFieldText" minOccurs="0" maxOccurs="unbounded" />
+
+            <xsd:element name="OptionalSubField" type="OpenCmsOptionalWebFormSubField" minOccurs="0" maxOccurs="unbounded" />
+
+            <xsd:element name="MailType" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MailFrom" type="OpenCmsString" />
+            <xsd:element name="MailFromName" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MailTo" type="OpenCmsString" />
+            <xsd:element name="MailCC" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MailBCC" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MailSubject" type="OpenCmsString" />
+            <xsd:element name="MailText" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="MailCSS" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="OptionalConfirmationMail" type="OpenCmsOptionalWebFormConfirmationMail" minOccurs="0" />
+
+            <xsd:element name="DBConfig" type="OpenCmsWebFormDatabaseConfiguration" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.webform.messages"/>
+            <tabs>
+                <tab element="Title" name="Tab.FormPage" collapse="false">
+                    <description><![CDATA[%(key.msg.label.form.WebForm.Tab.FormPage.Description)]]></description>
+                </tab>
+                <tab element="InputField" name="Tab.Fields" collapse="false">
+                    <description><![CDATA[%(key.msg.label.form.WebForm.Tab.Fields.Description)]]></description>
+                </tab>
+                <tab element="OptionalSubField" name="Tab.SubFieldConfig" collapse="false">
+                <description><![CDATA[%(key.msg.label.form.WebForm.Tab.SubFieldConfig.Description)]]></description>
+                </tab>
+                <tab element="MailType" name="Tab.Mail" collapse="true">
+                    <description><![CDATA[%(key.msg.label.form.WebForm.Tab.Mail.Description)]]></description>
+                </tab>
+                <tab element="DBConfig" name="Tab.DB" collapse="false">
+                    <description><![CDATA[%(key.msg.label.form.WebForm.Tab.DB.Description)]]></description>
+                </tab>
+            </tabs>
+            <searchsettings containerPageOnly="true" />
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.Title.help)]]></Description>
+                    <Mapping>
+                        <MapTo>property:Title</MapTo>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>FormText</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormText)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.FormText.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>FormMiddleText</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormMiddleText)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.FormMiddleText.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>FormFooterText</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormFooterText)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.FormFooterText.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>FormConfirmation</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormConfirmation)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.FormConfirmation.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>FormCaptcha</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormCaptcha)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>OptionalFormRelease</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.OptionalFormRelease)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>OptionalFormExpiration</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.OptionalFormExpiration)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>OptionalFormConfiguration</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.OptionalFormConfiguration)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>InputField</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.InputField)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>OptionalFieldText</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.OptionalFieldText)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>OptionalSubField</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.OptionalSubField)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailType</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailType)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailType.help)]]></Description>
+                    <Widget>select</Widget>
+                    <WidgetConfig><![CDATA[html*:%(key.form.email.type.html)|text:%(key.form.email.type.text)]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailFrom</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailFrom)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailFrom.help)]]></Description>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailFromName</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailFromName)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailFromName.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailTo</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailTo)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailTo.help)]]></Description>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailCC</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailCC)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailCC.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailBCC</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailBCC)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailBCC.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailSubject</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailSubject)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailSubject.help)]]></Description>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailText</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailText)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailText.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[formatselect,source,table]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailCSS</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailCSS)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailCSS.help)]]></Description>
+                    <Widget>TextareaWidget</Widget>
+                    <Default><![CDATA[%(key.msg.setting.form.email.css)]]></Default>
+                    <WidgetConfig><![CDATA[6]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>OptionalConfirmationMail</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.OptionalConfirmationMail)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.OptionalConfirmationMail.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>DBConfig</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.DBConfig)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.DBConfig.help)]]></Description>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

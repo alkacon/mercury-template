@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinkSequenceData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/linksequence.xsd">
+  <LinkSequence language="de">
+    <Title><![CDATA[Neue Link-Sequenz]]></Title>
+    <LinkEntry>
+      <Text/>
+      <URI/>
+    </LinkEntry>
+  </LinkSequence>
+  <LinkSequence language="en">
+    <Title><![CDATA[Link sequence as row]]></Title>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms Website]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[http://www.opencms.org]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms Days]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[http://www.opencms-days.org]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[Alkacon Software]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[http://www.alkacon.com]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[icon:search]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/search/]]></target>
+          <uuid>f4d3f402-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </LinkEntry>
+  </LinkSequence>
+</LinkSequenceData>

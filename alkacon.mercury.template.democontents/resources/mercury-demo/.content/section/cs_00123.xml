@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Filter options for dynamic lists]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The list element provides powerful features&nbsp;to collect and display collections of elements on a page. The "Dynamic List" formatter provides Ajax-based paging trough long lists. For sorting and filtering a dynamic list, two special formatters are available:</p>
+<ul>
+<li>The "<em>Sort / category filter</em>" formatter allows to sort the list and filter by category.</li>
+<li>The "<em>Various filters</em>" formatter provides&nbsp;full text search in the list, filtering by date (year / month), filtering by folder and also filtering by category.</li>
+<li>The "<em>Category filter</em>" formatter allows to filter by category, where selections of multiple such filters can be combined.</li>
+</ul>
+<p>In order to use these features, just drop the same list element on the page multiple times and select different "Dynamic List" formatters.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

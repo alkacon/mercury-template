@@ -1,0 +1,133 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-slide.xsd"/>
+
+    <xsd:element name="ComplexSliders" type="OpenCmsComplexSliders"/>
+
+    <xsd:complexType name="OpenCmsComplexSliders">
+        <xsd:sequence>
+            <xsd:element name="ComplexSlider" type="OpenCmsComplexSlider" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsComplexSlider">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Delay" type="OpenCmsString" />
+            <xsd:element name="SlideTransition" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ShowTimer" type="OpenCmsBoolean" />
+            <xsd:element name="ShowNumbers" type="OpenCmsBoolean" />
+            <xsd:element name="ShowNavButtons" type="OpenCmsBoolean" />
+            <xsd:element name="PauseOnHover" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="ImageHeight" type="OpenCmsString" />
+            <xsd:element name="ImageHeightSM" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Responsive" type="OpenCmsBoolean" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Slide" type="OpenCmsSliderComplexSlide" minOccurs="1" maxOccurs="50" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.xtensions.slider-complex.messages"/>
+            <mappings>
+                <mapping element="GalleryTitle" mapto="property:Title" useDefault="true" />
+                <mapping element="GalleryTitle" mapto="urlName" useDefault="true" />
+            </mappings>
+            <defaults>
+                <default element="Title" value="%(key.type.m-slider-complex.title)" />
+                <default element="ShowNumbers" value="true" />
+                <default element="ShowNavButtons" value="true" />
+                <default element="PauseOnHover" value="true" />
+                <default element="ImageHeight" value="3-1" />
+                <default element="ImageHeightSM" value="4-3" />
+                <default element="Slide/Layer/Image/Class" value="" />
+                <default element="Slide/Layer/Image/PosX" value="55" />
+                <default element="Slide/Layer/Image/PosY" value="20" />
+                <default element="Slide/Layer/Image/Configuration" value="%(key.msg.option.slider-complex.configuration)" />
+                <default element="Slide/Layer/Text/Class" value="" />
+                <default element="Slide/Layer/Text/Tag" value="H2" />
+                <default element="Slide/Layer/Text/PosX" value="55" />
+                <default element="Slide/Layer/Text/PosY" value="20" />
+                <default element="Slide/Layer/Text/Configuration" value="%(key.msg.option.slider-complex.configuration)" />
+                <default element="GalleryTitle" value="%(page_title)%(no_prefix:: )%(value:Title)" resolveMacros="false" />
+            </defaults>
+            <tabs>
+                <tab element="Title" name="TabGeneral" collapse="false" />
+                <tab element="Slide" name="TabSlides" collapse="false" />
+            </tabs>
+            <layouts>
+                <layout element="Delay" widget="SelectorWidget" configuration="1000:1|2000:2|3000:3|4000:4|5000:5|6000:6|8000:8|10000:10|15000:15|20000:20|30000:30" />
+                <layout element="SlideTransition" widget="SelectorWidget" configuration="
+                    fade:Fade|
+                    crossfade:Fade Cross|
+                    slidehorizontal:Slide Horizontal|
+                    slidevertical:Slide Vertical|
+                    slideoverhorizontal:Slide Over Horizontal|
+                    slideoververtical:Slide Over Vertical|
+                    slideremovehorizontal:Slide Remove Horizontal|
+                    slideremovevertical:Slide Remove Vertical|
+                    slidingoverlayhorizontal:Slide Overlays Horizontal|
+                    slidingoverlayvertical:Slide Overlays Vertical|
+                    boxslide:Slide Boxes|
+                    slotslide-horizontal:Slide Slots Horizontal|
+                    slotslide-vertical:Slide Slots Vertical|
+                    boxfade:Fade Boxes|
+                    slotfade-horizontal:Fade Slots Horiontal|
+                    slotfade-vertical:Fade Slots Vertical|
+                    zoomout:Zoom Out|
+                    zoomin:Zoom In|
+                    slotzoom-horizontal:Zoom Slots Horizontal|
+                    slotzoom-vertical:Zoom Slots Vertical|
+                    curtain-1:Curtain From Left|
+                    curtain-2:Curtain from Right|
+                    curtain-3:Curtain from Middle|
+                    3dcurtain-horizontal:3D Curtain Horizontal|
+                    3dcurtain-vertical:3D Curtain Vertical|
+                    cube:Cube Vertical|
+                    cube-horizontal:Cube Horizontal|
+                    papercut:Paper Cut|
+                    flyin:Fly In|
+                    random-static:Random Flat|
+                    random-premium:Random Premium|
+                    random:Random Flat And Premium
+                " />
+                <layout element="ImageHeight" widget="SelectComboWidget" configuration="
+                    1-1:%(key.msg.setting.imageRatio.1-1)|
+                    4-3:%(key.msg.setting.imageRatio.4-3)|
+                    3-2:%(key.msg.setting.imageRatio.3-2)|
+                    16-9:%(key.msg.setting.imageRatio.16-9)|
+                    2-1:%(key.msg.setting.imageRatio.2-1)|
+                    2,35-1:%(key.msg.setting.imageRatio.235-1)|
+                    3-1:%(key.msg.setting.imageRatio.3-1)"
+                />
+                <layout element="ImageHeightSM" widget="SelectComboWidget" configuration="
+                    1-1:%(key.msg.setting.imageRatio.1-1)|
+                    4-3:%(key.msg.setting.imageRatio.4-3)|
+                    3-2:%(key.msg.setting.imageRatio.3-2)|
+                    16-9:%(key.msg.setting.imageRatio.16-9)|
+                    2-1:%(key.msg.setting.imageRatio.2-1)|
+                    2,35-1:%(key.msg.setting.imageRatio.235-1)|
+                    3-1:%(key.msg.setting.imageRatio.3-1)"
+                />
+            </layouts>
+            <validationrules>
+                <rule element="ImageHeight" type="error" regex=".+" />
+            </validationrules>
+            <searchsettings containerPageOnly="true">
+                <searchsetting element="Delay" searchcontent="false"/>
+                <searchsetting element="ShowTimer" searchcontent="false"/>
+                <searchsetting element="ShowNumbers" searchcontent="false"/>
+                <searchsetting element="ShowNavButtons" searchcontent="false"/>
+                <searchsetting element="ImageHeight" searchcontent="false"/>
+                <searchsetting element="ImageHeightSM" searchcontent="false"/>
+            </searchsettings>
+            <visibilities>
+                <visibility element="GalleryTitle" params="ROLE.WORKPLACE_USER" />
+            </visibilities>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

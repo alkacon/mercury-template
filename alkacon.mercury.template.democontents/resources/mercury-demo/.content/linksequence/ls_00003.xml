@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinkSequenceData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/linksequence.xsd">
+  <LinkSequence language="de">
+    <Title><![CDATA[Head links]]></Title>
+    <LinkEntry>
+      <Text><![CDATA[English]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/]]></target>
+          <uuid>acb43685-5224-11e5-9495-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[Suche]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo-de/suche/]]></target>
+          <uuid>f39d9684-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[Anmelden]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/login/]]></target>
+          <uuid>f394477a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </LinkEntry>
+  </LinkSequence>
+  <LinkSequence language="en">
+    <Title><![CDATA[Service Links]]></Title>
+    <LinkEntry>
+      <Text><![CDATA[Deutsch]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo-de/]]></target>
+          <uuid>f3964353-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[Search]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/search/]]></target>
+          <uuid>f4d3f402-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[Login]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/login/]]></target>
+          <uuid>f394477a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </LinkEntry>
+    <GalleryTitle><![CDATA[Service links for head navigation]]></GalleryTitle>
+  </LinkSequence>
+</LinkSequenceData>

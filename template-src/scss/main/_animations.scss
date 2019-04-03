@@ -1,0 +1,315 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _animations.scss
+ */
+
+// Note the build process assumes that this is run through postcss using the 'autoprefixer' plugin,
+// therefore ALL VENDOR PREFIXES like 'webkit-*" are AUTOMATICALLY ADDED later.
+
+// on small / mobile screens these effects don't work because usually there is no "hover" on a touch device, disable them
+@include media-breakpoint-up(md) {
+
+    html.desktop {
+
+        // "shadow", "inset" and "" raised effect share most markup
+        .effect-inset,
+        .effect-shadow,
+        .effect-raise {
+
+            &:not(.effect-piece) {
+                > .visual .effect-box {
+                    @include effect-box-reset;
+                }
+                &:hover {
+                    > .visual .effect-box {
+                        @include round-corners($image-border-radius);
+                    }
+                }
+            }
+
+            &.effect-piece {
+                @include effect-box-reset;
+
+                > .heading,
+                > .body,
+                > .visual .effect-box,
+                > .visual .subtitle,
+                > .link {
+                    @include effect-box-reset;
+                }
+
+                &:hover {
+                    z-index: #{$overflow-z-index + 1};
+                    @include round-corners($image-border-radius);
+
+                    > .visual .subtitle,
+                    > .body {
+                        transform: scale(0.93);
+                    }
+                    > .visual + .body  {
+                        transform-origin: center top;
+                    }
+                    > .heading {
+                        transform: scale(0.93) translate3d(0px, 10px, 0px);
+                    }
+                    > .link {
+                        transform: scale(0.93) translate3d(0px, -10px, 0px);
+                    }
+                }
+            }
+        }
+
+        // "raise box" effect
+        .effect-raise {
+            &:not(.effect-piece) {
+                &:hover {
+                    > .visual  .effect-box {
+                        transform: scale(1.075);
+                        box-shadow: 0 0 10px 1px $dropshadow;
+                    }
+                }
+            }
+
+            &.effect-piece {
+                &:hover {
+                    transform: scale(1.075);
+                    box-shadow: 0 0 10px 1px $dropshadow;
+                }
+            }
+         }
+
+        // "shadow" effect
+        .effect-shadow {
+            &:not(.effect-piece) {
+                &:hover {
+                    > .visual  .effect-box {
+                        box-shadow: 0 0 10px 1px $dropshadow;
+                    }
+                }
+            }
+
+            &.effect-piece {
+                &:hover {
+                    box-shadow: 0 0 10px 1px $dropshadow;
+                }
+            }
+        }
+
+        // "inset" effect
+        .effect-inset {
+            &:not(.effect-piece) {
+                &:hover {
+                    > .visual  .effect-box {
+                        transform: scale(0.93);
+                        box-shadow: 0 0 2px 0 $dropshadow inset;
+                    }
+                }
+            }
+
+            &.effect-piece {
+                &:hover {
+                    box-shadow: 0 0 2px 0 $dropshadow inset;
+                }
+            }
+        }
+
+         // "remove margins" effect
+         // alternative to "raise box" when an image sits inside an "overflow: hidden" box
+         // used by the logo slider
+        .effect-remove-margin {
+
+            .effect-box {
+                @include effect-box-reset;
+                transition-property: margin;
+            }
+
+            &:hover {
+                // remove margins on hover
+                .effect-box {
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+// "Ken Burns" effect
+html.desktop .effect-rotate {
+
+    // apply the effect to the animated box on hover
+    &:hover .image-src-box > .animated {
+       transform: scale(1.25) rotate(2deg);
+    }
+
+    // reverse all effects to the animated box if no hover
+    .image-src-box > .animated {
+        transition: transform 1.0s $easeOutQuad, opacity 750ms;
+    }
+
+    // limit the effect to the borders of this box
+    .image-src-box {
+        overflow: hidden;
+        z-index: $overflow-z-index;
+    }
+
+    @if ($image-border-radius != 0) {
+        .image-src-box {
+             @include round-corners($image-border-radius, true);
+        }
+    }
+}
+
+
+// static image border
+.effect-bordered {
+    .image-src-box {
+        border: $effect-static-border;
+    }
+}
+
+// clickme / showme animation.
+.clickme-showme {
+
+    cursor: pointer;
+
+    > .clickme {
+        display: none;
+    }
+
+    > .showme {
+        display: block;
+    }
+}
+
+
+// menu animations used in the navigation.
+@keyframes fadeTopMenu {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeRightMenu {
+    from {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fixHeader {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: $nav-head-fixed-opacity;
+        transform: none;
+    }
+}
+
+
+// spinner animation, displays a rotating "currently loading" symbol
+// used e.g. by the list and the image gallery
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.list-spinner,
+.spinner {
+    top: 45%;
+    width: 30px;
+    height: auto;
+    font-size: 30px;
+    position: absolute;
+    transform: translateY(-50%);
+    z-index: 1000;
+    &, a &  {
+        color: $white;
+    }
+
+    left: 50%;
+    .fa-spinner {
+        animation: spinner 1s infinite;
+        animation-timing-function: steps(4, end);
+    }
+}
+
+.spinnerInnerBox {
+    position: relative;
+    left: -150%;
+    background-color: black;
+    width: 300%;
+    padding: 100%;
+    border-radius: 12px;
+    line-height: 0;
+    opacity: 0.65;
+}
+
+.spinnerBottom {
+
+    top: initial;
+    position: fixed;
+    bottom: 80px;
+}
+
+
+// parallax background effect with background cover image
+.effect-parallax-bg {
+
+    background-image: none;
+    background-position: 50% 0px;
+    background-size: cover;
+    background-clip: border-box;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+@include media-breakpoint-up(md) {
+    html.desktop .effect-parallax-bg {
+        background-attachment: fixed;
+    }
+}

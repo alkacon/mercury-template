@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
+  <FunctionConfig language="en">
+    <NiceName><![CDATA[%(key.function.disqus)]]></NiceName>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/disqus.jsp]]></target>
+        <uuid>f250ed19-677d-4790-b5eb-246678610801</uuid>
+      </link>
+    </Jsp>
+    <Description><![CDATA[%(key.function.disqus.help)]]></Description>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+      </Types>
+    </Match>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[disqusSite.disqus]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[clickToLoad.disqus]]></IncludeName>
+    </Setting>
+  </FunctionConfig>
+</FunctionConfigs>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.list.formatter.filter)]]></NiceName>
+    <Type><![CDATA[listconfig]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/list/filter.jsp]]></target>
+        <uuid>27941448-def0-4cdd-8f30-cbe088d79bf4</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[2750]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[list]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>false</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <AllowsSettingsInEditor>true</AllowsSettingsInEditor>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showsearch.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showarchive.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showfolders.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showcategories.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[combine.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[catdisplayoptions.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[catfilters.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headline.filter]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

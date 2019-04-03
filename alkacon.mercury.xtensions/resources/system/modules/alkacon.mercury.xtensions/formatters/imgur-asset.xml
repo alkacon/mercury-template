@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-imgur-asset.formatter.default)]]></NiceName>
+    <Type><![CDATA[m-imgur-asset]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.xtensions/formatters/imgur-asset.jsp]]></target>
+        <uuid>002d51d9-1e1d-4d94-a577-7411514ae9a8</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[1000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <Preview>true</Preview>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.2]]></IncludeName>
+      <Default><![CDATA[3]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showText.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showLink.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[useImgurTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imgur-section.usetitle)]]></DisplayName>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

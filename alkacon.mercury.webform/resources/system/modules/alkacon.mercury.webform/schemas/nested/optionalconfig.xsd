@@ -1,0 +1,96 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+	<xsd:element name="OptionalWebFormConfigurations" type="OpenCmsOptionalWebFormConfigurations"/>
+
+	<xsd:complexType name="OpenCmsOptionalWebFormConfigurations">
+		<xsd:sequence>
+			<xsd:element name="OptionalWebFormConfiguration" type="OpenCmsOptionalWebFormConfiguration" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpenCmsOptionalWebFormConfiguration">
+		<xsd:sequence>
+
+			<xsd:element name="ShowCheck" type="OpenCmsBoolean" />
+			<xsd:element name="CheckText" type="OpenCmsHtml" />
+			<xsd:element name="ShowMandatory" type="OpenCmsBoolean" />
+			<xsd:element name="ShowReset" type="OpenCmsBoolean" />
+			<xsd:element name="TemplateFile" type="OpenCmsVfsFile" minOccurs="0" />
+			<xsd:element name="ActionClass" type="OpenCmsString" minOccurs="0" />
+			<xsd:element name="KeepSession" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="TargetUri" type="OpenCmsVfsFile" minOccurs="0" />
+			<xsd:element name="ForwardMode" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="InstantRedirect" type="OpenCmsBoolean" minOccurs="0" />
+		</xsd:sequence>
+		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+	</xsd:complexType>
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<resourcebundle name="alkacon.mercury.webform.messages"/>
+		  <FieldSettings>
+		  	<Setting>
+                <PropertyName>ShowCheck</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ShowCheck)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ShowCheck.help)]]></Description>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>CheckText</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.CheckText)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.CheckText.help)]]></Description>
+                <Widget>HtmlWidget</Widget>
+                <WidgetConfig>imagegallery,downloadgallery,formatselect,source,link,anchor,table</WidgetConfig>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>ShowMandatory</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ShowMandatory)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ShowMandatory.help)]]></Description>
+                <Default>true</Default>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>ShowReset</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ShowReset)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ShowReset.help)]]></Description>
+                <Default>true</Default>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>TemplateFile</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.TemplateFile)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.TemplateFile.help)]]></Description>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>ActionClass</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ActionClass)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ActionClass.help)]]></Description>
+                <Default>alkacon.mercury.webform.DefaultActionHandler</Default>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>KeepSession</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.KeepSession)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.KeepSession.help)]]></Description>
+                <Default>360</Default>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>TargetUri</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.TargetUri)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.TargetUri.help)]]></Description>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>ForwardMode</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ForwardMode)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.ForwardMode.help)]]></Description>
+                <Default>true</Default>
+		  	</Setting>
+		  	<Setting>
+                <PropertyName>InstantRedirect</PropertyName>
+                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.InstantRedirect)]]></DisplayName>
+                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.InstantRedirect.help)]]></Description>
+                <Default>true</Default>
+		  	</Setting>
+		</FieldSettings>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+</xsd:schema>

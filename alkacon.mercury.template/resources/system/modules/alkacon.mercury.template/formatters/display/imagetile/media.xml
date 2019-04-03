@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-media.formatter.teaser.square)]]></NiceName>
+    <Type><![CDATA[m-media]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/media.jsp]]></target>
+        <uuid>9063c099-3bfa-11e9-a38a-0242ac11002b</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[1700]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[imagetile]]></ContainerType>
+        <ContainerType><![CDATA[media]]></ContainerType>
+        <ContainerType><![CDATA[mercury-list]]></ContainerType>
+      </Types>
+    </Match>
+    <Display><![CDATA[teaser-image-tile]]></Display>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.square]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[squareGrid.square]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[firstSquare.square]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showPreface.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.imageTile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.imageTile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.imageTile]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

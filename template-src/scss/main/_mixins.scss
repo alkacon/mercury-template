@@ -1,0 +1,294 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+// Intro header, usually for teaser elements in lists
+@mixin intro-header($font-size: $font-size-sm) {
+    line-height: 1.1;
+    font-size: 65%;
+    font-weight: $font-weight-bold;
+    color: $intro-header-color;
+}
+
+// Focus outline color
+@mixin focus-outline() {
+    outline-color: $focus-outline-color;
+    outline-width: 3px;
+    outline-style: solid;
+    outline-offset: -2px;
+    box-shadow: inset 0px 0px 4px 1px $focus-outline-color, 0px 0px 7px 2px $focus-outline-color;
+    z-index: $above-oc-z-index + 5000; // well above OpenCms edit points AND menu dropdowns
+}
+
+// Sets the text color for all elements but 'a' and 'span'
+@mixin set-text-color($text-color) {
+    color: $text-color;
+    *:not(a):not(span) {
+        color: $text-color;
+    }
+}
+
+// Add round corners
+@mixin round-corners($radius, $overflow:false) {
+    @if ($radius != 0) {
+        border-radius: $radius;
+    }
+    @if ($overflow == true) {
+        overflow: hidden;
+        z-index: $overflow-z-index;
+    }
+}
+
+// Basic image overlay
+@mixin image-overlay {
+    display: inline-block;
+    color: $black;
+    background-color: rgba($white, 0.6);
+    opacity: 0.8;
+    position: absolute;
+    bottom: 0;
+    pointer-events: none;
+    z-index: #{$overflow-z-index + 2};
+    box-shadow: none;
+}
+
+// Add an image overlay that is aligned to the right
+@mixin image-overlay-right {
+    @include image-overlay;
+    right: 0;
+    left: initial;
+    text-align: right;
+    @if ($copyright-border-radius != 0) {
+        border-top-left-radius: $copyright-border-radius;
+    }
+}
+
+// Add an image overlay that is aligned to the left
+@mixin image-overlay-left {
+    @include image-overlay;
+    right: initial;
+    left: 0;
+    text-align: left;
+    @if ($copyright-border-radius != 0) {
+        border-top-right-radius: $copyright-border-radius;
+    }
+}
+
+// Image overlay for copyright notices
+@mixin image-copyright {
+    @include image-overlay-right;
+    padding: 2px 4px;
+    font-family: $font-family-base;
+    font-size: 8px;
+    line-height: 1;
+}
+
+// Icon overlays for images, e.g. used for the "zoom image" icon
+@mixin image-icon-overlay {
+    display: inline-block;
+    color: $white;
+    position: absolute;
+    right: 16px;
+    bottom: 12px;
+    text-shadow: 1px 1px 1px $black;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: #{$overflow-z-index + 2};
+}
+
+// Clearfix that is ::before not ::after
+@mixin clearfix-before {
+    &::before {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+
+// Generate lead text
+@mixin text-lead() {
+    @if ($line-height-lead != $line-height-base) {
+        line-height: $line-height-lead;
+    }
+    @include media-breakpoint-down(md) {
+        font-size: $h4-font-size;
+    }
+    @include media-breakpoint-up(lg) {
+        font-size: $h3-font-size;
+    }
+}
+
+
+// Reset animation transiton effects and shadows
+@mixin effect-box-reset {
+
+    box-shadow: none;
+    transition-property: transform, box-shadow, transform-origin;
+    transition-duration: $transition-timing;
+    transition-timing-function: $easeInOutSine;
+    transition-delay: 0s;
+    z-index: #{$overflow-z-index - 1};
+}
+
+
+// White noise image for backgrounds
+@mixin noise-image {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-repeat: repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAHlBMVEUAAAD///////////////////////////////////8kfJuVAAAACnRSTlMAIgQNCB4bERUYt5wRYgAAA+ZJREFUOMt9lEtT2lAYhr9zciHZnXMSSNjlBJFml0Cx7S7gBd1BQMFdAmp1lwTsZReKqN0laK3+205nOp1OZ9p/8M7zzPMCnhKUUE0svfCVk46oyvXpt4ArM5CuzrRwzyrTnIrukkDg+WRYW76zIeozWVAlRKO945nz6uDkEIkVGAUDOHgR3swn5uohb3po1tQtL6SfUc/9CC2yRQYo+JLAHBqINeiqBHn3zDFB1W1r15BDJiOUbyF5jY+3/cHUrMFClHitfRtmrGK6DQulG2Y6SDfG0FhosaPssV1rbcFL1oFveqeWlCMXcrcYEtTrXpJUU3WkPwiBI/rZggKJh4i+FYSujc83JFzeEPDKo/mpDi6OqZ2YbqyK291ifUBrDLno6YWCSoCIZILGohC3SbSR9gce/6RUvwCCRmj164nh+wFrTS4UxKMVTsEAb9q9b9Y2qYd7vid+zxmiLrkK3TMguO0lfkGGr09u1pvOWBAAleY3lgZ/kCoRoEltIuSVreVyBNFlPzfq6HLBbeqrJEe5pLLv7nMP5H9NgOpVUfGJRL5Ymb5ulRS+f7YqrfLkCfY7GerK5J5W6PUtKn9EbzqFR0RSBVHTJ7ojnuIdJFDitd6FboaE8gyB1m8mERY5eTk+EUj4GuPpqH5d8zCACJr9xlJaMwBUtc1BKArgWeIY7HMLF92tonQJ9Tz1M1brB4FlHLnwNr5VE87ueubbR4hzZZGiO1LscBUQ5OIhPnGfoSMWXigMzAx8RnkPIJ7hDHaooS4kwNsBOLp9RD5kGBTlvDUTPC0X9zXYVfMO53Y5JSiAXU5dEjvKaZJo6zM0kMiF2XiVxwaQDhxjvHzsAuwsM36nbk8V2ClttYBsLQRy9BlZVEPykyAfuIpDdXIRgetNqb3XidzolhoQ7nZvxqUhBwTwhJcXcmWtorRfuesyrkOhQhX6BeBHs45FphhEu44Ogc8PkTJ63Rlw6AkM7A+N0zvh9c0D0wp/IL63wY5qwP9VHTThhp6GXBR6lSogxkB9wMR3Awa/HfIOILyJY5dGUBsa+n+2+ePg/mDoElOfWPsfrsbuRpRpmjTnYD8nUvtYRA2S8qRVCX3J7S87HulB+TsyhBF7YwmZaCWErMLbqYyLFOD5hchsblKSjR34Wlbf99U4ZiSx4eyxPTwEFJVvVV88qB+Wrm3f+SkNZMG3tuvdcfD3MUBZ8nbdaWVvZIJuRcqSRsYkpONYA3XnsXzUPmlKmEiUlF41LCXdmM0hh19krQgL5KJULKdNwu54XN6HT5jKeN1wz6WpTCnH/mRbtockvocqqrDz9qch46kTvqqEv0v7AUw2CT/ylENXAAAAAElFTkSuQmCC);
+}
+
+// color transition effect, should be used for :hover elements
+@mixin color-transition {
+    transition-property: color, background-color, border-color;
+    transition-duration: $transition-timing;
+    transition-timing-function: $transition-function;
+}
+
+// Colored buttons with hover effects
+@mixin button-color($bg-color, $hover-color) {
+    background-color: $bg-color;
+    color: get-text-color($bg-color);
+
+    &:focus,
+    &:hover,
+    &.active,
+    .open .dropdown-toggle & {
+        color: get-text-color($hover-color);
+        background-color: $hover-color;
+        text-decoration: none;
+        @include color-transition;
+        @if ($btn-border-style != none) {
+            border-color: $hover-color;
+        }
+    }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        background-color: $hover-color;
+    }
+}
+
+// Default Headings
+@mixin heading-base {
+    @if ($font-family-headings != $font-family-base) {
+        font-family: $font-family-headings;
+    }
+    @if ($font-weight-headings != $font-weight-base) {
+        font-weight: $font-weight-headings;
+    }
+    @if ($line-height-headings != $line-height-base) {
+        line-height: $line-height-headings;
+    }
+    @if ($headings-color != $body-color) {
+        color: $headings-color;
+    }
+}
+
+// Default buttons
+@mixin button-base {
+    margin: 0;
+    padding: $btn-def-padding;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    box-shadow: none;
+    border: $btn-border-style; // must be set even if 'none' because user agent may apply border to <button> elements
+    @if ($btn-text-transform != none) {
+        text-transform: $btn-text-transform;
+    }
+    @if ($btn-min-width > 0) {
+        min-width: $btn-min-width;
+    }
+    @if ($btn-font-family != $font-family-base) {
+        font-family: $btn-font-family;
+    }
+    @if ($btn-font-size != $font-size-base) {
+        font-size: $btn-font-size;
+    }
+    @if ($btn-font-weight != $font-weight-base) {
+        font-weight: $btn-font-weight;
+    }
+    @if ($btn-line-height != $target-line-height) {
+        line-height: $btn-line-height;
+    }
+    @include round-corners($btn-border-radius);
+    @include button-color($btn-default, $btn-default-hover);
+}
+
+// Container / editor elements background
+@mixin oct-meta-bg {
+    border-radius: 4px !important;
+    color: $con-text-col-light !important;
+    background-color: $con-col-orange !important;
+    background: linear-gradient(166deg, lighten($con-col-orange, 5%) 0%, darken($con-col-orange, 5%) 100%) !important;
+}
+
+// Font size REM rebasing, usually on the HTML element
+@mixin rem-base {
+    @if ($font-rem-base-mobile-size != $font-rem-base-desktop-size) {
+        @include media-breakpoint-down(md) {
+            font-size: $font-rem-base-mobile-size;  // base font size for rem units
+        }
+        @include media-breakpoint-up(lg) {
+            // adjust fonts for smaller screens
+            font-size: $font-rem-base-desktop-size;
+        }
+    } @else {
+        font-size: $font-rem-base-desktop-size;
+    }
+}
+
+@mixin list-filter-box {
+    > div {
+        border: 1px solid $list-border-color;
+        border-top: none;
+        border-radius: $list-border-radius;
+        box-shadow: $panel-shadow;
+        padding: $grid-gutter-width / 2;
+    }
+}
+
+@mixin piece-bottom-margin {
+    > .piece:not(:last-of-type) {
+        margin-bottom: $default-margin;
+    }
+}
+
+@mixin copyright-subtitle {
+    .copyright {
+        position: relative;
+        > div {
+             @include image-copyright;
+        }
+    }
+
+    .subtitle {
+        margin-top: $default-margin-verysmall;
+        line-height: 1.15;
+        font-style: italic;
+        font-size: $section-subtitle-size;
+    }
+}

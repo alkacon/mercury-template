@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MapData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/map.xsd">
+  <Map language="en">
+    <Title><![CDATA[New location map]]></Title>
+    <MapCoord>
+      <Caption/>
+      <Coord><![CDATA[{"lat":52.5185499,"lng":13.364882599999987,"zoom":14,"type":"roadmap","mode":"dynamic","address":"John-Foster-Dulles-Allee 10, 10557 Berlin, Germany"}]]></Coord>
+    </MapCoord>
+  </Map>
+</MapData>

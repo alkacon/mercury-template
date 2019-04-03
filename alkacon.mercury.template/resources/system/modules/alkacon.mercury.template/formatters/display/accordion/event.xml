@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-event.formatter.teaser.accordion)]]></NiceName>
+    <Type><![CDATA[m-event]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/accordion/event.jsp]]></target>
+        <uuid>7a172f01-3f20-4cd6-b5d7-26debea32a51</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[15000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[accordion]]></ContainerType>
+        <ContainerType><![CDATA[event]]></ContainerType>
+        <ContainerType><![CDATA[mercury-list]]></ContainerType>
+      </Types>
+    </Match>
+    <Display><![CDATA[static:teaser-accordion]]></Display>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.accordion]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.accordion]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listTag.accordion]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

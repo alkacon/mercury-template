@@ -1,0 +1,193 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _detail-page.scss
+ */
+
+.detail-page {
+
+    // visual image overlay as used on detail pages
+    .overlay {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .image-src-box {
+            order: 2;
+        }
+        .visual-overlay {
+            order: 1;
+        }
+        .copyright {
+            position: static;
+        }
+    }
+
+    // text elements that belong to the main detail visual
+    .detail-visual {
+         margin-bottom: $default-margin;
+
+        .visual-info {
+            // applies only to the info labels below the image
+            font-size: $font-size-base;
+            font-weight: normal;
+            line-height: 1.25;
+            display: flex;
+            flex-direction: column;
+
+            > div + div,
+            .infogroup > div + div {
+                margin-top: $default-margin-small;
+            }
+
+            .location {
+                .locname {
+                    margin-bottom: 5px;
+                }
+                .adressInfo {
+                    margin-top: 10px;
+                    margin-bottom: 0;
+                    p:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .info {
+                &::before {
+                    vertical-align: top;
+                    display: inline-block;
+                    width: 2.5rem;
+                    font-family: FontAwesome;
+                    padding-right: $default-margin-small;
+                }
+                > div {
+                    display: inline-block;
+                }
+            }
+
+            .date::before {
+                content: "\f133";
+            }
+
+            .person::before {
+                content: "\f2c0";
+            }
+
+            .location::before {
+                content: "\f041";
+            }
+
+            .images::before {
+                content: "\f03e";
+            }
+
+            .type::before {
+                content: "\f05a";
+            }
+        }
+
+        .visual-text {
+            font-weight: $font-weight-bold;
+            strong {
+                font-style: italic;
+            }
+        }
+    }
+
+    .detail-content {
+        margin-bottom: $default-margin;
+
+        @include clearfix;
+        @include piece-bottom-margin;
+    }
+
+    @include media-breakpoint-up(md) {
+        .overlay {
+            display: block;
+        }
+
+        .visual-overlay {
+            position: absolute;
+            left:50%;
+            top:50%;
+            width: 80%;
+            pointer-events: none;
+            z-index: #{$overflow-z-index + 2};
+            transform: translate(-50%, -50%);
+
+            .intro-headline {
+                margin: 0;
+                > span {
+                    margin: 0;
+                    text-align: center;
+                    font-weight: 300;
+                    color: $text-light;
+                    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+                    line-height: 1.15;
+                }
+                > .intro {
+                    font-size: $h3-font-size;
+                    margin-bottom: $default-margin-verysmall;
+                }
+                > .headline {
+                    font-size: $h1-font-size * 1.5;
+                }
+            }
+        }
+
+        .visual-darken {
+            position: absolute;
+            pointer-events: none;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            z-index: #{$overflow-z-index + 2};
+            background-image: linear-gradient(
+                rgba(99, 99, 99, 0.0),
+                rgba(99, 99, 99, 0.3) 30%,
+                rgba(99, 99, 99, 0.3) 70%,
+                rgba(99, 99, 99, 0.0));
+        }
+
+        .detail-visual.full {
+            // applies only to the info labels below the image if visual piece is full row size
+            .visual-info {
+                flex-direction: row;
+                justify-content: space-between;
+
+                &.right {
+                    justify-content: flex-end;
+                }
+
+                > div + div {
+                    margin-top: 0;
+                }
+
+                .person {
+                    order: 1;
+                }
+
+                .infogroup,
+                .date {
+                    order: 10;
+                }
+            }
+        }
+    }
+}

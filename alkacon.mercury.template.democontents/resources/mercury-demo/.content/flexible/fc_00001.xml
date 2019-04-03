@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+  <Flexible language="en">
+    <Title><![CDATA[CSS Background Classes]]></Title>
+    <Code name="Code0">
+      <links/>
+      <content><![CDATA[<!--
+
+Visualization of all available Background colors.
+Output is created from JavaScript using the color coded compiled into the theme.
+HTML for the boxes is using Mercury tiles.
+
+-->
+<div id="backgrounds" class="row-tile tile-margin-2 template-info sample many-colors">
+<div class="tile-col flex-col col-xs-6 col-sm-4 col-md-3 col-lg-2">
+<div class="flex-fill bo-1 bo-grey box box-$(name)">
+
+<div class="lead">box box-$(name)</div>
+<div>$(value)</div>
+
+</div>
+</div>
+</div>]]></content>
+    </Code>
+  </Flexible>
+</FlexibleData>

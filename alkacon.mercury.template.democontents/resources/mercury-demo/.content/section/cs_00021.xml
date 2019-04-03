@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Funktionen von OpenCms?]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Vivamus elementum semper nisi. Aenean vulputate eleifend sit amet tellus.</p>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[Top features of OpenCms?]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Vivamus elementum semper nisi. Aenean vulputate eleifend sit amet tellus lorem ipsum.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

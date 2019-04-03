@@ -1,0 +1,218 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/image.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/teaser-data.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address-choice-extended.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/booking.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
+
+    <xsd:element name="EventData" type="OpenCmsEventData" />
+
+    <xsd:complexType name="OpenCmsEventData">
+        <xsd:sequence>
+            <xsd:element name="Event" type="OpenCmsEvent" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsEvent">
+        <xsd:sequence>
+            <xsd:element name="Intro" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
+            <xsd:element name="Dates" type="OpenCmsSerialDate" />
+            <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
+            <xsd:element name="AddressChoice" type="OpenCmsAddressExtendedChoice" minOccurs="0" />
+            <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="Booking" type="OpenCmsBooking" minOccurs="0" />
+            <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
+            <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
+            <xsd:element name="Category" type="OpenCmsDynamicCategory" />
+            <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
+            <xsd:element name="DetailPageUrl" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <tabs>
+                <tab element="Intro" collapse="false" name="%(key.tab.Event)" />
+                <tab element="AddressChoice" collapse="false" name="%(key.tab.Location)" />
+                <tab element="Booking" collapse="false" name="%(key.tab.Booking)" />
+                <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
+                <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
+            </tabs>
+            <searchsettings containerPageOnly="false">
+                <searchsetting element="Type">
+                    <solrfield targetfield="event-type" sourcefield="*_s" />
+                </searchsetting>
+            </searchsettings>
+            <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Paragraph*/Image*/Image" configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
+            <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
+            <parameters>
+                <param name="galleryTitle"><![CDATA[%!
+                    !%%if (content.value.("Dates").toDateSeries.isSeries)%%!
+                        !% \%(key.msg.page.dateseries.type.series)%!
+                        !%: %!
+                    !%%elseif (content.value.("Dates").toDateSeries.isExtractedDate)%%!
+                        !% \%(key.msg.page.dateseries.type.extracted): %!
+                    !%%endif%%!
+                    !%%if (content.value.("Title").isSet)% %content.value.("Title")%%endif%%!
+                    !%%if (content.value.("Dates").toDateSeries.isSeries)%%!
+                        !% (%content.value.("Dates").toDateSeries.first.startInstance.format.("dd.MM.yy")%%!
+                        !% - %content.value.("Dates").toDateSeries.last.startInstance.format.("dd.MM.yy")%)%!
+                    !%%else%%!
+                        !% (%content.value.("Dates").toDateSeries.first.startInstance.format.("dd.MM.yy")%)%!
+                    !%%endif%%!
+                    !%%if (content.value.("Type").isSet)%, %content.value.("Type")%%endif%%!
+                !%]]></param>
+                <param name="detailPageUrl"><![CDATA[%!
+                    !%%if (content.value.("Title").isSet)% %content.value.("Title")%%endif%%!
+                    !%%if (! content.value.("Dates").toDateSeries.isSeries)%%!
+                        !%-%content.value.("Dates").toDateSeries.first.startInstance.format.("yyyy.MM.dd")%%!
+                    !%%endif%%!
+                !%]]></param>
+            </parameters>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Intro</PropertyName>
+                    <Description><![CDATA[%(key.label.Intro.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-event.title)]]></Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>listtitle</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Preface</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Preface)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Preface.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>3|proportional</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Image.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Dates</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Event.Dates)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Event.Dates.help)]]></Description>
+                    <Widget>serialdate</Widget>
+                    <Default><![CDATA[{"from": "%(currenttime)", "to": "%(currenttime + 604800000)", "pattern":{"type":"NONE"}}]]></Default>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>Type</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Event.Type)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Event.Type.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Paragraph</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Paragraph)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Paragraph.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>AddressChoice</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.AddressChoice)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.AddressChoice.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>LocationNote</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LocationNote)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LocationNote.help)]]></Description>
+                    <Widget>html</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Category</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Category)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Category.help)]]></Description>
+                    <Widget>category</Widget>
+                    <WidgetConfig>onlyleafs=false</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>TeaserData</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.TeaserData)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.TeaserData.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MetaInfo</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Availability</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Booking</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Booking)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>Order</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^[-+]?\d+$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Order)]]></Error>
+                    <Search>listorder</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>DetailPageUrl</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.DetailPageUrl)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.DetailPageUrl.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(stringtemplate:detailPageUrl)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(stringtemplate:galleryTitle)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JobData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/job.xsd">
+  <Job language="en">
+    <Title><![CDATA[Vice President of Sweaty Handshakes (m/f)]]></Title>
+    <Date>1561712400000</Date>
+    <Introduction>
+      <Caption><![CDATA[This is a great job!]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa.</p>
+<p>Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit.</p>
+<p>Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue. In turpis.&nbsp;</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/samples/50.jpg]]></target>
+            <uuid>f3314072-3a95-11e9-bd84-0242ac11002b</uuid>
+            <query><![CDATA[__scale=h:450,w:1024,cx:0,cy:129,ch:450,cw:1024]]></query>
+          </link>
+        </Image>
+      </Image>
+    </Introduction>
+    <Text>
+      <Caption><![CDATA[WHAT WE CAN OFFER:]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<div id="job-tasks">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem:</p>
+<ul>
+<li>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</li>
+<li>Aenean imperdiet&nbsp;etiam ultricies nisi vel augue&nbsp;curabitur ullamcorper ultricies nisi.</li>
+<li>Maecenas tempus, tellus eget sit amet adipiscing sem neque sed ipsum.</li>
+<li>Lorem ante, dapibus in, viverra quis, feugiat a, tellus.</li>
+<li>Duis leo sed fringilla mauris sit amet nibh&nbsp;donec sodales sagittis magna.</li>
+</ul>
+</div>]]></content>
+      </Text>
+    </Text>
+    <Text>
+      <Caption><![CDATA[WHAT YOU SHOULD HAVE:]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc:</p>
+<ul>
+<li>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</li>
+<li>Aenean imperdiet&nbsp;etiam ultricies nisi vel augue&nbsp;curabitur ullamcorper ultricies nisi.</li>
+<li>Maecenas tempus, tellus eget sit amet adipiscing sem neque sed ipsum.</li>
+<li>Lorem ante, dapibus in, viverra quis, feugiat a, tellus.</li>
+</ul>]]></content>
+      </Text>
+    </Text>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[1500]]></Order>
+  </Job>
+</JobData>

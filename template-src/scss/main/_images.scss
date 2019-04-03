@@ -1,0 +1,82 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _images.scss
+ */
+
+// Lazy loading image background - Animated SVG source:
+/*
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" version="1" viewBox="0 0 16 16">
+  <style>
+    @keyframes kr{from{transform: rotate(0)}to{transform: rotate(360deg)}}
+  </style>
+  <g style="animation-name:kr;animation-duration:2s;animation-iteration-count:infinite;animation-timing-function:linear;transform-origin:50% 50%;width:16px;height:16px">
+    <path fill="none" stroke="#000" stroke-dasharray="32.4" stroke-linecap="round" stroke-width="2.1" d="M8 1.125A6.875 6.875 0 1 1 1.125 8" style="animation-name:kr;animation-duration:1.33s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transform-origin:50% 50%"/>
+  </g>
+</svg>
+*/
+
+img {
+    &.lazyloading,
+    &.lazyload {
+        background:
+            url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmVyc2lvbj0iMSIgdmlld0JveD0iMCAwIDE2IDE2Ij4NCiAgPHN0eWxlPg0KICAgIEBrZXlmcmFtZXMga3J7ZnJvbXt0cmFuc2Zvcm06IHJvdGF0ZSgwKX10b3t0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpfX0NCiAgPC9zdHlsZT4NCiAgPGcgc3R5bGU9ImFuaW1hdGlvbi1uYW1lOmtyO2FuaW1hdGlvbi1kdXJhdGlvbjoyczthbmltYXRpb24taXRlcmF0aW9uLWNvdW50OmluZmluaXRlO2FuaW1hdGlvbi10aW1pbmctZnVuY3Rpb246bGluZWFyO3RyYW5zZm9ybS1vcmlnaW46NTAlIDUwJTt3aWR0aDoxNnB4O2hlaWdodDoxNnB4Ij4NCiAgICA8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1kYXNoYXJyYXk9IjMyLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjEiIGQ9Ik04IDEuMTI1QTYuODc1IDYuODc1IDAgMSAxIDEuMTI1IDgiIHN0eWxlPSJhbmltYXRpb24tbmFtZTprcjthbmltYXRpb24tZHVyYXRpb246MS4zM3M7YW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDppbmZpbml0ZTthbmltYXRpb24tdGltaW5nLWZ1bmN0aW9uOmN1YmljLWJlemllcigwLjQsIDAsIDAuMiwgMSk7dHJhbnNmb3JtLW9yaWdpbjo1MCUgNTAlIi8+DQogIDwvZz4NCjwvc3ZnPg==")
+            no-repeat scroll 50% 50% $image-bg-color;
+        background-size: 24px 24px;
+        background-color:  $image-bg-color;
+        box-shadow: 0 0 1px $dropshadow inset;
+        opacity: 0.25;
+    }
+    &.lazyloaded {
+        background: initial;
+        box-shadow: initial;
+    }
+}
+
+// "Reveal" effect added to images in the main content sections
+main img,
+aside img {
+    &.lazyloaded {
+        opacity: 1;
+        transition: opacity 750ms;
+    }
+}
+
+// Make image boxes get the correct size before loading the actual image
+// See: https://github.com/aFarkas/lazysizes#tip-specifying-image-dimensions-minimizing-reflows-and-avoiding-page-jumps
+.image-src-box {
+    width: 100%;
+
+    img {
+        width: 100%;
+    }
+
+    &.presized {
+        position: relative;
+        height: 0;
+        display: block;
+        // padding-bottom is calculated accrding to ratio and rendered at style to HTML
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+    }
+}

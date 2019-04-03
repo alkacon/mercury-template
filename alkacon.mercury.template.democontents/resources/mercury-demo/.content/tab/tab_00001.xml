@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TabData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/tab.xsd">
+  <Tab language="de">
+    <Title><![CDATA[FAQ Tab]]></Title>
+    <TabEntry>
+      <Label><![CDATA[OpenCms Fragen]]></Label>
+      <Id><![CDATA[tab-container1]]></Id>
+    </TabEntry>
+    <TabEntry>
+      <Label><![CDATA[Alberne Fragen]]></Label>
+      <Id><![CDATA[tab-container2]]></Id>
+    </TabEntry>
+  </Tab>
+  <Tab language="en">
+    <Title><![CDATA[FAQ Tab]]></Title>
+    <TabEntry>
+      <Label><![CDATA[OpenCms questions]]></Label>
+      <Id><![CDATA[tab-container1]]></Id>
+    </TabEntry>
+    <TabEntry>
+      <Label><![CDATA[Silly questions]]></Label>
+      <Id><![CDATA[tab-container2]]></Id>
+    </TabEntry>
+  </Tab>
+</TabData>

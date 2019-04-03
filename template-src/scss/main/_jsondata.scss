@@ -1,0 +1,125 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _jsondata.scss
+ */
+
+// Data about the CSS encoded in JSON so that it can be easily consumed by JavaScript.
+
+// Page info element
+#template-info {
+    visibility: hidden;
+
+    // passing variables from SCSS to JavaScript
+    // see https://css-tricks.com/making-sass-talk-to-javascript-with-json/
+    &::before {
+        display: none;
+        content: '{#{$themeJSON}}';
+    }
+}
+
+.template-grid-info {
+    &::before {
+        content: 'xs';
+    }
+    @include media-breakpoint-up(sm) {
+        &::before {
+            content: 'sm';
+        }
+    }
+    @include media-breakpoint-up(md) {
+        &::before {
+            content: 'md';
+        }
+    }
+    @include media-breakpoint-up(lg) {
+        &::before {
+            content: 'lg';
+        }
+    }
+    @include media-breakpoint-up(xl) {
+        &::before {
+            content: 'xl';
+        }
+    }
+}
+
+#template-grid-info {
+
+    &::before {
+        display: none;
+    }
+
+    &::after {
+        display: none;
+        content: '{' +
+            '"xsMax":' + breakpoint-max(xs) + ', ' +
+            '"smMin":' + breakpoint-min(sm) + ', ' +
+            '"smMax":' + breakpoint-max(sm) + ', ' +
+            '"mdMin":' + breakpoint-min(md) + ', ' +
+            '"mdMax":' + breakpoint-max(md) + ', ' +
+            '"lgMin":' + breakpoint-min(lg) + ', ' +
+            '"lgMax":' + breakpoint-max(lg) + ', ' +
+            '"xlMin":' + breakpoint-min(xl) + ', ' +
+            '"navMobMax":' + breakpoint-max(md) + ', ' +
+            '"navDeskMin":' + breakpoint-min(lg) + ', ' +
+            '"navMobPos":' + '"' + $nav-mobile-position + '",' +
+            '"navFixHeader":' + '"' + $nav-setting-fixheader + '"' +
+        '}'
+    }
+}
+
+// Page info elements providing JavaScript access to selected styles
+.template-info {
+
+    &.many-colors {
+
+        $JSON: get-json($many-colors);
+        &::before {
+            display: none;
+            content: '[#{$JSON}]';
+        }
+    }
+
+    &.text-colors {
+
+        $JSON: get-json($text-colors);
+        &::before {
+            display: none;
+            content: '[#{$JSON}]';
+        }
+    }
+
+    &.link-colors {
+
+        $JSON: get-json($link-colors);
+        &::before {
+            display: none;
+            content: '[#{$JSON}]';
+        }
+    }
+
+    &.reduced-colors {
+
+        $JSON: get-json($reduced-colors);
+        &::before {
+            display: none;
+            content: '[#{$JSON}]';
+        }
+    }
+}

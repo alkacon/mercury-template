@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ArticleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/article.xsd">
+  <Article language="de">
+    <Title><![CDATA[OpenCms ist für Dich]]></Title>
+    <Date>1569244200000</Date>
+    <Paragraph>
+      <Caption><![CDATA[Und für alle anderen auch]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Eros mollis explicari ad has. Option detracto conceptam sed in, id regione consequat ius. Cu dictas equidem mel. Duo sapientem repudiandae ex, cu mea alia commodo salutatus, ei nec inermis invenire repudiare. Quem impetus mei te. Ex esse iudico mei, vel hinc elaboraret dissentiet ne. Eos causae vocent contentiones eu.</p>
+<p>Probo recteque delicatissimi eu mei. Vis dico wisi id, meis repudiare laboramus in has.&nbsp;</p>
+<p>No feugiat maiorum neglegentur nec, porro mediocritatem per eu, eu vel dicam graecis volumus. Partiendo intellegebat per id, esse viderer duo no. Ea vitae saperet nec, simul appellantur conclusionemque at vim.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/people/25.jpg]]></target>
+            <uuid>f196a334-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+        <Copyright><![CDATA[CC0 Public Domain / Pixabay.com]]></Copyright>
+      </Image>
+    </Paragraph>
+    <Author><![CDATA[Jay Pritchett]]></Author>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Article>
+  <Article language="en">
+    <Title><![CDATA[OpenCms is for you]]></Title>
+    <Date>1569244200000</Date>
+    <Paragraph>
+      <Caption><![CDATA[And for everyone else]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Eros mollis explicari ad has. Option detracto conceptam sed in, id regione consequat ius. Cu dictas equidem mel. Duo sapientem repudiandae ex, cu mea alia commodo salutatus, ei nec inermis invenire repudiare. Quem impetus mei te. Ex esse iudico mei, vel hinc elaboraret dissentiet ne. Eos causae vocent contentiones eu.</p>
+<p>Probo recteque delicatissimi eu mei. Vis dico wisi id, meis repudiare laboramus in has.&nbsp;</p>
+<p>No feugiat maiorum neglegentur nec, porro mediocritatem per eu, eu vel dicam graecis volumus. Partiendo intellegebat per id, esse viderer duo no. Ea vitae saperet nec, simul appellantur conclusionemque at vim.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/people/25.jpg]]></target>
+            <uuid>f196a334-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+      </Image>
+    </Paragraph>
+    <Paragraph>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu.</p>
+<p>Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue.</p>]]></content>
+      </Text>
+    </Paragraph>
+    <Paragraph>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.</p>
+<p>Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu.</p>
+<p>Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/office/21.jpg]]></target>
+            <uuid>f0b25d38-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+        <Copyright><![CDATA[CC0 Public Domain / unsplash.com]]></Copyright>
+      </Image>
+    </Paragraph>
+    <Author><![CDATA[Jay Pritchett]]></Author>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Article>
+</ArticleData>

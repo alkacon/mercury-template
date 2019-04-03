@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContactData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/contact.xsd">
+  <Contact language="en">
+    <Kind><![CDATA[person]]></Kind>
+    <Name>
+      <FirstName><![CDATA[Cameron]]></FirstName>
+      <LastName><![CDATA[Tucker]]></LastName>
+    </Name>
+    <Organization><![CDATA[Cascading Styles LLC]]></Organization>
+    <Position><![CDATA[Director Customer Relations]]></Position>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/people/34.jpg]]></target>
+          <uuid>f1b54eea-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+    </Image>
+    <Contact>
+      <AddressChoice>
+        <Address>
+          <StreetAddress><![CDATA[Am Hof 12]]></StreetAddress>
+          <PostalCode><![CDATA[50667]]></PostalCode>
+          <Locality><![CDATA[Cologne]]></Locality>
+          <Country><![CDATA[Germany]]></Country>
+        </Address>
+      </AddressChoice>
+      <Phone><![CDATA[+49 (221) 123-4567]]></Phone>
+      <Mobile><![CDATA[+49 (170) 123-4567]]></Mobile>
+      <Email>
+        <Email><![CDATA[cameron.tucker@example.org]]></Email>
+        <ObfuscateEmail>false</ObfuscateEmail>
+      </Email>
+    </Contact>
+    <Link>
+      <Text><![CDATA[More about us]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/the-team/]]></target>
+          <uuid>f4d52c8a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </Contact>
+</ContactData>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FaqData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/faq.xsd">
+  <Faq language="en">
+    <Question><![CDATA[What is the difference between "Tiles" and "Squares"]]></Question>
+    <Date>1551000060000</Date>
+    <Paragraph>
+      <Caption><![CDATA[Tiles use display: flex - Squares use display: block.]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p><strong>TILES are "variable height":</strong></p>
+<ul>
+<li>Are part of a flex-box row</li>
+<li>Height of a tile is based on the content / formatter</li>
+<li>All tiles in a row will have the same height decause of flex</li>
+<li>If height of tiles on a row is variable, flex will compensate for this</li>
+</ul>
+<p><strong>SQUARES require "fixed height":</strong></p>
+<ul>
+<li>Are not in flex-box row, use traditional box model</li>
+<li>Usually do "float" left</li>
+<li>Height must be set in the square itself as fixed height</li>
+</ul>]]></content>
+      </Text>
+    </Paragraph>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Faq>
+</FaqData>

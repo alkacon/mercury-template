@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-layout-group-simple.formatter.default)]]></NiceName>
+    <Type><![CDATA[m-layout-group-simple]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/layout/group.jsp]]></target>
+        <uuid>24e647af-377d-4f58-8783-0fa08f8ba425</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[1000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[area]]></ContainerType>
+        <ContainerType><![CDATA[side-group]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>false</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headerPosition.layout]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showBreadcrumbs.layout]]></IncludeName>
+    </Setting>
+    <Attribute>
+      <Key><![CDATA[useFixedHeader]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).contains.("-fh"))%%!
+                !%select%!
+            !%%else%%!
+                !%hidden%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[useBreadcrumbs]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).contains.("-bc"))%%!
+                !%checkbox%!
+            !%%else%%!
+                !%hidden%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
+  </NewFormatter>
+</NewFormatters>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+  <Flexible language="en">
+    <Title><![CDATA[Slideshare presentation]]></Title>
+    <Code name="Code0">
+      <links/>
+      <content><![CDATA[<iframe src="//www.slideshare.net/slideshow/embed_code/key/i3PodN533aT4Pe" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> ]]></content>
+    </Code>
+  </Flexible>
+</FlexibleData>

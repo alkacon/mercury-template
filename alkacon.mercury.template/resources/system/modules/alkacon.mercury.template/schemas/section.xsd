@@ -1,0 +1,84 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/image.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd" />
+
+    <xsd:element name="ContentSectionData" type="OpenCmsContentSectionData" />
+
+    <xsd:complexType name="OpenCmsContentSectionData">
+        <xsd:sequence>
+            <xsd:element name="ContentSection" type="OpenCmsContentSection" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsContentSection">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Text" type="OpenCmsHtml"  minOccurs="0" />
+            <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
+            <xsd:element name="Link" type="OpenCmsNestedLink" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true" />
+            <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image*/Image"
+                    configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-section.title)]]></Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>Text</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Text.help)]]></Description>
+                    <Widget>html</Widget>
+                    <WidgetConfig><![CDATA[height:400px,link,anchor,source,downloadgallery,formatselect]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Image.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Link</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Link)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Link.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SliderData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/slider.xsd">
+  <Slider language="en">
+    <Title><![CDATA[It's just easy]]></Title>
+    <TextColor>#FFFFFF</TextColor>
+    <TextBackgroundColor>#555555</TextBackgroundColor>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/50.jpg]]></target>
+          <uuid>f3314072-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <Link>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/release/]]></target>
+          <uuid>f4dad1fc-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Link>
+      <SuperTitle><![CDATA[Easy to use]]></SuperTitle>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/48.jpg]]></target>
+          <uuid>f329512a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Full control]]></SuperTitle>
+      <TitleLine1/>
+      <TitleLine2/>
+      <Position>
+        <Top><![CDATA[top]]></Top>
+        <Left><![CDATA[right]]></Left>
+      </Position>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/09.jpg]]></target>
+          <uuid>f21e4a26-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Great features]]></SuperTitle>
+      <TitleLine1/>
+      <TitleLine2/>
+    </Image>
+    <Image>
+      <Uri>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/35.jpg]]></target>
+          <uuid>f2e25ce2-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Uri>
+      <SuperTitle><![CDATA[Simple and intuitive]]></SuperTitle>
+      <TitleLine1/>
+      <TitleLine2/>
+      <Position>
+        <Top><![CDATA[top]]></Top>
+        <Left><![CDATA[left]]></Left>
+      </Position>
+    </Image>
+  </Slider>
+</SliderData>

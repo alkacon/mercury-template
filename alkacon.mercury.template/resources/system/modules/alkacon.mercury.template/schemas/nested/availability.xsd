@@ -1,0 +1,49 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="AvailabilityData" type="OpenCmsAvailabilityData" />
+
+    <xsd:complexType name="OpenCmsAvailabilityData">
+        <xsd:sequence>
+            <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsAvailability">
+        <xsd:sequence>
+            <xsd:element name="Release" type="OpenCmsDateTime" minOccurs="0" />
+            <xsd:element name="Expiration" type="OpenCmsDateTime" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Release</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability.Release)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.Release.help)]]></Description>
+                    <Widget>datetime</Widget>
+                    <Default><![CDATA[%(currenttime)]]></Default>
+                    <Search>false</Search>
+                    <Mapping>
+                       <MapTo>attribute:datereleased</MapTo>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>Expiration</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability.Expiration)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.Expiration.help)]]></Description>
+                    <Widget>datetime</Widget>
+                    <Default><![CDATA[%(currenttime + 31536000000)]]></Default>
+                    <Search>false</Search>
+                    <Mapping>
+                       <MapTo>attribute:dateexpired</MapTo>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

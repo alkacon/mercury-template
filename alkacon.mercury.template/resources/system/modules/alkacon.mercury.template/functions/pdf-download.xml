@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
+  <FunctionConfig language="en">
+    <NiceName><![CDATA[%(key.function.pdf-download)]]></NiceName>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/pdf-download.jsp]]></target>
+        <uuid>5e2cc519-07ab-4351-9097-dc69733eccfa</uuid>
+      </link>
+    </Jsp>
+    <Description><![CDATA[%(key.function.pdf-download.help)]]></Description>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+      </Types>
+    </Match>
+    <StrictContainers>true</StrictContainers>
+  </FunctionConfig>
+</FunctionConfigs>

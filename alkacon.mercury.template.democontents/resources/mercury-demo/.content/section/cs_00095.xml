@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Tiles and "standard" elements]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The elements above are in a standard container. Blow is a text-tile list. This shows that tiles and standard elements can look exactly the same if configured correctly.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

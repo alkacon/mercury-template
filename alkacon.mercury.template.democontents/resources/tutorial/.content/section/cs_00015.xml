@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Start exploring OpenCms]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-demo/]]></target>
+          <uuid>acb43685-5224-11e5-9495-0242ac11002b</uuid>
+        </link>
+        <link name="link1" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-demo/element-pages/]]></target>
+          <uuid>f4987161-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </links>
+      <content><![CDATA[<h4>Congratulations!</h4>
+<p>Now you know the basics of how to manage contents in OpenCms. Of course, there are many more possibilities. OpenCms is a fully featured website CMS that allows creation of the most demanding websites.</p>
+<h4>Click on any of the boxes below to continue exploring</h4>
+<p>The <strong><em>Release Notes</em></strong> contain information about what is new in this OpenCms release. Our <em><strong>Documentation</strong></em> contains in depth information about how to manage and develop websites with OpenCms.</p>
+<p>We recommend you start with the <a href="%(link0)">Demo Website</a> that has been installed with this tutorial, which provides a fully featured, nice looking example based on the Mercury Template.</p>
+<p>Of particular interest in the demo may be the <a href="%(link1)">Element pages</a> section. Here you get an overview on all the content types available in the Mercury Template.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

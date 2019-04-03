@@ -1,0 +1,48 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="DetailMetaInfoData" type="OpenCmsDetailMetaInfoData"/>
+
+    <xsd:complexType name="OpenCmsDetailMetaInfoData">
+        <xsd:sequence>
+            <xsd:element name="DetailMetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsDetailMetaInfo">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Description" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Keywords" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Detail.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Detail.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Description</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Detail.Description)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Detail.Description.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>4|proportional</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Keywords</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Detail.Keywords)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Detail.Keywords.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>4|proportional</WidgetConfig>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

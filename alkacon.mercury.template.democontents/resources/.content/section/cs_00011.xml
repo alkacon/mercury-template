@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[The OpenCms mailing list]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The <strong>opencms-dev</strong> mailing list is the place for all questions, comments and suggestions for OpenCms and the main forum of the OpenCms community. Subscribe to the list by filling out the following form.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

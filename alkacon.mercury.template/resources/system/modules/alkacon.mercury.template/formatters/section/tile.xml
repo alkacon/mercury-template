@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-section.formatter.tile)]]></NiceName>
+    <Type><![CDATA[m-section]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/tile.jsp]]></target>
+        <uuid>198ae09a-a0af-47b9-832b-8ed1bc7c4c9f</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[19000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[tile]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

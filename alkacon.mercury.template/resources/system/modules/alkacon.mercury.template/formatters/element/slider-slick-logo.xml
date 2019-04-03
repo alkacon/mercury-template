@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-slider.formatter.slick-logo)]]></NiceName>
+    <Type><![CDATA[m-slider]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-slick.jsp]]></target>
+        <uuid>e59314c6-b0ad-471e-9481-4d4fe9dc2bf2</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[1400]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[slider]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <AllowsSettingsInEditor>true</AllowsSettingsInEditor>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.element.0]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatioSmall.slider.logo]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visibleSlides.slider]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[rotationTime.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.slider.logo]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showArrows.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[slickType.slider.logo]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

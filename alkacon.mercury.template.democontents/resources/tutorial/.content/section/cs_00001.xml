@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Welcome to the OpenCms tutorial]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>This short&nbsp;tutorial guides your first steps in OpenCms. It will explain how to edit content and create new pages.</p>
+<h3>First you need to log in</h3>
+<p>Before you can edit content with OpenCms, you need to log in. Start with the "Demo" user. The default login information for this user&nbsp;is displayed in the blue box on the left.</p>
+<p>Enter the information from the box on the left in the login form below and press "Login":</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

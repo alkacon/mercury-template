@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+  <Flexible language="en">
+    <Title><![CDATA[CSS Text and Link Classes]]></Title>
+    <Code name="Code0">
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[]]></target>
+          <anchor><![CDATA[]]></anchor>
+        </link>
+        <link name="link1" internal="true" type="A">
+          <target><![CDATA[]]></target>
+          <anchor><![CDATA[]]></anchor>
+        </link>
+      </links>
+      <content><![CDATA[<!--
+
+Visualization of all available text / link color options.
+Output is created from JavaScript using the color coded compiled into the theme.
+HTML for the boxes is using Mercury Tiles.
+
+-->
+
+<!-- Links -->
+<div id="linkcolors" class="subelement row-tile tile-margin-2 template-info sample link-colors">
+<div class="tile-col col-md-6 col-lg-4">
+
+<div class="bo-1 bo-grey links-$(name) $(background)">
+<div class="lead"><a href="%(link0)">links-$(name)</a></div>
+<p>
+<a href="%(link1)">
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+<em>$(value)</em>
+</a>
+</p>
+</div>
+
+</div>
+</div>
+
+
+<!-- Theme dependent text color -->
+<div id="themetextcolor" class="subelement row-tile tile-margin-2 template-info sample text-colors">
+<div class="tile-col col-md-6 col-lg-4">
+
+<div class="bo-1 bo-grey text-$(name) $(background)">
+<div class="lead">text-$(name)</div>
+<p>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+<em>$(value)</em>
+</p>
+</div>
+
+</div>
+</div>
+
+
+<!-- Extended colored text options -->
+<div id="extendtextcolor" class="subelement row-tile tile-margin-2 template-info sample many-colors">
+<div class="tile-col col-md-6 col-lg-4">
+
+<div class="bo-1 bo-grey text-$(name) $(background)">
+<div class="lead">text-$(name)</div>
+<p>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+<em>$(value)</em>
+</p>
+</div>
+
+</div>
+</div>]]></content>
+    </Code>
+  </Flexible>
+</FlexibleData>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[OpenCms is just great (CS)]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>]]></content>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/office/05.jpg]]></target>
+          <uuid>f04a9b78-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Color the CMS]]></Title>
+      <Copyright><![CDATA[CC0 Public Domain / unsplash.com]]></Copyright>
+    </Image>
+    <Link>
+      <Text><![CDATA[More]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/home/]]></target>
+          <uuid>f4c48a55-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

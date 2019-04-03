@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MediaData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/media.xsd">
+  <Media language="en">
+    <Intro><![CDATA[OpenCms Video]]></Intro>
+    <Title><![CDATA[Creating pages in the sitemap editor]]></Title>
+    <Preface><![CDATA[The OpenCms sitemap editor allows adding of pages and reordering of the navigation with drag & drop.]]></Preface>
+    <MediaContent>
+      <YouTube>
+        <YouTubeId><![CDATA[PvgfUKIcUGg]]></YouTubeId>
+      </YouTube>
+    </MediaContent>
+    <Date>1566716400000</Date>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The fully <strong>browser based user interface</strong> features configurable editors for structured content with well defined fields. Alternatively, content can be created using an integrated <strong>WYSIWYG editor</strong> similar to well known office applications.</p>]]></content>
+    </Text>
+    <Length><![CDATA[3:38]]></Length>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Media>
+</MediaData>

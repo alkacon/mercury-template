@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Sample Headings]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Simple Headings are also created with the <em>Content Section</em> Element. Four different sizes are offered, corresponding to HTML elements h1 to h4.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

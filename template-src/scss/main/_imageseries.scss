@@ -1,0 +1,250 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _imageseries.scss
+ */
+
+$pswp-title-size:           1.8rem !default;
+$pswp-copyright-size:       1.1rem !default;
+$pswp-title-height:         $line-height-headings !default;
+
+$pswp__root-z-index:        $above-oc-toolbar !default;
+$pswp__assets-path:         '../photoswipe/default-skin/' !default;
+
+// import the slick-carousel distribution SCSS
+@import '../../plugins/photoswipe/main';
+@import '../../plugins/photoswipe/default-skin/default-skin';
+
+$imageseries-border-radius: ($image-border-radius) * 2 !default;
+
+// Note: This value must be available in _tiles.scss $sq-margins.
+// This value is currently also hardcoded in the imageseries formatter JSP as css class.
+$imageseries-square-margin: 2px !default;
+
+// Image series base classes
+
+.type-imageseries {
+
+    &.element {
+        .images {
+            font-weight: $font-weight-bold;
+        }
+    }
+
+    > .series {
+        margin-left: -1 * $imageseries-square-margin;
+        margin-right: -1 * $imageseries-square-margin;
+        position: relative;
+
+        > .images {
+            margin-top: -1 * $imageseries-square-margin;
+            margin-bottom: -1 * $imageseries-square-margin;
+        }
+
+        > button.btn {
+
+            margin-top: 2 * $imageseries-square-margin;
+            margin-left: $imageseries-square-margin;
+            margin-right: $imageseries-square-margin;
+            width: calc(100% - #{2 * $imageseries-square-margin});
+        }
+
+        .imagedata {
+
+            display: none;
+        }
+    }
+
+    .effect-box {
+        position: relative;
+
+        .centered {
+            @include image-icon-overlay;
+        }
+    }
+
+    .square-col .content {
+        // must always set this because this may reset tile rounding
+        @include round-corners($image-border-radius);
+    }
+}
+
+html.noscript .type-imageseries .series {
+
+    // image series requires JavaScript
+    display: none;
+}
+
+.pswp {
+
+    .title {
+        color: #eee;
+        font-family: $font-family-headings;
+        font-weight: $font-weight-headings;
+        font-size: $pswp-title-size;
+        line-height: $pswp-title-height;
+        text-shadow: 1px 1px 1px #000;
+    }
+
+    .copyright {
+        color: #bbb;
+        font-size: $pswp-copyright-size;
+        line-height: 1.2;
+        text-shadow: 1px 1px 1px #000;
+    }
+
+    @if ($imageseries-border-radius != 0) {
+        img {
+            @include round-corners($imageseries-border-radius);
+        }
+    }
+
+    .pswp__top-bar {
+        background-color: rgba(0,0,0,.25);
+    }
+
+    .pswp__caption {
+        min-height: auto;
+        background-color: transparent;
+    }
+
+    .pswp__caption__center {
+        text-align: center;
+        padding: 0 0 10px 0;
+    }
+
+    @include media-breakpoint-up(sm) {
+        .pswp__caption__center {
+            max-width: 90%;
+        }
+    }
+}
+
+.pswp__img {
+    background-color: $grey-lighter;
+}
+
+// Image gallery image enter animation, used when the image gallery is displayed
+
+.comein {
+    transform: translateY(120px);
+    animation: come-in 0.8s ease forwards;
+    &:nth-child(even) {
+        transform: translateY(150px);
+        animation-duration: 1.0s; // This makes the images look staggered when entering
+    }
+}
+
+
+@keyframes come-in {
+    to { transform: translateY(0); }
+}
+
+// Zoom overlay effect used by image series as well as the 'image zoom' formatter
+
+$zoom-bg:               rgba($black, 0.5) !default;
+$zoom-fg:               $text-light !default;
+$zoomer-bg:             rgba($white, 0.6) !default;
+$zoomer-fg:             $black !default;
+$zoomer-overlay-size:   35px;
+
+a:focus .zoom-overlay .zoom-icon,
+.zoom:hover .zoom-overlay .zoom-icon {
+    opacity: 1;
+    transform: scale(1);
+    border: 0;
+    box-shadow: none;
+}
+
+.zoom-overlay {
+    cursor: zoom-in;
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    transition: all 0.1s ease-in-out 0s;
+
+    .zoom-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.4s ease-in-out 0s;
+        z-index: 100;
+        background-color: $zoom-bg;
+        &:before {
+            background: transparent;
+        }
+        &:after {
+            background: transparent;
+        }
+
+        span {
+            // trick to position the element in the center of the surrounding div
+            // see http://stackoverflow.com/questions/5703552/css-center-text-horizontal-and-vertical-inside-a-div-block
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 30px;
+            color: $zoom-fg;
+        }
+    }
+}
+
+.effect-box .zoomer {
+    position: relative;
+    cursor: zoom-in;
+
+    &::after {
+        font-family: FontAwesome;
+        content: "\f002"; // search / zoom
+        @include image-icon-overlay;
+    }
+}
+
+a .effect-box .zoomer {
+    cursor: pointer;
+    &::after {
+        content: "";
+    }
+}
+
+@if ($image-border-radius != 0) {
+    .zoom-overlay .zoom-icon,
+    .zoom-overlay .image-src-box > img,
+    .image-src-box {
+         border-radius: $image-border-radius;
+    }
+
+    .image-src-box {
+        overflow: hidden;
+    }
+
+    // special reset for images in sections
+    .bo-radius-0 {
+        .zoom-overlay .zoom-icon,
+        .zoom-overlay .image-src-box > img,
+        .image-src-box {
+             border-radius: 0;
+        }
+    }
+}

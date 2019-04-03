@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[The Link Sequence element]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The <em>Link Sequence</em> allows you to create a list&nbsp;of links to other pages or download files. The links can be internal or external and formatted as a plain list, in a row or like a navigation. Moreover, differnt icons can be used for bullet points.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

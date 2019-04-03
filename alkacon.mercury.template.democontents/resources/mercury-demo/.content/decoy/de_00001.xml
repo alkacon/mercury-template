@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DecoyData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/decoy.xsd">
+  <Decoy language="en">
+    <Intro><![CDATA[The old is the new new]]></Intro>
+    <Title><![CDATA[OpenCms homepage now in retro design]]></Title>
+    <Preface><![CDATA[The OpenCms homepage now features a ground breaking, highly innovative "retro" design. 
+A trend-setting approach in sharp contrast to nowadays common responsive design used by every other website.]]></Preface>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/34.jpg]]></target>
+          <uuid>f2df017e-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[To the OpenCms website]]></Title>
+    </Image>
+    <Date>1577696400000</Date>
+    <Link>
+      <Text><![CDATA[See homepage]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[http://www.opencms.org]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[3000]]></Order>
+  </Decoy>
+</DecoyData>

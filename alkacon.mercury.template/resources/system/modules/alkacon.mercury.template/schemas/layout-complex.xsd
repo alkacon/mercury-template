@@ -1,0 +1,82 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/layout-column.xsd"/>
+
+    <xsd:element name="LayoutComplexData" type="OpenCmsLayoutComplexData"/>
+
+    <xsd:complexType name="OpenCmsLayoutComplexData">
+        <xsd:sequence>
+            <xsd:element name="LayoutComplex" type="OpenCmsLayoutComplex" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsLayoutComplex">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="PreMarkup" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="PostMarkup" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ParentTypes" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Container" type="OpenCmsLayoutColumn" maxOccurs="12" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-layout-row-complex.title)]]></Default>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType><![CDATA[error]]></RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>disptitle</Search>
+                    <Mapping>
+                        <MapTo>property:Title</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>PreMarkup</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Layout.PreMarkup)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Layout.PreMarkup.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <Search>false</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>PostMarkup</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Layout.PostMarkup)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Layout.PostMarkup.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <Search>false</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>ParentTypes</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Layout.ParentTypes)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Layout.ParentTypes.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>Container</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Layout.Container)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Layout.Container.help)]]></Description>
+                    <Search>false</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

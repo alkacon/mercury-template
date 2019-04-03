@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Link to Step 5]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The images above provide a quick intro on using the sitemap. In the sitemap, you can move existing pages or create new pages by drag and drop, similar to editing content.</p>
+<p>You can access several options for each&nbsp;page&nbsp;by clicking on the <em><strong>Show&nbsp;menu</strong></em> icon that is displayed right on the sitemap entries.&nbsp;</p>
+<p>Go ahead and try the sitemap editor. Afterwards, come back and continue the introduction tour with the "back office" of OpenCms.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[Continue with step 5: Launchpad and Explorer]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/tutorial/step-5-launchpad-and-explorer/]]></target>
+          <uuid>f58cbc89-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

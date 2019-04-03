@@ -1,0 +1,113 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _footer.scss
+ */
+
+.area-foot {
+
+    .topfoot {
+        display: flex;
+        padding-top: $default-margin;
+        background-color: $foot-top-bg-color;
+        color: $foot-top-text-color;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $foot-top-header-color;
+        }
+
+        a:not(.btn) {
+            color: $foot-top-link-color;
+
+            &:focus,
+            &:hover {
+                color: $foot-top-link-hover-color;
+            }
+        }
+    }
+    .subfoot {
+        display: flex;
+        padding-top: $default-margin;
+        background-color: $foot-sub-bg-color;
+        color: $foot-sub-text-color;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $foot-sub-header-color;
+        }
+
+        a:not(.btn) {
+            color: $foot-sub-link-color;
+
+            &:focus,
+            &:hover {
+                color: $foot-sub-link-hover-color;
+            }
+        }
+    }
+}
+
+// "Back to top" icon on the lower right of display
+
+#topcontrol {
+    color: $nav-toggle-text;
+    background: $nav-toggle-bg;
+    z-index: #{$above-oc-z-index - 1}; // the back to top icon should be above the edit points
+    width: $nav-toggle-size;
+    height: $nav-toggle-size;
+    font-size: round($nav-font-size * 1.75);
+    line-height: $nav-toggle-size - 4;
+    display: block;
+    position: fixed;
+    visibility: visible;
+    right: $grid-gutter-width / 2;
+    bottom: $grid-gutter-width / 2;
+    border-radius: $nav-border-radius !important;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+
+    &.show {
+        transition: opacity 0.33s;
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    &:hover {
+        @include color-transition;
+        background-color: $nav-toggle-bg-hover;
+    }
+
+    &::after {
+        width: $nav-toggle-size;
+        line-height: $nav-toggle-size;
+        content: "\f106";
+        position: absolute;
+        text-align: center;
+        font-family: FontAwesome;
+    }
+
+    @include media-breakpoint-down(xs) {
+        width: round($nav-toggle-size-xxs);
+        height: round($nav-toggle-size-xxs);
+
+        &::after {
+            width: round($nav-toggle-size-xxs);
+            line-height: round($nav-toggle-size-xxs);
+        }
+    }
+}

@@ -1,0 +1,61 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/navigation-root.xsd"/>
+
+    <xsd:element name="NavigationData" type="OpenCmsNavigationData"/>
+
+    <xsd:complexType name="OpenCmsNavigationData">
+        <xsd:sequence>
+            <xsd:element name="Navigation" type="OpenCmsNavigation" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsNavigation">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Root" type="OpenCmsNavigationRoot" minOccurs="0" />
+            <xsd:element name="NavDepth" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true" />
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.Navigation.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                    <Mapping>
+                        <MapTo>property:Title</MapTo>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>Root</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Navigation.Root)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Navigation.Root.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>NavDepth</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Navigation.NavDepth)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Navigation.NavDepth.help)]]></Description>
+                    <Widget>select</Widget>
+                    <Default>3</Default>
+                    <WidgetConfig>1|2|3*|4|5|6|7|8|9|10</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

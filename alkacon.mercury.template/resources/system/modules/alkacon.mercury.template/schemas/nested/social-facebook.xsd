@@ -1,0 +1,81 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="SocialFacebookData" type="OpenCmsSocialFacebookData" />
+
+    <xsd:complexType name="OpenCmsSocialFacebookData">
+        <xsd:sequence>
+            <xsd:element name="SocialFacebook" type="OpenCmsSocialFacebook" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsSocialFacebook">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Description" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Image" type="OpenCmsVfsFile" minOccurs="0" />
+            <xsd:element name="Url" type="OpenCmsVarLink" minOccurs="0" />
+            <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Site" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Description</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Description.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>5</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Image.help)]]></Description>
+                    <Widget>imagegallery</Widget>
+                    <WidgetConfig>{useformat:true}</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Url</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.SocialFacebook.Url)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.SocialFacebook.Url.help)]]></Description>
+                    <Widget>combo</Widget>
+                    <WidgetConfig><![CDATA[
+                        article|
+                        website|
+                        place|
+                        product|
+                        profile
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Type</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.SocialFacebook.Type)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.SocialFacebook.Type.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Site</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.SocialFacebook.Site)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.SocialFacebook.Site.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

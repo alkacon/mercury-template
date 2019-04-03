@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ArticleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/article.xsd">
+  <Article language="de">
+    <Title><![CDATA[OpenCms ist intuitiv]]></Title>
+    <Date>1546966800000</Date>
+    <Paragraph>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+<p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/office/02.jpg]]></target>
+            <uuid>f0369e3c-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+      </Image>
+    </Paragraph>
+    <Author><![CDATA[Jay Pritchett]]></Author>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Availability>
+      <Release>1483376400000</Release>
+    </Availability>
+  </Article>
+  <Article language="en">
+    <Intro><![CDATA[Users use it quick]]></Intro>
+    <Title><![CDATA[OpenCms is intuitive]]></Title>
+    <Date>1546966800000</Date>
+    <Paragraph>
+      <Caption><![CDATA[You already know this]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+<p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/office/02.jpg]]></target>
+            <uuid>f0369e3c-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+      </Image>
+    </Paragraph>
+    <Author><![CDATA[Jay Pritchett]]></Author>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Availability/>
+  </Article>
+</ArticleData>

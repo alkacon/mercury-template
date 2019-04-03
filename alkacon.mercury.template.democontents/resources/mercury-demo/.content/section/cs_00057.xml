@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Es macht Spass]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>]]></content>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/people/04.jpg]]></target>
+          <uuid>f0f3ac17-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+    </Image>
+    <Link>
+      <Text><![CDATA[Mehr Infos]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/the-team/]]></target>
+          <uuid>f4d52c8a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[Fun]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>]]></content>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/people/04.jpg]]></target>
+          <uuid>f0f3ac17-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+    </Image>
+    <Link>
+      <Text><![CDATA[Read more]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/the-team/]]></target>
+          <uuid>f4d52c8a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

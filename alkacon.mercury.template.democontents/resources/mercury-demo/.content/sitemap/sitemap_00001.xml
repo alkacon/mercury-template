@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SitemapData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/sitemap.xsd">
+  <Sitemap language="en">
+    <Title><![CDATA[Example Sitemap]]></Title>
+    <IncludeSubSiteMaps>true</IncludeSubSiteMaps>
+  </Sitemap>
+</SitemapData>

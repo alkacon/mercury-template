@@ -1,0 +1,350 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _container.scss
+ */
+
+// Empty container and other info markers.
+// Since this is considered to be part of the "System" rather than the template,
+// most settings here are fixed with "important".
+
+// Mercury container types
+$container-box-types:
+(
+    (area, $con-col-darker-red-light),
+    (segment, $con-col-red-lighter),
+    (grid, $con-col-red-orange-light),
+    (row, $con-col-orange-light),
+    (element, $con-col-blue-steel-light),
+    (special, $con-col-green-light),
+) !default;
+
+// OpenCms roles and their matching colors
+$container-box-labels:
+(
+    (developer, $con-col-red),
+    (editor, $con-col-orange),
+    (author, $con-col-blue),
+    (detail, $con-col-cyan),
+    (detailonly, $con-col-cyan),
+    (special, $con-col-red-light),
+    (copygroup, $con-col-red-light),
+    (reusegroup, $con-col-blue-light),
+) !default;
+
+// OpenCms roles and their matching colors
+$oct-edit-infos:
+(
+    (editor, $con-col-purple),
+    (warning, $con-col-orange),
+    (error, $con-col-red-dark)
+) !default;
+
+// Basic definitions
+
+%oct-infobox-base {
+    padding: 10px;
+    text-align: center !important;
+    overflow: hidden !important;
+    z-index: $overflow-z-index !important;
+    white-space: normal !important;
+    min-height: 100px;
+    position: relative;
+    font-family: $font-family-gui !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // width: 100%;
+
+    > div,
+    .text {
+        font-family: $font-family-gui !important;
+        margin: 5px !important;
+        font-size: 14px !important;
+        line-height: 1.2em !important;
+    }
+
+    > h1, > h2, > h3, > h4,
+    .head  {
+        font-family: $font-family-gui !important;
+        font-size: 22px !important;
+        font-weight: normal !important;
+        margin: 5px !important;
+        line-height: 1.2em !important;
+    }
+}
+
+
+%oct-infobox-round {
+
+    border-radius: 8px !important;
+}
+
+%infobox-head {
+    color: $con-text-col-dark !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-box {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    @extend %oct-infobox-base, %oct-infobox-round;
+
+    .head {
+        @extend %infobox-head;
+    }
+
+    .text {
+        color: $con-text-col-grey !important;
+
+        &.capital {
+            text-transform: capitalize !important;
+        }
+    }
+
+    .main,
+    .small {
+        color: $con-text-col-grey !important;
+    }
+
+    &.simple {
+        border: 1px solid $con-col-blue;
+    }
+
+    &.complex {
+        border: 1px solid $con-col-red;
+    }
+}
+
+
+@keyframes octReveal {
+    // animation to 'reveal' a warning box, used e.g. by sort options bar for lists
+    // to be used in case an element is loaded dynamically with JavaScript,
+    // where the warning box should only be visuible if the loading takes to long or fails
+    from {
+        max-height: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+    }
+    75% {
+        max-height: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+    }
+    100% {
+        max-height: 1000px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+}
+
+.oct-reveal {
+    // animation to 'reveal' a warning box, used e.g. by sort options bar for lists
+    animation-name: octReveal;
+    animation-duration: 3s;
+    min-height: initial;
+}
+
+.oct-alert {
+    &:not(.tile-col) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    @extend %oct-infobox-base, %oct-infobox-round;
+
+    > div,
+    > h1, > h2, > h3, > h4,
+    .head,
+    .text,
+    .small {
+        color: $con-text-col-light !important;
+    }
+
+    &.oct-alert-editor {
+        .head  {
+            color: $con-text-col-dark !important;
+        }
+        .text {
+            color: $con-text-col-dark !important;
+        }
+    }
+}
+
+// Empty container markers
+
+@each $type-name, $bg-color in $container-box-types {
+    .container-box.box-#{""+$type-name} {
+
+        background-color: rgba($bg-color, 0.75) !important;
+        background: linear-gradient(166deg, $bg-color 0%, darken($bg-color, 10%) 100%) !important;
+    }
+}
+
+
+// Page information markers (new element, page reload)
+
+@each $type-name, $bg-color in $oct-edit-infos {
+    .oct-alert.oct-alert-#{""+$type-name} {
+
+        background-color: $bg-color !important;
+        background: linear-gradient(166deg, lighten($bg-color, 5%) 0%, darken($bg-color, 5%) 100%) !important;
+    }
+}
+
+.oct-alert.box-noheight {
+    min-height: 0 !important;
+}
+
+
+// Set blue background for head in "new" boxes
+
+.oct-alert.new-element .head {
+    display: inline-block;
+    padding: 2px 12px !important;
+    border-radius: 4px !important;
+    background-color: $con-col-blue-light !important;
+}
+
+// Noise overlay for containers and markers
+
+.oct-meta::after,
+.oct-meta-info::after,
+.oct-anchor::after,
+.container-box::after,
+.oct-alert::after {
+    @include noise-image;
+    content: ' ';
+}
+
+
+// Model group marker
+
+#modelinfo-border {
+    border: 4px solid $con-col-purple !important;
+    padding: 0px !important;
+}
+
+#modelinfo {
+    @extend %oct-infobox-base;
+
+    background-color: rgba($con-col-purple, 0.75) !important;
+    .head  {
+        @extend %infobox-head;
+    }
+    .text,
+    .small {
+        color: $con-text-col-grey !important;
+    }
+}
+
+
+// Label colors
+
+%label {
+    display: inline;
+    font-size: 12px !important;
+    font-family: $font-family-gui !important;
+    font-weight: normal !important;
+    line-height: 1 !important;
+    padding: 4px 6px !important;
+    margin-left: 5px !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important;
+    color: $con-text-col-light !important;
+    text-transform: uppercase !important;
+}
+
+@each $role-name, $label-color in $container-box-labels {
+    .label-#{""+$role-name} {
+        @extend %label;
+
+        background-color: $label-color !important;
+    }
+}
+
+// Anchor link and admin markers
+
+.oct-meta-info {
+    position: relative;
+    transition: all 0.33s;
+    @include oct-meta-bg();
+}
+
+.btn.oct-meta-info {
+    &:focus,
+    &:hover {
+        background: $btn-default-hover !important;
+        background-color: $btn-default-hover !important;
+        color: get-text-color($btn-default-hover) !important;
+        transition: all 0.33s;
+    }
+}
+
+.oct-anchor-set {
+    position: relative;
+    visibility: hidden;
+}
+
+.oct-anchor-none {
+    display: none;
+}
+
+.oct-meta,
+.oct-anchor {
+    min-height: 25px !important;
+    display: inline-block;
+    padding-right: 25px !important;
+    position: relative;
+
+    .marker,
+    .empty,
+    .target {
+        @include oct-meta-bg();
+        font-family: $font-family-gui !important;
+        padding: 4px 8px !important;
+    }
+}
+
+.online-warn {
+    background-color: $highlight-color;
+    color: get-text-color($highlight-color);
+    overflow: hidden;
+    padding: $default-margin-small;
+    @include round-corners($default-border-radius);
+
+    > .head {
+        font-family: $font-family-headings;
+        font-weight: $font-weight-headings;
+        font-size: $h4-font-size;
+        + .text {
+            margin-top: $default-margin-small;
+        }
+    }
+}
+
+.effect-box .online-warn {
+    // required for media preview
+    background-color: transparent;
+    color: inherit;
+}

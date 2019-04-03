@@ -1,0 +1,53 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:element name="SliderImageTextPositionData" type="OpenCmsSliderImageTextPositionData" />
+
+    <xsd:complexType name="OpenCmsSliderImageTextPositionData">
+        <xsd:sequence>
+            <xsd:element name="SliderImageTextPosition" type="OpenCmsSliderImageTextPosition"
+                minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsSliderImageTextPosition">
+        <xsd:sequence>
+            <xsd:element name="Top" type="OpenCmsString" />
+            <xsd:element name="Left" type="OpenCmsString" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Top</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.SliderImageTextPosition.Top)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.SliderImageTextPosition.Top.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <Default>bottom</Default>
+                    <WidgetConfig><![CDATA[
+                        bottom:%(key.msg.option.slider.pos.bottom)|
+                        center:%(key.msg.option.slider.pos.center)|
+                        top:%(key.msg.option.slider.pos.top)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Left</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.SliderImageTextPosition.Left)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.SliderImageTextPosition.Left.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <Default>right</Default>
+                    <WidgetConfig><![CDATA[
+                        right:%(key.msg.option.slider.pos.right)|
+                        center:%(key.msg.option.slider.pos.center)|
+                        left:%(key.msg.option.slider.pos.left)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

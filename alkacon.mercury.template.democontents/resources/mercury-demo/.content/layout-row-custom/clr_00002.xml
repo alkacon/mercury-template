@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LayoutComplexData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/layout-complex.xsd">
+  <LayoutComplex language="de">
+    <Title><![CDATA[Row 2 Spalten (4 - 4) [Kompakt / push - pull]]]></Title>
+    <PreMarkup><![CDATA[<div class="row justify-content-lg-center">]]></PreMarkup>
+    <PostMarkup><![CDATA[</div>]]></PostMarkup>
+    <Container>
+      <Name><![CDATA[maincol]]></Name>
+      <Type><![CDATA[element]]></Type>
+      <Css><![CDATA[col-12 col-md-6 col-lg-5 col-xl-4]]></Css>
+    </Container>
+    <Container>
+      <Name><![CDATA[sidecol]]></Name>
+      <Type><![CDATA[element]]></Type>
+      <Css><![CDATA[col-12 col-md-6 col-lg-5 col-xl-4 order-md-first]]></Css>
+    </Container>
+  </LayoutComplex>
+  <LayoutComplex language="en">
+    <Title><![CDATA[Row 2 Cols (4 - 4) [Narrow push / pull]]]></Title>
+    <PreMarkup><![CDATA[<div class="row justify-content-lg-center">]]></PreMarkup>
+    <PostMarkup><![CDATA[</div>]]></PostMarkup>
+    <Container>
+      <Name><![CDATA[maincol]]></Name>
+      <Type><![CDATA[element]]></Type>
+      <Css><![CDATA[col-12 col-md-6 col-lg-5 col-xl-4]]></Css>
+    </Container>
+    <Container>
+      <Name><![CDATA[sidecol]]></Name>
+      <Type><![CDATA[element]]></Type>
+      <Css><![CDATA[col-12 col-md-6 col-lg-5 col-xl-4 order-md-first]]></Css>
+    </Container>
+  </LayoutComplex>
+</LayoutComplexData>

@@ -1,0 +1,281 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _generics.scss
+ */
+
+// Link text colors
+
+@each $color-name, $text-color, $highlight-color in $link-colors {
+
+    .links-#{""+$color-name} {
+        @if (""+$color-name != "default") {
+            a:not(.btn):not(.uncolored) {
+                color: $text-color;
+
+                &:focus,
+                &:hover {
+                    color: $highlight-color;
+                }
+            }
+        } @else {
+            @extend .links-theme;
+        }
+    }
+}
+
+// Colored backgrounds
+
+.box {
+    background-color: $highlight-color;
+    color: get-text-color($highlight-color);
+    overflow: hidden;
+    padding: 20px;
+    @include round-corners($default-border-radius);
+
+    *:not(a) {
+        // required in order to override colors set in headings
+        color: get-text-color($highlight-color);
+    }
+}
+
+@each $color-name, $bg-color, $highlight-color in $bg-colors {
+
+    .box-#{""+$color-name} {
+        background-color: $bg-color;
+        color: get-text-color($bg-color);
+
+        *:not(a) {
+            // required in order to override colors set in headings
+            color: get-text-color($bg-color);
+        }
+
+        &.transparent {
+            background-color: rgba($bg-color, 0.7);
+        }
+    }
+
+    .bc-#{""+$color-name} {
+        background-color: $bg-color;
+
+        &.transparent {
+            background-color: rgba($bg-color, 0.7);
+        }
+    }
+}
+
+// Colored text
+
+@each $color-name, $text-color in $font-colors {
+
+    .text-#{""+$color-name} {
+
+        @include set-text-color($text-color);
+    }
+}
+
+@each $color-name, $text-color in $text-colors {
+
+    .text-#{""+$color-name} {
+        @if (""+$color-name != "default") {
+            @include set-text-color($text-color);
+        } @else {
+            @extend .text-dark;
+        }
+    }
+}
+
+// Font sizes
+
+@each $fontsize in $font-sizes {
+
+    .fs-#{$fontsize} {
+        font-size: #{$fontsize}px;
+    }
+}
+
+// Border base
+
+@each $line-size in $border-sizes {
+
+    .bo-#{""+$line-size}  {
+        border: #{$line-size}px solid $border-default-color;
+        padding: 20px;
+        @include round-corners($default-border-radius);
+    }
+}
+
+// Borders with round corners
+
+@each $radius-name, $radius in $border-radiuses {
+
+    .bo-radius-#{""+$radius-name} {
+        border: 0 solid;
+        border-radius: $radius;
+    }
+}
+
+// Colored borders
+
+@each $color-name, $bg-color, $highlight-color in $reduced-colors {
+
+    .bo-#{""+$color-name}  {
+        border-color: $bg-color;
+    }
+}
+
+// Borders styles
+
+@each $border-style in $border-styles {
+
+    .bo-#{""+$border-style}  {
+        border-style: $border-style;
+    }
+}
+
+.bo-none {
+    border: none;
+}
+
+// Borders positions
+
+@each $position in $border-positions {
+
+    @each $line-size in $border-sizes {
+
+        .bo-#{""+$position}-#{""+$line-size}  {
+            border-#{$position}: #{$line-size}px solid $border-default-color;
+            padding: 20px;
+        }
+    }
+
+    @each $color-name, $bg-color, $highlight-color in $reduced-colors {
+
+        .bo-#{""+$position}-#{""+$color-name}  {
+            border-#{$position}-color: $bg-color;
+        }
+    }
+
+    @each $border-style in $border-styles {
+
+        .bo-#{""+$position}-#{""+$border-style}  {
+            border-#{$position}-style: $border-style;
+        }
+    }
+}
+
+
+// Margins and paddings
+
+@each $space in $margins-paddings {
+
+    $rem-space: 0;
+    @if ($space > 0) {
+        $rem-space: #{$space / 10}rem;
+    }
+
+    .p-#{$space} {
+        padding: $rem-space !important;
+    }
+    .ph-#{$space},
+    .pl-#{$space} {
+        padding-left: $rem-space !important;
+    }
+    .ph-#{$space},
+    .pr-#{$space} {
+        padding-right: $rem-space !important;
+    }
+    .pv-#{$space},
+    .pt-#{$space} {
+        padding-top: $rem-space !important;
+    }
+    .pv-#{$space},
+    .pb-#{$space} {
+        padding-bottom: $rem-space !important;
+    }
+
+    .m-#{$space} {
+        margin: $rem-space !important;
+    }
+    .mh-#{$space},
+    .ml-#{$space} {
+        margin-left: $rem-space !important;
+    }
+    .mh-#{$space},
+    .mr-#{$space} {
+        margin-right: $rem-space !important;
+    }
+    .mv-#{$space},
+    .mt-#{$space} {
+        margin-top: $rem-space !important;
+    }
+    .mv-#{$space},
+    .mb-#{$space} {
+        margin-bottom: $rem-space !important;
+    }
+
+    .m-neg-#{$space} {
+        margin: -#{$rem-space} !important;
+    }
+    .mh-neg-#{$space},
+    .ml-neg-#{$space} {
+        margin-left: -#{$rem-space} !important;
+    }
+    .mh-neg-#{$space},
+    .mr-neg-#{$space} {
+        margin-right: -#{$rem-space}  !important;
+    }
+    .mv-neg-#{$space},
+    .mt-neg-#{$space} {
+        margin-top: -#{$rem-space} !important;
+    }
+    .mv-neg-#{$space},
+    .mb-neg-#{$space} {
+        margin-bottom: -#{$rem-space} !important;
+    }
+}
+
+html {
+    // opencms inserted controls in mouse mode should not get the focus
+    .opencms,
+    .opencms * {
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    // opencms inserted controls in keyboard mode can get the focus
+    &.keyboard-nav .opencms,
+    &.keyboard-nav .opencms * {
+        &:focus {
+            outline-color: $focus-outline-color;
+            outline-width: 3px;
+            outline-style: solid;
+            outline-offset: -2px;
+            box-shadow: none;
+        }
+    }
+
+    // hide selected elements if JS is available
+    &.hasscript {
+        .hide-hasscript {
+            display: none;
+        }
+    }
+}

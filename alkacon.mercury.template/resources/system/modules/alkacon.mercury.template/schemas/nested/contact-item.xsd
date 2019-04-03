@@ -1,0 +1,68 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address-choice.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/email.xsd" />
+
+    <xsd:element name="ContactItemData" type="OpenCmsContactItemData" />
+
+    <xsd:complexType name="OpenCmsContactItemData">
+        <xsd:sequence>
+            <xsd:element name="ContactItem" type="OpenCmsContactItem" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsContactItem">
+        <xsd:sequence>
+            <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
+            <xsd:element name="Phone" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Mobile" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Fax" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Website" type="OpenCmsVarLink" minOccurs="0" />
+            <xsd:element name="Email" type="OpenCmsEmail" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>AddressChoice</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.AddressChoice)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.AddressChoice.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Phone</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactData.Phone)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactData.Phone.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Mobile</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactData.Mobile)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactData.Mobile.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Fax</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactData.Fax)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactData.Fax.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Website</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ContactData.Website)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ContactData.Website.help)]]></Description>
+                    <Widget>file</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Email</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Email)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Email.help)]]></Description>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

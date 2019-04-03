@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WebForms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/form.xsd">
+  <WebForm language="en">
+    <Title><![CDATA[Event booking form]]></Title>
+    <FormText name="FormText0">
+      <links/>
+      <content><![CDATA[<h3>Registration form</h3>]]></content>
+    </FormText>
+    <FormConfirmation name="FormConfirmation0">
+      <links/>
+      <content><![CDATA[<p>Thank you for your registration to the Happy Hacking Days!</p>
+<p>%(confirm.waitlist.info)</p>
+<p>See you at the event!</p>]]></content>
+    </FormConfirmation>
+    <FormCaptcha>
+      <FieldLabel><![CDATA[Captcha]]></FieldLabel>
+    </FormCaptcha>
+    <InputField>
+      <FieldType><![CDATA[radio]]></FieldType>
+      <FieldLabel><![CDATA[Salutation]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldDefault><![CDATA[mrs:Mrs|mr:Mr]]></FieldDefault>
+      <FieldParams><![CDATA[toggle=true]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[First name]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=user|position=append|placeholder=Please provide your first name]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[text]]></FieldType>
+      <FieldLabel><![CDATA[Last name]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=user|position=append|placeholder=Please provide your last name]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Address]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=truck|position=append|placeholder=Please enter your full postal address]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[email]]></FieldType>
+      <FieldLabel><![CDATA[Email]]></FieldLabel>
+      <FieldMandatory>true</FieldMandatory>
+      <FieldParams><![CDATA[icon=envelope|position=append|placeholder=Please enter your email address]]></FieldParams>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[textarea]]></FieldType>
+      <FieldLabel><![CDATA[Message or comment]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=comment|position=append|placeholder=Please enter your message or comment here]]></FieldParams>
+    </InputField>
+    <MailFrom><![CDATA[demo@alkacon.com]]></MailFrom>
+    <MailFromName><![CDATA[Happy Hacking Days]]></MailFromName>
+    <MailTo><![CDATA[booking@happy-hacking-days.com]]></MailTo>
+    <MailSubject><![CDATA[[Happy Hacking Days Registration]: %(First name) %(Last name) (%(Email)) booked!]]></MailSubject>
+    <OptionalConfirmationMail>
+      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
+      <ConfirmationMailOptional>false</ConfirmationMailOptional>
+      <ConfirmationField><![CDATA[Email]]></ConfirmationField>
+      <ConfirmationMailSubject><![CDATA[[Happy Hacking Days] Booking confirmation: Dear %(First name) %(Last name), thanks for booking!]]></ConfirmationMailSubject>
+      <ConfirmationMailText name="ConfirmationMailText0">
+        <links/>
+        <content><![CDATA[<p>Dear %(First name) %(Last name) ,</p>
+<p>thanks for booking!</p>
+<p>%(confirm.waitlist.info)</p>
+<p>Here's the data you provided:</p>
+<p>&nbsp;%(formdata)</p>
+<p>See you at the hacking days!</p>]]></content>
+      </ConfirmationMailText>
+    </OptionalConfirmationMail>
+    <DBConfig>
+      <UserForGuest><![CDATA[Admin]]></UserForGuest>
+      <ProjectGroup><![CDATA[Administrators]]></ProjectGroup>
+      <MaxRegularDatasets><![CDATA[20]]></MaxRegularDatasets>
+      <MaxWaitlistDatasets><![CDATA[5]]></MaxWaitlistDatasets>
+      <DatasetTitle><![CDATA[%(Firstname) %(Last name) (%(Email))]]></DatasetTitle>
+    </DBConfig>
+  </WebForm>
+</WebForms>

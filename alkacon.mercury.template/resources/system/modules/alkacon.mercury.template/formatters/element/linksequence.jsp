@@ -1,0 +1,69 @@
+<%@page
+    pageEncoding="UTF-8"
+    buffer="none"
+    session="false"
+    trimDirectiveWhitespaces="true"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+
+<mercury:init-messages>
+
+<cms:formatter var="content" val="value">
+<fmt:setLocale value="${cms.locale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
+
+<c:set var="setting"                value="${cms.element.setting}" />
+<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="iconClass"              value="${setting.iconClass.isSet ? setting.iconClass.toString : 'warning'}" />
+<c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
+
+<c:set var="listBulletStyle"        value="${iconClass eq 'default' ? 'default-icon' : iconClass eq 'none' ? 'no-icon' : 'custom-icon'}" />
+
+<c:choose>
+    <c:when test="${linksequenceType eq 'ls-navigation'}">
+        <c:set var="ulWrapper">class="nav-side"</c:set>
+        <c:if test="${listBulletStyle eq 'custom-icon'}">
+            <c:set var="aWrapper">fa-${iconClass}</c:set>
+        </c:if>
+    </c:when>
+    <c:when test="${false and linksequenceType eq 'ls-row'}">
+        <c:if test="${listBulletStyle eq 'custom-icon'}">
+            <c:set var="aWrapper">fa-${iconClass}</c:set>
+        </c:if>
+    </c:when>
+    <c:when test="${listBulletStyle eq 'custom-icon'}">
+        <c:set var="liWrapper">class="fa-${iconClass}"</c:set>
+    </c:when>
+</c:choose>
+
+<mercury:nl />
+<div class="element type-linksequence ${linksequenceType}${' '}${cssWrapper}${' '}${listBulletStyle}">
+<%----%>
+
+    <mercury:heading level="${hsize}" text="${value.Title}" css="head" />
+
+    <c:if test="${text.isSet}">
+        <div class="text-box" ${text.rdfaAttr}>${text}</div><%----%>
+    </c:if>
+
+    <ul ${ulWrapper}><%----%>
+        <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
+            <c:set var="linkText" value="${link.value.Text}" />
+            <c:if test="${fn:startsWith(linkText, 'icon:')}">
+                <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
+            </c:if>
+            <li ${liWrapper}><mercury:link link="${link}" css="${aWrapper}">${linkText}</mercury:link></li><%----%>
+        </c:forEach>
+    </ul><%----%>
+
+</div>
+<%----%>
+
+</cms:bundle>
+</cms:formatter>
+</mercury:init-messages>

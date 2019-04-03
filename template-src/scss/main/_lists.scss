@@ -1,0 +1,848 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _lists.scss
+ */
+
+.list-content {
+
+    .list-box {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-append-position {
+        display: block;
+    }
+
+    ul.list-entries {
+        margin-bottom: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .list-spinner {
+        display: none;
+    }
+
+    .list-link {
+        margin-top: $default-margin;
+    }
+}
+
+.teaser {
+    margin-bottom: round($list-teaser-margin-base * 15) / 10;
+
+    &.teaser-compact {
+        // compact teaser elements have a reduced bottom margin
+        margin-bottom: round($list-teaser-margin-base * 7.5) / 10;
+        .teaser-btn {
+            padding: $teaser-btn-compact-padding;
+        }
+    }
+
+    .intro-headline {
+        font-size: $teaser-title-size;
+        line-height: $teaser-title-height;
+        margin-bottom: $default-margin-small;
+    }
+
+    .teaser-btn {
+        padding: $teaser-btn-def-padding;
+        &:not(:last-child) {
+            margin-right: $default-margin-small;
+        }
+    }
+
+    .teaser-date {
+        line-height: 1.2;
+        font-size: 80%;
+        color: $grey;
+    }
+
+    .heading {
+        a {
+            &,
+            &:focus,
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// tiling teasers with flex box layout
+
+.teaser-tile {
+    display: flex;
+
+    .teaser.piece {
+        overflow: hidden; // fix fow very small tiles where single words may increase the column width
+        z-index: $overflow-z-index;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+        width: 100%;
+
+        > .body {
+            flex-basis: auto;
+            flex-grow: 1;
+
+            .headline {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: $teaser-title-height;
+            }
+        }
+
+        @if ($list-tile-header-lines > 1) {
+            @include media-breakpoint-up(md) {
+                &.teaser-text-tile {
+                    > .body {
+                        // make sure that this does not apply to "lists with groups"
+                        > .heading {
+                            .headline {
+                                min-height: #{$list-tile-header-lines * $teaser-title-height * $teaser-title-size};
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@if ($teaser-btn-color != $btn-default) {
+    .teaser-btn {
+        background-color: $teaser-btn-color;
+        color:  get-text-color($teaser-btn-color);
+        font-size: $font-size-sm;
+
+        &:hover {
+            background-color: $teaser-btn-hover-color;
+            color:  get-text-color($teaser-btn-hover-color);
+        }
+    }
+}
+
+.type-list-group {
+    position: relative; // required otherwise edit points may get mixed up
+
+    &:not(:last-of-type) {
+        margin-bottom: $default-margin;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+.list-badge {
+
+    margin-left: 10px;
+    font-size: 0.7em;
+    padding: 3px 6px;
+    bottom: 2px;
+}
+
+// Download lists
+
+.download-list {
+
+    a:hover {
+        text-decoration: none;
+        .dl-content {
+            h3 {
+                text-decoration: underline;
+            }
+            .dl-desc {
+                color: $text-dark;
+            }
+        }
+    }
+
+    a:not(:hover) .dl-content {
+        .dl-desc,
+        .dl-file {
+            color: $text-dark;
+        }
+    }
+
+    .dl-desc p {
+        margin-bottom: 0;
+    }
+
+    &.dl-list-elaborate {
+
+        li.list-entry {
+            padding-top: round($default-margin / 2);
+            padding-bottom: round($default-margin / 2);
+            border-bottom: 1px solid $highlight-color;
+
+            &:last-child {
+                padding-bottom: 0;
+                border-bottom: none;
+                margin-bottom: $default-margin;
+            }
+
+            &:first-child {
+                padding-top: 0;
+            }
+        }
+
+        .dl-content {
+            h3 {
+                margin-top: 0;
+                margin-bottom: $default-margin-verysmall;
+            }
+            .dl-file {
+                margin-bottom: $default-margin-verysmall;
+            }
+            .dl-desc {
+                margin-bottom: $default-margin-small;
+            }
+            .dl-btn {
+                font-size: $btn-xs-font-size;
+                padding: $btn-xs-padding;
+                min-width: 0;
+
+                .fa {
+                    padding-right: $default-margin-small;
+                }
+            }
+        }
+
+        .dl-info {
+            margin-top: $default-margin-small;
+            text-align: center;
+            .fa {
+                font-size: 4.0rem;
+                margin-bottom: $default-margin-verysmall;
+            }
+        }
+
+        .dl-stats {
+            .dl-type::after {
+                content: " | ";
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            .dl-stats {
+                .dl-type {
+                    display: none;
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &.dl-list-compact {
+
+        li:nth-child(odd) .dl-link {
+            background-color: $grey-lighter;
+        }
+
+        .dl-link {
+            padding-top: $default-margin-small;
+            padding-bottom: $default-margin-small;
+        }
+        a.dl-link:hover {
+            h3 {
+                color: $main-theme-hover;
+            }
+        }
+        .dl-link {
+            display: table;
+            width: 100%;
+
+            > span {
+                vertical-align: top;
+                display: table-cell;
+            }
+
+            .fa {
+                font-size: 2.0rem;
+            }
+        }
+        .dl-type {
+            padding: 0 $default-margin-small;
+        }
+        .dl-dl {
+            padding-right: $default-margin-small;
+        }
+        .dl-content {
+            width: 100%;
+            h3 {
+                @extend .default-font;
+                font-weight: $font-weight-bold;
+                margin: 0;
+            }
+        }
+        .dl-date,
+        .dl-size {
+            white-space: nowrap;
+            float: right;
+            min-width: 7.0rem;
+        }
+        .dl-info {
+            min-width: 14.0rem;
+        }
+        .dl-show-file {
+            .dl-link {
+                .fa {
+                    padding-top: 0.4rem;
+                    font-size: 2.5rem;
+                }
+            }
+            .dl-info {
+                min-width: 7.0rem;
+            }
+            .dl-date,
+            .dl-size {
+                display: block;
+                float: left;
+            }
+        }
+        @include media-breakpoint-down(sm) {
+            .dl-link > span.dl-dl {
+                display: none;
+            }
+            .dl-show-file .dl-link > span.dl-dl {
+                display: block;
+            }
+        }
+        @include media-breakpoint-down(xs) {
+            .dl-date,
+            .dl-size {
+                display: block;
+                float: left;
+            }
+            .dl-show-file {
+                .dl-link .fa {
+                    font-size: 2.0rem;
+                }
+                .dl-link > span.dl-dl {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+// pagination adjustments
+
+.list-pagination {
+    .btn-append {
+        // append button instead of pagination
+        padding: $btn-sm-padding;
+        display: block;
+        width: 100%;
+    }
+}
+
+%paginationSmall,
+.list-content.pagination-small {
+    // smaller version of pagination for side columns
+    .pagination {
+        > li {
+            &:not(.disabled) {
+                // make buttons in side grey so that they don't distract from main content
+                > a:not(:hover) {
+                    background-color: $body-bg;
+                    border-color: $list-side-color;
+                    color: get-text-color($body-bg);
+                }
+                &.active {
+                    > a:not(:hover) {
+                        background-color: $list-side-color;
+                        border-color: $list-side-color;
+                        color: get-text-color($list-side-color);
+                    }
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                // assume on small screens side columns are full width
+                // on large screens button in side columns must be smaller to fit into column
+                &.previous {
+                    margin-right: $default-margin-verysmall;
+                }
+                &.next {
+                    margin-left: $default-margin-verysmall;
+                }
+                &.first {
+                    &.gap::after {
+                        margin: 0 $default-margin-verysmall;
+                    }
+                }
+
+                > a {
+                    padding: 0.2rem 0.6rem;
+                    min-width: 2.8rem;
+                }
+            }
+        }
+    }
+
+    .btn-append {
+        // also recolor append button in side lists
+        &:not(:hover) {
+            background-color: $list-side-color;
+            border-color: $list-side-color;
+            color: get-text-color($list-side-color);
+        }
+    }
+}
+
+// Centered or right aligned pagination
+
+.pagination-center {
+
+    .list-dynamic.list-paginate {
+        // pagination loading
+        .list-pagination {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .list-dynamic:not(.list-paginate) {
+        // button append loading
+        .list-pagination {
+
+            @include media-breakpoint-up(lg) {
+                display: flex;
+                justify-content: center;
+
+                .list-append-position {
+                    width: 50%;
+                }
+            }
+
+            @include media-breakpoint-up(xl) {
+                .list-append-position {
+                    width: 40%;
+                }
+            }
+        }
+    }
+}
+
+.pagination-right .list-dynamic.list-paginate .list-pagination {
+    display: flex;
+    justify-content: flex-end;
+}
+
+aside .list-content,
+.list-content.list-aside, {
+    // teaser adjustments for side columns
+
+    .teaser {
+        // make buttons in side grey so that they don't distract from main content
+        .btn.loadMore,
+        .teaser-btn:not(:hover) {
+            background-color:$list-side-color;
+            color: get-text-color($list-side-color);
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        // on large screens button in side columns should be smaller
+        .teaser {
+            .teaser-btn {
+                padding: $teaser-btn-compact-padding;
+            }
+        }
+        .teaser-compact {
+            .teaser-btn {
+                padding: $teaser-btn-compact-light-padding
+            }
+        }
+    }
+
+    @extend %paginationSmall;
+}
+
+
+
+
+// List archive filter menu
+
+.type-list-filter {
+
+    .filterbox {
+        margin-bottom: $default-margin;
+        background-color: $white;
+
+        .dialog {
+            display: none;
+        }
+
+        &.search {
+            padding: 0;
+
+            .input {
+                margin: 0;
+            }
+
+            input,
+            .icon-prepend {
+                border-color: $list-border-color;
+            }
+
+            input {
+                box-shadow: $panel-shadow;
+            }
+        }
+
+        .btn.li-label {
+            display: block;
+            position: relative;
+            text-align: left;
+
+            &::before {
+                font-family: FontAwesome;
+                font-weight: normal;
+                padding-right: $btn-padding;
+            }
+            &::after {
+                position: absolute;
+                display: inline-block;
+                font-family: FontAwesome;
+                font-weight: normal;
+                content: "\f078";
+                right: $btn-padding;
+                transform: rotate(-180deg) translate(0,0);
+                transition: transform .33s;
+            }
+            &.collapsed::after {
+                transform: rotate(0) translate(0,0);
+                transition: transform 0.33s;
+            }
+        }
+
+        &.categories {
+
+            @include list-filter-box;
+
+            .btn.li-label:before {
+                content: "\f02c";
+            }
+
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: outside none none;
+
+                li {
+                    margin-top: 2px;
+
+                    a {
+                        cursor: pointer;
+                    }
+
+                    &.active a {
+                        font-weight: $font-weight-bold;
+                    }
+
+                    .li-entry {
+                        white-space: nowrap;
+                        display: inline-block;
+                        line-height: 1;
+                        font-size: 12px;
+                        padding: 4px 7px;
+                        border-radius: 4px;
+                        color: $text-dark;
+                        background-color: $grey-lighter;
+
+                        &:hover {
+                            background-color: $grey-light;
+                            transition: background-color 0.33s;
+                        }
+
+                        &:before {
+                            font-family: FontAwesome;
+                            content: "\f02b";
+                            padding-right: 4px;
+                        }
+                    }
+
+                    .li-count {
+                        &:before {
+                            padding-left: 4px;
+                            content: "(";
+                        }
+                        &:after {
+                            content: ")";
+                        }
+                    }
+                }
+            }
+        }
+
+        &.folders {
+            padding: 0;
+
+            .btn.li-label:before {
+                content: "\f115";
+            }
+
+            .nav-side {
+                border-top: none;
+                // we must cancel out special XS navigation effects for the filterbox
+                margin-left: 0;
+                margin-right: 0;
+                border-left: 1px solid $nav-side-border;
+                border-right: 1px solid $nav-side-border;
+
+                li a.nav-handle {
+                    width: 42px;
+                    &::after {
+                        right: 16px;
+                    }
+                }
+            }
+        }
+
+        &.archive {
+
+            > div {
+                border: 1px solid $list-border-color;
+                border-top: none;
+                border-radius: $list-border-radius;
+                box-shadow: $panel-shadow;
+                padding: 0;
+            }
+
+            button.year {
+                color: $text-dark;
+                background-color: $grey-lighter;
+                padding-left: $grid-gutter-width / 2;
+
+                &:hover {
+                    background-color: $grey-light;
+                }
+
+                &::before {
+                    content: "\f133";
+                }
+                &::after {
+                    right: calc(#{$btn-padding} - 1px); // this has a 1px border
+                }
+            }
+
+            ul {
+                list-style: outside none none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: inline-block;
+                    padding: 7px 0px;
+                    width: 16.666666%;
+                    font-size: 12px;
+                    text-align: center;
+                    cursor: pointer;
+
+                    a {
+                        color: $text-dark;
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+
+                    &.active a {
+                        font-weight: $font-weight-bold;
+                    }
+
+                    .li-entry {
+                        position: relative;
+                    }
+
+                    .li-count {
+                        display: none;
+                        position: absolute;
+                        left: calc(100% - 2px);
+                        top: -7px;
+                        z-index: 10;
+                        font-size: 10px;
+
+                        &:before {
+                            content: "(";
+                        }
+                        &:after {
+                            content: ")";
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $grey-lighter;
+                        transition: background-color 0.33s;
+
+                        .li-count {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// List facet / sort options
+
+.type-list-sortoptions {
+
+    .placeholder {
+        opacity: 0;
+    }
+
+    .dropdown-toggle {
+        padding: $btn-padding #{$btn-padding * 4} $btn-padding #{$btn-padding * 2};
+
+        &::after {
+            position: absolute;
+            display: inline-block;
+            font-family: FontAwesome;
+            font-weight: normal;
+            content: "\f078";
+            right: $btn-padding;
+            transform: rotate(0) translate(0,0);
+            transition: transform .33s;
+            margin: 0;
+            border: none;
+            width: auto;
+            height: auto;
+        }
+
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: flex-end;
+
+        &.show {
+            .dropdown-toggle {
+                &::after {
+                    transform: rotate(-180deg) translate(0,0);
+                    transition: transform 0.33s;
+                }
+            }
+        }
+    }
+
+
+    .dropdown-menu {
+        padding: 0;
+        border-radius: 0;
+        font-size: $font-size-base;
+        color: $text-dark;
+        min-width: 16rem;
+        font-weight: $font-weight-base;
+        box-shadow: $nav-shadow;
+
+        > li > a {
+            padding: $default-margin-verysmall $default-margin;
+            color: $text-dark;
+            text-decoration: none;
+            clear: both;
+            display: block;
+            white-space: nowrap;
+            line-height: 1.4;
+
+            &:hover {
+                background-color: $grey-light;
+            }
+        }
+
+        > .active {
+            > a,
+            > a:hover,
+            > a:focus {
+                color: get-text-color($main-theme);
+                background-color: $main-theme;
+            }
+        }
+
+        .divider {
+            margin: $default-margin-verysmall 0;
+        }
+    }
+
+    .list-option {
+        position: relative;
+        margin-bottom: $default-margin;
+        margin-left: $default-margin-small;
+
+        .fa {
+            text-align: right;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .dropdown-menu,
+        .dropdown-toggle {
+            width: 100%;
+        }
+
+        .list-option {
+            flex: 0 0 100%;
+            margin-left: 0;
+        }
+    }
+}
+
+
+// List button styling
+
+.type-disqus, // also used for disqus function
+.type-list-filter,
+.type-list-sortoptions {
+    button {
+        border: none;
+        padding-left: $default-margin;
+        padding-right: $default-margin;
+
+        .fa {
+            padding-top: 3px;
+        }
+    }
+
+    // .open .fa-chevron-down:before,
+    // .fa-chevron-down.open:before {
+    //     content: "\f054";
+    // }
+
+    i.fa,
+    span.fa {
+        // transform: rotate(0) translate(0px, 0px);
+        // transition: transform 0.33s;
+    }
+
+    .show span.fa,
+    i.fa.show,
+    span.fa.show {
+        transform: rotate(-180deg) translate(0px, -4px);
+        transition: transform 0.33s;
+    }
+}
+

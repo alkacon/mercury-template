@@ -1,0 +1,74 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+	<xsd:element name="WebFormInputFields" type="OpenCmsWebFormInputFields"/>
+
+	<xsd:complexType name="OpenCmsWebFormInputFields">
+		<xsd:sequence>
+			<xsd:element name="WebFormInputField" type="OpenCmsWebFormInputField" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpenCmsWebFormInputField">
+		<xsd:sequence>
+			<xsd:element name="FieldType" type="OpenCmsString" />
+			<xsd:element name="FieldLabel" type="OpenCmsString" />
+			<xsd:element name="FieldMandatory" type="OpenCmsBoolean" />
+			<xsd:element name="FieldDefault" type="OpenCmsString" minOccurs="0" />
+			<xsd:element name="FieldParams" type="OpenCmsString" minOccurs="0" />
+			<xsd:element name="FieldValidation" type="OpenCmsString" minOccurs="0" />
+			<xsd:element name="FieldErrorMessage" type="OpenCmsString" minOccurs="0" />
+		</xsd:sequence>
+		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+	</xsd:complexType>
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<resourcebundle name="alkacon.mercury.webform.messages"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>FieldType</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormInputField.FieldType)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormInputField.FieldType.help)]]></Description>
+                    <Widget>select</Widget>
+                    <WidgetConfig><![CDATA[text*:${key.form.field.type.text}|textarea:${key.form.field.type.textarea}|checkbox:${key.form.field.type.checkbox}|privacy:${key.form.field.type.privacy}|radio:${key.form.field.type.radio}|select:${key.form.field.type.select}|hidden:${key.form.field.type.hidden}|file:${key.form.field.type.fileupload}|email:${key.form.field.type.email}|empty:${key.form.field.type.empty}|password:${key.form.field.type.password}|paging:${key.form.field.type.paging}|parameter:${key.form.field.type.parameter}|email_select:${key.form.field.type.email_select}]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>FieldLabel</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormInputField.FieldLabel)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormInputField.FieldLabel.help)]]></Description>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>FieldMandatory</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormInputField.FieldMandatory)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormInputField.FieldMandatory.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>FieldDefault</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormInputField.FieldDefault)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormInputField.FieldDefault.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>FieldParams</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormInputField.FieldParams)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormInputField.FieldParams.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>FieldValidation</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormInputField.FieldValidation)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormInputField.FieldValidation.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>FieldErrorMessage</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormInputField.FieldErrorMessage)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormInputField.FieldErrorMessage.help)]]></Description>
+                </Setting>
+			</FieldSettings>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+</xsd:schema>

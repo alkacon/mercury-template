@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MapData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/map.xsd">
+  <Map language="en">
+    <Title><![CDATA[New location map]]></Title>
+    <MapCoord>
+      <Caption/>
+      <Coord><![CDATA[{"lat":51.4960948,"lng":-0.21109400000000278,"zoom":14,"type":"roadmap","mode":"dynamic","address":"Olympia, London W14, Vereinigtes Königreich"}]]></Coord>
+    </MapCoord>
+  </Map>
+</MapData>

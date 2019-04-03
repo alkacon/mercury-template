@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.list.formatter.dynamic)]]></NiceName>
+    <Type><![CDATA[listconfig]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/list/dynamic.jsp]]></target>
+        <uuid>03e66942-c341-43f6-8995-f860b8c409e5</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[3000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[list]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>false</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <NestedFormatterSettings>true</NestedFormatterSettings>
+    <AllowsSettingsInEditor>true</AllowsSettingsInEditor>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listHsize.2]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[itemsPerPage.dynamic]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[appendSwitch.dynamic]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listPaginationPosition.dynamic]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[appendOption.dynamic]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listButtonText.dynamic]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

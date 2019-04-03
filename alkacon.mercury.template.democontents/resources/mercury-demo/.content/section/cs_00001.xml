@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Unser Tagebuch]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Na gut normalerweise würde das in Deutsch auch Blog genannt. Aber hier geht es ja um die Demonstration der Übersetzung ;)</p>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[Our Blog]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

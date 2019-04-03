@@ -1,0 +1,41 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="SliderComplexLayerImages" type="OpenCmsSliderComplexLayerImages"/>
+
+    <xsd:complexType name="OpenCmsSliderComplexLayerImages">
+        <xsd:sequence>
+            <xsd:element name="SliderComplexLayerImage" type="OpenCmsSliderComplexLayerImage" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsSliderComplexLayerImage">
+        <xsd:sequence>
+            <xsd:element name="Image" type="OpenCmsVfsFile" />
+            <xsd:element name="Class" type="OpenCmsString" />
+            <xsd:element name="PosX" type="OpenCmsString" />
+            <xsd:element name="PosY" type="OpenCmsString" />
+            <xsd:element name="Configuration" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.xtensions.slider-complex.messages"/>
+            <layouts>
+                <layout element="Image" widget="ImageGalleryWidget" configuration="{useformat: true}" />
+                <layout element="Class" widget="ComboWidget" configuration="mediumthickblackbg blackbgtransparent|mediumthickgreybg|mediumthickwhitebg" />
+                <layout element="Configuration" widget="TextareaWidget" configuration="6" />
+            </layouts>
+            <searchsettings>
+                <searchsetting element="Image" searchcontent="false" />
+                <searchsetting element="Class" searchcontent="false" />
+                <searchsetting element="PosX" searchcontent="false" />
+                <searchsetting element="PosY" searchcontent="false" />
+                <searchsetting element="Configuration" searchcontent="false" />
+            </searchsettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ShariffData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/shariff.xsd">
+  <Shariff language="de">
+    <Title><![CDATA[Shariff Social Media für Blog Detail]]></Title>
+    <Services><![CDATA[twitter,facebook,linkedin,xing]]></Services>
+  </Shariff>
+  <Shariff language="en">
+    <Title><![CDATA[Shariff Social media for blog detail]]></Title>
+    <Services><![CDATA[twitter,facebook,linkedin,xing]]></Services>
+  </Shariff>
+</ShariffData>

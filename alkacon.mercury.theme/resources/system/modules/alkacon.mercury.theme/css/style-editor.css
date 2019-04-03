@@ -1,0 +1,86 @@
+
+@font-face {
+  font-weight: 400;
+  font-style: normal;
+  font-family: 'Open Sans';
+  src: local("Open Sans"), local("OpenSans"), url("../fonts/open-sans-v13-latin_latin-ext-regular.woff2") format("woff2"), url("../fonts/open-sans-v13-latin_latin-ext-regular.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 700;
+  font-style: normal;
+  font-family: 'Open Sans';
+  src: local("Open Sans Bold"), local("OpenSans-Bold"), url("../fonts/open-sans-v13-latin_latin-ext-700.woff2") format("woff2"), url("../fonts/open-sans-v13-latin_latin-ext-700.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 400;
+  font-style: normal;
+  font-family: 'Prompt';
+  src: local("Prompt"), local("Prompt-Regular"), url("../fonts/prompt-v1-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/prompt-v1-latin-ext_latin-regular.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 700;
+  font-style: normal;
+  font-family: 'Prompt';
+  src: local("Prompt Bold"), local("Prompt-Bold"), url("../fonts/prompt-v1-latin-ext_latin-700.woff2") format("woff2"), url("../fonts/prompt-v1-latin-ext_latin-700.woff") format("woff");
+}
+
+body {
+  background-color: #fff;
+  color: #474747;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.42857;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  margin-top: 5px;
+  color: #474747;
+  text-shadow: none;
+  font-weight: 300;
+  font-family: "Prompt", sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 35px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 25px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 23px;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 23px;
+}
+
+h6 {
+  font-size: 18px;
+  line-height: 23px;
+}
+

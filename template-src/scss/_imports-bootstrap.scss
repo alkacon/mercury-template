@@ -1,0 +1,59 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+@import "../bootstrap/scss/functions";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+@import "bootstrap/overrides";
+
+// @import "../bootstrap/scss/root";
+@import "../bootstrap/scss/reboot";
+// @import "../bootstrap/scss/type";
+// @import "../bootstrap/scss/images";
+@import "../bootstrap/scss/code";
+@import "../bootstrap/scss/grid";
+// @import "../bootstrap/scss/tables";
+// @import "../bootstrap/scss/forms";
+// @import "../bootstrap/scss/buttons";
+@import "../bootstrap/scss/transitions";
+@import "../bootstrap/scss/dropdown";
+// @import "../bootstrap/scss/button-group";
+@import "../bootstrap/scss/input-group";
+// @import "../bootstrap/scss/custom-forms";
+// @import "../bootstrap/scss/nav";
+// @import "../bootstrap/scss/navbar";
+@import "../bootstrap/scss/card";
+// @import "../bootstrap/scss/breadcrumb";
+// @import "../bootstrap/scss/pagination";
+@import "../bootstrap/scss/badge";
+// @import "../bootstrap/scss/jumbotron";
+// @import "../bootstrap/scss/alert";
+// @import "../bootstrap/scss/progress";
+@import "../bootstrap/scss/media";
+@import "../bootstrap/scss/list-group";
+// @import "../bootstrap/scss/close";
+// @import "../bootstrap/scss/modal";
+@import "../bootstrap/scss/tooltip";
+@import "../bootstrap/scss/popover";
+// @import "../bootstrap/scss/carousel";
+// @import "../bootstrap/scss/utilities";
+@import "../bootstrap/scss/utilities/clearfix";
+@import "../bootstrap/scss/utilities/flex";
+@import "../bootstrap/scss/utilities/float";
+@import "../bootstrap/scss/print";
+
+@import "bootstrap/adjustments";

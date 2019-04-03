@@ -1,0 +1,83 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/map-coord.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/map-poi.xsd"/>
+
+    <xsd:element name="MapData" type="OpenCmsMapData"/>
+
+    <xsd:complexType name="OpenCmsMapData">
+        <xsd:sequence>
+            <xsd:element name="Map" type="OpenCmsMap" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsMap">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MapPoi" type="OpenCmsMapPoi" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="MapCoord" type="OpenCmsMapCoord" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <layouts useAcacia="true" />
+            <searchsettings containerPageOnly="true" />
+            <tabs>
+                <tab element="Title" collapse="false" name="%(key.tab.Map)"  />
+                <tab element="MapPoi" collapse="false" name="%(key.tab.MapPoi)" />
+                <tab element="MapCoord" collapse="false" name="%(key.tab.MapCoord)" />
+            </tabs>
+            <FieldSettings>
+            	<Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-map.title)]]></Default>
+                </Setting>
+                <Setting>
+                	<PropertyName>Description</PropertyName>
+                	<DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Description.help)]]></Description>
+                    <Widget>html</Widget>
+                    <WidgetConfig>source,link,anchor,specialchar</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>MapPoi</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Marker)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>MapCoord</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Marker))]]></DisplayName>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

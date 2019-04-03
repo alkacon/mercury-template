@@ -1,0 +1,243 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _tab.scss
+ */
+
+// Tabs
+.tab-content {
+    padding: $default-margin-small 0;
+
+    > .tab-pane {
+        display: none;
+    }
+    > .active {
+        display: block;
+    }
+}
+
+.tab-list {
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include clearfix;
+
+    &::after {
+        clear: both;
+    }
+
+    > li {
+        margin-bottom: $accordion-margin;
+
+        > a {
+            border: 1px solid $accordion-border-color;
+            font-size: $accordion-header-font-size;
+            line-height: $accordion-header-line-height;
+            background: $accordion-header-bg;
+            text-transform: $accordion-text-transform;
+            // note: for small screens, tabs are formatted like accordions, hence use these variables here
+            display: block;
+            position: relative;
+            font-family: $font-family-headings;
+            font-weight: $font-weight-headings;
+            color: $headings-color;
+            margin: 0;
+            padding: $default-margin-verysmall $default-margin-small;
+            @include round-corners($tab-border-radius);
+
+            &.active {
+                color: get-text-color($main-theme);
+                background: $main-theme;
+            }
+
+            &:hover {
+                color: get-text-color($main-theme-hover);
+                background: $main-theme-hover;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.tab-pane > div > .row-12 > div,
+.tab-pane > div > .row > div:last-child > div {
+    // remove bottom nargin from last eleemnts in nested tabs
+    // becasue the tab itself also adds a bottom margin
+    &.element:last-child  {
+        margin-bottom: 0;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+
+    .tab-pane > div > .row > div > div {
+        &.element:last-child  {
+            margin-bottom: 0;
+        }
+    }
+
+    .tab-list {
+        border-bottom: solid 2px $main-theme;
+
+        > li {
+            float: left;
+            margin-bottom: 0;
+
+            > a {
+                text-transform: $tab-text-transform;
+                font-size: $tab-header-font-size;
+                line-height: $tab-header-line-height;
+                background: transparent;
+                border: none;
+                @if ($tab-border-radius > 0) {
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+        }
+    }
+}
+
+
+// Accordion panels
+
+.accordion {
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    margin-bottom: $accordion-margin;
+    box-shadow: $panel-shadow;
+    border: 1px solid $accordion-border-color;
+    @include round-corners($accordion-border-radius, true);
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .acco-header {
+        margin: 0;
+        font-size: $accordion-header-font-size;
+        line-height: $accordion-header-line-height;
+        text-transform: $accordion-text-transform;
+
+        > a {
+            display: block;
+            padding: $default-margin-verysmall $default-margin-small;
+            color: $headings-color;
+            background: $accordion-header-bg;
+
+            &:focus,
+            &:hover {
+                color: $text-light;
+                background: $main-theme;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .acco-body {
+        border-top: 1px solid $accordion-border-color;
+        // note: bottom space will be added as margin, either from floating image or piece text
+        padding:  $default-margin-small  $default-margin-small 0  $default-margin-small;
+
+        @include piece-bottom-margin;
+        > .piece:last-of-type {
+            margin-bottom: $default-margin-small;
+        }
+    }
+
+    .sub-header {
+        @extend .h3;
+        margin-bottom: $headings-margin-bottom;
+    }
+
+    @if ($accordion-toggle-arrows) {
+        .acco-header > a {
+            padding-right: 3 * $default-margin-small;
+        }
+
+        .acco-toggle {
+            position: relative;
+
+            &::after {
+                position: absolute;
+                display: inline-block;
+                font-family: FontAwesome;
+                font-weight: normal;
+                font-size: $font-size-base;
+                line-height: $accordion-header-line-height;
+                content: "\f078";
+                top: $default-margin-verysmall;
+                right: $default-margin-small;
+                transform: rotate(-180deg) translate(0,0);
+                transition: transform .33s;
+            }
+            &.collapsed::after {
+                transform: rotate(0) translate(0,0);
+                transition: transform 0.33s;
+            }
+        }
+    }
+}
+
+// Colored tabs
+
+@each $color-name, $bg-color, $highlight-color in $reduced-colors {
+
+    .color-#{""+$color-name} .tab-list {
+        border-bottom-color: $bg-color;
+        > li {
+            > a {
+                &.active {
+                    color: get-text-color($bg-color);
+                    background: $bg-color;
+                }
+
+                &:focus,
+                &:hover {
+                    color: get-text-color($highlight-color);
+                    background: $highlight-color;
+                }
+            }
+        }
+    }
+}
+
+// Colored accordion panels
+
+@each $type-name, $bg-color, $highlight-color in $reduced-colors {
+
+    .color-#{""+$type-name} .accordion .acco-header {
+
+        > a {
+            color: get-text-color($bg-color);
+            background: $bg-color;
+
+            &:hover,
+            &:hover {
+                color: get-text-color($highlight-color);
+                background: $highlight-color;
+            }
+        }
+    }
+}

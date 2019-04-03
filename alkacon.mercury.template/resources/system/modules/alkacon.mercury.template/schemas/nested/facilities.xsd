@@ -1,0 +1,49 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="FacilityData" type="OpenCmsFacilityData" />
+
+    <xsd:complexType name="OpenCmsFacilityData">
+        <xsd:sequence>
+            <xsd:element name="Facility" type="OpenCmsFacility" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsFacility">
+        <xsd:sequence>
+            <xsd:element name="WheelchairAccess" type="OpenCmsBoolean" />
+            <xsd:element name="HearingImpaired" type="OpenCmsBoolean" />
+            <xsd:element name="LowVision" type="OpenCmsBoolean" />
+            <xsd:element name="PublicRestrooms" type="OpenCmsBoolean" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>WheelchairAccess</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Facility.WheelchairAccess)]]></DisplayName>
+                    <Widget>checkbox</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>HearingImpaired</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Facility.HearingImpaired)]]></DisplayName>
+                    <Widget>checkbox</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>LowVision</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Facility.LowVision)]]></DisplayName>
+                    <Widget>checkbox</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>PublicRestrooms</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Facility.PublicRestrooms)]]></DisplayName>
+                    <Widget>checkbox</Widget>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<export>
+	<info>
+		<infoproject>Offline</infoproject>
+		<export_version>10</export_version>
+	</info>
+	<module>
+		<name>alkacon.mercury.xtensions</name>
+		<nicename><![CDATA[Mercury template: Extensions and tech demos]]></nicename>
+		<group>Mercury template</group>
+		<class/>
+		<import-site>/</import-site>
+		<export-mode name="reduced"/>
+		<description><![CDATA[A number of additional functions for the Mercury template that serve as technical demos for OpenCms capabilities or provide functions that are seldom needed in a real installation.]]></description>
+		<version>10.9.9.2</version>
+		<autoincrement>true</autoincrement>
+		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
+		<authoremail/>
+		<datecreated/>
+		<userinstalled/>
+		<dateinstalled/>
+		<dependencies>
+			<dependency name="alkacon.mercury.template" version="10.9.9"/>
+		</dependencies>
+		<exportpoints/>
+		<resources>
+			<resource uri="/system/modules/alkacon.mercury.xtensions/"/>
+		</resources>
+		<excluderesources/>
+		<parameters/>
+		<resourcetypes>
+			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-slider-complex" id="8800">
+				<param name="schema">/system/modules/alkacon.mercury.xtensions/schemas/slider-complex.xsd</param>
+			</type>
+			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-imgur-asset" id="8801">
+				<param name="schema">/system/modules/alkacon.mercury.xtensions/schemas/imgur-asset.xsd</param>
+			</type>
+		</resourcetypes>
+		<explorertypes>
+			<explorertype name="m-slider-complex" key="type.m-slider-complex.name" smalliconstyle="m-icon-16-slider" bigiconstyle="m-icon-24-slider" reference="xmlcontent">
+				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-slider-complex.description" key="type.m-slider-complex.title"/>
+			</explorertype>
+			<explorertype name="m-imgur-asset" key="type.m-imgur-asset.name" smalliconstyle="m-icon-16-imgursection" bigiconstyle="m-icon-24-imgursection" reference="xmlcontent">
+				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-imgur-asset.description" key="type.m-imgur-asset.title"/>
+			</explorertype>
+		</explorertypes>
+	</module>
+	<files>
+		<file>
+			<destination>system</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/modules</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions</destination>
+			<type>folder</type>
+			<uuidstructure>cdfe9771-06e6-4f7d-914b-ccfa3186f350</uuidstructure>
+			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/.config</source>
+			<destination>system/modules/alkacon.mercury.xtensions/.config</destination>
+			<type>module_config</type>
+			<uuidstructure>fc55f2a0-27f2-40dc-b7f5-a6c9cb01d45a</uuidstructure>
+			<uuidresource>42746412-b4a9-4b69-9397-a4b4edc9af38</uuidresource>
+			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/formatters</destination>
+			<type>folder</type>
+			<uuidstructure>94b920bd-df8e-46a6-adeb-f2e0cb938df1</uuidstructure>
+			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/formatters/imgur-asset.jsp</source>
+			<destination>system/modules/alkacon.mercury.xtensions/formatters/imgur-asset.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>002d51d9-1e1d-4d94-a577-7411514ae9a8</uuidstructure>
+			<uuidresource>71b1973d-6919-4e9f-8ab7-26e10ad131a9</uuidresource>
+			<datecreated>Tue, 20 Sep 2016 08:42:57 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Formatter JSP for Asset connection > Imgur]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/formatters/imgur-asset.xml</source>
+			<destination>system/modules/alkacon.mercury.xtensions/formatters/imgur-asset.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>3c4fc48e-a119-4cc4-8241-e716a5e23898</uuidstructure>
+			<uuidresource>c447699b-96e8-481e-8834-c0012f91a56c</uuidresource>
+			<datecreated>Tue, 20 Sep 2016 08:42:57 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Default asset connection > Imgur]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/formatters/slider-complex.jsp</source>
+			<destination>system/modules/alkacon.mercury.xtensions/formatters/slider-complex.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>345ce0fa-ad1e-46b4-822b-36889ad9baec</uuidstructure>
+			<uuidresource>1b5a76f1-ef2d-4cdd-ac2b-817ab9e4c298</uuidresource>
+			<datecreated>Wed, 09 Sep 2015 08:41:52 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Formatter JSP for complex slider]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/formatters/slider-complex.xml</source>
+			<destination>system/modules/alkacon.mercury.xtensions/formatters/slider-complex.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>3362b7e7-0527-4dfe-bbdf-0fbd731a0cae</uuidstructure>
+			<uuidresource>b9938a3a-a9e1-48b1-b3c7-0c675a78d31d</uuidresource>
+			<datecreated>Wed, 09 Sep 2015 08:41:52 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Complex slider]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/i18n</destination>
+			<type>folder</type>
+			<uuidstructure>ab056d21-2235-4911-87b6-d2ff46379e1b</uuidstructure>
+			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.imgur-asset.messages_de</source>
+			<destination>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.imgur-asset.messages_de</destination>
+			<type>propertyvfsbundle</type>
+			<uuidstructure>cda74619-e939-409c-8f4d-a9055875c4b5</uuidstructure>
+			<uuidresource>e400bb55-7eb6-4dc2-9dd3-752d62fe1d99</uuidresource>
+			<datecreated>Tue, 07 Feb 2017 12:19:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property type="shared">
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.imgur-asset.messages_en</source>
+			<destination>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.imgur-asset.messages_en</destination>
+			<type>propertyvfsbundle</type>
+			<uuidstructure>e06f1e55-e9ca-4f20-a4a2-a344e2f9cd38</uuidstructure>
+			<uuidresource>4040ec4b-9818-407a-ab74-40dd5513573e</uuidresource>
+			<datecreated>Tue, 07 Feb 2017 12:19:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property type="shared">
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.slider-complex.messages_de</source>
+			<destination>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.slider-complex.messages_de</destination>
+			<type>propertyvfsbundle</type>
+			<uuidstructure>22375458-b430-4f11-9481-a5075e456a77</uuidstructure>
+			<uuidresource>79a0b869-b589-4d63-84c4-d77c35c3b247</uuidresource>
+			<datecreated>Fri, 18 Nov 2016 16:14:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property type="shared">
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.slider-complex.messages_en</source>
+			<destination>system/modules/alkacon.mercury.xtensions/i18n/alkacon.mercury.xtensions.slider-complex.messages_en</destination>
+			<type>propertyvfsbundle</type>
+			<uuidstructure>7121d415-d8ac-43a5-a439-a24743e856ce</uuidstructure>
+			<uuidresource>ec501fa9-6a8a-46bc-b47f-a4461db19fdb</uuidresource>
+			<datecreated>Fri, 18 Nov 2016 16:14:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property type="shared">
+					<name>content-encoding</name>
+					<value><![CDATA[UTF-8]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider</destination>
+			<type>folder</type>
+			<uuidstructure>5737a4e4-506f-43a5-8680-2a8493a09333</uuidstructure>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>export</name>
+					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/assets</destination>
+			<type>folder</type>
+			<uuidstructure>da5b039d-714f-464a-8804-4a1fc59ab6e7</uuidstructure>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/coloredbg.png</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/coloredbg.png</destination>
+			<type>image</type>
+			<uuidstructure>fadf496d-1eaa-4d65-b146-b1d9842d8e8c</uuidstructure>
+			<uuidresource>285f6bc0-57d3-42f9-8ad7-9cfff2ceba6c</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[coloredbg]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:5,h:5]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile.png</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile.png</destination>
+			<type>image</type>
+			<uuidstructure>a5611cdf-d0fe-45c1-a53e-9a302f1a1a62</uuidstructure>
+			<uuidresource>dbe6ed05-2c60-4dbc-b7b2-3310a2c686d9</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[gridtile]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:2,h:2]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile_3x3.png</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile_3x3.png</destination>
+			<type>image</type>
+			<uuidstructure>74918a91-065c-477d-82e1-57dd52a93036</uuidstructure>
+			<uuidresource>706ed274-4b22-4377-b69a-bd3c72c944da</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[gridtile_3x3]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:3,h:3]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile_3x3_white.png</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile_3x3_white.png</destination>
+			<type>image</type>
+			<uuidstructure>49b390ad-80c6-4ece-8eaf-25ca77745043</uuidstructure>
+			<uuidresource>e84c50da-25a5-4438-96df-32cadbc3a677</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[gridtile_3x3_white]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:3,h:3]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile_white.png</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/gridtile_white.png</destination>
+			<type>image</type>
+			<uuidstructure>32f7368a-a3b8-4288-839d-9138f8f18fb4</uuidstructure>
+			<uuidresource>81ff5018-772e-43c2-ab14-2b5f235da9ac</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[gridtile_white]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:2,h:2]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/loader.gif</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/assets/loader.gif</destination>
+			<type>image</type>
+			<uuidstructure>73e4686d-a62a-4e55-a88f-9a45771f6346</uuidstructure>
+			<uuidresource>419abda0-a1a5-4839-8653-635f5e53718a</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[loader]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:24,h:24]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions</destination>
+			<type>folder</type>
+			<uuidstructure>f036ccca-97c2-407c-ac1d-f82ce5f9be60</uuidstructure>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.actions.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.actions.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>ddee78db-3635-4c6c-a0b1-73c797dea2bc</uuidstructure>
+			<uuidresource>c1c6abc7-59d6-4b43-b2d1-d04b5ce3addf</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.actions.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.carousel.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.carousel.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>349b9d22-097b-4123-82f9-2140aeb52f4c</uuidstructure>
+			<uuidresource>8ef332fa-3bf0-40ae-aef2-019b5342883b</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.carousel.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.kenburn.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.kenburn.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>da794461-38d4-406a-8bd1-3657d35e1f52</uuidstructure>
+			<uuidresource>dbc2f516-c7d5-43c6-bd03-4d9825f76ef5</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.kenburn.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.layeranimation.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.layeranimation.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>f7cbe649-7d43-4caa-ad4a-c8b7133f554d</uuidstructure>
+			<uuidresource>ee7b642b-875c-46b2-872b-f7f75157fad0</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.layeranimation.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.migration.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.migration.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>7b2bf022-976a-44c9-9171-660a8e463d92</uuidstructure>
+			<uuidresource>4ae950c9-c18d-4d09-8bb1-3f74c9e53004</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.migration.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.navigation.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.navigation.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>8cf632ee-1c47-472d-8a19-197518d972d7</uuidstructure>
+			<uuidresource>848076dd-2f73-4267-8820-b09d297efec9</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.navigation.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.parallax.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.parallax.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>1535db3f-3e41-4250-b7a2-8142f583325a</uuidstructure>
+			<uuidresource>8813c579-d33e-4ccf-b218-997ca369aa72</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.parallax.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.slideanims.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.slideanims.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>1a701569-e943-470d-9d9c-cb413c5e025a</uuidstructure>
+			<uuidresource>c2c98a12-62a7-4e8c-94af-e061878264fc</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.slideanims.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.video.min.js</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/revolution.extension.video.min.js</destination>
+			<type>plain</type>
+			<uuidstructure>3dca04f1-cff0-4cba-b4f0-cb65c3688c19</uuidstructure>
+			<uuidresource>d6a25d1a-04e6-4725-b281-f3ddd25bdc42</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revolution.extension.video.min]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons</destination>
+			<type>folder</type>
+			<uuidstructure>6478e82d-cb95-4c9f-b03c-e74ef4d569f2</uuidstructure>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.eot</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.eot</destination>
+			<type>plain</type>
+			<uuidstructure>570b9554-d3eb-413b-b90c-48612e54cb96</uuidstructure>
+			<uuidresource>bab4e77d-82d4-477a-bd19-426405ff99db</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revicons]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.svg</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.svg</destination>
+			<type>plain</type>
+			<uuidstructure>bbbb86b2-89b4-4d2a-b509-b316b50d5f51</uuidstructure>
+			<uuidresource>ed3c1e1f-70df-4f97-a86a-55323c78ad50</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revicons]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.ttf</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.ttf</destination>
+			<type>plain</type>
+			<uuidstructure>a6de9f0a-cb15-4b63-8ebb-101d871e7e88</uuidstructure>
+			<uuidresource>d4d038ba-0cf4-427e-af96-7afcc8850cd6</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revicons]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.woff</source>
+			<destination>system/modules/alkacon.mercury.xtensions/revolution-slider/revicons/revicons.woff</destination>
+			<type>plain</type>
+			<uuidstructure>71c468f4-22dd-4c0a-aead-c0c5a8889bff</uuidstructure>
+			<uuidresource>86b7eddc-8073-454b-9da9-cec3fe970f99</uuidresource>
+			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[revicons]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas</destination>
+			<type>folder</type>
+			<uuidstructure>2fadc912-3e65-4adf-a940-1ff9dd576208</uuidstructure>
+			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/schemas/imgur-asset.xsd</source>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/imgur-asset.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>454b555e-52de-48ab-83d3-89a05803ea40</uuidstructure>
+			<uuidresource>85772f43-77e3-4df5-bee7-ae5a76cb5de9</uuidresource>
+			<datecreated>Tue, 20 Sep 2016 08:42:56 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for asset connection > Imgur example]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/schemas/slider-complex.xsd</source>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/slider-complex.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>c9963952-36a1-4bab-a0df-0b7e8543d7cd</uuidstructure>
+			<uuidresource>16c60865-0374-41e6-935d-69edb3fdc27d</uuidresource>
+			<datecreated>Wed, 09 Sep 2015 08:41:51 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for a complex slider]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/nested</destination>
+			<type>folder</type>
+			<uuidstructure>2d647543-ba21-40de-85ec-9e6b7745f9e3</uuidstructure>
+			<datecreated>Tue, 22 Jan 2019 09:47:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/schemas/nested/asset-dataview.xsd</source>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/nested/asset-dataview.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>3ebc4c3e-45cd-4c41-80dd-ffa8575b9d1d</uuidstructure>
+			<uuidresource>3bc6cee7-6c6d-4aa0-b326-35812c07d57a</uuidresource>
+			<datecreated>Thu, 22 Sep 2016 08:10:10 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for asset connection dataview]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-choicelayer.xsd</source>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-choicelayer.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>7bd4196e-e778-4936-a3f0-9ec3e8d2884d</uuidstructure>
+			<uuidresource>e4337de3-cde9-4a0b-9327-ff2cbde51c34</uuidresource>
+			<datecreated>Thu, 08 Jun 2017 06:45:20 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for complex slider layer choice]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-layerimage.xsd</source>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-layerimage.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>2605d8cb-c815-4d25-8049-0c8c927e9eab</uuidstructure>
+			<uuidresource>1eaf077b-c4ea-403a-a6eb-49d53b8a73e4</uuidresource>
+			<datecreated>Wed, 09 Sep 2015 08:46:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for a complex slider image layer]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-layertext.xsd</source>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-layertext.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>ba6b683c-a83c-42c9-a8af-6be966d723c3</uuidstructure>
+			<uuidresource>2674ed5c-c64d-4d18-afeb-568bf1c28405</uuidresource>
+			<datecreated>Thu, 08 Jun 2017 06:56:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for a complex slider text layer]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-slide.xsd</source>
+			<destination>system/modules/alkacon.mercury.xtensions/schemas/nested/slider-complex-slide.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>d3614936-150a-4c07-983c-ed7c97c63499</uuidstructure>
+			<uuidresource>99e91fe9-f651-4af8-a2b5-a566a371137b</uuidresource>
+			<datecreated>Wed, 09 Sep 2015 08:46:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for a complex slider item]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+	</files>
+</export>

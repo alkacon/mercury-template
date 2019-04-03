@@ -1,0 +1,942 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _nav-main.scss
+ */
+
+// Special Navigaiton only variables - main settings are in _variables.scss.
+
+
+// ######################### Mobile navigation #########################
+
+@include media-breakpoint-down(md) {
+
+    // The top level navbar
+
+    .nav-main-items {
+        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: static;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            // all menu items, either in head or submenus
+            display: flex;
+            flex-direction: column;
+
+            > a {
+                bottom: 0;
+                color: $nav-text;
+                font-size: $nav-mobile-font-size;
+                line-height: $nav-mobile-line-height;
+                font-weight: normal;
+                padding: $nav-mobile-line-padding #{$grid-gutter-width / 2};
+                border-bottom: solid 1px $nav-border;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        > li {
+            // top level menu entry have differnet text formatting
+            > a {
+                color: $nav-header-text;
+                text-transform: $nav-header-text-transform;
+                font-size: $nav-header-font-size;
+                font-weight: $nav-header-font-weight;
+            }
+        }
+
+        li {
+            &[aria-expanded] {
+                // if NOT li[aria-expanded], then this is a single head link without submenu
+                position: relative;
+
+                > a {
+                    &[aria-controls] {
+                        &::after {
+                            position: absolute;
+                            display: inline-block;
+                            font-family: FontAwesome;
+                            right: 9px;
+                            font-weight: normal;
+                            content: "\f107";
+                            font-size: round($nav-font-size * 1.75);
+                            right: $grid-gutter-width / 2;
+                            transform: rotate(0);
+                            transition: transform $nav-animation-time;
+
+                            @if ($nav-mobile-show-box) {
+                                top: $nav-mobile-box-top;
+                                width: $nav-mobile-box-height;
+                                text-align: center;
+                                border-radius: $nav-border-radius;
+                                line-height: $nav-mobile-box-height;
+                                background-color: $nav-mobile-box-color;
+                                color: get-text-color($nav-mobile-box-color); // assumes dark box color
+                            }
+                        }
+                    }
+
+                    &.nav-label + a[aria-controls] {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        height: $nav-mobile-line-target-height;
+                        display: block;
+                        border: none;
+                        padding: 0;
+                    }
+                }
+
+                &[aria-expanded="true"] > a[aria-controls]::after {
+                    transform: rotate(-180deg);
+                    transition: transform $nav-animation-time;
+                }
+            }
+
+            &.active[aria-expanded="true"] > a,
+            &.active > a {
+                // the page highlighted by the OpenCms navigation (from the URL)
+                color: $nav-text-active-mobile;
+                background-color: $nav-bg-active-mobile;
+            }
+
+            &[aria-expanded="true"] > a {
+                color: $nav-text-hover-mobile;
+                background-color: $nav-bg-hover-mobile;
+                border-color: $nav-border; // override theme color
+            }
+
+            // this adds the downslide transition effect
+            // for the dropdowns on click
+            > .nav-menu {
+                transition: max-height $nav-animation-time cubic-bezier(0, 0.65, 0.35, 1);
+                max-height: 0;
+                display: block;
+                overflow: hidden;
+            }
+
+            &[aria-expanded="true"] > .nav-menu {
+                transition: max-height $nav-animation-time * 2 ease-in;
+                max-height: 2000px;
+            }
+        }
+    }
+
+
+   // Submenus of the main navbar
+
+    .nav-menu {
+        // menus below the head navbar, not the head navbar itself
+        // these are outside of the .nav-main-items to keep the generated CSS small
+        box-shadow: none;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        list-style: none;
+
+        // left indent of sub levels
+        > li > a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 2)};
+        }
+        > li > ul > li > a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 4)};
+        }
+        > li > ul > li > ul > li a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 6)};
+        }
+        > li > ul > li > ul > li > ul > li a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 7)};
+        }
+        > li > ul > li > ul > li > ul > li > ul > li a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 8)};
+        }
+        > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 9)};
+        }
+        > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 10)};
+        }
+        > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 11)};
+        }
+        > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
+            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 12)};
+        }
+    }
+
+
+    // The mobile navigation toggle button
+
+    #nav-toggle-label {
+        display: inherit;
+        margin-bottom: 0;
+        max-width: none;
+        pointer-events: auto;
+    }
+
+    .nav-toggle {
+        // the button used to show / hide the nav on small screens
+        display: block;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        width: $nav-toggle-size;
+        height: $nav-toggle-size;
+        font-size: 0;
+        text-indent: -9999px;
+        box-shadow: none;
+        border-radius: $nav-border-radius;
+        border: none;
+        cursor: pointer;
+        transition: background $nav-animation-time;
+        color: $nav-toggle-text;
+        background-color: $nav-toggle-bg;
+        z-index: $above-oc-z-index + 1; // nav toggle should be above OC edit points
+        float: right;
+
+        span {
+            display: block;
+            position: absolute;
+            top: round(0.48 * $nav-toggle-size);
+            left: round(0.2 * $nav-toggle-size);
+            right: round(0.2 * $nav-toggle-size);
+            height: round(0.06 * $nav-toggle-size);
+            background: $nav-toggle-text;
+            transition: background 0s $nav-animation-time;
+
+            &::before,
+            &::after {
+                position: absolute;
+                display: block;
+                left: 0;
+                width: 100%;
+                height: round(0.06 * $nav-toggle-size);
+                background-color: $nav-toggle-text;
+                content: "";
+                transition-duration: $nav-animation-time, $nav-animation-time;
+                transition-delay: $nav-animation-time, 0s;
+            }
+
+            &::before {
+                top: round(-0.2 * $nav-toggle-size);
+                /* autoprefixer: ignore next */
+                transition-property: top, transform;
+            }
+
+            &::after {
+                bottom: round(-0.2 * $nav-toggle-size);
+                /* autoprefixer: ignore next */
+                transition-property: bottom, transform;
+            }
+        }
+
+        &.active {
+            background-color: $nav-toggle-bg-active;
+
+            span {
+                background: none;
+
+                &::before,
+                &::after {
+                    transition-delay: 0s, $nav-animation-time;
+                }
+
+                &::before {
+                    top: 0;
+                    transform: rotate(45deg);
+                }
+
+                &::after {
+                    bottom: 0;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(xs) {
+            // on very small screens use a smaller button
+            // otherwise the button may become larger than the head itself
+            width: round($nav-toggle-size-xxs);
+            height: round($nav-toggle-size-xxs);
+
+            span {
+                top: round(0.46 * $nav-toggle-size-xxs);
+                left: round(0.2 * $nav-toggle-size-xxs);
+                right: round(0.2 * $nav-toggle-size-xxs);
+                height: round(0.08 * $nav-toggle-size-xxs);
+
+                &::before,
+                &::after {
+                    height: round(0.08 * $nav-toggle-size-xxs);
+                }
+
+                &::before {
+                    top: round(-0.2 * $nav-toggle-size-xxs);
+                }
+
+                &::after {
+                    bottom: round(-0.2 * $nav-toggle-size-xxs);
+                }
+            }
+        }
+    }
+
+
+    // Header Elements
+
+    .nav-main-container {
+        pointer-events: none;
+        position: fixed;
+        #{$nav-mobile-position}: -1 * 90vw;
+        transition: $nav-mobile-position 0.5s;
+        top: 0;
+        height: 100vh;
+        background-color: $nav-border;
+        z-index: $above-oc-z-index; // this is the z-index for the left/right menu
+        pointer-events: auto;
+        overflow-x: hidden;
+
+        .nav-main-group {
+            display: block;
+            position: relative;
+            border: 0;
+            margin: 0;
+            padding-left: 0;
+            padding-right: 0;
+            // add border above the menu items
+            border-top: solid 1px $nav-border;
+            background-color: $nav-header-bg;
+            // make space above the nav entries for the toggle button
+            padding-top: $grid-gutter-width + $nav-toggle-size;
+            min-width: $nav-mobile-side-size;
+            width: 90vw;
+
+            &.has-sidelogo {
+                padding-top: 0;
+            }
+        }
+
+        // adjust size of mobile side navigation
+        @include media-breakpoint-up(sm) {
+            #{$nav-mobile-position}: -1 * 70vw;
+            .nav-main-group  {
+                width: 70vw;
+            }
+        }
+        @include media-breakpoint-up(md) {
+            #{$nav-mobile-position}: -1 * 50vw;
+            .nav-main-group  {
+                width: 50vw;
+            }
+        }
+
+        .nav-main-mobile-logo {
+            display: block;
+            padding: $grid-gutter-width / 2;
+            // make sure wide logos are not under the toggle button
+            @if ($nav-mobile-position == right) {
+                margin-right: 3 * $grid-gutter-width;
+            }
+            @if ($nav-mobile-position == left) {
+                margin-left: 3 * $grid-gutter-width;
+            }
+        }
+    }
+
+    #nav-toggle-label {
+        position: fixed;
+        z-index: $above-oc-z-index + 1; // the toggle must be above the z-index of the menu (see above)
+        top: $grid-gutter-width / 2;
+
+        @if ($nav-mobile-position == right) {
+            right: $grid-gutter-width;
+        }
+
+        @if ($nav-mobile-position == left) {
+            left: $grid-gutter-width;
+        }
+    }
+
+    .head-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        background-color: #000;
+        z-index: $above-oc-z-index - 1; // the page overlay z-index must be below the menu
+        opacity: 0;
+        transition: opacity 0.5s, height 0.001s 0.5s, width 0.001s 0.5s;
+    }
+
+    #nav-toggle-check {
+        display: none;
+    }
+
+    html.noscript #nav-toggle-check:checked ~ #nav-toggle-group,
+    html.active-nav .area-header {
+        .head-overlay {
+            width: 100vw;
+            height: 100vh;
+            opacity: 0.75;
+            transition: opacity 0.5s;
+        }
+    }
+
+    html.noscript #nav-toggle-check:checked ~ .header-group,
+    html.active-nav .area-header .header-group {
+        .nav-main-container {
+            #{$nav-mobile-position}: 0;
+        }
+
+        @if ($nav-mobile-position == right) {
+            // this expands the arrow links to the right so they can be touch-clicked easier
+            li[aria-expanded] > a::after {
+                right: $grid-gutter-width;
+            }
+            li[aria-expanded] > a {
+                padding-right: 2 * $grid-gutter-width !important;
+            }
+        }
+    }
+
+    #mercury-page {
+        position: relative;
+        #{$nav-mobile-position}: 0;
+        transition: $nav-mobile-position 0.5s;
+    }
+
+    html.active-nav {
+        overflow-x: hidden;
+        overflow: hidden;
+
+        @if ($nav-mobile-side-content-move) {
+            #mercury-page {
+                #{$nav-mobile-position}: $nav-mobile-side-size;
+            }
+        }
+    }
+
+    html.opencms-page-editor {
+        // adjust for toolbar mobile display in edit mode
+
+        #nav-toggle-label {
+            top: calc(#{$opencms-toolbar-height} + #{$grid-gutter-width / 2});
+        }
+
+        .nav-main-container {
+            .nav-main-group {
+                padding-top: $grid-gutter-width + $nav-toggle-size + $opencms-toolbar-height;
+                &.has-sidelogo {
+                    padding-top: $opencms-toolbar-height;
+                }
+            }
+        }
+    }
+
+    html.noscript {
+        // JavaScript disabled navigation
+        .area-header {
+            .nav-main-items li {
+                display: flex !important;
+
+                > .nav-menu {
+                    max-height: none;
+                }
+            }
+        }
+    }
+
+    #nav-main-search {
+        // no search button on mobile
+        display: none !important;
+    }
+
+    .nav-mega-menu {
+        // mega menu adjustments
+        .nav-side {
+            // sidebar sets negavitve margins for small screens by default, but in mega menu we need 0 margin
+            margin: 0;
+            li {
+                // border is already added by menu rules above
+                border: 0;
+                > a {
+                    // sidebar padding may be different
+                    padding: $nav-mobile-line-padding #{$grid-gutter-width / 2} $nav-mobile-line-padding #{($grid-gutter-width / 2) + ($nav-mobile-indent * 2)};
+                }
+            }
+        }
+        .element {
+            // no bottom margin in mobile nav between elements
+            margin-bottom: 0;
+        }
+    }
+}
+
+// ######################### Desktop navigation #########################
+
+@include media-breakpoint-up(lg) {
+
+    // The top level navbar
+
+    .nav-main-items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: static;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        pointer-events: auto;
+
+        @if ($nav-header-float == "right") {
+            justify-content: flex-end;
+
+        } @else {
+            justify-content: flex-start;
+
+            > li:first-of-type > a {
+                padding-left: 2px;
+            }
+        }
+
+        > li {
+            // all top level navbar items
+            display: flex;
+            position: relative;
+
+            > a {
+                color: $nav-header-text;
+                text-transform: $nav-header-text-transform;
+                font-size: $nav-header-font-size;
+                font-weight: $nav-header-font-weight;
+                line-height: $nav-header-line-height;
+                font-family: $nav-header-font;
+                position: relative;
+                padding: $nav-header-padding;
+                @if ($nav-header-set-bg-color == true) {
+                    background-color: $nav-header-menu-bg;
+                }
+
+                &::after {
+                    position: absolute;
+                    display: inline-block;
+                    font-family: FontAwesome;
+                }
+            }
+
+            > a:focus,
+            > a:hover,
+            &.active > a,
+            &.active > a:focus,
+            &.active > a:hover,
+            &[aria-expanded="true"] > a,
+            &[aria-expanded="true"] > a:focus,
+            &[aria-expanded="true"] > a:hover {
+                text-decoration: none;
+                color: $nav-header-text-hover;
+                @if ($nav-header-set-bg-color == true) {
+                    background-color: $nav-header-menu-bg-hover;
+                }
+                margin-bottom: 0;
+            }
+
+            &.active > a {
+                // the page highlighted by the OpenCms navigation (from the URL)
+                color: $nav-header-text-active;
+                @if ($nav-header-set-bg-color == true) {
+                    background-color: $nav-header-menu-bg; // top level nav
+                }
+            }
+
+            > a:focus {
+                @if ($nav-header-set-bg-color == true) {
+                    background-color: $nav-header-menu-bg; // top level nav
+                }
+            }
+
+            &[aria-expanded="true"] > a.nav-label + a[aria-controls] {
+                // special case for pages in main navigation with direct subpages
+                display: none;
+            }
+
+            &[aria-expanded] {
+                > a {
+                    // if NOT li[aria-expanded], then this is a single head link that can be clicked
+                    cursor: default; // change pointer since dropdown menu shows on hover (not click) on desktop
+
+                    @if ($nav-header-show-arrows == true) {
+                        // always show arrows
+                        &::after {
+                            line-height: $nav-header-line-height;
+                            content: "\f107"; // arrow pointing down
+                            right: 2px;
+                        }
+                    }
+
+                    &.nav-label {
+                        cursor: pointer;
+
+                        + a[aria-controls] {
+                            position: absolute;
+                            display: inline-block;
+                            background: transparent;
+                            border: none;
+                            width: 100%;
+                            top: 0;
+                            right: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            z-index: 999; // must not be above edit points - only relevant for the top menu
+                            &::after { // no arrow on handle
+                                 content: "";
+                            }
+                        }
+                    }
+                }
+
+                @if ($nav-header-animate-menu == "move") {
+                    > .nav-menu {
+                        animation-name: fadeTopMenu;
+                        animation-duration: $nav-animation-time;
+                        animation-fill-mode: both;
+                        transform-origin: top;
+                    }
+                }
+            }
+
+            &.open-left > .nav-menu {
+                right: 0;
+                left: auto;
+            }
+
+            > .nav-menu {
+                top: #{$nav-header-total-height};
+            }
+        }
+
+        [aria-expanded="true"] > .nav-menu {
+            // show menus if expanded
+            display: block;
+        }
+    }
+
+
+    // Submenus of the main navbar
+
+    .nav-menu {
+        // menus below the head navbar, not the head navbar itself
+        // outside of .nav-main-items to keep the generated CSS small
+        // usually .nav-menu is for an <ul>
+        // however for a mega menu .nav-menu will be on a <div>
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        min-width: $nav-menu-min-width;
+        z-index: $above-oc-z-index; // the "normal" dropdown menus from the header
+        box-shadow: $nav-shadow;
+        border-top: $nav-menu-border-top;
+        border-bottom: $nav-menu-border-bottom;
+        list-style: none;
+
+        @if ($nav-header-animate-menu == "move") {
+            animation-name: fadeRightMenu;
+            animation-duration: $nav-animation-time;
+            animation-fill-mode: both;
+            transform-origin: left;
+        }
+
+         @if ($nav-header-animate-menu == "fade") {
+            animation-name: fadeInMenu;
+            animation-duration: $nav-animation-time;
+            animation-fill-mode: both;
+        }
+
+        > li {
+            // all menu items
+            display: flex;
+            position: relative;
+
+            > a {
+                color: $nav-text;
+                background-color: $nav-bg;
+                border: none;
+                border-bottom: $nav-menu-entry-border-bottom;
+                padding: 5px 25px;
+                width: 100%;
+                font-size: $nav-font-size;
+                font-weight: $nav-menu-font-weight;
+                padding: $nav-menu-padding;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            &:last-child > a {
+                // remove the border of the last element
+                border-bottom: none;
+            }
+
+            &[aria-expanded="true"] > a {
+                color: $nav-text-hover;
+                background-color: $nav-bg-hover;
+            }
+
+            &.active > a {
+                color: $nav-text-active;
+                background-color: $nav-bg-active;
+            }
+
+            > a,
+            &.active > a {
+                &:focus,
+                &:hover {
+                    color: $nav-text-hover;
+                    background-color: $nav-bg-hover;
+                }
+            }
+        }
+
+        [aria-expanded] {
+            // sublevel menus
+            position: relative;
+
+            > .nav-menu {
+                left: 100%;
+                margin-top: 0;
+                margin-left: 0;
+            }
+
+            > a {
+                // add caret labels to menus that have submenus
+                &[aria-controls]::after {
+                    position: absolute;
+                    display: inline-block;
+                    font-family: FontAwesome;
+                    right: 9px;
+                    font-size: $nav-font-size;
+                    content: "\f105"; // right arrow for default large screens
+                    font-weight: 400;
+                }
+
+                &.nav-label + a[aria-controls] {
+                    background-color: transparent;
+                    position: absolute;
+                    display: inline-block;
+                    border: none;
+                    width: $nav-handle-right-padding;
+                    padding-left: 0;
+                    padding-right: 0;
+                    top: 0;
+                    right: 0;
+                }
+            }
+
+            &.open-left {
+                // adjust submenus to open left / right for submenus
+                // CSS classes will be set by JavaScript
+                &,
+                [aria-expanded] {
+                    > .nav-menu {
+                        left: auto;
+                        right: $nav-menu-min-width;
+
+                        @if ($nav-header-animate-menu == "move") {
+                            transform-origin: right;
+                        }
+                    }
+                }
+
+                [aria-expanded].open-right {
+                    &,
+                    [aria-expanded] {
+                        > .nav-menu {
+                            left: 100%;
+                            right: auto;
+
+                            @if ($nav-header-animate-menu == "move") {
+                                transform-origin: left;
+                            }
+                        }
+                    }
+                }
+
+                a {
+                    &[aria-controls]::after {
+                        content: "\f104";
+                    }
+                }
+
+                [aria-expanded].open-right a {
+                    &[aria-controls]::after {
+                        content: "\f105";
+                    }
+                }
+            }
+        }
+    }
+
+    // the button used to show / hide the nav on small screens
+    // this is not visible in desktop menu
+    #nav-toggle-group,
+    #nav-toggle-check {
+        display: none;
+    }
+
+
+    #nav-main-search {
+
+        .nav-menu {
+            padding: $nav-hor-padding;
+            background-color: $nav-bg;
+            width: 400px;
+        }
+
+        .search-form {
+            padding: 0;
+            margin: 0;
+            border: none;
+            color: $nav-text;
+            font-size: $nav-font-size;
+            font-weight: $nav-menu-font-weight;
+            position: relative;
+            width: 100%;
+        }
+
+        &[aria-expanded] > a {
+            padding-right: 0;
+            &::after {
+                content: ""; // no arrow here
+                right: 0;
+            }
+        }
+    }
+
+    .nav-main-container {
+        position: relative;
+        width: 100%;
+
+        & .nav-main-mobile-logo {
+            display: none;
+        }
+    }
+
+    html.hasscript {
+        // Mega menu adjustments
+        // Only requires if JS is active since otherwise mega menu will not work anyway
+        .nav-main-container {
+            .nav-mega-menu {
+                top: 0; // this will be modified by JS later
+                left: 0;
+                position: absolute;
+                margin: 0;
+                width: calc(#{container-useable-width(lg)} + #{2 * $default-margin});
+                padding: $default-margin $default-margin 0 $default-margin;
+                background-color: $nav-megamenu-bg;
+            }
+
+            .nav-main-items > li[aria-expanded].mega {
+                position: static;
+            }
+
+            @include media-breakpoint-up(xl) {
+                .nav-mega-menu {
+                    width: calc(#{container-useable-width(xl)} + #{2 * $default-margin});
+                }
+            }
+        }
+    }
+
+
+    html.keyboard-nav .nav-main-items {
+        // Keyboard navigation
+        // Special focus highlighting - requires JS to set class at htmt top lelement
+        > li[aria-expanded] > a {
+            &:focus::after {
+                // special formatting for text navigation
+                content: "\f107"; // arrow pointing down forced on focus
+                background-color: $nav-text-hover;
+                color: $nav-bg-hover;
+                border-radius: $nav-border-radius;
+                right: 2px - $nav-header-hor-padding * 0.25;
+                line-height: $nav-header-line-height;
+                padding-left: $nav-header-hor-padding * 0.25;
+                padding-right: $nav-header-hor-padding * 0.25;
+                outline: none;
+            }
+            &.nav-label:focus::after {
+                // no arrow down on focus for label
+                content: "";
+            }
+        }
+    }
+}
+
+
+// Mega menu editor adjustments
+
+#mega-menu-editor {
+    background: $grey;
+    padding-top: $default-margin;
+    padding-bottom: $default-margin;
+    height: calc(100vh - #{$opencms-toolbar-height});
+
+    > .container {
+        padding: 0;
+    }
+
+    .nav-main-container {
+        #{$nav-mobile-position}: 0 !important;
+    }
+
+    .nav-main-items,
+    li.mega, {
+        display: block;
+    }
+
+    .nav-menu.nav-mega-menu {
+        // we need to reverse some settings set by the navigation
+        // because the menu us NOT positioned by JavaScript in the mega menu editor
+        max-height: none;
+        display: block;
+        overflow: visible;
+        position: static;
+        margin-left: calc(#{$grid-gutter-width / 2} - #{$default-margin});
+        animation-name: none;
+    }
+}
+
+

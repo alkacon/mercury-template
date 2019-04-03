@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Über OpenCms]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>OpenCms von Alkacon Software ist ein professionelles, einfach anzuwendendes Website Content Management System. OpenCms hilft Anwendern weltweit, fantastische Webseiten schnell und einfach zu erstellen.</p>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[About OpenCms]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>OpenCms from Alkacon Software is a professional, easy to use website content management system. OpenCms helps content managers worldwide to create beautiful websites fast and efficiently.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

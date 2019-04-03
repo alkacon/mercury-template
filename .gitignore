@@ -1,0 +1,9 @@
+/bin/
+/node_modules
+/.gradle
+/.sass-cache/
+/build/
+/output/
+/module-export.sh
+/package-lock.json
+/test/data/WEB-INF/config

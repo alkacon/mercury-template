@@ -1,0 +1,120 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
+
+    <xsd:element name="FaqData" type="OpenCmsFaqData"/>
+
+    <xsd:complexType name="OpenCmsFaqData">
+        <xsd:sequence>
+            <xsd:element name="Faq" type="OpenCmsFaq" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsFaq">
+        <xsd:sequence>
+            <xsd:element name="Question" type="OpenCmsString" />
+            <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Date" type="OpenCmsDateTime" minOccurs="0" />
+            <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
+            <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
+            <xsd:element name="Category" type="OpenCmsDynamicCategory" />
+            <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <tabs>
+                <tab element="Question" collapse="false" name="%(key.tab.Faq)" />
+                <tab element="MetaInfo" collapse="false" name="%(key.tab.MetaData)" />
+                <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
+            </tabs>
+            <editorchangehandlers>
+                <editorchangehandler class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty" scope="Paragraph*/Image*/Image" configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Question</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Faq.Question)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Faq.Question.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-faq.title)]]></Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.faq.Question)]]></Error>
+                    <Search>listtitle</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Order</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^[-+]?\d+$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Order)]]></Error>
+                    <Search>listorder</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>Date</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Date)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Date.help)]]></Description>
+                    <Widget>datetime</Widget>
+                    <Default><![CDATA[%(currenttime)]]></Default>
+                    <Search>listdate</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>Paragraph</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Faq.Paragraph)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Faq.Paragraph.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Category</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Category)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Category.help)]]></Description>
+                    <Widget>category</Widget>
+                    <WidgetConfig>onlyleafs=false</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>MetaInfo</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Availability</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(value:Question)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

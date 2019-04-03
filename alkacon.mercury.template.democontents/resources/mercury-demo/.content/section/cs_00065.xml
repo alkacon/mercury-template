@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Kontakt]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>Alkacon Software GmbH &amp; Co. KG<br />An der Wachsfabrik 13<br />50996 Köln<br />Tel: +49 2236 / 3826 - 0<br /><a href="%(link0)">Senden Sie uns eine Nachricht</a></p>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[Contact us]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>Alkacon Software GmbH &amp; Co. KG<br />An der Wachsfabrik 13<br />50996 Cologne, Germany<br />Phone: +49 2236 / 3826 - 0<br /><a href="%(link0)">Send us an email</a></p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

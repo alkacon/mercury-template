@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Erstellen Sie einen neuen Tagebuch-Eintrag]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Nutzen Sie das Formular, um dem Tagebuch einen neuen Eintrag hinzuzufügen.</p>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[Post a new blog article]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Use this form to post a new article for our blog.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

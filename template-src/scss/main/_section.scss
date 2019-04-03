@@ -1,0 +1,188 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _sections.scss
+ */
+
+// Icon box formatter
+
+.type-iconbox {
+    background-color: $main-theme;
+    padding: $default-margin $default-margin-small;
+    text-align: center;
+    flex: 1;
+    @include round-corners($iconbox-border-radius, true);
+
+    *:not(a) {
+        color: get-text-color($main-theme);
+    }
+
+    .icon-title {
+        margin-bottom: $default-margin;
+        font-size: $h4-font-size;
+        line-height: $line-height-headings;
+    }
+
+    .icon-text {
+        margin-top: $default-margin;
+    }
+
+    .icon-image {
+        // no rem based font size here, we want the icon to be same size over all devices
+        font-size: 32px;
+    }
+
+    .icon-link {
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        // making the icon boxe spacing larger on small screens
+        padding: $default-margin; // extending the margin
+
+        .icon-title {
+            font-size: $h3-font-size;
+            line-height: $line-height-headings;
+        }
+    }
+}
+
+// Image / text flip animation, see https://davidwalsh.name/css-flip#ieflip
+
+.imageflip {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    position: relative;
+
+    // in contrast to the dw code we can not use fixed pixel height and width
+    // however, we use the padding-bottom style trick (from the images) on the .flipper container to achive the same effekt
+
+    &:hover {
+        z-index: 50;
+
+        .back {
+            transform: rotateY(0deg);
+            visibility: visible;
+            opacity: 1;
+        }
+        .front:not(.noflip) {
+            transform: rotateY(180deg);
+        }
+    }
+
+    .flipper {
+        width: 100%;
+        transition: 0.6s;
+        transform-style: preserve-3d;
+
+        position: relative;
+    }
+
+    .front,
+    .back {
+        width: 100%;
+
+        backface-visibility: hidden;
+        transition: 0.6s;
+        transform-style: preserve-3d;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .front {
+        z-index: 2;
+        transform: rotateY(0deg);
+        // front will be only the image so we don't need to set height since image tags already do this
+    }
+
+    .back {
+        transform: rotateY(-180deg);
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .text-section {
+        @include round-corners($image-border-radius);
+        padding: $default-margin;
+        height: 100%; // works because .flipper has the height fixed with padding-bottom
+        overflow: auto; // shows scrollbars on demad
+        background-color: $grey-lighter;
+
+        &.front:not(.noflip) {
+            overflow: hidden; // if text is shown on front with flip, we can't scroll anyway
+        }
+    }
+
+    .image-section {
+        @include copyright-subtitle;
+    }
+
+    &.color-white .text-section {
+        background-color: $body-bg;
+        border: 1px solid $grey-lighter;
+    }
+
+    &.color-grey .text-section {
+        background-color: $grey-lighter;
+    }
+
+    &.color-theme .text-section {
+        background-color: $main-theme;
+        color: get-text-color($main-theme);
+
+        *:not(a):not(span) {
+            color: get-text-color($main-theme);
+        }
+
+        .btn {
+            border-color: $white;
+            background-color: $white;
+            color: $text-dark;
+        }
+    }
+
+    &.p-small .back {
+        padding: $default-margin-small;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    // optional raise animation on flip
+    html.desktop {
+        .effect-flipraise .imageflip,
+        .effect-flipraise.imageflip {
+            &:hover {
+                .back {
+                    top: #{-2 * $default-margin};
+                    left: #{-2 * $default-margin};;
+                    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.25);
+                    width: calc(100% + #{4 * $default-margin});
+                    height: calc(100% + #{4 * $default-margin});
+                    &.text-section {
+                        padding: $default-margin;
+                    }
+                }
+            }
+        }
+    }
+}

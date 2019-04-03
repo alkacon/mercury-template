@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ArticleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/article.xsd">
+  <Article language="de">
+    <Title><![CDATA[OpenCms ermöglicht einfaches arbeiten]]></Title>
+    <Date>1575658800000</Date>
+    <Paragraph>
+      <Caption><![CDATA[Redakteure haben Spass an OpenCms]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Mel ut corpora phaedrum, quot viris facilisi te his, option interesset qui ne. Ex eum possit feugait definiebas, vix ei etiam nonumes, posse inani comprehensam eu usu. Alia utinam in ius, stet magna vel ad. Dolorum minimum duo in, ut duo noluisse facilisi pertinax, odio congue ex nam. Idque comprehensam his cu, quot paulo congue ea eam.</p>
+<p>Cetero mnesarchum et usu. Ne eos utinam facilisi, id qui eius altera eloquentiam, ut sed justo fierent intellegam. His oratio sadipscing philosophia te, qui velit commune posidonium eu, ea eum detracto accommodare. At putant debitis phaedrum quo. Veri laoreet habemus pro ad.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/samples/52.jpg]]></target>
+            <uuid>f33ab65a-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+        <Copyright><![CDATA[CC0 Public Domain / Pixabay.com]]></Copyright>
+      </Image>
+    </Paragraph>
+    <Author><![CDATA[Pepper Saltzman]]></Author>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Article>
+  <Article language="en">
+    <Intro><![CDATA[Editors will have <fun> with OpenCms]]></Intro>
+    <Title><![CDATA[OpenCms makes editing <effortless>]]></Title>
+    <Preface><![CDATA[This is the preface text. Lorem ipsum dolor sit amet, consectetuer <adipiscing> elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ]]></Preface>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/samples/52.jpg]]></target>
+          <uuid>f33ab65a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+    </Image>
+    <Date>1575658800000</Date>
+    <Paragraph>
+      <Caption><![CDATA[This is the Caption]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+<p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/people/02.jpg]]></target>
+            <uuid>f0d8d10f-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+        <Copyright><![CDATA[CC0 Public Domain / David Niblack /  imagebase.net]]></Copyright>
+      </Image>
+    </Paragraph>
+    <Author><![CDATA[Pepper Saltzman]]></Author>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Article>
+</ArticleData>

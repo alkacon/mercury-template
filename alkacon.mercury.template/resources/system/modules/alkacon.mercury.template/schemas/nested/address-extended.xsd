@@ -1,0 +1,75 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="ExtendedAddressData" type="OpenCmsExtendedAddressData"/>
+
+    <xsd:complexType name="OpenCmsExtendedAddressData">
+        <xsd:sequence>
+            <xsd:element name="ExtendedAddress" type="OpenCmsExtendedAddress" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsExtendedAddress">
+        <xsd:sequence>
+            <xsd:element name="Name" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="StreetAddress" type="OpenCmsString" />
+            <xsd:element name="ExtendedAddress" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="PostalCode" type="OpenCmsString" />
+            <xsd:element name="Locality" type="OpenCmsString" />
+            <xsd:element name="Region" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Country" type="OpenCmsString" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Name</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ExtendedAddress.Name)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ExtendedAddress.Name.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>StreetAddress</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.StreetAddress)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.StreetAddress.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>ExtendedAddress</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ExtendedAddress)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ExtendedAddress.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>PostalCode</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PostalCode)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PostalCode.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Locality</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Locality)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Locality.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Region</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Region)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Region.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Country</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Country)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Country.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

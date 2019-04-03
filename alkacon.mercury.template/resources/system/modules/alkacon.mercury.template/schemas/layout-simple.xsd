@@ -1,0 +1,57 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="LayoutSimpleData" type="OpenCmsLayoutSimpleData"/>
+
+    <xsd:complexType name="OpenCmsLayoutSimpleData">
+        <xsd:sequence>
+            <xsd:element name="LayoutSimple" type="OpenCmsLayoutSimple" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsLayoutSimple">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Variant" type="OpenCmsString" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <!-- Widget>DisplayWidget</Widget -->
+                    <Default><![CDATA[%(key.type.m-layout-simple.title)]]></Default>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType><![CDATA[error]]></RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>disptitle</Search>
+                    <Mapping>
+                        <MapTo>property:Title</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>Variant</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Layout.Variant)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Layout.Variant.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[12]]></Default>
+                    <Search>false</Search>
+                    <Visibility>hidden</Visibility>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

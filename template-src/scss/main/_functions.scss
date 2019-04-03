@@ -1,0 +1,73 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+// Controls the lightness threshold where the text is switched
+$text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
+
+// Calculates the best color for text based on the background
+@function get-text-color($color) {
+    @if (lightness($color) > $text-lightness-threshold) {
+        @return $text-dark; // light background, dark text
+    } @else {
+        @return $text-light; // dark background, light text
+    }
+}
+
+// Calculates the highlight / hover color for a given color
+@function get-highlight-color($color) {
+    $highlight-color: lighten($color, 25%);
+    @if (lightness($highlight-color) > 95) {
+        $highlight-color: darken($color, 25%);
+    }
+    @return $highlight-color;
+}
+
+// Checks if a specific font is required by this SCSS configuration
+@function require-font($name) {
+    @return (
+        (str-index(quote($font-family-headings), $name) != null) or
+        (str-index(quote($font-family-base), $name) != null) or
+        (str-index(quote($font-family-gui), $name) != null)
+    );
+}
+
+// Appends a string to a JSON fragment
+@function append-json($json, $label, $value) {
+    @return $json + ', "' + $label + '":"' + $value + '"';
+}
+
+// Generates a JSON from a color array
+@function get-json($color-array) {
+    $json: '';
+    @each $color-name, $color-val, $highlight-color in $color-array {
+        $json: $json + '{' +
+            '"name": "' + $color-name + '",' +
+            '"value": "' + $color-val + '"' +
+        '}, ';
+    };
+    @return $json + '{}';
+}
+
+// Returns the usable width of a container
+@function container-useable-width($size) {
+    @if ($size == "xs") {
+        @return 100%;
+    } @else {
+        @return map-get($container-max-widths, $size) - $grid-gutter-width;
+    }
+}
+

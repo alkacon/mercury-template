@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-faq.formatter.teaser.masonry)]]></NiceName>
+    <Type><![CDATA[m-faq]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/faq.jsp]]></target>
+        <uuid>86689f1e-147f-4f23-ac31-397faac8c066</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[18000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[masonry]]></ContainerType>
+        <ContainerType><![CDATA[faq]]></ContainerType>
+        <ContainerType><![CDATA[mercury-list]]></ContainerType>
+      </Types>
+    </Match>
+    <Display><![CDATA[teaser-masonry]]></Display>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textLength.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[titleOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.0]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[requiredCssWrapper.textTile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.masonry]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

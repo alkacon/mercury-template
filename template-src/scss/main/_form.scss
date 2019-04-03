@@ -1,0 +1,609 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _form.scss
+ */
+
+.styled-form {
+
+    margin: 0;
+    outline: none;
+    font-size: $form-font-size;
+    line-height: $form-line-height;
+    border: $form-border;
+    color: $form-text-color;
+    background: $form-background;
+    @include round-corners($form-border-radius);
+
+    header {
+        border-bottom: $form-border;
+        padding: $form-field-ver-padding $form-field-hor-padding;
+        @extend .h4;
+    }
+
+    fieldset {
+        display: block;
+        padding: $form-field-ver-padding $form-field-hor-padding;
+        border: none;
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .webform_subfields {
+        fieldset {
+            padding: 0;
+        }
+    }
+
+    fieldset + fieldset {
+        border-top: $form-border;
+    }
+
+    .webform_subfields,
+    section {
+        margin-bottom: $form-field-ver-padding;
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+    footer {
+        display: block;
+        padding: $form-field-ver-padding $form-field-hor-padding;
+        border-top: $form-border;
+    }
+    footer:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    label,
+    .label {
+        display: block;
+    }
+
+    .label {
+        line-height: $form-line-height;
+        font-weight: $form-font-weight;
+    }
+
+    .note {
+        margin-top: $default-margin-verysmall;
+        padding: 0;
+        font-size: 100%;
+        line-height: 1.5;
+    }
+
+    .input,
+    .select,
+    .textarea,
+    .radio,
+    .checkbox,
+    .toggle,
+    .button {
+        position: relative;
+        display: block;
+    }
+
+    .input input,
+    .select select,
+    .textarea textarea {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 7px 10px;
+        outline: none;
+        border-width: 1px;
+        border-style: solid;
+        @include round-corners($form-input-border-radius);
+        background-color: $form-input-background;
+        color: $form-text-color;
+        appearance: none;
+
+        &::placeholder {
+            font-family: $font-family-base;
+            font-weight: $font-weight-base;
+            font-size: $form-font-size;
+            color: $form-placeholder-color;
+        }
+    }
+
+    .input.button {
+        display: flex;
+        flex: 1 1 auto;
+
+        @if ($form-input-border-radius > 0) {
+            input {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            button {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+        input {
+            border-right-style: none;
+        }
+        button.btn {
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 1;
+            border: 1px solid $form-border-color;
+            border-left-style: none;
+        }
+    }
+
+    .input-file .button {
+        @include button-base;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        float: none;
+        height: 31px;
+        line-height: 31px;
+        padding: 0 $default-margin;
+        font-size: 80%;
+
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0;
+            cursor: pointer;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    // selects
+    .select {
+        i {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 28px;
+            height: 35px;
+            background-color: $form-input-background;
+            pointer-events: none;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                right: 10px;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+            }
+            // generates the select arrows after the select text
+            &::before {
+                top: 11px;
+                border-bottom: 5px solid $form-icon-color;;
+            }
+            &::after {
+                bottom: 11px;
+                border-top: 5px solid $form-icon-color;
+            }
+        }
+        select {
+            cursor: pointer;
+            padding-right: 28px;
+        }
+    }
+    .select-multiple {
+        select {
+            height: auto;
+        }
+    }
+
+    // text areas
+    .textarea textarea {
+        height: auto;
+        resize: none;
+    }
+
+    .textarea-resizable textarea {
+        resize: vertical;
+    }
+
+    .textarea-expandable textarea {
+
+        &:focus {
+            height: auto;
+        }
+    }
+
+
+    // radios and checkboxes
+    .radio,
+    .checkbox {
+        padding-left: 35px;
+        color: $form-label-color;
+        cursor: pointer;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+         input {
+            position: absolute;
+            left: -9999px;
+        }
+
+        i {
+            position: absolute;
+            top: 3px;
+            left: 0;
+            display: block;
+            width: 20px;
+            height: 20px;
+            outline: none;
+            border-width: 1px;
+            border-style: solid;
+            background-color: $form-input-background;
+        }
+
+        input + i::after {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+        input:checked + i::after {
+            opacity: 1;
+            color: $form-radio-checked-color;
+        }
+    }
+
+    .radio {
+        i {
+            border-radius: 50%;
+        }
+        input + i::after {
+            content: '';
+            top: 4px;
+            left: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+    }
+
+    .checkbox {
+        input + i::after {
+            content: '\f00c';
+            top: -5px;
+            left: -1px;
+            font-size: 23px;
+            line-height: 23px;
+            font-family: FontAwesome;
+            font-weight: normal;
+            text-align: center;
+        }
+    }
+
+    // toggles
+    .toggle {
+        padding-right: 70px;
+        color: $form-label-color;
+        cursor: pointer;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        input {
+            position: absolute;
+            left: -9999px;
+
+            &:checked + i::before {
+                right: 36px;
+                background-color: $form-radio-checked-color;
+            }
+            &:checked + i::after {
+                content: 'ON';
+                text-align: right;
+                color: $form-radio-checked-color;
+            }
+        }
+
+        i {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 0;
+            display: block;
+            width: 55px;
+            height: 20px;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 12px;
+            background-color: $form-input-background;
+
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                top: 4px;
+                right: 4px;
+                display: block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                opacity: 1;
+                transition: right 0.2s;
+                background-color: $form-radio-unchecked-color;
+            }
+
+            &::after {
+                content: 'OFF';
+                position: absolute;
+                top: 3px;
+                right: 8px;
+                left: 8px;
+                font-style: normal;
+                font-size: 12px;
+                line-height: 12px;
+                font-weight: 400;
+                text-align: left;
+                color: $form-radio-unchecked-color;
+            }
+        }
+    }
+
+    // icons
+    .icon-append,
+    .icon-prepend {
+        position: absolute;
+        width: 29px;
+        line-height: inherit;
+        text-align: center;
+        margin-top: 3px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .icon-append {
+        right: 5px;
+        padding-left: 3px;
+        border-left-width: 1px;
+        border-left-style: solid;
+    }
+
+    .icon-prepend {
+        left: 5px;
+        padding-right: 3px;
+        border-right-width: 1px;
+        border-right-style: solid;
+    }
+
+    .input,
+    .textarea {
+        .icon-append + input,
+        .icon-append + textarea {
+            padding-right: 34px;
+        }
+
+        .icon-prepend + input,
+        .icon-prepend + textarea {
+            padding-left: 42px;
+        }
+    }
+
+    .textarea {
+        .icon-append,
+        .icon-prepend {
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+        @if ($form-input-border-radius != 0) {
+            .icon-append {
+                border-bottom-left-radius: $form-input-border-radius;
+            }
+            .icon-prepend {
+                border-bottom-right-radius: $form-input-border-radius;
+            }
+        }
+    }
+
+    // normal state
+    .input input,
+    .select select,
+    .textarea textarea,
+    .radio i,
+    .checkbox i,
+    .icon-append,
+    .icon-prepend {
+        border-color: $form-border-color;
+        transition: border-color $transition-timing $transition-function;
+    }
+    .icon-append,
+    .icon-prepend {
+        color: $form-icon-color;
+    }
+
+    // checked state
+    .radio input + i::after {
+        background-color: $main-theme;
+    }
+    .checkbox input + i::after {
+        color: $form-radio-checked-color;
+    }
+    .radio,
+    .checkbox,
+    .toggle {
+        i {
+            border-color: $form-radio-unchecked-border-color;
+            transition: border-color $transition-timing $transition-function;
+        }
+
+        input:checked + i {
+            border-color: $form-radio-checked-border-color;
+        }
+    }
+
+    .checkbox i {
+        @include round-corners($form-input-border-radius);
+    }
+
+    // error state
+    &.state-error {
+        .state-error input,
+        .state-error select,
+        .state-error select + i,
+        .state-error textarea,
+        .radio.state-error i,
+        .checkbox.state-error i,
+        .toggle.state-error i,
+        .toggle.state-error input:checked + i {
+            background-color: $form-error-background;
+        }
+
+        .note-error {
+            color: $form-error-text-color;
+        }
+    }
+
+    // disabled state
+    .input.state-disabled input,
+    .select.state-disabled,
+    .textarea.state-disabled,
+    .radio.state-disabled,
+    .checkbox.state-disabled,
+    .toggle.state-disabled,
+    .button.state-disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
+
+    // captcha
+    .input {
+        .captcha {
+            background-color: $form-captcha-background;
+            margin-bottom: $default-margin-small;
+            border: $form-captcha-border;
+            @include round-corners($form-input-border-radius);
+            overflow: hidden;
+
+            img {
+                max-width: 100% !important;
+            }
+        }
+    }
+
+    .btn.resetbutton {
+        margin-left: 20px;
+        @include button-color($grey-light, $main-theme-hover);
+    }
+
+    @include media-breakpoint-up(lg) {
+
+        .toggle,
+        .radio,
+        .checkbox {
+            i {
+                top: 0;
+            }
+        }
+
+        .inline-group {
+            margin: 0 -30px #{-1 * $default-margin-verysmall} 0;
+
+            &::after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+
+
+            .checkbox {
+                float: left;
+                margin-right: 30px;
+            }
+        }
+
+        .webform_subfields fieldset {
+            padding-left: $form-field-hor-padding;
+            padding-right: $form-field-hor-padding;
+        }
+    }
+}
+
+
+// stuff around the form itself
+
+.type-webform  {
+    .form-header {
+        margin-bottom: $default-margin;
+    }
+    .form-footer {
+        margin-top: $default-margin;
+    }
+}
+
+
+// form layout variations
+
+.styled-form {
+
+    // compact spacing form layout
+    &.compact {
+        header,
+        footer,
+        fieldset {
+            padding: $default-margin-small;
+        }
+
+        section {
+            margin-bottom: $default-margin-small;
+        }
+
+        .input input,
+        .select select,
+        .textarea textarea {
+            padding: 4px 10px;
+        }
+
+        .icon-append,
+        .icon-prepend {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+    }
+
+    // no borders around form
+    &.no-border {
+        border: none;
+        form,
+        header,
+        footer,
+        fieldset {
+            border: none;
+            padding: 0;
+            margin-bottom: $default-margin-small;
+        }
+    }
+
+    &.no-bg {
+        background-color: inherit;
+    }
+}
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Inline Editing]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Just click on a text to edit it - directly in the page.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

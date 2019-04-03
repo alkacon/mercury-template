@@ -1,0 +1,109 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/email.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/facilities.xsd" />
+
+    <xsd:element name="PoiData" type="OpenCmsPoiData" />
+
+    <xsd:complexType name="OpenCmsPoiData">
+        <xsd:sequence>
+            <xsd:element name="Poi" type="OpenCmsPoi" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsPoi">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Address" type="OpenCmsAddress" />
+            <xsd:element name="Facilities" type="OpenCmsFacility" minOccurs="0" />
+            <xsd:element name="Coord" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Paragraph" type="OpenCmsParagraph" minOccurs="0" maxOccurs="100" />
+            <xsd:element name="Category" type="OpenCmsDynamicCategory" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <tabs>
+                <tab element="Title" collapse="false" name="%(key.tab.Poi)" />
+                <tab element="Paragraph" collapse="false" name="%(key.tab.AddInfo)" />
+                <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
+            </tabs>
+            <searchsettings containerPageOnly="true" />
+            <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Paragraph*/Image*/Image" configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Poi.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-poi.title)]]></Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>Address</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Address)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Address.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Facilities</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.Facilities)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>Coord</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.Coord)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Poi.Coord.help)]]></Description>
+                    <Widget>location</Widget>
+                    <Default>lat:51.163409,lng:10.447721,zoom:6,type:'roadmap',mode:'dynamic'</Default>
+                    <WidgetConfig>inline:['address'],edit:['coords','address','zoom','map']</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Paragraph</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.Paragraph)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Poi.Paragraph.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Category</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Category)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Category.help)]]></Description>
+                    <Widget>category</Widget>
+                    <WidgetConfig>onlyleafs=false</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

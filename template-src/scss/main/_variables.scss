@@ -1,0 +1,635 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+// Defaults for the required colors
+
+$white:                             #fff !default;
+$grey-lighter:                      #eee !default;
+$grey-light:                        #ddd !default;
+$grey:                              #aaa !default;
+$grey-dark:                         #888 !default;
+$black:                             #000 !default;
+
+// Reduced array of colors to be used for backgrounds
+$reduced-colors:                    () !default;
+
+// Larger array of colors to be used for even more background variations (should include the reduced colors)
+$many-colors:                       () !default;
+
+
+// Font definitions
+
+$font-family-base:                  "Open Sans", sans-serif !default;
+$font-family-headings:              "Prompt", sans-serif !default;
+$font-family-gui:                   $font-family-base !default; // the font used in containers and other "GUI" components
+$font-family-sans-serif:            $font-family-base !default; // Boostrap 4 defines this the other way around
+
+$font-weight-light:                 300 !default;
+$font-weight-normal:                400 !default;
+$font-weight-bold:                  600 !default;
+$font-weight-bolder:                $font-weight-bold !default; // used in Boostrap 4 reboot.scss for <b> and <strong>
+
+$font-weight-base:                  $font-weight-normal !default;
+$font-weight-headings:              $font-weight-light !default;
+
+$font-size-base:                    1.4rem !default;
+$font-size-headings:                2.0rem !default; // for the h3 header
+$font-size-lg:                      round($font-size-base * 12.5) / 10 !default;
+$font-size-sm:                      round($font-size-base * 8) / 10 !default;
+
+$line-height-base:                  1.5 !default;
+$line-height-headings:              $line-height-base !default;
+$line-height-lead:                  $line-height-base !default;
+$target-line-height:                ($font-size-base * $line-height-base) !default;
+
+
+// Heading sizes
+
+$h1-font-size:                      round($font-size-headings * 14) / 10 !default;
+$h1-font-size-mobile:               round($font-size-headings * 12) / 10 !default;
+$h2-font-size:                      $h1-font-size-mobile !default;
+$h2-font-size-mobile:               $font-size-headings !default;
+$h3-font-size:                      $font-size-headings !default;
+$h3-font-size-mobile:               round($font-size-headings * 9) / 10 !default;
+$h4-font-size:                      $h3-font-size-mobile !default;
+$h5-font-size:                      $h4-font-size !default;
+$h6-font-size:                      $h4-font-size !default;
+
+
+// Default margins
+
+$default-margin:                    2.0rem !default;
+$default-margin-small:              round($default-margin * 50) / 100 !default;
+$default-margin-verysmall:          round($default-margin * 25) / 100 !default;
+
+$headings-margin-bottom:            $default-margin-small !default;
+$piece-headings-margin-bottom:      $headings-margin-bottom !default;
+
+
+// Text and page colors
+
+$text-light:                        $white !default;
+$text-dark:                         #555 !default;
+$body-bg:                           $white !default;
+$body-color:                        $text-dark !default;
+$headings-color:                    $text-dark !default;
+$focus-outline-color:               $main-theme-hover !default;
+$content-bg:                        $body-bg !default;
+$highlight-color:                   $grey-lighter !default;
+$image-bg-color:                    #f6f6f6 !default;
+$intro-header-color:                $main-theme !default;
+
+$default-transition-time:           0.33s !default; // default timing for animation effects
+
+// Rounded cordners
+
+$default-border-radius:             0 !default;
+$copyright-border-radius:           round($default-border-radius / 2) !default;
+$image-border-radius:               $default-border-radius !default;
+
+
+// OpenCms default Z-index for edit points
+
+$oc-z-index:                        100000 !default;                // OC edit points are at 100000
+$above-oc-toolbar:                  300000 !default;                // OC toolbar is at 200000
+$above-oc-z-index:                  $oc-z-index + 50000 !default;   // OC toolbar is at 200000, we want to be below this
+$overflow-z-index:                  5 !default;                     // Used by elements that require an overflow:hidden
+
+
+// Bootstrap container sizes
+// Note: These values are also hardcoded in image-srcset.tag
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 552px,
+    md: 764px,
+    lg: 1014px,
+    xl: 1200px
+) !default;
+
+$container-max-widths: (
+    sm: 540px,
+    md: 744px,
+    lg: 992px,
+    xl: 1170px
+) !default;
+
+
+// Bootstrap variables
+
+$grid-gutter-width:                 30px !default;
+
+$primary:                           $main-theme !default;
+
+$link-color:                        $main-theme !default;
+$link-decoration:                   none !default;
+$link-hover-color:                  $main-theme-hover !default;
+$link-hover-decoration:             underline !default;
+
+$paragraph-margin-bottom:           $default-margin-small !default; // margin below <o> elements
+$label-margin-bottom:               $default-margin-verysmall !default; // margin below <label> elements
+
+
+// Drop shadow color for effects
+
+$dropshadow:                        rgba(0, 0, 0, 0.3) !default;
+$panel-shadow:                      0px 1px 1px rgba(0, 0, 0, .05) !default;
+$nav-shadow:                        0 6px 12px $dropshadow !default;
+
+
+// Buttons
+
+$btn-padding:                       0.8rem !default;
+$btn-h-padding:                     round($btn-padding * 20) / 10 !default;
+$btn-def-padding:                   $btn-padding $btn-h-padding !default;
+$btn-lg-padding:                    round($btn-padding * 12.5) / 10 round($btn-padding * 30) / 10 !default;
+$btn-sm-padding:                    round($btn-padding * 7.5) / 10 round($btn-padding * 15) / 10 !default;
+$btn-smi-padding:                   round($btn-padding * 5.0) / 10  $btn-padding !default;
+$btn-xs-padding:                    round($btn-padding * 2.5) / 10 round($btn-padding * 12.5) / 10 !default;
+$btn-border-radius:                 $default-border-radius !default;
+$btn-default:                       $main-theme !default;
+$btn-default-hover:                 $main-theme-hover !default;
+$btn-text:                          get-text-color($text-light) !default;
+$btn-dark-text:                     $text-dark !default;
+$btn-text-transform:                none !default;
+$btn-border-style:                  none !default;
+$btn-min-width:                     0 !default;
+$btn-colors:                        $reduced-colors !default;
+$btn-line-height:                   $target-line-height !default;
+$btn-font-family:                   $font-family-base !default;
+$btn-font-size:                     $font-size-base !default;
+$btn-font-weight:                   $font-weight-normal !default;
+$btn-lg-font-size:                  1.8rem !default;
+$btn-xs-font-size:                  1.2rem !default;
+
+
+// Content sections
+
+$section-border-radius:             $default-border-radius !default;
+$iconbox-border-radius:             $default-border-radius !default;
+$colored-row-color:                 $highlight-color !default;
+$section-subtitle-size:             13px !default;
+
+
+// Navigation
+// These are only the variables used elsewhere. There is more in _nav-main.scss.
+
+$nav-theme:                         $main-theme !default; // used for 1st level text and big colored border above / below menus
+$nav-bg:                            $body-bg !default; // standard background of the nav menu entries
+$nav-bg-hover:                      $grey-light !default; // hover background of the nav menu entries
+$nav-bg-active:                     $grey-light !default; // background color for the current page in the desktop menu navigation
+$nav-text:                          get-text-color($nav-bg) !default; // standard text color of the nav menu entries
+$nav-text-hover:                    $nav-theme !default; // hover text color of the nav menu entries
+$nav-text-active:                   get-text-color($nav-bg-active) !default; // the current page in navigation text color in desktop
+$nav-border:                        $grey-light !default; // the border color for the navigation
+$nav-header-text:                   $nav-text !default; // text color in header nav items
+$nav-header-text-active:            $nav-theme !default; // the "active page in navigation" text color
+$nav-header-text-hover:             $nav-text-hover !default; // the hover text color for the header nav items
+$nav-setting-fixheader:             true !default; // Valid: true, false, upscroll
+
+$nav-bg-active-mobile:              $nav-bg-active !default; // the current page in navigation background color in mobile menu
+$nav-bg-hover-mobile:               $nav-bg-hover !default; // hover background of the nav menu entries for mobile
+$nav-text-hover-mobile:             $nav-text-hover !default; // hover text color for mobile navigation
+$nav-text-active-mobile:            $nav-text-active !default; // the current page in navigation text color in mobile
+$nav-font-size:                     14px !default; // font size of dropdown entries and side navigation
+$nav-line-height:                   20px !default; // line hight of dropdown entries and side navigation
+$nav-animation-time:                $default-transition-time !default; // timing for most animation effects used in the navigation
+$nav-border-radius:                 $default-border-radius !default; // border radius of nav toggle and topcontrol buttons
+$nav-hor-padding:                   20px !default; // horizontal paddding of the nav menu entries in LG, XL screens size
+$nav-head-bg:                       $body-bg !default; // color of the header background container
+$nav-head-fixed-shadow:             0px 0px 10px 1px $dropshadow !default; // shadow if header is fixed
+$nav-head-padding:                  10px 0px 10px 0px !default; // paddings for header
+$nav-handle-right-padding:          40px !default; // padding for nav handles, applies only to desktop nav menus with direct subpages
+
+// mobile navigation settings
+$nav-mobile-position:               right !default; // alternatives are "top", "left" and "right"
+$nav-mobile-side-size:              250px + ($grid-gutter-width / 2) !default; // size of mobile side menu for "left" and "right"
+$nav-mobile-side-content-move:      false !default; // move content when mobile side nav is shown?
+$nav-mobile-show-box:               true !default; // show a boxed color background behind arrows on mobile navigation
+$nav-mobile-box-color:              $text-dark !default; // background behind arrows on mobile navigation (if enabled)
+$nav-mobile-font-size:              16px !default; // font size for mobile sub-menu entries
+$nav-mobile-line-target-height:     36px !default; // line height of mobile menu nav entries
+$nav-mobile-line-padding:           6px !default;
+$nav-mobile-line-height:            $nav-mobile-line-target-height - (2 * $nav-mobile-line-padding) !default;
+$nav-mobile-box-top:                4px !default; // top position for "box" background behind arrow
+$nav-mobile-box-height:             $nav-mobile-line-target-height - (2 * $nav-mobile-box-top) !default; // height for "box" background
+$nav-mobile-indent:                 10px !default; // left indentation step for deeper levels
+$nav-mobile-font-weight:            $font-weight-normal !default; // font weight of menu nav items
+
+// the header
+// mostly applies to the "first level" of the navigation menu
+$nav-header-bg:                     $body-bg !default;        // background of the header nav items in XS, SM, MD
+$nav-header-menu-bg:                transparentize($nav-header-bg, 0.25) !default; // background of header nav items in LG, XL
+$nav-header-menu-bg-hover:          $nav-header-bg !default; // hover background of the header nav items (all screen sizes)
+$nav-header-font:                   $font-family-base !default; // text font for header nav items
+$nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
+$nav-header-float:                  right !default;         // float direction of header navigation items, can be 'left' or 'right'
+$nav-header-font-size:              15px !default;          // font size of header nav items
+$nav-header-font-weight:            normal !default;        // font weight of header nav items
+$nav-header-hor-padding:            $nav-hor-padding !default; // horizontal padding left / right the header nav items in LG, XL
+$nav-header-ver-padding:            9px !default;           // vertical padding above / blow the header nav items in LG, XL
+$nav-header-padding:                $nav-header-ver-padding $nav-header-hor-padding !default; // complete padding for header nav items
+$nav-header-line-height:            20px !default;          // line height of header nav items
+$nav-header-total-height:           $nav-header-line-height + (2 * $nav-header-ver-padding) !default; // total height of header lines (text height plus vertical padding)
+$nav-header-show-arrows:            true !default;          // true / false: show "arrow" right to header nav items in  LG, XL
+$nav-header-set-bg-color:           false !default;         // true / false: set background color for the top level nav bar
+$nav-header-animate-menu:           "move" !default;        // "none" / "fade" / "move": effect for revealing sub menu on  LG, XL
+$nav-header-border-size:            2px !default;           // border (bottom only) size of header nav items
+$nav-header-border-color:           $nav-border !default;   // border (bottom only) color of header nav items
+$nav-header-margin-bottom:          $default-margin !default; // margin below the header
+
+// these apply to navigation levels > 1, i.e. everything "below" the header nav items
+$nav-menu-border-size:              1px !default; // borders size around the "folded out" menus in  LG, XL (also needed for placement calculations)
+$nav-menu-border:                   solid $nav-menu-border-size $nav-theme !default; // the borders around the "folded out" menus in LG, XL
+$nav-menu-border-top:               $nav-menu-border !default; // the border on top of the "folded out" menus in  LG, XL
+$nav-menu-border-bottom:            $nav-menu-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
+$nav-menu-entry-border-bottom:      1px solid $nav-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
+$nav-menu-ver-padding:              8px !default;           // vertical paddding of the nav menu entries in LG, XL screens size
+$nav-menu-padding:                  $nav-menu-ver-padding $nav-hor-padding !default; // padding for items in the "folded out" menus
+$nav-menu-min-width:                250px !default;         // minimal width of the nav menus in  LG, XL
+$nav-menu-text-mobile:              $nav-text !default;     // text color for mobile menus
+$nav-menu-bg-mobile:                $nav-bg !default;       // background color for mobile menus
+$nav-menu-font-weight:              $nav-header-font-weight !default; // font weight of menu nav items
+
+// configurable settings for the mega menu
+$nav-megamenu-bg:                   $nav-bg;
+
+// disabled background-image, used for model group editor
+$disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(240,240,242,1) 10px,rgba(240,240,242,1) 20px);
+
+
+// The "nav-toggle" button
+// This is the button displayed on small screens to show / hide the navigation
+
+$nav-toggle-bg:                     $main-theme-complementary !default; // color of toggle button
+$nav-toggle-bg-hover:               $main-theme-hover !default; // hover color of toggle button
+$nav-toggle-bg-active:              $main-theme !default; // color of toggle button if activated
+$nav-toggle-text:                   $white !default; // color of text in toggle button
+$nav-toggle-size:                   40px !default; // height of toggle button
+$nav-toggle-size-xxs:               30px !default; // on very smaller screens the button size is reduced further
+$nav-toggle-bottom:                 5px !default; // bottom positioning of toggle button
+
+
+// Header
+
+$nav-meta-font-size:                $font-size-sm !default;
+$nav-meta-text:                     $nav-header-text !default;
+$nav-meta-text-hover:               $nav-header-text-hover !default;
+$header-logo-xs-width:              270px !default; // max width for logo on XS screens (substract 2 * $gutter)
+$header-logo-fixed-width:           250px !default; // max width for logo if fixed header (substract 2 * $gutter)
+$nav-head-fixed-opacity:            0.97 !default;  // background if header is fixed
+$header-image-ribbon-bg:            $main-theme !default; // background color for image ribbon in header
+$header-image-bg:                   none !default; // background color for image ribbon in header
+
+
+// Footer
+
+$foot-top-bg-color:                 $black !default;
+$foot-top-header-color:             get-text-color($foot-top-bg-color) !default;
+$foot-top-text-color:               $grey-light !default;
+$foot-top-link-color:               get-text-color($foot-top-bg-color) !default;
+$foot-top-link-hover-color:         get-text-color($foot-top-bg-color) !default;
+
+$foot-sub-bg-color:                 $grey-light !default;
+$foot-sub-header-color:             $text-dark !default;
+$foot-sub-text-color:               $text-dark !default;
+$foot-sub-link-color:               $text-dark !default;
+$foot-sub-link-hover-color:         $main-theme-hover !default;
+
+
+// Breadcrumps
+
+$nav-breadcrump-space:              $default-margin-verysmall !default; // spacing base between breadcumbs
+$nav-breadcrump-space-left:         1.35 * $nav-breadcrump-space !default; // spacing after breadcumb before separator
+$nav-breadcrump-space-right:        $nav-breadcrump-space !default; // spacing after separator before breadcrumb
+$nav-breadcrump-separator-color:    $grey !default; // color of breadcrumps sepearator
+$nav-breadcrump-text-color:         $nav-header-text  !default; // text color of breadcrumps
+$nav-breadcrump-text-hover-color:   $nav-header-text-hover  !default; // hover color of breadcrump links
+$nav-breadcrump-font-size:          $font-size-sm !default; // font size for the breadcrumps
+
+
+// Side navigation
+// Mirrors the main navigation by default, and allows to use different colors if required.
+
+$nav-side-bg:                       $nav-bg !default;
+$nav-side-bg-hover:                 $nav-bg-hover !default;
+$nav-side-bg-active:                $nav-bg-active !default;
+$nav-side-text:                     $nav-text !default;
+$nav-side-text-hover:               $nav-text-hover !default;
+$nav-side-text-active:              $nav-text-active !default;
+$nav-side-font-size:                $font-size-base !default;
+$nav-side-border:                   $nav-border !default;
+$nav-side-left-padding-step:        $grid-gutter-width / 2 !default;
+$nav-side-left-padding-start:       $nav-side-left-padding-step !default;
+$nav-side-right-padding:            30px !default;
+$nav-side-ver-padding:              6px !default;
+$nav-side-padding:                  $nav-side-ver-padding $nav-side-right-padding $nav-side-ver-padding $nav-side-left-padding-start !default;
+$nav-side-boxed:                    true !default; // true/false: show vertical lines around sidebar navigation
+$nav-side-border-radius:            $default-border-radius !default;
+
+
+// Lists and pagination
+
+$list-border-color:                 $grey-light !default;
+$list-border-radius:                $default-border-radius !default;
+$list-tile-header-lines:            2 !default;
+$list-side-color:                   $grey-light !default;
+
+$pagination-text:                   $text-dark !default;
+$pagination-border:                 $grey-light !default;
+$pagination-background:             $body-bg !default;
+$pagination-hover:                  $main-theme-hover !default;
+$pagination-border-radius:          $default-border-radius !default;
+
+$list-teaser-margin-base:           1.5 * $default-margin !default;
+
+$teaser-title-size:                 $h3-font-size !default;
+$teaser-title-height:               $line-height-headings !default;
+
+$teaser-btn-def-padding:            $btn-sm-padding !default;
+$teaser-btn-compact-padding:        round($btn-padding * 25) / 100 round($btn-padding * 125) / 100 !default;
+$teaser-btn-compact-light-padding:  0 $btn-padding !default;
+
+$teaser-btn-color:                  $btn-default  !default;
+$teaser-btn-hover-color:            $btn-default-hover !default;
+
+
+// Event calendar sheet
+
+$calendar-sheet-barcolor:           $main-theme !default;
+$calendar-sheet-bgcolor:            $grey-lighter !default;
+$calendar-sheet-border:             $grey-light !default;
+$calendar-sheet-border-radius:      $default-border-radius !default;
+$calendar-sheet-margin:             10% !default;
+
+
+// Contacts
+
+$contact-margins:                   $default-margin-verysmall !default;
+
+
+// Tabs and accordions
+
+$tab-text-transform:                none !default;
+$tab-header-font-size:              $h4-font-size !default;
+$tab-header-line-height:            $h4-font-size * 1.2 !default;
+$tab-border-radius:                 $default-border-radius !default;
+
+$accordion-text-transform:          none !default;
+$accordion-border-color:            $grey-light !default;
+$accordion-header-bg:               $grey-lighter !default;
+$accordion-margin:                  $default-margin-verysmall !default;
+$accordion-header-font-size:        $h3-font-size !default;
+$accordion-header-line-height:      $h3-font-size * 1.2 !default;
+$accordion-toggle-arrows:           true !default;
+$accordion-border-radius:           $default-border-radius !default;
+
+
+// Slider
+
+$slider-slide-border-radius:        $default-border-radius !default;
+$slider-caption-border-radius:      $default-border-radius !default;
+$slider-caption-padding:            5px 0 !default;
+$slider-text-shadow:                1px 1px 1px rgba(#333, .5) !default;
+$logo-slider-paddings:              (5, 10, 15, 20) !default;
+
+
+// Privacy policy
+
+$policy-banner-background:          $text-dark !default;
+$policy-banner-accept-button-color: $btn-default !default;
+$policy-banner-accept-hover-color:  $btn-default-hover !default;
+$policy-banner-decline-button-color:$policy-banner-background !default;
+$policy-banner-decline-hover-color: $grey !default;
+$policy-banner-button-min-width:    100px !default;
+$policy-banner-opacity:             0.95 !default;
+
+$togglebox-height:                  40px !default;
+$togglebox-width:                   200px !default;
+$togglebox-border-color:            $text-dark !default;
+$togglebox-border-size:             1px !default;
+$togglebox-slider-margin:           2px !default;
+$togglebox-enabled-color:           $policy-banner-accept-button-color !default;
+$togglebox-disabled-color:          $grey-light !default;
+$togglebox-slider-color:            $grey-light !default;
+
+
+// POI accessible icons
+
+$acc-icon-bg-color:                 $main-theme !default;
+$acc-icon-text-color:               get-text-color($acc-icon-bg-color) !default;
+$acc-icon-border-radius:            $default-border-radius !default;
+$acc-icon-size:                     3.5rem !default;
+
+// OSM maps / Google maps
+
+$map-border-radius:                 $default-border-radius !default;
+$map-text-color:                    $body-color !default;
+$map-text-size:                     1.4rem !default;
+$map-header-size:                   1.8rem !default;
+
+// map colors (for marker groups)
+$map-colors: (
+    $main-theme,
+    $main-theme-complementary,
+    $white
+) !default;
+
+
+// Webforms
+
+$form-font-size:                    $font-size-base !default;
+$form-font-weight:                  $font-weight-headings !default;
+$form-line-height:                  $line-height-base !default;
+$form-text-color:                   $body-color !default;
+$form-label-color:                  $body-color !default;
+$form-field-ver-padding:            $default-margin;
+$form-field-hor-padding:            $default-margin * 1.5;
+$form-border-color:                 $grey !default;
+$form-icon-color:                   $grey-dark !default;
+$form-placeholder-color:            $form-border-color !default;
+$form-radio-unchecked-color:        $grey-dark !default;
+$form-radio-unchecked-border-color: $form-radio-unchecked-color !default;
+$form-radio-checked-color:          $main-theme !default;
+$form-radio-checked-border-color:   $form-radio-unchecked-color !default;
+$form-error-background:             #ffeeee !default;
+$form-error-text-color:             $main-theme !default;
+$form-border:                       1px solid $form-border-color !default;
+$form-background:                   lighten($grey-lighter, 5%) !default;
+$form-input-background:             $content-bg !default;
+$form-captcha-background:           $white !default;
+$form-captcha-border:               1px solid $form-border-color !default;
+$form-border-radius:                $default-border-radius !default;
+$form-input-border-radius:          $btn-border-radius !default;
+
+
+// Sitemap
+
+$sitemap-top-bg-color:              $main-theme !default;
+$sitemap-top-text-color:            get-text-color($sitemap-top-bg-color) !default;
+$sitemap-sub-bg-color:              $main-theme-complementary !default;
+$sitemap-sub-text-color:            get-text-color($sitemap-sub-bg-color) !default;
+$sitemap-hover-bg-color:            $sitemap-top-bg-color !default;
+$sitemap-hover-text-color:          $sitemap-top-text-color !default;
+$sitemap-ver-padding:               0.6rem !default;
+$sitemap-hor-padding:               1rem !default;
+$sitemap-border-radius:             $default-border-radius !default;
+$sitemap-font-size:                 $font-size-base !default;
+$sitemap-line-height:               $font-size-base * 1.2 !default;
+
+
+// Social network colors
+
+$color-facebook:                    #3b5998 !default;
+$color-youtube:                     #ff0000 !default;
+$color-twitter:                     #55acee !default;
+$color-linkedin:                    #0976b4 !default;
+$color-github:                      #777777 !default;
+$color-slideshare:                  #e98325 !default;
+$color-xing:                        #126567 !default;
+$color-rss:                         #ee802f !default;
+$color-whatsapp:                    #5cbe4a !default;
+$color-linkedin:                    #0077b5 !default;
+$color-instagram:                   #d6249f !default;
+$color-mail:                        #999999 !default;
+
+
+// Social links / Shariff
+
+$social-links-bg:                   $grey !default;
+$social-links-color:                $text-dark !default;
+$social-links-size:                 20px !default;
+$social-links-margin:               $default-margin-verysmall !default;
+$social-links-size-half:            $social-links-size / 2 !default;
+$social-links-box-height:           $social-links-size * 2 !default;
+$social-links-border-radius:        $default-border-radius !default;
+
+// Map to generate the social icon styles from
+$social-links:
+    (facebook, facebook, $color-facebook),
+    (youtube, youtube, $color-youtube),
+    (twitter, twitter, $color-twitter),
+    (github, github, $color-github),
+    (xing, xing, $color-xing),
+    (rss, rss, $color-rss),
+    (whatsapp, whatsapp, $color-whatsapp),
+    (linkedin, linkedin, $color-linkedin),
+    (instagram, instagram, $color-instagram),
+    (mail, envelope, $color-mail),
+    (slideshare, slideshare, $color-slideshare) !default;
+
+
+// Tooltips
+
+$tooltip-bg:                        #333 !default;
+$tooltip-color:                     $text-light !default;
+$tooltip-font-size:                 $font-size-sm !default;
+$zindex-tooltip:                    $above-oc-z-index !default;
+$tooltip-padding-y:                 0.75rem !default;
+$tooltip-padding-x:                 1.5rem !default;
+$tooltip-border-radius:             $default-border-radius !default;
+
+
+// Anmiations
+//
+// Variables for more variation in animation curves.
+// Values taken from: http://easings.net/
+
+$easeInQuad:                        cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeOutQuad:                       cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeInCubic:                       cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeOutCubic:                      cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeInOutSine:                     cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+$inset-color:                       $grey-light !default;
+$effect-static-border:              1px solid $grey-light !default;
+$transition-timing:                 $default-transition-time !default; // default timing used for :hover and other transitions
+$transition-function:               ease; // default timing function used for :hover and other transitions
+
+// Editor GUI / element containers and markers */
+//
+// The colors for the element containers are considered "system" colors.
+// They should not change if the theme has another color configured, e.g. another orange.
+
+$con-col-cyan:                      #1bb39a !default;
+$con-col-blue:                      #144382 !default;
+$con-col-blue-light:                #2197db !default;
+$con-col-blue-steel-light:          #e8f3f8 !default;
+$con-col-orange:                    #ffa826 !default;
+$con-col-orange-light:              #ffe5bf !default;
+$con-col-red-orange-light:          #ffdac7 !default;
+$con-col-red-light:                 #ff264a !default;
+$con-col-red-lighter:               #ffe3e7 !default;
+$con-col-darker-red-light:          #ffc9d2 !default;
+$con-col-red:                       #b31b34 !default;
+$con-col-red-dark:                  #8b1528 !default;
+$con-col-purple:                    #eed2ee !default;
+$con-col-green-light:               #effab4 !default;
+
+$con-text-col-dark:                 #555 !default;
+$con-text-col-grey:                 #7f8691 !default;
+$con-text-col-light:                #fff !default;
+
+
+// Font REM bases
+
+$font-rem-base-print-size:          8px !default;
+$font-rem-base-desktop-size:        10px !default;
+$font-rem-base-mobile-size:         12px !default;
+
+
+// Disabled cursor, used e.g. for disabled buttons in list pagination
+$cursor-disabled:                   not-allowed !default;
+
+// Controls if links makred with the CSS "external" get a special icon.
+// Note that this also uses JavaScript for links in HTML WYSIWYG parts.
+$link-external-icon:                true !default;
+
+// The height of the OpenCms toolbar visibile in edit mode
+$opencms-toolbar-height:            52px !default;
+
+// Link colors
+$link-colors:                       () !default;
+$text-colors:                       $link-colors !default;
+
+// Generic arrays
+$bg-colors:                         $many-colors !default;
+$font-colors:                       $many-colors !default;
+
+$font-sizes:                        () !default;
+$line-heights:                      () !default;
+
+$border-default-color:              $main-theme !default;
+$border-sizes:                      () !default;
+$border-radiuses:                   () !default;
+$border-positions:                  () !default;
+$border-styles:                     () !default;
+
+$images-sizes:                      () !default;
+
+// Spaces used for margins and paddings
+$margins:                           (0, 5, 10, 20, 30, 40) !default;
+$margins-paddings:                  $margins !default;
+
+// Spaces used for tile margins
+$list-tile-spacers:                 (0, 2, 5, 10, 15) !default;
+
+// Start of theme JSON with main colors
+$themeJSON: '"main-theme":"#{$main-theme}"';
+$themeJSON: append-json($themeJSON, "main-theme-complementary", $main-theme-complementary);
+$themeJSON: append-json($themeJSON, "main-theme-hover", $main-theme-hover);

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-event.formatter.teaser.compact)]]></NiceName>
+    <Type><![CDATA[m-event]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/event.jsp]]></target>
+        <uuid>6a583387-ef84-42a8-9614-33f1962347a2</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[19000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[event]]></ContainerType>
+        <ContainerType><![CDATA[mercury-list]]></ContainerType>
+      </Types>
+    </Match>
+    <Display><![CDATA[teaser-compact]]></Display>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textLength.compact]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[dateFormatAddTime.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[titleOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

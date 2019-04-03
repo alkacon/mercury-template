@@ -1,0 +1,139 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="CaptchaPresets" type="OpenCmsCaptchaPresets"/>
+
+    <xsd:complexType name="OpenCmsCaptchaPresets">
+        <xsd:sequence>
+            <xsd:element name="CaptchaPreset" type="OpenCmsCaptchaPreset" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsCaptchaPreset">
+        <xsd:sequence>
+            <xsd:element name="Name" type="OpenCmsString" />
+            <xsd:element name="MathField" type="OpenCmsBoolean" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Characters" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Dictionary" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ImageWidth" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ImageHeight" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="MinPhraseLength" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="MaxPhraseLength" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="MinFontSize" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="MaxFontSize" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="FontColor" type="OpenCmsColor" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="BackgroundColor" type="OpenCmsColor" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="HolesPerGlyph" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="FilterAmplitude" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="FilterWaveLength" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.webform.messages"/>
+            <searchsettings containerPageOnly="true" />
+            <layouts>
+                <layout element="HolesPerGlyph" widget="SelectorWidget" configuration="0|1|2|3|4|5" />
+                <layout element="FilterAmplitude" widget="SelectorWidget" configuration="0|1|2|3|4|5|6|7|8|9|10" />
+                <layout element="FilterWaveLength" widget="SelectorWidget" configuration="40|60|80|100|140|180|220|250|300" />
+            </layouts>
+            <defaults>
+                <default element="Characters" value="abcdefghijklmnopqrstuvwxyz" />
+                <default element="Dictionary" value="toddlist" />
+            </defaults>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Name</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.Name)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.Name.help)]]></Description>
+                    <Mapping>
+                        <MapTo>property:Title</MapTo>
+                    </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>MathField</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.MathField)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.MathField.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Characters</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.Characters)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.Characters.help)]]></Description>
+                    <Default><![CDATA[abcdefghijklmnopqrstuvwxyz]]></Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>Dictionary</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.Dictionary)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.Dictionary.help)]]></Description>
+                    <Default><![CDATA[toddlist]]></Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>ImageWidth</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.ImageWidth)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.ImageWidth.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>ImageHeight</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.ImageHeight)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.ImageHeight.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MinPhraseLength</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.MinPhraseLength)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.MinPhraseLength.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MaxPhraseLength</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.MaxPhraseLength)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.MaxPhraseLength.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MinFontSize</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.MinFontSize)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.MinFontSize.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MaxFontSize</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.MaxFontSize)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.MaxFontSize.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>FontColor</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.FontColor)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.FontColor.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>BackgroundColor</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.BackgroundColor)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.BackgroundColor.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>HolesPerGlyph</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.HolesPerGlyph)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.HolesPerGlyph.help)]]></Description>
+                    <Widget>select</Widget>
+                    <WidgetConfig><![CDATA[0|1|2|3|4|5]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>FilterAmplitude</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.FilterAmplitude)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.FilterAmplitude.help)]]></Description>
+                    <Widget>select</Widget>
+                    <WidgetConfig><![CDATA[0|1|2|3|4|5|6|7|8|9|10]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>FilterWaveLength</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.CaptchaPreset.FilterWaveLength)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.CaptchaPreset.FilterWaveLength.help)]]></Description>
+                    <Widget>select</Widget>
+                    <WidgetConfig><![CDATA[40|60|80|100|140|180|220|250|300]]></WidgetConfig>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

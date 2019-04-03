@@ -1,0 +1,50 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="NestedLinkData" type="OpenCmsNestedLinkData" />
+
+    <xsd:complexType name="OpenCmsNestedLinkData">
+        <xsd:sequence>
+            <xsd:element name="NestedLink" type="OpenCmsNestedLink" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsNestedLink">
+        <xsd:sequence>
+            <xsd:element name="Text" type="OpenCmsString" />
+            <xsd:element name="URI" type="OpenCmsVarLink" />
+            <xsd:element name="NewWindow" type="OpenCmsBoolean" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Text</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NestedLink.Text)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NestedLink.Text.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>URI</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NestedLink.URI)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NestedLink.URI.help)]]></Description>
+                    <Widget>file</Widget>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>NewWindow</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NewWindow)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NewWindow.help)]]></Description>
+                    <Widget>checkbox</Widget>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

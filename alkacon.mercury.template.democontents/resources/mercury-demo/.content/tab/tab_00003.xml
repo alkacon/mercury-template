@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TabData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/tab.xsd">
+  <Tab language="en">
+    <Title><![CDATA[Accordion demo content]]></Title>
+    <TabEntry>
+      <Label><![CDATA[Accordions are great]]></Label>
+      <Id><![CDATA[tab-container1]]></Id>
+    </TabEntry>
+    <TabEntry>
+      <Label><![CDATA[Easy to use]]></Label>
+      <Id><![CDATA[tab-container2]]></Id>
+    </TabEntry>
+    <TabEntry>
+      <Label><![CDATA[Powerful grouping options]]></Label>
+      <Id><![CDATA[tab-container3]]></Id>
+    </TabEntry>
+  </Tab>
+</TabData>

@@ -1,0 +1,82 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/shariff-mail-config.xsd"/>
+
+    <xsd:element name="ShariffData" type="OpenCmsShariffData"/>
+
+    <xsd:complexType name="OpenCmsShariffData">
+        <xsd:sequence>
+            <xsd:element name="Shariff" type="OpenCmsShariff" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsShariff">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Services" type="OpenCmsString" />
+            <xsd:element name="MailConfig" type="OpenCmsShariffMailConfigChoice" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true" />
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-shariff.title)]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                	<PropertyName>Services</PropertyName>
+                	<DisplayName><![CDATA[%(key.label.Shariff.Services)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Shariff.Services.help)]]></Description>
+                    <Widget>multiselect</Widget>
+                    <Default>twitter,facebook</Default>
+                    <WidgetConfig><![CDATA[
+                        twitter:Twitter|
+                        facebook:Facebook|
+                        linkedin:LinkedIn|
+                        xing:Xing|
+                        whatsapp:Whatsapp|
+                        mail:%(key.msg.setting.shariff.service.mail)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailConfig</PropertyName>
+                	<DisplayName><![CDATA[%(key.label.Shariff.MailConfig)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Shariff.MailConfig.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

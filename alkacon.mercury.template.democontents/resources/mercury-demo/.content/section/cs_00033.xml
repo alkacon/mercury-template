@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Meet the team]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Et harum quidem rerum facilis est et expedita aenean eu leo quam distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Fusce condimentum eleifend enim a feugiat. .</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

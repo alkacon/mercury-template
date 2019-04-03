@@ -1,0 +1,49 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="NestedImageData" type="OpenCmsNestedImageData"/>
+
+    <xsd:complexType name="OpenCmsNestedImageData">
+        <xsd:sequence>
+            <xsd:element name="NestedImage" type="OpenCmsNestedImage" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsNestedImage">
+        <xsd:sequence>
+            <xsd:element name="Image" type="OpenCmsVfsFile" />
+            <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Copyright" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NestedImage.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NestedImage.Image.help)]]></Description>
+                    <Widget>imagegallery</Widget>
+                    <WidgetConfig>{useformat:true}</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NestedImage.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NestedImage.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Copyright</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Copyright)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Copyright.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

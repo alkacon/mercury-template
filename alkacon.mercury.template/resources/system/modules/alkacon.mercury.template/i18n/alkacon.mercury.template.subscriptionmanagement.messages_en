@@ -1,0 +1,5 @@
+GUI_FAILED_SENDING_CONFIRM_SUBSCRIPTION_MAIL_2=Failed to send the confirmation email for subscribing to "{1}" to "{0}". 
+GUI_FAILED_SENDING_CONFIRM_UNSUBSCRIPTION_MAIL_2=Failed to send the confirmation email for unsubscribing from "{1}" to "{0}". 
+GUI_FAILED_SUBSCRIPTION_ACTIVATION_FOR_2=Failed to activate the subscription of "{1}" for user "{0}". 
+GUI_FAILED_UNSUBSCRIPTION_FOR_2=Failed to unsubscribe "{0}" from "{1}".
+GUI_INVALID_PARAMETERS_0=The subscription action can't be performed since the parameters  are not valid for the requested action.

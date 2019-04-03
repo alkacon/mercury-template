@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TabData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/tab.xsd">
+  <Tab language="en">
+    <Title><![CDATA[Tab demo content]]></Title>
+    <TabEntry>
+      <Label><![CDATA[Any number of tabs]]></Label>
+      <Id><![CDATA[tab-container1]]></Id>
+    </TabEntry>
+    <TabEntry>
+      <Label><![CDATA[Dynamic tab layout]]></Label>
+      <Id><![CDATA[tab-container2]]></Id>
+    </TabEntry>
+    <TabEntry>
+      <Label><![CDATA[Great to use]]></Label>
+      <Id><![CDATA[tab-container3]]></Id>
+    </TabEntry>
+  </Tab>
+</TabData>

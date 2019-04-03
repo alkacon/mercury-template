@@ -1,0 +1,94 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/social-facebook.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/social-twitter.xsd" />
+
+    <xsd:element name="MetaInfoData" type="OpenCmsMetaInfoData"/>
+
+    <xsd:complexType name="OpenCmsMetaInfoData">
+        <xsd:sequence>
+            <xsd:element name="MetaInfo" type="OpenCmsMetaInfo" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsMetaInfo">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Description" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Image" type="OpenCmsVfsFile" minOccurs="0" />
+            <xsd:element name="Facebook" type="OpenCmsSocialFacebook" minOccurs="0" />
+            <xsd:element name="Twitter" type="OpenCmsSocialTwitter" minOccurs="0" />
+            <xsd:element name="Keywords" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <!-- Description, Keywords etc. are not mapped because they are set by the formatter meta info -->
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true" />
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Description</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Description)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Descripton.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>4</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Image.help)]]></Description>
+                    <Widget>imagegallery</Widget>
+                    <WidgetConfig>{useformat:true}</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Facebook</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Facebook)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Facebook.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Twitter</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Twitter)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Twitter.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Keywords</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Keywords)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Keywords.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title) [Meta Infos] %(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

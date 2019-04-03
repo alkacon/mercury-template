@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Administrator login info]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p><span class="badge badge-orange">Username: Admin</span></p>
+<p><span class="badge badge-orange">Password: admin</span></p>
+<p><em>You should change the Admin password as soon as possible! </em>Do this in the OpenCms <em>Account Management</em> app that you can access through the "Rocket" symbol in the toolbar.</p>
+<p>Note that for this demo the users <strong>Author</strong>, <strong>Editor</strong>, <strong>Gallator</strong>, <strong>Templator</strong> and <strong>Demo</strong> have been created as well. You should also change their passwords or disable / delete these users completely.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

@@ -1,0 +1,259 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _socialicons.scss
+ */
+
+// Default social icon style, grey and boxed
+
+.type-shariff {
+    // shariff 3 uses FontAwesome 5 while Mercury sill uses 4
+    .fas,
+    .fab {
+        display: inline-block;
+        font-family: FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .fa-linkedin-in:before {
+        content: "\f0e1";
+    }
+}
+
+.social-icons {
+    list-style: none;
+    font-size: 0px;
+    padding: 0px;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    li {
+        display: inline-block;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: $social-links-margin;
+        margin-bottom: $social-links-margin;
+        vertical-align: middle;
+        @include round-corners($sitemap-border-radius, true);
+
+        a {
+            background-color: $social-links-bg;
+            width: $social-links-box-height;
+            height: $social-links-box-height;
+            display: block;
+            border: none;
+            font-size: $social-links-size;
+            @include round-corners($btn-border-radius);
+
+            * {
+                color: $social-links-color;
+            }
+
+            &:hover {
+                text-decoration: none;
+                * {
+                    color: $text-light;
+                    @include color-transition;
+                }
+            }
+        }
+    }
+
+    li:last-of-type {
+        margin-right: 0;
+    }
+
+    .share_text {
+        display: none;
+        text-align: left;
+        padding-right: $default-margin-small;
+        font-size: $font-size-base;
+    }
+
+    .fa,
+    .fas,
+    .fab, {
+        width: $social-links-box-height;
+        line-height: $social-links-box-height;
+        text-align: center;
+        font-size: $font-size-base;
+    }
+}
+
+
+// Add class 'verbose' to see the 'share' text right to the icons
+
+.social-icons.verbose {
+
+    li a {
+        width: initial;
+    }
+
+    .share_text {
+        display: inline-block;
+        line-height: $social-links-box-height;
+    }
+}
+
+
+// Add class 'stacked' to stack the icons vertically
+
+@mixin social-icons-stacked {
+    li {
+        width: 100%;
+        margin-right: 0;
+        a {
+            width: 100%;
+        }
+    }
+}
+
+@mixin social-icons-verbose {
+    a {
+        width: initial;
+        .share_text {
+            display: inline;
+        }
+    }
+}
+
+
+// Responsive adjustmensts:
+//
+// Use 'stacked-sm', 'stacked-md', 'stacked-lg' or 'stacked-xl' to start stacking from selected screen with.
+// Use 'verbose-sm', 'verbose-md', 'verbose-lg' or 'verbose-xl' to show button 'share' text from selected screen with.
+.social-icons {
+
+    &.verbose {
+        @include social-icons-verbose;
+    }
+    &.stacked {
+        @include social-icons-stacked;
+    }
+
+    @include media-breakpoint-up(sm) {
+        &.verbose-sm {
+            @include social-icons-verbose;
+        }
+        &.stacked-sm {
+            @include social-icons-stacked;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        &.verbose-md {
+            @include social-icons-verbose;
+        }
+        &.stacked-md {
+            @include social-icons-stacked;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        &.verbose-lg {
+            @include social-icons-verbose;
+        }
+        &.stacked-lg {
+            @include social-icons-stacked;
+        }
+    }
+
+    @include media-breakpoint-up(xl) {
+        &.verbose-xl {
+            @include social-icons-verbose;
+        }
+        &.stacked-xl {
+            @include social-icons-stacked;
+        }
+    }
+}
+
+
+// Social icons default style is grey and colored on hover
+
+@each $social-link, $social-icon, $social-color in $social-links {
+
+    .social-icons li.#{$social-link} a {
+        &:hover {
+            background-color: $social-color;
+        }
+    }
+}
+
+
+// Add class 'themed' to use the main theme color for the icons
+
+.social-icons.themed li a {
+    background-color: $main-theme;
+    * {
+        color: get-text-color($main-theme);
+    }
+}
+
+
+// Add class 'colored' for individually colored icons
+
+.social-icons.colored {
+
+    li a * {
+        color: $text-light;
+    }
+
+    @each $social-link, $social-icon, $social-color in $social-links {
+
+        li.#{$social-link} a {
+            background-color: $social-color;
+
+            &:hover {
+                background-color: saturate(lighten($social-color, 10%), 20%);
+            }
+        }
+    }
+}
+
+
+// Individual icon adjustments per special type
+
+.social-icons {
+    margin: 0;
+
+    // special colored background for instagram icon
+    &.colored li.instagram a,
+    li.instagram a:hover {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    }
+    &.colored li.instagram a:hover {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, saturate(lighten(#fdf497, 1%), 20%) 5%, saturate(lighten(#fd5949, 5%), 20%) 45%, saturate(lighten(#d6249f, 7%), 20%) 60%,#285AEB 90%);
+    }
+    li.instagram a {
+        // instagram font icon looks to small otherwise
+        font-size: $social-links-box-height - 4;
+    }
+
+    // youtube red does not change enough if calcualted automatically
+    &.colored li.youtube a:hover {
+        background-color: #c00;
+    }
+}

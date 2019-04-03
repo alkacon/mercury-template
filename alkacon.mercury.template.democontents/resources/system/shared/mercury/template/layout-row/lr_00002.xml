@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LayoutSimpleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/layout-simple.xsd">
+  <LayoutSimple language="de">
+    <Title><![CDATA[Row 2 Spalten (3 - 9) [Ab Bildschrimgröße LG]]]></Title>
+    <Variant><![CDATA[3-9]]></Variant>
+  </LayoutSimple>
+  <LayoutSimple language="en">
+    <Title><![CDATA[Row 2 columns (3 - 9) [From display size LG]]]></Title>
+    <Variant><![CDATA[3-9]]></Variant>
+  </LayoutSimple>
+</LayoutSimpleData>

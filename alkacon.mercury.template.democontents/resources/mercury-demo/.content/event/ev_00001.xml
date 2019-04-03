@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EventData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/event.xsd">
+  <Event language="en">
+    <Intro><![CDATA[The autumn experience]]></Intro>
+    <Title><![CDATA[Annual Autumn Assembly]]></Title>
+    <Dates>{"from":"1539932400000", "pattern":{"type":"YEARLY", "month":"OCTOBER", "day":"19"}, "occurrences":"3"}</Dates>
+    <Type><![CDATA[User conference]]></Type>
+    <Paragraph>
+      <Caption><![CDATA[In autumn is is great to assemble]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt libero. Phasellus dolor. Maecenas vestibulum mollis diam. Pellentesque ut neque.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/samples/42.jpg]]></target>
+            <uuid>f3115c40-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+      </Image>
+    </Paragraph>
+    <AddressChoice>
+      <Address>
+        <Name><![CDATA[MediaPark, Cologne]]></Name>
+        <StreetAddress><![CDATA[Im Mediapark 6]]></StreetAddress>
+        <PostalCode><![CDATA[50670]]></PostalCode>
+        <Locality><![CDATA[Köln]]></Locality>
+        <Country><![CDATA[Germany]]></Country>
+      </Address>
+    </AddressChoice>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Event>
+</EventData>

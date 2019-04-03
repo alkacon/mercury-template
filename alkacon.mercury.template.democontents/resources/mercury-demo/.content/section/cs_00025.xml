@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Die wichtigsten Fragen]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<ul>
+<li>Ist OpenCms open source oder öfter süß?</li>
+<li>Warum ist diese phantastische Software kostenfrei?</li>
+<li>Was passiert wenn man einen Pinguin im Kühlschrank findet?</li>
+<li>Warum ist das Mercury Template so großartig?&nbsp;</li>
+<li>Kann ich OpenCms auch in der Küche benutzen?</li>
+<li>Träumen Androiden von elektischen Schafen?</li>
+</ul>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[Top questions]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<ul>
+<li>Is OpenCms open source or open sauce?</li>
+<li>How comes software this great is free?</li>
+<li>What happens if you find a penguin in the freezer?</li>
+<li>Will I be able to create a site without coding using the Mercury Template?</li>
+<li>Can I use OpenCms in my kitchen?</li>
+<li>Do androids dream of electric sheep?</li>
+</ul>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

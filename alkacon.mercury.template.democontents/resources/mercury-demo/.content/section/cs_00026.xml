@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Professionelle Hilfe ist verfügbar!]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p><strong>Unsere Adresse:</strong><br /><a href="%(link0)">Alkacon Software GmbH &amp; Co. KG</a>&nbsp;<br />An der Wachsfabrik 13 <br />50996 Köln</p>
+<p><a href="%(link1)">Zum Kontaktformular</a></p>]]></content>
+    </Text>
+  </ContentSection>
+  <ContentSection language="en">
+    <Title><![CDATA[Professional support is available!]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p><strong>Please contact</strong><br /><a href="%(link0)">Alkacon Software GmbH &amp; Co. KG</a><br />An der Wachsfabrik 13 <br />50996 Köln (Cologne), Germany</p>
+<p><a href="%(link1)">Contact Information</a></p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

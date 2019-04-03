@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.download.formatter.plain)]]></NiceName>
+    <Type><![CDATA[plain]]></Type>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/download/download.jsp]]></target>
+        <uuid>60779491-304d-431b-812e-7a9d806adf0e</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[1000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[list]]></ContainerType>
+      </Types>
+    </Match>
+    <Display><![CDATA[download]]></Display>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>false</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.download]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showFile.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDescription.true]]></IncludeName>
+      <Description><![CDATA[%(key.msg.setting.download.showDescription.help)]]></Description>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

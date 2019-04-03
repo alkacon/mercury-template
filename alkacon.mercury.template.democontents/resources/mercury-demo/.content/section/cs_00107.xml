@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[The Contact Information element]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>With the <em>Contact Information</em>, details about a person and/or company address can be shown in different ways.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

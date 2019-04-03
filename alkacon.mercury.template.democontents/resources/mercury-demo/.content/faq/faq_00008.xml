@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FaqData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/faq.xsd">
+  <Faq language="de">
+    <Question><![CDATA[Was ist das Mercury Template?]]></Question>
+    <Order><![CDATA[600]]></Order>
+    <Date>1504254780000</Date>
+    <Paragraph>
+      <Caption><![CDATA[Es ist ein responsives Template für Webseiten basierend auf Bootstrap!]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.</p>
+<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/samples/36.jpg]]></target>
+            <uuid>f2e54316-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+        <Copyright><![CDATA[CC0 Public Domain / Pixabay.com]]></Copyright>
+      </Image>
+    </Paragraph>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Faq>
+  <Faq language="en">
+    <Question><![CDATA[What is the Mercury Template?]]></Question>
+    <Order><![CDATA[600]]></Order>
+    <Date>1504254780000</Date>
+    <Paragraph>
+      <Caption><![CDATA[It's a customizable, responsive website template based on Bootstrap!]]></Caption>
+      <Text name="Text0">
+        <links/>
+        <content><![CDATA[<p>Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.</p>
+<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>]]></content>
+      </Text>
+      <Image>
+        <Image>
+          <link type="WEAK">
+            <target><![CDATA[/sites/default/.galleries/samples/36.jpg]]></target>
+            <uuid>f2e54316-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Image>
+        <Copyright><![CDATA[CC0 Public Domain / Pixabay.com]]></Copyright>
+      </Image>
+    </Paragraph>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+  </Faq>
+</FaqData>

@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="SliderComplexLayerTexts" type="OpenCmsSliderComplexLayerTexts"/>
+
+    <xsd:complexType name="OpenCmsSliderComplexLayerTexts">
+        <xsd:sequence>
+            <xsd:element name="SliderComplexLayerText" type="OpenCmsSliderComplexLayerText" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsSliderComplexLayerText">
+        <xsd:sequence>
+            <xsd:element name="Text" type="OpenCmsString"/>
+            <xsd:element name="Tag" type="OpenCmsString" />
+            <xsd:element name="Class" type="OpenCmsString" />
+            <xsd:element name="PosX" type="OpenCmsString" />
+            <xsd:element name="PosY" type="OpenCmsString" />
+            <xsd:element name="Configuration" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.xtensions.slider-complex.messages"/>
+            <layouts>
+                <layout element="Text" widget="TextareaWidget" configuration="3" />
+                <layout element="Tag" widget="ComboWidget" configuration="DIV|H1|H2|H3|H4" />
+                <layout element="Class" widget="ComboWidget" configuration="mediumthickblackbg blackbgtransparent|mediumthickgreybg|mediumthickwhitebg" />
+                <layout element="Configuration" widget="TextareaWidget" configuration="6" />
+            </layouts>
+            <searchsettings>
+                <searchsetting element="Tag" searchcontent="false" />
+                <searchsetting element="Class" searchcontent="false" />
+                <searchsetting element="PosX" searchcontent="false" />
+                <searchsetting element="PosY" searchcontent="false" />
+                <searchsetting element="Configuration" searchcontent="false" />
+            </searchsettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

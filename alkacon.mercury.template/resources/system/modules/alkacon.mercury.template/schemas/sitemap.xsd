@@ -1,0 +1,87 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="SitemapData" type="OpenCmsSitemapData" />
+
+    <xsd:complexType name="OpenCmsSitemapData">
+        <xsd:sequence>
+            <xsd:element name="Sitemap" type="OpenCmsSitemap" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsSitemap">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="ShowFrom" type="OpenCmsVfsFile" minOccurs="0" />
+            <xsd:element name="MaximumDepth" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="IncludeSubSiteMaps" type="OpenCmsBoolean" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true" />
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-sitemap.title)]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Description</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Description.help)]]></Description>
+                    <Widget>html</Widget>
+                    <WidgetConfig>downloadgallery</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>ShowFrom</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Sitemap.ShowFrom)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Sitemap.ShowFrom.help)]]></Description>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>MaximumDepth</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Sitemap.MaximumDepth)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Sitemap.MaximumDepth.help)]]></Description>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>IncludeSubSiteMaps</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Sitemap.IncludeSubSiteMaps)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Sitemap.IncludeSubSiteMaps.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                       <MapTo>property:Title</MapTo>
+                       <UseDefault>true</UseDefault>
+                    </Mapping>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

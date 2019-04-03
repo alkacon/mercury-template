@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Content modification options]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Have you already noticed the grey "edit point" icon that appears on the right corner of some elements that you see on the page? Move the mouse over one of these icons and you will see a list of options.</p>
+<ul>
+<li>For example, you can move an element around in the page with the <em><strong>Move in page</strong></em> icon.</li>
+<li>You can change the appearance of an element in the dialog that appears when you click on <strong><em>Element settings</em></strong>.</li>
+<li>And of course you can edit the element. You will see how this works on the next page of this introduction.</li>
+</ul>]]></content>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/tutorial/.galleries/tutorial-images/tut-06.png]]></target>
+          <uuid>f54b201e-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA["Edit point" menu]]></Title>
+    </Image>
+    <Link>
+      <Text><![CDATA[Continue to step 2: Edit content]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/tutorial/step-2-edit-content/]]></target>
+          <uuid>f588ebdf-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

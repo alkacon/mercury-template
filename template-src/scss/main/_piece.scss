@@ -140,13 +140,8 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     .flex-col > .piece.full:only-child {
         // this makes single content elements in a .flex-col using the complete element height
         // and allows to align links at the bottom
-        display: flex;
-        flex-direction: column;
         flex-grow: 1;
-
-        > .body {
-            flex-grow: 1;
-        }
+        @include text-tile;
     }
 
     .piece {

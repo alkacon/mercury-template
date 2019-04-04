@@ -93,20 +93,11 @@
     display: flex;
 
     .teaser.piece {
-        overflow: hidden; // fix fow very small tiles where single words may increase the column width
-        z-index: $overflow-z-index;
-        display: flex;
-        flex-direction: column;
         margin-bottom: 0;
-        width: 100%;
+        @include text-tile;
 
         > .body {
-            flex-basis: auto;
-            flex-grow: 1;
-
             .headline {
-                overflow: hidden;
-                text-overflow: ellipsis;
                 line-height: $teaser-title-height;
             }
         }

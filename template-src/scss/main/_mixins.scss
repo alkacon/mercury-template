@@ -292,3 +292,24 @@
         font-size: $section-subtitle-size;
     }
 }
+
+// Full height text tiles / piece sections
+@mixin text-tile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden; // fix for very small columns where single words may increase the column width
+    text-overflow: ellipsis;
+    z-index: $overflow-z-index;
+
+    > .body {
+        flex-basis: auto;
+        flex-grow: 1;
+
+        .headline {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+

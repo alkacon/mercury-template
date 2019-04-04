@@ -25,6 +25,7 @@
     .org,
     .adr,
     .title,
+    .pos,
     .note,
     .mail,
     .vcard {
@@ -55,6 +56,7 @@
         .org,
         .adr,
         .title,
+        .pos,
         .note,
         .contactlink:not(.btn),
         .mail {

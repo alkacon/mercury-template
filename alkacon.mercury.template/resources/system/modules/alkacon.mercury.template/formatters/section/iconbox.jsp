@@ -23,7 +23,9 @@ ${nl}
 
     <mercury:link link="${value.Link}" setTitle="${true}" css="icon-link">
         <mercury:heading level="${hsize}" text="${value.Title}" css="icon-title" ade="${ade}" />
-        <div class="icon-image fa fa-${iconClass}" aria-hidden="true" role="presentation"></div><%----%>
+        <c:if test="${iconClass ne 'none'}">
+            <div class="icon-image fa fa-${iconClass}" aria-hidden="true" role="presentation"></div><%----%>
+        </c:if>
         <c:if test="${value.Text.isSet}">
             <div class="icon-text" ${ade ? content.rdfa.Text : ''}>${value.Text}</div><%----%>
         </c:if>

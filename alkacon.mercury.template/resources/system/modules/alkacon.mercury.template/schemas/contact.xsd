@@ -46,8 +46,10 @@
                 </searchsetting>
             </searchsettings>
             <editorchangehandlers>
-                <editorchangehandler class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Image*/Image" configuration="Copyright|../Copyright" />
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image*/Image"
+                    configuration="Copyright|../Copyright" />
             </editorchangehandlers>
             <parameters>
                 <param name="galleryTitle"><![CDATA[%!

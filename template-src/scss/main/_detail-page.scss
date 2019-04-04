@@ -110,6 +110,11 @@
         }
     }
 
+    .sub-header {
+        @extend .h4;
+        margin-bottom: $headings-margin-bottom;
+    }
+
     .detail-content {
         margin-bottom: $default-margin;
 

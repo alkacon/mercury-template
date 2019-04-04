@@ -60,7 +60,12 @@
             <editorchangehandlers>
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Paragraph*/Image*/Image" configuration="Copyright|../Copyright" />
+                    scope="Image/Image"
+                    configuration="Copyright|../Copyright" />
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Paragraph*/Image*/Image"
+                    configuration="Copyright|../Copyright" />
             </editorchangehandlers>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
             <parameters>

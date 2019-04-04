@@ -577,6 +577,7 @@ var Mercury = function(jQ) {
                     $m.remove();
                     $p.append(decodeURIComponent(data.template));
                 });
+                /* This may not be needed
                 $element.on("lazyloaded", data, function(event) {
                     // after image is loaded, make sure video is fit into available space
                     var $m = jQ(this);
@@ -587,6 +588,7 @@ var Mercury = function(jQ) {
                         $centered.css("width", percentage + "%");
                     }
                 });
+                */
             }
         });
     }

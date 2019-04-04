@@ -19,9 +19,9 @@
         <xsd:sequence>
             <xsd:element name="Intro" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Date" type="OpenCmsDateTime" />
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
-            <xsd:element name="Date" type="OpenCmsDateTime" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" minOccurs="1" maxOccurs="100" />
             <xsd:element name="Author" type="OpenCmsString" />
             <xsd:element name="AuthorMail" type="OpenCmsString" minOccurs="0" />
@@ -49,7 +49,12 @@
             <editorchangehandlers>
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Paragraph*/Image*/Image" configuration="Copyright|../Copyright" />
+                    scope="Image/Image"
+                    configuration="Copyright|../Copyright" />
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Paragraph*/Image*/Image"
+                    configuration="Copyright|../Copyright" />
             </editorchangehandlers>
             <FieldSettings>
                 <Setting>

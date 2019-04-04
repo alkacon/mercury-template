@@ -31,7 +31,8 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
-<c:set var="showImage"              value="${(visualOption ne 'none') and value.Image.value.Image.isSet}" />
+<c:set var="imageRatio"             value="${setting.imageRatio.toString}" />
+<c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
 
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact' : ''}" />
 <c:set var="ade"                    value="${true}" />
@@ -47,7 +48,7 @@
         <mercury:contact
             kind="${value.Kind}"
             image="${value.Image}"
-            imageRatio="${cms.element.settings.imageRatio}"
+            imageRatio="${imageRatio}"
             link="${value.Link}"
             hsize="${hsize}"
             name="${value.Name}"

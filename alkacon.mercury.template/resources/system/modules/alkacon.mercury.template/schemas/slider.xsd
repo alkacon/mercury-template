@@ -35,6 +35,12 @@
                 <tab element="Title" collapse="false" name="%(key.tab.Slider)" />
                 <tab element="Image" collapse="false" name="%(key.tab.Images)" />
             </tabs>
+            <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image*/Uri"
+                    configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
             <searchsettings containerPageOnly="true" />
             <FieldSettings>
                 <Setting>

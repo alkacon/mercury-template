@@ -67,7 +67,7 @@
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
             <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${hsize + 1}" css="sub-header" ade="${ade}" test="${keyPieceLayout == 0}" />
+            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPieceLayout == 0}" />
         </c:if>
     </jsp:attribute>
 
@@ -88,7 +88,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${hsize + 1}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout != 0)}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout != 0)}" />
 
         <c:if test="${showLocation}">
             <c:set var="location">

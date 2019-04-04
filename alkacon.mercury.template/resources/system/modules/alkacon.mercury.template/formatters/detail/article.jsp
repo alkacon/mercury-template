@@ -66,7 +66,7 @@
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
             <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${hsize + 1}" css="sub-header" ade="${ade}" test="${keyPieceLayout == 0}" />
+            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPieceLayout == 0}" />
         </c:if>
     </jsp:attribute>
 
@@ -87,7 +87,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${hsize + 1}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout != 0)}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout != 0)}" />
 
         <c:if test="${showDate or showAuthor}">
             <div class="visual-info ${not showAuthor ? 'right' : ''}"><%----%>
@@ -96,7 +96,7 @@
             </div><%----%>
         </c:if>
 
-        <mercury:heading text="${preface}" level="${hsize + 1}" css="sub-header" ade="${ade}" test="${showOverlay}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay}" />
     </jsp:attribute>
 
 </mercury:piece>

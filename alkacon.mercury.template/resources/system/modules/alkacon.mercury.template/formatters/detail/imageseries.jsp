@@ -54,7 +54,7 @@
 
 <c:set var="titleMarkup">
     <mercury:intro-headline intro="${value.Intro}" headline="${value.Title}" level="${hsize}" ade="${ade}"/>
-    <mercury:heading text="${value.Preface}" level="${hsize + 1}" css="sub-header" ade="${ade}" test="${showPreface}" />
+    <mercury:heading text="${value.Preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface}" />
 </c:set>
 
 <c:set var="template"><%--

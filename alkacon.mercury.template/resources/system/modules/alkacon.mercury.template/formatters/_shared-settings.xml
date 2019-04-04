@@ -122,6 +122,28 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageRatio.contact]]></IncludeName>
+      <PropertyName><![CDATA[imageRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:   %(key.msg.setting.imageRatio.none)|
+            no-img: %(key.msg.setting.imageRatio.noimage)|
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>
       <PropertyName><![CDATA[imageRatio]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
@@ -1477,7 +1499,6 @@
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
         none:                           %(key.msg.setting.effect.none)|
-        no-img:                         %(key.msg.setting.contact.noimage)|
         effect-shadow:                  %(key.msg.setting.effect.shadow)|
         effect-inset:                   %(key.msg.setting.effect.inset)|
         effect-raise:                   %(key.msg.setting.effect.raise)|
@@ -1849,7 +1870,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.useFlex)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.useFlex.help)]]></Description>
       <Widget><![CDATA[%(stringtemplate:useFlex)]]></Widget>
-      <Default><![CDATA[false]]></Default>
+      <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[tileCss.layout]]></IncludeName>

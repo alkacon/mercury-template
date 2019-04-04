@@ -17,9 +17,9 @@
         <xsd:sequence>
             <xsd:element name="Intro" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Title" type="OpenCmsString" />
+            <xsd:element name="Date" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Preface" type="OpenCmsString" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
-            <xsd:element name="Date" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Link" type="OpenCmsNestedLink" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
@@ -38,6 +38,12 @@
                 <tab element="Intro" collapse="false" name="%(key.tab.Decoy)" />
                 <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
+            <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image/Image"
+                    configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Intro</PropertyName>

@@ -22,7 +22,7 @@
 
 <c:if test="${not empty paragraphs}">
     <mercury:nl/>
-    <div class="subelement type-linksequence custom-icon"><%----%>
+    <div class="subelement type-linksequence ls-bullets custom-icon"><%----%>
 
         <mercury:heading text="${paragraphs['0'].value.Caption}" level="${empty hsize ? 3 : hsize}" />
 

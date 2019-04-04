@@ -20,10 +20,10 @@
  */
 
 %ls-icon-base {
-    padding-left: 2.0rem;
+    padding-left: $ls-margin-left;
     &::before {
         float: left;
-        margin-left: -2.0rem;
+        margin-left: -$ls-margin-left;
         display: inline-block;
         line-height: $target-line-height;
     }

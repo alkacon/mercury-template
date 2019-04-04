@@ -49,6 +49,11 @@
         flex-wrap: wrap;
     }
 
+    &.element {
+        // social icons use display flex, so margin of items must be substracted from element default margin
+        margin-bottom: $default-margin - $social-links-margin;
+    }
+
     li {
         display: inline-block;
         margin-top: 0;
@@ -98,7 +103,7 @@
         width: $social-links-box-height;
         line-height: $social-links-box-height;
         text-align: center;
-        font-size: $font-size-base;
+        font-size: $social-links-size;
     }
 }
 
@@ -237,7 +242,6 @@
 // Individual icon adjustments per special type
 
 .social-icons {
-    margin: 0;
 
     // special colored background for instagram icon
     &.colored li.instagram a,

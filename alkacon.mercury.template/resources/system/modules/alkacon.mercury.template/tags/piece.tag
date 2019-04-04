@@ -109,7 +109,7 @@
 
 
 <c:set var="pieceTag"       value="${empty pieceTag ? 'div' : pieceTag}" />
-<c:set var="inlineLink"     value="${empty inlineLink ? true : inlineLink}" />
+<c:set var="inlineLink"     value="${empty inlineLink ? (pieceLayout > 1) : inlineLink}" />
 
 <c:set var="fullWidth"      value="${pieceLayout <= 1}" />
 <c:set var="inlineHeading"  value="${(pieceLayout == 1) or (pieceLayout >= 6)}" />

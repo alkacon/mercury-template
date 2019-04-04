@@ -133,9 +133,23 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             }
         }
     }
+}
 
-    @include media-breakpoint-up(md) {
+@include media-breakpoint-up(md) {
 
+    .flex-col > .piece.full:only-child {
+        // this makes single content elements in a .flex-col using the complete element height
+        // and allows to align links at the bottom
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        > .body {
+            flex-grow: 1;
+        }
+    }
+
+    .piece {
         &.flex,
         &.float {
             @include clearfix-before;
@@ -216,10 +230,10 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                     }
                 }
             }
-
         }
     }
 }
+
 
 .intro-headline {
     // formatting for headings with intro

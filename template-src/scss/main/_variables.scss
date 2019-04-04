@@ -408,7 +408,7 @@ $accordion-border-radius:           $default-border-radius !default;
 
 $slider-slide-border-radius:        $default-border-radius !default;
 $slider-caption-border-radius:      $default-border-radius !default;
-$slider-caption-padding:            5px 0 !default;
+$slider-caption-padding:            $default-margin-verysmall 0 !default;
 $slider-text-shadow:                1px 1px 1px rgba(#333, .5) !default;
 $logo-slider-paddings:              (5, 10, 15, 20) !default;
 

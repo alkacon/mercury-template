@@ -41,6 +41,8 @@
         }
 
         @if ($header-image-bg != none) {
+            // set colored background for images (if images contain transparency)
+            .nav-main-mobile-logo > .img-responsive,
             .header-image {
                 background-color: $header-image-bg;
             }
@@ -48,6 +50,15 @@
 
         .visual-top-bg {
             background-color: $header-image-ribbon-bg;
+        }
+
+        @include media-breakpoint-down(md) {
+            .mega .nav-mega-menu {
+                // for mobile, hide all elements from mega menu that are not navigations
+                .element:not(.type-nav-side):not(.ls-navigation) {
+                    display: none;
+                }
+            }
         }
 
         @include media-breakpoint-up(sm) {

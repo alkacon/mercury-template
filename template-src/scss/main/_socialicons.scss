@@ -61,7 +61,6 @@
         margin-right: $social-links-margin;
         margin-bottom: $social-links-margin;
         vertical-align: middle;
-        @include round-corners($sitemap-border-radius, true);
 
         a {
             background-color: $social-links-bg;
@@ -70,7 +69,7 @@
             display: block;
             border: none;
             font-size: $social-links-size;
-            @include round-corners($btn-border-radius);
+            @include round-corners($social-links-border-radius);
 
             * {
                 color: $social-links-color;

@@ -57,29 +57,33 @@
 
 <c:set var="isCompatible" value="${not (incompatibleGroups || incompatibleWithList)}" />
 <c:if test="${not isCompatible && cms.isEditMode}">
+    <fmt:setLocale value="${cms.workplaceLocale}" />
+    <cms:bundle basename="alkacon.mercury.template.messages">
     <c:choose>
         <c:when test="${incompatibleWithList}">
             <mercury:alert type="warning">
                 <jsp:attribute name="head">
-                    List not configured correctly
+                    <fmt:message key="msg.error.list.wrongType.head" />
                 </jsp:attribute>
                 <jsp:attribute name="text">
-                   The list '${listTitle}' uses a combination of list formatter and
-                   list type that is not compatible.
-                   Please change the list formatter using the 'settings' dialog, or the list type in the content editor.
+                    <fmt:message key="msg.error.list.wrongType.text">
+                        <fmt:param>${listTitle}</fmt:param>
+                    </fmt:message>
                 </jsp:attribute>
             </mercury:alert>
        </c:when>
        <c:when test="${incompatibleGroups}">
             <mercury:alert type="warning">
                 <jsp:attribute name="head">
-                    List not configured correctly
+                    <fmt:message key="msg.error.list.wrongType.head" />
                 </jsp:attribute>
                 <jsp:attribute name="text">
-                   The list '${listTitle}' uses a combination of display formatters that is not compatible.
-                   Please change the display formatters by editing the content.
+                    <fmt:message key="msg.error.list.wrongDisplay.text">
+                        <fmt:param>${listTitle}</fmt:param>
+                    </fmt:message>
                 </jsp:attribute>
             </mercury:alert>
        </c:when>
     </c:choose>
+    </cms:bundle>
 </c:if>

@@ -492,7 +492,7 @@ $sitemap-hover-bg-color:            $sitemap-top-bg-color !default;
 $sitemap-hover-text-color:          $sitemap-top-text-color !default;
 $sitemap-ver-padding:               0.6rem !default;
 $sitemap-hor-padding:               1rem !default;
-$sitemap-border-radius:             $default-border-radius !default;
+$sitemap-border-radius:             $btn-border-radius !default;
 $sitemap-font-size:                 $font-size-base !default;
 $sitemap-line-height:               $font-size-base * 1.2 !default;
 
@@ -521,7 +521,7 @@ $social-links-size:                 20px !default;
 $social-links-margin:               $default-margin-verysmall !default;
 $social-links-size-half:            $social-links-size / 2 !default;
 $social-links-box-height:           $social-links-size * 2 !default;
-$social-links-border-radius:        $default-border-radius !default;
+$social-links-border-radius:        $btn-border-radius !default;
 
 // Map to generate the social icon styles from
 $social-links:

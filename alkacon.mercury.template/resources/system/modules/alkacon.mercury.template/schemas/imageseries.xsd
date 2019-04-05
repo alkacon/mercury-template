@@ -22,7 +22,7 @@
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Date" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Text" type="OpenCmsHtml" minOccurs="0" />
-            <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" maxOccurs="100" />
             <xsd:element name="ImageFolder" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
@@ -44,6 +44,12 @@
                 <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
                 <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
+            <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image*/Image"
+                    configuration="Copyright|../Copyright" />
+            </editorchangehandlers>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Intro</PropertyName>

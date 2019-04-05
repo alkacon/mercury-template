@@ -79,6 +79,7 @@
             <mercury:container-box
                 label="${title}${not empty name ? ' - '.concat(name) : ''}"
                 boxType="detail-placeholder"
+                cssWrapper="attachment"
                 type="${type}"
             />
         </div>

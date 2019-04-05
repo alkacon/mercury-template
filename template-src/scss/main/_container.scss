@@ -132,6 +132,10 @@ $oct-edit-infos:
     &.complex {
         border: 1px solid $con-col-red;
     }
+
+    &.attachment {
+        border: 1px solid $con-col-orange;
+    }
 }
 
 

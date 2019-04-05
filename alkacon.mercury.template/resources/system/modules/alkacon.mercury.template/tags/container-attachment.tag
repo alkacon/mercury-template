@@ -44,6 +44,7 @@
             <mercury:container-box
                 label="${name}"
                 boxType="detail-placeholder"
+                cssWrapper="attachment"
                 type="${type}"
             />
         </c:when>
@@ -62,6 +63,7 @@
                 <mercury:container-box
                     label="${name}"
                     boxType="container-box"
+                    cssWrapper="attachment"
                     role="${role}"
                     type="${type}"
                     detailView="false"

@@ -493,6 +493,9 @@
                 > a {
                     // sidebar padding may be different
                     padding: $nav-mobile-line-padding #{$grid-gutter-width / 2} $nav-mobile-line-padding #{($grid-gutter-width / 2) + ($nav-mobile-indent * 2)};
+                    @if ($nav-mobile-font-family != $font-family-base) {
+                        font-family: $nav-mobile-font-family;
+                    }
                 }
             }
         }
@@ -693,22 +696,9 @@
             position: relative;
 
             > a {
-                color: $nav-text;
-                background-color: $nav-bg;
+                @include nav-menu-link;
                 border: none;
                 border-bottom: $nav-menu-entry-border-bottom;
-                padding: 5px 25px;
-                width: 100%;
-                font-size: $nav-font-size;
-                font-weight: $nav-menu-font-weight;
-                @if ($nav-menu-font-family != $font-family-base) {
-                    font-family: $nav-menu-font-family;
-                }
-                padding: $nav-menu-padding;
-
-                &:hover {
-                    text-decoration: none;
-                }
             }
 
             &:last-child > a {
@@ -810,6 +800,18 @@
                     &[aria-controls]::after {
                         content: "\f105";
                     }
+                }
+            }
+        }
+    }
+
+    .nav-mega-menu {
+        // mega menu adjustments
+        .nav-side {
+            li {
+                > a {
+                    // menu font may be different
+                    @include nav-menu-link;
                 }
             }
         }

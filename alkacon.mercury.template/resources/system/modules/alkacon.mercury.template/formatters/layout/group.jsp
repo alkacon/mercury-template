@@ -161,7 +161,7 @@
                 <mercury:container type="row" name="topfoot" css="container" title="${value.Title}" />
             </div><%----%>
             <div class="subfoot no-external"><%----%>
-                <mercury:container type="row" name="subfoot" css="container " title="${value.Title}" />
+                <mercury:container type="row" name="subfoot" css="container" title="${value.Title}" />
             </div><%----%>
 
         </footer><%----%>
@@ -173,7 +173,7 @@
         <footer class="area-foot ${cssWrapper}"><%----%>
 
             <div class="subfoot no-external"><%----%>
-                <mercury:container type="row" name="subfoot" css="container " title="${value.Title}" />
+                <mercury:container type="row" name="subfoot" css="container" title="${value.Title}" />
             </div><%----%>
 
         </footer><%----%>
@@ -182,7 +182,7 @@
 
     <c:when test="${variant eq 'side-group'}">
         <mercury:nl />
-            <mercury:container type="element" name="side-group" title="${value.Title}" />
+            <mercury:container type="element" name="side-group" css="side-group" title="${value.Title}" />
         <mercury:nl />
     </c:when>
 

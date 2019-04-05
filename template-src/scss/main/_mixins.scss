@@ -313,3 +313,19 @@
     }
 }
 
+@mixin nav-menu-link {
+    color: $nav-text;
+    background-color: $nav-bg;
+    width: 100%;
+    font-size: $nav-font-size;
+    font-weight: $nav-menu-font-weight;
+    @if ($nav-menu-font-family != $font-family-base) {
+        font-family: $nav-menu-font-family;
+    }
+    padding: $nav-menu-padding;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+

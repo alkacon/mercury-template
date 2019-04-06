@@ -54,7 +54,7 @@
     description="Controls if the tag body text is displayed or not. Default is 'Display as normal text'." %>
 
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
-    description="Controls if and how the link is displayed. Default is 'none'." %>
+    description="Controls if and how the link is displayed. Default is 'button'." %>
 
 <%@ attribute name="headingOption" type="java.lang.String" required="false"
     description="Controls how the heading is displayed. Default is 'full'." %>
@@ -98,7 +98,7 @@
 <c:set var="showText"           value="${empty text and empty markupText ? false : (empty textOption ? true : (textOption ne 'none'))}" />
 <c:set var="showHeading"        value="${empty heading or (hsize < 1) ? false : (empty headingOption ? true : (headingOption ne 'none'))}" />
 <c:set var="showVisual"         value="${empty image and empty markupVisual ? false : (empty sizeDesktop ? true : sizeDesktop != 0)}" />
-<c:set var="showLinkOption"     value="${empty linkOption ? false : (linkOption ne 'none') and (linkOption ne 'false') }" />
+<c:set var="showLinkOption"     value="${empty linkOption ? true : (linkOption ne 'none') and (linkOption ne 'false') }" />
 <c:set var="showLink"           value="${empty link ? false : showLinkOption}" />
 
 <c:choose>

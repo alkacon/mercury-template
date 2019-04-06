@@ -196,8 +196,8 @@ table.submissions {
 .teaser .book-info,
 .accordion .book-info {
 
-    font-size: round($font-size-base * 0.75);
-    line-height: round($target-line-height * 0.75);
+    font-size: round($font-size-base * 8) / 10;
+    line-height: round($target-line-height * 8) / 10;
     margin: 8px 0;
 
     .oct-meta-info,

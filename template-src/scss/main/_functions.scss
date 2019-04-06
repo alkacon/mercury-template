@@ -15,9 +15,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// Controls the lightness threshold where the text is switched
-$text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
-
 // Calculates the best color for text based on the background
 @function get-text-color($color) {
     @if (lightness($color) > $text-lightness-threshold) {

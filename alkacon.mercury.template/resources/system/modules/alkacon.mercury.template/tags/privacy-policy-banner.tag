@@ -22,7 +22,7 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="policyfile" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['template.privacy.policy']}" />
+<c:set var="policyfile" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['mercury.privacy.policy']}" />
 
 <c:if test="${not empty policyfile}">
 <c:set var="policyfileBase64"><mercury:obfuscate text="${policyfile}" type="base64"/></c:set>

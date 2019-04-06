@@ -22,9 +22,9 @@
             <xsd:element name="Intro" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Dates" type="OpenCmsSerialDate" />
+            <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
-            <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressExtendedChoice" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />

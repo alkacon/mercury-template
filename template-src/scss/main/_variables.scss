@@ -71,13 +71,17 @@ $h5-font-size:                      $h4-font-size !default;
 $h6-font-size:                      $h4-font-size !default;
 $font-style-headings:               normal !default;
 
+
+// Controls the lightness threshold where the text is switched
+$text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
+
+
 // Default margins
 
 $default-margin:                    2.0rem !default;
 $default-margin-small:              round($default-margin * 50) / 100 !default;
 $default-margin-verysmall:          round($default-margin * 25) / 100 !default;
 $default-margin-ultrasmall:         round($default-margin * 12.5) / 100 !default;
-
 
 $headings-margin-bottom:            $default-margin-small !default;
 $intro-headings-margin-bottom:      $default-margin-ultrasmall !default;

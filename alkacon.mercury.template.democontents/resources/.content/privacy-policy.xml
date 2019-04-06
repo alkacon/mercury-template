@@ -10,12 +10,11 @@
           <uuid>f4b7b9c8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>Wir möchten Ihnen den bestmöglichen Service bieten. Dazu werden Informationen über Ihren Besuch in sogenannten Cookies gespeichert. Klicken Sie&nbsp;<em>Zulassen</em> wenn Sie alle Funktionen dieser Website unter Verwendung spezieller Cookies aktiveren möchten. Klicken Sie <em>Ablehnen</em> wenn Sie nur die Grundfunktionen dieser Website nutzen wollen.</p>
+      <content><![CDATA[<p>Wir möchten Ihnen den bestmöglichen Service bieten. Dazu werden Informationen über Ihren Besuch in sogenannten Cookies gespeichert. Klicken Sie&nbsp;<em>Zulassen</em> wenn Sie alle Funktionen dieser Website unter Verwendung spezieller Cookies aktiveren möchten.</p>
 <p>Ihre Cookie-Einstellungen können Sie auf der Seite zu unseren&nbsp;<a href="%(link0)">Datenschutz-Bestimmungen</a> später jederzeit wieder ändern.</p>]]></content>
     </PolicyText>
     <DisabledMessage><![CDATA[Dieses Element ist deaktiviert da Sie die Verwendung von Cookies nicht zugelassen haben. Sie können Ihre Cookie-Einstellungen auf unserer Seite 'Datenschutz-Bestimmungen' ändern.]]></DisabledMessage>
     <AcceptButtonText><![CDATA[Zulassen]]></AcceptButtonText>
-    <DeclineButtonText><![CDATA[Ablehnen]]></DeclineButtonText>
     <CookieExpirationDays><![CDATA[30]]></CookieExpirationDays>
     <ToggleLabel><![CDATA[Ihre Cookie-Einstellungen]]></ToggleLabel>
   </PrivacyPolicy>
@@ -28,7 +27,7 @@
           <uuid>f4b7b9c8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>We use cookies to give you the best possible experience on our site. Click <em>Accept</em> to enable all functions of our site by allowing special cookies. Click <em>Decline</em> to use only basic functions of our site.</p>
+      <content><![CDATA[<p>We use cookies to give you the best possible experience on our site. Click <em>Accept</em> to enable all functions of our site by allowing special cookies.</p>
 <p>Your cookie settings can always be changed later on our <a href="%(link0)">privacy policy</a> page.</p>]]></content>
     </PolicyText>
     <DisabledMessage><![CDATA[This element is disabled because you have not accepted to use Cookies. You can change your cookies settings on our 'privacy policy' page.]]></DisabledMessage>

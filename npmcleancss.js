@@ -28,7 +28,7 @@ var lineBreak = require('os').EOL;
 
 // options used by clean-css
 var cleanCssOptions = {
-    compatibility : 'ie10+',
+    compatibility : '*', //  (default) - Internet Explorer 10+ compatibility mode
     level : '1',
     rebase : true,
     sourceMap : true,

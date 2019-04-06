@@ -18,10 +18,11 @@
 
 // Intro header, usually for teaser elements in lists
 @mixin intro-header($font-size: $font-size-sm) {
-    line-height: 1.1;
+    line-height: 1.25;
     font-size: 65%;
     font-weight: $font-weight-bold;
-    color: $intro-header-color;
+    color: $intro-headings-color;
+    margin-bottom: $intro-headings-margin-bottom;
 }
 
 // Focus outline color
@@ -197,6 +198,9 @@
     }
     @if ($font-weight-headings != $font-weight-base) {
         font-weight: $font-weight-headings;
+    }
+    @if ($font-style-headings != normal) {
+        font-style: $font-style-headings;
     }
     @if ($line-height-headings != $line-height-base) {
         line-height: $line-height-headings;

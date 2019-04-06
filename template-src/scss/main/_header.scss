@@ -118,13 +118,12 @@
             }
 
             .header-title {
+                @include heading-base;
                 padding-top: $default-margin-verysmall;
                 padding-bottom: $default-margin-verysmall;
                 flex-basis: auto;
                 flex-grow: 10;
                 justify-content: center;
-                font-family: $font-family-headings;
-                font-weight: $font-weight-headings;
                 font-size: $h4-font-size;
                 line-height: 1;
                 text-align: right;

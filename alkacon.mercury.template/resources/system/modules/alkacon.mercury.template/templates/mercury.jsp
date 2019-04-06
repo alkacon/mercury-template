@@ -24,12 +24,12 @@
 <style>html.noscript .hide-noscript { display: none; }</style>
 </noscript>
 
-<c:set var="jsThemeRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)']}" />
 <script>
 mercury=function(){var n=function(){var n=[];return{ready:function(t){n.push(t)},load:function(t){n.push(t)},getInitFunctions:function(){return n}}}(),t=function(t){if("function"!=typeof t)return n;n.ready(t)};return t.getInitFunctions=function(){return n.getInitFunctions()},t.load=function(n){this(n)},t.ready=function(n){this(n)},t}();
 var __isOnline=${cms.isOnlineProject},
 __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)</cms:link>"
 </script>
+<c:set var="jsThemeRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)']}" />
 <script async src="<cms:link>${jsThemeRes.sitePath}?ver=${jsThemeRes.dateLastModified}</cms:link>"></script>
 
 <mercury:meta-info/>
@@ -45,11 +45,20 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <cms:enable-ade />
 <cms:headincludes type="css" />
 
-<c:set var="cssTheme"><cms:property name="template.theme" file="search" default="/system/modules/alkacon.mercury.theme/css/theme-red.min.css" /></c:set>
-<c:set var="cssCommonRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)']}" />
-<c:set var="cssThemeRes" value="${cms.vfs.readResource[cssTheme]}" />
-<link rel="stylesheet" href="<cms:link>${cssCommonRes.sitePath}?ver=${cssCommonRes.dateLastModified}</cms:link>">
-<link rel="stylesheet" href="<cms:link>${cssThemeRes.sitePath}?ver=${cssThemeRes.dateLastModified}</cms:link>">
+<c:set var="replaceCss"><cms:property name="mercury.template.replaceCss" file="search" default="none" /></c:set>
+<c:choose>
+    <c:when test="${not empty replaceCss and replaceCss != 'none'}">
+        <%-- This way an "extraHead" JSP can override the default CSS theme. --%>
+        <cms:include file="${replaceCss}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="cssTheme"><cms:property name="template.theme" file="search" default="/system/modules/alkacon.mercury.theme/css/theme-red.min.css" /></c:set>
+        <c:set var="cssCommonRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)']}" />
+        <c:set var="cssThemeRes" value="${cms.vfs.readResource[cssTheme]}" />
+        <link rel="stylesheet" href="<cms:link>${cssCommonRes.sitePath}?ver=${cssCommonRes.dateLastModified}</cms:link>">
+        <link rel="stylesheet" href="<cms:link>${cssThemeRes.sitePath}?ver=${cssThemeRes.dateLastModified}</cms:link>">
+    </c:otherwise>
+</c:choose>
 
 </head>
 <body>
@@ -85,6 +94,9 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 
 <%-- JavaScript blocking files placed at the end of the document so the pages load faster --%>
 <cms:headincludes type="javascript" />
+
+<c:set var="extraFoot"><cms:property name="mercury.template.extraFoot" file="search" default="" /></c:set>
+<c:if test="${not empty extraFoot and extraFoot != 'none'}"><cms:include file="${extraFoot}" /></c:if>
 
 <%-- Privacy policy markup is inserted last --%>
 <mercury:privacy-policy-banner />

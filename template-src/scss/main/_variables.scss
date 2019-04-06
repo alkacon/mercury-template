@@ -69,15 +69,18 @@ $h3-font-size-mobile:               round($font-size-headings * 9) / 10 !default
 $h4-font-size:                      $h3-font-size-mobile !default;
 $h5-font-size:                      $h4-font-size !default;
 $h6-font-size:                      $h4-font-size !default;
-
+$font-style-headings:               normal !default;
 
 // Default margins
 
 $default-margin:                    2.0rem !default;
 $default-margin-small:              round($default-margin * 50) / 100 !default;
 $default-margin-verysmall:          round($default-margin * 25) / 100 !default;
+$default-margin-ultrasmall:         round($default-margin * 12.5) / 100 !default;
+
 
 $headings-margin-bottom:            $default-margin-small !default;
+$intro-headings-margin-bottom:      $default-margin-ultrasmall !default;
 $piece-headings-margin-bottom:      $headings-margin-bottom !default;
 
 
@@ -88,11 +91,11 @@ $text-dark:                         #555 !default;
 $body-bg:                           $white !default;
 $body-color:                        $text-dark !default;
 $headings-color:                    $text-dark !default;
+$intro-headings-color:              $main-theme !default;
 $focus-outline-color:               $main-theme-hover !default;
 $content-bg:                        $body-bg !default;
 $highlight-color:                   $grey-lighter !default;
 $image-bg-color:                    #f6f6f6 !default;
-$intro-header-color:                $main-theme !default;
 
 $default-transition-time:           0.33s !default; // default timing for animation effects
 

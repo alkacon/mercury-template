@@ -296,11 +296,11 @@ $oct-edit-infos:
 }
 
 .btn.oct-meta-info {
+    background: initial !important;
+    background-color: $con-col-orange !important;
     &:focus,
     &:hover {
-        background: $btn-default-hover !important;
-        background-color: $btn-default-hover !important;
-        color: get-text-color($btn-default-hover) !important;
+        background-color: $con-col-orange-hover !important;
         transition: all 0.33s;
     }
 }

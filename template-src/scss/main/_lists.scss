@@ -594,6 +594,9 @@ aside .list-content,
                         border-radius: 4px;
                         color: $text-dark;
                         background-color: $grey-lighter;
+                        @if ($btn-font-family != $font-family-base) {
+                            font-family: $btn-font-family;
+                        }
 
                         &:hover {
                             background-color: $grey-light;
@@ -689,6 +692,9 @@ aside .list-content,
                     font-size: 1.2rem;
                     text-align: center;
                     cursor: pointer;
+                    @if ($btn-font-family != $font-family-base) {
+                        font-family: $btn-font-family;
+                    }
 
                     a {
                         color: $text-dark;

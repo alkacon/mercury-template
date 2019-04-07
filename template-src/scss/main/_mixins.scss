@@ -269,9 +269,15 @@
     > div {
         border: 1px solid $list-border-color;
         border-top: none;
-        border-radius: $list-border-radius;
+        border-bottom-right-radius: $list-border-radius;
+        border-bottom-left-radius: $list-border-radius;
         box-shadow: $panel-shadow;
-        padding: $grid-gutter-width / 2;
+    }
+    > button.btn.li-label {
+        &:not(.collapsed) {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
     }
 }
 

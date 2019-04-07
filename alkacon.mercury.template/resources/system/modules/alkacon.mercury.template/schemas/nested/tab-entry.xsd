@@ -20,13 +20,18 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Label</PropertyName>
                     <DisplayName>%(key.label.Tab.Label)</DisplayName>
                     <Description>%(key.label.Tab.Label.help)</Description>
                     <Widget>string</Widget>
-                    <Default>%(key.msg.default.tab.Label)</Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
                 </Setting>
                 <Setting>
                     <PropertyName>Id</PropertyName>

@@ -502,17 +502,20 @@ aside .list-content,
         &.search {
             padding: 0;
 
-            .input {
-                margin: 0;
+            .styled-form {
+                border-radius: $list-border-radius;
+                .input {
+                    margin: 0;
+                    input {
+                        border-radius: $list-border-radius;
+                        box-shadow: $panel-shadow;
+                    }
+                }
             }
 
             input,
             .icon-prepend {
                 border-color: $list-border-color;
-            }
-
-            input {
-                box-shadow: $panel-shadow;
             }
         }
 
@@ -520,12 +523,17 @@ aside .list-content,
             display: block;
             position: relative;
             text-align: left;
+            border-radius: $list-border-radius;
 
             &::before {
                 font-family: FontAwesome;
                 font-weight: normal;
                 padding-right: $btn-padding;
             }
+        }
+
+        .btn.li-label,
+        .nav-side li > a + a {
             &::after {
                 position: absolute;
                 display: inline-block;
@@ -533,8 +541,11 @@ aside .list-content,
                 font-weight: normal;
                 content: "\f078";
                 right: $btn-padding;
+                left: unset;
+                width: auto;
                 transform: rotate(-180deg) translate(0,0);
                 transition: transform .33s;
+                text-align: unset;
             }
             &.collapsed::after {
                 transform: rotate(0) translate(0,0);
@@ -542,9 +553,17 @@ aside .list-content,
             }
         }
 
-        &.categories {
 
+        &.categories,
+        &.folders,
+        &.archive {
             @include list-filter-box;
+        }
+
+        &.categories {
+            > div {
+                padding: $grid-gutter-width / 2;
+            }
 
             .btn.li-label:before {
                 content: "\f02c";
@@ -589,11 +608,11 @@ aside .list-content,
                     }
 
                     .li-count {
-                        &:before {
+                        &::before {
                             padding-left: 4px;
                             content: "(";
                         }
-                        &:after {
+                        &::after {
                             content: ")";
                         }
                     }
@@ -613,13 +632,17 @@ aside .list-content,
                 // we must cancel out special XS navigation effects for the filterbox
                 margin-left: 0;
                 margin-right: 0;
-                border-left: 1px solid $nav-side-border;
-                border-right: 1px solid $nav-side-border;
 
-                li a.nav-handle {
-                    width: 42px;
-                    &::after {
-                        right: 16px;
+                li > a {
+                    padding-left: $default-margin;
+                    padding-right: $default-margin;
+                    + a {
+                        width: 3.2rem;
+                        padding-left: 0;
+                        padding-right: 0;
+                        &::after {
+                            right: calc(#{$btn-padding} - 1px);
+                        }
                     }
                 }
             }
@@ -627,18 +650,14 @@ aside .list-content,
 
         &.archive {
 
-            > div {
-                border: 1px solid $list-border-color;
-                border-top: none;
-                border-radius: $list-border-radius;
-                box-shadow: $panel-shadow;
-                padding: 0;
+            .btn.li-label:before {
+                content: "\f133";
             }
 
             button.year {
                 color: $text-dark;
                 background-color: $grey-lighter;
-                padding-left: $grid-gutter-width / 2;
+                padding-left: calc( #{$default-margin} - 1px);
 
                 &:hover {
                     background-color: $grey-light;
@@ -657,11 +676,17 @@ aside .list-content,
                 margin: 0;
                 padding: 0;
 
+                &.collapsing,
+                &.show {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+
                 li {
                     display: inline-block;
-                    padding: 7px 0px;
+                    padding: $default-margin-small 0;
                     width: 16.666666%;
-                    font-size: 12px;
+                    font-size: 1.2rem;
                     text-align: center;
                     cursor: pointer;
 

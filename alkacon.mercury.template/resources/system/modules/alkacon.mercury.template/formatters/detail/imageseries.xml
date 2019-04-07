@@ -43,6 +43,9 @@
       <IncludeName><![CDATA[hsize.detailWith0]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[titleOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showPreface.true]]></IncludeName>
     </Setting>
     <Setting>

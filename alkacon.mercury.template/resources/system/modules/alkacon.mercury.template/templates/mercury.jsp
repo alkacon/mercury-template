@@ -40,9 +40,9 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
     <c:set var="faviconPath">system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
 </c:if>
 <c:set var="favIconImage" value="${cms.vfs.readResource[faviconPath].toImage.scaleRatio['1-1']}" />
-<link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180].srcUrl}">
-<link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32].srcUrl}">
-<link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16].srcUrl}">
+<link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}">
+<link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}">
+<link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}">
 
 <cms:enable-ade />
 <cms:headincludes type="css" />

@@ -22,6 +22,7 @@
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="visualEffect"           value="${setting.effect.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="titleOption"            value="${setting.titleOption.toString}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="autoPlay"               value="${setting.autoPlay.toBoolean}" />
@@ -46,6 +47,7 @@
 <c:set var="showPreface"            value="${not showPrefaceAsSubtitle and setting.showPreface.toBoolean}" />
 <c:set var="showMediaTime"          value="${true}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
+<c:set var="showIntro"              value="${titleOption ne 'none'}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
 <mercury:nl />
@@ -60,7 +62,7 @@
 
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
-            <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
+            <mercury:intro-headline intro="${showIntro ? value.Intro : null}" headline="${title}" level="${hsize}" ade="${ade}"/>
             <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface and keyPieceLayout == 0}" />
         </c:if>
     </jsp:attribute>

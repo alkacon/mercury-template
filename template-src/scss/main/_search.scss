@@ -59,6 +59,9 @@
     .filterbox {
 
         @include list-filter-box;
+        > div {
+            padding: $grid-gutter-width / 2;
+        }
     }
 
     .search-result-heading {

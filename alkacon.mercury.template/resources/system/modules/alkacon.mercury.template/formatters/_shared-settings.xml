@@ -867,7 +867,7 @@
       <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[1]]></Default>
+      <Default><![CDATA[6]]></Default>
       <WidgetConfig><![CDATA[
             1:      %(key.msg.setting.pieceLayout.1)|
             6:      %(key.msg.setting.pieceLayout.6)|
@@ -1326,7 +1326,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.list.appendSwitch)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.list.appendSwitch.help)]]></Description>
       <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[sm-xs]]></Default>
+      <Default><![CDATA[md-sm-xs]]></Default>
       <WidgetConfig><![CDATA[
               never:            %(key.msg.option.list.appendSwitch.never)|
               xs:               %(key.msg.option.list.appendSwitch.xs)|

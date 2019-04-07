@@ -24,6 +24,7 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="imageSeriesCss"         value="${setting.imageSeriesCss.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="titleOption"            value="${setting.titleOption.toString}" />
 <c:set var="pageSize"               value="${empty setting.pageSize.toInteger ? 12 : setting.pageSize.toInteger}" />
 <c:set var="showImageTitle"         value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageCount"         value="${setting.showImageCount.toBoolean}" />
@@ -47,13 +48,15 @@
 <c:set var="datePrefix"             value="${fn:substringBefore(cms.element.setting.dateFormat, '|')}" />
 <c:set var="dateFormat"             value="${empty datePrefix ? cms.element.setting.dateFormat : fn:substringAfter(cms.element.setting.dateFormat, '|')}" />
 <c:set var="showPreface"            value="${setting.showPreface.toBoolean}" />
+<c:set var="showIntro"              value="${titleOption ne 'none'}" />
+
 
 <c:set var="text"                   value="${value.Text}" />
 <c:set var="showText"               value="${setting.showText.toBoolean}" />
 <c:set var="detailPage"             value="${cms.detailRequest}" />
 
 <c:set var="titleMarkup">
-    <mercury:intro-headline intro="${value.Intro}" headline="${value.Title}" level="${hsize}" ade="${ade}"/>
+    <mercury:intro-headline intro="${showIntro ? value.Intro : null}" headline="${value.Title}" level="${hsize}" ade="${ade}" />
     <mercury:heading text="${value.Preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface}" />
 </c:set>
 

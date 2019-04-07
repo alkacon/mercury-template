@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>10.9.9.17</version>
+		<version>10.9.9.18</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -2918,51 +2918,21 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/img/favicon_120.png</source>
-			<destination>system/modules/alkacon.mercury.theme/img/favicon_120.png</destination>
+			<source>system/modules/alkacon.mercury.theme/img/favicon.png</source>
+			<destination>system/modules/alkacon.mercury.theme/img/favicon.png</destination>
 			<type>image</type>
-			<uuidstructure>2cd7c911-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cd7c912-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>257a0441-5906-11e9-81d0-0242ac11002b</uuidstructure>
+			<uuidresource>257a0442-5906-11e9-81d0-0242ac11002b</uuidresource>
+			<datecreated>Sun, 07 Apr 2019 07:24:14 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
-				<property type="shared">
-					<name>image.size</name>
-					<value><![CDATA[w:120,h:120]]></value>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms FavIcon]]></value>
 				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/img/favicon_16.png</source>
-			<destination>system/modules/alkacon.mercury.theme/img/favicon_16.png</destination>
-			<type>image</type>
-			<uuidstructure>2cd99dd4-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cd99dd5-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:16,h:16]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/img/favicon_32.png</source>
-			<destination>system/modules/alkacon.mercury.theme/img/favicon_32.png</destination>
-			<type>image</type>
-			<uuidstructure>2cdb4b87-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cdb4b88-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property type="shared">
-					<name>image.size</name>
-					<value><![CDATA[w:32,h:32]]></value>
+					<value><![CDATA[w:320,h:320]]></value>
 				</property>
 			</properties>
 			<relations/>

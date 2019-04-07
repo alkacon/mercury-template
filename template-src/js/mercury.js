@@ -635,7 +635,7 @@ var Mercury = function(jQ) {
             try {
                 var initFunction = _functions[i];
                 if (DEBUG) console.info("Mercury executing init function: " + initFunction.name);
-                initFunction(jQ);
+                initFunction(jQ, DEBUG);
             } catch (err) {
                 console.warn("Mercury.initFunctions() error", err);
             }

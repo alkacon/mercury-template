@@ -35,7 +35,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <mercury:meta-info/>
 
 <%-- Add favicon --%>
-<c:set var="faviconPath"><cms:property name="mercury.template.favIcon" file="search" default="${cms.subSitePath}favicon.png" /></c:set>
+<c:set var="faviconPath"><cms:property name="mercury.template.favIcon" file="search" default="/favicon.png" /></c:set>
 <c:if test="${not cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage}">
     <c:set var="faviconPath">system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
 </c:if>

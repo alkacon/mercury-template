@@ -20,6 +20,9 @@
 <c:set var="wrappedSettings" value="${cms.element.setting}" />
 <%-- Get the id of the container page the list is on. --%>
 <c:choose>
+<c:when test="${cms.element.inMemoryOnly or cms.edited}">
+    <c:set var="pageId" value="${null}" />
+</c:when>
 <c:when test="${cms.container.detailOnly}">
     <%-- Get the detail only page when the list is in a detail only container. --%>
     <c:set var="detailResource" value="${cms.detailContent}" />
@@ -35,6 +38,9 @@
     String[] gridParameterMap = pageContext.getRequest().getParameterValues("cssgrid");
     if (gridParameterMap != null) {
         settingsParameterMap.put("cssgrid", gridParameterMap);
+    }
+    String pid = (String)pageContext.getAttribute("pageId");
+    if (null != pid) {
         settingsParameterMap.put("pid", new String[]{(String)pageContext.getAttribute("pageId")});
         settingsParameterMap.put("eid", new String[]{(String)pageContext.getAttribute("elementId")});
     }

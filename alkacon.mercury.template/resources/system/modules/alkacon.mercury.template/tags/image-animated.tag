@@ -19,6 +19,10 @@
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="Text used in the image 'alt' and 'title' attributes."%>
 
+<%@ attribute name="setTitle" type="java.lang.Boolean" required="false"
+    description="If 'true' then a title attribute from the image attributes is added to the generated image tag.
+    Default is 'true' if not provided." %>
+
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Enables advanced direct edit for the generated content.
     Default is 'false' if not provided." %>
@@ -75,6 +79,7 @@
 
 <c:set var="test" value="${empty test ? true : test}" />
 <c:set var="addEffectBox" value="${empty addEffectBox ? true : addEffectBox}" />
+<c:set var="setTitle" value="${empty setTitle ? true : setTitle}" />
 
 <c:choose>
 
@@ -95,7 +100,7 @@
             imagebean="${imageBean}"
             sizes="${sizes}"
             alt="${imageTitle}"
-            title="${imageTitleCopyright}"
+            title="${setTitle ? imageTitleCopyright : null}"
             cssImage="${addEffectBox ? 'animated ':''}${cssImage}"
             cssWrapper="${showImageZoom ? 'zoomer' : ''}"
             attrImage="${attrImage}"

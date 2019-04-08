@@ -180,15 +180,17 @@
     bodyPostMarkup="${bodyPostMarkup}">
 
     <jsp:attribute name="heading">
-        <mercury:link link="${link}" title="${linkTitle}">
-            <mercury:intro-headline
-                intro="${intro}"
-                headline="${headline}"
-                prefix="${headlinePrefix}"
-                suffix="${headlineSuffix}"
-                level="${hsize}"
-                ade="${ade}" />
-        </mercury:link>
+        <c:if test="${not empty headline or not empty intro}">
+            <mercury:link link="${link}" title="${linkTitle}" >
+                <mercury:intro-headline
+                    intro="${intro}"
+                    headline="${headline}"
+                    prefix="${headlinePrefix}"
+                    suffix="${headlineSuffix}"
+                    level="${hsize}"
+                    ade="${ade}" />
+            </mercury:link>
+        </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="visual">

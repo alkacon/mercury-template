@@ -97,7 +97,7 @@
             </c:when>
             <c:otherwise>
                 <c:set var="image" value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : (paragraph.value.Image.isSet ? paragraph.value.Image : null))}" />
-                <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" />
+                <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}" />
             </c:otherwise>
         </c:choose>
     </jsp:attribute>

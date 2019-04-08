@@ -39,7 +39,7 @@
 
     <jsp:attribute name="markupVisual">
         <c:set var="image"   value="${value.Image}" />
-        <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" />
+        <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}" />
     </jsp:attribute>
 
 </mercury:teaser-piece>

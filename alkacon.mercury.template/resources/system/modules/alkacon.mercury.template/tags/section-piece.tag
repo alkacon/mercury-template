@@ -123,12 +123,13 @@
         <jsp:attribute name="visual">
             <c:choose>
                 <c:when test="${showVisual and empty markupVisual}">
-                    <c:set var="showImageLink"  value="${empty showImageLink ? false : (showLink ? false : showImageLink)}" />
+                    <c:set var="showImageLink"  value="${empty showImageLink ? false : showImageLink}" />
                     <c:set var="showImageZoom" value="${empty showImageZoom ? true : showImageZoom}" />
-                    <mercury:link link="${link}" test="${showImageLink}">
+                    <mercury:link link="${link}" test="${showImageLink}" setTitle="${true}" >
                         <mercury:image-animated
                             image="${image}"
                             ratio="${imageRatio}"
+                            setTitle="${not showImageLink}"
                             showImageZoom="${showImageZoom}"
                             ade="${ade}">
                             <c:if test="${showImageCopyright and not empty imageCopyright}">

@@ -35,17 +35,20 @@
     <c:set var="cmsObject" value="${cms.vfs.cmsObject}" />
 
     <%
-        CmsObject cmsObject = (CmsObject)pageContext.getAttribute("cmsObject");
         Map<String, String[]> parameters = request.getParameterMap();
         Map<String, String> settings = new HashMap<String, String>();
-        String instanceId = parameters.get("eid")[0];
-        String sortBarInstanceId = null != parameters.get("sid") && null != parameters.get("sid")[0] ? parameters.get("sid")[0] : "";
-        CmsResource pageResource = cmsObject.readResource(CmsUUID.valueOf(parameters.get("pid")[0]));
-        CmsXmlContainerPage pageXml = CmsXmlContainerPageFactory.unmarshal(cmsObject, pageResource);
-        CmsContainerPageBean pageBean = pageXml.getContainerPage(cmsObject);
-        for (CmsContainerElementBean element : pageBean.getElements()) {
-            if(element.getInstanceId().equals(instanceId) || element.getInstanceId().equals(sortBarInstanceId)) {
-               settings.putAll(element.getSettings());
+        String[] pidParams = parameters.get("pid");
+        if (pidParams != null && pidParams.length > 0) {
+            CmsObject cmsObject = (CmsObject)pageContext.getAttribute("cmsObject");
+            String instanceId = parameters.get("eid")[0];
+            String sortBarInstanceId = null != parameters.get("sid") && null != parameters.get("sid")[0] ? parameters.get("sid")[0] : "";
+            CmsResource pageResource = cmsObject.readResource(CmsUUID.valueOf(pidParams[0]));
+            CmsXmlContainerPage pageXml = CmsXmlContainerPageFactory.unmarshal(cmsObject, pageResource);
+            CmsContainerPageBean pageBean = pageXml.getContainerPage(cmsObject);
+            for (CmsContainerElementBean element : pageBean.getElements()) {
+                if(element.getInstanceId().equals(instanceId) || element.getInstanceId().equals(sortBarInstanceId)) {
+                    settings.putAll(element.getSettings());
+                }
             }
         }
         pageContext.setAttribute("settings", settings);

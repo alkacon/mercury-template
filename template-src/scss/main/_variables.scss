@@ -247,7 +247,7 @@ $nav-header-menu-bg:                transparentize($nav-header-bg, 0.25) !defaul
 $nav-header-menu-bg-hover:          $nav-header-bg !default; // hover background of the header nav items (all screen sizes)
 $nav-header-font-family:            $nav-font-family !default; // text font for header nav items
 $nav-header-font-size:              15px !default;          // font size of header nav items
-$nav-header-font-weight:            $font-weight-headings !default; // font weight of header nav items
+$nav-header-font-weight:            $font-weight-normal !default; // font weight of header nav items
 $nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
 $nav-header-float:                  right !default;         // float direction of header navigation items, can be 'left' or 'right'
 $nav-header-hor-padding:            $nav-hor-padding !default; // horizontal padding left / right the header nav items in LG, XL
@@ -273,7 +273,7 @@ $nav-menu-padding:                  $nav-menu-ver-padding $nav-hor-padding !defa
 $nav-menu-min-width:                250px !default;         // minimal width of the nav menus in  LG, XL
 $nav-menu-text-mobile:              $nav-text !default;     // text color for mobile menus
 $nav-menu-bg-mobile:                $nav-bg !default;       // background color for mobile menus
-$nav-menu-font-weight:              $font-weight-base !default; // font weight of menu nav items
+$nav-menu-font-weight:              $font-weight-normal !default; // font weight of menu nav items
 $nav-menu-font-family:              $nav-font-family !default; // text font for header nav items
 
 // configurable settings for the mega menu

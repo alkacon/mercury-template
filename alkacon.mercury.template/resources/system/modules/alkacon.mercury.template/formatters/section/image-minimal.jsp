@@ -22,8 +22,14 @@
     That's ok since we intend to use this formatter only for group includes.
     We disable the link if we are in the group editor so ADE works here.
 --%>
-<mercury:link link="${value.Link}" test="${showImageLink and not (cms.isEditMode and cms.modelGroupPage)}" css="imglink">
-    <mercury:image-simple image="${value.Image}" cssWrapper="${cssWrapper}"/>
+<mercury:link
+    link="${value.Link}"
+    test="${showImageLink and not (cms.isEditMode and cms.modelGroupPage)}"
+    setTitle="${true}"
+    css="imglink" >
+
+    <mercury:image-simple image="${value.Image}" cssWrapper="${cssWrapper}" />
+
 </mercury:link>
 
 </cms:formatter>

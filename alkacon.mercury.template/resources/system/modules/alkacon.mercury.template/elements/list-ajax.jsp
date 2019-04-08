@@ -1,12 +1,3 @@
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
-<%@page import="org.opencms.xml.containerpage.CmsContainerElementBean"%>
-<%@page import="org.opencms.xml.containerpage.CmsXmlContainerPage"%>
-<%@page import="org.opencms.file.CmsResource"%>
-<%@page import="org.opencms.file.CmsObject"%>
-<%@page import="org.opencms.xml.containerpage.CmsXmlContainerPageFactory"%>
-<%@page import="org.opencms.util.CmsUUID"%>
-<%@page import="org.opencms.xml.containerpage.CmsContainerPageBean"%>
 <%@page
     pageEncoding="UTF-8"
     buffer="none"
@@ -32,27 +23,17 @@
 <c:if test="${not empty conf}">
 
     <%-- restore settings reading them from the containerpage --%>
-    <c:set var="cmsObject" value="${cms.vfs.cmsObject}" />
-
-    <%
-        Map<String, String[]> parameters = request.getParameterMap();
-        Map<String, String> settings = new HashMap<String, String>();
-        String[] pidParams = parameters.get("pid");
-        if (pidParams != null && pidParams.length > 0) {
-            CmsObject cmsObject = (CmsObject)pageContext.getAttribute("cmsObject");
-            String instanceId = parameters.get("eid")[0];
-            String sortBarInstanceId = null != parameters.get("sid") && null != parameters.get("sid")[0] ? parameters.get("sid")[0] : "";
-            CmsResource pageResource = cmsObject.readResource(CmsUUID.valueOf(pidParams[0]));
-            CmsXmlContainerPage pageXml = CmsXmlContainerPageFactory.unmarshal(cmsObject, pageResource);
-            CmsContainerPageBean pageBean = pageXml.getContainerPage(cmsObject);
-            for (CmsContainerElementBean element : pageBean.getElements()) {
-                if(element.getInstanceId().equals(instanceId) || element.getInstanceId().equals(sortBarInstanceId)) {
-                    settings.putAll(element.getSettings());
-                }
-            }
-        }
-        pageContext.setAttribute("settings", settings);
-    %>
+    <c:set var="settings" value="<%= new java.util.HashMap<String,String>() %>" />
+    <c:if test="${not empty param.pid}">
+        <c:set var="pageBean" value="${cms.getPage(param.pid)}" />
+        <c:set var="sortBarInstanceId">${param.sid}</c:set>
+        <c:set var="instanceId">${param.eid}</c:set>
+        <c:forEach var="element" items="${pageBean.elements}">
+            <c:if test="${element.instanceId eq instanceId or element.instanceId eq sortBarInstanceId}">
+                ${settings.putAll(element.settings)}
+            </c:if>
+        </c:forEach>
+    </c:if>
 
     <div class="element type-dynamic-list list-content ${settings.listCssWrapper}">
     <c:set var="listTag" value="${empty settings.listTag ? 'ul' : settings.listTag}" />

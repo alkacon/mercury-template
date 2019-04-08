@@ -74,7 +74,7 @@
 
     @if ($nav-side-boxed) {
        @include media-breakpoint-up(md) {
-            border: 1px solid $nav-side-border;
+            border: $nav-side-border;
             box-shadow: $panel-shadow;
             @include round-corners($nav-side-border-radius, true);
         }
@@ -99,17 +99,9 @@
     li {
         position: relative;
         display: block;
-        border-top: 1px solid $nav-side-border;
+        border-top: $nav-side-border;
         @if ($nav-side-font-size != $font-size-base) {
             font-size: $nav-side-font-size;
-        }
-
-        &.currentpage > a {
-            // highlight the current page
-            background: $nav-side-bg-active;
-            @if ($nav-side-text-active != $nav-side-text) {
-                color: $nav-side-text-active;
-            }
         }
 
         > a {
@@ -123,9 +115,7 @@
                 }
             }
 
-            &:not(.btn) { // not(btn) required to make the color rules strong enough in the footer
-                color: $nav-side-text;
-
+            &:not(.btn) { // :not(.btn) required to make the color rules strong enough in the footer
                 &:focus,
                 &:hover {
                     color: $nav-side-text-hover;
@@ -177,6 +167,20 @@
                 }
             }
         }
+
+        &.currentpage > a:not(.btn) { // :not(.btn) required to make the color rules strong enough in the footer
+            // highlight the current page
+            background: $nav-side-bg-active;
+            @if ($nav-side-text-active != $nav-side-text) {
+                color: $nav-side-text-active;
+            }
+            &:hover {
+                color: $nav-side-text-hover;
+                background: $nav-side-bg-hover;
+                text-decoration: none;
+            }
+        }
+
 
         ul {
             padding: 0;

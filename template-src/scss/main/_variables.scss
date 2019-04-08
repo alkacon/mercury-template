@@ -344,7 +344,7 @@ $nav-side-text:                     $nav-text !default;
 $nav-side-text-hover:               $nav-text-hover !default;
 $nav-side-text-active:              $nav-text-active !default;
 $nav-side-font-size:                $font-size-base !default;
-$nav-side-border:                   $nav-border !default;
+$nav-side-border:                   1px solid $nav-border !default;
 $nav-side-left-padding-step:        $grid-gutter-width / 2 !default;
 $nav-side-left-padding-start:       $nav-side-left-padding-step !default;
 $nav-side-right-padding:            30px !default;

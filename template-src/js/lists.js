@@ -149,7 +149,7 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
         var archive = m_archiveFilters[filterId];
         // list is not on this page, check filter target attribute
         var target = archive.target;
-        if (typeof target !== "undefined") {
+        if (typeof target !== "undefined" && target !== window.location.pathname && target + "index.html" !== window.location.pathname) {
             if (DEBUG) console.info("List: No list group found on page, trying redirect to " + target);
             var params = splitRequestParameters("reloaded=true&" + searchStateParameters);
 

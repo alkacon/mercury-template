@@ -297,7 +297,7 @@
             <c:if test="${showEmail}">
                 <div class="${showMinLabels ? 'mail' : 'mail tablerow'}" ${data.rdfa.Email}><%----%>
                     <c:if test="${not showMinLabels}">
-                        <mercury:icon-prefix icon="at" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                        <mercury:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
                             <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
                         </mercury:icon-prefix>
                     </c:if>

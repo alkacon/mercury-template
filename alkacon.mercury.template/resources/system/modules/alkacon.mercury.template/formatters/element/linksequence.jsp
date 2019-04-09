@@ -22,16 +22,24 @@
 <c:set var="iconClass"              value="${setting.iconClass.isSet ? setting.iconClass.toString : 'warning'}" />
 <c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
 
-<c:set var="listBulletStyle"        value="${iconClass eq 'default' ? 'default-icon' : iconClass eq 'none' ? 'no-icon' : 'custom-icon'}" />
+<c:choose>
+    <c:when test="${iconClass eq 'default'}">
+        <c:set var="listBulletStyle" value="default-icon" />
+    </c:when>
+    <c:when test="${iconClass eq 'none'}">
+        <c:set var="listBulletStyle" value="no-icon" />
+    </c:when>
+    <c:when test="${iconClass eq 'line'}">
+        <c:set var="listBulletStyle" value="line-icon" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="listBulletStyle" value="custom-icon" />
+    </c:otherwise>
+</c:choose>
 
 <c:choose>
     <c:when test="${linksequenceType eq 'ls-navigation'}">
         <c:set var="ulWrapper">class="nav-side"</c:set>
-        <c:if test="${listBulletStyle eq 'custom-icon'}">
-            <c:set var="aWrapper">fa-${iconClass}</c:set>
-        </c:if>
-    </c:when>
-    <c:when test="${false and linksequenceType eq 'ls-row'}">
         <c:if test="${listBulletStyle eq 'custom-icon'}">
             <c:set var="aWrapper">fa-${iconClass}</c:set>
         </c:if>

@@ -193,11 +193,9 @@
 
 // Default Headings
 @mixin heading-base {
+    font-weight: $font-weight-headings; // this must be set because otherwise the default would be "bold"
     @if ($font-family-headings != $font-family-base) {
         font-family: $font-family-headings;
-    }
-    @if ($font-weight-headings != $font-weight-base) {
-        font-weight: $font-weight-headings;
     }
     @if ($font-style-headings != normal) {
         font-style: $font-style-headings;

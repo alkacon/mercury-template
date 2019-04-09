@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>10.9.9.22</version>
+		<version>10.9.9.24</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -26,6 +26,7 @@
 		<exportpoints/>
 		<resources>
 			<resource uri="/system/modules/alkacon.mercury.theme/"/>
+			<resource uri="/system/shared/mercury/template/"/>
 		</resources>
 		<excluderesources/>
 		<parameters/>
@@ -3259,6 +3260,413 @@
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:20,h:20]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/shared</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/shared/mercury</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/shared/mercury/template</destination>
+			<type>folder</type>
+			<uuidstructure>f50da1de-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Mon, 21 Jan 2019 13:23:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/shared/mercury/template/layout-area</destination>
+			<type>folder</type>
+			<uuidstructure>f50e1710-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Sun, 30 Dec 2018 07:21:20 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-area/la_00001.xml</source>
+			<destination>system/shared/mercury/template/layout-area/la_00001.xml</destination>
+			<type>m-layout-area-simple</type>
+			<uuidstructure>f50e8c42-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f50e8c43-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sun, 30 Dec 2018 07:21:24 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Area - One row]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-area/la_00002.xml</source>
+			<destination>system/shared/mercury/template/layout-area/la_00002.xml</destination>
+			<type>m-layout-area-simple</type>
+			<uuidstructure>f50f4f95-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f50f4f96-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sun, 30 Dec 2018 07:22:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Area - Main content left / Column right]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-area/la_00003.xml</source>
+			<destination>system/shared/mercury/template/layout-area/la_00003.xml</destination>
+			<type>m-layout-area-simple</type>
+			<uuidstructure>f50fc4c8-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f50fc4c9-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sun, 30 Dec 2018 07:22:46 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Area - Column left / Main content right]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-area/la_00004.xml</source>
+			<destination>system/shared/mercury/template/layout-area/la_00004.xml</destination>
+			<type>m-layout-area-simple</type>
+			<uuidstructure>f510610b-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f510610c-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Wed, 20 Feb 2019 13:12:53 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Area - Row in full screen width]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/shared/mercury/template/layout-group</destination>
+			<type>folder</type>
+			<uuidstructure>f5120ec4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Mon, 04 Feb 2019 16:15:27 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-group/lg_00001.xml</source>
+			<destination>system/shared/mercury/template/layout-group/lg_00001.xml</destination>
+			<type>m-layout-group-simple</type>
+			<uuidstructure>f51283f6-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f51283f7-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Mon, 04 Feb 2019 16:17:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury header with logo left]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-group/lg_00002.xml</source>
+			<destination>system/shared/mercury/template/layout-group/lg_00002.xml</destination>
+			<type>m-layout-group-simple</type>
+			<uuidstructure>f5132039-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f513203a-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Wed, 20 Feb 2019 15:16:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury footer full]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-group/lg_00003.xml</source>
+			<destination>system/shared/mercury/template/layout-group/lg_00003.xml</destination>
+			<type>m-layout-group-simple</type>
+			<uuidstructure>f513bc7c-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f513bc7d-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Mon, 25 Feb 2019 09:37:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury footer reduced]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-group/lg_00004.xml</source>
+			<destination>system/shared/mercury/template/layout-group/lg_00004.xml</destination>
+			<type>m-layout-group-simple</type>
+			<uuidstructure>f51431af-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f51431b0-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Tue, 26 Feb 2019 10:42:11 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury side column group]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-group/lg_00005.xml</source>
+			<destination>system/shared/mercury/template/layout-group/lg_00005.xml</destination>
+			<type>m-layout-group-simple</type>
+			<uuidstructure>eea6fe11-4f9a-11e9-a30a-0242ac11002b</uuidstructure>
+			<uuidresource>eea6fe12-4f9a-11e9-a30a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 26 Mar 2019 07:44:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury header with image ribbon on top of navigation]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/shared/mercury/template/layout-row</destination>
+			<type>folder</type>
+			<uuidstructure>f514a5e2-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00001.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00001.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f5151b14-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f5151b15-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 1 column (12 - full)]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00002.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00002.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f515b757-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f515b758-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 2 columns (3 - 9) [From display size LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00003.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00003.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f5162c8a-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f5162c8b-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 2 columns (4 - 8) [From display size LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00004.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00004.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f516c8cd-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f516c8ce-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 2 columns (6 - 6) [all display sizes]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00005.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00005.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f5173e00-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f5173e01-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 2 columns (6 - 6) [from display size MD]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00006.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00006.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f517da43-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f517da44-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 2 columns (6 - 6) [from display size LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00007.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00007.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f5187686-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f5187687-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sun, 30 Dec 2018 07:40:48 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 2 columns (8 - 4) [From display size LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00008.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00008.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f51912c9-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f51912ca-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sun, 30 Dec 2018 07:40:52 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 2 columns (9 - 3) [From display size LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00009.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00009.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f51987fc-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f51987fd-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 3 columns (4 - 4 - 4) [from display size LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00010.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00010.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f51a243f-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f51a2440-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 4 columns (3 - 3 - 3 - 3) [from display size LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00011.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00011.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f51a9972-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f51a9973-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Sat, 29 Dec 2018 14:03:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 6 columns (2 - 2 - 2 - 2 - 2 - 2) [from display size XL]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00012.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00012.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>f51b35b5-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f51b35b6-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Fri, 25 Jan 2019 13:58:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row for tiles only]]></value>
 				</property>
 			</properties>
 			<relations/>

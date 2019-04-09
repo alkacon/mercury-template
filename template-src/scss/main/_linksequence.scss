@@ -50,6 +50,14 @@
     }
 }
 
+%ls-icon-line {
+    @extend %ls-icon-base;
+    &::before {
+        font-family: sans-serif;
+        content: "|";
+    }
+}
+
 .ls-bullets,
 .ls-row {
     ul {
@@ -67,6 +75,12 @@
     }
 }
 
+.ls-bullets {
+    &.line-icon li {
+        @extend %ls-icon-line;
+    }
+}
+
 .ls-row {
     li {
         display: inline;
@@ -74,12 +88,18 @@
         position: relative;
     }
 
-    &.no-icon {
+    &.line-icon {
         li:not(:last-child) {
             &::after {
                 content: "|";
                 margin: 0 $default-margin-verysmall;
             }
+        }
+    }
+
+    &.no-icon {
+        li:not(:last-child) {
+            margin-right: $default-margin;
         }
     }
 
@@ -103,13 +123,16 @@
     &.custom-icon {
         li a {
             @extend %ls-icon-custom;
-            padding-left: 2.3rem;
         }
     }
     &.default-icon {
         li a {
             @extend %ls-icon-default;
-            padding-left: 2.3rem;
+        }
+    }
+    &.line-icon {
+        li a {
+            @extend %ls-icon-line;
         }
     }
 }

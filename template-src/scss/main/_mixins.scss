@@ -166,6 +166,23 @@
     transition-timing-function: $transition-function;
 }
 
+// Default Headings
+@mixin heading-base {
+    font-weight: $font-weight-headings; // this must be set because otherwise the default would be "bold"
+    @if ($font-family-headings != $font-family-base) {
+        font-family: $font-family-headings;
+    }
+    @if ($font-style-headings != normal) {
+        font-style: $font-style-headings;
+    }
+    @if ($line-height-headings != $line-height-base) {
+        line-height: $line-height-headings;
+    }
+    @if ($headings-color != $body-color) {
+        color: $headings-color;
+    }
+}
+
 // Colored buttons with hover effects
 @mixin button-color($bg-color, $hover-color) {
     background-color: $bg-color;
@@ -188,23 +205,6 @@
     &[disabled],
     fieldset[disabled] & {
         background-color: $hover-color;
-    }
-}
-
-// Default Headings
-@mixin heading-base {
-    font-weight: $font-weight-headings; // this must be set because otherwise the default would be "bold"
-    @if ($font-family-headings != $font-family-base) {
-        font-family: $font-family-headings;
-    }
-    @if ($font-style-headings != normal) {
-        font-style: $font-style-headings;
-    }
-    @if ($line-height-headings != $line-height-base) {
-        line-height: $line-height-headings;
-    }
-    @if ($headings-color != $body-color) {
-        color: $headings-color;
     }
 }
 

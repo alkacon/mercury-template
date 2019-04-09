@@ -67,7 +67,12 @@
             width: $social-links-box-height;
             height: $social-links-box-height;
             display: block;
-            border: none;
+            @if ($social-links-border-width != 0) {
+                border: $social-links-border-width solid $social-links-color;
+            } @else {
+                border: none;
+            }
+
             font-size: $social-links-size;
             @include round-corners($social-links-border-radius);
 
@@ -105,8 +110,8 @@
     .fa,
     .fas,
     .fab, {
-        width: $social-links-box-height;
-        line-height: $social-links-box-height;
+        width: #{$social-links-box-height - 2*$social-links-border-width};
+        line-height: #{$social-links-box-height - 2*$social-links-border-width};
         text-align: center;
         font-size: $social-links-size;
     }

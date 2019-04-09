@@ -79,6 +79,7 @@ $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use l
 // Default margins
 
 $default-margin:                    2.0rem !default;
+$default-margin-smaller:            round($default-margin * 75) / 100 !default;
 $default-margin-small:              round($default-margin * 50) / 100 !default;
 $default-margin-verysmall:          round($default-margin * 25) / 100 !default;
 $default-margin-ultrasmall:         round($default-margin * 12.5) / 100 !default;
@@ -161,7 +162,7 @@ $nav-shadow:                        0 6px 12px $dropshadow !default;
 
 // Buttons
 
-$btn-padding:                       0.8rem !default;
+$btn-padding:                       0.6rem !default;
 $btn-h-padding:                     round($btn-padding * 20) / 10 !default;
 $btn-def-padding:                   $btn-padding $btn-h-padding !default;
 $btn-lg-padding:                    round($btn-padding * 12.5) / 10 round($btn-padding * 30) / 10 !default;
@@ -192,6 +193,8 @@ $iconbox-border-radius:             $default-border-radius !default;
 $colored-row-color:                 $highlight-color !default;
 $section-subtitle-size:             13px !default;
 
+$piece-btn-padding:                 $btn-def-padding !default;
+$piece-btn-lg-padding:              $btn-lg-padding !default;
 
 // Navigation
 // These are only the variables used elsewhere. There is more in _nav-main.scss.
@@ -372,7 +375,7 @@ $list-teaser-margin-base:           1.5 * $default-margin !default;
 $teaser-title-size:                 $h3-font-size !default;
 $teaser-title-height:               $line-height-headings !default;
 
-$teaser-btn-def-padding:            $btn-sm-padding !default;
+$teaser-btn-def-padding:            $btn-def-padding !default;
 $teaser-btn-compact-padding:        round($btn-padding * 25) / 100 round($btn-padding * 125) / 100 !default;
 $teaser-btn-compact-light-padding:  0 $btn-padding !default;
 
@@ -529,6 +532,7 @@ $social-links-margin:               $default-margin-verysmall !default;
 $social-links-size-half:            $social-links-size / 2 !default;
 $social-links-box-height:           $social-links-size * 2 !default;
 $social-links-border-radius:        $btn-border-radius !default;
+$social-links-border-width:         0 !default;
 
 // Map to generate the social icon styles from
 $social-links:

@@ -23,10 +23,17 @@ var path = require('path');
 var packageConfig = require('./package.json');
 
 // target path of the generated CSS in OpenCms
-var deployTargetVfsDir = packageConfig.config.deployTargetVfsDir ? packageConfig.config.deployTargetVfsDir : "/system/modules/alkacon.mercury.theme/css/";
-
+var deployTargetVfsDir;
 // the folder where the static template resources are located
-var mercuryBaseVfsDir =  packageConfig.config.mercuryBaseVfsDir ? packageConfig.config.mercuryBaseVfsDir : "/system/modules/alkacon.mercury.theme/";
+var mercuryBaseVfsDir;
+
+exports.initRewritePaths = function(targetVfs, mercuryVfs) {
+    deployTargetVfsDir = packageConfig.config[targetVfs] ? packageConfig.config[targetVfs] : "/system/modules/alkacon.mercury.theme/css/";
+    mercuryBaseVfsDir =  packageConfig.config[mercuryVfs] ? packageConfig.config[mercuryVfs] : "/system/modules/alkacon.mercury.theme/";
+    console.log('');
+    console.log('Theme deploy target   : ' + deployTargetVfsDir);
+    console.log('Mercury base directory: ' + mercuryBaseVfsDir);
+}
 
 // function to calculate the relative file path for the generated CSS to the static template folder in the OpenCms VFS
 // it's is required to use relative paths here to make sure static export works as expected
@@ -36,11 +43,16 @@ exports.resourcePath = function(target) {
     if (path.sep == '\\') {
         resPath = resPath.replace(/\\/g, '/');
     }
-    console.log('Rewriting path:' + target + ' to:' + resPath);
+    console.log('Rewriting path        : ' + target + ' to: ' + resPath);
     return resPath;
 }
 
-console.log('#');
-console.log('# Mercury deploy target : ' + deployTargetVfsDir);
-console.log('# Mercury base directory: ' + mercuryBaseVfsDir);
-console.log('#');
+// options to be used by the autoprefixer
+// this is pretty much the default, see https://github.com/browserslist/browserslist#full-list
+var autoprefixerOptions = { browsers: [
+ '> 0.5%',
+ 'last 2 versions',
+ 'not dead'
+]}
+// export the autoprefixer options
+exports.autoprefixerOpts = autoprefixerOptions;

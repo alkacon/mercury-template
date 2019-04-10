@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>10.9.9.25</version>
+		<version>10.9.9.26</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -21,7 +21,7 @@
 		<userinstalled/>
 		<dateinstalled/>
 		<dependencies>
-			<dependency name="org.opencms.base" version="11.0.0"/>
+			<dependency name="alkacon.mercury.template" version="10.9.9"/>
 		</dependencies>
 		<exportpoints/>
 		<resources>

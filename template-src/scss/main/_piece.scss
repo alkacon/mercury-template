@@ -69,6 +69,12 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         @include copyright-subtitle;
     }
 
+    &.only-visual {
+        > .visual {
+            margin-bottom: 0;
+        }
+    }
+
     .heading:last-child {
         // if the heading is the last child of the piece, don't add the bottom margin
         > .piece-headline {

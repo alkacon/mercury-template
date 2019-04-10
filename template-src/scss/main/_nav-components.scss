@@ -115,7 +115,11 @@
                 }
             }
 
-            &:not(.btn) { // :not(.btn) required to make the color rules strong enough in the footer
+            &:not(.btn) { // not(btn) required to make the color rules strong enough in the footer
+                @if ($nav-side-text != $link-color) {
+                    color: $nav-side-text;
+                }
+
                 &:focus,
                 &:hover {
                     color: $nav-side-text-hover;

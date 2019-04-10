@@ -24,7 +24,7 @@
 
 // ######################### Mobile navigation #########################
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-mobile {
 
     // The top level navbar
 
@@ -48,7 +48,7 @@
                 color: $nav-text;
                 line-height: $nav-mobile-line-height;
                 padding: $nav-mobile-line-padding #{$grid-gutter-width / 2};
-                border-bottom: solid 1px $nav-border;
+                border-bottom: $nav-mobile-border;
                 font-weight: normal;
                 font-size: $nav-mobile-font-size;
                 @if ($nav-mobile-font-family != $font-family-base) {
@@ -82,11 +82,10 @@
                             position: absolute;
                             display: inline-block;
                             font-family: FontAwesome;
-                            right: 9px;
                             font-weight: normal;
                             content: "\f107";
                             font-size: round($nav-font-size * 1.75);
-                            right: $grid-gutter-width / 2;
+                            right: $nav-mobile-box-right;
                             transform: rotate(0);
                             transition: transform $nav-animation-time;
 
@@ -94,10 +93,10 @@
                                 top: $nav-mobile-box-top;
                                 width: $nav-mobile-box-height;
                                 text-align: center;
-                                border-radius: $nav-border-radius;
+                                border-radius: $nav-mobile-box-border-radius;
                                 line-height: $nav-mobile-box-height;
-                                background-color: $nav-mobile-box-color;
-                                color: get-text-color($nav-mobile-box-color); // assumes dark box color
+                                background-color: $nav-mobile-box-bg-color;
+                                color: $nav-mobile-box-color;
                             }
                         }
                     }
@@ -282,29 +281,31 @@
             }
         }
 
-        @include media-breakpoint-down(xs) {
-            // on very small screens use a smaller button
-            // otherwise the button may become larger than the head itself
-            width: round($nav-toggle-size-xxs);
-            height: round($nav-toggle-size-xxs);
+        @if ($nav-mobile-smaller-xs-toggle != false) {
+            @include media-breakpoint-down(xs) {
+                // on very small screens use a smaller button
+                // otherwise the button may become larger than the head itself
+                width: round($nav-toggle-size-xxs);
+                height: round($nav-toggle-size-xxs);
 
-            span {
-                top: round(0.46 * $nav-toggle-size-xxs);
-                left: round(0.2 * $nav-toggle-size-xxs);
-                right: round(0.2 * $nav-toggle-size-xxs);
-                height: round(0.08 * $nav-toggle-size-xxs);
-
-                &::before,
-                &::after {
+                span {
+                    top: round(0.46 * $nav-toggle-size-xxs);
+                    left: round(0.2 * $nav-toggle-size-xxs);
+                    right: round(0.2 * $nav-toggle-size-xxs);
                     height: round(0.08 * $nav-toggle-size-xxs);
-                }
 
-                &::before {
-                    top: round(-0.2 * $nav-toggle-size-xxs);
-                }
+                    &::before,
+                    &::after {
+                        height: round(0.08 * $nav-toggle-size-xxs);
+                    }
 
-                &::after {
-                    bottom: round(-0.2 * $nav-toggle-size-xxs);
+                    &::before {
+                        top: round(-0.2 * $nav-toggle-size-xxs);
+                    }
+
+                    &::after {
+                        bottom: round(-0.2 * $nav-toggle-size-xxs);
+                    }
                 }
             }
         }
@@ -317,13 +318,14 @@
         pointer-events: none;
         position: fixed;
         #{$nav-mobile-position}: -1 * 90vw;
-        transition: $nav-mobile-position 0.5s;
+        transition: $nav-mobile-position 0.5s, opacity 0.25s;
         top: 0;
         height: 100vh;
-        background-color: $nav-border;
+        background-color: $nav-mobile-bg-color;
         z-index: $above-oc-z-index; // this is the z-index for the left/right menu
         pointer-events: auto;
         overflow-x: hidden;
+        opacity: 0;
 
         .nav-main-group {
             display: block;
@@ -332,9 +334,7 @@
             margin: 0;
             padding-left: 0;
             padding-right: 0;
-            // add border above the menu items
-            border-top: solid 1px $nav-border;
-            background-color: $nav-header-bg;
+            background-color: $nav-mobile-menu-bg-color;
             // make space above the nav entries for the toggle button
             padding-top: $grid-gutter-width + $nav-toggle-size;
             min-width: $nav-mobile-side-size;
@@ -342,6 +342,11 @@
 
             &.has-sidelogo {
                 padding-top: 0;
+            }
+
+            .nav-main-items {
+                // add border above the menu items
+                border-top: $nav-mobile-border;
             }
         }
 
@@ -358,16 +363,25 @@
                 width: 50vw;
             }
         }
+        @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl)) {
+            @include media-breakpoint-up(lg) {
+                #{$nav-mobile-position}: -1 * round(breakpoint-min(lg) / 2);
+                .nav-main-group  {
+                    width: round(breakpoint-min(lg) / 2);
+                }
+            }
+        }
 
         .nav-main-mobile-logo {
             display: block;
+            background-color: $nav-mobile-logo-bg-color;
             padding: $grid-gutter-width / 2;
             // make sure wide logos are not under the toggle button
             @if ($nav-mobile-position == right) {
-                margin-right: 3 * $grid-gutter-width;
+                padding-right: 3 * $grid-gutter-width;
             }
             @if ($nav-mobile-position == left) {
-                margin-left: 3 * $grid-gutter-width;
+                padding-left: 3 * $grid-gutter-width;
             }
         }
     }
@@ -375,7 +389,7 @@
     #nav-toggle-label {
         position: fixed;
         z-index: $above-oc-z-index + 1; // the toggle must be above the z-index of the menu (see above)
-        top: $grid-gutter-width / 2;
+        top: $nav-mobile-toggle-top;
 
         @if ($nav-mobile-position == right) {
             right: $grid-gutter-width;
@@ -416,6 +430,7 @@
     html.noscript #nav-toggle-check:checked ~ .header-group,
     html.active-nav .area-header .header-group {
         .nav-main-container {
+            opacity: 1;
             #{$nav-mobile-position}: 0;
         }
 
@@ -433,7 +448,6 @@
     #mercury-page {
         position: relative;
         #{$nav-mobile-position}: 0;
-        transition: $nav-mobile-position 0.5s;
     }
 
     html.active-nav {
@@ -451,7 +465,7 @@
         // adjust for toolbar mobile display in edit mode
 
         #nav-toggle-label {
-            top: calc(#{$opencms-toolbar-height} + #{$grid-gutter-width / 2});
+            top: calc(#{$opencms-toolbar-height} + #{$nav-mobile-toggle-top});
         }
 
         .nav-main-container {
@@ -508,7 +522,7 @@
 
 // ######################### Desktop navigation #########################
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-desktop {
 
     // The top level navbar
 

@@ -337,3 +337,45 @@
     }
 }
 
+@mixin colored-a($text-color, $highlight-color) {
+    a:not(.btn):not(.uncolored) {
+        color: $text-color;
+
+        &:focus,
+        &:hover {
+            color: $highlight-color;
+        }
+    }
+}
+
+@function breakpoint-mobile-max() {
+    @if ($nav-breakpoint-desktop != none) {
+        @return breakpoint-max($nav-breakpoint-mobile);
+    } @else {
+         @return 99999;
+    }
+}
+
+@function breakpoint-desktop-min() {
+    @if ($nav-breakpoint-desktop != none) {
+        @return breakpoint-min($nav-breakpoint-desktop);
+    } @else {
+         @return 100000;
+    }
+}
+
+@mixin media-breakpoint-mobile {
+    @if ($nav-breakpoint-mobile != none) {
+        @include media-breakpoint-down($nav-breakpoint-mobile) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-desktop {
+    @if ($nav-breakpoint-desktop != none) {
+        @include media-breakpoint-up($nav-breakpoint-desktop) {
+            @content;
+        }
+    }
+}

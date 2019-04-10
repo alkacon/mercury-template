@@ -25,14 +25,7 @@
 
     .links-#{""+$color-name} {
         @if (""+$color-name != "default") {
-            a:not(.btn):not(.uncolored) {
-                color: $text-color;
-
-                &:focus,
-                &:hover {
-                    color: $highlight-color;
-                }
-            }
+            @include colored-a($text-color, $highlight-color);
         } @else {
             @extend .links-theme;
         }

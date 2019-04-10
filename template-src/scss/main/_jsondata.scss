@@ -76,8 +76,8 @@
             '"lgMin":' + breakpoint-min(lg) + ', ' +
             '"lgMax":' + breakpoint-max(lg) + ', ' +
             '"xlMin":' + breakpoint-min(xl) + ', ' +
-            '"navMobMax":' + breakpoint-max(md) + ', ' +
-            '"navDeskMin":' + breakpoint-min(lg) + ', ' +
+            '"navMobMax":' + breakpoint-mobile-max() + ', ' +
+            '"navDeskMin":' + breakpoint-desktop-min() + ', ' +
             '"navMobPos":' + '"' + $nav-mobile-position + '",' +
             '"navFixHeader":' + '"' + $nav-setting-fixheader + '"' +
         '}'

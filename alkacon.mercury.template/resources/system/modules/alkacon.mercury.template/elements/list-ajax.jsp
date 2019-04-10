@@ -25,7 +25,7 @@
     <%-- restore settings reading them from the containerpage --%>
     <c:set var="settings" value="<%= new java.util.HashMap<String,String>() %>" />
     <c:if test="${not empty param.pid}">
-        <c:set var="pageBean" value="${cms.getPage(param.pid)}" />
+        <c:set var="pageBean" value="${cms.getPage(param.pid,param.loc)}" />
         <c:set var="sortBarInstanceId">${param.sid}</c:set>
         <c:set var="instanceId">${param.eid}</c:set>
         <c:forEach var="element" items="${pageBean.elements}">

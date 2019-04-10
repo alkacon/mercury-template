@@ -65,7 +65,11 @@
             <c:if test="${fn:startsWith(linkText, 'icon:')}">
                 <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
             </c:if>
-            <li ${liWrapper}><mercury:link link="${link}" css="${aWrapper}">${linkText}</mercury:link></li><%----%>
+            <li ${liWrapper}><%----%>
+                <mercury:link link="${link}" css="${aWrapper}">
+                    ${linkText}
+                </mercury:link>
+            </li><%----%>
         </c:forEach>
     </ul><%----%>
 

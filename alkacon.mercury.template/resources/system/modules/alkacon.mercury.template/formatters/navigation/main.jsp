@@ -73,7 +73,7 @@
             <c:set var="navTarget" value="${fn:trim(navElem.info)eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
             <c:set var="isCurrentPage" value="${navElem.navigationLevel ?
-                fn:startsWith(cms.requestContext.uri, navElem.parentFolderName) :
+                (navElem.navTreeLevel > navStartLevel) and fn:startsWith(cms.requestContext.uri, navElem.parentFolderName) :
                 fn:startsWith(cms.requestContext.uri, navElem.resourceName)}" />
 
             <c:set var="menuType">

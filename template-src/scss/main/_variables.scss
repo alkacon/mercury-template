@@ -343,11 +343,14 @@ $foot-sub-link-hover-color:         $main-theme-hover !default;
 $nav-breadcrump-space:              $default-margin-verysmall !default; // spacing base between breadcumbs
 $nav-breadcrump-space-left:         1.35 * $nav-breadcrump-space !default; // spacing after breadcumb before separator
 $nav-breadcrump-space-right:        $nav-breadcrump-space !default; // spacing after separator before breadcrumb
-$nav-breadcrump-separator-color:    $grey !default; // color of breadcrumps sepearator
+$nav-breadcrump-padding:            $default-margin-verysmall 0 0 0 !default; // Padding around breadcrumbs
 $nav-breadcrump-text-color:         $nav-header-text  !default; // text color of breadcrumps
 $nav-breadcrump-text-hover-color:   $nav-header-text-hover  !default; // hover color of breadcrump links
 $nav-breadcrump-font-size:          $font-size-sm !default; // font size for the breadcrumps
 $nav-breadcrump-font-family:        $nav-font-family !default; // text font for breadcrumbs
+$nav-breadcrump-separator:          "\f0da" !default; // separator char between breadcrumbs
+$nav-breadcrump-separator-color:    $grey !default; // color of breadcrumps sepearator
+$nav-breadcrump-separator-font:     FontAwesome !default; // font-family for breadcrumbs sepearator
 
 // Side navigation
 // Mirrors the main navigation by default, and allows to use different colors if required.
@@ -390,6 +393,7 @@ $teaser-title-height:               $line-height-headings !default;
 $teaser-btn-def-padding:            $btn-def-padding !default;
 $teaser-btn-compact-padding:        round($btn-padding * 25) / 100 round($btn-padding * 125) / 100 !default;
 $teaser-btn-compact-light-padding:  0 $btn-padding !default;
+$teaser-info-color:                 $grey !default; // color of additional teaser infos, e.g. the date
 
 $teaser-btn-color:                  $btn-default  !default;
 $teaser-btn-hover-color:            $btn-default-hover !default;

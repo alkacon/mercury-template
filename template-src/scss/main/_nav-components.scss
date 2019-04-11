@@ -24,7 +24,7 @@
 .nav-breadcrumbs {
     list-style-type: none;
     margin: 0;
-    padding: $default-margin-verysmall 0 0 0;
+    padding: $nav-breadcrump-padding;
 
     > li {
         display: inline;
@@ -45,9 +45,9 @@
 
         + li {
             &::before {
-                content: "\f0da";
+                content: $nav-breadcrump-separator;
                 display: inline-block;
-                font-family: FontAwesome;
+                font-family: $nav-breadcrump-separator-font;
                 margin-right: $nav-breadcrump-space-right;
                 color: $nav-breadcrump-separator-color;
             }

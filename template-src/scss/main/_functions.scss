@@ -17,10 +17,14 @@
 
 // Calculates the best color for text based on the background
 @function get-text-color($color) {
-    @if (lightness($color) > $text-lightness-threshold) {
-        @return $text-dark; // light background, dark text
+    @if ($color == transparent) {
+        @return $body-color;
     } @else {
-        @return $text-light; // dark background, light text
+        @if (lightness($color) > $text-lightness-threshold) {
+            @return $text-dark; // light background, dark text
+        } @else {
+            @return $text-light; // dark background, light text
+        }
     }
 }
 

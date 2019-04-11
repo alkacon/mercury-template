@@ -186,6 +186,19 @@
         <mercury:nl />
     </c:when>
 
+    <c:otherwise>
+        <mercury:alert type="error">
+            <jsp:attribute name="head">
+                <fmt:message key="msg.page.layout.group.nomatch.title">
+                    <fmt:param>${value.Title}</fmt:param>
+                </fmt:message>
+            </jsp:attribute>
+            <jsp:attribute name="text">
+                <fmt:message key="msg.page.layout.group.nomatch.text" />
+            </jsp:attribute>
+        </mercury:alert>
+    </c:otherwise>
+
 </c:choose>
 
 <mercury:container-box label="${value.Title}" boxType="model-end" />

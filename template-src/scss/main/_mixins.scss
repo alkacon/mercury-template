@@ -17,7 +17,7 @@
 
 
 // Intro header, usually for teaser elements in lists
-@mixin intro-header($font-size: $font-size-sm) {
+@mixin intro-header() {
     line-height: 1.25;
     font-size: 65%;
     font-weight: $font-weight-bold;

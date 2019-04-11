@@ -35,6 +35,12 @@
         margin-bottom: 0;
         padding: 0;
         list-style-type: none;
+
+        // .list-entry:last-of-type {
+        //    > .teaser {
+        //        margin-bottom: 0;
+        //    }
+        // }
     }
 
     .list-spinner {
@@ -78,7 +84,7 @@
     .teaser-date {
         line-height: 1.2;
         font-size: 80%;
-        color: $grey;
+        color: $teaser-info-color;
     }
 
     .heading {

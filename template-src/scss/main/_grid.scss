@@ -89,6 +89,9 @@
 
 // colored layout areas
 .colored-row {
+    display: flex;
+    flex-direction: column;
+
     &.bg-grey {
         background-color: $highlight-color;
     }

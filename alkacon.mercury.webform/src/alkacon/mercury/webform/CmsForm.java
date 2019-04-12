@@ -1866,6 +1866,11 @@ public class CmsForm {
             I_CmsXmlContentValue textField = i.next();
             String textFieldPath = textField.getPath() + "/";
             String fieldLabel = content.getStringValue(jsp.getCmsObject(), textFieldPath + NODE_INPUTFIELD, locale);
+            int pos = fieldLabel.indexOf('|') + 1;
+            // Adjust field label to be the dbLabel if it is provided.
+            if (pos > 0) {
+                fieldLabel = pos < fieldLabel.length() ? fieldLabel.substring(pos) : fieldLabel.substring(0, pos - 1);
+            }
             String fieldText = content.getStringValue(jsp.getCmsObject(), textFieldPath + NODE_TEXT, locale);
             String column = content.getStringValue(jsp.getCmsObject(), textFieldPath + NODE_COLUMN, locale);
             fieldTexts.put(fieldLabel, new CmsFieldText(fieldText, column));

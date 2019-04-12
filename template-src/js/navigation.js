@@ -71,7 +71,7 @@ function initMegaMenu() {
             insertMegaMenu($megaMenu.data("megamenu"), $megaMenu);
 
             var $megaMenuLink = $megaMenu.find('> a');
-            $megaMenuLink.on('mouseenter focus', function(e) {
+            $megaMenuLink.on('mouseenter touchstart focus', function(e) {
 
                 var $menu = jQ(this).parent();
                 var $menuTrigger = $menu.find('.nav-mega-menu');

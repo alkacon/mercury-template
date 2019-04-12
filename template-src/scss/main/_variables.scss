@@ -287,6 +287,10 @@ $nav-mobile-font-family:            $nav-font-family !default; // text font for 
 $nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
 $nav-mobile-border:                 solid 1px $nav-border !default; // border for mobile menu items
 $nav-mobile-smaller-xs-toggle:      true !default; // make toggle button smaller on xs screens, can be 'true' or 'false'
+$nav-mobile-header-color:           $nav-header-text !default; // text color of header links in mobile menu
+$nav-mobile-header-text-transform:  $nav-header-text-transform !default; // text transform of header links in mobile menu
+$nav-mobile-header-font-size:       $nav-header-font-size !default; // font size of header links in mobile menu
+$nav-mobile-header-font-weight:     $nav-header-font-weight !default; // font weight of header links in mobile menu
 
 $nav-breakpoint-mobile:             md !default; // breakpoint until which the mobile navigation is displayed
 $nav-breakpoint-desktop:            lg !default; // breakpoint from which the desktop navigation is displayed

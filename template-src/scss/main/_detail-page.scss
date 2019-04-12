@@ -22,7 +22,7 @@
 .detail-page {
 
     // visual image overlay as used on detail pages
-    .overlay {
+    .piece > .visual .overlay { // strong selector needed to override .piece defaults
         display: flex;
         flex-direction: column;
         position: relative;

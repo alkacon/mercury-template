@@ -64,10 +64,10 @@
         > li {
             // top level menu entry have differnet text formatting
             > a {
-                color: $nav-header-text;
-                text-transform: $nav-header-text-transform;
-                font-size: $nav-header-font-size;
-                font-weight: $nav-header-font-weight;
+                color: $nav-mobile-header-color;
+                text-transform: $nav-mobile-header-text-transform;
+                font-size: $nav-mobile-header-font-size;
+                font-weight: $nav-mobile-header-font-weight;
             }
         }
 

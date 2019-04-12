@@ -42,7 +42,7 @@
                 <Setting>
                     <PropertyName>Description</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Description)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.MetaInfo.Descripton.help)]]></Description>
+                    <Description><![CDATA[%(key.label.MetaInfo.Description.help)]]></Description>
                     <Widget>textarea</Widget>
                     <WidgetConfig>4</WidgetConfig>
                 </Setting>

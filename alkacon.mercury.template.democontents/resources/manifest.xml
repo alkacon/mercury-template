@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>10.9.9.25</version>
+		<version>10.9.9.26</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -13754,11 +13754,11 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Section vs. Detail]]></value>
+					<value><![CDATA[Section vs. Teaser vs. Detail]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Section vs. Detail]]></value>
+					<value><![CDATA[Section vs. Teaser vs. Detail]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -13775,7 +13775,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Section vs. Detail]]></value>
+					<value><![CDATA[Section vs. Teaser vs. Detail]]></value>
 				</property>
 			</properties>
 			<relations/>

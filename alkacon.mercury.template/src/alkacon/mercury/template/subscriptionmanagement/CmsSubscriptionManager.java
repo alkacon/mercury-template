@@ -160,7 +160,7 @@ public class CmsSubscriptionManager {
     private static final String DEFAULT_PASSWORD_USER = "QaNbyzUw82-Qn!";
 
     /** Name of the additional user info: flag to determine if the user is subscribed. */
-    protected static final String USER_ADDITIONALINFO = "SubscriptionManager_SubscriptionState:";
+    protected static final String USER_ADDITIONALINFO = "SubscriptionManager_SubscriptionState";
 
     /** The admin CmsObject that is used for user/group operations. */
     private CmsObject m_adminCms;
@@ -228,9 +228,7 @@ public class CmsSubscriptionManager {
             return true;
         } catch (JSONException | CmsException e) {
             // error reading or writing user
-            LOG.error(
-                "Error accessing user with email " + email + " in order to subscribe to " + groupName,
-                e);
+            LOG.error("Error accessing user with email " + email + " in order to subscribe to " + groupName, e);
             return false;
         }
     }
@@ -291,7 +289,7 @@ public class CmsSubscriptionManager {
      *
      * @param email the email address of the user to register
      * @param groupName the name of the group the user should be registered for
-
+    
      * @return <code>true</code> if the user either is already active in the group or the user was created and got the
      *  correct registration information attached. <code>false</code> otherwise.
      */

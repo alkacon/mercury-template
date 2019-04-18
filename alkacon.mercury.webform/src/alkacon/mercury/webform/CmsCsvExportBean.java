@@ -35,6 +35,8 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 
+import alkacon.mercury.template.csv.CmsCsvWriter;
+
 /**
  * Helper class to export form data as CSV file that can be opened with Excel and LibreOffice correctly.
  * Unfortunately, Encoding is difficult, but it seems that Excel (at least the German version from 2013 and 365)
@@ -47,72 +49,6 @@ import org.apache.commons.logging.Log;
  * </ul>
  */
 public class CmsCsvExportBean extends A_CmsJspCustomContextBean {
-
-    /** Helper to produce Csv files. */
-    public static class CsvWriter {
-
-        /** The "bom" bytes as String that need to be placed at the very beginning of the produced csv. */
-        private static final String BOM = "\ufeff";
-
-        /** Internal variable holding the CSV content. */
-        StringBuffer m_csv = new StringBuffer(BOM);
-
-        /**
-         * Adds a line to the CSV.
-         * @param values the (unescaped) values to add.
-         */
-        public void addLine(String... values) {
-
-            if (null != values) {
-                if (values.length > 0) {
-                    m_csv.append(esc(values[0]));
-                }
-                for (int i = 1; i < values.length; i++) {
-                    m_csv.append(sep()).append(esc(values[i]));
-                }
-            }
-            m_csv.append(nl());
-        }
-
-        /**
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return m_csv.toString();
-        }
-
-        /**
-         * Escapes the provided value for CSV.
-         * @param value the value to escape
-         * @return the escaped value.
-         */
-        private String esc(String value) {
-
-            value = value.replace("\"", "\"\"");
-            return '"' + value + '"';
-        }
-
-        /**
-         * Returns a line break as to use in the CSV output.
-         * @return a line break as to use in the CSV output.
-         */
-        private String nl() {
-
-            return "\n";
-        }
-
-        /**
-         * Returns the value separator to use in the CSV output.
-         * @return the value separator to use in the CSV output.
-         */
-        private String sep() {
-
-            return ";";
-        }
-
-    }
 
     /** The log object for this class. */
     private static final Log LOG = CmsLog.getLog(CmsCsvExportBean.class);
@@ -172,7 +108,7 @@ public class CmsCsvExportBean extends A_CmsJspCustomContextBean {
 
         CmsObject cms = getCmsObject();
         // Start with BOM
-        CsvWriter csv = new CsvWriter();
+        CmsCsvWriter csv = new CmsCsvWriter();
 
         CmsSubmissionStatus status = m_form.getSubmissionStatus();
 

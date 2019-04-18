@@ -54,6 +54,9 @@ public class CmsMailHtmlVisitor extends CmsHtmlParser {
     /** Macro resolver to resolve macros in links. */
     private I_CmsMacroResolver m_macroResolver;
 
+    /** A flag, indicating if absolute links should be enforced. */
+    private boolean m_absoluteLinks;
+
     /**
      *
      * Constructor.<p>
@@ -61,13 +64,19 @@ public class CmsMailHtmlVisitor extends CmsHtmlParser {
      * @param cms the CmsObject to get the current user request context
      * @param replacementMap the map holding the link prefix replacement pairs
      * @param macroResolver resolver to apply to macro links.
+     * @param absoluteLinks a flag, indicating if absolute links should be enforced.
      */
-    public CmsMailHtmlVisitor(CmsObject cms, Map<String, String> replacementMap, I_CmsMacroResolver macroResolver) {
+    public CmsMailHtmlVisitor(
+        CmsObject cms,
+        Map<String, String> replacementMap,
+        I_CmsMacroResolver macroResolver,
+        boolean absoluteLinks) {
 
         super(true);
         m_cms = cms;
         m_replacements = null == replacementMap ? Collections.emptyMap() : replacementMap;
         m_macroResolver = macroResolver;
+        m_absoluteLinks = absoluteLinks;
 
     }
 
@@ -180,7 +189,7 @@ public class CmsMailHtmlVisitor extends CmsHtmlParser {
 
         String absoluteLink = link;
         // check if the a relative link is used, if so, change to absolute online link
-        if (absoluteLink.startsWith("/")) {
+        if (m_absoluteLinks && absoluteLink.startsWith("/")) {
             // tricky mechanism to deal with prefixes for links to exported an unexported resources
             String prefix = OpenCms.getLinkManager().getOnlineLink(m_cms, "/");
             // cut of everything starting at the first single slash

@@ -41,18 +41,27 @@ public class CmsMailParser extends A_CmsConfiguredHtmlParser {
     /** The resolver for macros in links. */
     private I_CmsMacroResolver m_macroResolver;
 
+    /** Flag, indicating if absolute links should be enforced. */
+    private boolean m_absoluteLinks;
+
     /**
      * Creates a new mail parser.
      *
      * @param cms the context to use for the replacements.
      * @param replacementMap the replacements to perform.
      * @param macroResolver resolver for macros in links to be applied before adjustments are made.
+     * @param absoluteLinks a flag, indicating if absolute links should be enforced.
      */
-    public CmsMailParser(CmsObject cms, Map<String, String> replacementMap, I_CmsMacroResolver macroResolver) {
+    public CmsMailParser(
+        CmsObject cms,
+        Map<String, String> replacementMap,
+        I_CmsMacroResolver macroResolver,
+        boolean absoluteLinks) {
 
         m_cms = cms;
         m_replacements = replacementMap;
         m_macroResolver = macroResolver;
+        m_absoluteLinks = absoluteLinks;
     }
 
     /**
@@ -61,7 +70,7 @@ public class CmsMailParser extends A_CmsConfiguredHtmlParser {
     @Override
     protected I_CmsHtmlNodeVisitor createVisitorInstance() {
 
-        return new CmsMailHtmlVisitor(m_cms, m_replacements, m_macroResolver);
+        return new CmsMailHtmlVisitor(m_cms, m_replacements, m_macroResolver, m_absoluteLinks);
     }
 
 }

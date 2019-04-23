@@ -112,7 +112,8 @@
                 padding: $btn-smi-padding;
             }
 
-            .btn-accept {
+            .btn-decline + .btn-accept {
+                // if both buttons are present, float "accept" left so it appears first
                 float: left;
             }
 

@@ -195,6 +195,7 @@
         color: get-text-color($hover-color);
         background-color: $hover-color;
         text-decoration: none;
+        cursor: pointer;
         @include color-transition;
         @if ($btn-border-style != none) {
             border-color: $hover-color;

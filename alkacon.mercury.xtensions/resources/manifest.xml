@@ -39,10 +39,10 @@
 		</resourcetypes>
 		<explorertypes>
 			<explorertype name="m-slider-complex" key="type.m-slider-complex.name" smalliconstyle="m-icon-16-slider" bigiconstyle="m-icon-24-slider" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-slider-complex.description" key="type.m-slider-complex.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-slider-complex.description" key="type.m-slider-complex.title"/>
 			</explorertype>
 			<explorertype name="m-imgur-asset" key="type.m-imgur-asset.name" smalliconstyle="m-icon-16-imgursection" bigiconstyle="m-icon-24-imgursection" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-imgur-asset.description" key="type.m-imgur-asset.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-imgur-asset.description" key="type.m-imgur-asset.title"/>
 			</explorertype>
 		</explorertypes>
 	</module>

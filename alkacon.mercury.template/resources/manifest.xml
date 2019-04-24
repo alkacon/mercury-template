@@ -113,79 +113,79 @@
 		</resourcetypes>
 		<explorertypes>
 			<explorertype name="m-layout-row-complex" key="type.m-layout-row-complex.name" smalliconstyle="m-icon-16-layout-row-complex" bigiconstyle="m-icon-24-layout-row-complex" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-row-complex.description" key="type.m-layout-row-complex.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-row-complex.description" key="type.m-layout-row-complex.title"/>
 			</explorertype>
 			<explorertype name="m-layout-area-complex" key="type.m-layout-area-complex.name" smalliconstyle="m-icon-16-layout-area-complex" bigiconstyle="m-icon-24-layout-area-complex" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-area-complex.description" key="type.m-layout-area-complex.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-area-complex.description" key="type.m-layout-area-complex.title"/>
 			</explorertype>
 			<explorertype name="m-layout-row-simple" key="type.m-layout-row-simple.name" smalliconstyle="m-icon-16-layout-row-simple" bigiconstyle="m-icon-24-layout-row-simple" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-row-simple.description" key="type.m-layout-row-simple.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-row-simple.description" key="type.m-layout-row-simple.title"/>
 			</explorertype>
 			<explorertype name="m-layout-area-simple" key="type.m-layout-area-simple.name" smalliconstyle="m-icon-16-layout-area-simple" bigiconstyle="m-icon-24-layout-area-simple" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-area-simple.description" key="type.m-layout-area-simple.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-area-simple.description" key="type.m-layout-area-simple.title"/>
 			</explorertype>
 			<explorertype name="m-decoy" key="type.m-decoy.name" smalliconstyle="m-icon-16-decoy" bigiconstyle="m-icon-24-decoy" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-decoy.description" key="type.m-decoy.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-decoy.description" key="type.m-decoy.title"/>
 			</explorertype>
 			<explorertype name="m-faq" key="type.m-faq.name" smalliconstyle="m-icon-16-faq" bigiconstyle="m-icon-24-faq" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-faq.description" key="type.m-faq.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-faq.description" key="type.m-faq.title"/>
 			</explorertype>
 			<explorertype name="m-event" key="type.m-event.name" smalliconstyle="m-icon-16-event" bigiconstyle="m-icon-24-event" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-event.description" key="type.m-event.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-event.description" key="type.m-event.title"/>
 			</explorertype>
 			<explorertype name="m-job" key="type.m-job.name" smalliconstyle="m-icon-16-job" bigiconstyle="m-icon-24-job" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-job.description" key="type.m-job.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-job.description" key="type.m-job.title"/>
 			</explorertype>
 			<explorertype name="m-imageseries" key="type.m-imageseries.name" smalliconstyle="m-icon-16-imageseries" bigiconstyle="m-icon-24-imageseries" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-imageseries.description" key="type.m-imageseries.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-imageseries.description" key="type.m-imageseries.title"/>
 			</explorertype>
 			<explorertype name="m-media" key="type.m-media.name" smalliconstyle="oc-icon-16-video" bigiconstyle="oc-icon-24-video" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-media.description" key="type.m-media.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-media.description" key="type.m-media.title"/>
 			</explorertype>
 			<explorertype name="m-contact" key="type.m-contact.name" smalliconstyle="m-icon-16-contact" bigiconstyle="m-icon-24-contact" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-contact.description" key="type.m-contact.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-contact.description" key="type.m-contact.title"/>
 			</explorertype>
 			<explorertype name="m-flexible" key="type.m-flexible.name" smalliconstyle="m-icon-16-flexible" bigiconstyle="m-icon-24-flexible" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-flexible.description" key="type.m-flexible.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-flexible.description" key="type.m-flexible.title"/>
 			</explorertype>
 			<explorertype name="m-linksequence" key="type.m-linksequence.name" smalliconstyle="m-icon-16-linksequence" bigiconstyle="m-icon-24-linksequence" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-linksequence.description" key="type.m-linksequence.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-linksequence.description" key="type.m-linksequence.title"/>
 			</explorertype>
 			<explorertype name="m-map" key="type.m-map.name" smalliconstyle="m-icon-16-map" bigiconstyle="m-icon-24-map" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-map.description" key="type.m-map.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-map.description" key="type.m-map.title"/>
 			</explorertype>
 			<explorertype name="m-metainfo" key="type.m-metainfo.name" smalliconstyle="m-icon-16-metainfo" bigiconstyle="m-icon-24-metainfo" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-metainfo.description" key="type.m-metainfo.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-metainfo.description" key="type.m-metainfo.title"/>
 			</explorertype>
 			<explorertype name="m-poi" key="type.m-poi.name" smalliconstyle="m-icon-16-poi" bigiconstyle="m-icon-24-poi" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-poi.description" key="type.m-poi.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-poi.description" key="type.m-poi.title"/>
 			</explorertype>
 			<explorertype name="m-section" key="type.m-section.name" smalliconstyle="m-icon-16-section" bigiconstyle="m-icon-24-section" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-section.description" key="type.m-section.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-section.description" key="type.m-section.title"/>
 			</explorertype>
 			<explorertype name="m-sitemap" key="type.m-sitemap.name" smalliconstyle="m-icon-16-sitemap" bigiconstyle="m-icon-24-sitemap" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-sitemap.description" key="type.m-sitemap.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-sitemap.description" key="type.m-sitemap.title"/>
 			</explorertype>
 			<explorertype name="m-slider" key="type.m-slider.name" smalliconstyle="m-icon-16-slider" bigiconstyle="m-icon-24-slider" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-slider.description" key="type.m-slider.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-slider.description" key="type.m-slider.title"/>
 			</explorertype>
 			<explorertype name="m-tab" key="type.m-tab.name" smalliconstyle="m-icon-16-tabs" bigiconstyle="m-icon-24-tabs" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-tab.description" key="type.m-tab.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-tab.description" key="type.m-tab.title"/>
 			</explorertype>
 			<explorertype name="m-privacypolicy" key="type.m-privacypolicy.name" smalliconstyle="oc-icon-16-module_config" bigiconstyle="oc-icon-24-module_config" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-privacypolicy.description" key="type.m-privacypolicy.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-privacypolicy.description" key="type.m-privacypolicy.title"/>
 			</explorertype>
 			<explorertype name="m-shariff" key="type.m-shariff.name" smalliconstyle="m-icon-16-shariff" bigiconstyle="m-icon-24-shariff" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-shariff.description" key="type.m-shariff.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-shariff.description" key="type.m-shariff.title"/>
 			</explorertype>
 			<explorertype name="m-article" key="type.m-article.name" smalliconstyle="m-icon-16-article" bigiconstyle="m-icon-24-article" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-article.description" key="type.m-article.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-article.description" key="type.m-article.title"/>
 			</explorertype>
 			<explorertype name="m-navigation" key="type.m-navigation.name" smalliconstyle="m-icon-16-navigation" bigiconstyle="m-icon-24-navigation" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-navigation.description" key="type.m-navigation.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-navigation.description" key="type.m-navigation.title"/>
 			</explorertype>
 			<explorertype name="m-layout-group-simple" key="type.m-layout-group-simple.name" smalliconstyle="m-icon-16-layout-header" bigiconstyle="m-icon-24-layout-header" reference="xmlcontent">
-				<newresource noncreatable="false" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-group-simple.description" key="type.m-layout-group-simple.title"/>
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-group-simple.description" key="type.m-layout-group-simple.title"/>
 			</explorertype>
 		</explorertypes>
 	</module>

@@ -60,10 +60,10 @@
 		</resourcetypes>
 		<explorertypes>
 			<explorertype name="m-webform-data" key="type.m-webform-data.name" smalliconstyle="oc-icon-16-default" bigiconstyle="oc-icon-24-default" reference="xmlcontent">
-				<newresource noncreatable="false" order="120" autosetnavigation="false" autosettitle="false" info="type.m-webform-data.description" key="type.m-webform-data.title"/>
+				<newresource creatable="true" order="120" autosetnavigation="false" autosettitle="false" info="type.m-webform-data.description" key="type.m-webform-data.title"/>
 			</explorertype>
 			<explorertype name="m-webform" key="type.m-webform.name" smalliconstyle="m-icon-16-webform" bigiconstyle="m-icon-24-webform" reference="xmlcontent">
-				<newresource noncreatable="false" order="110" autosetnavigation="false" autosettitle="false" info="type.m-webform.description" key="type.m-webform.title"/>
+				<newresource creatable="true" order="110" autosetnavigation="false" autosettitle="false" info="type.m-webform.description" key="type.m-webform.title"/>
 			</explorertype>
 		</explorertypes>
 	</module>

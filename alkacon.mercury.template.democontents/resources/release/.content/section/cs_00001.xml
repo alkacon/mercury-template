@@ -22,20 +22,20 @@
       <content><![CDATA[<p>November 3, 2014: Step up to OpenCms 9.5! This version brings template creation without the need to code, plus other features like user generated content, on-the-fly PDF generation, greatly improved documentation and much more - all presented in&nbsp;a responsive demo website based on Bootstrap.</p>
 <h2>New&nbsp;in OpenCms&nbsp;9.5</h2>
 <ul>
-<li><span class="label label-warning">#</span> Drag &amp; drop template and layout creation with nested containers.</li>
-<li><span class="label label-warning">#</span> User generated content for website visitors.</li>
-<li><span class="label label-warning">#</span> Editors don't need to access the workplace anymore.</li>
-<li><span class="label label-warning">#</span> Managing of galleries, categories and templates in the sitemap editor.</li>
-<li><span class="label label-warning">#</span> Greatly enhanced documentation.</li>
-<li><span class="label label-warning">#</span> Generate PDF documents on the fly.</li>
-<li><span class="label label-warning">#</span>&nbsp;Grid based&nbsp;responsive demo website build with&nbsp;Bootstrap.</li>
+<li><span class="label label-orange">#</span> Drag &amp; drop template and layout creation with nested containers.</li>
+<li><span class="label label-orange">#</span> User generated content for website visitors.</li>
+<li><span class="label label-orange">#</span> Editors don't need to access the workplace anymore.</li>
+<li><span class="label label-orange">#</span> Managing of galleries, categories and templates in the sitemap editor.</li>
+<li><span class="label label-orange">#</span> Greatly enhanced documentation.</li>
+<li><span class="label label-orange">#</span> Generate PDF documents on the fly.</li>
+<li><span class="label label-orange">#</span>&nbsp;Grid based&nbsp;responsive demo website build with&nbsp;Bootstrap.</li>
 <li>Integrated Spell Checker for the WYSIWYG editor component.</li>
 <li>New roles for fine grained&nbsp;access to the content management functions.</li>
 <li>Element views allow easy grouping and permission setting for content types.</li>
 <li>Create, copy or reuse options when using&nbsp;existing contents.</li>
 <li>Updated user preferences dialog accessible in the page editor.</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
 <h2>Improved in&nbsp;OpenCms 9.5</h2>
 <ul>
 <li>Added broadcast messages to be shown in the page editor.</li>
@@ -111,14 +111,14 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 9.5 is fully backward compatible with all 8.x and 9.0.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.5.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms 9.5 requires a new version of Alkacon OCEE. The&nbsp;update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.&nbsp;</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms 9.5 requires a new version of Alkacon OCEE. The&nbsp;update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.&nbsp;</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
 <p>OpenCms 9.5 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional.</p>
 <p>On the database side, we have tested with MySQL, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at&nbsp;<a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 9.5 sources from Git, please check out <span class="label label-info">branch_9_5_x</span>. The 9.5.0 release is tagged <span class="label label-info">build_9_5_0</span>.</p>
+<p>In case you want to get the most current OpenCms 9.5 sources from Git, please check out <span class="label label-cyan">branch_9_5_x</span>. The 9.5.0 release is tagged <span class="label label-cyan">build_9_5_0</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using&nbsp;<a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>

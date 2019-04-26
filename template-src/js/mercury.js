@@ -39,7 +39,7 @@ import unobfuscateString            from './unobfuscate.js';
 
 import { _OpenCmsReinitEditButtons, _OpenCmsInit } from './opencms-callbacks.js';
 
-var DEBUG = true || (getParameter("jsdebug") != null);
+var DEBUG = false || (getParameter("jsdebug") != null);
 
 // Module implemented using the "revealing module pattern", see
 // https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript

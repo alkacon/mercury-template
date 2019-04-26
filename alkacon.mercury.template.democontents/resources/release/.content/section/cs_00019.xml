@@ -22,15 +22,15 @@
       <content><![CDATA[<p>November&nbsp;30, 2016: Introducing OpenCms 10.5. This release focuses on site localization, adding tools for assisted translation of pages and sitemaps. Many usability improvements have been made&nbsp;for the Page Editor and the Explorer. OpenCms 10.5 also ships a much improved version of the Apollo Template.&nbsp;Based on Bootstrap, the Apollo Template is fully customizable without coding.&nbsp;</p>
 <h2>New in OpenCms 10.5</h2>
 <ul>
-<li><span class="label label-warning">#</span> Localization: Compare localized subsites side-by-side.</li>
-<li><span class="label label-warning">#</span> Localization: Copy pages from one language to another, including content.</li>
-<li><span class="label label-warning">#</span> Localization: Connect the same page in different languages using locale relations.</li>
-<li><span class="label label-warning">#</span> Localization: Message bundle translator.</li>
-<li><span class="label label-warning">#</span> Localization: Support for localized properties.</li>
-<li><span class="label label-warning">#</span> Asset Connection: Data view widget API allows to natively integrate external assets in the content editor.</li>
-<li><span class="label label-warning">#</span> Asset Connection: Support for using external assets in templates through EL functions.</li>
-<li><span class="label label-warning">#</span> Enhanced online preview in the page editor hides all OpenCms added markup for HTML debugging.</li>
-<li><span class="label label-warning">#</span> The Apollo Template has been greatly enhanced with new options and functionality.</li>
+<li><span class="label label-orange">#</span> Localization: Compare localized subsites side-by-side.</li>
+<li><span class="label label-orange">#</span> Localization: Copy pages from one language to another, including content.</li>
+<li><span class="label label-orange">#</span> Localization: Connect the same page in different languages using locale relations.</li>
+<li><span class="label label-orange">#</span> Localization: Message bundle translator.</li>
+<li><span class="label label-orange">#</span> Localization: Support for localized properties.</li>
+<li><span class="label label-orange">#</span> Asset Connection: Data view widget API allows to natively integrate external assets in the content editor.</li>
+<li><span class="label label-orange">#</span> Asset Connection: Support for using external assets in templates through EL functions.</li>
+<li><span class="label label-orange">#</span> Enhanced online preview in the page editor hides all OpenCms added markup for HTML debugging.</li>
+<li><span class="label label-orange">#</span> The Apollo Template has been greatly enhanced with new options and functionality.</li>
 <li>The user interface now uses mostly font icons for better support in&nbsp;high resolution (retina) screens.</li>
 <li>Unified toolbar appearance and context menus for editors and workplace.</li>
 <li>New&nbsp;and improved Project Management app.</li>
@@ -43,7 +43,7 @@
 <li>Added &lt;cms:jsonpart&gt; tag and CmsJsonPartFilter to split the output of a page to JSON fragments.&nbsp;</li>
 <li>Added &lt;cms:scaleImage&gt; tag for creating responsive image variations, provided by mwxwidmann.</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
 <h2>Improved in OpenCms 10.5</h2>
 <ul>
 <li>Improved behavior when switching between page editor, sitemap and explorer views.</li>
@@ -110,14 +110,14 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 10.5 is fully backward compatible with all 9.0, 9.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
 <p>OpenCms 10.5 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8 or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
 <p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-info">branch_10_5_x</span>. The 10.5 release is tagged <span class="label label-info">build_10_5_0</span>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5 release is tagged <span class="label label-cyan">build_10_5_0</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>

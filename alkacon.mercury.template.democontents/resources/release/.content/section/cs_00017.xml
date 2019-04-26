@@ -22,18 +22,18 @@
       <content><![CDATA[<p>March 23, 2016: OpenCms 10 - X marks the spot. Being the greatest OpenCms update for years, version 10 brings a vastly improved user experience that combines the intuitive "Direct Edit" approach of OpenCms with a new, well integrated Lauchpad app center. OpenCms 10 also ships with the new, responsive Apollo Template. Based on Bootstrap, the Apollo Template is fully customizable without coding.</p>
 <h2>New in OpenCms 10</h2>
 <ul>
-<li><span class="label label-warning">#</span> Modernized the look &amp; feel of the overall user interface</li>
-<li><span class="label label-warning">#</span> New ready-to-use responsive Apollo Template based on Bootstrap</li>
-<li><span class="label label-warning">#</span> Introduced the Launchpad as the central app starting place for the user</li>
-<li><span class="label label-warning">#</span> Drag and Drop of images directly in the web page editor</li>
-<li><span class="label label-warning">#</span> New file explorer with support for column sorting, filtering and large folders</li>
-<li><span class="label label-warning">#</span> Developers can now export and import modules through a SMB network share</li>
-<li><span class="label label-warning">#</span> New Git app allows pushing and pulling of module content directly from the workplace</li>
-<li><span class="label label-warning">#</span> New &lt;cms:search&gt; tag combines SOLR based resource collection and full text searches</li>
-<li><span class="label label-warning">#</span> New &lt;cms:display&gt; tag generates the output for a single resource with a selected formatter</li>
-<li><span class="label label-warning">#</span> New &lt;cms:edit&gt; tag allows editing of arbitrary resources based on UID</li>
-<li><span class="label label-warning">#</span> Reuse groups allow reusing nested container structures on several pages</li>
-<li><span class="label label-warning">#</span> Copy groups allow creation of boiler plate layouts with text / images</li>
+<li><span class="label label-orange">#</span> Modernized the look &amp; feel of the overall user interface</li>
+<li><span class="label label-orange">#</span> New ready-to-use responsive Apollo Template based on Bootstrap</li>
+<li><span class="label label-orange">#</span> Introduced the Launchpad as the central app starting place for the user</li>
+<li><span class="label label-orange">#</span> Drag and Drop of images directly in the web page editor</li>
+<li><span class="label label-orange">#</span> New file explorer with support for column sorting, filtering and large folders</li>
+<li><span class="label label-orange">#</span> Developers can now export and import modules through a SMB network share</li>
+<li><span class="label label-orange">#</span> New Git app allows pushing and pulling of module content directly from the workplace</li>
+<li><span class="label label-orange">#</span> New &lt;cms:search&gt; tag combines SOLR based resource collection and full text searches</li>
+<li><span class="label label-orange">#</span> New &lt;cms:display&gt; tag generates the output for a single resource with a selected formatter</li>
+<li><span class="label label-orange">#</span> New &lt;cms:edit&gt; tag allows editing of arbitrary resources based on UID</li>
+<li><span class="label label-orange">#</span> Reuse groups allow reusing nested container structures on several pages</li>
+<li><span class="label label-orange">#</span> Copy groups allow creation of boiler plate layouts with text / images</li>
 <li>Users are identified with an identicon or a personal image in the toolbar</li>
 <li>Improved the template editor with support for inherited and disabled templates</li>
 <li>Added a "reset password" option to the login dialog</li>
@@ -42,7 +42,7 @@
 <li>Support for system configuration change sets based on XSLT</li>
 <li>Modules are exported with a reduced manifest.xml to avoid merge conflicts</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
 <h2>Improved in OpenCms 10 Final over 10 Beta</h2>
 <ul>
 <li>Added user info dialog and quick launch menu to Page and Sitemap editor toolbar</li>
@@ -87,14 +87,14 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 10.0.0 is fully backward compatible with all 9.0 and 9.5 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.0.0.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
 <p>OpenCms 10.0.0 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8&nbsp;or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
 <p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 10.0.0 sources from Git, please check out <span class="label label-info">branch_10_0_x</span>. The 10.0.0 release is tagged <span class="label label-info">build_10_0_0</span>.</p>
+<p>In case you want to get the most current OpenCms 10.0.0 sources from Git, please check out <span class="label label-cyan">branch_10_0_x</span>. The 10.0.0 release is tagged <span class="label label-cyan">build_10_0_0</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>

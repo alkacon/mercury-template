@@ -22,7 +22,7 @@
       <content><![CDATA[<p>March 2, 2015: OpenCms 9.5.1 is a maintenance update for OpenCms 9.5 that fixes a number of issues and adds some&nbsp;functional enhancements.</p>
 <h2>New in OpenCms 9.5.1</h2>
 <ul>
-<li><span class="label label-warning">#</span> Added "DependentSelectWidget" that obtains values depending on other content fields.</li>
+<li><span class="label label-orange">#</span> Added "DependentSelectWidget" that obtains values depending on other content fields.</li>
 <li>Added alternative login handler to authorize users with a cookie.</li>
 <li>Added option to search for expired / unreleased resources to all gallery dialogs.</li>
 <li>Added option "galleryselect" to select a gallery to file selector widget.</li>
@@ -32,7 +32,7 @@
 <li>Added support for configuring a JDBC connection in the OpenCms db properties.</li>
 <li>Demo template updated to Bootstrap 3.3.2.</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
 <h2>Improved in OpenCms 9.5.1</h2>
 <ul>
 <li>Fixed issue #197 with static export links being generated even if the static export was disabled.</li>
@@ -97,14 +97,14 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 9.5.1 is fully backward compatible with all 8.x and 9.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.5.1.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms&nbsp;9.5.1 requires a new version of Alkacon OCEE. The&nbsp;update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a> to receive the new version.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms&nbsp;9.5.1 requires a new version of Alkacon OCEE. The&nbsp;update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a> to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
 <p>OpenCms&nbsp;9.5.1 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional.</p>
 <p>On the database side, we have tested with MySQL, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 9.5.1 sources from Git, please check out <span class="label label-info">branch_9_5_x</span>. The 9.5.1 release is tagged <span class="label label-info">build_9_5_1</span>.</p>
+<p>In case you want to get the most current OpenCms 9.5.1 sources from Git, please check out <span class="label label-cyan">branch_9_5_x</span>. The 9.5.1 release is tagged <span class="label label-cyan">build_9_5_1</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>

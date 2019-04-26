@@ -22,14 +22,14 @@
       <content><![CDATA[<p>June 22, 2015: OpenCms 9.5.2 fixes a number of issues that persisted in the 9.5.1 release. This version also contains important security improvements against XSS attacks.</p>
 <h2>New&nbsp;in OpenCms 9.5.2</h2>
 <ul>
-<li><span class="label label-warning">#</span>&nbsp;Added Japanese localization (provided by Yuta Aoki).</li>
-<li><span class="label label-warning">#</span>&nbsp;Added Czech localization (provided by Filip Kratochvil).</li>
+<li><span class="label label-orange">#</span>&nbsp;Added Japanese localization (provided by Yuta Aoki).</li>
+<li><span class="label label-orange">#</span>&nbsp;Added Czech localization (provided by Filip Kratochvil).</li>
 <li>Added additional search settings in XSD for mapping of Solr fields to container pages.</li>
 <li>Improved loading times for VfsFileWidget (and other widgets based on the gallery dialog).</li>
 <li>Changed HtmlWidget to list styles from the content CSS in the style select box.</li>
 <li>Demo template updated to Bootstrap 3.3.5.</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
 <h2>Improved in&nbsp;OpenCms 9.5.2</h2>
 <ul>
 <li>Updated Spanish localization (provided by Sergio Raposo Vargas).</li>
@@ -90,14 +90,14 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 9.5.2 is fully backward compatible with all 8.x and 9.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.5.2.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms 9.5.2 requires a new version of Alkacon OCEE. The&nbsp;update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.&nbsp;</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms 9.5.2 requires a new version of Alkacon OCEE. The&nbsp;update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.&nbsp;</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
 <p>OpenCms 9.5.2 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs. Regarding Java 8, we have problems finding Java 8 compliant versions of all used external components. We hope to offer full support for Java 8 in the next major release.</p>
 <p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional.</p>
 <p>On the database side, we have tested with MySQL, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at&nbsp;<a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms&nbsp;9.5.2 sources from Git, please check out <span class="label label-info">branch_9_5_x</span>. The&nbsp;9.5.2 release is tagged <span class="label label-info">build_9_5_2</span>.</p>
+<p>In case you want to get the most current OpenCms&nbsp;9.5.2 sources from Git, please check out <span class="label label-cyan">branch_9_5_x</span>. The&nbsp;9.5.2 release is tagged <span class="label label-cyan">build_9_5_2</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using&nbsp;<a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>

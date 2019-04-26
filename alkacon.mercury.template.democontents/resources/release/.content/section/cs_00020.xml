@@ -25,12 +25,12 @@
       <content><![CDATA[<p>February 15, 2017: OpenCms 10.5.1 is a maintenance update that fixes several issues that persisted in the 10.5.0 release. This version focuses on security and stability, also adding some new features and enhancements.</p>
 <h2>New in OpenCms 10.5.1</h2>
 <ul>
-<li><span class="label label-warning">#</span> Rewritten and improved source search app.</li>
-<li><span class="label label-warning">#</span> Apollo Template: Mayor optimization of all formatters, CSS and JavsScript.</li>
+<li><span class="label label-orange">#</span> Rewritten and improved source search app.</li>
+<li><span class="label label-orange">#</span> Apollo Template: Mayor optimization of all formatters, CSS and JavsScript.</li>
 <li>Rewritten and improved integrated source code editor.</li>
 <li>Page editor now offers filter options in most tabs of the "Add content" dialog.</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
 <h2>Improved in OpenCms 10.5.1</h2>
 <ul>
 <li>Apollo Template: Improved CSS, reduced size by more then 100kb.</li>
@@ -97,7 +97,7 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 10.5.1 is fully backward compatible with all 9.0, 9.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.1.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.1. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.1. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
 <h3>About the Apollo Template</h3>
 <p>The Apollo template is our main demo showcase. It is build using best practices of the latest OpenCms version. The Apollo template sources are available on Github at <a href="%(link1)">https://github.com/alkacon/apollo-template</a>.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
@@ -106,7 +106,7 @@
 <p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-info">branch_10_5_x</span>. The 10.5.1 release is tagged <span class="label label-info">build_10_5_1</span>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5.1 release is tagged <span class="label label-cyan">build_10_5_1</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank">our GitHub issue tracker</a>.</p>

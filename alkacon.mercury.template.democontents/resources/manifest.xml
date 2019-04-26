@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>10.9.9.26</version>
+		<version>10.9.9.27</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -14992,6 +14992,23 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>release/.content/section/cs_00027.xml</source>
+			<destination>release/.content/section/cs_00027.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>3ea6783f-67fb-11e9-b673-0242ac11002b</uuidstructure>
+			<uuidresource>3ea67840-67fb-11e9-b673-0242ac11002b</uuidresource>
+			<datecreated>Fri, 26 Apr 2019 08:13:59 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Release Notes for OpenCms 11.0 Beta]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>release/installation</destination>
 			<type>folder</type>
 			<uuidstructure>f4ebe85b-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -15470,6 +15487,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 11 RC]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/opencms-11.0.0-notes</destination>
+			<type>folder</type>
+			<uuidstructure>0ddf4976-67fb-11e9-b673-0242ac11002b</uuidstructure>
+			<datecreated>Fri, 26 Apr 2019 08:12:37 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[1.0]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[OpenCms 11.0.0]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 11.0.0]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/opencms-11.0.0-notes/index.html</source>
+			<destination>release/opencms-11.0.0-notes/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>0dee8bbb-67fb-11e9-b673-0242ac11002b</uuidstructure>
+			<uuidresource>0dee8bbc-67fb-11e9-b673-0242ac11002b</uuidresource>
+			<datecreated>Fri, 26 Apr 2019 08:12:37 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 11.0.0]]></value>
 				</property>
 			</properties>
 			<relations/>

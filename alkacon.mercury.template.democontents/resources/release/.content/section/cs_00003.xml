@@ -25,10 +25,10 @@
 <li>A new site management tool allows simple configuration of multiple sites.</li>
 <li>Automated / scripted setup option, great for continuous integration&nbsp;builds.</li>
 <li>Optimized build process using Gradle.</li>
-<li><span class="label label-warning">#</span>&nbsp;Improved configuration for content formatters.</li>
-<li><span class="label label-warning">#</span> Updated responsive demo template based on Bootstrap 3.</li>
+<li><span class="label label-orange">#</span>&nbsp;Improved configuration for content formatters.</li>
+<li><span class="label label-orange">#</span> Updated responsive demo template based on Bootstrap 3.</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> have been added or greatly improved since the OpenCms 9 release candidate (RC).</p>
+<p>Items marked with <span class="label label-orange">#</span> have been added or greatly improved since the OpenCms 9 release candidate (RC).</p>
 <h2>Improved in OpenCms 9</h2>
 <ul>
 <li>Added gallery access to the toolbar.</li>
@@ -86,14 +86,14 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 9 is fully backward compatible with all 8.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms 9 requires an new version of Alkacon OCEE that will be released until November 15th.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms 9 requires an new version of Alkacon OCEE that will be released until November 15th.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
 <p>OpenCms 9 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional.</p>
 <p>On the database side, we have tested with MySQL, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at&nbsp;<a href="%(link0)">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 9 sources from Git, please check out <span class="label label-info">branch_9_0_x</span>. The 9.0.0 release is tagged <span class="label label-info">build_9_0_0</span>.</p>
+<p>In case you want to get the most current OpenCms 9 sources from Git, please check out <span class="label label-cyan">branch_9_0_x</span>. The 9.0.0 release is tagged <span class="label label-cyan">build_9_0_0</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link1)">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms 9 using&nbsp;<a href="%(link2)">our GitHub issue tracker</a>.</p>

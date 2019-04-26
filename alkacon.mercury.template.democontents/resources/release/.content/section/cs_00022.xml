@@ -25,8 +25,8 @@
       <content><![CDATA[<p>October 18, 2017: OpenCms 10.5.3 is a maintenance release for OpenCms 10.5. This version fixes an issue introduced with the Chrome 61 update that caused problems in the positioning of UI elements. A number of other issues have also been fixed.</p>
 <h2>Improved in OpenCms 10.5.3</h2>
 <ul>
-<li><span class="label label-warning">#</span>&nbsp;Fixed issue #535 with UI element positioning in Chrome 61.</li>
-<li><span class="label label-warning">#</span>&nbsp;Fixed performance issue with relations in PostgreSQL DB.</li>
+<li><span class="label label-orange">#</span>&nbsp;Fixed issue #535 with UI element positioning in Chrome 61.</li>
+<li><span class="label label-orange">#</span>&nbsp;Fixed performance issue with relations in PostgreSQL DB.</li>
 <li>Fixed issue with network share where files were not unlocked after deletion.</li>
 <li>Fixed issue with network share module export not handling non-folder module resources correctly.</li>
 <li>Fixed issue with explorer type attributes being lost when editing modules.</li>
@@ -36,7 +36,7 @@
 <li>Fixed issue with TinyMCE not being able to open the gallery dialog when editing XML pages with Chrome.</li>
 <li>Fixed issue where switching the project in the explorer to an offline project caused the page editor to open.</li>
 </ul>
-<p>Items marked with <span class="label label-warning">#</span> are considered important improvements in this version.</p>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
 <h2>General OpenCms features</h2>
 <ul>
 <li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
@@ -63,7 +63,7 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 10.5.3 is fully backward compatible with all 10.5, 10.0, 9.5 and 9.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.3.</p>
-<p><span class="label label-danger">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.3. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank" rel="noopener noreferrer">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.3. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank" rel="noopener noreferrer">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
 <h3>About the Apollo Template</h3>
 <p>The Apollo template is our main demo showcase. It is build using best practices of the latest OpenCms version. The Apollo template sources are available on Github at <a href="%(link1)">https://github.com/alkacon/apollo-template</a>.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
@@ -72,7 +72,7 @@
 <p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-info">branch_10_5_x</span>. The 10.5.3 release is tagged <span class="label label-info">build_10_5_3</span>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5.3 release is tagged <span class="label label-cyan">build_10_5_3</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>

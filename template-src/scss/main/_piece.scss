@@ -249,20 +249,20 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
 }
 
 
-// labels used in release notes
+// labels
 .piece .text {
     .label {
         display: inline-block;
         padding: 0 0.4rem;
         color: white;
 
-        &.label-warning {
+        &.label-orange {
             background-color: $con-col-orange;
         }
-        &.label-danger {
+        &.label-red {
             background-color: $con-col-red;
         }
-        &.label-info {
+        &.label-cyan {
             background-color: $con-col-cyan;
         }
     }

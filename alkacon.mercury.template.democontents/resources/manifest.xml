@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>10.9.9.27</version>
+		<version>11.0.0.1</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -9517,14 +9517,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>mercury-demo/.content/section/cs_00053.xml</source>
 			<destination>mercury-demo/.content/section/cs_00053.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f42786ca-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f42786cb-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 23 Sep 2015 12:49:20 GMT</datecreated>
+			<uuidstructure>d57132a5-6a64-11e9-b673-0242ac11002b</uuidstructure>
+			<uuidresource>d57132a6-6a64-11e9-b673-0242ac11002b</uuidresource>
+			<datecreated>Mon, 29 Apr 2019 09:54:52 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Location Map: Contact Address]]></value>
+					<value><![CDATA[Location Map / POI: Using Google maps]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10272,7 +10272,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Location Map: The Location Map element]]></value>
+					<value><![CDATA[Location Map / POI: The Location Map element]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10868,6 +10868,23 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Privacy Policy: The Privacy Policy dynamic function]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section/cs_00133.xml</source>
+			<destination>mercury-demo/.content/section/cs_00133.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>84a25bb3-6a63-11e9-b673-0242ac11002b</uuidstructure>
+			<uuidresource>84a25bb4-6a63-11e9-b673-0242ac11002b</uuidresource>
+			<datecreated>Mon, 29 Apr 2019 09:45:27 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Location Map / POI: Using OpenStreetMaps]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -13214,11 +13231,11 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Location Map]]></value>
+					<value><![CDATA[Location Map / POI]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Location Map]]></value>
+					<value><![CDATA[Location Map / POI]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -13235,7 +13252,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Location Map]]></value>
+					<value><![CDATA[Location Map / POI]]></value>
 				</property>
 			</properties>
 			<relations/>

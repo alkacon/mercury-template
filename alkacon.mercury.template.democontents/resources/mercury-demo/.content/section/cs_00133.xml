@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Using OpenStreetMaps]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://www.maptiler.com/]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>OpenStreetMap elements in Mercury use vector tiles. The <a href="%(link0)"><strong>maptiler</strong></a> platform is used to deliver the tiles. In order to use these maps in production, you need to set up a maptiler cloud account and set your API key in the property <em>osm.apikey</em> on the root level folder of your website.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

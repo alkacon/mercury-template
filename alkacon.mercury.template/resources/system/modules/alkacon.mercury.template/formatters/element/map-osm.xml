@@ -24,7 +24,7 @@
     <HeadIncludeCss>
       <CssLink>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.theme/osmviewer/map.css]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/osmviewer/map.css]]></target>
           <uuid>bb1e189e-24ab-11e9-bcf4-0242ac11002b</uuid>
         </link>
       </CssLink>

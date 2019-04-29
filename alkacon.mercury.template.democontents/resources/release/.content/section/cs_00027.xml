@@ -2,27 +2,30 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 11.0.0]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 11]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
           <target><![CDATA[https://github.com/alkacon/mercury-template]]></target>
         </link>
         <link name="link1" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+          <target><![CDATA[http://www.alkacon.com]]></target>
         </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
         </link>
         <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
           <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
           <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>April 30, 2019: OpenCms 11 brings a major update for the workplace. All workplace apps have been replaced with modernized versions. OpenCms 11 also features many improvements for template generation. Moreover, this release includes the new "Mercury" default template. The Mercury template source code is available <a href="%(link0)">on GitHub.</a></p>
-<h2>Main new features of OpenCms 11.0</h2>
+      <content><![CDATA[<p>April 30, 2019: OpenCms 11 brings a major update for the workplace. All workplace apps have been replaced with modernized versions. OpenCms 11 also features improvements for template generation, in the editors and for remote management. Moreover, this release is compatible with Java 11 and comes with the new "Mercury" default template.</p>
+<h2>Main new features of OpenCms 11</h2>
 <ul>
-<li>Includes the 'Mercury' default template.</li>
+<li>Includes the 'Mercury' default template, source code available <a href="%(link0)">on GitHub.</a>.</li>
 <li>Workplace: Restructured the workplace for improved usability with a modern GUI.</li>
 <li>Workplace: 'Lists' app for management of default 'List' content type using SOLR.</li>
 <li>Workplace: 'Bookmarks' app for quick access to workplace locations.</li>
@@ -30,19 +33,19 @@
 <li>Workplace: 'Sessions' app to manage current user sessions and send messages to users.</li>
 <li>Workplace: 'Script terminal' app to run OpenCms shell scripts from the workplace.</li>
 <li>Workplace: 'SQL console' app to query the configured database pools.</li>
-<li>Template API: Meta mappings allow transfering values from XML contents to the page template (e.g. for SEO meta infos).</li>
+<li>Template API: Meta mappings allow transferring values from XML contents to the page template (e.g. for SEO meta infos).</li>
 <li>Template API: The 'List' content type provides filter and sort options for title / date / category / folder.</li>
 <li>Template API: EL functions to create image variations for 'srcset' or 'picture'.</li>
 <li>Editor: Image now have a 'focal point' to control automatic image cropping around this point.</li>
 <li>Management: Option to execute shell commands in a running OpenCms instance using RMI.</li>
 <li>Management: The flex-cache bucket feature allows selective flex-cache purging.</li>
-<li>Setup: Updating a module will now import only the changes instead of deleting and reinstalling the module.</li>
+<li>Management: Updating a module will now import only the changes instead of deleting and reinstalling the module.</li>
 <li>Setup: Removed all legacy workplace modules, leaving only two core modules in a new installation.</li>
 <li>Setup: Modernized the 'Setup wizard' user interface.</li>
 <li>Setup: Modernized the 'Updater' user interface, providing suport for 10.5, 10.0 and 9.5 versions.</li>
 <li>Support for Java 11.</li>
 </ul>
-<h2>Further improvements in OpenCms 11.0</h2>
+<h2>Further improvements in OpenCms 11</h2>
 <ul>
 <li>Workplace: All images are now vector graphics with high resolution (retina) display support.</li>
 <li>Workplace: Improved 'Accounts' app for user and group management.</li>
@@ -115,16 +118,17 @@
 </ul>
 <h3>Backward compatibility</h3>
 <p>OpenCms 11.0 is backward compatible with all 10.5, 10.0, and 9.5 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 11.0.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Current release versions of Alkacon OCEE are not compatible with OpenCms 11.0. Further information about the future of OCEE will be available soon on the <a href="%(link1)">Alkacon website</a>.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
 <p>OpenCms 11.0 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9, 8.5 or 8. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
 <p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
-<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
 <p>In case you want to get the most current OpenCms 11.0 sources from Git, please check out <span class="label label-cyan">branch_11_0_x</span>. This release is tagged <span class="label label-cyan">build_11_0_0</span>.</p>
 <h3>How you can help</h3>
-<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
-<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
 <p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
     </Text>
     <GalleryTitle><![CDATA[Release Notes for OpenCms 11.0 Beta]]></GalleryTitle>

@@ -134,7 +134,7 @@ function setStyle(jQ, apiKey, showMapFunction){
         m_style = Mercury.getInfo("osmStyleUrl")
         showMapFunction();
     } else {
-        jQ.getJSON("/system/modules/alkacon.mercury.theme/osmviewer/style.json",function (data){
+        jQ.getJSON("/system/modules/alkacon.mercury.template/osmviewer/style.json",function (data){
         	data["sprite"]=window.location.protocol+"//"+window.location.host+Mercury.getInfo("osmSpriteUrl");
             var styleStr = JSON.stringify(data);
             m_style = JSON.parse(styleStr.replace(new RegExp("maptiler-api-key", 'g'),apiKey).replace(new RegExp('#b31b34','g'),Mercury.getThemeJSON("main-theme", [])));
@@ -186,9 +186,10 @@ export function init(jQuery, debug) {
     jQ = jQuery;
     DEBUG = debug;
 
+    m_apiKey = Mercury.getInfo("osmApiKey");
+
     if (DEBUG) {
         console.info("OSM.init()");
-        m_apiKey = Mercury.getInfo("osmApiKey");
         if (m_apiKey != null) {
             console.info("OSM API key is: " + m_apiKey);
         } else {

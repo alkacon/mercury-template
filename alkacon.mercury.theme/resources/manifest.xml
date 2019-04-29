@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>10.9.9.33</version>
+		<version>11.0.0.1</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -3143,54 +3143,6 @@
 			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>system/modules/alkacon.mercury.theme/osmviewer</destination>
-			<type>folder</type>
-			<uuidstructure>a4eaf5cb-24ab-11e9-bcf4-0242ac11002b</uuidstructure>
-			<datecreated>Wed, 30 Jan 2019 16:25:23 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/osmviewer/map.css</source>
-			<destination>system/modules/alkacon.mercury.theme/osmviewer/map.css</destination>
-			<type>plain</type>
-			<uuidstructure>bb1e189e-24ab-11e9-bcf4-0242ac11002b</uuidstructure>
-			<uuidresource>bb1e189f-24ab-11e9-bcf4-0242ac11002b</uuidresource>
-			<datecreated>Wed, 30 Jan 2019 16:26:00 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[CSS required by OSM viewer]]></value>
-				</property>
-				<property>
-					<name>export</name>
-					<value><![CDATA[true]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/osmviewer/style.json</source>
-			<destination>system/modules/alkacon.mercury.theme/osmviewer/style.json</destination>
-			<type>plain</type>
-			<uuidstructure>62d16792-2861-11e9-9bbf-0242ac11002b</uuidstructure>
-			<uuidresource>62d16793-2861-11e9-9bbf-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Feb 2019 09:43:54 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Default map style]]></value>
-				</property>
-			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

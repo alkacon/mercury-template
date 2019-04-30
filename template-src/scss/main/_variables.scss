@@ -476,6 +476,9 @@ $map-border-radius:                 $default-border-radius !default;
 $map-text-color:                    $body-color !default;
 $map-text-size:                     1.4rem !default;
 $map-header-size:                   1.8rem !default;
+$map-text-weight:                   300 !default;
+$map-header-weight:                 normal !default;
+$map-label-color:                   $main-theme !default;
 
 // map colors (for marker groups)
 $map-colors: (

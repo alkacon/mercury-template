@@ -318,9 +318,10 @@ export function init(jQuery, debug) {
     jQ = jQuery;
     DEBUG = debug;
 
+    m_apiKey = Mercury.getInfo("googleApiKey");
+
     if (DEBUG) {
         console.info("GoogleMap.init()");
-        m_apiKey = Mercury.getInfo("googleApiKey");
         if (m_apiKey != null) {
             // Goggle map key is read in mercury:pageinfo tag and read to JavaScript via Mercury.init()
             console.info("GoogleMap API key is: " + Mercury.getInfo("googleApiKey"));

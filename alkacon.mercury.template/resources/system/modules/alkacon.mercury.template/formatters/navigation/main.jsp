@@ -156,6 +156,9 @@
 
         </c:forEach>
 
+        <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
+        <c:set var="hidesearch" value="${fn:startsWith(searchPageUrl,'[')}" />
+
         <c:if test="${not hidesearch}">
             <li id="nav-main-search" aria-expanded="false"><%----%>
                 <a href="#" title="Search" aria-controls="nav_nav-main-search" id="label_nav-main-search"><%----%>
@@ -164,7 +167,7 @@
                 <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>
                     <li><%----%>
                         <div class="styled-form search-form"><%----%>
-                            <form action="${cms.functionDetail['Search page']}" method="post"><%----%>
+                            <form action="${searchPageUrl}" method="post"><%----%>
                                 <div class="input button"><%----%>
                                     <label for="searchNavQuery" class="sr-only">Search</label><%----%>
                                     <input id="searchNavQuery" name="q" type="text" class="blur-focus" autocomplete="off" placeholder='<fmt:message key="msg.page.search.enterquery" />' /><%----%>

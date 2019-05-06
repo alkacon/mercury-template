@@ -609,6 +609,7 @@ msg.page.section.empty.head=Inhalt kann nicht angezeigt werden
 msg.page.section.empty.text=Für diesen Inhalt wird keine Ausgabe erzeugt. Ändere die Einstellungen des Formatters, oder bearbeite den Inhalt im Formular-Editor.
 msg.page.sourcesite.other=Quelle\: {0}
 msg.page.sourcesite.same=Inhalt gehört zu dieser Site
+msg.page.sourcesite.unknown=Platzhalter für Ursprungs-Site
 msg.page.tab.emptycontainer.text=Ziehen Sie zuerst eine Layout-Zeile in diesen Container, und danach Inhalte.
 msg.page.ugc.form.author.email=E-Mail des Autors
 msg.page.ugc.form.author.name=Autor

@@ -609,6 +609,7 @@ msg.page.section.empty.head=No output for this content
 msg.page.section.empty.text=This content does not generate any output. Change the formatter settings, or edit the content in the form editor.
 msg.page.sourcesite.other=Source\: {0}
 msg.page.sourcesite.same=Content belongs to the current site
+msg.page.sourcesite.unknown=Placeholder for source site
 msg.page.tab.emptycontainer.text=Drag a layout row to this container first, an then add content elements.
 msg.page.ugc.form.author.email=Author email
 msg.page.ugc.form.author.name=Author

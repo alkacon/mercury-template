@@ -35,6 +35,13 @@
             </fmt:message>
         </div><%----%>
     </c:when>
+    <c:when test="${empty sourceSite and cms.isEditMode}">
+        <div class="element type-sourcesite oct-meta ${cssWrapper}"><%----%>
+            <div class="marker"><%----%>
+                <fmt:message key="msg.page.sourcesite.unknown" /><%----%>
+            </div><%----%>
+        </div><%----%>
+    </c:when>
     <c:when test="${cms.isEditMode}">
         <div class="element type-sourcesite oct-meta ${cssWrapper}"><%----%>
             <div class="marker"><%----%>

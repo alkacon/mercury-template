@@ -62,8 +62,20 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
     </c:otherwise>
 </c:choose>
 
+
+<c:set var="extraCSS"><cms:property name="mercury.template.css" file="search" default="/" /></c:set>
+<c:if test="${not empty extraCSS and (extraCSS ne 'none')}">
+    <c:set var="extraCSS" value="${extraCSS}custom.css" />
+    <c:if test="${cms.vfs.exists[extraCSS]}">
+        <c:set var="cssExtraCSS" value="${cms.vfs.readResource[extraCSS]}" />
+        <link rel="stylesheet" href="<cms:link>${cssExtraCSS.sitePath}?ver=${cssExtraCSS.dateLastModified}</cms:link>">
+    </c:if>
+</c:if>
+
 <c:set var="extraHead"><cms:property name="mercury.template.extraHead" file="search" default="none" /></c:set>
-<c:if test="${not empty extraHead and extraHead ne 'none'}"><cms:include file="${extraHead}" /></c:if>
+<c:if test="${not empty extraHead and (extraHead ne 'none') and cms.vfs.exists[extraHead]}">
+    <cms:include file="${extraHead}" />
+</c:if>
 
 </head>
 <body>
@@ -99,6 +111,15 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 
 <%-- JavaScript blocking files placed at the end of the document so the pages load faster --%>
 <cms:headincludes type="javascript" />
+
+<c:set var="extraJS"><cms:property name="mercury.template.js" file="search" default="/" /></c:set>
+<c:if test="${not empty extraJS and (extraJS ne 'none')}">
+    <c:set var="extraJS" value="${extraJS}custom.js" />
+    <c:if test="${cms.vfs.exists[extraCSS]}">
+        <c:set var="jsExtraJS" value="${cms.vfs.readResource[extraJS]}" />
+        <script src="<cms:link>${jsExtraJS.sitePath}?ver=${jsExtraJS.dateLastModified}</cms:link>"></script>
+    </c:if>
+</c:if>
 
 <c:set var="extraFoot"><cms:property name="mercury.template.extraFoot" file="search" default="none" /></c:set>
 <c:if test="${not empty extraFoot and extraFoot ne 'none'}"><cms:include file="${extraFoot}" /></c:if>

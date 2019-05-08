@@ -26,10 +26,6 @@
 <%-- OSM API key --%>
 <c:set var="osmApiKey" value="${property['osm.apikey']}" />
 
-<c:if test="${not empty osmApiKey}">
-     <% request.setAttribute("osmSprite",CmsWorkplace.getStaticResourceUri("/osm/sprite")); %>
-</c:if>
-
 <%-- OSM style URL --%>
 <c:set var="osmStyleUrl" value="${property['osm.styleurl']}" />
 
@@ -53,8 +49,8 @@
     --%><c:if test="${not empty googleApiKey}">"googleApiKey":"${googleApiKey}",</c:if><%--
     --%><c:if test="${not empty googleAnalyticsId}">"googleAnalyticsId":"${googleAnalyticsId}",</c:if><%--
     --%><c:if test="${not empty osmApiKey}">"osmApiKey":"${osmApiKey}",</c:if><%--
-    --%><c:if test="${not empty osmApiKey}">"osmSpriteUrl":"${osmSprite}",</c:if><%--
-    --%><c:if test="${not empty osmStyleUrl}">"osmStyleUrl":"${osmStyleUrl}",</c:if><%--
+    --%><c:if test="${not empty osmApiKey}">"osmSpriteUrl":"<%= CmsWorkplace.getStaticResourceUri("/osm/sprite") %>",</c:if><%--
+    --%><c:if test="${not empty osmApiKey and not empty osmStyleUrl}">"osmStyleUrl":"${osmStyleUrl}",</c:if><%--
     --%><c:if test="${not empty googleApiKeyWorkplace}">"googleApiKeyWorkplace":"${googleApiKeyWorkplace}",</c:if><%--
     --%>"editMode":"${cms.isEditMode}",<%--
     --%>"project":"${project}",<%--

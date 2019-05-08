@@ -16,7 +16,7 @@ writeProperty '/' 'NavText' 'Overview'
 writeProperty '/' 'template' '/system/modules/alkacon.mercury.template/templates/mercury.jsp'
 writeProperty '/' 'template.theme' '/system/modules/alkacon.mercury.theme/css/theme-red.min.css'
 writeProperty '/' 'template.title.prefix' 'OpenCms |'
-writeProperty '/' 'template.privacy.policy' '/.content/privacy-policy.xml'
+writeProperty '/' 'mercury.privacy.policy' '/.content/privacy-policy.xml'
 
 createUser 'Author' 'password' 'Sample author user'
 addUserToGroup 'Author' 'Users'
@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.0.2</version>
+		<version>11.0.0.3</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>

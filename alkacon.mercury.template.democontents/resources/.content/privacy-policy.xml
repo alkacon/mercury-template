@@ -15,6 +15,7 @@
     </PolicyText>
     <DisabledMessage><![CDATA[Dieses Element ist deaktiviert da Sie die Verwendung von Cookies nicht zugelassen haben. Sie können Ihre Cookie-Einstellungen auf unserer Seite 'Datenschutz-Bestimmungen' ändern.]]></DisabledMessage>
     <AcceptButtonText><![CDATA[Zulassen]]></AcceptButtonText>
+    <DeclineButtonText><![CDATA[Ablehnen]]></DeclineButtonText>
     <CookieExpirationDays><![CDATA[30]]></CookieExpirationDays>
     <ToggleLabel><![CDATA[Ihre Cookie-Einstellungen]]></ToggleLabel>
   </PrivacyPolicy>
@@ -32,6 +33,7 @@
     </PolicyText>
     <DisabledMessage><![CDATA[This element is disabled because you have not accepted to use Cookies. You can change your cookies settings on our 'privacy policy' page.]]></DisabledMessage>
     <AcceptButtonText><![CDATA[Accept]]></AcceptButtonText>
+    <DeclineButtonText><![CDATA[Decline]]></DeclineButtonText>
     <CookieExpirationDays><![CDATA[30]]></CookieExpirationDays>
   </PrivacyPolicy>
 </PrivacyPolicyData>

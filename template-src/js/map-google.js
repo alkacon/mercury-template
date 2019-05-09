@@ -178,14 +178,16 @@ export function showMarkers(mapId, group) {
 
     if (DEBUG) console.info("GoogleMap showMapMarkers() called with map id: " + mapId);
     var map = m_maps[mapId];
-    var markers = map.markers;
-    var g = decodeURIComponent(group);
-    hideAllInfo(mapId);
-    for (var i = 0; i < markers.length; i++) {
-        if (markers[i].group == g || g == 'showall') {
-            markers[i].setVisible(true);
-        } else {
-            markers[i].setVisible(false);
+    if (map) {
+        var markers = map.markers;
+        var g = decodeURIComponent(group);
+        hideAllInfo(mapId);
+        for (var i = 0; i < markers.length; i++) {
+            if (markers[i].group == g || g == 'showall') {
+                markers[i].setVisible(true);
+            } else {
+                markers[i].setVisible(false);
+            }
         }
     }
 }
@@ -371,7 +373,7 @@ export function init(jQuery, debug) {
                 loadGoogleApi();
 
             } else {
-                if (DEBUG) console.info("GoogleMap cookies not accepted be the user - Google maps are disabled!");
+                if (DEBUG) console.info("GoogleMap cookies not accepted by the user - Google maps are disabled!");
 
                 $mapElements.each(function() {
                     var $mapElement =  jQ(this);
@@ -380,12 +382,13 @@ export function init(jQuery, debug) {
                 });
             }
 
-        }else{
-        	//Activate the hide message (no key found and no style is set
+        } else {
+
+            // activate the hide message (no API key found)
             $mapElements.each(function() {
                 var $mapElement = jQ(this);
                 if (typeof $mapElement.data("map") != "undefined") {
-                 Mercury.hideElement($mapElement);
+                    Mercury.hideElement($mapElement);
                 }
             });
         }

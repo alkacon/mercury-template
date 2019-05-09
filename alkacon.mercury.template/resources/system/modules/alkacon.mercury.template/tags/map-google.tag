@@ -39,113 +39,117 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<c:set var="property" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
-
-<%-- Google Maps API key --%>
-<c:set var="googleApiKey" value="${property['google.apikey']}" />
-
-<c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="ratio" value="${empty ration ? '16-9' : ratio}" />
+<c:set var="property" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
 
-<%-- Default location is the center of Germany --%>
-<c:if test="${empty centerLat}">
-    <c:set var="centerLat" value="${empty markers ? '51.163409' : markers[0].lat}" />
-</c:if>
-<c:if test="${empty centerLng}">
-    <c:set var="centerLng" value="${empty markers ? '10.447721' : markers[0].lng}" />
-</c:if>
+<%-- Google Maps API key --%>
+<c:set var="googleApiKey" value="${property['google.apikey']}" />
+<c:set var="noApiKey" value="${empty googleApiKey or (googleApiKey eq 'none')}" />
 
-<%-- Set other variable defaults --%>
-<c:choose>
-    <c:when test="${empty zoom}">
-        <c:set var="zoom" value="14" />
-    </c:when>
-    <c:when test="${(zoom eq 'firstMarker') and (fn:length(markers) > 0)}">
-        <c:set var="zoom" value="${markers[0].zoom}" />
-    </c:when>
-    <c:otherwise>
-        <c:set var="zoom" value="${cms:mathRound(cms:toNumber(zoom, 14))}" />
-    </c:otherwise>
-</c:choose>
+<c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
 
-<c:if test="${empty type}">
-    <c:set var="type" value="ROADMAP" />
-</c:if>
-
-<c:set var="nl" value="
-" />
-
-<c:forEach var="marker" items="${markers}" varStatus="status">
-
-    <c:if test="${showRoute}">
-        <c:set target="${marker}" property="routeMarkup"><%--
-        --%><div class="markroute"><%--
-            --%><div class="head"><fmt:message key="msg.page.map.route" /></div><%--
-            --%><div class="message"><fmt:message key="msg.page.map.start" /></div><%--
-            --%><form action="https://maps.google.com/maps" method="get" target="_blank" rel="noopener"><%--
-                --%><input type="text" class="form-control" size="15" maxlength="60" name="saddr" value="" /><%--
-                --%><input value="<fmt:message key="msg.page.map.route.button" />" type="submit" class="btn btn-xs"><%--
-                --%><input type="hidden" name="daddr" value="${marker.lat},${marker.lng}"/><%--
-            --%></form><%--
-        --%></div><%--
-    --%></c:set>
+<c:if test="${not noApiKey}">
+    <%-- Default location is the center of Germany --%>
+    <c:if test="${empty centerLat}">
+        <c:set var="centerLat" value="${empty markers ? '51.163409' : markers[0].lat}" />
+    </c:if>
+    <c:if test="${empty centerLng}">
+        <c:set var="centerLng" value="${empty markers ? '10.447721' : markers[0].lng}" />
     </c:if>
 
-    <c:set target="${marker}" property="infoMarkup"><%--
-        --%><div class="map-marker"><%--
-        --%><c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if><%--
-        --%><c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if><%--
-        --%><c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if><%--
-        --%></div><%--
-    --%></c:set>
+    <%-- Set other variable defaults --%>
+    <c:choose>
+        <c:when test="${empty zoom}">
+            <c:set var="zoom" value="14" />
+        </c:when>
+        <c:when test="${(zoom eq 'firstMarker') and (fn:length(markers) > 0)}">
+            <c:set var="zoom" value="${markers[0].zoom}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="zoom" value="${cms:mathRound(cms:toNumber(zoom, 14))}" />
+        </c:otherwise>
+    </c:choose>
 
-    <c:set var="markerJson">${markerJson}<%--
-    --%>${nl}{<%--
-        --%>"lat":"${marker.lat}", <%--
-        --%>"lng":"${marker.lng}", <%--
-        --%>"geocode":"${marker.geocode}", <%--
-        --%>"title":"${cms:encode(marker.name)}", <%--
-        --%>"group":"${empty marker.group ? 'default' : cms:encode(marker.group)}", <%--
-        --%>"info":"${cms:encode(marker.infoMarkup)}"<%--
-    --%>}<%--
-    --%><c:if test="${not status.last}">, </c:if>
-    </c:set>
+    <c:if test="${empty type}">
+        <c:set var="type" value="ROADMAP" />
+    </c:if>
 
-</c:forEach>
+    <%-- We need the newline in an EL variable --%>
+    <c:set var="nl"><mercury:nl/></c:set>
+
+    <c:forEach var="marker" items="${markers}" varStatus="status">
+
+        <c:if test="${showRoute}">
+            <c:set target="${marker}" property="routeMarkup"><%--
+            --%><div class="markroute"><%--
+                --%><div class="head"><fmt:message key="msg.page.map.route" /></div><%--
+                --%><div class="message"><fmt:message key="msg.page.map.start" /></div><%--
+                --%><form action="https://maps.google.com/maps" method="get" target="_blank" rel="noopener"><%--
+                    --%><input type="text" class="form-control" size="15" maxlength="60" name="saddr" value="" /><%--
+                    --%><input value="<fmt:message key="msg.page.map.route.button" />" type="submit" class="btn btn-xs"><%--
+                    --%><input type="hidden" name="daddr" value="${marker.lat},${marker.lng}"/><%--
+                --%></form><%--
+            --%></div><%--
+        --%></c:set>
+        </c:if>
+
+        <c:set target="${marker}" property="infoMarkup"><%--
+            --%><div class="map-marker"><%--
+            --%><c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if><%--
+            --%><c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if><%--
+            --%><c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if><%--
+            --%></div><%--
+        --%></c:set>
+
+        <c:set var="markerJson">${markerJson}<%--
+        --%>${nl}{<%--
+            --%>"lat":"${marker.lat}", <%--
+            --%>"lng":"${marker.lng}", <%--
+            --%>"geocode":"${marker.geocode}", <%--
+            --%>"title":"${cms:encode(marker.name)}", <%--
+            --%>"group":"${empty marker.group ? 'default' : cms:encode(marker.group)}", <%--
+            --%>"info":"${cms:encode(marker.infoMarkup)}"<%--
+        --%>}<%--
+        --%><c:if test="${not status.last}">, </c:if>
+        </c:set>
+
+    </c:forEach>
+</c:if>
 
 <mercury:padding-box ratio="${ratio}">
-    <div id="${id}" class="mapwindow placeholder" <%--
-    --%> data-map='{<%--
-        --%>"zoom":"${zoom}", <%--
-        --%>"type":"${type}", <%--
-        --%>"ratio":"${ratio}", <%--
-        --%>"geocoding":"true", <%--
-        --%>"centerLat":"${centerLat}", <%--
-        --%>"centerLng":"${centerLng}"<%--
-        --%><c:if test="${not empty markerJson}">, <%--
-        --%>  "markers":[${nl}${markerJson}]<%--
-        --%></c:if><%--
-    --%> }'<%--
+
+    ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
+        --%> data-map='{<%--
+            --%>"zoom":"${zoom}", <%--
+            --%>"type":"${type}", <%--
+            --%>"ratio":"${ratio}", <%--
+            --%>"geocoding":"true", <%--
+            --%>"centerLat":"${centerLat}", <%--
+            --%>"centerLng":"${centerLng}"<%--
+            --%><c:if test="${not empty markerJson}">, <%--
+            --%>  "markers":[${nl}${markerJson}]<%--
+            --%></c:if><%--
+        --%> }'<%--
+    --%><c:if test="${not noApiKey}"><%--
+    --%></c:if><%--
     --%><c:if test="${cms.isEditMode}">
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">
-            <c:choose>
-              <c:when test="${empty googleApiKey or (googleApiKey eq 'none')}">
-                data-hidemessage='<fmt:message key="msg.page.map.google.nokey" />' <%----%>
-              </c:when>
-              <c:otherwise>
-                data-hidemessage='<fmt:message key="msg.page.map.google.hide" />' <%----%>
-              </c:otherwise>
-            </c:choose>
+                <c:choose>
+                    <c:when test="${noApiKey}">
+                        data-hidemessage='<fmt:message key="msg.page.map.google.nokey" />' <%----%>
+                    </c:when>
+                    <c:otherwise>
+                        data-hidemessage='<fmt:message key="msg.page.map.google.hide" />' <%----%>
+                    </c:otherwise>
+                </c:choose>
             </cms:bundle>
         </c:if>
-    >
-    </div>
-<%----%>
+    ${'></div>'}
+    <mercury:nl />
 
 </mercury:padding-box>
 

@@ -70,16 +70,17 @@ function showSingleMap(mapData){
     });
 
     m_maps[mapData.id].on('mousedown', function (e) {
-    	this.scrollZoom.enable();
-    	this.dragPan.enable();
-    	this.touchZoomRotate.enable();
+        this.scrollZoom.enable();
+        this.dragPan.enable();
+        this.touchZoomRotate.enable();
+    });
 
-    	});
     m_maps[mapData.id].on('click', function (e) {
-    	this.scrollZoom.enable();
-    	this.dragPan.enable();
-    	this.touchZoomRotate.enable();
-    	});
+        this.scrollZoom.enable();
+        this.dragPan.enable();
+        this.touchZoomRotate.enable();
+    });
+
     m_maps[mapData.id].marker=[];
     var groups = {};
     var groupsFound = 0;
@@ -135,7 +136,7 @@ function setStyle(jQ, apiKey, showMapFunction){
         showMapFunction();
     } else {
         jQ.getJSON("/system/modules/alkacon.mercury.template/osmviewer/style.json",function (data){
-        	data["sprite"]=window.location.protocol+"//"+window.location.host+Mercury.getInfo("osmSpriteUrl");
+            data["sprite"]=window.location.protocol+"//"+window.location.host+Mercury.getInfo("osmSpriteUrl");
             var styleStr = JSON.stringify(data);
             m_style = JSON.parse(styleStr.replace(new RegExp("maptiler-api-key", 'g'),apiKey).replace(new RegExp('#b31b34','g'),Mercury.getThemeJSON("main-theme", [])));
             showMapFunction();
@@ -149,18 +150,16 @@ export function showMarkers(mapId, group){
 
     if (DEBUG) console.info("OSM showMapMarkers() called with id: " + mapId);
     var map = m_maps[mapId];
-    if(typeof map == "undefined"){
-    	//Map not visible
-    	return;
-    }
-    var markers = map.marker;
-    var g = decodeURIComponent(group);
+    if (map) {
+        var markers = map.marker;
+        var g = decodeURIComponent(group);
 
-    for (var i = 0; i < markers.length; i++) {
-        if (markers[i].group == g || g == 'showall') {
-            markers[i].addTo(map);
-        } else {
-            markers[i].remove();
+        for (var i = 0; i < markers.length; i++) {
+            if (markers[i].group == g || g == 'showall') {
+                markers[i].addTo(map);
+            } else {
+                markers[i].remove();
+            }
         }
     }
 }
@@ -238,12 +237,13 @@ export function init(jQuery, debug) {
                 showMaps(jQ, m_apiKey);
             });
 
-        }else{
-        	//Activate the hide message (no key found and no style is set
+        } else {
+
+            // activate the hide message (no API key found)
             $mapElements.each(function() {
                 var $mapElement = jQ(this);
                 if (typeof $mapElement.data("map") != "undefined") {
-                 Mercury.hideElement($mapElement);
+                    Mercury.hideElement($mapElement);
                 }
             });
         }

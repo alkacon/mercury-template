@@ -48,8 +48,8 @@ var Mercury = function(jQ) {
 
     "use strict";
 
-    //Class to mark element to now show.
-    var  HIDE_ELEMENT_CLASS="element-hide";
+    // class to mark element that should be hidden
+    var HIDE_ELEMENT_CLASS="element-hide";
 
     // container for information passed from CSS to JavaScript
     var m_info = {};
@@ -138,28 +138,26 @@ var Mercury = function(jQ) {
     }
 
     function hideElement($element){
-    	if (typeof $element.data("hidemessage") != "undefined"){
-    	  $element.addClass(HIDE_ELEMENT_CLASS);
-    	  $element.addClass("error");
-    	}
+        if (typeof $element.data("hidemessage") != "undefined"){
+            $element.addClass(HIDE_ELEMENT_CLASS);
+        }
     }
 
-    function isElementHidden($element,calb){
+    function isElementHidden($element, callback){
 
-      if (typeof $element.data("hidemessage") != "undefined"){
-        // add the hide element class
-        $element.addClass(HIDE_ELEMENT_CLASS);
-
-        // show the element by clicking on the element
-        jQ($element).on("click",function(event){
-          // remove handler and remove class
-          jQ(event.currentTarget).off("click")
-          jQ(event.currentTarget).removeClass(HIDE_ELEMENT_CLASS);
-          calb(event);
-        });
-        return true;
-      }
-      return false;
+        if (typeof $element.data("hidemessage") != "undefined") {
+            // add the hide element class
+            $element.addClass(HIDE_ELEMENT_CLASS);
+            // show the element by clicking on the element
+            jQ($element).on("click",function(event) {
+            // remove handler and remove class
+            jQ(event.currentTarget).off("click")
+                jQ(event.currentTarget).removeClass(HIDE_ELEMENT_CLASS);
+                callback(event);
+            });
+            return true;
+        }
+        return false;
     }
 
 

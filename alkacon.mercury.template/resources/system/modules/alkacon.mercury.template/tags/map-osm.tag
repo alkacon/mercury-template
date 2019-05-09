@@ -35,74 +35,75 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<%-- OSM Maps API key --%>
-<c:set var="osmKey"><cms:property name="osm.apikey" file="search" /></c:set>
-<%-- OSM Maps API key --%>
+<%-- OSM Maps API key and style URL --%>
+<c:set var="osmApiKey"><cms:property name="osm.apikey" file="search" /></c:set>
+<c:set var="noApiKey" value="${empty osmApiKey or (osmApiKey eq 'none')}" />
 <c:set var="osmStyle"><cms:property name="osm.styleurl" file="search" /></c:set>
-
-
 
 <c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
 
-<%-- Default location is the center of Germany --%>
-<c:if test="${empty centerLat}">
-    <c:set var="centerLat" value="${empty markers ? '51.163409' : markers[0].lat}" />
-</c:if>
-<c:if test="${empty centerLng}">
-    <c:set var="centerLng" value="${empty markers ? '10.447721' : markers[0].lng}" />
-</c:if>
+<c:if test="${not noApiKey}">
+    <%-- Default location is the center of Germany --%>
+    <c:if test="${empty centerLat}">
+        <c:set var="centerLat" value="${empty markers ? '51.163409' : markers[0].lat}" />
+    </c:if>
+    <c:if test="${empty centerLng}">
+        <c:set var="centerLng" value="${empty markers ? '10.447721' : markers[0].lng}" />
+    </c:if>
 
-<%-- Set other variable defaults --%>
-<c:choose>
-    <%-- Note: Zoom levels set with Google must be reduced by 1 to show the same area --%>
-    <c:when test="${empty zoom}">
-        <c:set var="zoom" value="${13}" />
-    </c:when>
-    <c:when test="${(zoom eq 'firstMarker') and (fn:length(markers) > 0)}">
-        <c:set var="zoom" value="${cms:mathRound(cms:toNumber(markers[0].zoom, 14)) - 1}" />
-    </c:when>
-    <c:otherwise>
-        <c:set var="zoom" value="${cms:mathRound(cms:toNumber(zoom, 14)) - 1}" />
-    </c:otherwise>
-</c:choose>
-
-<c:set var="nl" value="
-" />
-
-<c:forEach var="marker" items="${markers}" varStatus="status">
+    <%-- Set other variable defaults --%>
     <c:choose>
-     <c:when test="${cms:isEmptyOrWhitespaceOnly(marker.name)}">
-         <c:set target="${marker}" property="infoMarkup" value=""/>
-     </c:when>
-     <c:otherwise>
-         <c:set target="${marker}" property="infoMarkup"><%--
-        --%><div class="map-marker"><%--
-        --%><c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if><%--
-        --%><c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if><%--
-        --%><c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if><%--
-        --%></div><%--
-    --%></c:set>
-     </c:otherwise>
+        <%-- Note: Zoom levels set with Google must be reduced by 1 to show the same area --%>
+        <c:when test="${empty zoom}">
+            <c:set var="zoom" value="${13}" />
+        </c:when>
+        <c:when test="${(zoom eq 'firstMarker') and (fn:length(markers) > 0)}">
+            <c:set var="zoom" value="${cms:mathRound(cms:toNumber(markers[0].zoom, 14)) - 1}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="zoom" value="${cms:mathRound(cms:toNumber(zoom, 14)) - 1}" />
+        </c:otherwise>
     </c:choose>
 
+    <c:set var="nl" value="
+    " />
 
-    <c:set var="markerJson">${markerJson}<%--
-    --%>${nl}{<%--
-        --%>"lat":"${marker.lat}", <%--
-        --%>"lng":"${marker.lng}", <%--
-        --%>"geocode":"${marker.geocode}", <%--
-        --%>"title":"${cms:encode(marker.name)}", <%--
-        --%>"group":"${empty marker.group ? 'default' : cms:encode(marker.group)}", <%--
-        --%>"info":"${cms:encode(marker.infoMarkup)}"<%--
-    --%>}<%--
-    --%><c:if test="${not status.last}">, </c:if>
-    </c:set>
+    <c:forEach var="marker" items="${markers}" varStatus="status">
+        <c:choose>
+         <c:when test="${cms:isEmptyOrWhitespaceOnly(marker.name)}">
+             <c:set target="${marker}" property="infoMarkup" value=""/>
+         </c:when>
+         <c:otherwise>
+             <c:set target="${marker}" property="infoMarkup"><%--
+            --%><div class="map-marker"><%--
+            --%><c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if><%--
+            --%><c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if><%--
+            --%><c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if><%--
+            --%></div><%--
+        --%></c:set>
+         </c:otherwise>
+        </c:choose>
 
-</c:forEach>
+
+        <c:set var="markerJson">${markerJson}<%--
+        --%>${nl}{<%--
+            --%>"lat":"${marker.lat}", <%--
+            --%>"lng":"${marker.lng}", <%--
+            --%>"geocode":"${marker.geocode}", <%--
+            --%>"title":"${cms:encode(marker.name)}", <%--
+            --%>"group":"${empty marker.group ? 'default' : cms:encode(marker.group)}", <%--
+            --%>"info":"${cms:encode(marker.infoMarkup)}"<%--
+        --%>}<%--
+        --%><c:if test="${not status.last}">, </c:if>
+        </c:set>
+
+    </c:forEach>
+</c:if>
 
 <mercury:padding-box ratio="${ratio}">
-    <div id="${id}" class="mapwindow placeholder" <%--
-    --%> data-map='{<%--
+
+    ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
+   --%> data-map='{<%--
         --%>"zoom":"${zoom}", <%--
         --%>"ratio":"${ratio}", <%--
         --%>"geocoding":"true", <%--
@@ -113,21 +114,20 @@
         --%></c:if><%--
     --%> }'<%--
     --%><c:if test="${cms.isEditMode}">
-          <fmt:setLocale value="${cms.workplaceLocale}" />
-          <cms:bundle basename="alkacon.mercury.template.messages">
-            <c:choose>
-              <c:when test="${(empty osmKey or (osmKey eq 'none')) and empty osmStyle}">
-                data-hidemessage='<fmt:message key="msg.page.map.osm.nokey" />' <%----%>
-              </c:when>
-              <c:otherwise>
-                data-hidemessage='<fmt:message key="msg.page.map.osm.hide" />' <%----%>
-              </c:otherwise>
-            </c:choose>
-          </cms:bundle>
+            <fmt:setLocale value="${cms.workplaceLocale}" />
+            <cms:bundle basename="alkacon.mercury.template.messages">
+                <c:choose>
+                    <c:when test="${noApiKey}">
+                        data-hidemessage='<fmt:message key="msg.page.map.osm.nokey" />' <%----%>
+                    </c:when>
+                    <c:otherwise>
+                        data-hidemessage='<fmt:message key="msg.page.map.osm.hide" />' <%----%>
+                    </c:otherwise>
+                </c:choose>
+            </cms:bundle>
         </c:if>
-    >
-    </div>
-<%----%>
+    ${'></div>'}
+    <mercury:nl />
 
 </mercury:padding-box>
 

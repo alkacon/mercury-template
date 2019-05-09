@@ -109,15 +109,17 @@
 
     <c:if test="${showGroupButtons and (fn:length(markerGroups) > 1)}">
         <div class="mapbuttons"><%----%>
-            <button class="btn btn-sm" onclick="OsmMap.showMarkers('${id}','showall');">
+            <button class="btn btn-sm" onclick="OsmMap.showMarkers('${id}','showall');"><%----%>
                 <fmt:message key="msg.page.map.button.showmarkers" />
             </button><%----%>
-                <c:forEach var="markerGroup" items="${markerGroups}">
-                <button class="btn btn-sm blur-focus" onclick="OsmMap.showMarkers('${id}', '${cms:encode(markerGroup.key)}');">
+            <mercury:nl />
+            <c:forEach var="markerGroup" items="${markerGroups}">
+                <button class="btn btn-sm blur-focus" onclick="OsmMap.showMarkers('${id}', '${cms:encode(markerGroup.key)}');"><%----%>
                     <fmt:message key="msg.page.map.button.show">
                         <fmt:param><c:out value="${markerGroup.key}" /></fmt:param>
                     </fmt:message>
                 </button><%----%>
+                <mercury:nl />
             </c:forEach>
         </div><%----%>
     </c:if>

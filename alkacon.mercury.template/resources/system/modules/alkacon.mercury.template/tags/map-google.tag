@@ -51,6 +51,9 @@
 
 <c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
 
+<%-- We need the newline in an EL variable later --%>
+<c:set var="nl"><mercury:nl/></c:set>
+
 <c:if test="${not noApiKey}">
     <%-- Default location is the center of Germany --%>
     <c:if test="${empty centerLat}">
@@ -76,9 +79,6 @@
     <c:if test="${empty type}">
         <c:set var="type" value="ROADMAP" />
     </c:if>
-
-    <%-- We need the newline in an EL variable --%>
-    <c:set var="nl"><mercury:nl/></c:set>
 
     <c:forEach var="marker" items="${markers}" varStatus="status">
 

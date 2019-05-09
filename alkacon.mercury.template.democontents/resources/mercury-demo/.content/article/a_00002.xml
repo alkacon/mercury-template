@@ -40,6 +40,7 @@
   <Article language="en">
     <Intro><![CDATA[Super easy to use CMS]]></Intro>
     <Title><![CDATA[OpenCms is just fun]]></Title>
+    <Date>1576416000000</Date>
     <Preface><![CDATA[At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.]]></Preface>
     <Image>
       <Image>
@@ -50,7 +51,6 @@
       </Image>
       <Title><![CDATA[Heart Hands]]></Title>
     </Image>
-    <Date>1576416000000</Date>
     <Paragraph>
       <Text name="Text0">
         <links/>

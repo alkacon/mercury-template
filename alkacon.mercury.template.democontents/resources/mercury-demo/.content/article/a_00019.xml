@@ -29,6 +29,7 @@
   <Article language="en">
     <Intro><![CDATA[Editors will have <fun> with OpenCms]]></Intro>
     <Title><![CDATA[OpenCms makes editing <effortless>]]></Title>
+    <Date>1575658800000</Date>
     <Preface><![CDATA[This is the preface text. Lorem ipsum dolor sit amet, consectetuer <adipiscing> elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ]]></Preface>
     <Image>
       <Image>
@@ -38,7 +39,6 @@
         </link>
       </Image>
     </Image>
-    <Date>1575658800000</Date>
     <Paragraph>
       <Caption><![CDATA[This is the Caption]]></Caption>
       <Text name="Text0">

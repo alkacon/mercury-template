@@ -4,6 +4,7 @@
   <Decoy language="en">
     <Intro><![CDATA[Become an expert]]></Intro>
     <Title><![CDATA[The OpenCms documentation]]></Title>
+    <Date>1570870800000</Date>
     <Preface><![CDATA[The Alkacon OpenCms documentation provides developers with an in-depth introduction and reference about how to create websites with OpenCms. ]]></Preface>
     <Image>
       <Image>
@@ -13,7 +14,6 @@
         </link>
       </Image>
     </Image>
-    <Date>1570870800000</Date>
     <Link>
       <Text><![CDATA[Read the docs]]></Text>
       <URI>

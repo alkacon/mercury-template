@@ -20,7 +20,7 @@
 <c:set var="clickToLoad"    value="${setting.clickToLoad.toBoolean}" />
 
 <c:if test="${empty disqusSite}">
-    <c:set var="disqusSite"><cms:property name="template.disqus" file="search" default=""/></c:set>
+    <c:set var="disqusSite"><cms:property name="disqus.site" file="search" default=""/></c:set>
 </c:if>
 
 <mercury:nl/>

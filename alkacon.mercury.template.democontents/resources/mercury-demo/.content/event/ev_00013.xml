@@ -4,9 +4,9 @@
   <Event language="en">
     <Intro><![CDATA[Repeating the experience with a twist]]></Intro>
     <Title><![CDATA[Modified gathering of Repetitive Users]]></Title>
-    <Preface><![CDATA[This is the preface. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.]]></Preface>
     <Dates>{"pattern":{"type":"NONE"},"from":"1587286800000","to":"1587301200000","parentseries":"f3ce1c51-3a95-11e9-bd84-0242ac11002b"}</Dates>
     <Type><![CDATA[User conference]]></Type>
+    <Preface><![CDATA[This is the preface. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.]]></Preface>
     <Paragraph>
       <Caption><![CDATA[This is starting to repeat itself]]></Caption>
       <Text name="Text0">

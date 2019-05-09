@@ -4,8 +4,8 @@
   <Article language="en">
     <Intro><![CDATA[Best CMS ever]]></Intro>
     <Title><![CDATA[OpenCms is just great (Long Art)]]></Title>
-    <Preface><![CDATA[This is the preface. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.]]></Preface>
     <Date>1552316400000</Date>
+    <Preface><![CDATA[This is the preface. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.]]></Preface>
     <Paragraph>
       <Caption><![CDATA[Paragraph Caption]]></Caption>
       <Text name="Text0">

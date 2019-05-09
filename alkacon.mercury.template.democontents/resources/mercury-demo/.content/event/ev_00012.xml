@@ -4,9 +4,9 @@
   <Event language="en">
     <Intro><![CDATA[Repeating the experience]]></Intro>
     <Title><![CDATA[Gathering of Repetitive Users]]></Title>
-    <Preface><![CDATA[This is the preface. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.]]></Preface>
     <Dates>{"from":"1539939600000", "to":"1539954000000", "pattern":{"type":"MONTHLY", "interval":"6", "day":"19"}, "exceptions":["1555664400000","1587286800000"], "occurrences":"6"}</Dates>
     <Type><![CDATA[User conference]]></Type>
+    <Preface><![CDATA[This is the preface. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.]]></Preface>
     <Paragraph>
       <Caption><![CDATA[This is starting to repeat itself]]></Caption>
       <Text name="Text0">

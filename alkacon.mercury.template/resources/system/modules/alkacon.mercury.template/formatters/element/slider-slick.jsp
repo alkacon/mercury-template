@@ -116,7 +116,7 @@
 
 <div class="element type-slider type-slick-slider ${sliderClass}${' '}${cssWrapper}${' '}${textDisplay}" <%--
 --%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
---%> >
+--%>><mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" />
 
@@ -173,8 +173,8 @@
         </c:otherwise>
     </c:choose>
 
-    <div class="slider-box clearfix ${customClass}${' '}${marginClass}"${' '}${customStyle}>
-    <div ${sliderAttrs}>
+    <div class="slider-box clearfix ${customClass}${' '}${marginClass}"${' '}${customStyle}><mercury:nl/>
+    <div ${sliderAttrs}><mercury:nl/>
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">
 
@@ -200,8 +200,9 @@
             <c:set var="fgStyle">style="${posStyle}"</c:set>
         </c:if>
 
-        <div class="slide-wrapper slide-count-${cms:mathFloor(visibleSlidesXS)}${' '}${isHiddenSlide ? 'hide-noscript' : ''}${' '}${animationTrigger}${' '}${customClass}">
-            <div class="visual ${animationTarget}">
+        <mercury:nl />
+        <div class="slide-wrapper slide-count-${cms:mathFloor(visibleSlidesXS)}${' '}${isHiddenSlide ? 'hide-noscript' : ''}${' '}${animationTrigger}${' '}${customClass}"><%----%>
+            <div class="visual ${animationTarget}"><mercury:nl/>
 
                 ${image.value.Link.isSet ?
                     '<a href="'
@@ -213,14 +214,14 @@
 
                     <cms:addparams>
                         <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl' : cssgridCols}</cms:param>
-                        <div class="slide-xs ${adoptRatioToScreen ? 'visible-xs' : ''}">
+                        <div class="slide-xs ${adoptRatioToScreen ? 'visible-xs' : ''}"><%----%>
                             <mercury:image-simple
                                 image="${image}"
                                 ratio="${imageRatioXS}"
                                 title="${image.value.SuperTitle.toString()}">
                                     <c:set var="copyright" value="${imageCopyrightHtml}" />
                             </mercury:image-simple>
-                        </div>
+                        </div><mercury:nl/>
                     </cms:addparams>
 
                     <c:if test="${adoptRatioToScreen}">
@@ -240,42 +241,42 @@
 
                         <cms:addparams>
                             <cms:param name="cssgrid">hidden-xl hidden-lg hidden-md hidden-xs</cms:param>
-                            <div class="slide-sm visible-sm">
+                            <div class="slide-sm visible-sm"><%----%>
                                 <mercury:image-simple
                                     image="${image}"
                                     ratio="${imageRatioSM}"
                                     title="${image.value.SuperTitle.toString()}" />
-                            </div>
+                            </div><mercury:nl/>
                         </cms:addparams>
 
                         <cms:addparams>
                             <cms:param name="cssgrid">hidden-xl hidden-lg hidden-sm hidden-xs</cms:param>
-                            <div class="slide-md visible-md">
+                            <div class="slide-md visible-md"><%----%>
                                 <mercury:image-simple
                                     image="${image}"
                                     ratio="${imageRatioMD}"
                                     title="${image.value.SuperTitle.toString()}" />
-                            </div>
+                            </div><mercury:nl/>
                         </cms:addparams>
 
                         <cms:addparams>
                             <cms:param name="cssgrid">hidden-xl hidden-xs hidden-sm hidden-md</cms:param>
-                            <div class="slide-lg visible-lg">
+                            <div class="slide-lg visible-lg"><%----%>
                                 <mercury:image-simple
                                     image="${image}"
                                     ratio="${imageRatioLG}"
                                     title="${image.value.SuperTitle.toString()}" />
-                            </div>
+                            </div><mercury:nl/>
                         </cms:addparams>
 
                         <cms:addparams>
                             <cms:param name="cssgrid">hidden-lg hidden-xs hidden-sm hidden-md</cms:param>
-                            <div class="slide-xl visible-xl">
+                            <div class="slide-xl visible-xl"><%----%>
                                 <mercury:image-simple
                                     image="${image}"
                                     ratio="${imageRatioXL}"
                                     title="${image.value.SuperTitle.toString()}" />
-                            </div>
+                            </div><mercury:nl/>
                         </cms:addparams>
 
                     </c:if>
@@ -283,14 +284,13 @@
                 ${image.value.Link.isSet ? '</a>':''}
 
                 <c:if test="${showImageCopyright and (not empty copyright)}">
-                    <div class="copyright">${copyright}</div>
+                    <div class="copyright">${copyright}</div><mercury:nl/>
                 </c:if>
-            </div>
+            </div><mercury:nl/>
 
             <c:if test="${not (slickType eq 'logo')
                 and (image.value.SuperTitle.isSet || image.value.TitleLine1.isSet || image.value.TitleLine2.isSet)}">
 
-                <mercury:nl />
                 ${image.value.Link.isSet ?
                     '<a href="'
                         .concat(image.value.Link.toLink)
@@ -332,14 +332,16 @@
                 ${image.value.Link.isSet ? '</a>':''}
                 <mercury:nl />
             </c:if>
-        </div>
+        </div><%----%>
+        <mercury:nl />
 
         <c:set var="isHiddenSlide" value="${status.count >= visibleSlidesXS}" />
     </c:forEach>
-    </div>
-    </div>
+    </div><%----%>
+    </div><%----%>
 
-</div>
+</div><%----%>
+<mercury:nl />
 
 </cms:bundle>
 </cms:formatter>

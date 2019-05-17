@@ -14,8 +14,8 @@
 writeProperty '/' 'Description' 'The OpenCms demo, brought to you by Alkacon Software.'
 writeProperty '/' 'NavText' 'Overview'
 writeProperty '/' 'template' '/system/modules/alkacon.mercury.template/templates/mercury.jsp'
-writeProperty '/' 'template.theme' '/system/modules/alkacon.mercury.theme/css/theme-red.min.css'
-writeProperty '/' 'template.title.prefix' 'OpenCms |'
+writeProperty '/' 'mercury.theme' '/system/modules/alkacon.mercury.theme/css/theme-red.min.css'
+writeProperty '/' 'mercury.title.prefix' 'OpenCms |'
 writeProperty '/' 'mercury.privacy.policy' '/.content/privacy-policy.xml'
 
 createUser 'Author' 'password' 'Sample author user'
@@ -12238,7 +12238,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[/mercury-demo/lists/elaborate/]]></value>
 				</property>
 				<property>
-					<name>template.side.wide</name>
+					<name>mercury.side.wide</name>
 					<value><![CDATA[true]]></value>
 				</property>
 			</properties>

@@ -15,7 +15,7 @@
 
 <c:set var="currentSite"            value="${cms.vfs.readSubsiteFor(cms.requestContext.uri)}" />
 <c:set var="currentSiteProps"       value="${cms.vfs.readProperties[currentSite]}" />
-<c:set var="sitename"               value="${not empty currentSiteProps['template.sitename'] ? currentSiteProps['template.sitename'] : currentSiteProps['Title'] }" />
+<c:set var="sitename"               value="${not empty currentSiteProps['mercury.sitename'] ? currentSiteProps['mercury.sitename'] : currentSiteProps['Title'] }" />
 
 <mercury:nl />
 <div class="type-sitename ${cssWrapper}"><%----%>

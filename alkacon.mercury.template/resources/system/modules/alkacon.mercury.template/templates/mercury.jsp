@@ -36,7 +36,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <mercury:meta-info/>
 
 <%-- Add favicon --%>
-<c:set var="faviconPath"><cms:property name="mercury.template.favIcon" file="search" default="/favicon.png" /></c:set>
+<c:set var="faviconPath"><cms:property name="mercury.favicon" file="search" default="/favicon.png" /></c:set>
 <c:if test="${not cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage}">
     <c:set var="faviconPath">system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
 </c:if>
@@ -48,7 +48,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <cms:enable-ade />
 <cms:headincludes type="css" />
 
-<c:set var="replaceCss"><cms:property name="mercury.template.replaceCss" file="search" default="none" /></c:set>
+<c:set var="replaceCss"><cms:property name="mercury.replace.head" file="search" default="none" /></c:set>
 <c:choose>
     <c:when test="${not empty replaceCss and replaceCss ne 'none'}">
         <%-- This way an "replaceCss" JSP can override the default CSS theme. --%>
@@ -56,7 +56,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
     </c:when>
     <c:otherwise>
         <%-- Common CSS and theme CSS --%>
-        <c:set var="cssTheme"><cms:property name="template.theme" file="search" default="/system/modules/alkacon.mercury.theme/css/theme-red.min.css" /></c:set>
+        <c:set var="cssTheme"><cms:property name="mercury.theme" file="search" default="/system/modules/alkacon.mercury.theme/css/theme-red.min.css" /></c:set>
         <c:set var="cssCommonRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)']}" />
         <link rel="stylesheet" href="<cms:link>${cssCommonRes.sitePath}?ver=${cssCommonRes.dateLastModified}</cms:link>">
         <c:set var="cssThemeRes" value="${cms.vfs.readResource[cssTheme]}" />
@@ -65,7 +65,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 </c:choose>
 
 <%-- Additional extra CSS --%>
-<c:set var="extraCSS"><cms:property name="mercury.template.css" file="search" default="/" /></c:set>
+<c:set var="extraCSS"><cms:property name="mercury.extra.css" file="search" default="/" /></c:set>
 <c:if test="${not empty extraCSS and (extraCSS ne 'none')}">
     <c:set var="extraCSS" value="${extraCSS}custom.css" />
     <c:if test="${cms.vfs.exists[extraCSS]}">
@@ -75,7 +75,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 </c:if>
 
 <%-- Additional extra head include, can e.g. be used to add inline CSS --%>
-<c:set var="extraHead"><cms:property name="mercury.template.extraHead" file="search" default="none" /></c:set>
+<c:set var="extraHead"><cms:property name="mercury.extra.head" file="search" default="none" /></c:set>
 <c:if test="${not empty extraHead and (extraHead ne 'none') and cms.vfs.exists[extraHead]}">
     <cms:include file="${extraHead}" />
 </c:if>
@@ -116,7 +116,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <%-- JavaScript blocking files placed at the end of the document so the pages load faster --%>
 <cms:headincludes type="javascript" />
 
-<c:set var="extraJS"><cms:property name="mercury.template.js" file="search" default="/" /></c:set>
+<c:set var="extraJS"><cms:property name="mercury.extra.js" file="search" default="/" /></c:set>
 <c:if test="${not empty extraJS and (extraJS ne 'none')}">
     <c:set var="extraJS" value="${extraJS}custom.js" />
     <c:if test="${cms.vfs.exists[extraCSS]}">
@@ -125,7 +125,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
     </c:if>
 </c:if>
 
-<c:set var="extraFoot"><cms:property name="mercury.template.extraFoot" file="search" default="none" /></c:set>
+<c:set var="extraFoot"><cms:property name="mercury.extra.foot" file="search" default="none" /></c:set>
 <c:if test="${not empty extraFoot and extraFoot ne 'none'}"><cms:include file="${extraFoot}" /></c:if>
 
 <%-- Privacy policy markup is inserted last --%>

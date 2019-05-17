@@ -238,7 +238,7 @@
     <c:when test="${(variant eq 'area-side-main') or (variant eq 'area-main-side')}">
         <%-- la_00002 / la_00003 --%>
         <c:set var="asideFirst"                 value="${variant eq 'area-side-main'}" />
-        <c:set var="asideWide"                  value="${'true' eq cms.vfs.readResource[cms.requestContext.uri].propertySearch['template.side.wide']}" />
+        <c:set var="asideWide"                  value="${'true' eq cms.vfs.readResource[cms.requestContext.uri].propertySearch['mercury.side.wide']}" />
         <main class="area-content ${cssWrapper}"><%----%>
             <div class="container"><%----%>
                 <div class="row"><%----%>

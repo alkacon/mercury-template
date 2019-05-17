@@ -29,8 +29,8 @@
 
 <c:set var="pagetitle"><mercury:meta-title addIntro="${true}" /></c:set>
 <c:set var="pagetitle"><mercury:meta-value text="${pagetitle}" keepHtml="${true}" /></c:set>
-<c:set var="titleprefix" value="${contentProperties['template.title.prefix']}" />
-<c:set var="titlesuffix" value="${contentProperties['template.title.suffix']}" />
+<c:set var="titleprefix" value="${contentProperties['mercury.title.prefix']}" />
+<c:set var="titlesuffix" value="${contentProperties['mercury.title.suffix']}" />
 
 <title>${titleprefix}${empty titleprefix ? '' : ' '}${pagetitle}${empty titlesuffix ? '' : ' '}${titlesuffix}</title>
 

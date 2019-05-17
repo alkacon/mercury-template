@@ -807,18 +807,20 @@ var Mercury = function(jQ) {
             }
         }
 
-        // support for revolution slider is unavailable by default
-        // if (requiresModule(".type-complex-slider")) {
-        //    try {
-        //        import(
-        //            /* webpackChunkName: "mercury-slider-rev" */
-        //            "./slider-rev.js").then( function (SliderRev) {
-        //            SliderRev.init(jQ, DEBUG);
-        //        });
-        //    } catch (err) {
-        //        console.warn("SliderRev.init() error", err);
-        //    }
-        // }
+        // support for revolution slider is disabled by default
+        if (false) {
+            if (requiresModule(".type-complex-slider")) {
+                try {
+                    import(
+                        /* webpackChunkName: "mercury-slider-rev" */
+                        "./slider-rev.js").then( function (SliderRev) {
+                        SliderRev.init(jQ, DEBUG);
+                    });
+                } catch (err) {
+                    console.warn("SliderRev.init() error", err);
+                }
+            }
+        }
 
         if (requiresModule(".effect-parallax-bg")) {
             try {

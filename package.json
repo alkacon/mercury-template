@@ -56,6 +56,7 @@
     "css-postcss": "postcss --config postcss.config.js build/npm/01_processed/*.css --dir build/npm/02_postcssed",
     "css-minify": "node ./npmcleancss.js --cleancss --inputFiles 'build/npm/02_postcssed/*.css' --outputDir build/npm/03_minified",
     "css-plugins": "cleancss --level 0 --skip-rebase --source-map --source-map-inline-sources --output build/npm/01_processed/base.css template-src/font-awesome/css/font-awesome.css",
+    "css-plugins-revslider": "cleancss --level 0  --skip-rebase --source-map --source-map-inline-sources --output build/npm/01_processed/base.css template-src/font-awesome/css/font-awesome.css template-src/plugins/revolution-slider/css/settings-source-reduced.css template-src/plugins/revolution-slider/css/navigation-reduced.css",
     "css-deploy": "copyfiles -f build/npm/03_minified/* ${OCMOUNT}/$npm_package_config_deployTargetVfsDir",
     "dist": "npm-run-all css js",
     "js": "npm-run-all js-clean js-compile js-deploy",

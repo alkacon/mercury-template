@@ -18,6 +18,10 @@ module.exports = {
             },{
                 from: '../fonts/',
                 to: npmConfig.resourcePath('fonts/')
+            // revolution slider, does not hurt if this is here even if revslider is not enabled
+            },{
+                from: '../revolution-slider/',
+                to: npmConfig.resourcePath('../alkacon.mercury.xtensions/revolution-slider/')
             }]
         })
     ]

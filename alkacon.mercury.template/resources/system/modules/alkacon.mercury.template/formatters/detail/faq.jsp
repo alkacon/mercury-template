@@ -48,7 +48,7 @@
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
 <mercury:nl />
-<div class="detail-page type-faq ${cssWrapper}"><%----%>
+<div class="detail-page type-faq layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
 <mercury:nl />
 
 

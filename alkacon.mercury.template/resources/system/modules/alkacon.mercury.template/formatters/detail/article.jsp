@@ -53,7 +53,7 @@
 <c:set var="ade"                    value="${true}" />
 
 <mercury:nl />
-<div class="detail-page type-article ${cssWrapper}"><%----%>
+<div class="detail-page type-article layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
 <mercury:nl />
 
 <mercury:piece
@@ -87,7 +87,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout != 0)}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
 
         <c:if test="${showDate or showAuthor}">
             <div class="visual-info ${not showAuthor ? 'right' : ''}"><%----%>
@@ -96,7 +96,7 @@
             </div><%----%>
         </c:if>
 
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 1)}" />
     </jsp:attribute>
 
 </mercury:piece>

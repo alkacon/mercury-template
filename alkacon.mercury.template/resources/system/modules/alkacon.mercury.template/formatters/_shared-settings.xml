@@ -905,7 +905,8 @@
       <Default><![CDATA[50]]></Default>
       <WidgetConfig><![CDATA[
             50:      %(key.msg.setting.keyVisualOption.imageOverlay)|
-            0:       %(key.msg.setting.keyVisualOption.noImageOverlay)|
+            0:       %(key.msg.setting.keyVisualOption.textAboveImage)|
+            1:       %(key.msg.setting.keyVisualOption.textBelowImage)|
             4:       %(key.msg.setting.keyVisualOption.sideImageLeft)|
             5:       %(key.msg.setting.keyVisualOption.sideImageRight)
         ]]></WidgetConfig>
@@ -933,20 +934,6 @@
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[0]]></Default>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[keyVisualOption.detail]]></IncludeName>
-      <PropertyName><![CDATA[keyVisualOption]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.keyVisualOption)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.keyVisualOption.help)]]></Description>
-      <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[visual-over]]></Default>
-      <WidgetConfig><![CDATA[
-            visual-over:        %(key.msg.setting.keyVisualOption.imageOverlay)|
-            visual-full:        %(key.msg.setting.keyVisualOption.noImageOverlay)|
-            visual-float right: %(key.msg.setting.keyVisualOption.sideImageRight)|
-            visual-float left:  %(key.msg.setting.keyVisualOption.sideImageLeft)
-        ]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[visualOption.tile]]></IncludeName>

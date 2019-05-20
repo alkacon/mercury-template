@@ -55,7 +55,7 @@
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
 <mercury:nl />
-<div class="detail-page type-job ${cssWrapper}"><%----%>
+<div class="detail-page type-job layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
 <mercury:nl />
 
 <mercury:piece
@@ -88,7 +88,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout != 0)}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
 
         <c:if test="${showLocation}">
             <c:set var="location">
@@ -130,6 +130,8 @@
                 <c:if test="${showLocation}"><div class="info location">${location}</div></c:if>
             </div><%----%>
         </c:if>
+
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 1)}" />
 
         <c:if test="${firstParagraph.value.Text.isSet}">
             <div class="visual-text" ${firstParagraph.value.Text.rdfaAttr}><%----%>

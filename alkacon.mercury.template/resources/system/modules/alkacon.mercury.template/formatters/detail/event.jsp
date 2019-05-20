@@ -59,7 +59,7 @@
 <c:set var="ade"                    value="${empty cms.detailContentId or (not empty date) and (value.Dates.toDateSeries.isExtractedDate or value.Dates.toDateSeries.isSingleDate)}" />
 
 <mercury:nl />
-<div class="detail-page type-event ${cssWrapper}"><%----%>
+<div class="detail-page type-event layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
 <mercury:nl />
 
 <mercury:event-booking
@@ -99,7 +99,7 @@
         </jsp:attribute>
 
         <jsp:attribute name="text">
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout != 0)}" />
+            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
 
             <c:if test="${showLocation}">
                 <c:set var="location">
@@ -142,7 +142,7 @@
                 </div><%----%>
             </c:if>
 
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay}" />
+            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 1)}" />
         </jsp:attribute>
 
     </mercury:piece>

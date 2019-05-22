@@ -3,7 +3,7 @@
     display-name="image-simple"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
-    description="Displays a responsive image without additional markup." %>
+    description="Displays a non-responsive image." %>
 
 
 <%@ attribute name="image" type="java.lang.Object" required="true"
@@ -17,20 +17,8 @@
     description="Can be used to scale the image in a specific ratio,
     Allowed valued are: '1-1', '4-3', '3-2', '16-9', '2-1' and '2,35-1'" %>
 
-<%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
-    description="Use lazy loading or not?"%>
-
-<%@ attribute name="noScript" type="java.lang.Boolean" required="false"
-    description="Generate noscript tags for lazy loading images?"%>
-
-<%@ attribute name="sizes" type="java.lang.String" required="false"
-    description="Container sizes to create image variations for." %>
-
 <%@ attribute name="cssImage" type="java.lang.String" required="false"
     description="'class' atttribute to set directly on the generated img tag."%>
-
-<%@ attribute name="cssWrapper" type="java.lang.String" required="false"
-    description="'class' atttribute to set on the src-box div surrounding the generated img." %>
 
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Enables advanced direct edit for the generated content.
@@ -63,17 +51,13 @@
 
 <c:if test="${not empty imageBean}">
 
-    <mercury:image-srcset
-        imagebean="${imageBean}"
-        alt="${imageTitle}"
-        sizes="${sizes}"
-        title="${imageTitleCopyright}"
-        lazyLoad="${lazyLoad}"
-        noScript="${noScript}"
-        attrWrapper="${imageDndAttr}"
-        cssImage="${cssImage}"
-        cssWrapper="${cssWrapper}"
-    />
+    <img src="${imageUrl}" <%--
+    --%><c:if test="${not empty imageWidth}">${' '}width="${imageWidth}"</c:if>
+        <c:if test="${not empty imageHeight}">${' '}height="${imageHeight}"</c:if>
+        <c:if test="${not empty cssImage}">${' '}class="${cssImage}"</c:if>
+        <c:if test="${not empty imageTitle}">${' '}alt="${imageTitle}"</c:if>
+        <c:if test="${not empty imageTitleCopyright and (imageTitleCopyright ne imageTitle)}">${' '}title="${imageTitleCopyright}"</c:if><%--
+--%>><%----%>
 
 </c:if>
 

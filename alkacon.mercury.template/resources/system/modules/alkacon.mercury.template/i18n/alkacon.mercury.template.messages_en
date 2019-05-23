@@ -1041,6 +1041,7 @@ msg.setting.tileCss.md6-lg4-xl3=1 tile on XS and SM - 2 on MD - 3 on LG - 4 on X
 msg.setting.tileCss.md6-xl3=1 tile on XS and SM - 2 on MD and LG - 4 on XL
 msg.setting.tileCss.md6-xl4=1 tile on XS and SM - 2 on MD and LG - 3 on XL
 msg.setting.tileCss.none=Don't use tiles
+msg.setting.tileCss.tile-defined=Breakpoints are defined by the tiles
 msg.setting.tileCss.xs12=1 tile on XS, SM, MD, LG and XL
 msg.setting.tileCss.xs6-md4-lg3-xl2=2 tiles on XS and SM - 3 on MD - 4 on LG - 6 on XL
 msg.setting.tileCss.xs6-md4-xl2=2 tiles on XS and SM - 3 on MD and LG - 6 on XL

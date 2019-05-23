@@ -38,7 +38,7 @@
     background-color: $highlight-color;
     color: get-text-color($highlight-color);
     overflow: hidden;
-    padding: 20px;
+    padding: $box-padding;
     @include round-corners($default-border-radius);
 
     *:not(a) {

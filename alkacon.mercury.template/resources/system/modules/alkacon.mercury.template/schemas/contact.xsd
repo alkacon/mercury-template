@@ -22,6 +22,7 @@
             <xsd:element name="Position" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
             <xsd:element name="Contact" type="OpenCmsContactItem" />
+            <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="Link" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
@@ -38,7 +39,7 @@
             <tabs>
                 <tab element="Kind" collapse="false" name="%(key.tab.Contact)" />
                 <tab element="Contact" collapse="true" name="%(key.tab.AddressPhone)" />
-                <tab element="Description" collapse="false" name="%(key.tab.FurtherInfo)" />
+                <tab element="Title" collapse="false" name="%(key.tab.FurtherInfo)" />
             </tabs>
             <searchsettings containerPageOnly="true">
                 <searchsetting element="GalleryTitle" searchcontent="false">
@@ -115,6 +116,13 @@
                     <PropertyName>Contact</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Contact.Contact)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Contact.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-section.title)]]></Default>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>

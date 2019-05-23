@@ -55,6 +55,7 @@
         &.row-tile {
             margin-left: -#{$space}px;
             margin-right: -#{$space}px;
+            padding-bottom: #{$grid-gutter-width - (2px * $space)};
         }
 
         .tile-col {

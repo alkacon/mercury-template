@@ -1878,7 +1878,8 @@
             tile-col col-md-6 col-lg-3:                 %(key.msg.setting.tileCss.md6-lg3)|
             tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
             tile-col col-md-6:                          %(key.msg.setting.tileCss.md6)|
-            tile-col col-12:                            %(key.msg.setting.tileCss.xs12)
+            tile-col col-12:                            %(key.msg.setting.tileCss.xs12)|
+            from-tiles:                                 %(key.msg.setting.tileCss.tile-defined)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

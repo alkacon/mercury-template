@@ -23,6 +23,9 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Title</PropertyName>

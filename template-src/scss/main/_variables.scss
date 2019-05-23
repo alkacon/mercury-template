@@ -29,7 +29,7 @@ $black:                             #000 !default;
 $reduced-colors:                    () !default;
 
 // Larger array of colors to be used for even more background variations (should include the reduced colors)
-$many-colors:                       () !default;
+$many-colors:                       $reduced-colors !default;
 
 
 // Font definitions
@@ -665,6 +665,9 @@ $border-positions:                  () !default;
 $border-styles:                     () !default;
 
 $images-sizes:                      () !default;
+
+// Further variables used by generics
+$box-padding:                       20px !default;
 
 // Spaces used for margins and paddings
 $margins:                           (0, 5, 10, 20, 30, 40) !default;

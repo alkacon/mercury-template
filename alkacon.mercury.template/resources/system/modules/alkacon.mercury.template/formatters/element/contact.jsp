@@ -37,6 +37,9 @@
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact' : ''}" />
 <c:set var="ade"                    value="${true}" />
 
+<c:set var="hsizeTitle"             value="${hsize}" />
+<c:set var="hsize"                  value="${value.Title.isSet ? hsize + 1 : hsize}" />
+
 <mercury:nl />
 <c:choose>
 <c:when test="${(pieceLayout < 2) or not showImage}">
@@ -44,7 +47,8 @@
     <div class="element type-contact ${compactLayout}${' '}${visualOption}${' '}${cssWrapper}" ${kind}><%----%>
     <mercury:nl />
 
-        <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="head" />
+        <mercury:heading level="${hsizeTitle}" text="${value.Title}" ade="${ade}" css="head" />
+
         <mercury:contact
             kind="${value.Kind}"
             image="${value.Image}"
@@ -83,7 +87,7 @@
         pieceLayout="${pieceLayout}"
         attrWrapper="${kind}"
         heading="${value.Title}"
-        hsize="${hsize}"
+        hsize="${hsizeTitle}"
         ade="${false}">
 
         <jsp:attribute name="markupVisual">
@@ -96,13 +100,13 @@
                 link="${value.Link}"
                 linkOption="${setting.linkOption.toString eq 'imageOverlay' ? 'imageOverlay' : ''}"
                 effectOption="${showImage and (setting.effect.toString ne 'none') ? setting.effect.toString : ''}"
+                hsize="${hsize}"
                 showImage="${true}"
                 showImageZoom="${showImageZoom}"
             />
         </jsp:attribute>
 
         <jsp:attribute name="markupText">
-            <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="head" />
             <mercury:contact
                 kind="${value.Kind}"
                 link="${value.Link}"
@@ -114,6 +118,7 @@
                 labelOption="${setting.labels.toString}"
                 linkOption="${setting.linkOption.toString}"
                 effectOption="${showImage and (setting.effect.toString ne 'none') ? setting.effect.toString : ''}"
+                hsize="${hsize}"
                 showName="${true}"
                 showPosition="${setting.showPosition.toBoolean}"
                 showAddress="${setting.showAddress.toString == 'true'}"

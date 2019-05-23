@@ -19,6 +19,7 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
+<c:set var="tileClass"              value="${setting.squareGrid.toString}" />
 <c:set var="animationClass"         value="${setting.effect.toString != 'none' ? setting.effect.toString.concat(' effect-box') : ''}" />
 <c:set var="fullOverlay"            value="${setting.fullOverlay.toBoolean}" />
 <c:set var="tileCss"                value="${empty param.tilegrid ? 'tile-col col-sm-6 col-md-4 col-lg-3' : param.tilegrid}" />

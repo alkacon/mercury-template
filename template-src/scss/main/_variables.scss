@@ -384,13 +384,18 @@ $list-border-radius:                $default-border-radius !default;
 $list-tile-header-lines:            2 !default;
 $list-side-color:                   $grey-light !default;
 
-$pagination-text:                   $text-dark !default;
-$pagination-border:                 $grey-light !default;
-$pagination-background:             $body-bg !default;
-$pagination-hover:                  $main-theme-hover !default;
+$pagination-text-color:             $text-dark !default;
+$pagination-border-color:           $grey-light !default;
+$pagination-border:                 1px solid $pagination-border-color !default;
 $pagination-border-radius:          $default-border-radius !default;
+$pagination-background-color:       $body-bg !default;
+$pagination-hover-color:            $main-theme-hover !default;
+$pagination-active-color:           $main-theme !default;
+$pagination-margin:                 0 !default;
+$pagination-font-family:            $font-family-base !default;
 
-$list-teaser-margin-base:           1.5 * $default-margin !default;
+$list-teaser-margin:                2 * $default-margin !default;
+$list-teaser-margin-compact:        $default-margin !default;
 
 $teaser-title-size:                 $h3-font-size !default;
 $teaser-title-height:               $line-height-headings !default;

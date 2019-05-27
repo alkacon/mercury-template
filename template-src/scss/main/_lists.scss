@@ -53,11 +53,11 @@
 }
 
 .teaser {
-    margin-bottom: round($list-teaser-margin-base * 15) / 10;
+    margin-bottom: $list-teaser-margin;
 
     &.teaser-compact {
         // compact teaser elements have a reduced bottom margin
-        margin-bottom: round($list-teaser-margin-base * 7.5) / 10;
+        margin-bottom: $list-teaser-margin-compact;
         .teaser-date {
             margin-bottom: $default-margin-verysmall;
         }

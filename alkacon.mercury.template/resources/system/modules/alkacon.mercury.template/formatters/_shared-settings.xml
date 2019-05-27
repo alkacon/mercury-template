@@ -1936,9 +1936,11 @@
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:                                       %(key.msg.setting.bgColor.area.none)|
-            bg-grey:                                    %(key.msg.setting.bgColor.area.grey)|
+            bg-highlight:                               %(key.msg.setting.bgColor.area.highlight)|
+            bg-switch:                                  %(key.msg.setting.bgColor.area.switching)|
             bg-theme:                                   %(key.msg.setting.bgColor.area.theme)|
-            bg-switch:                                  %(key.msg.setting.bgColor.area.switching)
+            bg-grey-light:                              %(key.msg.setting.bgColor.area.grey-light)|
+            bg-grey:                                    %(key.msg.setting.bgColor.area.grey)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

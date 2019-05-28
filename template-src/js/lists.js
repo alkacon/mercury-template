@@ -292,9 +292,6 @@ function generateListHtml(list, reloadEntries, listHtml) {
             list.$editbox.show();
             // no results means we don't need any pagination element
             list.$pagination.hide();
-        } else {
-            // show the pagination element
-            list.$pagination.show();
         }
         // reset the min-height of the list now that the elements are visible
         list.$entries.animate({'min-height': "0px"}, 500);

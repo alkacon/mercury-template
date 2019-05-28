@@ -36,7 +36,9 @@
         padding: 0;
         list-style-type: none;
 
-        // .list-entry:last-of-type {
+        // this does not work for tile lists, so disable it
+        // list teasers add their margin at the bottom
+        // > .list-entry:last-of-type {
         //    > .teaser {
         //        margin-bottom: 0;
         //    }
@@ -357,6 +359,10 @@
         padding: $btn-sm-padding;
         display: block;
         width: 100%;
+    }
+
+    &:empty {
+        display: none;
     }
 }
 

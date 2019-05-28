@@ -98,6 +98,7 @@
         </c:if>
         <c:set var="sliderClass" value="logo-slider" />
         <c:set var="marginClass" value="lm-10" />
+        <c:set var="cssgutter" value="20" />
         <c:set var="showDots" value="${false}" />
         <c:set var="pauseOnHover" value="${false}" />
         <c:set var="adoptRatioToScreen" value="${false}" />
@@ -214,6 +215,7 @@
 
                     <cms:addparams>
                         <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl' : cssgridCols}</cms:param>
+                        <cms:param name="cssgutter">${not empty cssgutter ? cssgutter : '#'}</cms:param>
                         <div class="slide-xs ${adoptRatioToScreen ? 'visible-xs' : ''}"><%----%>
                             <mercury:image-simple
                                 image="${image}"

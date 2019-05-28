@@ -127,12 +127,30 @@ SVG placeholder image, background image and image sizing
             ${bb.setGridSize(4, maxScaledWidth)}
         </c:when>
         <c:otherwise>
-            <%-- ###### Increase XS with, otherwise we may end up getting images too small for modern devices ###### --%>
-            ${bb.setGridSize(0, 375)}
-            ${bb.setGridSize(1, 540)}
-            ${bb.setGridSize(2, 744)}
-            ${bb.setGridSize(3, 992)}
-            ${bb.setGridSize(4, 1170)}
+            <%-- ###### Calculate image size based on column width ###### --%>
+            <c:set var="gutter" value="${param.cssgutter}" />
+            <c:set var="gutterAdjust" value="${0}" />
+            <c:if test="${gutter ne '#'}">
+                <%-- ###### A custom gutter has been set, adjust  gutter in bean ###### --%>
+                <c:set var="gutterInt" value="${cms:toNumber(gutter, 15)}" />
+                ${bb.setGutter(gutterInt)}
+                <c:if test="${gutter ne param.cssgutterbase}">
+                    <%-- ###### Special case: Gutter has been changed in template (e.g. logo slider does this).
+                                Adjust size of total width accordingly otherwise calulation is incorrect. ###### --%>
+                    <c:set var="gutterBaseInt" value="${cms:toNumber(param.cssgutterbase, -1)}" />
+                    <c:if test="${gutterBaseInt >= 0}">
+                        <c:set var="gutterAdjust" value="${gutterBaseInt - gutterInt}" />
+                    </c:if>
+                </c:if>
+                <c:if test="${DEBUG}">
+                    <!-- gutter=${gutter} bb.gutter=${bb.gutter} gutterAdjust=${gutterAdjust} -->
+                </c:if>
+            </c:if>
+            ${bb.setGridSize(0, 375 - gutterAdjust)}
+            ${bb.setGridSize(1, 540 - gutterAdjust)}
+            ${bb.setGridSize(2, 744 - gutterAdjust)}
+            ${bb.setGridSize(3, 992 - gutterAdjust)}
+            ${bb.setGridSize(4, 1170 - gutterAdjust)}
         </c:otherwise>
     </c:choose>
 
@@ -156,8 +174,8 @@ SVG placeholder image, background image and image sizing
             <%-- ###### Calculate the sizes (if we are lazy loading the script will do this for us) ###### --%>
             <c:set var="srcSetSizes"><%--
             --%>(min-width: 1200px) ${bb.sizeXl}px, <%--
-            --%>(min-width: 992px) ${bb.sizeLg}px, <%--
-            --%>(min-width: 768px) ${bb.sizeMd}px, <%--
+            --%>(min-width: 1014px) ${bb.sizeLg}px, <%--
+            --%>(min-width: 764px) ${bb.sizeMd}px, <%--
             --%>(min-width: 552px) ${bb.sizeSm}px, <%--
             --%>100vw</c:set>
         </c:if>

@@ -6,7 +6,6 @@
     description="Displays an OpenStreetMap." %>
 
 
-
 <%@ attribute name="id" type="java.lang.String" required="true"
     description="The id the map should use." %>
 
@@ -35,10 +34,11 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<%-- OSM Maps API key and style URL --%>
-<c:set var="osmApiKey"><cms:property name="osm.apikey" file="search" /></c:set>
+<mercury:content-properties>
+
+<%-- OSM Maps API key --%>
+<c:set var="osmApiKey" value="${contentPropertiesSearch['osm.apikey']}" />
 <c:set var="noApiKey" value="${empty osmApiKey or (osmApiKey eq 'none')}" />
-<c:set var="osmStyle"><cms:property name="osm.styleurl" file="search" /></c:set>
 
 <c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
 
@@ -83,7 +83,6 @@
         --%></c:set>
          </c:otherwise>
         </c:choose>
-
 
         <c:set var="markerJson">${markerJson}<%--
         --%>${nl}{<%--
@@ -131,3 +130,4 @@
 
 </mercury:padding-box>
 
+</mercury:content-properties>

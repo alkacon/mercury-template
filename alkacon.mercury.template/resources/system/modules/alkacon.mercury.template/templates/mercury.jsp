@@ -10,6 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+<mercury:content-properties>
 <mercury:template-parts containerName="mercury-page">
 
 <jsp:attribute name="top">
@@ -33,10 +34,10 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <c:set var="jsThemeRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)']}" />
 <script async src="<cms:link>${jsThemeRes.sitePath}?ver=${jsThemeRes.dateLastModified}</cms:link>"></script>
 
-<mercury:meta-info/>
+<mercury:meta-info contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
 
 <%-- Add favicon --%>
-<c:set var="faviconPath"><cms:property name="mercury.favicon" file="search" default="/favicon.png" /></c:set>
+<c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />
 <c:if test="${not cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage}">
     <c:set var="faviconPath">system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
 </c:if>
@@ -48,7 +49,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <cms:enable-ade />
 <cms:headincludes type="css" />
 
-<c:set var="replaceCss"><cms:property name="mercury.replace.head" file="search" default="none" /></c:set>
+<c:set var="replaceCss" value="${empty contentPropertiesSearch['mercury.replace.head'] ? 'none' : contentPropertiesSearch['mercury.replace.head']}" />
 <c:choose>
     <c:when test="${not empty replaceCss and replaceCss ne 'none'}">
         <%-- This way an "replaceCss" JSP can override the default CSS theme. --%>
@@ -56,7 +57,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
     </c:when>
     <c:otherwise>
         <%-- Common CSS and theme CSS --%>
-        <c:set var="cssTheme"><cms:property name="mercury.theme" file="search" default="/system/modules/alkacon.mercury.theme/css/theme-red.min.css" /></c:set>
+        <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-red.min.css' : contentPropertiesSearch['mercury.theme']}" />
         <c:set var="cssCommonRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)']}" />
         <link rel="stylesheet" href="<cms:link>${cssCommonRes.sitePath}?ver=${cssCommonRes.dateLastModified}</cms:link>">
         <c:set var="cssThemeRes" value="${cms.vfs.readResource[cssTheme]}" />
@@ -65,7 +66,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 </c:choose>
 
 <%-- Additional extra CSS --%>
-<c:set var="extraCSS"><cms:property name="mercury.extra.css" file="search" default="/" /></c:set>
+<c:set var="extraCSS" value="${empty contentPropertiesSearch['mercury.extra.css'] ? 'none' : contentPropertiesSearch['mercury.extra.css']}" />
 <c:if test="${not empty extraCSS and (extraCSS ne 'none')}">
     <c:set var="extraCSS" value="${extraCSS}custom.css" />
     <c:if test="${cms.vfs.exists[extraCSS]}">
@@ -75,7 +76,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 </c:if>
 
 <%-- Additional extra head include, can e.g. be used to add inline CSS --%>
-<c:set var="extraHead"><cms:property name="mercury.extra.head" file="search" default="none" /></c:set>
+<c:set var="extraHead" value="${empty contentPropertiesSearch['mercury.extra.head'] ? 'none' : contentPropertiesSearch['mercury.extra.head']}" />
 <c:if test="${not empty extraHead and (extraHead ne 'none') and cms.vfs.exists[extraHead]}">
     <cms:include file="${extraHead}" />
 </c:if>
@@ -86,12 +87,15 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 
 
 <jsp:attribute name="middle">
+<c:set var="cssgutter" value="${empty contentPropertiesSearch['mercury.css.gutter'] ? '#' : contentPropertiesSearch['mercury.css.gutter']}" />
 <cms:container
     name="mercury-page"
     type="area"
     editableby="ROLE.DEVELOPER">
 
     <cms:param name="cssgrid" value="#" />
+    <cms:param name="cssgutter" value="${cssgutter}" />
+    <cms:param name="cssgutterbase" value="${cssgutter}" />
 
     <fmt:setLocale value="${cms.workplaceLocale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">
@@ -111,12 +115,12 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 
 <jsp:attribute name="bottom">
 <%-- Page information transfers OpenCms state information to JavaScript --%>
-<mercury:pageinfo />
+<mercury:pageinfo contentPropertiesSearch="${contentPropertiesSearch}" />
 
 <%-- JavaScript blocking files placed at the end of the document so the pages load faster --%>
 <cms:headincludes type="javascript" />
 
-<c:set var="extraJS"><cms:property name="mercury.extra.js" file="search" default="/" /></c:set>
+<c:set var="extraJS" value="${empty contentPropertiesSearch['mercury.extra.js'] ? 'none' : contentPropertiesSearch['mercury.extra.js']}" />
 <c:if test="${not empty extraJS and (extraJS ne 'none')}">
     <c:set var="extraJS" value="${extraJS}custom.js" />
     <c:if test="${cms.vfs.exists[extraCSS]}">
@@ -125,18 +129,18 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
     </c:if>
 </c:if>
 
-<c:set var="extraFoot"><cms:property name="mercury.extra.foot" file="search" default="none" /></c:set>
+<c:set var="extraFoot" value="${empty contentPropertiesSearch['mercury.extra.foot'] ? 'none' : contentPropertiesSearch['mercury.extra.foot']}" />
 <c:if test="${not empty extraFoot and extraFoot ne 'none'}"><cms:include file="${extraFoot}" /></c:if>
 
 <%-- Privacy policy markup is inserted last --%>
-<mercury:privacy-policy-banner />
+<mercury:privacy-policy-banner contentPropertiesSearch="${contentPropertiesSearch}" />
 
 </body>
 </html>
 </jsp:attribute>
 
 </mercury:template-parts>
-
+</mercury:content-properties>
 
 
 

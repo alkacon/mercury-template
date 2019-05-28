@@ -127,7 +127,7 @@
     word-wrap: break-word;
     margin-bottom: $accordion-margin;
     box-shadow: $panel-shadow;
-    border: 1px solid $accordion-border-color;
+    border: $accordion-border;
     @include round-corners($accordion-border-radius, true);
 
     &:last-of-type {
@@ -144,7 +144,9 @@
             display: block;
             padding: $default-margin-verysmall $default-margin-small;
             color: $headings-color;
-            background: $accordion-header-bg;
+            @if ($accordion-header-bg != transparent) {
+                background: $accordion-header-bg;
+            }
 
             &:focus,
             &:hover {
@@ -156,9 +158,12 @@
     }
 
     .acco-body {
-        border-top: 1px solid $accordion-border-color;
+        border-top: $accordion-border-between;
         // note: bottom space will be added as margin, either from floating image or piece text
         padding:  $default-margin-small  $default-margin-small 0  $default-margin-small;
+        @if ($accordion-body-bg != transparent) {
+            background: $accordion-body-bg;
+        }
 
         @include piece-bottom-margin;
         > .piece:last-of-type {

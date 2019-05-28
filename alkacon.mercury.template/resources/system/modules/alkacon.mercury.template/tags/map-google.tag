@@ -42,11 +42,10 @@
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
-
-<c:set var="property" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
+<mercury:content-properties>
 
 <%-- Google Maps API key --%>
-<c:set var="googleApiKey" value="${property['google.apikey']}" />
+<c:set var="googleApiKey" value="${contentPropertiesSearch['google.apikey']}" />
 <c:set var="noApiKey" value="${empty googleApiKey or (googleApiKey eq 'none')}" />
 
 <c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
@@ -153,4 +152,5 @@
 
 </mercury:padding-box>
 
+</mercury:content-properties>
 </cms:bundle>

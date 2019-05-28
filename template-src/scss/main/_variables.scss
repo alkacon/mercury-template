@@ -196,6 +196,8 @@ $section-subtitle-size:             13px !default;
 
 $piece-btn-padding:                 $btn-def-padding !default;
 $piece-btn-lg-padding:              $btn-lg-padding !default;
+$piece-text-margin:                 $default-margin-small !default;
+$piece-text-to-link-margin:         $piece-text-margin !default;
 
 // Navigation
 // These are only the variables used elsewhere. There is more in _nav-main.scss.
@@ -432,7 +434,10 @@ $tab-border-radius:                 $default-border-radius !default;
 
 $accordion-text-transform:          none !default;
 $accordion-border-color:            $grey-light !default;
+$accordion-border:                  1px solid $accordion-border-color !default;
+$accordion-border-between:          $accordion-border !default;
 $accordion-header-bg:               $grey-lighter !default;
+$accordion-body-bg:                 transparent !default;
 $accordion-margin:                  $default-margin-verysmall !default;
 $accordion-header-font-size:        $h3-font-size !default;
 $accordion-header-line-height:      $h3-font-size * 1.2 !default;

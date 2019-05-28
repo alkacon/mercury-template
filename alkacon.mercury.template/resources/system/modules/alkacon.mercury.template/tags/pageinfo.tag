@@ -7,35 +7,38 @@
     description="Generates a DIV with runtime information that can be used from JavaScipt." %>
 
 
+<%@ attribute name="contentPropertiesSearch" type="java.util.Map" required="true"
+    description="The properties read from the URI resource with search." %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<c:set var="property" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
 
 <%-- Google Maps API key --%>
-<c:set var="googleApiKey" value="${property['google.apikey']}" />
+<c:set var="googleApiKey" value="${contentPropertiesSearch['google.apikey']}" />
 
 <%-- Google Maps API key for the workplace--%>
-<c:set var="googleApiKeyWorkplace" value="${property['google.apikey.workplace']}" />
+<c:set var="googleApiKeyWorkplace" value="${contentPropertiesSearch['google.apikey.workplace']}" />
 
 <%-- Google Analytics ID --%>
-<c:set var="googleAnalyticsId" value="${property['google.analytics']}" />
+<c:set var="googleAnalyticsId" value="${contentPropertiesSearch['google.analytics']}" />
 
 <%-- OSM API key --%>
-<c:set var="osmApiKey" value="${property['osm.apikey']}" />
+<c:set var="osmApiKey" value="${contentPropertiesSearch['osm.apikey']}" />
 
 <%-- OSM style URL --%>
-<c:set var="osmStyleUrl" value="${property['osm.styleurl']}" />
+<c:set var="osmStyleUrl" value="${contentPropertiesSearch['osm.styleurl']}" />
 
 <%-- Piwik URL --%>
-<c:set var="piwikUrl" value="${property['piwik.url']}" />
+<c:set var="piwikUrl" value="${contentPropertiesSearch['piwik.url']}" />
 
 <c:if test="${not empty piwikUrl}">
-    <c:set var="piwikId" value="${property['piwik.id']}" />
-    <c:set var="piwikAddData" value="${property['piwik.data']}" />
+    <c:set var="piwikId" value="${contentPropertiesSearch['piwik.id']}" />
+    <c:set var="piwikAddData" value="${contentPropertiesSearch['piwik.data']}" />
     <c:set var="piwikData"> data-piwik='{<%--
         --%><c:if test="${not empty piwikId}">"id":"${piwikId}",</c:if><%--
         --%><c:if test="${not empty piwikAddData}">${piwikAddData},</c:if><%--

@@ -6,6 +6,14 @@
     description="Generates meta information for the page header." %>
 
 
+<%@ attribute name="contentUri" type="java.lang.String" required="true"
+    description="The URI of the resource currently rendered.
+    This can be either the request context URI, or a detail content site path." %>
+
+<%@ attribute name="contentPropertiesSearch" type="java.util.Map" required="true"
+    description="The properties read from the URI resource with search." %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -14,23 +22,13 @@
 
 <c:set var="nl" value="<%= \"\n\" %>" />
 
-<c:choose>
-<c:when test="${cms.detailRequest}">
-    <c:set var="contentPath" value="${cms.detailContentSitePath}" />
-</c:when>
-<c:otherwise>
-    <c:set var="contentPath" value="${cms.requestContext.uri}" />
-</c:otherwise>
-</c:choose>
-<c:set var="contentProperties" value="${cms.vfs.readPropertiesSearch[contentPath]}" />
-
 <c:set var="hasAltDesc" value="${(not empty cms.meta.ogDescriptionAlt) or (not empty cms.meta.ogDescriptionAltCaption)}" />
 <c:set var="hasAltDescAndCaption" value="${hasAltDesc and (not empty cms.meta.ogDescriptionAlt) and (not empty cms.meta.ogDescriptionAltCaption)}" />
 
 <c:set var="pagetitle"><mercury:meta-title addIntro="${true}" /></c:set>
 <c:set var="pagetitle"><mercury:meta-value text="${pagetitle}" keepHtml="${true}" /></c:set>
-<c:set var="titleprefix" value="${contentProperties['mercury.title.prefix']}" />
-<c:set var="titlesuffix" value="${contentProperties['mercury.title.suffix']}" />
+<c:set var="titleprefix" value="${contentPropertiesSearch['mercury.title.prefix']}" />
+<c:set var="titlesuffix" value="${contentPropertiesSearch['mercury.title.suffix']}" />
 
 <title>${titleprefix}${empty titleprefix ? '' : ' '}${pagetitle}${empty titlesuffix ? '' : ' '}${titlesuffix}</title>
 
@@ -55,7 +53,7 @@ to find a sentence end.
         <c:set var="pagedesc"><mercury:meta-value text="${cms.meta.ogDescriptionAltCaption}${hasAltDescAndCaption ? ' - ' : ''}${cms.meta.ogDescriptionAlt}" trim="${175}" /></c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="pagedesc"><mercury:meta-value text="${contentProperties['Description']}" trim="${175}" /></c:set>
+        <c:set var="pagedesc"><mercury:meta-value text="${contentPropertiesSearch['Description']}" trim="${175}" /></c:set>
     </c:otherwise>
 </c:choose>
 
@@ -64,7 +62,7 @@ to find a sentence end.
         <c:set var="pagekeywords"><mercury:meta-value text="${cms.meta.Keywords}" /></c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="pagekeywords"><mercury:meta-value text="${contentProperties['Keywords']}" /></c:set>
+        <c:set var="pagekeywords"><mercury:meta-value text="${contentPropertiesSearch['Keywords']}" /></c:set>
     </c:otherwise>
 </c:choose>
 
@@ -186,7 +184,7 @@ to find a sentence end.
         <c:set var="fbsite" value="${cms.meta.fbSite}" />
     </c:when>
     <c:when test="${fbSet}">
-        <c:set var="fbsite" value="${contentProperties['social.facebook.site']}" />
+        <c:set var="fbsite" value="${contentPropertiesSearch['social.facebook.site']}" />
     </c:when>
 </c:choose>
 <c:if test="${not empty fbSite}">
@@ -199,7 +197,7 @@ to find a sentence end.
         <c:set var="fburl" value="${cms.meta.fbUrl}" />
     </c:when>
     <c:when test="${fbSet}">
-        <c:set var="fburl">${cms.site.url}<cms:link>${contentPath}</cms:link></c:set>
+        <c:set var="fburl">${cms.site.url}<cms:link>${contentUri}</cms:link></c:set>
     </c:when>
 </c:choose>
 <c:if test="${not empty fburl}">
@@ -207,11 +205,11 @@ to find a sentence end.
 </c:if>
 
 <c:if test="${fbSet}">
-    <c:set var="fblocale" value="${not empty contentProperties['social.facebook.locale'] ? contentProperties['social.facebook.locale'] : cms.locale}" />
+    <c:set var="fblocale" value="${not empty contentPropertiesSearch['social.facebook.locale'] ? contentPropertiesSearch['social.facebook.locale'] : cms.locale}" />
     <meta property="og:locale" content="${fblocale}">
 </c:if>
 
-<c:set var="fbpages" value="${not empty contentProperties['social.facebook.pages'] ? contentProperties['social.facebook.pages'] : 'false'}" />
+<c:set var="fbpages" value="${not empty contentPropertiesSearch['social.facebook.pages'] ? contentPropertiesSearch['social.facebook.pages'] : 'false'}" />
 <c:if test="${fbpages ne 'false'}"><meta property="fb:pages" content="${fbpages}"></c:if>
 
 
@@ -299,12 +297,11 @@ to find a sentence end.
         <c:set var="twsite" value="${cms.meta.twSite}" />
     </c:when>
     <c:when test="${twSet or fbSet}">
-        <c:set var="twsite" value="${contentProperties['social.twitter.site']}" />
+        <c:set var="twsite" value="${contentPropertiesSearch['social.twitter.site']}" />
     </c:when>
 </c:choose>
 <c:if test="${not empty twsite}">
     <c:set var="twSet" value="true" />
     <meta name="twitter:site" content="${twsite}">
 </c:if>
-
 

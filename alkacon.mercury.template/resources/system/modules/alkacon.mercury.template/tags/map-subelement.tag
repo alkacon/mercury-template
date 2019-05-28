@@ -36,22 +36,23 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:if test="${(empty provider) or (provider eq 'auto')}">
-    <c:set var="property" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
-    <%-- Google Maps API key --%>
-    <c:set var="googleApiKey" value="${property['google.apikey']}" />
-    <%-- OSM API key --%>
-    <c:set var="osmApiKey" value="${property['osm.apikey']}" />
-    <c:choose>
-        <c:when test="${(not empty osmApiKey) and (osmApiKey ne 'none')}">
-        </c:when>
-        <c:when test="${(not empty googleApiKey) and (googleApiKey ne 'none')}">
-            <c:set var="provider" value="google" />
-        </c:when>
-        <c:otherwise>
-            <%-- If no API key is available OSM will display a placeholder --%>
-            <c:set var="provider" value="osm" />
-        </c:otherwise>
-    </c:choose>
+    <mercury:content-properties>
+        <%-- Google Maps API key --%>
+        <c:set var="googleApiKey" value="${contentPropertiesSearch['google.apikey']}" />
+        <%-- OSM API key --%>
+        <c:set var="osmApiKey" value="${contentPropertiesSearch['osm.apikey']}" />
+        <c:choose>
+            <c:when test="${(not empty osmApiKey) and (osmApiKey ne 'none')}">
+            </c:when>
+            <c:when test="${(not empty googleApiKey) and (googleApiKey ne 'none')}">
+                <c:set var="provider" value="google" />
+            </c:when>
+            <c:otherwise>
+                <%-- If no API key is available OSM will display a placeholder --%>
+                <c:set var="provider" value="osm" />
+            </c:otherwise>
+        </c:choose>
+    </mercury:content-properties>
 </c:if>
 
 <c:choose>

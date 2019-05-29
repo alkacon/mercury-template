@@ -24,6 +24,9 @@
     margin: 0;
     outline: none;
     font-size: $form-font-size;
+    @if ($form-font-family != $font-family-base) {
+        font-family: $form-font-family;
+    }
     line-height: $form-line-height;
     border: $form-border;
     color: $form-text-color;
@@ -509,9 +512,25 @@
         }
     }
 
+    .btn.submitbutton {
+        margin-right: $default-margin;
+    }
+
     .btn.resetbutton {
-        margin-left: 20px;
-        @include button-color($grey-light, $main-theme-hover);
+        @include button-color($grey-light, $btn-default-hover);
+    }
+
+
+    @include media-breakpoint-down(sm) {
+        .btn.submitbutton {
+            width: 100%;
+            display: block;
+            margin-right: 0;
+        }
+
+        .btn.resetbutton {
+            display: none;
+        }
     }
 
     @include media-breakpoint-up(lg) {

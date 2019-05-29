@@ -288,6 +288,8 @@ $nav-mobile-indent:                 10px !default; // left indentation step for 
 $nav-mobile-font-weight:            $font-weight-normal !default; // font weight of menu nav items
 $nav-mobile-font-family:            $nav-font-family !default; // text font for mobile navigation
 $nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
+$nav-mobile-toggle-side:            $grid-gutter-width !default; // left / right position for mobile toggle
+$nav-mobile-toggle-side-xs:         $nav-mobile-toggle-side !default; // left / right position for mobile toggle in XS screens
 $nav-mobile-border:                 solid 1px $nav-border !default; // border for mobile menu items
 $nav-mobile-smaller-xs-toggle:      true !default; // make toggle button smaller on xs screens, can be 'true' or 'false'
 $nav-mobile-header-color:           $nav-header-text !default; // text color of header links in mobile menu
@@ -410,6 +412,7 @@ $teaser-info-color:                 $grey !default; // color of additional tease
 $teaser-btn-color:                  $btn-default  !default;
 $teaser-btn-hover-color:            $btn-default-hover !default;
 
+$dl-list-highlight-color:           $highlight-color !default; // highlight background for compact download lists
 
 // Event calendar sheet
 
@@ -503,6 +506,7 @@ $map-colors: (
 
 $form-font-size:                    $font-size-base !default;
 $form-font-weight:                  $font-weight-headings !default;
+$form-font-family:                  $font-family-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-text-color:                   $body-color !default;
 $form-label-color:                  $body-color !default;

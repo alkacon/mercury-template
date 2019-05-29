@@ -116,13 +116,14 @@
 
 <c:choose>
     <c:when test="${fullWidth}">
-        <c:set var="sizeDesktop"    value="${12}" />
+        <c:set var="pieceIsFull"    value="${true}" />
+        <c:set var="sizeDesktop"    value="${empty sizeDesktop ? 12 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 12 : sizeDesktop)}" />
     </c:when>
     <c:otherwise>
         <c:set var="pieceIsFlex"    value="${(pieceLayout == 2) or (pieceLayout == 3) or (pieceLayout == 6) or (pieceLayout == 7)}" />
         <c:set var="pieceIsFloat"   value="${(pieceLayout > 1) and not pieceIsFlex}" />
         <c:set var="pieceDirection" value="${pieceLayout > 1 ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
-        <c:set var="sizeDesktop"    value="${empty sizeDesktop ? 4 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? (fullWidth ? 12 : 4) : sizeDesktop)}" />
+        <c:set var="sizeDesktop"    value="${empty sizeDesktop ? 4 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 4 : sizeDesktop)}" />
     </c:otherwise>
 </c:choose>
 
@@ -131,7 +132,7 @@
 <c:choose>
     <c:when test="${sizeDesktop < 12}">
         <%-- Only use grid in case desktop image size is not 12 columns i.e. 100%. --%>
-        <c:set var="pieceOption">${pieceIsFlex ? 'flex ' : ''}${pieceIsFloat ? 'float ' : ''}${pieceDirection}</c:set>
+        <c:set var="pieceOption">${pieceIsFlex ? 'flex ' : ''}${pieceIsFloat ? 'float ' : ''}${pieceIsFull ? 'full ' : ''}${pieceDirection}</c:set>
     </c:when>
     <c:otherwise>
         <%-- If image uses all 12 columns on desktop, treat this as using layout option 0 or 1. --%>

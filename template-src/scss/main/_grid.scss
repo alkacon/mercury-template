@@ -99,6 +99,9 @@
     &.bg-switch:nth-of-type(even) {
         background-color: $highlight-color;
     }
+    &.bg-theme {
+        background-color: $main-theme;
+    }
     &.bg-grey-light {
         background-color: $grey-light;
     }

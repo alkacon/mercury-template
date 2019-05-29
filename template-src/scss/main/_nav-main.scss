@@ -392,11 +392,23 @@
         top: $nav-mobile-toggle-top;
 
         @if ($nav-mobile-position == right) {
-            right: $grid-gutter-width;
+            right: $nav-mobile-toggle-side;
         }
 
         @if ($nav-mobile-position == left) {
-            left: $grid-gutter-width;
+            left: $nav-mobile-toggle-side;
+        }
+
+        @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
+            @include media-breakpoint-down(xs) {
+                @if ($nav-mobile-position == right) {
+                    right: $nav-mobile-toggle-side-xs;
+                }
+
+                @if ($nav-mobile-position == left) {
+                    left: $nav-mobile-toggle-side-xs;
+                }
+            }
         }
     }
 

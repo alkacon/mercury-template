@@ -57,7 +57,7 @@
 <mercury:piece
     cssWrapper="detail-visual"
     pieceLayout="${keyPieceLayout}"
-    sizeDesktop="${6}"
+    sizeDesktop="${keyPieceLayout > 1 ? 6 : 12}"
     sizeMobile="${12}">
 
     <jsp:attribute name="heading">

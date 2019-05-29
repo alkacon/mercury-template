@@ -1195,7 +1195,7 @@
       <Description><![CDATA[%(key.msg.setting.download.displayFormat.help)]]></Description>
       <Visibility><![CDATA[parent]]></Visibility>
       <Widget><![CDATA[selectcombo]]></Widget>
-      <Default><![CDATA[type-download-list dl-list-compact]]></Default>
+      <Default><![CDATA[download-list dl-list-compact]]></Default>
       <WidgetConfig><![CDATA[
         download-list dl-list-compact:%(key.msg.setting.download.displayFormat.compact)|
         download-list dl-list-elaborate:%(key.msg.setting.download.displayFormat.elaborate)

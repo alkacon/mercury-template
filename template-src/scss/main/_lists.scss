@@ -12,7 +12,6 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Affero General Public License for more details.
 //
-// You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /**********
@@ -35,14 +34,17 @@
         margin-bottom: 0;
         padding: 0;
         list-style-type: none;
+    }
 
-        // this does not work for tile lists, so disable it
-        // list teasers add their margin at the bottom
-        // > .list-entry:last-of-type {
-        //    > .teaser {
-        //        margin-bottom: 0;
-        //    }
-        // }
+    &.type-static-list {
+        ul.list-entries {
+            // this does not work for dynamic lists
+            > .list-entry:last-of-type {
+                > .teaser {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 
     .list-spinner {
@@ -56,6 +58,7 @@
 
 .teaser {
     margin-bottom: $list-teaser-margin;
+    @include clearfix;
 
     &.teaser-compact {
         // compact teaser elements have a reduced bottom margin
@@ -171,7 +174,7 @@
     a:hover {
         text-decoration: none;
         .dl-content {
-            h3 {
+            .dl-title {
                 text-decoration: underline;
             }
             .dl-desc {
@@ -210,7 +213,7 @@
         }
 
         .dl-content {
-            h3 {
+            .dl-title {
                 margin-top: 0;
                 margin-bottom: $default-margin-verysmall;
             }
@@ -218,9 +221,10 @@
                 margin-bottom: $default-margin-verysmall;
             }
             .dl-desc {
-                margin-bottom: $default-margin-small;
+                margin-bottom: $default-margin-verysmall;
             }
             .dl-btn {
+                margin-top: $default-margin-verysmall;
                 font-size: $btn-xs-font-size;
                 padding: $btn-xs-padding;
                 min-width: 0;
@@ -261,7 +265,7 @@
     &.dl-list-compact {
 
         li:nth-child(odd) .dl-link {
-            background-color: $grey-lighter;
+            background-color: $dl-list-highlight-color;
         }
 
         .dl-link {
@@ -269,7 +273,7 @@
             padding-bottom: $default-margin-small;
         }
         a.dl-link:hover {
-            h3 {
+            .dl-title {
                 color: $main-theme-hover;
             }
         }
@@ -294,10 +298,15 @@
         }
         .dl-content {
             width: 100%;
-            h3 {
+            .dl-title {
                 @extend .default-font;
                 font-weight: $font-weight-bold;
                 margin: 0;
+            }
+            .dl-title,
+            .dl-file,
+            .dl-desc {
+                margin-right: 1.0rem;
             }
         }
         .dl-date,

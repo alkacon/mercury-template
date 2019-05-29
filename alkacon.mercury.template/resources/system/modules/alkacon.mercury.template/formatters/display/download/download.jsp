@@ -9,6 +9,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -17,6 +18,7 @@
     <c:set var="showFile"           value="${setting.showFile.toBoolean}" />
     <c:set var="showDescription"    value="${setting.showDescription.toBoolean}" />
     <c:set var="displayFormat"      value="${setting.listCssWrapper.toString}" />
+    <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 
     <c:set var="res"                value="${cms.wrap[cms.element.resource]}" />
     <c:set var="rootPath"           value="${res.rootPath}" />
@@ -86,49 +88,51 @@
         <c:when test="${fn:contains(displayFormat, 'dl-list-compact')}">
 
             <%-- ###### Compact display format ###### --%>
-            <div class="row ${showFile ? 'dl-show-file' : ''}">
-                <div class="col-12">
-                    <a class="dl-link" href="${link}" target="_blank" rel="noopener"><%--
-                    --%><span class="dl-type fa ${icon}"></span><%--
-                    --%><span class="dl-content"><%--
-                        --%><h3>${title}</h3><%--
-	                    --%><c:if test="${showFile and not empty propertiesLocale['Title']}"><%--
-                             --%><div class="dl-file">${res.name}</div><%--
-                        --%></c:if><%--
-						--%><c:if test="${showDescription and not empty description}"><%--
-						 	--%><div class="dl-desc">${description}</div><%--
-						--%></c:if><%--
-                    --%></span><%--
-                    --%><span class="dl-info"><%--
-                         --%><span class="dl-size"><span>${size}</span></span><%--
-                         --%><span class="dl-date"><span>${date}</span></span><%--
-                     --%></span><%--
-                     --%><span class="dl-dl fa fa-cloud-download"></span><%--
-                 --%></a>
-               </div>
+            <div class="dl-teaser dl-teaser-compact ${showFile ? 'dl-show-file' : ''}">
+                <a class="dl-link" href="${link}" target="_blank" rel="noopener"><%--
+                --%><span class="dl-type fa ${icon}"></span><%--
+                --%><span class="dl-content"><%--
+                    --%> <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" /><%--
+                    --%><c:if test="${showFile and not empty propertiesLocale['Title']}"><%--
+                         --%><div class="dl-file">${res.name}</div><%--
+                    --%></c:if><%--
+                    --%><c:if test="${showDescription and not empty description}"><%--
+                        --%><div class="dl-desc">${description}</div><%--
+                    --%></c:if><%--
+                --%></span><%--
+                --%><span class="dl-info"><%--
+                     --%><span class="dl-size"><span>${size}</span></span><%--
+                     --%><span class="dl-date"><span>${date}</span></span><%--
+                 --%></span><%--
+                 --%><span class="dl-dl fa fa-cloud-download"></span><%--
+             --%></a>
            </div>
 
         </c:when>
         <c:otherwise>
 
             <%-- ###### Elaborate display format ###### --%>
-            <div class="row">
-                <div class="dl-content fixcol-xs-75-rest fixcol-md-125-rest">
-                    <div class="dl-date">${date}</div>
-                    <h3><a href="${link}">${title}</a></h3>
-                    <c:if test="${showFile and not empty propertiesLocale['Title']}">
-                        <div class="dl-file"><a href="${link}"><c:out value="${res.name}" /></a></div>
-                    </c:if>
-                    <c:if test="${showDescription and not empty description}">
-                        <div class="dl-desc">${description}</div>
-                    </c:if>
-                    <a href="${link}" download class="btn dl-btn"><span class="fa fa-cloud-download"></span><fmt:message key="msg.page.download"/></a>
-                </div>
-                <div class="dl-info fixcol-xs-75 fixcol-md-125">
-                    <a href="${link}" target="_blank" rel="noopener"><span class="fa ${icon}"></span></a>
-                    <div class="dl-stats">
-                        <span class="dl-type">${suffix}</span>
-                        <span class="dl-size">${size}</span>
+            <div class="dl-teaser dl-teaser-elaborate">
+                <div class="row">
+                    <div class="dl-content fixcol-xs-75-rest fixcol-md-125-rest">
+                        <div class="dl-date">${date}</div>
+                        <mercury:link link="${link}" title="${title}" css="dl-link" >
+                            <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
+                        </mercury:link>
+                        <c:if test="${showFile and not empty propertiesLocale['Title']}">
+                            <div class="dl-file"><a href="${link}"><c:out value="${res.name}" /></a></div>
+                        </c:if>
+                        <c:if test="${showDescription and not empty description}">
+                            <div class="dl-desc">${description}</div>
+                        </c:if>
+                        <a href="${link}" download class="btn dl-btn"><span class="fa fa-cloud-download"></span><fmt:message key="msg.page.download"/></a>
+                    </div>
+                    <div class="dl-info fixcol-xs-75 fixcol-md-125">
+                        <a href="${link}" target="_blank" rel="noopener"><span class="fa ${icon}"></span></a>
+                        <div class="dl-stats">
+                            <span class="dl-type">${suffix}</span>
+                            <span class="dl-size">${size}</span>
+                        </div>
                     </div>
                 </div>
             </div>

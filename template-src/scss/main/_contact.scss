@@ -21,6 +21,9 @@
 
 .type-contact {
 
+    overflow-wrap: break-word;
+    hyphens: auto;
+
     .fn,
     .org,
     .adr,
@@ -31,6 +34,11 @@
     .vcard {
         margin-top: $contact-margins;
         margin-bottom: $contact-margins;
+    }
+
+    .mail {
+        // make sure emails are NOT changed with "-" when line break is inserted
+        -webkit-hyphenate-character: " ";
     }
 
     > * > .image-src-box {

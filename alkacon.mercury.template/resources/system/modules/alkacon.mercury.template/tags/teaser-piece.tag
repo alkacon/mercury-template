@@ -121,8 +121,6 @@
 
 
 <c:set var="pieceLayout"    value="${empty pieceLayout ? 6 : pieceLayout}" />
-<c:set var="sizeDesktop"    value="${empty sizeDesktop ? 4 : sizeDesktop}" />
-<c:set var="sizeMobile"     value="${empty sizeMobile ? 7 : sizeMobile}" />
 <c:set var="hsize"          value="${empty hsize ? 3 : hsize}" />
 <c:choose>
     <c:when test="${(teaserType eq 'teaser-text-tile') or (teaserType eq 'teaser-masonry')}">
@@ -133,6 +131,8 @@
         <c:set var="hideImage" value="${true}"/>
     </c:when>
 </c:choose>
+<c:set var="sizeDesktop"    value="${pieceLayout > 1 ? (empty sizeDesktop ? 4 : sizeDesktop) : 12}" />
+<c:set var="sizeMobile"     value="${pieceLayout > 1 ? (empty sizeMobile ? 7 : sizeMobile) : 12}" />
 <c:set var="showButton"     value="${buttonText ne 'none'}" />
 <c:set var="addButtonDiv"   value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
 

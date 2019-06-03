@@ -296,6 +296,7 @@ $nav-mobile-header-color:           $nav-header-text !default; // text color of 
 $nav-mobile-header-text-transform:  $nav-header-text-transform !default; // text transform of header links in mobile menu
 $nav-mobile-header-font-size:       $nav-header-font-size !default; // font size of header links in mobile menu
 $nav-mobile-header-font-weight:     $nav-header-font-weight !default; // font weight of header links in mobile menu
+$nav-mobile-topcontrol-default:     true !default; // default topcontrol button, if false then no styling is supplied for topcontrol
 
 $nav-breakpoint-mobile:             md !default; // breakpoint until which the mobile navigation is displayed
 $nav-breakpoint-desktop:            lg !default; // breakpoint from which the desktop navigation is displayed

@@ -63,51 +63,54 @@
 
 // "Back to top" icon on the lower right of display
 
-#topcontrol {
-    color: $nav-toggle-text;
-    background: $nav-toggle-bg;
-    z-index: #{$above-oc-z-index + 150}; // the back to top icon should be above the edit points and the privacy policy banner
-    width: $nav-toggle-size;
-    height: $nav-toggle-size;
-    font-size: round($nav-font-size * 1.75);
-    line-height: $nav-toggle-size - 4;
-    display: block;
-    position: fixed;
-    visibility: visible;
-    right: $grid-gutter-width / 2;
-    bottom: $grid-gutter-width / 2;
-    border-radius: $nav-border-radius !important;
-    cursor: pointer;
-    pointer-events: none;
-    opacity: 0;
+@if ($nav-mobile-topcontrol-default) {
 
-    &.show {
-        transition: opacity 0.33s;
-        pointer-events: auto;
-        opacity: 1;
-    }
-
-    &:hover {
-        @include color-transition;
-        background-color: $nav-toggle-bg-hover;
-    }
-
-    &::after {
+    #topcontrol {
+        color: $nav-toggle-text;
+        background: $nav-toggle-bg;
+        z-index: #{$above-oc-z-index + 150}; // the back to top icon should be above the edit points and the privacy policy banner
         width: $nav-toggle-size;
-        line-height: $nav-toggle-size;
-        content: "\f106";
-        position: absolute;
-        text-align: center;
-        font-family: FontAwesome;
-    }
+        height: $nav-toggle-size;
+        font-size: round($nav-font-size * 1.75);
+        line-height: $nav-toggle-size - 4;
+        display: block;
+        position: fixed;
+        visibility: visible;
+        right: $grid-gutter-width / 2;
+        bottom: $grid-gutter-width / 2;
+        border-radius: $nav-border-radius !important;
+        cursor: pointer;
+        pointer-events: none;
+        opacity: 0;
 
-    @include media-breakpoint-down(xs) {
-        width: round($nav-toggle-size-xxs);
-        height: round($nav-toggle-size-xxs);
+        &.show {
+            transition: opacity 0.33s;
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        &:hover {
+            @include color-transition;
+            background-color: $nav-toggle-bg-hover;
+        }
 
         &::after {
+            width: $nav-toggle-size;
+            line-height: $nav-toggle-size;
+            content: "\f106";
+            position: absolute;
+            text-align: center;
+            font-family: FontAwesome;
+        }
+
+        @include media-breakpoint-down(xs) {
             width: round($nav-toggle-size-xxs);
-            line-height: round($nav-toggle-size-xxs);
+            height: round($nav-toggle-size-xxs);
+
+            &::after {
+                width: round($nav-toggle-size-xxs);
+                line-height: round($nav-toggle-size-xxs);
+            }
         }
     }
 }

@@ -622,7 +622,7 @@
             &[aria-expanded] {
                 > a {
                     // if NOT li[aria-expanded], then this is a single head link that can be clicked
-                    cursor: default; // change pointer since dropdown menu shows on hover (not click) on desktop
+                    // cursor: default; // mercury header links can always be clicked on desktop
 
                     @if ($nav-header-show-arrows == true) {
                         // always show arrows

@@ -30,12 +30,17 @@
     description="Markup shown for the text if the text is not provided.
     If both attributes 'markupText' and 'text' are provided, only the 'markupText' will be displayed." %>
 
+<%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
+    description="Controls if the heading text is XML escaped.
+    Default is 'true' if not provided." %>
+
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Enables advanced direct edit for the generated heading.
     Default is 'false' if not provided." %>
 
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="The heading markup will only be generated if this evaluates to 'true'." %>
+
 
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -44,6 +49,8 @@
 
 
 <c:if test="${(level > 0) and (level <= 7) and (empty test or test)}">
+
+    <c:set var="escapeXml" value="${empty escapeXml ? true : escapeXml}" />
 
     <c:if test="${(not empty markupText) or (not empty text)}">
         <c:choose>
@@ -65,7 +72,7 @@
                     <jsp:invoke fragment="markupText" />
                 </c:when>
                 <c:when test="${not empty text}">
-                    <c:out value="${text}" />
+                    <c:out value="${text}" escapeXml="${escapeXml}" />
                 </c:when>
             </c:choose>
             ${suffix}

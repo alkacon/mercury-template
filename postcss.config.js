@@ -6,7 +6,7 @@ npmConfig.initRewritePaths('deployTargetVfsDir', 'mercuryBaseVfsDir');
 
 module.exports = {
     plugins : [
-        require('autoprefixer')(npmConfig.autoprefixerOpts), // add vendor prefixes
+        require('autoprefixer')(), // add vendor prefixes
         // require('postcss-sorting')({"sort-order": 'default'}), // sort the rules in the output
         // require('stylefmt')(), // pretty-print the output
         require('postcss-urlrewrite')({

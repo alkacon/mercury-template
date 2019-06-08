@@ -198,6 +198,9 @@ $piece-btn-padding:                 $btn-def-padding !default;
 $piece-btn-lg-padding:              $btn-lg-padding !default;
 $piece-text-margin:                 $default-margin-small !default;
 $piece-text-to-link-margin:         $piece-text-margin !default;
+$piece-hyphens:                     true !default; // enable hyphenation / word breaks in piece text (not all browsers support this)
+$piece-hyphens-xs:                  $piece-hyphens !default; // enable hyphenationfor XS and SM
+$piece-hyphens-md:                  $piece-hyphens !default; // enable hyphenationfor MS, LG and XL
 
 // Navigation
 // These are only the variables used elsewhere. There is more in _nav-main.scss.

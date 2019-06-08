@@ -46,13 +46,3 @@ exports.resourcePath = function(target) {
     console.log('Rewriting path        : ' + target + ' to: ' + resPath);
     return resPath;
 }
-
-// options to be used by the autoprefixer
-// this is pretty much the default, see https://github.com/browserslist/browserslist#full-list
-var autoprefixerOptions = { browsers: [
- '> 0.5%',
- 'last 2 versions',
- 'not dead'
-]}
-// export the autoprefixer options
-exports.autoprefixerOpts = autoprefixerOptions;

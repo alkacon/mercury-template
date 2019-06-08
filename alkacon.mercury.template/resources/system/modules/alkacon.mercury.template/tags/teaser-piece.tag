@@ -137,17 +137,22 @@
 <c:set var="addButtonDiv"   value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
 
 
-<c:if test="${empty preface and empty markupBody}">
-    <%-- Set default for preface if not available --%>
-    <%-- If markupBody is available, preface is not shown from body anyway so we can skip this --%>
-    <c:if test="${not empty paraText}">
-        <c:set var="paraText" value="${fn:trim(cms:stripHtml(paraText))}" />
-    </c:if>
-    <c:if test="${not empty paraCaption}">
-        <c:set var="paraCaption" value="${fn:trim(cms:stripHtml(paraCaption))}" />
-    </c:if>
-    <c:set var="pText" value="${paraCaption}${not empty paraText and not empty paraCaption ? ' - ' : ''}${paraText}" />
-</c:if>
+<c:choose>
+    <c:when test="${not empty preface}">
+        <c:set var="pText" value="${preface}" />
+    </c:when>
+    <c:when test="${empty preface and empty markupBody}">
+        <%-- Set default for preface if not available --%>
+        <%-- If markupBody is available, preface is not shown from body anyway so we can skip this --%>
+        <c:if test="${not empty paraText}">
+            <c:set var="paraText" value="${fn:trim(cms:stripHtml(paraText))}" />
+        </c:if>
+        <c:if test="${not empty paraCaption}">
+            <c:set var="paraCaption" value="${fn:trim(cms:stripHtml(paraCaption))}" />
+        </c:if>
+        <c:set var="pText" value="${paraCaption}${not empty paraText and not empty paraCaption ? ' - ' : ''}${paraText}" />
+    </c:when>
+</c:choose>
 
 
 <c:if test="${not empty groupId}">
@@ -222,8 +227,9 @@
                 </c:if>
 
                 <c:choose>
-                    <c:when test="${not empty preface}">
-                        <div class="teaser-text"><%----%>
+                    <c:when test="${false and not empty preface}">
+                        <%-- deactivated so that preface is also cut off --%>
+                        <div class="teaser-text">
                             <c:out value="${preface}" />
                          </div><%----%>
                     </c:when>

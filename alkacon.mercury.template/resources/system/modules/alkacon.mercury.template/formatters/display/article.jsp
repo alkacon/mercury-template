@@ -35,7 +35,7 @@
     link="${linkToDetail}"
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
-    textLength="${setTextLength}"
+    textLength="${value['TeaserData/TeaserPreface'].isSet ? -1 : setTextLength}"
     buttonText="${setButtonText}">
 
     <jsp:attribute name="markupVisual">

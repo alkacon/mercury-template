@@ -122,6 +122,16 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     @include media-breakpoint-down(sm) {
+
+        @if ($piece-hyphens-xs) {
+            // add word hyphenation to piece text for mobile displays
+            > .body {
+                .text {
+                    hyphens: auto;
+                }
+            }
+        }
+
         // uncomment this if images floating left in desktop should also float left on mobile
         // attention: if headline is displayed above the image, this does not look good
         // &.p-r {
@@ -132,15 +142,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         //        }
         //    }
         // }
-
-        > .body {
-            .text {
-                // add auto line breaks for small screens
-                // attention: this may break ADE (but on small screens this should not be a problem)
-                overflow-wrap: break-word;
-                hyphens: auto;
-            }
-        }
 
         @each  $piece-col-size in $piece-cols {
             // generate size variations for the mobile visual column
@@ -163,6 +164,16 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     .piece {
+
+        @if ($piece-hyphens-md) {
+            // add word hyphenation to piece text for mobile displays
+            > .body {
+                .text {
+                    hyphens: auto;
+                }
+            }
+        }
+
         &.flex,
         &.float {
             @include clearfix-before;

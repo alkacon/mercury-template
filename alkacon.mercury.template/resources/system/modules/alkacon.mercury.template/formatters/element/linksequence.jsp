@@ -67,7 +67,7 @@
             </c:if>
             <li ${liWrapper}><%----%>
                 <mercury:link link="${link}" css="${aWrapper}">
-                    ${linkText}
+                    <span class="ls-item">${linkText}</span>
                 </mercury:link>
             </li><%----%>
         </c:forEach>

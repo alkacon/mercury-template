@@ -133,7 +133,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <c:if test="${not empty extraFoot and extraFoot ne 'none'}"><cms:include file="${extraFoot}" /></c:if>
 
 <%-- Privacy policy markup is inserted last --%>
-<mercury:privacy-policy-banner contentPropertiesSearch="${contentPropertiesSearch}" />
+<mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
 
 </body>
 </html>

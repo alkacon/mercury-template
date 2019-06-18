@@ -13,13 +13,17 @@
 <!DOCTYPE html>
 <html>
 <body>
-
 <c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
+<c:set var="page"><mercury:obfuscate text="${param.page}" type="base64dec" /></c:set>
+
 <c:choose>
     <c:when test="${not empty policyfile and cms.vfs.existsResource[policyfile]}">
+            <%--
+            formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/privacy-policy/banner.xml:e9bb4c50-cfe2-456e-8c4e-72c9b2263577)"
+            --%>
         <mercury:display
             file="${policyfile}"
-            formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/privacy-policy/banner.xml:e9bb4c50-cfe2-456e-8c4e-72c9b2263577)"
+            baseUri="${page}"
         />
     </c:when>
     <c:otherwise>

@@ -652,6 +652,12 @@
           <uuid>f0225114-6a9a-4898-a2d2-2b5168f94b92</uuid>
         </link>
       </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/privacy-policy/banner.xml]]></target>
+          <uuid>e9bb4c50-cfe2-456e-8c4e-72c9b2263577</uuid>
+        </link>
+      </AddFormatter>
     </AddFormatters>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

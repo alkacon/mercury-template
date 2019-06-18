@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.0.27</version>
+		<version>11.0.0.30</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -5112,8 +5112,8 @@
 			<destination>system/modules/alkacon.mercury.template/osmviewer/style.json</destination>
 			<type>plain</type>
 			<uuidstructure>62d16792-2861-11e9-9bbf-0242ac11002b</uuidstructure>
-			<uuidresource>62d16793-2861-11e9-9bbf-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Feb 2019 09:43:54 GMT</datecreated>
+			<uuidresource>317f1828-8dc4-11e9-8ac1-0242ac11002b</uuidresource>
+			<datecreated>Thu, 13 Jun 2019 10:15:39 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>

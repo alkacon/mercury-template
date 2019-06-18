@@ -44,8 +44,9 @@ function loadBanner(bannerData) {
     var ajaxUrl = "/system/modules/alkacon.mercury.template/elements/privacy-policy.jsp";
 
     var params =
-        "policy=" + encodeURIComponent(bannerData.policy) +
-        "&__locale=" + Mercury.getLocale();
+        "policy=" + encodeURIComponent(bannerData.policy) + "&" +
+        "page=" + encodeURIComponent(bannerData.page) + "&" +
+        "__locale=" + Mercury.getLocale();
 
     var ajaxLink = ajaxUrl + '?' + params;
 

@@ -16,7 +16,7 @@
         <ContainerType><![CDATA[privacypolicy]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[false]]></Display>
+    <Display><![CDATA[privacy-policy]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>false</SearchContent>
     <StrictContainers>true</StrictContainers>

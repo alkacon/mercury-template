@@ -100,6 +100,7 @@
 <c:set var="showVisual"         value="${empty image and empty markupVisual ? false : (empty sizeDesktop ? true : sizeDesktop != 0)}" />
 <c:set var="showLinkOption"     value="${empty linkOption ? true : (linkOption ne 'none') and (linkOption ne 'false') }" />
 <c:set var="showLink"           value="${empty link ? false : showLinkOption}" />
+<c:set var="defaultText"        value="${showText and empty markupText}" />
 
 <c:choose>
 <c:when test="${showHeading or showText or showVisual or showLink}">
@@ -111,6 +112,7 @@
         cssText="${showText and (textOption ne 'default') ? textOption: ''}"
         attrVisual="${ade ? image.rdfaAttr : null}"
         attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
+        cssBody="${defaultText ? 'default' :_null}"
         attrText="${ade ? text.rdfaAttr : null}"
         attrLink="${ade ? link.rdfaAttr : null}">
 
@@ -153,7 +155,7 @@
 
         <jsp:attribute name="text">
             <c:choose>
-                <c:when test="${showText and empty markupText}">
+                <c:when test="${defaultText}">
                     <c:out value="${text}" escapeXml="false" />
                 </c:when>
                 <c:when test="${showText}">

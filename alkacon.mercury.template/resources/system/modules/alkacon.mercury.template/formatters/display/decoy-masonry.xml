@@ -34,6 +34,7 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textLength.tile]]></IncludeName>
+      <Default><![CDATA[-1]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryWrapper.tile]]></IncludeName>

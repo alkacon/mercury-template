@@ -169,6 +169,16 @@
 
 // Download lists
 
+
+@mixin dl-btn {
+    margin-top: $default-margin-verysmall;
+    min-width: 200px;
+
+    .fa {
+        padding-right: $default-margin-small;
+    }
+}
+
 .download-list {
 
     a:hover {
@@ -224,25 +234,10 @@
                 margin-bottom: $default-margin-verysmall;
             }
             .dl-btn {
-                margin-top: $default-margin-verysmall;
-                font-size: $btn-xs-font-size;
-                padding: $btn-xs-padding;
-                min-width: 0;
-
-                .fa {
-                    padding-right: $default-margin-small;
-                }
+                @include dl-btn;
             }
         }
 
-        .dl-info {
-            margin-top: $default-margin-small;
-            text-align: center;
-            .fa {
-                font-size: 4.0rem;
-                margin-bottom: $default-margin-verysmall;
-            }
-        }
 
         .dl-stats {
             .dl-type::after {
@@ -250,14 +245,42 @@
             }
         }
 
-        @include media-breakpoint-down(sm) {
-            .dl-stats {
-                .dl-type {
-                    display: none;
-                    &::after {
-                        display: none;
-                    }
+        @include media-breakpoint-up(md) {
+            .dl-info {
+                margin-top: $default-margin-small;
+                text-align: center;
+                .fa {
+                    font-size: 4.0rem;
+                    margin-bottom: $default-margin-verysmall;
                 }
+                .dl-info-text {
+                    display: none;
+                }
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            .dl-info {
+                text-align: left;
+                margin-top: $default-margin-verysmall;
+
+                .btn-info {
+                    @include button-base;
+                    @include dl-btn;
+                    text-align: left;
+                }
+                .fa {
+                    min-width: 2*$default-margin;
+                }
+            }
+            .dl-btn {
+                text-align: left;
+                .fa {
+                    min-width: 2*$default-margin;
+                }
+            }
+            .dl-stats {
+                display: none;
             }
         }
     }

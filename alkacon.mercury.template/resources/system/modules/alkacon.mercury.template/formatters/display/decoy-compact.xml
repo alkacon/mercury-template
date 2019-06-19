@@ -34,6 +34,7 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textLength.compact]]></IncludeName>
+      <Default><![CDATA[-1]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>

@@ -30,7 +30,7 @@
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
 <mercury:section-piece
-    cssWrapper="element${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}"
+    cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}"
     pieceLayout="${pieceLayout < 10 ? pieceLayout : 4}"
     sizeDesktop="${visualOption}"
     heading="${value.Title}"

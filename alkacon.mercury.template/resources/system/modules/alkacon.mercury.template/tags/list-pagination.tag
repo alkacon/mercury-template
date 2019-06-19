@@ -40,7 +40,7 @@
         <c:set var="nextPage" value="${currentPage < lastPage ? currentPage + 1 : lastPage}" />
         <c:set var="firstShownPage" value="${search.pageNavFirst}" />
         <c:set var="lastShownPage" value="${search.pageNavLast}" />
-        <c:set var="allPages" value="${(maxPages + addButtons) >= lastPage}" />
+        <c:set var="allPages" value="${false and ((maxPages + addButtons) >= lastPage)}" />
 
         <c:set var="stateParameterPageMap" value="${search.stateParameters.setPage}" />
         <mercury:nl />

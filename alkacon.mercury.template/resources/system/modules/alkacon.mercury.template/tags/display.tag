@@ -43,6 +43,7 @@
             <c:set var="paramFormatter" value="${baseUri}" />
             <cms:display
                 value="${file}"
+                baseUri="${baseUri}"
                 editable="false">
                 <c:forEach var="setting" items="${settings}">
                     <cms:param name="${setting.key}" value="${setting.value}" />

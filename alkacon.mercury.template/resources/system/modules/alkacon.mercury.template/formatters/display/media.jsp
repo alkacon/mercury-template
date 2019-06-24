@@ -30,6 +30,7 @@
     noLinkOnVisual="${true}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
+    sizeMobile="${setSizeMobile}"
 
     teaserType="${displayType}"
     link="${linkToDetail}"

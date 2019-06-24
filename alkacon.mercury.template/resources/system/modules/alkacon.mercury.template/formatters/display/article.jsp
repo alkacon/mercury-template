@@ -30,6 +30,7 @@
     paraText="${paragraph.value.Text}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
+    sizeMobile="${setSizeMobile}"
 
     teaserType="${displayType}"
     link="${linkToDetail}"

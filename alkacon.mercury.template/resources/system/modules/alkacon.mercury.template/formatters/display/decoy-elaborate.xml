@@ -43,6 +43,9 @@
       <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>
       <Default><![CDATA[-1]]></Default>
     </Setting>

@@ -33,6 +33,7 @@
     paraText="${paragraphIntro.value.Text.isSet ? paragraphIntro.value.Text : paragraphText.value.Text}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
+    sizeMobile="${setSizeMobile}"
 
     teaserType="${displayType}"
     link="${linkToDetail}"

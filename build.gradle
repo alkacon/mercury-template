@@ -359,6 +359,15 @@ tasks.findAll{ task -> task.name.startsWith('dist_')}.each{ dist_task ->
 tasks.withType(JavaCompile) {
     options.compilerArgs += ["-sourcepath", ""]
 }
+
+tasks.withType(Javadoc) {
+    options.addStringOption("sourcepath", "")
+    if (JavaVersion.current().isJava8Compatible()) {
+    	options.addStringOption("Xdoclint:none", "-quiet")
+    	options.addBooleanOption("-allow-script-in-comments",true);
+    }
+}
+
 artifacts {
     archives mercuryAllJar
     archives mercuryAllSourcesJar

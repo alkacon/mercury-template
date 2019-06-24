@@ -78,9 +78,6 @@
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
     description="The option for the link display." %>
 
-<%@ attribute name="effectOption" type="java.lang.String" required="false"
-    description="The option for the image effect." %>
-
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -150,7 +147,6 @@
     title="${imgtitle}"
     ratio="${imageRatio}"
     cssImage="photo"
-    cssWrapper="${effectOption}"
     attrImage='itemprop="image"'
     showImageZoom="${showImageZoom}"
 >

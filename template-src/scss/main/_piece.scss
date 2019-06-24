@@ -123,7 +123,12 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
 
     @include media-breakpoint-down(sm) {
 
-        @if ($piece-hyphens-xs) {
+        @if ($piece-hyphens-headings-xs) {
+            .heading {
+                hyphens: auto;
+            }
+        }
+        @if ($piece-hyphens-text-xs) {
             // add word hyphenation to piece text for mobile displays
             > .body {
                 .text {
@@ -160,12 +165,17 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         // this makes single content elements in a .flex-col using the complete element height
         // and allows to align links at the bottom
         flex-grow: 1;
-        @include text-tile;
+        @include text-tile(false);
     }
 
     .piece {
 
-        @if ($piece-hyphens-md) {
+        @if ($piece-hyphens-headings-md) {
+            .heading {
+                hyphens: auto;
+            }
+        }
+        @if ($piece-hyphens-text-md) {
             // add word hyphenation to piece text for mobile displays
             > .body {
                 .text {

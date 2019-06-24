@@ -198,9 +198,13 @@ $piece-btn-padding:                 $btn-def-padding !default;
 $piece-btn-lg-padding:              $btn-lg-padding !default;
 $piece-text-margin:                 $default-margin-small !default;
 $piece-text-to-link-margin:         $piece-text-margin !default;
-$piece-hyphens:                     true !default; // enable hyphenation / word breaks in piece text (not all browsers support this)
-$piece-hyphens-xs:                  $piece-hyphens !default; // enable hyphenationfor XS and SM
-$piece-hyphens-md:                  $piece-hyphens !default; // enable hyphenationfor MS, LG and XL
+$piece-hyphens:                     true !default; // enable hyphenation / word breaks in piece (not all browsers support this)
+$piece-hyphens-headings:            $piece-hyphens !default; // enable hyphenation / word breaks for piece headline
+$piece-hyphens-headings-xs:         $piece-hyphens-headings !default; // enable hyphenation for XS and SM
+$piece-hyphens-headings-md:         $piece-hyphens-headings !default; // enable hyphenation for MS, LG and XL
+$piece-hyphens-text:                $piece-hyphens !default; // enable hyphenation / word breaks for piece text
+$piece-hyphens-text-xs:             $piece-hyphens-text !default; // enable hyphenation for XS and SM
+$piece-hyphens-text-md:             $piece-hyphens-text !default; // enable hyphenation for MS, LG and XL
 
 // Navigation
 // These are only the variables used elsewhere. There is more in _nav-main.scss.
@@ -447,7 +451,8 @@ $accordion-header-bg:               $grey-lighter !default;
 $accordion-body-bg:                 transparent !default;
 $accordion-margin:                  $default-margin-verysmall !default;
 $accordion-header-font-size:        $h3-font-size !default;
-$accordion-header-line-height:      $h3-font-size * 1.2 !default;
+$accordion-header-font-size-md:     $h4-font-size !default;
+$accordion-header-line-height:      1.2 !default;
 $accordion-toggle-arrows:           true !default;
 $accordion-border-radius:           $default-border-radius !default;
 

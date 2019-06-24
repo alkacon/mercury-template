@@ -1514,14 +1514,18 @@
       <Widget><![CDATA[selectcombo]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
-        none:                           %(key.msg.setting.effect.none)|
-        effect-shadow:                  %(key.msg.setting.effect.shadow)|
-        effect-inset:                   %(key.msg.setting.effect.inset)|
-        effect-raise:                   %(key.msg.setting.effect.raise)|
-        effect-rotate:                  %(key.msg.setting.effect.rotate)|
-        effect-shadow effect-rotate:    %(key.msg.setting.effect.shadow-rotate)|
-        effect-inset effect-rotate:     %(key.msg.setting.effect.inset-rotate)|
-        effect-raise effect-rotate:     %(key.msg.setting.effect.raise-rotate)
+        none:                                       %(key.msg.setting.effect.none)|
+        effect-shadow:                              %(key.msg.setting.effect.shadow) %(key.msg.setting.effect.onimage)|
+        effect-raise:                               %(key.msg.setting.effect.raise) %(key.msg.setting.effect.onimage)|
+        effect-rotate:                              %(key.msg.setting.effect.rotate)|
+        effect-shadow effect-rotate:                %(key.msg.setting.effect.shadow-rotate) %(key.msg.setting.effect.onimage)|
+        effect-raise effect-rotate:                 %(key.msg.setting.effect.raise-rotate)  %(key.msg.setting.effect.onimage)|
+        effect-piece effect-shadow:                 %(key.msg.setting.effect.shadow) %(key.msg.setting.effect.onpiece)|
+        effect-piece effect-inset:                  %(key.msg.setting.effect.inset) %(key.msg.setting.effect.onpiece)|
+        effect-piece effect-raise:                  %(key.msg.setting.effect.raise) %(key.msg.setting.effect.onpiece)|
+        effect-piece effect-shadow effect-rotate:   %(key.msg.setting.effect.shadow-rotate) %(key.msg.setting.effect.onpiece)|
+        effect-piece effect-inset effect-rotate:    %(key.msg.setting.effect.inset-rotate) %(key.msg.setting.effect.onpiece)|
+        effect-piece effect-raise effect-rotate:    %(key.msg.setting.effect.raise-rotate) %(key.msg.setting.effect.onpiece)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

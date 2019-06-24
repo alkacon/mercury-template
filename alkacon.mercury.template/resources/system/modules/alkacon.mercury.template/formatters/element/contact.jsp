@@ -33,6 +33,9 @@
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="imageRatio"             value="${setting.imageRatio.toString}" />
 <c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
+<c:set var="effect"                 value="${showImage and setting.effect.isSetNotNone ? setting.effect.toString : null}" />
+<c:set var="setSizeDesktop"         value="${setting.pieceSizeDesktop.toInteger}" />
+<c:set var="setSizeMobile"          value="${setting.pieceSizeMobile.toInteger}" />
 
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact' : ''}" />
 <c:set var="ade"                    value="${true}" />
@@ -41,20 +44,38 @@
 <c:set var="hsize"                  value="${value.Title.isSet ? hsize + 1 : hsize}" />
 
 <mercury:nl />
-<c:choose>
-<c:when test="${(pieceLayout < 2) or not showImage}">
-    <mercury:nl />
-    <div class="element type-contact ${compactLayout}${' '}${visualOption}${' '}${cssWrapper}" ${kind}><%----%>
-    <mercury:nl />
 
-        <mercury:heading level="${hsizeTitle}" text="${value.Title}" ade="${ade}" css="head" />
+<mercury:section-piece
+    cssWrapper="element type-contact ${compactLayout}${' '}${cssWrapper}${empty effect ? '' : ' '.concat(effect)}"
+    pieceLayout="${pieceLayout}"
+    attrWrapper="${kind}"
+    heading="${value.Title}"
+    hsize="${hsizeTitle}"
+    sizeDesktop="${setSizeDesktop}"
+    sizeMobile="${setSizeMobile}"
+    ade="${false}">
 
+    <jsp:attribute name="markupVisual">
+        <c:if test="${showImage}">
+            <mercury:contact
+                kind="${value.Kind}"
+                image="${value.Image}"
+                name="${value.Name}"
+                organization="${value.Organization}"
+                imageRatio="${cms.element.settings.imageRatio}"
+                link="${value.Link}"
+                linkOption="${setting.linkOption.toString eq 'imageOverlay' ? 'imageOverlay' : ''}"
+                hsize="${hsize}"
+                showImage="${true}"
+                showImageZoom="${showImageZoom}"
+            />
+        </c:if>
+    </jsp:attribute>
+
+    <jsp:attribute name="markupText">
         <mercury:contact
             kind="${value.Kind}"
-            image="${value.Image}"
-            imageRatio="${imageRatio}"
             link="${value.Link}"
-            hsize="${hsize}"
             name="${value.Name}"
             position="${value.Position}"
             organization="${value.Organization}"
@@ -62,10 +83,8 @@
             data="${value.Contact}"
             labelOption="${setting.labels.toString}"
             linkOption="${setting.linkOption.toString}"
-            effectOption="${showImage and (setting.effect.toString ne 'none') ? setting.effect.toString : ''}"
-
+            hsize="${hsize}"
             showName="${true}"
-            showImage="${showImage}"
             showPosition="${setting.showPosition.toBoolean}"
             showAddress="${setting.showAddress.toString == 'true'}"
             showAddressAlways="${setting.showAddress.toString == 'always'}"
@@ -75,65 +94,9 @@
             showWebsite="${setting.showWebsite.toBoolean}"
             showEmail="${setting.showEmail.toBoolean}"
             showVcard="${setting.showVcard.toBoolean}"
-            showImageZoom="${showImageZoom}"
         />
-    </div><%----%>
-    <mercury:nl />
-
-</c:when>
-<c:otherwise>
-    <mercury:section-piece
-        cssWrapper="element type-contact ${compactLayout}${' '}${cssWrapper}"
-        pieceLayout="${pieceLayout}"
-        attrWrapper="${kind}"
-        heading="${value.Title}"
-        hsize="${hsizeTitle}"
-        ade="${false}">
-
-        <jsp:attribute name="markupVisual">
-            <mercury:contact
-                kind="${value.Kind}"
-                image="${value.Image}"
-                name="${value.Name}"
-                organization="${value.Organization}"
-                imageRatio="${cms.element.settings.imageRatio}"
-                link="${value.Link}"
-                linkOption="${setting.linkOption.toString eq 'imageOverlay' ? 'imageOverlay' : ''}"
-                effectOption="${showImage and (setting.effect.toString ne 'none') ? setting.effect.toString : ''}"
-                hsize="${hsize}"
-                showImage="${true}"
-                showImageZoom="${showImageZoom}"
-            />
-        </jsp:attribute>
-
-        <jsp:attribute name="markupText">
-            <mercury:contact
-                kind="${value.Kind}"
-                link="${value.Link}"
-                name="${value.Name}"
-                position="${value.Position}"
-                organization="${value.Organization}"
-                description="${value.Description}"
-                data="${value.Contact}"
-                labelOption="${setting.labels.toString}"
-                linkOption="${setting.linkOption.toString}"
-                effectOption="${showImage and (setting.effect.toString ne 'none') ? setting.effect.toString : ''}"
-                hsize="${hsize}"
-                showName="${true}"
-                showPosition="${setting.showPosition.toBoolean}"
-                showAddress="${setting.showAddress.toString == 'true'}"
-                showAddressAlways="${setting.showAddress.toString == 'always'}"
-                showOrganization="${setting.showOrganization.toBoolean}"
-                showDescription="${setting.showDescription.toBoolean}"
-                showPhone="${setting.showPhone.toBoolean}"
-                showWebsite="${setting.showWebsite.toBoolean}"
-                showEmail="${setting.showEmail.toBoolean}"
-                showVcard="${setting.showVcard.toBoolean}"
-            />
-        </jsp:attribute>
-    </mercury:section-piece>
-</c:otherwise>
-</c:choose>
+    </jsp:attribute>
+</mercury:section-piece>
 
 </cms:formatter>
 </mercury:init-messages>

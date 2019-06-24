@@ -303,11 +303,13 @@
 }
 
 // Full height text tiles / piece sections
-@mixin text-tile {
+@mixin text-tile($hide-overflow : true) {
     display: flex;
     flex-direction: column;
     width: 100%;
-    overflow: hidden; // fix for very small columns where single words may increase the column width
+    @if ($hide-overflow == true) {
+        overflow: hidden; // fix for very small columns where single words may increase the column width
+    }
     text-overflow: ellipsis;
     z-index: $overflow-z-index;
 

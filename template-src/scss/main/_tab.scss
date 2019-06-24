@@ -137,6 +137,11 @@
     .acco-header {
         margin: 0;
         font-size: $accordion-header-font-size;
+        @if ($accordion-header-font-size-md != $accordion-header-font-size) {
+            @include media-breakpoint-down(md) {
+                font-size: $accordion-header-font-size-md;
+            }
+        }
         line-height: $accordion-header-line-height;
         text-transform: $accordion-text-transform;
 

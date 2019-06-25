@@ -20,6 +20,7 @@
 // the global objects that must be passed to this module
 var jQ;
 var DEBUG;
+var VERBOSE;
 
 "use strict";
 
@@ -122,7 +123,8 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
         clearTimeout(menuTimeout);
     }
 
-    if (Mercury.gridInfo().isDesktopNav()) {
+    if (Mercury.gridInfo().isDesktopNav() && !Mercury.gridInfo().forceMobileNav()) {
+        if (VERBOSE) console.info("Navigation.toggleMenu, isDesktopNav=true eventMouseenter=" + eventMouseenter);
         // desktop navigation
         var $targetmenu = jQ("#" + targetmenuId).first();
         if (!expanded && (eventMouseenter || eventKeydown || eventTouchstart)) {
@@ -174,23 +176,25 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
 // Elements in head navigation
 function initHeadNavigation() {
 
-    // If the mouse leaves a toplevel menu, set a timeout to close the menu
-    jQ('.nav-main-items > li[aria-expanded]').on('mouseleave', function(e) {
-        if (Mercury.gridInfo().isDesktopNav()) {
-            menuTimeout = setTimeout(resetMenu, 750);
-        }
-    });
-
-    // If the mouse enters a toplevel menu, close all other menus
-    jQ('.nav-main-items > li > a').on('mouseenter', function(e) {
-        // This will be triggered only for toplevel menu items
-        if (Mercury.gridInfo().isDesktopNav()) {
-            if (menuTimeout) {
-                clearTimeout(menuTimeout);
+    if(!Mercury.gridInfo().forceMobileNav()) {
+        // If the mouse leaves a toplevel menu, set a timeout to close the menu
+        jQ('.nav-main-items > li[aria-expanded]').on('mouseleave', function(e) {
+            if (Mercury.gridInfo().isDesktopNav()) {
+                menuTimeout = setTimeout(resetMenu, 750);
             }
-            resetMenu();
-        }
-    });
+        });
+
+        // If the mouse enters a toplevel menu, close all other menus
+        jQ('.nav-main-items > li > a').on('mouseenter', function(e) {
+            // This will be triggered only for toplevel menu items
+            if (Mercury.gridInfo().isDesktopNav()) {
+                if (menuTimeout) {
+                    clearTimeout(menuTimeout);
+                }
+                resetMenu();
+            }
+        });
+    }
 
     // Select all menu elements
     var $menuToggles = jQ('.nav-main-items [aria-controls]');
@@ -307,15 +311,15 @@ var m_lastScrollTop = 0;
 var m_checkScrollTop = 999999999999; // Stupid IE 10 does not know Number.MAX_SAFE_INTEGER
 
 function updateFixed(resize) {
-    var verbose = false;
-    if (DEBUG && verbose) console.info("Fixed header update, resize=" + resize);
+
+    if (VERBOSE) console.info("Fixed header update, resize=" + resize);
     // Update position of fixed header.
     // This is more complicated then it appears since the fixed header height
     // can be different from the attached header height, e.g. if a class '.hidden-fixed' is used.
     // In order to correctly calculate anchor link positions we must make sure to use the correct
     // header height depending on the page scroll state.
     if (Mercury.gridInfo().isDesktopNav()) {
-        if (DEBUG && verbose) console.info("Fixed header update, isDesktopNav=true");
+        if (VERBOSE) console.info("Fixed header update, isDesktopNav=true");
         // assuming this event handler is only called if m_fixedHeader != null
         // only do this if desktop head nav is shown
         if (resize) {
@@ -330,14 +334,15 @@ function updateFixed(resize) {
             }
         }
         var fixHeader = scrollUp && (m_fixedHeader.bottom < (Mercury.windowScrollTop() + Mercury.toolbarHeight()));
-        if (DEBUG && verbose) console.info("Fixed header update, fixHeader=" + fixHeader + " m_fixedHeader.isFixed=" + m_fixedHeader.isFixed);
+        if (VERBOSE) console.info("Fixed header update, fixHeader=" + fixHeader + " m_fixedHeader.isFixed=" + m_fixedHeader.isFixed);
         if (fixHeader && !m_fixedHeader.isFixed) {
-            if (DEBUG && verbose) console.info("Fixed header update, fixing header at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
+            if (VERBOSE) console.info("Fixed header update, fixing header at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
             // header should be fixed, but is not
             if (m_lastScrollTop < m_checkScrollTop) {
                 m_fixedHeader.isFixed = true;
                 m_fixedHeader.$parent.height(m_fixedHeader.$element.height());
                 m_fixedHeader.$element.removeClass('notfixed').addClass('isfixed');
+                m_fixedHeader.$element.removeClass('scrolled');
                 m_fixedHeader.height = m_fixedHeader.$element.height();
                 m_checkScrollTop = 999999999999;
             }
@@ -347,14 +352,22 @@ function updateFixed(resize) {
             m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
             m_fixedHeader.$parent.height("auto");
         }
+        if (!m_fixedHeader.isFixed) {
+            // add class to identify a header that has been scrolled but is not fixed yet
+            if (Mercury.windowScrollTop() > 0) {
+                m_fixedHeader.$element.addClass('scrolled');
+            } else {
+                m_fixedHeader.$element.removeClass('scrolled');
+            }
+        }
         if (resize) {
             // resize may lead to changes in the header height, make sure we don't use outdated values
             m_fixedHeader.height = m_fixedHeader.isFixed ? m_fixedHeader.$element.height() : -1;
-            if (DEBUG && verbose) console.info("Header is " + (m_fixedHeader.isFixed ? "" : "NOT ") + "fixed, fixed height: " + m_fixedHeader.getHeight());
+            if (VERBOSE) console.info("Header is " + (m_fixedHeader.isFixed ? "" : "NOT ") + "fixed, fixed height: " + m_fixedHeader.getHeight());
         }
     } else {
         // smaller screens: make sure the head height is set to "auto"
-        if (DEBUG && verbose) console.info("Fixed header update, isDesktopNav=false");
+        if (VERBOSE) console.info("Fixed header update, isDesktopNav=false");
         if (m_fixedHeader.isFixed) {
             m_fixedHeader.isFixed = false;
             m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
@@ -499,6 +512,7 @@ export function init(jQuery, debug) {
 
     jQ = jQuery;
     DEBUG = debug;
+    VERBOSE = DEBUG && (Mercury.getParameter("jsverbose") != null);
 
     if (DEBUG) console.info("Navigation.init()");
 

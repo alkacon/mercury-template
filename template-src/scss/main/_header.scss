@@ -181,7 +181,7 @@
 
 // Header formatting for desktop size
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up($nav-breakpoint-sticky-header) {
 
     .area-header {
         background: $nav-head-bg;

@@ -355,7 +355,7 @@
     @if ($nav-breakpoint-desktop != none) {
         @return breakpoint-max($nav-breakpoint-mobile);
     } @else {
-         @return 99999;
+         @return $nav-breakpoint-sticky-header-size - 1;
     }
 }
 
@@ -363,7 +363,15 @@
     @if ($nav-breakpoint-desktop != none) {
         @return breakpoint-min($nav-breakpoint-desktop);
     } @else {
-         @return 100000;
+         @return $nav-breakpoint-sticky-header-size;
+    }
+}
+
+@function breakpoint-sticky-header() {
+    @if ($nav-breakpoint-sticky-header != none) {
+        @return breakpoint-min($nav-breakpoint-sticky-header);
+    } @else {
+         @return $nav-breakpoint-sticky-header-size;
     }
 }
 

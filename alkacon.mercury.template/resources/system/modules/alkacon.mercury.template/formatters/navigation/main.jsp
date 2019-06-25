@@ -47,7 +47,7 @@
         <c:set var="linkElements" value="${cms.elementsInContainers['header-linksequence']}" />
         <c:if test="${not empty linkElements}">
             <c:set var="linksequence" value="${linkElements.get(0).toXml}" />
-            <li id="nav-main-addition" aria-expanded="false"  class="hidden-lg hidden-xl"><%----%>
+            <li id="nav-main-addition" aria-expanded="false" class="hidden-lg hidden-xl"><%----%>
                 <a href="#" title="Search" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${linksequence.value.Title}</a><%----%>
                 <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
                     <mercury:nl />

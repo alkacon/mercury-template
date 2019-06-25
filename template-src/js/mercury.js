@@ -39,14 +39,14 @@ import unobfuscateString            from './unobfuscate.js';
 
 import { _OpenCmsReinitEditButtons, _OpenCmsInit } from './opencms-callbacks.js';
 
-var DEBUG = false || (getParameter("jsdebug") != null);
-
 // Module implemented using the "revealing module pattern", see
 // https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript
 // https://www.christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
 var Mercury = function(jQ) {
 
     "use strict";
+
+    var DEBUG = false || (getParameter("jsdebug") != null);
 
     // class to mark element that should be hidden
     var HIDE_ELEMENT_CLASS="element-hide";
@@ -211,6 +211,13 @@ var Mercury = function(jQ) {
     }
 
 
+    function getParameter(key) {
+        key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+        var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+        return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+    }
+
+
     function getCssJsonData(elementId) {
         // reads JSON data from the CSS and returns it as an JS object
         var data = getCssDataFromId(elementId);
@@ -364,8 +371,9 @@ var Mercury = function(jQ) {
         m_gridInfo.isMinLg = function() { return m_windowWidth >= this.lgMin };
         m_gridInfo.isMinXl = function() { return m_windowWidth >= this.xlMin };
 
+        m_gridInfo.forceMobileNav = function() { return this.navDeskMin < 5 };
         m_gridInfo.isDesktopNav = function() { return m_windowWidth >= this.navDeskMin };
-        m_gridInfo.isMobileNav = function() { return m_windowWidth < this.navDeskMin };
+        m_gridInfo.isMobileNav = function() { return (this.navDeskMin < 5) || (m_windowWidth < this.navDeskMin) };
         m_gridInfo.navPos = function() { return this.navMobPos };
         m_gridInfo.getNavFixHeader = function() { return (this.navFixHeader) };
     }
@@ -873,6 +881,7 @@ var Mercury = function(jQ) {
         getCssJsonData: getCssJsonData,
         getInfo: getInfo,
         getLocale: getLocale,
+        getParameter: getParameter,
         getThemeJSON: getThemeJSON,
         gridInfo: gridInfo,
         hasInfo: hasInfo,
@@ -897,12 +906,6 @@ var Mercury = function(jQ) {
 __webpack_public_path__ = function() {
     return __scriptPath.replace("/mercury.js", "/");
 }();
-
-function getParameter(key) {
-    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
-    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
-    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
-}
 
 jQuery(document).ready(function() {
     Mercury.init();

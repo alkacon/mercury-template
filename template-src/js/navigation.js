@@ -466,7 +466,7 @@ function initDependencies() {
 
     debUpdateFixedScroll = Mercury.debounce(function() {
         updateFixed(false)
-    }, 25);
+    }, 5);
 
     debScrollToAnchor = Mercury.debounce(function($anchor, offset) {
         if ($anchor.length) {

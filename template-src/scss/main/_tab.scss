@@ -142,6 +142,7 @@
                 font-size: $accordion-header-font-size-md;
             }
         }
+        @include use-hyphens-headings;
         line-height: $accordion-header-line-height;
         text-transform: $accordion-text-transform;
 

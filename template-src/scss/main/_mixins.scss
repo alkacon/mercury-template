@@ -390,3 +390,41 @@
         }
     }
 }
+
+@mixin use-hyphens-headings {
+    @if ($piece-hyphens-headings) {
+        @if ($piece-hyphens-headings-xs and $piece-hyphens-headings-md) {
+            hyphens: auto;
+        } @else {
+            @if ($piece-hyphens-headings-xs) {
+                @include media-breakpoint-down(sm) {
+                    hyphens: auto;
+                }
+            }
+            @if ($piece-hyphens-headings-md) {
+                @include media-breakpoint-up(md) {
+                    hyphens: auto;
+                }
+            }
+        }
+    }
+}
+
+@mixin use-hyphens-text {
+    @if ($piece-hyphens-text) {
+        @if ($piece-hyphens-text-xs and $piece-hyphens-text-md) {
+            hyphens: auto;
+        } @else {
+            @if ($piece-hyphens-text-xs) {
+                @include media-breakpoint-down(sm) {
+                    hyphens: auto;
+                }
+            }
+            @if ($piece-hyphens-text-md) {
+                @include media-breakpoint-up(md) {
+                    hyphens: auto;
+                }
+            }
+        }
+    }
+}

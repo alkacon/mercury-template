@@ -72,9 +72,7 @@
             <c:set var="nextIsTopLevel" value="${nextLevel eq navStartLevel}" />
             <c:set var="navTarget" value="${fn:trim(navElem.info)eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
-            <c:set var="isCurrentPage" value="${navElem.navigationLevel ?
-                (navElem.navTreeLevel > navStartLevel) and fn:startsWith(cms.requestContext.uri, navElem.parentFolderName) :
-                fn:startsWith(cms.requestContext.uri, navElem.resourceName)}" />
+            <c:set var="isCurrentPage" value="${fn:startsWith(cms.requestContext.uri, cms.sitePath[navElem.resource.rootPath])}" />
 
             <c:set var="menuType">
                 ${isCurrentPage ? ' active' : ''}

@@ -25,8 +25,9 @@ var VERBOSE;
 "use strict";
 
 var m_fixedHeader = null;
-
 var m_$anchor = null;
+var menuTimeout = null;
+var $topControl = null;
 
 function setKeyboardClass(active) {
     if (active) {
@@ -92,8 +93,28 @@ function initMegaMenu() {
     }
 }
 
-var menuTimeout = null;
-var $topControl = null;
+var lastInitMenuStatus = 0;
+
+function initMenu() {
+    var initMenuStatus = Mercury.gridInfo().isMobileNav() ? 1 : 2;
+    if (initMenuStatus != lastInitMenuStatus) {
+        lastInitMenuStatus = initMenuStatus;
+        // Close all menus
+        var $allMenus = jQ('.nav-main-items [aria-expanded]');
+        if (DEBUG) console.info("Navigation.initMenu() .nav-main-items [aria-expanded] elements found: " + $allMenus.length);
+        if ($allMenus.length > 0 ) {
+            $allMenus.attr("aria-expanded", "false");
+        }
+        if (Mercury.gridInfo().isMobileNav()) {
+            // Activate current menu position
+            var $activeMenus = jQ('.nav-main-items [aria-expanded].active');
+            if (DEBUG) console.info("Navigation.initMenu() .nav-main-items [aria-expanded].active elements found: " + $activeMenus.length);
+            if ($activeMenus.length > 0 ) {
+                $activeMenus.attr("aria-expanded", "true");
+            }
+        }
+    }
+}
 
 function resetMenu($menuToggle) {
     jQ(".nav-main-items [aria-expanded]").each(function(i) {
@@ -123,7 +144,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
         clearTimeout(menuTimeout);
     }
 
-    if (Mercury.gridInfo().isDesktopNav() && !Mercury.gridInfo().forceMobileNav()) {
+    if (Mercury.gridInfo().isDesktopNav()) {
         if (VERBOSE) console.info("Navigation.toggleMenu, isDesktopNav=true eventMouseenter=" + eventMouseenter);
         // desktop navigation
         var $targetmenu = jQ("#" + targetmenuId).first();
@@ -176,25 +197,23 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
 // Elements in head navigation
 function initHeadNavigation() {
 
-    if(!Mercury.gridInfo().forceMobileNav()) {
-        // If the mouse leaves a toplevel menu, set a timeout to close the menu
-        jQ('.nav-main-items > li[aria-expanded]').on('mouseleave', function(e) {
-            if (Mercury.gridInfo().isDesktopNav()) {
-                menuTimeout = setTimeout(resetMenu, 750);
-            }
-        });
+    // If the mouse leaves a toplevel menu, set a timeout to close the menu
+    jQ('.nav-main-items > li[aria-expanded]').on('mouseleave', function(e) {
+        if (Mercury.gridInfo().isDesktopNav()) {
+            menuTimeout = setTimeout(resetMenu, 750);
+        }
+    });
 
-        // If the mouse enters a toplevel menu, close all other menus
-        jQ('.nav-main-items > li > a').on('mouseenter', function(e) {
-            // This will be triggered only for toplevel menu items
-            if (Mercury.gridInfo().isDesktopNav()) {
-                if (menuTimeout) {
-                    clearTimeout(menuTimeout);
-                }
-                resetMenu();
+    // If the mouse enters a toplevel menu, close all other menus
+    jQ('.nav-main-items > li > a').on('mouseenter', function(e) {
+        // This will be triggered only for toplevel menu items
+        if (Mercury.gridInfo().isDesktopNav()) {
+            if (menuTimeout) {
+                clearTimeout(menuTimeout);
             }
-        });
-    }
+            resetMenu();
+        }
+    });
 
     // Select all menu elements
     var $menuToggles = jQ('.nav-main-items [aria-controls]');
@@ -220,13 +239,14 @@ function initHeadNavigation() {
         });
     }
 
+    // Activate current menu elements in case of mobile navigation
+    initMenu();
+    jQ(window).on('resize', debInitMenu);
+
     // Responsive navbar toggle button
     jQ('.nav-toggle').click(function() {
         jQ('.nav-toggle').toggleClass('active');
         jQ(document.documentElement).toggleClass('active-nav');
-        if (Mercury.gridInfo().isMobileNav() && (jQ('.nav-toggle').hasClass('active'))) {
-            jQ('.nav-main-items [aria-expanded].active').attr("aria-expanded", "true");
-        }
     });
 
     // Add handler for top scroller
@@ -249,20 +269,17 @@ function initHeadNavigation() {
 
     // Hover Selector used for language switch
     jQ('.hoverSelector').on('mouseenter mouseleave', function(e) {
-
         jQ('.hoverSelectorBlock', this).toggleClass('expanded');
         e.stopPropagation();
     });
 
     // Add handler for elements that should not keep the focus
     jQ('[data-toggle], .blur-focus').on('mouseleave', function(e) {
-
         jQ(this).blur();
     });
 
     // If user presses tab, add marker class to document body to enable focus highlighting
     jQ(document.documentElement).on('keydown', function(e) {
-
         if (e.which == 9) {
             setKeyboardClass(true);
         }
@@ -270,7 +287,6 @@ function initHeadNavigation() {
 
     // If the mouse is moved, remove focus highlight marker class
     jQ(document.documentElement).on('mousemove', function(e) {
-
         setKeyboardClass(false);
     });
 
@@ -318,8 +334,8 @@ function updateFixed(resize) {
     // can be different from the attached header height, e.g. if a class '.hidden-fixed' is used.
     // In order to correctly calculate anchor link positions we must make sure to use the correct
     // header height depending on the page scroll state.
-    if (Mercury.gridInfo().isDesktopNav()) {
-        if (VERBOSE) console.info("Fixed header update, isDesktopNav=true");
+    if (Mercury.gridInfo().showFixedHeader()) {
+        if (VERBOSE) console.info("Fixed header update, showFixedHeader=true");
         // assuming this event handler is only called if m_fixedHeader != null
         // only do this if desktop head nav is shown
         if (resize) {
@@ -367,7 +383,7 @@ function updateFixed(resize) {
         }
     } else {
         // smaller screens: make sure the head height is set to "auto"
-        if (VERBOSE) console.info("Fixed header update, isDesktopNav=false");
+        if (VERBOSE) console.info("Fixed header update, showFixedHeader=false");
         if (m_fixedHeader.isFixed) {
             m_fixedHeader.isFixed = false;
             m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
@@ -378,7 +394,7 @@ function updateFixed(resize) {
 
 function fixedHeaderActive() {
 
-    return (m_fixedHeader != null) && Mercury.gridInfo().isDesktopNav();
+    return (m_fixedHeader != null) && Mercury.gridInfo().showFixedHeader();
 }
 
 // add click handler and adjust position on initial page load
@@ -456,6 +472,7 @@ function initExternalLinks() {
 // functions that require the Mercury object
 var debUpdateFixedResize;
 var debUpdateFixedScroll;
+var debInitMenu;
 var debScrollToAnchor;
 
 function initDependencies() {
@@ -467,6 +484,10 @@ function initDependencies() {
     debUpdateFixedScroll = Mercury.debounce(function() {
         updateFixed(false)
     }, 5);
+
+    debInitMenu = Mercury.debounce(function() {
+        initMenu();
+    }, 100);
 
     debScrollToAnchor = Mercury.debounce(function($anchor, offset) {
         if ($anchor.length) {

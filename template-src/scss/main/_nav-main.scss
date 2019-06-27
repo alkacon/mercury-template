@@ -109,6 +109,7 @@
                         display: block;
                         border: none;
                         padding: 0;
+                        margin: 0;
                     }
                 }
 
@@ -128,7 +129,7 @@
             &[aria-expanded="true"] > a {
                 color: $nav-text-hover-mobile;
                 background-color: $nav-bg-hover-mobile;
-                border-color: $nav-border; // override theme color
+                border-color: $nav-mobile-border-color;
             }
 
             // this adds the downslide transition effect
@@ -317,7 +318,7 @@
     .nav-main-container {
         pointer-events: none;
         position: fixed;
-        #{$nav-mobile-position}: -1 * 90vw;
+        #{$nav-mobile-position}: -1 * $nav-mobile-width-xs;
         transition: $nav-mobile-position 0.5s, opacity 0.25s;
         top: 0;
         height: 100vh;
@@ -338,7 +339,7 @@
             // make space above the nav entries for the toggle button
             padding-top: $grid-gutter-width + $nav-toggle-size;
             min-width: $nav-mobile-side-size;
-            width: 90vw;
+            width: $nav-mobile-width-xs;
 
             &.has-sidelogo {
                 padding-top: 0;
@@ -352,22 +353,22 @@
 
         // adjust size of mobile side navigation
         @include media-breakpoint-up(sm) {
-            #{$nav-mobile-position}: -1 * 70vw;
+            #{$nav-mobile-position}: -1 * $nav-mobile-width-sm;
             .nav-main-group  {
-                width: 70vw;
+                width: $nav-mobile-width-sm;
             }
         }
         @include media-breakpoint-up(md) {
-            #{$nav-mobile-position}: -1 * 50vw;
+            #{$nav-mobile-position}: -1 * $nav-mobile-width-md;
             .nav-main-group  {
-                width: 50vw;
+                width: $nav-mobile-width-md;
             }
         }
         @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl)) {
             @include media-breakpoint-up(lg) {
-                #{$nav-mobile-position}: -1 * round(breakpoint-min(lg) / 2);
+                #{$nav-mobile-position}: -1 * $nav-mobile-width-lg;
                 .nav-main-group  {
-                    width: round(breakpoint-min(lg) / 2);
+                    width: $nav-mobile-width-lg;
                 }
             }
         }

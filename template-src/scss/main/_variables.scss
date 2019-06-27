@@ -152,6 +152,7 @@ $link-hover-decoration:             underline !default;
 
 $paragraph-margin-bottom:           $default-margin-small !default; // margin below <o> elements
 $label-margin-bottom:               $default-margin-verysmall !default; // margin below <label> elements
+$dropdown-border-radius:            $default-border-radius !default; // BS dropdown border radius
 
 
 // Drop shadow color for effects
@@ -298,13 +299,18 @@ $nav-mobile-font-family:            $nav-font-family !default; // text font for 
 $nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
 $nav-mobile-toggle-side:            $grid-gutter-width !default; // left / right position for mobile toggle
 $nav-mobile-toggle-side-xs:         $nav-mobile-toggle-side !default; // left / right position for mobile toggle in XS screens
-$nav-mobile-border:                 solid 1px $nav-border !default; // border for mobile menu items
+$nav-mobile-border-color:           $nav-border !default; // border for mobile menu items
+$nav-mobile-border:                 solid 1px $nav-mobile-border-color !default; // border for mobile menu items
 $nav-mobile-smaller-xs-toggle:      true !default; // make toggle button smaller on xs screens, can be 'true' or 'false'
 $nav-mobile-header-color:           $nav-header-text !default; // text color of header links in mobile menu
 $nav-mobile-header-text-transform:  $nav-header-text-transform !default; // text transform of header links in mobile menu
 $nav-mobile-header-font-size:       $nav-header-font-size !default; // font size of header links in mobile menu
 $nav-mobile-header-font-weight:     $nav-header-font-weight !default; // font weight of header links in mobile menu
 $nav-mobile-topcontrol-default:     true !default; // default topcontrol button, if false then no styling is supplied for topcontrol
+$nav-mobile-width-xs:               90vw !default; // width of mobile menu XS
+$nav-mobile-width-sm:               70vw !default; // width of mobile menu SM
+$nav-mobile-width-md:               50vw !default; // width of mobile menu MD
+$nav-mobile-width-lg:               $nav-mobile-width-md !default; // width of mobile menu in LG, XL (if enabled)
 
 $nav-breakpoint-mobile:             md !default; // breakpoint until which the mobile navigation is displayed
 $nav-breakpoint-desktop:            lg !default; // breakpoint from which the desktop navigation is displayed

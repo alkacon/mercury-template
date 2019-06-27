@@ -75,7 +75,7 @@ var Mercury = function(jQ) {
         m_windowWidth = m_$window.width();
 
         if (DEBUG) console.info("Mercury current grid size: " + m_gridInfo.currentSize());
-    }, 100));
+    }, 50));
 
 
     function windowHeight() {
@@ -371,11 +371,12 @@ var Mercury = function(jQ) {
         m_gridInfo.isMinLg = function() { return m_windowWidth >= this.lgMin };
         m_gridInfo.isMinXl = function() { return m_windowWidth >= this.xlMin };
 
-        m_gridInfo.forceMobileNav = function() { return this.navDeskMin < 5 };
-        m_gridInfo.isDesktopNav = function() { return m_windowWidth >= this.navDeskMin };
-        m_gridInfo.isMobileNav = function() { return (this.navDeskMin < 5) || (m_windowWidth < this.navDeskMin) };
-        m_gridInfo.navPos = function() { return this.navMobPos };
+        m_gridInfo.forceMobileNav = function() { return (this.navDeskMin < 5) };
         m_gridInfo.getNavFixHeader = function() { return (this.navFixHeader) };
+        m_gridInfo.isDesktopNav = function() { return (!m_gridInfo.forceMobileNav()) && (m_windowWidth >= this.navDeskMin) };
+        m_gridInfo.isMobileNav = function() { return (m_gridInfo.forceMobileNav()) || (m_windowWidth < this.navDeskMin) };
+        m_gridInfo.showFixedHeader = function() { return (m_gridInfo.forceMobileNav() && m_gridInfo.getNavFixHeader() != "false") || (m_gridInfo.isDesktopNav()) };
+        m_gridInfo.navPos = function() { return this.navMobPos };
     }
 
 

@@ -69,7 +69,6 @@
 <mercury:teaser-piece
     cssWrapper="type-event${setShowCalendar ? ' calendar-sheet-piece ' : ' '}${setEffect}${' '}${setCssWrapper}"
     gridOption="${setShowCalendar and smallCalendarSheet ? ' fixed' : ''}"
-    sizeMobile="${setShowCalendar ? 12 : null}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     headlineSuffix="${badge}"
@@ -82,7 +81,7 @@
     noLinkOnVisual="${true}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
-    sizeMobile="${setSizeMobile}"
+    sizeMobile="${setShowCalendar ? 12 : setSizeMobile}"
 
     teaserType="${displayType}"
     link="${link}"

@@ -628,9 +628,14 @@
                     @if ($nav-header-show-arrows == true) {
                         // always show arrows
                         &::after {
+                            color: $nav-header-text;
                             line-height: $nav-header-line-height;
                             content: "\f107"; // arrow pointing down
-                            right: 2px;
+                            right: round($nav-hor-padding / 4);
+                        }
+
+                        &:hover::after {
+                            color: $nav-header-text-hover;
                         }
                     }
 

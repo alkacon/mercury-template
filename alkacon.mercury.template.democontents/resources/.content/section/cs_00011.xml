@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="de">
+    <Title><![CDATA[Die OpenCms Mailing-Liste]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Die <strong>opencms-dev</strong> Mailingliste ist der Ort für alle Fragen, Kommentare und Vorschläge zu OpenCms und das Hauptforum für die OpenCms-Community. Abonnieren Sie die Liste indem Sie das folgende Formular ausfüllen.</p>]]></content>
+    </Text>
+  </ContentSection>
   <ContentSection language="en">
     <Title><![CDATA[The OpenCms mailing list]]></Title>
     <Text name="Text0">

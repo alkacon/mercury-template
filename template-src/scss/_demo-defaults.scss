@@ -116,20 +116,36 @@ $link-colors:
  (light, $text-light, $grey-lighter),
  (dark, $text-dark, $grey),
  (theme, $main-theme, $main-theme-hover),
- (complementary, $main-theme-complementary, $main-theme-hover),
  (default, default, default)
 ) !default;
 
+// Footer colors
+
+$foot-top-bg-color:                 $black !default;
+$foot-top-text-color:               $grey-light !default;
+$foot-top-header-color:             $text-light !default;
+$foot-top-link-color:               $text-light !default;
+$foot-top-link-hover-color:         $text-light !default;
+
+$foot-sub-bg-color:                 $grey-light !default;
+$foot-sub-text-color:               $text-dark !default;
+$foot-sub-link-color:               $text-dark !default;
+$foot-sub-link-hover-color:         $main-theme-hover !default;
 
 // Map colors (for marker groups)
 
 $map-colors: (
     $main-theme,
-    $main-theme-complementary,
+    $main-theme-hover,
     $orange,
-    $cyan
+    $cyan,
+    $grey-light,
+    $grey,
+    $grey-lighter,
+    $grey-dark,
+    $white,
+    $black
 ) !default;
-
 
 // Tile and square settings
 

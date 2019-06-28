@@ -29,15 +29,14 @@
 }
 
 // Calculates the highlight / hover color for a given color
-@function get-highlight-color($color) {
-    $highlight-color: lighten($color, 25%);
+@function get-highlight-color($color, $percentage: 25%) {
+    $highlight-color: lighten($color, $percentage);
     @if (lightness($highlight-color) > 95) {
-        $highlight-color: darken($color, 25%);
+        $highlight-color: darken($color, $percentage);
     }
     @return $highlight-color;
 }
 
-// Checks if a specific font is required by this SCSS configuration
 @function require-font($name) {
     @return (
         (str-index(quote($nav-font-family), $name) != null) or

@@ -5,21 +5,42 @@
     <Title><![CDATA[Die OpenCms Mailing-Liste]]></Title>
     <Code name="Code0">
       <links/>
-      <content><![CDATA[<div>
+      <content><![CDATA[<form method="post" action="http://lists.opencms.org/mailman/subscribe/opencms-dev" class="styled-form compact no-border no-bg" autocomplete="off">
 
-<p>Die opencms-dev Mailingliste ist der Ort für alle Fragen, Kommentare und Vorschläge zu OpenCms und das Hauptforum für die OpenCms-Community. Abonnieren Sie die Liste indem Sie das folgende Formular ausfüllen.</p>
+<fieldset>
+    <section>
+    <label for="email" class="label sr-only">Email Address</label>
+    <div class="input">
+        <span class="icon-append fa fa-envelope"></span>
+        <input type="text" id="email" placeholder="E-Mail Adresse" autocomplete="new-password">
+    </div>
+    </section>    
+    
+    <section>
+    <label for="pw" class="label sr-only">Pick a password</label>
+    <div class="input">
+        <span class="icon-append fa fa-unlock-alt"></span>
+        <input type="password" id="pw" placeholder="Passwort wählen" autocomplete="new-password">
+    </div> 
+    </section>
+    
+    <section>
+    <label for="pw-conf" class="label sr-only">Confirm password</label>
+    <div class="input">
+        <span class="icon-append fa fa-unlock-alt"></span>
+        <input type="password" id="pw-conf" placeholder="Passwort bestätigen" autocomplete="new-password">
+    </div>
+    </section>
 
-<form class="form-horizontal" method="post" action="http://lists.opencms.org/mailman/subscribe/opencms-dev">
+</fieldset>
 
-<div class="mb-10"><input type="text" name="email" placeholder="E-Mail Adresse" class="form-control input-sm"/></div>
-<div class="mb-10"><input type="password" name="pw" placeholder="Passwort auswählen" class="form-control input-sm"/></div>
-<div class="mb-10"><input type="password" name="pw-conf" placeholder="Passwort bestätigen" class="form-control input-sm"/></div>
-
-<button type="submit" class="btn btn-sm">Abonnieren</button>
+<footer>
+    <input type="submit" value="Abonnieren" class="btn btn-sm submitbutton">
+</footer>
 
 </form>
-			
-</div>]]></content>
+
+]]></content>
     </Code>
   </Flexible>
   <Flexible language="en">

@@ -220,8 +220,6 @@ $nav-text-hover:                    $nav-theme !default; // hover text color of 
 $nav-text-active:                   get-text-color($nav-bg-active) !default; // the current page in navigation text color in desktop
 $nav-border:                        $grey-light !default; // the border color for the navigation
 $nav-header-text:                   $nav-text !default; // text color in header nav items
-$nav-header-text-active:            $nav-theme !default; // the "active page in navigation" text color
-$nav-header-text-hover:             $nav-text-hover !default; // the hover text color for the header nav items
 $nav-setting-fixheader:             true !default; // Valid: true, false, upscroll
 $nav-font-family:                   $font-family-base !default; // font family to use for the navigation
 
@@ -244,10 +242,12 @@ $nav-handle-right-padding:          40px !default; // padding for nav handles, a
 $nav-header-bg:                     $body-bg !default;        // background of the header nav items in XS, SM, MD
 $nav-header-menu-bg:                transparentize($nav-header-bg, 0.25) !default; // background of header nav items in LG, XL
 $nav-header-menu-bg-hover:          $nav-header-bg !default; // hover background of the header nav items (all screen sizes)
+$nav-header-text-active:            $nav-theme !default; // the "active page in navigation" text color
+$nav-header-text-hover:             $nav-text-hover !default; // the hover text color for the header nav items
+$nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
 $nav-header-font-family:            $nav-font-family !default; // text font for header nav items
 $nav-header-font-size:              15px !default;          // font size of header nav items
 $nav-header-font-weight:            $font-weight-normal !default; // font weight of header nav items
-$nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
 $nav-header-float:                  right !default;         // float direction of header navigation items, can be 'left' or 'right'
 $nav-header-hor-padding:            $nav-hor-padding !default; // horizontal padding left / right the header nav items in LG, XL
 $nav-header-ver-padding:            9px !default;           // vertical padding above / blow the header nav items in LG, XL
@@ -308,9 +308,9 @@ $nav-mobile-header-font-size:       $nav-header-font-size !default; // font size
 $nav-mobile-header-font-weight:     $nav-header-font-weight !default; // font weight of header links in mobile menu
 $nav-mobile-topcontrol-default:     true !default; // default topcontrol button, if false then no styling is supplied for topcontrol
 $nav-mobile-width-xs:               90vw !default; // width of mobile menu XS
-$nav-mobile-width-sm:               70vw !default; // width of mobile menu SM
-$nav-mobile-width-md:               50vw !default; // width of mobile menu MD
-$nav-mobile-width-lg:               $nav-mobile-width-md !default; // width of mobile menu in LG, XL (if enabled)
+$nav-mobile-width-sm:               500px !default; // width of mobile menu SM
+$nav-mobile-width-md:               $nav-mobile-width-sm !default; // width of mobile menu MD
+$nav-mobile-width-lg:               $nav-mobile-width-sm !default; // width of mobile menu in LG, XL (if enabled)
 
 $nav-breakpoint-mobile:             md !default; // breakpoint until which the mobile navigation is displayed
 $nav-breakpoint-desktop:            lg !default; // breakpoint from which the desktop navigation is displayed
@@ -327,7 +327,7 @@ $disabled-bg:                       repeating-linear-gradient(135deg,transparent
 // The "nav-toggle" button
 // This is the button displayed on small screens to show / hide the navigation
 
-$nav-toggle-bg:                     $main-theme-complementary !default; // color of toggle button
+$nav-toggle-bg:                     $main-theme !default; // color of toggle button
 $nav-toggle-bg-hover:               $main-theme-hover !default; // hover color of toggle button
 $nav-toggle-bg-active:              $main-theme !default; // color of toggle button if activated
 $nav-toggle-text:                   $white !default; // color of text in toggle button
@@ -352,17 +352,16 @@ $header-image-bg:                   none !default; // background color for image
 // Footer
 
 $foot-top-bg-color:                 $black !default;
-$foot-top-header-color:             get-text-color($foot-top-bg-color) !default;
-$foot-top-text-color:               $grey-light !default;
-$foot-top-link-color:               get-text-color($foot-top-bg-color) !default;
-$foot-top-link-hover-color:         get-text-color($foot-top-bg-color) !default;
+$foot-top-text-color:               get-text-color($foot-top-bg-color) !default;
+$foot-top-header-color:             $foot-top-text-color !default;
+$foot-top-link-color:               get-highlight-color($foot-top-text-color, 10%) !default;
+$foot-top-link-hover-color:         $foot-top-link-color !default;
 
-$foot-sub-bg-color:                 $grey-light !default;
-$foot-sub-header-color:             $text-dark !default;
-$foot-sub-text-color:               $text-dark !default;
-$foot-sub-link-color:               $text-dark !default;
-$foot-sub-link-hover-color:         $main-theme-hover !default;
-
+$foot-sub-bg-color:                 $foot-top-bg-color !default;
+$foot-sub-text-color:               get-text-color($foot-sub-bg-color) !default;
+$foot-sub-header-color:             $foot-sub-text-color !default;
+$foot-sub-link-color:               get-highlight-color($foot-sub-text-color, 10%) !default;
+$foot-sub-link-hover-color:         $foot-sub-link-color !default;
 
 // Breadcrumps
 
@@ -424,7 +423,7 @@ $teaser-title-height:               $line-height-headings !default;
 $teaser-btn-def-padding:            $btn-def-padding !default;
 $teaser-btn-compact-padding:        round($btn-padding * 25) / 100 round($btn-padding * 125) / 100 !default;
 $teaser-btn-compact-light-padding:  0 $btn-padding !default;
-$teaser-info-color:                 $grey !default; // color of additional teaser infos, e.g. the date
+$teaser-info-color:                 $text-dark !default; // color of additional teaser infos, e.g. the date
 
 $teaser-btn-color:                  $btn-default  !default;
 $teaser-btn-hover-color:            $btn-default-hover !default;
@@ -515,8 +514,13 @@ $map-label-color:                   $main-theme !default;
 // map colors (for marker groups)
 $map-colors: (
     $main-theme,
-    $main-theme-complementary,
-    $white
+    $main-theme-hover,
+    $grey-light,
+    $grey,
+    $grey-lighter,
+    $grey-dark,
+    $white,
+    $black
 ) !default;
 
 
@@ -552,7 +556,7 @@ $form-input-border-radius:          $btn-border-radius !default;
 
 $sitemap-top-bg-color:              $main-theme !default;
 $sitemap-top-text-color:            get-text-color($sitemap-top-bg-color) !default;
-$sitemap-sub-bg-color:              $main-theme-complementary !default;
+$sitemap-sub-bg-color:              $main-theme-hover !default;
 $sitemap-sub-text-color:            get-text-color($sitemap-sub-bg-color) !default;
 $sitemap-hover-bg-color:            $sitemap-top-bg-color !default;
 $sitemap-hover-text-color:          $sitemap-top-text-color !default;
@@ -710,5 +714,4 @@ $list-tile-spacers:                 (0, 2, 5, 10, 15) !default;
 
 // Start of theme JSON with main colors
 $themeJSON: '"main-theme":"#{$main-theme}"';
-$themeJSON: append-json($themeJSON, "main-theme-complementary", $main-theme-complementary);
 $themeJSON: append-json($themeJSON, "main-theme-hover", $main-theme-hover);

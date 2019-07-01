@@ -122,6 +122,27 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageRatio.detail]]></IncludeName>
+      <PropertyName><![CDATA[imageRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[2-1]]></Default>
+      <WidgetConfig><![CDATA[
+            none:   %(key.msg.setting.imageRatio.none)|
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            2-1:    %(key.msg.setting.imageRatio.2-1)|
+            2,35-1: %(key.msg.setting.imageRatio.235-1)|
+            3-1:    %(key.msg.setting.imageRatio.3-1)|
+            33-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.contact]]></IncludeName>
       <PropertyName><![CDATA[imageRatio]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
@@ -802,21 +823,6 @@
       <Error><![CDATA[%(key.msg.error.pageSize)]]></Error>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceLayout.elaborate]]></IncludeName>
-      <PropertyName><![CDATA[pieceLayoutList]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
-      <Visibility><![CDATA[parentShared]]></Visibility>
-      <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[6]]></Default>
-      <WidgetConfig><![CDATA[
-            6:      %(key.msg.setting.pieceLayout.6)|
-            7:      %(key.msg.setting.pieceLayout.7)|
-            2:      %(key.msg.setting.pieceLayout.2)|
-            3:      %(key.msg.setting.pieceLayout.3)
-        ]]></WidgetConfig>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
       <PropertyName><![CDATA[pieceSizeDesktop]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.visualOption.desktop)]]></DisplayName>
@@ -861,13 +867,28 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[pieceLayout.elaborate]]></IncludeName>
+      <PropertyName><![CDATA[pieceLayoutList]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[6]]></Default>
+      <WidgetConfig><![CDATA[
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)|
+            2:      %(key.msg.setting.pieceLayout.2)|
+            3:      %(key.msg.setting.pieceLayout.3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
       <PropertyName><![CDATA[pieceLayout]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[4]]></Default>
+      <Default><![CDATA[6]]></Default>
       <WidgetConfig><![CDATA[
             0:      %(key.msg.setting.pieceLayout.0)|
             1:      %(key.msg.setting.pieceLayout.1)|
@@ -910,7 +931,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.visualOption.paragraphs)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
       <Widget><![CDATA[selectcombo]]></Widget>
-      <Default><![CDATA[4]]></Default>
+      <Default><![CDATA[5]]></Default>
       <WidgetConfig><![CDATA[
             0:      %(key.msg.setting.pieceLayout.0)|
             1:      %(key.msg.setting.pieceLayout.1)|
@@ -930,13 +951,13 @@
       <DisplayName><![CDATA[%(key.msg.setting.keyVisualOption)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.keyVisualOption.help)]]></Description>
       <Widget><![CDATA[selectcombo]]></Widget>
-      <Default><![CDATA[50]]></Default>
+      <Default><![CDATA[0]]></Default>
       <WidgetConfig><![CDATA[
-            50:      %(key.msg.setting.keyVisualOption.imageOverlay)|
             0:       %(key.msg.setting.keyVisualOption.textAboveImage)|
             1:       %(key.msg.setting.keyVisualOption.textBelowImage)|
             4:       %(key.msg.setting.keyVisualOption.sideImageLeft)|
-            5:       %(key.msg.setting.keyVisualOption.sideImageRight)
+            5:       %(key.msg.setting.keyVisualOption.sideImageRight)|
+            50:      %(key.msg.setting.keyVisualOption.imageOverlay)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

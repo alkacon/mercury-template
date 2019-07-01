@@ -47,7 +47,7 @@
       <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.detail]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>

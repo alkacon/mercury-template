@@ -76,13 +76,25 @@
 @include media-breakpoint-up(md) {
 
     .calendar-sheet-piece.fixed {
-        > .visual {
-            min-width: 135px + $grid-gutter-width;
-            max-width: 135px + $grid-gutter-width;
+        &.flex {
+            > .visual {
+                min-width: 135px + $grid-gutter-width;
+                max-width: 135px + $grid-gutter-width;
+            }
+            > .body {
+                flex: 0 0 calc(100% - #{135px + $grid-gutter-width});
+                max-width: calc(100% - #{135px + $grid-gutter-width});
+            }
         }
-        > .body {
-            flex: 0 0 calc(100% - #{135px + $grid-gutter-width});
-            max-width: calc(100% - #{135px + $grid-gutter-width});
+        &.float {
+            > .visual {
+                min-width: 135px + (0.5 * $grid-gutter-width);
+                max-width: 135px + (0.5 * $grid-gutter-width);
+            }
+            > .body {
+                flex: 0 0 calc(100% - #{135px + (0.5 * $grid-gutter-width)});
+                max-width: calc(100% - #{135px + (0.5 * $grid-gutter-width)});
+            }
         }
     }
 

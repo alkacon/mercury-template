@@ -585,6 +585,7 @@ msg.page.newElement.hint=You need to enter the initial values in the form editor
 msg.page.noImage=No image available
 msg.page.noImage.hint=The selected formatter displays an image here. Please select a different formatter, or edit the content and insert an image.
 msg.page.poi.nomap=Can not show map, no coordinates are set in the content.
+msg.page.policyfile.missing=Privacy policy not configured
 msg.page.search=Search
 msg.page.search.didyoumean_0=Did you mean?
 msg.page.search.didyoumean_1=Did you mean {0}?

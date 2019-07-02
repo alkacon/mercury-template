@@ -585,6 +585,7 @@ msg.page.newElement.hint=Der erste Inhalt muss im Formular-Editor eingegeben wer
 msg.page.noImage=Kein Bild vorhanden
 msg.page.noImage.hint=Der ausgewählte Formatter stellt hier ein Bild dar. Bitte einen anderen Formatter auswählen oder den Inhalt bearbeiten und ein Bild einfügen.
 msg.page.poi.nomap=Karte kann nicht angezeigt werden, im Inhalt sind keine Koordianten gesetzt.
+msg.page.policyfile.missing=Datenschutzerklärung nicht konfiguriert.
 msg.page.search=Suche
 msg.page.search.didyoumean_0=Meinten Sie?
 msg.page.search.didyoumean_1=Meinten Sie {0}?

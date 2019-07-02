@@ -544,7 +544,7 @@ $form-radio-checked-border-color:   $form-radio-unchecked-color !default;
 $form-error-background:             #ffeeee !default;
 $form-error-text-color:             $main-theme !default;
 $form-border:                       1px solid $form-border-color !default;
-$form-background:                   lighten($grey-lighter, 5%) !default;
+$form-background:                   $content-bg !default;
 $form-input-background:             $content-bg !default;
 $form-captcha-background:           $white !default;
 $form-captcha-border:               1px dashed $grey-light !default;

@@ -7,7 +7,7 @@
 	</info>
 	<module>
 		<name>alkacon.mercury.template.democontents</name>
-		<nicename><![CDATA[Mercury template: Demo content]]></nicename>
+		<nicename><![CDATA[Mercury template: Default demo content]]></nicename>
 		<group>Mercury template</group>
 		<class/>
 		<import-script><![CDATA[writeProperty '/' 'Title' 'Demo Site'
@@ -40,9 +40,9 @@ addUserToGroup 'Templator' 'Users'
 addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
-		<description><![CDATA[The OpenCms Mercury template demo contents.
+		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.0.14</version>
+		<version>11.0.0.15</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>

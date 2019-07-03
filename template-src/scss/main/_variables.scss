@@ -382,18 +382,19 @@ $nav-breadcrump-separator-font:     FontAwesome !default; // font-family for bre
 
 $nav-side-bg:                       $nav-bg !default;
 $nav-side-bg-hover:                 $nav-bg-hover !default;
-$nav-side-bg-active:                $nav-bg-active !default;
+$nav-side-bg-active:                transparent !default;
 $nav-side-text:                     $nav-text !default;
 $nav-side-text-hover:               $nav-text-hover !default;
-$nav-side-text-active:              $nav-text-active !default;
+$nav-side-text-active:              $nav-theme !default;
+$nav-side-font-weight:              default !default;
 $nav-side-font-size:                $font-size-base !default;
 $nav-side-border:                   1px solid $nav-border !default;
+$nav-side-boxed:                    false !default; // true/false: show border around sidebar navigation
 $nav-side-left-padding-step:        $grid-gutter-width / 2 !default;
-$nav-side-left-padding-start:       $nav-side-left-padding-step !default;
+$nav-side-left-padding-start:       conditional-value($nav-side-boxed == true, $nav-side-left-padding-step, 2px) !default;
 $nav-side-right-padding:            30px !default;
 $nav-side-ver-padding:              6px !default;
 $nav-side-padding:                  $nav-side-ver-padding $nav-side-right-padding $nav-side-ver-padding $nav-side-left-padding-start !default;
-$nav-side-boxed:                    true !default; // true/false: show vertical lines around sidebar navigation
 $nav-side-border-radius:            $default-border-radius !default;
 
 

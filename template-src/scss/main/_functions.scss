@@ -88,3 +88,12 @@
     @return $number;
 }
 
+// Can be used to set a value based on a condition
+@function conditional-value($condition, $trueval, $falseval) {
+    @if ($condition) {
+        @return $trueval;
+    } @else {
+        @return $falseval;
+    }
+}
+

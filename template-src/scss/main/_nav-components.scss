@@ -178,6 +178,9 @@
             @if ($nav-side-text-active != $nav-side-text) {
                 color: $nav-side-text-active;
             }
+            @if ($nav-side-font-weight != default) {
+                font-weight: $nav-side-font-weight;
+            }
             &:hover {
                 color: $nav-side-text-hover;
                 background: $nav-side-bg-hover;

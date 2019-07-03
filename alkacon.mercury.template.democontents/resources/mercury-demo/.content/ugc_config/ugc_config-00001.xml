@@ -6,7 +6,7 @@
     <ContentType><![CDATA[m-article]]></ContentType>
     <ContentPath>
       <link type="WEAK">
-        <target><![CDATA[/sites/default/mercury-demo/.content/article/]]></target>
+        <target><![CDATA[/sites/default/mercury-demo/.content/article-m/]]></target>
         <uuid>f3a84524-3a95-11e9-bd84-0242ac11002b</uuid>
       </link>
     </ContentPath>
@@ -17,7 +17,7 @@
     <ProjectGroup><![CDATA[Administrators]]></ProjectGroup>
     <UploadPath>
       <link type="WEAK">
-        <target><![CDATA[/sites/default/mercury-demo/.content/article/images-ugc/]]></target>
+        <target><![CDATA[/sites/default/mercury-demo/.content/article-m/images-ugc/]]></target>
         <uuid>f3bc69c6-3a95-11e9-bd84-0242ac11002b</uuid>
       </link>
     </UploadPath>

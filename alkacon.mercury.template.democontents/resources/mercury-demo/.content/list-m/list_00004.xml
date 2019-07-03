@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
+  <ListConfig language="en">
+    <Title><![CDATA[FAQ Silly Questions]]></Title>
+    <TypesToCollect>m-faq:5f11a31c-bd36-4b15-a7fe-a52258ae8111</TypesToCollect>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/mercury-demo/.content/faq-m/]]></target>
+        <uuid>f3d08d60-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <Category>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.categories/faq/silly/]]></target>
+        <uuid>efb58766-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </Category>
+    <CategoryMode><![CDATA[OR]]></CategoryMode>
+    <SortOrder><![CDATA[ORDER_DESC]]></SortOrder>
+    <ShowExpired>true</ShowExpired>
+  </ListConfig>
+</ListConfigs>

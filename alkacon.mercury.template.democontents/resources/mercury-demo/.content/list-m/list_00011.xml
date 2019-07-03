@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
+  <ListConfig language="en">
+    <Title><![CDATA[Upcoming Events]]></Title>
+    <TypesToCollect>m-event:514d402e-bd6f-4a32-90bc-bb3a84db9931</TypesToCollect>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/mercury-demo/.content/event-m/]]></target>
+        <uuid>f3c5dece-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <Category/>
+    <CategoryMode><![CDATA[OR]]></CategoryMode>
+    <SortOrder><![CDATA[DATE_ASC]]></SortOrder>
+    <DateRestriction>
+      <PastFuture>
+        <Direction><![CDATA[future]]></Direction>
+      </PastFuture>
+    </DateRestriction>
+    <ShowExpired>true</ShowExpired>
+  </ListConfig>
+</ListConfigs>

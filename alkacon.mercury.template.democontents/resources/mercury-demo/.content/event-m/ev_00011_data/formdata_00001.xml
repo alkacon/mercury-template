@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WebFormDataSets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/formdata.xsd">
+  <WebFormDataSet language="en">
+    <Form>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/mercury-demo/.content/webform-m/wf_00003.html]]></target>
+        <uuid>f46245fc-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </Form>
+    <ConfirmationMailSent>true</ConfirmationMailSent>
+    <RegistrationMailSent>true</RegistrationMailSent>
+    <WaitlistNotification>true</WaitlistNotification>
+    <Cancelled>false</Cancelled>
+    <TitleMapping><![CDATA[%(Firstname) %(Last name) (%(Email))]]></TitleMapping>
+    <Data>
+      <Key><![CDATA[Salutation]]></Key>
+      <Value><![CDATA[mr]]></Value>
+    </Data>
+    <Data>
+      <Key><![CDATA[First name]]></Key>
+      <Value><![CDATA[Arno]]></Value>
+    </Data>
+    <Data>
+      <Key><![CDATA[Last name]]></Key>
+      <Value><![CDATA[Nym]]></Value>
+    </Data>
+    <Data>
+      <Key><![CDATA[Address]]></Key>
+      <Value><![CDATA[Nowhere 65
+010101 Somewhere
+]]></Value>
+    </Data>
+    <Data>
+      <Key><![CDATA[Email]]></Key>
+      <Value><![CDATA[noone@nowhere.xxx]]></Value>
+    </Data>
+    <Data>
+      <Key><![CDATA[Message or comment]]></Key>
+      <Value><![CDATA[Looking forward seeing you.]]></Value>
+    </Data>
+  </WebFormDataSet>
+</WebFormDataSets>

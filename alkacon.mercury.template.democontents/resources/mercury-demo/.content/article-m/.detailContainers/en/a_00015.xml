@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AlkaconContainerPages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/container_page.xsd">
+  <AlkaconContainerPage language="en">
+    <Containers>
+      <Name><![CDATA[attachments]]></Name>
+      <Type><![CDATA[element]]></Type>
+      <ParentInstanceId><![CDATA[2bbc4f82-32a3-11e9-a83e-0242ac11002b]]></ParentInstanceId>
+      <IsRootContainer>true</IsRootContainer>
+      <Elements>
+        <Uri>
+          <link type="STRONG">
+            <target><![CDATA[/sites/default/mercury-demo/.content/media-m/media_00001.xml]]></target>
+            <uuid>f400c52e-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Uri>
+        <Formatter>
+          <link type="STRONG">
+            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/media.jsp]]></target>
+            <uuid>30af8db2-0a8e-4d4a-9000-1cee553edc35</uuid>
+          </link>
+        </Formatter>
+        <Properties>
+          <Name><![CDATA[element_instance_id]]></Name>
+          <Value>
+            <String><![CDATA[2f95e033-32a3-11e9-a83e-0242ac11002b]]></String>
+          </Value>
+        </Properties>
+        <Properties>
+          <Name><![CDATA[formatterSettings#attachments]]></Name>
+          <Value>
+            <String><![CDATA[56ca4e7e-aba4-454d-8458-b23589f1918a]]></String>
+          </Value>
+        </Properties>
+      </Elements>
+    </Containers>
+  </AlkaconContainerPage>
+</AlkaconContainerPages>

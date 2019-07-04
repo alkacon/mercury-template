@@ -18,9 +18,6 @@
 
 <c:choose>
     <c:when test="${not empty policyfile and cms.vfs.existsResource[policyfile]}">
-            <%--
-            formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/privacy-policy/banner.xml:e9bb4c50-cfe2-456e-8c4e-72c9b2263577)"
-            --%>
         <mercury:display
             file="${policyfile}"
             baseUri="${page}"

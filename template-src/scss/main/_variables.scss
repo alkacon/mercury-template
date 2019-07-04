@@ -150,6 +150,9 @@ $link-decoration:                   none !default;
 $link-hover-color:                  $main-theme-hover !default;
 $link-hover-decoration:             underline !default;
 
+$border-color:                      $grey-light !default;
+$table-accent-bg:                   $grey-lighter !default;
+
 $paragraph-margin-bottom:           $default-margin-small !default; // margin below <o> elements
 $label-margin-bottom:               $default-margin-verysmall !default; // margin below <label> elements
 $dropdown-border-radius:            $default-border-radius !default; // BS dropdown border radius

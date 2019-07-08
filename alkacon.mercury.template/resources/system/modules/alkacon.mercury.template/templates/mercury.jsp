@@ -34,7 +34,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <c:set var="jsThemeRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)']}" />
 <script async src="<cms:link>${jsThemeRes.sitePath}?ver=${jsThemeRes.dateLastModified}</cms:link>"></script>
 
-<mercury:meta-info contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
+<mercury:meta-info contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearchDetail}" />
 
 <%-- Add favicon --%>
 <c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />

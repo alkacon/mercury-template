@@ -103,32 +103,35 @@
 
             <c:if test="${showLocation}">
                 <c:set var="location">
-                    <div>
-                    <c:if test="${not empty locData.name}">
-                        <div class="locname">${locData.name}</div>
-                    </c:if>
-                    <div class="address">
-                        <div class="street"> ${locData.streetAddress}</div>
-                        <c:if test="${not empty locData.extendedAddress}">
-                            <div class="extended"> ${locData.extendedAddress}</div>
+                    <div class="locdata"><%----%>
+                    <c:if test="${not empty locData}">
+                        <c:if test="${not empty locData.name}">
+                            <div class="locname">${locData.name}</div><%----%>
                         </c:if>
-                        <div class="city">
-                            <span class="code"> ${locData.postalCode}</span>
-                            <span class="locality"> ${locData.locality}</span>
-                        </div>
-                        <div class="region">
-                            <c:if test="${not empty locData.region}">
-                                <span class="region"> ${locData.region}</span>
+                        <div class="address">
+                            <div class="street"> ${locData.streetAddress}</div><%----%>
+                            <c:if test="${not empty locData.extendedAddress}">
+                                <div class="extended"> ${locData.extendedAddress}</div><%----%>
                             </c:if>
-                            <c:if test="${not empty locData.country}">
-                                <span class="country"> ${locData.country}</span>
-                            </c:if>
-                        </div>
-                    </div>
-                    <c:if test="${locationNote.isSet}">
-                        <div class="adressInfo" ${ade ? loocationNote.rdfaAttr : ''}>${locationNote}</div>
+                            <div class="city">
+                                <span class="code"> ${locData.postalCode}</span><%----%>
+                                <span class="locality"> ${locData.locality}</span><%----%>
+                            </div>
+                            <div class="region">
+                                <c:if test="${not empty locData.region}">
+                                    <span class="region"> ${locData.region}</span><%----%>
+                                </c:if>
+                                <c:if test="${not empty locData.country}">
+                                    <span class="country"> ${locData.country}</span><%----%>
+                                </c:if>
+                            </div><%----%>
+                        </div><%----%>
                     </c:if>
-                    </div>
+                    <c:if test="${locationNote.isSet}">
+                        <div class="adressInfo" ${ade ? loocationNote.rdfaAttr : ''}>${locationNote}</div><%----%>
+                    </c:if>
+                    </div><%----%>
+                    <mercury:nl />
                 </c:set>
             </c:if>
 

@@ -57,14 +57,17 @@
 
             .location {
                 .locname {
-                    margin-bottom: 5px;
+                    margin-bottom: $default-margin-verysmall;
                 }
                 .adressInfo {
-                    margin-top: 10px;
                     margin-bottom: 0;
                     p:last-child {
                         margin-bottom: 0;
                     }
+                }
+                .locname + .address,
+                .address + .adressInfo {
+                    margin-top: $default-margin-small;
                 }
             }
 

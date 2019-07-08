@@ -18,6 +18,9 @@
 <%@ variable name-given="contentPropertiesSearch" declare="true"
     description="The properties read from the URI resource with search." %>
 
+<%@ variable name-given="contentPropertiesSearchDetail" declare="true"
+    description="The properties read from the URI resource OR detail resource with search." %>
+
 <c:choose>
 <c:when test="${cms.detailRequest}">
     <c:set var="contentUri" value="${cms.detailContentSitePath}" />
@@ -28,6 +31,7 @@
 </c:choose>
 
 <c:set var="contentProperties" value="${cms.vfs.readProperties[contentUri]}" />
-<c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[contentUri]}" />
+<c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
+<c:set var="contentPropertiesSearchDetail" value="${cms.vfs.readPropertiesSearch[contentUri]}" />
 
 <jsp:doBody/>

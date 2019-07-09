@@ -1238,6 +1238,27 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[listWrapper.default]]></IncludeName>
+      <PropertyName><![CDATA[listWrapper]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default/>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
+      <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default/>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.default]]></IncludeName>
+      <PropertyName><![CDATA[listEntryWrapper]]></PropertyName>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default/>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listCssWrapper.download]]></IncludeName>
       <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.download.displayFormat)]]></DisplayName>

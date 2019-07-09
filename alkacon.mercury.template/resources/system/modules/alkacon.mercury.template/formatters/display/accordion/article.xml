@@ -52,5 +52,8 @@
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
+    </Setting>
   </NewFormatter>
 </NewFormatters>

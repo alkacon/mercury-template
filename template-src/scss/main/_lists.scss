@@ -135,6 +135,9 @@
     }
 }
 
+.masonry-list .teaser-tile .teaser.piece > .body {
+    flex-grow: 0; // no growing in masonry lists
+}
 
 @if ($teaser-btn-color != $btn-default) {
     .teaser-btn {

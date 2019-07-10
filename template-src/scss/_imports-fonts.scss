@@ -18,8 +18,11 @@
 
 // Download Google fonts using:
 // https://google-webfonts-helper.herokuapp.com/
+// Required font-weights: 300 (light), 400 (regular), 600 (semibold), 700 (bold)
+// required font-styles: normal, italic;
 
 @import 'fonts/fira-sans';
+@import 'fonts/ibm-plex';
 @import 'fonts/merriweather';
 @import 'fonts/montserrat';
 @import 'fonts/open-sans';

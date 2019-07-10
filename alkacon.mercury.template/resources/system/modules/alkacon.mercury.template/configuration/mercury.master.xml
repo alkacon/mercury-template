@@ -146,6 +146,7 @@
       <TypeName><![CDATA[m-layout-area-complex]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
     </ResourceType>
+    <RemoveAllFormatters>true</RemoveAllFormatters>
     <AddFormatters>
       <AddFormatter>
         <link type="WEAK">

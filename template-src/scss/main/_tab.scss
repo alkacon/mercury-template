@@ -147,6 +147,8 @@
         text-transform: $accordion-text-transform;
 
         > a {
+            overflow: hidden;
+            text-overflow: ellipsis;
             display: block;
             padding: $default-margin-verysmall $default-margin-small;
             color: $headings-color;

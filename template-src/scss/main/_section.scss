@@ -26,6 +26,8 @@
     padding: $default-margin $default-margin-small;
     text-align: center;
     flex: 1;
+    display: flex;
+    flex-direction: column;
     @include round-corners($iconbox-border-radius, true);
 
     *:not(a) {
@@ -33,21 +35,36 @@
     }
 
     .icon-title {
+        flex-grow: 1;
         margin-bottom: $default-margin;
         font-size: $h4-font-size;
         line-height: $line-height-headings;
+        @include use-hyphens-headings(true);
     }
 
     .icon-text {
         margin-top: $default-margin;
+        margin-bottom: 0;
+        > p {
+            word-wrap: break-word; // dont use hyphens: auto
+            overflow: hidden; // just break up words that are too long
+            text-overflow: ellipsis;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
     }
 
     .icon-image {
         // no rem based font size here, we want the icon to be same size over all devices
+        flex-grow: 2;
         font-size: 32px;
     }
 
     .icon-link {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
         text-decoration: none;
         &:hover {
             text-decoration: none;

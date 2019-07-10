@@ -391,38 +391,52 @@
     }
 }
 
-@mixin use-hyphens-headings {
+@mixin use-hyphens-headings($hide-overflow: false) {
+    @if ($hide-overflow) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     @if ($piece-hyphens-headings) {
         @if ($piece-hyphens-headings-xs and $piece-hyphens-headings-md) {
             hyphens: auto;
+            word-wrap: break-word;
         } @else {
             @if ($piece-hyphens-headings-xs) {
                 @include media-breakpoint-down(sm) {
                     hyphens: auto;
+                    word-wrap: break-word;
                 }
             }
             @if ($piece-hyphens-headings-md) {
                 @include media-breakpoint-up(md) {
                     hyphens: auto;
+                    word-wrap: break-word;
                 }
             }
         }
     }
 }
 
-@mixin use-hyphens-text {
+@mixin use-hyphens-text($hide-overflow: false) {
+    @if ($hide-overflow) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     @if ($piece-hyphens-text) {
         @if ($piece-hyphens-text-xs and $piece-hyphens-text-md) {
             hyphens: auto;
+            word-wrap: break-word;
         } @else {
             @if ($piece-hyphens-text-xs) {
                 @include media-breakpoint-down(sm) {
                     hyphens: auto;
+                    word-wrap: break-word;
                 }
             }
             @if ($piece-hyphens-text-md) {
                 @include media-breakpoint-up(md) {
                     hyphens: auto;
+                    word-wrap: break-word;
                 }
             }
         }

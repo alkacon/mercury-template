@@ -54,6 +54,10 @@
     .list-link {
         margin-top: $default-margin;
     }
+
+    .head {
+        @include use-hyphens-headings(true);
+    }
 }
 
 .teaser {

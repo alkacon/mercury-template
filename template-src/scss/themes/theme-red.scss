@@ -31,14 +31,24 @@ $btn-border-radius:             2px;
 $focus-outline-color:           rgba(77,144,255,.5);
 
 $font-family-headings:          "Open Sans", sans-serif !default;
+// $font-family-headings:          "Oswald", sans-serif !default;
+// $font-family-headings:          "IBM Plex Sans Condensed", sans-serif !default;
+// $font-family-headings:          "Roboto Condensed", sans-serif !default;
+
 $font-family-base:              "Montserrat", sans-serif !default;
+// $font-family-base:              "Lato", sans-serif !default;
+// $font-family-base:              "Source Sans Pro", sans-serif !default;
+// $font-family-base:              "Raleway", sans-serif !default;
 // $font-family-base:              "Merriweather", serif !default;
+// $font-family-base:              "IBM Plex Sans", sans-serif !default;
 // $font-family-base:              "IBM Plex Serif", serif !default;
+// $font-family-base:              "Literata", sans-serif !default;
+// $font-family-base:              "Roboto", serif !default;
 $font-weight-base:              300 !default;
-$font-weight-headings:          600 !default;
+$font-weight-bold:              600 !default;
+$font-weight-headings:          $font-weight-bold !default;
 $font-size-base:                1.6rem !default;
 $font-size-headings:            2.2rem !default;
-$font-weight-bold:              600 !default;
 
 $line-height-base:              1.4 !default;
 $line-height-headings:          1.25 !default;

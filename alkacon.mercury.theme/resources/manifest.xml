@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.0.30</version>
+		<version>11.0.0.31</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -84,6 +84,10 @@
 			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury CSS default themes]]></value>
+				</property>
 				<property>
 					<name>export</name>
 					<value><![CDATA[true]]></value>
@@ -183,6 +187,10 @@
 			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury fonts]]></value>
+				</property>
 				<property>
 					<name>export</name>
 					<value><![CDATA[true]]></value>
@@ -592,6 +600,550 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300.woff</destination>
+			<type>plain</type>
+			<uuidstructure>835efa4c-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>835efa4d-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>8361925f-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>83619260-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>83636722-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>83636723-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-300italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>83653be5-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>83653be6-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600.woff</destination>
+			<type>plain</type>
+			<uuidstructure>8366e998-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>8366e999-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>8368be5b-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>8368be5c-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>836a6c0e-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>836a6c0f-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-600italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>836c19c1-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>836c19c2-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>836dee84-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>836dee85-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>836f9c37-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>836f9c38-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>837149ea-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>837149eb-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-700italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>8372f79d-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>8372f79e-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>8374a550-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>8374a551-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>83765303-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>83765304-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>837800b6-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>837800b7-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-condensed-v5-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>8379ae69-a3d2-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>8379ae6a-a3d2-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:53:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-condensed-v5-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbe95a9b-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbe95a9c-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbebf2ae-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbebf2af-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbedc771-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbedc772-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-300italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbef7524-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbef7525-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbf122d7-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbf122d8-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbf2f79a-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbf2f79b-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbf4a54d-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbf4a54e-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-600italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbf65300-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbf65301-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbf827c3-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbf827c4-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbfa2396-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbfa2397-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbfc4679-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbfc467a-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-700italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbfe424c-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbfe424d-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbffefff-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fbfff000-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fc01c4c2-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fc01c4c3-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fc039985-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fc039986-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-sans-v6-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fc054738-a3d0-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fc054739-a3d0-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:42:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[ibm-plex-sans-v6-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/fonts/ibm-plex-serif-v7-latin-ext_latin-300.woff</source>
 			<destination>system/modules/alkacon.mercury.theme/fonts/ibm-plex-serif-v7-latin-ext_latin-300.woff</destination>
 			<type>plain</type>
@@ -858,6 +1410,414 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[ibm-plex-serif-v7-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f812885d-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f812885e-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f81595a0-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f81595a1-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f8176a63-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f8176a64-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-300italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f8193f26-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f8193f27-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f81aecd9-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f81aecda-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f81cc19c-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f81cc19d-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f81e6f4f-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f81e6f50-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-700italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f8204412-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f8204413-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f821f1c5-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f821f1c6-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f8239f78-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f8239f79-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f825743b-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f825743c-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/lato-v15-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f82721ee-a3db-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f82721ef-a3db-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 13:01:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[lato-v15-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600.woff</destination>
+			<type>plain</type>
+			<uuidstructure>69880310-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>69880311-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>698b3763-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>698b3764-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>698d5a46-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>698d5a47-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-600italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>698f5619-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>698f561a-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>699151ec-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>699151ed-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>699374cf-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>699374d0-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>699570a2-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>699570a3-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-700italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>69979385-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>69979386-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>69998f58-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>69998f59-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>699b8b2b-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>699b8b2c-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>699d86fe-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>699d86ff-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/literata-v3-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>699fd0f1-a3da-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>699fd0f2-a3da-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:50:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[literata-v3-latin-ext_latin-regular]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1408,272 +2368,408 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300.woff</destination>
 			<type>plain</type>
-			<uuidstructure>6641c4c8-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>6641c4c9-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>aef5050c-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>aef5050d-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-300]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-300]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>66445cdb-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>66445cdc-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>aef7eb3f-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>aef7eb40-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-300]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-300]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>6646f4ee-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>6646f4ef-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>aef9c002-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>aef9c003-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-300italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-300italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-300italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-300italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>66493ee1-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>66493ee2-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>aefb94c5-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>aefb94c6-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-300italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-300italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600.woff</destination>
 			<type>plain</type>
-			<uuidstructure>664b88d4-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>664b88d5-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>aefd6988-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>aefd6989-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-600]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-600]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>664df9d7-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>664df9d8-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>aeff3e4b-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>aeff3e4c-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-600]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-600]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>664ff5aa-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>664ff5ab-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af01130e-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af01130f-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-600italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-600italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-600italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-600italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>6651f17d-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>6651f17e-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af02e7d1-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af02e7d2-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-600italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-600italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700.woff</destination>
 			<type>plain</type>
-			<uuidstructure>6653ed50-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>6653ed51-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af04e3a4-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af04e3a5-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-700]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-700]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>6655e923-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>6655e924-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af06df77-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af06df78-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-700]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-700]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>6657bde6-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>6657bde7-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af08db4a-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af08db4b-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-700italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-700italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-700italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-700italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>6659b9b9-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>6659b9ba-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af0ab00d-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af0ab00e-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-700italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-700italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>665b8e7c-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>665b8e7d-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af0c84d0-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af0c84d1-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>665db15f-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>665db160-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af0e3283-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af0e3284-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-italic]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-regular.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-regular.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-regular.woff</destination>
 			<type>plain</type>
-			<uuidstructure>665fad32-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>665fad33-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af100746-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af100747-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-regular]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-regular]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-regular.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v15-latin_latin-ext-regular.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/open-sans-v16-latin-ext_latin-regular.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>666181f5-033f-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>666181f6-033f-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 03:37:24 GMT</datecreated>
+			<uuidstructure>af11dc09-a3d7-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>af11dc0a-a3d7-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:30:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[open-sans-v15-latin_latin-ext-regular]]></value>
+					<value><![CDATA[open-sans-v16-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-300.woff</destination>
+			<type>plain</type>
+			<uuidstructure>b3ff393c-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b3ff393d-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-300.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>b401d14f-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b401d150-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-600.woff</destination>
+			<type>plain</type>
+			<uuidstructure>b4037f02-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b4037f03-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-600.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>b40505a5-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b40505a6-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>b406b358-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b406b359-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>b408610b-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b408610c-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>b40a0ebe-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b40a0ebf-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/oswald-v23-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>b40b9561-a3ca-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>b40b9562-a3ca-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:57:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[oswald-v23-latin-ext_latin-regular]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -2360,272 +3456,1020 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c766eab-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c766eac-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d5f4b95b-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d5f4b95c-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-300]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-300]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c786a7e-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c786a7f-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d5fbe54e-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d5fbe54f-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-300]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-300]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c7a6651-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c7a6652-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d5fdba11-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d5fdba12-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-300italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-300italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-300italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-300italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c7c6224-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c7c6225-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d5ff8ed4-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d5ff8ed5-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-300italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-300italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600.woff</destination>
 			<type>plain</type>
-			<uuidstructure>47a41ec2-0347-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>47a41ec3-0347-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:33:49 GMT</datecreated>
+			<uuidstructure>d6013c87-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d6013c88-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-500]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-600]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>47a668b5-0347-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>47a668b6-0347-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:33:49 GMT</datecreated>
+			<uuidstructure>d602ea3a-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d602ea3b-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-500]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-600]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>47a83d78-0347-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>47a83d79-0347-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:33:49 GMT</datecreated>
+			<uuidstructure>d60497ed-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d60497ee-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-500italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-600italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-500italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-600italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>47a9eb2b-0347-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>47a9eb2c-0347-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:33:49 GMT</datecreated>
+			<uuidstructure>d60645a0-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d60645a1-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-500italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-600italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c7e5df7-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c7e5df8-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d6081a63-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d6081a64-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-700]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-700]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c8032ba-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c8032bb-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d609ef26-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d609ef27-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-700]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-700]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c822e8d-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c822e8e-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d60b9cd9-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d60b9cda-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-700italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-700italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-700italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-700italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c842a60-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c842a61-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d60d4a8c-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d60d4a8d-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-700italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-700italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c862633-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c862634-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d60ef83f-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d60ef840-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c882206-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c882207-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>d610a5f2-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d610a5f3-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-italic]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-regular.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-regular.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-regular.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c8a1dd9-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c8a1dda-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>d6127ab5-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d6127ab6-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-regular]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-regular]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-regular.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v18-latin_latin-ext-regular.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/raleway-v13-latin-ext_latin-regular.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c8c19ac-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c8c19ad-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>d6144f78-a3c9-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>d6144f79-a3c9-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 10:51:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[roboto-v18-latin_latin-ext-regular]]></value>
+					<value><![CDATA[raleway-v13-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300.woff</destination>
+			<type>plain</type>
+			<uuidstructure>58b24ec8-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58b24ec9-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>58b8b76b-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58b8b76c-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>58bb015e-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58bb015f-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-300italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>58bd2441-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58bd2442-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>58bf6e34-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58bf6e35-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>58c19117-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58c1b828-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>58c4021a-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58c4021b-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-700italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>58c624fd-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58c624fe-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>58c820d0-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58c820d1-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>58c9f593-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58c9f594-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>58cc1876-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58cc1877-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-condensed-v17-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>58ce3b59-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>58ce3b5a-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:21:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-condensed-v17-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f942957b-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f942957c-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f9468d1e-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f9468d1f-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f94888f1-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f94888f2-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-300italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f94a84c4-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f94a84c5-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f94c5987-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f94c5988-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-500]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f94e555a-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f94e555b-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-500]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f950512d-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f950512e-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-500italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-500italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f95225f0-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f95225f1-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-500italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f9546fe3-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f9546fe4-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f95692c6-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f95692c7-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f9588e99-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f9588e9a-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-700italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f95a8a6c-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f95a8a6d-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f95c863f-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f95c8640-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f95e8212-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f95e8213-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>f96056d5-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f96056d6-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/roboto-v19-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>f9622b98-a3d6-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>f96252a9-a3d6-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 12:25:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[roboto-v19-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb482aaa-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb482aab-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb4ae9cd-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb4ae9ce-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-300]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb4c9780-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb4c9781-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-300italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb4e9353-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb4e9354-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-300italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb504106-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb504107-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb5215c9-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb5215ca-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-600]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb53c37c-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb53c37d-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-600italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb55712f-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb557130-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-600italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb571ee2-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb571ee3-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb58cc95-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb58cc96-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-700]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb5a7a48-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb5a7a49-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-700italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb5c27fb-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb5c27fc-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb5dd5ae-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb5dd5af-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb5f8361-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb5f8362-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fb613114-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb613115-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/source-sans-pro-v12-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fb62dec7-a3cb-11e9-b4d7-0242ac11002b</uuidstructure>
+			<uuidresource>fb62dec8-a3cb-11e9-b4d7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Jul 2019 11:06:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[source-sans-pro-v12-latin-ext_latin-regular]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -3183,6 +5027,10 @@
 			<flags>0</flags>
 			<properties>
 				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury images]]></value>
+				</property>
+				<property>
 					<name>export</name>
 					<value><![CDATA[true]]></value>
 				</property>
@@ -3218,6 +5066,10 @@
 			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury JavaScript]]></value>
+				</property>
 				<property>
 					<name>export</name>
 					<value><![CDATA[true]]></value>
@@ -3425,6 +5277,10 @@
 			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury photoswipe plugin resources]]></value>
+				</property>
 				<property>
 					<name>export</name>
 					<value><![CDATA[true]]></value>

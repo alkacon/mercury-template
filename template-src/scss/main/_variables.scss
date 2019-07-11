@@ -34,9 +34,9 @@ $many-colors:                       $reduced-colors !default;
 
 // Font definitions
 
-$font-family-base:                  "Open Sans", sans-serif !default;
-$font-family-headings:              "Prompt", sans-serif !default;
-$font-family-gui:                   $font-family-base !default; // the font used in containers and other "GUI" components
+$font-family-base:                  "Montserrat", sans-serif !default;
+$font-family-headings:              "Open Sans", sans-serif !default;
+$font-family-gui:                   "Open Sans", sans-serif !default; // the font used in containers and other "GUI" components
 $font-family-sans-serif:            $font-family-base !default; // Boostrap 4 defines this the other way around
 
 $font-weight-light:                 300 !default;

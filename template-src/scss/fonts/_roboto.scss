@@ -1,82 +1,84 @@
 @if require-font('Roboto') {
 
-/* roboto-300 - latin_latin-ext */
+/* roboto-300 - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
   src: local('Roboto Light'), local('Roboto-Light'),
-       url('../fonts/roboto-v18-latin_latin-ext-300.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-300.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-300italic - latin_latin-ext */
+/* roboto-300italic - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 300;
   font-display: fallback;
   src: local('Roboto Light Italic'), local('Roboto-LightItalic'),
-       url('../fonts/roboto-v18-latin_latin-ext-300italic.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-300italic.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-regular - latin_latin-ext */
+/* roboto-regular - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
   src: local('Roboto'), local('Roboto-Regular'),
-       url('../fonts/roboto-v18-latin_latin-ext-regular.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-regular.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-italic - latin_latin-ext */
+/* roboto-italic - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   font-display: fallback;
   src: local('Roboto Italic'), local('Roboto-Italic'),
-       url('../fonts/roboto-v18-latin_latin-ext-italic.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-italic.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-500 - latin_latin-ext */
+/* roboto-500 - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
+  font-display: fallback;
   src: local('Roboto Medium'), local('Roboto-Medium'),
-       url('../fonts/roboto-v18-latin_latin-ext-500.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-500.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-500italic - latin_latin-ext */
+/* roboto-500italic - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 500;
+  font-display: fallback;
   src: local('Roboto Medium Italic'), local('Roboto-MediumItalic'),
-       url('../fonts/roboto-v18-latin_latin-ext-500italic.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-500italic.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-500italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-500italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-700 - latin_latin-ext */
+/* roboto-700 - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
   src: local('Roboto Bold'), local('Roboto-Bold'),
-       url('../fonts/roboto-v18-latin_latin-ext-700.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-700.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-700italic - latin_latin-ext */
+/* roboto-700italic - latin-ext_latin */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 700;
   font-display: fallback;
   src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'),
-       url('../fonts/roboto-v18-latin_latin-ext-700italic.woff2') format('woff2'),
-       url('../fonts/roboto-v18-latin_latin-ext-700italic.woff') format('woff');
+       url('../fonts/roboto-v19-latin-ext_latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-ext_latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 } // end @if

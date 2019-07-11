@@ -33,7 +33,7 @@
 <div class="element type-tab variant-tabs ${cssWrapper}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="head" />
+    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
 
     <div class="tabs-parent"><%----%>
 

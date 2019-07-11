@@ -124,8 +124,10 @@
 <mercury:nl />
 
 <c:if test="${(not empty titleMarkup) or showDate or showImageCount}">
-    <div class="detail-visual full"><%----%>
-        ${titleMarkup}
+    <div class="detail-visual piece full"><%----%>
+        <div class="heading"><%----%>
+            ${titleMarkup}
+        </div><%----%>
         <c:if test="${showDate or showImageCount}">
             <div class="visual-info ${not showImageCount ? 'right' : '' }"><%----%>
                 <c:if test="${showDate}"><div class="info date"><div>${datePrefix}${date}</div></div></c:if>

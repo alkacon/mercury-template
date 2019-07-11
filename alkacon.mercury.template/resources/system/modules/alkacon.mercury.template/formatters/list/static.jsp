@@ -31,7 +31,7 @@
 
     <c:if test="${isCompatible}">
 
-        <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="head" />
+        <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading" />
 
         <c:set var="listWrapper" value="${settings.listWrapper}${' '}${settings.requiredListWrapper}" />
         <c:set var="listTag" value="${wrappedSettings.listTag.isSet ? wrappedSettings.listTag : 'ul' }" />

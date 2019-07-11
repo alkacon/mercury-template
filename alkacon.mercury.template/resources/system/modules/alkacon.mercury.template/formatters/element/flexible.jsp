@@ -22,7 +22,7 @@
 <div class="element type-flexible ${cssWrapper}">
 <%----%>
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="head" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
     ${value.Code}
 
 </div>

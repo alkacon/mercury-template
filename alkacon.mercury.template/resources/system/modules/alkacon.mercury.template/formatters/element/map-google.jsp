@@ -46,7 +46,7 @@
 <div class="element type-map map-google ${cssWrapper}">
 <%----%>
 
-    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="head" />
+    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
 
     <c:if test="${showDescription and value.Description.isSet}">
         <div ${ade ? value.Description.rdfaAttr : ''}>${value.Description}</div>

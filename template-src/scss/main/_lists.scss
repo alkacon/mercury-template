@@ -54,10 +54,6 @@
     .list-link {
         margin-top: $default-margin;
     }
-
-    .head {
-        @include use-hyphens-headings(true);
-    }
 }
 
 .teaser {
@@ -117,8 +113,10 @@
         @include text-tile;
 
         > .body {
-            .headline {
-                line-height: $teaser-title-height;
+            > .heading {
+                .headline {
+                    line-height: $teaser-title-height;
+                }
             }
         }
 

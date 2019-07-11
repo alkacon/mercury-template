@@ -119,7 +119,7 @@
 --%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
 --%>><mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
 
     <c:choose>
         <c:when test="${value.Position.exists}">

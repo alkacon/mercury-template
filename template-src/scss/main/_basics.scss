@@ -198,6 +198,15 @@ span.badge {
 }
 
 
+// Hyphenation for generic element headings
+
+.element:not(.piece) {
+    // piece already has handling for hyphens
+    > .heading {
+        @include use-hyphens-headings(true);
+    }
+}
+
 // Disabled elements, e.g. OSM maps
 
 .element-hide {

@@ -23,7 +23,7 @@
 <div class="element type-nav-side ${cssWrapper}${' '}${cssVisibility}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="head" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
 
     <mercury:nav-items
         type="forSite"

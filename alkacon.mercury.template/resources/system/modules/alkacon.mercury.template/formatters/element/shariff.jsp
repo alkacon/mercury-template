@@ -27,7 +27,7 @@
 ${nl}
 <div class="element type-shariff social-icons ${fn:replace(cssWrapper, 'default', '')}"><%----%>
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="head" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
 
     <c:set var="services">[&quot;${fn:replace(value.Services, ',', '&quot;,&quot;')}&quot;]</c:set>
     <c:set var="mailAttrs" value="" />

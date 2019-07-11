@@ -53,7 +53,7 @@
 <div class="element type-linksequence ${linksequenceType}${' '}${cssWrapper}${' '}${listBulletStyle}">
 <%----%>
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="head" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
 
     <c:if test="${text.isSet}">
         <div class="text-box" ${text.rdfaAttr}>${text}</div><%----%>

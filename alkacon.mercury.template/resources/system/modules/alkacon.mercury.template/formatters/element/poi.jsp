@@ -42,7 +42,7 @@
 
     <div class="poi-head"><%----%>
 
-        <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="head" />
+        <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
 
         <c:if test="${value.Facilities.isSet}">
             <div class="accessible"><%----%>

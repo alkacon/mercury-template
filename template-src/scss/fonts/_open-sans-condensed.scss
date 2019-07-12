@@ -1,0 +1,34 @@
+@if require-font('Open Sans Condensed') {
+
+/* open-sans-condensed-300 - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  font-display: fallback;
+  src: local('Open Sans Condensed Light'), local('OpenSansCondensed-Light'),
+       url('../fonts/open-sans-condensed-v13-latin-ext_latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/open-sans-condensed-v13-latin-ext_latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* open-sans-condensed-300italic - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 300;
+  font-display: fallback;
+  src: local('Open Sans Condensed Light Italic'), local('OpenSansCondensed-LightItalic'),
+       url('../fonts/open-sans-condensed-v13-latin-ext_latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/open-sans-condensed-v13-latin-ext_latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* open-sans-condensed-700 - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: local('Open Sans Condensed Bold'), local('OpenSansCondensed-Bold'),
+       url('../fonts/open-sans-condensed-v13-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/open-sans-condensed-v13-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+} // end @if

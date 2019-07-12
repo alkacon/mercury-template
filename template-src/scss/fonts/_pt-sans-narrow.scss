@@ -1,0 +1,24 @@
+@if require-font('PT Sans Narrow') {
+
+/* pt-sans-narrow-regular - latin-ext_latin */
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: local('PT Sans Narrow'), local('PTSans-Narrow'),
+       url('../fonts/pt-sans-narrow-v10-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/pt-sans-narrow-v10-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* pt-sans-narrow-700 - latin-ext_latin */
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'),
+       url('../fonts/pt-sans-narrow-v10-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/pt-sans-narrow-v10-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+} // end @if

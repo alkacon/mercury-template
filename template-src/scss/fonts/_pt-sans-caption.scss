@@ -1,0 +1,24 @@
+@if require-font('PT Sans Caption') {
+
+/* pt-sans-caption-regular - latin-ext_latin */
+@font-face {
+  font-family: 'PT Sans Caption';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: local('PT Sans Caption'), local('PTSans-Caption'),
+       url('../fonts/pt-sans-caption-v11-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/pt-sans-caption-v11-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* pt-sans-caption-700 - latin-ext_latin */
+@font-face {
+  font-family: 'PT Sans Caption';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: local('PT Sans Caption Bold'), local('PTSans-CaptionBold'),
+       url('../fonts/pt-sans-caption-v11-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/pt-sans-caption-v11-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+} // end @if

@@ -30,20 +30,31 @@ $btn-border-radius:             2px;
 
 $focus-outline-color:           rgba(77,144,255,.5);
 
-$font-family-headings:          "Open Sans", sans-serif !default;
-// $font-family-headings:          "Oswald", sans-serif !default;
+// $font-family-headings:          "Fira Sans Condensed", sans-serif !default;
 // $font-family-headings:          "IBM Plex Sans Condensed", sans-serif !default;
+// $font-family-headings:          "Merriweather Sans", sans-serif !default;
+$font-family-headings:          "Open Sans", sans-serif !default;
+// $font-family-headings:          "Open Sans Condensed", sans-serif !default;
+// $font-family-headings:          "Oswald", sans-serif !default;
+// $font-family-headings:          "PT Serif Caption", sans-serif !default;
 // $font-family-headings:          "Roboto Condensed", sans-serif !default;
+// $font-family-headings:          "Roboto Slab", sans-serif !default;
+// $font-family-headings:          "Ubuntu Condensed", sans-serif !default;
 
-$font-family-base:              "Montserrat", sans-serif !default;
-// $font-family-base:              "Lato", sans-serif !default;
-// $font-family-base:              "Source Sans Pro", sans-serif !default;
-// $font-family-base:              "Raleway", sans-serif !default;
-// $font-family-base:              "Merriweather", serif !default;
+// $font-family-base:              "Fira Sans", sans-serif !default;
 // $font-family-base:              "IBM Plex Sans", sans-serif !default;
 // $font-family-base:              "IBM Plex Serif", serif !default;
-// $font-family-base:              "Literata", sans-serif !default;
+// $font-family-base:              "Lato", sans-serif !default;
+// $font-family-base:              "Merriweather", serif !default;
+$font-family-base:              "Montserrat", sans-serif !default;
+// $font-family-base:              "Open Sans", sans-serif !default;
+// $font-family-base:              "PT Serif", sans-serif !default;
+// $font-family-base:              "Raleway", sans-serif !default;
 // $font-family-base:              "Roboto", serif !default;
+// $font-family-base:              "Source Sans Pro", sans-serif !default;
+// $font-family-base:              "Literata", sans-serif !default;
+// $font-family-base:              "Ubuntu", sans-serif !default;
+
 $font-weight-base:              300 !default;
 $font-weight-bold:              600 !default;
 $font-weight-headings:          $font-weight-bold !default;

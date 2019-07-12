@@ -36,8 +36,13 @@ $many-colors:                       $reduced-colors !default;
 
 $font-family-base:                  "Montserrat", sans-serif !default;
 $font-family-headings:              "Open Sans", sans-serif !default;
-$font-family-gui:                   "Open Sans", sans-serif !default; // the font used in containers and other "GUI" components
 $font-family-sans-serif:            $font-family-base !default; // Boostrap 4 defines this the other way around
+$font-family-gui:                   "Open Sans", sans-serif !default; // the font used in containers and other "GUI" components
+
+$font-family-base:                  get-font-family($font-family-base); // match given names against preloaded font list
+$font-family-headings:              get-font-family($font-family-headings);
+$font-family-sans-serif:            get-font-family($font-family-sans-serif);
+$font-family-gui:                   get-font-family($font-family-gui);
 
 $font-weight-light:                 300 !default;
 $font-weight-normal:                400 !default;
@@ -45,8 +50,68 @@ $font-weight-bold:                  600 !default;
 $font-weight-bolder:                $font-weight-bold !default; // used in Boostrap 4 reboot.scss for <b> and <strong>
 
 $font-weight-base:                  $font-weight-normal !default;
-$font-weight-headings:              $font-weight-light !default;
-$intro-headings-font-weight:        $font-weight-bold !default;
+$font-weight-headings:              $font-weight-bold !default;
+$font-weight-intro-headings:        $font-weight-bold !default;
+
+$font-weight-base:                  get-font-weight($font-family-base, $font-weight-normal);
+$font-weight-headings:              get-font-weight($font-family-headings, $font-weight-headings);
+$font-weight-intro-headings:        get-font-weight($font-family-headings, $font-weight-headings);
+
+$font-style-headings:               normal !default;
+$font-style-headings:               get-font-style($font-family-headings, $font-weight-headings, $font-style-headings);
+
+// fonts used in the navigation
+$nav-font-family:                   $font-family-base !default; // font family to use for the navigation
+$nav-header-font-family:            $nav-font-family !default; // text font for header nav items
+$nav-menu-font-family:              $nav-font-family !default; // text font for header nav items
+$nav-mobile-font-family:            $nav-font-family !default; // text font for mobile navigation
+$nav-meta-font-family:              $nav-font-family !default; // text font for meta nav links
+$nav-breadcrump-font-family:        $nav-font-family !default; // text font for breadcrumbs
+
+$nav-font-family:                   get-font-family($nav-font-family);
+$nav-header-font-family:            get-font-family($nav-header-font-family);
+$nav-menu-font-family:              get-font-family($nav-menu-font-family);
+$nav-mobile-font-family:            get-font-family($nav-mobile-font-family);
+$nav-meta-font-family:              get-font-family($nav-meta-font-family);
+$nav-breadcrump-font-family:        get-font-family($nav-breadcrump-font-family);
+
+$nav-header-font-weight:            $font-weight-normal !default; // font weight of header nav items
+$nav-menu-font-weight:              $font-weight-normal !default; // font weight of menu nav items
+$nav-mobile-font-weight:            $font-weight-normal !default; // font weight of menu nav items
+$nav-mobile-header-font-weight:     $nav-header-font-weight !default; // font weight of header links in mobile menu
+$nav-side-font-weight:              default !default;
+
+$nav-header-font-weight:            get-font-weight($nav-header-font-family, $nav-header-font-weight);
+$nav-menu-font-weight:              get-font-weight($nav-menu-font-family, $nav-menu-font-weight);
+$nav-mobile-font-weight:            get-font-weight($nav-mobile-font-family, $nav-mobile-font-weight);
+$nav-mobile-header-font-weight:     get-font-weight($nav-mobile-font-family, $nav-mobile-header-font-weight);
+$nav-side-font-weight:              get-font-weight($nav-font-family, $nav-side-font-weight);
+
+// fonts used elsewhere
+$btn-font-family:                   $font-family-base !default;
+$form-font-family:                  $font-family-base !default;
+$pagination-font-family:            $font-family-base !default;
+
+$btn-font-family:                   get-font-family($btn-font-family);
+$form-font-family:                  get-font-family($form-font-family);
+$pagination-font-family:            get-font-family($pagination-font-family);
+
+$btn-font-weight:                   $font-weight-normal !default;
+$form-font-weight:                  $font-weight-headings !default;
+
+$btn-font-weight:                   get-font-weight($btn-font-family, $btn-font-weight);
+$form-font-weight:                  get-font-weight($form-font-family, $form-font-weight);
+
+
+/**
+ * $font-weight-base: #{$font-weight-base}
+ * $font-weight-headings: #{$font-weight-headings}
+ * $font-weight-intro-headings: #{$font-weight-intro-headings}
+ * $font-family-headings: #{$font-family-headings}
+ * $font-style-headings: #{$font-style-headings}
+ */
+
+// Base font sizes
 
 $font-size-base:                    1.4rem !default;
 $font-size-headings:                2.0rem !default; // for the h3 header
@@ -57,7 +122,6 @@ $line-height-base:                  1.5 !default;
 $line-height-headings:              $line-height-base !default;
 $line-height-lead:                  $line-height-base !default;
 $target-line-height:                ($font-size-base * $line-height-base) !default;
-
 
 // Heading sizes
 
@@ -70,7 +134,6 @@ $h3-font-size-mobile:               round($font-size-headings * 9) / 10 !default
 $h4-font-size:                      $h3-font-size-mobile !default;
 $h5-font-size:                      $h4-font-size !default;
 $h6-font-size:                      $h4-font-size !default;
-$font-style-headings:               normal !default;
 
 
 // Controls the lightness threshold where the text is switched
@@ -184,9 +247,7 @@ $btn-border-style:                  none !default;
 $btn-min-width:                     0 !default;
 $btn-colors:                        $reduced-colors !default;
 $btn-line-height:                   $target-line-height !default;
-$btn-font-family:                   $font-family-base !default;
 $btn-font-size:                     $font-size-base !default;
-$btn-font-weight:                   $font-weight-normal !default;
 $btn-lg-font-size:                  1.8rem !default;
 $btn-xs-font-size:                  1.2rem !default;
 
@@ -224,7 +285,8 @@ $nav-text-active:                   get-text-color($nav-bg-active) !default; // 
 $nav-border:                        $grey-light !default; // the border color for the navigation
 $nav-header-text:                   $nav-text !default; // text color in header nav items
 $nav-setting-fixheader:             true !default; // Valid: true, false, upscroll
-$nav-font-family:                   $font-family-base !default; // font family to use for the navigation
+
+
 
 $nav-bg-active-mobile:              $nav-bg-active !default; // the current page in navigation background color in mobile menu
 $nav-bg-hover-mobile:               $nav-bg-hover !default; // hover background of the nav menu entries for mobile
@@ -248,9 +310,7 @@ $nav-header-menu-bg-hover:          $nav-header-bg !default; // hover background
 $nav-header-text-active:            $nav-theme !default; // the "active page in navigation" text color
 $nav-header-text-hover:             $nav-text-hover !default; // the hover text color for the header nav items
 $nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
-$nav-header-font-family:            $nav-font-family !default; // text font for header nav items
 $nav-header-font-size:              15px !default;          // font size of header nav items
-$nav-header-font-weight:            $font-weight-normal !default; // font weight of header nav items
 $nav-header-float:                  right !default;         // float direction of header navigation items, can be 'left' or 'right'
 $nav-header-hor-padding:            $nav-hor-padding !default; // horizontal padding left / right the header nav items in LG, XL
 $nav-header-ver-padding:            9px !default;           // vertical padding above / blow the header nav items in LG, XL
@@ -275,8 +335,6 @@ $nav-menu-padding:                  $nav-menu-ver-padding $nav-hor-padding !defa
 $nav-menu-min-width:                250px !default;         // minimal width of the nav menus in  LG, XL
 $nav-menu-text-mobile:              $nav-text !default;     // text color for mobile menus
 $nav-menu-bg-mobile:                $nav-bg !default;       // background color for mobile menus
-$nav-menu-font-weight:              $font-weight-normal !default; // font weight of menu nav items
-$nav-menu-font-family:              $nav-font-family !default; // text font for header nav items
 
 // mobile navigation settings
 $nav-mobile-position:               right !default; // alternatives are ""left" or "right"
@@ -297,8 +355,6 @@ $nav-mobile-box-right:              $grid-gutter-width / 2 !default; // right po
 $nav-mobile-box-height:             $nav-mobile-line-target-height - (2 * $nav-mobile-box-top) !default; // height for "box" background
 $nav-mobile-box-border-radius:      $nav-border-radius !default; // border radius of "box"
 $nav-mobile-indent:                 10px !default; // left indentation step for deeper levels
-$nav-mobile-font-weight:            $font-weight-normal !default; // font weight of menu nav items
-$nav-mobile-font-family:            $nav-font-family !default; // text font for mobile navigation
 $nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
 $nav-mobile-toggle-side:            $grid-gutter-width !default; // left / right position for mobile toggle
 $nav-mobile-toggle-side-xs:         $nav-mobile-toggle-side !default; // left / right position for mobile toggle in XS screens
@@ -308,7 +364,6 @@ $nav-mobile-smaller-xs-toggle:      true !default; // make toggle button smaller
 $nav-mobile-header-color:           $nav-header-text !default; // text color of header links in mobile menu
 $nav-mobile-header-text-transform:  $nav-header-text-transform !default; // text transform of header links in mobile menu
 $nav-mobile-header-font-size:       $nav-header-font-size !default; // font size of header links in mobile menu
-$nav-mobile-header-font-weight:     $nav-header-font-weight !default; // font weight of header links in mobile menu
 $nav-mobile-topcontrol-default:     true !default; // default topcontrol button, if false then no styling is supplied for topcontrol
 $nav-mobile-width-xs:               90vw !default; // width of mobile menu XS
 $nav-mobile-width-sm:               500px !default; // width of mobile menu SM
@@ -342,7 +397,6 @@ $nav-toggle-bottom:                 5px !default; // bottom positioning of toggl
 // Header
 
 $nav-meta-font-size:                $font-size-sm !default;
-$nav-meta-font-family:              $nav-font-family !default; // text font for meta nav links
 $nav-meta-text:                     $nav-header-text !default;
 $nav-meta-text-hover:               $nav-header-text-hover !default;
 $header-logo-xs-width:              270px !default; // max width for logo on XS screens (substract 2 * $gutter)
@@ -375,7 +429,6 @@ $nav-breadcrump-padding:            $default-margin-verysmall 0 0 0 !default; //
 $nav-breadcrump-text-color:         $nav-header-text  !default; // text color of breadcrumps
 $nav-breadcrump-text-hover-color:   $nav-header-text-hover  !default; // hover color of breadcrump links
 $nav-breadcrump-font-size:          $font-size-sm !default; // font size for the breadcrumps
-$nav-breadcrump-font-family:        $nav-font-family !default; // text font for breadcrumbs
 $nav-breadcrump-separator:          "\f0da" !default; // separator char between breadcrumbs
 $nav-breadcrump-separator-color:    $grey !default; // color of breadcrumps sepearator
 $nav-breadcrump-separator-font:     FontAwesome !default; // font-family for breadcrumbs sepearator
@@ -389,7 +442,6 @@ $nav-side-bg-active:                transparent !default;
 $nav-side-text:                     $nav-text !default;
 $nav-side-text-hover:               $nav-text-hover !default;
 $nav-side-text-active:              $nav-theme !default;
-$nav-side-font-weight:              default !default;
 $nav-side-font-size:                $font-size-base !default;
 $nav-side-border:                   1px solid $nav-border !default;
 $nav-side-boxed:                    false !default; // true/false: show border around sidebar navigation
@@ -416,7 +468,6 @@ $pagination-background-color:       $body-bg !default;
 $pagination-hover-color:            $main-theme-hover !default;
 $pagination-active-color:           $main-theme !default;
 $pagination-margin:                 0 !default;
-$pagination-font-family:            $font-family-base !default;
 
 $list-teaser-margin:                2 * $default-margin !default;
 $list-teaser-margin-compact:        $default-margin !default;
@@ -531,8 +582,6 @@ $map-colors: (
 // Webforms
 
 $form-font-size:                    $font-size-base !default;
-$form-font-weight:                  $font-weight-headings !default;
-$form-font-family:                  $font-family-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-text-color:                   $body-color !default;
 $form-label-color:                  $body-color !default;

@@ -98,7 +98,7 @@
                                 <c:if test="${not empty imageElements}">
                                     <c:set var="imagecontent" value="${imageElements.get(0).toXml}" />
                                     <c:choose>
-                                        <c:when test="${not empty cms.meta.ogTitle}">
+                                        <c:when test="${cms.detailRequest and not empty cms.meta.ogTitle}">
                                             <c:set var="pagetitle" value="${cms.meta.ogTitle}" />
                                         </c:when>
                                         <c:otherwise>

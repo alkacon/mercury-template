@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.0.32</version>
+		<version>11.0.0.33</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -534,74 +534,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[fira-sans-v8-latin_latin-ext-300italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500.woff</destination>
-			<type>plain</type>
-			<uuidstructure>b9916435-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b9916436-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>b993d538-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b993d539-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500italic.woff</destination>
-			<type>plain</type>
-			<uuidstructure>b995a9fb-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b995a9fc-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-500italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-500italic.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>b997f3ee-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b997f3ef-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-500italic]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -2572,74 +2504,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500.woff</destination>
-			<type>plain</type>
-			<uuidstructure>31dd4067-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>31dd4068-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:47:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[montserrat-v12-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>31df634a-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>31df634b-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:47:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[montserrat-v12-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500italic.woff</destination>
-			<type>plain</type>
-			<uuidstructure>31e09bcd-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>31e09bce-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:47:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[montserrat-v12-latin_latin-ext-500italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-500italic.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>31e1ac40-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>31e1ac41-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:47:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[montserrat-v12-latin_latin-ext-500italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-600.woff</source>
 			<destination>system/modules/alkacon.mercury.theme/fonts/montserrat-v12-latin_latin-ext-600.woff</destination>
 			<type>plain</type>
@@ -3422,74 +3286,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500.woff</destination>
-			<type>plain</type>
-			<uuidstructure>7e5f5ce3-034b-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>7e5f5ce4-034b-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 05:03:58 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[poppins-v5-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>7e6131a6-034b-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>7e6131a7-034b-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 05:03:58 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[poppins-v5-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500italic.woff</destination>
-			<type>plain</type>
-			<uuidstructure>7e62df59-034b-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>7e62df5a-034b-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 05:03:58 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[poppins-v5-latin_latin-ext-500italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-500italic.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>7e643eec-034b-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>7e643eed-034b-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 05:03:58 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[poppins-v5-latin_latin-ext-500italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-600.woff</source>
 			<destination>system/modules/alkacon.mercury.theme/fonts/poppins-v5-latin_latin-ext-600.woff</destination>
 			<type>plain</type>
@@ -3756,74 +3552,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[prompt-v2-latin_latin-ext-300italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500.woff</destination>
-			<type>plain</type>
-			<uuidstructure>4322f87f-0346-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>4322f880-0346-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:26:32 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[prompt-v2-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>4324a632-0346-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>4324a633-0346-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:26:32 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[prompt-v2-latin_latin-ext-500]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500italic.woff</destination>
-			<type>plain</type>
-			<uuidstructure>4326c915-0346-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>4326c916-0346-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:26:32 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[prompt-v2-latin_latin-ext-500italic]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/prompt-v2-latin_latin-ext-500italic.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>43289dd8-0346-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>43289dd9-0346-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:26:32 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[prompt-v2-latin_latin-ext-500italic]]></value>
 				</property>
 			</properties>
 			<relations/>

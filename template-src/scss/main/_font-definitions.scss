@@ -1,0 +1,162 @@
+
+$fonts-preloaded: (
+    "Fira Sans":                (("Fira Sans",               sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Fira Sans Condensed":      (("Fira Sans Condensed",     sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "IBM Plex Sans":            (("IBM Plex Sans",           sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "IBM Plex Sans Condensed":  (("IBM Plex Sans Condensed", sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "IBM Plex Serif":           (("IBM Plex Serif",          serif),        (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Lato":                     (("Lato",                    sans-serif),   (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Literata":                 (("Literata",                serif),        (400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Merriweather":             (("Merriweather",            serif),        (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Merriweather Sans":        (("Merriweather Sans",       sans-serif),   (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Montserrat":               (("Montserrat",              sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Open Sans":                (("Open Sans",               sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Open Sans Condensed":      (("Open Sans Condensed",     sans-serif),   (300: (normal, italic), 700: (normal))),
+    "Oswald":                   (("Oswald",                  sans-serif),   (300: (normal),         400: (normal),         600: (normal),         700: (normal))),
+    "Poppins":                  (("Poppins",                 sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Prompt":                   (("Prompt",                  sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "PT Sans":                  (("PT Sans",                 sans-serif),   (400: (normal, italic), 700: (normal, italic))),
+    "PT Sans Caption":          (("PT Sans Caption",         sans-serif),   (400: (normal),         700: (normal))),
+    "PT Sans Narrow":           (("PT Sans Narrow",          sans-serif),   (400: (normal),         700: (normal))),
+    "PT Serif":                 (("PT Serif",                serif),        (400: (normal, italic), 700: (normal, italic))),
+    "PT Serif Caption":         (("PT Serif Caption",        serif),        (400: (normal, italic))),
+    "Raleway":                  (("Raleway",                 sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Roboto":                   (("Roboto",                  sans-serif),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
+    "Roboto_Condensed":         (("Roboto Condensed",        sans-serif),   (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Roboto Slab":              (("Roboto Slab",             serif),        (300: (normal),         400: (normal),         700: (normal))),
+    "Source Sans Pro":          (("Source Sans Pro",         sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Titillium Web":            (("Titillium Web",           sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Ubuntu":                   (("Ubuntu",                  sans-serif),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
+    "Ubuntu Condensed":         (("Ubuntu Condensed",        sans-serif),   (400: (normal))),
+    "System Default":           ((-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"), (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Mono Default":             ((SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace), (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic)))
+);
+
+
+@function has-preloaded-font($name) {
+    $font-name: quote(nth($name, 1));
+    @return map-has-key($fonts-preloaded, $font-name);
+}
+
+
+@function get-font-family($name) {
+    $font-name: quote(nth($name, 1));
+    @if (map-has-key($fonts-preloaded, $font-name)) {
+        $font-def: map-get($fonts-preloaded, $font-name);
+        $font-list: nth($font-def, 1);
+        @return $font-list;
+    }
+    @debug "Font '#{$name}' not found in predefined list, using literal value for font-family";
+    @return $name;
+}
+
+
+@function get-closest-smaller($list, $value) {
+    $result: 0;
+    @for $i from 1 through length($list) {
+        $val: nth($list, $i);
+        @if (($val < $value) and ($val > $result)) {
+            $result: $val;
+        }
+    }
+    @return $result;
+}
+
+
+@function get-closest-larger($list, $value) {
+    $result: 1000;
+    @for $i from 1 through length($list) {
+        $val: nth($list, $i);
+        @if (($val > $value) and ($val < $result)) {
+            $result: $val;
+        }
+    }
+    @return $result;
+}
+
+
+@function closest-number($value, $smaller, $larger) {
+    $dist-small: abs($smaller - $value);
+    $dist-large: abs($larger - $value);
+    // @debug "Comparing #{value}: smaller:#{$smaller} distance=#{$dist-small}, larger:#{$larger} distance=#{$dist-large}";
+    @if ((($smaller > 0) and ($dist-small < $dist-large)) or ($larger == 0)) {
+        @return $smaller;
+    }
+    @if ($larger > 0) {
+        @return $larger;
+    }
+    @return $value;
+}
+
+
+@function get-font-weight($name, $weight) {
+    // assuming $name has alredy been checked with get-font-family()
+    @if (default == $weight) {
+        // special case, if weight is set to 'default' then do NOT set the individual font-weight later
+        @return default;
+    }
+    $font-name: quote(nth($name, 1));
+    @if (map-has-key($fonts-preloaded, $font-name)) {
+        $font-def: map-get($fonts-preloaded, $font-name);
+        $font-weights: nth($font-def, 2);
+        @if (map-has-key($font-weights, $weight)) {
+            @return $weight;
+        }
+        $font-weights: map-keys($font-weights);
+        $smaller-weight: get-closest-smaller($font-weights, $weight);
+        $larger-weight: get-closest-larger($font-weights, $weight);
+        $result: closest-number($weight, $smaller-weight, $larger-weight);
+        @debug "Font '#{$font-name}' has no matching weight #{$weight}, smaller is: #{$smaller-weight}, larger is: #{$larger-weight}, using: #{$result}";
+        @return $result;
+    }
+    @debug "Font '#{$font-name}' not found in predefined list, using #{$weight} for font-weight";
+    @return $weight;
+}
+
+
+@function get-font-style($name, $weight, $style) {
+    // assuming $name and $weight have alredy been checked with get-font-family() and get-font-weight()
+    $font-name: quote(nth($name, 1));
+    @if (map-has-key($fonts-preloaded, $font-name)) {
+        $font-def: map-get($fonts-preloaded, $font-name);
+        $font-weights: nth($font-def, 2);
+        // assuming here that get-font-weight() was used on the $weight variable before
+        $font-styles: map-get($font-weights, $weight);
+        // styles can be onle "normal" or "italic" or both, if we don't find what we want just use the value that is there
+        $result: $style;
+        @if (index($font-styles, unquote($style)) == null) {
+            $result: nth($font-styles, 1);
+            @debug "Font '#{$font-name}' weight #{$weight} has no matching style '#{$style}', using: '#{$result}'";
+        }
+        @return $result;
+    }
+    @debug "Font '#{$font-name}' not found in predefined list, using '#{$style}' for font-style";
+    @return $style;
+}
+
+
+@function font-matches($variable, $name) {
+    $font-name: quote(nth($name, 1));
+    $variable-name: quote(nth($variable, 1));
+    @return $font-name == $variable-name;
+}
+
+
+@function require-font($name) {
+    @return (
+        font-matches($font-family-headings, $name) or
+        font-matches($font-family-base, $name) or
+        font-matches($font-family-gui, $name) or
+
+        font-matches($btn-font-family, $name) or
+        font-matches($form-font-family, $name) or
+        font-matches($pagination-font-family, $name) or
+
+        font-matches($nav-font-family, $name) or
+        font-matches($nav-header-font-family, $name) or
+        font-matches($nav-menu-font-family, $name) or
+        font-matches($nav-mobile-font-family, $name) or
+        font-matches($nav-meta-font-family, $name) or
+        font-matches($nav-breadcrump-font-family, $name)
+    );
+}

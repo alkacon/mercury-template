@@ -2,7 +2,7 @@
 
 <MetaInfoData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/metainfo.xsd">
   <MetaInfo language="de">
-    <Title><![CDATA[OpenCms Mercury-Template-Demo von Alkacon Software]]></Title>
+    <Title><![CDATA[OpenCms Mercury Template Demo von Alkacon Software]]></Title>
     <Description><![CDATA[Das ist die Mercury-Template-Demo für OpenCms. Das Mercury-Template ist ein vielfältig verwendbares Template mit integrierten Funktionen wie News- und Blog-Modulen, Veranstaltungen, dynamischen Listen, animierten Slidern u.v.m.]]></Description>
     <Image>
       <link type="WEAK">

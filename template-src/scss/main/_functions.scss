@@ -37,21 +37,6 @@
     @return $highlight-color;
 }
 
-@function require-font($name) {
-    @return (
-        (str-index(quote($nav-font-family), $name) != null) or
-        (str-index(quote($nav-header-font-family), $name) != null) or
-        (str-index(quote($nav-menu-font-family), $name) != null) or
-        (str-index(quote($nav-mobile-font-family), $name) != null) or
-        (str-index(quote($nav-meta-font-family), $name) != null) or
-        (str-index(quote($nav-breadcrump-font-family), $name) != null) or
-
-        (str-index(quote($font-family-headings), $name) != null) or
-        (str-index(quote($font-family-base), $name) != null) or
-        (str-index(quote($font-family-gui), $name) != null)
-    );
-}
-
 // Appends a string to a JSON fragment
 @function append-json($json, $label, $value) {
     @return $json + ', "' + $label + '":"' + $value + '"';

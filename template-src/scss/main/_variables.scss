@@ -53,9 +53,9 @@ $font-weight-base:                  $font-weight-normal !default;
 $font-weight-headings:              $font-weight-bold !default;
 $font-weight-intro-headings:        $font-weight-bold !default;
 
-$font-weight-base:                  get-font-weight($font-family-base, $font-weight-normal);
+$font-weight-base:                  get-font-weight($font-family-base, $font-weight-base);
 $font-weight-headings:              get-font-weight($font-family-headings, $font-weight-headings);
-$font-weight-intro-headings:        get-font-weight($font-family-headings, $font-weight-headings);
+$font-weight-intro-headings:        get-font-weight($font-family-headings, $font-weight-intro-headings);
 
 $font-style-headings:               normal !default;
 $font-style-headings:               get-font-style($font-family-headings, $font-weight-headings, $font-style-headings);

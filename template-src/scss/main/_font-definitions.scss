@@ -1,6 +1,6 @@
 
 $fonts-preloaded: (
-    "Fira Sans":                (("Fira Sans",               sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Fira Sans":                (("Fira Sans",               sans-serif),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Fira Sans Condensed":      (("Fira Sans Condensed",     sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "IBM Plex Sans":            (("IBM Plex Sans",           sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "IBM Plex Sans Condensed":  (("IBM Plex Sans Condensed", sans-serif),   (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
@@ -29,6 +29,7 @@ $fonts-preloaded: (
     "Ubuntu":                   (("Ubuntu",                  sans-serif),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
     "Ubuntu Condensed":         (("Ubuntu Condensed",        sans-serif),   (400: (normal))),
     "System Default":           ((-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"), (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "-apple-system":            ((-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"), (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Mono Default":             ((SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace), (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic)))
 );
 

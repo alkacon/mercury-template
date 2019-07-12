@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.0.33</version>
+		<version>11.0.0.34</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -472,272 +472,340 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2be2455f-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2be24560-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<uuidstructure>fb8d4c8b-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb8d4c8c-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-300]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-300]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2be52b92-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2be52b93-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<uuidstructure>fb90f60e-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb90f60f-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-300]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-300]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2be9bf75-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2be9bf76-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<uuidstructure>fb92a3c1-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb92a3c2-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-300italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-300italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-300italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-300italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2bee5358-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bee5359-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<uuidstructure>fb947884-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb947885-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-300italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-300italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500.woff</destination>
 			<type>plain</type>
-			<uuidstructure>b99a64f1-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b99a64f2-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
+			<uuidstructure>fb962637-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb962638-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-600]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-500]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>b99caee4-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b99caee5-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
+			<uuidstructure>fb97d3ea-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb97d3eb-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-600]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-500]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>b99f46f7-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b99f46f8-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
+			<uuidstructure>fb99819d-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb99819e-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-600italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-500italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-600italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-500italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>b9a1df0a-0349-11e9-9e3a-0242ac11002b</uuidstructure>
-			<uuidresource>b9a1df0b-0349-11e9-9e3a-0242ac11002b</uuidresource>
-			<datecreated>Wed, 19 Dec 2018 04:51:19 GMT</datecreated>
+			<uuidstructure>fb9b5660-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb9b5661-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-600italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-500italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2bf2c02b-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bf2c02c-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fb9d0413-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb9d0414-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-700]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-600]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2bf7f04e-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bf7f04f-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fb9ed8d6-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fb9ed8d7-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-700]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-600]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c00f101-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c00f102-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fba08689-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fba0868a-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-700italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-600italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-700italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-600italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c042554-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c042555-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fba2343c-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fba2343d-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-700italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-600italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-italic.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-italic.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c09f1b7-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c09f1b8-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fba3e1ef-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fba3e1f0-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-700]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c0c3baa-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c0c3bab-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fba58fa2-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fba58fa3-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-italic]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-700]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-regular.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-regular.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700italic.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c0eacad-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c0eacae-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fba76465-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fba76466-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-regular]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-700italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-regular.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v8-latin_latin-ext-regular.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-700italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c111db0-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c111db1-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>fba91218-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fba91219-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fira-sans-v8-latin_latin-ext-regular]]></value>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-700italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-italic.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-italic.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbaabfcb-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fbaabfcc-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-italic.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbac948e-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fbac948f-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-italic]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>fbae4241-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fbae4242-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/fira-sans-v9-latin-ext_latin-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>fbafeff4-a4c3-11e9-b4f0-0242ac11002b</uuidstructure>
+			<uuidresource>fbafeff5-a4c3-11e9-b4f0-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Jul 2019 16:42:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[fira-sans-v9-latin-ext_latin-regular]]></value>
 				</property>
 			</properties>
 			<relations/>

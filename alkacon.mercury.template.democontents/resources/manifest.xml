@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.0.21</version>
+		<version>11.0.0.22</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -8515,7 +8515,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home [Meta Infos] OpenCms Mercury template demo from Alkacon Software]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo [Meta Infos] OpenCms Mercury template demo from Alkacon Software]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8681,7 +8681,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home: Grid Layout]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo: Grid Layout]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8698,7 +8698,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home: Inline Editing]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo: Inline Editing]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8715,7 +8715,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home: Total Control]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo: Total Control]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9327,7 +9327,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home: Responsive Mercury Template]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo: Responsive Mercury Template]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9344,7 +9344,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home: Easy to use Workplace]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo: Easy to use Workplace]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9361,7 +9361,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home: Great options for developers]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo: Great options for developers]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10989,7 +10989,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Home: 4 Technicals]]></value>
+					<value><![CDATA[Welcome to the OpenCms demo: 4 Technicals]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -17980,7 +17980,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Link to: /sites/default/overview/]]></value>
+					<value><![CDATA[Link to: /overview/]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>

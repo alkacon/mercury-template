@@ -200,7 +200,7 @@
         color: $text-dark;
         line-height: #{$togglebox-height + 2 * $togglebox-border-size};
         font-size: $h4-font-size;
-        font-weight: normal;
+        font-weight: $font-weight-base;
     }
 
     .toggle-box {

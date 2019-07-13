@@ -37,7 +37,7 @@ $many-colors:                       $reduced-colors !default;
 $font-family-base:                  "Montserrat", sans-serif !default;
 $font-family-headings:              "Open Sans", sans-serif !default;
 $font-family-sans-serif:            $font-family-base !default; // Boostrap 4 defines this the other way around
-$font-family-gui:                   "Open Sans", sans-serif !default; // the font used in containers and other "GUI" components
+$font-family-gui:                   "-apple-system" !default; // the font used in containers and other "GUI" components
 
 $font-family-base:                  get-font-family($font-family-base); // match given names against preloaded font list
 $font-family-headings:              get-font-family($font-family-headings);
@@ -85,7 +85,7 @@ $nav-header-font-weight:            get-font-weight($nav-header-font-family, $na
 $nav-menu-font-weight:              get-font-weight($nav-menu-font-family, $nav-menu-font-weight);
 $nav-mobile-font-weight:            get-font-weight($nav-mobile-font-family, $nav-mobile-font-weight);
 $nav-mobile-header-font-weight:     get-font-weight($nav-mobile-font-family, $nav-mobile-header-font-weight);
-$nav-side-font-weight:              get-font-weight($nav-font-family, $nav-side-font-weight);
+$nav-side-font-weight:              get-font-weight($font-family-base, $nav-side-font-weight);
 
 // fonts used elsewhere
 $btn-font-family:                   $font-family-base !default;
@@ -102,14 +102,8 @@ $form-font-weight:                  $font-weight-headings !default;
 $btn-font-weight:                   get-font-weight($btn-font-family, $btn-font-weight);
 $form-font-weight:                  get-font-weight($form-font-family, $form-font-weight);
 
-
-/**
- * $font-weight-base: #{$font-weight-base}
- * $font-weight-headings: #{$font-weight-headings}
- * $font-weight-intro-headings: #{$font-weight-intro-headings}
- * $font-family-headings: #{$font-family-headings}
- * $font-style-headings: #{$font-style-headings}
- */
+$map-text-weight:                   $font-weight-light !default;
+$map-header-weight:                 $font-weight-normal !default;
 
 // Base font sizes
 
@@ -562,8 +556,6 @@ $map-border-radius:                 $default-border-radius !default;
 $map-text-color:                    $body-color !default;
 $map-text-size:                     1.4rem !default;
 $map-header-size:                   1.8rem !default;
-$map-text-weight:                   300 !default;
-$map-header-weight:                 normal !default;
 $map-label-color:                   $main-theme !default;
 
 // map colors (for marker groups)

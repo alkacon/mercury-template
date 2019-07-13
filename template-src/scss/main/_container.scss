@@ -66,26 +66,22 @@ $oct-edit-infos:
     min-height: 100px;
     position: relative;
     font-family: $font-family-gui !important;
+    font-weight: $font-weight-base !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
     // width: 100%;
 
-    > div,
-    .text {
-        font-family: $font-family-gui !important;
-        margin: 5px !important;
+    > * {
         font-size: 14px !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        margin: 5px !important;
         line-height: 1.2em !important;
     }
 
-    > h1, > h2, > h3, > h4,
-    .head  {
-        font-family: $font-family-gui !important;
+    > .head, > h1, > h2, > h3, > h4 {
         font-size: 22px !important;
-        font-weight: normal !important;
-        margin: 5px !important;
-        line-height: 1.2em !important;
     }
 }
 
@@ -269,7 +265,7 @@ $oct-edit-infos:
     display: inline;
     font-size: 12px !important;
     font-family: $font-family-gui !important;
-    font-weight: normal !important;
+    font-weight: $font-weight-base !important;
     line-height: 1 !important;
     padding: 4px 6px !important;
     margin-left: 5px !important;

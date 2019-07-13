@@ -45,9 +45,9 @@
     "slick-carousel": "1.8.1"
   },
   "browserslist": [
-     "> 0.5%",
-     "last 2 versions",
-     "not dead"
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
   ],
   "config": {
     "basedir": "./",

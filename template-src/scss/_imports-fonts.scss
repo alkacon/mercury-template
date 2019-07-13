@@ -18,8 +18,8 @@
 
 // Download Google fonts using:
 // https://google-webfonts-helper.herokuapp.com/
-// Required font-weights: 300 (light), 400 (regular), 600 (semibold), 700 (bold)
-// required font-styles: normal, italic;
+// font-weights (if available): 300 (light), 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
+// font-styles  (if available): normal, italic;
 
 @import 'fonts/fira-sans';
 @import 'fonts/fira-sans-condensed';
@@ -31,6 +31,8 @@
 @import 'fonts/merriweather';
 @import 'fonts/merriweather-sans';
 @import 'fonts/montserrat';
+@import 'fonts/noto-sans';
+@import 'fonts/noto-serif';
 @import 'fonts/open-sans';
 @import 'fonts/open-sans-condensed';
 @import 'fonts/oswald';

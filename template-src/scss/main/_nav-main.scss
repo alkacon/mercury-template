@@ -49,11 +49,11 @@
                 line-height: $nav-mobile-line-height;
                 padding: $nav-mobile-line-padding #{$grid-gutter-width / 2};
                 border-bottom: $nav-mobile-border;
-                font-weight: normal;
-                font-size: $nav-mobile-font-size;
                 @if ($nav-mobile-font-family != $font-family-base) {
                     font-family: $nav-mobile-font-family;
                 }
+                font-size: $nav-mobile-font-size;
+                font-weight: $nav-mobile-font-weight;
 
                 &:hover {
                     text-decoration: none;
@@ -777,7 +777,7 @@
                     right: 9px;
                     font-size: $nav-font-size;
                     content: "\f105"; // right arrow for default large screens
-                    font-weight: 400;
+                    font-weight: normal;
                 }
 
                 &.nav-label + a[aria-controls] {
@@ -870,8 +870,9 @@
             margin: 0;
             border: none;
             color: $nav-text;
-            font-size: $nav-font-size;
+            font-family: $nav-menu-font-family;
             font-weight: $nav-menu-font-weight;
+            font-size: $nav-font-size;
             position: relative;
             width: 100%;
         }

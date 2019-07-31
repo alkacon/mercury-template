@@ -193,4 +193,4 @@ var blogUGC = function($) {
     }
 };
 
-window.MercuryInit.push(blogUGC);
+mercury.ready(blogUGC);

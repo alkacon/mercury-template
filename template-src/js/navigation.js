@@ -299,9 +299,11 @@ function initHeadNavigation() {
             if (!fixCssSetting || (Mercury.gridInfo().getNavFixHeader() != "false")) {
                 if (DEBUG) console.info("Fixed header element found!");
                 m_fixedHeader = {};
+                m_fixedHeader.$header = $header;
                 m_fixedHeader.$parent = $fixedHeader.first();
                 m_fixedHeader.$element = $fixedHeader.find('.head').first();
                 m_fixedHeader.$element.addClass('notfixed');
+                m_fixedHeader.$header.addClass('header-notfixed');
                 m_fixedHeader.isFixed = false;
 
                 var fixAlways = $fixedHeader.hasClass('always');
@@ -357,8 +359,8 @@ function updateFixed(resize) {
             if (m_lastScrollTop < m_checkScrollTop) {
                 m_fixedHeader.isFixed = true;
                 m_fixedHeader.$parent.height(m_fixedHeader.$element.height());
-                m_fixedHeader.$element.removeClass('notfixed').addClass('isfixed');
-                m_fixedHeader.$element.removeClass('scrolled');
+                m_fixedHeader.$element.removeClass('notfixed').removeClass('scrolled').addClass('isfixed');
+                m_fixedHeader.$header.removeClass('header-notfixed').addClass('header-isfixed');
                 m_fixedHeader.height = m_fixedHeader.$element.height();
                 m_checkScrollTop = 999999999999;
             }
@@ -366,6 +368,7 @@ function updateFixed(resize) {
             // header should not be fixed, but is
             m_fixedHeader.isFixed = false;
             m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
+            m_fixedHeader.$header.removeClass('header-isfixed').addClass('header-notfixed');
             m_fixedHeader.$parent.height("auto");
         }
         if (!m_fixedHeader.isFixed) {
@@ -387,6 +390,7 @@ function updateFixed(resize) {
         if (m_fixedHeader.isFixed) {
             m_fixedHeader.isFixed = false;
             m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
+            m_fixedHeader.$header.removeClass('header-isfixed').addClass('header-notfixed');
             m_fixedHeader.$parent.height("auto");
         }
     }

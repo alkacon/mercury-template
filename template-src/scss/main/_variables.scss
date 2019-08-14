@@ -278,6 +278,7 @@ $nav-text-hover:                    $nav-theme !default; // hover text color of 
 $nav-text-active:                   get-text-color($nav-bg-active) !default; // the current page in navigation text color in desktop
 $nav-border:                        $grey-light !default; // the border color for the navigation
 $nav-header-text:                   $nav-text !default; // text color in header nav items
+$nav-head-border:                   1px solid $nav-border !default; // border below desktop header, set to "none" to disable
 $nav-setting-fixheader:             true !default; // Valid: true, false, upscroll
 
 

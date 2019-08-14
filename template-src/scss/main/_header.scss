@@ -98,8 +98,10 @@
                 }
             }
 
-            .header-group {
-                border-bottom: $nav-side-border;
+            @if ($nav-head-border != none) {
+                .header-group {
+                    border-bottom: $nav-head-border;
+                }
             }
 
             .nav-main-container,

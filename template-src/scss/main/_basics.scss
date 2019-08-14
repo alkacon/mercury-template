@@ -56,6 +56,7 @@ html {
         }
     }
 
+    // rem based font adjustment is done in mixin
     @include rem-base;
 }
 

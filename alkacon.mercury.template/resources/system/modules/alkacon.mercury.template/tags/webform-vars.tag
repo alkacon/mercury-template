@@ -126,7 +126,7 @@
 <c:set var="adminDetailPageContent" value="${not empty formBookingXml ? formBookingXml : formXml}" />
 <c:set var="adeManager" value="<%=org.opencms.main.OpenCms.getADEManager() %>" />
 <c:choose>
-<c:when test="${empty adeManager.getDetailPage(cms.vfs.cmsObject, adminDetailPageContent.file.rootPath, cms.requestContext.uri, null)}">
+<c:when test="${empty adeManager.getDetailPageHandler().getDetailPage(cms.vfs.cmsObject, adminDetailPageContent.file.rootPath, cms.requestContext.uri, null)}">
     <c:set var="adminLink" value="${cms.requestContext.uri}" />
 </c:when>
 <c:otherwise>

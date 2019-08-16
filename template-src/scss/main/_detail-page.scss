@@ -199,3 +199,11 @@
         }
     }
 }
+
+// disabled background for setting preview elements
+html.opencms-page-editor {
+    .detail-page.oc-detail-preview {
+        opacity: .75;
+        background-image: $disabled-bg;
+    }
+}

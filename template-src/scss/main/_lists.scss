@@ -292,6 +292,11 @@
 
     &.dl-list-compact {
 
+        .list-entries {
+            border-bottom: 1px solid $dl-list-highlight-color;
+            margin-bottom: $default-margin-small;
+        }
+
         li:nth-child(odd) .dl-link {
             background-color: $dl-list-highlight-color;
         }
@@ -305,15 +310,18 @@
                 color: $main-theme-hover;
             }
         }
-        .dl-link {
-            display: table;
+
+        .dl-teaser-compact {
+            display: flex;
             width: 100%;
+        }
 
-            > span {
-                vertical-align: top;
-                display: table-cell;
+        .dl-link {
+            display: flex;
+            &.dl-link-disp {
+               flex-grow: 10;
+               width: 100%;
             }
-
             .fa {
                 font-size: 2.0rem;
             }
@@ -325,7 +333,7 @@
             padding-right: $default-margin-small;
         }
         .dl-content {
-            width: 100%;
+            flex-grow: 10;
             .dl-title {
                 @extend .default-font;
                 font-weight: $font-weight-bold;
@@ -360,28 +368,30 @@
             .dl-size {
                 display: block;
                 float: left;
+                min-width: 0;
             }
         }
         @include media-breakpoint-down(sm) {
-            .dl-link > span.dl-dl {
-                display: none;
+            .dl-teaser-compact {
+                flex-direction: column;
             }
-            .dl-show-file .dl-link > span.dl-dl {
-                display: block;
-            }
-        }
-        @include media-breakpoint-down(xs) {
-            .dl-date,
-            .dl-size {
-                display: block;
-                float: left;
-            }
-            .dl-show-file {
-                .dl-link .fa {
-                    font-size: 2.0rem;
+            .dl-link {
+                &.dl-link-down {
+                    justify-content: flex-end;
+                    padding-top: 0;
+                    .fa {
+                        padding-top: 0;
+                        font-size: 1.8rem;
+                    }
+                    .dl-date,
+                    .dl-size {
+                        min-width: 7.0rem;
+                    }
                 }
-                .dl-link > span.dl-dl {
-                    display: none;
+            }
+            .dl-show-file .dl-link {
+                > span.dl-dl {
+                    display: block;
                 }
             }
         }
@@ -589,24 +599,25 @@ aside .list-content,
                 position: absolute;
                 display: inline-block;
                 font-family: FontAwesome;
-                font-weight: normal;
+                right: 0;
+                width: $nav-handle-right-padding;
                 content: "\f078";
-                right: $btn-padding;
-                left: unset;
-                width: auto;
-                transform: rotate(-180deg) translate(0,0);
-                transition: transform .33s;
-                text-align: unset;
+                font-weight: normal;
+                text-align: center;
+                transform: rotate(-180deg);
+                transition: transform $nav-animation-time;
             }
             &.collapsed::after {
-                transform: rotate(0) translate(0,0);
-                transition: transform 0.33s;
+                transform: rotate(0);
+            }
+        }
+        .nav-side li > a + a {
+            &::after {
+                content: "\f107";
             }
         }
 
-
         &.categories,
-        &.folders,
         &.archive {
             @include list-filter-box;
         }
@@ -688,15 +699,11 @@ aside .list-content,
                 margin-right: 0;
 
                 li > a {
-                    padding-left: $default-margin;
-                    padding-right: $default-margin;
+                    // padding-left: $default-margin;
+                    padding-right: $nav-handle-right-padding;
                     + a {
-                        width: 3.2rem;
                         padding-left: 0;
                         padding-right: 0;
-                        &::after {
-                            right: calc(#{$btn-padding} - 1px);
-                        }
                     }
                 }
             }
@@ -711,7 +718,7 @@ aside .list-content,
             button.year {
                 color: $text-dark;
                 background-color: $grey-lighter;
-                padding-left: calc( #{$default-margin} - 1px);
+                padding-left: calc(#{$nav-side-left-padding-step} - 1px);
 
                 &:hover {
                     background-color: $grey-light;
@@ -721,7 +728,8 @@ aside .list-content,
                     content: "\f133";
                 }
                 &::after {
-                    right: calc(#{$btn-padding} - 1px); // this has a 1px border
+                    width: calc(#{$nav-handle-right-padding} - 2px);
+                    // right: calc(#{$btn-padding} - 1px); // this has a 1px border
                 }
             }
 
@@ -903,7 +911,7 @@ aside .list-content,
 .type-list-filter,
 .type-list-sortoptions {
     button {
-        padding-left: $default-margin;
+        padding-left: $nav-side-left-padding-step;
         padding-right: $default-margin;
 
         .fa {

@@ -1267,8 +1267,9 @@
       <Widget><![CDATA[selectcombo]]></Widget>
       <Default><![CDATA[download-list dl-list-compact]]></Default>
       <WidgetConfig><![CDATA[
+        download-list dl-list-elaborate:%(key.msg.setting.download.displayFormat.elaborate)|
         download-list dl-list-compact:%(key.msg.setting.download.displayFormat.compact)|
-        download-list dl-list-elaborate:%(key.msg.setting.download.displayFormat.elaborate)
+        download-list dl-list-compact dl-list-minimal:%(key.msg.setting.download.displayFormat.minimal)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

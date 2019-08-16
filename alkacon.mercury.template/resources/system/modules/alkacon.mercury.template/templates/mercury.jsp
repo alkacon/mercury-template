@@ -16,9 +16,10 @@
 <jsp:attribute name="top">
 
 <c:set var="cmsstatus">${cms.isEditMode ? 'opencms-page-editor ' : ''}${cms.isEditMode and cms.modelGroupPage ? 'opencms-group-editor ' : ''}</c:set>
+<c:set var="pageclass">${contentProperties['mercury.css.class']}</c:set>
 
 <!DOCTYPE html>
-<html lang="${cms.locale}" class="noscript ${cmsstatus}">
+<html lang="${cms.locale}" class="noscript ${cmsstatus}${empty pageclass ? '' : ' '}${pageclass}">
 <head>
 
 <%-- Special CSS in case JavaScript is disabled --%>

@@ -720,6 +720,7 @@ msg.setting.disqus.disqusSite.help=The site name registed in Disqus for your com
 msg.setting.download.displayFormat=Display format
 msg.setting.download.displayFormat.compact=Compact
 msg.setting.download.displayFormat.elaborate=Elaborate
+msg.setting.download.displayFormat.minimal=Minimal
 msg.setting.download.displayFormat.help=Selects the format of the generated download list.
 msg.setting.download.showDescription.help=Controls if the description of the download file will be shown, if available.
 msg.setting.download.showFile=Show filename

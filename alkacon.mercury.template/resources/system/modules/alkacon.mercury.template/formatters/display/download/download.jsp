@@ -87,26 +87,31 @@
     <c:choose>
         <c:when test="${fn:contains(displayFormat, 'dl-list-compact')}">
 
-            <%-- ###### Compact display format ###### --%>
-            <div class="dl-teaser dl-teaser-compact ${showFile ? 'dl-show-file' : ''}">
-                <a class="dl-link" href="${link}" target="_blank" rel="noopener"><%--
-                --%><span class="dl-type fa ${icon}"></span><%--
-                --%><span class="dl-content"><%--
-                    --%> <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" /><%--
-                    --%><c:if test="${showFile and not empty propertiesLocale['Title']}"><%--
-                         --%><div class="dl-file">${res.name}</div><%--
-                    --%></c:if><%--
-                    --%><c:if test="${showDescription and not empty description}"><%--
-                        --%><div class="dl-desc">${description}</div><%--
-                    --%></c:if><%--
-                --%></span><%--
-                --%><span class="dl-info"><%--
-                     --%><span class="dl-size"><span>${size}</span></span><%--
-                     --%><span class="dl-date"><span>${date}</span></span><%--
-                 --%></span><%--
-                 --%><span class="dl-dl fa fa-cloud-download"></span><%--
-             --%></a>
-           </div>
+            <%-- ###### Compact / Minimal display format ###### --%>
+            <div class="dl-teaser dl-teaser-compact${showFile ? ' dl-show-file' : ''}${showDescription ? ' dl-show-desc' : ''}">
+                <a href="${link}" class="dl-link dl-link-disp" target="_blank" rel="noopener" rel="noopener" title="<fmt:message key="msg.page.display"/>"><%----%>
+                    <span class="dl-type fa ${icon}"></span><%----%>
+                    <span class="dl-content"><%----%>
+                        <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
+                        <c:if test="${showFile and not empty propertiesLocale['Title']}">
+                            <div class="dl-file">${res.name}</div><%----%>
+                        </c:if>
+                        <c:if test="${showDescription and not empty description}">
+                            <div class="dl-desc">${description}</div><%----%>
+                        </c:if>
+                    </span><%----%>
+                </a><%----%>
+                <c:if test="${not fn:contains(displayFormat, 'dl-list-minimal')}">
+                    <a href="${link}" download class="dl-link dl-link-down" target="_blank" rel="noopener" title="<fmt:message key="msg.page.download"/>"><%----%>
+                        <span class="dl-info"><%----%>
+                            <span class="dl-size"><span>${size}</span></span><%----%>
+                            <span class="dl-date"><span>${date}</span></span><%----%>
+                        </span><%----%>
+                        <span class="dl-dl fa fa-cloud-download"></span><%----%>
+                    </a><%----%>
+                </c:if>
+            </div><%----%>
+            <mercury:nl />
 
         </c:when>
         <c:otherwise>

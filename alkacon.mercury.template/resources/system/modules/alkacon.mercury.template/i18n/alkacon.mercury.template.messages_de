@@ -720,6 +720,7 @@ msg.setting.disqus.disqusSite.help=Der Site-Name welcher bei Disqus für Ihre Ko
 msg.setting.download.displayFormat=Darstellungsart
 msg.setting.download.displayFormat.compact=Kompakt
 msg.setting.download.displayFormat.elaborate=Ausführlich
+msg.setting.download.displayFormat.minimal=Minimal
 msg.setting.download.displayFormat.help=Bestimmt wie die Einträge in der Download-Liste dargestellt werden.
 msg.setting.download.showDescription.help=Legt fest ob die Beschreibung der Datei angezeigt wird, falls diese verfügbar ist.
 msg.setting.download.showFile=Dateinamen anzeigen

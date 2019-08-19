@@ -595,6 +595,7 @@ msg.page.search.facet.link.less=Zeige weniger
 msg.page.search.facet.link.more=Zeige mehr
 msg.page.search.facet.type=Typ
 msg.page.search.failed=Die Suche ist gescheitert. Wahrscheinlich war die endgültige Suchanfrage fehlerhaft.
+msg.page.search.inlist=Suche in Liste
 msg.page.search.noResult=Keine Ergebnisse gefunden. Bitte geben Sie einen anderen Suchbegriff ein.
 msg.page.search.query.changed=Die Suchanfrage <em>{0}</em> wurde zu <em>{1}</em> geändert.
 msg.page.search.result.heading=Suchergebnisse

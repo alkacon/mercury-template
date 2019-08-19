@@ -595,6 +595,7 @@ msg.page.search.facet.link.less=Show less
 msg.page.search.facet.link.more=Show more
 msg.page.search.facet.type=Type
 msg.page.search.failed=The search failed. Possibly because of an erroneous final search query.
+msg.page.search.inlist=Search list
 msg.page.search.noResult=No results found. Please enter another search query.
 msg.page.search.query.changed=Your original query <em>{0}</em> was changed to <em>{1}</em>.
 msg.page.search.result.heading=Search results

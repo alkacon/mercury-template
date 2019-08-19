@@ -121,6 +121,11 @@
     .detail-content {
         margin-bottom: $default-margin;
 
+        > .piece {
+            // force 100% width on all pieces to avoid issues with left floating key visual
+            width: 100%;
+        }
+
         @include clearfix;
         @include piece-bottom-margin;
     }

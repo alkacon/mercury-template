@@ -212,6 +212,7 @@ ${'<'}${pieceTag}${' '}
         ${empty pieceOption ? '' : ' '.concat(pieceOption)}
         ${empty pieceOnlyMarker ? '' : ' '.concat(pieceOnlyMarker)}
         ${empty gridOption ? '' : ' '.concat(gridOption)}
+        ${showVisual ? ' has-visual' : ' no-visual'}
     ${'\"'}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}
 ${'>'}

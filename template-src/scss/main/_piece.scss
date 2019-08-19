@@ -35,25 +35,25 @@
 // 50. Title as image overlay (Detail page only)
 // 99. Default value for content section - treated internally as '4' (Content section only)
 
-@function get-col-flex-size($cols) {
+@function get-col-flex-size($cols, $reduce: 0) {
     @if ($cols < 12) {
-        @return calc((100% + #{$grid-gutter-width}) * #{$cols / $grid-columns} - #{0.5 * $grid-gutter-width});
+        @return calc((100% + #{$grid-gutter-width}) * #{$cols / $grid-columns} - #{(0.5 * $grid-gutter-width) + $reduce});
     } @else {
         @return 100%;
     }
 }
 
-@function get-col-float-size($cols) {
+@function get-col-float-size($cols, $reduce: 0) {
     @if ($cols < 12) {
-        @return calc((100% + #{$grid-gutter-width}) * #{$cols / $grid-columns} - #{$grid-gutter-width});
+        @return calc((100% + #{$grid-gutter-width}) * #{$cols / $grid-columns} - #{$grid-gutter-width + $reduce});
     } @else {
         @return 100%;
     }
 }
 
-@mixin make-piece-col($cols) {
-    flex: 0 0 get-col-flex-size($cols);
-    max-width: get-col-flex-size($cols);
+@mixin make-piece-col($cols, $reduce: 0) {
+    flex: 0 0 get-col-flex-size($cols, $reduce);
+    max-width: get-col-flex-size($cols, $reduce);
 }
 
 $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column sizes for the piece visual
@@ -194,8 +194,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             }
         }
 
-        &.flex,
-        &.float {
+        &.has-visual {
             @include clearfix-before;
         }
 
@@ -265,7 +264,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                         @include make-piece-col($piece-col-size);
                     }
                     > .body {
-                        @include make-piece-col($grid-columns - $piece-col-size);
+                        @include make-piece-col($grid-columns - $piece-col-size, 1);
                     }
                 }
                 &.full,

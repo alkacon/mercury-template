@@ -25,8 +25,9 @@
     background-color: $main-theme;
     padding: $default-margin $default-margin-small;
     text-align: center;
-    flex: 1;
     display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
     flex-direction: column;
     @include round-corners($iconbox-border-radius, true);
 

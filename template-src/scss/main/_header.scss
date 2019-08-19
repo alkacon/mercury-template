@@ -26,7 +26,7 @@
 
     // Positioning for "logo-left" header
 
-    &.logo-left {
+    &.with-logo {
         .header-links,
         .header-title {
             display: none;
@@ -36,7 +36,6 @@
             padding-top: $default-margin-verysmall;
             padding-bottom: $default-margin-verysmall;
 
-            @include make-col(9);
             max-width: $header-logo-xs-width;
         }
 
@@ -63,29 +62,13 @@
 
         @include media-breakpoint-up(sm) {
             .col-head-logo {
-                @include make-col(6);
-
                 .header-image {
                     max-width: none;
                 }
-            }
-        }
-
-        @include media-breakpoint-up(md) {
-            .col-head-logo {
-                @include make-col(5);
             }
         }
 
         @include media-breakpoint-up(lg) {
-            .col-head-logo {
-                 @include make-col(4);
-
-                .header-image {
-                    max-width: none;
-                }
-            }
-
             .isfixed {
                 .col-head-logo {
                     max-width: $header-logo-fixed-width;
@@ -114,7 +97,6 @@
 
             .col-head-info {
                 padding-top: $default-margin-verysmall;
-                padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
                 display: flex;
                 flex-direction: column;
             }
@@ -180,6 +162,64 @@
     }
 }
 
+
+.area-header {
+    @include media-breakpoint-up(lg) {
+
+        &.logo-left {
+            // logo left version
+            .col-head-info {
+                padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
+            }
+        }
+
+        &.logo-right {
+            // logo-right version
+            .col-head-logo {
+                order: 13;
+            }
+            .col-head-info {
+                order: -1;
+            }
+            .nav-main-container,
+            .header-links,
+            .header-title {
+                align-self: flex-start;
+            }
+            .nav-main-items,
+            .header-links > ul {
+                justify-content: flex-start;
+            }
+
+            .nav-main-items {
+                margin-left: -1 * $nav-header-hor-padding;
+            }
+        }
+    }
+
+    @each $logo-size in (1,2,3,4,5,6) {
+        &.logo-size-#{$logo-size} {
+            .col-head-logo {
+                @include make-col(nth([4,5,7,9,9,9], $logo-size));
+            }
+            @include media-breakpoint-up(sm) {
+                .col-head-logo {
+                    @include make-col(nth([3,4,5,6,7,7], $logo-size));
+                }
+            }
+            @include media-breakpoint-up(md) {
+                .col-head-logo {
+                    @include make-col(nth([2,3,4,5,6,6], $logo-size));
+                }
+            }
+            @include media-breakpoint-up(lg) {
+                .col-head-logo {
+                    @include make-col($logo-size);
+                }
+            }
+        }
+    }
+}
 
 // Header formatting for desktop size
 

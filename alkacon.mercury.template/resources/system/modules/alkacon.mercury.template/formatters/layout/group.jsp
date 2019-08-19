@@ -61,7 +61,7 @@
         </c:choose>
 
         <mercury:nl />
-        <header class="area-header logo-left ${cssWrapper}"><%----%>
+        <header class="area-header with-logo logo-left logo-size-4 ${cssWrapper}"><%----%>
             <mercury:nl />
 
             <input type="checkbox" id="nav-toggle-check"><%-- Must be here so it works even when JavaScript is disabled --%>

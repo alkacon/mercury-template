@@ -626,7 +626,7 @@
                     // cursor: default; // mercury header links can always be clicked on desktop
 
                     @if ($nav-header-show-arrows == true) {
-                        // always show arrows
+                        // show arrows in top menu
                         &::after {
                             color: $nav-header-text;
                             line-height: $nav-header-line-height;

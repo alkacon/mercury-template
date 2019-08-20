@@ -14,20 +14,22 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-    <c:set var="setting"            value="${cms.element.setting}" />
-    <c:set var="showFile"           value="${setting.showFile.toBoolean}" />
-    <c:set var="showDescription"    value="${setting.showDescription.toBoolean}" />
-    <c:set var="displayFormat"      value="${setting.listCssWrapper.toString}" />
-    <c:set var="hsize"              value="${setting.hsize.toInteger}" />
+    <c:set var="setting"                value="${cms.element.setting}" />
+    <c:set var="showFile"               value="${setting.showFile.toBoolean}" />
+    <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
+    <c:set var="showCategories"         value="${(setting.categoryOption.toString eq 'allnopath') or (setting.categoryOption.toString eq 'onlyleafs')}" />
+    <c:set var="showCategoryLeafsOnly"  value="${showCategories and (setting.categoryOption.toString eq 'onlyleafs')}" />
+    <c:set var="displayFormat"          value="${setting.listCssWrapper.toString}" />
+    <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 
-    <c:set var="res"                value="${cms.wrap[cms.element.resource]}" />
-    <c:set var="rootPath"           value="${res.rootPath}" />
-    <c:set var="link"               value="${res.link}" />
-    <c:set var="mimeType"           value="${res.mimeType}" />
-    <c:set var="propertiesLocale"   value="${res.propertyLocale[cms.locale]}" />
-    <c:set var="suffix"             value="${fn:toUpperCase(res.extension)}" />
-    <c:set var="title"              value="${empty propertiesLocale['Title'] ? res.name : propertiesLocale['Title']}" />
-    <c:set var="description"        value="${propertiesLocale['Description']}"/>
+    <c:set var="res"                    value="${cms.wrap[cms.element.resource]}" />
+    <c:set var="rootPath"               value="${res.rootPath}" />
+    <c:set var="link"                   value="${res.link}" />
+    <c:set var="mimeType"               value="${res.mimeType}" />
+    <c:set var="propertiesLocale"       value="${res.propertyLocale[cms.locale]}" />
+    <c:set var="suffix"                 value="${fn:toUpperCase(res.extension)}" />
+    <c:set var="title"                  value="${empty propertiesLocale['Title'] ? res.name : propertiesLocale['Title']}" />
+    <c:set var="description"            value="${propertiesLocale['Description']}"/>
 
     <c:set var="date"><fmt:formatDate value="${cms:convertDate(res.dateLastModified)}" type="date" dateStyle="SHORT" /></c:set>
 
@@ -96,6 +98,14 @@
                         <c:if test="${showFile and not empty propertiesLocale['Title']}">
                             <div class="dl-file">${res.name}</div><%----%>
                         </c:if>
+                        <c:if test="${showCategories and not res.categories.isEmpty}">
+                            <c:set var="categories" value="${showCategoryLeafsOnly ? res.categories.leafItems : res.categories.allItems}" />
+                            <div class="dl-cat"><%----%>
+                                <c:forEach var="category" items="${categories}" varStatus="status">
+                                    <span class="dl-cat-label">${category.title}</span><%----%>
+                                </c:forEach>
+                            </div><%----%>
+                        </c:if>
                         <c:if test="${showDescription and not empty description}">
                             <div class="dl-desc">${description}</div><%----%>
                         </c:if>
@@ -120,7 +130,22 @@
             <div class="dl-teaser dl-teaser-elaborate"><%----%>
                 <div class="row"><%----%>
                     <div class="dl-content fixcol-md-125-rest"><%----%>
-                        <div class="dl-date">${date}</div><%----%>
+                        <c:choose>
+                            <c:when test="${showCategories and not res.categories.isEmpty}">
+                                <div class="dl-date-cat"><%----%>
+                                    <div class="dl-date">${date}</div><%----%>
+                                    <c:set var="categories" value="${showCategoryLeafsOnly ? res.categories.leafItems : res.categories.allItems}" />
+                                    <div class="dl-cat"><%----%>
+                                        <c:forEach var="category" items="${categories}" varStatus="status">
+                                            <span class="dl-cat-label">${category.title}</span><%----%>
+                                        </c:forEach>
+                                    </div><%----%>
+                                </div><%----%>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="dl-date">${date}</div><%----%>
+                            </c:otherwise>
+                        </c:choose>
                         <mercury:link link="${link}" title="${title}" css="dl-link" >
                             <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
                         </mercury:link>

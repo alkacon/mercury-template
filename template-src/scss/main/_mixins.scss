@@ -442,3 +442,31 @@
         }
     }
 }
+
+@mixin list-category-label($add-box: true, $add-hover: true) {
+    // labels for categories used in list filter and download list
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1;
+    font-size: $font-size-sm;
+    color: $text-dark;
+    @if ($btn-font-family != $font-family-base) {
+        font-family: $btn-font-family;
+    }
+    &:before {
+        font-family: FontAwesome;
+        content: "\f02b";
+        padding-right: $default-margin-verysmall;
+    }
+    @if ($add-box) {
+        padding: $default-margin-verysmall;
+        border-radius: $list-category-radius;
+        background-color: $grey-lighter;
+        @if ($add-hover) {
+            &:hover {
+                background-color: $grey-light;
+                transition: background-color 0.33s;
+            }
+        }
+    }
+}

@@ -1282,6 +1282,20 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[categoryOption.download]]></IncludeName>
+      <PropertyName><![CDATA[categoryOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.download.categoryOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.download.categoryOption.help)]]></Description>
+      <Visibility><![CDATA[parent]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+              none:               %(key.msg.option.list.categories.none)|
+              allnopath:          %(key.msg.option.list.categories.allnopath)|
+              onlyleafs:          %(key.msg.option.list.categories.leafsnopath)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.0]]></IncludeName>
       <PropertyName><![CDATA[listEntryMinHeight]]></PropertyName>
       <Visibility><![CDATA[parent]]></Visibility>

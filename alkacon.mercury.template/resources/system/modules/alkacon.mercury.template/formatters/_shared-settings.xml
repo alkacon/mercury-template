@@ -1929,6 +1929,14 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showSearch.navigation]]></IncludeName>
+      <PropertyName><![CDATA[showSearch]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.nav.showSearch)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.nav.showSearch.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true<y]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[detailContainer.layout]]></IncludeName>
       <PropertyName><![CDATA[detailContainer]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.detailContainer)]]></DisplayName>

@@ -17,13 +17,17 @@
 
 <cms:formatter var="content" val="value">
 
+<c:set var="setting"                    value="${cms.element.setting}" />
+<c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
+<c:set var="showSearch"                 value="${setting.showSearch.toBoolean}" />
+
 <c:set var="logoElements" value="${cms.elementsInContainers['header-image']}" />
 <c:if test="${not empty logoElements}">
     <c:set var="logoContent" value="${logoElements.get(0).toXml}" />
     <c:set var="logoImage" value="${logoContent.value.Image}" />
 </c:if>
 
-<nav class="nav-main-group ${logoImage.value.Image.isSet ? 'has-sidelogo' : ''}"><%----%>
+<nav class="nav-main-group ${logoImage.value.Image.isSet ? 'has-sidelogo' : ''}${' '}${cssWrapper}"><%----%>
 
     <mercury:nav-items
         type="forSite"
@@ -155,7 +159,7 @@
         </c:forEach>
 
         <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
-        <c:set var="hidesearch" value="${fn:startsWith(searchPageUrl,'[')}" />
+        <c:set var="hidesearch" value="${not showSearch or fn:startsWith(searchPageUrl,'[')}" />
 
         <c:if test="${not hidesearch}">
             <li id="nav-main-search" aria-expanded="false"><%----%>

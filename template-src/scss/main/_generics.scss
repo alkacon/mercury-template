@@ -41,6 +41,11 @@
     padding: $box-padding;
     @include round-corners($default-border-radius);
 
+    &.oc-drag-element {
+        // in edit mode allow overflow, otherwise edit points may not be visble (e.g. for lists)
+        overflow: visible;
+    }
+
     *:not(a) {
         // required in order to override colors set in headings
         color: get-text-color($highlight-color);

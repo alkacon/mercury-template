@@ -120,22 +120,25 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="pieceLayout"    value="${empty pieceLayout ? 6 : pieceLayout}" />
-<c:set var="hsize"          value="${empty hsize ? 3 : hsize}" />
+<c:set var="pieceLayout"        value="${empty pieceLayout ? 6 : pieceLayout}" />
+<c:set var="hsize"              value="${empty hsize ? 3 : hsize}" />
 <c:choose>
     <c:when test="${(teaserType eq 'teaser-text-tile') or (teaserType eq 'teaser-masonry')}">
         <c:set var="addButtonDiv" value="${true}" />
         <c:set var="pieceLayout" value="${1}"/>
     </c:when>
     <c:when test="${teaserType eq 'teaser-compact'}">
-        <c:set var="hideImage" value="${true}"/>
+        <c:set var="hideImage"  value="${true}"/>
     </c:when>
 </c:choose>
-<c:set var="sizeDesktop"    value="${pieceLayout > 1 ? (empty sizeDesktop ? 4 : sizeDesktop) : 12}" />
-<c:set var="sizeMobile"     value="${pieceLayout > 1 ? (empty sizeMobile ? 7 : sizeMobile) : 12}" />
-<c:set var="showButton"     value="${buttonText ne 'none'}" />
-<c:set var="addButtonDiv"   value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
+<c:set var="sizeDesktop"        value="${pieceLayout > 1 ? (empty sizeDesktop ? 4 : sizeDesktop) : 12}" />
+<c:set var="sizeMobile"         value="${pieceLayout > 1 ? (empty sizeMobile ? 7 : sizeMobile) : 12}" />
+<c:set var="showButton"         value="${buttonText ne 'none'}" />
+<c:set var="addButtonDiv"       value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
 
+<%-- These are currently not configurable, maybe add this later --%>
+<c:set var="linkOnHeadline"     value="${true}" />
+<c:set var="linkOnText"         value="${true}" />
 
 <c:choose>
     <c:when test="${not empty preface}">
@@ -186,7 +189,10 @@
 
     <jsp:attribute name="heading">
         <c:if test="${not empty headline or not empty intro}">
-            <mercury:link link="${link}" title="${linkTitle}" >
+            <mercury:link
+                link="${link}"
+                title="${linkTitle}"
+                test="${linkOnHeadline}">
                 <mercury:intro-headline
                     intro="${intro}"
                     headline="${headline}"
@@ -216,48 +222,60 @@
         <c:choose>
             <c:when test="${empty markupBody}">
 
-                <c:if test="${not empty preTextMarkup}">
-                    ${preTextMarkup}
-                </c:if>
+                <c:set var="markupTextOutput">
 
-                <c:if test="${not empty date}">
-                    <div class="teaser-date"><%----%>
-                        <mercury:instancedate date="${date}" format="${dateFormat}" />
-                    </div><%----%>
-                </c:if>
+                    <c:if test="${not empty preTextMarkup}">
+                        ${preTextMarkup}
+                    </c:if>
 
-                <c:choose>
-                    <c:when test="${false and not empty preface}">
-                        <%-- deactivated so that preface is also cut off --%>
-                        <div class="teaser-text">
-                            <c:out value="${preface}" />
-                         </div><%----%>
-                    </c:when>
+                    <c:if test="${(not empty date) and (dateFormat ne 'none')}">
+                        <div class="teaser-date"><%----%>
+                            <mercury:instancedate date="${date}" format="${dateFormat}" />
+                        </div><%----%>
+                    </c:if>
 
-                    <c:when test="${not empty pText}">
-                        <%-- textLength of < 0 outputs the whole text --%>
-                        <%-- textLength of 0 completely hides the text --%>
-                        <%-- textLength of > n outputs the text trimmed down to max n chars --%>
-                        <c:if test="${empty textLength}">
-                            <c:set var="textLength" value="-1" />
-                        </c:if>
-                        <c:if test="${textLength != 0}">
-                            <div class="teaser-text"><%----%>
-                                <c:choose>
-                                    <c:when test="${textLength == -2}">
-                                        ${pText}
-                                    </c:when>
-                                    <c:when test="${textLength < 0}">
-                                        <c:out value="${pText}" />
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:out value="${cms:trimToSize(pText, textLength)}" />
-                                    </c:otherwise>
-                                </c:choose>
-                            </div><%----%>
-                        </c:if>
-                    </c:when>
-                </c:choose>
+                    <c:choose>
+                        <c:when test="${false and not empty preface}">
+                            <%-- deactivated so that preface is also cut off --%>
+                            <div class="teaser-text">
+                                <c:out value="${preface}" />
+                             </div><%----%>
+                        </c:when>
+
+                        <c:when test="${not empty pText}">
+                            <%-- textLength of < 0 outputs the whole text --%>
+                            <%-- textLength of 0 completely hides the text --%>
+                            <%-- textLength of > n outputs the text trimmed down to max n chars --%>
+                            <c:if test="${empty textLength}">
+                                <c:set var="textLength" value="-1" />
+                            </c:if>
+                            <c:if test="${textLength != 0}">
+                                <div class="teaser-text"><%----%>
+                                    <c:choose>
+                                        <c:when test="${textLength == -2}">
+                                            ${pText}
+                                        </c:when>
+                                        <c:when test="${textLength < 0}">
+                                            <c:out value="${pText}" />
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:out value="${cms:trimToSize(pText, textLength)}" />
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div><%----%>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
+
+                </c:set>
+
+                <mercury:link
+                    link="${link}"
+                    title="${linkTitle}"
+                    test="${linkOnText}">
+                    ${markupTextOutput}
+                </mercury:link>
+
             </c:when>
             <c:otherwise>
                 <jsp:invoke fragment="markupBody"/>

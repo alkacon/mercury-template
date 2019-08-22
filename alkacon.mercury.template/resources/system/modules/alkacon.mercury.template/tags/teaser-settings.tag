@@ -28,6 +28,7 @@
 <%@ variable name-given="setPieceLayout"    declare="true" %>
 <%@ variable name-given="setSizeDesktop"    declare="true" %>
 <%@ variable name-given="setSizeMobile"     declare="true" %>
+<%@ variable name-given="setShowVisual"     declare="true" %>
 <%@ variable name-given="pageUri"           declare="true" %>
 <%@ variable name-given="displayType"       declare="true" %>
 
@@ -36,7 +37,7 @@
 
 <c:set var="setting"                        value="${cms.element.setting}" />
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
-<c:set var="setCssWrapper"                  value="${setting.cssWrapper.toString}" />
+<c:set var="setCssWrapper"                  value="${inList ? null : setting.cssWrapper.toString}" />
 <c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? setting.effect.toString : null}" />
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>
@@ -47,6 +48,7 @@
 <c:set var="setPieceLayout"                 value="${inList ? setting.pieceLayoutList.toInteger : setting.pieceLayout.toInteger}" />
 <c:set var="setSizeDesktop"                 value="${setting.pieceSizeDesktop.toInteger}" />
 <c:set var="setSizeMobile"                  value="${setting.pieceSizeMobile.toInteger}" />
+<c:set var="setShowVisual"                  value="${setting.visualOption.toString ne 'none'}" />
 
 <c:set var="pageUri"                        value="${setting.pageUri.toString}" />
 <c:set var="requiredCssWrapper"             value="${setting.requiredCssWrapper.toString}" />

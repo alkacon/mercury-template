@@ -28,9 +28,6 @@
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime)]]></Default>
                     <Search>false</Search>
-                    <Mapping>
-                       <MapTo>attribute:datereleased</MapTo>
-                    </Mapping>
                 </Setting>
                 <Setting>
                     <PropertyName>Expiration</PropertyName>
@@ -39,9 +36,6 @@
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime + 31536000000)]]></Default>
                     <Search>false</Search>
-                    <Mapping>
-                       <MapTo>attribute:dateexpired</MapTo>
-                    </Mapping>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

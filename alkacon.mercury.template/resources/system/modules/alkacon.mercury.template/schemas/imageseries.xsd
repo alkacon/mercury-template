@@ -44,6 +44,10 @@
                 <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
                 <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
+            <mappings>
+                <mapping element="Availability/Release" mapto="attribute:datereleased" />
+                <mapping element="Availability/Expiration" mapto="attribute:dateexpired" />
+            </mappings>
             <editorchangehandlers>
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"

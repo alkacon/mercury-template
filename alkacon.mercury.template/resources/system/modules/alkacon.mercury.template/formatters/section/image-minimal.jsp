@@ -10,7 +10,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages>
+<mercury:init-messages reload="true">
 <cms:formatter var="content" val="value">
 
 <c:set var="setting"                value="${cms.element.setting}" />

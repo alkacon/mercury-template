@@ -52,6 +52,10 @@
                 <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
                 <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
+            <mappings>
+                <mapping element="Availability/Release" mapto="attribute:datereleased" />
+                <mapping element="Availability/Expiration" mapto="attribute:dateexpired" />
+            </mappings>
             <searchsettings containerPageOnly="false">
                 <searchsetting element="Type">
                     <solrfield targetfield="event-type" sourcefield="*_s" />

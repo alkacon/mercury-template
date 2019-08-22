@@ -28,11 +28,11 @@
 
     &.with-logo {
         .header-links,
-        .header-title {
+        .col-header-title {
             display: none;
         }
 
-        .col-head-logo {
+        .col-header-logo {
             padding-top: $default-margin-verysmall;
             padding-bottom: $default-margin-verysmall;
 
@@ -61,7 +61,7 @@
         }
 
         @include media-breakpoint-up(sm) {
-            .col-head-logo {
+            .col-header-logo {
                 .header-image {
                     max-width: none;
                 }
@@ -69,15 +69,32 @@
         }
 
         @include media-breakpoint-up(lg) {
+
+            %pull-up-nav {
+                margin-top: -1 * $nav-header-total-height;
+                .nav-main-group {
+                    background-color: rgba($nav-head-bg, 0.7);
+                }
+            }
+
             .isfixed {
-                .col-head-logo {
+                .col-header-logo {
                     max-width: $header-logo-fixed-width;
                 }
                 .visual-top-bg {
                     display: none;
                 }
                 .pull-up-fixed {
-                    margin-top: -1 * $nav-header-total-height;
+                    @extend %pull-up-nav;
+                }
+            }
+
+            &.nav-below {
+                .col-header-nav {
+                    flex-basis: 100%;
+                }
+                .pull-up-always {
+                     @extend %pull-up-nav;
                 }
             }
 
@@ -89,19 +106,19 @@
 
             .nav-main-container,
             .header-links,
-            .header-title {
+            .col-header-title {
                 display: flex;
                 align-self: flex-end;
                 flex-direction: column;
             }
 
-            .col-head-info {
+            .col-header-info {
                 padding-top: $default-margin-verysmall;
                 display: flex;
                 flex-direction: column;
             }
 
-            .header-title {
+            .col-header-title {
                 @include heading-base;
                 padding-top: $default-margin-verysmall;
                 padding-bottom: $default-margin-verysmall;
@@ -166,28 +183,45 @@
 .area-header {
     @include media-breakpoint-up(lg) {
 
+        .col-header-logo {
+            order: 0;
+        }
+        .col-header-info {
+            order: 1;
+        }
+        .col-header-links {
+            order: 5;
+        }
+        .col-header-title {
+            order: 6;
+        }
+        .col-header-nav {
+            order: 10;
+        }
+
         &.logo-left {
             // logo left version
-            .col-head-info {
+            .col-header-info {
                 padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
             }
         }
 
         &.logo-right {
             // logo-right version
-            .col-head-logo {
-                order: 13;
-            }
-            .col-head-info {
+            .col-header-info {
                 order: -1;
             }
-            .nav-main-container,
             .header-links,
-            .header-title {
+            .col-header-title {
                 align-self: flex-start;
             }
-            .nav-main-items,
             .header-links > ul {
+                justify-content: flex-start;
+            }
+        }
+
+        &.nav-left {
+            .nav-main-items {
                 justify-content: flex-start;
             }
 
@@ -195,26 +229,51 @@
                 margin-left: -1 * $nav-header-hor-padding;
             }
         }
+
+        @each $padding-size in ('none','small','medium','large') {
+            &.logo-padding-#{$padding-size} {
+                $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $default-margin-small, 'large': $default-margin);
+                $logo-padding: map-get($logo-paddings, $padding-size);
+                .col-header-logo {
+                    padding-top: $logo-padding;
+                    padding-bottom: $logo-padding;
+                }
+                @if ($logo-padding > 0) {
+                    .col-header-info {
+                        padding-top: $logo-padding;
+                    }
+                }
+            }
+        }
+    }
+
+    @function calc-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
+        @return floor(map-get($max-widths, $breakpoint) *  $size / $columns);
+    }
+
+    @mixin make-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
+        $max-width: calc-abs-col($breakpoint, $size);
+        flex: 0 0 $max-width;
+        max-width: $max-width;
     }
 
     @each $logo-size in (1,2,3,4,5,6) {
         &.logo-size-#{$logo-size} {
-            .col-head-logo {
+            .col-header-logo {
                 @include make-col(nth([4,5,7,9,9,9], $logo-size));
             }
+            .nav-main-mobile-logo > .img-responsive {
+                max-width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
+            }
+
             @include media-breakpoint-up(sm) {
-                .col-head-logo {
-                    @include make-col(nth([3,4,5,6,7,7], $logo-size));
+                .col-header-logo {
+                    @include make-abs-col(lg, $logo-size);
                 }
             }
-            @include media-breakpoint-up(md) {
-                .col-head-logo {
-                    @include make-col(nth([2,3,4,5,6,6], $logo-size));
-                }
-            }
-            @include media-breakpoint-up(lg) {
-                .col-head-logo {
-                    @include make-col($logo-size);
+            @include media-breakpoint-up(xl) {
+                .col-header-logo {
+                    @include make-abs-col(xl, $logo-size);
                 }
             }
         }
@@ -261,7 +320,7 @@
                 animation-duration: 1s;
                 animation-name: fixHeader;
                 opacity: $nav-head-fixed-opacity;
-                background: $nav-head-bg;
+                background-color: $nav-head-bg;
                 box-shadow: $nav-head-fixed-shadow;
             }
         }

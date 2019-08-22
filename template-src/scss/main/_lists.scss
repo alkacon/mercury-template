@@ -93,10 +93,21 @@
     }
 
     .heading {
-        a {
+        > a {
             &,
             &:focus,
             &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .text {
+        > a {
+            &,
+            &:focus,
+            &:hover {
+                color: $body-color;
                 text-decoration: none;
             }
         }

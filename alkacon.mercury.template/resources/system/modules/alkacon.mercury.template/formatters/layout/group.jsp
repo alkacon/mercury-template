@@ -34,24 +34,34 @@
 
     <c:when test="${variant eq 'head-flex-bc-fh'}">
 
-        <c:choose>
-            <c:when test="${variant eq 'head-v1-bc-fh'}">
-                <c:set var="showNavBarFullWith" value="${false}" />
-                <c:set var="showTopVisual" value="${false}" />
-            </c:when>
-            <c:when test="${variant eq 'head-v2-bc-fh'}">
-                <c:set var="showNavBarFullWith" value="${true}" />
-                <c:set var="showTopVisual" value="${true}" />
-            </c:when>
-        </c:choose>
+        <c:set var="showTopVisual" value="${false}" />
 
         <c:set var="headerPosition"     value="${setting.headerPosition.toString}" />
         <c:set var="showBreadcrumbs"    value="${setting.showBreadcrumbs.toBoolean}" />
 
-        <c:set var="logoPosition"       value="logo-left" />
-        <c:set var="logoSize"           value="logo-size-3" />
+        <c:set var="showTitle"          value="${true}" />
+        <c:set var="showExtraLinks"     value="${true}" />
+        <c:set var="logoAlignment"      value="logo-left" />
+        <c:set var="logoSize"           value="logo-size-4" />
+        <c:set var="logoPadding"        value="logo-padding-small" />
+        <c:set var="navAlignment"       value="nav-right" />
+        <c:set var="navPosition"        value="nav-aside" />
+        <c:set var="navPullUp"          value="pull-up-never" />
 
-        <c:set var="navPosition"        value="side" />
+        <c:set var="imageElementBeans" value="${cms.elementBeansInContainers['header-image']}" />
+        <c:if test="${not empty imageElementBeans}">
+            <c:set var="bean" value="${imageElementBeans.get(0)}" />
+            <c:set var="showTitle" value="${bean.settings['showTitle'] ne 'hide-title'}" />
+            <c:set var="showExtraLinks" value="${bean.settings['showExtraLinks'] ne 'hide-extra'}" />
+            <c:set var="logoAlignment" value="${not empty bean.settings['logoAlignment'] ? bean.settings['logoAlignment'] : logoAlignment}" />
+            <c:set var="logoSize" value="${not empty bean.settings['logoSize'] ? bean.settings['logoSize'] : logoSize}" />
+            <c:set var="logoPadding" value="${not empty bean.settings['logoPadding'] ? bean.settings['logoPadding'] : logoPadding}" />
+            <c:set var="navAlignment" value="${not empty bean.settings['navAlignment'] ? bean.settings['navAlignment'] : navAlignment}" />
+            <c:set var="navPosition" value="${not empty bean.settings['navPosition'] ? bean.settings['navPosition'] : navPosition}" />
+            <c:set var="navPullUp" value="${not empty bean.settings['navPullUp'] ? bean.settings['navPullUp'] : navPullUp}" />
+        </c:if>
+
+        <c:set var="showNavBelowLogo"   value="${navPosition eq 'nav-below'}" />
 
         <c:choose>
             <c:when test="${headerPosition eq 'css'}" >
@@ -66,7 +76,7 @@
         </c:choose>
 
         <mercury:nl />
-        <header class="area-header with-logo ${logoPosition}${' '}${logoSize}${' '}${cssWrapper}"><%----%>
+        <header class="area-header with-logo ${logoAlignment}${' '}${logoSize}${' '}${logoPadding}${' '}${navAlignment}${' '}${navPosition}${' '}${cssWrapper}"><%----%>
             <mercury:nl />
 
             <input type="checkbox" id="nav-toggle-check"><%-- Must be here so it works even when JavaScript is disabled --%>
@@ -89,32 +99,36 @@
 
                             <c:set target="${settings}" property="cssWrapper"         value="header-image" />
                             <c:set target="${settings}" property="showImageLink"      value="true" />
-                            <mercury:container type="image-minimal" name="header-image" css="col col-head-logo" title="${value.Title}" settings="${settings}" />
+                            <mercury:container type="header-visual" name="header-image" css="col col-head-logo" title="${value.Title}" settings="${settings}" />
 
                             <div class="col col-head-info"><%----%>
 
-                                <c:set target="${settings}" property="cssWrapper"       value="header-links" />
-                                <c:set target="${settings}" property="linksequenceType" value="ls-row" />
-                                <c:set target="${settings}" property="iconClass"        value="none" />
-                                <c:set target="${settings}" property="hsize"            value="0" />
-                                <mercury:container type="linksequence" name="header-linksequence" css="header-links-bg" title="${value.Title}" settings="${settings}" />
-
-                                <c:set var="imageElements" value="${cms.elementsInContainers['header-image']}" />
-                                <c:if test="${not empty imageElements}">
-                                    <c:set var="imagecontent" value="${imageElements.get(0).toXml}" />
-                                    <c:choose>
-                                        <c:when test="${cms.detailRequest and not empty cms.meta.ogTitle}">
-                                            <c:set var="pagetitle" value="${cms.meta.ogTitle}" />
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:set var="pagetitle" value="${cms.title}" />
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <c:set var="pageTitle" value="${fn:replace(imagecontent.value.Title.resolveMacros, '%(cms.title)', pagetitle)}" />
-                                    <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="header-title hidden-fixed" />
+                                <c:if test="${showExtraLinks}">
+                                    <c:set target="${settings}" property="cssWrapper"       value="header-links" />
+                                    <c:set target="${settings}" property="linksequenceType" value="ls-row" />
+                                    <c:set target="${settings}" property="iconClass"        value="none" />
+                                    <c:set target="${settings}" property="hsize"            value="0" />
+                                    <mercury:container type="linksequence" name="header-linksequence" css="header-links-bg" title="${value.Title}" settings="${settings}" />
                                 </c:if>
 
-                                <c:if test="${not showNavBarFullWith}">
+                                <c:if test="${showTitle}">
+                                    <c:set var="imageElements" value="${cms.elementsInContainers['header-image']}" />
+                                    <c:if test="${not empty imageElements}">
+                                        <c:set var="imagecontent" value="${imageElements.get(0).toXml}" />
+                                        <c:choose>
+                                            <c:when test="${cms.detailRequest and not empty cms.meta.ogTitle}">
+                                                <c:set var="pagetitle" value="${cms.meta.ogTitle}" />
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:set var="pagetitle" value="${cms.title}" />
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:set var="pageTitle" value="${fn:replace(imagecontent.value.Title.resolveMacros, '%(cms.title)', pagetitle)}" />
+                                        <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="header-title hidden-fixed" />
+                                    </c:if>
+                                </c:if>
+
+                                <c:if test="${not showNavBelowLogo}">
                                     <mercury:container type="nav-main" name="navbar" css="nav-main-container" title="${value.Title}" />
                                 </c:if>
 
@@ -125,7 +139,7 @@
                     </div><%----%>
                     <mercury:nl />
 
-                    <c:if test="${showNavBarFullWith and ((not empty cms.elementsInContainers['header-visual-top']) or cms.modelGroupElement or not cms.element.modelGroup)}">
+                    <c:if test="${showTopVisual and ((not empty cms.elementsInContainers['header-visual-top']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="visual-top-bg"><%----%>
                             <c:set target="${settings}" property="cssWrapper"         value="header-visual no-default-margin" />
                             <c:set target="${settings}" property="showImageLink"      value="false" />
@@ -134,8 +148,8 @@
                         <mercury:nl />
                     </c:if>
 
-                    <c:if test="${showTopVisual}">
-                        <div class="nav-main-bg pull-up-fixed"><%----%>
+                    <c:if test="${showNavBelowLogo}">
+                        <div class="nav-main-bg ${navPullUp}"><%----%>
                             <div class="container"><%----%>
                                 <mercury:container type="nav-main" name="navbar" css="nav-main-container" title="${value.Title}" />
                             </div><%----%>
@@ -251,7 +265,7 @@
                     </div><%----%>
                     <mercury:nl />
 
-                    <c:if test="${showNavBarFullWith and ((not empty cms.elementsInContainers['header-visual-top']) or cms.modelGroupElement or not cms.element.modelGroup)}">
+                    <c:if test="${showTopVisual and ((not empty cms.elementsInContainers['header-visual-top']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="visual-top-bg"><%----%>
                             <c:set target="${settings}" property="cssWrapper"         value="header-visual no-default-margin" />
                             <c:set target="${settings}" property="showImageLink"      value="false" />
@@ -260,7 +274,7 @@
                         <mercury:nl />
                     </c:if>
 
-                    <c:if test="${showTopVisual}">
+                    <c:if test="${showNavBarFullWith}">
                         <div class="nav-main-bg pull-up-fixed"><%----%>
                             <div class="container"><%----%>
                                 <mercury:container type="nav-main" name="navbar" css="nav-main-container" title="${value.Title}" />

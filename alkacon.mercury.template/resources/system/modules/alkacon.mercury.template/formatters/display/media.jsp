@@ -40,7 +40,9 @@
     buttonText="${setButtonText}">
 
     <jsp:attribute name="markupVisual">
-        <mercury:media-box content="${content}" ratio="${setRatio}" showMediaTime="${true}" />
+        <c:if test="${setShowVisual}">
+            <mercury:media-box content="${content}" ratio="${setRatio}" showMediaTime="${true}" />
+        </c:if>
     </jsp:attribute>
 
 </mercury:teaser-piece>

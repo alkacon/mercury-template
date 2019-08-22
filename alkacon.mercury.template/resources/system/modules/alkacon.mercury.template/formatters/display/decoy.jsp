@@ -39,8 +39,10 @@
     buttonText="${setButtonText}">
 
     <jsp:attribute name="markupVisual">
-        <c:set var="image"   value="${value.Image}" />
-        <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}" />
+        <c:if test="${setShowVisual}">
+            <c:set var="image"   value="${value.Image}" />
+            <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}" />
+        </c:if>
     </jsp:attribute>
 
 </mercury:teaser-piece>

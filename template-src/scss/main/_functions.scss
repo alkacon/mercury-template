@@ -16,14 +16,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Calculates the best color for text based on the background
-@function get-text-color($color) {
+@function get-text-color($color, $dark-color: $text-dark, $light-color: $text-light) {
     @if ($color == transparent) {
         @return $body-color;
     } @else {
         @if (lightness($color) > $text-lightness-threshold) {
-            @return $text-dark; // light background, dark text
+            @return $dark-color; // light background, dark text
         } @else {
-            @return $text-light; // dark background, light text
+            @return $light-color; // dark background, light text
         }
     }
 }

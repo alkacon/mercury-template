@@ -89,25 +89,34 @@
     > li > a,
     > li.active > a {
         &:hover {
-            color: $text-light;
+            color: $pagination-text-active-color;
             background: $pagination-hover-color;
             border-color: $pagination-hover-color;
         }
     }
 
     > li.active > a {
-        color: $text-light;
+        color: $pagination-text-active-color;
         background-color: $pagination-active-color;
         border-color: $pagination-active-color;
     }
 
+    > li > a:hover,
+    > li.active > a {
+        *:not(.none) {
+            // hack to solve problem with .box setting color using :not(a)
+            color: $pagination-text-active-color;
+        }
+    }
+
     > .disabled {
+        > a *:not(.none),
         > a,
         > a:hover,
         > a:focus {
+            color: $pagination-border-color;
             background-color: $pagination-background-color;
             border-color: $pagination-border-color;
-            color: $pagination-border-color;
             cursor: $cursor-disabled;
         }
     }

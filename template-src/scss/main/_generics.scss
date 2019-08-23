@@ -46,7 +46,7 @@
         overflow: visible;
     }
 
-    *:not(a) {
+    h1, h2, h3, h4, h5, h6 {
         // required in order to override colors set in headings
         color: get-text-color($highlight-color);
     }
@@ -58,7 +58,7 @@
         background-color: $bg-color;
         color: get-text-color($bg-color);
 
-        *:not(a) {
+        h1, h2, h3, h4, h5, h6 {
             // required in order to override colors set in headings
             color: get-text-color($bg-color);
         }

@@ -1198,6 +1198,7 @@
             button:         %(key.msg.setting.linkOption.button)|
             button-full:    %(key.msg.setting.linkOption.button-full)|
             text:           %(key.msg.setting.linkOption.text)|
+            heading:        %(key.msg.setting.linkOption.heading)|
             none:           %(key.msg.setting.linkOption.none)
         ]]></WidgetConfig>
     </Setting>

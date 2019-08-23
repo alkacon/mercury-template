@@ -168,7 +168,8 @@
 
 // Default Headings
 @mixin heading-base {
-    font-weight: $font-weight-headings; // this must be set because otherwise the default would be "bold"
+    font-weight: $font-weight-headings; // must be set because otherwise the default would be "bold"
+    color: $headings-color;  // must be set because otherwise linked headlines would have the link color
     @if ($font-family-headings != $font-family-base) {
         font-family: $font-family-headings;
     }
@@ -177,9 +178,6 @@
     }
     @if ($line-height-headings != $line-height-base) {
         line-height: $line-height-headings;
-    }
-    @if ($headings-color != $body-color) {
-        color: $headings-color;
     }
 }
 

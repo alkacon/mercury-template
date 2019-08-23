@@ -76,20 +76,26 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     .heading {
-        > .piece-headline {
+        > .piece-heading {
             text-overflow: ellipsis;
             overflow: hidden;
         }
+        > .piece-heading-link {
+            &:hover {
+                text-decoration: none;
+            }
+        }
         &:last-child {
             // if the heading is the last child of the piece, don't add the bottom margin
-            > .piece-headline {
+            > .piece-heading-link > .piece-heading,
+            > .piece-heading {
                 margin-bottom:0;
             }
         }
     }
 
     @if ($piece-headings-margin-bottom != $headings-margin-bottom) {
-        .piece-headline {
+        .piece-heading {
             margin-bottom: $piece-headings-margin-bottom;
         }
     }

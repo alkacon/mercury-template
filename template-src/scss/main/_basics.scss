@@ -156,6 +156,20 @@ a {
     }
 }
 
+@if ($color-linked-headings-on-hover) {
+    .box a, // required to override rule set in .box
+    a {
+        &:hover {
+            h1, h2, h3, h4, h5, h6 {
+                @include media-breakpoint-up(md) {
+                    @include color-transition;
+                }
+                color: $link-hover-color;
+            }
+        }
+    }
+}
+
 @if ($link-external-icon) {
 
     a.external:after {

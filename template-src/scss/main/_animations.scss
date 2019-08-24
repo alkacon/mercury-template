@@ -75,6 +75,17 @@
             }
         }
 
+        .effect-inset {
+            &.effect-piece {
+                &:hover {
+                    > .visual + .body  {
+                        // center top origin does not perform well for these cases
+                        transform-origin: center;
+                    }
+                }
+            }
+        }
+
         // "raise box" effect
         .effect-raise {
             &:not(.effect-piece) {

@@ -191,28 +191,17 @@
         .col-header-logo {
             padding-top: $default-margin-verysmall;
             padding-bottom: $default-margin-verysmall;
+        }
 
-            max-width: $header-logo-xs-width;
+        .col-header-container {
+            display: none;
         }
 
         @if ($header-image-bg != none) {
-            // set colored background for images (if images contain transparency)
+            // set colored background for image (if images contain transparency - required mostly for demo content)
             .nav-main-mobile-logo > .img-responsive,
             .header-image {
                 background-color: $header-image-bg;
-            }
-        }
-
-        .visual-top-bg {
-            background-color: $header-image-ribbon-bg;
-        }
-
-        @include media-breakpoint-down(md) {
-            .mega .nav-mega-menu {
-                // for mobile, hide all elements from mega menu that are not navigations
-                .element:not(.type-nav-side):not(.ls-navigation) {
-                    display: none;
-                }
             }
         }
 
@@ -224,35 +213,16 @@
             }
         }
 
-        @include media-breakpoint-up(lg) {
-
-            %pull-up-nav {
-                margin-top: -1 * $nav-header-total-height;
-                .nav-main-group {
-                    background-color: rgba($nav-head-bg, 0.7);
-                }
-            }
-
-            .isfixed {
-                .col-header-logo {
-                    max-width: $header-logo-fixed-width;
-                }
-                .visual-top-bg {
+        @include media-breakpoint-down(md) {
+            .mega .nav-mega-menu {
+                // for mobile, hide all elements from mega menu that are not navigations
+                .element:not(.type-nav-side):not(.ls-navigation) {
                     display: none;
                 }
-                .pull-up-fixed {
-                    @extend %pull-up-nav;
-                }
             }
+        }
 
-            &.nav-below {
-                .col-header-nav {
-                    flex-basis: 100%;
-                }
-                .pull-up-always {
-                     @extend %pull-up-nav;
-                }
-            }
+        @include media-breakpoint-up(lg) {
 
             @if ($nav-head-border != none) {
                 .header-group {
@@ -260,48 +230,33 @@
                 }
             }
 
-            .nav-main-container {
-                display: flex;
-                align-self: flex-end;
-                flex-direction: column;
-                flex-basis: auto;
-                flex-grow: 1;
-                display: flex;
-                justify-content: flex-end;
-            }
-
             .col-header-logo {
-                order: 2;
+                order: 4;
             }
 
             .col-header-info {
-                order: 3;
+                order: 6;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
             }
 
-            &.nav-only {
-                .col-header-info {
-                    justify-content: flex-end;
-                }
-            }
-
             .col-header-links {
-                order: 5;
+                order: 8;
                 display: flex;
+                flex-grow: 1;
                 align-self: flex-end;
                 flex-direction: column;
                 padding-top: $default-margin-verysmall;
             }
 
             .col-header-title {
-                order: 6;
+                order: 10;
                 display: flex;
                 align-self: flex-end;
                 flex-direction: column;
                 flex-basis: auto;
-                flex-grow: 10;
+                flex-grow: 1000;
                 justify-content: center;
                 @include heading-base;
                 padding-top: $default-margin-verysmall;
@@ -310,8 +265,26 @@
                 line-height: 1.2;
                 text-align: right;
             }
+
             .col-header-nav {
-                order: 10;
+                order: 15;
+                display: flex;
+                flex-grow: 1;
+            }
+
+            .col-header-container {
+                display: block;
+                order: 20;
+                width: 100%;
+                > * > .element:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+
+            &.header-isfixed {
+                .col-header-container {
+                    display: none;
+                }
             }
 
             &.logo-left {
@@ -322,7 +295,13 @@
 
             &.logo-right {
                 .col-header-info {
-                    order: 1;
+                    order: 3;
+                }
+            }
+
+            &.nav-only {
+                .col-header-info {
+                    justify-content: flex-end;
                 }
             }
 
@@ -336,10 +315,39 @@
                 }
             }
 
+            &.nav-below {
+                .col-header-nav {
+                    flex-basis: 100%;
+                }
+            }
+
+            &.nav-pull-fixed .isfixed,
+            &.nav-pull-always.nav-below {
+                .col-header-nav {
+                    margin-top: -1 * $nav-header-total-height;
+                    z-index: #{$overflow-z-index + 10};
+                    .nav-main-group {
+                        background-color: rgba($nav-head-bg, 0.7);
+                    }
+                }
+            }
+
             &.title-left {
                 .col-header-title {
                     align-self: flex-start;
                     text-align: left;
+                }
+            }
+
+            &.title-bottom {
+                .col-header-title {
+                    justify-content: flex-end;
+                }
+            }
+
+            &.title-top {
+                .col-header-title {
+                    justify-content: flex-start;
                 }
             }
 
@@ -355,23 +363,85 @@
             &.meta-above {
                 .col-header-links {
                     flex-basis: 100%;
-                    order: 0;
+                    order: 1;
                 }
             }
 
-            @each $padding-size in ('none','small','medium','large') {
-                &.logo-padding-#{$padding-size} {
-                    $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $default-margin-small, 'large': $default-margin);
-                    $logo-padding: map-get($logo-paddings, $padding-size);
-                    .col-header-logo {
-                        padding-top: $logo-padding;
-                        padding-bottom: $logo-padding;
-                    }
-                    @if ($logo-padding > 0) {
-                        .col-header-links {
-                            padding-top: $logo-padding;
+            &.ac-above-logo {
+                .col-header-container {
+                    order: 2;
+                    padding-top: $default-margin-verysmall;
+                }
+            }
+
+            &.ac-below-logo {
+                .col-header-container {
+                    order: 12;
+                }
+            }
+
+            &.logo-size-12 {
+
+                &.nav-left {
+                    &.nav-pull-fixed .isfixed,
+                    &.nav-pull-always.nav-below {
+                        .nav-main-items {
+                            margin-left: 0;
                         }
                     }
+                }
+
+                &.nav-pull-fixed .isfixed,
+                &.nav-pull-always.nav-below {
+                    .col-header-logo {
+                        padding-bottom: 0;
+                    }
+                }
+
+                .col-header-links {
+                    order: 0;
+                }
+
+                .col-header-title {
+                    order: 1;
+                }
+
+                &.title-bottom {
+                    .col-header-title {
+                        order: 10;
+                    }
+                }
+
+                &.title-top {
+                    .col-header-title {
+                        order: -1;
+                    }
+                }
+            }
+
+            .nav-main-container {
+                display: flex;
+                align-self: flex-end;
+                flex-direction: column;
+                flex-basis: auto;
+                flex-grow: 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    @each $padding-size in ('none','small','medium','large') {
+        &.logo-padding-#{$padding-size} {
+            $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $default-margin-small, 'large': $default-margin);
+            $logo-padding: map-get($logo-paddings, $padding-size);
+            .col-header-logo {
+                padding-top: $logo-padding;
+                padding-bottom: $logo-padding;
+            }
+            @if ($logo-padding > 0) {
+                .col-header-links {
+                    padding-top: $logo-padding;
                 }
             }
         }
@@ -387,18 +457,25 @@
         max-width: $max-width;
     }
 
-    @each $logo-size in (1,2,3,4,5,6) {
+    @each $logo-size in (1,2,3,4,5,6,12) {
         &.logo-size-#{$logo-size} {
             .col-header-logo {
-                @include make-col(nth([4,5,7,9,9,9], $logo-size));
+                @include make-col(nth([4,5,7,9,9,9,12,12,12,12,12,12], $logo-size));
             }
             .nav-main-mobile-logo > .img-responsive {
-                max-width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
+                @if ($logo-size < 5) {
+                    max-width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
+                } @else {
+                    max-width: 100%;
+                }
             }
-
             @include media-breakpoint-up(sm) {
                 .col-header-logo {
-                    @include make-abs-col(lg, $logo-size);
+                    @if ($logo-size < 12) {
+                        @include make-abs-col(lg, $logo-size);
+                    } @else {
+                        @include make-col($logo-size);
+                    }
                 }
             }
             @include media-breakpoint-up(xl) {

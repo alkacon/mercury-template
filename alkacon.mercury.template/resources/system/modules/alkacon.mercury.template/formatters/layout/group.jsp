@@ -41,37 +41,47 @@
         <c:set var="showMetaLinks"      value="${true}" />
         <c:set var="logoAlignment"      value="logo-left" />
         <c:set var="titleAlignment"     value="title-right" />
+        <c:set var="titlePosition"      value="title-centered" />
         <c:set var="logoSize"           value="logo-size-4" />
         <c:set var="logoPadding"        value="logo-padding-small" />
         <c:set var="metaAlignment"      value="meta-right" />
         <c:set var="metaPosition"       value="meta-aside" />
         <c:set var="navAlignment"       value="nav-right" />
         <c:set var="navPosition"        value="nav-aside" />
-        <c:set var="navPullUp"          value="pull-up-never" />
+        <c:set var="navPullUp"          value="nav-pull-never" />
+        <c:set var="addContainer"       value="none" />
 
         <c:set var="headerConfigElementBeans" value="${cms.elementBeansInContainers['header-config']}" />
         <c:if test="${not empty headerConfigElementBeans}">
             <c:set var="config"             value="${headerConfigElementBeans.get(0)}" />
             <c:set var="logoAlignment"      value="${not empty config.settings['logoAlignment'] ? config.settings['logoAlignment'] : logoAlignment}" />
             <c:set var="logoSize"           value="${not empty config.settings['logoSize'] ? config.settings['logoSize'] : logoSize}" />
+            <c:set var="logoFullSize"       value="${logoSize eq 'logo-size-12'}" />
+            <c:set var="logoCols"           value="${fn:substringAfter(logoSize, 'logo-size-')}" />
             <c:set var="logoPadding"        value="${not empty config.settings['logoPadding'] ? config.settings['logoPadding'] : logoPadding}" />
             <c:set var="showTitle"          value="${config.settings['showTitle'] ne 'hide-title'}" />
             <c:set var="titleAlignment"     value="${not empty config.settings['titleAlignment'] ? config.settings['titleAlignment'] : titleAlignment}" />
-            <c:set var="titleAlignment"     value="${titleAlignment eq 'default' ? (logoAlignment eq 'title-left' ? 'title-right' : 'title-left') : titleAlignment}" />
+            <c:set var="titleAlignment"     value="${titleAlignment eq 'default' ? (logoAlignment eq 'logo-left' ? 'title-right' : 'title-left') : titleAlignment}" />
+            <c:set var="titlePosition"      value="${not empty config.settings['titlePosition'] ? config.settings['titlePosition'] : titlePosition}" />
+            <c:set var="titlePosition"      value="${titlePosition eq 'default' ? 'title-centered' : titlePosition}" />
             <c:set var="showMetaLinks"      value="${config.settings['metaDisplay'] ne 'hide-meta'}" />
             <c:set var="metaAlignment"      value="${not empty config.settings['metaAlignment'] ? config.settings['metaAlignment'] : metaAlignment}" />
             <c:set var="metaAlignment"      value="${metaAlignment eq 'default' ? (logoAlignment eq 'logo-left' ? 'meta-right' : 'meta-left') : metaAlignment}" />
             <c:set var="metaPosition"       value="${not empty config.settings['metaPosition'] ? config.settings['metaPosition'] : metaPosition}" />
             <c:set var="navAlignment"       value="${not empty config.settings['navAlignment'] ? config.settings['navAlignment'] : navAlignment}" />
             <c:set var="navAlignment"       value="${navAlignment eq 'default' ? (logoAlignment eq 'logo-left' ? 'nav-right' : 'nav-left') : navAlignment}" />
-            <c:set var="navPosition"        value="${not empty config.settings['navPosition'] ? config.settings['navPosition'] : navPosition}" />
+            <c:set var="navPosition"        value="${logoFullSize ? 'nav-below' : (not empty config.settings['navPosition'] ? config.settings['navPosition'] : navPosition)}" />
             <c:set var="navPullUp"          value="${not empty config.settings['navPullUp'] ? config.settings['navPullUp'] : navPullUp}" />
+            <c:set var="addContainer"       value="${not empty config.settings['addContainer'] ? config.settings['addContainer'] : addContainer}" />
         </c:if>
 
-        <c:set var="showNavBarBesideLogo"       value="${navPosition ne 'nav-below'}" />
-        <c:set var="showMetaLinksBesideLogo"    value="${showMetaLinks and (metaPosition ne 'meta-above')}" />
+        <c:set var="showNavBarBesideLogo"       value="${not logoFullSize and (navPosition ne 'nav-below')}" />
+        <c:set var="showMetaLinksBesideLogo"    value="${not logoFullSize and showMetaLinks and (metaPosition ne 'meta-above')}" />
         <c:set var="showOnlyNavBesideLogo"      value="${showNavBarBesideLogo and not showMetaLinksBesideLogo and not showTitle}" />
-        <c:set var="needInfoCol"                value="${true}" />
+        <c:set var="needInfoCol"                value="${not logoFullSize}" />
+        <c:set var="needNavPull"                value="${not showNavBarBesideLogo and (navPullUp ne 'nav-pull-never')}" />
+        <c:set var="needTitlePosition"          value="${showTitle and (titlePosition ne 'title-centered')}" />
+        <c:set var="showAddContainer"           value="${addContainer ne 'none'}" />
 
         <c:choose>
             <c:when test="${headerPosition eq 'css'}" >
@@ -101,7 +111,7 @@
         <c:set var="logoElement">
             <c:set target="${settings}" property="cssWrapper"         value="header-image" />
             <c:set target="${settings}" property="showImageLink"      value="true" />
-            <mercury:container type="image-minimal" name="header-image" css="col col-header-logo" title="${value.Title}" settings="${settings}" />
+            <mercury:container type="image-minimal" name="header-image" css="col col-header-logo p-xs-12 p-lg-${logoCols}" title="${value.Title}" settings="${settings}" />
         </c:set>
 
         <c:set var="metaLinkElement">
@@ -129,18 +139,24 @@
                         </c:otherwise>
                     </c:choose>
                     <c:set var="pageTitle" value="${fn:replace(imagecontent.value.Title.resolveMacros, '%(cms.title)', pagetitle)}" />
-                    <c:set var="titleElementCss" value="${needInfoCol ? '':' col '}col-header-title hidden-fixed" />
+                    <c:set var="titleElementCss" value="${needInfoCol ? '':'col '}col-header-title" />
                     <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="${titleElementCss}" />
                 </c:if>
             </c:if>
         </c:set>
 
         <c:set var="navBarElement">
-            <div class="${not showNavBarBesideLogo or not needInfoCol ? 'col ':''}col-header-nav ${navPullUp}"><%----%>
+            <div class="${not showNavBarBesideLogo or not needInfoCol ? 'col ':''}col-header-nav"><%----%>
                 <mercury:container type="nav-main" name="navbar" css="nav-main-container" title="${value.Title}" />
             </div><%----%>
             <mercury:nl />
         </c:set>
+
+        <c:if test="${showAddContainer}">
+            <c:set var="addContainerElement">
+                <mercury:container type="row" name="header-container" css="col-12 col-header-container" title="${value.Title}"  />
+            </c:set>
+        </c:if>
 
         <c:set var="breadcrumbElement">
             <c:if test="${showBreadcrumbs and ((not empty cms.elementsInContainers['breadcrumbs']) or cms.modelGroupElement or not cms.element.modelGroup)}">
@@ -153,15 +169,18 @@
 
         <mercury:nl />
         <header class="area-header flexible-header <%----%>
-            ${logoAlignment}${' '}
+            ${logoFullSize ? '' : logoAlignment.concat(' ')}
             ${logoSize}${' '}
             ${logoPadding}${' '}
+            ${showMetaLinks ? metaPosition.concat(' ') : ''}
             ${showTitle ? titleAlignment.concat(' ') : ''}
+            ${needTitlePosition ? titlePosition.concat(' ') : ''}
             ${navAlignment}${' '}
             ${showOnlyNavBesideLogo ? 'nav-only ' : ''}
             ${navPosition}${' '}
+            ${needNavPull ? navPullUp.concat(' ') : ''}
             ${showMetaLinks ? metaAlignment.concat(' ') : ''}
-            ${showMetaLinks ? metaPosition.concat(' ') : ''}
+            ${showAddContainer ? addContainer.concat(' ') : ''}
             ${cssWrapper}"><%----%>
             <mercury:nl />
 
@@ -199,6 +218,10 @@
 
                             <c:if test="${not showNavBarBesideLogo}">
                                 ${navBarElement}
+                            </c:if>
+
+                            <c:if test="${showAddContainer}">
+                                ${addContainerElement}
                             </c:if>
 
                         </div><%----%>

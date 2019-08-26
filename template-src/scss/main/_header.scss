@@ -180,6 +180,8 @@
 }
 
 
+$logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $default-margin-small, 'large': $default-margin);
+
 .area-header {
     // New "flexible" header
     &.flexible-header {
@@ -232,6 +234,12 @@
 
             .col-header-logo {
                 order: 4;
+                display: flex;
+                align-items: flex-end;
+                > a.imglink {
+                    width: 100%;
+                    display: block;
+                }
             }
 
             .col-header-info {
@@ -287,13 +295,13 @@
                 }
             }
 
-            &.logo-left {
+            &.logo-pos-left {
                 .col-header-info {
                     padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
                 }
             }
 
-            &.logo-right {
+            &.logo-pos-right {
                 .col-header-info {
                     order: 3;
                 }
@@ -308,10 +316,6 @@
             &.nav-left {
                 .nav-main-items {
                     justify-content: flex-start;
-                }
-
-                .nav-main-items {
-                    margin-left: -1 * $nav-header-hor-padding;
                 }
             }
 
@@ -383,14 +387,30 @@
             &.header-isfixed {
                 &.nav-fix-overlay,
                 &.nav-fix-compact {
-                    .col-header-links,
                     .col-header-title {
                         display: none;
+                    }
+                }
+                $fixed-logo-padding: map-get($logo-paddings, 'small');
+                &.nav-fix-compact,
+                &.nav-fix-overlay {
+                    .col-header-logo {
+                        padding-top: $fixed-logo-padding;
+                        padding-bottom: $fixed-logo-padding;
+                    }
+                    &.logo-padding-none {
+                        .col-header-logo {
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
                     }
                 }
                 &.nav-fix-overlay {
                     .head.isfixed > .container {
                         position: relative;
+                    }
+                    .col-header-links {
+                        display: none;
                     }
                     .col-header-logo {
                         position: absolute;
@@ -398,22 +418,32 @@
                         left: 0;
                         z-index: #{$overflow-z-index + 20};
                         &::before {
-                            $fixed-logo-padding: 5px;
                             display: block;
                             content: "";
                             position: absolute;
                             top: $nav-header-total-height;
-                            left: $grid-gutter-width / 2 - $fixed-logo-padding;
-                            width: calc(100% - #{$grid-gutter-width - 2 * $fixed-logo-padding});
+                            left: calc(#{$grid-gutter-width / 2} - #{$fixed-logo-padding});
+                            width: calc(100% - #{$grid-gutter-width} + #{2 * $fixed-logo-padding});
                             height: calc(100% - #{$nav-header-total-height});
-                            box-shadow: 0px 6px 10px -2px $dropshadow;
+                            box-shadow: 0px 8px 10px -4px $dropshadow;
                             background-color: $nav-head-bg;
                         }
                     }
-                    &.logo-right {
+                    .nav-main-items {
+                        padding-top: $nav-header-ver-padding;
+                    }
+                    &.logo-pos-right {
                         .col-header-logo {
                             left: auto;
                             right: 0;
+                        }
+                    }
+                    &.logo-padding-none {
+                        .col-header-logo {
+                            &::before {
+                                left: #{$grid-gutter-width / 2};
+                                width: calc(100% - #{$grid-gutter-width});
+                            }
                         }
                     }
                 }
@@ -464,15 +494,53 @@
                 flex-direction: column;
                 flex-basis: auto;
                 flex-grow: 1;
-                display: flex;
                 justify-content: flex-end;
+            }
+
+            .type-nav-breadcrumbs {
+                display: flex;
+            }
+
+            &.bc-right {
+                .type-nav-breadcrumbs {
+                    justify-content: flex-end;
+                }
+            }
+
+            .nav-main-items {
+                margin-left: -1 * $nav-header-hor-padding;
+                margin-right: -1 * $nav-header-hor-padding;
+            }
+
+            #nav-main-search[aria-expanded] > a {
+                padding-right: $nav-header-hor-padding;
+            }
+
+            $nav-hor-reduction: 8px;
+
+            &.nav-disp-reduced {
+                .nav-main-items {
+                    margin-left: #{-1 * $nav-header-hor-padding + $nav-hor-reduction};
+                    margin-right: #{-1 * $nav-header-hor-padding +$nav-hor-reduction};
+                    > li {
+                        > a {
+                            padding: 0 #{$nav-header-hor-padding - $nav-hor-reduction} $nav-header-ver-padding #{$nav-header-hor-padding - $nav-hor-reduction};
+                        }
+                        &[aria-expanded] > a::after {
+                            right: 0;
+                        }
+                    }
+                }
+
+                #nav-main-search[aria-expanded] > a {
+                    padding-right: #{$nav-header-hor-padding - $nav-hor-reduction}
+                }
             }
         }
     }
 
     @each $padding-size in ('none','small','medium','large') {
         &.logo-padding-#{$padding-size} {
-            $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $default-margin-small, 'large': $default-margin);
             $logo-padding: map-get($logo-paddings, $padding-size);
             .col-header-logo {
                 padding-top: $logo-padding;
@@ -514,6 +582,27 @@
                         @include make-abs-col(lg, $logo-size);
                     } @else {
                         @include make-col($logo-size);
+                    }
+                }
+            }
+            @include media-breakpoint-up(lg) {
+                &.header-isfixed {
+                    &.nav-fix-compact {
+                        .col-header-logo {
+                            max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
+                        }
+                    }
+                    &.nav-fix-overlay {
+                        .col-header-info {
+                            .col-header-nav {
+                                max-width: calc(100% - #{calc-abs-col(lg, $logo-size)});
+                            }
+                        }
+                        &.nav-right {
+                            .col-header-info {
+                                align-items: flex-end;
+                            }
+                        }
                     }
                 }
             }

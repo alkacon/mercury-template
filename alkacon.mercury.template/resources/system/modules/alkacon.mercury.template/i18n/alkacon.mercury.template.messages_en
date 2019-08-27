@@ -6,7 +6,6 @@ function.disqus=Disqus comments
 function.disqus.help=Adds a comment funtion to the page using the DISQUS online service.
 function.login=Login form for users
 function.login.help=A login form for registered users.
-function.m-privacypolicy.settings=Privacy policy cookie switch
 function.m-privacypolicy.settings.help=Allows the user to change his privacy policy settings, for example to enable or disable cookies.
 function.opencms-info=OpenCms info
 function.opencms-info.help=Displays information about the running OpenCms instance.

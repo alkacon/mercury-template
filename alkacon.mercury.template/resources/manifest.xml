@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.0.69</version>
+		<version>11.0.0.71</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -4520,6 +4520,60 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[DISQUS comments element]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/header-config.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/functions/header-config.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>b881b45a-c8e3-11e9-bfcb-0242ac11002b</uuidstructure>
+			<uuidresource>a4dc6c67-c646-11e9-9a13-0242ac11002b</uuidresource>
+			<datecreated>Sat, 24 Aug 2019 08:10:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;uri]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/header-config.xml</source>
+			<destination>system/modules/alkacon.mercury.template/functions/header-config.xml</destination>
+			<type>function_config</type>
+			<uuidstructure>caf9cb05-c8e3-11e9-bfcb-0242ac11002b</uuidstructure>
+			<uuidresource>caf9cb06-c8e3-11e9-bfcb-0242ac11002b</uuidresource>
+			<datecreated>Tue, 27 Aug 2019 16:00:30 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[??? function.login.help ???]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Flexible header configuration]]></value>
 				</property>
 				<property>
 					<name>locale</name>

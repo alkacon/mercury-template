@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
+  <FunctionConfig language="en">
+    <NiceName><![CDATA[%(key.function.header-config)]]></NiceName>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.bistuemer.variants/standard/functions/header-config.jsp]]></target>
+        <uuid>a4dc6c66-c646-11e9-9a13-0242ac11002b</uuid>
+      </link>
+    </Jsp>
+    <Description><![CDATA[%(key.function.header-config.help)]]></Description>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[header-config]]></ContainerType>
+      </Types>
+    </Match>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[logoAlignment.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[logoSize.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[logoPadding.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaDisplay.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaAlignment.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaPosition.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTitle.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[titleAlignment.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[titlePosition.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[navAlignment.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[navPosition.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[navPullUp.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[navDisplay.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headerPosition.layout]]></IncludeName>
+      <Widget><![CDATA[select]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[navFixDisplay.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[addContainer.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bcDisplay.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bcAlignment.header]]></IncludeName>
+    </Setting>
+  </FunctionConfig>
+</FunctionConfigs>

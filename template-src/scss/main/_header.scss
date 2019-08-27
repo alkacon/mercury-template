@@ -139,6 +139,14 @@
             }
         }
     }
+
+    .header-links {
+        > ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
 }
 
 .area-header {
@@ -150,9 +158,6 @@
         }
 
         > ul {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
             font-size: $nav-meta-font-size;
             @if ($nav-meta-font-family != $font-family-base) {
                 font-family: $nav-meta-font-family;
@@ -180,11 +185,11 @@
 }
 
 
-$logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $default-margin-small, 'large': $default-margin);
+$logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin-small, 'lg': $default-margin);
 
 .area-header {
     // New "flexible" header
-    &.flexible-header {
+    &.fh {
         .col-header-links,
         .col-header-title {
             display: none;
@@ -232,6 +237,8 @@ $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $defau
                 }
             }
 
+            // logo and info column
+
             .col-header-logo {
                 order: 4;
                 display: flex;
@@ -249,36 +256,210 @@ $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $defau
                 justify-content: space-between;
             }
 
+            &.lp-left {
+                .col-header-info {
+                    padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
+                }
+            }
+
+            &.lp-center {
+                .col-header-logo {
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+            }
+
+            &.lp-right {
+                .col-header-info {
+                    order: 3;
+                }
+            }
+
+            // meta links
+
             .col-header-links {
                 order: 8;
                 display: flex;
                 flex-grow: 1;
-                align-self: flex-end;
+                flex-basis: auto;
                 flex-direction: column;
                 padding-top: $default-margin-verysmall;
+
+                .header-links {
+                    display: flex;
+                    flex-basis: auto;
+                    > ul {
+                        display: inline-block;
+                    }
+                }
             }
+
+            &.meta-left {
+                .header-links {
+                    justify-content: flex-start;
+                }
+            }
+
+            &.meta-center {
+                .header-links {
+                    justify-content: center;
+                }
+            }
+
+            &.meta-right {
+                .header-links {
+                    justify-content: flex-end;
+                }
+            }
+
+
+            &.meta-above {
+                .col-header-links {
+                    flex-basis: 100%;
+                    order: 1;
+                }
+            }
+
+            // page title
 
             .col-header-title {
                 order: 10;
                 display: flex;
-                align-self: flex-end;
                 flex-direction: column;
                 flex-basis: auto;
                 flex-grow: 1000;
-                justify-content: center;
                 @include heading-base;
                 padding-top: $default-margin-verysmall;
                 padding-bottom: $default-margin-verysmall;
                 font-size: $h4-font-size;
                 line-height: 1.2;
-                text-align: right;
             }
+
+            &.title-top {
+                .col-header-title {
+                    justify-content: flex-start;
+                }
+            }
+
+            &.title-middle {
+                .col-header-title {
+                    justify-content: center;
+                }
+            }
+
+            &.title-bottom {
+                .col-header-title {
+                    justify-content: flex-end;
+                }
+            }
+
+            &.title-left {
+                .col-header-title {
+                    align-self: flex-start;
+                    text-align: left;
+                }
+            }
+
+            &.title-center {
+                .col-header-title {
+                    align-self: center;
+                    text-align: center;
+                }
+            }
+
+            &.title-right {
+                .col-header-title {
+                    align-self: flex-end;
+                    text-align: right;
+                }
+            }
+
+            // navigation
 
             .col-header-nav {
                 order: 15;
                 display: flex;
                 flex-grow: 1;
             }
+
+            .nav-main-container {
+                display: flex;
+                align-self: flex-end;
+                flex-direction: column;
+                flex-basis: auto;
+                flex-grow: 1;
+                justify-content: flex-end;
+            }
+
+            &.nav-only {
+                .col-header-info {
+                    justify-content: flex-end;
+                }
+            }
+
+            &.nav-left {
+                .nav-main-items {
+                    justify-content: flex-start;
+                }
+            }
+
+            &.nav-center {
+                .nav-main-items {
+                    justify-content: center;
+                }
+            }
+
+            &.nav-below {
+                .col-header-nav {
+                    flex-basis: 100%;
+                }
+            }
+
+            // adjustments to nav boxes - move to _nav-main.scss
+
+            .nav-main-items {
+                margin-left: -1 * $nav-header-hor-padding;
+                margin-right: -1 * $nav-header-hor-padding;
+            }
+
+            #nav-main-search[aria-expanded] > a {
+                padding-right: $nav-header-hor-padding;
+            }
+
+            // reduced navigation space
+
+            &.nav-disp-reduced {
+                $nav-hor-reduction: 8px;
+                .nav-main-items {
+                    margin-left: #{-1 * $nav-header-hor-padding + $nav-hor-reduction};
+                    margin-right: #{-1 * $nav-header-hor-padding +$nav-hor-reduction};
+                    > li {
+                        > a {
+                            padding: 0 #{$nav-header-hor-padding - $nav-hor-reduction} $nav-header-ver-padding #{$nav-header-hor-padding - $nav-hor-reduction};
+                        }
+                        &[aria-expanded] > a::after {
+                            right: 0;
+                        }
+                    }
+                }
+
+                #nav-main-search[aria-expanded] > a {
+                    padding-right: #{$nav-header-hor-padding - $nav-hor-reduction}
+                }
+            }
+
+            &.nav-disp-big {
+                .nav-main-items {
+                    > li {
+                        > a {
+                            font-size: $nav-header-font-size + 4px;
+                        }
+                    }
+                }
+            }
+
+
+            // additional container
 
             .col-header-container {
                 display: block;
@@ -295,82 +476,6 @@ $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $defau
                 }
             }
 
-            &.logo-pos-left {
-                .col-header-info {
-                    padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
-                }
-            }
-
-            &.logo-pos-right {
-                .col-header-info {
-                    order: 3;
-                }
-            }
-
-            &.nav-only {
-                .col-header-info {
-                    justify-content: flex-end;
-                }
-            }
-
-            &.nav-left {
-                .nav-main-items {
-                    justify-content: flex-start;
-                }
-            }
-
-            &.nav-below {
-                .col-header-nav {
-                    flex-basis: 100%;
-                }
-            }
-
-            &.nav-pull-fixed .isfixed,
-            &.nav-pull-always.nav-below {
-                .col-header-nav {
-                    margin-top: -1 * $nav-header-total-height;
-                    z-index: #{$overflow-z-index + 10};
-                    .nav-main-group {
-                        background-color: rgba($nav-head-bg, 0.7);
-                    }
-                }
-            }
-
-            &.title-left {
-                .col-header-title {
-                    align-self: flex-start;
-                    text-align: left;
-                }
-            }
-
-            &.title-bottom {
-                .col-header-title {
-                    justify-content: flex-end;
-                }
-            }
-
-            &.title-top {
-                .col-header-title {
-                    justify-content: flex-start;
-                }
-            }
-
-            &.meta-left {
-                .col-header-links {
-                    align-self: flex-start;
-                    .header-links > ul {
-                        justify-content: flex-start;
-                    }
-                }
-            }
-
-            &.meta-above {
-                .col-header-links {
-                    flex-basis: 100%;
-                    order: 1;
-                }
-            }
-
             &.ac-above-logo {
                 .col-header-container {
                     order: 2;
@@ -382,31 +487,56 @@ $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $defau
                 .col-header-container {
                     order: 12;
                 }
+                &.nav-below:not(.lp-center) {
+                    .nav-main-group {
+                        padding-top: $nav-header-ver-padding;
+                    }
+                }
             }
 
+            // breadcrumbs
+
+            .type-nav-breadcrumbs {
+                display: flex;
+            }
+
+            &.bc-right {
+                .type-nav-breadcrumbs {
+                    justify-content: flex-end;
+                }
+            }
+
+            &.bc-center {
+                .type-nav-breadcrumbs {
+                    justify-content: center;
+                }
+            }
+
+            // fixed header
+
             &.header-isfixed {
-                &.nav-fix-overlay,
-                &.nav-fix-compact {
+                &.fix-overlay,
+                &.fix-compact {
                     .col-header-title {
                         display: none;
                     }
                 }
-                $fixed-logo-padding: map-get($logo-paddings, 'small');
-                &.nav-fix-compact,
-                &.nav-fix-overlay {
+                $fixed-logo-padding: map-get($logo-paddings, 'sm');
+                &.fix-compact,
+                &.fix-overlay {
                     .col-header-logo {
                         padding-top: $fixed-logo-padding;
                         padding-bottom: $fixed-logo-padding;
                     }
-                    &.logo-padding-none {
+                    &.padding-none {
                         .col-header-logo {
                             padding-top: 0;
                             padding-bottom: 0;
                         }
                     }
                 }
-                &.nav-fix-overlay {
-                    .head.isfixed > .container {
+                &.fix-overlay {
+                    .head > .container {
                         position: relative;
                     }
                     .col-header-links {
@@ -429,16 +559,20 @@ $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $defau
                             background-color: $nav-head-bg;
                         }
                     }
-                    .nav-main-items {
-                        padding-top: $nav-header-ver-padding;
+                    .col-header-nav {
+                        margin-top: 0; // unset optional negative margin for pulled up nav
+                        .nav-main-group {
+                            padding-top: $nav-header-ver-padding;
+                            background-color: $nav-head-bg;
+                        }
                     }
-                    &.logo-pos-right {
+                    &.lp-right {
                         .col-header-logo {
                             left: auto;
                             right: 0;
                         }
                     }
-                    &.logo-padding-none {
+                    &.padding-none {
                         .col-header-logo {
                             &::before {
                                 left: #{$grid-gutter-width / 2};
@@ -449,18 +583,11 @@ $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $defau
                 }
             }
 
-            &.logo-size-12 {
+            // full size logo header
 
-                &.nav-left {
-                    &.nav-pull-fixed .isfixed,
-                    &.nav-pull-always.nav-below {
-                        .nav-main-items {
-                            margin-left: 0;
-                        }
-                    }
-                }
+            &.lp-center {
 
-                &.nav-pull-fixed .isfixed,
+                &.nav-pull-fixed.header-isfixed,
                 &.nav-pull-always.nav-below {
                     .col-header-logo {
                         padding-bottom: 0;
@@ -488,127 +615,141 @@ $logo-paddings: ('none': 0, 'small': $default-margin-verysmall, 'medium': $defau
                 }
             }
 
-            .nav-main-container {
-                display: flex;
-                align-self: flex-end;
-                flex-direction: column;
-                flex-basis: auto;
-                flex-grow: 1;
-                justify-content: flex-end;
-            }
-
-            .type-nav-breadcrumbs {
-                display: flex;
-            }
-
-            &.bc-right {
-                .type-nav-breadcrumbs {
-                    justify-content: flex-end;
-                }
-            }
-
-            .nav-main-items {
-                margin-left: -1 * $nav-header-hor-padding;
-                margin-right: -1 * $nav-header-hor-padding;
-            }
-
-            #nav-main-search[aria-expanded] > a {
-                padding-right: $nav-header-hor-padding;
-            }
-
-            $nav-hor-reduction: 8px;
-
-            &.nav-disp-reduced {
-                .nav-main-items {
-                    margin-left: #{-1 * $nav-header-hor-padding + $nav-hor-reduction};
-                    margin-right: #{-1 * $nav-header-hor-padding +$nav-hor-reduction};
-                    > li {
-                        > a {
-                            padding: 0 #{$nav-header-hor-padding - $nav-hor-reduction} $nav-header-ver-padding #{$nav-header-hor-padding - $nav-hor-reduction};
+            @each $padding-size in ('no','sm','md','lg') {
+                &.pad-#{$padding-size} {
+                    $logo-padding: map-get($logo-paddings, $padding-size);
+                    .col-header-logo {
+                        padding-top: $logo-padding;
+                        padding-bottom: $logo-padding;
+                    }
+                    @if ($logo-padding > 0) {
+                        &.header-notfixed,
+                        &.header-isfixed.fix-complete {
+                            .col-header-links {
+                                padding-top: $logo-padding;
+                                padding-bottom: 0;
+                            }
                         }
-                        &[aria-expanded] > a::after {
-                            right: 0;
+                        &.lp-center {
+                            .col-header-logo,
+                            .col-header-links,
+                            .col-header-title,
+                            .col-header-container,
+                            .nav-main-group {
+                                padding-top: $logo-padding;
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                    @if ($logo-padding > $default-margin-verysmall) {
+                        &.header-notfixed,
+                        &.header-isfixed.fix-complete {
+                            .nav-main-items {
+                                > li {
+                                    > a {
+                                        padding-bottom: $logo-padding;
+                                    }
+                                    > .nav-menu {
+                                        top: calc(#{$nav-header-total-height - $nav-header-ver-padding} +  #{$logo-padding})
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+            }
 
-                #nav-main-search[aria-expanded] > a {
-                    padding-right: #{$nav-header-hor-padding - $nav-hor-reduction}
+            &.nav-below {
+                &.nav-pull-fixed.header-isfixed,
+                &.nav-pull-always {
+                    .col-header-nav {
+                        margin-top: #{-1 * ($nav-header-total-height + $nav-header-hor-padding)};
+                        z-index: #{$overflow-z-index + 10};
+                        .nav-main-group {
+                            padding-top: $nav-header-ver-padding;
+                            background-color: rgba($nav-head-bg, 0.7);
+                            .nav-main-items {
+                                > li > a {
+                                    padding-bottom: $nav-header-ver-padding;
+                                }
+                            }
+                        }
+                    }
+                    &.lp-right {
+                        .nav-main-items {
+                            margin-right: 0;
+                        }
+                    }
+                    &.lp-left {
+                        .nav-main-items {
+                            margin-left: 0;
+                        }
+                    }
                 }
             }
         }
-    }
 
-    @each $padding-size in ('none','small','medium','large') {
-        &.logo-padding-#{$padding-size} {
-            $logo-padding: map-get($logo-paddings, $padding-size);
-            .col-header-logo {
-                padding-top: $logo-padding;
-                padding-bottom: $logo-padding;
-            }
-            @if ($logo-padding > 0) {
-                .col-header-links {
-                    padding-top: $logo-padding;
-                }
-            }
+        @function calc-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
+            @return floor(map-get($max-widths, $breakpoint) *  $size / $columns);
         }
-    }
 
-    @function calc-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
-        @return floor(map-get($max-widths, $breakpoint) *  $size / $columns);
-    }
+        @mixin make-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
+            $max-width: calc-abs-col($breakpoint, $size);
+            flex: 0 0 $max-width;
+            max-width: $max-width;
+        }
 
-    @mixin make-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
-        $max-width: calc-abs-col($breakpoint, $size);
-        flex: 0 0 $max-width;
-        max-width: $max-width;
-    }
-
-    @each $logo-size in (1,2,3,4,5,6,12) {
-        &.logo-size-#{$logo-size} {
-            .col-header-logo {
-                @include make-col(nth([4,5,7,9,9,9,12,12,12,12,12,12], $logo-size));
-            }
-            .nav-main-mobile-logo > .img-responsive {
-                @if ($logo-size < 5) {
-                    max-width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
-                } @else {
-                    max-width: 100%;
-                }
-            }
-            @include media-breakpoint-up(sm) {
+        @each $logo-size in (1,2,3,4,5,6,12) {
+            &.ls-#{$logo-size} {
                 .col-header-logo {
-                    @if ($logo-size < 12) {
-                        @include make-abs-col(lg, $logo-size);
+                    @include make-col(nth([4,5,7,9,9,9,12,12,12,12,12,12], $logo-size));
+                }
+                .nav-main-mobile-logo > .img-responsive {
+                    @if ($logo-size < 5) {
+                        max-width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
                     } @else {
-                        @include make-col($logo-size);
+                        max-width: 100%;
                     }
                 }
-            }
-            @include media-breakpoint-up(lg) {
-                &.header-isfixed {
-                    &.nav-fix-compact {
-                        .col-header-logo {
-                            max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
+                @include media-breakpoint-up(sm) {
+                    .col-header-logo {
+                        @if ($logo-size < 12) {
+                            @include make-abs-col(lg, $logo-size);
+                        } @else {
+                            @include make-col($logo-size);
                         }
                     }
-                    &.nav-fix-overlay {
-                        .col-header-info {
-                            .col-header-nav {
+                }
+                @include media-breakpoint-up(lg) {
+                    &.header-isfixed {
+                        &.fix-compact {
+                            .col-header-logo {
+                                max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
+                            }
+                        }
+                        &.fix-overlay {
+                            .nav-main-container {
                                 max-width: calc(100% - #{calc-abs-col(lg, $logo-size)});
                             }
-                        }
-                        &.nav-right {
-                            .col-header-info {
-                                align-items: flex-end;
+                            &.lp-left {
+                                .col-header-nav {
+                                    justify-content: flex-end;
+                                }
                             }
                         }
                     }
                 }
-            }
-            @include media-breakpoint-up(xl) {
-                .col-header-logo {
-                    @include make-abs-col(xl, $logo-size);
+                @include media-breakpoint-up(xl) {
+                    .col-header-logo {
+                        @include make-abs-col(xl, $logo-size);
+                    }
+                    &.header-isfixed {
+                        &.fix-overlay {
+                            .nav-main-container {
+                                max-width: calc(100% - #{calc-abs-col(xl, $logo-size)});
+                            }
+                        }
+                    }
                 }
             }
         }

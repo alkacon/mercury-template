@@ -187,15 +187,16 @@
 
 $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin-small, 'lg': $default-margin);
 
+
 .area-header {
     // New "flexible" header
     &.fh {
-        .col-header-links,
-        .col-header-title {
+        .h-meta,
+        .h-title {
             display: none;
         }
 
-        .col-header-logo {
+        .h-logo {
             width: 100%;
             padding-top: $default-margin-verysmall;
             padding-bottom: $default-margin-verysmall;
@@ -203,7 +204,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             padding-left: $grid-gutter-width / 2;
         }
 
-        .col-header-container {
+        .h-ac {
             display: none;
         }
 
@@ -216,7 +217,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
         }
 
         @include media-breakpoint-up(sm) {
-            .col-header-logo {
+            .h-logo {
                 .header-image {
                     max-width: none;
                 }
@@ -232,7 +233,43 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             }
         }
 
+        // individual header containers
+
+        .header-group {
+            @include media-breakpoint-between(sm, md) {
+                @include make-container(0);
+                max-width: map-get($container-max-widths, sm);
+            }
+            @include media-breakpoint-only(md) {
+                max-width: map-get($container-max-widths, md);
+            }
+        }
+
+        .h-bc-c {
+            @include make-container();
+            @include make-container-max-widths();
+        }
+
+        .h-group-c,
+        &.meta-above .h-meta-c,
+        &.ac-page-size .h-ac-c,
+        &.nav-below .h-nav-c,
+        &.lp-center .h-title-c {
+            @include media-breakpoint-up(lg) {
+                @include make-container();
+                max-width: map-get($container-max-widths, lg);
+            }
+            @include media-breakpoint-up(xl) {
+                max-width: map-get($container-max-widths, xl);
+            }
+        }
+
         @include media-breakpoint-up(lg) {
+
+            .head {
+                display: flex;
+                flex-direction: column;
+            }
 
             @if ($nav-head-border != none) {
                 .header-group {
@@ -242,7 +279,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
             // logo and info column
 
-            .col-header-logo {
+            .h-logo {
                 order: 4;
                 display: flex;
                 align-items: flex-end;
@@ -253,29 +290,42 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 }
             }
 
-            .col-header-info {
+            .h-group-c {
+                order: 6;
+                display: flex;
+                position: relative;
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .h-info {
                 order: 6;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 width: 100%;
+
+                > .h-nav {
+                    align-items: flex-end;
+                }
             }
 
             &.lp-left {
-                .col-header-info {
+                .h-info {
                     padding-right: $grid-gutter-width / 2;
                 }
             }
 
             &.lp-center {
-                .col-header-logo {
+                .h-logo {
                     margin-right: auto;
                     margin-left: auto;
+                    flex: 0 0 auto;
                 }
             }
 
             &.lp-right {
-                .col-header-info {
+                .h-info {
                     padding-left: $grid-gutter-width / 2;
                     order: 3;
                 }
@@ -283,7 +333,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
             // meta links
 
-            .col-header-links {
+            .h-meta {
                 order: 8;
                 display: flex;
                 flex-grow: 0;
@@ -320,7 +370,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
 
             &.meta-above {
-                .col-header-links {
+                .h-meta {
                     flex-basis: 100%;
                     order: 1;
                 }
@@ -328,7 +378,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
             // page title
 
-            .col-header-title {
+            .h-title {
                 order: 10;
                 display: flex;
                 flex-direction: column;
@@ -342,39 +392,39 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             }
 
             &.title-top {
-                .col-header-title {
+                .h-title {
                     justify-content: flex-start;
                 }
             }
 
             &.title-middle {
-                .col-header-title {
+                .h-title {
                     justify-content: center;
                 }
             }
 
             &.title-bottom {
-                .col-header-title {
+                .h-title {
                     justify-content: flex-end;
                 }
             }
 
             &.title-left {
-                .col-header-title {
+                .h-title {
                     align-self: flex-start;
                     text-align: left;
                 }
             }
 
             &.title-center {
-                .col-header-title {
+                .h-title {
                     align-self: center;
                     text-align: center;
                 }
             }
 
             &.title-right {
-                .col-header-title {
+                .h-title {
                     align-self: flex-end;
                     text-align: right;
                 }
@@ -382,22 +432,26 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
             // navigation
 
-            .col-header-nav {
+            .h-nav {
                 order: 15;
                 display: flex;
                 flex-grow: 1;
                 width: 100%;
             }
 
-            .nav-main-container {
+            .h-nav-c {
                 display: flex;
                 flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-main-container {
                 flex-basis: auto;
                 flex-grow: 1;
             }
 
             &.nav-only {
-                .col-header-info {
+                .h-info {
                     justify-content: flex-end;
                 }
             }
@@ -415,7 +469,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             }
 
             &.nav-below {
-                .col-header-nav {
+                .h-nav {
                     flex-basis: 100%;
                 }
             }
@@ -472,31 +526,31 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
             // additional container
 
-            .col-header-container {
+            .h-ac {
                 display: block;
                 order: 20;
                 width: 100%;
 
-                .header-container > div > .element:last-of-type {
+                .h-ac-c > div > .element:last-of-type {
                     margin-bottom: 0;
                 }
             }
 
             &.header-isfixed {
-                .col-header-container {
+                .h-ac {
                     display: none;
                 }
             }
 
             &.ac-above-logo {
-                .col-header-container {
+                .h-ac {
                     order: 2;
                     padding-top: $default-margin-verysmall;
                 }
             }
 
             &.ac-below-logo {
-                .col-header-container {
+                .h-ac {
                     order: 12;
                 }
                 &.nav-below:not(.lp-center) {
@@ -529,29 +583,29 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             &.header-isfixed {
                 &.fix-overlay,
                 &.fix-compact {
-                    .col-header-title {
+                    .h-title {
                         display: none;
                     }
                 }
                 $fixed-logo-padding: map-get($logo-paddings, 'sm');
                 &.fix-compact,
                 &.fix-overlay {
-                    .col-header-logo {
+                    .h-logo {
                         padding-top: $fixed-logo-padding;
                         padding-bottom: $fixed-logo-padding;
                     }
                     &.padding-none {
-                        .col-header-logo {
+                        .h-logo {
                             padding-top: 0;
                             padding-bottom: 0;
                         }
                     }
                 }
                 &.fix-overlay {
-                    .col-header-links {
+                    .h-meta {
                         display: none;
                     }
-                    .col-header-logo {
+                    .h-logo {
                         position: absolute;
                         background-color: transparent;
                         left: 0;
@@ -574,7 +628,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                             box-shadow: none;
                         }
                     }
-                    .col-header-nav {
+                    .h-nav {
                         margin-top: 0; // unset optional negative margin for pulled up nav
                         .nav-main-group {
                             padding-top: $nav-header-ver-padding;
@@ -582,13 +636,13 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                         }
                     }
                     &.lp-right {
-                        .col-header-logo {
+                        .h-logo {
                             left: auto;
                             right: 0;
                         }
                     }
                     &.padding-none {
-                        .col-header-logo {
+                        .h-logo {
                             &::before {
                                 left: #{$grid-gutter-width / 2};
                                 width: calc(100% - #{$grid-gutter-width});
@@ -604,27 +658,27 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
                 &.nav-pull-fixed.header-isfixed,
                 &.nav-pull-always.nav-below {
-                    .col-header-logo {
+                    .h-logo {
                         padding-bottom: 0;
                     }
                 }
 
-                .col-header-links {
+                .h-meta {
                     order: 0;
                 }
 
-                .col-header-title {
+                .h-title {
                     order: 1;
                 }
 
                 &.title-bottom {
-                    .col-header-title {
+                    .h-title {
                         order: 10;
                     }
                 }
 
                 &.title-top {
-                    .col-header-title {
+                    .h-title {
                         order: -1;
                     }
                 }
@@ -633,23 +687,23 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             @each $padding-size in ('no','sm','md','lg') {
                 &.pad-#{$padding-size} {
                     $logo-padding: map-get($logo-paddings, $padding-size);
-                    .col-header-logo {
+                    .h-logo {
                         padding-top: $logo-padding;
                         padding-bottom: $logo-padding;
                     }
                     @if ($logo-padding > 0) {
                         &.header-notfixed,
                         &.header-isfixed.fix-complete {
-                            .col-header-links {
+                            .h-meta {
                                 padding-top: $logo-padding;
                                 padding-bottom: 0;
                             }
                         }
                         &.lp-center {
                             .col-header-logo,
-                            .col-header-links,
-                            .col-header-title,
-                            .col-header-container,
+                            .h-meta,
+                            .h-title,
+                            .h-ac,
                             .nav-main-group {
                                 padding-top: $logo-padding;
                                 padding-bottom: 0;
@@ -677,7 +731,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             &.nav-below {
                 &.nav-pull-fixed.header-isfixed,
                 &.nav-pull-always {
-                    .col-header-nav {
+                    .h-nav {
                         margin-top: #{-1 * ($nav-header-total-height + $nav-header-ver-padding)};
                         z-index: #{$overflow-z-index + 10};
                         .nav-main-group {
@@ -716,7 +770,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
         @each $logo-size in (1,2,3,4,5,6,12) {
             &.ls-#{$logo-size} {
-                .col-header-logo {
+                .h-logo {
                     @include make-col(nth([4,5,7,9,9,9,12,12,12,12,12,12], $logo-size));
                 }
                 .nav-main-mobile-logo > .img-responsive {
@@ -727,7 +781,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                     }
                 }
                 @include media-breakpoint-up(sm) {
-                    .col-header-logo {
+                    .h-logo {
                         @if ($logo-size < 12) {
                             @include make-abs-col(lg, $logo-size);
                         } @else {
@@ -738,19 +792,19 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 @include media-breakpoint-up(lg) {
                     &.header-isfixed {
                         &.fix-compact {
-                            .col-header-logo {
+                            .h-logo {
                                 max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
                             }
                         }
                         &.fix-overlay {
-                            .col-header-nav {
+                            .h-nav {
                                 margin-top: 0; // reset "pull up"
                             }
                             .nav-main-container {
                                 max-width: calc(100% - #{calc-abs-col(lg, $logo-size)});
                             }
                             &.lp-left {
-                                .col-header-nav {
+                                .h-nav {
                                     justify-content: flex-end;
                                 }
                             }
@@ -758,7 +812,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                     }
                 }
                 @include media-breakpoint-up(xl) {
-                    .col-header-logo {
+                    .h-logo {
                         @include make-abs-col(xl, $logo-size);
                     }
                     &.header-isfixed {
@@ -774,59 +828,6 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
     }
 }
 
-%header-container {
-    @include make-container();
-    @include make-container-max-widths();
-}
-
-.area-header {
-    // New "flexible" header
-    &.fh {
-        .head {
-            display: flex;
-            flex-direction: column;
-        }
-        .logo-group {
-            @extend %header-container;
-            order: 6;
-            display: flex;
-            position: relative;
-            padding-right: 0;
-            padding-left: 0;
-        }
-        .header-breadcrumbs {
-            @extend %header-container;
-        }
-        &.meta-above {
-            .header-meta {
-                @extend %header-container;
-            }
-        }
-        &.ac-page-size {
-            .header-container {
-                @extend %header-container;
-            }
-        }
-        .header-nav {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-        &.nav-below {
-            .header-nav {
-                @extend %header-container;
-            }
-        }
-        &.lp-center {
-            .header-title {
-                @extend %header-container;
-            }
-            .col-header-logo {
-                flex: 0 0 auto;
-            }
-        }
-    }
-}
 
 @if (true) {
     .area-header {
@@ -838,41 +839,40 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
         .header-group {
             background-color: #999;
         }
-        .col-header-links {
+        .h-meta {
             background-color: #C1D8ED;
         }
-        .header-meta {
+        .h-meta-c {
             background-color: #8FB8DE;
         }
-        .logo-group {
+        .h-group-c {
             background-color: #ccc;
-
         }
-        .col-header-logo {
+        .h-logo {
             background-color: #9B5094;
         }
-        .col-header-title {
+        .h-title {
             background-color: #D591AD;
         }
-        .header-title {
+        .h-title-c {
             background-color: #A40E4C;
         }
-        .col-header-nav {
+        .h-nav {
             background-color: #BBECA9;
         }
-        .header-nav {
+        .h-nav-c {
             background-color: #78C95A;
         }
-        .breadcrumbs-bg {
+        .h-bc {
             background-color: #F8CC8B;
         }
-        .header-breadcrumbs {
+        .h-bc-c {
             background-color: #F18F01;
         }
-        .col-header-container {
+        .h-ac {
             background-color: #FBABD3;
         }
-        .header-container {
+        .h-ac-c {
             background-color: #F865B0;
         }
     }

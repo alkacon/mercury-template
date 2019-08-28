@@ -21,7 +21,8 @@
 <c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
 <c:set var="showSearch"                 value="${setting.showSearch.toBoolean}" />
 
-<c:set var="logoElements" value="${cms.elementsInContainers['header-image']}" />
+<c:set var="logoElements" value="${cms.elementsInContainers['header-logo']}" />
+<c:set var="logoElements" value="${empty logoElements ? cms.elementsInContainers['header-image'] : logoElements}" />
 <c:if test="${not empty logoElements}">
     <c:set var="logoContent" value="${logoElements.get(0).toXml}" />
     <c:set var="logoImage" value="${logoContent.value.Image}" />
@@ -48,7 +49,8 @@
         <ul class="nav-main-items ${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
         <mercury:nl />
 
-        <c:set var="linkElements" value="${cms.elementsInContainers['header-linksequence']}" />
+        <c:set var="linkElements" value="${cms.elementsInContainers['header-meta']}" />
+        <c:set var="linkElements" value="${empty linkElements ? cms.elementsInContainers['header-linksequence'] : linkElements}" />
         <c:if test="${not empty linkElements}">
             <c:set var="linksequence" value="${linkElements.get(0).toXml}" />
             <li id="nav-main-addition" aria-expanded="false" class="hidden-lg hidden-xl"><%----%>

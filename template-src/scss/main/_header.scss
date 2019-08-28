@@ -196,8 +196,11 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
         }
 
         .col-header-logo {
+            width: 100%;
             padding-top: $default-margin-verysmall;
             padding-bottom: $default-margin-verysmall;
+            padding-right: $grid-gutter-width / 2;
+            padding-left: $grid-gutter-width / 2;
         }
 
         .col-header-container {
@@ -243,6 +246,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 order: 4;
                 display: flex;
                 align-items: flex-end;
+                width: 100%;
                 > a.imglink {
                     width: 100%;
                     display: block;
@@ -254,11 +258,12 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                width: 100%;
             }
 
             &.lp-left {
                 .col-header-info {
-                    padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
+                    padding-right: $grid-gutter-width / 2;
                 }
             }
 
@@ -271,6 +276,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
 
             &.lp-right {
                 .col-header-info {
+                    padding-left: $grid-gutter-width / 2;
                     order: 3;
                 }
             }
@@ -280,7 +286,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             .col-header-links {
                 order: 8;
                 display: flex;
-                flex-grow: 1;
+                flex-grow: 0;
                 flex-basis: auto;
                 flex-direction: column;
                 padding-top: $default-margin-verysmall;
@@ -380,15 +386,14 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 order: 15;
                 display: flex;
                 flex-grow: 1;
+                width: 100%;
             }
 
             .nav-main-container {
                 display: flex;
-                align-self: flex-end;
                 flex-direction: column;
                 flex-basis: auto;
                 flex-grow: 1;
-                justify-content: flex-end;
             }
 
             &.nav-only {
@@ -471,7 +476,8 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 display: block;
                 order: 20;
                 width: 100%;
-                > * > .element:last-of-type {
+
+                .header-container > div > .element:last-of-type {
                     margin-bottom: 0;
                 }
             }
@@ -542,9 +548,6 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                     }
                 }
                 &.fix-overlay {
-                    .head > .container {
-                        position: relative;
-                    }
                     .col-header-links {
                         display: none;
                     }
@@ -553,7 +556,8 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                         background-color: transparent;
                         left: 0;
                         z-index: #{$overflow-z-index + 20};
-                        &::before {
+                        &::before,
+                        &::after {
                             display: block;
                             content: "";
                             position: absolute;
@@ -563,6 +567,11 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                             height: calc(100% - #{$nav-header-total-height});
                             box-shadow: 0px 8px 10px -4px $dropshadow;
                             background-color: $nav-head-bg;
+                        }
+                        &::after {
+                            top: 0;
+                            height: #{$nav-header-total-height};
+                            box-shadow: none;
                         }
                     }
                     .col-header-nav {
@@ -669,7 +678,7 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 &.nav-pull-fixed.header-isfixed,
                 &.nav-pull-always {
                     .col-header-nav {
-                        margin-top: #{-1 * ($nav-header-total-height + $nav-header-hor-padding)};
+                        margin-top: #{-1 * ($nav-header-total-height + $nav-header-ver-padding)};
                         z-index: #{$overflow-z-index + 10};
                         .nav-main-group {
                             padding-top: $nav-header-ver-padding;
@@ -734,6 +743,9 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                             }
                         }
                         &.fix-overlay {
+                            .col-header-nav {
+                                margin-top: 0; // reset "pull up"
+                            }
                             .nav-main-container {
                                 max-width: calc(100% - #{calc-abs-col(lg, $logo-size)});
                             }
@@ -762,8 +774,109 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
     }
 }
 
+%header-container {
+    @include make-container();
+    @include make-container-max-widths();
+}
 
+.area-header {
+    // New "flexible" header
+    &.fh {
+        .head {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-group {
+            @extend %header-container;
+            order: 6;
+            display: flex;
+            position: relative;
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .header-breadcrumbs {
+            @extend %header-container;
+        }
+        &.meta-above {
+            .header-meta {
+                @extend %header-container;
+            }
+        }
+        &.ac-page-size {
+            .header-container {
+                @extend %header-container;
+            }
+        }
+        .header-nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        &.nav-below {
+            .header-nav {
+                @extend %header-container;
+            }
+        }
+        &.lp-center {
+            .header-title {
+                @extend %header-container;
+            }
+            .col-header-logo {
+                flex: 0 0 auto;
+            }
+        }
+    }
+}
 
+@if (true) {
+    .area-header {
+        background-color: #333 !important;
+
+        .head {
+            background-color: #666 !important;
+        }
+        .header-group {
+            background-color: #999;
+        }
+        .col-header-links {
+            background-color: #C1D8ED;
+        }
+        .header-meta {
+            background-color: #8FB8DE;
+        }
+        .logo-group {
+            background-color: #ccc;
+
+        }
+        .col-header-logo {
+            background-color: #9B5094;
+        }
+        .col-header-title {
+            background-color: #D591AD;
+        }
+        .header-title {
+            background-color: #A40E4C;
+        }
+        .col-header-nav {
+            background-color: #BBECA9;
+        }
+        .header-nav {
+            background-color: #78C95A;
+        }
+        .breadcrumbs-bg {
+            background-color: #F8CC8B;
+        }
+        .header-breadcrumbs {
+            background-color: #F18F01;
+        }
+        .col-header-container {
+            background-color: #FBABD3;
+        }
+        .header-container {
+            background-color: #F865B0;
+        }
+    }
+}
 
 // Header formatting for sticky header
 
@@ -862,12 +975,12 @@ html.opencms-group-editor {
             }
         }
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-down(md) {
 
             .area-header {
-                .hidden-md,
-                .hidden-lg,
-                .hidden-xl {
+                .hidden-xs,
+                .hidden-sm,
+                .hidden-md {
                     display: flex !important;
                     opacity: .5;
                     background-image: $disabled-bg;
@@ -889,7 +1002,7 @@ html.opencms-group-editor {
 
     }
 
-    .area-head {
+    .area-header {
         // remove default head bottom margin in model group editor */
         margin-bottom: 0;
     }

@@ -27,7 +27,7 @@
     <c:set var="logoImage" value="${logoContent.value.Image}" />
 </c:if>
 
-<nav class="nav-main-group ${logoImage.value.Image.isSet ? 'has-sidelogo' : ''}${' '}${cssWrapper}"><%----%>
+<nav class="nav-main-group ${logoImage.value.Image.isSet ? 'has-sidelogo ' : ''}${cssWrapper}"><%----%>
 
     <mercury:nav-items
         type="forSite"
@@ -45,7 +45,7 @@
         </c:if>
 
         <mercury:nl />
-        <ul class="nav-main-items ${not empty sidelogohtml ? 'hassidelogo' : ''}"><%----%>
+        <ul class="nav-main-items ${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
         <mercury:nl />
 
         <c:set var="linkElements" value="${cms.elementsInContainers['header-linksequence']}" />

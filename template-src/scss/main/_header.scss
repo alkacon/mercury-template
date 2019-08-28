@@ -420,6 +420,9 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
             .nav-main-items {
                 margin-left: -1 * $nav-header-hor-padding;
                 margin-right: -1 * $nav-header-hor-padding;
+                &.no-search {
+                    margin-right: -1 * round($nav-header-hor-padding / 4);
+                }
             }
 
             #nav-main-search[aria-expanded] > a {
@@ -432,7 +435,10 @@ $logo-paddings: ('no': 0, 'sm': $default-margin-verysmall, 'md': $default-margin
                 $nav-hor-reduction: 8px;
                 .nav-main-items {
                     margin-left: #{-1 * $nav-header-hor-padding + $nav-hor-reduction};
-                    margin-right: #{-1 * $nav-header-hor-padding +$nav-hor-reduction};
+                    margin-right: #{-1 * $nav-header-hor-padding + $nav-hor-reduction};
+                    &.no-search {
+                        margin-right: 0;
+                    }
                     > li {
                         > a {
                             padding: 0 #{$nav-header-hor-padding - $nav-hor-reduction} $nav-header-ver-padding #{$nav-header-hor-padding - $nav-hor-reduction};

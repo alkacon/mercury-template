@@ -5,8 +5,8 @@
     <NiceName><![CDATA[%(key.function.header-config)]]></NiceName>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.bistuemer.variants/standard/functions/header-config.jsp]]></target>
-        <uuid>a4dc6c66-c646-11e9-9a13-0242ac11002b</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/header-config.jsp]]></target>
+        <uuid>b881b45a-c8e3-11e9-bfcb-0242ac11002b</uuid>
       </link>
     </Jsp>
     <Description><![CDATA[%(key.function.header-config.help)]]></Description>

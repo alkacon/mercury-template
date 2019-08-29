@@ -1208,11 +1208,11 @@
       <DisplayName><![CDATA[%(key.msg.setting.header.logoAlignment)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.header.logoAlignment.help)]]></Description>
       <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[lp-left]]></Default>
+      <Default><![CDATA[lp-l]]></Default>
       <WidgetConfig><![CDATA[
-            lp-left:            %(key.msg.setting.header.option.left)|
-            lp-center:          %(key.msg.setting.header.option.center)|
-            lp-right:           %(key.msg.setting.header.option.right)
+            lp-l:           %(key.msg.setting.header.option.left)|
+            lp-c:           %(key.msg.setting.header.option.center)|
+            lp-r:           %(key.msg.setting.header.option.right)
         ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -1355,11 +1355,11 @@
       <DisplayName><![CDATA[%(key.msg.setting.header.navPullUp)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.header.navPullUp.help)]]></Description>
       <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[nav-pull-never]]></Default>
+      <Default><![CDATA[np-never]]></Default>
       <WidgetConfig><![CDATA[
-            nav-pull-never:     %(key.msg.setting.header.navPullUp.nav-pull-never)|
-            nav-pull-fixed:     %(key.msg.setting.header.navPullUp.nav-pull-fixed)|
-            nav-pull-always:    %(key.msg.setting.header.navPullUp.nav-pull-always)
+            np-never:           %(key.msg.setting.header.navPullUp.np-never)|
+            np-fixed:           %(key.msg.setting.header.navPullUp.np-fixed)|
+            np-always:          %(key.msg.setting.header.navPullUp.np-always)
         ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -1393,16 +1393,28 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[addContainer.header]]></IncludeName>
-      <PropertyName><![CDATA[addContainer]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.header.addContainer)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.header.addContainer.help)]]></Description>
+      <IncludeName><![CDATA[acDisplay.header]]></IncludeName>
+      <PropertyName><![CDATA[acDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.acDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.acDisplay.help)]]></Description>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
-            none:               %(key.msg.setting.header.option.defaultNoContainer)|
+            none:               %(key.msg.setting.header.acDisplay.none)|
+            ac-page-size:       %(key.msg.setting.header.acDisplay.ac-page-size)|
+            ac-full-size:       %(key.msg.setting.header.acDisplay.ac-full-size)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[acPosition.header]]></IncludeName>
+      <PropertyName><![CDATA[acPosition]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.acPosition)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.acPosition.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[ac-below-logo]]></Default>
+      <WidgetConfig><![CDATA[
             ac-above-logo:      %(key.msg.setting.header.option.above)|
-            ac-below-logo:      %(key.msg.setting.header.option.below)|
+            ac-below-logo:      %(key.msg.setting.header.option.defaultBelow)|
             ac-below-nav:       %(key.msg.setting.header.option.below-nav)|
         ]]></WidgetConfig>
     </Setting>

@@ -292,7 +292,7 @@ $nav-font-size:                     14px !default; // font size of dropdown entr
 $nav-line-height:                   20px !default; // line hight of dropdown entries and side navigation
 $nav-animation-time:                $default-transition-time !default; // timing for most animation effects used in the navigation
 $nav-border-radius:                 $default-border-radius !default; // border radius of nav toggle and topcontrol buttons
-$nav-hor-padding:                   20px !default; // horizontal paddding of the nav menu entries in LG, XL screens size
+$nav-hor-padding:                   15px !default; // horizontal paddding of the nav menu entries in LG, XL screens size
 $nav-head-bg:                       $body-bg !default; // color of the header background container
 $nav-head-fixed-shadow:             0px 0px 10px 1px $dropshadow !default; // shadow if header is fixed
 $nav-head-padding:                  10px 0px 10px 0px !default; // paddings for header
@@ -308,11 +308,12 @@ $nav-header-text-hover:             $nav-text-hover !default; // the hover text 
 $nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
 $nav-header-font-size:              15px !default;          // font size of header nav items
 $nav-header-float:                  right !default;         // float direction of header navigation items, can be 'left' or 'right'
-$nav-header-hor-padding:            $nav-hor-padding !default; // horizontal padding left / right the header nav items in LG, XL
-$nav-header-ver-padding:            9px !default;           // vertical padding above / blow the header nav items in LG, XL
-$nav-header-padding:                $nav-header-ver-padding $nav-header-hor-padding !default; // complete padding for header nav items
+$nav-header-hor-padding:            $nav-hor-padding !default // horizontal padding right for header nav items in LG, XL
+$nav-header-ver-padding:            8px !default;           // vertical padding above / blow the header nav items in LG, XL
+$nav-header-padding:                0 $nav-header-hor-padding $nav-header-ver-padding $nav-header-hor-padding !default; // padding for header nav items
+$nav-header-arrows-right:           0 !default;             // right position of arrows in header in LG, XL
 $nav-header-line-height:            20px !default;          // line height of header nav items
-$nav-header-total-height:           $nav-header-line-height + (2 * $nav-header-ver-padding) !default; // total height of header lines (text height plus vertical padding)
+$nav-header-total-height:           $nav-header-line-height + (1 * $nav-header-ver-padding) !default; // total height of header lines (text height plus vertical padding)
 $nav-header-show-arrows:            true !default;          // true / false: show "arrow" right to header nav items in  LG, XL
 $nav-header-set-bg-color:           false !default;         // true / false: set background color for the top level nav bar
 $nav-header-animate-menu:           "move" !default;        // "none" / "fade" / "move": effect for revealing sub menu on  LG, XL
@@ -327,7 +328,8 @@ $nav-menu-border-top:               $nav-menu-border !default; // the border on 
 $nav-menu-border-bottom:            $nav-menu-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
 $nav-menu-entry-border-bottom:      1px solid $nav-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
 $nav-menu-ver-padding:              8px !default;           // vertical paddding of the nav menu entries in LG, XL screens size
-$nav-menu-padding:                  $nav-menu-ver-padding $nav-hor-padding !default; // padding for items in the "folded out" menus
+$nav-menu-hor-padding:              $nav-hor-padding!default; // horizontal paddding of the nav menu entries in LG, XL screens size
+$nav-menu-padding:                  $nav-menu-ver-padding $nav-menu-hor-padding !default; // padding for items in the "folded out" menus
 $nav-menu-min-width:                250px !default;         // minimal width of the nav menus in  LG, XL
 $nav-menu-text-mobile:              $nav-text !default;     // text color for mobile menus
 $nav-menu-bg-mobile:                $nav-bg !default;       // background color for mobile menus

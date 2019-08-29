@@ -69,7 +69,10 @@
       <IncludeName><![CDATA[navFixDisplay.header]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[addContainer.header]]></IncludeName>
+      <IncludeName><![CDATA[acDisplay.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[acPosition.header]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[bcDisplay.header]]></IncludeName>

@@ -31,9 +31,10 @@
     flex-direction: column;
     @include round-corners($iconbox-border-radius, true);
 
-    *:not(a) {
-        color: get-text-color($main-theme);
-    }
+    $color: get-text-color($main-theme);
+    color: $color;
+
+    @include colored-a($color);
 
     .icon-title {
         flex-grow: 1;

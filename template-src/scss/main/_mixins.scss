@@ -338,13 +338,15 @@
     }
 }
 
-@mixin colored-a($text-color, $highlight-color) {
+@mixin colored-a($text-color, $highlight-color: none) {
     a:not(.btn):not(.uncolored) {
         color: $text-color;
 
-        &:focus,
-        &:hover {
-            color: $highlight-color;
+        @if ($highlight-color != none) {
+            &:focus,
+            &:hover {
+                color: $highlight-color;
+            }
         }
     }
 }

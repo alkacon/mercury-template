@@ -56,7 +56,9 @@
 
     .box-#{""+$color-name} {
         background-color: $bg-color;
-        color: get-text-color($bg-color);
+        $color: get-text-color($bg-color);
+        color: $color;
+        @include colored-a($color);
 
         h1, h2, h3, h4, h5, h6 {
             // required in order to override colors set in headings

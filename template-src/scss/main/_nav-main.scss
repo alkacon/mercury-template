@@ -631,7 +631,7 @@
                             color: $nav-header-text;
                             line-height: $nav-header-line-height;
                             content: "\f107"; // arrow pointing down
-                            right: round($nav-hor-padding / 4);
+                            right: $nav-header-arrows-right;
                         }
 
                         &:hover::after {
@@ -860,7 +860,7 @@
     #nav-main-search {
 
         .nav-menu {
-            padding: $nav-hor-padding;
+            padding: $nav-header-hor-padding;
             background-color: $nav-bg;
             width: 400px;
         }

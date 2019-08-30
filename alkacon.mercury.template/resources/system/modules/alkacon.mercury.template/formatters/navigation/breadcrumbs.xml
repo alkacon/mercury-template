@@ -31,6 +31,7 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
+      <Default><![CDATA[hidden-xs hidden-sm hidden-md]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[breadcrumbsIncludeHidden.navigation]]></IncludeName>

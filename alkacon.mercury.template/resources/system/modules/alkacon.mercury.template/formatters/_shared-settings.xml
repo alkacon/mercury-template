@@ -2168,7 +2168,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.nav.breadcrumbsFromRoot)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.nav.breadcrumbsFromRoot.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[false]]></Default>
+      <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showSearch.navigation]]></IncludeName>

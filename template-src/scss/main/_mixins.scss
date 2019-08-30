@@ -251,14 +251,24 @@
 @mixin rem-base {
     @if ($font-rem-base-mobile-size != $font-rem-base-desktop-size) {
         @include media-breakpoint-down(md) {
-            font-size: $font-rem-base-mobile-size;  // base font size for rem units
+            font-size: $font-rem-base-mobile-size;  // font size for rem units in mobile
         }
         @include media-breakpoint-up(lg) {
-            // adjust fonts for smaller screens
-            font-size: $font-rem-base-desktop-size;
+            font-size: $font-rem-base-desktop-size;  // font size for rem units in desktop
         }
     } @else {
-        font-size: $font-rem-base-desktop-size;
+        font-size: $font-rem-base-mobile-size;
+    }
+}
+
+@mixin font-size-responsive($font-size-mobile, $font-size-desktop) {
+    @if ($font-size-mobile != $font-size-desktop) {
+        font-size: $font-size-mobile;
+        @include media-breakpoint-up(lg) {
+            font-size: $font-size-desktop;
+        }
+    } @else {
+        font-size: $font-size-mobile;
     }
 }
 

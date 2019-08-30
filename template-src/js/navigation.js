@@ -250,11 +250,17 @@ function initHeadNavigation() {
     });
 
     // Add handler for top scroller
-    $topControl = jQ('#topcontrol');
-    if ($topControl) {
-            $topControl.on('click', function(e) {
+    var $topControlBtn = jQ('#topcontrol, .topcontrol, .topcontrol-nohide');
+    // multiple selectors allow to add topcontrol in template as well
+    if ($topControlBtn) {
+            // just the function, no hiding of the button on mobile
+            $topControlBtn.on('click', function(e) {
             scrollToAnchor(jQ('body'));
         });
+    }
+    $topControl = jQ('#topcontrol, .topcontrol');
+    if ($topControl) {
+        // hide the button on mobile
         jQ(window).on('scroll resize', function(e) {
             var isVisible = $topControl.hasClass('show');
             if (jQ(window).scrollTop() > 300) {

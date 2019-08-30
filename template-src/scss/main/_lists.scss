@@ -72,7 +72,7 @@
     }
 
     .intro-headline {
-        font-size: $teaser-title-size;
+        @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
         line-height: $teaser-title-height;
         margin-bottom: $default-margin-small;
     }
@@ -132,7 +132,7 @@
         }
 
         @if ($list-tile-header-lines > 1) {
-            @include media-breakpoint-up(md) {
+            @include media-breakpoint-up(lg) {
                 &.teaser-text-tile {
                     > .body {
                         // make sure that this does not apply to "lists with groups"
@@ -549,7 +549,10 @@ aside .list-content,
 
         .intro-headline {
             // make headers smaller
-            font-size: round($teaser-title-size * 9) / 10;
+            @include font-size-responsive(
+                round($teaser-title-size-mobile * 9) / 10,
+                round($teaser-title-size * 9) / 10
+            );
             // also make intro lines normal color
             > .intro {
                 color: $headings-color;

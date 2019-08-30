@@ -250,111 +250,41 @@
                 <mercury:nl />
 
             </c:when>
-            <c:otherwise>
+
+            <c:when test="${cms.isEditMode and cms.modelGroupPage}">
                 <mercury:nl />
                 <header class="area-header fh title-center">
 
                     ${configElement}
 
-                    <div class="h-title">
-                        <p><fmt:message key="msg.page.header.no-config" /></p>
-                        <p><fmt:message key="msg.page.header.no-config.help" /></p>
-                    </div>
+                    <mercury:alert type="warning">
+                        <jsp:attribute name="head">
+                            <fmt:message key="msg.page.header.no-config" />
+                        </jsp:attribute>
+                        <jsp:attribute name="text">
+                            <fmt:message key="msg.page.header.no-config.help" />
+                        </jsp:attribute>
+                    </mercury:alert>
+
                 </header>
                 <mercury:nl />
-            </c:otherwise>
+            </c:when>
+
+            <c:when test="${cms.isEditMode}">
+
+                <mercury:alert type="error">
+                    <jsp:attribute name="head">
+                        ${cms.reloadMarker}
+                        <fmt:message key="msg.page.mustReload" />
+                    </jsp:attribute>
+                    <jsp:attribute name="text">
+                        <fmt:message key="msg.page.mustReload.hint2" />
+                    </jsp:attribute>
+                </mercury:alert>
+
+            </c:when>
         </c:choose>
     </c:when>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <c:when test="${(variant eq 'head-v1-bc-fh') or (variant eq 'head-v2-bc-fh')}">
 

@@ -39,7 +39,7 @@
 </c:if>
 
 <c:choose>
-    <c:when test="${cms.element.inMemoryOnly}">
+    <c:when test="${cms.element.inMemoryOnly and not cms.element.historyContent}">
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
             <mercury:alert type="warning" css="new-element ${css}">

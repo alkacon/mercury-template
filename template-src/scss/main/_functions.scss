@@ -16,15 +16,35 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Calculates the best color for text based on the background
-@function get-text-color($color, $dark-color: $text-dark, $light-color: $text-light) {
-    @if ($color == transparent) {
+@function get-text-color($bg-color, $dark-color: $text-dark, $light-color: $text-light) {
+    @if ($bg-color == transparent) {
         @return $body-color;
-    } @else {
-        @if (lightness($color) > $text-lightness-threshold) {
+    } @elseif ($bg-color == none) {
+        @return $body-color;
+    } @else  {
+        @if (lightness($bg-color) > $text-lightness-threshold) {
             @return $dark-color; // light background, dark text
         } @else {
             @return $light-color; // dark background, light text
         }
+    }
+}
+
+@function check-text-color($bg-color, $text-color, $dark-color: $text-dark, $light-color: $text-light, $lightness-threshold: 30) {
+    @if ($bg-color == transparent) {
+        @return $text-color;
+    } @elseif ($bg-color == none) {
+        @return $text-color;
+    } @else  {
+        $l-bg: lightness($bg-color);
+        $l-text: lightness($text-color);
+        @debug "check-text-color bg: #{$bg-color} / #{$l-bg} text: #{$text-color} / #{$l-text}";
+        @if ($l-bg > ($l-text + $lightness-threshold)) { // background is much lighter than text
+            @return $text-color;
+        } @elseif ($l-text > ($l-bg + $lightness-threshold)) { // text is much lighter than background
+            @return $text-color;
+        }
+        @return get-text-color($bg-color, $dark-color, $light-color); // not enough difference in lightness, use default
     }
 }
 

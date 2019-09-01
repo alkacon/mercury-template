@@ -19,7 +19,10 @@
 
 <c:set var="setting"                    value="${cms.element.setting}" />
 <c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
-<c:set var="showSearch"                 value="${setting.showSearch.toBoolean}" />
+<c:set var="showSearch"                 value="${setting.showSearch.useDefault(true).toBoolean}" />
+
+<c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
+<c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
 
 <c:set var="logoElements" value="${cms.elementsInContainers['header-image']}" />
 <c:if test="${not empty logoElements}">
@@ -78,9 +81,9 @@
 
             <c:set var="isCurrentPage" value="${fn:startsWith(cms.requestContext.uri, cms.sitePath[navElem.resource.rootPath])}" />
 
-            <c:set var="menuType">
-                ${isCurrentPage ? ' active' : ''}
-            </c:set>
+            <c:set var="menuType" value="${isCurrentPage ? 'active ' : ''}" />
+            <c:set var="menuType" value="${i == 0 ? menuType.concat('nav-first ') : menuType}" />
+            <c:set var="menuType" value="${i == navLength ? menuType.concat('nav-last ') : menuType}" />
 
             <c:if test="${navElem.navigationLevel}">
                 <c:set var="lastNavLevel" value="${navElem}" />
@@ -97,7 +100,7 @@
                 <c:if test="${cms.vfs.existsXml[megaMenuVfsPath]}">
                     <c:set var="megaMenuLink"><cms:link>${megaMenuVfsPath}</cms:link></c:set>
                     <c:set var="megaMenu" value=' data-megamenu="${megaMenuLink}"' />
-                    <c:set var="menuType" value="${menuType} mega" />
+                    <c:set var="menuType" value="${menuType.concat('mega')}" />
                 </c:if>
             </c:if>
 
@@ -158,10 +161,7 @@
 
         </c:forEach>
 
-        <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
-        <c:set var="hidesearch" value="${not showSearch or fn:startsWith(searchPageUrl,'[')}" />
-
-        <c:if test="${not hidesearch}">
+        <c:if test="${showSearch}">
             <li id="nav-main-search" aria-expanded="false"><%----%>
                 <a href="#" title="Search" aria-controls="nav_nav-main-search" id="label_nav-main-search"><%----%>
                     <span class="search search-btn fa fa-search"></span><%----%>

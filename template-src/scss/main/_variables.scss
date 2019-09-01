@@ -303,9 +303,6 @@ $nav-handle-right-padding:          40px !default; // padding for nav handles, a
 
 // the header
 // mostly applies to the "first level" of the navigation menu
-$nav-header-bg:                     $body-bg !default;        // background of the header nav items in XS, SM, MD
-$nav-header-menu-bg:                transparentize($nav-header-bg, 0.25) !default; // background of header nav items in LG, XL
-$nav-header-menu-bg-hover:          $nav-header-bg !default; // hover background of the header nav items (all screen sizes)
 $nav-header-text-active:            $nav-theme !default; // the "active page in navigation" text color
 $nav-header-text-hover:             $nav-text-hover !default; // the hover text color for the header nav items
 $nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
@@ -318,7 +315,6 @@ $nav-header-arrows-right:           0 !default;             // right position of
 $nav-header-line-height:            20px !default;          // line height of header nav items
 $nav-header-total-height:           $nav-header-line-height + (1 * $nav-header-ver-padding) !default; // total height of header lines (text height plus vertical padding)
 $nav-header-show-arrows:            true !default;          // true / false: show "arrow" right to header nav items in  LG, XL
-$nav-header-set-bg-color:           false !default;         // true / false: set background color for the top level nav bar
 $nav-header-animate-menu:           "move" !default;        // "none" / "fade" / "move": effect for revealing sub menu on  LG, XL
 $nav-header-border-size:            2px !default;           // border (bottom only) size of header nav items
 $nav-header-border-color:           $nav-border !default;   // border (bottom only) color of header nav items
@@ -331,7 +327,7 @@ $nav-menu-border-top:               $nav-menu-border !default; // the border on 
 $nav-menu-border-bottom:            $nav-menu-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
 $nav-menu-entry-border-bottom:      1px solid $nav-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
 $nav-menu-ver-padding:              8px !default;           // vertical paddding of the nav menu entries in LG, XL screens size
-$nav-menu-hor-padding:              $nav-hor-padding!default; // horizontal paddding of the nav menu entries in LG, XL screens size
+$nav-menu-hor-padding:              $nav-header-hor-padding !default; // horizontal paddding of the nav menu entries in LG, XL screens size
 $nav-menu-padding:                  $nav-menu-ver-padding $nav-menu-hor-padding !default; // padding for items in the "folded out" menus
 $nav-menu-min-width:                250px !default;         // minimal width of the nav menus in  LG, XL
 $nav-menu-text-mobile:              $nav-text !default;     // text color for mobile menus
@@ -340,8 +336,8 @@ $nav-menu-bg-mobile:                $nav-bg !default;       // background color 
 // mobile navigation settings
 $nav-mobile-position:               right !default; // alternatives are ""left" or "right"
 $nav-mobile-bg-color:               $nav-border !default; // background color of mobile navigation wrapper
-$nav-mobile-logo-bg-color:          $nav-header-bg !default; // background color of mobile navigation logo wrapper
-$nav-mobile-menu-bg-color:          $nav-header-bg !default; // background color of mobile navigation items wrapper
+$nav-mobile-menu-bg-color:          $nav-head-bg !default; // background color of mobile navigation items wrapper
+$nav-mobile-logo-bg-color:          $nav-mobile-menu-bg-color !default; // background color of mobile navigation logo wrapper
 $nav-mobile-side-size:              250px + ($grid-gutter-width / 2) !default; // size of mobile side menu for "left" and "right"
 $nav-mobile-side-content-move:      false !default; // move content when mobile side nav is shown?
 $nav-mobile-font-size:              16px !default; // font size for mobile sub-menu entries
@@ -397,6 +393,15 @@ $nav-toggle-bottom:                 5px !default; // bottom positioning of toggl
 
 // Header
 
+// flexible header - most often used version of the header, therefore has it's own parameters
+$fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
+$fh-meta-bg-color:                  none !default; // background color of the meta / service links
+$fh-title-bg-color:                 none !default; // background color of the title
+$fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
+$fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
+
+$fh-nav-header-padding-increase:    10px !default;
+
 $nav-meta-font-size:                $font-size-sm !default;
 $nav-meta-text:                     $nav-header-text !default;
 $nav-meta-text-hover:               $nav-header-text-hover !default;
@@ -426,12 +431,13 @@ $foot-sub-link-hover-color:         $foot-sub-link-color !default;
 $nav-breadcrump-space:              $default-margin-verysmall !default; // spacing base between breadcumbs
 $nav-breadcrump-space-left:         1.35 * $nav-breadcrump-space !default; // spacing after breadcumb before separator
 $nav-breadcrump-space-right:        $nav-breadcrump-space !default; // spacing after separator before breadcrumb
-$nav-breadcrump-padding:            $default-margin-verysmall 0 0 0 !default; // Padding around breadcrumbs
-$nav-breadcrump-text-color:         $nav-header-text  !default; // text color of breadcrumps
-$nav-breadcrump-text-hover-color:   $nav-header-text-hover  !default; // hover color of breadcrump links
+$nav-breadcrump-bg-color:           none !default; // background color for breadcrumbs
+$nav-breadcrump-padding:            $default-margin-verysmall 0 0 0 !default; // padding around breadcrumbs
+$nav-breadcrump-text-color:         check-text-color($nav-breadcrump-bg-color, $nav-header-text) !default; // text color of breadcrumps
+$nav-breadcrump-text-hover-color:   check-text-color($nav-breadcrump-bg-color,  $nav-header-text-hover) !default; // hover color of breadcrump links
 $nav-breadcrump-font-size:          $font-size-sm !default; // font size for the breadcrumps
 $nav-breadcrump-separator:          "\f0da" !default; // separator char between breadcrumbs
-$nav-breadcrump-separator-color:    $grey !default; // color of breadcrumps sepearator
+$nav-breadcrump-separator-color:    conditional-value($nav-breadcrump-bg-color == none, $grey, get-text-color($nav-breadcrump-bg-color)) !default; // color of breadcrumps sepearator
 $nav-breadcrump-separator-font:     FontAwesome !default; // font-family for breadcrumbs sepearator
 
 // Side navigation

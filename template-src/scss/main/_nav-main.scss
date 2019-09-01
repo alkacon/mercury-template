@@ -574,9 +574,6 @@
                 font-family: $nav-header-font-family;
                 position: relative;
                 padding: $nav-header-padding;
-                @if ($nav-header-set-bg-color == true) {
-                    background-color: $nav-header-menu-bg;
-                }
 
                 &::after {
                     position: absolute;
@@ -595,24 +592,12 @@
             &[aria-expanded="true"] > a:hover {
                 text-decoration: none;
                 color: $nav-header-text-hover;
-                @if ($nav-header-set-bg-color == true) {
-                    background-color: $nav-header-menu-bg-hover;
-                }
                 margin-bottom: 0;
             }
 
             &.active > a {
                 // the page highlighted by the OpenCms navigation (from the URL)
                 color: $nav-header-text-active;
-                @if ($nav-header-set-bg-color == true) {
-                    background-color: $nav-header-menu-bg; // top level nav
-                }
-            }
-
-            > a:focus {
-                @if ($nav-header-set-bg-color == true) {
-                    background-color: $nav-header-menu-bg; // top level nav
-                }
             }
 
             &[aria-expanded="true"] > a.nav-label + a[aria-controls] {
@@ -671,8 +656,8 @@
             }
 
             &.open-left > .nav-menu {
-                right: 0;
-                left: auto;
+                right: 0 !important;
+                left: auto !important;
             }
 
             > .nav-menu {

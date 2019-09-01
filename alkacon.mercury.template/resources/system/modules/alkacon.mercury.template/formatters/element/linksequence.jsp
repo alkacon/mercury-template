@@ -67,14 +67,15 @@
             </c:if>
             <li ${liWrapper}><%----%>
                 <mercury:link link="${link}" css="${aWrapper}">
-                    <span class="ls-item">${linkText}</span>
+                    <span class="ls-item">${linkText}</span><%----%>
                 </mercury:link>
             </li><%----%>
+            <mercury:nl />
         </c:forEach>
     </ul><%----%>
 
-</div>
-<%----%>
+</div><%----%>
+<mercury:nl />
 
 </cms:bundle>
 </cms:formatter>

@@ -5,7 +5,7 @@
     <Title><![CDATA[The Tabs / Accordion element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Tabs and accordions allow you to structure content on a&nbsp;page. You can select the appearance as either <em>Tab</em> or <em>Accordion</em> by selecting the respective formatter in the element settings.</p>]]></content>
+      <content><![CDATA[<p><em>Tabs</em> and <em>Accordions</em> allow you to structure content on a page. You can select the appearance as either <em>Tab</em> or <em>Accordion</em> by selecting the respective formatter in the element settings.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

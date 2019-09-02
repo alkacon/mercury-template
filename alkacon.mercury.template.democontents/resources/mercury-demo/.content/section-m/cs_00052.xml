@@ -2,10 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Event Element]]></Title>
+    <Title><![CDATA[The Event element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The&nbsp;<em>Event </em>is a specialized content for creating event entries. It can contain several paragraphs and images, as well as information about author, publishing&nbsp;date etc. The <em>Event</em> is similar to the <em>Blog Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the <em>Event</em>&nbsp;is&nbsp;a semantic entity.</p>
+      <content><![CDATA[<p>The&nbsp;<em>Event </em>is a specialized content for creating event entries. It can contain several paragraphs and images, as well as information about author, publishing&nbsp;date etc. The <em>Event</em> is similar to the<em>&nbsp;Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the <em>Event</em>&nbsp;is&nbsp;a semantic entity.</p>
 <p>The&nbsp;full content of an <em>Event</em>&nbsp;is usually displayed on a&nbsp;<em>Detail page </em>that is accessed&nbsp;through a<em> List</em>. On this page, teaser elements are directly placed&nbsp;with the&nbsp;<em>Event Teaser</em> formatters.&nbsp;</p>]]></content>
     </Text>
     <Image>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A number of additional functions for the Mercury template that serve as technical demos for OpenCms capabilities or provide functions that are seldom needed in a real installation.]]></description>
-		<version>11.0.0.1</version>
+		<version>11.0.1.0</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>

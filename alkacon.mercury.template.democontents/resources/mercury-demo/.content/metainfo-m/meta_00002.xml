@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MetaInfoData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/metainfo.xsd">
+  <MetaInfo language="en">
+    <Title><![CDATA[Social media sharing with the Shariff element in OpenCms]]></Title>
+    <Description><![CDATA[The Shariff social media element integrated in the OpenCms Mercury template, enables website users to share their favorite content without compromising their privacy. If this used on a detail page, all the information to share will be read from the detail content. If this is used on a manually edited page, you should also add a Meta info element to control what is actually shared.]]></Description>
+    <Image>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.galleries/misc/opencms-logo.svg]]></target>
+        <uuid>f384defd-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </Image>
+    <Keywords><![CDATA[OpenCms, Shariff, Social media]]></Keywords>
+  </MetaInfo>
+</MetaInfoData>

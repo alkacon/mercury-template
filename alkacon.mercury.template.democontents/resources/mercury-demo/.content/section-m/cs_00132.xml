@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Privacy Policy dynamic function]]></Title>
+    <Title><![CDATA[The Privacy Policy function]]></Title>
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>The Mercury template implements a <em>Privacy Policy</em> that allows a user to manage cookies and other privacy options in accordance with the EU General Data Protection Regulation (GDPR, in german known as DSGVO).</p>

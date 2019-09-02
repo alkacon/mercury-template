@@ -665,5 +665,72 @@
         </link>
       </AddFormatter>
     </AddFormatters>
+    <RemoveAllFunctions>true</RemoveAllFunctions>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/anchor.xml]]></target>
+        <uuid>82f4e477-e65f-4fd3-8976-c1d56d0fd35b</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/disqus.xml]]></target>
+        <uuid>96933da3-e1c4-4aee-9e19-b8d250efe747</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/pdf-download.xml]]></target>
+        <uuid>451b8424-6099-43f0-8782-5c5431374c68</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/login.xml]]></target>
+        <uuid>abf4813f-8476-4e86-b7e2-c135af3a5a19</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/search.xml]]></target>
+        <uuid>e92a6386-c73c-4f13-93ac-60cc1cc56425</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/pagetitle.xml]]></target>
+        <uuid>6acfc9a8-c9bb-4126-85b8-bcccadc465ee</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/sitename.xml]]></target>
+        <uuid>2c505a33-e743-45a8-83ef-1f3a643742cc</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/sourcesite.xml]]></target>
+        <uuid>66cccaa4-249c-4c10-905b-70008cd62d7f</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/header-config.xml]]></target>
+        <uuid>caf9cb05-c8e3-11e9-bfcb-0242ac11002b</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/opencms-info.xml]]></target>
+        <uuid>9d96c3d9-3b13-4c8b-8d94-3b38fb1c3b36</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/privacy-policy-settings.xml]]></target>
+        <uuid>5fc02e59-fe05-496b-9fd8-7b40245ec3fc</uuid>
+      </link>
+    </Function>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

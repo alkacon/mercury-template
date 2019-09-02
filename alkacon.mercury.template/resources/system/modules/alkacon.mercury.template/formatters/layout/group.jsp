@@ -37,8 +37,9 @@
         <c:set var="showBreadcrumbs"            value="${setting.showBreadcrumbs.useDefault(true).toBoolean}" />
         <c:set var="addBottomMargin"            value="${setting.addBottomMargin.useDefault(true).toBoolean}" />
 
+        <c:set var="showConfigElement"          value="${cms.isEditMode and ((cms.element.modelGroup and cms.modelGroupElement) or (not cms.element.modelGroup))}" />
         <c:set var="configElement">
-            <c:if test="${cms.isEditMode and cms.element.modelGroup and cms.modelGroupElement}">
+            <c:if test="${showConfigElement}">
                 <mercury:container type="header-config" name="header-config" title="${value.Title}" />
             </c:if>
         </c:set>
@@ -255,7 +256,7 @@
 
             </c:when>
 
-            <c:when test="${cms.isEditMode and cms.modelGroupPage}">
+            <c:when test="${showConfigElement}">
                 <mercury:nl />
                 <header class="area-header fh title-center">
 

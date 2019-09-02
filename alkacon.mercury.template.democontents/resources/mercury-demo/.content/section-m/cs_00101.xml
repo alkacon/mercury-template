@@ -2,10 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Flexible Content element]]></Title>
+    <Title><![CDATA[The Flexible content element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>Flexible Content</em> allows you to place HTML source snippets in your page. These can be useful e.g. to embed a video file or other external widgets. Of course, you can also use the <em>Flexible Content</em> to add&nbsp;special markup for your page&nbsp;that is not available from the&nbsp;other elements.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>The <em>Flexible content</em> allows you to place HTML source snippets in your page. These can be useful e.g. to embed a video file or other external widgets. Of course, you can also use the <em>Flexible content</em> to add&nbsp;special markup for your page&nbsp;that is not available from the&nbsp;other elements.&nbsp;</p>]]></content>
     </Text>
     <Image>
       <Image>

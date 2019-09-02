@@ -2,11 +2,11 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The FAQ Entry element]]></Title>
+    <Title><![CDATA[The FAQ entry element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>FAQ Entry</em> is a specialized content for creating contents for frequently asked questions. It can contain a question and several paragraphs with images. The <em>FAQ Entry</em> is similar to the <em>Blog Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the&nbsp;<em>FAQ Entry</em> is&nbsp;a semantic entity.</p>
-<p>The&nbsp;full content of a&nbsp;<em>FAQ Entry</em> is usually displayed on a&nbsp;<em>Detail page </em>that is accessed&nbsp;through a<em> List </em>like the one below.</p>]]></content>
+      <content><![CDATA[<p>The <em>FAQ entry</em> is a specialized content for creating contents for frequently asked questions. It can contain a question and several paragraphs with images. The <em>FAQ entry</em> is similar to the<em>&nbsp;Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the&nbsp;<em>FAQ Entry</em> is&nbsp;a semantic entity.</p>
+<p>The&nbsp;full content of a&nbsp;<em>FAQ entry</em> is usually displayed on a&nbsp;<em>Detail page </em>that is accessed&nbsp;through a<em> List </em>like the one below.</p>]]></content>
     </Text>
     <Image>
       <Image>

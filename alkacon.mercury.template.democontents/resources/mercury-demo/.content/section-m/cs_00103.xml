@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Image Series Element]]></Title>
+    <Title><![CDATA[The Image series element]]></Title>
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>The <em>Image Series</em> creates an animated list of images. These can be collected from a given source folder, or added manually. The gallery supports lazy loading, zooming and swiping / pitching on mobile devices.</p>]]></content>

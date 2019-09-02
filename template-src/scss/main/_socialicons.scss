@@ -271,3 +271,12 @@
         background-color: #c00;
     }
 }
+
+// Show WhatsApp button only if mobile device was detected OR in edit mode
+html {
+    &.desktop:not(.opencms-page-editor) {
+        li.whatsapp {
+            display: none;
+        }
+    }
+}

@@ -2,11 +2,11 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Blog Article element]]></Title>
+    <Title><![CDATA[The Article element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The&nbsp;<em>Blog Article</em> is a full featured article element. It can contain several paragraphs and images, as well as information about author, publishing&nbsp;date etc. Compared to the much simpler&nbsp;<em>Content Section</em>, a <em>Blog Article</em>&nbsp;forms a semantic entity.&nbsp;&nbsp;</p>
-<p>The&nbsp;full content of a&nbsp;Blog Article is usually displayed on a&nbsp;<em>Detail page&nbsp;</em>that is accessed&nbsp;through a<em><em> List</em></em>.&nbsp;On this page, teaser elements&nbsp;are directly placed using the&nbsp;<em>Blog Article Teaser</em> formatters.</p>]]></content>
+      <content><![CDATA[<p>The<em> Article</em> element can contain several paragraphs and images, as well as information about author, publishing date etc. It is well suited to write <em>News Messages</em> or <em>Blog entries.</em> Compared to the much simpler <em>Content Section</em>, an<em>&nbsp;Article</em>&nbsp;forms a semantic entity.&nbsp;&nbsp;</p>
+<p>The full content of a Article is usually displayed on a&nbsp;<em>Detail page&nbsp;</em>that is accessed&nbsp;through a<em><em> List</em></em>. On this page, teaser elements are directly placed using the<em>&nbsp;Article Teaser</em> formatters.</p>]]></content>
     </Text>
     <Image>
       <Image>

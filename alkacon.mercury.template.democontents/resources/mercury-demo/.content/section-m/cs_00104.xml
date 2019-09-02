@@ -5,7 +5,7 @@
     <Title><![CDATA[The Link Sequence element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>Link Sequence</em> allows you to create a list&nbsp;of links to other pages or download files. The links can be internal or external and formatted as a plain list, in a row or like a navigation. Moreover, differnt icons can be used for bullet points.</p>]]></content>
+      <content><![CDATA[<p>The <em>Link Sequence</em> allows you to create a list of links to other pages or download files. The links can be internal or external and formatted as a plain list, in a row or like a navigation. Moreover, differnt icons can be used as bullet points.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

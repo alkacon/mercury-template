@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Link "Back to the start page"]]></Title>
+    <Link>
+      <Text><![CDATA[Back to the start page]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/home/]]></target>
+          <uuid>f4c48a55-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+    <GalleryTitle><![CDATA[Link "Back to the start page"]]></GalleryTitle>
+  </ContentSection>
+</ContentSectionData>

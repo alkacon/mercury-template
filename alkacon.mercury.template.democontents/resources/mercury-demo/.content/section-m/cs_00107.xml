@@ -5,7 +5,8 @@
     <Title><![CDATA[The Contact Information element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>With the <em>Contact Information</em>, details about a person and/or company address can be shown in different ways.</p>]]></content>
+      <content><![CDATA[<p>With the <em>Contact Information</em>, details about a person and/or company address can be shown in different ways.</p>
+<p>Semantic markup according to schema.org is also added for any contact.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

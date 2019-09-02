@@ -2,11 +2,11 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Job Offer element]]></Title>
+    <Title><![CDATA[The Job advertisment element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>Job Offer</em> is a specialized content for creating job offer entries. It can contain several paragraphs and images, as well as information about location, start and end date etc. The <em>Job Offer</em> is similar to the <em>Blog Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the <em>Job Offer</em> is&nbsp;a semantic entity.</p>
-<p>The&nbsp;full content of an <em>Job Offer</em> is usually displayed on a&nbsp;<em>Detail page </em>that is accessed&nbsp;through a<em> List </em>like the one below.</p>]]></content>
+      <content><![CDATA[<p>The <em>Job advertisment</em> is a specialized content for creating job offers. It can contain several paragraphs and images, as well as information about location, start and end date etc. The <em>Job advertisment</em> is similar to the<em>&nbsp;Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the <em>Job advertisment</em> is&nbsp;a semantic entity.</p>
+<p>The&nbsp;full content of an <em>Job advertisment</em> is usually displayed on a&nbsp;<em>Detail page </em>that is accessed&nbsp;through a<em> List </em>like the one below.</p>]]></content>
     </Text>
     <Image>
       <Image>

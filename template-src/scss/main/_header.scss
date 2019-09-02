@@ -1119,23 +1119,21 @@ html.opencms-group-editor {
                 }
             }
         }
-
-
-        .type-header-config {
-            background-color: $con-col-purple;
-            color: $con-text-col-dark !important;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            line-height: 30px;
-        }
-
     }
 
     .area-header {
         // remove default head bottom margin in model group editor */
         margin-bottom: 0;
     }
+}
+
+.type-header-config {
+    background-color: $con-col-purple;
+    color: $con-text-col-dark !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 30px;
 }

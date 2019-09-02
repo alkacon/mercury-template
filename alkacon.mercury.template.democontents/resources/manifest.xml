@@ -7357,7 +7357,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Flexible Content: Slideshare presentation]]></value>
+					<value><![CDATA[Flexible content: Slideshare presentation]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -7821,7 +7821,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Link Sequence: Navigation like link sequence]]></value>
+					<value><![CDATA[Link sequence: Navigation like link sequence]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -7838,7 +7838,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Link Sequence: Link sequence as row]]></value>
+					<value><![CDATA[Link sequence: Link sequence as row]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8598,7 +8598,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Welcome to the OpenCms demo [Meta Infos] OpenCms Mercury template demo from Alkacon Software]]></value>
+					<value><![CDATA[ [Meta Infos] OpenCms Mercury template demo from Alkacon Software]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10141,7 +10141,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Content Section: Sample Heading]]></value>
+					<value><![CDATA[Content section: Sample Heading]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10158,7 +10158,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Content Section: Sample Headings]]></value>
+					<value><![CDATA[Content section: Sample Headings]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10175,7 +10175,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Content Section: Sample Text]]></value>
+					<value><![CDATA[Content section: Sample Text]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10192,7 +10192,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Content Section: Wizard of OZ placeholder text]]></value>
+					<value><![CDATA[Content section: Wizard of OZ placeholder text]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10260,7 +10260,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Content elements]]></value>
+					<value><![CDATA[Mercury: 'Content elements' Side Navigation: Content elements]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10498,7 +10498,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Link Sequence: Different element settings for the links]]></value>
+					<value><![CDATA[Link sequence: Different element settings for the links]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10668,7 +10668,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Job Offer: Featured Job Offers]]></value>
+					<value><![CDATA[Job advertisment: Featured Job Offers]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10719,7 +10719,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Image Series: Series from zooming images]]></value>
+					<value><![CDATA[Image series: Series from zooming images]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10872,7 +10872,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Blog Article: To the blog overview]]></value>
+					<value><![CDATA[Article: To the blog overview]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10906,7 +10906,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Blog Article: Basic Blog List]]></value>
+					<value><![CDATA[Article: Basic Blog List]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -11144,7 +11144,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Overview of empty container colors]]></value>
+					<value><![CDATA[Layout row: Overview of empty container colors]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -11162,6 +11162,23 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Disqus comments: The Disqus comment function]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/cs_00145.xml</source>
+			<destination>mercury-demo/.content/section-m/cs_00145.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>17b8c609-cd9f-11e9-a9bf-0242ac11002b</uuidstructure>
+			<uuidresource>17b8c60a-cd9f-11e9-a9bf-0242ac11002b</uuidresource>
+			<datecreated>Mon, 02 Sep 2019 16:31:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Flexible content: Embedding videos]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -11692,7 +11709,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[page]]></value>
+					<value><![CDATA[Redirect to first page in navigation]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
@@ -11828,7 +11845,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[page]]></value>
+					<value><![CDATA[Redirect to first page in navigation]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
@@ -14889,7 +14906,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[page]]></value>
+					<value><![CDATA[Redirect to first page in navigation]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>

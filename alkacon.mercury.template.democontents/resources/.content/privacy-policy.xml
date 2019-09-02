@@ -6,7 +6,7 @@
     <PolicyText name="PolicyText0">
       <links>
         <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-demo/element-pages/privacy-policy/]]></target>
+          <target><![CDATA[/sites/default/mercury-demo/advanced-elements/functions/privacy-policy/]]></target>
           <uuid>f4b7b9c8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
@@ -24,7 +24,7 @@
     <PolicyText name="PolicyText0">
       <links>
         <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-demo/element-pages/privacy-policy/]]></target>
+          <target><![CDATA[/sites/default/mercury-demo/advanced-elements/functions/privacy-policy/]]></target>
           <uuid>f4b7b9c8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>

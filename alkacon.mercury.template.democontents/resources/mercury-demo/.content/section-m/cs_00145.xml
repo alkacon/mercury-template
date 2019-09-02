@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Embedding videos]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>To embed videos e.g. from YouTube or other sites, it is recommended to use the <em>Media</em> element instead of the <em>Flexible content</em>, because it generates optimized markup and also cares about the user privacy.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[More about the Media element]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-demo/content-elements/media/]]></target>
+          <uuid>e5933c61-cd75-11e9-9e70-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

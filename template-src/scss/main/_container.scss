@@ -93,6 +93,7 @@ $oct-edit-infos:
 
 %infobox-head {
     color: $con-text-col-dark !important;
+    background-color: transparent !important;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -110,6 +111,7 @@ $oct-edit-infos:
 
     .text {
         color: $con-text-col-grey !important;
+        background-color: transparent !important;
 
         &.capital {
             text-transform: capitalize !important;
@@ -172,6 +174,11 @@ $oct-edit-infos:
         margin-bottom: 10px;
     }
     @extend %oct-infobox-base, %oct-infobox-round;
+
+    .head,
+    .text {
+        background-color: transparent !important;
+    }
 
     > div,
     > h1, > h2, > h3, > h4,

@@ -2260,6 +2260,14 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[addBottomMargin.layout]]></IncludeName>
+      <PropertyName><![CDATA[addBottomMargin]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.addBottomMargin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.addBottomMargin.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:useBottomMargin)]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bgImage.layout]]></IncludeName>
       <PropertyName><![CDATA[bgImage]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.bgImage)]]></DisplayName>

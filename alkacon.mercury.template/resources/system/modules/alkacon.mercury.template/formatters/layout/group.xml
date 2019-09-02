@@ -35,6 +35,9 @@
     <Setting>
       <IncludeName><![CDATA[showBreadcrumbs.layout]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[addBottomMargin.layout]]></IncludeName>
+    </Setting>
     <Attribute>
       <Key><![CDATA[useFixedHeader]]></Key>
       <Value><![CDATA[%!
@@ -49,6 +52,16 @@
       <Key><![CDATA[useBreadcrumbs]]></Key>
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).contains.("-bc"))%%!
+                !%checkbox%!
+            !%%else%%!
+                !%hidden%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[useBottomMargin]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).contains.("-flex"))%%!
                 !%checkbox%!
             !%%else%%!
                 !%hidden%!

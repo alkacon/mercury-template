@@ -759,7 +759,7 @@
                     position: absolute;
                     display: inline-block;
                     font-family: FontAwesome;
-                    right: 9px;
+                    right: round(($nav-menu-hor-padding - 2px) / 2);
                     font-size: $nav-font-size;
                     content: "\f105"; // right arrow for default large screens
                     font-weight: normal;

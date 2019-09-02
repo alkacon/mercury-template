@@ -23,6 +23,9 @@
       </link>
     </IncludeSettings>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[logoAlignment.header]]></IncludeName>
     </Setting>
     <Setting>

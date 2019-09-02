@@ -35,6 +35,9 @@
         @if ($nav-header-margin-bottom > 0) {
             margin-bottom: $nav-header-margin-bottom;
         }
+        &.no-margin {
+            margin-bottom: 0;
+        }
     }
 
     // Special header containers
@@ -171,8 +174,7 @@
                 .h-info {
                     order: 3;
                     .h-meta,
-                    .h-title,
-                    .h-nav {
+                    .h-title {
                         padding-left: $grid-gutter-width / 2;
                     }
                 }
@@ -191,9 +193,6 @@
                 .header-links {
                     display: flex;
                     flex-basis: auto;
-                    > ul {
-                        display: inline-block;
-                    }
                 }
             }
 
@@ -204,7 +203,7 @@
                 .h-info {
                     .h-meta {
                         // make sure meta links are aligned to navigation
-                        padding-left: $nav-header-hor-padding;
+                        padding-left: $grid-gutter-width / 2;
                     }
                 }
             }
@@ -275,6 +274,12 @@
                 .h-title {
                     justify-content: flex-end;
                 }
+                &.nav-aside {
+                    // add padding above nav if title sits directly over it
+                    .h-nav {
+                        padding-top: $default-margin-verysmall;
+                    }
+                }
             }
 
             &.title-left {
@@ -285,7 +290,7 @@
                 .h-info {
                     .h-title {
                         // make sure title is aligned to navigation
-                        padding-left: $nav-header-hor-padding;
+                        padding-left: $grid-gutter-width / 2
                     }
                 }
             }
@@ -336,6 +341,10 @@
                 }
                 .nav-main-items {
                     justify-content: flex-start;
+                    > li > .nav-menu {
+                        // adjust dropdown menu
+                        left: $nav-header-hor-padding - $nav-menu-hor-padding;
+                    }
                 }
             }
 
@@ -352,11 +361,18 @@
             // reduced navigation space
 
             &.nav-disp-reduced {
-                .nav-main-items > li > a {
-                    padding-left: $nav-header-hor-padding;
-                    padding-right: $nav-header-hor-padding;
-                    &::after {
-                        right: $nav-header-arrows-right;
+                $fh-nav-header-reduction: 3px !default;
+                .nav-main-items > li {
+                    > a {
+                        padding-left: $nav-header-hor-padding - $fh-nav-header-reduction;
+                        padding-right: $nav-header-hor-padding - $fh-nav-header-reduction;
+                        &::after {
+                            right: $nav-header-arrows-right;
+                        }
+                    }
+                    > .nav-menu {
+                        // adjust dropdown menu
+                        left: $nav-header-hor-padding - $nav-menu-hor-padding - $fh-nav-header-reduction;
                     }
                 }
             }
@@ -385,7 +401,7 @@
                         }
                         > .nav-menu {
                             // adjust dropdown menu
-                            left: $fh-nav-header-padding-increase;
+                            left: $fh-nav-header-padding-increase + $nav-header-hor-padding - $nav-menu-hor-padding;
                         }
                     }
                 }
@@ -399,7 +415,7 @@
                             padding-left: 0;
                         }
                         > .nav-menu {
-                            left: -1 * $nav-header-hor-padding;
+                            left: -1 * $nav-header-hor-padding + $nav-header-hor-padding - $nav-menu-hor-padding;
                         }
                     }
                 }
@@ -575,8 +591,19 @@
                         &.header-notfixed,
                         &.header-isfixed.fix-complete {
                             .h-nav {
-                                padding-top: #{$logo-padding};
                                 padding-bottom: calc(#{$logo-padding} - #{$nav-header-ver-padding});
+                            }
+                            &.nav-below {
+                                // if nav is below we need a padding on top (aside not)
+                                .h-nav {
+                                    padding-top: $logo-padding;
+                                }
+                                &.title-bottom {
+                                    // if title is at bottom add padding otherwise it will not be aligned with logo
+                                    .h-info .h-title {
+                                        padding-bottom: $logo-padding;
+                                    }
+                                }
                             }
                         }
                     }
@@ -786,10 +813,10 @@
                 background-color: #A40E4C;
             }
             .h-nav {
-                background-color: #BBECA9;
+                background-color: #C1D8ED;
             }
             .h-nav > .co-lg-xl {
-                background-color: #78C95A;
+                background-color: #8FB8DE;
             }
             .h-bc {
                 background-color: #F8CC8B;
@@ -807,6 +834,11 @@
     }
 
     .area-header {
+        // global variables are now mostly for flexible header, this is for backward compatibility
+        $logo-left-nav-padding: 0 20px $nav-header-ver-padding 20px !default;
+        $logo-left-arrow-right: 5px !default;
+        $logo-left-menu-left: 20px - $nav-menu-hor-padding;
+
         // Deprecated "logo-left" header
         &.logo-left {
             .header-links,
@@ -912,11 +944,23 @@
                 }
 
                 .nav-main-container {
-                    // padding-top: $default-margin-verysmall;
                     flex-basis: auto;
                     flex-grow: 1;
                     display: flex;
                     justify-content: flex-end;
+                }
+
+                .nav-main-items > li {
+                    > a {
+                        padding: $logo-left-nav-padding;
+                        &::after {
+                            right: $logo-left-arrow-right;
+                        }
+                    }
+                    > .nav-menu {
+                        // adjust dropdown menu
+                        left: $logo-left-menu-left;
+                    }
                 }
             }
         }

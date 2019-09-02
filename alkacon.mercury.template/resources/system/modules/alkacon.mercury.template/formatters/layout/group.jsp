@@ -17,7 +17,7 @@
 
 <c:set var="variant"            value="${value.Variant}" />
 <c:set var="setting"            value="${cms.element.setting}" />
-<c:set var="cssWrapper"         value="${cms.element.settings.cssWrapper}" />
+<c:set var="cssWrapper"         value="${cms.element.setting.cssWrapper.toString}" />
 
 <jsp:useBean id="valueMap"      class="java.util.HashMap" />
 <jsp:useBean id="params"        class="java.util.HashMap" />
@@ -34,7 +34,8 @@
 
     <c:when test="${variant eq 'head-flex-bc'}">
 
-        <c:set var="showBreadcrumbs"            value="${setting.showBreadcrumbs.toBoolean}" />
+        <c:set var="showBreadcrumbs"            value="${setting.showBreadcrumbs.useDefault(true).toBoolean}" />
+        <c:set var="addBottomMargin"            value="${setting.addBottomMargin.useDefault(true).toBoolean}" />
 
         <c:set var="configElement">
             <c:if test="${cms.isEditMode and cms.element.modelGroup and cms.modelGroupElement}">
@@ -48,6 +49,7 @@
             <c:when test="${not empty headerConfigElementBeans}">
 
                 <c:set var="config"             value="${headerConfigElementBeans.get(0)}" />
+                <c:set var="addCssWrapper"      value="${config.setting.cssWrapper.toString}" />
                 <c:set var="logoAlignment"      value="${config.setting.logoAlignment.useDefault('lp-left').toString}" />
                 <c:set var="logoSize"           value="${config.setting.logoSize.useDefault('ls-4').toString}" />
                 <c:set var="logoFullSize"       value="${logoSize eq 'ls-12'}" />
@@ -68,7 +70,7 @@
                 <c:set var="navAlignment"       value="${config.setting.navAlignment.useDefault('nav-right').toString}" />
                 <c:set var="navAlignment"       value="${navAlignment eq 'default' ? 'nav-'.concat(alignDefault) : navAlignment}" />
                 <c:set var="navPosition"        value="${logoPosCenter ? 'nav-below' : config.setting.navPosition.useDefault('nav-aside').toString}" />
-                <c:set var="navDisplay"         value="${config.setting.navDisplay.useDefault(navDisplay).toString}" />
+                <c:set var="navDisplay"         value="${config.setting.navDisplay.useDefault('nav-disp-default').toString}" />
                 <c:set var="navPullUp"          value="${config.setting.navPullUp.useDefault('np-never').toString}" />
                 <c:set var="navFixType"         value="${config.setting.headerPosition.useDefault('css').toString}" />
                 <c:set var="navFixDisplay"      value="${config.setting.navFixDisplay.useDefault('fix-compact').toString}" />
@@ -194,8 +196,10 @@
                     ${needNavPull ? navPullUp.concat(' ') : ''}
                     ${navFixDisplay}${' '}
                     ${showAddContainer ? acDisplay.concat(' ').concat(acPosition.concat(' ')) : ''}
-                    ${bcAlignment}${' '}
-                    ${cssWrapper}"><%----%>
+                    ${bcAlignment}
+                    ${not addBottomMargin ? ' no-margin' : ''}
+                    ${not empty cssWrapper ? ' '.concat(cssWrapper) : ''}
+                    ${not empty addCssWrapper ? ' '.concat(addCssWrapper) : ''}"><%----%>
                     <mercury:nl />
 
                     ${configElement}

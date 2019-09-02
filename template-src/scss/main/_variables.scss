@@ -295,7 +295,7 @@ $nav-font-size:                     14px !default; // font size of dropdown entr
 $nav-line-height:                   20px !default; // line hight of dropdown entries and side navigation
 $nav-animation-time:                $default-transition-time !default; // timing for most animation effects used in the navigation
 $nav-border-radius:                 $default-border-radius !default; // border radius of nav toggle and topcontrol buttons
-$nav-hor-padding:                   15px !default; // horizontal paddding of the nav menu entries in LG, XL screens size
+$nav-hor-padding:                   14px !default; // horizontal paddding of the nav menu entries in LG, XL screen size
 $nav-head-bg:                       $body-bg !default; // color of the header background container
 $nav-head-fixed-shadow:             0px 0px 10px 1px $dropshadow !default; // shadow if header is fixed
 $nav-head-padding:                  10px 0px 10px 0px !default; // paddings for header
@@ -326,12 +326,12 @@ $nav-menu-border:                   solid $nav-menu-border-size $nav-theme !defa
 $nav-menu-border-top:               $nav-menu-border !default; // the border on top of the "folded out" menus in  LG, XL
 $nav-menu-border-bottom:            $nav-menu-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
 $nav-menu-entry-border-bottom:      1px solid $nav-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
-$nav-menu-ver-padding:              8px !default;           // vertical paddding of the nav menu entries in LG, XL screens size
-$nav-menu-hor-padding:              $nav-header-hor-padding !default; // horizontal paddding of the nav menu entries in LG, XL screens size
+$nav-menu-ver-padding:              8px !default; // vertical paddding of the nav menu entries in LG, XL screens size
+$nav-menu-hor-padding:              20px !default; // horizontal paddding of the nav menu entries in LG, XL screens size
 $nav-menu-padding:                  $nav-menu-ver-padding $nav-menu-hor-padding !default; // padding for items in the "folded out" menus
-$nav-menu-min-width:                250px !default;         // minimal width of the nav menus in  LG, XL
-$nav-menu-text-mobile:              $nav-text !default;     // text color for mobile menus
-$nav-menu-bg-mobile:                $nav-bg !default;       // background color for mobile menus
+$nav-menu-min-width:                250px !default; // minimal width of the nav menus in  LG, XL
+$nav-menu-text-mobile:              $nav-text !default; // text color for mobile menus
+$nav-menu-bg-mobile:                $nav-bg !default; // background color for mobile menus
 
 // mobile navigation settings
 $nav-mobile-position:               right !default; // alternatives are ""left" or "right"
@@ -399,8 +399,7 @@ $fh-meta-bg-color:                  none !default; // background color of the me
 $fh-title-bg-color:                 none !default; // background color of the title
 $fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
 $fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
-
-$fh-nav-header-padding-increase:    10px !default;
+$fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
 
 $nav-meta-font-size:                $font-size-sm !default;
 $nav-meta-text:                     $nav-header-text !default;
@@ -408,7 +407,7 @@ $nav-meta-text-hover:               $nav-header-text-hover !default;
 $header-logo-xs-width:              270px !default; // max width for logo on XS screens (substract 2 * $gutter)
 $header-logo-fixed-width:           250px !default; // max width for logo if fixed header (substract 2 * $gutter)
 $nav-head-fixed-opacity:            0.97 !default;  // background if header is fixed
-$header-image-ribbon-bg:            $main-theme !default; // background color for image ribbon in header
+$header-image-ribbon-bg:            none !default; // background color for image ribbon in header
 $header-image-bg:                   none !default; // background color for image ribbon in header
 
 

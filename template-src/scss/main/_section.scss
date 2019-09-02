@@ -26,10 +26,13 @@
     padding: $default-margin $default-margin-small;
     text-align: center;
     display: flex;
-    flex-grow: 1;
-    flex-shrink: 1;
     flex-direction: column;
     @include round-corners($iconbox-border-radius, true);
+
+    &:only-child {
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
 
     $color: get-text-color($main-theme);
     color: $color;

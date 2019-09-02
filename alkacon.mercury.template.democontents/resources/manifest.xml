@@ -10838,7 +10838,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Image / text flipping cards: Image / text flipping cards]]></value>
+					<value><![CDATA[Image / text flipping cards: Using the Content section for Image / text flipping cards]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -12908,15 +12908,15 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>NavPos</name>
-					<value><![CDATA[868.2959]]></value>
+					<value><![CDATA[692.7514]]></value>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Demo pages]]></value>
+					<value><![CDATA[Demos]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo pages]]></value>
+					<value><![CDATA[Demos]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -13431,46 +13431,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Flex Blog]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/demo-pages/imageflip</destination>
-			<type>folder</type>
-			<uuidstructure>f48733e4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[0.0126953125]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Image / text flipping cards]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Image / text flipping cards]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/demo-pages/imageflip/index.html</source>
-			<destination>mercury-demo/demo-pages/imageflip/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f487d029-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f487d02a-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Image / text flipping cards]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -14109,7 +14069,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>NavPos</name>
-					<value><![CDATA[692.5685]]></value>
+					<value><![CDATA[692.29407]]></value>
 				</property>
 				<property>
 					<name>NavText</name>
@@ -14205,7 +14165,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>NavPos</name>
-					<value><![CDATA[0.5]]></value>
+					<value><![CDATA[0.8125]]></value>
 				</property>
 				<property>
 					<name>NavText</name>
@@ -14279,6 +14239,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Image elements]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/layout-variations/imageflip</destination>
+			<type>folder</type>
+			<uuidstructure>f48733e4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.9375]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Image / text flipping cards]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Image / text flipping cards]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/layout-variations/imageflip/index.html</source>
+			<destination>mercury-demo/layout-variations/imageflip/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>f487d029-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f487d02a-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Image / text flipping cards]]></value>
 				</property>
 			</properties>
 			<relations/>

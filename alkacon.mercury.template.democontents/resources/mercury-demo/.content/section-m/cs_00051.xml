@@ -5,7 +5,7 @@
     <Title><![CDATA[Using the Content Section for icon boxes]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This page demonstrates repeated use of the same <em>Content&nbsp;Section<strong>&nbsp;</strong></em>element using&nbsp;the special&nbsp;<em>Icon box </em>layout. Styles&nbsp;are applied&nbsp;and the icon is selected&nbsp;through individual element settings.</p>]]></content>
+      <content><![CDATA[<p>This page demonstrates repeated use of the same <em>Content&nbsp;Section</em>element using&nbsp;the special&nbsp;<em>Icon box </em>layout formatter. Styles are applied and the icon is selected through individual element settings.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

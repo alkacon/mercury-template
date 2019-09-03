@@ -60,7 +60,8 @@
     .box-#{""+$color-name} {
         $color: check-text-color($bg-color, $text-light); // we normally want light text
         $color-link: check-text-color($bg-color, $link-color);
-        $color-hover: check-text-color($bg-color, $link-hover-color);
+        $color-hover-base: conditional-value($color-link == $link-color, $link-hover-color, $color-link);
+        $color-hover: check-text-color($bg-color, $color-hover-base);
 
         background-color: $bg-color;
         color: $color;

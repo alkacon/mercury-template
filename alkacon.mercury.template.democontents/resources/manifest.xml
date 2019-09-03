@@ -9504,7 +9504,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Text elements: Text in different flavours]]></value>
+					<value><![CDATA[Text display: Text in different flavours]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9521,7 +9521,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Text elements: Using the Content Section to display text]]></value>
+					<value><![CDATA[Text display: Using the Content Section to display text]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9555,7 +9555,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Icon boxes: OpenCms is awesome!]]></value>
+					<value><![CDATA[Icon box display: OpenCms is awesome!]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10252,7 +10252,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mercury: 'Content elements' Side Navigation: Content elements]]></value>
+					<value><![CDATA[Content elements]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -11255,7 +11255,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Article Detail display: Article Detail display options]]></value>
+					<value><![CDATA[Detail test: Article Detail display options]]></value>
 				</property>
 			</properties>
 			<relations/>

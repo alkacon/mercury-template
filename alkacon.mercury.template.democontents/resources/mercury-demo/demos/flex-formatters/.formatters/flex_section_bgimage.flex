@@ -2,7 +2,7 @@
 
 <FlexFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/flex_formatter.xsd">
   <FlexFormatter language="en">
-    <NiceName><![CDATA[%(key.formatter.flex.section.bgimage)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.flex.formatter.section.bgimage)]]></NiceName>
     <Type><![CDATA[m-section]]></Type>
     <Rank><![CDATA[250]]></Rank>
     <Match>

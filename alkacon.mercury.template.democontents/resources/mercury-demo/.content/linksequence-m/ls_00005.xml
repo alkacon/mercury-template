@@ -7,7 +7,7 @@
       <Text><![CDATA[Description]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-demo/demo-pages/real-estate/]]></target>
+          <target><![CDATA[/sites/default/mercury-demo/demos/real-estate/]]></target>
           <uuid>f488937c-3a95-11e9-bd84-0242ac11002b</uuid>
           <anchor><![CDATA[Description]]></anchor>
         </link>
@@ -17,7 +17,7 @@
       <Text><![CDATA[Property Images]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-demo/demo-pages/real-estate/]]></target>
+          <target><![CDATA[/sites/default/mercury-demo/demos/real-estate/]]></target>
           <uuid>f488937c-3a95-11e9-bd84-0242ac11002b</uuid>
           <anchor><![CDATA[Images]]></anchor>
         </link>
@@ -27,7 +27,7 @@
       <Text><![CDATA[Location]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-demo/demo-pages/real-estate/]]></target>
+          <target><![CDATA[/sites/default/mercury-demo/demos/real-estate/]]></target>
           <uuid>f488937c-3a95-11e9-bd84-0242ac11002b</uuid>
           <anchor><![CDATA[Location]]></anchor>
         </link>

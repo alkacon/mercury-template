@@ -2,7 +2,7 @@
 
 <FlexFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/flex_formatter.xsd">
   <FlexFormatter language="en">
-    <NiceName><![CDATA[%(key.formatter.flex.linksequence)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.flex.formatter.linksequence)]]></NiceName>
     <Type><![CDATA[m-linksequence]]></Type>
     <Rank><![CDATA[250]]></Rank>
     <Match>

@@ -63,7 +63,16 @@ $font-weight-intro-headings:        get-font-weight($font-family-headings, $font
 $font-style-headings:               normal !default;
 $font-style-headings:               get-font-style($font-family-headings, $font-weight-headings, $font-style-headings);
 
-// fonts used in the navigation
+
+// Font REM bases
+
+$font-rem-base-print-size:          8px !default;
+$font-rem-base-desktop-size:        10px !default;
+$font-rem-base-mobile-size:         12px !default;
+
+
+// Fonts used in the navigation
+
 $nav-font-family:                   $font-family-base !default; // font family to use for the navigation
 $nav-header-font-family:            $nav-font-family !default; // text font for header nav items
 $nav-menu-font-family:              $nav-font-family !default; // text font for header nav items
@@ -90,7 +99,9 @@ $nav-mobile-font-weight:            get-font-weight($nav-mobile-font-family, $na
 $nav-mobile-header-font-weight:     get-font-weight($nav-mobile-font-family, $nav-mobile-header-font-weight);
 $nav-side-font-weight:              get-font-weight($font-family-base, $nav-side-font-weight);
 
-// fonts used elsewhere
+
+// Fonts used elsewhere
+
 $btn-font-family:                   $font-family-base !default;
 $form-font-family:                  $font-family-base !default;
 $pagination-font-family:            $font-family-base !default;
@@ -108,6 +119,7 @@ $form-font-weight:                  get-font-weight($form-font-family, $form-fon
 $map-text-weight:                   $font-weight-light !default;
 $map-header-weight:                 $font-weight-normal !default;
 
+
 // Base font sizes
 
 $font-size-base:                    1.4rem !default;
@@ -119,6 +131,7 @@ $line-height-base:                  1.5 !default;
 $line-height-headings:              $line-height-base !default;
 $line-height-lead:                  $line-height-base !default;
 $target-line-height:                ($font-size-base * $line-height-base) !default;
+
 
 // Heading sizes
 
@@ -270,8 +283,9 @@ $piece-hyphens-text:                $piece-hyphens !default; // enable hyphenati
 $piece-hyphens-text-xs:             $piece-hyphens-text !default; // enable hyphenation for XS and SM
 $piece-hyphens-text-md:             $piece-hyphens-text !default; // enable hyphenation for MS, LG and XL
 
+
 // Navigation
-// These are only the variables used elsewhere. There is more in _nav-main.scss.
+// These are only the variables used elsewhere. There is more in _nav-main.scss and _header.scss
 
 $nav-theme:                         $main-theme !default; // used for 1st level text and big colored border above / below menus
 $nav-bg:                            $body-bg !default; // standard background of the nav menu entries
@@ -284,9 +298,6 @@ $nav-border:                        $grey-light !default; // the border color fo
 $nav-header-text:                   $nav-text !default; // text color in header nav items
 $nav-head-border:                   1px solid $nav-border !default; // border below desktop header, set to "none" to disable
 $nav-setting-fixheader:             true !default; // Valid: true, false, upscroll
-
-
-
 $nav-bg-active-mobile:              $nav-bg-active !default; // the current page in navigation background color in mobile menu
 $nav-bg-hover-mobile:               $nav-bg-hover !default; // hover background of the nav menu entries for mobile
 $nav-text-hover-mobile:             $nav-text-hover !default; // hover text color for mobile navigation
@@ -300,27 +311,31 @@ $nav-head-bg:                       $body-bg !default; // color of the header ba
 $nav-head-fixed-shadow:             0px 0px 10px 1px $dropshadow !default; // shadow if header is fixed
 $nav-head-padding:                  10px 0px 10px 0px !default; // paddings for header
 $nav-handle-right-padding:          40px !default; // padding for nav handles, applies only to desktop nav menus with direct subpages
+$nav-head-fixed-opacity:            0.97 !default; // background opacity if header is fixed
 
-// the header
-// mostly applies to the "first level" of the navigation menu
+
+// Navigation header - applies to the "first level" of the navigation menu
+
 $nav-header-text-active:            $nav-theme !default; // the "active page in navigation" text color
 $nav-header-text-hover:             $nav-text-hover !default; // the hover text color for the header nav items
-$nav-header-text-transform:         uppercase !default;     // text transformation for header nav items
-$nav-header-font-size:              15px !default;          // font size of header nav items
-$nav-header-float:                  right !default;         // float direction of header navigation items, can be 'left' or 'right'
+$nav-header-text-transform:         uppercase !default; // text transformation for header nav items
+$nav-header-font-size:              15px !default; // font size of header nav items
+$nav-header-float:                  right !default; // float direction of header navigation items, can be 'left' or 'right'
 $nav-header-hor-padding:            $nav-hor-padding !default // horizontal padding right for header nav items in LG, XL
-$nav-header-ver-padding:            8px !default;           // vertical padding above / blow the header nav items in LG, XL
+$nav-header-ver-padding:            8px !default; // vertical padding above / blow the header nav items in LG, XL
 $nav-header-padding:                0 $nav-header-hor-padding $nav-header-ver-padding $nav-header-hor-padding !default; // padding for header nav items
-$nav-header-arrows-right:           0 !default;             // right position of arrows in header in LG, XL
-$nav-header-line-height:            20px !default;          // line height of header nav items
+$nav-header-arrows-right:           0 !default; // right position of arrows in header in LG, XL
+$nav-header-line-height:            20px !default; // line height of header nav items
 $nav-header-total-height:           $nav-header-line-height + (1 * $nav-header-ver-padding) !default; // total height of header lines (text height plus vertical padding)
-$nav-header-show-arrows:            true !default;          // true / false: show "arrow" right to header nav items in  LG, XL
-$nav-header-animate-menu:           "move" !default;        // "none" / "fade" / "move": effect for revealing sub menu on  LG, XL
-$nav-header-border-size:            2px !default;           // border (bottom only) size of header nav items
-$nav-header-border-color:           $nav-border !default;   // border (bottom only) color of header nav items
+$nav-header-show-arrows:            true !default; // true / false: show "arrow" right to header nav items in  LG, XL
+$nav-header-animate-menu:           "move" !default; // "none" / "fade" / "move": effect for revealing sub menu on  LG, XL
+$nav-header-border-size:            2px !default; // border (bottom only) size of header nav items
+$nav-header-border-color:           $nav-border !default; // border (bottom only) color of header nav items
 $nav-header-margin-bottom:          $default-margin !default; // margin below the header
 
-// these apply to navigation levels > 1, i.e. everything "below" the header nav items
+
+// Navigation menu - applies to navigation levels > 1, i.e. everything "below" the header nav items
+
 $nav-menu-border-size:              1px !default; // borders size around the "folded out" menus in  LG, XL (also needed for placement calculations)
 $nav-menu-border:                   solid $nav-menu-border-size $nav-theme !default; // the borders around the "folded out" menus in LG, XL
 $nav-menu-border-top:               $nav-menu-border !default; // the border on top of the "folded out" menus in  LG, XL
@@ -333,7 +348,24 @@ $nav-menu-min-width:                250px !default; // minimal width of the nav 
 $nav-menu-text-mobile:              $nav-text !default; // text color for mobile menus
 $nav-menu-bg-mobile:                $nav-bg !default; // background color for mobile menus
 
-// mobile navigation settings
+
+// Flexible header - this is used for the special layout group "Mercury header with flexible layout options"
+
+$fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
+$fh-meta-bg-color:                  none !default; // background color of the meta / service links
+$fh-meta-color:                     check-text-color($fh-meta-bg-color, $nav-header-text) !default; // font color for meta / service links
+$fh-meta-hover-color:               check-text-color($fh-meta-bg-color, $nav-header-text-hover) !default; // font hover color for meta / service links
+$fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
+$fh-title-bg-color:                 none !default; // background color of the title
+$fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
+$fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
+$fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
+$fh-ac-bg-color:                    none !default; // color of additional container
+$fh-logo-image-bg:                  none !default; // background color for the logo image in the header
+
+
+// Mobile navigation menu
+
 $nav-mobile-position:               right !default; // alternatives are ""left" or "right"
 $nav-mobile-bg-color:               $nav-border !default; // background color of mobile navigation wrapper
 $nav-mobile-menu-bg-color:          $nav-head-bg !default; // background color of mobile navigation items wrapper
@@ -372,15 +404,10 @@ $nav-breakpoint-desktop:            lg !default; // breakpoint from which the de
 $nav-breakpoint-sticky-header:      md !default; // breakpoint from which to use the sticky header
 $nav-breakpoint-sticky-header-size: 100000 !default; // size from which to use the sticky header ONLY in case there is no destop/mobile difference
 
-// configurable settings for the mega menu
-$nav-megamenu-bg:                   $nav-bg;
-
-// disabled background-image, used for model group editor
-$disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(240,240,242,1) 10px,rgba(240,240,242,1) 20px);
+$nav-megamenu-bg:                   $nav-bg; // background color for the mega menu
 
 
-// The "nav-toggle" button
-// This is the button displayed on small screens to show / hide the navigation
+// The "nav-toggle" button - this is the button displayed on small screens to show / hide the navigation
 
 $nav-toggle-bg:                     $main-theme !default; // color of toggle button
 $nav-toggle-bg-hover:               $main-theme-hover !default; // hover color of toggle button
@@ -390,40 +417,6 @@ $nav-toggle-size:                   40px !default; // height of toggle button
 $nav-toggle-size-xxs:               30px !default; // on very smaller screens the button size is reduced further
 $nav-toggle-bottom:                 5px !default; // bottom positioning of toggle button
 
-
-// Header
-
-// flexible header - most often used version of the header, therefore has it's own parameters
-$fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
-$fh-meta-bg-color:                  none !default; // background color of the meta / service links
-$fh-title-bg-color:                 none !default; // background color of the title
-$fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
-$fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
-$fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
-
-$nav-meta-font-size:                $font-size-sm !default;
-$nav-meta-text:                     $nav-header-text !default;
-$nav-meta-text-hover:               $nav-header-text-hover !default;
-$header-logo-xs-width:              270px !default; // max width for logo on XS screens (substract 2 * $gutter)
-$header-logo-fixed-width:           250px !default; // max width for logo if fixed header (substract 2 * $gutter)
-$nav-head-fixed-opacity:            0.97 !default;  // background if header is fixed
-$header-image-ribbon-bg:            none !default; // background color for image ribbon in header
-$header-image-bg:                   none !default; // background color for image ribbon in header
-
-
-// Footer
-
-$foot-top-bg-color:                 $black !default;
-$foot-top-text-color:               get-text-color($foot-top-bg-color) !default;
-$foot-top-header-color:             $foot-top-text-color !default;
-$foot-top-link-color:               get-highlight-color($foot-top-text-color, 10%) !default;
-$foot-top-link-hover-color:         $foot-top-link-color !default;
-
-$foot-sub-bg-color:                 $foot-top-bg-color !default;
-$foot-sub-text-color:               get-text-color($foot-sub-bg-color) !default;
-$foot-sub-header-color:             $foot-sub-text-color !default;
-$foot-sub-link-color:               get-highlight-color($foot-sub-text-color, 10%) !default;
-$foot-sub-link-hover-color:         $foot-sub-link-color !default;
 
 // Breadcrumps
 
@@ -439,8 +432,8 @@ $nav-breadcrump-separator:          "\f0da" !default; // separator char between 
 $nav-breadcrump-separator-color:    conditional-value($nav-breadcrump-bg-color == none, $grey, get-text-color($nav-breadcrump-bg-color)) !default; // color of breadcrumps sepearator
 $nav-breadcrump-separator-font:     FontAwesome !default; // font-family for breadcrumbs sepearator
 
-// Side navigation
-// Mirrors the main navigation by default, and allows to use different colors if required.
+
+// Side navigation - mirrors the main navigation by default, and allows to use different colors if required.
 
 $nav-side-bg:                       $nav-bg !default;
 $nav-side-bg-hover:                 $nav-bg-hover !default;
@@ -457,6 +450,21 @@ $nav-side-right-padding:            30px !default;
 $nav-side-ver-padding:              6px !default;
 $nav-side-padding:                  $nav-side-ver-padding $nav-side-right-padding $nav-side-ver-padding $nav-side-left-padding-start !default;
 $nav-side-border-radius:            $default-border-radius !default;
+
+
+// The Footer - this is used for the layout groups "Mercury footer full" and "Mercury footer reduced"
+
+$foot-top-bg-color:                 $black !default;
+$foot-top-text-color:               get-text-color($foot-top-bg-color) !default;
+$foot-top-header-color:             $foot-top-text-color !default;
+$foot-top-link-color:               get-highlight-color($foot-top-text-color, 10%) !default;
+$foot-top-link-hover-color:         $foot-top-link-color !default;
+
+$foot-sub-bg-color:                 $foot-top-bg-color !default;
+$foot-sub-text-color:               get-text-color($foot-sub-bg-color) !default;
+$foot-sub-header-color:             $foot-sub-text-color !default;
+$foot-sub-link-color:               get-highlight-color($foot-sub-text-color, 10%) !default;
+$foot-sub-link-hover-color:         $foot-sub-link-color !default;
 
 
 // Lists and pagination
@@ -493,6 +501,7 @@ $teaser-btn-color:                  $btn-default  !default;
 $teaser-btn-hover-color:            $btn-default-hover !default;
 
 $dl-list-highlight-color:           $highlight-color !default; // highlight background for compact download lists
+
 
 // Event calendar sheet
 
@@ -565,6 +574,7 @@ $acc-icon-text-color:               get-text-color($acc-icon-bg-color) !default;
 $acc-icon-border-radius:            $default-border-radius !default;
 $acc-icon-size:                     3.5rem !default;
 
+
 // OSM maps / Google maps
 
 $map-border-radius:                 $default-border-radius !default;
@@ -573,7 +583,9 @@ $map-text-size:                     1.4rem !default;
 $map-header-size:                   1.8rem !default;
 $map-label-color:                   $main-theme !default;
 
-// map colors (for marker groups)
+
+// Map colors (for marker groups)
+
 $map-colors: (
     $main-theme,
     $main-theme-hover,
@@ -654,7 +666,9 @@ $social-links-box-height:           $social-links-size * 2 !default;
 $social-links-border-radius:        $btn-border-radius !default;
 $social-links-border-width:         0 !default;
 
+
 // Map to generate the social icon styles from
+
 $social-links:
     (facebook, facebook, $color-facebook),
     (youtube, youtube, $color-youtube),
@@ -700,6 +714,7 @@ $effect-static-border:              1px solid $grey-light !default;
 $transition-timing:                 $default-transition-time !default; // default timing used for :hover and other transitions
 $transition-function:               ease; // default timing function used for :hover and other transitions
 
+
 // Editor GUI / element containers and markers */
 //
 // The colors for the element containers are considered "system" colors.
@@ -726,12 +741,8 @@ $con-text-col-grey:                 #7f8691 !default;
 $con-text-col-light:                #fff !default;
 
 
-// Font REM bases
-
-$font-rem-base-print-size:          8px !default;
-$font-rem-base-desktop-size:        10px !default;
-$font-rem-base-mobile-size:         12px !default;
-
+// Disabled background-image, used for model group editor and elsewhere to mark "disabled" elements
+$disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(240,240,242,1) 10px,rgba(240,240,242,1) 20px);
 
 // Disabled cursor, used e.g. for disabled buttons in list pagination
 $cursor-disabled:                   not-allowed !default;

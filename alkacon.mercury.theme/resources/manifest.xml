@@ -7385,7 +7385,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mercury header with logo left]]></value>
+					<value><![CDATA[[Deprecated] Mercury header with logo left]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -7453,7 +7453,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mercury header with image ribbon on top of navigation]]></value>
+					<value><![CDATA[[Deprecated] Mercury header with image ribbon on top of navigation]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -7470,7 +7470,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mercury header with flexible display options]]></value>
+					<value><![CDATA[Mercury header with flexible layout options]]></value>
 				</property>
 			</properties>
 			<relations/>

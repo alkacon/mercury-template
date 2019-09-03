@@ -85,11 +85,11 @@
             display: none;
         }
 
-        @if ($header-image-bg != none) {
+        @if ($fh-logo-image-bg != none) {
             // set colored background for image (if images contain transparency - required mostly for demo content)
             .nav-main-mobile-logo > .img-responsive,
             .header-image {
-                background-color: $header-image-bg;
+                background-color: $fh-logo-image-bg;
             }
         }
 
@@ -229,9 +229,9 @@
                         background-color: $fh-meta-bg-color;
                         padding-bottom: $default-margin-verysmall;
                         a {
-                            color: check-text-color($fh-meta-bg-color, $nav-meta-text);
+                            color: check-text-color($fh-meta-bg-color, $fh-meta-color);
                             &:hover {
-                                color: check-text-color($fh-meta-bg-color, $nav-meta-text-hover);
+                                color: check-text-color($fh-meta-bg-color, $fh-meta-hover-color);
                                 text-decoration: underline;
                             }
                         }
@@ -455,8 +455,8 @@
                     }
                 }
 
-                @if ($header-image-ribbon-bg != none) {
-                    background-color: $header-image-ribbon-bg;
+                @if ($fh-ac-bg-color != none) {
+                    background-color: $fh-ac-bg-color;
                 }
             }
 
@@ -469,7 +469,10 @@
             &.ac-above-logo {
                 .h-ac {
                     order: 2;
-                    padding-top: $default-margin-verysmall;
+                    @if ($fh-ac-bg-color == none) {
+                        // add top margin only if no bg color is set, colord bg and top margin looks crappy
+                        margin-top: $default-margin-verysmall;
+                    }
                 }
             }
 
@@ -570,8 +573,7 @@
                         }
                         &.lp-c {
                             .h-logo,
-                            .h-title,
-                            .h-ac {
+                            .h-title {
                                 padding-top: $logo-padding;
                                 padding-bottom: 0;
                             }
@@ -584,6 +586,10 @@
                                 .h-logo {
                                     padding-bottom: $logo-padding;
                                 }
+                            }
+                            .h-ac {
+                                // addintinal container should not have colored margins
+                                margin-top: $logo-padding;
                             }
                         }
                     }
@@ -835,9 +841,12 @@
 
     .area-header {
         // global variables are now mostly for flexible header, this is for backward compatibility
-        $logo-left-nav-padding: 0 20px $nav-header-ver-padding 20px !default;
-        $logo-left-arrow-right: 5px !default;
-        $logo-left-menu-left: 20px - $nav-menu-hor-padding;
+        $logo-left-nav-padding: 0 20px $nav-header-ver-padding 20px !default; // padding for main nav items in LG, XL
+        $logo-left-arrow-right: 5px !default; // offset for arrow on main nav items in LG, XL
+        $logo-left-menu-left: 20px - $nav-menu-hor-padding !default; // position offset for 2nd level menus in LG, XL
+        $header-image-ribbon-bg: $fh-ac-bg-color !default; // background color for image ribbon in header
+        $header-logo-xs-width: 270px !default; // max width for logo on XS screens (substract 2 * $gutter)
+        $header-logo-fixed-width: 250px !default; // max width for logo if fixed header (substract 2 * $gutter)
 
         // Deprecated "logo-left" header
         &.logo-left {
@@ -854,11 +863,11 @@
                 max-width: $header-logo-xs-width;
             }
 
-            @if ($header-image-bg != none) {
+            @if ($fh-logo-image-bg != none) {
                 // set colored background for images (if images contain transparency)
                 .nav-main-mobile-logo > .img-responsive,
                 .header-image {
-                    background-color: $header-image-bg;
+                    background-color: $fh-logo-image-bg;
                 }
             }
 
@@ -983,7 +992,7 @@
             }
 
             > ul {
-                font-size: $nav-meta-font-size;
+                font-size: $fh-meta-font-size;
                 @if ($nav-meta-font-family != $font-family-base) {
                     font-family: $nav-meta-font-family;
                 }
@@ -996,21 +1005,45 @@
                     }
 
                     > a {
-                        color: $nav-meta-text;
+                        color: $fh-meta-color;
                         text-transform: uppercase;
 
                         &:hover {
                             text-decoration: none;
-                            color: $nav-meta-text-hover;
+                            color: $fh-meta-hover-color;
                         }
                     }
                 }
             }
         }
     }
+
+    .type-header-config {
+    // Special formatting for flexible header configuration function
+        background-color: $con-col-purple;
+        color: $con-text-col-dark !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        line-height: 30px;
+    }
 }
 
 // Header formatting for sticky header
+
+@keyframes fixHeader {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: $nav-head-fixed-opacity;
+        transform: none;
+    }
+}
 
 @include media-breakpoint-up($nav-breakpoint-sticky-header) {
 
@@ -1125,15 +1158,4 @@ html.opencms-group-editor {
         // remove default head bottom margin in model group editor */
         margin-bottom: 0;
     }
-}
-
-.type-header-config {
-    background-color: $con-col-purple;
-    color: $con-text-col-dark !important;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    line-height: 30px;
 }

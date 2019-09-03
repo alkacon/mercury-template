@@ -2,11 +2,11 @@
 
 <LayoutSimpleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/layout-simple.xsd">
   <LayoutSimple language="de">
-    <Title><![CDATA[Mercury Kopfbereich mit Bildstreifen über Navigation]]></Title>
+    <Title><![CDATA[[Veraltet] Mercury Kopfbereich mit Bildstreifen über Navigation]]></Title>
     <Variant><![CDATA[head-v2-bc-fh]]></Variant>
   </LayoutSimple>
   <LayoutSimple language="en">
-    <Title><![CDATA[Mercury header with image ribbon on top of navigation]]></Title>
+    <Title><![CDATA[[Deprecated] Mercury header with image ribbon on top of navigation]]></Title>
     <Variant><![CDATA[head-v2-bc-fh]]></Variant>
   </LayoutSimple>
 </LayoutSimpleData>

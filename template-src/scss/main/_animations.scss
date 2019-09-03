@@ -241,19 +241,6 @@ html.desktop .effect-rotate {
     }
 }
 
-@keyframes fixHeader {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -100%, 0);
-    }
-
-    to {
-        opacity: $nav-head-fixed-opacity;
-        transform: none;
-    }
-}
-
-
 // spinner animation, displays a rotating "currently loading" symbol
 // used e.g. by the list and the image gallery
 @keyframes spinner {

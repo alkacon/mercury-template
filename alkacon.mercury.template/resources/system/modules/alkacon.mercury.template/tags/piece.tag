@@ -117,17 +117,17 @@
 <c:choose>
     <c:when test="${fullWidth}">
         <c:set var="pieceIsFull"    value="${true}" />
-        <c:set var="sizeDesktop"    value="${empty sizeDesktop ? 12 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 12 : sizeDesktop)}" />
+        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 12 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 12 : sizeDesktop)}" />
     </c:when>
     <c:otherwise>
         <c:set var="pieceIsFlex"    value="${(pieceLayout == 2) or (pieceLayout == 3) or (pieceLayout == 6) or (pieceLayout == 7)}" />
         <c:set var="pieceIsFloat"   value="${(pieceLayout > 1) and not pieceIsFlex}" />
         <c:set var="pieceDirection" value="${pieceLayout > 1 ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
-        <c:set var="sizeDesktop"    value="${empty sizeDesktop ? 4 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 4 : sizeDesktop)}" />
+        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 4 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 4 : sizeDesktop)}" />
     </c:otherwise>
 </c:choose>
 
-<c:set var="sizeMobile"     value="${empty sizeMobile ? (sizeDesktop < 10 ? sizeDesktop + 3 : 12) : ((sizeMobile < 1) or (sizeMobile > 12) ? (sizeDesktop < 12 ? 7 : 12) : sizeMobile)}" />
+<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99)) ? (sizeDesktop < 10 ? sizeDesktop + 3 : 12) : ((sizeMobile < 1) or (sizeMobile > 12) ? (sizeDesktop < 12 ? 7 : 12) : sizeMobile)}" />
 
 <c:choose>
     <c:when test="${sizeDesktop < 12}">

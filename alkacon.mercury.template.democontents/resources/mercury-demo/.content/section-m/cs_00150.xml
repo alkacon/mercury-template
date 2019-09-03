@@ -2,11 +2,11 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Content section element]]></Title>
+    <Title><![CDATA[Article Detail display options]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The<em> Content Section</em> element contains&nbsp;a versatile combination of <em>Title</em>, <em>Text</em>, <em>Link</em> and <em>Image</em>. Using these simple building blocks, you can create individual pages with free content.</p>
-<p>Several formatters available for the <em>Content Section</em>&nbsp;allow you to style the output in a variety&nbsp;of combinations.</p>]]></content>
+      <content><![CDATA[<p>Using the<em> Article detail view</em> formatter, an <em>Article</em> element can be displayed in multiple formats. How the output is generated is controlled by the element settings.&nbsp;</p>
+<p>This page shows some of the possible output combinations.</p>]]></content>
     </Text>
     <Image>
       <Image>

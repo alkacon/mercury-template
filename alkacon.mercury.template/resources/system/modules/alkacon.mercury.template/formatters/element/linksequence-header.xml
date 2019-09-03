@@ -2,18 +2,18 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-navigation.formatter.navbar)]]></NiceName>
-    <Type><![CDATA[m-navigation]]></Type>
+    <NiceName><![CDATA[%(key.type.m-linksequence.name)%(key.type.for-header.suffix)]]></NiceName>
+    <Type><![CDATA[m-linksequence]]></Type>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/navigation/main.jsp]]></target>
-        <uuid>8c657082-7e1a-40f6-a9e2-57896605304c</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/linksequence.jsp]]></target>
+        <uuid>8970f120-10a0-40c9-8796-4a3f5df368ac</uuid>
       </link>
     </Jsp>
-    <Rank><![CDATA[2000]]></Rank>
+    <Rank><![CDATA[900]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[nav-main]]></ContainerType>
+        <ContainerType><![CDATA[linksequence-header]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>
@@ -29,10 +29,16 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[textDisplay.navigation]]></IncludeName>
+      <IncludeName><![CDATA[hsize.element.0]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showSearch.navigation]]></IncludeName>
+      <IncludeName><![CDATA[linksequenceType.linksequence]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[iconClass.header.metaLinks]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[addCssWrapper.header.metaLinks]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

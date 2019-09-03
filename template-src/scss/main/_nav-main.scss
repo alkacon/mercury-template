@@ -560,6 +560,13 @@
             }
         }
 
+        &.cap-none > li > a {
+            text-transform: none;
+        }
+        &.cap-upper > li > a {
+            text-transform: uppercase;
+        }
+
         > li {
             // all top level navbar items
             display: flex;

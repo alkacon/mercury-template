@@ -57,15 +57,11 @@
 }
 
 .teaser {
-    margin-bottom: $list-teaser-margin;
+    margin-bottom: $default-margin;
     @include clearfix;
 
     &.teaser-compact {
         // compact teaser elements have a reduced bottom margin
-        margin-bottom: $list-teaser-margin-compact;
-        .teaser-date {
-            margin-bottom: $default-margin-verysmall;
-        }
         .teaser-btn {
             padding: $teaser-btn-compact-padding;
         }
@@ -90,6 +86,7 @@
         line-height: 1.2;
         font-size: 80%;
         color: $teaser-info-color;
+        margin-bottom: $default-margin-verysmall;
     }
 
     .heading {
@@ -110,6 +107,17 @@
                 color: $body-color;
                 text-decoration: none;
             }
+        }
+    }
+}
+
+.list-content {
+    .teaser {
+        margin-bottom: $list-teaser-margin;
+
+        &.teaser-compact {
+            // compact teaser elements have a reduced bottom margin
+            margin-bottom: $list-teaser-margin-compact;
         }
     }
 }

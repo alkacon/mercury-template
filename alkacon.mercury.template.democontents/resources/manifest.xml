@@ -8363,31 +8363,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/.content/list-m/list_00020.xml</source>
-			<destination>mercury-demo/.content/list-m/list_00020.xml</destination>
-			<type>listconfig</type>
-			<uuidstructure>5c7e8c36-463c-11e9-8fa9-0242ac11002b</uuidstructure>
-			<uuidresource>5c7e8c37-463c-11e9-8fa9-0242ac11002b</uuidresource>
-			<datecreated>Thu, 14 Mar 2019 09:34:27 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Elaborate list with updated Teasers]]></value>
-				</property>
-				<property>
-					<name>locale</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<destination>mercury-demo/.content/map-m</destination>
 			<type>folder</type>
 			<uuidstructure>f3fc3135-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -8677,6 +8652,23 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury demo - Second level navigation]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/navigation-m/nav_00004.xml</source>
+			<destination>mercury-demo/.content/navigation-m/nav_00004.xml</destination>
+			<type>m-navigation</type>
+			<uuidstructure>43e40e19-ce2d-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>43e40e1a-ce2d-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 09:29:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury demo - Third level navigation]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9529,7 +9521,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Text elements: Using the Content Section for text snippets]]></value>
+					<value><![CDATA[Text elements: Using the Content Section to display text]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9546,7 +9538,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Image elements: Using the Content Section for images]]></value>
+					<value><![CDATA[Image display: Using the Content Section to display images]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9580,7 +9572,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Icon boxes: Using the Content Section for icon boxes]]></value>
+					<value><![CDATA[Icon box display: Using the Content Section to display icon boxes]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10838,7 +10830,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Image / text flipping cards: Using the Content section for Image / text flipping cards]]></value>
+					<value><![CDATA[Image / text flipping cards: Using the Content section to display Image / text flipping cards]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -11179,6 +11171,108 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Flexible content: Embedding videos]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/cs_00146.xml</source>
+			<destination>mercury-demo/.content/section-m/cs_00146.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>bc8564b8-ce1e-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>bc8564b9-ce1e-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 07:45:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article vs. Content Section: Article vs. Content section - Comparison of the output]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/cs_00147.xml</source>
+			<destination>mercury-demo/.content/section-m/cs_00147.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>064f0d90-ce20-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>064f0d91-ce20-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 07:54:15 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article Teaser vs. Detail: Article Teaser vs. Detail - Comparison of the output]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/cs_00148.xml</source>
+			<destination>mercury-demo/.content/section-m/cs_00148.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>21250f24-ce21-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>21250f25-ce21-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 08:02:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article Teaser vs. Detail: "Elaborate article teaser" formatter]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/cs_00149.xml</source>
+			<destination>mercury-demo/.content/section-m/cs_00149.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>42f20368-ce21-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>42f20369-ce21-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 08:03:06 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article Teaser vs. Detail: "Article detail view" formatter]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/cs_00150.xml</source>
+			<destination>mercury-demo/.content/section-m/cs_00150.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>088f1f77-ce25-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>088f1f78-ce25-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 08:30:06 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article Detail display: Article Detail display options]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/cs_00151.xml</source>
+			<destination>mercury-demo/.content/section-m/cs_00151.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>bdedd0be-ce2d-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>bdedd0bf-ce2d-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 09:32:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Link "Back to content elements"]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -12456,6 +12550,126 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<destination>mercury-demo/content-elements/article/detail-display</destination>
+			<type>folder</type>
+			<uuidstructure>cfeb98fb-47e4-11e9-8f32-0242ac11002b</uuidstructure>
+			<datecreated>Sat, 16 Mar 2019 12:12:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.375]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Article Detail display]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article Detail display]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/content-elements/article/detail-display/index.html</source>
+			<destination>mercury-demo/content-elements/article/detail-display/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>cff228b0-47e4-11e9-8f32-0242ac11002b</uuidstructure>
+			<uuidresource>cff228b1-47e4-11e9-8f32-0242ac11002b</uuidresource>
+			<datecreated>Sat, 16 Mar 2019 12:12:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Detail test]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/content-elements/article/section-article</destination>
+			<type>folder</type>
+			<uuidstructure>314611d5-43e8-11e9-aeb1-0242ac11002b</uuidstructure>
+			<datecreated>Mon, 11 Mar 2019 10:26:54 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.25]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Article vs. Content Section]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article vs. Content Section]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/content-elements/article/section-article/index.html</source>
+			<destination>mercury-demo/content-elements/article/section-article/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>3148d0fa-43e8-11e9-aeb1-0242ac11002b</uuidstructure>
+			<uuidresource>3148d0fb-43e8-11e9-aeb1-0242ac11002b</uuidresource>
+			<datecreated>Mon, 11 Mar 2019 10:26:54 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article vs. Content Section]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/content-elements/article/teaser-detail</destination>
+			<type>folder</type>
+			<uuidstructure>8f80cd4b-440c-11e9-8dbb-0242ac11002b</uuidstructure>
+			<datecreated>Mon, 11 Mar 2019 14:47:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.3125]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Article Teaser vs. Detail]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article Teaser vs. Detail]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/content-elements/article/teaser-detail/index.html</source>
+			<destination>mercury-demo/content-elements/article/teaser-detail/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>8f833e50-440c-11e9-8dbb-0242ac11002b</uuidstructure>
+			<uuidresource>8f833e51-440c-11e9-8dbb-0242ac11002b</uuidresource>
+			<datecreated>Mon, 11 Mar 2019 14:47:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Article Teaser vs. Detail]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>mercury-demo/content-elements/contact-information</destination>
 			<type>folder</type>
 			<uuidstructure>f49cb73e-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -12530,6 +12744,178 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Content section]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/content-elements/content-section/icon-box</destination>
+			<type>folder</type>
+			<uuidstructure>f4a78cde-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 22 Sep 2015 11:05:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.75]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Icon box display]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Icon box display]]></value>
+				</property>
+				<property type="shared">
+					<name>Title</name>
+					<value><![CDATA[page]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/content-elements/content-section/icon-box/index.html</source>
+			<destination>mercury-demo/content-elements/content-section/icon-box/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>f4a87744-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4a87745-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Sep 2015 11:05:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Icon box display]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/content-elements/content-section/image</destination>
+			<type>folder</type>
+			<uuidstructure>f4a93a97-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 22 Sep 2015 10:22:17 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.625]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Image display]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Image display]]></value>
+				</property>
+				<property type="shared">
+					<name>Title</name>
+					<value><![CDATA[page]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/content-elements/content-section/image/index.html</source>
+			<destination>mercury-demo/content-elements/content-section/image/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>f4aa4c0d-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4aa4c0e-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Sep 2015 10:22:17 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Image display]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/content-elements/content-section/imageflip</destination>
+			<type>folder</type>
+			<uuidstructure>f48733e4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.6875]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Image / text flipping cards]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Image / text flipping cards]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/content-elements/content-section/imageflip/index.html</source>
+			<destination>mercury-demo/content-elements/content-section/imageflip/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>f487d029-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f487d02a-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Image / text flipping cards]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/content-elements/content-section/text</destination>
+			<type>folder</type>
+			<uuidstructure>f4bdac58-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 22 Sep 2015 09:48:24 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.5]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Text display]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Text display]]></value>
+				</property>
+				<property type="shared">
+					<name>Title</name>
+					<value><![CDATA[page]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/content-elements/content-section/text/index.html</source>
+			<destination>mercury-demo/content-elements/content-section/text/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>f4be6fae-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4be6faf-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Sep 2015 09:48:24 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Text display]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -12900,7 +13286,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages</destination>
+			<destination>mercury-demo/demos</destination>
 			<type>folder</type>
 			<uuidstructure>f476dfc4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Wed, 14 Dec 2016 13:56:02 GMT</datecreated>
@@ -12912,11 +13298,11 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Demos]]></value>
+					<value><![CDATA[Further Demos]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demos]]></value>
+					<value><![CDATA[Further Demos]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -12927,8 +13313,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/index.html</source>
-			<destination>mercury-demo/demo-pages/index.html</destination>
+			<source>mercury-demo/demos/index.html</source>
+			<destination>mercury-demo/demos/index.html</destination>
 			<type>htmlredirect</type>
 			<uuidstructure>f4777c0a-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f4777c0b-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -12956,7 +13342,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/backgrounds</destination>
+			<destination>mercury-demo/demos/backgrounds</destination>
 			<type>folder</type>
 			<uuidstructure>f4786670-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Tue, 13 Dec 2016 14:10:26 GMT</datecreated>
@@ -12979,8 +13365,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/backgrounds/index.html</source>
-			<destination>mercury-demo/demo-pages/backgrounds/index.html</destination>
+			<source>mercury-demo/demos/backgrounds/index.html</source>
+			<destination>mercury-demo/demos/backgrounds/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>f47902b5-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f47902b6-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -12996,7 +13382,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/css-visualizer</destination>
+			<destination>mercury-demo/demos/css-visualizer</destination>
 			<type>folder</type>
 			<uuidstructure>f479ed18-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Mon, 26 Dec 2016 05:48:44 GMT</datecreated>
@@ -13019,8 +13405,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/css-visualizer/index.html</source>
-			<destination>mercury-demo/demo-pages/css-visualizer/index.html</destination>
+			<source>mercury-demo/demos/css-visualizer/index.html</source>
+			<destination>mercury-demo/demos/css-visualizer/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>f47ab06d-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f47ab06e-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13036,7 +13422,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/flex-formatters</destination>
+			<destination>mercury-demo/demos/flex-formatters</destination>
 			<type>subsitemap</type>
 			<uuidstructure>f47b73c0-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Tue, 18 Jul 2017 13:54:34 GMT</datecreated>
@@ -13063,8 +13449,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/index.html</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/index.html</destination>
+			<source>mercury-demo/demos/flex-formatters/index.html</source>
+			<destination>mercury-demo/demos/flex-formatters/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>f47c1006-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f47c1007-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13080,7 +13466,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/flex-formatters/.content</destination>
+			<destination>mercury-demo/demos/flex-formatters/.content</destination>
 			<type>content_folder</type>
 			<uuidstructure>f47cd359-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Sat, 22 Jul 2017 13:22:34 GMT</datecreated>
@@ -13090,8 +13476,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.content/.config</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.content/.config</destination>
+			<source>mercury-demo/demos/flex-formatters/.content/.config</source>
+			<destination>mercury-demo/demos/flex-formatters/.content/.config</destination>
 			<type>sitemap_config</type>
 			<uuidstructure>f47d488b-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f47d488c-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13119,7 +13505,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters</destination>
+			<destination>mercury-demo/demos/flex-formatters/.formatters</destination>
 			<type>folder</type>
 			<uuidstructure>f47e0be1-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Sat, 22 Jul 2017 13:23:26 GMT</datecreated>
@@ -13129,8 +13515,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_blog_detail.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_blog_detail.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_blog_detail.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_blog_detail.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f47e8113-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f47e8114-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13162,8 +13548,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_blog_teaser.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_blog_teaser.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_blog_teaser.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_blog_teaser.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f47f6b7a-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f47f6b7b-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13195,8 +13581,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_demo.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_demo.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_demo.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_demo.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f4802ed1-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f4802ed2-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13228,8 +13614,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_element_info.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_element_info.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_element_info.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_element_info.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f480f228-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f480f229-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13261,8 +13647,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_event_teaser.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_event_teaser.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_event_teaser.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_event_teaser.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f481dc8f-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f481dc90-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13294,8 +13680,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_linksequence.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_linksequence.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_linksequence.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_linksequence.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f482c6f6-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f482c6f7-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13327,8 +13713,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_section_adetest.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_section_adetest.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_section_adetest.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_section_adetest.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f483b15d-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f483b15e-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13360,8 +13746,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/.formatters/flex_section_bgimage.flex</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/.formatters/flex_section_bgimage.flex</destination>
+			<source>mercury-demo/demos/flex-formatters/.formatters/flex_section_bgimage.flex</source>
+			<destination>mercury-demo/demos/flex-formatters/.formatters/flex_section_bgimage.flex</destination>
 			<type>flex_formatter</type>
 			<uuidstructure>f48474b4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f48474b5-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13393,7 +13779,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/flex-formatters/flexblog</destination>
+			<destination>mercury-demo/demos/flex-formatters/flexblog</destination>
 			<type>folder</type>
 			<uuidstructure>f4855f1b-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Tue, 08 Aug 2017 10:44:56 GMT</datecreated>
@@ -13420,8 +13806,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/flex-formatters/flexblog/index.html</source>
-			<destination>mercury-demo/demo-pages/flex-formatters/flexblog/index.html</destination>
+			<source>mercury-demo/demos/flex-formatters/flexblog/index.html</source>
+			<destination>mercury-demo/demos/flex-formatters/flexblog/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>f4867091-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f4867092-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13437,7 +13823,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/real-estate</destination>
+			<destination>mercury-demo/demos/real-estate</destination>
 			<type>folder</type>
 			<uuidstructure>f488937c-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Thu, 24 Nov 2016 11:27:34 GMT</datecreated>
@@ -13460,8 +13846,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/real-estate/index.html</source>
-			<destination>mercury-demo/demo-pages/real-estate/index.html</destination>
+			<source>mercury-demo/demos/real-estate/index.html</source>
+			<destination>mercury-demo/demos/real-estate/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>f4892ec1-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f4892ec2-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13477,7 +13863,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/squares</destination>
+			<destination>mercury-demo/demos/squares</destination>
 			<type>folder</type>
 			<uuidstructure>f489cb04-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Wed, 04 Jan 2017 15:28:51 GMT</datecreated>
@@ -13500,8 +13886,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/squares/index.html</source>
-			<destination>mercury-demo/demo-pages/squares/index.html</destination>
+			<source>mercury-demo/demos/squares/index.html</source>
+			<destination>mercury-demo/demos/squares/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>f48a8e59-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f48a8e5a-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13517,7 +13903,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/demo-pages/tiles</destination>
+			<destination>mercury-demo/demos/tiles</destination>
 			<type>folder</type>
 			<uuidstructure>f48b2a9c-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<datecreated>Fri, 25 Jan 2019 13:54:04 GMT</datecreated>
@@ -13540,8 +13926,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/demo-pages/tiles/index.html</source>
-			<destination>mercury-demo/demo-pages/tiles/index.html</destination>
+			<source>mercury-demo/demos/tiles/index.html</source>
+			<destination>mercury-demo/demos/tiles/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>f48bc6e1-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f48bc6e2-3a95-11e9-bd84-0242ac11002b</uuidresource>
@@ -13565,7 +13951,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>NavPos</name>
-					<value><![CDATA[693.3002]]></value>
+					<value><![CDATA[692.5113]]></value>
 				</property>
 				<property>
 					<name>NavText</name>
@@ -14061,394 +14447,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-demo/layout-variations</destination>
-			<type>folder</type>
-			<uuidstructure>24ea01c7-43e8-11e9-aeb1-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 11 Mar 2019 10:26:34 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[692.29407]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Layout variations]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Layout variations]]></value>
-				</property>
-				<property>
-					<name>default-file</name>
-					<value><![CDATA[##navigation_level_folder##]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/index.html</source>
-			<destination>mercury-demo/layout-variations/index.html</destination>
-			<type>htmlredirect</type>
-			<uuidstructure>24f06a6d-43e8-11e9-aeb1-0242ac11002b</uuidstructure>
-			<uuidresource>24f06a6e-43e8-11e9-aeb1-0242ac11002b</uuidresource>
-			<datecreated>Mon, 11 Mar 2019 10:26:34 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Redirect to first page in navigation]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
-				</property>
-				<property type="shared">
-					<name>template-elements</name>
-					<value><![CDATA[/system/modules/org.opencms.ade.sitemap/pages/redirect-detail.jsp]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/detail-test</destination>
-			<type>folder</type>
-			<uuidstructure>cfeb98fb-47e4-11e9-8f32-0242ac11002b</uuidstructure>
-			<datecreated>Sat, 16 Mar 2019 12:12:47 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[2.5]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Detail test]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Detail test]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/detail-test/index.html</source>
-			<destination>mercury-demo/layout-variations/detail-test/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>cff228b0-47e4-11e9-8f32-0242ac11002b</uuidstructure>
-			<uuidresource>cff228b1-47e4-11e9-8f32-0242ac11002b</uuidresource>
-			<datecreated>Sat, 16 Mar 2019 12:12:47 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Detail test]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/icon-elements</destination>
-			<type>folder</type>
-			<uuidstructure>f4a78cde-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Tue, 22 Sep 2015 11:05:50 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[0.8125]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Icon boxes]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Icon boxes]]></value>
-				</property>
-				<property type="shared">
-					<name>Title</name>
-					<value><![CDATA[page]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/icon-elements/index.html</source>
-			<destination>mercury-demo/layout-variations/icon-elements/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4a87744-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4a87745-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Tue, 22 Sep 2015 11:05:50 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Icon boxes]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/image-elements</destination>
-			<type>folder</type>
-			<uuidstructure>f4a93a97-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Tue, 22 Sep 2015 10:22:17 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[0.875]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Image elements]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Image elements]]></value>
-				</property>
-				<property type="shared">
-					<name>Title</name>
-					<value><![CDATA[page]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/image-elements/index.html</source>
-			<destination>mercury-demo/layout-variations/image-elements/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4aa4c0d-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4aa4c0e-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Tue, 22 Sep 2015 10:22:17 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Image elements]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/imageflip</destination>
-			<type>folder</type>
-			<uuidstructure>f48733e4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[0.9375]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Image / text flipping cards]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Image / text flipping cards]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/imageflip/index.html</source>
-			<destination>mercury-demo/layout-variations/imageflip/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f487d029-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f487d02a-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 07 Nov 2018 08:20:12 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Image / text flipping cards]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/list-test</destination>
-			<type>folder</type>
-			<uuidstructure>47c78200-463c-11e9-8fa9-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 14 Mar 2019 09:33:52 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[3.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[List test]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[List test]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/list-test/index.html</source>
-			<destination>mercury-demo/layout-variations/list-test/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>47cc15e5-463c-11e9-8fa9-0242ac11002b</uuidstructure>
-			<uuidresource>47cc15e6-463c-11e9-8fa9-0242ac11002b</uuidresource>
-			<datecreated>Thu, 14 Mar 2019 09:33:52 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[List test]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/section-article</destination>
-			<type>folder</type>
-			<uuidstructure>314611d5-43e8-11e9-aeb1-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 11 Mar 2019 10:26:54 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[1.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Section vs. Article]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Section vs. Article]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/section-article/index.html</source>
-			<destination>mercury-demo/layout-variations/section-article/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>3148d0fa-43e8-11e9-aeb1-0242ac11002b</uuidstructure>
-			<uuidresource>3148d0fb-43e8-11e9-aeb1-0242ac11002b</uuidresource>
-			<datecreated>Mon, 11 Mar 2019 10:26:54 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Section vs. Article]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/section-detail</destination>
-			<type>folder</type>
-			<uuidstructure>8f80cd4b-440c-11e9-8dbb-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 11 Mar 2019 14:47:14 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[2.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Section vs. Article vs. Detail]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Section vs. Article vs. Detail]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/section-detail/index.html</source>
-			<destination>mercury-demo/layout-variations/section-detail/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>8f833e50-440c-11e9-8dbb-0242ac11002b</uuidstructure>
-			<uuidresource>8f833e51-440c-11e9-8dbb-0242ac11002b</uuidresource>
-			<datecreated>Mon, 11 Mar 2019 14:47:14 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Section vs. Article vs. Detail]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-demo/layout-variations/text-elements</destination>
-			<type>folder</type>
-			<uuidstructure>f4bdac58-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Tue, 22 Sep 2015 09:48:24 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[0.75]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Text elements]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Text elements]]></value>
-				</property>
-				<property type="shared">
-					<name>Title</name>
-					<value><![CDATA[page]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/layout-variations/text-elements/index.html</source>
-			<destination>mercury-demo/layout-variations/text-elements/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4be6fae-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4be6faf-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Tue, 22 Sep 2015 09:48:24 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Text elements]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<destination>mercury-demo/lists</destination>
 			<type>folder</type>
 			<uuidstructure>f4c72275-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -14457,7 +14455,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>NavPos</name>
-					<value><![CDATA[692.9343]]></value>
+					<value><![CDATA[692.4713]]></value>
 				</property>
 				<property>
 					<name>NavText</name>
@@ -15812,6 +15810,23 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>release/.content/section-m/cs_00028.xml</source>
+			<destination>release/.content/section-m/cs_00028.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>47c919bf-ce39-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>47c919c0-ce39-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 10:55:02 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Release Notes for OpenCms 11.0 Beta]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>release/installation</destination>
 			<type>folder</type>
 			<uuidstructure>f4ebe85b-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -16330,6 +16345,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 11.0.0]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/opencms-11.0.1-notes</destination>
+			<type>folder</type>
+			<uuidstructure>0ccf4aa6-ce39-11e9-a5ac-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 03 Sep 2019 10:53:23 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.5]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[OpenCms 11.0.1]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 11.0.1]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/opencms-11.0.1-notes/index.html</source>
+			<destination>release/opencms-11.0.1-notes/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>0cd739eb-ce39-11e9-a5ac-0242ac11002b</uuidstructure>
+			<uuidresource>0cd739ec-ce39-11e9-a5ac-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 10:53:23 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 11.0.1]]></value>
 				</property>
 			</properties>
 			<relations/>

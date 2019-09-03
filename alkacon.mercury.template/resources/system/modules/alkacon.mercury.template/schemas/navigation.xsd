@@ -30,7 +30,7 @@
                 <Setting>
                     <PropertyName>Title</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Title.Navigation.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Search>false</Search>
                     <Mapping>

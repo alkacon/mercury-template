@@ -20,6 +20,7 @@
 <c:set var="setting"                    value="${cms.element.setting}" />
 <c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
 <c:set var="showSearch"                 value="${setting.showSearch.useDefault(true).toBoolean}" />
+<c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
 
 <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
 <c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
@@ -48,7 +49,7 @@
         </c:if>
 
         <mercury:nl />
-        <ul class="nav-main-items ${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
+        <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
         <mercury:nl />
 
         <c:set var="linkElements" value="${cms.elementsInContainers['header-linksequence']}" />

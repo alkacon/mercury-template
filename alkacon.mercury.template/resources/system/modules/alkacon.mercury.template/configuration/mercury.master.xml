@@ -438,6 +438,12 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/linksequence-header.xml]]></target>
+          <uuid>3a1d86f0-ce5b-11e9-a312-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/map-google.xml]]></target>
           <uuid>7bd4ba6a-f005-4732-8cf5-5ec60f80c627</uuid>
         </link>

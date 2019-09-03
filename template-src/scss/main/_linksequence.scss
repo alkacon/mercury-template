@@ -92,7 +92,7 @@
         li:not(:last-child) {
             &::after {
                 content: "|";
-                margin: 0 $default-margin-verysmall;
+                margin: 0 $default-margin-small;
             }
         }
     }
@@ -108,11 +108,11 @@
         li {
             &::before {
                 float: none;
-                padding-right: $default-margin-small;
+                padding-right: $default-margin-verysmall;
             }
             + li {
                 &::before {
-                    padding-left: $default-margin-small;
+                    padding-left: $default-margin-small + $default-margin-verysmall;
                 }
             }
         }

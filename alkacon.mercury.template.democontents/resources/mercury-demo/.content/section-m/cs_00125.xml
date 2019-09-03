@@ -2,10 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Using the Content section for Image / text flipping cards]]></Title>
+    <Title><![CDATA[Using the Content section to display Image / text flipping cards]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This formatter allows to display <em>Content Sections</em> as image cards that "flip over" to reveal the section text.</p>]]></content>
+      <content><![CDATA[<p>This special formatter allows to display <em>Content Sections</em> as image cards that "flip over" to reveal the section text.</p>]]></content>
     </Text>
     <Image>
       <Image>

@@ -2,10 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Using the Content Section for icon boxes]]></Title>
+    <Title><![CDATA[Using the Content Section to display icon boxes]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This page demonstrates repeated use of the same <em>Content&nbsp;Section</em>element using&nbsp;the special&nbsp;<em>Icon box </em>layout formatter. Styles are applied and the icon is selected through individual element settings.</p>]]></content>
+      <content><![CDATA[<p>This page demonstrates repeated use of the same <em>Content&nbsp;Section</em>element using&nbsp;the special&nbsp;<em>Icon box </em>layout formatter. By using element settings the icon is selected and custom styles are applied.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

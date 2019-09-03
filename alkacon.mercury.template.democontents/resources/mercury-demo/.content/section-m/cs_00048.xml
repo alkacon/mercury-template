@@ -2,10 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Using the Content Section for text snippets]]></Title>
+    <Title><![CDATA[Using the Content Section to display text]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This page demonstrates repeated use of the same<em> Content&nbsp;Section<strong>&nbsp;</strong></em>element for <em>Text</em>&nbsp;or <em>Title</em> only display. Different styles are applied through the individual element settings.</p>]]></content>
+      <content><![CDATA[<p>This page demonstrates repeated use of the same<em> Content&nbsp;Section<strong>&nbsp;</strong></em>element for <em>Text </em>only display. Different styles are applied through custom element settings.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

@@ -2654,6 +2654,35 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/linksequence-header.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/linksequence-header.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>3a1d86f0-ce5b-11e9-a312-0242ac11002b</uuidstructure>
+			<uuidresource>3a1d86f1-ce5b-11e9-a312-0242ac11002b</uuidresource>
+			<datecreated>Tue, 03 Sep 2019 14:58:02 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Link sequence (for header)]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/formatters/element/linksequence.jsp</source>
 			<destination>system/modules/alkacon.mercury.template/formatters/element/linksequence.jsp</destination>
 			<type>jsp</type>

@@ -35,10 +35,13 @@
 // Colored backgrounds
 
 .box {
+    $color: check-text-color($highlight-color);
+
     background-color: $highlight-color;
-    color: get-text-color($highlight-color);
+    color: $color;
     overflow: hidden;
     padding: $box-padding;
+
     @include round-corners($default-border-radius);
 
     &.oc-drag-element {
@@ -48,21 +51,25 @@
 
     h1, h2, h3, h4, h5, h6 {
         // required in order to override colors set in headings
-        color: get-text-color($highlight-color);
+        color: $color;
     }
 }
 
 @each $color-name, $bg-color, $highlight-color in $bg-colors {
 
     .box-#{""+$color-name} {
+        $color: check-text-color($bg-color, $text-light); // we normally want light text
+        $color-link: check-text-color($bg-color, $link-color);
+        $color-hover: check-text-color($bg-color, $link-hover-color);
+
         background-color: $bg-color;
-        $color: get-text-color($bg-color);
         color: $color;
-        @include colored-a($color);
+
+        @include colored-a($color-link, $color-hover);
 
         h1, h2, h3, h4, h5, h6 {
             // required in order to override colors set in headings
-            color: get-text-color($bg-color);
+            color: $color;
         }
 
         &.transparent {

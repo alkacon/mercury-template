@@ -22,11 +22,18 @@
 // Icon box formatter
 
 .type-iconbox {
+    $color: check-text-color($main-theme);
+    $color-link: check-text-color($main-theme, $link-color);
+    $color-hover: check-text-color($main-theme, $link-hover-color);
+
     background-color: $main-theme;
+    color: $color;
+
     padding: $default-margin $default-margin-small;
     text-align: center;
     display: flex;
     flex-direction: column;
+
     @include round-corners($iconbox-border-radius, true);
 
     &:only-child {
@@ -34,12 +41,10 @@
         flex-shrink: 1;
     }
 
-    $color: get-text-color($main-theme);
-    color: $color;
-
-    @include colored-a($color);
+    @include colored-a($color-link, $color-hover);
 
     .icon-title {
+        color: inherit;
         flex-grow: 1;
         margin-bottom: $default-margin;
         font-size: $h4-font-size;

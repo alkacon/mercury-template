@@ -127,10 +127,9 @@
                     <c:if test="${showMeta}">
                         <c:set target="${settings}" property="cssWrapper"       value="header-links" />
                         <c:set target="${settings}" property="linksequenceType" value="ls-row" />
-                        <c:set target="${settings}" property="iconClass"        value="none" />
                         <c:set target="${settings}" property="hsize"            value="0" />
                         <mercury:div css="h-meta" test="${not showMetaAside}">
-                            <mercury:container type="linksequence" name="header-linksequence" css="${not showMetaAside ? 'co-lg-xl' : 'h-meta'}" title="${value.Title}" settings="${settings}" />
+                            <mercury:container type="linksequence-header" name="header-linksequence" css="${not showMetaAside ? 'co-lg-xl' : 'h-meta'}" title="${value.Title}" settings="${settings}" />
                         </mercury:div>
                     </c:if>
                 </c:set>

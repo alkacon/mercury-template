@@ -1444,6 +1444,55 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[iconClass.header.metaLinks]]></IncludeName>
+      <PropertyName><![CDATA[iconClass]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.iconClass)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.iconClass.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+        none:%(key.msg.icon.none)|
+        line:%(key.msg.icon.line)|
+        caret-right:%(key.msg.icon.caret)|
+        angle-right:%(key.msg.icon.angle)|
+        angle-double-right:%(key.msg.icon.angle-double)|
+        chevron-right:%(key.msg.icon.chevron)|
+        arrow-right:%(key.msg.icon.arrow)|
+        hand-o-right:%(key.msg.icon.hand)|
+        info:%(key.msg.icon.info)|
+        check:%(key.msg.icon.check)|
+        globe:%(key.msg.icon.globe)|
+        link:%(key.msg.icon.link)|
+        external-link:%(key.msg.icon.external-link)|
+        external-link-square:%(key.msg.icon.external-link-square)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[addCssWrapper.header.metaLinks]]></IncludeName>
+      <PropertyName><![CDATA[addCssWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.textDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.textDisplay.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[cap-upper]]></Default>
+      <WidgetConfig><![CDATA[
+        cap-none:       %(key.msg.setting.header.textDisplay.default)|
+        cap-upper:      %(key.msg.setting.header.textDisplay.uppercase)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textDisplay.navigation]]></IncludeName>
+      <PropertyName><![CDATA[textDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.textDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.textDisplay.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[cap-css]]></Default>
+      <WidgetConfig><![CDATA[
+        cap-css:        %(key.msg.setting.header.textDisplay.css)|
+        cap-none:       %(key.msg.setting.header.textDisplay.default)|
+        cap-upper:      %(key.msg.setting.header.textDisplay.uppercase)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listEntryWrapper.tile]]></IncludeName>
       <PropertyName><![CDATA[listEntryWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.tileCss)]]></DisplayName>

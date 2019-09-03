@@ -3,8 +3,23 @@
 ### A full-featured, customizable, great looking responsive template for OpenCms ###
 
 The Mercury Template is a complete, modular template for [OpenCms](http://opencms.org).
-It is based on Boostrap 4 and allows you to create even complex grid-layouts with drag & drop.
+It is based on Bootstrap 4 and allows you to create even complex grid-layouts with drag & drop.
 It packs a ton of CSS features and JavaScript plugins that have carefully been integrated to be simple to use for the content manager. And it ships with all Java and SASS sources so you can fully customize it for your unique requirements.
+
+### Release history ###
+
+** Version 11.0.1 ** - September 4, 2019:
+
+* Updated for OpenCms 11.0.1.
+* New flexible header layout group added.
+* Additional options to display content section links.
+* Option to display categories in download lists.
+* Added many new fonts and Improved font handling in SCSS.
+* Added support for hyphenation, enabled by default.
+
+** Version 11.0.0 ** - April 30, 2019:
+
+* Initial release with OpenCms 11.0.0.
 
 ## Main Mercury features ##
 
@@ -27,11 +42,12 @@ It packs a ton of CSS features and JavaScript plugins that have carefully been i
 * 'Meta info' element element that can be dropped on any page to add SEO meta information
 * 'Form' element that allows you to create even complex email forms without a single line of code.
 * 'Navigation' element for the generation of head menu and / or sidebar navigations.
-* 'Sitemap' element for the gernation sitemaps.
+* 'Sitemap' element for the generation of sitemaps.
 * 'Shariff social media' element based on [Shariff](https://github.com/heiseonline/shariff).
 * [Disqus](https://disqus.com/) comments function that can be placed on any page.
 * Full featured search function with support for categories, facets and "did you mean" suggestions in case of misspellings.
 * Privacy policy functions that display a cookie banner and enable users to manage their cookie preferences.
+* Flexible header layout group that allows to create multiple header layouts easily.
 
 Each of the above functionality can be placed on a web page using OpenCms unique drag & drop mechanism. Many of the elements include multiple format options and can create dozens of output variations.
 
@@ -133,4 +149,5 @@ GNU Affero General Public License for more details.
 
 See [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/) for the
 full text of the GNU Affero General Public License.
+
 

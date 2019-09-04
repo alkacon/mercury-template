@@ -8,16 +8,16 @@ It packs a ton of CSS features and JavaScript plugins that have carefully been i
 
 ### Release history ###
 
-** Version 11.0.1 ** - September 4, 2019:
+**Version 11.0.1** - September 4, 2019:
 
 * Updated for OpenCms 11.0.1.
 * New flexible header layout group added.
 * Additional options to display content section links.
 * Option to display categories in download lists.
-* Added many new fonts and Improved font handling in SCSS.
+* Added many new fonts and improved font handling in SCSS.
 * Added support for hyphenation, enabled by default.
 
-** Version 11.0.0 ** - April 30, 2019:
+**Version 11.0.0** - April 30, 2019:
 
 * Initial release with OpenCms 11.0.0.
 

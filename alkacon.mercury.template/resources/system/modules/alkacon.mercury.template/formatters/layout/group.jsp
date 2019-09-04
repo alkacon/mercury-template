@@ -117,11 +117,20 @@
                     <mercury:nl />
                 </c:set>
 
-                <c:set var="logoElement">
-                    <c:set target="${settings}" property="cssWrapper"         value="header-image" />
-                    <c:set target="${settings}" property="showImageLink"      value="true" />
-                    <mercury:container type="image-minimal" name="header-image" css="h-logo p-xs-12 p-lg-${logoCols}" title="${value.Title}" settings="${settings}" />
-                </c:set>
+                <%--
+                    Attention: The order in which the containers are created here
+                    MUST match the order in which they are displayed below!
+                    The Flex cache will output the containers correctly only in the order they have been created.
+                    This is why the logoElement is duplicated before / after the meta link element.
+                --%>
+
+                <c:if test="${showMetaAside}">
+                    <c:set var="logoElement">
+                        <c:set target="${settings}" property="cssWrapper"         value="header-image" />
+                        <c:set target="${settings}" property="showImageLink"      value="true" />
+                        <mercury:container type="image-minimal" name="header-image" css="h-logo p-xs-12 p-lg-${logoCols}" title="${value.Title}" settings="${settings}" />
+                    </c:set>
+                </c:if>
 
                 <c:set var="metaLinkElement">
                     <c:if test="${showMeta}">
@@ -133,6 +142,14 @@
                         </mercury:div>
                     </c:if>
                 </c:set>
+
+                <c:if test="${not showMetaAside}">
+                    <c:set var="logoElement">
+                        <c:set target="${settings}" property="cssWrapper"         value="header-image" />
+                        <c:set target="${settings}" property="showImageLink"      value="true" />
+                        <mercury:container type="image-minimal" name="header-image" css="h-logo p-xs-12 p-lg-${logoCols}" title="${value.Title}" settings="${settings}" />
+                    </c:set>
+                </c:if>
 
                 <c:set var="titleElement">
                     <c:if test="${showTitle}">
@@ -210,6 +227,12 @@
 
                         <div class="head notfixed"><%----%>
                             <mercury:nl />
+
+                            <%--
+                                Attention: The order in which the containers have been created above
+                                MUST match the order in which they are displayed here!
+                                The Flex cache will output the containers correctly only in the order they have been created.
+                            --%>
 
                             <c:if test="${not showMetaAside}">
                                 ${metaLinkElement}

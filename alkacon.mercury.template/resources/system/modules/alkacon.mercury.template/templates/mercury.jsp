@@ -39,8 +39,8 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 
 <%-- Add favicon --%>
 <c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />
-<c:if test="${not cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage}">
-    <c:set var="faviconPath">system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
+<c:if test="${not (cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage)}">
+    <c:set var="faviconPath">/system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
 </c:if>
 <c:set var="favIconImage" value="${cms.vfs.readResource[faviconPath].toImage.scaleRatio['1-1']}" />
 <link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}">
@@ -142,7 +142,3 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 
 </mercury:template-parts>
 </mercury:content-properties>
-
-
-
-

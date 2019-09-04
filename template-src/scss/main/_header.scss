@@ -223,7 +223,7 @@
 
             &.meta-above {
                 .h-meta {
-                    flex-basis: 100%;
+                    flex-basis: auto;
                     order: 1;
                     @if ($fh-meta-bg-color != none) {
                         background-color: $fh-meta-bg-color;
@@ -350,7 +350,7 @@
 
             &.nav-below {
                 .h-nav {
-                    flex-basis: 100%;
+                    flex-basis: auto;
                     @if ($fh-nav-bg-color != none) {
                         background-color: $fh-nav-bg-color;
                         padding-top: $nav-header-ver-padding;

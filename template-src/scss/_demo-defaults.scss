@@ -71,6 +71,7 @@ $foot-main-bg-color:            $grey-darker !default;
 $many-colors:
 (
  // name            // bg-color      // highlight-color
+ (grey-darker,      $grey-darker,   $main-theme),
  (grey-dark,        $grey-dark,     $main-theme),
  (grey,             $grey,          $main-theme),
  (grey-light,       $grey-light,    $main-theme),

@@ -140,6 +140,7 @@
 <%-- These are currently not configurable, maybe add this later --%>
 <c:set var="linkOnHeadline"     value="${true}" />
 <c:set var="linkOnText"         value="${true}" />
+<c:set var="useButton"          value="${false}" />
 
 <c:choose>
     <c:when test="${not empty preface}">
@@ -214,6 +215,7 @@
         <mercury:link
             link="${link}"
             title="${linkTitle}"
+            attr='aria-label="${linkTitle}"'
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
             ${markupVisualOutput}
         </mercury:link>
@@ -273,6 +275,7 @@
                 <mercury:link
                     link="${link}"
                     title="${linkTitle}"
+                    attr='aria-label="${linkTitle}"'
                     test="${linkOnText}">
                     ${markupTextOutput}
                 </mercury:link>
@@ -301,6 +304,7 @@
                         css="btn teaser-btn"
                         text="${buttonText}"
                         title="${linkTitle}"
+                        createButton="${true}"
                         noExternalMarker="${true}" />
                 </c:if>
             </c:when>

@@ -113,7 +113,7 @@
         <c:if test="${not empty width}">${' '}width="${width}"</c:if>
         <c:if test="${not empty height}">${' '}height="${height}"</c:if>
         <c:if test="${not empty cssImage or not empty cssImageLazy}">${' '}class="${cssImage}${' '}${cssImageLazy}"</c:if>
-        <c:if test="${not empty alt}">${' '}alt="${alt}"</c:if>
+        <c:if test="${true}">${' '}alt="${alt}"</c:if><%-- Always provide an alt, even if it's empty --%>
         <c:if test="${not empty title and (title ne alt)}">${' '}title="${title}"</c:if>
         <c:if test="${not empty attrImage}">${' '}${attrImage}</c:if>
         <c:if test="${not empty zoomData}">${' '}${zoomData}</c:if><%--
@@ -126,7 +126,7 @@
                 <c:if test="${not empty width}">${' '}width="${width}"</c:if>
                 <c:if test="${not empty height}">${' '}height="${height}"</c:if>
                 <c:if test="${not empty cssImage}">${' '}class="${cssImage}"</c:if>
-                <c:if test="${not empty alt}">${' '}alt="${alt}"</c:if><%--
+                <c:if test="${true}">${' '}alt="${alt}"</c:if><%--
         --%>><%----%>
         </noscript><%----%>
     </c:if>

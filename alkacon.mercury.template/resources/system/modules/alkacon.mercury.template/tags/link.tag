@@ -36,6 +36,10 @@
 <%@ attribute name="newWin" type="java.lang.Boolean" required="false"
     description="If 'true', the generated href will open the link target in a new window." %>
 
+<%@ attribute name="createButton" type="java.lang.Boolean" required="false"
+    description="If 'true', the a button with onlick action will be gernerated instead of an a href link.
+    This is only supported if there is no body content in this tag." %>
+
 <%@ attribute name="noExternalMarker" type="java.lang.Boolean" required="false"
     description="If 'true', no external marker CSS will be added to links pointing to an external server." %>
 
@@ -95,38 +99,70 @@
     <c:choose>
         <c:when test="${not empty targetLink}">
 
+            <c:set var="createButton" value="${createButton and empty body}" />
             <c:set var="internal" value="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:')}" />
             <c:if test="${empty body and not internal and not noExternalMarker}">
                 <c:set var="css" value="${css} external" />
             </c:if>
 
-            ${'<a href=\"'}${targetLink}${'\"'}
-                <c:if test="${not empty css}">${' '}class="${css}"</c:if>
-                <c:if test="${not empty style}">${' '}style="${style}"</c:if>
-                <c:if test="${not empty attr}">${' '}${attr}</c:if>
-                <c:if test="${not empty linkTitle}">${' '}title="${linkTitle}"</c:if>
-                <c:if test="${newWin}">${' '}target="_blank" rel="noopener"</c:if>
-            ${'>'}
+            <c:choose>
+                <c:when test="${createButton}">
+                    <%--
+                        Using a button with onclick event instead of a href passes
+                        the Google SEO test 'Links Do Not Have Descriptive Text'.
+                    --%>
+                    <c:choose>
+                        <c:when test="${newWin}">
+                            <c:set var="btnAction">window.open('${targetLink}', '_blank')</c:set>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="btnAction">location.href='${targetLink}'</c:set>
+                        </c:otherwise>
+                    </c:choose>
+                    ${'<button onclick=\"'}${btnAction}${'\"'}
+                        <c:if test="${not empty css}">${' '}class="${css}"</c:if>
+                        <c:if test="${not empty style}">${' '}style="${style}"</c:if>
+                        <c:if test="${not empty attr}">${' '}${attr}</c:if>
+                        <c:if test="${not empty linkTitle}">${' '}title="${linkTitle}"</c:if>
+                    ${'>'}
+                </c:when>
+                <c:otherwise>
+                    ${'<a href=\"'}${targetLink}${'\"'}
+                        <c:if test="${not empty css}">${' '}class="${css}"</c:if>
+                        <c:if test="${not empty style}">${' '}style="${style}"</c:if>
+                        <c:if test="${not empty attr}">${' '}${attr}</c:if>
+                        <c:if test="${not empty linkTitle}">${' '}title="${linkTitle}"</c:if>
+                        <c:if test="${newWin}">${' '}target="_blank" rel="noopener"</c:if>
+                    ${'>'}
+                </c:otherwise>
+            </c:choose>
 
-                <c:choose>
-                    <c:when test="${not empty linkTextContent}">
-                        <c:out value="${linkTextContent}" />
-                    </c:when>
-                    <c:when test="${empty body}">
-                        <c:if test="${empty text}">
-                            <fmt:setLocale value="${cms.locale}" />
-                            <cms:bundle basename="alkacon.mercury.template.messages">
-                                <c:set var="text"><fmt:message key="msg.page.moreLink" /></c:set>
-                            </cms:bundle>
-                        </c:if>
-                        <c:out value="${text}" />
-                    </c:when>
-                    <c:otherwise>
-                        ${body}
-                    </c:otherwise>
-                </c:choose>
+            <c:choose>
+                <c:when test="${not empty linkTextContent}">
+                    <c:out value="${linkTextContent}" />
+                </c:when>
+                <c:when test="${empty body}">
+                    <c:if test="${empty text}">
+                        <fmt:setLocale value="${cms.locale}" />
+                        <cms:bundle basename="alkacon.mercury.template.messages">
+                            <c:set var="text"><fmt:message key="msg.page.moreLink" /></c:set>
+                        </cms:bundle>
+                    </c:if>
+                    <c:out value="${text}" />
+                </c:when>
+                <c:otherwise>
+                    ${body}
+                </c:otherwise>
+            </c:choose>
 
-            ${'</a>'}
+            <c:choose>
+                <c:when test="${createButton}">
+                    ${'</button>'}
+                </c:when>
+                <c:otherwise>
+                    ${'</a>'}
+                </c:otherwise>
+            </c:choose>
         </c:when>
 
         <c:otherwise>

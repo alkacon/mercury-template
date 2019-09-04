@@ -43,17 +43,16 @@
     <Title><![CDATA[Alkacon Software POI]]></Title>
     <Address>
       <StreetAddress><![CDATA[An der Wachsfabrik 13]]></StreetAddress>
-      <ExtendedAddress><![CDATA[Hahnwald]]></ExtendedAddress>
       <PostalCode><![CDATA[50996]]></PostalCode>
       <Locality><![CDATA[Cologne]]></Locality>
       <Region><![CDATA[NRW]]></Region>
       <Country><![CDATA[Germany]]></Country>
     </Address>
     <Facilities>
-      <WheelchairAccess>true</WheelchairAccess>
+      <WheelchairAccess>false</WheelchairAccess>
       <HearingImpaired>true</HearingImpaired>
       <LowVision>true</LowVision>
-      <PublicRestrooms>true</PublicRestrooms>
+      <PublicRestrooms>false</PublicRestrooms>
     </Facilities>
     <Coord><![CDATA[{"lat":50.8704,"lng":6.99818,"zoom":11,"type":"roadmap","mode":"dynamic","height":0,"width":0,"address":"An der Wachsfabrik 13, 50996 Köln, Deutschland"}]]></Coord>
     <Paragraph>

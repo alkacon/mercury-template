@@ -2,15 +2,15 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[&copy; Alkacon Software GmbH &amp; Co. KG]]></Title>
-    <Text name="Text0">
-      <links>
-        <link name="link0" internal="false" type="A">
+    <Title><![CDATA[(c) Alkacon Software GmbH & Co. KG]]></Title>
+    <Link>
+      <Text><![CDATA[© Alkacon Software GmbH & Co. KG]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
           <target><![CDATA[http://alkacon.com]]></target>
         </link>
-      </links>
-      <content><![CDATA[<p><a class="text-grey" href="%(link0)">© Alkacon Software</a></p>]]></content>
-    </Text>
+      </URI>
+    </Link>
     <GalleryTitle><![CDATA[Footer (c) Alkacon Software GmbH & Co. KG]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

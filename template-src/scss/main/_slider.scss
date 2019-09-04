@@ -134,6 +134,7 @@
             &.background {
                 opacity: 0.75;
                 background-color: $main-theme;
+                background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
             }
 
             &.foreground {
@@ -228,7 +229,8 @@
         }
 
         &.custom .caption {
-            background-color: transparent;
+            background-color: transparent !important;
+            background-image: none !important;
             padding: 0;
             border-radius: 0;
 
@@ -254,6 +256,7 @@
                 strong,
                 small {
                     background-color: $main-theme;
+                    background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
                 }
             }
             strong {

@@ -12,6 +12,9 @@
 
 <mercury:init-messages>
 
+<fmt:setLocale value="${cms.locale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
+
 <cms:formatter var="content" val="value">
 
 <c:set var="setting"                value="${cms.element.setting}" />
@@ -72,7 +75,7 @@
                     <a href="${navLink}"${navTarget} class="nav-label" id="${parentLabelId}">${navText}</a><%--
                     --%><a href="${navLink}"${navTarget} data-toggle="collapse" data-target="#${targetMenuId}" <%--
                     --%>${isCurrentPage ? ' aria-expanded=\"true\" class=\"collapse show\" ' : ' aria-expanded=\"false\"'}${' '}<%--
-                    --%>aria-controls="${targetMenuId}">&nbsp;</a><%--
+                    --%>aria-controls="${targetMenuId}" aria-label="<fmt:message key="msg.page.navigation.sublevel" />">&nbsp;</a><%--
             --%></c:when>
 
                 <c:otherwise>
@@ -108,4 +111,5 @@
 <mercury:nl />
 
 </cms:formatter>
+</cms:bundle>
 </mercury:init-messages>

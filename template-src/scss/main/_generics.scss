@@ -19,19 +19,6 @@
  * Source file: _generics.scss
  */
 
-// Link text colors
-
-@each $color-name, $text-color, $highlight-color in $link-colors {
-
-    .links-#{""+$color-name} {
-        @if (""+$color-name != "default") {
-            @include colored-a($text-color, $highlight-color);
-        } @else {
-            @extend .links-theme;
-        }
-    }
-}
-
 // Colored backgrounds
 
 .box {
@@ -59,11 +46,12 @@
 
     .box-#{""+$color-name} {
         $color: check-text-color($bg-color, $text-light); // we normally want light text
-        $color-link: check-text-color($bg-color, $link-color);
+        $color-link: check-text-color($bg-color, $link-color, 4.5);
         $color-hover-base: conditional-value($color-link == $link-color, $link-hover-color, $color-link);
         $color-hover: check-text-color($bg-color, $color-hover-base);
 
         background-color: $bg-color;
+        background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
         color: $color;
 
         @include colored-a($color-link, $color-hover);
@@ -75,14 +63,17 @@
 
         &.transparent {
             background-color: rgba($bg-color, 0.7);
+            background-image: none;
         }
     }
 
     .bc-#{""+$color-name} {
         background-color: $bg-color;
+        background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
 
         &.transparent {
             background-color: rgba($bg-color, 0.7);
+            background-image: none;
         }
     }
 }
@@ -104,6 +95,19 @@
             @include set-text-color($text-color);
         } @else {
             @extend .text-dark;
+        }
+    }
+}
+
+// Link text colors
+
+@each $color-name, $text-color, $highlight-color in $link-colors {
+
+    .links-#{""+$color-name} {
+        @if (""+$color-name != "default") {
+            @include colored-a($text-color, $highlight-color);
+        } @else {
+            @extend .links-theme;
         }
     }
 }

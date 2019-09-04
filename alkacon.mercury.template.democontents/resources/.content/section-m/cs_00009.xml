@@ -3,14 +3,14 @@
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
     <Title><![CDATA[Built with OpenCms 11]]></Title>
-    <Text name="Text0">
-      <links>
-        <link name="link0" internal="false" type="A">
+    <Link>
+      <Text><![CDATA[Built with OpenCms 11]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
           <target><![CDATA[http://opencms.org]]></target>
         </link>
-      </links>
-      <content><![CDATA[<p><a class="text-grey" href="%(link0)">Built with OpenCms 11</a></p>]]></content>
-    </Text>
+      </URI>
+    </Link>
     <GalleryTitle><![CDATA[Footer Built with OpenCms 11]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

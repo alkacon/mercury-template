@@ -15,6 +15,18 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+@function lookup-text-color($bg-color, $text-color) {
+    $colors: map-get($match-bg-text-colors, $bg-color);
+    @if ($colors != null) {
+        @debug "Matching #{$text-color} on #{$bg-color} to #{$colors}";
+        @if (index($colors, $text-color) != null) {
+            @debug "Found #{$text-color} in #{$colors}";
+            @return $text-color;
+        }
+    }
+    @return null;
+}
+
 // Calculates the best color for text based on the background
 @function get-text-color($bg-color, $dark-color: $text-dark, $light-color: $text-light) {
     @if ($bg-color == transparent) {
@@ -35,6 +47,8 @@
         @return $text-color;
     } @elseif ($bg-color == none) {
         @return $text-color;
+    } @elseif (lookup-text-color($bg-color, $text-color) != null) {
+        @return lookup-text-color($bg-color, $text-color);
     } @else  {
         $contrast: contrast($bg-color, $text-color);
         @if ($contrast > $contrast-threshold) {

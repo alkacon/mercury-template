@@ -34,6 +34,8 @@ $reduced-colors:                    () !default;
 // Larger array of colors to be used for even more background variations (should include the reduced colors)
 $many-colors:                       $reduced-colors !default;
 
+// Mating color for backgrounds, used for colored background text color lookup
+$match-bg-text-colors:              () !default
 
 // Font definitions
 

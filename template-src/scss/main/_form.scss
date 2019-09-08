@@ -435,7 +435,7 @@
     .icon-append,
     .icon-prepend {
         border-color: $form-border-color;
-        transition: border-color $transition-timing $transition-function;
+        // transition: border-color $transition-timing $transition-function;
     }
     .icon-append,
     .icon-prepend {
@@ -454,7 +454,7 @@
     .toggle {
         i {
             border-color: $form-radio-unchecked-border-color;
-            transition: border-color $transition-timing $transition-function;
+            // transition: border-color $transition-timing $transition-function;
         }
 
         input:checked + i {

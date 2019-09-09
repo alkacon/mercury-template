@@ -91,6 +91,7 @@
                 <c:set var="showTitleAside"     value="${not logoPosCenter}" />
                 <c:set var="showAddContainer"   value="${acDisplay ne 'none'}" />
                 <c:set var="acHasPageSize"      value="${showAddContainer and (acDisplay eq 'ac-page-size')}" />
+                <c:set var="acPosition"         value="${showNavAside ? 'ac-below-logo' : acPosition}" />
 
                 <c:choose>
                     <c:when test="${navFixType eq 'css'}" >

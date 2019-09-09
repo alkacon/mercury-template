@@ -227,7 +227,7 @@
         <c:if test="${not empty styleAttr}">
               <c:set var="styleAttr"> style="${styleAttr}"</c:set>
         </c:if>
-        <div class="area-content ${cssWrapper}"${styleAttr}>
+        <div class="area-content ${variant}${' '}${cssWrapper}"${styleAttr}>
             <c:set target="${valueMap}" property="Type"             value="row"/>
             <c:set target="${valueMap}" property="Name"             value="main"/>
             <c:set target="${valueMap}" property="Tag"              value="div" />
@@ -239,7 +239,7 @@
         <%-- la_00002 / la_00003 --%>
         <c:set var="asideFirst"                 value="${variant eq 'area-side-main'}" />
         <c:set var="asideWide"                  value="${'true' eq cms.vfs.readResource[cms.requestContext.uri].propertySearch['mercury.side.wide']}" />
-        <main class="area-content ${cssWrapper}"><%----%>
+        <main class="area-content ${variant}${' '}${cssWrapper}"><%----%>
             <div class="container"><%----%>
                 <div class="row"><%----%>
                     <c:set target="${valueMap}" property="Type"             value="row"/>
@@ -262,7 +262,7 @@
         <c:set target="${valueMap}" property="Type"             value="element"/>
         <c:set target="${valueMap}" property="Name"             value="main"/>
         <c:set target="${valueMap}" property="Tag"              value="div" />
-        <c:set target="${valueMap}" property="Css"              value="area-content${cssWrapper}" />
+        <c:set target="${valueMap}" property="Css"              value="area-content ${variant}${' '}${cssWrapper}" />
         <c:set target="${valueMap}" property="Parameters"       value="${params}" />
         <c:set target="${params}"   property="cssgrid"          value="fullwidth" />
         <mercury:container value="${valueMap}" title="${value.Title}" />

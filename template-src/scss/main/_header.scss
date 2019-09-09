@@ -253,9 +253,6 @@
                 font-size: $h4-font-size;
                 line-height: 1.2;
                 width: 100%;
-                @if ($fh-title-color != $nav-header-text) {
-                    color: $fh-title-color;
-                }
             }
 
             &.title-top {
@@ -354,6 +351,13 @@
                     @if ($fh-nav-bg-color != none) {
                         background-color: $fh-nav-bg-color;
                         padding-top: $nav-header-ver-padding;
+                        .nav-main-items > li > a {
+                            $color-nav-text: check-text-color($fh-nav-bg-color, $nav-header-text);
+                            color: $color-nav-text;
+                            &::after {
+                                color: $color-nav-text
+                            }
+                        }
                     }
                 }
             }
@@ -532,6 +536,9 @@
                     order: 1;
                     @if ($fh-title-bg-color != none) {
                         background-color: $fh-title-bg-color;
+                        @if ($fh-title-color != $nav-header-text) {
+                            color: $fh-title-color;
+                        }
                     }
                 }
 
@@ -588,12 +595,39 @@
                                 }
                             }
                             .h-ac {
-                                // addintinal container should not have colored margins
                                 margin-top: $logo-padding;
                             }
                         }
                     }
                     @if ($logo-padding > $default-margin-verysmall) {
+                        @if ($fh-ac-bg-color == none) {
+                            // additional container should add margins only if not colored
+                            &.ac-below-logo {
+                                &.nav-aside {
+                                    // additional container below logo and navigation
+                                    .h-ac {
+                                        margin-bottom: $logo-padding;
+                                    }
+                                }
+                                @if ($fh-nav-bg-color != none) {
+                                    &.nav-below {
+                                        // colored navigation below additional container
+                                        .h-ac {
+                                            margin-bottom: $logo-padding;
+                                        }
+                                    }
+                                }
+                            }
+                            &.ac-below-nav {
+                                .h-ac {
+                                    margin-bottom: $logo-padding;
+                                    @if ($fh-nav-bg-color != none) {
+                                        // colored navigation above additional container
+                                        margin-top: $logo-padding;
+                                    }
+                                }
+                            }
+                        }
                         &.header-notfixed,
                         &.header-isfixed.fix-complete {
                             .h-nav {

@@ -352,7 +352,7 @@
     a:not(.btn):not(.uncolored) {
         color: $text-color;
 
-        @if (($highlight-color != none) && ($highlight-color != $text-color)) {
+        @if (($highlight-color != none) and ($highlight-color != $text-color)) {
             &:focus,
             &:hover {
                 color: $highlight-color;

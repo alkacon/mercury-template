@@ -40,7 +40,7 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-9${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-3 order-lg-first${colCss}" />
+            <c:set target="${valueMap}" property="Css"          value="col-lg-3 col-side order-lg-first${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
@@ -54,7 +54,7 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-8${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4 order-lg-first${colCss}" />
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4 col-side order-lg-first${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
@@ -107,7 +107,7 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-9${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-3${colCss}" />
+            <c:set target="${valueMap}" property="Css"          value="col-lg-3 col-side${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
@@ -122,7 +122,7 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-8${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}" />
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4 col-side${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />

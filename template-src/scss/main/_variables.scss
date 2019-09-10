@@ -155,10 +155,11 @@ $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use l
 // Default margins
 
 $default-margin:                    2.0rem !default;
-$default-margin-smaller:            round($default-margin * 75) / 100 !default;
-$default-margin-small:              round($default-margin * 50) / 100 !default;
-$default-margin-verysmall:          round($default-margin * 25) / 100 !default;
-$default-margin-ultrasmall:         round($default-margin * 12.5) / 100 !default;
+$default-margin-smaller:            round($default-margin * 75) / 100 !default;   // 1.5 rem
+$default-margin-small:              round($default-margin * 50) / 100 !default;   // 1.0 rem
+$default-margin-quitesmall:         round($default-margin * 37.5) / 100 !default; // 0.75 rem
+$default-margin-verysmall:          round($default-margin * 25) / 100 !default;   // 0.5 rem
+$default-margin-ultrasmall:         round($default-margin * 12.5) / 100 !default; // 0.25 rem
 
 $headings-margin-bottom:            $default-margin-small !default;
 $intro-headings-margin-bottom:      $default-margin-ultrasmall !default;

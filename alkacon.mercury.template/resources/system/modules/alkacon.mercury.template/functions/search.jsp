@@ -134,21 +134,21 @@
         <mercury:nl/>
         <div class="row search-options-row"><%----%>
             <mercury:nl/>
-            <div class="col-12 col-md-${colWidthInput} search-input"><%----%>
+            <div class="col-12 col-lg-${colWidthInput} search-input"><%----%>
                 <section class="input-group"><%----%>
                     <div class="input button"><%----%>
                         <label for="searchFormQuery" class="sr-only">Search</label><%----%>
                         <input id="searchFormQuery" name="${common.config.queryParam}" <%--
                             --%>value="${escapedQuery}" class="form-control blur-focus" type="text" autocomplete="off" <%--
                             --%>placeholder="<fmt:message key='msg.page.search.enterquery' />" /><%----%>
-                        <button class="btn" type="submit"><fmt:message key="msg.page.search.submit" /></button><%----%>
+                        <button class="btn btn-submit-search" type="submit"><fmt:message key="msg.page.search.submit" /></button><%----%>
                     </div><%----%>
                 </section><%----%>
             </div><%----%>
             <c:if test="${hasSortOptions}">
                 <mercury:nl/>
                 <c:set var="sort" value="${controllers.sorting}" />
-                <div class="col-12 col-md-8 search-sort-options"><%----%>
+                <div class="col-12 col-lg-8 search-sort-options"><%----%>
                     <div class="select"><%----%>
                         <%-- Display select box with sort options where the currently chosen option is selected --%>
                         <select name="${sort.config.sortParam}" class="form-control" onchange="submitSearchForm()"><%----%>
@@ -170,7 +170,7 @@
             <c:if test="${hasFacets}">
                 <%-- Facets --%>
                 <mercury:nl/>
-                <div class="col-md-4 col-12 search-facets"><%----%>
+                <div class="col-12 col-lg-4 search-facets"><%----%>
                 <div class="type-list-filter"><%----%>
 
                     <%-- Query facet --%>
@@ -285,7 +285,7 @@
 
             <%-- Search results --%>
             <c:set var="colWidthResults" value="${hasFacets ? 8 : 12}" /><%----%>
-            <div class="col-md-${colWidthResults} col-12 search-results"><%----%>
+            <div class="col-12 col-lg-${colWidthResults} search-results"><%----%>
                 <mercury:nl/>
                 <c:choose>
                     <c:when test="${not empty search.exception}">

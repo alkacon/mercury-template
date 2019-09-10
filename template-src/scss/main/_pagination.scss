@@ -19,6 +19,52 @@
  * Source file: _pagination.scss
  */
 
+@mixin pagination-item {
+    display: inline-block;
+    position: relative;
+    background-color: $pagination-background-color;
+    border: $pagination-border;
+    margin-left: $pagination-margin;
+    @if ($pagination-margin > 0) {
+        margin-right: $pagination-margin;
+    } @else {
+        margin-right: -1px;
+    }
+    color: $pagination-text-color;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 12px;
+    line-height: $target-line-height;
+    min-width: calc(#{$target-line-height} + 10px); // 10px = top+bottom padding
+    font-size: $font-size-base;
+    @if ($pagination-font-family != $font-family-base) {
+        font-family: $pagination-font-family;
+    }
+
+    .number {
+        font-weight: $font-weight-base;
+    }
+}
+
+@mixin pagination-item-hover {
+    color: $pagination-text-active-color;
+    background: $pagination-hover-color;
+    border-color: $pagination-hover-color;
+}
+
+@mixin pagination-item-active {
+    color: $pagination-text-active-color;
+    background-color: $pagination-active-color;
+    border-color: $pagination-active-color;
+}
+
+@mixin pagination-item-disabled {
+    color: $pagination-border-color;
+    background-color: $pagination-background-color;
+    border-color: $pagination-border-color;
+    cursor: $cursor-disabled;
+}
+
 .pagination {
 
     display: initial;
@@ -29,30 +75,7 @@
         display: inline-block;
 
         > a {
-            display: inline-block;
-            position: relative;
-            background-color: $pagination-background-color;
-            border: $pagination-border;
-            margin-left: $pagination-margin;
-            @if ($pagination-margin > 0) {
-                margin-right: $pagination-margin;
-            } @else {
-                margin-right: -1px;
-            }
-            color: $pagination-text-color;
-            text-align: center;
-            text-decoration: none;
-            padding: 5px 12px;
-            line-height: $target-line-height;
-            min-width: calc(#{$target-line-height} + 10px); // 10px = top+bottom padding
-            font-size: $font-size-base;
-            @if ($pagination-font-family != $font-family-base) {
-                font-family: $pagination-font-family;
-            }
-
-            .number {
-                font-weight: $font-weight-base;
-            }
+            @include pagination-item;
         }
 
         &.previous {
@@ -89,26 +112,19 @@
     > li > a,
     > li.active > a {
         &:hover {
-            color: $pagination-text-active-color;
-            background: $pagination-hover-color;
-            border-color: $pagination-hover-color;
+        @include pagination-item-hover;
         }
     }
 
     > li.active > a {
-        color: $pagination-text-active-color;
-        background-color: $pagination-active-color;
-        border-color: $pagination-active-color;
+        @include pagination-item-active;
     }
 
     > .disabled {
         > a,
         > a:hover,
         > a:focus {
-            color: $pagination-border-color;
-            background-color: $pagination-background-color;
-            border-color: $pagination-border-color;
-            cursor: $cursor-disabled;
+            @include pagination-item-disabled;
         }
     }
 }

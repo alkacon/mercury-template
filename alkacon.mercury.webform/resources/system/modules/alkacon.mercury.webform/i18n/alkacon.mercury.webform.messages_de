@@ -49,6 +49,8 @@ form.init.error.headline=Das Formular kann nicht angezeigt werden
 form.mailsubject.prefix=\ 
 form.message.mandatory=Alle Eingabefelder, die mit einem Stern (*) versehen sind, sind Pflichtfelder.
 form.message.waitlist=Die Veranstaltung ist bereits ausgebucht. Sie können sich aber auf die Warteliste setzen lassen.
+form.privacy.label=Datenschutz
+form.privacy.linktext=Ich bestätige hiermit, die Datenschutzerklärung gelesen und verstanden zu haben.
 label.WebForm.Tab.DB=Datenbank Konfiguration
 label.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Stellen Sie ein, ob und wie Datensätze als XML-Inhalte gespeichert werden.</div>
 label.WebForm.Tab.Fields=Eingabefelder

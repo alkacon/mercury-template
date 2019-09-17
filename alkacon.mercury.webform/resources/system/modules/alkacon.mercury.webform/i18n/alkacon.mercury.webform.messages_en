@@ -49,6 +49,8 @@ form.init.error.headline=The online form can not be displayed
 form.mailsubject.prefix=\ 
 form.message.mandatory=All fields marked with an asterisk (*) are mandatory.
 form.message.waitlist=The event is already fully booked. But you can register for the waitlist.
+form.privacy.label=Privacy policy
+form.privacy.linktext=I confirm that I have read and understood the privacy policy.
 label.WebForm.Tab.DB=Database configuration
 label.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Configure if and how form data is stored as XML content.</div>
 label.WebForm.Tab.Fields=Inputs fields

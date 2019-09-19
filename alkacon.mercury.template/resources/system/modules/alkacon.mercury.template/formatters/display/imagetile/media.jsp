@@ -84,7 +84,7 @@
 </c:choose>
 
 <mercury:nl />
-<div class="type-media fitvidsignore text-below-on-xs ${tileClass}"><%----%>
+<div class="type-media text-below-on-xs ${tileClass}"><%----%>
     <div class="content ${animationClass}"><%----%>
         <div class="preview ${cssClass}" <c:if test="${not empty template}">data-preview='{"template":"${cms:encode(template)}"}'</c:if>><%----%>
 

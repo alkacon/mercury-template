@@ -9,7 +9,7 @@
     </Code>
     <OnclickActivation>
       <Heading><![CDATA[Click here to show the presentation]]></Heading>
-      <Notice><![CDATA[If you click this box, data will be loaded from Slideshares servers directly]]></Notice>
+      <Notice><![CDATA[If you click this box, data will be loaded from Slideshares servers directly. Slideshare may use tracking cookies that impact your privacy. ]]></Notice>
       <Ratio><![CDATA[16-9]]></Ratio>
       <Icon><![CDATA[slideshare]]></Icon>
     </OnclickActivation>

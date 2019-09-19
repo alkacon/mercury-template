@@ -441,7 +441,10 @@ var Mercury = function(jQ) {
 
     function initFitVids() {
         // set video widths using the fidVids plugin
-        fitVids({ players: [ 'iframe[src*="slideshare.net"]', 'iframe[src*="medien-tube.de"]' ] });
+        fitVids({
+            players: [ 'iframe[src*="slideshare.net"]', 'iframe[src*="medien-tube.de"]' ],
+            ignore: ['iframe[src*="youtube-nocookie.com"]'] // used by media element
+        });
     }
 
 
@@ -584,6 +587,7 @@ var Mercury = function(jQ) {
                     $p.parent().addClass("play");
                     $m.remove();
                     $p.append(decodeURIComponent(data.template));
+                    initFitVids();
                 });
             }
         });

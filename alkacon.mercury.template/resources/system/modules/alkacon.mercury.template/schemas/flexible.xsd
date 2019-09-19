@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/onclick-activation.xsd"/>
 
     <xsd:element name="FlexibleData" type="OpenCmsFlexibleData"/>
 
@@ -15,6 +16,7 @@
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Code" type="OpenCmsHtml" />
             <xsd:element name="RequireReload" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="OnclickActivation" type="OpenCmsOnclickActivation" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -52,6 +54,11 @@
                     <Widget>checkbox</Widget>
                     <Default>false</Default>
                     <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>OnclickActivation</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.oa)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.oa.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

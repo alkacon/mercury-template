@@ -1,0 +1,115 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="OnclickActivations" type="OpenCmsOnclickActivations" />
+
+    <xsd:complexType name="OpenCmsOnclickActivations">
+        <xsd:sequence>
+            <xsd:element name="OnclickActivation" type="OpenCmsOnclickActivation" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsOnclickActivation">
+        <xsd:sequence>
+            <xsd:element name="Heading" type="OpenCmsString" />
+            <xsd:element name="Notice" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Image" type="OpenCmsVfsFile" minOccurs="0" />
+            <xsd:element name="Ratio" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Icon" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="BgColor" type="OpenCmsColor" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Heading</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.oa.Heading)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.oa.Heading.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Notice</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.oa.Notice)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.oa.Notice.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName><![CDATA[Ratio]]></PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.setting.imageRatio.help)]]></Description>
+                    <Widget><![CDATA[selectcombo]]></Widget>
+                    <Default><![CDATA[none]]></Default>
+                    <WidgetConfig><![CDATA[
+                        none:   %(key.msg.setting.imageRatio.oa.none)|
+                        1-1:    %(key.msg.setting.imageRatio.1-1)|
+                        4-3:    %(key.msg.setting.imageRatio.4-3)|
+                        3-2:    %(key.msg.setting.imageRatio.3-2)|
+                        16-9:   %(key.msg.setting.imageRatio.16-9)|
+                        2-1:    %(key.msg.setting.imageRatio.2-1)|
+                        2,35-1: %(key.msg.setting.imageRatio.235-1)|
+                        3-1:    %(key.msg.setting.imageRatio.3-1)|
+                        33-45:  %(key.msg.setting.imageRatio.35-45)|
+                        2-3:    %(key.msg.setting.imageRatio.2-3)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Icon</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.oa.Icon)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.oa.Icon.help)]]></Description>
+                    <Widget><![CDATA[selectcombo]]></Widget>
+                    <Default><![CDATA[none]]></Default>
+                    <WidgetConfig><![CDATA[
+                        none:%(key.msg.icon.none)|
+                        power-off:%(key.msg.icon.power-off)|
+                        bullseye:%(key.msg.icon.bullseye)|
+                        play:%(key.msg.icon.play)|
+                        youtube-play:%(key.msg.icon.youtube-play)|
+                        soundcloud:%(key.msg.icon.soundcloud)|
+                        youtube:%(key.msg.icon.youtube)|
+                        vimeo:%(key.msg.icon.vimeo)|
+                        facebook-official:%(key.msg.icon.facebook-official)|
+                        facebook:%(key.msg.icon.facebook)|
+                        twitter:%(key.msg.icon.twitter)|
+                        twitter-square:%(key.msg.icon.twitter-square)|
+                        calendar:%(key.msg.icon.calendar)|
+                        slideshare:%(key.msg.icon.slideshare)|
+                        music:%(key.msg.icon.music)|
+                        headphones:%(key.msg.icon.headphones)|
+                        microphone:%(key.msg.icon.microphone)|
+                        volume-up:%(key.msg.icon.volume-up)|
+                        info:%(key.msg.icon.info)|
+                        globe:%(key.msg.icon.globe)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.oa.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.oa.Image.help)]]></Description>
+                    <Widget>imagegallery</Widget>
+                    <WidgetConfig>{useformat:true}</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>BgColor</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.oa.BgColor)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.oa.BgColor.help)]]></Description>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

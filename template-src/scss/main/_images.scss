@@ -32,15 +32,17 @@
 */
 
 img {
-    &.lazyloading,
-    &.lazyload {
-        background:
-            url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmVyc2lvbj0iMSIgdmlld0JveD0iMCAwIDE2IDE2Ij4NCiAgPHN0eWxlPg0KICAgIEBrZXlmcmFtZXMga3J7ZnJvbXt0cmFuc2Zvcm06IHJvdGF0ZSgwKX10b3t0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpfX0NCiAgPC9zdHlsZT4NCiAgPGcgc3R5bGU9ImFuaW1hdGlvbi1uYW1lOmtyO2FuaW1hdGlvbi1kdXJhdGlvbjoyczthbmltYXRpb24taXRlcmF0aW9uLWNvdW50OmluZmluaXRlO2FuaW1hdGlvbi10aW1pbmctZnVuY3Rpb246bGluZWFyO3RyYW5zZm9ybS1vcmlnaW46NTAlIDUwJTt3aWR0aDoxNnB4O2hlaWdodDoxNnB4Ij4NCiAgICA8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1kYXNoYXJyYXk9IjMyLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjEiIGQ9Ik04IDEuMTI1QTYuODc1IDYuODc1IDAgMSAxIDEuMTI1IDgiIHN0eWxlPSJhbmltYXRpb24tbmFtZTprcjthbmltYXRpb24tZHVyYXRpb246MS4zM3M7YW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDppbmZpbml0ZTthbmltYXRpb24tdGltaW5nLWZ1bmN0aW9uOmN1YmljLWJlemllcigwLjQsIDAsIDAuMiwgMSk7dHJhbnNmb3JtLW9yaWdpbjo1MCUgNTAlIi8+DQogIDwvZz4NCjwvc3ZnPg==")
-            no-repeat scroll 50% 50% $image-bg-color;
-        background-size: 24px 24px;
-        background-color:  $image-bg-color;
-        box-shadow: 0 0 1px $dropshadow inset;
-        opacity: 0.25;
+    @media screen {
+        &.lazyloading,
+        &.lazyload {
+            background:
+                url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmVyc2lvbj0iMSIgdmlld0JveD0iMCAwIDE2IDE2Ij4NCiAgPHN0eWxlPg0KICAgIEBrZXlmcmFtZXMga3J7ZnJvbXt0cmFuc2Zvcm06IHJvdGF0ZSgwKX10b3t0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpfX0NCiAgPC9zdHlsZT4NCiAgPGcgc3R5bGU9ImFuaW1hdGlvbi1uYW1lOmtyO2FuaW1hdGlvbi1kdXJhdGlvbjoyczthbmltYXRpb24taXRlcmF0aW9uLWNvdW50OmluZmluaXRlO2FuaW1hdGlvbi10aW1pbmctZnVuY3Rpb246bGluZWFyO3RyYW5zZm9ybS1vcmlnaW46NTAlIDUwJTt3aWR0aDoxNnB4O2hlaWdodDoxNnB4Ij4NCiAgICA8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1kYXNoYXJyYXk9IjMyLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjEiIGQ9Ik04IDEuMTI1QTYuODc1IDYuODc1IDAgMSAxIDEuMTI1IDgiIHN0eWxlPSJhbmltYXRpb24tbmFtZTprcjthbmltYXRpb24tZHVyYXRpb246MS4zM3M7YW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDppbmZpbml0ZTthbmltYXRpb24tdGltaW5nLWZ1bmN0aW9uOmN1YmljLWJlemllcigwLjQsIDAsIDAuMiwgMSk7dHJhbnNmb3JtLW9yaWdpbjo1MCUgNTAlIi8+DQogIDwvZz4NCjwvc3ZnPg==")
+                no-repeat scroll 50% 50% $image-bg-color;
+            background-size: 24px 24px;
+            background-color:  $image-bg-color;
+            box-shadow: 0 0 1px $dropshadow inset;
+            opacity: 0.25;
+        }
     }
     &.lazyloaded {
         background: initial;
@@ -70,7 +72,7 @@ aside img {
         position: relative;
         height: 0;
         display: block;
-        // padding-bottom is calculated accrding to ratio and rendered at style to HTML
+        // padding-bottom is calculated according to ratio and rendered as inline style in HTML
 
         img {
             position: absolute;

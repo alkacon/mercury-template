@@ -19,6 +19,10 @@
  * Source file: _media.scss
  */
 
+$preview-text-shadow: 1px 1px 1px #000, 0px 0px 1px #000;
+$preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
+
+
 .type-media {
     &.square-col {
         .preview {
@@ -68,7 +72,7 @@
 
         .icon {
             color: #fff;
-            text-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+            text-shadow: $preview-icon-shadow;
             font-size: 16px;
             text-align: center;
             z-index: #{$overflow-z-index + 1};
@@ -91,7 +95,7 @@
             padding: 10px 20px;
             font-size: 16px;
             line-height: 1.2;
-            text-shadow: 1px 1px 1px #000;
+            text-shadow: $preview-text-shadow;
             margin: 0;
             color: #fff;
             z-index: #{$overflow-z-index + 1};
@@ -106,7 +110,7 @@
             > .sub-header,
             h1, h2, h3 {
                 color: #fff;
-                text-shadow: 1px 1px 1px #000;
+                text-shadow: $preview-text-shadow;
             }
         }
 
@@ -116,7 +120,7 @@
 
         &:hover {
             .icon span {
-                color: $main-theme;
+                opacity: 1.0;
             }
         }
     }
@@ -162,6 +166,142 @@
         height: initial;
         padding-bottom: 100%;
         overflow: hidden;
+    }
+}
+
+
+// Onclock activation
+
+.onclick-activation {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: $default-margin;
+
+    @include round-corners($image-border-radius);
+
+    .oa-heading,
+    .oa-notice {
+        color: #fff;
+        text-shadow: $preview-text-shadow;
+        padding: 0 $default-margin;
+        margin: 0;
+        z-index: #{$overflow-z-index + 2};
+    }
+
+    .oa-heading {
+        @extend .h3;
+    }
+
+    .oa-icon {
+        color: #fff;
+        text-shadow: $preview-icon-shadow;
+        text-align: center;
+        z-index: #{$overflow-z-index + 1};
+
+        span {
+            opacity: 0.7;
+            display: block;
+            font-size: 60px;
+        }
+        div {
+            opacity: 1.0;
+        }
+    }
+
+    .centered {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:hover {
+        .oa-icon span {
+            opacity: 1.0;
+        }
+    }
+
+    &.no-image {
+        background-color: $main-theme;
+    }
+
+    @mixin compact-display {
+        .oa-heading,
+        .oa-notice {
+            position: relative;
+            padding-top: $default-margin-small;
+            padding-bottom: $default-margin-small;
+        }
+        .centered {
+            top: $default-margin-small;
+            left: auto;
+            transform: none;
+        }
+        .oa-icon {
+            text-align: right;
+            padding-right: $default-margin;
+        }
+        &.has-icon {
+            .oa-heading {
+                padding-right: 80px;
+            }
+        }
+    }
+
+    &.compact {
+        @include compact-display;
+    }
+
+    &.presized {
+        .oa-heading,
+        .oa-notice {
+            position: absolute;
+        }
+        .oa-heading {
+            top: $default-margin;
+        }
+        .oa-notice {
+            bottom: $default-margin-small;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        &.presized {
+            &.no-image,
+            &.has-image {
+                @include compact-display;
+            }
+            &.no-image {
+                padding-bottom: 0 !important;
+                .oa-heading {
+                    top: auto;
+                }
+                .oa-notice {
+                    bottom: auto;
+                }
+            }
+            &.has-image {
+                .oa-heading,
+                .oa-notice {
+                    position: absolute;
+                }
+                .oa-heading {
+                    top: 0;
+                }
+                .oa-notice {
+                    bottom: 0;
+                }
+            }
+        }
+        .oa-heading {
+            font-size: $h4-font-size-mobile;
+            line-height: 1.1;
+        }
+        .oa-notice {
+            font-size: $font-size-sm;
+            line-height: 1.2;
+        }
     }
 }
 

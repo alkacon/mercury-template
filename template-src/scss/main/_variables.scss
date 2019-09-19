@@ -144,6 +144,7 @@ $h2-font-size-mobile:               $font-size-headings !default;
 $h3-font-size:                      $font-size-headings !default;
 $h3-font-size-mobile:               round($font-size-headings * 9) / 10 !default;
 $h4-font-size:                      $h3-font-size-mobile !default;
+$h4-font-size-mobile:               round($font-size-headings * 8) / 10 !default;
 $h5-font-size:                      $h4-font-size !default;
 $h6-font-size:                      $h4-font-size !default;
 

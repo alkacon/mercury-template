@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.4</version>
+		<version>11.0.1.5</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6032,6 +6032,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/onclick-activation.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/onclick-activation.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>6c8cc148-dacf-11e9-b0b7-0242ac11002b</uuidstructure>
+			<uuidresource>6c8cc149-dacf-11e9-b0b7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 19 Sep 2019 11:20:02 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for onclick activation]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd</destination>
 			<type>plain</type>
@@ -7338,6 +7355,23 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/onclick-activation.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/onclick-activation.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>21614fc1-dad7-11e9-b0b7-0242ac11002b</uuidstructure>
+			<uuidresource>21614fc2-dad7-11e9-b0b7-0242ac11002b</uuidresource>
+			<datecreated>Thu, 19 Sep 2019 12:15:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Reveals an element after the user clicks on a preview]]></value>
 				</property>
 			</properties>
 			<relations/>

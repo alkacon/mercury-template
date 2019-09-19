@@ -23,7 +23,10 @@
 <%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
-    ${value.Code}
+
+    <mercury:onclick-activation data="${value.OnclickActivation}">
+        ${value.Code}
+    </mercury:onclick-activation>
 
 </div>
 <%----%>

@@ -440,8 +440,8 @@ var Mercury = function(jQ) {
 
 
     function initFitVids() {
-        // set vidio withs using the fidVids plugin
-        fitVids({ players: "iframe[src*='slideshare.net']"});
+        // set video widths using the fidVids plugin
+        fitVids({ players: [ 'iframe[src*="slideshare.net"]', 'iframe[src*="medien-tube.de"]' ] });
     }
 
 
@@ -518,6 +518,7 @@ var Mercury = function(jQ) {
         // call back for Ajax methods to initialize dynamic template elements
         initFitVids();
         initMedia();
+        initOnclickActivation();
         initTooltips(parent);
 
         // reset the OpenCms edit buttons
@@ -584,21 +585,34 @@ var Mercury = function(jQ) {
                     $m.remove();
                     $p.append(decodeURIComponent(data.template));
                 });
-                /* This may not be needed
-                $element.on("lazyloaded", data, function(event) {
-                    // after image is loaded, make sure video is fit into available space
-                    var $m = jQ(this);
-                    var $centered = $m.find(".centered").first();
-                    var $preview = $m.closest(".preview").first();
-                    if ($preview.height() < $centered.height()) {
-                        var percentage = $preview.height() / $centered.height() * 101.0;
-                        $centered.css("width", percentage + "%");
-                    }
-                });
-                */
             }
         });
     }
+
+
+    function initOnclickActivation(parent) {
+        // add click handlers to generic onclick activation elements
+        parent = parent || '';
+        var selector = parent + ' .onclick-activation';
+        var $onclickElements = jQ(selector);
+        if (DEBUG) console.info(selector + " elements found: " + $onclickElements.length);
+        $onclickElements.each(function() {
+
+            var $element = jQ(this);
+            var data = $element.data("preview");
+            if (data && data.template) {
+                $element.on("click", data, function(event) {
+                    var $m = jQ(this);
+                    var $p = $m.parent();
+                    $p.removeClass("concealed").addClass("revealed");
+                    $m.remove();
+                    $p.append(decodeURIComponent(data.template));
+                    initFitVids();
+                });
+            }
+        });
+    }
+
 
     function checkVersion() {
         // writes version information about the template to the console

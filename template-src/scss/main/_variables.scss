@@ -81,6 +81,7 @@ $nav-menu-font-family:              $nav-font-family !default; // text font for 
 $nav-mobile-font-family:            $nav-font-family !default; // text font for mobile navigation
 $nav-meta-font-family:              $nav-font-family !default; // text font for meta nav links
 $nav-breadcrump-font-family:        $nav-font-family !default; // text font for breadcrumbs
+$nav-side-font-family:              $nav-font-family !default; // text font for breadcrumbs
 
 $nav-font-family:                   get-font-family($nav-font-family);
 $nav-header-font-family:            get-font-family($nav-header-font-family);
@@ -88,6 +89,7 @@ $nav-menu-font-family:              get-font-family($nav-menu-font-family);
 $nav-mobile-font-family:            get-font-family($nav-mobile-font-family);
 $nav-meta-font-family:              get-font-family($nav-meta-font-family);
 $nav-breadcrump-font-family:        get-font-family($nav-breadcrump-font-family);
+$nav-side-font-family:              get-font-family($nav-side-font-family);
 
 $nav-header-font-weight:            $font-weight-normal !default; // font weight of header nav items
 $nav-menu-font-weight:              $font-weight-normal !default; // font weight of menu nav items

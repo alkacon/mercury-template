@@ -74,6 +74,10 @@
     padding: 0;
     margin: 0;
 
+    @if ($nav-side-font-family != $font-family-base) {
+        font-family: $nav-side-font-family;
+    }
+
     @if ($nav-side-boxed) {
        @include media-breakpoint-up(md) {
             border: $nav-side-border;

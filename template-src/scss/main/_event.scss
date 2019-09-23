@@ -139,7 +139,7 @@
 
 // Colored calendar sheets
 
-@each $type-name, $bg-color, $highlight-color in $reduced-colors {
+@each $type-name, $bg-color, $highlight-color in $bg-colors {
 
     .color-#{""+$type-name} {
 

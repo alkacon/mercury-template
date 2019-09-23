@@ -131,7 +131,7 @@
 
 // Colored pagination
 
-@each $type-name, $bg-color, $highlight-color in $reduced-colors {
+@each $type-name, $bg-color, $highlight-color in $bg-colors {
 
     .color-#{""+$type-name} {
         // list pagination

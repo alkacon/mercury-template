@@ -17,7 +17,7 @@
       <content><![CDATA[<!--
 
 Visualization of all available text / link color options.
-Output is created from JavaScript using the color coded compiled into the theme.
+Output is created from JavaScript using the color codes compiled into the theme.
 HTML for the boxes is using Mercury Tiles.
 
 -->

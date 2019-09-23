@@ -68,7 +68,7 @@ $foot-main-bg-color:            $grey-darker !default;
 
 // Large array of colors to be used in backgrounds
 
-$many-colors:
+$bg-colors:
 (
  // name            // bg-color      // highlight-color
  (grey-darker,      $grey-darker,   $main-theme),
@@ -80,32 +80,16 @@ $many-colors:
  (green,            $green,         $orange),
  (yellow,           $yellow,        $red-orange),
  (cyan,             $cyan,          $blue-cyan),
- (blue-dark,        $blue-dark,     $blue),
+ (blue-dark,        $blue-dark,     $blue-light),
  (blue,             $blue,          $blue-light),
  (blue-light,       $blue-light,    $blue),
  (orange-dark,      $red-orange,    $orange),
  (orange,           $orange,        $orange-light),
- (red-dark,         $red-dark,      $red),
+ (red-dark,         $red-dark,      $red-light),
  (red,              $red,           $red-light),
  (white,            $white,         $main-theme),
  (default,          $main-theme,    $main-theme-hover)
 ) !default;
-
-
-// Reduced array of colors to be used in backgrounds
-
-$reduced-colors:
-(
- (grey,             $grey,          $main-theme),
- (grey-light,       $grey-light,    $main-theme),
- (grey-lighter,     $grey-lighter,  $main-theme),
- (cyan,             $cyan,          $blue-cyan),
- (orange,           $orange,        $red-orange),
- (blue,             $blue,          $blue-light),
- (red,              $red,           $red-light),
- (default,          $main-theme,    $main-theme-hover)
-) !default;
-
 
 // Link colors
 

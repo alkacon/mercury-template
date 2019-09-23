@@ -87,9 +87,9 @@
 // Page info elements providing JavaScript access to selected styles
 .template-info {
 
-    &.many-colors {
+    &.bg-colors {
 
-        $JSON: get-json($many-colors);
+        $JSON: get-json($bg-colors);
         &::before {
             display: none;
             content: '[#{$JSON}]';
@@ -108,15 +108,6 @@
     &.link-colors {
 
         $JSON: get-json($link-colors);
-        &::before {
-            display: none;
-            content: '[#{$JSON}]';
-        }
-    }
-
-    &.reduced-colors {
-
-        $JSON: get-json($reduced-colors);
         &::before {
             display: none;
             content: '[#{$JSON}]';

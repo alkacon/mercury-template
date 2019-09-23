@@ -157,7 +157,6 @@ a {
 }
 
 @if ($color-linked-headings-on-hover) {
-    .box a, // required to override rule set in .box
     a {
         &:hover {
             h1, h2, h3, h4, h5, h6 {
@@ -204,7 +203,7 @@ span.badge {
 
 // Colored badges
 
-@each $color-name, $bg-color, $highlight-color in $many-colors {
+@each $color-name, $bg-color, $highlight-color in $bg-colors {
 
     span.badge-#{""+$color-name} {
         color: get-text-color($bg-color);

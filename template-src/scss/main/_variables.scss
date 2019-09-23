@@ -19,7 +19,7 @@
 
 $feature-use-headers:               true !default; // default headers from _header.scss
 
-// Defaults for the required colors
+// Required default colors
 
 $white:                             #fff !default;
 $grey-lighter:                      #eee !default;
@@ -28,14 +28,27 @@ $grey:                              #aaa !default;
 $grey-dark:                         #888 !default;
 $black:                             #000 !default;
 
-// Reduced array of colors to be used for backgrounds
-$reduced-colors:                    () !default;
+// Colors to be used for backgrounds
+// This  is a list of lists in the following format:
+// (
+//    name          bg-color        highlight-color
+//   ("red",        $color-red,     $color-orange)
+// )
+// highlight-color is used in case the _background_ changes on hover
+// this is e.g. the case in the sitemap, pagination, tabs and accordions
 
-// Larger array of colors to be used for even more background variations (should include the reduced colors)
-$many-colors:                       $reduced-colors !default;
+$bg-colors:                         () !default;
 
-// Mating color for backgrounds, used for colored background text color lookup
-$match-bg-text-colors:              () !default
+// Pre-defined text, link and hover colors for background colors
+// This is a map in the following format:
+// (
+//    bg to match   list with text, link and hover colors
+//    $color-red:   ($text-color,  $link-color, $hover-color)
+// )
+// If no definitions are provided, an algorithm will try to pick suitable colors based on the background
+
+$match-text-bg-colors:              () !default;
+
 
 // Font definitions
 
@@ -262,7 +275,7 @@ $btn-dark-text:                     $text-dark !default;
 $btn-text-transform:                none !default;
 $btn-border-style:                  none !default;
 $btn-min-width:                     0 !default;
-$btn-colors:                        $reduced-colors !default;
+$btn-colors:                        $bg-colors !default;
 $btn-line-height:                   $target-line-height !default;
 $btn-font-size:                     $font-size-base !default;
 $btn-lg-font-size:                  1.8rem !default;
@@ -463,13 +476,13 @@ $nav-side-border-radius:            $default-border-radius !default;
 $foot-top-bg-color:                 $black !default;
 $foot-top-text-color:               get-text-color($foot-top-bg-color) !default;
 $foot-top-header-color:             $foot-top-text-color !default;
-$foot-top-link-color:               get-highlight-color($foot-top-text-color, 10%) !default;
+$foot-top-link-color:               get-accent-color($foot-top-text-color, 10%) !default;
 $foot-top-link-hover-color:         $foot-top-link-color !default;
 
 $foot-sub-bg-color:                 $foot-top-bg-color !default;
 $foot-sub-text-color:               get-text-color($foot-sub-bg-color) !default;
 $foot-sub-header-color:             $foot-sub-text-color !default;
-$foot-sub-link-color:               get-highlight-color($foot-sub-text-color, 10%) !default;
+$foot-sub-link-color:               get-accent-color($foot-sub-text-color, 10%) !default;
 $foot-sub-link-hover-color:         $foot-sub-link-color !default;
 
 
@@ -763,10 +776,6 @@ $opencms-toolbar-height:            52px !default;
 // Link colors
 $link-colors:                       () !default;
 $text-colors:                       $link-colors !default;
-
-// Generic arrays
-$bg-colors:                         $many-colors !default;
-$font-colors:                       $many-colors !default;
 
 $font-sizes:                        () !default;
 $line-heights:                      () !default;

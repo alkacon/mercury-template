@@ -46,13 +46,13 @@
 @each $color-name, $bg-color, $highlight-color in $bg-colors {
 
     .box-#{""+$color-name} {
-        $color: check-text-color($bg-color, $text-light); // we normally want light text
+        $color: get-text-color($bg-color); // we normally want light text
         $color-headings-base: conditional-value($color == $text-light, $text-light, $headings-color);
-        $color-headings: check-text-color($bg-color, $color-headings-base);
+        $color-headings: get-text-color($bg-color, $color-headings-base);
 
-        $color-link: check-text-color($bg-color, $link-color, 4.5);
-        $color-hover-base: conditional-value($color-link == $link-color, $link-hover-color, $color-link);
-        $color-hover: check-text-color($bg-color, $color-hover-base);
+        $color-links: get-link-colors($bg-color, $color);
+        $color-link: nth($color-links, 1);
+        $color-hover: nth($color-links, 2);
 
         background-color: $bg-color;
         background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
@@ -64,6 +64,15 @@
             // required in order to override colors set in headings
             color: $color-headings;
         }
+
+        @if ($color-linked-headings-on-hover) {
+            a {
+                h1, h2, h3, h4, h5, h6 {
+                    color: $color-hover;
+                }
+            }
+        }
+
 
         &.transparent {
             background-color: rgba($bg-color, 0.7);
@@ -84,14 +93,6 @@
 
 // Colored text
 
-@each $color-name, $text-color in $font-colors {
-
-    .text-#{""+$color-name} {
-
-        @include set-text-color($text-color);
-    }
-}
-
 @each $color-name, $text-color in $text-colors {
 
     .text-#{""+$color-name} {
@@ -105,11 +106,11 @@
 
 // Link text colors
 
-@each $color-name, $text-color, $highlight-color in $link-colors {
+@each $color-name, $text-color, $hover-color in $link-colors {
 
     .links-#{""+$color-name} {
         @if (""+$color-name != "default") {
-            @include colored-a($text-color, $highlight-color);
+            @include colored-a($text-color, $hover-color);
         } @else {
             @extend .links-theme;
         }
@@ -131,7 +132,7 @@
 
     .bo-#{""+$line-size}  {
         border: #{$line-size}px solid $border-default-color;
-        padding: 20px;
+        padding: calc(#{$box-padding} - #{$line-size}px);
         @include round-corners($default-border-radius);
     }
 }
@@ -148,7 +149,7 @@
 
 // Colored borders
 
-@each $color-name, $bg-color, $highlight-color in $reduced-colors {
+@each $color-name, $bg-color, $highlight-color in $bg-colors {
 
     .bo-#{""+$color-name}  {
         border-color: $bg-color;
@@ -180,7 +181,7 @@
         }
     }
 
-    @each $color-name, $bg-color, $highlight-color in $reduced-colors {
+    @each $color-name, $bg-color, $highlight-color in $bg-colors {
 
         .bo-#{""+$position}-#{""+$color-name}  {
             border-#{$position}-color: $bg-color;

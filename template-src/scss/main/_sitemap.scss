@@ -180,7 +180,7 @@
 
 // Colored sitemap options
 
-@each $type-name, $bg-color, $highlight-color in $reduced-colors {
+@each $type-name, $bg-color, $highlight-color in $bg-colors {
 
     .type-sitemap.color-#{""+$type-name} {
         li a,

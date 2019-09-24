@@ -19,27 +19,73 @@
 
 import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
 
-"use strict";
+/**
+ * Definitions of the types locally used.
+ *
+ * NOTE: Definition may be incomplete since the HTML attribute "data-list" contains a JSON object
+ * that the list object extends from. It might provide some keys not documented/typed here.
+ *
+ * @typedef {Object} List Wrapper for a single list.
+ * @property {JQuery<HTMLElement>} $element the HTML element of the list.
+ * @property {string} id the lists unique id on the page.
+ * @property {string} elementId the id of the list element's content.
+ * @property {boolean} allLoaded flag, indicating if all items are loaded directly.
+ * @property {?number[]} pageSizes the page sizes as array. Only provided in load all case.
+ * @property {JQuery<HTMLElement>} $editbox HTML element representing the edit box for empty lists.
+ * @property {JQuery<HTMLElement>} $entries HTML element representing the list entries shown.
+ * @property {JQuery<HTMLElement>} $spinner HTML element representing the spinner shown when loading
+ * @property {JQuery<HTMLElement>} $pagination HTML element where pagination is put.
+ * @property {boolean} locked flag, indicating if the list is locked for reloading.
+ * @property {boolean} autoload flag, indicating if the list should automatically load more items on scroll.
+ * @property {boolean} notclicked flag, indicating if the "load more" button was already clicked.
+ * @property {string} option pagination option, either "append" or "paginate".
+ * @property {JQuery<HTMLElement>} $facets the facet elements of the list.
+ * @property {string} initparams the initial search state parameters to apply on first load of the list.
+ *
+ * @typedef {Object.<string, List>} ListMap Object holding only lists as property values.
+ *
+ * @typedef {Object.<string, List[]>} ListArrayMap Object holding only list arrays as property values.
+ *
+ * @typedef {Object} ListFilter Wrapper for a list's filter.
+ * @property {JQuery<HTMLElement>} $element the HTML element of the filter.
+ * @property {string} id the id attribute of the filter HTML element.
+ * @property {string} elementId the id of the list element the filter belongs to.
+ * @property {?JQuery<HTMLElement>} $textsearch  the search form of the filter (for full text search).
+ * @property {string} initparams the initial search state parameters to apply on first load of the list.
+
+ * @typedef {Object.<string, ListFilter>} ListFilterMap Object holding only list filters as property values.
+ *
+ * @typedef {Object.<string, ListFilter[]>} ListFilterArrayMap Object holding only list filters as property values.
+*/
 
 // the global objects that must be passed to this module
+/** @type {jQuery} jQuery object */
 var jQ;
+/** @type {boolean} flag, indicating if in debug mode. */
 var DEBUG;
 
-// all initialized lists by unique instance id
+/** @type {ListMap} all initialized lists by unique instance id  */
 var m_lists = {};
 
-// all initialized list archive filters by unique instance id
+/** @type {ListFilterMap} all initialized list archive filters by unique instance id  */
 var m_archiveFilters = {};
 
-// groups of lists by element id (potentially more then one on a page)
+/** @type {ListArrayMap} groups of lists by element id (potentially more then one on a page) */
 var m_listGroups = {};
 
-// groups of archive filters lists by list element id (potentially more then one on a page)
+/** @type {ListFilterArrayMap} groups of archive filters lists by list element id (potentially more then one on a page) */
 var m_archiveFilterGroups = {};
 
-// all auto loading lists as array for easy iteration
+/** @type {List[]} all auto loading lists as array for easy iteration  */
 var m_autoLoadLists = [];
 
+/**
+ * Calculates the search state parameters.
+ * @param {*} filter
+ * @param {string} liId id of the list the search state parameters should be calculated for.
+ * @param {boolean} resetActive flag, indicating if other active filters should be reset.
+ * @returns {string} the search state parameters corresponding to the filter action.
+ */
 function calculateStateParameter(filter, liId, resetActive) {
     var $li = $( 'li#' + liId);
     var value = $li.data("value")
@@ -51,6 +97,12 @@ function calculateStateParameter(filter, liId, resetActive) {
     return stateParameter;
 }
 
+
+/**
+ * Splits the request parameters in a key-value map.
+ * @param {string} paramstring
+ * @returns {Map<string,string>} parameters as key-value map.
+ */
 function splitRequestParameters(paramstring) {
     var params={};
     paramstring.replace(/[?&]*([^=&]+)=([^&]*)/gi, function(str,key,value) {
@@ -59,6 +111,13 @@ function splitRequestParameters(paramstring) {
     return params;
 }
 
+
+/**
+ * Generates the search state parameters for the provided filter.
+ *
+ * @param {ListFilter} filter the filter element to get the additional parameters for.
+ * @returns {string} the additional search state parameters generated by the filter.
+ */
 // retrieves the set filters from other category filters and combines the filter parameters
 function getAdditionalFilterParams(filter) {
     var filterGroup = m_archiveFilterGroups[filter.elementId];
@@ -82,6 +141,16 @@ function getAdditionalFilterParams(filter) {
     return params;
 }
 
+/**
+ * Applies a list filter.
+ *
+ * @param {string} id the id of the list to apply the filter for.
+ * @param {string} triggerId the id of the element that triggered the filter action (TODO: correct?)
+ * @param {string} filterId the id of the list filter element.
+ * @param {string} searchStateParameters the search state parameters corresponding to the filter action.
+ * @param {boolean} removeOthers flag, indicating if other filters should be cleared.
+ * @returns {void}
+ */
 function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers) {
 
     if (DEBUG) console.info("List: listFilter() called elementId=" + id);
@@ -160,6 +229,15 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
     }
 }
 
+/**
+ * Updates the list (results) for a changed search state.
+ * Search is performed on the server and results are returned according to the state parameters.
+ *
+ * @param {string} id the lists id.
+ * @param {string} searchStateParameters the search state parameters.
+ * @param {boolean} reloadEntries flag, indicating if the shown list entries should be reloaded (in contrast to appending new ones only).
+ * @returns {void}
+ */
 function updateInnerList(id, searchStateParameters, reloadEntries) {
     searchStateParameters = searchStateParameters || "";
     reloadEntries = reloadEntries || false;
@@ -206,12 +284,32 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
             list.$spinner.css("top", spinnerPos + "%").fadeIn(250);
         }
 
+        // get requested page
+        var page = 1;
+        var pageParamPos = searchStateParameters.indexOf("page=");
+        if (pageParamPos >= 0) {
+            var helper = searchStateParameters.substring(pageParamPos + 5);
+            var pageFromParam = parseInt(helper);
+            if (!isNaN(pageFromParam) && pageFromParam > 1) {
+                page = pageFromParam;
+            }
+        }
+
         jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
-            generateListHtml(list, reloadEntries, ajaxListHtml)
+            generateListHtml(list, reloadEntries, ajaxListHtml, page)
         }, "html");
     }
 }
 
+/**
+ * Generates the AJAX link to call to retrieve the list entries and pagination for the
+ * provided state.
+ *
+ * @param {List} list the list to generate the link for.
+ * @param {string} ajaxOptions the ajax options to pass with the link as parameters.
+ * @param {string} searchStateParameters the search state parameters to pass with the link.
+ * @returns {string} the AJAX link.
+ */
 function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
 
     if (DEBUG) console.info("List: buildAjaxLink() called - searchStateParameters='" + searchStateParameters + "'");
@@ -240,16 +338,23 @@ function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
     return list.ajax + (list.ajax.indexOf('?') >= 0 ? '&' : '?') + params + ajaxOptions + searchStateParameters;
 }
 
-function generateListHtml(list, reloadEntries, listHtml) {
+/**
+ * Makes the list's HTML (results and pagination) visible on the client.
+ * Call it after new results are returned from the server.
+ *
+ * @param {List} list the list to render the HTML for.
+ * @param {boolean} reloadEntries flag, indicating if the current results should be reloaded/replaced.
+ * @param {string} listHtml the list HTML as received from the server.
+ * @param {number} page the number of the result page to show.
+ * @returns {void}
+*/
+function generateListHtml(list, reloadEntries, listHtml, page) {
     if (DEBUG) console.info("List: generateListHtml() called");
 
     var $result = jQ(listHtml);
     // collect information about the search result
     var resultData = $result.find('#resultdata').first().data('result');
     if (DEBUG) console.info("List: Search result - list=" + list.id + ", reloaded=" + resultData.reloaded + ", start=" + resultData.start + ", end=" + resultData.end + ", entries=" + resultData.found + ", pages=" + resultData.pages + ", currentPage=" + resultData.currentPage);
-
-    // append all results from the ajax call to a new element that is not yet displayed
-    var $newPage = jQ('<span></span>');
 
     var $newEntries;
     var $groups = $result.find("div[listgroup]");
@@ -263,6 +368,9 @@ function generateListHtml(list, reloadEntries, listHtml) {
         $newEntries = $result.find(".list-entry");
     }
 
+    if (list.allLoaded) {
+        list.pageEntries = paginateEntries(list, $newEntries);
+    }
     // clear the pagination element
     list.$pagination.empty();
 
@@ -273,11 +381,21 @@ function generateListHtml(list, reloadEntries, listHtml) {
         list.$entries.empty();
     }
 
-    // add the new elements to the list
+    // add the new elements to the list and set pagination element with new content.
+    if (list.allLoaded) {
+        list.pageEntries.get(page).appendTo(list.$entries);
+        if (list.pageEntries.size > 1) {
+            var paginationString = generatePagination(list, page);
+            if (!paginationString.empty) {
+                jQ(paginationString).appendTo(list.$pagination);
+            }
+        }
+    } else {
     $newEntries.appendTo(list.$entries);
 
     // set pagination element with new content
     $result.find('.list-append-position').appendTo(list.$pagination);
+    }
 
     if (reloadEntries) {
         var $facetOptions = list.$facets;
@@ -330,6 +448,125 @@ function generateListHtml(list, reloadEntries, listHtml) {
 }
 
 /**
+ * Generates the pagination on the client side.
+ * This is only used when all items are prefetched.
+ * @param {Object} list the list (object) to generate the pagination for.
+ * @param {number} page the current page
+ * @returns {string | null} the HTML to render for the pagination, or null if no pagination should be rendered.
+ */
+function generatePagination(list, page) {
+
+    var pagination = list.paginationInfo;
+    // currently we do not support any options, since originally available options don't seem to be used.
+    //var options = pagination.options;
+    var messages = pagination.messages;
+    var listId = list.id;
+    var result = [];
+    var lastPage = list.pageEntries.size;
+    if (lastPage > 1) {
+        if (list.option === 'paginate') {
+            // show the pagination
+            var pagesToShow = 5;
+            var firstShownPage;
+            var lastShownPage;
+            var isShowAll = lastPage <= pagesToShow;
+            if (isShowAll) {
+                firstShownPage = 1;
+                lastShownPage = pagesToShow;
+            } else {
+                firstShownPage = page - 2 <= 1 ? 1 :  page - 2;
+                lastPage = list.pageEntries.size;
+                lastShownPage = firstShownPage + pagesToShow - 1;
+            }
+            if (lastShownPage > lastPage) {
+                var diffPages = lastShownPage - lastPage;
+                firstShownPage = firstShownPage - diffPages <= 1 ? 1 : firstShownPage - diffPages;
+                lastShownPage = lastPage;
+            }
+            result.push('<ul class="pagination">');
+            // previous page and first page
+            result.push(generatePaginationItem("previous", page <= 1, false, page <= 1 ? 1 : page -1, messages.tpp, null, "fa fa-angle-left", listId));
+            if (firstShownPage > 1) {
+                var liClassesFirstPage = "first";
+                if (firstShownPage > 2) {
+                    liClassesFirstPage += " gap";
+                }
+                result.push(generatePaginationItem(liClassesFirstPage, page <= 1, false, 1, messages.tfp, "{{p}}", null, listId));
+            }
+            for (var p = firstShownPage; p <= lastShownPage; p++) {
+                result.push(generatePaginationItem(null, false, page == p, p, messages.tp, messages.lp, "number", listId));
+            }
+            result.push(generatePaginationItem("next", page >= lastPage, false, page < lastPage ? page + 1 : lastPage, messages.tnp, null, "fa fa-angle-right", listId));
+            // currently, we never show the last page button.
+            // result.push(generatePaginationItem(null, page >= lastPage, false, lastPage, messages.tlp, null, "fa fa-angle-double-right", listId));
+        } else if (list.option === 'append' && page < lastPage) {
+            // show the button to append more results.
+            result.push('<div class="list-append-position" data-dynamic="false">');
+            result.push('<button class="loadMore btn btn-sm btn-block animated" onclick="DynamicList.appendPage(\'');
+            result.push(listId);
+            result.push('\',');
+            result.push(page + 1);
+            result.push(')"><span>');
+            result.push(messages.la);
+            result.push("</span></button></div>");
+        }
+    }
+    return result.empty ? null : result.join('');
+}
+
+/**
+ * Renders a single pagination entry.
+ * @param {string} liClasses classes for the li element additionally to active or disabled.
+ * @param {boolean} isDisabled flag, indicating if the entry is disabled.
+ * @param {boolean} isActive flag, indicating if the entry is active.
+ * @param {string} liClasses the classes to put on the li item (except active and disabled).
+ * @param {number} page the page to go to when the entry is clicked.
+ * @param {string} title the (hover) title of the entry, can contain macro "{{p}}" that will be resolved to the page number of the page to go to on click.
+ * @param {string} label the label of the entry, can contain macro "{{p}}" that will be resolved to the page number of the page to go to on click.
+ * @param {string} spanClasses the classes to put on the &lt;span&gt; contained in the list entry.
+ * @param {string} listId the id of the list the pagination entry is generated for.
+ * @returns {string} the HTML to render for the pagination item.
+ */
+function generatePaginationItem(liClasses, isDisabled, isActive, page, title, label, spanClasses, listId) {
+    /** @type {string[]} the HTML to return. The array is joined at the end. This performs better than plain string concatination.*/
+    var result = []
+    var resolvedTitle = title.replace(/\{\{p\}\}/g,page);
+    result.push('<li');
+    var classes = "";
+    if (isDisabled) classes +=" disabled";
+    if (isActive) classes +=" active";
+    if (!(liClasses == null)) classes = " " + liClasses + classes;
+    if (classes.length > 0) {
+        result.push(' class="');
+        result.push(classes.substring(1));
+        result.push('"');
+    }
+    result.push('><a href="javascript:void(0)"');
+    if(isDisabled) {
+        result.push(' tabindex="-1"');
+    }
+    result.push('onclick="DynamicList.switchPage(\'');
+    result.push(listId);
+    result.push('\',');
+    result.push(page);
+    result.push(')" title="');
+    result.push(resolvedTitle);
+    result.push('"><span class="sr-only">resolvedTitle</span><span class="');
+    result.push(spanClasses);
+    result.push('"');
+    var hasLabel = !(label == null);
+    if(!hasLabel) {
+        result.push(' aria-hidden="true"');
+    }
+    result.push('>');
+    if(hasLabel) {
+        result.push(label.replace(/\{\{p\}\}/g,page));
+    }
+    result.push('</span></a></li>');
+    return result.join('');
+}
+
+/**
  * To support grouping of list elements do the following:
  *
  * 1. For grouping, you need a markup structure like this:
@@ -368,12 +605,16 @@ function generateListHtml(list, reloadEntries, listHtml) {
  *    It must be the same for each element that belongs to the same group.
  *
  * 3. In the formatter XML settings, include the following configuration:
-        <Setting>
-          <PropertyName><![CDATA[requiredListWrapper]]></PropertyName>
-          <Widget><![CDATA[hidden]]></Widget>
-          <Default><![CDATA[list-with-groups]]></Default>
-          <Visibility><![CDATA[parent]]></Visibility>
-        </Setting>
+ *      <Setting>
+ *        <PropertyName><![CDATA[requiredListWrapper]]></PropertyName>
+ *        <Widget><![CDATA[hidden]]></Widget>
+ *        <Default><![CDATA[list-with-groups]]></Default>
+ *        <Visibility><![CDATA[parent]]></Visibility>
+ *      </Setting>
+ *
+ * @param {JQuery} $groups The groups to manipulate (combine) the HTML for.
+ * @param {boolean} isStatic flag, indicating if the rendered list is a static or dynamic list.
+ *
  */
 function combineGroups($groups, isStatic) {
     isStatic = isStatic || false;
@@ -408,7 +649,47 @@ function combineGroups($groups, isStatic) {
     });
 }
 
+/**
+ * Splits the list of entries into several pages.
+ * This is only used if all entries are loaded directly and pagination is done by the client.
+ *
+ * @param {List} list the list to split the entries for. It contains the pagination information.
+ * @param {JQuery} $entries all list entries (this might be the groups of entries already where each group is counted as one entry).
+ * @returns {Map<number, JQuery>} the map from page number to entries of the page.
+ */
+function paginateEntries(list, $entries) {
+    var pageEntries = new Map();
+    var pageSizes = list.pageSizes;
+    var numEntries = $entries.length;
+    var currentPage = 1;
+    var pageStart = 0;
+    while (pageStart < numEntries) {
+        var pageSize = getPageSize(currentPage, pageSizes);
+        pageEntries.set(currentPage, $entries.slice(pageStart, pageSize + pageStart)); //does it work when the end index is gt the entries length?
+        pageStart = pageStart + pageSize;
+        currentPage++;
+    }
+    return pageEntries;
+}
 
+/**
+ * Returns the size of the provided page.
+ *
+ * @param {number} page the page to get the size for.
+ * @param {number[]} pageSizes the page sizes array.
+ */
+function getPageSize(page, pageSizes) {
+    if (page > pageSizes.length) {
+        return pageSizes[pageSizes.length - 1];
+    } else {
+        return pageSizes[page-1];
+    }
+}
+
+/**
+ * Handles loading of a additional entries for lists that automatically load more entries on scroll.
+ * NOTE: works currently only for lists where not all entries are loaded upfront.
+ */
 function handleAutoLoaders() {
     if (m_autoLoadLists != null) {
         for (var i=0; i<m_autoLoadLists.length; i++) {
@@ -430,10 +711,23 @@ function handleAutoLoaders() {
 
 /****** Exported functions ******/
 
+/**
+ * Applies a facet filter to a list.
+ *
+ * @param {string} id the id of the list the filter belongs to.
+ * @param {string} triggerId the id of the HTML element that triggered the filter action.
+ * @param {string} searchStateParameters the search state parameters representing the filter action.
+ */
 export function facetFilter(id, triggerId, searchStateParameters) {
     listFilter(id, triggerId, null, searchStateParameters, true);
 }
 
+/**
+ * Applies an archive filter option to the list.
+ *
+ * @param {string} idthe id of the list the filter belongs to.
+ * @param {string} triggerId the id of the HTML element that triggered the filter action.
+ */
 export function archiveFilter(id, triggerId) {
     var filter = m_archiveFilters[id];
     // if filters of other filter elements should be combined with that one - get the other filters that are set
@@ -443,6 +737,13 @@ export function archiveFilter(id, triggerId) {
     listFilter(filter.elementId, triggerId, id, filter.searchstatebase + additionalFilters + additionalStateParameter, true);
 }
 
+
+/**
+ * Applies an query filter to the list.
+ *
+ * @param {string} idthe id of the list the filter belongs to.
+ * @param {string} triggerId the id of the HTML element that triggered the filter action.
+ */
 export function archiveSearch(id, searchStateParameters) {
     var filter = m_archiveFilters[id];
     // if filters of other filter elements should be combined with that one - get the other filters that are set
@@ -450,10 +751,60 @@ export function archiveSearch(id, searchStateParameters) {
     listFilter(filter.elementId, null, filter.id, searchStateParameters + encodeURIComponent(filter.$textsearch.val()) + additionalFilters, true);
 }
 
+/**
+ * Switches to the given page. The method can only be used when all results are preloaded directly.
+ *
+ * @param {string} id the id of the list where the page should be appended to.
+ * @param {number} page the number of the page to append.
+ */
+export function switchPage(id, page) {
+    var list =m_lists[id];
+    list.$entries.empty();
+    list.pageEntries.get(page).appendTo(list.$entries);
+    list.$pagination.empty();
+    var paginationString = generatePagination(list, page);
+    if (!paginationString.empty) {
+        jQ(paginationString).appendTo(list.$pagination);
+    }
+}
+
+/**
+ * Appends a further page of items to the currently shown items.
+ * The method can only be used if all items are already preloaded.
+ *
+ * @param {string} id the id of the list where the page should be appended to.
+ * @param {number} page the number of the page to append.
+ */
+export function appendPage(id, page) {
+    var list =m_lists[id];
+    list.pageEntries.get(page).appendTo(list.$entries);
+    list.$pagination.empty();
+    var paginationString = generatePagination(list, page);
+    if (!paginationString.empty) {
+        jQ(paginationString).appendTo(list.$pagination);
+    }
+}
+
+/**
+ * Update the list in the case where not all items are already loaded.
+ * This will update the list according to the provided search state parameters.
+ * A call to the server is made to fetch the entries according to the parameters.
+ * This method is e.g., called when the page is switched for a list where the entries
+ * are not preloaded completely.
+ *
+ * @param {string} id the id of the list for which the update should take place.
+ * @param {string} searchStateParameters the search state parameters to use for the update.
+ * @param {boolean} reloadEntries a flag, indicating if the currently shown results should be reloaded/replaced (or if new results should only be appended).
+ */
 export function update(id, searchStateParameters, reloadEntries) {
     updateInnerList(id, searchStateParameters, reloadEntries == "true");
 }
 
+/**
+ * Initialize the list script.
+ * @param {jQuery} jQuery jQuery object.
+ * @param {boolean} debug a flag, determining iff in debug mode.
+ */
 export function init(jQuery, debug) {
 
     jQ = jQuery;
@@ -472,11 +823,25 @@ export function init(jQuery, debug) {
 
             if (typeof $list.data("list") !== 'undefined') {
                 // read list data
+                /** @type {List} a single list. */
                 var list = $list.data("list");
                 // add more data to list
                 list.$element = $list;
                 list.id = $list.attr("id");
                 list.elementId = $list.data("id");
+                list.allLoaded = list.loadAll == "true";
+                // read and store the page size information
+                var pageSizes = list.itemsPerPage;
+                var sizeArrayNum = [];
+                if (pageSizes !== undefined) {
+                    var sizeArrayString = pageSizes.split("-");
+                    sizeArrayString.forEach(function (numString) {
+                        sizeArrayNum.push(Number(numString)) })
+                }
+                if (sizeArrayNum.length == 0) {
+                    sizeArrayNum.push(5); // default size
+                }
+                list.pageSizes = sizeArrayNum;
                 list.$editbox = $list.find(".list-editbox");
                 list.$entries = $list.find(".list-entries");
                 list.$spinner = $list.find(".list-spinner");
@@ -555,11 +920,11 @@ export function init(jQuery, debug) {
             // initialize filter archives
             var $archiveFilter = jQ(this);
 
+            /** @type {ListFilter} */
             var filter = $archiveFilter.data("filter");
             filter.$element = $archiveFilter;
             filter.id = $archiveFilter.attr("id");
             filter.elementId = $archiveFilter.data("id");
-            filter.$form = $archiveFilter.find("#queryform_" + filter.id);
             filter.$textsearch = $archiveFilter.find("#textsearch_" + filter.id);
 
             // store filter data in global array

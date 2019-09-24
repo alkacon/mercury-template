@@ -38,6 +38,9 @@
       <IncludeName><![CDATA[itemsPerPage.dynamic]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[loadAll.dynamic]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[appendSwitch.dynamic]]></IncludeName>
     </Setting>
     <Setting>

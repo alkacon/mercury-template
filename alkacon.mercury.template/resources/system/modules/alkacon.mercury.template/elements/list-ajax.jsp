@@ -38,6 +38,7 @@
     <div class="element type-dynamic-list list-content ${settings.listCssWrapper}">
     <c:set var="listTag" value="${empty settings.listTag ? 'ul' : settings.listTag}" />
     <c:set var="count">${settings.itemsPerPage}</c:set>
+    <c:set var="loadAll" value="${settings.loadAll eq 'true'}" />
 
     ${'<'}${listTag} class="list-entries ${settings.listWrapper}${'\">'}
     <%-- ####### List entries ######## --%>
@@ -45,7 +46,7 @@
         elementId="${param.elementId}"
         instanceId="${param.instanceId}"
         config="${conf}"
-        count="${not empty count ? count : 5}"
+        count="${loadAll ? 400 : (not empty count ? count : 5)}"
         locale="${param.loc}"
         settings="${settings}"
         ajaxCall="true"
@@ -57,32 +58,34 @@
     ${'</'}${listTag}${'>'}
 
     <%-- ####### Load pagination ######## --%>
-    <c:choose>
-        <c:when test="${param.option eq 'append'}">
-            <c:set var="label">
-                <c:choose>
-                    <c:when test="${not empty settings.listButtonText}">
-                        <c:out value="${settings.listButtonText}" />
-                    </c:when>
-                    <c:otherwise>
-                        <fmt:message key="msg.page.list.pagination.more" />
-                    </c:otherwise>
-                </c:choose>
-            </c:set>
-            <mercury:list-loadbutton
-                search="${search}"
-                label="${label}"
-                onclickAction='DynamicList.update("${param.instanceId}", "$(LINK)", "false")'
-            />
-        </c:when>
-        <c:otherwise>
-            <mercury:list-pagination
-                search="${search}"
-                singleStep="true"
-                onclickAction='DynamicList.update("${param.instanceId}", "$(LINK)", "true")'
-            />
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${not loadAll}">
+        <c:choose>
+            <c:when test="${param.option eq 'append'}">
+                <c:set var="label">
+                    <c:choose>
+                        <c:when test="${not empty settings.listButtonText}">
+                            <c:out value="${settings.listButtonText}" />
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message key="msg.page.list.pagination.more" />
+                        </c:otherwise>
+                    </c:choose>
+                </c:set>
+                <mercury:list-loadbutton
+                    search="${search}"
+                    label="${label}"
+                    onclickAction='DynamicList.update("${param.instanceId}", "$(LINK)", "false")'
+                />
+            </c:when>
+            <c:otherwise>
+                <mercury:list-pagination
+                    search="${search}"
+                    singleStep="true"
+                    onclickAction='DynamicList.update("${param.instanceId}", "$(LINK)", "true")'
+                />
+            </c:otherwise>
+        </c:choose>
+    </c:if>
 
     <%-- ####### Provide information about search result for JavaScript ######## --%>
     <div id="resultdata" data-result='{<%--

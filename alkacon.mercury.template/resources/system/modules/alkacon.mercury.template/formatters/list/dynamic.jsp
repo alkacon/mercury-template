@@ -106,6 +106,25 @@
             <c:set var="initparams" value="reloaded${initparams}" />
         </c:if>
 
+        <c:set var="isLoadAll" value="${wrappedSettings.loadAll.toBoolean}" />
+        <c:if test="${isLoadAll}">
+            <%-- set messages for pagination, in loadAll case --%>
+            <c:choose>
+                <c:when test="${not empty settings.listButtonText}">
+                    <c:set var="la"><c:out value="${settings.listButtonText}" /></c:set>
+                    <c:set var="la">${la.replace("'","&quot;").replace('"',"&qquot;")}</c:set>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="la"><fmt:message key="msg.page.list.pagination.more" /></c:set>
+                </c:otherwise>
+            </c:choose>
+            <c:set var="tfp"><fmt:message key="msg.page.list.pagination.first.title"/></c:set>
+            <c:set var="tpp"><fmt:message key="msg.page.list.pagination.previous.title"/></c:set>
+            <c:set var="tp"><fmt:message key="msg.page.list.pagination.page.title"><fmt:param>{{p}}</fmt:param></fmt:message></c:set>
+            <c:set var="lp">{{p}}</c:set>
+            <c:set var="tnp"><fmt:message key="msg.page.list.pagination.next.title"/></c:set>
+            <c:set var="tlp"><fmt:message key="msg.page.list.pagination.last.title"/></c:set>
+        </c:if>
         <%-- ####### The list content will be inserted here with AJAX ####### --%>
         <div class="list-box list-dynamic list-paginate ${settings.listBoxWrapper}" <%--
         --%>id="${instanceId}" <%--
@@ -119,6 +138,21 @@
             --%>"appendSwitch":"${settings.appendSwitch}", <%--
             --%>"appendOption":"${settings.appendOption}", <%--
             --%>"locale":"${cms.locale}"<%--
+            --%><c:if test="${isLoadAll}">, "loadAll":"true"<%--
+            --%>, "itemsPerPage":"${settings.itemsPerPage}"<%--
+            --%>, "paginationInfo":{<%--
+                --%><%--"options":{ --%><%--
+                --%><%--},--%><%--
+                --%>"messages":{<%--
+                    --%>"la":"${la}",<%--
+                    --%>"tfp":"${tfp}",<%--
+                    --%>"tpp":"${tpp}",<%--
+                    --%>"lp":"${lp}",<%--
+                    --%>"tp":"${tp}",<%--
+                    --%>"tnp":"${tnp}",<%--
+                    --%>"tlp":"${tlp}"<%--
+                --%>}<%--
+            --%>}</c:if><%--
             --%><c:if test="${not empty initparams}">, "initparams":"${initparams}"</c:if><%--
         --%>}'><%----%>
             <mercury:nl />

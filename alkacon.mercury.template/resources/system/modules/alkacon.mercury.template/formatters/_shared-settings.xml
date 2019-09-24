@@ -1685,6 +1685,14 @@
       <Error><![CDATA[%(key.msg.error.list.itemsPerPage.dynamic)]]></Error>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[loadAll.dynamic]]></IncludeName>
+      <PropertyName><![CDATA[loadAll]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.loadAll.dynamic)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.loadAll.dynamic.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[appendSwitch.dynamic]]></IncludeName>
       <PropertyName><![CDATA[appendSwitch]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.list.appendSwitch)]]></DisplayName>

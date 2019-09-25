@@ -533,9 +533,7 @@ function initDependencies() {
 // Smooth scrolling to anchor links
 export function scrollToAnchor($anchor, offset) {
     if ($anchor.length) {
-        // m_$anchor = $anchor;
         debScrollToAnchor($anchor, offset);
-        // m_$anchor = null;
     }
 }
 

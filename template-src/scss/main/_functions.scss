@@ -55,8 +55,9 @@
         // if we have a predefined color match, use this
         $colors: map-get($match-text-bg-colors, $bg-color);
         $t-color: nth($colors, 1);
-        $li-color: conditional-value(nth($colors, 2) != null, nth($colors, 2), $t-color);
-        $lih-color: conditional-value(nth($colors, 3) != null, nth($colors, 3), $t-color);
+        @debug "length($colors): #{length($colors)}";
+        $li-color: nth($colors, conditional-value(length($colors) > 1, 2, 1));
+        $lih-color: nth($colors, conditional-value(length($colors) > 2, 3, 1));
         @return ($li-color, $lih-color);
     } @else {
         $lid-color: get-accent-color($text-color, 20%);

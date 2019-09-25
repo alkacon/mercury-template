@@ -35,6 +35,8 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {JQuery<HTMLElement>} $entries HTML element representing the list entries shown.
  * @property {JQuery<HTMLElement>} $spinner HTML element representing the spinner shown when loading
  * @property {JQuery<HTMLElement>} $pagination HTML element where pagination is put.
+ * @property {?Map<number, JQuery>} pageEntries the entries per page. Only filled in allLoaded mode.
+ * @property {?JQuery<HTMLElement>} $noresults HTML element where information about the empty list is placed.
  * @property {boolean} locked flag, indicating if the list is locked for reloading.
  * @property {boolean} autoload flag, indicating if the list should automatically load more items on scroll.
  * @property {boolean} notclicked flag, indicating if the "load more" button was already clicked.
@@ -246,58 +248,62 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
 
     if (DEBUG) console.info("List: updateInnerList() called instanceId=" + list.id + " elementId=" + list.elementId + " parameters=" + searchStateParameters);
 
-    if (!list.locked) {
-        list.locked = true;
+    if ((list.ajax == null)) {
+        if (DEBUG) console.warn("List: updateInnerList() called instanceId=" + list.id + " elementId=" + list.elementId + " parameters=" + searchStateParameters + " does not support updates since no AJAX link is provided.");
+    } else {
+        if (!list.locked) {
+            list.locked = true;
 
-        var ajaxOptions = "&";
-        if (reloadEntries) {
-            // hide the "no results found" message during search
-            list.$editbox.hide();
-        } else {
-            // fade out the load more button
-            list.$element.find('.loadMore').addClass("fadeOut");
-            // we don't need to calculate facets again if we do not reload all entries
-            ajaxOptions = "&hideOptions=true&";
-        }
-
-        // calculate the spinner position in context to the visible list part
-        var scrollTop = jQ(window).scrollTop();
-        var windowHeight = jQ(window).height();
-        var elementTop = list.$element.offset().top;
-        var elementHeight = list.$element.outerHeight(true);
-        var visibleHeight = Math.min(scrollTop + windowHeight, elementTop + elementHeight) - Math.max(scrollTop, elementTop);
-        var invisibleHeight = elementHeight - visibleHeight;
-        var spinnerPos = ((0.5 * visibleHeight) + invisibleHeight) / elementHeight * 100.0;
-
-        if (DEBUG && false) console.info("List: Spinner animation" +
-            " scrollTop=" + scrollTop +
-            " windowHeight=" + windowHeight +
-            " elementTop=" + elementTop +
-            " elementHeight=" + elementHeight +
-            " visibleHeight=" + visibleHeight +
-            " invisibleHeight=" + invisibleHeight +
-            " spinnerPos=" + spinnerPos
-        )
-
-        // show the spinner
-        if (visibleHeight > 0) {
-            list.$spinner.css("top", spinnerPos + "%").fadeIn(250);
-        }
-
-        // get requested page
-        var page = 1;
-        var pageParamPos = searchStateParameters.indexOf("page=");
-        if (pageParamPos >= 0) {
-            var helper = searchStateParameters.substring(pageParamPos + 5);
-            var pageFromParam = parseInt(helper);
-            if (!isNaN(pageFromParam) && pageFromParam > 1) {
-                page = pageFromParam;
+            var ajaxOptions = "&";
+            if (reloadEntries) {
+                // hide the "no results found" message during search
+                list.$editbox.hide();
+            } else {
+                // fade out the load more button
+                list.$element.find('.loadMore').addClass("fadeOut");
+                // we don't need to calculate facets again if we do not reload all entries
+                ajaxOptions = "&hideOptions=true&";
             }
-        }
 
-        jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
-            generateListHtml(list, reloadEntries, ajaxListHtml, page)
-        }, "html");
+            // calculate the spinner position in context to the visible list part
+            var scrollTop = jQ(window).scrollTop();
+            var windowHeight = jQ(window).height();
+            var elementTop = list.$element.offset().top;
+            var elementHeight = list.$element.outerHeight(true);
+            var visibleHeight = Math.min(scrollTop + windowHeight, elementTop + elementHeight) - Math.max(scrollTop, elementTop);
+            var invisibleHeight = elementHeight - visibleHeight;
+            var spinnerPos = ((0.5 * visibleHeight) + invisibleHeight) / elementHeight * 100.0;
+
+            if (DEBUG && false) console.info("List: Spinner animation" +
+                " scrollTop=" + scrollTop +
+                " windowHeight=" + windowHeight +
+                " elementTop=" + elementTop +
+                " elementHeight=" + elementHeight +
+                " visibleHeight=" + visibleHeight +
+                " invisibleHeight=" + invisibleHeight +
+                " spinnerPos=" + spinnerPos
+            )
+
+            // show the spinner
+            if (visibleHeight > 0) {
+                list.$spinner.css("top", spinnerPos + "%").fadeIn(250);
+            }
+
+            // get requested page
+            var page = 1;
+            var pageParamPos = searchStateParameters.indexOf("page=");
+            if (pageParamPos >= 0) {
+                var helper = searchStateParameters.substring(pageParamPos + 5);
+                var pageFromParam = parseInt(helper);
+                if (!isNaN(pageFromParam) && pageFromParam > 1) {
+                    page = pageFromParam;
+                }
+            }
+
+            jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
+                generateListHtml(list, reloadEntries, ajaxListHtml, page)
+            }, "html");
+        }
     }
 }
 
@@ -383,11 +389,24 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
 
     // add the new elements to the list and set pagination element with new content.
     if (list.allLoaded) {
-        list.pageEntries.get(page).appendTo(list.$entries);
-        if (list.pageEntries.size > 1) {
-            var paginationString = generatePagination(list, page);
-            if (!paginationString.empty) {
-                jQ(paginationString).appendTo(list.$pagination);
+        if (list.pageEntries.size == 0) {
+            list.$entries.hide();
+                if (list.$noresults != null) {
+                var $noResultsElements = $result.find(".list-no-entries");
+                if ($noResultsElements.length > 0) {
+                    list.$noresults.empty();
+                    $noResultsElements.appendTo(list.$noresults)
+                }
+                list.$noresults.show();
+            }
+        } else {
+            if (list.$noresults != null) list.$noresults.hide();
+            list.pageEntries.get(page).appendTo(list.$entries);
+            if (list.pageEntries.size > 1) {
+                var paginationString = generatePagination(list, page);
+                if (!paginationString.empty) {
+                    jQ(paginationString).appendTo(list.$pagination);
+                }
             }
         }
     } else {
@@ -439,7 +458,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     // there may be videos in the list
     Mercury.initElements('#' + list.id);
 
-    if ((resultData.reloaded == "true") && reloadEntries) {
+    if (resultData.reloaded == "true" && reloadEntries) {
         if (! list.$element.visible()) {
             if (DEBUG) console.info("List: Scrolling to anchor");
             Mercury.scrollToAnchor(list.$element, -20);
@@ -494,7 +513,7 @@ function generatePagination(list, page) {
                 result.push(generatePaginationItem(liClassesFirstPage, page <= 1, false, 1, messages.tfp, "{{p}}", null, listId));
             }
             for (var p = firstShownPage; p <= lastShownPage; p++) {
-                result.push(generatePaginationItem(null, false, page == p, p, messages.tp, messages.lp, "number", listId));
+                result.push(generatePaginationItem(p == lastShownPage ? "lastpage" : "page", false, page == p, p, messages.tp, messages.lp, "number", listId));
             }
             result.push(generatePaginationItem("next", page >= lastPage, false, page < lastPage ? page + 1 : lastPage, messages.tnp, null, "fa fa-angle-right", listId));
             // currently, we never show the last page button.
@@ -551,15 +570,21 @@ function generatePaginationItem(liClasses, isDisabled, isActive, page, title, la
     result.push(page);
     result.push(')" title="');
     result.push(resolvedTitle);
-    result.push('"><span class="sr-only">resolvedTitle</span><span class="');
+    result.push('">');
+    var noLabel = (label == null);
+    if (noLabel) {
+        result.push('<span class="sr-only">');
+        result.push(resolvedTitle);
+        result.push('</span>');
+    }
+    result.push('<span class="');
     result.push(spanClasses);
     result.push('"');
-    var hasLabel = !(label == null);
-    if(!hasLabel) {
+    if(noLabel) {
         result.push(' aria-hidden="true"');
     }
     result.push('>');
-    if(hasLabel) {
+    if(!noLabel) {
         result.push(label.replace(/\{\{p\}\}/g,page));
     }
     result.push('</span></a></li>');
@@ -801,6 +826,19 @@ export function update(id, searchStateParameters, reloadEntries) {
 }
 
 /**
+ * This method can be used to allow pagination for the lists that retrieve their results not via the default AJAX call. 
+ *
+ * @param {string} id the id of the list for which the update should take place.
+ * @param {string} searchStateParameters the search state parameters to use for the update.
+ * @param {boolean} reloadEntries a flag, indicating if the currently shown results should be reloaded/replaced (or if new results should only be appended).
+ */
+export function injectResults(id, resultHtml) {
+
+    var list = m_lists[id];
+    generateListHtml(list, true, resultHtml, 1);
+}
+
+/**
  * Initialize the list script.
  * @param {jQuery} jQuery jQuery object.
  * @param {boolean} debug a flag, determining iff in debug mode.
@@ -846,6 +884,7 @@ export function init(jQuery, debug) {
                 list.$entries = $list.find(".list-entries");
                 list.$spinner = $list.find(".list-spinner");
                 list.$pagination = $list.find(".list-pagination");
+                list.$noresults = $list.find(".list-noresults");
                 list.locked = false;
                 list.autoload = false;
                 list.notclicked = true;

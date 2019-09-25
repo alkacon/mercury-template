@@ -791,6 +791,10 @@ export function switchPage(id, page) {
     if (!paginationString.empty) {
         jQ(paginationString).appendTo(list.$pagination);
     }
+    if (! list.$element.visible()) {
+        if (DEBUG) console.info("List: Scrolling to anchor");
+        Mercury.scrollToAnchor(list.$element, -20);
+    }
 }
 
 /**

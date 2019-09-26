@@ -215,7 +215,7 @@
       <Widget><![CDATA[selectcombo]]></Widget>
       <Default><![CDATA[1-1]]></Default>
       <WidgetConfig><![CDATA[
-            1-1:    %(key.msg.setting.imageRatio.1-1)
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
             4-3:    %(key.msg.setting.imageRatio.4-3)|
             3-2:    %(key.msg.setting.imageRatio.3-2)|
             16-9:   %(key.msg.setting.imageRatio.16-9)|

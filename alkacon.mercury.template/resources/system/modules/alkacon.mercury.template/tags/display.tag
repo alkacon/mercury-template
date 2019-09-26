@@ -1,5 +1,4 @@
-<%@ tag
-    display-name="display"
+<%@ tag display-name="display"
     pageEncoding="UTF-8"
     body-content="empty"
     trimDirectiveWhitespaces="true"

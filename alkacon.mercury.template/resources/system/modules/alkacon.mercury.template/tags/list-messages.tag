@@ -1,5 +1,4 @@
-<%@ tag
-    pageEncoding="UTF-8"
+<%@ tag pageEncoding="UTF-8"
     display-name="list-messages"
     body-content="empty"
     trimDirectiveWhitespaces="true"

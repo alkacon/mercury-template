@@ -1,5 +1,4 @@
-<%@ tag
-    display-name="list-sort-category"
+<%@ tag display-name="list-sort-category"
     pageEncoding="UTF-8"
     body-content="empty"
     trimDirectiveWhitespaces="true"

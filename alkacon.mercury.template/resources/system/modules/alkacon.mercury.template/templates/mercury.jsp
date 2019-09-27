@@ -32,8 +32,7 @@ var __isOnline=${cms.isOnlineProject},
 __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)</cms:link>"
 </script>
 <%-- Load the main JavaScript in async mode --%>
-<c:set var="jsThemeRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)']}" />
-<script async src="<cms:link>${jsThemeRes.sitePath}?ver=${jsThemeRes.dateLastModified}</cms:link>"></script>
+<script async src="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
 
 <mercury:meta-info contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearchDetail}" />
 
@@ -59,10 +58,8 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
     <c:otherwise>
         <%-- Common CSS and theme CSS --%>
         <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-red.min.css' : contentPropertiesSearch['mercury.theme']}" />
-        <c:set var="cssCommonRes" value="${cms.vfs.readResource['%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)']}" />
-        <link rel="stylesheet" href="<cms:link>${cssCommonRes.sitePath}?ver=${cssCommonRes.dateLastModified}</cms:link>">
-        <c:set var="cssThemeRes" value="${cms.vfs.readResource[cssTheme]}" />
-        <link rel="stylesheet" href="<cms:link>${cssThemeRes.sitePath}?ver=${cssThemeRes.dateLastModified}</cms:link>">
+        <link rel="stylesheet" href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>">
+        <link rel="stylesheet" href="<mercury:link-resource resource='${cssTheme}'/>">
     </c:otherwise>
 </c:choose>
 
@@ -71,8 +68,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <c:if test="${not empty extraCSS and (extraCSS ne 'none')}">
     <c:set var="extraCSS" value="${extraCSS}custom.css" />
     <c:if test="${cms.vfs.exists[extraCSS]}">
-        <c:set var="cssExtraCSS" value="${cms.vfs.readResource[extraCSS]}" />
-        <link rel="stylesheet" href="<cms:link>${cssExtraCSS.sitePath}?ver=${cssExtraCSS.dateLastModified}</cms:link>">
+        <link rel="stylesheet" href="<mercury:link-resource resource='${extraCSS}'/>">
     </c:if>
 </c:if>
 
@@ -124,9 +120,8 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <c:set var="extraJS" value="${empty contentPropertiesSearch['mercury.extra.js'] ? 'none' : contentPropertiesSearch['mercury.extra.js']}" />
 <c:if test="${not empty extraJS and (extraJS ne 'none')}">
     <c:set var="extraJS" value="${extraJS}custom.js" />
-    <c:if test="${cms.vfs.exists[extraCSS]}">
-        <c:set var="jsExtraJS" value="${cms.vfs.readResource[extraJS]}" />
-        <script src="<cms:link>${jsExtraJS.sitePath}?ver=${jsExtraJS.dateLastModified}</cms:link>"></script>
+    <c:if test="${cms.vfs.exists[extraJS]}">
+        <script src="<mercury:link-resource resource='${extraJS}'/>"></script>
     </c:if>
 </c:if>
 

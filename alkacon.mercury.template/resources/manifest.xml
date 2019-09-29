@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.14</version>
+		<version>11.0.1.15</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7330,6 +7330,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Loads navigation items based on a XML content configuration]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/nav-vars.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/nav-vars.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>b31888a3-e2b8-11e9-9232-0242ac11002b</uuidstructure>
+			<uuidresource>b31888a4-e2b8-11e9-9232-0242ac11002b</uuidresource>
+			<datecreated>Sun, 29 Sep 2019 12:57:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Sets data that controls how a navigation is build]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -33,11 +33,12 @@
 
 <nav class="nav-main-group ${logoImage.value.Image.isSet ? 'has-sidelogo ' : ''}${cssWrapper}"><%----%>
 
+    <mercury:nav-vars params="${param}">
     <mercury:nav-items
         type="forSite"
         content="${content}"
-        currentPageFolder="${cms.requestContext.folderUri}"
-        currentPageUri="${cms.requestContext.uri}"
+        currentPageFolder="${currentPageFolder}"
+        currentPageUri="${currentPageUri}"
         var="nav"><%----%>
 
         <c:if test="${not empty logoImage}">
@@ -80,7 +81,7 @@
             <c:set var="nextIsTopLevel" value="${nextLevel eq navStartLevel}" />
             <c:set var="navTarget" value="${fn:trim(navElem.info)eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
-            <c:set var="isCurrentPage" value="${fn:startsWith(cms.requestContext.uri, cms.sitePath[navElem.resource.rootPath])}" />
+            <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
 
             <c:set var="menuType" value="${isCurrentPage ? 'active ' : ''}" />
             <c:set var="menuType" value="${i == 0 ? menuType.concat('nav-first ') : menuType}" />
@@ -188,6 +189,7 @@
         <mercury:nl />
 
     </mercury:nav-items>
+    </mercury:nav-vars>
 
 </nav><%----%>
 

@@ -28,11 +28,12 @@
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
 
+    <mercury:nav-vars params="${param}">
     <mercury:nav-items
         type="forSite"
         content="${content}"
-        currentPageFolder="${cms.requestContext.folderUri}"
-        currentPageUri="${cms.requestContext.uri}"
+        currentPageFolder="${currentPageFolder}"
+        currentPageUri="${currentPageUri}"
         var="nav">
 
     <c:set var="navLength" value="${fn:length(nav.items) - 1}" />
@@ -44,7 +45,7 @@
             <c:set var="navElem" value="${nav.items[i]}" />
             <c:set var="nextLevel" value="${i < navLength ? nav.items[i+1].navTreeLevel : navStartLevel}" />
             <c:set var="startSubMenu" value="${nextLevel > navElem.navTreeLevel}" />
-            <c:set var="isCurrentPage" value="${fn:startsWith(cms.requestContext.uri, cms.sitePath[navElem.resource.rootPath])}" />
+            <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
             <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
             <c:set var="navTarget" value="${fn:trim(navElem.info)eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
@@ -107,6 +108,8 @@
     <mercury:nl />
 
     </mercury:nav-items>
+    </mercury:nav-vars>
+
 </div><%----%>
 <mercury:nl />
 

@@ -20,22 +20,16 @@
 <c:set var="breadcrumbsIncludeHidden"   value="${setting.breadcrumbsIncludeHidden.toBoolean}" />
 <c:set var="breadcrumbsFromRoot"        value="${setting.breadcrumbsFromRoot.toBoolean}" />
 
-<%-- Check for List URI and use this if it exists --%>
-<c:set var="sitepath"                   value="${param.sitepath}" />
-<c:if test="${not empty sitepath}">
-    <c:set var="sitepathRes"            value="${not cms.vfs.exists[sitepath] ? null : cms.vfs.resource[sitepath]}" />
-    <c:set var="sitepathRes"            value="${not empty sitepathRes ? (sitepathRes.propertySearch['mercury.nav.sitepath'] eq 'true' ? sitepathRes : null) : null}" />
-</c:if>
-
 <mercury:nl />
 <div class="type-nav-breadcrumbs ${cssWrapper}${' '}${cssVisibility}"><%----%>
 <mercury:nl />
 
+    <mercury:nav-vars params="${param}">
         <mercury:nav-items
             type="${breadcrumbsFromRoot ? 'rootBreadCrumb' : 'breadCrumb'}"
             content="${content}"
-            currentPageFolder="${empty sitepathRes ? cms.requestContext.folderUri : cms.vfs.getParentFolder(sitepathRes)}"
-            currentPageUri="${empty sitepathRes ? cms.requestContext.uri : sitepath}"
+            currentPageFolder="${currentPageFolder}"
+            currentPageUri="${currentPageUri}"
             var="nav">
 
             <ul class="nav-breadcrumbs"><%----%>
@@ -107,6 +101,7 @@
                 <mercury:nl />
             </c:if>
         </mercury:nav-items>
+    </mercury:nav-vars>
 
 </div><%----%>
 <mercury:nl />

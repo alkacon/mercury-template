@@ -22,14 +22,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<%-- Check for site path parameter and use this if it exists --%>
-<c:set var="sitepath"                   value="${params.sitepath}" />
-<c:if test="${not empty sitepath}">
-    <c:set var="sitepathRes"            value="${not cms.vfs.exists[sitepath] ? null : cms.vfs.resource[sitepath]}" />
-    <c:set var="sitepathRes"            value="${not empty sitepathRes ? (sitepathRes.propertySearch['mercury.nav.sitepath'] eq 'true' ? sitepathRes : null) : null}" />
+<%-- Check for nav path parameter and use this if it exists --%>
+<c:set var="navpath"                    value="${params.navpath}" />
+<c:if test="${not empty navpath}">
+    <c:set var="navpathRes"             value="${cms.vfs.resource[navpath]}" />
+    <c:set var="navpathRes"             value="${not empty navpathRes and (navpathRes.propertySearch['mercury.navpath'] eq 'param') ? navpathRes : null}" />
 </c:if>
 
-<c:set var="currentPageFolder"          value="${empty sitepathRes ? cms.requestContext.folderUri : cms.vfs.getParentFolder(sitepathRes)}" />
-<c:set var="currentPageUri"             value="${empty sitepathRes ? cms.requestContext.uri : sitepath}" />
+<c:set var="currentPageFolder"          value="${empty navpathRes ? cms.requestContext.folderUri : navpathRes.sitePathFolder}" />
+<c:set var="currentPageUri"             value="${empty navpathRes ? cms.requestContext.uri : navpathRes.sitePath}" />
 
 <jsp:doBody/>

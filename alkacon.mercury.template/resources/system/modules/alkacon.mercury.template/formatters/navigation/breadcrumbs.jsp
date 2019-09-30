@@ -64,7 +64,7 @@
                 </c:forEach>
 
                 <c:if test="${cms.detailRequest}">
-                    <c:set var="navLink"><cms:link>${cms.sitePath[cms.detailContent.rootPath]}?${pageContext.request.queryString}</cms:link></c:set>
+                    <c:set var="navLink"><cms:link>${cms.detailContent.sitePath}?${pageContext.request.queryString}</cms:link></c:set>
                     <c:set var="navText"><mercury:meta-title addIntro="${true}" /></c:set>
 
                     <c:out value='<li><a href="${navLink}">' escapeXml="false" />

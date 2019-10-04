@@ -44,8 +44,8 @@
 }
 
 // Add round corners
-@mixin round-corners($radius, $overflow:false) {
-    @if ($radius != 0) {
+@mixin round-corners($radius, $overflow:false, $setZero:false) {
+    @if ($setZero or ($radius != 0)) {
         border-radius: $radius;
     }
     @if ($overflow == true) {

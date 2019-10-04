@@ -105,6 +105,18 @@
         display: block;
     }
 
+    input.datepicker.flatpickr-mobile,
+    input.datepicker.input {
+        position: static;
+    }
+
+    input.datepicker:not([value*="."]):not([value*="/"]):not([value*="-"]) + input.datepicker.flatpickr-mobile {
+        &::before {
+            color: $form-placeholder-color;
+            content:attr(placeholder);
+        }
+    }
+
     .input input,
     .select select,
     .textarea textarea {
@@ -115,7 +127,7 @@
         outline: none;
         border-width: 1px;
         border-style: solid;
-        @include round-corners($form-input-border-radius);
+        @include round-corners($form-input-border-radius, false, true);
         background-color: $form-input-background;
         color: $form-text-color;
         appearance: none;
@@ -399,12 +411,12 @@
 
     .input,
     .textarea {
-        .icon-append + input,
+        .icon-append ~ input, // "~" instead of "+" required by datepicker
         .icon-append + textarea {
             padding-right: 34px;
         }
 
-        .icon-prepend + input,
+        .icon-prepend ~ input,
         .icon-prepend + textarea {
             padding-left: 42px;
         }

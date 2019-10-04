@@ -783,20 +783,20 @@ var Mercury = function(jQ) {
             } catch (err) {
                  console.warn("OsmMap.init() error", err);
             }
-         }
+        }
 
-         if (requiresModule(".map-google")) {
-              try {
-                  import(
-                      /* webpackChunkName: "mercury-map-google" */
-                      "./map-google.js").then( function ( GoogleMap ) {
-                      GoogleMap.init(jQ, DEBUG);
-                      window.GoogleMap = GoogleMap;
-                  });
-               } catch (err) {
-                  console.warn("GoogleMap.init() error", err);
-               }
-         }
+        if (requiresModule(".map-google")) {
+            try {
+                import(
+                    /* webpackChunkName: "mercury-map-google" */
+                    "./map-google.js").then( function ( GoogleMap ) {
+                    GoogleMap.init(jQ, DEBUG);
+                    window.GoogleMap = GoogleMap;
+                });
+            } catch (err) {
+                 console.warn("GoogleMap.init() error", err);
+            }
+        }
 
         if (requiresModule(".masonry-list")) {
             try {
@@ -807,6 +807,18 @@ var Mercury = function(jQ) {
                 });
             } catch (err) {
                 console.warn("MasonryList.init() error", err);
+            }
+        }
+
+        if (requiresModule(".datepicker")) {
+            try {
+                import(
+                    /* webpackChunkName: "mercury-datepicker" */
+                    "./datepicker.js").then( function (DatePicker) {
+                    DatePicker.init(jQ, DEBUG, getLocale());
+                });
+            } catch (err) {
+                console.warn("DatePicker.init() error", err);
             }
         }
 

@@ -55,7 +55,6 @@
         // if we have a predefined color match, use this
         $colors: map-get($match-text-bg-colors, $bg-color);
         $t-color: nth($colors, 1);
-        @debug "length($colors): #{length($colors)}";
         $li-color: nth($colors, conditional-value(length($colors) > 1, 2, 1));
         $lih-color: nth($colors, conditional-value(length($colors) > 2, 3, 1));
         @return ($li-color, $lih-color);

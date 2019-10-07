@@ -47,10 +47,7 @@
 </c:if>
 
 <c:if test="${setShowCalendar}">
-    <c:set var="setVisualOption" value="smallImageXS" />
-    <c:if test="${setShowCalendar}">
-        <c:set var="groupId">event-<fmt:formatDate value='${date.start}' pattern='d-MM-yyyy' type='date' /></c:set>
-    </c:if>
+    <c:set var="groupId">event-<fmt:formatDate value='${date.start}' pattern='d-MM-yyyy' type='date' /></c:set>
     <c:choose>
         <c:when test="${(setRatio eq 'none') and ((displayType eq 'teaser-compact') or (displayType eq 'teaser-elaborate'))}">
             <c:set var="smallCalendarSheet" value="${true}" />

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.1.5</version>
+		<version>11.0.1.7</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6996,6 +6996,30 @@
 					<value><![CDATA[true]]></value>
 				</property>
 			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js</destination>
+			<type>plain</type>
+			<uuidstructure>956638c4-e394-11e9-a18f-0242ac11002b</uuidstructure>
+			<uuidresource>956638c5-e394-11e9-a18f-0242ac11002b</uuidresource>
+			<datecreated>Mon, 30 Sep 2019 15:11:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js.map</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js.map</destination>
+			<type>plain</type>
+			<uuidstructure>956bde16-e394-11e9-a18f-0242ac11002b</uuidstructure>
+			<uuidresource>956bde17-e394-11e9-a18f-0242ac11002b</uuidresource>
+			<datecreated>Mon, 30 Sep 2019 15:11:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>

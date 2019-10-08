@@ -120,6 +120,9 @@
     .input input,
     .select select,
     .textarea textarea {
+        font-family: $font-family-base;
+        font-weight: $font-weight-base;
+        font-size: $form-font-size;
         display: block;
         box-sizing: border-box;
         width: 100%;

@@ -563,7 +563,7 @@ span.flatpickr-weekday {
   color: $dayForeground;
   cursor: pointer;
 
-  font-weight: 400;
+  font-weight: $font-weight-base;
   width: 14.2857143%;
   flex-basis: 14.2857143%;
   max-width: $daySize;
@@ -778,7 +778,7 @@ span.flatpickr-weekday {
       font-weight: bold; }
 
     &.flatpickr-minute, &.flatpickr-second {
-      font-weight: 400; }
+      font-weight: $font-weight-base; }
 
     &:focus {
       outline: 0;
@@ -803,7 +803,7 @@ span.flatpickr-weekday {
     width: 18%;
     cursor: pointer;
     text-align: center;
-    font-weight: 400;
+    font-weight: $font-weight-base;
   }
 
   input, .flatpickr-am-pm {

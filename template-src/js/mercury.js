@@ -760,7 +760,7 @@ var Mercury = function(jQ) {
 
         // now initialize optional modules
 
-        if (requiresModule(".type-slick-slider")) {
+        if (requiresModule(".type-slick-slider .slide-definitions.list-of-slides")) {
             try {
                 import(
                     /* webpackChunkName: "mercury-slider-slick" */

@@ -360,7 +360,8 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     var $result = jQ(listHtml);
     // collect information about the search result
     var resultData = $result.find('#resultdata').first().data('result');
-    if (DEBUG) console.info("List: Search result - list=" + list.id + ", reloaded=" + resultData.reloaded + ", start=" + resultData.start + ", end=" + resultData.end + ", entries=" + resultData.found + ", pages=" + resultData.pages + ", currentPage=" + resultData.currentPage);
+    list.pageData = resultData;
+    if (DEBUG) console.info("List: Search result - list=" + list.id + ", reloaded=" + list.pageData.reloaded + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage);
 
     var $newEntries;
     var $groups = $result.find("div[listgroup]");
@@ -376,6 +377,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
 
     if (list.allLoaded) {
         list.pageEntries = paginateEntries(list, $newEntries);
+        list.pageData.pages = list.pageEntries.size;
     }
     // clear the pagination element
     list.$pagination.empty();
@@ -407,13 +409,14 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
                 if (!paginationString.empty) {
                     jQ(paginationString).appendTo(list.$pagination);
                 }
+            } else {
+                updatePaginationCounter(list, page);
             }
         }
     } else {
-    $newEntries.appendTo(list.$entries);
-
-    // set pagination element with new content
-    $result.find('.list-append-position').appendTo(list.$pagination);
+        $newEntries.appendTo(list.$entries);
+        // set pagination element with new content
+        $result.find('.list-append-position').appendTo(list.$pagination);
     }
 
     if (reloadEntries) {
@@ -466,6 +469,19 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     }
 }
 
+function updatePaginationCounter(list, page) {
+    list.pageData.currentPage = page;
+    list.pageData.end = page * list.itemsPerPage;
+    if (list.pageData.end > list.pageData.found) {
+        list.pageData.end = list.pageData.found;
+    }
+    if (DEBUG) console.info("List.generatePagination(): list=" + list.id + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage);
+    if (list.resultCounter != null) {
+        list.resultCounter.$itemStart.text(list.pageData.start);
+        list.resultCounter.$itemEnd.text(list.pageData.end);
+    }
+}
+
 /**
  * Generates the pagination on the client side.
  * This is only used when all items are prefetched.
@@ -475,6 +491,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
  */
 function generatePagination(list, page) {
 
+    updatePaginationCounter(list, page);
     var pagination = list.paginationInfo;
     // currently we do not support any options, since originally available options don't seem to be used.
     //var options = pagination.options;
@@ -585,7 +602,7 @@ function generatePaginationItem(liClasses, isDisabled, isActive, page, title, la
     }
     result.push('>');
     if(!noLabel) {
-        result.push(label.replace(/\{\{p\}\}/g,page));
+        result.push(label.replace(/\{\{p\}\}/g, page));
     }
     result.push('</span></a></li>');
     return result.join('');
@@ -783,16 +800,17 @@ export function archiveSearch(id, searchStateParameters) {
  * @param {number} page the number of the page to append.
  */
 export function switchPage(id, page) {
-    var list =m_lists[id];
+    var list = m_lists[id];
     list.$entries.empty();
     list.pageEntries.get(page).appendTo(list.$entries);
     list.$pagination.empty();
+    list.pageData.start = 1 + (page - 1) * list.itemsPerPage;
     var paginationString = generatePagination(list, page);
     if (!paginationString.empty) {
         jQ(paginationString).appendTo(list.$pagination);
     }
     if (! list.$element.visible()) {
-        if (DEBUG) console.info("List: Scrolling to anchor");
+        if (DEBUG) console.info("List.switchPage(): Scrolling to anchor");
         Mercury.scrollToAnchor(list.$element, -20);
     }
 }
@@ -805,9 +823,10 @@ export function switchPage(id, page) {
  * @param {number} page the number of the page to append.
  */
 export function appendPage(id, page) {
-    var list =m_lists[id];
+    var list = m_lists[id];
     list.pageEntries.get(page).appendTo(list.$entries);
     list.$pagination.empty();
+    list.pageData.start = 1;
     var paginationString = generatePagination(list, page);
     if (!paginationString.empty) {
         jQ(paginationString).appendTo(list.$pagination);
@@ -830,7 +849,7 @@ export function update(id, searchStateParameters, reloadEntries) {
 }
 
 /**
- * This method can be used to allow pagination for the lists that retrieve their results not via the default AJAX call. 
+ * This method can be used to allow pagination for the lists that retrieve their results not via the default AJAX call.
  *
  * @param {string} id the id of the list for which the update should take place.
  * @param {string} searchStateParameters the search state parameters to use for the update.
@@ -888,6 +907,14 @@ export function init(jQuery, debug) {
                 list.$entries = $list.find(".list-entries");
                 list.$spinner = $list.find(".list-spinner");
                 list.$pagination = $list.find(".list-pagination");
+                var $resultCounter = $list.find(".list-counter");
+                if ($resultCounter.length > 0) {
+                    var counter = {};
+                    counter.$element = $resultCounter;
+                    counter.$itemStart = $resultCounter.find(".item-start");
+                    counter.$itemEnd = $resultCounter.find(".item-end");
+                    list.resultCounter = counter;
+                }
                 list.$noresults = $list.find(".list-noresults");
                 list.locked = false;
                 list.autoload = false;

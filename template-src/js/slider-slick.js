@@ -30,13 +30,12 @@ function initSlickSliders($sliders) {
 
     $sliders.each(function(){
         var $slider = jQ(this);
-        var $sliderElement = $slider.find('.slide-definitions.list-of-slides');
-        var data = $sliderElement.data('typeslick') || {};
+        var data = $slider.data('typeslick') || {};
         if (Mercury.device().mobile()) {
             data.arrows = false;
             data.fade = false;
         }
-        $sliderElement.slick(data);
+        $slider.slick(data);
     });
 }
 
@@ -49,8 +48,8 @@ export function init(jQuery, debug) {
 
     if (DEBUG) console.info("SliderSlick.init()");
 
-    var $slickSliders = jQuery('.type-slick-slider');
-    if (DEBUG) console.info(".type-slick-slider elements found: " + $slickSliders.length);
+    var $slickSliders = jQuery('.type-slick-slider .slide-definitions.list-of-slides');
+    if (DEBUG) console.info(".type-slick-slider .slide-definitions.list-of-slides elements found: " + $slickSliders.length);
     if ($slickSliders.length > 0) {
         initSlickSliders($slickSliders);
     }

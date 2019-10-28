@@ -4,22 +4,22 @@
     trimDirectiveWhitespaces="true"
     description="Generates a detail only attachment container." %>
 
-<%@attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
+<%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
     description="The content for which the container will be generated." %>
 
-<%@attribute name="name" type="java.lang.String" required="true"
+<%@ attribute name="name" type="java.lang.String" required="true"
     description="The name for the container that will be generated." %>
 
-<%@attribute name="role" type="java.lang.String" required="false"
+<%@ attribute name="role" type="java.lang.String" required="false"
     description="The role of the user. Used for displaying in the box." %>
 
-<%@attribute name="type" type="java.lang.String" required="false"
+<%@ attribute name="type" type="java.lang.String" required="false"
     description="The container type. Defaults to 'element'." %>
 
-<%@attribute name="maxElements" type="java.lang.String" required="false"
+<%@ attribute name="maxElements" type="java.lang.String" required="false"
     description="The maximal number of elements that fit into the container." %>
 
-<%@attribute name="cssWrapper" type="java.lang.String" required="false"
+<%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="Additional CSS class that is added to the generated container DIV." %>
 
 

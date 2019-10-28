@@ -1,14 +1,14 @@
-<%@tag pageEncoding="UTF-8"
+<%@ tag pageEncoding="UTF-8"
     display-name="container-box"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Displays a placehoder box for containers and model groups." %>
 
 
-<%@attribute name="label" type="java.lang.String" required="true"
+<%@ attribute name="label" type="java.lang.String" required="true"
         description="Usually the name of the element or the group."%>
 
-<%@attribute name="boxType" type="java.lang.String" required="true"
+<%@ attribute name="boxType" type="java.lang.String" required="true"
         description="Determines to type of box to render.
         Possible values are [
         container-box: Render a standard container placeholder.
@@ -17,13 +17,13 @@
         model-end: Renders the closing part of a model placeholder box.
         ]"%>
 
-<%@attribute name="role" type="java.lang.String" required="false"
+<%@ attribute name="role" type="java.lang.String" required="false"
         description="The role of the user. Used for displaying in the box." %>
 
-<%@attribute name="type" type="java.lang.String" required="false"
+<%@ attribute name="type" type="java.lang.String" required="false"
         description="The type of elements the container takes." %>
 
-<%@attribute name="detailView" type="java.lang.Boolean" required="false"
+<%@ attribute name="detailView" type="java.lang.Boolean" required="false"
         description="A boolean that indicates if this is a detail container." %>
 
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"

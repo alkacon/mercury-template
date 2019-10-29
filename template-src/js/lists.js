@@ -60,7 +60,7 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @typedef {Object.<string, ListFilter>} ListFilterMap Object holding only list filters as property values.
  *
  * @typedef {Object.<string, ListFilter[]>} ListFilterArrayMap Object holding only list filters as property values.
- * 
+ *
  * @typedef {Object} PageData Holds the list's pagination data.
  * @property {boolean} reloaded flag, indicating if ????
  * @property {number} currentPage the currently shown page.
@@ -68,10 +68,10 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {number} found the total number of results.
  * @property {number} start the first result to show on the page.
  * @property {number} end the last result to show on the page.
- * 
+ *
  * @callback PaginationCallback
  * @param {PageData} pageData the current state of the list pagination.
- * 
+ *
  /
 
 // the global objects that must be passed to this module
@@ -375,6 +375,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     // collect information about the search result
     var resultData = $result.find('#resultdata').first().data('result');
     list.pageData = resultData;
+    list.pageData.itemsPerPage = parseInt(list.itemsPerPage, 10);
     if (DEBUG) console.info("List: Search result - list=" + list.id + ", reloaded=" + list.pageData.reloaded + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage);
 
     var $newEntries;
@@ -484,7 +485,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
 }
 
 /**
- * 
+ *
  * @param {List} list the list to update the page data for.
  * @param {number} page the new current page.
  */

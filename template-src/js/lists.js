@@ -43,6 +43,8 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {string} option pagination option, either "append" or "paginate".
  * @property {JQuery<HTMLElement>} $facets the facet elements of the list.
  * @property {string} initparams the initial search state parameters to apply on first load of the list.
+ * @property {PageData} pageData the pagination state.
+ * @property {PaginationCallback} paginationCallback the pagination callback function.
  *
  * @typedef {Object.<string, List>} ListMap Object holding only lists as property values.
  *
@@ -58,7 +60,19 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @typedef {Object.<string, ListFilter>} ListFilterMap Object holding only list filters as property values.
  *
  * @typedef {Object.<string, ListFilter[]>} ListFilterArrayMap Object holding only list filters as property values.
-*/
+ * 
+ * @typedef {Object} PageData Holds the list's pagination data.
+ * @property {boolean} reloaded flag, indicating if ????
+ * @property {number} currentPage the currently shown page.
+ * @property {number} pages the total number of pages.
+ * @property {number} found the total number of results.
+ * @property {number} start the first result to show on the page.
+ * @property {number} end the last result to show on the page.
+ * 
+ * @callback PaginationCallback
+ * @param {PageData} pageData the current state of the list pagination.
+ * 
+ /
 
 // the global objects that must be passed to this module
 /** @type {jQuery} jQuery object */
@@ -410,7 +424,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
                     jQ(paginationString).appendTo(list.$pagination);
                 }
             } else {
-                updatePaginationCounter(list, page);
+                updatePageData(list, page);
             }
         }
     } else {
@@ -469,16 +483,32 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     }
 }
 
-function updatePaginationCounter(list, page) {
-    list.pageData.currentPage = page;
-    list.pageData.end = page * list.itemsPerPage;
-    if (list.pageData.end > list.pageData.found) {
-        list.pageData.end = list.pageData.found;
+/**
+ * 
+ * @param {List} list the list to update the page data for.
+ * @param {number} page the new current page.
+ */
+function updatePageData(list, page) {
+    var pageData = list.pageData;
+    var previousPageEnd;
+    var previousEnd = 0;
+    if (list.option !== 'append') {
+        for(var i = 1; i < page; i++) {
+            previousEnd = previousEnd + getPageSize(i, list.pageSizes);
+        }
+        previousPageEnd = previousEnd;
+        pageData.start = previousEnd + 1;
+    } else {
+        pageData.start = 1;
+        previousPageEnd = page > 1 ? pageData.end : 0; // use the previous page to get the new page start
     }
-    if (DEBUG) console.info("List.generatePagination(): list=" + list.id + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage);
-    if (list.resultCounter != null) {
-        list.resultCounter.$itemStart.text(list.pageData.start);
-        list.resultCounter.$itemEnd.text(list.pageData.end);
+    pageData.currentPage = page;
+    pageData.end = previousPageEnd + getPageSize(page, list.pageSizes);
+    if (pageData.end > pageData.found) {
+        pageData.end = pageData.found;
+    }
+    if (null != list.paginationCallback) {
+        list.paginationCallback(pageData);
     }
 }
 
@@ -491,7 +521,7 @@ function updatePaginationCounter(list, page) {
  */
 function generatePagination(list, page) {
 
-    updatePaginationCounter(list, page);
+    updatePageData(list, page);
     var pagination = list.paginationInfo;
     // currently we do not support any options, since originally available options don't seem to be used.
     //var options = pagination.options;
@@ -826,7 +856,6 @@ export function appendPage(id, page) {
     var list = m_lists[id];
     list.pageEntries.get(page).appendTo(list.$entries);
     list.$pagination.empty();
-    list.pageData.start = 1;
     var paginationString = generatePagination(list, page);
     if (!paginationString.empty) {
         jQ(paginationString).appendTo(list.$pagination);
@@ -854,10 +883,12 @@ export function update(id, searchStateParameters, reloadEntries) {
  * @param {string} id the id of the list for which the update should take place.
  * @param {string} searchStateParameters the search state parameters to use for the update.
  * @param {boolean} reloadEntries a flag, indicating if the currently shown results should be reloaded/replaced (or if new results should only be appended).
+ * @param {ListCallback} [paginationCallback] a callback triggered when a page is loaded or appended.
  */
-export function injectResults(id, resultHtml) {
+export function injectResults(id, resultHtml, paginationCallback) {
 
     var list = m_lists[id];
+    list.paginationCallback = paginationCallback;
     generateListHtml(list, true, resultHtml, 1);
 }
 
@@ -907,14 +938,6 @@ export function init(jQuery, debug) {
                 list.$entries = $list.find(".list-entries");
                 list.$spinner = $list.find(".list-spinner");
                 list.$pagination = $list.find(".list-pagination");
-                var $resultCounter = $list.find(".list-counter");
-                if ($resultCounter.length > 0) {
-                    var counter = {};
-                    counter.$element = $resultCounter;
-                    counter.$itemStart = $resultCounter.find(".item-start");
-                    counter.$itemEnd = $resultCounter.find(".item-end");
-                    list.resultCounter = counter;
-                }
                 list.$noresults = $list.find(".list-noresults");
                 list.locked = false;
                 list.autoload = false;

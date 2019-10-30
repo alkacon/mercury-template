@@ -1,42 +1,42 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
 
-	<xsd:element name="OptionalWebFormExpirations" type="OpenCmsOptionalWebFormExpirations"/>
+    <xsd:element name="OptionalWebFormExpirations" type="OpenCmsOptionalWebFormExpirations"/>
 
-	<xsd:complexType name="OpenCmsOptionalWebFormExpirations">
-		<xsd:sequence>
-			<xsd:element name="OptionalWebFormExpiration" type="OpenCmsOptionalWebFormExpiration" minOccurs="0" maxOccurs="unbounded"/>
-		</xsd:sequence>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsOptionalWebFormExpirations">
+        <xsd:sequence>
+            <xsd:element name="OptionalWebFormExpiration" type="OpenCmsOptionalWebFormExpiration" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
-	<xsd:complexType name="OpenCmsOptionalWebFormExpiration">
-		<xsd:sequence>
-			<xsd:element name="Date" type="OpenCmsDateTime" />
-			<xsd:element name="Text" type="OpenCmsHtml" />
-		</xsd:sequence>
-		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsOptionalWebFormExpiration">
+        <xsd:sequence>
+            <xsd:element name="Date" type="OpenCmsDateTime" />
+            <xsd:element name="Text" type="OpenCmsHtml" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
 
-	<xsd:annotation>
-		<xsd:appinfo>
-			<resourcebundle name="alkacon.mercury.webform.messages"/>
-			<FieldSettings>
-			    <Setting>
-	                <PropertyName>Date</PropertyName>
-	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Date)]]></DisplayName>
-	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Date.help)]]></Description>
-	                <Default>%(currenttime + 604800000)</Default>
-			  	</Setting>
-			    <Setting>
-	                <PropertyName>Text</PropertyName>
-	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Text)]]></DisplayName>
-	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Text.help)]]></Description>
-	                <Widget>HtmlWidget</Widget>
-	                <WidgetConfig>imagegallery,downloadgallery,formatselect,source,link,anchor,table</WidgetConfig>
-			  	</Setting>
-			</FieldSettings>
-		</xsd:appinfo>
-	</xsd:annotation>
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.webform.messages"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Date</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Date)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Date.help)]]></Description>
+                    <Default>%(currenttime + 604800000)</Default>
+                  </Setting>
+                <Setting>
+                    <PropertyName>Text</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Text)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormExpiration.Text.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
+                  </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
 
 </xsd:schema>

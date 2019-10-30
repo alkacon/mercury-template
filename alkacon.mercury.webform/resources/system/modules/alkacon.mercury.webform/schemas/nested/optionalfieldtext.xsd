@@ -1,52 +1,52 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
 
-	<xsd:element name="OptionalWebFormFieldTexts" type="OpenCmsOptionalWebFormFieldTexts"/>
+    <xsd:element name="OptionalWebFormFieldTexts" type="OpenCmsOptionalWebFormFieldTexts"/>
 
-	<xsd:complexType name="OpenCmsOptionalWebFormFieldTexts">
-		<xsd:sequence>
-			<xsd:element name="OptionalWebFormFieldText" type="OpenCmsOptionalWebFormFieldText" minOccurs="0" maxOccurs="unbounded"/>
-		</xsd:sequence>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsOptionalWebFormFieldTexts">
+        <xsd:sequence>
+            <xsd:element name="OptionalWebFormFieldText" type="OpenCmsOptionalWebFormFieldText" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
-	<xsd:complexType name="OpenCmsOptionalWebFormFieldText">
-		<xsd:sequence>
-			<xsd:element name="InputField" type="OpenCmsString" />
-			<xsd:element name="Column" type="OpenCmsString" />
-			<xsd:element name="Text" type="OpenCmsHtml" />
-		</xsd:sequence>
-		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsOptionalWebFormFieldText">
+        <xsd:sequence>
+            <xsd:element name="InputField" type="OpenCmsString" />
+            <xsd:element name="Column" type="OpenCmsString" />
+            <xsd:element name="Text" type="OpenCmsHtml" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
 
-	<xsd:annotation>
-		<xsd:appinfo>
-			<resourcebundle name="alkacon.mercury.webform.messages"/>
-			<FieldSettings>
-			    <Setting>
-	                <PropertyName>InputField</PropertyName>
-	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.InputField)]]></DisplayName>
-	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.InputField.help)]]></Description>
-	                <Widget>org.opencms.widgets.CmsDependentSelectWidget</Widget>
-	                <WidgetConfig>InputField|FieldLabel</WidgetConfig>
-			  	</Setting>
-			    <Setting>
-	                <PropertyName>Column</PropertyName>
-	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Column)]]></DisplayName>
-	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Column.help)]]></Description>
-	                <Widget>select</Widget>
-	                <WidgetConfig>0:%(key.form.column.both)|1:%(key.form.column.left)|2:%(key.form.column.right)</WidgetConfig>
-			  	</Setting>
-			    <Setting>
-	                <PropertyName>Text</PropertyName>
-	                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Text)]]></DisplayName>
-	                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Text.help)]]></Description>
-	                <Widget>HtmlWidget</Widget>
-	                <WidgetConfig>imagegallery,downloadgallery,formatselect,source,link,anchor,table</WidgetConfig>
-			  	</Setting>
-			</FieldSettings>
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.webform.messages"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>InputField</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.InputField)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.InputField.help)]]></Description>
+                    <Widget>org.opencms.widgets.CmsDependentSelectWidget</Widget>
+                    <WidgetConfig>InputField|FieldLabel</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Column</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Column)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Column.help)]]></Description>
+                    <Widget>select</Widget>
+                    <WidgetConfig>0:%(key.form.column.both)|1:%(key.form.column.left)|2:%(key.form.column.right)</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Text</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Text)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Text.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
+                </Setting>
+            </FieldSettings>
 
-		</xsd:appinfo>
-	</xsd:annotation>
+        </xsd:appinfo>
+    </xsd:annotation>
 
 </xsd:schema>

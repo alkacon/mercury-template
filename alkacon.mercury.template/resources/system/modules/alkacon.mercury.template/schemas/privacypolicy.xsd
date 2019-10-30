@@ -46,7 +46,7 @@
                     <DisplayName><![CDATA[%(key.label.PrivacyPolicy.PolicyText)]]></DisplayName>
                     <Description><![CDATA[%(key.label.PrivacyPolicy.PolicyText.help)]]></Description>
                     <Widget>html</Widget>
-                    <WidgetConfig><![CDATA[link,source,formatselect]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

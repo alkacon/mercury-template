@@ -129,7 +129,7 @@
                     <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Description.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig>link,anchor,source,formatselect</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Link</PropertyName>

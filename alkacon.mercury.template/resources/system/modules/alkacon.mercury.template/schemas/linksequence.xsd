@@ -43,6 +43,7 @@
                     <DisplayName><![CDATA[%(key.label.LinkSequence.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.LinkSequence.Text.help)]]></Description>
                     <Widget>html</Widget>
+                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>LinkEntry</PropertyName>

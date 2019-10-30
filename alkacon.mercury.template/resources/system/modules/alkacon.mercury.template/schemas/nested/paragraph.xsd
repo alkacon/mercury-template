@@ -37,7 +37,7 @@
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Text.Paragraph.help)]]></Description>
                     <Widget>html</Widget>
-                    <WidgetConfig>height:400px,link,anchor,source,downloadgallery,formatselect</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigParagraph)]]></WidgetConfig>
                     <Display>wide</Display>
                 </Setting>
                 <Setting>

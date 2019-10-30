@@ -43,7 +43,7 @@
                     <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Description.help)]]></Description>
                     <Widget>html</Widget>
-                    <WidgetConfig>downloadgallery</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>ShowFrom</PropertyName>

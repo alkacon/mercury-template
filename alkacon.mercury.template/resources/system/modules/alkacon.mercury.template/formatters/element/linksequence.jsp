@@ -56,8 +56,8 @@
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
 
-    <c:if test="${text.isSet}">
-        <div class="text-box" ${text.rdfaAttr}>${text}</div><%----%>
+    <c:if test="${value.Text.isSet}">
+        <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>
     </c:if>
 
     <ul ${ulWrapper}><%----%>

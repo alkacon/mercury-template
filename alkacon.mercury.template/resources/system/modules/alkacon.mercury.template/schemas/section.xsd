@@ -48,7 +48,7 @@
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Text.help)]]></Description>
                     <Widget>html</Widget>
-                    <WidgetConfig><![CDATA[height:400px,link,anchor,source,downloadgallery,formatselect]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>

@@ -87,28 +87,28 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormText)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>FormMiddleText</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormMiddleText)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormMiddleText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>FormFooterText</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormFooterText)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormFooterText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>FormConfirmation</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.FormConfirmation)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormConfirmation.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[imagegallery,downloadgallery,formatselect,source,link,anchor,table]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>FormCaptcha</PropertyName>
@@ -189,7 +189,7 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailText)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.MailText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[formatselect,source,table]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigMail)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>MailCSS</PropertyName>

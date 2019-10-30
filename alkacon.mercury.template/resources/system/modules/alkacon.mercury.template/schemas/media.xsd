@@ -104,7 +104,7 @@
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Text.help)]]></Description>
                     <Widget>html</Widget>
-                    <WidgetConfig>height:100px,link,anchor,source,formatselect</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>

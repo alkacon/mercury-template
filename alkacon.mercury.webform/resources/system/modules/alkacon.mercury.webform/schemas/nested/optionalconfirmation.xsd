@@ -1,83 +1,83 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
 
-	<xsd:element name="OptionalWebFormConfirmationMails" type="OpenCmsOptionalWebFormConfirmationMails"/>
+    <xsd:element name="OptionalWebFormConfirmationMails" type="OpenCmsOptionalWebFormConfirmationMails"/>
 
-	<xsd:complexType name="OpenCmsOptionalWebFormConfirmationMails">
-		<xsd:sequence>
-			<xsd:element name="OptionalWebFormConfirmationMail" type="OpenCmsOptionalWebFormConfirmationMail" minOccurs="0" maxOccurs="unbounded"/>
-		</xsd:sequence>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsOptionalWebFormConfirmationMails">
+        <xsd:sequence>
+            <xsd:element name="OptionalWebFormConfirmationMail" type="OpenCmsOptionalWebFormConfirmationMail" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
-	<xsd:complexType name="OpenCmsOptionalWebFormConfirmationMail">
-		<xsd:sequence>
-			<xsd:element name="ConfirmationMailEnabled" type="OpenCmsBoolean" />
-			<xsd:element name="ConfirmationMailOptional" type="OpenCmsBoolean" />
-			<xsd:element name="ConfirmationCheckboxLabel" type="OpenCmsString" minOccurs="0" />
-			<xsd:element name="ConfirmationField" type="OpenCmsString" />
-			<xsd:element name="ConfirmationMailFrom" type="OpenCmsString" minOccurs="0" />
-			<xsd:element name="ConfirmationMailFromName" type="OpenCmsString" minOccurs="0" />
-			<xsd:element name="ConfirmationMailSubject" type="OpenCmsString" />
-			<xsd:element name="ConfirmationMailText" type="OpenCmsHtml" minOccurs="0" />
-		</xsd:sequence>
-		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsOptionalWebFormConfirmationMail">
+        <xsd:sequence>
+            <xsd:element name="ConfirmationMailEnabled" type="OpenCmsBoolean" />
+            <xsd:element name="ConfirmationMailOptional" type="OpenCmsBoolean" />
+            <xsd:element name="ConfirmationCheckboxLabel" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ConfirmationField" type="OpenCmsString" />
+            <xsd:element name="ConfirmationMailFrom" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ConfirmationMailFromName" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ConfirmationMailSubject" type="OpenCmsString" />
+            <xsd:element name="ConfirmationMailText" type="OpenCmsHtml" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
 
-	<xsd:annotation>
-		<xsd:appinfo>
-			<resourcebundle name="alkacon.mercury.webform.messages"/>
-		  <FieldSettings>
-		    <Setting>
-                <PropertyName>ConfirmationMailEnabled</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled.help)]]></Description>
-                <Default>true</Default>
-		  	</Setting>
-		  	<Setting>
-                <PropertyName>ConfirmationMailOptional</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional.help)]]></Description>
-		  	</Setting>
-		  	<Setting>
-                <PropertyName>ConfirmationCheckboxLabel</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel.help)]]></Description>
-		  	</Setting>
-		  	<Setting>
-                <PropertyName>ConfirmationField</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationField)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationField.help)]]></Description>
-                <Widget>org.opencms.widgets.CmsDependentSelectWidget</Widget>
-                <WidgetConfig>InputField|FieldLabel</WidgetConfig>
-		  	</Setting>
-		  	<Setting>
-                <PropertyName>ConfirmationMailFrom</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFrom)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFrom.help)]]></Description>
-                <RuleRegex><![CDATA[.+]]></RuleRegex>
-                <RuleType>warning</RuleType>
-                <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
-		  	</Setting>
-		  	<Setting>
-                <PropertyName>ConfirmationMailFromName</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFromName)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFromName.help)]]></Description>
-		  	</Setting>
-		  	<Setting>
-                <PropertyName>ConfirmationMailSubject</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailSubject)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailSubject.help)]]></Description>
-		  	</Setting>
-		  	<Setting>
-                <PropertyName>ConfirmationMailText</PropertyName>
-                <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailText)]]></DisplayName>
-                <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailText.help)]]></Description>
-                <Widget>HtmlWidget</Widget>
-                <WidgetConfig>formatselect,source,table</WidgetConfig>
-		  	</Setting>
-		  	</FieldSettings>
-		</xsd:appinfo>
-	</xsd:annotation>
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.webform.messages"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>ConfirmationMailEnabled</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled.help)]]></Description>
+                    <Default>true</Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailOptional</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationCheckboxLabel</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationField</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationField)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationField.help)]]></Description>
+                    <Widget>org.opencms.widgets.CmsDependentSelectWidget</Widget>
+                    <WidgetConfig>InputField|FieldLabel</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailFrom</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFrom)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFrom.help)]]></Description>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailFromName</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFromName)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFromName.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailSubject</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailSubject)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailSubject.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailText</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailText)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailText.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[%(param:editorConfigMail)]]></WidgetConfig>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
 
 </xsd:schema>

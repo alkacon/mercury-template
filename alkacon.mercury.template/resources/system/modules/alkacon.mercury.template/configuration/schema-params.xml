@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE params SYSTEM "internal://org/opencms/configuration/paramfile.dtd">
+
+<params weight="100">
+
+    <param name="editorConfigParagraph">height:400px,link,anchor,source,downloadgallery,formatselect,specialchar</param>
+    <param name="editorConfigFull">height:400px,link,anchor,source,downloadgallery,formatselect,specialchar</param>
+    <param name="editorConfigMail">source,formatselect,specialchar,table</param>
+    <param name="editorConfigLimited">link,source,specialchar</param>
+
+</params>

@@ -162,6 +162,7 @@
     --%>
     <c:if test="${not empty imageCopyright}">
         <c:set var="imageCopyright">${fn:replace(imageCopyright, '"', '')}</c:set>
+        <c:set var="imageCopyrightBase" value="${imageCopyright}" />
         <c:choose>
             <c:when test="${escapeCopyright}">
                 <c:set var="imageCopyright">${fn:replace(imageCopyright, '&copy;', '(c)')}</c:set>
@@ -178,7 +179,9 @@
         </c:choose>
 
         <c:set var="imageCopyrightHtml">${fn:replace(imageCopyright, '(c)', '&copy;')}</c:set>
-        <c:set var="imageTitleCopyright">${imageTitle}${' '}${imageCopyright}</c:set>
+        <c:if test="${imageTitle ne imageCopyrightBase}">
+            <c:set var="imageTitleCopyright">${imageTitle}${' '}${imageCopyright}</c:set>
+        </c:if>
     </c:if>
 
 </c:if>

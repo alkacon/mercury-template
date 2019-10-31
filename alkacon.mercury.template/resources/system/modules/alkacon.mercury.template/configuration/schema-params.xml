@@ -3,9 +3,9 @@
 
 <params weight="100">
 
-    <param name="editorConfigParagraph">height:400px,link,anchor,source,downloadgallery,formatselect,specialchar</param>
-    <param name="editorConfigFull">height:400px,link,anchor,source,downloadgallery,formatselect,specialchar</param>
-    <param name="editorConfigMail">source,formatselect,specialchar,table</param>
-    <param name="editorConfigLimited">link,source,specialchar</param>
+    <param name="editorConfigParagraph">formatselect,link,anchor,downloadgallery,specialchar,emotions,source</param>
+    <param name="editorConfigFull"     >formatselect,link,anchor,downloadgallery,specialchar,emotions,source</param>
+    <param name="editorConfigMail"     >formatselect,table,source</param>
+    <param name="editorConfigLimited"  >link,source</param>
 
 </params>

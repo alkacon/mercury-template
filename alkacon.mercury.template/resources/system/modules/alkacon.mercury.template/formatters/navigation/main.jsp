@@ -21,6 +21,7 @@
 <c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
 <c:set var="showSearch"                 value="${setting.showSearch.useDefault(true).toBoolean}" />
 <c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
+<c:set var="metaLinks"               value="${setting.metaLinks.useDefault('top').toString}" />
 
 <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
 <c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
@@ -53,22 +54,29 @@
         <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
         <mercury:nl />
 
-        <c:set var="linkElements" value="${cms.elementsInContainers['header-linksequence']}" />
-        <c:if test="${not empty linkElements}">
-            <c:set var="linksequence" value="${linkElements.get(0).toXml}" />
-            <li id="nav-main-addition" aria-expanded="false" class="hidden-lg hidden-xl"><%----%>
-                <a href="#" title="Search" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${linksequence.value.Title}</a><%----%>
-                <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
-                    <mercury:nl />
-                    <c:forEach var="link" items="${linksequence.valueList.LinkEntry}" varStatus="status">
-                        <c:set var="linkText" value="${link.value.Text}" />
-                        <c:if test="${fn:startsWith(linkText, 'icon:')}">
-                            <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
-                        </c:if>
-                        <li><mercury:link link="${link}">${linkText}</mercury:link></li><mercury:nl />
-                    </c:forEach>
-                </ul><%----%>
-            </li><%----%>
+        <c:if test="${metaLinks ne 'none'}">
+            <c:set var="metaLinkElements" value="${cms.elementsInContainers['header-linksequence']}" />
+            <c:if test="${not empty metaLinkElements}">
+                <c:set var="metaLinksHtml">
+                    <c:set var="metaLinksequence" value="${metaLinkElements.get(0).toXml}" />
+                    <li id="nav-main-addition" aria-expanded="false" class="hidden-lg hidden-xl"><%----%>
+                        <a href="#" title="Search" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${metaLinksequence.value.Title}</a><%----%>
+                        <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
+                            <mercury:nl />
+                            <c:forEach var="link" items="${metaLinksequence.valueList.LinkEntry}" varStatus="status">
+                                <c:set var="linkText" value="${link.value.Text}" />
+                                <c:if test="${fn:startsWith(linkText, 'icon:')}">
+                                    <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
+                                </c:if>
+                                <li><mercury:link link="${link}">${linkText}</mercury:link></li><mercury:nl />
+                            </c:forEach>
+                        </ul><%----%>
+                    </li><%----%>
+                </c:set>
+            </c:if>
+        </c:if>
+        <c:if test="${not empty metaLinksHtml and metaLinks ne 'bottom'}">
+            ${metaLinksHtml}
         </c:if>
 
         <c:set var="navLength" value="${fn:length(nav.items) - 1}" />
@@ -162,6 +170,10 @@
             <c:if test="${not startSubMenu}"><c:out value='</li>${nl}' escapeXml="false" /></c:if>
 
         </c:forEach>
+
+        <c:if test="${not empty metaLinksHtml and metaLinks eq 'bottom'}">
+            ${metaLinksHtml}
+        </c:if>
 
         <c:if test="${showSearch}">
             <li id="nav-main-search" aria-expanded="false"><%----%>

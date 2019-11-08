@@ -1493,6 +1493,19 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[metaLinks.navigation]]></IncludeName>
+      <PropertyName><![CDATA[metaLinks]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.metaLinks)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.metaLinks.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[top]]></Default>
+      <WidgetConfig><![CDATA[
+        top:            %(key.msg.setting.header.metaLinks.top)|
+        bottom:         %(key.msg.setting.header.metaLinks.bottom)|
+        none:           %(key.msg.setting.header.metaLinks.none)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listEntryWrapper.tile]]></IncludeName>
       <PropertyName><![CDATA[listEntryWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.tileCss)]]></DisplayName>

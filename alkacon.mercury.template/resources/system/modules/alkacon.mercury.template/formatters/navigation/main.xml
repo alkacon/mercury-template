@@ -32,6 +32,9 @@
       <IncludeName><![CDATA[textDisplay.navigation]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[metaLinks.navigation]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showSearch.navigation]]></IncludeName>
     </Setting>
   </NewFormatter>

@@ -148,7 +148,7 @@
         </c:if>
     </c:forEach>
 
-</c:otherwise>
+</c:when>
 </c:choose>
 
 <c:choose>

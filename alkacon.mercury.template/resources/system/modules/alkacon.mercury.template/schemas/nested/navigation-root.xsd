@@ -2,6 +2,7 @@
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/navigation-collection.xsd"/>
 
     <xsd:element name="NavigationRootData" type="OpenCmsNavigationRootData"/>
 
@@ -15,6 +16,7 @@
         <xsd:choice>
             <xsd:element name="NavStartLevel" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="NavFolder" type="OpenCmsVfsFile" minOccurs="0" />
+            <xsd:element name="NavCollection" type="OpenCmsNavCollection" minOccurs="0" />
         </xsd:choice>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -46,6 +48,11 @@
                     <Widget>file</Widget>
                     <Search>false</Search>
                     <Display>wide</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>NavCollection</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Navigation.NavCollection)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Navigation.NavCollection.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

@@ -29,15 +29,14 @@
             type="${breadcrumbsFromRoot ? 'rootBreadCrumb' : 'breadCrumb'}"
             content="${content}"
             currentPageFolder="${currentPageFolder}"
-            currentPageUri="${currentPageUri}"
-            var="nav">
+            currentPageUri="${currentPageUri}" >
 
             <ul class="nav-breadcrumbs"><%----%>
                 <mercury:nl />
-                <c:set var="navItems" value="" />
+                <c:set var="breadCrumbs" value="" />
                 <c:set var="currNavPos" value="1" />
 
-                <c:forEach items="${nav.items}" var="navElem" varStatus="status">
+                <c:forEach var="navElem" items="${navItems}" varStatus="status">
                     <c:if test="${(breadcrumbsIncludeHidden and (navElem.navPosition > 0)) or (navElem.info != 'ignoreInDefaultNav')}">
                         <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
                             ? navElem.title : navElem.navText}" />
@@ -48,8 +47,8 @@
                             <c:out value='${navText}' escapeXml="true" />
                             <c:out value='</a></li>' escapeXml="false" />
 
-                            <c:set var="navItems"><c:out value="${navItems}" escapeXml="false" />
-                                <c:if test="${not empty navItems}">,</c:if>{<%--
+                            <c:set var="breadCrumbs"><c:out value="${breadCrumbs}" escapeXml="false" />
+                                <c:if test="${not empty breadCrumbs}">,</c:if>{<%--
                                 --%>"@type": "ListItem",<%--
                                 --%>"position": <c:out value="${currNavPos}" />,<%--
                                 --%>"item": { <%-->
@@ -71,8 +70,8 @@
                     <c:out value='${navText}' escapeXml="true" />
                     <c:out value='</a></li>' escapeXml="false" />
 
-                    <c:set var="navItems"><c:out value="${navItems}" escapeXml="false" />
-                        <c:if test="${not empty navItems}">,</c:if>{<%--
+                    <c:set var="breadCrumbs"><c:out value="${breadCrumbs}" escapeXml="false" />
+                        <c:if test="${not empty breadCrumbs}">,</c:if>{<%--
                         --%>"@type": "ListItem",<%--
                         --%>"position": <c:out value="${currNavPos}" />,<%--
                         --%>"item": { <%-->
@@ -83,18 +82,18 @@
                 --%></c:set>
                 </c:if>
 
-                <c:if test="${(empty navItems and hidebreadcrumbtitle) or cms.modelGroupPage}">
+                <c:if test="${(empty breadCrumbs and hidebreadcrumbtitle) or cms.modelGroupPage}">
                     <li><mercury:meta-title addIntro="${true}" /></li><%----%>
                 </c:if>
             </ul><%----%>
             <mercury:nl />
 
-            <c:if test="${not empty navItems}">
+            <c:if test="${not empty breadCrumbs}">
                 <script type="application/ld+json">{<%--
                     --%>"@context": "http://schema.org",<%--
                     --%>"@type": "BreadcrumbList",<%--
                     --%>"itemListElement": [<%--
-                        --%><c:out value="${navItems}" escapeXml="false" /><%--
+                        --%><c:out value="${breadCrumbs}" escapeXml="false" /><%--
                     --%>]<%--
                 --%>}<%--
             --%></script><%----%>

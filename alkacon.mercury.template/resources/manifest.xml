@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.26</version>
+		<version>11.0.1.28</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6014,6 +6014,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Nexted XSD for optional navigation code]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/navigation-collection.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/navigation-collection.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>52984515-047f-11ea-9e8a-0242ac11002b</uuidstructure>
+			<uuidresource>52984516-047f-11ea-9e8a-0242ac11002b</uuidresource>
+			<datecreated>Mon, 11 Nov 2019 12:32:28 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for navigation collection]]></value>
 				</property>
 			</properties>
 			<relations/>

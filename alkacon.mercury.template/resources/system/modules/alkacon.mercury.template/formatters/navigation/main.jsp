@@ -21,7 +21,7 @@
 <c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
 <c:set var="showSearch"                 value="${setting.showSearch.useDefault(true).toBoolean}" />
 <c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
-<c:set var="metaLinks"               value="${setting.metaLinks.useDefault('top').toString}" />
+<c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
 
 <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
 <c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
@@ -39,8 +39,7 @@
         type="forSite"
         content="${content}"
         currentPageFolder="${currentPageFolder}"
-        currentPageUri="${currentPageUri}"
-        var="nav"><%----%>
+        currentPageUri="${currentPageUri}">
 
         <c:if test="${not empty logoImage}">
             <div class="nav-main-mobile-logo"><%----%>
@@ -79,11 +78,11 @@
             ${metaLinksHtml}
         </c:if>
 
-        <c:set var="navLength" value="${fn:length(nav.items) - 1}" />
+        <c:set var="navLength" value="${empty navItems ? 0 : fn:length(navItems) - 1}" />
         <c:forEach var="i" begin="0" end="${navLength}" >
 
-            <c:set var="navElem" value="${nav.items[i]}" />
-            <c:set var="nextLevel" value="${i < navLength ? nav.items[i+1].navTreeLevel : navStartLevel}" />
+            <c:set var="navElem" value="${navItems[i]}" />
+            <c:set var="nextLevel" value="${i < navLength ? navItems[i+1].navTreeLevel : navStartLevel}" />
             <c:set var="startSubMenu" value="${nextLevel > navElem.navTreeLevel}" />
             <c:set var="isTopLevel" value="${navElem.navTreeLevel eq navStartLevel}" />
             <c:set var="nextIsTopLevel" value="${nextLevel eq navStartLevel}" />

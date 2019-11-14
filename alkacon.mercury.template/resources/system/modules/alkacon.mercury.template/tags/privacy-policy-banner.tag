@@ -26,6 +26,8 @@
 <c:set var="policyfile" value="${empty contentPropertiesSearch['mercury.privacy.policy'] ? 'none' : contentPropertiesSearch['mercury.privacy.policy']}" />
 
 <c:if test="${not empty policyfile and policyfile ne 'none'}">
+
+<c:set var="policyfile" value="${fn:startsWith(policyfile, '/') ? policyfile : cms.subSitePath.concat('.content/').concat(policyfile)}" />
 <c:set var="policyfileBase64"><mercury:obfuscate text="${policyfile}" type="base64"/></c:set>
 <c:set var="uriBase64"><mercury:obfuscate text="${contentUri}" type="base64"/></c:set>
 
@@ -45,6 +47,7 @@
     </div><%----%>
 </noscript><%----%>
 <mercury:nl />
+
 </c:if>
 
 </cms:bundle>

@@ -23,6 +23,14 @@
     description="Enables advanced direct edit for the generated content.
     Default is 'false' if not provided." %>
 
+<%@ attribute name="width" type="java.lang.Integer" required="false"
+    description="Width of the target image set in the generated img tag.
+    Will overwrite the width read from the image file." %>
+
+<%@ attribute name="height" type="java.lang.Integer" required="false"
+    description="Height of the target image set in the generated img tag.
+    Will overwrite the height read from the image file." %>
+
 <%-- ####### These variables are actually set in the mercury:image-vars tag included ####### --%>
 <%@ variable name-given="imageBean" declare="true" variable-class="org.opencms.jsp.util.CmsJspImageBean" %>
 <%@ variable name-given="imageLink" declare="true" %>
@@ -51,8 +59,8 @@
 <c:if test="${not empty imageBean}">
 
     <img src="${imageUrl}" <%--
-    --%><c:if test="${not empty imageWidth}">${' '}width="${imageWidth}"</c:if>
-        <c:if test="${not empty imageHeight}">${' '}height="${imageHeight}"</c:if>
+    --%><c:if test="${not empty width or not empty imageWidth}">${' '}width="${empty width ? imageWidth : width}"</c:if>
+        <c:if test="${not empty height or not empty imageHeight}">${' '}height="${empty height ? imageHeight : height}"</c:if>
         <c:if test="${not empty cssImage}">${' '}class="${cssImage}"</c:if>
         <c:if test="${not empty imageTitle}">${' '}alt="${imageTitle}"</c:if>
         <c:if test="${not empty imageTitleCopyright and (imageTitleCopyright ne imageTitle)}">${' '}title="${imageTitleCopyright}"</c:if><%--

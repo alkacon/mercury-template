@@ -37,7 +37,7 @@
                 <c:set var="currNavPos" value="1" />
 
                 <c:forEach var="navElem" items="${navItems}" varStatus="status">
-                    <c:if test="${(breadcrumbsIncludeHidden and (navElem.navPosition > 0)) or (navElem.info != 'ignoreInDefaultNav')}">
+                    <c:if test="${(breadcrumbsIncludeHidden and (navElem.navPosition > 0)) or (navElem.info ne 'ignoreInDefaultNav')}">
                         <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
                             ? navElem.title : navElem.navText}" />
                         <c:if test="${!empty navText}">

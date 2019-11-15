@@ -92,10 +92,10 @@ SVG placeholder image, background image and image sizing
 <c:set var="isSvg" value="${fn:endsWith(ib.vfsUri, '.svg')}" />
 <c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not caseDynamicListNoscript and not isSvg}" />
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
-
-<c:set var="DEBUG" value="${false}" />
-
 <c:set var="useSizes" value="${not empty sizes}" />
+
+<%-- ###### Enable / disable output for debug purposes if required by setting test="${true}" ###### --%>
+<c:set var="DEBUG" value="${false}" />
 
 <c:if test="${DEBUG}">
     <!-- isSvg=${isSvg} useSizes=${useSizes} useLazyLoading=${useLazyLoading} useSrcSet=${useSrcSet} useNoScript=${useNoScript} -->
@@ -157,7 +157,9 @@ SVG placeholder image, background image and image sizing
     <jsp:setProperty name="bb" property="cssArray" value="${paramValues.cssgrid}" />
 
     <c:if test="${DEBUG}">
-        <!-- fullwidth=${fullwidth == true} -->
+        <!-- fullwidth=${fullwidth eq true} -->
+        <!-- maxScaledWidth=${maxScaledWidth} -->
+        <!-- ib.scaler.width=${ib.scaler.width} -->
         <c:forEach var="grid" items="${paramValues.cssgrid}">
             <!-- grid: ${grid}  -->
         </c:forEach>
@@ -185,7 +187,7 @@ SVG placeholder image, background image and image sizing
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXs]}" />
         </c:if>
         <c:if test="${bb.sizeSm > -1}">
-            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2* bb.sizeSm]}" />
+            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeSm]}" />
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeSm]}" />
         </c:if>
         <c:if test="${bb.sizeMd > -1}">
@@ -197,6 +199,19 @@ SVG placeholder image, background image and image sizing
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeLg]}" />
         </c:if>
         <c:if test="${bb.sizeXl > -1}">
+            <c:if test="${fullwidth and empty ib.getSrcSetMap()}">
+                <%-- Add size variations to avoid offering only one very large image for full screen backgrounds --%>
+                <%-- This is optimized for a maxScaledWidth of 2000 --%>
+                <c:if test="${ib.scaler.width > 1500}">
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[1400]}" />
+                    <c:if test="${ib.scaler.width > 1700}">
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[1600]}" />
+                        <c:if test="${ib.scaler.width > 1900}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[1800]}" />
+                        </c:if>
+                    </c:if>
+                </c:if>
+            </c:if>
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXl]}" />
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXl]}" />
         </c:if>
@@ -214,7 +229,6 @@ SVG placeholder image, background image and image sizing
     </c:if>
 
     <c:if test="${DEBUG}">
-        <%-- ###### Enable / disable output for debug purposes if required by setting test="${true}" ###### --%>
         <c:set var="attrImage">${attrImage} data-grid-classes="${bb.css}" data-grid-size="${bb}"</c:set>
     </c:if>
 

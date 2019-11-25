@@ -57,19 +57,19 @@
     </HeadIncludeCss>
     <HeadIncludeJs>
       <JavascriptLink>
-        <link type="WEAK">
+        <link internal="true" type="WEAK">
           <target><![CDATA[/handleStatic/gwt/ugc/ugc.nocache.js]]></target>
           <uuid>00000000-0000-0000-0000-000000000000</uuid>
         </link>
       </JavascriptLink>
       <JavascriptLink>
-        <link type="WEAK">
+        <link internal="true" type="WEAK">
           <target><![CDATA[/handleStatic/ugc/ugc-jquery.js]]></target>
           <uuid>00000000-0000-0000-0000-000000000000</uuid>
         </link>
       </JavascriptLink>
       <JavascriptLink>
-        <link type="WEAK">
+        <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/resources/js/ugc-article.js]]></target>
           <uuid>d30c6472-731b-4bf9-bd65-e7a9871b0c88</uuid>
         </link>

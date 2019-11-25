@@ -26,6 +26,10 @@
     description="Enables advanced direct edit for the generated content.
     Default is 'false' if not provided." %>
 
+<%@ attribute name="noScript" type="java.lang.Boolean" required="false"
+    description="Generate noscript tags for lazy loading images or not?
+    Default is 'true'." %>
+
 <%@ attribute name="showImageZoom" type="java.lang.Boolean" required="false"
     description="Enables a zoom option for the image." %>
 
@@ -105,6 +109,7 @@
             attrImage="${attrImage}"
             attrWrapper="${imageDndAttr}"
             zoomData="${zoomData}"
+            noScript="${noScript}"
         />
         <%-- ####### JSP body inserted here ######## --%>
         <jsp:doBody/>

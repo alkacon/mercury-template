@@ -47,7 +47,7 @@
                     <Widget>string</Widget>
                     <RuleRegex>[0-9]*</RuleRegex>
                     <RuleType>error</RuleType>
-                    <Error><![CDATA[%(key.msg.error.navigation.onlynumbers)]]></Error>
+                    <Error><![CDATA[%(key.msg.error.needPositiveNumber)]]></Error>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
@@ -57,7 +57,7 @@
                     <Widget>string</Widget>
                     <RuleRegex>[0-9]*</RuleRegex>
                     <RuleType>error</RuleType>
-                    <Error><![CDATA[%(key.msg.error.navigation.onlynumbers)]]></Error>
+                    <Error><![CDATA[%(key.msg.error.needPositiveNumber)]]></Error>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

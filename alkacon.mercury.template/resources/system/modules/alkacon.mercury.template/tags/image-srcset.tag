@@ -33,7 +33,8 @@
     description="Use lazy loading or not?"%>
 
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
-    description="Generate noscript tags for lazy loading images or not?"%>
+    description="Generate noscript tags for lazy loading images or not?
+    Default is 'true'." %>
 
 <%@ attribute name="cssImage" type="java.lang.String" required="false"
     description="'class' atttribute to set directly on the generated img tag."%>

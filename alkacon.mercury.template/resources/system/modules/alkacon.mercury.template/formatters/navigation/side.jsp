@@ -44,8 +44,20 @@
             <c:set var="nextLevel" value="${i < navLength ? navItems[i+1].navTreeLevel : navStartLevel}" />
             <c:set var="startSubMenu" value="${nextLevel > navElem.navTreeLevel}" />
             <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
-            <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
-            <c:set var="navTarget" value="${fn:trim(navElem.info)eq 'extern' ? ' target=\"_blank\"' : ''}" />
+            <c:set var="navTarget" value="${fn:trim(navElem.info) eq 'extern' ? ' target=\"_blank\"' : ''}" />
+
+            <c:if test="${navElem.navigationLevel}">
+                <c:set var="lastNavLevel" value="${navElem}" />
+            </c:if>
+
+            <c:choose>
+                <c:when test="${(not empty lastNavLevel) and fn:startsWith(navElem.info, '#')}">
+                    <c:set var="navLink"><cms:link>${lastNavLevel.resourceName}${navElem.info}</cms:link></c:set>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
+                </c:otherwise>
+            </c:choose>
 
             <c:if test="${startSubMenu}">
                 <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>

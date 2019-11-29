@@ -111,20 +111,21 @@
 <%-- This IS a collation of different navigation start folders --%>
 <%-- Only the "forSite" type is supported here --%>
 
+    <c:set var="navStartLevel" value="${0}" />
     <c:set var="navItems" value="${cms:createList()}" />
     <c:forEach var="navCollectionFolder" items="${content.value.Root.value.NavCollection.valueList.NavCollectionFolder}">
 
         <c:set var="navTopFolder" value="${navCollectionFolder.toResource}" />
         <c:if test="${not empty navTopFolder}">
             <c:set var="pathparts" value="${fn:split(navTopFolder.sitePath, '/')}" />
-            <c:set var="navStartLevel">${fn:length(pathparts)}</c:set>
-            <c:set var="endLevel" value="${navStartLevel + navDepth - 1}" />
+            <c:set var="startLevel">${fn:length(pathparts)}</c:set>
+            <c:set var="endLevel" value="${startLevel + navDepth - 1}" />
 
             <%-- Generate site navigation for the folder --%>
             <cms:navigation
                 type="forSite"
                 resource="${navTopFolder.sitePath}"
-                startLevel="${navStartLevel}"
+                startLevel="${startLevel}"
                 endLevel="${endLevel}"
                 locale="${cms.locale}"
                 param="true"
@@ -133,12 +134,12 @@
 
             <%-- Add the folder itself  --%>
             <c:set var="navElem" value="${navTopFolder.navigation}" />
-            <c:set var="ignore" value="${navElem.setNavTreeLevel(0)}" />
+            <c:set var="ignore" value="${navElem.setNavTreeLevel(navStartLevel)}" />
             <c:set var="ignore" value="${navItems.add(navElem)}" />
 
             <c:set var="navLength" value="${fn:length(navFolderItems) - 1}" />
             <c:if test="${navLength > 0}">
-                <c:set var="navTreeLevelOffset" value="${navFolderItems[0].navTreeLevel - 1}" />
+                <c:set var="navTreeLevelOffset" value="${navFolderItems[0].navTreeLevel - (navStartLevel + 1)}" />
                 <c:forEach var="i" begin="0" end="${navLength}" >
                     <c:set var="navElem" value="${navFolderItems[i]}" />
                     <c:set var="ignore" value="${navElem.setNavTreeLevel(navElem.navTreeLevel - navTreeLevelOffset)}" />

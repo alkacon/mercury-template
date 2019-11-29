@@ -126,7 +126,7 @@
         <c:set var="addButtonDiv" value="${true}" />
         <c:set var="pieceLayout" value="${1}"/>
         <c:set var="sizeDesktop" value="${12}" />
-        <c:set var="sizeMobile" value="${7}" />
+        <c:set var="sizeMobile" value="${12}" />
     </c:when>
     <c:when test="${teaserType eq 'teaser-compact'}">
         <c:set var="hideImage"  value="${true}"/>

@@ -13,8 +13,9 @@
 <cms:formatter var="content" val="value">
 
 <c:set var="variant"            value="${value.Variant}" />
-<c:set var="cssWrapper"         value="${cms.element.setting.cssWrapper.isSet ? ' '.concat(cms.element.settings.cssWrapper) : null}" />
 <c:set var="detailContainer"    value="${cms.element.settings.detailContainer}" />
+<c:set var="cssWrapper"         value="${cms.element.setting.cssWrapper.isSet ? ' '.concat(cms.element.settings.cssWrapper) : ''}" />
+<c:set var="reverseOrder"       value="${cms.element.setting.containerOrder.toString eq 'reversed'}" />
 
 <jsp:useBean id="valueMap"      class="java.util.HashMap" />
 <jsp:useBean id="params"        class="java.util.HashMap" />
@@ -40,8 +41,8 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-9${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-3 col-side order-lg-first${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-3 col-side ${colCss}${reverseOrder ? ' order-first' : ' order-lg-first'}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
         </div><%----%>
@@ -54,8 +55,8 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-8${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4 col-side order-lg-first${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4 col-side ${colCss}${reverseOrder ? ' order-first' : ' order-lg-first'}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
         </div><%----%>
@@ -82,6 +83,7 @@
             <c:set target="${valueMap}" property="Css"          value="col-md-6${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-md-6${colCss}${reverseOrder ? ' order-first order-md-last' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
         </div><%----%>
@@ -95,6 +97,7 @@
             <c:set target="${valueMap}" property="Css"          value="col-lg-6${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-6${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
         </div><%----%>
@@ -107,8 +110,8 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-9${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-3 col-side${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-3 col-side${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
         </div><%----%>
@@ -122,8 +125,8 @@
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
             <c:set target="${valueMap}" property="Css"          value="col-lg-8${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4 col-side${colCss}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4 col-side${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <mercury:nl />
         </div>
@@ -134,11 +137,13 @@
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="element"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}" />
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-last order-lg-first' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol1"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
             <mercury:nl />
         </div><%----%>
@@ -149,13 +154,16 @@
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="element"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
-            <c:set target="${valueMap}" property="Css"          value="col-md-6 col-lg-3${colCss}" />
+            <c:set target="${valueMap}" property="Css"          value="col-md-6 col-lg-3${colCss}${reverseOrder ? ' order-4 order-md-3 order-lg-1' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-md-6 col-lg-3${colCss}${reverseOrder ? ' order-3 order-md-4 order-lg-2' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol1"/>
+            <c:set target="${valueMap}" property="Css"          value="col-md-6 col-lg-3${colCss}${reverseOrder ? ' order-2 order-md-1 order-lg-3' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol2"/>
+            <c:set target="${valueMap}" property="Css"          value="col-md-6 col-lg-3${colCss}${reverseOrder ? ' order-1 order-md-2 order-lg-4' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol2'}" />
             <mercury:nl />
         </div><%----%>
@@ -166,17 +174,22 @@
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="element"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
-            <c:set target="${valueMap}" property="Css"          value="col-6 col-md-4 col-xl-2${colCss}" />
+            <c:set target="${valueMap}" property="Css"          value="col-6 col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-5 order-md-4 order-xl-1' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-6 col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-6 order-md-5 order-xl-2' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol1"/>
+            <c:set target="${valueMap}" property="Css"          value="col-6 col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-3 order-md-6 order-xl-3' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol2"/>
+            <c:set target="${valueMap}" property="Css"          value="col-6 col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-4 order-md-1 order-xl-4' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol2'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol3"/>
+            <c:set target="${valueMap}" property="Css"          value="col-6 col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-1 order-md-2 order-xl-5' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol3'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol4"/>
+            <c:set target="${valueMap}" property="Css"          value="col-6 col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-2 order-md-3 order-xl-6' : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol4'}" />
             <mercury:nl />
         </div><%----%>

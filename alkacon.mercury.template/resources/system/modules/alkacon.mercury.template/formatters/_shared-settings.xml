@@ -2262,6 +2262,19 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[containerOrder.layout]]></IncludeName>
+      <PropertyName><![CDATA[containerOrder]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.containerOrder)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.containerOrder.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(stringtemplate:showContainerOrder)]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                                       %(key.msg.setting.containerOrder.default)|
+            reversed:                                   %(key.msg.setting.containerOrder.reversed)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[useFlex.layout]]></IncludeName>
       <PropertyName><![CDATA[useFlex]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.useFlex)]]></DisplayName>

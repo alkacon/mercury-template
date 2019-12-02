@@ -134,7 +134,14 @@ function render(imageSeries, page) {
         var imageHtml = imageSeries.template.replace("%(index)", image.index);
         for (var property in image) {
             if (image.hasOwnProperty(property)) {
-                imageHtml = imageHtml.split("%(" + property + ")").join(decodeURIComponent(image[property]));
+                var decodedProperty = null;
+                if (property != "title") {
+                    // title property has already been decoded
+                    decodedProperty = decodeURIComponent(image[property]);
+                } else {
+                    decodedProperty = image[property];
+                }
+                imageHtml = imageHtml.split("%(" + property + ")").join(decodedProperty);
             }
         }
         // create DOM object from String

@@ -34,7 +34,7 @@
                     <DisplayName><![CDATA[%(key.label.MapCoord.Address)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MapCoord.Address.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>4</WidgetConfig>
+                    <WidgetConfig>4|proportional</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>MarkerGroup</PropertyName>

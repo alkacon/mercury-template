@@ -61,11 +61,13 @@
     <c:forEach var="poi" items="${content.valueList.MapPoi}" varStatus="status">
         <mercury:location-data data="${poi.value.PoiLink}" addMapInfo="true" >
 
-            <c:set var="markerGroup" value="${poi.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(poi.value.MarkerGroup)}" />
-            <c:set target="${markerGroups}" property="${markerGroup}" value="used"/>
+            <c:if test="${not empty locData}">
+                <c:set var="markerGroup" value="${poi.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(poi.value.MarkerGroup)}" />
+                <c:set target="${markerGroups}" property="${markerGroup}" value="used"/>
 
-            <c:set target="${locData}" property="group" value="${markerGroup}" />
-            ${cms:addToList(markerList, locData)}
+                <c:set target="${locData}" property="group" value="${markerGroup}" />
+                ${cms:addToList(markerList, locData)}
+            </c:if>
 
         </mercury:location-data>
     </c:forEach>

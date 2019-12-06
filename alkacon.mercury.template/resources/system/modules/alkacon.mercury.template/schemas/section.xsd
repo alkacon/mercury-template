@@ -32,7 +32,11 @@
             <editorchangehandlers>
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Image*/Image"
+                    scope="Image/Image"
+                    configuration="Title|../Title" />
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image/Image"
                     configuration="Copyright|../Copyright" />
             </editorchangehandlers>
             <FieldSettings>
@@ -56,9 +60,21 @@
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>Image/Image</PropertyName>
+                    <Relation>
+                        <Invalidate>parent</Invalidate>
+                    </Relation>
+                </Setting>
+                <Setting>
                     <PropertyName>Link</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Link)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Link.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Link/URI</PropertyName>
+                    <Relation>
+                        <Invalidate>parent</Invalidate>
+                    </Relation>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

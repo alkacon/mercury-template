@@ -42,6 +42,7 @@
                     <DisplayName><![CDATA[%(key.label.NewWindow)]]></DisplayName>
                     <Description><![CDATA[%(key.label.NewWindow.help)]]></Description>
                     <Widget>checkbox</Widget>
+                    <Display>singleline</Display>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

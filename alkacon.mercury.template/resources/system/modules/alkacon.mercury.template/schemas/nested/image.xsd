@@ -29,12 +29,14 @@
                     <Widget>imagegallery</Widget>
                     <WidgetConfig>{useformat:true}</WidgetConfig>
                     <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>Title</PropertyName>
                     <DisplayName><![CDATA[%(key.label.NestedImage.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.NestedImage.Title.help)]]></Description>
                     <Widget>string</Widget>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>Copyright</PropertyName>
@@ -42,6 +44,7 @@
                     <Description><![CDATA[%(key.label.Copyright.help)]]></Description>
                     <Widget>string</Widget>
                     <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

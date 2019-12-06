@@ -36,6 +36,7 @@
                     <Widget>imagegallery</Widget>
                     <WidgetConfig>{ useformat:true }</WidgetConfig>
                     <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>Link</PropertyName>
@@ -43,30 +44,35 @@
                     <Description><![CDATA[%(key.label.Link.help)]]></Description>
                     <Widget>file</Widget>
                     <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>NewWin</PropertyName>
                     <DisplayName><![CDATA[%(key.label.NewWindow)]]></DisplayName>
                     <Description><![CDATA[%(key.label.NewWindow.help)]]></Description>
                     <Widget>checkbox</Widget>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>SuperTitle</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImage.SuperTitle)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.SuperTitle.help)]]></Description>
                     <Widget>string</Widget>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>TitleLine1</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImage.TitleLine1)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.TitleLine1.help)]]></Description>
                     <Widget>string</Widget>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>TitleLine2</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImage.TitleLine2)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.TitleLine2.help)]]></Description>
                     <Widget>string</Widget>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>Copyright</PropertyName>
@@ -74,6 +80,7 @@
                     <Description><![CDATA[%(key.label.Copyright.help)]]></Description>
                     <Widget>string</Widget>
                     <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>Position</PropertyName>

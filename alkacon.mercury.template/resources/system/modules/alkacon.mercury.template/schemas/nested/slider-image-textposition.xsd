@@ -33,6 +33,7 @@
                         top:%(key.msg.option.slider.pos.top)
                     ]]></WidgetConfig>
                     <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>Left</PropertyName>
@@ -46,6 +47,7 @@
                         left:%(key.msg.option.slider.pos.left)
                     ]]></WidgetConfig>
                     <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

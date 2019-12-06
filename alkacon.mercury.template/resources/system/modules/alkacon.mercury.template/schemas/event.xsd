@@ -65,10 +65,18 @@
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
                     scope="Image/Image"
+                    configuration="Title|../Title" />
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image/Image"
                     configuration="Copyright|../Copyright" />
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Paragraph*/Image*/Image"
+                    scope="Paragraph*/Image/Image"
+                    configuration="Title|../Title" />
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Paragraph*/Image/Image"
                     configuration="Copyright|../Copyright" />
             </editorchangehandlers>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
@@ -124,6 +132,12 @@
                     <PropertyName>Image</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image/Image</PropertyName>
+                    <Relation>
+                        <Invalidate>parent</Invalidate>
+                    </Relation>
                 </Setting>
                 <Setting>
                     <PropertyName>Dates</PropertyName>

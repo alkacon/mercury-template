@@ -21,7 +21,7 @@
             <xsd:element name="TextColor" type="OpenCmsColor" minOccurs="0" />
             <xsd:element name="TextBackgroundColor" type="OpenCmsColor" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="Image" type="OpenCmsSliderImage" minOccurs="1" maxOccurs="20" />
+            <xsd:element name="Image" type="OpenCmsSliderImage" minOccurs="0" maxOccurs="20" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
     </xsd:complexType>
@@ -36,6 +36,10 @@
                 <tab element="Image" collapse="false" name="%(key.tab.Images)" />
             </tabs>
             <editorchangehandlers>
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Image*/Uri"
+                    configuration="Title|../SuperTitle" />
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
                     scope="Image*/Uri"

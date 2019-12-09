@@ -52,7 +52,7 @@
       <IncludeName><![CDATA[linkOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>

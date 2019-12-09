@@ -651,13 +651,13 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
       <PropertyName><![CDATA[showImageCopyright]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showImageCopyright)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.showImageCopyright.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[false]]></Default>
+      <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>

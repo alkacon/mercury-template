@@ -56,7 +56,7 @@
       <IncludeName><![CDATA[textColorSub.slider]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showArrows.true]]></IncludeName>

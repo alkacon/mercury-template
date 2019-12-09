@@ -34,7 +34,7 @@
       <IncludeName><![CDATA[hsize.element]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

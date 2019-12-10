@@ -23,7 +23,7 @@
 <head>
 
 <%-- Special CSS in case JavaScript is disabled --%>
-<noscript><style>html.noscript .hide-noscript { display: none; }</style></noscript>
+<noscript><style>html.noscript .hide-noscript { display: none !important; }</style></noscript>
 
 <script>
 <%-- Static JavaScript that provides a 'mercury.ready()' method for additional scripts --%>

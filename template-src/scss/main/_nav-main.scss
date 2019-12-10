@@ -431,6 +431,7 @@
     }
 
     html.noscript #nav-toggle-check:checked ~ #nav-toggle-group,
+    html.noscript #nav-toggle-check:checked ~ .header-group #nav-toggle-group,
     html.active-nav .area-header {
         .head-overlay {
             width: 100vw;

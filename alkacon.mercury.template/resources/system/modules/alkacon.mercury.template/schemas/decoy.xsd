@@ -92,12 +92,6 @@
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>Image/Image</PropertyName>
-                    <Relation>
-                        <Invalidate>parent</Invalidate>
-                    </Relation>
-                </Setting>
-                <Setting>
                     <PropertyName>Category</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Category)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Category.help)]]></Description>

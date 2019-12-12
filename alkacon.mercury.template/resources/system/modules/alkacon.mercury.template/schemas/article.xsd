@@ -99,12 +99,6 @@
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>Image/Image</PropertyName>
-                    <Relation>
-                        <Invalidate>parent</Invalidate>
-                    </Relation>
-                </Setting>
-                <Setting>
                     <PropertyName>Date</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Date)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Date.help)]]></Description>

@@ -34,6 +34,7 @@
                     <DisplayName><![CDATA[%(key.label.NestedLink.URI)]]></DisplayName>
                     <Description><![CDATA[%(key.label.NestedLink.URI.help)]]></Description>
                     <Widget>file</Widget>
+                    <IfInvalidRelation>removeParent</IfInvalidRelation>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

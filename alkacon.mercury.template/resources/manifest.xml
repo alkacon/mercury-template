@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.44</version>
+		<version>11.0.1.45</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6003,23 +6003,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/schemas/nested/navcode.xsd</source>
-			<destination>system/modules/alkacon.mercury.template/schemas/nested/navcode.xsd</destination>
-			<type>plain</type>
-			<uuidstructure>d276c9a7-fdd6-4d70-95bc-7dd714b8ae14</uuidstructure>
-			<uuidresource>a37689e1-a37d-4120-a39d-52eec3dea111</uuidresource>
-			<datecreated>Tue, 15 Jan 2019 12:32:40 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Nexted XSD for optional navigation code]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/navigation-collection.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/navigation-collection.xsd</destination>
 			<type>plain</type>
@@ -6048,23 +6031,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Nested XSD for navigation root]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/schemas/nested/navlogo.xsd</source>
-			<destination>system/modules/alkacon.mercury.template/schemas/nested/navlogo.xsd</destination>
-			<type>plain</type>
-			<uuidstructure>71e91596-bfbb-4b4d-92cd-2b8244a2c340</uuidstructure>
-			<uuidresource>a85ccdd3-6480-4cac-b857-34e23b101068</uuidresource>
-			<datecreated>Tue, 15 Jan 2019 12:32:40 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Nexted XSD for optional navigation logo]]></value>
 				</property>
 			</properties>
 			<relations/>

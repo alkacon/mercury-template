@@ -27,6 +27,7 @@
                     <Description><![CDATA[%(key.label.PoiLink.help)]]></Description>
                     <Widget>file</Widget>
                     <WidgetConfig>selectabletypes=m-poi</WidgetConfig>
+                    <IfInvalidRelation>removeParent</IfInvalidRelation>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

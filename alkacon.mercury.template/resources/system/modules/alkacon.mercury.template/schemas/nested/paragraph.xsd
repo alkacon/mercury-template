@@ -46,12 +46,6 @@
                     <Description><![CDATA[%(key.label.Image.Paragraph.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>Image/Image</PropertyName>
-                    <Relation>
-                        <Invalidate>parent</Invalidate>
-                    </Relation>
-                </Setting>
-                <Setting>
                     <PropertyName>Link</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Link)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Link.Paragraph.help)]]></Description>

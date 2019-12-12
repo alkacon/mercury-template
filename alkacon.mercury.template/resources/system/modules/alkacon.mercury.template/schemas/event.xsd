@@ -134,12 +134,6 @@
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>Image/Image</PropertyName>
-                    <Relation>
-                        <Invalidate>parent</Invalidate>
-                    </Relation>
-                </Setting>
-                <Setting>
                     <PropertyName>Dates</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Event.Dates)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Event.Dates.help)]]></Description>

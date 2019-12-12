@@ -117,12 +117,6 @@
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>Image/Image</PropertyName>
-                    <Relation>
-                        <Invalidate>parent</Invalidate>
-                    </Relation>
-                </Setting>
-                <Setting>
                     <PropertyName>Contact</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Contact.Contact)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Contact.help)]]></Description>

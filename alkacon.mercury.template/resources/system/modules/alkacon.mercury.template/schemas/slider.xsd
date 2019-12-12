@@ -21,7 +21,7 @@
             <xsd:element name="TextColor" type="OpenCmsColor" minOccurs="0" />
             <xsd:element name="TextBackgroundColor" type="OpenCmsColor" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="Image" type="OpenCmsSliderImage" minOccurs="0" maxOccurs="20" />
+            <xsd:element name="Image" type="OpenCmsSliderImage" maxOccurs="100" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
     </xsd:complexType>

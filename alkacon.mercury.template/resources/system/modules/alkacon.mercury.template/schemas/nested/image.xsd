@@ -28,6 +28,7 @@
                     <Description><![CDATA[%(key.label.NestedImage.Image.help)]]></Description>
                     <Widget>imagegallery</Widget>
                     <WidgetConfig>{useformat:true}</WidgetConfig>
+                    <IfInvalidRelation>removeParent</IfInvalidRelation>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

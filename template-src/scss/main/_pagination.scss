@@ -112,7 +112,7 @@
     > li > a,
     > li.active > a {
         &:hover {
-        @include pagination-item-hover;
+            @include pagination-item-hover;
         }
     }
 
@@ -131,7 +131,7 @@
 
 // Colored pagination
 
-@each $type-name, $bg-color, $highlight-color in $bg-colors {
+@each $type-name, $bg-color, $highlight-color in $pagination-colors {
 
     .color-#{""+$type-name} {
         // list pagination

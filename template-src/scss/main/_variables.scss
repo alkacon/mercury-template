@@ -29,13 +29,13 @@ $grey-dark:                         #888 !default;
 $black:                             #000 !default;
 
 // Colors to be used for backgrounds
-// This  is a list of lists in the following format:
+// This is a list of lists in the following format:
 // (
 //    name          bg-color        highlight-color
 //   ("red",        $color-red,     $color-orange)
 // )
 // highlight-color is used in case the _background_ changes on hover
-// this is e.g. the case in the sitemap, pagination, tabs and accordions
+// this is e.g. the case for colored buttons, in the sitemap, pagination, tabs and accordions
 
 $bg-colors:                         () !default;
 
@@ -275,11 +275,11 @@ $btn-dark-text:                     $text-dark !default;
 $btn-text-transform:                none !default;
 $btn-border-style:                  none !default;
 $btn-min-width:                     0 !default;
-$btn-colors:                        $bg-colors !default;
 $btn-line-height:                   $target-line-height !default;
 $btn-font-size:                     $font-size-base !default;
 $btn-lg-font-size:                  1.8rem !default;
 $btn-xs-font-size:                  1.2rem !default;
+$btn-colors:                        $bg-colors !default;
 
 
 // Content sections
@@ -503,6 +503,7 @@ $pagination-background-color:       $body-bg !default;
 $pagination-hover-color:            $main-theme-hover !default;
 $pagination-active-color:           $main-theme !default;
 $pagination-margin:                 0 !default;
+$pagination-colors:                 $bg-colors !default;
 
 $list-teaser-margin:                2 * $default-margin !default;
 $list-teaser-margin-compact:        $default-margin !default;
@@ -529,6 +530,7 @@ $calendar-sheet-bgcolor:            $grey-lighter !default;
 $calendar-sheet-border:             $grey-light !default;
 $calendar-sheet-border-radius:      $default-border-radius !default;
 $calendar-sheet-margin:             10% !default;
+$calendar-sheet-colors:             $bg-colors !default;
 
 
 // Contacts
@@ -542,6 +544,7 @@ $tab-text-transform:                none !default;
 $tab-header-font-size:              $h4-font-size !default;
 $tab-header-line-height:            $h4-font-size * 1.2 !default;
 $tab-border-radius:                 $default-border-radius !default;
+$tab-colors:                        $bg-colors !default;
 
 $accordion-text-transform:          none !default;
 $accordion-border-color:            $grey-light !default;
@@ -555,6 +558,7 @@ $accordion-header-font-size-md:     $h4-font-size !default;
 $accordion-header-line-height:      1.2 !default;
 $accordion-toggle-arrows:           true !default;
 $accordion-border-radius:           $default-border-radius !default;
+$accordion-colors:                  $tab-colors !default;
 
 
 // Slider
@@ -656,6 +660,7 @@ $sitemap-hor-padding:               1rem !default;
 $sitemap-border-radius:             $btn-border-radius !default;
 $sitemap-font-size:                 $font-size-base !default;
 $sitemap-line-height:               $font-size-base * 1.2 !default;
+$sitemap-colors:                    $bg-colors !default;
 
 
 // Social network colors
@@ -785,11 +790,11 @@ $border-sizes:                      () !default;
 $border-radiuses:                   () !default;
 $border-positions:                  () !default;
 $border-styles:                     () !default;
-
-$images-sizes:                      () !default;
+$border-colors:                     $bg-colors !default;
 
 // Further variables used by generics
 $box-padding:                       20px !default;
+$box-colors:                        $bg-colors !default;
 
 // Spaces used for margins and paddings
 $margins:                           (0, 5, 10, 20, 30, 40) !default;

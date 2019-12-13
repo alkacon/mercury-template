@@ -95,13 +95,13 @@ $bg-colors:
 
 $link-colors:
 (
- (black,  $black, $grey-darker),
- (grey, $grey, $grey-light),
- (white, $white, $grey-lighter),
- (light, $text-light, $grey-lighter),
- (dark, $text-dark, $grey),
- (theme, $main-theme, $main-theme-hover),
- (default, default, default)
+ (black,            $black,         $grey-darker),
+ (grey,             $grey,          $grey-light),
+ (white,            $white,         $grey-lighter),
+ (light,            $text-light,    $grey-lighter),
+ (dark,             $text-dark,     $grey),
+ (theme,            $main-theme,    $main-theme-hover),
+ (default,          default,        default)
 ) !default;
 
 // Footer colors
@@ -149,9 +149,6 @@ $ti-cols:                       ((6, 6), (4, 4), (3, 3), (2o4, 2.4), (2,2), (1o5
 
 // Spaces used for margins and paddings
 $margins:                       (0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 75, 100) !default;
-
-// Fixed image sizes
-$images-sizes:                  (100, 150, 200, 250, 300, 350, 400) !default;
 
 // Generic font sizes and line heights
 $margins-paddings:              $margins !default;

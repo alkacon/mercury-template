@@ -42,6 +42,11 @@
     }
 
     @include colored-a($color-link, $color-hover);
+    &.box {
+        // overwrite box link and hover colors
+        @include colored-a(inherit, inherit);
+        padding: $default-margin $default-margin-small;
+    }
 
     .icon-title {
         color: inherit;
@@ -84,7 +89,9 @@
     @include media-breakpoint-up(md) {
         // making the icon boxe spacing larger on small screens
         padding: $default-margin; // extending the margin
-
+        &.box {
+            padding: $default-margin;
+        }
         .icon-title {
             font-size: $h3-font-size;
             line-height: $line-height-headings;

@@ -215,7 +215,7 @@
 
 // Colored tabs
 
-@each $color-name, $bg-color, $highlight-color in $bg-colors {
+@each $color-name, $bg-color, $highlight-color in $tab-colors {
 
     .color-#{""+$color-name} .tab-list {
         border-bottom-color: $bg-color;
@@ -238,7 +238,7 @@
 
 // Colored accordion panels
 
-@each $type-name, $bg-color, $highlight-color in $bg-colors {
+@each $type-name, $bg-color, $highlight-color in $accordion-colors {
 
     .color-#{""+$type-name} .accordion .acco-header {
 

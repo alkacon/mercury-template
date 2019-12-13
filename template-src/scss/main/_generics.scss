@@ -43,7 +43,7 @@
     }
 }
 
-@each $color-name, $bg-color, $highlight-color in $bg-colors {
+@each $color-name, $bg-color, $highlight-color in $box-colors {
 
     .box-#{""+$color-name} {
         $color: get-text-color($bg-color); // we normally want light text
@@ -149,7 +149,7 @@
 
 // Colored borders
 
-@each $color-name, $bg-color, $highlight-color in $bg-colors {
+@each $color-name, $bg-color, $highlight-color in $border-colors {
 
     .bo-#{""+$color-name}  {
         border-color: $bg-color;
@@ -181,7 +181,7 @@
         }
     }
 
-    @each $color-name, $bg-color, $highlight-color in $bg-colors {
+    @each $color-name, $bg-color, $highlight-color in $border-colors {
 
         .bo-#{""+$position}-#{""+$color-name}  {
             border-#{$position}-color: $bg-color;

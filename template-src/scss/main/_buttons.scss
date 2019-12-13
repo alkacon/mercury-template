@@ -78,11 +78,11 @@
 
 // Colored buttons
 
-@each $color-name, $bg-color, $hover-color in $btn-colors {
+@each $color-name, $bg-color, $highlight-color in $btn-colors {
 
     .color-#{""+$color-name} .btn,
     .btn.color-#{""+$color-name}  {
-        @include button-color($bg-color, $hover-color);
+        @include button-color($bg-color, $highlight-color);
     }
 
     .color-#{""+$color-name} .dropdown-menu > .active {

@@ -21,6 +21,8 @@
 
 .detail-page {
 
+    margin-bottom: $default-margin;
+
     // visual image overlay as used on detail pages
     .piece > .visual .overlay { // strong selector needed to override .piece defaults
         display: flex;
@@ -120,6 +122,10 @@
 
     .detail-content {
         margin-bottom: $default-margin;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         > .piece {
             // force 100% width on all pieces to avoid issues with left floating key visual

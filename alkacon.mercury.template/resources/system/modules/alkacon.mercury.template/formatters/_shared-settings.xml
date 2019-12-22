@@ -832,6 +832,8 @@
       <Default><![CDATA[99]]></Default>
       <WidgetConfig><![CDATA[
             99:     %(key.msg.setting.visualOption.piece.default)|
+            1:      %(key.msg.setting.visualOption.1)|
+            2:      %(key.msg.setting.visualOption.2)|
             3:      %(key.msg.setting.visualOption.3)|
             4:      %(key.msg.setting.visualOption.4)|
             5:      %(key.msg.setting.visualOption.5)|
@@ -854,6 +856,8 @@
       <Default><![CDATA[99]]></Default>
       <WidgetConfig><![CDATA[
             99:     %(key.msg.setting.visualOption.piece.default)|
+            1:      %(key.msg.setting.visualOption.1)|
+            2:      %(key.msg.setting.visualOption.2)|
             3:      %(key.msg.setting.visualOption.3)|
             4:      %(key.msg.setting.visualOption.4)|
             5:      %(key.msg.setting.visualOption.5)|

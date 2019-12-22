@@ -24,6 +24,9 @@
 <%@ attribute name="sizeDesktop" type="java.lang.Integer" required="false"
     description="Desktop grid size for the visual if displayed in a column. Valid values are 1 to 12. Default is 4." %>
 
+<%@ attribute name="pieceTag" type="java.lang.String" required="false"
+    description="The tag to generate. Defaults to 'div' if not provided." %>
+
 <%@ attribute name="heading" type="java.lang.Object" required="false"
     description="The optional section heading." %>
 
@@ -109,6 +112,7 @@
         pieceLayout="${pieceLayout}"
         sizeDesktop="${sizeDesktop}"
         sizeMobile="${sizeMobile}"
+        pieceTag="${pieceTag}"
         cssText="${showText and (textOption ne 'default') ? textOption: ''}"
         attrVisual="${ade ? image.rdfaAttr : null}"
         attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"

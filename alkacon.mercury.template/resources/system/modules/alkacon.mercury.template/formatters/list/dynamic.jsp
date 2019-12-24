@@ -125,37 +125,42 @@
             <c:set var="tnp"><fmt:message key="msg.page.list.pagination.next.title"/></c:set>
             <c:set var="tlp"><fmt:message key="msg.page.list.pagination.last.title"/></c:set>
         </c:if>
+
+        <cms:jsonobject var="listData">
+            <cms:jsonvalue key="ajax" value="${ajaxlink}" />
+            <cms:jsonvalue key="teaser" value="${settings.teaserlength}" />
+            <cms:jsonvalue key="path" value="${cms.element.sitePath}" />
+            <cms:jsonvalue key="sitepath" value="${cms.requestContext.folderUri}" />
+            <cms:jsonvalue key="subsite" value="${cms.requestContext.siteRoot}${cms.subSitePath}" />
+            <cms:jsonvalue key="appendSwitch" value="${settings.appendSwitch}" />
+            <cms:jsonvalue key="appendOption" value="${settings.appendOption}" />
+            <cms:jsonvalue key="locale" value="${cms.locale}" />
+            <c:if test="${not empty initparams}">
+                <cms:jsonvalue key="initparams" value="${initparams}" />
+            </c:if>
+            <c:if test="${isLoadAll}">
+                <cms:jsonvalue key="itemsPerPage" value="${settings.itemsPerPage}" />
+                <cms:jsonvalue key="loadAll" value="true" />
+                <cms:jsonobject key="paginationInfo">
+                    <cms:jsonobject key="messages">
+                        <cms:jsonvalue key="la" value="${la}" />
+                        <cms:jsonvalue key="tfp" value="${tfp}" />
+                        <cms:jsonvalue key="tpp" value="${tpp}" />
+                        <cms:jsonvalue key="lp" value="${lp}" />
+                        <cms:jsonvalue key="tp" value="${tp}" />
+                        <cms:jsonvalue key="tnp" value="${tnp}" />
+                        <cms:jsonvalue key="tlp" value="${tlp}" />
+                    </cms:jsonobject>
+            </cms:jsonobject>
+            </c:if>
+        </cms:jsonobject>
+
         <%-- ####### The list content will be inserted here with AJAX ####### --%>
         <div class="list-box list-dynamic list-paginate ${settings.listBoxWrapper}" <%--
-        --%>id="${instanceId}" <%--
-        --%>data-id="${elementId}" <%--
-        --%>data-list='{<%--
-            --%>"ajax":"${ajaxlink}", <%--
-            --%>"teaser":"${settings.teaserlength}", <%--
-            --%>"path":"${cms.element.sitePath}", <%--
-            --%>"sitepath":"${cms.requestContext.folderUri}", <%--
-            --%>"subsite":"${cms.requestContext.siteRoot}${cms.subSitePath}", <%--
-            --%>"appendSwitch":"${settings.appendSwitch}", <%--
-            --%>"appendOption":"${settings.appendOption}", <%--
-            --%>"locale":"${cms.locale}"<%--
-            --%><c:if test="${isLoadAll}">, "loadAll":"true"<%--
-            --%>, "itemsPerPage":"${settings.itemsPerPage}"<%--
-            --%>, "paginationInfo":{<%--
-                --%><%--"options":{ --%><%--
-                --%><%--},--%><%--
-                --%>"messages":{<%--
-                    --%>"la":"${la}",<%--
-                    --%>"tfp":"${tfp}",<%--
-                    --%>"tpp":"${tpp}",<%--
-                    --%>"lp":"${lp}",<%--
-                    --%>"tp":"${tp}",<%--
-                    --%>"tnp":"${tnp}",<%--
-                    --%>"tlp":"${tlp}"<%--
-                --%>}<%--
-            --%>}</c:if><%--
-            --%><c:if test="${not empty initparams}">, "initparams":"${initparams}"</c:if><%--
-        --%>}'><%----%>
-            <mercury:nl />
+            --%>id="${instanceId}" <%--
+            --%>data-id="${elementId}" <%--
+            --%>data-list='${listData}'<%--
+        --%>><mercury:nl />
 
             ${'<'}${listTag} class="list-entries ${settings.listWrapper}" ${minHeightCss}${'>'}
                 <%-- ###### Add noscript for initial page load ###### --%>

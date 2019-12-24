@@ -33,72 +33,73 @@
 
             <ul class="nav-breadcrumbs"><%----%>
                 <mercury:nl />
-                <c:set var="breadCrumbs" value="" />
                 <c:set var="currNavPos" value="1" />
 
-                <c:forEach var="navElem" items="${navItems}" varStatus="status">
-                    <c:if test="${(breadcrumbsIncludeHidden and (navElem.navPosition > 0)) or (navElem.info ne 'ignoreInDefaultNav')}">
-                        <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
-                            ? navElem.title : navElem.navText}" />
-                        <c:if test="${!empty navText}">
-                            <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
+                <cms:jsonarray var="breadCrumbJson">
 
-                            <c:out value='<li><a href="${navLink}">' escapeXml="false" />
-                            <c:out value='${navText}' escapeXml="true" />
-                            <c:out value='</a></li>' escapeXml="false" />
+                    <c:forEach var="navElem" items="${navItems}" varStatus="status">
+                        <c:if test="${(breadcrumbsIncludeHidden and (navElem.navPosition > 0)) or (navElem.info ne 'ignoreInDefaultNav')}">
+                            <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
+                                ? navElem.title : navElem.navText}" />
+                            <c:if test="${!empty navText}">
+                                <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
 
-                            <c:set var="breadCrumbs"><c:out value="${breadCrumbs}" escapeXml="false" />
-                                <c:if test="${not empty breadCrumbs}">,</c:if>{<%--
-                                --%>"@type": "ListItem",<%--
-                                --%>"position": <c:out value="${currNavPos}" />,<%--
-                                --%>"item": { <%-->
-                                    --%>"@id": "<c:out value="${cms.site.url}" escapeXml="false" /><c:out value="${navLink}" escapeXml="false" />",<%--
-                                    --%>"name": "<c:out value="${navText}" escapeXml="true" />"<%--
-                                --%>}<%--
-                            --%>}<%--
-                        --%></c:set>
-                            <c:set var="currNavPos" value="${currNavPos + 1}" />
+                                <c:out value='<li><a href="${navLink}">' escapeXml="false" />
+                                <c:out value='${navText}' escapeXml="true" />
+                                <c:out value='</a></li>' escapeXml="false" />
+                                <mercury:nl />
+
+                                <cms:jsonobject>
+                                    <cms:jsonvalue key="@type" value="ListItem" />
+                                    <cms:jsonvalue key="position" value="${currNavPos}" />
+                                    <cms:jsonobject key="item">
+                                        <cms:jsonvalue key="@id" value="${cms.site.url}${navLink}" />
+                                        <cms:jsonvalue key="name" value="${navText}" />
+                                    </cms:jsonobject>
+                                </cms:jsonobject>
+
+                                <c:set var="currNavPos" value="${currNavPos + 1}" />
+                            </c:if>
                         </c:if>
+                    </c:forEach>
+
+                    <c:if test="${cms.detailRequest}">
+                        <c:set var="navLink"><cms:link>${cms.detailContent.sitePath}?${pageContext.request.queryString}</cms:link></c:set>
+                        <c:set var="navText"><mercury:meta-title addIntro="${true}" /></c:set>
+
+                        <c:out value='<li><a href="${navLink}">' escapeXml="false" />
+                        <c:out value='${navText}' escapeXml="true" />
+                        <c:out value='</a></li>' escapeXml="false" />
+
+                        <cms:jsonobject>
+                            <cms:jsonvalue key="@type" value="ListItem" />
+                            <cms:jsonvalue key="position" value="${currNavPos}" />
+                            <cms:jsonobject key="item">
+                                <cms:jsonvalue key="@id" value="${cms.site.url}${navLink}" />
+                                <cms:jsonvalue key="name" value="${navText}" />
+                            </cms:jsonobject>
+                        </cms:jsonobject>
+
                     </c:if>
-                </c:forEach>
 
-                <c:if test="${cms.detailRequest}">
-                    <c:set var="navLink"><cms:link>${cms.detailContent.sitePath}?${pageContext.request.queryString}</cms:link></c:set>
-                    <c:set var="navText"><mercury:meta-title addIntro="${true}" /></c:set>
+                </cms:jsonarray>
 
-                    <c:out value='<li><a href="${navLink}">' escapeXml="false" />
-                    <c:out value='${navText}' escapeXml="true" />
-                    <c:out value='</a></li>' escapeXml="false" />
-
-                    <c:set var="breadCrumbs"><c:out value="${breadCrumbs}" escapeXml="false" />
-                        <c:if test="${not empty breadCrumbs}">,</c:if>{<%--
-                        --%>"@type": "ListItem",<%--
-                        --%>"position": <c:out value="${currNavPos}" />,<%--
-                        --%>"item": { <%-->
-                            --%>"@id": "<c:out value="${cms.site.url}" escapeXml="false" /><c:out value="${navLink}" escapeXml="false" />",<%--
-                            --%>"name": "<c:out value="${navText}" escapeXml="true" />"<%--
-                        --%>}<%--
-                    --%>}<%--
-                --%></c:set>
-                </c:if>
-
-                <c:if test="${(empty breadCrumbs and hidebreadcrumbtitle) or cms.modelGroupPage}">
+                <c:if test="${(empty breadCrumbJson and hidebreadcrumbtitle) or cms.modelGroupPage}">
                     <li><mercury:meta-title addIntro="${true}" /></li><%----%>
                 </c:if>
             </ul><%----%>
             <mercury:nl />
 
-            <c:if test="${not empty breadCrumbs}">
-                <script type="application/ld+json">{<%--
-                    --%>"@context": "http://schema.org",<%--
-                    --%>"@type": "BreadcrumbList",<%--
-                    --%>"itemListElement": [<%--
-                        --%><c:out value="${breadCrumbs}" escapeXml="false" /><%--
-                    --%>]<%--
-                --%>}<%--
-            --%></script><%----%>
+            <c:if test="${not empty breadCrumbJson}">
+                <cms:jsonobject var="jsonLd">
+                    <cms:jsonvalue key="@context" value="http://schema.org" />
+                    <cms:jsonvalue key="@type" value="BreadcrumbList" />
+                    <cms:jsonvalue key="itemListElement" value="${breadCrumbJson.json}" />
+                </cms:jsonobject>
+                <script type="application/ld+json">${jsonLd.compact}</script><%----%>
                 <mercury:nl />
             </c:if>
+
         </mercury:nav-items>
     </mercury:nav-vars>
 

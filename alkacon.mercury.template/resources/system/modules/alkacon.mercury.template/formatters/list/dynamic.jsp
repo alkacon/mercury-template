@@ -163,24 +163,18 @@
         --%>><mercury:nl />
 
             ${'<'}${listTag} class="list-entries ${settings.listWrapper}" ${minHeightCss}${'>'}
-                <%-- ###### Add noscript for initial page load ###### --%>
-                <noscript><%----%>
-                    <div class="list-entries"><%-- Required by tiling lists, otherwise <noscript> breaks layout --%>
-                    <mercury:list-main
-                        elementId="${elementId}"
-                        instanceId="${instanceId}"
-
-                        config="${content}"
-                        count="${count}"
-                        locale="${cms.locale}"
-                        settings="${settings}"
-                        ajaxCall="false"
-                        noscriptCall="true"
-                        pageUri="${cms.requestContext.folderUri}"
-                        subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
-                    />
-                    </div><%----%>
-                </noscript><%----%>
+                <mercury:list-main
+                    elementId="${elementId}"
+                    instanceId="${instanceId}"
+                    config="${content}"
+                    count="${count}"
+                    locale="${cms.locale}"
+                    settings="${settings}"
+                    ajaxCall="false"
+                    noscriptCall="false"
+                    pageUri="${cms.requestContext.folderUri}"
+                    subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
+                />
             ${'</'}${listTag}${'>'}
             <mercury:nl />
 

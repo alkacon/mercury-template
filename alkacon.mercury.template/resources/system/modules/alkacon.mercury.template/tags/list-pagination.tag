@@ -80,10 +80,12 @@
             <%-- POST: current:${currentPage} last:${lastPage} firstShow:${firstShownPage} lastShow:${lastShownPage} all:${allPages} max:${maxPages} --%>
 
             <ul class="pagination"><%----%>
+                <mercury:nl />
                 <c:if test="${showGoFirst}">
                     <c:if test="${singleStep}">
                         <c:set var="pageNr">${previousPage}</c:set>
-                        <li<mercury:nl />class="previous${currentPage > 1 ? '' : ' disabled'}"}><%----%>
+                        <%-- Placement of nl required to prevent visible whitespace between the li tags --%>
+                        <li <mercury:nl />class="previous${currentPage > 1 ? '' : ' disabled'}"><%----%>
                             <a href="${empty onclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}" <%--
                             --%>${currentPage > 1 ? "" : "tabindex='-1'"} <%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}' <%--
@@ -94,9 +96,8 @@
                         </li><%----%>
                     </c:if>
                     <c:if test="${firstShownPage > 1}">
-                        <mercury:nl />
                         <c:set var="pageNr">1</c:set>
-                        <li<mercury:nl />class="first ${firstShownPage > 2 ? ' gap' : ''}"}><%----%>
+                        <li <mercury:nl />class="first ${firstShownPage > 2 ? ' gap' : ''}"><%----%>
                             <a href="${empty onclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}" <%--
                             --%>${currentPage > 1 ? "" : "tabindex='-1'"} <%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}' <%--
@@ -110,7 +111,7 @@
 
                 <c:forEach var="page" begin="${firstShownPage}" end="${lastShownPage}">
                     <c:set var="pageNr">${page}</c:set>
-                    <li<mercury:nl />class="${pageNr eq lastShownPage ? 'lastpage' : 'page'}${currentPage eq page ? ' active' : ''}"><%----%>
+                    <li <mercury:nl />class="${pageNr eq lastShownPage ? 'lastpage' : 'page'}${currentPage eq page ? ' active' : ''}"><%----%>
                         <a href="${empty onclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}" <%--
                         --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}' <%--
                         --%>title='<fmt:message key="msg.page.list.pagination.page.title"><fmt:param>${pageNr}</fmt:param></fmt:message>'><%--
@@ -122,7 +123,7 @@
                 <c:if test="${showGoNext}">
                     <c:if test="${singleStep}">
                         <c:set var="pageNr">${nextPage}</c:set>
-                        <li<mercury:nl />class="next${currentPage >= lastPage ? ' disabled' : ''}"}><%----%>
+                        <li <mercury:nl />class="next${currentPage >= lastPage ? ' disabled' : ''}"><%----%>
                             <a href="${empty onclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}" <%--
                             --%>${currentPage >= lastPage ? "tabindex='-1'" : ""} <%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}' <%--

@@ -41,20 +41,19 @@
     <c:set var="loadAll" value="${settings.loadAll eq 'true'}" />
 
     ${'<'}${listTag} class="list-entries ${settings.listWrapper}${'\">'}
-    <%-- ####### List entries ######## --%>
-    <mercury:list-main
-        elementId="${param.elementId}"
-        instanceId="${param.instanceId}"
-        config="${conf}"
-        count="${loadAll ? 400 : (not empty count ? count : 5)}"
-        locale="${param.loc}"
-        settings="${settings}"
-        ajaxCall="true"
-        noscriptCall="false"
-
-        pageUri="${param.sitepath}"
-        subsite="${param.subsite}"
-    />
+        <%-- ####### List entries ######## --%>
+        <mercury:list-main
+            elementId="${param.elementId}"
+            instanceId="${param.instanceId}"
+            config="${conf}"
+            count="${loadAll ? 400 : (not empty count ? count : 5)}"
+            locale="${param.loc}"
+            settings="${settings}"
+            ajaxCall="true"
+            noscriptCall="false"
+            pageUri="${param.sitepath}"
+            subsite="${param.subsite}"
+        />
     ${'</'}${listTag}${'>'}
 
     <%-- ####### Load pagination ######## --%>

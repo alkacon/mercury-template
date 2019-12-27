@@ -23,6 +23,10 @@
     description="Enables advanced direct edit for the generated content.
     Default is 'true' if not provided." %>
 
+<%@ attribute name="createJsonLd" type="java.lang.Boolean" required="false"
+    description="A JSON-LD object is created for the image and stored in the variable 'imageJsonLd'.
+    Default is 'false' if not provided." %>
+
 <%@ variable name-given="imageBean" declare="true"
     variable-class="org.opencms.jsp.util.CmsJspImageBean"
     description="The image bean for the image." %>
@@ -57,6 +61,9 @@
 <%@ variable name-given="imageDndAttr" declare="true"
     description="The DND attribute for the image." %>
 
+<%@ variable name-given="imageJsonLd" declare="true"
+    description="The JSON-LD object created for the image.
+    This will only be created if the attribute createJsonLd has been set to ''true'." %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -183,6 +190,21 @@
             <c:set var="imageTitleCopyright">${imageTitle}${' '}${imageCopyright}</c:set>
         </c:if>
     </c:if>
+
+    <c:if test="${createJsonLd}">
+        <cms:jsonobject var="imageJsonLd" mode="object">
+            <cms:jsonvalue key="@type" value="ImageObject" />
+            <cms:jsonvalue key="url" value="${cms.site.url.concat(imageUrl)}" />
+            <cms:jsonvalue key="width" value="${imageWidth}" />
+            <cms:jsonvalue key="height" value="${imageHeight}" />
+            <c:if test="${not empty imageTitle}">
+                <cms:jsonvalue key="name" value="${imageTitle}" />
+            </c:if>
+            <c:if test="${not empty imageCopyright}">
+                <cms:jsonvalue key="copyrightHolder" value="${imageCopyright}" />
+            </c:if>
+        </cms:jsonobject>
+     </c:if>
 
 </c:if>
 

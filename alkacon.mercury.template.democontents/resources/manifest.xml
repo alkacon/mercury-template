@@ -5021,6 +5021,14 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>search.subsite</name>
 					<value><![CDATA[English Mercury Demo]]></value>
 				</property>
+				<property>
+					<name>site.publisher</name>
+					<value><![CDATA[Alkacon Software]]></value>
+				</property>
+				<property>
+					<name>site.publisher.logo</name>
+					<value><![CDATA[/.galleries/misc/alkacon-logo.svg]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>

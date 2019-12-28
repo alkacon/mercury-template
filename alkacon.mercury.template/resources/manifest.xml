@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.56</version>
+		<version>11.0.1.57</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6473,27 +6473,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Generates schema.org data jobs]]></value>
-				</property>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/tags/data-json-ld.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/data-json-ld.tag</destination>
-			<type>jsp</type>
-			<uuidstructure>08a5c955-06db-4b66-8377-8a7d186f314b</uuidstructure>
-			<uuidresource>fba0fa25-0078-42e8-acc5-c50f796feb88</uuidresource>
-			<datecreated>Sun, 06 Jan 2019 08:22:54 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Generates JSON-LD information for contents]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

@@ -65,7 +65,7 @@
         </mercury:image-vars>
     </c:if>
 
-    <mercury:location-vars data="${content.value.AddressChoice}" createJsonLd="${true}">
+    <mercury:location-vars data="${value.AddressChoice}" createJsonLd="${true}">
         <cms:jsonvalue key="location" value="${locJsonLd}" />
     </mercury:location-vars>
 </cms:jsonobject>

@@ -112,7 +112,11 @@
         <c:if test="${not empty locData.streetAddress}">
             <cms:jsonobject key="address" mode="object">
                 <cms:jsonvalue key="@type" value="PostalAddress" />
-                <cms:jsonvalue key="streetAddress" value="${locData.streetAddress}" />
+                <c:set var="street" value="${locData.streetAddress}" />
+                <c:if test="${not empty locData.ExtendedAddress}">
+                    <c:set var="street" value="${street}${empty street ? '' : ' '}${locData.ExtendedAddress}" />
+                </c:if>
+                <cms:jsonvalue key="streetAddress" value="${street}" />
                 <c:if test="${not empty locData.postalCode}">
                     <cms:jsonvalue key="postalCode" value="${locData.postalCode}" />
                 </c:if>

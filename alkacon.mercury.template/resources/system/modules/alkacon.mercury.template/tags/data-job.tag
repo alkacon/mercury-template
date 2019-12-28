@@ -42,10 +42,10 @@
     </cms:jsonvalue>
 
     <c:if test="${value.Date.isSet}">
-        <cms:jsonvalue key="datePosted"><fmt:formatDate value="${cms:convertDate(content.value.Date)}" pattern="yyyy-MM-dd" /></cms:jsonvalue>
+        <cms:jsonvalue key="datePosted"><fmt:formatDate value="${cms:convertDate(value.Date)}" pattern="yyyy-MM-dd" /></cms:jsonvalue>
     </c:if>
     <c:if test="${value.EndDate.isSet}">
-        <cms:jsonvalue key="validThrough"><fmt:formatDate value="${cms:convertDate(content.value.EndDate)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+        <cms:jsonvalue key="validThrough"><fmt:formatDate value="${cms:convertDate(value.EndDate)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
     </c:if>
 
     <c:if test="${description.isSet}">
@@ -69,5 +69,5 @@
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${jsonLd.pretty}</script>
+<script type="application/ld+json">${jsonLd.compact}</script>
 <mercury:nl />

@@ -199,7 +199,7 @@
             </c:choose>
 
             <c:if test="${showAddress}">
-                <mercury:location-data data="${data.value.AddressChoice}">
+                <mercury:location-vars data="${data.value.AddressChoice}">
 
                     <c:set var="animatedAddress" value="${not showAddressAlways}" />
                     <div ${animatedAddress ? 'class="clickme-showme"' : ''}><%----%>
@@ -247,7 +247,7 @@
                             </div><%----%>
                         </c:if>
                     </div><%----%>
-                </mercury:location-data>
+                </mercury:location-vars>
             </c:if>
 
             <c:if test="${showPhone}">

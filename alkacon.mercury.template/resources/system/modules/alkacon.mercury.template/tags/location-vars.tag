@@ -1,14 +1,14 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="location-data"
+    display-name="location-vars"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
-    description="Collects location data from a POI file or inline fields." %>
+    description="Collects location data from a POI file or inline fields and sets a series of variables for quick acesss." %>
 
 
 <%@ attribute name="data" type="java.lang.Object" required="true"
     description="The location to read. Can be a either a POI content access wrapper,
     a VFS path to a POI that should be read OR
-    a manual nested content formation wrapper." %>
+    a manual nested content address wrapper." %>
 
 <%@ attribute name="addMapInfo" type="java.lang.Boolean" required="false"
     description="If true, data for a location map is generated as well." %>
@@ -16,15 +16,23 @@
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="If provided and false, the location data is not collected." %>
 
+<%@ attribute name="createJsonLd" type="java.lang.Boolean" required="false"
+    description="Controls if a JSON-LD object is created for the location and stored in the variable 'locJsonLd'.
+    Default is 'false' if not provided." %>
 
 <%@ variable name-given="locData" declare="true"
     description="A map that contains the data read for the location as properties." %>
+
+<%@ variable name-given="locJsonLd" declare="true"
+    description="A JSON-LD object created for the location.
+    This will only be created if the attribute createJsonLd has been set to ''true'." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+
 
 <jsp:useBean id="locData" class="java.util.HashMap" />
 
@@ -93,6 +101,40 @@
         </c:if>
         <c:set target="${locData}" property="addressMarkup" value="${addressMarkup}" />
     </c:if>
+</c:if>
+
+<c:if test="${createJsonLd and ((not empty locData.name) or (not empty locData.streetAddress))}">
+    <cms:jsonobject var="locJsonLd" mode="object">
+        <cms:jsonvalue key="@type" value="Place" />
+        <c:if test="${not empty locData.name}">
+            <cms:jsonvalue key="name" value="${locData.name}" />
+        </c:if>
+        <c:if test="${not empty locData.streetAddress}">
+            <cms:jsonobject key="address" mode="object">
+                <cms:jsonvalue key="@type" value="PostalAddress" />
+                <cms:jsonvalue key="streetAddress" value="${locData.streetAddress}" />
+                <c:if test="${not empty locData.postalCode}">
+                    <cms:jsonvalue key="postalCode" value="${locData.postalCode}" />
+                </c:if>
+                <c:if test="${not empty locData.locality}">
+                    <cms:jsonvalue key="addressLocality" value="${locData.locality}" />
+                </c:if>
+                <c:if test="${not empty locData.region}">
+                    <cms:jsonvalue key="addressRegion" value="${locData.region}" />
+                </c:if>
+                <c:if test="${not empty locData.country}">
+                    <cms:jsonvalue key="addressCountry" value="${locData.country}" />
+                </c:if>
+                <c:if test="${(not empty locData.lat) and (not empty locData.lng)}">
+                    <cms:jsonobject key="address" mode="object">
+                        <cms:jsonvalue key="@type" value="GeoCoordinates" />
+                        <cms:jsonvalue key="latitude" value="${locData.lat}" />
+                        <cms:jsonvalue key="longitude" value="${locData.lng}" />
+                    </cms:jsonobject>
+                </c:if>
+            </cms:jsonobject>
+        </c:if>
+    </cms:jsonobject>
 </c:if>
 
 <jsp:doBody/>

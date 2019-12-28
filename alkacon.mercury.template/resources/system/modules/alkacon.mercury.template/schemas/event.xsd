@@ -23,6 +23,7 @@
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Dates" type="OpenCmsSerialDate" />
             <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Performer" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
@@ -145,6 +146,12 @@
                     <PropertyName>Type</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Event.Type)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Event.Type.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Performer</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Event.Performer)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Event.Performer.help)]]></Description>
                     <Widget>string</Widget>
                 </Setting>
                 <Setting>

@@ -61,7 +61,7 @@
     <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
 
     <c:forEach var="poi" items="${content.valueList.MapPoi}" varStatus="status">
-        <mercury:location-data data="${poi.value.PoiLink}" addMapInfo="true" >
+        <mercury:location-vars data="${poi.value.PoiLink}" addMapInfo="true" >
 
             <c:if test="${not empty locData}">
                 <c:set var="markerGroup" value="${poi.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(poi.value.MarkerGroup)}" />
@@ -71,7 +71,7 @@
                 ${cms:addToList(markerList, locData)}
             </c:if>
 
-        </mercury:location-data>
+        </mercury:location-vars>
     </c:forEach>
 
     <c:forEach var="marker" items="${content.valueList.MapCoord}" varStatus="status">

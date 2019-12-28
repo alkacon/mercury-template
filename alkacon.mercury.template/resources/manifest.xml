@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.54</version>
+		<version>11.0.1.55</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7142,8 +7142,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/tags/location-data.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/location-data.tag</destination>
+			<source>system/modules/alkacon.mercury.template/tags/location-vars.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/location-vars.tag</destination>
 			<type>jsp</type>
 			<uuidstructure>7f9daac4-9f7d-4924-860e-442ad273affd</uuidstructure>
 			<uuidresource>a22efe77-372f-4aca-9f51-95e4aeb5f454</uuidresource>

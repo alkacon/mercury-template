@@ -53,7 +53,7 @@ ORG;CHARSET=utf-8:${value.Organization}
 </c:if><%--
 
 --%>
-<mercury:location-data data="${value.Contact.value.AddressChoice}">
+<mercury:location-vars data="${value.Contact.value.AddressChoice}">
 
 ADR;CHARSET=utf-8;type=WORK:;;${locData.streetAddress}${';'}
 ${locData.locality}${';'}
@@ -61,7 +61,7 @@ ${locData.region}${';'}
 ${locData.postalCode}${';'}
 ${locData.country}
 
-</mercury:location-data>
+</mercury:location-vars>
 <c:if test="${value.Position.isSet}">
 TITLE;CHARSET=utf-8:${value.Position}
 </c:if>

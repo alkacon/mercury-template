@@ -24,7 +24,7 @@
     Default is 'true' if not provided." %>
 
 <%@ attribute name="createJsonLd" type="java.lang.Boolean" required="false"
-    description="A JSON-LD object is created for the image and stored in the variable 'imageJsonLd'.
+    description="Controls if a JSON-LD object is created for the image and stored in the variable 'imageJsonLd'.
     Default is 'false' if not provided." %>
 
 <%@ variable name-given="imageBean" declare="true"
@@ -62,8 +62,9 @@
     description="The DND attribute for the image." %>
 
 <%@ variable name-given="imageJsonLd" declare="true"
-    description="The JSON-LD object created for the image.
+    description="A JSON-LD object created for the image.
     This will only be created if the attribute createJsonLd has been set to ''true'." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>

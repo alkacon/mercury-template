@@ -15,62 +15,45 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
+<%-- Using the same logic as the elaborate display teaser --%>
+<c:set var="value"      value="${content.value}" />
+<c:set var="intro"      value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
+<c:set var="title"      value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
+<c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : value.Paragraph.value.Text)}" />
+<c:set var="image"      value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : value.Paragraph.value.Image)}" />
+<c:set var="date"       value="${value.Date.isSet ? value.Date : content.file.dateLastModified}" />
+
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
     <cms:jsonvalue key="@type" value="Article" />
 
     <cms:jsonvalue key="headline">
-        <c:if test="${content.value.Intro.isSet}">
-            <c:out value="${content.value.Intro.toString.concat(': ')}" />
+        <c:if test="${intro.isSet}">
+            <c:out value="${intro.toString.concat(': ')}" />
         </c:if>
-        <c:out value="${content.value.Title}" />
+        <c:out value="${title}" />
     </cms:jsonvalue>
 
-    <c:set var="datePublished" value="${content.value.Date.isSet ? content.value.Date : content.file.dateLastModified}" />
-    <cms:jsonvalue key="datePublished"><fmt:formatDate value="${cms:convertDate(datePublished)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+    <cms:jsonvalue key="datePublished"><fmt:formatDate value="${cms:convertDate(date)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
     <cms:jsonvalue key="dateModified"><fmt:formatDate value="${cms:convertDate(content.file.dateLastModified)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
     <cms:jsonvalue key="url">${cms.site.url}<cms:link>${content.filename}</cms:link></cms:jsonvalue>
     <cms:jsonvalue key="mainEntityOfPage">${cms.site.url}<cms:link>${content.filename}</cms:link></cms:jsonvalue>
 
-    <c:choose>
-        <c:when test="${content.value.Preface.isSet}">
-            <cms:jsonvalue key="articleBody" value="${content.value.Preface}" />
-        </c:when>
-        <c:otherwise>
-            <c:set var="textFound" value="false" />
-            <c:forEach var="paragraph" items="${content.valueList.Paragraph}" varStatus="status">
-                <c:if test="${not textFound and paragraph.value.Text.isSet}">
-                    <cms:jsonvalue key="articleBody" value="${paragraph.value.Text}" />
-                    <c:set var="textFound" value="${true}" />
-                </c:if>
-            </c:forEach>
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${preface.isSet}">
+        <cms:jsonvalue key="articleBody" value="${preface}" />
+    </c:if>
 
-    <c:set var="imageElement" value="" />
-    <c:choose>
-        <c:when test="${content.value.TeaserImage.isSet}">
-            <c:set var="imageElement" value="${content.value.TeaserImage}" />
-        </c:when>
-        <c:otherwise>
-            <c:forEach var="paragraph" items="${content.valueList.Paragraph}" varStatus="status">
-                <c:if test="${empty imageElement and paragraph.value.Image.isSet}">
-                    <c:set var="imageElement" value="${paragraph.value.Image}" />
-                </c:if>
-            </c:forEach>
-        </c:otherwise>
-    </c:choose>
-    <c:if test="${not empty imageElement}">
-        <mercury:image-vars image="${imageElement}" createJsonLd="${true}">
+    <c:if test="${image.isSet}">
+        <mercury:image-vars image="${image}" createJsonLd="${true}">
             <cms:jsonvalue key="image" value="${imageJsonLd}" />
         </mercury:image-vars>
     </c:if>
 
     <cms:jsonobject var="author" mode="object">
         <cms:jsonvalue key="@type" value="Person" />
-        <cms:jsonvalue key="name" value="${content.value.Author}" />
-        <c:if test="${content.value.AuthorMail.isSet}">
-            <cms:jsonvalue key="email" value="${content.value.AuthorMail}" />
+        <cms:jsonvalue key="name" value="${value.Author}" />
+        <c:if test="${value.AuthorMail.isSet}">
+            <cms:jsonvalue key="email" value="${value.AuthorMail}" />
         </c:if>
     </cms:jsonobject>
     <cms:jsonvalue key="author" value="${author}" />
@@ -94,4 +77,6 @@
 
 </cms:jsonobject>
 
+<mercury:nl />
 <script type="application/ld+json">${jsonLd.compact}</script>
+<mercury:nl />

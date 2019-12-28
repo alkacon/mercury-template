@@ -33,7 +33,7 @@
 <c:set var="firstParagraph"         value="${value.Introduction}" />
 <c:set var="paragraphsContent"      value="${content.valueList.Text}" />
 
-<mercury:location-data data="${value.AddressChoice}" test="${showLocation}">
+<mercury:location-vars data="${value.AddressChoice}" test="${showLocation}">
 
 <c:set var="date">
     <mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
@@ -177,7 +177,7 @@
 </div><%----%>
 <mercury:nl />
 
-</mercury:location-data>
+</mercury:location-vars>
 </cms:formatter>
 
 </mercury:init-messages>

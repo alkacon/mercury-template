@@ -91,7 +91,7 @@
     </c:if>
 
     <c:if test="${showMap and not preview and value.Coord.isSet}">
-        <mercury:location-data data="${content}" addMapInfo="true" >
+        <mercury:location-vars data="${content}" addMapInfo="true" >
             <c:set var="id"><mercury:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
             <c:set var="markerList" value="${cms:createList()}" />
             ${cms:addToList(markerList, locData)}
@@ -101,7 +101,7 @@
                 zoom="${mapZoom}"
                 markers="${markerList}"
             />
-        </mercury:location-data>
+        </mercury:location-vars>
         <mercury:nl />
     </c:if>
 

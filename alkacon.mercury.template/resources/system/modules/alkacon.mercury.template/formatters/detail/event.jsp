@@ -39,7 +39,7 @@
     splitFirst="${false}"
     splitDownloads="${showCombinedDownloads}">
 
-<mercury:location-data data="${value.AddressChoice}" test="${showLocation}">
+<mercury:location-vars data="${value.AddressChoice}" test="${showLocation}">
 
 <c:set var="date">
     <mercury:instancedate date="${value.Dates.toDateSeries.instanceInfo.get(param.instancedate)}" format="${dateFormat}" />
@@ -50,10 +50,12 @@
 <c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : firstParagraph.value.Image}" />
 <c:set var="locationNote"           value="${value.LocationNote}" />
 <c:set var="type"                   value="${value.Type}" />
+<c:set var="performer"              value="${value.Performer}" />
 
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet)}" />
 <c:set var="showDate"               value="${not empty date}" />
 <c:set var="showType"               value="${type.isSet}" />
+<c:set var="showPerformer"          value="${performer.isSet}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 <c:set var="ade"                    value="${empty cms.detailContentId or (not empty date) and (value.Dates.toDateSeries.isExtractedDate or value.Dates.toDateSeries.isSingleDate)}" />
@@ -135,11 +137,12 @@
                 </c:set>
             </c:if>
 
-            <c:if test="${showDate or showLocation or showType}">
+            <c:if test="${showDate or showLocation or showType or showPerformer}">
                 <div class="visual-info ${not showLocation ? 'right' : ''}"><%----%>
                     <div class="infogroup">
                         <c:if test="${showDate}"><div class="info date"><div>${datePrefix}${date}</div></div></c:if>
                         <c:if test="${showType}"><div class="info type"><div>${type}</div></div></c:if>
+                        <c:if test="${showPerformer}"><div class="info person"><div ${performer.rdfaAttr}>${performer}</div></div></c:if>
                     </div>
                     <c:if test="${showLocation}"><div class="info location">${location}</div></c:if>
                 </div><%----%>
@@ -177,14 +180,14 @@
     </c:if>
 
     <mercury:container-attachment content="${content}" name="attachments" />
-    <mercury:data-event content="${content}" />
+    <mercury:data-event content="${content}" date="${value.Dates.toDateSeries.instanceInfo.get(param.instancedate)}" />
 
 </mercury:event-booking>
 
 </div><%----%>
 <mercury:nl />
 
-</mercury:location-data>
+</mercury:location-vars>
 </mercury:paragraph-split>
 
 </cms:formatter>

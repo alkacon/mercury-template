@@ -5022,12 +5022,16 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[English Mercury Demo]]></value>
 				</property>
 				<property>
-					<name>site.publisher</name>
+					<name>site.organization</name>
 					<value><![CDATA[Alkacon Software]]></value>
 				</property>
 				<property>
-					<name>site.publisher.logo</name>
+					<name>site.organization.logo</name>
 					<value><![CDATA[/.galleries/misc/alkacon-logo.svg]]></value>
+				</property>
+				<property>
+					<name>site.organization.website</name>
+					<value><![CDATA[http://www.alkacon.com]]></value>
 				</property>
 			</properties>
 			<relations/>

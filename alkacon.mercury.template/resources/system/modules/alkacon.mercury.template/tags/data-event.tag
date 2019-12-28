@@ -6,7 +6,7 @@
 
 
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
-    description="The event XML content to use for data generation."%>
+    description="The XML content to use for data generation."%>
 
 <%@ attribute name="date" type="org.opencms.jsp.util.CmsJspInstanceDateBean" required="true"
     description="The selected instance date."%>
@@ -24,10 +24,13 @@
 <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : value.Paragraph.value.Text)}" />
 <c:set var="image"      value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : value.Paragraph.value.Image)}" />
 
+<c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
 
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
     <cms:jsonvalue key="@type" value="Event" />
+    <cms:jsonvalue key="url" value="${url}" />
+    <cms:jsonvalue key="mainEntityOfPage" value="${url}" />
 
     <cms:jsonvalue key="name">
         <c:if test="${intro.isSet}">
@@ -68,5 +71,5 @@
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${jsonLd.pretty}</script>
+<script type="application/ld+json">${jsonLd.compact}</script>
 <mercury:nl />

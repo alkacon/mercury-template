@@ -1,12 +1,12 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="data-blog"
+    display-name="data-article"
     body-content="empty"
     trimDirectiveWhitespaces="true"
-    description="Generates schema.org data for blog articles." %>
+    description="Generates schema.org data for articles." %>
 
 
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
-    description="The blog XML content to use for data generation."%>
+    description="The XML content to use for data generation."%>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -23,9 +23,13 @@
 <c:set var="image"      value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : value.Paragraph.value.Image)}" />
 <c:set var="date"       value="${value.Date.isSet ? value.Date : content.file.dateLastModified}" />
 
+<c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
+
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
     <cms:jsonvalue key="@type" value="Article" />
+    <cms:jsonvalue key="url" value="${url}" />
+    <cms:jsonvalue key="mainEntityOfPage" value="${url}" />
 
     <cms:jsonvalue key="headline">
         <c:if test="${intro.isSet}">
@@ -36,8 +40,6 @@
 
     <cms:jsonvalue key="datePublished"><fmt:formatDate value="${cms:convertDate(date)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
     <cms:jsonvalue key="dateModified"><fmt:formatDate value="${cms:convertDate(content.file.dateLastModified)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
-    <cms:jsonvalue key="url">${cms.site.url}<cms:link>${content.filename}</cms:link></cms:jsonvalue>
-    <cms:jsonvalue key="mainEntityOfPage">${cms.site.url}<cms:link>${content.filename}</cms:link></cms:jsonvalue>
 
     <c:if test="${preface.isSet}">
         <cms:jsonvalue key="articleBody" value="${preface}" />
@@ -58,22 +60,12 @@
     </cms:jsonobject>
     <cms:jsonvalue key="author" value="${author}" />
 
+    <mercury:data-organization-vars content="${content}">
+        <c:set var="organization" value="${orgJsonLd}" />
+    </mercury:data-organization-vars>
+
     <%-- Publisher is mandatory. According to schema.org, person is possible but not accepted by Google --%>
-    <c:set var="publisherName" value="${content.wrap.propertySearch['site.publisher']}" />
-    <c:if test="${not empty publisherName}">
-        <cms:jsonobject var="publisher" mode="object">
-            <cms:jsonvalue key="@type" value="Organization" />
-            <cms:jsonvalue key="name" value="${publisherName}" />
-            <c:set var="publisherLogo" value="${content.wrap.propertySearch['site.publisher.logo']}" />
-            <c:if test="${not empty publisherLogo and cms.vfs.existsResource[publisherLogo]}">
-                <cms:jsonobject key="logo">
-                    <cms:jsonvalue key="@type" value="ImageObject" />
-                    <cms:jsonvalue key="url" value="${cms.site.url}${cms.vfs.readResource[publisherLogo].link}" />
-                </cms:jsonobject>
-            </c:if>
-        </cms:jsonobject>
-    </c:if>
-    <cms:jsonvalue key="publisher" value="${empty publisherName ? author : publisher}" />
+    <cms:jsonvalue key="publisher" value="${empty organization ? author : organization}" />
 
 </cms:jsonobject>
 

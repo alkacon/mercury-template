@@ -6,7 +6,7 @@
 
 
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
-    description="The job XML content to use for data generation."%>
+    description="The XML content to use for data generation."%>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,64 +15,59 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<jsp:useBean id="jobschema" class="java.util.LinkedHashMap"/>
+<%-- Using the same logic as the elaborate display teaser --%>
+<c:set var="value"          value="${content.value}" />
 
-<c:set target="${jobschema}" property="title" value="${content.value.Title}" />
-<c:if test="${content.value.Date.isSet}">
-    <c:set target="${jobschema}" property="datePosted"><fmt:formatDate value="${cms:convertDate(content.value.Date)}" pattern="yyyy-MM-dd" /></c:set>
-</c:if>
-<c:if test="${content.value.EndDate.isSet}">
-    <c:set target="${jobschema}" property="validThrough"><fmt:formatDate value="${cms:convertDate(content.value.EndDate)}" pattern="yyyy-MM-dd'T'HH:mm" /></c:set>
-</c:if>
-<c:if test="${content.value.Location.isSet}">
-    <jsp:useBean id="joblocation" class="java.util.LinkedHashMap"/>
-    <c:set target="${joblocation}" property="name" value="${content.value.Location}" />
-    <c:set target="${joblocation}" property="@type" value="Place" />
-    <c:set target="${jobschema}" property="jobLocation" value="${joblocation}" />
-</c:if>
+<c:set var="paragraphIntro" value="${value.Introduction}" />
+<c:set var="paragraphText"  value="${content.valueList.Text['0']}" />
 
-<c:choose>
-    <c:when test="${content.value.Introduction.value.Text.isSet}">
-        <c:set target="${jobschema}" property="description" value="${content.value.Introduction.value.Text}" />
-    </c:when>
-    <c:otherwise>
-        <c:set var="textFound" value="false" />
-        <c:forEach var="text" items="${content.valueList.Text}" varStatus="status">
-            <c:if test="${not textFound and text.value.Text.isSet}">
-                <c:set target="${jobschema}" property="description" value="${text.value.Text}" />
-                <c:set var="textFound" value="true" />
-            </c:if>
-        </c:forEach>
-    </c:otherwise>
-</c:choose>
-
-<c:set var="imageElement" value="" />
-<c:choose>
-    <c:when test="${content.value.Introduction.value.Image.isSet}">
-        <c:set var="imageElement" value="${content.value.Introduction.value.Image}" />
-    </c:when>
-    <c:otherwise>
-        <c:forEach var="text" items="${content.valueList.Text}" varStatus="status">
-            <c:if test="${empty imageElement and text.value.Image.isSet}">
-                <c:set var="imageElement" value="${text.value.Image}" />
-            </c:if>
-        </c:forEach>
-    </c:otherwise>
-</c:choose>
-<c:if test="${not empty imageElement}">
-    <mercury:image-vars image="${imageElement}">
-        <jsp:useBean id="jobimage" class="java.util.LinkedHashMap"/>
-        <c:set target="${jobimage}" property="@type" value="ImageObject" />
-        <c:set target="${jobimage}" property="contenturl" value="${cms.site.url.concat(imageUrl)}" />
-        <c:set target="${jobimage}" property="url" value="${cms.site.url.concat(imageUrl)}" />
-        <c:set target="${jobimage}" property="width" value="${''.concat(imageWidth)}" />
-        <c:set target="${jobimage}" property="height" value="${''.concat(imageHeight)}" />
-        <c:if test="${not empty imageTitle}"><c:set target="${jobimage}" property="name" value="${imageTitle}" /></c:if>
-        <c:if test="${not empty imageCopyright}"><c:set target="${jobimage}" property="copyrightHolder" value="${imageCopyright}" /></c:if>
-        <c:set target="${jobschema}" property="image" value="${jobimage}" />
-    </mercury:image-vars>
-</c:if>
+<c:set var="intro"          value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
+<c:set var="title"          value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
+<c:set var="description"    value="${paragraphIntro.value.Text.isSet ? paragraphIntro.value.Text : paragraphText.value.Text}" />
+<c:set var="image"          value="${paragraphIntro.value.Image.isSet ? paragraphIntro.value.Image : paragraphText.value.Image}" />
 
 <c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
 
-<mercury:data-json-ld type="JobPosting" url="${url}" properties="${jobschema}" />
+<cms:jsonobject var="jsonLd">
+    <cms:jsonvalue key="@context" value="http://schema.org" />
+    <cms:jsonvalue key="@type" value="JobPosting" />
+    <cms:jsonvalue key="url" value="${url}" />
+    <cms:jsonvalue key="mainEntityOfPage" value="${url}" />
+
+    <cms:jsonvalue key="title">
+        <c:if test="${intro.isSet}">
+            <c:out value="${intro.toString.concat(': ')}" />
+        </c:if>
+        <c:out value="${title}" />
+    </cms:jsonvalue>
+
+    <c:if test="${value.Date.isSet}">
+        <cms:jsonvalue key="datePosted"><fmt:formatDate value="${cms:convertDate(content.value.Date)}" pattern="yyyy-MM-dd" /></cms:jsonvalue>
+    </c:if>
+    <c:if test="${value.EndDate.isSet}">
+        <cms:jsonvalue key="validThrough"><fmt:formatDate value="${cms:convertDate(content.value.EndDate)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+    </c:if>
+
+    <c:if test="${description.isSet}">
+        <cms:jsonvalue key="description" value="${description}" />
+    </c:if>
+
+    <c:if test="${image.isSet}">
+        <mercury:image-vars image="${image}" createJsonLd="${true}">
+            <cms:jsonvalue key="image" value="${imageJsonLd}" />
+        </mercury:image-vars>
+    </c:if>
+
+    <mercury:data-organization-vars content="${content}">
+        <cms:jsonvalue key="hiringOrganization" value="${orgJsonLd}" />
+    </mercury:data-organization-vars>
+
+    <mercury:location-vars data="${value.AddressChoice}" createJsonLd="${true}">
+        <cms:jsonvalue key="jobLocation" value="${locJsonLd}" />
+    </mercury:location-vars>
+
+</cms:jsonobject>
+
+<mercury:nl />
+<script type="application/ld+json">${jsonLd.pretty}</script>
+<mercury:nl />

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.55</version>
+		<version>11.0.1.56</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6430,7 +6430,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Generates schema.org data for blog articles]]></value>
+					<value><![CDATA[Generates schema.org data for articles]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -6494,6 +6494,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Generates JSON-LD information for contents]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/data-organization-vars.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/data-organization-vars.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>f33bf349-2956-11ea-93b4-0242ac11002b</uuidstructure>
+			<uuidresource>f33bf34a-2956-11ea-93b4-0242ac11002b</uuidresource>
+			<datecreated>Sat, 28 Dec 2019 09:46:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates schema.org data for organizations (from site properties)]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

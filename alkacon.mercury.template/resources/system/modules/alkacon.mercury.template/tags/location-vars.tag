@@ -126,10 +126,13 @@
                     <cms:jsonvalue key="addressCountry" value="${locData.country}" />
                 </c:if>
                 <c:if test="${(not empty locData.lat) and (not empty locData.lng)}">
-                    <cms:jsonobject key="address" mode="object">
-                        <cms:jsonvalue key="@type" value="GeoCoordinates" />
-                        <cms:jsonvalue key="latitude" value="${locData.lat}" />
-                        <cms:jsonvalue key="longitude" value="${locData.lng}" />
+                    <cms:jsonobject key="areaServed" mode="object">
+                        <cms:jsonvalue key="@type" value="Place" />
+                        <cms:jsonobject key="geo" mode="object">
+                            <cms:jsonvalue key="@type" value="GeoCoordinates" />
+                            <cms:jsonvalue key="latitude" value="${locData.lat}" />
+                            <cms:jsonvalue key="longitude" value="${locData.lng}" />
+                        </cms:jsonobject>
                     </cms:jsonobject>
                 </c:if>
             </cms:jsonobject>

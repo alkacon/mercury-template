@@ -104,13 +104,14 @@
 
     </c:forEach>
 
-    <mercury:map-google
+    <mercury:map
+         provider="google"
          id="${id}"
          ratio="${cms.element.setting.mapRatio}"
          zoom="${cms.element.setting.mapZoom}"
+         markers="${markerList}"
          type="${cms.element.setting.mapType}"
          showRoute="${cms.element.setting.showMapRoute.toBoolean}"
-         markers="${markerList}"
     />
 
     <c:if test="${showGroupButtons and (fn:length(markerGroups) > 1)}">

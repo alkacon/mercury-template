@@ -102,7 +102,8 @@
 
     </c:forEach>
 
-    <mercury:map-osm
+    <mercury:map
+         provider="osm"
          id="${id}"
          ratio="${cms.element.setting.mapRatio}"
          zoom="${cms.element.setting.mapZoom}"

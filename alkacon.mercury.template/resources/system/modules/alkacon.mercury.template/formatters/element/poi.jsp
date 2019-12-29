@@ -95,11 +95,13 @@
             <c:set var="id"><mercury:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
             <c:set var="markerList" value="${cms:createList()}" />
             ${cms:addToList(markerList, locData)}
-            <mercury:map-subelement
+            <mercury:map
+                provider="auto"
                 id="${id}"
                 ratio="${mapRatio}"
                 zoom="${mapZoom}"
                 markers="${markerList}"
+                subelementWrapper="subelement"
             />
         </mercury:location-vars>
         <mercury:nl />

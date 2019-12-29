@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.57</version>
+		<version>11.0.1.58</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7176,51 +7176,17 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/tags/map-google.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/map-google.tag</destination>
+			<source>system/modules/alkacon.mercury.template/tags/map.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/map.tag</destination>
 			<type>jsp</type>
-			<uuidstructure>ebf8981d-72ee-46db-a4c3-2b0ec9d75817</uuidstructure>
-			<uuidresource>2ca75931-429a-40dd-a61a-8f8171393be1</uuidresource>
-			<datecreated>Tue, 15 Jan 2019 14:22:28 GMT</datecreated>
+			<uuidstructure>2ef03db0-2a09-11ea-9f93-0242ac11002b</uuidstructure>
+			<uuidresource>2ef03db1-2a09-11ea-9f93-0242ac11002b</uuidresource>
+			<datecreated>Sun, 29 Dec 2019 07:02:31 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Displays a Google Map]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/tags/map-osm.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/map-osm.tag</destination>
-			<type>jsp</type>
-			<uuidstructure>df1445f8-312b-41a4-8b7a-107218639ca4</uuidstructure>
-			<uuidresource>c1e5d403-80c2-4f05-936c-9212b16eebbe</uuidresource>
-			<datecreated>Fri, 25 Jan 2019 13:57:38 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Displays an OpenStreetMap]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/tags/map-subelement.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/map-subelement.tag</destination>
-			<type>jsp</type>
-			<uuidstructure>907d57d7-f6c8-4d09-8f21-57f3c1d7af7d</uuidstructure>
-			<uuidresource>b7b6d7c8-ec0c-4351-9adb-ef5b016c8c9d</uuidresource>
-			<datecreated>Tue, 12 Feb 2019 11:17:16 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Displays a map, selecting from OSM or Google]]></value>
+					<value><![CDATA[Generates the markup for OSM or Google maps]]></value>
 				</property>
 			</properties>
 			<relations/>

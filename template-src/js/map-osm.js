@@ -88,7 +88,7 @@ function showSingleMap(mapData){
     if (typeof mapData.markers != "undefined") {
         for (var p=0; p < mapData.markers.length; p++) {
             var marker=mapData.markers[p];
-            var group = decodeURIComponent(marker.group);
+            var group = marker.group;
             if (typeof groups[group] === "undefined" ) {
                 var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
                 if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
@@ -102,8 +102,8 @@ function showSingleMap(mapData){
             });
 
             markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
-            if (decodeURIComponent(marker.info).length >0){
-              markerObject.setPopup(new mapboxgl.Popup({ offset: [0, -25] }).setHTML(decodeURIComponent(marker.info)));
+            if (marker.info.length > 0){
+              markerObject.setPopup(new mapboxgl.Popup({ offset: [0, -25] }).setHTML(marker.info));
             }
             markerObject.addTo(m_maps[mapData.id]);
             markerObject.group=group;

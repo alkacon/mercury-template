@@ -233,7 +233,7 @@ function showSingleMap(mapData){
         for (var p=0; p < mapData.markers.length; p++) {
 
             var point = mapData.markers[p];
-            var group = decodeURIComponent(point.group);
+            var group = point.group;
             if (typeof groups[group] === "undefined" ) {
                 // Array? Object?
                 // see http://stackoverflow.com/questions/9526860/why-does-a-string-index-in-a-javascript-array-not-increase-the-length-size
@@ -246,10 +246,10 @@ function showSingleMap(mapData){
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(point.lat, point.lng),
                 map: map,
-                title: decodeURIComponent(point.title),
+                title: point.title,
                 group: group,
                 icon: groups[group],
-                info: decodeURIComponent(point.info),
+                info: point.info,
                 index: p,
                 mapId: mapId,
                 geocode: point.geocode

@@ -131,9 +131,9 @@
                 <cms:jsonvalue key="lat" value="${marker.lat}" />
                 <cms:jsonvalue key="lng" value="${marker.lng}" />
                 <cms:jsonvalue key="geocode" value="${marker.geocode}" />
-                <cms:jsonvalue key="title" value="${cms:encode(marker.name)}" />
-                <cms:jsonvalue key="group" value="${empty marker.group ? 'default' : cms:encode(marker.group)}" />
-                <cms:jsonvalue key="info" value="${cms:encode(marker.infoMarkup)}" />
+                <cms:jsonvalue key="title" value="${marker.name}" />
+                <cms:jsonvalue key="group" value="${empty marker.group ? 'default' : marker.group}" />
+                <cms:jsonvalue key="info" value="${marker.infoMarkup}" />
             </cms:jsonobject>
 
         </c:forEach>
@@ -164,7 +164,7 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
 <mercury:padding-box ratio="${ratio}">
 
     ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
-    --%> data-map='${mapData.pretty}' <%--
+    --%> data-map='${mapData.compact}' <%--
     --%><c:if test="${cms.isEditMode}">
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">

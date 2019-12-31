@@ -88,6 +88,10 @@
 
     <c:set var="categories">${config.value.Category}</c:set>
 
+    <c:if test="${not ajaxCall}">
+        <cms:jsonobject var="listGeneratedJson" mode="wrapper" scope="request" />
+    </c:if>
+
     <%--####### Elements of the list ######## --%>
     <c:forEach var="result" items="${search.searchResults}" varStatus="status">
 
@@ -125,6 +129,14 @@
         <c:if test="${not empty listEntryWrapper}"></${listEntryTag}></c:if>
 
     </c:forEach>
+
+    <c:if test="${not empty listGeneratedJson}">
+        <cms:jsonvalue key="listid" value="${instanceId}" target="${listGeneratedJson}" />
+        <cms:jsonvalue key="resultTotal" value="${search.numFound}" target="${listGeneratedJson}" />
+        <mercury:nl />
+        <script type="application/ld+json">${listGeneratedJson.pretty}</script><%----%>
+        <mercury:nl />
+    </c:if>
 
     </cms:addparams>
 

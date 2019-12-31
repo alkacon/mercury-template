@@ -24,7 +24,7 @@
     ${' '}${setting.shape}
 </c:set>
 
-${nl}
+<mercury:nl />
 <div class="element type-shariff social-icons ${fn:replace(cssWrapper, 'default', '')}"><%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
@@ -56,7 +56,7 @@ ${nl}
     <div class="shariff" data-services="${services}" data-lang="${lang}" ${mailAttrs}></div><%----%>
 
 </div><%----%>
-${nl}
+<mercury:nl />
 
 </cms:formatter>
 

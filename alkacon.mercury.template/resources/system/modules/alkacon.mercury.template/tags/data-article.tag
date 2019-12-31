@@ -25,6 +25,11 @@
 
 <c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
 
+<%--
+# JSON-LD Generation for Mercury article.
+# See: https://schema.org/Article
+# See: https://developers.google.com/search/docs/data-types/article
+--%>
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
     <cms:jsonvalue key="@type" value="Article" />
@@ -70,5 +75,5 @@
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${jsonLd.compact}</script>
+<script type="application/ld+json">${jsonLd.compact}</script><%----%>
 <mercury:nl />

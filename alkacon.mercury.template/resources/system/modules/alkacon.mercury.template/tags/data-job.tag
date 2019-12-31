@@ -28,6 +28,11 @@
 
 <c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
 
+<%--
+# JSON-LD Generation for Mercury job posting.
+# See: https://schema.org/JobPosting
+# See: https://developers.google.com/search/docs/data-types/job-posting
+--%>
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
     <cms:jsonvalue key="@type" value="JobPosting" />
@@ -69,5 +74,5 @@
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${jsonLd.compact}</script>
+<script type="application/ld+json">${jsonLd.compact}</script><%----%>
 <mercury:nl />

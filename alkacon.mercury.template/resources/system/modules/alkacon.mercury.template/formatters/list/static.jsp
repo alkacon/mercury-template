@@ -53,7 +53,7 @@
             ${'</'}${listTag}${'>'}
 
             <%-- ####### Boxes to create new entries in case of empty result ######## --%>
-            <c:if test="${cms.isEditMode and search.numFound == 0}">
+            <c:if test="${cms.isEditMode and (search.numFound == 0)}">
                 <c:forEach var="type" items="${content.valueList.TypesToCollect}">
                     <c:set var="createType">${fn:substringBefore(type.stringValue, ':')}</c:set>
                     <mercury:list-messages type="${createType}" defaultCats="${content.value.Category}" />

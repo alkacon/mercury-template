@@ -26,6 +26,11 @@
 
 <c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
 
+<%--
+# JSON-LD Generation for Mercury event.
+# See: https://schema.org/Event
+# See: https://developers.google.com/search/docs/data-types/event
+--%>
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
     <cms:jsonvalue key="@type" value="Event" />
@@ -71,5 +76,5 @@
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${jsonLd.compact}</script>
+<script type="application/ld+json">${jsonLd.compact}</script><%----%>
 <mercury:nl />

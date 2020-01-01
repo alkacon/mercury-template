@@ -1951,6 +1951,7 @@
       <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
       <PropertyName><![CDATA[showPosition]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showPosition)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showPosition.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -1958,6 +1959,7 @@
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
       <PropertyName><![CDATA[showOrganization]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganization)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showOrganization.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>

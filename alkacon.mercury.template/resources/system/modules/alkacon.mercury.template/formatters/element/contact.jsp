@@ -58,7 +58,7 @@
     <jsp:attribute name="markupVisual">
         <c:if test="${showImage}">
             <mercury:contact
-                kind="${value.Kind}"
+                kind="${value.Kind.toString}"
                 image="${value.Image}"
                 name="${value.Name}"
                 organization="${value.Organization}"
@@ -74,7 +74,7 @@
 
     <jsp:attribute name="markupText">
         <mercury:contact
-            kind="${value.Kind}"
+            kind="${value.Kind.toString}"
             link="${value.Link}"
             name="${value.Name}"
             position="${value.Position}"

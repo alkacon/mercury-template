@@ -2,7 +2,7 @@
     display-name="section"
     body-content="tagdependent"
     trimDirectiveWhitespaces="true"
-    description="Displays a content section of paragraph." %>
+    description="Displays a content section like a paragraph." %>
 
 <%@ attribute name="pieceLayout" type="java.lang.Integer" required="true"
     description="The layout option to generate. Valid values are 0 to 9.
@@ -109,6 +109,7 @@
 <c:when test="${showHeading or showText or showVisual or showLink}">
     <mercury:piece
         cssWrapper="${cssWrapper}"
+        attrWrapper="${attrWrapper}"
         pieceLayout="${pieceLayout}"
         sizeDesktop="${sizeDesktop}"
         sizeMobile="${sizeMobile}"

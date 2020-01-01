@@ -4,8 +4,8 @@
     trimDirectiveWhitespaces="true"
     description="Displays contact information from the given content with support for schema.org annotation." %>
 
-<%@ attribute name="kind" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
-    description="Value wrapper for the contact kind. Standard string." %>
+<%@ attribute name="kind" type="java.lang.String" required="false"
+    description="The contact kind. Default is 'person'." %>
 
 <%@ attribute name="image" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact image data." %>
@@ -84,8 +84,10 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}"/>
 <c:set var="showName"           value="${showName and name.isSet}"/>
+<c:set var="showPosition"       value="${showName and position.isSet}"/>
 <c:set var="showImage"          value="${showImage and image.isSet}" />
 <c:set var="showOrganization"   value="${showOrganization and organization.isSet}"/>
 <c:set var="showDescription"    value="${showDescription and description.isSet}"/>
@@ -148,37 +150,43 @@
     cssImage="photo"
     attrImage='itemprop="image"'
     showImageZoom="${showImageZoom}"
->
+    >
 
     <c:if test="${showName or showOrganization or showDescription or showAddress or showPhone or showEmail or showLinkAsButton}">
-        <div class="text-box">
-<%----%>
+        <div class="text-box"><%----%>
+        <mercury:nl />
 
             <c:set var="personname">
-                <c:if test="${name.value.Title.isSet}"><span itemprop="honorificPrefix" ${name.value.Title.rdfaAttr}>${name.value.Title} </span></c:if>
+                <c:if test="${name.value.Title.isSet}">
+                    <span itemprop="honorificPrefix" ${name.value.Title.rdfaAttr}>${name.value.Title}${' '}</span><%----%>
+                </c:if>
                 <span itemprop="givenName" ${name.value.FirstName.rdfaAttr}> ${name.value.FirstName}</span><%----%>
-                <c:if test="${name.value.MiddleName.isSet}"><span itemprop="additionalName" ${name.value.MiddleName.rdfaAttr}> ${name.value.MiddleName}</span></c:if>
+                <c:if test="${name.value.MiddleName.isSet}">
+                    <span itemprop="additionalName" ${name.value.MiddleName.rdfaAttr}> ${name.value.MiddleName}</span><%----%>
+                </c:if>
                 <span itemprop="familyName" ${name.value.LastName.rdfaAttr}> ${name.value.LastName}</span><%----%>
-                <c:if test="${name.value.Suffix.isSet}"><span itemprop="honorificSuffix"  ${name.value.Suffix.rdfaAttr}> ${name.value.Suffix}</span></c:if>
+                <c:if test="${name.value.Suffix.isSet}">
+                    <span itemprop="honorificSuffix"  ${name.value.Suffix.rdfaAttr}> ${name.value.Suffix}</span><%----%>
+                </c:if>
             </c:set>
 
             <c:choose>
                 <c:when test="${kind eq 'org'}">
-                    <c:choose>
-                        <c:when test="${showOrganization}">
-                            <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" text="${organization}" ade="${true}"/>
-                            <c:if test="${showPosition and position.isSet}">
-                                <div class="h${hsize + 1} pos" itemprop="description" class="title" ${position.rdfaAttr}><%----%>
+                    <c:if test="${organization.isSet}">
+                        <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" text="${organization}" ade="${false}"/>
+                    </c:if>
+                    <c:if test="${showOrganization and (showName or showPosition)}">
+                        <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
+                        <div itemprop="employee" itemscope itemtype="http://schema.org/Person"><%----%>
+                            <c:if test="${showName}">
+                                <div class="h${hsize + 1} org">${personname}</div><%----%>
+                            </c:if>
+                            <c:if test="${showPosition}"><%----%>
+                                <div class="pos" itemprop="description" class="title" ${position.rdfaAttr}><%----%>
                                     ${position}
                                 </div><%----%>
                             </c:if>
-                        </c:when>
-                        <c:when test="${not showOrganization and organization.isSet and showAddress}">
-                            <mercury:heading level="${hsize}" css="fn n disp-n" attr="itemprop='name'" text="${organization}" ade="${false}"/>
-                        </c:when>
-                    </c:choose>
-                    <c:if test="${showName}">
-                        <div class="org" itemprop="employee" itemscope itemtype="http://schema.org/Person">${personname}</div>
+                        </div><%----%>
                     </c:if>
                 </c:when>
                 <c:otherwise>
@@ -186,7 +194,7 @@
                         <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" ade="${false}">
                             <jsp:attribute name="markupText">${personname}</jsp:attribute>
                         </mercury:heading>
-                        <c:if test="${showPosition and position.isSet}">
+                        <c:if test="${showPosition}">
                             <div class="h${hsize + 1} pos" itemprop="description" class="title" ${position.rdfaAttr}><%----%>
                                 ${position}
                             </div><%----%>
@@ -339,8 +347,10 @@
                 <mercury:link link="${link}" css="contactlink btn btn-sm" attr="${linkattr}" />
             </c:if>
 
-        </div>
-<%----%>
+        </div><%----%>
+        <mercury:nl />
+
     </c:if>
 </mercury:image-animated>
+
 </cms:bundle>

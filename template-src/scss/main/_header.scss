@@ -42,25 +42,46 @@
 
     // Special header containers
 
-    .co-sm-md {
-        // container only for screen size SM And MD
-        @include media-breakpoint-between(sm, md) {
-            @include make-container(0);
-            max-width: map-get($container-max-widths, sm);
+    @if ($nav-breakpoint-sticky-header != xs) {
+        // sticky header is by not enabled for mobile devices (this is the default)
+        .co-sm-md {
+            // container only for screen size SM And MD
+            @include media-breakpoint-between(sm, md) {
+                @include make-container(0);
+                max-width: map-get($container-max-widths, sm);
+            }
+            @include media-breakpoint-only(md) {
+                max-width: map-get($container-max-widths, md);
+            }
         }
-        @include media-breakpoint-only(md) {
-            max-width: map-get($container-max-widths, md);
-        }
-    }
 
-    .co-lg-xl {
-        // container only for screen size LG And XL
-        @include media-breakpoint-up(lg) {
-            @include make-container();
-            max-width: map-get($container-max-widths, lg);
+        .co-lg-xl {
+            // container only for screen size LG And XL
+            @include media-breakpoint-up(lg) {
+                @include make-container();
+                max-width: map-get($container-max-widths, lg);
+            }
+            @include media-breakpoint-up(xl) {
+                max-width: map-get($container-max-widths, xl);
+            }
         }
-        @include media-breakpoint-up(xl) {
-            max-width: map-get($container-max-widths, xl);
+    } @else {
+        .co-lg-xl {
+            // sticky header is enabled for all devices (also mobile)
+            @include media-breakpoint-between(sm, md) {
+                @include make-container(0);
+                max-width: map-get($container-max-widths, sm);
+            }
+            @include media-breakpoint-only(md) {
+                max-width: map-get($container-max-widths, md);
+            }
+            @include media-breakpoint-up(lg) {
+                @include make-container();
+                max-width: map-get($container-max-widths, lg);
+            }
+            @include media-breakpoint-up(xl) {
+                max-width: map-get($container-max-widths, xl);
+            }
         }
     }
 
@@ -330,67 +351,84 @@
                 }
             }
 
-            &.nav-left {
-                .h-info .h-nav,
-                .h-nav .co-lg-xl {
-                    // remove gutter from surrounding container
-                    padding-left: $grid-gutter-width / 2 - $nav-header-hor-padding;
-                }
-                .nav-main-items {
-                    justify-content: flex-start;
-                    > li > .nav-menu {
-                        // adjust dropdown menu
-                        left: $nav-header-hor-padding - $nav-menu-hor-padding;
+            @if ($nav-breakpoint-desktop != none) {
+                // these adjustments are only required in case there is a special desktop navigation
+                &.nav-left {
+                    .h-info .h-nav,
+                    .h-nav .co-lg-xl {
+                        // remove gutter from surrounding container
+                        padding-left: $grid-gutter-width / 2 - $nav-header-hor-padding;
+                    }
+                    .nav-main-items {
+                        justify-content: flex-start;
+                        > li > .nav-menu {
+                            // adjust dropdown menu
+                            left: $nav-header-hor-padding - $nav-menu-hor-padding;
+                        }
                     }
                 }
-            }
 
-            &.nav-below {
-                .h-nav {
-                    flex-basis: auto;
-                    @if ($fh-nav-bg-color != none) {
-                        background-color: $fh-nav-bg-color;
-                        padding-top: $nav-header-ver-padding;
-                        .nav-main-items > li > a {
-                            $color-nav-text: check-text-color($fh-nav-bg-color, $nav-header-text);
-                            color: $color-nav-text;
-                            &::after {
-                                color: $color-nav-text
+                &.nav-below {
+                    .h-nav {
+                        flex-basis: auto;
+                        @if ($fh-nav-bg-color != none) {
+                            background-color: $fh-nav-bg-color;
+                            padding-top: $nav-header-ver-padding;
+                            .nav-main-items > li > a {
+                                $color-nav-text: check-text-color($fh-nav-bg-color, $nav-header-text);
+                                color: $color-nav-text;
+                                &::after {
+                                    color: $color-nav-text
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            // reduced navigation space
+                // reduced navigation space
 
-            &.nav-disp-reduced {
-                $fh-nav-header-reduction: 3px !default;
-                .nav-main-items > li {
-                    > a {
-                        padding-left: $nav-header-hor-padding - $fh-nav-header-reduction;
-                        padding-right: $nav-header-hor-padding - $fh-nav-header-reduction;
-                        &::after {
-                            right: $nav-header-arrows-right;
+                &.nav-disp-reduced {
+                    $fh-nav-header-reduction: 3px !default;
+                    .nav-main-items > li {
+                        > a {
+                            padding-left: $nav-header-hor-padding - $fh-nav-header-reduction;
+                            padding-right: $nav-header-hor-padding - $fh-nav-header-reduction;
+                            &::after {
+                                right: $nav-header-arrows-right;
+                            }
+                        }
+                        > .nav-menu {
+                            // adjust dropdown menu
+                            left: $nav-header-hor-padding - $nav-menu-hor-padding - $fh-nav-header-reduction;
                         }
                     }
-                    > .nav-menu {
-                        // adjust dropdown menu
-                        left: $nav-header-hor-padding - $nav-menu-hor-padding - $fh-nav-header-reduction;
-                    }
                 }
-            }
 
-            &.nav-disp-default,
-            &.nav-disp-big  {
-                &.nav-left {
-                    .h-info .h-nav,
-                    .h-nav .co-lg-xl {
-                        .nav-main-items > li > a {
-                            // add padding increase to the right and adjust position of arrow down
-                            padding-right: $nav-header-hor-padding + $fh-nav-header-padding-increase;
-                            &::after {
-                                right: $nav-header-arrows-right + $fh-nav-header-padding-increase;
+                &.nav-disp-default,
+                &.nav-disp-big  {
+                    &.nav-left {
+                        .h-info .h-nav,
+                        .h-nav .co-lg-xl {
+                            .nav-main-items > li > a {
+                                // add padding increase to the right and adjust position of arrow down
+                                padding-right: $nav-header-hor-padding + $fh-nav-header-padding-increase;
+                                &::after {
+                                    right: $nav-header-arrows-right + $fh-nav-header-padding-increase;
+                                }
+                            }
+                        }
+                    }
+
+                    &.nav-center,
+                    &.nav-right {
+                        .nav-main-items > li {
+                            > a {
+                                // add padding increase to the left
+                                padding-left: $nav-header-hor-padding + $fh-nav-header-padding-increase;
+                            }
+                            > .nav-menu {
+                                // adjust dropdown menu
+                                left: $fh-nav-header-padding-increase + $nav-header-hor-padding - $nav-menu-hor-padding;
                             }
                         }
                     }
@@ -399,46 +437,32 @@
                 &.nav-center,
                 &.nav-right {
                     .nav-main-items > li {
-                        > a {
-                            // add padding increase to the left
-                            padding-left: $nav-header-hor-padding + $fh-nav-header-padding-increase;
-                        }
-                        > .nav-menu {
-                            // adjust dropdown menu
-                            left: $fh-nav-header-padding-increase + $nav-header-hor-padding - $nav-menu-hor-padding;
+                        &.nav-first {
+                            > a {
+                                padding-left: 0;
+                            }
+                            > .nav-menu {
+                                left: -1 * $nav-header-hor-padding + $nav-header-hor-padding - $nav-menu-hor-padding;
+                            }
                         }
                     }
                 }
-            }
 
-            &.nav-center,
-            &.nav-right {
-                .nav-main-items > li {
-                    &.nav-first {
-                        > a {
+                &.nav-center {
+                    .nav-main-items {
+                        justify-content: center;
+                        & > li:first-of-type > a {
                             padding-left: 0;
                         }
-                        > .nav-menu {
-                            left: -1 * $nav-header-hor-padding + $nav-header-hor-padding - $nav-menu-hor-padding;
-                        }
                     }
                 }
-            }
 
-            &.nav-center {
-                .nav-main-items {
-                    justify-content: center;
-                    & > li:first-of-type > a {
-                        padding-left: 0;
-                    }
-                }
-            }
-
-            &.nav-disp-big {
-                .nav-main-items {
-                    > li {
-                        > a {
-                            font-size: $nav-header-font-size + 4px;
+                &.nav-disp-big {
+                    .nav-main-items {
+                        > li {
+                            > a {
+                                font-size: $nav-header-font-size + 4px;
+                            }
                         }
                     }
                 }

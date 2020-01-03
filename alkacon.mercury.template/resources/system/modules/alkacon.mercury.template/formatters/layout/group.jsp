@@ -113,7 +113,6 @@
                                 <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
                             </span><%----%>
                         </label><%----%>
-                        <div class="head-overlay"></div><%----%>
                     </div><%----%>
                     <mercury:nl />
                 </c:set>
@@ -227,6 +226,7 @@
                     <div class="header-group co-sm-md ${fixHeader}"><%----%>
 
                         <div class="head notfixed"><%----%>
+                            <div class="head-overlay"></div><%----%>
                             <mercury:nl />
 
                             <%--

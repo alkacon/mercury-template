@@ -66,8 +66,8 @@ sourceSets {
 // import dependencies
 apply from: 'dependencies.gradle'
 
-task wrapper(type: Wrapper){
-	gradleVersion = '4.10'
+task setGradleVersion(type: Wrapper){
+	gradleVersion = '6.0.1'
 }
 
 //task testAll (type: Test)
@@ -125,7 +125,7 @@ allModuleNames.split(',').each{ moduleName ->
 	        ext.moduleName = moduleName
 	        ext.moduleVersion= moduleVersion
 	        manifest {
-	            attributes 'Implementation-Title': 'Mercury template', 'Implementation-Version': moduleVersion
+	            attributes 'Implementation-Title': project_nice_name, 'Implementation-Version': moduleVersion
 	        }
 	        from sourceSets[moduleName].output
 	        from ("$staticFolder") { into "OPENCMS" }
@@ -292,41 +292,41 @@ task bindist(dependsOn: [copyDeps, copyProjectProps]) {
     }
 }
 
-task mercuryAllJar(type: Jar){
+task projectAllJar(type: Jar){
 	allModuleNames.split(',').each{ moduleName ->
 		from sourceSets[moduleName].output
 	}
-	baseName 'mercury-all'
+	baseName "${project_name}-all"
     exclude '**/.gitignore'
     exclude '**/test/**'
     doFirst {
         println '======================================================'
-        println "Building JAR for MERCURY ALL"
+        println "Building JAR for ${project_nice_name} ALL"
         println '======================================================'
 	}
 }
 
-task mercuryAllJavadoc (type: Javadoc){
+task projectAllJavadoc (type: Javadoc){
 	allModuleNames.split(',').each{ moduleName ->
     	source += sourceSets[moduleName].allJava
     	classpath += project.sourceSets[moduleName].compileClasspath
     }
-    destinationDir = file("${buildDir}/docs/mercuryAllJavadoc")
+    destinationDir = file("${buildDir}/docs/projectAllJavadoc")
     options.addStringOption("sourcepath", "")
 }
 
-task mercuryAllJavadocJar(dependsOn: mercuryAllJavadoc, type: Jar) {
+task projectAllJavadocJar(dependsOn: projectAllJavadoc, type: Jar) {
  	classifier 'javadoc'
-    from "${buildDir}/docs/mercuryAllJavadoc"
-    baseName 'mercury-all'
+    from "${buildDir}/docs/projectAllJavadoc"
+    baseName "${project_name}-all"
 }
 
-task mercuryAllSourcesJar(type: Jar) {
+task projectAllSourcesJar(type: Jar) {
 	allModuleNames.split(',').each{ moduleName ->
     	from sourceSets[moduleName].allSource
     }
     classifier 'sources'
-    baseName 'mercury-all'
+    baseName "${project_name}-all"
 }
 
 tasks.findAll{ task -> task.name.startsWith('dist_')}.each{ dist_task ->
@@ -350,16 +350,16 @@ tasks.findAll{ task -> task.name.startsWith('dist_')}.each{ dist_task ->
 	    }
     }
     bindist.dependsOn dist_task
-    mercuryAllJar.dependsOn{
+    projectAllJar.dependsOn{
         tasks.findAll{ comp_task -> comp_task.name.toLowerCase().equals('compile'+dist_task.moduleName.replaceAll('\\.','')+'java')}
     }
 }
 
 // fixed issue with libraries containing both .java and .class files
 tasks.withType(JavaCompile) {
-    options.compilerArgs += ["-sourcepath", ""]
+    options.sourcepath=files()
+    options.encoding='UTF-8'
 }
-
 tasks.withType(Javadoc) {
     options.addStringOption("sourcepath", "")
     if (JavaVersion.current().isJava8Compatible()) {
@@ -369,24 +369,24 @@ tasks.withType(Javadoc) {
 }
 
 artifacts {
-    archives mercuryAllJar
-    archives mercuryAllSourcesJar
-    archives mercuryAllJavadocJar
+    archives projectAllJar
+    archives projectAllSourcesJar
+    archives projectAllJavadocJar
 }
 
 install {
     repositories {
         mavenInstaller {
-        	addFilter('mercury-all'){artifact, file ->
-                artifact.name.startsWith('mercury-all')
+        	addFilter("${project_name}-all"){artifact, file ->
+                artifact.name.startsWith("${project_name}-all")
             }
-            pom('mercury-all').project {
-                name 'Mercury all'
-                description 'Mercury all modules'
+            pom("${project_name}-all").project {
+                name "${project_nice_name} all"
+                description "${project_nice_name} all modules"
                 packaging 'jar'
                 groupId 'com.alkacon'
                 url 'http://www.alkacon.com'
-                version mercury_all_version
+                version build_version
                 licenses {
                     license {
                         name 'GNU General Public License'

@@ -240,13 +240,13 @@
         <c:if test="${not empty styleAttr}">
               <c:set var="styleAttr"> style="${styleAttr}"</c:set>
         </c:if>
-        <div class="area-content ${variant}${' '}${cssWrapper}"${styleAttr}>
+        <main class="area-content ${variant}${' '}${cssWrapper}"${styleAttr}>
             <c:set target="${valueMap}" property="Type"             value="row"/>
             <c:set target="${valueMap}" property="Name"             value="main"/>
             <c:set target="${valueMap}" property="Tag"              value="div" />
             <c:set target="${valueMap}" property="Css"              value="container" />
             <mercury:container value="${valueMap}" title="${value.Title}" />
-        </div>
+        </main>
     </c:when>
     <c:when test="${(variant eq 'area-side-main') or (variant eq 'area-main-side')}">
         <%-- la_00002 / la_00003 --%>

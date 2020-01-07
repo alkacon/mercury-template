@@ -52,6 +52,7 @@
 
     &.compact {
         .fn.n,
+        .org,
         .pos {
             @extend .default-font;
         }

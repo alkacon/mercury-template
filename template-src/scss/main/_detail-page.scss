@@ -42,7 +42,10 @@
 
     // text elements that belong to the main detail visual
     .detail-visual {
-         margin-bottom: $default-margin;
+
+        &:not(.only-heading) {
+            margin-bottom: $default-margin;
+        }
 
         .visual-info {
             // applies only to the info labels below the image
@@ -121,10 +124,9 @@
     }
 
     .detail-content {
-        margin-bottom: $default-margin;
 
-        &:last-child {
-            margin-bottom: 0;
+        + div {
+            margin-top: $default-margin;
         }
 
         > .piece {

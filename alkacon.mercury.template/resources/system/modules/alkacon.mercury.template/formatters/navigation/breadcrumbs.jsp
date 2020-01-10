@@ -38,7 +38,7 @@
                 <cms:jsonarray var="breadCrumbJson">
 
                     <c:forEach var="navElem" items="${navItems}" varStatus="status">
-                        <c:if test="${(breadcrumbsIncludeHidden and (navElem.navPosition > 0)) or (navElem.info ne 'ignoreInDefaultNav')}">
+                        <c:if test="${((breadcrumbsIncludeHidden or (status.last and not cms.detailRequest)) and (navElem.navPosition > 0)) or (navElem.info ne 'ignoreInDefaultNav')}">
                             <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
                                 ? navElem.title : navElem.navText}" />
                             <c:if test="${!empty navText}">
@@ -84,7 +84,7 @@
 
                 </cms:jsonarray>
 
-                <c:if test="${(empty breadCrumbJson and hidebreadcrumbtitle) or cms.modelGroupPage}">
+                <c:if test="${(empty breadCrumbJson) or cms.modelGroupPage}">
                     <li><mercury:meta-title addIntro="${true}" /></li><%----%>
                 </c:if>
             </ul><%----%>

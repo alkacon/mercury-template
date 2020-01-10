@@ -553,6 +553,12 @@
         @if ($nav-header-float == "right") {
             justify-content: flex-end;
 
+            @if ($nav-header-show-arrows == false) {
+                > li:last-of-type > a {
+                    padding-right: 0;
+                }
+            }
+
         } @else {
             justify-content: flex-start;
 

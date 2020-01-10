@@ -349,8 +349,9 @@
                 small ~ small {
                     &::before {
                         display: inline-block;
-                        content: "\2013"; // ndash
-                        margin: 0 $default-margin-verysmall;
+                        content: "\00a0";
+                        // content: "\2013"; // ndash
+                        // margin: 0 $default-margin-verysmall;
                     }
                 }
                 &.custom {
@@ -358,7 +359,7 @@
                         background-color: transparent;
                         strong {
                             display: block;
-                            padding: 7px 10px;
+                            padding: $default-margin-verysmall $default-margin-small;
                         }
                         strong, small {
                             float: none;
@@ -372,7 +373,7 @@
                 }
                 .subcaption {
                     display: block;
-                    padding: 4px 10px;
+                    padding: $default-margin-verysmall $default-margin-small;
                 }
             }
         }

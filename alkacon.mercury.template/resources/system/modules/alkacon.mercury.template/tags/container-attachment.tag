@@ -37,20 +37,23 @@
 <c:if test="${isRequestToMatchingPage or isDetailPageEditMode}">
 
     <c:set var="type" value="${empty type ? 'element' : type }" />
+    <c:set var="cssWrapper" value="${empty cssWrapper ? 'attachment-container' : cssWrapper}" />
 
     <c:choose>
         <c:when test="${not cms.detailRequest and isDetailPageEditMode}">
-            <mercury:container-box
-                label="${name}"
-                boxType="detail-placeholder"
-                cssWrapper="attachment"
-                type="${type}"
-            />
+            <div class="${cssWrapper}"><%----%>
+                <mercury:container-box
+                    label="${name}"
+                    boxType="detail-placeholder"
+                    cssWrapper="attachment"
+                    type="${type}"
+                />
+            </div><%----%>
+            <mercury:nl />
         </c:when>
 
         <c:when test="${cms.detailRequest and isRequestToMatchingPage}">
             <c:set var="role" value="${empty role ? 'ROLE.EDITOR' : role}" />
-            <c:set var="cssWrapper" value="${empty cssWrapper ? 'attachment-container' : cssWrapper}" />
             <cms:container
                 name="${name}"
                 nameprefix="none"

@@ -58,7 +58,7 @@
         background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
         color: $color;
 
-        @include colored-a($color-link, $color-hover);
+        @include colored-a($color-link, $color-hover, true);
 
         h1, h2, h3, h4, h5, h6 {
             // required in order to override colors set in headings

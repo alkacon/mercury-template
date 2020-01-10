@@ -348,11 +348,11 @@
     }
 }
 
-@mixin colored-a($text-color, $highlight-color: none) {
+@mixin colored-a($text-color, $highlight-color: none, $force: false) {
     a:not(.btn):not(.uncolored) {
         color: $text-color;
 
-        @if (($highlight-color != none) and ($highlight-color != $text-color)) {
+        @if (($highlight-color != none) and (($force == true) or ($highlight-color != $text-color))) {
             &:focus,
             &:hover {
                 color: $highlight-color;

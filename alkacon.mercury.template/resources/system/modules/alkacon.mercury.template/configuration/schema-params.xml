@@ -8,4 +8,12 @@
     <param name="editorConfigMail"     >formatselect,table,source</param>
     <param name="editorConfigLimited"  >link,source</param>
 
+    <param name="mercuryYouTubePreviewDefault">hqdefault.jpg</param>
+    <param name="mercuryYouTubePreviewWidgetConfig"><![CDATA[
+        hqdefault.jpg:%(key.msg.option.media.youtube.hqdefault)|
+        sddefault.jpg:%(key.msg.option.media.youtube.sddefault)|
+        maxresdefault.jpg:%(key.msg.option.media.youtube.maxresdefault)|
+        none:%(key.msg.option.media.youtube.none)
+    ]]></param>
+
 </params>

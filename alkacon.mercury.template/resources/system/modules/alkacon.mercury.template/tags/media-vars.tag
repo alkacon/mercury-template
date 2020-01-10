@@ -74,8 +74,9 @@
 <c:when test="${content.value.MediaContent.value.YouTube.isSet}">
     <c:set var="isYouTube" value="${true}" />
     <c:set var="youTubeId" value="${content.value.MediaContent.value.YouTube.value.YouTubeId}" />
+    <c:set var="defaultPreview"><mercury:schema-param param="mercuryYouTubePreviewDefault" /></c:set>
     <c:set var="youTubePreviewImg" value="${content.value.MediaContent.value.YouTube.value.YouTubePreview.isSet ?
-        content.value.MediaContent.value.YouTube.value.YouTubePreview : 'hqdefault.jpg'}" />
+        content.value.MediaContent.value.YouTube.value.YouTubePreview : defaultPreview}" />
     <c:set var="template"><%--
     --%><iframe src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
         --%>autoplay=1&rel=0&iv_load_policy=3&modestbranding=1" <%--
@@ -85,22 +86,29 @@
     <c:set var="icon" value="fa-youtube-play" />
     <c:set var="cssClass" value="video" />
 
-    <c:set var="youTubePreviewHtml">
-        <c:set var="srcSet"><%--
-        --%>https://img.youtube.com/vi/${youTubeId}/default.jpg 120w, <%--
-        --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w</c:set>
-        <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
-            <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
-        </c:if>
-        <mercury:image-lazyload
-            srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
-            srcSet="${srcSet}"
-            alt="${content.value.Title}"
-            cssImage="animated"
-            noScript="${caseStandardElement}"
-            lazyLoad="${not caseDynamicListNoscript}"
-        />
-    </c:set>
+    <c:choose>
+        <c:when test="${youTubePreviewImg eq 'none'}">
+            <c:set var="youTubePreviewHtml" value="${null}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="youTubePreviewHtml">
+                <c:set var="srcSet"><%--
+                --%>https://img.youtube.com/vi/${youTubeId}/default.jpg 120w, <%--
+                --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w</c:set>
+                <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
+                    <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
+                </c:if>
+                <mercury:image-lazyload
+                    srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
+                    srcSet="${srcSet}"
+                    alt="${content.value.Title}"
+                    cssImage="animated"
+                    noScript="${caseStandardElement}"
+                    lazyLoad="${not caseDynamicListNoscript}"
+                />
+            </c:set>
+        </c:otherwise>
+    </c:choose>
 </c:when>
 
 <c:when test="${content.value.MediaContent.value.Flexible.isSet}">

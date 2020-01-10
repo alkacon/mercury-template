@@ -18,8 +18,9 @@
 
 <c:set var="ade"                    value="${true}"/>
 
-${nl}
-<div class="element type-iconbox ${cssWrapper}">${nl}
+<mercury:nl />
+<div class="element type-iconbox ${cssWrapper}"><%----%>
+<mercury:nl />
 
     <mercury:link link="${value.Link}" setTitle="${true}" css="icon-link">
         <mercury:heading level="${hsize}" text="${value.Title}" css="icon-title" ade="${ade}" />
@@ -31,7 +32,8 @@ ${nl}
         </c:if>
     </mercury:link>
 
-</div>${nl}
+</div><%----%>
+<mercury:nl />
 
 </cms:formatter>
 </mercury:init-messages>

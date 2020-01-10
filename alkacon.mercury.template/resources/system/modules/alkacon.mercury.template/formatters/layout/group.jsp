@@ -214,7 +214,7 @@
                     ${navFixDisplay}${' '}
                     ${showAddContainer ? acDisplay.concat(' ').concat(acPosition.concat(' ')) : ''}
                     ${bcAlignment}
-                    ${not addBottomMargin ? ' no-margin' : ''}
+                    ${addBottomMargin ? ' has-margin' : ' no-margin'}
                     ${not empty cssWrapper ? ' '.concat(cssWrapper) : ''}
                     ${not empty addCssWrapper ? ' '.concat(addCssWrapper) : ''}"><%----%>
                     <mercury:nl />

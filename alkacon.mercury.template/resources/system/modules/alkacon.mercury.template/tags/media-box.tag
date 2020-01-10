@@ -98,7 +98,7 @@
                         <c:when test="${not empty image}">
                             <mercury:image-animated image="${image}" ratio="${ratio}" title="${content.value.Title}" />
                         </c:when>
-                        <c:when test="${isYouTube}">
+                        <c:when test="${isYouTube and not empty youTubePreviewHtml}">
                             <div class="centered image">${youTubePreviewHtml}</div><%----%>
                         </c:when>
                         </c:choose>

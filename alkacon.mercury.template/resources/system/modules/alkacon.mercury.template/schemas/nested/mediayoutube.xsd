@@ -31,12 +31,8 @@
                     <PropertyName>YouTubePreview</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaYoutube.YouTubePreview)]]></DisplayName>
                     <Widget>select</Widget>
-                    <Default>hqdefault.jpg</Default>
-                    <WidgetConfig><![CDATA[
-                        hqdefault.jpg:%(key.msg.option.media.youtube.hqdefault)|
-                        sddefault.jpg:%(key.msg.option.media.youtube.sddefault)|
-                        maxresdefault.jpg:%(key.msg.option.media.youtube.maxresdefault)
-                    ]]></WidgetConfig>
+                    <Default><![CDATA[%(param:mercuryYouTubePreviewDefault)]]></Default>
+                    <WidgetConfig><![CDATA[%(param:mercuryYouTubePreviewWidgetConfig)]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

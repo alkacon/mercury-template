@@ -130,6 +130,7 @@ allModuleNames.split(',').each{ moduleName ->
 	            attributes 'Implementation-Title': project_nice_name, 'Implementation-Version': moduleVersion
 	        }
 	        from sourceSets[moduleName].output
+	        from ("$moduleFolder") { include "META-INF/**" }
 	        from ("$staticFolder") { into "OPENCMS" }
 	        if (gwtModule != null){
 	        	from( "${project.buildDir}/gwt/${moduleName}") {

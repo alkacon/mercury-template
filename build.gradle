@@ -76,14 +76,16 @@ allModuleNames.split(',').each{ moduleName ->
     sourceSets.create(moduleName,{
         java {
             srcDir "${moduleName}/src"
+            exclude '**/test/**'
         }
         resources.srcDir "${moduleName}/src"
     });
    sourceSets[moduleName].compileClasspath=configurations.compile
     def moduleFolder = file("${moduleName}")
-    def srcGwtDir = file("${moduleFolder}/src")
+    def srcModule = file("${moduleFolder}/src")
+    def srcGwtDir = file("${moduleFolder}/src-gwt")
     def staticFolder=file("${moduleFolder}/static")
-    def requiresJar = srcGwtDir.exists() || staticFolder.exists()
+    def requiresJar = srcModule.exists() || srcGwtDir.exists() || staticFolder.exists()
     def manifestFile = file("${moduleFolder}/resources/manifest.xml")
     def gwtModule = null
     def gwtSourceSetName = null
@@ -129,9 +131,16 @@ allModuleNames.split(',').each{ moduleName ->
 	        }
 	        from sourceSets[moduleName].output
 	        from ("$staticFolder") { into "OPENCMS" }
+	        if (gwtModule != null){
+	        	from( "${project.buildDir}/gwt/${moduleName}") {
+	            	exclude '**/WEB-INF/**'
+	            	into "OPENCMS/gwt"
+	        	}
+        	}
 	        archiveName moduleName+'.jar'
 	        baseName moduleName
 	        exclude '**/.gitignore'
+	        exclude '**/test/**'
 	        doFirst {
 	            println '======================================================'
 	            println "Building JAR for $moduleName version $moduleVersion"
@@ -184,6 +193,14 @@ allModuleNames.split(',').each{ moduleName ->
         // excluding jars from modules, jars will be placed in the WEB-INF lib folder through the deployment process
         from("${moduleFolder}/resources"){
         	exclude '**/lib*/*.jar'
+        	exclude 'manifest.xml'
+        }
+        // the following allows to rename the .categories to _categories for instances still using the legacy folder name
+        from("${moduleFolder}/resources"){
+        	include 'manifest.xml'
+        	if (project.hasProperty('replaceCategoryFolder')){
+        		filter { line -> line.replaceAll('/.categories', '/_categories') }
+        	}
         }
     }
     if (requiresJar.toBoolean()) {
@@ -197,6 +214,7 @@ allModuleNames.split(',').each{ moduleName ->
         sourceSets.create(gwtSourceSetName,{
             java {
                 srcDirs srcGwtDir
+                srcDir srcModule
                 exclude '**/test/**'
             }
             resources {
@@ -208,7 +226,7 @@ allModuleNames.split(',').each{ moduleName ->
             ext.buildDir =  project.buildDir.toString()  +"/gwt/$moduleName"
             ext.extraDir =  project.buildDir.toString() + "/extra/$moduleName"
             ext.moduleName = moduleName
-            inputs.source sourceSets[gwtSourceSetName].java.srcDirs
+            inputs.files sourceSets[gwtSourceSetName].java.srcDirs
             inputs.dir sourceSets[gwtSourceSetName].output.resourcesDir
             outputs.dir buildDir
 
@@ -235,7 +253,7 @@ allModuleNames.split(',').each{ moduleName ->
                     sourceSets[moduleName].compileClasspath,
                     sourceSets[gwtSourceSetName].java.srcDirs,
                     sourceSets[gwtSourceSetName].output.resourcesDir,
-                    sourceSets[gwtSourceSetName].output.classesDir
+                    sourceSets[gwtSourceSetName].java.outputDir
                 ]
             }
 
@@ -247,7 +265,7 @@ allModuleNames.split(',').each{ moduleName ->
                         '-war',
                         buildDir,
                         '-logLevel',
-                        'INFO',
+                        'ERROR',
                         '-localWorkers',
                         '2',
                         '-style',
@@ -261,7 +279,7 @@ allModuleNames.split(',').each{ moduleName ->
             maxHeapSize = max_heap_size
         }
 
-        tasks["dist_$moduleName"].dependsOn tasks["gwt_$moduleName"]
+        tasks["jar_$moduleName"].dependsOn tasks["gwt_$moduleName"]
     }
 }
 
@@ -296,7 +314,7 @@ task projectAllJar(type: Jar){
 	allModuleNames.split(',').each{ moduleName ->
 		from sourceSets[moduleName].output
 	}
-	baseName "${project_name}-all"
+	baseName "${project_name}"
     exclude '**/.gitignore'
     exclude '**/test/**'
     doFirst {
@@ -318,7 +336,7 @@ task projectAllJavadoc (type: Javadoc){
 task projectAllJavadocJar(dependsOn: projectAllJavadoc, type: Jar) {
  	classifier 'javadoc'
     from "${buildDir}/docs/projectAllJavadoc"
-    baseName "${project_name}-all"
+    baseName "${project_name}"
 }
 
 task projectAllSourcesJar(type: Jar) {
@@ -326,7 +344,7 @@ task projectAllSourcesJar(type: Jar) {
     	from sourceSets[moduleName].allSource
     }
     classifier 'sources'
-    baseName "${project_name}-all"
+    baseName "${project_name}"
 }
 
 tasks.findAll{ task -> task.name.startsWith('dist_')}.each{ dist_task ->
@@ -377,10 +395,10 @@ artifacts {
 install {
     repositories {
         mavenInstaller {
-        	addFilter("${project_name}-all"){artifact, file ->
-                artifact.name.startsWith("${project_name}-all")
+        	addFilter("${project_name}"){artifact, file ->
+                artifact.name.startsWith("${project_name}")
             }
-            pom("${project_name}-all").project {
+            pom("${project_name}").project {
                 name "${project_nice_name} all"
                 description "${project_nice_name} all modules"
                 packaging 'jar'

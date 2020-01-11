@@ -169,8 +169,6 @@
 </c:if>
 <c:set var="showLink"       value="${not empty pieceLink}" />
 
-<c:set var="showBody"       value="${showText or (showHeading and inlineHeading) or (showLink and inlineLink)}" />
-
 <c:if test="${not empty visual}">
     <%-- It is important to make this check AFTER the body because the grid size must be 12 if there is no body. --%>
     <c:set var="pieceVisual">
@@ -188,6 +186,8 @@
     <c:set var="inlineLink"     value="${false}" />
     <c:set var="inlineHeading"  value="${false}" />
 </c:if>
+
+<c:set var="showBody"       value="${showText or (showHeading and inlineHeading) or (showLink and inlineLink)}" />
 
 <c:if test="${(not showVisual or not showBody) and not allowEmptyBodyColumn}">
     <%-- In this case there are no columns, so we revert to layout option 0 i.e. full with output. --%>

@@ -196,7 +196,7 @@
     .select {
         i {
             position: absolute;
-            top: 2px;
+            top: 0;
             right: 2px;
             width: 28px;
             height: 100%;
@@ -485,7 +485,6 @@
     &.state-error {
         .state-error input,
         .state-error select,
-        .state-error select + i,
         .state-error textarea,
         .radio.state-error i,
         .checkbox.state-error i,
@@ -493,7 +492,6 @@
         .toggle.state-error input:checked + i {
             background-color: $form-error-background;
         }
-
         .note-error {
             color: $form-error-text-color;
         }

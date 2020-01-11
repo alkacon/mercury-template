@@ -182,6 +182,13 @@
 </c:if>
 <c:set var="showVisual"     value="${not empty pieceVisual}" />
 
+<c:if test="${not showVisual}">
+    <%-- If there is no visual and we get 'full' piece, make sure the div structure for does not use inline heading or link. --%>
+    <%-- These are required only in case there is a visual. --%>
+    <c:set var="inlineLink"     value="${false}" />
+    <c:set var="inlineHeading"  value="${false}" />
+</c:if>
+
 <c:if test="${(not showVisual or not showBody) and not allowEmptyBodyColumn}">
     <%-- In this case there are no columns, so we revert to layout option 0 i.e. full with output. --%>
     <c:set var="pieceOption"    value="full" />
@@ -212,6 +219,7 @@ ${'<'}${pieceTag}${' '}
         ${empty pieceOnlyMarker ? '' : ' '.concat(pieceOnlyMarker)}
         ${empty gridOption ? '' : ' '.concat(gridOption)}
         ${showVisual ? ' has-visual' : ' no-visual'}
+        ${showLink and not inlineLink ? ' link-extra': ''}
     ${'\"'}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}
 ${'>'}

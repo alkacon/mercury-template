@@ -111,7 +111,7 @@ $row_start(field=field)$
 <label for="$field.name$_box" class="label">
     $field.label$$mandatory$
 </label>
-$if(field.parameters)$$if(field.parameters.toggle)$$else$<div class="inline-group">$endif$$else$<div class="inline-group">$endif$
+$if(field.parameters)$$if(field.parameters.full)$$else$<div class="inline-group">$endif$$else$<div class="inline-group">$endif$
     <div id="$field.name$_box">
     $field.items:{
         <label for="$field.name$_$i0$" class="$if(field.parameters)$$if(field.parameters.toggle)$toggle$else$checkbox$endif$$else$checkbox$endif$$if(errormessage)$ state-error$endif$">
@@ -119,7 +119,7 @@ $if(field.parameters)$$if(field.parameters.toggle)$$else$<div class="inline-grou
         </label>
     }$
     </div>
-$if(field.parameters)$$if(field.parameters.toggle)$$else$</div>$endif$$else$</div>$endif$
+$if(field.parameters)$$if(field.parameters.full)$$else$</div>$endif$$else$</div>$endif$
 $if(errormessage)$
     <div class="note note-error">$errormessage$</div>
 $endif$

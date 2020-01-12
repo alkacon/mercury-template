@@ -323,7 +323,7 @@
         top: 0;
         height: 100vh;
         background-color: $nav-mobile-bg-color;
-        z-index: $above-oc-z-index; // this is the z-index for the left/right menu
+        z-index: $above-oc-z-index + 200; // this is the z-index for the left/right menu, must be over the "back to top" icon
         pointer-events: auto;
         overflow-x: hidden;
         opacity: 0;

@@ -102,7 +102,7 @@
       <Order><![CDATA[4600]]></Order>
     </MetaMapping>
     <MetaMapping>
-      <Key><![CDATA[ogIntro]]></Key>
+      <Key><![CDATA[ogIntro-NotMappedOnPurpose]]></Key>
       <Element><![CDATA[Intro]]></Element>
       <Order><![CDATA[4600]]></Order>
     </MetaMapping>

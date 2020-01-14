@@ -27,7 +27,9 @@
 <c:set var="pagetitle"><mercury:meta-title addIntro="${true}" /></c:set>
 <c:set var="pagetitle"><mercury:meta-value text="${pagetitle}" keepHtml="${true}" /></c:set>
 <c:set var="titleprefix" value="${contentPropertiesSearch['mercury.title.prefix']}" />
-<c:set var="titlesuffix" value="${contentPropertiesSearch['mercury.title.suffix']}" />
+<c:set var="titleprefix" value="${(empty titleprefix) or (titleprefix eq 'none') or (not empty cms.meta.ogTitle and not cms.detailRequest) ? null : titleprefix}" />
+<c:set var="titlesuffix" value="${contentPropertiesSearch['mercury.title.suffix'] eq 'none' ? null : contentPropertiesSearch['mercury.title.suffix']}" />
+<c:set var="titlesuffix" value="${(empty titlesuffix) or (titlesuffix eq 'none') or (not empty cms.meta.ogTitle and not cms.detailRequest) ? null : titlesuffix}" />
 
 <title>${titleprefix}${empty titleprefix ? '' : ' '}${pagetitle}${empty titlesuffix ? '' : ' '}${titlesuffix}</title>
 

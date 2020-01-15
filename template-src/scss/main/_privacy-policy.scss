@@ -92,7 +92,8 @@
 
     @include media-breakpoint-down(md) {
         .title {
-            font-size: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
             max-width: 100%;
             display: block;
             float: none;
@@ -103,27 +104,26 @@
         }
 
         .buttons {
-            display: block;
+            display: flex;
             float: none;
+            justify-content: center;
 
             .btn {
-                margin-right: $default-margin;
+                margin-left: $default-margin-small;
+                margin-right: $default-margin-small;
                 font-size: 1.25rem;
                 padding: $btn-smi-padding;
             }
 
-            .btn-decline + .btn-accept {
-                // if both buttons are present, float "accept" left so it appears first
-                float: left;
-            }
-
             .btn:last-of-type {
-                margin-left: 0;
+                margin-left: $default-margin-small;
             }
         }
 
         .message {
-            font-size: 1rem;
+            font-size: 1.2rem;
+            text-align: justify;
+            hyphens: auto;
         }
     }
 }

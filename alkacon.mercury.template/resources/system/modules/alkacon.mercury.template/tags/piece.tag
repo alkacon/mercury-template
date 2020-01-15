@@ -126,7 +126,7 @@
     </c:otherwise>
 </c:choose>
 
-<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99)) ? (sizeDesktop < 10 ? sizeDesktop + 3 : 12) : ((sizeMobile < 1) or (sizeMobile > 12) ? (sizeDesktop < 12 ? 7 : 12) : sizeMobile)}" />
+<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99)) ? (sizeDesktop < 10 ? (sizeDesktop > 5 ? 12 : sizeDesktop * 2) : 12) : ((sizeMobile < 1) or (sizeMobile > 12) ? (sizeDesktop < 12 ? 7 : 12) : sizeMobile)}" />
 
 <c:choose>
     <c:when test="${sizeDesktop < 12}">

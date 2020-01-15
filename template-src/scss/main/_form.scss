@@ -532,6 +532,17 @@
         @include button-color($grey-light, $btn-default-hover);
     }
 
+    @include media-breakpoint-down(xs) {
+        header,
+        footer,
+        fieldset {
+            padding: $form-field-ver-padding-xs $form-field-hor-padding-xs;
+        }
+
+        section {
+            margin-bottom: $form-field-hor-padding-xs;
+        }
+    }
 
     @include media-breakpoint-down(sm) {
         .btn.submitbutton {

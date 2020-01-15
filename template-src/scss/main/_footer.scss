@@ -76,12 +76,25 @@
         display: block;
         position: fixed;
         visibility: visible;
-        right: $grid-gutter-width / 2;
         bottom: $grid-gutter-width / 2;
         border-radius: $nav-border-radius !important;
         cursor: pointer;
         pointer-events: none;
         opacity: 0;
+
+        @if ($nav-mobile-position == right) {
+            right: $nav-mobile-toggle-side;
+            @include media-breakpoint-up($nav-breakpoint-desktop) {
+                right: $grid-gutter-width / 2;
+            }
+            @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
+                @include media-breakpoint-down(xs) {
+                    right: $nav-mobile-toggle-side-xs;
+                }
+            }
+        } @else {
+            right: $grid-gutter-width / 2;
+        }
 
         &.show {
             transition: opacity 0.33s;
@@ -96,20 +109,20 @@
 
         &::after {
             width: $nav-toggle-size;
-            line-height: $nav-toggle-size;
-            content: "\f106";
+            line-height: floor($nav-toggle-size * 0.95); // fa-angle-up symbol has too much white space on top
+            content: "\f106"; // fa-angle-up
             position: absolute;
             text-align: center;
             font-family: FontAwesome;
         }
 
         @include media-breakpoint-down(xs) {
-            width: round($nav-toggle-size-xxs);
-            height: round($nav-toggle-size-xxs);
+            width: round($nav-toggle-size-xs);
+            height: round($nav-toggle-size-xs);
 
             &::after {
-                width: round($nav-toggle-size-xxs);
-                line-height: round($nav-toggle-size-xxs);
+                width: round($nav-toggle-size-xs);
+                line-height: floor($nav-toggle-size-xs * 0.95);
             }
         }
     }

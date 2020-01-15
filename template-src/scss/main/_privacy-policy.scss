@@ -191,7 +191,7 @@
     .toggle-label {
         display: block;
         cursor: pointer;
-        height: #{$togglebox-height + 2 * $togglebox-border-size};
+        min-height: #{$togglebox-height + 2 * $togglebox-border-size};
     }
 
     .toggle-text {

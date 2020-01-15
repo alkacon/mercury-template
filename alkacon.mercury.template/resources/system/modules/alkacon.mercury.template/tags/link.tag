@@ -99,9 +99,15 @@
         <c:when test="${not empty targetLink}">
 
             <c:set var="createButton" value="${createButton and empty body}" />
-            <c:set var="internal" value="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:')}" />
+            <c:set var="isLocaleLink" value="${fn:startsWith(targetLink, 'locale://')}" />
+            <c:set var="internal" value="${fn:startsWith(targetLink, '/') or isLocaleLink or fn:startsWith(targetLink, 'javascript:')}" />
             <c:if test="${empty body and not internal and not noExternalMarker}">
                 <c:set var="css" value="${css} external" />
+            </c:if>
+
+            <c:if test="${isLocaleLink}">
+                <c:set var="targetLocale" value="${fn:substringAfter(targetLink, 'locale://')}" />
+                <c:set var="targetLink" value="${cms.localeResource[targetLocale].link}" />
             </c:if>
 
             <c:choose>

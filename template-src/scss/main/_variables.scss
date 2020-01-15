@@ -402,6 +402,8 @@ $nav-mobile-box-top:                4px !default; // top position for "box" with
 $nav-mobile-box-right:              $grid-gutter-width / 2 !default; // right position for "box" with arrow
 $nav-mobile-box-height:             $nav-mobile-line-target-height - (2 * $nav-mobile-box-top) !default; // height for "box" background
 $nav-mobile-box-border-radius:      $nav-border-radius !default; // border radius of "box"
+$nav-mobile-box-offset:             $grid-gutter-width !default; // position of the mobile submenu "box" relative to surrounding menu
+$nav-mobile-box-offset-xs:          $nav-mobile-box-offset !default; // position of the mobile submenu "box" relative to surrounding menu in XS screens
 $nav-mobile-indent:                 10px !default; // left indentation step for deeper levels
 $nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
 $nav-mobile-toggle-side:            $grid-gutter-width !default; // left / right position for mobile toggle
@@ -433,9 +435,9 @@ $nav-toggle-bg-hover:               $main-theme-hover !default; // hover color o
 $nav-toggle-bg-active:              $main-theme !default; // color of toggle button if activated
 $nav-toggle-text:                   $white !default; // color of text in toggle button
 $nav-toggle-size:                   40px !default; // height of toggle button
-$nav-toggle-size-xxs:               30px !default; // on very smaller screens the button size is reduced further
+$nav-toggle-size-xs:                30px !default; // on very smaller screens the button size is reduced further
 $nav-toggle-bottom:                 5px !default; // bottom positioning of toggle button
-
+$nav-toggle-stroke-height:          round(0.06 * $nav-toggle-size) !default; // the height of the generated lines in the toggle button that form the menu icon
 
 // Breadcrumps
 
@@ -627,8 +629,11 @@ $form-font-size:                    $font-size-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-text-color:                   $body-color !default;
 $form-label-color:                  $body-color !default;
-$form-field-ver-padding:            $default-margin;
-$form-field-hor-padding:            $default-margin * 1.5;
+$form-field-padding:                $default-margin;
+$form-field-ver-padding:            $form-field-padding;
+$form-field-hor-padding:            $form-field-padding * 1.5;
+$form-field-ver-padding-xs:         round($form-field-padding * 50) / 100 !default;
+$form-field-hor-padding-xs:         $form-field-ver-padding-xs !default;
 $form-border-color:                 $grey !default;
 $form-icon-color:                   $grey-dark !default;
 $form-placeholder-color:            $form-border-color !default;

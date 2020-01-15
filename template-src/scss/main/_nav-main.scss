@@ -229,7 +229,7 @@
             top: round(0.48 * $nav-toggle-size);
             left: round(0.2 * $nav-toggle-size);
             right: round(0.2 * $nav-toggle-size);
-            height: round(0.06 * $nav-toggle-size);
+            height: $nav-toggle-stroke-height;
             background: $nav-toggle-text;
             transition: background 0s $nav-animation-time;
 
@@ -239,7 +239,7 @@
                 display: block;
                 left: 0;
                 width: 100%;
-                height: round(0.06 * $nav-toggle-size);
+                height: $nav-toggle-stroke-height;
                 background-color: $nav-toggle-text;
                 content: "";
                 transition-duration: $nav-animation-time, $nav-animation-time;
@@ -286,26 +286,26 @@
             @include media-breakpoint-down(xs) {
                 // on very small screens use a smaller button
                 // otherwise the button may become larger than the head itself
-                width: round($nav-toggle-size-xxs);
-                height: round($nav-toggle-size-xxs);
+                width: round($nav-toggle-size-xs);
+                height: round($nav-toggle-size-xs);
 
                 span {
-                    top: round(0.46 * $nav-toggle-size-xxs);
-                    left: round(0.2 * $nav-toggle-size-xxs);
-                    right: round(0.2 * $nav-toggle-size-xxs);
-                    height: round(0.08 * $nav-toggle-size-xxs);
+                    top: round(0.46 * $nav-toggle-size-xs);
+                    left: round(0.2 * $nav-toggle-size-xs);
+                    right: round(0.2 * $nav-toggle-size-xs);
+                    height: round(0.08 * $nav-toggle-size-xs);
 
                     &::before,
                     &::after {
-                        height: round(0.08 * $nav-toggle-size-xxs);
+                        height: round(0.08 * $nav-toggle-size-xs);
                     }
 
                     &::before {
-                        top: round(-0.2 * $nav-toggle-size-xxs);
+                        top: round(-0.2 * $nav-toggle-size-xs);
                     }
 
                     &::after {
-                        bottom: round(-0.2 * $nav-toggle-size-xxs);
+                        bottom: round(-0.2 * $nav-toggle-size-xs);
                     }
                 }
             }
@@ -314,6 +314,7 @@
 
 
     // Header Elements
+    $z-index-mobile-menu: $above-oc-z-index + 200; // this is the z-index for the mobile menu, ist must be over the "back to top" icon
 
     .nav-main-container {
         pointer-events: none;
@@ -323,7 +324,7 @@
         top: 0;
         height: 100vh;
         background-color: $nav-mobile-bg-color;
-        z-index: $above-oc-z-index + 200; // this is the z-index for the left/right menu, must be over the "back to top" icon
+        z-index: $z-index-mobile-menu;
         pointer-events: auto;
         overflow-x: hidden;
         opacity: 0;
@@ -389,7 +390,7 @@
 
     #nav-toggle-label {
         position: fixed;
-        z-index: $above-oc-z-index + 1; // the toggle must be above the z-index of the menu (see above)
+        z-index: $z-index-mobile-menu + 1; // the toggle must be above the z-index of the menu (see above)
         top: $nav-mobile-toggle-top;
 
         @if ($nav-mobile-position == right) {
@@ -421,7 +422,7 @@
         width: 0;
         height: 0;
         background-color: #000;
-        z-index: $above-oc-z-index - 1; // the page overlay z-index must be below the menu
+        z-index: $z-index-mobile-menu - 1; // the page overlay z-index must be below the menu
         opacity: 0;
         transition: opacity 0.5s, height 0.001s 0.5s, width 0.001s 0.5s;
     }
@@ -451,10 +452,18 @@
         @if ($nav-mobile-position == right) {
             // this expands the arrow links to the right so they can be touch-clicked easier
             li[aria-expanded] > a::after {
-                right: $grid-gutter-width;
+                right: $nav-mobile-box-offset;
             }
             li[aria-expanded] > a {
-                padding-right: 2 * $grid-gutter-width !important;
+                padding-right: 2 * $nav-mobile-box-offset !important;
+            }
+
+            @if ($nav-mobile-box-offset-xs != $nav-mobile-box-offset) {
+                @include media-breakpoint-down(xs) {
+                    li[aria-expanded] > a::after {
+                        right: $nav-mobile-box-offset-xs;
+                    }
+                }
             }
         }
     }

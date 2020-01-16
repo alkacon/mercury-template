@@ -48,15 +48,16 @@ $endif$
 
 $! --- show submit, reset and previous button --- !$
 $if(submitbutton)$
-        $hiddenfields$
-        $if(prevbutton)$
-            <input type="submit" value="$prevbutton$" name="back$formconfig.configId$" id="back_$formconfig.configId$" class="formbutton btn btn-grey prevbutton" />
-        $endif$
-        <input type="submit" value="$submitbutton$" id="submit_$formconfig.configId$" class="btn submitbutton" />
-        $if(resetbutton)$
-            <a href="$formuri$" class="btn resetbutton">$resetbutton$</a>
-$! ---      <input type="reset" value="$resetbutton$" id="reset_$formconfig.configId$" class="btn color-grey-light resetbutton" /> --- !$
-        $endif$
+    $hiddenfields$
+    <div class="formbtn-row">
+    $if(prevbutton)$
+        <input type="submit" value="$prevbutton$" name="back$formconfig.configId$" id="back_$formconfig.configId$" class="btn formbtn prevbutton" />
+    $endif$
+    $if(resetbutton)$
+        <a href="$formuri$" class="btn formbtn resetbutton">$resetbutton$</a>
+    $endif$
+    <input type="submit" value="$submitbutton$" id="submit_$formconfig.configId$" class="btn formbtn submitbutton" />
+    </div>
 $endif$
 
 </footer>
@@ -188,11 +189,13 @@ $row_start(field=field)$
 <div class="webform_label">&nbsp;</div>
 <div class="webform_field">
     $hiddenfields$
+    <div class="formbtn-row">
     $if(prevbutton)$
-    <input type="submit" value="$prevbutton$" name="back$formconfig.configId$" class="formbutton btn prevbutton" />&nbsp;
+    <input type="submit" value="$prevbutton$" name="back$formconfig.configId$" class="btn formbtn prevbutton" />&nbsp;
     $endif$
-    <input type="submit" value="$nextbutton$" class="formbutton btn nextbutton" />
+    <input type="submit" value="$nextbutton$" class="btn formbtn nextbutton" />
     <input type="hidden" name="page$formconfig.configId$" value="$page$" />
+    </div>
 </div>
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -394,7 +397,7 @@ $endif$
 checkpage(formuri,formconfig,checktext,captchafield,captchaerror,captchaimagelink,checkfields,hiddenfields,checkbutton,correctbutton) ::= <<
 $! ###### CHECK page of the form ###### !$
 $checktext$
-<table class="table table-bordered table-striped">
+<table class="table table-responsive table-bordered table-striped">
 $checkfields:{
     <tr>
         <td>$it.label$</td>
@@ -403,6 +406,8 @@ $checkfields:{
 }$
 </table>
 
+<div class="styled-form checkpage">
+
 $if(captchafield)$
     <script type="text/javascript">
         function runConfirmValues() {
@@ -410,14 +415,16 @@ $if(captchafield)$
             return true;
         }
     </script>
-    <form id="webformcaptcha$formconfig.configId$" action="" method="post" enctype="multipart/form-data" class="styled-form">
+    <form id="webformcaptcha$formconfig.configId$" action="" method="post" enctype="multipart/form-data">
     <fieldset>
     $row_start(field=captchafield)$
     <label class="label">
         $captchafield.label$
     </label>
-    <div>
+    <div class="input">
+        <div class="captcha">
         <img src="$captchaimagelink$" class="img-responsive" alt="" />
+        </div>
     </div>
     <label class="input$if(captchaerror)$ state-error$endif$">
         <input type="text" name="$captchafield.name$" value="" />
@@ -430,22 +437,24 @@ $if(captchafield)$
     </form>
 $endif$
 
-<div class="styled-form">
-    <form id="webformconfirmvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$" onsubmit="return runConfirmValues();">
+    <footer class="formbtn-row">
+    <form id="webformdisplayvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$" class="formbtn correctaction">
     <span style="display: none;">
-    <input type="hidden" name="formaction$formconfig.configId$" value="confirmed" />
-    <input type="hidden" name="captchaphrase$formconfig.configId$" value="" />
-    $hiddenfields$
-    </span><footer style="border-top: none;">
-    <input type="submit" value="$checkbutton$" class="formbutton btn btn-success submitbutton" />
-    </form>
-    <form id="webformdisplayvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$" class="pull-right">
-    <span style="display: none;">
-    <input type="hidden" name="formaction$formconfig.configId$" value="correct" />
-    $hiddenfields$
+        <input type="hidden" name="formaction$formconfig.configId$" value="correct" />
+        $hiddenfields$
     </span>
-    <input type="submit" value="$correctbutton$" class="formbutton btn btn-danger correctbutton"/></footer>
+    <input type="submit" value="$correctbutton$" class="btn submitbutton"/>
     </form>
+    <form id="webformconfirmvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$" class="formbtn submitaction" onsubmit="return runConfirmValues();">
+    <span style="display: none;">
+        <input type="hidden" name="formaction$formconfig.configId$" value="confirmed" />
+        <input type="hidden" name="captchaphrase$formconfig.configId$" value="" />
+        $hiddenfields$
+    </span>
+    <input type="submit" value="$checkbutton$" class="btn submitbutton" />
+    </form>
+    </footer>
+
 </div>
 >>
 
@@ -453,7 +462,7 @@ $endif$
 confirmationpage(formconfig,confirmtext,confirmfields) ::= <<
 $! ###### CONFIRMATION page of the form ###### !$
 $confirmtext$
-<table class="table table-bordered table-striped">
+<table class="table table-responsive table-bordered table-striped">
 $confirmfields:{
     <tr>
         <td>$it.label$</td>

@@ -40,9 +40,6 @@
     <cms:jsonvalue key="mainEntityOfPage" value="${url}" />
 
     <cms:jsonvalue key="title">
-        <c:if test="${intro.isSet}">
-            <c:out value="${intro.toString.concat(': ')}" />
-        </c:if>
         <c:out value="${title}" />
     </cms:jsonvalue>
 
@@ -61,6 +58,14 @@
         <mercury:image-vars image="${image}" createJsonLd="${true}">
             <cms:jsonvalue key="image" value="${imageJsonLd}" />
         </mercury:image-vars>
+    </c:if>
+
+    <c:if test="${value.EmploymentType.isSet}">
+        <cms:jsonarray key="employmentType">
+            <c:forEach var="employmentType" items="${content.valueList.EmploymentType}">
+                 <cms:jsonvalue value="${employmentType.toString}" />
+            </c:forEach>
+        </cms:jsonarray>
     </c:if>
 
     <mercury:data-organization-vars content="${content}">

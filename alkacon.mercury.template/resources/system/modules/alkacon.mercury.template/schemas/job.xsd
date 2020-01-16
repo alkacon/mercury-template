@@ -22,6 +22,7 @@
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Date" type="OpenCmsDateTime" />
             <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="EmploymentType" type="OpenCmsString" minOccurs="0" maxOccurs="5"  />
             <xsd:element name="Introduction" type="OpenCmsParagraph" />
             <xsd:element name="Text" type="OpenCmsParagraph"  minOccurs="0" maxOccurs="100" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressExtendedChoice" minOccurs="0" />
@@ -90,7 +91,28 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Type</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Job.Type)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Job.Type.help)]]></Description>
                     <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>EmploymentType</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Job.EmploymentType)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Job.EmploymentType.help)]]></Description>
+                    <Widget><![CDATA[selectcombo]]></Widget>
+                    <Default><![CDATA[none]]></Default>
+                    <WidgetConfig><![CDATA[
+                        none:%(key.msg.job.employmentType.none)|
+                        FULL_TIME:%(key.msg.job.employmentType.FULL_TIME)|
+                        PART_TIME:%(key.msg.job.employmentType.PART_TIME)|
+                        CONTRACTOR:%(key.msg.job.employmentType.CONTRACTOR)|
+                        TEMPORARY:%(key.msg.job.employmentType.TEMPORARY)|
+                        INTERN:%(key.msg.job.employmentType.INTERN)|
+                        VOLUNTEER:%(key.msg.job.employmentType.VOLUNTEER)|
+                        PER_DIEM:%(key.msg.job.employmentType.PER_DIEM)|
+                        OTHER:%(key.msg.job.employmentType.OTHER)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Introduction</PropertyName>

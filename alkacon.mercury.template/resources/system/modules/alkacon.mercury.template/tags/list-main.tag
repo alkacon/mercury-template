@@ -134,7 +134,7 @@
         <cms:jsonvalue key="listid" value="${instanceId}" target="${listGeneratedJson}" />
         <cms:jsonvalue key="resultTotal" value="${search.numFound}" target="${listGeneratedJson}" />
         <mercury:nl />
-        <script type="application/ld+json">${listGeneratedJson.pretty}</script><%----%>
+        <script type="application/ld+json">${cms.isOnlineProject ? listGeneratedJson.compact : listGeneratedJson.pretty}</script><%----%>
         <mercury:nl />
     </c:if>
 

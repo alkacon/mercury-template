@@ -19,9 +19,24 @@
 
 <%-- Using the same logic as the elaborate display teaser --%>
 <c:set var="value"      value="${content.value}" />
-<c:set var="intro"      value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
-<c:set var="title"      value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
-<c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : value.Paragraph.value.Text)}" />
+<c:choose>
+    <c:when test="${value['MetaInfo/Title'].isSet}">
+        <c:set var="intro"      value="${null}" />
+        <c:set var="title"      value="${value['MetaInfo/Title']}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="intro"      value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
+        <c:set var="title"      value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
+    </c:otherwise>
+</c:choose>
+<c:choose>
+    <c:when test="${value['MetaInfo/Description'].isSet}">
+        <c:set var="preface"    value="${value['MetaInfo/Description']}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : value.Paragraph.value.Text)}" />
+    </c:otherwise>
+</c:choose>
 <c:set var="image"      value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : value.Paragraph.value.Image)}" />
 
 <c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
@@ -76,5 +91,5 @@
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${jsonLd.compact}</script><%----%>
+<script type="application/ld+json">${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}</script><%----%>
 <mercury:nl />

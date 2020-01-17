@@ -26,15 +26,16 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="resultTitle" value="${title}" />
-<c:set var="addIntro" value="${empty addIntro and (not empty intro) ? true : addIntro}" />
 
 <c:if test="${empty resultTitle}">
     <c:choose>
         <c:when test="${not empty cms.meta.ogTitle}">
             <c:set var="resultTitle" value="${cms.meta.ogTitle}" />
+            <c:set var="addIntro" value="${false}" />
         </c:when>
         <c:otherwise>
             <c:set var="resultTitle" value="${cms.title}" />
+            <c:set var="addIntro" value="${empty addIntro and (not empty intro) ? true : addIntro}" />
         </c:otherwise>
     </c:choose>
 </c:if>

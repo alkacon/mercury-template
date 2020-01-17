@@ -16,15 +16,47 @@
 
 
 <%-- Using the same logic as the elaborate display teaser --%>
-<c:set var="value"          value="${content.value}" />
+<c:set var="value"              value="${content.value}" />
 
-<c:set var="paragraphIntro" value="${value.Introduction}" />
-<c:set var="paragraphText"  value="${content.valueList.Text['0']}" />
+<c:set var="paragraphIntro"     value="${value.Introduction}" />
+<c:set var="paragraphText"      value="${content.valueList.Text['0']}" />
 
-<c:set var="intro"          value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
-<c:set var="title"          value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
-<c:set var="description"    value="${paragraphIntro.value.Text.isSet ? paragraphIntro.value.Text : paragraphText.value.Text}" />
-<c:set var="image"          value="${paragraphIntro.value.Image.isSet ? paragraphIntro.value.Image : paragraphText.value.Image}" />
+<c:choose>
+    <c:when test="${value['MetaInfo/Title'].isSet}">
+        <c:set var="intro"          value="${null}" />
+        <c:set var="title"          value="${value['MetaInfo/Title']}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="intro"          value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
+        <c:set var="title"          value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
+    </c:otherwise>
+</c:choose>
+<c:choose>
+    <c:when test="${value['MetaInfo/Description'].isSet}">
+        <c:set var="description"    value="${value['MetaInfo/Description']}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="description"    value="${paragraphIntro.value.Text.isSet ? paragraphIntro.value.Text : paragraphText.value.Text}" />
+    </c:otherwise>
+</c:choose>
+<c:choose>
+    <c:when test="${value['MetaInfoJob/ValidThrough'].isSet}">
+        <c:set var="validThrough"   value="${value['MetaInfoJob/ValidThrough']}" />
+    </c:when>
+    <c:when test="${value['Availability/Expiration'].isSet}">
+        <c:set var="validThrough"   value="${value['Availability/Expiration']}" />
+    </c:when>
+</c:choose>
+<c:choose>
+    <c:when test="${value.Date.isSet}">
+        <c:set var="datePosted"     value="${value.Date}" />
+    </c:when>
+    <c:when test="${value['Availability/Release'].isSet}">
+        <c:set var="datePosted"     value="${value['Availability/Release']}" />
+    </c:when>
+</c:choose>
+
+<c:set var="image"                  value="${paragraphIntro.value.Image.isSet ? paragraphIntro.value.Image : paragraphText.value.Image}" />
 
 <c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
 
@@ -40,14 +72,18 @@
     <cms:jsonvalue key="mainEntityOfPage" value="${url}" />
 
     <cms:jsonvalue key="title">
+        <c:if test="${not empty intro}">
+            <c:out value="${intro.toString.concat(': ')}" />
+        </c:if>
         <c:out value="${title}" />
     </cms:jsonvalue>
 
-    <c:if test="${value.Date.isSet}">
-        <cms:jsonvalue key="datePosted"><fmt:formatDate value="${cms:convertDate(value.Date)}" pattern="yyyy-MM-dd" /></cms:jsonvalue>
+    <c:if test="${not empty datePosted}">
+        <cms:jsonvalue key="datePosted"><fmt:formatDate value="${cms:convertDate(datePosted)}" pattern="yyyy-MM-dd" /></cms:jsonvalue>
     </c:if>
-    <c:if test="${value.EndDate.isSet}">
-        <cms:jsonvalue key="validThrough"><fmt:formatDate value="${cms:convertDate(value.EndDate)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+
+    <c:if test="${not empty validThrough}">
+        <cms:jsonvalue key="validThrough"><fmt:formatDate value="${cms:convertDate(validThrough)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
     </c:if>
 
     <c:if test="${description.isSet}">
@@ -60,9 +96,9 @@
         </mercury:image-vars>
     </c:if>
 
-    <c:if test="${value.EmploymentType.isSet}">
+    <c:if test="${value['MetaInfoJob/EmploymentType'].isSet}">
         <cms:jsonarray key="employmentType">
-            <c:forEach var="employmentType" items="${content.valueList.EmploymentType}">
+            <c:forEach var="employmentType" items="${content.valueList['MetaInfoJob/EmploymentType']}">
                  <cms:jsonvalue value="${employmentType.toString}" />
             </c:forEach>
         </cms:jsonarray>
@@ -79,5 +115,5 @@
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${jsonLd.compact}</script><%----%>
+<script type="application/ld+json">${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}</script><%----%>
 <mercury:nl />

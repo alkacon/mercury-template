@@ -6,6 +6,7 @@
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/teaser-data.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address-choice-extended.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-job.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
 
     <xsd:element name="JobData" type="OpenCmsJobData"/>
@@ -22,13 +23,13 @@
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Date" type="OpenCmsDateTime" />
             <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="EmploymentType" type="OpenCmsString" minOccurs="0" maxOccurs="5"  />
             <xsd:element name="Introduction" type="OpenCmsParagraph" />
             <xsd:element name="Text" type="OpenCmsParagraph"  minOccurs="0" maxOccurs="100" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressExtendedChoice" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
+            <xsd:element name="MetaInfoJob" type="OpenCmsJobMetaInfo" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
@@ -96,25 +97,6 @@
                     <Widget>string</Widget>
                 </Setting>
                 <Setting>
-                    <PropertyName>EmploymentType</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Job.EmploymentType)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Job.EmploymentType.help)]]></Description>
-                    <Widget><![CDATA[selectcombo]]></Widget>
-                    <Default><![CDATA[none]]></Default>
-                    <WidgetConfig><![CDATA[
-                        none:%(key.msg.job.employmentType.none)|
-                        FULL_TIME:%(key.msg.job.employmentType.FULL_TIME)|
-                        PART_TIME:%(key.msg.job.employmentType.PART_TIME)|
-                        CONTRACTOR:%(key.msg.job.employmentType.CONTRACTOR)|
-                        TEMPORARY:%(key.msg.job.employmentType.TEMPORARY)|
-                        INTERN:%(key.msg.job.employmentType.INTERN)|
-                        VOLUNTEER:%(key.msg.job.employmentType.VOLUNTEER)|
-                        PER_DIEM:%(key.msg.job.employmentType.PER_DIEM)|
-                        OTHER:%(key.msg.job.employmentType.OTHER)
-                    ]]></WidgetConfig>
-                    <Search>false</Search>
-                </Setting>
-                <Setting>
                     <PropertyName>Introduction</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Job.Introduction)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Job.Introduction.help)]]></Description>
@@ -153,6 +135,11 @@
                     <PropertyName>MetaInfo</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MetaInfo)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MetaInfoJob</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Additional)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Additional.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Availability</PropertyName>

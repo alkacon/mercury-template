@@ -23,15 +23,9 @@
     <cms:jsonobject var="orgJsonLd" mode="object">
         <cms:jsonvalue key="@type" value="Organization" />
         <cms:jsonvalue key="name" value="${orgName}" />
-        <c:set var="orgLogo" value="${content.wrap.propertySearch['site.organization.logo']}" />
-        <c:if test="${not empty orgLogo}">
-            <cms:jsonobject key="logo">
-                <cms:jsonvalue key="@type" value="ImageObject" />
-                <c:if test="${cms.vfs.existsResource[orgLogo]}">
-                    <c:set var="orgLogo" value="${cms.site.url}${cms.vfs.readResource[orgLogo].link}" />
-                </c:if>
-                <cms:jsonvalue key="url" value="${orgLogo}" />
-            </cms:jsonobject>
+        <c:set var="logo" value="${content.wrap.propertySearch['site.organization.logo']}" />
+        <c:if test="${(not empty logo) and cms.vfs.existsResource[logo]}">
+            <cms:jsonvalue key="logo" value="${cms.site.url}${cms.vfs.readResource[logo].link}" />
         </c:if>
     </cms:jsonobject>
 </c:if>

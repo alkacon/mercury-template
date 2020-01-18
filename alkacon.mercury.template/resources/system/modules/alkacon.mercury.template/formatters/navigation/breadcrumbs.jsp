@@ -52,10 +52,8 @@
                                 <cms:jsonobject>
                                     <cms:jsonvalue key="@type" value="ListItem" />
                                     <cms:jsonvalue key="position" value="${currNavPos}" />
-                                    <cms:jsonobject key="item">
-                                        <cms:jsonvalue key="@id" value="${cms.site.url}${navLink}" />
-                                        <cms:jsonvalue key="name" value="${navText}" />
-                                    </cms:jsonobject>
+                                    <cms:jsonvalue key="name" value="${navText}" />
+                                    <cms:jsonvalue key="item" value="${cms.site.url}${navLink}" />
                                 </cms:jsonobject>
 
                                 <c:set var="currNavPos" value="${currNavPos + 1}" />

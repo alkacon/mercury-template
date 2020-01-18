@@ -42,7 +42,7 @@ form.html.mandatory=*
 form.html.multiline.placeholder=0
 form.init.error.description=Wahrscheinlich wurde das Formular noch nicht bearbeitet oder es wurden keine Eingabefelder definiert.
 form.init.error.headline=Das Formular kann nicht angezeigt werden
-form.mailsubject.prefix=form.message.mandatory\=Alle Eingabefelder, die mit einem Stern (*) versehen sind, sind Pflichtfelder.
+form.mailsubject.prefix=\u0020
 form.message.mandatory=Pflichtfelder sind mit einem Stern (*) markiert.
 form.message.waitlist=Die Veranstaltung ist bereits ausgebucht. Sie können sich aber auf die Warteliste setzen lassen.
 form.privacy.label=Datenschutz

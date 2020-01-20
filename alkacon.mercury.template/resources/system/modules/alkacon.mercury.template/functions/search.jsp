@@ -115,11 +115,6 @@
 <div class="element type-search ${cms.element.settings.cssWrapper}"><%----%>
     <mercury:nl/>
 
-    <%-- Uncomment the following div for debugging --%>
-    <%--<div>locale: ${cms.locale}</div>
-        <pre>${config}</pre>
-        <div>${cms:escapeHtml(search.finalQuery)}</div>
-     --%>
     <%-- The search form --%>
     <%-- search action: link to the current page --%>
     <form<%--
@@ -136,12 +131,13 @@
 
         <%-- choose layout dependent on the presence of search options --%>
         <c:set var="hasSortOptions" value="${cms:getListSize(controllers.sorting.config.sortOptions) > 0}" />
-        <c:set var="colWidthInput" value="${hasSortOptions?4:12}" />
+        <c:set var="hasFacets" value="${(cms:getListSize(search.fieldFacets) > 0) or (not empty search.facetQuery)}" />
 
         <mercury:nl/>
-        <div class="row search-options-row"><%----%>
-            <mercury:nl/>
-            <div class="col-12 col-lg-${colWidthInput} search-input"><%----%>
+        <div class="search-result-row"><%----%>
+
+            <%-- Search query --%>
+            <div class="search-query ${hasFacets ? ' has-facets' : ' no-facets'}"><%----%>
                 <section class="input-group"><%----%>
                     <div class="input button"><%----%>
                         <label for="searchFormQuery" class="sr-only">Search</label><%----%>
@@ -152,32 +148,13 @@
                     </div><%----%>
                 </section><%----%>
             </div><%----%>
-            <c:if test="${hasSortOptions}">
-                <mercury:nl/>
-                <c:set var="sort" value="${controllers.sorting}" />
-                <div class="col-12 col-lg-8 search-sort-options"><%----%>
-                    <div class="select"><%----%>
-                        <%-- Display select box with sort options where the currently chosen option is selected --%>
-                        <select name="${sort.config.sortParam}" class="form-control" onchange="submitSearchForm()"><%----%>
-                        <mercury:nl/>
-                            <c:forEach var="option" items="${sort.config.sortOptions}">
-                                <option value="${option.paramValue}" ${sort.state.checkSelected[option]?"selected":""}>${option.label}</option><%----%>
-                                <mercury:nl/>
-                            </c:forEach>
-                        </select><%----%>
-                        <i></i><%----%>
-                    </div><%----%>
-                </div><%----%>
-            </c:if>
-        </div><%----%>
-        <mercury:nl/>
+            <mercury:nl/>
 
-        <div class="row search-result-row"><%----%>
-            <c:set var="hasFacets" value="${(cms:getListSize(search.fieldFacets) > 0) or (not empty search.facetQuery)}" />
+            <%-- Search facets --%>
             <c:if test="${hasFacets}">
                 <%-- Facets --%>
                 <mercury:nl/>
-                <div class="col-12 col-lg-4 search-facets"><%----%>
+                <div class="search-facets"><%----%>
                 <div class="type-list-filter"><%----%>
 
                     <%-- Query facet --%>
@@ -290,10 +267,28 @@
                 <mercury:nl/>
             </c:if>
 
-            <%-- Search results --%>
-            <c:set var="colWidthResults" value="${hasFacets ? 8 : 12}" /><%----%>
-            <div class="col-12 col-lg-${colWidthResults} search-results"><%----%>
+            <c:if test="${hasSortOptions}">
+                <div class="search-sort ${hasFacets ? ' has-facets' : ' no-facets'}"><%----%>
+                    <section><%----%>
+                    <c:set var="sort" value="${controllers.sorting}" />
+                        <div class="select"><%----%>
+                            <%-- Display select box with sort options where the currently chosen option is selected --%>
+                            <select name="${sort.config.sortParam}" class="form-control" onchange="submitSearchForm()"><%----%>
+                            <mercury:nl/>
+                                <c:forEach var="option" items="${sort.config.sortOptions}">
+                                    <option value="${option.paramValue}" ${sort.state.checkSelected[option]?"selected":""}>${option.label}</option><%----%>
+                                    <mercury:nl/>
+                                </c:forEach>
+                            </select><%----%>
+                            <i></i><%----%>
+                    </div><%----%>
+                    </section>
+                </div>
                 <mercury:nl/>
+            </c:if>
+
+            <%-- Search results --%>
+            <div class="search-results ${hasFacets ? ' has-facets' : ' no-facets'}"><%----%>
                 <c:choose>
                     <c:when test="${not empty search.exception}">
                         <div class="search-exception">
@@ -435,10 +430,12 @@
                     </c:otherwise>
                 </c:choose>
             </div><%----%>
+            <mercury:nl />
+
         </div><%----%>
     </form><%----%>
-
     <mercury:nl />
+
     <script type="text/javascript"><%--
     --%>var searchForm = document.forms["search-form"];<%--
     --%>function submitSearchForm() {<%--

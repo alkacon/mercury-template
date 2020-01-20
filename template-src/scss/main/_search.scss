@@ -30,18 +30,8 @@
         margin-bottom: $default-margin;
     }
 
-
-    @include media-breakpoint-up(lg) {
-
-        .search-results-head {
-            float: left;
-            margin-bottom: 0;
-        }
-        .search-results-count {
-            float: right;
-        }
-    }
-
+    .search-query,
+    .search-sort,
     .search-result {
         margin-bottom: $default-margin;
     }
@@ -78,5 +68,30 @@
         @include round-corners($form-border-radius);
         color: $form-border-color;
         border: 1px solid $form-border-color;
+    }
+
+    @include media-breakpoint-up(lg) {
+
+        .search-query,
+        .search-sort,
+        .search-results {
+            &.has-facets {
+                width: get-col-float-size(8);
+                float: right;
+            }
+        }
+
+        .search-facets {
+            width: get-col-float-size(4);
+            float: left;
+        }
+
+        .search-results-head {
+            float: left;
+            margin-bottom: 0;
+        }
+        .search-results-count {
+            float: right;
+        }
     }
 }

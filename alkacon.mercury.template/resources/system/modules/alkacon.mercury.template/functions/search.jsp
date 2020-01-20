@@ -25,6 +25,14 @@
         <c:set var="searchscope" value="${cms.requestContext.siteRoot}/" />
     </c:otherwise>
 </c:choose>
+<c:set var="searchscope">\"${searchscope}\"</c:set>
+<c:set var="additionalScopes" value="${cms.vfs.propertySearch[cms.requestContext.uri]['search.scope.additional']}"/>
+<c:if test="${not empty additionalScopes}">
+    <c:forEach var="scope" items="${fn:split(additionalScopes,',')}">
+        <c:set var="searchscope">${searchscope}${' OR '}\"${scope}\"</c:set>
+    </c:forEach>
+    <c:set var="searchscope">(${searchscope})</c:set>
+</c:if>
 <c:set var="types"><%--
     --%>binary<%--
     --%>,containerpage<%--
@@ -65,7 +73,7 @@
         "searchforemptyquery" : true,
         "querymodifier" :       "{!type=edismax qf=\"content_${cms.locale} Title_dprop Description_dprop\"}%(query)",
         "escapequerychars" :    true,
-        "extrasolrparams" :     "fq=parent-folders:\"${searchscope}\"&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields}",
+        "extrasolrparams" :     "fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields}",
         "pagesize" :            10,
         "pagenavlength" :       5,
         "sortoptions" :         [ { "label" : "<fmt:message key='msg.page.search.sort.score.desc'/>", "solrvalue" : "score desc" }
@@ -79,8 +87,8 @@
                                 ],
         "highlighter" :         {
                                     "field" :                       "content_${cms.locale}",
-                                    "alternateField":				"content_${cms.locale}",
-                                    "maxAlternateFieldLength":		250,
+                                    "alternateField":               "content_${cms.locale}",
+                                    "maxAlternateFieldLength":      250,
                                     "fragsize" :                    250,
                                     "simple.pre" :                  "$$hl.begin$$",
                                     "simple.post" :                 "$$hl.end$$",
@@ -109,7 +117,6 @@
 
     <%-- Uncomment the following div for debugging --%>
     <%--<div>locale: ${cms.locale}</div>
-
         <pre>${config}</pre>
         <div>${cms:escapeHtml(search.finalQuery)}</div>
      --%>

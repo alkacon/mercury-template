@@ -119,6 +119,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
 
     > .body {
         .text {
+            > .detail-content > *,
             > * {
                 // add margins for all elements in text piece
                 margin-bottom: $piece-text-margin;

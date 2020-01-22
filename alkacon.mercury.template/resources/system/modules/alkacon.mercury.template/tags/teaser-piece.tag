@@ -275,6 +275,7 @@
                     link="${link}"
                     title="${linkTitle}"
                     attr='aria-label="${linkTitle}"'
+                    css='uncolored'
                     test="${linkOnText}">
                     ${markupTextOutput}
                 </mercury:link>

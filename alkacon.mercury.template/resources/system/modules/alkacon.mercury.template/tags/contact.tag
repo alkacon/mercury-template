@@ -87,7 +87,7 @@
 
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}"/>
 <c:set var="showName"           value="${showName and name.isSet}"/>
-<c:set var="showPosition"       value="${showName and position.isSet}"/>
+<c:set var="showPosition"       value="${showPosition and position.isSet}"/>
 <c:set var="showImage"          value="${showImage and image.isSet}" />
 <c:set var="showOrganization"   value="${showOrganization and organization.isSet}"/>
 <c:set var="showDescription"    value="${showDescription and description.isSet}"/>

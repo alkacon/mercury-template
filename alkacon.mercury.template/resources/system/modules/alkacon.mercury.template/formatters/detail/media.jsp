@@ -55,7 +55,7 @@
 <mercury:nl />
 
 <mercury:piece
-    cssWrapper="detail-visual"
+    cssWrapper="detail-visual only-heading"
     pieceLayout="${keyPieceLayout}"
     sizeDesktop="${keyPieceLayout > 1 ? 6 : 12}"
     sizeMobile="${12}">

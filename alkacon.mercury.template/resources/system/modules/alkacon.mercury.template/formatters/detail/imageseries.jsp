@@ -149,15 +149,16 @@
 <c:choose>
     <c:when test="${imageList.size() > 0}">
 
-        <div id="${id}" class="subelement series" <%--
-        --%>data-imageseries='{<%--
-            --%>"showtitle":"${showImageTitle}", <%--
-            --%>"showcopyright":"${showImageCopyright}", <%--
-            --%>"path":"${path}", <%--
-            --%>"autoload":"${autoLoad}", <%--
-            --%>"count":"${pageSize}", <%--
-            --%>"template":"${cms:encode(template)}"<%--
-        --%>}'><mercury:nl />
+        <cms:jsonobject var="dataSeries">
+            <cms:jsonvalue key="showtitle" value="${showImageTitle}" />
+            <cms:jsonvalue key="showcopyright" value="${showcopyright}" />
+            <cms:jsonvalue key="path" value="${path}" />
+            <cms:jsonvalue key="autoload" value="${autoLoad}" />
+            <cms:jsonvalue key="count" value="${pageSize}" />
+            <cms:jsonvalue key="template" value="${cms:encode(template)}" />
+        </cms:jsonobject>
+        <div id="${id}" class="series" data-imageseries='${dataSeries.compact}'><%----%>
+        <mercury:nl />
 
             <div class="images square-m-2 clearfix"></div><%----%>
 
@@ -217,14 +218,15 @@
                                 </c:if>
 
                                 <%-- Finally generate the output for the image list element --%>
-                                <li data-image='{<%--
-                                    --%>"src": "${imageBean.srcUrl}", <%--
-                                    --%>"squareSrc": "${squareImage.srcUrl}", <%--
-                                    --%>"tileSrcSet": "${tileSrcSet}", <%--
-                                    --%>"size": "w:${imageBean.scaler.width},h:${imageBean.scaler.height}", <%--
-                                    --%>"caption": "${cms:encode(caption)}", <%--
-                                    --%>"titleAttr": "${cms:encode(titleAttr)}"<%--
-                                --%>}'></li><%----%>
+                                <cms:jsonobject var="dataImage">
+                                    <cms:jsonvalue key="src" value="${imageBean.srcUrl}" />
+                                    <cms:jsonvalue key="squareSrc" value="${squareImage.srcUrl}" />
+                                    <cms:jsonvalue key="tileSrcSet" value="${tileSrcSet}" />
+                                    <cms:jsonvalue key="size" value="w:${imageBean.scaler.width},h:${imageBean.scaler.height}" />
+                                    <cms:jsonvalue key="caption" value="${caption}" />
+                                    <cms:jsonvalue key="titleAttr" value="${fn:replace(titleAttr, '\"', '')}" />
+                                </cms:jsonobject>
+                                <li data-image='${dataImage.compact}'></li><%----%>
                                 <mercury:nl />
                             </c:if>
                         </mercury:image-vars>

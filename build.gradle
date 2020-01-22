@@ -428,15 +428,3 @@ install {
     }
 }
 
-/** Necessary to let eclipse run test cases. */
-eclipse.classpath.file {
-    whenMerged { classpath ->
-        classpath.entries.each {entry ->
-            if (entry.kind == 'src') {
-                if (entry.path.endsWith("src")) {
-                    entry.output='bin/main'
-                }
-            }
-        }
-    }
-}

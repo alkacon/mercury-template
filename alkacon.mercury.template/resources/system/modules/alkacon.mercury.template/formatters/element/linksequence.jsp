@@ -51,10 +51,10 @@
 </c:choose>
 
 <mercury:nl />
-<div class="element type-linksequence ${linksequenceType}${' '}${listBulletStyle}${' '}${cssWrapper}${' '}${addCssWrapper}">
-<%----%>
+<div class="element type-linksequence ${linksequenceType}${' '}${listBulletStyle}${' '}${cssWrapper}${' '}${addCssWrapper}"><%----%>
+<mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${true}" />
 
     <c:if test="${value.Text.isSet}">
         <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>

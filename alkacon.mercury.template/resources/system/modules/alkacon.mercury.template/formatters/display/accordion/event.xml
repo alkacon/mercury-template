@@ -35,6 +35,9 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
     </Setting>
     <Setting>

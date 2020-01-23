@@ -44,6 +44,10 @@
             <editorchangehandlers>
                 <editorchangehandler
                     class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
+                    scope="Paragraph*/Image/Image"
+                    configuration="Title|../Title" />
+                <editorchangehandler
+                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
                     scope="Paragraph*/Image*/Image"
                     configuration="Copyright|../Copyright" />
             </editorchangehandlers>

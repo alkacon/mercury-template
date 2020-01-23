@@ -28,6 +28,7 @@
 
 <c:set var="setting"        value="${cms.element.setting}" />
 <c:set var="hsize"          value="${setting.hsize.isSet ? setting.hsize.toInteger : 3}" />
+<c:set var="imageRatio"     value="${setting.imageRatio.isSet ? setting.imageRatio.toString : null}"/>
 <c:set var="showImageZoom"  value="${setting.showImageZoom.toBoolean}" />
 <c:set var="open"           value="${setting.firstOpen.toBoolean and (setting.index.toInteger == 0)}" />
 <c:set var="accordionId"    value="${empty accordionId ? setting.listid.toString : accordionId}" />
@@ -55,6 +56,7 @@
             paragraphs="${paragraphs}"
             splitDownloads="${false}"
             hsize="${hsize + 1}"
+            imageRatio="${imageRatio}"
             showImageZoom="${showImageZoom}"
             ade="${false}"
         />

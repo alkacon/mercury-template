@@ -24,12 +24,16 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Caption</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Caption)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Caption.help)]]></Description>
                     <Widget>string</Widget>
+                    <Default><![CDATA[%(key.msg.default.new.Caption)]]></Default>
                     <Display>wide</Display>
                 </Setting>
                 <Setting>
@@ -37,6 +41,7 @@
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Text.Paragraph.help)]]></Description>
                     <Widget>html</Widget>
+                    <Default><![CDATA[%(key.msg.default.new.Text)]]></Default>
                     <WidgetConfig><![CDATA[%(param:editorConfigParagraph)]]></WidgetConfig>
                     <Display>wide</Display>
                 </Setting>

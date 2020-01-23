@@ -53,16 +53,6 @@
                 <mapping element="Availability/Release" mapto="attribute:datereleased" />
                 <mapping element="Availability/Expiration" mapto="attribute:dateexpired" />
             </mappings>
-            <editorchangehandlers>
-                <editorchangehandler
-                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Introduction/Image*/Image"
-                    configuration="Copyright|../Copyright" />
-                <editorchangehandler
-                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Text*/Image*/Image"
-                    configuration="Copyright|../Copyright" />
-            </editorchangehandlers>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Intro</PropertyName>

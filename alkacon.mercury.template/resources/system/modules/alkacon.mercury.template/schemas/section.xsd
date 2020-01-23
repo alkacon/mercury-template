@@ -29,16 +29,6 @@
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>
             <searchsettings containerPageOnly="true" />
-            <editorchangehandlers>
-                <editorchangehandler
-                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Image/Image"
-                    configuration="Title|../Title" />
-                <editorchangehandler
-                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Image/Image"
-                    configuration="Copyright|../Copyright" />
-            </editorchangehandlers>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Title</PropertyName>

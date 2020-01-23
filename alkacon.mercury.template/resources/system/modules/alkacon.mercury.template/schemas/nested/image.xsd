@@ -31,6 +31,8 @@
                     <IfInvalidRelation>removeParent</IfInvalidRelation>
                     <Search>false</Search>
                     <Display>singleline</Display>
+                    <ChangeHandler configuration="Copyright|../Copyright">org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty</ChangeHandler>
+                    <ChangeHandler configuration="Title|../Title">org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty</ChangeHandler>
                 </Setting>
                 <Setting>
                     <PropertyName>Title</PropertyName>

@@ -38,11 +38,6 @@
                 <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
             <searchsettings containerPageOnly="true" />
-            <editorchangehandlers>
-                <editorchangehandler
-                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Paragraph*/Image*/Image" configuration="Copyright|../Copyright" />
-            </editorchangehandlers>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Title</PropertyName>

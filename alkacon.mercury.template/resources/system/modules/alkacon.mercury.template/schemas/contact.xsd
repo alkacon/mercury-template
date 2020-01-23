@@ -46,16 +46,6 @@
                     <solrfield targetfield="disptitle" sourcefield="*_sort" />
                 </searchsetting>
             </searchsettings>
-            <editorchangehandlers>
-                <editorchangehandler
-                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Image/Image"
-                    configuration="Title|../Title" />
-                <editorchangehandler
-                    class="org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty"
-                    scope="Image/Image"
-                    configuration="Copyright|../Copyright" />
-            </editorchangehandlers>
             <parameters>
                 <param name="galleryTitle"><![CDATA[%!
                     !%%if (! fn.(content.value.("Kind")).isEqual.("org"))%%!

@@ -93,6 +93,7 @@
 .colored-row {
     display: flex;
     flex-direction: column;
+    padding-top: $default-margin;
 
     &.bg-highlight {
         background-color: $highlight-color;
@@ -111,3 +112,6 @@
     }
 }
 
+.area-content.colored-row + .area-content:not(.colored-row) {
+    margin-top: $default-margin;
+}

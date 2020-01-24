@@ -198,15 +198,19 @@
 <c:choose>
     <c:when test="${showHeading and not showVisual and not showBody and not showLink}">
         <c:set var="pieceOnlyMarker" value="only-heading" />
+        <c:set var="onlyHeading" value="${true}" />
     </c:when>
     <c:when test="${showVisual and not showHeading and not showBody and not showLink}">
         <c:set var="pieceOnlyMarker" value="only-visual" />
+        <c:set var="onlyVisual" value="${true}" />
     </c:when>
     <c:when test="${showBody and not showHeading and not showVisual and not showLink}">
-        <c:set var="pieceOnlyMarker" value="only-body" />
+        <c:set var="pieceOnlyMarker" value="only-text" />
+        <c:set var="onlyText" value="${true}" />
     </c:when>
     <c:when test="${showLink and not showHeading and not showVisual and not showBody}">
         <c:set var="pieceOnlyMarker" value="only-link" />
+        <c:set var="onlyLink" value="${true}" />
     </c:when>
 </c:choose>
 
@@ -218,8 +222,7 @@ ${'<'}${pieceTag}${' '}
         ${empty pieceOption ? '' : ' '.concat(pieceOption)}
         ${empty pieceOnlyMarker ? '' : ' '.concat(pieceOnlyMarker)}
         ${empty gridOption ? '' : ' '.concat(gridOption)}
-        ${showVisual ? ' has-visual' : ' no-visual'}
-        ${showLink and not inlineLink ? ' link-extra': ''}
+        ${onlyVisual or onlyHeading or onlyText or onlyLink ? '' : (showVisual ? ' has-visual' : '')}
     ${'\"'}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}
 ${'>'}

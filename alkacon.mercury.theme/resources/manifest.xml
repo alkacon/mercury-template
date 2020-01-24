@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.1.24</version>
+		<version>11.0.1.26</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7461,23 +7461,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury side column group]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/shared/mercury/template/layout-group/lg_00005.xml</source>
-			<destination>system/shared/mercury/template/layout-group/lg_00005.xml</destination>
-			<type>m-layout-group-simple</type>
-			<uuidstructure>eea6fe11-4f9a-11e9-a30a-0242ac11002b</uuidstructure>
-			<uuidresource>eea6fe12-4f9a-11e9-a30a-0242ac11002b</uuidresource>
-			<datecreated>Tue, 26 Mar 2019 07:44:05 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[[Deprecated] Mercury header with image ribbon on top of navigation]]></value>
 				</property>
 			</properties>
 			<relations/>

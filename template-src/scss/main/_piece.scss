@@ -211,6 +211,8 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
 
         &.has-visual {
+            // required for floating layouts, for example the detail page key visual
+            // this makes sure a piece with an image will NOT float around a previous key visual image aligned left or right
             @include clearfix-before;
         }
 

@@ -325,6 +325,11 @@ $oct-edit-infos:
     position: relative;
     margin-bottom: 2px;
 
+    > .marker,
+    > .target {
+        display: inline-block;
+    }
+
     .marker,
     .empty,
     .target {
@@ -332,10 +337,6 @@ $oct-edit-infos:
         font-family: $font-family-gui !important;
         padding: 4px 8px !important;
     }
-}
-
-.oct-meta {
-    max-width: 350px;
 }
 
 .online-warn {

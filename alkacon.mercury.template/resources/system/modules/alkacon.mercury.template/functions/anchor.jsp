@@ -21,23 +21,21 @@
     <fmt:setLocale value="${cms.workplaceLocale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">
 
-    <c:choose>
-        <c:when test="${not empty anchor}">
-            <div class="oct-anchor"><%----%>
+    <div class="oct-anchor"><%----%>
+        <c:choose>
+            <c:when test="${not empty anchor}">
                 <div class="target"><%----%>
                     <fmt:message key="msg.page.anchor" /> #${anchor}
                 </div><%----%>
                 <div id="${anchor}" class="oct-anchor-set"></div><%----%>
-            </div><%----%>
-        </c:when>
-        <c:otherwise>
-            <div class="oct-anchor"><%----%>
+            </c:when>
+            <c:otherwise>
                 <div class="empty"><%----%>
                     <fmt:message key="msg.page.anchor.empty" />
                 </div><%----%>
-            </div><%----%>
-        </c:otherwise>
-    </c:choose>
+            </c:otherwise>
+        </c:choose>
+    </div><%----%>
 
     </cms:bundle>
 </c:when>

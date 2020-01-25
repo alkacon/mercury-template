@@ -291,7 +291,8 @@
         <c:choose>
             <c:when test="${empty markupLink}">
                 <c:if test="${showButton and not empty link}">
-                    <c:if test="${empty buttonText}">
+                    <c:set var="forceText" value="${buttonText}" />
+                    <c:if test="${empty forceText}">
                         <c:set var="buttonText">
                             <fmt:setLocale value="${cms.locale}" />
                             <cms:bundle basename="alkacon.mercury.template.messages">
@@ -303,6 +304,7 @@
                         link="${link}"
                         css="btn teaser-btn"
                         text="${buttonText}"
+                        forceText="${forceText}"
                         title="${linkTitle}"
                         createButton="${true}"
                         noExternalMarker="${true}" />

@@ -11,8 +11,11 @@
     description="An object that contains the link." %>
 
 <%@ attribute name="text" type="java.lang.String" required="false"
-    description="Text shown in the link if body of tag is empty.
+    description="Text shown in the link ONLY if body of tag is empty.
     Defaults to the 'Text' value of the provided XML content node if not set." %>
+
+<%@ attribute name="forceText" type="java.lang.String" required="false"
+    description="Text shown in the link, overwrinting the content of the XML and the body content if avaialble." %>
 
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="Optional text shown for the link title.
@@ -57,7 +60,14 @@
 <c:choose>
 <c:when test="${empty test or test}">
 
-    <jsp:doBody var="body" />
+    <c:choose>
+        <c:when test="${not empty forceText}">
+            <c:set var="body" value="${forceText}" />
+        </c:when>
+        <c:otherwise>
+            <jsp:doBody var="body" />
+        </c:otherwise>
+    </c:choose>
 
     <c:choose>
         <c:when test="${cms:isWrapper(link)}">

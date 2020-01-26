@@ -44,7 +44,7 @@
             <c:set var="tabContainerName"   value="${tabEntry.value.Id}" />
             <c:set var="open"               value="${firstOpen and status.first}" />
             <c:set var="itemId"             value="${parentId}_${status.count}" />
-            <c:set var="itemHsize"          value="${showTitle ? hsize + 1 : hsize}" />
+            <c:set var="itemHsize"          value="${hsize > 0 ? hsize + 1 : 2}" />
 
             <mercury:nl />
             <article class="accordion ${cssWrapper}"><%----%>

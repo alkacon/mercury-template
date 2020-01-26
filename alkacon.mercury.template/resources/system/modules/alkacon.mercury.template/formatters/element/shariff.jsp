@@ -5,6 +5,7 @@
     trimDirectiveWhitespaces="true"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
@@ -32,22 +33,24 @@
     <c:set var="services">[&quot;${fn:replace(value.Services, ',', '&quot;,&quot;')}&quot;]</c:set>
     <c:set var="mailAttrs" value="" />
     <c:if test="${fn:contains(value.Services.stringValue, 'mail')}">
-        <c:if test="${value.MailConfig.isSet}">
-            <c:choose>
-                <c:when test="${value.MailConfig.value.FormLink.isSet}">
-                    <c:set var="mailAttrs">data-mail-url="<cms:link>${value.MailConfig.value.FormLink}</cms:link>"</c:set>
-                </c:when>
-                <c:when test="${value.MailConfig.value.Mail.isSet}">
-                    <c:set var="mailAttrs">data-mail-url="mailto:${value.MailConfig.value.Mail.value.MailTo}"</c:set>
-                    <c:if test="${value.MailConfig.value.Mail.value.Subject.isSet}">
-                        <c:set var="mailAttrs">${mailAttrs}${' '}data-mail-subject="${value.MailConfig.value.Mail.value.Subject}"</c:set>
-                    </c:if>
-                    <c:if test="${value.MailConfig.value.Mail.value.Body.isSet}">
-                        <c:set var="mailAttrs">${mailAttrs}${' '}data-mail-body="${value.MailConfig.value.Mail.value.Body}"</c:set>
-                    </c:if>
-                </c:when>
-            </c:choose>
-        </c:if>
+        <fmt:setLocale value="${cms.locale}" />
+        <cms:bundle basename="alkacon.mercury.template.messages">
+            <c:set var="mailSubject"><fmt:message key="msg.page.shariff.mailSubject" /></c:set>
+            <c:set var="mailBody"><fmt:message key="msg.page.shariff.mailBody" /></c:set>
+            <c:if test="${value.MailConfig.value.Mail.isSet}">
+                <c:if test="${value.MailConfig.value.Mail.value.Subject.isSet}">
+                    <c:set var="mailSubject" value="${value.MailConfig.value.Mail.value.Subject}" />
+                </c:if>
+                <c:if test="${value.MailConfig.value.Mail.value.Body.isSet}">
+                    <c:set var="mailBody" value="${value.MailConfig.value.Mail.value.Body}" />
+                </c:if>
+            </c:if>
+            <c:set var="mailAttrs"><%--
+            --%>data-mail-url='mailto:'${' '}<%--
+            --%>data-mail-subject='<c:out value="${mailSubject}" />'${' '}<%--
+            --%>data-mail-body='<c:out value="${mailBody}" />'<%--
+        --%></c:set>
+        </cms:bundle>
     </c:if>
     <c:set var="lang">en</c:set>
     <c:if test="${fn:contains('bg,cs,da,de,en,es,fi,fr,hr,hu,it,ja,ko,nl,no,pl,pt,ro,ru,sk,sl,sr,sv,tr,zh', cms.locale.language)}">

@@ -12,7 +12,6 @@
 
     <xsd:complexType name="OpenCmsShariffMailConfigChoiceMail">
         <xsd:sequence>
-            <xsd:element name="MailTo" type="OpenCmsString" />
             <xsd:element name="Subject" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Body" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
@@ -22,13 +21,6 @@
     <xsd:annotation>
         <xsd:appinfo>
             <FieldSettings>
-                <Setting>
-                    <PropertyName>MailTo</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Shariff.MailTo)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Shariff.MailTo.help)]]></Description>
-                    <Widget>string</Widget>
-                    <Search>false</Search>
-                </Setting>
                 <Setting>
                     <PropertyName>Subject</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Shariff.Subject)]]></DisplayName>
@@ -40,7 +32,8 @@
                     <PropertyName>Body</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Shariff.Body)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Shariff.Body.help)]]></Description>
-                    <Widget>string</Widget>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>4|proportional</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

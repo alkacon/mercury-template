@@ -141,13 +141,17 @@
 <c:set var="linkOnText"         value="${true}" />
 <c:set var="useButton"          value="${false}" />
 
+<c:if test="${not empty markupBody}">
+    <jsp:invoke fragment="markupBody" var="markupBodyOutput" />
+</c:if>
+
 <c:choose>
     <c:when test="${not empty preface}">
         <c:set var="pText" value="${preface}" />
     </c:when>
-    <c:when test="${empty preface and empty markupBody}">
+    <c:when test="${empty preface and empty markupBodyOutput}">
         <%-- Set default for preface if not available --%>
-        <%-- If markupBody is available, preface is not shown from body anyway so we can skip this --%>
+        <%-- If markupBodyOutput is available, preface is not shown from body anyway so we can skip this --%>
         <c:if test="${not empty paraText}">
             <c:set var="paraText" value="${fn:trim(cms:stripHtml(paraText))}" />
         </c:if>
@@ -206,11 +210,9 @@
     </jsp:attribute>
 
     <jsp:attribute name="visual">
-        <c:set var="markupVisualOutput">
-            <c:if test="${not hideImage}">
-                <jsp:invoke fragment="markupVisual"/>
-            </c:if>
-        </c:set>
+        <c:if test="${not hideImage}">
+            <jsp:invoke fragment="markupVisual" var="markupVisualOutput" />
+        </c:if>
         <mercury:link
             link="${link}"
             title="${linkTitle}"
@@ -222,7 +224,7 @@
 
     <jsp:attribute name="text">
         <c:choose>
-            <c:when test="${empty markupBody}">
+            <c:when test="${empty markupBodyOutput}">
 
                 <c:set var="markupTextOutput">
 
@@ -282,7 +284,7 @@
 
             </c:when>
             <c:otherwise>
-                <jsp:invoke fragment="markupBody"/>
+                ${markupBodyOutput}
             </c:otherwise>
         </c:choose>
     </jsp:attribute>

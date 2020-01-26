@@ -310,12 +310,14 @@
                     @include button-base;
                     @include dl-btn;
                     text-align: left;
+                    min-width: 50%;
                 }
                 .fa {
                     min-width: 2*$default-margin;
                 }
             }
-            .dl-btn {
+            .dl-content .dl-btn {
+                min-width: 50%;
                 text-align: left;
                 .fa {
                     min-width: 2*$default-margin;

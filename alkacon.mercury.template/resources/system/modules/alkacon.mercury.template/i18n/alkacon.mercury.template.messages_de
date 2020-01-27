@@ -1396,6 +1396,7 @@ type.m-metainfo.formatter.default=Meta-Info für Seiten
 type.m-metainfo.name=Meta-Info
 type.m-metainfo.title=Meta-Info
 type.m-navigation.description=Ein Navigationselement für den Seitenkopf oder die Seitenleiste.
+type.m-navigation.formatter.breadcrumb=Brotkrumen-Navigation
 type.m-navigation.formatter.navbar=Hauptnavigation im Seitenkopf
 type.m-navigation.formatter.side=Seiten-Navigation
 type.m-navigation.name=Navigation

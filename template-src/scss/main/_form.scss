@@ -581,6 +581,10 @@
 
     .form-footer {
         margin-top: $default-margin;
+
+        > p:last-of-type {
+            margin-bottom: 0;
+        }
     }
 
     @include media-breakpoint-down(xs) {

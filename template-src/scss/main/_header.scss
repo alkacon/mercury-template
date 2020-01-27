@@ -898,6 +898,12 @@
     }
 
     .area-header {
+
+        .type-nav-breadcrumbs.element {
+            // remove element bottom margin from breadcrumbs in header
+            margin-bottom: 0;
+        }
+
         // global variables are now mostly for flexible header, this is for backward compatibility
         $logo-left-nav-padding: 0 20px $nav-header-ver-padding 20px !default; // padding for main nav items in LG, XL
         $logo-left-arrow-right: 5px !default; // offset for arrow on main nav items in LG, XL

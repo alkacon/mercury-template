@@ -1396,6 +1396,7 @@ type.m-metainfo.formatter.default=Meta info for pages
 type.m-metainfo.name=Meta info
 type.m-metainfo.title=Meta info
 type.m-navigation.description=A navigation element that can be used in the page head or sidebar.
+type.m-navigation.formatter.breadcrumb=Breadcrumb navigation
 type.m-navigation.formatter.navbar=Main navigation in page header
 type.m-navigation.formatter.side=Side navigation
 type.m-navigation.name=Navigation

@@ -21,7 +21,7 @@
 <c:set var="breadcrumbsFromRoot"        value="${setting.breadcrumbsFromRoot.toBoolean}" />
 
 <mercury:nl />
-<div class="type-nav-breadcrumbs ${cssWrapper}${' '}${cssVisibility}"><%----%>
+<div class="element type-nav-breadcrumbs ${cssWrapper}${' '}${cssVisibility}"><%----%>
 <mercury:nl />
 
     <mercury:nav-vars params="${param}">

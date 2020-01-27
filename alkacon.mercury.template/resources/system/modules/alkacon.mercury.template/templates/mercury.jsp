@@ -48,7 +48,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 
 <c:set var="canonicalLink" value="${cms.detailRequest ? cms.detailContent.link : cms.pageResource.link}" />
 <c:if test="${canonicalLink ne requestUri}">
-    <link rel="canonical" href="${cms.site.url}${canonicalLink}" />
+    <link rel="canonical" href="${cms.site.url}${canonicalLink}${not empty requestQueryString ? '?'.concat(requestQueryString) : ''}" />
     <mercury:nl />
 </c:if>
 

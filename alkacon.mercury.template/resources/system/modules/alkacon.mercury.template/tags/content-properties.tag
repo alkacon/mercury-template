@@ -11,6 +11,9 @@
     description="The URI of the resource currently rendered.
     This can be either the request context URI, or a detail content site path." %>
 
+<%@ variable name-given="requestUri" declare="true"
+    description="The URI requested by the browser, not what OpenCms made of it later." %>
+
 <%@ variable name-given="contentProperties" declare="true"
     description="The properties read directly from the URI resource." %>
 
@@ -29,6 +32,7 @@
 </c:otherwise>
 </c:choose>
 
+<c:set var="requestUri"><%= request.getPathInfo() %></c:set>
 <c:set var="contentProperties" value="${cms.vfs.readProperties[contentUri]}" />
 <c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
 <c:set var="contentPropertiesSearchDetail" value="${cms.vfs.readPropertiesSearch[contentUri]}" />

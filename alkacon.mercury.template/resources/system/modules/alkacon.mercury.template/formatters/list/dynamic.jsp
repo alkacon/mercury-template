@@ -92,16 +92,19 @@
         <c:set var="initparams" value="" />
         <c:if test="${not empty param.facet_category_exact}">
             <c:set var="initparams" value="&facet_category_exact=${param.facet_category_exact}" />
-           </c:if>
+        </c:if>
         <c:if test="${not empty param.q}">
             <c:set var="initparams" value="${initparams}&q=${param.q}" />
-           </c:if>
+        </c:if>
         <c:if test="${not empty param.facet_instancedate}">
             <c:set var="initparams" value="${initparams}&facet_instancedate=${param.facet_instancedate}" />
-           </c:if>
+        </c:if>
         <c:if test="${not empty param['facet_parent-folders']}">
             <c:set var="initparams" value="${initparams}&facet_parent-folders=${param['facet_parent-folders']}" />
-           </c:if>
+        </c:if>
+        <c:if test="${not wrappedSettings.loadAll.toBoolean and not empty param['page']}">
+            <c:set var="initparams" value="${initparams}&page=${param['page']}" />
+        </c:if>
         <c:if test="${not empty initparams}">
             <c:set var="initparams" value="reloaded${initparams}" />
         </c:if>

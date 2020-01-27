@@ -29,9 +29,10 @@
     }
     line-height: $form-line-height;
     border: $form-border;
+    @include round-corners($form-border-radius);
+    @include use-hyphens-text;
     color: $form-text-color;
     background: $form-background;
-    @include round-corners($form-border-radius);
 
     header {
         border-bottom: $form-border;

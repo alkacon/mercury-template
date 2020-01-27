@@ -313,6 +313,7 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
                     page = pageFromParam;
                 }
             }
+            if (DEBUG) console.info("List: showing page " + page);
 
             jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
                 generateListHtml(list, reloadEntries, ajaxListHtml, page)
@@ -332,7 +333,7 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
  */
 function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
 
-    if (DEBUG) console.info("List: buildAjaxLink() called - searchStateParameters='" + searchStateParameters + "'");
+    if (DEBUG) console.info("List: buildAjaxLink() called - searchStateParameters='" + searchStateParameters + "' ajaxOptions='" + ajaxOptions + "'");
 
     var params = "contentpath=" + list.path
         + "&instanceId="
@@ -351,7 +352,7 @@ function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
         + list.option;
 
     if (list.$facets.length != 0) {
-        /* The first option is only used by the old lists. NG lists use the settings. */
+        // The first option is only used by the old lists. NG lists use the settings.
         params = params + "&facets=" + list.$facets.data("facets");
         params = params + list.$facets.data("settings");
     }
@@ -1016,35 +1017,39 @@ export function init(jQuery, debug) {
 
             /** @type {ListFilter} */
             var filter = $archiveFilter.data("filter");
-            filter.$element = $archiveFilter;
-            filter.id = $archiveFilter.attr("id");
-            filter.elementId = $archiveFilter.data("id");
-            filter.$textsearch = $archiveFilter.find("#textsearch_" + filter.id);
+            if (typeof filter !== 'undefined') {
+                filter.$element = $archiveFilter;
+                filter.id = $archiveFilter.attr("id");
+                filter.elementId = $archiveFilter.data("id");
+                filter.$textsearch = $archiveFilter.find("#textsearch_" + filter.id);
 
-            // store filter data in global array
-            m_archiveFilters[filter.id] = filter;
+                // store filter data in global array
+                m_archiveFilters[filter.id] = filter;
 
-            // store filter in global group array
-            var group = m_archiveFilterGroups[filter.elementId];
-            if (typeof group !== 'undefined') {
-                group.push(filter);
-            } else {
-                m_archiveFilterGroups[filter.elementId] = [filter];
-            }
-
-            // attach key listeners for keyboard support
-            $archiveFilter.find("li > a").on("keydown", function(e) {
-                if (e.type == "keydown" && (e.which == 13 || e.which == 32)) {
-                    jQ(this).click();
-                    e.preventDefault();
+                // store filter in global group array
+                var group = m_archiveFilterGroups[filter.elementId];
+                if (typeof group !== 'undefined') {
+                    group.push(filter);
+                } else {
+                    m_archiveFilterGroups[filter.elementId] = [filter];
                 }
-            });
-            if (DEBUG) console.info("List: Archive filter data found - id=" + filter.id + ", elementId=" + filter.elementId);
 
-            if (typeof filter.initparams !== "undefined" && filter.initparams != "") {
-                if (DEBUG) console.info("List: Data filter init params - " + filter.initparams);
-                // highlight filter correctly
-                listFilter(filter.elementId, null, filter.id, filter.initparams, false);
+                // attach key listeners for keyboard support
+                $archiveFilter.find("li > a").on("keydown", function(e) {
+                    if (e.type == "keydown" && (e.which == 13 || e.which == 32)) {
+                        jQ(this).click();
+                        e.preventDefault();
+                    }
+                });
+                if (DEBUG) console.info(".type-list-filter data found - id=" + filter.id + ", elementId=" + filter.elementId);
+
+                if (typeof filter.initparams !== "undefined" && filter.initparams != "") {
+                    if (DEBUG) console.info("List: Data filter init params - " + filter.initparams);
+                    // highlight filter correctly
+                    listFilter(filter.elementId, null, filter.id, filter.initparams, false);
+                }
+            } else {
+                if (DEBUG) console.info(".type-list-filter found without data, ignoring!");
             }
 
         });

@@ -117,7 +117,16 @@
 
             <c:if test="${isLocaleLink}">
                 <c:set var="targetLocale" value="${fn:substringAfter(targetLink, 'locale://')}" />
-                <c:set var="targetLink" value="${cms.localeResource[targetLocale].link}" />
+                <c:choose>
+                    <c:when test="${cms.detailRequest}">
+                        <c:set var="targetLink">
+                            <cms:link baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
+                        </c:set>
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="targetLink" value="${cms.localeResource[targetLocale].link}" />
+                    </c:otherwise>
+                </c:choose>
             </c:if>
 
             <c:choose>

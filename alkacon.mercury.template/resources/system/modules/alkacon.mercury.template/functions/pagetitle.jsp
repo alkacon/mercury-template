@@ -14,10 +14,10 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 
-<mercury:nl />
-<div class="type-pagetitle ${cssWrapper}"><%----%>
-
-    <mercury:heading level="${hsize}" text="${cms.title}" css="head" ade="${false}" />
-
-</div><%----%>
-<mercury:nl />
+<mercury:section-piece
+    cssWrapper="element type-pagetitle${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
+    pieceLayout="${0}"
+    heading="${cms.title}"
+    hsize="${hsize}"
+    ade="${false}"
+/>

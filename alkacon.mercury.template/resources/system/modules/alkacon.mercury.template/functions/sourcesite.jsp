@@ -28,7 +28,7 @@
 <c:choose>
     <c:when test="${(not empty sourceSite) and not (currentSite eq sourceSite)}">
         <c:set var="sourceSiteProps" value="${cms.vfs.readProperties[sourceSite]}" />
-        <c:set var="sourceSiteName" value="${not empty sourceSiteProps['teamplte.sitename'] ? sourceSiteProps['teamplte.sitename'] : sourceSiteProps['Title'] }" />
+        <c:set var="sourceSiteName" value="${not empty sourceSiteProps['mercury.sitename'] ? sourceSiteProps['mercury.sitename'] : sourceSiteProps['Title'] }" />
         <div class="element type-sourcesite ${cssWrapper}"><%----%>
             <fmt:message key="msg.page.sourcesite.other">
                 <fmt:param><a href="${cms.vfs.link[sourceSite.rootPath]}">${sourceSiteName}</a></fmt:param>

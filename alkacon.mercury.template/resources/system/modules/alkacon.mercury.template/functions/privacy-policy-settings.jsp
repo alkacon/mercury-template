@@ -17,6 +17,14 @@
     <c:choose>
         <c:when test="${not empty policyfile and policyfile ne 'none'}">
             <c:set var="policyfile" value="${fn:startsWith(policyfile, '/') ? policyfile : cms.subSitePath.concat('.content/').concat(policyfile)}" />
+        </c:when>
+        <c:otherwise>
+             <c:set var="policyfile" value="${null}" />
+        </c:otherwise>
+    </c:choose>
+
+    <c:choose>
+        <c:when test="${not empty policyfile and cms.vfs.exists[policyfile]}">
             <c:set var="policySettings" value="${cms:jsonToMap(leer)}" />
             <c:set target="${policySettings}" property="cssWrapper" value="${cms.element.settings.cssWrapper}" />
             <mercury:display
@@ -35,6 +43,5 @@
                 </mercury:alert>
             </cms:bundle>
         </c:otherwise>
-
     </c:choose>
 </mercury:content-properties>

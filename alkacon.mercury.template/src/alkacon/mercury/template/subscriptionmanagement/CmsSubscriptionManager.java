@@ -51,26 +51,58 @@ import org.apache.commons.logging.Log;
  */
 public class CmsSubscriptionManager {
 
+    /** Subscription status a user can have. */
+    public static enum SubscriptionStatus {
+        /** The user is active. He has confirmed its registration, i.e., activated the subscription himself. */
+        ACTIVATED,
+        /** The user is active, but was manually added and has not registered or at least nor confirmed a registration. */
+        MANUALLY_ADDED,
+        /** The user is inactive. The user has requested the subscription but not confirmed the request yet. */
+        INACTIVE,
+        /** The user is inactive. There's no valid information on the state of the user's subscription. */
+        INVALID;
+    }
+
     /**
      * Wrapper for the activation state of a user for one specific group.
      * It is stored in the additional info in Json format.
      */
     private static class ActivationInfo {
 
-        /** Json key for the activation state. */
+        /**
+         * Json key for the activation state.
+         *
+         * @deprecated setting activation time instead.
+         */
+        @Deprecated
         private static final String JSON_KEY_IS_ACTIVE = "active";
+        /** Json key for the activation time. */
+        private static final String JSON_KEY_ACTIVATION_TIME = "acTime";
         /** Json key for the (last) registration request time. */
         private static final String JSON_KEY_REGISTRATION_TIME = "regTime";
-        /** Flag, indicating if the registration is activated. */
-        private boolean m_isActive;
+        /** Json key for the time when the user was added manually. */
+        private static final String JSON_KEY_ADD_TIME = "addTime";
         /** Time of the last registration request in milliseconds. */
         private Long m_registrationTime;
+        /** Time of the manual addition of the user in milliseconds. */
+        private Long m_addTime;
+        /** Time of the activation (confirmation of the registration) of the user in milliseconds. */
+        private Long m_acTime;
 
-        /** Default constructor. Setting activated to false and the last registration time to the current time. */
-        public ActivationInfo() {
+        /**
+         * Constructor for registration and manually adding a user.
+         * It sets activated to false and the last registration time to the current time.
+         * Moreover, if addManually is true, information that the user was manually added is set to true.
+         *
+         * @param addManually flag, indicating if the
+         */
+        public ActivationInfo(boolean addManually) {
 
-            m_isActive = false;
+            if (addManually) {
+                m_addTime = new Long(System.currentTimeMillis());
+            } else {
             m_registrationTime = new Long(System.currentTimeMillis());
+        }
         }
 
         /**
@@ -79,14 +111,29 @@ public class CmsSubscriptionManager {
          */
         public ActivationInfo(JSONObject activationInfoJson) {
 
-            m_isActive = false;
+            // Reading the deprecated active flag, just telling that there was some activation time.
             try {
-                m_isActive = activationInfoJson.getBoolean(JSON_KEY_IS_ACTIVE);
+                if (activationInfoJson.getBoolean(JSON_KEY_IS_ACTIVE)) {
+                    m_acTime = new Long(0);
+                }
             } catch (JSONException e) {
                 // TODO: LOG?
                 // Do nothing, maybe log?
             }
-            m_registrationTime = null;
+            try {
+                long time = activationInfoJson.getLong(JSON_KEY_ADD_TIME);
+                m_addTime = new Long(time);
+            } catch (JSONException e) {
+                // TODO: LOG?
+                // Do nothing, maybe log?
+            }
+            try {
+                long time = activationInfoJson.getLong(JSON_KEY_ACTIVATION_TIME);
+                m_acTime = new Long(time);
+            } catch (JSONException e) {
+                // TODO: LOG?
+                // Do nothing, maybe log?
+            }
             try {
                 long time = activationInfoJson.getLong(JSON_KEY_REGISTRATION_TIME);
                 m_registrationTime = new Long(time);
@@ -102,8 +149,26 @@ public class CmsSubscriptionManager {
          */
         public void activate() {
 
-            m_isActive = true;
+            m_acTime = new Long(System.currentTimeMillis());
 
+        }
+
+        /**
+         * Returns the time of the confirmation of the registration of the user in milliseconds.
+         * @return the time of the confirmation of the registration of the user in milliseconds.
+         */
+        public Long getActivationTimeMs() {
+
+            return m_acTime;
+        }
+
+        /**
+         * Returns the time of the manually adding of the user in milliseconds.
+         * @return the time of the manually adding of the user in milliseconds.
+         */
+        public Long getAddTimeMs() {
+
+            return m_addTime;
         }
 
         /**
@@ -121,7 +186,25 @@ public class CmsSubscriptionManager {
          */
         public boolean isActive() {
 
-            return m_isActive;
+            return m_acTime != null;
+        }
+
+        /**
+         * Returns a flag, indicating if the user was manually added.
+         * @return a flag, indicating if the user was manually added.
+         */
+        public boolean isManuallyAdded() {
+
+            return m_addTime != null;
+        }
+
+        /**
+         * Returns a flag, indicating if the user already requested a registration.
+         * @return a flag, indicating if the user already requested a registration.
+         */
+        public boolean requestedRegistration() {
+
+            return m_registrationTime != null;
         }
 
         /**
@@ -132,23 +215,37 @@ public class CmsSubscriptionManager {
         @Override
         public String toString() {
 
-            return "{ \""
-                + JSON_KEY_IS_ACTIVE
+            String result = "";
+            if (null != getActivationTimeMs()) {
+                result = (result.isEmpty() ? "\"" : ", \"")
+                    + JSON_KEY_ACTIVATION_TIME
                 + "\" : "
-                + isActive()
-                + ", \""
+                    + getActivationTimeMs();
+            }
+            if (null != getRegistrationTimeMs()) {
+                result += (result.isEmpty() ? "\"" : ", \"")
                 + JSON_KEY_REGISTRATION_TIME
                 + "\" : "
-                + getRegistrationTimeMs()
-                + "}";
+                    + getRegistrationTimeMs();
+            }
+            if (null != getAddTimeMs()) {
+                result += (result.isEmpty() ? "\"" : ", \"") + JSON_KEY_ADD_TIME + "\" : " + getAddTimeMs();
+            }
+            result = "{" + result + "}";
+            return result;
         }
 
         /**
-         * Sets the last registration request time to the current time.
+         * Sets the last registration request time or the add time to the current time.
+         * @param manually iff <code>true</code> the add time is updated, otherwise the registration request time.
          */
-        public void updateRegistrationTime() {
+        public void updateTime(boolean manually) {
 
+            if (manually) {
+                m_addTime = new Long(System.currentTimeMillis());
+            } else {
             m_registrationTime = new Long(System.currentTimeMillis());
+            }
 
         }
     }
@@ -156,10 +253,10 @@ public class CmsSubscriptionManager {
     /** The log object for this class. */
     private static final Log LOG = CmsLog.getLog(CmsSubscriptionManager.class);
 
-    /** The default password for all users, can/should be overwritten in the module parameter. */
+    /** The default password for all newsletter users, can/should be overwritten in the module parameter. */
     private static final String DEFAULT_PASSWORD_USER = "QaNbyzUw82-Qn!";
 
-    /** Name of the additional user info: flag to determine if the user is subscribed. */
+    /** Name of the additional user info: flag to determine if the newsletter user is active. */
     protected static final String USER_ADDITIONALINFO = "SubscriptionManager_SubscriptionState";
 
     /** The admin CmsObject that is used for user/group operations. */
@@ -228,16 +325,33 @@ public class CmsSubscriptionManager {
             return true;
         } catch (JSONException | CmsException e) {
             // error reading or writing user
-            LOG.error("Error accessing user with email " + email + " in order to subscribe to " + groupName, e);
+            LOG.error("Error accessing user with email " + email + " in order to activate for " + groupName, e);
             return false;
         }
     }
 
     /**
-     * Returns all active users for the the provided group
+     * Creates a new user with the specified email address if it does not already exist.
+     * Furthermore, adds it to the provided group to the user and writes additional infos about the registration time.<p>
+     * Moreover, the additional infos contain information that the user was added manually.
+     * He will directly be counted as active.
+     * In case the user is already marked active for the provided group, nothing is done.
      *
-     * @param groupName the group for the subscription configuration
-     * @return the active users for the subscription configuration.
+     * @param email the email address of the user to register
+     * @param groupName the name of the group the user should be registered for
+    
+     * @return <code>true</code> if the user either is already active in the group or the user was created and got the
+     *  correct registration information attached. <code>false</code> otherwise.
+     */
+    public boolean addUserManually(String email, String groupName) {
+
+        return addUser(email, groupName, true);
+    }
+
+    /**
+     * Returns all active users for the provided group
+     * @param groupName the group name
+     * @return the active users for the group.
      * @throws CmsException thrown if reading the users fails.
      */
     public Set<CmsUser> getActiveUsers(String groupName) throws CmsException {
@@ -261,6 +375,24 @@ public class CmsSubscriptionManager {
     public Pattern getEmailValidationPattern() {
 
         return m_emailPattern;
+    }
+
+    public SubscriptionStatus getSubscriptionStatus(CmsUser user, String groupName) {
+
+        ActivationInfo activationInfo = readRegistrationInfo(user).get(groupName);
+        if (null == activationInfo) {
+            return SubscriptionStatus.INVALID;
+        }
+        if (activationInfo.isActive()) {
+            return SubscriptionStatus.ACTIVATED;
+        }
+        if (activationInfo.isManuallyAdded()) {
+            return SubscriptionStatus.MANUALLY_ADDED;
+        }
+        if (activationInfo.requestedRegistration()) {
+            return SubscriptionStatus.INACTIVE;
+        }
+        return SubscriptionStatus.INVALID;
     }
 
     /**
@@ -293,63 +425,9 @@ public class CmsSubscriptionManager {
      * @return <code>true</code> if the user either is already active in the group or the user was created and got the
      *  correct registration information attached. <code>false</code> otherwise.
      */
-    @SuppressWarnings("null")
     public boolean registerUser(String email, String groupName) {
 
-        CmsUser user = null;
-        // create additional infos containing the active flag set to passed parameter
-
-        try {
-            String ouFqn = CmsOrganizationalUnit.getParentFqn(groupName);
-            Map<String, ActivationInfo> activationInfos = null;
-            ActivationInfo activationInfo = null;
-            try {
-                // first try to read the user
-                user = m_adminCms.readUser(ouFqn + email);
-                activationInfos = readRegistrationInfo(user);
-                activationInfo = activationInfos.get(groupName);
-
-            } catch (CmsException e) {
-                // user does not exist
-            }
-            if ((user == null) || !isUserActive(user, groupName, activationInfo)) {
-
-                // create the group the user should be added to
-                createGroupIfNecessary(groupName);
-
-                // create/adjust the user information
-                if (user == null) {
-                    // create the user with additional infos
-                    user = m_adminCms.createUser(
-                        ouFqn + email,
-                        getUserPassword(),
-                        "",
-                        Collections.<String, Object> emptyMap());
-                    // set the users email address
-                    user.setEmail(email);
-                    activationInfos = new HashMap<>(1);
-                    activationInfo = new ActivationInfo();
-                    activationInfos.put(groupName, activationInfo);
-
-                } else {
-                    if ((null == activationInfo)) {
-                        activationInfo = new ActivationInfo();
-                        activationInfos.put(groupName, activationInfo);
-                    } else {
-                        activationInfo.updateRegistrationTime();
-                    }
-                }
-
-                writeRegistrationInfo(user, activationInfos);
-                m_adminCms.writeUser(user);
-                // add the user to the given mailing list group
-                m_adminCms.addUserToGroup(user.getName(), groupName);
-            }
-        } catch (JSONException | CmsException e) {
-            LOG.error("Error while registering user " + email + " for group " + groupName + ".", e);
-            return false;
-        }
-        return true;
+        return addUser(email, groupName, false);
     }
 
     /**
@@ -418,6 +496,78 @@ public class CmsSubscriptionManager {
     }
 
     /**
+     * Creates a new user with the specified email address if it does not already exist.
+     * Furthermore, adds it to the provided group to the user and writes additional infos about the registration time.<p>
+     * In case the user is already marked active for the provided group, nothing is done.
+     *
+     * @param email the email address of the user to register
+     * @param groupName the name of the group the user should be registered for
+     * @param manually flag, indicating iff the user is added manually (iff false, he's registering himself)
+     * @return <code>true</code> if the user either is already active in the group or the user was created and got the
+     *  correct registration information attached. <code>false</code> otherwise.
+     */
+    @SuppressWarnings("null")
+    private boolean addUser(String email, String groupName, boolean manually) {
+
+        CmsUser user = null;
+        // create additional infos containing the active flag set to passed parameter
+
+        try {
+            String ouFqn = CmsOrganizationalUnit.getParentFqn(groupName);
+            Map<String, ActivationInfo> activationInfos = null;
+            ActivationInfo activationInfo = null;
+            try {
+                // first try to read the user
+                user = m_adminCms.readUser(ouFqn + email);
+                activationInfos = readRegistrationInfo(user);
+                activationInfo = activationInfos.get(groupName);
+
+            } catch (CmsException e) {
+                // user does not exist
+            }
+            if ((user == null)
+                || !isUserActive(user, groupName, activationInfo) // this is only true if activationInfo != null
+                || (!manually && !activationInfo.isActive())) { // if the user was only manually added but now wants to register himself, we want to adjust the information
+
+                // create the group the user should be added to
+                createGroupIfNecessary(groupName);
+
+                // create/adjust the user information
+                if (user == null) {
+                    // create the user with additional infos
+                    user = m_adminCms.createUser(
+                        ouFqn + email,
+                        getUserPassword(),
+                        "",
+                        Collections.<String, Object> emptyMap());
+                    // set the users email address
+                    user.setEmail(email);
+                    activationInfos = new HashMap<>(1);
+                    activationInfo = new ActivationInfo(manually);
+                    activationInfos.put(groupName, activationInfo);
+
+                } else {
+                    if ((null == activationInfo)) {
+                        activationInfo = new ActivationInfo(manually);
+                        activationInfos.put(groupName, activationInfo);
+                    } else {
+                        activationInfo.updateTime(manually);
+                    }
+                }
+
+                writeRegistrationInfo(user, activationInfos);
+                m_adminCms.writeUser(user);
+                // add the user to the given mailing list group
+                m_adminCms.addUserToGroup(user.getName(), groupName);
+            }
+        } catch (JSONException | CmsException e) {
+            LOG.error("Error while registering user " + email + " for group " + groupName + ".", e);
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Creates the group if necessary.
      *
      * @param groupName name of the group.
@@ -470,7 +620,7 @@ public class CmsSubscriptionManager {
 
         try {
             return (null != activationInfo)
-                && activationInfo.isActive()
+                && (activationInfo.isActive() || activationInfo.isManuallyAdded())
                 && m_adminCms.userInGroup(user.getName(), groupName);
         } catch (CmsException e) {
             // The group the user should be in might not exist and therefor an exception might be thrown.

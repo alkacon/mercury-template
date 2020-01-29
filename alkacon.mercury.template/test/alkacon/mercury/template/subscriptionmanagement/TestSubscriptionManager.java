@@ -31,7 +31,6 @@ import org.opencms.test.OpenCmsTestProperties;
 import java.util.Collection;
 import java.util.List;
 
-import alkacon.mercury.template.TestCmsJspBootstrapBean;
 import alkacon.mercury.test.AllTests;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
@@ -58,7 +57,7 @@ public class TestSubscriptionManager extends OpenCmsTestCase {
     public static Test suite() {
 
         TestSuite suite = new TestSuite();
-        suite.setName(TestCmsJspBootstrapBean.class.getName());
+        suite.setName(TestSubscriptionManager.class.getName());
         OpenCmsTestProperties.initialize(AllTests.TEST_PROPERTIES_PATH);
 
         suite.addTest(new TestSubscriptionManager("testUserActions"));

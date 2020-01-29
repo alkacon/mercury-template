@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.97</version>
+		<version>11.0.1.99</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7233,6 +7233,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Reads a media content and sets a series of variables for quick acesss]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/meta-canonical.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/meta-canonical.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>023d2e35-4267-11ea-aac0-0242ac11002b</uuidstructure>
+			<uuidresource>023d2e36-4267-11ea-aac0-0242ac11002b</uuidresource>
+			<datecreated>Wed, 29 Jan 2020 07:14:37 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates the canonical link for the current page]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

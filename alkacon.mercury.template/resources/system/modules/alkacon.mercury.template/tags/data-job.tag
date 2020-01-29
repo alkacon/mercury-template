@@ -14,7 +14,6 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-
 <%-- Using the same logic as the elaborate display teaser --%>
 <c:set var="value"              value="${content.value}" />
 
@@ -84,6 +83,10 @@
 
     <c:if test="${not empty validThrough}">
         <cms:jsonvalue key="validThrough"><fmt:formatDate value="${cms:convertDate(validThrough)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+    </c:if>
+
+    <c:if test="${value['MetaInfoJob/BaseSalary'].isSet}">
+        <cms:jsonvalue key="baseSalary" parse="${true}" errorVar="parseError">${value['MetaInfoJob/BaseSalary']}</cms:jsonvalue>
     </c:if>
 
     <c:if test="${description.isSet}">

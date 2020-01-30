@@ -29,13 +29,13 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {JQuery<HTMLElement>} $element the HTML element of the list.
  * @property {string} id the lists unique id on the page.
  * @property {string} elementId the id of the list element's content.
- * @property {boolean} allLoaded flag, indicating if all items are loaded directly.
+ * @property {boolean} loadAll flag, indicating if all items are loaded directly.
  * @property {?number[]} pageSizes the page sizes as array. Only provided in load all case.
  * @property {JQuery<HTMLElement>} $editbox HTML element representing the edit box for empty lists.
  * @property {JQuery<HTMLElement>} $entries HTML element representing the list entries shown.
  * @property {JQuery<HTMLElement>} $spinner HTML element representing the spinner shown when loading
  * @property {JQuery<HTMLElement>} $pagination HTML element where pagination is put.
- * @property {?Map<number, JQuery>} pageEntries the entries per page. Only filled in allLoaded mode.
+ * @property {?Map<number, JQuery>} pageEntries the entries per page. Only filled in loadAll mode.
  * @property {?JQuery<HTMLElement>} $noresults HTML element where information about the empty list is placed.
  * @property {boolean} locked flag, indicating if the list is locked for reloading.
  * @property {boolean} autoload flag, indicating if the list should automatically load more items on scroll.
@@ -278,24 +278,27 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
                 // we don't need to calculate facets again if we do not reload all entries
                 ajaxOptions = "&hideOptions=true&";
             }
+            if (list.initialLoad) {
+                list.$element.addClass("initial-load");
+            }
 
             // calculate the spinner position in context to the visible list part
             var scrollTop = jQ(window).scrollTop();
             var windowHeight = jQ(window).height();
             var elementTop = list.$element.offset().top;
+            var offsetTop = scrollTop > elementTop ? (elementTop - scrollTop) * -1 : 0;
             var elementHeight = list.$element.outerHeight(true);
             var visibleHeight = Math.min(scrollTop + windowHeight, elementTop + elementHeight) - Math.max(scrollTop, elementTop);
-            var invisibleHeight = elementHeight - visibleHeight;
-            var spinnerPos = ((0.5 * visibleHeight) + invisibleHeight) / elementHeight * 100.0;
+            var spinnerPos = ((0.5 * visibleHeight) + offsetTop) / elementHeight * 100.0;
 
-            if (DEBUG && false) console.info("List: Spinner animation" +
+            if (false && DEBUG) console.info("List: Spinner animation" +
                 " scrollTop=" + scrollTop +
                 " windowHeight=" + windowHeight +
                 " elementTop=" + elementTop +
+                " offsetTop=" + offsetTop +
                 " elementHeight=" + elementHeight +
                 " visibleHeight=" + visibleHeight +
-                " invisibleHeight=" + invisibleHeight +
-                " spinnerPos=" + spinnerPos
+                " spinnerPos=" + spinnerPos + "%"
             )
 
             // show the spinner
@@ -381,24 +384,32 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
 
     var $newEntries;
     var $groups = $result.find("div[listgroup]");
-    if ($groups.length > 0) {
+    var hasGroups = $groups.length > 0;
+    if (hasGroups) {
         // the search results should be grouped
         if (DEBUG) console.info("List: Search result - list=" + list.id + " contains " + $groups.length + " groups");
-        combineGroups($groups, false);
+        hasGroups = combineGroups($groups, false);
         $newEntries = $result.find(".list-entry:parent");
     } else {
         // no grouping of search results required
         $newEntries = $result.find(".list-entry");
     }
 
-    if (list.allLoaded) {
+    if (list.loadAll) {
         list.pageEntries = paginateEntries(list, $newEntries);
         list.pageData.pages = list.pageEntries.size;
     }
     // clear the pagination element
     list.$pagination.empty();
 
-    if (reloadEntries) {
+    // initial list load:
+    // entries are already there, if there are no groups in the result we can skip the reload
+    // but never skip if all items are displayed
+    var skipInitialLoad = list.initialLoad && !hasGroups && !list.loadAll;
+    list.initialLoad = false;
+    if (DEBUG && skipInitialLoad) console.info("List: Skipping initial reload for list=" + list.id);
+
+    if (reloadEntries && !skipInitialLoad) {
         // set min-height of list to avoid screen flicker
         list.$entries.css("min-height", list.$entries.height() + 'px');
         // remove the old entries when list is reloaded
@@ -406,7 +417,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     }
 
     // add the new elements to the list and set pagination element with new content.
-    if (list.allLoaded) {
+    if (list.loadAll) {
         if (list.pageEntries.size == 0) {
             list.$entries.hide();
                 if (list.$noresults != null) {
@@ -430,7 +441,9 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
             }
         }
     } else {
-        $newEntries.appendTo(list.$entries);
+        if (!skipInitialLoad) {
+            $newEntries.appendTo(list.$entries);
+        }
         // set pagination element with new content
         $result.find('.list-append-position').appendTo(list.$pagination);
     }
@@ -458,6 +471,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
 
     // fade out the spinner
     list.$spinner.fadeOut(250);
+    list.$element.removeClass("initial-load");
     list.locked = false;
 
     if ((list.appendOption == "clickfirst") && list.notclicked && !reloadEntries) {
@@ -694,6 +708,7 @@ function combineGroups($groups, isStatic) {
     isStatic = isStatic || false;
     if (DEBUG) console.info("List: Combining list with " + $groups.length + " groups for a " + isStatic ? "static" : "dynamic" + " list" );
     var lastGroupId, $lastGroup;
+    var hasGroups = false;
     $groups.each(function(index) {
         var $this = $(this);
         var thisGroupId = $this.attr("listgroup");
@@ -712,6 +727,7 @@ function combineGroups($groups, isStatic) {
             lastGroupId = thisGroupId;
         } else {
             // append to current group
+            hasGroups = true;
             $this.appendTo($lastGroup);
             if (isStatic) {
                 // must handle HTML differently for static lists
@@ -721,6 +737,7 @@ function combineGroups($groups, isStatic) {
             }
         }
     });
+    return hasGroups;
 }
 
 /**
@@ -842,7 +859,7 @@ export function switchPage(id, page) {
         jQ(paginationString).appendTo(list.$pagination);
     }
     if (! list.$element.visible()) {
-        if (DEBUG) console.info("List.switchPage(): Scrolling to anchor");
+        if (DEBUG) console.info("List: switchPage() - scrolling to anchor");
         Mercury.scrollToAnchor(list.$element, -20);
     }
 }
@@ -907,7 +924,7 @@ export function init(jQuery, debug) {
     if (DEBUG) console.info("Lists.init()");
 
     var $listElements = jQ('.list-dynamic');
-    if (DEBUG) console.info(".list-dynamic elements found: " + $listElements.length);
+    if (DEBUG) console.info("List: .list-dynamic elements found: " + $listElements.length);
 
     if ($listElements.length > 0 ) {
         $listElements.each(function() {
@@ -923,7 +940,6 @@ export function init(jQuery, debug) {
                 list.$element = $list;
                 list.id = $list.attr("id");
                 list.elementId = $list.data("id");
-                list.allLoaded = list.loadAll == "true";
                 // read and store the page size information
                 var pageSizes = list.itemsPerPage;
                 var sizeArrayNum = [];
@@ -941,6 +957,7 @@ export function init(jQuery, debug) {
                 list.$spinner = $list.find(".list-spinner");
                 list.$pagination = $list.find(".list-pagination");
                 list.$noresults = $list.find(".list-noresults");
+                list.initialLoad = true;
                 list.locked = false;
                 list.autoload = false;
                 list.notclicked = true;
@@ -986,7 +1003,7 @@ export function init(jQuery, debug) {
     }
 
     var $staticGroupListElements = jQ('.type-static-list .list-with-groups.list-entries');
-    if (DEBUG) console.info(".type-static-list .list-with-groups elements found: " + $staticGroupListElements.length);
+    if (DEBUG) console.info("List: .type-static-list .list-with-groups elements found: " + $staticGroupListElements.length);
 
     if ($staticGroupListElements.length > 0 ) {
         $staticGroupListElements.each(function() {
@@ -1007,7 +1024,7 @@ export function init(jQuery, debug) {
     }
 
     var $listArchiveFilters = jQ('.type-list-filter');
-    if (DEBUG) console.info(".type-list-filter elements found: " + $listArchiveFilters.length);
+    if (DEBUG) console.info("List: .type-list-filter elements found: " + $listArchiveFilters.length);
 
     if ($listArchiveFilters.length > 0 ) {
         $listArchiveFilters.each(function() {
@@ -1041,7 +1058,7 @@ export function init(jQuery, debug) {
                         e.preventDefault();
                     }
                 });
-                if (DEBUG) console.info(".type-list-filter data found - id=" + filter.id + ", elementId=" + filter.elementId);
+                if (DEBUG) console.info("List: .type-list-filter data found - id=" + filter.id + ", elementId=" + filter.elementId);
 
                 if (typeof filter.initparams !== "undefined" && filter.initparams != "") {
                     if (DEBUG) console.info("List: Data filter init params - " + filter.initparams);
@@ -1049,7 +1066,7 @@ export function init(jQuery, debug) {
                     listFilter(filter.elementId, null, filter.id, filter.initparams, false);
                 }
             } else {
-                if (DEBUG) console.info(".type-list-filter found without data, ignoring!");
+                if (DEBUG) console.info("List: .type-list-filter found without data, ignoring!");
             }
 
         });

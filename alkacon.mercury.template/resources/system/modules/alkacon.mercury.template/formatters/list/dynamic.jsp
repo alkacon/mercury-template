@@ -88,6 +88,7 @@
         <c:set var="ajaxlink"><cms:link>${ajaxlink}</cms:link></c:set>
         <c:set var="instanceId"><mercury:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
         <c:set var="elementId"><mercury:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
+        <c:set var="isLoadAll" value="${wrappedSettings.loadAll.toBoolean}" />
 
         <c:set var="initparams" value="" />
         <c:if test="${not empty param.facet_category_exact}">
@@ -102,35 +103,16 @@
         <c:if test="${not empty param['facet_parent-folders']}">
             <c:set var="initparams" value="${initparams}&facet_parent-folders=${param['facet_parent-folders']}" />
         </c:if>
-        <c:if test="${not wrappedSettings.loadAll.toBoolean and not empty param['page']}">
+        <c:if test="${not isLoadAll and not empty param['page']}">
             <c:set var="initparams" value="${initparams}&page=${param['page']}" />
         </c:if>
         <c:if test="${not empty initparams}">
             <c:set var="initparams" value="reloaded${initparams}" />
         </c:if>
 
-        <c:set var="isLoadAll" value="${wrappedSettings.loadAll.toBoolean}" />
-        <c:if test="${isLoadAll}">
-            <%-- set messages for pagination, in loadAll case --%>
-            <c:choose>
-                <c:when test="${not empty settings.listButtonText}">
-                    <c:set var="la"><c:out value="${settings.listButtonText}" /></c:set>
-                    <c:set var="la">${la.replace("'","&quot;").replace('"',"&qquot;")}</c:set>
-                </c:when>
-                <c:otherwise>
-                    <c:set var="la"><fmt:message key="msg.page.list.pagination.more" /></c:set>
-                </c:otherwise>
-            </c:choose>
-            <c:set var="tfp"><fmt:message key="msg.page.list.pagination.first.title"/></c:set>
-            <c:set var="tpp"><fmt:message key="msg.page.list.pagination.previous.title"/></c:set>
-            <c:set var="tp"><fmt:message key="msg.page.list.pagination.page.title"><fmt:param>{{p}}</fmt:param></fmt:message></c:set>
-            <c:set var="lp">{{p}}</c:set>
-            <c:set var="tnp"><fmt:message key="msg.page.list.pagination.next.title"/></c:set>
-            <c:set var="tlp"><fmt:message key="msg.page.list.pagination.last.title"/></c:set>
-        </c:if>
-
         <cms:jsonobject var="listData">
             <cms:jsonvalue key="ajax" value="${ajaxlink}" />
+            <cms:jsonvalue key="loadAll" value="${isLoadAll}" />
             <cms:jsonvalue key="teaser" value="${settings.teaserlength}" />
             <cms:jsonvalue key="path" value="${cms.element.sitePath}" />
             <cms:jsonvalue key="sitepath" value="${cms.requestContext.folderUri}" />
@@ -143,16 +125,25 @@
             </c:if>
             <c:if test="${isLoadAll}">
                 <cms:jsonvalue key="itemsPerPage" value="${settings.itemsPerPage}" />
-                <cms:jsonvalue key="loadAll" value="true" />
                 <cms:jsonobject key="paginationInfo">
                     <cms:jsonobject key="messages">
+                        <%-- set messages for pagination, only required in loadAll case --%>
+                        <c:choose>
+                            <c:when test="${not empty settings.listButtonText}">
+                                <c:set var="la"><c:out value="${settings.listButtonText}" /></c:set>
+                                <c:set var="la">${la.replace("'","&quot;").replace('"',"&qquot;")}</c:set>
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="la"><fmt:message key="msg.page.list.pagination.more" /></c:set>
+                            </c:otherwise>
+                        </c:choose>
                         <cms:jsonvalue key="la" value="${la}" />
-                        <cms:jsonvalue key="tfp" value="${tfp}" />
-                        <cms:jsonvalue key="tpp" value="${tpp}" />
-                        <cms:jsonvalue key="lp" value="${lp}" />
-                        <cms:jsonvalue key="tp" value="${tp}" />
-                        <cms:jsonvalue key="tnp" value="${tnp}" />
-                        <cms:jsonvalue key="tlp" value="${tlp}" />
+                        <cms:jsonvalue key="tfp"><fmt:message key="msg.page.list.pagination.first.title"/></cms:jsonvalue>
+                        <cms:jsonvalue key="tpp"><fmt:message key="msg.page.list.pagination.previous.title"/></cms:jsonvalue>
+                        <cms:jsonvalue key="lp">{{p}}</cms:jsonvalue>
+                        <cms:jsonvalue key="tp"><fmt:message key="msg.page.list.pagination.page.title"><fmt:param>{{p}}</fmt:param></fmt:message></cms:jsonvalue>
+                        <cms:jsonvalue key="tnp"><fmt:message key="msg.page.list.pagination.next.title"/></cms:jsonvalue>
+                        <cms:jsonvalue key="tlp"><fmt:message key="msg.page.list.pagination.last.title"/></cms:jsonvalue>
                     </cms:jsonobject>
             </cms:jsonobject>
             </c:if>

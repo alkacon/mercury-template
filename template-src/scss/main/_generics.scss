@@ -73,6 +73,12 @@
             }
         }
 
+        .sub-header, // detail page
+        .text > a, // list teaser
+        .teaser-date, // list teaser
+        .intro-headline > .intro {
+            color:  $color !important;
+        }
 
         &.transparent {
             background-color: rgba($bg-color, 0.7);

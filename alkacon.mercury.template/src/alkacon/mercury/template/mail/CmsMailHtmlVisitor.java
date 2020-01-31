@@ -32,6 +32,7 @@ import org.apache.commons.logging.Log;
 
 import org.htmlparser.Node;
 import org.htmlparser.Tag;
+import org.htmlparser.util.NodeList;
 
 /** Visitor of the {@link CmsMailParser}, used to perform replacements for links. */
 public class CmsMailHtmlVisitor extends CmsHtmlParser {
@@ -120,7 +121,8 @@ public class CmsMailHtmlVisitor extends CmsHtmlParser {
                 if (!finalHrefContent.equals(hrefContent)) {
                     tag.setAttribute("href", finalHrefContent);
                     // Check if the link content is the absolute link itself - if so, adjust it as well.
-                    Node linkTextNode = tag.getChildren().elementAt(0);
+                    NodeList children = tag.getChildren();
+                    Node linkTextNode = (children != null) && (children.size() > 0) ? children.elementAt(0) : null;
                     if ((null != linkTextNode)
                         && (null != absoluteHrefContent)
                         && (linkTextNode.getText().equals(absoluteHrefContent)

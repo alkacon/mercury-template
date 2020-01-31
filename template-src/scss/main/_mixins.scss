@@ -182,7 +182,7 @@
 }
 
 // Colored buttons with hover effects
-@mixin button-color($bg-color, $hover-color) {
+@mixin button-color($bg-color, $hover-color, $disabled-color: $btn-disabled) {
     background-color: $bg-color;
     color: get-text-color($bg-color);
 
@@ -203,7 +203,9 @@
     &.disabled,
     &[disabled],
     fieldset[disabled] & {
-        background-color: $hover-color;
+        background-color: $disabled-color;
+        color: get-text-color($disabled-color);
+        cursor: not-allowed;
     }
 }
 
@@ -236,7 +238,7 @@
         line-height: $btn-line-height;
     }
     @include round-corners($btn-border-radius);
-    @include button-color($btn-default, $btn-default-hover);
+    @include button-color($btn-default, $btn-default-hover, $btn-disabled);
 }
 
 // Container / editor elements background

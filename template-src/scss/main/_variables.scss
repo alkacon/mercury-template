@@ -270,6 +270,7 @@ $btn-xs-padding:                    round($btn-padding * 2.5) / 10 round($btn-pa
 $btn-border-radius:                 $default-border-radius !default;
 $btn-default:                       $main-theme !default;
 $btn-default-hover:                 $main-theme-hover !default;
+$btn-disabled:                      $grey-light !default;
 $btn-text:                          get-text-color($text-light) !default;
 $btn-dark-text:                     $text-dark !default;
 $btn-text-transform:                none !default;

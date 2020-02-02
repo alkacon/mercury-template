@@ -120,7 +120,7 @@
                 <c:choose>
                     <c:when test="${cms.detailRequest}">
                         <c:set var="targetLink">
-                            <cms:link baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
+                            <cms:link locale="${targetLocale}" baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
                         </c:set>
                     </c:when>
                     <c:otherwise>

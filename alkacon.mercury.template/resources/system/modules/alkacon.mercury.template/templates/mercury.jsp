@@ -34,6 +34,7 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <%-- Load the main JavaScript in async mode --%>
 <script async src="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
 
+<mercury:meta-canonical />
 <mercury:meta-info contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearchDetail}" />
 
 <%-- Add favicon --%>
@@ -45,7 +46,6 @@ __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mer
 <link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}">
 <link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}">
 <link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}">
-<mercury:meta-canonical />
 
 <cms:enable-ade />
 <cms:headincludes type="css" />

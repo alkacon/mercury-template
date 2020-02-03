@@ -11,24 +11,26 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<cms:secureparams />
-<mercury:init-messages>
-<cms:formatter var="content" val="value">
-
 <c:if test="${cms.isEditMode}">
-    <fmt:setLocale value="${cms.workplaceLocale}" />
-    <cms:bundle basename="alkacon.mercury.template.messages">
 
-    <mercury:nl />
-    <div class="oct-meta"><%----%>
-        <div class="marker"><%----%>
-            <fmt:message key="msg.page.metainfo.marker" />
+    <cms:secureparams />
+    <mercury:init-messages>
+    <cms:formatter var="content" val="value">
+
+        <fmt:setLocale value="${cms.workplaceLocale}" />
+        <cms:bundle basename="alkacon.mercury.template.messages">
+
+        <mercury:nl />
+        <div class="oct-meta"><%----%>
+            <div class="marker"><%----%>
+                <fmt:message key="msg.page.metainfo.marker" />
+            </div><%----%>
         </div><%----%>
-    </div>
-<%----%>
+        <mercury:nl />
 
-    </cms:bundle>
+        </cms:bundle>
+
+    </cms:formatter>
+    </mercury:init-messages>
+
 </c:if>
-
-</cms:formatter>
-</mercury:init-messages>

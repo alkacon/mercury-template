@@ -20,6 +20,7 @@
             <xsd:element name="Facebook" type="OpenCmsSocialFacebook" minOccurs="0" />
             <xsd:element name="Twitter" type="OpenCmsSocialTwitter" minOccurs="0" />
             <xsd:element name="Keywords" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="CanonicalURL" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -38,6 +39,7 @@
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Title.help)]]></Description>
                     <Widget>string</Widget>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>
@@ -45,6 +47,7 @@
                     <Description><![CDATA[%(key.label.MetaInfo.Description.help)]]></Description>
                     <Widget>textarea</Widget>
                     <WidgetConfig>4</WidgetConfig>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>
@@ -52,22 +55,33 @@
                     <Description><![CDATA[%(key.label.MetaInfo.Image.help)]]></Description>
                     <Widget>imagegallery</Widget>
                     <WidgetConfig>{useformat:true}</WidgetConfig>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Facebook</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Facebook)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Facebook.help)]]></Description>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Twitter</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Twitter)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Twitter.help)]]></Description>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Keywords</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Keywords)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Keywords.help)]]></Description>
                     <Widget>string</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>CanonicalURL</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.CanonicalURL)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.CanonicalURL.help)]]></Description>
+                    <Widget>file</Widget>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

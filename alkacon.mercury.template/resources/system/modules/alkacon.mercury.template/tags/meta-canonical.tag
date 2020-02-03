@@ -12,7 +12,24 @@
 
 
 <c:set var="requestUri"><%= request.getPathInfo() %></c:set>
-<c:set var="canonicalLink" value="${cms.detailRequest ? cms.detailContent.link : cms.pageResource.link}" />
+
+<c:if test="${not empty cms.meta.canonicalURL}">
+    <c:choose>
+        <c:when test="${fn:startsWith(cms.meta.canonicalURL, '/') and cms.vfs.exists[cms.meta.canonicalURL]}">
+            <c:set var="res" value="${cms.vfs.resource[cms.meta.canonicalURL]}" />
+            <c:set var="canonicalLink" value="${cms.site.url}${res.file ? res.link : res.navigationDefaultFile.link}" />
+        </c:when>
+        <c:when test="${fn:startsWith(cms.meta.canonicalURL, '/')}">
+            <c:set var="canonicalLink" value="${cms.site.url}${cms.meta.canonicalURL}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="canonicalLink" value="${cms.meta.canonicalURL}" />
+        </c:otherwise>
+    </c:choose>
+</c:if>
+<c:if test="${empty canonicalLink}">
+    <c:set var="canonicalLink" value="${cms.site.url}${cms.detailRequest ? cms.detailContent.link : cms.pageResource.link}" />
+</c:if>
 
 <%-- Generate the canonical link --%>
 <c:if test="${canonicalLink ne requestUri}">
@@ -20,7 +37,7 @@
     <c:set var="requestQueryString"><%= request.getQueryString() != null ? request.getQueryString() : "" %></c:set>
     <c:if test="${empty requestQueryString}">
         <%-- Let the robot decide what to do with an URI that contains parameters, don't set canonical link in this case --%>
-        <link rel="canonical" href="${cms.site.url}${canonicalLink}${not empty requestQueryString ? '?'.concat(requestQueryString) : ''}" /><mercury:nl /><%----%>
+        <link rel="canonical" href="${canonicalLink}" /><mercury:nl /><%----%>
     </c:if>
 </c:if>
 

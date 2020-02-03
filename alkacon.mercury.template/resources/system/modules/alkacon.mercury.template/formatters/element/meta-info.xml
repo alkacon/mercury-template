@@ -31,6 +31,11 @@
       <Order><![CDATA[9000]]></Order>
     </MetaMapping>
     <MetaMapping>
+      <Key><![CDATA[canonicalURL]]></Key>
+      <Element><![CDATA[CanonicalURL]]></Element>
+      <Order><![CDATA[9000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
       <Key><![CDATA[ogImage]]></Key>
       <Element><![CDATA[Image]]></Element>
       <Order><![CDATA[9000]]></Order>

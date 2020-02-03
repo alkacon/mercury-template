@@ -11,37 +11,46 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="requestUri"><%= request.getPathInfo() %></c:set>
+<c:set var="requestURI"><%= request.getPathInfo() %></c:set>
+<c:set var="requestQueryString"><%= request.getQueryString() != null ? request.getQueryString() : "" %></c:set>
 
-<c:if test="${not empty cms.meta.canonicalURL}">
-    <c:choose>
-        <c:when test="${fn:startsWith(cms.meta.canonicalURL, '/') and cms.vfs.exists[cms.meta.canonicalURL]}">
-            <c:set var="res" value="${cms.vfs.resource[cms.meta.canonicalURL]}" />
-            <c:set var="canonicalLink" value="${cms.site.url}${res.file ? res.link : res.navigationDefaultFile.link}" />
-        </c:when>
-        <c:when test="${fn:startsWith(cms.meta.canonicalURL, '/')}">
-            <c:set var="canonicalLink" value="${cms.site.url}${cms.meta.canonicalURL}" />
-        </c:when>
-        <c:otherwise>
-            <c:set var="canonicalLink" value="${cms.meta.canonicalURL}" />
-        </c:otherwise>
-    </c:choose>
-</c:if>
-<c:if test="${empty canonicalLink}">
-    <c:set var="canonicalLink" value="${cms.site.url}${cms.detailRequest ? cms.detailContent.link : cms.pageResource.link}" />
-</c:if>
+<%-- Check for request parameters --%>
+<%--
+    There are a number of edge cases where OpenCms will generate a link that contains parameters.
+    For the canonical URL, sometimes these parameters are required, sometimes they could be neglected.
+    At the moment detailed parameter analysis is not implemented.
+    We want to avoid setting a potential wrong canonical URL.
+    So we do not set the canonical URL for a request that contains parameters.
+--%>
+<c:if test="${empty requestQueryString}">
 
-<%-- Generate the canonical link --%>
-<c:if test="${canonicalLink ne requestUri}">
-    <%-- Check for request parameters --%>
-    <c:set var="requestQueryString"><%= request.getQueryString() != null ? request.getQueryString() : "" %></c:set>
-    <c:if test="${empty requestQueryString}">
-        <%-- Let the robot decide what to do with an URI that contains parameters, don't set canonical link in this case --%>
-        <link rel="canonical" href="${canonicalLink}" /><mercury:nl /><%----%>
+    <%-- Check if meta-info was used to custom set a canonical URL --%>
+    <c:if test="${not empty cms.meta.canonicalURL}">
+        <c:choose>
+            <c:when test="${fn:startsWith(cms.meta.canonicalURL, '/') and cms.vfs.exists[cms.meta.canonicalURL]}">
+                <c:set var="res" value="${cms.vfs.resource[cms.meta.canonicalURL]}" />
+                <c:set var="canonicalURL" value="${res.file ? res.link : res.navigationDefaultFile.link}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="canonicalURL" value="${cms.meta.canonicalURL}" />
+            </c:otherwise>
+        </c:choose>
     </c:if>
+    <c:if test="${empty canonicalURL}">
+        <c:set var="canonicalURL" value="${cms.detailRequest ? cms.detailContent.link : cms.pageResource.link}" />
+    </c:if>
+
+    <%-- Output the canonical URL --%>
+    <c:if test="${canonicalURL ne requestURI}">
+        <c:if test="${fn:startsWith(canonicalURL, '/')}">
+            <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" />
+        </c:if>
+        <link rel="canonical" href="${canonicalURL}" /><mercury:nl /><%----%>
+    </c:if>
+
 </c:if>
 
-<%-- List locale variations of the page --%>
+<%-- List locale variations of the page as hreflang links --%>
 <c:set var="locales" value="${cms.site.translationLocales}" />
 <c:if test="${locales.size() > 1}">
     <c:forEach var="locale" items="${locales}" varStatus="status">

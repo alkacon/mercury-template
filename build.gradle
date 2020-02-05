@@ -3,7 +3,7 @@ apply plugin: 'maven'
 
 buildscript {
     dependencies {
-        classpath group: "org.opencms", name: "opencms-gradle-plugin", version: "1.2"
+        classpath group: "org.opencms", name: "opencms-gradle-plugin", version: "1.3"
     }
     repositories {
         mavenLocal()
@@ -11,5 +11,12 @@ buildscript {
     }
 }
 
-// generates tasks for all configured modules
+apply plugin: 'org.opencms.modules.defaultdependencies'
+
+// here you can configure the default dependencies via 'ocDependencies'
+// see the output of `./gradlew ocDependenciesDemo` for an example
+
+// NOTE: If you need additional a dependencies, declare them in a 'dependencies.gradle' file in this folder.
+//       If declared differently, they will not be applied in the required point of the configuration.
+
 apply plugin: 'org.opencms.modules'

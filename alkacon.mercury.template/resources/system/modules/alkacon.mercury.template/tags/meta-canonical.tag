@@ -11,7 +11,6 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="requestURI"><%= request.getPathInfo() %></c:set>
 <c:set var="requestQueryString"><%= request.getQueryString() != null ? request.getQueryString() : "" %></c:set>
 
 <%-- Check for request parameters --%>
@@ -41,12 +40,10 @@
     </c:if>
 
     <%-- Output the canonical URL --%>
-    <c:if test="${canonicalURL ne requestURI}">
-        <c:if test="${fn:startsWith(canonicalURL, '/')}">
-            <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" />
-        </c:if>
-        <link rel="canonical" href="${canonicalURL}" /><mercury:nl /><%----%>
+    <c:if test="${fn:startsWith(canonicalURL, '/')}">
+        <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" />
     </c:if>
+    <link rel="canonical" href="${canonicalURL}" /><mercury:nl /><%----%>
 
 </c:if>
 

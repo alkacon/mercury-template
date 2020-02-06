@@ -221,11 +221,16 @@
     <c:when test="${variant eq 'area-one-row'}">
         <%-- la_00001 --%>
         <c:set var="bgImage" value="${cms.element.setting.bgImage.toLink}" />
+        <c:set var="bgSpacing" value="${cms.element.setting.bgSpacing.isSetNotNone ? cms.element.setting.bgSpacing.toString : null}" />
+        <c:set var="bgColor" value="${cms.element.setting.bgColor.isSetNotNone ? cms.element.setting.bgColor.toString : null}" />
+
         <c:if test="${not empty bgImage}">
              <c:set var="styleAttr">background-image: url('${bgImage}');</c:set>
-             <c:set var="cssWrapper">${cssWrapper}${' '}effect-parallax-bg</c:set>
+             <c:set var="cssWrapper">${cssWrapper}${' '}colored-row effect-parallax-bg</c:set>
         </c:if>
-        <c:set var="bgColor" value="${cms.element.setting.bgColor.isSetNotNone ? cms.element.setting.bgColor.toString : null}" />
+        <c:if test="${not empty bgSpacing}">
+             <c:set var="cssWrapper">${cssWrapper}${' '}${bgSpacing}</c:set>
+        </c:if>
         <c:if test="${not empty bgColor}">
             <c:choose>
                 <c:when test="${fn:startsWith(bgColor, '#')}">

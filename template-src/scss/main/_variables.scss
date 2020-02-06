@@ -803,8 +803,7 @@ $box-padding:                       20px !default;
 $box-colors:                        $bg-colors !default;
 
 // Spaces used for margins and paddings
-$margins:                           (0, 5, 10, 20, 30, 40) !default;
-$margins-paddings:                  $margins !default;
+$margins-paddings:                  (0, 5, 10, 20, 30, 40) !default;
 
 // Spaces used for tile margins
 $list-tile-spacers:                 (0, 2, 5, 10, 15) !default;

@@ -25,7 +25,7 @@
         <c:choose>
             <c:when test="${not empty anchor}">
                 <div class="target"><%----%>
-                    <fmt:message key="msg.page.anchor" /> #${anchor}
+                    <fmt:message key="msg.page.anchor" /> #${anchor}<%----%>
                 </div><%----%>
                 <div id="${anchor}" class="oct-anchor-set"></div><%----%>
             </c:when>

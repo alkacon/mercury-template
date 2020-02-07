@@ -94,10 +94,6 @@
             <c:set var="menuType" value="${i == 0 ? menuType.concat('nav-first ') : menuType}" />
             <c:set var="menuType" value="${i == navLength ? menuType.concat('nav-last ') : menuType}" />
 
-            <c:if test="${navElem.navigationLevel}">
-                <c:set var="lastNavLevel" value="${navElem}" />
-            </c:if>
-
             <%-- ###### Check for mega menu ######--%>
             <c:set var="megaMenu" value="" />
             <c:if test="${isTopLevel}">
@@ -113,6 +109,13 @@
                 </c:if>
             </c:if>
 
+            <c:if test="${startSubMenu}">
+                <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
+                <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
+                <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
+                <c:set var="lastNavLevel" value="${navElem}" />
+            </c:if>
+
             <c:choose>
                 <c:when test="${(not empty lastNavLevel) and fn:startsWith(navElem.info, '#')}">
                     <c:set var="navLink"><cms:link>${lastNavLevel.resourceName}${navElem.info}</cms:link></c:set>
@@ -121,12 +124,6 @@
                     <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
                 </c:otherwise>
             </c:choose>
-
-            <c:if test="${startSubMenu}">
-                <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
-                <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
-                <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
-            </c:if>
 
             <c:set var="menuType" value="${empty menuType ? '' : ' class=\"'.concat(menuType).concat('\"')}" />
             <c:set var="menuType" value="${startSubMenu ? menuType.concat(' aria-expanded=\"false\"') : menuType}" />

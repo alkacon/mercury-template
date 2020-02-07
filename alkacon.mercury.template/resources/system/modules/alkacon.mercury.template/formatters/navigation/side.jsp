@@ -46,7 +46,10 @@
             <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
             <c:set var="navTarget" value="${fn:trim(navElem.info) eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
-            <c:if test="${navElem.navigationLevel}">
+            <c:if test="${startSubMenu}">
+                <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
+                <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
+                <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
                 <c:set var="lastNavLevel" value="${navElem}" />
             </c:if>
 
@@ -58,12 +61,6 @@
                     <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
                 </c:otherwise>
             </c:choose>
-
-            <c:if test="${startSubMenu}">
-                <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
-                <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
-                <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
-            </c:if>
 
             <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???')) ? navElem.title : navElem.navText}" />
 

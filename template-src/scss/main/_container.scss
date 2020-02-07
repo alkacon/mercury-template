@@ -244,6 +244,13 @@ $oct-edit-infos:
     content: ' ';
 }
 
+// Add bookmark icon to Anchor
+.oct-anchor .target::before {
+    display: inline-block;
+    font-family: FontAwesome;
+    padding-right: $default-margin-verysmall;
+    content: '\f02e';
+}
 
 // Model group marker
 

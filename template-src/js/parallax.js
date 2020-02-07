@@ -38,78 +38,73 @@ function update(){
         }
 
         var offset = 0;
+        var elementTop = $element.offset().top;
+        var elementHeight = $element.outerHeight(true);
+        var elementBottom = elementTop + elementHeight;
+        var elementScrollTop = elementTop - scrollTop;
+        var elementScrollBottom = elementBottom - scrollTop;
+        var windowHeight = Mercury.windowHeight();
 
-        // only apply effect on screen size lager then "sm", i.e. "md" and "lg"
-        if (Mercury.gridInfo().isMinMd()) {
+        var effectType = $element.data("parallax").effect;
 
-            var elementTop = $element.offset().top;
-            var elementHeight = $element.outerHeight(true);
-            var elementBottom = elementTop + elementHeight;
-            var elementScrollTop = elementTop - scrollTop;
-            var elementScrollBottom = elementBottom - scrollTop;
-            var windowHeight = Mercury.windowHeight();
+        // Check if element is to small for parallax effect
+        if (elementHeight <= 1) {
+            return;
+        }
 
-            var effectType = $element.data("parallax").effect;
+        // Check if element is visible, if not just return
+        if (elementScrollBottom < 0 || elementScrollTop > windowHeight) {
+            return;
+        }
 
-            // Check if element is to small for parallax effect
-            if (elementHeight <= 1) {
-                return;
+        if (DEBUG) console.info("elementTop: " + elementTop + " elementBottom: " + elementBottom);
+        if (DEBUG) console.info("elementScrollTop: " + elementScrollTop + " elementScrollBottom: " + elementScrollBottom);
+
+        if (effectType == 1) {
+            // This effect assumes there is a full size background image.
+            // The background is slightly shifted up while the bottom of the
+            // element is not in view. Once the bottom is in view,
+            // or the screen top is reached, the shift effect stops.
+            var elementBottomOffset = 0;
+
+            if (elementHeight <= windowHeight) {
+                elementBottomOffset = elementScrollBottom - windowHeight;
+            } else {
+                elementBottomOffset = elementScrollTop;
             }
 
-            // Check if element is visible, if not just return
-            if (elementScrollBottom < 0 || elementScrollTop > windowHeight) {
-                return;
+            if (elementBottomOffset > 0) {
+                // The bottom is not in view
+                offset = Math.round(Math.abs(elementBottomOffset) * 0.5);
+
+                if (DEBUG) console.info(
+                    "elementHeight: " +  elementHeight +
+                    " windowHeight: " + windowHeight +
+                    " offset: " + offset +
+                    " elementScrollTop: " + elementScrollTop);
+
             }
+        } else if (effectType == 2) {
+            // Initially developed for the blog visual.
+            // This effect assumes there is a full size background image
+            // near the screen top (directly under the main navigation).
+            // The image should have standard 'photo' 4:3 or 3:2 format.
+            // Initially only the upper part of the image is seen (about 400px).
+            // When scolling, the image starts shiftig up faster then the scroll
+            // and reveals the lower part originally hidden.
 
-            if (DEBUG) console.info("elementTop: " + elementTop + " elementBottom: " + elementBottom);
-            if (DEBUG) console.info("elementScrollTop: " + elementScrollTop + " elementScrollBottom: " + elementScrollBottom);
-
-            if (effectType == 1) {
-                // This effect assumes there is a full size background image.
-                // The background is slightly shifted up while the bottom of the
-                // element is not in view. Once the bottom is in view,
-                // or the screen top is reached, the shift effect stops.
-                var elementBottomOffset = 0;
-
-                if (elementHeight <= windowHeight) {
-                    elementBottomOffset = elementScrollBottom - windowHeight;
-                } else {
-                    elementBottomOffset = elementScrollTop;
-                }
-
-                if (elementBottomOffset > 0) {
-                    // The bottom is not in view
-                    offset = Math.round(Math.abs(elementBottomOffset) * 0.5);
-
-                    if (DEBUG) console.info(
-                        "elementHeight: " +  elementHeight +
-                        " windowHeight: " + windowHeight +
-                        " offset: " + offset +
-                        " elementScrollTop: " + elementScrollTop);
-
-                }
-            } else if (effectType == 2) {
-                // Initially developed for the blog visual.
-                // This effect assumes there is a full size background image
-                // near the screen top (directly under the main navigation).
-                // The image should have standard 'photo' 4:3 or 3:2 format.
-                // Initially only the upper part of the image is seen (about 400px).
-                // When scolling, the image starts shiftig up faster then the scroll
-                // and reveals the lower part originally hidden.
-
-                if (elementScrollTop < 0) {
-                     offset = Math.round(elementScrollTop * 2);
-                }
-            } else if (effectType == 3) {
-                // Also developed for the blog visual.
-                // This effect assumes there is a full size background image
-                // near the screen top (directly under the main navigation).
-                // The image should have standard 'photo' 4:3 or 3:2 format.
-                // When scolling, the image starts shiftig very slow
-                // and reveals some of the lower part originally hidden.
-
-                offset = Math.round(elementScrollTop * 0.33);
+            if (elementScrollTop < 0) {
+                 offset = Math.round(elementScrollTop * 2);
             }
+        } else if (effectType == 3) {
+            // Also developed for the blog visual.
+            // This effect assumes there is a full size background image
+            // near the screen top (directly under the main navigation).
+            // The image should have standard 'photo' 4:3 or 3:2 format.
+            // When scolling, the image starts shiftig very slow
+            // and reveals some of the lower part originally hidden.
+
+            offset = Math.round(elementScrollTop * 0.33);
         }
         $element.css('background-position', "50% " + offset + "px");
     });
@@ -148,10 +143,8 @@ export function initParallax(jQuery, debug) {
     }
 
     if (m_$parallaxElements.length > 0) {
-        if (Mercury.device().desktop()) {
-            initParallaxInt();
-            jQ(window).on('scroll', update).resize(update);
-            update();
-        }
+        initParallaxInt();
+        jQ(window).on('scroll', update).resize(update);
+        update();
     }
 }

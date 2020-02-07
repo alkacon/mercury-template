@@ -304,11 +304,5 @@ html.desktop .effect-rotate {
     background-clip: border-box;
     background-origin: border-box;
     background-repeat: no-repeat;
-    background-attachment: scroll;
-}
-
-@include media-breakpoint-up(md) {
-    html.desktop .effect-parallax-bg {
-        background-attachment: fixed;
-    }
+    background-attachment: fixed;
 }

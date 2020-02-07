@@ -235,21 +235,28 @@ $oct-edit-infos:
 
 // Noise overlay for containers and markers
 
+.oct-anchor .target::after,
 .oct-meta::after,
 .oct-meta-info::after,
-.oct-anchor::after,
 .container-box::after,
 .oct-alert::after {
     @include noise-image;
     content: ' ';
 }
 
-// Add bookmark icon to Anchor
-.oct-anchor .target::before {
-    display: inline-block;
-    font-family: FontAwesome;
-    padding-right: $default-margin-verysmall;
-    content: '\f02e';
+// Anchors
+
+.oct-anchor {
+    .target {
+        position: relative; // Prevents background image from sretching over the whole width
+        &::before {
+            // Add bookmark icon
+            display: inline-block;
+            font-family: FontAwesome;
+            padding-right: $default-margin-verysmall;
+            content: '\f02e';
+        }
+    }
 }
 
 // Model group marker

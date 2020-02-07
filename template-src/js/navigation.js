@@ -524,6 +524,11 @@ function initDependencies() {
             page.animate({ scrollTop: Math.ceil(targetTop - Mercury.toolbarHeight()) }, 1000, function(){
                 page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
             });
+            if (Mercury.gridInfo().isMobileNav()) {
+                // close the mobile navigation
+                jQ('.nav-toggle').removeClass('active');
+                jQ(document.documentElement).removeClass('active-nav');
+            }
         }
     }, 500, true);
 }

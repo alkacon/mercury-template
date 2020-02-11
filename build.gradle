@@ -19,4 +19,5 @@ apply plugin: 'org.opencms.modules.defaultdependencies'
 // NOTE: If you need additional a dependencies, declare them in a 'dependencies.gradle' file in this folder.
 //       If declared differently, they will not be applied in the required point of the configuration.
 
+// see the output of `./gradlew opencmsPluginDescription` for documentation of the plugin
 apply plugin: 'org.opencms.modules'

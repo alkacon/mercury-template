@@ -443,8 +443,8 @@ $nav-toggle-stroke-height:          round(0.06 * $nav-toggle-size) !default; // 
 // Breadcrumps
 
 $nav-breadcrump-space:              $default-margin-verysmall !default; // spacing base between breadcumbs
-$nav-breadcrump-space-left:         1.35 * $nav-breadcrump-space !default; // spacing after breadcumb before separator
-$nav-breadcrump-space-right:        $nav-breadcrump-space !default; // spacing after separator before breadcrumb
+$nav-breadcrump-space-left:         0.8 * $nav-breadcrump-space !default; // spacing after breadcumb before separator
+$nav-breadcrump-space-right:        1.5 * $nav-breadcrump-space !default; // spacing after separator before breadcrumb
 $nav-breadcrump-bg-color:           none !default; // background color for breadcrumbs
 $nav-breadcrump-padding:            $default-margin-verysmall 0 0 0 !default; // padding around breadcrumbs
 $nav-breadcrump-text-color:         check-text-color($nav-breadcrump-bg-color, $nav-header-text) !default; // text color of breadcrumps

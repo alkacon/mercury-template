@@ -66,10 +66,10 @@
             <parameters>
                 <param name="galleryTitle"><![CDATA[%!
                     !%%if (content.value.("Dates").toDateSeries.isSeries)%%!
-                        !% \%(key.msg.page.dateseries.type.series)%!
+                        !%\%(key.msg.page.dateseries.type.series)%!
                         !%: %!
                     !%%elseif (content.value.("Dates").toDateSeries.isExtractedDate)%%!
-                        !% \%(key.msg.page.dateseries.type.extracted): %!
+                        !%\%(key.msg.page.dateseries.type.extracted): %!
                     !%%endif%%!
                     !%%if (content.value.("Title").isSet)% %content.value.("Title")%%endif%%!
                     !%%if (content.value.("Dates").toDateSeries.isSeries)%%!
@@ -81,7 +81,7 @@
                     !%%if (content.value.("Type").isSet)%, %content.value.("Type")%%endif%%!
                 !%]]></param>
                 <param name="detailPageUrl"><![CDATA[%!
-                    !%%if (content.value.("Title").isSet)% %content.value.("Title")%%endif%%!
+                    !%%if (content.value.("Title").isSet)%%content.value.("Title")%%endif%%!
                     !%%if (! content.value.("Dates").toDateSeries.isSeries)%%!
                         !%-%content.value.("Dates").toDateSeries.first.startInstance.format.("yyyy.MM.dd")%%!
                     !%%endif%%!

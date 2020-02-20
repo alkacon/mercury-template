@@ -43,7 +43,6 @@
 <c:if test="${not empty count}"><c:set var="pageSize">${count}</c:set></c:if>
 
 
-
 <%-- ########################################### --%>
 <%-- ####### Build search config JSON   ######## --%>
 <%-- ########################################### --%>
@@ -58,7 +57,7 @@
 <%-- ############################################# --%>
 <%-- ####### Perform search based on JSON ######## --%>
 <%-- ############################################# --%>
-<cms:simplesearch configFile="${config.filename}" configString="${searchConfig}" var="searchResultWrapper" addContentInfo="true" />
+<cms:simplesearch configFile="${config.filename}" configString="${searchConfig}" var="searchResultWrapper" addContentInfo="${pageSize > 0}" />
 
 <c:set var="search" value="${searchResultWrapper}" />
 <c:set var="categoryFacetController" value="${search.controller.fieldFacets.fieldFacetController[categoryFacetField]}" />

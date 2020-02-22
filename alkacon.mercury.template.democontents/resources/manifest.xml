@@ -6181,7 +6181,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Claire Dunphy - Director HR, Critical Coders Corp.]]></value>
+					<value><![CDATA[Claire Dunphy - Director HR, Critical Coders Corp.]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6215,7 +6215,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Cameron Tucker - Director Customer Relations, Cascading Styles LLC]]></value>
+					<value><![CDATA[Cameron Tucker - Director Customer Relations, Cascading Styles LLC]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6232,7 +6232,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Manuel B. Delgado - Team Manager, Recursive Iterators Union]]></value>
+					<value><![CDATA[Manuel B. Delgado - Team Manager, Recursive Iterators Union]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6249,7 +6249,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Haley S. Dunphy - Consultant, Abundant Advisors PLC]]></value>
+					<value><![CDATA[Haley S. Dunphy - Consultant, Abundant Advisors PLC]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6266,7 +6266,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Mitchell  Pritchett M.A. - Designer, Hectic Hackers Inc.]]></value>
+					<value><![CDATA[Mitchell  Pritchett M.A. - Designer, Hectic Hackers Inc.]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6283,7 +6283,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Lily Tucker-Pritchett - Marketing, Short Cuts LLC]]></value>
+					<value><![CDATA[Lily Tucker-Pritchett - Marketing, Short Cuts LLC]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6300,7 +6300,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Pepper Saltzman - Analyst, Locial Loop Ltd.]]></value>
+					<value><![CDATA[Pepper Saltzman - Analyst, Locial Loop Ltd.]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6388,7 +6388,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Series:  Annual Autumn Assembly (19.10.18 - 19.10.20), User conference]]></value>
+					<value><![CDATA[Series:  Annual Autumn Assembly (19.10.18 - 19.10.20), User conference]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6605,7 +6605,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Series:  Summer of Code (14.08.19 - 14.08.21), Development Sprint]]></value>
+					<value><![CDATA[Series:  Summer of Code (14.08.19 - 14.08.21), Development Sprint]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6832,7 +6832,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Series:  Christmas Tree Convention (25.12.19 - 25.12.21)]]></value>
+					<value><![CDATA[Series:  Christmas Tree Convention (25.12.19 - 25.12.21)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6919,7 +6919,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Series:  Gathering of Repetitive Users (19.10.18 - 19.04.21), User conference]]></value>
+					<value><![CDATA[Series:  Gathering of Repetitive Users (19.10.18 - 19.04.21), User conference]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6936,7 +6936,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Extracted:  Modified gathering of Repetitive Users (19.04.20), User conference]]></value>
+					<value><![CDATA[Extracted:  Modified gathering of Repetitive Users (19.04.20), User conference]]></value>
 				</property>
 			</properties>
 			<relations/>

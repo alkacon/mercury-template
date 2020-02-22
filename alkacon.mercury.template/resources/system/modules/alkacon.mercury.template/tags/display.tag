@@ -14,6 +14,9 @@
 <%@ attribute name="editable" type="java.lang.Boolean" required="false"
     description="Activate direct edit on the display formatter. If not specified the default is 'false'." %>
 
+<%@ attribute name="deleteable" type="java.lang.Boolean" required="false"
+    description="Activate delete option on the display formatter. If not specified the default is 'false'." %>
+
 <%@ attribute name="baseUri" type="java.lang.String" required="false"
     description="The base URI to use the sitemap configuration from. If not set the current context URI is used." %>
 
@@ -35,6 +38,7 @@
             <cms:simpledisplay
                 value="${file}"
                 formatter="${formatter}"
+                delete="${deleteable}"
                 editable="${editable}">
                 <c:forEach var="setting" items="${settings}">
                     <cms:param name="${setting.key}" value="${setting.value}" />
@@ -46,6 +50,7 @@
             <cms:display
                 value="${file}"
                 baseUri="${baseUri}"
+                delete="${deleteable}"
                 editable="${editable}">
                 <c:forEach var="setting" items="${settings}">
                     <cms:param name="${setting.key}" value="${setting.value}" />

@@ -76,6 +76,22 @@
 }
 
 
+// Button with a toggle symbol, e.g. for boostrap collapses
+// Used also by DISQUS function
+
+.btn-toggle {
+    span.fa {
+        line-height: inherit;
+        transition: transform 0.33s;
+    }
+
+    &[aria-expanded=true] span.fa, // for boostrap collapses
+    span.fa.open { // for DISQUS function
+        transform: rotate(-180deg);
+    }
+}
+
+
 // Colored buttons
 
 @each $color-name, $bg-color, $highlight-color in $btn-colors {

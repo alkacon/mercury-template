@@ -608,9 +608,18 @@ aside .list-content,
 
 .type-list-filter {
 
+    button {
+        padding-left: $nav-side-left-padding-step;
+        padding-right: $default-margin;
+    }
+
     .filterbox {
         margin-bottom: $default-margin;
         background-color: $white;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
 
         .dialog {
             display: none;
@@ -854,25 +863,22 @@ aside .list-content,
             font-weight: normal;
             content: "\f078";
             right: $btn-padding;
-            transform: rotate(0) translate(0,0);
-            transition: transform .33s;
+            transition: $nav-animation-time;
             margin: 0;
             border: none;
             width: auto;
             height: auto;
         }
-
     }
 
     .btn-group {
         display: flex;
         justify-content: flex-end;
 
-        &.show {
+        .list-option.show {
             .dropdown-toggle {
                 &::after {
                     transform: rotate(-180deg) translate(0,0);
-                    transition: transform 0.33s;
                 }
             }
         }
@@ -887,6 +893,13 @@ aside .list-content,
         min-width: 16rem;
         font-weight: $font-weight-base;
         box-shadow: $nav-shadow;
+
+        &.show {
+            animation-name: fadeTopMenu;
+            animation-duration: $nav-animation-time;
+            animation-fill-mode: both;
+            transform-origin: top;
+        }
 
         > li > a {
             padding: $default-margin-verysmall $default-margin;
@@ -938,38 +951,3 @@ aside .list-content,
         }
     }
 }
-
-
-// List button styling
-
-.type-disqus, // also used for disqus function
-.type-list-filter,
-.type-list-sortoptions {
-    button {
-        padding-left: $nav-side-left-padding-step;
-        padding-right: $default-margin;
-
-        .fa {
-            padding-top: 3px;
-        }
-    }
-
-    // .open .fa-chevron-down:before,
-    // .fa-chevron-down.open:before {
-    //     content: "\f054";
-    // }
-
-    i.fa,
-    span.fa {
-        // transform: rotate(0) translate(0px, 0px);
-        // transition: transform 0.33s;
-    }
-
-    .show span.fa,
-    i.fa.show,
-    span.fa.show {
-        transform: rotate(-180deg) translate(0px, -4px);
-        transition: transform 0.33s;
-    }
-}
-

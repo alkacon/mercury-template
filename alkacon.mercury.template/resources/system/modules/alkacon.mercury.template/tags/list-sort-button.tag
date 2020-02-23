@@ -32,14 +32,10 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<%-- ########################################### --%>
-<%-- ####### Set needed variables       ######## --%>
-<%-- ########################################### --%>
-
-
-<%-- ####### Acquire search var ######## --%>
+<%-- Acquire search result --%>
 <c:choose>
 <c:when test="${not empty searchresult}">
     <c:set var="search" value="${searchresult}" />
@@ -53,11 +49,10 @@
 </c:otherwise>
 </c:choose>
 
-<%-- ########################################### --%>
-<%-- ####### Start processing button    ######## --%>
-<%-- ########################################### --%>
 
+<%-- Start processing button --%>
 <c:if test="${not error}">
+
     <c:set var="sortController" value="${search.controller.sorting}" />
     <c:if test="${not empty sortController and not empty sortController.config.sortOptions}">
         <c:set var="sortOption" value="${sortController.config.sortOptions[0]}" />
@@ -68,48 +63,48 @@
         </c:if>
     </c:if>
 
-        <%-- ################################################################################################################# HEAD ######## --%>
-        <c:set var="head">
-            <c:out value='<div class="list-option">' escapeXml='false' />
-                <button type="button" class="dropdown-toggle btn" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" id="dropdownMenu1" aria-expanded="true">
-                    ${label}
-                </button>
+    <c:set var="head">
+        <c:out value='<div class="list-option">' escapeXml='false' />
+            <button${' '}<%--
+                --%>type="button"${' '}<%--
+                --%>class="dropdown-toggle btn"${' '}<%--
+                --%>data-toggle="dropdown"${' '}<%--
+                --%>data-display="static"${' '}<%--
+                --%>aria-haspopup="true"${' '}<%--
+                --%>aria-expanded="false"${' '}<%--
+                --%>aria-expanded="true"<%--
+            --%>><%--
+            --%>${label}<%--
+            --%></button><%----%>
+            <mercury:nl />
+            <c:out value='<ul class="list-optionlist dropdown-menu">' escapeXml='false' />
+    </c:set>
 
-                <c:out value='<ul class="list-optionlist dropdown-menu dropdown-${buttonColor}">' escapeXml='false' />
-        </c:set>
+    <c:set var="delimiter" value="|" />
 
-        <c:set var="delimiter" value="|" />
+    <c:set var="items">
+        <c:forEach var="sortOption" items="${sortController.config.sortOptions}" varStatus="status">
+            <c:if test="${empty params || fn:contains(params, sortOption.paramValue)}">
+                <c:set var="selected">${sortController.state.checkSelected[sortOption] ? ' class="active"' : ""}</c:set>
+                <li ${selected}><%----%>
+                    <a href="javascript:void(0)" onclick="DynamicList.facetFilter(<%--
+                    --%>'${elementId}', <%--
+                    --%>'SORT', <%--
+                    --%>'${search.stateParameters.setSortOption[sortOption.paramValue]}')"><%----%>
+                        <fmt:message key="msg.page.list.sort.${sortOption.label}" />
+                    </a><%----%>
+                </li><%----%>
+                <mercury:nl />
+            </c:if>
+        </c:forEach>
+    </c:set>
 
-        <%-- ################################################################################################################# ITEMS ####### --%>
-        <c:set var="items">
+    <c:set var="foot">
+        <c:out value='</ul>' escapeXml='false' />
+        <c:out value='</div>' escapeXml='false' />
+    </c:set>
 
-            <c:forEach var="sortOption" items="${sortController.config.sortOptions}" varStatus="status">
-                <c:if test="${empty params || fn:contains(params, sortOption.paramValue)}">
-                    <c:set var="selected">${sortController.state.checkSelected[sortOption] ? ' class="active"' : ""}</c:set>
-                    <li ${selected}>
-                        <a href="javascript:void(0)" onclick="DynamicList.facetFilter(<%--
-                        --%>'${elementId}', <%--
-                        --%>'SORT', <%--
-                        --%>'${search.stateParameters.setSortOption[sortOption.paramValue]}')">
-                            <fmt:message key="msg.page.list.sort.${sortOption.label}" />
-                        </a>
-                    </li>
-                </c:if>
-            </c:forEach>
-
-        </c:set>
-
-        <%-- ################################################################################################################# FOOT ######## --%>
-        <c:set var="foot">
-                <c:out value='</ul>' escapeXml='false' />
-            <c:out value='</div>' escapeXml='false' />
-        </c:set>
-
-
-    <%-- ####### build list of list-items ######## --%>
     <c:set var="listItems" value="${items}" />
-
     <c:if test="${render != 'false'}">
         ${head}
         <c:forTokens items="${items}" delims="|" var="item">

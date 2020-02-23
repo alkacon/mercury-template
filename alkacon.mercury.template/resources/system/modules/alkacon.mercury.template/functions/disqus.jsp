@@ -62,7 +62,7 @@
         </c:choose>
 
         <c:if test="${clickToLoad}">
-            <button type="button" class="btn-block btn btn-disqus" ><%----%>
+            <button type="button" class="btn-block btn btn-disqus btn-toggle" ><%----%>
                 <span class="pull-left"><fmt:message key="msg.page.disqus.comments" /></span><%----%>
                 <span id="disqus_toggle" class="fa fa-chevron-down pull-right"></span><%----%>
             </button><%----%>

@@ -38,7 +38,8 @@
 
     .search-result-heading {
         @extend .h4;
-        margin-bottom: $default-margin-small;
+        line-height: 1.5;
+        margin-bottom: $default-margin-verysmall;
     }
 
     .search-input,
@@ -57,17 +58,26 @@
     .search-result-heading {
         display: flex;
         align-items: flex-end;
+
+        .result-title {
+            margin-right: $default-margin-small;
+        }
+    }
+
+    .search-result-heading a:hover .search-badge {
+        text-decoration: none;
     }
 
     .search-badge {
-        margin-left: $default-margin-small;
         font-weight: $font-weight-base;
         font-family: $font-family-base;
         font-size: 70%;
-        padding: 0.5*$default-margin-verysmall $default-margin-small;
+        padding: 0 $default-margin-small;
         @include round-corners($form-border-radius);
         color: $form-border-color;
         border: 1px solid $form-border-color;
+        white-space: nowrap;
+        display: inline-block;
     }
 
     @include media-breakpoint-up(lg) {

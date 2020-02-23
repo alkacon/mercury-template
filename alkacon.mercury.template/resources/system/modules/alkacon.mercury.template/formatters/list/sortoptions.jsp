@@ -39,25 +39,25 @@
     --%>data-settings="${settingparams}"><%----%>
     <mercury:nl />
 
-        <%-- The list options are filled by JavaScript --%>
-        <c:if test="${cms.isEditMode}">
-            <fmt:setLocale value="${cms.workplaceLocale}" />
-            <cms:bundle basename="alkacon.mercury.template.messages">
-                <div class="hide-noscript list-options"><%----%>
-                    <button class="list-option dropdown-toggle btn placeholder">&nbsp;</button><%----%>
-                    <mercury:alert type="warning" css="oct-reveal">
-                        <jsp:attribute name="head">
-                            <fmt:message key="msg.page.list.optionusage.title">
-                                <fmt:param>${value.Title}</fmt:param>
-                            </fmt:message>
-                        </jsp:attribute>
-                        <jsp:attribute name="text">
-                            <fmt:message key="msg.page.list.optionusage.text" />
-                        </jsp:attribute>
-                    </mercury:alert>
-                </div><%----%>
-            </cms:bundle>
-        </c:if>
+    <%-- The list options are filled by JavaScript --%>
+    <c:if test="${cms.isEditMode}">
+        <fmt:setLocale value="${cms.workplaceLocale}" />
+        <cms:bundle basename="alkacon.mercury.template.messages">
+            <div class="hide-noscript list-options"><%----%>
+                <button class="list-option dropdown-toggle btn placeholder">&nbsp;</button><%----%>
+                <mercury:alert type="warning" css="oct-reveal">
+                    <jsp:attribute name="head">
+                        <fmt:message key="msg.page.list.optionusage.title">
+                            <fmt:param>${value.Title}</fmt:param>
+                        </fmt:message>
+                    </jsp:attribute>
+                    <jsp:attribute name="text">
+                        <fmt:message key="msg.page.list.optionusage.text" />
+                    </jsp:attribute>
+                </mercury:alert>
+            </div><%----%>
+        </cms:bundle>
+    </c:if>
 
     </div><%----%>
     <mercury:nl />

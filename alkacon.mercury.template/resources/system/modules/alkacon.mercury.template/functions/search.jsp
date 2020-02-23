@@ -388,8 +388,10 @@
                                 <mercury:nl/>
 
                                 <h4 class="search-result-heading"><%----%>
-                                    <a href='<cms:link>${searchResult.fields["path"]}</cms:link>'>${title}</a><%----%>
-                                    <c:out value="${typeName}" escapeXml="${false}" />
+                                    <a href='<cms:link>${searchResult.fields["path"]}</cms:link>'><%----%>
+                                        <span class="result-title">${title}</span><%----%>
+                                        <c:out value="&#8203;${typeName}" escapeXml="${false}" />
+                                    </a><%----%>
                                 </h4><%----%>
                                 <mercury:nl/>
 

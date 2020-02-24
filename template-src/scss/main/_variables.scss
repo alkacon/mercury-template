@@ -496,6 +496,8 @@ $list-border-radius:                $default-border-radius !default;
 $list-category-radius:              0.5rem !default;
 $list-tile-header-lines:            2 !default;
 $list-side-color:                   $grey-light !default;
+$list-side-headings-color:          $text-dark !default; // make side lists less "prominent" ba using standard text color
+$list-side-intro-color:             $list-side-headings-color !default;
 
 $pagination-text-color:             $text-dark !default;
 $pagination-text-active-color:      $text-light !default;

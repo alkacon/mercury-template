@@ -577,9 +577,12 @@ aside .list-content,
                 round($teaser-title-size-mobile * 9) / 10,
                 round($teaser-title-size * 9) / 10
             );
-            // also make intro lines normal color
+            // adjust color of side headings
+            > .headline {
+                color: $list-side-headings-color;
+            }
             > .intro {
-                color: $headings-color;
+                color: $list-side-intro-color;
             }
         }
     }

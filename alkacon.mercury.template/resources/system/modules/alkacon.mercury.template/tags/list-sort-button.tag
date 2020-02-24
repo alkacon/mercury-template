@@ -74,7 +74,7 @@
                 --%>aria-expanded="false"${' '}<%--
                 --%>aria-expanded="true"<%--
             --%>><%--
-            --%>${label}<%--
+            --%><span>${label}</span><%--
             --%></button><%----%>
             <mercury:nl />
             <c:out value='<ul class="list-optionlist dropdown-menu">' escapeXml='false' />

@@ -937,8 +937,8 @@ aside .list-content,
         margin-bottom: $default-margin;
         margin-left: $default-margin-small;
 
-        .fa {
-            text-align: right;
+        span {
+            margin-right: $default-margin-verysmall;
         }
     }
 

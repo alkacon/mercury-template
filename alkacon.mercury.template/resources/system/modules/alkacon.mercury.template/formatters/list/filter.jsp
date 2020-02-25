@@ -92,7 +92,7 @@
 
                 <form class="styled-form bo-none" id="queryform_${filterId}" onsubmit="DynamicList.archiveSearch(<%--
                     --%>'${filterId}', <%--
-                --%>'${search.stateParameters.resetAllFacetStates}&${search.controller.common.config.queryParam}='<%--
+                --%>'${search.controller.common.config.queryParam}='<%--
                 --%>); <%--
                    --%>return false;" action="<cms:link>${targetUri}</cms:link>"><%----%>
 

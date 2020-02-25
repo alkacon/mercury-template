@@ -129,9 +129,11 @@ $pagination-font-family:            get-font-family($pagination-font-family);
 
 $btn-font-weight:                   $font-weight-normal !default;
 $form-font-weight:                  $font-weight-headings !default;
+$form-font-weight-input:            $font-weight-normal !default;
 
 $btn-font-weight:                   get-font-weight($btn-font-family, $btn-font-weight);
 $form-font-weight:                  get-font-weight($form-font-family, $form-font-weight);
+$form-font-weight-input:            get-font-weight($form-font-family, $form-font-weight-input);
 
 $map-text-weight:                   $font-weight-light !default;
 $map-header-weight:                 $font-weight-normal !default;
@@ -632,7 +634,9 @@ $map-colors: (
 $form-font-size:                    $font-size-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-text-color:                   $body-color !default;
-$form-label-color:                  $body-color !default;
+$form-font-size-input:              $form-font-size !default;
+$form-text-color-input:             $form-text-color !default;
+$form-widget-color:                 $body-color !default;
 $form-field-padding:                $default-margin;
 $form-field-ver-padding:            $form-field-padding;
 $form-field-hor-padding:            $form-field-padding * 1.5;
@@ -773,6 +777,7 @@ $con-text-col-dark:                 #555 !default;
 $con-text-col-grey:                 #7f8691 !default;
 $con-text-col-light:                #fff !default;
 
+$online-warn-color:                 $highlight-color !default;
 
 // Disabled background-image, used for model group editor and elsewhere to mark "disabled" elements
 $disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(240,240,242,1) 10px,rgba(240,240,242,1) 20px);

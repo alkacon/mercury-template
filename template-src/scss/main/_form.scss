@@ -24,14 +24,15 @@
     margin: 0;
     outline: none;
     font-size: $form-font-size;
+    font-weight: $form-font-weight;
+    color: $form-text-color;
+    line-height: $form-line-height;
     @if ($form-font-family != $font-family-base) {
         font-family: $form-font-family;
     }
-    line-height: $form-line-height;
     border: $form-border;
     @include round-corners($form-border-radius);
     @include use-hyphens-text;
-    color: $form-text-color;
     background: $form-background;
 
     header {
@@ -83,11 +84,6 @@
         display: block;
     }
 
-    .label {
-        line-height: $form-line-height;
-        font-weight: $form-font-weight;
-    }
-
     .note {
         margin-top: $default-margin-verysmall;
         padding: 0;
@@ -121,9 +117,10 @@
     .input input,
     .select select,
     .textarea textarea {
-        font-family: $font-family-base;
-        font-weight: $font-weight-base;
-        font-size: $form-font-size;
+
+        font-weight: $form-font-weight-input;
+        font-size: $form-font-size-input;
+        color: $form-text-color-input;
         display: block;
         box-sizing: border-box;
         width: 100%;
@@ -133,13 +130,11 @@
         border-style: solid;
         @include round-corners($form-input-border-radius, false, true);
         background-color: $form-input-background;
-        color: $form-text-color;
         appearance: none;
 
         &::placeholder {
-            font-family: $font-family-base;
-            font-weight: $font-weight-base;
-            font-size: $form-font-size;
+            font-weight: $form-font-weight-input;
+            font-size: $form-font-size-input;
             color: $form-placeholder-color;
         }
     }
@@ -254,7 +249,7 @@
     .radio,
     .checkbox {
         padding-left: 35px;
-        color: $form-label-color;
+        color: $form-widget-color;
         cursor: pointer;
 
         &:last-child {
@@ -321,7 +316,7 @@
     // toggles
     .toggle {
         padding-right: 70px;
-        color: $form-label-color;
+        color: $form-widget-color;
         cursor: pointer;
 
         &:last-child {
@@ -380,7 +375,7 @@
                 font-style: normal;
                 font-size: 12px;
                 line-height: 12px;
-                font-weight: $font-weight-base;
+                font-weight: $form-font-weight;
                 text-align: left;
                 color: $form-radio-unchecked-color;
             }

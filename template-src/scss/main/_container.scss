@@ -354,8 +354,8 @@ $oct-edit-infos:
 }
 
 .online-warn {
-    background-color: $highlight-color;
-    color: get-text-color($highlight-color);
+    background-color: $online-warn-color;
+    color: get-text-color($online-warn-color);
     overflow: hidden;
     padding: $default-margin-small;
     @include round-corners($default-border-radius);

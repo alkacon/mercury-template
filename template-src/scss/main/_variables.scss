@@ -166,6 +166,7 @@ $h6-font-size:                      $h4-font-size !default;
 
 // Controls the lightness threshold where the text is switched
 $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
+$text-contrast-threshold:           2.5 !default;
 
 
 // Default margins

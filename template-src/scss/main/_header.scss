@@ -378,7 +378,14 @@
                                 $color-nav-text: check-text-color($fh-nav-bg-color, $nav-header-text);
                                 color: $color-nav-text;
                                 &::after {
-                                    color: $color-nav-text
+                                    color: $color-nav-text;
+                                }
+                                &:hover {
+                                    $color-nav-hover: check-text-color($fh-nav-bg-color, $nav-header-text-hover);
+                                    color: $color-nav-hover;
+                                    &::after {
+                                        color: $color-nav-hover;
+                                    }
                                 }
                             }
                         }

@@ -35,13 +35,13 @@ export function _OpenCmsReinitEditButtons(DEBUG) {
 export function _OpenCmsInit(jQuery, DEBUG) {
 
     // accordion
-    jQuery('.accordion').on('shown.bs.collapse', function() {
+    jQuery('.accordion, .collapse').on('shown.bs.collapse', function() {
 
         if (DEBUG) console.info('Event handler .accordion(shown.bs.collapse) triggered!');
         _OpenCmsReinitEditButtons(DEBUG);
     })
 
-    jQuery('.accordion').on('hidden.bs.collapse', function() {
+    jQuery('.accordion, .collapse').on('hidden.bs.collapse', function() {
 
         if (DEBUG) console.info('Event handler .accordion(hidden.bs.collapse) triggered!');
         _OpenCmsReinitEditButtons(DEBUG);

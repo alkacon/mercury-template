@@ -673,6 +673,20 @@
             padding: 4px 10px;
         }
 
+        .select {
+            i {
+                &::before {
+                    top: 9px;
+                }
+                &::after {
+                    bottom: 9px;
+                }
+            }
+            select {
+                padding-right: 28px;
+            }
+        }
+
         .icon-append,
         .icon-prepend {
             padding-top: 2px;

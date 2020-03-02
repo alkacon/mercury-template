@@ -217,10 +217,12 @@
     padding: $btn-def-padding;
     display: inline-block;
     text-align: center;
-    white-space: nowrap;
     user-select: none;
     box-shadow: none;
     border: $btn-border-style; // must be set even if 'none' because user agent may apply border to <button> elements
+    @if ($btn-white-space != normal) {
+        white-space: $btn-white-space;
+    }
     @if ($btn-text-transform != none) {
         text-transform: $btn-text-transform;
     }

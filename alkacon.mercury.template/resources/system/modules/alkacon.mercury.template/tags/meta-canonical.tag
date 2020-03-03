@@ -45,27 +45,32 @@
     </c:if>
     <link rel="canonical" href="${canonicalURL}" /><mercury:nl /><%----%>
 
-</c:if>
 
-<%-- List locale variations of the page as hreflang links --%>
-<c:set var="locales" value="${cms.site.translationLocales}" />
-<c:if test="${locales.size() > 1}">
-    <c:forEach var="locale" items="${locales}" varStatus="status">
-        <c:set var="targetLink" value="${null}" />
-        <c:set var="targetLocale" value="${locale.language}" />
-        <c:choose>
-            <c:when test="${cms.detailRequest}">
-                <c:set var="targetLink">
-                    <cms:link locale="${targetLocale}" baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
-                </c:set>
-            </c:when>
-            <c:otherwise>
-                <c:set var="targetLink" value="${cms.pageResource.localeResource[targetLocale].link}" />
-            </c:otherwise>
-        </c:choose>
-        <c:if test="${not empty targetLink}">
-            <%-- Output of alternate language link --%>
-            <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}" /><mercury:nl /><%----%>
-        </c:if>
-    </c:forEach>
+    <%-- List locale variations of the page as hreflang links --%>
+    <%--
+        According to YOAST [https://yoast.com/hreflang-ultimate-guide/] hreflang must reflect the canonical URL.
+        Since we do not provide a canonical URL for parameter requests, we do not provide hreflang in this case either.
+    --%>
+    <c:set var="locales" value="${cms.site.translationLocales}" />
+    <c:if test="${locales.size() > 1}">
+        <c:forEach var="locale" items="${locales}" varStatus="status">
+            <c:set var="targetLink" value="${null}" />
+            <c:set var="targetLocale" value="${locale.language}" />
+            <c:choose>
+                <c:when test="${cms.detailRequest}">
+                    <c:set var="targetLink">
+                        <cms:link locale="${targetLocale}" baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
+                    </c:set>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="targetLink" value="${cms.pageResource.localeResource[targetLocale].link}" />
+                </c:otherwise>
+            </c:choose>
+            <c:if test="${not empty targetLink}">
+                <%-- Output of alternate language link --%>
+                <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}" /><mercury:nl /><%----%>
+            </c:if>
+        </c:forEach>
+    </c:if>
+
 </c:if>

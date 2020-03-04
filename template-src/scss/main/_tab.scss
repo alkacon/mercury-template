@@ -57,7 +57,7 @@
             position: relative;
             font-family: $font-family-headings;
             font-weight: $font-weight-headings;
-            color: $headings-color;
+            color: $accordion-header-color;
             margin: 0;
             padding: $default-margin-verysmall $default-margin-small;
             @include round-corners($tab-border-radius);
@@ -68,8 +68,8 @@
             }
 
             &:hover {
-                color: get-text-color($main-theme-hover);
-                background: $main-theme-hover;
+                color: get-text-color($tab-header-bg-hover);
+                background: $tab-header-bg-hover;
                 text-decoration: none;
             }
         }
@@ -150,16 +150,16 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: block;
-            padding: $default-margin-verysmall $default-margin-small;
-            color: $headings-color;
+            padding: $accordion-header-padding;
+            color: $accordion-header-color;
             @if ($accordion-header-bg != transparent) {
                 background: $accordion-header-bg;
             }
 
             &:focus,
             &:hover {
-                color: $text-light;
-                background: $main-theme;
+                color: get-text-color($accordion-header-bg-hover);
+                background: $accordion-header-bg-hover;
                 text-decoration: none;
             }
         }
@@ -168,7 +168,7 @@
     .acco-body {
         border-top: $accordion-border-between;
         // note: bottom space will be added as margin, either from floating image or piece text
-        padding:  $default-margin-small  $default-margin-small 0  $default-margin-small;
+        padding: $accordion-body-padding;
         @if ($accordion-body-bg != transparent) {
             background: $accordion-body-bg;
         }
@@ -197,8 +197,8 @@
                 display: inline-block;
                 font-family: FontAwesome;
                 font-weight: normal;
-                font-size: $font-size-base;
-                line-height: $accordion-header-line-height;
+                font-size: inherit; // inherit size / height so that the generated icon matches the header font
+                line-height: inherit;
                 content: "\f078";
                 top: $default-margin-verysmall;
                 right: $default-margin-small;

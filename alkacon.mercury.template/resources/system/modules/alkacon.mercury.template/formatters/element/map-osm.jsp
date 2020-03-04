@@ -85,7 +85,7 @@
             </c:when>
             <c:otherwise>
                  <%-- This will be replaced by Google GeoCoder in JavaScript --%>
-                 <c:set var="markerAddress" value="<div class='geoAdr'></div>" />
+                 <c:set var="markerAddress"><div class="geoAdr"></div></c:set>
                  <c:set var="markerNeedsGeoCode" value="true" />
             </c:otherwise>
         </c:choose>

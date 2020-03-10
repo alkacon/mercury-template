@@ -1,41 +1,41 @@
 
-$sans-serif:                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$serif:                         Athelas, Georgia, Cambria, "Times New Roman", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$monospace:                     SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-sans-serif:        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-serif:             Athelas, Georgia, Cambria, "Times New Roman", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace:         SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
 $fonts-preloaded: (
-    "Fira Sans":                (("Fira Sans",               $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Fira Sans Condensed":      (("Fira Sans Condensed",     $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "IBM Plex Sans":            (("IBM Plex Sans",           $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "IBM Plex Sans Condensed":  (("IBM Plex Sans Condensed", $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "IBM Plex Serif":           (("IBM Plex Serif",          $serif),       (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Lato":                     (("Lato",                    $sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
-    "Literata":                 (("Literata",                $serif),       (400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Merriweather":             (("Merriweather",            $serif),       (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
-    "Merriweather Sans":        (("Merriweather Sans",       $sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
-    "Montserrat":               (("Montserrat",              $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Noto Sans":                (("Noto Sans",               $sans-serif),  (400: (normal, italic), 700: (normal, italic))),
-    "Noto Serif":               (("Noto Serif",              $serif),       (400: (normal, italic), 700: (normal, italic))),
-    "Open Sans":                (("Open Sans",               $sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Open Sans Condensed":      (("Open Sans Condensed",     $sans-serif),  (300: (normal, italic), 700: (normal))),
-    "Oswald":                   (("Oswald",                  $sans-serif),  (300: (normal),         400: (normal),         500: (normal),         600: (normal),         700: (normal))),
-    "Poppins":                  (("Poppins",                 $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Prompt":                   (("Prompt",                  $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "PT Sans":                  (("PT Sans",                 $sans-serif),  (400: (normal, italic), 700: (normal, italic))),
-    "PT Sans Caption":          (("PT Sans Caption",         $sans-serif),  (400: (normal),         700: (normal))),
-    "PT Sans Narrow":           (("PT Sans Narrow",          $sans-serif),  (400: (normal),         700: (normal))),
-    "PT Serif":                 (("PT Serif",                $serif),       (400: (normal, italic), 700: (normal, italic))),
-    "PT Serif Caption":         (("PT Serif Caption",        $serif),       (400: (normal, italic))),
-    "Raleway":                  (("Raleway",                 $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Roboto":                   (("Roboto",                  $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
-    "Roboto_Condensed":         (("Roboto Condensed",        $sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
-    "Roboto Slab":              (("Roboto Slab",             $serif),       (300: (normal),         400: (normal),         700: (normal))),
-    "Source Sans Pro":          (("Source Sans Pro",         $sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Titillium Web":            (("Titillium Web",           $sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Ubuntu":                   (("Ubuntu",                  $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
-    "Ubuntu Condensed":         (("Ubuntu Condensed",        $sans-serif),  (400: (normal))),
-    "-apple-system":            ((                           $sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "SFMono-Regular":           ((                           $monospace),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic)))
+    "Fira Sans":                (("Fira Sans",               $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Fira Sans Condensed":      (("Fira Sans Condensed",     $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "IBM Plex Sans":            (("IBM Plex Sans",           $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "IBM Plex Sans Condensed":  (("IBM Plex Sans Condensed", $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "IBM Plex Serif":           (("IBM Plex Serif",          $font-family-serif),       (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Lato":                     (("Lato",                    $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Literata":                 (("Literata",                $font-family-serif),       (400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Merriweather":             (("Merriweather",            $font-family-serif),       (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Merriweather Sans":        (("Merriweather Sans",       $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Montserrat":               (("Montserrat",              $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Noto Sans":                (("Noto Sans",               $font-family-sans-serif),  (400: (normal, italic), 700: (normal, italic))),
+    "Noto Serif":               (("Noto Serif",              $font-family-serif),       (400: (normal, italic), 700: (normal, italic))),
+    "Open Sans":                (("Open Sans",               $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Open Sans Condensed":      (("Open Sans Condensed",     $font-family-sans-serif),  (300: (normal, italic), 700: (normal))),
+    "Oswald":                   (("Oswald",                  $font-family-sans-serif),  (300: (normal),         400: (normal),         500: (normal),         600: (normal),         700: (normal))),
+    "Poppins":                  (("Poppins",                 $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Prompt":                   (("Prompt",                  $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "PT Sans":                  (("PT Sans",                 $font-family-sans-serif),  (400: (normal, italic), 700: (normal, italic))),
+    "PT Sans Caption":          (("PT Sans Caption",         $font-family-sans-serif),  (400: (normal),         700: (normal))),
+    "PT Sans Narrow":           (("PT Sans Narrow",          $font-family-sans-serif),  (400: (normal),         700: (normal))),
+    "PT Serif":                 (("PT Serif",                $font-family-serif),       (400: (normal, italic), 700: (normal, italic))),
+    "PT Serif Caption":         (("PT Serif Caption",        $font-family-serif),       (400: (normal, italic))),
+    "Raleway":                  (("Raleway",                 $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Roboto":                   (("Roboto",                  $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
+    "Roboto_Condensed":         (("Roboto Condensed",        $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Roboto Slab":              (("Roboto Slab",             $font-family-serif),       (300: (normal),         400: (normal),         700: (normal))),
+    "Source Sans Pro":          (("Source Sans Pro",         $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Titillium Web":            (("Titillium Web",           $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Ubuntu":                   (("Ubuntu",                  $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
+    "Ubuntu Condensed":         (("Ubuntu Condensed",        $font-family-sans-serif),  (400: (normal))),
+    "-apple-system":            ((                           $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "SFMono-Regular":           ((                           $font-family-monospace),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic)))
 );
 
 

@@ -448,6 +448,13 @@ var Mercury = function(jQ) {
     }
 
 
+    function initTabAccordion(callback) {
+        // add handler for elements hidden in accordions and tabs
+        jQ('.accordion, .collapse').on('shown.bs.collapse', callback);
+        jQ('a[data-toggle="tab"]').on('shown.bs.tab', callback);
+    }
+
+
     // Affix elements, restricted to a parent container
     var m_affixElements = [];
 
@@ -918,6 +925,7 @@ var Mercury = function(jQ) {
         hasInfo: hasInfo,
         hideElement: hideElement,
         initElements: initElements,
+        initTabAccordion: initTabAccordion,
         isEditMode: isEditMode,
         isElementHidden: isElementHidden,
         isOnlineProject: isOnlineProject,

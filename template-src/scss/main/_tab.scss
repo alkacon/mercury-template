@@ -198,6 +198,7 @@
                 font-family: FontAwesome;
                 font-weight: normal;
                 font-size: inherit; // inherit size / height so that the generated icon matches the header font
+                font-style: normal;
                 line-height: inherit;
                 content: "\f078";
                 top: $default-margin-verysmall;

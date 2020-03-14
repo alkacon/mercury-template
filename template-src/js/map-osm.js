@@ -165,8 +165,8 @@ export function showMarkers(mapId, group){
 }
 
 function showMap(event){
-    // called by click on hidden map element in edit mode
 
+    // called by click on hidden map element in edit mode
     if (DEBUG) console.info("OSM show map with id: "+ event.currentTarget.id);
     var mapToShow = event.currentTarget;
     for(var i=0; i<m_mapData.length; i++){
@@ -176,6 +176,27 @@ function showMap(event){
             setStyle(jQ, m_apiKey, function() {
                 showSingleMap(mapData);
             });
+        }
+    }
+}
+
+function redrawMap(mapId, event) {
+
+    // called if map is in a tab or accordion after being revealed
+    var $parentElement;
+    if (event.namespace == "bs.tab") {
+        var target = jQ(event.target).attr("href");
+        $parentElement = jQ(target);
+    } else {
+        // this should be an accordion
+        $parentElement = jQ(event.target);
+    }
+    var $map = $parentElement.find('#' + mapId);
+    if ($map.length > 0) {
+        if (DEBUG) console.info("OSM redrawing map with id: " + mapId);
+        $map.css("height", "100%");
+        if (typeof m_maps[mapId] != "undefined") {
+            m_maps[mapId].resize();
         }
     }
 }
@@ -230,6 +251,8 @@ export function init(jQuery, debug) {
                     if (DEBUG) console.info("OSM map found with id: " + mapData.id);
                     m_mapData.push(mapData);
                     $mapElement.removeClass('placeholder');
+                    // add redraw handler for maps hidden in accordions and tabs
+                    Mercury.initTabAccordion(function(event) { redrawMap(mapData.id, event) });
                 }
             });
 

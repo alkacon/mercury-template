@@ -188,7 +188,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
                     // stopEventPropagation must remain false, otherwise top level menus would not close
                     m_subMenuTimeout = setTimeout(function() {
                         $submenu.attr("aria-expanded", "false");
-                    }, 750);
+                    }, 375);
                 }
             } else {
                 stopEventPropagation = true;
@@ -213,6 +213,9 @@ function initHeadNavigation() {
 
     // If the mouse leaves a toplevel menu, set a timeout to close the menu
     jQ('.nav-main-items > li[aria-expanded]').on('mouseleave', function(e) {
+        if (m_subMenuTimeout) {
+            clearTimeout(m_subMenuTimeout);
+        }
         if (Mercury.gridInfo().isDesktopNav()) {
             m_menuTimeout = setTimeout(resetMenu, 750);
         }

@@ -26,7 +26,8 @@ var VERBOSE;
 
 var m_fixedHeader = null;
 var m_$anchor = null;
-var menuTimeout = null;
+var m_menuTimeout = null;
+var m_subMenuTimeout = null;
 var $topControl = null;
 
 function setKeyboardClass(active) {
@@ -132,7 +133,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
 
     // check which kind of event was triggered
     var eventMouseenter = event.type == "mouseenter";
-    var mouseLeave = event.type == "mouseleave";
+    var eventMouseleave = event.type == "mouseleave";
     var eventKeydown = (event.type == "keydown" && ((event.which == 13) || (event.which == 32))); // limit keydown to enter and space
     var eventTouchstart = event.type == "touchstart";
     var eventClick = event.type == "click";
@@ -140,12 +141,15 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
     var expanded = $submenu.attr("aria-expanded") == "true";
     var stopEventPropagation = false;
 
-    if (eventMouseenter && menuTimeout) {
-        clearTimeout(menuTimeout);
+    if (eventMouseenter && m_menuTimeout) {
+        clearTimeout(m_menuTimeout);
+    }
+    if ((eventMouseenter || eventMouseleave) && m_subMenuTimeout) {
+        clearTimeout(m_subMenuTimeout);
     }
 
     if (Mercury.gridInfo().isDesktopNav()) {
-        if (VERBOSE) console.info("Navigation.toggleMenu, isDesktopNav=true eventMouseenter=" + eventMouseenter);
+        if (VERBOSE) console.info("Navigation.toggleMenu, isDesktopNav=true eventMouseenter=" + eventMouseenter + " eventMouseleave=" + eventMouseleave);
         // desktop navigation
         var $targetmenu = jQ("#" + targetmenuId).first();
         if (!expanded && (eventMouseenter || eventKeydown || eventTouchstart)) {
@@ -177,9 +181,19 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
                     }
                 }
             }
-        } else if (expanded && (mouseLeave || eventKeydown || eventTouchstart)) {
-            stopEventPropagation = true;
-            $submenu.attr("aria-expanded", "false");
+        } else if (expanded && (eventMouseleave || eventKeydown || eventTouchstart)) {
+            if (eventMouseleave) {
+                // only close open menu if this is NOT a top level menu (top level menu has separate timeout)
+                if (!$submenu.parent().hasClass("nav-main-items")) {
+                    // stopEventPropagation must remain false, otherwise top level menus would not close
+                    m_subMenuTimeout = setTimeout(function() {
+                        $submenu.attr("aria-expanded", "false");
+                    }, 750);
+                }
+            } else {
+                stopEventPropagation = true;
+                $submenu.attr("aria-expanded", "false");
+            }
         }
     } else if (eventTouchstart || eventClick) {
         // mobile navigation
@@ -200,7 +214,7 @@ function initHeadNavigation() {
     // If the mouse leaves a toplevel menu, set a timeout to close the menu
     jQ('.nav-main-items > li[aria-expanded]').on('mouseleave', function(e) {
         if (Mercury.gridInfo().isDesktopNav()) {
-            menuTimeout = setTimeout(resetMenu, 750);
+            m_menuTimeout = setTimeout(resetMenu, 750);
         }
     });
 
@@ -208,8 +222,11 @@ function initHeadNavigation() {
     jQ('.nav-main-items > li > a').on('mouseenter', function(e) {
         // This will be triggered only for toplevel menu items
         if (Mercury.gridInfo().isDesktopNav()) {
-            if (menuTimeout) {
-                clearTimeout(menuTimeout);
+            if (m_menuTimeout) {
+                clearTimeout(m_menuTimeout);
+            }
+            if (m_subMenuTimeout) {
+                clearTimeout(m_subMenuTimeout);
             }
             resetMenu();
         }
@@ -231,8 +248,8 @@ function initHeadNavigation() {
                     // open menus if trigger is clicked
                     toggleMenu($submenu, $menuToggle, targetmenuId, e);
                 });
-                $submenu.on('mouseenter', function(e) {
-                    // also open menus if mouse enters (hovers) above it
+                $submenu.on('mouseenter mouseleave', function(e) {
+                    // also open menus if mouse enters (hovers) above it and closes if mouse leaves
                     toggleMenu($submenu, $menuToggle, targetmenuId, e);
                 });
             }

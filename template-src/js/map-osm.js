@@ -194,7 +194,6 @@ function redrawMap(mapId, event) {
     var $map = $parentElement.find('#' + mapId);
     if ($map.length > 0) {
         if (DEBUG) console.info("OSM redrawing map with id: " + mapId);
-        $map.css("height", "100%");
         if (typeof m_maps[mapId] != "undefined") {
             m_maps[mapId].resize();
         }
@@ -232,17 +231,6 @@ export function init(jQuery, debug) {
                 var $mapElement = jQ(this);
                 if (typeof $mapElement.data("map") != "undefined") {
                     var mapData = $mapElement.data("map");
-                    if (mapData.hasOwnProperty("ratio")) {
-                        var ratio = mapData.ratio;
-                        var width = $mapElement.outerWidth();
-                        var splits = ratio.split("-");
-                        var wRatio = Number(splits[0]);
-                        var hRatio = Number(splits[1]);
-                        var factor = hRatio / wRatio;
-                        var height = Math.round(width * factor);
-                        if (DEBUG) console.info("mapData ratio:" + ratio + " wR=" + wRatio + " hR=" + hRatio + " width=" + width + " height=" + height);
-                        $mapElement.outerHeight(height);
-                    }
                     if(typeof mapData == "string") {
                         mapData = JSON.parse(mapData);
                     }
@@ -251,7 +239,7 @@ export function init(jQuery, debug) {
                     if (DEBUG) console.info("OSM map found with id: " + mapData.id);
                     m_mapData.push(mapData);
                     $mapElement.removeClass('placeholder');
-                    // add redraw handler for maps hidden in accordions and tabs
+                    // add redraw handler for OSM maps hidden in accordions and tabs
                     Mercury.initTabAccordion(function(event) { redrawMap(mapData.id, event) });
                 }
             });

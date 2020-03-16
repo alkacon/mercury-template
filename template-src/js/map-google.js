@@ -313,24 +313,6 @@ function showMap(event){
     }
 }
 
-function redrawMap(mapId, event) {
-
-    // called if map is in a tab or accordion after being revealed
-    var $parentElement;
-    if (event.namespace == "bs.tab") {
-        var target = jQ(event.target).attr("href");
-        $parentElement = jQ(target);
-    } else {
-        // this should be an accordion
-        $parentElement = jQ(event.target);
-    }
-    var $map = $parentElement.find('#' + mapId);
-    if ($map.length > 0) {
-        if (DEBUG) console.info("GoogleMap redrawing map with id: " + mapId);
-        $map.css("height", "100%");
-    }
-}
-
 /****** Exported functions ******/
 
 export function init(jQuery, debug) {
@@ -368,24 +350,14 @@ export function init(jQuery, debug) {
 
                     if (typeof $mapElement.data("map") != "undefined") {
                         var mapData = $mapElement.data("map");
-                        if (mapData.hasOwnProperty("ratio")) {
-                            var ratio = mapData.ratio;
-                            var width = $mapElement.outerWidth();
-                            var splits = ratio.split("-");
-                            var wRatio = Number(splits[0]);
-                            var hRatio = Number(splits[1]);
-                            var factor = hRatio / wRatio;
-                            var height = Math.round(width * factor);
-                            if (DEBUG) console.info("mapData ratio:" + ratio + " wR=" + wRatio + " hR=" + hRatio + " width=" + width + " height=" + height);
-                            $mapElement.outerHeight(height);
+                        if(typeof mapData == "string") {
+                            mapData = JSON.parse(mapData);
                         }
                         mapData.id = $mapElement.attr("id");
                         mapData.hidden=Mercury.isElementHidden($mapElement, showMap);
                         if (DEBUG) console.info("GoogleMap found with id: " + mapData.id);
                         m_mapData.push(mapData);
                         $mapElement.removeClass('placeholder');
-                        // add redraw handler for maps hidden in accordions and tabs
-                        Mercury.initTabAccordion(function(event) { redrawMap(mapData.id, event) });
                     }
                 });
 

@@ -28,10 +28,11 @@
 
     <c:choose>
         <c:when test="${(param.action eq 'login') and (not empty param.loginName) and (not empty param.loginPassword)}">
-            <c:set var="loginresource">${empty param.requestedResource ? cms.requestContext.uri : param.requestedResource}</c:set>
-            <c:set var="loginuri">${cms.requestContext.siteRoot}${loginresource}</c:set>
-            <c:set var="loginuser" value="${param.loginName}"/>
-            <c:set var="loginpassword" value="${param.loginPassword}"/>
+            <c:set var="loginpage"      value="${empty cms.pageResource.property['login-start'] ? cms.requestContext.uri : cms.pageResource.property['login-start']}" />
+            <c:set var="loginresource"  value="${empty param.requestedResource ? loginpage : param.requestedResource}" />
+            <c:set var="loginuri"       value="${cms.requestContext.siteRoot}${loginresource}" />
+            <c:set var="loginuser"      value="${param.loginName}"/>
+            <c:set var="loginpassword"  value="${param.loginPassword}"/>
             <c:choose>
                 <c:when test="${not empty loginou}">
                     <c:set var="loginprincipal" value="${loginou eq '/' ? '' : loginou}${loginuser}"/>

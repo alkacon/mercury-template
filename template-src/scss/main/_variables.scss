@@ -128,12 +128,16 @@ $form-font-family:                  get-font-family($form-font-family);
 $pagination-font-family:            get-font-family($pagination-font-family);
 
 $btn-font-weight:                   $font-weight-normal !default;
-$form-font-weight:                  $font-weight-headings !default;
-$form-font-weight-input:            $font-weight-normal !default;
+$form-font-weight:                  $font-weight-normal !default;
+$form-font-weight-label:            $font-weight-headings !default;
+$form-font-weight-input:            $form-font-weight !default;
+$form-font-weight-option:           $form-font-weight !default;
 
 $btn-font-weight:                   get-font-weight($btn-font-family, $btn-font-weight);
 $form-font-weight:                  get-font-weight($form-font-family, $form-font-weight);
+$form-font-weight-label:            get-font-weight($form-font-family, $form-font-weight-label);
 $form-font-weight-input:            get-font-weight($form-font-family, $form-font-weight-input);
+$form-font-weight-option:           get-font-weight($form-font-family, $form-font-weight-option);
 
 $map-text-weight:                   $font-weight-light !default;
 $map-header-weight:                 $font-weight-normal !default;
@@ -179,6 +183,7 @@ $default-margin-small:              round($default-margin * 50) / 100 !default; 
 $default-margin-quitesmall:         round($default-margin * 37.5) / 100 !default; // 0.75 rem
 $default-margin-verysmall:          round($default-margin * 25) / 100 !default;   // 0.5 rem
 $default-margin-ultrasmall:         round($default-margin * 12.5) / 100 !default; // 0.25 rem
+$default-margin-extremesmall:       round($default-margin * 6.25) / 100 !default; // 0.12 rem
 
 $headings-margin-bottom:            $default-margin-small !default;
 $intro-headings-margin-bottom:      $default-margin-ultrasmall !default;

@@ -21,6 +21,16 @@
 
 .type-search {
 
+    .styled-form {
+        // reset styled form settings
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        background: inherit;
+    }
+
     .show-more {
         margin-top: $default-margin-small;
     }
@@ -38,7 +48,6 @@
 
     .search-result-heading {
         @extend .h4;
-        line-height: 1.5;
         margin-bottom: $default-margin-verysmall;
     }
 
@@ -47,20 +56,25 @@
         margin-bottom: $default-margin;
     }
 
-    .filterbox {
+    .search-results-count {
+        font-weight: $font-weight-bold;
+    }
 
+    .type-list-filter .filterbox {
         @include list-filter-box;
         > div {
             padding: $grid-gutter-width / 2;
         }
+
+        &:last-of-type {
+           margin-bottom: $default-margin; // for lists this is 0, but in the search we want the margin always
+        }
     }
 
     .search-result-heading {
-        display: flex;
-        align-items: flex-end;
-
         .result-title {
-            margin-right: $default-margin-small;
+            margin-right: $default-margin-verysmall;
+            vertical-align: middle;
         }
     }
 
@@ -71,13 +85,14 @@
     .search-badge {
         font-weight: $font-weight-base;
         font-family: $font-family-base;
-        font-size: 70%;
-        padding: 0 $default-margin-small;
+        font-size: 50%;
+        padding: $default-margin-extremesmall $default-margin-verysmall;
         @include round-corners($form-border-radius);
         color: $form-border-color;
         border: 1px solid $form-border-color;
         white-space: nowrap;
         display: inline-block;
+        vertical-align: middle;
     }
 
     @include media-breakpoint-up(lg) {
@@ -100,8 +115,20 @@
             float: left;
             margin-bottom: 0;
         }
+
         .search-results-count {
             float: right;
+        }
+
+        .search-result-heading {
+            .result-title {
+                margin-right: $default-margin-quitesmall;
+            }
+        }
+
+        .search-badge {
+            font-size: 60%;
+            padding: $default-margin-extremesmall $default-margin-quitesmall;
         }
     }
 }

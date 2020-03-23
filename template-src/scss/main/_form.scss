@@ -82,6 +82,7 @@
     label,
     .label {
         display: block;
+        font-weight: $form-font-weight-label;
     }
 
     .note {
@@ -208,11 +209,11 @@
             }
             // generates the select arrows after the select text
             &::before {
-                top: 11px;
+                top: 12px;
                 border-bottom: 5px solid $form-icon-color;;
             }
             &::after {
-                bottom: 11px;
+                bottom: 12px;
                 border-top: 5px solid $form-icon-color;
             }
         }
@@ -248,6 +249,7 @@
     // radios and checkboxes
     .radio,
     .checkbox {
+        font-weight: $form-font-weight-option;
         padding-left: 35px;
         color: $form-widget-color;
         cursor: pointer;
@@ -315,6 +317,7 @@
 
     // toggles
     .toggle {
+        font-weight: $form-font-weight-option;
         padding-right: 70px;
         color: $form-widget-color;
         cursor: pointer;
@@ -535,10 +538,15 @@
     @include media-breakpoint-up(lg) {
 
         .toggle,
-        .radio,
-        .checkbox {
+        .radio {
             i {
                 top: 0;
+            }
+        }
+
+        .checkbox {
+            i {
+                top: 1px;
             }
         }
 

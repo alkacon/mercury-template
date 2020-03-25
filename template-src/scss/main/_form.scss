@@ -571,34 +571,6 @@
             padding-right: $form-field-hor-padding;
         }
     }
-}
-
-
-// stuff around the form itself
-
-.type-webform  {
-
-    .form-header {
-        margin-bottom: $default-margin;
-    }
-
-    .form-footer {
-        margin-top: $default-margin;
-
-        > p:last-of-type {
-            margin-bottom: 0;
-        }
-    }
-
-    @include media-breakpoint-down(xs) {
-        .table.table-responsive {
-            font-size: 12px; // table might ge too big otherwiśe
-        }
-    }
-
-    .btn.resetbutton {
-        @include button-color($grey-light, $btn-default-hover);
-    }
 
     @if ($btn-border-radius == 0) {
         // must force 0 radius on buttons otherwise Safari will add radius
@@ -606,62 +578,6 @@
             border-radius: 0;
         }
     }
-
-    .formbtn-row {
-        display: block;
-
-        .formbtn {
-            margin-bottom: $default-margin;
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-
-            &.btn,
-            .btn {
-                width: 100%;
-                display: block;
-            }
-        }
-    }
-
-    @include media-breakpoint-up(md) {
-        .formbtn-row {
-            display: flex;
-            justify-content: center;
-
-            .formbtn {
-                margin-bottom: 0;
-                margin-left: $default-margin-small;
-                margin-right: $default-margin-small;
-                width: auto;
-
-                &.btn,
-                .btn {
-                    width: auto;
-                    min-width: 200px;
-                }
-            }
-        }
-    }
-
-    .checkpage {
-        // checkpage (optional confirmation page from webform) requires some special formatting
-        .correctaction {
-            margin-bottom: $default-margin;
-        }
-
-        @include media-breakpoint-up(md) {
-            .correctaction {
-                margin-bottom: 0;
-            }
-        }
-    }
-}
-
-
-// form layout variations
-
-.styled-form {
 
     // compact spacing form layout
     &.compact {
@@ -715,8 +631,86 @@
         }
     }
 
+    // no background color set
     &.no-bg {
         background-color: inherit;
     }
 }
 
+
+// stuff around the form itself
+
+.type-webform  {
+
+    .form-header {
+        margin-bottom: $default-margin;
+    }
+
+    .form-footer {
+        margin-top: $default-margin;
+
+        > p:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        .table.table-responsive {
+            font-size: 12px; // table might ge too big otherwiśe
+        }
+    }
+
+    .btn.resetbutton {
+        @include button-color($grey-light, $btn-default-hover);
+    }
+
+    .formbtn-row {
+        display: block;
+
+        .formbtn {
+            margin-bottom: $default-margin;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            &.btn,
+            .btn {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        .formbtn-row {
+            display: flex;
+            justify-content: center;
+
+            .formbtn {
+                margin-bottom: 0;
+                margin-left: $default-margin-small;
+                margin-right: $default-margin-small;
+                width: auto;
+
+                &.btn,
+                .btn {
+                    width: auto;
+                    min-width: 200px;
+                }
+            }
+        }
+    }
+
+    .checkpage {
+        // checkpage (optional confirmation page from webform) requires some special formatting
+        .correctaction {
+            margin-bottom: $default-margin;
+        }
+
+        @include media-breakpoint-up(md) {
+            .correctaction {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

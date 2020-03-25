@@ -28,5 +28,11 @@
     <Setting>
       <IncludeName><![CDATA[searchscope.search]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[searchForEmptyQuery.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[numFacetItems.default]]></IncludeName>
+    </Setting>
   </FunctionConfig>
 </FunctionConfigs>

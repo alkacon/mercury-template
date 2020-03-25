@@ -17,8 +17,9 @@
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <%-- Generate the search configuration --%>
+<c:set var="settings" value="${cms.element.setting}" />
 <c:choose>
-    <c:when test="${cms.element.setting.searchscope eq 'subsite'}">
+    <c:when test="${settings.searchscope eq 'subsite'}">
         <c:set var="searchscope" value="${cms.requestContext.siteRoot}${cms.subSitePath}" />
     </c:when>
     <c:otherwise>
@@ -70,7 +71,7 @@
 <c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,${cms.locale}_excerpt,id,path</c:set>
 <c:set var="config">
     {
-        "searchforemptyquery" : true,
+        "searchforemptyquery" : ${empty settings.searchForEmptyQuery ? 'true' : settings.searchForEmptyQuery.toBoolean},
         "querymodifier" :       "{!type=edismax qf=\"content_${cms.locale} Title_dprop Description_dprop\"}%(query)",
         "escapequerychars" :    true,
         "extrasolrparams" :     "fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields}",
@@ -82,7 +83,7 @@
                                 , { "label" : "<fmt:message key='msg.page.search.sort.title.asc'/>", "solrvalue" : "disptitle_${cms.locale}_sort asc" }
                                 , { "label" : "<fmt:message key='msg.page.search.sort.title.desc'/>", "solrvalue" : "disptitle_${cms.locale}_sort desc" }
                                 ],
-        "fieldfacets" :         [ { "field" : "type", "label" : "<fmt:message key="msg.page.search.facet.type"/>", "mincount" : 1, "limit" : 5 }
+        "fieldfacets" :         [ { "field" : "type", "label" : "<fmt:message key="msg.page.search.facet.type"/>", "mincount" : 1, "limit" : ${empty settings.numFacetItems ? 5 : settings.numFacetItems} }
                                 , { "field" : "category_exact", "label" : "<fmt:message key="msg.page.search.facet.category"/>", "mincount" : 1, "order" : "index" }
                                 ],
         "highlighter" :         {
@@ -131,7 +132,9 @@
 
         <%-- choose layout dependent on the presence of search options --%>
         <c:set var="hasSortOptions" value="${cms:getListSize(controllers.sorting.config.sortOptions) > 0}" />
-        <c:set var="hasFacets" value="${(cms:getListSize(search.fieldFacets) > 0) or (not empty search.facetQuery)}" />
+        <%--<c:set var="hasFacets" value="${(cms:getListSize(search.fieldFacets) > 0) or (not empty search.facetQuery)}" /> --%>
+        <%-- We know that we have facets, the other logic is suboptimal if no search is triggered for the empty query. --%>
+        <c:set var="hasFacets" value="true"/>
 
         <mercury:nl/>
         <div class="search-result-row"><%----%>
@@ -303,6 +306,11 @@
                     </c:when>
                     <c:when test="${empty search.searchResults && empty search.exception}">
                         <c:choose>
+                        <c:when test="${not common.config.searchForEmptyQueryParam && empty common.state.query}">
+                            <div class="search-no-result"><%----%>
+                                <h3><fmt:message key="msg.page.search.noResults.enterQuery" /></h3><%----%>
+                            </div><%----%>
+                        </c:when>
                         <c:when test="${not empty controllers.didYouMean.config}" >
                             <c:set var="suggestion" value="${search.didYouMeanSuggestion}" />
                             <c:choose>

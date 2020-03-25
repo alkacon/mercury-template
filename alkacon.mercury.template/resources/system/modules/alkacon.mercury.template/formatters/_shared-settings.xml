@@ -2424,5 +2424,24 @@
       <Default><![CDATA[site]]></Default>
       <WidgetConfig><![CDATA[site:%(key.msg.setting.search.scope.site)|subsite:%(key.msg.setting.search.scope.subsite)]]></WidgetConfig>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[searchForEmptyQuery.default]]></IncludeName>
+      <PropertyName><![CDATA[searchForEmptyQuery]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.searchForEmptyQuery)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.searchForEmptyQuery.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[numFacetItems.default]]></IncludeName>
+      <PropertyName><![CDATA[numFacetItems]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.numFacetItems)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.numFacetItems.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[5]]></Default>
+      <RuleRegex><![CDATA[[1-9]\d{0,2}]]></RuleRegex>
+      <RuleType><![CDATA[error]]></RuleType>
+      <Error><![CDATA[%(key.msg.error.numFacetItems)]]></Error>
+    </Setting>
   </SettingsConfig>
 </SettingsConfigs>

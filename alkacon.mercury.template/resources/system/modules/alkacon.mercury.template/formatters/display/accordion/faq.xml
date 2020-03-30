@@ -44,6 +44,9 @@
       <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listWrapper.accordion]]></IncludeName>
     </Setting>
     <Setting>

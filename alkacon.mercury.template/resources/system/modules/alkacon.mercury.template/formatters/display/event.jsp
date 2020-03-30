@@ -95,7 +95,11 @@
                 </c:when>
                 <c:otherwise>
                     <c:set var="image" value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : (paragraph.value.Image.isSet ? paragraph.value.Image : null))}" />
-                    <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}" />
+                    <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}">
+                        <c:if test="${setShowCopyright and not empty imageCopyright}">
+                            <div class="copyright"><div>${imageCopyright}</div></div><%----%>
+                        </c:if>
+                    </mercury:image-animated>
                 </c:otherwise>
             </c:choose>
         </c:if>

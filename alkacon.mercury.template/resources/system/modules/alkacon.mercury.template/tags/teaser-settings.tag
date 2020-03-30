@@ -24,6 +24,7 @@
 <%@ variable name-given="setButtonText"     declare="true" %>
 <%@ variable name-given="setShowIntro"      declare="true" variable-class="java.lang.Boolean" %>
 <%@ variable name-given="setShowCalendar"   declare="true" variable-class="java.lang.Boolean" %>
+<%@ variable name-given="setShowCopyright"  declare="true" variable-class="java.lang.Boolean" %>
 <%@ variable name-given="setPieceLayout"    declare="true" %>
 <%@ variable name-given="setSizeDesktop"    declare="true" %>
 <%@ variable name-given="setSizeMobile"     declare="true" %>
@@ -44,6 +45,7 @@
 <c:set var="setHsize"                       value="${setting.hsize.toInteger}"/>
 <c:set var="setButtonText"                  value="${setting.buttonText.toString}" />
 <c:set var="setShowCalendar"                value="${setting.showCalendar.toBoolean}" />
+<c:set var="setShowCopyright"               value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="setPieceLayout"                 value="${inList ? setting.pieceLayoutList.toInteger : setting.pieceLayout.toInteger}" />
 <c:set var="setSizeDesktop"                 value="${setting.pieceSizeDesktop.toInteger}" />
 <c:set var="setSizeMobile"                  value="${setting.pieceSizeMobile.toInteger}" />

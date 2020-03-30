@@ -62,10 +62,10 @@
     description="Controls how the heading is displayed. Default is 'full'." %>
 
 <%@ attribute name="showImageCopyright" type="java.lang.Boolean" required="false"
-    description="Controls if the image copyright is displayed as image overlay. Default is 'true'." %>
+    description="Controls if the image copyright is displayed as image overlay. Default is 'false'." %>
 
 <%@ attribute name="showImageSubtitle" type="java.lang.Boolean" required="false"
-    description="Controls if the image subtitle is displayed below the image. Default is 'true'." %>
+    description="Controls if the image subtitle is displayed below the image. Default is 'false'." %>
 
 <%@ attribute name="showImageZoom" type="java.lang.Boolean" required="false"
     description="Controls if a zoom option for the image is displayed. Default is 'true'." %>

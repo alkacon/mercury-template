@@ -65,6 +65,9 @@
       <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
     </Setting>
     <Setting>

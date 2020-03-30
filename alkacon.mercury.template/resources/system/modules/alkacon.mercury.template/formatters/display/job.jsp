@@ -45,7 +45,11 @@
     <jsp:attribute name="markupVisual">
         <c:if test="${setShowVisual}">
             <c:set var="image" value="${paragraphIntro.value.Image.isSet ? paragraphIntro.value.Image : (paragraphText.value.Image.isSet ? paragraphText.value.Image : null)}" />
-            <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}" />
+            <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}">
+                <c:if test="${setShowCopyright and not empty imageCopyright}">
+                    <div class="copyright"><div>${imageCopyright}</div></div><%----%>
+                </c:if>
+            </mercury:image-animated>
         </c:if>
     </jsp:attribute>
 

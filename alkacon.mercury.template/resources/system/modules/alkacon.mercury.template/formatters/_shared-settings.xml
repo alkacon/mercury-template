@@ -660,6 +660,15 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[showImageCopyright]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageCopyright)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageCopyright.listTeaser.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
       <PropertyName><![CDATA[showImageSubtitle]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showImageSubtitle)]]></DisplayName>

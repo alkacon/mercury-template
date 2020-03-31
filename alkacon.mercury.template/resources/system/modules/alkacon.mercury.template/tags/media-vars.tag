@@ -12,8 +12,12 @@
     description="Can be used to scale the media in a specific ratio,
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
+
 <%@ variable name-given="image" declare="true"
     description="The optional image of the media file, as set in the content." %>
+
+<%@ variable name-given="copyright" declare="true"
+    description="The optional copyright of the media file, as set in the content." %>
 
 <%@ variable name-given="width" declare="true"
     description="The width of the media file, taken from the ratio." %>
@@ -67,6 +71,10 @@
 
 <c:if test="${content.value.Image.isSet}">
     <c:set var="image" value="${content.value.Image}" />
+</c:if>
+
+<c:if test="${content.value.Copyright.isSet}">
+    <c:set var="copyright" value="${content.value.Copyright}" />
 </c:if>
 
 <c:choose>

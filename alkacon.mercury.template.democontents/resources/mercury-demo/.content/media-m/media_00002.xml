@@ -15,6 +15,7 @@
       <links/>
       <content><![CDATA[<p>The fully <strong>browser based user interface</strong> features configurable editors for structured content with well defined fields. Alternatively, content can be created using an integrated <strong>WYSIWYG editor</strong> similar to well known office applications.</p>]]></content>
     </Text>
+    <Copyright><![CDATA[Alkacon Software]]></Copyright>
     <Length><![CDATA[3:38]]></Length>
     <Category>
       <!--Categories are read dynamically-->

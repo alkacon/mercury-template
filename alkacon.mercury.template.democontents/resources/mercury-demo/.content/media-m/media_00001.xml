@@ -15,6 +15,7 @@
       <links/>
       <content><![CDATA[<p>As an option, a structured form based editor is also available to edit the same content. New content elements can be added to a page with drag &amp; drop.</p>]]></content>
     </Text>
+    <Copyright><![CDATA[Alkacon Software]]></Copyright>
     <Length><![CDATA[4:54 min]]></Length>
     <Category>
       <!--Categories are read dynamically-->

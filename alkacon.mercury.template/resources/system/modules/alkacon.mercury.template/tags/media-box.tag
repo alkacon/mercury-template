@@ -24,6 +24,9 @@
 <%@ attribute name="showTitleOverlay" type="java.lang.Boolean" required="false"
     description="Controls if the title is displayed as overlay on the media. Default is 'false'." %>
 
+<%@ attribute name="showCopyright" type="java.lang.Boolean" required="false"
+    description="Controls if the copyright is displayed. Default is 'false'." %>
+
 <%@ attribute name="hsize" type="java.lang.Integer" required="false"
     description="The heading level of the title overlay. Default is '2'" %>
 
@@ -104,6 +107,9 @@
                         </c:choose>
                         ${markupVisualOverlay}
                     </div><%----%>
+                    <c:if test="${showCopyright and not empty copyright}">
+                        <div class="copyright"><div>${copyright}</div></div><%----%>
+                    </c:if>
                 </c:otherwise>
             </c:choose>
         </div><%----%>

@@ -669,6 +669,14 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showMediaCopyright.default]]></IncludeName>
+      <PropertyName><![CDATA[showMediaCopyright]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showMediaCopyright)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showMediaCopyright.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
       <PropertyName><![CDATA[showImageSubtitle]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showImageSubtitle)]]></DisplayName>

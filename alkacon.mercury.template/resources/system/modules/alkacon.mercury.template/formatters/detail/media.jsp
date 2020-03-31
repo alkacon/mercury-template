@@ -25,6 +25,7 @@
 <c:set var="titleOption"            value="${setting.titleOption.toString}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
+<c:set var="showMediaCopyright"     value="${setting.showMediaCopyright.toBoolean}" />
 <c:set var="autoPlay"               value="${setting.autoPlay.toBoolean}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
@@ -91,6 +92,7 @@
                     showTitleOverlay="${showOverlay}"
                     showPreface="${showPreface}"
                     showPrefaceAsSubtitle="${showPrefaceAsSubtitle}"
+                    showCopyright="${showMediaCopyright}"
                     autoPlay="${autoPlay}"
                 />
             </jsp:attribute>

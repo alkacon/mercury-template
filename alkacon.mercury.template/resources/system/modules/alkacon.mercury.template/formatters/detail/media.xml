@@ -56,6 +56,9 @@
       <IncludeName><![CDATA[showText.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showMediaCopyright.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[autoPlay.false]]></IncludeName>
     </Setting>
     <MetaMapping>

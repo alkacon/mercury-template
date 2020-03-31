@@ -41,7 +41,7 @@
 
     <jsp:attribute name="markupVisual">
         <c:if test="${setShowVisual}">
-            <mercury:media-box content="${content}" ratio="${setRatio}" showMediaTime="${true}" />
+            <mercury:media-box content="${content}" ratio="${setRatio}" showMediaTime="${true}" showCopyright="${setShowCopyright}" />
         </c:if>
     </jsp:attribute>
 

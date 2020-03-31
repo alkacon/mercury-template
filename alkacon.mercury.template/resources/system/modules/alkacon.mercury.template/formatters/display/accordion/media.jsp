@@ -18,9 +18,11 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"        value="${cms.element.setting}" />
-<c:set var="hsize"          value="${setting.hsize.isSet ? setting.hsize.toInteger : 3}" />
-<c:set var="imageRatio"     value="${setting.imageRatio.isSet ? setting.imageRatio.toString : null}"/>
+<c:set var="setting"            value="${cms.element.setting}" />
+<c:set var="hsize"              value="${setting.hsize.isSet ? setting.hsize.toInteger : 3}" />
+<c:set var="imageRatio"         value="${setting.imageRatio.isSet ? setting.imageRatio.toString : null}"/>
+<c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
+<c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 
 <mercury:teaser-accordion title="${value.Title}" cssWrapper="type-media">
 
@@ -31,12 +33,16 @@
         heading="${value.Preface}"
         text="${value.Text}"
         imageRatio="${imageRatio}"
-        showImageZoom="${cms.element.settings.showImageZoom}"
+        showImageZoom="${showImageZoom}"
         hsize="${hsize + 1}"
         ade="${false}">
 
         <jsp:attribute name="markupVisual">
-            <mercury:media-box content="${content}" ratio="${empty imageRatio ? '4-3' : imageRatio}" showMediaTime="${true}" />
+            <mercury:media-box
+                content="${content}"
+                ratio="${empty imageRatio ? '4-3' : imageRatio}"
+                showCopyright="${showImageCopyright}"
+                showMediaTime="${true}" />
         </jsp:attribute>
 
     </mercury:section-piece>

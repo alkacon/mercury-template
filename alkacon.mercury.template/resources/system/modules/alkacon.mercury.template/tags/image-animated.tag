@@ -19,7 +19,9 @@
     description="Text used in the image 'alt' and 'title' attributes."%>
 
 <%@ attribute name="setTitle" type="java.lang.Boolean" required="false"
-    description="If 'true' then a title attribute from the image attributes is added to the generated image tag.
+    description="If 'true' a 'title' attribute is added to the generated image tag.
+    If 'false' the image will have only an 'alt' but no 'title' attribute.
+    The added 'title' attribute will use the image title and also append the copyright info.
     Default is 'true' if not provided." %>
 
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"

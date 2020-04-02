@@ -102,13 +102,13 @@
         .search-results {
             &.has-facets {
                 width: get-col-float-size(8);
-                float: right;
+                float: left;
             }
         }
 
         .search-facets {
             width: get-col-float-size(4);
-            float: left;
+            float: right;
         }
 
         .search-results-head {

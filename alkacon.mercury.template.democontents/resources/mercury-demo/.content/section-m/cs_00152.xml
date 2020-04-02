@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Contact Information elements in a List]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The <em>Contact Information </em>can also be displayed in a list, also in combination with other elements.</p>
+<p>If displayed in a list, there is no link to a detail page from a Contact Information, since all the information is already shown in the list element.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

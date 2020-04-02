@@ -65,11 +65,14 @@
 <%@ attribute name="showEmail" type="java.lang.Boolean" required="false"
     description="Show the contact email address." %>
 
-<%@ attribute name="showVcard" type="java.lang.Boolean" required="false"
-    description="Show link to a Vcard download for the contact." %>
+<%@ attribute name="showImageCopyright" type="java.lang.Boolean" required="false"
+    description="Controls if the image copyright is displayed as image overlay. Default is 'false'." %>
 
 <%@ attribute name="showImageZoom" type="java.lang.Boolean" required="false"
     description="Enables the zoom option for the image." %>
+
+<%@ attribute name="showVcard" type="java.lang.Boolean" required="false"
+    description="Show link to a Vcard download for the contact." %>
 
 <%@ attribute name="labelOption" type="java.lang.String" required="false"
     description="The option for the label display." %>
@@ -112,7 +115,7 @@
     <c:set var="showMinLabels" value="${true}" />
 </c:if>
 
-<c:if test="${link.isSet}">
+<c:if test="${not empty link}">
     <c:choose>
         <c:when test="${linkOption eq 'button'}">
             <c:set var="showLinkAsButton" value="${true}" />
@@ -124,23 +127,28 @@
 </c:if>
 
 <%-- #### Contact exposed as 'Person' or 'Organization', see http://schema.org/ #### --%>
-<c:if test="${showImage and name.isSet}">
-    <c:set var="persontxtname">
-        <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
-        ${name.value.FirstName}${' '}
-        <c:if test="${name.value.MiddleName.isSet}">${name.value.MiddleName}${' '}</c:if>
-        ${name.value.LastName}
-        <c:if test="${name.value.Suffix.isSet}">${' '}${name.value.Suffix}</c:if>
-    </c:set>
-    <c:choose>
-        <c:when test="${kind eq 'person'}">
-            <c:set var="imgtitle" value="${persontxtname}" />
-        </c:when>
-        <c:when test="${kind eq 'org'}">
-            <c:set var="imgtitle" value="${persontxtname} (${organization})" />
-        </c:when>
-    </c:choose>
-</c:if>
+<c:choose>
+    <c:when test="${showImage and not empty name}">
+        <c:set var="persontxtname">
+            <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
+            ${name.value.FirstName}${' '}
+            <c:if test="${name.value.MiddleName.isSet}">${name.value.MiddleName}${' '}</c:if>
+            ${name.value.LastName}
+            <c:if test="${name.value.Suffix.isSet}">${' '}${name.value.Suffix}</c:if>
+        </c:set>
+        <c:choose>
+            <c:when test="${kind eq 'person'}">
+                <c:set var="imgtitle" value="${persontxtname}" />
+            </c:when>
+            <c:when test="${kind eq 'org'}">
+                <c:set var="imgtitle" value="${persontxtname} (${organization})" />
+            </c:when>
+        </c:choose>
+    </c:when>
+    <c:when test="${showImage and not empty organization and (kind eq 'org')}">
+        <c:set var="imgtitle" value="${organization}" />
+    </c:when>
+</c:choose>
 
 <mercury:image-animated
     image="${image}"
@@ -151,6 +159,10 @@
     attrImage='itemprop="image"'
     showImageZoom="${showImageZoom}"
     >
+
+    <c:if test="${showImageCopyright and not empty imageCopyrightHtml}">
+        <div class="copyright"><div>${imageCopyrightHtml}</div></div><%----%>
+    </c:if>
 
     <c:if test="${showName or showOrganization or showDescription or showAddress or showPhone or showEmail or showLinkAsButton}">
         <div class="text-box"><%----%>

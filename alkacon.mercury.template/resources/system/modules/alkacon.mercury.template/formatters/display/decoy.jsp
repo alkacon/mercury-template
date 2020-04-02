@@ -42,8 +42,8 @@
         <c:if test="${setShowVisual}">
             <c:set var="image"   value="${value.Image}" />
             <mercury:image-animated image="${image}" ratio="${setRatio}" test="${not empty image}" setTitle="${false}">
-                <c:if test="${setShowCopyright and not empty imageCopyright}">
-                    <div class="copyright"><div>${imageCopyright}</div></div><%----%>
+                <c:if test="${setShowCopyright and not empty imageCopyrightHtml}">
+                    <div class="copyright"><div>${imageCopyrightHtml}</div></div><%----%>
                 </c:if>
             </mercury:image-animated>
         </c:if>

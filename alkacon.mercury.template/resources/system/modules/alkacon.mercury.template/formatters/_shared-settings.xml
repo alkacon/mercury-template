@@ -674,7 +674,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.showMediaCopyright)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.showMediaCopyright.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[false]]></Default>
+      <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
@@ -1928,6 +1928,18 @@
       <WidgetConfig><![CDATA[
         button:         %(key.msg.setting.linkOption.button)|
         text:           %(key.msg.setting.linkOption.text)|
+        none:           %(key.msg.setting.linkOption.none)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.contact.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.linkOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[button]]></Default>
+      <WidgetConfig><![CDATA[
+        button:         %(key.msg.setting.linkOption.button)|
         none:           %(key.msg.setting.linkOption.none)
       ]]></WidgetConfig>
     </Setting>

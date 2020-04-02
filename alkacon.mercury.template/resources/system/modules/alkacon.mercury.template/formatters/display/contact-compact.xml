@@ -2,25 +2,25 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-contact.formatter.element)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-contact.formatter.teaser.compact)]]></NiceName>
     <Type><![CDATA[m-contact]]></Type>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/contact.jsp]]></target>
-        <uuid>bea1f1dd-7411-4ac6-a40b-e581d88bed99</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact.jsp]]></target>
+        <uuid>3f90a2c4-74b4-11ea-8d2f-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Rank><![CDATA[30000]]></Rank>
+    <Rank><![CDATA[19000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[element]]></ContainerType>
         <ContainerType><![CDATA[contact]]></ContainerType>
+        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
+    <Display><![CDATA[teaser-compact]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
-    <Detail>true</Detail>
     <IncludeSettings>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
@@ -31,25 +31,16 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceLayout.onlyInlineHeadings]]></IncludeName>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.contact.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[hsize.3]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[imageRatio.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[effect.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[linkOption.contact]]></IncludeName>
+      <IncludeName><![CDATA[effect.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[labels.contact]]></IncludeName>
@@ -79,13 +70,19 @@
       <IncludeName><![CDATA[showEmail.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[showVcard.contact]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.default]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

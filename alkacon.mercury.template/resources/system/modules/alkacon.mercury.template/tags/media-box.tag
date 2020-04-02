@@ -108,7 +108,7 @@
                         ${markupVisualOverlay}
                     </div><%----%>
                     <c:if test="${showCopyright and not empty copyright}">
-                        <div class="copyright"><div>${copyright}</div></div><%----%>
+                        <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
                     </c:if>
                 </c:otherwise>
             </c:choose>

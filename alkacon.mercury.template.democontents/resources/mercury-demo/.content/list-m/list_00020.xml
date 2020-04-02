@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
+  <ListConfig language="en">
+    <Title><![CDATA[List of contacts]]></Title>
+    <TypesToCollect>m-contact:3f96bd48-74b4-11ea-8d2f-0242ac11002b</TypesToCollect>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/]]></target>
+        <uuid>c5b02c58-59f8-11ea-82d5-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <Category/>
+    <CategoryMode><![CDATA[OR]]></CategoryMode>
+    <SortOrder><![CDATA[ORDER_ASC]]></SortOrder>
+    <ShowExpired>true</ShowExpired>
+  </ListConfig>
+</ListConfigs>

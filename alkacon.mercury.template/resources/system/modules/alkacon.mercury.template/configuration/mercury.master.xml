@@ -426,6 +426,30 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-elaborate.xml]]></target>
+          <uuid>3f96bd48-74b4-11ea-8d2f-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-compact.xml]]></target>
+          <uuid>c7f7eef8-74d2-11ea-8d2f-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-text-tile.xml]]></target>
+          <uuid>b3627694-74d2-11ea-8d2f-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-masonry.xml]]></target>
+          <uuid>98222b01-74da-11ea-8d2f-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/flexible.xml]]></target>
           <uuid>706880b3-ee3c-48e6-aee9-12e3f4c4198d</uuid>
         </link>

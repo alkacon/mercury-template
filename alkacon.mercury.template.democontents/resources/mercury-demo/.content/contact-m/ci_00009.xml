@@ -24,10 +24,23 @@
       </URI>
       <NewWindow>true</NewWindow>
     </Link>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[999]]></Order>
   </Contact>
   <Contact language="en">
     <Kind><![CDATA[org]]></Kind>
     <Organization><![CDATA[Alkacon Software]]></Organization>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/.galleries/misc/alkacon-logo.svg]]></target>
+          <uuid>f3660c3a-3a95-11e9-bd84-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Alkacon Logo]]></Title>
+    </Image>
     <Contact>
       <AddressChoice>
         <PoiLink>
@@ -48,5 +61,9 @@
       </URI>
       <NewWindow>true</NewWindow>
     </Link>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[999]]></Order>
   </Contact>
 </ContactData>

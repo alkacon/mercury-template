@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.134</version>
+		<version>11.0.1.140</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1013,6 +1013,111 @@
 				<property>
 					<name>list.type</name>
 					<value><![CDATA[a-blog]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/contact-compact.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/contact-compact.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>c7f7eef8-74d2-11ea-8d2f-0242ac11002b</uuidstructure>
+			<uuidresource>c7f7eef9-74d2-11ea-8d2f-0242ac11002b</uuidresource>
+			<datecreated>Thu, 02 Apr 2020 11:12:03 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Compact contact information teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/contact-elaborate.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/contact-elaborate.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>3f96bd48-74b4-11ea-8d2f-0242ac11002b</uuidstructure>
+			<uuidresource>3f96bd49-74b4-11ea-8d2f-0242ac11002b</uuidresource>
+			<datecreated>Thu, 02 Apr 2020 07:33:29 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Elaborate contact information teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/contact-masonry.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/contact-masonry.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>98222b01-74da-11ea-8d2f-0242ac11002b</uuidstructure>
+			<uuidresource>98222b02-74da-11ea-8d2f-0242ac11002b</uuidresource>
+			<datecreated>Thu, 02 Apr 2020 12:07:59 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Masonry contact information teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/contact-text-tile.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/contact-text-tile.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>b3627694-74d2-11ea-8d2f-0242ac11002b</uuidstructure>
+			<uuidresource>b3627695-74d2-11ea-8d2f-0242ac11002b</uuidresource>
+			<datecreated>Thu, 02 Apr 2020 11:11:28 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Text tile contact information teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/contact.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/contact.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>3f90a2c4-74b4-11ea-8d2f-0242ac11002b</uuidstructure>
+			<uuidresource>3f90a2c5-74b4-11ea-8d2f-0242ac11002b</uuidresource>
+			<datecreated>Thu, 02 Apr 2020 07:33:29 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

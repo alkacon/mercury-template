@@ -31,6 +31,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
+<c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="imageRatio"             value="${setting.imageRatio.toString}" />
 <c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
 <c:set var="effect"                 value="${showImage and setting.effect.isSetNotNone ? setting.effect.toString : null}" />
@@ -68,6 +69,7 @@
                 hsize="${hsize}"
                 showImage="${true}"
                 showImageZoom="${showImageZoom}"
+                showImageCopyright="${showImageCopyright}"
             />
         </c:if>
     </jsp:attribute>

@@ -10,6 +10,7 @@
     <TypesToCollect>m-imageseries:5a743e74-8c73-427c-8a68-cd45038d2650</TypesToCollect>
     <TypesToCollect>m-job:be42f6c2-e49d-4a83-a1d5-6d0f0ef211ef</TypesToCollect>
     <TypesToCollect>m-media:14fc1a56-1094-4b6e-a65f-0007024397f0</TypesToCollect>
+    <TypesToCollect>m-contact:c7f7eef8-74d2-11ea-8d2f-0242ac11002b</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/]]></target>
@@ -20,9 +21,7 @@
     <CategoryMode><![CDATA[OR]]></CategoryMode>
     <SortOrder><![CDATA[DATE_DESC]]></SortOrder>
     <DateRestriction>
-      <Range>
-        <To>1577790000000</To>
-      </Range>
+      <Range/>
     </DateRestriction>
   </ListConfig>
 </ListConfigs>

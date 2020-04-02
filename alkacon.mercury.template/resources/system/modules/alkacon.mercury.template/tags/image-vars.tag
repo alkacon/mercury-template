@@ -17,7 +17,8 @@
     description="If true, the image copyright text is escaped (for usage in HTML attributes)." %>
 
 <%@ attribute name="title" type="java.lang.String" required="false"
-    description="Default title used in case title of image is not set."%>
+    description="Title to use for the image.
+    If not set the title will be read from the XML content, if this fails the resource title attribute will be used."%>
 
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Enables advanced direct edit for the generated content.
@@ -152,11 +153,11 @@
         Set the image title from the dedicated field, if not set try the property.
     --%>
     <c:choose>
-        <c:when test="${isXmlContent and image.value.Title.isSet}">
-            <c:set var="imageTitle">${image.value.Title}</c:set>
-        </c:when>
         <c:when test="${not empty title}">
             <c:set var="imageTitle">${title}</c:set>
+        </c:when>
+        <c:when test="${isXmlContent and image.value.Title.isSet}">
+            <c:set var="imageTitle">${image.value.Title}</c:set>
         </c:when>
         <c:otherwise>
             <c:set var="imageTitle"><cms:property name="Title" file="${imageUnscaledLink}" locale="${cms.locale}" default="" /></c:set>
@@ -187,9 +188,14 @@
         </c:choose>
 
         <c:set var="imageCopyrightHtml">${fn:replace(imageCopyright, '(c)', '&copy;')}</c:set>
-        <c:if test="${imageTitle ne imageCopyrightBase}">
-            <c:set var="imageTitleCopyright">${imageTitle}${' '}${imageCopyright}</c:set>
-        </c:if>
+        <c:choose>
+            <c:when test="${imageTitle ne imageCopyrightBase}">
+                <c:set var="imageTitleCopyright">${imageTitle}${' '}${imageCopyright}</c:set>
+            </c:when>
+            <c:otherwise>
+                <c:set var="imageTitleCopyright">${imageCopyright}</c:set>
+            </c:otherwise>
+        </c:choose>
     </c:if>
 
     <c:if test="${createJsonLd}">

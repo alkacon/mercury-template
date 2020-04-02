@@ -41,5 +41,9 @@
         </link>
       </URI>
     </Link>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[222]]></Order>
   </Contact>
 </ContactData>

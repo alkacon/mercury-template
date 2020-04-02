@@ -32,5 +32,9 @@
         <ObfuscateEmail>true</ObfuscateEmail>
       </Email>
     </Contact>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[777]]></Order>
   </Contact>
 </ContactData>

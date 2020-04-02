@@ -5,6 +5,7 @@
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/contact-name.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/contact-item.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
 
     <xsd:element name="ContactData" type="OpenCmsContactData" />
 
@@ -25,6 +26,9 @@
             <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="Link" type="OpenCmsNestedLink" minOccurs="0" />
+            <xsd:element name="Category" type="OpenCmsDynamicCategory" />
+            <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="DetailPageUrl" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
@@ -40,8 +44,13 @@
                 <tab element="Kind" collapse="false" name="%(key.tab.Contact)" />
                 <tab element="Contact" collapse="true" name="%(key.tab.AddressPhone)" />
                 <tab element="Title" collapse="false" name="%(key.tab.FurtherInfo)" />
+                <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
-            <searchsettings containerPageOnly="true">
+            <mappings>
+                <mapping element="Availability/Release" mapto="attribute:datereleased" />
+                <mapping element="Availability/Expiration" mapto="attribute:dateexpired" />
+            </mappings>
+            <searchsettings containerPageOnly="false">
                 <searchsetting element="GalleryTitle" searchcontent="false">
                     <solrfield targetfield="disptitle" sourcefield="*_sort" />
                 </searchsetting>
@@ -88,6 +97,7 @@
                     <PropertyName>Name</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Contact.Name)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Name.help)]]></Description>
+                    <Widget>string</Widget>
                 </Setting>
                 <Setting>
                     <PropertyName>Organization</PropertyName>
@@ -131,13 +141,41 @@
                     <Description><![CDATA[%(key.label.Link.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>Category</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Category)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Category.help)]]></Description>
+                    <Widget>category</Widget>
+                    <WidgetConfig>onlyleafs=false</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Availability</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Order</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^[-+]?\d+$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Order)]]></Error>
+                    <Search>listorder</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
                     <PropertyName>GalleryTitle</PropertyName>
                     <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
                     <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(stringtemplate:galleryTitle)]]></Default>
                     <DefaultResolveMacros>false</DefaultResolveMacros>
-                    <Search>false</Search>
+                    <!--
+                    <Search>listtitle</Search>
+                    Mapping to listtitle will not work for default values and not expanded macros.
+                    However, the mapping to the title property will be used for the list title.
+                    -->
                     <Visibility>ROLE.WORKPLACE_USER</Visibility>
                     <Mapping>
                         <MapTo>property:Title</MapTo>

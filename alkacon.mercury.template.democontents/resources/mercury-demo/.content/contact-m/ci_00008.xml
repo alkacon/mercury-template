@@ -43,10 +43,14 @@
       <Text><![CDATA[Get in contact]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-demo/the-team/]]></target>
-          <uuid>f4d52c8a-3a95-11e9-bd84-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-demo/advanced-elements/form/]]></target>
+          <uuid>f4a59106-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </URI>
     </Link>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[888]]></Order>
   </Contact>
 </ContactData>

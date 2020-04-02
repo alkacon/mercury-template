@@ -8,6 +8,9 @@
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' selectors to add to the generated teaser tag." %>
 
+<%@ attribute name="attrWrapper" type="java.lang.String" required="false"
+    description="Attributes to add to the generated div surrounding section." %>
+
 <%@ attribute name="pieceLayout" type="java.lang.Integer" required="false"
     description="The layout option to generate. Valid values are 0 to 9. Default is 6.
     // 0. Heading, Image, Text, Link (full width)
@@ -183,6 +186,7 @@
 
 <mercury:piece
     cssWrapper="teaser${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
+    attrWrapper="${attrWrapper}"
     pieceLayout="${pieceLayout}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"

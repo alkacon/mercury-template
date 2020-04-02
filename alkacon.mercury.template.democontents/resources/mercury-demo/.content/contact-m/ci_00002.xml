@@ -43,7 +43,7 @@
     </Contact>
     <Description name="Description0">
       <links/>
-      <content><![CDATA[<p class="p1">Jake is a&nbsp;business leader who creates a vision, articulates the vision, and relentlessly drives it to completion.</p>]]></content>
+      <content><![CDATA[<p class="p1">Jake is a business leader who creates a vision, articulates the vision, and relentlessly drives it to completion.</p>]]></content>
     </Description>
     <Link>
       <Text><![CDATA[Team overview]]></Text>
@@ -54,5 +54,9 @@
         </link>
       </URI>
     </Link>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[111]]></Order>
   </Contact>
 </ContactData>

@@ -4,7 +4,7 @@
   <Contact language="en">
     <Kind><![CDATA[person]]></Kind>
     <Name>
-      <FirstName><![CDATA[Mitchell ]]></FirstName>
+      <FirstName><![CDATA[Mitchell]]></FirstName>
       <LastName><![CDATA[Pritchett]]></LastName>
       <Suffix><![CDATA[M.A.]]></Suffix>
     </Name>
@@ -41,10 +41,14 @@
       <Text/>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-demo/the-team/]]></target>
-          <uuid>f4d52c8a-3a95-11e9-bd84-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-demo/blog/]]></target>
+          <uuid>f472c0f8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </URI>
     </Link>
+    <Category>
+      <!--Categories are read dynamically-->
+    </Category>
+    <Order><![CDATA[666]]></Order>
   </Contact>
 </ContactData>

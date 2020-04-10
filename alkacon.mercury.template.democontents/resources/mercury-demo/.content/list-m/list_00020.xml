@@ -6,8 +6,8 @@
     <TypesToCollect>m-contact:3f96bd48-74b4-11ea-8d2f-0242ac11002b</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
-        <target><![CDATA[/sites/default/]]></target>
-        <uuid>c5b02c58-59f8-11ea-82d5-0242ac11002b</uuid>
+        <target><![CDATA[/sites/default/mercury-demo/]]></target>
+        <uuid>acb43685-5224-11e5-9495-0242ac11002b</uuid>
       </link>
     </SearchFolder>
     <Category/>

@@ -443,7 +443,7 @@ var Mercury = function(jQ) {
         // set video widths using the fidVids plugin
         fitVids({
             players: [ 'iframe[src*="slideshare.net"]', 'iframe[src*="medien-tube.de"]', 'iframe[src*="domradio.de"]' ],
-            ignore: ['iframe[src*="youtube-nocookie.com"]'] // used by media element
+            ignore: ['.type-media .content iframe'] // ignore all media elements
         });
     }
 

@@ -154,15 +154,12 @@
     image="${image}"
     test="${showImage}"
     title="${imgtitle}"
+    showCopyright="${showImageCopyright}"
     ratio="${imageRatio}"
     cssImage="photo"
     attrImage='itemprop="image"'
     showImageZoom="${showImageZoom}"
     >
-
-    <c:if test="${showImageCopyright and not empty imageCopyrightHtml}">
-        <div class="copyright"><div>${imageCopyrightHtml}</div></div><%----%>
-    </c:if>
 
     <c:if test="${showName or showOrganization or showDescription or showAddress or showPhone or showEmail or showLinkAsButton}">
         <div class="text-box"><%----%>

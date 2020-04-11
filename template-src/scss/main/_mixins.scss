@@ -91,11 +91,11 @@
 
 // Image overlay for copyright notices
 @mixin image-copyright {
-    @include image-overlay-right;
     padding: 2px 4px;
     font-family: $font-family-base;
     font-size: 8px;
     line-height: 1;
+    @include image-overlay-right;
 }
 
 // Icon overlays for images, e.g. used for the "zoom image" icon

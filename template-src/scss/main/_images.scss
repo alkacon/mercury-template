@@ -80,5 +80,9 @@ aside img {
             left: 0;
             height: 100%;
         }
+
+        > .image-copyright {
+            @include image-copyright;
+        }
     }
 }

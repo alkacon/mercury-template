@@ -60,15 +60,11 @@
         image="${image}"
         cssWrapper="${effect} overlay"
         ade="${ade}"
+        showCopyright="${showImageCopyright}"
         showImageZoom="${showImageZoom}"
         noScript="${noScript}"
         ratio="${imageRatio}" >
 
-        <c:if test="${showImageCopyright and not empty imageCopyrightHtml}">
-            <div class="copyright"><%----%>
-                <div class="text">${imageCopyrightHtml}</div><%----%>
-            </div><%----%>
-        </c:if>
         <div class="visual-darken"></div><%----%>
         <div class="visual-overlay"><%----%>
             <jsp:invoke fragment="markupHeading"/>
@@ -92,15 +88,10 @@
                 image="${image}"
                 cssWrapper="${effect}"
                 ade="${ade}"
+                showCopyright="${showImageCopyright}"
                 showImageZoom="${showImageZoom}"
                 noScript="${noScript}"
                 ratio="${imageRatio}" >
-
-                <c:if test="${showImageCopyright and not empty imageCopyrightHtml}">
-                    <div class="copyright"><%----%>
-                        <div class="text">${imageCopyrightHtml}</div><%----%>
-                    </div><%----%>
-                </c:if>
 
                 <c:if test="${showImageSubtitle and not empty imageTitle}">
                     <c:set var="visualSubtitle" value="${imageTitle}" />

@@ -21,8 +21,13 @@
 <%@ attribute name="setTitle" type="java.lang.Boolean" required="false"
     description="If 'true' a 'title' attribute is added to the generated image tag.
     If 'false' the image will have only an 'alt' but no 'title' attribute.
-    The added 'title' attribute will use the image title and also append the copyright info.
+    No 'title' attribute be required in case the image is inside a tag that already has a 'title' attribute set, e.g. as in list teasers.
     Default is 'true' if not provided." %>
+
+<%@ attribute name="showCopyright" type="java.lang.Boolean" required="false"
+    description="If 'true' the copyright information of the image will be displayed as an image overlay.
+    If 'false' no coypright overlay will be displayed, but the copyright information will be appended to the 'title' attribute.
+    Default is 'false' if not provided." %>
 
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Enables advanced direct edit for the generated content.
@@ -105,7 +110,8 @@
             imagebean="${imageBean}"
             sizes="${sizes}"
             alt="${imageTitle}"
-            title="${setTitle ? imageTitleCopyright : null}"
+            title="${setTitle ? (showCopyright ? imageTitle : imageTitleCopyright) : null}"
+            copyright="${showCopyright ? imageCopyrightHtml : null}"
             cssImage="${addEffectBox ? 'animated ':''}${cssImage}"
             cssWrapper="${showImageZoom ? 'zoomer' : ''}"
             attrImage="${attrImage}"

@@ -23,6 +23,10 @@
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="'title' atttribute to set on the generated img tag."%>
 
+<%@ attribute name="copyright" type="java.lang.String" required="false"
+    description="Copyright infotmation to display as an image overlay.
+    If this is emtpy, no copyright overlay will be displayed." %>
+
 <%@ attribute name="srcSet" type="java.lang.Boolean" required="false"
     description="Generate image source set data or not?"%>
 
@@ -319,6 +323,7 @@ SVG placeholder image, background image and image sizing
     noScript="${useNoScript}"
     alt="${alt}"
     title="${title}"
+    copyright="${copyright}"
     cssImage="${cssImage}"
     cssWrapper="${cssWrapper}"
     attrImage="${attrImage}"

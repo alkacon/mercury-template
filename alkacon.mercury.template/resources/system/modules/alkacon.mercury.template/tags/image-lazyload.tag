@@ -38,6 +38,10 @@
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="'title' atttribute to set on the generated img tag." %>
 
+<%@ attribute name="copyright" type="java.lang.String" required="false"
+    description="Copyright infotmation to display as an image overlay.
+    If this is emtpy, no copyright overlay will be displayed." %>
+
 <%@ attribute name="cssImage" type="java.lang.String" required="false"
     description="'class' atttribute to set directly on the generated img tag."%>
 
@@ -128,6 +132,12 @@
                 <c:if test="${true}">${' '}alt="${alt}"</c:if><%--
         --%>><%----%>
         </noscript><%----%>
+    </c:if>
+
+    <c:if test="${not empty copyright}">
+        <div class="image-copyright"><%----%>
+            ${copyright}
+        </div><%----%>
     </c:if>
 
 </mercury:padding-box>

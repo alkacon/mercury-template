@@ -139,11 +139,9 @@
                             image="${image}"
                             ratio="${imageRatio}"
                             setTitle="${not showImageLink}"
+                            showCopyright="${showImageCopyright}"
                             showImageZoom="${showImageZoom}"
                             ade="${ade}">
-                            <c:if test="${showImageCopyright and not empty imageCopyrightHtml}">
-                                <div class="copyright"><div>${imageCopyrightHtml}</div></div><%----%>
-                            </c:if>
                             <c:set var="imageSubtext">
                                 <c:if test="${showImageSubtitle and not empty imageTitle}">
                                     <div class="subtitle">${imageTitle}</div><%----%>

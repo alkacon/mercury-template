@@ -306,11 +306,9 @@
       <WidgetConfig><![CDATA[
             none:                           %(key.msg.setting.effect.none)|
             effect-shadow:                  %(key.msg.setting.effect.shadow)|
-            effect-inset:                   %(key.msg.setting.effect.inset)|
             effect-raise:                   %(key.msg.setting.effect.raise)|
             effect-rotate:                  %(key.msg.setting.effect.rotate)|
             effect-shadow effect-rotate:    %(key.msg.setting.effect.shadow-rotate)|
-            effect-inset effect-rotate:     %(key.msg.setting.effect.inset-rotate)|
             effect-raise effect-rotate:     %(key.msg.setting.effect.raise-rotate)
         ]]></WidgetConfig>
     </Setting>
@@ -1193,6 +1191,8 @@
     <Setting>
       <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
       <PropertyName><![CDATA[fullOverlay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.fullOverlay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.fullOverlay.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>
@@ -1221,6 +1221,21 @@
             text:           %(key.msg.setting.linkOption.text)|
             heading:        %(key.msg.setting.linkOption.heading)|
             none:           %(key.msg.setting.linkOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.tile]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.linkOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:           %(key.msg.setting.linkOption.tile)|
+            button:         %(key.msg.setting.linkOption.button)|
+            button-full:    %(key.msg.setting.linkOption.button-full)|
+            text:           %(key.msg.setting.linkOption.text)|
+            heading:        %(key.msg.setting.linkOption.heading)|
         ]]></WidgetConfig>
     </Setting>
     <Setting>

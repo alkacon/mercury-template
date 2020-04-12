@@ -136,6 +136,7 @@
 
             &.effect-piece {
                 &:hover {
+                    transform: scale(0.93);
                     box-shadow: 0 0 2px 0 $dropshadow inset;
                 }
             }

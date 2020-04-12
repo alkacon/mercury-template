@@ -49,13 +49,9 @@
         <mercury:image-srcset
             imagebean="${imageBean}"
             cssWrapper="img-responsive"
+            copyright="${showImageCopyright ? imageCopyrightHtml : null}"
             alt="${title}"
         />
-        <c:if test="${showImageCopyright and not empty imageCopyrightHtml}">
-            <div class="copyright">
-                <div class="text">${imageCopyrightHtml}</div>
-            </div>
-        </c:if>
     </div>
 </c:set>
 

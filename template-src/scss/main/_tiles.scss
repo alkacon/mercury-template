@@ -533,6 +533,12 @@ $sq-margin: 20px;
             font-size: $square-overlay-h3-size;
         }
     }
+    .image-copyright {
+        @include image-copyright;
+        color: $square-overlay-text-color;
+        text-shadow: $square-overlay-text-shadow;
+        background-color: transparent;
+    }
     a:hover {
         text-decoration: none;
     }

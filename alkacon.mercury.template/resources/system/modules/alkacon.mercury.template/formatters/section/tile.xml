@@ -38,13 +38,16 @@
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[textOption.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.tile]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

@@ -24,7 +24,7 @@
 <c:set var="fullOverlay"            value="${setting.fullOverlay.toBoolean}" />
 <c:set var="textOption"             value="${setting.textOption.toString}" />
 <c:set var="linkOption"             value="${fullOverlay ? setting.linkOption.toString : 'none'}" />
-<c:set var="tileCss"                value="${empty param.tilegrid ? 'tile-col col-sm-6 col-md-4 col-lg-3' : param.tilegrid}" />
+<c:set var="tileCss"                value="${empty param.tilegrid ? 'tile-col col-sm-6 col-lg-3' : param.tilegrid}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 
 <c:if test="${value.Image.isSet}">
@@ -72,7 +72,7 @@
             </div><%----%>
 
             <c:if test="${showImageCopyright and not empty imageCopyright}">
-                <div class="image-copyright">${imageCopyright}</div><%----%>
+                <div class="copyright">${imageCopyright}</div><%----%>
             </c:if>
 
         </mercury:link>

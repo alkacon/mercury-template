@@ -10,8 +10,9 @@
     This can be either a String or a CmsJspContentAccessValueWrapper" %>
 
 <%@ attribute name="level" type="java.lang.Integer" required="true"
-    description="The HTML level of the heading, must be from 1 to 6 to generate h1 to h6, obviously.
-    If no valid level is provided, for example 0, the headline is not shown at all." %>
+    description="The HTML level of the heading, must be from 1 to 6 to generate h1 to h6.
+    If the special value 7 is used, the text will be outputted as 'div' not as HTML heading.
+    If no valid level is provided, for example 0, the headline will not be outputted at all." %>
 
 <%@ attribute name="suffix" type="java.lang.String" required="false"
     description="Optional suffix for the heading. HTML in this will NOT be escaped." %>

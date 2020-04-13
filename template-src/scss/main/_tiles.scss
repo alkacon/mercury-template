@@ -492,7 +492,7 @@ $sq-margin: 20px;
         width: 100%;
         top: 0;
         left: 0;
-        z-index: $overflow-z-index;
+        z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
         overflow: auto; // shows scrollbars on demad
         background: $tile-overlay-bg-color;
 
@@ -533,7 +533,8 @@ $sq-margin: 20px;
             font-size: $square-overlay-h3-size;
         }
     }
-    .image-copyright {
+    .copyright {
+        // selector must not be calleds 'image-copyright' here, otherwise there will be problems for image flipping tiles
         @include image-copyright;
         color: $square-overlay-text-color;
         text-shadow: $square-overlay-text-shadow;

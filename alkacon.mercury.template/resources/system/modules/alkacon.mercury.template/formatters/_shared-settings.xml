@@ -2344,12 +2344,15 @@
             none:                                       %(key.msg.setting.tileCss.none)|
             tile-col col-6 col-md-4 col-lg-3 col-xl-2:  %(key.msg.setting.tileCss.xs6-md4-lg3-xl2)|
             tile-col col-6 col-md-4 col-xl-2:           %(key.msg.setting.tileCss.xs6-md4-xl2)|
-            tile-col col-md-6 col-lg-4 col-xl-3:        %(key.msg.setting.tileCss.md6-lg4-xl3)|
-            tile-col col-md-6 col-xl-4:                 %(key.msg.setting.tileCss.md6-xl4)|
-            tile-col col-md-6 col-xl-3:                 %(key.msg.setting.tileCss.md6-xl3)|
+            tile-col col-6 col-lg-3:                    %(key.msg.setting.tileCss.xs6-lg3)|
+            tile-col col-6:                             %(key.msg.setting.tileCss.xs6)|
             tile-col col-md-6 col-lg-3:                 %(key.msg.setting.tileCss.md6-lg3)|
-            tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
+            tile-col col-md-6 col-lg-4 col-xl-3:        %(key.msg.setting.tileCss.md6-lg4-xl3)|
+            tile-col col-md-6 col-xl-3:                 %(key.msg.setting.tileCss.md6-xl3)|
+            tile-col col-md-6 col-xl-4:                 %(key.msg.setting.tileCss.md6-xl4)|
+            tile-col col-lg-4:                          %(key.msg.setting.tileCss.lg4)|
             tile-col col-md-6:                          %(key.msg.setting.tileCss.md6)|
+            tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
             tile-col col-12:                            %(key.msg.setting.tileCss.xs12)|
             from-tiles:                                 %(key.msg.setting.tileCss.tile-defined)
         ]]></WidgetConfig>

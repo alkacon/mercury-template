@@ -15,10 +15,10 @@
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="isTile"                 value="${setting.isTile.toBoolean}" />
 <c:if test="${isTile}">
-    <c:set var="tileCssWrapper"     value="${empty param.tilegrid ? 'tile-col col-sm-6 col-md-4 col-lg-3' : param.tilegrid}" />
+    <c:set var="tileCss"            value="${empty param.tilegrid ? 'tile-col col-sm-6 col-lg-3' : param.tilegrid}" />
 </c:if>
 
-<mercury:init-messages reload="${isTile}" css="${tileCssWrapper}">
+<mercury:init-messages css="${tileCss}">
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
@@ -45,40 +45,39 @@
     ade="${false}">
 
 <c:set var="imageSide">
-    <div class="image-section ${showTextFirst ? 'back' : 'front'}${doNotFlip and (not showTextFirst) ? ' noflip' : ''}">
+    <div class="image-section ${showTextFirst ? 'back' : 'front'}${doNotFlip and (not showTextFirst) ? ' noflip' : ''}"><%----%>
         <mercury:image-srcset
             imagebean="${imageBean}"
             cssWrapper="img-responsive"
             copyright="${showImageCopyright ? imageCopyrightHtml : null}"
             alt="${title}"
         />
-    </div>
+    </div><%----%>
 </c:set>
 
 <c:set var="textSide">
-    <div class="text-section ${showTextFirst ? 'front' : 'back'}${doNotFlip and showTextFirst ? ' noflip' : ''}">
-
-        <mercury:heading level="${hsize}" text="${title}" css="imageflip-title" />
-
-        <div class="imageflip-text">
-            ${value.Text}
-        </div>
-
-        <c:if test="${value.Link.exists and value.Link.value.URI.isSet}">
-            <mercury:link link="${value.Link}" css="btn btn-sm" setTitle="false"/>
-        </c:if>
-
-    </div>
+    <div class="text-section ${showTextFirst ? 'front' : 'back'}${doNotFlip and showTextFirst ? ' noflip' : ''}"><%----%>
+        <mercury:section-piece
+            heading="${value.Title}"
+            pieceLayout="${1}"
+            text="${value.Text}"
+            link="${value.Link}"
+            hsize="${hsize}"
+            ade="${false}"
+        />
+    </div><%----%>
 </c:set>
 
-<div class="element imageflip ${tileCssWrapper}${' '}${effect}${' '}${flipColor}${' '}${cssWrapper}" ontouchstart="this.classList.toggle('hover');">
+<mercury:nl />
+<div class="element imageflip ${tileCss}${' '}${effect}${' '}${flipColor}${' '}${cssWrapper}" ontouchstart="this.classList.toggle('hover');"><%----%>
     <mercury:padding-box ratio="${ratio}" cssWrapper="flipper">
         ${showTextFirst ? textSide : imageSide}
         <c:if test="${not doNotFlip}">
             ${showTextFirst ? imageSide : textSide}
         </c:if>
     </mercury:padding-box>
-</div>
+</div><%----%>
+<mercury:nl />
 
 </mercury:image-vars>
 
@@ -89,7 +88,8 @@
 <fmt:setLocale value="${cms.workplaceLocale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<div class="element imageflip ${tileCssWrapper}">
+<mercury:nl />
+<div class="element imageflip ${tileCss}"><%----%>
     <mercury:alert type="warning">
         <jsp:attribute name="head">
             <fmt:message key="msg.page.noImage" />
@@ -98,7 +98,8 @@
             <fmt:message key="msg.page.noImage.hint" />
         </jsp:attribute>
     </mercury:alert>
-</div>
+</div><%----%>
+<mercury:nl />
 
 </cms:bundle>
 
@@ -106,7 +107,9 @@
 <c:otherwise>
 <%-- ######  No image: Online version: Output nothing ###### --%>
 
-<div></div>
+<mercury:nl />
+<div></div><%----%>
+<mercury:nl />
 
 </c:otherwise>
 </c:choose>

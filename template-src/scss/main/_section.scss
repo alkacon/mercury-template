@@ -167,10 +167,6 @@
         }
     }
 
-    .image-section {
-        @include copyright-subtitle;
-    }
-
     &.color-white .text-section {
         background-color: $body-bg;
         border: 1px solid $grey-lighter;
@@ -193,10 +189,6 @@
             background-color: $white;
             color: $text-dark;
         }
-    }
-
-    &.p-small .back {
-        padding: $default-margin-small;
     }
 }
 

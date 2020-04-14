@@ -34,6 +34,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.workplaceLocale}" />
@@ -49,24 +50,30 @@
     <%-- Use case 1: Create container or detail container placeholder box --%>
 
     <c:choose>
-      <c:when test="${fn:containsIgnoreCase(type, 'area')}">
-        <c:set var="variant" value="area" />
-      </c:when>
-      <c:when test="${fn:containsIgnoreCase(type, 'segment')}">
-        <c:set var="variant" value="segment" />
-      </c:when>
-      <c:when test="${fn:containsIgnoreCase(type, 'grid')}">
-        <c:set var="variant" value="grid" />
-      </c:when>
-      <c:when test="${fn:containsIgnoreCase(type, 'row')}">
-        <c:set var="variant" value="row" />
-      </c:when>
-      <c:when test="${fn:containsIgnoreCase(type, 'element')}">
-        <c:set var="variant" value="element" />
-      </c:when>
-      <c:otherwise>
-        <c:set var="variant" value="special" />
-      </c:otherwise>
+        <c:when test="${fn:containsIgnoreCase(type, 'area')}">
+            <c:set var="variant" value="area" />
+            <c:set var="niceName"><fmt:message key="msg.page.layout.type.area"/></c:set>
+            <c:set var="type" value="${fn:replace(type, 'area', niceName)}" />
+        </c:when>
+        <c:when test="${fn:containsIgnoreCase(type, 'segment')}">
+            <c:set var="variant" value="segment" />
+        </c:when>
+        <c:when test="${fn:containsIgnoreCase(type, 'grid')}">
+            <c:set var="variant" value="grid" />
+        </c:when>
+        <c:when test="${fn:containsIgnoreCase(type, 'row')}">
+            <c:set var="variant" value="row" />
+            <c:set var="niceName"><fmt:message key="msg.page.layout.type.row"/></c:set>
+            <c:set var="type" value="${fn:replace(type, 'row', niceName)}" />
+        </c:when>
+        <c:when test="${fn:containsIgnoreCase(type, 'element')}">
+            <c:set var="variant" value="element" />
+            <c:set var="niceName"><fmt:message key="msg.page.layout.type.element"/></c:set>
+            <c:set var="type" value="${fn:replace(type, 'element', niceName)}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="variant" value="special" />
+        </c:otherwise>
     </c:choose>
 
     <c:if test="${not empty role}">
@@ -77,10 +84,14 @@
       <c:set var="role" value="${fn:toLowerCase(role)}" />
     </c:if>
 
-    <c:set var="parentType" value="Template Container" />
-    <c:if test="${not empty cms.container.parentInstanceId}">
-        <c:set var="parentType" value="${cms.parentContainers[cms.container.parentInstanceId].type}" />
-    </c:if>
+   <c:choose>
+        <c:when test="${not empty cms.container.parentInstanceId}">
+            <c:set var="parentType" value="${cms.parentContainers[cms.container.parentInstanceId].type}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="parentType" value="template" />
+        </c:otherwise>
+    </c:choose>
 
     <div class="container-box box-${variant}${' '}${cssWrapper}"><%----%>
         <div class="head"><%----%>
@@ -108,21 +119,21 @@
         </div><%----%>
         <div class="text capital"><%----%>
             <div class="main">${label}</div><%----%>
-            <c:if test="${not empty cms.container.type}">
-                <div class="small"><%----%>
-                    <fmt:message key="msg.page.layout.infor">
-                        <fmt:param>${parentType}</fmt:param>
-                        <fmt:param>${type}</fmt:param>
-                    </fmt:message>
-                </div><%----%>
-            </c:if>
-            <c:if test="${empty cms.container.type}">
-                <div class="small"><%----%>
-                    <fmt:message key="msg.page.layout.for">
-                        <fmt:param>${type}</fmt:param>
-                    </fmt:message>
-                </div><%----%>
-            </c:if>
+            <div class="small"><%----%>
+                <c:choose>
+                    <c:when test="${not empty cms.container.type}">
+                        <fmt:message key="msg.page.layout.infor">
+                            <fmt:param><mercury:container-name type="${parentType}" /></fmt:param>
+                            <fmt:param><mercury:container-name type="${type}" /></fmt:param>
+                        </fmt:message>
+                    </c:when>
+                    <c:otherwise>
+                        <fmt:message key="msg.page.layout.for">
+                            <fmt:param><mercury:container-name type="${type}" /></fmt:param>
+                        </fmt:message>
+                    </c:otherwise>
+                </c:choose>
+            </div><%----%>
         </div><%----%>
     </div><%----%>
 

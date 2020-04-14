@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.143</version>
+		<version>11.0.1.144</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6493,6 +6493,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays a placehoder box for containers and model groups]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/container-name.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/container-name.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>b0031f69-7e41-11ea-b93b-0242ac11002b</uuidstructure>
+			<uuidresource>b0031f6a-7e41-11ea-b93b-0242ac11002b</uuidresource>
+			<datecreated>Tue, 14 Apr 2020 11:18:37 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Changes technical container names to user friendly names]]></value>
 				</property>
 			</properties>
 			<relations/>

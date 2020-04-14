@@ -45,10 +45,12 @@
 <%@attribute name="parameters" type="java.util.Map" required="false"
         description="Parameters to use with the container." %>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+
 
 <c:set var="name"           value="${empty name ? (not empty value.Name ? value.Name.toString() : null) : name}" />
 <c:set var="type"           value="${empty type ? (not empty value.Type ? value.Type.toString() : null) : type}" />

@@ -39,7 +39,7 @@
     description="If 'true', the generated href will open the link target in a new window." %>
 
 <%@ attribute name="createButton" type="java.lang.Boolean" required="false"
-    description="If 'true', the a button with onlick action will be gernerated instead of an a href link.
+    description="If 'true', a button with onlick action will be gernerated instead of an a href link.
     This is only supported if there is no body content in this tag." %>
 
 <%@ attribute name="noExternalMarker" type="java.lang.Boolean" required="false"

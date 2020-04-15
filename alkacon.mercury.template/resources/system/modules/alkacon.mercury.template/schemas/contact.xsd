@@ -58,28 +58,30 @@
             <parameters>
                 <param name="galleryTitle"><![CDATA[%!
                     !%%if (! fn.(content.value.("Kind")).isEqual.("org"))%%!
+                        !%%if (content.value.("Name/LastName").isSet)%%content.value.("Name/LastName")% %endif%%!
                         !%%if (content.value.("Name/Title").isSet)%%content.value.("Name/Title")% %endif%%!
                         !%%if (content.value.("Name/FirstName").isSet)%%content.value.("Name/FirstName")% %endif%%!
                         !%%if (content.value.("Name/MiddleName").isSet)%%content.value.("Name/MiddleName")% %endif%%!
-                        !%%if (content.value.("Name/LastName").isSet)%%content.value.("Name/LastName")% %endif%%!
                         !%%if (content.value.("Name/Suffix").isSet)%%content.value.("Name/Suffix")% %endif%%!
                         !%%if (content.value.("Organization").isSet || content.value.("Position").isSet)%%!
                             !%- %!
                             !%%if (content.value.("Position").isSet)%%content.value.("Position")%%endif%%!
-                            !%%if (content.value.("Organization").isSet)%, %content.value.("Organization")%%endif%%!
+                            !%%if (content.value.("Organization").isSet && content.value.("Position").isSet)%, %endif%%!
+                            !%%if (content.value.("Organization").isSet)%%content.value.("Organization")%%endif%%!
                         !%%endif%%!
                     !%%else%%!
-                        !%%if (content.value.("Organization").isSet)%%content.value.("Organization")%%endif%%!
+                        !%%if (content.value.("Organization").isSet)%%content.value.("Organization")% %endif%%!
                         !%%if (content.value.("Name").isSet) %%!
-                            !% -%!
-                            !%%if (content.value.("Name/Title").isSet)% %content.value.("Name/Title")%%endif%%!
-                            !%%if (content.value.("Name/FirstName").isSet)% %content.value.("Name/FirstName")%%endif%%!
-                            !%%if (content.value.("Name/MiddleName").isSet)% %content.value.("Name/MiddleName")%%endif%%!
-                            !%%if (content.value.("Name/LastName").isSet)% %content.value.("Name/LastName")%%endif%%!
-                            !%%if (content.value.("Name/Suffix").isSet)% %content.value.("Name/Suffix")%%endif%%!
+                            !%- %!
+                            !%%if (content.value.("Name/LastName").isSet)%%content.value.("Name/LastName")% %endif%%!
+                            !%%if (content.value.("Name/Title").isSet)%%content.value.("Name/Title")%%endif% %!
+                            !%%if (content.value.("Name/FirstName").isSet)%%content.value.("Name/FirstName")% %endif%%!
+                            !%%if (content.value.("Name/MiddleName").isSet)%%content.value.("Name/MiddleName")% %endif%%!
+                            !%%if (content.value.("Name/Suffix").isSet)%%content.value.("Name/Suffix")% %endif%%!
                         !%%endif%%!
-                        !%%if (content.value.("Position").isSet)%, %content.value.("Position")%%endif%%!
+                        !%%if (content.value.("Position").isSet)%- %content.value.("Position")%%endif%%!
                     !%%endif%%!
+                    !%%if (content.value.("Title").isSet)% "%content.value.("Title")%"%endif%%!
                 !%]]></param>
             </parameters>
             <FieldSettings>
@@ -126,7 +128,6 @@
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
-                    <Default><![CDATA[%(key.type.m-section.title)]]></Default>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>

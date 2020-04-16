@@ -27,10 +27,10 @@
 
 <c:if test="${((not empty icon) and ('none' ne icon)) or (not empty text)}">
 
-    <c:set var="textLabel"><jsp:invoke fragment='text' /></c:set>
+    <jsp:invoke fragment="text" var="textLabel" />
     <span class="icon-label"><%----%>
         <c:if test="${showIcon}">
-            <c:set var="iconLabel"><jsp:invoke fragment='icontitle' /></c:set>
+            <jsp:invoke fragment="icontitle" var="iconLabel" />
             <c:if test="${empty iconLabel}">
                 <c:set var="iconLabel" value="textLabel" />
             </c:if>

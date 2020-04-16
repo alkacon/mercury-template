@@ -317,7 +317,7 @@
                 </c:if>
             </c:when>
             <c:otherwise>
-                <jsp:invoke fragment="markupLink"/>
+                <jsp:invoke fragment="markupLink" />
             </c:otherwise>
         </c:choose>
     </jsp:attribute>

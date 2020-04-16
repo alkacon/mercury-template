@@ -6189,7 +6189,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Claire Dunphy - Director HR, Critical Coders Corp.]]></value>
+					<value><![CDATA[Dunphy Claire - Director HR, Critical Coders Corp.]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6217,7 +6217,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Dr. Jake M. Pritchett III Ph. D. - CEO, Markup Brewers Inc.]]></value>
+					<value><![CDATA[Pritchett III Dr. Jake M. Ph. D. - CEO, Markup Brewers Inc.]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6245,7 +6245,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Cameron Tucker - Director Customer Relations, Cascading Styles LLC]]></value>
+					<value><![CDATA[Tucker Cameron - Director Customer Relations, Cascading Styles LLC]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6273,7 +6273,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Manuel B. Delgado - Team Manager, Recursive Iterators Union]]></value>
+					<value><![CDATA[Delgado Manuel B. - Team Manager, Recursive Iterators Union]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6301,7 +6301,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Haley S. Dunphy - Consultant, Abundant Advisors PLC]]></value>
+					<value><![CDATA[Dunphy Haley S. - Consultant, Abundant Advisors PLC]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6318,7 +6318,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mitchell Pritchett M.A. - Designer, Hectic Hackers Inc.]]></value>
+					<value><![CDATA[Pritchett Mitchell M.A. - Designer, Hectic Hackers Inc.]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6346,7 +6346,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Lily Tucker-Pritchett - Marketing, Short Cuts LLC]]></value>
+					<value><![CDATA[Tucker-Pritchett Lily - Marketing, Short Cuts LLC]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6363,7 +6363,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Pepper Saltzman - Analyst, Locial Loop Ltd.]]></value>
+					<value><![CDATA[Saltzman Pepper - Analyst, Locial Loop Ltd.]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6391,7 +6391,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Alkacon Software]]></value>
+					<value><![CDATA[Alkacon Software ]]></value>
 				</property>
 			</properties>
 			<relations>

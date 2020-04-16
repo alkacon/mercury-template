@@ -26,7 +26,7 @@
     <c:when test="${email.value.ObfuscateEmail.stringValue}">
         <c:set var="obfuscate" value="true" />
         <c:set var="href">javascript:unobfuscateString('<mercury:obfuscate text="${email.value.Email}"/>', true);</c:set>
-        <c:set var="address"><jsp:invoke fragment='placeholder' /></c:set>
+        <jsp:invoke fragment="placeholder" var="address" />
     </c:when>
     <c:otherwise>
         <c:set var="href">mailto:${email.value.Email}</c:set>

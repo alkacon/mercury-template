@@ -149,34 +149,26 @@
 </c:if>
 
 <c:if test="${not empty heading}">
-    <c:set var="pieceHeading">
-        <jsp:invoke fragment="heading"/>
-    </c:set>
+    <jsp:invoke fragment="heading" var="pieceHeading" />
 </c:if>
 <c:set var="showHeading"    value="${not empty pieceHeading}" />
 
 <c:if test="${not empty text}">
-    <c:set var="pieceText">
-        <jsp:invoke fragment="text"/>
-    </c:set>
+    <jsp:invoke fragment="text" var="pieceText" />
 </c:if>
 <c:set var="showText"       value="${not empty pieceText}" />
 
 <c:if test="${not empty link}">
-    <c:set var="pieceLink">
-        <jsp:invoke fragment="link"/>
-    </c:set>
+    <jsp:invoke fragment="link" var="pieceLink" />
 </c:if>
 <c:set var="showLink"       value="${not empty pieceLink}" />
 
 <c:if test="${not empty visual}">
     <%-- It is important to make this check AFTER the body because the grid size must be 12 if there is no body. --%>
-    <c:set var="pieceVisual">
-        <cms:addparams>
-            <cms:param name="cssgrid" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-md-'.concat(sizeDesktop) : '')}" />
-            <jsp:invoke fragment="visual"/>
-        </cms:addparams>
-    </c:set>
+    <cms:addparams>
+        <cms:param name="cssgrid" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-md-'.concat(sizeDesktop) : '')}" />
+        <jsp:invoke fragment="visual" var="pieceVisual" />
+    </cms:addparams>
 </c:if>
 <c:set var="showVisual"     value="${not empty pieceVisual}" />
 

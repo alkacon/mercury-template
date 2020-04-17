@@ -580,6 +580,20 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[performerOption.detail]]></IncludeName>
+      <PropertyName><![CDATA[performerOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.performerOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.performerOption.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[textonly]]></Default>
+      <WidgetConfig><![CDATA[
+            none:               %(key.msg.setting.performerOption.none)|
+            textonly:           %(key.msg.setting.performerOption.textonly)|
+            sitename:           %(key.msg.setting.performerOption.sitename)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textLength.compact]]></IncludeName>
       <PropertyName><![CDATA[textLength]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.textLength)]]></DisplayName>

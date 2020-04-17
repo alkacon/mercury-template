@@ -22,6 +22,7 @@
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="visualEffect"           value="${setting.effect.toString}" />
 <c:set var="bookingOption"          value="${setting.bookingOption.toString}" />
+<c:set var="performerOption"        value="${setting.performerOption.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
 <c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
@@ -55,7 +56,7 @@
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet)}" />
 <c:set var="showDate"               value="${not empty date}" />
 <c:set var="showType"               value="${type.isSet}" />
-<c:set var="showPerformer"          value="${performer.isSet}" />
+<c:set var="showPerformer"          value="${performerOption ne 'none'}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 <c:set var="ade"                    value="${empty cms.detailContentId or (not empty date) and (value.Dates.toDateSeries.isExtractedDate or value.Dates.toDateSeries.isSingleDate)}" />
@@ -138,11 +139,27 @@
             </c:if>
 
             <c:if test="${showDate or showLocation or showType or showPerformer}">
+                <c:if test="${showPerformer}">
+                    <c:choose>
+                        <c:when test="${value.Performer.isSet}">
+                            <c:set var="performer" value="${value.Performer.toString}" />
+                            <c:set var="showPerformer" value="${performer ne 'none'}" />
+                        </c:when>
+                        <c:when test="${performerOption eq 'sitename'}">
+                            <c:set var="sourceSite" value="${cms.vfs.readSubsiteFor(cms.element.sitePath)}" />
+                            <c:set var="sourceSiteProps" value="${cms.vfs.readProperties[sourceSite]}" />
+                            <c:set var="performer" value="${not empty sourceSiteProps['mercury.sitename'] ? sourceSiteProps['mercury.sitename'] : sourceSiteProps['Title'] }" />
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="showPerformer" value="${false}" />
+                        </c:otherwise>
+                    </c:choose>
+                </c:if>
                 <div class="visual-info ${not showLocation ? 'right' : ''}"><%----%>
                     <div class="infogroup">
                         <c:if test="${showDate}"><div class="info date"><div>${datePrefix}${date}</div></div></c:if>
                         <c:if test="${showType}"><div class="info type"><div>${type}</div></div></c:if>
-                        <c:if test="${showPerformer}"><div class="info person"><div ${performer.rdfaAttr}>${performer}</div></div></c:if>
+                        <c:if test="${showPerformer}"><div class="info person"><div ${value.Performer.isSet ? value.Performer.rdfaAttr : ''}>${performer}</div></div></c:if>
                     </div>
                     <c:if test="${showLocation}"><div class="info location">${location}</div></c:if>
                 </div><%----%>

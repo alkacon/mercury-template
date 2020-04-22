@@ -671,6 +671,15 @@ $form-border-radius:                $default-border-radius !default;
 $form-input-border-radius:          $btn-border-radius !default;
 
 
+// Search
+
+$search-badge-color:                $grey !default;
+$search-badge-background:           transparent !default;
+$search-badge-border-radius:        $btn-border-radius !default;
+$search-badge-border:               1px solid $search-badge-color !default;
+$search-datelastmod-color:          $search-badge-color !default;
+
+
 // Sitemap
 
 $sitemap-top-bg-color:              $main-theme !default;

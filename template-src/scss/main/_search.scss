@@ -46,11 +46,6 @@
         margin-bottom: $default-margin;
     }
 
-    .search-result-heading {
-        @extend .h4;
-        margin-bottom: $default-margin-verysmall;
-    }
-
     .search-input,
     .search-sort-options {
         margin-bottom: $default-margin;
@@ -72,14 +67,23 @@
     }
 
     .search-result-heading {
+        @extend .h4;
+        margin-bottom: $default-margin-verysmall;
+
         .result-title {
             margin-right: $default-margin-verysmall;
             vertical-align: middle;
         }
-    }
 
-    .search-result-heading a:hover .search-badge {
-        text-decoration: none;
+        a:hover .search-badge {
+            text-decoration: none;
+        }
+
+        + .search-result-date {
+            margin-top: -1 * $default-margin-verysmall;
+            margin-bottom: $default-margin-verysmall;
+            color: $search-datelastmod-color;
+        }
     }
 
     .search-badge {
@@ -87,9 +91,12 @@
         font-family: $font-family-base;
         font-size: 50%;
         padding: $default-margin-extremesmall $default-margin-verysmall;
-        @include round-corners($form-border-radius);
-        color: $form-border-color;
-        border: 1px solid $form-border-color;
+        @include round-corners($search-badge-border-radius);
+        color: $search-badge-color;
+        @if ($search-badge-background != transparent) {
+            background: $search-badge-background;
+        }
+        border: $search-badge-border;
         white-space: nowrap;
         display: inline-block;
         vertical-align: middle;

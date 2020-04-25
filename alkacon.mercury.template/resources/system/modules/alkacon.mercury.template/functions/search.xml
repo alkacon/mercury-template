@@ -26,10 +26,24 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[searchscope.search]]></IncludeName>
+      <IncludeName><![CDATA[pageSize.search]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[numFacetItems.search]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[searchscope.search]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.dateFormat)]]></DisplayName>
+      <Default><![CDATA[none]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTypeBadge.search]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showExcerpt.search]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[searchForEmptyQuery.search]]></IncludeName>

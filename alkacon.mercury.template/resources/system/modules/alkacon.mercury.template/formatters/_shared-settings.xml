@@ -2488,21 +2488,48 @@
     <Setting>
       <IncludeName><![CDATA[searchForEmptyQuery.search]]></IncludeName>
       <PropertyName><![CDATA[searchForEmptyQuery]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.searchForEmptyQuery)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.searchForEmptyQuery.help)]]></Description>
+      <DisplayName><![CDATA[%(key.msg.setting.search.searchForEmptyQuery)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.searchForEmptyQuery.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[pageSize.search]]></IncludeName>
+      <PropertyName><![CDATA[pageSize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.pageSize)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.pageSize.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+      <Default><![CDATA[10]]></Default>
+      <RuleRegex><![CDATA[([1-9]\d{0,3}){0,1}]]></RuleRegex>
+      <RuleType><![CDATA[error]]></RuleType>
+      <Error><![CDATA[%(key.msg.error.list.itemsPerPage.static)]]></Error>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[numFacetItems.search]]></IncludeName>
       <PropertyName><![CDATA[numFacetItems]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.numFacetItems)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.numFacetItems.help)]]></Description>
+      <DisplayName><![CDATA[%(key.msg.setting.search.numFacetItems)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.numFacetItems.help)]]></Description>
       <Widget><![CDATA[string]]></Widget>
       <Default><![CDATA[10]]></Default>
       <RuleRegex><![CDATA[[1-9]\d{0,2}]]></RuleRegex>
       <RuleType><![CDATA[error]]></RuleType>
       <Error><![CDATA[%(key.msg.error.numFacetItems)]]></Error>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTypeBadge.search]]></IncludeName>
+      <PropertyName><![CDATA[showTypeBadge]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.showTypeBadge)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.showTypeBadge.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showExcerpt.search]]></IncludeName>
+      <PropertyName><![CDATA[showExcerpt]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.showExcerpt)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.showExcerpt.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
     </Setting>
   </SettingsConfig>
 </SettingsConfigs>

@@ -13,6 +13,8 @@
 <cms:secureparams />
 <mercury:init-messages reload="true">
 
+<c:set var="id"><mercury:idgen prefix="" uuid="${cms.element.id}" /></c:set>
+
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
@@ -20,7 +22,15 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="searchSubsite"          value="${setting.searchscope.toString eq 'subsite'}" />
 <c:set var="searchForEmptyQuery"    value="${setting.searchForEmptyQuery.toBoolean}" />
-<c:set var="numFacetItems"          value="${setting.numFacetItems.useDefault('10').toInteger}" />
+<c:set var="numFacetItems"          value="${empty setting.numFacetItems.toInteger ? 10 : setting.numFacetItems.toInteger}" />
+<c:set var="pageSize"               value="${empty setting.pageSize.toInteger ? 10 : setting.pageSize.toInteger}" />
+<c:set var="showTypeBadge"          value="${setting.showTypeBadge.useDefault('true').toBoolean}" />
+<c:set var="showExcerpt"            value="${setting.showExcerpt.useDefault('true').toBoolean}" />
+<c:set var="dateFormat"             value="${setting.dateFormat.useDefault('none').toString}" />
+<c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
+<c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
+<c:set var="showDateLastModified"   value="${dateFormat ne 'none'}" />
+
 
 <%-- Generate the search configuration --%>
 <c:choose>
@@ -73,14 +83,14 @@
     <c:set var="typesRestriction">${typesRestriction}${status.first ? '' : ' OR '}${fn:trim(type)}</c:set>
 </c:forEach>
 
-<c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,${cms.locale}_excerpt,id,path</c:set>
+<c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,lastmodified,${cms.locale}_excerpt,id,path</c:set>
 <c:set var="config">
     {
         "searchforemptyquery" : ${searchForEmptyQuery},
         "querymodifier" :       "{!type=edismax qf=\"content_${cms.locale} Title_dprop Description_dprop\"}%(query)",
         "escapequerychars" :    true,
         "extrasolrparams" :     "fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields}",
-        "pagesize" :            10,
+        "pagesize" :            ${pageSize},
         "pagenavlength" :       5,
         "sortoptions" :         [ { "label" : "<fmt:message key='msg.page.search.sort.score.desc'/>", "solrvalue" : "score desc" }
                                 , { "label" : "<fmt:message key='msg.page.search.sort.date.desc'/>", "solrvalue" : "instancedate_${cms.locale}_dt desc" }
@@ -115,7 +125,6 @@
 
 <%-- short cut to access the controller for common search settings --%>
 <c:set var="common" value="${controllers.common}" />
-<c:set var="id"><mercury:idgen prefix="" uuid="${cms.element.id}" /></c:set>
 
 <mercury:nl/>
 <div class="element type-search ${cssWrapper}"><%----%>
@@ -379,57 +388,70 @@
                                     <c:set var="title">${searchResult.fields["disptitle_sort"]}</c:set>
                                 </c:if>
 
-                                <c:set var="resultType">${searchResult.fields["type"]}</c:set>
-                                <c:choose>
-                                    <c:when test="${resultType eq 'containerpage'}">
-                                        <c:set var="typeName"><fmt:message key="msg.page.search.type.containerpage" /></c:set>
-                                    </c:when>
-                                    <c:when test="${not empty resultType}">
-                                        <c:set var="typeName"><cms:label>type.${resultType}.name</cms:label></c:set>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:set var="typeName" value="" />
-                                    </c:otherwise>
-                                </c:choose>
-                                <c:if test="${not empty typeName}">
-                                    <c:set var="typeName">
-                                        <span class="search-badge">${typeName}</span>
-                                    </c:set>
+                                <c:if test="${showTypeBadge}">
+                                    <c:set var="resultType">${searchResult.fields["type"]}</c:set>
+                                    <c:choose>
+                                        <c:when test="${resultType eq 'containerpage'}">
+                                            <c:set var="typeName"><fmt:message key="msg.page.search.type.containerpage" /></c:set>
+                                        </c:when>
+                                        <c:when test="${not empty resultType}">
+                                            <c:set var="typeName"><cms:label>type.${resultType}.name</cms:label></c:set>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:set var="typeName" value="" />
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <c:if test="${not empty typeName}">
+                                        <c:set var="typeName">
+                                            <span class="search-badge">${typeName}</span>
+                                        </c:set>
+                                    </c:if>
                                 </c:if>
-                                <mercury:nl/>
 
                                 <h4 class="search-result-heading"><%----%>
                                     <a href='<cms:link>${searchResult.fields["path"]}</cms:link>'><%----%>
                                         <span class="result-title">${title}</span><%----%>
-                                        <c:out value="${typeName}" escapeXml="${false}" />
+                                        <c:out value="${showTypeBadge ? typeName : ''}" escapeXml="${false}" />
                                     </a><%----%>
                                 </h4><%----%>
                                 <mercury:nl/>
 
-                                <div class="search-result-text"><%----%>
-                                    <%-- if highlighting is returned - show it; otherwise show content_en (up to 250 characters) --%>
-                                    <c:choose>
-                                        <c:when test="${not empty search.highlighting and not empty common.state.query}">
-                                            <%-- To avoid destroying the HTML, if the highlighted snippet contains unbalanced tag, use the htmlConverter for cleaning the HTML. --%>
-                                            <c:set var="highlightSnippet" value='${
-                                                search.highlighting
-                                                    [searchResult.fields["id"]]
-                                                    [search.controller.highlighting.config.hightlightField]
-                                                    [0]
-                                                }'
-                                            />
-                                            <c:if test="${not empty highlightSnippet}">
-                                                ${fn:replace(fn:replace(cms:stripHtml(highlightSnippet), '$$hl.begin$$', '<strong>'), '$$hl.end$$', '</strong>')}${' ...'}
-                                            </c:if>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:set var="localeContentField">${cms.locale}_excerpt</c:set>
-                                            <c:if test="${not empty searchResult.fields[localeContentField]}">
-                                                ${cms:trimToSize(cms:stripHtml(searchResult.fields[localeContentField]), 250)}
-                                            </c:if>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div><%----%>
+                                <c:if test="${showDateLastModified}">
+                                    <div class="search-result-date"><%----%>
+                                        <c:out value="${empty datePrefix ? '' : datePrefix.concat(' ')}" />
+                                        <mercury:instancedate date="${cms.wrap[searchResult.dateFields['lastmodified']].toInstanceDate}" format="${dateFormat}"/>
+                                    </div><%----%>
+                                    <mercury:nl/>
+                                </c:if>
+
+                                <c:if test="${showExcerpt}">
+                                    <div class="search-result-text"><%----%>
+                                        <%-- if highlighting is returned - show it; otherwise show content_en (up to 250 characters) --%>
+                                        <c:choose>
+                                            <c:when test="${not empty search.highlighting and not empty common.state.query}">
+                                                <%-- To avoid destroying the HTML, if the highlighted snippet contains unbalanced tag, use the htmlConverter for cleaning the HTML. --%>
+                                                <c:set var="highlightSnippet" value='${
+                                                    search.highlighting
+                                                        [searchResult.fields["id"]]
+                                                        [search.controller.highlighting.config.hightlightField]
+                                                        [0]
+                                                    }'
+                                                />
+                                                <c:if test="${not empty highlightSnippet}">
+                                                    ${fn:replace(fn:replace(cms:stripHtml(highlightSnippet), '$$hl.begin$$', '<strong>'), '$$hl.end$$', '</strong>')}${' ...'}
+                                                </c:if>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:set var="localeContentField">${cms.locale}_excerpt</c:set>
+                                                <c:if test="${not empty searchResult.fields[localeContentField]}">
+                                                    ${cms:trimToSize(cms:stripHtml(searchResult.fields[localeContentField]), 250)}
+                                                </c:if>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div><%----%>
+                                    <mercury:nl/>
+                                </c:if>
+
                             </div><%----%>
                             <mercury:nl/>
                         </c:forEach>

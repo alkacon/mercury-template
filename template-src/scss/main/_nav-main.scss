@@ -703,7 +703,7 @@
         // usually .nav-menu is for an <ul>
         // however for a mega menu .nav-menu will be on a <div>
         position: absolute;
-        top: 0;
+        top: -1 * $nav-menu-border-size;
         left: 0;
         display: none;
         margin: 0;

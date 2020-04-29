@@ -351,7 +351,7 @@ $nav-header-text-transform:         uppercase !default; // text transformation f
 $nav-header-font-size:              15px !default; // font size of header nav items
 $nav-header-float:                  right !default; // float direction of header navigation items, can be 'left' or 'right'
 $nav-header-hor-padding:            $nav-hor-padding !default; // horizontal padding right for header nav items in LG, XL
-$nav-header-ver-padding:            8px !default; // vertical padding above / blow the header nav items in LG, XL
+$nav-header-ver-padding:            8px !default; // vertical padding below the header nav items in LG, XL
 $nav-header-padding:                0 $nav-header-hor-padding $nav-header-ver-padding $nav-header-hor-padding !default; // padding for header nav items
 $nav-header-arrows-right:           0 !default; // right position of arrows in header in LG, XL
 $nav-header-line-height:            20px !default; // line height of header nav items

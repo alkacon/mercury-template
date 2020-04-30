@@ -19,7 +19,6 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.template.CmsStringCrypter;
 import org.opencms.i18n.CmsMessageContainer;
 import org.opencms.main.CmsLog;
 import org.opencms.util.CmsRequestUtil;
@@ -32,6 +31,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.CmsStringCrypter;
 
 /**
  * Helper to perform subscriptions/unsubscriptions for webusers.
@@ -50,6 +51,7 @@ public class CmsSubscriptionParameterHandler {
 
     /** Request parameters that are examined by the bean. */
     public enum Parameter {
+
         /** The action to perform */
         ACTION,
         /** The email address of the subscriber to perform the action for. */
@@ -284,11 +286,8 @@ public class CmsSubscriptionParameterHandler {
             // Salt for the link
             params.append(System.currentTimeMillis());
             return PARAM_CONFIRM + "=" + encrypt(params.toString(), encryptionPassphrase);
-        } else
-
-        {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -464,10 +463,8 @@ public class CmsSubscriptionParameterHandler {
 
         if (isValid()) {
             return m_subscriptionConfig.getAction(m_action).perform(this);
-        } else {
-            return Collections.singletonList(
-                new CmsMessageContainer(Messages.get(), Messages.GUI_INVALID_PARAMETERS_0));
         }
+        return Collections.singletonList(new CmsMessageContainer(Messages.get(), Messages.GUI_INVALID_PARAMETERS_0));
     }
 
     /**

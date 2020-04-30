@@ -29,6 +29,7 @@ import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.security.CmsOrganizationalUnit;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -50,6 +51,93 @@ import org.apache.commons.logging.Log;
  *
  */
 public class CmsSubscriptionManager {
+
+    /** Method to public access of the subscription information for a single subscriber. */
+    public static class SubscriptionInfo {
+
+        /** The subscription status. */
+        private SubscriptionStatus m_status;
+        /** Time of the last registration request in milliseconds. */
+        private Long m_registrationTime;
+        /** Time of the manual addition of the user in milliseconds. */
+        private Long m_addTime;
+        /** Time of the activation (confirmation of the registration) of the user in milliseconds. */
+        private Long m_acTime;
+
+        /**
+         * Constructor for subscription information.
+         * @param activationInfo the activation info to retrieve the subscription information from.
+         */
+        SubscriptionInfo(ActivationInfo activationInfo) {
+
+            if (null == activationInfo) {
+                m_status = SubscriptionStatus.INVALID;
+            } else {
+                m_registrationTime = activationInfo.getRegistrationTimeMs();
+                m_addTime = activationInfo.getAddTimeMs();
+                m_acTime = activationInfo.getActivationTimeMs();
+                m_status = determineStatus(activationInfo);
+            }
+
+        }
+
+        /**
+         * Returns the time of the confirmation of the registration of the user in milliseconds.
+         * @return the time of the confirmation of the registration of the user in milliseconds.
+         */
+        public Long getActivationTimeMs() {
+
+            return m_acTime;
+        }
+
+        /**
+         * Returns the time of the manually adding of the user in milliseconds.
+         * @return the time of the manually adding of the user in milliseconds.
+         */
+        public Long getAddTimeMs() {
+
+            return m_addTime;
+        }
+
+        /**
+         * Returns the time of the last registration request in milliseconds.
+         * @return the time of the last registration request in milliseconds.
+         */
+        public Long getRegistrationTimeMs() {
+
+            return m_registrationTime;
+        }
+
+        /**
+         * Returns the subscription status.
+         * @return the subscription status.
+         */
+        public SubscriptionStatus getStatus() {
+
+            return m_status;
+        }
+
+        /**
+         * Determines the subscription status from the activation info.
+         * @param activationInfo the activation info.
+         * @return the subscription status.
+         */
+        private SubscriptionStatus determineStatus(ActivationInfo activationInfo) {
+
+            if (activationInfo.isActive()) {
+                return SubscriptionStatus.ACTIVATED;
+            }
+            if (activationInfo.isManuallyAdded()) {
+                return SubscriptionStatus.MANUALLY_ADDED;
+            }
+            if (activationInfo.requestedRegistration()) {
+                return SubscriptionStatus.INACTIVE;
+            }
+            return SubscriptionStatus.INVALID;
+
+        }
+
+    }
 
     /** Subscription status a user can have. */
     public static enum SubscriptionStatus {
@@ -99,10 +187,10 @@ public class CmsSubscriptionManager {
         public ActivationInfo(boolean addManually) {
 
             if (addManually) {
-                m_addTime = new Long(System.currentTimeMillis());
+                m_addTime = Long.valueOf(System.currentTimeMillis());
             } else {
-            m_registrationTime = new Long(System.currentTimeMillis());
-        }
+                m_registrationTime = Long.valueOf(System.currentTimeMillis());
+            }
         }
 
         /**
@@ -114,7 +202,7 @@ public class CmsSubscriptionManager {
             // Reading the deprecated active flag, just telling that there was some activation time.
             try {
                 if (activationInfoJson.getBoolean(JSON_KEY_IS_ACTIVE)) {
-                    m_acTime = new Long(0);
+                    m_acTime = Long.valueOf(0L);
                 }
             } catch (JSONException e) {
                 // TODO: LOG?
@@ -122,21 +210,21 @@ public class CmsSubscriptionManager {
             }
             try {
                 long time = activationInfoJson.getLong(JSON_KEY_ADD_TIME);
-                m_addTime = new Long(time);
+                m_addTime = Long.valueOf(time);
             } catch (JSONException e) {
                 // TODO: LOG?
                 // Do nothing, maybe log?
             }
             try {
                 long time = activationInfoJson.getLong(JSON_KEY_ACTIVATION_TIME);
-                m_acTime = new Long(time);
+                m_acTime = Long.valueOf(time);
             } catch (JSONException e) {
                 // TODO: LOG?
                 // Do nothing, maybe log?
             }
             try {
                 long time = activationInfoJson.getLong(JSON_KEY_REGISTRATION_TIME);
-                m_registrationTime = new Long(time);
+                m_registrationTime = Long.valueOf(time);
             } catch (JSONException e) {
                 // TODO: LOG?
                 // Do nothing, registration time might not be set.
@@ -149,7 +237,7 @@ public class CmsSubscriptionManager {
          */
         public void activate() {
 
-            m_acTime = new Long(System.currentTimeMillis());
+            m_acTime = Long.valueOf(System.currentTimeMillis());
 
         }
 
@@ -219,13 +307,13 @@ public class CmsSubscriptionManager {
             if (null != getActivationTimeMs()) {
                 result = (result.isEmpty() ? "\"" : ", \"")
                     + JSON_KEY_ACTIVATION_TIME
-                + "\" : "
+                    + "\" : "
                     + getActivationTimeMs();
             }
             if (null != getRegistrationTimeMs()) {
                 result += (result.isEmpty() ? "\"" : ", \"")
-                + JSON_KEY_REGISTRATION_TIME
-                + "\" : "
+                    + JSON_KEY_REGISTRATION_TIME
+                    + "\" : "
                     + getRegistrationTimeMs();
             }
             if (null != getAddTimeMs()) {
@@ -242,9 +330,9 @@ public class CmsSubscriptionManager {
         public void updateTime(boolean manually) {
 
             if (manually) {
-                m_addTime = new Long(System.currentTimeMillis());
+                m_addTime = Long.valueOf(System.currentTimeMillis());
             } else {
-            m_registrationTime = new Long(System.currentTimeMillis());
+                m_registrationTime = Long.valueOf(System.currentTimeMillis());
             }
 
         }
@@ -369,6 +457,20 @@ public class CmsSubscriptionManager {
     }
 
     /**
+     * Returns all users for the provided group
+     * @param groupName the group name
+     * @return the users for the group.
+     */
+    public Collection<CmsUser> getAllUsers(String groupName) {
+
+        try {
+            return m_adminCms.getUsersOfGroup(groupName);
+        } catch (Throwable t) {
+            return Collections.emptySet();
+        }
+    }
+
+    /**
      * Returns the pattern used to validate email adresses.
      * @return the pattern used to validate email adresses.
      */
@@ -377,6 +479,24 @@ public class CmsSubscriptionManager {
         return m_emailPattern;
     }
 
+    /**
+     * Returns the subscription information.
+     * @param user the user to get the information for.
+     * @param groupName the group to get the information for.
+     * @return the subscription information.
+     */
+    public SubscriptionInfo getSubscriptionInfo(CmsUser user, String groupName) {
+
+        ActivationInfo activationInfo = readRegistrationInfo(user).get(groupName);
+        return new SubscriptionInfo(activationInfo);
+    }
+
+    /**
+     * Returns the subsription status.
+     * @param user the user to get the status for.
+     * @param groupName the group to get the status for.
+     * @return the subsription status.
+     */
     public SubscriptionStatus getSubscriptionStatus(CmsUser user, String groupName) {
 
         ActivationInfo activationInfo = readRegistrationInfo(user).get(groupName);
@@ -409,9 +529,8 @@ public class CmsSubscriptionManager {
                 return false;
             }
             return true;
-        } else {
-            return m_emailPattern.matcher(email).matches();
         }
+        return m_emailPattern.matcher(email).matches();
     }
 
     /**
@@ -560,7 +679,7 @@ public class CmsSubscriptionManager {
                 // add the user to the given mailing list group
                 m_adminCms.addUserToGroup(user.getName(), groupName);
             }
-        } catch (JSONException | CmsException e) {
+        } catch (Throwable e) {
             LOG.error("Error while registering user " + email + " for group " + groupName + ".", e);
             return false;
         }

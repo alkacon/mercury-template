@@ -55,7 +55,7 @@
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <mercury:nl />
-<div class="element type-dynamic-list list-content ${settings.cssWrapper}${' '}${settings.listCssWrapper}${' '}${settings.listPaginationPosition}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
+<div class="element type-dynamic-list list-content ${settings.listCssWrapper}${' '}${settings.listPaginationPosition}${' '}${settings.listDisplay}${' '}${settings.cssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
 <mercury:nl />
 
     <%-- ####### Check if list formatters are compatible ######## --%>

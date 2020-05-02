@@ -1773,6 +1773,19 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[listDisplay.default]]></IncludeName>
+      <PropertyName><![CDATA[listDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.listDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.listDisplay.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default-display]]></Default>
+      <WidgetConfig><![CDATA[
+              default-display: %(key.msg.option.list.display.default)|
+              compact-display: %(key.msg.option.list.display.compact)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listPaginationPosition.dynamic]]></IncludeName>
       <PropertyName><![CDATA[listPaginationPosition]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.list.appendPaginationPosition)]]></DisplayName>

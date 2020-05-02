@@ -125,17 +125,6 @@
     }
 }
 
-.list-content {
-    .teaser {
-        margin-bottom: $list-teaser-margin;
-
-        &.teaser-compact {
-            // compact teaser elements have a reduced bottom margin
-            margin-bottom: $list-teaser-margin-compact;
-        }
-    }
-}
-
 // tiling teasers with flex box layout
 
 .teaser-tile {
@@ -559,13 +548,41 @@
     justify-content: flex-end;
 }
 
+.list-content {
+    .teaser {
+        margin-bottom: $list-teaser-margin;
+
+        &.teaser-compact {
+            // compact teaser elements have a reduced bottom margin
+            margin-bottom: $list-teaser-margin-compact;
+        }
+    }
+
+    &.compact-display {
+		.teaser {
+			margin-bottom: $list-teaser-margin-compact;
+
+	        .intro-headline {
+	            @include font-size-responsive($h4-font-size-mobile, $h4-font-size);
+	            margin-bottom: $default-margin-verysmall;
+	            > .intro {
+					@include font-size-responsive($teaser-title-size-mobile * 0.65, $teaser-title-size * 0.65);
+	            }
+	        }
+
+	        .teaser-btn {
+	            padding: $teaser-btn-compact-padding;
+	        }
+		}
+    }
+}
+
 aside .list-content,
-.list-content.list-aside, {
+.list-content.list-aside {
     // teaser adjustments for side columns
 
     .teaser {
         // make buttons in side grey so that they don't distract from main content
-        .btn.loadMore,
         .teaser-btn:not(:hover) {
             background-color: $list-side-color;
             color: get-text-color($list-side-color);
@@ -596,15 +613,28 @@ aside .list-content,
         }
         .teaser-compact {
             .teaser-btn {
-                padding: $teaser-btn-compact-light-padding
+                padding: $teaser-btn-compact-light-padding;
             }
         }
     }
 
+    &.compact-display {
+		.teaser {
+	        .intro-headline {
+	            @include font-size-responsive(
+	                round($h4-font-size-mobile * 9) / 10,
+	                round($h4-font-size * 9) / 10
+	            );
+	        }
+
+	        .teaser-btn {
+	            padding: $teaser-btn-compact-light-padding;
+	        }
+		}
+    }
+
     @extend %paginationSmall;
 }
-
-
 
 
 // List archive filter menu

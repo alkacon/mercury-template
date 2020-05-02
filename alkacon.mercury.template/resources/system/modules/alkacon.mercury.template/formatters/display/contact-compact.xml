@@ -31,6 +31,9 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[listDisplay.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>

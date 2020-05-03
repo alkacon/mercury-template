@@ -19,8 +19,10 @@
 <c:set var="settings" value="${cms.element.settings}" />
 <c:set var="wrappedSettings" value="${cms.element.setting}" />
 
-<div class="element type-static-list list-content ${settings.cssWrapper}${' '}${settings.listCssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}">
-<%----%>
+<mercury:nl />
+<div class="element type-static-list list-content ${settings.listCssWrapper}${' '}${settings.listDisplay}${' '}${settings.cssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
+<mercury:nl />
+
     <%-- ####### Check if list formatters are compatible ######## --%>
     <mercury:list-compatibility
         settings="${settings}"
@@ -38,6 +40,7 @@
         <c:set var="instanceId"><mercury:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
 
         <div class="list-box ${settings.listBoxWrapper}"><%----%>
+		<mercury:nl />
 
             <%-- ####### List entries ######## --%>
             ${'<'}${listTag} class="list-entries ${listWrapper}" id="${instanceId}"${'>'}
@@ -61,10 +64,12 @@
             </c:if>
 
         </div><%----%>
+        <mercury:nl />
 
     </c:if>
-</div>
-<%----%>
+</div><%----%>
+<mercury:nl />
+
 </cms:bundle>
 </cms:formatter>
 

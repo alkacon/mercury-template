@@ -61,6 +61,15 @@
         }
     }
 
+	.type-list-group {
+		// teasers grouped with JavaScript after being loaded from the server
+	    position: relative; // required otherwise edit points may get mixed up
+
+	    &:not(:last-of-type) {
+	        margin-bottom: $default-margin;
+	    }
+	}
+
     .list-spinner {
         display: none;
     }
@@ -68,7 +77,18 @@
     .list-link {
         margin-top: $default-margin;
     }
+
+
+	.list-badge {
+		// badges for elements in lists, used e.g. by event to mark if an event is bookable
+	    margin-left: 10px;
+	    font-size: 0.7em;
+	    padding: 3px 6px;
+	    bottom: 2px;
+	}
 }
+
+// Teasers - applies for teasers in lists as well as teasers placed directly on a page
 
 .teaser {
     margin-bottom: $default-margin;
@@ -88,12 +108,22 @@
     }
 
     .teaser-btn {
+	  	&:not(:last-child) {
+            margin-right: $default-margin-small;
+        }
         @if ($teaser-btn-def-padding != $btn-def-padding) {
             padding: $teaser-btn-def-padding;
         }
-        &:not(:last-child) {
-            margin-right: $default-margin-small;
-        }
+		@if ($teaser-btn-color != $btn-default) {
+	        background-color: $teaser-btn-color;
+	        color:  get-text-color($teaser-btn-color);
+	        font-size: $font-size-sm;
+
+	        &:hover {
+	            background-color: $teaser-btn-hover-color;
+	            color:  get-text-color($teaser-btn-hover-color);
+	        }
+		}
     }
 
     .teaser-date {
@@ -125,7 +155,129 @@
     }
 }
 
-// tiling teasers with flex box layout
+// Teasers - applies for teasers in lists but NOT for teasers placed directly on a page
+
+.list-content {
+    .teaser {
+		// teasers in the list have a different default margin
+        margin-bottom: $list-teaser-margin;
+
+        &.teaser-compact {
+            // compact teaser elements have a reduced bottom margin
+            margin-bottom: $list-teaser-margin-compact;
+        }
+    }
+
+	&.reduced-display,
+	&.minimal-display {
+		.teaser {
+			.intro-headline {
+	            > .intro {
+					// the intro heading should be the same in all variations: 65% percent of the teaser title font size
+					@include font-size-responsive($teaser-title-size-mobile * 0.65, $teaser-title-size * 0.65);
+	            }
+	        }
+		}
+	}
+
+    &.reduced-display {
+		.teaser {
+	        .intro-headline {
+        		@include font-size-responsive($teaser-title-size-reduced-mobile, $teaser-title-size-reduced);
+	        }
+		}
+    }
+
+    &.minimal-display {
+		.teaser {
+			margin-bottom: $list-teaser-margin-compact;
+
+	        .intro-headline {
+				margin-bottom: $default-margin-verysmall;
+	            font-size: inherit; // this way the heading will have the same size as the text
+	        }
+
+	        .teaser-btn {
+	            padding: $teaser-btn-compact-padding;
+	        }
+		}
+    }
+}
+
+// Teaser adjustments for lists in side columns
+
+aside .list-content,
+.list-content.list-aside {
+
+    .teaser {
+        // make buttons in side grey so that they don't distract from main content
+        .teaser-btn:not(:hover) {
+            background-color: $list-side-color;
+            color: get-text-color($list-side-color);
+        }
+
+        .intro-headline {
+            // make headers smaller
+            @include font-size-responsive(
+                round($teaser-title-size-mobile * 9) / 10,
+                round($teaser-title-size * 9) / 10
+            );
+            // adjust color of side headings
+            > .headline {
+                color: $list-side-headings-color;
+            }
+            > .intro {
+                color: $list-side-intro-color;
+            }
+        }
+    }
+
+	&.reduced-display,
+	&.minimal-display {
+		.teaser {
+			.intro-headline {
+	            > .intro {
+		            @include font-size-responsive(
+						// the intro heading should be the same in all variations: 65% percent of the reduced teaser title font size
+		                round($teaser-title-size-mobile * 9) / 10 * 0.65,
+		                round($teaser-title-size * 9 ) / 10 * 0.65
+		            )
+	            }
+	        }
+		}
+	}
+
+    &.reduced-display {
+		.teaser {
+	        .intro-headline {
+	            @include font-size-responsive(
+	                round($teaser-title-size-reduced-mobile * 9) / 10,
+	                round($teaser-title-size-reduced * 9) / 10
+	            );
+	        }
+		}
+    }
+
+    @include media-breakpoint-up(lg) {
+        // on large screens button in side columns should be smaller
+        .teaser {
+            .teaser-btn {
+                padding: $teaser-btn-compact-padding;
+            }
+        }
+		&.minimal-display .teaser
+        .teaser-compact {
+            .teaser-btn {
+                padding: $teaser-btn-compact-light-padding;
+            }
+        }
+    }
+
+    @extend %paginationSmall;
+}
+
+
+// Tiling teasers with flex box layout
 
 .teaser-tile {
     display: flex;
@@ -141,8 +293,12 @@
                 }
             }
         }
+    }
+}
 
-        @if ($list-tile-header-lines > 1) {
+@if ($list-tile-header-lines > 1) {
+	.list-content.default-display {
+		.teaser-tile {
             @include media-breakpoint-up(lg) {
                 &.teaser-text-tile {
                     > .body {
@@ -156,46 +312,14 @@
                 }
             }
         }
-    }
+	}
 }
 
 .masonry-list .teaser-tile .teaser.piece > .body {
     flex-grow: 0; // no growing in masonry lists
 }
 
-@if ($teaser-btn-color != $btn-default) {
-    .teaser-btn {
-        background-color: $teaser-btn-color;
-        color:  get-text-color($teaser-btn-color);
-        font-size: $font-size-sm;
-
-        &:hover {
-            background-color: $teaser-btn-hover-color;
-            color:  get-text-color($teaser-btn-hover-color);
-        }
-    }
-}
-
-.type-list-group {
-    position: relative; // required otherwise edit points may get mixed up
-
-    &:not(:last-of-type) {
-        margin-bottom: $default-margin;
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-
-.list-badge {
-
-    margin-left: 10px;
-    font-size: 0.7em;
-    padding: 3px 6px;
-    bottom: 2px;
-}
-
 // Download lists
-
 
 @mixin dl-btn {
     margin-top: $default-margin-verysmall;
@@ -440,7 +564,7 @@
     }
 }
 
-// pagination adjustments
+// List pagination
 
 .list-pagination {
     .btn-append {
@@ -509,10 +633,8 @@
     }
 }
 
-// Centered or right aligned pagination
-
 .pagination-center {
-
+	// centered pagination
     .list-dynamic.list-paginate {
         // pagination loading
         .list-pagination {
@@ -544,98 +666,10 @@
 }
 
 .pagination-right .list-dynamic.list-paginate .list-pagination {
+	// right pagination
     display: flex;
     justify-content: flex-end;
 }
-
-.list-content {
-    .teaser {
-        margin-bottom: $list-teaser-margin;
-
-        &.teaser-compact {
-            // compact teaser elements have a reduced bottom margin
-            margin-bottom: $list-teaser-margin-compact;
-        }
-    }
-
-    &.compact-display {
-		.teaser {
-			margin-bottom: $list-teaser-margin-compact;
-
-	        .intro-headline {
-	            @include font-size-responsive($h4-font-size-mobile, $h4-font-size);
-	            margin-bottom: $default-margin-verysmall;
-	            > .intro {
-					@include font-size-responsive($teaser-title-size-mobile * 0.65, $teaser-title-size * 0.65);
-	            }
-	        }
-
-	        .teaser-btn {
-	            padding: $teaser-btn-compact-padding;
-	        }
-		}
-    }
-}
-
-aside .list-content,
-.list-content.list-aside {
-    // teaser adjustments for side columns
-
-    .teaser {
-        // make buttons in side grey so that they don't distract from main content
-        .teaser-btn:not(:hover) {
-            background-color: $list-side-color;
-            color: get-text-color($list-side-color);
-        }
-
-        .intro-headline {
-            // make headers smaller
-            @include font-size-responsive(
-                round($teaser-title-size-mobile * 9) / 10,
-                round($teaser-title-size * 9) / 10
-            );
-            // adjust color of side headings
-            > .headline {
-                color: $list-side-headings-color;
-            }
-            > .intro {
-                color: $list-side-intro-color;
-            }
-        }
-    }
-
-    @include media-breakpoint-up(lg) {
-        // on large screens button in side columns should be smaller
-        .teaser {
-            .teaser-btn {
-                padding: $teaser-btn-compact-padding;
-            }
-        }
-        .teaser-compact {
-            .teaser-btn {
-                padding: $teaser-btn-compact-light-padding;
-            }
-        }
-    }
-
-    &.compact-display {
-		.teaser {
-	        .intro-headline {
-	            @include font-size-responsive(
-	                round($h4-font-size-mobile * 9) / 10,
-	                round($h4-font-size * 9) / 10
-	            );
-	        }
-
-	        .teaser-btn {
-	            padding: $teaser-btn-compact-light-padding;
-	        }
-		}
-    }
-
-    @extend %paginationSmall;
-}
-
 
 // List archive filter menu
 

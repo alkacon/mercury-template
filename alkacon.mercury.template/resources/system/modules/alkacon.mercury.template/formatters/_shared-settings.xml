@@ -1782,7 +1782,8 @@
       <Default><![CDATA[default-display]]></Default>
       <WidgetConfig><![CDATA[
               default-display: %(key.msg.option.list.display.default)|
-              compact-display: %(key.msg.option.list.display.compact)
+              reduced-display: %(key.msg.option.list.display.reduced)|
+              minimal-display: %(key.msg.option.list.display.minimal)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

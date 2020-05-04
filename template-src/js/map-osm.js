@@ -17,10 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Module implemented using the "revealing module pattern", see
-// https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript
-// https://www.christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
-
 import mapboxgl from 'mapbox-gl';
 
 "use strict";
@@ -239,7 +235,7 @@ export function init(jQuery, debug) {
                     if (DEBUG) console.info("OSM map found with id: " + mapData.id);
                     m_mapData.push(mapData);
                     $mapElement.removeClass('placeholder');
-                    // add redraw handler for OSM maps hidden in accordions and tabs
+                    // add redraw handler for maps hidden in accordions and tabs
                     Mercury.initTabAccordion(function(event) { redrawMap(mapData.id, event) });
                 }
             });

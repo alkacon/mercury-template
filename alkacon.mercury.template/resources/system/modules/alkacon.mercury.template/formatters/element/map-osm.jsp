@@ -4,13 +4,15 @@
     session="false"
     trimDirectiveWhitespaces="true"%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-   <cms:secureparams />
+
+<cms:secureparams />
 <mercury:init-messages reload="true">
 
 <cms:formatter var="content" val="value">
@@ -26,22 +28,21 @@
 
 <c:set var="ade"                    value="${true}" />
 
-<%-- get width and height of map from content --%>
-<c:set var="mapsize">${content.value.MapSize}</c:set>
-<c:set var="sizesep">${fn:indexOf(mapsize, "x")}</c:set>
-<c:if test="${sizesep != -1}">
-    <c:set var="mapw">${fn:trim(fn:substringBefore(mapsize, "x"))}</c:set>
-    <c:set var="maph">${fn:trim(fn:substringAfter(mapsize, "x"))}</c:set>
-</c:if>
-<c:if test="${not fn:contains(mapw, '%')}">
-    <c:set var="mapw">${mapw}px</c:set>
-</c:if>
-<c:if test="${not fn:contains(maph, '%')}">
-    <c:set var="maph">${maph}px</c:set>
-</c:if>
+<%-- Check API key --%>
+<c:set var="apiKey" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['osm.apikey']}" />/>
+<c:choose>
+    <c:when test="${apiKey eq 'google'}">
+        <c:set var="provider" 	value="google" />
+        <c:set var="jsMapObj"   value="GoogleMap" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="provider" 	value="osm" />
+        <c:set var="jsMapObj"   value="OsmMap" />
+    </c:otherwise>
+</c:choose>
 
 <mercury:nl />
-<div class="element type-map map-osm ${cssWrapper}">
+<div class="element type-map map-${provider} ${cssWrapper}">
 <%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
@@ -103,7 +104,7 @@
     </c:forEach>
 
     <mercury:map
-         provider="osm"
+         provider="${provider}"
          id="${id}"
          ratio="${cms.element.setting.mapRatio}"
          zoom="${cms.element.setting.mapZoom}"
@@ -112,12 +113,12 @@
 
     <c:if test="${showGroupButtons and (fn:length(markerGroups) > 1)}">
         <div class="mapbuttons"><%----%>
-            <button class="btn btn-sm" onclick="OsmMap.showMarkers('${id}','showall');"><%----%>
+            <button class="btn btn-sm" onclick="${jsMapObj}.showMarkers('${id}','showall');"><%----%>
                 <fmt:message key="msg.page.map.button.showmarkers" />
             </button><%----%>
             <mercury:nl />
             <c:forEach var="markerGroup" items="${markerGroups}">
-                <button class="btn btn-sm blur-focus" onclick="OsmMap.showMarkers('${id}', '${cms:encode(markerGroup.key)}');"><%----%>
+                <button class="btn btn-sm blur-focus" onclick="${jsMapObj}.showMarkers('${id}', '${cms:encode(markerGroup.key)}');"><%----%>
                     <fmt:message key="msg.page.map.button.show">
                         <fmt:param><c:out value="${markerGroup.key}" /></fmt:param>
                     </fmt:message>
@@ -126,6 +127,7 @@
             </c:forEach>
         </div><%----%>
     </c:if>
+
 </div>
 <%----%>
 

@@ -25,25 +25,26 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
 <c:set var="showGroupButtons"       value="${setting.showGroupButtons.toBoolean}" />
+<c:set var="showMapRoute"       	value="${setting.showMapRoute.toBoolean}" />
+<c:set var="mapType"       			value="${setting.mapType.toString}" />
 
 <c:set var="ade"                    value="${true}" />
 
-<%-- get width and height of map from content --%>
-<c:set var="mapsize">${content.value.MapSize}</c:set>
-<c:set var="sizesep">${fn:indexOf(mapsize, "x")}</c:set>
-<c:if test="${sizesep != -1}">
-    <c:set var="mapw">${fn:trim(fn:substringBefore(mapsize, "x"))}</c:set>
-    <c:set var="maph">${fn:trim(fn:substringAfter(mapsize, "x"))}</c:set>
-</c:if>
-<c:if test="${not fn:contains(mapw, '%')}">
-    <c:set var="mapw">${mapw}px</c:set>
-</c:if>
-<c:if test="${not fn:contains(maph, '%')}">
-    <c:set var="maph">${maph}px</c:set>
-</c:if>
+<%-- Check API key --%>
+<c:set var="apiKey" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['google.apikey']}" />
+<c:choose>
+    <c:when test="${apiKey eq 'osm'}">
+        <c:set var="provider" 	value="osm" />
+        <c:set var="jsMapObj"   value="OsmMap" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="provider" 	value="google" />
+        <c:set var="jsMapObj"   value="GoogleMap" />
+    </c:otherwise>
+</c:choose>
 
 <mercury:nl />
-<div class="element type-map map-google ${cssWrapper}">
+<div class="element type-map map-${provider} ${cssWrapper}">
 <%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
@@ -105,23 +106,23 @@
     </c:forEach>
 
     <mercury:map
-         provider="google"
+         provider="${provider}"
          id="${id}"
          ratio="${cms.element.setting.mapRatio}"
          zoom="${cms.element.setting.mapZoom}"
          markers="${markerList}"
-         type="${cms.element.setting.mapType}"
-         showRoute="${cms.element.setting.showMapRoute.toBoolean}"
+         type="${mapType}"
+         showRoute="${showMapRoute}"
     />
 
     <c:if test="${showGroupButtons and (fn:length(markerGroups) > 1)}">
         <div class="mapbuttons"><%----%>
-            <button class="btn btn-sm" onclick="GoogleMap.showMarkers('${id}','showall');"><%----%>
+            <button class="btn btn-sm" onclick="${jsMapObj}.showMarkers('${id}','showall');"><%----%>
                 <fmt:message key="msg.page.map.button.showmarkers" />
             </button><%----%>
             <mercury:nl />
             <c:forEach var="markerGroup" items="${markerGroups}">
-                <button class="btn btn-sm blur-focus" onclick="GoogleMap.showMarkers('${id}', '${cms:encode(markerGroup.key)}');"><%----%>
+                <button class="btn btn-sm blur-focus" onclick="${jsMapObj}.showMarkers('${id}', '${cms:encode(markerGroup.key)}');"><%----%>
                     <fmt:message key="msg.page.map.button.show">
                         <fmt:param><c:out value="${markerGroup.key}" /></fmt:param>
                     </fmt:message>

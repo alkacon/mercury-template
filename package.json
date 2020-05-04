@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
-  "name": "alkacon-mercury-template",
+  "name": "mercury-template",
   "description": "The Alkacon Mercury template for OpenCms.",
   "author": "Alkacon Software GmbH & Co. KG - http://www.alkacon.com",
   "license": "AGPL-3.0",
-  "repository": "alkacon-mercury-template",
+  "repository": "mercury-template",
   "private": true,
   "devDependencies": {
     "autoprefixer": "^9.7.6",

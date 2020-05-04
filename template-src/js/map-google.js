@@ -302,7 +302,7 @@ export function initGoogleMaps() {
 function showMap(event){
 
     // called by click on hidden map element in edit mode
-    if (DEBUG) {console.log("GoogleMap show map with id: "+event.currentTarget.id);}
+    if (DEBUG) {console.log("GoogleMap show map with id: " + event.currentTarget.id);}
     var mapToShow= event.currentTarget;
 
     for(var i=0; i<m_mapData.length;i++){

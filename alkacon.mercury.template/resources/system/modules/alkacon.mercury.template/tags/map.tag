@@ -54,10 +54,10 @@
 
 <c:if test="${provider eq 'auto'}">
     <c:choose>
-        <c:when test="${(not empty osmApiKey) and (osmApiKey ne 'none')}">
+        <c:when test="${(not empty osmApiKey) and (osmApiKey ne 'none') and (osmApiKey ne 'google')}">
             <c:set var="provider" value="osm" />
         </c:when>
-        <c:when test="${(not empty googleApiKey) and (googleApiKey ne 'none')}">
+        <c:when test="${(not empty googleApiKey) and (googleApiKey ne 'none') and (googleApiKey ne 'osm')}">
             <c:set var="provider" value="google" />
         </c:when>
         <c:otherwise>

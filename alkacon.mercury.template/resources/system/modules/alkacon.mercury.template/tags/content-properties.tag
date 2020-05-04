@@ -21,12 +21,12 @@
     description="The properties read from the URI resource OR detail resource with search." %>
 
 <c:choose>
-<c:when test="${cms.detailRequest}">
-    <c:set var="contentUri" value="${cms.detailContentSitePath}" />
-</c:when>
-<c:otherwise>
-    <c:set var="contentUri" value="${cms.requestContext.uri}" />
-</c:otherwise>
+	<c:when test="${cms.detailRequest}">
+	    <c:set var="contentUri" value="${cms.detailContentSitePath}" />
+	</c:when>
+	<c:otherwise>
+	    <c:set var="contentUri" value="${cms.requestContext.uri}" />
+	</c:otherwise>
 </c:choose>
 
 <c:set var="contentProperties" value="${cms.vfs.readProperties[contentUri]}" />

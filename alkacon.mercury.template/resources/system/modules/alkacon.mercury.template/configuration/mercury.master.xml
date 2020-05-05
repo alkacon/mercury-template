@@ -91,6 +91,10 @@
       <Disabled><![CDATA[false]]></Disabled>
     </ResourceType>
     <ResourceType>
+      <TypeName><![CDATA[m-webform-data]]></TypeName>
+      <Disabled><![CDATA[add]]></Disabled>
+    </ResourceType>
+    <ResourceType>
       <TypeName><![CDATA[m-navigation]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
     </ResourceType>

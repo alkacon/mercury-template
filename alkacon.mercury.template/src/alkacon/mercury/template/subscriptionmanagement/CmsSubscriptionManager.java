@@ -480,6 +480,18 @@ public class CmsSubscriptionManager {
     }
 
     /**
+     * Returns the maximal time that can be between registration and activation/confirmation (in milliseconds).
+     * If the time is less or equal than zero, the time is not restricted at all.
+     *
+     * @return the maximal time between registration and activation in milliseconds,
+     *  which is assumed to be infinity for non-possitive numbers.
+     */
+    public long getMaxActivationTime() {
+
+        return m_maxActivationTime;
+    }
+
+    /**
      * Returns the subscription information.
      * @param user the user to get the information for.
      * @param groupName the group to get the information for.
@@ -550,6 +562,37 @@ public class CmsSubscriptionManager {
     }
 
     /**
+     * Removes all registered subscribers that did not activate the subscription in time.
+     * @param groupName the fully qualified group name the subscribers are in.
+     * @return simple user names of the unregistered subscribers.
+     */
+    public Collection<String> removeInactiveSubscribers(String groupName) {
+
+        Set<String> result = new HashSet<>();
+        try {
+            Collection<CmsUser> usersOfGroup = m_adminCms.getUsersOfGroup(groupName);
+            for (CmsUser user : usersOfGroup) {
+                ActivationInfo activationInfo = readRegistrationInfo(user).get(groupName);
+                if ((null != activationInfo)
+                    && !activationInfo.isManuallyAdded()
+                    && !activationInfo.isActive()
+                    && activationInfo.requestedRegistration()
+                    && !isActivationInTime(activationInfo.getRegistrationTimeMs())) {
+                    if (unregisterUser(user.getSimpleName(), groupName)) {
+                        result.add(user.getSimpleName());
+                    } else {
+                        LOG.error("Failed to remove inactive subscriber " + user + " for group " + groupName + ".");
+                    }
+                }
+            }
+        } catch (CmsException e) {
+            LOG.error("Failed to remove inactive subscribers for group " + groupName + ".", e);
+        }
+        return result;
+
+    }
+
+    /**
      * Sets the email validation pattern.
      * @param pattern the pattern to set.
      */
@@ -591,18 +634,6 @@ public class CmsSubscriptionManager {
         // if the user is null, he does not exist, so he is definitely not registered,
         // otherwise unregister him.
         return (null == user) || unregisterExistingUser(user, groupName);
-    }
-
-    /**
-     * Returns the maximal time that can be between registration and activation/confirmation (in milliseconds).
-     * If the time is less or equal than zero, the time is not restricted at all.
-     *
-     * @return the maximal time between registration and activation in milliseconds,
-     *  which is assumed to be infinity for non-possitive numbers.
-     */
-    protected long getMaxActivationTime() {
-
-        return m_maxActivationTime;
     }
 
     /**

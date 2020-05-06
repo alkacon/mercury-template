@@ -141,7 +141,7 @@
 
         <c:if test="${link.isSet}">
             <div class="visual-link"><%----%>
-                <mercury:link link="${link}" css="btn btn-sm"/>
+                <mercury:link link="${link}" css="btn"/>
             </div><%----%>
         </c:if>
 

@@ -997,6 +997,7 @@ msg.setting.keyVisualOption.textBelowImage=Bild, Titel, Text
 msg.setting.linkOption=Link-Anzeige
 msg.setting.linkOption.button=Button
 msg.setting.linkOption.button-full=Button über die ganze Breite
+msg.setting.linkOption.button-sm=Kleiner Button
 msg.setting.linkOption.heading=Überschrift verlinken
 msg.setting.linkOption.help=Legt fest wie bzw. ob der Link dargestellt wird.
 msg.setting.linkOption.none=Link ausblenden

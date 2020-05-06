@@ -272,9 +272,8 @@ $btn-padding:                       0.6rem !default;
 $btn-h-padding:                     round($btn-padding * 20) / 10 !default;
 $btn-def-padding:                   $btn-padding $btn-h-padding !default;
 $btn-lg-padding:                    round($btn-padding * 12.5) / 10 round($btn-padding * 30) / 10 !default;
-$btn-sm-padding:                    round($btn-padding * 7.5) / 10 round($btn-padding * 15) / 10 !default;
-$btn-smi-padding:                   round($btn-padding * 5.0) / 10  $btn-padding !default;
-$btn-xs-padding:                    round($btn-padding * 2.5) / 10 round($btn-padding * 12.5) / 10 !default;
+$btn-sm-padding:                    round($btn-padding * 2.5) / 10 round($btn-padding * 12.5) / 10 !default;
+$btn-xs-padding:                    $btn-sm-padding !default;
 $btn-border-radius:                 $default-border-radius !default;
 $btn-default:                       $main-theme !default;
 $btn-default-hover:                 $main-theme-hover !default;
@@ -287,7 +286,6 @@ $btn-white-space:                   nowrap !default;
 $btn-min-width:                     0 !default;
 $btn-line-height:                   $target-line-height !default;
 $btn-font-size:                     $font-size-base !default;
-$btn-lg-font-size:                  1.8rem !default;
 $btn-xs-font-size:                  1.2rem !default;
 $btn-colors:                        $bg-colors !default;
 
@@ -529,7 +527,7 @@ $teaser-title-size-reduced-mobile:  $h4-font-size-mobile !default;
 $teaser-title-height:               $line-height-headings !default;
 
 $teaser-btn-def-padding:            $btn-def-padding !default;
-$teaser-btn-compact-padding:        round($btn-padding * 25) / 100 round($btn-padding * 125) / 100 !default;
+$teaser-btn-compact-padding:        $btn-sm-padding !default;
 $teaser-btn-compact-light-padding:  0 $btn-padding !default;
 $teaser-info-color:                 $text-dark !default; // color of additional teaser infos, e.g. the date
 

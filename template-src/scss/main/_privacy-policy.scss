@@ -73,7 +73,7 @@
         margin-bottom: $default-margin-small;
 
         .btn {
-            font-size: $btn-lg-font-size;
+            font-size: 1.8rem;
             min-width: $policy-banner-button-min-width;
         }
 
@@ -112,7 +112,7 @@
                 margin-left: $default-margin-small;
                 margin-right: $default-margin-small;
                 font-size: 1.25rem;
-                padding: $btn-smi-padding;
+                padding: $btn-sm-padding;
             }
 
             .btn:last-of-type {

@@ -175,6 +175,9 @@
                     <c:when test="${linkOption eq 'button-full'}">
                         <c:set var="linkCss" value="btn btn-block piece-btn" />
                     </c:when>
+                    <c:when test="${linkOption eq 'button-sm'}">
+                        <c:set var="linkCss" value="btn btn-sm piece-btn" />
+                    </c:when>
                     <c:when test="${linkOption eq 'text'}">
                         <c:set var="linkCss" value="piece-text-link" />
                     </c:when>

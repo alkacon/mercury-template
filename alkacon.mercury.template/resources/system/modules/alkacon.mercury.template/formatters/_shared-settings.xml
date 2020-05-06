@@ -1232,6 +1232,7 @@
       <WidgetConfig><![CDATA[
             button:         %(key.msg.setting.linkOption.button)|
             button-full:    %(key.msg.setting.linkOption.button-full)|
+            button-sm:      %(key.msg.setting.linkOption.button-sm)|
             text:           %(key.msg.setting.linkOption.text)|
             heading:        %(key.msg.setting.linkOption.heading)|
             none:           %(key.msg.setting.linkOption.none)
@@ -1248,6 +1249,7 @@
             none:           %(key.msg.setting.linkOption.tile)|
             button:         %(key.msg.setting.linkOption.button)|
             button-full:    %(key.msg.setting.linkOption.button-full)|
+            button-sm:      %(key.msg.setting.linkOption.button-sm)|
             text:           %(key.msg.setting.linkOption.text)|
             heading:        %(key.msg.setting.linkOption.heading)|
         ]]></WidgetConfig>

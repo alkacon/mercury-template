@@ -19,10 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsFormConfigParser;
-import alkacon.mercury.webform.CmsFormUgcConfiguration;
-import alkacon.mercury.webform.CmsFormUgcConfigurationReader;
-import alkacon.mercury.webform.CmsWebformModuleAction;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsGroup;
 import org.opencms.file.CmsObject;

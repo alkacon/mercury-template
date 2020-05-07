@@ -20,6 +20,7 @@
 package alkacon.mercury.template.subscriptionmanagement;
 
 import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
+
 import org.opencms.i18n.CmsMessageContainer;
 
 import java.util.Collections;

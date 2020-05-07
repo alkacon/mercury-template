@@ -21,7 +21,7 @@ package alkacon.mercury.webform.fields;
 
 import alkacon.mercury.webform.CmsFormHandler;
 import alkacon.mercury.webform.I_CmsFormMessages;
-import alkacon.mercury.webform.fields.A_CmsField;
+
 import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.util.CmsStringUtil;

@@ -19,6 +19,8 @@
 
 package alkacon.mercury.webform;
 
+import alkacon.mercury.template.csv.CmsCsvWriter;
+
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsMessages;
@@ -34,8 +36,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
-
-import alkacon.mercury.template.csv.CmsCsvWriter;
 
 /**
  * Helper class to export form data as CSV file that can be opened with Excel and LibreOffice correctly.

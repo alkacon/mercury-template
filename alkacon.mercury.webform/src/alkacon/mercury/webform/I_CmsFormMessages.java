@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsForm;
-
 /** Interface with constants for all message keys used by forms. These should be contained in the bundle "{@link CmsForm#MODULE_NAME}.workplace". */
 public interface I_CmsFormMessages {
 

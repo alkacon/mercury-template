@@ -19,10 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.fields.CmsFieldItem;
-import alkacon.mercury.webform.fields.CmsHiddenField;
-import alkacon.mercury.webform.fields.I_CmsField;
-
 import java.util.Iterator;
 
 /**

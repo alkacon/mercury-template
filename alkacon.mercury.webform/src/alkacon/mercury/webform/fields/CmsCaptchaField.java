@@ -19,6 +19,10 @@
 
 package alkacon.mercury.webform.fields;
 
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
+import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
+
 import org.opencms.flex.CmsFlexController;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.jsp.CmsJspActionElement;
@@ -43,10 +47,6 @@ import com.octo.captcha.service.CaptchaService;
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
 import com.octo.captcha.service.text.TextCaptchaService;
-
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
-import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
 
 /**
  * Creates captcha images and validates the phrases submitted by a request parameter.<p>

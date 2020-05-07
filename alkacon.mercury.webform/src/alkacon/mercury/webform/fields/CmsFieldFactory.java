@@ -19,24 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.fields.A_CmsField;
-import alkacon.mercury.webform.fields.CmsCheckboxField;
-import alkacon.mercury.webform.fields.CmsEmailField;
-import alkacon.mercury.webform.fields.CmsEmailSelectionField;
-import alkacon.mercury.webform.fields.CmsEmptyField;
-import alkacon.mercury.webform.fields.CmsFieldFactory;
-import alkacon.mercury.webform.fields.CmsFileUploadField;
-import alkacon.mercury.webform.fields.CmsHiddenField;
-import alkacon.mercury.webform.fields.CmsPagingField;
-import alkacon.mercury.webform.fields.CmsParameterField;
-import alkacon.mercury.webform.fields.CmsPasswordField;
-import alkacon.mercury.webform.fields.CmsPrivacyField;
-import alkacon.mercury.webform.fields.CmsRadioButtonField;
-import alkacon.mercury.webform.fields.CmsSelectionField;
-import alkacon.mercury.webform.fields.CmsTextField;
-import alkacon.mercury.webform.fields.CmsTextareaField;
-import alkacon.mercury.webform.fields.I_CmsField;
-import alkacon.mercury.webform.fields.Messages;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 

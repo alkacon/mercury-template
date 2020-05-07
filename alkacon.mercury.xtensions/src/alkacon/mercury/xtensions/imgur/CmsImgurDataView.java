@@ -360,7 +360,7 @@ public class CmsImgurDataView implements I_CmsDataView {
      */
     public void initialize(CmsObject cms, String configData, Locale locale) {
 
-        this.m_imgurID = configData;
+        m_imgurID = configData;
     }
 
     /**

@@ -24,10 +24,10 @@ package alkacon.mercury.webform.fields;
  */
 public interface I_CmsHasHiddenFieldHtml {
 
-    /** 
+    /**
      * Generates the hidden field HTML.<p>
      *
-     * @return the hidden field HTML 
+     * @return the hidden field HTML
      */
     String getHiddenFieldHtml();
 

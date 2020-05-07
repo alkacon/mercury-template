@@ -19,7 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsHtmlToTextConverter;
 import org.opencms.util.CmsHtmlParser;
 import org.opencms.util.CmsStringUtil;
 

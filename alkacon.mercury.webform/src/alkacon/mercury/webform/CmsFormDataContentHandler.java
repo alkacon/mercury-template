@@ -19,7 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsFormDataBean;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsProperty;

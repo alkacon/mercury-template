@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.fields.CmsSelectWidgetXmlcontentType;
-import alkacon.mercury.webform.fields.Messages;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsProperty;
 import org.opencms.file.CmsPropertyDefinition;
@@ -592,7 +590,7 @@ public class CmsSelectWidgetXmlcontentType extends CmsSelectWidget {
                 // As a CmsResourceFilter is somewhat limited we have to do several reads
                 // for each resourceType we allow:
                 int resType;
-                Iterator<Integer> itResTypes = this.m_resourceTypeIDs.iterator();
+                Iterator<Integer> itResTypes = m_resourceTypeIDs.iterator();
                 while (itResTypes.hasNext()) {
                     resType = (itResTypes.next()).intValue();
                     CmsResourceFilter filter = CmsResourceFilter.ALL.addRequireType(resType);
@@ -888,12 +886,12 @@ public class CmsSelectWidgetXmlcontentType extends CmsSelectWidget {
                 // if setResourceType will be implemented copy here and invoke that one
                 String resType = "n/a";
                 try {
-                    this.m_resourceTypeIDs = new LinkedList<>();
+                    m_resourceTypeIDs = new LinkedList<>();
                     List<String> types = CmsStringUtil.splitAsList(value, ',');
                     Iterator<String> itTypes = types.iterator();
                     while (itTypes.hasNext()) {
                         resType = itTypes.next();
-                        this.m_resourceTypeIDs.add(
+                        m_resourceTypeIDs.add(
                             new Integer(OpenCms.getResourceManager().getResourceType(resType).getTypeId()));
                     }
                 } catch (CmsLoaderException e) {

@@ -55,12 +55,13 @@ public class CmsImgurDataItem implements I_CmsDataViewItem {
      * @param aID album id
      */
     public CmsImgurDataItem(String id, String image, String description, String title, Boolean isAlbum, String aID) {
-        this.m_description = description;
-        this.m_id = id;
-        this.m_image = image;
-        this.m_title = title;
-        this.m_isAlbum = isAlbum;
-        this.m_albumID = aID;
+
+        m_description = description;
+        m_id = id;
+        m_image = image;
+        m_title = title;
+        m_isAlbum = isAlbum;
+        m_albumID = aID;
 
     }
 

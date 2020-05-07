@@ -19,7 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.LogMessages;
 import org.opencms.i18n.A_CmsMessageBundle;
 import org.opencms.i18n.I_CmsMessageBundle;
 

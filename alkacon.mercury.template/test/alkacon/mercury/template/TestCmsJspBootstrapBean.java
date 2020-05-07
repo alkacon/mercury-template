@@ -19,9 +19,10 @@
 
 package alkacon.mercury.template;
 
+import alkacon.mercury.test.AllTests;
+
 import org.opencms.test.OpenCmsTestProperties;
 
-import alkacon.mercury.test.AllTests;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -113,7 +114,9 @@ public class TestCmsJspBootstrapBean extends TestCase {
         bb.addLayer("col-xs-12");
         bb.addLayer("hidden-md");
         System.out.println(bb.toString());
-        assertEquals("xs=345px(100.00%) sm=510px(100.00%) md=0px(0.00%) lg=940px(100.00%) xl=1140px(100.00%)", bb.toString());
+        assertEquals(
+            "xs=345px(100.00%) sm=510px(100.00%) md=0px(0.00%) lg=940px(100.00%) xl=1140px(100.00%)",
+            bb.toString());
     }
 
     /**
@@ -126,19 +129,25 @@ public class TestCmsJspBootstrapBean extends TestCase {
         bb.addLayer("col-xs-12");
         bb.addLayer("tile-sm-6 tile-md-3 tile-lg-3");
         System.out.println(bb.toString());
-        assertEquals("xs=345px(100.00%) sm=240px(50.00%) md=158px(25.00%) lg=213px(25.00%) xl=263px(25.00%)", bb.toString());
+        assertEquals(
+            "xs=345px(100.00%) sm=240px(50.00%) md=158px(25.00%) lg=213px(25.00%) xl=263px(25.00%)",
+            bb.toString());
 
         bb = new CmsJspBootstrapBean();
         bb.addLayer("col-md-8 hidden-md");
         bb.addLayer("tile-sm-6 tile-md-3 tile-lg-3");
         System.out.println(bb.toString());
-        assertEquals("xs=345px(100.00%) sm=240px(50.00%) md=0px(0.00%) lg=132px(16.67%) xl=165px(16.67%)", bb.toString());
+        assertEquals(
+            "xs=345px(100.00%) sm=240px(50.00%) md=0px(0.00%) lg=132px(16.67%) xl=165px(16.67%)",
+            bb.toString());
 
         bb = new CmsJspBootstrapBean();
         bb.addLayer("col-lg-6");
         bb.addLayer("square-md-6 square-lg-6");
         System.out.println(bb.toString());
-        assertEquals("xs=345px(100.00%) sm=510px(100.00%) md=345px(50.00%) lg=213px(25.00%) xl=263px(25.00%)", bb.toString());
+        assertEquals(
+            "xs=345px(100.00%) sm=510px(100.00%) md=345px(50.00%) lg=213px(25.00%) xl=263px(25.00%)",
+            bb.toString());
     }
 
 }

@@ -19,7 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.fields.CmsFieldItem;
 import org.opencms.main.CmsLog;
 import org.opencms.util.CmsStringUtil;
 
@@ -143,11 +142,11 @@ public class CmsFieldItem {
         return m_value;
     }
 
-    /** 
+    /**
      * Computes a hash code from the given value.<p>
-     * 
-     * @param value the value 
-     * @return the hash of the value 
+     *
+     * @param value the value
+     * @return the hash of the value
      */
     public static final String getHash(String value) {
 
@@ -165,8 +164,8 @@ public class CmsFieldItem {
 
     /**
      * Returns a hash code of the value.<p>
-     * 
-     * @return the hash code 
+     *
+     * @return the hash code
      */
     public String getValueHash() {
 

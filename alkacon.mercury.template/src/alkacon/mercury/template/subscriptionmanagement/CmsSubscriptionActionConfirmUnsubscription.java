@@ -19,6 +19,8 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
+import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
+
 import org.opencms.i18n.CmsMessageContainer;
 import org.opencms.main.CmsLog;
 
@@ -26,8 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
-
-import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
 
 /** Action to unsubscribe a webuser when he confirms a requested unsubscription. */
 public class CmsSubscriptionActionConfirmUnsubscription implements I_CmsSubscriptionAction {

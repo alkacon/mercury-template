@@ -21,7 +21,7 @@ package alkacon.mercury.webform.fields;
 
 import alkacon.mercury.webform.CmsForm;
 import alkacon.mercury.webform.CmsFormContentUtil;
-import alkacon.mercury.webform.fields.CmsSelectFieldWidget;
+
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsMessages;

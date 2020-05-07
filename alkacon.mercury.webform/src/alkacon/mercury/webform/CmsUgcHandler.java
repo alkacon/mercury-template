@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsFormDataBean;
-import alkacon.mercury.webform.CmsFormUgcConfiguration;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsProject;
 import org.opencms.file.CmsResource;
@@ -57,6 +55,7 @@ public class CmsUgcHandler {
         Map<String, String> data,
         boolean isWaitList)
     throws CmsUgcException {
+
         m_session = CmsUgcSessionFactory.getInstance().createSession(cms, req, config);
         m_data = data;
         m_data.put(CmsFormDataBean.PATH_WAITLIST_NOTIFICATION, String.valueOf(isWaitList));

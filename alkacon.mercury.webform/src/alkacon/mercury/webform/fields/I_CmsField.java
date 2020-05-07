@@ -20,9 +20,7 @@
 package alkacon.mercury.webform.fields;
 
 import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.fields.CmsFieldItem;
-import alkacon.mercury.webform.fields.CmsFieldText;
-import alkacon.mercury.webform.fields.I_CmsField;
+
 import org.opencms.i18n.CmsMessages;
 
 import java.util.List;
@@ -60,11 +58,11 @@ public interface I_CmsField {
 
     /**
      * Decodes a field value read from the request.<p>
-     * 
+     *
      * This is only needed if the form of the field value used on the client should be different from that on the server.<p>
-     * 
-     * @param codeValue the (possibly encoded/encrypted) field value from the request 
-     * @return the decoded value 
+     *
+     * @param codeValue the (possibly encoded/encrypted) field value from the request
+     * @return the decoded value
      */
     String decodeValue(String codeValue);
 

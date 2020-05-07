@@ -19,7 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsFormHandler;
 import org.opencms.file.CmsObject;
 
 /**

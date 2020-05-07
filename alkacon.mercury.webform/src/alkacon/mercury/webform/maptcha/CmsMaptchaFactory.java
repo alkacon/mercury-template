@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform.maptcha;
 
-import alkacon.mercury.webform.maptcha.CmsMaptcha;
-
 import java.security.SecureRandom;
 import java.util.Locale;
 import java.util.Random;

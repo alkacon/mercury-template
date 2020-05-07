@@ -21,6 +21,7 @@ package alkacon.mercury.template.subscriptionmanagement;
 
 import alkacon.mercury.template.mail.I_CmsPreconfiguredMail;
 import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
+
 import org.opencms.file.CmsObject;
 import org.opencms.i18n.CmsMessageContainer;
 import org.opencms.main.CmsLog;

@@ -19,9 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.CmsWebformDefaultActionHandler;
-import alkacon.mercury.webform.I_CmsWebformActionHandler;
 import org.opencms.file.CmsObject;
 import org.opencms.main.CmsLog;
 

@@ -42,7 +42,7 @@ public class CmsMaptcha extends TextCaptcha {
     CmsMaptcha(String questionMath, String challengeMath, String response) {
 
         super(questionMath, challengeMath);
-        this.m_response = response;
+        m_response = response;
     }
 
     /**
@@ -68,6 +68,6 @@ public class CmsMaptcha extends TextCaptcha {
      */
     private Boolean validateResponse(final String response) {
 
-        return Boolean.valueOf(response.equals(this.m_response));
+        return Boolean.valueOf(response.equals(m_response));
     }
 }

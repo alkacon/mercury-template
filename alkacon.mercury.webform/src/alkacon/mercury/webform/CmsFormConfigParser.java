@@ -43,6 +43,7 @@ public class CmsFormConfigParser {
         Locale locale,
         CmsMacroResolver resolver,
         Map<String, String> dynamicConfig) {
+
         m_cms = cms;
         m_xmlConfig = xmlConfig;
         m_locale = locale;

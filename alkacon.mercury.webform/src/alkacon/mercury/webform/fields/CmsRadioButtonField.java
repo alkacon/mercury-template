@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.fields.A_CmsField;
-
 /**
  * Represents a radio button.<p>
  */

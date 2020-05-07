@@ -19,6 +19,9 @@
 
 package alkacon.mercury.webform.captcha;
 
+import alkacon.mercury.webform.CmsForm;
+import alkacon.mercury.webform.CmsFormContentUtil;
+
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.i18n.CmsEncoder;
@@ -46,9 +49,6 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.logging.Log;
-
-import alkacon.mercury.webform.CmsForm;
-import alkacon.mercury.webform.CmsFormContentUtil;
 
 /**
  * Stores the settings to render captcha images.<p>
@@ -947,7 +947,7 @@ public final class CmsCaptchaSettings implements Cloneable {
      */
     public void setMathField(boolean mathField) {
 
-        this.m_mathField = mathField;
+        m_mathField = mathField;
     }
 
     /**

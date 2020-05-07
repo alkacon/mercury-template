@@ -20,7 +20,6 @@
 package alkacon.mercury.webform.maptcha;
 
 import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
-import alkacon.mercury.webform.maptcha.CmsMaptchaEngine;
 
 import com.octo.captcha.service.captchastore.MapCaptchaStore;
 import com.octo.captcha.service.multitype.GenericManageableCaptchaService;

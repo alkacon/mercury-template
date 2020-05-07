@@ -19,7 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.CmsFormContentUtil;
 import org.opencms.file.CmsObject;
 import org.opencms.main.CmsLog;
 import org.opencms.xml.CmsXmlException;

@@ -19,10 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.fields.CmsFieldItem;
-import alkacon.mercury.webform.fields.CmsSelectionField;
-import alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml;
-
 /**
  * Selection field which does not send the actual option values to the client, but only their MD5 hashes.
  */
@@ -30,8 +26,8 @@ public class CmsEmailSelectionField extends CmsSelectionField implements I_CmsHa
 
     /**
      * Gets the static type.<p>
-     * 
-     * @return the type 
+     *
+     * @return the type
      */
     public static final String getStaticType() {
 

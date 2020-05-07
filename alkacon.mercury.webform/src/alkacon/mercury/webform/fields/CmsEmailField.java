@@ -19,7 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.fields.CmsTextField;
 import org.opencms.util.CmsStringUtil;
 
 /**

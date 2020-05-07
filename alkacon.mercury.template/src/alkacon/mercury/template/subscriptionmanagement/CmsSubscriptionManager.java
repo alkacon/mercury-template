@@ -427,7 +427,7 @@ public class CmsSubscriptionManager {
      *
      * @param email the email address of the user to register
      * @param groupName the name of the group the user should be registered for
-    
+
      * @return <code>true</code> if the user either is already active in the group or the user was created and got the
      *  correct registration information attached. <code>false</code> otherwise.
      */
@@ -552,7 +552,7 @@ public class CmsSubscriptionManager {
      *
      * @param email the email address of the user to register
      * @param groupName the name of the group the user should be registered for
-    
+
      * @return <code>true</code> if the user either is already active in the group or the user was created and got the
      *  correct registration information attached. <code>false</code> otherwise.
      */

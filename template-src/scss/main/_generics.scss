@@ -202,26 +202,6 @@
     }
 }
 
-// Responsive alignment of some types
-
-@each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-        .align#{$infix}-right  {
-            &.piece.full {
-                text-align: right;
-            }
-            &.ls-row {
-                > ul {
-                    display: inline-block;
-                    float: right;
-                }
-            }
-        }
-    }
-}
-
 // Margins and paddings
 
 @each $space in $margins-paddings {
@@ -289,6 +269,30 @@
     .mv-neg-#{$space},
     .mb-neg-#{$space} {
         margin-bottom: -#{$rem-space} !important;
+    }
+}
+
+// Responsive alignment of some types
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        .align#{$infix}-right  {
+            &.piece.full {
+                text-align: right;
+            }
+            &.ls-row {
+                > ul {
+                    display: inline-block;
+                    float: right;
+                }
+            }
+        }
+
+        .mb-0#{$infix} {
+            margin-bottom: 0 !important;
+        }
     }
 }
 

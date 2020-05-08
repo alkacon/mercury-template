@@ -383,6 +383,7 @@ $fh-meta-bg-color:                  none !default; // background color of the me
 $fh-meta-color:                     check-text-color($fh-meta-bg-color, $nav-header-text) !default; // font color for meta / service links
 $fh-meta-hover-color:               check-text-color($fh-meta-bg-color, $nav-header-text-hover) !default; // font hover color for meta / service links
 $fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
+$fh-title-font-size:                $h4-font-size !default; // font size for title in header
 $fh-title-bg-color:                 none !default; // background color of the title
 $fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
 $fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL

@@ -271,7 +271,7 @@
                 @include heading-base;
                 padding-top: $default-margin-verysmall;
                 padding-bottom: $default-margin-verysmall;
-                font-size: $h4-font-size;
+                font-size: $fh-title-font-size;
                 line-height: 1.2;
                 width: 100%;
             }
@@ -1018,7 +1018,7 @@
                     flex-basis: auto;
                     flex-grow: 10;
                     justify-content: center;
-                    font-size: $h4-font-size;
+                    font-size: $fh-title-font-size;
                     line-height: 1;
                     text-align: right;
                 }

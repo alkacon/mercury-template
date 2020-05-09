@@ -158,14 +158,19 @@ a {
     }
 }
 
-@if ($color-linked-headings-on-hover) {
+@if (($linked-headings-color != none) or ($linked-headings-decoration != none)) {
     a {
         &:hover {
             h1, h2, h3, h4, h5, h6 {
-                @include media-breakpoint-up(md) {
-                    @include color-transition;
+                @if ($linked-headings-color != none) {
+                    @include media-breakpoint-up(md) {
+                        @include color-transition;
+                    }
+                    color: $linked-headings-color;
                 }
-                color: $link-hover-color;
+                @if ($linked-headings-decoration != none) {
+                    text-decoration: $linked-headings-decoration;
+                }
             }
         }
     }

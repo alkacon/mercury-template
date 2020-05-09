@@ -202,7 +202,8 @@ $focus-outline-color:               $main-theme-hover !default;
 $content-bg:                        $body-bg !default;
 $highlight-color:                   $grey-lighter !default;
 $image-bg-color:                    #f6f6f6 !default;
-$color-linked-headings-on-hover:    false !default;
+$linked-headings-color:             none !default;
+$linked-headings-decoration:        none !default;
 
 $default-transition-time:           0.33s !default; // default timing for animation effects
 

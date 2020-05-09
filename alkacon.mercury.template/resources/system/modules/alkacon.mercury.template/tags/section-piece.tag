@@ -123,7 +123,7 @@
 
         <jsp:attribute name="heading">
             <c:if test="${showHeading}">
-                <mercury:link link="${link}" css="piece-heading-link" test="${linkHeading}">
+                <mercury:link link="${link}" css="piece-heading-link" test="${linkHeading}" setTitle="true">
                     <mercury:heading text="${heading}" level="${hsize}" ade="${linkHeading ? false : ade}" css="piece-heading" />
                 </mercury:link>
             </c:if>

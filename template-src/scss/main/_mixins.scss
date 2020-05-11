@@ -347,7 +347,6 @@
     @if ($nav-menu-font-family != $font-family-base) {
         font-family: $nav-menu-font-family;
     }
-    padding: $nav-menu-padding;
 
     &:hover {
         text-decoration: none;

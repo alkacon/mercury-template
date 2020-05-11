@@ -108,13 +108,19 @@
                     <c:set var="menuType" value="${menuType.concat('mega')}" />
                 </c:if>
             </c:if>
+            <c:set var="hasMegaMenu" value="${not empty megaMenu}" />
 
-            <c:if test="${startSubMenu}">
-                <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
-                <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
-                <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
-                <c:set var="lastNavLevel" value="${navElem}" />
-            </c:if>
+            <c:choose>
+                <c:when test="${startSubMenu}">
+                    <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
+                    <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
+                    <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
+                    <c:set var="lastNavLevel" value="${navElem}" />
+                </c:when>
+                <c:when test="${hasMegaMenu}">
+                    <c:set var="targetMenuId">mega${instanceId}_${i}</c:set>
+                </c:when>
+            </c:choose>
 
             <c:choose>
                 <c:when test="${(not empty lastNavLevel) and fn:startsWith(navElem.info, '#')}">
@@ -126,7 +132,7 @@
             </c:choose>
 
             <c:set var="menuType" value="${empty menuType ? '' : ' class=\"'.concat(menuType).concat('\"')}" />
-            <c:set var="menuType" value="${startSubMenu ? menuType.concat(' aria-expanded=\"false\"') : menuType}" />
+            <c:set var="menuType" value="${startSubMenu or hasMegaMenu ? menuType.concat(' aria-expanded=\"false\"') : menuType}" />
 
             <c:out value='<li${menuType}${megaMenu}>${empty menuType ? "" : nl}' escapeXml="false" />
 
@@ -134,7 +140,7 @@
                 ? navElem.title : navElem.navText}" />
 
             <c:choose>
-                <c:when test="${startSubMenu and navElem.navigationLevel}">
+                <c:when test="${(startSubMenu and navElem.navigationLevel) or hasMegaMenu}">
                     <%-- Navigation item with sub-menu but without direct child pages --%>
                     <a href="${navLink}"${navTarget}${' '}<%--
                     --%>id="${parentLabelId}"${' '}<%--
@@ -153,9 +159,14 @@
             --%></c:otherwise>
             </c:choose>
 
-            <c:if test="${startSubMenu}">
-               <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-labelledby="${parentLabelId}">${nl}' escapeXml="false" />
-            </c:if>
+            <c:choose>
+                <c:when test="${startSubMenu}">
+                   <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-labelledby="${parentLabelId}">${nl}' escapeXml="false" />
+                </c:when>
+                <c:when test="${hasMegaMenu}">
+                   <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-labelledby="${parentLabelId}"></ul>' escapeXml="false" />
+                </c:when>
+            </c:choose>
 
             <c:if test="${nextLevel < navElem.navTreeLevel}">
                 <c:forEach begin="1" end="${navElem.navTreeLevel - nextLevel}" >

@@ -125,6 +125,7 @@
         @include media-breakpoint-down(md) {
             .mega .nav-mega-menu {
                 // for mobile, hide all elements from mega menu that are not navigations
+                .teaser,
                 .element:not(.type-nav-side):not(.ls-navigation) {
                     display: none;
                 }
@@ -949,6 +950,7 @@
             @include media-breakpoint-down(md) {
                 .mega .nav-mega-menu {
                     // for mobile, hide all elements from mega menu that are not navigations
+                    .teaser,
                     .element:not(.type-nav-side):not(.ls-navigation) {
                         display: none;
                     }

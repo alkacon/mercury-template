@@ -29,7 +29,7 @@
 <c:set var="ade"                    value="${true}" />
 
 <%-- Check API key --%>
-<c:set var="apiKey" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['osm.apikey']}" />/>
+<c:set var="apiKey" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['osm.apikey']}" />
 <c:choose>
     <c:when test="${apiKey eq 'google'}">
         <c:set var="provider" 	value="google" />

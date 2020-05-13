@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "11.1.0",
   "name": "mercury-template",
   "description": "The Alkacon Mercury template for OpenCms.",
   "author": "Alkacon Software GmbH & Co. KG - http://www.alkacon.com",
@@ -30,11 +30,11 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "bootstrap": "4.4.1",
+    "bootstrap": "4.5.0",
     "current-device": "0.10.0",
     "fitvids": "2.1.1",
     "flatpickr": "4.6.3",
-    "jquery": "3.4.1",
+    "jquery": "3.5.1",
     "js-cookie": "2.2.1",
     "lazysizes": "5.2.0",
     "mapbox-gl": "1.10.0",

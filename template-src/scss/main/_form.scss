@@ -497,17 +497,37 @@
     }
 
     // disabled state
-    .input.state-disabled input,
-    .select.state-disabled,
-    .textarea.state-disabled,
-    .radio.state-disabled,
-    .checkbox.state-disabled,
-    .toggle.state-disabled,
-    .button.state-disabled {
-        cursor: default;
-        opacity: 0.5;
+    .state-disabled {
+        &.input input,
+        &.select,
+        &.textarea,
+        &.radio,
+        &.checkbox,
+        &.toggle,
+        &.button{
+            cursor: default;
+            opacity: 0.5;
+        }
     }
 
+    // disabled state (only cursor)
+    .state-disabled-alt {
+        &.input input,
+        &.select,
+        &.textarea,
+        &.radio,
+        &.checkbox,
+        &.toggle,
+        &.button {
+            cursor: default;
+        }
+        &.radio,
+        &.checkbox {
+            input:checked + i::after {
+                color: $form-radio-unchecked-color;
+            }
+        }
+    }
     // captcha
     .input {
         .captcha {

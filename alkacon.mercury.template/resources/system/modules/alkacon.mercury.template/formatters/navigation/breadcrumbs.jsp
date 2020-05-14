@@ -38,25 +38,29 @@
                 <cms:jsonarray var="breadCrumbJson">
 
                     <c:forEach var="navElem" items="${navItems}" varStatus="status">
-                        <c:if test="${((breadcrumbsIncludeHidden or (status.last and not cms.detailRequest)) and (navElem.navPosition > 0)) or (navElem.info ne 'ignoreInDefaultNav')}">
+                        <c:if test="${
+                            ((breadcrumbsIncludeHidden or (status.last and not cms.detailRequest)) and (navElem.navPosition > 0))
+                            or (navElem.info ne 'ignoreInDefaultNav')}">
                             <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
                                 ? navElem.title : navElem.navText}" />
                             <c:if test="${!empty navText}">
                                 <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
+                                <c:if test="${navLink ne lastNavLink}">
+                                    <c:set var="lastNavLink" value="${navLink}" />
+                                    <c:out value='<li><a href="${navLink}">' escapeXml="false" />
+                                    <c:out value='${navText}' escapeXml="true" />
+                                    <c:out value='</a></li>' escapeXml="false" />
+                                    <mercury:nl />
 
-                                <c:out value='<li><a href="${navLink}">' escapeXml="false" />
-                                <c:out value='${navText}' escapeXml="true" />
-                                <c:out value='</a></li>' escapeXml="false" />
-                                <mercury:nl />
+                                    <cms:jsonobject>
+                                        <cms:jsonvalue key="@type" value="ListItem" />
+                                        <cms:jsonvalue key="position" value="${currNavPos}" />
+                                        <cms:jsonvalue key="name" value="${navText}" />
+                                        <cms:jsonvalue key="item" value="${cms.site.url}${navLink}" />
+                                    </cms:jsonobject>
 
-                                <cms:jsonobject>
-                                    <cms:jsonvalue key="@type" value="ListItem" />
-                                    <cms:jsonvalue key="position" value="${currNavPos}" />
-                                    <cms:jsonvalue key="name" value="${navText}" />
-                                    <cms:jsonvalue key="item" value="${cms.site.url}${navLink}" />
-                                </cms:jsonobject>
-
-                                <c:set var="currNavPos" value="${currNavPos + 1}" />
+                                    <c:set var="currNavPos" value="${currNavPos + 1}" />
+                                </c:if>
                             </c:if>
                         </c:if>
                     </c:forEach>

@@ -47,6 +47,9 @@ function addPiwik(piwikData) {
     } else if (piwikData.url.indexOf("https://") == 0) {
         piwikData.url = piwikData.url.substring(8, piwikData.url.length);
     }
+    if (piwikData.url.endsWith("/")) {
+        piwikData.url = piwikData.url.substring(0, piwikData.url.length - 1);
+    }
     if (DEBUG) console.info("addPiwikAnalytics() initializing Piwik using url: " + piwikData.url + " and id: " + piwikData.id);
 
     // see: https://developer.piwik.org/guides/tracking-javascript-guide

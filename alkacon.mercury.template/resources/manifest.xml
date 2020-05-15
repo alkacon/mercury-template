@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.161</version>
+		<version>11.0.1.162</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -573,7 +573,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -623,7 +623,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(instancedate,cssgrid);no-params=(formsubmit,formmanage)]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(instancedate,cssgrid);no-params=(formsubmit,formmanage);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -673,7 +673,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -723,7 +723,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -773,7 +773,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -823,7 +823,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -1250,7 +1250,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -2028,7 +2028,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -2526,7 +2526,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -2699,7 +2699,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -2870,7 +2870,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale]]></value>
+					<value><![CDATA[container-element;locale;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -2920,7 +2920,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale]]></value>
+					<value><![CDATA[container-element;locale;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -3020,7 +3020,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -3120,7 +3120,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri]]></value>
+					<value><![CDATA[container-element;locale;uri;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -3228,7 +3228,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale]]></value>
+					<value><![CDATA[container-element;locale;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4066,7 +4066,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4087,7 +4087,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale]]></value>
+					<value><![CDATA[container-element;locale;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4137,7 +4137,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4233,7 +4233,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4283,7 +4283,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4379,7 +4379,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4485,7 +4485,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri]]></value>
+					<value><![CDATA[container-element;locale;uri;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4535,7 +4535,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;no-params]]></value>
+					<value><![CDATA[container-element;locale;uri;no-params;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -5078,7 +5078,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri]]></value>
+					<value><![CDATA[container-element;locale;uri;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -5132,7 +5132,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri]]></value>
+					<value><![CDATA[container-element;locale;uri;user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

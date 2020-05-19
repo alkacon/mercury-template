@@ -321,6 +321,13 @@
 
             <c:set var="linkattr">itemprop="url"</c:set>
             <c:if test="${showWebsite}">
+                <c:set var="websiteURL" value="${data.value.Website.toLink}" />
+                <c:if test="${fn:startsWith(websiteURL, '/')}">
+                    <c:set var="websiteURL" value="${cms.site.url}${websiteURL}" />
+                </c:if>
+                <c:if test="${fn:endsWith(websiteURL, '/')}">
+                    <c:set var="websiteURL" value="${fn:substring(websiteURL, 0, fn:length(websiteURL)-1)}"/>
+                </c:if>
                 <div class="${showMinLabels ? 'website' : 'website tablerow'}"><%----%>
                      <c:if test="${not showMinLabels}">
                         <mercury:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">
@@ -328,7 +335,7 @@
                         </mercury:icon-prefix>
                     </c:if>
                     <span><%----%>
-                         <mercury:link link="${data.value.Website}" attr="${linkattr}">${data.value.Website.toLink}</mercury:link><%----%>
+                         <mercury:link link="${data.value.Website}" attr="${linkattr}">${websiteURL}</mercury:link><%----%>
                     </span><%----%>
                 </div><%----%>
                 <c:set var="linkattr" value="" />

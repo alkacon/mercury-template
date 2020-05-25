@@ -274,7 +274,7 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
                 list.$editbox.hide();
             } else {
                 // fade out the load more button
-                list.$element.find('.loadMore').addClass("fadeOut");
+                list.$element.find('.btn-append').addClass("fadeOut");
                 // we don't need to calculate facets again if we do not reload all entries
                 ajaxOptions = "&hideOptions=true&";
             }
@@ -584,7 +584,7 @@ function generatePagination(list, page) {
         } else if (list.option === 'append' && page < lastPage) {
             // show the button to append more results.
             result.push('<div class="list-append-position" data-dynamic="false">');
-            result.push('<button class="loadMore btn btn-sm btn-block animated" onclick="DynamicList.appendPage(\'');
+            result.push('<button class="btn btn-append" onclick="DynamicList.appendPage(\'');
             result.push(listId);
             result.push('\',');
             result.push(page + 1);
@@ -794,7 +794,7 @@ function handleAutoLoaders() {
                 // NOTE: jQuery.visible() is defined in jquery-extensions.js
                 && appendPosition.visible()) {
 
-                updateInnerList(list.id, list.$element.find('.loadMore').attr('data-load'), false);
+                updateInnerList(list.id, list.$element.find('.btn-append').attr('data-load'), false);
             }
         }
     }

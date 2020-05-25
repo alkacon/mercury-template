@@ -37,6 +37,9 @@
 <%@ attribute name="noscriptCall" type="java.lang.Boolean" required="false"
     description="Indicates if this tag is used from inside a NOSCRIPT html tag." %>
 
+<%@ attribute name="addContentInfo" type="java.lang.Boolean" required="false"
+    description="Controls if the list content info required for finding deleted items when publishing 'this page' is added to the generated HTML. Default is 'false'." %>
+
 
 <%@ variable name-given="search" scope="AT_END" declare="true" variable-class="org.opencms.jsp.search.result.I_CmsSearchResultWrapper"
     description="The search result given from the search tag." %>
@@ -57,6 +60,7 @@
     config="${config}"
     subsite="${subsite}"
     count="${count}"
+    addContentInfo="${addContentInfo}"
 />
 
 <c:if test="${search.numFound > 0}">

@@ -156,6 +156,15 @@
             --%>data-list='${listData}'<%--
         --%>><mercury:nl />
 
+            <c:if test="${not cms.isOnlineProject}">
+                <mercury:list-search
+                    config="${content}"
+                    subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
+                    count="0"
+                    addContentInfo="${true}"
+                />
+            </c:if>
+
             ${'<'}${listTag} class="list-entries ${settings.listWrapper}" ${minHeightCss}${'>'}
                 <mercury:list-main
                     elementId="${elementId}"
@@ -164,8 +173,8 @@
                     count="${count}"
                     locale="${cms.locale}"
                     settings="${settings}"
-                    ajaxCall="false"
-                    noscriptCall="false"
+                    ajaxCall="${false}"
+                    noscriptCall="${false}"
                     pageUri="${cms.requestContext.folderUri}"
                     subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
                 />

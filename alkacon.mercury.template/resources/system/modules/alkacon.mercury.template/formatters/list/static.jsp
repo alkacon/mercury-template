@@ -40,7 +40,7 @@
         <c:set var="instanceId"><mercury:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
 
         <div class="list-box ${settings.listBoxWrapper}"><%----%>
-		<mercury:nl />
+        <mercury:nl />
 
             <%-- ####### List entries ######## --%>
             ${'<'}${listTag} class="list-entries ${listWrapper}" id="${instanceId}"${'>'}
@@ -50,8 +50,9 @@
                     count="${wrappedSettings.itemsPerPage.isEmpty ? 5 : wrappedSettings.itemsPerPage.toInteger}"
                     settings="${settings}"
                     locale="${cms.locale}"
-                    ajaxCall="false"
-                    noscriptCall="false"
+                    ajaxCall="${false}"
+                    noscriptCall="${false}"
+                    addContentInfo="${true}"
                 />
             ${'</'}${listTag}${'>'}
 

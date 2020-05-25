@@ -14,11 +14,16 @@
     description="The amount of elements per page, if different for multiple pages, pass the page sizes hyphen separated for each page.
      The last size will be the page size for all remaining pages. E.g., use '5-8' to get the first page with five elements, all others with 8." %>
 
+<%@ attribute name="addContentInfo" type="java.lang.Boolean" required="false"
+    description="Controls if the list content info required for finding deleted items when publishing 'this page' is added to the generated HTML. Default is 'false'." %>
+
+
 <%@ variable name-given="search" scope="AT_END" declare="true" variable-class="org.opencms.jsp.search.result.I_CmsSearchResultWrapper"
     description="The results of the search" %>
 
 <%@ variable name-given="searchConfig" scope="AT_END" declare="true"
     description="The configuration string that was used in the search." %>
+
 
 <%@ variable name-given="categoryPaths" scope="AT_END" declare="true" %>
 <%@ variable name-given="categoryFacetField" scope="AT_END" declare="true" %>
@@ -57,7 +62,12 @@
 <%-- ############################################# --%>
 <%-- ####### Perform search based on JSON ######## --%>
 <%-- ############################################# --%>
-<cms:simplesearch configFile="${config.filename}" configString="${searchConfig}" var="searchResultWrapper" addContentInfo="${pageSize != '0'}" />
+<cms:simplesearch
+    var="searchResultWrapper"
+    configFile="${config.filename}"
+    configString="${searchConfig}"
+    addContentInfo="${addContentInfo}"
+/>
 
 <c:set var="search" value="${searchResultWrapper}" />
 <c:set var="categoryFacetController" value="${search.controller.fieldFacets.fieldFacetController[categoryFacetField]}" />

@@ -128,7 +128,8 @@
                 </c:when>
                 <c:when test="${targetLink eq 'opencms://login'}">
                     <c:set var="internal" value="${true}" />
-                    <c:set var="targetLink"><%= org.opencms.main.OpenCms.getSiteManager().getWorkplaceServer() %>/system/login/</c:set>
+                    <c:set var="siteManager" value="<%= org.opencms.main.OpenCms.getSiteManager() %>"/>
+                    <c:set var="targetLink">${siteManager.getWorkplaceServer(cms.vfs.cmsObject)}/system/login/</c:set>
                 </c:when>
             </c:choose>
 

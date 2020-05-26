@@ -351,6 +351,11 @@ aside .list-content,
         }
     }
 
+    .dl-content {
+        hyphens: auto;
+        word-break: break-word;
+    }
+
     .dl-desc p {
         margin-bottom: 0;
     }

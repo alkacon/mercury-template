@@ -142,7 +142,7 @@ a {
 
     &.uncolored {
         & {
-            color: $body-color;
+            color: inherit;
         }
         &:focus,
         &:hover {
@@ -152,7 +152,7 @@ a {
         &.fully {
             &:focus,
             &:hover {
-                color: $body-color;
+                color: inherit;
             }
         }
     }

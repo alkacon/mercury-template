@@ -108,25 +108,33 @@
     <c:choose>
         <c:when test="${not empty targetLink}">
 
+            <c:choose>
+                <c:when test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:')}">
+                    <c:set var="internal" value="${true}" />
+                </c:when>
+                <c:when test="${fn:startsWith(targetLink, 'locale://')}">
+                    <c:set var="targetLocale" value="${fn:substringAfter(targetLink, 'locale://')}" />
+                    <c:choose>
+                        <c:when test="${cms.detailRequest}">
+                            <c:set var="targetLink">
+                                <cms:link locale="${targetLocale}" baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
+                            </c:set>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="targetLink" value="${cms.localeResource[targetLocale].link}" />
+                        </c:otherwise>
+                    </c:choose>
+                    <c:set var="internal" value="${true}" />
+                </c:when>
+                <c:when test="${targetLink eq 'opencms://login'}">
+                    <c:set var="internal" value="${true}" />
+                    <c:set var="targetLink"><%= org.opencms.main.OpenCms.getSiteManager().getWorkplaceServer() %>/system/login/</c:set>
+                </c:when>
+            </c:choose>
+
             <c:set var="createButton" value="${createButton and empty body}" />
-            <c:set var="isLocaleLink" value="${fn:startsWith(targetLink, 'locale://')}" />
-            <c:set var="internal" value="${fn:startsWith(targetLink, '/') or isLocaleLink or fn:startsWith(targetLink, 'javascript:')}" />
             <c:if test="${empty body and not internal and not noExternalMarker}">
                 <c:set var="css" value="${css} external" />
-            </c:if>
-
-            <c:if test="${isLocaleLink}">
-                <c:set var="targetLocale" value="${fn:substringAfter(targetLink, 'locale://')}" />
-                <c:choose>
-                    <c:when test="${cms.detailRequest}">
-                        <c:set var="targetLink">
-                            <cms:link locale="${targetLocale}" baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
-                        </c:set>
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="targetLink" value="${cms.localeResource[targetLocale].link}" />
-                    </c:otherwise>
-                </c:choose>
             </c:if>
 
             <c:choose>

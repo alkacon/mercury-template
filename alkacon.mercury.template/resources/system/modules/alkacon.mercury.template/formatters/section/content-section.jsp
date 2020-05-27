@@ -17,7 +17,8 @@
 <c:set var="cssWrapper"         value="${setting.cssWrapper.toString}" />
 <c:set var="effect"             value="${setting.effect.isSetNotNone ? setting.effect.toString : null}" />
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />
-<c:set var="visualOption"       value="${setting.visualOption.toInteger}" />
+<c:set var="sizeDesktop"        value="${setting.visualOption.toInteger}" />
+<c:set var="sizeMobile"         value="${setting.sizeMobile.isSetNotNone ? setting.sizeMobile.toInteger : null}" />
 <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio.toString}" />
 <c:set var="linkOption"         value="${setting.linkOption.toString}" />
@@ -32,7 +33,8 @@
 <mercury:section-piece
     cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}"
     pieceLayout="${pieceLayout < 10 ? pieceLayout : 4}"
-    sizeDesktop="${visualOption}"
+    sizeDesktop="${sizeDesktop}"
+    sizeMobile="${sizeMobile}"
     heading="${value.Title}"
     image="${value.Image}"
     text="${value.Text}"

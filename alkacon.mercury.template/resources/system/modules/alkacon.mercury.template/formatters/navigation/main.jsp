@@ -89,8 +89,10 @@
             <c:set var="navTarget" value="${fn:trim(navElem.info)eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
             <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
+            <c:set var="isFinalCurrentPage" value="${isCurrentPage and currentPageFolder eq cms.sitePath[navElem.resource.rootPath]}" />
 
             <c:set var="menuType" value="${isCurrentPage ? 'active ' : ''}" />
+            <c:set var="menuType" value="${isFinalCurrentPage ? menuType.concat('final ') : menuType}" />
             <c:set var="menuType" value="${i == 0 ? menuType.concat('nav-first ') : menuType}" />
             <c:set var="menuType" value="${i == navLength ? menuType.concat('nav-last ') : menuType}" />
 

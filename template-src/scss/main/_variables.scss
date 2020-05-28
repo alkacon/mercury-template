@@ -301,7 +301,8 @@ $piece-btn-lg-padding:              $btn-lg-padding !default;
 $piece-text-margin:                 $default-margin-small !default;
 $piece-text-to-link-margin:         $piece-text-margin !default;
 
-$piece-hyphens:                     true !default; // enable hyphenation / word breaks in piece (not all browsers support this)
+$use-hyphens:                       true !default; // enable hyphenation / word breaks (not all browsers support this)
+$piece-hyphens:                     $use-hyphens !default; // enable hyphenation / word breaks specially in piece (not all browsers support this)
 $piece-hyphens-headings:            $piece-hyphens !default; // enable hyphenation / word breaks for piece headline
 $piece-hyphens-headings-xs:         $piece-hyphens-headings !default; // enable hyphenation for XS and SM
 $piece-hyphens-headings-md:         $piece-hyphens-headings !default; // enable hyphenation for MS, LG and XL

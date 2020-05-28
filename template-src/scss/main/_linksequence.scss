@@ -58,6 +58,13 @@
     }
 }
 
+@if $use-hyphens {
+    .type-linksequence {
+        hyphens: auto;
+        word-wrap: break-word;
+    }
+}
+
 .ls-bullets,
 .ls-row {
     ul {

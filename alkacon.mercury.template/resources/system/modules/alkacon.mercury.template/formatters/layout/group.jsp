@@ -51,7 +51,7 @@
 
                 <c:set var="config"             value="${headerConfigElementBeans.get(0)}" />
                 <c:set var="addCssWrapper"      value="${config.setting.cssWrapper.toString}" />
-                <c:set var="logoAlignment"      value="${config.setting.logoAlignment.useDefault('lp-left').toString}" />
+                <c:set var="logoAlignment"      value="${config.setting.logoAlignment.useDefault('lp-l').toString}" />
                 <c:set var="logoSize"           value="${config.setting.logoSize.useDefault('ls-4').toString}" />
                 <c:set var="logoFullSize"       value="${logoSize eq 'ls-12'}" />
                 <c:set var="logoPosCenter"      value="${logoFullSize or (logoAlignment eq 'lp-c')}" />
@@ -59,7 +59,7 @@
                 <c:set var="logoAlignment"      value="${logoPosCenter ? 'lp-c' : logoAlignment}" />
                 <c:set var="logoCols"           value="${fn:substringAfter(logoSize, 'ls-')}" />
                 <c:set var="alignDefault"       value="${logoPosCenter ? 'center' : (logoPosLeft ? 'right' : 'left')}" />
-                <c:set var="logoPadding"        value="${config.setting.logoPadding.useDefault('padding-sm').toString}" />
+                <c:set var="logoPadding"        value="${config.setting.logoPadding.useDefault('pad-sm').toString}" />
                 <c:set var="showMeta"           value="${config.setting.metaDisplay.toString ne 'hide-meta'}" />
                 <c:set var="metaAlignment"      value="${config.setting.metaAlignment.useDefault('meta-right').toString}" />
                 <c:set var="metaAlignment"      value="${metaAlignment eq 'default' ? 'meta-'.concat(alignDefault) : metaAlignment}" />

@@ -44,6 +44,7 @@
             <c:set var="nextLevel" value="${i < navLength ? navItems[i+1].navTreeLevel : navStartLevel}" />
             <c:set var="startSubMenu" value="${nextLevel > navElem.navTreeLevel}" />
             <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
+            <c:set var="isFinalCurrentPage" value="${isCurrentPage and currentPageFolder eq cms.sitePath[navElem.resource.rootPath]}" />
             <c:set var="navTarget" value="${fn:trim(navElem.info) eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
             <c:if test="${startSubMenu}">
@@ -66,7 +67,7 @@
 
             <c:set var="menuType" value="${startSubMenu ? menuType.concat(' aria-expanded=\"false\"') : menuType}" />
 
-            <c:out value="<li${isCurrentPage ? ' class=\"currentpage\"' : ''}>" escapeXml="false" />
+            <c:out value="<li${isCurrentPage ? ' class=\"currentpage'.concat(isFinalCurrentPage ? ' final\"' : '\"') : ''}>" escapeXml="false" />
 
             <c:choose>
                 <c:when test="${startSubMenu and navElem.navigationLevel}">

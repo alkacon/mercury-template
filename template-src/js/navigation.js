@@ -62,10 +62,16 @@ function initMegaMenu() {
 
     if (DEBUG) console.info("MegaMenu.init()");
 
-    var $megaMenus = jQ("[data-megamenu]");
-    if (DEBUG) console.info("[data-megamenu] elements found: " + $megaMenus.length);
+    var $megaMenus = null;
+    if (Mercury.gridInfo().isDesktopNav()) {
+        $megaMenus = jQ("[data-megamenu]");
+        if (DEBUG) console.info("MegaMenu: [data-megamenu] elements found: " + $megaMenus.length);
+    } else {
+        $megaMenus = jQ(".mobile[data-megamenu]");
+        if (DEBUG) console.info("MegaMenu: .mobile[data-megamenu] elements found: " + $megaMenus.length);
+    }
 
-    if ($megaMenus.length > 0) {
+    if (($megaMenus != null) && ($megaMenus.length > 0)) {
         jQ(document).on('click', '.nav-main-container .nav-mega-menu', function(e) {
             e.stopPropagation();
         });
@@ -79,13 +85,13 @@ function initMegaMenu() {
                 var $menu = jQ(this).parent();
                 var $menuTrigger = $menu.find('.nav-mega-menu');
                 var posTop = $menu.position().top + $menu.outerHeight();
-                if (DEBUG) console.info("Mega menu top offset position: " + posTop);
+                if (DEBUG) console.info("MegaMenu: Top offset position: " + posTop);
                 $menuTrigger.css('top', posTop + 'px');
 
                 var $menuTriggerParent = $menuTrigger.closest('.nav-main-container');
                 if ($menuTriggerParent.length > 0) {
                     var posLeft = -1 * ($menuTriggerParent.offset().left - ((Mercury.windowWidth() - $menuTrigger.outerWidth()) / 2));
-                    if (DEBUG) console.info("Mega menu left offset position: " + posLeft);
+                    if (DEBUG) console.info("MegaMenu: Left offset position: " + posLeft);
                     $menuTrigger.css('left', posLeft + 'px');
                 }
             });

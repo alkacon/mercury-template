@@ -104,10 +104,13 @@
                     <%-- ###### Path correction needed if navLevel ###### --%>
                     <c:set var="megaMenuVfsPath" value="${fn:replace(megaMenuVfsPath, navElem.fileName, '')}" />
                 </c:if>
-                <c:if test="${cms.vfs.existsXml[megaMenuVfsPath]}">
-                    <c:set var="megaMenuLink"><cms:link>${megaMenuVfsPath}</cms:link></c:set>
-                    <c:set var="megaMenu" value=' data-megamenu="${megaMenuLink}"' />
+                <c:set var="megaMenuRes" value="${cms.vfs.xml[megaMenuVfsPath]}" />
+                <c:if test="${not empty megaMenuRes}">
+                    <c:set var="megaMenu" value=' data-megamenu="${megaMenuRes.resource.link}"' />
                     <c:set var="menuType" value="${menuType.concat('mega')}" />
+                    <c:if test="${megaMenuRes.resource.property['mega.display'] eq 'mobile'}">
+                        <c:set var="menuType" value="${menuType.concat(' mobile')}" />
+                    </c:if>
                 </c:if>
             </c:if>
             <c:set var="hasMegaMenu" value="${not empty megaMenu}" />

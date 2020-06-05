@@ -1888,6 +1888,27 @@
       <Widget><![CDATA[string]]></Widget>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[archivelabel.filter]]></IncludeName>
+      <PropertyName><![CDATA[archivelabel]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.archiveFilterLabel)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.archiveFilterLabel.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[folderlabel.filter]]></IncludeName>
+      <PropertyName><![CDATA[folderlabel]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.folderFilterLabel)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.folderFilterLabel.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[searchlabel.filter]]></IncludeName>
+      <PropertyName><![CDATA[searchlabel]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.searchFilterLabel)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.searchFilterLabel.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[catdisplayoptions.filter]]></IncludeName>
       <PropertyName><![CDATA[catdisplayoptions]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.list.categoryFilterShowPaths)]]></DisplayName>

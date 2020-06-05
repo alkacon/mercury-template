@@ -61,7 +61,7 @@
         margin-top: $default-margin;
         margin-bottom: 0;
         > p {
-            word-wrap: break-word; // dont use hyphens: auto
+            overflow-wrap: break-word; // dont use hyphens: auto
             overflow: hidden; // just break up words that are too long
             text-overflow: ellipsis;
             &:last-of-type {

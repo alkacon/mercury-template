@@ -38,7 +38,11 @@
     <c:set var="foldersOpen" value="${settings.showfolders eq 'opened'}" />
     <c:set var="showFolders" value="${(foldersOpen || settings.showfolders eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) > 0}" />
     <c:set var="combine" value="${wrappedSettings.combine.toBoolean}" />
-    <c:set var="headline" value="${settings.headline}" />
+    <c:set var="searchLabel" value="${settings.searchlabel}" />
+    <c:set var="categoryLabel" value="${settings.headline}" />
+    <c:set var="folderLabel" value="${settings.folderlabel}" />
+    <c:set var="archiveLabel" value="${settings.archivelabel}" />
+
     <%-- show all option is enabled by default. The setting is supported, but currently not added to reduce the number of options. --%>
     <c:set var="showAllOption" value="${empty settings.showalloption ? true : wrappedSettings.showalloption.toBoolean}" />
 
@@ -47,8 +51,6 @@
         <c:set var="targetUri" value="${cms.vfs.propertySearch[cms.requestContext.uri]['mercury.list']}" />
     </c:if>
     <c:set var="basicSearchParameters" value="${search.emptyStateParameters}" />
-
-    <c:if test="${empty headline}"><c:set var="headline"><fmt:message key="msg.page.categories" /></c:set></c:if>
 
     <c:set var="initparams" value="" />
     <c:if test="${not empty param.facet_category_exact}">
@@ -87,6 +89,9 @@
         <mercury:nl />
 
         <c:if test="${showSearch}">
+            <c:if test="${empty searchLabel}">
+                <c:set var="searchLabel"><fmt:message key="msg.page.search.inlist" /></c:set>
+            </c:if>
             <div class="filterbox search"><%----%>
             <mercury:nl />
 
@@ -96,20 +101,19 @@
                 --%>); <%--
                    --%>return false;" action="<cms:link>${targetUri}</cms:link>"><%----%>
 
-                    <c:set var="searchPlaceholder"><fmt:message key="msg.page.search.inlist" /></c:set>
                     <c:set var="fieldId">textsearch_${filterId}</c:set>
                         <c:set var="escapedQuery">${fn:replace(search.controller.common.state.query,'"','&quot;')}</c:set>
                         <input type="hidden" name="${search.controller.common.config.lastQueryParam}" value="${escapedQuery}" /><%----%>
                         <input type="hidden" name="${search.controller.common.config.reloadedParam}" /><%----%>
                         <label for="${fieldId}" class="input"><%----%>
-                            <span class="sr-only">${searchPlaceholder}</span><%----%>
+                            <span class="sr-only"><c:out value="${searchLabel}" /></span><%----%>
                             <span class="icon-prepend fa fa-search"></span><%----%>
                             <input <%--
                             --%>name="${search.controller.common.config.queryParam}" <%--
                             --%>id="${fieldId}" <%--
                             --%>type="text" <%--
                             --%>value="${escapedQuery}" <%--
-                            --%>placeholder="${searchPlaceholder}"><%----%>
+                            --%>placeholder="<c:out value="${searchLabel}" />"><%----%>
                         </label><%----%>
                 </form><%----%>
             </div><%----%>
@@ -117,6 +121,10 @@
         </c:if>
 
         <c:if test="${showCategories}">
+            <c:if test="${empty categoryLabel}">
+                <c:set var="categoryLabel"><fmt:message key="msg.page.categories" /></c:set>
+            </c:if>
+
             <div class="filterbox categories"><%----%>
             <mercury:nl />
 
@@ -131,7 +139,7 @@
                 --%>aria-controls="cats_${filterId}" <%--
                 --%>aria-expanded="${categoriesOpen}" <%--
                 --%>data-toggle="collapse"><%--
-                --%>${headline}<%--
+                --%><c:out value="${categoryLabel}" /><%--
              --%></button><%----%>
                 <div id="cats_${filterId}" class="collapse${categoriesOpen ? ' show' : ''}"><%----%>
                     <mercury:list-filter-category
@@ -151,6 +159,9 @@
         </c:if>
 
         <c:if test="${showFolders}">
+            <c:if test="${empty folderLabel}">
+                <c:set var="folderLabel"><fmt:message key="msg.page.folders" /></c:set>
+            </c:if>
             <div class="filterbox folders"><%----%>
             <mercury:nl />
 
@@ -165,7 +176,7 @@
                 --%>aria-controls="folder_${filterId}" <%--
                 --%>aria-expanded="${foldersOpen}" <%--
                 --%>data-toggle="collapse"><%--
-                --%><fmt:message key="msg.page.folders" /><%--
+                --%><c:out value="${folderLabel}" /><%--
              --%></button><%----%>
 
                 <div id="folder_${filterId}" class="collapse${foldersOpen ? ' show' : ''}"><%----%>
@@ -200,7 +211,6 @@
                                 --%>data-target="#${collapseId}">&nbsp;</a><%----%>
                                 <c:out escapeXml='false' value='<ul class="collapse show" id="${collapseId}">' />
                         </c:if>
-
 
                         <%-- Clear the start folder path. This implies that we have not rendered any item yet. --%>
                         <c:set var="startFolderPath"></c:set>
@@ -337,6 +347,9 @@
         </c:if>
 
         <c:if test="${showArchive}">
+            <c:if test="${empty archiveLabel}">
+                <c:set var="archiveLabel"><fmt:message key="msg.page.archive" /></c:set>
+            </c:if>
             <%-- get the currently checked item - if not present it's just empty. --%>
             <c:set var="checkedItem" value="${rangeFacetController.state.checkedEntries[0]}"/>
             <%-- Open the facet if it has a checked entry independent of the according element setting. --%>
@@ -350,7 +363,7 @@
                 --%>aria-controls="arch_${filterId}" <%--
                 --%>aria-expanded="${archiveOpen}" <%--
                 --%>data-toggle="collapse"><%--
-                --%><fmt:message key="msg.page.archive" /><%--
+                --%><c:out value="${archiveLabel}" /><%--
             --%></button><%----%>
 
                 <div id="arch_${filterId}" class="collapse${archiveOpen ? ' show' : ''}"><%----%>

@@ -78,6 +78,11 @@
         font-family: $nav-side-font-family;
     }
 
+    @if $use-hyphens {
+        hyphens: auto;
+        word-break: break-all;
+    }
+
     @if ($nav-side-boxed) {
        @include media-breakpoint-up(md) {
             border: $nav-side-border;

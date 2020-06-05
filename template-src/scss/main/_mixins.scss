@@ -414,18 +414,18 @@
     @if ($piece-hyphens-headings) {
         @if ($piece-hyphens-headings-xs and $piece-hyphens-headings-md) {
             hyphens: auto;
-            word-wrap: break-word;
+            overflow-wrap: break-word;
         } @else {
             @if ($piece-hyphens-headings-xs) {
                 @include media-breakpoint-down(sm) {
                     hyphens: auto;
-                    word-wrap: break-word;
+                    overflow-wrap: break-word;
                 }
             }
             @if ($piece-hyphens-headings-md) {
                 @include media-breakpoint-up(md) {
                     hyphens: auto;
-                    word-wrap: break-word;
+                    overflow-wrap: break-word;
                 }
             }
         }
@@ -440,18 +440,18 @@
     @if ($piece-hyphens-text) {
         @if ($piece-hyphens-text-xs and $piece-hyphens-text-md) {
             hyphens: auto;
-            word-wrap: break-word;
+            overflow-wrap: break-word;
         } @else {
             @if ($piece-hyphens-text-xs) {
                 @include media-breakpoint-down(sm) {
                     hyphens: auto;
-                    word-wrap: break-word;
+                    overflow-wrap: break-word;
                 }
             }
             @if ($piece-hyphens-text-md) {
                 @include media-breakpoint-up(md) {
                     hyphens: auto;
-                    word-wrap: break-word;
+                    overflow-wrap: break-word;
                 }
             }
         }
@@ -468,7 +468,7 @@
     @if ($btn-font-family != $font-family-base) {
         font-family: $btn-font-family;
     }
-    &:before {
+    &::before {
         font-family: FontAwesome;
         content: "\f02b";
         padding-right: $default-margin-verysmall;

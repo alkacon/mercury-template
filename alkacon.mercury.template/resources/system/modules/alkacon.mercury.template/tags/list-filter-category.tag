@@ -49,9 +49,8 @@
 <mercury:nl />
 
     <%-- BEGIN: Calculate category filters --%>
-    <c:set var="catFilters"
-        value="${not empty catfilter ? fn:replace(catfilter,' ','') : ''}" />
-                <c:set var="blacklistFilter" value="${empty catFilters}" />
+    <c:set var="catFilters" value="${not empty catfilter ? fn:replace(catfilter,' ','') : ''}" />
+    <c:set var="blacklistFilter" value="${empty catFilters}" />
     <c:if test="${not empty catFilters}">
         <c:choose>
         <c:when test="${fn:startsWith(catFilters,'whitelist:')}">
@@ -65,9 +64,8 @@
         </c:when>
         </c:choose>
         <c:set var="catFilters" value='${fn:split(catFilters, ",")}' />
-     </c:if>
-     <%-- END: Calculate category filters --%>
-
+    </c:if>
+    <%-- END: Calculate category filters --%>
 
     <c:set var="dataparam"></c:set>
     <c:set var="basicSearchStateParameters" value="${search.stateParameters.resetAllFacetStates.newQuery['']}" />
@@ -75,7 +73,7 @@
     <c:forEach var="value" items="${facetValues}" varStatus="outerStatus">
         <c:if test="${not empty cms.readCategory[value.name]}">
             <c:if test="${not onlyLeafs or outerStatus.last or not fn:startsWith(facetValues[outerStatus.count].name, value.name)}">
-                <c:set var="active">${facetController.state.isChecked[value.name] ? ' class="active"' : ''}</c:set>
+                <c:set var="active" value="${facetController.state.isChecked[value.name]}" />
 
                 <%-- BEGIN: Calculate category label --%>
                 <c:set var="catCompareLabel" value="" />
@@ -103,7 +101,7 @@
 
                 <c:if test="${blacklistFilter != isMatchedByFilter}">
                     <c:if test="${showAllOption}">
-                        <li id="cat_${categoryFilterId}" data-param=""><%----%>
+                        <li id="cat_${categoryFilterId}" data-param="" class="levelAll"><%----%>
                             <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
                                  --%>'${categoryFilterId}', <%--
                                  --%>'cat_${categoryFilterId}', <%--
@@ -118,7 +116,8 @@
                         <c:set var="showAllOption" value="${false}" />
                     </c:if>
 
-                    <li id="${catId}" data-value="${value.name}" ${active}><%----%>
+                    <c:set var="currentLevel" value="${fn:length(fn:split(value.name, '/'))}" />
+                    <li id="${catId}" data-value="${value.name}" class="level${currentLevel}${active ? ' active' : ''}"><%----%>
                         <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
                             --%>'${categoryFilterId}', <%--
                             --%>'${catId}'<%--

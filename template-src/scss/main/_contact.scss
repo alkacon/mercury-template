@@ -21,8 +21,10 @@
 
 .type-contact {
 
-    overflow-wrap: break-word;
-    hyphens: auto;
+    @if $use-hyphens {
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
 
     .fn,
     .org,

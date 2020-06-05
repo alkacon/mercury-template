@@ -353,7 +353,7 @@ aside .list-content,
 
     .dl-content {
         hyphens: auto;
-        word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     .dl-desc p {

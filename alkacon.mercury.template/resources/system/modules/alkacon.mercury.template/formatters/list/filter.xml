@@ -34,10 +34,7 @@
       <IncludeName><![CDATA[showsearch.filter]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showarchive.filter]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showfolders.filter]]></IncludeName>
+      <IncludeName><![CDATA[searchlabel.filter]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showcategories.filter]]></IncludeName>
@@ -53,6 +50,18 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[headline.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showarchive.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[archivelabel.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showfolders.filter]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[folderlabel.filter]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

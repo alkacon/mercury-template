@@ -1021,6 +1021,8 @@ msg.setting.list.appendPaginationPosition=Pagination position
 msg.setting.list.appendPaginationPosition.help=<p>Controls the position of the pagination bar below the list.<p> \n<p>This is only relevant in case the setting <em>pagination</em> is active for loading of additional pages.</p>
 msg.setting.list.appendSwitch=Loading of additional pages
 msg.setting.list.appendSwitch.help=<p>Controls how additional pages are loaded.</p> \n<p>There are two possible Options\:</p> \n<p><em>Pagination</em> - Loading is controlled with a pagination bar that is shown below the list. The loaded page replaces the current page. This is good for large screens, e.g. desktop computers.</p> \n<p><em>Append</em> - Loading happens by appending further list pages below the list. This is good for small screens, e.g. smartphones.</p> \n<p>In order to work best for large and small screens, it is possible to automatically switch between these options at a certain screen size.</p> \n<p>The screen sizes XS, SM, MD and LG are defined by the Bootstrap grid system, which is explained <a href\="https\://getbootstrap.com/docs/3.3/css/\#grid" target\="_blank">at the Bootstrap website.</p>
+msg.setting.list.archiveFilterLabel=Calendar headline
+msg.setting.list.archiveFilterLabel.help=<p>Sets an individual headline that is used for the calendar section.</p> \n<p>If this is not set, the default text "Archive" is used.<p>
 msg.setting.list.categoryFilterLabel=Category headline
 msg.setting.list.categoryFilterLabel.help=<p>Sets an individual headline that is used for the categories section.</p> \n<p>If this is not set, the default text "Categories" is used.<p>
 msg.setting.list.categoryFilterSelection=Category selection
@@ -1029,6 +1031,8 @@ msg.setting.list.categoryFilterShowPaths=Category display
 msg.setting.list.categoryFilterShowPaths.help=<p>Controls how the categories are displayed.</p> \n<p>OpenCms organized all categories in a tree structure. Any category can have sub-categories, which can be displayed similar to file paths .</p> \n<p>Lets assume there is a category "Topic" with sub-categories "Sports" und "Politics". The following output can be generated\:</p>\n<div style\="margin-left\: 20px">\n<em>All categories without path</em> - Topic, Sports, Politics.<br>\n<em>Only sub-categories without path</em> - Sports, Politics.<br>\n<em>All categories with path</em> - Topic, Topic/Sports, Topic/Politics.<br>\n<em>Only sub-categories with path</em> - Topic/Sports, Topic/Politics.\n</div>
 msg.setting.list.combineFilters=Combine
 msg.setting.list.combineFilters.help=Keep restrictions set via other filters and only add the restriction of this filter element. For categories, the list content specifies if they are combined via "and" or "or".
+msg.setting.list.folderFilterLabel=Folder headline
+msg.setting.list.folderFilterLabel.help=<p>Sets an individual headline that is used for the folder section.</p> \n<p>If this is not set, the default text "Folders" is used.<p>
 msg.setting.list.itemsPerPage.dynamic=Elements per page
 msg.setting.list.itemsPerPage.dynamic.help=<p>The number of elements that are shown on a page in the list.</p> \n<p>Provide a sequence of numbers to show differently many elements on the first pages, e.g., '5-8' to show 5 elements on the first page and 8 on all following pages.</p> \n<p>The setting <em>Loading of additional pages</em> controls how further pages are loaded.<p>\n
 msg.setting.list.itemsPerPage.static=Number of elements
@@ -1037,6 +1041,8 @@ msg.setting.list.listDisplay=Teaser display
 msg.setting.list.listDisplay.help=<p>Controls how the teaser is displayed\:</p>\n<p><em>Default\:</em> This is the default setting.</p>\n<p><em>Reduced\:</em> The heading is displayed in a smaller font size.</p>\n<p><em>Minimal\:</em> The heading is displayed in an even smaller font size. The margin between the teasers in the list and the padding of the link button is smaller.</p>
 msg.setting.list.loadAll.dynamic=Load elements directly
 msg.setting.list.loadAll.dynamic.help=<p>If checked, elements that belong to a group, e.g. all events on the same day, will be shown on the same page and not split between two pages.</p><p>This can be required in case a calendar sheet is displayed.</p>\n<p>Activate this option only if required, since the load time of the list is negatively impacted.</p>
+msg.setting.list.searchFilterLabel=Text search placeholder
+msg.setting.list.searchFilterLabel.help=<p>Sets an individual placeholder that is used for the text search input.</p> \n<p>If this is not set, the default text "Search list" is used.<p>
 msg.setting.list.showCalendarFilter=Calendar filter
 msg.setting.list.showCalendarFilter.help=<p>Controls if a calendar filter section is shown</p>  \n<p>This requires that the elements in the list have a date, e.g. like events.</p>\n<p>The section can be displayed either folded or unfolded when the page is loaded.</p>
 msg.setting.list.showCategoryFilter=Category filter

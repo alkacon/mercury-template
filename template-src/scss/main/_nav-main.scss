@@ -38,6 +38,11 @@
         margin: 0;
         list-style: none;
 
+        @if $nav-hyphens {
+            hyphens: auto;
+            overflow-wrap: break-word;
+        }
+
         li {
             // all menu items, either in head or submenus
             display: flex;
@@ -722,6 +727,11 @@
         border-top: $nav-menu-border-top;
         border-bottom: $nav-menu-border-bottom;
         list-style: none;
+
+        @if $nav-hyphens {
+            hyphens: auto;
+            overflow-wrap: break-word;
+        }
 
         @if ($nav-header-animate-menu == "move") {
             animation-name: fadeRightMenu;

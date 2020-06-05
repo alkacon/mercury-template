@@ -141,23 +141,17 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         margin-bottom: $piece-headings-margin-bottom;
     }
 
-    @include media-breakpoint-down(sm) {
+    .heading {
+        @include use-hyphens-headings;
+    }
 
-        @if ($piece-hyphens-headings-xs) {
-            .heading {
-                hyphens: auto;
-                word-wrap: break-word;
-            }
+    > .body {
+        .text {
+            @include use-hyphens-text;
         }
-        @if ($piece-hyphens-text-xs) {
-            // add word hyphenation to piece text for mobile displays
-            > .body {
-                .text {
-                    hyphens: auto;
-                    word-wrap: break-word;
-                }
-            }
-        }
+    }
+
+    @include media-breakpoint-down(sm) {
 
         // uncomment this if images floating left in desktop should also float left on mobile
         // attention: if headline is displayed above the image, this does not look good
@@ -193,22 +187,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     .piece {
-
-        @if ($piece-hyphens-headings-md) {
-            .heading {
-                hyphens: auto;
-                word-wrap: break-word;
-            }
-        }
-        @if ($piece-hyphens-text-md) {
-            // add word hyphenation to piece text for mobile displays
-            > .body {
-                .text {
-                    hyphens: auto;
-                    word-wrap: break-word;
-                }
-            }
-        }
 
         &.has-visual {
             // required for floating layouts, for example the detail page key visual
@@ -356,17 +334,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                 margin-bottom: 0;
             }
         }
-        @if ($piece-hyphens-text-xs) {
-            @include media-breakpoint-down(sm) {
-                hyphens: auto;
-                word-wrap: break-word;
-            }
-        }
-        @if ($piece-hyphens-text-md) {
-            @include media-breakpoint-up(md) {
-                hyphens: auto;
-                word-wrap: break-word;
-            }
-        }
+        @include use-hyphens-text;
     }
 }

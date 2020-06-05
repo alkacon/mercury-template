@@ -108,7 +108,7 @@
                 <c:if test="${not empty megaMenuRes}">
                     <c:set var="megaMenu" value=' data-megamenu="${megaMenuRes.resource.link}"' />
                     <c:set var="menuType" value="${menuType.concat('mega')}" />
-                    <c:if test="${megaMenuRes.resource.property['mega.display'] eq 'mobile'}">
+                    <c:if test="${megaMenuRes.resource.property['mercury.mega.display'] eq 'mobile'}">
                         <c:set var="menuType" value="${menuType.concat(' mobile')}" />
                     </c:if>
                 </c:if>

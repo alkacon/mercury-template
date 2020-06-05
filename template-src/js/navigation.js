@@ -40,6 +40,15 @@ function setKeyboardClass(active) {
 
 function insertMegaMenu(path, $megaMenuParent) {
 
+    // check if the mega menu structure has submenus, if so change HTML to match "no submenu" case
+    var $subMenuLink = $megaMenuParent.find("a.nav-label");
+    if ($subMenuLink.length > 0) {
+        // this is required because otherwise the HTML/CSS for the mega menu does not work
+        var $subMenuTrigger = $megaMenuParent.find("a[aria-label]");
+        $subMenuLink.attr("aria-controls", $subMenuTrigger.attr("aria-controls"));
+        $subMenuTrigger.remove();
+    }
+
     jQ.ajax({
         method : "GET",
         url : path + "?__disableDirectEdit=true&megamenu=true",
@@ -78,19 +87,18 @@ function initMegaMenu() {
         $megaMenus.each(function() {
             var $megaMenuItem = jQ(this);
             insertMegaMenu($megaMenuItem.data("megamenu"), $megaMenuItem);
-
+            // attach event listener the the mega menu nav item
             $megaMenuItem.on('mouseenter touchstart focus', function(e) {
-                var $megaMenu = $megaMenuItem.find('.nav-mega-menu');
-
+                // calculate top position from main menu item
                 var posTop = $megaMenuItem.position().top + $megaMenuItem.outerHeight();
                 if (DEBUG) console.info("MegaMenu: Top offset position: " + posTop);
-                $megaMenu.css('top', posTop + 'px');
-
-                var $topMenu = $megaMenuItem.closest('.nav-main-items');
-                $topMenu.addClass("top-menu");
-                if (DEBUG) console.info("MegaMenu: " + $topMenu.offset().left + " / " + Mercury.windowWidth() + " / " + $topMenu.outerWidth());
-                var posLeft = -1 * ($topMenu.offset().left - ((Mercury.windowWidth() - $topMenu.outerWidth()) / 2));
+                // calculate left position from the .nav-main-container
+                var $megaMenu = $megaMenuItem.find('.nav-mega-menu');
+                var $menuContainer = $megaMenuItem.closest('.nav-main-container');
+                var posLeft = -1 * ($menuContainer.offset().left - ((Mercury.windowWidth() - $megaMenu.outerWidth()) / 2));
                 if (DEBUG) console.info("MegaMenu: Left offset position: " + posLeft);
+                // set the position
+                $megaMenu.css('top', posTop + 'px');
                 $megaMenu.css('left', posLeft + 'px');
             });
         });

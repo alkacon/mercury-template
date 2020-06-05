@@ -145,21 +145,15 @@
                 ? navElem.title : navElem.navText}" />
 
             <c:choose>
-                <c:when test="${(startSubMenu and navElem.navigationLevel) or hasMegaMenu}">
-                    <%-- Navigation item with sub-menu but without direct child pages --%>
-                    <a href="${navLink}"${navTarget}${' '}<%--
-                    --%>id="${parentLabelId}"${' '}<%--
-                    --%>aria-controls="${targetMenuId}">${navText}</a><%----%>
-                </c:when>
 
-                <c:when test="${startSubMenu}">
+                <c:when test="${startSubMenu and not navElem.navigationLevel}">
                     <%-- Navigation item with sub-menu and direct child pages --%>
                     <a href="${navLink}"${navTarget} class="nav-label" id="${parentLabelId}">${navText}</a><%----%>
                     <a href="${navLink}"${navTarget} aria-controls="${targetMenuId}" aria-label="<fmt:message key="msg.page.navigation.sublevel" />">&nbsp;</a><%----%>
                 </c:when>
 
-                <c:when test="${hasMegaMenu}">
-                    <%-- Navigation item for mega-menu needs an id --%>
+                <c:when test="${startSubMenu or hasMegaMenu}">
+                    <%-- Navigation item with sub-menu but without direct child pages --%>
                     <a href="${navLink}"${navTarget}${' '}<%--
                     --%>id="${parentLabelId}"${' '}<%--
                     --%>aria-controls="${targetMenuId}">${navText}</a><%----%>

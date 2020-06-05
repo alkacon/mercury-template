@@ -929,7 +929,7 @@
         .nav-main-container {
             .nav-mega-menu {
                 top: 0; // this will be modified by JS later
-                left: 0;
+                left: 0; // this will be modified by JS later
                 position: absolute;
                 margin: 0;
                 width: calc(#{container-useable-width(lg)} + #{2 * $default-margin});

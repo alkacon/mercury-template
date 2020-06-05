@@ -107,6 +107,7 @@ $nav-side-font-family:              get-font-family($nav-side-font-family);
 $nav-header-font-weight:            $font-weight-normal !default; // font weight of header nav items
 $nav-menu-font-weight:              $font-weight-normal !default; // font weight of menu nav items
 $nav-mobile-font-weight:            $font-weight-normal !default; // font weight of menu nav items
+$nav-mobile-font-weight-final:      $font-weight-bold !default; // font weight of final active menu nav item
 $nav-mobile-header-font-weight:     $nav-header-font-weight !default; // font weight of header links in mobile menu
 $nav-side-font-weight:              default !default;
 

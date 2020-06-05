@@ -38,7 +38,7 @@ function setKeyboardClass(active) {
     }
 }
 
-function insertMegaMenu(path, $megaMenu) {
+function insertMegaMenu(path, $megaMenuParent) {
 
     jQ.ajax({
         method : "GET",
@@ -47,14 +47,14 @@ function insertMegaMenu(path, $megaMenu) {
         dataType : "text"
     }).done(function(content) {
 
-        var $menuTriggerEntry = $megaMenu.find("ul");
-        var idAttr = $menuTriggerEntry.attr("id");
+        var $menuListEntry = $megaMenuParent.find("ul");
+        var idAttr = $menuListEntry.attr("id");
         var $dropdown = jQuery("<div></div>").addClass("nav-menu").addClass("nav-mega-menu").attr("id", idAttr);
         var $row = jQuery(content).find(".row").first();
         $dropdown.append($row);
 
-        $menuTriggerEntry.remove();
-        $megaMenu.append($dropdown);
+        $menuListEntry.remove();
+        $megaMenuParent.append($dropdown);
     });
 }
 
@@ -75,28 +75,25 @@ function initMegaMenu() {
         jQ(document).on('click', '.nav-main-container .nav-mega-menu', function(e) {
             e.stopPropagation();
         });
-        for (var i = 0; i < $megaMenus.length; i++) {
-            var $megaMenu = $megaMenus.eq(i);
-            insertMegaMenu($megaMenu.data("megamenu"), $megaMenu);
+        $megaMenus.each(function() {
+            var $megaMenuItem = jQ(this);
+            insertMegaMenu($megaMenuItem.data("megamenu"), $megaMenuItem);
 
-            var $megaMenuLink = $megaMenu.find('> a');
-            $megaMenuLink.on('mouseenter touchstart focus', function(e) {
+            $megaMenuItem.on('mouseenter touchstart focus', function(e) {
+                var $megaMenu = $megaMenuItem.find('.nav-mega-menu');
 
-                var $menu = jQ(this).parent();
-                var $menuTrigger = $menu.find('.nav-mega-menu');
-                var posTop = $menu.position().top + $menu.outerHeight();
+                var posTop = $megaMenuItem.position().top + $megaMenuItem.outerHeight();
                 if (DEBUG) console.info("MegaMenu: Top offset position: " + posTop);
-                $menuTrigger.css('top', posTop + 'px');
+                $megaMenu.css('top', posTop + 'px');
 
-                var $menuTriggerParent = $menuTrigger.closest('.nav-main-container');
-                if ($menuTriggerParent.length > 0) {
-                    var posLeft = -1 * ($menuTriggerParent.offset().left - ((Mercury.windowWidth() - $menuTrigger.outerWidth()) / 2));
-                    if (DEBUG) console.info("MegaMenu: Left offset position: " + posLeft);
-                    $menuTrigger.css('left', posLeft + 'px');
-                }
+                var $topMenu = $megaMenuItem.closest('.nav-main-items');
+                $topMenu.addClass("top-menu");
+                if (DEBUG) console.info("MegaMenu: " + $topMenu.offset().left + " / " + Mercury.windowWidth() + " / " + $topMenu.outerWidth());
+                var posLeft = -1 * ($topMenu.offset().left - ((Mercury.windowWidth() - $topMenu.outerWidth()) / 2));
+                if (DEBUG) console.info("MegaMenu: Left offset position: " + posLeft);
+                $megaMenu.css('left', posLeft + 'px');
             });
-
-        }
+        });
     }
 }
 
@@ -577,9 +574,9 @@ export function init(jQuery, debug) {
     if (DEBUG) console.info("Navigation.init()");
 
     initDependencies();
+    initMegaMenu();
     initHeadNavigation();
     initSmoothScrolling();
     initClickmeShowme();
     initExternalLinks();
-    initMegaMenu();
 }

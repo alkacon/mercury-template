@@ -130,6 +130,9 @@
                 color: $nav-text-active-mobile;
                 background-color: $nav-bg-active-mobile;
             }
+            &.active.final > a {
+                font-weight: $nav-mobile-font-weight-final;
+            }
 
             &[aria-expanded="true"] > a {
                 color: $nav-text-hover-mobile;

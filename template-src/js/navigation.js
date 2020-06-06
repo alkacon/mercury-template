@@ -69,40 +69,47 @@ function insertMegaMenu(path, $megaMenuParent) {
 
 function initMegaMenu() {
 
-    if (DEBUG) console.info("MegaMenu.init()");
+    if (DEBUG) console.info("Navigation.initMegaMenu()");
 
-    var $megaMenus = null;
-    if (Mercury.gridInfo().isDesktopNav()) {
-        $megaMenus = jQ("[data-megamenu]");
-        if (DEBUG) console.info("MegaMenu: [data-megamenu] elements found: " + $megaMenus.length);
-    } else {
-        $megaMenus = jQ(".mobile[data-megamenu]");
-        if (DEBUG) console.info("MegaMenu: .mobile[data-megamenu] elements found: " + $megaMenus.length);
-    }
-
-    if (($megaMenus != null) && ($megaMenus.length > 0)) {
-        jQ(document).on('click', '.nav-main-container .nav-mega-menu', function(e) {
-            e.stopPropagation();
-        });
+    if (Mercury.gridInfo().isMobileNav()) {
+        // .mega-only marks mega menus that are a) not displayed in mobile and b) have no submenu
+        var $megaMenus = jQ(".mega-only[data-megamenu]");
+        if (DEBUG) console.info("Navigation.initMegaMenu() .mega-only[data-megamenu] elements found: " + $megaMenus.length);
         $megaMenus.each(function() {
+            // these mega menus must be removed
             var $megaMenuItem = jQ(this);
-            insertMegaMenu($megaMenuItem.data("megamenu"), $megaMenuItem);
-            // attach event listener the the mega menu nav item
-            $megaMenuItem.on('mouseenter touchstart focus', function(e) {
-                // calculate top position from main menu item
-                var posTop = $megaMenuItem.position().top + $megaMenuItem.outerHeight();
-                if (DEBUG) console.info("MegaMenu: Top offset position: " + posTop);
-                // calculate left position from the .nav-main-container
-                var $megaMenu = $megaMenuItem.find('.nav-mega-menu');
-                var $menuContainer = $megaMenuItem.closest('.nav-main-container');
-                var posLeft = -1 * ($menuContainer.offset().left - ((Mercury.windowWidth() - $megaMenu.outerWidth()) / 2));
-                if (DEBUG) console.info("MegaMenu: Left offset position: " + posLeft);
-                // set the position
-                $megaMenu.css('top', posTop + 'px');
-                $megaMenu.css('left', posLeft + 'px');
-            });
+            $megaMenuItem.removeAttr("aria-expanded");
+            $megaMenuItem.removeAttr("data-megamenu");
+            $megaMenuItem.children("a").removeAttr("aria-controls");
+            $megaMenuItem.children("ul").remove();
         });
     }
+
+    var megaSelector = Mercury.gridInfo().isDesktopNav() ? "[data-megamenu]" : ".mega-mobile[data-megamenu]";
+    var $megaMenus = jQ(megaSelector);
+    if (DEBUG) console.info("Navigation.initMegaMenu() " + megaSelector + " elements found: " + $megaMenus.length);
+
+    $megaMenus.each(function() {
+        var $megaMenuItem = jQ(this);
+        insertMegaMenu($megaMenuItem.data("megamenu"), $megaMenuItem);
+        // attach event listener the the mega menu nav item
+        $megaMenuItem.on('mouseenter touchstart focus', function(e) {
+            // calculate top position from main menu item
+            var posTop = $megaMenuItem.position().top + $megaMenuItem.outerHeight();
+            // calculate left position from the .nav-main-container
+            var $megaMenu = $megaMenuItem.find('.nav-mega-menu');
+            var $menuContainer = $megaMenuItem.closest('.nav-main-container');
+            var posLeft = -1 * ($menuContainer.offset().left - ((Mercury.windowWidth() - $megaMenu.outerWidth()) / 2));
+            if (DEBUG) console.info("MegaMenu: Setting position top=" + posTop + " left=" + posLeft);
+            // set the position
+            $megaMenu.css('top', posTop + 'px');
+            $megaMenu.css('left', posLeft + 'px');
+        });
+    });
+
+    jQ(document).on('click', '.nav-main-container .nav-mega-menu', function(e) {
+        e.stopPropagation();
+    });
 }
 
 var lastInitMenuStatus = 0;
@@ -248,7 +255,7 @@ function initHeadNavigation() {
 
     // Select all menu elements
     var $menuToggles = jQ('.nav-main-items [aria-controls]');
-    if (DEBUG) console.info("Navigation .nav-main-items [aria-controls] elements found: " + $menuToggles.length);
+    if (DEBUG) console.info("Navigation.initHeadNavigation() .nav-main-items [aria-controls] elements found: " + $menuToggles.length);
 
     if ($menuToggles.length > 0 ) {
         $menuToggles.each(function() {
@@ -334,7 +341,7 @@ function initHeadNavigation() {
         if ($fixedHeader.length > 0) {
             var fixCssSetting = $fixedHeader.hasClass('csssetting');
             if (!fixCssSetting || (Mercury.gridInfo().getNavFixHeader() != "false")) {
-                if (DEBUG) console.info("Fixed header element found!");
+                if (DEBUG) console.info("Navigation.initHeadNavigation() Fixed header element found!");
                 m_fixedHeader = {};
                 m_fixedHeader.$header = $header;
                 m_fixedHeader.$parent = $fixedHeader.first();
@@ -354,10 +361,10 @@ function initHeadNavigation() {
                 jQ(window).on('scroll', debUpdateFixedScroll).on('resize', debUpdateFixedResize);
                 updateFixed(true);
             } else {
-                if (DEBUG) console.info("Fixed header element found, but disabled by CSS!");
+                if (DEBUG) console.info("Navigation.initHeadNavigation() Fixed header element found, but disabled by CSS!");
             }
         } else {
-            if (DEBUG) console.info("Fixed header element NOT found!");
+            if (DEBUG) console.info("Navigation.initHeadNavigation() Fixed header element NOT found!");
         }
     };
 }
@@ -455,7 +462,7 @@ function initSmoothScrolling() {
 
     // for initial page load, make sure we adjust scroll position for fixed header and OpenCms toolbar
     if (location.hash.length) {
-        if (DEBUG) console.info("Initial anchor (location.hash): " + location.hash);
+        if (DEBUG) console.info("Navigation.initSmoothScrolling() Initial anchor (location.hash): " + location.hash);
         scrollToAnchor(jQ(location.hash));
     }
 }
@@ -464,14 +471,14 @@ function initSmoothScrolling() {
 function initClickmeShowme() {
 
     var $clickSections = jQ('.clickme-showme');
-    if (DEBUG) console.info(".clickme-showme elements found: " + $clickSections.length);
+    if (DEBUG) console.info("Navigation.initClickmeShowme() .clickme-showme elements found: " + $clickSections.length);
     $clickSections.each(function() {
 
         var $element = jQ(this);
         var $clickme = $element.find('> .clickme');
         var $showme  = $element.find('> .showme');
 
-        if (DEBUG) console.info("initClickmeShowme called for " + $clickme.getFullPath());
+        if (DEBUG) console.info("Navigation.initClickmeShowme() initializing " + $clickme.getFullPath());
 
         $clickme.click(function() {
             $clickme.slideUp();
@@ -489,8 +496,8 @@ function initClickmeShowme() {
 function initExternalLinks() {
 
     var $aHrefs = jQ('.piece text a');
-    if (DEBUG) console.info("a elements found in '.piece text': " + $aHrefs.length);
-    if (DEBUG) console.info("location.hostname is: " + location.hostname);
+    if (DEBUG) console.info("Navigation.initExternalLinks() a elements found in '.piece text': " + $aHrefs.length);
+    if (DEBUG) console.info("Navigation.initExternalLinks() location.hostname is: " + location.hostname);
     try {
         if (! Mercury.isEditMode()) {
             $aHrefs.each(function() {
@@ -502,7 +509,7 @@ function initExternalLinks() {
                 }
             });
         } else {
-            if (DEBUG) console.info("skipped external a element extension because of edit mode");
+            if (DEBUG) console.info("Navigation.initExternalLinks() skipped external a element extension because of edit mode");
         }
     } catch (err) {
         // required otherwise IE may prodice an error and stop execution

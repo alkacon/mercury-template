@@ -108,24 +108,26 @@
                 <c:if test="${not empty megaMenuRes}">
                     <c:set var="megaMenu" value=' data-megamenu="${megaMenuRes.resource.link}"' />
                     <c:set var="menuType" value="${menuType.concat('mega')}" />
-                    <c:if test="${megaMenuRes.resource.property['mercury.mega.display'] eq 'mobile'}">
-                        <c:set var="menuType" value="${menuType.concat(' mobile')}" />
-                    </c:if>
+                    <c:choose>
+                        <c:when test="${megaMenuRes.resource.property['mercury.mega.display'] eq 'mobile'}">
+                            <c:set var="menuType" value="${menuType.concat(' mega-mobile')}" />
+                        </c:when>
+                        <c:when test="${not startSubMenu}">
+                            <c:set var="menuType" value="${menuType.concat(' mega-only')}" />
+                        </c:when>
+                    </c:choose>
                 </c:if>
             </c:if>
             <c:set var="hasMegaMenu" value="${not empty megaMenu}" />
 
-            <c:choose>
-                <c:when test="${startSubMenu}">
-                    <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
-                    <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
-                    <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
+            <c:if test="${startSubMenu or hasMegaMenu}">
+                <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
+                <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
+                <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
+                <c:if test="${startSubMenu}">
                     <c:set var="lastNavLevel" value="${navElem}" />
-                </c:when>
-                <c:when test="${hasMegaMenu}">
-                    <c:set var="targetMenuId">mega${instanceId}_${i}</c:set>
-                </c:when>
-            </c:choose>
+                </c:if>
+            </c:if>
 
             <c:choose>
                 <c:when test="${(not empty lastNavLevel) and fn:startsWith(navElem.info, '#')}">
@@ -152,7 +154,7 @@
                     <a href="${navLink}"${navTarget} aria-controls="${targetMenuId}" aria-label="<fmt:message key="msg.page.navigation.sublevel" />">&nbsp;</a><%----%>
                 </c:when>
 
-                <c:when test="${startSubMenu or hasMegaMenu}">
+                <c:when test="${startSubMenu}">
                     <%-- Navigation item with sub-menu but without direct child pages --%>
                     <a href="${navLink}"${navTarget}${' '}<%--
                     --%>id="${parentLabelId}"${' '}<%--
@@ -161,7 +163,12 @@
 
                 <c:otherwise>
                     <%--Navigation item without sub-menu --%>
-                    <a href="${navLink}"${navTarget}>${navText}</a><%----%>
+                    <a href="${navLink}"${navTarget}<%----%>
+                    <c:if test="${hasMegaMenu}">
+                        <%-- mega menu requires aria-controls - will be removed by JavaScript if mega menu is not displayed in mobile --%>
+                        ${' '}aria-controls="${targetMenuId}"<%----%>
+                    </c:if>
+                    ${'>'}${navText}</a><%----%>
                 </c:otherwise>
             </c:choose>
 

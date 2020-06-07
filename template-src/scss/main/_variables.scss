@@ -200,7 +200,6 @@ $body-color:                        $text-dark !default;
 $headings-color:                    $text-dark !default;
 $intro-headings-color:              $main-theme !default;
 $focus-outline-color:               $main-theme-hover !default;
-$content-bg:                        $body-bg !default;
 $highlight-color:                   $grey-lighter !default;
 $image-bg-color:                    #f6f6f6 !default;
 $linked-headings-color:             none !default;
@@ -458,7 +457,7 @@ $nav-breadcrump-space-right:        1.5 * $nav-breadcrump-space !default; // spa
 $nav-breadcrump-bg-color:           none !default; // background color for breadcrumbs
 $nav-breadcrump-padding:            $default-margin-verysmall 0 0 0 !default; // padding around breadcrumbs
 $nav-breadcrump-text-color:         check-text-color($nav-breadcrump-bg-color, $nav-header-text) !default; // text color of breadcrumps
-$nav-breadcrump-text-hover-color:   check-text-color($nav-breadcrump-bg-color,  $nav-header-text-hover) !default; // hover color of breadcrump links
+$nav-breadcrump-text-hover-color:   check-text-color($nav-breadcrump-bg-color, $nav-header-text-hover) !default; // hover color of breadcrump links
 $nav-breadcrump-font-size:          $font-size-sm !default; // font size for the breadcrumps
 $nav-breadcrump-separator:          "\f0da" !default; // separator char between breadcrumbs
 $nav-breadcrump-separator-color:    conditional-value($nav-breadcrump-bg-color == none, $grey, $nav-breadcrump-text-color) !default; // color of breadcrumps sepearator
@@ -666,8 +665,8 @@ $form-radio-checked-border-color:   $form-radio-unchecked-color !default;
 $form-error-background:             #ffeeee !default;
 $form-error-text-color:             #bb2222 !default;
 $form-border:                       1px solid $form-border-color !default;
-$form-background:                   $content-bg !default;
-$form-input-background:             $content-bg !default;
+$form-background:                   $body-bg !default;
+$form-input-background:             $body-bg !default;
 $form-captcha-background:           $white !default;
 $form-captcha-border:               1px dashed $grey-light !default;
 $form-border-radius:                $default-border-radius !default;

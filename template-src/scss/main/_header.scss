@@ -269,9 +269,13 @@
                 flex-direction: column;
                 flex-basis: auto;
                 flex-grow: 1000;
-                @include heading-base;
+                @include heading-base(false);
                 padding-top: $default-margin-verysmall;
                 padding-bottom: $default-margin-verysmall;
+                color: $fh-title-color;
+                @if ($fh-title-bg-color != none) {
+                    background-color: $fh-title-bg-color;
+                }
                 font-size: $fh-title-font-size;
                 line-height: 1.2;
                 width: 100%;
@@ -566,12 +570,6 @@
 
                 .h-title {
                     order: 1;
-                    @if ($fh-title-bg-color != none) {
-                        background-color: $fh-title-bg-color;
-                        @if ($fh-title-color != $nav-header-text) {
-                            color: $fh-title-color;
-                        }
-                    }
                 }
 
                 &.title-bottom {
@@ -1014,7 +1012,7 @@
                 }
 
                 .header-title {
-                    @include heading-base;
+                    @include heading-base(false);
                     padding-top: $default-margin-verysmall;
                     padding-bottom: $default-margin-verysmall;
                     flex-basis: auto;

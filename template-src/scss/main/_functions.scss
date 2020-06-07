@@ -71,10 +71,10 @@
 // Checks if a text color is suitable for a given background color.
 // This should be used where BOTH the text color and the background color are configurable by a variable,
 // to ensure that the text color is visible on the background.
-@function check-text-color($bg-color, $text-color: $body-color, $contrast-threshold: $text-contrast-threshold, $dark-color: $text-dark, $light-color: $text-light) {
+@function check-text-color($bg-color, $text-color: $body-color, $default-bg-color: $body-bg, $contrast-threshold: $text-contrast-threshold, $dark-color: $text-dark, $light-color: $text-light) {
     @if (($bg-color == transparent) or ($bg-color == none)) {
-        // if no background color is set, assume background color is $body-bg
-        @return get-text-color($body-bg, $text-color, $dark-color, $light-color);
+        // if no background color is set, assume background $default-bg-color
+        @return get-text-color($default-bg-color, $text-color, $dark-color, $light-color);
     } @else {
         // check the contrast of the background and the text
         $contrast: contrast($bg-color, $text-color);

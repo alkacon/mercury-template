@@ -2568,5 +2568,13 @@
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showSingleTab.true]]></IncludeName>
+      <PropertyName><![CDATA[showSingleTab]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showSingleTab)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showSingleTab.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
   </SettingsConfig>
 </SettingsConfigs>

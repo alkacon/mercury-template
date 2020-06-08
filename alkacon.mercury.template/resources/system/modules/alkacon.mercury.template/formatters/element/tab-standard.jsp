@@ -20,76 +20,105 @@
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
-<c:set var="visualOption"           value="${setting.visualOption.toString}" />
+<c:set var="showSingleTab"          value="${setting.showSingleTab.useDefault('true').toBoolean}" />
 
 <c:set var="ade"                    value="${true}" />
+<c:set var="showTabs"               value="${showSingleTab or (content.valueList.TabEntry.size() ne 1)}" />
 
 <c:set var="itemId"><mercury:idgen prefix="acco" uuid="${cms.element.instanceId}" /></c:set>
-<c:set var="param_parts"        value="${fn:split(cms.container.param, '#')}" />
-<c:set var="parent_role"        value="${param_parts[0]}" />
-<c:set var="parent_classes"     value="${param_parts[1]}" />
+<c:set var="param_parts"            value="${fn:split(cms.container.param, '#')}" />
+<c:set var="parent_role"            value="${param_parts[0]}" />
+<c:set var="parent_classes"         value="${param_parts[1]}" />
+
 
 <mercury:nl />
-<div class="element type-tab variant-tabs ${cssWrapper}"><%----%>
+<div class="element type-tab ${showTabs ? 'variant-tabs ' : 'variant-hidden-tabs '}${cssWrapper}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
 
-    <div class="tabs-parent"><%----%>
+    <c:choose>
+        <c:when test="${showTabs}">
 
-        <mercury:nl />
-        <ul class="tab-list nav"><%----%>
-
-            <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
-                <c:set var="tabLabel" value="${tabEntry.value.Label}" />
-                <mercury:nl />
-                <li><%----%>
-                    <a href="#${itemId}_${status.count}" ${status.first ? ' class="active"' : ''} data-toggle="tab">${tabLabel}</a><%----%>
-                </li><%----%>
-            </c:forEach>
-
-        <mercury:nl />
-        </ul><%----%>
-        <mercury:nl />
-
-        <div class="tab-content"><%----%>
-        <mercury:nl />
-
-            <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
-                <c:set var="tabContainerName" value="${tabEntry.value.Id}" />
+            <div class="tabs-parent"><%----%>
 
                 <mercury:nl />
-                <div id="${itemId}_${status.count}" class="tab-pane fade ${status.first? 'active show':''}" ><%----%>
-                    <mercury:nl />
-                    <mercury:nl />
+                <ul class="tab-list nav"><%----%>
 
-                    <fmt:setLocale value="${cms.workplaceLocale}" />
-                    <cms:bundle basename="alkacon.mercury.template.messages">
-                        <cms:container
-                            name="${tabContainerName}"
-                            type="row"
-                            param="role.EDITOR#${parent_classes}"
-                            maxElements="50">
-                                <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.text"/></c:set>
-                                <mercury:container-box
-                                    label="${msg}"
-                                    boxType="container-box"
-                                    role="role.EDITOR"
+                    <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
+                        <c:set var="tabLabel" value="${tabEntry.value.Label}" />
+                        <mercury:nl />
+                        <li><%----%>
+                            <a href="#${itemId}_${status.count}" ${status.first ? ' class="active"' : ''} data-toggle="tab">${tabLabel}</a><%----%>
+                        </li><%----%>
+                    </c:forEach>
+
+                <mercury:nl />
+                </ul><%----%>
+                <mercury:nl />
+
+                <div class="tab-content"><%----%>
+                <mercury:nl />
+
+                    <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
+                        <c:set var="tabContainerName" value="${tabEntry.value.Id}" />
+
+                        <mercury:nl />
+                        <div id="${itemId}_${status.count}" class="tab-pane fade ${status.first? 'active show':''}" ><%----%>
+                            <mercury:nl />
+                            <mercury:nl />
+
+                            <fmt:setLocale value="${cms.workplaceLocale}" />
+                            <cms:bundle basename="alkacon.mercury.template.messages">
+                                <cms:container
+                                    name="${tabContainerName}"
                                     type="row"
-                                />
-                        </cms:container>
-                    </cms:bundle>
+                                    param="role.EDITOR#${parent_classes}"
+                                    maxElements="50">
+                                        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.text"/></c:set>
+                                        <mercury:container-box
+                                            label="${msg}"
+                                            boxType="container-box"
+                                            role="role.EDITOR"
+                                            type="row"
+                                        />
+                                </cms:container>
+                            </cms:bundle>
 
-                    <mercury:nl />
+                            <mercury:nl />
+                        </div><%----%>
+                        <mercury:nl />
+
+                    </c:forEach>
+
                 </div><%----%>
                 <mercury:nl />
 
-            </c:forEach>
+            </div><%----%>
 
-        </div><%----%>
-        <mercury:nl />
+        </c:when>
+        <c:otherwise>
 
-    </div><%----%>
+            <fmt:setLocale value="${cms.workplaceLocale}" />
+            <cms:bundle basename="alkacon.mercury.template.messages">
+                <cms:container
+                    name="${content.valueList.TabEntry[0].value.Id}"
+                    type="row"
+                    param="role.EDITOR#${parent_classes}"
+                    maxElements="50">
+                        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.text"/></c:set>
+                        <mercury:container-box
+                            label="${msg}"
+                            boxType="container-box"
+                            role="role.EDITOR"
+                            type="row"
+                        />
+                </cms:container>
+            </cms:bundle>
+            <mercury:nl />
+
+        </c:otherwise>
+    </c:choose>
 
 </div><%----%>
 <mercury:nl />

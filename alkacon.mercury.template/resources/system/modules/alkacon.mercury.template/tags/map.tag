@@ -165,6 +165,7 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
 
     ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
     --%> data-map='${mapData.compact}' <%--
+    --%><mercury:data-cookies group="external" message="An dieser Stelle finden Sie eine externe Landkarte von Google oder OpenStreetMap. Um diese Landkarte anzuzeigen müssen Sie der Verwendung von Cookies zustimmen." />${' '}<%--
     --%><c:if test="${cms.isEditMode}">
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">

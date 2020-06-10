@@ -5,15 +5,16 @@
     import="java.nio.charset.Charset,java.util.Base64"
     description="
         Obfuscates an Email address or any other String.
-        If the default type 'email' was used,
-        the Sting that can be revelad using the JavaScript function 'unobfuscateString()'." %>
+        If the type 'email' is used, the Sting that can be revelad using the JavaScript function 'unobfuscateString()'.
+        If 'base64' is used, the String will be base64 encoded.
+        If 'base64dec' is used this is the reverse of of encoding with 'base64', so the String will be base64 decoded." %>
 
 <%@ attribute name="text" type="java.lang.String" required="true"
     description="The String to obfuscate." %>
 
 <%@ attribute name="type" type="java.lang.String" required="false"
     description="The Type of obfuscation.
-    Possible value are 'email' (default) or 'base64'." %>
+    Possible value are 'email' (default), 'base64' (for base64 encoding) or 'base64dec' (for base64 decoding )." %>
 
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

@@ -210,7 +210,7 @@
         display: block;
         overflow: hidden;
         border: $togglebox-border-size solid $togglebox-border-color;
-        border-radius: 0px;
+        border-radius: $togglebox-border-radius;
     }
 
     .toggle-inner {
@@ -256,7 +256,7 @@
         bottom: 0;
         right: #{$togglebox-width - $togglebox-height - 2 * $togglebox-border-size};
         border: $togglebox-border-size solid $togglebox-border-color;
-        border-radius: 0px;
+        border-radius: floor($togglebox-border-radius / 2);
     }
 
     &.animated {
@@ -314,5 +314,90 @@ html.keyboard-nav .pp-toggle {
         }
     }
 }
+
+$cookie-notice-bg-color: $grey-lighter;
+$cookie-notice-color: $text-dark;
+$cookie-notice-alt-color: $text-dark;
+$cookie-notice-font-size-mobile: 14px;
+$cookie-notice-font-size-desktop: $font-size-base;
+$cookie-notice-small-font-size: 85%;
+$cookie-notice-togglebox-width: 150px;
+$cookie-notice-togglebox-height: 20px;
+
+.cookie-notice {
+    color: $cookie-notice-color;
+    background-color: $cookie-notice-bg-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $default-margin;
+    overflow: scroll !important;
+    font-size: $cookie-notice-font-size-mobile;
+    @include media-breakpoint-up(lg) {
+        font-size: $cookie-notice-font-size-desktop;
+    }
+
+    .cookie-header {
+        @extend .h3;
+    }
+
+    .cookie-header,
+    .cookie-message,
+    .cookie-switch {
+        margin-bottom: $default-margin-small;
+    }
+
+    .cookie-footer {
+        font-size: $cookie-notice-small-font-size;
+        color: $cookie-notice-alt-color;
+    }
+
+    .pp-toggle {
+        display: flex;
+
+        .toggle-label {
+            min-height: #{$cookie-notice-togglebox-height + 2 * $togglebox-border-size};
+            margin-bottom: 0;
+
+            &:hover {
+                .toggle-inner {
+                    &::after {
+                        background-color: $body-bg;
+                    }
+                }
+            }
+        }
+
+        .toggle-box {
+            float: none;
+            width: $cookie-notice-togglebox-width;
+        }
+
+        .toggle-slider {
+            width: #{$cookie-notice-togglebox-height - 2 * $togglebox-slider-margin};
+            right: #{$cookie-notice-togglebox-width - $cookie-notice-togglebox-height - 2 * $togglebox-border-size};
+            background-color: $togglebox-border-color;
+        }
+
+        .toggle-inner {
+            &::before,
+            &::after {
+                height: $cookie-notice-togglebox-height;
+                line-height: $cookie-notice-togglebox-height;
+                font-size: $cookie-notice-small-font-size;
+            }
+            &::after {
+                background-color: $cookie-notice-bg-color;
+            }
+        }
+
+        .cookie-toggle-text {
+            display: flex;
+            align-items: center;
+            margin-left: $default-margin;
+        }
+    }
+}
+
 
 

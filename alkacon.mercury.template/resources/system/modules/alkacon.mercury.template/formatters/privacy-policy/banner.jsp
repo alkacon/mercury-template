@@ -19,23 +19,39 @@
     <c:set var="acceptData">data-days="${cookieDays}"</c:set>
 </c:if>
 
-<mercury:nl />
-<div><%-- Outer DIV required otherwise JavaScript does not work --%>
-<div class="banner" data-message="${disabledMessage}"><%----%>
-    <div class="container"><%----%>
-        <div class="title">${value.Title}</div><%----%>
-        <div class="buttons"><%----%>
-            <c:if test="${value.DeclineButtonText.isSet}"><%--
-            --%><a class="btn btn-decline">${value.DeclineButtonText}</a><%--
-        --%></c:if><%--
-        --%><a class="btn btn-accept" ${acceptData}>${value.AcceptButtonText}</a><%----%>
-        </div><%----%>
-        <div class="message"><%----%>
-            <div>${value.PolicyText}</div><%----%>
+<c:set var="bannerHtml">
+    <mercury:nl />
+    <!DOCTYPE html><%----%>
+    <html><%----%>
+    <body><%----%>
+
+    <div><%-- Outer DIV required otherwise JavaScript does not work --%>
+    <div class="banner"><%----%>
+        <div class="container"><%----%>
+            <div class="title">${value.Title}</div><%----%>
+            <div class="buttons"><%----%>
+                <c:if test="${value.DeclineButtonText.isSet}"><%--
+                --%><a class="btn btn-decline">${value.DeclineButtonText}</a><%--
+            --%></c:if><%--
+            --%><a class="btn btn-accept" ${acceptData}>${value.AcceptButtonText}</a><%----%>
+            </div><%----%>
+            <div class="message"><%----%>
+                <div>${value.PolicyText}</div><%----%>
+            </div><%----%>
         </div><%----%>
     </div><%----%>
-</div><%----%>
-</div><%----%>
-<mercury:nl />
+    </div><%----%>
+
+    </body><%----%>
+    </html><%----%>
+    <mercury:nl />
+</c:set>
+
+<cms:jsonobject var="bannerData">
+    <cms:jsonvalue key="content" value="${content.json}" mode="object" />
+    <cms:jsonvalue key="html" value="${bannerHtml}" />
+</cms:jsonobject>
+
+<%----%>${bannerData.verbose}<%----%>
 
 </cms:formatter>

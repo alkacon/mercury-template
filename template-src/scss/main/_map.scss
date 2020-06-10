@@ -30,7 +30,7 @@
         }
     }
 
-    .presized {
+    .presized:not(.large-cookie-notice) {
         position: relative;
         width: 100%;
         height: auto;
@@ -66,6 +66,10 @@
                 }
             }
         }
+    }
+
+    .presized.large-cookie-notice {
+        padding-bottom: 0 !important;
     }
 
     .map-marker {

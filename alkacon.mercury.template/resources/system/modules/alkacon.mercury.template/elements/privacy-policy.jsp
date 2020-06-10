@@ -1,7 +1,6 @@
-<%@page
+<%@page pageEncoding="UTF-8"
     buffer="none"
     session="false"
-    pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,9 +9,6 @@
 
 <cms:secureparams />
 
-<!DOCTYPE html>
-<html>
-<body>
 <c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
 <c:set var="page"><mercury:obfuscate text="${param.page}" type="base64dec" /></c:set>
 
@@ -27,7 +23,3 @@
         <!-- policy: [${policyfile}] -->
     </c:otherwise>
 </c:choose>
-
-</body>
-</html>
-

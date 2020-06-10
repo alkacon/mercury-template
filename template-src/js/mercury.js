@@ -242,7 +242,9 @@ var Mercury = function(jQ) {
 
     function getCssDataFromId(elementId, after) {
         var element = document.getElementById(elementId);
-        return getCssDataFromElement(element, after);
+        var data = getCssDataFromElement(element, after);
+        if (DEBUG) console.info("CSS data found for id #" +  elementId + (after ? '::after' : '::before') + "=[" + data + "]");
+        return data;
     }
 
 

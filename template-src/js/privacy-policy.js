@@ -38,42 +38,47 @@ var OPTIONS_CONFIRMED_DAYS = 1; // number of days the confirmation will be valid
 var COOKIES_DECLINED_MESSAGE = "This element is disabled because cookies have not been accepted!";
 
 var m_bannerConfigured = false;
+var m_policy = {};
+var m_bannerHtml = "";
+var m_bannerData;
 
-function loadBanner(bannerData) {
+function loadPolicy(policyData, callback) {
 
     var ajaxUrl = "/system/modules/alkacon.mercury.template/elements/privacy-policy.jsp";
 
     var params =
-        "policy=" + encodeURIComponent(bannerData.policy) + "&" +
-        "page=" + encodeURIComponent(bannerData.page) + "&" +
+        "policy=" + encodeURIComponent(policyData.policy) + "&" +
+        "page=" + encodeURIComponent(policyData.page) + "&" +
         "__locale=" + Mercury.getLocale();
 
     var ajaxLink = ajaxUrl + '?' + params;
 
-    if (DEBUG) console.info("PrivacyPolicy: Loading banner from " + ajaxLink);
+    if (DEBUG) console.info("PrivacyPolicy: Loading policy data from " + ajaxLink);
 
-    jQ.get(ajaxLink, function(ajaxBannerHtml) {
-        displayBanner(bannerData, ajaxBannerHtml);
-    }, "html");
-}
+    jQ.get(ajaxLink, function(ajaxResult) {
 
-function displayBanner(bannerData, ajaxBannerHtml) {
+        m_policy = ajaxResult.content[0];
+        m_bannerHtml = ajaxResult.html;
 
-    var $result = jQ(ajaxBannerHtml);
-    // collect information about the search result
-    var $banner = $result.find(".banner");
-
-    if ($banner.length > 0) {
-
-        var disabledMessage = $banner.data("message");
-
-        if (typeof disabledMessage !== 'undefined') {
-          COOKIES_DECLINED_MESSAGE=disabledMessage;
-            setDisabledText(disabledMessage); //Timing? This will be called before maps is initialized
+        if (callback || false) {
+            callback();
         }
 
-        var $bannerElement = bannerData.$bannerElement;
-        var onTop = bannerData.onTop;
+    }, "json");
+}
+
+function displayBanner() {
+
+    if (typeof m_policy.DisabledMessage !== 'undefined') {
+        COOKIES_DECLINED_MESSAGE=m_policy.DisabledMessage;
+        setDisabledText(m_policy.DisabledMessage);
+    }
+
+    var $banner = jQ(m_bannerHtml).find(".banner");
+    if ($banner.length > 0) {
+
+        var $bannerElement = m_bannerData.$bannerElement;
+        var onTop = m_bannerData.onTop;
 
         // add click handlers to buttons on banner
         var $btnAccept = $banner.find(".btn-accept");
@@ -108,16 +113,22 @@ function displayBanner(bannerData, ajaxBannerHtml) {
 }
 
 function resetTemplateScript(forceInit) {
-    var $disabledElements = jQ("." + COOKIES_DECLINED_CLASS);
+
+    var $disabledElements = jQ(".cookie-notice, ." + COOKIES_DECLINED_CLASS);
     if ($disabledElements.length > 0) {
+        jQ(".presized.large-cookie-notice").each(function() {
+            // fix presized elements height
+            var $presized = jQ(this);
+            $presized.removeClass("large-cookie-notice");
+        });
         // some elements on this page are disabled, re-init Mercury to enable them
         Mercury.init();
         $disabledElements.removeClass(COOKIES_DECLINED_CLASS);
+        $disabledElements.removeClass("cookie-notice");
     } else if (forceInit) {
         location.reload();
     }
 }
-
 
 function initPrivacyBanner(onTop) {
     onTop = onTop || false;
@@ -126,20 +137,22 @@ function initPrivacyBanner(onTop) {
     m_bannerConfigured = ($privacyBanner.length > 0);
 
     if (DEBUG) console.info("PrivacyPolicy: Banner div found=" + m_bannerConfigured);
-    if (! optionsConfirmed()) {
-        if (DEBUG) console.info("PrivacyPolicy: Banner NOT confirmed, cookies accepted=" + cookiesAccepted());
-        if (m_bannerConfigured) {
+    if (m_bannerConfigured) {
 
-            var bannerData = $privacyBanner.data("banner");
+        m_bannerData = $privacyBanner.data("banner");
+        if (typeof m_bannerData !== 'undefined') {
+            m_bannerData.$bannerElement = $privacyBanner;
+            m_bannerData.onTop = onTop;
 
-            if (typeof bannerData !== 'undefined') {
-                bannerData.$bannerElement = $privacyBanner;
-                bannerData.onTop = onTop;
-                loadBanner(bannerData);
+            if (! optionsConfirmed()) {
+                if (DEBUG) console.info("PrivacyPolicy: Banner NOT confirmed, cookies accepted=" + cookiesAccepted());
+                loadPolicy(m_bannerData, displayBanner);
+            } else if (hasExternalElements()) {
+                loadPolicy(m_bannerData);
+            } else {
+                if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, cookies accepted=" + cookiesAccepted());
             }
         }
-    } else {
-        if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, cookies accepted=" + cookiesAccepted());
     }
 }
 
@@ -187,6 +200,10 @@ function setDisabledText(disabledMessage) {
     $disabledElements.attr("data-message", disabledMessage);
 }
 
+function hasExternalElements() {
+    return jQ("[data-cookies]").length > 0;
+}
+
 /****** Exported functions ******/
 
 //see https://github.com/js-cookie/js-cookie/wiki/Design-Patterns-To-Use-With-JavaScript-Cookie
@@ -211,8 +228,65 @@ export function cookiesAccepted() {
 }
 
 export function markDisabled($element) {
-    $element.attr("data-message", COOKIES_DECLINED_MESSAGE);
-    $element.addClass(COOKIES_DECLINED_CLASS);
+    // $element.attr("data-message", COOKIES_DECLINED_MESSAGE);
+    // $element.addClass(COOKIES_DECLINED_CLASS);
+    addCookieToggle($element);
+}
+
+export function addCookieToggle($element) {
+
+    if (DEBUG) console.info("PrivacyPolicy.addCookieToggle()");
+
+    var cookieData = $element.data("cookies");
+    if (typeof cookieData !== 'undefined') {
+        // read cookie data
+        var group = cookieData.group;
+        var heading = cookieData.heading;
+        var message = cookieData.message;
+        var footer = cookieData.footer;
+        var toggleId = "toggle-" + Math.floor(Math.random() * 1000000);
+
+        var cookieHtml =
+            '<div class=\"cookie-content\">' +
+                '<div class=\"cookie-header\">' + heading + '</div>' +
+                '<div class=\"cookie-message\">' + message + '</div>' +
+                '<div class=\"cookie-switch pp-toggle animated\">' +
+                    '<input type=\"checkbox\" id=\"' + toggleId + '\" class=\"toggle-check\">' +
+                    '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
+                        '<span class=\"toggle-box\">' +
+                            '<span class=\"toggle-inner\" data-checked=\"' + m_policy.AcceptButtonText + '\" data-unchecked=\"' + m_policy.DeclineButtonText + '\"></span>' +
+                            '<span class=\"toggle-slider\"></span>' +
+                        '</span>' +
+                    '</label>' +
+                    '<div class=\"cookie-toggle-text\">Externer Inhalt</div>' +
+                '</div>' +
+                '<div class=\"cookie-footer\">' + footer + '</div>' +
+            '</div>';
+
+        $element.addClass("cookie-notice");
+        $element.empty().html(cookieHtml);
+
+        var $presizedParent = $element.parent(".presized");
+        if ($presizedParent.length > 0) {
+            var parentHeight = $presizedParent.innerHeight();
+            var toggleHeight = $element.find(".cookie-content").innerHeight();
+            if (DEBUG) console.info("PrivacyPolicy: parent(.presized).height=" + parentHeight + " .cookie-content.height=" + toggleHeight);
+            if (parentHeight < toggleHeight) {
+                $element.parent(".presized").addClass("large-cookie-notice");
+            }
+        }
+
+        var $cookieToggle = jQ(".toggle-check", $element);
+        $cookieToggle.prop('checked', false);
+        $cookieToggle.change(function() {
+            setPrivacyCookies(true);
+            window.setTimeout(function() {
+                $element.empty();
+                resetTemplateScript();
+            }, 600);
+        });
+
+    }
 }
 
 export function init(jQuery, debug) {

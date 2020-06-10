@@ -210,7 +210,7 @@ $default-transition-time:           0.33s !default; // default timing for animat
 // Rounded cordners
 
 $default-border-radius:             0 !default;
-$copyright-border-radius:           round($default-border-radius / 2) !default;
+$copyright-border-radius:           floor($default-border-radius / 2) !default;
 $image-border-radius:               $default-border-radius !default;
 
 
@@ -605,6 +605,7 @@ $togglebox-height:                  40px !default;
 $togglebox-width:                   200px !default;
 $togglebox-border-color:            $text-dark !default;
 $togglebox-border-size:             1px !default;
+$togglebox-border-radius:           $default-border-radius !default;
 $togglebox-slider-margin:           2px !default;
 $togglebox-enabled-color:           $policy-banner-accept-button-color !default;
 $togglebox-disabled-color:          $grey-light !default;

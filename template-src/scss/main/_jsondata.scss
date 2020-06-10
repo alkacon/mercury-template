@@ -33,6 +33,12 @@
     }
 }
 
+#template-sass-version {
+    &::before {
+        content: '#{unique-id()}';
+    }
+}
+
 .template-grid-info {
     &::before {
         content: 'xs';

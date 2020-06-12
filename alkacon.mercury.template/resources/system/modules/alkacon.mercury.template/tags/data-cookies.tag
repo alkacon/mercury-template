@@ -35,4 +35,4 @@
     <cms:jsonvalue key="footer" value="${footer}" />
 </cms:jsonobject>
 
-<%----%>data-cookies='${cookieData.compact}'<%----%>
+<%----%>data-external-cookies='${cookieData.compact}'<%----%>

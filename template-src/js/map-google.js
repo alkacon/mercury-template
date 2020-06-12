@@ -339,7 +339,7 @@ export function init(jQuery, debug) {
 
         if (m_apiKey != null) {
 
-            if (PrivacyPolicy.cookiesAccepted()) {
+            if (PrivacyPolicy.cookiesAcceptedExternal()) {
 
                 // initialize map style from JSON stored in CSS
                 m_mapStyle = Mercury.getThemeJSON("map-style", []);
@@ -365,12 +365,12 @@ export function init(jQuery, debug) {
                 loadGoogleApi();
 
             } else {
-                if (DEBUG) console.info("GoogleMap cookies not accepted by the user - Google maps are disabled!");
+                if (DEBUG) console.info("External cookies not accepted by the user - Google maps are disabled!");
 
                 $mapElements.each(function() {
                     var $mapElement =  jQ(this);
                     $mapElement.removeClass('placeholder');
-                    PrivacyPolicy.markDisabled($mapElement);
+                    PrivacyPolicy.showExternalCookieNotice($mapElement);
                 });
             }
 

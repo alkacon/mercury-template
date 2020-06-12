@@ -82,7 +82,7 @@ export function init(jQuery, debug) {
 
     if (DEBUG) console.info("Analytics.init()");
 
-    if (PrivacyPolicy.cookiesAccepted()) {
+    if (PrivacyPolicy.cookiesAcceptedStatistics()) {
 
         var googleAnalyticsId = null;
         if (Mercury.hasInfo("googleAnalyticsId")) {
@@ -132,6 +132,6 @@ export function init(jQuery, debug) {
         });
 
     } else {
-        if (DEBUG) console.info("Cookies not accepted be the user - Analytics are disabled!");
+        if (DEBUG) console.info("Statistical cookies not accepted be the user - Analytics are disabled!");
     }
 }

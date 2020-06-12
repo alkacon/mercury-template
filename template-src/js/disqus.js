@@ -38,7 +38,7 @@ var disqus_open = false;
 var disqus_site = null;
 
 function loadComments() {
-    if (PrivacyPolicy.cookiesAccepted()) {
+    if (PrivacyPolicy.cookiesAcceptedExternal()) {
         var d = document, s = d.createElement('script');
         s.src = '//' + disqus_site + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', + new Date());
@@ -76,7 +76,7 @@ export function init(jQuery, debug) {
     var $disqusElements = jQ('#disqus_thread');
     if (DEBUG) console.info("#disqus_thread elements found: " + $disqusElements.length);
 
-    if (PrivacyPolicy.cookiesAccepted()) {
+    if (PrivacyPolicy.cookiesAcceptedExternal()) {
 
         $disqusElements.each(function() {
             var $disqusElement = jQ(this);
@@ -106,11 +106,11 @@ export function init(jQuery, debug) {
 
     } else {
 
-        if (DEBUG) console.info("Cookies not accepted be the user - DISQUS is disabled!");
+        if (DEBUG) console.info("External cookies not accepted be the user - DISQUS is disabled!");
 
         $disqusElements.each(function() {
             var $element = jQ(this);
-            PrivacyPolicy.markDisabled($element);
+            PrivacyPolicy.showExternalCookieNotice($element);
 
             jQ('.btn-disqus').on('click', function(event) {
                 toggleComments()

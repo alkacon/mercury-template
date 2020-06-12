@@ -20,6 +20,12 @@
         />
     </c:when>
     <c:otherwise>
-        <!-- policy: [${policyfile}] -->
+        <cms:jsonobject var="errorData">
+            <cms:jsonobject key="error">
+                <cms:jsonvalue key="policyfile" value="${policyfile}" />
+                <cms:jsonvalue key="page" value="${page}" />
+            </cms:jsonobject>
+        </cms:jsonobject>
+        <%----%>${errorData.compact}<%----%>
     </c:otherwise>
 </c:choose>

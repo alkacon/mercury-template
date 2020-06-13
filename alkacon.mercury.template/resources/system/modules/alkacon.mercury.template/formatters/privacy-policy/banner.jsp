@@ -14,11 +14,6 @@
 <c:set var="disabledMessage"    value="${fn:replace(cms:stripHtml(value.DisabledMessage), '\"', '')}" />
 <c:set var="ignore"             value="${cms.requestContext.setUri(param.path)} }" />
 
-<c:set var="cookieDays"         value="${value.CookieExpirationDays.isSet ? value.CookieExpirationDays.toInteger : 0}" />
-<c:if test="${cookieDays > 0}">
-    <c:set var="acceptData">data-days="${cookieDays}"</c:set>
-</c:if>
-
 <c:set var="bannerHtml">
     <mercury:nl />
     <!DOCTYPE html><%----%>
@@ -29,11 +24,27 @@
     <div class="banner"><%----%>
         <div class="container"><%----%>
             <div class="title">${value.Title}</div><%----%>
-            <div class="buttons"><%----%>
-                <c:if test="${value.DeclineButtonText.isSet}"><%--
-                --%><a class="btn btn-decline">${value.DeclineButtonText}</a><%--
-            --%></c:if><%--
-            --%><a class="btn btn-accept" ${acceptData}>${value.AcceptButtonText}</a><%----%>
+            <div class="selection">
+                <div class="options"><%----%>
+                    <label for="use-technical"><%----%>
+                        <input id="use-technical" type="checkbox" checked disabled><i></i><%----%>
+                        <span>Essenziell</span><%----%>
+                    </label><%----%>
+                    <label for="use-external"><%----%>
+                        <input id="use-external" type="checkbox"><i></i><%----%>
+                        <span>Externe Inhalte</span><%----%>
+                    </label><%----%>
+                    <label for="use-statistical"><%----%>
+                        <input id="use-statistical" type="checkbox"><i></i><%----%>
+                        <span>Statistiken</span><%----%>
+                    </label><%----%>
+                </div><%----%>
+                <div class="buttons"><%----%>
+                    <c:if test="${value.DeclineButtonText.isSet}"><%--
+                    --%><a class="btn btn-save">${value.DeclineButtonText}</a><%--
+                --%></c:if><%--
+                --%><a class="btn btn-accept">${value.AcceptButtonText}</a><%----%>
+                </div><%----%>
             </div><%----%>
             <div class="message"><%----%>
                 <div>${value.PolicyText}</div><%----%>

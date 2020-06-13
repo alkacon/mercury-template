@@ -23,6 +23,11 @@
 
 .pp-banner {
 
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .banner {
         display: none; // will be shown by JavaScript
         box-shadow: 0px -3px 10px 2px $dropshadow;
@@ -50,28 +55,72 @@
     }
 
     .title {
-        display: inline-block;
-        max-width: calc(100% - #{2 * $policy-banner-button-min-width - 5px} - #{$default-margin});
-        float: left;
         font-size: $h2-font-size;
         line-height: $line-height-headings;
         margin-bottom: $default-margin-small;
     }
 
-    .message {
-        display: inline-block;
-        width: 100%;
+    .selection {
+        display: flex;
+        margin-bottom: $default-margin-small;
+        align-items: center;
 
-        a {
-            font-weight: $font-weight-bold;
+        .options {
+            flex-grow: 1;
+
+            label {
+                margin-right: $default-margin;
+                margin-bottom: 0;
+                padding-left: 30px;
+                cursor: pointer;
+                position: relative;
+
+                input {
+                    position: absolute;
+                    left: -9999px;
+                }
+
+                i {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    outline: none;
+                    background-color: get-text-color($policy-banner-background);
+                }
+
+                input + i::after {
+                    position: absolute;
+                    opacity: 0;
+                    content: '\f00c';
+                    top: -4px;
+                    left: -1px;
+                    font-size: 23px;
+                    line-height: 23px;
+                    font-family: FontAwesome;
+                    font-weight: normal;
+                    text-align: center;
+                }
+
+                input:checked + i::after {
+                    opacity: 1;
+                    color: $policy-banner-accept-button-color;
+                }
+
+                input[disabled] + i {
+                    background-color: $grey-light;
+                    &::after {
+                        color:  $text-dark;
+                    }
+                }
+            }
         }
     }
 
-    .buttons {
-        display: inline-block;
-        float: right;
-        margin-bottom: $default-margin-small;
 
+    .buttons {
         .btn {
             font-size: 1.8rem;
             min-width: $policy-banner-button-min-width;
@@ -90,6 +139,15 @@
         }
     }
 
+    .message {
+        display: inline-block;
+        width: 100%;
+
+        a {
+            font-weight: $font-weight-bold;
+        }
+    }
+
     @include media-breakpoint-down(md) {
         .title {
             text-align: center;
@@ -103,20 +161,25 @@
             padding: 0;
         }
 
+        .selection {
+            font-size: 1.25rem;
+            flex-direction: column;
+
+            .options {
+                flex-grow: initial;
+
+                label {
+                    margin-bottom: $default-margin-small;
+                }
+            }
+        }
+
         .buttons {
             display: flex;
-            float: none;
             justify-content: center;
 
             .btn {
-                margin-left: $default-margin-small;
-                margin-right: $default-margin-small;
-                font-size: 1.25rem;
-                padding: $btn-sm-padding;
-            }
-
-            .btn:last-of-type {
-                margin-left: $default-margin-small;
+                font-size: 1.5rem;
             }
         }
 
@@ -124,6 +187,25 @@
             font-size: 1.2rem;
             text-align: justify;
             hyphens: auto;
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+
+        .selection {
+            .options {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .buttons {
+            .btn {
+                margin-left: $default-margin-small;
+                margin-right: $default-margin-small;
+                font-size: 1.25rem;
+                padding: $btn-sm-padding;
+            }
         }
     }
 }
@@ -139,72 +221,43 @@
     }
 }
 
-
-// Disabled areas that require cookies
-// see https://codepen.io/Prashantsani/pen/FhgzA
-
-.cookies-declined {
-    background-color: #555;
-    position: relative;
-    height: 150px;
-}
-
-.cookies-declined::after {
-    @include noise-image;
-    content: ' ';
-    background-size: 200px auto;
-    animation: noiseAnim 0.4s infinite linear alternate;
-}
-
-.cookies-declined::before {
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    content: attr(data-message) " ";
-    display: block;
-    padding: 5px 10px;
-    font-family: $font-family-base;
-    font-size: 1rem;
-    background-color: transparentize($black, 0.5);
-    color: get-text-color($black);
-}
-
-@keyframes noiseAnim {
-  0%   { background-position: 10px 200px; }
-  20%  { background-position: -50px 0; }
-  40%  { background-position: 100px -10px; }
-  60%  { background-position: 0 -150px; }
-  80%  { background-position: -100px -30px; }
-  100% { background-position: 160px -60px; }
-}
-
-
 // Animated toggle button
 // see https://proto.io/freebies/onoff/
 
 .pp-toggle {
     position: relative;
-    display: inline-block;
+    display: flex;
+
+    + .pp-toggle {
+        margin-top: $default-margin;
+    }
 
     .toggle-label {
         display: block;
         cursor: pointer;
         min-height: #{$togglebox-height + 2 * $togglebox-border-size};
+        margin-bottom: 0;
+
+        &:hover {
+            .toggle-inner {
+                &::before,
+                &::after {
+                    color: $body-color;
+                    background-color: $body-bg;
+                }
+            }
+        }
     }
 
     .toggle-text {
-        float: left;
-        padding-right: 10px;
-        color: $text-dark;
-        line-height: #{$togglebox-height + 2 * $togglebox-border-size};
+        display: flex;
+        align-items: center;
         font-size: $h4-font-size;
-        font-weight: $font-weight-base;
+        line-height: 1;
+        margin-left: $default-margin;
     }
 
     .toggle-box {
-        float: right;
         width: $togglebox-width;
         position: relative;
         display: block;
@@ -227,7 +280,6 @@
             line-height: $togglebox-height;
             padding: 0;
             font-size: $h4-font-size;
-            color: white;
             font-weight: $font-weight-bold;
             box-sizing: border-box;
         }
@@ -284,7 +336,7 @@
         }
     }
 
-     @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(sm) {
         .toggle-text {
             display: block;
             float: none;
@@ -353,23 +405,11 @@ $cookie-notice-togglebox-height: 20px;
     }
 
     .pp-toggle {
-        display: flex;
-
         .toggle-label {
             min-height: #{$cookie-notice-togglebox-height + 2 * $togglebox-border-size};
-            margin-bottom: 0;
-
-            &:hover {
-                .toggle-inner {
-                    &::after {
-                        background-color: $body-bg;
-                    }
-                }
-            }
         }
 
         .toggle-box {
-            float: none;
             width: $cookie-notice-togglebox-width;
         }
 
@@ -391,10 +431,8 @@ $cookie-notice-togglebox-height: 20px;
             }
         }
 
-        .cookie-toggle-text {
-            display: flex;
-            align-items: center;
-            margin-left: $default-margin;
+        .toggle-text {
+            font-size: inherit;
         }
     }
 }

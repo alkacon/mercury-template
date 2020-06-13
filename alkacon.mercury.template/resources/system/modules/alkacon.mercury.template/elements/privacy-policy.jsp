@@ -14,10 +14,13 @@
 
 <c:choose>
     <c:when test="${not empty policyfile and cms.vfs.existsResource[policyfile]}">
-        <mercury:display
-            file="${policyfile}"
-            baseUri="${page}"
-        />
+        <cms:addparams>
+            <cms:param name="policyformat" value="json" />
+            <mercury:display
+                file="${policyfile}"
+                baseUri="${page}"
+            />
+        </cms:addparams>
     </c:when>
     <c:otherwise>
         <cms:jsonobject var="errorData">

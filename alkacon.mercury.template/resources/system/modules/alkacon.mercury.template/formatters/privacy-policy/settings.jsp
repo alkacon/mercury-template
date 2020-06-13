@@ -14,9 +14,12 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="cookiesAccepted"    value="${cookie.containsKey('privacy-cookies-accepted')}" />
-<c:set var="cssWrapper"         value="${cms.element.settings.cssWrapper}" />
-<c:set var="title"              value="${value.ToggleLabel.isSet ? value.ToggleLabel.toString : value.Title.toString.concat(':')}" />
+<c:set var="privacyCookie"              value="${cookie['privacy-options-confirmed'].value}" />
+<c:set var="cookiesAcceptedTechnical"   value="${fn:contains(privacyCookie, '|technical')}" />
+<c:set var="cookiesAcceptedExternal"    value="${fn:contains(privacyCookie, '|external')}" />
+<c:set var="cookiesAcceptedStatistical" value="${fn:contains(privacyCookie, '|statistical')}" />
+<c:set var="cssWrapper"                 value="${cms.element.settings.cssWrapper}" />
+<c:set var="title"                      value="${value.ToggleLabel.isSet ? value.ToggleLabel.toString : value.Title.toString.concat(':')}" />
 
 <c:set var="declineButtonText">
     <c:choose>
@@ -25,18 +28,14 @@
     </c:choose>
 </c:set>
 
-<c:set var="cookieDays"         value="${value.CookieExpirationDays.isSet ? value.CookieExpirationDays.toInteger : 0}" />
-<c:if test="${cookieDays > 0}">
-    <c:set var="acceptData"> data-days="${cookieDays}"</c:set>
-</c:if>
-
 <mercury:nl />
-<div class="element type-privacy-policy pp-settings"><%----%>
+<div class="element type-privacy-policy pp-settings ${cssWrapper}"><%----%>
 
-<div class="pp-toggle animated ${cssWrapper}"><%----%>
-    <input id="privacy-policy-toggle" type="checkbox" class="toggle-check" ${cookiesAccepted ? 'checked' : ''}${acceptData}><%----%>
-    <label for="privacy-policy-toggle" class="toggle-label">
-        <span class="toggle-text">${title}</span><%----%>
+<h3>${privacyCookie} - ${cookiesAcceptedTechnical}</h3>
+
+<div class="pp-toggle pp-toggle-technical animated"><%----%>
+    <input id="cookies-accepted-technical" type="checkbox" class="toggle-check" checked disabled><%----%>
+    <label for="cookies-accepted-technical" class="toggle-label">
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
             --%>data-checked="${value.AcceptButtonText}" <%--
@@ -45,6 +44,35 @@
             <span class="toggle-slider"></span><%----%>
         </span><%----%>
     </label><%----%>
+    <div class="toggle-text">Essenziell (Technich erforderlich)</div><%----%>
+</div><%----%>
+
+<div class="pp-toggle pp-toggle-external animated"><%----%>
+    <input id="cookies-accepted-external" type="checkbox" class="toggle-check optional"${cookiesAcceptedExternal ? ' checked' : ''}><%----%>
+    <label for="cookies-accepted-external" class="toggle-label">
+        <span class="toggle-box"><%----%>
+            <span class="toggle-inner" <%--
+            --%>data-checked="${value.AcceptButtonText}" <%--
+            --%>data-unchecked="${declineButtonText}"><%----%>
+            </span><%----%>
+            <span class="toggle-slider"></span><%----%>
+        </span><%----%>
+    </label><%----%>
+    <div class="toggle-text">Externer Inhalt</div><%----%>
+</div><%----%>
+
+<div class="pp-toggle pp-toggle-statistical animated"><%----%>
+    <input id="cookies-accepted-statistical" type="checkbox" class="toggle-check optional"${cookiesAcceptedStatistical ? ' checked' : ''}><%----%>
+    <label for="cookies-accepted-statistical" class="toggle-label">
+        <span class="toggle-box"><%----%>
+            <span class="toggle-inner" <%--
+            --%>data-checked="${value.AcceptButtonText}" <%--
+            --%>data-unchecked="${declineButtonText}"><%----%>
+            </span><%----%>
+            <span class="toggle-slider"></span><%----%>
+        </span><%----%>
+    </label><%----%>
+    <div class="toggle-text">Statistiken</div><%----%>
 </div><%----%>
 
 </div><%----%>

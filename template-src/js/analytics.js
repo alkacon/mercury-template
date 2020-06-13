@@ -82,7 +82,7 @@ export function init(jQuery, debug) {
 
     if (DEBUG) console.info("Analytics.init()");
 
-    if (PrivacyPolicy.cookiesAcceptedStatistics()) {
+    if (PrivacyPolicy.cookiesAcceptedStatistical()) {
 
         var googleAnalyticsId = null;
         if (Mercury.hasInfo("googleAnalyticsId")) {

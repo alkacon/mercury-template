@@ -30,7 +30,7 @@
         }
     }
 
-    .presized:not(.large-cookie-notice) {
+    .presized:not(.enlarged) {
         position: relative;
         width: 100%;
         height: auto;
@@ -68,7 +68,7 @@
         }
     }
 
-    .presized.large-cookie-notice {
+    .presized.enlarged {
         padding-bottom: 0 !important;
     }
 

@@ -5,9 +5,6 @@
     description="Generates privacy policy cookie data for elements." %>
 
 
-<%@ attribute name="group" type="java.lang.String" required="true"
-    description="Controls which cookie group is activated by the generated cookie alert box." %>
-
 <%@ attribute name="message" type="java.lang.String" required="true"
     description="Element depended messsage for the generated cookie alert box." %>
 
@@ -25,14 +22,14 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 
 
-<c:set var="heading" value="${empty heading ? 'Cookies sind nicht aktiviert' : heading }" />
-<c:set var="footer" value="${empty footer ? '<div>Ich bin damit einverstanden, dass mir externe Inhalte angezeigt werden. Damit können personenbezogene Daten an Drittplattformen übermittelt werden. <a href=\"/\">Mehr dazu in unserer Datenschutzerklärung</a>.</div>' : footer }" />
-
 <cms:jsonobject var="cookieData">
-    <cms:jsonvalue key="group" value="${group}" />
-    <cms:jsonvalue key="heading" value="${heading}" />
     <cms:jsonvalue key="message" value="${message}" />
-    <cms:jsonvalue key="footer" value="${footer}" />
+    <c:if test="${not empty heading}">
+        <cms:jsonvalue key="heading" value="${heading}" />
+    </c:if>
+    <c:if test="${not empty footer}">
+        <cms:jsonvalue key="footer" value="${footer}" />
+    </c:if>
 </cms:jsonobject>
 
 <%----%>data-external-cookies='${cookieData.compact}'<%----%>

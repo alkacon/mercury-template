@@ -38,7 +38,7 @@
 <mercury:nl />
 
 <noscript><%----%>
-    <div id="privacy-policy-banner-noscript" class="pp-banner" ><%----%>
+    <div id="privacy-policy-banner-noscript" class="pp-banner"><%----%>
         <div class=banner><%----%>
             <div class="container"><%----%>
                 <div class="message"><fmt:message key="msg.page.javaScript.disabled" /></div><%----%>

@@ -14,11 +14,10 @@
         <xsd:sequence>
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="PolicyText" type="OpenCmsHtml" />
-            <xsd:element name="DisabledMessage" type="OpenCmsString" />
+            <xsd:element name="DisabledMessage" type="OpenCmsHtml" />
             <xsd:element name="AcceptButtonText" type="OpenCmsString" />
             <xsd:element name="DeclineButtonText" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="CookieExpirationDays" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="ToggleLabel" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -53,7 +52,9 @@
                     <PropertyName>DisabledMessage</PropertyName>
                     <DisplayName><![CDATA[%(key.label.PrivacyPolicy.DisabledMessage)]]></DisplayName>
                     <Description><![CDATA[%(key.label.PrivacyPolicy.DisabledMessage.help)]]></Description>
-                    <Widget>string</Widget>
+                    <Widget>html</Widget>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>AcceptButtonText</PropertyName>
@@ -84,13 +85,6 @@
                     ]]></WidgetConfig>
                     <Search>false</Search>
                     <Synchronization>true</Synchronization>
-                </Setting>
-                <Setting>
-                    <PropertyName>ToggleLabel</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.ToggleLabel)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.PrivacyPolicy.ToggleLabel.help)]]></Description>
-                    <Widget>string</Widget>
-                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

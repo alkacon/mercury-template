@@ -15,7 +15,7 @@
 <c:choose>
     <c:when test="${not empty policyfile and cms.vfs.existsResource[policyfile]}">
         <cms:addparams>
-            <cms:param name="policyformat" value="json" />
+            <cms:param name="template" value="mercury" />
             <mercury:display
                 file="${policyfile}"
                 baseUri="${page}"

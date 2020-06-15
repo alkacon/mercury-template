@@ -19,32 +19,22 @@
 <c:set var="cookiesAcceptedExternal"    value="${fn:contains(privacyCookie, '|external')}" />
 <c:set var="cookiesAcceptedStatistical" value="${fn:contains(privacyCookie, '|statistical')}" />
 <c:set var="cssWrapper"                 value="${cms.element.settings.cssWrapper}" />
-<c:set var="title"                      value="${value.ToggleLabel.isSet ? value.ToggleLabel.toString : value.Title.toString.concat(':')}" />
-
-<c:set var="declineButtonText">
-    <c:choose>
-        <c:when test="${value.DeclineButtonText.isSet}">${value.DeclineButtonText.toString}</c:when>
-        <c:otherwise><fmt:message key="label.PrivacyPolicy.DeclineButtonText.default" /></c:otherwise>
-    </c:choose>
-</c:set>
 
 <mercury:nl />
 <div class="element type-privacy-policy pp-settings ${cssWrapper}"><%----%>
-
-<h3>${privacyCookie} - ${cookiesAcceptedTechnical}</h3>
 
 <div class="pp-toggle pp-toggle-technical animated"><%----%>
     <input id="cookies-accepted-technical" type="checkbox" class="toggle-check" checked disabled><%----%>
     <label for="cookies-accepted-technical" class="toggle-label">
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
-            --%>data-checked="${value.AcceptButtonText}" <%--
-            --%>data-unchecked="${declineButtonText}"><%----%>
+            --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
+            --%>data-unchecked="<fmt:message key="msg.page.privacypolicy.toggle.inactive" />"><%----%>
             </span><%----%>
             <span class="toggle-slider"></span><%----%>
         </span><%----%>
     </label><%----%>
-    <div class="toggle-text">Essenziell (Technich erforderlich)</div><%----%>
+    <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.technical" /></div><%----%>
 </div><%----%>
 
 <div class="pp-toggle pp-toggle-external animated"><%----%>
@@ -52,13 +42,13 @@
     <label for="cookies-accepted-external" class="toggle-label">
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
-            --%>data-checked="${value.AcceptButtonText}" <%--
-            --%>data-unchecked="${declineButtonText}"><%----%>
+            --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
+            --%>data-unchecked="<fmt:message key="msg.page.privacypolicy.toggle.inactive" />"><%----%>
             </span><%----%>
             <span class="toggle-slider"></span><%----%>
         </span><%----%>
     </label><%----%>
-    <div class="toggle-text">Externer Inhalt</div><%----%>
+    <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></div><%----%>
 </div><%----%>
 
 <div class="pp-toggle pp-toggle-statistical animated"><%----%>
@@ -66,13 +56,13 @@
     <label for="cookies-accepted-statistical" class="toggle-label">
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
-            --%>data-checked="${value.AcceptButtonText}" <%--
-            --%>data-unchecked="${declineButtonText}"><%----%>
+            --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
+            --%>data-unchecked="<fmt:message key="msg.page.privacypolicy.toggle.inactive" />"><%----%>
             </span><%----%>
             <span class="toggle-slider"></span><%----%>
         </span><%----%>
     </label><%----%>
-    <div class="toggle-text">Statistiken</div><%----%>
+    <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></div><%----%>
 </div><%----%>
 
 </div><%----%>

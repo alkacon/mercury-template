@@ -26,6 +26,10 @@
     .container {
         display: flex;
         flex-direction: column;
+
+        > div:not(:last-of-type) {
+            margin-bottom: $default-margin-small;
+        }
     }
 
     .banner {
@@ -57,12 +61,10 @@
     .title {
         font-size: $h2-font-size;
         line-height: $line-height-headings;
-        margin-bottom: $default-margin-small;
     }
 
     .selection {
         display: flex;
-        margin-bottom: $default-margin-small;
         align-items: center;
 
         .options {
@@ -119,7 +121,6 @@
         }
     }
 
-
     .buttons {
         .btn {
             font-size: 1.8rem;
@@ -140,9 +141,9 @@
     }
 
     .message {
-        display: inline-block;
-        width: 100%;
-
+        p:last-of-type {
+            margin-bottom: 0;
+        }
         a {
             font-weight: $font-weight-bold;
         }
@@ -224,6 +225,20 @@
 // Animated toggle button
 // see https://proto.io/freebies/onoff/
 
+%toggle-disabled {
+
+    & + .toggle-label {
+        pointer-events: none;
+        cursor: auto;
+
+        .toggle-inner::before,
+        .toggle-inner::after {
+            background-color: $grey-light !important;
+            color: $grey !important;
+        }
+    }
+}
+
 .pp-toggle {
     position: relative;
     display: flex;
@@ -252,7 +267,7 @@
     .toggle-text {
         display: flex;
         align-items: center;
-        font-size: $h4-font-size;
+        font-size: 18px;
         line-height: 1;
         margin-left: $default-margin;
     }
@@ -279,7 +294,7 @@
             height: $togglebox-height;
             line-height: $togglebox-height;
             padding: 0;
-            font-size: $h4-font-size;
+            font-size: 18px;
             font-weight: $font-weight-bold;
             box-sizing: border-box;
         }
@@ -334,28 +349,31 @@
                 right: 0px;
             }
         }
+
+        &[disabled] {
+            @extend %toggle-disabled;
+        }
     }
 
+
     @include media-breakpoint-down(sm) {
+        // this applies to .pp-toggle
+        flex-direction: column;
+
         .toggle-text {
-            display: block;
-            float: none;
-            line-height: 1.2;
+            margin-left: 0;
             margin-bottom: $default-margin-small;
         }
-        .toggle-box {
-            float: none;
+
+        .toggle-label {
+            order: 1;
         }
     }
 }
 
 html.opencms-page-editor .pp-toggle {
-    pointer-events: none;
-
-    .toggle-inner::before,
-    .toggle-inner::after {
-        background-color: $grey-light !important;
-        color: $grey !important;
+    .toggle-check {
+        @extend %toggle-disabled;
     }
 }
 

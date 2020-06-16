@@ -125,18 +125,18 @@
         .btn {
             font-size: 1.8rem;
             min-width: $policy-banner-button-min-width;
-        }
 
-        .btn:last-of-type {
-            margin-left: $default-margin;
+            &:last-of-type {
+                margin-left: $default-margin;
+            }
         }
 
         .btn-accept {
             @include button-color($policy-banner-accept-button-color, $policy-banner-accept-hover-color);
         }
 
-        .btn-decline {
-            @include button-color($policy-banner-decline-button-color, $policy-banner-decline-hover-color);
+        .btn-save {
+            @include button-color($policy-banner-save-button-color, $policy-banner-save-hover-color);
         }
     }
 
@@ -168,10 +168,7 @@
 
             .options {
                 flex-grow: initial;
-
-                label {
-                    margin-bottom: $default-margin-small;
-                }
+                margin-bottom: $default-margin-small;
             }
         }
 
@@ -197,6 +194,9 @@
             .options {
                 display: flex;
                 flex-direction: column;
+                label + label {
+                    margin-top: $default-margin-verysmall;
+                }
             }
         }
 
@@ -206,6 +206,10 @@
                 margin-right: $default-margin-small;
                 font-size: 1.25rem;
                 padding: $btn-sm-padding;
+
+                &:last-of-type {
+                    margin-left: 0;
+                }
             }
         }
     }

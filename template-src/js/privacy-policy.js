@@ -34,41 +34,61 @@ var COOKIES_TECHNICAL = "|technical";
 var COOKIES_STATISTICAL = "|statistical";
 var COOKIES_EXTERNAL = "|external";
 
-var m_bannerConfigured = false;
+var m_bannerData = {};
+m_bannerData.initialized = false;
+m_bannerData.togglesInitialized = false;
+
 var m_policy = {};
-var m_bannerHtml = "";
-var m_bannerData;
+m_policy.loaded = false;
 
 
+function initBannerData() {
+    if (! m_bannerData.initialized) {
+        var $privacyBanner = jQ("#privacy-policy-banner");
+        var bannerDataFound = ($privacyBanner.length > 0);
 
-function loadPolicy(policyData, callback) {
+        if (DEBUG) console.info("PrivacyPolicy: Initializing banner data=" + bannerDataFound);
+        if (bannerDataFound) {
 
-    var ajaxUrl = "/system/modules/alkacon.mercury.template/elements/privacy-policy.jsp";
-
-    var params =
-        "policy=" + encodeURIComponent(policyData.policy) + "&" +
-        "page=" + encodeURIComponent(policyData.page) + "&" +
-        "__locale=" + Mercury.getLocale();
-
-    var ajaxLink = ajaxUrl + '?' + params;
-
-    if (DEBUG) console.info("PrivacyPolicy: Loading policy data from " + ajaxLink);
-
-    jQ.get(ajaxLink, function(ajaxResult) {
-
-        m_policy = ajaxResult;
-        m_bannerHtml = m_policy.banner;
-
-        if (callback) {
-            callback();
+            m_bannerData = $privacyBanner.data("banner");
+            m_bannerData.initialized = true;
+            if (typeof m_bannerData !== 'undefined') {
+                m_bannerData.$bannerElement = $privacyBanner;
+            }
         }
+    }
+}
 
-    }, "json");
+function loadPolicy(callback) {
+
+    if (! m_policy.loaded) {
+        var policyUrl = "/system/modules/alkacon.mercury.template/elements/privacy-policy.jsp";
+
+        var params =
+            "policy=" + encodeURIComponent(m_bannerData.policy) + "&" +
+            "page=" + encodeURIComponent(m_bannerData.page) + "&" +
+            "__locale=" + Mercury.getLocale();
+
+        var policyLink = policyUrl + '?' + params;
+
+        if (DEBUG) console.info("PrivacyPolicy: Loading policy data from " + policyLink);
+
+        jQ.get(policyLink, function(ajaxResult) {
+
+            m_policy = ajaxResult;
+            m_policy.loaded = true;
+
+            if (callback) {
+                callback();
+            }
+
+        }, "json");
+    }
 }
 
 function displayBanner() {
 
-    var $banner = jQ(m_bannerHtml).find(".banner");
+    var $banner = jQ(m_policy.banner).find(".banner");
     if ($banner.length > 0) {
 
         var $bannerElement = m_bannerData.$bannerElement;
@@ -95,6 +115,8 @@ function displayBanner() {
                 enableExternalElements();
             } else {
                 disableExternalElements();
+                activatePrivacyToggle();
+                initPrivacyToggle();
             }
         });
 
@@ -114,6 +136,24 @@ function displayBanner() {
     }
 }
 
+function initPrivacyBanner(onTop) {
+    onTop = onTop || false;
+
+    if (typeof m_bannerData !== 'undefined') {
+        m_bannerData.onTop = onTop;
+
+        if (! cookiesAcceptedTechnical()) {
+            if (DEBUG) console.info("PrivacyPolicy: Banner NOT confirmed - Displaying banner");
+            loadPolicy(displayBanner);
+        } else if (hasExternalElements() && ! cookiesAcceptedExternal()) {
+            if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, external cookies required but not confirmed - Loading policy, cookie data=" + getCookie(OPTIONS_CONFIRMED));
+            loadPolicy();
+        } else {
+            if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, cookie data=" + getCookie(OPTIONS_CONFIRMED));
+        }
+    }
+}
+
 function resetTemplateScript(forceInit) {
 
     var $externalElements = jQ(".external-cookie-notice");
@@ -125,38 +165,15 @@ function resetTemplateScript(forceInit) {
     } else if (forceInit) {
         location.reload();
     }
+    activatePrivacyToggle();
+}
+
+function activatePrivacyToggle() {
     var $privacyToggle = jQ(".type-privacy-policy .pp-toggle .toggle-check.optional");
     $privacyToggle.each(function() {
         var $toggleCheckbox = jQ(this);
         $toggleCheckbox.prop('disabled', false);
     });
-}
-
-function initPrivacyBanner(onTop) {
-    onTop = onTop || false;
-
-    var $privacyBanner = jQ("#privacy-policy-banner");
-    m_bannerConfigured = ($privacyBanner.length > 0);
-
-    if (DEBUG) console.info("PrivacyPolicy: Banner div found=" + m_bannerConfigured);
-    if (m_bannerConfigured) {
-
-        m_bannerData = $privacyBanner.data("banner");
-        if (typeof m_bannerData !== 'undefined') {
-            m_bannerData.$bannerElement = $privacyBanner;
-            m_bannerData.onTop = onTop;
-
-            if (! cookiesAcceptedTechnical()) {
-                if (DEBUG) console.info("PrivacyPolicy: Banner NOT confirmed - Displaying banner");
-                loadPolicy(m_bannerData, displayBanner);
-            } else if (hasExternalElements() && ! cookiesAcceptedExternal()) {
-                if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, external cookies required but not confirmed - Loading policy, cookies accepted=" + getCookie(OPTIONS_CONFIRMED));
-                loadPolicy(m_bannerData);
-            } else {
-                if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, cookies accepted=" + getCookie(OPTIONS_CONFIRMED));
-            }
-        }
-    }
 }
 
 function initPrivacyToggle() {
@@ -171,27 +188,36 @@ function initPrivacyToggle() {
         var $toggleCheckbox = jQ(".toggle-check", $toggle);
         if (isExternalToogle) {
             $toggleCheckbox.prop('checked', cookiesAcceptedExternal());
-            $toggleCheckbox.change(function() {
-                if (DEBUG) console.info("PrivacyPolicy: External cookie toggle changed to value=" + jQ(this).prop('checked'));
-                if (jQ(this).prop('checked')) {
-                    enableExternalElements();
-                } else {
-                    disableExternalElements();
-                }
-            });
+            if (! m_bannerData.togglesInitialized) {
+                // must attach change event listener only on initial load
+                $toggleCheckbox.change(function() {
+                    var checked = jQ(this).prop('checked');
+                    if (DEBUG) console.info("PrivacyPolicy: External cookie toggle changed to value=" + checked);
+                    if (checked) {
+                        enableExternalElements();
+                    } else {
+                        disableExternalElements();
+                    }
+                });
+            }
         }
         if (isStatisticalToogle) {
             $toggleCheckbox.prop('checked', cookiesAcceptedStatistical());
-            $toggleCheckbox.change(function() {
-                if (DEBUG) console.info("PrivacyPolicy: Statistical cookie toggle changed to value=" + jQ(this).prop('checked'));
-                setPrivacyCookiesStatistical(jQ(this).prop('checked'));
-                resetTemplateScript();
-            });
+            if (! m_bannerData.togglesInitialized) {
+                $toggleCheckbox.change(function() {
+                    var checked = jQ(this).prop('checked');
+                    if (DEBUG) console.info("PrivacyPolicy: Statistical cookie toggle changed to value=" + checked);
+                    setPrivacyCookiesStatistical(checked);
+                    resetTemplateScript();
+                });
+            }
         }
         if (!cookiesAcceptedTechnical()) {
             $toggleCheckbox.prop('disabled', true);
         }
     });
+
+    m_bannerData.togglesInitialized = true;
 }
 
 function setPrivacyCookies(allowTechnical, allowExternal, allowStatistical) {
@@ -205,6 +231,9 @@ function setPrivacyCookies(allowTechnical, allowExternal, allowStatistical) {
             cookieDays = m_policy.daysS;
         }
     }
+    m_bannerData.cookiesTechnical = allowTechnical;
+    m_bannerData.cookiesExternal = allowExternal;
+    m_bannerData.cookiesStatistical = allowStatistical;
     var cookieString = (new Date()).toLocaleDateString("en-US");
     if (allowTechnical) cookieString = cookieString + COOKIES_TECHNICAL;
     if (allowStatistical) cookieString = cookieString + COOKIES_STATISTICAL;
@@ -223,7 +252,7 @@ function setPrivacyCookiesStatistical(allow) {
 
 function cookiesAcceptedByDefault() {
     // default behavior if no banner configuration has been found
-    return !m_bannerConfigured && DEFAULT_IF_NOT_CONFIGURED;
+    return !m_bannerData.initialized && DEFAULT_IF_NOT_CONFIGURED;
 }
 
 function hasExternalElements() {
@@ -231,11 +260,11 @@ function hasExternalElements() {
 }
 
 function disableExternalElements() {
-    if (DEBUG) console.info("PrivacyPolicy: Disabling external elements");
-    setPrivacyCookiesExternal(false);
-    if (typeof m_policy.daysA === 'undefined') {
-        loadPolicy(m_bannerData, disableExternalElements);
+    if (! m_policy.loaded) {
+        loadPolicy(disableExternalElements);
     } else {
+        if (DEBUG) console.info("PrivacyPolicy: Disabling external elements");
+        setPrivacyCookiesExternal(false);
         jQ("[data-external-cookies]").each(function() {
             var $element = jQ(this);
             showExternalCookieNotice($element);
@@ -283,15 +312,24 @@ function checkCookie(cookieType) {
 }
 
 export function cookiesAcceptedTechnical() {
-    return checkCookie(COOKIES_TECHNICAL)
-}
-
-export function cookiesAcceptedStatistical() {
-    return checkCookie(COOKIES_STATISTICAL)
+    if (typeof m_bannerData.cookiesTechnical === 'undefined') {
+        m_bannerData.cookiesTechnical = checkCookie(COOKIES_TECHNICAL);
+    }
+    return m_bannerData.cookiesTechnical;
 }
 
 export function cookiesAcceptedExternal() {
-    return checkCookie(COOKIES_EXTERNAL)
+    if (typeof m_bannerData.cookiesExternal === 'undefined') {
+        m_bannerData.cookiesExternal = checkCookie(COOKIES_EXTERNAL);
+    }
+    return m_bannerData.cookiesExternal;
+}
+
+export function cookiesAcceptedStatistical() {
+    if (typeof m_bannerData.cookiesStatistical === 'undefined') {
+        m_bannerData.cookiesStatistical = checkCookie(COOKIES_STATISTICAL);
+    }
+    return m_bannerData.cookiesStatistical;
 }
 
 export function showExternalCookieNotice($element) {
@@ -314,7 +352,7 @@ export function showExternalCookieNotice($element) {
                     '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\">' +
                     '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
                         '<span class=\"toggle-box\">' +
-                            '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togA + '\" data-unchecked=\"' + m_policy.togS + '\"></span>' +
+                            '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togOn + '\" data-unchecked=\"' + m_policy.togOff + '\"></span>' +
                             '<span class=\"toggle-slider\"></span>' +
                         '</span>' +
                     '</label>' +
@@ -358,6 +396,7 @@ export function init(jQuery, debug) {
 
     if (DEBUG) console.info("PrivacyPolicy.init()");
 
+    initBannerData();
     initPrivacyBanner();
     initPrivacyToggle();
 }

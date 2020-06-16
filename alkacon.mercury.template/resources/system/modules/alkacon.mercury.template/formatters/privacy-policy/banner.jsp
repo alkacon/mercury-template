@@ -15,8 +15,13 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="disabledMessage"    value="${fn:replace(cms:stripHtml(value.DisabledMessage), '\"', '')}" />
 <c:set var="ignore"             value="${cms.requestContext.setUri(param.path)} }" />
+
+
+<fmt:message var="btnSaveDef" key="msg.page.privacypolicy.button.save" />
+<fmt:message var="btnAcceptDef" key="msg.page.privacypolicy.button.accept" />
+<fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
+<fmt:message var="extFootDef" key="msg.page.privacypolicy.external.footer" />
 
 <c:set var="bannerHtml">
     <mercury:nl />
@@ -47,10 +52,8 @@
                     </label><%----%>
                 </div><%----%>
                 <div class="buttons"><%----%>
-                    <c:if test="${value.DeclineButtonText.isSet}"><%--
-                    --%><a class="btn btn-save">${value.DeclineButtonText}</a><%--
-                --%></c:if><%--
-                --%><a class="btn btn-accept">${value.AcceptButtonText}</a><%----%>
+                    <a class="btn btn-save">${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}</a><%----%>
+                    <a class="btn btn-accept">${value.AcceptButtonText.isSet ? value.AcceptButtonText : btnAcceptDef}</a><%----%>
                 </div><%----%>
             </div><%----%>
         </div><%----%>
@@ -63,15 +66,15 @@
 </c:set>
 
 <cms:jsonobject var="policy">
-    <cms:jsonvalue key="togA"><fmt:message key="msg.page.privacypolicy.toggle.active" /></cms:jsonvalue>
-    <cms:jsonvalue key="togS"><fmt:message key="msg.page.privacypolicy.toggle.inactive" /></cms:jsonvalue>
-    <cms:jsonvalue key="togLEx"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></cms:jsonvalue>
-    <cms:jsonvalue key="daysA">${content.value.CookieExpirationDays}</cms:jsonvalue>
-    <cms:jsonvalue key="daysS">1</cms:jsonvalue>
-    <cms:jsonvalue key="nHead"><fmt:message key="msg.page.privacypolicy.notice.heading" /></cms:jsonvalue>
-    <cms:jsonvalue key="nMsg"><fmt:message key="msg.page.privacypolicy.notice.message" /></cms:jsonvalue>
-    <cms:jsonvalue key="nFoot">${content.value.DisabledMessage}</cms:jsonvalue>
     <cms:jsonvalue key="banner" value="${bannerHtml}" />
+    <cms:jsonvalue key="daysA">${value.CookieExpirationDays.useDefault("90")}</cms:jsonvalue>
+    <cms:jsonvalue key="daysS">${value.CookieExpirationDaysNoStats.useDefault("1")}</cms:jsonvalue>
+    <cms:jsonvalue key="nHead">${value.ExternalTitle.isSet ? value.ExternalTitle : extTitleDef}</cms:jsonvalue>
+    <cms:jsonvalue key="nMsg"><fmt:message key="msg.page.privacypolicy.external.message" /></cms:jsonvalue>
+    <cms:jsonvalue key="nFoot">${value.ExternalFooter.isSet ? value.ExternalFooter : extFootDef}</cms:jsonvalue>
+    <cms:jsonvalue key="togOn"><fmt:message key="msg.page.privacypolicy.toggle.active" /></cms:jsonvalue>
+    <cms:jsonvalue key="togOff"><fmt:message key="msg.page.privacypolicy.toggle.inactive" /></cms:jsonvalue>
+    <cms:jsonvalue key="togLEx"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></cms:jsonvalue>
 </cms:jsonobject>
 
 <%----%>${policy.verbose}<%----%>

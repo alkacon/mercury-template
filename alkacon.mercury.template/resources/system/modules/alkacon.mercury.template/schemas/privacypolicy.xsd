@@ -14,10 +14,12 @@
         <xsd:sequence>
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="PolicyText" type="OpenCmsHtml" />
-            <xsd:element name="DisabledMessage" type="OpenCmsHtml" />
-            <xsd:element name="AcceptButtonText" type="OpenCmsString" />
-            <xsd:element name="DeclineButtonText" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="AcceptButtonText" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="SaveButtonText" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ExternalTitle" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ExternalFooter" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="CookieExpirationDays" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="CookieExpirationDaysNoStats" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -32,8 +34,8 @@
             <FieldSettings>
                 <Setting>
                     <PropertyName>Title</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-privacypolicy.title)]]></Default>
                     <RuleRegex><![CDATA[.+]]></RuleRegex>
@@ -42,45 +44,71 @@
                 </Setting>
                 <Setting>
                     <PropertyName>PolicyText</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.PolicyText)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.PrivacyPolicy.PolicyText.help)]]></Description>
-                    <Widget>html</Widget>
-                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
-                    <Search>false</Search>
-                </Setting>
-                <Setting>
-                    <PropertyName>DisabledMessage</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.DisabledMessage)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.PrivacyPolicy.DisabledMessage.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.BannerText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.BannerText.help)]]></Description>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>AcceptButtonText</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.AcceptButtonText)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.PrivacyPolicy.AcceptButtonText.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.AcceptAllButtonText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.AcceptAllButtonText.help)]]></Description>
                     <Widget>string</Widget>
-                    <Default><![CDATA[%(key.label.PrivacyPolicy.AcceptButtonText.default)]]></Default>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.button.accept)]]></Default>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
-                    <PropertyName>DeclineButtonText</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.DeclineButtonText)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.PrivacyPolicy.DeclineButtonText.help)]]></Description>
+                    <PropertyName>SaveButtonText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.SaveButtonText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.SaveButtonText.help)]]></Description>
                     <Widget>string</Widget>
-                    <Default><![CDATA[%(key.label.PrivacyPolicy.DeclineButtonText.default)]]></Default>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.button.save)]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>ExternalTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.ExternalTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.ExternalTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.external.title)]]></Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>ExternalFooter</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.ExternalFooter)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.ExternalFooter.help)]]></Description>
+                    <Widget>html</Widget>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.external.footer)]]></Default>
+                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>CookieExpirationDays</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.CookieExpirationDays)]]></DisplayName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.CookieExpirationDaysWithStats)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.CookieExpirationDaysWithStats.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <Default><![CDATA[90]]></Default>
+                    <WidgetConfig><![CDATA[
+                        90:%(key.label.PrivacyPolicy.CookieExpirationDays.90days)|
+                        1:%(key.label.PrivacyPolicy.CookieExpirationDays.1day)|
+                        7:%(key.label.PrivacyPolicy.CookieExpirationDays.7days)|
+                        30:%(key.label.PrivacyPolicy.CookieExpirationDays.30days)|
+                        180:%(key.label.PrivacyPolicy.CookieExpirationDays.180days)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>CookieExpirationDaysNoStats</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.CookieExpirationDaysNoStats)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.CookieExpirationDaysNoStats.help)]]></Description>
                     <Widget>selectcombo</Widget>
                     <Default><![CDATA[1]]></Default>
                     <WidgetConfig><![CDATA[
                         1:%(key.label.PrivacyPolicy.CookieExpirationDays.1day)|
                         7:%(key.label.PrivacyPolicy.CookieExpirationDays.7days)|
                         30:%(key.label.PrivacyPolicy.CookieExpirationDays.30days)|
+                        90:%(key.label.PrivacyPolicy.CookieExpirationDays.90days)|
                         180:%(key.label.PrivacyPolicy.CookieExpirationDays.180days)
                     ]]></WidgetConfig>
                     <Search>false</Search>

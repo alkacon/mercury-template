@@ -596,8 +596,8 @@ $logo-slider-paddings:              (5, 10, 15, 20) !default;
 $policy-banner-background:          $text-dark !default;
 $policy-banner-accept-button-color: $btn-default !default;
 $policy-banner-accept-hover-color:  $btn-default-hover !default;
-$policy-banner-decline-button-color:$policy-banner-background !default;
-$policy-banner-decline-hover-color: $grey !default;
+$policy-banner-save-button-color:   $policy-banner-background !default;
+$policy-banner-save-hover-color:    $policy-banner-accept-hover-color !default;
 $policy-banner-button-min-width:    100px !default;
 $policy-banner-opacity:             0.95 !default;
 

@@ -55,7 +55,7 @@
                     <DisplayName><![CDATA[%(key.label.PrivacyPolicy.AcceptAllButtonText)]]></DisplayName>
                     <Description><![CDATA[%(key.label.PrivacyPolicy.AcceptAllButtonText.help)]]></Description>
                     <Widget>string</Widget>
-                    <Default><![CDATA[%(key.msg.page.privacypolicy.button.accept)]]></Default>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.button.banner.accept)]]></Default>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
@@ -63,7 +63,7 @@
                     <DisplayName><![CDATA[%(key.label.PrivacyPolicy.SaveButtonText)]]></DisplayName>
                     <Description><![CDATA[%(key.label.PrivacyPolicy.SaveButtonText.help)]]></Description>
                     <Widget>string</Widget>
-                    <Default><![CDATA[%(key.msg.page.privacypolicy.button.save)]]></Default>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.button.banner.save)]]></Default>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

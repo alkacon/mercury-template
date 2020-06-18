@@ -62,11 +62,9 @@
 --%>}'${' '}${piwikData}><%----%>
 <mercury:nl/>
 
-<div id="template-grid-info" class="template-grid-info"></div>
-<div id="template-sass-version"></div>
-<div id="template-plugins-version"></div><%----%>
+<div id="template-grid-info"></div><%----%>
 
-</div>
+</div><%----%>
 <mercury:nl/>
 
 <div id="topcontrol"></div>

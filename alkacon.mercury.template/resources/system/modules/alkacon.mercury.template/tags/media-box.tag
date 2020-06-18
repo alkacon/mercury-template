@@ -45,7 +45,6 @@
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
@@ -94,7 +93,11 @@
                 </c:when>
                 <c:otherwise>
                     <c:if test="${not empty template}">
-                        <c:set var="mediaTemplate">data-preview='{"template":"${cms:encode(template)}"}'</c:set>
+                        <c:set var="mediaTemplate"><%--
+                        --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
+                        --%><mercury:data-external-cookies modal="${true}" message="${cookieMessage}" /><%--
+                        --%>
+                        </c:set>
                     </c:if>
                     <div class="preview" ${mediaTemplate}><%----%>
                         <c:choose>

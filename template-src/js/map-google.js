@@ -38,6 +38,9 @@ var m_apiKey;
 // the Google geocode object, used for resolving coordinates to address names
 var m_googleGeocoder = null;
 
+// check if the API has already been loaded
+var m_googleApiLoaded = false;
+
 function showInfo(mapId, infoId) {
 
     if (DEBUG) console.info("GoogleMap showInfo() called with map id: " + mapId + " info id: " + infoId);
@@ -136,18 +139,23 @@ function getGeocode(infoWindow) {
 
 function loadGoogleApi() {
 
-    var locale = Mercury.getInfo("locale");
-    var mapKey = ""
-    if (m_apiKey != null) {
-        mapKey = "&key=" + m_apiKey;
+    if (!m_googleApiLoaded) {
+        var locale = Mercury.getInfo("locale");
+        var mapKey = ""
+        if (m_apiKey != null) {
+            mapKey = "&key=" + m_apiKey;
+        }
+        var addLibs = "";
+        if (! Mercury.isOnlineProject()) {
+            // need to load places API for OpenCms map editor
+            addLibs = "&libraries=places"
+        }
+        if (DEBUG) console.info("GoogleMap API key: " + (mapKey == '' ? '(undefined)' : mapKey));
+        jQ.loadScript("https://maps.google.com/maps/api/js?callback=GoogleMap.initGoogleMaps&language=" + locale + addLibs + mapKey, {}, DEBUG);
+        m_googleApiLoaded = true;
+    } else {
+        initGoogleMaps();
     }
-    var addLibs = "";
-    if (! Mercury.isOnlineProject()) {
-        // need to load places API for OpenCms map editor
-        addLibs = "&libraries=places"
-    }
-    if (DEBUG) console.info("GoogleMap API key: " + (mapKey == '' ? '(undefined)' : mapKey));
-    jQ.loadScript("https://maps.google.com/maps/api/js?callback=GoogleMap.initGoogleMaps&language=" + locale + addLibs + mapKey, {}, DEBUG);
 }
 
 
@@ -366,12 +374,6 @@ export function init(jQuery, debug) {
 
             } else {
                 if (DEBUG) console.info("External cookies not accepted by the user - Google maps are disabled!");
-
-                $mapElements.each(function() {
-                    var $mapElement =  jQ(this);
-                    $mapElement.removeClass('placeholder');
-                    PrivacyPolicy.showExternalCookieNotice($mapElement);
-                });
             }
 
         } else {

@@ -27,6 +27,9 @@ window._paq = window._paq || [];
 var jQ;
 var DEBUG;
 
+var m_googleInitialized = false;
+var m_piwikInitialized = false;
+
 function addGoogleAnalytics(analyticsId) {
 
     if (DEBUG) console.info("addGoogleAnalytics() initializing Google analytics using id: " + analyticsId);
@@ -38,6 +41,7 @@ function addGoogleAnalytics(analyticsId) {
     ga('create', analyticsId, 'auto');
     ga('set', 'anonymizeIp', true);
     ga('send', 'pageview');
+    m_googleInitialized = true;
 }
 
 function addPiwik(piwikData) {
@@ -71,6 +75,7 @@ function addPiwik(piwikData) {
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
     })();
+    m_piwikInitialized = true;
 }
 
 /****** Exported functions ******/
@@ -84,52 +89,57 @@ export function init(jQuery, debug) {
 
     if (PrivacyPolicy.cookiesAcceptedStatistical()) {
 
-        var googleAnalyticsId = null;
-        if (Mercury.hasInfo("googleAnalyticsId")) {
-            googleAnalyticsId = Mercury.getInfo("googleAnalyticsId");
-            if (! googleAnalyticsId.toUpperCase().indexOf("UA-") == 0) {
-                googleAnalyticsId = "UA-" + googleAnalyticsId;
+        if (! m_googleInitialized) {
+            // initialize Google Analytics (only if it has not been initialized already for this page)
+            var googleAnalyticsId = null;
+            if (Mercury.hasInfo("googleAnalyticsId")) {
+                googleAnalyticsId = Mercury.getInfo("googleAnalyticsId");
+                if (! googleAnalyticsId.toUpperCase().indexOf("UA-") == 0) {
+                    googleAnalyticsId = "UA-" + googleAnalyticsId;
+                }
             }
-        }
-        if (DEBUG) {
-            if (googleAnalyticsId != null) {
-                // Goggle analytics ID is read in pageinfo tag and stored in JavaScript via main script init()
-                console.info("Google analytic ID is: " + googleAnalyticsId);
-                if (! Mercury.isOnlineProject()) console.info("Google analytics NOT initialized because not in the ONLINE project!");
-            } else {
-                console.info("Google analytic ID (property 'google.analytics') not set in OpenCms VFS!");
+            if (DEBUG) {
+                if (googleAnalyticsId != null) {
+                    // Goggle analytics ID is read in pageinfo tag and stored in JavaScript via main script init()
+                    console.info("Google analytic ID is: " + googleAnalyticsId);
+                    if (! Mercury.isOnlineProject()) console.info("Google analytics NOT initialized because not in the ONLINE project!");
+                } else {
+                    console.info("Google analytic ID (property 'google.analytics') not set in OpenCms VFS!");
+                }
             }
-        }
-        if (Mercury.isOnlineProject() && (googleAnalyticsId != null)) {
-            // only enable google analytics in the online project when ID is set
-            addGoogleAnalytics(googleAnalyticsId);
+            if (Mercury.isOnlineProject() && (googleAnalyticsId != null)) {
+                // only enable google analytics in the online project when ID is set
+                addGoogleAnalytics(googleAnalyticsId);
+            }
         }
 
-        // initialize Piwik
-        jQ('#template-info').each(function(){
+        if (! m_piwikInitialized) {
+            // initialize Piwik / Matomo Analytics (only if it has not been initialized already for this page)
+            jQ('#template-info').each(function(){
 
-            var $element = jQ(this);
-            var piwikData = null;
-            if (typeof $element.data("piwik") != 'undefined') {
-                piwikData = $element.data("piwik");
-            }
-            if (piwikData != null) {
-                if (DEBUG) console.info("Piwik data found:");
-                if (DEBUG) jQ.each(piwikData, function( key, value ) { console.info( "- " + key + ": " + value ); });
-                if (typeof piwikData.id != 'undefined') {
-                    if (Mercury.isOnlineProject()) {
-                        // only enable Piwik in the online project when ID and URL is set
-                        addPiwik(piwikData);
+                var $element = jQ(this);
+                var piwikData = null;
+                if (typeof $element.data("piwik") != 'undefined') {
+                    piwikData = $element.data("piwik");
+                }
+                if (piwikData != null) {
+                    if (DEBUG) console.info("Piwik data found:");
+                    if (DEBUG) jQ.each(piwikData, function( key, value ) { console.info( "- " + key + ": " + value ); });
+                    if (typeof piwikData.id != 'undefined') {
+                        if (Mercury.isOnlineProject()) {
+                            // only enable Piwik in the online project when ID and URL is set
+                            addPiwik(piwikData);
+                        } else {
+                            if (DEBUG) console.info("Piwik NOT initialized because not in the ONLINE project!");
+                        }
                     } else {
-                        if (DEBUG) console.info("Piwik NOT initialized because not in the ONLINE project!");
+                        if (DEBUG) console.info("Piwik ID (property 'piwik.id') not set in OpenCms VFS!");
                     }
                 } else {
-                    if (DEBUG) console.info("Piwik ID (property 'piwik.id') not set in OpenCms VFS!");
+                    if (DEBUG) console.info("Piwik URL (property 'piwik.url') not set in OpenCms VFS!");
                 }
-            } else {
-                if (DEBUG) console.info("Piwik URL (property 'piwik.url') not set in OpenCms VFS!");
-            }
-        });
+            });
+        }
 
     } else {
         if (DEBUG) console.info("Statistical cookies not accepted be the user - Analytics are disabled!");

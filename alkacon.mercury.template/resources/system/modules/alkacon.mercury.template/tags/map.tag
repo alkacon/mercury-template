@@ -156,6 +156,8 @@
     </c:if>
 </cms:jsonobject>
 
+<fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.map-${provider}" />
+
 <c:if test="${not empty subelementWrapper}">
 ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
 <mercury:nl />
@@ -164,8 +166,8 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
 <mercury:padding-box ratio="${ratio}">
 
     ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
-    --%> data-map='${mapData.compact}' <%--
-    --%><mercury:data-cookies message="An dieser Stelle finden Sie eine Landkarte von Google oder OpenStreetMap. Um diese Landkarte anzuzeigen müssen Sie der Verwendung von Cookies für externe Inhalte zustimmen." />${' '}<%--
+    --%>data-map='${mapData.compact}'<%--
+    --%><mercury:data-external-cookies message="${cookieMessage}" /><%--
     --%><c:if test="${cms.isEditMode}">
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">

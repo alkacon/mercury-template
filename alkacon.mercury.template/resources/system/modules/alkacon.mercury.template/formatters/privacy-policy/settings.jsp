@@ -14,7 +14,7 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="privacyCookie"              value="${cookie['privacy-options-confirmed'].value}" />
+<c:set var="privacyCookie"              value="${cookie['privacy-options'].value}" />
 <c:set var="cookiesAcceptedTechnical"   value="${fn:contains(privacyCookie, '|technical')}" />
 <c:set var="cookiesAcceptedExternal"    value="${fn:contains(privacyCookie, '|external')}" />
 <c:set var="cookiesAcceptedStatistical" value="${fn:contains(privacyCookie, '|statistical')}" />

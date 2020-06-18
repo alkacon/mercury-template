@@ -68,13 +68,20 @@
             </button><%----%>
         </c:if>
 
+        <%-- Generate DISQUS data JSON --%>
+        <cms:jsonobject var="disqusData">
+            <cms:jsonvalue key="site" value="${cms:encode(disqusSite)}" />
+            <cms:jsonvalue key="load" value="${clickToLoad}" />
+            <cms:jsonvalue key="id" value="${pageId}" />
+            <cms:jsonvalue key="url" value="${cms:encode(pageUrl)}" />
+        </cms:jsonobject>
+
+        <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.discus" />
+
         <div id="disqus_thread" <%--
         --%><c:if test="${clickToLoad}">style="display: none;" </c:if><%--
-            --%>data-disqus='{<%--
-                --%>"site":"${cms:encode(disqusSite)}", <%--
-                --%>"load":"${clickToLoad}", <%--
-                --%>"id":"${pageId}", <%--
-                --%>"url":"${cms:encode(pageUrl)}"}'<%--
+            --%>data-disqus='${disqusData.compact}'<%--
+            --%><mercury:data-external-cookies message="${cookieMessage}" /><%--
         --%>></div><%----%>
 
             <mercury:alert-online showJsWarning="${true}" >

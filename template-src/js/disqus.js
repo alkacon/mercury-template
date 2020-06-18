@@ -23,8 +23,8 @@
 
 // this need to be visible in global JS context for DISQUS
 window.disqus_config = function() {
-    this.page.url = window.dicqus_pageUrl;
-    this.page.identifier = window.dicqus_pageId;
+    this.page.url = window.disqus_pageUrl;
+    this.page.identifier = window.disqus_pageId;
 };
 
 // the global objects that must be passed to this module
@@ -37,12 +37,20 @@ var disqus_loaded = false;
 var disqus_open = false;
 var disqus_site = null;
 
+// check if the API has already been loaded
+var m_disqusApiLoaded = false;
+
 function loadComments() {
     if (PrivacyPolicy.cookiesAcceptedExternal()) {
-        var d = document, s = d.createElement('script');
-        s.src = '//' + disqus_site + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', + new Date());
-        (d.head || d.body).appendChild(s);
+        if (! m_disqusApiLoaded) {
+            var d = document, s = d.createElement('script');
+            s.src = '//' + disqus_site + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+            m_disqusApiLoaded = true;
+        } else {
+            DISQUS.reset({ reload: true, config: window.disqus_config });
+        }
     }
 }
 
@@ -88,11 +96,11 @@ export function init(jQuery, debug) {
                     disqus_site = disqus_site + "#";
                     disqus_site = disqus_site.replace(".disqus.com#", "");
                 }
-                window.dicqus_pageUrl = decodeURIComponent(dicqusData.url);
-                window.dicqus_pageId = dicqusData.id;
+                window.disqus_pageUrl = decodeURIComponent(dicqusData.url);
+                window.disqus_pageId = dicqusData.id;
                 var clickToLoad = (dicqusData.load == "true");
 
-                if (DEBUG) console.info("Disqus: clickToLoad='" + clickToLoad + "' url=" + window.dicqus_pageUrl + " site=" + disqus_site);
+                if (DEBUG) console.info("Disqus: clickToLoad='" + clickToLoad + "' url=" + window.disqus_pageUrl + " site=" + disqus_site);
 
                 if (! clickToLoad) {
                     loadComments();
@@ -107,14 +115,8 @@ export function init(jQuery, debug) {
     } else {
 
         if (DEBUG) console.info("External cookies not accepted be the user - DISQUS is disabled!");
-
-        $disqusElements.each(function() {
-            var $element = jQ(this);
-            PrivacyPolicy.showExternalCookieNotice($element);
-
-            jQ('.btn-disqus').on('click', function(event) {
-                toggleComments()
-            });
+        jQ('.btn-disqus').on('click', function(event) {
+            toggleComments()
         });
     }
 }

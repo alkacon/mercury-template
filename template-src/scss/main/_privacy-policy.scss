@@ -261,8 +261,8 @@
             .toggle-inner {
                 &::before,
                 &::after {
-                    color: $body-color;
-                    background-color: $body-bg;
+                    color: $body-color !important;
+                    background-color: $body-bg !important;
                 }
             }
         }
@@ -347,10 +347,10 @@
 
         &:checked + .toggle-label {
             .toggle-inner {
-                margin-left: 0;
+                margin-left: 0 !important;
             }
             .toggle-slider {
-                right: 0px;
+                right: 0px !important;
             }
         }
 
@@ -398,21 +398,24 @@ $cookie-notice-small-font-size: 85%;
 $cookie-notice-togglebox-width: 150px;
 $cookie-notice-togglebox-height: 20px;
 
-.external-cookie-notice {
+#mercury-page .external-cookie-notice {
+    // #mercury-page .element selectors added to give rules higher importance
     color: $cookie-notice-color;
     background-color: $cookie-notice-bg-color;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: $default-margin;
     overflow: scroll !important;
-    font-size: $cookie-notice-font-size-mobile;
+    padding: $default-margin;
+    // must set this because some elements (e.g. OSM) add another class that changes the font
+    font: $font-weight-base #{$cookie-notice-font-size-mobile} / #{$line-height-base} $font-family-base;
     @include media-breakpoint-up(lg) {
         font-size: $cookie-notice-font-size-desktop;
     }
 
     .cookie-header {
-        @extend .h3;
+        @include heading-base(false);
+        font-size: 125%;
     }
 
     .cookie-header,
@@ -455,6 +458,20 @@ $cookie-notice-togglebox-height: 20px;
 
         .toggle-text {
             font-size: inherit;
+        }
+    }
+}
+
+// Modal dialog for cookie notice
+#mercury-page .modal-dialog.cookie-notice .external-cookie-notice {
+
+    padding: $modal-inner-padding;
+
+    .modal-footer {
+        border-top: none;
+
+        .btn + .btn {
+            margin-left: $default-margin;
         }
     }
 }

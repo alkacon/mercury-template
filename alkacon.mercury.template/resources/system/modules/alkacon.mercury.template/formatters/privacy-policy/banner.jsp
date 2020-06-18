@@ -18,8 +18,8 @@
 <c:set var="ignore"             value="${cms.requestContext.setUri(param.path)} }" />
 
 
-<fmt:message var="btnSaveDef" key="msg.page.privacypolicy.button.save" />
-<fmt:message var="btnAcceptDef" key="msg.page.privacypolicy.button.accept" />
+<fmt:message var="btnSaveDef" key="msg.page.privacypolicy.button.banner.save" />
+<fmt:message var="btnAcceptDef" key="msg.page.privacypolicy.button.banner.accept" />
 <fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
 <fmt:message var="extFootDef" key="msg.page.privacypolicy.external.footer" />
 
@@ -75,6 +75,8 @@
     <cms:jsonvalue key="togOn"><fmt:message key="msg.page.privacypolicy.toggle.active" /></cms:jsonvalue>
     <cms:jsonvalue key="togOff"><fmt:message key="msg.page.privacypolicy.toggle.inactive" /></cms:jsonvalue>
     <cms:jsonvalue key="togLEx"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></cms:jsonvalue>
+    <cms:jsonvalue key="btAcc"><fmt:message key="msg.page.privacypolicy.button.modal.accept" /></cms:jsonvalue>
+    <cms:jsonvalue key="btDis"><fmt:message key="msg.page.privacypolicy.button.modal.dismiss" /></cms:jsonvalue>
 </cms:jsonobject>
 
 <%----%>${policy.verbose}<%----%>

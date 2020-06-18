@@ -255,10 +255,11 @@ $link-hover-decoration:             underline !default;
 $border-color:                      $grey-light !default;
 $table-accent-bg:                   $grey-lighter !default;
 
-$paragraph-margin-bottom:           $default-margin-small !default; // margin below <o> elements
+$paragraph-margin-bottom:           $default-margin-small !default; // margin below <p> elements
 $label-margin-bottom:               $default-margin-verysmall !default; // margin below <label> elements
 $dropdown-border-radius:            $default-border-radius !default; // BS dropdown border radius
 
+$modal-inner-padding:               1rem !default; // inner padding for modal dialog
 
 // Drop shadow color for effects
 
@@ -842,3 +843,4 @@ $list-tile-spacers:                 (0, 2, 5, 10, 15) !default;
 // Start of theme JSON with main colors
 $themeJSON: '"main-theme":"#{$main-theme}"';
 $themeJSON: append-json($themeJSON, "main-theme-hover", $main-theme-hover);
+$themeJSON: append-json($themeJSON, "sass-version", mercury-#{unique-id()});

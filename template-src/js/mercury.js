@@ -46,7 +46,7 @@ var Mercury = function(jQ) {
 
     "use strict";
 
-    var DEBUG = false || (getParameter("jsdebug") != null);
+    var DEBUG = true || (getParameter("jsdebug") != null);
 
     // class to mark element that should be hidden
     var HIDE_ELEMENT_CLASS="element-hide";
@@ -221,7 +221,7 @@ var Mercury = function(jQ) {
     function getCssJsonData(elementId) {
         // reads JSON data from the CSS and returns it as an JS object
         var data = getCssDataFromId(elementId);
-        if (DEBUG) console.info("Mercury data found in ::before: [" + data + "]");
+        if (DEBUG) console.info("Mercury data found in CSS: [" + data + "]");
         return parseJson(data);
     }
 
@@ -243,7 +243,6 @@ var Mercury = function(jQ) {
     function getCssDataFromId(elementId, after) {
         var element = document.getElementById(elementId);
         var data = getCssDataFromElement(element, after);
-        if (DEBUG) console.info("CSS data found for id #" +  elementId + (after ? '::after' : '::before') + "=[" + data + "]");
         return data;
     }
 
@@ -273,7 +272,7 @@ var Mercury = function(jQ) {
 
 
     function getThemeJSON(key, defaultValue) {
-        // the CSS template themes store several values in the CSS by JSON
+        // the CSS template theme stores several values in the CSS by JSON
         // these values are returned by this function
         // this way it is possible to pass information from the CSS to the JavaScript
         // currently the CSS theme provides the following information:
@@ -538,7 +537,6 @@ var Mercury = function(jQ) {
     }
 
 
-
     function initLazyImageLoading() {
         // initialize lazy loading of images using the lazySizes plugin
         var lazySizesCfg = { init:true };
@@ -578,62 +576,65 @@ var Mercury = function(jQ) {
     }
 
 
-    function initMedia(parent) {
-        // initialize Media element click handlers
-        parent = parent || '';
-        var selector = parent + ' .type-media .preview';
-        var $mediaElements = jQ(selector);
-        if (DEBUG) console.info(selector + " elements found: " + $mediaElements.length);
-        $mediaElements.each(function() {
+    function revalOnClickTemplate($element, template, isMedia) {
+        var $p = $element.parent();
+        if (isMedia) {
+            $p.parent().removeClass("effect-raise effect-shadow effect-rotate effect-box");
+            $p.parent().addClass("play");
+        } else {
+            $p.removeClass("concealed").addClass("revealed");
+        }
+        $element.remove();
+        $p.append(decodeURIComponent(template));
+        initFitVids();
+    }
+
+
+    function initOnclickTemplates(selector, isMedia) {
+        var $onclickTemplates = jQ(selector);
+        if (DEBUG) console.info("initOnclickTemplates(): " + selector + " elements found: " + $onclickTemplates.length);
+        $onclickTemplates.each(function() {
 
             var $element = jQ(this);
             var data = $element.data("preview");
             if (data && data.template) {
-                $element.on("click", data, function(event) {
-                    var $m = jQ(this);
-                    var $p = $m.parent();
-                    $p.parent().removeClass("effect-raise effect-shadow effect-rotate effect-box");
-                    $p.parent().addClass("play");
-                    $m.remove();
-                    $p.append(decodeURIComponent(data.template));
-                    initFitVids();
+                $element.on("click", data, function() {
+                    var cookieData = $element.data("modal-external-cookies");
+                    var openDirect = !cookieData || PrivacyPolicy.cookiesAcceptedExternal();
+                    if (openDirect) {
+                        revalOnClickTemplate($element, data.template, isMedia);
+                    } else {
+                        PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
+                        function() {
+                            revalOnClickTemplate($element, data.template, isMedia);
+                        });
+                    }
                 });
             }
         });
+    }
+
+
+    function initMedia(parent) {
+        // initialize Media element click handlers
+        parent = parent || '';
+        initOnclickTemplates(parent + ' .type-media .preview', true);
     }
 
 
     function initOnclickActivation(parent) {
         // add click handlers to generic onclick activation elements
         parent = parent || '';
-        var selector = parent + ' .onclick-activation';
-        var $onclickElements = jQ(selector);
-        if (DEBUG) console.info(selector + " elements found: " + $onclickElements.length);
-        $onclickElements.each(function() {
-
-            var $element = jQ(this);
-            var data = $element.data("preview");
-            if (data && data.template) {
-                $element.on("click", data, function(event) {
-                    var $m = jQ(this);
-                    var $p = $m.parent();
-                    $p.removeClass("concealed").addClass("revealed");
-                    $m.remove();
-                    $p.append(decodeURIComponent(data.template));
-                    initFitVids();
-                });
-            }
-        });
+        initOnclickTemplates(parent + ' .onclick-activation', false);
     }
 
 
     function checkVersion() {
         // writes version information about the template to the console
-        var sassVersion = getCssDataFromId('template-sass-version');
-
+        var sassVersion = getThemeJSON("sass-version", "unknown");
         if (DEBUG) console.info("Mercury asset versions: " +
-                     "SASS " + sassVersion +
-                     " - JavaScript " + WEBPACK_SCRIPT_VERSION);
+        "SASS " + sassVersion +
+        " - JavaScript " + WEBPACK_SCRIPT_VERSION);
     }
 
 
@@ -710,11 +711,6 @@ var Mercury = function(jQ) {
         } catch (err) {
             console.warn("Mercury.initLazyImageLoading() error", err);
         }
-        try {
-            initElements();
-        } catch (err) {
-            console.warn("Mercury.initElements() error", err);
-        }
 
         waitForCss();
     }
@@ -723,12 +719,12 @@ var Mercury = function(jQ) {
     function initAfterCss() {
 
         if (DEBUG) console.info("Mercury.initAfterCss() - CSS wait time: " + m_cssTimer + "ms");
-        checkVersion(); // output a JS console information about the template version
         if (DEBUG) console.info("Mercury device info: " + device().type);
 
         // initialize
         try {
             initInfo();
+            checkVersion(); // output a JS console information about the template version
         } catch (err) {
             console.warn("Mercury.initInfo() error", err);
         }
@@ -744,6 +740,11 @@ var Mercury = function(jQ) {
             window.PrivacyPolicy = PrivacyPolicy;
         } catch (err) {
             console.warn("PrivacyPolicy.init() error", err);
+        }
+        try {
+            initElements();
+        } catch (err) {
+            console.warn("Mercury.initElements() error", err);
         }
         try {
             NavigationElements.init(jQ, DEBUG);

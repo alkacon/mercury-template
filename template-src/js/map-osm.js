@@ -222,27 +222,38 @@ export function init(jQuery, debug) {
             // initialize map style from JSON stored in CSS
             m_mapStyle = Mercury.getThemeJSON("map-style", []);
 
-            // initialize map sections with values from data attributes
-            $mapElements.each(function() {
-                var $mapElement = jQ(this);
-                if (typeof $mapElement.data("map") != "undefined") {
-                    var mapData = $mapElement.data("map");
-                    if(typeof mapData == "string") {
-                        mapData = JSON.parse(mapData);
-                    }
-                    mapData.id = $mapElement.attr("id");
-                    mapData.hidden = Mercury.isElementHidden($mapElement, showMap);
-                    if (DEBUG) console.info("OSM map found with id: " + mapData.id);
-                    m_mapData.push(mapData);
-                    $mapElement.removeClass('placeholder');
-                    // add redraw handler for maps hidden in accordions and tabs
-                    Mercury.initTabAccordion(function(event) { redrawMap(mapData.id, event) });
-                }
-            });
+            if (PrivacyPolicy.cookiesAcceptedExternal()) {
 
-            setStyle(jQ, m_apiKey, function() {
-                showMaps(jQ, m_apiKey);
-            });
+                m_maps = {};
+                m_mapData = [];
+                m_mapStyle = [];
+
+                // initialize map sections with values from data attributes
+                $mapElements.each(function() {
+                    var $mapElement = jQ(this);
+                    if (typeof $mapElement.data("map") != "undefined") {
+                        var mapData = $mapElement.data("map");
+                        if(typeof mapData == "string") {
+                            mapData = JSON.parse(mapData);
+                        }
+                        mapData.id = $mapElement.attr("id");
+                        mapData.hidden = Mercury.isElementHidden($mapElement, showMap);
+                        if (DEBUG) console.info("OSM map found with id: " + mapData.id);
+                        m_mapData.push(mapData);
+                        $mapElement.removeClass('placeholder');
+                        // add redraw handler for maps hidden in accordions and tabs
+                        Mercury.initTabAccordion(function(event) { redrawMap(mapData.id, event) });
+                    }
+                });
+
+                setStyle(jQ, m_apiKey, function() {
+                    showMaps(jQ, m_apiKey);
+                });
+
+            } else {
+
+                if (DEBUG) console.info("External cookies not accepted by the user - OSM / Open street maps are disabled!");
+            }
 
         } else {
 

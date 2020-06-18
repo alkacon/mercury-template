@@ -12,6 +12,13 @@
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' atttribute to set on the generated preview HTML." %>
 
+<%@ attribute name="requireExternalCookies" type="java.lang.Boolean" required="false"
+    description="If 'true' consent to external cookies is required to activate this element.
+    In this case a modal dialog will be displayed, asking the user to confirm the use of external cookies." %>
+
+<%@ attribute name="cookieMessage" type="java.lang.String" required="false"
+    description="The message to show in the 'activate cookies' modal dialog." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -62,6 +69,7 @@
         --%>class="onclick-activation ${cssWrapper}" <%--
         --%><c:if test="${not empty cssStyle}">style="${cssStyle}" </c:if><%--
         --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
+        --%><c:if test="${requireExternalCookies}"><mercury:data-external-cookies modal="${true}" message="${cookieMessage}" /></c:if><%--
         --%>>
             <c:if test="${not empty image}">
                 <cms:addparams>

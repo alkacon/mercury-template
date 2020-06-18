@@ -27,7 +27,7 @@ var DEBUG;
 
 var DEFAULT_IF_NOT_CONFIGURED = true; // default if policy banner is not configured in the template
 
-var OPTIONS_CONFIRMED = "privacy-options-confirmed";
+var OPTIONS_CONFIRMED = "privacy-options";
 var OPTIONS_CONFIRMED_DAYS = 1; // number of days the confirmation will be valid
 
 var COOKIES_TECHNICAL = "|technical";
@@ -50,10 +50,12 @@ function initBannerData() {
         if (DEBUG) console.info("PrivacyPolicy: Initializing banner data=" + bannerDataFound);
         if (bannerDataFound) {
 
-            m_bannerData = $privacyBanner.data("banner");
-            m_bannerData.initialized = true;
-            if (typeof m_bannerData !== 'undefined') {
+            var bannerData = $privacyBanner.data("banner");
+            if (typeof bannerData !== 'undefined') {
+                m_bannerData = bannerData;
                 m_bannerData.$bannerElement = $privacyBanner;
+                m_bannerData.initialized = true;
+                m_bannerData.togglesInitialized = false;
             }
         }
     }
@@ -144,10 +146,15 @@ function initPrivacyBanner(onTop) {
 
         if (! cookiesAcceptedTechnical()) {
             if (DEBUG) console.info("PrivacyPolicy: Banner NOT confirmed - Displaying banner");
-            loadPolicy(displayBanner);
+            loadPolicy(function(){
+                displayBanner();
+                initExternalElements(true);
+             });
         } else if (hasExternalElements() && ! cookiesAcceptedExternal()) {
             if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, external cookies required but not confirmed - Loading policy, cookie data=" + getCookie(OPTIONS_CONFIRMED));
-            loadPolicy();
+            loadPolicy(function(){
+                initExternalElements(true);
+             });
         } else {
             if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, cookie data=" + getCookie(OPTIONS_CONFIRMED));
         }
@@ -265,24 +272,148 @@ function disableExternalElements() {
     } else {
         if (DEBUG) console.info("PrivacyPolicy: Disabling external elements");
         setPrivacyCookiesExternal(false);
-        jQ("[data-external-cookies]").each(function() {
-            var $element = jQ(this);
-            showExternalCookieNotice($element);
-        });
+        initExternalElements(true);
     }
 }
 
 function enableExternalElements() {
     if (DEBUG) console.info("PrivacyPolicy: Enabling external elements");
     setPrivacyCookiesExternal(true);
-    var $elements = jQ("[data-external-cookies]");
     window.setTimeout(function() {
-        $elements.empty();
+        initExternalElements(false);
         resetTemplateScript();
     }, 600);
 }
 
+function createExternalElementToggle(heading, message, footer) {
+
+    var heading = (typeof heading !== 'undefined') ? heading : m_policy.nHead;
+    var message = (typeof message !== 'undefined') ? message : m_policy.nMsg;
+    var footer = (typeof footer !== 'undefined') ? footer : m_policy.nFoot;
+    var toggleId = "toggle-" + Math.floor(Math.random() * 1000000);
+
+    var cookieHtml =
+        '<div class=\"cookie-content\">' +
+            '<div class=\"cookie-header\">' + heading + '</div>' +
+            '<div class=\"cookie-message\">' + message + '</div>' +
+            '<div class=\"cookie-switch pp-toggle pp-toggle-external animated\">' +
+                '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\">' +
+                '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
+                    '<span class=\"toggle-box\">' +
+                        '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togOn + '\" data-unchecked=\"' + m_policy.togOff + '\"></span>' +
+                        '<span class=\"toggle-slider\"></span>' +
+                    '</span>' +
+                '</label>' +
+                '<div class=\"toggle-text\">' + m_policy.togLEx + '</div>' +
+            '</div>' +
+            '<div class=\"cookie-footer\">' + footer + '</div>' +
+        '</div>';
+
+    return cookieHtml;
+}
+
+function initExternalElements(showMessage) {
+
+    // this function assumes the privacy policy has already been loaded!
+    var $elements = jQ("[data-external-cookies]");
+    if (showMessage) {
+        if (DEBUG) console.info("PrivacyPolicy: Displaying messages for external elements");
+        $elements.each(function() {
+            var $element = jQ(this);
+            // remove placeholder class added by some elements (e.g. maps)
+            $element.removeClass("placeholder");
+            var cookieData = $element.data("external-cookies");
+            if (typeof cookieData !== 'undefined') {
+
+                var cookieHtml = createExternalElementToggle(cookieData.heading, cookieData.message, cookieData.footer);
+                $element.addClass("external-cookie-notice");
+                $element.empty().html(cookieHtml);
+
+                var $presizedParent = $element.parent(".presized");
+                if ($presizedParent.length > 0) {
+                    var parentHeight = $presizedParent.innerHeight();
+                    var toggleHeight = $element.find(".cookie-content").innerHeight();
+                    if (DEBUG) console.info("PrivacyPolicy: parent(.presized).height=" + parentHeight + " .cookie-content.height=" + toggleHeight);
+                    if (parentHeight < toggleHeight) {
+                        $element.parent(".presized").addClass("enlarged");
+                    }
+                }
+
+                var $toggleCheckbox = jQ(".toggle-check", $element);
+                // only allow element activation in case technical cookies have already been accepted
+                $toggleCheckbox.prop('checked', false);
+                $toggleCheckbox.change(function() {
+                    enableExternalElements();
+                });
+                if (!cookiesAcceptedTechnical()) {
+                    $toggleCheckbox.prop('disabled', true);
+                }
+
+            } else {
+                if (DEBUG) console.info("PrivacyPolicy.showExternalCookieNotice(): No Cookie data found on " + $element.getFullPath());
+            }
+        });
+    } else {
+        $elements.empty();
+    }
+}
+
 /****** Exported functions ******/
+
+export function createExternalElementModal(heading, message, footer, callbackAccept) {
+
+    if (DEBUG) console.info("PrivacyPolicy: Creating modal dialog");
+
+    if (! m_policy.loaded) {
+        loadPolicy(function() {
+            createExternalElementModal(heading, message, footer, callbackAccept);
+        });
+    } else {
+
+        var modalId = "modal-" + Math.floor(Math.random() * 1000000);
+        var modalHtml =
+        '<div class=\"modal fade\" id=\"' + modalId + '\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">' +
+            '<div class=\"modal-dialog cookie-notice modal-lg modal-dialog-centered modal-dialog-scrollable\">' +
+                '<div class=\"modal-content external-cookie-notice\">' +
+                    '<div class=\"modal-body\">' +
+                            createExternalElementToggle(heading, message, footer) +
+                    '</div>' +
+                    '<div class=\"modal-footer\">' +
+                        '<button type=\"button\" class=\"btn btn-sm btn-dismiss\" data-dismiss=\"modal\">' + m_policy.btDis + '</button>' +
+                        '<button type=\"button\" class=\"btn btn-sm btn-accept\" data-dismiss=\"modal\">' + m_policy.btAcc + '</button>' +
+                    '</div>'
+                '</div>' +
+            '</div>' +
+        '</div>'
+
+        var $modalHolder = jQ('#modal-holder');
+        if ($modalHolder.length < 1) {
+            jQ('#mercury-page').append('<div id=\"modal-holder\"></div>');
+            $modalHolder = jQ('#modal-holder');
+        }
+        $modalHolder.html(modalHtml);
+
+        var $btnAccept = jQ(".btn-accept", $modalHolder);
+        var $toggleCheckbox = jQ(".toggle-check", $modalHolder);
+
+        $btnAccept.on("click", function() {
+            setPrivacyCookiesExternal(true);
+            callbackAccept();
+        });
+        $toggleCheckbox.change(function() {
+            setPrivacyCookiesExternal(true);
+            callbackAccept();
+            jQ("#" + modalId).modal('hide');
+        });
+
+        jQ("#" + modalId).modal({
+            backdrop: 'static',
+            show: true,
+            focus: true,
+            keyboard: true
+        });
+    }
+}
 
 //see https://github.com/js-cookie/js-cookie/wiki/Design-Patterns-To-Use-With-JavaScript-Cookie
 export function getCookie(name) {
@@ -330,63 +461,6 @@ export function cookiesAcceptedStatistical() {
         m_bannerData.cookiesStatistical = checkCookie(COOKIES_STATISTICAL);
     }
     return m_bannerData.cookiesStatistical;
-}
-
-export function showExternalCookieNotice($element) {
-
-    if (DEBUG) console.info("PrivacyPolicy.showExternalCookieNotice()");
-
-    var cookieData = $element.data("external-cookies");
-    if (typeof cookieData !== 'undefined') {
-        // read cookie data
-        var heading = (typeof cookieData.heading !== 'undefined') ? cookieData.heading : m_policy.nHead;
-        var message = (typeof cookieData.message !== 'undefined') ? cookieData.message : m_policy.nMsg;
-        var footer = (typeof cookieData.footer !== 'undefined') ? cookieData.footer : m_policy.nFoot;
-        var toggleId = "toggle-" + Math.floor(Math.random() * 1000000);
-
-        var cookieHtml =
-            '<div class=\"cookie-content\">' +
-                '<div class=\"cookie-header\">' + heading + '</div>' +
-                '<div class=\"cookie-message\">' + message + '</div>' +
-                '<div class=\"cookie-switch pp-toggle pp-toggle-external animated\">' +
-                    '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\">' +
-                    '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
-                        '<span class=\"toggle-box\">' +
-                            '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togOn + '\" data-unchecked=\"' + m_policy.togOff + '\"></span>' +
-                            '<span class=\"toggle-slider\"></span>' +
-                        '</span>' +
-                    '</label>' +
-                    '<div class=\"toggle-text\">' + m_policy.togLEx + '</div>' +
-                '</div>' +
-                '<div class=\"cookie-footer\">' + footer + '</div>' +
-            '</div>';
-
-        $element.addClass("external-cookie-notice");
-        $element.empty().html(cookieHtml);
-
-        var $presizedParent = $element.parent(".presized");
-        if ($presizedParent.length > 0) {
-            var parentHeight = $presizedParent.innerHeight();
-            var toggleHeight = $element.find(".cookie-content").innerHeight();
-            if (DEBUG) console.info("PrivacyPolicy: parent(.presized).height=" + parentHeight + " .cookie-content.height=" + toggleHeight);
-            if (parentHeight < toggleHeight) {
-                $element.parent(".presized").addClass("enlarged");
-            }
-        }
-
-        var $toggleCheckbox = jQ(".toggle-check", $element);
-        // only allow element activation in case technical cookies have already been accepted
-        $toggleCheckbox.prop('checked', false);
-        $toggleCheckbox.change(function() {
-            enableExternalElements();
-        });
-        if (!cookiesAcceptedTechnical()) {
-            $toggleCheckbox.prop('disabled', true);
-        }
-
-    } else {
-        if (DEBUG) console.info("PrivacyPolicy.showExternalCookieNotice(): No Cookie data found on " + $element.getFullPath());
-    }
 }
 
 export function init(jQuery, debug) {

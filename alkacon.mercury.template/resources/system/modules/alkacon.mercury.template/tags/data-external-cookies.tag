@@ -2,7 +2,7 @@
     display-name="data-cookies"
     body-content="empty"
     trimDirectiveWhitespaces="true"
-    description="Generates privacy policy cookie data for elements." %>
+    description="Generates cookie data for external elements." %>
 
 
 <%@ attribute name="message" type="java.lang.String" required="true"
@@ -16,6 +16,8 @@
     description="Footer for the generated cookie alert box
     Will be read from the global configuration if not provided." %>
 
+<%@ attribute name="modal" type="java.lang.Boolean" required="false"
+    description="Controls if the data attibute is generated for a modal dialog." %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -32,4 +34,4 @@
     </c:if>
 </cms:jsonobject>
 
-<%----%>data-external-cookies='${cookieData.compact}'<%----%>
+<%----%>${' '}${modal ? 'data-modal-external-cookies' : 'data-external-cookies'}='${cookieData.compact}'${' '}<%----%>

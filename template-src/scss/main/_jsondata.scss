@@ -33,14 +33,10 @@
     }
 }
 
-#template-sass-version {
-    &::before {
-        content: '#{unique-id()}';
-    }
-}
+#template-grid-info {
 
-.template-grid-info {
     &::before {
+        display: none;
         content: 'xs';
     }
     @include media-breakpoint-up(sm) {
@@ -63,16 +59,9 @@
             content: 'xl';
         }
     }
-}
-
-#template-grid-info {
-
-    &::before {
-        display: none;
-    }
 
     &::after {
-        display: none;
+        // display: none;
         content: '{' +
             '"xsMax":' + breakpoint-max(xs) + ', ' +
             '"smMin":' + breakpoint-min(sm) + ', ' +

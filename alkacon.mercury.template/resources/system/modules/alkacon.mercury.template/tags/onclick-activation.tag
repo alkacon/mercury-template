@@ -65,12 +65,13 @@
             </c:set>
         </c:if>
 
+        <mercury:nl />
         <div <%--
         --%>class="onclick-activation ${cssWrapper}" <%--
         --%><c:if test="${not empty cssStyle}">style="${cssStyle}" </c:if><%--
         --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
         --%><c:if test="${requireExternalCookies}"><mercury:data-external-cookies modal="${true}" message="${cookieMessage}" /></c:if><%--
-        --%>>
+        --%>><%----%>
             <c:if test="${not empty image}">
                 <cms:addparams>
                     <cms:param name="apollogrid" value="col-xs-12" />
@@ -91,8 +92,20 @@
             <c:if test="${not empty notice}">
                 <div class="oa-notice"><c:out value="${notice}" escapeXml="true" /></div><%----%>
             </c:if>
-        </div>
+        </div><%----%>
+        <mercury:nl />
     </c:when>
+
+    <c:when test="${!cms.isEditMode and requireExternalCookies}">
+        <mercury:nl />
+        <div <%--
+            --%>class="onclick-activation ensure-external-cookies ${cssWrapper}" <%--
+            --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
+            --%><mercury:data-external-cookies modal="${false}" message="${cookieMessage}" /><%--
+        --%>></div><%----%>
+        <mercury:nl />
+    </c:when>
+
     <c:otherwise>
         <%-- ####### JSP body inserted here ######## --%>
         ${template}

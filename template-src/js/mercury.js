@@ -577,12 +577,14 @@ var Mercury = function(jQ) {
 
 
     function revalOnClickTemplate($element, template, isMedia) {
+        $element.removeClass("reveal-registered");
         var $p = $element.parent();
         if (isMedia) {
-            $p.parent().removeClass("effect-raise effect-shadow effect-rotate effect-box");
+            $p.parent().removeClass("effect-raise effect-shadow effect-rotate effect-box enlarged");
             $p.parent().addClass("play");
         } else {
-            $p.removeClass("concealed").addClass("revealed");
+            $p.removeClass("concealed enlarged");
+            $p.addClass("revealed");
         }
         $element.remove();
         $p.append(decodeURIComponent(template));
@@ -598,18 +600,26 @@ var Mercury = function(jQ) {
             var $element = jQ(this);
             var data = $element.data("preview");
             if (data && data.template) {
-                $element.on("click", data, function() {
-                    var cookieData = $element.data("modal-external-cookies");
-                    var openDirect = !cookieData || PrivacyPolicy.cookiesAcceptedExternal();
-                    if (openDirect) {
+                if ($element.hasClass("ensure-external-cookies")) {
+                    if (PrivacyPolicy.cookiesAcceptedExternal()) {
                         revalOnClickTemplate($element, data.template, isMedia);
-                    } else {
-                        PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
-                        function() {
-                            revalOnClickTemplate($element, data.template, isMedia);
+                    }
+                } else {
+                     if (! $element.hasClass("reveal-registered")) {
+                        $element.addClass("reveal-registered");
+                        $element.on("click", data, function() {
+                            var cookieData = $element.data("modal-external-cookies");
+                            if (!cookieData || PrivacyPolicy.cookiesAcceptedExternal()) {
+                                revalOnClickTemplate($element, data.template, isMedia);
+                            } else {
+                                PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
+                                function() {
+                                    revalOnClickTemplate($element, data.template, isMedia);
+                                });
+                            }
                         });
                     }
-                });
+                }
             }
         });
     }

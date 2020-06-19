@@ -19,17 +19,21 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 
 <mercury:nl />
-<div class="element type-flexible ${cssWrapper}">
-<%----%>
+<div class="element type-flexible ${cssWrapper}"><%----%>
+<mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
 
-    <mercury:onclick-activation data="${value.OnclickActivation}">
+    <mercury:onclick-activation
+        data="${value.OnclickActivation}"
+        requireExternalCookies="${value.RequireCookies.toBoolean}">
+
         ${value.Code}
+
     </mercury:onclick-activation>
 
-</div>
-<%----%>
+</div><%----%>
+<mercury:nl />
 
 </cms:formatter>
 </mercury:init-messages>

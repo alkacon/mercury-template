@@ -167,7 +167,7 @@ function resetTemplateScript(forceInit) {
     if ($externalElements.length > 0) {
         // some elements on this page are disabled, re-init Mercury to enable them
         $externalElements.parent(".presized.enlarged").removeClass("enlarged");
-        $externalElements.removeClass("external-cookie-notice");
+        $externalElements.removeClass("external-cookie-notice modal-cookie-notice");
         Mercury.init();
     } else if (forceInit) {
         location.reload();
@@ -329,24 +329,49 @@ function initExternalElements(showMessage) {
                 $element.addClass("external-cookie-notice");
                 $element.empty().html(cookieHtml);
 
-                var $presizedParent = $element.parent(".presized");
+                var $presizedParent;
+                if ($element.hasClass("preview")) {
+                    // this should be a media element
+                    $presizedParent = $element.parent().parent(".presized");
+                } else {
+                    $presizedParent = $element.parent(".presized");
+                }
+
+                var addModal = false;
                 if ($presizedParent.length > 0) {
                     var parentHeight = $presizedParent.innerHeight();
                     var toggleHeight = $element.find(".cookie-content").innerHeight();
                     if (DEBUG) console.info("PrivacyPolicy: parent(.presized).height=" + parentHeight + " .cookie-content.height=" + toggleHeight);
-                    if (parentHeight < toggleHeight) {
-                        $element.parent(".presized").addClass("enlarged");
+                    if (toggleHeight > parentHeight) {
+                        if ((toggleHeight / parentHeight) < 1.51) {
+                            // toggle is not 1.5 times higher than the presized original
+                            $presizedParent.addClass("enlarged");
+                        } else {
+                            // toggle is much higher than the presized original
+                            addModal = true;
+                            $element.addClass("modal-cookie-notice");
+                            $element.find(".cookie-content > div:not(.cookie-header)").remove();
+                            $element.find(".cookie-content").append('<div class=\"cookie-footer\">' + m_policy.nClick + '</div>');
+                            $element.on("click", function() {
+                                createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
+                                function() {
+                                    enableExternalElements();
+                                });
+                            });
+                        }
                     }
                 }
 
-                var $toggleCheckbox = jQ(".toggle-check", $element);
-                // only allow element activation in case technical cookies have already been accepted
-                $toggleCheckbox.prop('checked', false);
-                $toggleCheckbox.change(function() {
-                    enableExternalElements();
-                });
-                if (!cookiesAcceptedTechnical()) {
-                    $toggleCheckbox.prop('disabled', true);
+                if (! addModal) {
+                    var $toggleCheckbox = jQ(".toggle-check", $element);
+                    // only allow element activation in case technical cookies have already been accepted
+                    $toggleCheckbox.prop('checked', false);
+                    $toggleCheckbox.change(function() {
+                        enableExternalElements();
+                    });
+                    if (!cookiesAcceptedTechnical()) {
+                        $toggleCheckbox.prop('disabled', true);
+                    }
                 }
 
             } else {
@@ -386,6 +411,7 @@ export function createExternalElementModal(heading, message, footer, callbackAcc
             '</div>' +
         '</div>'
 
+        // this method is called only from an onclick handler, so the modal dialog has to be fully initialized
         var $modalHolder = jQ('#modal-holder');
         if ($modalHolder.length < 1) {
             jQ('#mercury-page').append('<div id=\"modal-holder\"></div>');

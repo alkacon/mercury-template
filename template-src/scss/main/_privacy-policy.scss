@@ -407,6 +407,7 @@ $cookie-notice-togglebox-height: 20px;
     justify-content: center;
     overflow: scroll !important;
     padding: $default-margin;
+    cursor: auto;
     // must set this because some elements (e.g. OSM) add another class that changes the font
     font: $font-weight-base #{$cookie-notice-font-size-mobile} / #{$line-height-base} $font-family-base;
     @include media-breakpoint-up(lg) {
@@ -427,6 +428,10 @@ $cookie-notice-togglebox-height: 20px;
     .cookie-footer {
         font-size: $cookie-notice-small-font-size;
         color: $cookie-notice-alt-color;
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .pp-toggle {

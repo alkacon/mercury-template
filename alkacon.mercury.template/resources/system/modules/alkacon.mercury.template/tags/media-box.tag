@@ -87,34 +87,28 @@
 
     <mercury:padding-box cssWrapper="effect-box media-box ${not autoPlay ? effect : ''}" height="${height}" width="${width}" ratio="${ratio}">
         <div class="content"><%----%>
-            <c:choose>
-                <c:when test="${autoPlay}">
-                    ${template}
-                </c:when>
-                <c:otherwise>
-                    <c:if test="${not empty template}">
-                        <c:set var="mediaTemplate"><%--
-                        --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
-                        --%><mercury:data-external-cookies modal="${true}" message="${cookieMessage}" /><%--
-                        --%>
-                        </c:set>
-                    </c:if>
-                    <div class="preview" ${mediaTemplate}><%----%>
-                        <c:choose>
-                            <c:when test="${not empty image}">
-                                <mercury:image-animated image="${image}" ratio="${ratio}" title="${content.value.Title}" />
-                            </c:when>
-                            <c:when test="${isYouTube and not empty youTubePreviewHtml}">
-                                <div class="centered image">${youTubePreviewHtml}</div><%----%>
-                            </c:when>
-                        </c:choose>
-                        ${markupVisualOverlay}
-                    </div><%----%>
-                    <c:if test="${showCopyright and not empty copyright}">
-                        <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
-                    </c:if>
-                </c:otherwise>
-            </c:choose>
+            <c:if test="${not empty template}">
+                <c:set var="mediaTemplate"><%--
+                    --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
+                    --%><mercury:data-external-cookies modal="${not autoPlay}" message="${cookieMessage}" />
+                </c:set>
+            </c:if>
+            <div class="preview${autoPlay ? ' ensure-external-cookies' : ''}" ${mediaTemplate}><%----%>
+                <c:if test="${not autoPlay}">
+                    <c:choose>
+                        <c:when test="${not empty image}">
+                            <mercury:image-animated image="${image}" ratio="${ratio}" title="${content.value.Title}" />
+                        </c:when>
+                        <c:when test="${isYouTube and not empty youTubePreviewHtml}">
+                            <div class="centered image">${youTubePreviewHtml}</div><%----%>
+                        </c:when>
+                    </c:choose>
+                    ${markupVisualOverlay}
+                </c:if>
+            </div><%----%>
+            <c:if test="${not autoPlay and showCopyright and not empty copyright}">
+                <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
+            </c:if>
         </div><%----%>
     </mercury:padding-box>
 

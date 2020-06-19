@@ -17,7 +17,6 @@
 
 <c:set var="ignore"             value="${cms.requestContext.setUri(param.path)} }" />
 
-
 <fmt:message var="btnSaveDef" key="msg.page.privacypolicy.button.banner.save" />
 <fmt:message var="btnAcceptDef" key="msg.page.privacypolicy.button.banner.accept" />
 <fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
@@ -70,8 +69,9 @@
     <cms:jsonvalue key="daysA">${value.CookieExpirationDays.useDefault("90")}</cms:jsonvalue>
     <cms:jsonvalue key="daysS">${value.CookieExpirationDaysNoStats.useDefault("1")}</cms:jsonvalue>
     <cms:jsonvalue key="nHead">${value.ExternalTitle.isSet ? value.ExternalTitle : extTitleDef}</cms:jsonvalue>
-    <cms:jsonvalue key="nMsg"><fmt:message key="msg.page.privacypolicy.external.message" /></cms:jsonvalue>
     <cms:jsonvalue key="nFoot">${value.ExternalFooter.isSet ? value.ExternalFooter : extFootDef}</cms:jsonvalue>
+    <cms:jsonvalue key="nMsg"><fmt:message key="msg.page.privacypolicy.external.message" /></cms:jsonvalue>
+    <cms:jsonvalue key="nClick"><fmt:message key="msg.page.privacypolicy.external.clickme" /></cms:jsonvalue>
     <cms:jsonvalue key="togOn"><fmt:message key="msg.page.privacypolicy.toggle.active" /></cms:jsonvalue>
     <cms:jsonvalue key="togOff"><fmt:message key="msg.page.privacypolicy.toggle.inactive" /></cms:jsonvalue>
     <cms:jsonvalue key="togLEx"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></cms:jsonvalue>
@@ -79,7 +79,7 @@
     <cms:jsonvalue key="btDis"><fmt:message key="msg.page.privacypolicy.button.modal.dismiss" /></cms:jsonvalue>
 </cms:jsonobject>
 
-<%----%>${policy.verbose}<%----%>
+<%----%>${policy.compact}<%----%>
 
 </cms:bundle>
 </cms:formatter>

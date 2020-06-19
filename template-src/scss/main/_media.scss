@@ -164,13 +164,22 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
         position: relative;
         width: 100%;
         height: initial;
-        padding-bottom: 100%;
-        overflow: hidden;
+        &:not(.enlarged) {
+            padding-bottom: 100%;
+            overflow: hidden;
+        }
+        &.enlarged {
+            padding-bottom: 0!important;
+            .content {
+                position: static;
+                height: auto;
+            }
+        }
     }
 }
 
 
-// Onclock activation
+// Onclick activation
 
 .onclick-activation {
     position: relative;
@@ -305,3 +314,7 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
     }
 }
 
+.element .onclick-activation:last-child {
+    // remove bottom margin if onclick-element ist last child of element
+    margin-bottom: 0;
+}

@@ -16,6 +16,7 @@
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Code" type="OpenCmsHtml" />
             <xsd:element name="RequireReload" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="RequireCookies" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="OnclickActivation" type="OpenCmsOnclickActivation" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
@@ -51,6 +52,14 @@
                     <PropertyName>RequireReload</PropertyName>
                     <DisplayName><![CDATA[%(key.label.RequireReload)]]></DisplayName>
                     <Description><![CDATA[%(key.label.RequireReload.help)]]></Description>
+                    <Widget>checkbox</Widget>
+                    <Default>false</Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>RequireCookies</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.RequireCookies)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.RequireCookies.help)]]></Description>
                     <Widget>checkbox</Widget>
                     <Default>false</Default>
                     <Search>false</Search>

@@ -46,7 +46,7 @@
             </cms:simpledisplay>
         </c:when>
         <c:otherwise>
-            <c:set var="paramFormatter" value="${baseUri}" />
+            <c:set var="paramFormatter" value="Base URI (${baseUri})" />
             <cms:display
                 value="${file}"
                 baseUri="${baseUri}"

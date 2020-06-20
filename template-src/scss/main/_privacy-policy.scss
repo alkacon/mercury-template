@@ -468,18 +468,17 @@ $cookie-notice-togglebox-height: 20px;
 }
 
 // Modal dialog for cookie notice
-#mercury-page .modal-dialog.cookie-notice .external-cookie-notice {
+#mercury-page .modal {
 
-    padding: $modal-inner-padding;
+    .modal-dialog.cookie-notice .external-cookie-notice {
+        padding: $modal-inner-padding;
 
-    .modal-footer {
-        border-top: none;
+        .modal-footer {
+            border-top: none;
 
-        .btn + .btn {
-            margin-left: $default-margin;
+            .btn + .btn {
+                margin-left: $default-margin;
+            }
         }
     }
 }
-
-
-

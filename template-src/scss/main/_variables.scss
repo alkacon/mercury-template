@@ -260,6 +260,8 @@ $label-margin-bottom:               $default-margin-verysmall !default; // margi
 $dropdown-border-radius:            $default-border-radius !default; // BS dropdown border radius
 
 $modal-inner-padding:               1rem !default; // inner padding for modal dialog
+$zindex-modal-backdrop:             $above-oc-z-index + 1000 !default;
+$zindex-modal:                      $above-oc-z-index + 1050 !default;
 
 // Drop shadow color for effects
 

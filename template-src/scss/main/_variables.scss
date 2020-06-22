@@ -614,6 +614,17 @@ $togglebox-enabled-color:           $policy-banner-accept-button-color !default;
 $togglebox-disabled-color:          $grey-light !default;
 $togglebox-slider-color:            $grey-light !default;
 
+$cookie-notice-bg-color:            $grey-lighter !default;
+$cookie-notice-color:               get-text-color($cookie-notice-bg-color) !default;
+$cookie-notice-alt-color:           $cookie-notice-color !default;
+$cookie-notice-font-size-mobile:    14px !default;
+$cookie-notice-font-size-desktop:   $font-size-base !default;
+$cookie-notice-small-font-size:     85% !default;
+$cookie-notice-large-font-size:     125% !default;
+$cookie-notice-togglebox-width:     150px !default;
+$cookie-notice-togglebox-height:    20px !default;
+
+$element-hide-bg-color:             $cookie-notice-bg-color !default;
 
 // POI accessible icons
 

@@ -237,7 +237,7 @@ function showSingleMap(mapData){
     var groups = {};
     var groupsFound = 0;
 
-    if (typeof mapData.markers != "undefined") {
+    if (typeof mapData.markers !== "undefined") {
         for (var p=0; p < mapData.markers.length; p++) {
 
             var point = mapData.markers[p];
@@ -301,7 +301,7 @@ export function initGoogleMaps() {
 
     if (DEBUG) console.info("GoogleMap initGoogleMaps() called with data for " + m_mapData.length + " maps!" );
        for (var i=0; i < m_mapData.length; i++) {
-         if(!m_mapData[i].hidden){
+         if(!m_mapData[i].showPlaceholder){
              showSingleMap(m_mapData[i]);
           }
        }
@@ -315,7 +315,7 @@ function showMap(event){
 
     for(var i=0; i<m_mapData.length;i++){
         if(m_mapData[i].id == mapToShow.id){
-            m_mapData[i].hidden=false;
+            m_mapData[i].showPlaceholder=false;
             showSingleMap(m_mapData[i]);
         }
     }
@@ -356,16 +356,18 @@ export function init(jQuery, debug) {
                 $mapElements.each(function(){
                     var $mapElement = jQ(this);
 
-                    if (typeof $mapElement.data("map") != "undefined") {
+                    if (typeof $mapElement.data("map") !== "undefined") {
                         var mapData = $mapElement.data("map");
-                        if(typeof mapData == "string") {
+                        if(typeof mapData === "string") {
                             mapData = JSON.parse(mapData);
                         }
                         mapData.id = $mapElement.attr("id");
-                        mapData.hidden=Mercury.isElementHidden($mapElement, showMap);
+                        mapData.showPlaceholder = Mercury.initPlaceholder($mapElement, showMap);
                         if (DEBUG) console.info("GoogleMap found with id: " + mapData.id);
                         m_mapData.push(mapData);
-                        $mapElement.removeClass('placeholder');
+                        if (! mapData.showPlaceholder) {
+                            $mapElement.removeClass('placeholder');
+                        }
                     }
                 });
 
@@ -376,15 +378,6 @@ export function init(jQuery, debug) {
                 if (DEBUG) console.info("External cookies not accepted by the user - Google maps are disabled!");
             }
 
-        } else {
-
-            // activate the hide message (no API key found)
-            $mapElements.each(function() {
-                var $mapElement = jQ(this);
-                if (typeof $mapElement.data("map") != "undefined") {
-                    Mercury.hideElement($mapElement);
-                }
-            });
         }
     }
 }

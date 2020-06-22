@@ -74,7 +74,7 @@
         --%>><%----%>
             <c:if test="${not empty image}">
                 <cms:addparams>
-                    <cms:param name="apollogrid" value="col-xs-12" />
+                    <cms:param name="cssgrid" value="col-xs-12" />
                     <mercury:image-animated
                         image="${image}"
                         ratio="${ratio}"
@@ -87,7 +87,10 @@
                 <div class="oa-heading"><c:out value="${heading}" escapeXml="true" /></div><%----%>
             </c:if>
             <c:if test="${not empty icon and icon ne 'none'}">
-                <div class="oa-icon centered"><span class="fa fa-${icon}"></span></div><%----%>
+                <div class="oa-icon centered"><%----%>
+                    <span class="fa fa-${icon}"></span><%----%>
+                    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+                </div><%----%>
             </c:if>
             <c:if test="${not empty notice}">
                 <div class="oa-notice"><c:out value="${notice}" escapeXml="true" /></div><%----%>

@@ -370,8 +370,19 @@ $oct-edit-infos:
     }
 }
 
-.effect-box .online-warn {
-    // required for media preview
-    background-color: transparent;
-    color: inherit;
+.presized .placeholder {
+    .online-warn {
+        position: absolute;
+        top: 0;
+        left: $default-margin-small;
+    }
+}
+
+.presized .placeholder,
+.onclick-activation,
+.effect-box {
+    .online-warn {
+        background-color: transparent;
+        color: inherit;
+    }
 }

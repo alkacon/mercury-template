@@ -228,11 +228,31 @@ span.badge {
     }
 }
 
-// Disabled elements, e.g. OSM maps
 
-.element-hide {
+// Disabled elements, either in edit mode or because of configuration errors like missing API key
+
+.placeholder {
     position: relative;
-    background-color: $grey-light;
+    background-color: $element-hide-bg-color;
+
+    &::after {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 50%;
+        top: 50%;
+        width: 50px;
+        height: 50px;
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-size: 40px;
+        color: transparentize($black, 0.5);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+
+.opencms-page-editor .placeholder {
     cursor: pointer;
 
     &::before {
@@ -241,7 +261,7 @@ span.badge {
         bottom: 0;
         left: 0;
         width: 100%;
-        content: attr(data-hidemessage) " ";
+        content: attr(data-placeholder) " ";
         display: block;
         padding: 10px;
         text-align: center;
@@ -249,10 +269,9 @@ span.badge {
         color: get-text-color($con-col-orange);
     }
 
-   &.error::before{
-       background-color: $con-col-red;
-
-   }
+    &.error::before {
+        background-color: $con-col-red;
+    }
 }
 
 

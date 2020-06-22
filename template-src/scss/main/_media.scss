@@ -123,6 +123,13 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
                 opacity: 1.0;
             }
         }
+
+        &.placeholder {
+            cursor: auto;
+            &::after {
+                content: "\f04b";
+            }
+        }
     }
 
     .col-visual,

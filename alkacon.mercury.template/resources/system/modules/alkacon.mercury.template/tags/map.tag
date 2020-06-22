@@ -167,21 +167,23 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
 
     ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
     --%>data-map='${mapData.compact}'<%--
-    --%><mercury:data-external-cookies message="${cookieMessage}" /><%--
+    --%><mercury:data-external-cookies message="${cookieMessage}" test="${not noApiKey}" /><%--
     --%><c:if test="${cms.isEditMode}">
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">
                 <c:choose>
                     <c:when test="${noApiKey}">
-                        data-hidemessage='<fmt:message key="msg.page.map.${provider}.nokey" />' <%----%>
+                        data-placeholder='<fmt:message key="msg.page.map.${provider}.nokey" />' <%----%>
                     </c:when>
                     <c:otherwise>
-                        data-hidemessage='<fmt:message key="msg.page.map.${provider}.hide" />' <%----%>
+                        data-placeholder='<fmt:message key="msg.page.placeholder.map.${provider}" />' <%----%>
                     </c:otherwise>
                 </c:choose>
             </cms:bundle>
         </c:if>
-    ${'></div>'}
+    ${'>'}
+    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+    ${'</div>'}
     <mercury:nl />
 
 </mercury:padding-box>

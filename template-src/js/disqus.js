@@ -98,16 +98,16 @@ export function init(jQuery, debug) {
                 }
                 window.disqus_pageUrl = decodeURIComponent(dicqusData.url);
                 window.disqus_pageId = dicqusData.id;
-                var clickToLoad = (dicqusData.load == "true");
+                var clickToLoad = dicqusData.load && !disqus_open;
 
                 if (DEBUG) console.info("Disqus: clickToLoad='" + clickToLoad + "' url=" + window.disqus_pageUrl + " site=" + disqus_site);
 
-                if (! clickToLoad) {
-                    loadComments();
-                } else {
+                if (clickToLoad) {
                     jQ('.btn-disqus').on('click', function(event) {
-                        toggleComments()
+                        toggleComments();
                     });
+                } else {
+                    loadComments();
                 }
             }
         });

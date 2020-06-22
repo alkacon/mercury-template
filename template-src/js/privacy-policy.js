@@ -51,7 +51,7 @@ function initBannerData() {
         if (bannerDataFound) {
 
             var bannerData = $privacyBanner.data("banner");
-            if (typeof bannerData !== 'undefined') {
+            if (typeof bannerData !== "undefined") {
                 m_bannerData = bannerData;
                 m_bannerData.$bannerElement = $privacyBanner;
                 m_bannerData.initialized = true;
@@ -141,7 +141,7 @@ function displayBanner() {
 function initPrivacyBanner(onTop) {
     onTop = onTop || false;
 
-    if (typeof m_bannerData !== 'undefined') {
+    if (typeof m_bannerData !== "undefined") {
         m_bannerData.onTop = onTop;
 
         if (! cookiesAcceptedTechnical()) {
@@ -230,11 +230,11 @@ function initPrivacyToggle() {
 function setPrivacyCookies(allowTechnical, allowExternal, allowStatistical) {
     var cookieDays = OPTIONS_CONFIRMED_DAYS;
     if (allowStatistical) {
-        if (typeof m_policy.daysA !== 'undefined') {
+        if (typeof m_policy.daysA !== "undefined") {
             cookieDays = m_policy.daysA;
         }
     } else {
-        if (typeof m_policy.daysS !== 'undefined') {
+        if (typeof m_policy.daysS !== "undefined") {
             cookieDays = m_policy.daysS;
         }
     }
@@ -287,9 +287,9 @@ function enableExternalElements() {
 
 function createExternalElementToggle(heading, message, footer) {
 
-    var heading = (typeof heading !== 'undefined') ? heading : m_policy.nHead;
-    var message = (typeof message !== 'undefined') ? message : m_policy.nMsg;
-    var footer = (typeof footer !== 'undefined') ? footer : m_policy.nFoot;
+    var heading = (typeof heading !== "undefined") ? heading : m_policy.nHead;
+    var message = (typeof message !== "undefined") ? message : m_policy.nMsg;
+    var footer = (typeof footer !== "undefined") ? footer : m_policy.nFoot;
     var toggleId = "toggle-" + Math.floor(Math.random() * 1000000);
 
     var cookieHtml =
@@ -323,7 +323,7 @@ function initExternalElements(showMessage) {
             // remove placeholder class added by some elements (e.g. maps)
             $element.removeClass("placeholder");
             var cookieData = $element.data("external-cookies");
-            if (typeof cookieData !== 'undefined') {
+            if (typeof cookieData !== "undefined") {
 
                 var cookieHtml = createExternalElementToggle(cookieData.heading, cookieData.message, cookieData.footer);
                 $element.addClass("external-cookie-notice");
@@ -386,6 +386,12 @@ function initExternalElements(showMessage) {
 /****** Exported functions ******/
 
 export function createExternalElementModal(heading, message, footer, callbackAccept) {
+
+    if (! cookiesAcceptedTechnical()) {
+        // if the banner has not been confirmed do NOT att the modal dialog on click
+        $element.removeClass("reveal-registered");
+        return;
+    }
 
     if (DEBUG) console.info("PrivacyPolicy: Creating modal dialog");
 
@@ -469,21 +475,21 @@ function checkCookie(cookieType) {
 }
 
 export function cookiesAcceptedTechnical() {
-    if (typeof m_bannerData.cookiesTechnical === 'undefined') {
+    if (typeof m_bannerData.cookiesTechnical === "undefined") {
         m_bannerData.cookiesTechnical = checkCookie(COOKIES_TECHNICAL);
     }
     return m_bannerData.cookiesTechnical;
 }
 
 export function cookiesAcceptedExternal() {
-    if (typeof m_bannerData.cookiesExternal === 'undefined') {
+    if (typeof m_bannerData.cookiesExternal === "undefined") {
         m_bannerData.cookiesExternal = checkCookie(COOKIES_EXTERNAL);
     }
     return m_bannerData.cookiesExternal;
 }
 
 export function cookiesAcceptedStatistical() {
-    if (typeof m_bannerData.cookiesStatistical === 'undefined') {
+    if (typeof m_bannerData.cookiesStatistical === "undefined") {
         m_bannerData.cookiesStatistical = checkCookie(COOKIES_STATISTICAL);
     }
     return m_bannerData.cookiesStatistical;

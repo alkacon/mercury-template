@@ -52,6 +52,9 @@
 <%@ variable name-given="cookieMessage" declare="true"
     description="The message to display if external cookies have not been accepted." %>
 
+<%@ variable name-given="placeholderMessage" declare="true"
+    description="The message to display for the placeholder (only for autoplay media element)." %>
+
 
 <%@ variable name-given="caseNotInList" declare="true" %>
 <%@ variable name-given="caseStaticList" declare="true" %>
@@ -87,6 +90,7 @@
 
     <c:when test="${content.value.MediaContent.value.YouTube.isSet}">
         <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.youtube" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.youtube" /></c:set>
         <c:set var="isYouTube" value="${true}" />
         <c:set var="youTubeId" value="${content.value.MediaContent.value.YouTube.value.YouTubeId}" />
         <c:set var="defaultPreview"><mercury:schema-param param="mercuryYouTubePreviewDefault" /></c:set>
@@ -128,6 +132,7 @@
 
     <c:when test="${content.value.MediaContent.value.Flexible.isSet}">
         <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.generic" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.generic" /></c:set>
         <c:set var="isFlexible" value="${true}" />
         <c:set var="template" value="${content.value.MediaContent.value.Flexible.value.Code}" />
         <c:choose>

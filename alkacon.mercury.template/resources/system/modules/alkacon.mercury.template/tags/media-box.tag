@@ -93,7 +93,10 @@
                     --%><mercury:data-external-cookies modal="${not autoPlay}" message="${cookieMessage}" />
                 </c:set>
             </c:if>
-            <div class="preview${autoPlay ? ' ensure-external-cookies' : ''}" ${mediaTemplate}><%----%>
+            <div class="preview${autoPlay ? ' placeholder ensure-external-cookies' : ''}"<%--
+            --%>${mediaTemplate}<%--
+            --%><c:if test="${autoPlay}">${' '}data-placeholder="${placeholderMessage}"</c:if><%--
+            --%>${'>'}
                 <c:if test="${not autoPlay}">
                     <c:choose>
                         <c:when test="${not empty image}">
@@ -105,6 +108,9 @@
                     </c:choose>
                     ${markupVisualOverlay}
                 </c:if>
+            <c:if test="${autoPlay}">
+                <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+            </c:if>
             </div><%----%>
             <c:if test="${not autoPlay and showCopyright and not empty copyright}">
                 <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>

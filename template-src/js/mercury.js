@@ -48,9 +48,6 @@ var Mercury = function(jQ) {
 
     var DEBUG = true || (getParameter("jsdebug") != null);
 
-    // class to mark element that should be hidden
-    var HIDE_ELEMENT_CLASS="element-hide";
-
     // container for information passed from CSS to JavaScript
     var m_info = {};
 
@@ -137,29 +134,6 @@ var Mercury = function(jQ) {
         return key in m_info;
     }
 
-    function hideElement($element){
-        if (typeof $element.data("hidemessage") != "undefined"){
-            $element.addClass(HIDE_ELEMENT_CLASS);
-        }
-    }
-
-    function isElementHidden($element, callback){
-
-        if (typeof $element.data("hidemessage") != "undefined") {
-            // add the hide element class
-            $element.addClass(HIDE_ELEMENT_CLASS);
-            // show the element by clicking on the element
-            jQ($element).on("click",function(event) {
-            // remove handler and remove class
-            jQ(event.currentTarget).off("click")
-                jQ(event.currentTarget).removeClass(HIDE_ELEMENT_CLASS);
-                callback(event);
-            });
-            return true;
-        }
-        return false;
-    }
-
 
     function getInfo(key) {
 
@@ -190,7 +164,7 @@ var Mercury = function(jQ) {
     function removeQuotes(string) {
         // passing variables from SCSS to JavaScript
         // see https://css-tricks.com/making-sass-talk-to-javascript-with-json/
-        if (typeof string === 'string' || string instanceof String) {
+        if (typeof string === "string" || string instanceof String) {
             string = string.replace(/^['"]+|\\|(;\s?})+|['"]$/g, '');
         }
         return string;
@@ -259,7 +233,7 @@ var Mercury = function(jQ) {
         // initialize info sections with values from data attributes
         jQ('#template-info').each(function() {
             var $element = jQ(this);
-            if (typeof $element.data("info") != 'undefined') {
+            if (typeof $element.data("info") !== "undefined") {
                 var $info = $element.data("info");
                 addInfo($info);
             }
@@ -284,7 +258,7 @@ var Mercury = function(jQ) {
         if (m_theme) {
             try {
                 var col = Object.byString(m_theme, key);
-                if (typeof col != "undefined") {
+                if (typeof col !== "undefined") {
                     result = col;
                 }
             } catch (e) {
@@ -576,6 +550,27 @@ var Mercury = function(jQ) {
     }
 
 
+    function initPlaceholder($element, callback) {
+        if (isEditMode() && (typeof $element.data("placeholder") !== "undefined")) {
+            // add the hide element class
+            // .placeholder class should better be added on the server, to show the placeholder even if JS is not active
+            $element.addClass("placeholder");
+            if (! $element.hasClass("error")) {
+                // .placeholder.error class should NOT call the callback
+                jQ($element).on("click",function(event) {
+                    // remove handler and remove class when clicked
+                    jQ(event.currentTarget).off("click")
+                        jQ(event.currentTarget).removeClass("placeholder");
+                        callback(event);
+                    }
+                );
+            }
+            return true;
+        }
+        return false;
+    }
+
+
     function revalOnClickTemplate($element, template, isMedia) {
         $element.removeClass("reveal-registered");
         var $p = $element.parent();
@@ -601,11 +596,23 @@ var Mercury = function(jQ) {
             var data = $element.data("preview");
             if (data && data.template) {
                 if ($element.hasClass("ensure-external-cookies")) {
+                    // this external element should be shown directly (e.g. video that plays when the page is loaded)
                     if (PrivacyPolicy.cookiesAcceptedExternal()) {
-                        revalOnClickTemplate($element, data.template, isMedia);
+                        // only directly show this if external cookies are allowed
+                        var revealFunction = function() {
+                            revalOnClickTemplate($element, data.template, isMedia);
+                        };
+                        if (!initPlaceholder($element, revealFunction)) {
+                            // add placeholder if in edit mode, otherwise directly show the element
+                            revealFunction();
+                        }
                     }
+                    // if the external cookies are not accepted, the template will not be shown directly
+                    // if the element contains cookie data (as it should), then the cookie notice will be displayed from the privacy policy
                 } else {
-                     if (! $element.hasClass("reveal-registered")) {
+                    // this external element has a preview template that has to be clicked before the external contente is shown
+                    if (! $element.hasClass("reveal-registered")) {
+                        // only attach event listerner once, important for dynamic lists
                         $element.addClass("reveal-registered");
                         $element.on("click", data, function() {
                             var cookieData = $element.data("modal-external-cookies");
@@ -664,7 +671,7 @@ var Mercury = function(jQ) {
         $initScripts.each(function() {
 
             var $element = jQ(this);
-            if (typeof $element.data("script") != 'undefined') {
+            if (typeof $element.data("script") !== "undefined") {
                 var script = $element.data("script");
                 if (DEBUG) console.info("initscript found:" + script);
                 addInit(window[script]);
@@ -866,21 +873,6 @@ var Mercury = function(jQ) {
             }
         }
 
-        // support for revolution slider is disabled by default
-        if (false) {
-            if (requiresModule(".type-complex-slider")) {
-                try {
-                    import(
-                        /* webpackChunkName: "mercury-slider-rev" */
-                        "./slider-rev.js").then( function (SliderRev) {
-                        SliderRev.init(jQ, DEBUG);
-                    });
-                } catch (err) {
-                    console.warn("SliderRev.init() error", err);
-                }
-            }
-        }
-
         if (requiresModule(".effect-parallax-bg")) {
             try {
                 import(
@@ -936,11 +928,10 @@ var Mercury = function(jQ) {
         getThemeJSON: getThemeJSON,
         gridInfo: gridInfo,
         hasInfo: hasInfo,
-        hideElement: hideElement,
         initElements: initElements,
+        initPlaceholder: initPlaceholder,
         initTabAccordion: initTabAccordion,
         isEditMode: isEditMode,
-        isElementHidden: isElementHidden,
         isOnlineProject: isOnlineProject,
         post: post,
         scrollToAnchor: scrollToAnchor,

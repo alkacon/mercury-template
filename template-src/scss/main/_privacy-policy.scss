@@ -389,15 +389,6 @@ html.keyboard-nav .pp-toggle {
     }
 }
 
-$cookie-notice-bg-color: $grey-lighter;
-$cookie-notice-color: $text-dark;
-$cookie-notice-alt-color: $text-dark;
-$cookie-notice-font-size-mobile: 14px;
-$cookie-notice-font-size-desktop: $font-size-base;
-$cookie-notice-small-font-size: 85%;
-$cookie-notice-togglebox-width: 150px;
-$cookie-notice-togglebox-height: 20px;
-
 #mercury-page .external-cookie-notice {
     // #mercury-page .element selectors added to give rules higher importance
     color: $cookie-notice-color;
@@ -416,7 +407,7 @@ $cookie-notice-togglebox-height: 20px;
 
     .cookie-header {
         @include heading-base(false);
-        font-size: 125%;
+        font-size: $cookie-notice-large-font-size;
     }
 
     .cookie-header,

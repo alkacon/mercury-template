@@ -34,8 +34,8 @@
     text-align: center;
     text-decoration: none;
     padding: 5px 12px;
-    line-height: $target-line-height;
-    min-width: calc(#{$target-line-height} + 10px); // 10px = top+bottom padding
+    line-height: $line-height-base;
+    min-width: calc(#{($font-size-base * $line-height-base)} + 10px); // 10px = top + bottom padding
     font-size: $font-size-base;
     @if ($pagination-font-family != $font-family-base) {
         font-family: $pagination-font-family;

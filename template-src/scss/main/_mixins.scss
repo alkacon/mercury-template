@@ -238,7 +238,7 @@
     @if ($btn-font-weight != $font-weight-base) {
         font-weight: $btn-font-weight;
     }
-    @if ($btn-line-height != $target-line-height) {
+    @if ($btn-line-height != $line-height-base) {
         line-height: $btn-line-height;
     }
     @include round-corners($btn-border-radius);

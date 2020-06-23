@@ -152,9 +152,8 @@ $font-size-lg:                      round($font-size-base * 12.5) / 10 !default;
 $font-size-sm:                      round($font-size-base * 8) / 10 !default;
 
 $line-height-base:                  1.5 !default;
-$line-height-headings:              $line-height-base !default;
+$line-height-headings:              1.25 !default;
 $line-height-lead:                  $line-height-base !default;
-$target-line-height:                ($font-size-base * $line-height-base) !default;
 
 
 // Heading sizes
@@ -286,7 +285,7 @@ $btn-text-transform:                none !default;
 $btn-border-style:                  none !default;
 $btn-white-space:                   nowrap !default;
 $btn-min-width:                     0 !default;
-$btn-line-height:                   $target-line-height !default;
+$btn-line-height:                   $line-height-base !default;
 $btn-font-size:                     $font-size-base !default;
 $btn-xs-font-size:                  1.2rem !default;
 $btn-colors:                        $bg-colors !default;

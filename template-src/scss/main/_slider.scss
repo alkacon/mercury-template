@@ -200,11 +200,15 @@
                 font-size: $h4-font-size;
                 line-height: $line-height-headings;
             }
+
+            strong + .subcaption small {
+                margin-top: $default-margin-verysmall;
+            }
+
             small {
                 font-family: $font-family-base;
                 font-size: $font-size-base;
                 line-height: $line-height-base;
-                margin-top: $default-margin-verysmall;
 
                 ~ small {
                     margin-top: 0;
@@ -319,7 +323,7 @@
                     border-top-right-radius: 0;
                     position: static;
                     max-width: initial;
-                    min-height: calc(#{ceil($line-height-headings + 2 * $target-line-height)} + 10px);
+                    min-height: calc(#{ceil($h2-font-size * 2)} + 10px);
                     background-color: $main-theme;
                     opacity: 1 !important;
                     text-align: initial !important;
@@ -351,7 +355,6 @@
                         display: inline-block;
                         content: "\00a0";
                         // content: "\2013"; // ndash
-                        // margin: 0 $default-margin-verysmall;
                     }
                 }
                 &.custom {

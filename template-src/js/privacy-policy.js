@@ -71,6 +71,10 @@ function loadPolicy(callback) {
             "page=" + encodeURIComponent(m_bannerData.page) + "&" +
             "__locale=" + Mercury.getLocale();
 
+        if (typeof m_bannerData.display !== "undefined") {
+            params += "&display=" + m_bannerData.display;
+        }
+
         var policyLink = policyUrl + '?' + params;
 
         if (DEBUG) console.info("PrivacyPolicy: Loading policy data from " + policyLink);
@@ -133,8 +137,9 @@ function displayBanner() {
             $bannerElement.height($banner.outerHeight());
         });
         $banner.addClass("fixed " + (onTop ? "top" : "bottom" ));
+        if (DEBUG) console.info("PrivacyPolicy: Banner loaded and displayed");
     } else {
-        if (DEBUG) console.warn("PrivacyPolicy: No banner was loaded!");
+        if (DEBUG) console.info("PrivacyPolicy: No banner displayed");
     }
 }
 
@@ -218,9 +223,6 @@ function initPrivacyToggle() {
                     resetTemplateScript();
                 });
             }
-        }
-        if (!cookiesAcceptedTechnical()) {
-            $toggleCheckbox.prop('disabled', true);
         }
     });
 
@@ -316,8 +318,11 @@ function initExternalElements(showMessage) {
 
     // this function assumes the privacy policy has already been loaded!
     var $elements = jQ("[data-external-cookies]");
-    if (showMessage) {
-        if (DEBUG) console.info("PrivacyPolicy: Displaying messages for external elements");
+    if (DEBUG) console.info("PrivacyPolicy: Elements found that require external cookies: " + $elements.length);
+
+    if (showMessage && ($elements.length > 0)) {
+        // if NOT showMessage, then all elements will be emptied
+        if (DEBUG) console.info("PrivacyPolicy: Displaying messages for elements that require external cookies" );
         $elements.each(function() {
             var $element = jQ(this);
             // remove placeholder class added by some elements (e.g. maps)
@@ -375,7 +380,7 @@ function initExternalElements(showMessage) {
                 }
 
             } else {
-                if (DEBUG) console.info("PrivacyPolicy.showExternalCookieNotice(): No Cookie data found on " + $element.getFullPath());
+                if (DEBUG) console.info("PrivacyPolicy: No extrenal cookie data found for " + $element.getFullPath());
             }
         });
     } else {

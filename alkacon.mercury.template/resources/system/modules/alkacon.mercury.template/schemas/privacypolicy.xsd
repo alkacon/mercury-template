@@ -14,7 +14,7 @@
         <xsd:sequence>
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="PolicyText" type="OpenCmsHtml" />
-            <xsd:element name="AcceptButtonText" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="AcceptAllButtonText" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="SaveButtonText" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ExternalTitle" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ExternalFooter" type="OpenCmsHtml" minOccurs="0" />
@@ -51,7 +51,7 @@
                     <Search>false</Search>
                 </Setting>
                 <Setting>
-                    <PropertyName>AcceptButtonText</PropertyName>
+                    <PropertyName>AcceptAllButtonText</PropertyName>
                     <DisplayName><![CDATA[%(key.label.PrivacyPolicy.AcceptAllButtonText)]]></DisplayName>
                     <Description><![CDATA[%(key.label.PrivacyPolicy.AcceptAllButtonText.help)]]></Description>
                     <Widget>string</Widget>

@@ -24,6 +24,7 @@
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <c:set var="policyfile" value="${empty contentPropertiesSearch['mercury.privacy.policy'] ? 'none' : contentPropertiesSearch['mercury.privacy.policy']}" />
+<c:set var="hideBanner" value="${contentPropertiesSearch['mercury.privacy.policy.nobanner'] eq 'true'}" />
 
 <c:if test="${not empty policyfile and policyfile ne 'none'}">
 
@@ -31,10 +32,16 @@
 <c:set var="policyfileBase64"><mercury:obfuscate text="${policyfile}" type="base64"/></c:set>
 <c:set var="uriBase64"><mercury:obfuscate text="${contentUri}" type="base64"/></c:set>
 
-<div id="privacy-policy-banner" class="pp-banner" data-banner='{<%--
-    --%>"policy":"${policyfileBase64}", <%--
-    --%>"page":"${uriBase64}"<%--
---%>}'></div><%----%>
+<%-- Generate banner data JSON --%>
+<cms:jsonobject var="bannerData">
+    <cms:jsonvalue key="policy" value="${policyfileBase64}" />
+    <cms:jsonvalue key="page" value="${uriBase64}" />
+    <c:if test="${hideBanner}">
+        <cms:jsonvalue key="display" value="0" />
+    </c:if>
+</cms:jsonobject>
+
+<div id="privacy-policy-banner" class="pp-banner" data-banner='${bannerData.compact}'></div><%----%>
 <mercury:nl />
 
 <noscript><%----%>

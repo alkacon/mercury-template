@@ -15,54 +15,57 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="ignore"             value="${cms.requestContext.setUri(param.path)} }" />
+<c:set var="showBanner" value="${param.display ne '0'}" />
+<c:set var="ignore"     value="${cms.requestContext.setUri(param.path)} }" />
 
 <fmt:message var="btnSaveDef" key="msg.page.privacypolicy.button.banner.save" />
 <fmt:message var="btnAcceptDef" key="msg.page.privacypolicy.button.banner.accept" />
 <fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
 <fmt:message var="extFootDef" key="msg.page.privacypolicy.external.footer" />
 
-<c:set var="bannerHtml">
-    <mercury:nl />
-    <!DOCTYPE html><%----%>
-    <html><%----%>
-    <body><%----%>
+<c:if test="${showBanner}">
+    <c:set var="bannerHtml">
+        <mercury:nl />
+        <!DOCTYPE html><%----%>
+        <html><%----%>
+        <body><%----%>
 
-    <div><%-- Outer DIV required otherwise JavaScript does not work --%>
-    <div class="banner"><%----%>
-        <div class="container"><%----%>
-            <div class="title">${value.Title}</div><%----%>
-            <div class="message"><%----%>
-                <div>${value.PolicyText}</div><%----%>
-            </div><%----%>
-            <div class="selection">
-                <div class="options"><%----%>
-                    <label for="use-technical"><%----%>
-                        <input id="use-technical" type="checkbox" checked disabled><i></i><%----%>
-                        <span><fmt:message key="msg.page.privacypolicy.toggle.label.technical" /></span><%----%>
-                    </label><%----%>
-                    <label for="use-external"><%----%>
-                        <input id="use-external" type="checkbox"><i></i><%----%>
-                        <span><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></span><%----%>
-                    </label><%----%>
-                    <label for="use-statistical"><%----%>
-                        <input id="use-statistical" type="checkbox"><i></i><%----%>
-                        <span><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></span><%----%>
-                    </label><%----%>
+        <div><%-- Outer DIV required otherwise JavaScript does not work --%>
+        <div class="banner"><%----%>
+            <div class="container"><%----%>
+                <div class="title">${value.Title}</div><%----%>
+                <div class="message"><%----%>
+                    <div>${value.PolicyText}</div><%----%>
                 </div><%----%>
-                <div class="buttons"><%----%>
-                    <a class="btn btn-save">${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}</a><%----%>
-                    <a class="btn btn-accept">${value.AcceptButtonText.isSet ? value.AcceptButtonText : btnAcceptDef}</a><%----%>
+                <div class="selection">
+                    <div class="options"><%----%>
+                        <label for="use-technical"><%----%>
+                            <input id="use-technical" type="checkbox" checked disabled><i></i><%----%>
+                            <span><fmt:message key="msg.page.privacypolicy.toggle.label.technical" /></span><%----%>
+                        </label><%----%>
+                        <label for="use-external"><%----%>
+                            <input id="use-external" type="checkbox"><i></i><%----%>
+                            <span><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></span><%----%>
+                        </label><%----%>
+                        <label for="use-statistical"><%----%>
+                            <input id="use-statistical" type="checkbox"><i></i><%----%>
+                            <span><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></span><%----%>
+                        </label><%----%>
+                    </div><%----%>
+                    <div class="buttons"><%----%>
+                        <a class="btn btn-save">${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}</a><%----%>
+                        <a class="btn btn-accept">${value.AcceptAllButtonText.isSet ? value.AcceptAllButtonText : btnAcceptDef}</a><%----%>
+                    </div><%----%>
                 </div><%----%>
             </div><%----%>
         </div><%----%>
-    </div><%----%>
-    </div><%----%>
+        </div><%----%>
 
-    </body><%----%>
-    </html><%----%>
-    <mercury:nl />
-</c:set>
+        </body><%----%>
+        </html><%----%>
+        <mercury:nl />
+    </c:set>
+</c:if>
 
 <cms:jsonobject var="policy">
     <cms:jsonvalue key="banner" value="${bannerHtml}" />

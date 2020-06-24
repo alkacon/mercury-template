@@ -564,6 +564,7 @@ msg.page.form.status.submission.mailed=E-Mail an Verwalter gesendet
 msg.page.form.status.submission.waitlist=Auf der Warteliste
 msg.page.form.submission.date=Eingangszeit\:
 msg.page.form.submission.title.default.1=Gesendet am {0}
+msg.page.form.submissions.configerror=Im verknüpften Formular zur Anmeldung ist die Datenbank-Konfiguration für die Online-Buchung  nicht vorhanden oder fehlerhaft\!
 msg.page.form.submissions.overview={0} von {1} Plätzen gebucht
 msg.page.header.no-config=Bitte legen Sie zunächst eine Kopfbereich-Konfiguration an\!
 msg.page.header.no-config.help=Ziehen Sie dafür die <em>Dynamische Funktion</em> mit dem Namen <em>Kopfbereich-Konfiguration</em> in den Container oben.

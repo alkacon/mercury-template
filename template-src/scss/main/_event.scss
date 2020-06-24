@@ -189,10 +189,10 @@ table.submissions {
         background-color: $calendar-sheet-bgcolor;
         font-weight: normal;
         @include round-corners($default-border-radius);
-    }
 
-    .oct-meta-info {
-        margin-left: 10px;
+        + .oct-meta-info {
+            margin-left: 10px;
+        }
     }
 }
 
@@ -232,7 +232,7 @@ table.submissions {
             white-space: pre;
         }
     }
-    .oct-meta-info, {
+    .oct-meta-info {
         margin-top: 5px;
         margin-left: 0;
     }

@@ -12,10 +12,21 @@
 <c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
 <c:set var="page"><mercury:obfuscate text="${param.page}" type="base64dec" /></c:set>
 
+<c:if test="${not empty policyfile}">
+    <c:set var="policyRes" value="${cms.vfs.readResource[policyfile]}" />
+    <c:if test="${(not empty policyRes) and (policyRes.typeName ne 'm-privacypolicy')}">
+        <%-- policy file is not og the required type, try to find matching type --%>
+        <c:set var="originalPolicyfile" value="${policyfile}" />
+        <c:set var="policyfile">${policyRes.sitePathFolder}mercury-${policyRes.name}</c:set>
+        <c:set var="policyRes" value="${cms.vfs.readResource[policyfile]}" />
+    </c:if>
+</c:if>
+
 <c:choose>
-    <c:when test="${not empty policyfile and cms.vfs.existsResource[policyfile]}">
+    <c:when test="${not empty policyRes}">
         <cms:addparams>
             <cms:param name="template" value="mercury" />
+            <cms:param name="path" value="${page}" />
             <mercury:display
                 file="${policyfile}"
                 baseUri="${page}"
@@ -27,6 +38,9 @@
             <cms:jsonobject key="error">
                 <cms:jsonvalue key="policyfile" value="${policyfile}" />
                 <cms:jsonvalue key="page" value="${page}" />
+                <c:if test="${not empty originalPolicyfile}">
+                    <cms:jsonvalue key="originalPolicyfile" value="${originalPolicyfile}" />
+                </c:if>
             </cms:jsonobject>
         </cms:jsonobject>
         <%----%>${errorData.compact}<%----%>

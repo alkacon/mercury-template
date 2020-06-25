@@ -26,6 +26,8 @@
     .container {
         display: flex;
         flex-direction: column;
+        overflow: auto;
+        max-height: 100vh;
 
         > div:not(:last-of-type) {
             margin-bottom: $default-margin-small;
@@ -61,11 +63,23 @@
     .title {
         font-size: $h2-font-size;
         line-height: $line-height-headings;
+        order: 1;
+    }
+
+    .message {
+        order: 2;
+        p:last-of-type {
+            margin-bottom: 0;
+        }
+        a {
+            font-weight: $font-weight-bold;
+        }
     }
 
     .selection {
         display: flex;
         align-items: center;
+        order: 3;
 
         .options {
             flex-grow: 1;
@@ -125,6 +139,10 @@
         .btn {
             font-size: 1.8rem;
             min-width: $policy-banner-button-min-width;
+            @if ($policy-banner-save-button-color == $policy-banner-background) {
+                border-width: 1px;
+                border-style: solid;
+            }
 
             &:last-of-type {
                 margin-left: $default-margin;
@@ -133,16 +151,34 @@
 
         .btn-accept {
             @include button-color($policy-banner-accept-button-color, $policy-banner-accept-hover-color);
+            @if ($policy-banner-save-button-color == $policy-banner-background) {
+                border-color: $policy-banner-accept-button-color;
+            }
         }
 
         .btn-save {
             @include button-color($policy-banner-save-button-color, $policy-banner-save-hover-color);
+            @if ($policy-banner-save-button-color == $policy-banner-background) {
+                border-color: get-text-color($policy-banner-save-button-color);
+            }
         }
     }
 
-    .message {
-        p:last-of-type {
-            margin-bottom: 0;
+    .links {
+        order: 4;
+        font-size: 80%;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        li {
+            display: inline;
+            margin: 0;
+            + li {
+                margin-left: $default-margin;
+            }
         }
         a {
             font-weight: $font-weight-bold;
@@ -165,6 +201,7 @@
         .selection {
             font-size: 1.25rem;
             flex-direction: column;
+            align-items: flex-start;
 
             .options {
                 flex-grow: initial;
@@ -174,9 +211,11 @@
 
         .buttons {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
+            width: 100%;
 
             .btn {
+                margin: 0;
                 font-size: 1.5rem;
             }
         }
@@ -185,6 +224,23 @@
             font-size: 1.2rem;
             text-align: justify;
             hyphens: auto;
+        }
+
+        .links {
+            font-size: 1rem;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .selection {
+            order: 6;
+            margin-bottom: 0 !important;
+        }
+        .buttons {
+            justify-content: space-between;
+        }
+        .links {
+            margin-bottom: $default-margin-small;
         }
     }
 
@@ -200,10 +256,14 @@
             }
         }
 
+        .message {
+            margin-bottom: $default-margin-verysmall !important;
+        }
+
         .buttons {
             .btn {
-                margin-left: $default-margin-small;
-                margin-right: $default-margin-small;
+                // margin-left: $default-margin-small;
+                // margin-right: $default-margin-small;
                 font-size: 1.25rem;
                 padding: $btn-sm-padding;
 
@@ -212,6 +272,16 @@
                 }
             }
         }
+
+        .links {
+            li {
+                display: list-item;
+                +li {
+                    margin-left: 0;
+                }
+            }
+        }
+
     }
 }
 

@@ -94,9 +94,23 @@ function loadPolicy(callback) {
 
 function displayBanner() {
 
-    var $banner = jQ(m_policy.banner).find(".banner");
-    if ($banner.length > 0) {
+    var bannerStr = m_policy.banner;
+    if (typeof bannerStr !== "undefined") {
 
+        if (typeof m_policy.lImp !== "undefined") {
+            var linkImp = "<a href=\"" + m_policy.lImp + "\">" + m_policy.lImpTxt + "</a>";
+            bannerStr = bannerStr.replace("%(link.Imprint)", linkImp);
+        }
+        if (typeof m_policy.lPol !== "undefined") {
+            var linkPol = "<a href=\"" + m_policy.lPol + "\">" + m_policy.lPolTxt + "</a>";
+            bannerStr = bannerStr.replace("%(link.Datenschutz)", linkPol);
+        }
+        if (typeof m_policy.lLeg !== "undefined") {
+            var linkLeg = "<a href=\"" + m_policy.lLeg + "\">" + m_policy.lLegTxt + "</a>";
+            bannerStr = bannerStr.replace("%(link.Rechtliche Hinweise)", linkLeg);
+        }
+
+        var $banner = jQ(bannerStr);
         var $bannerElement = m_bannerData.$bannerElement;
         var onTop = m_bannerData.onTop;
 

@@ -595,10 +595,10 @@ $logo-slider-paddings:              (5, 10, 15, 20) !default;
 
 // Privacy policy
 
-$policy-banner-background:          $text-dark !default;
+$policy-banner-background:          #222 !default;
 $policy-banner-accept-button-color: $btn-default !default;
 $policy-banner-accept-hover-color:  $btn-default-hover !default;
-$policy-banner-save-button-color:   $policy-banner-background !default;
+$policy-banner-save-button-color:   lighten($policy-banner-background, 10%) !default;
 $policy-banner-save-hover-color:    $policy-banner-accept-hover-color !default;
 $policy-banner-button-min-width:    100px !default;
 $policy-banner-opacity:             0.95 !default;

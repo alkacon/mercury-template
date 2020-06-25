@@ -11,11 +11,12 @@
 
 <c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
 <c:set var="page"><mercury:obfuscate text="${param.page}" type="base64dec" /></c:set>
+<c:set var="isMercury" value="${empty param.template or (param.template eq 'mercury')}" />
 
 <c:if test="${not empty policyfile}">
     <c:set var="policyRes" value="${cms.vfs.readResource[policyfile]}" />
-    <c:if test="${(not empty policyRes) and (policyRes.typeName ne 'm-privacypolicy')}">
-        <%-- policy file is not og the required type, try to find matching type --%>
+    <c:if test="${(not empty policyRes) and isMercury and (policyRes.typeName ne 'm-privacypolicy')}">
+        <%-- policy file is not of the required type, try to find matching type --%>
         <c:set var="originalPolicyfile" value="${policyfile}" />
         <c:set var="policyfile">${policyRes.sitePathFolder}mercury-${policyRes.name}</c:set>
         <c:set var="policyRes" value="${cms.vfs.readResource[policyfile]}" />

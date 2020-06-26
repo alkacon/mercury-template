@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.207</version>
+		<version>11.0.1.210</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6074,6 +6074,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/mediasoundcloud.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/mediasoundcloud.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>510dd7ca-b780-11ea-acc5-0242ac11002b</uuidstructure>
+			<uuidresource>510dd7cb-b780-11ea-acc5-0242ac11002b</uuidresource>
+			<datecreated>Fri, 26 Jun 2020 07:40:33 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD four SoundCloud media]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/mediayoutube.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/mediayoutube.xsd</destination>
 			<type>plain</type>
@@ -6115,7 +6132,12 @@
 			<uuidresource>101bf979-3910-11ea-bddb-0242ac11002b</uuidresource>
 			<datecreated>Fri, 17 Jan 2020 09:59:34 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for job meta infos]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

@@ -41,8 +41,8 @@
         <c:set var="ratio" value="${(not empty defaultRatio) and ((empty ratio) or (ratio eq 'none')) ? defaultRatio : ratio}" />
 
         <c:if test="${(empty width or empty height) and (not empty ratio) and (ratio ne 'none')}">
-            <c:set var="width" value="${cms:toNumber(fn:substringBefore(ratio, '-'), 16)}" />
-            <c:set var="height" value="${cms:toNumber(fn:substringAfter(ratio, '-'), 9)}" />
+            <c:set var="width" value="${cms:mathRound(cms:toNumber(fn:substringBefore(ratio, '-'), 16))}" />
+            <c:set var="height" value="${cms:mathRound(cms:toNumber(fn:substringAfter(ratio, '-'), 9))}" />
         </c:if>
 
         <c:if test="${not empty width and not empty height}">

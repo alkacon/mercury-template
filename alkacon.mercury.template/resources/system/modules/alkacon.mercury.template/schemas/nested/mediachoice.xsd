@@ -2,6 +2,7 @@
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediayoutube.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediasoundcloud.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediaflexible.xsd"/>
 
     <xsd:element name="MediaChoiceData" type="OpenCmsMediaChoiceData"/>
@@ -15,6 +16,7 @@
     <xsd:complexType name="OpenCmsMediaChoice">
         <xsd:choice>
             <xsd:element name="YouTube" type="OpenCmsMediaYoutube" minOccurs="0" />
+            <xsd:element name="SoundCloud" type="OpenCmsMediaSoundCloud" minOccurs="0" />
             <xsd:element name="Flexible" type="OpenCmsMediaFlexible" minOccurs="0" />
         </xsd:choice>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
@@ -26,6 +28,10 @@
                 <Setting>
                     <PropertyName>YouTube</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaChoice.YouTube)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>SoundCloud</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MediaChoice.SoundCloud)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>Flexible</PropertyName>

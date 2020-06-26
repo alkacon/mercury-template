@@ -407,8 +407,7 @@ function initExternalElements(showMessage) {
 export function createExternalElementModal(heading, message, footer, callbackAccept) {
 
     if (! cookiesAcceptedTechnical()) {
-        // if the banner has not been confirmed do NOT att the modal dialog on click
-        $element.removeClass("reveal-registered");
+        // if the banner has not been confirmed do NOT add the modal dialog on click
         return;
     }
 

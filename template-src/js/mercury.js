@@ -595,12 +595,17 @@ var Mercury = function(jQ) {
             var $element = jQ(this);
             var data = $element.data("preview");
             if (data && data.template) {
+                var template = data.template;
+                var color = getThemeJSON("main-theme");
+                if (typeof color !== "undefined") {
+                    template = template.replace("XXcolor-main-themeXX", color.substring(1));
+                }
                 if ($element.hasClass("ensure-external-cookies")) {
                     // this external element should be shown directly (e.g. video that plays when the page is loaded)
                     if (PrivacyPolicy.cookiesAcceptedExternal()) {
                         // only directly show this if external cookies are allowed
                         var revealFunction = function() {
-                            revalOnClickTemplate($element, data.template, isMedia);
+                            revalOnClickTemplate($element, template, isMedia);
                         };
                         if (!initPlaceholder($element, revealFunction)) {
                             // add placeholder if in edit mode, otherwise directly show the element
@@ -617,11 +622,11 @@ var Mercury = function(jQ) {
                         $element.on("click", data, function() {
                             var cookieData = $element.data("modal-external-cookies");
                             if (!cookieData || PrivacyPolicy.cookiesAcceptedExternal()) {
-                                revalOnClickTemplate($element, data.template, isMedia);
+                                revalOnClickTemplate($element, template, isMedia);
                             } else {
                                 PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
                                 function() {
-                                    revalOnClickTemplate($element, data.template, isMedia);
+                                    revalOnClickTemplate($element, template, isMedia);
                                 });
                             }
                         });

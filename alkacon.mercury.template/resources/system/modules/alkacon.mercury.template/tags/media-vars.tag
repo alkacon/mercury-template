@@ -9,7 +9,7 @@
     description="The media content to use." %>
 
 <%@ attribute name="ratio" type="java.lang.String" required="true"
-    description="Can be used to scale the media in a specific ratio,
+    description="Can be used to scale the media in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
 
@@ -25,8 +25,15 @@
 <%@ variable name-given="height" declare="true"
     description="The height of the media file, taken from the ratio." %>
 
+<%@ variable name-given="usedRatio" declare="true"
+    description="The ratio actually used for the media display, considering defaults if no ratio has been provided.
+    Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
+
 <%@ variable name-given="isYouTube" declare="true"
     description="If true, the media file is a YouTube video." %>
+
+<%@ variable name-given="isSoundCloud" declare="true"
+    description="If true, the media file is a SoundCloud audio track." %>
 
 <%@ variable name-given="isFlexible" declare="true"
     description="If true, the media is created form a flexible embed code." %>
@@ -72,8 +79,10 @@
 
 <mercury:list-element-status>
 
-<c:set var="width" value="${cms:toNumber(fn:substringBefore(ratio, '-'), 4)}" />
-<c:set var="height" value="${cms:toNumber(fn:substringAfter(ratio, '-'), 3)}" />
+<c:set var="width" value="${cms:mathRound(cms:toNumber(fn:substringBefore(ratio, '-'), 4))}" />
+<c:set var="height" value="${cms:mathRound(cms:toNumber(fn:substringAfter(ratio, '-'), 3))}" />
+<c:set var="usedRatio" value="${width}-${height}" />
+
 
 <c:if test="${content.value.Image.isSet}">
     <c:set var="image" value="${content.value.Image}" />
@@ -128,6 +137,30 @@
                 </c:set>
             </c:otherwise>
         </c:choose>
+    </c:when>
+
+    <c:when test="${content.value.MediaContent.value.SoundCloud.isSet}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.soundcloud" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.soundcloud" /></c:set>
+        <c:set var="isSoundCloud" value="${true}" />
+        <c:set var="soundCloudTrackId" value="${content.value.MediaContent.value.SoundCloud.value.SoundCloudTrackId}" />
+        <c:set var="template"><%--
+            --%><iframe width="100%" height="100%" scrolling="no" style="border: none;" allow="autoplay" <%--
+            --%>src="https://w.soundcloud.com/player/?url=<%--
+                --%>https%3A//api.soundcloud.com/tracks/${soundCloudTrackId}&<%--
+                    --%>auto_play=true&<%--
+                    --%>color=%23XXcolor-main-themeXX&<%--
+                    --%>buying=false&<%--
+                    --%>sharing=true&<%--
+                    --%>show_user=true&<%--
+                    --%>hide_related=true&<%--
+                    --%>show_comments=false&<%--
+                    --%>show_reposts=false&<%--
+                    --%>show_teaser=false&<%--
+                    --%>visual=true"><%--
+        --%></iframe><%----%>
+        </c:set>
+        <c:set var="icon" value="fa-soundcloud" />
     </c:when>
 
     <c:when test="${content.value.MediaContent.value.Flexible.isSet}">

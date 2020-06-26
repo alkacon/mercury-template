@@ -85,7 +85,12 @@
         </c:if>
     </c:set>
 
-    <mercury:padding-box cssWrapper="effect-box media-box ${not autoPlay ? effect : ''}" height="${height}" width="${width}" ratio="${ratio}">
+    <mercury:padding-box
+        cssWrapper="effect-box media-box ${not autoPlay ? effect : ''}"
+        height="${height}"
+        width="${width}"
+        ratio="${usedRatio}">
+
         <div class="content"><%----%>
             <c:if test="${not empty template}">
                 <c:set var="mediaTemplate"><%--
@@ -100,7 +105,7 @@
                 <c:if test="${not autoPlay}">
                     <c:choose>
                         <c:when test="${not empty image}">
-                            <mercury:image-animated image="${image}" ratio="${ratio}" title="${content.value.Title}" />
+                            <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
                         </c:when>
                         <c:when test="${isYouTube and not empty youTubePreviewHtml}">
                             <div class="centered image">${youTubePreviewHtml}</div><%----%>

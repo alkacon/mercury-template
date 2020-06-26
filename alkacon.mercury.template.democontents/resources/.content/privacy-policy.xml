@@ -21,6 +21,7 @@
       </links>
       <content><![CDATA[<p>Ich bin damit einverstanden, dass mir externe Inhalte angezeigt werden. Damit können personenbezogene Daten an Drittplattformen übermittelt werden. <a href="%(link0)">Sie können Ihrere Cookie-Einstellungen später jederzeit hier ändern.</a></p>]]></content>
     </ExternalFooter>
+    <ShowLinks>true</ShowLinks>
   </PrivacyPolicy>
   <PrivacyPolicy language="en">
     <Title><![CDATA[Your choice regarding cookies]]></Title>
@@ -43,5 +44,6 @@
       </links>
       <content><![CDATA[<p>I hereby declare that I consent to the display of external content. This means personal data may be transmitted to third party services. You can change your settings later on our <a href="%(link0)"><strong>privacy policy</strong></a>&nbsp;page.</p>]]></content>
     </ExternalFooter>
+    <ShowLinks>true</ShowLinks>
   </PrivacyPolicy>
 </PrivacyPolicyData>

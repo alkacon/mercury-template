@@ -122,7 +122,7 @@ function displayBanner() {
             window.setTimeout(function() {
                 $banner.slideUp();
                 $bannerElement.slideUp();
-                resetTemplateScript();
+                enableExternalElements();
             }, 500);
         });
         $banner.find(".btn-save").on('click', function(e) {

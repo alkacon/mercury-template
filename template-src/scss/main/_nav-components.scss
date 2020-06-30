@@ -80,7 +80,8 @@
 
     @if $use-hyphens {
         hyphens: auto;
-        word-break: break-all;
+        word-break: normal;
+        overflow-wrap: break-word;
     }
 
     @if ($nav-side-boxed) {

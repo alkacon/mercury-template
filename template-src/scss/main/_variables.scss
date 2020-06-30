@@ -660,10 +660,9 @@ $map-colors: (
 
 $form-font-size:                    $font-size-base !default;
 $form-line-height:                  $line-height-base !default;
-$form-text-color:                   $body-color !default;
 $form-font-size-input:              $form-font-size !default;
-$form-text-color-input:             $form-text-color !default;
-$form-widget-color:                 $body-color !default;
+$form-text-color:                   inherit !default;
+$form-label-color:                  $form-text-color !default;
 $form-field-padding:                $default-margin;
 $form-field-ver-padding:            $form-field-padding;
 $form-field-hor-padding:            $form-field-padding * 1.5;
@@ -679,7 +678,7 @@ $form-radio-checked-border-color:   $form-radio-unchecked-color !default;
 $form-error-background:             #ffeeee !default;
 $form-error-text-color:             #bb2222 !default;
 $form-border:                       1px solid $form-border-color !default;
-$form-background:                   $body-bg !default;
+$form-background:                   transparent !default;
 $form-input-background:             $body-bg !default;
 $form-captcha-background:           $white !default;
 $form-captcha-border:               1px dashed $grey-light !default;

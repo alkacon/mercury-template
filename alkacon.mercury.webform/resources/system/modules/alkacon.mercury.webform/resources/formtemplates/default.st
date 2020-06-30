@@ -546,8 +546,8 @@ $rest(fields):{
 submissionerror(headline,text,error) ::= <<
 $! ###### EMAIL error message ###### !$
 <div class="oct-alert oct-alert-error">
-    <h3 class="webform_error_start">$headline$</h3>
-    <p class="webform_error_text">$text$</p>
+    <div class="head">$headline$</div>
+    <div class="text">$text$</div>
     <!--
             Error description: $error$
     //-->
@@ -558,7 +558,7 @@ $! ###### EMAIL error message ###### !$
 initerror(headline,text) ::= <<
 $! ###### Initialization error message ###### !$
 <div class="oct-alert oct-alert-error">
-    <h3 class="webform_error_start">$headline$</h3>
-    <p class="webform_error_text">$text$</p>
+    <div class="head">$headline$</div>
+    <div class="text">$text$</div>
 </div>
 >>

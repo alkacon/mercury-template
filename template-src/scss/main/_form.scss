@@ -25,7 +25,6 @@
     outline: none;
     font-size: $form-font-size;
     font-weight: $form-font-weight;
-    color: $form-text-color;
     line-height: $form-line-height;
     @if ($form-font-family != $font-family-base) {
         font-family: $form-font-family;
@@ -33,7 +32,12 @@
     border: $form-border;
     @include round-corners($form-border-radius);
     @include use-hyphens-text;
-    background: $form-background;
+    @if ($form-text-color != inherit) {
+        color: $form-text-color;
+    }
+    @if ($form-background != transparent) {
+        background: $form-background;
+    }
 
     header {
         border-bottom: $form-border;
@@ -121,7 +125,9 @@
 
         font-weight: $form-font-weight-input;
         font-size: $form-font-size-input;
-        color: $form-text-color-input;
+        @if ($form-label-color != inherit) {
+            color: $form-label-color;
+        }
         display: block;
         box-sizing: border-box;
         width: 100%;
@@ -251,7 +257,9 @@
     .checkbox {
         font-weight: $form-font-weight-option;
         padding-left: 35px;
-        color: $form-widget-color;
+        @if ($form-label-color != inherit) {
+            color: $form-label-color;
+        }
         cursor: pointer;
 
         &:last-child {
@@ -319,7 +327,9 @@
     .toggle {
         font-weight: $form-font-weight-option;
         padding-right: 70px;
-        color: $form-widget-color;
+        @if ($form-label-color != inherit) {
+            color: $form-label-color;
+        }
         cursor: pointer;
 
         &:last-child {

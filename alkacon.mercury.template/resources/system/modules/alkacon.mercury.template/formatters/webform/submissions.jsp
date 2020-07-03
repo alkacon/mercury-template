@@ -1,13 +1,15 @@
-<%@page
-    pageEncoding="UTF-8"
+<%@page pageEncoding="UTF-8"
     buffer="none"
     session="false"
     trimDirectiveWhitespaces="true"
     import="alkacon.mercury.webform.*" %>
 
+
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+
 
 <cms:formatter var="content">
     <c:set var="rawContent" value="${content.rawContent}" />
@@ -34,16 +36,16 @@
                     </c:choose>
                 </div><%----%>
                 <div class="book-info"><%----%>
-                    <c:if test="${true or bean.changed}">
+                    <c:if test="${bean.changed}">
                         <span class="oct-meta-info severe"><fmt:message key="msg.page.form.status.submission.changed" /></span><%----%>
                     </c:if>
-                    <c:if test="${true or bean.cancelled}">
+                    <c:if test="${ean.cancelled}">
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.cancelled" /></span><%----%>
                     </c:if>
-                    <c:if test="${true or bean.waitlist}">
+                    <c:if test="${bean.waitlist}">
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.waitlist" /></span><%----%>
                     </c:if>
-                    <c:if test="${true or bean.confirmationMailSent}">
+                    <c:if test="${bean.confirmationMailSent}">
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.confirmed" /></span><%----%>
                     </c:if>
                     <%--
@@ -53,8 +55,8 @@
                     --%>
                 </div><%----%>
             </a><%----%>
-        </div>
-<%----%>
+        </div><%----%>
+        <mercury:nl />
 
         <div id="${itemId}" class="acco-body collapse" data-parent="#${parentId}"><%----%>
             <table class="submissions"><%----%>
@@ -69,11 +71,11 @@
                     <td><fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${cms:convertDate(content.file.dateCreated)}" /></td><%----%>
                 </tr><%----%>
             </table><%----%>
-        </div>
-<%----%>
+        </div><%----%>
+        <mercury:nl />
 
-    </div>
-<%----%>
+    </div><%----%>
+    <mercury:nl />
 
     </cms:bundle>
 

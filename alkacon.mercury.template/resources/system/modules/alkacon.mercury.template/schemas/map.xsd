@@ -36,7 +36,7 @@
                 <tab element="MapCoord" collapse="false" name="%(key.tab.MapCoord)" />
             </tabs>
             <FieldSettings>
-            	<Setting>
+                <Setting>
                     <PropertyName>Title</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
@@ -44,9 +44,8 @@
                     <Default><![CDATA[%(key.type.m-map.title)]]></Default>
                 </Setting>
                 <Setting>
-                	<PropertyName>Description</PropertyName>
-                	<DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Description.help)]]></Description>
+                    <PropertyName>Description</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
                 </Setting>

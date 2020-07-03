@@ -41,7 +41,6 @@
                 <Setting>
                     <PropertyName>Description</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Description.help)]]></Description>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
                 </Setting>

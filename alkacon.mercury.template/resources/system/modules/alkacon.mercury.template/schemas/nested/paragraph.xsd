@@ -39,7 +39,6 @@
                 <Setting>
                     <PropertyName>Text</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Text.Paragraph.help)]]></Description>
                     <Widget>html</Widget>
                     <Default><![CDATA[%(key.msg.default.new.Text)]]></Default>
                     <WidgetConfig><![CDATA[%(param:editorConfigParagraph)]]></WidgetConfig>

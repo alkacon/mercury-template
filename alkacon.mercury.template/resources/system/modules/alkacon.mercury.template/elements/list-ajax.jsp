@@ -19,6 +19,11 @@
 <html>
 <body>
 
+<c:if test="${(not empty param.siteroot) and (param.siteroot ne cms.requestContext.siteRoot)}">
+    <c:set var="ignore" value="${cms.requestContext.setSiteRoot(param.siteroot)}" />
+    <% org.opencms.flex.CmsFlexController.getController(request).getCmsObject().getRequestContext().setSiteRoot(request.getParameter("siteroot")); %>
+</c:if>
+
 <c:set var="conf" value="${cms.vfs.readXml[param.contentpath]}" />
 <c:if test="${not empty conf}">
 

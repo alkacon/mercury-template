@@ -245,14 +245,6 @@
     @include button-color($btn-default, $btn-default-hover, $btn-disabled);
 }
 
-// Container / editor elements background
-@mixin oct-meta-bg {
-    border-radius: 4px !important;
-    color: $con-text-col-light !important;
-    background-color: $con-col-orange !important;
-    background: linear-gradient(166deg, lighten($con-col-orange, 5%) 0%, darken($con-col-orange, 5%) 100%) !important;
-}
-
 // Font size REM rebasing, usually on the HTML element
 @mixin rem-base {
     @if ($font-rem-base-mobile-size != $font-rem-base-desktop-size) {

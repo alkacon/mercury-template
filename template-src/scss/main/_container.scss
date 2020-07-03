@@ -306,10 +306,23 @@ $oct-edit-infos:
 
 // Anchor link and admin markers
 
+// Container / editor elements background
+@mixin oct-meta-bg {
+    border-radius: 4px !important;
+    color: $con-text-col-light !important;
+    background-color: $con-col-orange !important;
+    background: linear-gradient(166deg, lighten($con-col-orange, 5%) 0%, darken($con-col-orange, 5%) 100%) !important;
+}
+
 .oct-meta-info {
     position: relative;
     transition: all 0.33s;
-    @include oct-meta-bg();
+    @include oct-meta-bg;
+
+    &.severe {
+        background-color: $con-col-red !important;
+        background: linear-gradient(166deg, lighten($con-col-red, 5%) 0%, darken($con-col-red, 5%) 100%) !important;
+    }
 }
 
 .btn.oct-meta-info {

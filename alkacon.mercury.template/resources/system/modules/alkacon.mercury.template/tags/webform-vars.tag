@@ -42,6 +42,13 @@
         Return value is the first present of the following:\
         detail-page of the content that uses the form, detail-page of the form, current page." %>
 
+<%@ variable name-given="formBookingPossible" declare="true"
+    description="Will be 'true' if booking with this webform is possible.
+    In case of an incomplete email configuration, this will be false.
+    This can occur in case the form is intended to be used for event bookings,
+    but has been placed on a page directly, i.e. is not shown on the event detail page." %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -120,6 +127,8 @@
     <c:set var="formDataPath" value="${dataPath}" />
     ${form.adjustConfigValue("DBConfig/ContentPath", formDataPath)}
 </c:if>
+
+<c:set var="formBookingPossible" value="${false or (booking.value.MailTo.isSet and booking.value.MailFrom.isSet)}" />
 
 <%-- ###### Set adminLink that directs to the page where the form subscriptions are managed. ###### --%>
 <c:set var="adminDetailPageContent" value="${not empty formBookingXml ? formBookingXml : formXml}" />

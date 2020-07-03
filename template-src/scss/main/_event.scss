@@ -221,7 +221,11 @@ table.submissions {
 
 .accordion .book-info {
     .oct-meta-info {
-        bottom: 3px;
+        margin-right: $default-margin-small;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
     }
 }
 

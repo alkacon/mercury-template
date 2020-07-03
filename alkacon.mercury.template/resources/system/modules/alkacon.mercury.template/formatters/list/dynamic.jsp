@@ -33,8 +33,10 @@
 <c:otherwise><c:set var="pageId">${cms.pageResource.structureId}</c:set></c:otherwise>
 </c:choose>
 <c:set var="elementId">${cms.element.instanceId}</c:set>
+<c:set var="siteRoot">${cms.requestContext.siteRoot}</c:set>
 <%
     Map<String, String[]> settingsParameterMap = new HashMap<String, String[]>();
+    settingsParameterMap.put("siteroot", new String[]{(String)pageContext.getAttribute("siteRoot")});
     String[] gridParameterMap = pageContext.getRequest().getParameterValues("cssgrid");
     if (gridParameterMap != null) {
         settingsParameterMap.put("cssgrid", gridParameterMap);

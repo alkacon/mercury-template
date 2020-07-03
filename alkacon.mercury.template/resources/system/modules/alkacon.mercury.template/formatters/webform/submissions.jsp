@@ -17,26 +17,33 @@
     <cms:bundle basename="alkacon.mercury.template.messages">
 
     <div class="accordion"><%----%>
-        <h3 class="acco-header"><%----%>
+        <div class="acco-header"><%----%>
             <c:set var="parentId" value="${cms.element.settings.id}" />
             <c:set var="itemId" value="${parentId}_${cms.element.settings.index}" />
             <a class="acco-toggle collapsed" data-toggle="collapse" data-parent="#${parentId}" href="#${itemId}"><%----%>
-                <span><%----%>
+                <div class="h3"><%----%>
                     <c:choose>
                         <c:when test="${empty bean.titleProperty}">
-                            <fmt:message key="msg.page.form.submission.title.default.1"><fmt:param><fmt:formatDate value="${cms:convertDate(content.file.dateCreated)}" type="both" dateStyle="short" timeStyle="short"/></fmt:param></fmt:message>
+                            <fmt:message key="msg.page.form.submission.title.default.1">
+                                <fmt:param>
+                                    <fmt:formatDate value="${cms:convertDate(content.file.dateCreated)}" type="both" dateStyle="short" timeStyle="short" />
+                                </fmt:param>
+                            </fmt:message>
                         </c:when>
                         <c:otherwise>${bean.titleProperty}</c:otherwise>
                     </c:choose>
-                </span><%----%>
-                <span class="book-info"><%----%>
-                    <c:if test="${bean.cancelled}">
+                </div><%----%>
+                <div class="book-info"><%----%>
+                    <c:if test="${true or bean.changed}">
+                        <span class="oct-meta-info severe"><fmt:message key="msg.page.form.status.submission.changed" /></span><%----%>
+                    </c:if>
+                    <c:if test="${true or bean.cancelled}">
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.cancelled" /></span><%----%>
                     </c:if>
-                    <c:if test="${bean.waitlist}">
+                    <c:if test="${true or bean.waitlist}">
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.waitlist" /></span><%----%>
                     </c:if>
-                    <c:if test="${bean.confirmationMailSent}">
+                    <c:if test="${true or bean.confirmationMailSent}">
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.confirmed" /></span><%----%>
                     </c:if>
                     <%--
@@ -44,12 +51,9 @@
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.mailed" /></span>
                     </c:if>
                     --%>
-                    <c:if test="${bean.changed}">
-                        <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.changed" /></span><%----%>
-                    </c:if>
-                </span><%----%>
+                </div><%----%>
             </a><%----%>
-        </h3>
+        </div>
 <%----%>
 
         <div id="${itemId}" class="acco-body collapse" data-parent="#${parentId}"><%----%>

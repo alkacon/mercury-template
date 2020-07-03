@@ -18,7 +18,7 @@
 <c:set var="loginproject"           value="${setting.loginproject.isSet ? setting.loginproject.toString : 'Online'}" />
 <c:set var="loginou"                value="${setting.loginou.isSet ? fn:trim(cms.element.setting.loginou.toString) : ''}" />
 
-<c:if test="${not empty loginou}">
+<c:if test="${not empty loginou and 'Online' ne loginproject}">
     <c:set var="loginproject" value="${loginou eq '/' ? '' : loginou}${loginproject}"/>
 </c:if>
 

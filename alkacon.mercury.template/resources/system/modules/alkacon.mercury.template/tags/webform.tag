@@ -34,7 +34,7 @@
         bookingInfo="${bookingInfo}"
         formId="${formId}">
 
-        <c:if test="${form.userCanManage and cms.isEditMode}">
+        <c:if test="${formBookingPossible and form.userCanManage and cms.isEditMode}">
             <div class="subelement"><%----%>
                 <a class="btn btn-block oct-meta-info" href="<cms:link>${adminLink}?formmanage=${formId.hashCode()}</cms:link>"><%----%>
                     <fmt:message key="msg.page.form.button.submissions.manage" />

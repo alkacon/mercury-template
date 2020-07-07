@@ -42,6 +42,18 @@
   @include responsive-invisibility('.hidden-xs');
 }
 
+@include media-breakpoint-down(sm) {
+  @include responsive-invisibility('.hidden-xs-sm');
+}
+
+@include media-breakpoint-down(md) {
+  @include responsive-invisibility('.hidden-xs-sm-md');
+}
+
+@include media-breakpoint-down(lg) {
+  @include responsive-invisibility('.hidden-xs-sm-md-lg');
+}
+
 @include media-breakpoint-only(sm) {
   @include responsive-visibility('.visible-sm');
   @include responsive-invisibility('.hidden-sm');
@@ -57,10 +69,23 @@
   @include responsive-invisibility('.hidden-lg');
 }
 
+@include media-breakpoint-up(sm) {
+  @include responsive-invisibility('.hidden-sm-md-lg-xl');
+}
+
+@include media-breakpoint-up(md) {
+  @include responsive-invisibility('.hidden-md-lg-xl');
+}
+
+@include media-breakpoint-up(lg) {
+  @include responsive-invisibility('.hidden-lg-xl');
+}
+
 @include media-breakpoint-up(xl) {
   @include responsive-visibility('.visible-xl');
   @include responsive-invisibility('.hidden-xl');
 }
+
 
 .tooltip {
     .tooltip-inner {

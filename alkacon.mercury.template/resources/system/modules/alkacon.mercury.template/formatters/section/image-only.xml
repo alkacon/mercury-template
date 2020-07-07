@@ -37,6 +37,9 @@
       <IncludeName><![CDATA[effect.section.image-only]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>

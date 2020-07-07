@@ -37,10 +37,13 @@
       <IncludeName><![CDATA[textOption.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[effect.section.text-only]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[linkOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[effect.section.text-only]]></IncludeName>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[pieceLayout.fixed.0]]></IncludeName>

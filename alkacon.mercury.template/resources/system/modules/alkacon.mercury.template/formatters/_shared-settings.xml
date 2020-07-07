@@ -41,8 +41,13 @@
       <WidgetConfig><![CDATA[
         always:%(key.msg.setting.cssVisibility.always)|
         hidden-xs:%(key.msg.setting.cssVisibility.hidden-xs)|
-        hidden-xs hidden-sm:%(key.msg.setting.cssVisibility.hidden-xs-sm)|
-        hidden-xs hidden-sm hidden-md:%(key.msg.setting.cssVisibility.hidden-xs-sm-md)
+        hidden-xs-sm:%(key.msg.setting.cssVisibility.hidden-xs-sm)|
+        hidden-xs-sm-md:%(key.msg.setting.cssVisibility.hidden-xs-sm-md)|
+        hidden-xs-sm-md-lg:%(key.msg.setting.cssVisibility.hidden-xs-sm-md-lg)|
+        hidden-sm-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-sm-md-lg-xl)|
+        hidden-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-md-lg-xl)|
+        hidden-lg-xl:%(key.msg.setting.cssVisibility.hidden-lg-xl)|
+        hidden-xl:%(key.msg.setting.cssVisibility.hidden-xl)
        ]]></WidgetConfig>
     </Setting>
     <Setting>

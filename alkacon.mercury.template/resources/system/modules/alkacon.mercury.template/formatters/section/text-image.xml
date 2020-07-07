@@ -52,6 +52,9 @@
       <IncludeName><![CDATA[linkOption.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>

@@ -22,6 +22,7 @@
 <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio.toString}" />
 <c:set var="linkOption"         value="${setting.linkOption.toString}" />
+<c:set var="cssVisibility"      value="${setting.cssVisibility.toString != 'always' ? setting.cssVisibility.toString : null}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
@@ -31,7 +32,7 @@
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
 <mercury:section-piece
-    cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}"
+    cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}${empty cssVisibility ? '' : ' '.concat(cssVisibility)}"
     pieceLayout="${pieceLayout < 10 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"

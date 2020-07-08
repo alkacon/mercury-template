@@ -109,14 +109,20 @@
     <c:if test="${empty canonicalURL}">
         <c:set var="canonicalURL" value="${cms.detailRequest ? cms.detailContent.link : cms.pageResource.link}${canonicalParams}" />
     </c:if>
-
-    <%-- Output the canonical URL --%>
     <c:if test="${fn:startsWith(canonicalURL, '/')}">
         <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" />
     </c:if>
-    <link rel="canonical" href="${canonicalURL}" /><mercury:nl /><%----%>
 
-    <%-- Output the hreflang links --%>
-    ${hreflangURLs}
+    <%-- Output the canonical URL --%>
+    <link rel="canonical" href="${canonicalURL}" /><%----%>
+    <mercury:nl />
+    <mercury:nl />
+
+    <c:if test="${not empty hreflangURLs}">
+        <%-- Output the hreflang links --%>
+        ${hreflangURLs}
+        <mercury:nl />
+        <mercury:nl />
+    </c:if>
 
 </c:if>

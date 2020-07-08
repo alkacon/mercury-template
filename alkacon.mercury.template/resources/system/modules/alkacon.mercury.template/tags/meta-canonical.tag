@@ -48,12 +48,17 @@
     <c:set var="locales" value="${cms.site.translationLocales}" />
     <c:if test="${locales.size() > 1}">
         <c:set var="hreflangURLs">
+            <c:set var="requestedLocaleNotAvailable" value="${false}" />
             <c:forEach var="locale" items="${locales}" varStatus="status">
                 <c:set var="targetLink" value="${null}" />
                 <c:set var="targetLocale" value="${locale.language}" />
                 <c:choose>
                     <c:when test="${cms.detailRequest and not cms.detailContent.xml.hasLocale[targetLocale]}">
                         <c:set var="targetLink" value="" />
+                        <c:if test="${targetLocale eq cms.locale.language}">
+                            <%-- Resource not available in requested locale --%>
+                            <c:set var="requestedLocaleNotAvailable" value="${true}" />
+                        </c:if>
                     </c:when>
                     <c:when test="${cms.detailRequest}">
                         <c:set var="targetLink">
@@ -67,11 +72,17 @@
                 <c:if test="${not empty targetLink}">
                     <%-- Output of alternate language link --%>
                     <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}" /><mercury:nl /><%----%>
+                    <c:if test="${empty firstLocaleFound}">
+                        <c:set var="firstLocaleFound" value="${targetLink}" />
+                    </c:if>
                     <c:if test="${hasRequestLocale and (targetLocale eq param.__locale)}">
                         <c:set var="canonicalURL" value="${targetLink}" />
                     </c:if>
                 </c:if>
             </c:forEach>
+            <c:if test="${empty canonicalURL and requestedLocaleNotAvailable and not empty firstLocaleFound}">
+                <c:set var="canonicalURL" value="${firstLocaleFound}" />
+            </c:if>
         </c:set>
     </c:if>
 

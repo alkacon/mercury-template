@@ -312,7 +312,6 @@
                         text="${buttonText}"
                         forceText="${forceText}"
                         title="${linkTitle}"
-                        createButton="${true}"
                         noExternalMarker="${true}" />
                 </c:if>
             </c:when>

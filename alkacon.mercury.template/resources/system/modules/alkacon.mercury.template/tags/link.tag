@@ -143,6 +143,8 @@
                     <%--
                         Using a button with onclick event instead of a href passes
                         the Google SEO test 'Links Do Not Have Descriptive Text'.
+                        However, since there is no link tag generated, this would work only with JavaScript enabled.
+                        Therefore the use of this option is discouraged.
                     --%>
                     <c:choose>
                         <c:when test="${newWin}">

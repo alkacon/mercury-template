@@ -72,16 +72,16 @@
                 <c:if test="${not empty targetLink}">
                     <%-- Output of alternate language link --%>
                     <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}" /><mercury:nl /><%----%>
-                    <c:if test="${empty firstLocaleFound}">
-                        <c:set var="firstLocaleFound" value="${targetLink}" />
+                    <c:if test="${fn:startsWith(cms.detailContent.link, targetLink)}">
+                        <c:set var="canonicalLocaleURL" value="targetLink" />
                     </c:if>
                     <c:if test="${hasRequestLocale and (targetLocale eq param.__locale)}">
                         <c:set var="canonicalURL" value="${targetLink}" />
                     </c:if>
                 </c:if>
             </c:forEach>
-            <c:if test="${empty canonicalURL and requestedLocaleNotAvailable and not empty firstLocaleFound}">
-                <c:set var="canonicalURL" value="${firstLocaleFound}" />
+            <c:if test="${empty canonicalURL and requestedLocaleNotAvailable and not empty canonicalLocaleURL}">
+                <c:set var="canonicalURL" value="${canonicalLocaleURL}" />
             </c:if>
         </c:set>
     </c:if>

@@ -12,6 +12,9 @@
       </links>
       <content><![CDATA[<p>Wir möchten Ihnen ein optimales Webseiten-Erlebnis zu bieten. Dazu verwenden wir Cookies, die für das Funktionieren unserer Website notwendig sind. Mit Ihrer Zustimmung verwenden wir auch Cookies, die zur Anzeige externer Inhalte oder zu anonymen Statistikzwecken genutzt werden. Sie können selbst entscheiden, welche Kategorien Sie zulassen möchten. Bitte beachten Sie, dass auf Basis Ihrer Einstellungen womöglich nicht mehr alle Funktionalitäten der Seite zur Verfügung stehen. <a href="%(link0)">Sie können Ihrere Cookie-Einstellungen später jederzeit hier ändern.</a></p>]]></content>
     </PolicyText>
+    <AcceptAllButtonText><![CDATA[Alle akzeptieren]]></AcceptAllButtonText>
+    <SaveButtonText><![CDATA[Speichern]]></SaveButtonText>
+    <ExternalTitle><![CDATA[Empfohlener externer Inhalt]]></ExternalTitle>
     <ExternalFooter name="ExternalFooter0">
       <links>
         <link name="link0" internal="true" type="A">
@@ -21,7 +24,7 @@
       </links>
       <content><![CDATA[<p>Ich bin damit einverstanden, dass mir externe Inhalte angezeigt werden. Damit können personenbezogene Daten an Drittplattformen übermittelt werden. <a href="%(link0)">Sie können Ihrere Cookie-Einstellungen später jederzeit hier ändern.</a></p>]]></content>
     </ExternalFooter>
-    <ShowLinks>true</ShowLinks>
+    <ShowLinks>false</ShowLinks>
   </PrivacyPolicy>
   <PrivacyPolicy language="en">
     <Title><![CDATA[Your choice regarding cookies]]></Title>
@@ -32,9 +35,12 @@
           <uuid>f4b7b9c8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>We use cookies to give you the best possible experience on our site. You can select your cookie preferences individually. Click <em>Accept all</em> to enable all functions of our site by allowing all cookies.&nbsp;</p>
+      <content><![CDATA[<p>We use cookies to give you the best possible experience on our website. This includes cookies which are required for the operation of the website. With your consent we also use cookies to display external content or for anonymous statistical purposes. <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">You are free to decide which categories you would like to permit. Please note that depending on the settings you choose, the full functionality of the website may no longer be available.</span></p>
 <p>Your cookie settings can always be changed later on our <a href="%(link0)">privacy policy</a> page.</p>]]></content>
     </PolicyText>
+    <AcceptAllButtonText><![CDATA[Accept all]]></AcceptAllButtonText>
+    <SaveButtonText><![CDATA[Save]]></SaveButtonText>
+    <ExternalTitle><![CDATA[Recommended external content]]></ExternalTitle>
     <ExternalFooter name="ExternalFooter0">
       <links>
         <link name="link0" internal="true" type="A">
@@ -44,6 +50,6 @@
       </links>
       <content><![CDATA[<p>I hereby declare that I consent to the display of external content. This means personal data may be transmitted to third party services. You can change your settings later on our <a href="%(link0)"><strong>privacy policy</strong></a>&nbsp;page.</p>]]></content>
     </ExternalFooter>
-    <ShowLinks>true</ShowLinks>
+    <ShowLinks>false</ShowLinks>
   </PrivacyPolicy>
 </PrivacyPolicyData>

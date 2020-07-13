@@ -46,7 +46,7 @@ var Mercury = function(jQ) {
 
     "use strict";
 
-    var DEBUG = true || (getParameter("jsdebug") != null);
+    var DEBUG = false || (getParameter("jsdebug") != null);
 
     // container for information passed from CSS to JavaScript
     var m_info = {};

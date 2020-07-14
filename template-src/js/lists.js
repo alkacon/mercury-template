@@ -429,6 +429,9 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
                 list.$noresults.show();
             }
         } else {
+            if ((page < 1) || (page > list.pageData.pages)) {
+                page = 1;
+            }
             if (list.$noresults != null) list.$noresults.hide();
             list.pageEntries.get(page).appendTo(list.$entries);
             if (list.pageEntries.size > 1) {
@@ -904,11 +907,12 @@ export function update(id, searchStateParameters, reloadEntries) {
  * @param {boolean} reloadEntries a flag, indicating if the currently shown results should be reloaded/replaced (or if new results should only be appended).
  * @param {ListCallback} [paginationCallback] a callback triggered when a page is loaded or appended.
  */
-export function injectResults(id, resultHtml, paginationCallback) {
+export function injectResults(id, resultHtml, paginationCallback, currentPage) {
 
+    currentPage = currentPage || 1;
     var list = m_lists[id];
     list.paginationCallback = paginationCallback;
-    generateListHtml(list, true, resultHtml, 1);
+    generateListHtml(list, true, resultHtml, currentPage);
 }
 
 /**

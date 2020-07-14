@@ -31,11 +31,13 @@
 <c:set var="policyfile" value="${fn:startsWith(policyfile, '/') ? policyfile : cms.subSitePath.concat('.content/').concat(policyfile)}" />
 <c:set var="policyfileBase64"><mercury:obfuscate text="${policyfile}" type="base64"/></c:set>
 <c:set var="uriBase64"><mercury:obfuscate text="${contentUri}" type="base64"/></c:set>
+<c:set var="rootBase64"><mercury:obfuscate text="${cms.requestContext.siteRoot}" type="base64"/></c:set>
 
 <%-- Generate banner data JSON --%>
 <cms:jsonobject var="bannerData">
     <cms:jsonvalue key="policy" value="${policyfileBase64}" />
     <cms:jsonvalue key="page" value="${uriBase64}" />
+    <cms:jsonvalue key="root" value="${rootBase64}" />
     <c:if test="${hideBanner}">
         <cms:jsonvalue key="display" value="0" />
     </c:if>

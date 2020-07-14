@@ -30,7 +30,7 @@
         max-height: 100vh;
 
         > div:not(:last-of-type) {
-            margin-bottom: $default-margin-small;
+            margin-bottom: $policy-banner-margin-small;
         }
     }
 
@@ -85,7 +85,7 @@
             flex-grow: 1;
 
             label {
-                margin-right: $default-margin;
+                margin-right: $policy-banner-margin;
                 margin-bottom: 0;
                 padding-left: 30px;
                 cursor: pointer;
@@ -145,7 +145,7 @@
             }
 
             &:last-of-type {
-                margin-left: $default-margin;
+                margin-left: $policy-banner-margin;
             }
         }
 
@@ -177,7 +177,7 @@
             display: inline;
             margin: 0;
             + li {
-                margin-left: $default-margin;
+                margin-left: $policy-banner-margin;
             }
         }
         a {
@@ -205,7 +205,7 @@
 
             .options {
                 flex-grow: initial;
-                margin-bottom: $default-margin-small;
+                margin-bottom: $policy-banner-margin-small;
             }
         }
 
@@ -237,10 +237,10 @@
             margin-bottom: 0 !important;
         }
         .buttons {
-            justify-content: space-between;
+            justify-content: space-around;
         }
         .links {
-            margin-bottom: $default-margin-small;
+            margin-bottom: $policy-banner-margin-small;
         }
     }
 
@@ -251,13 +251,13 @@
                 display: flex;
                 flex-direction: column;
                 label + label {
-                    margin-top: $default-margin-verysmall;
+                    margin-top: $policy-banner-margin-small;
                 }
             }
         }
 
         .message {
-            margin-bottom: $default-margin-verysmall !important;
+            margin-bottom: $policy-banner-margin-verysmall !important;
         }
 
         .buttons {
@@ -316,7 +316,7 @@
     display: flex;
 
     + .pp-toggle {
-        margin-top: $default-margin;
+        margin-top: $policy-banner-margin;
     }
 
     .toggle-label {
@@ -341,7 +341,7 @@
         align-items: center;
         font-size: 18px;
         line-height: 1;
-        margin-left: $default-margin;
+        margin-left: $policy-banner-margin;
     }
 
     .toggle-box {
@@ -434,7 +434,7 @@
 
         .toggle-text {
             margin-left: 0;
-            margin-bottom: $default-margin-small;
+            margin-bottom: $policy-banner-margin-small;
         }
 
         .toggle-label {
@@ -465,7 +465,7 @@ html.keyboard-nav .pp-toggle {
     flex-direction: column;
     justify-content: center;
     overflow: scroll !important;
-    padding: $default-margin;
+    padding: $policy-banner-margin;
     cursor: auto;
     // must set this because some elements (e.g. OSM) add another class that changes the font
     font: $font-weight-base #{$cookie-notice-font-size-mobile} / #{$line-height-base} $font-family-base;
@@ -481,7 +481,7 @@ html.keyboard-nav .pp-toggle {
     .cookie-header,
     .cookie-message,
     .cookie-switch {
-        margin-bottom: $default-margin-small;
+        margin-bottom: $policy-banner-margin-small;
     }
 
     .cookie-footer {
@@ -536,7 +536,7 @@ html.keyboard-nav .pp-toggle {
             border-top: none;
 
             .btn + .btn {
-                margin-left: $default-margin;
+                margin-left: $policy-banner-margin;
             }
         }
     }

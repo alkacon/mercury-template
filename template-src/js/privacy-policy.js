@@ -69,6 +69,7 @@ function loadPolicy(callback) {
         var params =
             "policy=" + encodeURIComponent(m_bannerData.policy) + "&" +
             "page=" + encodeURIComponent(m_bannerData.page) + "&" +
+            "root=" + encodeURIComponent(m_bannerData.root) + "&" +
             "__locale=" + Mercury.getLocale();
 
         if (typeof m_bannerData.display !== "undefined") {
@@ -97,18 +98,7 @@ function displayBanner() {
     var bannerStr = m_policy.banner;
     if (typeof bannerStr !== "undefined") {
 
-        if (typeof m_policy.lImp !== "undefined") {
-            var linkImp = "<a href=\"" + m_policy.lImp + "\">" + m_policy.lImpTxt + "</a>";
-            bannerStr = bannerStr.replace("%(link.Imprint)", linkImp);
-        }
-        if (typeof m_policy.lPol !== "undefined") {
-            var linkPol = "<a href=\"" + m_policy.lPol + "\">" + m_policy.lPolTxt + "</a>";
-            bannerStr = bannerStr.replace("%(link.Datenschutz)", linkPol);
-        }
-        if (typeof m_policy.lLeg !== "undefined") {
-            var linkLeg = "<a href=\"" + m_policy.lLeg + "\">" + m_policy.lLegTxt + "</a>";
-            bannerStr = bannerStr.replace("%(link.Rechtliche Hinweise)", linkLeg);
-        }
+        bannerStr = replaceLinkMacros(bannerStr);
 
         var $banner = jQ(bannerStr);
         var $bannerElement = m_bannerData.$bannerElement;
@@ -178,6 +168,24 @@ function initPrivacyBanner(onTop) {
             if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, cookie data=" + getCookie(OPTIONS_CONFIRMED));
         }
     }
+}
+
+function replaceLinkMacros(text) {
+
+    var result = text;
+    if (typeof m_policy.lImp !== "undefined") {
+        var linkImp = "<a href=\"" + m_policy.lImp + "\">" + m_policy.lImpTxt + "</a>";
+        result = result.replace("%(link.Imprint)", linkImp);
+    }
+    if (typeof m_policy.lPol !== "undefined") {
+        var linkPol = "<a href=\"" + m_policy.lPol + "\">" + m_policy.lPolTxt + "</a>";
+        result = result.replace("%(link.Datenschutz)", linkPol);
+    }
+    if (typeof m_policy.lLeg !== "undefined") {
+        var linkLeg = "<a href=\"" + m_policy.lLeg + "\">" + m_policy.lLegTxt + "</a>";
+        result = result.replace("%(link.Rechtliche Hinweise)", linkLeg);
+    }
+    return result;
 }
 
 function resetTemplateScript(forceInit) {
@@ -325,7 +333,7 @@ function createExternalElementToggle(heading, message, footer) {
             '<div class=\"cookie-footer\">' + footer + '</div>' +
         '</div>';
 
-    return cookieHtml;
+    return replaceLinkMacros(cookieHtml);
 }
 
 function initExternalElements(showMessage) {

@@ -11,9 +11,11 @@
 
 <c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
 <c:set var="page"><mercury:obfuscate text="${param.page}" type="base64dec" /></c:set>
+<c:set var="siteRoot"><mercury:obfuscate text="${param.root}" type="base64dec" /></c:set>
 <c:set var="isMercury" value="${empty param.template or (param.template eq 'mercury')}" />
 
-<c:if test="${not empty policyfile}">
+<c:if test="${not empty policyfile and not empty siteRoot}">
+    <mercury:set-siteroot siteRoot="${siteRoot}" />
     <c:set var="policyRes" value="${cms.vfs.readResource[policyfile]}" />
     <c:if test="${(not empty policyRes) and isMercury and (policyRes.typeName ne 'm-privacypolicy')}">
         <%-- policy file is not of the required type, try to find matching type --%>
@@ -37,8 +39,9 @@
     <c:otherwise>
         <cms:jsonobject var="errorData">
             <cms:jsonobject key="error">
-                <cms:jsonvalue key="policyfile" value="${policyfile}" />
+                <cms:jsonvalue key="root" value="${siteRoot}" />
                 <cms:jsonvalue key="page" value="${page}" />
+                <cms:jsonvalue key="policyfile" value="${policyfile}" />
                 <c:if test="${not empty originalPolicyfile}">
                     <cms:jsonvalue key="originalPolicyfile" value="${originalPolicyfile}" />
                 </c:if>

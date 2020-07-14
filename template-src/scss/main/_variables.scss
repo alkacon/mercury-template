@@ -602,6 +602,9 @@ $policy-banner-save-button-color:   lighten($policy-banner-background, 10%) !def
 $policy-banner-save-hover-color:    $policy-banner-accept-hover-color !default;
 $policy-banner-button-min-width:    100px !default;
 $policy-banner-opacity:             0.95 !default;
+$policy-banner-margin:              $default-margin !default;
+$policy-banner-margin-small:        round($policy-banner-margin * 50) / 100 !default;
+$policy-banner-margin-verysmall:    round($policy-banner-margin * 25) / 100 !default;
 
 $togglebox-height:                  40px !default;
 $togglebox-width:                   200px !default;

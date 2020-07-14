@@ -60,7 +60,7 @@
     </c:choose>
 </c:catch>
 
-<c:if test="${(displayException != null) and not cms.isOnlineProject}">
+<c:if test="${displayException != null}">
     <fmt:setLocale value="${cms.workplaceLocale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">
         <c:set var="errorMsg">

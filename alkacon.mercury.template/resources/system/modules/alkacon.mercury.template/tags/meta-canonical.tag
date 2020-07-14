@@ -45,7 +45,6 @@
         Calculated first because in case a __locale parameter is found, the canonical URL is adjusted.
         According to YOAST [https://yoast.com/hreflang-ultimate-guide/] hreflang must reflect the canonical URL.
     --%>
-    <c:set var="detailContentLink" value="${cms.detailRequest ? cms.detailContent.link : null}" />
     <c:set var="locales" value="${cms.site.translationLocales}" />
     <c:if test="${locales.size() > 1}">
         <c:set var="hreflangURLs">
@@ -54,7 +53,7 @@
                 <c:set var="targetLink" value="${null}" />
                 <c:set var="targetLocale" value="${locale.language}" />
                 <c:choose>
-                    <c:when test="${cms.detailRequest and not requestedLocaleNotAvailable and not cms.detailContent.xml.hasLocale[targetLocale]}">
+                    <c:when test="${cms.detailRequest and not cms.detailContent.xml.hasLocale[targetLocale]}">
                         <c:set var="targetLink" value="" />
                         <c:if test="${targetLocale eq cms.locale.language}">
                             <%-- Resource not available in requested locale --%>
@@ -65,11 +64,6 @@
                         <c:set var="targetLink">
                             <cms:link locale="${targetLocale}" baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
                         </c:set>
-                        <c:set var="splitTargetLink" value="${fn:split(targetLink, '/')}" />
-                        <c:set var="targetLinkEnd" value="${splitTargetLink[fn:length(splitTargetLink)-1]}/" />
-                        <c:if test="${fn:endsWith(detailContentLink, targetLinkEnd)}">
-                            <c:set var="canonicalLocaleURL" value="${targetLink}" />
-                        </c:if>
                     </c:when>
                     <c:otherwise>
                         <c:set var="targetLink" value="${cms.pageResource.localeResource[targetLocale].link}" />
@@ -78,6 +72,9 @@
                 <c:if test="${not empty targetLink}">
                     <%-- Output of alternate language link --%>
                     <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}" /><mercury:nl /><%----%>
+                    <c:if test="${fn:startsWith(cms.detailContent.link, targetLink)}">
+                        <c:set var="canonicalLocaleURL" value="targetLink" />
+                    </c:if>
                     <c:if test="${hasRequestLocale and (targetLocale eq param.__locale)}">
                         <c:set var="canonicalURL" value="${targetLink}" />
                     </c:if>
@@ -110,7 +107,7 @@
         It may have been set by the hreflang calculation OR the meta information before.
     --%>
     <c:if test="${empty canonicalURL}">
-        <c:set var="canonicalURL" value="${cms.detailRequest ? detailContentLink : cms.pageResource.link}${canonicalParams}" />
+        <c:set var="canonicalURL" value="${cms.detailRequest ? cms.detailContent.link : cms.pageResource.link}${canonicalParams}" />
     </c:if>
     <c:if test="${fn:startsWith(canonicalURL, '/')}">
         <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" />

@@ -433,6 +433,12 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
                 page = 1;
             }
             if (list.$noresults != null) list.$noresults.hide();
+            if ((page > 1) && (list.option === 'append')) {
+                list.$entries.empty();
+                for (var i=1; i<page; i++) {
+                    list.pageEntries.get(i).appendTo(list.$entries);
+                }
+            }
             list.pageEntries.get(page).appendTo(list.$entries);
             if (list.pageEntries.size > 1) {
                 var paginationString = generatePagination(list, page);
@@ -509,20 +515,17 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
  */
 function updatePageData(list, page) {
     var pageData = list.pageData;
-    var previousPageEnd;
     var previousEnd = 0;
+    for(var i = 1; i < page; i++) {
+        previousEnd = previousEnd + getPageSize(i, list.pageSizes);
+    }
     if (list.option !== 'append') {
-        for(var i = 1; i < page; i++) {
-            previousEnd = previousEnd + getPageSize(i, list.pageSizes);
-        }
-        previousPageEnd = previousEnd;
         pageData.start = previousEnd + 1;
     } else {
         pageData.start = 1;
-        previousPageEnd = page > 1 ? pageData.end : 0; // use the previous page to get the new page start
     }
     pageData.currentPage = page;
-    pageData.end = previousPageEnd + getPageSize(page, list.pageSizes);
+    pageData.end = previousEnd + getPageSize(page, list.pageSizes);
     if (pageData.end > pageData.found) {
         pageData.end = pageData.found;
     }

@@ -113,7 +113,7 @@
                     <c:set var="internal" value="${true}" />
                 </c:when>
                 <c:when test="${fn:startsWith(targetLink, 'locale://')}">
-                    <c:set var="targetLocale" value="${fn:substringAfter(targetLink, 'locale://')}" />
+                    <c:set var="targetLocale" value="${fn:trim(fn:substringAfter(targetLink, 'locale://'))}" />
                     <c:choose>
                         <c:when test="${cms.detailRequest}">
                             <c:set var="targetLink">
@@ -124,6 +124,14 @@
                             <c:set var="targetLink" value="${cms.localeResource[targetLocale].link}" />
                         </c:otherwise>
                     </c:choose>
+                    <c:set var="internal" value="${true}" />
+                </c:when>
+                <c:when test="${fn:startsWith(targetLink, 'opencms://function@')}">
+                    <c:set var="targetFunction" value="${fn:trim(fn:substringAfter(targetLink, 'opencms://function@'))}" />
+                    <c:set var="functionLink" value="${cms.functionDetail[targetFunction]}" />
+                    <c:if test="${not fn:contains(functionLink, 'No detail page')}">
+                        <c:set var="targetLink" value="${functionLink}" />
+                    </c:if>
                     <c:set var="internal" value="${true}" />
                 </c:when>
                 <c:when test="${targetLink eq 'opencms://login'}">

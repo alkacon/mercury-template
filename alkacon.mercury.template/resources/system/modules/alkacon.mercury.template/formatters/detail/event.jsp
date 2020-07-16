@@ -170,8 +170,7 @@
 
     </mercury:piece>
 
-    <c:if test="${not empty paragraphsContent or not empty paragraphsDownload or not empty bookingInformation}">
-
+    <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
         <div class="detail-content"><%----%>
             <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
                 <mercury:section-piece
@@ -191,12 +190,14 @@
             <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
         </div><%----%>
         <mercury:nl />
-
-        ${bookingInformation}
-
     </c:if>
 
     <mercury:container-attachment content="${content}" name="attachments" />
+
+    <c:if test="${not empty bookingInformation}">
+        ${bookingInformation}
+    </c:if>
+
     <mercury:data-event content="${content}" date="${value.Dates.toDateSeries.instanceInfo.get(param.instancedate)}" />
 
 </mercury:event-booking>

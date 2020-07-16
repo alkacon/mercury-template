@@ -128,7 +128,10 @@
     ${form.adjustConfigValue("DBConfig/ContentPath", formDataPath)}
 </c:if>
 
-<c:set var="formBookingPossible" value="${false or (booking.value.MailTo.isSet and booking.value.MailFrom.isSet)}" />
+<c:set var="formBookingPossible" value="${
+    (booking.value.MailTo.isSet or formXml.value.MailTo.isSet) and
+    (booking.value.MailFrom.isSet or formXml.value.MailFrom.isSet)
+}" />
 
 <%-- ###### Set adminLink that directs to the page where the form subscriptions are managed. ###### --%>
 <c:set var="adminDetailPageContent" value="${not empty formBookingXml ? formBookingXml : formXml}" />

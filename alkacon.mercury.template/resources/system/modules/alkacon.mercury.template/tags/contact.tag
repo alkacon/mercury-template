@@ -328,6 +328,14 @@
                 <c:if test="${fn:endsWith(websiteURL, '/')}">
                     <c:set var="websiteURL" value="${fn:substring(websiteURL, 0, fn:length(websiteURL)-1)}"/>
                 </c:if>
+                <c:choose>
+                    <c:when test="${fn:startsWith(websiteURL, 'https://')}">
+                        <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'https://'))}" />
+                    </c:when>
+                    <c:when test="${fn:startsWith(websiteURL, 'http://')}">
+                        <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'http://'))}" />
+                    </c:when>
+                </c:choose>
                 <div class="${showMinLabels ? 'website' : 'website tablerow'}"><%----%>
                      <c:if test="${not showMinLabels}">
                         <mercury:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">

@@ -112,8 +112,8 @@
                 <c:when test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:')}">
                     <c:set var="internal" value="${true}" />
                 </c:when>
-                <c:when test="${fn:startsWith(targetLink, 'locale://')}">
-                    <c:set var="targetLocale" value="${fn:trim(fn:substringAfter(targetLink, 'locale://'))}" />
+                <c:when test="${fn:startsWith(targetLink, 'opencms://locale@')}">
+                    <c:set var="targetLocale" value="${fn:trim(fn:substringAfter(targetLink, 'opencms://locale@'))}" />
                     <c:choose>
                         <c:when test="${cms.detailRequest}">
                             <c:set var="targetLink">

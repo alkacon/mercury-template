@@ -1444,6 +1444,7 @@
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[fix-compact]]></Default>
       <WidgetConfig><![CDATA[
+            fix-complete fix-ac:%(key.msg.setting.header.navFixDisplay.fix-complete-ac)|
             fix-complete:       %(key.msg.setting.header.navFixDisplay.fix-complete)|
             fix-compact:        %(key.msg.setting.header.navFixDisplay.fix-compact)|
             fix-overlay:        %(key.msg.setting.header.navFixDisplay.fix-overlay)

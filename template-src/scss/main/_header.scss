@@ -500,7 +500,7 @@
                 }
             }
 
-            &.header-isfixed {
+            &.header-isfixed:not(.fix-ac) {
                 .h-ac {
                     display: none;
                 }

@@ -923,6 +923,7 @@ msg.setting.header.navDisplay.nav-disp-reduced=Small padding
 msg.setting.header.navFixDisplay=Navigation fixed display
 msg.setting.header.navFixDisplay.fix-compact=Default (Smaller logo, hide title and extra container)
 msg.setting.header.navFixDisplay.fix-complete=Complete header, hide extra container
+msg.setting.header.navFixDisplay.fix-complete-ac=Complete header with extra container
 msg.setting.header.navFixDisplay.fix-overlay=Only main navigation with logo as overlay
 msg.setting.header.navFixDisplay.help=Controls how the fixed navigation is displayed.
 msg.setting.header.navPosition=Navigation position

@@ -19,10 +19,12 @@
 
 package alkacon.mercury.webform.fields;
 
+import alkacon.mercury.template.CmsFunctionLinkResolver;
 import alkacon.mercury.webform.CmsFormHandler;
 import alkacon.mercury.webform.I_CmsFormMessages;
 
 import org.opencms.i18n.CmsMessages;
+import org.opencms.main.CmsLog;
 import org.opencms.util.CmsStringUtil;
 
 import java.util.HashMap;
@@ -92,8 +94,15 @@ public class CmsPrivacyField extends CmsCheckboxField {
             CmsFieldItem curOption = getItems().get(0);
             //check if an internal link should be generated
             String link = curOption.getLabel();
-            if (link.startsWith("/")) {
-                link = formHandler.link(link);
+            String linkToPolicy = CmsFunctionLinkResolver.resolveFunction(formHandler.getCmsObject(), link);
+            if (link == linkToPolicy) {
+                // function could not be resolved - link is returned unchanged
+                if (link.startsWith("/")) {
+                    link = formHandler.link(link);
+                }
+            } else {
+                // function was resolved
+                link = linkToPolicy;
             }
             // set link and link text as additional attributes
             stAttributes.put("link", link);

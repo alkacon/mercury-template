@@ -4,8 +4,10 @@
     trimDirectiveWhitespaces="true"
     description="Reads the properties for the current page." %>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+
 
 <%@ variable name-given="contentUri" declare="true"
     description="The URI of the resource currently rendered.
@@ -19,6 +21,7 @@
 
 <%@ variable name-given="contentPropertiesSearchDetail" declare="true"
     description="The properties read from the URI resource OR detail resource with search." %>
+
 
 <c:choose>
     <c:when test="${cms.detailRequest}">

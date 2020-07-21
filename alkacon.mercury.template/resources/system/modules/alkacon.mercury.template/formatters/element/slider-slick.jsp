@@ -202,13 +202,18 @@
             <c:set var="fgStyle">style="${posStyle}"</c:set>
         </c:if>
 
+        <c:set var="slideLink" value="" />
+        <c:if test="${image.value.Link.isSet}">
+            <c:set var="slideLink"><mercury:link-opencms targetLink="${image.value.Link.toLink}" /></c:set>
+        </c:if>
+
         <mercury:nl />
         <div class="slide-wrapper slide-count-${cms:mathFloor(visibleSlidesXS)}${' '}${isHiddenSlide ? 'hide-noscript' : ''}${' '}${animationTrigger}${' '}${customClass}"><%----%>
             <div class="visual ${animationTarget}"><mercury:nl/>
 
-                ${image.value.Link.isSet ?
+                ${not empty slideLink ?
                     '<a href="'
-                        .concat(image.value.Link.toLink)
+                        .concat(slideLink)
                         .concat('" rel="noopener"')
                         .concat(image.value.NewWin.toBoolean ? ' target="_blank"' : '')
                         .concat('>')
@@ -284,7 +289,7 @@
 
                     </c:if>
 
-                ${image.value.Link.isSet ? '</a>':''}
+                ${not empty slideLink ? '</a>':''}
 
                 <c:if test="${showImageCopyright and (not empty copyright)}">
                     <div class="copyright">${copyright}</div><mercury:nl/>
@@ -294,13 +299,14 @@
             <c:if test="${not (slickType eq 'logo')
                 and (image.value.SuperTitle.isSet || image.value.TitleLine1.isSet || image.value.TitleLine2.isSet)}">
 
-                ${image.value.Link.isSet ?
+                ${not empty slideLink ?
                     '<a href="'
-                        .concat(image.value.Link.toLink)
+                        .concat(slideLink)
                         .concat('" rel="noopener"')
                         .concat(image.value.NewWin.toBoolean ? ' target="_blank"' : '')
                         .concat('>')
                     : ''}
+
                 <div class="caption background ${posTop}${' '}${posLeft}" aria-hidden="true" ${bgStyle}><%----%>
                     <c:if test="${image.value.SuperTitle.isSet}">
                         <strong ${headBgStyle} aria-hidden="true">${image.value.SuperTitle}</strong><%----%>
@@ -332,7 +338,9 @@
                         </div><%----%>
                     </c:if>
                 </div><%----%>
-                ${image.value.Link.isSet ? '</a>':''}
+
+                ${not empty slideLink ? '</a>':''}
+
                 <mercury:nl />
             </c:if>
         </div><%----%>

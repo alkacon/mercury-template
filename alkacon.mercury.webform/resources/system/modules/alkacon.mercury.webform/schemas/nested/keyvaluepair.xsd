@@ -1,44 +1,44 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-	<xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
 
-	<xsd:element name="KeyValuePairs" type="OpenCmsKeyValuePairs"/>
+    <xsd:element name="KeyValuePairs" type="OpenCmsKeyValuePairs"/>
 
-	<xsd:complexType name="OpenCmsKeyValuePairs">
-		<xsd:sequence>
-			<xsd:element name="KeyValuePair" type="OpenCmsKeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
-		</xsd:sequence>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsKeyValuePairs">
+        <xsd:sequence>
+            <xsd:element name="KeyValuePair" type="OpenCmsKeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
-	<xsd:complexType name="OpenCmsKeyValuePair">
-		<xsd:sequence>
-			<xsd:element name="Key" type="OpenCmsString" />
-			<xsd:element name="Value" type="OpenCmsString" />
-		</xsd:sequence>
-		<xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
-	</xsd:complexType>
+    <xsd:complexType name="OpenCmsKeyValuePair">
+        <xsd:sequence>
+            <xsd:element name="Key" type="OpenCmsString" />
+            <xsd:element name="Value" type="OpenCmsString" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
 
-	<xsd:annotation>
-		<xsd:appinfo>
-		  <layouts>
-		      <layout element="Key" widget="StringWidget" display="column" />
-		      <layout element="Value" widget="TextareaWidget" display="column" />
-		  </layouts>
-		  <FieldSettings>
-		  	<Setting>
+    <xsd:annotation>
+        <xsd:appinfo>
+          <layouts>
+              <layout element="Key" widget="StringWidget" display="column" />
+              <layout element="Value" widget="TextareaWidget" display="column" />
+          </layouts>
+          <FieldSettings>
+              <Setting>
                 <PropertyName>Key</PropertyName>
                 <DisplayName><![CDATA[%(key.msg.label.form.KeyValuePair.Key)]]></DisplayName>
                 <Widget>string</Widget>
                 <Display>column</Display>
-		  	</Setting>
-		  	<Setting>
+              </Setting>
+              <Setting>
                 <PropertyName>Value</PropertyName>
                 <DisplayName><![CDATA[%(key.msg.label.form.KeyValuePair.Value)]]></DisplayName>
                 <Widget>TextareaWidget</Widget>
                 <Display>column</Display>
-		  	</Setting>
-		  </FieldSettings>
-		</xsd:appinfo>
-	</xsd:annotation>
+              </Setting>
+          </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
 
 </xsd:schema>

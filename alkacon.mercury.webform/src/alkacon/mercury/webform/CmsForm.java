@@ -21,6 +21,7 @@ package alkacon.mercury.webform;
 
 import static alkacon.mercury.webform.CmsFormContentUtil.getContentValues;
 
+import alkacon.mercury.template.CmsFunctionLinkResolver;
 import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
 import alkacon.mercury.webform.fields.A_CmsField;
 import alkacon.mercury.webform.fields.CmsCaptchaField;
@@ -35,13 +36,11 @@ import alkacon.mercury.webform.fields.CmsHiddenField;
 import alkacon.mercury.webform.fields.CmsPrivacyField;
 import alkacon.mercury.webform.fields.I_CmsField;
 
-import org.opencms.ade.configuration.CmsADEConfigData;
 import org.opencms.ade.detailpage.CmsDetailPageInfo;
 import org.opencms.configuration.CmsConfigurationException;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsRequestContext;
-import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.jsp.CmsJspActionElement;
 import org.opencms.mail.CmsMailHost;
@@ -50,7 +49,6 @@ import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.util.CmsMacroResolver;
 import org.opencms.util.CmsStringUtil;
-import org.opencms.util.CmsUUID;
 import org.opencms.workplace.CmsWorkplace;
 import org.opencms.xml.content.CmsXmlContent;
 import org.opencms.xml.content.CmsXmlContentFactory;
@@ -1995,44 +1993,32 @@ public class CmsForm {
                     e);
             }
             if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(policyPath) && !"none".equals(policyPath)) {
+
                 // check if function page and/or path is given as link
                 String functionPart = "";
                 String pathPart = policyPath;
                 if (policyPath.contains("|")) {
                     String[] parts = CmsStringUtil.splitAsArray(policyPath, '|');
-                    functionPart = parts[0];
-                    pathPart = parts[1];
-                } else if (policyPath.contains("function@")) {
+                    functionPart = parts[0].trim();
+                    pathPart = parts[1].trim();
+                } else if (policyPath.startsWith(CmsDetailPageInfo.FUNCTION_PREFIX)) {
                     functionPart = policyPath;
                     pathPart = "";
                 }
 
-                String linkToPolicy = "";
-                if (CmsStringUtil.isNotEmpty(functionPart) && functionPart.contains("function@")) {
-                    // check if function page exists
-                    CmsADEConfigData config = OpenCms.getADEManager().lookupConfiguration(
-                        cms,
-                        cms.addSiteRoot(getJspAction().getRequestContext().getUri()));
-                    List<CmsDetailPageInfo> detailPages = config.getDetailPagesForType(functionPart);
-                    if ((detailPages != null) && (detailPages.size() > 0)) {
-                        // found detail page, determine link
-                        CmsDetailPageInfo mainDetailPage = detailPages.get(0);
-                        CmsUUID id = mainDetailPage.getId();
-                        try {
-                            CmsResource r = cms.readResource(id);
-                            linkToPolicy = OpenCms.getLinkManager().substituteLink(cms, r);
-                        } catch (CmsException e) {
-                            // no detail page configured, check path afterwards
-                        }
-                    }
+                String linkToPolicy = CmsFunctionLinkResolver.resolveFunction(cms, functionPart);
+                if (linkToPolicy == functionPart) {
+                    // in case the function could not be resolved functionPart is returned
+                    linkToPolicy = "";
                 }
+
                 if (CmsStringUtil.isEmpty(linkToPolicy) && CmsStringUtil.isNotEmpty(pathPart)) {
                     // function not found, check absolute path
                     if (cms.existsResource(pathPart)) {
                         linkToPolicy = OpenCms.getLinkManager().substituteLink(cms, pathPart);
                     }
-
                 }
+
                 if (CmsStringUtil.isNotEmpty(linkToPolicy)) {
                     CmsPrivacyField pField = new CmsPrivacyField();
                     // set the field values

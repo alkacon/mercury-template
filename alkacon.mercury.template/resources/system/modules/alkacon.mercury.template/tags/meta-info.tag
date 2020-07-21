@@ -5,9 +5,8 @@
     description="Generates meta information for the page header." %>
 
 
-<%@ attribute name="contentUri" type="java.lang.String" required="true"
-    description="The URI of the resource currently rendered.
-    This can be either the request context URI, or a detail content site path." %>
+<%@ attribute name="canonicalURL" type="java.lang.String" required="true"
+    description="The canonical URL of the resource currently rendered." %>
 
 <%@ attribute name="contentPropertiesSearch" type="java.util.Map" required="true"
     description="The properties read from the URI resource with search." %>
@@ -195,13 +194,16 @@ to find a sentence end.
 
 <c:choose>
     <c:when test="${not empty cms.meta.fbUrl}">
-        <c:set var="fburl" value="${cms.meta.fbUrl}" />
+        <c:set var="fburl"><mercury:link-opencms targetLink="${cms.meta.fbUrl}" /></c:set>
     </c:when>
     <c:when test="${fbSet}">
-        <c:set var="fburl">${cms.site.url}<cms:link>${contentUri}</cms:link></c:set>
+        <c:set var="fburl">${canonicalURL}</c:set>
     </c:when>
 </c:choose>
 <c:if test="${not empty fburl}">
+        <c:if test="${fn:startsWith(fburl, '/')}">
+            <c:set var="fburl" value="${cms.site.url}${fburl}" />
+        </c:if>
     <meta property="og:url" content="${fburl}">
 </c:if>
 

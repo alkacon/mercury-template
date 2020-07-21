@@ -55,6 +55,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:choose>
@@ -108,38 +109,10 @@
     <c:choose>
         <c:when test="${not empty targetLink}">
 
-            <c:choose>
-                <c:when test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:')}">
-                    <c:set var="internal" value="${true}" />
-                </c:when>
-                <c:when test="${fn:startsWith(targetLink, 'opencms://locale@')}">
-                    <c:set var="targetLocale" value="${fn:trim(fn:substringAfter(targetLink, 'opencms://locale@'))}" />
-                    <c:choose>
-                        <c:when test="${cms.detailRequest}">
-                            <c:set var="targetLink">
-                                <cms:link locale="${targetLocale}" baseUri="${cms.localeResource[targetLocale].sitePath}">${cms.detailContent.sitePath}</cms:link>
-                            </c:set>
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="targetLink" value="${cms.localeResource[targetLocale].link}" />
-                        </c:otherwise>
-                    </c:choose>
-                    <c:set var="internal" value="${true}" />
-                </c:when>
-                <c:when test="${fn:startsWith(targetLink, 'opencms://function@')}">
-                    <c:set var="targetFunction" value="${fn:trim(fn:substringAfter(targetLink, 'opencms://function@'))}" />
-                    <c:set var="functionLink" value="${cms.functionDetail[targetFunction]}" />
-                    <c:if test="${not fn:contains(functionLink, 'No detail page')}">
-                        <c:set var="targetLink" value="${functionLink}" />
-                    </c:if>
-                    <c:set var="internal" value="${true}" />
-                </c:when>
-                <c:when test="${targetLink eq 'opencms://login'}">
-                    <c:set var="internal" value="${true}" />
-                    <c:set var="siteManager" value="<%= org.opencms.main.OpenCms.getSiteManager() %>"/>
-                    <c:set var="targetLink">${siteManager.getWorkplaceServer(cms.vfs.cmsObject)}/system/login/</c:set>
-                </c:when>
-            </c:choose>
+            <c:if test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:') or fn:startsWith(targetLink, 'opencms:')}">
+                <c:set var="internal" value="${true}" />
+            </c:if>
+            <c:set var="targetLink"><mercury:link-opencms targetLink="${targetLink}" /></c:set>
 
             <c:set var="createButton" value="${createButton and empty body}" />
             <c:if test="${empty body and not internal and not noExternalMarker}">

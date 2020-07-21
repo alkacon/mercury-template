@@ -1,6 +1,6 @@
 <%@ tag display-name="meta-value"
     pageEncoding="UTF-8"
-    body-content="empty"
+    body-content="scriptless"
     trimDirectiveWhitespaces="true"
     description="Generates the canonical link for the current page." %>
 
@@ -11,9 +11,17 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
+<%@ attribute name="renderMetaTags" type="java.lang.Boolean" required="true"
+    description="Controls if HTML header meta tags are rendered." %>
+
+<%@ variable name-given="canonicalURL" declare="true"
+    description="The canonical URL of the resource currently rendered." %>
+
+
 <c:set var="isSearchPage"       value="${fn:startsWith(cms.pageResource.link, cms.functionDetail['Search page'])}" />
 <c:set var="isListPage"         value="${not isSearchPage and (not empty param.page)}" />
 <c:set var="hasRequestLocale"   value="${not empty param.__locale}" />
+<c:set var="isPreviewLink"      value="${not empty param.__disableDirectEdit}" />
 
 <%--
     Check for request parameters.
@@ -23,10 +31,11 @@
         a) the search page (just ignore all parameters)
         b) lists (keep the selected page)
         c) __locale requests (important for detail pages to generate the right canonical URL)
+        d) __disableDirectEdit requests (additional parameters here are just ignored)
     If other parameters are found we do not want to set a potential wrong canonical URL.
     So we do not set the canonical URL for a request that contains other parameters.
 --%>
-<c:if test="${not isSearchPage and not isListPage and not hasRequestLocale}">
+<c:if test="${not isSearchPage and not isListPage and not hasRequestLocale and not isPreviewLink}">
     <c:set var="requestQueryString"><%= request.getQueryString() != null ? request.getQueryString() : "" %></c:set>
 </c:if>
 
@@ -116,16 +125,20 @@
         <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" />
     </c:if>
 
-    <%-- Output the canonical URL --%>
-    <link rel="canonical" href="${canonicalURL}" /><%----%>
-    <mercury:nl />
-    <mercury:nl />
+    <c:if test="${renderMetaTags}">
+        <%-- Output the canonical URL --%>
+        <link rel="canonical" href="${canonicalURL}" /><%----%>
+        <mercury:nl />
+        <mercury:nl />
 
-    <c:if test="${not empty hreflangURLs}">
-        <%-- Output the hreflang links --%>
-        ${hreflangURLs}
-        <mercury:nl />
-        <mercury:nl />
+        <c:if test="${not empty hreflangURLs}">
+            <%-- Output the hreflang links --%>
+            ${hreflangURLs}
+            <mercury:nl />
+            <mercury:nl />
+        </c:if>
     </c:if>
 
 </c:if>
+
+<jsp:doBody/>

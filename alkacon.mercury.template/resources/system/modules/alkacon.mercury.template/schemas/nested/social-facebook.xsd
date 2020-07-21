@@ -50,6 +50,14 @@
                     <PropertyName>Url</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SocialFacebook.Url)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SocialFacebook.Url.help)]]></Description>
+                    <Widget>file</Widget>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>Type</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.SocialFacebook.Type)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.SocialFacebook.Type.help)]]></Description>
                     <Widget>combo</Widget>
                     <WidgetConfig><![CDATA[
                         article|
@@ -58,13 +66,6 @@
                         product|
                         profile
                     ]]></WidgetConfig>
-                    <Search>false</Search>
-                </Setting>
-                <Setting>
-                    <PropertyName>Type</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.SocialFacebook.Type)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.SocialFacebook.Type.help)]]></Description>
-                    <Widget>string</Widget>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

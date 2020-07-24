@@ -380,7 +380,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     var resultData = $result.find('#resultdata').first().data('result');
     list.pageData = resultData;
     list.pageData.itemsPerPage = parseInt(list.itemsPerPage, 10);
-    if (DEBUG) console.info("List: Search result - list=" + list.id + ", reloaded=" + list.pageData.reloaded + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage);
+    if (DEBUG) console.info("List: Search result - list=" + list.id + ", reloaded=" + list.pageData.reloaded + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage + ", page to show=" + page);
 
     var $newEntries;
     var $groups = $result.find("div[listgroup]");
@@ -483,7 +483,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     list.$element.removeClass("initial-load");
     list.locked = false;
 
-    if ((list.appendOption == "clickfirst") && list.notclicked && !reloadEntries) {
+    if ((list.appendOption === "clickfirst") && list.notclicked && !reloadEntries) {
         // this is a auto loading list that is activated on first click
         m_autoLoadLists.push(list);
         list.notclicked = false;
@@ -545,8 +545,6 @@ function generatePagination(list, page) {
 
     updatePageData(list, page);
     var pagination = list.paginationInfo;
-    // currently we do not support any options, since originally available options don't seem to be used.
-    //var options = pagination.options;
     var messages = pagination.messages;
     var listId = list.id;
     var result = [];
@@ -910,12 +908,13 @@ export function update(id, searchStateParameters, reloadEntries) {
  * @param {boolean} reloadEntries a flag, indicating if the currently shown results should be reloaded/replaced (or if new results should only be appended).
  * @param {ListCallback} [paginationCallback] a callback triggered when a page is loaded or appended.
  */
-export function injectResults(id, resultHtml, paginationCallback, currentPage) {
+export function injectResults(id, resultHtml, paginationCallback, pageToShow) {
 
-    currentPage = currentPage || 1;
+    if (DEBUG) console.info("List: injectResults id=" + id + ", pageToShow=" + pageToShow);
+    pageToShow = pageToShow || 1;
     var list = m_lists[id];
     list.paginationCallback = paginationCallback;
-    generateListHtml(list, true, resultHtml, currentPage);
+    generateListHtml(list, true, resultHtml, pageToShow);
 }
 
 /**
@@ -976,7 +975,7 @@ export function init(jQuery, debug) {
                     list.option = "paginate";
                     $list.removeClass("list-append").addClass("list-paginate");
                 }
-                if ((list.option == "append") && (list.appendOption == "noclick")) {
+                if ((list.option === "append") && (list.appendOption === "noclick")) {
                     // list automatically loads in scrolling
                     list.autoload = true;
                     m_autoLoadLists.push(list);

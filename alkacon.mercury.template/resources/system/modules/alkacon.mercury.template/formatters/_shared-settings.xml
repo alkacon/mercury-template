@@ -24,7 +24,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.formCssWrapper)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.formCssWrapper.help)]]></Description>
       <Widget><![CDATA[selectcombo]]></Widget>
-      <Default><![CDATA[none]]></Default>
+      <Default><![CDATA[border]]></Default>
       <WidgetConfig><![CDATA[
             border:                         %(key.msg.setting.formCssWrapper.border)|
             compact:                        %(key.msg.setting.formCssWrapper.compact)|

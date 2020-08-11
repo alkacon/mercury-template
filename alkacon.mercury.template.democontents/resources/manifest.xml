@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.1.28</version>
+		<version>11.0.1.30</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -15971,7 +15971,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 11.0 Beta]]></value>
+					<value><![CDATA[Release Notes for OpenCms 11.0 Beta 1]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16005,7 +16005,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 11.0 Beta]]></value>
+					<value><![CDATA[Release Notes for OpenCms 11.0 RC]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16022,7 +16022,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 11.0 Beta]]></value>
+					<value><![CDATA[Release Notes for OpenCms 11.0.0]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16039,7 +16039,24 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 11.0 Beta]]></value>
+					<value><![CDATA[Release Notes for OpenCms 11.0.1]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/.content/section-m/cs_00029.xml</source>
+			<destination>release/.content/section-m/cs_00029.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>078b580b-dbd9-11ea-acb2-0242ac11002b</uuidstructure>
+			<uuidresource>078b580c-dbd9-11ea-acb2-0242ac11002b</uuidresource>
+			<datecreated>Tue, 11 Aug 2020 13:46:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Release Notes for OpenCms 11.0.2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16604,6 +16621,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 11.0.1]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/opencms-11.0.2-notes</destination>
+			<type>folder</type>
+			<uuidstructure>0782cc83-dbd9-11ea-acb2-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 11 Aug 2020 13:46:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.25]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[OpenCms 11.0.2]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 11.0.2]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/opencms-11.0.2-notes/index.html</source>
+			<destination>release/opencms-11.0.2-notes/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>078600d8-dbd9-11ea-acb2-0242ac11002b</uuidstructure>
+			<uuidresource>078600d9-dbd9-11ea-acb2-0242ac11002b</uuidresource>
+			<datecreated>Tue, 11 Aug 2020 13:46:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 11.0.2]]></value>
 				</property>
 			</properties>
 			<relations/>

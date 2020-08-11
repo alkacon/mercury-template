@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 11.0.1]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 11.0.2]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
@@ -22,59 +22,64 @@
           <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>September 4, 2019: OpenCms 11.0.1 is a maintenance release for OpenCms 11. This version fixes a number of issues that have been detected in OpenCms 11. Also incuded are some new features and security enhancements.</p>
-<h2>New in OpenCms 11.0.1</h2>
+      <content><![CDATA[<p>August 18, 2020: OpenCms 11.0.2 is a maintenance release for OpenCms 11. It fixes a number of issues that have been reported in OpenCms 11.0.1. Also incuded are a some security enhancements.</p>
+<h2>New in OpenCms 11.0.2</h2>
 <ul>
-<li><span class="label label-orange">#</span> Added site/project switch to bookmark dialog.</li>
-<li><span class="label label-orange">#</span> Added title editing option for entries to bookmark dialog.</li>
-<li><span class="label label-orange">#</span> Added option to remove all functions in the sitemap configuration.</li>
-<li><span class="label label-orange">#</span> Added support for more than one master configuration in the sitemap configuration.</li>
-<li><span class="label label-orange">#</span> Added "Flexible header" layout group to the Mercury template.</li>
-<li>Added new sort order "Result score" to gallery dialog.</li>
-<li>Added easier to use color picker to XML content editor.</li>
-<li>Added "baseUri" attribute to &lt;cms:display&gt; tag to control formatter lookup.</li>
-<li>Added "filename" attribute to &lt;cms:pdf&gt; tag for customizing PDF links.</li>
-<li>Added method to read the categories of a resource from CmsJspResourceWrapper.</li>
-<li>Added method getElementBeansInContainers to CmsJspStandardContextBean.</li>
-<li>Added method isHistoryContent to CmsContainerElementBean.</li>
-<li>Added Italian localization for CodeMirror integration in TinyMCE (pull request #654).</li>
+<li><span class="label label-orange">#</span> Extended import/export so that unknown resource types are kept.</li>
+<li><span class="label label-orange">#</span>&nbsp;Extended list type by combined category and folder restrictions.</li>
 </ul>
 <p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
-<h2>Improved in OpenCms 11.0.1</h2>
+<h2>Improved in OpenCms 11.0.2</h2>
 <ul>
-<li>Improved CSS / SCSS of the Mercury template, fixing a number of display issues.</li>
-<li>Improved handling of detail pages.</li>
-<li>Improved options for detail page configuration.</li>
-<li>Improved error message for failed validation in the inline editor.</li>
-<li>Improved session manager to ignore sessions where the only activity are heartbeat requests.</li>
-<li>Improved error handling to avoid false "Session expired" error messages.</li>
-<li>Improved positioning of the preview element when starting drag/drop in the page editor.</li>
-<li>Improved indexer with new option "content" to also include linked files when indexing.</li>
-<li>Improved compatibility with MacOS High Sierra by adding ignoreWriteErrors parameter.</li>
-<li>Improved behavior of stripHtml EL function so that it does not insert unnecessary spaces.</li>
-<li>Improved gallery dialog to use the localized version of the Title property for titles if available.</li>
-<li>Updated TinyMCE version to 5.0.14.</li>
-<li>Updated CodeMirror version to 5.48.4.</li>
-<li>Fixed issue where the context menu in the explorer would not work for empty/invalid XML contents.</li>
-<li>Fixed issue where native inline widget initialization where onAttach was not called.</li>
-<li>Fixed issue where inline editing of multivalued simple fields did not work with the form overlay.</li>
-<li>Fixed issue with setup wizard to allow setup without database creation.</li>
-<li>Fixed issue in user management app where the OU/Group tree wasn't updated.</li>
-<li>Fixed issue with saving Emojis in XML contents.</li>
-<li>Fixed issue with image.size property being set to the wrong value when updating modules.</li>
-<li>Fixed issue where manually placing edit buttons would not work in display formatters.</li>
-<li>Fixed issue where renaming an existing content element without publishing it would prevent creation of new content elements of the same type in the page editor.</li>
-<li>Fixed issue where a module update would stop immediately if importing a resource relation failed.</li>
-<li>Fixed issue where setting the sitemap editor as the start view for a user would not work correctly.</li>
-<li>Fixed issue with bookmark dialog where the site was sometimes not set correctly.</li>
-<li>Fixed issue with invalid formatter references in a sitemap configuration.</li>
-<li>Fixed issue with Flex cache when the number of keys exceeded the configured limit.</li>
-<li>Fixed issue #632 where new resources got published if a moved parent folder was published.</li>
-<li>Fixed issue #652 where an XSS vulnerability existed in gallery dialog.</li>
-<li>Fixed issue #655 where location picker widget could become unclickable.</li>
-<li>Fixed issue #659 where the Scheduled Publish dialog required the legacy workplace module installed.</li>
-<li>Fixed issue #662 where the date picker did not work correctly for the Spanish workplace locale.</li>
-<li>Fixed issue #663 where updating a filtered folder content list in the explorer logged NPEs.</li>
+<li>Improved column sorting in file tables.</li>
+<li>Changed 'LOCALE_VARIANT' relation type to weak, preventing unintended publishing of related resources.</li>
+<li>Removed mimetype check on CSV user import.</li>
+<li>Improved &lt;cms:search&gt; to ignore facet filter parameters with empty values.</li>
+<li>Restricted 'wt' parameter in SOLR handler to 'json' and 'xml' to prevent security issues.</li>
+<li>Improved date mappings in SOLR - always fill instancedatecurrenttill_dt.</li>
+<li>Improved searchfield mappings with locale 'none'.</li>
+<li>Added support for the 'prefix' attribute to the &lt;cms:bundle&gt; tag.</li>
+<li>CmsLockInactiveAccountsJob now disables inactive users instead of locking them.</li>
+<li>Updated TinyMCE to version 5.1.5.</li>
+<li>Updated CodeMirror to version 5.50.2.</li>
+<li>Updated icu4j dependency to version 62.1.</li>
+<li>Fixed issue where some caches are not cleared when static export is disabled.</li>
+<li>Fixed issue where automatically generated file names matched existing ones.</li>
+<li>Fixed issue where edited container pages were not unlocked (using Chrome).</li>
+<li>Fixed issue where 'This page' publish mode ignored search-based lists.</li>
+<li>Fixed issue where &lt;cms:edit&gt; displayed edit points in the wrong element view.</li>
+<li>Fixed issue where links with question marks in their fragments (http://...#aaa?bbb) were not saved correctly.</li>
+<li>Fixed issue with moving/copying expired resources in the explorer.</li>
+<li>Fixed issue where preview mode would not work on detail pages after changing the title.</li>
+<li>Fixed issue with TinyMCE covering edit points in the content editor.</li>
+<li>Fixed session timeout errors in the login dialog.</li>
+<li>Fixed issue with expired resources not being included in the gallery search.</li>
+<li>Fixed issue where Solr handler returned wrong JSON.</li>
+<li>Fixed issue where flex cache could become corrupted if JSPs threw exceptions.</li>
+<li>Fixed issue where viewing help texts for nested contents caused errors in the content editor.</li>
+<li>Fixed issue where users could not be removed from default groups unless they had the corresponding role.</li>
+<li>Fixed issue with the layout of reuse groups in the page editor.</li>
+<li>Fixed issue where the date picker in the editor did not work correctly when the __locale request parameter was used.</li>
+<li>Fixed issue where single selection mode did not work for repository-grouped category widgets.</li>
+<li>Fixed issue where trailing empty values in a user CSV file caused the user import to fail.</li>
+<li>Fixed issue with the module update function not handling expired resources correctly.</li>
+<li>Fixed issue where the "Creation disabled" setting in sitemap configuration was not inherited in sub-sitemaps.</li>
+<li>Fixed issue where the site switcher in the page editor didn't work correctly for multiple workplace URLs.</li>
+<li>Fixed issue where updating a module would fail if it contained moved folders with renamed direct subfolders.</li>
+<li>Fixed issue with gallery dialog resizing in folder/sitemap tabs.</li>
+<li>Fixed issue where some user publish list data was never cleaned up in the database.</li>
+<li>Fixed issue where content change handlers were not working correctly for contents with xsd:choice elements.</li>
+<li>Fixed issue where CmsLockInactiveAccountsJob would lock/disable new users that had not logged in yet.</li>
+<li>Fixed issue with the configuration for custom file name generators.</li>
+<li>Fixed issue with module actions not being executed when installing modules.</li>
+<li>Fixed issue where contents from the clipboards 'Favorites' did not get a new element instance id.</li>
+<li>Fixed issue #674 with color picker popup positioning.</li>
+<li>Fixed issue #669 with month filtering in list manager app.</li>
+<li>Fixed issue #700 where the user edit dialog didn't work because of an invalid start view.</li>
+<li>Fixed issue #693 with uploading to expired folders.</li>
+<li>Fixed issue #682 by adding missing localization for htmlredirect fields.</li>
+<li>Fixed issue #688 by adding missing encoding to CMS_HISTORY_PROPERTIES table definition.</li>
+<li>Fixed wrong reference to UGC formatter JSP (github pull request #699).</li>
 </ul>
 <h2>Main new features of OpenCms 11</h2>
 <ul>
@@ -131,12 +136,12 @@
 <p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 11.0 sources from Git, please check out <span class="label label-cyan">branch_11_0_x</span>. This release is tagged <span class="label label-cyan">build_11_0_1</span>.</p>
+<p>In case you want to get the most current OpenCms 11.0 sources from Git, please check out <span class="label label-cyan">branch_11_0_x</span>. This release is tagged <span class="label label-cyan">build_11_0_2</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
 <p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
     </Text>
-    <GalleryTitle><![CDATA[Release Notes for OpenCms 11.0.1]]></GalleryTitle>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 11.0.2]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

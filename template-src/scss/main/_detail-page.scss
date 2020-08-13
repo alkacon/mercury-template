@@ -44,7 +44,7 @@
     .detail-visual {
 
         &:not(.only-heading) {
-            margin-bottom: $default-margin;
+            margin-bottom: $detail-piece-margin-bottom;
         }
 
         .visual-info {
@@ -138,7 +138,7 @@
         }
 
         @include clearfix;
-        @include piece-bottom-margin;
+        @include piece-bottom-margin($detail-piece-margin-bottom);
     }
 
     @include media-breakpoint-up(md) {

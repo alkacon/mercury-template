@@ -286,9 +286,9 @@
     }
 }
 
-@mixin piece-bottom-margin {
+@mixin piece-bottom-margin($margin-bottom: $default-margin)  {
     > .piece:not(:last-of-type) {
-        margin-bottom: $default-margin;
+        margin-bottom: $margin-bottom;
     }
 }
 

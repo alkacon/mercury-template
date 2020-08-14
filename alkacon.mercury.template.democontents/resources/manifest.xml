@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.1.32</version>
+		<version>11.0.1.33</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -15961,57 +15961,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>release/.content/section-m/cs_00024.xml</source>
-			<destination>release/.content/section-m/cs_00024.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>b82af825-512e-11e9-92c0-0242ac11002b</uuidstructure>
-			<uuidresource>b82af826-512e-11e9-92c0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 28 Mar 2019 07:54:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 11.0 Beta 1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00025.xml</source>
-			<destination>release/.content/section-m/cs_00025.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>baab3a67-512e-11e9-92c0-0242ac11002b</uuidstructure>
-			<uuidresource>baab3a68-512e-11e9-92c0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 28 Mar 2019 07:54:35 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 11.0 Beta 2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00026.xml</source>
-			<destination>release/.content/section-m/cs_00026.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>9237be29-512f-11e9-92c0-0242ac11002b</uuidstructure>
-			<uuidresource>9237be2a-512f-11e9-92c0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 28 Mar 2019 08:00:36 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 11.0 RC]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>release/.content/section-m/cs_00027.xml</source>
 			<destination>release/.content/section-m/cs_00027.xml</destination>
 			<type>m-section</type>
@@ -16421,126 +16370,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 10.5.4]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-11-beta-1-notes</destination>
-			<type>folder</type>
-			<uuidstructure>3420ac5f-512f-11e9-92c0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 28 Mar 2019 07:57:59 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[4.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 11 Beta 1]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 11 Beta 1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-11-beta-1-notes/index.html</source>
-			<destination>release/opencms-11-beta-1-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>342455e4-512f-11e9-92c0-0242ac11002b</uuidstructure>
-			<uuidresource>342455e5-512f-11e9-92c0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 28 Mar 2019 07:57:59 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 11 Beta 1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-11-beta-2-notes</destination>
-			<type>folder</type>
-			<uuidstructure>3614db49-512f-11e9-92c0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 28 Mar 2019 07:58:02 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[3.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 11 Beta 2]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 11 Beta 2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-11-beta-2-notes/index.html</source>
-			<destination>release/opencms-11-beta-2-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>3617c17e-512f-11e9-92c0-0242ac11002b</uuidstructure>
-			<uuidresource>3617c17f-512f-11e9-92c0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 28 Mar 2019 07:58:02 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 11 Beta 2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-11-rc-notes</destination>
-			<type>folder</type>
-			<uuidstructure>449fd943-512f-11e9-92c0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 28 Mar 2019 07:58:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[2.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 11 RC]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 11 RC]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-11-rc-notes/index.html</source>
-			<destination>release/opencms-11-rc-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>44a334a8-512f-11e9-92c0-0242ac11002b</uuidstructure>
-			<uuidresource>44a334a9-512f-11e9-92c0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 28 Mar 2019 07:58:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 11 RC]]></value>
 				</property>
 			</properties>
 			<relations/>

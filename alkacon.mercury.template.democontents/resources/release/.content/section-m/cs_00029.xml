@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Release Notes for OpenCms 11.0.2]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/mercury-template]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
+        </link>
+        <link name="link5" internal="false" type="A">
+          <target><![CDATA[https://www.alkacon.com]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>August 18, 2020: OpenCms 11.0.2 is a maintenance release for OpenCms 11. It fixes a number of issues that have been detected in OpenCms 11. Also incuded are some improvements and security enhancements.</p>
+<h2>New in OpenCms 11.0.2</h2>
+<ul>
+<li><span class="label label-orange">#</span> Extended import/export so that unknown resource types are kept.</li>
+<li><span class="label label-orange">#</span>&nbsp;Extended list type by combined category and folder restrictions.</li>
+</ul>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
+<h2>Improved in OpenCms 11.0.2</h2>
+<ul>
+<li>Improved column sorting in file tables.</li>
+<li>Changed 'LOCALE_VARIANT' relation type to weak, preventing unintended publishing of related resources.</li>
+<li>Removed mimetype check on CSV user import.</li>
+<li>Improved &lt;cms:search&gt; to ignore facet filter parameters with empty values.</li>
+<li>Restricted 'wt' parameter in SOLR handler to 'json' and 'xml' to prevent security issues.</li>
+<li>Improved date mappings in SOLR - always fill instancedatecurrenttill_dt.</li>
+<li>Improved searchfield mappings with locale 'none'.</li>
+<li>Added support for the 'prefix' attribute to the &lt;cms:bundle&gt; tag.</li>
+<li>CmsLockInactiveAccountsJob now disables inactive users instead of locking them.</li>
+<li>Updated TinyMCE to version 5.1.5.</li>
+<li>Updated CodeMirror to version 5.50.2.</li>
+<li>Updated icu4j dependency to version 62.1.</li>
+<li>Fixed issue where some caches are not cleared when static export is disabled.</li>
+<li>Fixed issue where automatically generated file names matched existing ones.</li>
+<li>Fixed issue where edited container pages were not unlocked (using Chrome).</li>
+<li>Fixed issue where 'This page' publish mode ignored search-based lists.</li>
+<li>Fixed issue where &lt;cms:edit&gt; displayed edit points in the wrong element view.</li>
+<li>Fixed issue where links with question marks in their fragments (http://...#aaa?bbb) were not saved correctly.</li>
+<li>Fixed issue with moving/copying expired resources in the explorer.</li>
+<li>Fixed issue where preview mode would not work on detail pages after changing the title.</li>
+<li>Fixed issue with TinyMCE covering edit points in the content editor.</li>
+<li>Fixed session timeout errors in the login dialog.</li>
+<li>Fixed issue with expired resources not being included in the gallery search.</li>
+<li>Fixed issue where Solr handler returned wrong JSON.</li>
+<li>Fixed issue where flex cache could become corrupted if JSPs threw exceptions.</li>
+<li>Fixed issue where viewing help texts for nested contents caused errors in the content editor.</li>
+<li>Fixed issue where users could not be removed from default groups unless they had the corresponding role.</li>
+<li>Fixed issue with the layout of reuse groups in the page editor.</li>
+<li>Fixed issue where the date picker in the editor did not work correctly when the __locale request parameter was used.</li>
+<li>Fixed issue where single selection mode did not work for repository-grouped category widgets.</li>
+<li>Fixed issue where trailing empty values in a user CSV file caused the user import to fail.</li>
+<li>Fixed issue with the module update function not handling expired resources correctly.</li>
+<li>Fixed issue where the "Creation disabled" setting in sitemap configuration was not inherited in sub-sitemaps.</li>
+<li>Fixed issue where the site switcher in the page editor didn't work correctly for multiple workplace URLs.</li>
+<li>Fixed issue where updating a module would fail if it contained moved folders with renamed direct subfolders.</li>
+<li>Fixed issue with gallery dialog resizing in folder/sitemap tabs.</li>
+<li>Fixed issue where some user publish list data was never cleaned up in the database.</li>
+<li>Fixed issue where content change handlers were not working correctly for contents with xsd:choice elements.</li>
+<li>Fixed issue where CmsLockInactiveAccountsJob would lock/disable new users that had not logged in yet.</li>
+<li>Fixed issue with the configuration for custom file name generators.</li>
+<li>Fixed issue with module actions not being executed when installing modules.</li>
+<li>Fixed issue where contents from the clipboards 'Favorites' did not get a new element instance id.</li>
+<li>Fixed issue #674 with color picker popup positioning.</li>
+<li>Fixed issue #669 with month filtering in list manager app.</li>
+<li>Fixed issue #700 where the user edit dialog didn't work because of an invalid start view.</li>
+<li>Fixed issue #693 with uploading to expired folders.</li>
+<li>Fixed issue #682 by adding missing localization for htmlredirect fields.</li>
+<li>Fixed issue #688 by adding missing encoding to CMS_HISTORY_PROPERTIES table definition.</li>
+<li>Fixed wrong reference to UGC formatter JSP (github pull request #699).</li>
+</ul>
+<h2>Main features of OpenCms 11</h2>
+<p>OpenCms 11 compared to version 10 brings a major update for the workplace, all apps have been replaced with modernized versions. Moreover, this release is compatible with Java 11 and comes with the new "Mercury" default template.</p>
+<ul>
+<li>Includes the 'Mercury' default template, source code available <a href="%(link0)">on GitHub</a>.</li>
+<li>Workplace: Restructured the workplace for improved usability with a modern GUI.</li>
+<li>Workplace: 'Lists' app for management of default 'List' content type using SOLR.</li>
+<li>Workplace: 'Bookmarks' app for quick access to workplace locations.</li>
+<li>Workplace: 'Resource types' app to create, read, edit and delete resource types.</li>
+<li>Workplace: 'Sessions' app to manage current user sessions and send messages to users.</li>
+<li>Workplace: 'Script terminal' app to run OpenCms shell scripts from the workplace.</li>
+<li>Workplace: 'SQL console' app to query the configured database pools.</li>
+<li>Template API: Meta mappings allow transferring values from XML contents to the page template (e.g. for SEO meta infos).</li>
+<li>Template API: The 'List' content type provides filter and sort options for title / date / category / folder.</li>
+<li>Template API: EL functions to create image variations for 'srcset' or 'picture'.</li>
+<li>Editor: Image now have a 'focal point' to control automatic image cropping around this point.</li>
+<li>Management: Option to execute shell commands in a running OpenCms instance using RMI.</li>
+<li>Management: The flex-cache bucket feature allows selective flex-cache purging.</li>
+<li>Management: Updating a module will now import only the changes instead of deleting and reinstalling the module.</li>
+<li>Setup: Removed all legacy workplace modules, leaving only two core modules in a new installation.</li>
+<li>Setup: Modernized the 'Setup wizard' user interface.</li>
+<li>Setup: Modernized the 'Updater' user interface, providing suport for 10.5, 10.0 and 9.5 versions.</li>
+<li>Support for Java 11.</li>
+</ul>
+<h2>General OpenCms features</h2>
+<ul>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
+<li>The form based editor allows editing of structured content in a well defined form mask.</li>
+<li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
+<li>Responsive "Mercury" default template based on Bootstrap 4 with many features.</li>
+<li>Content creation for mobile devices with preview and device specific content control.</li>
+<li>Structured contents can be defined using a simple XML schema.</li>
+<li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
+<li>Link management for all internal resources with broken link detection.</li>
+<li>Integrated image scaling and cropping.</li>
+<li>SEO features with automatic sitemap.xml generation and page alias support.</li>
+<li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
+<li>Allows management of multiple websites within one installation.</li>
+<li>Contents can be served dynamically or exported to static HTML files.</li>
+<li>File access to the OpenCms content repository over a shared network / SMB drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
+<li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
+<li>Extensions can be added through a flexible module system.</li>
+<li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
+<li>JSP integration for dynamic functionality in templates, dynamic forms etc.</li>
+<li>... and many more</li>
+</ul>
+<h3>Backward compatibility</h3>
+<p>OpenCms 11.0 is backward compatible with all 10.5, 10.0, and 9.5 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 11.0.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 11.0. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link1)" target="_blank" rel="noopener noreferrer">Please contact Alkacon</a> to receive the new version.</p>
+<h3>Compatibility with Java versions, servlet containers and databases</h3>
+<p>OpenCms 11.0 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9, 8.5 or 8. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<h3>Regarding version numbers and build tags</h3>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 11.0 sources from Git, please check out <span class="label label-cyan">branch_11_0_x</span>. This release is tagged <span class="label label-cyan">build_11_0_2</span>.</p>
+<h3>How you can help</h3>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>The team at&nbsp;<a title="Alkacon Software - The OpenCms Experts" href="%(link5)">Alkacon Software - The OpenCms Experts</a>&nbsp;wants to thank everyone who has contributed to this release of OpenCms.</p>
+<p>Have fun using OpenCms :-)</p>]]></content>
+    </Text>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 11.0.2]]></GalleryTitle>
+  </ContentSection>
+</ContentSectionData>

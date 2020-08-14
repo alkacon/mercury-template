@@ -531,7 +531,11 @@
         &.button {
             cursor: default;
         }
-        &.radio,
+        &.radio {
+            input:checked + i::after {
+                background-color: $form-radio-unchecked-color;
+            }
+        }
         &.checkbox {
             input:checked + i::after {
                 color: $form-radio-unchecked-color;

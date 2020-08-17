@@ -37,7 +37,7 @@
 </c:if>
 
 <%-- Show the booking status if the event is bookable --%>
-<c:if test="${not (bookingOption eq 'none')}">
+<c:if test="${(seriesInfo.isSingleDate or seriesInfo.isExtractedDate) and (bookingOption ne 'none')}">
     <c:set var="bookingMarkup">
         <mercury:webform-booking-status
             bookingContent="${content}"

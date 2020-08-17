@@ -18,6 +18,12 @@
 <%@ attribute name="bookingOption" type="java.lang.String" required="true"
     description="The selected booking option." %>
 
+<%@ attribute name="test" type="java.lang.Boolean" required="false"
+    description="Can be used to defer the decision to actually create the booking information markup around the body to the calling element.
+    If not set or 'true', the booking information markup from this tag is generated around the body of the tag.
+    Otherwise everything is ignored and the output is generated as if there is no booking information available." %>
+
+
 <%@ variable name-given="bookingInformation" declare="true"
     description="The booking information to show on the output page." %>
 
@@ -27,28 +33,32 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="hasBookingForm" value="${content.value.Booking.value.Webform.isSet}" />
-<c:if test="${hasBookingForm}">
-    <c:set var="bookingsFormId" value="${cms.element.id}" />
-    <c:set var="bookingsFormIdHash" value="${bookingsFormId.hashCode()}" />
-    <c:set var="showBookingsList" value="${(not cms.isOnlineProject) and (param.formmanage eq bookingsFormIdHash)}" />
-    <c:set var="showBookingsFormResult" value="${param.formsubmit eq bookingsFormIdHash}" />
-</c:if>
+<c:set var="generateBoookingInfo" value="${empty test or test}" />
 
-<c:if test="${showBookingsList or showBookingsFormResult}">
-<%-- ###### Booking form actions, display short version of detail content only ###### --%>
-    <cms:simpledisplay
-        value="${content.id}"
-        formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/display/event-elaborate.xml:514d402e-bd6f-4a32-90bc-bb3a84db9931)"
-        editable="false">
-            <cms:param name="dateFormat" value="${dateFormat}" />
-            <cms:param name="imageRatio" value="${imageRatio}" />
-            <cms:param name="effect" value="${effect}" />
-            <cms:param name="hideLink" value="true" />
-            <cms:param name="titleOption" value="showIntro" />
-            <cms:param name="pieceLayout" value="4" />
-            <cms:param name="bookingOption" value="hide" />
-    </cms:simpledisplay>
+<c:if test="${generateBoookingInfo}">
+    <c:set var="hasBookingForm" value="${content.value.Booking.value.Webform.isSet}" />
+    <c:if test="${hasBookingForm}">
+        <c:set var="bookingsFormId" value="${cms.element.id}" />
+        <c:set var="bookingsFormIdHash" value="${bookingsFormId.hashCode()}" />
+        <c:set var="showBookingsList" value="${(not cms.isOnlineProject) and (param.formmanage eq bookingsFormIdHash)}" />
+        <c:set var="showBookingsFormResult" value="${param.formsubmit eq bookingsFormIdHash}" />
+    </c:if>
+
+    <c:if test="${showBookingsList or showBookingsFormResult}">
+    <%-- ###### Booking form actions, display short version of detail content only ###### --%>
+        <cms:simpledisplay
+            value="${content.id}"
+            formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/display/event-elaborate.xml:514d402e-bd6f-4a32-90bc-bb3a84db9931)"
+            editable="false">
+                <cms:param name="dateFormat" value="${dateFormat}" />
+                <cms:param name="imageRatio" value="${imageRatio}" />
+                <cms:param name="effect" value="${effect}" />
+                <cms:param name="hideLink" value="true" />
+                <cms:param name="titleOption" value="showIntro" />
+                <cms:param name="pieceLayout" value="4" />
+                <cms:param name="bookingOption" value="hide" />
+        </cms:simpledisplay>
+    </c:if>
 </c:if>
 
 <c:choose>

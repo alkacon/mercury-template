@@ -42,9 +42,6 @@
 
 <mercury:location-vars data="${value.AddressChoice}" test="${showLocation}">
 
-<c:set var="date">
-    <mercury:instancedate date="${value.Dates.toDateSeries.instanceInfo.get(param.instancedate)}" format="${dateFormat}" />
-</c:set>
 <c:set var="intro"                  value="${value.Intro}" />
 <c:set var="title"                  value="${value.Title}" />
 <c:set var="preface"                value="${value.Preface}" />
@@ -54,12 +51,16 @@
 <c:set var="performer"              value="${value.Performer}" />
 
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet)}" />
-<c:set var="showDate"               value="${not empty date}" />
 <c:set var="showType"               value="${type.isSet}" />
 <c:set var="showPerformer"          value="${performerOption ne 'none'}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
-<c:set var="ade"                    value="${empty cms.detailContentId or (not empty date) and (value.Dates.toDateSeries.isExtractedDate or value.Dates.toDateSeries.isSingleDate)}" />
+<c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />
+<c:set var="date">
+    <mercury:instancedate date="${seriesInfo.instanceInfo.get(param.instancedate)}" format="${dateFormat}" />
+</c:set>
+<c:set var="showDate"               value="${not empty date}" />
+<c:set var="ade"                    value="${empty cms.detailContentId or (not empty date) and (seriesInfo.isExtractedDate or seriesInfo.isSingleDate)}" />
 
 <mercury:nl />
 <div class="detail-page type-event layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
@@ -69,6 +70,7 @@
     content="${content}"
     bookingOption="${bookingOption}"
     imageRatio="${imageRatio}"
+    test="${seriesInfo.isExtractedDate or seriesInfo.isSingleDate}"
     effect="${effect}">
 
     <mercury:piece

@@ -715,6 +715,18 @@
         }
     }
 
+    table.webform-input {
+        background-color: $body-bg;
+
+        td.label {
+            white-space: nowrap;
+        }
+
+        td.value {
+            width: 100%;
+        }
+    }
+
     @include media-breakpoint-up(md) {
         .formbtn-row {
             display: flex;

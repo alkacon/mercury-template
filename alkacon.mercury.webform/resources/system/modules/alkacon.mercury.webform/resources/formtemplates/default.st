@@ -397,11 +397,11 @@ $endif$
 checkpage(formuri,formconfig,checktext,captchafield,captchaerror,captchaimagelink,checkfields,hiddenfields,checkbutton,correctbutton) ::= <<
 $! ###### CHECK page of the form ###### !$
 $checktext$
-<table class="table table-responsive table-bordered table-striped">
+<table class="webform-input table table-responsive table-bordered table-striped">
 $checkfields:{
     <tr>
-        <td>$it.label$</td>
-        <td>$it.value$</td>
+        <td class="label">$it.label$</td>
+        <td class="value">$it.value$</td>
     </tr>
 }$
 </table>
@@ -462,11 +462,11 @@ $endif$
 confirmationpage(formconfig,confirmtext,confirmfields) ::= <<
 $! ###### CONFIRMATION page of the form ###### !$
 $confirmtext$
-<table class="table table-responsive table-bordered table-striped">
+<table class="webform-input table table-responsive table-bordered table-striped">
 $confirmfields:{
     <tr>
-        <td>$it.label$</td>
-        <td>$it.value$</td>
+        <td class="label">$it.label$</td>
+        <td class="value">$it.value$</td>
     </tr>
 }$
 </table>

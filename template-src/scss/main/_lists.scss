@@ -1002,6 +1002,16 @@ aside .list-content,
         margin-bottom: $default-margin;
         margin-left: $default-margin-small;
 
+        &.btn.placeholder {
+            // make button already occypy space without displaying anything
+            background-color: transparent;
+            &::before,
+            &::after {
+                content: "";
+                background-color: transparent;
+            }
+        }
+
         span {
             margin-right: $default-margin-verysmall;
         }

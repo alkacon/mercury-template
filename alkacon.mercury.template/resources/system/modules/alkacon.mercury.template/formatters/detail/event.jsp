@@ -69,9 +69,7 @@
 <mercury:event-booking
     content="${content}"
     bookingOption="${bookingOption}"
-    imageRatio="${imageRatio}"
-    test="${seriesInfo.isExtractedDate or seriesInfo.isSingleDate}"
-    effect="${effect}">
+    test="${seriesInfo.isExtractedDate or seriesInfo.isSingleDate}">
 
     <mercury:piece
         cssWrapper="detail-visual"

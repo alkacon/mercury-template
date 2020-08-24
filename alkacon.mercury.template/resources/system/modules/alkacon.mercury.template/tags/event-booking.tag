@@ -8,15 +8,11 @@
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
     description="The content for which the booking information should be shown." %>
 
-<%@ attribute name="imageRatio" type="java.lang.String" required="true"
-    description="Can be used to scale the image in a specific ratio,
-    Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
-
-<%@ attribute name="effect" type="java.lang.String" required="true"
-    description="'class' atttributes to add to the preview for effects." %>
-
 <%@ attribute name="bookingOption" type="java.lang.String" required="true"
     description="The selected booking option." %>
+
+<%@ attribute name="formatter" type="java.lang.String" required="false"
+    description="Link to the formatter to use for the overview display." %>
 
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="Can be used to defer the decision to actually create the booking information markup around the body to the calling element.
@@ -34,6 +30,8 @@
 
 
 <c:set var="generateBoookingInfo" value="${empty test or test}" />
+<c:set var="formatter" value="${not empty formatter ? formatter : '/system/modules/alkacon.mercury.template/formatters/display/event-compact.xml'}" />
+
 
 <c:if test="${generateBoookingInfo}">
     <c:set var="hasBookingForm" value="${content.value.Booking.value.Webform.isSet}" />
@@ -48,15 +46,13 @@
     <%-- ###### Booking form actions, display short version of detail content only ###### --%>
         <cms:simpledisplay
             value="${content.id}"
-            formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/display/event-elaborate.xml:514d402e-bd6f-4a32-90bc-bb3a84db9931)"
+            formatter="${formatter}"
             editable="false">
+                <cms:param name="cssWrapper" value="box" />
                 <cms:param name="dateFormat" value="${dateFormat}" />
-                <cms:param name="imageRatio" value="${imageRatio}" />
-                <cms:param name="effect" value="${effect}" />
-                <cms:param name="hideLink" value="true" />
                 <cms:param name="titleOption" value="showIntro" />
-                <cms:param name="pieceLayout" value="4" />
-                <cms:param name="bookingOption" value="hide" />
+                <cms:param name="buttonText" value="none" />
+                <cms:param name="bookingOption" value="none" />
         </cms:simpledisplay>
     </c:if>
 </c:if>

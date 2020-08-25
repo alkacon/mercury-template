@@ -20,7 +20,8 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="bookingOption"          value="${setting.bookingOption.toString}" />
+<c:set var="bookingOption"          value="${setting.bookingOption.useDefault('none').toString}" />
+<c:set var="showBtnOnlyForBooking"  value="${setting.showButtonOnlyForBooking.toBoolean}" />
 <c:set var="instancedate"           value="${param.instancedate}" />
 <c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />
 <c:set var="date"                   value="${seriesInfo.instanceInfo.get(instancedate)}" />
@@ -36,16 +37,6 @@
     </c:choose>
 </c:if>
 
-<%-- Show the booking status if the event is bookable --%>
-<c:if test="${(seriesInfo.isSingleDate or seriesInfo.isExtractedDate) and (bookingOption ne 'none')}">
-    <c:set var="bookingMarkup">
-        <mercury:webform-booking-status
-            bookingContent="${content}"
-            style="${bookingOption}"
-        />
-    </c:set>
-</c:if>
-
 <c:if test="${setShowCalendar}">
     <c:set var="groupId">event-<fmt:formatDate value='${date.start}' pattern='d-MM-yyyy' type='date' /></c:set>
     <c:choose>
@@ -55,6 +46,33 @@
         <c:otherwise>
             <c:set var="setRatio" value="${setRatio eq 'none' ? '4-3' : setRatio}" />
         </c:otherwise>
+    </c:choose>
+</c:if>
+
+<%-- Show the booking status if the event is bookable --%>
+<c:if test="${(seriesInfo.isSingleDate or seriesInfo.isExtractedDate) and ((bookingOption ne 'none') or showBtnOnlyForBooking)}">
+    <c:set var="bookingMarkup">
+        <mercury:webform-booking-status
+            bookingContent="${content}"
+            style="${bookingOption}"
+        />
+    </c:set>
+    <c:set var="isBookable" value="${not empty bookingMarkup}" />
+    <c:if test="${bookingOption eq 'none'}">
+        <c:set var="bookingMarkup" value="" />
+    </c:if>
+</c:if>
+
+<c:if test="${showBtnOnlyForBooking}">
+    <c:choose>
+        <c:when test="${not isBookable}">
+            <c:set var="setButtonText" value="none" />
+        </c:when>
+        <c:when test="${empty setButtonText}">
+            <c:set var="setButtonText">
+                <fmt:message key="msg.page.bookingLink" />
+            </c:set>
+        </c:when>
     </c:choose>
 </c:if>
 

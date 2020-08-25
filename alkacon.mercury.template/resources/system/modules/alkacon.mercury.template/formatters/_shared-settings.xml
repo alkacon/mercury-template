@@ -82,6 +82,14 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showButtonOnlyForBooking.default]]></IncludeName>
+      <PropertyName><![CDATA[showButtonOnlyForBooking]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showButtonOnlyForBooking)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showButtonOnlyForBooking.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
       <PropertyName><![CDATA[dateFormat]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.dateFormat)]]></DisplayName>

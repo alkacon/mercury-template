@@ -39,6 +39,7 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
+      <Default><![CDATA[simple]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.detail]]></IncludeName>

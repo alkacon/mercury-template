@@ -77,15 +77,6 @@
     .list-link {
         margin-top: $default-margin;
     }
-
-
-    .list-badge {
-        // badges for elements in lists, used e.g. by event to mark if an event is bookable
-        margin-left: 10px;
-        font-size: 0.7em;
-        padding: 3px 6px;
-        bottom: 2px;
-    }
 }
 
 // Teasers - applies for teasers in lists as well as teasers placed directly on a page
@@ -152,6 +143,14 @@
                 text-decoration: none;
             }
         }
+    }
+
+    .list-badge {
+        // badges for elements in lists, used e.g. by event to mark if an event is bookable
+        margin-left: 10px;
+        font-size: 0.7em;
+        padding: 3px 6px;
+        bottom: 2px;
     }
 }
 

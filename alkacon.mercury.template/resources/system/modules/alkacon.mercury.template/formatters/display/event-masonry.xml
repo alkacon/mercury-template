@@ -74,6 +74,9 @@
       <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showButtonOnlyForBooking.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
     </Setting>
     <Setting>

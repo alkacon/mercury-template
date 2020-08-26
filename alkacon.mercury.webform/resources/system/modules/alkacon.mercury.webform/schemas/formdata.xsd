@@ -74,8 +74,8 @@
                 </Setting>
                 <Setting>
                     <PropertyName>DeletionDate</PropertyName>
-                    <DisplayName><![CDATA[%(key.msg,label.form.WebFormDataSet.DeletionDate)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg,label.form.WebFormDataSet.DeletionDate.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.DeletionDate)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.DeletionDate.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

@@ -81,8 +81,8 @@
                 </Setting>
                 <Setting>
                     <PropertyName>KeepDays</PropertyName>
-                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.KeepDays)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.KeepDays.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.form.WebFormDatabaseConfiguration.KeepDays)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.form.WebFormDatabaseConfiguration.KeepDays.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

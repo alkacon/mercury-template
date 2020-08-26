@@ -58,6 +58,8 @@ label.WebForm.Tab.Mail.Description=<div style\="background-color\: \#ffffcc; col
 label.WebForm.Tab.SubFieldConfig=Dependent fields
 label.WebForm.Tab.SubFieldConfig.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">With dependent fields it is possible to define fields which are shown if an input field (usually a select box or radio buttons) has a specific value.</div>
 mail.waitlist.info=Please note\: The participant is on the waitlist.
+msg.label.form.WebFormDataSet.DeletionDate=Deletion date
+msg.label.form.WebFormDataSet.DeletionDate.help=The date on which this resource should be deleted.  
 msg.error.form.invalidnumber.0.9999=Please choose a number between 1 and 9999.
 msg.error.form.notempty=A value has to be entered in this field.
 msg.label.form.CaptchaPreset.BackgroundColor=Background Color
@@ -225,9 +227,6 @@ msg.label.form.WebFormDatabaseConfiguration.ProjectGroup=Group
 msg.label.form.WebFormDatabaseConfiguration.ProjectGroup.help=Group of users that manages the submitted data. Only members of that group can see the folder with the submitted data.
 msg.label.form.WebFormDatabaseConfiguration.UserForGuest=User
 msg.label.form.WebFormDatabaseConfiguration.UserForGuest.help=If the guest user submits the form, the user given here is used to write the contents for the form data.
-msg.label.form.WebFormDatabaseConfiguration.KeepDays=Days to keep registrations after event
-msg.label.form.WebFormDatabaseConfiguration.KeepDays.help=The number of days to keep registrations after the end of the event.
-
 msg.label.form.WebFormDataSet.Cancelled=Cancelled
 msg.label.form.WebFormDataSet.ConfirmationMailSent=Confirmation email sent
 msg.label.form.WebFormDataSet.Data=Field data
@@ -236,9 +235,6 @@ msg.label.form.WebFormDataSet.RegistrationMailSent=Registration mail sent
 msg.label.form.WebFormDataSet.TitleMapping=Title
 msg.label.form.WebFormDataSet.TitleMapping.help=Title property of the dataset, should contain macros "%(Field name)" to map submitted data.
 msg.label.form.WebFormDataSet.WaitlistNotification=Waitlist notification
-msg,label.form.WebFormDataSet.DeletionDate=Deletion date
-msg,label.form.WebFormDataSet.DeletionDate.help=The date on which this resource should be deleted.  
-
 msg.label.form.WebFormInputField.FieldDefault=Default value
 msg.label.form.WebFormInputField.FieldDefault.help=The initial default value of the input field or the list of shown options for checkboxes, radio buttons and select boxes.
 msg.label.form.WebFormInputField.FieldErrorMessage=Error Message

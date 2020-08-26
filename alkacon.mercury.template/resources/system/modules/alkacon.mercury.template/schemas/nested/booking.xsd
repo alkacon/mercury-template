@@ -73,6 +73,11 @@
                     <Widget>string</Widget>
                     <Search>false</Search>
                 </Setting>
+				<Setting>
+					<PropertyName>KeepDays</PropertyName>
+					<DisplayName>%(key.label.form.WebFormDatabaseConfiguration.KeepDays)</DisplayName>
+					<Description>%(key.label.form.WebFormDatabaseConfiguration.KeepDays.help)</Description>
+				</Setting>
             </FieldSettings>
         </xsd:appinfo>
     </xsd:annotation>

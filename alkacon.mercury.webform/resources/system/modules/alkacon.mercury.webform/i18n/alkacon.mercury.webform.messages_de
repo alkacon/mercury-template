@@ -58,6 +58,8 @@ label.WebForm.Tab.Mail.Description=<div style\="background-color\: \#ffffcc; col
 label.WebForm.Tab.SubFieldConfig=Abhängige Felder
 label.WebForm.Tab.SubFieldConfig.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Mit abhängigen Feldern können Felder definiert werden, die abhängig vom Wert eines Eingabefelds, meist eine Selectbox oder Radiobuttons, angezeigt werden.</div>
 mail.waitlist.info=Bitte beachten\: Der Teilnehmer hat sich in die Warteliste eingetragen.
+msg.label.form.WebFormDataSet.DeletionDate=Löschdatum
+msg.label.form.WebFormDataSet.DeletionDate.help=Das Datum, an dem diese Datei gelöscht werden sollte. 
 msg.error.form.invalidnumber.0.9999=Bitte wählen Sie eine Zahl zwischen 1 und 9999.
 msg.error.form.notempty=In dieses Feld muss ein Wert eingegeben werden.
 msg.label.form.CaptchaPreset.BackgroundColor=Hintergrundfarbe
@@ -225,9 +227,6 @@ msg.label.form.WebFormDatabaseConfiguration.ProjectGroup=Gruppe
 msg.label.form.WebFormDatabaseConfiguration.ProjectGroup.help=Gruppe der Nutzer, die Formulardaten verwalten dürfen. Nur Mitglieder dieser Gruppe sehen den Ordner mit den Formulardaten.
 msg.label.form.WebFormDatabaseConfiguration.UserForGuest=Nutzer
 msg.label.form.WebFormDatabaseConfiguration.UserForGuest.help=Füllt der Gast-Nutzer das Formular aus, wird der hier angegebene Nutzer zum speichern der Formulardaten verwendet.
-msg.label.form.WebFormDatabaseConfiguration.KeepDays=Aufbewahrungsdauer für Registrierungen (Tage)
-msg.label.form.WebFormDatabaseConfiguration.KeepDays.help=Anzahl von Tagen nach Ende der Veranstaltung, für die die Registrierungen aufbewahrt werden sollen.
-
 msg.label.form.WebFormDataSet.Cancelled=Storniert
 msg.label.form.WebFormDataSet.ConfirmationMailSent=Bestätigungsmail versendet
 msg.label.form.WebFormDataSet.Data=Felddaten
@@ -236,8 +235,6 @@ msg.label.form.WebFormDataSet.RegistrationMailSent=Registrierungsmail versendet
 msg.label.form.WebFormDataSet.TitleMapping=Titel
 msg.label.form.WebFormDataSet.TitleMapping.help=Titel-Eigenschaft der Datensätze. Der Werte sollte Makros der Form "%(Schlüssel eines Dateneintrags)" enthalten, um Formulardaten in der Titel-Eigenschaft auszugeben.
 msg.label.form.WebFormDataSet.WaitlistNotification=Wartelisten-Benachrichtigung
-msg,label.form.WebFormDataSet.DeletionDate=Löschdatum
-msg,label.form.WebFormDataSet.DeletionDate.help=Das Datum, an dem diese Datei gelöscht werden sollte. 
 msg.label.form.WebFormInputField.FieldDefault=Standardwert
 msg.label.form.WebFormInputField.FieldDefault.help=Der voreingestellte Standardwert des Felds oder die Liste angezeigter Optionen für Checkboxen, Radiobuttons und Selectboxen.
 msg.label.form.WebFormInputField.FieldErrorMessage=Fehlermeldung

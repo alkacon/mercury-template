@@ -41,9 +41,11 @@ import org.opencms.xml.types.I_CmsXmlContentValue;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.logging.Log;
@@ -62,78 +64,121 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
     /**  Name for the 'folder' parameter (if set, test resources from this folder, else use the root folder). */
     public static final String PARAM_ROOT_FOLDER = "folder";
 
+    /** Key for the types parameter. */
+    public static final String PARAM_TYPES = "types";
+
     /** The resource type to read. */
-    public static final String RESOURCE_TYPE = CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA;
+    public static final String DEFAULT_TYPES = CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA + "," + "a-formdata";
 
     /**
      * @see org.opencms.scheduler.I_CmsScheduledJob#launch(org.opencms.file.CmsObject, java.util.Map)
      */
     public String launch(CmsObject cms, Map<String, String> parameters) throws Exception {
 
-        boolean testOnly = Boolean.parseBoolean(parameters.get(PARAM_TEST_ONLY));
+        String typesStr = parameters.get(PARAM_TYPES);
+        if (typesStr == null) {
+            typesStr = DEFAULT_TYPES;
+        }
         String randomKey = RandomStringUtils.randomAlphanumeric(6);
-        String p = "[" + randomKey + "][testOnly=" + testOnly + "] ";
+        String p = "[" + randomKey + "] ";
         LOG.info(p + "Starting CmsDeleteFormDataJob");
         String folder = parameters.get(PARAM_ROOT_FOLDER);
         if (folder == null) {
             folder = "/";
         }
-        List<CmsResource> resources = cms.readResources(
-            folder,
-            CmsResourceFilter.IGNORE_EXPIRATION.addRequireType(
-                OpenCms.getResourceManager().getResourceType(RESOURCE_TYPE)));
-        LOG.info(p + "Found " + resources.size() + " form data resources.");
         List<CmsResource> resourcesToDelete = new ArrayList<>();
-        for (CmsResource resource : resources) {
-            LOG.debug(p + "Processing " + resource.getRootPath());
+        for (String type : typesStr.split(",")) {
+            if (!OpenCms.getResourceManager().hasResourceType(type)) {
+                LOG.info(p + "skipping resource type " + type + " because it doesn't exist.");
+                continue;
+            }
             try {
-                CmsXmlContent content = CmsXmlContentFactory.unmarshal(cms, cms.readFile(resource));
-                long deletionDate = Long.MAX_VALUE;
-                for (Locale locale : content.getLocales()) {
-                    if (content.hasValue(CmsFormDataBean.PATH_DELETION_DATE, locale)) {
-                        I_CmsXmlContentValue deletionDateVal = content.getValue(
-                            CmsFormDataBean.PATH_DELETION_DATE,
-                            locale);
-                        deletionDate = Long.parseLong(deletionDateVal.getStringValue(cms));
-                        LOG.info(p + " Deletion date: " + new Date(deletionDate));
-                        break;
+                List<CmsResource> resources = cms.readResources(
+                    folder,
+                    CmsResourceFilter.IGNORE_EXPIRATION.addRequireType(
+                        OpenCms.getResourceManager().getResourceType(type)));
+                LOG.info(p + "Found " + resources.size() + " form data resources for type " + type);
+
+                for (CmsResource resource : resources) {
+                    LOG.debug(p + "Processing " + resource.getRootPath());
+                    try {
+                        CmsXmlContent content = CmsXmlContentFactory.unmarshal(cms, cms.readFile(resource));
+                        long deletionDate = Long.MAX_VALUE;
+                        for (Locale locale : content.getLocales()) {
+                            if (content.hasValue(CmsFormDataBean.PATH_DELETION_DATE, locale)) {
+                                I_CmsXmlContentValue deletionDateVal = content.getValue(
+                                    CmsFormDataBean.PATH_DELETION_DATE,
+                                    locale);
+                                deletionDate = Long.parseLong(deletionDateVal.getStringValue(cms));
+                                LOG.info(p + " Deletion date: " + new Date(deletionDate));
+                                break;
+                            }
+                        }
+                        if (deletionDate < System.currentTimeMillis()) {
+                            resourcesToDelete.add(resource);
+                            LOG.info(p + "Adding resource " + resource.getRootPath() + " to deletion list.");
+                        }
+                    } catch (Exception e) {
+                        LOG.error(p + e.getLocalizedMessage(), e);
                     }
-                }
-                if (deletionDate < System.currentTimeMillis()) {
-                    resourcesToDelete.add(resource);
-                    LOG.info(p + "Adding resource " + resource.getRootPath() + " to deletion list.");
                 }
             } catch (Exception e) {
                 LOG.error(p + e.getLocalizedMessage(), e);
             }
         }
-        LOG.info(p + " deletion list has " + resourcesToDelete.size() + " resources.");
-        if (testOnly) {
-            LOG.info(p + " exiting becaue we are in test-only mode");
-            return "";
+        if (resourcesToDelete.size() == 0) {
+            LOG.info(p + "nothing to delete, exiting...");
         }
         try {
+            CmsObject cmsClone = OpenCms.initCmsObject(cms);
             CmsProject tempProject = cms.createProject(
-                "Form data delete project " + randomKey,
-                "Form data delete project",
+                "Form data deletion project " + randomKey,
+                "Form data deletion project",
                 OpenCms.getDefaultUsers().getGroupAdministrators(),
                 OpenCms.getDefaultUsers().getGroupAdministrators(),
                 CmsProject.PROJECT_TYPE_TEMPORARY);
-            CmsObject cmsClone = OpenCms.initCmsObject(cms);
             cmsClone.getRequestContext().setCurrentProject(tempProject);
             cmsClone.copyResourceToProject("/");
+            Set<String> parentFolders = new HashSet<>();
+            boolean hasChanges = false;
             for (CmsResource resource : resourcesToDelete) {
                 try {
-                    LOG.info(p + " deleting " + resource.getRootPath());
+                    LOG.info(p + "deleting " + resource.getRootPath());
+                    parentFolders.add(CmsResource.getParentFolder(resource.getRootPath()));
                     CmsLockUtil.ensureLock(cmsClone, resource);
                     cmsClone.deleteResource(resource, CmsResource.DELETE_PRESERVE_SIBLINGS);
+                    hasChanges = true;
                 } catch (Exception e) {
                     // Errors when deleting individual resources shouldn't keep other resources from being deleted
                     LOG.error(p + e.getLocalizedMessage(), e);
                 }
             }
-            LOG.info(p + " publishing deleted files");
-            OpenCms.getPublishManager().publishProject(cmsClone);
+            for (String parentFolder : parentFolders) {
+                try {
+                    List<CmsResource> filesInFolder = cms.readResources(
+                        parentFolder,
+                        CmsResourceFilter.IGNORE_EXPIRATION,
+                        false);
+                    // If all files in folder have the state 'deleted'
+                    if (filesInFolder.size() == 0) {
+                        LOG.info(p + "deleting empty folder " + parentFolder);
+                        CmsResource folderRes = cms.readResource(parentFolder, CmsResourceFilter.IGNORE_EXPIRATION);
+                        try {
+                            CmsLockUtil.ensureLock(cmsClone, folderRes);
+                            cmsClone.deleteResource(folderRes, CmsResource.DELETE_PRESERVE_SIBLINGS);
+                            hasChanges = true;
+                        } catch (Exception e) {
+                            LOG.error(p + e.getLocalizedMessage(), e);
+                        }
+                    }
+                } catch (Exception e) {
+                    LOG.error(p + e.getLocalizedMessage(), e);
+                }
+            }
+            if (hasChanges) {
+                LOG.info(p + "publishing changes...");
+                OpenCms.getPublishManager().publishProject(cmsClone);
+            }
         } catch (Exception e) {
             LOG.error(p + e.getLocalizedMessage(), e);
         }

@@ -8014,6 +8014,10 @@
 					<value><![CDATA[uri;locale;params]]></value>
 				</property>
 				<property>
+					<name>dnd.newsletter.pagemodel</name>
+					<value><![CDATA[/system/modules/alkacon.mercury.newsletter/pagemodels/default.html]]></value>
+				</property>
+				<property>
 					<name>template</name>
 					<value><![CDATA[/system/modules/alkacon.mercury.theme/css/style-editor.css]]></value>
 				</property>

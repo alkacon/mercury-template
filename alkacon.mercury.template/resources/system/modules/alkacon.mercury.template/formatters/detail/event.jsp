@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
@@ -15,6 +16,9 @@
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">
+
+<fmt:setLocale value="${cms.locale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
 
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
@@ -104,40 +108,6 @@
         <jsp:attribute name="text">
             <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
 
-            <c:if test="${showLocation}">
-                <c:set var="location">
-                    <div class="locdata"><%----%>
-                    <c:if test="${not empty locData}">
-                        <c:if test="${not empty locData.name}">
-                            <div class="locname">${locData.name}</div><%----%>
-                        </c:if>
-                        <div class="address">
-                            <div class="street"> ${locData.streetAddress}</div><%----%>
-                            <c:if test="${not empty locData.extendedAddress}">
-                                <div class="extended"> ${locData.extendedAddress}</div><%----%>
-                            </c:if>
-                            <div class="city">
-                                <span class="code"> ${locData.postalCode}</span><%----%>
-                                <span class="locality"> ${locData.locality}</span><%----%>
-                            </div>
-                            <div class="region">
-                                <c:if test="${not empty locData.region}">
-                                    <span class="region"> ${locData.region}</span><%----%>
-                                </c:if>
-                                <c:if test="${not empty locData.country}">
-                                    <span class="country"> ${locData.country}</span><%----%>
-                                </c:if>
-                            </div><%----%>
-                        </div><%----%>
-                    </c:if>
-                    <c:if test="${locationNote.isSet}">
-                        <div class="adressInfo" ${ade ? loocationNote.rdfaAttr : ''}>${locationNote}</div><%----%>
-                    </c:if>
-                    </div><%----%>
-                    <mercury:nl />
-                </c:set>
-            </c:if>
-
             <c:if test="${showDate or showLocation or showType or showPerformer}">
                 <c:if test="${showPerformer}">
                     <c:choose>
@@ -157,11 +127,59 @@
                 </c:if>
                 <div class="visual-info ${not showLocation ? 'right' : ''}"><%----%>
                     <div class="infogroup">
-                        <c:if test="${showDate}"><div class="info date"><div>${datePrefix}${date}</div></div></c:if>
-                        <c:if test="${showType}"><div class="info type"><div>${type}</div></div></c:if>
-                        <c:if test="${showPerformer}"><div class="info person"><div ${value.Performer.isSet ? value.Performer.rdfaAttr : ''}>${performer}</div></div></c:if>
+                        <c:if test="${showDate}">
+                            <div class="info date"><%----%>
+                                <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>
+                                <div>${datePrefix}${date}</div><%----%>
+                            </div><%----%>
+                        </c:if>
+                        <c:if test="${showType}">
+                            <div class="info type"><%----%>
+                                <span class="sr-only"><fmt:message key="msg.page.sr.type" /></span><%----%>
+                                <div>${type}</div><%----%>
+                            </div><%----%>
+                        </c:if>
+                        <c:if test="${showPerformer}">
+                            <div class="info person"><%----%>
+                                <span class="sr-only"><fmt:message key="msg.page.sr.by" /></span><%----%>
+                                <div ${value.Performer.isSet ? value.Performer.rdfaAttr : ''}>${performer}</div><%----%>
+                            </div><%----%>
+                        </c:if>
                     </div>
-                    <c:if test="${showLocation}"><div class="info location">${location}</div></c:if>
+                    <c:if test="${showLocation}">
+                        <div class="info location"><%----%>
+                            <span class="sr-only"><fmt:message key="msg.page.sr.location" /></span><%----%>
+                            <div class="locdata"><%----%>
+                            <c:if test="${not empty locData}">
+                                <c:if test="${not empty locData.name}">
+                                    <div class="locname">${locData.name}</div><%----%>
+                                </c:if>
+                                <div class="address">
+                                    <div class="street"> ${locData.streetAddress}</div><%----%>
+                                    <c:if test="${not empty locData.extendedAddress}">
+                                        <div class="extended"> ${locData.extendedAddress}</div><%----%>
+                                    </c:if>
+                                    <div class="city">
+                                        <span class="code"> ${locData.postalCode}</span><%----%>
+                                        <span class="locality"> ${locData.locality}</span><%----%>
+                                    </div>
+                                    <div class="region">
+                                        <c:if test="${not empty locData.region}">
+                                            <span class="region"> ${locData.region}</span><%----%>
+                                        </c:if>
+                                        <c:if test="${not empty locData.country}">
+                                            <span class="country"> ${locData.country}</span><%----%>
+                                        </c:if>
+                                    </div><%----%>
+                                </div><%----%>
+                            </c:if>
+                            <c:if test="${locationNote.isSet}">
+                                <div class="adressInfo" ${ade ? loocationNote.rdfaAttr : ''}>${locationNote}</div><%----%>
+                            </c:if>
+                            </div><%----%>
+                            <mercury:nl />
+                        </div><%----%>
+                    </c:if>
                 </div><%----%>
             </c:if>
 
@@ -208,6 +226,7 @@
 </mercury:location-vars>
 </mercury:paragraph-split>
 
+</cms:bundle>
 </cms:formatter>
 
 </mercury:init-messages>

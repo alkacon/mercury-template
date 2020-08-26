@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
@@ -15,6 +16,9 @@
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">
+
+<fmt:setLocale value="${cms.locale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
 
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
@@ -91,8 +95,18 @@
 
         <c:if test="${showDate or showAuthor}">
             <div class="visual-info ${not showAuthor ? 'right' : ''}"><%----%>
-                <c:if test="${showDate}"><div class="info date"><div>${datePrefix}${date}</div></div></c:if>
-                <c:if test="${showAuthor}"><div class="info person"><div ${author.rdfaAttr}>${author}</div></div></c:if>
+                <c:if test="${showDate}">
+                    <div class="info date"><%----%>
+                        <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>
+                        <div>${datePrefix}${date}</div><%----%>
+                    </div><%----%>
+                </c:if>
+                <c:if test="${showAuthor}">
+                    <div class="info person"><%----%>
+                        <span class="sr-only"><fmt:message key="msg.page.sr.by" /></span><%----%>
+                        <div ${author.rdfaAttr}>${author}</div><%----%>
+                    </div><%----%>
+                </c:if>
             </div><%----%>
         </c:if>
 
@@ -133,6 +147,7 @@
 
 </mercury:paragraph-split>
 
+</cms:bundle>
 </cms:formatter>
 
 </mercury:init-messages>

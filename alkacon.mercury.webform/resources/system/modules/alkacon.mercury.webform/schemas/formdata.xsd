@@ -19,6 +19,7 @@
             <xsd:element name="WaitlistNotification" type="OpenCmsBoolean" />
             <xsd:element name="Cancelled" type="OpenCmsBoolean" />
             <xsd:element name="TitleMapping" type="OpenCmsString" />
+            <xsd:element name="DeletionDate" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Data" type="OpenCmsKeyValuePair" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
@@ -70,6 +71,11 @@
                 <Setting>
                     <PropertyName>Data</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.Data)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>DeletionDate</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg,label.form.WebFormDataSet.DeletionDate)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg,label.form.WebFormDataSet.DeletionDate.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

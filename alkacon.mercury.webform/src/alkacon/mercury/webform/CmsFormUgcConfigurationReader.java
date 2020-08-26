@@ -23,6 +23,8 @@ import org.opencms.file.CmsFile;
 import org.opencms.file.CmsGroup;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsProject;
+import org.opencms.file.CmsProperty;
+import org.opencms.file.CmsPropertyDefinition;
 import org.opencms.file.CmsResource;
 import org.opencms.file.CmsResourceFilter;
 import org.opencms.file.CmsUser;
@@ -42,6 +44,7 @@ import org.opencms.util.CmsUUID;
 import org.opencms.util.CmsVfsUtil;
 import org.opencms.xml.I_CmsXmlDocument;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -57,8 +60,8 @@ import com.google.common.base.Optional;
 /** UGC configuration reader for the webform content. */
 public class CmsFormUgcConfigurationReader {
 
-    /** The log object for this class. */
-    private static final Log LOG = CmsLog.getLog(CmsFormUgcConfigurationReader.class);
+    /** XML content value name. */
+    public static final String N_CONTENT_PATH = "ContentPath";
 
     /** XML content value name. */
     public static final String N_DB_CONFIG = "DBConfig";
@@ -73,34 +76,37 @@ public class CmsFormUgcConfigurationReader {
     public static final String N_NUM_WAITLIST_DATASETS = "MaxWaitlistDatasets";
 
     /** XML content value name. */
-    public static final String N_USER_FOR_GUEST = "UserForGuest";
-
-    /** XML content value name. */
     public static final String N_PROJECT_GROUP = "ProjectGroup";
 
     /** XML content value name. */
-    public static final String N_CONTENT_PATH = "ContentPath";
+    public static final String N_USER_FOR_GUEST = "UserForGuest";
 
     /** Prefix for the data folder. */
     private static final String DATA_FOLDER_PREFIX = "data_";
 
-    /** XML content value name. */
-    private static final String N_DATASET_TITLE = "DatasetTitle";
-
     /** Special value for the project group. If set, the whole UGC configuration is ignored. */
     private static final String IGNORE_CONFIG_SPECIALCONTENTFOLDER = "none";
 
-    /** The CMS context used by this configuration reader. */
-    private CmsObject m_cms;
+    /** The log object for this class. */
+    private static final Log LOG = CmsLog.getLog(CmsFormUgcConfigurationReader.class);
+
+    /** XML content value name. */
+    private static final String N_DATASET_TITLE = "DatasetTitle";
+
+    /** Node name for the node containing the number of days to keep the form data after the event. */
+    private static final String N_KEEP_DAYS = "KeepDays";
 
     /** The Admin CMS context used by this configuration reader. */
     private CmsObject m_adminCms;
 
+    /** The CMS context used by this configuration reader. */
+    private CmsObject m_cms;
+
     /** The XML content from which the configuration is read. */
     private I_CmsXmlDocument m_content;
 
-    /** The locale to read the content in. */
-    private Locale m_locale;
+    /** The site path to the content folder. */
+    private String m_contentFolderRootPath;
 
     /** The file containing the configuration form. */
     private CmsFile m_file;
@@ -108,8 +114,8 @@ public class CmsFormUgcConfigurationReader {
     /** Parser for form configurations. */
     private CmsFormConfigParser m_formConfigParser;
 
-    /** The site path to the content folder. */
-    private String m_contentFolderRootPath;
+    /** The locale to read the content in. */
+    private Locale m_locale;
 
     /**
      * @param cms
@@ -165,6 +171,17 @@ public class CmsFormUgcConfigurationReader {
             CmsResource contentFolder = getPreparedContentFolder(projectGroup.getName());
             String datasetTitle = m_formConfigParser.getConfigurationValue(pathPrefix + N_DATASET_TITLE, "");
             CmsUUID id = m_content.getFile().getStructureId();
+
+            String keepDaysStr = m_formConfigParser.getResolvedConfigurationValue(pathPrefix + N_KEEP_DAYS, null);
+            Integer keepDays = null;
+            if (keepDaysStr != null) {
+                try {
+                    keepDays = Integer.valueOf(keepDaysStr);
+                } catch (NumberFormatException e) {
+                    LOG.info(e.getLocalizedMessage(), e);
+                }
+            }
+
             CmsFormUgcConfiguration result = new CmsFormUgcConfiguration(
                 id,
                 userForGuest,
@@ -173,7 +190,8 @@ public class CmsFormUgcConfigurationReader {
                 maxRegularDataSets,
                 numOtherDataSets,
                 maxWaitlistDataSets,
-                datasetTitle);
+                datasetTitle,
+                keepDays);
             result.setPath(m_content.getFile().getRootPath());
             return result;
         } else {
@@ -354,6 +372,10 @@ public class CmsFormUgcConfigurationReader {
                     I_CmsPrincipal.PRINCIPAL_GROUP,
                     groupName,
                     "+r+w+v+c+d+i+o");
+                m_adminCms.writePropertyObjects(
+                    contentFolder,
+                    Collections.singletonList(
+                        new CmsProperty(CmsPropertyDefinition.PROPERTY_HISTORY_REMOVE_DELETED, "true", null)));
                 contentFolder = m_adminCms.readResource(contentFolder.getStructureId());
             }
             if (!contentFolder.getState().isUnchanged()) {

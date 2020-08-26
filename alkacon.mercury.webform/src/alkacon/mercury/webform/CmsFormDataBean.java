@@ -31,6 +31,9 @@ import java.util.Map;
 /** Bean to provide easy access to XML contents storing submitted form data. */
 public class CmsFormDataBean {
 
+    /** xpath for the form data content value containing the deletion date. */
+    public static final String PATH_DELETION_DATE = "DeletionDate";
+
     /** The XPath to store the form configuration in. */
     public static final String PATH_FORM = "Form[1]";
 

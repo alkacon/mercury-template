@@ -108,6 +108,14 @@
     <c:if test="${formBookingXml.value.Type.isSet}">
         ${form.adjustConfigValue("macro:eventtype", formBookingXml.value.Type.toString)}
     </c:if>
+     <c:if test="${booking.value.KeepDays.isSet}">
+        ${form.adjustConfigValue("DBConfig/KeepDays", booking.value.KeepDays.toString)}
+    </c:if>
+    <c:if test="${formBookingXml.value.Dates.isSet}">
+    	<c:set var="dateSeries" value="${formBookingXml.value.Dates.toDateSeries}" />
+    	${form.adjustConfigValue("macro:eventtime", dateSeries.last.formatShort)}
+    	${form.adjustConfigValue("EndTime", dateSeries.last.end.time)}
+    </c:if>
 </c:if>
 
 <%-- ###### Set title, data path and ID (if required) ###### --%>

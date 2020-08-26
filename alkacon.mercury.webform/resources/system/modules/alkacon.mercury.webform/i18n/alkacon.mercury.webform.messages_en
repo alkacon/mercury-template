@@ -225,6 +225,9 @@ msg.label.form.WebFormDatabaseConfiguration.ProjectGroup=Group
 msg.label.form.WebFormDatabaseConfiguration.ProjectGroup.help=Group of users that manages the submitted data. Only members of that group can see the folder with the submitted data.
 msg.label.form.WebFormDatabaseConfiguration.UserForGuest=User
 msg.label.form.WebFormDatabaseConfiguration.UserForGuest.help=If the guest user submits the form, the user given here is used to write the contents for the form data.
+msg.label.form.WebFormDatabaseConfiguration.KeepDays=Days to keep registrations after event
+msg.label.form.WebFormDatabaseConfiguration.KeepDays.help=The number of days to keep registrations after the end of the event.
+
 msg.label.form.WebFormDataSet.Cancelled=Cancelled
 msg.label.form.WebFormDataSet.ConfirmationMailSent=Confirmation email sent
 msg.label.form.WebFormDataSet.Data=Field data
@@ -233,6 +236,9 @@ msg.label.form.WebFormDataSet.RegistrationMailSent=Registration mail sent
 msg.label.form.WebFormDataSet.TitleMapping=Title
 msg.label.form.WebFormDataSet.TitleMapping.help=Title property of the dataset, should contain macros "%(Field name)" to map submitted data.
 msg.label.form.WebFormDataSet.WaitlistNotification=Waitlist notification
+msg,label.form.WebFormDataSet.DeletionDate=Deletion date
+msg,label.form.WebFormDataSet.DeletionDate.help=The date on which this resource should be deleted.  
+
 msg.label.form.WebFormInputField.FieldDefault=Default value
 msg.label.form.WebFormInputField.FieldDefault.help=The initial default value of the input field or the list of shown options for checkboxes, radio buttons and select boxes.
 msg.label.form.WebFormInputField.FieldErrorMessage=Error Message

@@ -25,6 +25,7 @@
            <!-- xsd:element name="QueueWaitTime" type="OpenCmsString" minOccurs="0" maxOccurs="1" / -->
            <!-- xsd:element name="QueueMaxLength" type="OpenCmsString" minOccurs="0" maxOccurs="1" / -->
            <xsd:element name="DatasetTitle" type="OpenCmsString" />
+           <xsd:element name="KeepDays" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -77,6 +78,11 @@
                     <PropertyName>DatasetTitle</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.DatasetTitle)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.DatasetTitle.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>KeepDays</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.KeepDays)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.KeepDays.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

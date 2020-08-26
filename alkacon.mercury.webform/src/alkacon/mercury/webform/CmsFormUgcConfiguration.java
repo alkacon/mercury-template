@@ -35,20 +35,23 @@ import com.google.common.base.Optional;
  */
 public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
 
-    /** The name pattern to use for form data contents. */
-    public static final String DEFAULT_NAME_PATTERN = "formdata_%(number).xml";
-
     /** The resource type for db entry XML contents. */
     public static final String CONTENT_TYPE_FORM_DATA = "m-webform-data";
 
-    /** The maximally allowed submissions without waitlist. */
-    private Integer m_maxRegularDataSets;
-    /** The number of submissions added otherwise (i.e., where the submitted data is stored differently). */
-    private int m_numOtherDataSets;
-    /** The maximal number of additional data sets accepted on a waitlist. */
-    private int m_maxWaitlistDataSets;
+    /** The name pattern to use for form data contents. */
+    public static final String DEFAULT_NAME_PATTERN = "formdata_%(number).xml";
+
     /** The title property for datasets which can contain macros for form fields. */
     private String m_datasetTitle;
+    /** Number of days to keep the form data - if null, keep indefinitely. */
+    private Integer m_keepDays;
+    /** The maximally allowed submissions without waitlist. */
+    private Integer m_maxRegularDataSets;
+    /** The maximal number of additional data sets accepted on a waitlist. */
+    private int m_maxWaitlistDataSets;
+
+    /** The number of submissions added otherwise (i.e., where the submitted data is stored differently). */
+    private int m_numOtherDataSets;
 
     /**
      * Creates a new form configuration.
@@ -61,6 +64,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
      * @param numOtherDataSets the number of submissions added otherwise (i.e., where the submitted data is stored differently)
      * @param maxWaitlistDataSets the maximal number of additional data sets accepted on a waitlist.
      * @param datasetTitle the title for XML contents that store form data (possibly with macros for values of form fields).
+     * @param keepDays the number of days to keep the form data after the event (if null, keep indefinitely)
      */
     public CmsFormUgcConfiguration(
         CmsUUID id,
@@ -70,7 +74,8 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         Optional<Integer> maxRegularDataSets,
         Optional<Integer> numOtherDataSets,
         Optional<Integer> maxWaitlistDataSets,
-        String datasetTitle) {
+        String datasetTitle,
+        Integer keepDays) {
 
         super(
             id,
@@ -92,6 +97,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         m_numOtherDataSets = numOtherDataSets.isPresent() ? numOtherDataSets.get().intValue() : 0;
         m_maxWaitlistDataSets = maxWaitlistDataSets.isPresent() ? maxWaitlistDataSets.get().intValue() : 0;
         m_datasetTitle = null == datasetTitle ? "" : datasetTitle;
+        m_keepDays = keepDays;
     }
 
     /**
@@ -132,6 +138,16 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     public String getDatasetTitle() {
 
         return m_datasetTitle;
+    }
+
+    /**
+     * Gets the number of days to keep the form data after the event (if null, keep indefinitely).
+     *
+     * @return the number of days to keep the data
+     */
+    public Integer getKeepDays() {
+
+        return m_keepDays;
     }
 
     /**

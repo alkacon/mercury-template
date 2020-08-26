@@ -79,6 +79,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.TimeUnit;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -105,21 +106,6 @@ import org.antlr.stringtemplate.language.DefaultTemplateLexer;
  */
 public class CmsFormHandler extends CmsJspActionElement {
 
-    /** The module path of the webform module. */
-    static final String MODULE_PATH = CmsWorkplace.VFS_PATH_MODULES + CmsForm.MODULE_NAME + "/";
-
-    /** Path to the keepsession.jsp. */
-    static final String PATH_KEEP_SESSION_JSP = MODULE_PATH + "elements/keepsession.jsp";
-
-    /** Path to the keepsession.js. */
-    static final String PATH_KEEP_SESSION_JS = MODULE_PATH + "resources/js/keepsession.js";
-
-    /** Path to the subfields.js. */
-    static final String PATH_SUBFIELDS_JS = MODULE_PATH + "resources/js/subfields.js";
-
-    /** Path to the captcha.jsp. */
-    static final String PATH_CAPTCHA_JSP = MODULE_PATH + "elements/captcha.jsp";
-
     /** Request parameter value for the form action parameter: correct the input. */
     public static final String ACTION_CONFIRMED = "confirmed";
 
@@ -132,8 +118,14 @@ public class CmsFormHandler extends CmsJspActionElement {
     /** Name of the file item session attribute. */
     public static final String ATTRIBUTE_FILEITEMS = "fileitems";
 
+    /** Configuration key name for the 'end time' of an event. */
+    public static final String CONFIG_END_TIME = "EndTime";
+
     /** Form error: mandatory field not filled out. */
     public static final String ERROR_MANDATORY = "mandatory";
+
+    /** Error: failed to save form data in the XML-content. */
+    public static final String ERROR_STORE_FORMDATA = "storedata";
 
     /** Form error: unique error of input. */
     public static final String ERROR_UNIQUE = "unique";
@@ -141,20 +133,11 @@ public class CmsFormHandler extends CmsJspActionElement {
     /** Form error: validation error of input. */
     public static final String ERROR_VALIDATION = "validation";
 
-    /** Error: failed to save form data in the XML-content. */
-    public static final String ERROR_STORE_FORMDATA = "storedata";
-
-    /** Error that happened when the confirmation mail was tried to send. */
-    private static final String ERROR_CONFIRMATION_SENT = "confirmationsent";
-
-    /** Error that happened when the confirmation mail was tried to send. */
-    private static final String ERROR_REGISTRATION_SENT = "registrationsent";
-
-    /** Macro prefix for field values. */
-    public static final String MACRO_PREFIX_VALUE = "value_";
-
     /** Form info: mandatory upload field filled out already. */
     public static final String INFO_UPLOAD_FIELD_MANDATORY_FILLED_OUT = "uploadfield_mandatory_filled_out";
+
+    /** Macro name for the waitlist information macro that can be used in registration mail text fields. */
+    public static final String MACRO_CONFIRM_WAITLIST_INFO = "confirm.waitlist.info";
 
     /** Macro name for the date macro that can be used in mail text fields. */
     public static final String MACRO_DATE = "date";
@@ -162,14 +145,14 @@ public class CmsFormHandler extends CmsJspActionElement {
     /** Macro name for the form data macro that can be used in mail text fields. */
     public static final String MACRO_FORMDATA = "formdata";
 
+    /** Macro name for the locale macro that can be used in mail text fields. */
+    public static final String MACRO_LOCALE = "locale";
+
     /** Macro name for the waitlist information macro that can be used in registration mail text fields. */
     public static final String MACRO_MAIL_WAITLIST_INFO = "mail.waitlist.info";
 
-    /** Macro name for the waitlist information macro that can be used in registration mail text fields. */
-    public static final String MACRO_CONFIRM_WAITLIST_INFO = "confirm.waitlist.info";
-
-    /** Macro name for the locale macro that can be used in mail text fields. */
-    public static final String MACRO_LOCALE = "locale";
+    /** Macro prefix for field values. */
+    public static final String MACRO_PREFIX_VALUE = "value_";
 
     /** Macro name for the url macro that can be used in mail text fields. */
     public static final String MACRO_URL = "url";
@@ -177,14 +160,14 @@ public class CmsFormHandler extends CmsJspActionElement {
     /** Request parameter name for the back parameter. */
     public static final String PARAM_BACK = "back";
 
+    /** Request parameter name for the final page parameter. */
+    public static final String PARAM_FINALPAGE = "finalpage";
+
     /** Request parameter name for the hidden form action parameter to determine the action. */
     public static final String PARAM_FORMACTION = "formaction";
 
     /** Request parameter name for the page parameter. */
     public static final String PARAM_PAGE = "page";
-
-    /** Request parameter name for the final page parameter. */
-    public static final String PARAM_FINALPAGE = "finalpage";
 
     /** Request parameter uri for the page parameter. */
     public static final String PARAM_URI = "uri";
@@ -192,11 +175,32 @@ public class CmsFormHandler extends CmsJspActionElement {
     /** Prefix for encrypted String values. */
     public static final String PREFIX_ENCRYPTED = "encrypted:";
 
-    /** The log object for this class. */
-    private static final Log LOG = CmsLog.getLog(CmsFormHandler.class);
+    /** The module path of the webform module. */
+    static final String MODULE_PATH = CmsWorkplace.VFS_PATH_MODULES + CmsForm.MODULE_NAME + "/";
+
+    /** Path to the captcha.jsp. */
+    static final String PATH_CAPTCHA_JSP = MODULE_PATH + "elements/captcha.jsp";
+
+    /** Path to the keepsession.js. */
+    static final String PATH_KEEP_SESSION_JS = MODULE_PATH + "resources/js/keepsession.js";
+
+    /** Path to the keepsession.jsp. */
+    static final String PATH_KEEP_SESSION_JSP = MODULE_PATH + "elements/keepsession.jsp";
+
+    /** Path to the subfields.js. */
+    static final String PATH_SUBFIELDS_JS = MODULE_PATH + "resources/js/subfields.js";
 
     /** Prefix for dynamic config values that should be used as macros. */
     private static final String DYNAMIC_CONFIG_PREFIX_MACRO = "macro:";
+
+    /** Error that happened when the confirmation mail was tried to send. */
+    private static final String ERROR_CONFIRMATION_SENT = "confirmationsent";
+
+    /** Error that happened when the confirmation mail was tried to send. */
+    private static final String ERROR_REGISTRATION_SENT = "registrationsent";
+
+    /** The log object for this class. */
+    private static final Log LOG = CmsLog.getLog(CmsFormHandler.class);
 
     /** Contains eventual validation errors. */
     protected Map<String, String> m_errors;
@@ -236,6 +240,9 @@ public class CmsFormHandler extends CmsJspActionElement {
 
     /** The submission status of the form. Initialized lazily. */
     protected CmsSubmissionStatus m_submissionStatus;
+
+    /** For the case of bookable events, this is the end time of the event, otherwise null. */
+    private Long m_endTime;
 
     /**
      * Empty constructor, be sure to call one of the available initialization methods afterwards.<p>
@@ -1939,8 +1946,17 @@ public class CmsFormHandler extends CmsJspActionElement {
             formAction,
             dynamicConfig,
             extraConfig);
+        if (dynamicConfig != null) {
+            String endTimeStr = dynamicConfig.get(CONFIG_END_TIME);
+            if (endTimeStr != null) {
+                try {
+                    m_endTime = Long.valueOf(endTimeStr);
+                } catch (Exception e) {
+                    LOG.warn(e.getLocalizedMessage(), e);
+                }
+            }
+        }
         setFormConfiguration(form);
-
     }
 
     /**
@@ -2220,6 +2236,15 @@ public class CmsFormHandler extends CmsJspActionElement {
             result.put(CmsFormDataBean.getValuePath(entryNum), field.getValue());
             entryNum++;
         }
+        CmsFormUgcConfiguration ugc = getFormConfiguration().getUgcConfiguration();
+        if ((ugc != null) && (ugc.getKeepDays() != null)) {
+            long keepMillis = TimeUnit.MILLISECONDS.convert(ugc.getKeepDays().intValue(), TimeUnit.DAYS);
+            if (m_endTime != null) {
+                long deletionDate = m_endTime.longValue() + keepMillis;
+                result.put(CmsFormDataBean.PATH_DELETION_DATE, "" + deletionDate);
+            }
+        }
+
         return result;
     }
 

@@ -615,7 +615,7 @@ var Mercury = function(jQ) {
                     // if the external cookies are not accepted, the template will not be shown directly
                     // if the element contains cookie data (as it should), then the cookie notice will be displayed from the privacy policy
                 } else {
-                    // this external element has a preview template that has to be clicked before the external contente is shown
+                    // this external element has a preview template that has to be clicked before the external content is shown
                     if (! $element.hasClass("reveal-registered")) {
                         // only attach event listerner once, important for dynamic lists
                         $element.addClass("reveal-registered");

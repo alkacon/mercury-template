@@ -190,16 +190,19 @@ function replaceLinkMacros(text) {
 
 function resetTemplateScript(forceInit) {
 
-    var $externalElements = jQ(".external-cookie-notice");
-    if ($externalElements.length > 0) {
-        // some elements on this page are disabled, re-init Mercury to enable them
-        $externalElements.parent(".presized.enlarged").removeClass("enlarged");
-        $externalElements.removeClass("external-cookie-notice modal-cookie-notice");
-        Mercury.init();
-    } else if (forceInit) {
+    forceInit = forceInit || (jQ(".external-cookie-notice.force-init").length > 0);
+    if (forceInit) {
         location.reload();
+    } else {
+        var $externalElements = jQ(".external-cookie-notice");
+        if ($externalElements.length > 0) {
+            // some elements on this page are disabled, re-init Mercury to enable them
+            $externalElements.parent(".presized.enlarged").removeClass("enlarged");
+            $externalElements.removeClass("external-cookie-notice modal-cookie-notice");
+            Mercury.init();
+        }
+        activatePrivacyToggle();
     }
-    activatePrivacyToggle();
 }
 
 function activatePrivacyToggle() {
@@ -349,60 +352,63 @@ function initExternalElements(showMessage) {
             var $element = jQ(this);
             // remove placeholder class added by some elements (e.g. maps)
             $element.removeClass("placeholder");
-            var cookieData = $element.data("external-cookies");
-            if (typeof cookieData !== "undefined") {
+            if (! $element.hasClass("external-cookie-notice")) {
+                // may be the case if resetTemplateScript() was called after banner was confirmed
+                var cookieData = $element.data("external-cookies");
+                if (typeof cookieData !== "undefined") {
 
-                var cookieHtml = createExternalElementToggle(cookieData.heading, cookieData.message, cookieData.footer);
-                $element.addClass("external-cookie-notice");
-                $element.empty().html(cookieHtml);
+                    var cookieHtml = createExternalElementToggle(cookieData.heading, cookieData.message, cookieData.footer);
+                    $element.addClass("external-cookie-notice");
+                    $element.empty().html(cookieHtml);
 
-                var $presizedParent;
-                if ($element.hasClass("preview")) {
-                    // this should be a media element
-                    $presizedParent = $element.parent().parent(".presized");
-                } else {
-                    $presizedParent = $element.parent(".presized");
-                }
+                    var $presizedParent;
+                    if ($element.hasClass("preview")) {
+                        // this should be a media element
+                        $presizedParent = $element.parent().parent(".presized");
+                    } else {
+                        $presizedParent = $element.parent(".presized");
+                    }
 
-                var addModal = false;
-                if ($presizedParent.length > 0) {
-                    var parentHeight = $presizedParent.innerHeight();
-                    var toggleHeight = $element.find(".cookie-content").innerHeight();
-                    if (DEBUG) console.info("PrivacyPolicy: parent(.presized).height=" + parentHeight + " .cookie-content.height=" + toggleHeight);
-                    if (toggleHeight > parentHeight) {
-                        if ((toggleHeight / parentHeight) < 1.51) {
-                            // toggle is not 1.5 times higher than the presized original
-                            $presizedParent.addClass("enlarged");
-                        } else {
-                            // toggle is much higher than the presized original
-                            addModal = true;
-                            $element.addClass("modal-cookie-notice");
-                            $element.find(".cookie-content > div:not(.cookie-header)").remove();
-                            $element.find(".cookie-content").append('<div class=\"cookie-footer\">' + m_policy.nClick + '</div>');
-                            $element.on("click", function() {
-                                createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
-                                function() {
-                                    enableExternalElements();
+                    var addModal = false;
+                    if ($presizedParent.length > 0) {
+                        var parentHeight = $presizedParent.innerHeight();
+                        var toggleHeight = $element.find(".cookie-content").innerHeight();
+                        if (DEBUG) console.info("PrivacyPolicy: parent(.presized).height=" + parentHeight + " .cookie-content.height=" + toggleHeight);
+                        if (toggleHeight > parentHeight) {
+                            if ((toggleHeight / parentHeight) < 1.51) {
+                                // toggle is not 1.5 times higher than the presized original
+                                $presizedParent.addClass("enlarged");
+                            } else {
+                                // toggle is much higher than the presized original
+                                addModal = true;
+                                $element.addClass("modal-cookie-notice");
+                                $element.find(".cookie-content > div:not(.cookie-header)").remove();
+                                $element.find(".cookie-content").append('<div class=\"cookie-footer\">' + m_policy.nClick + '</div>');
+                                $element.on("click", function() {
+                                    createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
+                                    function() {
+                                        enableExternalElements();
+                                    });
                                 });
-                            });
+                            }
                         }
                     }
-                }
 
-                if (! addModal) {
-                    var $toggleCheckbox = jQ(".toggle-check", $element);
-                    // only allow element activation in case technical cookies have already been accepted
-                    $toggleCheckbox.prop('checked', false);
-                    $toggleCheckbox.change(function() {
-                        enableExternalElements();
-                    });
-                    if (!cookiesAcceptedTechnical()) {
-                        $toggleCheckbox.prop('disabled', true);
+                    if (! addModal) {
+                        var $toggleCheckbox = jQ(".toggle-check", $element);
+                        // only allow element activation in case technical cookies have already been accepted
+                        $toggleCheckbox.prop('checked', false);
+                        $toggleCheckbox.change(function() {
+                            enableExternalElements();
+                        });
+                        if (!cookiesAcceptedTechnical()) {
+                            $toggleCheckbox.prop('disabled', true);
+                        }
                     }
-                }
 
-            } else {
-                if (DEBUG) console.info("PrivacyPolicy: No extrenal cookie data found for " + $element.getFullPath());
+                } else {
+                    if (DEBUG) console.info("PrivacyPolicy: No extrenal cookie data found for " + $element.getFullPath());
+                }
             }
         });
     } else {

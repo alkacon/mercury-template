@@ -58,7 +58,7 @@
         // if we have a predefined color match, use this
         $colors: map-get($match-text-bg-colors, $bg-color);
         @return nth($colors, 1);
-    } @else  {
+    } @else {
         // check the lightness of the background and return either light or dark text
         @if (lightness($bg-color) > $text-lightness-threshold) {
             @return $dark-color; // light background, dark text
@@ -430,4 +430,27 @@ $linear-channel-values:
   $foreLum: luminance($front) + .05;
 
   @return max($backLum, $foreLum) / min($backLum, $foreLum);
+}
+
+// Optimized encoding an SVG for use in a data uri
+// See: https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
+@function svg-encode($svg) {
+    $list: ();
+    @for $i from 1 through str-length($svg) { $list: append($list, str-slice($svg, $i, $i)); }
+    $svg: "data:image/svg+xml,";
+    $encode:(
+        '\"': '\'',
+        '#' : '%23',
+        '%' : '%25',
+        '&' : '%26',
+        '<' : '%3C',
+        '>' : '%3E',
+        '{' : '%7B',
+        '}' : '%7D'
+    );
+    @for $i from 1 through length($list) {
+        $char: map-get($encode,nth($list,$i)) or nth($list,$i);
+        $svg: $svg + $char;
+    }
+    @return $svg;
 }

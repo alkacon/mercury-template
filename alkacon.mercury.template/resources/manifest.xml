@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.240</version>
+		<version>11.0.1.244</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -5158,6 +5158,60 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays the name of the site an element belongs to]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/walls.io.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/functions/walls.io.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>3c394f5f-eb93-11ea-999c-0242ac11002b</uuidstructure>
+			<uuidresource>3c394f60-eb93-11ea-999c-0242ac11002b</uuidresource>
+			<datecreated>Mon, 31 Aug 2020 14:06:59 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;params=(clicktoload)]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/walls.io.xml</source>
+			<destination>system/modules/alkacon.mercury.template/functions/walls.io.xml</destination>
+			<type>function_config</type>
+			<uuidstructure>3c3b4b33-eb93-11ea-999c-0242ac11002b</uuidstructure>
+			<uuidresource>3c3b4b34-eb93-11ea-999c-0242ac11002b</uuidresource>
+			<datecreated>Mon, 31 Aug 2020 14:06:59 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[??? function.disqus.help ???]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Walls.io integration]]></value>
 				</property>
 				<property>
 					<name>locale</name>

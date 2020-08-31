@@ -2590,5 +2590,79 @@
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[wallsioURL.default]]></IncludeName>
+      <PropertyName><![CDATA[wallsioURL]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.wallsioURL)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.wallsioURL.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[wallsioTheme.default]]></IncludeName>
+      <PropertyName><![CDATA[wallsioTheme]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.wallsioTheme)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.wallsioTheme.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:       %(key.msg.setting.wallsio.default)|
+            fluid:      Fluid|
+            grid:       Grid|
+            kiosk:      Kiosk|
+            bricks:     Bricks|
+            map:        Map|
+            billboard:  Billboard
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[wallsioColumns.default]]></IncludeName>
+      <PropertyName><![CDATA[wallsioColumns]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.wallsioColumns)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.wallsioColumns.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[0]]></Default>
+      <WidgetConfig><![CDATA[
+            0: %(key.msg.setting.wallsio.default)|
+            1: 1|
+            2: 2|
+            3: 3|
+            4: 4|
+            5: 5|
+            6: 6|
+            7: 7
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[wallsioPosts.default]]></IncludeName>
+      <PropertyName><![CDATA[wallsioPosts]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.wallsioPosts)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.wallsioPosts.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[0]]></Default>
+      <WidgetConfig><![CDATA[
+            0: %(key.msg.setting.wallsio.default)|
+            5: 5|
+            10:10|
+            15:15|
+            20:20|
+            50:50
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[wallsioRemoveMargin.default]]></IncludeName>
+      <PropertyName><![CDATA[wallsioRemoveMargin]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.wallsioRemoveMargin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.wallsioRemoveMargin.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[wallsioShowLoadMore.default]]></IncludeName>
+      <PropertyName><![CDATA[wallsioShowLoadMore]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.wallsioShowLoadMore)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.wallsioShowLoadMore.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
   </SettingsConfig>
 </SettingsConfigs>

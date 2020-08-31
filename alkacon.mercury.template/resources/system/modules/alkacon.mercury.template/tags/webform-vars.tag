@@ -116,6 +116,9 @@
     	${form.adjustConfigValue("macro:eventtime", dateSeries.last.formatShort)}
     	${form.adjustConfigValue("EndTime", dateSeries.last.end.time)}
     </c:if>
+    <c:if test="${booking.value.Designation.isSet}">
+    	${form.adjustConfigValue("macro:designation", booking.value.Designation.toString)}
+    </c:if>
 </c:if>
 
 <%-- ###### Set title, data path and ID (if required) ###### --%>

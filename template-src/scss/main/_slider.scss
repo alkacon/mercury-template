@@ -134,7 +134,7 @@
             &.background {
                 opacity: 0.75;
                 background-color: $main-theme;
-                background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
+                // background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
             }
 
             &.foreground {
@@ -260,7 +260,7 @@
                 strong,
                 small {
                     background-color: $main-theme;
-                    background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
+                    // background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
                 }
             }
             strong {

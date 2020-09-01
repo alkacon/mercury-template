@@ -44,13 +44,10 @@ module.exports = {
       // expose jQuery to the global scope, required for script-loader and script-loader and revolution slider
       rules: [{
         test: require.resolve('jquery'),
-        use: [{
-          loader: 'expose-loader',
-          options: 'jQuery'
-        },{
-          loader: 'expose-loader',
-          options: '$'
-        }]
+        loader: 'expose-loader',
+        options: {
+          exposes: ['$', 'jQuery'],
+        }
       }]
     }
 };

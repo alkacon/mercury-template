@@ -38,10 +38,10 @@
       <IncludeName><![CDATA[wallsioPosts.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[wallsioRemoveMargin.default]]></IncludeName>
+      <IncludeName><![CDATA[wallsioShowLoadMore.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[wallsioShowLoadMore.default]]></IncludeName>
+      <IncludeName><![CDATA[wallsioRemoveMargin.default]]></IncludeName>
     </Setting>
   </FunctionConfig>
 </FunctionConfigs>

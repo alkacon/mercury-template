@@ -55,7 +55,7 @@
         $color-hover: nth($color-links, 2);
 
         background-color: $bg-color;
-        background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
+        // background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
         color: $color;
 
         @include colored-a($color-link, $color-hover, true);
@@ -88,7 +88,7 @@
 
     .bc-#{""+$color-name} {
         background-color: $bg-color;
-        background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
+        // background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
 
         &.transparent {
             background-color: rgba($bg-color, 0.7);

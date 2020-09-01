@@ -12,7 +12,7 @@
 
     <xsd:complexType name="OpenCmsBooking">
         <xsd:sequence>
-        	<xsd:element name="Designation" type="OpenCmsString" minOccurs="0" /> 
+            <xsd:element name="Designation" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Webform" type="OpenCmsVfsFile" />
             <xsd:element name="MailFrom" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="MailFromName" type="OpenCmsString" minOccurs="0" />
@@ -28,7 +28,7 @@
     <xsd:annotation>
         <xsd:appinfo>
             <FieldSettings>
-            	<Setting>
+                <Setting>
                     <PropertyName>Designation</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Booking.Designation)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Booking.Designation.help)]]></Description>
@@ -80,11 +80,11 @@
                     <Widget>string</Widget>
                     <Search>false</Search>
                 </Setting>
-				<Setting>
-					<PropertyName>KeepDays</PropertyName>
-					<DisplayName>%(key.label.form.WebFormDatabaseConfiguration.KeepDays)</DisplayName>
-					<Description>%(key.label.form.WebFormDatabaseConfiguration.KeepDays.help)</Description>
-				</Setting>
+                <Setting>
+                    <PropertyName>KeepDays</PropertyName>
+                    <DisplayName>%(key.label.form.WebFormDatabaseConfiguration.KeepDays)</DisplayName>
+                    <Description>%(key.label.form.WebFormDatabaseConfiguration.KeepDays.help)</Description>
+                </Setting>
             </FieldSettings>
         </xsd:appinfo>
     </xsd:annotation>

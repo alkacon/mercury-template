@@ -469,6 +469,9 @@ html.keyboard-nav .pp-toggle {
     cursor: auto;
     // must set this because some elements (e.g. OSM) add another class that changes the font
     font: $font-weight-base #{$cookie-notice-font-size-mobile} / #{$line-height-base} $font-family-base;
+
+    @include round-corners($default-border-radius);
+
     @include media-breakpoint-up(lg) {
         font-size: $cookie-notice-font-size-desktop;
     }

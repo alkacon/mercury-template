@@ -7,6 +7,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <%@ variable name-given="contentUri" declare="true"
@@ -22,6 +23,9 @@
 <%@ variable name-given="contentPropertiesSearchDetail" declare="true"
     description="The properties read from the URI resource OR detail resource with search." %>
 
+<%@ variable name-given="allowTemplateMods" declare="true"
+    description="Controls if modifications of the template CSS and JS by including external files are allowed." %>
+
 
 <c:choose>
     <c:when test="${cms.detailRequest}">
@@ -35,5 +39,8 @@
 <c:set var="contentProperties" value="${cms.vfs.readProperties[contentUri]}" />
 <c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
 <c:set var="contentPropertiesSearchDetail" value="${cms.vfs.readPropertiesSearch[contentUri]}" />
+
+<c:set var="templatePath" value="${contentPropertiesSearch['template']}" />
+<c:set var="allowTemplateMods" value="${not fn:contains(cms.vfs.readProperties[templatePath]['template.display.types'], 'standard')}" />
 
 <jsp:doBody/>

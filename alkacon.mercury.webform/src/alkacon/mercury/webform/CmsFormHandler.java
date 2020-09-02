@@ -137,7 +137,7 @@ public class CmsFormHandler extends CmsJspActionElement {
     public static final String INFO_UPLOAD_FIELD_MANDATORY_FILLED_OUT = "uploadfield_mandatory_filled_out";
 
     /** Macro name for the waitlist information macro that can be used in registration mail text fields. */
-    public static final String MACRO_CONFIRM_WAITLIST_INFO = "confirm.waitlist.info";
+    public static final String MACRO_EVENT_WAITLIST_INFO = "event.waitlist.info";
 
     /** Macro name for the date macro that can be used in mail text fields. */
     public static final String MACRO_DATE = "date";
@@ -147,9 +147,6 @@ public class CmsFormHandler extends CmsJspActionElement {
 
     /** Macro name for the locale macro that can be used in mail text fields. */
     public static final String MACRO_LOCALE = "locale";
-
-    /** Macro name for the waitlist information macro that can be used in registration mail text fields. */
-    public static final String MACRO_MAIL_WAITLIST_INFO = "mail.waitlist.info";
 
     /** Macro prefix for field values. */
     public static final String MACRO_PREFIX_VALUE = "value_";
@@ -1188,15 +1185,17 @@ public class CmsFormHandler extends CmsJspActionElement {
             }
         }
         // add waitlist macros if necessary
+        String eventWatilistInfo;
         if (getSubmissionStatus().isOnlyWaitlist()) {
-            m_macroResolver.addMacro(MACRO_MAIL_WAITLIST_INFO, getMessages().key(I_CmsFormMessages.MAIL_WAITLIST_INFO));
-            m_macroResolver.addMacro(
-                MACRO_CONFIRM_WAITLIST_INFO,
-                getMessages().key(I_CmsFormMessages.CONFIRM_WAITLIST_INFO));
+            eventWatilistInfo = getMessages().key(I_CmsFormMessages.EVENT_WAITLIST_INFO);
         } else {
-            m_macroResolver.addMacro(MACRO_MAIL_WAITLIST_INFO, "");
-            m_macroResolver.addMacro(MACRO_CONFIRM_WAITLIST_INFO, "");
+            eventWatilistInfo = "";
         }
+        m_macroResolver.addMacro(MACRO_EVENT_WAITLIST_INFO, eventWatilistInfo);
+        // for backward compatibility with existing old webform configurations
+        m_macroResolver.addMacro("confirm.waitlist.info", eventWatilistInfo);
+        m_macroResolver.addMacro("mail.waitlist.info", eventWatilistInfo);
+
         // send optional confirmation mail
         if (data.isConfirmationMailEnabled()) {
             if (!data.isConfirmationMailOptional()

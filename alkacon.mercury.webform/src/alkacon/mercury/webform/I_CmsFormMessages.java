@@ -80,10 +80,8 @@ public interface I_CmsFormMessages {
     final String FORM_FULLYBOOKED_TEXT = "form.fullybooked.text";
     /** Message shown above forms if the form is filled out to register for the waitlist. */
     final String FORM_MESSAGE_WAITLIST = "form.message.waitlist";
-    /** Message shown in the registration mail if the registration was for the waitlist. */
-    final String MAIL_WAITLIST_INFO = "mail.waitlist.info";
     /** Message shown in the confirmation mail if the registration was for the waitlist. */
-    final String CONFIRM_WAITLIST_INFO = "confirm.waitlist.info";
+    final String EVENT_WAITLIST_INFO = "event.waitlist.info";
     /** Message shown in paramter selection field select box if nothing is selected, e.g, something like "Please select" */
     final String PARAMETER_FIELD_SELECTBOX = "parameterfield.selectbox";
 

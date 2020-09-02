@@ -105,19 +105,20 @@
     <c:if test="${booking.value.NumOtherDatasets.isSet}">
         ${form.adjustConfigValue("DBConfig/NumOtherDatasets", booking.value.NumOtherDatasets.toString)}
     </c:if>
-    <c:if test="${formBookingXml.value.Type.isSet}">
-        ${form.adjustConfigValue("macro:eventtype", formBookingXml.value.Type.toString)}
-    </c:if>
      <c:if test="${booking.value.KeepDays.isSet}">
         ${form.adjustConfigValue("DBConfig/KeepDays", booking.value.KeepDays.toString)}
     </c:if>
+    <c:if test="${booking.value.Note.isSet}">
+        ${form.adjustConfigValue("macro:event.note", booking.value.Note.toString)}
+    </c:if>
+    <c:if test="${formBookingXml.value.Type.isSet}">
+        ${form.adjustConfigValue("macro:eventtype", formBookingXml.value.Type.toString)}
+        ${form.adjustConfigValue("macro:event.type", formBookingXml.value.Type.toString)}
+    </c:if>
     <c:if test="${formBookingXml.value.Dates.isSet}">
         <c:set var="dateSeries" value="${formBookingXml.value.Dates.toDateSeries}" />
-        ${form.adjustConfigValue("macro:eventtime", dateSeries.last.formatShort)}
+        ${form.adjustConfigValue("macro:event.time", dateSeries.last.formatShort)}
         ${form.adjustConfigValue("EndTime", dateSeries.last.end.time)}
-    </c:if>
-    <c:if test="${booking.value.Designation.isSet}">
-        ${form.adjustConfigValue("macro:designation", booking.value.Designation.toString)}
     </c:if>
 </c:if>
 

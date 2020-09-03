@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.249</version>
+		<version>11.0.1.251</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -8069,7 +8069,7 @@
 				</property>
 				<property>
 					<name>dnd.newsletter.pagemodel</name>
-					<value><![CDATA[/system/modules/alkacon.mercury.newsletter/pagemodels/default.html]]></value>
+					<value><![CDATA[/system/shared/newsletter/pagemodels/default.html]]></value>
 				</property>
 				<property>
 					<name>template</name>

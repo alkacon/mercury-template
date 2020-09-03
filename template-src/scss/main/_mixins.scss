@@ -452,7 +452,7 @@
 
 @mixin list-category-label($add-box: true, $add-hover: true) {
     // labels for categories used in list filter and download list
-    white-space: nowrap;
+    // white-space: nowrap; // this will break on mobile
     display: inline-block;
     line-height: 1;
     font-size: $font-size-sm;

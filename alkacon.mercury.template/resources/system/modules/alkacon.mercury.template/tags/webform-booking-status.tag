@@ -32,7 +32,7 @@
     <c:set var="status" value="${form.submissionStatus}" />
 
     <c:choose>
-    <c:when test="${not empty form.submissionDataFolder and not empty status.maxRegularSubmissions}">
+    <c:when test="${not empty status.maxRegularSubmissions}">
 
         <c:set var="numRemainingSubmissions" value="${status.numRemainingRegularSubmissions}"/>
         <c:set var="numRemainingWaitlistSubmissions" value="${status.numRemainingWaitlistSubmissions}" />

@@ -26,6 +26,7 @@ import org.opencms.jsp.util.A_CmsJspCustomContextBean;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
+import org.opencms.security.CmsRole;
 import org.opencms.ugc.CmsUgcConfiguration;
 import org.opencms.xml.I_CmsXmlDocument;
 
@@ -183,11 +184,30 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
      */
     public boolean getUserCanManage() {
 
-        CmsUgcConfiguration ugcConfig = getUgcConfig();
+        CmsFormUgcConfiguration ugcConfig = getUgcConfig();
         if (null == ugcConfig) {
             return false;
         } else {
-            return getCmsObject().existsResource(ugcConfig.getContentParentFolder().getStructureId());
+            if (OpenCms.getRoleManager().hasRole(getCmsObject(), CmsRole.ROOT_ADMIN)) {
+                return true;
+            }
+            CmsResource contentFolder = ugcConfig.getContentParentFolder();
+            if (null == contentFolder) {
+                try {
+                    return getCmsObject().getGroupsOfUser(
+                        getCmsObject().getRequestContext().getCurrentUser().getName(),
+                        false).contains(ugcConfig.getProjectGroup());
+                } catch (Throwable t) {
+                    if (LOG.isDebugEnabled()) {
+                        LOG.debug("Failed to determine if the current user is member of the project group", t);
+                    } else {
+                        LOG.error("Failed to determine if the current user is member of the project group");
+                    }
+                    return false;
+                }
+            } else {
+                return getCmsObject().existsResource(contentFolder.getStructureId());
+            }
         }
     }
 

@@ -20,12 +20,23 @@
 package alkacon.mercury.webform;
 
 import org.opencms.file.CmsGroup;
+import org.opencms.file.CmsObject;
+import org.opencms.file.CmsProject;
+import org.opencms.file.CmsProperty;
+import org.opencms.file.CmsPropertyDefinition;
 import org.opencms.file.CmsResource;
+import org.opencms.file.CmsResourceFilter;
 import org.opencms.file.CmsUser;
 import org.opencms.i18n.CmsLocaleManager;
+import org.opencms.lock.CmsLockUtil.LockedFile;
+import org.opencms.main.CmsException;
+import org.opencms.security.CmsAccessControlEntry;
+import org.opencms.security.I_CmsPrincipal;
 import org.opencms.ugc.CmsUgcConfiguration;
 import org.opencms.util.CmsUUID;
+import org.opencms.util.CmsVfsUtil;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.google.common.base.Optional;
@@ -53,13 +64,19 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     /** The number of submissions added otherwise (i.e., where the submitted data is stored differently). */
     private int m_numOtherDataSets;
 
+    /** The root path to the folder of the XML contents. */
+    private String m_contentFolderRootPath;
+
+    /** The resource of the content parent folder. */
+    private CmsResource m_contentParentFolder;
+
     /**
      * Creates a new form configuration.
      *
      * @param id the id for the form configuration
      * @param userForGuests the user to use for VFS operations caused by guests who submit the XML content form
      * @param projectGroup the group to be used as the manager group for projects based on this configuration
-     * @param contentParentFolder the parent folder for XML contents
+     * @param contentFolderRootPath the root path of the folder for XML contents.
      * @param maxRegularDataSets the maximally allowed submissions without waitlist.
      * @param numOtherDataSets the number of submissions added otherwise (i.e., where the submitted data is stored differently)
      * @param maxWaitlistDataSets the maximal number of additional data sets accepted on a waitlist.
@@ -70,7 +87,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         CmsUUID id,
         Optional<CmsUser> userForGuests,
         CmsGroup projectGroup,
-        CmsResource contentParentFolder,
+        String contentFolderRootPath,
         Optional<Integer> maxRegularDataSets,
         Optional<Integer> numOtherDataSets,
         Optional<Integer> maxWaitlistDataSets,
@@ -82,7 +99,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
             userForGuests,
             projectGroup,
             CONTENT_TYPE_FORM_DATA,
-            contentParentFolder,
+            null,
             DEFAULT_NAME_PATTERN,
             CmsLocaleManager.MASTER_LOCALE,
             Optional.<CmsResource> absent(), // uploadParent
@@ -98,6 +115,8 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         m_maxWaitlistDataSets = maxWaitlistDataSets.isPresent() ? maxWaitlistDataSets.get().intValue() : 0;
         m_datasetTitle = null == datasetTitle ? "" : datasetTitle;
         m_keepDays = keepDays;
+        m_contentFolderRootPath = contentFolderRootPath;
+        initContentFolderIfPresent();
     }
 
     /**
@@ -129,6 +148,17 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
             maxNumContents = Optional.absent();
         }
         return maxNumContents;
+    }
+
+    /**
+     * Returns the folder for XML contents.<p>
+     *
+     * @return the folder for XML contents
+     */
+    @Override
+    public CmsResource getContentParentFolder() {
+
+        return m_contentParentFolder;
     }
 
     /**
@@ -175,5 +205,55 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     public int getNumOtherDataSets() {
 
         return m_numOtherDataSets;
+    }
+
+    /**
+     * If the content folder is not present yet, it is created and published in the UGC session.
+     * @param project the project of the UGC session.
+     * @throws Exception thrown if creation fails.
+     */
+    void ensureContentFolder(CmsProject project) throws Exception {
+
+        if (null == m_contentParentFolder) {
+            CmsObject adminCms = CmsWebformModuleAction.getAdminCms(null);
+            adminCms.getRequestContext().setCurrentProject(project);
+            CmsResource contentFolder = null;
+            // We avoid to check the presence of the folder here. If it was published already, we will never get here
+            // If it was not published yet, we will get into an error later anyway.
+            CmsVfsUtil.createFolder(adminCms, m_contentFolderRootPath);
+            contentFolder = adminCms.readResource(m_contentFolderRootPath, CmsResourceFilter.ALL);
+            try (LockedFile lockedRes = LockedFile.lockResource(adminCms, contentFolder)) {
+                adminCms.chacc(
+                    contentFolder.getRootPath(),
+                    null,
+                    CmsAccessControlEntry.PRINCIPAL_OVERWRITE_ALL_NAME,
+                    "");
+                adminCms.chacc(
+                    contentFolder.getRootPath(),
+                    I_CmsPrincipal.PRINCIPAL_GROUP,
+                    getProjectGroup().getName(),
+                    "+r+w+v+c+d+i+o");
+                adminCms.writePropertyObjects(
+                    contentFolder,
+                    Collections.singletonList(
+                        new CmsProperty(CmsPropertyDefinition.PROPERTY_HISTORY_REMOVE_DELETED, "true", null)));
+                contentFolder = adminCms.readResource(contentFolder.getStructureId());
+            }
+            m_contentParentFolder = contentFolder;
+        }
+    }
+
+    /**
+     * Reads the content folder, if it is already present.
+     */
+    void initContentFolderIfPresent() {
+
+        try {
+            CmsObject adminCms = CmsWebformModuleAction.getAdminCms(null);
+            m_contentParentFolder = adminCms.readResource(m_contentFolderRootPath);
+        } catch (CmsException e) {
+            // This is ok if the folder does not exist.
+        }
+
     }
 }

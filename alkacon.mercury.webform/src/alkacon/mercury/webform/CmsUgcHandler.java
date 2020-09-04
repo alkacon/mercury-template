@@ -42,11 +42,11 @@ public class CmsUgcHandler {
     /**
      * Constructs a new CmsUgcHandler.
      * @param cms the current cms object
-     * @param req thre current http servlet request
+     * @param req the current http servlet request
      * @param config the ugc configuration
      * @param data the form data to store
      * @param isWaitList flag, indicating if the submission is for the waitlist.
-     * @throws CmsUgcException thrown if no UGC session can be established or creating a new XML content fails.
+     * @throws Exception thrown if no UGC session can be established or creating a new XML content fails.
      */
     public CmsUgcHandler(
         CmsObject cms,
@@ -54,9 +54,10 @@ public class CmsUgcHandler {
         CmsFormUgcConfiguration config,
         Map<String, String> data,
         boolean isWaitList)
-    throws CmsUgcException {
+    throws Exception {
 
         m_session = CmsUgcSessionFactory.getInstance().createSession(cms, req, config);
+        config.ensureContentFolder(m_session.getProject());
         m_data = data;
         m_data.put(CmsFormDataBean.PATH_WAITLIST_NOTIFICATION, String.valueOf(isWaitList));
         m_data.put(CmsFormDataBean.PATH_TITLEMAPPING, config.getDatasetTitle());

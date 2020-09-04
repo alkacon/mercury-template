@@ -50,7 +50,9 @@ public class CmsWebformModuleAction implements I_CmsModuleAction {
     protected static CmsObject getAdminCms(CmsObject cms) throws CmsException {
 
         CmsObject result = OpenCms.initCmsObject(m_adminCms);
-        result.getRequestContext().setRequestTime(cms.getRequestContext().getRequestTime());
+        if (null != cms) {
+            result.getRequestContext().setRequestTime(cms.getRequestContext().getRequestTime());
+        }
         return result;
     }
 

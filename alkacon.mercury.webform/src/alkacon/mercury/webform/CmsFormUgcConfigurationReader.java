@@ -22,29 +22,19 @@ package alkacon.mercury.webform;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsGroup;
 import org.opencms.file.CmsObject;
-import org.opencms.file.CmsProject;
-import org.opencms.file.CmsProperty;
-import org.opencms.file.CmsPropertyDefinition;
 import org.opencms.file.CmsResource;
-import org.opencms.file.CmsResourceFilter;
 import org.opencms.file.CmsUser;
-import org.opencms.i18n.CmsLocaleManager;
-import org.opencms.lock.CmsLockUtil.LockedFile;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
-import org.opencms.report.CmsLogReport;
 import org.opencms.security.CmsAccessControlEntry;
 import org.opencms.security.CmsOrgUnitManager;
 import org.opencms.security.CmsOrganizationalUnit;
 import org.opencms.security.CmsPermissionSet;
-import org.opencms.security.I_CmsPrincipal;
 import org.opencms.util.CmsStringUtil;
 import org.opencms.util.CmsUUID;
-import org.opencms.util.CmsVfsUtil;
 import org.opencms.xml.I_CmsXmlDocument;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -118,12 +108,12 @@ public class CmsFormUgcConfigurationReader {
     private Locale m_locale;
 
     /**
-     * @param cms
-     * @param formConfig
-     * @param configLocale
+     * @param cms the current context
+     * @param formConfig the form configuration XML
+     * @param configLocale the locale to read the configuration in
      * @param dynamicConfig dynamic configuration for the form to overwrite form configuration values.
      * @return the UGC configuration read from the form config
-     * @throws Exception
+     * @throws Exception thrown if reading the configuration fails.
      */
     public CmsFormUgcConfiguration readConfiguration(
         CmsObject cms,
@@ -168,7 +158,6 @@ public class CmsFormUgcConfigurationReader {
             CmsGroup projectGroup = null == projectGroupStr
             ? getDefaultProjectGroup()
             : m_cms.readGroup(projectGroupStr.trim());
-            CmsResource contentFolder = getPreparedContentFolder(projectGroup.getName());
             String datasetTitle = m_formConfigParser.getConfigurationValue(pathPrefix + N_DATASET_TITLE, "");
             CmsUUID id = m_content.getFile().getStructureId();
 
@@ -186,7 +175,7 @@ public class CmsFormUgcConfigurationReader {
                 id,
                 userForGuest,
                 projectGroup,
-                contentFolder,
+                m_contentFolderRootPath,
                 maxRegularDataSets,
                 numOtherDataSets,
                 maxWaitlistDataSets,
@@ -226,7 +215,7 @@ public class CmsFormUgcConfigurationReader {
      * @param parentRootPath the root path of the resource that must be contained in the OU.
      *
      * @return the best fitting OU for the provided path.
-     * @throws CmsException
+     * @throws CmsException thrown if reading the OUs fails
      */
     private CmsOrganizationalUnit getBestFittingOU(String parentRootPath) throws CmsException {
 
@@ -343,53 +332,6 @@ public class CmsFormUgcConfigurationReader {
                 throw new NumberFormatException("Could not read a number from " + path + " ,value= " + stringValue);
             }
         }
-    }
-
-    /**
-     * Prepares the content folder and returns the prepared resource.
-     *
-     * @param groupName the name of the group for which allowed permissions should be set.
-     * @return The prepared content folder
-     * @throws Exception thrown if setting permissions or publishing fails.
-     */
-    private CmsResource getPreparedContentFolder(String groupName) throws Exception {
-
-        CmsResource contentFolder = null;
-        try {
-            m_adminCms.getRequestContext().setCurrentProject(m_cms.getRequestContext().getCurrentProject());
-            contentFolder = m_adminCms.readResource(m_contentFolderRootPath, CmsResourceFilter.ALL);
-        } catch (CmsException e) {
-            CmsVfsUtil.createFolder(m_adminCms, m_contentFolderRootPath);
-            contentFolder = m_adminCms.readResource(m_contentFolderRootPath, CmsResourceFilter.ALL);
-            try (LockedFile lockedRes = LockedFile.lockResource(m_adminCms, contentFolder)) {
-                m_adminCms.chacc(
-                    contentFolder.getRootPath(),
-                    null,
-                    CmsAccessControlEntry.PRINCIPAL_OVERWRITE_ALL_NAME,
-                    "");
-                m_adminCms.chacc(
-                    contentFolder.getRootPath(),
-                    I_CmsPrincipal.PRINCIPAL_GROUP,
-                    groupName,
-                    "+r+w+v+c+d+i+o");
-                m_adminCms.writePropertyObjects(
-                    contentFolder,
-                    Collections.singletonList(
-                        new CmsProperty(CmsPropertyDefinition.PROPERTY_HISTORY_REMOVE_DELETED, "true", null)));
-                contentFolder = m_adminCms.readResource(contentFolder.getStructureId());
-            }
-            if (!contentFolder.getState().isUnchanged()) {
-                OpenCms.getPublishManager().publishResource(
-                    m_adminCms,
-                    contentFolder.getRootPath(),
-                    false,
-                    new CmsLogReport(CmsLocaleManager.MASTER_LOCALE, this.getClass()));
-            }
-        } finally {
-            m_adminCms.getRequestContext().setCurrentProject(m_adminCms.readProject(CmsProject.ONLINE_PROJECT_ID));
-        }
-        return contentFolder;
-
     }
 
     /**

@@ -26,6 +26,7 @@ import org.opencms.main.CmsException;
 import org.opencms.main.OpenCms;
 import org.opencms.ugc.CmsUgcConfiguration;
 
+import java.util.Collections;
 import java.util.List;
 
 /** Class that encapsulates the submission status of a form. */
@@ -169,11 +170,13 @@ public class CmsSubmissionStatus {
      */
     private List<CmsResource> readSubmissionResources(CmsUgcConfiguration ugcConfig) throws CmsException {
 
-        return m_cms.readResources(
+        return null != ugcConfig.getContentParentFolder()
+        ? m_cms.readResources(
             ugcConfig.getContentParentFolder(),
             CmsResourceFilter.DEFAULT.addRequireType(
                 OpenCms.getResourceManager().getResourceType(ugcConfig.getResourceType())),
-            false);
+            false)
+        : Collections.emptyList();
     }
 
 }

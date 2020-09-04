@@ -766,5 +766,39 @@
         <uuid>5fc02e59-fe05-496b-9fd8-7b40245ec3fc</uuid>
       </link>
     </Function>
+    <DiscardProperties><![CDATA[top]]></DiscardProperties>
+    <Property>
+      <PropertyName><![CDATA[Title]]></PropertyName>
+      <Disabled>false</Disabled>
+      <Widget><![CDATA[string]]></Widget>
+    </Property>
+    <Property>
+      <PropertyName><![CDATA[NavText]]></PropertyName>
+      <Disabled>false</Disabled>
+      <DisplayName><![CDATA[Navigation Text]]></DisplayName>
+      <Widget><![CDATA[string]]></Widget>
+    </Property>
+    <Property>
+      <PropertyName><![CDATA[NavInfo]]></PropertyName>
+      <Disabled>false</Disabled>
+      <DisplayName><![CDATA[Navigation Info]]></DisplayName>
+      <Widget><![CDATA[string]]></Widget>
+    </Property>
+    <Property>
+      <PropertyName><![CDATA[Description]]></PropertyName>
+      <Disabled>false</Disabled>
+      <Widget><![CDATA[string]]></Widget>
+    </Property>
+    <Property>
+      <PropertyName><![CDATA[Keywords]]></PropertyName>
+      <Disabled>false</Disabled>
+      <Widget><![CDATA[string]]></Widget>
+    </Property>
+    <Property>
+      <PropertyName><![CDATA[mercury.theme]]></PropertyName>
+      <Disabled>false</Disabled>
+      <DisplayName><![CDATA[Mercury Theme CSS]]></DisplayName>
+      <Widget><![CDATA[string]]></Widget>
+    </Property>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

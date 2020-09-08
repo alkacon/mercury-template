@@ -238,7 +238,7 @@
         <mercury:nl />
         <mercury:alert-online showJsWarning="${true}" >
             <jsp:attribute name="text">
-                <fmt:message key="msg.page.imageseries.noscript" />
+                <fmt:message key="msg.page.noscript.imageseries" />
             </jsp:attribute>
         </mercury:alert-online>
     </c:when>

@@ -79,6 +79,12 @@
     --%>mercury.ready(init${htmlId});<%--
     --%></script><%----%>
 
+        <mercury:alert-online showJsWarning="${true}" >
+            <jsp:attribute name="text">
+                <fmt:message key="msg.page.noscript.wallsio" />
+            </jsp:attribute>
+        </mercury:alert-online>
+
     </div><%----%>
     <mercury:nl />
 

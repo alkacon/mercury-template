@@ -76,7 +76,7 @@
             <cms:jsonvalue key="url" value="${cms:encode(pageUrl)}" />
         </cms:jsonobject>
 
-        <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.discus" />
+        <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.disqus" />
 
         <div id="disqus_thread" <%--
         --%><c:if test="${clickToLoad}">style="display: none;" </c:if><%--
@@ -86,7 +86,7 @@
 
             <mercury:alert-online showJsWarning="${true}" >
                 <jsp:attribute name="text">
-                    You must enable JavaScript to view the comments.
+                    <fmt:message key="msg.page.noscript.disqus" />
                 </jsp:attribute>
             </mercury:alert-online>
     </c:otherwise>

@@ -507,9 +507,10 @@ $list-border-color:                 $grey-light !default;
 $list-border-radius:                $default-border-radius !default;
 $list-category-radius:              0.5rem !default;
 $list-tile-header-lines:            2 !default;
-$list-side-color:                   $grey-light !default;
-$list-side-headings-color:          $text-dark !default; // make side lists less "prominent" ba using standard text color
-$list-side-intro-color:             $list-side-headings-color !default;
+$list-side-adjust:                  true !default; // make side lists less "prominent" - if 'false' lists in aside will be displayed like regular lists
+$list-side-color:                   $grey-light !default; // color of pagination in side lists and small pagination
+$list-side-headings-color:          $text-dark !default; // color of headings in side lists
+$list-side-intro-color:             $list-side-headings-color !default; // color of intro line in side lists
 
 $pagination-text-color:             $text-dark !default;
 $pagination-text-active-color:      $text-light !default;

@@ -40,7 +40,7 @@
         }
 
         .wallsio-load-more-button {
-            @extend .btn;
+            @include button-base;
         }
     }
 }

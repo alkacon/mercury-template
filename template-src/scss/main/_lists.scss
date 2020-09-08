@@ -205,74 +205,76 @@
 
 // Teaser adjustments for lists in side columns
 
-aside .list-content,
-.list-content.list-aside {
+@if ($list-side-adjust) {
+    aside .list-content,
+    .list-content.list-aside {
 
-    .teaser {
-        // make buttons in side grey so that they don't distract from main content
-        .teaser-btn:not(:hover) {
-            background-color: $list-side-color;
-            color: get-text-color($list-side-color);
-        }
-
-        .intro-headline {
-            // make headers smaller
-            @include font-size-responsive(
-                round($teaser-title-size-mobile * 9) / 10,
-                round($teaser-title-size * 9) / 10
-            );
-            // adjust color of side headings
-            > .headline {
-                color: $list-side-headings-color;
-            }
-            > .intro {
-                color: $list-side-intro-color;
-            }
-        }
-    }
-
-    &.reduced-display,
-    &.minimal-display {
         .teaser {
+            // make buttons in side grey so that they don't distract from main content
+            .teaser-btn:not(:hover) {
+                background-color: $list-side-color;
+                color: get-text-color($list-side-color);
+            }
+
             .intro-headline {
+                // make headers smaller
+                @include font-size-responsive(
+                    round($teaser-title-size-mobile * 9) / 10,
+                    round($teaser-title-size * 9) / 10
+                );
+                // adjust color of side headings
+                > .headline {
+                    color: $list-side-headings-color;
+                }
                 > .intro {
-                    @include font-size-responsive(
-                        // the intro heading should be the same in all variations: 65% percent of the reduced teaser title font size
-                        round($teaser-title-size-mobile * 9) / 10 * 0.65,
-                        round($teaser-title-size * 9 ) / 10 * 0.65
-                    )
+                    color: $list-side-intro-color;
                 }
             }
         }
-    }
 
-    &.reduced-display {
-        .teaser {
-            .intro-headline {
-                @include font-size-responsive(
-                    round($teaser-title-size-reduced-mobile * 9) / 10,
-                    round($teaser-title-size-reduced * 9) / 10
-                );
+        &.reduced-display,
+        &.minimal-display {
+            .teaser {
+                .intro-headline {
+                    > .intro {
+                        @include font-size-responsive(
+                            // the intro heading should be the same in all variations: 65% percent of the reduced teaser title font size
+                            round($teaser-title-size-mobile * 9) / 10 * 0.65,
+                            round($teaser-title-size * 9 ) / 10 * 0.65
+                        )
+                    }
+                }
             }
         }
-    }
 
-    @include media-breakpoint-up(lg) {
-        // on large screens button in side columns should be smaller
-        .teaser {
-            .teaser-btn {
-                padding: $teaser-btn-compact-padding;
+        &.reduced-display {
+            .teaser {
+                .intro-headline {
+                    @include font-size-responsive(
+                        round($teaser-title-size-reduced-mobile * 9) / 10,
+                        round($teaser-title-size-reduced * 9) / 10
+                    );
+                }
             }
         }
-        &.minimal-display .teaser
-        .teaser-compact {
-            .teaser-btn {
-                padding: $teaser-btn-compact-light-padding;
+
+        @include media-breakpoint-up(lg) {
+            // on large screens button in side columns should be smaller
+            .teaser {
+                .teaser-btn {
+                    padding: $teaser-btn-compact-padding;
+                }
+            }
+            &.minimal-display .teaser
+            .teaser-compact {
+                .teaser-btn {
+                    padding: $teaser-btn-compact-light-padding;
+                }
             }
         }
-    }
 
-    @extend %paginationSmall;
+        @extend %paginationSmall;
+    }
 }
 
 

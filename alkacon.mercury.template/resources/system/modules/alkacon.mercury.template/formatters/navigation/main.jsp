@@ -22,6 +22,7 @@
 <c:set var="showSearch"                 value="${setting.showSearch.useDefault(true).toBoolean}" />
 <c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
 <c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
+<c:set var="showImageLink"              value="${setting.showImageLink.useDefault(false).toBoolean}" />
 
 <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
 <c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
@@ -44,7 +45,13 @@
         <c:if test="${not empty logoImage}">
             <div class="nav-main-mobile-logo"><%----%>
                 <mercury:image-vars image="${logoImage}">
-                    <img src="${imageLink.toLink}" alt="${imageTitleCopyright}" class="img-responsive"><%----%>
+                    <mercury:link
+                        link="${logoContent.value.Link}"
+                        test="${showImageLink}"
+                        setTitle="${true}"
+                        css="mobile-logolink" >
+                        <img src="${imageLink.toLink}" alt="${imageTitleCopyright}" class="img-responsive"><%----%>
+                    </mercury:link>
                 </mercury:image-vars>
             </div><%----%>
         </c:if>

@@ -106,9 +106,18 @@
             display: none;
         }
 
+        .nav-main-mobile-logo {
+            .mobile-logolink {
+                display: inline-block;
+            }
+            .img-responsive {
+                display: inline-block;
+            }
+        }
+
         @if ($fh-logo-image-bg != none) {
             // set colored background for image (if images contain transparency - required mostly for demo content)
-            .nav-main-mobile-logo > .img-responsive,
+            .nav-main-mobile-logo .img-responsive,
             .header-image {
                 background-color: $fh-logo-image-bg;
             }
@@ -808,11 +817,9 @@
                 .h-logo {
                     @include make-col(nth([4,5,7,9,9,9,12,12,12,12,12,12], $logo-size));
                 }
-                .nav-main-mobile-logo > .img-responsive {
-                    @if ($logo-size < 5) {
-                        max-width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
-                    } @else {
-                        max-width: 100%;
+                @if ($logo-size < 6) {
+                    .nav-main-mobile-logo .img-responsive {
+                        width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
                     }
                 }
                 @include media-breakpoint-up(sm) {
@@ -935,7 +942,7 @@
 
             @if ($fh-logo-image-bg != none) {
                 // set colored background for images (if images contain transparency)
-                .nav-main-mobile-logo > .img-responsive,
+                .nav-main-mobile-logo .img-responsive,
                 .header-image {
                     background-color: $fh-logo-image-bg;
                 }

@@ -61,7 +61,7 @@
     }
 
     &::after {
-        // display: none;
+        display: none;
         content: '{' +
             '"xsMax":' + breakpoint-max(xs) + ', ' +
             '"smMin":' + breakpoint-min(sm) + ', ' +

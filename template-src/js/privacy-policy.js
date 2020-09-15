@@ -176,14 +176,17 @@ function replaceLinkMacros(text) {
     if (typeof m_policy.lImp !== "undefined") {
         var linkImp = "<a href=\"" + m_policy.lImp + "\">" + m_policy.lImpTxt + "</a>";
         result = result.replace("%(link.Imprint)", linkImp);
+        result = result.replace("opencms://function@Imprint", m_policy.lImp);
     }
     if (typeof m_policy.lPol !== "undefined") {
         var linkPol = "<a href=\"" + m_policy.lPol + "\">" + m_policy.lPolTxt + "</a>";
         result = result.replace("%(link.Datenschutz)", linkPol);
+        result = result.replace("opencms://function@Datenschutz", m_policy.lPol);
     }
     if (typeof m_policy.lLeg !== "undefined") {
         var linkLeg = "<a href=\"" + m_policy.lLeg + "\">" + m_policy.lLegTxt + "</a>";
         result = result.replace("%(link.Rechtliche Hinweise)", linkLeg);
+        result = result.replace("opencms://function@Rechtliche Hinweise", m_policy.lLeg);
     }
     return result;
 }

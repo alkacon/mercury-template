@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.1.136</version>
+		<version>11.0.1.137</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6935,6 +6935,108 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[ubuntu-v13-latin_latin-ext-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-bold.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-bold.woff</destination>
+			<type>plain</type>
+			<uuidstructure>becaa407-03b4-11eb-bdab-0242ac11002b</uuidstructure>
+			<uuidresource>becaa408-03b4-11eb-bdab-0242ac11002b</uuidresource>
+			<datecreated>Thu, 01 Oct 2020 07:07:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[yanone-kaffeesatz-bold]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-bold.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-bold.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>becbdc8a-03b4-11eb-bdab-0242ac11002b</uuidstructure>
+			<uuidresource>becbdc8b-03b4-11eb-bdab-0242ac11002b</uuidresource>
+			<datecreated>Thu, 01 Oct 2020 07:07:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[yanone-kaffeesatz-bold]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-light.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-light.woff</destination>
+			<type>plain</type>
+			<uuidstructure>bec12f15-03b4-11eb-bdab-0242ac11002b</uuidstructure>
+			<uuidresource>bec12f16-03b4-11eb-bdab-0242ac11002b</uuidresource>
+			<datecreated>Thu, 01 Oct 2020 07:07:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[yanone-kaffeesatz-light]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-light.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-light.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>bec48a78-03b4-11eb-bdab-0242ac11002b</uuidstructure>
+			<uuidresource>bec48a79-03b4-11eb-bdab-0242ac11002b</uuidresource>
+			<datecreated>Thu, 01 Oct 2020 07:07:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[yanone-kaffeesatz-light]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-regular.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-regular.woff</destination>
+			<type>plain</type>
+			<uuidstructure>becd150d-03b4-11eb-bdab-0242ac11002b</uuidstructure>
+			<uuidresource>becd150e-03b4-11eb-bdab-0242ac11002b</uuidresource>
+			<datecreated>Thu, 01 Oct 2020 07:07:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[yanone-kaffeesatz-regular]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/yanone-kaffeesatz-regular.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>bece4d90-03b4-11eb-bdab-0242ac11002b</uuidstructure>
+			<uuidresource>bece4d91-03b4-11eb-bdab-0242ac11002b</uuidresource>
+			<datecreated>Thu, 01 Oct 2020 07:07:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[yanone-kaffeesatz-regular]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -34,6 +34,7 @@ $fonts-preloaded: (
     "Titillium Web":            (("Titillium Web",           $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Ubuntu":                   (("Ubuntu",                  $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
     "Ubuntu Condensed":         (("Ubuntu Condensed",        $font-family-sans-serif),  (400: (normal))),
+    "Yanone Kaffeesatz":        (("Yanone Kaffeesatz",       $font-family-sans-serif),  (300: (normal),         400: (normal),         700: (normal))),
     "-apple-system":            ((                           $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "SFMono-Regular":           ((                           $font-family-monospace),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic)))
 );

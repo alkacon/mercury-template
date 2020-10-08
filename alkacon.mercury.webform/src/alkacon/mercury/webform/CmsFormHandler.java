@@ -1204,6 +1204,10 @@ public class CmsFormHandler extends CmsJspActionElement {
                     sendConfirmationMail();
                     isConfirmationMailSent = true;
                 } catch (Exception e) {
+                    // an error occured during mail creation
+                    if (LOG.isErrorEnabled()) {
+                        LOG.error(e.getLocalizedMessage(), e);
+                    }
                     getErrors().put(ERROR_CONFIRMATION_SENT, e.getMessage());
                 }
             }

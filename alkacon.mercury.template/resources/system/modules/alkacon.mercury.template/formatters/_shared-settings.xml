@@ -1466,9 +1466,11 @@
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
-            none:               %(key.msg.setting.header.acDisplay.none)|
-            ac-page-size:       %(key.msg.setting.header.acDisplay.ac-page-size)|
-            ac-full-size:       %(key.msg.setting.header.acDisplay.ac-full-size)
+            none:                   %(key.msg.setting.header.acDisplay.none)|
+            ac-page-size:           %(key.msg.setting.header.acDisplay.ac-page-size)|
+            ac-full-size:           %(key.msg.setting.header.acDisplay.ac-full-size)|
+            ac-page-size ac-mobile: %(key.msg.setting.header.acDisplay.ac-page-size-mobile)|
+            ac-full-size ac-mobile: %(key.msg.setting.header.acDisplay.ac-full-size-mobile)|
         ]]></WidgetConfig>
     </Setting>
     <Setting>

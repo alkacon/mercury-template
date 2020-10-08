@@ -90,7 +90,8 @@
                 <c:set var="needTitlePosition"  value="${showTitle and (titlePosition ne 'title-center')}" />
                 <c:set var="showTitleAside"     value="${not logoPosCenter}" />
                 <c:set var="showAddContainer"   value="${acDisplay ne 'none'}" />
-                <c:set var="acHasPageSize"      value="${showAddContainer and (acDisplay eq 'ac-page-size')}" />
+                <c:set var="acHasPageSize"      value="${showAddContainer and (acDisplay.contains('ac-page-size'))}" />
+                <c:set var="acOnMobile"         value="${showAddContainer and (acDisplay.contains('ac-mobile'))}" />
 
                 <c:choose>
                     <c:when test="${navFixType eq 'css'}" >
@@ -183,7 +184,7 @@
                 <c:if test="${showAddContainer}">
                     <c:set var="addContainerElement">
                         <mercury:div css="h-ac" test="${acHasPageSize}">
-                            <mercury:container type="row" name="header-container" css="${acHasPageSize ? 'co-lg-xl p-xs-12' : 'h-ac'}" title="${value.Title}"  />
+                            <mercury:container type="row" name="header-container" css="${acHasPageSize ? (acOnMobile ? 'container' : 'co-lg-xl p-xs-12') : 'h-ac'}" title="${value.Title}"  />
                         </mercury:div>
                     </c:set>
                 </c:if>

@@ -106,6 +106,31 @@
             display: none;
         }
 
+        &.ac-mobile {
+            .h-ac {
+                display: block;
+
+                > div,
+                .container > div {
+                    > .element {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            &.ac-full-size {
+                .h-ac {
+                    // see https://css-tricks.com/full-width-containers-limited-width-parents/
+                    width: 100vw;
+                    position: relative;
+                    left: 50%;
+                    right: 50%;
+                    margin-left: -50vw;
+                    margin-right: -50vw;
+                }
+            }
+        }
+
         .nav-main-mobile-logo {
             .mobile-logolink {
                 display: inline-block;

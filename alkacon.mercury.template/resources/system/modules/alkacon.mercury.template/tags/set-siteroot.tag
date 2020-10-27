@@ -15,7 +15,5 @@
 
 <c:if test="${(not empty siteRoot) and (siteRoot ne cms.requestContext.siteRoot)}">
     <c:set var="ignore" value="${cms.requestContext.setSiteRoot(siteRoot)}" />
-    <% org.opencms.flex.CmsFlexController.getController(request).getCmsObject().getRequestContext().setSiteRoot(
-        (String)getJspContext().getAttribute("siteRoot")
-    ); %>
+    <c:set var="ignore" value="${cms.controllerCms.requestContext.setSiteRoot(siteRoot)}" />
 </c:if>

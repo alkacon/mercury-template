@@ -28,6 +28,7 @@ var m_fixedHeader = null;
 var m_$anchor = null;
 var m_menuTimeout = null;
 var m_subMenuTimeout = null;
+var m_firstInit = true;
 var $topControl = null;
 
 function setKeyboardClass(active) {
@@ -588,9 +589,13 @@ export function init(jQuery, debug) {
 
     if (DEBUG) console.info("Navigation.init()");
 
-    initDependencies();
-    initMegaMenu();
-    initHeadNavigation();
+    if (m_firstInit) {
+        initDependencies();
+        initMegaMenu();
+        initHeadNavigation();
+    }
+    m_firstInit = false;
+
     initSmoothScrolling();
     initClickmeShowme();
     initExternalLinks();

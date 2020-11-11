@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="image-simple"
+    display-name="image-direct"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
     description="Displays a non-responsive image." %>

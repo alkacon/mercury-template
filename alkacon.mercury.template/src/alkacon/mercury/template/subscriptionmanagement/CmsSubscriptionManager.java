@@ -399,7 +399,8 @@ public class CmsSubscriptionManager {
             if (null == activationInfo) {
                 return false;
             }
-            if (isUserActive(user, groupName, activationInfo)) {
+            // If the user was added manually, we want to set him as really activated.
+            if (isUserActive(user, groupName, activationInfo) && (null != activationInfo.getActivationTimeMs())) {
                 return true;
             }
             if (!isActivationInTime(activationInfo.getRegistrationTimeMs())) {
@@ -427,7 +428,7 @@ public class CmsSubscriptionManager {
      *
      * @param email the email address of the user to register
      * @param groupName the name of the group the user should be registered for
-
+    
      * @return <code>true</code> if the user either is already active in the group or the user was created and got the
      *  correct registration information attached. <code>false</code> otherwise.
      */
@@ -552,7 +553,7 @@ public class CmsSubscriptionManager {
      *
      * @param email the email address of the user to register
      * @param groupName the name of the group the user should be registered for
-
+    
      * @return <code>true</code> if the user either is already active in the group or the user was created and got the
      *  correct registration information attached. <code>false</code> otherwise.
      */

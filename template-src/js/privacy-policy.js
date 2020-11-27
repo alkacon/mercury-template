@@ -118,15 +118,23 @@ function displayBanner() {
         $banner.find(".btn-save").on('click', function(e) {
             var useStatistical = $banner.find("#use-statistical").prop('checked');
             var useExternal = $banner.find("#use-external").prop('checked');
+            if (DEBUG) console.info("PrivacyPolicy: User clicked 'btn-save'. Selection external=" + useExternal + " statistical=" + useStatistical);
             setPrivacyCookies(true, useExternal, useStatistical);
             $banner.slideUp();
             $bannerElement.slideUp();
             if (useExternal) {
                 enableExternalElements();
             } else {
-                disableExternalElements();
-                activatePrivacyToggle();
-                initPrivacyToggle();
+                if (jQ(".external-cookie-notice").length > 0) {
+                    // force a page reload in case there are external elements
+                    window.setTimeout(function() {
+                        resetTemplateScript(true);
+                    }, 500);
+                } else {
+                    disableExternalElements();
+                    activatePrivacyToggle();
+                    initPrivacyToggle();
+                }
             }
         });
 

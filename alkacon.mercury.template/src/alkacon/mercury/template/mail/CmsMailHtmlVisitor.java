@@ -88,7 +88,7 @@ public class CmsMailHtmlVisitor extends CmsHtmlParser {
     public void visitTag(Tag tag) {
 
         String tagName = tag.getTagName();
-        if (tagName.equals("A")) {
+        if (tagName.equals("A") || tagName.equals("LINK")) {
             String hrefContent = tag.getAttribute("HREF");
             String absoluteHrefContent = null;
             LOG.debug(

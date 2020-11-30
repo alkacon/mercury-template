@@ -68,7 +68,7 @@ Supported techniques and variations:
 
 SrcSet support
     Using a special "Boostrap Bean", we keep track of the size of the current space (width) for the image.
-    We calculate a pixel with for all 4 BS grid sizes and also 2x for retina displays.
+    We calculate a pixel with for all 5 BS grid sizes and also 2x for retina displays.
     For the smallest size XS, images will often occupy the whole space (100vw).
     For this case we generate a set of size reduced version based on the width from the original image.
     We also keep track if "hidden-xs" BS classes are used.
@@ -244,7 +244,9 @@ SVG placeholder image, background image and image sizing
 
     <c:set var="maxSize" value="${0}" />
     <c:set var="sizeList" value="${fn:split(sizes, ',')}" />
-    <!-- sizes:[${sizes}] ib.width:${ib.width} -->
+    <c:if test="${DEBUG}">
+        <!-- sizes:[${sizes}] ib.width:${ib.width} -->
+    </c:if>
     <c:forEach var="sizeStr" items="${sizeList}">
         <c:set var="sizeInt" value="${cms.wrap[sizeStr].toInteger}" />
         <c:if test="${DEBUG}">

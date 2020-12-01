@@ -870,7 +870,7 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-shariff" */
-                    "script-loader!shariff/dist/shariff.min.js").then( function(Shariff) {
+                    "shariff/dist/shariff.min.js").then( function(Shariff) {
                     if (DEBUG) console.info("Shariff module loaded!");
                 });
             } catch (err) {

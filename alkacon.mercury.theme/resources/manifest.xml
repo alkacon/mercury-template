@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.1.141</version>
+		<version>11.0.1.144</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7105,9 +7105,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js</destination>
 			<type>plain</type>
-			<uuidstructure>956638c4-e394-11e9-a18f-0242ac11002b</uuidstructure>
-			<uuidresource>956638c5-e394-11e9-a18f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 30 Sep 2019 15:11:31 GMT</datecreated>
+			<uuidstructure>f97a5e47-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>f97a5e48-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:22 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7117,9 +7117,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-datepicker.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>956bde16-e394-11e9-a18f-0242ac11002b</uuidstructure>
-			<uuidresource>956bde17-e394-11e9-a18f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 30 Sep 2019 15:11:31 GMT</datecreated>
+			<uuidstructure>f9bbfb29-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>f9bbfb2a-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:22 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7129,9 +7129,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-imageseries.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-imageseries.js</destination>
 			<type>plain</type>
-			<uuidstructure>2cdecdfc-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cdecdfd-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>f9ef402b-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>f9ef402c-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:23 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7141,9 +7141,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-imageseries.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-imageseries.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>2ce0a2be-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2ce0a2bf-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fa38cc4d-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fa38cc4e-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:23 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7153,9 +7153,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-map-google.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-map-google.js</destination>
 			<type>plain</type>
-			<uuidstructure>e6ef87f2-26be-11e9-8f3b-0242ac11002b</uuidstructure>
-			<uuidresource>e6ef87f3-26be-11e9-8f3b-0242ac11002b</uuidresource>
-			<datecreated>Sat, 02 Feb 2019 07:48:17 GMT</datecreated>
+			<uuidstructure>fa67083f-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fa670840-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:23 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7165,9 +7165,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-map-google.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-map-google.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>e6f41bd4-26be-11e9-8f3b-0242ac11002b</uuidstructure>
-			<uuidresource>e6f41bd5-26be-11e9-8f3b-0242ac11002b</uuidresource>
-			<datecreated>Sat, 02 Feb 2019 07:48:17 GMT</datecreated>
+			<uuidstructure>fa9c4911-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fa9c4912-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:24 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7177,9 +7177,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-map-osm.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-map-osm.js</destination>
 			<type>plain</type>
-			<uuidstructure>e6f68cd6-26be-11e9-8f3b-0242ac11002b</uuidstructure>
-			<uuidresource>e6f68cd7-26be-11e9-8f3b-0242ac11002b</uuidresource>
-			<datecreated>Sat, 02 Feb 2019 07:48:17 GMT</datecreated>
+			<uuidstructure>faf0f8c3-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>faf0f8c4-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:24 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7189,9 +7189,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-map-osm.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-map-osm.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>e6fc5938-26be-11e9-8f3b-0242ac11002b</uuidstructure>
-			<uuidresource>e6fc5939-26be-11e9-8f3b-0242ac11002b</uuidresource>
-			<datecreated>Sat, 02 Feb 2019 07:48:17 GMT</datecreated>
+			<uuidstructure>fb64a225-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fb64a226-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:25 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7201,9 +7201,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-masonry-list.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-masonry-list.js</destination>
 			<type>plain</type>
-			<uuidstructure>2ce313c0-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2ce313c1-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fb9ffd77-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fb9ffd78-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:25 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7213,9 +7213,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-masonry-list.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-masonry-list.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>2ce4c172-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2ce4c173-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fbddf0d9-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fbddf0da-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:26 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7225,9 +7225,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-shariff.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-shariff.js</destination>
 			<type>plain</type>
-			<uuidstructure>2ce69634-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2ce69635-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fc1617db-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fc1617dc-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:26 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7237,9 +7237,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-shariff.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-shariff.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>2ce843e6-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2ce843e7-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fc50139d-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fc50139e-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:27 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7249,9 +7249,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js</destination>
 			<type>plain</type>
-			<uuidstructure>2ceed39c-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2ceed39d-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fc8a848f-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fc8a8490-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:27 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7261,9 +7261,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>2cf0a85e-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cf0a85f-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fcc98961-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fcc98962-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:27 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7273,9 +7273,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-tools.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-tools.js</destination>
 			<type>plain</type>
-			<uuidstructure>2cf2cb40-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cf2cb41-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fcf665c3-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fcf665c4-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7285,9 +7285,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury-tools.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-tools.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>2cf451e2-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cf451e3-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fd247aa5-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fd247aa6-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:28 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -7309,9 +7309,9 @@
 			<source>system/modules/alkacon.mercury.theme/js/mercury.js.map</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>2cf8e5c6-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2cf8e5c7-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
+			<uuidstructure>fde92a37-33b7-11eb-88b9-0242ac11002b</uuidstructure>
+			<uuidresource>fde92a38-33b7-11eb-88b9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Dec 2020 09:31:29 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

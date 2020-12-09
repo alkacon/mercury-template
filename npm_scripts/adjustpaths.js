@@ -20,29 +20,27 @@
 'use strict';
 
 var path = require('path');
-var packageConfig = require('./package.json');
 
-// target path of the generated CSS in OpenCms
-var deployTargetVfsDir;
-// the folder where the static template resources are located
-var mercuryBaseVfsDir;
+// target deploy path of the generated CSS in the OpenCms VFS
+var deployVfsDir;
+// the path in the VFS where the template theme resources are located
+var templateThemeVfsDir;
 
-exports.initRewritePaths = function(targetVfs, mercuryVfs) {
-    deployTargetVfsDir = packageConfig.config[targetVfs] ? packageConfig.config[targetVfs] : "/system/modules/alkacon.mercury.theme/css/";
-    mercuryBaseVfsDir =  packageConfig.config[mercuryVfs] ? packageConfig.config[mercuryVfs] : "/system/modules/alkacon.mercury.theme/";
+exports.initRewritePaths = function(deployDir, templateThemeDir) {
     console.log('');
-    console.log('Theme deploy target   : ' + deployTargetVfsDir);
-    console.log('Mercury base directory: ' + mercuryBaseVfsDir);
+    deployVfsDir = deployDir;
+    templateThemeVfsDir = templateThemeDir;
+    console.log('CSS deploy dir      : ' + deployVfsDir);
+    console.log('Template theme dir  : ' + templateThemeVfsDir);
 }
 
 // function to calculate the relative file path for the generated CSS to the static template folder in the OpenCms VFS
 // it's is required to use relative paths here to make sure static export works as expected
 exports.resourcePath = function(target) {
-    var resPath = path.normalize(path.relative(deployTargetVfsDir, mercuryBaseVfsDir) + '/'
-            + target)
+    var resPath = path.normalize(path.relative(deployVfsDir, templateThemeVfsDir) + '/' + target);
     if (path.sep == '\\') {
         resPath = resPath.replace(/\\/g, '/');
     }
-    console.log('Rewriting path        : ' + target + ' to: ' + resPath);
+    console.log('- Rewriting path    : ' + target + ' to: ' + resPath);
     return resPath;
 }

@@ -9,7 +9,7 @@ module.exports = {
   },
 
   output: {
-      path: path.resolve(__dirname, 'build/npm/js'),
+      path: path.resolve(__dirname, '../build/npm/js'),
       filename: '[name].js'
   },
 

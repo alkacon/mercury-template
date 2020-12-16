@@ -20,6 +20,7 @@
 package alkacon.mercury.template.mail;
 
 import org.opencms.mail.CmsHtmlMail;
+import org.opencms.mail.CmsMailHost;
 import org.opencms.main.CmsLog;
 import org.opencms.util.CmsMacroResolver;
 import org.opencms.util.CmsStringUtil;
@@ -38,6 +39,9 @@ public class CmsPreconfiguredMail implements I_CmsPreconfiguredMail {
     /** Configuration of the mail wrapped in a special config object. */
     private I_CmsMailConfig m_mailConfig;
 
+    /** The mail host to send the mail with. */
+    private CmsMailHost m_mailHost;
+
     /**
      * Constructs a mail that can be send to various recipients.
      * @param mailConfig mail specific values (content (with macros), subject, sender, ...)
@@ -47,7 +51,22 @@ public class CmsPreconfiguredMail implements I_CmsPreconfiguredMail {
     public CmsPreconfiguredMail(I_CmsMailConfig mailConfig)
     throws Exception {
 
+        this(mailConfig, null);
+
+    }
+
+    /**
+     * Constructs a mail that can be send to various recipients.
+     * @param mailConfig mail specific values (content (with macros), subject, sender, ...)
+     * @param mailHost the mail host to send emails with.
+     *
+     * @throws Exception thrown if generating the mail fails, in particular content adjustment fails.
+     */
+    public CmsPreconfiguredMail(I_CmsMailConfig mailConfig, CmsMailHost mailHost)
+    throws Exception {
+
         m_mailConfig = mailConfig;
+        m_mailHost = mailHost;
 
     }
 
@@ -57,7 +76,7 @@ public class CmsPreconfiguredMail implements I_CmsPreconfiguredMail {
     @Override
     public void sendTo(String receipient, Map<String, String> receipientspecificMacros) throws EmailException {
 
-        CmsHtmlMail mail = new CmsHtmlMail();
+        CmsHtmlMail mail = m_mailHost == null ? new CmsHtmlMail() : new CmsHtmlMail(m_mailHost);
         try {
             String senderName = m_mailConfig.getSenderName();
             String senderEmail = m_mailConfig.getSenderAddress();

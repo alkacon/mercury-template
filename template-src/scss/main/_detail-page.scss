@@ -123,6 +123,15 @@
         margin-bottom: $headings-margin-bottom;
     }
 
+    &.layout-1 {
+        // in case detail-visual is on top of heading, larger bottom margin
+        .piece.detail-visual.has-heading {
+            > .visual {
+                margin-bottom: $headings-margin-bottom;
+            }
+        }
+    }
+
     .detail-content {
 
         + div {

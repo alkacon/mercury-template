@@ -19,18 +19,6 @@
  * Source file: _grid.scss
  */
 
-.element,
-.subelement,
-.default-margin {
-    @include clearfix;
-
-    margin-bottom: $default-margin;
-
-    &.no-default-margin {
-        margin-bottom: 0;
-    }
-}
-
 .row-tile,
 .row-square,
 .row-12 {

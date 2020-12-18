@@ -189,21 +189,25 @@
 
 <c:choose>
     <c:when test="${showHeading and not showVisual and not showBody and not showLink}">
-        <c:set var="pieceOnlyMarker" value="only-heading" />
+        <c:set var="pieceFeatureMarker" value=" only-heading" />
         <c:set var="onlyHeading" value="${true}" />
     </c:when>
     <c:when test="${showVisual and not showHeading and not showBody and not showLink}">
-        <c:set var="pieceOnlyMarker" value="only-visual" />
+        <c:set var="pieceFeatureMarker" value=" only-visual" />
         <c:set var="onlyVisual" value="${true}" />
     </c:when>
     <c:when test="${showBody and not showHeading and not showVisual and not showLink}">
-        <c:set var="pieceOnlyMarker" value="only-text" />
+        <c:set var="pieceFeatureMarker" value=" only-text" />
         <c:set var="onlyText" value="${true}" />
     </c:when>
     <c:when test="${showLink and not showHeading and not showVisual and not showBody}">
-        <c:set var="pieceOnlyMarker" value="only-link" />
+        <c:set var="pieceFeatureMarker" value=" only-link" />
         <c:set var="onlyLink" value="${true}" />
     </c:when>
+    <c:otherwise>
+        <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
+    </c:otherwise>
 </c:choose>
 
 <mercury:nl />
@@ -212,10 +216,8 @@ ${'<'}${pieceTag}${' '}
         ${empty cssWrapper ? '' : cssWrapper.concat(' ')}
         ${'piece'}
         ${empty pieceOption ? '' : ' '.concat(pieceOption)}
-        ${empty pieceOnlyMarker ? '' : ' '.concat(pieceOnlyMarker)}
+        ${empty pieceFeatureMarker ? '' : pieceFeatureMarker}
         ${empty gridOption ? '' : ' '.concat(gridOption)}
-        ${showHeading ? ' has-heading' : ''}
-        ${onlyVisual or onlyHeading or onlyText or onlyLink ? '' : (showVisual ? ' has-visual' : '')}
     ${'\"'}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}
 ${'>'}

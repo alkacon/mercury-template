@@ -45,19 +45,24 @@
             not paragraph.value.Text.isSet and
             not paragraph.value.Image.isSet and
             paragraph.value.Link.value.URI.isSet}">
-            <%-- Paragraph that only has a link set --%>
+            <%-- Paragraph that only has a link set, add to download list --%>
             <c:set var="ignore" value="${paragraphsDownload.add(paragraph)}" />
         </c:when>
-        <c:otherwise>
-            <%-- Downloads must all be in the LAST paragraphs --%>
+        <c:when test="${
+            paragraph.value.Caption.isSet or
+            paragraph.value.Text.isSet or
+            paragraph.value.Image.isSet or
+            paragraph.value.Link.value.URI.isSet}">
+            <%-- This paragraph has some content and is not a download link --%>
             <c:set var="ignore" value="${paragraphsContent.addAll(paragraphsDownload)}" />
+            <%-- Clear download list, because all downloads must all be in the LAST paragraphs --%>
             <c:set var="ignore" value="${paragraphsDownload.clear()}" />
             <c:set var="ignore" value="${paragraphsContent.add(paragraph)}" />
             <c:if test="${status.first}">
                 <%-- Fill firstParagraph even if it is not split from rest of paragraphs --%>
                 <c:set var="firstParagraph" value="${paragraph}" />
             </c:if>
-        </c:otherwise>
+        </c:when>
     </c:choose>
 
 </c:forEach>

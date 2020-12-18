@@ -53,7 +53,6 @@
 
 @mixin make-piece-col($cols, $reduce: 0) {
     flex: 0 0 get-col-flex-size($cols, $reduce);
-    max-width: get-col-flex-size($cols, $reduce);
 }
 
 $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column sizes for the piece visual
@@ -136,11 +135,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
-    &.element.only-heading {
-        // if piece has only a header, add a margin the same height as used by the headers to the whole element
-        margin-bottom: $piece-headings-margin-bottom;
-    }
-
     .heading {
         @include use-hyphens-headings;
     }
@@ -188,7 +182,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
 
     .piece {
 
-        &.has-visual {
+        &.phv {
             // required for floating layouts, for example the detail page key visual
             // this makes sure a piece with an image will NOT float around a previous key visual image aligned left or right
             @include clearfix-before;

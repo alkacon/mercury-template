@@ -39,3 +39,10 @@
         @include use-hyphens-headings(true);
     }
 }
+
+.element.piece {
+    .only-heading {
+        // if element piece has only a header, add a margin the same height as used by the headers to the whole element
+        margin-bottom: $piece-headings-margin-bottom;
+    }
+}

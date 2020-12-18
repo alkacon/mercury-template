@@ -43,10 +43,6 @@
     // text elements that belong to the main detail visual
     .detail-visual {
 
-        &:not(.only-heading) {
-            margin-bottom: $detail-piece-margin-bottom;
-        }
-
         .visual-info {
             // applies only to the info labels below the image
             font-size: $font-size-base;
@@ -123,16 +119,37 @@
         margin-bottom: $headings-margin-bottom;
     }
 
+    &.layout-0 {
+        // heading before image in case detail-visual has no text below, do not add bottom margin
+        .detail-visual.piece.phv:not(.phb) {
+            > .visual {
+                margin-bottom: 0;
+            }
+        }
+    }
+
     &.layout-1 {
-        // in case detail-visual is on top of heading, larger bottom margin
-        .piece.detail-visual.has-heading {
+        // image before heading
+        .detail-visual.piece.phv.phh {
+            // add larger margin below visual if heading is available
             > .visual {
                 margin-bottom: $headings-margin-bottom;
             }
         }
     }
 
+    .detail-visual {
+        + .detail-content,
+        + .attachment-container {
+            // .detail-visual has no bottom margin, add top margin to first detail-content or attachement container
+            margin-top: $detail-piece-margin-bottom;
+        }
+    }
+
     .detail-content {
+
+        @include clearfix;
+        @include piece-bottom-margin($detail-piece-margin-bottom);
 
         + div {
             margin-top: $default-margin;
@@ -146,8 +163,6 @@
             width: 100%;
         }
 
-        @include clearfix;
-        @include piece-bottom-margin($detail-piece-margin-bottom);
     }
 
     @include media-breakpoint-up(md) {

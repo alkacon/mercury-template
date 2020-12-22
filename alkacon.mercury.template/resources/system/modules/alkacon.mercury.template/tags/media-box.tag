@@ -50,7 +50,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:media-vars content="${content}" ratio="${ratio}">
+<mercury:media-vars content="${content}" ratio="${ratio}" autoPlay="${autoPlay}">
 
     <c:set var="markupVisualOverlay">
         <div class="centered icon"><%----%>

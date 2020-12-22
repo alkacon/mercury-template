@@ -18,6 +18,7 @@
  */
 
 import mapboxgl from 'mapbox-gl';
+import tinycolor from 'tinycolor2';
 
 "use strict";
 
@@ -39,15 +40,9 @@ var m_apiKey;
 // map styling
 var m_mapStyle = [];
 
-function shadeColor(color, percent) {
-
-    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
-    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
-}
-
 function getPuempel(color) {
 
-  var strokeColor=shadeColor(color,-0.4);
+  var strokeColor = tinycolor(color).darken(20);
   return '<svg xmlns="http://www.w3.org/2000/svg" width="19" height="34" viewBox="-15 -34 19 34">' +
       '<path fill="#fff" d="M-9-28h7v7h-7z"/>' +
       '<path fill="' + color +

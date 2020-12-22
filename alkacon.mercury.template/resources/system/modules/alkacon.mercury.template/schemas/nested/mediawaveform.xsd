@@ -1,0 +1,33 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="MediaWaveFormData" type="OpenCmsMediaWaveFormData"/>
+
+    <xsd:complexType name="OpenCmsMediaWaveFormData">
+        <xsd:sequence>
+            <xsd:element name="MediaWaveForm" type="OpenCmsMediaWaveForm" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsMediaWaveForm">
+        <xsd:sequence>
+            <xsd:element name="URI" type="OpenCmsVarLink" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>URI</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MediaWaveForm.WaveFormURI)]]></DisplayName>
+                    <Widget>file</Widget>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

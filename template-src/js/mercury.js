@@ -584,6 +584,9 @@ var Mercury = function(jQ) {
         $element.remove();
         $p.append(decodeURIComponent(template));
         initFitVids();
+        if (isMedia && window.WaveForm) {
+            window.WaveForm.playWaveForm($p);
+        }
     }
 
 
@@ -834,7 +837,7 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-masonry-list" */
-                    "./lists-masonry.js").then( function (MasonryList) {
+                    "./lists-masonry.js").then( function ( MasonryList ) {
                     MasonryList.init(jQ, DEBUG);
                 });
             } catch (err) {
@@ -846,7 +849,7 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-datepicker" */
-                    "./datepicker.js").then( function (DatePicker) {
+                    "./datepicker.js").then( function ( DatePicker ) {
                     DatePicker.init(jQ, DEBUG, getLocale());
                 });
             } catch (err) {
@@ -854,11 +857,24 @@ var Mercury = function(jQ) {
             }
         }
 
+        if (requiresModule(".type-media.waveform")) {
+            try {
+                import(
+                    /* webpackChunkName: "mercury-waveform" */
+                    "./waveform.js").then( function ( WaveForm ) {
+                    WaveForm.init(jQ, DEBUG);
+                    window.WaveForm = WaveForm;
+                });
+            } catch (err) {
+                console.warn("WaveForm.init() error", err);
+            }
+        }
+
         if (requiresModule(".type-imageseries, [data-imagezoom]")) {
             try {
                 import(
                     /* webpackChunkName: "mercury-imageseries" */
-                    "./imageseries.js").then( function (ImageSeries) {
+                    "./imageseries.js").then( function ( ImageSeries ) {
                     ImageSeries.init(jQ, DEBUG);
                 });
             } catch (err) {
@@ -882,7 +898,7 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-tools" */
-                    "./parallax.js").then( function(TemplateTools) {
+                    "./parallax.js").then( function( TemplateTools ) {
                     TemplateTools.initParallax(jQ, DEBUG);
                 });
             } catch (err) {
@@ -894,7 +910,7 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-tools" */
-                    "./csssampler.js").then( function(TemplateTools) {
+                    "./csssampler.js").then( function( TemplateTools ) {
                     TemplateTools.initCssSampler(jQ, DEBUG);
                 });
             } catch (err) {

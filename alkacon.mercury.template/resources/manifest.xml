@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.261</version>
+		<version>11.0.1.263</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6141,6 +6141,18 @@
 					<value><![CDATA[Nested XSD four SoundCloud media]]></value>
 				</property>
 			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/mediawaveform.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/mediawaveform.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>20567652-4458-11eb-bc9c-0242ac11002b</uuidstructure>
+			<uuidresource>20567653-4458-11eb-bc9c-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Dec 2020 13:18:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>

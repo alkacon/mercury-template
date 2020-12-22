@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.1.147</version>
+		<version>11.0.1.150</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7270,6 +7270,30 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-tinycolor.js</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-tinycolor.js</destination>
+			<type>plain</type>
+			<uuidstructure>920637bd-4452-11eb-bc9c-0242ac11002b</uuidstructure>
+			<uuidresource>920637be-4452-11eb-bc9c-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Dec 2020 12:38:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-tinycolor.js.map</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-tinycolor.js.map</destination>
+			<type>plain</type>
+			<uuidstructure>92422f4f-4452-11eb-bc9c-0242ac11002b</uuidstructure>
+			<uuidresource>92422f50-4452-11eb-bc9c-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Dec 2020 12:38:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/js/mercury-tools.js</source>
 			<destination>system/modules/alkacon.mercury.theme/js/mercury-tools.js</destination>
 			<type>plain</type>
@@ -7288,6 +7312,30 @@
 			<uuidstructure>fd247aa5-33b7-11eb-88b9-0242ac11002b</uuidstructure>
 			<uuidresource>fd247aa6-33b7-11eb-88b9-0242ac11002b</uuidresource>
 			<datecreated>Tue, 01 Dec 2020 09:31:28 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-waveform.js</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-waveform.js</destination>
+			<type>plain</type>
+			<uuidstructure>92f98fbf-443b-11eb-bc9c-0242ac11002b</uuidstructure>
+			<uuidresource>92f98fc0-443b-11eb-bc9c-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Dec 2020 09:53:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-waveform.js.map</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-waveform.js.map</destination>
+			<type>plain</type>
+			<uuidstructure>9344c991-443b-11eb-bc9c-0242ac11002b</uuidstructure>
+			<uuidresource>9344c992-443b-11eb-bc9c-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Dec 2020 09:53:42 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

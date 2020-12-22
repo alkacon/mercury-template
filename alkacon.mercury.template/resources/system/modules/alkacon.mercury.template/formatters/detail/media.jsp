@@ -51,8 +51,11 @@
 <c:set var="showIntro"              value="${titleOption ne 'none'}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
+
+<mercury:media-vars content="${content}" ratio="${imageRatio}" mediaCheckOnly="${true}">
+
 <mercury:nl />
-<div class="detail-page type-media layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
+<div class="detail-page type-media ${isWaveForm ? 'waveform ' : ''}layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
 <mercury:nl />
 
 <mercury:piece
@@ -117,6 +120,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:media-vars>
 
 </cms:formatter>
 </mercury:init-messages>

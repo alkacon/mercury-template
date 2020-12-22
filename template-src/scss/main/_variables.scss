@@ -264,6 +264,12 @@ $modal-inner-padding:               1rem !default; // inner padding for modal di
 $zindex-modal-backdrop:             $above-oc-z-index + 1000 !default;
 $zindex-modal:                      $above-oc-z-index + 1050 !default;
 
+$progress-height:                   20px !default;
+$progress-font-size:                18px !default;
+$progress-bg:                       #ddd !default;
+$progress-border-radius:            $default-border-radius !default;
+$progress-bar-bg:                   #666 !default; // theme color would be to distracting
+
 // Drop shadow color for effects
 
 $dropshadow:                        rgba(0, 0, 0, 0.3) !default;

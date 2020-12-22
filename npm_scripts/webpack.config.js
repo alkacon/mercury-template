@@ -15,8 +15,17 @@ module.exports = {
 
   optimization: {
       splitChunks: {
+          name (module, chunks, cacheGroupKey) {
+              return "" + module + "-" + chunks + "-" + cacheGroupKey;
+          },
           chunks: "async",
-          minChunks: 2
+          minChunks: 2,
+          cacheGroups: {
+            tinycolor: {
+                name: 'mercury-tinycolor',
+                test: /[\\/]tinycolor2[\\/]/,
+            },
+        }
       },
       minimize: true,
       minimizer: [

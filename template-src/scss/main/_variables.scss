@@ -266,9 +266,9 @@ $zindex-modal:                      $above-oc-z-index + 1050 !default;
 
 $progress-height:                   20px !default;
 $progress-font-size:                18px !default;
-$progress-bg:                       #ddd !default;
 $progress-border-radius:            $default-border-radius !default;
-$progress-bar-bg:                   #666 !default; // theme color would be to distracting
+$progress-bar-bg:                   $text-dark !default;
+
 
 // Drop shadow color for effects
 

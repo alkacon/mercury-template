@@ -2,15 +2,15 @@
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
 
-    <xsd:element name="MediaWaveFormData" type="OpenCmsMediaWaveFormData"/>
+    <xsd:element name="MediaAudioData" type="OpenCmsMediaAudioData"/>
 
-    <xsd:complexType name="OpenCmsMediaWaveFormData">
+    <xsd:complexType name="OpenCmsMediaAudioData">
         <xsd:sequence>
-            <xsd:element name="MediaWaveForm" type="OpenCmsMediaWaveForm" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MediaAudio" type="OpenCmsMediaAudio" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="OpenCmsMediaWaveForm">
+    <xsd:complexType name="OpenCmsMediaAudio">
         <xsd:sequence>
             <xsd:element name="URI" type="OpenCmsVarLink" />
         </xsd:sequence>
@@ -22,7 +22,7 @@
             <FieldSettings>
                 <Setting>
                     <PropertyName>URI</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MediaWaveForm.WaveFormURI)]]></DisplayName>
+                    <DisplayName><![CDATA[%(key.label.MediaAudio.AudioURI)]]></DisplayName>
                     <Widget>file</Widget>
                     <Search>false</Search>
                     <Display>singleline</Display>

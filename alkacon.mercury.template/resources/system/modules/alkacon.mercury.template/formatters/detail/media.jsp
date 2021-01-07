@@ -55,7 +55,7 @@
 <mercury:media-vars content="${content}" ratio="${imageRatio}" mediaCheckOnly="${true}">
 
 <mercury:nl />
-<div class="detail-page type-media ${isWaveForm ? 'waveform ' : ''}layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
+<div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
 <mercury:nl />
 
 <mercury:piece

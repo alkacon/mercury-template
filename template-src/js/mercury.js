@@ -584,8 +584,8 @@ var Mercury = function(jQ) {
         $element.remove();
         $p.append(decodeURIComponent(template));
         initFitVids();
-        if (isMedia && window.WaveForm) {
-            window.WaveForm.playWaveForm($p);
+        if (isMedia && window.AudioData) {
+            window.AudioData.initAudio($p);
         }
     }
 
@@ -857,16 +857,16 @@ var Mercury = function(jQ) {
             }
         }
 
-        if (requiresModule(".type-media.waveform")) {
+        if (requiresModule(".type-media.audio, [data-audio]")) {
             try {
                 import(
-                    /* webpackChunkName: "mercury-waveform" */
-                    "./waveform.js").then( function ( WaveForm ) {
-                    WaveForm.init(jQ, DEBUG);
-                    window.WaveForm = WaveForm;
+                    /* webpackChunkName: "mercury-audio" */
+                    "./audio.js").then( function ( AudioData ) {
+                    AudioData.init(jQ, DEBUG);
+                    window.AudioData = AudioData;
                 });
             } catch (err) {
-                console.warn("WaveForm.init() error", err);
+                console.warn("AudioData.init() error", err);
             }
         }
 

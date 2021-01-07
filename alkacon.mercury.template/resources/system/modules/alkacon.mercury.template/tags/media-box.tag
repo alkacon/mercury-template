@@ -113,9 +113,9 @@
                     </c:choose>
                     ${markupVisualOverlay}
                 </c:if>
-            <c:if test="${autoPlay}">
-                <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
-            </c:if>
+                <c:if test="${autoPlay}">
+                    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+                </c:if>
             </div><%----%>
             <c:if test="${not autoPlay and showCopyright and not empty copyright}">
                 <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>

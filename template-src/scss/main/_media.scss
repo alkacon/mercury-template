@@ -62,6 +62,10 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
         cursor: pointer;
         height: 100%;
 
+        &.revealed {
+            cursor: auto;
+        }
+
         .centered {
             position: absolute;
             width: 100%;
@@ -186,16 +190,82 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
 }
 
 
-.type-media.waveform {
+
+$audio-border-radius:               $default-border-radius !default;
+$audio-player-padding:              $default-margin-small !default;
+$audio-player-background-color:     transparentize($body-bg, 0.25) !default;
+$audio-progress-border:             1px solid $progress-bar-bg !default;
+$audio-control-font-size:           round($font-size-base * 20) / 10 !default;
+
+.type-media.audio {
 
     .content {
         background-color: transparent;
     }
 
-    .wave-player {
-        position: relative;
-        display: block;
-        height: 100%;
+    .audio-box {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: $audio-player-padding;
+    }
+
+    .audio-player {
+        display: flex;
+        flex-direction: column;
+        background-color: $audio-player-background-color;
+        padding: $audio-player-padding;
+        @include round-corners($audio-border-radius);
+
+        .audio-progress {
+            display: block;
+            margin-bottom: $audio-player-padding;
+            border: $audio-progress-border;
+            @include round-corners($audio-border-radius);
+
+            .progress-bar {
+                height: $progress-height;
+                transition: none; // remove bootstrap standart transition
+            }
+        }
+
+        .audio-controls {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            > div {
+                display: flex;
+                flex-basis: 33.33333%;
+
+                &.audio-pos,
+                &.audio-length {
+                    font-weight: $font-weight-bold;
+                }
+
+                &.audio-buttons {
+                    justify-content: center;
+                    align-items: center;
+
+                    > .fa {
+                        cursor: pointer;
+                    }
+
+                    > .audio-play {
+                        text-align: center;
+                        margin-left: 2 * $audio-player-padding;
+                        margin-right: 2 * $audio-player-padding;
+                        width: round($audio-control-font-size * 20) / 10;
+                        font-size: $audio-control-font-size;
+                    }
+                }
+
+                &.audio-length {
+                    justify-content: flex-end;
+                }
+            }
+        }
 
         .wave-form-wrapper {
             position: absolute;
@@ -212,16 +282,6 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
 
         .wave-audio {
             display: none;
-        }
-
-        .wave-progress {
-            display: block;
-            position: absolute;
-            bottom: 50px;
-            left: 0;
-            width: 100%;
-            padding-left: $default-margin-small;
-            padding-right: $default-margin-small;
         }
     }
 }

@@ -166,15 +166,11 @@ export function init(jQuery, debug) {
     DEBUG = true || debug;
 
     if (DEBUG) console.info("Audio.init()");
-
-    var $audioData = jQ('[data-audio]');
-    if (DEBUG) console.info("Audio [data-audio] elements found: " + $audioData.length);
-    if ($audioData.length > 0) {
-        initHowler($audioData, false);
-    }
 }
 
 export function initAudio($element) {
+
+    if (DEBUG) console.info("Audio.initAudio()");
 
     var $audioData = $element.find('[data-audio]');
     if ($audioData.length > 0) {

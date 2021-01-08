@@ -502,8 +502,8 @@ var Mercury = function(jQ) {
     function initElements(parent) {
         // call back for Ajax methods to initialize dynamic template elements
         initFitVids();
-        initMedia();
-        initOnclickActivation();
+        initMedia(parent);
+        initOnclickActivation(parent);
         initTooltips(parent);
 
         // reset the OpenCms edit buttons
@@ -581,13 +581,16 @@ var Mercury = function(jQ) {
             $p.removeClass("concealed enlarged");
             $p.addClass("revealed");
         }
-        if (template != "none") {
+        if (template == "audio") {
+            $element.off("click");
+            $element.addClass("revealed");
+            if (window.AudioData) {
+                window.AudioData.initAudio($element);
+            }
+        } else {
             $element.remove();
             $p.append(decodeURIComponent(template));
             initFitVids();
-            if (isMedia && window.AudioData) {
-                window.AudioData.initAudio($p);
-            }
         }
     }
 

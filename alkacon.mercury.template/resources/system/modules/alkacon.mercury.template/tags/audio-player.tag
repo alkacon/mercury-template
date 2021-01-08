@@ -14,7 +14,10 @@
     description="The audio heading headline." %>
 
 <%@ attribute name="length" type="java.lang.String" required="false"
-    description="The length oth the audio file, used for the preview when the audio file is not loaded." %>
+    description="The length of the audio file, used for the preview when the audio file is not loaded." %>
+
+<%@ attribute name="date" type="java.lang.String" required="false"
+    description="The date of the media file, shown in the preview when the audio file is not loaded." %>
 
 <%@ attribute name="addMarkup" type="java.lang.String" required="false"
     description="An optional adittional markup that is appended to the generated player." %>
@@ -71,7 +74,7 @@
             <c:if test="${showHeadline}">
                 <div class="audio-headline"><%----%>
                     <c:if test="${not empty intro}">
-                        <span class="intro"><c:out value="${intro}" />:</span><%----%>
+                        <span class="intro"><c:out value="${intro}" />: </span><%----%>
                     </c:if>
                     <span class="headline"><c:out value="${headline}" /></span><%----%>
                 </div><%----%>
@@ -80,13 +83,13 @@
                 <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div><%----%>
             </div><%----%>
             <div class="audio-controls"><%----%>
-                <div class="audio-pos">${length}</div><%----%>
+                <div class="audio-pos">${date}</div><%----%>
                 <div class="audio-buttons"><%----%>
                     <div class="fa fa-stop audio-stop"></div><%----%>
                     <div class="fa fa-play audio-play"></div><%----%>
                     <div class="fa fa-forward audio-skip"></div><%----%>
                 </div><%----%>
-                <div class="audio-length"></div><%----%>
+                <div class="audio-length">${length}</div><%----%>
             </div>
         </div><%----%>
     </div><%----%>

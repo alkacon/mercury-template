@@ -186,19 +186,7 @@
         </c:when>
 
         <c:when test="${isAudio}">
-            <c:set var="template">
-                <mercury:audio-player
-                    audioUri="${content.value.MediaContent.value.Audio.value.URI.toLink}"
-                    intro="${content.value.Intro}"
-                    headline="${content.value.Title}"
-                    length="${content.value.Length}"
-                    image="${image}"
-                    ratio="${usedRatio}"
-                    autoPlay="${autoPlay}"
-                    outerDiv="preview revealed"
-                />
-            </c:set>
-            <c:set var="icon" value="fa-play" />
+            <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.audio" /></c:set>
         </c:when>
 
         <c:when test="${isFlexible}">

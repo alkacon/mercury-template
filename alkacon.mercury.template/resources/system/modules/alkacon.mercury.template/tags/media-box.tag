@@ -52,10 +52,8 @@
 
 <mercury:media-vars content="${content}" ratio="${ratio}" autoPlay="${autoPlay}">
 
-    <c:set var="directPreview" value="${isAudio}" />
-
     <c:set var="markupVisualOverlay">
-        <c:if test="${not directPreview}">
+        <c:if test="${not isAudio}">
             <div class="centered icon"><%----%>
                 <span class="fa ${icon}"></span><%----%>
                 <c:if test="${caseDynamicListNoscript or caseStandardElement}">
@@ -81,7 +79,7 @@
                 <div class="media-overlay-top">${introHeadline}</div>
             </c:if>
         </c:if>
-        <c:if test="${not directPreview}">
+        <c:if test="${not isAudio}">
             <c:if test="${(not empty content.value.Length and showMediaTime) or (not empty mediaDate)}">
                 <div class="media-overlay-bottom"><%----%>
                     <c:if test="${not empty mediaDate}"><div class="media-date">${mediaDate}</div></c:if>
@@ -98,13 +96,13 @@
         ratio="${usedRatio}">
 
         <div class="content"><%----%>
-            <c:if test="${directPreview}">
-                <c:set var="template" value="none" />
+            <c:if test="${isAudio}">
+                <c:set var="template" value="audio" />
             </c:if>
             <c:if test="${not empty template}">
                 <c:set var="mediaTemplate"><%--
                     --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
-                    --%><mercury:data-external-cookies modal="${directPreview or not autoPlay}" message="${cookieMessage}" />
+                    --%><mercury:data-external-cookies modal="${isAudio or not autoPlay}" message="${cookieMessage}" />
                 </c:set>
             </c:if>
             <div class="preview${autoPlay ? ' placeholder ensure-external-cookies' : ''}"<%--
@@ -112,17 +110,18 @@
             --%><c:if test="${autoPlay}">${' '}data-placeholder="${placeholderMessage}"</c:if><%--
             --%>${'>'}
                 <c:choose>
-                    <c:when test="${directPreview}">
+                    <c:when test="${isAudio}">
                         <mercury:audio-player
                             audioUri="${content.value.MediaContent.value.Audio.value.URI.toLink}"
-                            intro="${content.value.Intro}"
+                            intro="${empty showIntro or showIntro ? content.value.Intro : null}"
                             headline="${content.value.Title}"
-                            length="${content.value.Length}"
+                            length="${showMediaTime ? content.value.Length : null}"
+                            date="${empty mediaDate ? '0:00' : mediaDate}"
                             image="${image}"
                             ratio="${usedRatio}"
                             autoPlay="${autoPlay}"
                             addMarkup="${markupVisualOverlay}"
-                            showHeadline="${empty markupVisualOverlay}"
+                            showHeadline="${hsize == 0}"
                         />
                     </c:when>
                     <c:when test="${not autoPlay}">

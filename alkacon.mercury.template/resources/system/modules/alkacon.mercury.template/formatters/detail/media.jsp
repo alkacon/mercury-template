@@ -96,6 +96,7 @@
                     showPreface="${showPreface}"
                     showPrefaceAsSubtitle="${showPrefaceAsSubtitle}"
                     showCopyright="${showMediaCopyright}"
+                    showIntro="${showIntro}"
                     autoPlay="${autoPlay}"
                 />
             </jsp:attribute>

@@ -190,12 +190,14 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
 }
 
 
-
-$audio-border-radius:               $default-border-radius !default;
-$audio-player-padding:              $default-margin-small !default;
-$audio-player-background-color:     transparentize($body-bg, 0.25) !default;
-$audio-progress-border:             1px solid $progress-bar-bg !default;
-$audio-control-font-size:           round($font-size-base * 20) / 10 !default;
+$audio-player-color:            $text-dark;
+$audio-player-bg:               transparentize($body-bg, 0.25) !default;
+$audio-player-font-size:        14px !default;
+$audio-player-spacing:          10px !default;
+$audio-player-border-radius:    $default-border-radius !default;
+$audio-player-progress-bg:      $audio-player-color !default;
+$audio-player-progress-border:  1px solid $audio-player-progress-bg !default;
+$audio-player-progress-height:  14px !default;
 
 .type-media.audio {
 
@@ -207,81 +209,72 @@ $audio-control-font-size:           round($font-size-base * 20) / 10 !default;
         position: absolute;
         bottom: 0;
         width: 100%;
-        padding: $audio-player-padding;
+        padding: $audio-player-spacing;
+    }
+}
+
+.audio-player {
+    display: flex;
+    flex-direction: column;
+    background-color: $audio-player-bg;
+    padding: $audio-player-spacing;
+    font-size: $audio-player-font-size;
+    @include round-corners($audio-player-border-radius);
+
+    .audio-headline {
+        margin-bottom: $audio-player-spacing;
     }
 
-    .audio-player {
+    .audio-progress {
+        display: block;
+        margin-bottom: $audio-player-spacing;
+        border: $audio-player-progress-border;
+        @include round-corners($audio-player-border-radius);
+
+        .progress-bar {
+            // overwrite bootstrap standarts
+            height: $audio-player-progress-height;
+            background-color: $audio-player-progress-bg;
+            transition: none;
+            width: 0;
+        }
+    }
+
+    .audio-controls {
         display: flex;
-        flex-direction: column;
-        background-color: $audio-player-background-color;
-        padding: $audio-player-padding;
-        @include round-corners($audio-border-radius);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
 
-        .audio-progress {
-            display: block;
-            margin-bottom: $audio-player-padding;
-            border: $audio-progress-border;
-            @include round-corners($audio-border-radius);
-
-            .progress-bar {
-                height: $progress-height;
-                transition: none; // remove bootstrap standart transition
-            }
-        }
-
-        .audio-controls {
+        > div {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+            flex-basis: 33.33333%;
 
-            > div {
-                display: flex;
-                flex-basis: 33.33333%;
+            &.audio-pos,
+            &.audio-length {
+                font-weight: $font-weight-bold;
+            }
 
-                &.audio-pos,
-                &.audio-length {
-                    font-weight: $font-weight-bold;
+            &.audio-buttons {
+                justify-content: center;
+                align-items: center;
+
+                > .fa {
+                    cursor: pointer;
                 }
 
-                &.audio-buttons {
-                    justify-content: center;
-                    align-items: center;
-
-                    > .fa {
-                        cursor: pointer;
-                    }
-
-                    > .audio-play {
-                        text-align: center;
-                        margin-left: 2 * $audio-player-padding;
-                        margin-right: 2 * $audio-player-padding;
-                        width: round($audio-control-font-size * 20) / 10;
-                        font-size: $audio-control-font-size;
-                    }
-                }
-
-                &.audio-length {
-                    justify-content: flex-end;
+                > .audio-play {
+                    text-align: center;
+                    margin-left: 2 * $audio-player-spacing;
+                    margin-right: 2 * $audio-player-spacing;
+                    width: $audio-player-font-size* 4;
+                    font-size: $audio-player-font-size * 2;
                 }
             }
-        }
 
-        .wave-form-wrapper {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            padding-left: $default-margin-small;
-            padding-right: $default-margin-small;
-
-            .wave-form {
-                width: 100%;
+            &.audio-length {
+                justify-content: flex-end;
             }
-        }
-
-        .wave-audio {
-            display: none;
         }
     }
 }

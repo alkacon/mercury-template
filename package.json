@@ -43,8 +43,7 @@
     "promise-polyfill": "8.2.0",
     "shariff": "3.2.1",
     "slick-carousel": "1.8.1",
-    "tinycolor2": "1.4.2",
-    "wavesurfer.js": "4.3.0"
+    "tinycolor2": "1.4.2"
   },
   "browserslist": [
     "> 0.5%",

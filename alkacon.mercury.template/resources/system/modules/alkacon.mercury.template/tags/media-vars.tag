@@ -186,57 +186,17 @@
         </c:when>
 
         <c:when test="${isAudio}">
-            <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.audio" /></c:set>
-            <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.audio" /></c:set>
-            <c:set var="isAudio" value="${true}" />
-            <c:set var="useMediaEl" value="${false}" />
-            <c:set var="audioUri" value="${content.value.MediaContent.value.Audio.value.URI.toLink}" />
-            <c:set var="audioId"><mercury:idgen prefix="wf" uuid="${cms.element.instanceId}" /></c:set>
-            <%-- Generate audio data JSON --%>
-            <cms:jsonobject var="audioData">
-                <cms:jsonvalue key="id" value="${audioId}" />
-                <cms:jsonvalue key="src" value="${audioUri}" />
-                <cms:jsonvalue key="mediael" value="${useMediaEl}" />
-                <cms:jsonvalue key="autoplay" value="${autoPlay}" />
-                <cms:jsonvalue key="loadtxt" value="Lade (%percent)" />
-            </cms:jsonobject>
             <c:set var="template">
-                <div class="preview revealed">
-                    <c:choose>
-                        <c:when test="${not empty image}">
-                            <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
-                        </c:when>
-                        <c:otherwise>
-                            <div class="centered">No image...</div><%----%>
-                        </c:otherwise>
-                    </c:choose>
-                    <div class="audio-box">
-                        <div class="audio-player" data-audio='${audioData.compact}'>
-                            <div class="audio-progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="audio-controls">
-                                <div class="audio-pos"></div>
-                                <div class="audio-buttons">
-                                    <div class="fa fa-stop audio-stop"></div>
-                                    <div class="fa fa-play audio-play"></div>
-                                    <div class="fa fa-forward audio-skip"></div>
-                                </div>
-                                <div class="audio-length"></div>
-                            </div>
-
-                            <%--
-                            <div class="wave-time"></div>
-                            <div class="wave-form-wrapper">
-                                <div id="${audioId}" class="wave-form"></div>
-                            </div>
-                            <c:if test="${useMediaEl}">
-                                <audio controls src="${audioUri}" class="wave-audio"></audio>
-                            </c:if>
-                            --%>
-                        </div>
-                    </div>
-                </div><%----%>
+                <mercury:audio-player
+                    audioUri="${content.value.MediaContent.value.Audio.value.URI.toLink}"
+                    intro="${content.value.Intro}"
+                    headline="${content.value.Title}"
+                    length="${content.value.Length}"
+                    image="${image}"
+                    ratio="${usedRatio}"
+                    autoPlay="${autoPlay}"
+                    outerDiv="preview revealed"
+                />
             </c:set>
             <c:set var="icon" value="fa-play" />
         </c:when>

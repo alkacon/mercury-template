@@ -581,11 +581,13 @@ var Mercury = function(jQ) {
             $p.removeClass("concealed enlarged");
             $p.addClass("revealed");
         }
-        $element.remove();
-        $p.append(decodeURIComponent(template));
-        initFitVids();
-        if (isMedia && window.AudioData) {
-            window.AudioData.initAudio($p);
+        if (template != "none") {
+            $element.remove();
+            $p.append(decodeURIComponent(template));
+            initFitVids();
+            if (isMedia && window.AudioData) {
+                window.AudioData.initAudio($p);
+            }
         }
     }
 

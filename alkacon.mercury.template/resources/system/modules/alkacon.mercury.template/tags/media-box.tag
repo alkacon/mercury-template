@@ -52,13 +52,17 @@
 
 <mercury:media-vars content="${content}" ratio="${ratio}" autoPlay="${autoPlay}">
 
+    <c:set var="directPreview" value="${isAudio}" />
+
     <c:set var="markupVisualOverlay">
-        <div class="centered icon"><%----%>
-            <span class="fa ${icon}"></span><%----%>
-            <c:if test="${caseDynamicListNoscript or caseStandardElement}">
-                <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${caseStandardElement}" />
-            </c:if>
-        </div><%----%>
+        <c:if test="${not directPreview}">
+            <div class="centered icon"><%----%>
+                <span class="fa ${icon}"></span><%----%>
+                <c:if test="${caseDynamicListNoscript or caseStandardElement}">
+                    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${caseStandardElement}" />
+                </c:if>
+            </div><%----%>
+        </c:if>
         <c:if test="${showTitleOverlay}">
             <c:set var="hsize" value="${empty hsize ? 2 : hsize}" />
             <c:set var="introHeadline">
@@ -77,11 +81,13 @@
                 <div class="media-overlay-top">${introHeadline}</div>
             </c:if>
         </c:if>
-        <c:if test="${(not empty content.value.Length and showMediaTime) or (not empty mediaDate)}">
-            <div class="media-overlay-bottom"><%----%>
-                <c:if test="${not empty mediaDate}"><div class="media-date">${mediaDate}</div></c:if>
-                <c:if test="${not empty content.value.Length and showMediaTime}"><div class="media-length">${content.value.Length}</div></c:if>
-            </div><%----%>
+        <c:if test="${not directPreview}">
+            <c:if test="${(not empty content.value.Length and showMediaTime) or (not empty mediaDate)}">
+                <div class="media-overlay-bottom"><%----%>
+                    <c:if test="${not empty mediaDate}"><div class="media-date">${mediaDate}</div></c:if>
+                    <c:if test="${not empty content.value.Length and showMediaTime}"><div class="media-length">${content.value.Length}</div></c:if>
+                </div><%----%>
+            </c:if>
         </c:if>
     </c:set>
 
@@ -92,30 +98,48 @@
         ratio="${usedRatio}">
 
         <div class="content"><%----%>
+            <c:if test="${directPreview}">
+                <c:set var="template" value="none" />
+            </c:if>
             <c:if test="${not empty template}">
                 <c:set var="mediaTemplate"><%--
                     --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
-                    --%><mercury:data-external-cookies modal="${not autoPlay}" message="${cookieMessage}" />
+                    --%><mercury:data-external-cookies modal="${directPreview or not autoPlay}" message="${cookieMessage}" />
                 </c:set>
             </c:if>
             <div class="preview${autoPlay ? ' placeholder ensure-external-cookies' : ''}"<%--
             --%>${mediaTemplate}<%--
             --%><c:if test="${autoPlay}">${' '}data-placeholder="${placeholderMessage}"</c:if><%--
             --%>${'>'}
-                <c:if test="${not autoPlay}">
-                    <c:choose>
-                        <c:when test="${not empty image}">
-                            <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
-                        </c:when>
-                        <c:when test="${isYouTube and not empty youTubePreviewHtml}">
-                            <div class="centered image">${youTubePreviewHtml}</div><%----%>
-                        </c:when>
-                    </c:choose>
-                    ${markupVisualOverlay}
-                </c:if>
-                <c:if test="${autoPlay}">
-                    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
-                </c:if>
+                <c:choose>
+                    <c:when test="${directPreview}">
+                        <mercury:audio-player
+                            audioUri="${content.value.MediaContent.value.Audio.value.URI.toLink}"
+                            intro="${content.value.Intro}"
+                            headline="${content.value.Title}"
+                            length="${content.value.Length}"
+                            image="${image}"
+                            ratio="${usedRatio}"
+                            autoPlay="${autoPlay}"
+                            addMarkup="${markupVisualOverlay}"
+                            showHeadline="${empty markupVisualOverlay}"
+                        />
+                    </c:when>
+                    <c:when test="${not autoPlay}">
+                        <c:choose>
+                            <c:when test="${not empty image}">
+                                <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
+                            </c:when>
+                            <c:when test="${isYouTube and not empty youTubePreviewHtml}">
+                                <div class="centered image">${youTubePreviewHtml}</div><%----%>
+                            </c:when>
+                        </c:choose>
+                        ${markupVisualOverlay}
+                    </c:when>
+                    <c:when test="${autoPlay}">
+                        <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+                    </c:when>
+                </c:choose>
             </div><%----%>
             <c:if test="${not autoPlay and showCopyright and not empty copyright}">
                 <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>

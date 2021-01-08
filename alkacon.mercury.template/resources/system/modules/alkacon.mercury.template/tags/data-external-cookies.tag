@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="data-cookies"
+    display-name="data-external-cookies"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Generates cookie data for external elements." %>

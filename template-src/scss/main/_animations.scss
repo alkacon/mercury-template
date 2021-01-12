@@ -91,7 +91,7 @@
         .effect-raise {
             &:not(.effect-piece) {
                 &:hover {
-                    > .visual  .effect-box {
+                    > .visual .effect-box {
                         transform: scale(1.075);
                         box-shadow: 0 0 10px 1px $dropshadow;
                     }
@@ -110,7 +110,7 @@
         .effect-shadow {
             &:not(.effect-piece) {
                 &:hover {
-                    > .visual  .effect-box {
+                    > .visual .effect-box {
                         box-shadow: 0 0 10px 1px $dropshadow;
                     }
                 }
@@ -127,7 +127,7 @@
         .effect-inset {
             &:not(.effect-piece) {
                 &:hover {
-                    > .visual  .effect-box {
+                    > .visual .effect-box {
                         transform: scale(0.93);
                         box-shadow: 0 0 2px 0 $dropshadow inset;
                     }

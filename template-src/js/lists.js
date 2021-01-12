@@ -497,7 +497,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
         handleAutoLoaders();
     }
 
-    // there may be videos in the list
+    // there may be media elements in the list
     Mercury.initElements('#' + list.id);
 
     if (resultData.reloaded == "true" && reloadEntries) {
@@ -862,6 +862,8 @@ export function switchPage(id, page) {
     if (!paginationString.empty) {
         jQ(paginationString).appendTo(list.$pagination);
     }
+    // there may be media elements in the list
+    Mercury.initElements('#' + list.id);
     if (! list.$element.visible()) {
         if (DEBUG) console.info("List: switchPage() - scrolling to anchor");
         Mercury.scrollToAnchor(list.$element, -20);
@@ -883,6 +885,8 @@ export function appendPage(id, page) {
     if (!paginationString.empty) {
         jQ(paginationString).appendTo(list.$pagination);
     }
+    // there may be media elements in the list
+    Mercury.initElements('#' + list.id);
 }
 
 /**

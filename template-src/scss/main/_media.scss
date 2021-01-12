@@ -19,10 +19,6 @@
  * Source file: _media.scss
  */
 
-$preview-text-shadow: 1px 1px 1px #000, 0px 0px 1px #000;
-$preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
-
-
 .type-media {
     &.square-col {
         .preview {
@@ -57,14 +53,16 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
         position: relative;
     }
 
+    .revealed {
+        .preview {
+            cursor: auto;
+        }
+    }
+
     .preview {
         position: relative;
         cursor: pointer;
         height: 100%;
-
-        &.revealed {
-            cursor: auto;
-        }
 
         .centered {
             position: absolute;
@@ -76,7 +74,7 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
 
         .icon {
             color: #fff;
-            text-shadow: $preview-icon-shadow;
+            text-shadow: $media-preview-icon-shadow;
             font-size: 16px;
             text-align: center;
             z-index: #{$overflow-z-index + 1};
@@ -99,7 +97,7 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
             padding: 10px 20px;
             font-size: 16px;
             line-height: 1.2;
-            text-shadow: $preview-text-shadow;
+            text-shadow: $media-preview-text-shadow;
             margin: 0;
             color: #fff;
             z-index: #{$overflow-z-index + 1};
@@ -114,7 +112,7 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
             > .sub-header,
             h1, h2, h3 {
                 color: #fff;
-                text-shadow: $preview-text-shadow;
+                text-shadow: $media-preview-text-shadow;
             }
         }
 
@@ -151,6 +149,10 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
         overflow: hidden;
         background-color: #000;
         z-index: $overflow-z-index;
+
+        &.compact {
+            position: relative;
+        }
 
         iframe {
             position: absolute;
@@ -190,94 +192,135 @@ $preview-icon-shadow: 1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5);;
 }
 
 
-$audio-player-color:            $text-dark;
-$audio-player-bg:               transparentize($body-bg, 0.25) !default;
-$audio-player-font-size:        14px !default;
-$audio-player-spacing:          10px !default;
-$audio-player-border-radius:    $default-border-radius !default;
-$audio-player-progress-bg:      $audio-player-color !default;
-$audio-player-progress-border:  1px solid $audio-player-progress-bg !default;
-$audio-player-progress-height:  14px !default;
-
 .type-media.audio {
 
     .content {
         background-color: transparent;
     }
 
-    .audio-box {
+    .presized .audio-player {
         position: absolute;
+        z-index: #{$overflow-z-index + 20};
         bottom: 0;
         width: 100%;
         padding: $audio-player-spacing;
     }
+
+    .preview {
+        &.narrow {
+            .audio-stop,
+            .audio-skip {
+                display: none;
+            }
+            .audio-play {
+                width: auto;
+            }
+        }
+    }
+
+    .content.compact {
+
+        .preview {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background-color: $audio-player-compact-bg;
+
+            .audio-player .audio-box {
+                background-color: transparent;
+            }
+
+            .media-overlay-top {
+                position: static;
+                padding: $audio-player-spacing $audio-player-spacing 0 $audio-player-spacing;
+                order: -1;
+
+                > .main-header > .title,
+                > .sub-header,
+                h1, h2, h3 {
+                    color: $headings-color;
+                    text-shadow: none;
+                }
+            }
+        }
+    }
 }
 
 .audio-player {
-    display: flex;
-    flex-direction: column;
-    background-color: $audio-player-bg;
-    padding: $audio-player-spacing;
-    font-size: $audio-player-font-size;
-    @include round-corners($audio-player-border-radius);
 
-    .audio-headline {
-        margin-bottom: $audio-player-spacing;
-    }
-
-    .audio-progress {
-        display: block;
-        margin-bottom: $audio-player-spacing;
-        border: $audio-player-progress-border;
+    .audio-box {
+        display: flex;
+        flex-direction: column;
+        background-color: $audio-player-bg;
+        padding: $audio-player-spacing;
+        font-size: $audio-player-font-size;
         @include round-corners($audio-player-border-radius);
 
-        .progress-bar {
-            // overwrite bootstrap standarts
-            height: $audio-player-progress-height;
-            background-color: $audio-player-progress-bg;
-            transition: none;
-            width: 0;
+        .audio-headline {
+            margin-bottom: $audio-player-spacing;
+            font-weight: $font-weight-bold;
         }
-    }
 
-    .audio-controls {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        .audio-progress {
+            display: block;
+            margin-bottom: $audio-player-spacing;
+            border: $audio-player-progress-border;
+            @include round-corners($audio-player-border-radius);
 
-        > div {
+            .progress-bar {
+                // overwrite bootstrap standarts
+                height: $audio-player-progress-height;
+                background-color: $audio-player-progress-bg;
+                transition: none;
+                width: 0;
+            }
+        }
+
+        .audio-controls {
             display: flex;
-            flex-basis: 33.33333%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
 
-            &.audio-pos,
-            &.audio-length {
-                font-weight: $font-weight-bold;
-            }
+            > div {
+                display: flex;
+                flex-basis: 33.33333%;
 
-            &.audio-buttons {
-                justify-content: center;
-                align-items: center;
-
-                > .fa {
-                    cursor: pointer;
+                &.audio-pos,
+                &.audio-length {
+                    font-weight: $font-weight-bold;
                 }
 
-                > .audio-play {
-                    text-align: center;
-                    margin-left: 2 * $audio-player-spacing;
-                    margin-right: 2 * $audio-player-spacing;
-                    width: $audio-player-font-size* 4;
-                    font-size: $audio-player-font-size * 2;
-                }
-            }
+                &.audio-buttons {
+                    justify-content: center;
+                    align-items: center;
 
-            &.audio-length {
-                justify-content: flex-end;
+                    > .fa {
+                        cursor: pointer;
+                    }
+
+                    > .audio-play {
+                        text-align: center;
+                        margin-left: 2 * $audio-player-spacing;
+                        margin-right: 2 * $audio-player-spacing;
+                        width: $audio-player-font-size* 4;
+                        font-size: $audio-player-font-size * 2;
+                    }
+                }
+
+                &.audio-length {
+                    justify-content: flex-end;
+                }
             }
         }
     }
 }
+
+.piece > .visual .audio-player .copyright > div {
+    padding-right: $audio-player-spacing;
+    background-color: transparent;
+    bottom: 1px;
+ }
 
 // Onclick activation
 
@@ -291,7 +334,7 @@ $audio-player-progress-height:  14px !default;
     .oa-heading,
     .oa-notice {
         color: #fff;
-        text-shadow: $preview-text-shadow;
+        text-shadow: $media-preview-text-shadow;
         padding: 0 $default-margin;
         margin: 0;
         z-index: #{$overflow-z-index + 2};
@@ -303,7 +346,7 @@ $audio-player-progress-height:  14px !default;
 
     .oa-icon {
         color: #fff;
-        text-shadow: $preview-icon-shadow;
+        text-shadow: $media-preview-icon-shadow;
         text-align: center;
         z-index: #{$overflow-z-index + 1};
 

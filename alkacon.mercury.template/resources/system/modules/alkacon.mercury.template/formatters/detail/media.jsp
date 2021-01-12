@@ -51,8 +51,7 @@
 <c:set var="showIntro"              value="${titleOption ne 'none'}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
-
-<mercury:media-vars content="${content}" ratio="${imageRatio}" mediaCheckOnly="${true}">
+<c:set var="isAudio"                value="${value.MediaContent.value.Audio.isSet}" />
 
 <mercury:nl />
 <div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
@@ -74,8 +73,8 @@
     <jsp:attribute name="visual">
         <mercury:key-visual-piece
             image="${image}"
-            showOverlay="${showOverlay}"
             effect="${visualEffect}"
+            showOverlay="${showOverlay}"
             imageRatio="${imageRatio}"
             showImageSubtitle="${showImageSubtitle}"
             showImageZoom="${showImageZoom}"
@@ -87,8 +86,8 @@
             <jsp:attribute name="markupImage">
                 <mercury:media-box
                     content="${content}"
-                    ratio="${imageRatio}"
                     effect="${visualEffect}"
+                    ratio="${imageRatio}"
                     hsize="${hsize}"
                     mediaDate="${showDate ? datePrefix.concat(date) : ''}"
                     showMediaTime="${showMediaTime}"
@@ -121,8 +120,6 @@
 
 </div><%----%>
 <mercury:nl />
-
-</mercury:media-vars>
 
 </cms:formatter>
 </mercury:init-messages>

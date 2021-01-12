@@ -37,7 +37,7 @@
     description="Controls if the media time is displayed as overlay on the media. Default is 'false'." %>
 
 <%@ attribute name="effect" type="java.lang.String" required="false"
-    description="Option 'class' atttributes to add to the media box div for effects." %>
+    description="Optional 'class' atttributes to add to the media box div for effects." %>
 
 <%@ attribute name="autoPlay" type="java.lang.Boolean" required="false"
     description="Controls if the media is directly played without clicking on the element first. Default is 'false'." %>
@@ -51,6 +51,10 @@
 
 
 <mercury:media-vars content="${content}" ratio="${ratio}" autoPlay="${autoPlay}">
+
+    <c:set var="addPaddingBox"      value="${not (isAudio and empty image)}" />
+    <c:set var="addPlaceholder"     value="${autoPlay and not empty placeholderMessage}" />
+    <c:set var="effect"             value="${(empty effect) or (effect eq 'none') ? '' : effect.concat(' effect-piece')}" />
 
     <c:set var="markupVisualOverlay">
         <c:if test="${not isAudio}">
@@ -90,39 +94,38 @@
     </c:set>
 
     <mercury:padding-box
-        cssWrapper="effect-box media-box ${not autoPlay ? effect : ''}"
+        cssWrapper="media-box ${not autoPlay ? effect : ''}"
         height="${height}"
         width="${width}"
-        ratio="${usedRatio}">
+        ratio="${usedRatio}"
+        test="${addPaddingBox}">
 
-        <div class="content"><%----%>
-            <c:if test="${isAudio}">
-                <c:set var="template" value="audio" />
-            </c:if>
+        <div class="content${addPaddingBox ? '' : ' compact' }"><%----%>
             <c:if test="${not empty template}">
                 <c:set var="mediaTemplate"><%--
                     --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
                     --%><mercury:data-external-cookies modal="${isAudio or not autoPlay}" message="${cookieMessage}" />
                 </c:set>
             </c:if>
-            <div class="preview${autoPlay ? ' placeholder ensure-external-cookies' : ''}"<%--
+             <div class="preview${autoPlay ? ' ensure-external-cookies' : ''}${addPlaceholder ? ' placeholder' : ''}"<%--
             --%>${mediaTemplate}<%--
-            --%><c:if test="${autoPlay}">${' '}data-placeholder="${placeholderMessage}"</c:if><%--
+            --%><c:if test="${addPlaceholder}">${' '}data-placeholder="${placeholderMessage}"</c:if><%--
             --%>${'>'}
                 <c:choose>
                     <c:when test="${isAudio}">
+                        <c:if test="${not empty image}">
+                            <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
+                        </c:if>
                         <mercury:audio-player
                             audioUri="${content.value.MediaContent.value.Audio.value.URI.toLink}"
                             intro="${empty showIntro or showIntro ? content.value.Intro : null}"
-                            headline="${content.value.Title}"
+                            headline="${hsize == 0 ? content.value.Title : null}"
                             length="${showMediaTime ? content.value.Length : null}"
                             date="${empty mediaDate ? '0:00' : mediaDate}"
-                            image="${image}"
-                            ratio="${usedRatio}"
+                            copyright="${showCopyright ? copyright : null}"
                             autoPlay="${autoPlay}"
-                            addMarkup="${markupVisualOverlay}"
-                            showHeadline="${hsize == 0}"
                         />
+                        ${markupVisualOverlay}
                     </c:when>
                     <c:when test="${not autoPlay}">
                         <c:choose>
@@ -140,7 +143,7 @@
                     </c:when>
                 </c:choose>
             </div><%----%>
-            <c:if test="${not autoPlay and showCopyright and not empty copyright}">
+            <c:if test="${not isAudio and not autoPlay and showCopyright and not empty copyright}">
                 <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
             </c:if>
         </div><%----%>

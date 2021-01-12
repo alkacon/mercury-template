@@ -546,7 +546,7 @@ $sq-margin: 20px;
 
     @include media-breakpoint-down(sm) {
 
-        &.text-below-on-xs:not(.play) {
+        &.text-below-on-xs:not(.revealed) {
             // reset tiles so that the overlay is below the image
             padding: 0 !important;
 

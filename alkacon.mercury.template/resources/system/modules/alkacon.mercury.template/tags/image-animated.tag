@@ -41,7 +41,11 @@
     description="Enables a zoom option for the image." %>
 
 <%@ attribute name="addEffectBox" type="java.lang.Boolean" required="false"
-    description="Adds an CSS selectors required for anmiantion effects. Default is 'true'." %>
+    description="Adds the 'effect-box' CSS selector used for animation effects. Default is 'true'." %>
+
+<%@ attribute name="addEffectPiece" type="java.lang.Boolean" required="false"
+    description="Adds the 'effect-piece' CSS selector used for animation effects. Default is 'false'.
+    If this is set to 'true' is will set 'addEffectBox' to 'false'." %>
 
 <%@ attribute name="cssImage" type="java.lang.String" required="false"
     description="'class' atttribute to set directly on the generated img tag."%>
@@ -88,8 +92,16 @@
     ade="${empty ade ? false : ade}">
 
 <c:set var="test" value="${empty test ? true : test}" />
-<c:set var="addEffectBox" value="${empty addEffectBox ? true : addEffectBox}" />
 <c:set var="setTitle" value="${empty setTitle ? true : setTitle}" />
+
+<c:choose>
+    <c:when test="${addEffectPiece}">
+        <c:set var="effectWrapper" value="effect-piece " />
+    </c:when>
+    <c:when test="${empty addEffectBox or addEffectBox}">
+        <c:set var="effectWrapper" value="effect-box " />
+    </c:when>
+</c:choose>
 
 <c:choose>
 
@@ -105,14 +117,14 @@
             />
         </c:set>
     </c:if>
-    <div class="${addEffectBox ? 'effect-box ':''}${cssWrapper}" ${attrWrapper}><%----%>
+    <div class="${effectWrapper}${cssWrapper}" ${attrWrapper}><%----%>
         <mercury:image-srcset
             imagebean="${imageBean}"
             sizes="${sizes}"
             alt="${imageTitle}"
             title="${setTitle ? (showCopyright ? imageTitle : imageTitleCopyright) : null}"
             copyright="${showCopyright ? imageCopyrightHtml : null}"
-            cssImage="${addEffectBox ? 'animated ':''}${cssImage}"
+            cssImage="${empty effectWrapper ? '' : 'animated '}${cssImage}"
             cssWrapper="${showImageZoom ? 'zoomer' : ''}"
             attrImage="${attrImage}"
             attrWrapper="${imageDndAttr}"

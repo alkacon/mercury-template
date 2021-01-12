@@ -42,9 +42,9 @@ function formatTime(seconds) {
     return result;
 }
 
-function initHowler($audioData, afterPreview) {
+function initAudio($audioData, aP) {
 
-    var aP = afterPreview || false;
+    aP = aP || false;
 
     $audioData.each(function(){
 
@@ -52,9 +52,9 @@ function initHowler($audioData, afterPreview) {
         var data = $audioElement.data('audio') || {};
 
         var src = data.src;
-        var autoplay = aP || data.autoplay;
+        var autoplay = aP || (!Mercury.isEditMode() && data.autoplay);
 
-        if (DEBUG) console.info("Audio: Howler init src=[" + src + "]");
+        if (DEBUG) console.info("Audio: Howler init src=[" + src + "] autoplay=" + autoplay);
 
         var sound = new Howl({
             src: [src],
@@ -163,17 +163,19 @@ function updateProgress(sound) {
 export function init(jQuery, debug) {
 
     jQ = jQuery;
-    DEBUG = true || debug;
+    DEBUG = debug;
 
     if (DEBUG) console.info("Audio.init()");
+
+    Howler.unload();
 }
 
-export function initAudio($element) {
+export function initAudioElement($element, autoplay) {
 
-    if (DEBUG) console.info("Audio.initAudio()");
+    if (DEBUG) console.info("Audio.initAudio() autoplay=" + autoplay);
 
     var $audioData = $element.find('[data-audio]');
     if ($audioData.length > 0) {
-        initHowler($audioData, true);
+        initAudio($audioData, autoplay);
     }
 }

@@ -85,6 +85,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+
+<c:set var="width" value="${cms:mathRound(cms:toNumber(fn:substringBefore(ratio, '-'), 4))}" />
+<c:set var="height" value="${cms:mathRound(cms:toNumber(fn:substringAfter(ratio, '-'), 3))}" />
+<c:set var="usedRatio" value="${width}-${height}" />
+
 <c:choose>
     <c:when test="${content.value.MediaContent.value.YouTube.isSet}">
         <c:set var="isYouTube" value="${true}" />
@@ -100,115 +105,109 @@
     </c:when>
 </c:choose>
 
-<c:set var="width" value="${cms:mathRound(cms:toNumber(fn:substringBefore(ratio, '-'), 4))}" />
-<c:set var="height" value="${cms:mathRound(cms:toNumber(fn:substringAfter(ratio, '-'), 3))}" />
-<c:set var="usedRatio" value="${width}-${height}" />
+<mercury:list-element-status>
 
-<c:if test="${not mediacheckonly}">
-
-    <mercury:list-element-status>
-
-    <c:if test="${content.value.Image.isSet}">
-        <c:set var="image" value="${content.value.Image}" />
-    </c:if>
-
-    <c:if test="${content.value.Copyright.isSet}">
-        <c:set var="copyright" value="${content.value.Copyright}" />
-    </c:if>
-
-    <fmt:setLocale value="${cms.locale}" />
-    <cms:bundle basename="alkacon.mercury.template.messages">
-
-    <c:choose>
-
-        <c:when test="${isYouTube}">
-            <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.youtube" /></c:set>
-            <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.youtube" /></c:set>
-            <c:set var="youTubeId" value="${content.value.MediaContent.value.YouTube.value.YouTubeId}" />
-            <c:set var="defaultPreview"><mercury:schema-param param="mercuryYouTubePreviewDefault" /></c:set>
-            <c:set var="youTubePreviewImg" value="${content.value.MediaContent.value.YouTube.value.YouTubePreview.isSet ?
-                content.value.MediaContent.value.YouTube.value.YouTubePreview : defaultPreview}" />
-            <c:set var="template"><%--
-            --%><iframe src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
-                --%>autoplay=1&rel=0&iv_load_policy=3&modestbranding=1" <%--
-                --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen><%--
-            --%></iframe><%----%>
-            </c:set>
-            <c:set var="icon" value="fa-youtube-play" />
-            <c:set var="cssClass" value="video" />
-
-            <c:choose>
-                <c:when test="${youTubePreviewImg eq 'none'}">
-                    <c:set var="youTubePreviewHtml" value="${null}" />
-                </c:when>
-                <c:otherwise>
-                    <c:set var="youTubePreviewHtml">
-                        <c:set var="srcSet"><%--
-                        --%>https://img.youtube.com/vi/${youTubeId}/default.jpg 120w, <%--
-                        --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w</c:set>
-                        <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
-                            <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
-                        </c:if>
-                        <mercury:image-lazyload
-                            srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
-                            srcSet="${srcSet}"
-                            alt="${content.value.Title}"
-                            cssImage="animated"
-                            noScript="${caseStandardElement}"
-                            lazyLoad="${not caseDynamicListNoscript}"
-                        />
-                    </c:set>
-                </c:otherwise>
-            </c:choose>
-        </c:when>
-
-        <c:when test="${isSoundCloud}">
-            <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.soundcloud" /></c:set>
-            <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.soundcloud" /></c:set>
-            <c:set var="soundCloudTrackId" value="${content.value.MediaContent.value.SoundCloud.value.SoundCloudTrackId}" />
-            <c:set var="template"><%--
-                --%><iframe width="100%" height="100%" scrolling="no" style="border: none;" allow="autoplay" <%--
-                --%>src="https://w.soundcloud.com/player/?url=<%--
-                    --%>https%3A//api.soundcloud.com/tracks/${soundCloudTrackId}&<%--
-                        --%>auto_play=true&<%--
-                        --%>color=%23XXcolor-main-themeXX&<%--
-                        --%>buying=false&<%--
-                        --%>sharing=true&<%--
-                        --%>show_user=true&<%--
-                        --%>hide_related=true&<%--
-                        --%>show_comments=false&<%--
-                        --%>show_reposts=false&<%--
-                        --%>show_teaser=false&<%--
-                        --%>visual=true"><%--
-            --%></iframe><%----%>
-            </c:set>
-            <c:set var="icon" value="fa-soundcloud" />
-        </c:when>
-
-        <c:when test="${isAudio}">
-            <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.audio" /></c:set>
-        </c:when>
-
-        <c:when test="${isFlexible}">
-            <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.generic" /></c:set>
-            <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.generic" /></c:set>
-            <c:set var="template" value="${content.value.MediaContent.value.Flexible.value.Code}" />
-            <c:choose>
-                <c:when test="${content.value.MediaContent.value.Flexible.value.Icon.isSet}">
-                    <c:set var="icon" value="fa-${content.value.MediaContent.value.Flexible.value.Icon}" />
-                </c:when>
-                <c:otherwise>
-                    <c:set var="icon" value="fa-play" />
-                </c:otherwise>
-            </c:choose>
-        </c:when>
-
-    </c:choose>
-
-    </cms:bundle>
-
-    </mercury:list-element-status>
-
+<c:if test="${content.value.Image.isSet}">
+    <c:set var="image" value="${content.value.Image}" />
 </c:if>
+
+<c:if test="${content.value.Copyright.isSet}">
+    <c:set var="copyright" value="${content.value.Copyright}" />
+</c:if>
+
+<fmt:setLocale value="${cms.locale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
+
+<c:choose>
+
+    <c:when test="${isYouTube}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.youtube" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.youtube" /></c:set>
+        <c:set var="youTubeId" value="${content.value.MediaContent.value.YouTube.value.YouTubeId}" />
+        <c:set var="defaultPreview"><mercury:schema-param param="mercuryYouTubePreviewDefault" /></c:set>
+        <c:set var="youTubePreviewImg" value="${content.value.MediaContent.value.YouTube.value.YouTubePreview.isSet ?
+            content.value.MediaContent.value.YouTube.value.YouTubePreview : defaultPreview}" />
+        <c:set var="template"><%--
+        --%><iframe src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
+            --%>autoplay=1&rel=0&iv_load_policy=3&modestbranding=1" <%--
+            --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen><%--
+        --%></iframe><%----%>
+        </c:set>
+        <c:set var="icon" value="fa-youtube-play" />
+        <c:set var="cssClass" value="video" />
+
+        <c:choose>
+            <c:when test="${youTubePreviewImg eq 'none'}">
+                <c:set var="youTubePreviewHtml" value="${null}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="youTubePreviewHtml">
+                    <c:set var="srcSet"><%--
+                    --%>https://img.youtube.com/vi/${youTubeId}/default.jpg 120w, <%--
+                    --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w</c:set>
+                    <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
+                        <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
+                    </c:if>
+                    <mercury:image-lazyload
+                        srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
+                        srcSet="${srcSet}"
+                        alt="${content.value.Title}"
+                        cssImage="animated"
+                        noScript="${caseStandardElement}"
+                        lazyLoad="${not caseDynamicListNoscript}"
+                    />
+                </c:set>
+            </c:otherwise>
+        </c:choose>
+    </c:when>
+
+    <c:when test="${isSoundCloud}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.soundcloud" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.soundcloud" /></c:set>
+        <c:set var="soundCloudTrackId" value="${content.value.MediaContent.value.SoundCloud.value.SoundCloudTrackId}" />
+        <c:set var="template"><%--
+            --%><iframe width="100%" height="100%" scrolling="no" style="border: none;" allow="autoplay" <%--
+            --%>src="https://w.soundcloud.com/player/?url=<%--
+                --%>https%3A//api.soundcloud.com/tracks/${soundCloudTrackId}&<%--
+                    --%>auto_play=true&<%--
+                    --%>color=%23XXcolor-main-themeXX&<%--
+                    --%>buying=false&<%--
+                    --%>sharing=true&<%--
+                    --%>show_user=true&<%--
+                    --%>hide_related=true&<%--
+                    --%>show_comments=false&<%--
+                    --%>show_reposts=false&<%--
+                    --%>show_teaser=false&<%--
+                    --%>visual=true"><%--
+        --%></iframe><%----%>
+        </c:set>
+        <c:set var="icon" value="fa-soundcloud" />
+    </c:when>
+
+    <c:when test="${isAudio}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.audio" /></c:set>
+        <c:set var="template" value="audio" />
+    </c:when>
+
+    <c:when test="${isFlexible}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.generic" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.generic" /></c:set>
+        <c:set var="template" value="${content.value.MediaContent.value.Flexible.value.Code}" />
+        <c:choose>
+            <c:when test="${content.value.MediaContent.value.Flexible.value.Icon.isSet}">
+                <c:set var="icon" value="fa-${content.value.MediaContent.value.Flexible.value.Icon}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="icon" value="fa-play" />
+            </c:otherwise>
+        </c:choose>
+    </c:when>
+
+</c:choose>
+
+</cms:bundle>
+
+</mercury:list-element-status>
+
 
 <jsp:doBody/>

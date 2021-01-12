@@ -54,11 +54,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+<c:set var="effect" value="${(empty effect) or (effect eq 'none') ? '' : effect}" />
+
 <c:choose>
 <c:when test="${showOverlay and image.value.Image.isSet}">
     <mercury:image-animated
         image="${image}"
-        cssWrapper="${effect} overlay"
+        cssWrapper="overlay ${effect} "
+        addEffectPiece="${true}"
         ade="${ade}"
         showCopyright="${showImageCopyright}"
         showImageZoom="${showImageZoom}"
@@ -87,6 +90,7 @@
             <mercury:image-animated
                 image="${image}"
                 cssWrapper="${effect}"
+                addEffectPiece="${true}"
                 ade="${ade}"
                 showCopyright="${showImageCopyright}"
                 showImageZoom="${showImageZoom}"

@@ -20,8 +20,10 @@
 <c:set var="title"   value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
 <c:set var="preface" value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : value.Preface}" />
 
+<c:set var="isAudio" value="${value.MediaContent.value.Audio.isSet}" />
+
 <mercury:teaser-piece
-    cssWrapper="type-media ${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-media${isAudio ? ' audio ' : ''}${setEffect}${' '}${setCssWrapper}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"

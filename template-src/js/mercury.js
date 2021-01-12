@@ -280,7 +280,7 @@ var Mercury = function(jQ) {
 
     function isEditMode() {
         // returns "true" if OpenCms runs in edit mode
-        // this means "offline" project AND edit buttons are enables in ADE
+        // this means the "offline" project is selected AND the edit buttons are enabled in ADE
         // this information about is directly rendered into the template by OpenCms when the page is created
         // it is stored in the #template-info HTML element
         return ("true" == m_info["editMode"]);
@@ -500,6 +500,9 @@ var Mercury = function(jQ) {
 
 
     function initElements(parent) {
+
+        if (DEBUG) console.info("Mercury.initElements() parent=" + parent);
+
         // call back for Ajax methods to initialize dynamic template elements
         initFitVids();
         initMedia(parent);
@@ -553,7 +556,6 @@ var Mercury = function(jQ) {
     function initPlaceholder($element, callback) {
         if (isEditMode() && (typeof $element.data("placeholder") !== "undefined")) {
             // add the hide element class
-            // .placeholder class should better be added on the server, to show the placeholder even if JS is not active
             $element.addClass("placeholder");
             if (! $element.hasClass("error")) {
                 // .placeholder.error class should NOT call the callback
@@ -571,23 +573,21 @@ var Mercury = function(jQ) {
     }
 
 
-    function revalOnClickTemplate($element, template, isMedia) {
+    function revalOnClickTemplate($element, template, isMedia, autoplay) {
+        if (DEBUG) console.info("revalOnClickTemplate(): isMedia=" + isMedia + " autoplay=" + autoplay);
         $element.removeClass("reveal-registered");
         var $p = $element.parent();
-        if (isMedia) {
-            $p.parent().removeClass("effect-raise effect-shadow effect-rotate effect-box enlarged");
-            $p.parent().addClass("play");
-        } else {
-            $p.removeClass("concealed enlarged");
-            $p.addClass("revealed");
-        }
+        $p.removeClass("concealed enlarged");
+        $p.addClass("revealed");
         if (template == "audio") {
+            autoplay = (typeof autoplay === "undefined") ? true : autoplay;
             $element.off("click");
-            $element.addClass("revealed");
             if (window.AudioData) {
-                window.AudioData.initAudio($element);
+                window.AudioData.initAudioElement($element, autoplay);
             }
         } else {
+            var $piece = $element.parents(".effect-piece").first();
+            $piece.removeClass("effect-raise effect-shadow effect-rotate effect-box");
             $element.remove();
             $p.append(decodeURIComponent(template));
             initFitVids();
@@ -608,20 +608,25 @@ var Mercury = function(jQ) {
                 if (typeof color !== "undefined") {
                     template = template.replace("XXcolor-main-themeXX", color.substring(1));
                 }
-                if ($element.hasClass("ensure-external-cookies")) {
-                    // this external element should be shown directly (e.g. video that plays when the page is loaded)
+                if ($element.width() < 300) {
+                    $element.addClass("narrow");
+                }
+                // for autoplay check if element is rendered in our template like the audio player, or from an external server
+                var noAutoPlay = (template == "audio") && (!PrivacyPolicy.cookiesAcceptedExternal() || Mercury.isEditMode());
+                if ($element.hasClass("ensure-external-cookies") && !noAutoPlay) {
+                    // this external element should be rendered directly (e.g. video that plays when the page is loaded)
                     if (PrivacyPolicy.cookiesAcceptedExternal()) {
-                        // only directly show this if external cookies are allowed
+                        // only render this if external cookies are allowed
                         var revealFunction = function() {
-                            revalOnClickTemplate($element, template, isMedia);
+                            revalOnClickTemplate($element, template, isMedia, !Mercury.isEditMode());
                         };
                         if (!initPlaceholder($element, revealFunction)) {
                             // add placeholder if in edit mode, otherwise directly show the element
                             revealFunction();
                         }
                     }
-                    // if the external cookies are not accepted, the template will not be shown directly
-                    // if the element contains cookie data (as it should), then the cookie notice will be displayed from the privacy policy
+                    // if external cookies are not accepted, the external element will not be rendered directly
+                    // in this case the external cookie notice will be rendered from initExternalElements() in privacy-policy.js
                 } else {
                     // this external element has a preview template that has to be clicked before the external content is shown
                     if (! $element.hasClass("reveal-registered")) {
@@ -869,6 +874,7 @@ var Mercury = function(jQ) {
                     "./audio.js").then( function ( AudioData ) {
                     AudioData.init(jQ, DEBUG);
                     window.AudioData = AudioData;
+                    initMedia();
                 });
             } catch (err) {
                 console.warn("AudioData.init() error", err);

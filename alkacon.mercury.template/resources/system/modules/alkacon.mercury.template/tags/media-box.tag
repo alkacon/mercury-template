@@ -132,8 +132,8 @@
                             <c:when test="${not empty image}">
                                 <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
                             </c:when>
-                            <c:when test="${isYouTube and not empty youTubePreviewHtml}">
-                                <div class="centered image">${youTubePreviewHtml}</div><%----%>
+                            <c:when test="${not empty mediaPreviewHtml}">
+                                <div class="centered image">${mediaPreviewHtml}</div><%----%>
                             </c:when>
                         </c:choose>
                         ${markupVisualOverlay}
@@ -143,8 +143,8 @@
                     </c:when>
                 </c:choose>
             </div><%----%>
-            <c:if test="${not isAudio and not autoPlay and showCopyright and not empty copyright}">
-                <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
+            <c:if test="${not isAudio and not autoPlay and showCopyright and ((not empty copyright) or (not empty mediaCopyright))}">
+                <div class="copyright"><div>&copy; ${empty copyright ? mediaCopyright : copyright}</div></div><%----%>
             </c:if>
         </div><%----%>
     </mercury:padding-box>

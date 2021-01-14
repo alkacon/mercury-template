@@ -41,6 +41,9 @@
 <%@ variable name-given="isSoundCloud" declare="true"
     description="If true, the media file is a SoundCloud audio track." %>
 
+<%@ variable name-given="isBvideo" declare="true"
+    description="If true, the media file is a bynder video." %>
+
 <%@ variable name-given="isAudio" declare="true"
     description="If true, the media file is an audio track." %>
 
@@ -53,14 +56,17 @@
 <%@ variable name-given="youTubePreviewImg" declare="true"
     description="The preview image for the YouTube video." %>
 
-<%@ variable name-given="youTubePreviewHtml" declare="true"
-    description="The full HTML markup for the YouTube video preview image." %>
-
 <%@ variable name-given="template" declare="true"
     description="The template to use for the media file." %>
 
 <%@ variable name-given="icon" declare="true"
     description="The overlay icon for the media file." %>
+
+<%@ variable name-given="mediaPreviewHtml" declare="true"
+    description="Optional HTML markup for media video preview that uses images taken directly from the external media server." %>
+
+<%@ variable name-given="mediaCopyright" declare="true"
+    description="Optional copyright information taken directly from the external media server." %>
 
 <%@ variable name-given="cssClass" declare="true"
     description="An additional CSS class to be used in the HTML generated later." %>
@@ -97,6 +103,9 @@
     <c:when test="${content.value.MediaContent.value.SoundCloud.isSet}">
         <c:set var="isSoundCloud" value="${true}" />
     </c:when>
+    <c:when test="${content.value.MediaContent.value.Bvideo.isSet}">
+        <c:set var="isBvideo" value="${true}" />
+    </c:when>
     <c:when test="${content.value.MediaContent.value.Audio.isSet}">
         <c:set var="isAudio" value="${true}" />
     </c:when>
@@ -114,6 +123,8 @@
 <c:if test="${content.value.Copyright.isSet}">
     <c:set var="copyright" value="${content.value.Copyright}" />
 </c:if>
+
+<c:set var="mediaPreviewHtml" value="${null}" />
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -136,29 +147,24 @@
         <c:set var="icon" value="fa-youtube-play" />
         <c:set var="cssClass" value="video" />
 
-        <c:choose>
-            <c:when test="${youTubePreviewImg eq 'none'}">
-                <c:set var="youTubePreviewHtml" value="${null}" />
-            </c:when>
-            <c:otherwise>
-                <c:set var="youTubePreviewHtml">
-                    <c:set var="srcSet"><%--
-                    --%>https://img.youtube.com/vi/${youTubeId}/default.jpg 120w, <%--
-                    --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w</c:set>
-                    <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
-                        <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
-                    </c:if>
-                    <mercury:image-lazyload
-                        srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
-                        srcSet="${srcSet}"
-                        alt="${content.value.Title}"
-                        cssImage="animated"
-                        noScript="${caseStandardElement}"
-                        lazyLoad="${not caseDynamicListNoscript}"
-                    />
-                </c:set>
-            </c:otherwise>
-        </c:choose>
+        <c:if test="${youTubePreviewImg ne 'none'}">
+            <c:set var="mediaPreviewHtml">
+                <c:set var="srcSet"><%--
+                --%>https://img.youtube.com/vi/${youTubeId}/default.jpg 120w, <%--
+                --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w</c:set>
+                <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
+                    <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
+                </c:if>
+                <mercury:image-lazyload
+                    srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
+                    srcSet="${srcSet}"
+                    alt="${content.value.Title}"
+                    cssImage="animated"
+                    noScript="${caseStandardElement}"
+                    lazyLoad="${not caseDynamicListNoscript}"
+                />
+            </c:set>
+       </c:if>
     </c:when>
 
     <c:when test="${isSoundCloud}">
@@ -182,6 +188,46 @@
         --%></iframe><%----%>
         </c:set>
         <c:set var="icon" value="fa-soundcloud" />
+    </c:when>
+
+    <c:when test="${isBvideo}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.bvideo" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.bvideo" /></c:set>
+        <c:set var="bvideoData" value="${cms:jsonToMap(content.value.MediaContent.value.Bvideo.value.Data)}" />
+        <c:set var="bvideoId" value="${bvideoData['id']}" />
+        <c:set var="bvideoPreviewImg" value="${bvideoData['webimage']}" />
+        <c:set var="bvideoCopyright" value="${bvideoData['copyright']}" />
+        <c:set var="bvideoAccountUrl" value="${bvideoData['account-url']}" />
+        <c:set var="template">
+            <div data-bynder-widget="video-item" data-media-id="${bvideoId}" data-autoplay="true" data-muted="false" ><%--
+            --%><script <%--
+                --%>id="bynder-widgets-js" <%--
+                --%>data-account-url="${bvideoAccountUrl}" <%--
+                --%>data-language="de" <%--
+                --%>src="https://d8ejoa1fys2rk.cloudfront.net/bynder-embed/latest/bynder-embed.js"><%----%>
+                </script><%--
+            --%></div><%----%>
+        </c:set>
+        <c:if test="${(not empty bvideoPreviewImg) and (bvideoPreviewImg ne 'none')}">
+            <c:set var="mediaPreviewHtml">
+                <c:set var="srcSet"><%--
+                --%>${fn:replace(bvideoPreviewImg, 'webimage', 'thul')} 250w, <%--
+                --%>${bvideoPreviewImg} 800w</c:set>
+                <mercury:image-lazyload
+                    srcUrl="${bvideoPreviewImg}"
+                    srcSet="${srcSet}"
+                    alt="${content.value.Title}"
+                    cssImage="animated"
+                    noScript="${caseStandardElement}"
+                    lazyLoad="${not caseDynamicListNoscript}"
+                />
+            </c:set>
+        </c:if>
+        <c:if test="${(not empty bvideoCopyright) and (bvideoCopyright ne 'none')}">
+            <c:set var="mediaCopyright" value="${bvideoCopyright}" />
+        </c:if>
+        <c:set var="icon" value="fa-youtube-play" />
+        <c:set var="cssClass" value="video" />
     </c:when>
 
     <c:when test="${isAudio}">

@@ -3,6 +3,7 @@
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediayoutube.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediasoundcloud.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediabvideo.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediaaudio.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/mediaflexible.xsd"/>
 
@@ -17,6 +18,7 @@
     <xsd:complexType name="OpenCmsMediaChoice">
         <xsd:choice>
             <xsd:element name="YouTube" type="OpenCmsMediaYoutube" minOccurs="0" />
+            <xsd:element name="Bvideo" type="OpenCmsMediaBvideo" minOccurs="0" />
             <xsd:element name="SoundCloud" type="OpenCmsMediaSoundCloud" minOccurs="0" />
             <xsd:element name="Audio" type="OpenCmsMediaAudio" minOccurs="0" />
             <xsd:element name="Flexible" type="OpenCmsMediaFlexible" minOccurs="0" />
@@ -30,6 +32,10 @@
                 <Setting>
                     <PropertyName>YouTube</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaChoice.YouTube)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>Bvideo</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MediaChoice.Bvideo)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>SoundCloud</PropertyName>

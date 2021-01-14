@@ -22,6 +22,7 @@
 <jsp:useBean id="valueMap"      class="java.util.HashMap" />
 <jsp:useBean id="params"        class="java.util.HashMap" />
 <jsp:useBean id="settings"      class="java.util.HashMap" />
+<jsp:useBean id="noWrapper"     class="java.util.HashMap" />
 
 <c:set var="isSideGroup"        value="${variant eq 'side-group'}" />
 <c:set var="isSideContainer"    value="${fn:contains(cms.container.type, 'side-group')}" />
@@ -124,10 +125,12 @@
                     This is why the logoElement is duplicated before / after the meta link element.
                 --%>
 
+                <c:set target="${noWrapper}" property="cssWrapper"              value="" />
+
                 <c:if test="${showMetaAside}">
                     <c:set var="logoElement">
-                        <c:set target="${settings}" property="cssWrapper"         value="header-image" />
-                        <c:set target="${settings}" property="showImageLink"      value="true" />
+                        <c:set target="${settings}" property="cssWrapper"       value="header-image" />
+                        <c:set target="${settings}" property="showImageLink"    value="true" />
                         <mercury:container type="image-minimal" name="header-image" css="h-logo p-xs-12 p-lg-${logoCols}" title="${value.Title}" settings="${settings}" />
                     </c:set>
                 </c:if>
@@ -175,7 +178,7 @@
                 <c:set var="navBarElement">
                      <div class="h-nav"><%----%>
                         <mercury:div css="co-lg-xl" test="${not showNavAside}">
-                            <mercury:container type="nav-main" name="header-nav-main" css="nav-main-container" title="${value.Title}" />
+                            <mercury:container type="nav-main" name="header-nav-main" css="nav-main-container" title="${value.Title}" settings="${noWrapper}" />
                         </mercury:div>
                     </div><%----%>
                     <mercury:nl />
@@ -192,14 +195,14 @@
                 <c:set var="breadcrumbElement">
                     <c:if test="${showBreadcrumbs and ((not empty cms.elementsInContainers['breadcrumbs']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="h-bc"><%----%>
-                            <mercury:container type="nav-breadcrumbs" name="header-breadcrumbs" css="container" title="${value.Title}" />
+                            <mercury:container type="nav-breadcrumbs" name="header-breadcrumbs" css="container" title="${value.Title}" settings="${noWrapper}" />
                         </div><%----%>
                         <mercury:nl />
                     </c:if>
                 </c:set>
 
                 <mercury:nl />
-                <header class="area-header fh <%----%>
+                <header class="area-header fh header-notfixed <%----%>
                     ${logoAlignment}${' '}
                     ${logoSize}${' '}
                     ${logoPadding}${' '}

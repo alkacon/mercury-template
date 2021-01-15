@@ -107,7 +107,7 @@
                     --%><mercury:data-external-cookies modal="${isAudio or not autoPlay}" message="${cookieMessage}" />
                 </c:set>
             </c:if>
-             <div class="preview${autoPlay ? ' ensure-external-cookies' : ''}${addPlaceholder ? ' placeholder' : ''}"<%--
+             <div class="preview ${cssClass}${autoPlay ? ' ensure-external-cookies' : ''}${addPlaceholder ? ' placeholder' : ''}"<%--
             --%>${mediaTemplate}<%--
             --%><c:if test="${addPlaceholder}">${' '}data-placeholder="${placeholderMessage}"</c:if><%--
             --%>${'>'}

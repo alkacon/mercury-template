@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.275</version>
+		<version>11.0.1.277</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6101,7 +6101,12 @@
 			<uuidresource>20567653-4458-11eb-bc9c-0242ac11002b</uuidresource>
 			<datecreated>Tue, 22 Dec 2020 13:18:05 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for audio media]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -6113,7 +6118,12 @@
 			<uuidresource>349798f9-564e-11eb-bf3f-0242ac11002b</uuidresource>
 			<datecreated>Thu, 14 Jan 2021 09:52:25 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for bynder video media]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

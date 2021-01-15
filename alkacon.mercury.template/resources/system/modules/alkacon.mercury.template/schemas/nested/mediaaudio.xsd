@@ -23,7 +23,8 @@
                 <Setting>
                     <PropertyName>URI</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaAudio.AudioURI)]]></DisplayName>
-                    <Widget>file</Widget>
+                    <Widget><![CDATA[%(param:mercuryAudioUriWidget)]]></Widget>
+                    <WidgetConfig><![CDATA[%(param:mercuryAudioUriWidgetConfig)]]></WidgetConfig>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

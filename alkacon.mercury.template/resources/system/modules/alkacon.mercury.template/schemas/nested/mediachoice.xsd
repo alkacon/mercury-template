@@ -35,7 +35,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Bvideo</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MediaChoice.Bvideo)]]></DisplayName>
+                    <DisplayName><![CDATA[%(param:mercuryBvideoMediaChoice)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>SoundCloud</PropertyName>
@@ -43,7 +43,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Audio</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MediaChoice.Audio)]]></DisplayName>
+                    <DisplayName><![CDATA[%(param:mercuryAudioMediaChoice)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>Flexible</PropertyName>

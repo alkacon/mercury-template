@@ -203,7 +203,7 @@
             --%><script <%--
                 --%>id="bynder-widgets-js" <%--
                 --%>data-account-url="${bvideoAccountUrl}" <%--
-                --%>data-language="de" <%--
+                --%>data-language="${cms.locale.language}" <%--
                 --%>src="https://d8ejoa1fys2rk.cloudfront.net/bynder-embed/latest/bynder-embed.js"><%----%>
                 </script><%--
             --%></div><%----%>

@@ -43,7 +43,6 @@
     description="Controls if the media is directly played without clicking on the element first. Default is 'false'." %>
 
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -121,7 +120,7 @@
                             intro="${empty showIntro or showIntro ? content.value.Intro : null}"
                             headline="${hsize == 0 ? content.value.Title : null}"
                             length="${showMediaTime ? content.value.Length : null}"
-                            date="${empty mediaDate ? '0:00' : mediaDate}"
+                            date="${empty mediaDate ? (not empty content.value.Length and showMediaTime ? '0:00' : null) : mediaDate}"
                             copyright="${showCopyright ? copyright : null}"
                             autoPlay="${autoPlay}"
                         />

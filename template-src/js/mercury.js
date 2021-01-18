@@ -611,14 +611,14 @@ var Mercury = function(jQ) {
                 if ($element.width() < 300) {
                     $element.addClass("narrow");
                 }
-                // for autoplay check if element is rendered in our template like the audio player, or from an external server
-                var noAutoPlay = (template == "audio") && (!PrivacyPolicy.cookiesAcceptedExternal() || Mercury.isEditMode());
+                // for autoplay check if element is rendered in our template - like e.g. the audio player - or from an external server
+                var noAutoPlay = (template == "audio") && (!PrivacyPolicy.cookiesAcceptedExternal() || isEditMode());
                 if ($element.hasClass("ensure-external-cookies") && !noAutoPlay) {
                     // this external element should be rendered directly (e.g. video that plays when the page is loaded)
                     if (PrivacyPolicy.cookiesAcceptedExternal()) {
                         // only render this if external cookies are allowed
                         var revealFunction = function() {
-                            revalOnClickTemplate($element, template, isMedia, !Mercury.isEditMode());
+                            revalOnClickTemplate($element, template, isMedia, !isEditMode());
                         };
                         if (!initPlaceholder($element, revealFunction)) {
                             // add placeholder if in edit mode, otherwise directly show the element

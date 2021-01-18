@@ -172,10 +172,16 @@ export function init(jQuery, debug) {
 
 export function initAudioElement($element, autoplay) {
 
-    if (DEBUG) console.info("Audio.initAudio() autoplay=" + autoplay);
+    if (DEBUG) console.info("Audio.initAudioElement() autoplay=" + autoplay);
 
-    var $audioData = $element.find('[data-audio]');
-    if ($audioData.length > 0) {
-        initAudio($audioData, autoplay);
+    if (PrivacyPolicy.cookiesAccepted()) {
+
+        var $audioData = $element.find('[data-audio]');
+        if ($audioData.length > 0) {
+            initAudio($audioData, autoplay);
+        }
+
+    } else {
+        if (DEBUG) console.info("Audio.initAudioElement() Cookies not accepted be the user - Audio playback is disabled!");
     }
 }

@@ -15,9 +15,6 @@
 <%@ attribute name="autoPlay" type="java.lang.Boolean" required="false"
     description="Controls if the media is directly played without clicking on the element first. Default is 'false'." %>
 
-<%@ attribute name="mediaCheckOnly" type="java.lang.Boolean" required="false"
-    description="If 'true' only a quick check to find out which media is used will be performed. Default is 'false'." %>
-
 
 <%@ variable name-given="image" declare="true"
     description="The optional image of the media file, as set in the content." %>

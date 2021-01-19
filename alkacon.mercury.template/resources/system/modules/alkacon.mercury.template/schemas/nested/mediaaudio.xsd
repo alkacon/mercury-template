@@ -12,7 +12,7 @@
 
     <xsd:complexType name="OpenCmsMediaAudio">
         <xsd:sequence>
-            <xsd:element name="URI" type="OpenCmsVarLink" />
+            <xsd:element name="Data" type="OpenCmsVarLink" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -21,10 +21,10 @@
         <xsd:appinfo>
             <FieldSettings>
                 <Setting>
-                    <PropertyName>URI</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MediaAudio.AudioURI)]]></DisplayName>
-                    <Widget><![CDATA[%(param:mercuryAudioUriWidget)]]></Widget>
-                    <WidgetConfig><![CDATA[%(param:mercuryAudioUriWidgetConfig)]]></WidgetConfig>
+                    <PropertyName>Data</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MediaAudio.Data)]]></DisplayName>
+                    <Widget><![CDATA[%(param:mercuryAudioDataWidget)]]></Widget>
+                    <WidgetConfig><![CDATA[%(param:mercuryAudioDataWidgetConfig)]]></WidgetConfig>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

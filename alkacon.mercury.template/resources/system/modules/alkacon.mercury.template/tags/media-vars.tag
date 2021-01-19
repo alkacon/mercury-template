@@ -38,11 +38,11 @@
 <%@ variable name-given="isSoundCloud" declare="true"
     description="If true, the media file is a SoundCloud audio track." %>
 
-<%@ variable name-given="isBvideo" declare="true"
-    description="If true, the media file is a bynder video." %>
+<%@ variable name-given="isVideo" declare="true"
+    description="If true, the media file is an external video." %>
 
 <%@ variable name-given="isAudio" declare="true"
-    description="If true, the media file is an audio track." %>
+    description="If true, the media file is an external audio track." %>
 
 <%@ variable name-given="isFlexible" declare="true"
     description="If true, the media is created form a flexible embed code." %>
@@ -61,9 +61,6 @@
 
 <%@ variable name-given="mediaPreviewHtml" declare="true"
     description="Optional HTML markup for media video preview that uses images taken directly from the external media server." %>
-
-<%@ variable name-given="mediaCopyright" declare="true"
-    description="Optional copyright information taken directly from the external media server." %>
 
 <%@ variable name-given="cssClass" declare="true"
     description="An additional CSS class to be used in the HTML generated later." %>
@@ -100,8 +97,8 @@
     <c:when test="${content.value.MediaContent.value.SoundCloud.isSet}">
         <c:set var="isSoundCloud" value="${true}" />
     </c:when>
-    <c:when test="${content.value.MediaContent.value.Bvideo.isSet}">
-        <c:set var="isBvideo" value="${true}" />
+    <c:when test="${content.value.MediaContent.value.Video.isSet}">
+        <c:set var="isVideo" value="${true}" />
     </c:when>
     <c:when test="${content.value.MediaContent.value.Audio.isSet}">
         <c:set var="isAudio" value="${true}" />
@@ -187,31 +184,61 @@
         <c:set var="icon" value="fa-soundcloud" />
     </c:when>
 
-    <c:when test="${isBvideo}">
-        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.bvideo" /></c:set>
-        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.bvideo" /></c:set>
-        <c:set var="bvideoData" value="${cms:jsonToMap(content.value.MediaContent.value.Bvideo.value.Data)}" />
-        <c:set var="bvideoId" value="${bvideoData['id']}" />
-        <c:set var="bvideoPreviewImg" value="${bvideoData['webimage']}" />
-        <c:set var="bvideoCopyright" value="${bvideoData['copyright']}" />
-        <c:set var="bvideoAccountUrl" value="${bvideoData['account-url']}" />
+    <c:when test="${isVideo}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.video" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.video" /></c:set>
+        <c:set var="videoData" value="${content.value.MediaContent.value.Video.value.Data}" />
+        <c:choose>
+            <c:when test="${fn:startsWith(videoData,'{')}">
+                <c:set var="videoData" value="${cms:jsonToMap(videoData)}" />
+                <c:set var="videoSrc" value="${videoData['preview-url']}" />
+                <c:set var="videoCopyright" value="${videoData['copyright']}" />
+                <c:set var="videoPreviewImg" value="${videoData['webimage']}" />
+                <c:set var="extPreviewImg" value="${not empty videoPreviewImg}" />
+                <c:set var="embedFromBynder" value="${empty videoSrc}" />
+                <c:if test="${embedFromBynder}">
+                    <c:set var="mamVideoId" value="${videoData['id']}" />
+                    <c:set var="mamVideoAccountUrl" value="${videoData['account-url']}" />
+                </c:if>
+            </c:when>
+            <c:otherwise>
+                <c:set var="videoSrc" value="${videoData}" />
+                <c:if test="${image.isSet}">
+                    <c:set var="videoPreviewImg" value="${image.value.Image.toLink}" />
+                </c:if>
+            </c:otherwise>
+        </c:choose>
         <c:set var="template">
-            <div data-bynder-widget="video-item" data-media-id="${bvideoId}" data-autoplay="true" data-muted="false" ><%--
-            --%><script <%--
-                --%>id="bynder-widgets-js" <%--
-                --%>data-account-url="${bvideoAccountUrl}" <%--
-                --%>data-language="${cms.locale.language}" <%--
-                --%>src="https://d8ejoa1fys2rk.cloudfront.net/bynder-embed/latest/bynder-embed.js"><%----%>
-                </script><%--
-            --%></div><%----%>
+            <c:choose>
+                <c:when test="${embedFromBynder}">
+                    <div data-bynder-widget="video-item" data-media-id="${mamVideoId}" data-autoplay="true" data-muted="false" ><%--
+                    --%><script <%--
+                        --%>id="bynder-widgets-js" <%--
+                        --%>data-account-url="${mamVideoAccountUrl}" <%--
+                        --%>data-language="${cms.locale.language}" <%--
+                        --%>src="https://d8ejoa1fys2rk.cloudfront.net/bynder-embed/latest/bynder-embed.js"><%----%>
+                        </script><%--
+                    --%></div><%----%>
+                </c:when>
+                <c:otherwise>
+                    <video <%--
+                        --%>class="fitin" <%--
+                        --%>controls <%--
+                        --%>autoplay <%--
+                        --%>preload="auto" <%--
+                        --%>src="${videoSrc}" <%--
+                        --%><c:if test="${not empty videoPreviewImg}">poster="${videoPreviewImg}"></c:if><%----%>
+                    </video><%----%>
+                </c:otherwise>
+            </c:choose>
         </c:set>
-        <c:if test="${(not empty bvideoPreviewImg) and (bvideoPreviewImg ne 'none')}">
+        <c:if test="${extPreviewImg and (not empty videoPreviewImg) and (videoPreviewImg ne 'none')}">
             <c:set var="mediaPreviewHtml">
                 <c:set var="srcSet"><%--
-                --%>${fn:replace(bvideoPreviewImg, 'webimage', 'thul')} 250w, <%--
-                --%>${bvideoPreviewImg} 800w</c:set>
+                --%>${fn:replace(videoPreviewImg, 'webimage', 'thul')} 250w, <%--
+                --%>${videoPreviewImg} 800w</c:set>
                 <mercury:image-lazyload
-                    srcUrl="${bvideoPreviewImg}"
+                    srcUrl="${videoPreviewImg}"
                     srcSet="${srcSet}"
                     alt="${content.value.Title}"
                     cssImage="animated"
@@ -220,8 +247,8 @@
                 />
             </c:set>
         </c:if>
-        <c:if test="${(not empty bvideoCopyright) and (bvideoCopyright ne 'none')}">
-            <c:set var="mediaCopyright" value="${bvideoCopyright}" />
+        <c:if test="${(not empty videoCopyright) and (videoCopyright ne 'none')}">
+            <c:set var="copyright" value="${videoCopyright}" />
         </c:if>
         <c:set var="icon" value="fa-youtube-play" />
         <c:set var="cssClass" value="video" />

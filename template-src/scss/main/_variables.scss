@@ -741,15 +741,15 @@ $sitemap-colors:                    $bg-colors !default;
 $color-facebook:                    #3b5998 !default;
 $color-youtube:                     #ff0000 !default;
 $color-twitter:                     #55acee !default;
-$color-linkedin:                    #0976b4 !default;
 $color-github:                      #777777 !default;
-$color-slideshare:                  #e98325 !default;
 $color-xing:                        #126567 !default;
 $color-rss:                         #ee802f !default;
 $color-whatsapp:                    #5cbe4a !default;
-$color-linkedin:                    #0077b5 !default;
+$color-linkedin:                    #0976b4 !default;
 $color-instagram:                   #d6249f !default;
 $color-mail:                        #999999 !default;
+$color-wallsio:                     #000000 !default;
+$color-slideshare:                  #e98325 !default;
 
 
 // Social links / Shariff
@@ -767,17 +767,18 @@ $social-links-border-width:         0 !default;
 // Map to generate the social icon styles from
 
 $social-links:
-    (facebook, facebook, $color-facebook),
-    (youtube, youtube, $color-youtube),
-    (twitter, twitter, $color-twitter),
-    (github, github, $color-github),
-    (xing, xing, $color-xing),
-    (rss, rss, $color-rss),
-    (whatsapp, whatsapp, $color-whatsapp),
-    (linkedin, linkedin, $color-linkedin),
-    (instagram, instagram, $color-instagram),
-    (mail, envelope, $color-mail),
-    (slideshare, slideshare, $color-slideshare) !default;
+    (facebook, $color-facebook),
+    (youtube, $color-youtube),
+    (twitter, $color-twitter),
+    (github, $color-github),
+    (xing, $color-xing),
+    (rss, $color-rss),
+    (whatsapp, $color-whatsapp),
+    (linkedin, $color-linkedin),
+    (instagram, $color-instagram),
+    (mail, $color-mail),
+    (wallsio, $color-wallsio),
+    (slideshare, $color-slideshare) !default;
 
 
 // Tooltips

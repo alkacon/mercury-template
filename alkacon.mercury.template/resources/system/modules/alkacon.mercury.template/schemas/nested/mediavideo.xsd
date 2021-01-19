@@ -2,17 +2,17 @@
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
 
-    <xsd:element name="MediaBvideoData" type="OpenCmsMediaBvideoData"/>
+    <xsd:element name="MediaVideoData" type="OpenCmsMediaVideoData"/>
 
-    <xsd:complexType name="OpenCmsMediaBvideoData">
+    <xsd:complexType name="OpenCmsMediaVideoData">
         <xsd:sequence>
-            <xsd:element name="MediaBvideo" type="OpenCmsMediaBvideo" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MediaVideo" type="OpenCmsMediaVideo" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="OpenCmsMediaBvideo">
+    <xsd:complexType name="OpenCmsMediaVideo">
         <xsd:sequence>
-            <xsd:element name="Data" type="OpenCmsString" />
+            <xsd:element name="Data" type="OpenCmsVarLink" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -22,9 +22,9 @@
             <FieldSettings>
                 <Setting>
                     <PropertyName>Data</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MediaBvideo.Data)]]></DisplayName>
-                    <Widget><![CDATA[%(param:mercuryBvideoDataWidget)]]></Widget>
-                    <WidgetConfig><![CDATA[%(param:mercuryBvideoDataWidgetConfig)]]></WidgetConfig>
+                    <DisplayName><![CDATA[%(key.label.MediaVideo.Data)]]></DisplayName>
+                    <Widget><![CDATA[%(param:mercuryVideoDataWidget)]]></Widget>
+                    <WidgetConfig><![CDATA[%(param:mercuryVideoDataWidgetConfig)]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

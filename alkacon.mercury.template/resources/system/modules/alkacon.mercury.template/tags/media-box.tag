@@ -116,7 +116,7 @@
                             <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
                         </c:if>
                         <mercury:audio-player
-                            audioUri="${content.value.MediaContent.value.Audio.value.URI.toLink}"
+                            audioUri="${content.value.MediaContent.value.Audio.value.Data.toLink}"
                             intro="${empty showIntro or showIntro ? content.value.Intro : null}"
                             headline="${hsize == 0 ? content.value.Title : null}"
                             length="${showMediaTime ? content.value.Length : null}"
@@ -142,8 +142,8 @@
                     </c:when>
                 </c:choose>
             </div><%----%>
-            <c:if test="${not isAudio and not autoPlay and showCopyright and ((not empty copyright) or (not empty mediaCopyright))}">
-                <div class="copyright"><div>&copy; ${empty copyright ? mediaCopyright : copyright}</div></div><%----%>
+            <c:if test="${not isAudio and not autoPlay and showCopyright and ((not empty copyright))}">
+                <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
             </c:if>
         </div><%----%>
     </mercury:padding-box>

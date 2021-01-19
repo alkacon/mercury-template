@@ -16,11 +16,11 @@
         none:%(key.msg.option.media.youtube.none)
     ]]></param>
 
-    <param name="mercuryBvideoMediaChoice">%(key.label.MediaChoice.Bvideo)</param>
+    <param name="mercuryVideoMediaChoice">%(key.label.MediaChoice.Video)</param>
     <param name="mercuryAudioMediaChoice">%(key.label.MediaChoice.Audio)</param>
-    <param name="mercuryBvideoDataWidget">string</param>
-    <param name="mercuryBvideoDataWidgetConfig"></param>
-    <param name="mercuryAudioUriWidget">file</param>
-    <param name="mercuryAudioUriWidgetConfig"></param>
+    <param name="mercuryVideoDataWidget">file</param>
+    <param name="mercuryVideoDataWidgetConfig"></param>
+    <param name="mercuryAudioDataWidget">file</param>
+    <param name="mercuryAudioDataWidgetConfig"></param>
 
 </params>

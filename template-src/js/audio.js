@@ -174,7 +174,7 @@ export function initAudioElement($element, autoplay) {
 
     if (DEBUG) console.info("Audio.initAudioElement() autoplay=" + autoplay);
 
-    if (PrivacyPolicy.cookiesAccepted()) {
+    if (PrivacyPolicy.cookiesAcceptedExternal()) {
 
         var $audioData = $element.find('[data-audio]');
         if ($audioData.length > 0) {

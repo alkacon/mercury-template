@@ -115,6 +115,12 @@
         text-align: center;
         font-size: $social-links-size;
     }
+
+    .bgi {
+        width: #{$social-links-box-height - 2*$social-links-border-width};
+        height: #{$social-links-box-height - 2*$social-links-border-width};
+        vertical-align: top;
+    }
 }
 
 
@@ -208,7 +214,7 @@
 
 // Social icons default style is grey and colored on hover
 
-@each $social-link, $social-icon, $social-color in $social-links {
+@each $social-link, $social-color in $social-links {
 
     .social-icons li.#{$social-link} a {
         &:hover {
@@ -236,7 +242,7 @@
         color: $text-light;
     }
 
-    @each $social-link, $social-icon, $social-color in $social-links {
+    @each $social-link, $social-color in $social-links {
 
         li.#{$social-link} a {
             background-color: $social-color;
@@ -269,6 +275,11 @@
     // youtube red does not change enough if calcualted automatically
     &.colored li.youtube a:hover {
         background-color: #c00;
+    }
+
+    // wallsio black does not change if calcualted automatically
+    &.colored li.wallsio a:hover {
+        background-color: #444;
     }
 }
 

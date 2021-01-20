@@ -247,7 +247,7 @@
                 />
             </c:set>
         </c:if>
-        <c:if test="${(not empty videoCopyright) and (videoCopyright ne 'none')}">
+        <c:if test="${(empty copyright) and (not empty videoCopyright) and (videoCopyright ne 'none')}">
             <c:set var="copyright" value="${videoCopyright}" />
         </c:if>
         <c:set var="icon" value="fa-youtube-play" />

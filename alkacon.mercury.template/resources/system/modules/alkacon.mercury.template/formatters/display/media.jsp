@@ -23,7 +23,7 @@
 <c:set var="isAudio" value="${value.MediaContent.value.Audio.isSet}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-media${isAudio ? ' audio ' : ''}${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-media ${isAudio ? 'audio ' : ''}${setEffect}${' '}${setCssWrapper}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"

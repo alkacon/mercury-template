@@ -505,12 +505,42 @@ var Mercury = function(jQ) {
 
         // call back for Ajax methods to initialize dynamic template elements
         initFitVids();
-        initMedia(parent);
+        // in case a dynamic list contains audio elements, make sure the required audio script is available
+        loadAudioScript(function() { initMedia(parent) });
         initOnclickActivation(parent);
         initTooltips(parent);
 
         // reset the OpenCms edit buttons
         debounce(_OpenCmsReinitEditButtons, 500);
+    }
+
+
+    function loadAudioScript(callback) {
+        // load audio script if required
+        var audioScriptRequired = requiresModule(".type-media.audio, [data-audio]");
+        if (audioScriptRequired && (typeof window.AudioData === "undefined")) {
+            window.AudioData = false;
+            if (DEBUG) console.info("Mercury.loadAudioScript() - Loading audio script...");
+            try {
+                import(
+                    /* webpackChunkName: "mercury-audio" */
+                    "./audio.js").then( function ( AudioData ) {
+                    if (DEBUG) console.info("Mercury.loadAudioScript() - Audio script was loaded!");
+                    AudioData.init(jQ, DEBUG);
+                    window.AudioData = AudioData;
+                    if (typeof callback === "function") {
+                        callback();
+                    }
+                });
+            } catch (err) {
+                console.warn("Mercury.loadAudioScript() error", err);
+            }
+        } else {
+            if (DEBUG) console.info("Mercury.loadAudioScript() - Audio script " + (audioScriptRequired ? "alreay loaded." : "not required."));
+            if (typeof callback === "function") {
+                callback();
+            }
+        }
     }
 
 
@@ -674,7 +704,7 @@ var Mercury = function(jQ) {
 
 
     function addInit(initFunction) {
-        // Add a function to the template script init process
+        // add a function to the template script init process
         if (DEBUG) console.info("Mercury added init function: " + initFunction.name);
         window.mercury(initFunction);
     }
@@ -867,19 +897,7 @@ var Mercury = function(jQ) {
             }
         }
 
-        if (requiresModule(".type-media.audio, [data-audio]")) {
-            try {
-                import(
-                    /* webpackChunkName: "mercury-audio" */
-                    "./audio.js").then( function ( AudioData ) {
-                    AudioData.init(jQ, DEBUG);
-                    window.AudioData = AudioData;
-                    initMedia();
-                });
-            } catch (err) {
-                console.warn("AudioData.init() error", err);
-            }
-        }
+        loadAudioScript();
 
         if (requiresModule(".type-imageseries, [data-imagezoom]")) {
             try {

@@ -47,6 +47,7 @@ var Mercury = function(jQ) {
     "use strict";
 
     var DEBUG = false || (getParameter("jsdebug") != null);
+    var VERBOSE = DEBUG && (getParameter("jsverbose") != null);
 
     // container for information passed from CSS to JavaScript
     var m_info = {};
@@ -435,8 +436,7 @@ var Mercury = function(jQ) {
 
     // Update Affix elements
     function updateAffix() {
-        var verbose = false;
-        if (DEBUG && verbose) console.info("Affix: update, m_affixElements=" + m_affixElements.length);
+        if (VERBOSE) console.info("Affix: update, m_affixElements=" + m_affixElements.length);
         for (var i=0; i<m_affixElements.length; i++) {
             var toolbarHeight = toolbarHeight();
             var affix = m_affixElements[i];
@@ -451,12 +451,12 @@ var Mercury = function(jQ) {
             var top = $parent.offset().top - toolbarHeight + topOffset - topOffsetFixed;
             var bottom = top + (pHeight - eHeight) - topOffset;
 
-            if (DEBUG && verbose) console.info("Affix: docHeight=" + docHeight + " pHeight=" +  pHeight + " eHeight=" +  eHeight + " top=" + top + " bottom=" + bottom + " scrollTop=" + scrollTop);
+            if (VERBOSE) console.info("Affix: docHeight=" + docHeight + " pHeight=" +  pHeight + " eHeight=" +  eHeight + " top=" + top + " bottom=" + bottom + " scrollTop=" + scrollTop);
 
             var isFixedTop = scrollTop > top;
             var isFixedBottom = isFixedTop && (scrollTop >= bottom);
 
-            if (DEBUG && verbose) console.info("Affix isFixed=" + (isFixedTop || isFixedBottom) + " isFixedTop=" + isFixedTop + " isFixedBottom=" + isFixedBottom);
+            if (VERBOSE) console.info("Affix isFixed=" + (isFixedTop || isFixedBottom) + " isFixedTop=" + isFixedTop + " isFixedBottom=" + isFixedBottom);
             if (isFixedBottom) {
                 $element.removeClass("affix affix-top").addClass("affix-bottom");
                 $element.css("top", pHeight - eHeight);
@@ -472,9 +472,8 @@ var Mercury = function(jQ) {
 
     // Init Affix elements
     function initAffixes() {
-        var verbose = false;
         var $affixes = jQ('.affix-parent .affix-box');
-        if (DEBUG) console.info(".affix-parent .affix-box elements found: " + $affixes.length);
+        if (DEBUG) console.info("Mercury.initAffixes() .affix-parent .affix-box elements found: " + $affixes.length);
         $affixes.each(function() {
             var $element = jQ(this);
             var $parent = $element.parents(".affix-parent").first();
@@ -486,11 +485,11 @@ var Mercury = function(jQ) {
             var options = getCssDataFromJQuery($element);
             var data = parseJson(options);
             if (typeof data.topFixed === "undefined" ) { data.topFixed = 0 };
-            if (DEBUG && verbose) console.info("Affix: css JSON data is=" + options + " topFixed=" + data.topFixed);
+            if (VERBOSE) console.info("Affix: css JSON data is=" + options + " topFixed=" + data.topFixed);
             affix.top = parseInt(topCss, 10);
             affix.topFixed = data.topFixed;
             m_affixElements.push(affix);
-            if (DEBUG && verbose) console.info("Affix: added top=" + affix.top + " topFixed=" + affix.topFixed);
+            if (VERBOSE) console.info("Affix: added top=" + affix.top + " topFixed=" + affix.topFixed);
         });
         if (m_affixElements.length > 0) {
             m_$window.on('scroll resize', function() { updateAffix() }); // can not use debouce, will be to "jaggy"
@@ -564,7 +563,7 @@ var Mercury = function(jQ) {
         parent = parent || '';
         var selector = parent + ' [data-toggle="tooltip"]';
         var $tooltips = jQ(selector);
-        if (DEBUG) console.info(selector + " tooltips found: " +  $tooltips.length);
+        if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " +  $tooltips.length);
             if ($tooltips.length > 0) {
             $tooltips.tooltip({
                 container: 'body',
@@ -627,7 +626,7 @@ var Mercury = function(jQ) {
 
     function initOnclickTemplates(selector, isMedia) {
         var $onclickTemplates = jQ(selector);
-        if (DEBUG) console.info("initOnclickTemplates(): " + selector + " elements found: " + $onclickTemplates.length);
+        if (DEBUG) console.info("Mercury.initOnclickTemplates(): " + selector + " elements found: " + $onclickTemplates.length);
         $onclickTemplates.each(function() {
 
             var $element = jQ(this);
@@ -715,7 +714,7 @@ var Mercury = function(jQ) {
         // the idea is that additional JavaScrips are started from here rather then registering their own "window.onload" event
         // this way it can be ensured that the required page functions are already initialized when the additional JS is executed
         var $initScripts = jQ('.mercury-initscript');
-        if (DEBUG) console.info(".mercury-initscript elements found: " + $initScripts.length);
+        if (DEBUG) console.info("Mercury.initScripts() .mercury-initscript elements found: " + $initScripts.length);
         $initScripts.each(function() {
 
             var $element = jQ(this);
@@ -759,28 +758,6 @@ var Mercury = function(jQ) {
         }
     }
 
-
-    function init() {
-        // Template script main init function!
-        // This is called directly by jQuery(document).ready from a script embedded on the page generated by OpenCms
-        if (DEBUG) console.info("Mercury.init() - Modularized version");
-        window.Mercury = Mercury;
-
-        try {
-            initJavaScriptMarker(); // set JavaScript marker class to <html>
-        } catch (err) {
-            console.warn("Mercury.initJavaScriptMarker() error", err);
-        }
-        try {
-            initLazyImageLoading();
-        } catch (err) {
-            console.warn("Mercury.initLazyImageLoading() error", err);
-        }
-
-        waitForCss();
-    }
-
-
     function initAfterCss() {
 
         if (DEBUG) console.info("Mercury.initAfterCss() - CSS wait time: " + m_cssTimer + "ms");
@@ -793,40 +770,45 @@ var Mercury = function(jQ) {
         } catch (err) {
             console.warn("Mercury.initInfo() error", err);
         }
+
         try {
             initAffixes();
         } catch (err) {
             console.warn("Mercury.initAffixes() error", err);
         }
 
-        // initialize default modules
         try {
             PrivacyPolicy.init(jQ, DEBUG);
             window.PrivacyPolicy = PrivacyPolicy;
         } catch (err) {
             console.warn("PrivacyPolicy.init() error", err);
         }
+
         try {
             initElements();
         } catch (err) {
             console.warn("Mercury.initElements() error", err);
         }
+
         try {
             NavigationElements.init(jQ, DEBUG);
         } catch (err) {
             console.warn("Navigation.init() error", err);
         }
+
         try {
             DynamicListElemements.init(jQ, DEBUG);
             window.DynamicList = DynamicListElemements;
         } catch (err) {
             console.warn("List.init() error", err);
         }
+
         try {
             DisqusElements.init(jQ, DEBUG);
         } catch (err) {
             console.warn("Disqus.init() error", err);
         }
+
         try {
             AnalyticElements.init(jQ, DEBUG);
         } catch (err) {
@@ -843,7 +825,7 @@ var Mercury = function(jQ) {
                     SliderSlick.init(jQ, DEBUG);
                 });
             } catch (err) {
-                console.warn("Mercury SliderSlick.init() error", err);
+                console.warn("SliderSlick.init() error", err);
             }
         }
 
@@ -897,8 +879,6 @@ var Mercury = function(jQ) {
             }
         }
 
-        loadAudioScript();
-
         if (requiresModule(".type-imageseries, [data-imagezoom]")) {
             try {
                 import(
@@ -907,7 +887,7 @@ var Mercury = function(jQ) {
                     ImageSeries.init(jQ, DEBUG);
                 });
             } catch (err) {
-                console.warn("Mercury ImageSeries.init() error", err);
+                console.warn("ImageSeries.init() error", err);
             }
         }
 
@@ -965,6 +945,26 @@ var Mercury = function(jQ) {
     }
 
 
+    function init() {
+        // main init function - called from jQuery(document).ready() - see below in this script
+        if (DEBUG) console.info("Mercury.init() - Modularized version");
+        window.Mercury = Mercury;
+
+        try {
+            initJavaScriptMarker();
+        } catch (err) {
+            console.warn("Mercury.initJavaScriptMarker() error", err);
+        }
+        try {
+            initLazyImageLoading();
+        } catch (err) {
+            console.warn("Mercury.initLazyImageLoading() error", err);
+        }
+
+        waitForCss();
+    }
+
+
     // public available functions
     return {
         init: init,
@@ -999,6 +999,7 @@ var Mercury = function(jQ) {
 __webpack_public_path__ = function() {
     return __scriptPath.replace("/mercury.js", "/");
 }();
+
 
 jQuery(document).ready(function() {
     Mercury.init();

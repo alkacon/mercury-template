@@ -47,7 +47,7 @@ export function init(jQuery, debug) {
     if (DEBUG) console.info("MasonryList.init()");
 
     var $listElements = jQ('.masonry-list .list-dynamic');
-    if (DEBUG) console.info(".masonry-list .list-dynamic elements found: " + $listElements.length);
+    if (DEBUG) console.info("MasonryList.init() .masonry-list .list-dynamic elements found: " + $listElements.length);
 
     if ($listElements.length > 0 ) {
         $listElements.each(function() {

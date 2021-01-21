@@ -710,7 +710,7 @@ function generatePaginationItem(liClasses, isDisabled, isActive, page, title, la
  */
 function combineGroups($groups, isStatic) {
     isStatic = isStatic || false;
-    if (DEBUG) console.info("List: Combining list with " + $groups.length + " groups for a " + isStatic ? "static" : "dynamic" + " list" );
+    if (DEBUG) console.info("List: Combining list with " + $groups.length + " groups for a " + (isStatic ? "static" : "dynamic") + " list" );
     var lastGroupId, $lastGroup;
     var hasGroups = false;
     $groups.each(function(index) {
@@ -934,7 +934,7 @@ export function init(jQuery, debug) {
     if (DEBUG) console.info("Lists.init()");
 
     var $listElements = jQ('.list-dynamic');
-    if (DEBUG) console.info("List: .list-dynamic elements found: " + $listElements.length);
+    if (DEBUG) console.info("Lists.init() .list-dynamic elements found: " + $listElements.length);
 
     if ($listElements.length > 0 ) {
         $listElements.each(function() {
@@ -1013,7 +1013,7 @@ export function init(jQuery, debug) {
     }
 
     var $staticGroupListElements = jQ('.type-static-list .list-with-groups.list-entries');
-    if (DEBUG) console.info("List: .type-static-list .list-with-groups elements found: " + $staticGroupListElements.length);
+    if (DEBUG) console.info("Lists.init() .type-static-list .list-with-groups elements found: " + $staticGroupListElements.length);
 
     if ($staticGroupListElements.length > 0 ) {
         $staticGroupListElements.each(function() {
@@ -1034,7 +1034,7 @@ export function init(jQuery, debug) {
     }
 
     var $listArchiveFilters = jQ('.type-list-filter');
-    if (DEBUG) console.info("List: .type-list-filter elements found: " + $listArchiveFilters.length);
+    if (DEBUG) console.info("Lists.init() .type-list-filter elements found: " + $listArchiveFilters.length);
 
     if ($listArchiveFilters.length > 0 ) {
         $listArchiveFilters.each(function() {

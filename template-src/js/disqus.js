@@ -82,7 +82,7 @@ export function init(jQuery, debug) {
     if (DEBUG) console.info("Disqus.init()");
 
     var $disqusElements = jQ('#disqus_thread');
-    if (DEBUG) console.info("#disqus_thread elements found: " + $disqusElements.length);
+    if (DEBUG) console.info("Disqus.init() #disqus_thread elements found: " + $disqusElements.length);
 
     if (PrivacyPolicy.cookiesAcceptedExternal()) {
 
@@ -100,7 +100,7 @@ export function init(jQuery, debug) {
                 window.disqus_pageId = dicqusData.id;
                 var clickToLoad = dicqusData.load && !disqus_open;
 
-                if (DEBUG) console.info("Disqus: clickToLoad='" + clickToLoad + "' url=" + window.disqus_pageUrl + " site=" + disqus_site);
+                if (DEBUG) console.info("Disqus.init() clickToLoad='" + clickToLoad + "' url=" + window.disqus_pageUrl + " site=" + disqus_site);
 
                 if (clickToLoad) {
                     jQ('.btn-disqus').on('click', function(event) {
@@ -114,7 +114,7 @@ export function init(jQuery, debug) {
 
     } else {
 
-        if (DEBUG) console.info("External cookies not accepted be the user - DISQUS is disabled!");
+        if (DEBUG) console.info("Disqus.init() External cookies not accepted be the user - DISQUS is disabled!");
         jQ('.btn-disqus').on('click', function(event) {
             toggleComments()
         });

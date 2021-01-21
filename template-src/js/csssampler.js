@@ -53,17 +53,17 @@ export function initCssSampler(jQuery, debug) {
     jQ = jQuery;
     DEBUG = debug;
 
-    if (DEBUG) console.info("CssSampler.init()");
+    if (DEBUG) console.info("CssSampler.initCssSampler()");
 
     var $sampleElements = jQ(".template-info.sample");
-    if (DEBUG) console.info(".template-info.sample elements found: " + $sampleElements.length);
+    if (DEBUG) console.info("CssSampler.initCssSampler() .template-info.sample elements found: " + $sampleElements.length);
 
     for (var i = 0; i < $sampleElements.length; i++) {
         var $element = jQ($sampleElements[i]);
         var template = $element.html();
         $element.empty();
 
-        if (DEBUG) console.info("Creating CSS sample for id: " + $element.attr('id'));
+        if (DEBUG) console.info("CssSampler.initCssSampler() Creating CSS sample for id: " + $element.attr('id'));
         var data = Mercury.getCssJsonData($element.attr('id'));
 
         for (var j = data.length-1; j>=0; j--) {

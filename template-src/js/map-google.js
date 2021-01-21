@@ -335,7 +335,7 @@ export function init(jQuery, debug) {
     }
 
     var $mapElements = jQ('.map-google .mapwindow');
-    if (DEBUG) console.info("GoogleMap .map-google elements found: " + $mapElements.length);
+    if (DEBUG) console.info("GoogleMap.init() .map-google elements found: " + $mapElements.length);
 
     if ($mapElements.length > 0) {
 

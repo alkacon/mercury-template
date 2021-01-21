@@ -139,7 +139,7 @@ export function initParallax(jQuery, debug) {
     m_$parallaxElements = jQuery('.effect-parallax-bg');
     if (DEBUG) {
         console.info("Parallax.init()");
-        console.info(".effect-parallax-bg elements found: " + m_$parallaxElements.length);
+        console.info("Parallax.init() .effect-parallax-bg elements found: " + m_$parallaxElements.length);
     }
 
     if (m_$parallaxElements.length > 0) {

@@ -355,7 +355,7 @@ function initExternalElements(showMessage) {
 
     // this function assumes the privacy policy has already been loaded!
     var $elements = jQ("[data-external-cookies]");
-    if (DEBUG) console.info("PrivacyPolicy: Elements found that require external cookies: " + $elements.length);
+    if (DEBUG) console.info("PrivacyPolicy.initExternalElements() [data-external-cookies] elements found: " + $elements.length);
 
     if (showMessage && ($elements.length > 0)) {
         // if NOT showMessage, then all elements will be emptied

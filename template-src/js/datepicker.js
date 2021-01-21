@@ -43,7 +43,7 @@ export function init(jQuery, debug, locale) {
     if (DEBUG) console.info("DatePicker.init()");
 
     var $datepickers = jQ('.datepicker');
-    if (DEBUG) console.info(".datepicker elements found: " + $datepickers.length);
+    if (DEBUG) console.info("DatePicker.init() .datepicker elements found: " + $datepickers.length);
     $datepickers.each(function() {
         var $datepicker = jQ(this);
         var config = $datepicker.data("datepicker");

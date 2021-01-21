@@ -300,8 +300,8 @@ export function init(jQuery, debug) {
     var $imageSeriesElements = jQ('.type-imageseries');
     var $imageZoomElements = jQ('[data-imagezoom]');
 
-    if (DEBUG) console.info(".type-imageseries elements found: " + $imageSeriesElements.length);
-    if (DEBUG) console.info("[data-imagezoom] elements found: " + $imageZoomElements.length);
+    if (DEBUG) console.info("ImageSeries.init() .type-imageseries elements found: " + $imageSeriesElements.length);
+    if (DEBUG) console.info("ImageSeries.init() [data-imagezoom] elements found: " + $imageZoomElements.length);
 
     if ($imageSeriesElements.length > 0 || $imageZoomElements.length > 0) {
         // We have found image for a series, append the PhotoSwipe markup

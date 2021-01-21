@@ -542,7 +542,7 @@ function initDependencies() {
         if ($anchor.length) {
             offset = offset || 0;
             var targetTop = $anchor.offset().top + offset;
-            if (DEBUG) console.info("scrollToAnchor(#" + $anchor.attr('id') + ") position:" + targetTop);
+            if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") position:" + targetTop);
             if (fixedHeaderActive() && (targetTop > m_fixedHeader.bottom)) {
                 if (m_fixedHeader.height < 0) {
                     // fixed header height is unknown, i.e. page was not scrolled down so far
@@ -553,7 +553,7 @@ function initDependencies() {
                     }
                 }
                 targetTop = targetTop - m_fixedHeader.getHeight();
-                if (DEBUG) console.info("scrollToAnchor(#" + $anchor.attr('id') + ") adjusting position to:" + targetTop);
+                if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") adjusting position to:" + targetTop);
             }
             var page = $("html, body");
             // see: https://stackoverflow.com/questions/18445590/jquery-animate-stop-scrolling-when-user-scrolls-manually

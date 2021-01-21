@@ -199,16 +199,16 @@ export function init(jQuery, debug) {
     m_apiKey = Mercury.getInfo("osmApiKey");
 
     if (DEBUG) {
-        console.info("OSM.init()");
+        console.info("OsmMap.init()");
         if (m_apiKey != null) {
-            console.info("OSM API key is: " + m_apiKey);
+            console.info("OsmMap.init() API key is: " + m_apiKey);
         } else {
-            console.info("OSM API key not set - OSM maps not activated");
+            console.info("OsmMap.init() API key not set - OSM maps not activated");
         }
     }
 
     var $mapElements = jQ('.map-osm .mapwindow');
-    if (DEBUG) console.info("OSM .map-osm elements found: " + $mapElements.length);
+    if (DEBUG) console.info("OsmMap.init() .map-osm elements found: " + $mapElements.length);
 
     if ($mapElements.length > 0) {
 

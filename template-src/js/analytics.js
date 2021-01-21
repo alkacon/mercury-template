@@ -101,10 +101,10 @@ export function init(jQuery, debug) {
             if (DEBUG) {
                 if (googleAnalyticsId != null) {
                     // Goggle analytics ID is read in pageinfo tag and stored in JavaScript via main script init()
-                    console.info("Google analytic ID is: " + googleAnalyticsId);
-                    if (! Mercury.isOnlineProject()) console.info("Google analytics NOT initialized because not in the ONLINE project!");
+                    console.info("Analytics.init() Google analytic ID is: " + googleAnalyticsId);
+                    if (! Mercury.isOnlineProject()) console.info("Analytics.init() Google analytics NOT initialized because not in the ONLINE project!");
                 } else {
-                    console.info("Google analytic ID (property 'google.analytics') not set in OpenCms VFS!");
+                    console.info("Analytics.init() Google analytic ID (property 'google.analytics') not set in OpenCms VFS!");
                 }
             }
             if (Mercury.isOnlineProject() && (googleAnalyticsId != null)) {
@@ -123,25 +123,25 @@ export function init(jQuery, debug) {
                     piwikData = $element.data("piwik");
                 }
                 if (piwikData != null) {
-                    if (DEBUG) console.info("Piwik data found:");
+                    if (DEBUG) console.info("Analytics.init() Piwik data found:");
                     if (DEBUG) jQ.each(piwikData, function( key, value ) { console.info( "- " + key + ": " + value ); });
                     if (typeof piwikData.id != 'undefined') {
                         if (Mercury.isOnlineProject()) {
                             // only enable Piwik in the online project when ID and URL is set
                             addPiwik(piwikData);
                         } else {
-                            if (DEBUG) console.info("Piwik NOT initialized because not in the ONLINE project!");
+                            if (DEBUG) console.info("Analytics.init() Piwik NOT initialized because not in the ONLINE project!");
                         }
                     } else {
-                        if (DEBUG) console.info("Piwik ID (property 'piwik.id') not set in OpenCms VFS!");
+                        if (DEBUG) console.info("Analytics.init() Piwik ID (property 'piwik.id') not set in OpenCms VFS!");
                     }
                 } else {
-                    if (DEBUG) console.info("Piwik URL (property 'piwik.url') not set in OpenCms VFS!");
+                    if (DEBUG) console.info("Analytics.init() Piwik URL (property 'piwik.url') not set in OpenCms VFS!");
                 }
             });
         }
 
     } else {
-        if (DEBUG) console.info("Statistical cookies not accepted be the user - Analytics are disabled!");
+        if (DEBUG) console.info("Analytics.init() Statistical cookies not accepted be the user - Analytics are disabled!");
     }
 }

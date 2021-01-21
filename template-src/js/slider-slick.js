@@ -49,7 +49,7 @@ export function init(jQuery, debug) {
     if (DEBUG) console.info("SliderSlick.init()");
 
     var $slickSliders = jQuery('.type-slick-slider .slide-definitions.list-of-slides');
-    if (DEBUG) console.info(".type-slick-slider .slide-definitions.list-of-slides elements found: " + $slickSliders.length);
+    if (DEBUG) console.info("SliderSlick.init() .type-slick-slider .slide-definitions.list-of-slides elements found: " + $slickSliders.length);
     if ($slickSliders.length > 0) {
         initSlickSliders($slickSliders);
     }

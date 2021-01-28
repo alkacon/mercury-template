@@ -14,9 +14,9 @@
     Required for external resources that are not folders.
     Not required in case a CmsResource is provided." %>
 
-<%@ attribute name="resDate" type="java.lang.String" required="false"
+<%@ attribute name="resDate" type="java.lang.Object" required="false"
     description="The date to be displayed for the download resource.
-    The string should have a SHORT date format like '21.12.20'.
+    This can be a java.util.Date Object, a Long value representing a date, or a String representing a Long value for a date.
     Not required in case a CmsResource is provided." %>
 
 <%@ attribute name="resTitle" type="java.lang.String" required="false"
@@ -35,8 +35,7 @@
     description="Display output format to generate. Possible values are:
     'dl-list-elaborate' (elaborate view, default),
     'dl-list-compact' (compact view) or
-    'dl-list-compact dl-list-minimal' (minimal compact view).
-    " %>
+    'dl-list-compact dl-list-minimal' (minimal compact view)." %>
 
 <%@ attribute name="hsize" type="java.lang.Integer" required="true"
     description="The HTML level of the heading, must be from 1 to 6 to generate h1 to h6.
@@ -81,9 +80,7 @@
         <c:set var="resCategories"      value="${empty resCategories ? res.categories : resCategories}" />
         <c:set var="resTitle"           value="${empty resTitle ? propertiesLocale['Title'] : resTitle}" />
         <c:set var="resDescription"     value="${empty resDescription ? propertiesLocale['Description'] : resDescription}" />
-        <c:if test="${empty resDate} ">
-            <c:set var="resDate"><fmt:formatDate value="${cms:convertDate(res.dateLastModified)}" type="date" dateStyle="SHORT" /></c:set>
-        </c:if>
+        <c:set var="resDate"            value="${empty resDate ? res.dateLastModified : resDate}" />
     </c:when>
     <c:otherwise>
         <%
@@ -102,6 +99,7 @@
 <c:set var="showCategories"             value="${showCategories and (not empty resCategories) and (not resCategories.isEmpty)}" />
 <c:set var="title"                      value="${empty resTitle ? resName : resTitle}" />
 <c:set var="resSuffix"                  value="${fn:toUpperCase(resSuffix)}" />
+<c:set var="resDateStr"><fmt:formatDate value="${cms:convertDate(resDate)}" type="date" dateStyle="SHORT" /></c:set>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -187,7 +185,7 @@
                     <a href="${resLink}" download class="dl-link dl-link-down" target="_blank" rel="noopener" title="<fmt:message key="msg.page.download"/>"><%----%>
                         <span class="dl-info"><%----%>
                             <span class="dl-size"><span>${resSize}</span></span><%----%>
-                            <span class="dl-date"><span>${resDate}</span></span><%----%>
+                            <span class="dl-date"><span>${resDateStr}</span></span><%----%>
                         </span><%----%>
                         <span class="dl-dl fa fa-cloud-download"></span><%----%>
                     </a><%----%>
@@ -205,7 +203,7 @@
                         <c:choose>
                             <c:when test="${showCategories}">
                                 <div class="dl-date-cat"><%----%>
-                                    <div class="dl-date">${resDate}</div><%----%>
+                                    <div class="dl-date">${resDateStr}</div><%----%>
                                     <c:set var="categories" value="${showCategoryLeafsOnly ? resCategories.leafItems : resCategories.allItems}" />
                                     <div class="dl-cat"><%----%>
                                         <c:forEach var="category" items="${categories}" varStatus="status">
@@ -215,7 +213,7 @@
                                 </div><%----%>
                             </c:when>
                             <c:otherwise>
-                                <div class="dl-date">${resDate}</div><%----%>
+                                <div class="dl-date">${resDateStr}</div><%----%>
                             </c:otherwise>
                         </c:choose>
                         <mercury:link link="${resLink}" title="${title}" css="dl-link" >

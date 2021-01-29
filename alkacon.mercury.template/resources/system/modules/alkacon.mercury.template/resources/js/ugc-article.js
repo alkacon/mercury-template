@@ -1,5 +1,8 @@
 var blogUGC = function($) {
 
+    // Hack to make the ugc jquery wrapper work
+    window.$ = $;
+
     // optional back link
     var backLink = null;
 

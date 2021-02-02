@@ -324,7 +324,7 @@ function enableExternalElements() {
     }, 600);
 }
 
-function createExternalElementToggle(heading, message, footer) {
+function createExternalElementToggle(heading, message, footer, isModal) {
 
     var heading = (typeof heading !== "undefined") ? heading : m_policy.nHead;
     var message = (typeof message !== "undefined") ? message : m_policy.nMsg;
@@ -336,7 +336,7 @@ function createExternalElementToggle(heading, message, footer) {
             '<div class=\"cookie-header\">' + heading + '</div>' +
             '<div class=\"cookie-message\">' + message + '</div>' +
             '<div class=\"cookie-switch pp-toggle pp-toggle-external animated\">' +
-                '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\">' +
+                '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\"' + (isModal ? ' disabled' : '') + '>' +
                 '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
                     '<span class=\"toggle-box\">' +
                         '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togOn + '\" data-unchecked=\"' + m_policy.togOff + '\"></span>' +
@@ -385,13 +385,14 @@ function initExternalElements(showMessage) {
                     if ($presizedParent.length > 0) {
                         var parentHeight = $presizedParent.innerHeight();
                         var toggleHeight = $element.find(".cookie-content").innerHeight();
-                        if (DEBUG) console.info("PrivacyPolicy: parent(.presized).height=" + parentHeight + " .cookie-content.height=" + toggleHeight);
+                        if (DEBUG) console.info("PrivacyPolicy: parentHeight=" + parentHeight + " toggleHeight=" + toggleHeight);
                         if (toggleHeight > parentHeight) {
-                            if ((toggleHeight / parentHeight) < 1.51) {
-                                // toggle is not 1.5 times higher than the presized original
+                            if (DEBUG) console.info("PrivacyPolicy: toggleHeight / parentHeight=" + (toggleHeight / parentHeight));
+                            if ((toggleHeight / parentHeight) < 1.5) {
+                                // toggle is not 1.5 times higher than the presized original - enlarge parent and show toggle directly
                                 $presizedParent.addClass("enlarged");
                             } else {
-                                // toggle is much higher than the presized original
+                                // toggle is much higher than the presized original - keep parent size, show notice and add modal dialog to element
                                 addModal = true;
                                 $element.addClass("modal-cookie-notice");
                                 $element.find(".cookie-content > div:not(.cookie-header)").remove();
@@ -451,7 +452,7 @@ export function createExternalElementModal(heading, message, footer, callbackAcc
             '<div class=\"modal-dialog cookie-notice modal-lg modal-dialog-centered modal-dialog-scrollable\">' +
                 '<div class=\"modal-content external-cookie-notice\">' +
                     '<div class=\"modal-body\">' +
-                            createExternalElementToggle(heading, message, footer) +
+                            createExternalElementToggle(heading, message, footer, true) +
                     '</div>' +
                     '<div class=\"modal-footer\">' +
                         '<button type=\"button\" class=\"btn btn-sm btn-dismiss\" data-dismiss=\"modal\">' + m_policy.btDis + '</button>' +

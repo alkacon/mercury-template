@@ -37,6 +37,9 @@
       <IncludeName><![CDATA[pageSize.imageseries]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageSeriesSortOrder.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
     </Setting>
     <Setting>

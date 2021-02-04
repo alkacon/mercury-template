@@ -1148,6 +1148,22 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageSeriesSortOrder.default]]></IncludeName>
+      <PropertyName><![CDATA[imageSeriesSortOrder]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageseries.sort.order)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageseries.sort.order.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[path.asc]]></Default>
+      <WidgetConfig><![CDATA[
+        path.asc:                                       %(key.msg.setting.imageseries.sort.order.path.asc)|
+        path.desc:                                      %(key.msg.setting.imageseries.sort.order.path.desc)|
+        date.asc:                                       %(key.msg.setting.imageseries.sort.order.date.asc)|
+        date.desc:                                      %(key.msg.setting.imageseries.sort.order.date.desc)|
+        title.asc:                                      %(key.msg.setting.imageseries.sort.order.title.asc)|
+        title.desc:                                     %(key.msg.setting.imageseries.sort.order.title.desc)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[iconClass.iconbox]]></IncludeName>
       <PropertyName><![CDATA[iconClass]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.iconClass)]]></DisplayName>

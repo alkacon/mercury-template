@@ -23,6 +23,7 @@
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="imageSeriesCss"         value="${setting.imageSeriesCss.toString}" />
+<c:set var="imageSeriesSortOrder"   value="${setting.imageSeriesSortOrder.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="titleOption"            value="${setting.titleOption.toString}" />
 <c:set var="pageSize"               value="${empty setting.pageSize.toInteger ? 12 : setting.pageSize.toInteger}" />
@@ -94,9 +95,30 @@
     </c:forEach>
 </c:if>
 <c:if test="${hasImageFolder}">
+    <c:choose>
+        <c:when test="${fn:startsWith(imageSeriesSortOrder, 'title.')}">
+            <c:set var="sortField" value="disptitle_sort" />
+            <%-- Alternative SOLR option: Title_dprop --%>
+        </c:when>
+        <c:when test="${fn:startsWith(imageSeriesSortOrder, 'date.')}">
+            <c:set var="sortField" value="lastmodified" />
+            <%-- Alternative SOLR option: instancedate_dt --%>
+        </c:when>
+        <c:otherwise>
+            <c:set var="sortField" value="path" />
+        </c:otherwise>
+    </c:choose>
+    <c:choose>
+        <c:when test="${fn:endsWith(imageSeriesSortOrder, '.desc')}">
+            <c:set var="sortOrder" value=" desc" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="sortOrder" value=" asc" />
+        </c:otherwise>
+    </c:choose>
     <%-- ###### Images from the gallery folder are second ###### --%>
     <c:set var="path" value="${cms.vfs.readResource[content.value.ImageFolder.toString].rootPath}" />
-    <c:set var="extraSolrParams">fq=type:"image"&fq=parent-folders:"${path}"&page=1&sort=path asc</c:set>
+    <c:set var="extraSolrParams">fq=type:"image"&fq=parent-folders:"${path}"&page=1&sort=${sortField}${sortOrder}</c:set>
     <c:set var="searchconfig">
         {
             "ignorequery" : true,

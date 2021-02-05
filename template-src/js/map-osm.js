@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import mapboxgl from 'mapbox-gl';
+import mapgl from 'maplibre-gl';
 import tinycolor from 'tinycolor2';
 
 "use strict";
@@ -52,7 +52,7 @@ function getPuempel(color) {
 }
 
 function showSingleMap(mapData){
-    m_maps[mapData.id] = new mapboxgl.Map({
+    m_maps[mapData.id] = new mapgl.Map({
         container: mapData.id,
         style: m_style,
         center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
@@ -88,13 +88,13 @@ function showSingleMap(mapData){
             // create a HTML element for each feature
             var el = document.createElement('div');
             el.innerHTML = groups[group];
-            var markerObject = new mapboxgl.Marker(el, {
+            var markerObject = new mapgl.Marker(el, {
                 anchor: "bottom"
             });
 
             markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
             if (marker.info.length > 0){
-              markerObject.setPopup(new mapboxgl.Popup({ offset: [0, -25] }).setHTML(marker.info));
+              markerObject.setPopup(new mapgl.Popup({ offset: [0, -25] }).setHTML(marker.info));
             }
             markerObject.addTo(m_maps[mapData.id]);
             markerObject.group=group;
@@ -103,7 +103,7 @@ function showSingleMap(mapData){
     }
 
     m_maps[mapData.id].on('load', function () {
-        this.addControl(new mapboxgl.NavigationControl());
+        this.addControl(new mapgl.NavigationControl());
     });
 }
 

@@ -29,6 +29,69 @@
     max-width: $max-width;
 }
 
+@mixin sticky-header-globals($breakpoint, $selector: '') {
+    // sticky / fixed headers
+
+    @include media-breakpoint-up($breakpoint) {
+
+        .area-header#{$selector} {
+            position: relative;
+
+            .head {
+                position: relative;
+                min-height: $nav-header-total-height;
+            }
+
+            .sticky {
+                // hide optional areas if css class is set
+                > .isfixed .hidden-fixed,
+                > .notfixed .hidden-notfixed {
+                    display: none;
+                }
+            }
+
+            #{conditional-value($nav-setting-fixheader != false, ".sticky.csssetting", ".sticky.default")},
+            .sticky.always,
+            .sticky.upscroll {
+                // this requires JavaScript found in script-navigation.js to work properly
+                > .isfixed {
+                    position: fixed;
+                    top: 0;
+                    padding-top: 0;
+                    width: 100%;
+                    z-index: $above-oc-z-index; // z-index of sticky header must be well above OC points plus other elements
+                    animation-duration: 1s;
+                    animation-name: fixHeader;
+                    opacity: $nav-head-fixed-opacity;
+                    background-color: $fh-header-bg-color;
+                    box-shadow: $nav-head-fixed-shadow;
+                }
+            }
+        }
+
+        html.opencms-page-editor {
+            // fix head below toolbar in edit mode
+            .area-header#{$selector} {
+                #{conditional-value($nav-setting-fixheader != false, ".sticky.csssetting", ".sticky.default")},
+                .sticky.always,
+                .sticky.upscroll {
+                    > .isfixed {
+                        padding-top: $opencms-toolbar-height;
+                    }
+                }
+            }
+        }
+
+        html.noscript {
+            // JavaScript disabled navigation
+            // displays the menu elements on hover if JavaScript is disabled
+            .area-header#{$selector} .nav-main-items li[aria-expanded]:hover > .nav-menu {
+                display: block;
+            }
+        }
+    }
+}
+
 @if($feature-use-headers) {
 
     .area-header {
@@ -42,49 +105,50 @@
 
     // Special header containers
 
-    @if ($nav-breakpoint-sticky-header != xs) {
-        // sticky header is by not enabled for mobile devices (this is the default)
-        .co-sm-md {
-            // container only for screen size SM And MD
-            @include media-breakpoint-between(sm, md) {
-                @include make-container(0);
-                max-width: map-get($container-max-widths, sm);
+    @if (not $feature-always-wrap-menu) {
+        @if ($nav-breakpoint-sticky-header != xs) {
+            // sticky header is by not enabled for mobile devices (this is the default)
+            .co-sm-md {
+                // container only for screen size SM And MD
+                @include media-breakpoint-between(sm, md) {
+                    @include make-container(0);
+                    max-width: map-get($container-max-widths, sm);
+                }
+                @include media-breakpoint-only(md) {
+                    max-width: map-get($container-max-widths, md);
+                }
             }
-            @include media-breakpoint-only(md) {
-                max-width: map-get($container-max-widths, md);
-            }
-        }
 
-        .co-lg-xl {
-            // container only for screen size LG And XL
-            @include media-breakpoint-up(lg) {
-                @include make-container();
-                max-width: map-get($container-max-widths, lg);
+            .co-lg-xl {
+                // container only for screen size LG And XL
+                @include media-breakpoint-up(lg) {
+                    @include make-container();
+                    max-width: map-get($container-max-widths, lg);
+                }
+                @include media-breakpoint-up(xl) {
+                    max-width: map-get($container-max-widths, xl);
+                }
             }
-            @include media-breakpoint-up(xl) {
-                max-width: map-get($container-max-widths, xl);
-            }
-        }
-    } @else {
-        .co-lg-xl {
-            // sticky header is enabled for all devices (also mobile)
-            @include media-breakpoint-between(sm, md) {
-                @include make-container(0);
-                max-width: map-get($container-max-widths, sm);
-            }
-            @include media-breakpoint-only(md) {
-                max-width: map-get($container-max-widths, md);
-            }
-            @include media-breakpoint-up(lg) {
-                @include make-container();
-                max-width: map-get($container-max-widths, lg);
-            }
-            @include media-breakpoint-up(xl) {
-                max-width: map-get($container-max-widths, xl);
+        } @else {
+            .co-lg-xl {
+                // sticky header is enabled for all devices (also mobile)
+                @include media-breakpoint-between(sm, md) {
+                    @include make-container(0);
+                    max-width: map-get($container-max-widths, sm);
+                }
+                @include media-breakpoint-only(md) {
+                    max-width: map-get($container-max-widths, md);
+                }
+                @include media-breakpoint-up(lg) {
+                    @include make-container();
+                    max-width: map-get($container-max-widths, lg);
+                }
+                @include media-breakpoint-up(xl) {
+                    max-width: map-get($container-max-widths, xl);
+                }
             }
         }
     }
-
 
     // flexible header
 
@@ -1154,82 +1218,14 @@
     }
 }
 
-@include media-breakpoint-up($nav-breakpoint-sticky-header) {
 
-    .area-header {
-        position: relative;
+.head {
+    background: $fh-header-bg-color;
+}
 
-        .head {
-            background: $fh-header-bg-color;
-            position: relative;
-            min-height: $nav-header-total-height;
-        }
-
-        // Fixed headers
-
-        // Note: Fixed headers are not available on small screens!
-        // Reason: Fixed headers do not scroll.
-        // So it is not possible on small screens (mobiles) to scroll the navigation down if is is
-        // longer than the screen.
-        .sticky {
-            // hide optional areas if css class is set
-            > .isfixed .hidden-fixed,
-            > .notfixed .hidden-notfixed {
-                display: none;
-            }
-        }
-
-        %stickyAlways, // required because we need to extend this later
-        .sticky.always,
-        .sticky.upscroll {
-            // this requires JavaScript found in script-navigation.js to work properly
-            > .isfixed {
-                position: fixed;
-                top: 0;
-                padding-top: 0;
-                width: 100%;
-                z-index: $above-oc-z-index; // z-index of sticky header must be well above OC points plus other elements
-                animation-duration: 1s;
-                animation-name: fixHeader;
-                opacity: $nav-head-fixed-opacity;
-                background-color: $fh-header-bg-color;
-                box-shadow: $nav-head-fixed-shadow;
-            }
-        }
-
-        @if ($nav-setting-fixheader != false) {
-            .sticky.csssetting {
-                @extend %stickyAlways;
-            }
-        }
-    }
-
-    html.opencms-page-editor {
-        // fix head below toolbar in edit mode
-        .area-header {
-            %stickyAlways, // required because we need to extend this later
-            .sticky.always,
-            .sticky.upscroll {
-                > .isfixed {
-                    padding-top: $opencms-toolbar-height;
-                }
-            }
-
-            @if ($nav-setting-fixheader != false) {
-                .sticky.csssetting {
-                    @extend %stickyAlways;
-                }
-            }
-        }
-    }
-
-    html.noscript {
-        // JavaScript disabled navigation
-        // displays the menu elements on hover if JavaScript is disabled
-        .area-header .nav-main-items li[aria-expanded]:hover > .nav-menu {
-            display: block;
-        }
-    }
+@if (not $feature-always-wrap-menu) {
+    // sticky / fixed header
+    @include sticky-header-globals($nav-breakpoint-sticky-header);
 }
 
 // Adjustments for header in model group editor

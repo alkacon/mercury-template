@@ -31,6 +31,9 @@ var m_subMenuTimeout = null;
 var m_firstInit = true;
 var $topControl = null;
 
+var m_isWrapMenu = false;
+var m_$navToggleLabel = null;
+
 function setKeyboardClass(active) {
     if (active) {
         jQ(document.documentElement).addClass('keyboard-nav');
@@ -282,10 +285,14 @@ function initHeadNavigation() {
     initMenu();
     jQ(window).on('resize', debInitMenu);
 
+    m_$navToggleLabel = jQ('#nav-toggle-label');
+    m_isWrapMenu = false || jQ('header.fh.fh-wm').length;
+
     // Responsive navbar toggle button
     jQ('.nav-toggle').click(function() {
         jQ('.nav-toggle').toggleClass('active');
         jQ(document.documentElement).toggleClass('active-nav');
+        updateNavTogglePosition();
     });
 
     // Add handler for top scroller
@@ -373,6 +380,45 @@ function initHeadNavigation() {
 var m_lastScrollTop = 0;
 var m_checkScrollTop = 999999999999; // Stupid IE 10 does not know Number.MAX_SAFE_INTEGER
 
+function mobileNavActive() {
+    return jQ(document.documentElement).hasClass('active-nav');
+}
+
+function updateNavTogglePosition() {
+    if (m_isWrapMenu) {
+        // this is only needed in the "wrap menu" theme
+        var navToggleTop = 0;
+        var navToggleHeight = m_$navToggleLabel.outerHeight(false);
+        if (mobileNavActive()) {
+            // menu navigation is visible
+            var $logo = jQ('header.fh.fh-wm .nav-main-mobile-logo');
+            var hLogoHeight = $logo.length ? $logo.outerHeight(true) : 0;
+            navToggleTop = Math.round((hLogoHeight / 2.0) - (navToggleHeight / 2.0) + (Mercury.isEditMode() ? 52 : 0));
+            if (VERBOSE) console.info("Nav toggle [active] top=" + navToggleTop + " .nav-main-mobile-logo.height=" + hLogoHeight);
+        } else {
+            // menu navigation is hidden
+            var $hGroup = jQ('header.fh.fh-wm .head > .h-group');
+            var hGroupHeight = $hGroup.length ? $hGroup.outerHeight(true) : 0;
+            if (m_fixedHeader.isFixed) {
+                // header is fixed
+                var $hMeta = jQ('header.fh.fh-wm .head > .h-meta:visible');
+                var hMetaHeight = $hMeta.length ? $hMeta.outerHeight(true) : 0;
+                navToggleTop = Math.round((hGroupHeight / 2.0) - (navToggleHeight / 2.0) + hMetaHeight + (Mercury.isEditMode() ? 52 : 0));
+                if (VERBOSE) console.info("Nav toggle [fixed] top=" + navToggleTop + " .h-group.height=" + hGroupHeight + " .h-meta.height=" + hMetaHeight);
+            } else {
+                // header is not fixed
+                var hGroupTop = $hGroup.length ? $hGroup.offset().top : (Mercury.isEditMode() ? 52 : 0);
+                navToggleTop = Math.round((hGroupHeight / 2.0) - (navToggleHeight / 2.0) + hGroupTop);
+                if (VERBOSE) console.info("Nav toggle [notfixed] top=" + navToggleTop + " .h-group.height=" + hGroupHeight + " .h-group.top=" + hGroupTop);
+            }
+        }
+        m_$navToggleLabel.css('top', navToggleTop);
+        if (! m_$navToggleLabel.hasClass('ready')) {
+             setTimeout(function() { m_$navToggleLabel.addClass('ready') }, 1000);
+        }
+    }
+}
+
 function updateFixed(resize) {
 
     if (VERBOSE) console.info("Fixed header update, resize=" + resize);
@@ -399,15 +445,18 @@ function updateFixed(resize) {
         var fixHeader = scrollUp && (m_fixedHeader.bottom < (Mercury.windowScrollTop() + Mercury.toolbarHeight()));
         if (VERBOSE) console.info("Fixed header update, fixHeader=" + fixHeader + " m_fixedHeader.isFixed=" + m_fixedHeader.isFixed);
         if (fixHeader && !m_fixedHeader.isFixed) {
-            if (VERBOSE) console.info("Fixed header update, fixing header at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
-            // header should be fixed, but is not
-            if (m_lastScrollTop < m_checkScrollTop) {
-                m_fixedHeader.isFixed = true;
-                m_fixedHeader.$parent.height(m_fixedHeader.$element.height());
-                m_fixedHeader.$element.removeClass('notfixed').removeClass('scrolled').addClass('isfixed');
-                m_fixedHeader.$header.removeClass('header-notfixed').addClass('header-isfixed');
-                m_fixedHeader.height = m_fixedHeader.$element.height();
-                m_checkScrollTop = 999999999999;
+            // if mobile nav is active, don't fix the header, otherwise there would be an ugly css effect on the mobile nav
+            if (!mobileNavActive()) {
+                // header should be fixed, but is not
+                if (VERBOSE) console.info("Fixed header update, fixing header at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
+                if (m_lastScrollTop < m_checkScrollTop) {
+                    m_fixedHeader.isFixed = true;
+                    m_fixedHeader.$parent.height(m_fixedHeader.$element.height());
+                    m_fixedHeader.$element.removeClass('notfixed').removeClass('scrolled').addClass('isfixed');
+                    m_fixedHeader.$header.removeClass('header-notfixed').addClass('header-isfixed');
+                    m_fixedHeader.height = m_fixedHeader.$element.height();
+                    m_checkScrollTop = 999999999999;
+                }
             }
         } else if (!fixHeader && m_fixedHeader.isFixed) {
             // header should not be fixed, but is
@@ -439,6 +488,7 @@ function updateFixed(resize) {
             m_fixedHeader.$parent.height("auto");
         }
     }
+    updateNavTogglePosition();
 }
 
 function fixedHeaderActive() {

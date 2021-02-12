@@ -18,6 +18,7 @@
 // Features - disable what is not needed to keep the generated CSS small
 
 $feature-use-headers:               true !default; // default headers from _header.scss
+$feature-always-wrap-menu:          false !default; // always use wrap menu for mobile AND desktop - otherwise desktop has cascading menu bar
 
 // Required default colors
 
@@ -318,7 +319,6 @@ $nav-hyphens:                       $use-hyphens !default; // enable hyphenation
 
 
 // Navigation
-// These are only the variables used elsewhere. There is more in _nav-main.scss and _header.scss
 
 $nav-theme:                         $main-theme !default; // used for 1st level text and big colored border above / below menus
 $nav-bg:                            $body-bg !default; // standard background of the nav menu entries
@@ -420,6 +420,7 @@ $nav-mobile-box-border-radius:      $nav-border-radius !default; // border radiu
 $nav-mobile-box-offset:             $grid-gutter-width !default; // position of the mobile submenu "box" relative to surrounding menu
 $nav-mobile-box-offset-xs:          $nav-mobile-box-offset !default; // position of the mobile submenu "box" relative to surrounding menu in XS screens
 $nav-mobile-indent:                 10px !default; // left indentation step for deeper levels
+$nav-mobile-indent-offset:          $grid-gutter-width / 2 !default; // left / right padding and indentation offsest
 $nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
 $nav-mobile-toggle-side:            $grid-gutter-width !default; // left / right position for mobile toggle
 $nav-mobile-toggle-side-xs:         $nav-mobile-toggle-side !default; // left / right position for mobile toggle in XS screens
@@ -442,6 +443,15 @@ $nav-breakpoint-sticky-header-size: 100000 !default; // size from which to use t
 
 $nav-megamenu-bg:                   $nav-bg; // background color for the mega menu
 
+@if ($feature-always-wrap-menu) {
+    // set required variables to force wrap menu for desktop
+    $nav-breakpoint-mobile:             xl !global;
+    $nav-breakpoint-desktop:            none !global;
+    $nav-breakpoint-sticky-header-size: 2 !global;
+    $nav-mobile-side-content-move:      false !global; // this feature is not supported
+    $nav-mobile-smaller-xs-toggle:      false !global; // do not make 'hamburger' icon smaller on mobile
+}
+
 
 // The "nav-toggle" button - this is the button displayed on small screens to show / hide the navigation
 
@@ -453,6 +463,8 @@ $nav-toggle-size:                   40px !default; // height of toggle button
 $nav-toggle-size-xs:                30px !default; // on very smaller screens the button size is reduced further
 $nav-toggle-bottom:                 5px !default; // bottom positioning of toggle button
 $nav-toggle-stroke-height:          round(0.06 * $nav-toggle-size) !default; // the height of the generated lines in the toggle button that form the menu icon
+$nav-toggle-border-width:           0 !default;
+$nav-toggle-size-with-border:       $nav-toggle-size + 2*$nav-toggle-border-width;
 
 // Breadcrumps
 

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.286</version>
+		<version>11.0.1.291</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -262,7 +262,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mercury default sitemap master configuration]]></value>
+					<value><![CDATA[Mercury default configuration]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -7214,6 +7214,31 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays a message from the OpenCms workplace bundles]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/layout-group.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/layout-group.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>2e1c09fd-6b7f-11eb-baef-0242ac11002b</uuidstructure>
+			<uuidresource>2e1c09fe-6b7f-11eb-baef-0242ac11002b</uuidresource>
+			<datecreated>Wed, 10 Feb 2021 09:05:54 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates markup for the layout group]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid)]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

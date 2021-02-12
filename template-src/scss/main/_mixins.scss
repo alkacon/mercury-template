@@ -374,14 +374,6 @@
     }
 }
 
-@function breakpoint-sticky-header() {
-    @if ($nav-breakpoint-sticky-header != none) {
-        @return breakpoint-min($nav-breakpoint-sticky-header);
-    } @else {
-         @return $nav-breakpoint-sticky-header-size;
-    }
-}
-
 @mixin media-breakpoint-mobile {
     @if ($nav-breakpoint-mobile != none) {
         @include media-breakpoint-down($nav-breakpoint-mobile) {

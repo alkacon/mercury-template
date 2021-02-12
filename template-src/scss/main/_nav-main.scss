@@ -52,7 +52,7 @@
                 bottom: 0;
                 color: $nav-text;
                 line-height: $nav-mobile-line-height;
-                padding: $nav-mobile-line-padding #{$grid-gutter-width / 2};
+                padding: $nav-mobile-line-padding $nav-mobile-indent-offset;
                 border-bottom: $nav-mobile-border;
                 @if ($nav-mobile-font-family != $font-family-base) {
                     font-family: $nav-mobile-font-family;
@@ -172,31 +172,31 @@
 
         // left indent of sub levels
         > li > a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 2)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 2)};
         }
         > li > ul > li > a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 4)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 4)};
         }
         > li > ul > li > ul > li a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 6)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 6)};
         }
         > li > ul > li > ul > li > ul > li a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 7)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 7)};
         }
         > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 8)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 8)};
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 9)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 9)};
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 10)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 10)};
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 11)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 11)};
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{($grid-gutter-width / 2) + ($nav-mobile-indent * 12)};
+            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 12)};
         }
     }
 
@@ -327,8 +327,10 @@
     .nav-main-container {
         pointer-events: none;
         position: fixed;
-        #{$nav-mobile-position}: -1 * $nav-mobile-width-xs;
-        transition: $nav-mobile-position 0.5s, opacity 0.25s;
+        @if (not $feature-always-wrap-menu) {
+            #{$nav-mobile-position}: -1 * $nav-mobile-width-xs;
+            transition: #{$nav-mobile-position} 0.5s, opacity 0.25s;
+        }
         top: 0;
         height: 100vh;
         background-color: $nav-mobile-bg-color;
@@ -362,20 +364,26 @@
 
         // adjust size of mobile side navigation
         @include media-breakpoint-up(sm) {
-            #{$nav-mobile-position}: -1 * $nav-mobile-width-sm;
+            @if (not $feature-always-wrap-menu) {
+                #{$nav-mobile-position}: -1 * $nav-mobile-width-sm;
+            }
             .nav-main-group  {
                 width: $nav-mobile-width-sm;
             }
         }
         @include media-breakpoint-up(md) {
-            #{$nav-mobile-position}: -1 * $nav-mobile-width-md;
+            @if (not $feature-always-wrap-menu) {
+                #{$nav-mobile-position}: -1 * $nav-mobile-width-md;
+            }
             .nav-main-group  {
                 width: $nav-mobile-width-md;
             }
         }
         @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl)) {
             @include media-breakpoint-up(lg) {
-                #{$nav-mobile-position}: -1 * $nav-mobile-width-lg;
+                @if (not $feature-always-wrap-menu) {
+                    #{$nav-mobile-position}: -1 * $nav-mobile-width-lg;
+                }
                 .nav-main-group  {
                     width: $nav-mobile-width-lg;
                 }
@@ -385,13 +393,15 @@
         .nav-main-mobile-logo {
             display: block;
             background-color: $nav-mobile-logo-bg-color;
-            padding: $grid-gutter-width / 2;
+            padding: #{$grid-gutter-width / 2} $nav-mobile-indent-offset;
             // make sure wide logos are not under the toggle button
-            @if ($nav-mobile-position == right) {
-                padding-right: 3 * $grid-gutter-width;
-            }
-            @if ($nav-mobile-position == left) {
-                padding-left: 3 * $grid-gutter-width;
+            @if (not $feature-always-wrap-menu) {
+                @if ($nav-mobile-position == right) {
+                    padding-right: 3 * $grid-gutter-width;
+                }
+                @if ($nav-mobile-position == left) {
+                    padding-left: 3 * $grid-gutter-width;
+                }
             }
         }
     }
@@ -400,23 +410,12 @@
         position: fixed;
         z-index: $z-index-mobile-menu + 1; // the toggle must be above the z-index of the menu (see above)
         top: $nav-mobile-toggle-top;
+        @if (not $feature-always-wrap-menu) {
+            #{$nav-mobile-position}: $nav-mobile-toggle-side;
 
-        @if ($nav-mobile-position == right) {
-            right: $nav-mobile-toggle-side;
-        }
-
-        @if ($nav-mobile-position == left) {
-            left: $nav-mobile-toggle-side;
-        }
-
-        @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
-            @include media-breakpoint-down(xs) {
-                @if ($nav-mobile-position == right) {
-                    right: $nav-mobile-toggle-side-xs;
-                }
-
-                @if ($nav-mobile-position == left) {
-                    left: $nav-mobile-toggle-side-xs;
+            @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
+                @include media-breakpoint-down(xs) {
+                    #{$nav-mobile-position}:  $nav-mobile-toggle-side-xs;
                 }
             }
         }
@@ -450,44 +449,50 @@
         }
     }
 
-    html.noscript #nav-toggle-check:checked ~ .header-group,
-    html.active-nav .area-header .header-group {
-        .nav-main-container {
-            opacity: 1;
-            #{$nav-mobile-position}: 0;
-        }
+    #mercury-page {
+        position: relative;
+    }
 
-        @if ($nav-mobile-position == right) {
-            // this expands the arrow links to the right so they can be touch-clicked easier
-            li[aria-expanded] > a::after {
-                right: $nav-mobile-box-offset;
-            }
-            li[aria-expanded] > a {
-                padding-right: 2 * $nav-mobile-box-offset !important;
+    @if (not $feature-always-wrap-menu) {
+
+        html.noscript #nav-toggle-check:checked ~ .header-group,
+        html.active-nav .area-header .header-group {
+            .nav-main-container {
+                opacity: 1;
+                #{$nav-mobile-position}: 0;
             }
 
-            @if ($nav-mobile-box-offset-xs != $nav-mobile-box-offset) {
-                @include media-breakpoint-down(xs) {
-                    li[aria-expanded] > a::after {
-                        right: $nav-mobile-box-offset-xs;
+            @if ($nav-mobile-position == right) {
+                // this expands the arrow links to the right so they can be touch-clicked easier
+                li[aria-expanded] > a::after {
+                    right: $nav-mobile-box-offset;
+                }
+                li[aria-expanded] > a {
+                    padding-right: 2 * $nav-mobile-box-offset !important;
+                }
+
+                @if ($nav-mobile-box-offset-xs != $nav-mobile-box-offset) {
+                    @include media-breakpoint-down(xs) {
+                        li[aria-expanded] > a::after {
+                            right: $nav-mobile-box-offset-xs;
+                        }
                     }
                 }
             }
         }
-    }
 
-    #mercury-page {
-        position: relative;
-        #{$nav-mobile-position}: 0;
-    }
+        #mercury-page {
+            #{$nav-mobile-position}: 0;
+        }
 
-    html.active-nav {
-        overflow-x: hidden;
-        overflow: hidden;
+        html.active-nav {
+            overflow-x: hidden;
+            overflow: hidden;
 
-        @if ($nav-mobile-side-content-move) {
-            #mercury-page {
-                #{$nav-mobile-position}: $nav-mobile-side-size;
+            @if ($nav-mobile-side-content-move) {
+                #mercury-page {
+                    #{$nav-mobile-position}: $nav-mobile-side-size;
+                }
             }
         }
     }

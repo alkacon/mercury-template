@@ -17,7 +17,7 @@
 
 // Features - disable what is not needed to keep the generated CSS small
 
-$feature-use-headers:               true !default; // default headers from _header.scss
+$feature-use-flexible-header:       true !default; // default headers from _header.scss
 $feature-always-wrap-menu:          false !default; // always use wrap menu for mobile AND desktop - otherwise desktop has cascading menu bar
 
 // Required default colors

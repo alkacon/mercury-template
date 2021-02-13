@@ -21,10 +21,11 @@
         description="Indicates if this is a detail only attachment container." %>
 
 <%@attribute name="name" type="java.lang.String" required="false"
-        description="Name for the container." %>
+        description="A unique name for the container that is used to identify it in the container page." %>
 
 <%@attribute name="type" type="java.lang.String" required="false"
-        description="Type for the container." %>
+        description="The type assigned to the container, e.g. 'element' or 'image-simple'.
+        The type will be used to select the formatter that is used to render a content in the container." %>
 
 <%@attribute name="role" type="java.lang.String" required="false"
         description="Role for the container." %>

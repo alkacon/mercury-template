@@ -6,7 +6,7 @@
 
 
 <%@ attribute name="file" type="java.lang.String" required="true"
-    description="The file to display." %>
+    description="The VFS path of the file to display." %>
 
 <%@ attribute name="formatter" type="java.lang.String" required="false"
     description="The display formatter to use. If not specified the default formatter for the given file is used." %>

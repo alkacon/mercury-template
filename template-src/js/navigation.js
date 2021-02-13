@@ -286,7 +286,7 @@ function initHeadNavigation() {
     jQ(window).on('resize', debInitMenu);
 
     m_$navToggleLabel = jQ('#nav-toggle-label');
-    m_isWrapMenu = false || jQ('header.fh.fh-wm').length;
+    m_isWrapMenu = false || jQ('header.wh').length;
 
     // Responsive navbar toggle button
     jQ('.nav-toggle').click(function() {
@@ -375,6 +375,12 @@ function initHeadNavigation() {
             if (DEBUG) console.info("Navigation.initHeadNavigation() Fixed header element NOT found!");
         }
     };
+
+    if ((m_fixedHeader == null) && m_isWrapMenu) {
+        // no fixed header, make sure to update the wrap menu "hamburger" position after resize and scroll
+        jQ(window).on('scroll', debUpdateNavTogglePosition).on('resize', debUpdateNavTogglePosition);
+        updateNavTogglePosition();
+    }
 }
 
 var m_lastScrollTop = 0;
@@ -390,18 +396,18 @@ function updateNavTogglePosition() {
         var navToggleTop = 0;
         var navToggleHeight = m_$navToggleLabel.outerHeight(false);
         if (mobileNavActive()) {
-            // menu navigation is visible
-            var $logo = jQ('header.fh.fh-wm .nav-main-mobile-logo');
+            // warp menu navigation is active
+            var $logo = jQ('header.wh .nav-main-mobile-logo');
             var hLogoHeight = $logo.length ? $logo.outerHeight(true) : 0;
             navToggleTop = Math.round((hLogoHeight / 2.0) - (navToggleHeight / 2.0) + (Mercury.isEditMode() ? 52 : 0));
             if (VERBOSE) console.info("Nav toggle [active] top=" + navToggleTop + " .nav-main-mobile-logo.height=" + hLogoHeight);
         } else {
-            // menu navigation is hidden
-            var $hGroup = jQ('header.fh.fh-wm .head > .h-group');
+            // wrap menu navigation is hidden
+            var $hGroup = jQ('header.wh .head .h-visual');
             var hGroupHeight = $hGroup.length ? $hGroup.outerHeight(true) : 0;
-            if (m_fixedHeader.isFixed) {
+            if ((m_fixedHeader != null) && m_fixedHeader.isFixed) {
                 // header is fixed
-                var $hMeta = jQ('header.fh.fh-wm .head > .h-meta:visible');
+                var $hMeta = jQ('header.wh .head > .h-meta:visible');
                 var hMetaHeight = $hMeta.length ? $hMeta.outerHeight(true) : 0;
                 navToggleTop = Math.round((hGroupHeight / 2.0) - (navToggleHeight / 2.0) + hMetaHeight + (Mercury.isEditMode() ? 52 : 0));
                 if (VERBOSE) console.info("Nav toggle [fixed] top=" + navToggleTop + " .h-group.height=" + hGroupHeight + " .h-meta.height=" + hMetaHeight);
@@ -571,6 +577,7 @@ function initExternalLinks() {
 // functions that require the Mercury object
 var debUpdateFixedResize;
 var debUpdateFixedScroll;
+var debUpdateNavTogglePosition;
 var debInitMenu;
 var debScrollToAnchor;
 
@@ -582,6 +589,10 @@ function initDependencies() {
 
     debUpdateFixedScroll = Mercury.debounce(function() {
         updateFixed(false)
+    }, 5);
+
+    debUpdateNavTogglePosition = Mercury.debounce(function() {
+        updateNavTogglePosition();
     }, 5);
 
     debInitMenu = Mercury.debounce(function() {

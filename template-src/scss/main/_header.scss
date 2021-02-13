@@ -92,7 +92,69 @@
     }
 }
 
-@if($feature-use-headers) {
+@mixin add-meta($header-type) {
+
+    // meta links
+    .h-meta {
+        order: 8;
+        display: flex;
+        flex-grow: 0;
+        flex-basis: auto;
+        flex-direction: column;
+        padding-top: $default-margin-verysmall;
+
+        .header-links {
+            display: flex;
+            flex-basis: auto;
+        }
+    }
+
+    &.meta-left {
+        .header-links {
+            justify-content: flex-start;
+        }
+        @if ($header-type == "fh") {
+            .h-info {
+                .h-meta {
+                    // make sure meta links are aligned to navigation
+                    padding-left: $grid-gutter-width / 2;
+                }
+            }
+        }
+    }
+
+    &.meta-center {
+        .header-links {
+            justify-content: center;
+        }
+    }
+
+    &.meta-right {
+        .header-links {
+            justify-content: flex-end;
+        }
+    }
+
+    &.meta-above {
+        .h-meta {
+            flex-basis: auto;
+            order: 1;
+            @if ($fh-meta-bg-color != none) {
+                background-color: $fh-meta-bg-color;
+                padding-bottom: $default-margin-verysmall;
+                a {
+                    color: check-text-color($fh-meta-bg-color, $fh-meta-color);
+                    &:hover {
+                        color: check-text-color($fh-meta-bg-color, $fh-meta-hover-color);
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@if($feature-use-flexible-header or $feature-always-wrap-menu) {
 
     .area-header {
         @if ($nav-header-margin-bottom > 0) {
@@ -102,53 +164,56 @@
             margin-bottom: 0;
         }
     }
+}
+
+
+// Flexible header with desktop menu
+@if($feature-use-flexible-header) {
 
     // Special header containers
-
-    @if (not $feature-always-wrap-menu) {
-        @if ($nav-breakpoint-sticky-header != xs) {
-            // sticky header is by not enabled for mobile devices (this is the default)
-            .co-sm-md {
-                // container only for screen size SM And MD
-                @include media-breakpoint-between(sm, md) {
-                    @include make-container(0);
-                    max-width: map-get($container-max-widths, sm);
-                }
-                @include media-breakpoint-only(md) {
-                    max-width: map-get($container-max-widths, md);
-                }
+    @if ($nav-breakpoint-sticky-header != xs) {
+        // sticky header is by not enabled for mobile devices (this is the default)
+        .co-sm-md {
+            // container only for screen size SM And MD
+            @include media-breakpoint-between(sm, md) {
+                @include make-container(0);
+                max-width: map-get($container-max-widths, sm);
             }
-
-            .co-lg-xl {
-                // container only for screen size LG And XL
-                @include media-breakpoint-up(lg) {
-                    @include make-container();
-                    max-width: map-get($container-max-widths, lg);
-                }
-                @include media-breakpoint-up(xl) {
-                    max-width: map-get($container-max-widths, xl);
-                }
+            @include media-breakpoint-only(md) {
+                max-width: map-get($container-max-widths, md);
             }
-        } @else {
-            .co-lg-xl {
-                // sticky header is enabled for all devices (also mobile)
-                @include media-breakpoint-between(sm, md) {
-                    @include make-container(0);
-                    max-width: map-get($container-max-widths, sm);
-                }
-                @include media-breakpoint-only(md) {
-                    max-width: map-get($container-max-widths, md);
-                }
-                @include media-breakpoint-up(lg) {
-                    @include make-container();
-                    max-width: map-get($container-max-widths, lg);
-                }
-                @include media-breakpoint-up(xl) {
-                    max-width: map-get($container-max-widths, xl);
-                }
+        }
+
+        .co-lg-xl {
+            // container only for screen size LG And XL
+            @include media-breakpoint-up(lg) {
+                @include make-container();
+                max-width: map-get($container-max-widths, lg);
+            }
+            @include media-breakpoint-up(xl) {
+                max-width: map-get($container-max-widths, xl);
+            }
+        }
+    } @else {
+        .co-lg-xl {
+            // sticky header is enabled for all devices (also mobile)
+            @include media-breakpoint-between(sm, md) {
+                @include make-container(0);
+                max-width: map-get($container-max-widths, sm);
+            }
+            @include media-breakpoint-only(md) {
+                max-width: map-get($container-max-widths, md);
+            }
+            @include media-breakpoint-up(lg) {
+                @include make-container();
+                max-width: map-get($container-max-widths, lg);
+            }
+            @include media-breakpoint-up(xl) {
+                max-width: map-get($container-max-widths, xl);
             }
         }
     }
+
 
     // flexible header
 
@@ -300,64 +365,7 @@
                 }
             }
 
-            // meta links
-
-            .h-meta {
-                order: 8;
-                display: flex;
-                flex-grow: 0;
-                flex-basis: auto;
-                flex-direction: column;
-                padding-top: $default-margin-verysmall;
-
-                .header-links {
-                    display: flex;
-                    flex-basis: auto;
-                }
-            }
-
-            &.meta-left {
-                .header-links {
-                    justify-content: flex-start;
-                }
-                .h-info {
-                    .h-meta {
-                        // make sure meta links are aligned to navigation
-                        padding-left: $grid-gutter-width / 2;
-                    }
-                }
-            }
-
-            &.meta-center {
-                .header-links {
-                    justify-content: center;
-                }
-            }
-
-            &.meta-right {
-                .header-links {
-                    justify-content: flex-end;
-                }
-            }
-
-
-            &.meta-above {
-                .h-meta {
-                    flex-basis: auto;
-                    order: 1;
-                    @if ($fh-meta-bg-color != none) {
-                        background-color: $fh-meta-bg-color;
-                        padding-bottom: $default-margin-verysmall;
-                        a {
-                            color: check-text-color($fh-meta-bg-color, $fh-meta-color);
-                            &:hover {
-                                color: check-text-color($fh-meta-bg-color, $fh-meta-hover-color);
-                                text-decoration: underline;
-                            }
-                        }
-                    }
-                }
-            }
+            @include add-meta("fh");
 
             // page title
 
@@ -998,6 +1006,520 @@
             }
         }
     }
+}
+
+@mixin mobile-menu-globals($logo-position) {
+
+    $mobile-position: conditional-value($logo-position == left, right, left);
+    $opposide-position: $logo-position;
+    $position-selector: conditional-value($logo-position == left, "lp-l", "lp-r");
+
+    html.active-nav header.wh.#{$position-selector},
+    html.noscript header.wh.#{$position-selector} #nav-toggle-check:checked ~ #nav-toggle-group {
+
+        #nav-toggle-label {
+            #{$mobile-position}: $nav-mobile-toggle-side - $nav-toggle-border-width;
+        }
+
+        .nav-main-container {
+            opacity: 1;
+            #{$mobile-position}: 0;
+        }
+    }
+
+    .nav-main-items {
+        // this expands the arrow links to the right so they can be touch-clicked easier
+        li[aria-expanded] > a::after {
+            right: $nav-mobile-toggle-side;
+        }
+        li[aria-expanded] > a {
+            padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
+        }
+    }
+}
+
+@mixin mobile-menu-placement($mobile-position) {
+
+    #nav-toggle-label {
+        &.ready {
+            transition: #{$mobile-position} 0.25s, top 0.25s;
+        }
+        #{$mobile-position}: ($grid-gutter-width - 2*$nav-toggle-border-width) / 2;
+        @include media-breakpoint-up(sm) {
+            #{$mobile-position}: calc((100% - #{container-useable-width(sm) + 2*$nav-toggle-border-width}) / 2);
+        }
+        @include media-breakpoint-up(md) {
+            #{$mobile-position}: calc((100% - #{container-useable-width(md) + 2*$nav-toggle-border-width}) / 2);
+        }
+        @include media-breakpoint-up(lg) {
+
+            #{$mobile-position}: calc((100% - #{container-useable-width(lg) + 2*$nav-toggle-border-width}) / 2);
+        }
+        @include media-breakpoint-up(xl) {
+            #{$mobile-position}: calc((100% - #{container-useable-width(xl) + 2*$nav-toggle-border-width}) / 2);
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        .h-group {
+            display: flex;
+            justify-content: conditional-value($mobile-position == left, "flex-end", "flex-start");
+        }
+    }
+
+    .nav-main-container {
+        #{$mobile-position}: -1 * $nav-mobile-width-xs;
+        transition: #{$mobile-position} 0.5s, opacity 0.25s;
+
+        .nav-main-mobile-logo {
+            // make sure wide logos are not under the toggle button
+            padding-#{$mobile-position}: #{$nav-mobile-toggle-side + $nav-toggle-size-with-border + $grid-gutter-width / 2};
+            display: flex;
+            justify-content: #{conditional-value($mobile-position == left, "flex-end", "flex-start")};
+        }
+    }
+}
+
+@mixin mobile-menu-top($breakpoint, $selector) {
+    @include media-breakpoint-down($breakpoint) {
+        header.wh#{$selector}.header-isfixed {
+            #nav-toggle-label {
+                top: #{$nav-mobile-toggle-top} !important;
+            }
+            &.lp-r #nav-toggle-label {
+                left: $nav-mobile-toggle-side;
+            }
+            &.lp-l #nav-toggle-label {
+                right: $nav-mobile-toggle-side;
+            }
+        }
+        html.opencms-page-editor header.wh#{$selector}.header-isfixed {
+            #nav-toggle-label {
+                top: #{$nav-mobile-toggle-top + $opencms-toolbar-height} !important;
+            }
+        }
+    }
+}
+
+// Flexible header that always displays the mobile wrap "hamburger" menu
+@if ($feature-always-wrap-menu) {
+
+    @include sticky-header-globals(xs, '.fix-xs');
+    @include sticky-header-globals(sm, '.fix-sm');
+    @include sticky-header-globals(md, '.fix-md');
+    @include sticky-header-globals(lg, '.fix-lg');
+
+    @include mobile-menu-globals(right);
+    @include mobile-menu-globals(left);
+
+    @include mobile-menu-top(xs, '.fix-sm');
+    @include mobile-menu-top(sm, '.fix-md');
+    @include mobile-menu-top(md, '.fix-lg');
+    @include mobile-menu-top(xl, '.fix-never');
+
+    $logo-padding: $default-margin-small;
+
+    header.wh {
+
+        .co-sm-md {
+            // container only for screen size SM And MD
+            @include media-breakpoint-between(sm, md) {
+                @include make-container(0);
+                max-width: map-get($container-max-widths, sm);
+            }
+            @include media-breakpoint-only(md) {
+                max-width: map-get($container-max-widths, md);
+            }
+        }
+
+        .co-lg-xl {
+            // container only for screen size LG And XL
+            @include media-breakpoint-up(lg) {
+                @include make-container();
+                max-width: map-get($container-max-widths, lg);
+            }
+            @include media-breakpoint-up(xl) {
+                max-width: map-get($container-max-widths, xl);
+            }
+        }
+
+        .h-meta {
+            display: none;
+        }
+
+        .h-visual {
+            padding-top: $logo-padding;
+            padding-bottom: $logo-padding;
+            padding-right: $grid-gutter-width / 2;
+            padding-left: $grid-gutter-width / 2;
+
+            .h-logo {
+                width: 100%;
+            }
+        }
+
+        .nav-toggle {
+            width: $nav-toggle-size-with-border;
+            height: $nav-toggle-size-with-border;
+            border: $nav-toggle-border-width solid #fff;
+            display: inline-block;
+        }
+
+        .h-title {
+            @include use-hyphens-headings(true);
+            padding-right: $grid-gutter-width / 2;
+            padding-left: $grid-gutter-width / 2;
+        }
+
+        .h-ac {
+            display: none;
+        }
+
+        &.ac-mobile {
+            .h-ac {
+                display: block;
+
+                > div,
+                .container > div {
+                    > .element {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            &.ac-full-size {
+                .h-ac {
+                    // see https://css-tricks.com/full-width-containers-limited-width-parents/
+                    width: 100vw;
+                    position: relative;
+                    left: 50%;
+                    right: 50%;
+                    margin-left: -50vw;
+                    margin-right: -50vw;
+                }
+            }
+        }
+
+        .nav-main-mobile-logo {
+            padding: $logo-padding $nav-mobile-indent-offset;
+            .mobile-logolink {
+                display: inline-block;
+            }
+            .img-responsive {
+                display: inline-block;
+            }
+        }
+
+        &.lp-l {
+            @include mobile-menu-placement(right);
+        }
+
+        &.lp-r {
+            @include mobile-menu-placement(left);
+
+            .h-visual {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .h-title {
+                align-self: flex-start;
+                text-align: left;
+            }
+        }
+
+        @if ($fh-logo-image-bg != none) {
+            // set colored background for image (if images contain transparency - required mostly for demo content)
+            .nav-main-mobile-logo .img-responsive,
+            .header-image {
+                background-color: $fh-logo-image-bg;
+            }
+        }
+
+        @include media-breakpoint-up(sm) {
+
+            .h-logo {
+                .header-image {
+                    max-width: none;
+                }
+            }
+        }
+
+        // fixed header
+
+        &.header-isfixed {
+            .h-title {
+                display: none;
+            }
+
+            $fixed-logo-padding: $default-margin-verysmall;
+
+            .h-visual {
+                padding-top: $fixed-logo-padding;
+                padding-bottom: $fixed-logo-padding;
+            }
+            &.padding-none {
+                .h-visual {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+
+            &.meta-above {
+                .h-meta {
+                    padding-top: $fixed-logo-padding;
+                    @if ($fh-meta-bg-color != none) {
+                        padding-bottom: $fixed-logo-padding;
+                    }
+                }
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+
+            .head {
+                display: flex;
+                flex-direction: column;
+            }
+
+            &.lp-l {
+                .h-info {
+                    padding-right: $grid-gutter-width + $nav-toggle-size-with-border;
+                }
+            }
+
+            &.lp-r {
+                .h-info {
+                    padding-left: $grid-gutter-width + $nav-toggle-size-with-border;
+                }
+            }
+
+            @if ($nav-head-border != none) {
+                .header-group {
+                    border-bottom: $nav-head-border;
+                }
+            }
+
+            // logo and info column
+
+            .h-visual {
+                order: 4;
+                display: flex;
+                align-items: flex-end;
+                width: 100%;
+                .h-logo > a.imglink {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            .h-group {
+                order: 6;
+                display: flex;
+                position: relative;
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .h-info {
+                order: 6;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+
+                > .h-nav {
+                    align-items: flex-end;
+                }
+            }
+
+            &.lp-r {
+                .h-info {
+                    order: 3;
+                }
+            }
+
+            @include add-meta("wh");
+
+            // page title
+
+            .h-title {
+                order: 10;
+                display: flex;
+                flex-direction: column;
+                flex-basis: auto;
+                flex-grow: 1000;
+                justify-content: center;
+                align-self: flex-end;
+                text-align: right;
+                @include heading-base(false);
+                padding-top: $default-margin-verysmall;
+                padding-bottom: $default-margin-verysmall;
+                padding-right: 0;
+                padding-left: 0;
+                color: $fh-title-color;
+                @if ($fh-title-bg-color != none) {
+                    background-color: $fh-title-bg-color;
+                }
+                font-size: $fh-title-font-size;
+                line-height: 1.2;
+                width: 100%;
+            }
+
+            // additional container
+
+            .h-ac {
+                display: block;
+                order: 20;
+                width: 100%;
+
+                > div,
+                .co-lg-xl > div {
+                    > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor laoding
+                        margin-bottom: 0;
+                    }
+                }
+
+                @if ($fh-ac-bg-color != none) {
+                    background-color: $fh-ac-bg-color;
+                }
+            }
+
+            &.header-isfixed:not(.fix-ac) {
+                .h-ac {
+                    display: none;
+                }
+            }
+
+            &.ac-above-logo {
+                .h-ac {
+                    order: 2;
+                    @if ($fh-ac-bg-color == none) {
+                        // add top margin only if no bg color is set, colord bg and top margin looks crappy
+                        margin-top: $default-margin-verysmall;
+                    }
+                }
+            }
+
+            &.ac-below-logo {
+                .h-ac {
+                    order: 12;
+                }
+                &.nav-below:not(.lp-c) {
+                    padding-top: $nav-header-ver-padding;
+                }
+            }
+
+            // breadcrumbs
+
+            .type-nav-breadcrumbs {
+                display: flex;
+            }
+
+            &.bc-right {
+                .type-nav-breadcrumbs {
+                    justify-content: flex-end;
+                }
+            }
+
+            &.bc-center {
+                .type-nav-breadcrumbs {
+                    justify-content: center;
+                }
+            }
+
+            @if ($nav-breadcrump-bg-color != none) {
+                .h-bc {
+                    background-color: $nav-breadcrump-bg-color;
+                    .nav-breadcrumbs {
+                        padding-top: $default-margin-small;
+                        padding-bottom: $default-margin-small;
+                    }
+                }
+            }
+        } // breakpoint lg
+
+        // variable logo sizes
+
+        @each $logo-size in (1,2,3,4,5,6) {
+            &.ls-#{$logo-size} {
+                .nav-main-mobile-logo .img-responsive {
+                    width: calc-abs-col(md, $logo-size);
+                }
+                @include media-breakpoint-down(md) {
+                    .h-logo {
+                        width: calc-abs-col(md, $logo-size);
+                    }
+                    &.header-isfixed {
+                        .h-logo {
+                            max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2);
+                        }
+                    }
+                }
+                @include media-breakpoint-up(lg) {
+                    .h-visual {
+                        @include make-abs-col(lg, $logo-size);
+                    }
+                    &.header-isfixed {
+                        .h-visual {
+                            max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
+                        }
+                    }
+                }
+                @include media-breakpoint-up(xl) {
+                    .h-visual {
+                        @include make-abs-col(xl, $logo-size);
+                    }
+                }
+            }
+        }
+
+        @if (false) {
+            // colored backgrounds - for debugging only
+
+            background-color: #333 !important;
+
+            .head {
+                background-color: #666 !important;
+            }
+            .header-group {
+                background-color: #999;
+            }
+            .h-meta {
+                background-color: #C1D8ED;
+            }
+            .h-group {
+                background-color: #ccc;
+            }
+            .h-logo {
+                background-color: #9B5094;
+            }
+            .h-info {
+                background-color: #8FB8DE;
+            }
+            .h-title {
+                background-color: #D591AD;
+            }
+            .h-nav {
+                background-color: #C1D8ED;
+            }
+            .h-nav > .co-lg-xl {
+                background-color: #8FB8DE;
+            }
+            .h-bc {
+                background-color: #F8CC8B;
+            }
+            .h-bc > .container {
+                background-color: #F18F01;
+            }
+            .h-ac {
+                background-color: #FBABD3;
+            }
+            .h-ac > .co-lg-xl {
+                background-color: #F865B0;
+            }
+        }
+    }
 
     .area-header {
 
@@ -1254,6 +1776,33 @@ html.opencms-group-editor {
                     display: flex !important;
                     opacity: .5;
                     background-image: $disabled-bg;
+                }
+            }
+        }
+
+        &:not(.active-nav) {
+            .area-header.wh {
+                // show navigation container in wrapped header
+                .h-nav {
+                    border-top: 4px solid $con-col-purple !important;
+                    background-color: rgba($con-col-purple, 0.75) !important;
+                }
+
+                .nav-main-container {
+                    position: static;
+                    height: auto;
+                    width: auto;
+                    right: auto;
+                    left: auto;
+                    opacity: initial;
+                    background-color: transparent;
+                    transition: none;
+
+                    .nav-main-group {
+                        &.has-sidelogo {
+                            padding-top: 0;
+                        }
+                    }
                 }
             }
         }

@@ -1143,8 +1143,20 @@
             }
         }
 
+        .head {
+            display: flex;
+            flex-direction: column;
+        }
+
         .h-meta {
             display: none;
+        }
+
+        .h-group {
+            order: 6;
+            position: relative;
+            padding-right: 0;
+            padding-left: 0;
         }
 
         .h-visual {
@@ -1171,32 +1183,84 @@
             padding-left: $grid-gutter-width / 2;
         }
 
+        // additional container
+
         .h-ac {
-            display: none;
-        }
+            display: block;
+            order: 20;
+            width: 100%;
+            position: relative;
 
-        &.ac-mobile {
-            .h-ac {
-                display: block;
-
-                > div,
-                .container > div {
-                    > .element {
-                        margin-bottom: 0;
-                    }
+            > div,
+            .h-ac-element > div,
+            .co-lg-xl > div {
+                > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor laoding
+                    margin-bottom: 0;
                 }
             }
 
+            @if ($fh-ac-bg-color != none) {
+                background-color: $fh-ac-bg-color;
+            }
+
+            .h-ac-title {
+                position: absolute;
+                left:50%;
+                top:50%;
+                pointer-events: none;
+                z-index: #{$overflow-z-index + 2};
+                transform: translate(-50%, -50%);
+
+                margin: 0;
+                text-align: left;
+                font-weight: $font-weight-bold;
+                color: $text-light;
+                text-shadow: 0 0 10px rgba(0,0,0,0.75);
+                line-height: 1.15;
+
+                font-size: $h1-font-size;
+            }
+        }
+
+        &.header-isfixed {
+            .h-ac {
+                display: none;
+            }
+        }
+
+        &.ac-above-logo {
+            .h-ac {
+                order: 2;
+                @if ($fh-ac-bg-color == none) {
+                    // add top margin only if no bg color is set, colord bg and top margin looks crappy
+                    margin-top: $default-margin-verysmall;
+                }
+            }
             &.ac-full-size {
                 .h-ac {
-                    // see https://css-tricks.com/full-width-containers-limited-width-parents/
-                    width: 100vw;
-                    position: relative;
-                    left: 50%;
-                    right: 50%;
-                    margin-left: -50vw;
-                    margin-right: -50vw;
+                    @if ($fh-meta-bg-color != none) {
+                        // full size container - remove margin if there is a bg color on the meta container
+                        margin-top: 0;
+                    }
                 }
+            }
+        }
+
+        &.ac-below-logo {
+            .h-ac {
+                order: 12;
+            }
+        }
+
+        &.ac-full-size {
+            .h-ac {
+                // see https://css-tricks.com/full-width-containers-limited-width-parents/
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
             }
         }
 
@@ -1277,11 +1341,6 @@
 
         @include media-breakpoint-up(lg) {
 
-            .head {
-                display: flex;
-                flex-direction: column;
-            }
-
             &.lp-l {
                 .h-info {
                     padding-right: $grid-gutter-width + $nav-toggle-size-with-border;
@@ -1290,6 +1349,7 @@
 
             &.lp-r {
                 .h-info {
+                    order: 3;
                     padding-left: $grid-gutter-width + $nav-toggle-size-with-border;
                 }
             }
@@ -1300,7 +1360,9 @@
                 }
             }
 
-            // logo and info column
+            .h-group {
+                display: flex;
+            }
 
             .h-visual {
                 order: 4;
@@ -1311,14 +1373,6 @@
                     width: 100%;
                     display: block;
                 }
-            }
-
-            .h-group {
-                order: 6;
-                display: flex;
-                position: relative;
-                padding-right: 0;
-                padding-left: 0;
             }
 
             .h-info {
@@ -1333,9 +1387,9 @@
                 }
             }
 
-            &.lp-r {
-                .h-info {
-                    order: 3;
+            .h-ac {
+                .h-ac-title {
+                    font-size: 1.5 * $h1-font-size;
                 }
             }
 
@@ -1364,50 +1418,6 @@
                 font-size: $fh-title-font-size;
                 line-height: 1.2;
                 width: 100%;
-            }
-
-            // additional container
-
-            .h-ac {
-                display: block;
-                order: 20;
-                width: 100%;
-
-                > div,
-                .co-lg-xl > div {
-                    > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor laoding
-                        margin-bottom: 0;
-                    }
-                }
-
-                @if ($fh-ac-bg-color != none) {
-                    background-color: $fh-ac-bg-color;
-                }
-            }
-
-            &.header-isfixed:not(.fix-ac) {
-                .h-ac {
-                    display: none;
-                }
-            }
-
-            &.ac-above-logo {
-                .h-ac {
-                    order: 2;
-                    @if ($fh-ac-bg-color == none) {
-                        // add top margin only if no bg color is set, colord bg and top margin looks crappy
-                        margin-top: $default-margin-verysmall;
-                    }
-                }
-            }
-
-            &.ac-below-logo {
-                .h-ac {
-                    order: 12;
-                }
-                &.nav-below:not(.lp-c) {
-                    padding-top: $nav-header-ver-padding;
-                }
             }
 
             // breadcrumbs

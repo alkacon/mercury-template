@@ -44,15 +44,21 @@
 
         <c:if test="${not empty logoImage}">
             <div class="nav-main-mobile-logo"><%----%>
-                <mercury:image-vars image="${logoImage}">
-                    <mercury:link
-                        link="${logoContent.value.Link}"
-                        test="${showImageLink}"
-                        setTitle="${true}"
-                        css="mobile-logolink" >
-                        <img src="${imageLink.toLink}" alt="${imageTitleCopyright}" class="img-responsive"><%----%>
-                    </mercury:link>
-                </mercury:image-vars>
+                <mercury:link
+                    link="${logoContent.value.Link}"
+                    test="${showImageLink}"
+                    testFailTag="div"
+                    setTitle="${true}"
+                    css="mobile-logolink" >
+
+                    <mercury:image-simple
+                        image="${logoImage}"
+                        sizes="100,200,400,800"
+                        cssWrapper="img-responsive"
+                        title="${imageTitleCopyright}"
+                    />
+
+                </mercury:link>
             </div><%----%>
         </c:if>
 

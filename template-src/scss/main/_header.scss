@@ -92,7 +92,14 @@
     }
 }
 
-@mixin add-meta($header-type) {
+@mixin add-bg-color($bg-color) {
+    @if (($bg-color != none) and ($bg-color != $fh-header-bg-color)) {
+        background-color: $bg-color;
+        @content;
+    }
+}
+
+@mixin add-meta($header-type, $padding-v: $default-margin-verysmall) {
 
     // meta links
     .h-meta {
@@ -101,7 +108,7 @@
         flex-grow: 0;
         flex-basis: auto;
         flex-direction: column;
-        padding-top: $default-margin-verysmall;
+        padding-top: $padding-v;
 
         .header-links {
             display: flex;
@@ -139,9 +146,8 @@
         .h-meta {
             flex-basis: auto;
             order: 1;
-            @if ($fh-meta-bg-color != none) {
-                background-color: $fh-meta-bg-color;
-                padding-bottom: $default-margin-verysmall;
+            @include add-bg-color($fh-meta-bg-color) {
+                padding-bottom: $padding-v;
                 a {
                     color: check-text-color($fh-meta-bg-color, $fh-meta-color);
                     &:hover {
@@ -262,7 +268,7 @@
 
         .nav-main-mobile-logo {
             .mobile-logolink {
-                display: inline-block;
+                display: flex;
             }
             .img-responsive {
                 display: inline-block;
@@ -1026,23 +1032,13 @@
             #{$mobile-position}: 0;
         }
     }
-
-    .nav-main-items {
-        // this expands the arrow links to the right so they can be touch-clicked easier
-        li[aria-expanded] > a::after {
-            right: $nav-mobile-toggle-side;
-        }
-        li[aria-expanded] > a {
-            padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
-        }
-    }
 }
 
 @mixin mobile-menu-placement($mobile-position) {
 
     #nav-toggle-label {
         &.ready {
-            transition: #{$mobile-position} 0.25s, top 0.25s;
+            transition: #{$mobile-position} 0.25s; // , top 0.25s;
         }
         #{$mobile-position}: ($grid-gutter-width - 2*$nav-toggle-border-width) / 2;
         @include media-breakpoint-up(sm) {
@@ -1061,7 +1057,7 @@
     }
 
     @include media-breakpoint-up(lg) {
-        .h-group {
+        &.ls-col .h-group {
             display: flex;
             justify-content: conditional-value($mobile-position == left, "flex-end", "flex-start");
         }
@@ -1117,9 +1113,29 @@
     @include mobile-menu-top(md, '.fix-lg');
     @include mobile-menu-top(xl, '.fix-never');
 
-    $logo-padding: $default-margin-small;
+    $header-padding: 20px;
+    $half-header-padding: round(0.5 * $header-padding);
+    $quarter-header-padding: round(0.25 * $header-padding);
+
+    html.noscript header.wh,
+    html.active-nav header.wh,
+    header.wh.icon-fixed {
+        #nav-toggle-label {
+            position: fixed;
+        }
+    }
 
     header.wh {
+
+        .nav-main-items {
+            // this expands the arrow links to the right so they can be touch-clicked easier
+            li[aria-expanded] > a::after {
+                right: $nav-mobile-toggle-side;
+            }
+            li[aria-expanded] > a {
+                padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
+            }
+        }
 
         .co-sm-md {
             // container only for screen size SM And MD
@@ -1135,7 +1151,7 @@
         .co-lg-xl {
             // container only for screen size LG And XL
             @include media-breakpoint-up(lg) {
-                @include make-container();
+                @include make-container(0);
                 max-width: map-get($container-max-widths, lg);
             }
             @include media-breakpoint-up(xl) {
@@ -1155,32 +1171,44 @@
         .h-group {
             order: 6;
             position: relative;
-            padding-right: 0;
-            padding-left: 0;
         }
 
-        .h-visual {
-            padding-top: $logo-padding;
-            padding-bottom: $logo-padding;
-            padding-right: $grid-gutter-width / 2;
-            padding-left: $grid-gutter-width / 2;
+        .h-logo-col {
+            padding-top: $header-padding;
+            @if (($fh-title-bg-color == none) or ($fh-title-bg-color == $fh-header-bg-color)) {
+                padding-bottom: $half-header-padding;
+            } @else {
+                padding-bottom: $header-padding;
+            }
 
-            .h-logo {
-                width: 100%;
+            > div {
+                padding-right: $grid-gutter-width / 2;
+                padding-left: $grid-gutter-width / 2;
             }
         }
 
-        .nav-toggle {
-            width: $nav-toggle-size-with-border;
-            height: $nav-toggle-size-with-border;
-            border: $nav-toggle-border-width solid #fff;
-            display: inline-block;
+        .h-title-col {
+            padding-top: $half-header-padding;
+            padding-bottom: $half-header-padding;
+            @include add-bg-color($fh-title-bg-color);
+
+            .h-title {
+                color: $fh-title-color;
+                padding-right: $grid-gutter-width / 2;
+                padding-left: $grid-gutter-width / 2;
+            }
         }
 
-        .h-title {
+        .h-title,
+        .h-ac .h-ac-title {
             @include use-hyphens-headings(true);
-            padding-right: $grid-gutter-width / 2;
-            padding-left: $grid-gutter-width / 2;
+            line-height: 1.2;
+            @if ($font-family-headings != $font-family-base) {
+                font-family: $font-family-headings;
+            }
+            @if ($font-style-headings != normal) {
+                font-style: $font-style-headings;
+            }
         }
 
         // additional container
@@ -1188,8 +1216,8 @@
         .h-ac {
             display: block;
             order: 20;
-            width: 100%;
             position: relative;
+            @include add-bg-color($fh-ac-bg-color);
 
             > div,
             .h-ac-element > div,
@@ -1197,10 +1225,6 @@
                 > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor laoding
                     margin-bottom: 0;
                 }
-            }
-
-            @if ($fh-ac-bg-color != none) {
-                background-color: $fh-ac-bg-color;
             }
 
             .h-ac-title {
@@ -1212,33 +1236,25 @@
                 transform: translate(-50%, -50%);
 
                 margin: 0;
-                text-align: left;
                 font-weight: $font-weight-bold;
                 color: $text-light;
                 text-shadow: 0 0 10px rgba(0,0,0,0.75);
-                line-height: 1.15;
 
                 font-size: $h1-font-size;
-            }
-        }
-
-        &.header-isfixed {
-            .h-ac {
-                display: none;
             }
         }
 
         &.ac-above-logo {
             .h-ac {
                 order: 2;
-                @if ($fh-ac-bg-color == none) {
+                @if (($fh-ac-bg-color == none) or ($fh-ac-bg-color == $fh-header-bg-color)) {
                     // add top margin only if no bg color is set, colord bg and top margin looks crappy
-                    margin-top: $default-margin-verysmall;
+                    margin-top: $header-padding;
                 }
             }
             &.ac-full-size {
                 .h-ac {
-                    @if ($fh-meta-bg-color != none) {
+                    @if (($fh-meta-bg-color != none) and ($fh-meta-bg-color != $fh-header-bg-color)) {
                         // full size container - remove margin if there is a bg color on the meta container
                         margin-top: 0;
                     }
@@ -1252,22 +1268,28 @@
             }
         }
 
-        &.ac-full-size {
+        &.header-isfixed {
             .h-ac {
-                // see https://css-tricks.com/full-width-containers-limited-width-parents/
-                width: 100vw;
-                position: relative;
-                left: 50%;
-                right: 50%;
-                margin-left: -50vw;
-                margin-right: -50vw;
+                display: none;
             }
         }
 
+        #nav-toggle-label {
+            position: absolute;
+        }
+
+        .nav-toggle {
+            width: $nav-toggle-size-with-border;
+            height: $nav-toggle-size-with-border;
+            border: $nav-toggle-border-width solid #fff;
+            display: inline-block;
+        }
+
         .nav-main-mobile-logo {
-            padding: $logo-padding $nav-mobile-indent-offset;
+            padding: $header-padding $nav-mobile-indent-offset;
             .mobile-logolink {
-                display: inline-block;
+                display: flex;
+                width: 100%;
             }
             .img-responsive {
                 display: inline-block;
@@ -1276,56 +1298,70 @@
 
         &.lp-l {
             @include mobile-menu-placement(right);
+
+            .h-title {
+                text-align: right;
+            }
         }
 
         &.lp-r {
             @include mobile-menu-placement(left);
 
-            .h-visual {
+            &.ls-col .h-logo-col > div {
                 display: flex;
                 justify-content: flex-end;
             }
 
             .h-title {
-                align-self: flex-start;
                 text-align: left;
             }
         }
 
-        @if ($fh-logo-image-bg != none) {
-            // set colored background for image (if images contain transparency - required mostly for demo content)
-            .nav-main-mobile-logo .img-responsive,
-            .header-image {
-                background-color: $fh-logo-image-bg;
+        &.title-left {
+            .h-title,
+            .h-ac .h-ac-title {
+                text-align: left;
             }
         }
 
-        @include media-breakpoint-up(sm) {
-
-            .h-logo {
-                .header-image {
-                    max-width: none;
-                }
+        &.title-right {
+            .h-title,
+            .h-ac .h-ac-title {
+                text-align: right;
             }
         }
+
+        &.title-center {
+            .h-title,
+            .h-ac .h-ac-title {
+                text-align: center;
+            }
+        }
+
 
         // fixed header
 
         &.header-isfixed {
-            .h-title {
+            .h-title-col {
                 display: none;
             }
 
             $fixed-logo-padding: $default-margin-verysmall;
 
-            .h-visual {
+            .h-logo-col {
                 padding-top: $fixed-logo-padding;
                 padding-bottom: $fixed-logo-padding;
             }
-            &.padding-none {
-                .h-visual {
-                    padding-top: 0;
-                    padding-bottom: 0;
+
+            &.ls-12 {
+                &.lp-r .h-logo {
+                    margin-left: auto;
+                }
+                &.lp-l .h-logo {
+                    margin-right: auto;
+                }
+                .h-logo {
+                    max-width: 50%;
                 }
             }
 
@@ -1339,17 +1375,30 @@
             }
         }
 
+        @include media-breakpoint-up(sm) {
+
+            .h-logo {
+                .header-image {
+                    max-width: none;
+                }
+            }
+        }
+
         @include media-breakpoint-up(lg) {
 
+            &.ls-col {
             &.lp-l {
-                .h-info {
+                .h-title-col {
                     padding-right: $grid-gutter-width + $nav-toggle-size-with-border;
                 }
             }
 
             &.lp-r {
-                .h-info {
-                    order: 3;
+                .h-logo-col {
+                    order: 2;
+                }
+                .h-title-col {
+                    order: 1;
                     padding-left: $grid-gutter-width + $nav-toggle-size-with-border;
                 }
             }
@@ -1361,30 +1410,41 @@
             }
 
             .h-group {
-                display: flex;
-            }
+                .h-logo-col {
+                    padding-top: $header-padding;
+                    padding-bottom: $header-padding;
 
-            .h-visual {
-                order: 4;
-                display: flex;
-                align-items: flex-end;
-                width: 100%;
-                .h-logo > a.imglink {
-                    width: 100%;
+                    > div {
+                        width: 100%;
+                        display: block;
+                    }
+
+                    .h-logo > a.imglink {
+                        width: 100%;
+                        display: block;
+                    }
+                }
+
+                .h-title-col {
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1000;
+                    justify-content: center;
+                    padding-top: $header-padding;
+                    padding-bottom: $header-padding;
+
+                    @if ($fh-title-bg-color != none) {
+                        background-color: transparent;
+                    }
+                }
+
+                .h-title {
                     display: block;
+                    padding-right: 0;
+                    padding-left: 0;
+                    font-size: $fh-title-font-size;
                 }
             }
-
-            .h-info {
-                order: 6;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 100%;
-
-                > .h-nav {
-                    align-items: flex-end;
-                }
             }
 
             .h-ac {
@@ -1393,32 +1453,7 @@
                 }
             }
 
-            @include add-meta("wh");
-
-            // page title
-
-            .h-title {
-                order: 10;
-                display: flex;
-                flex-direction: column;
-                flex-basis: auto;
-                flex-grow: 1000;
-                justify-content: center;
-                align-self: flex-end;
-                text-align: right;
-                @include heading-base(false);
-                padding-top: $default-margin-verysmall;
-                padding-bottom: $default-margin-verysmall;
-                padding-right: 0;
-                padding-left: 0;
-                color: $fh-title-color;
-                @if ($fh-title-bg-color != none) {
-                    background-color: $fh-title-bg-color;
-                }
-                font-size: $fh-title-font-size;
-                line-height: 1.2;
-                width: 100%;
-            }
+            @include add-meta("wh", $quarter-header-padding);
 
             // breadcrumbs
 
@@ -1453,7 +1488,7 @@
 
         @each $logo-size in (1,2,3,4,5,6) {
             &.ls-#{$logo-size} {
-                .nav-main-mobile-logo .img-responsive {
+                .nav-main-mobile-logo .mobile-logolink {
                     width: calc-abs-col(md, $logo-size);
                 }
                 @include media-breakpoint-down(md) {
@@ -1467,17 +1502,17 @@
                     }
                 }
                 @include media-breakpoint-up(lg) {
-                    .h-visual {
+                    .h-logo-col {
                         @include make-abs-col(lg, $logo-size);
                     }
                     &.header-isfixed {
-                        .h-visual {
+                        .h-logo-col {
                             max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
                         }
                     }
                 }
                 @include media-breakpoint-up(xl) {
-                    .h-visual {
+                    .h-logo-col {
                         @include make-abs-col(xl, $logo-size);
                     }
                 }
@@ -1501,11 +1536,11 @@
             .h-group {
                 background-color: #ccc;
             }
-            .h-logo {
-                background-color: #9B5094;
+            .h-logo-col {
+                background-color: #9B5094 !important;
             }
-            .h-info {
-                background-color: #8FB8DE;
+            .h-title-col {
+                background-color: #8FB8DE !important;
             }
             .h-title {
                 background-color: #D591AD;

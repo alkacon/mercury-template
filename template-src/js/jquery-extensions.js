@@ -54,7 +54,7 @@ jQuery.fn.bottomVisible = function() {
 
     var $element = jQuery(this);
     var elementBottom = $element.offset().top + $element.height();
-    return elementBottom >=  Mercury.windowScrollTop();
+    return elementBottom >= Mercury.windowScrollTop();
 };
 
 // Get the path to an element, good for debugging messages.

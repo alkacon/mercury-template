@@ -985,6 +985,7 @@ msg.setting.header.position.static=Never
 msg.setting.header.position.upscroll=While scrolling up
 msg.setting.header.position.wrap=Default (If the user scrolls the page)
 msg.setting.header.showTitle=Page title
+msg.setting.header.showTitle.ac=Display above additional container (if available)
 msg.setting.header.showTitle.help=Controls if the page title is displayed.
 msg.setting.header.textDisplay=Text display
 msg.setting.header.textDisplay.css=As set in the CSS

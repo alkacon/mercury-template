@@ -31,7 +31,8 @@
     description="Generate image source set data or not?"%>
 
 <%@ attribute name="sizes" type="java.lang.String" required="false"
-    description="Container sizes to create image variations for." %>
+    description="Container sizes to create image variations for.
+    This must be a comma separated list e.g. '100,200,400,800'." %>
 
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not?"%>

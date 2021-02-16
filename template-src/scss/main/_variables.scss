@@ -445,6 +445,7 @@ $nav-megamenu-bg:                   $nav-bg; // background color for the mega me
 
 @if ($feature-always-wrap-menu) {
     // set required variables to force wrap menu for desktop
+    $feature-use-flexible-header:       false !global;
     $nav-breakpoint-mobile:             xl !global;
     $nav-breakpoint-desktop:            none !global;
     $nav-breakpoint-sticky-header-size: 2 !global;

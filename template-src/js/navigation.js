@@ -395,7 +395,6 @@ function updateNavTogglePosition() {
         // this is only needed in the "wrap menu" theme
         var navToggleTop = 0;
         var navToggleHeight = m_$navToggleLabel.outerHeight(false);
-        var navToggleBorder = parseInt(m_$navToggleLabel.find(".nav-toggle").first().css("border-top-width"));
         if (mobileNavActive()) {
             // warp menu navigation is active
             var $logo = jQ('header.wh .nav-main-mobile-logo');
@@ -414,26 +413,11 @@ function updateNavTogglePosition() {
                 navToggleTop = Math.round((hLogoColHeight / 2.0) - (navToggleHeight / 2.0) + hMetaHeight + (Mercury.isEditMode() ? 52 : 0));
                 if (VERBOSE) console.info("Nav toggle [fixed] top=" + navToggleTop + " .h-logo-col.height=" + hLogoColHeight + " .h-meta.height=" + hMetaHeight);
             } else if ($hLogoCol.bottomVisible()) {
-
-
                 // header is not fixed and logo column is visible
-
                 m_fixedHeader.$header.removeClass('icon-fixed');
-                var $hLogo = jQ('header.wh .head .h-logo');
-                var hLogoHeight = $hLogo.outerHeight(true);
-
-                var hLogoTop = $hLogo.offset().top - m_fixedHeader.$header.offset().top;
-                if (m_fixedHeader.$header.hasClass('mp-m')) {
-                    navToggleTop = Math.round((hLogoHeight / 2.0) - (navToggleHeight / 2.0) + hLogoTop);
-                } else if (m_fixedHeader.$header.hasClass('mp-t')) {
-                    navToggleTop = hLogoTop - navToggleBorder;
-                } else {
-                    // position must be bottom
-                    navToggleTop = hLogoHeight - navToggleHeight + navToggleBorder + hLogoTop;
-                }
-                if (VERBOSE) console.info("Nav toggle [notfixed] top=" + navToggleTop + " .h-logo.height=" + hLogoHeight + " .h-logo.top=" + hLogoTop);
-
-
+                var hLogoColTop = $hLogoCol.offset().top - m_fixedHeader.$header.offset().top;
+                navToggleTop = Math.round((hLogoColHeight / 2.0) - (navToggleHeight / 2.0) + hLogoColTop);
+                if (VERBOSE) console.info("Nav toggle [notfixed] top=" + navToggleTop + " .h-logo-col.height=" + hLogoColHeight + " .h-logo-col.top=" + hLogoColTop);
             } else {
                 // header is not fixed but the logo column is no longer visible
                 m_fixedHeader.$header.addClass('icon-fixed');

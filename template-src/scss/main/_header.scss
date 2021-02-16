@@ -150,28 +150,11 @@
                 padding-bottom: $padding-v;
                 a {
                     color: check-text-color($fh-meta-bg-color, $fh-meta-color);
-                    &:hover {
-                        color: check-text-color($fh-meta-bg-color, $fh-meta-hover-color);
-                        text-decoration: underline;
-                    }
                 }
             }
         }
     }
 }
-
-@if($feature-use-flexible-header or $feature-always-wrap-menu) {
-
-    .area-header {
-        @if ($nav-header-margin-bottom > 0) {
-            margin-bottom: $nav-header-margin-bottom;
-        }
-        &.no-margin {
-            margin-bottom: 0;
-        }
-    }
-}
-
 
 // Flexible header with desktop menu
 @if($feature-use-flexible-header) {
@@ -1113,15 +1096,20 @@
     @include mobile-menu-top(md, '.fix-lg');
     @include mobile-menu-top(xl, '.fix-never');
 
-    $header-padding: 20px;
-    $half-header-padding: round(0.5 * $header-padding);
-    $quarter-header-padding: round(0.25 * $header-padding);
+
+    $wh-title-font-size: $h2-font-size;
+    $wh-title-font-size-mobile: $h2-font-size-mobile;
+
+    $wh-header-padding: 20px;
+    $half-header-padding: round(0.5 * $wh-header-padding);
+    $quarter-header-padding: round(0.25 * $wh-header-padding);
 
     html.noscript header.wh,
     html.active-nav header.wh,
     header.wh.icon-fixed {
         #nav-toggle-label {
             position: fixed;
+            z-index: $above-oc-z-index + 201; // mut be above $z-index-mobile-menu from _nav-main-scss
         }
     }
 
@@ -1174,11 +1162,11 @@
         }
 
         .h-logo-col {
-            padding-top: $header-padding;
+            padding-top: $wh-header-padding;
             @if (($fh-title-bg-color == none) or ($fh-title-bg-color == $fh-header-bg-color)) {
                 padding-bottom: $half-header-padding;
             } @else {
-                padding-bottom: $header-padding;
+                padding-bottom: $wh-header-padding;
             }
 
             > div {
@@ -1196,6 +1184,7 @@
                 color: $fh-title-color;
                 padding-right: $grid-gutter-width / 2;
                 padding-left: $grid-gutter-width / 2;
+                font-size: $wh-title-font-size-mobile;
             }
         }
 
@@ -1240,7 +1229,7 @@
                 color: $text-light;
                 text-shadow: 0 0 10px rgba(0,0,0,0.75);
 
-                font-size: $h1-font-size;
+                font-size: 1.5 * $wh-title-font-size-mobile;
             }
         }
 
@@ -1249,7 +1238,7 @@
                 order: 2;
                 @if (($fh-ac-bg-color == none) or ($fh-ac-bg-color == $fh-header-bg-color)) {
                     // add top margin only if no bg color is set, colord bg and top margin looks crappy
-                    margin-top: $header-padding;
+                    margin-top: $wh-header-padding;
                 }
             }
             &.ac-full-size {
@@ -1274,6 +1263,13 @@
             }
         }
 
+        // remove rounded corners from all images and slider
+        .image-src-box,
+        .type-slick-slider .slide-wrapper,
+        .type-slick-slider .slider-box {
+            border-radius: 0;
+        }
+
         #nav-toggle-label {
             position: absolute;
         }
@@ -1286,13 +1282,21 @@
         }
 
         .nav-main-mobile-logo {
-            padding: $header-padding $nav-mobile-indent-offset;
+            background-color: $nav-mobile-logo-bg-color;
+            padding: $wh-header-padding $nav-mobile-indent-offset;
+
             .mobile-logolink {
                 display: flex;
                 width: 100%;
             }
             .img-responsive {
                 display: inline-block;
+            }
+        }
+
+        @if ($nav-head-border != none) {
+            .header-group {
+                border-bottom: $nav-head-border;
             }
         }
 
@@ -1338,43 +1342,6 @@
             }
         }
 
-
-        // fixed header
-
-        &.header-isfixed {
-            .h-title-col {
-                display: none;
-            }
-
-            $fixed-logo-padding: $default-margin-verysmall;
-
-            .h-logo-col {
-                padding-top: $fixed-logo-padding;
-                padding-bottom: $fixed-logo-padding;
-            }
-
-            &.ls-12 {
-                &.lp-r .h-logo {
-                    margin-left: auto;
-                }
-                &.lp-l .h-logo {
-                    margin-right: auto;
-                }
-                .h-logo {
-                    max-width: 50%;
-                }
-            }
-
-            &.meta-above {
-                .h-meta {
-                    padding-top: $fixed-logo-padding;
-                    @if ($fh-meta-bg-color != none) {
-                        padding-bottom: $fixed-logo-padding;
-                    }
-                }
-            }
-        }
-
         @include media-breakpoint-up(sm) {
 
             .h-logo {
@@ -1387,70 +1354,65 @@
         @include media-breakpoint-up(lg) {
 
             &.ls-col {
-            &.lp-l {
-                .h-title-col {
-                    padding-right: $grid-gutter-width + $nav-toggle-size-with-border;
-                }
-            }
-
-            &.lp-r {
-                .h-logo-col {
-                    order: 2;
-                }
-                .h-title-col {
-                    order: 1;
-                    padding-left: $grid-gutter-width + $nav-toggle-size-with-border;
-                }
-            }
-
-            @if ($nav-head-border != none) {
-                .header-group {
-                    border-bottom: $nav-head-border;
-                }
-            }
-
-            .h-group {
-                .h-logo-col {
-                    padding-top: $header-padding;
-                    padding-bottom: $header-padding;
-
-                    > div {
-                        width: 100%;
-                        display: block;
-                    }
-
-                    .h-logo > a.imglink {
-                        width: 100%;
-                        display: block;
+                &.lp-l {
+                    .h-title-col {
+                        padding-right: $grid-gutter-width + $nav-toggle-size-with-border;
                     }
                 }
 
-                .h-title-col {
-                    display: flex;
-                    flex-direction: column;
-                    flex-grow: 1000;
-                    justify-content: center;
-                    padding-top: $header-padding;
-                    padding-bottom: $header-padding;
-
-                    @if ($fh-title-bg-color != none) {
-                        background-color: transparent;
+                &.lp-r {
+                    .h-logo-col {
+                        order: 2;
+                    }
+                    .h-title-col {
+                        order: 1;
+                        padding-left: $grid-gutter-width + $nav-toggle-size-with-border;
                     }
                 }
 
-                .h-title {
-                    display: block;
-                    padding-right: 0;
-                    padding-left: 0;
-                    font-size: $fh-title-font-size;
+                .h-group {
+                    .h-logo-col {
+                        padding-top: $wh-header-padding;
+                        padding-bottom: $wh-header-padding;
+
+                        > div {
+                            width: 100%;
+                            display: block;
+                        }
+
+                        .h-logo > a.imglink {
+                            width: 100%;
+                            display: block;
+                        }
+                    }
+
+                    .h-title-col {
+                        display: flex;
+                        flex-direction: column;
+                        flex-grow: 1000;
+                        justify-content: center;
+                        padding-top: $wh-header-padding;
+                        padding-bottom: $wh-header-padding;
+
+                        @if ($fh-title-bg-color != none) {
+                            background-color: transparent;
+                        }
+
+                        .h-title {
+                            color: check-text-color($fh-header-bg-color, $fh-title-color);
+                            display: block;
+                            padding-right: 0;
+                            padding-left: 0;
+                        }
+                    }
                 }
-            }
             }
 
-            .h-ac {
-                .h-ac-title {
-                    font-size: 1.5 * $h1-font-size;
-                }
+            .h-title {
+                font-size: $wh-title-font-size;
+            }
+            .h-ac .h-ac-title {
+                font-size: 2 * $wh-title-font-size;
             }
 
             @include add-meta("wh", $quarter-header-padding);
@@ -1484,6 +1446,39 @@
             }
         } // breakpoint lg
 
+        // fixed header
+
+        &.header-isfixed {
+            .h-title-col {
+                display: none;
+            }
+
+            .h-group .h-logo-col {
+                padding-top: $quarter-header-padding;
+                padding-bottom: $quarter-header-padding;
+            }
+
+            &.ls-12 {
+                &.lp-r .h-logo {
+                    margin-left: auto;
+                }
+                &.lp-l .h-logo {
+                    margin-right: auto;
+                }
+                .h-logo {
+                    max-width: 50%;
+                }
+            }
+        }
+
+        // remove padding for full size logo, also overrule .header-isfixed
+        &.ls-12 {
+            .h-group .h-logo-col {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
         // variable logo sizes
 
         @each $logo-size in (1,2,3,4,5,6) {
@@ -1497,7 +1492,7 @@
                     }
                     &.header-isfixed {
                         .h-logo {
-                            max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2);
+                            width: calc-abs-col(sm, $logo-size);
                         }
                     }
                 }
@@ -1507,7 +1502,7 @@
                     }
                     &.header-isfixed {
                         .h-logo-col {
-                            max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
+                            max-width: calc-abs-col(md, $logo-size);
                         }
                     }
                 }
@@ -1565,13 +1560,84 @@
             }
         }
     }
+}
+
+@if($feature-use-flexible-header or $feature-always-wrap-menu) {
 
     .area-header {
+        @if ($nav-header-margin-bottom > 0) {
+            margin-bottom: $nav-header-margin-bottom;
+        }
+        &.no-margin {
+            margin-bottom: 0;
+        }
 
         .type-nav-breadcrumbs.element {
             // remove element bottom margin from breadcrumbs in header
             margin-bottom: 0;
         }
+
+        // Header formatted link sequence
+        .header-links {
+            margin: 0;
+            &.oc-small-element {
+                min-height: auto !important;
+            }
+
+            > ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+
+                font-size: $fh-meta-font-size;
+                @if ($nav-meta-font-family != $font-family-base) {
+                    font-family: $nav-meta-font-family;
+                }
+
+                > li {
+                    &:not(:last-child) {
+                        &::after {
+                            border-right-color: $nav-border;
+                        }
+                    }
+
+                    > a {
+                        color: $fh-meta-color;
+                        // default is uppercase if not set (for backwards compatibility)
+                        text-transform: uppercase;
+
+                        &:hover {
+                            text-decoration: none;
+                            color: $fh-meta-hover-color;
+                        }
+                    }
+                }
+            }
+            &.cap-none {
+                > ul > li > a {
+                    text-transform: none;
+                }
+            }
+        }
+    }
+
+    .type-header-config {
+        // Special formatting for flexible header configuration function
+        background-color: $con-col-purple;
+        color: $con-text-col-dark !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+@if($feature-use-flexible-header) {
+
+    // Deprecated "logo-left" header - CSS comes with flexible header
+    .area-header {
 
         // global variables are now mostly for flexible header, this is for backward compatibility
         $logo-left-nav-padding: 0 20px $nav-header-ver-padding 20px !default; // padding for main nav items in LG, XL
@@ -1581,7 +1647,6 @@
         $header-logo-xs-width: 270px !default; // max width for logo on XS screens (substract 2 * $gutter)
         $header-logo-fixed-width: 250px !default; // max width for logo if fixed header (substract 2 * $gutter)
 
-        // Deprecated "logo-left" header
         &.logo-left {
             .header-links,
             .header-title {
@@ -1707,67 +1772,6 @@
                 }
             }
         }
-
-        .header-links {
-            > ul {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-            }
-        }
-    }
-
-    .area-header {
-        // Header formatted link sequence
-        .header-links {
-            margin: 0;
-            &.oc-small-element {
-                min-height: auto !important;
-            }
-
-            > ul {
-                font-size: $fh-meta-font-size;
-                @if ($nav-meta-font-family != $font-family-base) {
-                    font-family: $nav-meta-font-family;
-                }
-
-                > li {
-                    &:not(:last-child) {
-                        &::after {
-                            border-right-color: $nav-border;
-                        }
-                    }
-
-                    > a {
-                        color: $fh-meta-color;
-                        // default is uppercase if not set (for backwards compatibility)
-                        text-transform: uppercase;
-
-                        &:hover {
-                            text-decoration: none;
-                            color: $fh-meta-hover-color;
-                        }
-                    }
-                }
-            }
-            &.cap-none {
-                > ul > li > a {
-                    text-transform: none;
-                }
-            }
-        }
-    }
-
-    .type-header-config {
-    // Special formatting for flexible header configuration function
-        background-color: $con-col-purple;
-        color: $con-text-col-dark !important;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        line-height: 30px;
     }
 }
 

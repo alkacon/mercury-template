@@ -327,10 +327,6 @@
     .nav-main-container {
         pointer-events: none;
         position: fixed;
-        @if (not $feature-always-wrap-menu) {
-            #{$nav-mobile-position}: -1 * $nav-mobile-width-xs;
-            transition: #{$nav-mobile-position} 0.5s, opacity 0.25s;
-        }
         top: 0;
         height: 100vh;
         background-color: $nav-mobile-bg-color;
@@ -364,58 +360,19 @@
 
         // adjust size of mobile side navigation
         @include media-breakpoint-up(sm) {
-            @if (not $feature-always-wrap-menu) {
-                #{$nav-mobile-position}: -1 * $nav-mobile-width-sm;
-            }
             .nav-main-group  {
                 width: $nav-mobile-width-sm;
             }
         }
         @include media-breakpoint-up(md) {
-            @if (not $feature-always-wrap-menu) {
-                #{$nav-mobile-position}: -1 * $nav-mobile-width-md;
-            }
             .nav-main-group  {
                 width: $nav-mobile-width-md;
             }
         }
         @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl)) {
             @include media-breakpoint-up(lg) {
-                @if (not $feature-always-wrap-menu) {
-                    #{$nav-mobile-position}: -1 * $nav-mobile-width-lg;
-                }
                 .nav-main-group  {
                     width: $nav-mobile-width-lg;
-                }
-            }
-        }
-
-        .nav-main-mobile-logo {
-            display: block;
-            background-color: $nav-mobile-logo-bg-color;
-            padding: #{$grid-gutter-width / 2} $nav-mobile-indent-offset;
-            // make sure wide logos are not under the toggle button
-            @if (not $feature-always-wrap-menu) {
-                @if ($nav-mobile-position == right) {
-                    padding-right: 3 * $grid-gutter-width;
-                }
-                @if ($nav-mobile-position == left) {
-                    padding-left: 3 * $grid-gutter-width;
-                }
-            }
-        }
-    }
-
-    #nav-toggle-label {
-        position: fixed;
-        z-index: $z-index-mobile-menu + 1; // the toggle must be above the z-index of the menu (see above)
-        top: $nav-mobile-toggle-top;
-        @if (not $feature-always-wrap-menu) {
-            #{$nav-mobile-position}: $nav-mobile-toggle-side;
-
-            @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
-                @include media-breakpoint-down(xs) {
-                    #{$nav-mobile-position}:  $nav-mobile-toggle-side-xs;
                 }
             }
         }
@@ -454,6 +411,51 @@
     }
 
     @if (not $feature-always-wrap-menu) {
+
+        .nav-main-container {
+
+            transition: #{$nav-mobile-position} 0.5s, opacity 0.25s;
+            #{$nav-mobile-position}: -1 * $nav-mobile-width-xs;
+
+            @include media-breakpoint-up(sm) {
+                #{$nav-mobile-position}: -1 * $nav-mobile-width-sm;
+            }
+            @include media-breakpoint-up(md) {
+                #{$nav-mobile-position}: -1 * $nav-mobile-width-md;
+            }
+            @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl)) {
+                @include media-breakpoint-up(lg) {
+                    #{$nav-mobile-position}: -1 * $nav-mobile-width-lg;
+                }
+            }
+
+            .nav-main-mobile-logo {
+                display: block;
+                padding: #{$grid-gutter-width / 2} $nav-mobile-indent-offset;
+                background-color: $nav-mobile-logo-bg-color;
+                // make sure wide logos are not under the toggle button
+                @if ($nav-mobile-position == right) {
+                    padding-right: 3 * $grid-gutter-width;
+                }
+                @if ($nav-mobile-position == left) {
+                    padding-left: 3 * $grid-gutter-width;
+                }
+            }
+
+        }
+
+        #nav-toggle-label {
+            position: fixed;
+            z-index: $z-index-mobile-menu + 1; // the toggle must be above the z-index of the menu (see above)
+            top: $nav-mobile-toggle-top;
+            #{$nav-mobile-position}: $nav-mobile-toggle-side;
+
+            @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
+                @include media-breakpoint-down(xs) {
+                    #{$nav-mobile-position}:  $nav-mobile-toggle-side-xs;
+                }
+            }
+        }
 
         html.noscript #nav-toggle-check:checked ~ .header-group,
         html.active-nav .area-header .header-group {

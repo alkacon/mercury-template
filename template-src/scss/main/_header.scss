@@ -203,9 +203,6 @@
         }
     }
 
-
-    // flexible header
-
     header.fh {
         .h-meta,
         .h-title {
@@ -1003,8 +1000,8 @@
     $opposide-position: $logo-position;
     $position-selector: conditional-value($logo-position == left, "lp-l", "lp-r");
 
-    html.active-nav header.wh.#{$position-selector},
-    html.noscript header.wh.#{$position-selector} #nav-toggle-check:checked ~ #nav-toggle-group {
+    html.active-nav header.bh.#{$position-selector},
+    html.noscript header.bh.#{$position-selector} #nav-toggle-check:checked ~ #nav-toggle-group {
 
         #nav-toggle-label {
             #{$mobile-position}: $nav-mobile-toggle-side - $nav-toggle-border-width;
@@ -1061,7 +1058,7 @@
 
 @mixin mobile-menu-top($breakpoint, $selector) {
     @include media-breakpoint-down($breakpoint) {
-        header.wh#{$selector}.header-isfixed {
+        header.bh#{$selector}.header-isfixed {
             #nav-toggle-label {
                 top: #{$nav-mobile-toggle-top} !important;
             }
@@ -1072,7 +1069,7 @@
                 right: $nav-mobile-toggle-side;
             }
         }
-        html.opencms-page-editor header.wh#{$selector}.header-isfixed {
+        html.opencms-page-editor header.bh#{$selector}.header-isfixed {
             #nav-toggle-label {
                 top: #{$nav-mobile-toggle-top + $opencms-toolbar-height} !important;
             }
@@ -1080,8 +1077,8 @@
     }
 }
 
-// Flexible header that always displays the mobile wrap "hamburger" menu
-@if ($feature-always-wrap-menu) {
+// Header that always displays the"burger" menu
+@if ($feature-use-burger-header) {
 
     @include sticky-header-globals(xs, '.fix-xs');
     @include sticky-header-globals(sm, '.fix-sm');
@@ -1096,34 +1093,7 @@
     @include mobile-menu-top(md, '.fix-lg');
     @include mobile-menu-top(xl, '.fix-never');
 
-
-    $wh-title-font-size: $h2-font-size;
-    $wh-title-font-size-mobile: $h2-font-size-mobile;
-
-    $wh-header-padding: 20px;
-    $half-header-padding: round(0.5 * $wh-header-padding);
-    $quarter-header-padding: round(0.25 * $wh-header-padding);
-
-    html.noscript header.wh,
-    html.active-nav header.wh,
-    header.wh.icon-fixed {
-        #nav-toggle-label {
-            position: fixed;
-            z-index: $above-oc-z-index + 201; // mut be above $z-index-mobile-menu from _nav-main-scss
-        }
-    }
-
-    header.wh {
-
-        .nav-main-items {
-            // this expands the arrow links to the right so they can be touch-clicked easier
-            li[aria-expanded] > a::after {
-                right: $nav-mobile-toggle-side;
-            }
-            li[aria-expanded] > a {
-                padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
-            }
-        }
+    header.bh {
 
         .co-sm-md {
             // container only for screen size SM And MD
@@ -1162,11 +1132,11 @@
         }
 
         .h-logo-col {
-            padding-top: $wh-header-padding;
+            padding-top: $bh-header-padding;
             @if (($fh-title-bg-color == none) or ($fh-title-bg-color == $fh-header-bg-color)) {
-                padding-bottom: $half-header-padding;
+                padding-bottom: $bh-header-padding-small;
             } @else {
-                padding-bottom: $wh-header-padding;
+                padding-bottom: $bh-header-padding;
             }
 
             > div {
@@ -1176,15 +1146,15 @@
         }
 
         .h-title-col {
-            padding-top: $half-header-padding;
-            padding-bottom: $half-header-padding;
+            padding-top: $bh-header-padding-small;
+            padding-bottom: $bh-header-padding-small;
             @include add-bg-color($fh-title-bg-color);
 
             .h-title {
                 color: $fh-title-color;
                 padding-right: $grid-gutter-width / 2;
                 padding-left: $grid-gutter-width / 2;
-                font-size: $wh-title-font-size-mobile;
+                font-size: $bh-title-font-size-mobile;
             }
         }
 
@@ -1229,7 +1199,7 @@
                 color: $text-light;
                 text-shadow: 0 0 10px rgba(0,0,0,0.75);
 
-                font-size: 1.5 * $wh-title-font-size-mobile;
+                font-size: $bh-title-ac-font-size-mobile;
             }
         }
 
@@ -1238,7 +1208,7 @@
                 order: 2;
                 @if (($fh-ac-bg-color == none) or ($fh-ac-bg-color == $fh-header-bg-color)) {
                     // add top margin only if no bg color is set, colord bg and top margin looks crappy
-                    margin-top: $wh-header-padding;
+                    margin-top: $bh-header-padding;
                 }
             }
             &.ac-full-size {
@@ -1283,7 +1253,7 @@
 
         .nav-main-mobile-logo {
             background-color: $nav-mobile-logo-bg-color;
-            padding: $wh-header-padding $nav-mobile-indent-offset;
+            padding: $bh-header-padding $nav-mobile-indent-offset;
 
             .mobile-logolink {
                 display: flex;
@@ -1291,6 +1261,16 @@
             }
             .img-responsive {
                 display: inline-block;
+            }
+        }
+
+        .nav-main-items {
+            // this expands the arrow links to the right so they can be touch-clicked easier
+            li[aria-expanded] > a::after {
+                right: $nav-mobile-toggle-side;
+            }
+            li[aria-expanded] > a {
+                padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
             }
         }
 
@@ -1372,8 +1352,8 @@
 
                 .h-group {
                     .h-logo-col {
-                        padding-top: $wh-header-padding;
-                        padding-bottom: $wh-header-padding;
+                        padding-top: $bh-header-padding;
+                        padding-bottom: $bh-header-padding;
 
                         > div {
                             width: 100%;
@@ -1391,8 +1371,8 @@
                         flex-direction: column;
                         flex-grow: 1000;
                         justify-content: center;
-                        padding-top: $wh-header-padding;
-                        padding-bottom: $wh-header-padding;
+                        padding-top: $bh-header-padding;
+                        padding-bottom: $bh-header-padding;
 
                         @if ($fh-title-bg-color != none) {
                             background-color: transparent;
@@ -1409,13 +1389,13 @@
             }
 
             .h-title {
-                font-size: $wh-title-font-size;
+                font-size: $bh-title-font-size;
             }
             .h-ac .h-ac-title {
-                font-size: 2 * $wh-title-font-size;
+                font-size: $bh-title-ac-font-size;
             }
 
-            @include add-meta("wh", $quarter-header-padding);
+            @include add-meta("bh", $bh-header-padding-verysmall);
 
             // breadcrumbs
 
@@ -1454,8 +1434,8 @@
             }
 
             .h-group .h-logo-col {
-                padding-top: $quarter-header-padding;
-                padding-bottom: $quarter-header-padding;
+                padding-top: $bh-header-padding-verysmall;
+                padding-bottom: $bh-header-padding-verysmall;
             }
 
             &.ls-12 {
@@ -1560,9 +1540,18 @@
             }
         }
     }
+
+    html.noscript header.bh,
+    html.active-nav header.bh,
+    header.bh.icon-fixed {
+        #nav-toggle-label {
+            position: fixed;
+            z-index: $above-oc-z-index + 201; // mut be above $z-index-mobile-menu from _nav-main-scss
+        }
+    }
 }
 
-@if($feature-use-flexible-header or $feature-always-wrap-menu) {
+@if($feature-use-flexible-header or $feature-use-burger-header) {
 
     .area-header {
         @if ($nav-header-margin-bottom > 0) {
@@ -1794,7 +1783,7 @@
     background: $fh-header-bg-color;
 }
 
-@if (not $feature-always-wrap-menu) {
+@if (not $feature-use-burger-header) {
     // sticky / fixed header
     @include sticky-header-globals($nav-breakpoint-sticky-header);
 }
@@ -1830,8 +1819,8 @@ html.opencms-group-editor {
         }
 
         &:not(.active-nav) {
-            .area-header.wh {
-                // show navigation container in wrapped header
+            .area-header.bh {
+                // show navigation container
                 .h-nav {
                     border-top: 4px solid $con-col-purple !important;
                     background-color: rgba($con-col-purple, 0.75) !important;

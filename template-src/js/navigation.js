@@ -31,7 +31,7 @@ var m_subMenuTimeout = null;
 var m_firstInit = true;
 var $topControl = null;
 
-var m_isWrapMenu = false;
+var m_isBurgerHeader = false;
 var m_$navToggleLabel = null;
 
 function setKeyboardClass(active) {
@@ -286,7 +286,7 @@ function initHeadNavigation() {
     jQ(window).on('resize', debInitMenu);
 
     m_$navToggleLabel = jQ('#nav-toggle-label');
-    m_isWrapMenu = false || jQ('header.wh').length;
+    m_isBurgerHeader = false || jQ('header.bh').length;
 
     // Responsive navbar toggle button
     jQ('.nav-toggle').click(function() {
@@ -376,8 +376,8 @@ function initHeadNavigation() {
         }
     };
 
-    if ((m_fixedHeader == null) && m_isWrapMenu) {
-        // no fixed header, make sure to update the wrap menu "hamburger" position after resize and scroll
+    if ((m_fixedHeader == null) && m_isBurgerHeader) {
+        // for burger header make sure to update the menu position after resize and scroll
         jQ(window).on('scroll', debUpdateNavTogglePosition).on('resize', debUpdateNavTogglePosition);
         updateNavTogglePosition();
     }
@@ -391,24 +391,24 @@ function mobileNavActive() {
 }
 
 function updateNavTogglePosition() {
-    if (m_isWrapMenu) {
-        // this is only needed in the "wrap menu" theme
+    if (m_isBurgerHeader) {
+        // this is only needed for the burger header
         var navToggleTop = 0;
         var navToggleHeight = m_$navToggleLabel.outerHeight(false);
         if (mobileNavActive()) {
-            // warp menu navigation is active
-            var $logo = jQ('header.wh .nav-main-mobile-logo');
-            var hLogoHeight = $logo.length ? $logo.outerHeight(true) : 0;
+            // mobile navigation is active
+            var $logo = jQ('header.bh .nav-main-mobile-logo');
+            var hLogoHeight = $logo.outerHeight(true);
             navToggleTop = Math.round((hLogoHeight / 2.0) - (navToggleHeight / 2.0) + (Mercury.isEditMode() ? 52 : 0));
             if (VERBOSE) console.info("Nav toggle [active] top=" + navToggleTop + " .nav-main-mobile-logo.height=" + hLogoHeight);
         } else {
-            // wrap menu navigation is hidden
-            var $hLogoCol = jQ('header.wh .head .h-logo-col');
-            var hLogoColHeight = $hLogoCol.length ? $hLogoCol.outerHeight(true) : 0;
+            // adjust burger header menu position for screen size and fixed header
+            var $hLogoCol = jQ('header.bh .head .h-logo-col');
+            var hLogoColHeight = $hLogoCol.outerHeight(true);
             if ((m_fixedHeader != null) && m_fixedHeader.isFixed) {
                 // header is fixed
                 m_fixedHeader.$header.addClass('icon-fixed');
-                var $hMeta = jQ('header.wh .head > .h-meta:visible');
+                var $hMeta = jQ('header.bh .head > .h-meta:visible');
                 var hMetaHeight = $hMeta.length ? $hMeta.outerHeight(true) : 0;
                 navToggleTop = Math.round((hLogoColHeight / 2.0) - (navToggleHeight / 2.0) + hMetaHeight + (Mercury.isEditMode() ? 52 : 0));
                 if (VERBOSE) console.info("Nav toggle [fixed] top=" + navToggleTop + " .h-logo-col.height=" + hLogoColHeight + " .h-meta.height=" + hMetaHeight);
@@ -419,7 +419,7 @@ function updateNavTogglePosition() {
                 navToggleTop = Math.round((hLogoColHeight / 2.0) - (navToggleHeight / 2.0) + hLogoColTop);
                 if (VERBOSE) console.info("Nav toggle [notfixed] top=" + navToggleTop + " .h-logo-col.height=" + hLogoColHeight + " .h-logo-col.top=" + hLogoColTop);
             } else {
-                // header is not fixed but the logo column is no longer visible
+                // header is not fixed and the logo column is not visible
                 m_fixedHeader.$header.addClass('icon-fixed');
                 navToggleTop = -1;
             }
@@ -655,8 +655,8 @@ export function scrollToAnchor($anchor, offset) {
 export function init(jQuery, debug) {
 
     jQ = jQuery;
-    DEBUG = true || debug;
-    VERBOSE = true || DEBUG && (Mercury.getParameter("jsverbose") != null);
+    DEBUG = debug;
+    VERBOSE = DEBUG && (Mercury.getParameter("jsverbose") != null);
 
     if (DEBUG) console.info("Navigation.init()");
 

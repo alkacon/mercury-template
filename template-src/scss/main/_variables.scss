@@ -17,8 +17,8 @@
 
 // Features - disable what is not needed to keep the generated CSS small
 
-$feature-use-flexible-header:       true !default; // default headers from _header.scss
-$feature-always-wrap-menu:          false !default; // always use wrap menu for mobile AND desktop - otherwise desktop has cascading menu bar
+$feature-use-flexible-header:       true !default; // use flexible header from _header.scss
+$feature-use-burger-header:         false !default; // use burger header from _header.scss (if 'true' overwrites flexible header setting - see below)
 
 // Required default colors
 
@@ -382,20 +382,12 @@ $nav-menu-text-mobile:              $nav-text !default; // text color for mobile
 $nav-menu-bg-mobile:                $nav-bg !default; // background color for mobile menus
 
 
-// Flexible header - this is used for the special layout group "Mercury header with flexible layout options"
+// Navigation breakpoints
 
-$fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
-$fh-meta-bg-color:                  none !default; // background color of the meta / service links
-$fh-meta-color:                     check-text-color($fh-meta-bg-color, $nav-header-text, $fh-header-bg-color) !default; // font color for meta / service links
-$fh-meta-hover-color:               check-text-color($fh-meta-bg-color, $nav-header-text-hover, $fh-header-bg-color) !default; // font hover color for meta / service links
-$fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
-$fh-title-font-size:                $h4-font-size !default; // font size for title in header
-$fh-title-bg-color:                 none !default; // background color of the title
-$fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text, $fh-header-bg-color) !default; // background color of the title
-$fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
-$fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
-$fh-ac-bg-color:                    none !default; // color of additional container
-$fh-logo-image-bg:                  none !default; // background color for the logo image in the header
+$nav-breakpoint-mobile:             md !default; // breakpoint until which the mobile navigation is displayed
+$nav-breakpoint-desktop:            lg !default; // breakpoint from which the desktop navigation is displayed
+$nav-breakpoint-sticky-header:      md !default; // breakpoint from which to use the sticky header
+$nav-breakpoint-sticky-header-size: 100000 !default; // size from which to use the sticky header ONLY in case there is no destop/mobile difference
 
 
 // Mobile navigation menu
@@ -436,16 +428,30 @@ $nav-mobile-width-sm:               500px !default; // width of mobile menu SM
 $nav-mobile-width-md:               $nav-mobile-width-sm !default; // width of mobile menu MD
 $nav-mobile-width-lg:               $nav-mobile-width-sm !default; // width of mobile menu in LG, XL (if enabled)
 
-$nav-breakpoint-mobile:             md !default; // breakpoint until which the mobile navigation is displayed
-$nav-breakpoint-desktop:            lg !default; // breakpoint from which the desktop navigation is displayed
-$nav-breakpoint-sticky-header:      md !default; // breakpoint from which to use the sticky header
-$nav-breakpoint-sticky-header-size: 100000 !default; // size from which to use the sticky header ONLY in case there is no destop/mobile difference
-
 $nav-megamenu-bg:                   $nav-bg; // background color for the mega menu
 
-@if ($feature-always-wrap-menu) {
+
+// Flexible header
+
+$fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
+$fh-meta-bg-color:                  none !default; // background color of the meta / service links
+$fh-meta-color:                     check-text-color($fh-meta-bg-color, $nav-header-text, $fh-header-bg-color) !default; // font color for meta / service links
+$fh-meta-hover-color:               check-text-color($fh-meta-bg-color, $nav-header-text-hover, $fh-header-bg-color) !default; // font hover color for meta / service links
+$fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
+$fh-title-font-size:                $h4-font-size !default; // font size for title in header
+$fh-title-bg-color:                 none !default; // background color of the title
+$fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text, $fh-header-bg-color) !default; // background color of the title
+$fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
+$fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
+$fh-ac-bg-color:                    none !default; // color of additional container
+$fh-logo-image-bg:                  none !default; // background color for the logo image in the header
+
+
+// Burger header
+
+@if ($feature-use-burger-header) {
     // set required variables to force wrap menu for desktop
-    $feature-use-flexible-header:       false !global;
+    $feature-use-flexible-header:       false !global; // burger header setting is stronger than flexible header
     $nav-breakpoint-mobile:             xl !global;
     $nav-breakpoint-desktop:            none !global;
     $nav-breakpoint-sticky-header-size: 2 !global;
@@ -453,15 +459,23 @@ $nav-megamenu-bg:                   $nav-bg; // background color for the mega me
     $nav-mobile-smaller-xs-toggle:      false !global; // do not make 'hamburger' icon smaller on mobile
 }
 
+$bh-title-font-size:                $h2-font-size !default; // title font size for larger screens
+$bh-title-font-size-mobile:         $h2-font-size-mobile !default; // title font size for smaller screens
+$bh-title-ac-font-size:             $bh-title-font-size * 2 !default; // title font size in additional container overlay for larger screens
+$bh-title-ac-font-size-mobile:      $bh-title-font-size-mobile * 1.5 !default; // title font size in additional container overlay for smaller screens
+$bh-header-padding:                 20px !default; // top / bottom padding for burger header elements
+$bh-header-padding-small:           round($bh-header-padding * 50) / 100 !default; // smaller padding for burger header elements
+$bh-header-padding-verysmall:       round($bh-header-padding * 25) / 100 !default; // used mostly for sticky burger header
 
-// The "nav-toggle" button - this is the button displayed on small screens to show / hide the navigation
+
+// The "nav-toggle" button - this is the "burger" button to show / hide the mobile navigation
 
 $nav-toggle-bg:                     $main-theme !default; // color of toggle button
 $nav-toggle-bg-hover:               $main-theme-hover !default; // hover color of toggle button
 $nav-toggle-bg-active:              $main-theme !default; // color of toggle button if activated
 $nav-toggle-text:                   $white !default; // color of text in toggle button
 $nav-toggle-size:                   40px !default; // height of toggle button
-$nav-toggle-size-xs:                30px !default; // on very smaller screens the button size is reduced further
+$nav-toggle-size-xs:                30px !default; // on smaller screens the button size is reduced further
 $nav-toggle-bottom:                 5px !default; // bottom positioning of toggle button
 $nav-toggle-stroke-height:          round(0.06 * $nav-toggle-size) !default; // the height of the generated lines in the toggle button that form the menu icon
 $nav-toggle-border-width:           0 !default;

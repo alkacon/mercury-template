@@ -36,6 +36,14 @@
     flex-direction: column;
 }
 
+.row-12.box > div {
+    // dont add bottom margin of last child if the row is "boxed" with a color background
+    // the box already adds a colored margin on all sides so no additional bottom margin is required
+    &.element:last-child  {
+        margin-bottom: 0;
+    }
+}
+
 // left/right margins for tile rows
 @each $space in $list-tile-spacers {
 

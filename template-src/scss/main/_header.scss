@@ -148,8 +148,13 @@
             order: 1;
             @include add-bg-color($fh-meta-bg-color) {
                 padding-bottom: $padding-v;
+                li::before,
+                li::after,
                 a {
                     color: check-text-color($fh-meta-bg-color, $fh-meta-color);
+                }
+                a:hover {
+                    color: check-text-color($fh-meta-bg-color, $fh-meta-hover-color);
                 }
             }
         }

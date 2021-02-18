@@ -32,6 +32,7 @@ import org.opencms.file.CmsProject;
 import org.opencms.file.CmsResource;
 import org.opencms.file.CmsResourceFilter;
 import org.opencms.lock.CmsLockUtil;
+import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.scheduler.I_CmsScheduledJob;
@@ -138,7 +139,6 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
                 OpenCms.getDefaultUsers().getGroupAdministrators(),
                 CmsProject.PROJECT_TYPE_TEMPORARY);
             cmsClone.getRequestContext().setCurrentProject(tempProject);
-            cmsClone.copyResourceToProject("/");
             Set<String> parentFolders = new HashSet<>();
             boolean hasChanges = false;
             for (CmsResource resource : resourcesToDelete) {
@@ -178,6 +178,13 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
             if (hasChanges) {
                 LOG.info(p + "publishing changes...");
                 OpenCms.getPublishManager().publishProject(cmsClone);
+            } else {
+                cmsClone = null;
+                try {
+                    cms.deleteProject(tempProject.getId());
+                } catch (CmsException e) {
+                    LOG.error("Failed to delete project " + tempProject.getName(), e);
+                }
             }
         } catch (Exception e) {
             LOG.error(p + e.getLocalizedMessage(), e);

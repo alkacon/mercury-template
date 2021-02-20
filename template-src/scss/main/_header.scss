@@ -1010,6 +1010,9 @@
 
         #nav-toggle-label {
             #{$mobile-position}: $nav-mobile-toggle-side - $nav-toggle-border-width;
+            @include media-breakpoint-down(xs) {
+                #{$mobile-position}: $nav-mobile-toggle-side-xs - $nav-toggle-border-width;
+            }
         }
 
         .nav-main-container {
@@ -1061,22 +1064,32 @@
     }
 }
 
-@mixin mobile-menu-top($breakpoint, $selector) {
+// Fixed header icon positioning
+@mixin mobile-menu-fixed($breakpoint, $selector) {
     @include media-breakpoint-down($breakpoint) {
         header.bh#{$selector}.header-isfixed {
             #nav-toggle-label {
-                top: #{$nav-mobile-toggle-top} !important;
+                top: #{$nav-mobile-toggle-top};
             }
-            &.lp-r #nav-toggle-label {
-                left: $nav-mobile-toggle-side;
-            }
-            &.lp-l #nav-toggle-label {
-                right: $nav-mobile-toggle-side;
+            @if ($breakpoint != xs) {
+                &.lp-r #nav-toggle-label {
+                    left: $nav-mobile-toggle-side - $nav-toggle-border-width;
+                }
+                &.lp-l #nav-toggle-label {
+                    right: $nav-mobile-toggle-side - $nav-toggle-border-width;
+                }
+            } @else {
+                &.lp-r #nav-toggle-label {
+                    left: $nav-mobile-toggle-side-xs - $nav-toggle-border-width;
+                }
+                &.lp-l #nav-toggle-label {
+                    right: $nav-mobile-toggle-side-xs - $nav-toggle-border-width;
+                }
             }
         }
         html.opencms-page-editor header.bh#{$selector}.header-isfixed {
             #nav-toggle-label {
-                top: #{$nav-mobile-toggle-top + $opencms-toolbar-height} !important;
+                top: #{$nav-mobile-toggle-top + $opencms-toolbar-height};
             }
         }
     }
@@ -1093,10 +1106,10 @@
     @include mobile-menu-globals(right);
     @include mobile-menu-globals(left);
 
-    @include mobile-menu-top(xs, '.fix-sm');
-    @include mobile-menu-top(sm, '.fix-md');
-    @include mobile-menu-top(md, '.fix-lg');
-    @include mobile-menu-top(xl, '.fix-never');
+    @include mobile-menu-fixed(xs, '.fix-sm');
+    @include mobile-menu-fixed(sm, '.fix-md');
+    @include mobile-menu-fixed(md, '.fix-lg');
+    @include mobile-menu-fixed(xl, '.fix-never');
 
     header.bh {
 
@@ -1240,13 +1253,14 @@
 
         // remove rounded corners from all images and slider
         .image-src-box,
-        .type-slick-slider .slide-wrapper,
-        .type-slick-slider .slider-box {
+        .type-slider .slide-wrapper,
+        .type-slider .slider-box {
             border-radius: 0;
         }
 
         #nav-toggle-label {
             position: absolute;
+            top: $nav-mobile-toggle-top;
         }
 
         .nav-toggle {
@@ -1278,6 +1292,23 @@
                 padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
             }
         }
+
+
+        @include media-breakpoint-down(xs) {
+            .nav-main-items {
+                // this expands the arrow links to the right so they can be touch-clicked easier
+                li > a {
+                    padding-left: $nav-mobile-toggle-side-xs;
+                }
+                li[aria-expanded] > a::after {
+                    right: $nav-mobile-toggle-side-xs;
+                }
+                li[aria-expanded] > a {
+                    padding-right: $nav-mobile-toggle-side-xs + $nav-mobile-box-height !important;
+                }
+            }
+        }
+
 
         @if ($nav-head-border != none) {
             .header-group {

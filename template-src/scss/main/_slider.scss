@@ -23,49 +23,120 @@
 @import '../../plugins/slick-carousel/slick-theme';
 @import '../../plugins/slick-carousel/slick';
 
-// Slick slider settings
+// Slider settings
 
-.type-slick-slider {
+.type-slider {
 
     // add fade in/out effects to text in slider
-    // if only one slide, this will not be active since .slick-slide will be missing
-    .slick-slide .slide-wrapper {
-        .caption {
-            &.foreground,
-            &.background {
-                opacity: 0;
-            }
-        }
-    }
-    .slick-slide.slick-current.slick-active .slide-wrapper   {
-        .caption {
-            &.foreground,
-            &.background {
-                transition: opacity 1.5s linear;
-            }
-            &.foreground {
-                opacity: 1.0;
-            }
-            &.background {
-                opacity: 0.75;
+    // this must not be active in general because for just on slide there is no effect required
+
+    // slide that is not visible
+    %slide-not-active {
+        .slide-wrapper {
+            .caption {
+                &.foreground,
+                &.background {
+                    opacity: 0;
+                }
             }
         }
     }
 
-    .slick-slide > div {
-        // removes strange 5px extra bottom margin
-        display: flex;
+    // slide that is currently visible
+    %slide-is-active {
+        .slide-wrapper {
+            .caption {
+                &.foreground,
+                &.background {
+                    transition: opacity 1.5s linear;
+                }
+                &.foreground {
+                    opacity: 1.0;
+                }
+                &.background {
+                    opacity: 0.75;
+                }
+            }
+        }
+    }
+
+    // hero slider - activate slides not visible before the slider is initialized
+    %show-hidden-slides-after-init {
+        .slide-wrapper.hide-noscript {
+            visibility: visible;
+            max-height: none;
+        }
+    }
+
+    // logo slider - activate all slides not visible before the slider is initialized
+    %show-hidden-logos-after-init {
+        overflow: visible;
+        max-height: none;
+    }
+
+    // slick slider special requirements
+    &.type-slick-slider {
+        .slick-slide {
+            @extend %slide-not-active;
+        }
+
+        .slick-slide.slick-current.slick-active   {
+            @extend %slide-is-active;
+        }
+
+        .slick-slide > div {
+            // removes strange 5px extra bottom margin
+            display: flex;
+        }
+
+        &.hero-slider {
+            .slide-definitions.slick-initialized {
+                @extend %show-hidden-slides-after-init;
+            }
+        }
+
+        &.logo-slider {
+            .slide-definitions.slick-initialized {
+                @extend %show-hidden-logos-after-init;
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            &.text-below-on-xs {
+                // adjust slick slider controls for small screen sizes
+
+                .slick-dots {
+                    bottom: -10px;
+                }
+
+                .slick-arrow {
+                    display: none !important;
+                }
+
+                .slider-box.custom .slick-list {
+                    background-color: transparent;
+                }
+            }
+        }
     }
 
     &.hero-slider {
-        // make sure followiung slides are hidden while loading
-        .slide-definitions:not(.slick-initialized) .slide-wrapper.hide-noscript {
-            visibiliy: hidden;
+        // make sure not visible slides are hidden while loading
+        // this must be removed after the slider has initialized with the %show-hidden-slides-after-init rule
+        .slide-wrapper.hide-noscript {
+            visibility: hidden;
             max-height: 0;
         }
     }
 
     &.logo-slider {
+
+        // hide all the logo slides before the slider is initialized
+        .slide-definitions {
+            overflow: hidden;
+            max-height: 0;
+        }
+
         // optional paddings for logo sliders
         @each $space in $logo-slider-paddings {
             > .lm-#{$space} {
@@ -74,15 +145,6 @@
                 .slide-wrapper .visual {
                     margin: #{$space}px;
                 }
-            }
-        }
-
-        .slide-definitions {
-            max-height: 0;
-            overflow: hidden;
-            &.slick-initialized {
-                max-height: none;
-                overflow: visible;
             }
         }
     }
@@ -301,20 +363,8 @@
                 border-bottom-right-radius: 0;
             }
 
-            .slick-dots {
-                bottom: -10px;
-            }
-
-            .slick-arrow {
-                display: none !important;
-            }
-
             .slider-box {
                 background-color: $main-theme;
-            }
-
-            .slider-box.custom .slick-list {
-                background-color: transparent;
             }
 
             .slide-wrapper {

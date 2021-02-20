@@ -457,6 +457,8 @@ $fh-logo-image-bg:                  none !default; // background color for the l
     $nav-breakpoint-sticky-header-size: 2 !global;
     $nav-mobile-side-content-move:      false !global; // this feature is not supported
     $nav-mobile-smaller-xs-toggle:      false !global; // do not make 'hamburger' icon smaller on mobile
+    $nav-mobile-indent-offset:          $nav-mobile-toggle-side !global; // force padding on mobile menu to align with icon
+    $nav-mobile-toggle-side-xs:         round($nav-mobile-toggle-side * 50) / 100 !global; // force smaller padding on mobile menu for small screens
 }
 
 $bh-title-font-size:                $h2-font-size !default; // title font size for larger screens

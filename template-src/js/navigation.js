@@ -357,6 +357,7 @@ function initHeadNavigation() {
                 m_fixedHeader.$element.addClass('notfixed');
                 m_fixedHeader.$header.addClass('header-notfixed');
                 m_fixedHeader.isFixed = false;
+                m_fixedHeader.isScrolled = false;
 
                 var fixAlways = $fixedHeader.hasClass('always');
                 var fixUpscroll = $fixedHeader.hasClass('upscroll');
@@ -392,45 +393,18 @@ function mobileNavActive() {
 
 function updateNavTogglePosition() {
     if (m_isBurgerHeader) {
-        // this is only needed for the burger header
-        var navToggleTop = 0;
-        var navToggleHeight = m_$navToggleLabel.outerHeight(false);
-        if (mobileNavActive()) {
-            // mobile navigation is active
-            var $logo = jQ('header.bh .nav-main-mobile-logo');
-            var hLogoHeight = $logo.outerHeight(true);
-            navToggleTop = Math.round((hLogoHeight / 2.0) - (navToggleHeight / 2.0) + (Mercury.isEditMode() ? 52 : 0));
-            if (VERBOSE) console.info("Nav toggle [active] top=" + navToggleTop + " .nav-main-mobile-logo.height=" + hLogoHeight);
-        } else {
-            // adjust burger header menu position for screen size and fixed header
-            var $hLogoCol = jQ('header.bh .head .h-logo-col');
-            var hLogoColHeight = $hLogoCol.outerHeight(true);
-            if ((m_fixedHeader != null) && m_fixedHeader.isFixed) {
-                // header is fixed
-                m_fixedHeader.$header.addClass('icon-fixed');
-                var $hMeta = jQ('header.bh .head > .h-meta:visible');
-                var hMetaHeight = $hMeta.length ? $hMeta.outerHeight(true) : 0;
-                navToggleTop = Math.round((hLogoColHeight / 2.0) - (navToggleHeight / 2.0) + hMetaHeight + (Mercury.isEditMode() ? 52 : 0));
-                if (VERBOSE) console.info("Nav toggle [fixed] top=" + navToggleTop + " .h-logo-col.height=" + hLogoColHeight + " .h-meta.height=" + hMetaHeight);
-            } else if ($hLogoCol.bottomVisible()) {
-                // header is not fixed and logo column is visible
-                m_fixedHeader.$header.removeClass('icon-fixed');
-                var hLogoColTop = $hLogoCol.offset().top - m_fixedHeader.$header.offset().top;
-                navToggleTop = Math.round((hLogoColHeight / 2.0) - (navToggleHeight / 2.0) + hLogoColTop);
-                if (VERBOSE) console.info("Nav toggle [notfixed] top=" + navToggleTop + " .h-logo-col.height=" + hLogoColHeight + " .h-logo-col.top=" + hLogoColTop);
-            } else {
-                // header is not fixed and the logo column is not visible
-                m_fixedHeader.$header.addClass('icon-fixed');
-                navToggleTop = -1;
-            }
+        var navToggle = jQ('#nav-toggle-label-head');
+        if (! m_fixedHeader.isFixed && ! m_fixedHeader.isScrolled) {
+            // update position
+            var navTogglePos = navToggle.offset();
+            m_fixedHeader.navTogglePos = navTogglePos;
+            if (VERBOSE) console.info("Nav toggle position top=" + navTogglePos.top + " left=" + navTogglePos.left);
         }
-        if (navToggleTop > -1) {
-            m_$navToggleLabel.css('top', navToggleTop);
-        } else {
-            m_$navToggleLabel.css('top', '');
+        if (m_fixedHeader.isScrolled) {
+           navToggle.css("top", m_fixedHeader.navTogglePos.top).css("left", m_fixedHeader.navTogglePos.left);
         }
-        if (! m_$navToggleLabel.hasClass('ready')) {
-             setTimeout(function() { m_$navToggleLabel.addClass('ready') }, 1000);
+        if (m_fixedHeader.isFixed) {
+            navToggle.css("top", "").css("left", "");
         }
     }
 }
@@ -467,6 +441,7 @@ function updateFixed(resize) {
                 if (VERBOSE) console.info("Fixed header update, fixing header at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
                 if (m_lastScrollTop < m_checkScrollTop) {
                     m_fixedHeader.isFixed = true;
+                    m_fixedHeader.isScrolled = false;
                     m_fixedHeader.$parent.height(m_fixedHeader.$element.height());
                     m_fixedHeader.$element.removeClass('notfixed').removeClass('scrolled').addClass('isfixed');
                     m_fixedHeader.$header.removeClass('header-notfixed').addClass('header-isfixed');
@@ -485,8 +460,10 @@ function updateFixed(resize) {
             // add class to identify a header that has been scrolled but is not fixed yet
             if (Mercury.windowScrollTop() > 0) {
                 m_fixedHeader.$element.addClass('scrolled');
+                m_fixedHeader.isScrolled = true;
             } else {
                 m_fixedHeader.$element.removeClass('scrolled');
+                m_fixedHeader.isScrolled = false;
             }
         }
         if (resize) {
@@ -499,6 +476,7 @@ function updateFixed(resize) {
         if (VERBOSE) console.info("Fixed header update, showFixedHeader=false");
         if (m_fixedHeader.isFixed) {
             m_fixedHeader.isFixed = false;
+            m_fixedHeader.isScrolled = false;
             m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
             m_fixedHeader.$header.removeClass('header-isfixed').addClass('header-notfixed');
             m_fixedHeader.$parent.height("auto");

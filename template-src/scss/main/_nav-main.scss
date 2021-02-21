@@ -325,7 +325,6 @@
     $z-index-mobile-menu: $above-oc-z-index + 200; // this is the z-index for the mobile menu, ist must be over the "back to top" icon
 
     .nav-main-container {
-        pointer-events: none;
         position: fixed;
         top: 0;
         height: 100vh;

@@ -32,7 +32,6 @@ var m_firstInit = true;
 var $topControl = null;
 
 var m_isBurgerHeader = false;
-var m_$navToggleLabel = null;
 
 function setKeyboardClass(active) {
     if (active) {
@@ -285,14 +284,16 @@ function initHeadNavigation() {
     initMenu();
     jQ(window).on('resize', debInitMenu);
 
-    m_$navToggleLabel = jQ('#nav-toggle-label');
     m_isBurgerHeader = false || jQ('header.bh').length;
 
     // Responsive navbar toggle button
     jQ('.nav-toggle').click(function() {
         jQ('.nav-toggle').toggleClass('active');
         jQ(document.documentElement).toggleClass('active-nav');
-        updateNavTogglePosition();
+    });
+    jQ('.head-overlay').click(function() {
+        jQ('.nav-toggle').removeClass('active');
+        jQ(document.documentElement).removeClass('active-nav');
     });
 
     // Add handler for top scroller
@@ -342,22 +343,26 @@ function initHeadNavigation() {
         setKeyboardClass(false);
     });
 
-    // Fixed top navbar header
+    // Fixed / sticky header
     var $header = jQ('.area-header');
     if ($header.length > 0) {
         var $fixedHeader = $header.first().find('.sticky');
         if ($fixedHeader.length > 0) {
             var fixCssSetting = $fixedHeader.hasClass('csssetting');
             if (!fixCssSetting || (Mercury.gridInfo().getNavFixHeader() != "false")) {
-                if (DEBUG) console.info("Navigation.initHeadNavigation() Fixed header element found!");
+                if (DEBUG) console.info("Fixed header element found!");
                 m_fixedHeader = {};
                 m_fixedHeader.$header = $header;
                 m_fixedHeader.$parent = $fixedHeader.first();
                 m_fixedHeader.$element = $fixedHeader.find('.head').first();
-                m_fixedHeader.$element.addClass('notfixed');
-                m_fixedHeader.$header.addClass('header-notfixed');
-                m_fixedHeader.isFixed = false;
-                m_fixedHeader.isScrolled = false;
+
+                if (m_isBurgerHeader) {
+                    m_fixedHeader.$toggleOpen = jQ('#nav-toggle-label-open');
+                    m_fixedHeader.$toggleParent = m_fixedHeader.$toggleOpen.parent();
+                    m_fixedHeader.$toggleClose = jQ('#nav-toggle-label-close');
+                }
+
+                resetFixedHeader();
 
                 var fixAlways = $fixedHeader.hasClass('always');
                 var fixUpscroll = $fixedHeader.hasClass('upscroll');
@@ -370,18 +375,12 @@ function initHeadNavigation() {
                 jQ(window).on('scroll', debUpdateFixedScroll).on('resize', debUpdateFixedResize);
                 updateFixed(true);
             } else {
-                if (DEBUG) console.info("Navigation.initHeadNavigation() Fixed header element found, but disabled by CSS!");
+                if (DEBUG) console.info("Fixed header element found, but disabled by CSS!");
             }
         } else {
-            if (DEBUG) console.info("Navigation.initHeadNavigation() Fixed header element NOT found!");
+            if (DEBUG) console.info("Fixed header element NOT found!");
         }
     };
-
-    if ((m_fixedHeader == null) && m_isBurgerHeader) {
-        // for burger header make sure to update the menu position after resize and scroll
-        jQ(window).on('scroll', debUpdateNavTogglePosition).on('resize', debUpdateNavTogglePosition);
-        updateNavTogglePosition();
-    }
 }
 
 var m_lastScrollTop = 0;
@@ -391,34 +390,55 @@ function mobileNavActive() {
     return jQ(document.documentElement).hasClass('active-nav');
 }
 
-function updateNavTogglePosition() {
+function resetFixedHeader() {
+    // rest fixed header in intial state, i.e. header is on top page is not scrolled
+    if (m_fixedHeader != null) {
+        m_fixedHeader.isFixed = false;
+        m_fixedHeader.isScrolled = false;
+        m_fixedHeader.useUpScrollActive = false;
+        m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
+        m_fixedHeader.$header.removeClass('header-isfixed').addClass('header-notfixed');
+        m_fixedHeader.$parent.height("auto");
+    }
+}
+
+function updateNavTogglePosition(resize) {
     if (m_isBurgerHeader) {
-        var navToggle = jQ('#nav-toggle-label-head');
-        if (! m_fixedHeader.isFixed && ! m_fixedHeader.isScrolled) {
-            // update position
-            var navTogglePos = navToggle.offset();
-            m_fixedHeader.navTogglePos = navTogglePos;
-            if (VERBOSE) console.info("Nav toggle position top=" + navTogglePos.top + " left=" + navTogglePos.left);
+        var scrollTop = Mercury.windowScrollTop();
+        var fixTogglePos = -1;
+        if (scrollTop <= 0) {
+            // page is on top, not scrolled - the full header is visible
+            m_fixedHeader.$header.removeClass("fixtoggle");
+            m_fixedHeader.toggleOpenTop = m_fixedHeader.$toggleOpen.offset().top;
+            m_fixedHeader.toggleCloseTop = m_fixedHeader.$toggleClose.offset().top;
+        } else if (
+            !m_fixedHeader.useUpScrollActive && (m_fixedHeader.isScrolled || (!m_fixedHeader.isFixed && !m_fixedHeader.isScrolled))) {
+            // if upscrolling header is active never show a fixed icon
+            // otherwise page has been scrolled down but header is not fixed yet OR no fixed header at all
+            var openTop = m_fixedHeader.toggleOpenTop;
+            var closeTop = m_fixedHeader.toggleCloseTop;
+            var fixPos = openTop > closeTop ? openTop - closeTop : 0;
+            if (scrollTop >= fixPos) {
+                fixTogglePos = fixPos > 0 ? closeTop : openTop;
+            }
         }
-        if (m_fixedHeader.isScrolled) {
-           navToggle.css("top", m_fixedHeader.navTogglePos.top).css("left", m_fixedHeader.navTogglePos.left);
-        }
-        if (m_fixedHeader.isFixed) {
-            navToggle.css("top", "").css("left", "");
+        if (fixTogglePos >= 0) {
+            m_fixedHeader.$header.addClass("fixtoggle");
+            m_fixedHeader.$toggleOpen.css("top", fixTogglePos).css("left", m_fixedHeader.$toggleParent.offset().left);
+        } else {
+            m_fixedHeader.$header.removeClass("fixtoggle");
+            m_fixedHeader.$toggleOpen.css("top", "").css("left", "");
         }
     }
 }
 
 function updateFixed(resize) {
 
-    if (VERBOSE) console.info("Fixed header update, resize=" + resize);
+    if (VERBOSE) console.info("Fixed header ----------" + (resize ? ' resize=true' : ''));
     // Update position of fixed header.
-    // This is more complicated then it appears since the fixed header height
-    // can be different from the attached header height, e.g. if a class '.hidden-fixed' is used.
-    // In order to correctly calculate anchor link positions we must make sure to use the correct
-    // header height depending on the page scroll state.
-    if (Mercury.gridInfo().showFixedHeader()) {
-        if (VERBOSE) console.info("Fixed header update, showFixedHeader=true");
+    // The fixed header height is likely to be different from the attached header height because of different CSS selectors.
+    if (showFixedHeader()) {
+        if (VERBOSE) console.info("Fixed header show: true");
         // assuming this event handler is only called if m_fixedHeader != null
         // only do this if desktop head nav is shown
         if (resize) {
@@ -426,19 +446,22 @@ function updateFixed(resize) {
         }
         var scrollUp = true;
         if (m_fixedHeader.useUpscroll) {
-            scrollUp = resize || m_lastScrollTop > Mercury.windowScrollTop();
+            // useUpscroll reflects the user selection, useUpScrollActive also takes the screen size into account
+            // for smaller screens the fixed header may not be active regardless of the user selection
+            m_fixedHeader.useUpScrollActive = true;
+            scrollUp = resize || m_lastScrollTop >= Mercury.windowScrollTop();
             m_lastScrollTop = Mercury.windowScrollTop();
             if (! scrollUp) {
                 m_checkScrollTop = m_lastScrollTop - 50;
             }
         }
         var fixHeader = scrollUp && (m_fixedHeader.bottom < (Mercury.windowScrollTop() + Mercury.toolbarHeight()));
-        if (VERBOSE) console.info("Fixed header update, fixHeader=" + fixHeader + " m_fixedHeader.isFixed=" + m_fixedHeader.isFixed);
+        if (VERBOSE) console.info("Fixed header fixHeader=" + fixHeader + " m_fixedHeader.isFixed=" + m_fixedHeader.isFixed);
         if (fixHeader && !m_fixedHeader.isFixed) {
             // if mobile nav is active, don't fix the header, otherwise there would be an ugly css effect on the mobile nav
             if (!mobileNavActive()) {
                 // header should be fixed, but is not
-                if (VERBOSE) console.info("Fixed header update, fixing header at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
+                if (VERBOSE) console.info("Fixed header fixing at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
                 if (m_lastScrollTop < m_checkScrollTop) {
                     m_fixedHeader.isFixed = true;
                     m_fixedHeader.isScrolled = false;
@@ -451,10 +474,7 @@ function updateFixed(resize) {
             }
         } else if (!fixHeader && m_fixedHeader.isFixed) {
             // header should not be fixed, but is
-            m_fixedHeader.isFixed = false;
-            m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
-            m_fixedHeader.$header.removeClass('header-isfixed').addClass('header-notfixed');
-            m_fixedHeader.$parent.height("auto");
+            resetFixedHeader();
         }
         if (!m_fixedHeader.isFixed) {
             // add class to identify a header that has been scrolled but is not fixed yet
@@ -469,25 +489,35 @@ function updateFixed(resize) {
         if (resize) {
             // resize may lead to changes in the header height, make sure we don't use outdated values
             m_fixedHeader.height = m_fixedHeader.isFixed ? m_fixedHeader.$element.height() : -1;
-            if (VERBOSE) console.info("Header is " + (m_fixedHeader.isFixed ? "" : "NOT ") + "fixed, fixed height: " + m_fixedHeader.getHeight());
+            if (VERBOSE) console.info("Fixed header is " + (m_fixedHeader.isFixed ? "" : "NOT ") + "fixed, fixed height: " + m_fixedHeader.getHeight());
         }
     } else {
         // smaller screens: make sure the head height is set to "auto"
-        if (VERBOSE) console.info("Fixed header update, showFixedHeader=false");
+        if (VERBOSE) console.info("Fixed header show: FALSE");
         if (m_fixedHeader.isFixed) {
-            m_fixedHeader.isFixed = false;
-            m_fixedHeader.isScrolled = false;
-            m_fixedHeader.$element.removeClass('isfixed').addClass('notfixed');
-            m_fixedHeader.$header.removeClass('header-isfixed').addClass('header-notfixed');
-            m_fixedHeader.$parent.height("auto");
+            resetFixedHeader();
         }
     }
-    updateNavTogglePosition();
+    updateNavTogglePosition(resize);
+}
+
+function showFixedHeader() {
+
+    if (m_isBurgerHeader) {
+        // burger header
+        return m_fixedHeader.$header.hasClass("fix-xs") ||
+            (m_fixedHeader.$header.hasClass("fix-sm") && Mercury.gridInfo().isMinSm()) ||
+            (m_fixedHeader.$header.hasClass("fix-md") && Mercury.gridInfo().isMinMd()) ||
+            (m_fixedHeader.$header.hasClass("fix-lg") && Mercury.gridInfo().isMinLg());
+    } else {
+        // other headers
+        return Mercury.gridInfo().isDesktopNav() || (Mercury.gridInfo().forceMobileNav() && Mercury.gridInfo().getNavFixHeader() != "false");
+    }
 }
 
 function fixedHeaderActive() {
 
-    return (m_fixedHeader != null) && Mercury.gridInfo().showFixedHeader();
+    return (m_fixedHeader != null) && showFixedHeader();
 }
 
 // add click handler and adjust position on initial page load
@@ -565,7 +595,6 @@ function initExternalLinks() {
 // functions that require the Mercury object
 var debUpdateFixedResize;
 var debUpdateFixedScroll;
-var debUpdateNavTogglePosition;
 var debInitMenu;
 var debScrollToAnchor;
 
@@ -573,15 +602,11 @@ function initDependencies() {
 
     debUpdateFixedResize = Mercury.debounce(function() {
         updateFixed(true)
-    }, 25, true);
+    }, 10, true);
 
     debUpdateFixedScroll = Mercury.debounce(function() {
         updateFixed(false)
-    }, 5);
-
-    debUpdateNavTogglePosition = Mercury.debounce(function() {
-        updateNavTogglePosition();
-    }, 5);
+    }, 10);
 
     debInitMenu = Mercury.debounce(function() {
         initMenu();
@@ -630,11 +655,11 @@ export function scrollToAnchor($anchor, offset) {
     }
 }
 
-export function init(jQuery, debug) {
+export function init(jQuery, debug, verbose) {
 
     jQ = jQuery;
     DEBUG = debug;
-    VERBOSE = DEBUG && (Mercury.getParameter("jsverbose") != null);
+    VERBOSE = verbose;
 
     if (DEBUG) console.info("Navigation.init()");
 

@@ -46,8 +46,8 @@ var Mercury = function(jQ) {
 
     "use strict";
 
-    var DEBUG = false || (getParameter("jsdebug") != null);
-    var VERBOSE = DEBUG && (getParameter("jsverbose") != null);
+    var VERBOSE = false || (getParameter("jsverbose") != null);
+    var DEBUG = VERBOSE || (getParameter("jsdebug") != null);
 
     // container for information passed from CSS to JavaScript
     var m_info = {};
@@ -351,7 +351,6 @@ var Mercury = function(jQ) {
         m_gridInfo.getNavFixHeader = function() { return (this.navFixHeader) };
         m_gridInfo.isDesktopNav = function() { return (!m_gridInfo.forceMobileNav()) && (m_windowWidth >= this.navDeskMin) };
         m_gridInfo.isMobileNav = function() { return (m_gridInfo.forceMobileNav()) || (m_windowWidth < this.navDeskMin) };
-        m_gridInfo.showFixedHeader = function() { return (m_gridInfo.forceMobileNav() && m_gridInfo.getNavFixHeader() != "false") || (m_gridInfo.isDesktopNav()) };
         m_gridInfo.navPos = function() { return this.navMobPos };
     }
 
@@ -791,7 +790,7 @@ var Mercury = function(jQ) {
         }
 
         try {
-            NavigationElements.init(jQ, DEBUG);
+            NavigationElements.init(jQ, DEBUG, VERBOSE);
         } catch (err) {
             console.warn("Navigation.init() error", err);
         }
@@ -908,7 +907,7 @@ var Mercury = function(jQ) {
                 import(
                     /* webpackChunkName: "mercury-tools" */
                     "./parallax.js").then( function( TemplateTools ) {
-                    TemplateTools.initParallax(jQ, DEBUG);
+                    TemplateTools.initParallax(jQ, DEBUG, VERBOSE);
                 });
             } catch (err) {
                 console.warn("Parallax.init() error", err);

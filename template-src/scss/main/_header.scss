@@ -23,10 +23,29 @@
     @return floor(map-get($max-widths, $breakpoint) *  $size / $columns);
 }
 
-@mixin make-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
-    $max-width: calc-abs-col($breakpoint, $size);
+@function calc-abs-col-rest($breakpoint, $offset, $max-widths: $container-max-widths) {
+    $row-size: map-get($max-widths, $breakpoint);
+    @return floor($row-size - $offset);
+}
+
+@mixin abs-col($max-width) {
     flex: 0 0 $max-width;
     max-width: $max-width;
+}
+
+@mixin make-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
+    $max-width: calc-abs-col($breakpoint, $size);
+    @include abs-col($max-width);
+}
+
+@mixin hide-mega-menu-content {
+     // hide all elements from mega menu that are not navigations
+    .mega .nav-mega-menu {
+        .teaser,
+        .element:not(.type-nav-side):not(.ls-navigation) {
+            display: none;
+        }
+    }
 }
 
 @mixin sticky-header-globals($breakpoint, $selector: '') {
@@ -144,7 +163,6 @@
 
     &.meta-above {
         .h-meta {
-            flex-basis: auto;
             order: 1;
             @include add-bg-color($fh-meta-bg-color) {
                 padding-bottom: $padding-v;
@@ -277,13 +295,7 @@
         }
 
         @include media-breakpoint-down(md) {
-            .mega .nav-mega-menu {
-                // for mobile, hide all elements from mega menu that are not navigations
-                .teaser,
-                .element:not(.type-nav-side):not(.ls-navigation) {
-                    display: none;
-                }
-            }
+            @include hide-mega-menu-content;
         }
 
         @include media-breakpoint-up(lg) {
@@ -1044,23 +1056,52 @@
             display: none;
         }
 
-        .h-group {
+        .h-logo-row {
             display: flex;
             order: 6;
             padding-top: $bh-header-padding;
             padding-bottom: $bh-header-padding;
+            justify-content: space-between;
+        }
+
+        .h-logo-col {
+            display: flex;
+            align-items: center;
+
+            .h-logo {
+                width: 100%;
+                display: block;
+
+                > a.imglink {
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+
+         .h-toggle-col {
+            display: flex;
+            align-items: center;
+            max-width: $nav-toggle-size-with-border;
+            min-width: $nav-toggle-size-with-border;
+         }
+
+        .h-title-row {
+            display: flex; // will be hidden from screen size lg below
+            order: 10;
+            padding-bottom: $bh-header-padding-small;
+
+            @include add-bg-color($fh-title-bg-color) {
+                padding-top: $bh-header-padding-small;
+                .h-title {
+                    color: check-text-color($fh-title-bg-color, $fh-title-color);
+                }
+            }
         }
 
         &.ls-col {
-
             .h-logo-col {
-                display: flex;
-                align-items: center;
-
                 .h-logo {
-                    width: 100%;
-                    display: block;
-
                     > a.imglink {
                         width: 100%;
                         display: block;
@@ -1068,16 +1109,10 @@
                 }
             }
 
-             .h-toggle-col {
-                display: flex;
-                align-items: center;
-                width: $nav-toggle-size-with-border;
-             }
-
             .h-title-col {
-                display: flex;
+                display: none; // will be revelad in screen size lg below
                 align-items: center;
-                flex-grow: 1000;
+                flex-grow: 10000;
                 order: 2;
 
                 padding-right: $grid-gutter-width;
@@ -1088,48 +1123,88 @@
                     color: check-text-color($fh-header-bg-color, $fh-title-color);
                 }
             }
+        }
 
+        &.ls-12 {
+            .h-logo-row {
+                position: relative;
+            }
+            .h-logo-col {
+                width: 100%;
+            }
+            .h-title-col {
+                display: none;
+            }
+            .h-toggle-col {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+            }
             &.lp-l {
-                .h-logo-col {
-                    order: 1;
-                }
                 .h-toggle-col {
-                    order: 3;
-                }
-                .h-title {
-                    text-align: right;
+                    right: $grid-gutter-width / 2;
                 }
             }
-
             &.lp-r {
-                .h-logo-col {
-                    order: 3;
-                }
                 .h-toggle-col {
-                    order: 1;
-                }
-                .h-title {
-                    text-align: left;
+                    left: $grid-gutter-width / 2;
                 }
             }
         }
 
+        &.lp-l {
+            .h-logo-col {
+                order: 1;
+            }
+            .h-toggle-col {
+                order: 3;
+                justify-content: flex-end;
+                margin-right: -1 * $nav-toggle-border-width;
+            }
+            .h-logo-row .h-title {
+                text-align: right;
+            }
+            .h-title-row .h-title {
+                text-align: left;
+            }
+        }
+
+        &.lp-r {
+            .h-logo-col {
+                order: 3;
+            }
+            .h-toggle-col {
+                order: 1;
+                justify-content: flex-start;
+                margin-left: -1 * $nav-toggle-border-width;
+            }
+            .h-logo-row .h-title {
+                text-align: left;
+            }
+            .h-title-row .h-title {
+                text-align: left;
+            }
+        }
+
         &.title-left {
-            .h-title,
+            .h-logo-row .h-title,
+            .h-title-row .h-title,
             .h-ac .h-ac-title {
                 text-align: left;
             }
         }
 
         &.title-right {
-            .h-title,
+            .h-logo-row .h-title,
+            .h-title-row .h-title,
             .h-ac .h-ac-title {
                 text-align: right;
             }
         }
 
         &.title-center {
-            .h-title,
+            .h-logo-row .h-title,
+            .h-title-row .h-title,
             .h-ac .h-ac-title {
                 text-align: center;
             }
@@ -1155,7 +1230,7 @@
 
         .h-ac {
             display: block;
-            order: 20;
+            order: 20; // default: display below
             position: relative;
             @include add-bg-color($fh-ac-bg-color);
 
@@ -1202,12 +1277,6 @@
             }
         }
 
-        &.ac-below-logo {
-            .h-ac {
-                order: 12;
-            }
-        }
-
         &.header-isfixed {
             .h-ac {
                 display: none;
@@ -1225,8 +1294,8 @@
             margin: 0;
         }
 
-        .head.scrolled {
-            #nav-toggle-label-head {
+        &.fixtoggle {
+            #nav-toggle-label-open {
                 position: fixed;
                 z-index: $above-oc-z-index + 198;
             }
@@ -1286,10 +1355,18 @@
             }
         }
 
+        // hide content elements in mega menu (mega menu may be from a site using a different header type)
+        @include hide-mega-menu-content;
 
         @include media-breakpoint-down(xs) {
+            // reduce nav menu padding on very small screens
+
+            .nav-menu-header {
+                padding-left: $nav-mobile-toggle-side-xs;
+                padding-right: $nav-mobile-toggle-side-xs;
+            }
+
             .nav-main-items {
-                // this expands the arrow links to the right so they can be touch-clicked easier
                 li > a {
                     padding-left: $nav-mobile-toggle-side-xs;
                 }
@@ -1309,7 +1386,111 @@
             }
         }
 
+        // fixed header
+
+        &.header-isfixed {
+
+            .h-logo-row {
+                padding-top: $bh-header-padding-verysmall;
+                padding-bottom: $bh-header-padding-verysmall;
+            }
+
+            .h-title-col,
+            .h-title-row {
+                display: none;
+            }
+
+            &.ls-12 {
+                &.lp-r .h-logo {
+                    margin-left: auto;
+                }
+                &.lp-l .h-logo {
+                    margin-right: auto;
+                }
+                .h-logo {
+                    max-width: 50%;
+                }
+            }
+        }
+
+        // remove padding for full size logo, also overrule .header-isfixed
+        &.ls-12 {
+            .h-logo-row {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        // variable logo sizes
+
+        @each $logo-size in (1,2,3,4,5,6) {
+            &.ls-#{$logo-size} {
+
+                .h-logo-col {
+                    width: calc-abs-col(sm, $logo-size);
+                }
+                &.header-isfixed {
+                    .h-logo-col {
+                        width: calc-abs-col(sm, $logo-size);
+                    }
+                }
+
+                $logo-px-size-md: calc-abs-col(md, $logo-size) - $grid-gutter-width;
+                $logo-px-size-lg: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
+                $logo-px-size-xl: calc-abs-col(xl, $logo-size) - $grid-gutter-width;
+                $toggle-offset: $nav-toggle-size + $nav-toggle-border-width + $grid-gutter-width;
+
+                @include media-breakpoint-up(md) {
+
+                    .h-logo-col {
+                        @include abs-col($logo-px-size-md);
+                    }
+                    .h-title-col {
+                        @include abs-col(calc-abs-col-rest(md, $logo-px-size-md + $toggle-offset));
+                    }
+                }
+                @include media-breakpoint-up(lg) {
+                    .h-logo-col {
+                        @include abs-col($logo-px-size-lg);
+                    }
+                    .h-title-col {
+                       @include abs-col(calc-abs-col-rest(lg, $logo-px-size-lg + $toggle-offset));
+                    }
+                    &.header-isfixed {
+                        .h-logo-col {
+                            @include abs-col($logo-px-size-md);
+                        }
+                        .h-title-col {
+                            @include abs-col(calc-abs-col-rest(lg, $logo-px-size-md + $toggle-offset));
+                        }
+                    }
+                }
+                @include media-breakpoint-up(xl) {
+                    .h-logo-col {
+                        @include abs-col($logo-px-size-xl);
+                    }
+                    .h-title-col {
+                        @include abs-col(calc-abs-col-rest(xl, $logo-px-size-xl + $toggle-offset));
+                    }
+                    &.header-isfixed {
+                        .h-title-col {
+                            @include abs-col(calc-abs-col-rest(xl, $logo-px-size-md + $toggle-offset));
+                        }
+                    }
+                }
+            }
+        }
+
         @include media-breakpoint-up(lg) {
+
+            &.header-isfixed.ls-col .h-title-col,
+            &.ls-col .h-title-col {
+                display: flex;
+            }
+
+            &.ls-col .h-title-row {
+                display: none;
+            }
 
             .h-title {
                 font-size: $bh-title-font-size;
@@ -1349,76 +1530,6 @@
             }
         } // breakpoint lg
 
-        // fixed header
-
-        &.header-isfixed {
-            .h-title-col {
-                display: none;
-            }
-
-            .h-group .h-logo-col {
-                padding-top: $bh-header-padding-verysmall;
-                padding-bottom: $bh-header-padding-verysmall;
-            }
-
-            &.ls-12 {
-                &.lp-r .h-logo {
-                    margin-left: auto;
-                }
-                &.lp-l .h-logo {
-                    margin-right: auto;
-                }
-                .h-logo {
-                    max-width: 50%;
-                }
-            }
-        }
-
-        // remove padding for full size logo, also overrule .header-isfixed
-        &.ls-12 {
-            .h-group .h-logo-col {
-                padding-top: 0;
-                padding-bottom: 0;
-            }
-        }
-
-        // variable logo sizes
-
-        @each $logo-size in (1,2,3,4,5,6) {
-            &.ls-#{$logo-size} {
-                .nav-main-mobile-logo .mobile-logolink {
-                    width: calc-abs-col(md, $logo-size);
-                }
-                .h-logo-col {
-                    width: calc-abs-col(sm, $logo-size);
-                }
-                &.header-isfixed {
-                    .h-logo-col {
-                        width: calc-abs-col(sm, $logo-size);
-                    }
-                }
-                @include media-breakpoint-up(md) {
-                    .h-logo-col {
-                        @include make-abs-col(md, $logo-size);
-                    }
-                }
-                @include media-breakpoint-up(lg) {
-                    .h-logo-col {
-                        @include make-abs-col(lg, $logo-size);
-                    }
-                    &.header-isfixed {
-                        .h-logo-col {
-                            max-width: calc-abs-col(md, $logo-size);
-                        }
-                    }
-                }
-                @include media-breakpoint-up(xl) {
-                    .h-logo-col {
-                        @include make-abs-col(xl, $logo-size);
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -1534,13 +1645,7 @@
             }
 
             @include media-breakpoint-down(md) {
-                .mega .nav-mega-menu {
-                    // for mobile, hide all elements from mega menu that are not navigations
-                    .teaser,
-                    .element:not(.type-nav-side):not(.ls-navigation) {
-                        display: none;
-                    }
-                }
+                @include hide-mega-menu-content;
             }
 
             @include media-breakpoint-up(sm) {

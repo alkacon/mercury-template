@@ -23,6 +23,7 @@
 <c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
 <c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
 <c:set var="showImageLink"              value="${setting.showImageLink.useDefault(false).toBoolean}" />
+<c:set var="configVariant"              value="${setting.configVariant.useDefault('standard').toString}" />
 
 <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
 <c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
@@ -42,25 +43,58 @@
         currentPageFolder="${currentPageFolder}"
         currentPageUri="${currentPageUri}">
 
-        <c:if test="${not empty logoImage}">
-            <div class="nav-main-mobile-logo"><%----%>
-                <mercury:link
-                    link="${logoContent.value.Link}"
-                    test="${showImageLink}"
-                    testFailTag="div"
-                    setTitle="${true}"
-                    css="mobile-logolink" >
+        <c:choose>
+            <c:when test="${empty logoImage}">
+                <%-- Do not generate markup if there is no image --%>
+            </c:when>
+            <c:when test="${configVariant eq 'burger'}">
+                <div class="nav-menu-header"><%----%>
+                    <div class="nav-menu-toggle"><%----%>
+                        <label for="nav-toggle-check" id="nav-toggle-label-close" class="nav-toggle-label"><%----%>
+                            <span class="nav-toggle"><%----%>
+                                <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                            </span><%----%>
+                        </label><%----%>
+                    </div><%----%>
+                    <div class="nav-menu-logo"><%----%>
+                        <mercury:link
+                            link="${logoContent.value.Link}"
+                            test="${showImageLink}"
+                            testFailTag="div"
+                            setTitle="${true}"
+                            css="mobile-logolink" >
 
-                    <mercury:image-simple
-                        image="${logoImage}"
-                        sizes="100,200,400,800"
-                        cssWrapper="img-responsive"
-                        title="${imageTitleCopyright}"
-                    />
+                            <mercury:image-simple
+                                image="${logoImage}"
+                                sizes="100,200,400,800"
+                                cssWrapper="img-responsive"
+                                title="${imageTitleCopyright}"
+                            />
 
-                </mercury:link>
-            </div><%----%>
-        </c:if>
+                        </mercury:link>
+                    </div><%----%>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="nav-main-mobile-logo"><%----%>
+                    <mercury:link
+                        link="${logoContent.value.Link}"
+                        test="${showImageLink}"
+                        testFailTag="div"
+                        setTitle="${true}"
+                        css="mobile-logolink" >
+
+                        <mercury:image-simple
+                            image="${logoImage}"
+                            sizes="100,200,400,800"
+                            cssWrapper="img-responsive"
+                            title="${imageTitleCopyright}"
+                        />
+
+                    </mercury:link>
+                </div><%----%>
+            </c:otherwise>
+        </c:choose>
 
         <mercury:nl />
         <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>

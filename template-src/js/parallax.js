@@ -20,6 +20,7 @@
 // the global objects that must be passed to this module
 var jQ;
 var DEBUG;
+var VERBOSE;
 
 "use strict";
 
@@ -57,8 +58,8 @@ function update(){
             return;
         }
 
-        if (DEBUG) console.info("elementTop: " + elementTop + " elementBottom: " + elementBottom);
-        if (DEBUG) console.info("elementScrollTop: " + elementScrollTop + " elementScrollBottom: " + elementScrollBottom);
+        if (VERBOSE) console.info("Parallax elementTop: " + elementTop + " elementBottom: " + elementBottom);
+        if (VERBOSE) console.info("Parallax elementScrollTop: " + elementScrollTop + " elementScrollBottom: " + elementScrollBottom);
 
         if (effectType == 1) {
             // This effect assumes there is a full size background image.
@@ -77,8 +78,8 @@ function update(){
                 // The bottom is not in view
                 offset = Math.round(Math.abs(elementBottomOffset) * 0.5);
 
-                if (DEBUG) console.info(
-                    "elementHeight: " +  elementHeight +
+                if (VERBOSE) console.info(
+                    "Parallax elementHeight: " +  elementHeight +
                     " windowHeight: " + windowHeight +
                     " offset: " + offset +
                     " elementScrollTop: " + elementScrollTop);
@@ -131,10 +132,11 @@ function initParallaxInt() {
 
 /****** Exported functions ******/
 
-export function initParallax(jQuery, debug) {
+export function initParallax(jQuery, debug, verbose) {
 
     jQ = jQuery;
     DEBUG = debug;
+    VERBOSE = verbose;
 
     m_$parallaxElements = jQuery('.effect-parallax-bg');
     if (DEBUG) {

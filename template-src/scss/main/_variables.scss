@@ -465,10 +465,10 @@ $bh-title-font-size:                $h2-font-size !default; // title font size f
 $bh-title-font-size-mobile:         $h2-font-size-mobile !default; // title font size for smaller screens
 $bh-title-ac-font-size:             $bh-title-font-size * 2 !default; // title font size in additional container overlay for larger screens
 $bh-title-ac-font-size-mobile:      $bh-title-font-size-mobile * 1.5 !default; // title font size in additional container overlay for smaller screens
-$bh-header-padding:                 20px !default; // top / bottom padding for burger header elements
+$bh-header-padding:                 $grid-gutter-width / 2 !default; // top / bottom padding for burger header elements
 $bh-header-padding-small:           round($bh-header-padding * 50) / 100 !default; // smaller padding for burger header elements
 $bh-header-padding-verysmall:       round($bh-header-padding * 25) / 100 !default; // used mostly for sticky burger header
-
+$bh-nav-mobile-toggle-top:          $grid-gutter-width !default; // top position for floating burger menu icon
 
 // The "nav-toggle" button - this is the "burger" button to show / hide the mobile navigation
 

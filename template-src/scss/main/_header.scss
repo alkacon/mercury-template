@@ -1084,7 +1084,7 @@
             align-items: center;
             max-width: $nav-toggle-size-with-border;
             min-width: $nav-toggle-size-with-border;
-         }
+        }
 
         .h-title-row {
             display: flex; // will be hidden from screen size lg below
@@ -1309,6 +1309,7 @@
         }
 
         .nav-menu-header {
+            // implies .lp-r, lp-l is handled below
             display: flex;
             background-color: $nav-mobile-logo-bg-color;
             padding: $bh-header-padding $nav-mobile-indent-offset;
@@ -1323,10 +1324,23 @@
                 display: flex;
                 flex-grow: 1000;
                 align-items: center;
+                justify-content: flex-end;
 
                 .mobile-logolink {
                     display: flex;
                     width: 100%;
+
+                    &.ir-50 {
+                        width: 80%;
+                    }
+
+                    &.ir-75 {
+                        width: 60%;
+                    }
+
+                    &.ir-125 {
+                        width: 40%;
+                    }
                 }
             }
         }
@@ -1341,6 +1355,7 @@
 
                 .nav-menu-logo {
                     order: 1;
+                    justify-content: flex-start;
                 }
             }
         }
@@ -1484,7 +1499,7 @@
         @include media-breakpoint-up(lg) {
 
             &.header-isfixed.ls-col .h-title-col,
-            &.ls-col .h-title-col {
+            &.show-title.ls-col .h-title-col {
                 display: flex;
             }
 

@@ -28,6 +28,12 @@
     description="Controls if a JSON-LD object is created for the image and stored in the variable 'imageJsonLd'.
     Default is 'false' if not provided." %>
 
+<%@ attribute name="createRatioIndicator" type="java.lang.Boolean" required="false"
+    description="Controls if the variable 'imageRatioIndicator' that indicates the image ratio is set.
+    The value can be 'ir-0', 'ir-50', 'ir-75' or 'ir-125'.
+    The number indicates the next lowest (height / width) image ratio - which is also used as padding-bottom."%>
+
+
 <%@ variable name-given="imageBean" declare="true"
     variable-class="org.opencms.jsp.util.CmsJspImageBean"
     description="The image bean for the image." %>
@@ -64,7 +70,13 @@
 
 <%@ variable name-given="imageJsonLd" declare="true"
     description="A JSON-LD object created for the image.
-    This will only be created if the attribute createJsonLd has been set to ''true'." %>
+    This will only be created if the attribute 'createJsonLd' has been set to ''true'." %>
+
+<%@ variable name-given="imageRatioIndicator" declare="true"
+    description="Indicates the image ratio.
+    This will only be created if the attribute createRatioIndicator has been set to ''true'
+    The value can be 'ir-0', 'ir-50', 'ir-75' or 'ir-125'.
+    The number indicates the next lowest (height / width) image ratio - which is also used as padding-bottom." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -212,6 +224,24 @@
             </c:if>
         </cms:jsonobject>
      </c:if>
+
+    <c:if test="${createRatioIndicator}">
+        <c:set var="ir" value="${imageHeight / imageWidth}" />
+        <c:choose>
+            <c:when test="${ir > 1.25}">
+                <c:set var="imageRatioIndicator" value="ir-125" />
+            </c:when>
+            <c:when test="${ir > 0.75}">
+                <c:set var="imageRatioIndicator" value="ir-75" />
+            </c:when>
+            <c:when test="${ir > 0.5}">
+                <c:set var="imageRatioIndicator" value="ir-50" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="imageRatioIndicator" value="ir-0" />
+            </c:otherwise>
+        </c:choose>
+    </c:if>
 
 </c:if>
 

@@ -410,16 +410,14 @@ function updateNavTogglePosition(resize) {
             // page is on top, not scrolled - the full header is visible
             m_fixedHeader.$header.removeClass("fixtoggle");
             m_fixedHeader.toggleOpenTop = m_fixedHeader.$toggleOpen.offset().top;
-            m_fixedHeader.toggleCloseTop = m_fixedHeader.$toggleClose.offset().top;
+            m_fixedHeader.toggleOpenFix = parseInt(Mercury.gridInfo().bhTogTop) + Mercury.toolbarHeight();
         } else if (
             !m_fixedHeader.useUpScrollActive && (m_fixedHeader.isScrolled || (!m_fixedHeader.isFixed && !m_fixedHeader.isScrolled))) {
             // if upscrolling header is active never show a fixed icon
             // otherwise page has been scrolled down but header is not fixed yet OR no fixed header at all
-            var openTop = m_fixedHeader.toggleOpenTop;
-            var closeTop = m_fixedHeader.toggleCloseTop;
-            var fixPos = openTop > closeTop ? openTop - closeTop : 0;
+            var fixPos = m_fixedHeader.toggleOpenTop > m_fixedHeader.toggleOpenFix ? m_fixedHeader.toggleOpenTop - m_fixedHeader.toggleOpenFix : 0;
             if (scrollTop >= fixPos) {
-                fixTogglePos = fixPos > 0 ? closeTop : openTop;
+                fixTogglePos = fixPos > 0 ? m_fixedHeader.toggleOpenFix : m_fixedHeader.toggleOpenTop;
             }
         }
         if (fixTogglePos >= 0) {

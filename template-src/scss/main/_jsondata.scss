@@ -71,6 +71,7 @@
             '"lgMin":' + breakpoint-min(lg) + ', ' +
             '"lgMax":' + breakpoint-max(lg) + ', ' +
             '"xlMin":' + breakpoint-min(xl) + ', ' +
+            '"bhTogTop":' + '"' + $bh-nav-mobile-toggle-top + '",' +
             '"navMobMax":' + breakpoint-mobile-max() + ', ' +
             '"navDeskMin":' + breakpoint-desktop-min() + ', ' +
             '"navMobPos":' + '"' + $nav-mobile-position + '",' +

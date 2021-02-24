@@ -35,6 +35,7 @@
     description="Enables advanced direct edit for the generated content.
     Default is 'false' if not provided." %>
 
+
 <%-- ####### These variables are actually set in the mercury:image-vars tag included ####### --%>
 <%@ variable name-given="imageBean" declare="true" variable-class="org.opencms.jsp.util.CmsJspImageBean" %>
 <%@ variable name-given="imageLink" declare="true" %>
@@ -46,6 +47,7 @@
 <%@ variable name-given="imageTitleCopyright" declare="true" %>
 <%@ variable name-given="imageWidth" declare="true" %>
 <%@ variable name-given="imageHeight" declare="true" %>
+
 
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

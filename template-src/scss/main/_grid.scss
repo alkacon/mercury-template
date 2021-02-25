@@ -63,7 +63,7 @@
             @if ($space > 10) {
                 // bottom spacing of 20 or more is ok on small screens
                 margin-bottom: #{2 * $space}px;
-            } @elseif ($space > 0) {
+            } @else if ($space > 0) {
                 // on mobile devices very small bottom spacing looks wrong,
                 // therefore we adjust depending on the configured tile margin
                 margin-bottom: $default-margin-small;

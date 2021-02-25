@@ -1305,24 +1305,16 @@
             }
         }
 
-        .nav-toggle {
+        #nav-toggle-label-open .nav-toggle {
             width: $nav-toggle-size-with-border;
             height: $nav-toggle-size-with-border;
             border: $nav-toggle-border-width solid #fff;
         }
 
-        @if ($nav-toggle-border-width != 0) {
-            // remove offset from border on "close" nav toggle icon
-            // otherwise menu items below will not be in line
-            &.lp-l {
-                #nav-toggle-label-close .nav-toggle {
-                    margin-right: #{-1 * $nav-toggle-border-width};
-                }
-            }
-            &.lp-r {
-                #nav-toggle-label-close .nav-toggle {
-                    margin-left: #{-1 * $nav-toggle-border-width};
-                }
+        @if ($nav-mobile-box-border-radius != 0) {
+            // use border radius from boxes below also for toggle icon in nav menu
+            #nav-toggle-label-close .nav-toggle {
+                border-radius: $nav-mobile-box-border-radius;
             }
         }
 

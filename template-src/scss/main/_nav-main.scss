@@ -128,7 +128,9 @@
             &.active > a {
                 // the page highlighted by the OpenCms navigation (from the URL)
                 color: $nav-text-active-mobile;
-                background-color: $nav-bg-active-mobile;
+                @if ($nav-bg-active-mobile != transparent) {
+                    background-color: $nav-bg-active-mobile;
+                }
             }
             &.active.final > a {
                 font-weight: $nav-mobile-font-weight-final;

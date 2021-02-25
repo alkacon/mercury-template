@@ -72,12 +72,6 @@
     description="A JSON-LD object created for the image.
     This will only be created if the attribute 'createJsonLd' has been set to ''true'." %>
 
-<%@ variable name-given="imageRatioIndicator" declare="true"
-    description="Indicates the image ratio.
-    This will only be created if the attribute createRatioIndicator has been set to ''true'
-    The value can be 'ir-0', 'ir-50', 'ir-75' or 'ir-125'.
-    The number indicates the next lowest (height / width) image ratio - which is also used as padding-bottom." %>
-
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -224,24 +218,6 @@
             </c:if>
         </cms:jsonobject>
      </c:if>
-
-    <c:if test="${createRatioIndicator}">
-        <c:set var="ir" value="${imageHeight / imageWidth}" />
-        <c:choose>
-            <c:when test="${ir > 1.25}">
-                <c:set var="imageRatioIndicator" value="ir-125" />
-            </c:when>
-            <c:when test="${ir > 0.75}">
-                <c:set var="imageRatioIndicator" value="ir-75" />
-            </c:when>
-            <c:when test="${ir > 0.5}">
-                <c:set var="imageRatioIndicator" value="ir-50" />
-            </c:when>
-            <c:otherwise>
-                <c:set var="imageRatioIndicator" value="ir-0" />
-            </c:otherwise>
-        </c:choose>
-    </c:if>
 
 </c:if>
 

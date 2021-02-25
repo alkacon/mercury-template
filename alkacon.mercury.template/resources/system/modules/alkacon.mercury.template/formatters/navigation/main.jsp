@@ -56,23 +56,21 @@
                             </span><%----%>
                         </label><%----%>
                     </div><%----%>
-                    <mercury:image-vars image="${logoImage}" ratio="${ratio}" createRatioIndicator="${true}">
-                        <div class="nav-menu-logo"><%----%>
-                            <mercury:link
-                                link="${logoContent.value.Link}"
-                                test="${showImageLink}"
-                                testFailTag="div"
-                                setTitle="${true}"
-                                css="mobile-logolink ${imageRatioIndicator}" >
-                                <mercury:image-simple
-                                    image="${logoImage}"
-                                    sizes="200,366,400,732,800"
-                                    cssWrapper="img-responsive"
-                                    title="${imageTitleCopyright}"
-                                />
-                            </mercury:link>
-                        </div><%----%>
-                    </mercury:image-vars>
+                    <div class="nav-menu-logo"><%----%>
+                        <mercury:link
+                            link="${logoContent.value.Link}"
+                            test="${showImageLink}"
+                            testFailTag="div"
+                            setTitle="${true}"
+                            css="mobile-logolink" >
+                            <mercury:image-simple
+                                image="${logoImage}"
+                                sizes="200,366,400,732,800"
+                                cssWrapper="img-responsive"
+                                title="${imageTitleCopyright}"
+                            />
+                        </mercury:link>
+                    </div><%----%>
                 </div>
             </c:when>
             <c:otherwise>

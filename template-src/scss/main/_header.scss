@@ -45,6 +45,10 @@
         .element:not(.type-nav-side):not(.ls-navigation) {
             display: none;
         }
+        > .row > div {
+            max-width: none;
+            flex: none;
+        }
     }
 }
 
@@ -1301,11 +1305,10 @@
             }
         }
 
-        .nav-toggle {
+        #nav-toggle-label-open .nav-toggle {
             width: $nav-toggle-size-with-border;
             height: $nav-toggle-size-with-border;
             border: $nav-toggle-border-width solid #fff;
-            display: inline-block;
         }
 
         .nav-menu-header {
@@ -1329,20 +1332,20 @@
                 .mobile-logolink {
                     display: flex;
                     width: 100%;
-
-                    &.ir-50 {
-                        width: 80%;
-                    }
-
-                    &.ir-75 {
-                        width: 60%;
-                    }
-
-                    &.ir-125 {
-                        width: 40%;
-                    }
                 }
             }
+        }
+
+        &.lsr-04 .nav-menu-header .nav-menu-logo .mobile-logolink {
+            width: 80%;
+        }
+
+        &.lsr-08 .nav-menu-header .nav-menu-logo .mobile-logolink {
+            width: 60%;
+        }
+
+        &.lsr-12 .nav-menu-header .nav-menu-logo .mobile-logolink {
+            width: 40%;
         }
 
         &.lp-l {
@@ -1370,6 +1373,10 @@
             }
         }
 
+        .nav-mega-menu .nav-side li > a {
+            padding-left: #{$nav-mobile-toggle-side + ($nav-mobile-indent * 2)};
+        }
+
         // hide content elements in mega menu (mega menu may be from a site using a different header type)
         @include hide-mega-menu-content;
 
@@ -1390,6 +1397,26 @@
                 }
                 li[aria-expanded] > a {
                     padding-right: $nav-mobile-toggle-side-xs + $nav-mobile-box-height !important;
+                }
+            }
+
+            .nav-mega-menu .nav-side li > a {
+                padding-left: #{$nav-mobile-toggle-side-xs + $nav-mobile-indent};
+            }
+
+           .nav-menu {
+                // menus below the head navbar
+                > li > a {
+                    padding-left: #{$nav-mobile-toggle-side-xs + $nav-mobile-indent};
+                }
+                > li > ul > li > a {
+                    padding-left: #{$nav-mobile-toggle-side-xs + ($nav-mobile-indent * 2)};
+                }
+                > li > ul > li > ul > li a {
+                    padding-left: #{$nav-mobile-toggle-side-xs + ($nav-mobile-indent * 3)};
+                }
+                > li > ul > li > ul > li > ul > li a {
+                    padding-left: #{$nav-mobile-toggle-side-xs + ($nav-mobile-indent * 4)};
                 }
             }
         }

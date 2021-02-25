@@ -65,7 +65,7 @@
                             css="mobile-logolink" >
                             <mercury:image-simple
                                 image="${logoImage}"
-                                sizes="200,366,400,732,800"
+                                sizes="200,350,400,700,800"
                                 cssWrapper="img-responsive"
                                 title="${imageTitleCopyright}"
                             />

@@ -469,6 +469,7 @@ $bh-header-padding:                 $grid-gutter-width / 2 !default; // top / bo
 $bh-header-padding-small:           round($bh-header-padding * 50) / 100 !default; // smaller padding for burger header elements
 $bh-header-padding-verysmall:       round($bh-header-padding * 25) / 100 !default; // used mostly for sticky burger header
 $bh-nav-mobile-toggle-top:          $grid-gutter-width !default; // top position for floating burger menu icon
+$bh-nav-mobile-logo-max-width:      350px !default; // max size of logo in menu
 
 // The "nav-toggle" button - this is the "burger" button to show / hide the mobile navigation
 

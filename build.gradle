@@ -3,11 +3,11 @@ apply plugin: 'maven'
 
 buildscript {
     dependencies {
-        classpath group: "org.opencms", name: "opencms-gradle-plugin", version: "1.5"
+        classpath group: "org.opencms", name: "opencms-gradle-plugin", version: "1.10"
     }
     repositories {
         mavenLocal()
-        jcenter()
+        mavenCentral()
     }
 }
 

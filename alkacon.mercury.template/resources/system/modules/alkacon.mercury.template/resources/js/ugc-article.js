@@ -1,8 +1,5 @@
 var blogUGC = function($) {
 
-    // Hack to make the ugc jquery wrapper work
-    window.$ = $;
-
     // optional back link
     var backLink = null;
 
@@ -15,6 +12,9 @@ var blogUGC = function($) {
     // 5: (optional) The wait indicator callback function
     var ugc = new UGC("ugcForm", myMappings, myErrorHandler, myFormInitHandler,
             myWaitHandler);
+
+    // make jQuery available to the ugc object (only necessary if it's not globally available as '$')
+    ugc.setJQ($);
 
     function myMappings() {
         // initialize the content mappings

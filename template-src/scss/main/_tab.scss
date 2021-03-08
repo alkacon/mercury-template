@@ -76,22 +76,16 @@
     }
 }
 
-.tab-pane > div > .row-12 > div,
-.tab-pane > div > .row > div:last-child > div {
-    // remove bottom nargin from last eleemnts in nested tabs
-    // becasue the tab itself also adds a bottom margin
-    &.element:last-child  {
-        margin-bottom: 0;
+.tab-pane > div > .row-12,
+.tab-pane > div > .row {
+    // remove bottom margin that was added be the elments in the row from last row in nested tabs
+    // bacause the tab itself also adds a bottom margin
+    &:last-child {
+         margin-bottom: -1 * $default-margin;
     }
 }
 
 @include media-breakpoint-up(lg) {
-
-    .tab-pane > div > .row > div > div {
-        &.element:last-child  {
-            margin-bottom: 0;
-        }
-    }
 
     .tab-list {
         border-bottom: solid 2px $main-theme;

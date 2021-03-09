@@ -12,18 +12,16 @@
 <mercury:init-messages>
 <cms:formatter var="content" val="value">
 
-<jsp:useBean id="paragraph" class="java.util.HashMap" />
-<c:set target="${paragraph}" property="Text"        value="${value.Preface}"/>
-<c:set target="${paragraph}" property="Image"       value="${value.Image}"/>
-<c:set target="${paragraph}" property="Link"        value="${value.Link}"/>
-
-<c:set var="paragraphs" value="${cms:createList()}" />
-${cms:addToList(paragraphs, paragraph)}
+<c:set var="paragraph" value="${{
+    'Text': value.Preface,
+    'Image': value.Image,
+    'Link': value.Link
+}}" />
 
 <mercury:teaser-accordion
     title="${value.Title}"
     cssWrapper="type-decoy"
-    paragraphs="${paragraphs}"
+    paragraphs="${[paragraph]}"
 />
 
 </cms:formatter>

@@ -20,6 +20,7 @@
     description="Controls if a JSON-LD object is created for the location and stored in the variable 'locJsonLd'.
     Default is 'false' if not provided." %>
 
+
 <%@ variable name-given="locData" declare="true"
     description="A map that contains the data read for the location as properties." %>
 

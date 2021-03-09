@@ -93,14 +93,12 @@
     <c:if test="${showMap and not preview and value.Coord.isSet}">
         <mercury:location-vars data="${content}" addMapInfo="true" >
             <c:set var="id"><mercury:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
-            <c:set var="markerList" value="${cms:createList()}" />
-            ${cms:addToList(markerList, locData)}
             <mercury:map
                 provider="auto"
                 id="${id}"
                 ratio="${mapRatio}"
                 zoom="${mapZoom}"
-                markers="${markerList}"
+                markers="${[locData]}"
                 subelementWrapper="subelement"
             />
         </mercury:location-vars>

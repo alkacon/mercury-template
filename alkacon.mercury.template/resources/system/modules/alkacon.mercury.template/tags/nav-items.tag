@@ -112,7 +112,7 @@
 <%-- Only the "forSite" type is supported here --%>
 
     <c:set var="navStartLevel" value="${0}" />
-    <c:set var="navItems" value="${cms:createList()}" />
+    <jsp:useBean id="navItems"  class="java.util.ArrayList" />
     <c:forEach var="navCollectionFolder" items="${content.value.Root.value.NavCollection.valueList.NavCollectionFolder}">
 
         <c:set var="navTopFolder" value="${navCollectionFolder.toResource}" />

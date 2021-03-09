@@ -18,7 +18,6 @@
 <c:set var="reverseOrder"       value="${cms.element.setting.containerOrder.toString eq 'reversed'}" />
 
 <jsp:useBean id="valueMap"      class="java.util.HashMap" />
-<jsp:useBean id="params"        class="java.util.HashMap" />
 
 <mercury:container-box label="${value.Title}" boxType="model-start" />
 
@@ -29,8 +28,7 @@
         <c:set target="${valueMap}" property="Type"             value="element"/>
         <c:set target="${valueMap}" property="Name"             value="maincol"/>
         <c:set target="${valueMap}" property="Css"              value="row-12${cssWrapper}" />
-        <c:set target="${valueMap}" property="Parameters"       value="${params}" />
-        <c:set target="${params}"   property="cssgrid"          value="col-xs-12" />
+        <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'col-xs-12'}}" />
         <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
     </c:when>
     <c:when test="${variant eq '3-9'}">
@@ -198,6 +196,7 @@
         <%-- lr_00012 - special row for tiles --%>
         <c:set var="useSquare"                                  value="${cms.element.settings.tileCss eq 'square'}" />
         <c:set var="useTile"                                    value="${not useSquare and not (cms.element.settings.tileCss eq 'none')}" />
+        <c:set var="params"                                     value="${{'cssgrid': 'col-xs-12'}}" />
         <c:choose>
             <c:when test="${useTile or useSquare}">
                 <%-- Generate tile row --%>
@@ -215,7 +214,6 @@
         </c:choose>
         <c:set target="${valueMap}" property="Name"             value="maincol"/>
         <c:set target="${valueMap}" property="Parameters"       value="${params}" />
-        <c:set target="${params}"   property="cssgrid"          value="col-xs-12" />
         <mercury:container value="${valueMap}" title="${value.Title}" detailView="${false}" />
     </c:when>
     <c:when test="${variant eq 'area-one-row'}">
@@ -245,7 +243,8 @@
         <c:if test="${not empty styleAttr}">
               <c:set var="styleAttr"> style="${styleAttr}"</c:set>
         </c:if>
-        <main class="area-content ${variant}${cssWrapper}"${styleAttr}>
+        <main class="area-content ${variant}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"${styleAttr}>
+            <%-- Since the cssWrapper has been manipulated, it is required to add the ' ' prefix again. --%>
             <c:set target="${valueMap}" property="Type"             value="row" />
             <c:set target="${valueMap}" property="Name"             value="main" />
             <c:set target="${valueMap}" property="Tag"              value="div" />
@@ -281,8 +280,7 @@
         <c:set target="${valueMap}" property="Name"             value="main" />
         <c:set target="${valueMap}" property="Tag"              value="div" />
         <c:set target="${valueMap}" property="Css"              value="area-content area-wide ${variant}${cssWrapper}" />
-        <c:set target="${valueMap}" property="Parameters"       value="${params}" />
-        <c:set target="${params}"   property="cssgrid"          value="fullwidth" />
+        <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'fullwidth'}}" />
         <mercury:container value="${valueMap}" title="${value.Title}" />
     </c:when>
     <c:otherwise>

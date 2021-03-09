@@ -44,10 +44,11 @@ ${nl}
     <c:set var="navLength" value="${fn:length(nav.items) - 1}" />
     <c:if test="${navLength >= 0}">
         <%-- ###### Filter the sitemap entries to display ###### --%>
-        <c:set var="topLevel" value="${nav.items[0].navTreeLevel}" />
-        <c:set var="maxLevel" value="${(value.MaximumDepth.isSet and (value.MaximumDepth.toInteger > 0)) ? topLevel + value.MaximumDepth.toInteger : 100}" />
-        <c:set var="navItems" value="${cms:createList()}" />
-        <c:set var="subPrefix" value="" />
+        <c:set var="topLevel"       value="${nav.items[0].navTreeLevel}" />
+        <c:set var="maxLevel"       value="${(value.MaximumDepth.isSet and (value.MaximumDepth.toInteger > 0)) ? topLevel + value.MaximumDepth.toInteger : 100}" />
+        <c:set var="subPrefix"      value="" />
+
+        <jsp:useBean id="navItems"  class="java.util.ArrayList" />
 
         <c:forEach var="i" begin="0" end="${navLength}" >
             <c:choose>
@@ -56,7 +57,7 @@ ${nl}
                 </c:when>
                 <c:when test="${value.IncludeSubSiteMaps.toBoolean}">
                     <%-- ###### Include subsitemap entries in the list ###### --%>
-                    ${cms:addToList(navItems, nav.items[i])}
+                    <c:set var="ignore" value="${navItems.add(nav.items[i])}" />
                 </c:when>
                 <c:otherwise>
                     <%-- ###### Filter subsitemap entries from the list  ###### --%>
@@ -65,7 +66,7 @@ ${nl}
                             <c:set var="subPrefix" value="" />
                         </c:if>
                         <c:if test="${empty subPrefix}">
-                            ${cms:addToList(navItems, nav.items[i])}
+                            <c:set var="ignore" value="${navItems.add(nav.items[i])}" />
                         </c:if>
                         <c:if test="${cms:isSubSitemap(nav.items[i].resource)}">
                             <c:set var="subPrefix" value="${curPath}" />

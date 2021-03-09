@@ -56,10 +56,9 @@
     <c:set var="id"><mercury:idgen prefix='map' uuid='${cms.element.instanceId}' /></c:set>
 
     <%-- Collects all map marker groups found, this is a Map since we can not add elements to lists in EL --%>
-    <jsp:useBean id="markerGroups" class="java.util.LinkedHashMap" />
-
-    <c:set var="markerList" value="${cms:createList()}" />
-    <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
+    <jsp:useBean id="markerGroups"  class="java.util.LinkedHashMap" />
+    <jsp:useBean id="markerList"    class="java.util.ArrayList" />
+    <jsp:useBean id="coordBean"     class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
 
     <c:forEach var="poi" items="${content.valueList.MapPoi}" varStatus="status">
         <mercury:location-vars data="${poi.value.PoiLink}" addMapInfo="true" >
@@ -69,7 +68,7 @@
                 <c:set target="${markerGroups}" property="${markerGroup}" value="used"/>
 
                 <c:set target="${locData}" property="group" value="${markerGroup}" />
-                ${cms:addToList(markerList, locData)}
+                <c:set var="ignore" value="${markerList.add(locData)}" />
             </c:if>
 
         </mercury:location-vars>
@@ -93,15 +92,16 @@
             </c:otherwise>
         </c:choose>
 
-        <c:set var="locData" value="${cms:jsonToMap(leer)}" />
-        <c:set target="${locData}" property="name" value="${marker.value.Caption.isEmptyOrWhitespaceOnly ? '' : fn:trim(marker.value.Caption)}" />
-        <c:set target="${locData}" property="lat" value="${coordBean.lat}" />
-        <c:set target="${locData}" property="lng" value="${coordBean.lng}" />
-        <c:set target="${locData}" property="addressMarkup" value="${markerAddress}" />
-        <c:set target="${locData}" property="geocode" value="${markerNeedsGeoCode}" />
-        <c:set target="${locData}" property="group" value="${markerGroup}" />
-        <c:set target="${locData}" property="info" value="${markerInfo}" />
-        ${cms:addToList(markerList, locData)}
+        <c:set var="locData" value="${{
+            'name': marker.value.Caption.isEmptyOrWhitespaceOnly ? '' : fn:trim(marker.value.Caption),
+            'lat': coordBean.lat,
+            'lng': coordBean.lng,
+            'addressMarkup': markerAddress,
+            'geocode': markerNeedsGeoCode,
+            'group': markerGroup,
+            'info': markerInfo
+        }}" />
+        <c:set var="ignore" value="${markerList.add(locData)}" />
 
     </c:forEach>
 

@@ -30,8 +30,8 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 
 
-<c:set var="paragraphsContent" value="${cms:createList()}" />
-<c:set var="paragraphsDownload" value="${cms:createList()}" />
+<jsp:useBean id="paragraphsContent"  class="java.util.ArrayList" />
+<jsp:useBean id="paragraphsDownload" class="java.util.ArrayList" />
 
 <c:forEach var="paragraph" items="${paragraphs}" varStatus="status">
 

@@ -22,9 +22,6 @@
     description="The string value of the 'cssWrapper' setting of the current element (cms.element.setting.cssWrapper.toString).
     If this is set, an additional white space ' ' will be added automatically as prefix." %>
 
-<%@ variable name-given="settings" declare="true"
-    description="A map where element settings passed to nested containers can be stored in." %>
-
 <%@ variable name-given="noWrapper" declare="true"
     description="A map where only the 'cssWrapper' setting is defined.
     If this is passed to a nested container, the 'cssWrapper' setting will not be shown in the element settings dialog." %>
@@ -44,8 +41,7 @@
 <c:set var="setting"            value="${cms.element.setting}" />
 <c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(cms.element.settings.cssWrapper) : ''}" />
 
-<jsp:useBean id="settings"      class="java.util.HashMap" />
-<jsp:useBean id="noWrapper"     class="java.util.HashMap" />
+<c:set var="noWrapper"          value="${{'cssWrapper': ''}}" />
 
 <c:set var="isSideGroup"        value="${variant eq 'side-group'}" />
 <c:set var="isSideContainer"    value="${fn:contains(cms.container.type, 'side-group')}" />
@@ -68,7 +64,11 @@
         <c:set var="showConfigElement"          value="${cms.isEditMode and ((cms.element.modelGroup and cms.modelGroupElement) or (not cms.element.modelGroup))}" />
         <c:set var="configElement">
             <c:if test="${showConfigElement}">
-                <mercury:container type="header-config" name="header-config" title="${value.Title}" />
+                <mercury:container
+                    type="header-config"
+                    name="header-config"
+                    title="${value.Title}"
+                />
             </c:if>
         </c:set>
 
@@ -153,32 +153,51 @@
                     This is why the logoElement is duplicated before / after the meta link element.
                 --%>
 
-                <c:set target="${noWrapper}" property="cssWrapper"              value="" />
-
                 <c:if test="${showMetaAside}">
                     <c:set var="logoElement">
-                        <c:set target="${settings}" property="cssWrapper"       value="header-image" />
-                        <c:set target="${settings}" property="showImageLink"    value="true" />
-                        <mercury:container type="image-minimal" name="header-image" css="h-logo p-xs-12 p-lg-${logoCols}" title="${value.Title}" settings="${settings}" />
+                        <mercury:container
+                            type="image-minimal"
+                            name="header-image"
+                            css="h-logo p-xs-12 p-lg-${logoCols}"
+                            title="${value.Title}"
+                            settings="${{
+                                'cssWrapper':       'header-image',
+                                'showImageLink':    'true'
+                            }}"
+                        />
                     </c:set>
                 </c:if>
 
                 <c:set var="metaLinkElement">
                     <c:if test="${showMeta}">
-                        <c:set target="${settings}" property="cssWrapper"       value="header-links" />
-                        <c:set target="${settings}" property="linksequenceType" value="ls-row" />
-                        <c:set target="${settings}" property="hsize"            value="0" />
                         <mercury:div css="h-meta" test="${not showMetaAside}">
-                            <mercury:container type="linksequence-header" name="header-linksequence" css="${not showMetaAside ? 'co-lg-xl' : 'h-meta'}" title="${value.Title}" settings="${settings}" />
+                            <mercury:container
+                                type="linksequence-header"
+                                name="header-linksequence"
+                                css="${not showMetaAside ? 'co-lg-xl' : 'h-meta'}"
+                                title="${value.Title}"
+                                settings="${{
+                                    'cssWrapper':       'header-links',
+                                    'linksequenceType': 'ls-row',
+                                    'hsize' :           '0'
+                                }}"
+                            />
                         </mercury:div>
                     </c:if>
                 </c:set>
 
                 <c:if test="${not showMetaAside}">
                     <c:set var="logoElement">
-                        <c:set target="${settings}" property="cssWrapper"         value="header-image" />
-                        <c:set target="${settings}" property="showImageLink"      value="true" />
-                        <mercury:container type="image-minimal" name="header-image" css="h-logo p-xs-12 p-lg-${logoCols}" title="${value.Title}" settings="${settings}" />
+                        <mercury:container
+                            type="image-minimal"
+                            name="header-image"
+                            css="h-logo p-xs-12 p-lg-${logoCols}"
+                            title="${value.Title}"
+                            settings="${{
+                                'cssWrapper':       'header-image',
+                                'showImageLink':    'true'
+                            }}"
+                        />
                     </c:set>
                 </c:if>
 
@@ -206,7 +225,13 @@
                 <c:set var="navBarElement">
                      <div class="h-nav"><%----%>
                         <mercury:div css="co-lg-xl" test="${not showNavAside}">
-                            <mercury:container type="nav-main" name="header-nav-main" css="nav-main-container" title="${value.Title}" settings="${noWrapper}" />
+                            <mercury:container
+                                type="nav-main"
+                                name="header-nav-main"
+                                css="nav-main-container"
+                                title="${value.Title}"
+                                settings="${noWrapper}"
+                            />
                         </mercury:div>
                     </div><%----%>
                     <mercury:nl />
@@ -215,7 +240,12 @@
                 <c:if test="${showAddContainer}">
                     <c:set var="addContainerElement">
                         <mercury:div css="h-ac" test="${acHasPageSize}">
-                            <mercury:container type="row" name="header-container" css="${acHasPageSize ? (acOnMobile ? 'container' : 'co-lg-xl p-xs-12') : 'h-ac'}" title="${value.Title}"  />
+                            <mercury:container
+                                type="row"
+                                name="header-container"
+                                css="${acHasPageSize ? (acOnMobile ? 'container' : 'co-lg-xl p-xs-12') : 'h-ac'}"
+                                title="${value.Title}"
+                            />
                         </mercury:div>
                     </c:set>
                 </c:if>
@@ -223,7 +253,13 @@
                 <c:set var="breadcrumbElement">
                     <c:if test="${showBreadcrumbs and ((not empty cms.elementsInContainers['breadcrumbs']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="h-bc"><%----%>
-                            <mercury:container type="nav-breadcrumbs" name="header-breadcrumbs" css="container" title="${value.Title}" settings="${noWrapper}" />
+                            <mercury:container
+                                type="nav-breadcrumbs"
+                                name="header-breadcrumbs"
+                                css="container"
+                                title="${value.Title}"
+                                settings="${noWrapper}"
+                            />
                         </div><%----%>
                         <mercury:nl />
                     </c:if>
@@ -394,18 +430,30 @@
                     <mercury:nl />
                     <div class="container"><%----%>
                         <div class="row"><%----%>
-
-                            <c:set target="${settings}" property="cssWrapper"         value="header-image" />
-                            <c:set target="${settings}" property="showImageLink"      value="true" />
-                            <mercury:container type="image-minimal" name="header-image" css="col col-head-logo" title="${value.Title}" settings="${settings}" />
+                            <mercury:container
+                                type="image-minimal"
+                                name="header-image"
+                                css="col col-head-logo"
+                                title="${value.Title}"
+                                settings="${{
+                                    'cssWrapper':       'header-image',
+                                    'showImageLink':    'true'
+                                }}"
+                            />
 
                             <div class="col col-head-info"><%----%>
-
-                                <c:set target="${settings}" property="cssWrapper"       value="header-links" />
-                                <c:set target="${settings}" property="linksequenceType" value="ls-row" />
-                                <c:set target="${settings}" property="iconClass"        value="none" />
-                                <c:set target="${settings}" property="hsize"            value="0" />
-                                <mercury:container type="linksequence" name="header-linksequence" css="header-links-bg" title="${value.Title}" settings="${settings}" />
+                                <mercury:container
+                                    type="linksequence"
+                                    name="header-linksequence"
+                                    css="header-links-bg"
+                                    title="${value.Title}"
+                                    settings="${{
+                                        'cssWrapper':       'header-links',
+                                        'linksequenceType': 'ls-row',
+                                        'iconClass':        'none',
+                                        'hsize' :           '0'
+                                    }}"
+                                />
 
                                 <c:set var="imageElements" value="${cms.elementsInContainers['header-image']}" />
                                 <c:if test="${not empty imageElements}">
@@ -423,7 +471,12 @@
                                 </c:if>
 
                                 <c:if test="${not showNavBarFullWith}">
-                                    <mercury:container type="nav-main" name="navbar" css="nav-main-container" title="${value.Title}" />
+                                    <mercury:container
+                                        type="nav-main"
+                                        name="navbar"
+                                        css="nav-main-container"
+                                        title="${value.Title}"
+                                    />
                                 </c:if>
 
                             </div><%----%>
@@ -435,9 +488,16 @@
 
                     <c:if test="${showNavBarFullWith and ((not empty cms.elementsInContainers['header-visual-top']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="visual-top-bg"><%----%>
-                            <c:set target="${settings}" property="cssWrapper"         value="header-visual no-default-margin" />
-                            <c:set target="${settings}" property="showImageLink"      value="false" />
-                            <mercury:container type="header-visual" name="header-visual-top" css="container" title="${value.Title}" settings="${settings}" />
+                            <mercury:container
+                                type="header-visual"
+                                name="header-visual-top"
+                                css="container"
+                                title="${value.Title}"
+                                settings="${{
+                                    'cssWrapper':       'header-visual no-default-margin',
+                                    'showImageLink':    'false'
+                                }}"
+                            />
                         </div><%----%>
                         <mercury:nl />
                     </c:if>
@@ -445,7 +505,12 @@
                     <c:if test="${showTopVisual}">
                         <div class="nav-main-bg pull-up-fixed"><%----%>
                             <div class="container"><%----%>
-                                <mercury:container type="nav-main" name="navbar" css="nav-main-container" title="${value.Title}" />
+                                <mercury:container
+                                    type="nav-main"
+                                    name="navbar"
+                                    css="nav-main-container"
+                                    title="${value.Title}"
+                                />
                             </div><%----%>
                         </div><%----%>
                         <mercury:nl />
@@ -457,7 +522,12 @@
 
             <c:if test="${showBreadcrumbs and ((not empty cms.elementsInContainers['breadcrumbs']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                 <div class="breadcrumbs-bg">
-                    <mercury:container type="nav-breadcrumbs" name="breadcrumbs" css="container" title="${value.Title}" />
+                    <mercury:container
+                        type="nav-breadcrumbs"
+                        name="breadcrumbs"
+                        css="container"
+                        title="${value.Title}"
+                    />
                 </div>
                 <mercury:nl />
             </c:if>
@@ -471,10 +541,20 @@
         <footer class="area-foot${cssWrapper}"><%----%>
 
             <div class="topfoot"><%----%>
-                <mercury:container type="row" name="topfoot" css="container area-wide" title="${value.Title}" />
+                <mercury:container
+                    type="row"
+                    name="topfoot"
+                    css="container area-wide"
+                    title="${value.Title}"
+                />
             </div><%----%>
             <div class="subfoot no-external"><%----%>
-                <mercury:container type="row" name="subfoot" css="container area-wide" title="${value.Title}" />
+                <mercury:container
+                    type="row"
+                    name="subfoot"
+                    css="container area-wide"
+                    title="${value.Title}"
+                />
             </div><%----%>
 
         </footer><%----%>
@@ -486,7 +566,12 @@
         <footer class="area-foot${cssWrapper}"><%----%>
 
             <div class="subfoot no-external"><%----%>
-                <mercury:container type="row" name="subfoot" css="container area-wide" title="${value.Title}" />
+                <mercury:container
+                    type="row"
+                    name="subfoot"
+                    css="container area-wide"
+                    title="${value.Title}"
+                />
             </div><%----%>
 
         </footer><%----%>
@@ -495,7 +580,12 @@
 
     <c:when test="${variant eq 'side-group'}">
         <mercury:nl />
-            <mercury:container type="element" name="side-group" css="side-group" title="${value.Title}" />
+            <mercury:container
+                type="element"
+                name="side-group"
+                css="side-group"
+                title="${value.Title}"
+            />
         <mercury:nl />
     </c:when>
 

@@ -82,8 +82,8 @@
 </c:set>
 
 <%-- ###### Create the list of images to display ###### --%>
-<c:set var="imageList" value="${cms:createList()}" />
-<c:set var="imageBeans" value="${cms:createList()}" />
+<jsp:useBean id="imageList" class="java.util.ArrayList" />
+<jsp:useBean id="imageBeans" class="java.util.ArrayList" />
 <c:if test="${hasImageFile}">
     <%-- ###### Manually added images are first ###### --%>
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">

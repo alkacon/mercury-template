@@ -38,7 +38,7 @@
     }
 }
 
-@include media-breakpoint-down(sm) {
+@mixin calendar-sheet-base {
 
     .calendar-sheet-piece,
     .calendar-sheet-parent {
@@ -73,69 +73,92 @@
     }
 }
 
-@include media-breakpoint-up(md) {
+.area-wide {
 
-    .calendar-sheet-piece.fixed {
-        &.flex {
-            > .visual {
-                min-width: 135px + $grid-gutter-width;
-                max-width: 135px + $grid-gutter-width;
-            }
-            > .body {
-                flex: 0 0 calc(100% - #{135px + $grid-gutter-width});
-                max-width: calc(100% - #{135px + $grid-gutter-width});
-            }
-        }
-        &.float {
-            > .visual {
-                min-width: 135px + (0.5 * $grid-gutter-width);
-                max-width: 135px + (0.5 * $grid-gutter-width);
-            }
-            > .body {
-                flex: 0 0 calc(100% - #{135px + (0.5 * $grid-gutter-width)});
-                max-width: calc(100% - #{135px + (0.5 * $grid-gutter-width)});
-            }
-        }
+    @include media-breakpoint-down(sm) {
+
+        @include calendar-sheet-base();
     }
 
-    .calendar-sheet {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        border:     1px solid $calendar-sheet-border;
-        @include round-corners($calendar-sheet-border-radius);
-        box-shadow: $panel-shadow;
-        text-align: center;
+    @include media-breakpoint-up(md) {
 
-        &::before {
-            display: block;
-            content: '';
-            position: absolute;
-            top: 0;
-            left: $calendar-sheet-margin;
-            height: 15px;
-            border-bottom: none;
-            margin: 0;
-            background-color: $calendar-sheet-barcolor;
-            width: calc(100% - #{2 * $calendar-sheet-margin});
-            @if ($calendar-sheet-margin == 0) {
-                border-top-left-radius: $calendar-sheet-border-radius;
-                border-top-right-radius: $calendar-sheet-border-radius;
+        .calendar-sheet-piece.fixed {
+            &.flex {
+                > .visual {
+                    min-width: 135px + $grid-gutter-width;
+                    max-width: 135px + $grid-gutter-width;
+                }
+                > .body {
+                    flex: 0 0 calc(100% - #{135px + $grid-gutter-width});
+                    max-width: calc(100% - #{135px + $grid-gutter-width});
+                }
+            }
+            &.float {
+                > .visual {
+                    min-width: 135px + (0.5 * $grid-gutter-width);
+                    max-width: 135px + (0.5 * $grid-gutter-width);
+                }
+                > .body {
+                    flex: 0 0 calc(100% - #{135px + (0.5 * $grid-gutter-width)});
+                    max-width: calc(100% - #{135px + (0.5 * $grid-gutter-width)});
+                }
             }
         }
-        & > span {
-            display: block;
-        }
 
-        .day-name,
-        .month-year {
-            padding: 10px;
+        .calendar-sheet {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border:     1px solid $calendar-sheet-border;
+            @include round-corners($calendar-sheet-border-radius);
+            box-shadow: $panel-shadow;
+            text-align: center;
+
+            &::before {
+                display: block;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: $calendar-sheet-margin;
+                height: 15px;
+                border-bottom: none;
+                margin: 0;
+                background-color: $calendar-sheet-barcolor;
+                width: calc(100% - #{2 * $calendar-sheet-margin});
+                @if ($calendar-sheet-margin == 0) {
+                    border-top-left-radius: $calendar-sheet-border-radius;
+                    border-top-right-radius: $calendar-sheet-border-radius;
+                }
+            }
+            & > span {
+                display: block;
+            }
+
+            .day-name,
+            .month-year {
+                padding: 10px;
+            }
         }
     }
 }
+
+
+.area-narrow {
+
+    @include calendar-sheet-base();
+
+    .calendar-sheet-piece.piece.flex {
+        > .visual,
+        > .body {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
 
 // Colored calendar sheets
 

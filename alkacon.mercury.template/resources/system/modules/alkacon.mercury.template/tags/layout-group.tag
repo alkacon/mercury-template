@@ -18,6 +18,10 @@
 <%@ variable name-given="setting" declare="true"
     description="The settings of the current element (cms.element.setting)." %>
 
+<%@ variable name-given="cssWrapper" declare="true"
+    description="The string value of the 'cssWrapper' setting of the current element (cms.element.setting.cssWrapper.toString).
+    If this is set, an additional white space ' ' will be added automatically as prefix." %>
+
 <%@ variable name-given="settings" declare="true"
     description="A map where element settings passed to nested containers can be stored in." %>
 
@@ -38,7 +42,7 @@
 <c:set var="value"              value="${content.value}" />
 <c:set var="variant"            value="${value.Variant}" />
 <c:set var="setting"            value="${cms.element.setting}" />
-<c:set var="cssWrapper"         value="${setting.cssWrapper.toString}" />
+<c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(cms.element.settings.cssWrapper) : ''}" />
 
 <jsp:useBean id="settings"      class="java.util.HashMap" />
 <jsp:useBean id="noWrapper"     class="java.util.HashMap" />
@@ -75,6 +79,7 @@
 
                 <c:set var="config"             value="${headerConfigElementBeans.get(0)}" />
                 <c:set var="addCssWrapper"      value="${config.setting.cssWrapper.toString}" />
+
                 <c:set var="logoAlignment"      value="${config.setting.logoAlignment.useDefault('lp-l').toString}" />
                 <c:set var="logoSize"           value="${config.setting.logoSize.useDefault('ls-4').toString}" />
                 <c:set var="logoFullSize"       value="${logoSize eq 'ls-12'}" />
@@ -241,7 +246,7 @@
                     ${showAddContainer ? acDisplay.concat(' ').concat(acPosition.concat(' ')) : ''}
                     ${bcAlignment}
                     ${addBottomMargin ? ' has-margin' : ' no-margin'}
-                    ${not empty cssWrapper ? ' '.concat(cssWrapper) : ''}
+                    ${cssWrapper}
                     ${not empty addCssWrapper ? ' '.concat(addCssWrapper) : ''}"><%----%>
                     <mercury:nl />
 
@@ -369,7 +374,7 @@
         </c:choose>
 
         <mercury:nl />
-        <header class="area-header logo-left ${cssWrapper}"><%----%>
+        <header class="area-header logo-left${cssWrapper}"><%----%>
             <mercury:nl />
 
             <input type="checkbox" id="nav-toggle-check"><%-- Must be here so it works even when JavaScript is disabled --%>
@@ -463,13 +468,13 @@
 
     <c:when test="${variant eq 'foot-v1'}">
         <mercury:nl />
-        <footer class="area-foot ${cssWrapper}"><%----%>
+        <footer class="area-foot${cssWrapper}"><%----%>
 
             <div class="topfoot"><%----%>
-                <mercury:container type="row" name="topfoot" css="container" title="${value.Title}" />
+                <mercury:container type="row" name="topfoot" css="container area-wide" title="${value.Title}" />
             </div><%----%>
             <div class="subfoot no-external"><%----%>
-                <mercury:container type="row" name="subfoot" css="container" title="${value.Title}" />
+                <mercury:container type="row" name="subfoot" css="container area-wide" title="${value.Title}" />
             </div><%----%>
 
         </footer><%----%>
@@ -478,10 +483,10 @@
 
     <c:when test="${variant eq 'foot-v2'}">
         <mercury:nl />
-        <footer class="area-foot ${cssWrapper}"><%----%>
+        <footer class="area-foot${cssWrapper}"><%----%>
 
             <div class="subfoot no-external"><%----%>
-                <mercury:container type="row" name="subfoot" css="container" title="${value.Title}" />
+                <mercury:container type="row" name="subfoot" css="container area-wide" title="${value.Title}" />
             </div><%----%>
 
         </footer><%----%>

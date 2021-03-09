@@ -245,11 +245,11 @@
         <c:if test="${not empty styleAttr}">
               <c:set var="styleAttr"> style="${styleAttr}"</c:set>
         </c:if>
-        <main class="area-content ${variant}${' '}${cssWrapper}"${styleAttr}>
-            <c:set target="${valueMap}" property="Type"             value="row"/>
-            <c:set target="${valueMap}" property="Name"             value="main"/>
+        <main class="area-content ${variant}${cssWrapper}"${styleAttr}>
+            <c:set target="${valueMap}" property="Type"             value="row" />
+            <c:set target="${valueMap}" property="Name"             value="main" />
             <c:set target="${valueMap}" property="Tag"              value="div" />
-            <c:set target="${valueMap}" property="Css"              value="container" />
+            <c:set target="${valueMap}" property="Css"              value="container area-wide" />
             <mercury:container value="${valueMap}" title="${value.Title}" />
         </main>
     </c:when>
@@ -257,19 +257,19 @@
         <%-- la_00002 / la_00003 --%>
         <c:set var="asideFirst"                 value="${variant eq 'area-side-main'}" />
         <c:set var="asideWide"                  value="${'true' eq cms.vfs.readResource[cms.requestContext.uri].propertySearch['mercury.side.wide']}" />
-        <main class="area-content ${variant}${' '}${cssWrapper}"><%----%>
+        <main class="area-content ${variant}${cssWrapper}"><%----%>
             <div class="container"><%----%>
                 <div class="row"><%----%>
-                    <c:set target="${valueMap}" property="Type"             value="row"/>
-                    <c:set target="${valueMap}" property="Name"             value="main"/>
+                    <c:set target="${valueMap}" property="Type"             value="row" />
+                    <c:set target="${valueMap}" property="Name"             value="main" />
                     <c:set target="${valueMap}" property="Tag"              value="div" />
-                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '8' : '9'}${asideFirst ? ' order-lg-last' : ''}" />
+                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '8' : '9'}${asideFirst ? ' order-lg-last ' : ' '}area-wide" />
                     <mercury:container value="${valueMap}" title="${value.Title}" />
                     <c:set target="${valueMap}" property="Type"             value="element, side-group"/>
                     <c:set target="${valueMap}" property="Name"             value="aside"/>
                     <c:set target="${valueMap}" property="Tag"              value="aside" />
-                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '4' : '3'}${asideFirst ? ' order-lg-first' : ''}" />
-                    <mercury:container value="${valueMap}" title="${value.Title}"/>
+                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '4' : '3'}${asideFirst ? ' order-lg-first ' : ' '}area-narrow" />
+                    <mercury:container value="${valueMap}" title="${value.Title}" />
                     <mercury:nl />
                 </div><%----%>
             </div><%----%>
@@ -277,10 +277,10 @@
     </c:when>
     <c:when test="${variant eq 'area-full-row'}">
         <%-- la_00004 --%>
-        <c:set target="${valueMap}" property="Type"             value="element"/>
-        <c:set target="${valueMap}" property="Name"             value="main"/>
+        <c:set target="${valueMap}" property="Type"             value="element" />
+        <c:set target="${valueMap}" property="Name"             value="main" />
         <c:set target="${valueMap}" property="Tag"              value="div" />
-        <c:set target="${valueMap}" property="Css"              value="area-content ${variant}${' '}${cssWrapper}" />
+        <c:set target="${valueMap}" property="Css"              value="area-content area-wide ${variant}${cssWrapper}" />
         <c:set target="${valueMap}" property="Parameters"       value="${params}" />
         <c:set target="${params}"   property="cssgrid"          value="fullwidth" />
         <mercury:container value="${valueMap}" title="${value.Title}" />

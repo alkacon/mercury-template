@@ -25,12 +25,7 @@
 
     <c:choose>
         <c:when test="${not empty policyfile and cms.vfs.exists[policyfile]}">
-            <c:set var="policySettings" value="${{'cssWrapper': cms.element.settings.cssWrapper}}" />
-            <mercury:display
-                file="${policyfile}"
-                formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/privacy-policy/settings.xml:c540a604-b12d-451f-8e71-a738cc47487d)"
-                settings="${policySettings}"
-            />
+            <mercury:privacy-policy-settings cssWrapper="${cms.element.settings.cssWrapper}" />
         </c:when>
         <c:otherwise>
             <fmt:setLocale value="${cms.locale}" />

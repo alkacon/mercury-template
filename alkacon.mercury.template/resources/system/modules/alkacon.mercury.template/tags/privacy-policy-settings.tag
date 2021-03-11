@@ -1,8 +1,13 @@
-<%@page
-    pageEncoding="UTF-8"
-    buffer="none"
-    session="false"
-    trimDirectiveWhitespaces="true"%>
+<%@ tag pageEncoding="UTF-8"
+    display-name="privacy-policy-settings"
+    body-content="empty"
+    trimDirectiveWhitespaces="true"
+    description="Displays the 'privacy policy' settings." %>
+
+
+<%@ attribute name="cssWrapper" type="java.lang.String" required="true"
+    description="The CSS wrapper class to use." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -10,15 +15,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<cms:formatter var="content" val="value">
+
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
-
-<c:set var="privacyCookie"              value="${cookie['privacy-options'].value}" />
-<c:set var="cookiesAcceptedTechnical"   value="${fn:contains(privacyCookie, '|technical')}" />
-<c:set var="cookiesAcceptedExternal"    value="${fn:contains(privacyCookie, '|external')}" />
-<c:set var="cookiesAcceptedStatistical" value="${fn:contains(privacyCookie, '|statistical')}" />
-<c:set var="cssWrapper"                 value="${cms.element.settings.cssWrapper}" />
 
 <mercury:nl />
 <div class="element type-privacy-policy pp-settings ${cssWrapper}"><%----%>
@@ -38,7 +37,7 @@
 </div><%----%>
 
 <div class="pp-toggle pp-toggle-external animated"><%----%>
-    <input id="cookies-accepted-external" type="checkbox" class="toggle-check optional"${cookiesAcceptedExternal ? ' checked' : ''}><%----%>
+    <input id="cookies-accepted-external" type="checkbox" class="toggle-check optional"><%----%>
     <label for="cookies-accepted-external" class="toggle-label">
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
@@ -52,7 +51,7 @@
 </div><%----%>
 
 <div class="pp-toggle pp-toggle-statistical animated"><%----%>
-    <input id="cookies-accepted-statistical" type="checkbox" class="toggle-check optional"${cookiesAcceptedStatistical ? ' checked' : ''}><%----%>
+    <input id="cookies-accepted-statistical" type="checkbox" class="toggle-check optional"><%----%>
     <label for="cookies-accepted-statistical" class="toggle-label">
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
@@ -69,4 +68,3 @@
 <mercury:nl />
 
 </cms:bundle>
-</cms:formatter>

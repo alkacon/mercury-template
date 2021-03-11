@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.303</version>
+		<version>11.0.1.304</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -3995,52 +3995,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/privacy-policy/settings.jsp</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/privacy-policy/settings.jsp</destination>
-			<type>jsp</type>
-			<uuidstructure>705cda71-6e28-4335-950c-bc119156c6d5</uuidstructure>
-			<uuidresource>488339db-b9ce-4b0e-926c-a7f194bb3a21</uuidresource>
-			<datecreated>Sun, 15 Jul 2018 12:07:03 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/privacy-policy/settings.xml</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/privacy-policy/settings.xml</destination>
-			<type>formatter_config</type>
-			<uuidstructure>c540a604-b12d-451f-8e71-a738cc47487d</uuidstructure>
-			<uuidresource>9c5dc278-1cf4-4cc6-8803-e1bb75ae89b4</uuidresource>
-			<datecreated>Sun, 15 Jul 2018 12:06:55 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Privacy policy user cookie settings]]></value>
-				</property>
-				<property>
-					<name>locale</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<destination>system/modules/alkacon.mercury.template/formatters/section</destination>
 			<type>folder</type>
 			<uuidstructure>a473e76b-9359-4482-9097-638ad6003a98</uuidstructure>
@@ -7870,6 +7824,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays the 'privacy policy' cookie banner]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/privacy-policy-settings.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/privacy-policy-settings.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>26fa9125-8272-11eb-aba6-0242ac11002b</uuidstructure>
+			<uuidresource>26fa9126-8272-11eb-aba6-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Mar 2021 14:00:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays the 'privacy policy' settings]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

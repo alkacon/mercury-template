@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.304</version>
+		<version>11.0.1.305</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -298,6 +298,35 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/configuration/shared-settings.xml</source>
+			<destination>system/modules/alkacon.mercury.template/configuration/shared-settings.xml</destination>
+			<type>settings_config</type>
+			<uuidstructure>77009936-87a5-42b3-86ff-90252ede0593</uuidstructure>
+			<uuidresource>22deed6a-651f-4763-a361-9391cd8729b5</uuidresource>
+			<datecreated>Sun, 23 Dec 2018 15:38:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury shared formatter settings]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>system/modules/alkacon.mercury.template/elements</destination>
 			<type>folder</type>
 			<uuidstructure>e07095f3-2a35-4482-9910-0a0603f390a0</uuidstructure>
@@ -513,35 +542,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury formatters]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/_shared-settings.xml</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/_shared-settings.xml</destination>
-			<type>settings_config</type>
-			<uuidstructure>77009936-87a5-42b3-86ff-90252ede0593</uuidstructure>
-			<uuidresource>22deed6a-651f-4763-a361-9391cd8729b5</uuidresource>
-			<datecreated>Sun, 23 Dec 2018 15:38:19 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Mercury shared formatter settings]]></value>
-				</property>
-				<property>
-					<name>locale</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
 				</property>
 			</properties>
 			<relations/>

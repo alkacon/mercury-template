@@ -22,7 +22,7 @@
     <Preview>true</Preview>
     <IncludeSettings>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/_shared-settings.xml]]></target>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
         <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
       </link>
     </IncludeSettings>

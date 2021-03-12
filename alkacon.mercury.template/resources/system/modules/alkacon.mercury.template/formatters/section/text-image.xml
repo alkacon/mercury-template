@@ -37,6 +37,9 @@
       <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>

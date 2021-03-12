@@ -1009,17 +1009,50 @@
     <Setting>
       <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
       <PropertyName><![CDATA[visualOption]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.visualOption)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.visualOption.piece.help)]]></Description>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption.desktop)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.visualOption.desktop.help)]]></Description>
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[99]]></Default>
       <WidgetConfig><![CDATA[
             99:     %(key.msg.setting.visualOption.piece.default)|
+            1:      %(key.msg.setting.visualOption.1)|
+            2:      %(key.msg.setting.visualOption.2)|
             3:      %(key.msg.setting.visualOption.3)|
             4:      %(key.msg.setting.visualOption.4)|
             5:      %(key.msg.setting.visualOption.5)|
             6:      %(key.msg.setting.visualOption.6)|
+            7:      %(key.msg.setting.visualOption.7)|
+            8:      %(key.msg.setting.visualOption.8)|
+            9:      %(key.msg.setting.visualOption.9)|
+            10:     %(key.msg.setting.visualOption.10)|
+            11:     %(key.msg.setting.visualOption.11)|
+            12:     %(key.msg.setting.visualOption.12)|
+            0:      %(key.msg.setting.visualOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
+      <PropertyName><![CDATA[sizeMobile]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption.mobile)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.visualOption.mobile.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[99]]></Default>
+      <WidgetConfig><![CDATA[
+            99:     %(key.msg.setting.visualOption.piece.default)|
+            1:      %(key.msg.setting.visualOption.1)|
+            2:      %(key.msg.setting.visualOption.2)|
+            3:      %(key.msg.setting.visualOption.3)|
+            4:      %(key.msg.setting.visualOption.4)|
+            5:      %(key.msg.setting.visualOption.5)|
+            6:      %(key.msg.setting.visualOption.6)|
+            7:      %(key.msg.setting.visualOption.7)|
+            8:      %(key.msg.setting.visualOption.8)|
+            9:      %(key.msg.setting.visualOption.9)|
+            10:     %(key.msg.setting.visualOption.10)|
+            11:     %(key.msg.setting.visualOption.11)|
+            12:     %(key.msg.setting.visualOption.12)|
             0:      %(key.msg.setting.visualOption.none)
         ]]></WidgetConfig>
     </Setting>

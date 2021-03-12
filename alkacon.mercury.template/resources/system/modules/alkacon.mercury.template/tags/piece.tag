@@ -19,11 +19,17 @@
     // 9. Image right, Heading, Text and Link left (floating around image)
     " %>
 
-<%@ attribute name="sizeDesktop" type="java.lang.Integer" required="false"
-    description="Desktop grid size for the visual if displayed in a column. Valid values are 1 to 12. Default is 4." %>
-
 <%@ attribute name="sizeMobile" type="java.lang.Integer" required="false"
-    description="Mobile grid size for the visual. Valid values are 1 to 12. Default is 7." %>
+    description="Mobile grid size for the visual. Valid values are 1 to 12, 0 and 99.
+    The special value 0 means 'hide the visual'.
+    The special value 99 means 'use the default'
+    The default will depend on the desktop size, e.g. for destop 4 this would be mobile 8." %>
+
+<%@ attribute name="sizeDesktop" type="java.lang.Integer" required="false"
+    description="Desktop grid size for the visual if displayed in a column. Valid values are 1 to 12, 0 and 99.
+    The special value 0 means 'hide the visual'.
+    The special value 99 means 'use the default'.
+    The default normally is 4." %>
 
 <%@ attribute name="pieceTag" type="java.lang.String" required="false"
     description="The tag to generate. Defaults to 'div' if not provided." %>
@@ -116,20 +122,22 @@
 <c:choose>
     <c:when test="${fullWidth}">
         <c:set var="pieceIsFull"    value="${true}" />
-        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 12 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 12 : sizeDesktop)}" />
+        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 12 : (sizeDesktop > 12 ? 12 : (sizeDesktop < 0 ? 0 : sizeDesktop))}" />
     </c:when>
     <c:otherwise>
         <c:set var="pieceIsFlex"    value="${(pieceLayout == 2) or (pieceLayout == 3) or (pieceLayout == 6) or (pieceLayout == 7)}" />
         <c:set var="pieceIsFloat"   value="${(pieceLayout > 1) and not pieceIsFlex}" />
         <c:set var="pieceDirection" value="${pieceLayout > 1 ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
-        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 4 : ((sizeDesktop < 1) or (sizeDesktop > 12) ? 4 : sizeDesktop)}" />
+        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 4 : (sizeDesktop > 12 ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop))}" />
     </c:otherwise>
 </c:choose>
 
-<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99)) ? (sizeDesktop < 10 ? (sizeDesktop > 5 ? 12 : sizeDesktop * 2) : 12) : ((sizeMobile < 1) or (sizeMobile > 12) ? (sizeDesktop < 12 ? 7 : 12) : sizeMobile)}" />
+<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99)) ? (sizeDesktop < 10 ? (sizeDesktop > 5 ? 12 : sizeDesktop * 2) : 12) : (sizeMobile > 12 ? (sizeDesktop < 12 ? 7 : 12) : (sizeMobile < 0 ? 0 : sizeMobile))}" />
+
+<c:set var="useVisual"      value="${(sizeMobile != 0) or (sizeDesktop != 0)}" />
 
 <c:choose>
-    <c:when test="${sizeDesktop < 12}">
+    <c:when test="${((sizeDesktop > 0) and (sizeDesktop < 12)) or ((sizeDesktop == 0) and (sizeMobile > 0) and (sizeMobile < 12))}">
         <%-- Only use grid in case desktop image size is not 12 columns i.e. 100%. --%>
         <c:set var="pieceOption">${pieceIsFlex ? 'flex ' : ''}${pieceIsFloat ? 'float ' : ''}${pieceIsFull ? 'full ' : ''}${pieceDirection}</c:set>
     </c:when>
@@ -163,7 +171,7 @@
 </c:if>
 <c:set var="showLink"       value="${not empty pieceLink}" />
 
-<c:if test="${not empty visual}">
+<c:if test="${useVisual and not empty visual}">
     <%-- It is important to make this check AFTER the body because the grid size must be 12 if there is no body. --%>
     <cms:addparams>
         <cms:param name="cssgrid" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-md-'.concat(sizeDesktop) : '')}" />

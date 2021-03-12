@@ -147,7 +147,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
 
     @include media-breakpoint-down(sm) {
 
-        // uncomment this if images floating left in desktop should also float left on mobile
+        // uncomment this if images floating right in desktop should also float right on mobile
         // attention: if headline is displayed above the image, this does not look good
         // &.p-r {
         //    > .visual {
@@ -164,6 +164,13 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                 > .visual {
                     width: get-col-float-size($piece-col-size);
                 }
+            }
+        }
+
+        &.p-xs-0 {
+            // visual is hidden in xs, sm, but visible from md
+            > .visual {
+                display: none;
             }
         }
     }
@@ -270,6 +277,16 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                         margin-right: auto;
                     }
                 }
+            }
+        }
+
+        &.p-md-0 {
+            // visual is hidden from md, but visuble in xs, sm
+            > .visual {
+                display: none;
+            }
+            &.flex > .body {
+                @include make-piece-col(12);
             }
         }
     }

@@ -281,7 +281,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
 
         &.p-md-0 {
-            // visual is hidden from md, but visuble in xs, sm
+            // visual is hidden from md, but visible in xs, sm
             > .visual {
                 display: none;
             }

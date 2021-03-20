@@ -121,7 +121,7 @@ $sq-heights-xl:    () !default;
             @each $h, $sq-h in get-square-heights($size) {
                 @if ($h != 99) {
                     &-h-#{$h} {
-                        // allows adjustmets of square height
+                        // allows adjustments of square height
                         width: $sq-width;
                         padding-bottom: #{$sq-width * $sq-h} !important;
                     }
@@ -216,8 +216,8 @@ $sq-heights-xl:    () !default;
 @include media-breakpoint-down(sm) {
     @each $m in $sq-margins  {
         .square-col.square-sm-12.square-m-#{$m} .content {
-            height: calc(100% - $grid-gutter-width);
-            width:  calc(100% - $grid-gutter-width);
+            height: calc(100% - #{$grid-gutter-width});
+            width:  calc(100% - #{$grid-gutter-width});
             margin: #{$grid-gutter-width / 2};
         }
     }
@@ -256,7 +256,7 @@ $sq-heights-xl:    () !default;
             max-width: $fixsize;
             flex: 0 0 $fixsize;
         }
-        // if fixed size ($i) is 0 we use the default 100%, otherwise the gutter would be substracted
+        // if fixed size ($i) is 0 we use the default 100%, otherwise the gutter would be subtracted
         @if ($i > 0) {
             // the rest of the column
             .fixcol-#{$size}-#{$i}-rest {
@@ -462,8 +462,8 @@ $sq-margin: 20px;
 }
 
 
-// Table needed for aligment of content inside square
-// Table cell needed for aligment of content inside square
+// Table needed for alignment of content inside square
+// Table cell needed for alignment of content inside square
 
 .square-col {
     .table {
@@ -493,7 +493,7 @@ $sq-margin: 20px;
         top: 0;
         left: 0;
         z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
-        overflow: auto; // shows scrollbars on demad
+        overflow: auto; // shows scrollbars on demand
         background: $tile-overlay-bg-color;
 
         .piece {
@@ -534,7 +534,7 @@ $sq-margin: 20px;
         }
     }
     .copyright {
-        // selector must not be calleds 'image-copyright' here, otherwise there will be problems for image flipping tiles
+        // selector must not be named 'image-copyright' here, otherwise there will be problems for image flipping tiles
         @include image-copyright;
         color: $square-overlay-text-color;
         text-shadow: $square-overlay-text-shadow;
@@ -623,7 +623,7 @@ $sq-margin: 20px;
         &.min-height {
             &.square-small {
                 .text-overlay {
-                    // for smaller cols the preface will be hidden, so we don't neet so much spache here
+                    // for smaller cols the preface will be hidden, so we don't need so much space here
                     min-height: 40%; // 40% is equal to 2 lines of title text
                 }
             }

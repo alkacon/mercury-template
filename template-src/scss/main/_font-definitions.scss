@@ -21,7 +21,7 @@
 // If available, download fonts in the following weights:
 // 300 400 [normal] 500 600 700 [bold]
 //
-// Otions:
+// Options:
 // Charset latin + latin-ext
 // Font styles regular + italic
 // Copy CSS: "Modern Browsers"
@@ -126,7 +126,7 @@ $fonts-preloaded: (
 
 
 @function get-font-weight($name, $weight) {
-    // assuming $name has alredy been checked with get-font-family()
+    // assuming $name has already been checked with get-font-family()
     @if (default == $weight) {
         // special case, if weight is set to 'default' then do NOT set the individual font-weight later
         @return default;
@@ -151,14 +151,14 @@ $fonts-preloaded: (
 
 
 @function get-font-style($name, $weight, $style) {
-    // assuming $name and $weight have alredy been checked with get-font-family() and get-font-weight()
+    // assuming $name and $weight have already been checked with get-font-family() and get-font-weight()
     $font-name: quote(nth($name, 1));
     @if (map-has-key($fonts-preloaded, $font-name)) {
         $font-def: map-get($fonts-preloaded, $font-name);
         $font-weights: nth($font-def, 2);
         // assuming here that get-font-weight() was used on the $weight variable before
         $font-styles: map-get($font-weights, $weight);
-        // styles can be onle "normal" or "italic" or both, if we don't find what we want just use the value that is there
+        // styles can be only "normal" or "italic" or both, if we don't find what we want just use the value that is there
         $result: $style;
         @if (index($font-styles, unquote($style)) == null) {
             $result: nth($font-styles, 1);
@@ -193,6 +193,6 @@ $fonts-preloaded: (
         font-matches($nav-menu-font-family, $name) or
         font-matches($nav-mobile-font-family, $name) or
         font-matches($nav-meta-font-family, $name) or
-        font-matches($nav-breadcrump-font-family, $name)
+        font-matches($nav-breadcrumb-font-family, $name)
     );
 }

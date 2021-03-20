@@ -603,7 +603,7 @@
 
                 > div,
                 .co-lg-xl > div {
-                    > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor laoding
+                    > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor loading
                         margin-bottom: 0;
                     }
                 }
@@ -623,7 +623,7 @@
                 .h-ac {
                     order: 2;
                     @if ($fh-ac-bg-color == none) {
-                        // add top margin only if no bg color is set, colord bg and top margin looks crappy
+                        // add top margin only if no bg color is set, colored bg and top margin looks crappy
                         margin-top: $default-margin-verysmall;
                     }
                 }
@@ -656,9 +656,9 @@
                 }
             }
 
-            @if ($nav-breadcrump-bg-color != none) {
+            @if ($nav-breadcrumb-bg-color != none) {
                 .h-bc {
-                    background-color: $nav-breadcrump-bg-color;
+                    background-color: $nav-breadcrumb-bg-color;
                     .nav-breadcrumbs {
                         padding-top: $default-margin-small;
                         padding-bottom: $default-margin-small;
@@ -876,7 +876,7 @@
                             left: calc(#{$grid-gutter-width / 2} - #{$fixed-logo-padding});
                             width: calc(100% - #{$grid-gutter-width} + #{2 * $fixed-logo-padding});
                             height: calc(100% - #{$nav-header-total-height});
-                            box-shadow: 0px 8px 10px -4px $dropshadow;
+                            box-shadow: 0 8px 10px -4px $dropshadow;
                             background-color: $fh-header-bg-color;
                         }
                         &::after {
@@ -1114,7 +1114,7 @@
             }
 
             .h-title-col {
-                display: none; // will be revelad in screen size lg below
+                display: none; // will be revealed in screen size lg below
                 align-items: center;
                 flex-grow: 10000;
                 order: 2;
@@ -1241,7 +1241,7 @@
             > div,
             .h-ac-element > div,
             .co-lg-xl > div {
-                > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor laoding
+                > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor loading
                     margin-bottom: 0;
                 }
             }
@@ -1267,7 +1267,7 @@
             .h-ac {
                 order: 2;
                 @if (($fh-ac-bg-color == none) or ($fh-ac-bg-color == $fh-header-bg-color)) {
-                    // add top margin only if no bg color is set, colord bg and top margin looks crappy
+                    // add top margin only if no bg color is set, colored bg and top margin looks crappy
                     margin-top: $bh-header-padding;
                 }
             }
@@ -1569,9 +1569,9 @@
                 }
             }
 
-            @if ($nav-breadcrump-bg-color != none) {
+            @if ($nav-breadcrumb-bg-color != none) {
                 .h-bc {
-                    background-color: $nav-breadcrump-bg-color;
+                    background-color: $nav-breadcrumb-bg-color;
                     .nav-breadcrumbs {
                         padding-top: $default-margin-small;
                         padding-bottom: $default-margin-small;
@@ -1665,8 +1665,8 @@
         $logo-left-arrow-right: 5px !default; // offset for arrow on main nav items in LG, XL
         $logo-left-menu-left: 20px - $nav-menu-hor-padding !default; // position offset for 2nd level menus in LG, XL
         $header-image-ribbon-bg: $fh-ac-bg-color !default; // background color for image ribbon in header
-        $header-logo-xs-width: 270px !default; // max width for logo on XS screens (substract 2 * $gutter)
-        $header-logo-fixed-width: 250px !default; // max width for logo if fixed header (substract 2 * $gutter)
+        $header-logo-xs-width: 270px !default; // max width for logo on XS screens (subtract 2 * $gutter)
+        $header-logo-fixed-width: 250px !default; // max width for logo if fixed header (subtract 2 * $gutter)
 
         &.logo-left {
             .header-links,

@@ -24,42 +24,42 @@
 .nav-breadcrumbs {
     list-style-type: none;
     margin: 0;
-    padding: $nav-breadcrump-padding;
+    padding: $nav-breadcrumb-padding;
 
     > li {
         display: inline;
         list-style: outside none none;
         position: relative;
-        font-size: $nav-breadcrump-font-size;
-        color: $nav-breadcrump-text-color;
+        font-size: $nav-breadcrumb-font-size;
+        color: $nav-breadcrumb-text-color;
 
-        @if ($nav-breadcrump-font-family != $font-family-base) {
-            font-family: $nav-breadcrump-font-family;
+        @if ($nav-breadcrumb-font-family != $font-family-base) {
+            font-family: $nav-breadcrumb-font-family;
         }
 
         &:not(:last-child) {
             &::after {
                 content: "";
                 display: inline-block;
-                margin-right: $nav-breadcrump-space-left;
+                margin-right: $nav-breadcrumb-space-left;
             }
         }
 
         + li {
             &::before {
-                content: $nav-breadcrump-separator;
+                content: $nav-breadcrumb-separator;
                 display: inline-block;
-                font-family: $nav-breadcrump-separator-font;
-                margin-right: $nav-breadcrump-space-right;
-                color: $nav-breadcrump-separator-color;
+                font-family: $nav-breadcrumb-separator-font;
+                margin-right: $nav-breadcrumb-space-right;
+                color: $nav-breadcrumb-separator-color;
             }
         }
 
         a {
-            color: $nav-breadcrump-text-color;
+            color: $nav-breadcrumb-text-color;
 
             &:hover {
-                color: $nav-breadcrump-text-hover-color;
+                color: $nav-breadcrumb-text-hover-color;
             }
         }
     }
@@ -93,7 +93,7 @@
     }
 
     @include media-breakpoint-down(xs) {
-        // remove bootstap gutter on small screens
+        // remove bootstrap gutter on small screens
         // we expect to be in "full width" mode here
         margin-left: -0.5 * $grid-gutter-width;
         margin-right: -0.5 * $grid-gutter-width;

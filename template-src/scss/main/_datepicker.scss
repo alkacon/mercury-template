@@ -250,7 +250,7 @@ $invertedBg: invert($calendarBackground);
     text-decoration: none;
     cursor: pointer;
     position: absolute;
-    top: 0px;
+    top: 0;
     line-height: 16px;
     height: $monthNavHeight;
     padding: 10px;
@@ -388,7 +388,6 @@ $invertedBg: invert($calendarBackground);
 
 .flatpickr-current-month {
   font-size: 135%;
-  line-height: inherit;
   font-weight: 300;
   color: inherit;
   position: absolute;
@@ -701,7 +700,6 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-innerContainer {
-  display: block;
   display: flex;
   box-sizing: border-box;
   overflow: hidden;
@@ -721,7 +719,6 @@ span.flatpickr-weekday {
 .flatpickr-time {
   text-align: center;
   outline: 0;
-  display: block;
   height: 0; // hide initially
   line-height: $timeHeight;
   max-height: $timeHeight;

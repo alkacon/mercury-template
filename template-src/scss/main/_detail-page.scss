@@ -141,7 +141,7 @@
     .detail-visual {
         + .detail-content,
         + .attachment-container {
-            // .detail-visual has no bottom margin, add top margin to first detail-content or attachement container
+            // .detail-visual has no bottom margin, add top margin to first detail-content or attachment container
             margin-top: $detail-piece-margin-bottom;
         }
     }

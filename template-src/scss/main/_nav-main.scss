@@ -19,7 +19,7 @@
  * Source file: _nav-main.scss
  */
 
-// Special Navigaiton only variables - main settings are in _variables.scss.
+// Special Navigation only variables - main settings are in _variables.scss.
 
 
 // ######################### Mobile navigation #########################
@@ -67,7 +67,7 @@
         }
 
         > li {
-            // top level menu entry have differnet text formatting
+            // top level menu entry have different text formatting
             > a {
                 color: $nav-mobile-header-color;
                 text-transform: $nav-mobile-header-text-transform;
@@ -490,7 +490,7 @@
 
         html.active-nav {
             overflow-x: hidden;
-            overflow: hidden;
+            overflow-y: hidden;
 
             @if ($nav-mobile-side-content-move) {
                 #mercury-page {
@@ -538,7 +538,7 @@
     .nav-mega-menu {
         // mega menu adjustments
         .nav-side {
-            // sidebar sets negavitve margins for small screens by default, but in mega menu we need 0 margin
+            // sidebar sets negative margins for small screens by default, but in mega menu we need 0 margin
             margin: 0;
             li {
                 // border is already added by menu rules above
@@ -960,7 +960,7 @@
 
     html.keyboard-nav .nav-main-items {
         // Keyboard navigation
-        // Special focus highlighting - requires JS to set class at htmt top lelement
+        // Special focus highlighting - requires JS to set class at html top element
         > li[aria-expanded] > a {
             &:focus::after {
                 // special formatting for text navigation

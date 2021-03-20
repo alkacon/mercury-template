@@ -274,7 +274,7 @@
             @include round-corners($audio-player-border-radius);
 
             .progress-bar {
-                // overwrite bootstrap standarts
+                // overwrite bootstrap standards
                 height: $audio-player-progress-height;
                 background-color: $audio-player-progress-bg;
                 transition: none;

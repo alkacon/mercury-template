@@ -265,7 +265,7 @@
                     padding: $teaser-btn-compact-padding;
                 }
             }
-            &.minimal-display .teaser
+            &.minimal-display .teaser,
             .teaser-compact {
                 .teaser-btn {
                     padding: $teaser-btn-compact-light-padding;
@@ -1005,7 +1005,7 @@
         margin-left: $default-margin-small;
 
         &.btn.placeholder {
-            // make button already occypy space without displaying anything
+            // make button already occupy space without displaying anything
             background-color: transparent;
             &::before,
             &::after {

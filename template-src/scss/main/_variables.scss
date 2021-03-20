@@ -94,7 +94,7 @@ $nav-header-font-family:            $nav-font-family !default; // text font for 
 $nav-menu-font-family:              $nav-font-family !default; // text font for header nav items
 $nav-mobile-font-family:            $nav-font-family !default; // text font for mobile navigation
 $nav-meta-font-family:              $nav-font-family !default; // text font for meta nav links
-$nav-breadcrump-font-family:        $nav-font-family !default; // text font for breadcrumbs
+$nav-breadcrumb-font-family:        $nav-font-family !default; // text font for breadcrumbs
 $nav-side-font-family:              $nav-font-family !default; // text font for breadcrumbs
 
 $nav-font-family:                   get-font-family($nav-font-family);
@@ -102,7 +102,7 @@ $nav-header-font-family:            get-font-family($nav-header-font-family);
 $nav-menu-font-family:              get-font-family($nav-menu-font-family);
 $nav-mobile-font-family:            get-font-family($nav-mobile-font-family);
 $nav-meta-font-family:              get-font-family($nav-meta-font-family);
-$nav-breadcrump-font-family:        get-font-family($nav-breadcrump-font-family);
+$nav-breadcrumb-font-family:        get-font-family($nav-breadcrumb-font-family);
 $nav-side-font-family:              get-font-family($nav-side-font-family);
 
 $nav-header-font-weight:            $font-weight-normal !default; // font weight of header nav items
@@ -209,7 +209,7 @@ $linked-headings-decoration:        none !default;
 
 $default-transition-time:           0.33s !default; // default timing for animation effects
 
-// Rounded cordners
+// Rounded corners
 
 $default-border-radius:             0 !default;
 $copyright-border-radius:           floor($default-border-radius / 2) !default;
@@ -336,10 +336,10 @@ $nav-bg-hover-mobile:               $nav-bg-hover !default; // hover background 
 $nav-text-hover-mobile:             $nav-text-hover !default; // hover text color for mobile navigation
 $nav-text-active-mobile:            $nav-text-active !default; // the current page in navigation text color in mobile
 $nav-font-size:                     14px !default; // font size of dropdown entries and side navigation
-$nav-line-height:                   20px !default; // line hight of dropdown entries and side navigation
+$nav-line-height:                   20px !default; // line height of dropdown entries and side navigation
 $nav-animation-time:                $default-transition-time !default; // timing for most animation effects used in the navigation
 $nav-border-radius:                 $default-border-radius !default; // border radius of nav toggle and topcontrol buttons
-$nav-hor-padding:                   14px !default; // horizontal paddding of the nav menu entries in LG, XL screen size
+$nav-hor-padding:                   14px !default; // horizontal padding of the nav menu entries in LG, XL screen size
 $nav-head-bg:                       $body-bg !default; // color of the header background container
 $nav-head-fixed-shadow:             0px 0px 10px 1px $dropshadow !default; // shadow if header is fixed
 $nav-head-padding:                  10px 0px 10px 0px !default; // paddings for header
@@ -374,8 +374,8 @@ $nav-menu-border:                   solid $nav-menu-border-size $nav-theme !defa
 $nav-menu-border-top:               $nav-menu-border !default; // the border on top of the "folded out" menus in  LG, XL
 $nav-menu-border-bottom:            $nav-menu-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
 $nav-menu-entry-border-bottom:      1px solid $nav-border !default; // the border at the bottom of the "folded out" menus in  LG, XL
-$nav-menu-ver-padding:              8px !default; // vertical paddding of the nav menu entries in LG, XL screens size
-$nav-menu-hor-padding:              20px !default; // horizontal paddding of the nav menu entries in LG, XL screens size
+$nav-menu-ver-padding:              8px !default; // vertical padding of the nav menu entries in LG, XL screens size
+$nav-menu-hor-padding:              20px !default; // horizontal padding of the nav menu entries in LG, XL screens size
 $nav-menu-padding:                  $nav-menu-ver-padding $nav-menu-hor-padding !default; // padding for items in the "folded out" menus
 $nav-menu-min-width:                250px !default; // minimal width of the nav menus in  LG, XL
 $nav-menu-text-mobile:              $nav-text !default; // text color for mobile menus
@@ -387,7 +387,7 @@ $nav-menu-bg-mobile:                $nav-bg !default; // background color for mo
 $nav-breakpoint-mobile:             md !default; // breakpoint until which the mobile navigation is displayed
 $nav-breakpoint-desktop:            lg !default; // breakpoint from which the desktop navigation is displayed
 $nav-breakpoint-sticky-header:      md !default; // breakpoint from which to use the sticky header
-$nav-breakpoint-sticky-header-size: 100000 !default; // size from which to use the sticky header ONLY in case there is no destop/mobile difference
+$nav-breakpoint-sticky-header-size: 100000 !default; // size from which to use the sticky header ONLY in case there is no desktop/mobile difference
 
 
 // Mobile navigation menu
@@ -412,7 +412,7 @@ $nav-mobile-box-border-radius:      $nav-border-radius !default; // border radiu
 $nav-mobile-box-offset:             $grid-gutter-width !default; // position of the mobile submenu "box" relative to surrounding menu
 $nav-mobile-box-offset-xs:          $nav-mobile-box-offset !default; // position of the mobile submenu "box" relative to surrounding menu in XS screens
 $nav-mobile-indent:                 10px !default; // left indentation step for deeper levels
-$nav-mobile-indent-offset:          $grid-gutter-width / 2 !default; // left / right padding and indentation offsest
+$nav-mobile-indent-offset:          $grid-gutter-width / 2 !default; // left / right padding and indentation offset
 $nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
 $nav-mobile-toggle-side:            $grid-gutter-width !default; // left / right position for mobile toggle
 $nav-mobile-toggle-side-xs:         $nav-mobile-toggle-side !default; // left / right position for mobile toggle in XS screens
@@ -484,19 +484,19 @@ $nav-toggle-stroke-height:          round(0.06 * $nav-toggle-size) !default; // 
 $nav-toggle-border-width:           0 !default;
 $nav-toggle-size-with-border:       $nav-toggle-size + 2*$nav-toggle-border-width;
 
-// Breadcrumps
+// Breadcrumbs
 
-$nav-breadcrump-space:              $default-margin-verysmall !default; // spacing base between breadcumbs
-$nav-breadcrump-space-left:         0.8 * $nav-breadcrump-space !default; // spacing after breadcumb before separator
-$nav-breadcrump-space-right:        1.5 * $nav-breadcrump-space !default; // spacing after separator before breadcrumb
-$nav-breadcrump-bg-color:           none !default; // background color for breadcrumbs
-$nav-breadcrump-padding:            $default-margin-verysmall 0 0 0 !default; // padding around breadcrumbs
-$nav-breadcrump-text-color:         check-text-color($nav-breadcrump-bg-color, $nav-header-text) !default; // text color of breadcrumps
-$nav-breadcrump-text-hover-color:   check-text-color($nav-breadcrump-bg-color, $nav-header-text-hover) !default; // hover color of breadcrump links
-$nav-breadcrump-font-size:          $font-size-sm !default; // font size for the breadcrumps
-$nav-breadcrump-separator:          "\f0da" !default; // separator char between breadcrumbs
-$nav-breadcrump-separator-color:    conditional-value($nav-breadcrump-bg-color == none, $grey, $nav-breadcrump-text-color) !default; // color of breadcrumps sepearator
-$nav-breadcrump-separator-font:     FontAwesome !default; // font-family for breadcrumbs sepearator
+$nav-breadcrumb-space:              $default-margin-verysmall !default; // spacing base between breadcrumbs
+$nav-breadcrumb-space-left:         0.8 * $nav-breadcrumb-space !default; // spacing after breadcrumb before separator
+$nav-breadcrumb-space-right:        1.5 * $nav-breadcrumb-space !default; // spacing after separator before breadcrumb
+$nav-breadcrumb-bg-color:           none !default; // background color for breadcrumbs
+$nav-breadcrumb-padding:            $default-margin-verysmall 0 0 0 !default; // padding around breadcrumbs
+$nav-breadcrumb-text-color:         check-text-color($nav-breadcrumb-bg-color, $nav-header-text) !default; // text color of breadcrumbs
+$nav-breadcrumb-text-hover-color:   check-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
+$nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs
+$nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
+$nav-breadcrumb-separator-color:    conditional-value($nav-breadcrumb-bg-color == none, $grey, $nav-breadcrumb-text-color) !default; // color of breadcrumbs separator
+$nav-breadcrumb-separator-font:     FontAwesome !default; // font-family for breadcrumbs separator
 
 
 // Side navigation - mirrors the main navigation by default, and allows to use different colors if required.
@@ -826,7 +826,7 @@ $tooltip-border-radius:             $default-border-radius !default;
 $ls-margin-left:                    2.5rem !default;
 
 
-// Anmiations
+// Animations
 //
 // Variables for more variation in animation curves.
 // Values taken from: http://easings.net/
@@ -876,11 +876,11 @@ $disabled-bg:                       repeating-linear-gradient(135deg,transparent
 // Disabled cursor, used e.g. for disabled buttons in list pagination
 $cursor-disabled:                   not-allowed !default;
 
-// Controls if links makred with the CSS "external" get a special icon.
+// Controls if links marked with the CSS "external" get a special icon.
 // Note that this also uses JavaScript for links in HTML WYSIWYG parts.
 $link-external-icon:                true !default;
 
-// The height of the OpenCms toolbar visibile in edit mode
+// The height of the OpenCms toolbar visible in edit mode
 $opencms-toolbar-height:            52px !default;
 
 // Link colors

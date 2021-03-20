@@ -33,7 +33,7 @@
     @include round-corners($default-border-radius);
 
     &.oc-drag-element {
-        // in edit mode allow overflow, otherwise edit points may not be visble (e.g. for lists)
+        // in edit mode allow overflow, otherwise edit points may not be visible (e.g. for lists)
         overflow: visible;
     }
 

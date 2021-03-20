@@ -110,7 +110,7 @@
             '"name": "' + $color-name + '",' +
             '"value": "' + $color-val + '"' +
         '}, ';
-    };
+    }
     @return $json + '{}';
 }
 

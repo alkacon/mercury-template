@@ -39,8 +39,8 @@
 
 .social-icons {
     list-style: none;
-    font-size: 0px;
-    padding: 0px;
+    font-size: 0;
+    padding: 0;
 
     ul {
         margin: 0;
@@ -50,7 +50,7 @@
     }
 
     &.element {
-        // social icons use display flex, so margin of items must be substracted from element default margin
+        // social icons use display flex, so margin of items must be subtracted from element default margin
         margin-bottom: $default-margin - $social-links-margin;
     }
 
@@ -161,7 +161,7 @@
 }
 
 
-// Responsive adjustmensts:
+// Responsive adjustments:
 //
 // Use 'stacked-sm', 'stacked-md', 'stacked-lg' or 'stacked-xl' to start stacking from selected screen with.
 // Use 'verbose-sm', 'verbose-md', 'verbose-lg' or 'verbose-xl' to show button 'share' text from selected screen with.
@@ -272,12 +272,12 @@
         font-size: $social-links-box-height - 4;
     }
 
-    // youtube red does not change enough if calcualted automatically
+    // youtube red does not change enough if calculated automatically
     &.colored li.youtube a:hover {
         background-color: #c00;
     }
 
-    // wallsio black does not change if calcualted automatically
+    // wallsio black does not change if calculated automatically
     &.colored li.wallsio a:hover {
         background-color: #444;
     }

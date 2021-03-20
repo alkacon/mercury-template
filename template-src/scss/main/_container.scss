@@ -140,7 +140,7 @@ $oct-edit-infos:
 @keyframes octReveal {
     // animation to 'reveal' a warning box, used e.g. by sort options bar for lists
     // to be used in case an element is loaded dynamically with JavaScript,
-    // where the warning box should only be visuible if the loading takes to long or fails
+    // where the warning box should only be visible if the loading takes to long or fails
     from {
         max-height: 0;
         margin-top: 0;
@@ -248,7 +248,7 @@ $oct-edit-infos:
 
 .oct-anchor {
     .target {
-        position: relative; // Prevents background image from sretching over the whole width
+        position: relative; // Prevents background image from stretching over the whole width
         &::before {
             // Add bookmark icon
             display: inline-block;
@@ -263,7 +263,7 @@ $oct-edit-infos:
 
 #modelinfo-border {
     border: 4px solid $con-col-purple !important;
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 #modelinfo {

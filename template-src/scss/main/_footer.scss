@@ -21,6 +21,12 @@
 
 .area-foot {
 
+    @include media-breakpoint-down(sm) {
+        // Fix for Lighthouse "Tap targets are not sized appropriately"
+        // Increase line height in footer so that links are wider apart
+        line-height: $foot-line-height-mobile;
+    }
+
     .topfoot {
         display: flex;
         padding-top: $default-margin;

@@ -520,6 +520,8 @@ $nav-side-border-radius:            $default-border-radius !default;
 
 // The Footer - this is used for the layout groups "Mercury footer full" and "Mercury footer reduced"
 
+$foot-line-height-mobile:           max(1.8, $line-height-base) !default;
+
 $foot-top-bg-color:                 $black !default;
 $foot-top-text-color:               get-text-color($foot-top-bg-color) !default;
 $foot-top-header-color:             $foot-top-text-color !default;

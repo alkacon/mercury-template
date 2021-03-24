@@ -24,23 +24,14 @@ import org.opencms.file.CmsGroup;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.file.CmsUser;
-import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
-import org.opencms.security.CmsAccessControlEntry;
-import org.opencms.security.CmsOrgUnitManager;
-import org.opencms.security.CmsOrganizationalUnit;
-import org.opencms.security.CmsPermissionSet;
 import org.opencms.util.CmsStringUtil;
 import org.opencms.util.CmsUUID;
 import org.opencms.xml.I_CmsXmlDocument;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.logging.Log;
 
@@ -149,15 +140,23 @@ public class CmsFormUgcConfigurationReader {
             Optional<CmsUser> userForGuest = Optional.absent();
             String projectGroupStr = m_formConfigParser.getConfigurationValue(pathPrefix + N_PROJECT_GROUP, null);
             if (userForGuestStr != null) {
-                userForGuest = Optional.of(m_cms.readUser(userForGuestStr.trim()));
+                userForGuest = Optional.of(m_adminCms.readUser(userForGuestStr.trim()));
             }
 
             m_contentFolderRootPath = null == contentFolderRootPath
             ? getDefaultContentFolderRootPath()
             : contentFolderRootPath;
-            CmsGroup projectGroup = null == projectGroupStr
-            ? getDefaultProjectGroup()
-            : m_cms.readGroup(projectGroupStr.trim());
+
+            CmsGroup projectGroup = null;
+            if (null != projectGroupStr) {
+                try {
+                    projectGroup = m_adminCms.readGroup(projectGroupStr.trim());
+                } catch (Throwable t) {
+                    LOG.warn(
+                        "Failed to read project group \"" + projectGroupStr + "\" Using default project group.",
+                        t);
+                }
+            }
             String datasetTitle = m_formConfigParser.getConfigurationValue(pathPrefix + N_DATASET_TITLE, "");
             CmsUUID id = m_content.getFile().getStructureId();
 
@@ -174,13 +173,16 @@ public class CmsFormUgcConfigurationReader {
             CmsFormUgcConfiguration result = new CmsFormUgcConfiguration(
                 id,
                 userForGuest,
-                projectGroup,
+                null != projectGroup
+                ? projectGroup
+                : m_adminCms.readGroup(OpenCms.getDefaultUsers().getGroupAdministrators()),
                 m_contentFolderRootPath,
                 maxRegularDataSets,
                 numOtherDataSets,
                 maxWaitlistDataSets,
                 datasetTitle,
-                keepDays);
+                keepDays,
+                null != projectGroup);
             result.setPath(m_content.getFile().getRootPath());
             return result;
         } else {
@@ -207,43 +209,6 @@ public class CmsFormUgcConfigurationReader {
     }
 
     /**
-     * Determine the best fitting OU that contains the resource with the given path.
-     *
-     * "Best fitting" means the OU that contains the resource with the path,
-     * but is not the parent OU of any other OU containing the path.
-     *
-     * @param parentRootPath the root path of the resource that must be contained in the OU.
-     *
-     * @return the best fitting OU for the provided path.
-     * @throws CmsException thrown if reading the OUs fails
-     */
-    private CmsOrganizationalUnit getBestFittingOU(String parentRootPath) throws CmsException {
-
-        CmsOrgUnitManager ouManager = OpenCms.getOrgUnitManager();
-        Set<CmsOrganizationalUnit> ous = new HashSet<>();
-        ous.add(ouManager.readOrganizationalUnit(m_adminCms, ""));
-        ous.addAll(ouManager.getOrganizationalUnits(m_adminCms, "", true));
-        Map<String, CmsOrganizationalUnit> fittingOUs = new HashMap<>();
-        Set<String> parents = new HashSet<>();
-        for (CmsOrganizationalUnit ou : ous) {
-            List<CmsResource> ouRess = ouManager.getResourcesForOrganizationalUnit(m_adminCms, ou.getName());
-            for (CmsResource ouRes : ouRess) {
-                if (parentRootPath.startsWith(ouRes.getRootPath())) {
-                    fittingOUs.put(ou.getName(), ou);
-                    parents.add(ou.getParentFqn());
-                    break;
-                }
-            }
-        }
-        for (String ouFqn : fittingOUs.keySet()) {
-            if (!parents.contains(ouFqn)) {
-                return fittingOUs.get(ouFqn);
-            }
-        }
-        return null;
-    }
-
-    /**
      * Returns the root path of the folder where the submission data is stored.
      * @return the root path of the folder where the submission data is stored.
      */
@@ -252,66 +217,6 @@ public class CmsFormUgcConfigurationReader {
         return CmsStringUtil.joinPaths(
             CmsResource.getFolderPath(m_file.getRootPath()),
             DATA_FOLDER_PREFIX + m_file.getName());
-    }
-
-    /**
-     * Returns the default project group to use for UGC and storing contents.
-     * Use that method if no explicit group is given.
-     *
-     * The group is determined by first looking at the permissions on the folder where the
-     * data sets are stored, if existing, and tries to determine the group from the set permissions.
-     *
-     * If the folder does not exist, the users group of the best fitting OU for the content folder is chosen.
-     *
-     * @return the default project group.
-     */
-    private CmsGroup getDefaultProjectGroup() {
-
-        int requiredPermissions = CmsPermissionSet.PERMISSION_READ
-            | CmsPermissionSet.PERMISSION_WRITE
-            | CmsPermissionSet.PERMISSION_DIRECT_PUBLISH;
-        if (m_adminCms.existsResource(m_contentFolderRootPath)) {
-            try {
-                List<CmsAccessControlEntry> accs = m_adminCms.getAccessControlEntries(m_contentFolderRootPath, false);
-
-                for (CmsAccessControlEntry acc : accs) {
-                    int allowedPermissions = acc.getAllowedPermissions();
-                    if ((allowedPermissions & requiredPermissions) == requiredPermissions) {
-                        try {
-                            CmsGroup group = m_adminCms.readGroup(acc.getPrincipal());
-                            return group;
-                        } catch (CmsException e) {
-                            // do nothing, probably the principal was a user, not a group.
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                LOG.error(
-                    "Cannot determine default project group for the weform. Failed to read permission sets for folder: \""
-                        + m_contentFolderRootPath
-                        + "\". Make sure +r+w+d permissions are set for a group at the folder.");
-            }
-        } else {
-            try {
-                CmsOrganizationalUnit ou = getBestFittingOU(m_contentFolderRootPath);
-                if (ou != null) {
-                    return m_adminCms.readGroup(ou.getName() + OpenCms.getDefaultUsers().getGroupUsers());
-                } else {
-                    LOG.error(
-                        "Could not deterime best fitting organizational unit for the webform that should store content in \""
-                            + m_contentFolderRootPath
-                            + "\".");
-                }
-
-            } catch (CmsException e) {
-                LOG.error(
-                    "Could not deterime best project group for the webform that should store content in \""
-                        + m_contentFolderRootPath
-                        + "\".",
-                    e);
-            }
-        }
-        return null;
     }
 
     /**

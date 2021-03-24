@@ -70,6 +70,9 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     /** The resource of the content parent folder. */
     private CmsResource m_contentParentFolder;
 
+    /** Flag, indicating if permissions for the folder should be set. */
+    private boolean m_setFolderPermissions;
+
     /**
      * Creates a new form configuration.
      *
@@ -82,6 +85,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
      * @param maxWaitlistDataSets the maximal number of additional data sets accepted on a waitlist.
      * @param datasetTitle the title for XML contents that store form data (possibly with macros for values of form fields).
      * @param keepDays the number of days to keep the form data after the event (if null, keep indefinitely)
+     * @param setFolderPermissions if <code>true</code> it is ensured that permissions for the data folder will be set iff it is created.
      */
     public CmsFormUgcConfiguration(
         CmsUUID id,
@@ -92,7 +96,8 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         Optional<Integer> numOtherDataSets,
         Optional<Integer> maxWaitlistDataSets,
         String datasetTitle,
-        Integer keepDays) {
+        Integer keepDays,
+        boolean setFolderPermissions) {
 
         super(
             id,
@@ -116,6 +121,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         m_datasetTitle = null == datasetTitle ? "" : datasetTitle;
         m_keepDays = keepDays;
         m_contentFolderRootPath = contentFolderRootPath;
+        m_setFolderPermissions = setFolderPermissions;
         initContentFolderIfPresent();
     }
 
@@ -223,16 +229,18 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
             CmsVfsUtil.createFolder(adminCms, m_contentFolderRootPath);
             contentFolder = adminCms.readResource(m_contentFolderRootPath, CmsResourceFilter.ALL);
             try (LockedFile lockedRes = LockedFile.lockResource(adminCms, contentFolder)) {
-                adminCms.chacc(
-                    contentFolder.getRootPath(),
-                    null,
-                    CmsAccessControlEntry.PRINCIPAL_OVERWRITE_ALL_NAME,
-                    "");
-                adminCms.chacc(
-                    contentFolder.getRootPath(),
-                    I_CmsPrincipal.PRINCIPAL_GROUP,
-                    getProjectGroup().getName(),
-                    "+r+w+v+c+d+i+o");
+                if (m_setFolderPermissions) {
+                    adminCms.chacc(
+                        contentFolder.getRootPath(),
+                        null,
+                        CmsAccessControlEntry.PRINCIPAL_OVERWRITE_ALL_NAME,
+                        "");
+                    adminCms.chacc(
+                        contentFolder.getRootPath(),
+                        I_CmsPrincipal.PRINCIPAL_GROUP,
+                        getProjectGroup().getName(),
+                        "+r+w+v+c+d+i+o");
+                }
                 adminCms.writePropertyObjects(
                     contentFolder,
                     Collections.singletonList(

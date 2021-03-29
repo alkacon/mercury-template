@@ -267,10 +267,6 @@
     &.colored li.instagram a:hover {
         background: radial-gradient(circle at 30% 107%, #fdf497 0%, saturate(lighten(#fdf497, 1%), 20%) 5%, saturate(lighten(#fd5949, 5%), 20%) 45%, saturate(lighten(#d6249f, 7%), 20%) 60%,#285AEB 90%);
     }
-    li.instagram a {
-        // instagram font icon looks to small otherwise
-        font-size: $social-links-box-height - 4;
-    }
 
     // youtube red does not change enough if calculated automatically
     &.colored li.youtube a:hover {

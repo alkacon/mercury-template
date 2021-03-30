@@ -210,7 +210,7 @@ label.MediaChoice.Video=External video
 label.MediaChoice.YouTube=YouTube video
 label.MediaFlexible.Code=Embed code
 label.MediaFlexible.Icon=Icon
-label.MediaFlexible.Icon.help=<p>The icon to display.</p> \n<p>In addition to the predefined options, any icon name of the popular Font Awesome icon set can be entered, e.g. 'dot-circle-o'.</p> \n<p>For the full list of possible icons, see the <a href\="https\://fontawesome.com/v4.7.0/icons/" target\="_blank">Font Awesome website</a>. The template uses version 4.7 of the icons.</p>
+label.MediaFlexible.Icon.help=<p>The icon to display.</p> \n<p>In addition to the predefined options, any icon name of the 'Fork Awesome' icon set can be entered, e.g. 'dot-circle-o'.</p> \n<p>For the full list of possible icons, see the <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. The template uses version 1.1.7 of the icons.</p>
 label.MediaSoundCloud.SoundCloudTrackId=Track ID
 label.MediaVideo.Data=Video data
 label.MediaYoutube.YouTubeId=ID
@@ -269,7 +269,7 @@ label.oa.Heading=Notice
 label.oa.Heading.help=<p>Will be displayed on top of the preview.</p>
 label.oa.help=<p>If this option is activated, a preview is shown instead of the real content first.</p><p>The HTML code of the element is not directly loaded.</p><p>The user must click on the preview to load the real element code.</p><p>This can improve data protection for the user.</p>
 label.oa.Icon=Icon overlay
-label.oa.Icon.help=<p>The selected icon is displayed as overlay above the preview.</p> \n<p>In addition to the predefined options, any icon name of the popular Font Awesome icon set can be entered, e.g. 'dot-circle-o'.</p> \n<p>For the full list of possible icons, see the <a href\="https\://fontawesome.com/v4.7.0/icons/" target\="_blank">Font Awesome website</a>. The template uses version 4.7 of the icons.</p>
+label.oa.Icon.help=<p>The selected icon is displayed as overlay above the preview.</p> \n<p>In addition to the predefined options, any icon name of the 'Fork Awesome' icon set can be entered, e.g. 'dot-circle-o'.</p> \n<p>For the full list of possible icons, see the <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. The template uses version 1.1.7 of the icons.</p>
 label.oa.Image=Preview image
 label.oa.Image.help=<p>Image displayed as preview for the real content.</p>
 label.oa.Notice=Additional notice
@@ -1021,7 +1021,7 @@ msg.setting.hsize.list.help=<p>Controls if and how the headline of the list itse
 msg.setting.hsize.list.teaser=Teaser headline
 msg.setting.hsize.list.teaser.help=<p>Controls the importance level of the teaser headline in the list elements.</p><p>This is relevant for search engines (SEO) and will not change the visual "size" of the teaser headline.</p>
 msg.setting.iconClass=Icon
-msg.setting.iconClass.help=<p>The icon to display.</p> \n<p>In addition to the predefined options, any icon name of the popular Font Awesome icon set can be entered, e.g. 'dot-circle-o'.</p> \n<p>For the full list of possible icons, see the <a href\="https\://fontawesome.com/v4.7.0/icons/" target\="_blank">Font Awesome website</a>. The template uses version 4.7 of the icons.</p>
+msg.setting.iconClass.help=<p>The icon to display.</p> \n<p>In addition to the predefined options, any icon name of the 'Fork Awesome' icon set can be entered, e.g. 'dot-circle-o'.</p> \n<p>For the full list of possible icons, see the <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. The template uses version 1.1.7 of the icons.</p>
 msg.setting.imageFlip.doNotFlip=Don't filp
 msg.setting.imageFlip.doNotFlip.help=<p>If checked the sides will not flip.</p>\n<p>The backside of the element is never shown in this case.</p>
 msg.setting.imageFlip.flipColor=Text background color

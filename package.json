@@ -60,7 +60,7 @@
     "dist": "npm-run-all css js",
     "css": "npm run --silent cssg:all --xsrcdir=template-src/scss/themes --xbuilddir=build/npm --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
     "cssg:all": "npm-run-all cssg:clean cssg:sass cssg:plugins cssg:postcss cssg:minify cssg:deploy",
-    "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $npm_config_xbuilddir/1_processed/base.css template-src/font-awesome/css/font-awesome.css",
+    "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $npm_config_xbuilddir/1_processed/base.css template-src/fork-awesome/css/fork-awesome.css",
     "cssg:clean": "del-cli $npm_config_xbuilddir/1_processed/* $npm_config_xbuilddir/2_postcssed/* $npm_config_xbuilddir/3_minified/*",
     "cssg:sass": "sass --source-map --embed-sources --stop-on-error $npm_config_xsrcdir:$npm_config_xbuilddir/1_processed",
     "cssg:postcss": "postcss --config ./npm_scripts/postcss.config.js $npm_config_xbuilddir/1_processed/*.css --dir $npm_config_xbuilddir//2_postcssed",

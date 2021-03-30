@@ -210,7 +210,7 @@ label.MediaChoice.Video=Externes Video
 label.MediaChoice.YouTube=YouTube Video
 label.MediaFlexible.Code=Einbettungscode
 label.MediaFlexible.Icon=Icon
-label.MediaFlexible.Icon.help=<p>Das anzuzeigende Icon.</p> \n<p>Es kann alternativ zur Auswahlliste jeder Name eins Icons des bekannten Font Awesome direkt eingegeben werden, z.B. 'dot-circle-o'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://fontawesome.com/v4.7.0/icons/" target\="_blank">Font Awesome website</a>. Das Template verwendet Version 4.7 der Icons.</p>
+label.MediaFlexible.Icon.help=<p>Das anzuzeigende Icon.</p> \n<p>Es kann alternativ zur Auswahlliste jeder Name eines Icons aus dem Font 'Fork Awesome' direkt eingegeben werden, z.B. 'dot-circle-o'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. Das Template verwendet Version 1.1.7 der Icons.</p>
 label.MediaSoundCloud.SoundCloudTrackId=Track ID
 label.MediaVideo.Data=Video-Daten
 label.MediaYoutube.YouTubeId=ID
@@ -269,7 +269,7 @@ label.oa.Heading=Hinweistext
 label.oa.Heading.help=<p>Wird dem Benutzer als Hinweis in der Vorschau oben angezeigt.</p>
 label.oa.help=<p>Ist diese Option aktiviert, so wird zunächst eine Vorschau anstatt des eigentlichen Inhalts angezeigt.</p><p>Der HTML-Code des Elements wird zunächst nicht ausgeführt.</p><p>Der Benutzer muss auf die Vorschau klicken, um den eigentlichen Code des Elements zu laden.</p><p>Dies kann unter Datenschutz-Aspekten vorteilhaft sein.</p>
 label.oa.Icon=Overlay-Icon
-label.oa.Icon.help=<p>Das ausgewählte Icon wird als Overlay über der Vorschau angezeigt.</p> \n<p>Es kann alternativ zur Auswahlliste jeder Name eins Icons des bekannten Font Awesome direkt eingegeben werden, z.B. 'dot-circle-o'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://fontawesome.com/v4.7.0/icons/" target\="_blank">Font Awesome website</a>. Das Template verwendet Version 4.7 der Icons.</p>
+label.oa.Icon.help=<p>Das ausgewählte Icon wird als Overlay über der Vorschau angezeigt.</p> \n<p>Es kann alternativ zur Auswahlliste jeder Name eines Icons aus dem Font 'Fork Awesome' direkt eingegeben werden, z.B. 'dot-circle-o'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. Das Template verwendet Version 1.1.7 der Icons.</p>
 label.oa.Image=Vorschaubild
 label.oa.Image.help=<p>Bild, welches als Platzhalter für den eigentlichen Inhalt angezeigt wird.</p>
 label.oa.Notice=Zusätzlicher Hinweis
@@ -1021,7 +1021,7 @@ msg.setting.hsize.list.help=<p>Legt fest wie bzw. ob die Überschrift der Liste 
 msg.setting.hsize.list.teaser=Überschrift Aufmacher
 msg.setting.hsize.list.teaser.help=<p>Legt die Wichtigkeit der Aufmacher-Überschrift in den Elementen der Liste fest.</p><p>Dies ist insbesondere für Suchmaschinen (SEO) relevant und verändert nicht die sichtbare "Größe" der Überschrift.</p>
 msg.setting.iconClass=Icon
-msg.setting.iconClass.help=<p>Das anzuzeigende Icon.</p> \n<p>Es kann alternativ zur Auswahlliste jeder Name eins Icons des bekannten Font Awesome direkt eingegeben werden, z.B. 'dot-circle-o'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://fontawesome.com/v4.7.0/icons/" target\="_blank">Font Awesome website</a>. Das Template verwendet Version 4.7 der Icons.</p>
+msg.setting.iconClass.help=<p>Das anzuzeigende Icon.</p> \n<p>Es kann alternativ zur Auswahlliste jeder Name eines Icons aus dem Font 'Fork Awesome' direkt eingegeben werden, z.B. 'dot-circle-o'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. Das Template verwendet Version 1.1.7 der Icons.</p>
 msg.setting.imageFlip.doNotFlip=Nicht umdrehen
 msg.setting.imageFlip.doNotFlip.help=<p>Wenn ausgewählt, so wird das Umdrehen des Elements verhindert.</p>\n<p>Die Rückseite des Elements wird dadurch nicht angezeigt.</p>
 msg.setting.imageFlip.flipColor=Text Hintergrundfarbe

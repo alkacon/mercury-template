@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>11.0.1.205</version>
+		<version>11.0.1.209</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1220,60 +1220,60 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.eot</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.eot</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.eot</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.eot</destination>
 			<type>plain</type>
-			<uuidstructure>2c138eb3-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c138eb4-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>7fb62716-915a-11eb-b9dc-0242ac11002b</uuidstructure>
+			<uuidresource>7fb62717-915a-11eb-b9dc-0242ac11002b</uuidresource>
+			<datecreated>Tue, 30 Mar 2021 13:19:04 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.svg</destination>
 			<type>plain</type>
-			<uuidstructure>2c169bf5-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c169bf6-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>7f01cb2a-915a-11eb-b9dc-0242ac11002b</uuidstructure>
+			<uuidresource>7f01cb2b-915a-11eb-b9dc-0242ac11002b</uuidresource>
+			<datecreated>Tue, 30 Mar 2021 13:19:02 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.ttf</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.ttf</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.ttf</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.ttf</destination>
 			<type>plain</type>
-			<uuidstructure>2c1bcc17-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c1bcc18-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>7f40cffe-915a-11eb-b9dc-0242ac11002b</uuidstructure>
+			<uuidresource>7f40cfff-915a-11eb-b9dc-0242ac11002b</uuidresource>
+			<datecreated>Tue, 30 Mar 2021 13:19:03 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.woff</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.woff</destination>
 			<type>plain</type>
-			<uuidstructure>2c1e8b39-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c1e8b3a-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>802fc3ea-915a-11eb-b9dc-0242ac11002b</uuidstructure>
+			<uuidresource>802fc3eb-915a-11eb-b9dc-0242ac11002b</uuidresource>
+			<datecreated>Tue, 30 Mar 2021 13:19:04 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/fontawesome-webfont.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/forkawesome-webfont.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>2c20ae1b-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2c20ae1c-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:48 GMT</datecreated>
+			<uuidstructure>7f7881d2-915a-11eb-b9dc-0242ac11002b</uuidstructure>
+			<uuidresource>7f7881d3-915a-11eb-b9dc-0242ac11002b</uuidresource>
+			<datecreated>Tue, 30 Mar 2021 13:19:03 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

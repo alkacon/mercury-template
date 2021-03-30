@@ -726,7 +726,7 @@
             border-radius: $list-border-radius;
 
             &::before {
-                font-family: FontAwesome;
+                font-family: ForkAwesome;
                 font-weight: normal;
                 padding-right: $btn-padding;
             }
@@ -737,7 +737,7 @@
             &::after {
                 position: absolute;
                 display: inline-block;
-                font-family: FontAwesome;
+                font-family: ForkAwesome;
                 right: 0;
                 width: $nav-handle-right-padding;
                 content: "\f078";
@@ -929,7 +929,7 @@
         &::after {
             position: absolute;
             display: inline-block;
-            font-family: FontAwesome;
+            font-family: ForkAwesome;
             font-weight: normal;
             content: "\f078";
             right: $btn-padding;

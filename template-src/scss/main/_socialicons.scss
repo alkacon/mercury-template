@@ -22,11 +22,11 @@
 // Default social icon style, grey and boxed
 
 .type-shariff {
-    // shariff 3 uses FontAwesome 5 while Mercury sill uses 4
+    // shariff 3 uses ForkAwesome 5 while Mercury sill uses 4
     .fas,
     .fab {
         display: inline-block;
-        font-family: FontAwesome;
+        font-family: ForkAwesome;
         font-size: inherit;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;

@@ -179,7 +179,7 @@ a {
 @if ($link-external-icon) {
 
     a.external:after {
-        font-family: FontAwesome;
+        font-family: ForkAwesome;
         content: " \f08e";
     }
 

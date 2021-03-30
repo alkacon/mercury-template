@@ -216,7 +216,7 @@ a:focus .zoom-overlay .zoom-icon,
     z-index: 1; // required so that floating text divs after the image are not hiding the zoom button
 
     &::after {
-        font-family: FontAwesome;
+        font-family: ForkAwesome;
         content: "\f002"; // search / zoom
         @include image-icon-overlay;
     }

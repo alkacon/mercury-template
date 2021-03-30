@@ -49,6 +49,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}">
 <link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}">
 <link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}">
+<%-- Preload Fork Awesome --%>
+<link rel="preload" href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
 <cms:enable-ade />
 <cms:headincludes type="css" />

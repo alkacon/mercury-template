@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.307</version>
+		<version>11.0.1.313</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -594,7 +594,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Blog article detail view]]></value>
+					<value><![CDATA[Article detail view]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -888,7 +888,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Compact blog article teaser]]></value>
+					<value><![CDATA[Compact article teaser]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -917,7 +917,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Elaborate blog article teaser]]></value>
+					<value><![CDATA[Elaborate article teaser]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -946,7 +946,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Masonry blog article teaser]]></value>
+					<value><![CDATA[Masonry article teaser]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -975,7 +975,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Text tile blog article teaser]]></value>
+					<value><![CDATA[Text tile article teaser]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -1009,10 +1009,6 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
-				</property>
-				<property>
-					<name>list.type</name>
-					<value><![CDATA[a-blog]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1255,10 +1251,6 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
-				</property>
-				<property>
-					<name>list.type</name>
-					<value><![CDATA[a-blog]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1671,10 +1663,6 @@
 					<name>export</name>
 					<value><![CDATA[false]]></value>
 				</property>
-				<property>
-					<name>list.type</name>
-					<value><![CDATA[a-blog]]></value>
-				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -1948,10 +1936,6 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
-				</property>
-				<property>
-					<name>list.type</name>
-					<value><![CDATA[a-blog]]></value>
 				</property>
 			</properties>
 			<relations/>

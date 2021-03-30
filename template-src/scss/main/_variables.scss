@@ -496,7 +496,7 @@ $nav-breadcrumb-text-hover-color:   check-text-color($nav-breadcrumb-bg-color, $
 $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs
 $nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
 $nav-breadcrumb-separator-color:    conditional-value($nav-breadcrumb-bg-color == none, $grey, $nav-breadcrumb-text-color) !default; // color of breadcrumbs separator
-$nav-breadcrumb-separator-font:     FontAwesome !default; // font-family for breadcrumbs separator
+$nav-breadcrumb-separator-font:     ForkAwesome !default; // font-family for breadcrumbs separator
 
 
 // Side navigation - mirrors the main navigation by default, and allows to use different colors if required.
@@ -873,7 +873,7 @@ $con-text-col-light:                #fff !default;
 $online-warn-color:                 $highlight-color !default;
 
 // Disabled background-image, used for model group editor and elsewhere to mark "disabled" elements
-$disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(240,240,242,1) 10px,rgba(240,240,242,1) 20px);
+$disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(0,0,0,0.1) 10px,rgba(0,0,0,0.1) 20px);
 
 // Disabled cursor, used e.g. for disabled buttons in list pagination
 $cursor-disabled:                   not-allowed !default;

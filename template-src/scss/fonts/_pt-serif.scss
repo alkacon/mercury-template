@@ -5,7 +5,7 @@
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: local('PT Serif'), local('PTSerif-Regular'),
        url('../fonts/pt-serif-v10-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../fonts/pt-serif-v10-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -15,7 +15,7 @@
   font-family: 'PT Serif';
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: local('PT Serif Italic'), local('PTSerif-Italic'),
        url('../fonts/pt-serif-v10-latin-ext_latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../fonts/pt-serif-v10-latin-ext_latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -25,7 +25,7 @@
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: local('PT Serif Bold'), local('PTSerif-Bold'),
        url('../fonts/pt-serif-v10-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../fonts/pt-serif-v10-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -35,7 +35,7 @@
   font-family: 'PT Serif';
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: local('PT Serif Bold Italic'), local('PTSerif-BoldItalic'),
        url('../fonts/pt-serif-v10-latin-ext_latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../fonts/pt-serif-v10-latin-ext_latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */

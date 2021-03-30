@@ -32,7 +32,7 @@
 %ls-icon-custom {
     @extend %ls-icon-base;
     &::before {
-        font-family: FontAwesome;
+        font-family: ForkAwesome;
         font-size: inherit;
         line-height: inherit;
         text-rendering: auto;

@@ -22,18 +22,6 @@
         </Formatter>
         <CreateNew>true</CreateNew>
         <Properties>
-          <Name><![CDATA[appendSwitch]]></Name>
-          <Value>
-            <String><![CDATA[sm-xs]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[dateFormat]]></Name>
-          <Value>
-            <String><![CDATA[fmt-SHORT]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[2811daab-5d46-4a15-87cb-473bbb7d0017_bookingOption]]></Name>
           <Value>
             <String><![CDATA[none]]></String>
@@ -49,6 +37,18 @@
           <Name><![CDATA[2811daab-5d46-4a15-87cb-473bbb7d0017_showCalendar]]></Name>
           <Value>
             <String><![CDATA[true]]></String>
+          </Value>
+        </Properties>
+        <Properties>
+          <Name><![CDATA[appendSwitch]]></Name>
+          <Value>
+            <String><![CDATA[sm-xs]]></String>
+          </Value>
+        </Properties>
+        <Properties>
+          <Name><![CDATA[dateFormat]]></Name>
+          <Value>
+            <String><![CDATA[fmt-SHORT]]></String>
           </Value>
         </Properties>
         <Properties>

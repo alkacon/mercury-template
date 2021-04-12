@@ -437,7 +437,7 @@ var Mercury = function(jQ) {
     function updateAffix() {
         if (VERBOSE) console.info("Affix: update, m_affixElements=" + m_affixElements.length);
         for (var i=0; i<m_affixElements.length; i++) {
-            var toolbarHeight = toolbarHeight();
+            var th = toolbarHeight();
             var affix = m_affixElements[i];
             var $element = affix.$element;
             var $parent =  affix.$parent;
@@ -447,7 +447,7 @@ var Mercury = function(jQ) {
             var eHeight = $element.outerHeight(true);
             var docHeight = jQ(document).height();
             var scrollTop = m_$window.scrollTop();
-            var top = $parent.offset().top - toolbarHeight + topOffset - topOffsetFixed;
+            var top = $parent.offset().top - th + topOffset - topOffsetFixed;
             var bottom = top + (pHeight - eHeight) - topOffset;
 
             if (VERBOSE) console.info("Affix: docHeight=" + docHeight + " pHeight=" +  pHeight + " eHeight=" +  eHeight + " top=" + top + " bottom=" + bottom + " scrollTop=" + scrollTop);
@@ -461,7 +461,7 @@ var Mercury = function(jQ) {
                 $element.css("top", pHeight - eHeight);
             } else if (isFixedTop) {
                 $element.removeClass("affix-top affix-bottom").addClass("affix");
-                $element.css("top", toolbarHeight + topOffsetFixed);
+                $element.css("top", th + topOffsetFixed);
             } else {
                 $element.removeClass("affix-bottom affix").addClass("affix-top");
                 $element.css("top", topOffset);

@@ -105,7 +105,7 @@ to install all dependencies required to compile the template's sources.
 Once all dependencies are installed, you can trigger the compilation by running
 
 ```shell
-npm dist
+npm run dist
 ```
 in the repository's root folder.
 

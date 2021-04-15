@@ -32,8 +32,8 @@
 </c:when>
 <c:otherwise><c:set var="pageId">${cms.pageResource.structureId}</c:set></c:otherwise>
 </c:choose>
-<c:set var="elementId">${cms.element.instanceId}</c:set>
-<c:set var="siteRoot">${cms.requestContext.siteRoot}</c:set>
+<c:set var="elementId" value="${cms.element.instanceId}" />
+<c:set var="siteRoot" value="${cms.requestContext.siteRoot}" />
 <%
     Map<String, String[]> settingsParameterMap = new HashMap<String, String[]>();
     settingsParameterMap.put("siteroot", new String[]{(String)pageContext.getAttribute("siteRoot")});

@@ -4,13 +4,17 @@
     session="false"
     trimDirectiveWhitespaces="true" %>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+
 <cms:secureparams />
+
+<mercury:set-siteroot siteRoot="${param.siteroot}" sitePath="${param.sitepath}" />
 
 <fmt:setLocale value="${param.loc}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -18,8 +22,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<mercury:set-siteroot siteRoot="${param.siteroot}" />
 
 <c:set var="conf" value="${cms.vfs.readXml[param.contentpath]}" />
 <c:if test="${not empty conf}">

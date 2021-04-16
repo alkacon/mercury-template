@@ -24,12 +24,16 @@
 <body>
 
 <c:set var="conf" value="${cms.vfs.readXml[param.contentpath]}" />
+
 <c:if test="${not empty conf}">
+
+    <%-- make sure the 'en' locale is used to read the values of the list configuration --%>
+    <c:set var="ignore" value="${conf.init(conf.cmsObject, cms.wrap['en'].toLocale, conf.rawContent, conf.file)}" />
 
     <%-- restore settings reading them from the containerpage --%>
     <jsp:useBean id="settings" class="java.util.HashMap" />
     <c:if test="${not empty param.pid}">
-        <c:set var="pageBean" value="${cms.getPage(param.pid,param.loc)}" />
+        <c:set var="pageBean" value="${cms.getPage(param.pid, param.loc)}" />
         <c:set var="sortBarInstanceId">${param.sid}</c:set>
         <c:set var="instanceId">${param.eid}</c:set>
         <c:forEach var="element" items="${pageBean.elements}">

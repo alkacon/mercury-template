@@ -47,27 +47,27 @@
 </c:if>
 
 <c:choose>
-<c:when test="${squareGrid eq '4'}">
-    <c:set var="tileClassLarge" value="square-xs-12 square-xl-6" />
-    <c:set var="tileClassSmall" value="square-xs-12 square-md-6 square-xl-3" />
-</c:when>
-<c:otherwise>
-    <c:set var="tileClassLarge" value="square-xs-12 square-xl-8" />
-    <c:set var="tileClassSmall" value="square-xs-12 square-md-6 square-xl-4" />
-</c:otherwise>
+    <c:when test="${squareGrid eq '4'}">
+        <c:set var="tileClassLarge" value="square-xs-12 square-xl-6" />
+        <c:set var="tileClassSmall" value="square-xs-12 square-md-6 square-xl-3" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="tileClassLarge" value="square-xs-12 square-xl-8" />
+        <c:set var="tileClassSmall" value="square-xs-12 square-md-6 square-xl-4" />
+    </c:otherwise>
 </c:choose>
 
 <c:choose>
-<c:when test="${firstSquare eq 'firstOnlyLarge'}">
-    <c:set var="firstLarge" value="${(param.resultPage eq 1) and (param.resultOnPage eq 1)}" />
-</c:when>
-<c:when test="${firstSquare eq 'firstOnPageLarge'}">
-    <c:set var="firstLarge" value="${param.resultOnPage eq 1}" />
-</c:when>
-<c:when test="${firstSquare eq 'firstOnPageFlip'}">
-    <c:set var="firstLarge" value="${param.resultOnPage eq 1}" />
-    <c:set var="firstOnPageFlip" value="${(param.resultPage % 2) eq 0}" />
-</c:when>
+    <c:when test="${firstSquare eq 'firstOnlyLarge'}">
+        <c:set var="firstLarge" value="${(param.resultPage eq 1) and (param.resultOnPage eq 1)}" />
+    </c:when>
+    <c:when test="${firstSquare eq 'firstOnPageLarge'}">
+        <c:set var="firstLarge" value="${param.resultOnPage eq 1}" />
+    </c:when>
+    <c:when test="${firstSquare eq 'firstOnPageFlip'}">
+        <c:set var="firstLarge" value="${param.resultOnPage eq 1}" />
+        <c:set var="firstOnPageFlip" value="${(param.resultPage % 2) eq 0}" />
+    </c:when>
 </c:choose>
 
 <c:if test="${ratio eq '16-9'}"><c:set var="imgRatio" value="1600-920" /></c:if>
@@ -83,28 +83,35 @@
     </c:otherwise>
 </c:choose>
 
+<c:set var="pmt" value="${not empty previewSpecial ? ' is-social' : ''}" />
+<c:set var="pbg" value="${not empty previewSpecial and empty image ? ' pbg-'.concat(previewSpecial) : ''}" />
+
 <mercury:nl />
 <div class="type-media text-below-on-xs ${tileClass}"><%----%>
-    <div class="content ${animationClass}"><%----%>
+    <div class="content ${animationClass}${pmt}${pbg}"><%----%>
         <div class="preview ${cssClass}" <c:if test="${not empty template}">data-preview='{"template":"${cms:encode(template)}"}'</c:if>><%----%>
 
             <c:choose>
-            <c:when test="${not empty image}">
-                <cms:addparams>
-                    <cms:param name="cssgrid" value="${tileClass}" />
-                    <mercury:image-animated
-                        image="${image}"
-                        ratio="${imgRatio}"
-                        title="${title}" />
-                </cms:addparams>
-            </c:when>
-            <c:when test="${isYouTube}">
-                <div class="centered image">${youTubePreviewHtml}</div><%----%>
-            </c:when>
+                <c:when test="${not empty image}">
+                    <cms:addparams>
+                        <cms:param name="cssgrid" value="${tileClass}" />
+                        <mercury:image-animated
+                            image="${image}"
+                            ratio="${imgRatio}"
+                            title="${title}" />
+                    </cms:addparams>
+                </c:when>
+                <c:when test="${not empty mediaPreviewHtml}">
+                    <div class="centered image">${mediaPreviewHtml}</div><%----%>
+                </c:when>
+                <c:otherwise>
+                    <%-- needed because this div is used to size the image in case of '.text-below-on-xs' --%>
+                    <div class="image-src-box"></div><%----%>
+                </c:otherwise>
             </c:choose>
 
             <div class="centered icon"><%----%>
-                <span class="fa ${icon}"></span><%----%>
+                <span class="fa fa-${icon}"></span><%----%>
                 <c:if test="${caseDynamicListNoscript or caseStandardElement}">
                     ${caseStandardElement ? '<noscript>' : ''}
                     <div><fmt:message key="msg.page.javaScript.required" /></div><%----%>
@@ -113,8 +120,8 @@
             </div><%----%>
 
             <div class="text-overlay"><%----%>
-                <c:if test="${not empty Length}"><div class="media-length">${Length}</div></c:if>
-                <c:if test="${not empty dateStr}"><div class="teaser-date">${dateStr}</div></c:if>
+                <c:if test="${not empty dateStr}"><div class="teaser-date"><c:out value="${dateStr}"></c:out></div></c:if>
+                <c:if test="${not empty content.value.Length}"><div class="media-length"><c:out value="${content.value.Length}"></c:out></div></c:if>
                 <h2 class="title"><c:out value="${title}" /></h2><%----%>
                 <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
             </div><%----%>

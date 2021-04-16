@@ -46,7 +46,14 @@
                         microphone:%(key.msg.icon.microphone)|
                         volume-up:%(key.msg.icon.volume-up)|
                         info:%(key.msg.icon.info)|
-                        globe:%(key.msg.icon.globe)
+                        globe:%(key.msg.icon.globe)|
+                        facebook-official:%(key.msg.icon.facebook-official)|
+                        facebook:%(key.msg.icon.facebook)|
+                        twitter:%(key.msg.icon.twitter)|
+                        twitter-square:%(key.msg.icon.twitter-square)|
+                        power-off:%(key.msg.icon.power-off)|
+                        bullseye:%(key.msg.icon.bullseye)|
+                        none:%(key.msg.icon.none)
                     ]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>

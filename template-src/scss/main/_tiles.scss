@@ -164,9 +164,8 @@ $sq-heights-xl:    () !default;
         .list-badge {
             // position of event series badges in this list
             position: absolute;
-            display: block;
-            height: 22px;
-            width: 22px;
+            display: inline-block;
+            padding: 2px 4px;
             top: 5px;
             right: 5px;
             text-shadow: none;

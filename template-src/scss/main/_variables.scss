@@ -770,18 +770,26 @@ $sitemap-colors:                    $bg-colors !default;
 
 // Social network colors
 
-$color-facebook:                    #3b5998 !default;
+$color-facebook:                    #4267b2 !default;
 $color-youtube:                     #ff0000 !default;
-$color-twitter:                     #55acee !default;
+$color-twitter:                     #00acee !default;
 $color-github:                      #777777 !default;
-$color-xing:                        #126567 !default;
+$color-xing:                        #026466 !default;
 $color-rss:                         #ee802f !default;
-$color-whatsapp:                    #5cbe4a !default;
-$color-linkedin:                    #0976b4 !default;
-$color-instagram:                   #d6249f !default;
+$color-whatsapp:                    #25D366 !default;
+$color-linkedin:                    #2867b2 !default;
+$color-instagram:                   #c13584 !default;
 $color-mail:                        #999999 !default;
 $color-wallsio:                     #000000 !default;
 $color-slideshare:                  #e98325 !default;
+
+
+// List background colors
+
+$color-pbg-default:                 $black !default;
+$color-pbg-main:                    $main-theme !default;
+$color-pbg-facebook:                $color-facebook !default;
+$color-pbg-twitter:                 $color-twitter !default;
 
 
 // Social links / Shariff

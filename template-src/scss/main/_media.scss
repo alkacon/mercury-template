@@ -40,11 +40,24 @@
                     transition: none !important;
                 }
             }
+            &.square-1-1 .content.revealed,
+            &.square-1-1 .preview .image-src-box {
+                padding-bottom: 100%;
+            }
+            &.square-4-3 .content.revealed,
             &.square-4-3 .preview .image-src-box {
                 padding-bottom: 75%;
             }
+            &.square-16-9 .content.revealed,
             &.square-16-9 .preview .image-src-box {
                 padding-bottom: 56.25%;
+            }
+            .content.revealed.is-social {
+                padding-bottom: 0;
+                > iframe {
+                    display: block;
+                    position: static;
+                }
             }
         }
     }
@@ -147,20 +160,46 @@
         left: 0;
         width: 100%;
         height: 100%;
-        overflow: hidden;
-        background-color: #000;
         z-index: $overflow-z-index;
+        background-color: $color-pbg-default;
+        overflow: hidden;
 
         &.compact {
             position: relative;
         }
 
-        iframe {
+        > iframe {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+        }
+
+        // preview media type (pmt) default - usually video where the iframe must not scroll
+        &:not(.is-social) {
+            > iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        // for social media types the preview iframe must scoll and not have height and width set
+        // even though this makes not much sense it is the best we can get with the current approach
+        &.is-social {
+            overflow: auto !important;
+        }
+
+        // adjusting the preview background (pbg) color for social media types
+        &.pbg-main {
+            background-color: $color-pbg-main;
+        }
+        &.pbg-facebook {
+            background-color: $color-pbg-facebook;
+        }
+        &.pbg-twitter {
+            background-color: $color-pbg-twitter;
+        }
+        &.revealed {
+            background-color: transparent;
         }
     }
 

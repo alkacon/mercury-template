@@ -59,6 +59,10 @@
 <%@ variable name-given="icon" declare="true"
     description="The overlay icon for the media file." %>
 
+<%@ variable name-given="previewSpecial" declare="true"
+    description="If this is set, the preview should be rendered with a special rule according to the name provided.
+    Currently supported return values are 'facebook', 'twitter' or 'main'. " %>
+
 <%@ variable name-given="mediaPreviewHtml" declare="true"
     description="Optional HTML markup for media video preview that uses images taken directly from the external media server." %>
 
@@ -138,14 +142,15 @@
             --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen><%--
         --%></iframe><%----%>
         </c:set>
-        <c:set var="icon" value="fa-youtube-play" />
+        <c:set var="icon" value="youtube-play" />
         <c:set var="cssClass" value="video" />
 
         <c:if test="${youTubePreviewImg ne 'none'}">
             <c:set var="mediaPreviewHtml">
                 <c:set var="srcSet"><%--
                 --%>https://img.youtube.com/vi/${youTubeId}/default.jpg 120w, <%--
-                --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w</c:set>
+                --%>https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg 480w<%--
+                --%></c:set>
                 <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
                     <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
                 </c:if>
@@ -181,7 +186,7 @@
                     --%>visual=true"><%--
         --%></iframe><%----%>
         </c:set>
-        <c:set var="icon" value="fa-soundcloud" />
+        <c:set var="icon" value="soundcloud" />
     </c:when>
 
     <c:when test="${isVideo}">
@@ -250,7 +255,7 @@
         <c:if test="${(empty copyright) and (not empty videoCopyright) and (videoCopyright ne 'none')}">
             <c:set var="copyright" value="${videoCopyright}" />
         </c:if>
-        <c:set var="icon" value="fa-youtube-play" />
+        <c:set var="icon" value="youtube-play" />
         <c:set var="cssClass" value="video" />
     </c:when>
 
@@ -265,10 +270,21 @@
         <c:set var="template" value="${content.value.MediaContent.value.Flexible.value.Code}" />
         <c:choose>
             <c:when test="${content.value.MediaContent.value.Flexible.value.Icon.isSet}">
-                <c:set var="icon" value="fa-${content.value.MediaContent.value.Flexible.value.Icon}" />
+                <c:set var="icon" value="${content.value.MediaContent.value.Flexible.value.Icon}" />
+                <c:choose>
+                    <c:when test="${fn:startsWith(icon, 'facebook')}">
+                        <c:set var="previewSpecial" value="facebook" />
+                    </c:when>
+                    <c:when test="${fn:startsWith(icon, 'twitter')}">
+                        <c:set var="previewSpecial" value="twitter" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="previewSpecial" value="main" />
+                    </c:otherwise>
+                </c:choose>
             </c:when>
             <c:otherwise>
-                <c:set var="icon" value="fa-play" />
+                <c:set var="icon" value="play" />
             </c:otherwise>
         </c:choose>
     </c:when>

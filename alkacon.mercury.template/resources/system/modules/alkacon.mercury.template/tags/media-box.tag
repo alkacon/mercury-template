@@ -58,7 +58,9 @@
     <c:set var="markupVisualOverlay">
         <c:if test="${not isAudio}">
             <div class="centered icon"><%----%>
-                <span class="fa ${icon}"></span><%----%>
+                <c:if test="${icon ne 'none'}">
+                    <span class="fa fa-${icon}"></span><%----%>
+                </c:if>
                 <c:if test="${caseDynamicListNoscript or caseStandardElement}">
                     <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${caseStandardElement}" />
                 </c:if>
@@ -93,13 +95,16 @@
     </c:set>
 
     <mercury:padding-box
-        cssWrapper="media-box ${not autoPlay ? effect : ''}"
+        cssWrapper="media-box${not autoPlay ? effect : ''}"
         height="${height}"
         width="${width}"
         ratio="${usedRatio}"
         test="${addPaddingBox}">
 
-        <div class="content${addPaddingBox ? '' : ' compact' }"><%----%>
+        <c:set var="pmt" value="${not empty previewSpecial ? ' is-social' : ''}" />
+        <c:set var="pbg" value="${not empty previewSpecial and empty image ? ' pbg-'.concat(previewSpecial) : ''}" />
+
+        <div class="content${addPaddingBox ? '' : ' compact' }${pmt}${pbg}"><%----%>
             <c:if test="${not empty template}">
                 <c:set var="mediaTemplate"><%--
                     --%>data-preview='{"template":"${cms:encode(template)}"}'<%--

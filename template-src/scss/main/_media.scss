@@ -243,6 +243,7 @@
         background-color: transparent;
     }
 
+    &.presized .audio-player,
     .presized .audio-player {
         position: absolute;
         z-index: #{$overflow-z-index + 20};

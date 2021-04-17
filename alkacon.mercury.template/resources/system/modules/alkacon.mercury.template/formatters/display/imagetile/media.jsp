@@ -83,52 +83,29 @@
     </c:otherwise>
 </c:choose>
 
-<c:set var="pmt" value="${not empty previewSpecial ? ' is-social' : ''}" />
-<c:set var="pbg" value="${not empty previewSpecial and empty image ? ' pbg-'.concat(previewSpecial) : ''}" />
+<c:set var="isAudio"    value="${value.MediaContent.value.Audio.isSet}" />
+<c:set var="isFlexible" value="${value.MediaContent.value.Flexible.isSet}" />
+<c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
 
 <mercury:nl />
-<div class="type-media text-below-on-xs ${tileClass}"><%----%>
-    <div class="content ${animationClass}${pmt}${pbg}"><%----%>
-        <div class="preview ${cssClass}" <c:if test="${not empty template}">data-preview='{"template":"${cms:encode(template)}"}'</c:if>><%----%>
+<mercury:media-box
+    cssWrapper="type-media${isAudio ? ' audio ' : ' '}text-below-on-xs ${tileClass}"
+    content="${content}"
+    ratio="${imgRatio}"
+    link="${isFlexible and not isAudio ? linkToDetail : ''}"
+    showMediaTime="${true}"
+    showCopyright="${false}">
 
-            <c:choose>
-                <c:when test="${not empty image}">
-                    <cms:addparams>
-                        <cms:param name="cssgrid" value="${tileClass}" />
-                        <mercury:image-animated
-                            image="${image}"
-                            ratio="${imgRatio}"
-                            title="${title}" />
-                    </cms:addparams>
-                </c:when>
-                <c:when test="${not empty mediaPreviewHtml}">
-                    <div class="centered image">${mediaPreviewHtml}</div><%----%>
-                </c:when>
-                <c:otherwise>
-                    <%-- needed because this div is used to size the image in case of '.text-below-on-xs' --%>
-                    <div class="image-src-box"></div><%----%>
-                </c:otherwise>
-            </c:choose>
-
-            <div class="centered icon"><%----%>
-                <span class="fa fa-${icon}"></span><%----%>
-                <c:if test="${caseDynamicListNoscript or caseStandardElement}">
-                    ${caseStandardElement ? '<noscript>' : ''}
-                    <div><fmt:message key="msg.page.javaScript.required" /></div><%----%>
-                    ${caseStandardElement ? '</noscript>' : ''}
-                </c:if>
-            </div><%----%>
-
-            <div class="text-overlay"><%----%>
-                <c:if test="${not empty dateStr}"><div class="teaser-date"><c:out value="${dateStr}"></c:out></div></c:if>
-                <c:if test="${not empty content.value.Length}"><div class="media-length"><c:out value="${content.value.Length}"></c:out></div></c:if>
-                <h2 class="title"><c:out value="${title}" /></h2><%----%>
-                <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
-            </div><%----%>
-
+    <jsp:attribute name="markupBottomText">
+        <div class="text-overlay"><%----%>
+            <c:if test="${not empty dateStr}"><div class="teaser-date"><c:out value="${dateStr}"></c:out></div></c:if>
+            <c:if test="${not empty content.value.Length}"><div class="media-length"><c:out value="${content.value.Length}"></c:out></div></c:if>
+            <h2 class="title"><c:out value="${title}" /></h2><%----%>
+            <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
-    </div><%----%>
-</div><%----%>
+    </jsp:attribute>
+
+</mercury:media-box>
 <mercury:nl />
 
 </mercury:media-vars>

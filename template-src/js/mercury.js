@@ -616,6 +616,11 @@ var Mercury = function(jQ) {
         } else {
             var $piece = $element.parents(".effect-piece").first();
             $piece.removeClass("effect-raise effect-shadow effect-rotate effect-box");
+            var $mediaBox =  $element.parents(".media-box.removable");
+            if ($mediaBox.length > 0) {
+                $mediaBox.removeClass().css("padding-bottom", "").addClass("media-box-removed");
+                $mediaBox.find(".content").removeClass().addClass("content-removed")
+            }
             $element.remove();
             $p.append(decodeURIComponent(template));
             initFitVids();
@@ -681,7 +686,7 @@ var Mercury = function(jQ) {
     function initMedia(parent) {
         // initialize Media element click handlers
         parent = parent || '';
-        initOnclickTemplates(parent + ' .type-media .preview', true);
+        initOnclickTemplates(parent + ' .type-media .preview.inline', true);
     }
 
 

@@ -16,14 +16,15 @@
 <cms:formatter var="content" val="value">
 <mercury:teaser-settings content="${content}">
 
-<c:set var="intro"   value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
-<c:set var="title"   value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
-<c:set var="preface" value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : value.Preface}" />
+<c:set var="intro"      value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
+<c:set var="title"      value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
+<c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : value.Preface}" />
 
-<c:set var="isAudio" value="${value.MediaContent.value.Audio.isSet}" />
+<c:set var="isAudio"    value="${value.MediaContent.value.Audio.isSet}" />
+<c:set var="isFlexible" value="${value.MediaContent.value.Flexible.isSet}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-media ${isAudio ? 'audio ' : ''}${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-media${isAudio ? ' audio ' : ' '}${setEffect}${' '}${setCssWrapper}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"
@@ -46,6 +47,7 @@
             <mercury:media-box
                 content="${content}"
                 ratio="${setRatio}"
+                link="${isFlexible ? linkToDetail : ''}"
                 showMediaTime="${true}"
                 showCopyright="${setShowCopyright}"
             />

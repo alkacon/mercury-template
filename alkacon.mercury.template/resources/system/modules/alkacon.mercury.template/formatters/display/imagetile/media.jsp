@@ -24,7 +24,7 @@
 <c:set var="showPreface"        value="${setting.showPreface.toBoolean}" />
 <c:set var="dateFormat"         value="${setting.dateFormat}"/>
 <c:set var="ratio"              value="${setting.imageRatio.toString}"/>
-<c:set var="animationClass"     value="${setting.effect.isSetNotNone ? setting.effect.toString.concat(' effect-box') : ''}" />
+<c:set var="effect"             value="${setting.effect.toString}" />
 
 <c:set var="title"              value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
 
@@ -92,7 +92,8 @@
     cssWrapper="type-media${isAudio ? ' audio ' : ' '}text-below-on-xs ${tileClass}"
     content="${content}"
     ratio="${imgRatio}"
-    link="${isFlexible and not isAudio ? linkToDetail : ''}"
+    link="${isFlexible ? linkToDetail : ''}"
+    effect="${effect}"
     showMediaTime="${true}"
     showCopyright="${false}">
 

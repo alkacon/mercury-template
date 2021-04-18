@@ -64,7 +64,7 @@
 
     <c:set var="addPaddingBox"      value="${not (isAudio and empty image)}" />
     <c:set var="addPlaceholder"     value="${autoPlay and not empty placeholderMessage}" />
-    <c:set var="effect"             value="${(empty effect) or (effect eq 'none') ? '' : effect.concat(' effect-piece')}" />
+    <c:set var="effect"             value="${(empty effect) or (effect eq 'none') ? ' effect-box' : effect.concat(' effect-piece')}" />
     <c:set var="cssWrapper"         value="${(empty cssWrapper) or (cssWrapper eq 'none') ? '' : cssWrapper.concat(' ')}" />
 
     <c:if test="${not empty markupBottomText and not isAudio}">
@@ -115,21 +115,21 @@
         </c:if>
     </c:set>
 
-    <mercury:link
-        link="${link}"
-        test="${not empty link}">
+    <mercury:padding-box
+        cssWrapper="${cssWrapper}media-box${not autoPlay ? ' '.concat(effect) : ''}${isFlexible ? ' removable' : ''}"
+        height="${height}"
+        width="${width}"
+        ratio="${usedRatio}"
+        test="${addPaddingBox}">
 
-        <mercury:padding-box
-            cssWrapper="${cssWrapper}media-box${not autoPlay ? ' '.concat(effect) : ''}${not empty previewSpecial ? ' removable' : ''}"
-            height="${height}"
-            width="${width}"
-            ratio="${usedRatio}"
-            test="${addPaddingBox}">
+        <c:set var="previewBgColor" value="${not empty flexibleType and empty image ? ' pbg-'.concat(flexibleType) : ''}" />
 
-            <c:set var="pmt" value="${not empty previewSpecial ? ' is-social' : ''}" />
-            <c:set var="pbg" value="${not empty previewSpecial and empty image ? ' pbg-'.concat(previewSpecial) : ''}" />
+        <div class="content${not addPaddingBox ? ' compact' : ''}${previewBgColor}"><%----%>
 
-            <div class="content${addPaddingBox ? '' : ' compact' }${pmt}${pbg}"><%----%>
+            <mercury:link
+                link="${link}"
+                test="${not empty link}">
+
                 <c:choose>
                     <c:when test="${empty link}">
                         <c:if test="${not empty template}">
@@ -191,13 +191,14 @@
                 <c:if test="${not isAudio and not autoPlay and showCopyright and ((not empty copyright))}">
                     <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
                 </c:if>
-            </div><%----%>
-        </mercury:padding-box>
 
-        <c:if test="${showPreface and showPrefaceAsSubtitle and content.value.Preface.isSet}">
-            <div class="subtitle"><c:out value="${content.value.Preface}" /></div><%----%>
-        </c:if>
+            </mercury:link>
 
-    </mercury:link>
+        </div><%----%>
+    </mercury:padding-box>
+
+    <c:if test="${showPreface and showPrefaceAsSubtitle and content.value.Preface.isSet}">
+        <div class="subtitle"><c:out value="${content.value.Preface}" /></div><%----%>
+    </c:if>
 
 </mercury:media-vars>

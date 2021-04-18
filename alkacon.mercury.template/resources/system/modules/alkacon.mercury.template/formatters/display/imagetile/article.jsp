@@ -21,7 +21,7 @@
 <c:set var="showPreface"        value="${setting.showPreface.toBoolean}" />
 <c:set var="dateFormat"         value="${setting.dateFormat}"/>
 <c:set var="ratio"              value="${setting.imageRatio.toString}"/>
-<c:set var="animationClass"     value="${setting.effect.isSetNotNone ? setting.effect.toString.concat(' effect-box') : ''}" />
+<c:set var="effect"             value="${setting.effect.isSetNotNone ? setting.effect.toString.concat(' effect-piece') : ''}" />
 
 <c:set var="paragraph"          value="${content.valueList.Paragraph['0']}" />
 <c:set var="title"              value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
@@ -76,14 +76,11 @@
     </c:otherwise>
 </c:choose>
 
-<c:if test="${not empty param.instancedate}">
-    <c:set var="linkParameters">?instancedate=${param.instancedate}</c:set>
-</c:if>
-<c:set var="link"><cms:link baseUri="${baseUri}">${content.filename}${linkParameters}</cms:link></c:set>
+<c:set var="link"><cms:link baseUri="${baseUri}">${content.filename}</cms:link></c:set>
 
 <mercury:nl />
-<div class="type-article text-below-on-xs ${tileClass}"><%----%>
-    <div class="content ${animationClass}"><%----%>
+<div class="type-article text-below-on-xs ${tileClass}${' '}${effect}"><%----%>
+    <div class="content"><%----%>
 
     <mercury:link link="${link}">
         <cms:addparams>

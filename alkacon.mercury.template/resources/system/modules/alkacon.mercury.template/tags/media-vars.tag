@@ -59,9 +59,10 @@
 <%@ variable name-given="icon" declare="true"
     description="The overlay icon for the media file." %>
 
-<%@ variable name-given="previewSpecial" declare="true"
-    description="If this is set, the preview should be rendered with a special rule according to the name provided.
-    Currently supported return values are 'facebook', 'twitter' or 'main'. " %>
+<%@ variable name-given="flexibleType" declare="true"
+    description="If isFlexible=true, this provides more information about the type of flexible content.
+    Currently supported return values are 'facebook', 'twitter' or 'main'.
+    This can e.g. be used later to render the preview with a special CSS selector based to the name provided." %>
 
 <%@ variable name-given="mediaPreviewHtml" declare="true"
     description="Optional HTML markup for media video preview that uses images taken directly from the external media server." %>
@@ -273,13 +274,13 @@
                 <c:set var="icon" value="${content.value.MediaContent.value.Flexible.value.Icon}" />
                 <c:choose>
                     <c:when test="${fn:startsWith(icon, 'facebook')}">
-                        <c:set var="previewSpecial" value="facebook" />
+                        <c:set var="flexibleType" value="facebook" />
                     </c:when>
                     <c:when test="${fn:startsWith(icon, 'twitter')}">
-                        <c:set var="previewSpecial" value="twitter" />
+                        <c:set var="flexibleType" value="twitter" />
                     </c:when>
                     <c:otherwise>
-                        <c:set var="previewSpecial" value="main" />
+                        <c:set var="flexibleType" value="main" />
                     </c:otherwise>
                 </c:choose>
             </c:when>

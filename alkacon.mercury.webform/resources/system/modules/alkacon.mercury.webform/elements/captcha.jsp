@@ -1,6 +1,5 @@
 <%@page
     pageEncoding="UTF-8"
-    session="true"
     import="org.opencms.file.*,org.opencms.util.*,org.opencms.jsp.*,org.opencms.xml.content.*,alkacon.mercury.webform.fields.*,alkacon.mercury.webform.captcha.*" %><%
 
     CmsJspActionElement jsp = new CmsJspActionElement(pageContext, request, response);

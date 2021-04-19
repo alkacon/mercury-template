@@ -169,6 +169,26 @@ public final class CmsCaptchaSettings implements Cloneable {
     /** The password to be used for encryption and decryption. */
     private static final String PASSWORD = "oamp-9aX";
 
+    /**
+     * Returns a clone of the singleton instance of the
+     * <em>"master"</em>  <code>CmsCaptchaSettings</code> and potential overridden values from
+     * the request context.<p>
+     *
+     * The <em>"master"</em>  <code>CmsCaptchaSettings</code> are read from an XML content that
+     * contains the global defaults.<p>
+     *
+     * @param jsp used to potentially access the XML content with the default captcha settings and
+     *            to read overriden values from the request parameters.
+     *
+     * @return a clone of the singleton instance of the
+     *         <em>"master"</em> <code>CmsCaptchaSettings</code>.
+     */
+    public static CmsCaptchaSettings getInstance(CmsJspActionElement jsp) {
+
+        CmsCaptchaSettings result = new CmsCaptchaSettings(jsp);
+        return (CmsCaptchaSettings)result.clone();
+    }
+
     /** The the background color. */
     private Color m_backgroundColor = Color.WHITE;
 
@@ -249,26 +269,6 @@ public final class CmsCaptchaSettings implements Cloneable {
     }
 
     /**
-     * Returns a clone of the singleton instance of the
-     * <em>"master"</em>  <code>CmsCaptchaSettings</code> and potential overridden values from
-     * the request context.<p>
-     *
-     * The <em>"master"</em>  <code>CmsCaptchaSettings</code> are read from an XML content that
-     * contains the global defaults.<p>
-     *
-     * @param jsp used to potentially access the XML content with the default captcha settings and
-     *            to read overriden values from the request parameters.
-     *
-     * @return a clone of the singleton instance of the
-     *         <em>"master"</em> <code>CmsCaptchaSettings</code>.
-     */
-    public static CmsCaptchaSettings getInstance(CmsJspActionElement jsp) {
-
-        CmsCaptchaSettings result = new CmsCaptchaSettings(jsp);
-        return (CmsCaptchaSettings)result.clone();
-    }
-
-    /**
      * @see java.lang.Object#clone()
      */
     @Override
@@ -297,6 +297,73 @@ public final class CmsCaptchaSettings implements Cloneable {
     }
 
     /**
+     * Decrypts the given value which was encrypted with the encrypt method.<p>
+     *
+     * @param value the value to be decrypted
+     * @return the decrypted string of the value or null if something went wrong
+     */
+    private String decrypt(String value) {
+
+        // check if given value is valid
+        if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
+            // no input available
+            return null;
+        }
+
+        try {
+            // create key
+            Key key = new SecretKeySpec(getKey(), ENCRYPTION);
+            Cipher cipher = Cipher.getInstance(ENCRYPTION);
+            cipher.init(Cipher.DECRYPT_MODE, key);
+
+            // decode from base64
+            byte[] cleartext = Base64.decodeBase64(value.getBytes());
+
+            // decrypt text
+            byte[] ciphertext = cipher.doFinal(cleartext);
+            return CmsEncoder.decode(new String(ciphertext));
+        } catch (Exception ex) {
+            // error while decrypting
+        }
+
+        return null;
+    }
+
+    /**
+     * Encrypts the given value.<p>
+     *
+     * @param value the string which should be encrypted
+     * @return the encrypted string of the value or null if something went wrong
+     */
+    private String encrypt(String value) {
+
+        // check if given value is valid
+        if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
+            // no input available
+            return null;
+        }
+
+        try {
+            // create key
+            byte[] k = getKey();
+            Key key = new SecretKeySpec(k, ENCRYPTION);
+            Cipher cipher = Cipher.getInstance(ENCRYPTION);
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+
+            // encrypt text
+            byte[] cleartext = value.getBytes(FORMAT);
+            byte[] ciphertext = cipher.doFinal(cleartext);
+
+            // encode with base64 to be used as a url parameter
+            return CmsEncoder.encode(new String(Base64.encodeBase64(ciphertext)));
+        } catch (Exception ex) {
+            // error while encrypting
+        }
+
+        return null;
+    }
+
+    /**
      * Returns the background color.<p>
      *
      * @return the background color
@@ -321,6 +388,24 @@ public final class CmsCaptchaSettings implements Cloneable {
         buf.append(toHexString(m_backgroundColor.getBlue()));
 
         return buf.toString();
+    }
+
+    /**
+     * Returns the character Pool.<p>
+     *
+     * @return the character Pool
+     */
+    String getCharacterPool() {
+
+        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(getDictionary())) {
+            // dictionary has priority
+            return "";
+        }
+        if (CmsStringUtil.isEmptyOrWhitespaceOnly(m_characterPool)) {
+            // default value
+            return "abcdefghijklmnopqrstuvwxyz";
+        }
+        return m_characterPool;
     }
 
     /**
@@ -421,6 +506,29 @@ public final class CmsCaptchaSettings implements Cloneable {
     }
 
     /**
+     * Converts the password to machine readable form.<p>
+     *
+     * @return the password in machine readable form
+     */
+    private byte[] getKey() {
+
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(PASSWORD.toString().getBytes());
+            byte[] key = md5.digest();
+            // now get the first 8 bytes
+            byte[] finalKey = new byte[8];
+            for (int i = 0; i <= 7; i++) {
+                finalKey[i] = key[i];
+            }
+            return finalKey;
+        } catch (NoSuchAlgorithmException ex) {
+            // found no matching algorithm
+        }
+        return null;
+    }
+
+    /**
      * Returns the max. font size.<p>
      *
      * @return the max. font size
@@ -458,6 +566,22 @@ public final class CmsCaptchaSettings implements Cloneable {
     public int getMinPhraseLength() {
 
         return m_minPhraseLength;
+    }
+
+    /**
+     * Returns the request parameter with the specified name.<p>
+     *
+     * @param parameter the parameter to return
+     *
+     * @return the parameter value
+     */
+    private String getParameter(String parameter) {
+
+        try {
+            return (m_parameterMap.get(parameter))[0];
+        } catch (NullPointerException e) {
+            return "";
+        }
     }
 
     /**
@@ -843,6 +967,16 @@ public final class CmsCaptchaSettings implements Cloneable {
     }
 
     /**
+     * Sets the character Pool.<p>
+     *
+     * @param characterPool the character Pool to set
+     */
+    void setCharacterPool(String characterPool) {
+
+        m_characterPool = characterPool;
+    }
+
+    /**
      * Sets the ID of the form configuration.<p>
      *
      * @param id the ID of the form configuration
@@ -1002,6 +1136,21 @@ public final class CmsCaptchaSettings implements Cloneable {
     }
 
     /**
+     * Converts a color range of a color into a hex string.<p>
+     *
+     * @param colorRange the color range of a color
+     * @return the hex string of the color range
+     */
+    private String toHexString(int colorRange) {
+
+        if (colorRange < 10) {
+            return "0" + Integer.toHexString(colorRange);
+        } else {
+            return Integer.toHexString(colorRange);
+        }
+    }
+
+    /**
      * Creates a request parameter string from including all captcha settings.<p>
      *
      * @param cms needed for the context / encoding
@@ -1042,154 +1191,5 @@ public final class CmsCaptchaSettings implements Cloneable {
             result = C_PARAM_DATA + PARAM_KV_SEPARATOR + encValues;
         }
         return result;
-    }
-
-    /**
-     * Returns the character Pool.<p>
-     *
-     * @return the character Pool
-     */
-    String getCharacterPool() {
-
-        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(getDictionary())) {
-            // dictionary has priority
-            return "";
-        }
-        if (CmsStringUtil.isEmptyOrWhitespaceOnly(m_characterPool)) {
-            // default value
-            return "abcdefghijklmnopqrstuvwxyz";
-        }
-        return m_characterPool;
-    }
-
-    /**
-     * Sets the character Pool.<p>
-     *
-     * @param characterPool the character Pool to set
-     */
-    void setCharacterPool(String characterPool) {
-
-        m_characterPool = characterPool;
-    }
-
-    /**
-     * Decrypts the given value which was encrypted with the encrypt method.<p>
-     *
-     * @param value the value to be decrypted
-     * @return the decrypted string of the value or null if something went wrong
-     */
-    private String decrypt(String value) {
-
-        // check if given value is valid
-        if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
-            // no input available
-            return null;
-        }
-
-        try {
-            // create key
-            Key key = new SecretKeySpec(getKey(), ENCRYPTION);
-            Cipher cipher = Cipher.getInstance(ENCRYPTION);
-            cipher.init(Cipher.DECRYPT_MODE, key);
-
-            // decode from base64
-            byte[] cleartext = Base64.decodeBase64(value.getBytes());
-
-            // decrypt text
-            byte[] ciphertext = cipher.doFinal(cleartext);
-            return CmsEncoder.decode(new String(ciphertext));
-        } catch (Exception ex) {
-            // error while decrypting
-        }
-
-        return null;
-    }
-
-    /**
-     * Encrypts the given value.<p>
-     *
-     * @param value the string which should be encrypted
-     * @return the encrypted string of the value or null if something went wrong
-     */
-    private String encrypt(String value) {
-
-        // check if given value is valid
-        if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
-            // no input available
-            return null;
-        }
-
-        try {
-            // create key
-            byte[] k = getKey();
-            Key key = new SecretKeySpec(k, ENCRYPTION);
-            Cipher cipher = Cipher.getInstance(ENCRYPTION);
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-
-            // encrypt text
-            byte[] cleartext = value.getBytes(FORMAT);
-            byte[] ciphertext = cipher.doFinal(cleartext);
-
-            // encode with base64 to be used as a url parameter
-            return CmsEncoder.encode(new String(Base64.encodeBase64(ciphertext)));
-        } catch (Exception ex) {
-            // error while encrypting
-        }
-
-        return null;
-    }
-
-    /**
-     * Converts the password to machine readable form.<p>
-     *
-     * @return the password in machine readable form
-     */
-    private byte[] getKey() {
-
-        try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            md5.update(PASSWORD.toString().getBytes());
-            byte[] key = md5.digest();
-            // now get the first 8 bytes
-            byte[] finalKey = new byte[8];
-            for (int i = 0; i <= 7; i++) {
-                finalKey[i] = key[i];
-            }
-            return finalKey;
-        } catch (NoSuchAlgorithmException ex) {
-            // found no matching algorithm
-        }
-        return null;
-    }
-
-    /**
-     * Returns the request parameter with the specified name.<p>
-     *
-     * @param parameter the parameter to return
-     *
-     * @return the parameter value
-     */
-    private String getParameter(String parameter) {
-
-        try {
-            return (m_parameterMap.get(parameter))[0];
-        } catch (NullPointerException e) {
-            return "";
-        }
-    }
-
-    /**
-     * Converts a color range of a color into a hex string.<p>
-     *
-     * @param colorRange the color range of a color
-     * @return the hex string of the color range
-     */
-    private String toHexString(int colorRange) {
-
-        if (colorRange < 10) {
-            return "0" + Integer.toHexString(colorRange);
-        } else {
-            return Integer.toHexString(colorRange);
-        }
     }
 }

@@ -65,6 +65,17 @@ public class CmsCaptchaField extends A_CmsField {
     /** HTML field type: captcha image. */
     private static final String TYPE = "captcha";
 
+    /**
+     * Returns the type of the input field, e.g. "text" or "select".
+     * <p>
+     *
+     * @return the type of the input field
+     */
+    public static String getStaticType() {
+
+        return TYPE;
+    }
+
     /** The settings to render captcha images. */
     private CmsCaptchaSettings m_captchaSettings;
 
@@ -86,17 +97,6 @@ public class CmsCaptchaField extends A_CmsField {
         setValue(fieldValue);
         setLabel(fieldLabel);
         setMandatory(true);
-    }
-
-    /**
-     * Returns the type of the input field, e.g. "text" or "select".
-     * <p>
-     *
-     * @return the type of the input field
-     */
-    public static String getStaticType() {
-
-        return TYPE;
     }
 
     /**
@@ -135,6 +135,7 @@ public class CmsCaptchaField extends A_CmsField {
                         + System.currentTimeMillis())).append("\" width=\"").append(
                             captchaSettings.getImageWidth()).append("\" height=\"").append(
                                 captchaSettings.getImageHeight()).append("\" alt=\"\"/>").append("\n");
+            captchaHtml.append("<input type=\"hidden\" id=\"form_captcha_token\" value=\"\">");
             captchaHtml.append("<br/>\n");
         }
 

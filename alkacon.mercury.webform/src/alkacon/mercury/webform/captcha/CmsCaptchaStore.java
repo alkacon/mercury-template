@@ -64,6 +64,18 @@ public class CmsCaptchaStore {
     }
 
     /**
+     * Removes all invalid tokens from the store.
+     * <p>
+     *
+     */
+    private void clean() {
+
+        LOG.info("Size of store before cleaning: " + size() + ".");
+        getStore().entrySet().removeIf(entry -> !entry.getValue().isValid());
+        LOG.info("Size of store after cleaning: " + size() + ".");
+    }
+
+    /**
      * Whether a valid captcha token is stored for a given token ID.
      * <p>
      *
@@ -77,6 +89,7 @@ public class CmsCaptchaStore {
 
     /**
      * Returns the stored captcha token for a given token ID if valid, null otherwise.
+     * Silently removes all invalid tokens from the store.
      * <p>
      *
      * @param tokenId The token ID
@@ -84,6 +97,7 @@ public class CmsCaptchaStore {
      */
     public CmsCaptchaToken get(String tokenId) {
 
+        clean();
         if (!contains(tokenId)) {
             return null;
         }
@@ -131,5 +145,16 @@ public class CmsCaptchaStore {
     public void remove(String tokenId) {
 
         getStore().remove(tokenId);
+    }
+
+    /**
+     * Returns the size of this store.
+     * <p>
+     *
+     * @return The size of the store
+     */
+    public int size() {
+
+        return getStore().size();
     }
 }

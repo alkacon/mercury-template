@@ -22,6 +22,8 @@ package alkacon.mercury.webform.fields;
 import alkacon.mercury.webform.CmsFormHandler;
 import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
 import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
+import alkacon.mercury.webform.captcha.CmsCaptchaStore;
+import alkacon.mercury.webform.captcha.CmsCaptchaToken;
 
 import org.opencms.flex.CmsFlexController;
 import org.opencms.i18n.CmsMessages;
@@ -35,6 +37,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -56,8 +59,8 @@ public class CmsCaptchaField extends A_CmsField {
     /** Request parameter name of the captcha phrase. */
     public static final String C_PARAM_CAPTCHA_PHRASE = "captchaphrase";
 
-    /** Session parameter name to store the webform captcha settings. */
-    public static final String SESSION_PARAM_CAPTCHASETTINGS = "__mercury_webform_captchasettings";
+    /** Request parameter name of the captcha token id. */
+    public static final String C_PARAM_CAPTCHA_TOKEN_ID = "captcha_token_id";
 
     /** The log object for this class. */
     private static final Log LOG = CmsLog.getLog(CmsCaptchaField.class);
@@ -126,16 +129,31 @@ public class CmsCaptchaField extends A_CmsField {
                 service.getTextChallengeForID(sessionId, formHandler.getCmsObject().getRequestContext().getLocale()));
             captchaHtml.append("</div>\n");
         } else {
+            String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+            if (tokenId.isEmpty()) {
+                tokenId = UUID.randomUUID().toString();
+            }
             // image captcha, insert image
             captchaHtml.append("<img id=\"form_captcha_id\" src=\"").append(
                 formHandler.link(
                     "/system/modules/alkacon.mercury.webform/elements/captcha.jsp?"
                         + captchaSettings.toRequestParams(formHandler.getCmsObject())
+                        + "&"
+                        + C_PARAM_CAPTCHA_TOKEN_ID
+                        + "="
+                        + tokenId
                         + "#"
                         + System.currentTimeMillis())).append("\" width=\"").append(
                             captchaSettings.getImageWidth()).append("\" height=\"").append(
                                 captchaSettings.getImageHeight()).append("\" alt=\"\"/>").append("\n");
-            captchaHtml.append("<input type=\"hidden\" id=\"form_captcha_token\" value=\"\">");
+            captchaHtml.append(
+                "<input type=\"hidden\" id=\""
+                    + C_PARAM_CAPTCHA_TOKEN_ID
+                    + "\" name=\""
+                    + C_PARAM_CAPTCHA_TOKEN_ID
+                    + "\" value=\""
+                    + tokenId
+                    + "\">\n");
             captchaHtml.append("<br/>\n");
         }
 
@@ -178,16 +196,6 @@ public class CmsCaptchaField extends A_CmsField {
 
         boolean result = false;
         CmsCaptchaSettings settings = m_captchaSettings;
-        // check if there are changed captcha settings stored in the session (true if first image generation failed)
-        CmsCaptchaSettings sessionSettings = (CmsCaptchaSettings)jsp.getRequest().getSession().getAttribute(
-            SESSION_PARAM_CAPTCHASETTINGS + m_captchaSettings.getConfigId());
-        if (sessionSettings != null) {
-            // use captcha settings from session to validate the response
-            settings = sessionSettings;
-            jsp.getRequest().getSession().removeAttribute(
-                SESSION_PARAM_CAPTCHASETTINGS + m_captchaSettings.getConfigId());
-        }
-        String sessionId = jsp.getRequest().getSession().getId();
 
         if (CmsStringUtil.isNotEmpty(captchaPhrase)) {
             // try to validate the phrase
@@ -196,9 +204,8 @@ public class CmsCaptchaField extends A_CmsField {
                     settings,
                     jsp.getCmsObject());
                 if (captchaService != null) {
-                    result = captchaService.validateResponseForID(
-                        sessionId + m_captchaSettings.getConfigId(),
-                        captchaPhrase).booleanValue();
+                    String tokenId = jsp.getRequest().getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+                    result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();
                 }
             } catch (CaptchaServiceException cse) {
                 // most often this will be
@@ -219,35 +226,35 @@ public class CmsCaptchaField extends A_CmsField {
      */
     public void writeCaptchaImage(CmsJspActionElement cms) throws IOException {
 
-        // remove eventual session attribute containing captcha settings
-        cms.getRequest().getSession().removeAttribute(SESSION_PARAM_CAPTCHASETTINGS + m_captchaSettings.getConfigId());
-        String sessionId = cms.getRequest().getSession().getId();
-        Locale locale = cms.getRequestContext().getLocale();
+        String tokenId = cms.getRequest().getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+        CmsCaptchaStore captchaStore = new CmsCaptchaStore(cms);
         BufferedImage captchaImage = null;
-        int maxTries = 10;
-        do {
-            try {
-                maxTries--;
-                captchaImage = ((ImageCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
-                    m_captchaSettings,
-                    cms.getCmsObject())).getImageChallengeForID(sessionId + m_captchaSettings.getConfigId(), locale);
-            } catch (CaptchaException cex) {
-                // image size is too small, increase dimensions and try it again
-                if (LOG.isInfoEnabled()) {
-                    LOG.info(cex);
-                    LOG.info(
-                        Messages.get().getBundle().key(
-                            Messages.LOG_ERR_CAPTCHA_CONFIG_IMAGE_SIZE_2,
-                            new Object[] {m_captchaSettings.getPresetPath(), new Integer(maxTries)}));
+        if (captchaStore.contains(tokenId)) {
+            captchaImage = captchaStore.get(tokenId).getImage();
+        } else {
+            Locale locale = cms.getRequestContext().getLocale();
+            int maxTries = 10;
+            do {
+                try {
+                    maxTries--;
+                    captchaImage = ((ImageCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
+                        m_captchaSettings,
+                        cms.getCmsObject())).getImageChallengeForID(tokenId, locale);
+                } catch (CaptchaException cex) {
+                    // image size is too small, increase dimensions and try it again
+                    if (LOG.isInfoEnabled()) {
+                        LOG.info(cex);
+                        LOG.info(
+                            Messages.get().getBundle().key(
+                                Messages.LOG_ERR_CAPTCHA_CONFIG_IMAGE_SIZE_2,
+                                new Object[] {m_captchaSettings.getPresetPath(), new Integer(maxTries)}));
+                    }
+                    m_captchaSettings.setImageHeight((int)(m_captchaSettings.getImageHeight() * 1.1));
+                    m_captchaSettings.setImageWidth((int)(m_captchaSettings.getImageWidth() * 1.1));
                 }
-                m_captchaSettings.setImageHeight((int)(m_captchaSettings.getImageHeight() * 1.1));
-                m_captchaSettings.setImageWidth((int)(m_captchaSettings.getImageWidth() * 1.1));
-                // IMPORTANT: store changed captcha settings in session, they have to be used when validating the phrase
-                cms.getRequest().getSession().setAttribute(
-                    SESSION_PARAM_CAPTCHASETTINGS + m_captchaSettings.getConfigId(),
-                    m_captchaSettings.clone());
-            }
-        } while ((captchaImage == null) && (maxTries > 0));
+            } while ((captchaImage == null) && (maxTries > 0));
+            captchaStore.put(tokenId, new CmsCaptchaToken(captchaImage));
+        }
 
         ServletOutputStream out = null;
         try {

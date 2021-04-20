@@ -64,7 +64,7 @@ public class CmsCaptchaStore {
     }
 
     /**
-     * Whether a captcha token is stored for a token ID.
+     * Whether a valid captcha token is stored for a given token ID.
      * <p>
      *
      * @param tokenId The token ID.
@@ -72,16 +72,21 @@ public class CmsCaptchaStore {
      */
     public boolean contains(String tokenId) {
 
-        return getStore().containsKey(tokenId);
+        return getStore().containsKey(tokenId) && getStore().get(tokenId).isValid();
     }
 
     /**
-     * Returns the stored captcha token for a given token ID.
+     * Returns the stored captcha token for a given token ID if valid, null otherwise.
+     * <p>
+     *
      * @param tokenId The token ID
      * @return The stored captcha token.
      */
     public CmsCaptchaToken get(String tokenId) {
 
+        if (!contains(tokenId)) {
+            return null;
+        }
         return getStore().get(tokenId);
     }
 
@@ -107,12 +112,14 @@ public class CmsCaptchaStore {
 
     /**
      * Adds a captcha token for a given token ID to the store.
+     * <p>
+     *
      * @param tokenId The token ID
      * @param captchaToken The captcha token
      */
     public void put(String tokenId, CmsCaptchaToken captchaToken) {
 
-        getStore().putIfAbsent(tokenId, captchaToken);
+        getStore().put(tokenId, captchaToken);
     }
 
     /**

@@ -230,6 +230,7 @@ public class CmsCaptchaField extends A_CmsField {
         CmsCaptchaStore captchaStore = new CmsCaptchaStore(cms);
         BufferedImage captchaImage = null;
         if (captchaStore.contains(tokenId)) {
+            LOG.info("Stored captcha image found for token ID " + tokenId + ".");
             captchaImage = captchaStore.get(tokenId).getImage();
         } else {
             Locale locale = cms.getRequestContext().getLocale();
@@ -253,6 +254,7 @@ public class CmsCaptchaField extends A_CmsField {
                     m_captchaSettings.setImageWidth((int)(m_captchaSettings.getImageWidth() * 1.1));
                 }
             } while ((captchaImage == null) && (maxTries > 0));
+            LOG.info("Creating new captcha token for token ID " + tokenId + ".");
             captchaStore.put(tokenId, new CmsCaptchaToken(captchaImage));
         }
 

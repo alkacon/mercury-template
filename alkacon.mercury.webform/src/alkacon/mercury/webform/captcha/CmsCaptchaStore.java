@@ -110,7 +110,7 @@ public class CmsCaptchaStore {
      *
      * @return The concurrent hash map storing the captcha tokens.
      */
-    private Map<String, CmsCaptchaToken> getStore() {
+    private synchronized Map<String, CmsCaptchaToken> getStore() {
 
         PageContext context = m_jspActionElement.getJspContext();
         if (context.getAttribute(ATTRIBUTE_CAPTCHASTORE, PageContext.APPLICATION_SCOPE) == null) {

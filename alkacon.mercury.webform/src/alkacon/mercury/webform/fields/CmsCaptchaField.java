@@ -209,7 +209,7 @@ public class CmsCaptchaField extends A_CmsField {
                 if (captchaService != null) {
                     if (formHandler.hasValidationErrors()) {
                         // postpone the captcha validation if there are validation
-                        //errors for other fields
+                        // errors for other fields
                         result = true;
                     } else {
                         result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();

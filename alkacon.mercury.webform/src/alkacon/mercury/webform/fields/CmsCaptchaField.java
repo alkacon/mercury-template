@@ -188,14 +188,16 @@ public class CmsCaptchaField extends A_CmsField {
      * Validates the captcha phrase entered by the user.
      * <p>
      *
-     * @param jsp the Cms JSP
+     * @param formHandler the Cms form handler
      * @param captchaPhrase the captcha phrase to be validate
      * @return true, if the captcha phrase entered by the user is correct, false otherwise
      */
-    public boolean validateCaptchaPhrase(CmsJspActionElement jsp, String captchaPhrase) {
+    public boolean validateCaptchaPhrase(CmsFormHandler formHandler, String captchaPhrase) {
 
         boolean result = false;
         CmsCaptchaSettings settings = m_captchaSettings;
+        String tokenId = formHandler.getRequest().getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+        CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
 
         if (CmsStringUtil.isNotEmpty(captchaPhrase)) {
             // try to validate the phrase
@@ -203,18 +205,26 @@ public class CmsCaptchaField extends A_CmsField {
             try {
                 CaptchaService captchaService = CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
                     settings,
-                    jsp.getCmsObject());
+                    formHandler.getCmsObject());
                 if (captchaService != null) {
-                    String tokenId = jsp.getRequest().getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
-                    result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();
+                    if (formHandler.hasValidationErrors()) {
+                        // postpone the captcha validation if there are validation
+                        //errors for other fields
+                        result = true;
+                    } else {
+                        result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();
+                        captchaStore.remove(tokenId);
+                        formHandler.getFormConfiguration().getCaptchaField().setValue("");
+                    }
                 }
             } catch (CaptchaServiceException cse) {
                 // most often this will be
                 // "com.octo.captcha.service.CaptchaServiceException: Invalid ID, could not validate unexisting or already validated captcha"
                 // in case someone hits the back button and submits again
+                captchaStore.remove(tokenId);
+                formHandler.getFormConfiguration().getCaptchaField().setValue("");
             }
         }
-
         return result;
     }
 

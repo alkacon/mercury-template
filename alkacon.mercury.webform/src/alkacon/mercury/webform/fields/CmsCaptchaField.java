@@ -199,6 +199,7 @@ public class CmsCaptchaField extends A_CmsField {
 
         if (CmsStringUtil.isNotEmpty(captchaPhrase)) {
             // try to validate the phrase
+            captchaPhrase = captchaPhrase.toLowerCase();
             try {
                 CaptchaService captchaService = CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
                     settings,

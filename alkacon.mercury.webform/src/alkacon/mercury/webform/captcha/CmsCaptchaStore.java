@@ -70,9 +70,9 @@ public class CmsCaptchaStore {
      */
     private void clean() {
 
-        LOG.info("Size of store before cleaning: " + size() + ".");
+        LOG.info("Size of the store before cleaning: " + size() + ".");
         getStore().entrySet().removeIf(entry -> !entry.getValue().isValid());
-        LOG.info("Size of store after cleaning: " + size() + ".");
+        LOG.info("Size of the store after cleaning: " + size() + ".");
     }
 
     /**
@@ -105,7 +105,7 @@ public class CmsCaptchaStore {
     }
 
     /**
-     * Returns the internal captcha token store.
+     * Returns the internal captcha token store with lazy initialization.
      * <p>
      *
      * @return The concurrent hash map storing the captcha tokens.

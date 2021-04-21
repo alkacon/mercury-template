@@ -858,9 +858,8 @@ public class CmsFormHandler extends CmsJspActionElement {
                 }
             }
             req.getSession().setAttribute(ATTRIBUTE_FILEITEMS, fileUploads);
-        } else {
-            req.getSession().removeAttribute(ATTRIBUTE_FILEITEMS);
         }
+
         String actionHashBase = formConfigUri;
         if ((null != dynamicConfig) && dynamicConfig.containsKey(CmsForm.CONFIG_KEY_FORM_ID)) {
             actionHashBase = dynamicConfig.get(CmsForm.CONFIG_KEY_FORM_ID);

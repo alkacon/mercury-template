@@ -660,7 +660,6 @@ public class CmsForm {
         CmsMessages messages,
         Map<String, CmsFieldText> fieldTexts,
         Map<String, List<String>> subFieldPaths,
-        Map<String, FileItem> fileUploads,
         String subFieldNameSuffix,
         boolean initial,
         boolean subField)
@@ -744,7 +743,6 @@ public class CmsForm {
                                     messages,
                                     fieldTexts,
                                     subFieldPaths,
-                                    fileUploads,
                                     suffix,
                                     initial,
                                     true));
@@ -776,6 +774,10 @@ public class CmsForm {
                 field.setValidationExpression(null != stringValue ? stringValue : "");
             }
             if (CmsFileUploadField.class.isAssignableFrom(field.getClass())) {
+                // get the file uploads stored in the session
+                @SuppressWarnings("unchecked")
+                Map<String, FileItem> fileUploads = (Map<String, FileItem>)jsp.getRequest().getSession().getAttribute(
+                    CmsFormHandler.ATTRIBUTE_FILEITEMS);
                 if (fileUploads != null) {
                     FileItem attachment = fileUploads.get(field.getName());
                     if (attachment != null) {
@@ -2024,11 +2026,6 @@ public class CmsForm {
             subFieldPaths.put(fieldLabel, storedPaths);
         }
 
-        // get the file uploads stored in the session
-        @SuppressWarnings("unchecked")
-        Map<String, FileItem> fileUploads = (Map<String, FileItem>)jsp.getRequest().getSession().getAttribute(
-            CmsFormHandler.ATTRIBUTE_FILEITEMS);
-
         // initialize the defined input fields
         List<I_CmsXmlContentValue> fieldValues = getContentValues(content, NODE_INPUTFIELD, locale);
         for (Iterator<I_CmsXmlContentValue> i = fieldValues.iterator(); i.hasNext();) {
@@ -2042,7 +2039,6 @@ public class CmsForm {
                     messages,
                     fieldTexts,
                     subFieldPaths,
-                    fileUploads,
                     "",
                     initial,
                     false));

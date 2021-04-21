@@ -200,7 +200,7 @@ public class CmsCaptchaField extends A_CmsField {
 
         boolean result = false;
         CmsCaptchaSettings settings = m_captchaSettings;
-        String tokenId = formHandler.getRequest().getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+        String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
         CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
 
         if (CmsStringUtil.isNotEmpty(captchaPhrase)) {

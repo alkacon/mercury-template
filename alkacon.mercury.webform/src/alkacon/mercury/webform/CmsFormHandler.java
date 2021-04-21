@@ -79,6 +79,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import javax.mail.internet.AddressException;
@@ -372,11 +373,22 @@ public class CmsFormHandler extends CmsJspActionElement {
                 }
             }
             sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_ERROR, errorMessage);
+            String tokenId = getParameter(CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID);
+            if (tokenId.isEmpty()) {
+                tokenId = UUID.randomUUID().toString();
+            }
             sTemplate.setAttribute(
                 I_CmsTemplateCheckPage.ATTR_CAPTCHA_IMAGE_LINK,
                 OpenCms.getLinkManager().substituteLink(
                     getCmsObject(),
-                    PATH_CAPTCHA_JSP + "?" + captchaField.getCaptchaSettings().toRequestParams(getCmsObject())));
+                    PATH_CAPTCHA_JSP
+                        + "?"
+                        + captchaField.getCaptchaSettings().toRequestParams(getCmsObject())
+                        + "&"
+                        + CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID
+                        + "="
+                        + tokenId));
+            sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_TOKEN_ID, tokenId);
         }
 
         List<I_CmsField> fields = getFormConfiguration().getAllFields(true, false, false);

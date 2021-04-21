@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-event.formatter.teaser.compact)]]></NiceName>
     <Type><![CDATA[m-event]]></Type>
+    <Key><![CDATA[m/display/event-compact]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/event.jsp]]></target>

@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.list.formatter.static)]]></NiceName>
     <Type><![CDATA[listconfig]]></Type>
+    <Key><![CDATA[m/list/static]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/list/static.jsp]]></target>

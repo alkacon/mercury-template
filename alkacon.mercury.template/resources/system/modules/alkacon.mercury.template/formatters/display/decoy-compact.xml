@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-decoy.formatter.teaser.compact)]]></NiceName>
     <Type><![CDATA[m-decoy]]></Type>
+    <Key><![CDATA[m/display/decoy-compact]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/decoy.jsp]]></target>

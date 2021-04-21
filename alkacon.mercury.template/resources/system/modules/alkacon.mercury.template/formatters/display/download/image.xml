@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.download.formatter.image)]]></NiceName>
     <Type><![CDATA[image]]></Type>
+    <Key><![CDATA[m/display/download/image]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/download/download.jsp]]></target>

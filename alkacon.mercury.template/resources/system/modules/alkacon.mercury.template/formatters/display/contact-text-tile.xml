@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-contact.formatter.teaser.text-tile)]]></NiceName>
     <Type><![CDATA[m-contact]]></Type>
+    <Key><![CDATA[m/display/contact-text-tile]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact.jsp]]></target>

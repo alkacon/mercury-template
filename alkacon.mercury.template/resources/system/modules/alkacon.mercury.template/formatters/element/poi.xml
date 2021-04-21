@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-poi.formatter.element)]]></NiceName>
     <Type><![CDATA[m-poi]]></Type>
+    <Key><![CDATA[m/element/poi]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/poi.jsp]]></target>

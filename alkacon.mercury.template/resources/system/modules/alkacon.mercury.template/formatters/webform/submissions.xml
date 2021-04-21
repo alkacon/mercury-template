@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-webform-data.formatter.submissiondetail)]]></NiceName>
     <Type><![CDATA[m-webform-data]]></Type>
+    <Key><![CDATA[m/webform/submissions]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/webform/submissions.jsp]]></target>

@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-map.formatter.google)]]></NiceName>
     <Type><![CDATA[m-map]]></Type>
+    <Key><![CDATA[m/element/map-google]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/map-google.jsp]]></target>

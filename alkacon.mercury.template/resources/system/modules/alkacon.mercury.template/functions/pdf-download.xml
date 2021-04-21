@@ -3,6 +3,7 @@
 <FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
   <FunctionConfig language="en">
     <NiceName><![CDATA[%(key.function.pdf-download)]]></NiceName>
+    <Key><![CDATA[m/functions/pdf-download]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/functions/pdf-download.jsp]]></target>

@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-imageseries.formatter.teaser.accordion)]]></NiceName>
     <Type><![CDATA[m-imageseries]]></Type>
+    <Key><![CDATA[m/display/accordion/imageseries]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/accordion/imageseries.jsp]]></target>

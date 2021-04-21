@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-layout-area-simple.formatter.default)]]></NiceName>
     <Type><![CDATA[m-layout-area-simple]]></Type>
+    <Key><![CDATA[m/layout/area-simple]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/layout/simple.jsp]]></target>

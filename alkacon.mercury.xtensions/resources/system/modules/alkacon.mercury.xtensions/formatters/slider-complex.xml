@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-slider-complex.formatter.default)]]></NiceName>
     <Type><![CDATA[m-slider-complex]]></Type>
+    <Key><![CDATA[m/xtensions/slider-complex]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.xtensions/formatters/slider-complex.jsp]]></target>

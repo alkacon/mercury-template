@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-imageseries.formatter.teaser.masonry)]]></NiceName>
     <Type><![CDATA[m-imageseries]]></Type>
+    <Key><![CDATA[m/display/imageseries-masonry]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imageseries.jsp]]></target>

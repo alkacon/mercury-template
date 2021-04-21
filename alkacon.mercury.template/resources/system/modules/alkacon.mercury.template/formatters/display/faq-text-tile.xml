@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-faq.formatter.teaser.text-tile)]]></NiceName>
     <Type><![CDATA[m-faq]]></Type>
+    <Key><![CDATA[m/display/faq-text-tile]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/faq.jsp]]></target>

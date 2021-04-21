@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-tab.formatter.accordion)]]></NiceName>
     <Type><![CDATA[m-tab]]></Type>
+    <Key><![CDATA[m/element/tab-accordion]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/tab-accordion.jsp]]></target>

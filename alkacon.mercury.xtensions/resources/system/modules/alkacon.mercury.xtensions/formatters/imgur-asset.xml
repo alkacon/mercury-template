@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-imgur-asset.formatter.default)]]></NiceName>
     <Type><![CDATA[m-imgur-asset]]></Type>
+    <Key><![CDATA[m/xtensions/imgur-asset]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.xtensions/formatters/imgur-asset.jsp]]></target>

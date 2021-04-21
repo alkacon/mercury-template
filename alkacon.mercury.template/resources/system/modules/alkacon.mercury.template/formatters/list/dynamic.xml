@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.list.formatter.dynamic)]]></NiceName>
     <Type><![CDATA[listconfig]]></Type>
+    <Key><![CDATA[m/list/dynamic]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/list/dynamic.jsp]]></target>

@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-media.formatter.teaser.masonry)]]></NiceName>
     <Type><![CDATA[m-media]]></Type>
+    <Key><![CDATA[m/display/media-masonry]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/media.jsp]]></target>

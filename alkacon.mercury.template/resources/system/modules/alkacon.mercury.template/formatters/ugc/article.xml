@@ -4,6 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.ugc_config.formatter.article.form)]]></NiceName>
     <Type><![CDATA[ugc_config]]></Type>
+    <Key><![CDATA[m/ugc/article]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/ugc/article.jsp]]></target>

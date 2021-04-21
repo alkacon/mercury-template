@@ -52,11 +52,14 @@ public class CmsCaptchaToken {
     /** The captcha image belonging to this token. */
     BufferedImage m_image;
 
+    /** The captcha text belonging to this token. */
+    String m_text;
+
     /** The date when this token expires. */
     Date m_expiresAt;
 
     /**
-     * Creates a new captcha token.
+     * Creates a new image captcha token.
      * <p>
      *
      * @param image The captcha image
@@ -64,6 +67,18 @@ public class CmsCaptchaToken {
     public CmsCaptchaToken(BufferedImage image) {
 
         m_image = image;
+        setExpiresAt();
+    }
+
+    /**
+     * Creates a new text captcha token.
+     * <p>
+     *
+     * @param image The captcha text
+     */
+    public CmsCaptchaToken(String text) {
+
+        m_text = text;
         setExpiresAt();
     }
 

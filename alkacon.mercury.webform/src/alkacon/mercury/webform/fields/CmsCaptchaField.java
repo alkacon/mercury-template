@@ -117,22 +117,33 @@ public class CmsCaptchaField extends A_CmsField {
         String errorMessage = createStandardErrorMessage(errorKey, messages);
 
         CmsCaptchaSettings captchaSettings = getCaptchaSettings();
+        String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+        if (tokenId.isEmpty()) {
+            tokenId = UUID.randomUUID().toString();
+        }
+        CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
+        String hiddenInput = "<input type=\"hidden\" id=\""
+            + C_PARAM_CAPTCHA_TOKEN_ID
+            + "\" name=\""
+            + C_PARAM_CAPTCHA_TOKEN_ID
+            + "\" value=\""
+            + tokenId
+            + "\">\n";
 
         if (m_captchaSettings.isMathField()) {
             // this is a math captcha, print the challenge directly
-            String sessionId = formHandler.getRequest().getSession(true).getId();
             TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
                 m_captchaSettings,
                 formHandler.getCmsObject());
+            String captchaChallenge = service.getTextChallengeForID(
+                tokenId,
+                formHandler.getCmsObject().getRequestContext().getLocale());
             captchaHtml.append("<div style=\"margin: 0 0 2px 0;\">");
-            captchaHtml.append(
-                service.getTextChallengeForID(sessionId, formHandler.getCmsObject().getRequestContext().getLocale()));
+            captchaHtml.append(captchaChallenge);
             captchaHtml.append("</div>\n");
+            captchaHtml.append(hiddenInput);
+            captchaStore.put(tokenId, new CmsCaptchaToken(captchaChallenge));
         } else {
-            String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
-            if (tokenId.isEmpty()) {
-                tokenId = UUID.randomUUID().toString();
-            }
             // image captcha, insert image
             captchaHtml.append("<img id=\"form_captcha_id\" src=\"").append(
                 formHandler.link(
@@ -146,14 +157,7 @@ public class CmsCaptchaField extends A_CmsField {
                         + System.currentTimeMillis())).append("\" width=\"").append(
                             captchaSettings.getImageWidth()).append("\" height=\"").append(
                                 captchaSettings.getImageHeight()).append("\" alt=\"\"/>").append("\n");
-            captchaHtml.append(
-                "<input type=\"hidden\" id=\""
-                    + C_PARAM_CAPTCHA_TOKEN_ID
-                    + "\" name=\""
-                    + C_PARAM_CAPTCHA_TOKEN_ID
-                    + "\" value=\""
-                    + tokenId
-                    + "\">\n");
+            captchaHtml.append(hiddenInput);
             captchaHtml.append("<br/>\n");
         }
 

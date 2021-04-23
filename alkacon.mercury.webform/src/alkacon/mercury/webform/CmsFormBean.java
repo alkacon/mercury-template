@@ -50,19 +50,19 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
     private static final Log LOG = CmsLog.getLog(CmsFormBean.class);
 
     /** The form configuration. */
-    private I_CmsXmlDocument m_formConfig;
+    protected I_CmsXmlDocument m_formConfig;
 
     /** The ugc configuration. */
-    private CmsFormUgcConfiguration m_ugcConfig;
+    protected CmsFormUgcConfiguration m_ugcConfig;
 
     /** The dynamic form configuration. */
-    private Map<String, String> m_dynamicConfig = new HashMap<>();
+    protected Map<String, String> m_dynamicConfig = new HashMap<>();
 
     /** Flag, indicating if the UGC configuration has been initialized already. */
-    private boolean m_isUgcInitialized;
+    protected boolean m_isUgcInitialized;
 
     /** Field with additional configuration values. */
-    private Map<String, String> m_extraConfig = new HashMap<>();
+    protected Map<String, String> m_extraConfig = new HashMap<>();
 
     /**
      * Add an addtional config value to be accessible in the string template, e.g., to forward element settings.
@@ -177,6 +177,24 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
     }
 
     /**
+     * Returns the lazily initialized UGC configuration. Lazy initialization is necessary since the dynamic configuration has to be set first.
+     * @return the lazily initialized UGC configuration.
+     */
+    private CmsFormUgcConfiguration getUgcConfig() {
+
+        if (!m_isUgcInitialized) {
+            CmsFormUgcConfigurationReader ugcConfigReader = new CmsFormUgcConfigurationReader();
+            try {
+                m_ugcConfig = ugcConfigReader.readConfiguration(getCmsObject(), m_formConfig, m_dynamicConfig);
+            } catch (Exception e) {
+                //DO nothing, just return null.
+            }
+            m_isUgcInitialized = true;
+        }
+        return m_ugcConfig;
+    }
+
+    /**
      * Flag, indicating if the current user is allowed to manage the submissions.</p>
      *
      * Returns true, iff data is stored at all and the current user can access the folder where the submitted data is stored.
@@ -243,24 +261,6 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
             LOG.error(LogMessages.get().getBundle().key(LogMessages.ERR_READING_FORM_CONFIG_FAILED_0), e);
         }
         return this;
-    }
-
-    /**
-     * Returns the lazily initialized UGC configuration. Lazy initialization is necessary since the dynamic configuration has to be set first.
-     * @return the lazily initialized UGC configuration.
-     */
-    private CmsFormUgcConfiguration getUgcConfig() {
-
-        if (!m_isUgcInitialized) {
-            CmsFormUgcConfigurationReader ugcConfigReader = new CmsFormUgcConfigurationReader();
-            try {
-                m_ugcConfig = ugcConfigReader.readConfiguration(getCmsObject(), m_formConfig, m_dynamicConfig);
-            } catch (Exception e) {
-                //DO nothing, just return null.
-            }
-            m_isUgcInitialized = true;
-        }
-        return m_ugcConfig;
     }
 
 }

@@ -23,6 +23,7 @@
         </link>
         <link name="link5" internal="true" type="A">
           <target><![CDATA[/sites/web/alkacon/]]></target>
+          <uuid>28cfeac6-d070-11e9-861d-0242ac11002b</uuid>
         </link>
       </links>
       <content><![CDATA[<p>August 18, 2020: OpenCms 11.0.2 is a maintenance release for OpenCms 11. It fixes a number of issues that have been detected in OpenCms 11. Also incuded are some improvements and security enhancements.</p>

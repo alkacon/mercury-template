@@ -8,34 +8,18 @@
       <ParentInstanceId><![CDATA[85e85a91-4b1e-11e9-8f98-0242ac11002b]]></ParentInstanceId>
       <IsRootContainer>true</IsRootContainer>
       <Elements>
+        <ElementInstanceId>a57e1216-ef6b-11e5-9b44-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/section/text-image</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/sites/default/mercury-demo/.content/section-m/cs_00011.xml]]></target>
             <uuid>f40d6f9c-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/content-section.jsp]]></target>
-            <uuid>affdb581-e6fe-47fd-a455-915f7a3b44ec</uuid>
-          </link>
-        </Formatter>
         <Properties>
           <Name><![CDATA[effect]]></Name>
           <Value>
             <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[a57e1216-ef6b-11e5-9b44-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#attachments]]></Name>
-          <Value>
-            <String><![CDATA[f9fa64c3-bb39-48fd-a0dc-3dd9c5be622e]]></String>
           </Value>
         </Properties>
         <Properties>
@@ -100,34 +84,18 @@
         </Properties>
       </Elements>
       <Elements>
+        <ElementInstanceId>b341a157-ef6b-11e5-9b44-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/section/text-image</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/sites/default/mercury-demo/.content/section-m/cs_00092.xml]]></target>
             <uuid>f440db9f-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/content-section.jsp]]></target>
-            <uuid>affdb581-e6fe-47fd-a455-915f7a3b44ec</uuid>
-          </link>
-        </Formatter>
         <Properties>
           <Name><![CDATA[effect]]></Name>
           <Value>
             <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[b341a157-ef6b-11e5-9b44-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#attachments]]></Name>
-          <Value>
-            <String><![CDATA[f9fa64c3-bb39-48fd-a0dc-3dd9c5be622e]]></String>
           </Value>
         </Properties>
         <Properties>

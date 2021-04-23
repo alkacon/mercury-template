@@ -3,22 +3,51 @@
 <AlkaconContainerPages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/container_page.xsd">
   <AlkaconContainerPage language="en">
     <Containers>
+      <Name><![CDATA[mercury-page]]></Name>
+      <Type><![CDATA[area]]></Type>
+      <IsRootContainer>true</IsRootContainer>
+      <Elements>
+        <ElementInstanceId>778a62bc-ca46-11e9-8136-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/layout/group</FormatterKey>
+        <Uri>
+          <link type="STRONG">
+            <target><![CDATA[/system/shared/mercury/template/layout-group/lg_00006.xml]]></target>
+            <uuid>7bf6ef22-c33e-11e9-9daf-0242ac11002b</uuid>
+          </link>
+        </Uri>
+        <Properties>
+          <Name><![CDATA[SYSTEM::model_group_state]]></Name>
+          <Value>
+            <String><![CDATA[isModelGroup]]></String>
+          </Value>
+        </Properties>
+        <Properties>
+          <Name><![CDATA[SYSTEM::use_as_copy_model]]></Name>
+          <Value>
+            <String><![CDATA[false]]></String>
+          </Value>
+        </Properties>
+        <Properties>
+          <Name><![CDATA[showBreadcrumbs]]></Name>
+          <Value>
+            <String><![CDATA[true]]></String>
+          </Value>
+        </Properties>
+      </Elements>
+    </Containers>
+    <Containers>
       <Name><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b-header-breadcrumbs]]></Name>
       <Type><![CDATA[nav-breadcrumbs]]></Type>
       <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
       <Elements>
+        <ElementInstanceId>c8463d54-4fd7-11e9-8b0e-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/navigation/breadcrumbs</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/sites/default/mercury-demo/.content/navigation-m/nav_00001.xml]]></target>
             <uuid>f403f98e-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/navigation/breadcrumbs.jsp]]></target>
-            <uuid>8bd8eb9d-4e06-11e9-bf9f-0242ac11002b</uuid>
-          </link>
-        </Formatter>
         <Properties>
           <Name><![CDATA[breadcrumbsFromRoot]]></Name>
           <Value>
@@ -37,18 +66,6 @@
             <String><![CDATA[hidden-xs hidden-sm hidden-md]]></String>
           </Value>
         </Properties>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[c8463d54-4fd7-11e9-8b0e-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#778a62bc-ca46-11e9-8136-0242ac11002b-header-breadcrumbs]]></Name>
-          <Value>
-            <String><![CDATA[944e72a0-4e06-11e9-bf9f-0242ac11002b]]></String>
-          </Value>
-        </Properties>
       </Elements>
     </Containers>
     <Containers>
@@ -56,18 +73,8 @@
       <Type><![CDATA[header-config]]></Type>
       <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
       <Elements>
-        <Uri>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/functions/header-config.xml]]></target>
-            <uuid>caf9cb05-c8e3-11e9-bfcb-0242ac11002b</uuid>
-          </link>
-        </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/org.opencms.base/formatters/function.jsp]]></target>
-            <uuid>087ba7c9-e7fc-4336-acb8-d3416a4eb1fd</uuid>
-          </link>
-        </Formatter>
+        <ElementInstanceId>886d0c4d-ca46-11e9-8136-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/functions/header-config</FormatterKey>
         <Properties>
           <Name><![CDATA[acDisplay]]></Name>
           <Value>
@@ -90,18 +97,6 @@
           <Name><![CDATA[bcDisplay]]></Name>
           <Value>
             <String><![CDATA[bc-show]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[886d0c4d-ca46-11e9-8136-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#778a62bc-ca46-11e9-8136-0242ac11002b-header-config]]></Name>
-          <Value>
-            <String><![CDATA[caf9cb05-c8e3-11e9-bfcb-0242ac11002b]]></String>
           </Value>
         </Properties>
         <Properties>
@@ -201,149 +196,14 @@
       <Type><![CDATA[row]]></Type>
       <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
       <Elements>
+        <ElementInstanceId>bf71ac5e-ca46-11e9-8136-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/layout/row-simple</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/system/shared/mercury/template/layout-row/lr_00001.xml]]></target>
             <uuid>f5151b14-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/layout/simple.jsp]]></target>
-            <uuid>f82ae476-07b4-420a-a0ca-b3947133925f</uuid>
-          </link>
-        </Formatter>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[bf71ac5e-ca46-11e9-8136-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#778a62bc-ca46-11e9-8136-0242ac11002b-header-container]]></Name>
-          <Value>
-            <String><![CDATA[62ec330f-9e9d-48e4-a0a8-48e3152593a4]]></String>
-          </Value>
-        </Properties>
-      </Elements>
-    </Containers>
-    <Containers>
-      <Name><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b-header-image]]></Name>
-      <Type><![CDATA[image-minimal]]></Type>
-      <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
-      <Elements>
-        <Uri>
-          <link type="STRONG">
-            <target><![CDATA[/sites/default/mercury-demo/.content/section-m/cs_00073.xml]]></target>
-            <uuid>f4345846-3a95-11e9-bd84-0242ac11002b</uuid>
-          </link>
-        </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/image-minimal.jsp]]></target>
-            <uuid>35a1a301-bf5f-4ac1-892c-fd6bdef114d1</uuid>
-          </link>
-        </Formatter>
-        <CreateNew>true</CreateNew>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[bbed3a92-4fd7-11e9-8b0e-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#778a62bc-ca46-11e9-8136-0242ac11002b-header-image]]></Name>
-          <Value>
-            <String><![CDATA[4635dba7-cef9-4cae-8a56-ccaf5bf2ccc2]]></String>
-          </Value>
-        </Properties>
-      </Elements>
-    </Containers>
-    <Containers>
-      <Name><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b-header-linksequence]]></Name>
-      <Type><![CDATA[linksequence-header]]></Type>
-      <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
-      <Elements>
-        <Uri>
-          <link type="STRONG">
-            <target><![CDATA[/sites/default/mercury-demo/.content/linksequence-m/ls_00003.xml]]></target>
-            <uuid>f3eb8ff5-3a95-11e9-bd84-0242ac11002b</uuid>
-          </link>
-        </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/linksequence.jsp]]></target>
-            <uuid>8970f120-10a0-40c9-8796-4a3f5df368ac</uuid>
-          </link>
-        </Formatter>
-        <CreateNew>true</CreateNew>
-        <Properties>
-          <Name><![CDATA[addCssWrapper]]></Name>
-          <Value>
-            <String><![CDATA[cap-upper]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[d5bc21c6-4fd7-11e9-8b0e-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#778a62bc-ca46-11e9-8136-0242ac11002b-header-linksequence]]></Name>
-          <Value>
-            <String><![CDATA[3a1d86f0-ce5b-11e9-a312-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[iconClass]]></Name>
-          <Value>
-            <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-      </Elements>
-    </Containers>
-    <Containers>
-      <Name><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b-header-nav-main]]></Name>
-      <Type><![CDATA[nav-main]]></Type>
-      <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
-      <Elements>
-        <Uri>
-          <link type="STRONG">
-            <target><![CDATA[/sites/default/mercury-demo/.content/navigation-m/nav_00001.xml]]></target>
-            <uuid>f403f98e-3a95-11e9-bd84-0242ac11002b</uuid>
-          </link>
-        </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/navigation/main.jsp]]></target>
-            <uuid>8c657082-7e1a-40f6-a9e2-57896605304c</uuid>
-          </link>
-        </Formatter>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[caf3d125-4fd7-11e9-8b0e-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#778a62bc-ca46-11e9-8136-0242ac11002b-header-nav-main]]></Name>
-          <Value>
-            <String><![CDATA[4edb2a62-eb97-49df-bb86-ad044788d21b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showSearch]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[textDisplay]]></Name>
-          <Value>
-            <String><![CDATA[cap-css]]></String>
-          </Value>
-        </Properties>
       </Elements>
     </Containers>
     <Containers>
@@ -351,34 +211,18 @@
       <Type><![CDATA[element]]></Type>
       <ParentInstanceId><![CDATA[bf71ac5e-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
       <Elements>
+        <ElementInstanceId>a2f21e20-4fd7-11e9-8b0e-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/section/image-only</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/sites/default/mercury-demo/.content/section-m/cs_00130.xml]]></target>
             <uuid>da11d7b3-4fc3-11e9-8b0e-0242ac11002b</uuid>
           </link>
         </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/content-section.jsp]]></target>
-            <uuid>affdb581-e6fe-47fd-a455-915f7a3b44ec</uuid>
-          </link>
-        </Formatter>
         <Properties>
           <Name><![CDATA[effect]]></Name>
           <Value>
             <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[a2f21e20-4fd7-11e9-8b0e-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#bf71ac5e-ca46-11e9-8136-0242ac11002b-maincol]]></Name>
-          <Value>
-            <String><![CDATA[09477380-9f7a-44ae-8262-eb5d9d1354f8]]></String>
           </Value>
         </Properties>
         <Properties>
@@ -414,50 +258,82 @@
       </Elements>
     </Containers>
     <Containers>
-      <Name><![CDATA[mercury-page]]></Name>
-      <Type><![CDATA[area]]></Type>
-      <IsRootContainer>true</IsRootContainer>
+      <Name><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b-header-image]]></Name>
+      <Type><![CDATA[image-minimal]]></Type>
+      <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
       <Elements>
+        <ElementInstanceId>bbed3a92-4fd7-11e9-8b0e-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/section/image-minimal</FormatterKey>
         <Uri>
           <link type="STRONG">
-            <target><![CDATA[/system/shared/mercury/template/layout-group/lg_00006.xml]]></target>
-            <uuid>7bf6ef22-c33e-11e9-9daf-0242ac11002b</uuid>
+            <target><![CDATA[/sites/default/mercury-demo/.content/section-m/cs_00073.xml]]></target>
+            <uuid>f4345846-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </Uri>
-        <Formatter>
+        <Properties>
+          <Name><![CDATA[SYSTEM::create_new]]></Name>
+          <Value>
+            <String><![CDATA[true]]></String>
+          </Value>
+        </Properties>
+      </Elements>
+    </Containers>
+    <Containers>
+      <Name><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b-header-linksequence]]></Name>
+      <Type><![CDATA[linksequence-header]]></Type>
+      <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
+      <Elements>
+        <ElementInstanceId>d5bc21c6-4fd7-11e9-8b0e-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/element/linksequence-header</FormatterKey>
+        <Uri>
           <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/layout/group.jsp]]></target>
-            <uuid>24e647af-377d-4f58-8783-0fa08f8ba425</uuid>
+            <target><![CDATA[/sites/default/mercury-demo/.content/linksequence-m/ls_00003.xml]]></target>
+            <uuid>f3eb8ff5-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
-        </Formatter>
+        </Uri>
         <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#mercury-page]]></Name>
-          <Value>
-            <String><![CDATA[850fab24-e13e-46d6-b738-f4c18d0e1690]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[model_group_state]]></Name>
-          <Value>
-            <String><![CDATA[isModelGroup]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showBreadcrumbs]]></Name>
+          <Name><![CDATA[SYSTEM::create_new]]></Name>
           <Value>
             <String><![CDATA[true]]></String>
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[use_as_copy_model]]></Name>
+          <Name><![CDATA[addCssWrapper]]></Name>
           <Value>
-            <String><![CDATA[false]]></String>
+            <String><![CDATA[cap-upper]]></String>
+          </Value>
+        </Properties>
+        <Properties>
+          <Name><![CDATA[iconClass]]></Name>
+          <Value>
+            <String><![CDATA[none]]></String>
+          </Value>
+        </Properties>
+      </Elements>
+    </Containers>
+    <Containers>
+      <Name><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b-header-nav-main]]></Name>
+      <Type><![CDATA[nav-main]]></Type>
+      <ParentInstanceId><![CDATA[778a62bc-ca46-11e9-8136-0242ac11002b]]></ParentInstanceId>
+      <Elements>
+        <ElementInstanceId>caf3d125-4fd7-11e9-8b0e-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/navigation/main</FormatterKey>
+        <Uri>
+          <link type="STRONG">
+            <target><![CDATA[/sites/default/mercury-demo/.content/navigation-m/nav_00001.xml]]></target>
+            <uuid>f403f98e-3a95-11e9-bd84-0242ac11002b</uuid>
+          </link>
+        </Uri>
+        <Properties>
+          <Name><![CDATA[showSearch]]></Name>
+          <Value>
+            <String><![CDATA[true]]></String>
+          </Value>
+        </Properties>
+        <Properties>
+          <Name><![CDATA[textDisplay]]></Name>
+          <Value>
+            <String><![CDATA[cap-css]]></String>
           </Value>
         </Properties>
       </Elements>

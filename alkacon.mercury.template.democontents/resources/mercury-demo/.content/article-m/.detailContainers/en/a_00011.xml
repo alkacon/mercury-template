@@ -8,19 +8,20 @@
       <ParentInstanceId><![CDATA[137a87cf-4b1e-11e9-8f98-0242ac11002b]]></ParentInstanceId>
       <IsRootContainer>true</IsRootContainer>
       <Elements>
+        <ElementInstanceId>3f3c5620-1177-11e9-a47b-0242ac11002b</ElementInstanceId>
+        <FormatterKey>m/display/media-elaborate</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/sites/default/mercury-demo/.content/media-m/media_00003.xml]]></target>
             <uuid>f401d6a4-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </Uri>
-        <Formatter>
-          <link type="STRONG">
-            <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/media.jsp]]></target>
-            <uuid>9981e9ad-1fee-4621-b7d0-fb1413f63268</uuid>
-          </link>
-        </Formatter>
-        <CreateNew>true</CreateNew>
+        <Properties>
+          <Name><![CDATA[SYSTEM::create_new]]></Name>
+          <Value>
+            <String><![CDATA[true]]></String>
+          </Value>
+        </Properties>
         <Properties>
           <Name><![CDATA[dateFormat]]></Name>
           <Value>
@@ -31,18 +32,6 @@
           <Name><![CDATA[effect]]></Name>
           <Value>
             <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[element_instance_id]]></Name>
-          <Value>
-            <String><![CDATA[3f3c5620-1177-11e9-a47b-0242ac11002b]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[formatterSettings#attachments]]></Name>
-          <Value>
-            <String><![CDATA[1295a777-6dbd-4b9b-b7f2-edcd9c53800e]]></String>
           </Value>
         </Properties>
         <Properties>

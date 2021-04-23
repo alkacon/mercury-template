@@ -450,7 +450,7 @@ $endif$
     <span style="display: none;">
         <input type="hidden" name="formaction$formconfig.configId$" value="confirmed" />
         <input type="hidden" name="captchaphrase$formconfig.configId$" value="" />
-        <input type="hidden" name="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" value=""/>
+        <input type="hidden" name="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" value="$captchatokenid$"/>
         $hiddenfields$
     </span>
     

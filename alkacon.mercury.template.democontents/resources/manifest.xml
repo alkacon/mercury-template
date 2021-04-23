@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.1.36</version>
+		<version>11.0.1.38</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -86,6 +86,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Site categories]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -420,6 +424,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Site contents]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1002,6 +1010,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Site galleries]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -4408,6 +4420,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Login]]></value>
 				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -4455,6 +4471,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Deutsche Mercury Demo]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -5008,6 +5028,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[English Mercury Demo]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -15408,6 +15432,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Overview]]></value>
 				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -15451,6 +15479,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms Release Notes]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -17077,6 +17109,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Tutorial]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -18993,6 +19029,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[robots.txt for search engines]]></value>
 				</property>
 				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
+				</property>
+				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -19020,6 +19060,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Sitemap XML for search engines]]></value>
+				</property>
+				<property>
+					<name>containerpage.format</name>
+					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>locale</name>

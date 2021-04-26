@@ -87,10 +87,6 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Site categories]]></value>
 				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
-				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -424,10 +420,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Site contents]]></value>
-				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1010,10 +1002,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Site galleries]]></value>
-				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -4420,10 +4408,6 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Login]]></value>
 				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
-				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -4471,10 +4455,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Deutsche Mercury Demo]]></value>
-				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -5028,10 +5008,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[English Mercury Demo]]></value>
-				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -15432,10 +15408,6 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Overview]]></value>
 				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
-				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -15479,10 +15451,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms Release Notes]]></value>
-				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -17109,10 +17077,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Tutorial]]></value>
-				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>default-file</name>
@@ -18968,7 +18932,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Link to: /sites/default/overview/]]></value>
+					<value><![CDATA[Link to: /overview/]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
@@ -19029,10 +18993,6 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[robots.txt for search engines]]></value>
 				</property>
 				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -19060,10 +19020,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Sitemap XML for search engines]]></value>
-				</property>
-				<property>
-					<name>containerpage.format</name>
-					<value><![CDATA[2]]></value>
 				</property>
 				<property>
 					<name>locale</name>

@@ -1358,7 +1358,8 @@ public class CmsFormHandler extends CmsJspActionElement {
     @SuppressWarnings("unchecked")
     private Map<String, FileItem> getFileUploads() {
 
-        if (getRequest().getSession().getAttribute(ATTRIBUTE_FILEITEMS) != null) {
+        if ((getRequest().getSession(false) != null)
+            && (getRequest().getSession(false).getAttribute(ATTRIBUTE_FILEITEMS) != null)) {
             return (Map<String, FileItem>)getRequest().getSession().getAttribute(ATTRIBUTE_FILEITEMS);
         }
         return null;

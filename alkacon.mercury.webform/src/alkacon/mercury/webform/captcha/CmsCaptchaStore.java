@@ -110,6 +110,7 @@ public class CmsCaptchaStore {
      *
      * @return The concurrent hash map storing the captcha tokens.
      */
+    @SuppressWarnings("unchecked")
     private synchronized Map<String, CmsCaptchaToken> getStore() {
 
         PageContext context = m_jspActionElement.getJspContext();

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.323</version>
+		<version>11.0.1.324</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -4473,7 +4473,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;no-params;user]]></value>
+					<value><![CDATA[never]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4700,7 +4700,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;no-params]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);no-params=(action)]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

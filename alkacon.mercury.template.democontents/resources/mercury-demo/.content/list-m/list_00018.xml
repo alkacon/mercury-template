@@ -3,14 +3,14 @@
 <ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
   <ListConfig language="en">
     <Title><![CDATA[Elaborate list with all supported Types]]></Title>
-    <TypesToCollect>m-article:98f8a594-86c6-4899-9559-a418b663ff57</TypesToCollect>
-    <TypesToCollect>m-decoy:4eb911ff-6e06-4fdc-ba25-1865d6c5f1f5</TypesToCollect>
-    <TypesToCollect>m-media:1295a777-6dbd-4b9b-b7f2-edcd9c53800e</TypesToCollect>
-    <TypesToCollect>m-imageseries:a7cb514a-b3ea-448b-95ca-f6e7b040c0f0</TypesToCollect>
-    <TypesToCollect>m-event:514d402e-bd6f-4a32-90bc-bb3a84db9931</TypesToCollect>
-    <TypesToCollect>m-faq:3ee95f3e-b9a0-486d-9a24-1a67bd5d8941</TypesToCollect>
-    <TypesToCollect>m-job:3f8405ac-63bc-4bcd-93b3-509713a2a789</TypesToCollect>
-    <TypesToCollect>m-contact:3f96bd48-74b4-11ea-8d2f-0242ac11002b</TypesToCollect>
+    <TypesToCollect>m-article:m/display/article-elaborate</TypesToCollect>
+    <TypesToCollect>m-decoy:m/display/decoy-elaborate</TypesToCollect>
+    <TypesToCollect>m-media:m/display/media-elaborate</TypesToCollect>
+    <TypesToCollect>m-imageseries:m/display/imageseries-</TypesToCollect>
+    <TypesToCollect>m-event:m/display/event-elaborate</TypesToCollect>
+    <TypesToCollect>m-faq:m/display/faq-elaborate</TypesToCollect>
+    <TypesToCollect>m-job:m/display/job-elaborate</TypesToCollect>
+    <TypesToCollect>m-contact:m/display/contact-elaborate</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/]]></target>

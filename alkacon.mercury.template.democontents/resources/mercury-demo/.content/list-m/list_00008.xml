@@ -3,7 +3,7 @@
 <ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
   <ListConfig language="en">
     <Title><![CDATA[Compact Blog List]]></Title>
-    <TypesToCollect>m-article:3e5715df-c95c-4f64-8d53-69d19324dd2e</TypesToCollect>
+    <TypesToCollect>m-article:m/display/article-compact</TypesToCollect>
     <SearchFolder/>
     <Category/>
     <CategoryMode><![CDATA[OR]]></CategoryMode>

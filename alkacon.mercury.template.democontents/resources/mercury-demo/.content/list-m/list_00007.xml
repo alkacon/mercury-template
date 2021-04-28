@@ -3,7 +3,7 @@
 <ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
   <ListConfig language="en">
     <Title><![CDATA[Vacant Jobs]]></Title>
-    <TypesToCollect>m-job:be42f6c2-e49d-4a83-a1d5-6d0f0ef211ef</TypesToCollect>
+    <TypesToCollect>m-job:m/display/job-compact</TypesToCollect>
     <SearchFolder/>
     <Category/>
     <CategoryMode><![CDATA[OR]]></CategoryMode>

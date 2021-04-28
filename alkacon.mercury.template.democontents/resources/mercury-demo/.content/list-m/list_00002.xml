@@ -3,7 +3,7 @@
 <ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
   <ListConfig language="en">
     <Title><![CDATA[Frequently Asked Questions in compact form]]></Title>
-    <TypesToCollect>m-faq:9fc5f19a-177f-48d5-9040-0adb6de9ac2a</TypesToCollect>
+    <TypesToCollect>m-faq:m/display/faq-compact</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/.content/faq-m/]]></target>

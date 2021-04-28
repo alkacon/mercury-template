@@ -3,7 +3,7 @@
 <ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
   <ListConfig language="en">
     <Title><![CDATA[Compact Event List]]></Title>
-    <TypesToCollect>m-event:5554472b-9449-4593-bdd5-fff73fd895e6</TypesToCollect>
+    <TypesToCollect>m-event:m/display/event-compact</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/]]></target>

@@ -3,7 +3,7 @@
 <ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
   <ListConfig language="en">
     <Title><![CDATA[List of contacts]]></Title>
-    <TypesToCollect>m-contact:3f96bd48-74b4-11ea-8d2f-0242ac11002b</TypesToCollect>
+    <TypesToCollect>m-contact:m/display/contact-elaborate</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/]]></target>

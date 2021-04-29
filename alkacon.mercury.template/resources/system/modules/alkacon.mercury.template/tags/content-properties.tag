@@ -40,7 +40,6 @@
 <c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
 <c:set var="contentPropertiesSearchDetail" value="${cms.vfs.readPropertiesSearch[contentUri]}" />
 
-<c:set var="templatePath" value="${contentPropertiesSearch['template']}" />
-<c:set var="allowTemplateMods" value="${not fn:contains(cms.vfs.readProperties[templatePath]['template.display.types'], 'standard')}" />
+<c:set var="allowTemplateMods" value="${cms.sitemapConfig.attribute['template.allow.mods'].toBoolean}" />
 
 <jsp:doBody/>

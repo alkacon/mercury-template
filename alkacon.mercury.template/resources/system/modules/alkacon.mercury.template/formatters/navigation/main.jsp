@@ -23,7 +23,8 @@
 <c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
 <c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
 <c:set var="showImageLink"              value="${setting.showImageLink.useDefault(false).toBoolean}" />
-<c:set var="configVariant"              value="${setting.configVariant.useDefault('standard').toString}" />
+
+<c:set var="temlateVariant"             value="${cms.sitemapConfig.attribute['template.variant'].useDefault('default').toString}" />
 
 <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
 <c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
@@ -47,7 +48,7 @@
             <c:when test="${empty logoImage}">
                 <%-- Do not generate markup if there is no image --%>
             </c:when>
-            <c:when test="${configVariant eq 'burger'}">
+            <c:when test="${temlateVariant eq 'burger'}">
                 <div class="nav-menu-header"><%----%>
                     <div class="nav-menu-toggle"><%----%>
                         <label for="nav-toggle-check" id="nav-toggle-label-close" class="nav-toggle-label"><%----%>

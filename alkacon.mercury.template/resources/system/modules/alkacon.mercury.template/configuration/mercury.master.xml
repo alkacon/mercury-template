@@ -150,6 +150,7 @@
       <TypeName><![CDATA[m-layout-area-complex]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
     </ResourceType>
+    <UseFormatterKeys>true</UseFormatterKeys>
     <RemoveAllFormatters>true</RemoveAllFormatters>
     <AddFormatters>
       <AddFormatter>
@@ -800,5 +801,13 @@
       <DisplayName><![CDATA[Mercury Theme CSS]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
+    <Attribute>
+      <Key><![CDATA[template.variant]]></Key>
+      <Value><![CDATA[default]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[list.use.configured.formatters]]></Key>
+      <Value><![CDATA[true]]></Value>
+    </Attribute>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

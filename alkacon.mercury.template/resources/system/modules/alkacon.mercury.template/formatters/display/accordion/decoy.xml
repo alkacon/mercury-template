@@ -16,7 +16,6 @@
       <Types>
         <ContainerType><![CDATA[accordion]]></ContainerType>
         <ContainerType><![CDATA[decoy]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[static:teaser-accordion]]></Display>

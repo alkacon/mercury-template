@@ -145,7 +145,8 @@
                                 <div ${value.Performer.isSet ? value.Performer.rdfaAttr : ''}>${performer}</div><%----%>
                             </div><%----%>
                         </c:if>
-                    </div>
+                    </div><%----%>
+                    <mercury:nl />
                     <c:if test="${showLocation}">
                         <div class="info location"><%----%>
                             <span class="sr-only"><fmt:message key="msg.page.sr.location" /></span><%----%>

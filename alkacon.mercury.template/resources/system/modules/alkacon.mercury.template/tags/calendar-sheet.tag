@@ -27,7 +27,7 @@
 
 <mercury:nl />
 <div class="effect-box ${css}"><%----%>
-    <mercury:padding-box cssWrapper="image-src-box" ratio="${ratio}" defaultRatio="${hideDay ? '1-1' : '1200-1416'}">
+    <mercury:padding-box cssWrapper="image-src-box rs_skip" ratio="${ratio}" defaultRatio="${hideDay ? '1-1' : '1200-1416'}">
         <div class="calendar-sheet animated"><%----%>
             <c:if test="${not hideDay}">
                 <span class="day-name"><fmt:formatDate value="${date}" pattern="EEEE" type="date" /></span><%----%>
@@ -36,5 +36,6 @@
             <span class="month-year"><fmt:formatDate value="${date}" pattern="MMM yyyy" type="date" /></span><%----%>
         </div><%----%>
     </mercury:padding-box>
+    <span class="sr-only"><fmt:message key="msg.page.sr.date" />${' '}<fmt:formatDate value="${date}" type="date" dateStyle="LONG" /></span><%----%>
 </div><%----%>
 <mercury:nl />

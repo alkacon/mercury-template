@@ -106,7 +106,7 @@
 
 <mercury:nl />
 <mercury:padding-box
-    cssWrapper="image-src-box ${cssWrapper}"
+    cssWrapper="image-src-box rs_skip ${cssWrapper}"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
     width="${width}"

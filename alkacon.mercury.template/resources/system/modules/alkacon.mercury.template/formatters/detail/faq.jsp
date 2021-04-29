@@ -7,12 +7,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">
+
+<fmt:setLocale value="${cms.locale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
 
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
@@ -84,7 +88,10 @@
     <jsp:attribute name="text">
         <c:if test="${showDate}">
             <div class="visual-info right"><%----%>
-                <div class="info date"><div>${datePrefix}${date}</div></div><%----%>
+                <div class="info date"><%----%>
+                    <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>
+                    <div>${datePrefix}${date}</div><%----%>
+                </div><%----%>
             </div><%----%>
         </c:if>
     </jsp:attribute>
@@ -122,6 +129,7 @@
 
 </mercury:paragraph-split>
 
+</cms:bundle>
 </cms:formatter>
 
 </mercury:init-messages>

@@ -124,6 +124,7 @@
         pieceTag="${pieceTag}"
         cssText="${showText and (textOption ne 'default') ? textOption: ''}"
         attrVisual="${ade ? image.rdfaAttr : null}"
+        cssVisual="rs_skip"
         attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
         cssBody="${defaultText ? 'default' :_null}"
         attrText="${ade ? text.rdfaAttr : null}"

@@ -153,8 +153,17 @@
         </div><%----%>
         <c:if test="${showDate or showImageCount}">
             <div class="visual-info ${not showImageCount ? 'right' : '' }"><%----%>
-                <c:if test="${showDate}"><div class="info date"><div>${datePrefix}${date}</div></div></c:if>
-                <c:if test="${showImageCount}"><div class="info images"><div><fmt:message key="msg.page.imageseries.count"><fmt:param>${imageList.size()}</fmt:param></fmt:message></div></div></c:if>
+                <c:if test="${showDate}">
+                    <div class="info date"><%----%>
+                        <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>
+                        <div>${datePrefix}${date}</div><%----%>
+                    </div><%----%>
+                </c:if>
+                <c:if test="${showImageCount}">
+                    <div class="info images"><%----%>
+                        <div><fmt:message key="msg.page.imageseries.count"><fmt:param>${imageList.size()}</fmt:param></fmt:message></div><%----%>
+                    </div><%----%>
+                </c:if>
             </div><%----%>
         </c:if>
     </div><%----%>

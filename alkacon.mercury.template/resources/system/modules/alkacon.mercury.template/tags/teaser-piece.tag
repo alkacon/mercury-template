@@ -220,7 +220,6 @@
         <mercury:link
             link="${link}"
             title="${linkTitle}"
-            attr='aria-label="${linkTitle}"'
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
             ${markupVisualOutput}
         </mercury:link>
@@ -280,7 +279,6 @@
                 <mercury:link
                     link="${link}"
                     title="${linkTitle}"
-                    attr='aria-label="${linkTitle}"'
                     css='uncolored'
                     test="${linkOnText}">
                     ${markupTextOutput}

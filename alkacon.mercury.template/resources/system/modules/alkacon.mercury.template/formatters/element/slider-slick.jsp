@@ -134,18 +134,17 @@
     </c:choose>
 
     <c:if test="${value.TextBackgroundColor.isSet}">
-        <c:set var="captionBgStyle">background-color: ${value.TextBackgroundColor}; background-image: linear-gradient(${value.TextBackgroundColor}, ${value.TextBackgroundColor})</c:set>
+        <c:set var="captionBgStyle">background-color: ${value.TextBackgroundColor};</c:set>
         <c:set var="customStyle">style="${captionBgStyle}"</c:set>
     </c:if>
     <c:if test="${not empty bgColorHead}">
-        <c:set var="headBgStyle">style="background-color: ${bgColorHead}; background-image: linear-gradient(${bgColorHead}, ${bgColorHead})"</c:set>
+        <c:set var="headBgStyle">style="background-color: ${bgColorHead};"</c:set>
         <c:set var="customClass" value="custom" />
     </c:if>
     <c:if test="${not empty bgColorSub}">
-        <%-- background-image linear gradient rule is here to trick WCAG audit to ignoring this text --%>
-        <c:set var="subBgStyle">style="background-color: ${bgColorSub}; background-image: linear-gradient(${bgColorSub}, ${bgColorSub})"</c:set>
-        <c:set var="customClass" value="custom" />
+        <c:set var="subBgStyle">style="background-color: ${bgColorSub};"</c:set>
         <c:set var="customStyle">${subBgStyle}</c:set>
+        <c:set var="customClass" value="custom" />
     </c:if>
     <c:if test="${value.TextColor.isSet}">
         <c:set var="textStyle">style="color: ${value.TextColor}"</c:set>
@@ -208,7 +207,7 @@
         </c:if>
 
         <mercury:nl />
-        <div class="slide-wrapper slide-count-${cms:mathFloor(visibleSlidesXS)}${' '}${isHiddenSlide ? 'hide-noscript' : ''}${' '}${animationTrigger}${' '}${customClass}"><%----%>
+        <div class="slide-wrapper slide-count-${cms:mathFloor(visibleSlidesXS)}${' '}${isHiddenSlide ? 'hide-noscript rs_skip' : ''}${' '}${animationTrigger}${' '}${customClass}"><%----%>
             <div class="visual ${animationTarget}"><mercury:nl/>
 
                 ${not empty slideLink ?
@@ -292,7 +291,7 @@
                 ${not empty slideLink ? '</a>':''}
 
                 <c:if test="${showImageCopyright and (not empty copyright)}">
-                    <div class="copyright">${copyright}</div><mercury:nl/>
+                    <div class="copyright rs_skip">${copyright}</div><mercury:nl/>
                 </c:if>
             </div><mercury:nl/>
 
@@ -307,7 +306,7 @@
                         .concat('>')
                     : ''}
 
-                <div class="caption background ${posTop}${' '}${posLeft}" aria-hidden="true" ${bgStyle}><%----%>
+                <div class="caption background ${posTop}${' '}${posLeft} rs_skip" aria-hidden="true" ${bgStyle}><%----%>
                     <c:if test="${image.value.SuperTitle.isSet}">
                         <strong ${headBgStyle} aria-hidden="true">${image.value.SuperTitle}</strong><%----%>
                     </c:if>

@@ -22,6 +22,7 @@ package alkacon.mercury.webform.fields;
 import alkacon.mercury.webform.CmsFormHandler;
 import alkacon.mercury.webform.I_CmsFormMessages;
 
+import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.main.CmsLog;
 import org.opencms.util.CmsStringUtil;
@@ -41,9 +42,6 @@ public class CmsFileUploadField extends A_CmsField {
     /** HTML field type: file. */
     private static final String TYPE = "file";
 
-    /** The size of the uploaded file. */
-    private int m_fileSize;
-
     /**
      * Returns the type of the input field, e.g. "text" or "select".<p>
      *
@@ -53,6 +51,9 @@ public class CmsFileUploadField extends A_CmsField {
 
         return TYPE;
     }
+
+    /** The size of the uploaded file. */
+    private int m_fileSize;
 
     /**
      * @see alkacon.mercury.webform.fields.I_CmsField#buildHtml(CmsFormHandler, CmsMessages, String, boolean, String)
@@ -92,7 +93,7 @@ public class CmsFileUploadField extends A_CmsField {
 
         Map<String, Object> stAttributes = new HashMap<>();
         // set info message as additional attribute
-        stAttributes.put("infomessage", infoMessage);
+        stAttributes.put("infomessage", CmsEncoder.escapeXml(infoMessage));
 
         buf.append(createHtml(formHandler, messages, stAttributes, getType(), null, errorMessage, showMandatory));
         return buf.toString();

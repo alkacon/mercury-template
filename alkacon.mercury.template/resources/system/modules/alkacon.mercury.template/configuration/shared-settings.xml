@@ -868,7 +868,7 @@
       <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
       <PropertyName><![CDATA[pieceSizeDesktop]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.visualOption.desktop)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
+      <Description><![CDATA[%(key.msg.setting.visualOption.desktop.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[99]]></Default>
@@ -892,7 +892,7 @@
       <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
       <PropertyName><![CDATA[pieceSizeMobile]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.visualOption.mobile)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
+      <Description><![CDATA[%(key.msg.setting.visualOption.mobile.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[99]]></Default>
@@ -1406,7 +1406,8 @@
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[show-title]]></Default>
       <WidgetConfig><![CDATA[
-            show-title:         %(key.msg.setting.header.option.defaultShow)|
+            show-title:         %(key.msg.setting.header.option.show-title)|
+            show-title-mobile:  %(key.msg.setting.header.option.show-title-mobile)|
             hide-title:         %(key.msg.setting.header.option.hide)
         ]]></WidgetConfig>
     </Setting>

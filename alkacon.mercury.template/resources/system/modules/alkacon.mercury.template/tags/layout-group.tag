@@ -93,9 +93,10 @@
                 <c:set var="metaAlignment"      value="${config.setting.metaAlignment.useDefault('meta-right').toString}" />
                 <c:set var="metaAlignment"      value="${metaAlignment eq 'default' ? 'meta-'.concat(alignDefault) : metaAlignment}" />
                 <c:set var="metaPosition"       value="${logoPosCenter ? 'meta-above' : config.setting.metaPosition.useDefault('meta-aside').toString}" />
-                <c:set var="showTitle"          value="${config.setting.showTitle.toString ne 'hide-title'}" />
+                <c:set var="showTitle"          value="${(config.setting.showTitle.toString ne 'hide-title')}" />
+                <c:set var="showTitleMobile"    value="${config.setting.showTitle.toString eq 'show-title-mobile'}" />
                 <c:set var="titleAlignment"     value="${config.setting.titleAlignment.useDefault('title-right').toString}" />
-                <c:set var="titleAlignment"     value="${titleAlignment eq 'default' ? 'title-'.concat(alignDefault) : titleAlignment}" />
+                <c:set var="titleAlignment"     value="${titleAlignment eq 'default' ? 'title-default' : titleAlignment}" />
                 <c:set var="titlePosition"      value="${config.setting.titlePosition.useDefault('title-middle').toString}" />
                 <c:set var="navAlignment"       value="${config.setting.navAlignment.useDefault('nav-right').toString}" />
                 <c:set var="navAlignment"       value="${navAlignment eq 'default' ? 'nav-'.concat(alignDefault) : navAlignment}" />
@@ -329,6 +330,14 @@
 
                             <c:if test="${not showNavAside}">
                                 ${navBarElement}
+                            </c:if>
+
+                            <c:if test="${(not empty titleElement) and showTitleMobile}">
+                                <div class="h-title-row"><%----%>
+                                    <div class="container">
+                                        ${titleElement}
+                                    </div>
+                                </div><%----%>
                             </c:if>
 
                             <c:if test="${showAddContainer}">

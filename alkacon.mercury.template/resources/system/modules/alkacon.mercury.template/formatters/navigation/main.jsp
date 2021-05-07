@@ -82,7 +82,6 @@
                         testFailTag="div"
                         setTitle="${true}"
                         css="mobile-logolink" >
-
                         <mercury:image-simple
                             image="${logoImage}"
                             sizes="100,200,400,800"

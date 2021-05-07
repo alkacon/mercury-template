@@ -282,6 +282,51 @@
             }
         }
 
+        .h-title-row {
+            display: flex; // will be hidden from screen size lg
+            order: 10;
+            padding-bottom: $bh-header-padding-small;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+
+            @include add-bg-color($fh-title-bg-color) {
+                padding-top: $bh-header-padding-small;
+                .h-title {
+                    color: check-text-color($fh-title-bg-color, $fh-title-color);
+                }
+            }
+
+            .h-title {
+                @include use-hyphens-headings(true);
+                line-height: 1.2;
+                font-size: $bh-title-font-size-mobile;
+                text-align: left;
+                display: block;
+            }
+        }
+
+        &.title-left {
+            .h-title {
+                text-align: left;
+            }
+        }
+
+        &.title-center {
+            .h-title {
+                text-align: center;
+            }
+        }
+
+        &.title-right {
+            .h-title {
+                text-align: right;
+            }
+        }
+
         @if ($fh-logo-image-bg != none) {
             // set colored background for image (if images contain transparency - required mostly for demo content)
             .nav-main-mobile-logo .img-responsive,
@@ -315,6 +360,10 @@
                 }
             }
 
+            .h-title-row {
+                display: none;
+            }
+
             // logo and info column
 
             .h-logo {
@@ -345,6 +394,10 @@
 
                 > .h-nav {
                     align-items: flex-end;
+                }
+
+                > .h-title {
+                    background-color: transparent;
                 }
             }
 
@@ -418,6 +471,7 @@
                 }
             }
 
+            &.lp-r.title-default,
             &.title-left {
                 .h-title {
                     align-self: flex-start;
@@ -431,6 +485,7 @@
                 }
             }
 
+            &.lp-c.title-default,
             &.title-center {
                 .h-title {
                     align-self: center;
@@ -438,6 +493,7 @@
                 }
             }
 
+            &.lp-l.title-default,
             &.title-right {
                 .h-title {
                     align-self: flex-end;
@@ -682,7 +738,7 @@
                 }
 
                 .h-title {
-                    order: 1;
+                    order: 5;
                 }
 
                 &.title-bottom {
@@ -922,7 +978,7 @@
                     @include make-col(nth([4,5,7,9,9,9,12,12,12,12,12,12], $logo-size));
                 }
                 @if ($logo-size < 6) {
-                    .nav-main-mobile-logo .img-responsive {
+                    .nav-main-mobile-logo .mobile-logolink {
                         width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
                     }
                 }
@@ -1091,7 +1147,7 @@
         }
 
         .h-title-row {
-            display: flex; // will be hidden from screen size lg below
+            display: flex; // will be hidden from screen size lg
             order: 10;
             padding-bottom: $bh-header-padding-small;
 

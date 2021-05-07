@@ -211,6 +211,7 @@
 
         .buttons {
             display: flex;
+            flex-wrap: wrap;
             justify-content: flex-end;
             width: 100%;
 
@@ -222,6 +223,7 @@
 
         .message {
             font-size: 1.2rem;
+            line-height: 1.25;
             text-align: justify;
             hyphens: auto;
         }
@@ -232,13 +234,23 @@
     }
 
     @include media-breakpoint-down(sm) {
+
+        .banner {
+            padding: 15px 15px 10px 15px;
+        }
+
         .selection {
             order: 6;
             margin-bottom: 0 !important;
         }
+
         .buttons {
             justify-content: space-around;
+            .btn {
+                margin-bottom: 5px;
+            }
         }
+
         .links {
             margin-bottom: $policy-banner-margin-small;
         }

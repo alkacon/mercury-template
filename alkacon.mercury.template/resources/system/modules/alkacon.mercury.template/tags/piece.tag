@@ -7,16 +7,17 @@
 
 <%@ attribute name="pieceLayout" type="java.lang.Integer" required="true"
     description="The layout option to generate. Valid values are 0 to 9.
-    // 0. Heading, Image, Text, Link (full width)
-    // 1. Image, Heading, Text, Link (full width)
-    // 2. Heading on top, Image left, Text and Link right (separate column)
-    // 3. Heading on top, Image right, Text and Link left (separate column)
-    // 4. Heading on top, Image left, Text and Link right (floating around image)
-    // 5. Heading on top, Image right, Text and Link left (floating around image)
-    // 6. Image left, Heading, Text and Link right (separate column)
-    // 7. Image right, Heading, Text and Link left (separate column)
-    // 8. Image left, Heading, Text and Link right (floating around image)
-    // 9. Image right, Heading, Text and Link left (floating around image)
+    // 0.  Heading, Image, Text, Link (full width)
+    // 1.  Image, Heading, Text, Link (full width)
+    // 2.  Heading on top, Image left, Text and Link right (separate column)
+    // 3.  Heading on top, Image right, Text and Link left (separate column)
+    // 4.  Heading on top, Image left, Text and Link right (floating around image)
+    // 5.  Heading on top, Image right, Text and Link left (floating around image)
+    // 6.  Image left, Heading, Text and Link right (separate column)
+    // 7.  Image right, Heading, Text and Link left (separate column)
+    // 8.  Image left, Heading, Text and Link right (floating around image)
+    // 9.  Image right, Heading, Text and Link left (floating around image)
+    // 10. Heading, Text, Link, Image (full width)
     " %>
 
 <%@ attribute name="sizeMobile" type="java.lang.Integer" required="false"
@@ -114,10 +115,11 @@
 
 
 <c:set var="pieceTag"       value="${empty pieceTag ? 'div' : pieceTag}" />
-<c:set var="inlineLink"     value="${empty inlineLink ? (pieceLayout > 1) : inlineLink}" />
+<c:set var="fullWidth"      value="${(pieceLayout <= 1) or (pieceLayout == 10)}" />
+<c:set var="inlineLink"     value="${empty inlineLink ? not fullWidth : inlineLink}" />
 
-<c:set var="fullWidth"      value="${pieceLayout <= 1}" />
 <c:set var="inlineHeading"  value="${(pieceLayout == 1) or (pieceLayout >= 6)}" />
+<c:set var="visualLast"     value="${pieceLayout == 10}" />
 
 <c:choose>
     <c:when test="${fullWidth}">
@@ -126,8 +128,8 @@
     </c:when>
     <c:otherwise>
         <c:set var="pieceIsFlex"    value="${(pieceLayout == 2) or (pieceLayout == 3) or (pieceLayout == 6) or (pieceLayout == 7)}" />
-        <c:set var="pieceIsFloat"   value="${(pieceLayout > 1) and not pieceIsFlex}" />
-        <c:set var="pieceDirection" value="${pieceLayout > 1 ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
+        <c:set var="pieceIsFloat"   value="${not fullWidth and not pieceIsFlex}" />
+        <c:set var="pieceDirection" value="${not fullWidth ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
         <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 4 : (sizeDesktop > 12 ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop))}" />
     </c:otherwise>
 </c:choose>
@@ -214,7 +216,8 @@
     </c:when>
     <c:otherwise>
         <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
+        <%-- "pvl" means "piece visual last" --%>
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
     </c:otherwise>
 </c:choose>
 
@@ -238,7 +241,7 @@ ${'>'}
     <mercury:nl />
 </c:if>
 
-<c:if test="${showVisual}">
+<c:if test="${showVisual and not visualLast}">
     <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
         ${pieceVisual}
     </div><%----%>
@@ -274,6 +277,13 @@ ${'>'}
 <c:if test="${showLink and not inlineLink}">
     <div class="link${empty cssLink ? '' : ' '.concat(cssLink)}"${empty attrLink ? '' : ' '.concat(attrLink)}><%----%>
         ${pieceLink}
+    </div><%----%>
+    <mercury:nl />
+</c:if>
+
+<c:if test="${showVisual and visualLast}">
+    <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
+        ${pieceVisual}
     </div><%----%>
     <mercury:nl />
 </c:if>

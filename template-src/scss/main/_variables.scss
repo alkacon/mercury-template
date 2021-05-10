@@ -306,6 +306,7 @@ $piece-btn-padding:                 $btn-def-padding !default;
 $piece-btn-lg-padding:              $btn-lg-padding !default;
 $piece-text-margin:                 $default-margin-small !default;
 $piece-text-to-link-margin:         $piece-text-margin !default;
+$piece-visual-last-top-margin:      $piece-text-margin !default;
 
 $use-hyphens:                       true !default; // enable hyphenation / word breaks (not all browsers support this)
 $piece-hyphens:                     $use-hyphens !default; // enable hyphenation / word breaks specially in piece

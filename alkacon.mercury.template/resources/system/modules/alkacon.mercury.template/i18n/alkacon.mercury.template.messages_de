@@ -1187,6 +1187,7 @@ msg.setting.performerOption.textonly=Wenn im Inhalt eingegeben
 msg.setting.pieceLayout=Layout
 msg.setting.pieceLayout.0=Überschrift, Bild, Text
 msg.setting.pieceLayout.1=Bild, Überschrift, Text
+msg.setting.pieceLayout.10=Überschrift, Text, Bild
 msg.setting.pieceLayout.2=Überschrift oben, Bild links, Text rechts (in eigener Spalte)
 msg.setting.pieceLayout.3=Überschrift oben, Bild rechts, Text links (in eigener Spalte)
 msg.setting.pieceLayout.4=Überschrift oben, Bild links, Text rechts (das Bild umfließend)

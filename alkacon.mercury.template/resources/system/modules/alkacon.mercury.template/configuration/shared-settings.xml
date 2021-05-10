@@ -937,6 +937,7 @@
       <Default><![CDATA[6]]></Default>
       <WidgetConfig><![CDATA[
             0:      %(key.msg.setting.pieceLayout.0)|
+           10:      %(key.msg.setting.pieceLayout.10)|
             1:      %(key.msg.setting.pieceLayout.1)|
             2:      %(key.msg.setting.pieceLayout.2)|
             3:      %(key.msg.setting.pieceLayout.3)|

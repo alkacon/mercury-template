@@ -33,7 +33,7 @@
 
 <mercury:section-piece
     cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}${empty cssVisibility ? '' : ' '.concat(cssVisibility)}"
-    pieceLayout="${pieceLayout < 10 ? pieceLayout : 4}"
+    pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"
     heading="${value.Title}"

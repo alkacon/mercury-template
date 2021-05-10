@@ -1187,6 +1187,7 @@ msg.setting.performerOption.textonly=If entered in the content
 msg.setting.pieceLayout=Layout
 msg.setting.pieceLayout.0=Heading, Image, Text
 msg.setting.pieceLayout.1=Image, Heading, Text
+msg.setting.pieceLayout.10=Heading, Text, Image
 msg.setting.pieceLayout.2=Heading on top, Image left, Text right (in separate column)
 msg.setting.pieceLayout.3=Heading on top, Image right, Text left (in separate column)
 msg.setting.pieceLayout.4=Heading on top, Image left, Text right (floating around image)

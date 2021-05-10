@@ -21,16 +21,17 @@
 
 // Possible piece grid variations, as used by the element settings:
 //
-// 0. Heading, Image, Text, Link (all full)
-// 1. Image, Heading, Text, Link (all full)
-// 2. Heading on top, Image left, Text and Link right (separate column)
-// 3. Heading on top, Image right, Text and Link left (separate column)
-// 4. Heading on top, Image left, Text and Link right (floating around image)
-// 5. Heading on top, Image right, Text and Link left (floating around image)
-// 6. Image left, Heading, Text and Link right (separate column)
-// 7. Image right, Heading, Text and Link left (separate column)
-// 8. Image left, Heading, Text and Link right (floating around image)
-// 9. Image right, Heading, Text and Link left (floating around image)
+//  0. Heading, Image, Text, Link (all full)
+//  1. Image, Heading, Text, Link (all full)
+//  2. Heading on top, Image left, Text and Link right (separate column)
+//  3. Heading on top, Image right, Text and Link left (separate column)
+//  4. Heading on top, Image left, Text and Link right (floating around image)
+//  5. Heading on top, Image right, Text and Link left (floating around image)
+//  6. Image left, Heading, Text and Link right (separate column)
+//  7. Image right, Heading, Text and Link left (separate column)
+//  8. Image left, Heading, Text and Link right (floating around image)
+//  9. Image right, Heading, Text and Link left (floating around image)
+// 10. Heading, Text, Link, Image (all full)
 //
 // 50. Title as image overlay (Detail page only)
 // 99. Default value for content section - treated internally as '4' (Content section only)
@@ -93,6 +94,19 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
+    &.pvl {
+        // piece visual last
+        > .visual {
+            margin-bottom: 0;
+        }
+        > .body,
+        > .link {
+            + .visual {
+                 margin-top: $piece-visual-last-top-margin;
+            }
+        }
+    }
+
     .heading {
         > .piece-heading {
             text-overflow: ellipsis;
@@ -107,7 +121,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             // if the heading is the last child of the piece, don't add the bottom margin
             > .piece-heading-link > .piece-heading,
             > .piece-heading {
-                margin-bottom:0;
+                margin-bottom: 0;
             }
         }
     }

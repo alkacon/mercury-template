@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.339</version>
+		<version>11.0.1.343</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -4301,6 +4301,23 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/section/tile-element.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/section/tile-element.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>f1c5636a-b307-11eb-9000-0242ac11002b</uuidstructure>
+			<uuidresource>f1c5636b-b307-11eb-9000-0242ac11002b</uuidresource>
+			<datecreated>Wed, 12 May 2021 09:53:46 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Section as tile for element container]]></value>
 				</property>
 			</properties>
 			<relations/>

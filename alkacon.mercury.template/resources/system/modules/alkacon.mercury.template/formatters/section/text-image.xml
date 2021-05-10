@@ -47,6 +47,9 @@
       <IncludeName><![CDATA[textOption.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>

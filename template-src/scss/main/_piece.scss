@@ -75,13 +75,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
-    &.centered {
-        .heading > .piece-heading,
-        > .body .text {
-            text-align: center;
-        }
-    }
-
     &.disabled {
         background-image: $disabled-bg;
     }
@@ -91,6 +84,12 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         > .visual {
             margin-left: auto;
             margin-right: auto;
+        }
+
+        &.align-right {
+            > .visual {
+                margin-right: 0;
+            }
         }
     }
 
@@ -104,6 +103,39 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             + .visual {
                  margin-top: $piece-visual-last-top-margin;
             }
+        }
+    }
+
+    &.paj {
+        // piece align justify
+        .heading > .piece-heading,
+        > .visual > .subtitle,
+        > .body + .link,
+        > .body .link,
+        > .body .text {
+            text-align: justify;
+        }
+    }
+
+    &.pac {
+        // piece align centered
+        .heading > .piece-heading,
+        > .visual > .subtitle,
+        > .body + .link,
+        > .body .link,
+        > .body .text {
+            text-align: center;
+        }
+    }
+
+    &.par {
+        // piece align right
+        .heading > .piece-heading,
+        > .visual > .subtitle,
+        > .body + .link,
+        > .body .link,
+        > .body .text {
+            text-align: right;
         }
     }
 

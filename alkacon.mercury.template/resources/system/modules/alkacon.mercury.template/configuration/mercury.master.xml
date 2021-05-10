@@ -77,38 +77,47 @@
     <ResourceType>
       <TypeName><![CDATA[m-flexible]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-metainfo]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-tab]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-webform]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-webform-data]]></TypeName>
       <Disabled><![CDATA[add]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-navigation]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-sitemap]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-shariff]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-google-calendar]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[modelgroup]]></TypeName>
@@ -649,6 +658,12 @@
         <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/tile.xml]]></target>
           <uuid>61b96360-be4f-4f40-97d8-02a46e0e3bfb</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/tile-element.xml]]></target>
+          <uuid>f1c5636a-b307-11eb-9000-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>

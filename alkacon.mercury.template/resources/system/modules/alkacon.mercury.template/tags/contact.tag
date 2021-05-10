@@ -219,7 +219,7 @@
                 <mercury:location-vars data="${data.value.AddressChoice}">
 
                     <c:set var="animatedAddress" value="${not showAddressAlways}" />
-                    <div ${animatedAddress ? 'class="clickme-showme"' : ''}><%----%>
+                    <div class="${animatedAddress ? 'clickme-showme adr-p' : 'adr-p'}"><%----%>
                         <div class="adr ${animatedAddress ? 'clickme' : ''}" <%--
                         --%>itemprop="address" itemscope <%--
                         --%>itemtype="http://schema.org/PostalAddress"><%----%>
@@ -313,9 +313,11 @@
                             <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
                         </mercury:icon-prefix>
                     </c:if>
-                    <mercury:email email="${data.value.Email}">
-                        <jsp:attribute name="placeholder"><fmt:message key="msg.page.contact.obfuscatedemail"/></jsp:attribute>
-                    </mercury:email>
+                    <span><%----%>
+                        <mercury:email email="${data.value.Email}">
+                            <jsp:attribute name="placeholder"><fmt:message key="msg.page.contact.obfuscatedemail"/></jsp:attribute>
+                        </mercury:email>
+                    </span><%----%>
                 </div><%----%>
             </c:if>
 

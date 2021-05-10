@@ -13,9 +13,11 @@
 <cms:formatter var="content" val="value">
 
 <c:set var="variant"            value="${value.Variant}" />
-<c:set var="detailContainer"    value="${cms.element.settings.detailContainer}" />
-<c:set var="cssWrapper"         value="${cms.element.setting.cssWrapper.isSet ? ' '.concat(cms.element.settings.cssWrapper) : ''}" />
-<c:set var="reverseOrder"       value="${cms.element.setting.containerOrder.toString eq 'reversed'}" />
+<c:set var="setting"            value="${cms.element.setting}" />
+<c:set var="detailContainer"    value="${setting.detailContainer.toString}" />
+<c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(setting.cssWrapper.toString) : ''}" />
+<c:set var="cssWrapper"         value="${setting.cssWrapperAddition.isSet ? cssWrapper.concat(' ').concat(setting.cssWrapperAddition.toString) : cssWrapper}" />
+<c:set var="reverseOrder"       value="${setting.containerOrder.toString eq 'reversed'}" />
 
 <jsp:useBean id="valueMap"      class="java.util.HashMap" />
 

@@ -593,6 +593,21 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+      <PropertyName><![CDATA[textAlignment]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textAlignment)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.textAlignment.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[pal]]></Default>
+      <WidgetConfig><![CDATA[
+            pal:                %(key.msg.setting.textAlignment.left)|
+            pac:                %(key.msg.setting.textAlignment.center)|
+            par:                %(key.msg.setting.textAlignment.right)|
+            paj:                %(key.msg.setting.textAlignment.justify)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[performerOption.detail]]></IncludeName>
       <PropertyName><![CDATA[performerOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.performerOption)]]></DisplayName>
@@ -1316,6 +1331,12 @@
             text:           %(key.msg.setting.linkOption.text)|
             heading:        %(key.msg.setting.linkOption.heading)|
         ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[tileContainer.element]]></IncludeName>
+      <PropertyName><![CDATA[tileContainer]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[element]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[logoAlignment.header]]></IncludeName>

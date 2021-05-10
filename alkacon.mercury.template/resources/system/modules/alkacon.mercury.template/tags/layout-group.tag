@@ -273,6 +273,7 @@
                     ${logoPadding}${' '}
                     ${showMeta ? metaPosition.concat(' ').concat(metaAlignment.concat(' ')) : ''}
                     ${showTitle ? titleAlignment.concat(' ') : ''}
+                    ${showTitleMobile ? 'title-mobile ' : ''}
                     ${needTitlePosition ? titlePosition.concat(' ') : ''}
                     ${navDisplay}${' '}
                     ${navAlignment}${' '}
@@ -330,14 +331,6 @@
 
                             <c:if test="${not showNavAside}">
                                 ${navBarElement}
-                            </c:if>
-
-                            <c:if test="${(not empty titleElement) and showTitleMobile}">
-                                <div class="h-title-row"><%----%>
-                                    <div class="container">
-                                        ${titleElement}
-                                    </div>
-                                </div><%----%>
                             </c:if>
 
                             <c:if test="${showAddContainer}">

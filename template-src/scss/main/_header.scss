@@ -188,7 +188,7 @@
 
     // Special header containers
     @if ($nav-breakpoint-sticky-header != xs) {
-        // sticky header is by not enabled for mobile devices (this is the default)
+        // sticky header is not enabled for mobile devices (this is the default)
         .co-sm-md {
             // container only for screen size SM And MD
             @include media-breakpoint-between(sm, md) {
@@ -282,51 +282,6 @@
             }
         }
 
-        .h-title-row {
-            display: flex; // will be hidden from screen size lg
-            order: 10;
-            padding-bottom: $bh-header-padding-small;
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-
-            @include add-bg-color($fh-title-bg-color) {
-                padding-top: $bh-header-padding-small;
-                .h-title {
-                    color: check-text-color($fh-title-bg-color, $fh-title-color);
-                }
-            }
-
-            .h-title {
-                @include use-hyphens-headings(true);
-                line-height: 1.2;
-                font-size: $bh-title-font-size-mobile;
-                text-align: left;
-                display: block;
-            }
-        }
-
-        &.title-left {
-            .h-title {
-                text-align: left;
-            }
-        }
-
-        &.title-center {
-            .h-title {
-                text-align: center;
-            }
-        }
-
-        &.title-right {
-            .h-title {
-                text-align: right;
-            }
-        }
-
         @if ($fh-logo-image-bg != none) {
             // set colored background for image (if images contain transparency - required mostly for demo content)
             .nav-main-mobile-logo .img-responsive,
@@ -345,6 +300,84 @@
 
         @include media-breakpoint-down(md) {
             @include hide-mega-menu-content;
+
+            &.title-mobile {
+
+                %expand-title {
+                    display: flex; // will be hidden from screen size lg
+                    order: 10;
+                    padding-bottom: $bh-header-padding-small;
+                    width: 100vw;
+                    position: relative;
+                    left: 50%;
+                    right: 50%;
+                    margin-left: -50vw;
+                    margin-right: -50vw;
+
+                    @include add-bg-color($fh-title-bg-color) {
+                        padding-top: $bh-header-padding-small;
+                    }
+                }
+
+                %format-title {
+                    @include use-hyphens-headings(true);
+                    line-height: 1.2;
+                    font-size: $bh-title-font-size-mobile;
+                    text-align: left;
+                    display: block;
+
+                    @include add-bg-color($fh-title-bg-color) {
+                        color: check-text-color($fh-title-bg-color, $fh-title-color);
+                    }
+                    @include make-container();
+                    @include media-breakpoint-up(sm) {
+                        max-width: map-get($container-max-widths, sm);
+                    }
+                    @include media-breakpoint-up(md) {
+                        max-width: map-get($container-max-widths, md);
+                    }
+                }
+
+                .h-info {
+                    @extend %expand-title;
+
+                    .h-meta {
+                        display: none;
+                    }
+
+                    .h-title {
+                        @extend %format-title;
+                    }
+                }
+
+                &.lp-c {
+                    .h-title {
+                        @extend %expand-title;
+
+                        > div {
+                            @extend %format-title;
+                        }
+                    }
+                }
+
+                &.title-left {
+                    .h-title {
+                        text-align: left;
+                    }
+                }
+
+                &.title-center {
+                    .h-title {
+                        text-align: center;
+                    }
+                }
+
+                &.title-right {
+                    .h-title {
+                        text-align: right;
+                    }
+                }
+            }
         }
 
         @include media-breakpoint-up(lg) {
@@ -358,10 +391,6 @@
                 .header-group {
                     border-bottom: $nav-head-border;
                 }
-            }
-
-            .h-title-row {
-                display: none;
             }
 
             // logo and info column
@@ -738,7 +767,7 @@
                 }
 
                 .h-title {
-                    order: 5;
+                    order: 1;
                 }
 
                 &.title-bottom {
@@ -980,6 +1009,7 @@
                 @if ($logo-size < 6) {
                     .nav-main-mobile-logo .mobile-logolink {
                         width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
+                        max-width: 100%;
                     }
                 }
                 @include media-breakpoint-up(sm) {

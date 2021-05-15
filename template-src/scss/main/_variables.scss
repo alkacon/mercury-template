@@ -517,6 +517,7 @@ $nav-side-right-padding:            30px !default;
 $nav-side-ver-padding:              6px !default;
 $nav-side-padding:                  $nav-side-ver-padding $nav-side-right-padding $nav-side-ver-padding $nav-side-left-padding-start !default;
 $nav-side-border-radius:            $default-border-radius !default;
+$nav-side-reduce-transitions:       false !default; // true/false: reduce transitions in sidebar to avoid safari redering bug
 
 
 // The Footer - this is used for the layout groups "Mercury footer full" and "Mercury footer reduced"

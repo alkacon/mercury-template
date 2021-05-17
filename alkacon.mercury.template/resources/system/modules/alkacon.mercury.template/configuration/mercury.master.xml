@@ -824,5 +824,54 @@
       <Key><![CDATA[list.use.configured.formatters]]></Key>
       <Value><![CDATA[true]]></Value>
     </Attribute>
+    <Attribute>
+      <Key><![CDATA[editorConfigFull]]></Key>
+      <Value><![CDATA[formatselect,link,anchor,downloadgallery,specialchar,emotions,source]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[editorConfigLimited]]></Key>
+      <Value><![CDATA[link,source]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[editorConfigMail]]></Key>
+      <Value><![CDATA[formatselect,table,source]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryYouTubePreviewDefault]]></Key>
+      <Value><![CDATA[hqdefault.jpg]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryYouTubePreviewWidgetConfig]]></Key>
+      <Value><![CDATA[
+        hqdefault.jpg:%(key.msg.option.media.youtube.hqdefault)|
+        sddefault.jpg:%(key.msg.option.media.youtube.sddefault)|
+        maxresdefault.jpg:%(key.msg.option.media.youtube.maxresdefault)|
+        none:%(key.msg.option.media.youtube.none)
+      ]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryVideoMediaChoice]]></Key>
+      <Value><![CDATA[%(key.label.MediaChoice.Video)]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryVideoDataWidget]]></Key>
+      <Value><![CDATA[file]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryVideoDataWidgetConfig]]></Key>
+      <Value/>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryAudioMediaChoice]]></Key>
+      <Value><![CDATA[%(key.label.MediaChoice.Audio)]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryAudioDataWidget]]></Key>
+      <Value><![CDATA[file]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[mercuryAudioDataWidgetConfig]]></Key>
+      <Value/>
+    </Attribute>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

@@ -23,8 +23,8 @@
                 <Setting>
                     <PropertyName>Data</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaVideo.Data)]]></DisplayName>
-                    <Widget><![CDATA[%(param:mercuryVideoDataWidget)]]></Widget>
-                    <WidgetConfig><![CDATA[%(param:mercuryVideoDataWidgetConfig)]]></WidgetConfig>
+                    <Widget><![CDATA[%(attribute:mercuryVideoDataWidget:%(param:mercuryVideoDataWidget))]]></Widget>
+                    <WidgetConfig><![CDATA[%(attribute:mercuryVideoDataWidgetConfig:%(param:mercuryVideoDataWidgetConfig))]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

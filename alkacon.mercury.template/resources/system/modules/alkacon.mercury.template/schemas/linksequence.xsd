@@ -44,7 +44,7 @@
                     <Description><![CDATA[%(key.label.LinkSequence.Text.help)]]></Description>
                     <Widget>html</Widget>
                     <Default><![CDATA[%(key.msg.default.new.Text)]]></Default>
-                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>LinkEntry</PropertyName>

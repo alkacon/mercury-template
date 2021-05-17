@@ -47,7 +47,7 @@
                     <PropertyName>Description</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
                     <Widget>html</Widget>
-                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

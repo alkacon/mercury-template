@@ -1527,8 +1527,13 @@
         &.header-isfixed {
 
             .h-logo-row {
-                padding-top: $bh-header-padding-verysmall;
-                padding-bottom: $bh-header-padding-verysmall;
+                @if (($fh-meta-bg-color != none) and ($fh-meta-bg-color != $fh-header-bg-color)) {
+                    padding-top: $bh-header-padding-small;
+                    padding-bottom: $bh-header-padding-small;
+                } @else {
+                    padding-top: $bh-header-padding-verysmall;
+                    padding-bottom: $bh-header-padding-verysmall;
+                }
             }
 
             .h-title-col,

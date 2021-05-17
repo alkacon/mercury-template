@@ -31,8 +31,8 @@
                     <PropertyName>YouTubePreview</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaYoutube.YouTubePreview)]]></DisplayName>
                     <Widget>select</Widget>
-                    <Default><![CDATA[%(param:mercuryYouTubePreviewDefault)]]></Default>
-                    <WidgetConfig><![CDATA[%(param:mercuryYouTubePreviewWidgetConfig)]]></WidgetConfig>
+                    <Default><![CDATA[%(attribute:mercuryYouTubePreviewDefault:%(param:mercuryYouTubePreviewDefault))]]></Default>
+                    <WidgetConfig><![CDATA[%(attribute:mercuryYouTubePreviewWidgetConfig:%(param:mercuryYouTubePreviewWidgetConfig))]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

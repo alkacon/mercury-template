@@ -133,7 +133,7 @@
                     <PropertyName>Description</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Link</PropertyName>

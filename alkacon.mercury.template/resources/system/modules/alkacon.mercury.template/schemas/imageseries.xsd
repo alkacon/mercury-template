@@ -87,7 +87,7 @@
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Widget>html</Widget>
                     <Default><![CDATA[%(key.msg.default.new.Text)]]></Default>
-                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>

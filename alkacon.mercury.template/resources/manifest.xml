@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.344</version>
+		<version>11.0.1.345</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -32,7 +32,6 @@
 		</resources>
 		<excluderesources/>
 		<parameters>
-			<param name="paramfile">/system/modules/alkacon.mercury.template/configuration/schema-params.xml</param>
 			<param name="workplace-css">mercury/mercury-workplace.css</param>
 		</parameters>
 		<resourcetypes>
@@ -275,23 +274,6 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[true]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/configuration/schema-params.xml</source>
-			<destination>system/modules/alkacon.mercury.template/configuration/schema-params.xml</destination>
-			<type>plain</type>
-			<uuidstructure>25905bb6-fb25-11e9-afb6-0242ac11002b</uuidstructure>
-			<uuidresource>25905bb7-fb25-11e9-afb6-0242ac11002b</uuidresource>
-			<datecreated>Wed, 30 Oct 2019 14:54:17 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Mercury schema parameters]]></value>
 				</property>
 			</properties>
 			<relations/>

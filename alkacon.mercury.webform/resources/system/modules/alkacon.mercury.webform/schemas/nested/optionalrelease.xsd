@@ -33,7 +33,7 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormRelease.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormRelease.Text.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

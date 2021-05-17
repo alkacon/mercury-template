@@ -41,7 +41,7 @@
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Widget>html</Widget>
                     <Default><![CDATA[%(key.msg.default.new.Text)]]></Default>
-                    <WidgetConfig><![CDATA[%(param:editorConfigParagraph)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
                     <Display>wide</Display>
                 </Setting>
                 <Setting>

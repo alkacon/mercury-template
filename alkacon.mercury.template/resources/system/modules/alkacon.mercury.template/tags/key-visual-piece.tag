@@ -78,7 +78,7 @@
 
     </mercury:image-animated>
     <c:if test="${not empty visualSubtitle}">
-        <div class="subtitle">${visualSubtitle}</div><%----%>
+        <div class="subtitle rs_skip">${visualSubtitle}</div><%----%>
     </c:if>
 </c:when>
 <c:when test="${image.value.Image.isSet or not empty markupImage}">
@@ -104,7 +104,7 @@
         </c:otherwise>
     </c:choose>
     <c:if test="${not empty visualSubtitle}">
-        <div class="subtitle">${visualSubtitle}</div><%----%>
+        <div class="subtitle rs_skip">${visualSubtitle}</div><%----%>
     </c:if>
 </c:when>
 </c:choose>

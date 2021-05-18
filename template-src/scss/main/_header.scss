@@ -321,6 +321,7 @@
 
                 %format-title {
                     @include use-hyphens-headings(true);
+                    @include heading-base(false);
                     line-height: 1.2;
                     font-size: $bh-title-font-size-mobile;
                     text-align: left;

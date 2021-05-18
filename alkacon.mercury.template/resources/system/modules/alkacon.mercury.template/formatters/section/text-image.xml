@@ -35,12 +35,6 @@
       <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
@@ -48,6 +42,12 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>

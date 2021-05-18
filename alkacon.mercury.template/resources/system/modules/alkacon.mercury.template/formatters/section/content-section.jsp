@@ -27,13 +27,13 @@
 <c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageLink"      value="${setting.showImageLink.toBoolean}" />
-<c:set var="textAlignment"      value="${setting.textAlignment.useDefault('pal').toString}" />
+<c:set var="textAlignment"      value="${setting.textAlignment.toString}" />
 
 <c:set var="headingOption"      value="${setting.headingOption.toString}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
 <mercury:section-piece
-    cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${' '}${textAlignment}${empty effect ? '' : ' '.concat(effect)}${empty cssVisibility ? '' : ' '.concat(cssVisibility)}"
+    cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}${empty cssVisibility ? '' : ' '.concat(cssVisibility)}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"
@@ -44,6 +44,7 @@
     hsize="${hsize}"
     imageRatio="${imageRatio}"
     textOption="${textOption}"
+    textAlignment="${textAlignment}"
     linkOption="${linkOption}"
     showImageCopyright="${showImageCopyright}"
     showImageSubtitle="${showImageSubtitle}"

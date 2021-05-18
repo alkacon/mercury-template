@@ -75,6 +75,9 @@
 <%@ attribute name="cssText" type="java.lang.String" required="false"
     description="'class' selectors to add to the tag surrounding the text." %>
 
+<%@ attribute name="textAlignment" type="java.lang.String" required="false"
+    description="Controls the alignment of the text elements. Default is left aligned." %>
+
 <%@ attribute name="link" fragment="true" required="false"
     description="Markup shown for the content piece link." %>
 
@@ -198,6 +201,15 @@
 </c:if>
 
 <c:choose>
+    <c:when test="${empty textAlignment or (textAlignment eq 'pal')}">
+        <%-- Default alignment, no css class added --%>
+    </c:when>
+    <c:when test="${(textAlignment eq 'par') or (textAlignment eq 'pac') or (textAlignment eq 'paj')}">
+        <c:set var="pieceAlignment" value="${' '}${textAlignment}" />
+    </c:when>
+</c:choose>
+
+<c:choose>
     <c:when test="${showHeading and not showVisual and not showBody and not showLink}">
         <c:set var="pieceFeatureMarker" value=" only-heading" />
         <c:set var="onlyHeading" value="${true}" />
@@ -228,6 +240,7 @@ ${'<'}${pieceTag}${' '}
         ${'piece'}
         ${empty pieceOption ? '' : ' '.concat(pieceOption)}
         ${empty pieceFeatureMarker ? '' : pieceFeatureMarker}
+        ${empty pieceAlignment ? '' : pieceAlignment}
         ${empty gridOption ? '' : ' '.concat(gridOption)}
     ${'\"'}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}

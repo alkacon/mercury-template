@@ -64,6 +64,9 @@
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
     description="Controls if and how the link is displayed. Default is 'button'." %>
 
+<%@ attribute name="textAlignment" type="java.lang.String" required="false"
+    description="Controls the alignment of the text elements. Default is left aligned." %>
+
 <%@ attribute name="headingOption" type="java.lang.String" required="false"
     description="Controls how the heading is displayed. Default is 'full'." %>
 
@@ -122,9 +125,10 @@
         sizeDesktop="${sizeDesktop}"
         sizeMobile="${sizeMobile}"
         pieceTag="${pieceTag}"
-        cssText="${showText and (textOption ne 'default') ? textOption: ''}"
+        cssText="${showText and (textOption ne 'default') ? textOption : ''}"
         attrVisual="${ade ? image.rdfaAttr : null}"
         cssVisual="rs_skip"
+        textAlignment="${textAlignment}"
         attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
         cssBody="${defaultText ? 'default' :_null}"
         attrText="${ade ? text.rdfaAttr : null}"

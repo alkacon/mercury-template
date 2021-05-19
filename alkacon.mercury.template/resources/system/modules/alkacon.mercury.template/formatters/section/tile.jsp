@@ -15,18 +15,19 @@
 
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper.toString}" />
-<c:set var="hsize"                  value="${setting.hsize.toInteger}" />
-<c:set var="imageRatio"             value="${setting.imageRatio}" />
-<c:set var="tileContainer"          value="${setting.tileContainer.toString}" />
-<c:set var="animationClass"         value="${setting.effect.toString ne 'none' ? ' '.concat(setting.effect.toString.concat(' effect-piece')) : ''}" />
-<c:set var="fullOverlay"            value="${setting.fullOverlay.toBoolean}" />
-<c:set var="textOption"             value="${setting.textOption.toString}" />
-<c:set var="linkOption"             value="${fullOverlay ? setting.linkOption.toString : 'none'}" />
-<c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
-<c:set var="textAlignment"          value="${setting.textAlignment.useDefault('pal').toString}" />
-<c:set var="useAsElement"           value="${tileContainer eq 'element'}" />
+<c:set var="setting"            value="${cms.element.setting}" />
+<c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(setting.cssWrapper.toString) : null}" />
+<c:set var="effect"             value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
+<c:set var="cssVisibility"      value="${setting.cssVisibility.toString ne 'always' ? ' '.concat(setting.cssVisibility.toString) : null}" />
+<c:set var="hsize"              value="${setting.hsize.toInteger}" />
+<c:set var="imageRatio"         value="${setting.imageRatio}" />
+<c:set var="tileContainer"      value="${setting.tileContainer.toString}" />
+<c:set var="fullOverlay"        value="${setting.fullOverlay.toBoolean}" />
+<c:set var="textOption"         value="${setting.textOption.toString}" />
+<c:set var="linkOption"         value="${fullOverlay ? setting.linkOption.toString : 'none'}" />
+<c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
+<c:set var="textAlignment"      value="${setting.textAlignment.useDefault('pal').toString}" />
+<c:set var="useAsElement"       value="${tileContainer eq 'element'}" />
 
 <c:choose>
     <c:when test="${useAsElement}">
@@ -46,7 +47,7 @@
 <mercury:nl />
 <div class="${tileClass}"><%----%>
 
-    <div class="content-box${animationClass}${cssWrapper}"><%----%>
+    <div class="content-box${cssWrapper}${effect}${cssVisibility}"><%----%>
 
         <mercury:link link="${value.Link}" test="${linkOption eq 'none'}">
 
@@ -65,11 +66,11 @@
                     </cms:addparams>
                 </c:when>
                 <c:otherwise>
-                    <mercury:padding-box ratio="${imageRatio}" />
+                    <mercury:padding-box ratio="${imageRatio}" defaultRatio="4-3" />
                 </c:otherwise>
             </c:choose>
 
-            <div class="${fullOverlay ? 'full-overlay' : 'text-overlay'}"><%----%>
+            <c:set var="tileText">
                 <mercury:section-piece
                     cssWrapper="${textAlignment}"
                     heading="${value.Title}"
@@ -80,8 +81,15 @@
                     linkOption="${linkOption}"
                     textOption="${textOption}"
                     ade="${linkOption ne 'none'}"
+                    emptyWarning="${false}"
                 />
-            </div><%----%>
+            </c:set>
+
+            <c:if test="${not empty tileText}">
+                <div class="${fullOverlay ? 'full-overlay' : 'text-overlay'}"><%----%>
+                    ${tileText}
+                </div><%----%>
+            </c:if>
 
             <c:if test="${showImageCopyright and not empty imageCopyright}">
                 <div class="copyright">${imageCopyright}</div><%----%>

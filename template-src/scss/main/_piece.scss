@@ -44,9 +44,13 @@
     }
 }
 
-@function get-col-float-size($cols, $reduce: 0) {
+@function get-col-float-size($cols, $reduce: 0, $gutter-width: $grid-gutter-width) {
     @if ($cols < 12) {
-        @return calc((100% + #{$grid-gutter-width}) * #{$cols / $grid-columns} - #{$grid-gutter-width + $reduce});
+        @if (($reduce != 0) or ($gutter-width != 0)) {
+            @return calc((100% + #{$gutter-width}) * #{$cols / $grid-columns} - #{$gutter-width + $reduce});
+        } @else {
+            @return 100% * $cols / $grid-columns;
+        }
     } @else {
         @return 100%;
     }
@@ -290,6 +294,17 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                 }
                 > .body {
                     padding-left: 0.5 * $grid-gutter-width;
+                }
+            }
+
+            &.p-md-7,
+            &.p-md-8,
+            &.p-md-9,
+            &.p-md-10,
+            &.p-md-11 {
+                // if available room for text is very small, adjust wrap settings
+                .btn {
+                    white-space: normal;
                 }
             }
         }

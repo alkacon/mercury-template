@@ -15,11 +15,11 @@
 
 <jsp:attribute name="top">
 
-<c:set var="cmsstatus">${cms.isEditMode ? 'opencms-page-editor ' : ''}${cms.isEditMode and cms.modelGroupPage ? 'opencms-group-editor ' : ''}</c:set>
-<c:set var="pageclass">${allowTemplateMods ? contentProperties['mercury.css.class'] : ''}</c:set>
+<c:set var="cmsstatus" value="${cms.isEditMode ? ' opencms-page-editor' : null}${cms.isEditMode and cms.modelGroupPage ? ' opencms-group-editor' : null}" />
+<c:set var="pageclass" value="${templateVariant}${templateCustomer}${templateProject}${allowTemplateMods ? ' '.concat(contentProperties['mercury.css.class']) : null}" />
 
 <!DOCTYPE html>
-<html lang="${cms.locale}" class="noscript ${cmsstatus}${allowTemplateMods ? ' canmod' : ' nomod'}${empty pageclass ? '' : ' '}${pageclass}">
+<html lang="${cms.locale}" class="noscript${cmsstatus}${pageclass}">
 <head>
 
 <%-- Special CSS in case JavaScript is disabled --%>

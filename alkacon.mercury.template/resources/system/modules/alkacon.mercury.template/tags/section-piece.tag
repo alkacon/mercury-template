@@ -22,7 +22,7 @@
     description="Mobile grid size for the visual. Valid values are 1 to 12, 0 and 99.
     The special value 0 means 'hide the visual'.
     The special value 99 means 'use the default'
-    The default will depend on the desktop size, e.g. for destop 4 this would be mobile 8." %>
+    The default will depend on the desktop size, e.g. for destop 4 this would be mobile 12." %>
 
 <%@ attribute name="sizeDesktop" type="java.lang.Integer" required="false"
     description="Desktop grid size for the visual if displayed in a column. Valid values are 1 to 12, 0 and 99.

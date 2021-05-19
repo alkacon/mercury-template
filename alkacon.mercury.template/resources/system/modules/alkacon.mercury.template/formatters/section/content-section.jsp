@@ -14,15 +14,15 @@
 <cms:formatter var="content" val="value">
 
 <c:set var="setting"            value="${cms.element.setting}" />
-<c:set var="cssWrapper"         value="${setting.cssWrapper.toString}" />
-<c:set var="effect"             value="${setting.effect.isSetNotNone ? setting.effect.toString : null}" />
+<c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(setting.cssWrapper.toString) : null}" />
+<c:set var="effect"             value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
+<c:set var="cssVisibility"      value="${setting.cssVisibility.toString ne 'always' ? ' '.concat(setting.cssVisibility.toString) : null}" />
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />
 <c:set var="sizeDesktop"        value="${setting.visualOption.toInteger}" />
 <c:set var="sizeMobile"         value="${setting.sizeMobile.isSetNotNone ? setting.sizeMobile.toInteger : null}" />
 <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio.toString}" />
 <c:set var="linkOption"         value="${setting.linkOption.toString}" />
-<c:set var="cssVisibility"      value="${setting.cssVisibility.toString != 'always' ? setting.cssVisibility.toString : null}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
@@ -33,7 +33,7 @@
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
 <mercury:section-piece
-    cssWrapper="element type-section${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}${empty cssVisibility ? '' : ' '.concat(cssVisibility)}"
+    cssWrapper="element type-section${cssWrapper}${effect}${cssVisibility}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"

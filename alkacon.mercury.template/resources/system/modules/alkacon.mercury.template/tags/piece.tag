@@ -133,11 +133,11 @@
         <c:set var="pieceIsFlex"    value="${(pieceLayout == 2) or (pieceLayout == 3) or (pieceLayout == 6) or (pieceLayout == 7)}" />
         <c:set var="pieceIsFloat"   value="${not fullWidth and not pieceIsFlex}" />
         <c:set var="pieceDirection" value="${not fullWidth ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
-        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 4 : (sizeDesktop > 12 ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop))}" />
+        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99) or (sizeDesktop > 12)) ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop)}" />
     </c:otherwise>
 </c:choose>
 
-<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99)) ? (sizeDesktop < 10 ? (sizeDesktop > 5 ? 12 : sizeDesktop * 2) : 12) : (sizeMobile > 12 ? (sizeDesktop < 12 ? 7 : 12) : (sizeMobile < 0 ? 0 : sizeMobile))}" />
+<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99) or (sizeMobile > 12)) ? (sizeDesktop < 10 ? (sizeDesktop > 3 ? 12 : sizeDesktop * 2) : 12) : (sizeMobile < 0 ? 0 : sizeMobile)}" />
 
 <c:set var="useVisual"      value="${(sizeMobile != 0) or (sizeDesktop != 0)}" />
 

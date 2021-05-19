@@ -41,6 +41,9 @@
       <IncludeName><![CDATA[textOption.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
     </Setting>
     <Setting>
@@ -54,9 +57,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.section.text-image]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>

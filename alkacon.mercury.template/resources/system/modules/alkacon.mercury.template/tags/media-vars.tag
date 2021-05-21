@@ -143,7 +143,14 @@
             --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen><%--
         --%></iframe><%----%>
         </c:set>
-        <c:set var="icon" value="youtube-play" />
+        <c:choose>
+            <c:when test="${content.value.MediaContent.value.YouTube.value.Icon.isSet}">
+                <c:set var="icon" value="${content.value.MediaContent.value.YouTube.value.Icon}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="icon" value="youtube-play" />
+            </c:otherwise>
+        </c:choose>
         <c:set var="cssClass" value="video" />
 
         <c:if test="${youTubePreviewImg ne 'none'}">

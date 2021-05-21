@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE params SYSTEM "internal://org/opencms/configuration/paramfile.dtd">
+
+<params weight="10">
+
+    <param name="editorConfigFull"     >formatselect,link,anchor,downloadgallery,specialchar,emotions,source</param>
+    <param name="editorConfigMail"     >formatselect,table,source</param>
+    <param name="editorConfigLimited"  >link,source</param>
+
+    <param name="mercuryYouTubePreviewDefault">hqdefault.jpg</param>
+    <param name="mercuryYouTubePreviewWidgetConfig"><![CDATA[
+        hqdefault.jpg:%(key.msg.option.media.youtube.hqdefault)|
+        sddefault.jpg:%(key.msg.option.media.youtube.sddefault)|
+        maxresdefault.jpg:%(key.msg.option.media.youtube.maxresdefault)|
+        none:%(key.msg.option.media.youtube.none)
+    ]]></param>
+
+    <param name="mercuryVideoMediaChoice">%(key.label.MediaChoice.Video)</param>
+    <param name="mercuryAudioMediaChoice">%(key.label.MediaChoice.Audio)</param>
+    <param name="mercuryVideoDataWidget">file</param>
+    <param name="mercuryVideoDataWidgetConfig"></param>
+    <param name="mercuryAudioDataWidget">file</param>
+    <param name="mercuryAudioDataWidgetConfig"></param>
+
+</params>

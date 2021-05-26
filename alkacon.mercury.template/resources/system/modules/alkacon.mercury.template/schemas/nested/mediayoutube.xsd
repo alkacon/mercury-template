@@ -41,7 +41,7 @@
                     <DisplayName><![CDATA[%(key.label.MediaFlexible.Icon)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MediaFlexible.Icon.help)]]></Description>
                     <Widget><![CDATA[selectcombo]]></Widget>
-                    <Default><![CDATA[play]]></Default>
+                    <Default><![CDATA[youtube-play]]></Default>
                     <WidgetConfig><![CDATA[
                         youtube-play:%(key.msg.icon.youtube-play)|
                         youtube:%(key.msg.icon.youtube)|

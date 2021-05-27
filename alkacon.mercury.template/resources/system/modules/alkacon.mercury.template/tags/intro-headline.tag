@@ -51,15 +51,21 @@
 
         <jsp:attribute name="markupText">
             <c:if test="${not empty intro}">
-                <span class="intro"${ade and cms:isWrapper(intro) ? ''.concat(intro.rdfaAttr) : ''}><%----%>
-                    <c:out value="${intro}" />
+                <span class="intro"><%----%>
+                    <c:set var="adeIntro" value="${ade and cms:isWrapper(intro)}" />
+                    ${adeIntro ? '<span '.concat(intro.rdfaAttr).concat('>') : ''}
+                        <c:out value="${intro}" />
+                    ${adeIntro ? '</span>' : ''}
                     <span class="sr-only">:</span><%----%>
                 </span><%----%>
             </c:if>
             <c:if test="${not empty headline}">
-                <span class="headline"${ade and cms:isWrapper(headline) ? ''.concat(headline.rdfaAttr) : ''}><%----%>
+                <span class="headline"><%----%>
+                    <c:set var="adeHeadline" value="${ade and cms:isWrapper(headline)}" />
                     ${prefix}
-                    <c:out value="${headline}" />
+                    ${adeHeadline ? '<span '.concat(headline.rdfaAttr).concat('>') : ''}
+                        <c:out value="${headline}" />
+                    ${adeHeadline ? '</span>' : ''}
                     ${suffix}
                 </span><%----%>
             </c:if>

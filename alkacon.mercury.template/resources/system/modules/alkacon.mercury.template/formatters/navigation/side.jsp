@@ -21,12 +21,13 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="cssVisibility"          value="${setting.cssVisibility.toString != 'always' ? setting.cssVisibility.toString : ''}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <mercury:nl />
 <div class="element type-nav-side ${cssWrapper}${' '}${cssVisibility}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
     <mercury:nav-vars params="${param}">
     <mercury:nav-items

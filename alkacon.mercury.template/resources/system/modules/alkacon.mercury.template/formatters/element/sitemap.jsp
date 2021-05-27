@@ -25,7 +25,7 @@ ${nl}
 <c:set var="openAll"                value="${setting.displayOption.toString eq 'open-all'}" />
 <c:set var="openFirst"              value="${openAll or setting.displayOption.toString eq 'open-first'}" />
 
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <div class="element type-sitemap ${cssWrapper}">${nl}
 

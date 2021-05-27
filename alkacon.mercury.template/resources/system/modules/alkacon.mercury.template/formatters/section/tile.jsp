@@ -28,6 +28,7 @@
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="textAlignment"      value="${setting.textAlignment.useDefault('pal').toString}" />
 <c:set var="useAsElement"       value="${tileContainer eq 'element'}" />
+<c:set var="ade"                value="${cms.isEditMode}" />
 
 <c:choose>
     <c:when test="${useAsElement}">
@@ -59,7 +60,7 @@
                             image="${image}"
                             ratio="${imageRatio}"
                             addEffectBox="${true}"
-                            ade="${true}"
+                            ade="${ade}"
                             title="${value.Title}">
                             <c:set var="imageCopyright" value="${imageCopyrightHtml}" scope="request" />
                         </mercury:image-animated>
@@ -80,7 +81,7 @@
                     hsize="${hsize}"
                     linkOption="${linkOption}"
                     textOption="${textOption}"
-                    ade="${linkOption ne 'none'}"
+                    ade="${ade and (linkOption ne 'none')}"
                     emptyWarning="${false}"
                 />
             </c:set>

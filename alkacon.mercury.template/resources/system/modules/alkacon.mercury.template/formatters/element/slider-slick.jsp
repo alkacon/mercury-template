@@ -40,6 +40,9 @@
 <c:set var="bgColorSub"             value="${setting.textColorSub.isSet and not (setting.textColorSub eq 'css') ? setting.textColorSub.toString : ''}" />
 
 <c:set var="slickType"              value="${setting.slickType.value}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
+
+
 <c:choose>
     <c:when test="${slickType eq 'logo'}">
     <%-- ###### Logo slider ###### --%>
@@ -119,7 +122,7 @@
 --%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
 --%>><mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
     <c:choose>
         <c:when test="${value.Position.exists}">

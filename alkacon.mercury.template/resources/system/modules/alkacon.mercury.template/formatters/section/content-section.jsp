@@ -50,7 +50,7 @@
     showImageSubtitle="${showImageSubtitle}"
     showImageZoom="${showImageZoom}"
     showImageLink="${showImageLink}"
-    ade="${true}"
+    ade="${cms.isEditMode}"
     emptyWarning="${true}"
 />
 

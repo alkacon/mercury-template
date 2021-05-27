@@ -23,7 +23,7 @@
 <c:set var="visualOption"           value="${setting.visualOption.toString}" />
 <c:set var="firstOpen"              value="${setting.firstOpen.toBoolean}" />
 
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="parentId"><mercury:idgen prefix="acco" uuid="${cms.element.instanceId}" /></c:set>
 <c:set var="param_parts"        value="${fn:split(cms.container.param, '#')}" />

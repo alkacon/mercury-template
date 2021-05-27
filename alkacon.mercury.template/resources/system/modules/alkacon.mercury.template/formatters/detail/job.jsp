@@ -54,7 +54,7 @@
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet)}" />
 <c:set var="showDate"               value="${not empty date}" />
 <c:set var="showType"               value="${type.isSet}" />
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 

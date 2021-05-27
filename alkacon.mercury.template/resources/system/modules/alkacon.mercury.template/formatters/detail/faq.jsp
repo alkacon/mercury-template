@@ -47,7 +47,7 @@
 <c:set var="link"                   value="${firstParagraph.value.Link}" />
 
 <c:set var="showDate"               value="${not empty date}" />
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 

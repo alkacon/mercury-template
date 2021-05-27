@@ -22,7 +22,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="showSingleTab"          value="${setting.showSingleTab.useDefault('true').toBoolean}" />
 
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="showTabs"               value="${showSingleTab or (content.valueList.TabEntry.size() ne 1)}" />
 
 <c:set var="itemId"><mercury:idgen prefix="acco" uuid="${cms.element.instanceId}" /></c:set>

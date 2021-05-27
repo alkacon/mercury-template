@@ -41,7 +41,7 @@
 <c:set var="text"                   value="${value.Text}" />
 
 <c:set var="showDate"               value="${not empty date}" />
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="showText"               value="${setting.showText.toBoolean}" />
 <c:set var="showPrefaceAsSubtitle"  value="${false}" />

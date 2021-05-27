@@ -127,7 +127,7 @@
 <%-- We only initialize the other stuff if the image bean was initialized --%>
 
     <c:set var="escapeCopyright"        value="${empty escapeCopyright ? true : escapeCopyright}" />
-    <c:set var="ade"                    value="${empty ade ? true : ade}" />
+    <c:set var="ade"                    value="${empty ade ? cms.isEditMode : ade}" />
 
     <%-- Apply a global quality factor of 75% for JPEG compression --%>
     <%-- OpenCms SimAPI otherwise applies 95% which makes images more than twice as large --%>

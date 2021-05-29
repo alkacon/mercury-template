@@ -16,7 +16,7 @@
 <jsp:attribute name="top">
 
 <c:set var="cmsstatus" value="${cms.isEditMode ? ' opencms-page-editor' : null}${cms.isEditMode and cms.modelGroupPage ? ' opencms-group-editor' : null}" />
-<c:set var="pageclass" value="${templateVariant}${templateCustomer}${templateProject}${allowTemplateMods ? ' '.concat(contentProperties['mercury.css.class']) : null}" />
+<c:set var="pageclass" value="${templateVariant}${allowTemplateMods ? ' '.concat(contentProperties['mercury.css.class']) : null}" />
 
 <!DOCTYPE html>
 <html lang="${cms.locale}" class="noscript${cmsstatus}${pageclass}">
@@ -37,7 +37,7 @@
     <mercury:meta-info
         canonicalURL="${canonicalURL}"
         contentPropertiesSearch="${contentPropertiesSearchDetail}"
-   />
+    />
 </mercury:meta-canonical>
 
 <%-- Add favicon --%>

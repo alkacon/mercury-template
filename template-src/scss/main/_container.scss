@@ -244,18 +244,29 @@ $oct-edit-infos:
     content: ' ';
 }
 
-// Anchors
+// Anchors and Meta info icons
 
-.oct-anchor {
-    .target {
-        position: relative; // Prevents background image from stretching over the whole width
-        &::before {
-            // Add bookmark icon
-            display: inline-block;
-            font-family: ForkAwesome;
-            padding-right: $default-margin-verysmall;
-            content: '\f02e';
-        }
+.oct-anchor .target,
+.oct-meta .marker {
+    position: relative; // Prevents background image from stretching over the whole width
+    &::before {
+        display: inline-block;
+        font-family: ForkAwesome;
+        padding-right: 5px;
+    }
+}
+
+.oct-anchor .target {
+    &::before {
+        // Bookmark icon
+        content: '\f02e';
+    }
+}
+
+.oct-meta .marker {
+    &::before {
+        // Share alt square icon
+        content: '\f1e1';
     }
 }
 
@@ -351,6 +362,7 @@ $oct-edit-infos:
     padding-right: 25px !important;
     position: relative;
     margin-bottom: 2px;
+    align-self: flex-start;
 
     > .marker,
     > .target {

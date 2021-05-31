@@ -18,6 +18,7 @@
 <c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
 <c:set var="cssVisibility"              value="${setting.cssVisibility.toString != 'always' ? setting.cssVisibility.toString : ''}" />
 <c:set var="breadcrumbsIncludeHidden"   value="${setting.breadcrumbsIncludeHidden.toBoolean}" />
+<c:set var="breadcrumbsFullPath"        value="${setting.breadcrumbsFullPath.toBoolean}" />
 <c:set var="breadcrumbsFromRoot"        value="${setting.breadcrumbsFromRoot.toBoolean}" />
 
 <mercury:nl />
@@ -45,7 +46,7 @@
                                 ? navElem.title : navElem.navText}" />
                             <c:if test="${!empty navText}">
                                 <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
-                                <c:if test="${navLink ne lastNavLink}">
+                                <c:if test="${breadcrumbsFullPath or (navLink ne lastNavLink)}">
                                     <c:set var="lastNavLink" value="${navLink}" />
                                     <c:out value='<li><a href="${navLink}">' escapeXml="false" />
                                     <c:out value='${navText}' escapeXml="true" />

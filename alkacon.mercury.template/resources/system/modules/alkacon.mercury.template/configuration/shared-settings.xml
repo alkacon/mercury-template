@@ -2430,6 +2430,14 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[breadcrumbsFullPath.navigation]]></IncludeName>
+      <PropertyName><![CDATA[breadcrumbsFullPath]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.nav.breadcrumbsFullPath)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.nav.breadcrumbsFullPath.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showSearch.navigation]]></IncludeName>
       <PropertyName><![CDATA[showSearch]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.nav.showSearch)]]></DisplayName>

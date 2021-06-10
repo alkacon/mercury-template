@@ -64,18 +64,6 @@ public class CmsCaptchaStore {
     }
 
     /**
-     * Removes all invalid tokens from the store.
-     * <p>
-     *
-     */
-    private void clean() {
-
-        LOG.info("Size of the store before cleaning: " + size() + ".");
-        getStore().entrySet().removeIf(entry -> !entry.getValue().isValid());
-        LOG.info("Size of the store after cleaning: " + size() + ".");
-    }
-
-    /**
      * Whether a valid captcha token is stored for a given token ID.
      * <p>
      *
@@ -102,27 +90,6 @@ public class CmsCaptchaStore {
             return null;
         }
         return getStore().get(tokenId);
-    }
-
-    /**
-     * Returns the internal captcha token store with lazy initialization.
-     * <p>
-     *
-     * @return The concurrent hash map storing the captcha tokens.
-     */
-    @SuppressWarnings("unchecked")
-    private synchronized Map<String, CmsCaptchaToken> getStore() {
-
-        PageContext context = m_jspActionElement.getJspContext();
-        if (context.getAttribute(ATTRIBUTE_CAPTCHASTORE, PageContext.APPLICATION_SCOPE) == null) {
-            context.setAttribute(
-                ATTRIBUTE_CAPTCHASTORE,
-                new ConcurrentHashMap<String, CmsCaptchaToken>(),
-                PageContext.APPLICATION_SCOPE);
-        }
-        return (Map<String, CmsCaptchaToken>)context.getAttribute(
-            ATTRIBUTE_CAPTCHASTORE,
-            PageContext.APPLICATION_SCOPE);
     }
 
     /**
@@ -157,5 +124,36 @@ public class CmsCaptchaStore {
     public int size() {
 
         return getStore().size();
+    }
+
+    /**
+     * Removes all invalid tokens from the store.
+     * <p>
+     *
+     */
+    private void clean() {
+
+        getStore().entrySet().removeIf(entry -> !entry.getValue().isValid());
+    }
+
+    /**
+     * Returns the internal captcha token store with lazy initialization.
+     * <p>
+     *
+     * @return The concurrent hash map storing the captcha tokens.
+     */
+    @SuppressWarnings("unchecked")
+    private synchronized Map<String, CmsCaptchaToken> getStore() {
+
+        PageContext context = m_jspActionElement.getJspContext();
+        if (context.getAttribute(ATTRIBUTE_CAPTCHASTORE, PageContext.APPLICATION_SCOPE) == null) {
+            context.setAttribute(
+                ATTRIBUTE_CAPTCHASTORE,
+                new ConcurrentHashMap<String, CmsCaptchaToken>(),
+                PageContext.APPLICATION_SCOPE);
+        }
+        return (Map<String, CmsCaptchaToken>)context.getAttribute(
+            ATTRIBUTE_CAPTCHASTORE,
+            PageContext.APPLICATION_SCOPE);
     }
 }

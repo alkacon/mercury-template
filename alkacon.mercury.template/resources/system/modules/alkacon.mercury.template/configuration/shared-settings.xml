@@ -5,10 +5,20 @@
     <Setting>
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
       <PropertyName><![CDATA[cssWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(attribute:cssWrapperDisplayName:%(key.msg.setting.cssWrapper))]]></DisplayName>
+      <Description><![CDATA[%(attribute:cssWrapperDescription:%(key.msg.setting.cssWrapper.help))]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(attribute:cssWrapperWidget:string)]]></Widget>
+      <WidgetConfig><![CDATA[%(attribute:cssWrapperWidgetConfig)]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.optional]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.cssWrapper)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.cssWrapper.help)]]></Description>
       <Visibility><![CDATA[element]]></Visibility>
-      <Widget><![CDATA[string]]></Widget>
+      <Widget><![CDATA[%(attribute:cssWrapperWidgetOptional:string)]]></Widget>
+      <WidgetConfig><![CDATA[%(attribute:cssWrapperWidgetOptionalConfig)]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssWrapperInner.default]]></IncludeName>
@@ -23,7 +33,7 @@
       <PropertyName><![CDATA[formCssWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.formCssWrapper)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.formCssWrapper.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[border]]></Default>
       <WidgetConfig><![CDATA[
             border:                         %(key.msg.setting.formCssWrapper.border)|
@@ -36,7 +46,7 @@
       <PropertyName><![CDATA[cssVisibility]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.cssVisibility.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[always]]></Default>
       <WidgetConfig><![CDATA[
         always:%(key.msg.setting.cssVisibility.always)|
@@ -287,7 +297,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:                           %(key.msg.setting.effect.none)|
@@ -301,7 +311,7 @@
       <PropertyName><![CDATA[effect]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:                           %(key.msg.setting.effect.none)|
@@ -314,7 +324,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:                           %(key.msg.setting.effect.none)|
@@ -331,7 +341,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:                                       %(key.msg.setting.effect.none)|
@@ -354,7 +364,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:                           %(key.msg.setting.effect.none)|
@@ -371,7 +381,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:                           %(key.msg.setting.effect.none)|
@@ -485,7 +495,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.hsize.element)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.hsize.element.help)]]></Description>
       <Visibility><![CDATA[element]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[2]]></Default>
       <WidgetConfig><![CDATA[
             1:  %(key.msg.setting.hsize.1)|
@@ -992,7 +1002,7 @@
       <PropertyName><![CDATA[pieceLayout]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.visualOption.paragraphs)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[5]]></Default>
       <WidgetConfig><![CDATA[
             0:      %(key.msg.setting.pieceLayout.0)|
@@ -1012,7 +1022,7 @@
       <PropertyName><![CDATA[keyPieceLayout]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.keyVisualOption)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.keyVisualOption.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[0]]></Default>
       <WidgetConfig><![CDATA[
             0:       %(key.msg.setting.keyVisualOption.textAboveImage)|
@@ -1513,10 +1523,6 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[headerPosition.layout]]></IncludeName>
-      <Widget><![CDATA[select]]></Widget>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[navFixDisplay.header]]></IncludeName>
       <PropertyName><![CDATA[navFixDisplay]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.header.navFixDisplay)]]></DisplayName>
@@ -1651,7 +1657,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.tileCss)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.tileCss.help)]]></Description>
       <Visibility><![CDATA[parentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[teaser-tile tile-col col-md-6 col-lg-4 col-xl-3]]></Default>
       <WidgetConfig><![CDATA[
             teaser-tile tile-col col-6 col-md-4 col-lg-3 col-xl-2:  %(key.msg.setting.tileCss.xs6-md4-lg3-xl2)|
@@ -1671,7 +1677,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
       <Visibility><![CDATA[parent]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[row-tile tile-margin-15]]></Default>
       <WidgetConfig><![CDATA[
             row-tile tile-margin-0:   0|
@@ -1708,7 +1714,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.download.displayFormat)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.download.displayFormat.help)]]></Description>
       <Visibility><![CDATA[parent]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[download-list dl-list-compact]]></Default>
       <WidgetConfig><![CDATA[
         download-list dl-list-elaborate:%(key.msg.setting.download.displayFormat.elaborate)|
@@ -2055,7 +2061,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
         none:                                       %(key.msg.setting.effect.none)|
@@ -2327,7 +2333,7 @@
       <PropertyName><![CDATA[effect]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[effect-remove-margin]]></Default>
       <WidgetConfig><![CDATA[
         none:                   %(key.msg.setting.effect.none)|
@@ -2338,7 +2344,7 @@
       <IncludeName><![CDATA[linksequenceType.linksequence]]></IncludeName>
       <PropertyName><![CDATA[linksequenceType]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.linksequence.linksequenceType)]]></DisplayName>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[ls-bullets]]></Default>
       <WidgetConfig><![CDATA[
         ls-bullets:      %(key.msg.setting.linksequence.linksequenceType.bullets)|
@@ -2450,7 +2456,7 @@
       <PropertyName><![CDATA[detailContainer]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.detailContainer)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.detailContainer.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:       %(key.msg.setting.detailContainer.none)|
@@ -2564,13 +2570,20 @@
       <Description><![CDATA[%(key.msg.setting.bgColor.area.help)]]></Description>
       <Widget><![CDATA[%(stringtemplate:needBgColor)]]></Widget>
       <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[%(attribute:bgColorLayoutConfig)]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bgSpacing.layout]]></IncludeName>
+      <PropertyName><![CDATA[bgSpacing]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.bgSpacing.area)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.bgSpacing.area.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:needBgColor)]]></Widget>
+      <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
-            none:                                       %(key.msg.setting.bgColor.area.none)|
-            bg-highlight:                               %(key.msg.setting.bgColor.area.highlight)|
-            bg-switch:                                  %(key.msg.setting.bgColor.area.switching)|
-            bg-theme:                                   %(key.msg.setting.bgColor.area.theme)|
-            bg-grey-light:                              %(key.msg.setting.bgColor.area.grey-light)|
-            bg-grey:                                    %(key.msg.setting.bgColor.area.grey)
+            none:                                       %(key.msg.setting.bgSpacing.area.none)|
+            padded padded-small:                        %(key.msg.setting.bgSpacing.area.small)|
+            padded padded-medium:                       %(key.msg.setting.bgSpacing.area.medium)|
+            padded padded-large:                        %(key.msg.setting.bgSpacing.area.large)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

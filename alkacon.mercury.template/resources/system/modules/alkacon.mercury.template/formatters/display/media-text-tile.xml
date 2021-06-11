@@ -62,10 +62,10 @@
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.0]]></IncludeName>

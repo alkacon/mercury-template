@@ -825,6 +825,30 @@
       <Value><![CDATA[true]]></Value>
     </Attribute>
     <Attribute>
+      <Key><![CDATA[cssWrapperDisplayName]]></Key>
+      <Value><![CDATA[%(key.msg.setting.cssWrapper)]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[cssWrapperDescription]]></Key>
+      <Value><![CDATA[%(key.msg.setting.cssWrapper.help)]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[cssWrapperWidget]]></Key>
+      <Value><![CDATA[string]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[cssWrapperWidgetConfig]]></Key>
+      <Value/>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[cssWrapperWidgetOptional]]></Key>
+      <Value><![CDATA[string]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[cssWrapperWidgetOptionalConfig]]></Key>
+      <Value/>
+    </Attribute>
+    <Attribute>
       <Key><![CDATA[editorConfigFull]]></Key>
       <Value><![CDATA[formatselect,link,anchor,downloadgallery,specialchar,emotions,source]]></Value>
     </Attribute>
@@ -872,6 +896,21 @@
     <Attribute>
       <Key><![CDATA[mercuryAudioDataWidgetConfig]]></Key>
       <Value/>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[selectOrCombo]]></Key>
+      <Value><![CDATA[selectcombo]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[bgColorLayoutConfig]]></Key>
+      <Value><![CDATA[
+        none:               %(key.msg.setting.bgColor.area.none)|
+        bg-highlight:       %(key.msg.setting.bgColor.area.highlight)|
+        bg-switch:          %(key.msg.setting.bgColor.area.switching)|
+        bg-theme:           %(key.msg.setting.bgColor.area.theme)|
+        bg-grey-light:      %(key.msg.setting.bgColor.area.grey-light)|
+        bg-grey:            %(key.msg.setting.bgColor.area.grey)
+      ]]></Value>
     </Attribute>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

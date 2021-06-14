@@ -44,7 +44,7 @@ import org.apache.commons.logging.Log;
 public class CmsCaptchaStore {
 
     /** Name of the captcha store attribute */
-    public static final String ATTRIBUTE_CAPTCHASTORE = "captchastore";
+    public static final String ATTRIBUTE_CAPTCHASTORE = CmsCaptchaStore.class.getName();
 
     /** The log object for this class. */
     private static final Log LOG = CmsLog.getLog(CmsCaptchaStore.class);
@@ -92,6 +92,14 @@ public class CmsCaptchaStore {
         return getStore().get(tokenId);
     }
 
+    /**
+     * For a given token ID, returns whether the associated captcha phrase was
+     * evaluated successfully.
+     * <p>
+     *
+     * @param tokenId the token ID
+     * @return Whether the captcha phrase was evaluated successfully
+     */
     public boolean isPhraseValid(String tokenId) {
 
         CmsCaptchaToken captchaToken = get(tokenId);
@@ -121,6 +129,12 @@ public class CmsCaptchaStore {
         getStore().remove(tokenId);
     }
 
+    /**
+     * For a given token ID, flags the associated captcha token as successfully evaluated.
+     * <p>
+     *
+     * @param tokenId the token ID
+     */
     public void setPhraseValid(String tokenId) {
 
         CmsCaptchaToken captchaToken = get(tokenId);
@@ -159,6 +173,7 @@ public class CmsCaptchaStore {
     @SuppressWarnings("unchecked")
     private synchronized Map<String, CmsCaptchaToken> getStore() {
 
+        LOG.debug(ATTRIBUTE_CAPTCHASTORE);
         PageContext context = m_jspActionElement.getJspContext();
         if (context.getAttribute(ATTRIBUTE_CAPTCHASTORE, PageContext.APPLICATION_SCOPE) == null) {
             context.setAttribute(

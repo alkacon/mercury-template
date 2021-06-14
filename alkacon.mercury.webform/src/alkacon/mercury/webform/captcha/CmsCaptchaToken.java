@@ -58,6 +58,7 @@ public class CmsCaptchaToken {
     /** The date when this token expires. */
     private Date m_expiresAt;
 
+    /** Flag indicating whether this token was evaluated successfully */
     private boolean m_phraseValid = false;
 
     /**
@@ -76,7 +77,7 @@ public class CmsCaptchaToken {
      * Creates a new text captcha token.
      * <p>
      *
-     * @param image The captcha text
+     * @param text The captcha text
      */
     public CmsCaptchaToken(String text) {
 
@@ -106,11 +107,23 @@ public class CmsCaptchaToken {
         return m_image;
     }
 
+    /**
+     * Returns the captcha text attached to this token.
+     * <p>
+     *
+     * @return the captcha text
+     */
     public String getText() {
 
         return m_text;
     }
 
+    /**
+     * Whether this token was successfully evaluated.
+     * <p>
+     *
+     * @return successfully evaluated or not
+     */
     public boolean isPhraseValid() {
 
         return m_phraseValid;
@@ -142,6 +155,11 @@ public class CmsCaptchaToken {
         m_expiresAt = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
+    /**
+     * Flags this token as successfully evaluated.
+     * <p>
+     *
+     */
     public void setPhraseValid() {
 
         m_phraseValid = true;

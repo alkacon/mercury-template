@@ -68,17 +68,6 @@ public class CmsCaptchaField extends A_CmsField {
     /** HTML field type: captcha image. */
     private static final String TYPE = "captcha";
 
-    /**
-     * Returns the type of the input field, e.g. "text" or "select".
-     * <p>
-     *
-     * @return the type of the input field
-     */
-    public static String getStaticType() {
-
-        return TYPE;
-    }
-
     /** The settings to render captcha images. */
     private CmsCaptchaSettings m_captchaSettings;
 
@@ -100,6 +89,17 @@ public class CmsCaptchaField extends A_CmsField {
         setValue(fieldValue);
         setLabel(fieldLabel);
         setMandatory(true);
+    }
+
+    /**
+     * Returns the type of the input field, e.g. "text" or "select".
+     * <p>
+     *
+     * @return the type of the input field
+     */
+    public static String getStaticType() {
+
+        return TYPE;
     }
 
     /**
@@ -129,20 +129,24 @@ public class CmsCaptchaField extends A_CmsField {
             + "\" value=\""
             + tokenId
             + "\">\n";
+        captchaHtml.append(hiddenInput);
 
         if (m_captchaSettings.isMathField()) {
             // this is a math captcha, print the challenge directly
-            TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
-                m_captchaSettings,
-                formHandler.getCmsObject());
-            String captchaChallenge = service.getTextChallengeForID(
-                tokenId,
-                formHandler.getCmsObject().getRequestContext().getLocale());
             captchaHtml.append("<div style=\"margin: 0 0 2px 0;\">");
-            captchaHtml.append(captchaChallenge);
+            if (captchaStore.contains(tokenId)) {
+                captchaHtml.append(captchaStore.get(tokenId).getText());
+            } else {
+                TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
+                    m_captchaSettings,
+                    formHandler.getCmsObject());
+                String captchaChallenge = service.getTextChallengeForID(
+                    tokenId,
+                    formHandler.getCmsObject().getRequestContext().getLocale());
+                captchaHtml.append(captchaChallenge);
+                captchaStore.put(tokenId, new CmsCaptchaToken(captchaChallenge));
+            }
             captchaHtml.append("</div>\n");
-            captchaHtml.append(hiddenInput);
-            captchaStore.put(tokenId, new CmsCaptchaToken(captchaChallenge));
         } else {
             // image captcha, insert image
             captchaHtml.append("<img id=\"form_captcha_id\" src=\"").append(
@@ -157,13 +161,15 @@ public class CmsCaptchaField extends A_CmsField {
                         + System.currentTimeMillis())).append("\" width=\"").append(
                             captchaSettings.getImageWidth()).append("\" height=\"").append(
                                 captchaSettings.getImageHeight()).append("\" alt=\"\"/>").append("\n");
-            captchaHtml.append(hiddenInput);
             captchaHtml.append("<br/>\n");
         }
 
         Map<String, Object> stAttributes = new HashMap<>();
         // set captcha HTML code as additional attribute
         stAttributes.put("captcha", captchaHtml.toString());
+        if (captchaStore.isPhraseValid(tokenId)) {
+            stAttributes.put("readonly", "readonly");
+        }
 
         return createHtml(formHandler, messages, stAttributes, getType(), null, errorMessage, showMandatory);
     }
@@ -198,11 +204,13 @@ public class CmsCaptchaField extends A_CmsField {
      */
     public boolean validateCaptchaPhrase(CmsFormHandler formHandler, String captchaPhrase) {
 
-        boolean result = false;
-        CmsCaptchaSettings settings = m_captchaSettings;
         String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
         CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
-
+        if (captchaStore.isPhraseValid(tokenId)) {
+            return true;
+        }
+        boolean result = false;
+        CmsCaptchaSettings settings = m_captchaSettings;
         if (CmsStringUtil.isNotEmpty(captchaPhrase)) {
             // try to validate the phrase
             captchaPhrase = captchaPhrase.toLowerCase();
@@ -211,14 +219,13 @@ public class CmsCaptchaField extends A_CmsField {
                     settings,
                     formHandler.getCmsObject());
                 if (captchaService != null) {
-                    if (formHandler.hasValidationErrors()) {
-                        // postpone the captcha validation if there are validation
-                        // errors for other fields
-                        result = true;
-                    } else {
-                        result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();
+                    result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();
+                    if (result == false) {
                         captchaStore.remove(tokenId);
                         formHandler.getFormConfiguration().getCaptchaField().setValue("");
+                    } else {
+                        captchaStore.setPhraseValid(tokenId);
+                        formHandler.getFormConfiguration().getCaptchaField().setParameters("readonly");
                     }
                 }
             } catch (CaptchaServiceException cse) {
@@ -245,7 +252,6 @@ public class CmsCaptchaField extends A_CmsField {
         CmsCaptchaStore captchaStore = new CmsCaptchaStore(cms);
         BufferedImage captchaImage = null;
         if (captchaStore.contains(tokenId)) {
-            LOG.info("Stored captcha image found for token ID " + tokenId + ".");
             captchaImage = captchaStore.get(tokenId).getImage();
         } else {
             Locale locale = cms.getRequestContext().getLocale();

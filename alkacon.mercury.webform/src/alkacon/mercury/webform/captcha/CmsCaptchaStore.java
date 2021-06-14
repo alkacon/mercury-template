@@ -92,6 +92,12 @@ public class CmsCaptchaStore {
         return getStore().get(tokenId);
     }
 
+    public boolean isPhraseValid(String tokenId) {
+
+        CmsCaptchaToken captchaToken = get(tokenId);
+        return (captchaToken != null) && captchaToken.isPhraseValid();
+    }
+
     /**
      * Adds a captcha token for a given token ID to the store.
      * <p>
@@ -113,6 +119,14 @@ public class CmsCaptchaStore {
     public void remove(String tokenId) {
 
         getStore().remove(tokenId);
+    }
+
+    public void setPhraseValid(String tokenId) {
+
+        CmsCaptchaToken captchaToken = get(tokenId);
+        if (captchaToken != null) {
+            captchaToken.setPhraseValid();
+        }
     }
 
     /**

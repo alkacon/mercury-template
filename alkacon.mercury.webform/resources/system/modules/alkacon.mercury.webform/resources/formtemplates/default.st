@@ -89,7 +89,7 @@ $endif$
 >>
 
 
-field_captcha(field,formconfig,attributes,errormessage,mandatory,captcha) ::= <<
+field_captcha(field,formconfig,attributes,errormessage,mandatory,captcha,readonly) ::= <<
 $! ###### CAPTCHA field ###### !$
 $row_start(field=field)$
 $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=mandatory)$
@@ -97,7 +97,7 @@ $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=man
     <div class="captcha">
     $captcha$
     </div>
-    <input type="text" id="$field.name$" name="$field.name$" value="$field.valueEscaped$" />
+    <input type="text" id="$field.name$" name="$field.name$" value="$field.valueEscaped$" $readonly$/>
 </div>
 $if(errormessage)$
     <div class="note note-error">$errormessage$</div>

@@ -50,13 +50,15 @@ public class CmsCaptchaToken {
     static final long VALIDITY = 60 * 15;
 
     /** The captcha image belonging to this token. */
-    BufferedImage m_image;
+    private BufferedImage m_image;
 
     /** The captcha text belonging to this token. */
-    String m_text;
+    private String m_text;
 
     /** The date when this token expires. */
-    Date m_expiresAt;
+    private Date m_expiresAt;
+
+    private boolean m_phraseValid = false;
 
     /**
      * Creates a new image captcha token.
@@ -104,6 +106,16 @@ public class CmsCaptchaToken {
         return m_image;
     }
 
+    public String getText() {
+
+        return m_text;
+    }
+
+    public boolean isPhraseValid() {
+
+        return m_phraseValid;
+    }
+
     /**
      * Whether this token is still valid.
      * <p>
@@ -113,7 +125,6 @@ public class CmsCaptchaToken {
     public boolean isValid() {
 
         Date now = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
-        LOG.info("Comparing actual date " + now + " with expiration date " + m_expiresAt + ".");
         return now.before(m_expiresAt);
     }
 
@@ -129,6 +140,10 @@ public class CmsCaptchaToken {
         }
         LocalDateTime localDateTime = LocalDateTime.now().plus(Duration.of(VALIDITY, ChronoUnit.SECONDS));
         m_expiresAt = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
-        LOG.info("Set immutable expiration date to " + m_expiresAt + ".");
+    }
+
+    public void setPhraseValid() {
+
+        m_phraseValid = true;
     }
 }

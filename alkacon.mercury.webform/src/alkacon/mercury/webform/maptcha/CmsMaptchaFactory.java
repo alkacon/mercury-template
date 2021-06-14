@@ -74,14 +74,16 @@ public class CmsMaptchaFactory extends TextCaptchaFactory {
 
         String operator = "+";
         String result;
-        // choose randomly the operation (plus, minus, times)
-        int opInt = m_ramdom.nextInt(3);
+        // choose randomly the operation (plus, minus)
+        int opInt = m_ramdom.nextInt(2);
         if (opInt == 1) {
+            int swap = one;
+            if (two > one) {
+                one = two;
+                two = swap;
+            }
             operator = "-";
             result = String.valueOf(one - two);
-        } else if (opInt == 2) {
-            operator = "*";
-            result = String.valueOf(one * two);
         } else {
             result = String.valueOf(one + two);
         }

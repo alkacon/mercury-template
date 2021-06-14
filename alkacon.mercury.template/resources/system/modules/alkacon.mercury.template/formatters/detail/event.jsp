@@ -64,7 +64,7 @@
     <mercury:instancedate date="${seriesInfo.instanceInfo.get(param.instancedate)}" format="${dateFormat}" />
 </c:set>
 <c:set var="showDate"               value="${not empty date}" />
-<c:set var="ade"                    value="${empty cms.detailContentId or (not empty date) and (seriesInfo.isExtractedDate or seriesInfo.isSingleDate)}" />
+<c:set var="ade"                    value="${cms.isEditMode and (empty cms.detailContentId or (not empty date) and (seriesInfo.isExtractedDate or seriesInfo.isSingleDate))}" />
 
 <mercury:nl />
 <div class="detail-page type-event layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>

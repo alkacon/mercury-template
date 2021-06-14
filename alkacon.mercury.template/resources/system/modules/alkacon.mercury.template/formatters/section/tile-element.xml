@@ -2,23 +2,21 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-article.formatter.teaser.accordion)]]></NiceName>
-    <Type><![CDATA[m-article]]></Type>
-    <Key><![CDATA[m/display/accordion/article]]></Key>
+    <NiceName><![CDATA[%(key.type.m-section.formatter.tile)]]></NiceName>
+    <Type><![CDATA[m-section]]></Type>
+    <Key><![CDATA[m/section/tile-element]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/accordion/article.jsp]]></target>
-        <uuid>ff5d8c64-4f18-4942-a216-424fcc525f95</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/tile.jsp]]></target>
+        <uuid>198ae09a-a0af-47b9-832b-8ed1bc7c4c9f</uuid>
       </link>
     </Jsp>
-    <Rank><![CDATA[15000]]></Rank>
+    <Rank><![CDATA[19010]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[accordion]]></ContainerType>
-        <ContainerType><![CDATA[article]]></ContainerType>
+        <ContainerType><![CDATA[element]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[static:teaser-accordion]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
@@ -32,34 +30,34 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
+      <IncludeName><![CDATA[textOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listWrapper.accordion]]></IncludeName>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listEntryWrapper.accordion]]></IncludeName>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listTag.accordion]]></IncludeName>
+      <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
+      <IncludeName><![CDATA[tileContainer.element]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

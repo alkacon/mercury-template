@@ -17,7 +17,6 @@
         <ContainerType><![CDATA[element]]></ContainerType>
         <ContainerType><![CDATA[decoy]]></ContainerType>
         <ContainerType><![CDATA[article]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[teaser-elaborate]]></Display>

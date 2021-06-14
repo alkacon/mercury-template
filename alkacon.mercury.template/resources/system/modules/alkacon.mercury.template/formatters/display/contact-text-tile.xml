@@ -17,7 +17,6 @@
         <ContainerType><![CDATA[tile]]></ContainerType>
         <ContainerType><![CDATA[text-tile]]></ContainerType>
         <ContainerType><![CDATA[contact]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[teaser-text-tile]]></Display>

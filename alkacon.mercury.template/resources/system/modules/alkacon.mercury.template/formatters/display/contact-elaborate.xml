@@ -15,7 +15,6 @@
     <Match>
       <Types>
         <ContainerType><![CDATA[contact]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[teaser-elaborate]]></Display>

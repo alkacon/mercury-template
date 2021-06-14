@@ -34,7 +34,7 @@
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <mercury:nl />
 <div class="element type-poi ${cssWrapper}"><%----%>

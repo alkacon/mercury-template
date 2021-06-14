@@ -54,7 +54,7 @@
 <c:set var="showDate"               value="${not empty date}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <mercury:nl />
 <div class="detail-page type-article layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>

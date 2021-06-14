@@ -143,7 +143,14 @@
             --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen><%--
         --%></iframe><%----%>
         </c:set>
-        <c:set var="icon" value="youtube-play" />
+        <c:choose>
+            <c:when test="${content.value.MediaContent.value.YouTube.value.Icon.isSet}">
+                <c:set var="icon" value="${content.value.MediaContent.value.YouTube.value.Icon}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="icon" value="youtube-play" />
+            </c:otherwise>
+        </c:choose>
         <c:set var="cssClass" value="video" />
 
         <c:if test="${youTubePreviewImg ne 'none'}">
@@ -187,7 +194,14 @@
                     --%>visual=true"><%--
         --%></iframe><%----%>
         </c:set>
-        <c:set var="icon" value="soundcloud" />
+        <c:choose>
+            <c:when test="${content.value.MediaContent.value.SoundCloud.value.Icon.isSet}">
+                <c:set var="icon" value="${content.value.MediaContent.value.SoundCloud.value.Icon}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="icon" value="soundcloud" />
+            </c:otherwise>
+        </c:choose>
     </c:when>
 
     <c:when test="${isVideo}">
@@ -256,7 +270,14 @@
         <c:if test="${(empty copyright) and (not empty videoCopyright) and (videoCopyright ne 'none')}">
             <c:set var="copyright" value="${videoCopyright}" />
         </c:if>
-        <c:set var="icon" value="youtube-play" />
+        <c:choose>
+            <c:when test="${content.value.MediaContent.value.Video.value.Icon.isSet}">
+                <c:set var="icon" value="${content.value.MediaContent.value.Video.value.Icon}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="icon" value="youtube-play" />
+            </c:otherwise>
+        </c:choose>
         <c:set var="cssClass" value="video" />
     </c:when>
 

@@ -16,7 +16,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="iconClass"              value="${setting.iconClass.isSet ? setting.iconClass.toString : 'warning'}" />
 
-<c:set var="ade"                    value="${true}"/>
+<c:set var="ade"                    value="${cms.isEditMode}"/>
 
 <mercury:nl />
 <div class="element type-iconbox ${cssWrapper}"><%----%>

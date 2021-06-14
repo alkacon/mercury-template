@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.326</version>
+		<version>11.0.1.372</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -32,7 +32,7 @@
 		</resources>
 		<excluderesources/>
 		<parameters>
-			<param name="paramfile">/system/modules/alkacon.mercury.template/configuration/schema-params.xml</param>
+			<param name="paramfile">/system/modules/alkacon.mercury.template/configuration/default-attributes.xml</param>
 			<param name="workplace-css">mercury/mercury-workplace.css</param>
 		</parameters>
 		<resourcetypes>
@@ -245,7 +245,24 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mercury sitemap configuration]]></value>
+					<value><![CDATA[Mercury configuration]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/configuration/default-attributes.xml</source>
+			<destination>system/modules/alkacon.mercury.template/configuration/default-attributes.xml</destination>
+			<type>plain</type>
+			<uuidstructure>5ac96322-ba11-11eb-95c9-0242ac11002b</uuidstructure>
+			<uuidresource>5ac96323-ba11-11eb-95c9-0242ac11002b</uuidresource>
+			<datecreated>Fri, 21 May 2021 08:48:46 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury default values for attributes]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -275,23 +292,6 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[true]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/configuration/schema-params.xml</source>
-			<destination>system/modules/alkacon.mercury.template/configuration/schema-params.xml</destination>
-			<type>plain</type>
-			<uuidstructure>25905bb6-fb25-11e9-afb6-0242ac11002b</uuidstructure>
-			<uuidresource>25905bb7-fb25-11e9-afb6-0242ac11002b</uuidresource>
-			<datecreated>Wed, 30 Oct 2019 14:54:17 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Mercury schema parameters]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -4307,6 +4307,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/section/tile-element.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/section/tile-element.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>f1c5636a-b307-11eb-9000-0242ac11002b</uuidstructure>
+			<uuidresource>f1c5636b-b307-11eb-9000-0242ac11002b</uuidresource>
+			<datecreated>Wed, 12 May 2021 09:53:46 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Section as tile for element container]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/formatters/section/tile.jsp</source>
 			<destination>system/modules/alkacon.mercury.template/formatters/section/tile.jsp</destination>
 			<type>jsp</type>
@@ -5386,7 +5403,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mercury XML schemas]]></value>
+					<value><![CDATA[Mercury schemas]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6398,6 +6415,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury tags]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/alert-meta.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/alert-meta.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>a4502020-c2ac-11eb-95d9-0242ac11002b</uuidstructure>
+			<uuidresource>a4502021-c2ac-11eb-95d9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 01 Jun 2021 07:40:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays a meta alert box for the page editor]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8134,10 +8172,6 @@
 				<property>
 					<name>template</name>
 					<value><![CDATA[/system/modules/alkacon.mercury.theme/css/style-editor.css]]></value>
-				</property>
-				<property>
-					<name>template.display.types</name>
-					<value><![CDATA[mercury-list]]></value>
 				</property>
 			</properties>
 			<relations/>

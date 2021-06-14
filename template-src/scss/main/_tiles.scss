@@ -32,8 +32,11 @@ $sq-margin:     0 !default;
 $sq-margins:    (2, 20) !default;
 $sq-padding:    20 !default;
 
+$square-overlay-h1-size:        2.0rem !default;
 $square-overlay-h2-size:        1.6rem !default;
 $square-overlay-h3-size:        1.2rem !default;
+$square-overlay-h4-size:        $square-overlay-h3-size !default;
+$square-overlay-text-size:      1.2rem !default;
 $square-overlay-line-height:    1.2 !default;
 $tile-overlay-bg-color:         rgba(0, 0, 0, 0.15) !default;
 $square-overlay-bg-color:       rgba(0, 0, 0, 0.65) !default;
@@ -516,20 +519,32 @@ $sq-margin: 20px;
         width: 100%;
         z-index: $overflow-z-index;
 
-        h2, h3, div {
+        h1, h2, h3, h4, div {
             color: $square-overlay-text-color;
             text-shadow: $square-overlay-text-shadow;
-            font-size: $square-overlay-h2-size;
             line-height: $square-overlay-line-height;
             margin: 0;
         }
-        div.teaser-date + h2,
-        h2 + h3 {
-            margin-top: $default-margin-verysmall;
+        h1 {
+            font-size: $square-overlay-h1-size;
         }
-        div,
+        h2 {
+            font-size: $square-overlay-h2-size;
+        }
         h3 {
             font-size: $square-overlay-h3-size;
+        }
+        h4 {
+            font-size: $square-overlay-h4-size;
+        }
+        h2 + h3, // this us used with square list formatter
+        div {
+            font-size: $square-overlay-text-size;
+        }
+        .heading + .body,
+        h2 + h3,
+        div.teaser-date + h2 {
+            margin-top: $default-margin-verysmall;
         }
     }
     .copyright {

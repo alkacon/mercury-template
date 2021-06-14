@@ -43,7 +43,7 @@
 </c:set>
 
 <c:set var="showDate"               value="${not empty date}" />
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="hasImageFile"           value="${value.Image.isSet}" />
 <c:set var="hasImageFolder"         value="${value.ImageFolder.isSet}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(cms.element.setting.dateFormat, '|')}" />

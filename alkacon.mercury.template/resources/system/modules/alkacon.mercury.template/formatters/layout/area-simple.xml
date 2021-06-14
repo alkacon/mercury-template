@@ -27,13 +27,16 @@
       </link>
     </IncludeSettings>
     <Setting>
-      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+      <IncludeName><![CDATA[cssWrapper.optional]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[bgImage.layout]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[bgColor.layout]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bgSpacing.layout]]></IncludeName>
     </Setting>
     <Attribute>
       <Key><![CDATA[needBgImage]]></Key>
@@ -49,7 +52,7 @@
       <Key><![CDATA[needBgColor]]></Key>
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).isEqual.("area-one-row"))%%!
-                !%selectcombo%!
+                !%${attribute:selectOrCombo:selectcombo}%!
             !%%else%%!
                 !%hidden%!
             !%%endif%%!

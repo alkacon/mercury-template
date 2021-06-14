@@ -39,7 +39,7 @@
 <c:set var="setSizeMobile"          value="${setting.pieceSizeMobile.toInteger}" />
 
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact' : ''}" />
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="hsizeTitle"             value="${hsize}" />
 <c:set var="hsize"                  value="${value.Title.isSet ? hsize + 1 : hsize}" />

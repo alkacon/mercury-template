@@ -41,7 +41,7 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.CheckText)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfiguration.CheckText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
-                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>ShowMandatory</PropertyName>

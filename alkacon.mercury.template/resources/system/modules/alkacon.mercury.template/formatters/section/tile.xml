@@ -36,19 +36,25 @@
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[textOption.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[linkOption.tile]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

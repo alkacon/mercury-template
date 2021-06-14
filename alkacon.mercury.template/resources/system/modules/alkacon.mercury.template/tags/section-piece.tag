@@ -22,7 +22,7 @@
     description="Mobile grid size for the visual. Valid values are 1 to 12, 0 and 99.
     The special value 0 means 'hide the visual'.
     The special value 99 means 'use the default'
-    The default will depend on the desktop size, e.g. for destop 4 this would be mobile 8." %>
+    The default will depend on the desktop size, e.g. for destop 4 this would be mobile 12." %>
 
 <%@ attribute name="sizeDesktop" type="java.lang.Integer" required="false"
     description="Desktop grid size for the visual if displayed in a column. Valid values are 1 to 12, 0 and 99.
@@ -64,6 +64,9 @@
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
     description="Controls if and how the link is displayed. Default is 'button'." %>
 
+<%@ attribute name="textAlignment" type="java.lang.String" required="false"
+    description="Controls the alignment of the text elements. Default is left aligned." %>
+
 <%@ attribute name="headingOption" type="java.lang.String" required="false"
     description="Controls how the heading is displayed. Default is 'full'." %>
 
@@ -101,7 +104,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="ade"                value="${empty ade ? true : ade}" />
+<c:set var="ade"                value="${empty ade ? cms.isEditMode : ade}" />
 <c:set var="linkHeading"        value="${empty linkOption or empty link ? false : (linkOption eq 'heading')}" />
 <c:set var="hsize"              value="${empty hsize ? 2 : (hsize < 1 ? (linkHeading ? 3 : hsize) : hsize)}" />
 <c:set var="showText"           value="${empty text and empty markupText ? false : (empty textOption ? true : (textOption ne 'none'))}" />
@@ -122,9 +125,10 @@
         sizeDesktop="${sizeDesktop}"
         sizeMobile="${sizeMobile}"
         pieceTag="${pieceTag}"
-        cssText="${showText and (textOption ne 'default') ? textOption: ''}"
+        cssText="${showText and (textOption ne 'default') ? textOption : ''}"
         attrVisual="${ade ? image.rdfaAttr : null}"
         cssVisual="rs_skip"
+        textAlignment="${textAlignment}"
         attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
         cssBody="${defaultText ? 'default' :_null}"
         attrText="${ade ? text.rdfaAttr : null}"

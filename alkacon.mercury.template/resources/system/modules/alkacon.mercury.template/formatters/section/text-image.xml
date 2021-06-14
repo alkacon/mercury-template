@@ -35,25 +35,28 @@
       <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textOption.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.section.text-image]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>

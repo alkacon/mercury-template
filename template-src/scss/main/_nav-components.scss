@@ -153,7 +153,9 @@
                         font-weight: normal;
                         text-align: center;
                         transform: rotate(0) translate(0px, 0px);
-                        transition: transform $nav-animation-time;
+                        @if (not $nav-side-reduce-transitions) {
+                            transition: transform $nav-animation-time;
+                        }
                     }
                 }
             }
@@ -162,7 +164,9 @@
                 &[aria-controls] {
                     &::after {
                         transform: rotate(-180deg) translate(0px, 2px);
-                        transition: transform $nav-animation-time;
+                        @if (not $nav-side-reduce-transitions) {
+                            transition: transform $nav-animation-time;
+                        }
                     }
                 }
             }
@@ -256,6 +260,26 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+// Safari has problems with the transition on the side navigation
+@include safari-only {
+    .nav-side li > a {
+        &[aria-expanded] {
+            &[aria-controls] {
+                &::after {
+                    transition: none;
+                }
+            }
+        }
+        &[aria-expanded=true] {
+            &[aria-controls] {
+                &::after {
+                     transition: none;
                 }
             }
         }

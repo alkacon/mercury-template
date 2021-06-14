@@ -16,7 +16,6 @@
       <Types>
         <ContainerType><![CDATA[imagetile]]></ContainerType>
         <ContainerType><![CDATA[event]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[teaser-image-tile]]></Display>

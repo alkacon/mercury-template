@@ -32,7 +32,6 @@
 }
 
 // Hyphenation for generic element headings
-
 .element:not(.piece) {
     // piece already has handling for hyphens
     > .heading {
@@ -40,9 +39,24 @@
     }
 }
 
-.element.piece {
-    .only-heading {
-        // if element piece has only a header, add a margin the same height as used by the headers to the whole element
+// special margin adjustments for section pieces
+.element.piece.type-section:not(.box) {
+    &.only-heading {
+        // if piece element has only a header, set margin the same height as normally used by the headers
         margin-bottom: $piece-headings-margin-bottom;
+    }
+    &.only-text,
+    &.phb:not(.phl) {
+        // if a text-only piece element fowllows a text-only pieve element, reduce top margin
+        // goal: make text from 2nd element apperar as if it belongs to first element
+        + .element.piece.type-section:not(.box) {
+            &.only-text {
+                @if (comparable($piece-text-margin, $default-margin)) {
+                    margin-top: $piece-text-margin - $default-margin;
+                } @else {
+                    margin-top: calc(#{$piece-text-margin} - #{$default-margin});
+                }
+            }
+        }
     }
 }

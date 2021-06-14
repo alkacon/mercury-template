@@ -14,6 +14,7 @@
         <xsd:sequence>
             <xsd:element name="YouTubeId" type="OpenCmsString" />
             <xsd:element name="YouTubePreview" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Icon" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -31,8 +32,30 @@
                     <PropertyName>YouTubePreview</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaYoutube.YouTubePreview)]]></DisplayName>
                     <Widget>select</Widget>
-                    <Default><![CDATA[%(param:mercuryYouTubePreviewDefault)]]></Default>
-                    <WidgetConfig><![CDATA[%(param:mercuryYouTubePreviewWidgetConfig)]]></WidgetConfig>
+                    <Default><![CDATA[%(attribute:mercuryYouTubePreviewDefault:%(param:mercuryYouTubePreviewDefault))]]></Default>
+                    <WidgetConfig><![CDATA[%(attribute:mercuryYouTubePreviewWidgetConfig:%(param:mercuryYouTubePreviewWidgetConfig))]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Icon</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MediaFlexible.Icon)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MediaFlexible.Icon.help)]]></Description>
+                    <Widget><![CDATA[selectcombo]]></Widget>
+                    <Default><![CDATA[youtube-play]]></Default>
+                    <WidgetConfig><![CDATA[
+                        youtube-play:%(key.msg.icon.youtube-play)|
+                        youtube:%(key.msg.icon.youtube)|
+                        play:%(key.msg.icon.play)|
+                        music:%(key.msg.icon.music)|
+                        headphones:%(key.msg.icon.headphones)|
+                        microphone:%(key.msg.icon.microphone)|
+                        volume-up:%(key.msg.icon.volume-up)|
+                        info:%(key.msg.icon.info)|
+                        globe:%(key.msg.icon.globe)|
+                        power-off:%(key.msg.icon.power-off)|
+                        bullseye:%(key.msg.icon.bullseye)|
+                        none:%(key.msg.icon.none)
+                    ]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

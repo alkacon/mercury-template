@@ -469,3 +469,17 @@
         }
     }
 }
+
+@mixin safari-only {
+    // Applies the css only to Safari
+    // See: https://stackoverflow.com/questions/16348489/is-there-a-css-hack-for-safari-only-not-chrome
+    // NOTE: AFAIK this must be on the HTML ROOT LEVEL, not nested in another selector
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance:none) {
+            @content;
+        }
+    }
+}
+
+
+

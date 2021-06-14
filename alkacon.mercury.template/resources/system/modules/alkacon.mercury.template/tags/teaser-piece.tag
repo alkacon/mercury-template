@@ -135,7 +135,7 @@
         <c:set var="hideImage"  value="${true}"/>
     </c:when>
 </c:choose>
-<c:set var="sizeDesktop"        value="${not empty sizeDesktop ? sizeDesktop : ((pieceLayout > 1) ? 4 : 12)}" />
+<c:set var="sizeDesktop"        value="${not empty sizeDesktop ? sizeDesktop : (((pieceLayout > 1) and (pieceLayout != 10)) ? 4 : 12)}" />
 <c:set var="showButton"         value="${buttonText ne 'none'}" />
 <c:set var="addButtonDiv"       value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
 
@@ -220,7 +220,6 @@
         <mercury:link
             link="${link}"
             title="${linkTitle}"
-            attr='aria-label="${linkTitle}"'
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
             ${markupVisualOutput}
         </mercury:link>
@@ -280,7 +279,6 @@
                 <mercury:link
                     link="${link}"
                     title="${linkTitle}"
-                    attr='aria-label="${linkTitle}"'
                     css='uncolored'
                     test="${linkOnText}">
                     ${markupTextOutput}

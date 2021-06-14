@@ -30,10 +30,19 @@
                 <fmt:message key="msg.page.list.empty" />
             </jsp:attribute>
             <jsp:attribute name="text">
+                <c:choose>
+                    <c:when test="${fn:startsWith(type, 'm-')}">
+                        <c:set var="typeKey">type.${type}.name</c:set>
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="typeKey">fileicon.${type}</c:set>
+                    </c:otherwise>
+                </c:choose>
                 <fmt:message key="msg.page.list.newentry">
                     <fmt:param>
-                        <mercury:label locale="${cms.workplaceLocale}" key="type.${type}.name" />
+                        <mercury:label locale="${cms.workplaceLocale}" key="${typeKey}" />
                     </fmt:param>
+                    <fmt:param>${type}</fmt:param>
                 </fmt:message>
             </jsp:attribute>
         </mercury:alert>

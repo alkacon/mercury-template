@@ -28,6 +28,7 @@
     </IncludeSettings>
     <Setting>
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+      <Widget><![CDATA[%(stringtemplate:showCssWrapper)]]></Widget>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[detailContainer.layout]]></IncludeName>
@@ -44,6 +45,16 @@
     <Setting>
       <IncludeName><![CDATA[tileMargin.layout]]></IncludeName>
     </Setting>
+    <Attribute>
+      <Key><![CDATA[showCssWrapper]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).isEqual.("12"))%%!
+                !%${attribute:cssWrapperWidget:selectcombo}%!
+            !%%else%%!
+                !%${attribute:cssWrapperWidgetOptional:string}%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
     <Attribute>
       <Key><![CDATA[showContainerOrder]]></Key>
       <Value><![CDATA[%!
@@ -71,7 +82,7 @@
       <Key><![CDATA[isTile]]></Key>
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).isEqual.("tile-row"))%%!
-                !%selectcombo%!
+                !%${attribute:selectOrCombo:selectcombo}%!
             !%%else%%!
                 !%hidden%!
             !%%endif%%!

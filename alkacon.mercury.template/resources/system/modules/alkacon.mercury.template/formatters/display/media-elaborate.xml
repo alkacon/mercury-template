@@ -16,7 +16,6 @@
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
         <ContainerType><![CDATA[media]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[teaser-elaborate]]></Display>

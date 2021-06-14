@@ -80,7 +80,7 @@
                 <c:set var="config"             value="${headerConfigElementBeans.get(0)}" />
                 <c:set var="addCssWrapper"      value="${config.setting.cssWrapper.toString}" />
 
-                <c:set var="logoAlignment"      value="${config.setting.logoAlignment.useDefault('lp-l').toString}" />
+                <c:set var="logoAlignment"      value="${config.setting.logoAlignment.validate(['lp-l','lp-c','lp-r'],'lp-l').toString}" />
                 <c:set var="logoSize"           value="${config.setting.logoSize.useDefault('ls-4').toString}" />
                 <c:set var="logoFullSize"       value="${logoSize eq 'ls-12'}" />
                 <c:set var="logoPosCenter"      value="${logoFullSize or (logoAlignment eq 'lp-c')}" />
@@ -90,12 +90,13 @@
                 <c:set var="alignDefault"       value="${logoPosCenter ? 'center' : (logoPosLeft ? 'right' : 'left')}" />
                 <c:set var="logoPadding"        value="${config.setting.logoPadding.useDefault('pad-sm').toString}" />
                 <c:set var="showMeta"           value="${config.setting.metaDisplay.toString ne 'hide-meta'}" />
-                <c:set var="metaAlignment"      value="${config.setting.metaAlignment.useDefault('meta-right').toString}" />
+                <c:set var="metaAlignment"      value="${config.setting.metaAlignment.validate(['default','meta-left','meta-center','meta-right'],'default').toString}" />
                 <c:set var="metaAlignment"      value="${metaAlignment eq 'default' ? 'meta-'.concat(alignDefault) : metaAlignment}" />
                 <c:set var="metaPosition"       value="${logoPosCenter ? 'meta-above' : config.setting.metaPosition.useDefault('meta-aside').toString}" />
-                <c:set var="showTitle"          value="${config.setting.showTitle.toString ne 'hide-title'}" />
+                <c:set var="showTitle"          value="${(config.setting.showTitle.toString ne 'hide-title')}" />
+                <c:set var="showTitleMobile"    value="${config.setting.showTitle.toString eq 'show-title-mobile'}" />
                 <c:set var="titleAlignment"     value="${config.setting.titleAlignment.useDefault('title-right').toString}" />
-                <c:set var="titleAlignment"     value="${titleAlignment eq 'default' ? 'title-'.concat(alignDefault) : titleAlignment}" />
+                <c:set var="titleAlignment"     value="${titleAlignment eq 'default' ? 'title-default' : titleAlignment}" />
                 <c:set var="titlePosition"      value="${config.setting.titlePosition.useDefault('title-middle').toString}" />
                 <c:set var="navAlignment"       value="${config.setting.navAlignment.useDefault('nav-right').toString}" />
                 <c:set var="navAlignment"       value="${navAlignment eq 'default' ? 'nav-'.concat(alignDefault) : navAlignment}" />
@@ -103,10 +104,10 @@
                 <c:set var="navDisplay"         value="${config.setting.navDisplay.useDefault('nav-disp-default').toString}" />
                 <c:set var="navPullUp"          value="${config.setting.navPullUp.useDefault('np-never').toString}" />
                 <c:set var="navFixType"         value="${config.setting.headerPosition.useDefault('css').toString}" />
-                <c:set var="navFixDisplay"      value="${config.setting.navFixDisplay.useDefault('fix-compact').toString}" />
+                <c:set var="navFixDisplay"      value="${config.setting.navFixDisplay.validate(['fix-complete fix-ac','fix-complete','fix-compact','fix-overlay'],'fix-compact').toString}" />
                 <c:set var="navFixDisplay"      value="${logoPosCenter ? ((navFixDisplay eq 'fix-overlay') ? 'fix-complete' : navFixDisplay) : navFixDisplay}" />
                 <c:set var="acDisplay"          value="${config.setting.acDisplay.useDefault('none').toString}" />
-                <c:set var="acPosition"         value="${config.setting.acPosition.useDefault('ac-below-logo').toString}" />
+                <c:set var="acPosition"         value="${config.setting.acPosition.validate(['ac-above-logo','ac-below-logo','ac-below-nav'],'ac-below-logo').toString}" />
                 <c:set var="bcDisplay"          value="${config.setting.bcDisplay.useDefault('bc-show').toString}" />
                 <c:set var="bcAlignment"        value="${config.setting.bcAlignment.useDefault('bc-left').toString}" />
                 <c:set var="showBreadcrumbs"    value="${showBreadcrumbs and (bcDisplay eq 'bc-show')}" />
@@ -272,6 +273,7 @@
                     ${logoPadding}${' '}
                     ${showMeta ? metaPosition.concat(' ').concat(metaAlignment.concat(' ')) : ''}
                     ${showTitle ? titleAlignment.concat(' ') : ''}
+                    ${showTitleMobile ? 'title-mobile ' : ''}
                     ${needTitlePosition ? titlePosition.concat(' ') : ''}
                     ${navDisplay}${' '}
                     ${navAlignment}${' '}
@@ -394,7 +396,7 @@
             </c:when>
         </c:choose>
 
-        <c:set var="headerPosition"     value="${setting.headerPosition.toString}" />
+        <c:set var="headerPosition"     value="${setting.headerPosition.validate(['css','upscroll','fixed','static'],'css').toString}" />
         <c:set var="showBreadcrumbs"    value="${setting.showBreadcrumbs.toBoolean}" />
 
         <c:choose>

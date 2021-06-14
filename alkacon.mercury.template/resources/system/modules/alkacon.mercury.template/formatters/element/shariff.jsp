@@ -16,6 +16,7 @@
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="cssWrapper">
     ${cssWrapper}
@@ -28,7 +29,7 @@
 <mercury:nl />
 <div class="element type-shariff social-icons ${fn:replace(cssWrapper, 'default', '')}"><%----%>
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
     <c:set var="services">[&quot;${fn:replace(value.Services, ',', '&quot;,&quot;')}&quot;]</c:set>
     <c:set var="mailAttrs" value="" />

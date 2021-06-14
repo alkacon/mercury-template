@@ -23,6 +23,8 @@
 <c:set var="iconClass"              value="${setting.iconClass.useDefault('caret-right').toString}" />
 <c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
 
+<c:set var="ade"                    value="${cms.isEditMode}" />
+
 <c:choose>
     <c:when test="${iconClass eq 'default'}">
         <c:set var="listBulletStyle" value="default-icon" />
@@ -54,7 +56,7 @@
 <div class="element type-linksequence ${linksequenceType}${' '}${listBulletStyle}${' '}${cssWrapper}${' '}${addCssWrapper}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${true}" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
     <c:if test="${value.Text.isSet}">
         <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>

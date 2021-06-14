@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>11.0.1.17</version>
+		<version>11.0.1.19</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -118,7 +118,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Configuration for captcha fields]]></value>
+					<value><![CDATA[Mercury webform captcha configuration]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
@@ -248,7 +248,12 @@
 			<uuidstructure>bb93a8cf-97af-4ec1-9613-95e53684cd9f</uuidstructure>
 			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury webform captcha backgrounds]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -426,7 +431,12 @@
 			<uuidstructure>f73b6bf2-195f-4c81-9b24-f566b3d2efe4</uuidstructure>
 			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury webform classes]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -490,7 +500,12 @@
 			<uuidstructure>61cdca47-a480-414f-ad3b-372cb57d2a18</uuidstructure>
 			<datecreated>Tue, 08 Jan 2019 12:44:44 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury webform elements]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -575,7 +590,12 @@
 			<uuidstructure>137f5d72-d285-4d20-9948-e1733fe2c387</uuidstructure>
 			<datecreated>Wed, 09 Jan 2019 10:10:06 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury webform i18n]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -635,7 +655,12 @@
 			<uuidstructure>16c6f2a4-c0b2-4b4a-bc99-b5c69e3f7444</uuidstructure>
 			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury webform resources]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -750,7 +775,12 @@
 			<uuidstructure>ce283f51-61e3-476e-a39d-b396a89c7b2b</uuidstructure>
 			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury webform schemas]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

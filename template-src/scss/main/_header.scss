@@ -188,7 +188,7 @@
 
     // Special header containers
     @if ($nav-breakpoint-sticky-header != xs) {
-        // sticky header is by not enabled for mobile devices (this is the default)
+        // sticky header is not enabled for mobile devices (this is the default)
         .co-sm-md {
             // container only for screen size SM And MD
             @include media-breakpoint-between(sm, md) {
@@ -300,6 +300,85 @@
 
         @include media-breakpoint-down(md) {
             @include hide-mega-menu-content;
+
+            &.title-mobile {
+
+                %expand-title {
+                    display: flex; // will be hidden from screen size lg
+                    order: 10;
+                    padding-bottom: $bh-header-padding-small;
+                    width: 100vw;
+                    position: relative;
+                    left: 50%;
+                    right: 50%;
+                    margin-left: -50vw;
+                    margin-right: -50vw;
+
+                    @include add-bg-color($fh-title-bg-color) {
+                        padding-top: $bh-header-padding-small;
+                    }
+                }
+
+                %format-title {
+                    @include use-hyphens-headings(true);
+                    @include heading-base(false);
+                    line-height: 1.2;
+                    font-size: $bh-title-font-size-mobile;
+                    text-align: left;
+                    display: block;
+
+                    @include add-bg-color($fh-title-bg-color) {
+                        color: check-text-color($fh-title-bg-color, $fh-title-color);
+                    }
+                    @include make-container();
+                    @include media-breakpoint-up(sm) {
+                        max-width: map-get($container-max-widths, sm);
+                    }
+                    @include media-breakpoint-up(md) {
+                        max-width: map-get($container-max-widths, md);
+                    }
+                }
+
+                .h-info {
+                    @extend %expand-title;
+
+                    .h-meta {
+                        display: none;
+                    }
+
+                    .h-title {
+                        @extend %format-title;
+                    }
+                }
+
+                &.lp-c {
+                    .h-title {
+                        @extend %expand-title;
+
+                        > div {
+                            @extend %format-title;
+                        }
+                    }
+                }
+
+                &.title-left {
+                    .h-title {
+                        text-align: left;
+                    }
+                }
+
+                &.title-center {
+                    .h-title {
+                        text-align: center;
+                    }
+                }
+
+                &.title-right {
+                    .h-title {
+                        text-align: right;
+                    }
+                }
+            }
         }
 
         @include media-breakpoint-up(lg) {
@@ -345,6 +424,10 @@
 
                 > .h-nav {
                     align-items: flex-end;
+                }
+
+                > .h-title {
+                    background-color: transparent;
                 }
             }
 
@@ -418,6 +501,7 @@
                 }
             }
 
+            &.lp-r.title-default,
             &.title-left {
                 .h-title {
                     align-self: flex-start;
@@ -431,6 +515,7 @@
                 }
             }
 
+            &.lp-c.title-default,
             &.title-center {
                 .h-title {
                     align-self: center;
@@ -438,6 +523,7 @@
                 }
             }
 
+            &.lp-l.title-default,
             &.title-right {
                 .h-title {
                     align-self: flex-end;
@@ -922,8 +1008,9 @@
                     @include make-col(nth([4,5,7,9,9,9,12,12,12,12,12,12], $logo-size));
                 }
                 @if ($logo-size < 6) {
-                    .nav-main-mobile-logo .img-responsive {
+                    .nav-main-mobile-logo .mobile-logolink {
                         width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
+                        max-width: 100%;
                     }
                 }
                 @include media-breakpoint-up(sm) {
@@ -1091,7 +1178,7 @@
         }
 
         .h-title-row {
-            display: flex; // will be hidden from screen size lg below
+            display: flex; // will be hidden from screen size lg
             order: 10;
             padding-bottom: $bh-header-padding-small;
 
@@ -1441,8 +1528,13 @@
         &.header-isfixed {
 
             .h-logo-row {
-                padding-top: $bh-header-padding-verysmall;
-                padding-bottom: $bh-header-padding-verysmall;
+                @if (($fh-meta-bg-color != none) and ($fh-meta-bg-color != $fh-header-bg-color)) {
+                    padding-top: $bh-header-padding-small;
+                    padding-bottom: $bh-header-padding-small;
+                } @else {
+                    padding-top: $bh-header-padding-verysmall;
+                    padding-bottom: $bh-header-padding-verysmall;
+                }
             }
 
             .h-title-col,

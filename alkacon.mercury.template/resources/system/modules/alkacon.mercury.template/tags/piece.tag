@@ -7,16 +7,17 @@
 
 <%@ attribute name="pieceLayout" type="java.lang.Integer" required="true"
     description="The layout option to generate. Valid values are 0 to 9.
-    // 0. Heading, Image, Text, Link (full width)
-    // 1. Image, Heading, Text, Link (full width)
-    // 2. Heading on top, Image left, Text and Link right (separate column)
-    // 3. Heading on top, Image right, Text and Link left (separate column)
-    // 4. Heading on top, Image left, Text and Link right (floating around image)
-    // 5. Heading on top, Image right, Text and Link left (floating around image)
-    // 6. Image left, Heading, Text and Link right (separate column)
-    // 7. Image right, Heading, Text and Link left (separate column)
-    // 8. Image left, Heading, Text and Link right (floating around image)
-    // 9. Image right, Heading, Text and Link left (floating around image)
+    // 0.  Heading, Image, Text, Link (full width)
+    // 1.  Image, Heading, Text, Link (full width)
+    // 2.  Heading on top, Image left, Text and Link right (separate column)
+    // 3.  Heading on top, Image right, Text and Link left (separate column)
+    // 4.  Heading on top, Image left, Text and Link right (floating around image)
+    // 5.  Heading on top, Image right, Text and Link left (floating around image)
+    // 6.  Image left, Heading, Text and Link right (separate column)
+    // 7.  Image right, Heading, Text and Link left (separate column)
+    // 8.  Image left, Heading, Text and Link right (floating around image)
+    // 9.  Image right, Heading, Text and Link left (floating around image)
+    // 10. Heading, Text, Link, Image (full width)
     " %>
 
 <%@ attribute name="sizeMobile" type="java.lang.Integer" required="false"
@@ -74,6 +75,9 @@
 <%@ attribute name="cssText" type="java.lang.String" required="false"
     description="'class' selectors to add to the tag surrounding the text." %>
 
+<%@ attribute name="textAlignment" type="java.lang.String" required="false"
+    description="Controls the alignment of the text elements. Default is left aligned." %>
+
 <%@ attribute name="link" fragment="true" required="false"
     description="Markup shown for the content piece link." %>
 
@@ -114,10 +118,11 @@
 
 
 <c:set var="pieceTag"       value="${empty pieceTag ? 'div' : pieceTag}" />
-<c:set var="inlineLink"     value="${empty inlineLink ? (pieceLayout > 1) : inlineLink}" />
+<c:set var="fullWidth"      value="${(pieceLayout <= 1) or (pieceLayout == 10)}" />
+<c:set var="inlineLink"     value="${empty inlineLink ? not fullWidth : inlineLink}" />
 
-<c:set var="fullWidth"      value="${pieceLayout <= 1}" />
 <c:set var="inlineHeading"  value="${(pieceLayout == 1) or (pieceLayout >= 6)}" />
+<c:set var="visualLast"     value="${pieceLayout == 10}" />
 
 <c:choose>
     <c:when test="${fullWidth}">
@@ -126,13 +131,13 @@
     </c:when>
     <c:otherwise>
         <c:set var="pieceIsFlex"    value="${(pieceLayout == 2) or (pieceLayout == 3) or (pieceLayout == 6) or (pieceLayout == 7)}" />
-        <c:set var="pieceIsFloat"   value="${(pieceLayout > 1) and not pieceIsFlex}" />
-        <c:set var="pieceDirection" value="${pieceLayout > 1 ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
-        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 4 : (sizeDesktop > 12 ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop))}" />
+        <c:set var="pieceIsFloat"   value="${not fullWidth and not pieceIsFlex}" />
+        <c:set var="pieceDirection" value="${not fullWidth ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
+        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99) or (sizeDesktop > 12)) ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop)}" />
     </c:otherwise>
 </c:choose>
 
-<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99)) ? (sizeDesktop < 10 ? (sizeDesktop > 5 ? 12 : sizeDesktop * 2) : 12) : (sizeMobile > 12 ? (sizeDesktop < 12 ? 7 : 12) : (sizeMobile < 0 ? 0 : sizeMobile))}" />
+<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99) or (sizeMobile > 12)) ? (sizeDesktop < 10 ? (sizeDesktop > 3 ? 12 : sizeDesktop * 2) : 12) : (sizeMobile < 0 ? 0 : sizeMobile)}" />
 
 <c:set var="useVisual"      value="${(sizeMobile != 0) or (sizeDesktop != 0)}" />
 
@@ -196,6 +201,15 @@
 </c:if>
 
 <c:choose>
+    <c:when test="${empty textAlignment or (textAlignment eq 'pal')}">
+        <%-- Default alignment, no css class added --%>
+    </c:when>
+    <c:when test="${(textAlignment eq 'par') or (textAlignment eq 'pac') or (textAlignment eq 'paj')}">
+        <c:set var="pieceAlignment" value="${' '}${textAlignment}" />
+    </c:when>
+</c:choose>
+
+<c:choose>
     <c:when test="${showHeading and not showVisual and not showBody and not showLink}">
         <c:set var="pieceFeatureMarker" value=" only-heading" />
         <c:set var="onlyHeading" value="${true}" />
@@ -214,7 +228,8 @@
     </c:when>
     <c:otherwise>
         <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
+        <%-- "pvl" means "piece visual last" --%>
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
     </c:otherwise>
 </c:choose>
 
@@ -225,6 +240,7 @@ ${'<'}${pieceTag}${' '}
         ${'piece'}
         ${empty pieceOption ? '' : ' '.concat(pieceOption)}
         ${empty pieceFeatureMarker ? '' : pieceFeatureMarker}
+        ${empty pieceAlignment ? '' : pieceAlignment}
         ${empty gridOption ? '' : ' '.concat(gridOption)}
     ${'\"'}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}
@@ -238,7 +254,7 @@ ${'>'}
     <mercury:nl />
 </c:if>
 
-<c:if test="${showVisual}">
+<c:if test="${showVisual and not visualLast}">
     <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
         ${pieceVisual}
     </div><%----%>
@@ -274,6 +290,13 @@ ${'>'}
 <c:if test="${showLink and not inlineLink}">
     <div class="link${empty cssLink ? '' : ' '.concat(cssLink)}"${empty attrLink ? '' : ' '.concat(attrLink)}><%----%>
         ${pieceLink}
+    </div><%----%>
+    <mercury:nl />
+</c:if>
+
+<c:if test="${showVisual and visualLast}">
+    <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
+        ${pieceVisual}
     </div><%----%>
     <mercury:nl />
 </c:if>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE params SYSTEM "internal://org/opencms/configuration/paramfile.dtd">
 
-<params weight="100">
+<params weight="10">
 
-    <param name="editorConfigParagraph">formatselect,link,anchor,downloadgallery,specialchar,emotions,source</param>
     <param name="editorConfigFull"     >formatselect,link,anchor,downloadgallery,specialchar,emotions,source</param>
     <param name="editorConfigMail"     >formatselect,table,source</param>
     <param name="editorConfigLimited"  >link,source</param>

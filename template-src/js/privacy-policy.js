@@ -397,6 +397,11 @@ function initExternalElements(showMessage) {
                                 $element.addClass("modal-cookie-notice");
                                 $element.find(".cookie-content > div:not(.cookie-header)").remove();
                                 $element.find(".cookie-content").append('<div class=\"cookie-footer\">' + m_policy.nClick + '</div>');
+                                var modToggleHeight = $element.find(".cookie-content").innerHeight();
+                                if (modToggleHeight > parentHeight) {
+                                    // toggle message should always be fully visible
+                                    $presizedParent.addClass("enlarged");
+                                }
                                 $element.on("click", function() {
                                     createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
                                     function() {

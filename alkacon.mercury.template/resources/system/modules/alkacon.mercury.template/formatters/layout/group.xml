@@ -28,7 +28,7 @@
       </link>
     </IncludeSettings>
     <Setting>
-      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+      <IncludeName><![CDATA[cssWrapper.optional]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[headerPosition.layout]]></IncludeName>

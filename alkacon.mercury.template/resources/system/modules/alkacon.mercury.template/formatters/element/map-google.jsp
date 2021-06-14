@@ -28,7 +28,7 @@
 <c:set var="showMapRoute"       	value="${setting.showMapRoute.toBoolean}" />
 <c:set var="mapType"       			value="${setting.mapType.toString}" />
 
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <%-- Check API key --%>
 <c:set var="apiKey" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['google.apikey']}" />

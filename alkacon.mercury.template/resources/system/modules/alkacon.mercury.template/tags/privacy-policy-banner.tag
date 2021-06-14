@@ -28,34 +28,38 @@
 
 <c:if test="${not empty policyfile and policyfile ne 'none'}">
 
-<c:set var="policyfile" value="${fn:startsWith(policyfile, '/') ? policyfile : cms.subSitePath.concat('.content/').concat(policyfile)}" />
-<c:set var="policyfileBase64"><mercury:obfuscate text="${policyfile}" type="base64"/></c:set>
-<c:set var="uriBase64"><mercury:obfuscate text="${contentUri}" type="base64"/></c:set>
-<c:set var="rootBase64"><mercury:obfuscate text="${cms.requestContext.siteRoot}" type="base64"/></c:set>
-
-<%-- Generate banner data JSON --%>
-<cms:jsonobject var="bannerData">
-    <cms:jsonvalue key="policy" value="${policyfileBase64}" />
-    <cms:jsonvalue key="page" value="${uriBase64}" />
-    <cms:jsonvalue key="root" value="${rootBase64}" />
-    <c:if test="${hideBanner}">
-        <cms:jsonvalue key="display" value="0" />
+    <c:if test="${not fn:startsWith(policyfile, '/')}">
+        <c:set var="subSitePolicy" value="${cms.subSitePath.concat('.content/').concat(policyfile)}" />
+        <c:set var="sitePolicy" value="${'/.content/'.concat(policyfile)}" />
+        <c:set var="policyfile" value="${cms.vfs.exists[subSitePolicy] ? subSitePolicy : sitePolicy}" />
     </c:if>
-</cms:jsonobject>
+    <c:set var="policyfileBase64"><mercury:obfuscate text="${policyfile}" type="base64"/></c:set>
+    <c:set var="uriBase64"><mercury:obfuscate text="${contentUri}" type="base64"/></c:set>
+    <c:set var="rootBase64"><mercury:obfuscate text="${cms.requestContext.siteRoot}" type="base64"/></c:set>
 
-<div id="privacy-policy-banner" class="pp-banner" data-banner='${bannerData.compact}'></div><%----%>
-<mercury:nl />
+    <%-- Generate banner data JSON --%>
+    <cms:jsonobject var="bannerData">
+        <cms:jsonvalue key="policy" value="${policyfileBase64}" />
+        <cms:jsonvalue key="page" value="${uriBase64}" />
+        <cms:jsonvalue key="root" value="${rootBase64}" />
+        <c:if test="${hideBanner}">
+            <cms:jsonvalue key="display" value="0" />
+        </c:if>
+    </cms:jsonobject>
 
-<noscript><%----%>
-    <div id="privacy-policy-banner-noscript" class="pp-banner"><%----%>
-        <div class=banner><%----%>
-            <div class="container"><%----%>
-                <div class="message"><fmt:message key="msg.page.javaScript.disabled" /></div><%----%>
+    <div id="privacy-policy-banner" class="pp-banner" data-banner='${bannerData.compact}'></div><%----%>
+    <mercury:nl />
+
+    <noscript><%----%>
+        <div id="privacy-policy-banner-noscript" class="pp-banner"><%----%>
+            <div class=banner><%----%>
+                <div class="container"><%----%>
+                    <div class="message"><fmt:message key="msg.page.javaScript.disabled" /></div><%----%>
+                </div><%----%>
             </div><%----%>
         </div><%----%>
-    </div><%----%>
-</noscript><%----%>
-<mercury:nl />
+    </noscript><%----%>
+    <mercury:nl />
 
 </c:if>
 

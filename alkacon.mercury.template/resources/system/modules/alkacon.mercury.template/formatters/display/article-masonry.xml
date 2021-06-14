@@ -16,7 +16,6 @@
       <Types>
         <ContainerType><![CDATA[masonry]]></ContainerType>
         <ContainerType><![CDATA[article]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[teaser-masonry]]></Display>

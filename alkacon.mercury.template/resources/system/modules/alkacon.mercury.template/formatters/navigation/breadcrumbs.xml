@@ -38,6 +38,9 @@
       <IncludeName><![CDATA[breadcrumbsIncludeHidden.navigation]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[breadcrumbsFullPath.navigation]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[breadcrumbsFromRoot.navigation]]></IncludeName>
     </Setting>
   </NewFormatter>

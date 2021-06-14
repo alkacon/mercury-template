@@ -52,7 +52,7 @@
                     <DisplayName><![CDATA[%(key.label.PrivacyPolicy.BannerText)]]></DisplayName>
                     <Description><![CDATA[%(key.label.PrivacyPolicy.BannerText.help)]]></Description>
                     <Widget>html</Widget>
-                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
@@ -84,7 +84,7 @@
                     <Description><![CDATA[%(key.label.PrivacyPolicy.ExternalFooter.help)]]></Description>
                     <Widget>html</Widget>
                     <Default><![CDATA[%(key.msg.page.privacypolicy.external.footer)]]></Default>
-                    <WidgetConfig><![CDATA[%(param:editorConfigFull)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

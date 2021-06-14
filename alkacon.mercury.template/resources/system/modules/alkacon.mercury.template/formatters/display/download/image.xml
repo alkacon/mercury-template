@@ -15,7 +15,6 @@
     <Match>
       <Types>
         <ContainerType><![CDATA[list]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[download]]></Display>

@@ -36,18 +36,18 @@
         </div><%----%>
     </c:when>
     <c:when test="${empty sourceSite and cms.isEditMode}">
-        <div class="element type-sourcesite oct-meta ${cssWrapper}"><%----%>
-            <div class="marker"><%----%>
-                <fmt:message key="msg.page.sourcesite.unknown" /><%----%>
-            </div><%----%>
-        </div><%----%>
+        <mercury:alert-meta icon="info-circle" css="element type-sourcesite ${cssWrapper}">
+            <jsp:attribute name="text">
+                <fmt:message key="msg.page.sourcesite.unknown" />
+            </jsp:attribute>
+        </mercury:alert-meta>
     </c:when>
     <c:when test="${cms.isEditMode}">
-        <div class="element type-sourcesite oct-meta ${cssWrapper}"><%----%>
-            <div class="marker"><%----%>
-                <fmt:message key="msg.page.sourcesite.same" /><%----%>
-            </div><%----%>
-        </div><%----%>
+        <mercury:alert-meta icon="info-circle" css="element type-sourcesite ${cssWrapper}">
+            <jsp:attribute name="text">
+                <fmt:message key="msg.page.sourcesite.same" />
+            </jsp:attribute>
+        </mercury:alert-meta>
     </c:when>
     <c:otherwise>
         <!-- <fmt:message key="msg.page.sourcesite.same" />  --><%----%>

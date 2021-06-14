@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A number of additional functions for the Mercury template that serve as technical demos for OpenCms capabilities or provide functions that are seldom needed in a real installation.]]></description>
-		<version>11.0.1.4</version>
+		<version>11.0.1.5</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -98,7 +98,12 @@
 			<uuidstructure>94b920bd-df8e-46a6-adeb-f2e0cb938df1</uuidstructure>
 			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury xtensions formatters]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -216,7 +221,12 @@
 			<uuidstructure>ab056d21-2235-4911-87b6-d2ff46379e1b</uuidstructure>
 			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury xtensions i18n]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -327,6 +337,10 @@
 			<datecreated>Thu, 13 Dec 2018 07:24:49 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury xtensions revolution slider resources]]></value>
+				</property>
 				<property>
 					<name>export</name>
 					<value><![CDATA[true]]></value>
@@ -718,7 +732,12 @@
 			<uuidstructure>2fadc912-3e65-4adf-a940-1ff9dd576208</uuidstructure>
 			<datecreated>Tue, 22 Jan 2019 07:23:29 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury xtensions schemas]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

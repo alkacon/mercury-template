@@ -16,7 +16,6 @@
       <Types>
         <ContainerType><![CDATA[text-tile]]></ContainerType>
         <ContainerType><![CDATA[media]]></ContainerType>
-        <ContainerType><![CDATA[mercury-list]]></ContainerType>
       </Types>
     </Match>
     <Display><![CDATA[teaser-text-tile]]></Display>
@@ -63,10 +62,10 @@
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.0]]></IncludeName>

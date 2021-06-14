@@ -20,13 +20,11 @@
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
 
-        <mercury:nl />
-        <div class="oct-meta"><%----%>
-            <div class="marker"><%----%>
+        <mercury:alert-meta icon="share-alt-square">
+            <jsp:attribute name="text">
                 <fmt:message key="msg.page.metainfo.marker" />
-            </div><%----%>
-        </div><%----%>
-        <mercury:nl />
+            </jsp:attribute>
+        </mercury:alert-meta>
 
         </cms:bundle>
 

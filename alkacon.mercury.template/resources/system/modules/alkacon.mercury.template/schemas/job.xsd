@@ -106,7 +106,7 @@
                     <DisplayName><![CDATA[%(key.label.LocationNote)]]></DisplayName>
                     <Description><![CDATA[%(key.label.LocationNote.help)]]></Description>
                     <Widget>html</Widget>
-                    <WidgetConfig><![CDATA[%(param:editorConfigLimited)]]></WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

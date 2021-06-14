@@ -38,10 +38,13 @@
       <IncludeName><![CDATA[textOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[effect.section.text-only]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.default]]></IncludeName>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.section.text-only]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>

@@ -23,8 +23,8 @@
                 <Setting>
                     <PropertyName>Data</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MediaAudio.Data)]]></DisplayName>
-                    <Widget><![CDATA[%(param:mercuryAudioDataWidget)]]></Widget>
-                    <WidgetConfig><![CDATA[%(param:mercuryAudioDataWidgetConfig)]]></WidgetConfig>
+                    <Widget><![CDATA[%(attribute:mercuryAudioDataWidget:%(param:mercuryAudioDataWidget))]]></Widget>
+                    <WidgetConfig><![CDATA[%(attribute:mercuryAudioDataWidgetConfig:%(param:mercuryAudioDataWidgetConfig))]]></WidgetConfig>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

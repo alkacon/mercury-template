@@ -26,7 +26,7 @@
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
 <c:set var="showGroupButtons"       value="${setting.showGroupButtons.toBoolean}" />
 
-<c:set var="ade"                    value="${true}" />
+<c:set var="ade"                    value="${cms.isEditMode}" />
 
 <%-- Check API key --%>
 <c:set var="apiKey" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]['osm.apikey']}" />

@@ -21,16 +21,17 @@
 
 // Possible piece grid variations, as used by the element settings:
 //
-// 0. Heading, Image, Text, Link (all full)
-// 1. Image, Heading, Text, Link (all full)
-// 2. Heading on top, Image left, Text and Link right (separate column)
-// 3. Heading on top, Image right, Text and Link left (separate column)
-// 4. Heading on top, Image left, Text and Link right (floating around image)
-// 5. Heading on top, Image right, Text and Link left (floating around image)
-// 6. Image left, Heading, Text and Link right (separate column)
-// 7. Image right, Heading, Text and Link left (separate column)
-// 8. Image left, Heading, Text and Link right (floating around image)
-// 9. Image right, Heading, Text and Link left (floating around image)
+//  0. Heading, Image, Text, Link (all full)
+//  1. Image, Heading, Text, Link (all full)
+//  2. Heading on top, Image left, Text and Link right (separate column)
+//  3. Heading on top, Image right, Text and Link left (separate column)
+//  4. Heading on top, Image left, Text and Link right (floating around image)
+//  5. Heading on top, Image right, Text and Link left (floating around image)
+//  6. Image left, Heading, Text and Link right (separate column)
+//  7. Image right, Heading, Text and Link left (separate column)
+//  8. Image left, Heading, Text and Link right (floating around image)
+//  9. Image right, Heading, Text and Link left (floating around image)
+// 10. Heading, Text, Link, Image (all full)
 //
 // 50. Title as image overlay (Detail page only)
 // 99. Default value for content section - treated internally as '4' (Content section only)
@@ -43,9 +44,13 @@
     }
 }
 
-@function get-col-float-size($cols, $reduce: 0) {
+@function get-col-float-size($cols, $reduce: 0, $gutter-width: $grid-gutter-width) {
     @if ($cols < 12) {
-        @return calc((100% + #{$grid-gutter-width}) * #{$cols / $grid-columns} - #{$grid-gutter-width + $reduce});
+        @if (($reduce != 0) or ($gutter-width != 0)) {
+            @return calc((100% + #{$gutter-width}) * #{$cols / $grid-columns} - #{$gutter-width + $reduce});
+        } @else {
+            @return 100% * $cols / $grid-columns;
+        }
     } @else {
         @return 100%;
     }
@@ -74,13 +79,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
-    &.centered {
-        .heading > .piece-heading,
-        > .body .text {
-            text-align: center;
-        }
-    }
-
     &.disabled {
         background-image: $disabled-bg;
     }
@@ -90,6 +88,58 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         > .visual {
             margin-left: auto;
             margin-right: auto;
+        }
+
+        &.align-right {
+            > .visual {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &.pvl {
+        // piece visual last
+        > .visual {
+            margin-bottom: 0;
+        }
+        > .body,
+        > .link {
+            + .visual {
+                 margin-top: $piece-visual-last-top-margin;
+            }
+        }
+    }
+
+    &.paj {
+        // piece align justify
+        .heading > .piece-heading,
+        > .visual > .subtitle,
+        > .body + .link,
+        > .body .link,
+        > .body .text {
+            text-align: justify;
+        }
+    }
+
+    &.pac {
+        // piece align centered
+        .heading > .piece-heading,
+        > .visual > .subtitle,
+        > .body + .link,
+        > .body .link,
+        > .body .text {
+            text-align: center;
+        }
+    }
+
+    &.par {
+        // piece align right
+        .heading > .piece-heading,
+        > .visual > .subtitle,
+        > .body + .link,
+        > .body .link,
+        > .body .text {
+            text-align: right;
         }
     }
 
@@ -107,7 +157,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             // if the heading is the last child of the piece, don't add the bottom margin
             > .piece-heading-link > .piece-heading,
             > .piece-heading {
-                margin-bottom:0;
+                margin-bottom: 0;
             }
         }
     }
@@ -244,6 +294,17 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                 }
                 > .body {
                     padding-left: 0.5 * $grid-gutter-width;
+                }
+            }
+
+            &.p-md-7,
+            &.p-md-8,
+            &.p-md-9,
+            &.p-md-10,
+            &.p-md-11 {
+                // if available room for text is very small, adjust wrap settings
+                .btn {
+                    white-space: normal;
                 }
             }
         }

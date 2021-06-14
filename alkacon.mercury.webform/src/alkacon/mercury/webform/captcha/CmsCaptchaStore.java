@@ -173,7 +173,6 @@ public class CmsCaptchaStore {
     @SuppressWarnings("unchecked")
     private synchronized Map<String, CmsCaptchaToken> getStore() {
 
-        LOG.debug(ATTRIBUTE_CAPTCHASTORE);
         PageContext context = m_jspActionElement.getJspContext();
         if (context.getAttribute(ATTRIBUTE_CAPTCHASTORE, PageContext.APPLICATION_SCOPE) == null) {
             context.setAttribute(

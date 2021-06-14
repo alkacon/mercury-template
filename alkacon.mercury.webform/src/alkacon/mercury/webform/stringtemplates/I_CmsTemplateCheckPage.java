@@ -37,6 +37,8 @@ public interface I_CmsTemplateCheckPage {
     final String ATTR_CAPTCHA_ERROR = "captchaerror";
     /** Attribute with the link to the captcha image. */
     final String ATTR_CAPTCHA_IMAGE_LINK = "captchaimagelink";
+    /** Attribute with the captcha text for math captchas */
+    final String ATTR_CAPTCHA_TEXT = "captchatext";
     /** Attribute with token ID for the current captcha */
     final String ATTR_CAPTCHA_TOKEN_ID = "captchatokenid";
     /** List attribute with {@link alkacon.mercury.webform.fields.I_CmsField} fields to check. */

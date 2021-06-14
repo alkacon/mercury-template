@@ -394,7 +394,7 @@ $endif$
 >>
 
 
-checkpage(formuri,formconfig,checktext,captchafield,captchaerror,captchaimagelink,captchatokenid,checkfields,hiddenfields,checkbutton,correctbutton) ::= <<
+checkpage(formuri,formconfig,checktext,captchafield,captchaerror,captchaimagelink,captchatokenid,checkfields,hiddenfields,checkbutton,correctbutton,captchatext) ::= <<
 $! ###### CHECK page of the form ###### !$
 $checktext$
 <table class="webform-input table table-responsive table-bordered table-striped">
@@ -423,7 +423,12 @@ $if(captchafield)$
     </label>
     <div class="input">
         <div class="captcha">
+        $if (captchaimagelink)$
         <img src="$captchaimagelink$" class="img-responsive" alt="" />
+        $endif$
+        $if (captchatext)$
+        <div>$captchatext$</div>
+        $endif$
         </div>
         <input type="hidden" id="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" name="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" value="$captchatokenid$"/>
     </div>

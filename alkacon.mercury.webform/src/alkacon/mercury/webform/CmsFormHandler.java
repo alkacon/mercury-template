@@ -19,6 +19,7 @@
 
 package alkacon.mercury.webform;
 
+import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
 import alkacon.mercury.webform.fields.CmsCaptchaField;
 import alkacon.mercury.webform.fields.CmsCheckboxField;
 import alkacon.mercury.webform.fields.CmsEmptyField;
@@ -97,6 +98,8 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateErrorListener;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
+
+import com.octo.captcha.service.text.TextCaptchaService;
 
 /**
  * The form handler controls the HTML or mail output of a configured email form.<p>
@@ -323,7 +326,7 @@ public class CmsFormHandler extends CmsJspActionElement {
      */
     public String convertToPlainValue(String value) {
 
-        return convertValue(value, "");  
+        return convertValue(value, "");
     }
 
     /**
@@ -1456,17 +1459,27 @@ public class CmsFormHandler extends CmsJspActionElement {
             if (tokenId.isEmpty()) {
                 tokenId = UUID.randomUUID().toString();
             }
-            sTemplate.setAttribute(
-                I_CmsTemplateCheckPage.ATTR_CAPTCHA_IMAGE_LINK,
-                OpenCms.getLinkManager().substituteLink(
-                    getCmsObject(),
-                    PATH_CAPTCHA_JSP
-                        + "?"
-                        + captchaField.getCaptchaSettings().toRequestParams(getCmsObject())
-                        + "&"
-                        + CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID
-                        + "="
-                        + tokenId));
+            if (captchaField.getCaptchaSettings().isMathField()) {
+                TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
+                    captchaField.getCaptchaSettings(),
+                    this.getCmsObject());
+                String captchaChallenge = service.getTextChallengeForID(
+                    tokenId,
+                    this.getCmsObject().getRequestContext().getLocale());
+                sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_TEXT, captchaChallenge);
+            } else {
+                sTemplate.setAttribute(
+                    I_CmsTemplateCheckPage.ATTR_CAPTCHA_IMAGE_LINK,
+                    OpenCms.getLinkManager().substituteLink(
+                        getCmsObject(),
+                        PATH_CAPTCHA_JSP
+                            + "?"
+                            + captchaField.getCaptchaSettings().toRequestParams(getCmsObject())
+                            + "&"
+                            + CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID
+                            + "="
+                            + tokenId));
+            }
             sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_TOKEN_ID, tokenId);
         }
 

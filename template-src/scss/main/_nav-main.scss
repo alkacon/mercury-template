@@ -432,7 +432,7 @@
 
             .nav-main-mobile-logo {
                 display: block;
-                padding: #{$grid-gutter-width / 2} $nav-mobile-indent-offset;
+                padding: $grid-gutter-width-half $nav-mobile-indent-offset;
                 background-color: $nav-mobile-logo-bg-color;
                 // make sure wide logos are not under the toggle button
                 @if ($nav-mobile-position == right) {
@@ -545,7 +545,7 @@
                 border: 0;
                 > a {
                     // sidebar padding may be different
-                    padding: $nav-mobile-line-padding #{$grid-gutter-width / 2} $nav-mobile-line-padding #{($grid-gutter-width / 2) + ($nav-mobile-indent * 2)};
+                    padding: $nav-mobile-line-padding $grid-gutter-width-half $nav-mobile-line-padding #{$grid-gutter-width-half + ($nav-mobile-indent * 2)};
                     @if ($nav-mobile-font-family != $font-family-base) {
                         font-family: $nav-mobile-font-family;
                     }
@@ -810,7 +810,7 @@
                     position: absolute;
                     display: inline-block;
                     font-family: ForkAwesome;
-                    right: round(($nav-menu-hor-padding - 2px) / 2);
+                    right: round(($nav-menu-hor-padding - 2px) * 0.5);
                     font-size: $nav-font-size;
                     content: "\f105"; // right arrow for default large screens
                     font-weight: normal;
@@ -1011,7 +1011,7 @@
         display: block;
         overflow: visible;
         position: static;
-        margin-left: calc(#{$grid-gutter-width / 2} - #{$default-margin});
+        margin-left: calc(#{$grid-gutter-width-half} - #{$default-margin});
         animation-name: none;
     }
 }

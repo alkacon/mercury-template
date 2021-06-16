@@ -114,7 +114,7 @@ $sq-heights-xl:    () !default;
 @mixin make-square-col($size)   {
 
     @each $i, $sq-i in get-square-cols($size) {
-        $sq-width: 100%/($sq-maxCols/$sq-i);
+        $sq-width: divide(100%, divide($sq-maxCols, $sq-i));
 
         .square-#{$size}-#{$i} {
            // creates the media query square versions like .square-lg-5 etc.
@@ -136,7 +136,7 @@ $sq-heights-xl:    () !default;
 
 @mixin fix-square-container($size) {
     @each $m in $sq-margins  {
-        $sq-min: floor((container-useable-width($size) + 2*$m) / 4) * 4;
+        $sq-min: floor((container-useable-width($size) + 2*$m) * 0.25) * 4;
         .square-m-#{$m}-parent .container {
             width: $sq-min;
             padding: 0;
@@ -220,7 +220,7 @@ $sq-heights-xl:    () !default;
         .square-col.square-sm-12.square-m-#{$m} .content {
             height: calc(100% - #{$grid-gutter-width});
             width:  calc(100% - #{$grid-gutter-width});
-            margin: #{$grid-gutter-width / 2};
+            margin: $grid-gutter-width-half;
         }
     }
 }
@@ -231,8 +231,8 @@ $sq-heights-xl:    () !default;
     float: left;
     position: relative;
     min-height: 1px;
-    padding-right: #{$grid-gutter-width / 2};
-    padding-left: #{$grid-gutter-width / 2};
+    padding-right: $grid-gutter-width-half;
+    padding-left: $grid-gutter-width-half;
     width: 100%;
 }
 
@@ -318,13 +318,13 @@ $sq-heights-xl:    () !default;
 }
 
 // hand optimized specials for 4x3 and 16x9 square tiles
-$ratio4-3: 300/400;
-$ratio16-9: 900/1670; // this gives better results than 9/16
+$ratio4-3: 0.75; // =300/400;
+$ratio16-9: divide(900, 1670); // this gives better results than 9/16
 $sq-margin: 20px;
 
 @function calc-square-height($container, $margin, $ratio, $cols, $just:false) {
 
-    $width: ($container + 2*$margin) * ($cols / 12);
+    $width: ($container + 2*$margin) * divide($cols, 12);
     $height: (($width - ($margin *2)) * $ratio) + ($margin *  2);
     @if ($just) {
          @return $height - ($height % 2);
@@ -426,12 +426,12 @@ $sq-margin: 20px;
         &.square-md-4,
         &.square-lg-4,
         &.square-xl-4  {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 8, true) / 2 !important;
+            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 8, true) * 0.5 !important;
         }
         &.square-md-3,
         &.square-lg-3,
         &.square-xl-3  {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 6, true) / 2 !important;
+            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 6, true) * 0.5 !important;
         }
     }
     .square-col.square-16-9 {

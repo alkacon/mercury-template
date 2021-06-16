@@ -39,6 +39,11 @@
         background: $form-background;
     }
 
+    &.element,
+    &.subelement {
+        margin-bottom: $default-margin;
+    }
+
     header {
         border-bottom: $form-border;
         padding: $form-field-ver-padding $form-field-hor-padding;

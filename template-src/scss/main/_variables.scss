@@ -149,8 +149,8 @@ $map-header-weight:                 $font-weight-normal !default;
 
 $font-size-base:                    1.4rem !default;
 $font-size-headings:                2.0rem !default; // for the h3 header
-$font-size-lg:                      round($font-size-base * 12.5) / 10 !default;
-$font-size-sm:                      round($font-size-base * 8) / 10 !default;
+$font-size-lg:                      round($font-size-base * 12.5) * 0.1 !default;
+$font-size-sm:                      round($font-size-base * 8) * 0.1 !default;
 
 $line-height-base:                  1.5 !default;
 $line-height-headings:              1.25 !default;
@@ -159,14 +159,14 @@ $line-height-lead:                  $line-height-base !default;
 
 // Heading sizes
 
-$h1-font-size:                      round($font-size-headings * 14) / 10 !default;
-$h1-font-size-mobile:               round($font-size-headings * 12) / 10 !default;
+$h1-font-size:                      round($font-size-headings * 14) * 0.1 !default;
+$h1-font-size-mobile:               round($font-size-headings * 12) * 0.1 !default;
 $h2-font-size:                      $h1-font-size-mobile !default;
 $h2-font-size-mobile:               $font-size-headings !default;
 $h3-font-size:                      $font-size-headings !default;
-$h3-font-size-mobile:               round($font-size-headings * 9) / 10 !default;
+$h3-font-size-mobile:               round($font-size-headings * 9) * 0.1 !default;
 $h4-font-size:                      $h3-font-size-mobile !default;
-$h4-font-size-mobile:               round($font-size-headings * 8) / 10 !default;
+$h4-font-size-mobile:               round($font-size-headings * 8) * 0.1 !default;
 $h5-font-size:                      $h4-font-size !default;
 $h6-font-size:                      $h4-font-size !default;
 
@@ -179,12 +179,12 @@ $text-contrast-threshold:           2.5 !default;
 // Default margins
 
 $default-margin:                    2.0rem !default;
-$default-margin-smaller:            round($default-margin * 75) / 100 !default;   // 1.5 rem
-$default-margin-small:              round($default-margin * 50) / 100 !default;   // 1.0 rem
-$default-margin-quitesmall:         round($default-margin * 37.5) / 100 !default; // 0.75 rem
-$default-margin-verysmall:          round($default-margin * 25) / 100 !default;   // 0.5 rem
-$default-margin-ultrasmall:         round($default-margin * 12.5) / 100 !default; // 0.25 rem
-$default-margin-extremesmall:       round($default-margin * 6.25) / 100 !default; // 0.12 rem
+$default-margin-smaller:            round($default-margin * 75) * 0.01 !default;   // 1.5 rem
+$default-margin-small:              round($default-margin * 50) * 0.01 !default;   // 1.0 rem
+$default-margin-quitesmall:         round($default-margin * 37.5) * 0.01 !default; // 0.75 rem
+$default-margin-verysmall:          round($default-margin * 25) * 0.01 !default;   // 0.5 rem
+$default-margin-ultrasmall:         round($default-margin * 12.5) * 0.01 !default; // 0.25 rem
+$default-margin-extremesmall:       round($default-margin * 6.25) * 0.01 !default; // 0.12 rem
 
 $detail-piece-margin-bottom:        $default-margin !default;
 $headings-margin-bottom:            $default-margin-small !default;
@@ -212,7 +212,7 @@ $default-transition-time:           0.33s !default; // default timing for animat
 // Rounded corners
 
 $default-border-radius:             0 !default;
-$copyright-border-radius:           floor($default-border-radius / 2) !default;
+$copyright-border-radius:           floor($default-border-radius * 0.5) !default;
 $image-border-radius:               $default-border-radius !default;
 
 
@@ -246,6 +246,7 @@ $container-max-widths: (
 // Bootstrap variables
 
 $grid-gutter-width:                 30px !default;
+$grid-gutter-width-half:            $grid-gutter-width * 0.5 !default;
 
 $primary:                           $main-theme !default;
 
@@ -276,10 +277,10 @@ $nav-shadow:                        0 6px 12px $dropshadow !default;
 // Buttons
 
 $btn-padding:                       0.6rem !default;
-$btn-h-padding:                     round($btn-padding * 20) / 10 !default;
+$btn-h-padding:                     round($btn-padding * 20) * 0.1 !default;
 $btn-def-padding:                   $btn-padding $btn-h-padding !default;
-$btn-lg-padding:                    round($btn-padding * 12.5) / 10 round($btn-padding * 30) / 10 !default;
-$btn-sm-padding:                    round($btn-padding * 2.5) / 10 round($btn-padding * 12.5) / 10 !default;
+$btn-lg-padding:                    round($btn-padding * 12.5) * 0.1 round($btn-padding * 30) * 0.1 !default;
+$btn-sm-padding:                    round($btn-padding * 2.5) * 0.1 round($btn-padding * 12.5) * 0.1 !default;
 $btn-xs-padding:                    $btn-sm-padding !default;
 $btn-border-radius:                 $default-border-radius !default;
 $btn-default:                       $main-theme !default;
@@ -397,7 +398,7 @@ $nav-mobile-position:               right !default; // alternatives are ""left" 
 $nav-mobile-bg-color:               $nav-border !default; // background color of mobile navigation wrapper
 $nav-mobile-menu-bg-color:          $nav-head-bg !default; // background color of mobile navigation items wrapper
 $nav-mobile-logo-bg-color:          $nav-mobile-menu-bg-color !default; // background color of mobile navigation logo wrapper
-$nav-mobile-side-size:              250px + ($grid-gutter-width / 2) !default; // size of mobile side menu for "left" and "right"
+$nav-mobile-side-size:              250px + $grid-gutter-width-half !default; // size of mobile side menu for "left" and "right"
 $nav-mobile-side-content-move:      false !default; // move content when mobile side nav is shown?
 $nav-mobile-font-size:              16px !default; // font size for mobile sub-menu entries
 $nav-mobile-line-target-height:     36px !default; // line height of mobile menu nav entries
@@ -407,14 +408,14 @@ $nav-mobile-show-box:               true !default; // show a boxed color backgro
 $nav-mobile-box-bg-color:           $text-dark !default; // background behind "box" arrows on mobile navigation (if enabled)
 $nav-mobile-box-color:              check-text-color($nav-mobile-box-bg-color, $text-light) !default; // color of "box" arrows on mobile navigation (if enabled)
 $nav-mobile-box-top:                4px !default; // top position for "box" with arrow
-$nav-mobile-box-right:              $grid-gutter-width / 2 !default; // right position for "box" with arrow
+$nav-mobile-box-right:              $grid-gutter-width-half !default; // right position for "box" with arrow
 $nav-mobile-box-height:             $nav-mobile-line-target-height - (2 * $nav-mobile-box-top) !default; // height for "box" background
 $nav-mobile-box-border-radius:      $nav-border-radius !default; // border radius of "box"
 $nav-mobile-box-offset:             $grid-gutter-width !default; // position of the mobile submenu "box" relative to surrounding menu
 $nav-mobile-box-offset-xs:          $nav-mobile-box-offset !default; // position of the mobile submenu "box" relative to surrounding menu in XS screens
 $nav-mobile-indent:                 10px !default; // left indentation step for deeper levels
-$nav-mobile-indent-offset:          $grid-gutter-width / 2 !default; // left / right padding and indentation offset
-$nav-mobile-toggle-top:             $grid-gutter-width / 2 !default; // top position for mobile toggle
+$nav-mobile-indent-offset:          $grid-gutter-width-half !default; // left / right padding and indentation offset
+$nav-mobile-toggle-top:             $grid-gutter-width-half !default; // top position for mobile toggle
 $nav-mobile-toggle-side:            $grid-gutter-width !default; // left / right position for mobile toggle
 $nav-mobile-toggle-side-xs:         $nav-mobile-toggle-side !default; // left / right position for mobile toggle in XS screens
 $nav-mobile-border-color:           $nav-border !default; // border for mobile menu items
@@ -459,16 +460,16 @@ $fh-logo-image-bg:                  none !default; // background color for the l
     $nav-mobile-side-content-move:      false !global; // this feature is not supported
     $nav-mobile-smaller-xs-toggle:      false !global; // do not make 'hamburger' icon smaller on mobile
     $nav-mobile-indent-offset:          $nav-mobile-toggle-side !global; // force padding on mobile menu to align with icon
-    $nav-mobile-toggle-side-xs:         round($nav-mobile-toggle-side * 50) / 100 !global; // force smaller padding on mobile menu for small screens
+    $nav-mobile-toggle-side-xs:         round($nav-mobile-toggle-side * 50) * 0.01 !global; // force smaller padding on mobile menu for small screens
 }
 
 $bh-title-font-size:                $h2-font-size !default; // title font size for larger screens
 $bh-title-font-size-mobile:         $h2-font-size-mobile !default; // title font size for smaller screens
 $bh-title-ac-font-size:             $bh-title-font-size * 2 !default; // title font size in additional container overlay for larger screens
 $bh-title-ac-font-size-mobile:      $bh-title-font-size-mobile * 1.5 !default; // title font size in additional container overlay for smaller screens
-$bh-header-padding:                 $grid-gutter-width / 2 !default; // top / bottom padding for burger header elements
-$bh-header-padding-small:           round($bh-header-padding * 50) / 100 !default; // smaller padding for burger header elements
-$bh-header-padding-verysmall:       round($bh-header-padding * 25) / 100 !default; // used mostly for sticky burger header
+$bh-header-padding:                 $grid-gutter-width-half !default; // top / bottom padding for burger header elements
+$bh-header-padding-small:           round($bh-header-padding * 50) * 0.01 !default; // smaller padding for burger header elements
+$bh-header-padding-verysmall:       round($bh-header-padding * 25) * 0.01 !default; // used mostly for sticky burger header
 $bh-nav-mobile-toggle-top:          $grid-gutter-width !default; // top position for floating burger menu icon
 $bh-nav-mobile-logo-max-width:      350px !default; // max size of logo in menu
 
@@ -511,7 +512,7 @@ $nav-side-text-active:              $nav-theme !default;
 $nav-side-font-size:                $font-size-base !default;
 $nav-side-border:                   1px solid $nav-border !default;
 $nav-side-boxed:                    false !default; // true/false: show border around sidebar navigation
-$nav-side-left-padding-step:        $grid-gutter-width / 2 !default;
+$nav-side-left-padding-step:        $grid-gutter-width-half !default;
 $nav-side-left-padding-start:       conditional-value($nav-side-boxed == true, $nav-side-left-padding-step, 2px) !default;
 $nav-side-right-padding:            30px !default;
 $nav-side-ver-padding:              6px !default;
@@ -658,8 +659,8 @@ $policy-banner-save-hover-color:    $policy-banner-accept-hover-color !default;
 $policy-banner-button-min-width:    100px !default;
 $policy-banner-opacity:             0.95 !default;
 $policy-banner-margin:              $default-margin !default;
-$policy-banner-margin-small:        round($policy-banner-margin * 50) / 100 !default;
-$policy-banner-margin-verysmall:    round($policy-banner-margin * 25) / 100 !default;
+$policy-banner-margin-small:        round($policy-banner-margin * 50) * 0.01 !default;
+$policy-banner-margin-verysmall:    round($policy-banner-margin * 25) * 0.01 !default;
 
 $togglebox-height:                  40px !default;
 $togglebox-width:                   200px !default;
@@ -725,7 +726,7 @@ $form-label-color:                  $form-text-color !default;
 $form-field-padding:                $default-margin;
 $form-field-ver-padding:            $form-field-padding;
 $form-field-hor-padding:            $form-field-padding * 1.5;
-$form-field-ver-padding-xs:         round($form-field-padding * 50) / 100 !default;
+$form-field-ver-padding-xs:         round($form-field-padding * 50) * 0.1 !default;
 $form-field-hor-padding-xs:         $form-field-ver-padding-xs !default;
 $form-border-color:                 $grey !default;
 $form-icon-color:                   $grey-dark !default;
@@ -800,7 +801,7 @@ $social-links-bg:                   $grey !default;
 $social-links-color:                $text-dark !default;
 $social-links-size:                 20px !default;
 $social-links-margin:               $default-margin-verysmall !default;
-$social-links-size-half:            $social-links-size / 2 !default;
+$social-links-size-half:            $social-links-size * 0.5 !default;
 $social-links-box-height:           $social-links-size * 2 !default;
 $social-links-border-radius:        $btn-border-radius !default;
 $social-links-border-width:         0 !default;

@@ -38,7 +38,7 @@
 
 @function get-col-flex-size($cols, $reduce: 0) {
     @if ($cols < 12) {
-        @return calc((100% + #{$grid-gutter-width}) * #{$cols / $grid-columns} - #{(0.5 * $grid-gutter-width) + $reduce});
+        @return calc((100% + #{$grid-gutter-width}) * #{divide($cols, $grid-columns)} - #{(0.5 * $grid-gutter-width) + $reduce});
     } @else {
         @return 100%;
     }
@@ -47,7 +47,7 @@
 @function get-col-float-size($cols, $reduce: 0, $gutter-width: $grid-gutter-width) {
     @if ($cols < 12) {
         @if (($reduce != 0) or ($gutter-width != 0)) {
-            @return calc((100% + #{$gutter-width}) * #{$cols / $grid-columns} - #{$gutter-width + $reduce});
+            @return calc((100% + #{$gutter-width}) * #{divide($cols, $grid-columns)} - #{$gutter-width + $reduce});
         } @else {
             @return 100% * $cols / $grid-columns;
         }

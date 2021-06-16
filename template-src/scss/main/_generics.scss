@@ -208,7 +208,7 @@
 
     $rem-space: 0;
     @if ($space > 0) {
-        $rem-space: #{$space / 10}rem;
+        $rem-space: #{$space * 0.1}rem;
     }
 
     .p-#{$space} {

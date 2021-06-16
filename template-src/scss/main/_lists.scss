@@ -219,8 +219,8 @@
             .intro-headline {
                 // make headers smaller
                 @include font-size-responsive(
-                    round($teaser-title-size-mobile * 9) / 10,
-                    round($teaser-title-size * 9) / 10
+                    round($teaser-title-size-mobile * 9) * 0.1,
+                    round($teaser-title-size * 9) * 0.1
                 );
                 // adjust color of side headings
                 > .headline {
@@ -239,8 +239,8 @@
                     > .intro {
                         @include font-size-responsive(
                             // the intro heading should be the same in all variations: 65% percent of the reduced teaser title font size
-                            round($teaser-title-size-mobile * 9) / 10 * 0.65,
-                            round($teaser-title-size * 9 ) / 10 * 0.65
+                            round($teaser-title-size-mobile * 9) * 0.1 * 0.65,
+                            round($teaser-title-size * 9 ) * 0.1 * 0.65
                         )
                     }
                 }
@@ -251,8 +251,8 @@
             .teaser {
                 .intro-headline {
                     @include font-size-responsive(
-                        round($teaser-title-size-reduced-mobile * 9) / 10,
-                        round($teaser-title-size-reduced * 9) / 10
+                        round($teaser-title-size-reduced-mobile * 9) * 0.1,
+                        round($teaser-title-size-reduced * 9) * 0.1
                     );
                 }
             }
@@ -372,8 +372,8 @@
     &.dl-list-elaborate {
 
         li.list-entry {
-            padding-top: round($default-margin / 2);
-            padding-bottom: round($default-margin / 2);
+            padding-top: $default-margin-small;
+            padding-bottom: $default-margin-small;
             border-bottom: 1px solid $highlight-color;
 
             &:last-child {
@@ -763,7 +763,7 @@
 
         &.categories {
             > div {
-                padding: $grid-gutter-width / 2;
+                padding: $grid-gutter-width-half;
             }
 
             .btn.li-label:before {

@@ -55,13 +55,13 @@
         padding: 10px 0;
 
         .day-name {
-            margin-right: $grid-gutter-width / 2;
+            margin-right: $grid-gutter-width-half;
             float: right;
         }
 
         .month-year,
         .day-number {
-            margin-left: $grid-gutter-width / 2;
+            margin-left: $grid-gutter-width-half;
             float: left;
         }
 
@@ -231,8 +231,8 @@ table.submissions {
 .teaser .book-info,
 .accordion .book-info {
 
-    font-size: round($font-size-base * 8) / 10;
-    line-height: round($line-height-base * 8) / 10;
+    font-size: round($font-size-base * 8) * 0.1 ;
+    line-height: round($line-height-base * 8) * 0.1;
     margin: 8px 0;
 
     .oct-meta-info,

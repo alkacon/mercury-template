@@ -82,7 +82,7 @@
         display: block;
         position: fixed;
         visibility: visible;
-        bottom: $grid-gutter-width / 2;
+        bottom: $grid-gutter-width-half;
         border-radius: $nav-border-radius !important;
         cursor: pointer;
         pointer-events: none;
@@ -92,7 +92,7 @@
             right: $nav-mobile-toggle-side;
             @if ($nav-breakpoint-mobile != xl) {
                 @include media-breakpoint-up($nav-breakpoint-desktop) {
-                    right: $grid-gutter-width / 2;
+                    right: $grid-gutter-width-half;
                 }
                 @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
                     @include media-breakpoint-down(xs) {

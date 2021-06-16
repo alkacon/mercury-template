@@ -442,7 +442,7 @@ html.noscript  {
     @for $cols from 1 through 12 {
         .slide-count-#{$cols} {
             @extend .slide-count;
-            width: 100% / $cols;
+            width: divide(100%, $cols);
         }
     }
 }

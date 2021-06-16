@@ -20,7 +20,7 @@
  */
 
 @function calc-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
-    @return floor(map-get($max-widths, $breakpoint) *  $size / $columns);
+    @return floor(map-get($max-widths, $breakpoint) * divide($size, $columns));
 }
 
 @function calc-abs-col-rest($breakpoint, $offset, $max-widths: $container-max-widths) {
@@ -147,7 +147,7 @@
             .h-info {
                 .h-meta {
                     // make sure meta links are aligned to navigation
-                    padding-left: $grid-gutter-width / 2;
+                    padding-left: $grid-gutter-width-half;
                 }
             }
         }
@@ -240,8 +240,8 @@
             width: 100%;
             padding-top: $default-margin-verysmall;
             padding-bottom: $default-margin-verysmall;
-            padding-right: $grid-gutter-width / 2;
-            padding-left: $grid-gutter-width / 2;
+            padding-right: $grid-gutter-width-half;
+            padding-left: $grid-gutter-width-half;
         }
 
         .h-ac {
@@ -433,7 +433,7 @@
 
             &.lp-l {
                 .h-info {
-                    padding-right: $grid-gutter-width / 2;
+                    padding-right: $grid-gutter-width-half;
                 }
             }
 
@@ -450,7 +450,7 @@
                     order: 3;
                     .h-meta,
                     .h-title {
-                        padding-left: $grid-gutter-width / 2;
+                        padding-left: $grid-gutter-width-half;
                     }
                 }
             }
@@ -510,7 +510,7 @@
                 .h-info {
                     .h-title {
                         // make sure title is aligned to navigation
-                        padding-left: $grid-gutter-width / 2
+                        padding-left: $grid-gutter-width-half;
                     }
                 }
             }
@@ -561,7 +561,7 @@
                     .h-info .h-nav,
                     .h-nav .co-lg-xl {
                         // remove gutter from surrounding container
-                        padding-left: $grid-gutter-width / 2 - $nav-header-hor-padding;
+                        padding-left: $grid-gutter-width-half - $nav-header-hor-padding;
                     }
                     .nav-main-items {
                         justify-content: flex-start;
@@ -959,7 +959,7 @@
                             content: "";
                             position: absolute;
                             top: $nav-header-total-height;
-                            left: calc(#{$grid-gutter-width / 2} - #{$fixed-logo-padding});
+                            left: calc(#{$grid-gutter-width-half} - #{$fixed-logo-padding});
                             width: calc(100% - #{$grid-gutter-width} + #{2 * $fixed-logo-padding});
                             height: calc(100% - #{$nav-header-total-height});
                             box-shadow: 0 8px 10px -4px $dropshadow;
@@ -991,7 +991,7 @@
                     &.padding-none {
                         .h-logo {
                             &::before {
-                                left: #{$grid-gutter-width / 2};
+                                left: $grid-gutter-width-half;
                                 width: calc(100% - #{$grid-gutter-width});
                             }
                         }
@@ -1026,7 +1026,7 @@
                     &.header-isfixed {
                         &.fix-compact {
                             .h-logo {
-                                max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) / 2) + $grid-gutter-width;
+                                max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) * 0.5) + $grid-gutter-width;
                             }
                         }
                         &.fix-overlay {

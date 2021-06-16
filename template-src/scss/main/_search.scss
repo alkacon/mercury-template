@@ -58,7 +58,7 @@
     .type-list-filter .filterbox {
         @include list-filter-box;
         > div {
-            padding: $grid-gutter-width / 2;
+            padding: $grid-gutter-width-half;
         }
 
         &:last-of-type {

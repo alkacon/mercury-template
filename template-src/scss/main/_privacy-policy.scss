@@ -407,7 +407,7 @@
         bottom: 0;
         right: #{$togglebox-width - $togglebox-height - 2 * $togglebox-border-size};
         border: $togglebox-border-size solid $togglebox-border-color;
-        border-radius: floor($togglebox-border-radius / 2);
+        border-radius: floor($togglebox-border-radius * 0.5);
     }
 
     &.animated {

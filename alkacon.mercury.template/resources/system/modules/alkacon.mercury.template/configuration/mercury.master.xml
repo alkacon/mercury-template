@@ -115,11 +115,6 @@
       <DetailPagesDisabled>true</DetailPagesDisabled>
     </ResourceType>
     <ResourceType>
-      <TypeName><![CDATA[m-google-calendar]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
-    </ResourceType>
-    <ResourceType>
       <TypeName><![CDATA[modelgroup]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
       <ElementView>
@@ -158,6 +153,10 @@
     <ResourceType>
       <TypeName><![CDATA[m-layout-area-complex]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-privacypolicy]]></TypeName>
+      <Disabled><![CDATA[add]]></Disabled>
     </ResourceType>
     <UseFormatterKeys>true</UseFormatterKeys>
     <RemoveAllFormatters>true</RemoveAllFormatters>
@@ -782,38 +781,47 @@
         <uuid>5fc02e59-fe05-496b-9fd8-7b40245ec3fc</uuid>
       </link>
     </Function>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/walls.io.xml]]></target>
+        <uuid>3c3b4b33-eb93-11ea-999c-0242ac11002b</uuid>
+      </link>
+    </Function>
     <DiscardProperties><![CDATA[top]]></DiscardProperties>
     <Property>
       <PropertyName><![CDATA[Title]]></PropertyName>
       <Disabled>false</Disabled>
+      <DisplayName><![CDATA[%(key.msg.property.Title)]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
     <Property>
       <PropertyName><![CDATA[NavText]]></PropertyName>
       <Disabled>false</Disabled>
-      <DisplayName><![CDATA[Navigation Text]]></DisplayName>
+      <DisplayName><![CDATA[%(key.msg.property.NavText)]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
     <Property>
       <PropertyName><![CDATA[NavInfo]]></PropertyName>
       <Disabled>false</Disabled>
-      <DisplayName><![CDATA[Navigation Info]]></DisplayName>
+      <DisplayName><![CDATA[%(key.msg.property.NavInfo)]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
     <Property>
       <PropertyName><![CDATA[Description]]></PropertyName>
       <Disabled>false</Disabled>
+      <DisplayName><![CDATA[%(key.msg.property.Description)]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
     <Property>
       <PropertyName><![CDATA[Keywords]]></PropertyName>
       <Disabled>false</Disabled>
+      <DisplayName><![CDATA[%(key.msg.property.Keywords)]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
     <Property>
       <PropertyName><![CDATA[mercury.theme]]></PropertyName>
       <Disabled>false</Disabled>
-      <DisplayName><![CDATA[Mercury Theme CSS]]></DisplayName>
+      <DisplayName><![CDATA[%(key.msg.property.mercury.theme)]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
     <Attribute>

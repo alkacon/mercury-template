@@ -18,7 +18,7 @@ $slideTime: 400ms;
 
 // calendar width calculation
 $daySize: 39px;
-$padding: ($daySize/16);
+$padding: ($daySize*0.0625);
 $dayMargin: 2px;
 $daysWidth: ($daySize*7 + $dayMargin*14 + $padding*2 + 2);
 $calendarWidth: $daysWidth;

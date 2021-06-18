@@ -45,6 +45,7 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {string} initparams the initial search state parameters to apply on first load of the list.
  * @property {PageData} pageData the pagination state.
  * @property {PaginationCallback} paginationCallback the pagination callback function.
+ * @property {Map<number, JQuery<HTMLElement>>} sortHeaders the HTMLElements of the headers for sortable columns.
  *
  * @typedef {Object.<string, List>} ListMap Object holding only lists as property values.
  *
@@ -370,16 +371,24 @@ function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
  * @param {boolean} reloadEntries flag, indicating if the current results should be reloaded/replaced.
  * @param {string} listHtml the list HTML as received from the server.
  * @param {number} page the number of the result page to show.
+ * @param {boolean} keepPageData the number of the result page to show.
  * @returns {void}
 */
-function generateListHtml(list, reloadEntries, listHtml, page) {
+function generateListHtml(list, reloadEntries, listHtml, page, keepPageData) {
     if (DEBUG) console.info("List: generateListHtml() called");
 
     var $result = jQ(listHtml);
     // collect information about the search result
-    var resultData = $result.find('#resultdata').first().data('result');
-    list.pageData = resultData;
-    list.pageData.itemsPerPage = parseInt(list.itemsPerPage, 10);
+    if (keepPageData) {
+    	// this is currently the case when a sort option was triggered, then the page data is not provided again
+        list.pageData.currentPage = page;
+        list.pageData.reloaded = "true";
+    } else {
+        var resultData = $result.find('#resultdata').first().data('result');
+        list.pageData = resultData;
+        list.pageData.itemsPerPage = parseInt(list.itemsPerPage, 10);
+    }
+
     if (DEBUG) console.info("List: Search result - list=" + list.id + ", reloaded=" + list.pageData.reloaded + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage + ", page to show=" + page);
 
     var $newEntries;
@@ -500,14 +509,13 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     // there may be media elements in the list
     Mercury.initElements('#' + list.id);
 
-    if (resultData.reloaded == "true" && reloadEntries) {
+    if (list.pageData.reloaded == "true" && reloadEntries) {
         if (! list.$element.visible()) {
             if (DEBUG) console.info("List: Scrolling to anchor");
             Mercury.scrollToAnchor(list.$element, -20);
         }
     }
 }
-
 /**
  *
  * @param {List} list the list to update the page data for.
@@ -804,6 +812,83 @@ function handleAutoLoaders() {
     }
 }
 
+/** The following methods are for sorting.
+ * The quicksort implementation is copied/apopted from https://github.com/melicerte/jquery-fake-table-sort.
+ */
+/**
+ * Quicksort algorithm.
+ * @param array
+ * @param low
+ * @param high
+ */
+ export function quickSort (array, low, high, sortMethod) {
+    if (low < high) {
+        const p = partition(array, low, high, sortMethod);
+        quickSort(array, low, p - 1, sortMethod);
+        quickSort(array, p + 1, high, sortMethod);
+    }
+};
+
+/**
+ * Partition function for the Quicksort algorithm
+ * @param array
+ * @param low
+ * @param high
+ * @param sortMethod
+ * @returns {number}
+ */
+    function partition (array, low, high, sortMethod) {
+        const pivot = array[high];
+        let i = low -1;
+
+        for (let j = low; j <= high; j++) {
+
+            var comparison = compareValues(array[j].text, pivot.text, sortMethod);
+
+            if (comparison === 0 || comparison === -1) {
+                i++;
+                if (i != j) {
+                    const temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+
+        return i;
+    };
+
+/**
+ * Compare 2 values according to $method
+ * @param $value1
+ * @param $value2
+ * @param $method
+ * @returns {number} -1 if $value1 < $value2, 0 if $value1 = $value2, 1 if $value1 > $value2
+ */
+function compareValues ($value1, $value2, $method) {
+    switch ($method) {
+        case 'string':
+            return $value1.localeCompare($value2);
+            break;
+        case 'number':
+            $value1 = parseFloat($value1);
+            $value2 = parseFloat($value2);
+
+            if ($value1 < $value2) {
+                return -1;
+            }
+            if ($value1 == $value2) {
+                return 0;
+            }
+            if ($value1 > $value2) {
+                return 1;
+            }
+            break;
+    }
+
+    return 0;
+};
+
 /****** Exported functions ******/
 
 /**
@@ -870,6 +955,54 @@ export function switchPage(id, page) {
     }
 }
 
+/**
+ * Sorts the results for the provided column. The method can only be used when all results are preloaded directly.
+ * 
+ * The function is called automatically when you set up a list with header entries having class "list-header-sortable".
+ * 
+ * Typically it's not necessary to call it directly.
+ *
+ * @param {string} id the id of the list where the sort action should take place.
+ * @param {number} columnIdx the index of the column to sort for.
+ * @param {string} mode the sort mode to use, either 'string' or 'number'
+ * @param {boolean} desc iff true, sorting is descending, otherwise ascending.
+ */
+export function sort(id, columnIdx, mode) {
+    const list = m_lists[id];
+    /** @type {JQuery<HTMLElement>} */
+    let $headerItem = list.sortHeaders.get(columnIdx);
+    let sortMode = $headerItem.find("a").first().attr("data-sort-direction");
+    if (sortMode === undefined) {
+        sortMode = $headerItem.data("sort-direction") ?? "asc";
+    } else {
+        sortMode = (sortMode === "asc") ? "desc" : "asc";
+    }
+    const columns = [];
+    for (let [pageNum, pageEntries] of list.pageEntries) {
+        pageEntries.each(function(){
+            const line = $(this);
+            const cell = $(line.children().get(columnIdx));
+            let cellText = cell.text().trim();
+            columns.push({line: line, text: cellText});
+        });
+    }
+    quickSort(columns, 0, columns.length - 1, mode);
+    if (sortMode === "desc") {
+        columns.reverse();
+    }
+
+    let $listHtml = $('<div></div>');
+    for(let iLine = 0; iLine < columns.length; iLine++) {
+        columns[iLine].line.appendTo($listHtml);
+    }
+    list.sortHeaders.forEach(function($header) {
+        $header.find('a').removeAttr('data-sort-direction');
+        $header.find('i').attr("class", "fa fa-sort");
+    })
+    $headerItem.find('a').attr("data-sort-direction", sortMode);
+    $headerItem.find('i').attr("class", sortMode === "asc" ? "fa fa-sort-asc" : "fa fa-sort-desc");
+    generateListHtml(list, true, "<div>" + $listHtml.html() + "</div>", 1, true);
+}
 /**
  * Appends a further page of items to the currently shown items.
  * The method can only be used if all items are already preloaded.
@@ -967,6 +1100,19 @@ export function init(jQuery, debug) {
                 list.$spinner = $list.find(".list-spinner");
                 list.$pagination = $list.find(".list-pagination");
                 list.$noresults = $list.find(".list-noresults");
+                // initialize sort options
+                list.sortHeaders = new Map();
+                $list.find(".list-header-sortable").children().each(function(idx) {
+                    const $headerItem = $(this);
+                    const sortMode = $headerItem.data('sort-mode');
+                    if (sortMode === 'string' || sortMode === 'number') {
+                    const $action = $('<a href="#" class="list-sorter" onclick="DynamicList.sort(\'' + list.id + '\',' + idx + ',\'' + sortMode + '\')"></a>');
+                    $action.append($headerItem.text());
+                    $action.append("<i class=\"fa fa-sort\"></i>");
+                    $headerItem.html($action);
+                    list.sortHeaders.set(idx,$headerItem);
+                }
+                });
                 list.initialLoad = true;
                 list.locked = false;
                 list.autoload = false;
@@ -985,6 +1131,7 @@ export function init(jQuery, debug) {
                     m_autoLoadLists.push(list);
                 };
                 list.$facets = jQ("#facets_" + list.elementId);
+
                 // store list data in global array
                 m_lists[list.id] = list;
                 // store list in global group array

@@ -23,9 +23,13 @@
 <c:set var="iconClass"              value="${setting.iconClass.useDefault('caret-right').toString}" />
 <c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
 
+<c:set var="emptyLinkSequence"      value="${empty content.valueList.LinkEntry}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:choose>
+    <c:when test="${emptyLinkSequence}">
+        <c:set var="listBulletStyle" value="empty-sequence" />
+    </c:when>
     <c:when test="${iconClass eq 'default'}">
         <c:set var="listBulletStyle" value="default-icon" />
     </c:when>
@@ -62,19 +66,26 @@
         <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>
     </c:if>
 
-    <ul ${ulWrapper}><%----%>
-        <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
-            <c:set var="linkText" value="${link.value.Text}" />
-            <c:if test="${fn:startsWith(linkText, 'icon:')}">
-                <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
-            </c:if>
-            <li ${liWrapper}><%----%>
-                <mercury:link link="${link}" css="${aWrapper}">
-                    <span class="ls-item">${linkText}</span><%----%>
-                </mercury:link>
-            </li><%----%>
-        </c:forEach>
-    </ul><%----%>
+    <c:choose>
+        <c:when test="${not emptyLinkSequence}">
+            <ul ${ulWrapper}><%----%>
+                <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
+                    <c:set var="linkText" value="${link.value.Text}" />
+                    <c:if test="${fn:startsWith(linkText, 'icon:')}">
+                        <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
+                    </c:if>
+                    <li ${liWrapper}><%----%>
+                        <mercury:link link="${link}" css="${aWrapper}">
+                            <span class="ls-item">${linkText}</span><%----%>
+                        </mercury:link>
+                    </li><%----%>
+                </c:forEach>
+            </ul><%----%>
+        </c:when>
+        <c:otherwise>
+            <!-- empty linksequence --><%----%>
+        </c:otherwise>
+    </c:choose>
 
 </div><%----%>
 <mercury:nl />

@@ -3778,7 +3778,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(sitepath);user]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(sitepath,navpath);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

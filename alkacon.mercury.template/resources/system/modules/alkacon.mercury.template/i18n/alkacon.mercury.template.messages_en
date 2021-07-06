@@ -928,6 +928,7 @@ msg.setting.header.logoPadding.pad-no=No padding above / below
 msg.setting.header.logoPadding.pad-sm=Default (Small)
 msg.setting.header.logoSize=Logo width
 msg.setting.header.logoSize.help=<p>Sets the width of the header logo.</p>\n<p>The number of columns is according to the Bootstrap raster.</p>\n<p>The height of the logo is adjusted automatically according to the image used.</p>\n<p>The given pixel size is valid only for large desktop displays.</p>
+msg.setting.header.logoSize.ls-0=Hide the logo
 msg.setting.header.logoSize.ls-1=1 Column / 67 Pixel
 msg.setting.header.logoSize.ls-12=12 Columns (Full width) / 1140 Pixel
 msg.setting.header.logoSize.ls-2=2 Columns / 165 Pixel

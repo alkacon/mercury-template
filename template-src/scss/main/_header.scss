@@ -1051,6 +1051,35 @@
             }
         }
 
+        &.ls-0 {
+            .h-logo {
+                position: absolute;
+                width: 125px;
+                height: 25px;
+                padding: 0;
+                @include oct-meta-bg;
+
+                > .image-src-box {
+                    position: absolute;
+                    width: 125px;
+                    height: 25px;
+                    right: 0;
+                    padding-bottom: 0 !important;
+
+                    > img {
+                        display: none;
+                    }
+                }
+            }
+
+            &.lp-r {
+                .h-logo {
+                    right: 0;
+                }
+            }
+        }
+
+
         @if (false) {
             // colored backgrounds - for debugging only
 
@@ -1124,6 +1153,39 @@
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Header that always displays the"burger" menu
 @if ($feature-use-burger-header) {

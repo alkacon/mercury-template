@@ -83,6 +83,7 @@
                 <c:set var="logoAlignment"      value="${config.setting.logoAlignment.validate(['lp-l','lp-c','lp-r'],'lp-l').toString}" />
                 <c:set var="logoSize"           value="${config.setting.logoSize.useDefault('ls-4').toString}" />
                 <c:set var="logoFullSize"       value="${logoSize eq 'ls-12'}" />
+                <c:set var="logoHidden"         value="${logoSize eq 'ls-0'}" />
                 <c:set var="logoPosCenter"      value="${logoFullSize or (logoAlignment eq 'lp-c')}" />
                 <c:set var="logoPosLeft"        value="${logoPosCenter ? false : (logoAlignment eq 'lp-l')}" />
                 <c:set var="logoAlignment"      value="${logoPosCenter ? 'lp-c' : logoAlignment}" />

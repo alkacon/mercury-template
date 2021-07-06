@@ -928,6 +928,7 @@ msg.setting.header.logoPadding.pad-no=Keine Ränder oben / unten
 msg.setting.header.logoPadding.pad-sm=Vorgabe (Klein)
 msg.setting.header.logoSize=Logo Breite
 msg.setting.header.logoSize.help=<p>Legt die Breite des Logos im Kopfbereich fest.</p>\n<p>Die Spalten beziehen sich auf das Bootstrap-Raster, welches die verfügbare Seitenbreite in 12 Spalten unterteilt.</p>\n<p>Die Höhe des Logos wird, entsprechend dem verwendeten Bild, automatisch angepasst. Verwenden Sie daher für Logos im Hochformat besser eine Einstellung mit weniger Spalten.</p>\n<p>Die angegebene Pixel-Größe ist nur gültig für große Desktop-Bildschirme. Für kleinere Bildschirme, sowie für Mobilgeräte, wird das Logo automatisch verkleinert.<p>
+msg.setting.header.logoSize.ls-0=Logo ausblenden
 msg.setting.header.logoSize.ls-1=1 Spalte / 67 Pixel
 msg.setting.header.logoSize.ls-12=12 Spalten (Gesamte Breite) / 1140 Pixel
 msg.setting.header.logoSize.ls-2=2 Spalten / 165 Pixel

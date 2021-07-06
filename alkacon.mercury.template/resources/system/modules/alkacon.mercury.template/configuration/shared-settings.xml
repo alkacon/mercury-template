@@ -1375,7 +1375,8 @@
             ls-4:               %(key.msg.setting.header.logoSize.ls-4)|
             ls-5:               %(key.msg.setting.header.logoSize.ls-5)|
             ls-6:               %(key.msg.setting.header.logoSize.ls-6)|
-            ls-12:              %(key.msg.setting.header.logoSize.ls-12)
+            ls-12:              %(key.msg.setting.header.logoSize.ls-12)|
+            ls-0:               %(key.msg.setting.header.logoSize.ls-0)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

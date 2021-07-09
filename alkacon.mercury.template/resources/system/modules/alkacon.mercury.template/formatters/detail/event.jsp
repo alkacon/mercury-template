@@ -213,9 +213,16 @@
 
     <mercury:container-attachment content="${content}" name="attachments" />
 
-    <c:if test="${not empty bookingInformation}">
-        ${bookingInformation}
+    <c:if test="${showBookingForm}">
+        <cms:simpledisplay
+            value="${content.value.Booking.value.Webform.toString}"
+            formatterKey="m/webform/webform-booking">
+            <cms:param name="bookingInfo" value="${content.id}" />
+            <cms:param name="bookingOption" value="${bookingOption}" />
+            <cms:param name="bookingFormId" value="${bookingFormId}" />
+        </cms:simpledisplay>
     </c:if>
+
 
     <mercury:data-event content="${content}" date="${value.Dates.toDateSeries.instanceInfo.get(param.instancedate)}" />
 

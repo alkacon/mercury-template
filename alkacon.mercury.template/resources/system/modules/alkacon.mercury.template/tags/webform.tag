@@ -12,8 +12,11 @@
     description="For booking forms, an object thet points to the additional booking settings.
     This can be an XML content or a path to a XML configuration that contains booking information." %>
 
-<%@ attribute name="formId" type="java.lang.Object" required="false"
-    description="If set, the configId for the form is generated from the hashCode of this Object." %>
+<%@ attribute name="formId" type="java.lang.String" required="false"
+    description="The optional ID for the form." %>
+
+<%@ attribute name="include" type="java.lang.Boolean" required="false"
+    description="If true, the webform will be loaded in a separate included element to avoid caching." %>
 
 <%@ attribute name="formCssWrapper" type="java.lang.String" required="false"
     description="Optional CSS style wrapper for the generated form element." %>
@@ -26,25 +29,41 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<%-- ###### Generate the form ###### --%>
+
 <fmt:setLocale value="${cms.locale}"/>
 <cms:bundle basename="alkacon.mercury.template.messages">
+
     <mercury:webform-vars
         webform="${webform}"
         bookingInfo="${bookingInfo}"
         formId="${formId}">
 
-        <c:if test="${formBookingPossible and form.userCanManage and cms.isEditMode}">
-            <div class="subelement"><%----%>
-                <a class="btn btn-block oct-meta-info" href="<cms:link>${adminLink}?formmanage=${formId.hashCode()}</cms:link>"><%----%>
-                    <fmt:message key="msg.page.form.button.submissions.manage" />
-                </a><%----%>
-            </div><%----%>
-        </c:if>
+        <c:choose>
+            <c:when test="${include}">
+                <cms:simpledisplay
+                    value="${formXml.id}"
+                    formatterKey="m/webform/webform-included">
+                    <cms:param name="bookingInfo" value="${not empty formBookingXml ? formBookingXml.id : ''}" />
+                    <cms:param name="formId" value="${formId}" />
+                </cms:simpledisplay>
+            </c:when>
+            <c:otherwise>
+                <%-- ###### Generate the form ###### --%>
+                <c:if test="${formBookingPossible and form.userCanManage and cms.isEditMode}">
+                    <div class="subelement"><%----%>
+                        <a class="btn btn-block oct-meta-info" href="<cms:link>${adminLink}?formmanage=${formId.hashCode()}</cms:link>"><%----%>
+                            <fmt:message key="msg.page.form.button.submissions.manage" />
+                        </a><%----%>
+                    </div><%----%>
+                </c:if>
 
-        <c:if test="${not empty formCssWrapper}">
-            ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
-        </c:if>
-        ${form.createFormHandler(pageContext).createForm()}
+                <c:if test="${not empty formCssWrapper}">
+                    ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
+                </c:if>
+                ${form.createFormHandler(pageContext).createForm()}
+            </c:otherwise>
+        </c:choose>
+
     </mercury:webform-vars>
+
 </cms:bundle>

@@ -11,8 +11,8 @@
 <%@ attribute name="bookingOption" type="java.lang.String" required="true"
     description="The selected booking option." %>
 
-<%@ attribute name="formatter" type="java.lang.String" required="false"
-    description="Link to the formatter to use for the overview display." %>
+<%@ attribute name="formatterKey" type="java.lang.String" required="false"
+    description="The key for the formatter to use for the comapct display on form result pages." %>
 
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="Can be used to defer the decision to actually create the booking information markup around the body to the calling element.
@@ -20,33 +20,38 @@
     Otherwise everything is ignored and the output is generated as if there is no booking information available." %>
 
 
-<%@ variable name-given="bookingInformation" declare="true"
-    description="The booking information to show on the output page." %>
+<%@ variable name-given="showBookingForm" declare="true"
+    description="Indicates if the booking form should be shown on the output page." %>
+
+<%@ variable name-given="bookingFormId" declare="true"
+    description="The element id of the parent element containing the booking form." %>
+
+<%@ variable name-given="bookingFormIdHash" declare="true"
+    description="The hash code for the element id of the parent element containing the booking form." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+<c:set var="bookingFormId"          value="${cms.element.id.toString()}" />
+<c:set var="bookingFormIdHash"      value="${bookingFormId.hashCode()}" />
 
-<c:set var="generateBoookingInfo" value="${empty test or test}" />
-<c:set var="formatter" value="${not empty formatter ? formatter : '/system/modules/alkacon.mercury.template/formatters/display/event-compact.xml'}" />
-
+<c:set var="generateBoookingInfo"   value="${empty test or test}" />
+<c:set var="formatterKey"           value="${not empty formatterKey ? formatterKey : 'm/display/event-compact'}" />
 
 <c:if test="${generateBoookingInfo}">
     <c:set var="hasBookingForm" value="${content.value.Booking.value.Webform.isSet}" />
     <c:if test="${hasBookingForm}">
-        <c:set var="bookingsFormId" value="${cms.element.id}" />
-        <c:set var="bookingsFormIdHash" value="${bookingsFormId.hashCode()}" />
-        <c:set var="showBookingsList" value="${(not cms.isOnlineProject) and (param.formmanage eq bookingsFormIdHash)}" />
-        <c:set var="showBookingsFormResult" value="${param.formsubmit eq bookingsFormIdHash}" />
+        <c:set var="showBookingsList" value="${(not cms.isOnlineProject) and (param.formmanage eq bookingFormIdHash)}" />
+        <c:set var="showBookingsFormResult" value="${param.formsubmit eq bookingFormIdHash}" />
     </c:if>
 
     <c:if test="${showBookingsList or showBookingsFormResult}">
     <%-- ###### Booking form actions, display short version of detail content only ###### --%>
         <cms:simpledisplay
             value="${content.id}"
-            formatter="${formatter}"
+            formatterKey="${formatterKey}"
             editable="false">
                 <cms:param name="cssWrapper" value="box" />
                 <cms:param name="dateFormat" value="${dateFormat}" />
@@ -73,31 +78,14 @@
             <mercury:webform
                 webform="${content.value.Booking.value.Webform}"
                 bookingInfo="${content}"
-                formId="${bookingsFormId}"
+                formId="${bookingFormId}"
+                include="${true}"
             />
         </div>
     </c:when>
     <c:otherwise>
         <%-- ###### Display regular detail page ###### --%>
-        <c:set var="bookingInformation">
-            <c:if test="${hasBookingForm}">
-                <c:if test="${not (bookingOption eq 'none')}">
-                    <div class="subelement detail-bookingstatus"><%----%>
-                        <mercury:webform-booking-status
-                            bookingContent="${content}"
-                            style="${bookingOption}"
-                        />
-                    </div><%----%>
-                </c:if>
-                <div class="subelement type-webform"><%----%>
-                    <mercury:webform
-                        webform="${content.value.Booking.value.Webform}"
-                        bookingInfo="${content}"
-                        formId="${bookingsFormId}"
-                    />
-                </div><%----%>
-            </c:if>
-        </c:set>
+        <c:set var="showBookingForm" value="${hasBookingForm}" />
         <jsp:doBody />
     </c:otherwise>
 </c:choose>

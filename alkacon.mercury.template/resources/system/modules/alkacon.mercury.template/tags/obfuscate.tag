@@ -60,7 +60,7 @@ public String encodeBase64(String text) {
 }
 
 
-//Base64 encoding (file save)
+// Base64 encoding (file save)
 public String decodeBase64(String text) {
     String result = "";
     try {

@@ -17,8 +17,8 @@
     description="The target path where the form data is written to.
     If not set, this is calculated from the provided form and booking contents." %>
 
-<%@ attribute name="formId" type="java.lang.Object" required="false"
-    description="If set, the configId for the form is generated from the hashCode of this Object." %>
+<%@ attribute name="formId" type="java.lang.String" required="false"
+    description="The optional ID for the form." %>
 
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="The title for the form.

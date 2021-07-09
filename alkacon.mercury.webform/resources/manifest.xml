@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>11.0.1.22</version>
+		<version>11.0.1.23</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -579,6 +579,56 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Trigger JSP to keep the session (optional)]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/elements/webform-booking.jsp</source>
+			<destination>system/modules/alkacon.mercury.webform/elements/webform-booking.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>7b5101e1-dfd0-11eb-85d2-0242ac11002b</uuidstructure>
+			<uuidresource>7b5101e2-dfd0-11eb-85d2-0242ac11002b</uuidresource>
+			<datecreated>Thu, 08 Jul 2021 09:40:08 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Webform with booking info as include to avoid caching]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[never]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/elements/webform-included.jsp</source>
+			<destination>system/modules/alkacon.mercury.webform/elements/webform-included.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>13f8723a-df32-11eb-85d2-0242ac11002b</uuidstructure>
+			<uuidresource>13f8723b-df32-11eb-85d2-0242ac11002b</uuidresource>
+			<datecreated>Wed, 07 Jul 2021 14:46:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Webform as include to avoid caching]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[never]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

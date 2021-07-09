@@ -399,7 +399,7 @@ $checkfields:{$!
     !$</tr>
 }$</table>
 
-<div class="styled-form checkpage">
+<div class="styled-form checkpage$if(captchaerror)$ state-error$endif$">
 
 $if(captchafield)$
 $!  !$<script>

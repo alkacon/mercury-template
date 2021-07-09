@@ -24,10 +24,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
-
 
 
 <fmt:setLocale value="${cms.locale}"/>
@@ -39,14 +37,16 @@
         formId="${formId}">
 
         <c:choose>
+
             <c:when test="${include}">
-                <cms:simpledisplay
-                    value="${formXml.id}"
-                    formatterKey="m/webform/webform-included">
-                    <cms:param name="bookingInfo" value="${not empty formBookingXml ? formBookingXml.id : ''}" />
-                    <cms:param name="formId" value="${formId}" />
-                </cms:simpledisplay>
+                <%-- ###### Include the form from a separate file ###### --%>
+                <cms:include file="/system/modules/alkacon.mercury.webform/elements/webform-included.jsp">
+                    <cms:param name="content"       value="${formXml.id}" />
+                    <cms:param name="bookingInfo"   value="${not empty formBookingXml ? formBookingXml.id : ''}" />
+                    <cms:param name="formId"        value="${formId}" />
+                </cms:include>
             </c:when>
+
             <c:otherwise>
                 <%-- ###### Generate the form ###### --%>
                 <c:if test="${formBookingPossible and form.userCanManage and cms.isEditMode}">
@@ -56,12 +56,12 @@
                         </a><%----%>
                     </div><%----%>
                 </c:if>
-
                 <c:if test="${not empty formCssWrapper}">
                     ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
                 </c:if>
                 ${form.createFormHandler(pageContext).createForm()}
             </c:otherwise>
+
         </c:choose>
 
     </mercury:webform-vars>

@@ -686,18 +686,6 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/webform/webform-included.xml]]></target>
-          <uuid>1aa1769d-df32-11eb-85d2-0242ac11002b</uuid>
-        </link>
-      </AddFormatter>
-      <AddFormatter>
-        <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/webform/webform-booking.xml]]></target>
-          <uuid>8b8e91d4-dfd0-11eb-85d2-0242ac11002b</uuid>
-        </link>
-      </AddFormatter>
-      <AddFormatter>
-        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/ugc/article.xml]]></target>
           <uuid>47802049-1abc-4c5b-a893-3737852826b8</uuid>
         </link>

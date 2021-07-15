@@ -33,6 +33,9 @@
 <%@ attribute name="pieceTag" type="java.lang.String" required="false"
     description="The tag to generate. Defaults to 'div' if not provided." %>
 
+<%@ attribute name="pieceClass" type="java.lang.String" required="false"
+    description="The class to generate. Defaults to 'piece' if not provided." %>
+
 <%@ attribute name="heading" type="java.lang.Object" required="false"
     description="The optional section heading." %>
 
@@ -125,6 +128,7 @@
         sizeDesktop="${sizeDesktop}"
         sizeMobile="${sizeMobile}"
         pieceTag="${pieceTag}"
+        pieceClass="${pieceClass}"
         cssText="${showText and (textOption ne 'default') ? textOption : ''}"
         attrVisual="${ade ? image.rdfaAttr : null}"
         cssVisual="rs_skip"

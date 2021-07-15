@@ -35,6 +35,9 @@
 <%@ attribute name="pieceTag" type="java.lang.String" required="false"
     description="The tag to generate. Defaults to 'div' if not provided." %>
 
+<%@ attribute name="pieceClass" type="java.lang.String" required="false"
+    description="The class to generate. Defaults to 'piece' if not provided." %>
+
 <%@ attribute name="gridOption" type="java.lang.String" required="false"
     description="The piece grid option to generate.
     By default this will be calculated automatically from 'sizeDesktop' and 'sizeMobile'.
@@ -229,7 +232,7 @@
     <c:otherwise>
         <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
         <%-- "pvl" means "piece visual last" --%>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${' pl-'}${pieceLayout}" />
     </c:otherwise>
 </c:choose>
 
@@ -237,7 +240,7 @@
 ${'<'}${pieceTag}${' '}
     ${'class=\"'}
         ${empty cssWrapper ? '' : cssWrapper.concat(' ')}
-        ${'piece'}
+        ${empty pieceClass ? 'piece' : pieceClass}
         ${empty pieceOption ? '' : ' '.concat(pieceOption)}
         ${empty pieceFeatureMarker ? '' : pieceFeatureMarker}
         ${empty pieceAlignment ? '' : pieceAlignment}

@@ -36,7 +36,8 @@
     description="The tag to generate. Defaults to 'div' if not provided." %>
 
 <%@ attribute name="pieceClass" type="java.lang.String" required="false"
-    description="The class to generate. Defaults to 'piece' if not provided." %>
+    description="The class to generate. Defaults to 'piece' if not provided.
+    If this is set a special css selector 'plo-x' will be added to the generated markup where x is the pieceLayout number." %>
 
 <%@ attribute name="gridOption" type="java.lang.String" required="false"
     description="The piece grid option to generate.
@@ -231,8 +232,9 @@
     </c:when>
     <c:otherwise>
         <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
-        <%-- "pvl" means "piece visual last" --%>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${' pl-'}${pieceLayout}" />
+        <%-- "pvl" means "piece visual last". --%>
+        <%-- "plo-x" contains the selected piece layout option, where x is the pieceLayout number. Only added if the pieceClass is emtpy.--%>
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${empty pieceClass ? '' : ' plo-'.concat(pieceLayout)}" />
     </c:otherwise>
 </c:choose>
 

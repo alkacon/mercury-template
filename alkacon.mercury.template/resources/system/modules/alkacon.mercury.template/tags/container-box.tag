@@ -27,7 +27,11 @@
         description="A boolean that indicates if this is a detail container." %>
 
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
-    description="Optional CSS classes to attach to the generated container div." %>
+        description="Optional CSS classes to attach to the generated container div." %>
+
+<%@ attribute name="emptyHeading" type="java.lang.String" required="false"
+        description="The heading displayed for an empty container.
+        If not provided the default 'Empty container' will be used." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -102,7 +106,14 @@
                     <span class="label-detailonly"><fmt:message key="msg.page.layout.detailonly"/></span><%----%>
                 </c:when>
                 <c:otherwise>
-                    <span><fmt:message key="msg.page.layout.headline.emptycontainer"/></span><%----%>
+                    <c:choose>
+                        <c:when test="${not empty emptyHeading}">
+                            <span>${emptyHeading}</span><%----%>
+                        </c:when>
+                        <c:otherwise>
+                            <span><fmt:message key="msg.page.layout.headline.emptycontainer"/></span><%----%>
+                        </c:otherwise>
+                    </c:choose>
                     <c:if test="${role ne 'author'}">
                         <span class="label-${fn:toLowerCase(role)}"><fmt:message key="msg.option.role.${role}"/></span><%----%>
                     </c:if>

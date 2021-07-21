@@ -46,6 +46,10 @@
 <%@attribute name="parameters" type="java.util.Map" required="false"
         description="Parameters to use with the container." %>
 
+<%@ attribute name="emptyHeading" type="java.lang.String" required="false"
+        description="The heading displayed for an empty container.
+        If not provided the default 'Empty container' will be used." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -137,6 +141,7 @@
             <mercury:container-box
                 cssWrapper="${variant}"
                 label="${title}${not empty name ? ' - '.concat(name) : ''}"
+                emptyHeading="${emptyHeading}"
                 boxType="container-box"
                 role="${role}"
                 type="${type}"

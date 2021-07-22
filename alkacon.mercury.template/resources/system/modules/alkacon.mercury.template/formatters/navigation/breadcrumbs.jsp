@@ -42,8 +42,8 @@
                         <c:if test="${
                             ((breadcrumbsIncludeHidden or (status.last and not cms.detailRequest)) and (navElem.navPosition > 0))
                             or (navElem.info ne 'ignoreInDefaultNav')}">
-                            <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
-                                ? navElem.title : navElem.navText}" />
+                            <c:set var="navText"><c:out value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
+                                ? navElem.title : navElem.navText}" /></c:set>
                             <c:if test="${!empty navText}">
                                 <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
                                 <c:if test="${breadcrumbsFullPath or (navLink ne lastNavLink)}">

@@ -188,8 +188,9 @@
 
             <c:out value='<li${menuType}${megaMenu}>${empty menuType ? "" : nl}' escapeXml="false" />
 
-            <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
-                ? navElem.title : navElem.navText}" />
+            <c:set var="navText"><c:out value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
+                ? navElem.title : navElem.navText}" /></c:set>
+
 
             <c:choose>
 

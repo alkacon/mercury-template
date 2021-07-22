@@ -67,7 +67,7 @@
                     </c:otherwise>
                 </c:choose>
 
-                <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???')) ? navElem.title : navElem.navText}" />
+                <c:set var="navText"><c:out value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???')) ? navElem.title : navElem.navText}" /></c:set>
 
                 <c:set var="menuType" value="${startSubMenu ? menuType.concat(' aria-expanded=\"false\"') : menuType}" />
 

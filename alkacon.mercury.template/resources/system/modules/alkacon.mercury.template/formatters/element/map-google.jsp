@@ -44,7 +44,7 @@
 </c:choose>
 
 <mercury:nl />
-<div class="element type-map map-${provider} ${cssWrapper}">
+<div class="element type-map map-${provider}${' '}${cssWrapper}">
 <%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />

@@ -18,6 +18,9 @@
       or ((cms.container.type eq 'locked') and !cms.dragMode)))}">
     <%-- Element matches the configured parent container --%>
 
+    <c:set var="setting"            value="${cms.element.setting}" />
+    <c:set var="cssWrapper"         value="${setting.cssWrapper.toString}" />
+
     <mercury:container-box label="${value.Title}" boxType="model-start" />
 
     <c:if test="${value.PreMarkup.isSet}">
@@ -25,7 +28,7 @@
     </c:if>
 
     <c:forEach var="container" items="${content.valueList.Container}" varStatus="loop">
-        <mercury:container value="${container.value}" title="${value.Title}" />
+        <mercury:container value="${container.value}" title="${value.Title}" css="${cssWrapper}" />
     </c:forEach>
 
     <c:if test="${value.PostMarkup.isSet}">

@@ -565,6 +565,14 @@ function initClickmeShowme() {
     });
 }
 
+// auto-scroll to an opened accordion tab
+function initAccordionScroll() {
+    jQ('.type-tab.variant-accordion article.accordion').on('shown.bs.collapse', function() {
+        var $accordion = $(this).closest('article.accordion');
+        scrollToAnchor($accordion, -50);
+    })
+}
+
 // apply "external" class to all a href links
 function initExternalLinks() {
 
@@ -614,6 +622,7 @@ function initDependencies() {
         if ($anchor.length) {
             offset = offset || 0;
             var targetTop = $anchor.offset().top + offset;
+            targetTop = targetTop < 0 ? 0 : targetTop;
             if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") position:" + targetTop);
             if (fixedHeaderActive() && (targetTop > m_fixedHeader.bottom)) {
                 if (m_fixedHeader.height < 0) {
@@ -632,7 +641,7 @@ function initDependencies() {
             page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
                 page.stop();
             });
-            page.animate({ scrollTop: Math.ceil(targetTop - Mercury.toolbarHeight()) }, 1000, function(){
+            page.animate({ scrollTop: Math.ceil(targetTop - Mercury.toolbarHeight()) }, 750, function(){
                 page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
             });
             if (Mercury.gridInfo().isMobileNav()) {
@@ -669,6 +678,7 @@ export function init(jQuery, debug, verbose) {
     m_firstInit = false;
 
     initSmoothScrolling();
+    initAccordionScroll();
     initClickmeShowme();
     initExternalLinks();
 }

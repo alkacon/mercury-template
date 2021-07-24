@@ -23,6 +23,9 @@
 <%@attribute name="name" type="java.lang.String" required="false"
         description="A unique name for the container that is used to identify it in the container page." %>
 
+<%@attribute name="maxElements" type="java.lang.String" required="false"
+        description="The numer of elements that can be placed in the container. Default is '100'." %>
+
 <%@attribute name="type" type="java.lang.String" required="false"
         description="The type assigned to the container, e.g. 'element' or 'image-simple'.
         The type will be used to select the formatter that is used to render a content in the container." %>
@@ -47,8 +50,12 @@
         description="Parameters to use with the container." %>
 
 <%@ attribute name="emptyHeading" type="java.lang.String" required="false"
-        description="The heading displayed for an empty container.
+        description="The heading displayed in the generated container box for an empty container.
         If not provided the default 'Empty container' will be used." %>
+
+<%@ attribute name="hideName" type="java.lang.Boolean" required="false"
+        description="Controls if the container name is shown in the generated container box for an empty container.
+        Default is 'false'." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -62,7 +69,7 @@
 <c:set var="role"           value="${empty role ? (not empty value.Role ? value.Role.toString() : null) : role}" />
 <c:set var="css"            value="${empty css ? (not empty value.Css ? value.Css.toString() : null) : css}" />
 <c:set var="tag"            value="${empty tag ? (not empty value.Tag ? value.Tag.toString() : null) : tag}" />
-<c:set var="count"          value="${not empty value.Count and not empty value.Count.toString() ? value.Count.toString() : '100'}" />
+<c:set var="maxElements"    value="${empty maxElements ? (not empty value.Count and not empty value.Count.toString() ? value.Count.toString() : '100') : maxElements}" />
 <c:set var="preMarkup"      value="${not empty value.PreMarkup ? value.PreMarkup.toString() : null}" />
 <c:set var="postMarkup"     value="${not empty value.PostMarkup ? value.PostMarkup.toString() : null}" />
 <c:set var="parameters"     value="${empty parameters ? (not empty value.Parameters ? value.Parameters : null) : parameters}" />
@@ -83,7 +90,7 @@
         --%>
         <div class="${css}"><%----%>
             <mercury:container-box
-                label="${title}${not empty name ? ' - '.concat(name) : ''}"
+                label="${title}${not hideName and not empty name ? ' - '.concat(name) : ''}"
                 boxType="detail-placeholder"
                 cssWrapper="attachment"
                 type="${type}"
@@ -91,7 +98,7 @@
         </div>
     </c:when>
 
-    <c:when test="${count != '0'}">
+    <c:when test="${maxElements != '0'}">
         <%--
             Generate the container tag.
         --%>
@@ -126,7 +133,7 @@
             settings="${settings}"
             tagClass="${css}"
             nameprefix="${nameprefix}"
-            maxElements="${count}"
+            maxElements="${maxElements}"
             detailview="${detailView}"
             detailonly="${detailOnly}"
             editableby="${role}"
@@ -140,7 +147,7 @@
 
             <mercury:container-box
                 cssWrapper="${variant}"
-                label="${title}${not empty name ? ' - '.concat(name) : ''}"
+                label="${title}${not hideName and not empty name ? ' - '.concat(name) : ''}"
                 emptyHeading="${emptyHeading}"
                 boxType="container-box"
                 role="${role}"

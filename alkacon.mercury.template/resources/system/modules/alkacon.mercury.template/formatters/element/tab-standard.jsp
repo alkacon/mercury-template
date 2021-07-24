@@ -21,6 +21,7 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="showSingleTab"          value="${setting.showSingleTab.useDefault('true').toBoolean}" />
+<c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="showTabs"               value="${showSingleTab or (content.valueList.TabEntry.size() ne 1)}" />
@@ -30,6 +31,18 @@
 <c:set var="parent_role"            value="${param_parts[0]}" />
 <c:set var="parent_classes"         value="${param_parts[1]}" />
 
+
+<fmt:setLocale value="${cms.workplaceLocale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
+
+<c:choose>
+    <c:when test="${containerType eq 'row'}">
+        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.row"/></c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.element"/></c:set>
+    </c:otherwise>
+</c:choose>
 
 <mercury:nl />
 <div class="element type-tab ${showTabs ? 'variant-tabs ' : 'variant-hidden-tabs '}${cssWrapper}"><%----%>
@@ -68,22 +81,12 @@
                             <mercury:nl />
                             <mercury:nl />
 
-                            <fmt:setLocale value="${cms.workplaceLocale}" />
-                            <cms:bundle basename="alkacon.mercury.template.messages">
-                                <cms:container
-                                    name="${tabContainerName}"
-                                    type="row"
-                                    param="role.EDITOR#${parent_classes}"
-                                    maxElements="50">
-                                        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.text"/></c:set>
-                                        <mercury:container-box
-                                            label="${msg}"
-                                            boxType="container-box"
-                                            role="role.EDITOR"
-                                            type="row"
-                                        />
-                                </cms:container>
-                            </cms:bundle>
+                            <mercury:container
+                                title="${msg}"
+                                name="${tabContainerName}"
+                                hideName="${true}"
+                                type="${containerType}"
+                            />
 
                             <mercury:nl />
                         </div><%----%>
@@ -99,30 +102,23 @@
         </c:when>
         <c:otherwise>
 
-            <fmt:setLocale value="${cms.workplaceLocale}" />
-            <cms:bundle basename="alkacon.mercury.template.messages">
-                <cms:container
-                    name="${content.valueList.TabEntry[0].value.Id}"
-                    type="row"
-                    param="role.EDITOR#${parent_classes}"
-                    maxElements="50">
-                        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.text"/></c:set>
-                        <mercury:container-box
-                            label="${msg}"
-                            boxType="container-box"
-                            role="role.EDITOR"
-                            type="row"
-                        />
-                </cms:container>
-            </cms:bundle>
+            <mercury:container
+                title="${msg}"
+                name="${content.valueList.TabEntry[0].value.Id}"
+                hideName="${true}"
+                type="${containerType}"
+            />
             <mercury:nl />
 
         </c:otherwise>
     </c:choose>
 
+
+
 </div><%----%>
 <mercury:nl />
 
+</cms:bundle>
 </cms:formatter>
 
 </mercury:init-messages>

@@ -22,6 +22,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="visualOption"           value="${setting.visualOption.toString}" />
 <c:set var="firstOpen"              value="${setting.firstOpen.toBoolean}" />
+<c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
@@ -29,6 +30,19 @@
 <c:set var="param_parts"        value="${fn:split(cms.container.param, '#')}" />
 <c:set var="parent_role"        value="${param_parts[0]}" />
 <c:set var="parent_classes"     value="${param_parts[1]}" />
+
+
+<fmt:setLocale value="${cms.workplaceLocale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
+
+<c:choose>
+    <c:when test="${containerType eq 'row'}">
+        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.row"/></c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.element"/></c:set>
+    </c:otherwise>
+</c:choose>
 
 <mercury:nl />
 <div class="element type-tab variant-accordion ${cssWrapper}"><%----%>
@@ -58,22 +72,14 @@
                 ${'</h'}${itemHsize}${'>'}
 
                 <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}" data-parent="#${parentId}"><%----%>
-                    <fmt:setLocale value="${cms.workplaceLocale}" />
-                    <cms:bundle basename="alkacon.mercury.template.messages">
-                        <cms:container
+
+                        <mercury:container
+                            title="${msg}"
                             name="${tabContainerName}"
-                            type="row"
-                            param="role.EDITOR#${parent_classes}"
-                            maxElements="50">
-                                <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.text"/></c:set>
-                                <mercury:container-box
-                                    label="${msg}"
-                                    boxType="container-box"
-                                    role="role.EDITOR"
-                                    type="row"
-                                />
-                        </cms:container>
-                    </cms:bundle>
+                            hideName="${true}"
+                            type="${containerType}"
+                        />
+
                 </div><%----%>
             </article><%----%>
             <mercury:nl />
@@ -85,6 +91,7 @@
 </div><%----%>
 <mercury:nl />
 
+</cms:bundle>
 </cms:formatter>
 
 </mercury:init-messages>

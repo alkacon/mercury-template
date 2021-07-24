@@ -676,6 +676,19 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[containerType.default]]></IncludeName>
+      <PropertyName><![CDATA[containerType]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.containerType)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.containerType.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[element]]></Default>
+      <WidgetConfig><![CDATA[
+            element:            %(key.msg.setting.containerType.element)|
+            row:                %(key.msg.setting.containerType.row)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[autoPlay.false]]></IncludeName>
       <PropertyName><![CDATA[autoPlay]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.media.autoPlay)]]></DisplayName>

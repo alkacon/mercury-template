@@ -567,6 +567,19 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[flipTitle.default]]></IncludeName>
+      <PropertyName><![CDATA[flipTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageFlip.flipTitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageFlip.flipTitle.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[on-text]]></Default>
+      <WidgetConfig><![CDATA[
+        on-text:%(key.msg.setting.imageFlip.flipTitle.on-text)|
+        on-image:%(key.msg.setting.imageFlip.flipTitle.on-image)|
+        on-both:%(key.msg.setting.imageFlip.flipTitle.on-both)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[dateFormatAddTime.true]]></IncludeName>
       <PropertyName><![CDATA[dateFormatAddTime]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.dateFormatAddTime)]]></DisplayName>

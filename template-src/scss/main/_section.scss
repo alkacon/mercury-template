@@ -146,7 +146,7 @@
     .front {
         z-index: 2;
         transform: rotateY(0deg);
-        // front will be only the image so we don't need to set height since image tags already do this
+        // front will be the image so we don't need to set height since image tags already do this
     }
 
     .back {
@@ -167,27 +167,49 @@
         }
     }
 
-    &.color-white .text-section {
-        background-color: $body-bg;
-        border: 1px solid $grey-lighter;
-    }
+    .image-section {
+        .heading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: $default-margin-small;
+            z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
 
-    &.color-grey .text-section {
-        background-color: $grey-lighter;
-    }
-
-    &.color-theme .text-section {
-        background-color: $main-theme;
-        color: get-text-color($main-theme);
-
-        *:not(a):not(span) {
-            color: get-text-color($main-theme);
+            .text-heading {
+                @include round-corners($image-border-radius);
+                @include use-hyphens-headings(true);
+                background-color: transparentize($grey-lighter, 0.25);
+                padding: $default-margin-small;
+                margin-bottom: 0;
+            }
         }
+    }
 
-        .btn {
-            border-color: $white;
-            background-color: $white;
-            color: $text-dark;
+    &.color-white {
+        .text-section {
+            background-color: $body-bg;
+            border: 1px solid $grey-lighter;
+        }
+    }
+
+    &.color-theme {
+        .text-section {
+            background-color: $main-theme;
+            color: get-text-color($main-theme);
+
+            *:not(a):not(span) {
+                color: get-text-color($main-theme);
+            }
+
+            .btn {
+                border-color: $white;
+                background-color: $white;
+                color: $text-dark;
+            }
+        }
+        .image-section .heading .text-heading {
+            background-color: transparentize($main-theme, 0.35);
+            color: get-text-color($main-theme);
         }
     }
 }

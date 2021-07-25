@@ -34,6 +34,7 @@
 <c:set var="showTextFirst"          value="${setting.showTextFirst.toBoolean}" />
 <c:set var="doNotFlip"              value="${setting.doNotFlip.toBoolean}" />
 <c:set var="flipColor"              value="${setting.flipColor.toString}" />
+<c:set var="flipTitle"              value="${setting.flipTitle.useDefault('on-text').toString}" />
 <c:set var="effect"                 value="${setting.effect.toString != 'none' ? setting.effect.toString : ''}" />
 
 <c:set var="title"                  value="${value.Title.toString}" />
@@ -45,13 +46,22 @@
     ade="${false}">
 
 <c:set var="imageSide">
-    <div class="image-section ${showTextFirst ? 'back' : 'front'}${doNotFlip and (not showTextFirst) ? ' noflip' : ''}"><%----%>
+    <div class="image-section ${showTextFirst ? ' back' : ' front'}${doNotFlip and (not showTextFirst) ? ' noflip' : ''}"><%----%>
         <mercury:image-srcset
             imagebean="${imageBean}"
             cssWrapper="img-responsive"
             copyright="${showImageCopyright ? imageCopyrightHtml : null}"
             alt="${title}"
         />
+        <c:if test="${not empty flipTitle and (flipTitle ne 'on-text')}">
+            <div class="heading"><%----%>
+                <mercury:heading
+                    text="${value.Title}"
+                    level="${flipTitle eq 'on-both' ? 7 : hsize}"
+                    css="text-heading${flipTitle eq 'on-both' ? ' h'.concat(hsize) : ''}"
+                />
+            </div><%----%>
+        </c:if>
     </div><%----%>
 </c:set>
 
@@ -62,14 +72,14 @@
             pieceLayout="${1}"
             text="${value.Text}"
             link="${value.Link}"
-            hsize="${hsize}"
+            hsize="${flipTitle ne 'on-image' ? hsize : 0}"
             ade="${false}"
         />
     </div><%----%>
 </c:set>
 
 <mercury:nl />
-<div class="element imageflip ${tileCss}${' '}${effect}${' '}${flipColor}${' '}${cssWrapper}" ontouchstart="this.classList.toggle('hover');"><%----%>
+<div class="element imageflip h-${flipTitle}${' '}${tileCss}${' '}${flipColor}${' '}${cssWrapper}${' '}${effect}" ontouchstart="this.classList.toggle('hover');"><%----%>
     <mercury:padding-box ratio="${ratio}" cssWrapper="flipper">
         ${showTextFirst ? textSide : imageSide}
         <c:if test="${not doNotFlip}">

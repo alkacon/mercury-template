@@ -34,6 +34,9 @@
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[flipTitle.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.imageflip]]></IncludeName>
     </Setting>
     <Setting>

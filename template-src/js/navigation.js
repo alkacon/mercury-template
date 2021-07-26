@@ -568,8 +568,9 @@ function initClickmeShowme() {
 // auto-scroll to an opened accordion tab
 function initAccordionScroll() {
     jQ('.type-tab.variant-accordion article.accordion').on('shown.bs.collapse', function() {
-        if (! $(this).closest('.type-tab.variant-accordion').find('.acco-header').visible()) {
-            scrollToAnchor($(this).closest('.type-tab.variant-accordion'), -5);
+        var $tab = $(this).closest('article.accordion').find('.acco-header');
+        if (! $tab.visible()) {
+            scrollToAnchor($tab, -5);
         }
     })
 }

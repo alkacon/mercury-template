@@ -78,10 +78,18 @@
 
 .tab-pane > div > .row-12,
 .tab-pane > div > .row {
-    // remove bottom margin that was added be the elements in the row from last row in nested tabs
-    // because the tab itself also adds a bottom margin
+    // tabs that have a nested container row first:
+    // remove bottom margin that was added by the elements on a page from last row in nested tabs
+    // using a negative margin
     &:last-child {
          margin-bottom: -1 * $default-margin;
+    }
+}
+.tab-pane > div > .element {
+    // tabs that directly contain elements:
+    // remove bottom margin from the last element in the tab
+    &:last-child {
+         margin-bottom: 0;
     }
 }
 

@@ -689,10 +689,23 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[containerType.default]]></IncludeName>
+      <IncludeName><![CDATA[containerType.tab]]></IncludeName>
       <PropertyName><![CDATA[containerType]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.containerType)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.containerType.help)]]></Description>
+      <DisplayName><![CDATA[%(key.msg.setting.containerType.tab)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.containerType.tab.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[element]]></Default>
+      <WidgetConfig><![CDATA[
+            element:            %(key.msg.setting.containerType.element)|
+            row:                %(key.msg.setting.containerType.row)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[containerType.detail]]></IncludeName>
+      <PropertyName><![CDATA[containerType]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.containerType.attachments)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.containerType.attachments.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[element]]></Default>

@@ -58,6 +58,9 @@
       <IncludeName><![CDATA[performerOption.detail]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[containerType.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>

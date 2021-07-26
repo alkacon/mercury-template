@@ -85,10 +85,11 @@
                                 title="${msg}"
                                 name="${tabContainerName}"
                                 hideName="${true}"
+                                hideParentType="${true}"
                                 type="${containerType}"
                             />
-
                             <mercury:nl />
+
                         </div><%----%>
                         <mercury:nl />
 
@@ -106,6 +107,7 @@
                 title="${msg}"
                 name="${content.valueList.TabEntry[0].value.Id}"
                 hideName="${true}"
+                hideParentType="${true}"
                 type="${containerType}"
             />
             <mercury:nl />

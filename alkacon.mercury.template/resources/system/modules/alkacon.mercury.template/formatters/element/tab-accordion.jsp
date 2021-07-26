@@ -77,6 +77,7 @@
                             title="${msg}"
                             name="${tabContainerName}"
                             hideName="${true}"
+                            hideParentType="${true}"
                             type="${containerType}"
                         />
 

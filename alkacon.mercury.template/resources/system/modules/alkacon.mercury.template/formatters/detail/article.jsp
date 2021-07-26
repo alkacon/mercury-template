@@ -27,6 +27,7 @@
 <c:set var="visualEffect"           value="${setting.effect.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
+<c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
@@ -139,7 +140,7 @@
 
 </c:if>
 
-<mercury:container-attachment content="${content}" name="attachments" />
+<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
 <mercury:data-article content="${content}" />
 
 </div><%----%>

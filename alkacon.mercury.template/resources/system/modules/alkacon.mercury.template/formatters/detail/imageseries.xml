@@ -50,6 +50,9 @@
       <IncludeName><![CDATA[titleOption.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[containerType.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showPreface.true]]></IncludeName>
     </Setting>
     <Setting>

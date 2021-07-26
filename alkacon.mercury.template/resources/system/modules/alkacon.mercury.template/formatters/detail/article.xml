@@ -51,6 +51,9 @@
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[containerType.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>

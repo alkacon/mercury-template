@@ -26,7 +26,8 @@
 <c:set var="imageSeriesSortOrder"   value="${setting.imageSeriesSortOrder.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="titleOption"            value="${setting.titleOption.toString}" />
-<c:set var="pageSize"               value="${empty setting.pageSize.toInteger ? 12 : setting.pageSize.toInteger}" />
+<c:set var="pageSize"               value="${setting.pageSize.useDefault('12').toInteger}" />
+<c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 <c:set var="showImageTitle"         value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageCount"         value="${setting.showImageCount.toBoolean}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
@@ -299,7 +300,7 @@
 
 </c:choose>
 
-<mercury:container-attachment content="${content}" name="attachments" />
+<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
 
 </div><%----%>
 <mercury:nl />

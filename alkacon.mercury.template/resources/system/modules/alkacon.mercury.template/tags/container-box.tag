@@ -24,7 +24,11 @@
         description="The type of elements the container takes." %>
 
 <%@ attribute name="detailView" type="java.lang.Boolean" required="false"
-        description="A boolean that indicates if this is a detail container." %>
+        description="Indicates if this is a detail container. Default is 'false'." %>
+
+<%@ attribute name="hideParentType" type="java.lang.Boolean" required="false"
+        description="Indicates if the parent type is hidden in the generated container box.
+        Default is 'false'." %>
 
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
         description="Optional CSS classes to attach to the generated container div." %>
@@ -80,13 +84,18 @@
         </c:otherwise>
     </c:choose>
 
-    <c:if test="${not empty role}">
-      <c:set var="role" value="${fn:substringAfter(role, '.')}" />
-      <c:if test="${fn:startsWith(role, 'ELEMENT_')}">
-          <c:set var="role" value="${fn:substringAfter(role, '_')}" />
-      </c:if>
-      <c:set var="role" value="${fn:toLowerCase(role)}" />
-    </c:if>
+   <c:choose>
+        <c:when test="${not empty role}">
+          <c:set var="role" value="${fn:substringAfter(role, '.')}" />
+          <c:if test="${fn:startsWith(role, 'ELEMENT_')}">
+              <c:set var="role" value="${fn:substringAfter(role, '_')}" />
+          </c:if>
+          <c:set var="role" value="${fn:toLowerCase(role)}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="role" value="author" />
+        </c:otherwise>
+    </c:choose>
 
    <c:choose>
         <c:when test="${not empty cms.container.parentInstanceId}">
@@ -132,7 +141,7 @@
             <div class="main">${label}</div><%----%>
             <div class="small"><%----%>
                 <c:choose>
-                    <c:when test="${not empty cms.container.type}">
+                    <c:when test="${not hideParentType and not empty cms.container.type}">
                         <fmt:message key="msg.page.layout.infor">
                             <fmt:param><mercury:container-name type="${parentType}" /></fmt:param>
                             <fmt:param><mercury:container-name type="${type}" /></fmt:param>

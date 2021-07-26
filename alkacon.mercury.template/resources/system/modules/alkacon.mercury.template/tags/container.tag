@@ -53,6 +53,10 @@
         description="The heading displayed in the generated container box for an empty container.
         If not provided the default 'Empty container' will be used." %>
 
+<%@ attribute name="hideParentType" type="java.lang.Boolean" required="false"
+        description="Indicates if the parent type is hidden in the generated container box for an empty container.
+        Default is 'false'." %>
+
 <%@ attribute name="hideName" type="java.lang.Boolean" required="false"
         description="Controls if the container name is shown in the generated container box for an empty container.
         Default is 'false'." %>
@@ -94,6 +98,8 @@
                 boxType="detail-placeholder"
                 cssWrapper="attachment"
                 type="${type}"
+                emptyHeading="${emptyHeading}"
+                hideParentType="${hideParentType}"
             />
         </div>
     </c:when>
@@ -148,11 +154,13 @@
             <mercury:container-box
                 cssWrapper="${variant}"
                 label="${title}${not hideName and not empty name ? ' - '.concat(name) : ''}"
-                emptyHeading="${emptyHeading}"
                 boxType="container-box"
                 role="${role}"
                 type="${type}"
-                detailView="${detailView}" />
+                detailView="${detailView}"
+                emptyHeading="${emptyHeading}"
+                hideParentType="${hideParentType}"
+            />
 
         </cms:container>
     </c:when>

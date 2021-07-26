@@ -47,13 +47,13 @@
                     boxType="detail-placeholder"
                     cssWrapper="attachment"
                     type="${type}"
+                    hideParentType="${true}"
                 />
             </div><%----%>
             <mercury:nl />
         </c:when>
 
         <c:when test="${cms.detailRequest and isRequestToMatchingPage}">
-            <c:set var="role" value="${empty role ? 'ROLE.EDITOR' : role}" />
             <cms:container
                 name="${name}"
                 nameprefix="none"
@@ -69,6 +69,7 @@
                     role="${role}"
                     type="${type}"
                     detailView="false"
+                    hideParentType="${true}"
                 />
             </cms:container>
         </c:when>

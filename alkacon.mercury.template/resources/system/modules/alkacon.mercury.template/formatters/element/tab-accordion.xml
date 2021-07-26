@@ -34,7 +34,7 @@
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[containerType.default]]></IncludeName>
+      <IncludeName><![CDATA[containerType.tab]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[firstOpen.true]]></IncludeName>

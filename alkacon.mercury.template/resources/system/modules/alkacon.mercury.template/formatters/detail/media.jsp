@@ -24,6 +24,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="titleOption"            value="${setting.titleOption.toString}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
+<c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showMediaCopyright"     value="${setting.showMediaCopyright.toBoolean}" />
 <c:set var="autoPlay"               value="${setting.autoPlay.toBoolean}" />
@@ -116,7 +117,7 @@
 
 </mercury:piece>
 
-<mercury:container-attachment content="${content}" name="attachments" />
+<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
 
 </div><%----%>
 <mercury:nl />

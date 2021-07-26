@@ -707,7 +707,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.containerType.attachments)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.containerType.attachments.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[select]]></Widget>
+      <Widget><![CDATA[%(isDetailPage?select:hidden)]]></Widget>
       <Default><![CDATA[element]]></Default>
       <WidgetConfig><![CDATA[
             element:            %(key.msg.setting.containerType.element)|

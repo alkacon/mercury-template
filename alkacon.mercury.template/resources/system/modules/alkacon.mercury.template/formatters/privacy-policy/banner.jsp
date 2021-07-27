@@ -11,6 +11,8 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
+<cms:secureparams />
+
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">

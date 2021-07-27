@@ -10,8 +10,12 @@
 <cms:secureparams />
 
 <c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
+<c:set var="policyfile"><c:out value="${policyfile}"/></c:set>
+<%-- Note: XML escape the parameters again, since the transmission was base64 encoded so cms:secureparams has no effect --%>
 <c:set var="page"><mercury:obfuscate text="${param.page}" type="base64dec" /></c:set>
+<c:set var="page"><c:out value="${page}"/></c:set>
 <c:set var="siteRoot"><mercury:obfuscate text="${param.root}" type="base64dec" /></c:set>
+<c:set var="siteRoot"><c:out value="${siteRoot}"/></c:set>
 <c:set var="isMercury" value="${empty param.template or (param.template eq 'mercury')}" />
 
 <c:if test="${not empty policyfile and not empty siteRoot}">

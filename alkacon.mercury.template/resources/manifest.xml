@@ -7729,6 +7729,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/out.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/out.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>d5f1357a-efa1-11eb-993f-0242ac11002b</uuidstructure>
+			<uuidresource>d5f1357b-efa1-11eb-993f-0242ac11002b</uuidresource>
+			<datecreated>Wed, 28 Jul 2021 12:46:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Alternative to c:out with support for special chars]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/padding-box.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/padding-box.tag</destination>
 			<type>jsp</type>

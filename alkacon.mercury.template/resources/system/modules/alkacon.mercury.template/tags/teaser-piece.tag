@@ -178,9 +178,9 @@
 
 <c:if test="${not empty headline or not empty intro}">
     <c:set var="linkTitle">
-        <c:out value="${intro}" />
+        <mercury:out value="${intro}" />
         ${not empty intro ? ': ' : ''}
-        <c:out value="${headline}" />
+        <mercury:out value="${headline}" />
     </c:set>
 </c:if>
 

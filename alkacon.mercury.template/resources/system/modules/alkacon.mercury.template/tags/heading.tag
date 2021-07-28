@@ -72,7 +72,7 @@
                     <jsp:invoke fragment="markupText" />
                 </c:when>
                 <c:when test="${not empty text}">
-                    <c:out value="${text}" escapeXml="${escapeXml}" />
+                    <mercury:out value="${text}" escapeXml="${escapeXml}" />
                 </c:when>
             </c:choose>
             ${suffix}

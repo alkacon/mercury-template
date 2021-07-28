@@ -54,7 +54,7 @@
                 <span class="intro"><%----%>
                     <c:set var="adeIntro" value="${ade and cms:isWrapper(intro)}" />
                     ${adeIntro ? '<span '.concat(intro.rdfaAttr).concat('>') : ''}
-                        <c:out value="${intro}" />
+                        <mercury:out value="${intro}" />
                     ${adeIntro ? '</span>' : ''}
                     <span class="sr-only">:</span><%----%>
                 </span><%----%>
@@ -64,7 +64,7 @@
                     <c:set var="adeHeadline" value="${ade and cms:isWrapper(headline)}" />
                     ${prefix}
                     ${adeHeadline ? '<span '.concat(headline.rdfaAttr).concat('>') : ''}
-                        <c:out value="${headline}" />
+                        <mercury:out value="${headline}" />
                     ${adeHeadline ? '</span>' : ''}
                     ${suffix}
                 </span><%----%>

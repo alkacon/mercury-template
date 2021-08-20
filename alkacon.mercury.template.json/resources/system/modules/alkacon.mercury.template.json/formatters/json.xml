@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[JSON: %(key.type.m-section.formatter.text-image)]]></NiceName>
+    <Type><![CDATA[m-section]]></Type>
+    <Key><![CDATA[m/section/json]]></Key>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/content-section.jsp]]></target>
+        <uuid>affdb581-e6fe-47fd-a455-915f7a3b44ec</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[10000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[content-section]]></ContainerType>
+        <ContainerType><![CDATA[text-image]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <PropertyName><![CDATA[pieceLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[6]]></Default>
+      <WidgetConfig><![CDATA[
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[hsize]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.element)]]></DisplayName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[2]]></Default>
+      <WidgetConfig><![CDATA[
+            1:  %(key.msg.setting.hsize.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)|
+            0:  %(key.msg.setting.hsize.hidden)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[textOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textOption)]]></DisplayName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+            default:            %(key.msg.option.show)|
+            none:               %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[button]]></Default>
+      <WidgetConfig><![CDATA[
+            button:         %(key.msg.option.show)|
+            none:           %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[visualOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption)]]></DisplayName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[99]]></Default>
+      <WidgetConfig><![CDATA[
+            99:     %(key.msg.option.show)|
+            0:      %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

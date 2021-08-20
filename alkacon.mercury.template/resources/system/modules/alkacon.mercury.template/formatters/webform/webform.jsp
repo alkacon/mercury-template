@@ -18,7 +18,7 @@
 <cms:formatter var="content">
 <div class="element type-webform ${cms.element.settings.cssWrapper}">
 
-    <c:set var="formId" value="${cms.element.id}" />
+    <c:set var="formId" value="${cms.element.id.stringValue}" />
     <c:set var="fid" value="${formId.hashCode()}" />
 
     <c:choose>

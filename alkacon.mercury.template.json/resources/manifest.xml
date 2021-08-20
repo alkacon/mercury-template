@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.3</version>
+		<version>11.0.1.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -70,7 +70,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[page]]></value>
+					<value><![CDATA[Redirect to first page in navigation]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Content Folder Request]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The Mercury demo content types can be accessed via the <em>/.content/</em> folder.</p>
+<pre>GET /json/sites/default/mercury-demo/.content/
+{
+  "article-m": {},
+  "contact-m": {},
+  "decoy-m": {},
+  "event-m": {},
+  "faq-m": {},
+  "flexible-m": {},
+  "imageseries-m": {},
+  "job-m": {},
+  "layout-row-custom-m": {},
+  "linksequence-m": {},
+  "list-m": {},
+  "map-m": {},
+  "section-m": {},
+  ...
+}
+</pre>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[/json/sites/default/mercury-demo/.content/]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/]]></query>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

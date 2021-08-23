@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Article Content Request]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>For example, the contents of the first blog article can be accessed with the <em>a_00001.xml</em> file.</p>
+<pre>{
+  "Author": "Jay Pritchett",
+  "Availability": {},
+  "Category": [
+    "location/",
+    "location/antarctica/",
+    "topic/",
+    "topic/machines/"
+  ],
+  "Date": 1546966800000,
+  "Intro": "Users use it quick",
+  "Paragraph": [
+    {
+      "Caption": "You already know this",
+      "Image": {
+        "Image": {
+          "link": "/.galleries/office/02.jpg",
+          "path": "/sites/default/.galleries/office/02.jpg"
+        }
+      },
+      "Text": "&lt;p&gt;At vero eos et accusamus et ...&lt;/p&gt;"
+    }
+  ],
+  "Title": "OpenCms is intuitive"
+}</pre>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[/json/sites/default/mercury-demo/.content/article-m/a_00001.xml]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/article-m/a_00001.xml]]></query>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

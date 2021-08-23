@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Demo 2: Dynamic Lists]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://reactjs.org/]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>The second JSON demo is a <a title="React" href="%(link0)" target="_blank" rel="noopener">React</a> application using the [OpenCms JSON API]. It renders content lists preconfigured by editors along with dynamic list options.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

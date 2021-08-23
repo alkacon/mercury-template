@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[FAQ Content Request]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>As another example, the contents of the first FAQ content can be accessed by means of the faq_00001.xml file.</p>
+<pre>{
+  "Category": [
+    "faq/",
+    "faq/silly/"
+  ],
+  "Date": 1577003400000,
+  "GalleryTitle": "%(value:Question)",
+  "Order": "950",
+  "Paragraph": [
+    {
+      "Caption": "No. But iOs does.",
+      "Image": {
+        "Copyright": "CC0 Public Domain / Pixabay.com",
+        "Image": {
+          "link": "/.galleries/samples/53.jpg",
+          "path": "/sites/default/.galleries/samples/53.jpg"
+        }
+      },
+      "Text": "&lt;p&gt;Nam quam nunc ...&lt;/p&gt;"
+    }
+	],
+  "Question": "Do androids dream of electric sheep?"
+}</pre>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[/json/sites/default/mercury-demo/.content/faq-m/faq_00001.xml]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/faq-m/faq_00001.xml]]></query>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

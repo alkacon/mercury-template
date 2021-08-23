@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Endpoint Request]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>/json/ is the root path of the JSON API endpoint, where all JSON contents of an OpenCms installation live.</p>
+<pre>GET /json/
+{
+  "shared": {},
+  "sites": {},
+  "system": {}
+}</pre>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[/json/]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/mercury-json/demo-3/sample-app/static/css/main.ad794a44.chunk.css",
+    "main.js": "/mercury-json/demo-3/sample-app/static/js/main.6906f6b8.chunk.js",
+    "main.js.map": "/mercury-json/demo-3/sample-app/static/js/main.6906f6b8.chunk.js.map",
+    "runtime-main.js": "/mercury-json/demo-3/sample-app/static/js/runtime-main.19bd7348.js",
+    "runtime-main.js.map": "/mercury-json/demo-3/sample-app/static/js/runtime-main.19bd7348.js.map",
+    "static/js/2.249247bd.chunk.js": "/mercury-json/demo-3/sample-app/static/js/2.249247bd.chunk.js",
+    "static/js/2.249247bd.chunk.js.map": "/mercury-json/demo-3/sample-app/static/js/2.249247bd.chunk.js.map",
+    "index.html": "/mercury-json/demo-3/sample-app/index.html",
+    "static/css/main.ad794a44.chunk.css.map": "/mercury-json/demo-3/sample-app/static/css/main.ad794a44.chunk.css.map",
+    "static/js/2.249247bd.chunk.js.LICENSE.txt": "/mercury-json/demo-3/sample-app/static/js/2.249247bd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19bd7348.js",
+    "static/js/2.249247bd.chunk.js",
+    "static/css/main.ad794a44.chunk.css",
+    "static/js/main.6906f6b8.chunk.js"
+  ]
+}

@@ -7,10 +7,11 @@
       <Text><![CDATA[Try the Demo 1 React Application]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/demo-1/sample-app/]]></target>
+          <uuid>14df8005-04eb-11ec-a6af-0242ac11002b</uuid>
         </link>
       </URI>
+      <NewWindow>true</NewWindow>
     </LinkEntry>
     <LinkEntry>
       <Text><![CDATA[Source Code of the Demo 1 React Application]]></Text>

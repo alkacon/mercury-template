@@ -5,11 +5,12 @@
     <Title><![CDATA[Demo 2: Dynamic Lists]]></Title>
     <Text name="Text0">
       <links>
-        <link name="link0" internal="false" type="A">
-          <target><![CDATA[https://reactjs.org/]]></target>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-2/sample-app/]]></target>
+          <uuid>409d7099-04ee-11ec-9857-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>The second JSON demo is a <a title="React" href="%(link0)" target="_blank" rel="noopener">React</a> application using the [OpenCms JSON API]. It renders dynamic content lists preconfigured by editors.</p>]]></content>
+      <content><![CDATA[<p>The second JSON demo is a <a title="React application" href="%(link0)" target="_blank" rel="noopener">React application</a>&nbsp;using the [OpenCms JSON API]. It renders dynamic content lists preconfigured by editors.</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Read more]]></Text>

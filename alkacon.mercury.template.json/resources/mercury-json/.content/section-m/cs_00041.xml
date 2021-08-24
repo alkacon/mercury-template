@@ -85,6 +85,7 @@
           <query><![CDATA[uri=/json/sites/default/mercury-json/.content/list-m/list_00001.xml]]></query>
         </link>
       </URI>
+      <NewWindow>true</NewWindow>
     </Link>
   </ContentSection>
 </ContentSectionData>

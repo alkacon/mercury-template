@@ -26,8 +26,9 @@
       <Text><![CDATA[/json/]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/]]></query>
         </link>
       </URI>
       <NewWindow>true</NewWindow>

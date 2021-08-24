@@ -30,6 +30,7 @@
           <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/faq-m/]]></query>
         </link>
       </URI>
+      <NewWindow>true</NewWindow>
     </Link>
   </ContentSection>
 </ContentSectionData>

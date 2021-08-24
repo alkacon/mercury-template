@@ -41,6 +41,7 @@
           <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/article-m/a_00001.xml]]></query>
         </link>
       </URI>
+      <NewWindow>true</NewWindow>
     </Link>
   </ContentSection>
 </ContentSectionData>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Page Request]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Element settings are rendered by the page handler of the JSON API. See the JSON properties <em>settings.hsize</em>, <em>settings.linkOption</em>, <em>settings.pieceLayout</em>, and so on.</p>
+<pre>GET /json/sites/default/mercury-json/demo-3/sample-page/index.html
+{
+  "containers": [
+    {
+      "elements": [
+        {
+          "containers": [],
+          "formatterKey": "m/section/json",
+          "path": "/sites/default/mercury-json/.content/section-m/cs_00002.xml",
+          "settings": {
+            "hsize": "2",
+            "linkOption": "button",
+            "pieceLayout": "6",
+            "textOption": "default",
+            "visualOption": "99"
+          }
+        },
+        {
+          "containers": [],
+          "formatterKey": "m/section/json",
+          "path": "/sites/default/mercury-json/.content/section-m/cs_00002.xml",
+          "settings": {
+            "hsize": "2",
+            "linkOption": "button",
+            "pieceLayout": "7",
+            "textOption": "default",
+            "visualOption": "99"
+          }
+        },
+  ...
+}
+</pre>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[/json/sites/default/mercury-json/demo-3/sample-page/index.html]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-json/demo-3/sample-page/index.html]]></query>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

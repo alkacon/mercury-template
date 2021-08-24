@@ -2,6 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Locale Handling]]></Title>
+    <Title><![CDATA[Demo 3 Sample Page]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The sections below are used by the demo 3 React application to demonstrate content formatting.</p>]]></content>
+    </Text>
   </ContentSection>
 </ContentSectionData>

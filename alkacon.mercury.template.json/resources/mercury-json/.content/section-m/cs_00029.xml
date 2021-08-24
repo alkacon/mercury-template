@@ -4,12 +4,25 @@
   <ContentSection language="en">
     <Title><![CDATA[Features]]></Title>
     <Text name="Text0">
-      <links/>
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/]]></target>
+        </link>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/]]></target>
+        </link>
+      </links>
       <content><![CDATA[<p>The JSON API currently supports four handlers, a folder handler, a content handler, a list handler, and a page handler.</p>
-<p><strong>Folder Handler</strong>. A handler to explore and display all contents available in an OpenCms installation. The folder handler allows to navigate the complete multi-site and multi-lingual tree of a website in any depth. On each level of the tree it informs about properties, attributes, and categories attached to a content resource.</p>
-<p><strong>Content Handler</strong>. A handler to create detail views for individual contents. The content handler provides utility features such as a fallback locale mechanism for unavailable content locales and an expansion mechanism for linked contents.</p>
-<p><strong>List Handler</strong>. Editors with OpenCms can create preconfigured content lists that collect items of a content type - or even mixed content types - taking into account various list options such as category filtering and sort options. The list handler allows to display such preconfigured lists with the possibility to dynamically change list options by means of request parameters.</p>
-<p><strong>Page Handler</strong>. A handler to present a content pages in the arrangement intended by the editor when the page was created. The page handler provides detailed formatting information for individual contents and content parts.</p>]]></content>
+<p><a href="%(link0)"><strong>Folder Handler</strong></a>. A handler to explore and display all public contents available in an OpenCms installation. The folder handler allows to navigate the complete multi-site and multi-lingual tree of a website in any depth. On each level of the tree it informs about properties, attributes, and categories attached to a content resource.</p>
+<p><a href="%(link1)"><strong>Content Handler</strong></a>. A handler to create detail views for individual contents. The content handler provides utility features for locales and linked contents.</p>
+<p><a href="%(link2)"><strong>List Handler</strong></a>. Editors with OpenCms can create preconfigured content lists that collect items of a content type - or even mixed content types - taking into account various list options such as category filtering and sort options. The list handler allows to display such preconfigured lists with the possibility to dynamically change list options by means of request parameters.</p>
+<p><a href="%(link3)"><strong>Page Handler</strong></a>. A handler to present content pages in the arrangement intended by the editor when a page was created. The page handler provides detailed formatting information for individual contents and content parts.</p>]]></content>
     </Text>
     <Image>
       <Image>

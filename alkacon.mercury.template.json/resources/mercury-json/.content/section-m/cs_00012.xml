@@ -23,6 +23,15 @@
   ..
 }</pre>]]></content>
     </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/mercury-demo-folder.png]]></target>
+          <uuid>d58b6236-04c6-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Mercury Demo Folder]]></Title>
+    </Image>
     <Link>
       <Text><![CDATA[/json/sites/default/mercury-demo/]]></Text>
       <URI>

@@ -2,7 +2,7 @@
 
 <LinkSequenceData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/linksequence.xsd">
   <LinkSequence language="en">
-    <Title><![CDATA[New link sequence]]></Title>
+    <Title><![CDATA[Further Reading]]></Title>
     <LinkEntry>
       <Text><![CDATA[Try the Demo 1 React Application]]></Text>
       <URI>

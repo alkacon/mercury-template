@@ -4,23 +4,23 @@
   <LinkSequence language="en">
     <Title><![CDATA[Further Reading]]></Title>
     <LinkEntry>
-      <Text><![CDATA[Source Code of the Mercury JSON Demos]]></Text>
-      <URI>
-        <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/introduction/]]></target>
-          <uuid>2c94a951-041f-11ec-a85e-0242ac11002b</uuid>
-        </link>
-      </URI>
-    </LinkEntry>
-    <LinkEntry>
       <Text><![CDATA[Documentation of the OpenCms JSON API]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/introduction/]]></target>
-          <uuid>2c94a951-041f-11ec-a85e-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/]]></target>
+          <uuid>aab03c68-00e5-11ec-8018-0242ac11002b</uuid>
         </link>
       </URI>
       <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[Source Code of the Mercury JSON Demos]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/]]></target>
+          <uuid>aab03c68-00e5-11ec-8018-0242ac11002b</uuid>
+        </link>
+      </URI>
     </LinkEntry>
   </LinkSequence>
 </LinkSequenceData>

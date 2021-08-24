@@ -6,7 +6,7 @@
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>The Mercury demo content types can be accessed via the <em>/.content/</em> folder.</p>
-<pre>GET /json/sites/default/mercury-demo/.content/
+<pre>GET /json/.../mercury-demo/.content/
 {
   "article-m": {},
   "contact-m": {},
@@ -25,6 +25,15 @@
 }
 </pre>]]></content>
     </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/content-folder.png]]></target>
+          <uuid>54b1473f-04c7-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Content Folder]]></Title>
+    </Image>
     <Link>
       <Text><![CDATA[/json/sites/default/mercury-demo/.content/]]></Text>
       <URI>

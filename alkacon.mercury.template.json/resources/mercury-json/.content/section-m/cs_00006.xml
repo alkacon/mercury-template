@@ -9,7 +9,16 @@
           <target><![CDATA[https://reactjs.org/]]></target>
         </link>
       </links>
-      <content><![CDATA[<p>The first JSON demo is a <a title="React" href="%(link0)" target="_blank" rel="noopener">React</a> application using the [OpenCms JSON API]. It renders list and detail views for blog articles and FAQ entries in different languages.</p>]]></content>
+      <content><![CDATA[<p>The first JSON demo is a <a title="React" href="%(link0)" target="_blank" rel="noopener">React</a> application using the [OpenCms JSON API]. It renders folder listings and detail views for blog articles and FAQ entries in different languages.</p>]]></content>
     </Text>
+    <Link>
+      <Text><![CDATA[Read more]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
   </ContentSection>
 </ContentSectionData>

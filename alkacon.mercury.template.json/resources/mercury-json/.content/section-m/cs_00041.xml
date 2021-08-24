@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[List Request]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>The list handler of JSON API renders the list configuration together with the list results.</p>
+<pre>GET /json/sites/default/mercury-json/.content/list-m/list_00001.xml
+{
+  "Blacklist": [],
+  "Category": "",
+  "CategoryFolderFilter": [],
+  "CategoryMode": "OR",
+  "Parameter": [],
+  "SearchFolder": [
+    {
+      "link": "/mercury-demo/.content/",
+      "path": "/sites/default/mercury-demo/.content/"
+    }
+  ],
+  "SortOrder": "DATE_ASC",
+  "Title": "Demo 2: Sample List",
+  "TypesToCollect": [
+    "m-article:m/display/article-elaborate",
+    "m-contact:m/display/contact-elaborate"
+  ],
+  "linkedContents": {},
+  "list": [
+    {
+      "Category": [
+        "topic/",
+        "topic/people/"
+      ],
+      "Contact": {
+        "AddressChoice": {
+          "Address": {
+            "Locality": "Düsseldorf",
+            "PostalCode": "40545",
+            "StreetAddress": "Bolkerstraße 43 - 47"
+          }
+        },
+        "Email": {
+          "Email": "claire.dunphy@example.org",
+          "ObfuscateEmail": false
+        },
+        "Mobile": "+49 (160) 123-4567",
+        "Phone": "+49 (211) 123-4567"
+      },
+      "Image": {
+        "Image": {
+          "link": "/.galleries/people/23.jpg",
+          "path": "/sites/default/.galleries/people/23.jpg"
+        }
+      },
+      "Kind": "person",
+      "Link": {
+        "Text": "Team overview",
+        "URI": {
+          "link": "/mercury-demo/the-team/",
+          "path": "/sites/default/mercury-demo/the-team/"
+        }
+      },
+      "Name": {
+        "FirstName": "Claire",
+        "LastName": "Dunphy"
+      },
+      "Order": "222",
+      "Organization": "Critical Coders Corp.",
+      "Position": "Director HR",
+      "linkedContents": {}
+    }
+  ],
+  "listInfo": {
+    "numFound": 30
+  }
+}</pre>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[/json/sites/default/mercury-json/.content/list-m/list_00001.xml]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-json/.content/list-m/list_00001.xml]]></query>
+        </link>
+      </URI>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

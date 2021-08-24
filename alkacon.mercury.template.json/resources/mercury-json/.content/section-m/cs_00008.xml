@@ -5,7 +5,7 @@
     <Title><![CDATA[Detail View]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The application uses the [content handler] to realize detail views for articles and FAQ entries.</p>]]></content>
+      <content><![CDATA[<p>The application uses the [content handler] to realize detail views for articles and FAQ entries. A language select box is available to switch between the english and german version of blog articles and FAQ entries.</p>]]></content>
     </Text>
     <Image>
       <Image>

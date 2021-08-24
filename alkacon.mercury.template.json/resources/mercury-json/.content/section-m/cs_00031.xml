@@ -2,10 +2,23 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demo 3: Pages & Formatting]]></Title>
+    <Title><![CDATA[Demo 3: Page Formatting]]></Title>
     <Text name="Text0">
-      <links/>
-      <content><![CDATA[<p>The third JSON demo is a React application using the [OpenCms JSON API] that renders content pages with formattings configured by editors.&nbsp;</p>]]></content>
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://reactjs.org/]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>The third JSON demo is a <a title="React" href="%(link0)" target="_blank" rel="noopener">React</a> application using the [OpenCms JSON API]. It renders content pages with formattings configured by editors.&nbsp;</p>]]></content>
     </Text>
+    <Link>
+      <Text><![CDATA[Read more]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/demo-3/]]></target>
+          <uuid>f7682130-00e5-11ec-8018-0242ac11002b</uuid>
+        </link>
+      </URI>
+    </Link>
   </ContentSection>
 </ContentSectionData>

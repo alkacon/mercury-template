@@ -13,6 +13,15 @@
   "system": {}
 }</pre>]]></content>
     </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/root-folder.png]]></target>
+          <uuid>fe61e6bf-04c5-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Root Folder]]></Title>
+    </Image>
     <Link>
       <Text><![CDATA[/json/]]></Text>
       <URI>

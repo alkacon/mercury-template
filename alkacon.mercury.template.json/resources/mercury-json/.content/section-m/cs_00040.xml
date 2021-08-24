@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[The List Configuration]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Demo 2 uses a list configuration with two content types, article and contact. No category filter is selected and the default sort oder is by date ascending.</p>]]></content>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/list-configuration.png]]></target>
+          <uuid>7518f877-04c2-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[List Configuration]]></Title>
+    </Image>
+  </ContentSection>
+</ContentSectionData>

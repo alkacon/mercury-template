@@ -2,10 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Content Requests]]></Title>
+    <Title><![CDATA[The Content API Requests]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The following two content requests are the requests the React application uses to generate the detail views for articles and FAQ entries. Click on the links to see the JSON API in action.</p>]]></content>
+      <content><![CDATA[<p>The following two content requests uses the React application to generate the detail views for articles and FAQ entries. Click on the links to see the JSON API in action.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

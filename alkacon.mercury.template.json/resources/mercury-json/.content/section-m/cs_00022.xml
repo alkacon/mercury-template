@@ -5,7 +5,7 @@
     <Title><![CDATA[FAQ Content Request]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>As another example, the contents of the first FAQ content can be accessed by means of the faq_00001.xml file.</p>
+      <content><![CDATA[<p>As another example, the JSON of the first FAQ content can be accessed by means of the faq_00001.xml file.</p>
 <pre>{
   "Category": [
     "faq/",

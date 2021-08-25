@@ -5,7 +5,7 @@
     <Title><![CDATA[The List View]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The demo 2 React application renders a list view with two interactive components: a select box for sorting and a button to show more results.</p>]]></content>
+      <content><![CDATA[<p>The application uses the [list handler] to render a list view with two interactive components: a select box for sorting and a button to show more results.</p>]]></content>
     </Text>
     <Image>
       <Image>

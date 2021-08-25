@@ -10,7 +10,7 @@
           <uuid>409d7099-04ee-11ec-9857-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>The second JSON demo is a <a title="React application" href="%(link0)" target="_blank" rel="noopener">React application</a>&nbsp;using the [OpenCms JSON API]. It renders dynamic content lists preconfigured by editors.</p>]]></content>
+      <content><![CDATA[<p>The second JSON demo is a <a title="React application" href="%(link0)" target="_blank" rel="noopener">React application</a> that renders dynamic content lists preconfigured by editors.</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Read more]]></Text>

@@ -3,9 +3,5 @@
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
     <Title><![CDATA[The API Request]]></Title>
-    <Text name="Text0">
-      <links/>
-      <content><![CDATA[<p>The following list request uses the React application to generate the list view. Click on the link to see the JSON API in action.</p>]]></content>
-    </Text>
   </ContentSection>
 </ContentSectionData>

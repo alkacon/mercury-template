@@ -4,8 +4,12 @@
   <ContentSection language="en">
     <Title><![CDATA[The List Configuration]]></Title>
     <Text name="Text0">
-      <links/>
-      <content><![CDATA[<p>Demo 2 uses a list configuration with two content types, article and contact. No category filter is selected and the default sort oder is by date ascending.</p>]]></content>
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/content-in-opencms/lists-and-detail-pages/building-lists/lists-with-the-integrated-list-type/index.html]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>The <a title="List Configuration" href="%(link0)" target="_blank" rel="noopener">list configuration</a> collects two content types, articles and contacts. No category filter is selected and the default sort oder is by date ascending.</p>]]></content>
     </Text>
     <Image>
       <Image>

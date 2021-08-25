@@ -5,7 +5,7 @@
     <Title><![CDATA[FAQ Folder Request]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>FAQ items can be listed by accessing the <em>/faq-m/</em> folder.</p>
+      <content><![CDATA[<p>FAQ items are listed by accessing the <em>/faq-m/</em> folder.</p>
 <pre>GET /json/sites/default/mercury-demo/.content/faq-m/
 {
   "faq_00001.xml": {},

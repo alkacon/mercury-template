@@ -5,7 +5,7 @@
     <Title><![CDATA[Article Content Request]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>For example, the JSON of the first blog article can be accessed with the <em>a_00001.xml</em> file.</p>
+      <content><![CDATA[<p>The JSON of the first blog article is accessed with the <em>a_00001.xml</em> file.</p>
 <pre>{
   "Author": "Jay Pritchett",
   "Availability": {},

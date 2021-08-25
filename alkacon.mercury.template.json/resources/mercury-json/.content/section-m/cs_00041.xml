@@ -5,7 +5,7 @@
     <Title><![CDATA[List Request]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The list handler of JSON API renders the list configuration together with the list results.</p>
+      <content><![CDATA[<p>The list handler of the JSON API renders the list configuration together with the list results.</p>
 <pre>GET /json/sites/default/mercury-json/.content/list-m/list_00001.xml
 {
   "Blacklist": [],

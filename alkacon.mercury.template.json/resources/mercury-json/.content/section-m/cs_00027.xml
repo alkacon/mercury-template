@@ -5,7 +5,7 @@
     <Title><![CDATA[Article Folder Request]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Blog articles can be listed by accessing the <em>/article-m/</em> folder.</p>
+      <content><![CDATA[<p>Blog articles are listed by accessing the <em>/article-m/</em> folder.</p>
 <pre>GET /json/sites/default/mercury-demo/.content/article-m/<br />{
   "a_00001.xml": {},
   "a_00002.xml": {},

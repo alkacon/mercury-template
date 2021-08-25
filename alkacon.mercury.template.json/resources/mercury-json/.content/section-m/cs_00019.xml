@@ -5,7 +5,7 @@
     <Title><![CDATA[The Folder API Requests]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The following two folder requests uses the React application to generate the list views for articles and FAQ entries. Click on the links to see the JSON API in action.</p>]]></content>
+      <content><![CDATA[<p>The following two folder requests generate the list views for articles and FAQ entries. Click on the links to see the JSON API in action.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

@@ -5,7 +5,7 @@
     <Title><![CDATA[Content Formatting]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Demo 3 uses a settings configuration optimized for the JSON API. The display of the text, title, image, and link of a section content can be changed along with the image position.</p>]]></content>
+      <content><![CDATA[<p>The element settings are optimized for the JSON API. The display of the text, title, image, and link of a section content can be changed along with the image position.</p>]]></content>
     </Text>
     <Image>
       <Image>

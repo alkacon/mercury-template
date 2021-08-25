@@ -5,7 +5,7 @@
     <Title><![CDATA[Folder Listing View]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The application uses the [folder handler] of the JSON API to list all articles and FAQ entries available in this Mercury site. A language select box is available to switch between the english and german version of blog articles and FAQ entries.</p>]]></content>
+      <content><![CDATA[<p>The application uses the [folder handler] of the JSON API to list all articles and FAQ entries available in the Mercury site. A language select box is available to switch between the english and german version of blog articles and FAQ entries.</p>]]></content>
     </Text>
     <Image>
       <Image>

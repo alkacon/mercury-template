@@ -2,15 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demo 1: Multi-Lingual Content]]></Title>
+    <Title><![CDATA[Demo 1: Content Rendering]]></Title>
     <Text name="Text0">
-      <links>
-        <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/sample-app/]]></target>
-          <uuid>14df8005-04eb-11ec-a6af-0242ac11002b</uuid>
-        </link>
-      </links>
-      <content><![CDATA[<p>The first JSON demo is a <a title="React application" href="%(link0)" target="_blank" rel="noopener">React application</a> that renders folder listings and detail views for blog articles and FAQ entries in different languages.</p>]]></content>
+      <links/>
+      <content><![CDATA[<p>Renders folder listings and detail views for blog articles and FAQ entries.</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Read more]]></Text>

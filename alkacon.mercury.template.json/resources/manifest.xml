@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.12</version>
+		<version>11.0.1.13</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -412,7 +412,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Multi-Lingual Content]]></value>
+					<value><![CDATA[Demo 1: Content Rendering]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -429,7 +429,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Multi-Lingual Content: Folder Listing View]]></value>
+					<value><![CDATA[Demo 1: Content Rendering: Folder Listing View]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1027,11 +1027,11 @@
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Demo 1: Multi-Lingual Content]]></value>
+					<value><![CDATA[Demo 1: Content Rendering]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Multi-Lingual Content]]></value>
+					<value><![CDATA[Demo 1: Content Rendering]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1048,7 +1048,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Multi-Lingual Content]]></value>
+					<value><![CDATA[Demo 1: Content Rendering]]></value>
 				</property>
 			</properties>
 			<relations/>

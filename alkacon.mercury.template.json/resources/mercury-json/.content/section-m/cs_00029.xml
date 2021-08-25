@@ -24,15 +24,5 @@
 <p><a href="%(link2)"><strong>List Handler</strong></a>. Editors with OpenCms can create preconfigured content lists that collect items of a content type - or mixed content types - taking into account various list options such as category filtering and sorting. The list handler allows to display such preconfigured lists with the possibility to dynamically change list options by means of request parameters.</p>
 <p><a href="%(link3)"><strong>Page Handler</strong></a>. A handler to present content pages in the arrangement intended by the editor when a page was created. The page handler provides detailed formatting information for individual contents and content parts.</p>]]></content>
     </Text>
-    <Image>
-      <Image>
-        <link type="WEAK">
-          <target><![CDATA[/sites/default/.galleries/cliparts/13.png]]></target>
-          <uuid>f007299b-3a95-11e9-bd84-0242ac11002b</uuid>
-        </link>
-      </Image>
-      <Title><![CDATA[Gift box]]></Title>
-      <Copyright><![CDATA[CC0 Public Domain / openclipart.org]]></Copyright>
-    </Image>
   </ContentSection>
 </ContentSectionData>

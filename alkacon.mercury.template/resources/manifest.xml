@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.401</version>
+		<version>11.0.1.402</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -353,6 +353,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[PDF-Template for blog entries]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/elements/calendar.ics</source>
+			<destination>system/modules/alkacon.mercury.template/elements/calendar.ics</destination>
+			<type>jsp</type>
+			<uuidstructure>10c7aa0d-03e4-11ec-964a-0242ac11002b</uuidstructure>
+			<uuidresource>10c7aa0e-03e4-11ec-964a-0242ac11002b</uuidresource>
+			<datecreated>Mon, 23 Aug 2021 07:31:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[iCalendar output for events]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4211,6 +4232,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/section/json.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/section/json.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>fc37c58c-00ca-11ec-964a-0242ac11002b</uuidstructure>
+			<uuidresource>fc37c58d-00ca-11ec-964a-0242ac11002b</uuidresource>
+			<datecreated>Thu, 19 Aug 2021 08:53:55 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Text and image section]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/formatters/section/square.jsp</source>
 			<destination>system/modules/alkacon.mercury.template/formatters/section/square.jsp</destination>
 			<type>jsp</type>
@@ -6920,6 +6958,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays a HTML heading with a specified level]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/icalendar.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/icalendar.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>68a1dfa1-03dc-11ec-964a-0242ac11002b</uuidstructure>
+			<uuidresource>68a1dfa2-03dc-11ec-964a-0242ac11002b</uuidresource>
+			<datecreated>Mon, 23 Aug 2021 06:36:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates iCalendar output data]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -2798,5 +2798,13 @@
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[iCalendarShowLink.default]]></IncludeName>
+      <PropertyName><![CDATA[iCalendarShowLink]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.iCalendarShowLink)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.iCalendarShowLink.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
   </SettingsConfig>
 </SettingsConfigs>

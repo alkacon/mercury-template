@@ -1036,6 +1036,8 @@ msg.setting.hsize.list=Überschrift Liste
 msg.setting.hsize.list.help=<p>Legt fest wie bzw. ob die Überschrift der Liste selber angezeigt wird.</p>
 msg.setting.hsize.list.teaser=Überschrift Aufmacher
 msg.setting.hsize.list.teaser.help=<p>Legt die Wichtigkeit der Aufmacher-Überschrift in den Elementen der Liste fest.</p><p>Dies ist insbesondere für Suchmaschinen (SEO) relevant und verändert nicht die sichtbare "Größe" der Überschrift.</p>
+msg.setting.iCalendarShowLink=Zeige iCalendar Link
+msg.setting.iCalendarShowLink.help=Generiert einen Link, um die Veranstaltung im iCalendar Format importieren zu können.
 msg.setting.iconClass=Icon
 msg.setting.iconClass.help=<p>Das anzuzeigende Icon.</p> \n<p>Es kann alternativ zur Auswahlliste jeder Name eines Icons aus dem Font 'Fork Awesome' direkt eingegeben werden, z.B. 'dot-circle-o'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. Das Template verwendet Version 1.1.7 der Icons.</p>
 msg.setting.imageFlip.doNotFlip=Nicht umdrehen

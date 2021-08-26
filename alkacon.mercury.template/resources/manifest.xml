@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>11.0.1.402</version>
+		<version>11.0.1.405</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6522,6 +6522,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/attribute-schema-param.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/attribute-schema-param.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>64e65301-338e-11ea-b60c-0242ac11002b</uuidstructure>
+			<uuidresource>64e65302-338e-11ea-b60c-0242ac11002b</uuidresource>
+			<datecreated>Fri, 10 Jan 2020 09:48:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Reads a value from the sitemap configuration attributes, using the schema-param configuration as fallback]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/audio-player.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/audio-player.tag</destination>
 			<type>jsp</type>
@@ -7968,27 +7989,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays the 'privacy policy' settings]]></value>
-				</property>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/tags/schema-param.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/schema-param.tag</destination>
-			<type>jsp</type>
-			<uuidstructure>64e65301-338e-11ea-b60c-0242ac11002b</uuidstructure>
-			<uuidresource>64e65302-338e-11ea-b60c-0242ac11002b</uuidresource>
-			<datecreated>Fri, 10 Jan 2020 09:48:45 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Reads a parameters from the schema-param configuration]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

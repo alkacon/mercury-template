@@ -134,8 +134,8 @@
         <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.youtube" /></c:set>
         <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.youtube" /></c:set>
         <c:set var="youTubeId" value="${content.value.MediaContent.value.YouTube.value.YouTubeId}" />
-        <c:set var="defaultPreview"><mercury:schema-param param="mercuryYouTubePreviewDefault" /></c:set>
-        <c:set var="youTubePreviewImg" value="${content.value.MediaContent.value.YouTube.value.YouTubePreview.isSet ?
+        <c:set var="defaultPreview"><mercury:attribute-schema-param param="mercuryYouTubePreviewDefault" /></c:set>
+        <c:set var="youTubePreviewImg" value="${((defaultPreview ne 'none') and content.value.MediaContent.value.YouTube.value.YouTubePreview.isSet) ?
             content.value.MediaContent.value.YouTube.value.YouTubePreview : defaultPreview}" />
         <c:set var="template"><%--
         --%><iframe src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--

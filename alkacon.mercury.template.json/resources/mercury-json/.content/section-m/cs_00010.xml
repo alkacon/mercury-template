@@ -2,14 +2,14 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Example Requests]]></Title>
+    <Title><![CDATA[Virtual File System]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
           <target><![CDATA[https://documentation.opencms.org/opencms-documentation/background/the-virtual-file-system/index.html]]></target>
         </link>
       </links>
-      <content><![CDATA[<p>The JSON API makes its contents available in the same way as it does the OpenCms explorer: with folders and files like in a <a title="OpenCms Virtual File System" href="%(link0)" target="_blank" rel="noopener">file system</a>.</p>]]></content>
+      <content><![CDATA[<p>The JSON API makes its contents available in the same way as it does the OpenCms explorer: with folders and files like in a <a title="OpenCms Virtual File System" href="%(link0)" target="_blank" rel="noopener">file system</a>. This makes any OpenCms content directly accessible in the JSON format via a URL. In addition, content located in folders of the virtual file system can be listed in a special JSON folder format.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

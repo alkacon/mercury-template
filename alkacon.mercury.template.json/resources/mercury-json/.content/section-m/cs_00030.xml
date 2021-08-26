@@ -2,6 +2,20 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demos]]></Title>
+    <Title><![CDATA[Frontend Development]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/]]></target>
+          <uuid>aab03c68-00e5-11ec-8018-0242ac11002b</uuid>
+        </link>
+        <link name="link1" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/]]></target>
+          <uuid>aab03c68-00e5-11ec-8018-0242ac11002b</uuid>
+        </link>
+      </links>
+      <content><![CDATA[<p>There are three example React applications available here that give application developers a quick introduction to how the JSON API works. Demo 1 is the hello world of the JSON API. It introduces to how content can be retrieved in OpenCms by means of the virtual file system. Demo 2 explains how lists with news items compiled by editors according to certain filter criteria can be retrieved dynamically. Demo 3 illustrates how content for which there are individual formatting settings can be read and displayed.</p>
+<p>The demos in no way represent a real-world use case. They are kept as short and simple examples to introduce to the JSON API. The React <a title="Source Code" href="%(link0)" target="_blank" rel="noopener">source code</a> is available online. It contains useful comments about technical details. Additionally, there is a <a title="API Documentation" href="%(link1)" target="_blank" rel="noopener">API documentation</a> available that explains the features of the JSON API in detail.</p>]]></content>
+    </Text>
   </ContentSection>
 </ContentSectionData>

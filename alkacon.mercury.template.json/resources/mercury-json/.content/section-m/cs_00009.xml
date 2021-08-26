@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[About]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>In version 12, OpenCms introduces a JSON API. With the JSON API, OpenCms is no longer just a content management system for building and maintaining websites, but also a management system for mobile application content. Mobile applications typically provide a combination of useful features but also up-to-date information. Areas with information changes regularly and contribute to mobile applications being used more often.</p>
+<p>When content changes, it is obviously desirable not to have to publish a new version of an application every time. Rather, it should be possible to always retrieve news items that are up-to-date via a service interface. The presentation and formatting should also be variably adaptable by an editorial team according to the actual content.</p>
+<p>The JSON API of OpenCms can be used as a service interface for mobile content. Editorial teams can use OpenCms to create content for mobile applications and publish it on a scheduled basis, without the need for an additional mobile editorial system.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

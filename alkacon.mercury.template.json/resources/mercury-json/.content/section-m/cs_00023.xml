@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Element Settings]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>If formatting plays an important role in a targeting mobile application, a proven OpenCms concept can be used: container pages and element settings. Container pages and element settings in OpenCms control the overall layout of a web page, the arrangement of content on a page up to the fine granular formatting of individual content parts.</p>
+<p>This mechanism is in the same way also available via the JSON API now, i.e., via the JSON page handler. Editors in this way can change the order of contents in a mobile application or their individual style.</p>
+<p>The presentation and formatting requirements for a targeting mobile application may be different than for a web page. It is possible with reasonable effort to create individual settings configurations for the JSON API or even for individual target applications, so that there are optimized element settings available for different target systems.</p>]]></content>
+    </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/element-settings.png]]></target>
+          <uuid>6103b13e-04bb-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Sample Element Settings]]></Title>
+    </Image>
+  </ContentSection>
+</ContentSectionData>

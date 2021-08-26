@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.1.41</version>
+		<version>11.0.1.40</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>

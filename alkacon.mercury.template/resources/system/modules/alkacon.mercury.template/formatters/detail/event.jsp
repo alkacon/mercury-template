@@ -35,6 +35,7 @@
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
+<c:set var="showiCalendar"          value="${setting.iCalendarShowLink.toBoolean}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -210,6 +211,12 @@
             <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
         </div><%----%>
         <mercury:nl />
+    </c:if>
+
+    <c:if test="${showiCalendar}">
+        <div class="link">
+            <a class="btn piece-btn" href="<cms:link>/system/modules/alkacon.mercury.template/elements/calendar.ics?id=${cms.element.id}&instancedate=${param.instancedate}&url=<cms:link>${content.file.rootPath}</cms:link>&__locale=${cms.locale}</cms:link>">iCalendar</a>
+        </div>
     </c:if>
 
     <mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />

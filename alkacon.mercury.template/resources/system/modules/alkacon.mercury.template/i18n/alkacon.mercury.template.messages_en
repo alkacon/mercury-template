@@ -1036,6 +1036,8 @@ msg.setting.hsize.list=List headline
 msg.setting.hsize.list.help=<p>Controls if and how the headline of the list itself is displayed.</p>
 msg.setting.hsize.list.teaser=Teaser headline
 msg.setting.hsize.list.teaser.help=<p>Controls the importance level of the teaser headline in the list elements.</p><p>This is relevant for search engines (SEO) and will not change the visual "size" of the teaser headline.</p>
+msg.setting.iCalendarShowLink=Show iCalendar link
+msg.setting.iCalendarShowLink.help=Displays a link to provide the event data in iCalendar format to import on smart phones.
 msg.setting.iconClass=Icon
 msg.setting.iconClass.help=<p>The icon to display.</p> \n<p>In addition to the predefined options, any icon name of the 'Fork Awesome' icon set can be entered, e.g. 'dot-circle-o'.</p> \n<p>For the full list of possible icons, see the <a href\="https\://forkaweso.me/Fork-Awesome/icons/" target\="_blank">Fork Awesome website</a>. The template uses version 1.1.7 of the icons.</p>
 msg.setting.imageFlip.doNotFlip=Don't filp

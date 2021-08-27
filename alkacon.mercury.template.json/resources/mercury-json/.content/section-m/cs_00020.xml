@@ -2,24 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[FAQ Folder Request]]></Title>
+    <Title/>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>FAQ items are listed by accessing the <em>/faq-m/</em> folder.</p>
-<pre>GET /json/sites/default/mercury-demo/.content/faq-m/
-{
-  "faq_00001.xml": {},
-  "faq_00002.xml": {},
-  "faq_00003.xml": {},
-  "faq_00004.xml": {},
-  "faq_00005.xml": {},
-  "faq_00006.xml": {},
-  "faq_00007.xml": {},
-  "faq_00008.xml": {},
-  "faq_00009.xml": {},
-  "faq_00010.xml": {},
-  "faq_00011.xml": {}
-}</pre>]]></content>
+      <content><![CDATA[<p>The FAQ list view is rendered with a <strong>JSON folder request</strong> on the <em>/faq-m/</em> folder.</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[/json/sites/default/mercury-demo/.content/faq-m/]]></Text>

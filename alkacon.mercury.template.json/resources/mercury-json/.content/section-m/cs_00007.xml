@@ -2,20 +2,21 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Folder Listing View]]></Title>
+    <Title/>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The application uses the [folder handler] of the JSON API to list all articles and FAQ entries available in the Mercury site. A language select box is available to switch between the english and german version of blog articles and FAQ entries.</p>]]></content>
+      <content><![CDATA[<p>Contents are requested in a <strong>specific locale </strong>and with <strong>fallback locale</strong> on<strong>.</strong></p>]]></content>
     </Text>
-    <Image>
-      <Image>
-        <link type="WEAK">
-          <target><![CDATA[/sites/default/.galleries/cliparts/default.png]]></target>
-          <uuid>f0289470-3a95-11e9-bd84-0242ac11002b</uuid>
+    <Link>
+      <Text><![CDATA[?locale=en&fallbackLocale]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/article-m/a_00001.xml&locale=en&fallbackLocale]]></query>
         </link>
-      </Image>
-      <Title><![CDATA[Default placeholder image]]></Title>
-      <Copyright><![CDATA[CC0 Public Domain / alkacon.com]]></Copyright>
-    </Image>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
   </ContentSection>
 </ContentSectionData>

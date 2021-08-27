@@ -2,10 +2,25 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The Content API Requests]]></Title>
+    <Title><![CDATA[Try it Yourself]]></Title>
     <Text name="Text0">
-      <links/>
-      <content><![CDATA[<p>The following two content requests generate the detail views for articles and FAQ entries. Click on the links to see the JSON API in action.</p>]]></content>
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-2/sample-app/]]></target>
+          <uuid>409d7099-04ee-11ec-9857-0242ac11002b</uuid>
+        </link>
+        <link name="link1" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-2/sample-list/]]></target>
+          <uuid>43d3b268-04bd-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </links>
+      <content><![CDATA[<ul>
+<li><strong>Step 1</strong>. Open the <a title="Demo application" href="%(link0)" target="_blank" rel="noopener">demo application</a> and try out the sort selection as well as the show more results button.</li>
+<li><strong>Step 2</strong>. See how the list looks like in the <a title="Editable web view" href="%(link1)" target="_blank" rel="noopener">editable web view</a>&nbsp;(requires login).</li>
+<li><strong>Step 3</strong>. Edit, delete, or add some contents here and track the changes in the demo application.</li>
+<li><strong>Step 4</strong>. From the web view, open the list configuration editor.</li>
+<li><strong>Step 5</strong>. Change the default sort order from <em>date ascending</em> to <em>title ascending</em>. Reload the demo application and see that the default sort order has changed.</li>
+</ul>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

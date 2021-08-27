@@ -5,7 +5,7 @@
     <Title><![CDATA[Sample List]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The list below is used by the demo 2 React application to demonstrate list handling.</p>]]></content>
+      <content><![CDATA[<p>This is the editable web view of demo 2.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

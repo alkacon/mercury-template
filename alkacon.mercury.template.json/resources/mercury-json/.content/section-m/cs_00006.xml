@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demo 1: Content Rendering]]></Title>
+    <Title><![CDATA[Demo 1: Content Access]]></Title>
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>Renders folder listings and detail views for blog articles and FAQ entries.</p>]]></content>

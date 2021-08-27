@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Try it Yourself]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-3/sample-app/]]></target>
+          <uuid>a1e8fc56-04f2-11ec-9857-0242ac11002b</uuid>
+        </link>
+        <link name="link1" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-3/sample-page/]]></target>
+          <uuid>c5d2466c-04b0-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </links>
+      <content><![CDATA[<ul>
+<li><strong>Step 1</strong>. Open the <a title="Demo application" href="%(link0)" target="_blank" rel="noopener">demo application</a>.</li>
+<li><strong>Step 2</strong>. See how the page looks like in the <a title="Editable web view" href="%(link1)" target="_blank" rel="noopener">editable web view</a> (requires login). The view shows one and the same content in many different display variations (image left, image right, only image, etc.).</li>
+<li><strong>Step 3</strong>. From the web view, open the element settings editor.</li>
+<li><strong>Step 4</strong>. Play with the different settings, click save, and see how the changes are reflected in the demo application.</li>
+</ul>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

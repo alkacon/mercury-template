@@ -5,18 +5,17 @@
     <Title/>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The article list view is rendered with a <strong>JSON folder request</strong> on the <em>/article-m/</em> folder.</p>]]></content>
+      <content><![CDATA[<p>Pagination is realized with the <strong>start</strong> and <strong>rows parameters</strong>.</p>]]></content>
     </Text>
     <Link>
-      <Text><![CDATA[/json/sites/default/mercury-demo/.content/article-m/]]></Text>
+      <Text><![CDATA[?start=0&rows=20]]></Text>
       <URI>
         <link internal="true" type="WEAK">
           <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/article-m/]]></query>
+          <query><![CDATA[uri=/json/sites/default/mercury-json/.content/list-m/list_00001.xml&content&wrapper=false&locale=en&fallbackLocale&start=0&rows=20]]></query>
         </link>
       </URI>
-      <NewWindow>true</NewWindow>
     </Link>
   </ContentSection>
 </ContentSectionData>

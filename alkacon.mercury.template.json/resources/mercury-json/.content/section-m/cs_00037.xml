@@ -5,7 +5,7 @@
     <Title><![CDATA[Demo 3 Sample Page]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The sections below are used by the demo 3 React application to demonstrate content formatting.</p>]]></content>
+      <content><![CDATA[<p>This is the editable web view of demo 3.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

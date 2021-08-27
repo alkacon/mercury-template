@@ -2,20 +2,21 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Detail View]]></Title>
+    <Title/>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The application uses the [content handler] to realize detail views for articles and FAQ entries.</p>]]></content>
+      <content><![CDATA[<p>The JSON <strong>resource wrapper is omitted</strong> to reduce the size of the response document.</p>]]></content>
     </Text>
-    <Image>
-      <Image>
-        <link type="WEAK">
-          <target><![CDATA[/sites/default/.galleries/cliparts/default.png]]></target>
-          <uuid>f0289470-3a95-11e9-bd84-0242ac11002b</uuid>
+    <Link>
+      <Text><![CDATA[?content=true&wrapper=false&locale=en&fallbackLocale]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/article-m/&content=true&wrapper=false&locale=en&fallbackLocale]]></query>
         </link>
-      </Image>
-      <Title><![CDATA[Default placeholder image]]></Title>
-      <Copyright><![CDATA[CC0 Public Domain / alkacon.com]]></Copyright>
-    </Image>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
   </ContentSection>
 </ContentSectionData>

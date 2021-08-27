@@ -8,14 +8,5 @@
       <content><![CDATA[<p>It is a common practice that CMS content is not only arranged manually on a website, but also published in the form of dynamic lists with pagination, filtering and sorting. E.g. all articles on a certain topic that have been published in the last week shall be presented as a news feed on a site.</p>
 <p>Content lists with such filter criteria and sorting options are realized in OpenCms via so called list configurations. The results of such list configurations can either be shown on websites or now also can be output via the JSON list handler. Frontend developers have the possibility to dynamically override pre-configured filter and sort criteria using request parameters of the JSON API.</p>]]></content>
     </Text>
-    <Image>
-      <Image>
-        <link type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/.gallery/list-configuration.png]]></target>
-          <uuid>7518f877-04c2-11ec-a85e-0242ac11002b</uuid>
-        </link>
-      </Image>
-      <Title><![CDATA[Sample List Configuration]]></Title>
-    </Image>
   </ContentSection>
 </ContentSectionData>

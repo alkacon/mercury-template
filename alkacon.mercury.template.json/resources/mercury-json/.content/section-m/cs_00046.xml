@@ -5,15 +5,15 @@
     <Title/>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The article list view is rendered with a <strong>JSON folder request</strong> on the <em>/article-m/</em> folder.</p>]]></content>
+      <content><![CDATA[<p>The page view is rendered with a <strong>JSON page request</strong>.</p>]]></content>
     </Text>
     <Link>
-      <Text><![CDATA[/json/sites/default/mercury-demo/.content/article-m/]]></Text>
+      <Text><![CDATA[/json/sites/default/mercury-json/demo-3/sample-page/index.html]]></Text>
       <URI>
         <link internal="true" type="WEAK">
           <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/article-m/]]></query>
+          <query><![CDATA[uri=/json/sites/default/mercury-json/demo-3/sample-page/index.html]]></query>
         </link>
       </URI>
       <NewWindow>true</NewWindow>

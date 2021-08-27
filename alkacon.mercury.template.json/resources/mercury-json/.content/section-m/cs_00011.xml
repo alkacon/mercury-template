@@ -5,7 +5,7 @@
     <Title><![CDATA[Endpoint Request]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>/json/ is the root path of the JSON API endpoint, where all JSON contents of an OpenCms installation live.</p>
+      <content><![CDATA[<p>/json/ is the base endpoint of the JSON API, where all JSON contents of an OpenCms installation live.</p>
 <pre>GET /json/
 {
   "shared": {},
@@ -20,7 +20,7 @@
           <uuid>fe61e6bf-04c5-11ec-a85e-0242ac11002b</uuid>
         </link>
       </Image>
-      <Title><![CDATA[Root Folder]]></Title>
+      <Title><![CDATA[Root Folder in the OpenCms Explorer]]></Title>
     </Image>
     <Link>
       <Text><![CDATA[/json/]]></Text>

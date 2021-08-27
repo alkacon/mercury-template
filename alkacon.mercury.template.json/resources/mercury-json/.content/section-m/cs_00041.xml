@@ -5,7 +5,7 @@
     <Title><![CDATA[List Request]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The list handler of the JSON API renders the list configuration together with the list results.</p>
+      <content><![CDATA[<p>The list handler of the JSON API renders the list configuration (see <em>SearchFolder</em>, <em>SortOrder</em>, <em>TypesToCollect</em>, etc.) together with the list results (see <em>list</em> and <em>listInfo</em>).</p>
 <pre>GET /json/sites/default/mercury-json/.content/list-m/list_00001.xml
 {
   "Blacklist": [],
@@ -76,6 +76,15 @@
   }
 }</pre>]]></content>
     </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/list-configuration.png]]></target>
+          <uuid>7518f877-04c2-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Sample List Configuration in the OpenCms Backend]]></Title>
+    </Image>
     <Link>
       <Text><![CDATA[/json/sites/default/mercury-json/.content/list-m/list_00001.xml]]></Text>
       <URI>

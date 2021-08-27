@@ -6,7 +6,7 @@
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>The Mercury demo content types can be accessed via the <em>/.content/</em> folder.</p>
-<pre>GET /json/.../mercury-demo/.content/
+<pre>GET /json/sites/default/mercury-demo/.content/
 {
   "article-m": {},
   "contact-m": {},

@@ -39,6 +39,15 @@
 }
 </pre>]]></content>
     </Text>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/element-settings.png]]></target>
+          <uuid>6103b13e-04bb-11ec-a85e-0242ac11002b</uuid>
+        </link>
+      </Image>
+      <Title><![CDATA[Sample Element Settings]]></Title>
+    </Image>
     <Link>
       <Text><![CDATA[/json/sites/default/mercury-json/demo-3/sample-page/index.html]]></Text>
       <URI>

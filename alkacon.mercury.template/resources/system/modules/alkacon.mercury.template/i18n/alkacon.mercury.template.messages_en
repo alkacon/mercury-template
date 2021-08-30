@@ -589,6 +589,7 @@ msg.page.form.submissions.configerror=In the linked registration form for the on
 msg.page.form.submissions.overview={0} of {1} places booked
 msg.page.header.no-config=Please set up a header configuration first\!
 msg.page.header.no-config.help=Drag and drop the <em>Dynamic function</em> named <em>Header configuration</em> in the container above.
+msg.page.icalendar=Add to calendar (iCalendar)
 msg.page.imageseries.count={0} Images
 msg.page.imageseries.moreButton=More images
 msg.page.imageseries.noSource=No images found to display\!

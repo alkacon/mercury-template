@@ -214,9 +214,11 @@
     </c:if>
 
     <c:if test="${showiCalendar}">
-        <div class="link">
-            <a class="btn piece-btn" href="<cms:link>/system/modules/alkacon.mercury.template/elements/calendar.ics?id=${cms.element.id}&instancedate=${param.instancedate}&url=<cms:link>${content.file.rootPath}</cms:link>&__locale=${cms.locale}</cms:link>">iCalendar</a>
-        </div>
+        <div class="link"><%----%>
+            <a class="btn piece-btn" href="<cms:link>/system/modules/alkacon.mercury.template/elements/calendar.ics?id=${cms.element.id}&instancedate=${param.instancedate}&url=<cms:link>${content.file.rootPath}</cms:link>&__locale=${cms.locale}</cms:link>"><%----%>
+                <fmt:message key="msg.page.icalendar" />
+            </a><%----%>
+        </div><%----%>
     </c:if>
 
     <mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />

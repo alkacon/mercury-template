@@ -307,6 +307,7 @@
                     display: flex; // will be hidden from screen size lg
                     order: 10;
                     padding-bottom: $bh-header-padding-small;
+                    padding-top: $nav-mobile-toggle-top;
                     width: 100vw;
                     position: relative;
                     left: 50%;
@@ -315,7 +316,7 @@
                     margin-right: -50vw;
 
                     @include add-bg-color($fh-title-bg-color) {
-                        padding-top: $bh-header-padding-small;
+                        padding-bottom: $nav-mobile-toggle-top;
                     }
                 }
 
@@ -328,10 +329,12 @@
                     display: block;
 
                     @include add-bg-color($fh-title-bg-color) {
+                        min-height: round($nav-toggle-size-xs);
                         color: check-text-color($fh-title-bg-color, $fh-title-color);
                     }
                     @include make-container();
                     @include media-breakpoint-up(sm) {
+                        min-height: $nav-toggle-size;
                         max-width: map-get($container-max-widths, sm);
                     }
                     @include media-breakpoint-up(md) {
@@ -813,6 +816,11 @@
                                 padding-top: $logo-padding;
                                 padding-bottom: 0;
                             }
+                            &.ls-0 {
+                                .h-title {
+                                    padding-bottom: $logo-padding;
+                                }
+                            }
                             @if ($fh-title-bg-color != none) {
                                 .h-title {
                                     padding-bottom: $logo-padding;
@@ -872,6 +880,17 @@
                                     .h-info .h-title {
                                         padding-bottom: $logo-padding;
                                     }
+                                }
+                            }
+                        }
+                    }
+                    @if (($logo-padding == $default-margin-verysmall) && ($fh-title-bg-color != none)) {
+                        &.header-notfixed,
+                        &.header-isfixed.fix-complete {
+                            &.nav-below {
+                                // we need a padding on top if the background is colored
+                                .h-nav {
+                                    padding-top: $logo-padding;
                                 }
                             }
                         }
@@ -1053,32 +1072,12 @@
 
         &.ls-0 {
             .h-logo {
-                position: absolute;
-                width: 125px;
-                height: 25px;
-                padding: 0;
-                @include oct-meta-bg;
-
-                > .image-src-box {
-                    position: absolute;
-                    width: 125px;
-                    height: 25px;
-                    right: 0;
-                    padding-bottom: 0 !important;
-
-                    > img {
-                        display: none;
-                    }
-                }
+                display: none;
             }
-
-            &.lp-r {
-                .h-logo {
-                    right: 0;
-                }
+            .nav-main-mobile-logo {
+                min-height: calc(#{$nav-mobile-toggle-top + $nav-toggle-size} + #{$nav-mobile-line-padding});
             }
         }
-
 
         @if (false) {
             // colored backgrounds - for debugging only
@@ -1516,6 +1515,11 @@
                 .nav-menu-logo {
                     order: 1;
                     justify-content: flex-start;
+                }
+            }
+            &.ls-0 {
+                 .nav-menu-header {
+                    justify-content: flex-end;
                 }
             }
         }
@@ -2021,6 +2025,45 @@ html.opencms-group-editor {
                             padding-top: 0;
                         }
                     }
+                }
+            }
+        }
+
+        header.fh,
+        header.bh {
+            &.ls-0 {
+                .h-logo {
+                    display: block;
+                    position: absolute;
+                    width: 125px;
+                    height: 25px;
+                    padding: 0;
+                    @include oct-meta-bg;
+
+                    > .no-image {
+                        position: absolute;
+                        width: 125px;
+                        height: 25px;
+                        right: 0;
+                        padding-bottom: 0 !important;
+                    }
+                }
+            }
+        }
+        header.fh.ls-0 {
+            &.title-left {
+                .h-logo {
+                    right: 0;
+                }
+            }
+        }
+        header.bh.ls-0 {
+            &.lp-r {
+                .h-logo-col {
+                    position: relative;
+                }
+                .h-logo {
+                    right: 0;
                 }
             }
         }

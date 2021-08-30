@@ -84,7 +84,7 @@
                 <c:set var="logoSize"           value="${config.setting.logoSize.useDefault('ls-4').toString}" />
                 <c:set var="logoFullSize"       value="${logoSize eq 'ls-12'}" />
                 <c:set var="logoHidden"         value="${logoSize eq 'ls-0'}" />
-                <c:set var="logoPosCenter"      value="${logoFullSize or (logoAlignment eq 'lp-c')}" />
+                <c:set var="logoPosCenter"      value="${logoHidden or logoFullSize or (logoAlignment eq 'lp-c')}" />
                 <c:set var="logoPosLeft"        value="${logoPosCenter ? false : (logoAlignment eq 'lp-l')}" />
                 <c:set var="logoAlignment"      value="${logoPosCenter ? 'lp-c' : logoAlignment}" />
                 <c:set var="logoCols"           value="${fn:substringAfter(logoSize, 'ls-')}" />
@@ -193,10 +193,10 @@
                         <mercury:container
                             type="image-minimal"
                             name="header-image"
-                            css="h-logo p-xs-12 p-lg-${logoCols}"
+                            css="${logoHidden ? 'h-logo' : 'h-logo p-xs-12 p-lg-'.concat(logoCols)}"
                             title="${value.Title}"
                             settings="${{
-                                'cssWrapper':       'header-image',
+                                'cssWrapper':       logoHidden ? 'no-image' : 'header-image',
                                 'showImageLink':    'true'
                             }}"
                         />
@@ -232,7 +232,10 @@
                                 name="header-nav-main"
                                 css="nav-main-container"
                                 title="${value.Title}"
-                                settings="${noWrapper}"
+                                settings="${{
+                                    'cssWrapper':       logoHidden ? 'no-image' : '',
+                                    'configVariant':    'default'
+                                }}"
                             />
                         </mercury:div>
                     </div><%----%>

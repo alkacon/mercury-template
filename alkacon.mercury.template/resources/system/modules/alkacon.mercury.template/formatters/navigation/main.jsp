@@ -45,9 +45,6 @@
         currentPageUri="${currentPageUri}">
 
         <c:choose>
-            <c:when test="${empty logoImage}">
-                <%-- Do not generate markup if there is no image --%>
-            </c:when>
             <c:when test="${temlateVariant eq 'burger'}">
                 <div class="nav-menu-header"><%----%>
                     <div class="nav-menu-toggle"><%----%>
@@ -57,7 +54,28 @@
                             </span><%----%>
                         </label><%----%>
                     </div><%----%>
-                    <div class="nav-menu-logo"><%----%>
+                    <c:if test="${(cssWrapper ne 'no-image') and (not empty logoImage)}">
+                        <div class="nav-menu-logo"><%----%>
+                            <mercury:link
+                                link="${logoContent.value.Link}"
+                                test="${showImageLink}"
+                                testFailTag="div"
+                                setTitle="${true}"
+                                css="mobile-logolink" >
+                                <mercury:image-simple
+                                    image="${logoImage}"
+                                    sizes="200,350,400,700,800"
+                                    cssWrapper="img-responsive"
+                                    title="${imageTitleCopyright}"
+                                />
+                            </mercury:link>
+                        </div><%----%>
+                    </c:if>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="nav-main-mobile-logo"><%----%>
+                    <c:if test="${(cssWrapper ne 'no-image') and (not empty logoImage)}">
                         <mercury:link
                             link="${logoContent.value.Link}"
                             test="${showImageLink}"
@@ -66,30 +84,13 @@
                             css="mobile-logolink" >
                             <mercury:image-simple
                                 image="${logoImage}"
-                                sizes="200,350,400,700,800"
+                                sizes="100,200,400,800"
                                 cssWrapper="img-responsive"
                                 title="${imageTitleCopyright}"
                             />
-                        </mercury:link>
-                    </div><%----%>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <div class="nav-main-mobile-logo"><%----%>
-                    <mercury:link
-                        link="${logoContent.value.Link}"
-                        test="${showImageLink}"
-                        testFailTag="div"
-                        setTitle="${true}"
-                        css="mobile-logolink" >
-                        <mercury:image-simple
-                            image="${logoImage}"
-                            sizes="100,200,400,800"
-                            cssWrapper="img-responsive"
-                            title="${imageTitleCopyright}"
-                        />
 
-                    </mercury:link>
+                        </mercury:link>
+                    </c:if>
                 </div><%----%>
             </c:otherwise>
         </c:choose>

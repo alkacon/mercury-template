@@ -1459,7 +1459,6 @@ type.flex.formatter.section.ade=Flex\: ADE enabled content section
 type.flex.formatter.section.bgimage=Flex\: Content section with background image
 type.for-header.suffix=\ for header
 type.image.name=Image
-type.list.formatter.calendar=Dynamic list\: Calendar
 type.list.formatter.dynamic=Dynamic list
 type.list.formatter.facets=Dynamic list\: Sort options bar
 type.list.formatter.filter=Dynamic list\: Content filters

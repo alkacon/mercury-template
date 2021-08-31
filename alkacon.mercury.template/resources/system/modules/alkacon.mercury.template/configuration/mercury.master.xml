@@ -596,12 +596,6 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/list/calendar.xml]]></target>
-          <uuid>65a26c09-0a2a-11ec-ad29-0242ac11002b</uuid>
-        </link>
-      </AddFormatter>
-      <AddFormatter>
-        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/navigation/main.xml]]></target>
           <uuid>4edb2a62-eb97-49df-bb86-ad044788d21b</uuid>
         </link>

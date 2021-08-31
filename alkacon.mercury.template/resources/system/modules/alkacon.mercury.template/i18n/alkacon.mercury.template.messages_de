@@ -1459,7 +1459,6 @@ type.flex.formatter.section.ade=Flex\: ADE unterstützender Inhalts-Abschnitt
 type.flex.formatter.section.bgimage=Flex\: Inhalts-Abschnitt mit Hintergrundbild
 type.for-header.suffix=\ für Kopfbereich
 type.image.name=Bild
-type.list.formatter.calendar=Dynamische Liste\: Kalender
 type.list.formatter.dynamic=Dynamische Liste
 type.list.formatter.facets=Dynamische Liste\: Sortier-Leiste
 type.list.formatter.filter=Dynamische Liste\: Inhalts-Filter

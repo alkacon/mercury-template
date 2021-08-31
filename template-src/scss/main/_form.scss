@@ -572,6 +572,15 @@
         section {
             margin-bottom: $form-field-hor-padding-xs;
         }
+
+        .input input,
+        .select select,
+        .textarea textarea {
+
+            &::placeholder {
+                font-size: $form-font-size-input-xs-ph;
+            }
+        }
     }
 
     @include media-breakpoint-up(lg) {

@@ -721,12 +721,13 @@ $map-colors: (
 $form-font-size:                    $font-size-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-font-size-input:              $form-font-size !default;
+$form-font-size-input-xs-ph:        $font-size-sm !default;
 $form-text-color:                   inherit !default;
 $form-label-color:                  $form-text-color !default;
 $form-field-padding:                $default-margin;
 $form-field-ver-padding:            $form-field-padding;
 $form-field-hor-padding:            $form-field-padding * 1.5;
-$form-field-ver-padding-xs:         round($form-field-padding * 50) * 0.1 !default;
+$form-field-ver-padding-xs:         round($form-field-padding * 5) * 0.1 !default;
 $form-field-hor-padding-xs:         $form-field-ver-padding-xs !default;
 $form-border-color:                 $grey !default;
 $form-icon-color:                   $grey-dark !default;

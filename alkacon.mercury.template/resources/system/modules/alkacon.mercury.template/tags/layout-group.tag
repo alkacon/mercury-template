@@ -80,13 +80,13 @@
                 <c:set var="config"             value="${headerConfigElementBeans.get(0)}" />
                 <c:set var="addCssWrapper"      value="${config.setting.cssWrapper.toString}" />
 
-                <c:set var="logoAlignment"      value="${config.setting.logoAlignment.validate(['lp-l','lp-c','lp-r'],'lp-l').toString}" />
-                <c:set var="logoSize"           value="${config.setting.logoSize.useDefault('ls-4').toString}" />
-                <c:set var="logoFullSize"       value="${logoSize eq 'ls-12'}" />
-                <c:set var="logoHidden"         value="${logoSize eq 'ls-0'}" />
+                <c:set var="logoAlignment"      value="${config.setting.logoAlignment.validate(['lp-l','lp-c','lp-r','none'],'lp-l').toString}" />
+                <c:set var="logoHidden"         value="${logoAlignment eq 'none'}" />
+                <c:set var="logoSize"           value="${logoHidden ? 'ls-0' : config.setting.logoSize.useDefault('ls-4').toString}" />
+                <c:set var="logoFullSize"       value="${not logoHidden and logoSize eq 'ls-12'}" />
                 <c:set var="logoPosCenter"      value="${logoHidden or logoFullSize or (logoAlignment eq 'lp-c')}" />
-                <c:set var="logoPosLeft"        value="${logoPosCenter ? false : (logoAlignment eq 'lp-l')}" />
-                <c:set var="logoAlignment"      value="${logoPosCenter ? 'lp-c' : logoAlignment}" />
+                <c:set var="logoPosLeft"        value="${logoHidden or logoPosCenter ? false : (logoAlignment eq 'lp-l')}" />
+                <c:set var="logoAlignment"      value="${logoHidden or logoPosCenter ? 'lp-c' : logoAlignment}" />
                 <c:set var="logoCols"           value="${fn:substringAfter(logoSize, 'ls-')}" />
                 <c:set var="alignDefault"       value="${logoPosCenter ? 'center' : (logoPosLeft ? 'right' : 'left')}" />
                 <c:set var="logoPadding"        value="${config.setting.logoPadding.useDefault('pad-sm').toString}" />

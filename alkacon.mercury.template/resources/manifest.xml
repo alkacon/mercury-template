@@ -8268,7 +8268,7 @@
 				</property>
 				<property>
 					<name>dnd.newsletter.pagemodel</name>
-					<value><![CDATA[/system/shared/newsletter/pagemodels/default.html]]></value>
+					<value><![CDATA[/system/shared/mercury/newsletter/pagemodels/default.html]]></value>
 				</property>
 				<property>
 					<name>template</name>

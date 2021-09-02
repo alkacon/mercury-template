@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.15</version>
+		<version>11.0.1.16</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -472,7 +472,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Endpoint Request]]></value>
+					<value><![CDATA[Introduction: Endpoint Folder Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -829,7 +829,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Page Request]]></value>
+					<value><![CDATA[Introduction: Page Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -863,7 +863,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[List Request]]></value>
+					<value><![CDATA[Introduction: List Request]]></value>
 				</property>
 			</properties>
 			<relations/>

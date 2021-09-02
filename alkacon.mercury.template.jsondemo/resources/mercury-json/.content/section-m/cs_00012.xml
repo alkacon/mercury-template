@@ -4,9 +4,15 @@
   <ContentSection language="en">
     <Title><![CDATA[Site Folder Request]]></Title>
     <Text name="Text0">
-      <links/>
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <query><![CDATA[uri=/json/sites/default/mercury-demo/]]></query>
+        </link>
+      </links>
       <content><![CDATA[<p>The Mercury demo site <em>/mercury-demo/</em> is accessible as a sub-site of the default site <em>/sites/default/</em>.</p>
-<pre>GET /json/sites/default/mercury-demo/
+<pre>GET <a title="Site Folder Request" href="%(link0)" target="_blank" rel="noopener">/json/sites/default/mercury-demo/</a>
 {
   ".content": {},
   ".galleries": {},
@@ -30,18 +36,7 @@
           <uuid>d58b6236-04c6-11ec-a85e-0242ac11002b</uuid>
         </link>
       </Image>
-      <Title><![CDATA[Mercury Demo Folder in the OpenCms Explorer]]></Title>
+      <Title><![CDATA[The localtion of the Mercury demo ist in the OpenCms explorer.]]></Title>
     </Image>
-    <Link>
-      <Text><![CDATA[/json/sites/default/mercury-demo/]]></Text>
-      <URI>
-        <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
-          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-demo/]]></query>
-        </link>
-      </URI>
-      <NewWindow>true</NewWindow>
-    </Link>
   </ContentSection>
 </ContentSectionData>

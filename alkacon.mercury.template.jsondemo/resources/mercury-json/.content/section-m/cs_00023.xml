@@ -4,10 +4,14 @@
   <ContentSection language="en">
     <Title><![CDATA[Element Settings]]></Title>
     <Text name="Text0">
-      <links/>
-      <content><![CDATA[<p>If formatting plays an important role in a targeting mobile application, a proven OpenCms concept can be used: container pages and element settings. Container pages and element settings in OpenCms control the overall layout of a web page, the arrangement of content on a page up to the fine granular formatting of individual content parts.</p>
-<p>This mechanism is in the same way also available via the JSON API now, i.e., via the JSON page handler. Editors in this way can change the order of contents in a mobile application or their individual style.</p>
-<p>The presentation and formatting requirements of a targeting mobile application may be different than for a web page. It is possible with reasonable effort to create individual settings configurations for the JSON API or even for individual target applications, so that there are optimized element settings available for different target systems.</p>]]></content>
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/content-in-opencms/formatters-and-their-configuration/element-settings/index.html]]></target>
+        </link>
+      </links>
+      <content><![CDATA[<p>If formatting is important in a targeting mobile application, a proven OpenCms concept can be used: pages with element settings. Pages with <a title="Documentation of element settings" href="%(link0)" target="_blank" rel="noopener">element settings</a> in OpenCms control the overall layout of a web page, the arrangement of content on a page up to the fine granular formatting of individual content parts.</p>
+<p>This mechanism, in the same way, is available via the JSON API's page handler. Editors in this way can change the order of contents in a mobile application or their individual style.</p>
+<p>The presentation and formatting requirements of a targeting mobile application may be different from a web page. It is possible to create individual settings configurations for the JSON API and for individual target applications.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

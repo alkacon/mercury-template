@@ -5,9 +5,9 @@
     <Title><![CDATA[The OpenCms Backend]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>No special developments are required in the OpenCms backend to use the JSON API. If JSON is enabled, in principle all published contents from a OpenCms server are delivered via the JSON interface. There is a security mechanism integrated that can exclude certain contents if desired.</p>
-<p>Even though this demo site uses the OpenCms Mercury template and the Mercury demo content, the JSON API is of course not limited to Mercury. The API works automatically with the template and content types currently installed in an OpenCms server.</p>
-<p>Three well-known OpenCms concepts are used to control the JSON API data, the <strong>virtual file system</strong>, <strong>list configurations</strong>, and <strong>element settings</strong>.</p>]]></content>
+      <content><![CDATA[<p>No special developments are required in the OpenCms backend to use the JSON API. If JSON is enabled, in principle all published contents of an OpenCms server are delivered via the JSON interface. There is a security mechanism integrated that can exclude certain contents if desired.</p>
+<p>Even though this demo site uses the OpenCms Mercury template and the Mercury demo content, the JSON API is not limited to Mercury. The API works automatically with the template and content types currently installed in an OpenCms server.</p>
+<p>Three well-known OpenCms concepts control the data of the JSON API, the <strong>virtual file system</strong>, <strong>list configurations</strong>, and <strong>element settings</strong>.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

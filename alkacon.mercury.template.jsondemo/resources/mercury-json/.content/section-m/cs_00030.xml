@@ -14,11 +14,11 @@
           <uuid>aab03c68-00e5-11ec-8018-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>There are three example React applications available here that give application developers a quick introduction to how the JSON API works.</p>
+      <content><![CDATA[<p>There are three sample React applications available that give application developers a quick introduction to how the JSON API works.</p>
 <ul>
-<li><strong>Demo 1</strong> is the hello world of the JSON API. It introduces to how content can be retrieved in OpenCms by means of virtual file system URLs.</li>
-<li><strong>Demo 2</strong> explains how lists with content items compiled by editors according to certain filter criteria can be retrieved dynamically.</li>
-<li><strong>Demo 3</strong> illustrates how content for which there are individual formatting settings can be read and displayed.</li>
+<li><strong>Demo 1</strong> is the hello world of the JSON API. It introduces to how content can be retrieved by means of virtual file system URLs.</li>
+<li><strong>Demo 2</strong> explains how lists can be retrieved and how list options can be overwritten dynamically.</li>
+<li><strong>Demo 3</strong> illustrates how content with individual element settings can be read and displayed.</li>
 </ul>
 <p>The demos in no way represent a real-world use case. They are kept as short and simple examples to introduce to the JSON API. The React <a title="Source Code" href="%(link0)" target="_blank" rel="noopener">source code</a> is available online. It contains useful comments about technical details. Additionally, there is a <a title="API Documentation" href="%(link1)" target="_blank" rel="noopener">API documentation</a> available that explains the features of the JSON API in detail.</p>]]></content>
     </Text>

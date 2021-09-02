@@ -6,7 +6,7 @@
 		<export_version>10</export_version>
 	</info>
 	<module>
-		<name>alkacon.mercury.template.json</name>
+		<name>alkacon.mercury.template.jsondemo</name>
 		<nicename><![CDATA[Mercury template: JSON Demo]]></nicename>
 		<group>Mercury template</group>
 		<class/>
@@ -25,7 +25,7 @@
 		</dependencies>
 		<exportpoints/>
 		<resources>
-			<resource uri="/system/modules/alkacon.mercury.template.json/"/>
+			<resource uri="/system/modules/alkacon.mercury.template.jsondemo/"/>
 			<resource uri="/mercury-json/"/>
 		</resources>
 		<excluderesources/>
@@ -1889,7 +1889,7 @@
 			<properties/>
 		</file>
 		<file>
-			<destination>system/modules/alkacon.mercury.template.json</destination>
+			<destination>system/modules/alkacon.mercury.template.jsondemo</destination>
 			<type>folder</type>
 			<uuidstructure>f16823ed-00e4-11ec-8018-0242ac11002b</uuidstructure>
 			<datecreated>Thu, 19 Aug 2021 11:59:44 GMT</datecreated>
@@ -1899,8 +1899,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template.json/.config</source>
-			<destination>system/modules/alkacon.mercury.template.json/.config</destination>
+			<source>system/modules/alkacon.mercury.template.jsondemo/.config</source>
+			<destination>system/modules/alkacon.mercury.template.jsondemo/.config</destination>
 			<type>module_config</type>
 			<uuidstructure>f16a6ddf-00e4-11ec-8018-0242ac11002b</uuidstructure>
 			<uuidresource>f16a6de0-00e4-11ec-8018-0242ac11002b</uuidresource>
@@ -1924,7 +1924,7 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>system/modules/alkacon.mercury.template.json/formatters</destination>
+			<destination>system/modules/alkacon.mercury.template.jsondemo/formatters</destination>
 			<type>folder</type>
 			<uuidstructure>f16f01c4-00e4-11ec-8018-0242ac11002b</uuidstructure>
 			<datecreated>Thu, 19 Aug 2021 11:59:44 GMT</datecreated>
@@ -1934,8 +1934,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template.json/formatters/json.xml</source>
-			<destination>system/modules/alkacon.mercury.template.json/formatters/json.xml</destination>
+			<source>system/modules/alkacon.mercury.template.jsondemo/formatters/json.xml</source>
+			<destination>system/modules/alkacon.mercury.template.jsondemo/formatters/json.xml</destination>
 			<type>formatter_config</type>
 			<uuidstructure>1b1cfa6d-00e4-11ec-8018-0242ac11002b</uuidstructure>
 			<uuidresource>1b1cfa6e-00e4-11ec-8018-0242ac11002b</uuidresource>

@@ -1397,7 +1397,8 @@
       <WidgetConfig><![CDATA[
             lp-l:           %(key.msg.setting.header.option.left)|
             lp-c:           %(key.msg.setting.header.option.center)|
-            lp-r:           %(key.msg.setting.header.option.right)
+            lp-r:           %(key.msg.setting.header.option.right)|
+            none:           %(key.msg.setting.header.option.hide)
         ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -1414,8 +1415,7 @@
             ls-4:               %(key.msg.setting.header.logoSize.ls-4)|
             ls-5:               %(key.msg.setting.header.logoSize.ls-5)|
             ls-6:               %(key.msg.setting.header.logoSize.ls-6)|
-            ls-12:              %(key.msg.setting.header.logoSize.ls-12)|
-            ls-0:               %(key.msg.setting.header.logoSize.ls-0)
+            ls-12:              %(key.msg.setting.header.logoSize.ls-12)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

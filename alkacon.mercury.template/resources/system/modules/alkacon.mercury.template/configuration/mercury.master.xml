@@ -21,10 +21,6 @@
       <Disabled><![CDATA[false]]></Disabled>
     </ResourceType>
     <ResourceType>
-      <TypeName><![CDATA[m-gottesdienst]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
-    </ResourceType>
-    <ResourceType>
       <TypeName><![CDATA[m-imageseries]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
     </ResourceType>

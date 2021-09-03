@@ -54,7 +54,7 @@ Case 3: Mega menu display request
                 <cms:container
                     name="${containerName}-megamenu"
                     type="row"
-                    maxElements="1"
+                    maxElements="2"
                     editableby="ROLE.DEVELOPER">
                     <cms:param name="cssgrid" value="#" />
                     <c:set var="message"><fmt:message key="msg.page.layout.megaMenu.container" /></c:set>

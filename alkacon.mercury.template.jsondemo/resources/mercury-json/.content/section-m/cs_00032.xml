@@ -2,17 +2,20 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Step 1]]></Title>
+    <Title><![CDATA[Step 2]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-2/sample-app/]]></target>
-          <uuid>409d7099-04ee-11ec-9857-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
+          <anchor><![CDATA[!explorer/9c8c654b-0503-11ec-bbda-0242ac11002b!!/sites/default!!/mercury-demo/.content/!!]]></anchor>
+          <query><![CDATA[uri=/workplace]]></query>
         </link>
       </links>
       <content><![CDATA[<ul>
-<li>Open the <a title="Demo application" href="%(link0)" target="_blank" rel="noopener">demo application</a>.</li>
-<li>Try out the sort selection as well as the show more results button.</li>
+<li>Have a look at the article and FAQ demo contents in the <a title="OpenCms explorer" href="%(link0)" target="_blank" rel="noopener">OpenCms explorer</a> (requires login).</li>
+<li>Edit the title of an article or the question of an FAQ entry and see that the changes are immediately reflected in the demo application.</li>
+<li>Add or delete FAQ entries and articles and see that the contents immediately appear or disappear in the demo application.</li>
 </ul>]]></content>
     </Text>
     <Image>

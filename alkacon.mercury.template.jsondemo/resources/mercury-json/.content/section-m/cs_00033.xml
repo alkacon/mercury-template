@@ -2,21 +2,25 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Step 4]]></Title>
+    <Title><![CDATA[Step 3]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-3/]]></target>
-          <uuid>f7682130-00e5-11ec-8018-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
         </link>
         <link name="link1" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-3/]]></target>
-          <uuid>f7682130-00e5-11ec-8018-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
+        <link name="link2" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
         </link>
       </links>
       <content><![CDATA[<ul>
 <li>Have a look at the <a title="Source code of the demo application" href="%(link0)" target="_blank" rel="noopener">source code of the demo application</a>.</li>
-<li>Read more about the <a title="Page Handler Documentation" href="%(link1)" target="_blank" rel="noopener">page handler</a> in the JSON API documentation.</li>
+<li>Read more about the <a title="Folder Handler Documentation" href="%(link1)" target="_blank" rel="noopener">folder handler</a> and the <a title="Content handler documentation" href="%(link2)" target="_blank" rel="noopener">content handler</a> in the JSON API documentation.</li>
 </ul>]]></content>
     </Text>
     <Image>

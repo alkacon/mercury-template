@@ -6,13 +6,13 @@
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-2/sample-app/]]></target>
-          <uuid>409d7099-04ee-11ec-9857-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/demo-1/sample-app/]]></target>
+          <uuid>14df8005-04eb-11ec-a6af-0242ac11002b</uuid>
         </link>
       </links>
       <content><![CDATA[<ul>
-<li>Open the <a title="Demo application" href="%(link0)" target="_blank" rel="noopener">demo application</a>.</li>
-<li>Try out the sort selection as well as the show more results button.</li>
+<li><a title="Demo 1 Application" href="%(link0)" target="_blank" rel="noopener">Open the demo application</a>.</li>
+<li>Try out the article and the FAQ list and detail views with different locales.</li>
 </ul>]]></content>
     </Text>
     <Image>

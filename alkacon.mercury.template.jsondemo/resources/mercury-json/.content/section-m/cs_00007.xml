@@ -2,21 +2,24 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title/>
+    <Title><![CDATA[Step 3]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Contents are requested in a <strong>specific locale </strong>and with <strong>fallback locale</strong> on<strong>.</strong></p>]]></content>
+      <content><![CDATA[<ul>
+<li>From the web view, open the list configuration editor.</li>
+<li>Change the default sort order from <em>date ascending</em> to <em>title ascending</em>.</li>
+<li>Reload the demo application and see that the default sort order has changed.</li>
+</ul>]]></content>
     </Text>
-    <Link>
-      <Text><![CDATA[?locale=en&fallbackLocale]]></Text>
-      <URI>
-        <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
-          <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/article-m/a_00001.xml&locale=en&fallbackLocale]]></query>
+    <Image>
+      <Image>
+        <link type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/.gallery/list-configuration.png]]></target>
+          <uuid>7518f877-04c2-11ec-a85e-0242ac11002b</uuid>
         </link>
-      </URI>
-      <NewWindow>true</NewWindow>
-    </Link>
+      </Image>
+      <Title><![CDATA[List Configuration]]></Title>
+      <Copyright><![CDATA[CC0 Public Domain / alkacon.com]]></Copyright>
+    </Image>
   </ContentSection>
 </ContentSectionData>

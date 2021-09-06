@@ -14,7 +14,7 @@
       <NewWindow>true</NewWindow>
     </LinkEntry>
     <LinkEntry>
-      <Text><![CDATA[See the Demo 2 Sample List]]></Text>
+      <Text><![CDATA[See the Editable Web View of the Demo 2 Sample List]]></Text>
       <URI>
         <link internal="true" type="WEAK">
           <target><![CDATA[/sites/default/mercury-json/demo-2/sample-list/]]></target>

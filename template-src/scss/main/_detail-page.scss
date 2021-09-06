@@ -165,6 +165,14 @@
 
     }
 
+    div.attachment-container > .element:last-of-type {
+         margin-bottom: 0;
+    }
+
+    .detail-addition {
+        margin-top: $default-margin;
+    }
+
     @include media-breakpoint-up(md) {
         .overlay {
             display: block;

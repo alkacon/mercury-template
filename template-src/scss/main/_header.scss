@@ -329,12 +329,10 @@
                     display: block;
 
                     @include add-bg-color($fh-title-bg-color) {
-                        min-height: round($nav-toggle-size-xs);
                         color: check-text-color($fh-title-bg-color, $fh-title-color);
                     }
                     @include make-container();
                     @include media-breakpoint-up(sm) {
-                        min-height: $nav-toggle-size;
                         max-width: map-get($container-max-widths, sm);
                     }
                     @include media-breakpoint-up(md) {
@@ -360,6 +358,20 @@
 
                         > div {
                             @extend %format-title;
+                        }
+                    }
+                    @if (($fh-title-bg-color != none) and ($fh-title-bg-color != $fh-header-bg-color)) {
+                        &.ls-0 {
+                            .h-title > div {
+                                @if ($nav-mobile-smaller-xs-toggle) {
+                                    min-height: round($nav-toggle-size-xs);
+                                    @include media-breakpoint-up(sm) {
+                                        min-height: $nav-toggle-size;
+                                    }
+                                } @else {
+                                    min-height: round($nav-toggle-size);
+                                }
+                            }
                         }
                     }
                 }
@@ -430,6 +442,7 @@
                 }
 
                 > .h-title {
+                    color: check-text-color($fh-header-bg-color, $fh-title-color);
                     background-color: transparent;
                 }
             }
@@ -866,7 +879,8 @@
                             }
                         }
                         &.header-notfixed,
-                        &.header-isfixed.fix-complete {
+                        &.header-isfixed.fix-complete,
+                        &.header-isfixed.ls-0.fix-compact {
                             .h-nav {
                                 padding-bottom: calc(#{$logo-padding} - #{$nav-header-ver-padding});
                             }

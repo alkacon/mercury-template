@@ -165,12 +165,13 @@
 
     }
 
-    div.attachment-container > .element:last-of-type {
-         margin-bottom: 0;
-    }
-
-    .detail-addition {
-        margin-top: $default-margin;
+    .detail-addition:last-of-type {
+        &.element,
+        &.subelement,
+        .element:last-of-type,
+        .subelement:last-of-type {
+            margin-bottom: 0;
+        }
     }
 
     @include media-breakpoint-up(md) {

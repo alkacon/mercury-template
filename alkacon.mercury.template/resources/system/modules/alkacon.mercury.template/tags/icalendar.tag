@@ -63,6 +63,9 @@
     %>
 </c:if>
 
+<c:set var="fullname">${title}-<fmt:formatDate value="${cms:convertDate(dateStart)}" pattern="yyyy-MM-dd" /></c:set>
+<mercury:set-content-disposition name="${fullname}" suffix=".ics" />
+
 BEGIN:VCALENDAR
 PRODID:${cms.requestContext.requestMatcher}
 VERSION:2.0

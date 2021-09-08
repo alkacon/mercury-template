@@ -1,4 +1,4 @@
-<%@page
+<%@page pageEncoding="UTF-8"
     buffer="none"
     contentType="text/calendar; charset=UTF-8"
     session="false"
@@ -61,7 +61,8 @@
 
 </mercury:paragraph-split>
 
-<mercury:icalendar content="${content}"
+<mercury:icalendar
+    content="${content}"
     locale="${cms.locale}"
     title="${value.Title.stringValue}"
     dateStart="${dateStart}"
@@ -69,4 +70,5 @@
     description="${description}"
     location="${location}"
     image="${imageValue}"
-    url="${param.url}" />
+    url="${param.url}"
+/>

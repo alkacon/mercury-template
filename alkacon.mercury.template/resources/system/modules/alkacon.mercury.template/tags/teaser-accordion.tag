@@ -31,6 +31,7 @@
 <c:set var="imageRatio"         value="${setting.imageRatio.isSet ? setting.imageRatio.toString : null}"/>
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
+<c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="open"               value="${setting.firstOpen.toBoolean and (setting.index.toInteger == 0)}" />
 <c:set var="accordionId"        value="${empty accordionId ? setting.listid.toString : accordionId}" />
 <c:set var="itemId"><mercury:idgen prefix="acco" uuid="${cms.element.instanceId}" />_${setting.index.toInteger}</c:set>
@@ -60,6 +61,7 @@
             imageRatio="${imageRatio}"
             showImageZoom="${showImageZoom}"
             showImageCopyright="${showImageCopyright}"
+            showImageSubtitle="${showImageSubtitle}"
             ade="${false}"
         />
         <jsp:doBody />

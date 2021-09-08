@@ -774,6 +774,15 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showImageSubtitle.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[showImageSubtitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageSubtitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageSubtitle.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCount.true]]></IncludeName>
       <PropertyName><![CDATA[showImageCount]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showImageCount)]]></DisplayName>

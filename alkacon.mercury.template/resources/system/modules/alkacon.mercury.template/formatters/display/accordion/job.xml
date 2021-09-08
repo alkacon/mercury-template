@@ -47,6 +47,9 @@
       <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showImageSubtitle.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listWrapper.accordion]]></IncludeName>
     </Setting>
     <Setting>

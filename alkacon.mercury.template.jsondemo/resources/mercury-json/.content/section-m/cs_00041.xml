@@ -14,11 +14,9 @@
       <content><![CDATA[<p>The list handler of the JSON API renders the list configuration together with the list results.</p>
 <pre>GET <a title="List Request" href="%(link0)" target="_blank" rel="noopener">/json/sites/default/mercury-json/.content/list-m/list_00001.xml</a>
 {
-  "Blacklist": [],
   "Category": "",
   "CategoryFolderFilter": [],
   "CategoryMode": "OR",
-  "Parameter": [],
   "SearchFolder": [
     {
       "link": "/mercury-demo/.content/",

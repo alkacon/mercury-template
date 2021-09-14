@@ -5,8 +5,9 @@
     <Title><![CDATA[List Configurations]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>It is a common practice that CMS content is not only arranged manually on a website, but also published in the form of dynamic lists with pagination, filtering and sorting. E.g. all articles on a certain topic that have been published in the last week shall be presented as a news feed on a site.</p>
-<p>Content lists in OpenCms are realized via so called list configurations. The results of such list configurations can either be shown on websites or now also can be output via the JSON list handler. Frontend developers have the possibility to display content lists and to dynamically override pre-configured filter and sort criteria using the request parameters of the JSON API.</p>]]></content>
+      <content><![CDATA[<p>Sometimes, contents are arranged manually on a website, sometimes contents are published in the form of dynamic lists with pagination, filtering and sorting, e.g., all articles on a certain topic that have been published in the last week.</p>
+<p>Content lists in OpenCms are realized via so called list configurations. The results of such list configurations can either be shown on websites and now also in mobile applications.</p>
+<p>Application developers have the possibility to retrieve content lists configured by editorial teams via the JSON API and to dynamically change filter and sort criteria using the request parameters.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

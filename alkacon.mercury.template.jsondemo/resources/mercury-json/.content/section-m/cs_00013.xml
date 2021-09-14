@@ -11,7 +11,7 @@
           <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>The Mercury demo content types can be accessed via the <em>/.content/</em> folder.</p>
+      <content><![CDATA[<p>Contents can be found in the <em>/.content/</em> folder of a site. The example shows the contents of this Mercury demo site.</p>
 <pre>GET <a title="Content Folder Request" href="%(link0)" target="_blank" rel="noopener">/json/sites/default/mercury-demo/.content/</a>
 {
   "article-m": {},
@@ -38,7 +38,7 @@
           <uuid>54b1473f-04c7-11ec-a85e-0242ac11002b</uuid>
         </link>
       </Image>
-      <Title><![CDATA[The content folder of the Mercury demo site in the OpenCms explorer.]]></Title>
+      <Title><![CDATA[Contents can be found in the .content folder of a site.]]></Title>
     </Image>
   </ContentSection>
 </ContentSectionData>

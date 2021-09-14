@@ -15,6 +15,9 @@
     description="Add intro to title. If this is 'true' but no 'intro' has been given,
     the intro is read from the page meta values." %>
 
+<%@ attribute name="addInstanceDate" type="java.lang.Boolean" required="false"
+    description="Append the instance date to the title if available and this is a detail page request. Default is 'true'." %>
+
 <%@ attribute name="trim" type="java.lang.Integer" required="false"
     description="Reduce the text length to a maximum of chars, default is unlimited." %>
 
@@ -25,22 +28,23 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+
 <c:set var="resultTitle" value="${title}" />
+<c:set var="addIntro" value="${empty addIntro and (not empty intro) ? true : addIntro}" />
+<c:set var="addInstanceDate" value="${empty addInstanceDate ? true : addInstanceDate}" />
 
 <c:if test="${empty resultTitle}">
     <c:choose>
         <c:when test="${not empty cms.meta.ogTitle}">
             <c:set var="resultTitle" value="${cms.meta.ogTitle}" />
-            <c:set var="addIntro" value="${false}" />
         </c:when>
         <c:otherwise>
             <c:set var="resultTitle" value="${cms.title}" />
-            <c:set var="addIntro" value="${empty addIntro and (not empty intro) ? true : addIntro}" />
         </c:otherwise>
     </c:choose>
 </c:if>
 
-<c:if test="${cms.detailRequest and (not empty param.instancedate) and (cms.meta.titleAppendInstanceDate eq 'true')}">
+<c:if test="${addInstanceDate and cms.detailRequest and (not empty param.instancedate) and (cms.meta.titleAppendInstanceDate eq 'true')}">
     <c:set var="startDate" value="${cms:convertDate(param.instancedate)}" />
     <c:if test="${startDate.time != 0}">
         <fmt:setLocale value="${cms:vfs(pageContext).requestContext.locale}" />
@@ -74,5 +78,3 @@
 </c:if>
 
 <c:out value="${resultTitle}" escapeXml="false" />
-
-

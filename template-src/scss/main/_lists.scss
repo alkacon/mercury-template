@@ -283,6 +283,10 @@
 .teaser-tile {
     display: flex;
 
+    &:empty {
+        display: none;
+    }
+
     .teaser.piece {
         margin-bottom: 0;
         @include text-tile;

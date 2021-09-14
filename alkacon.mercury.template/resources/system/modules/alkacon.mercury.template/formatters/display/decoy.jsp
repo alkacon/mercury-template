@@ -21,7 +21,7 @@
 
 <c:choose>
 <c:when test="${invalidDecoy and not cms.isEditMode}">
-    <!-- Invalid decoy -->
+    <c:out value="<!-- Invalid decoy -->" escapeXml="false" />
 </c:when>
 <c:otherwise>
     <c:set var="intro"      value="${value.Intro}" />

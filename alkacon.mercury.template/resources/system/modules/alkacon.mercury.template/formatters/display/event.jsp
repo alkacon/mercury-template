@@ -93,7 +93,7 @@
     paraText="${paragraph.value.Text}"
     preTextMarkup="${bookingMarkup}"
     groupId="${groupId}"
-    noLinkOnVisual="${true}"
+    noLinkOnVisual="${setShowCalendar}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setShowCalendar ? 12 : setSizeMobile}"

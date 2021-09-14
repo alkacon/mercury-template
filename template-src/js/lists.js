@@ -392,7 +392,8 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
         $newEntries = $result.find(".list-entry:parent");
     } else {
         // no grouping of search results required
-        $newEntries = $result.find(".list-entry");
+        $newEntries = $result.find(".list-entry:not(:empty)");
+        // :not(:empty) added to remove 'invalid' decoys
     }
 
     if (list.loadAll) {

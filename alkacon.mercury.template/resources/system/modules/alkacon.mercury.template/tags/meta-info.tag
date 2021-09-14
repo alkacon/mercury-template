@@ -23,7 +23,7 @@
 <c:set var="hasAltDesc" value="${(not empty cms.meta.ogDescriptionAlt) or (not empty cms.meta.ogDescriptionAltCaption)}" />
 <c:set var="hasAltDescAndCaption" value="${hasAltDesc and (not empty cms.meta.ogDescriptionAlt) and (not empty cms.meta.ogDescriptionAltCaption)}" />
 
-<c:set var="pagetitle"><mercury:meta-title addIntro="${true}" /></c:set>
+<c:set var="pagetitle"><mercury:meta-title addIntro="${false}" /></c:set>
 <c:set var="pagetitle"><mercury:meta-value text="${pagetitle}" keepHtml="${true}" /></c:set>
 <c:set var="titleprefix" value="${contentPropertiesSearch['mercury.title.prefix']}" />
 <c:set var="titleprefix" value="${(empty titleprefix) or (titleprefix eq 'none') or (not empty cms.meta.ogTitle and not cms.detailRequest) ? null : titleprefix}" />

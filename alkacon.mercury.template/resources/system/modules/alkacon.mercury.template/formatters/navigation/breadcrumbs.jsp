@@ -68,7 +68,7 @@
 
                     <c:if test="${cms.detailRequest}">
                         <c:set var="navLink"><cms:link>${cms.detailContent.sitePath}?${pageContext.request.queryString}</cms:link></c:set>
-                        <c:set var="navText"><mercury:meta-title addIntro="${true}" /></c:set>
+                        <c:set var="navText"><mercury:meta-title addIntro="${false}" /></c:set>
 
                         <c:out value='<li><a href="${navLink}">' escapeXml="false" />
                         <c:out value='${navText}' escapeXml="true" />
@@ -88,7 +88,7 @@
                 </cms:jsonarray>
 
                 <c:if test="${(empty breadCrumbJson) or cms.modelGroupPage}">
-                    <li><mercury:meta-title addIntro="${true}" /></li><%----%>
+                    <li><mercury:meta-title addIntro="${false}" /></li><%----%>
                 </c:if>
             </ul><%----%>
             <mercury:nl />

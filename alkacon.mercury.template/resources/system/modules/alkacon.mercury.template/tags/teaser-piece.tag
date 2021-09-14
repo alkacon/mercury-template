@@ -83,6 +83,9 @@
 <%@ attribute name="dateFormat" type="java.lang.String" required="false"
     description="The format for the date, or 'none' which means no date will be shown." %>
 
+<%@ attribute name="dateOnTop" type="java.lang.Boolean" required="false"
+    description="If 'true', the date will be displayed on top of the heading, by default it will be displayed on top of the text." %>
+
 <%@ attribute name="preTextMarkup" required="false" type="java.lang.String"
     description="Additional markup shown above the text. HTML in this will NOT be escaped" %>
 
@@ -139,6 +142,7 @@
 <c:set var="buttonText"         value="${buttonText eq '-' ? null : buttonText}" /><%-- Allows to have a "none" default but still use the value from the content by setting '-' as button text. --%>
 <c:set var="showButton"         value="${buttonText ne 'none'}" />
 <c:set var="addButtonDiv"       value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
+<c:set var="dateOnTop"          value="${empty dateOnTop ? false : dateOnTop}" />
 
 <%-- These are currently not configurable, maybe add this later --%>
 <c:set var="linkOnHeadline"     value="${true}" />
@@ -184,6 +188,13 @@
     </c:set>
 </c:if>
 
+<c:if test="${(not empty date) and (dateFormat ne 'none')}">
+    <c:set var="dateMarkup">
+        <div class="teaser-date"><%----%>
+            <mercury:instancedate date="${date}" format="${dateFormat}" />
+        </div><%----%>
+    </c:set>
+</c:if>
 
 <mercury:piece
     cssWrapper="teaser${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
@@ -198,11 +209,14 @@
     bodyPostMarkup="${bodyPostMarkup}">
 
     <jsp:attribute name="heading">
+        <c:if test="${dateOnTop and not empty dateMarkup}">
+            ${dateMarkup}
+        </c:if>
         <c:if test="${not empty headline or not empty intro}">
             <mercury:link
                 link="${link}"
                 title="${linkTitle}"
-                test="${linkOnHeadline and (level > 0)}">
+                test="${linkOnHeadline and (hsize > 0)}">
                 <mercury:intro-headline
                     intro="${intro}"
                     headline="${headline}"
@@ -236,10 +250,8 @@
                         ${preTextMarkup}
                     </c:if>
 
-                    <c:if test="${(not empty date) and (dateFormat ne 'none')}">
-                        <div class="teaser-date"><%----%>
-                            <mercury:instancedate date="${date}" format="${dateFormat}" />
-                        </div><%----%>
+                    <c:if test="${not dateOnTop and not empty dateMarkup}">
+                        ${dateMarkup}
                     </c:if>
 
                     <c:choose>

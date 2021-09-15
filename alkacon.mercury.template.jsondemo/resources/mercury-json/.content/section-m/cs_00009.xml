@@ -5,9 +5,9 @@
     <Title><![CDATA[About]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>With the JSON API introduced in version 12, OpenCms is not only a tool for managing website content but also for managing mobile application content.</p>
-<p>Mobile applications typically provide a combination of features and up-to-date information. Areas with information change regularly and contribute to mobile applications being used more often. When content changes in a mobile application, there is not a new version of an application published every time - content is rather updated on a regular basis via content service interfaces such as the OpenCms JSON API.&nbsp;</p>
-<p>With the JSON API, editorial teams can use the OpenCms backend to create news items for their mobile applications and to publish them on a scheduled basis without the need for an extra mobile editorial system. There are various possibilities available for editorial teams to configure news lists and to decide upon presentation issues.</p>]]></content>
+      <content><![CDATA[<p>With the JSON API introduced in version 12, OpenCms is not only a tool for managing websites but also for managing mobile application content.</p>
+<p>Mobile applications typically provide a combination of features and up-to-date information. Areas with information change regularly and contribute to mobile applications being used more often. When content changes in a mobile application, there is not a new version of an application published every time—content is rather updated on a regular basis via content service interfaces such as the OpenCms JSON API.&nbsp;</p>
+<p>With the JSON API, editorial teams can use the OpenCms backend to create news items for their mobile applications and to publish them on a scheduled basis without the need for an extra mobile editorial system. There are various possibilities for editorial teams to configure content lists according to filter and sort criteria and to decide upon the style and presentation of contents.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

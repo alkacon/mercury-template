@@ -8,10 +8,10 @@
         <link name="link0" internal="true" type="A">
           <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/]]></query>
+          <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/&wrapper=false]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>Contents can be found in the <em>/.content/</em> folder of a site. The example shows the contents of this Mercury demo site.</p>
+      <content><![CDATA[<p>Contents can be found in the <em>/.content/</em> folder of a site or sub-site. The example shows the content types of this Mercury demo site.</p>
 <pre>GET <a title="Content Folder Request" href="%(link0)" target="_blank" rel="noopener">/json/sites/default/mercury-demo/.content/</a>
 {
   "article-m": {},
@@ -19,14 +19,6 @@
   "decoy-m": {},
   "event-m": {},
   "faq-m": {},
-  "flexible-m": {},
-  "imageseries-m": {},
-  "job-m": {},
-  "layout-row-custom-m": {},
-  "linksequence-m": {},
-  "list-m": {},
-  "map-m": {},
-  "section-m": {},
   ...
 }
 </pre>]]></content>

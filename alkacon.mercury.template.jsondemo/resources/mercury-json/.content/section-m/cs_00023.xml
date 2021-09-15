@@ -10,7 +10,7 @@
         </link>
       </links>
       <content><![CDATA[<p><a title="Documentation of element settings" href="%(link0)" target="_blank" rel="noopener">Element settings</a> in OpenCms control the overall layout of web pages, the arrangement of contents on a page up to the fine granular formatting of individual content parts.</p>
-<p>Content formatting, in the same way, is available via the JSON API. Editorial teams in this way can decide upon the layout and the individual style of contents in a mobile application in a fine-grained way. It is also possible to configure different element settings for different target applications.</p>]]></content>
+<p>Content formatting, in the same way, is available via the JSON API. Editorial teams in this way can decide upon the layout and the individual style of contents in a mobile application. It is possible to provide editorial teams different element settings for different target applications.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

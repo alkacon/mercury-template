@@ -12,6 +12,7 @@
       </links>
       <content><![CDATA[<ul>
 <li>Open the <a title="Demo application" href="%(link0)" target="_blank" rel="noopener">demo application</a>.</li>
+<li>See the list containing contents of different types, contacts and articles.</li>
 <li>Try out the sort selection as well as the show more results button.</li>
 </ul>]]></content>
     </Text>

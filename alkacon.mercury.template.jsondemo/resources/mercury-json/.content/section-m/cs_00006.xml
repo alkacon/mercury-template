@@ -5,7 +5,7 @@
     <Title><![CDATA[Demo 1: Content Access]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Renders lists and detail views for blog articles and FAQ entries.</p>]]></content>
+      <content><![CDATA[<p>Renders blog articles and FAQ entries.</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Read more]]></Text>

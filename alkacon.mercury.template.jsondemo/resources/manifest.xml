@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.21</version>
+		<version>11.0.1.22</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -615,40 +615,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-json/.content/section-m/cs_00020.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00020.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>b0938147-0f2b-11ec-b0c0-0242ac11002b</uuidstructure>
-			<uuidresource>b0938148-0f2b-11ec-b0c0-0242ac11002b</uuidresource>
-			<datecreated>Mon, 06 Sep 2021 16:01:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting: Step 4]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/.content/section-m/cs_00021.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00021.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>ff6f3013-0f2b-11ec-b0c0-0242ac11002b</uuidstructure>
-			<uuidresource>ff6f3014-0f2b-11ec-b0c0-0242ac11002b</uuidresource>
-			<datecreated>Mon, 06 Sep 2021 16:03:38 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Demo 2: Dynamic Lists: Step 4]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>mercury-json/.content/section-m/cs_00023.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00023.xml</destination>
 			<type>m-section</type>
@@ -745,23 +711,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Demo 1: Content Access: Step 2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/.content/section-m/cs_00033.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00033.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>aad33108-0f20-11ec-b0c0-0242ac11002b</uuidstructure>
-			<uuidresource>aad33109-0f20-11ec-b0c0-0242ac11002b</uuidresource>
-			<datecreated>Mon, 06 Sep 2021 14:42:32 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Demo 1: Content Access: Step 3]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/mercury-json/demo-2/sample-app/static/css/main.2168248c.chunk.css",
-    "main.js": "/mercury-json/demo-2/sample-app/static/js/main.3a8ed17a.chunk.js",
-    "main.js.map": "/mercury-json/demo-2/sample-app/static/js/main.3a8ed17a.chunk.js.map",
+    "main.css": "/mercury-json/demo-2/sample-app/static/css/main.29b014ac.chunk.css",
+    "main.js": "/mercury-json/demo-2/sample-app/static/js/main.508e5709.chunk.js",
+    "main.js.map": "/mercury-json/demo-2/sample-app/static/js/main.508e5709.chunk.js.map",
     "runtime-main.js": "/mercury-json/demo-2/sample-app/static/js/runtime-main.e9d03e73.js",
     "runtime-main.js.map": "/mercury-json/demo-2/sample-app/static/js/runtime-main.e9d03e73.js.map",
     "static/js/2.1f6d210a.chunk.js": "/mercury-json/demo-2/sample-app/static/js/2.1f6d210a.chunk.js",
     "static/js/2.1f6d210a.chunk.js.map": "/mercury-json/demo-2/sample-app/static/js/2.1f6d210a.chunk.js.map",
     "index.html": "/mercury-json/demo-2/sample-app/index.html",
-    "static/css/main.2168248c.chunk.css.map": "/mercury-json/demo-2/sample-app/static/css/main.2168248c.chunk.css.map",
+    "static/css/main.29b014ac.chunk.css.map": "/mercury-json/demo-2/sample-app/static/css/main.29b014ac.chunk.css.map",
     "static/js/2.1f6d210a.chunk.js.LICENSE.txt": "/mercury-json/demo-2/sample-app/static/js/2.1f6d210a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e9d03e73.js",
     "static/js/2.1f6d210a.chunk.js",
-    "static/css/main.2168248c.chunk.css",
-    "static/js/main.3a8ed17a.chunk.js"
+    "static/css/main.29b014ac.chunk.css",
+    "static/js/main.508e5709.chunk.js"
   ]
 }

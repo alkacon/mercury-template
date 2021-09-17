@@ -31,7 +31,9 @@ $font-family-sans-serif:        -apple-system, BlinkMacSystemFont, "Segoe UI", R
 $font-family-serif:             Athelas, Georgia, Cambria, "Times New Roman", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:         SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
-$fonts-preloaded: (
+$fonts-preloaded-custom:        () !default;
+
+$fonts-preloaded-default: (
     "Exo 2":                    (("Exo 2",                   $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Fira Sans":                (("Fira Sans",               $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Fira Sans Condensed":      (("Fira Sans Condensed",     $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
@@ -68,6 +70,8 @@ $fonts-preloaded: (
     "SFMono-Regular":           ((                           $font-family-monospace),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic)))
 );
 
+
+$fonts-preloaded: map-merge($fonts-preloaded-default, $fonts-preloaded-custom);
 
 @function has-preloaded-font($name) {
     $font-name: quote(nth($name, 1));
@@ -187,6 +191,7 @@ $fonts-preloaded: (
         font-matches($btn-font-family, $name) or
         font-matches($form-font-family, $name) or
         font-matches($pagination-font-family, $name) or
+        font-matches($font-family-fancy, $name) or
 
         font-matches($nav-font-family, $name) or
         font-matches($nav-header-font-family, $name) or

@@ -144,6 +144,8 @@ $form-font-weight-option:           get-font-weight($form-font-family, $form-fon
 $map-text-weight:                   $font-weight-light !default;
 $map-header-weight:                 $font-weight-normal !default;
 
+$font-family-fancy:                 $font-family-base !default;
+$font-family-fancy:                 get-font-family($font-family-fancy);
 
 // Base font sizes
 

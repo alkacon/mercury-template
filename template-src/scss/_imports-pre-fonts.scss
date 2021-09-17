@@ -15,5 +15,21 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-@import 'imports-pre-fonts';
-@import 'imports-post-fonts';
+/*!
+ * This is the Mercury template for OpenCms, created by Alkacon Software
+ */
+
+// import functions
+@import 'main/functions';
+
+// import font definitions for pre-downloaded fonts
+@import 'main/font-definitions';
+
+// define the global variables
+@import 'main/variables';
+
+// import mixins
+@import 'main/mixins';
+
+// import font definitions on top
+@import 'imports-fonts';

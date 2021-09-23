@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mercury-json/demo-1/sample-app/static/css/main.29b014ac.chunk.css",
+    "main.css": "/mercury-json/demo-1/sample-app/static/css/main.c28eb8a4.chunk.css",
     "main.js": "/mercury-json/demo-1/sample-app/static/js/main.510007fa.chunk.js",
     "main.js.map": "/mercury-json/demo-1/sample-app/static/js/main.510007fa.chunk.js.map",
     "runtime-main.js": "/mercury-json/demo-1/sample-app/static/js/runtime-main.33ca2b77.js",
@@ -8,13 +8,13 @@
     "static/js/2.08acd2a1.chunk.js": "/mercury-json/demo-1/sample-app/static/js/2.08acd2a1.chunk.js",
     "static/js/2.08acd2a1.chunk.js.map": "/mercury-json/demo-1/sample-app/static/js/2.08acd2a1.chunk.js.map",
     "index.html": "/mercury-json/demo-1/sample-app/index.html",
-    "static/css/main.29b014ac.chunk.css.map": "/mercury-json/demo-1/sample-app/static/css/main.29b014ac.chunk.css.map",
+    "static/css/main.c28eb8a4.chunk.css.map": "/mercury-json/demo-1/sample-app/static/css/main.c28eb8a4.chunk.css.map",
     "static/js/2.08acd2a1.chunk.js.LICENSE.txt": "/mercury-json/demo-1/sample-app/static/js/2.08acd2a1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.33ca2b77.js",
     "static/js/2.08acd2a1.chunk.js",
-    "static/css/main.29b014ac.chunk.css",
+    "static/css/main.c28eb8a4.chunk.css",
     "static/js/main.510007fa.chunk.js"
   ]
 }

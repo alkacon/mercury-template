@@ -2,21 +2,22 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Step 2]]></Title>
+    <Title><![CDATA[Edit]]></Title>
     <Text name="Text0">
-      <links>
-        <link name="link0" internal="true" type="A">
+      <links/>
+      <content><![CDATA[<p>Open the OpenCms explorer.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[Open]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
           <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
           <anchor><![CDATA[!explorer/9c8c654b-0503-11ec-bbda-0242ac11002b!!/sites/default!!/mercury-demo/.content/!!]]></anchor>
           <query><![CDATA[uri=/workplace]]></query>
         </link>
-      </links>
-      <content><![CDATA[<ul>
-<li>Have a look at the article and FAQ demo contents in the <a title="OpenCms explorer" href="%(link0)" target="_blank" rel="noopener">OpenCms explorer</a> (requires login).</li>
-<li>Edit the title of an article or the question of an FAQ entry and see that the changes are immediately reflected in the demo application.</li>
-<li>Add or delete FAQ entries and articles and see that the contents immediately appear or disappear in the demo application.</li>
-</ul>]]></content>
-    </Text>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
   </ContentSection>
 </ContentSectionData>

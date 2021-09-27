@@ -2,18 +2,20 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Step 2]]></Title>
+    <Title><![CDATA[Edit]]></Title>
     <Text name="Text0">
-      <links>
-        <link name="link0" internal="true" type="A">
+      <links/>
+      <content><![CDATA[<p>Open the editable web view.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[Open]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
           <target><![CDATA[/sites/default/mercury-json/demo-2/sample-list/]]></target>
           <uuid>43d3b268-04bd-11ec-a85e-0242ac11002b</uuid>
         </link>
-      </links>
-      <content><![CDATA[<ul>
-<li>See how the list looks like in the <a title="Editable web view" href="%(link0)" target="_blank" rel="noopener">editable web view</a>&nbsp;(requires login).</li>
-<li>Edit, delete, or add some contents here and track the changes in the demo application.</li>
-</ul>]]></content>
-    </Text>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
   </ContentSection>
 </ContentSectionData>

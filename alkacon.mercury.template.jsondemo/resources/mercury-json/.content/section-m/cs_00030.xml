@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Frontend Development]]></Title>
+    <Title><![CDATA[Demo Frontend]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Demo 2 Introduction]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
+        <link name="link1" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
+      </links>
+      <content><![CDATA[<p>Demo 2 showcases how to dynamically present content lists preconfigured by editorial teams.</p>
+<p>Editorial teams in OpenCms have the possibility to configure content lists according to various filter and sort criteria. For example, all articles belonging to a specific category and published in the last three weeks shall be collected and presented on a page.</p>
+<p>The list handler of the OpenCms JSON API allows to dynamically evaluate such list configurations, optionally with sorting and pagination. API parameters already known from the folder handler and the content handler make it possible to request contents in specific locales and also to resolve linked contents.</p>
+<p>Read more about the technical details of the JSON list handler in the <a href="%(link0)" target="_blank" rel="noopener">OpenCms JSON API documentation</a> and in the <a href="%(link1)" target="_blank" rel="noopener">source code of the demo application</a>.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

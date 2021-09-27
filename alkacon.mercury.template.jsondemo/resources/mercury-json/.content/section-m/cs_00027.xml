@@ -2,19 +2,20 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demo 1: Content Access]]></Title>
+    <Title><![CDATA[View]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Renders contents such as articles contained in a folder.</p>]]></content>
+      <content><![CDATA[<p>Open the demo application.</p>]]></content>
     </Text>
     <Link>
-      <Text><![CDATA[Read more]]></Text>
+      <Text><![CDATA[Open]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+          <target><![CDATA[/sites/default/mercury-json/demo-3/sample-app/]]></target>
+          <uuid>a1e8fc56-04f2-11ec-9857-0242ac11002b</uuid>
         </link>
       </URI>
+      <NewWindow>true</NewWindow>
     </Link>
   </ContentSection>
 </ContentSectionData>

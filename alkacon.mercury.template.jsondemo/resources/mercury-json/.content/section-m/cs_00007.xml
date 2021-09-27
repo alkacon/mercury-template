@@ -2,14 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Step 3]]></Title>
+    <Title/>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<ul>
-<li>From the web view, open the list configuration editor.</li>
-<li>Change the default sort order from <em>date ascending</em> to <em>title ascending</em>.</li>
-<li>Reload the demo application and see that the default sort order has changed.</li>
-</ul>]]></content>
+      <content/>
     </Text>
     <Image>
       <Image>
@@ -18,7 +14,7 @@
           <uuid>7518f877-04c2-11ec-a85e-0242ac11002b</uuid>
         </link>
       </Image>
-      <Title><![CDATA[List Configuration]]></Title>
+      <Title><![CDATA[Screenshot of the OpenCms List Configuration Editor]]></Title>
       <Copyright><![CDATA[CC0 Public Domain / alkacon.com]]></Copyright>
     </Image>
   </ContentSection>

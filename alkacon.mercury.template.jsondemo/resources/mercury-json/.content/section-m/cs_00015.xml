@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[The OpenCms Backend]]></Title>
+    <Title><![CDATA[Demo Backend]]></Title>
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>No special developments are required to use OpenCms for management of mobile application content. If the JSON API is enabled, in principle all published contents of an OpenCms server are delivered via the JSON interface. There is a security mechanism integrated that can exclude certain contents if desired.</p>

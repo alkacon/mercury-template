@@ -191,7 +191,7 @@
 
     </mercury:piece>
 
-    <c:if test="${not empty paragraphsContent or not empty paragraphsDownload or showiCalendar}">
+    <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
         <div class="detail-content"><%----%>
             <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
                 <mercury:section-piece

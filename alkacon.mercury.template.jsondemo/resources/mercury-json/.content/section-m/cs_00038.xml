@@ -23,7 +23,7 @@
         </link>
       </links>
       <content><![CDATA[<p>Demo 3 showcases that editorial teams can decide about content presentation with the OpenCms JSON API.</p>
-<p>OpenCms for website management integrates two powerful concepts called <a href="%(link0)" target="_blank" rel="noopener">container pages</a> and <a href="%(link1)" target="_blank" rel="noopener">element settings</a>, which together allow to store content and its presentation separately from each other. With these concepts, one and the same content can be displayed differently depending on the actual context.</p>
+<p>OpenCms integrates two powerful concepts called <a href="%(link0)" target="_blank" rel="noopener">container pages</a> and <a href="%(link1)" target="_blank" rel="noopener">element settings</a> for website management, which together allow to store content and its presentation separately from each other. With these concepts, one and the same content can be displayed differently depending on the actual context.</p>
 <p>The concept of container pages and element settings is available in full also via the JSON API. It allows to transmit presentation details about singular contents configured by editorial teams to a frontend application.</p>
 <p>Read more about the technical details of the JSON page handler in the <a href="%(link2)" target="_blank" rel="noopener">OpenCms JSON API documentation</a> and in the <a href="%(link3)" target="_blank" rel="noopener">source code of the demo application</a>.</p>
 <p>&nbsp;</p>]]></content>

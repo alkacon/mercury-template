@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.25</version>
+		<version>11.0.1.26</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -175,23 +175,6 @@
 			<datecreated>Mon, 23 Aug 2021 10:25:47 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/.content/linksequence-m/ls_00002.xml</source>
-			<destination>mercury-json/.content/linksequence-m/ls_00002.xml</destination>
-			<type>m-linksequence</type>
-			<uuidstructure>11ec8cbf-042c-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>11ec8cc0-042c-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Mon, 23 Aug 2021 16:06:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Introduction: Further Reading]]></value>
-				</property>
-			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

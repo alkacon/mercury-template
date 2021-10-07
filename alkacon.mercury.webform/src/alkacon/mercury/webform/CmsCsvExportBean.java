@@ -91,7 +91,7 @@ public class CmsCsvExportBean extends A_CmsJspCustomContextBean {
     /** Constant for message key. */
     private static final String KEY_STATUS_CHANGED = "msg.page.form.status.submission.changed";
     /** The bundle with the localization keys. */
-    private static final String BUNDLE_NAME = "alkacon.mercury.template.messages";
+    private static final String BUNDLE_NAME = "alkacon.mercury.webform.messages";
 
     /** The form to export submissions for. */
     private CmsFormBean m_form;

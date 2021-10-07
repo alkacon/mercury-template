@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Try it Yourself]]></Title>
+    <Title><![CDATA[Guide to evaluation]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
@@ -10,19 +10,29 @@
           <uuid>409d7099-04ee-11ec-9857-0242ac11002b</uuid>
         </link>
         <link name="link1" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-2/sample-list/]]></target>
+          <target><![CDATA[/sites/default/mercury-json/demo-2/list-editor/]]></target>
           <uuid>43d3b268-04bd-11ec-a85e-0242ac11002b</uuid>
+        </link>
+        <link name="link2" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
+        <link name="link3" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
         </link>
       </links>
       <content><![CDATA[<ul>
-<li>Open the <a title="Demo application" href="%(link0)" target="_blank" rel="noopener">demo application</a>.</li>
+<li>Open the <a title="Demo application" href="%(link0)" target="_blank" rel="noopener">demo 2 app</a>.</li>
 <li>See the list containing contents of different types: contacts and articles.</li>
 <li>Try out the sort selection as well as the show more results button.</li>
-<li>See how the list looks like in the <a title="Editable web view" href="%(link1)" target="_blank" rel="noopener">editable web view</a>&nbsp;(requires login).</li>
-<li>Edit, delete, or add some contents here and track the changes in the demo application.</li>
-<li>From the web view, open the list configuration editor.</li>
+<li>Open the same list in the <a title="Editable web view" href="%(link1)">OpenCms page editor.</a></li>
+<li>Edit, delete, or add some contents in the page editor (requires login) and track the changes in the demo application.</li>
+<li>In the page editor, edit the list configuration.</li>
 <li>Change the default sort order from <em>date ascending</em> to <em>title ascending</em>.</li>
 <li>Reload the demo application and see that the default sort order has changed.</li>
+<li>Read more about the technical details of the JSON list handler in the <a href="%(link2)" target="_blank" rel="noopener">OpenCms JSON API documentation</a>.</li>
+<li>Have a look at the <a href="%(link3)" target="_blank" rel="noopener">source code of the demo 2 app</a>.</li>
 </ul>]]></content>
     </Text>
   </ContentSection>

@@ -3,7 +3,7 @@
 <ImageSeriesData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/imageseries.xsd">
   <ImageSeries language="de">
     <Title><![CDATA[Gebäude, Maschinen, Dinge]]></Title>
-    <Date>1575633600000</Date>
+    <Date>1670328000000</Date>
     <Image>
       <Image>
         <link type="WEAK">
@@ -28,7 +28,7 @@
     <Intro><![CDATA[Get visual]]></Intro>
     <Title><![CDATA[Buildings, Machines, Things]]></Title>
     <Preface><![CDATA[A series of images to be used in this example website.]]></Preface>
-    <Date>1575633600000</Date>
+    <Date>1670328000000</Date>
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>

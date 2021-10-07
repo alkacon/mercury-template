@@ -3,7 +3,7 @@
 <ArticleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/article.xsd">
   <Article language="de">
     <Title><![CDATA[OpenCms ist Open Source]]></Title>
-    <Date>1559048280000</Date>
+    <Date>1653739200000</Date>
     <Paragraph>
       <Text name="Text0">
         <links/>
@@ -27,7 +27,7 @@
   </Article>
   <Article language="en">
     <Title><![CDATA[OpenCms is Open Source]]></Title>
-    <Date>1559048280000</Date>
+    <Date>1653739200000</Date>
     <Paragraph>
       <Text name="Text0">
         <links/>

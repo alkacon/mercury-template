@@ -4,7 +4,7 @@
   <Event language="en">
     <Intro><![CDATA[Going "Santa"]]></Intro>
     <Title><![CDATA[Christmas Tree Convention]]></Title>
-    <Dates>{"from":"1577260800000", "to":"1577376000000", "pattern":{"type":"YEARLY", "month":"DECEMBER", "day":"25"}, "occurrences":"3"}</Dates>
+    <Dates>{"from":"1671955200000", "to":"1672070400000", "pattern":{"type":"YEARLY", "month":"DECEMBER", "day":"25"}, "occurrences":"3"}</Dates>
     <Preface><![CDATA[This is the preface. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla.]]></Preface>
     <Paragraph>
       <Text name="Text0">

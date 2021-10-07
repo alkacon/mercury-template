@@ -2,20 +2,19 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title/>
+    <Title><![CDATA[Demo 3: Page Layout]]></Title>
     <Text name="Text0">
       <links/>
-      <content/>
+      <content><![CDATA[<p>Renders a screen with layout options set by content managers</p>]]></content>
     </Text>
-    <Image>
-      <Image>
-        <link type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/.gallery/list-configuration.png]]></target>
-          <uuid>7518f877-04c2-11ec-a85e-0242ac11002b</uuid>
+    <Link>
+      <Text><![CDATA[Read more]]></Text>
+      <URI>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/sites/default/mercury-json/demo-3/]]></target>
+          <uuid>f7682130-00e5-11ec-8018-0242ac11002b</uuid>
         </link>
-      </Image>
-      <Title><![CDATA[Screenshot of the OpenCms List Configuration Editor]]></Title>
-      <Copyright><![CDATA[CC0 Public Domain / alkacon.com]]></Copyright>
-    </Image>
+      </URI>
+    </Link>
   </ContentSection>
 </ContentSectionData>

@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demo Frontend]]></Title>
+    <Title><![CDATA[About the demo apps]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
@@ -14,13 +14,9 @@
           <uuid>aab03c68-00e5-11ec-8018-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>There are three sample React applications available that give application developers a quick introduction to how the JSON API works.</p>
-<ul>
-<li><strong>Demo 1</strong> is the hello world of the JSON API. It introduces to how content can be retrieved with the JSON API.</li>
-<li><strong>Demo 2</strong> explains how to access content lists configured by editors and how to dynamically sort and paginate lists.</li>
-<li><strong>Demo 3</strong> illustrates how content with individual formattings configured by editors can be read and displayed.</li>
-</ul>
-<p>The demos are no real-world use cases but short and simple examples to introduce frontend developers to the JSON API. The React <a title="Source Code" href="%(link0)" target="_blank" rel="noopener">source code</a> is available online. It contains useful comments about technical details. Additionally, there is an <a title="API Documentation" href="%(link1)" target="_blank" rel="noopener">API documentation</a>&nbsp;that explains the features of the JSON API in detail.</p>]]></content>
+      <content><![CDATA[<p>The demo apps are simple React applications intended to showcase how the OpenCms headless JSON API works. There are no React dependencies, so the same principles can easily be used with other frameworks such as Angular, Vue or whatever else you prefer.</p>
+<p>The demos are not intended to be real-world use cases. These apps have been created specifially as short and simple examples that concentrate on various aspects of the OpenCms headless JSON API.&nbsp;</p>
+<p>The <a title="Source Code" href="%(link0)" target="_blank" rel="noopener">source code</a> of the demo apps is available on GitHub. It contains useful comments about technical details. The <a title="API Documentation" href="%(link1)" target="_blank" rel="noopener">OpenCms heasless JSON API documentation</a>&nbsp;explains the features of the API in detail.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

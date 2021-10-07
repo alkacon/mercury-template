@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.1.40</version>
+		<version>11.0.1.44</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -4999,7 +4999,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Mercury Demo EN]]></value>
+					<value><![CDATA[Mercury Demo]]></value>
 				</property>
 				<property>
 					<name>NavText_de</name>
@@ -6432,7 +6432,33 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[OpenCms homepage now in retro design]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efb698da-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efb9f44e-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/europe/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efba9092-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/northamerica/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbdc4f2-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/machines/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -6449,7 +6475,28 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[The OpenCms documentation]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efb698da-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efb9f44e-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/europe/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbdc4f2-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/machines/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -6473,7 +6520,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Series:  Annual Autumn Assembly (19.10.18 - 19.10.20), User conference]]></value>
+					<value><![CDATA[Series:  Annual Autumn Assembly (19.10.22 - 19.10.24), User conference]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6511,7 +6558,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Presentation of One More Thing (16.10.19)]]></value>
+					<value><![CDATA[ One More Thing (16.10.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6564,7 +6611,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Pre-Release Poster Party (02.08.19)]]></value>
+					<value><![CDATA[ Pre-Release Poster Party (02.08.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6602,7 +6649,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Conclave of Advice Experts (21.07.19), Annual conference]]></value>
+					<value><![CDATA[ Conclave of Advice Experts (21.07.22), Annual conference]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6646,7 +6693,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Core Developer Convention (29.11.19)]]></value>
+					<value><![CDATA[ Core Developer Convention (29.11.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6690,7 +6737,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Series:  Summer of Code (14.08.19 - 14.08.21), Development Sprint]]></value>
+					<value><![CDATA[Series:  Summer of Code (14.08.22 - 14.08.24), Development Sprint]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6743,7 +6790,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Mindful Members Mingling (02.10.19), Conference and expo]]></value>
+					<value><![CDATA[ Mindful Members Mingling (02.10.22), Conference and expo]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6821,7 +6868,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Sane Security Conference (14.06.19)]]></value>
+					<value><![CDATA[ Sane Security Conference (14.06.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6869,7 +6916,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Mixed Meeting of Important People (24.09.19)]]></value>
+					<value><![CDATA[ Mixed Meeting of Important People (24.09.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6917,7 +6964,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Series:  Christmas Tree Convention (25.12.19 - 25.12.21)]]></value>
+					<value><![CDATA[Series:  Christmas Tree Convention (25.12.22 - 25.12.24)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6966,7 +7013,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Happy Hacking Days (04.04.19)]]></value>
+					<value><![CDATA[ Happy Hacking Days (04.04.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7004,7 +7051,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Series:  Gathering of Repetitive Users (19.10.18 - 19.04.21), User conference]]></value>
+					<value><![CDATA[Series:  Gathering of Repetitive Users (19.10.21 - 19.04.24), User conference]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -7021,7 +7068,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Extracted:  Modified gathering of Repetitive Users (19.04.20), User conference]]></value>
+					<value><![CDATA[Extracted:  Modified gathering of Repetitive Users (19.04.23), User conference]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -7349,7 +7396,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Is is safe to update to OpenCms 11?]]></value>
+					<value><![CDATA[Is is safe to update to a new OpenCms version?]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -8634,7 +8681,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 9.5: Editing a website page]]></value>
+					<value><![CDATA[OpenCms: Editing a website page]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15961,6 +16008,23 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>release/.content/section-m/cs_00024.xml</source>
+			<destination>release/.content/section-m/cs_00024.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>699dc7b8-26a5-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>699dc7b9-26a5-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Wed, 06 Oct 2021 13:00:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Release Notes for OpenCms 11.0.0]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>release/.content/section-m/cs_00027.xml</source>
 			<destination>release/.content/section-m/cs_00027.xml</destination>
 			<type>m-section</type>
@@ -16490,6 +16554,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 11.0.2]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/opencms-12.0.0-notes</destination>
+			<type>folder</type>
+			<uuidstructure>69995ae0-26a5-11ec-a282-0242ac11002b</uuidstructure>
+			<datecreated>Wed, 06 Oct 2021 13:00:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.125]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[OpenCms 12.0.0]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 12.0.0]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/opencms-12.0.0-notes/index.html</source>
+			<destination>release/opencms-12.0.0-notes/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>699b0895-26a5-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>699b0896-26a5-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Wed, 06 Oct 2021 13:00:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 12.0.0]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -17068,7 +17172,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavPos</name>
-					<value><![CDATA[0.3725]]></value>
+					<value><![CDATA[0.26203126]]></value>
 				</property>
 				<property>
 					<name>NavText</name>

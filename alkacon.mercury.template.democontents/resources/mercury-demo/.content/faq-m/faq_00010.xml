@@ -2,9 +2,9 @@
 
 <FaqData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/faq.xsd">
   <Faq language="de">
-    <Question><![CDATA[Kann ich problemlos auf OpenCms 10.5 updaten?]]></Question>
+    <Question><![CDATA[Kann ich problemlos auf eine neue OpenCms Version updaten?]]></Question>
     <Order><![CDATA[500]]></Order>
-    <Date>1506175200000</Date>
+    <Date>1663941600000</Date>
     <Paragraph>
       <Caption><![CDATA[Ja! Das Update ist einfach!]]></Caption>
       <Text name="Text0">
@@ -37,9 +37,9 @@
     <GalleryTitle><![CDATA[%(value:Question)]]></GalleryTitle>
   </Faq>
   <Faq language="en">
-    <Question><![CDATA[Is is safe to update to OpenCms 11?]]></Question>
+    <Question><![CDATA[Is is safe to update to a new OpenCms version?]]></Question>
     <Order><![CDATA[500]]></Order>
-    <Date>1506175200000</Date>
+    <Date>1663941600000</Date>
     <Paragraph>
       <Caption><![CDATA[Yes! It is safe to update!]]></Caption>
       <Text name="Text0">

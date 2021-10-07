@@ -47,14 +47,14 @@
     <Title><![CDATA[The OpenCms mailing list form]]></Title>
     <Code name="Code0">
       <links/>
-      <content><![CDATA[<form method="post" action="http://lists.opencms.org/mailman/subscribe/opencms-dev" class="styled-form compact no-border no-bg" autocomplete="off">
+      <content><![CDATA[<form method="post" action="https://lists.opencms.org/mailman/subscribe/opencms-dev" class="styled-form compact no-border no-bg" autocomplete="off">
 
 <fieldset>
     <section>
     <label for="email" class="label sr-only">Email Address</label>
     <div class="input">
         <span class="icon-append fa fa-envelope"></span>
-        <input type="text" id="email" placeholder="Email Address" autocomplete="new-password">
+        <input type="text" id="email" name="email" placeholder="Email Address" autocomplete="new-password">
     </div>
     </section>    
     

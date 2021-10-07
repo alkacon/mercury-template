@@ -2,22 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demo 1 Introduction]]></Title>
+    <Title><![CDATA[Demo 1: Content Access]]></Title>
     <Text name="Text0">
-      <links>
-        <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
-        </link>
-        <link name="link1" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
-        </link>
-      </links>
-      <content><![CDATA[<p>Demo 1 is the hello world of the OpenCms JSON API. It showcases content access via folder and file URLs.</p>
-<p>Folder URLs return JSON documents showing all child files and child folders along with metadata such as the type or the date of creation. A special JSON API parameter can be used to expand single localized contents in the folder listing already.</p>
-<p>File URLs return single contents, optionally in a selected locale. If a content is not available for the requested locale, a fallback locale mechanism takes effect. OpenCms supports a large variety of content types that can be nested and linked with each other. Linked contents are automatically resolved in the JSON response document.</p>
-<p>Read more about the technical details of the JSON folder handler and the content handler in the <a href="%(link0)" target="_blank" rel="noopener">OpenCms JSON API documentation</a> and in the <a href="%(link1)" target="_blank" rel="noopener">source code of the demo application</a>.</p>]]></content>
+      <links/>
+      <content><![CDATA[<p>Demo 1 is the "hello world" of the OpenCms JSON API. It showcases simple content access via folder and file URLs. The contents are directly read from the OpenCms virtual file system.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

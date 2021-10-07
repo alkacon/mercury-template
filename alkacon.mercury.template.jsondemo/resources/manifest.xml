@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.26</version>
+		<version>11.0.1.27</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -41,15 +41,19 @@
 			<properties>
 				<property>
 					<name>NavPos</name>
-					<value><![CDATA[0.27781248]]></value>
+					<value><![CDATA[1.0296874]]></value>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[JSON Demo]]></value>
+					<value><![CDATA[JSON Api]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[JSON Demo]]></value>
+					<value><![CDATA[JSON Api]]></value>
+				</property>
+				<property>
+					<name>default-file</name>
+					<value><![CDATA[##navigation_level_folder##]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -58,15 +62,27 @@
 		<file>
 			<source>mercury-json/index.html</source>
 			<destination>mercury-json/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>2ca10566-041f-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>2ca10567-041f-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Mon, 23 Aug 2021 14:34:08 GMT</datecreated>
+			<type>htmlredirect</type>
+			<uuidstructure>a19fe548-2745-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>a19fe549-2745-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 08:07:35 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction]]></value>
+					<value><![CDATA[Redirect to first page in navigation]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+				<property type="shared">
+					<name>template-elements</name>
+					<value><![CDATA[/system/modules/org.opencms.ade.sitemap/pages/redirect-detail.jsp]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -129,56 +145,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-json/.content/article-m</destination>
-			<type>folder</type>
-			<uuidstructure>23789b13-04b9-11ec-a85e-0242ac11002b</uuidstructure>
-			<datecreated>Tue, 24 Aug 2021 08:56:15 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-json/.content/decoy-m</destination>
-			<type>folder</type>
-			<uuidstructure>b1c1e919-03fc-11ec-a85e-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 23 Aug 2021 10:27:19 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-json/.content/flexible-m</destination>
-			<type>folder</type>
-			<uuidstructure>3755221e-0400-11ec-a85e-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 23 Aug 2021 10:52:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-json/.content/imageseries-m</destination>
-			<type>folder</type>
-			<uuidstructure>af53e5f1-04b7-11ec-a85e-0242ac11002b</uuidstructure>
-			<datecreated>Tue, 24 Aug 2021 08:45:50 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>mercury-json/.content/linksequence-m</destination>
-			<type>folder</type>
-			<uuidstructure>7b5d816a-03fc-11ec-a85e-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 23 Aug 2021 10:25:47 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<destination>mercury-json/.content/list-m</destination>
 			<type>folder</type>
 			<uuidstructure>dc9a14b0-00f7-11ec-8018-0242ac11002b</uuidstructure>
@@ -227,14 +193,14 @@
 			<source>mercury-json/.content/section-m/cs_00001.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00001.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>fea74ce2-04c8-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>fea74ce3-04c8-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Tue, 24 Aug 2021 10:49:45 GMT</datecreated>
+			<uuidstructure>a982e2f2-04bd-11ec-a85e-0242ac11002b</uuidstructure>
+			<uuidresource>a982e2f3-04bd-11ec-a85e-0242ac11002b</uuidresource>
+			<datecreated>Tue, 24 Aug 2021 09:28:38 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Sample List]]></value>
+					<value><![CDATA[List editor: Demo 2: Dynamic list]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -261,14 +227,14 @@
 			<source>mercury-json/.content/section-m/cs_00003.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00003.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>6d13d18a-00f7-11ec-8018-0242ac11002b</uuidstructure>
-			<uuidresource>6d13d18b-00f7-11ec-8018-0242ac11002b</uuidresource>
-			<datecreated>Thu, 19 Aug 2021 14:12:02 GMT</datecreated>
+			<uuidstructure>6b4ae7b2-275f-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>6b4ae7b3-275f-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 11:12:11 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Heart]]></value>
+					<value><![CDATA[Demo 2: Dynamic Lists: Demo 2 notes]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -278,14 +244,14 @@
 			<source>mercury-json/.content/section-m/cs_00004.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00004.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>6d16b7bd-00f7-11ec-8018-0242ac11002b</uuidstructure>
-			<uuidresource>6d16b7be-00f7-11ec-8018-0242ac11002b</uuidresource>
-			<datecreated>Thu, 19 Aug 2021 14:12:02 GMT</datecreated>
+			<uuidstructure>410282ea-1f9e-11ec-a7b2-0242ac11002b</uuidstructure>
+			<uuidresource>410282eb-1f9e-11ec-a7b2-0242ac11002b</uuidresource>
+			<datecreated>Mon, 27 Sep 2021 14:21:49 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Glass tunnel]]></value>
+					<value><![CDATA[Demo 3: Page Layout: Edit the demo 3 content]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -295,14 +261,14 @@
 			<source>mercury-json/.content/section-m/cs_00005.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00005.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>6d19ec10-00f7-11ec-8018-0242ac11002b</uuidstructure>
-			<uuidresource>6d19ec11-00f7-11ec-8018-0242ac11002b</uuidresource>
-			<datecreated>Thu, 19 Aug 2021 14:12:02 GMT</datecreated>
+			<uuidstructure>b445c0cb-275b-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>b445c0cc-275b-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 10:45:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Building]]></value>
+					<value><![CDATA[Demo 1: Content Access: Demo 1 notes]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -319,7 +285,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Content Access]]></value>
+					<value><![CDATA[Headless API Overview: Demo 1: Content Access]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -329,14 +295,31 @@
 			<source>mercury-json/.content/section-m/cs_00007.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00007.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>a725fb50-0f2a-11ec-b0c0-0242ac11002b</uuidstructure>
-			<uuidresource>a725fb51-0f2a-11ec-b0c0-0242ac11002b</uuidresource>
-			<datecreated>Mon, 06 Sep 2021 15:54:00 GMT</datecreated>
+			<uuidstructure>8a2fc7d3-0429-11ec-a85e-0242ac11002b</uuidstructure>
+			<uuidresource>8a2fc7d4-0429-11ec-a85e-0242ac11002b</uuidresource>
+			<datecreated>Mon, 23 Aug 2021 15:48:20 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 2: Dynamic Lists: ]]></value>
+					<value><![CDATA[Headless API Overview: Demo 3: Page Layout]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-json/.content/section-m/cs_00008.xml</source>
+			<destination>mercury-json/.content/section-m/cs_00008.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>58a8c9ed-2756-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>58a8c9ee-2756-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 10:07:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Demo 1: Content Access: Technical details]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -346,14 +329,14 @@
 			<source>mercury-json/.content/section-m/cs_00009.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00009.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>59f3d579-0638-11ec-a8d6-0242ac11002b</uuidstructure>
-			<uuidresource>59f3d57a-0638-11ec-a8d6-0242ac11002b</uuidresource>
-			<datecreated>Thu, 26 Aug 2021 06:39:23 GMT</datecreated>
+			<uuidstructure>d02378fe-0726-11ec-8ab5-0242ac11002b</uuidstructure>
+			<uuidresource>d02378ff-0726-11ec-8ab5-0242ac11002b</uuidresource>
+			<datecreated>Fri, 27 Aug 2021 11:06:22 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: About]]></value>
+					<value><![CDATA[Demo 3: Page Layout: Guide to evaluation]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -370,7 +353,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Virtual File System]]></value>
+					<value><![CDATA[Accessing the OpenCms file system]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -421,7 +404,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Content Folder Request]]></value>
+					<value><![CDATA[Content Folder Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -455,7 +438,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Demo Backend]]></value>
+					<value><![CDATA[Headless API Overview: About the demo backend / template]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -472,7 +455,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: List Configurations]]></value>
+					<value><![CDATA[Accessing list contents]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -489,7 +472,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: The OpenCms JSON API]]></value>
+					<value><![CDATA[Headless API Overview: The OpenCms headless JSON API]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -506,7 +489,24 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 2: Dynamic Lists: Try it Yourself]]></value>
+					<value><![CDATA[Demo 2: Dynamic Lists: Guide to evaluation]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-json/.content/section-m/cs_00019.xml</source>
+			<destination>mercury-json/.content/section-m/cs_00019.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>6c4c928d-275a-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>6c4c928e-275a-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 10:36:25 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Headless API Overview: Enabling the JSON API]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -533,14 +533,14 @@
 			<source>mercury-json/.content/section-m/cs_00021.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00021.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>75779513-1f92-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>75779514-1f92-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 12:57:23 GMT</datecreated>
+			<uuidstructure>76f87cab-04c4-11ec-a85e-0242ac11002b</uuidstructure>
+			<uuidresource>76f87cac-04c4-11ec-a85e-0242ac11002b</uuidresource>
+			<datecreated>Tue, 24 Aug 2021 10:17:19 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Content Access: Edit]]></value>
+					<value><![CDATA[Introduction: List Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -557,7 +557,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Content Access: Demo 1 Introduction]]></value>
+					<value><![CDATA[Demo 1: Content Access: Demo 1: Content Access]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -574,7 +574,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Element Settings]]></value>
+					<value><![CDATA[Demo 3: Page Layout: Accessing element container pages and element settings]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -591,7 +591,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 2: Dynamic Lists: Demo 2 Introduction]]></value>
+					<value><![CDATA[Demo 2: Dynamic Lists: Demo 2: Dynamic Lists]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -625,7 +625,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 2: Dynamic Lists: Edit]]></value>
+					<value><![CDATA[Demo 2: Dynamic Lists: Edit the demo 2 content]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -659,7 +659,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 2: Dynamic Lists]]></value>
+					<value><![CDATA[Headless API Overview: Demo 2: Dynamic Lists]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -676,7 +676,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Content Access: Try it Yourself]]></value>
+					<value><![CDATA[Demo 1: Content Access: Guide to evaluation]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -693,7 +693,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Demo Frontend]]></value>
+					<value><![CDATA[Headless API Overview: About the demo apps]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -702,57 +702,6 @@
 		<file>
 			<source>mercury-json/.content/section-m/cs_00031.xml</source>
 			<destination>mercury-json/.content/section-m/cs_00031.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>8a2fc7d3-0429-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>8a2fc7d4-0429-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Mon, 23 Aug 2021 15:48:20 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/.content/section-m/cs_00033.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00033.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>410282ea-1f9e-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>410282eb-1f9e-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 14:21:49 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting: Edit]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/.content/section-m/cs_00035.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00035.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>a982e2f2-04bd-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>a982e2f3-04bd-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Tue, 24 Aug 2021 09:28:38 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Sample List: Demo 2 Sample List]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/.content/section-m/cs_00036.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00036.xml</destination>
 			<type>m-section</type>
 			<uuidstructure>291fc3b3-04b2-11ec-a85e-0242ac11002b</uuidstructure>
 			<uuidresource>291fc3b4-04b2-11ec-a85e-0242ac11002b</uuidresource>
@@ -768,8 +717,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-json/.content/section-m/cs_00037.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00037.xml</destination>
+			<source>mercury-json/.content/section-m/cs_00032.xml</source>
+			<destination>mercury-json/.content/section-m/cs_00032.xml</destination>
 			<type>m-section</type>
 			<uuidstructure>ed5ced1e-04b3-11ec-a85e-0242ac11002b</uuidstructure>
 			<uuidresource>ed5ced1f-04b3-11ec-a85e-0242ac11002b</uuidresource>
@@ -778,15 +727,15 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Sample Page: Demo 3 Sample Page]]></value>
+					<value><![CDATA[Page editor: Demo 3: Page layout]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-json/.content/section-m/cs_00038.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00038.xml</destination>
+			<source>mercury-json/.content/section-m/cs_00033.xml</source>
+			<destination>mercury-json/.content/section-m/cs_00033.xml</destination>
 			<type>m-section</type>
 			<uuidstructure>b31ae243-1f9e-11ec-a7b2-0242ac11002b</uuidstructure>
 			<uuidresource>b31ae244-1f9e-11ec-a7b2-0242ac11002b</uuidresource>
@@ -795,41 +744,24 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting: Demo 3 Introduction]]></value>
+					<value><![CDATA[Demo 3: Page Layout: Demo 3: Page Layout]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-json/.content/section-m/cs_00041.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00041.xml</destination>
+			<source>mercury-json/.content/section-m/cs_00034.xml</source>
+			<destination>mercury-json/.content/section-m/cs_00034.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>76f87cab-04c4-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>76f87cac-04c4-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Tue, 24 Aug 2021 10:17:19 GMT</datecreated>
+			<uuidstructure>b09752b4-2765-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>b09752b5-2765-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 11:57:04 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: List Request]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/.content/section-m/cs_00044.xml</source>
-			<destination>mercury-json/.content/section-m/cs_00044.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>d02378fe-0726-11ec-8ab5-0242ac11002b</uuidstructure>
-			<uuidresource>d02378ff-0726-11ec-8ab5-0242ac11002b</uuidresource>
-			<datecreated>Fri, 27 Aug 2021 11:06:22 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting: Try it Yourself]]></value>
+					<value><![CDATA[Demo 3: Page Layout: Demo 3 notes]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -973,6 +905,43 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Demo 1: Content Access]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-json/demo-1/demo-1-app</source>
+			<destination>mercury-json/demo-1/demo-1-app</destination>
+			<type>htmlredirect</type>
+			<uuidstructure>e9743f04-274c-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>e9743f05-274c-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 08:59:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavInfo</name>
+					<value><![CDATA[extern]]></value>
+				</property>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[1.0]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Demo 1 app]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Link to: /mercury-json/demo-1/sample-app/]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1280,6 +1249,43 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>mercury-json/demo-2/demo-2-app</source>
+			<destination>mercury-json/demo-2/demo-2-app</destination>
+			<type>htmlredirect</type>
+			<uuidstructure>d05f7ff5-274c-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>d05f7ff6-274c-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 08:59:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavInfo</name>
+					<value><![CDATA[extern]]></value>
+				</property>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.5]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Demo 2 app]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Link to: /mercury-json/demo-2/sample-app/]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>mercury-json/demo-2/index.html</source>
 			<destination>mercury-json/demo-2/index.html</destination>
 			<type>containerpage</type>
@@ -1291,6 +1297,50 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Demo 2: Dynamic Lists]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-json/demo-2/list-editor</destination>
+			<type>folder</type>
+			<uuidstructure>43d3b268-04bd-11ec-a85e-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 24 Aug 2021 09:25:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[1.0]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[List editor]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[List editor]]></value>
+				</property>
+				<property type="shared">
+					<name>Title</name>
+					<value><![CDATA[page]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-json/demo-2/list-editor/index.html</source>
+			<destination>mercury-json/demo-2/list-editor/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>43dd766e-04bd-11ec-a85e-0242ac11002b</uuidstructure>
+			<uuidresource>43dd766f-04bd-11ec-a85e-0242ac11002b</uuidresource>
+			<datecreated>Tue, 24 Aug 2021 09:25:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[List editor]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1558,54 +1608,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-json/demo-2/sample-list</destination>
-			<type>folder</type>
-			<uuidstructure>43d3b268-04bd-11ec-a85e-0242ac11002b</uuidstructure>
-			<datecreated>Tue, 24 Aug 2021 09:25:47 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavInfo</name>
-					<value><![CDATA[ignoreInDefaultNav]]></value>
-				</property>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[1.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Sample List]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Sample List]]></value>
-				</property>
-				<property type="shared">
-					<name>Title</name>
-					<value><![CDATA[page]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/demo-2/sample-list/index.html</source>
-			<destination>mercury-json/demo-2/sample-list/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>43dd766e-04bd-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>43dd766f-04bd-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Tue, 24 Aug 2021 09:25:47 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Sample List]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<destination>mercury-json/demo-3</destination>
 			<type>folder</type>
 			<uuidstructure>f7682130-00e5-11ec-8018-0242ac11002b</uuidstructure>
@@ -1618,11 +1620,48 @@
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Demo 3: Page Formatting]]></value>
+					<value><![CDATA[Demo 3: Page Layout]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting]]></value>
+					<value><![CDATA[Demo 3: Page Layout]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-json/demo-3/demo-3-app</source>
+			<destination>mercury-json/demo-3/demo-3-app</destination>
+			<type>htmlredirect</type>
+			<uuidstructure>db99f364-274c-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>db99f365-274c-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 08:59:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavInfo</name>
+					<value><![CDATA[extern]]></value>
+				</property>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.5]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Demo 3 app]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Link to: /mercury-json/demo-3/sample-app/]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1639,7 +1678,51 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting]]></value>
+					<value><![CDATA[Demo 3: Page Layout]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-json/demo-3/page-editor</destination>
+			<type>folder</type>
+			<uuidstructure>c5d2466c-04b0-11ec-a85e-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 24 Aug 2021 07:56:22 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[1.0]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Page editor]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Page editor]]></value>
+				</property>
+				<property type="shared">
+					<name>Title</name>
+					<value><![CDATA[page]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-json/demo-3/page-editor/index.html</source>
+			<destination>mercury-json/demo-3/page-editor/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>c5db9542-04b0-11ec-a85e-0242ac11002b</uuidstructure>
+			<uuidresource>c5db9543-04b0-11ec-a85e-0242ac11002b</uuidresource>
+			<datecreated>Tue, 24 Aug 2021 07:56:22 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Page editor]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1907,48 +1990,40 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>mercury-json/demo-3/sample-page</destination>
+			<destination>mercury-json/headless-api</destination>
 			<type>folder</type>
-			<uuidstructure>c5d2466c-04b0-11ec-a85e-0242ac11002b</uuidstructure>
-			<datecreated>Tue, 24 Aug 2021 07:56:22 GMT</datecreated>
+			<uuidstructure>711d12ec-2745-11ec-a282-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 07 Oct 2021 08:06:14 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
-					<name>NavInfo</name>
-					<value><![CDATA[ignoreInDefaultNav]]></value>
-				</property>
-				<property>
 					<name>NavPos</name>
-					<value><![CDATA[1.0]]></value>
+					<value><![CDATA[0.125]]></value>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[Sample Page]]></value>
+					<value><![CDATA[Headless API Overview]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Sample Page]]></value>
-				</property>
-				<property type="shared">
-					<name>Title</name>
-					<value><![CDATA[page]]></value>
+					<value><![CDATA[Headless API Overview]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-json/demo-3/sample-page/index.html</source>
-			<destination>mercury-json/demo-3/sample-page/index.html</destination>
+			<source>mercury-json/headless-api/index.html</source>
+			<destination>mercury-json/headless-api/index.html</destination>
 			<type>containerpage</type>
-			<uuidstructure>c5db9542-04b0-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>c5db9543-04b0-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Tue, 24 Aug 2021 07:56:22 GMT</datecreated>
+			<uuidstructure>2ca10566-041f-11ec-a85e-0242ac11002b</uuidstructure>
+			<uuidresource>2ca10567-041f-11ec-a85e-0242ac11002b</uuidresource>
+			<datecreated>Mon, 23 Aug 2021 14:34:08 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Sample Page]]></value>
+					<value><![CDATA[Headless API Overview]]></value>
 				</property>
 			</properties>
 			<relations/>

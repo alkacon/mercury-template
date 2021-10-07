@@ -4,7 +4,7 @@
   <Faq language="de">
     <Question><![CDATA[Kann ich das Mercury Template für meine Website verwenden?]]></Question>
     <Order><![CDATA[1000]]></Order>
-    <Date>1503473400000</Date>
+    <Date>1629703800000</Date>
     <Paragraph>
       <Caption><![CDATA[Auf jeden Fall!]]></Caption>
       <Text name="Text0">
@@ -29,7 +29,7 @@
   <Faq language="en">
     <Question><![CDATA[Can I use the Mercury Template for my website?]]></Question>
     <Order><![CDATA[1000]]></Order>
-    <Date>1503473400000</Date>
+    <Date>1629703800000</Date>
     <Paragraph>
       <Caption><![CDATA[Yes, You Can!]]></Caption>
       <Text name="Text0">

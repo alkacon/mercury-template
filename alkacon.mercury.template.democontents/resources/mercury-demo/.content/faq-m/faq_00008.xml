@@ -4,7 +4,7 @@
   <Faq language="de">
     <Question><![CDATA[Was ist das Mercury Template?]]></Question>
     <Order><![CDATA[600]]></Order>
-    <Date>1504254780000</Date>
+    <Date>1662021180000</Date>
     <Paragraph>
       <Caption><![CDATA[Es ist ein responsives Template für Webseiten basierend auf Bootstrap!]]></Caption>
       <Text name="Text0">
@@ -29,7 +29,7 @@
   <Faq language="en">
     <Question><![CDATA[What is the Mercury Template?]]></Question>
     <Order><![CDATA[600]]></Order>
-    <Date>1504254780000</Date>
+    <Date>1662021180000</Date>
     <Paragraph>
       <Caption><![CDATA[It's a customizable, responsive website template based on Bootstrap!]]></Caption>
       <Text name="Text0">

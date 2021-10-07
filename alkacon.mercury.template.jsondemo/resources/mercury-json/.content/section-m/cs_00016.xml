@@ -2,12 +2,11 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[List Configurations]]></Title>
+    <Title><![CDATA[Accessing list contents]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Sometimes, contents are arranged manually on a website, sometimes contents are published in the form of dynamic lists with pagination, filtering and sorting, e.g., all articles on a certain topic that have been published in the last week.</p>
-<p>Content lists in OpenCms are realized via so called list configurations. The results of such list configurations can either be shown on websites and now also in mobile applications.</p>
-<p>Application developers have the possibility to retrieve content lists configured by editorial teams via the JSON API and to dynamically change filter and sort criteria using the request parameters.</p>]]></content>
+      <content><![CDATA[<p>The list handler of the OpenCms JSON API allows to directly read the results of a list configuration.</p>
+<p>As with folders, the result can be a list of files, or the file content can already be included in the list result.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

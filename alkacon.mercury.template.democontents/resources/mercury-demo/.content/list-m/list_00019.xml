@@ -20,8 +20,5 @@
     <Category/>
     <CategoryMode><![CDATA[OR]]></CategoryMode>
     <SortOrder><![CDATA[DATE_DESC]]></SortOrder>
-    <DateRestriction>
-      <Range/>
-    </DateRestriction>
   </ListConfig>
 </ListConfigs>

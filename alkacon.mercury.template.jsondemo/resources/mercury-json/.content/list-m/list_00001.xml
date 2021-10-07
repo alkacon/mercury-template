@@ -4,7 +4,6 @@
   <ListConfig language="en">
     <Title><![CDATA[Demo 2: Sample List]]></Title>
     <TypesToCollect>m-article:m/display/article-elaborate</TypesToCollect>
-    <TypesToCollect>m-contact:m/display/contact-elaborate</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/.content/]]></target>

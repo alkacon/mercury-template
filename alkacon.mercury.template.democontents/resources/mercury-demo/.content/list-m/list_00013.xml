@@ -18,12 +18,7 @@
     </SearchFolder>
     <Category/>
     <CategoryMode><![CDATA[OR]]></CategoryMode>
-    <SortOrder><![CDATA[DATE_DESC]]></SortOrder>
-    <DateRestriction>
-      <Range>
-        <To>1577790000000</To>
-      </Range>
-    </DateRestriction>
+    <SortOrder><![CDATA[DATE_ASC]]></SortOrder>
     <ShowExpired>true</ShowExpired>
   </ListConfig>
 </ListConfigs>

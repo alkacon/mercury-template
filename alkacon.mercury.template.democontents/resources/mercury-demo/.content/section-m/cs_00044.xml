@@ -9,7 +9,7 @@
           <target><![CDATA[http://documentation.opencms.org/central/]]></target>
         </link>
       </links>
-      <content><![CDATA[<p>OpenCms 11 gibt Entwicklern umfangreiche Möglichkeiten, fantastische Webseiten zu erstellen. Mit der Integration von SOLR, CMIS sowie einer mächtigen Template-API ist nichts unmöglich.</p>
+      <content><![CDATA[<p>OpenCms gibt Entwicklern umfangreiche Möglichkeiten, fantastische Webseiten zu erstellen. Mit der Integration von SOLR, WebDAV, CMIS sowie einer mächtigen Template-API ist nichts unmöglich.</p>
 <p>Sehen Sie sich die <a href="%(link0)">OpenCms Dokumentation</a> für Entwickler an, um alle Details zu erfahren.</p>]]></content>
     </Text>
     <Image>
@@ -30,7 +30,7 @@
           <target><![CDATA[http://documentation.opencms.org/central/]]></target>
         </link>
       </links>
-      <content><![CDATA[<p>OpenCms 11 offers extensive features for developers to create great websites. With the integration of SOLR, CMIS and a powerful Template-API, nothing is impossible.</p>
+      <content><![CDATA[<p>OpenCms offers extensive features for developers to create great websites. With the integration of SOLR, WebDAV, CMIS and a powerful Template-API, nothing is impossible.</p>
 <p>Check the <a href="%(link0)">OpenCms Documentation</a> for developers to learn about the details.</p>]]></content>
     </Text>
     <Image>

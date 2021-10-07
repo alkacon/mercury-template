@@ -5,7 +5,7 @@
     <Title><![CDATA[Responsives Mercury Template]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>OpenCms 11 bringt das <strong>Mercury Template</strong>&nbsp;mit, ein ausgefeiltes, konfigurierbares Template, welches auf Bootstrap aufbaut.</p>
+      <content><![CDATA[<p>OpenCms bringt das <strong>Mercury Template</strong>&nbsp;mit, ein ausgefeiltes, konfigurierbares Template, welches auf Bootstrap aufbaut.</p>
 <p>Mit <strong>Mercury</strong> können Sie toll aussehende Webseiten erstellen ohne programmieren zu müssen.</p>
 <p>Diese Version von OpenCms bietet mächtige Funktionen und ist einfach zu bedienen.</p>]]></content>
     </Text>
@@ -27,8 +27,8 @@
           <uuid>f4987161-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>OpenCms 11 comes with the ready-to-use <strong>Mercury Template</strong>, an advanced, configurable Template based on Bootstrap. Mercury enables you to generate feature rich, nice&nbsp;looking websites without coding.</p>
-<p>Check out the <a href="%(link0)">Element pages</a> section to get an impression about what kind of pages you can generate using <strong>Mercury</strong></p>
+      <content><![CDATA[<p>OpenCms comes with the ready-to-use <strong>Mercury Template</strong>, an advanced, configurable Template based on Bootstrap. Mercury enables you to generate feature rich, nice&nbsp;looking websites without coding.</p>
+<p>Check out the <a href="%(link0)">Element pages</a> section to get an impression about what kind of pages you can generate using <strong>Mercury</strong>.</p>
 <p>With more features than ever, this latest OpenCms version is powerful and easy to use.</p>]]></content>
     </Text>
     <Image>

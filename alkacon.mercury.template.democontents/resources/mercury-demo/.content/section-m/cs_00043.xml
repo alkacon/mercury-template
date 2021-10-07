@@ -10,7 +10,7 @@
           <uuid>f51baae8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>OpenCms 11 bringt mit der vollständig überarbeiteten "Workplace" ein mächtiges Werkzeug für Power-User mit.</p>
+      <content><![CDATA[<p>OpenCms bringt mit der "Workplace" ein mächtiges Werkzeug für Power-User mit.</p>
 <p>Durch direkt in der Seite zu ändernden Text, sowie <strong>"Drag &amp; Drop"</strong> für Bilder, ist es für Benutzer einfacher denn je großartige Webseiten mit OpenCms zu erstellen.</p>
 <p>Sehen Sie sich das <a href="%(link0)">Tutorial</a> an, um mehr über die Bearbeitungs-Funktionen von OpenCms zu erfahren.</p>]]></content>
     </Text>
@@ -41,9 +41,9 @@
           <uuid>f51baae8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>OpenCms 11 comes with a rewritten power-user backoffice called the Workplace.</p>
-<p>With improved inline editing options such as <strong>drag &amp; drop for images</strong> it's easier than ever for content managers to create great looking websites with OpenCms.</p>
-<p>Check out the <a href="%(link0)">tutorial</a> for a quick intro about the use of the editing features.</p>]]></content>
+      <content><![CDATA[<p>OpenCms comes with a power-user backoffice called the Workplace.</p>
+<p>With improved inline editing options such as <strong>drag &amp; drop for images</strong> it's easier than ever for content managers to create great looking websites.</p>
+<p>Check out the <a href="%(link0)">tutorial</a> for a quick introduction about the use of the editing features.</p>]]></content>
     </Text>
     <Image>
       <Image>

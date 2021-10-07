@@ -2,10 +2,16 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Sample List]]></Title>
+    <Title><![CDATA[Demo 2: Dynamic list]]></Title>
     <Text name="Text0">
-      <links/>
-      <content><![CDATA[<p>The list below is used by the demo 2 React application to demonstrate list handling.</p>]]></content>
+      <links>
+        <link name="link0" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-2/demo-2-app]]></target>
+          <uuid>d05f7ff5-274c-11ec-a282-0242ac11002b</uuid>
+        </link>
+      </links>
+      <content><![CDATA[<p>This is the editable web view for the <a href="%(link0)">demo 2 app</a>.</p>
+<p>Any change you make here will be reflected in the app.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

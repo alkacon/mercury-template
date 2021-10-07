@@ -9,10 +9,10 @@
         <YouTubePreview><![CDATA[hqdefault.jpg]]></YouTubePreview>
       </YouTube>
     </MediaContent>
-    <Date>1575880200000</Date>
+    <Date>1670574600000</Date>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Nested containers allow content editors to change the layout of a page, but only in restricted ways. Users with higher permissions, e.g. template developers, have more control and can change the complete page structure. The video also demonstrates other features new in OpenCms 9.5, such as element views and role based container permissions.</p>]]></content>
+      <content><![CDATA[<p>Nested containers allow content editors to change the layout of a page, but only in restricted ways. Users with higher permissions, e.g. template developers, have more control and can change the complete page structure. The video also demonstrates other features of OpenCms, such as element views and role based container permissions.</p>]]></content>
     </Text>
     <Image>
       <link type="WEAK">

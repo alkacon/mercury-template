@@ -2,10 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Demo 3 Sample Page]]></Title>
+    <Title><![CDATA[Enabling the JSON API]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This is the editable web view of demo 3.</p>]]></content>
+      <content><![CDATA[<p>The headless JSON API in OpenCms is disabled by default. If it is enabled, published OpenCms contents can be requested via the JSON API. There is a filter mechanism available to restrict the JSON API access to selected contents if required.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

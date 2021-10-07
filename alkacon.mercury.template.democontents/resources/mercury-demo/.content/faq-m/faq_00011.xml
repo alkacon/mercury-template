@@ -4,7 +4,7 @@
   <Faq language="de">
     <Question><![CDATA[Warum ist diese phantastische Software kostenfrei?]]></Question>
     <Order><![CDATA[800]]></Order>
-    <Date>1472801400000</Date>
+    <Date>1662103800000</Date>
     <Paragraph>
       <Caption><![CDATA[Weil Open Source einfach besser ist!]]></Caption>
       <Text name="Text0">
@@ -29,7 +29,7 @@
   <Faq language="en">
     <Question><![CDATA[How comes software this great is free?]]></Question>
     <Order><![CDATA[800]]></Order>
-    <Date>1504337400000</Date>
+    <Date>1662103800000</Date>
     <Paragraph>
       <Caption><![CDATA[Because Open Source is better!]]></Caption>
       <Text name="Text0">

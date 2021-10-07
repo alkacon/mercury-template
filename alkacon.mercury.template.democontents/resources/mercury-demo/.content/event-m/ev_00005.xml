@@ -3,7 +3,7 @@
 <EventData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/event.xsd">
   <Event language="en">
     <Title><![CDATA[Core Developer Convention]]></Title>
-    <Dates>{"from":"1575014400000", "to":"1575216000000", "pattern":{"type":"NONE"}}</Dates>
+    <Dates>{"from":"1669708800000", "to":"1669910400000", "pattern":{"type":"NONE"}}</Dates>
     <Paragraph>
       <Text name="Text0">
         <links/>

@@ -2,16 +2,16 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Edit]]></Title>
+    <Title><![CDATA[Edit the demo 2 content]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Open the editable web view.</p>]]></content>
+      <content><![CDATA[<p>In the OpenCms page editor</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Open]]></Text>
       <URI>
         <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/demo-2/sample-list/]]></target>
+          <target><![CDATA[/sites/default/mercury-json/demo-2/list-editor/]]></target>
           <uuid>43d3b268-04bd-11ec-a85e-0242ac11002b</uuid>
         </link>
       </URI>

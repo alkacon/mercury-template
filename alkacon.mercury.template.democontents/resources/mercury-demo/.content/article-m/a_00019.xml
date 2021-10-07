@@ -3,7 +3,7 @@
 <ArticleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/article.xsd">
   <Article language="de">
     <Title><![CDATA[OpenCms ermöglicht einfaches arbeiten]]></Title>
-    <Date>1575658800000</Date>
+    <Date>1670353200000</Date>
     <Paragraph>
       <Caption><![CDATA[Redakteure haben Spass an OpenCms]]></Caption>
       <Text name="Text0">
@@ -29,7 +29,7 @@
   <Article language="en">
     <Intro><![CDATA[Editors will have <fun> with OpenCms]]></Intro>
     <Title><![CDATA[OpenCms makes editing <effortless>]]></Title>
-    <Date>1575658800000</Date>
+    <Date>1670353200000</Date>
     <Preface><![CDATA[This is the preface text. Lorem ipsum dolor sit amet, consectetuer <adipiscing> elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ]]></Preface>
     <Image>
       <Image>

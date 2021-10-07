@@ -2,14 +2,16 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Virtual File System]]></Title>
+    <Title><![CDATA[Accessing the OpenCms file system]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
           <target><![CDATA[https://documentation.opencms.org/opencms-documentation/background/the-virtual-file-system/index.html]]></target>
         </link>
       </links>
-      <content><![CDATA[<p>The JSON API makes its contents available in the same way as it does the OpenCms explorer: with the help of a <a title="OpenCms Virtual File System" href="%(link0)" target="_blank" rel="noopener">virtual file system</a>. This makes any OpenCms content directly accessible in the JSON format via a URL. Content located in folders of the virtual file system can be listed in a special JSON folder format.</p>]]></content>
+      <content><![CDATA[<p>The JSON API in it's most basic form allows to access OpenCms contents in the same way as the OpenCms explorer: through the <a title="OpenCms Virtual File System" href="%(link0)" target="_blank" rel="noopener">virtual file system</a>. The contents of folders as well as individual content resources can be requested with the JSON API.&nbsp;</p>
+<p>Folder URLs return JSON documents showing all child files and child folders along with metadata such as the type or the date of creation. A special JSON API parameter can be used to directly include the contents of the files in the folder.</p>
+<p>File URLs return single contents, optionally in a selected locale. If a content is not available for the requested locale, a fallback locale mechanism takes effect. OpenCms supports a large variety of content types that can be nested and linked with each other. Linked contents are automatically resolved in the JSON response document.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

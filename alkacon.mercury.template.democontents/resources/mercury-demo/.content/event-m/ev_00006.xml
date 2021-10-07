@@ -3,7 +3,7 @@
 <EventData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/event.xsd">
   <Event language="en">
     <Title><![CDATA[Summer of Code]]></Title>
-    <Dates>{"from":"1565766000000", "to":"1566140400000", "pattern":{"type":"YEARLY", "month":"AUGUST", "day":"14"}, "occurrences":"3"}</Dates>
+    <Dates>{"from":"1660460400000", "to":"1660834800000", "pattern":{"type":"YEARLY", "month":"AUGUST", "day":"14"}, "occurrences":"3"}</Dates>
     <Type><![CDATA[Development Sprint]]></Type>
     <Performer><![CDATA[Max Mustermann]]></Performer>
     <Paragraph>

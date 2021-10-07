@@ -2,8 +2,9 @@
 
 <EventData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/event.xsd">
   <Event language="en">
+    <Intro><![CDATA[Let's hang out]]></Intro>
     <Title><![CDATA[Pre-Release Poster Party]]></Title>
-    <Dates>{"from":"1564729200000", "to":"1564758000000", "pattern":{"type":"NONE"}}</Dates>
+    <Dates>{"from":"1659423600000", "to":"1659452400000", "pattern":{"type":"NONE"}}</Dates>
     <Paragraph>
       <Text name="Text0">
         <links/>

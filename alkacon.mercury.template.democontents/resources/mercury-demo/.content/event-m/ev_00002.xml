@@ -2,8 +2,9 @@
 
 <EventData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/event.xsd">
   <Event language="en">
-    <Title><![CDATA[Presentation of One More Thing]]></Title>
-    <Dates>{"from":"1571209200000", "to":"1571410800000", "pattern":{"type":"NONE"}}</Dates>
+    <Intro><![CDATA[Turtle neck productions present]]></Intro>
+    <Title><![CDATA[One More Thing]]></Title>
+    <Dates>{"from":"1665903600000", "to":"1666105200000", "pattern":{"type":"NONE"}}</Dates>
     <Paragraph>
       <Text name="Text0">
         <links/>

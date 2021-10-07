@@ -11,7 +11,7 @@
           <query><![CDATA[uri=/json/sites/default/mercury-demo/.content/&wrapper=false]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>Contents can be found in the <em>/.content/</em> folder of a site or sub-site. The example shows the content types of this Mercury demo site.</p>
+      <content><![CDATA[<p>Contents can be located in the <em>/.content/</em> folder of a site or sub-site. The example shows the content types of this Mercury demo site.</p>
 <pre>GET <a title="Content Folder Request" href="%(link0)" target="_blank" rel="noopener">/json/sites/default/mercury-demo/.content/</a>
 {
   "article-m": {},

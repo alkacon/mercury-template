@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Demo 3 notes]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Consider the follwoing use case: Your app should have a start screen that shows a selection of current content. The content elements and the layout of this start screen is to be frequently changed in order to increase user interation. To achive this, you will need:</p>
+<ul>
+<li>A mechanism to select the content elements that should appear on the start screen.</li>
+<li>A way to control aspects of the layout of an individual element on the start screen.</li>
+</ul>
+<p>OpenCms container pages provide exaclty that: A selection of elements that should appear on a page, optionally including individual layout settings.&nbsp;</p>
+<p>Development time can be saved using this already existing functionality from OpenCms instead of implementing such logic inside an app.</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

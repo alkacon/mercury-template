@@ -16,12 +16,5 @@
     <Category/>
     <CategoryMode><![CDATA[OR]]></CategoryMode>
     <SortOrder><![CDATA[DATE_DESC]]></SortOrder>
-    <DateRestriction>
-      <FromToday>
-        <Count><![CDATA[12]]></Count>
-        <Unit><![CDATA[MONTHS]]></Unit>
-        <Direction><![CDATA[future]]></Direction>
-      </FromToday>
-    </DateRestriction>
   </ListConfig>
 </ListConfigs>

@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Try it Yourself]]></Title>
+    <Title><![CDATA[Guide to evaluation]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
@@ -15,13 +15,23 @@
           <anchor><![CDATA[!explorer/9c8c654b-0503-11ec-bbda-0242ac11002b!!/sites/default!!/mercury-demo/.content/!!]]></anchor>
           <query><![CDATA[uri=/workplace]]></query>
         </link>
+        <link name="link2" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
+        <link name="link3" internal="true" type="A">
+          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
+          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        </link>
       </links>
       <content><![CDATA[<ul>
-<li><a title="Demo 1 Application" href="%(link0)" target="_blank" rel="noopener">Open the demo application</a>.</li>
+<li><a title="Demo 1 Application" href="%(link0)" target="_blank" rel="noopener">Open the demo 1 app</a>.</li>
 <li>Try out the article and the FAQ list and detail views with different locales.</li>
 <li>Have a look at the article and FAQ demo contents in the <a title="OpenCms explorer" href="%(link1)" target="_blank" rel="noopener">OpenCms explorer</a> (requires login).</li>
 <li>Edit the title of an article or the question of an FAQ entry and see that the changes are immediately reflected in the demo application.</li>
 <li>Add or delete FAQ entries and articles and see that the contents immediately appear or disappear in the demo application.</li>
+<li>Read more about the technical details of the JSON folder handler and the content handler in the <a href="%(link2)" target="_blank" rel="noopener">OpenCms JSON API documentation</a>.</li>
+<li>Have a look at the <a href="%(link3)" target="_blank" rel="noopener">source code of the demo 2 app</a>.</li>
 </ul>]]></content>
     </Text>
   </ContentSection>

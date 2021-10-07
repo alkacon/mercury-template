@@ -3,7 +3,7 @@
 <EventData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/event.xsd">
   <Event language="en">
     <Title><![CDATA[Sane Security Conference]]></Title>
-    <Dates>{"from":"1560495600000", "to":"1560524400000", "pattern":{"type":"NONE"}}</Dates>
+    <Dates>{"from":"1655190000000", "to":"1655218800000", "pattern":{"type":"NONE"}}</Dates>
     <Paragraph>
       <Caption><![CDATA[A place to secure your security]]></Caption>
       <Text name="Text0">

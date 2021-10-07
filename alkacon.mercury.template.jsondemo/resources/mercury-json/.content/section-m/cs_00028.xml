@@ -5,7 +5,7 @@
     <Title><![CDATA[Demo 2: Dynamic Lists]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Renders dynamic content lists preconfigured by editors.</p>]]></content>
+      <content><![CDATA[<p>Renders a list that is configured by content managers</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Read more]]></Text>

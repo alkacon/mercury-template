@@ -2,20 +2,10 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Edit]]></Title>
+    <Title><![CDATA[Demo 3: Page Layout]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Open the editable web view.</p>]]></content>
+      <content><![CDATA[<p>Demo 3 shows how to generate flexible page layouts in apps by using the OpenCms JSON API to access information from a container page. Container pages can provide content managers with a web based editor that shows pages very similar to the way they will appear in the app later.</p>]]></content>
     </Text>
-    <Link>
-      <Text><![CDATA[Open]]></Text>
-      <URI>
-        <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/default/mercury-json/demo-3/sample-page/]]></target>
-          <uuid>c5d2466c-04b0-11ec-a85e-0242ac11002b</uuid>
-        </link>
-      </URI>
-      <NewWindow>true</NewWindow>
-    </Link>
   </ContentSection>
 </ContentSectionData>

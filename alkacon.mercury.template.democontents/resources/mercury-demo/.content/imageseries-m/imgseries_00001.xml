@@ -3,7 +3,7 @@
 <ImageSeriesData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/imageseries.xsd">
   <ImageSeries language="de">
     <Title><![CDATA[Clipart Bilderserie]]></Title>
-    <Date>1559905200000</Date>
+    <Date>1654599600000</Date>
     <ImageFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/.galleries/cliparts/]]></target>
@@ -18,7 +18,7 @@
     <Intro><![CDATA[Clippping the arts]]></Intro>
     <Title><![CDATA[Clipart image series]]></Title>
     <Preface><![CDATA[A series of free clipart images. Using clipart is a great way to emphasize important content items. ]]></Preface>
-    <Date>1559905200000</Date>
+    <Date>1654599600000</Date>
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>A series of free clipart images.</p>]]></content>

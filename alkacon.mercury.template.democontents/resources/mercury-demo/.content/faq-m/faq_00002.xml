@@ -4,7 +4,7 @@
   <Faq language="de">
     <Question><![CDATA[Ist OpenCms open source oder öfter süß?]]></Question>
     <Order><![CDATA[900]]></Order>
-    <Date>1471937400000</Date>
+    <Date>1661239800000</Date>
     <Paragraph>
       <Caption><![CDATA[Es ist open source!]]></Caption>
       <Text name="Text0">
@@ -29,7 +29,7 @@
   <Faq language="en">
     <Question><![CDATA[Is OpenCms open source or open sauce?]]></Question>
     <Order><![CDATA[900]]></Order>
-    <Date>1503473400000</Date>
+    <Date>1661239800000</Date>
     <Paragraph>
       <Caption><![CDATA[It's open source!]]></Caption>
       <Text name="Text0">

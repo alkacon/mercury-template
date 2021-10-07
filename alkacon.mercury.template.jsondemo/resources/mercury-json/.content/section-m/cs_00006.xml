@@ -5,7 +5,7 @@
     <Title><![CDATA[Demo 1: Content Access]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Renders contents such as articles contained in a folder.</p>]]></content>
+      <content><![CDATA[<p>Renders selected contents from a folder in the virtual file system</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Read more]]></Text>

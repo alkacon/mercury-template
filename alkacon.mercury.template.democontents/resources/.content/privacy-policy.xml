@@ -48,7 +48,7 @@
           <uuid>f4b7b9c8-3a95-11e9-bd84-0242ac11002b</uuid>
         </link>
       </links>
-      <content><![CDATA[<p>I hereby declare that I consent to the display of external content. This means personal data may be transmitted to third party services. You can change your settings later on our <a href="%(link0)"><strong>privacy policy</strong></a>&nbsp;page.</p>]]></content>
+      <content><![CDATA[<p>I hereby declare that I consent to the display of external content. This means personal data may be transmitted to third party services. You can change your settings later on our <a href="%(link0)"><strong>privacy policy</strong></a> page.</p>]]></content>
     </ExternalFooter>
     <ShowLinks>false</ShowLinks>
   </PrivacyPolicy>

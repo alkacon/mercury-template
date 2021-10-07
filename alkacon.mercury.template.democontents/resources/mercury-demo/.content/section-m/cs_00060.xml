@@ -6,7 +6,7 @@
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-<p>&nbsp;</p>]]></content>
+<p> </p>]]></content>
     </Text>
     <Image>
       <Image>
@@ -21,7 +21,7 @@
     <Title><![CDATA[Machine]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. </p>]]></content>
     </Text>
     <Image>
       <Image>

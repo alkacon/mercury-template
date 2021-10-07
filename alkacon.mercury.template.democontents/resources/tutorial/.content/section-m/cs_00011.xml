@@ -5,8 +5,8 @@
     <Title><![CDATA[The Launchpad and the Explorer]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>So far we have been working directly on the web page. Many content managers never need to go any further. But OpenCms also has a fully featured "back office" with lots of advanced options.&nbsp;</p>
-<p>Click&nbsp;on the Quick launch icon on the right side of the toolbar again. We have used the <em><strong>Page editor</strong></em> as well as the <em><strong>Sitemap</strong></em>. There are two more options for the <em>Demo</em> user, that is the <em><strong>Launchpad</strong></em> and the <em><strong>Explorer</strong></em>.&nbsp;</p>
+      <content><![CDATA[<p>So far we have been working directly on the web page. Many content managers never need to go any further. But OpenCms also has a fully featured "back office" with lots of advanced options. </p>
+<p>Click on the Quick launch icon on the right side of the toolbar again. We have used the <em><strong>Page editor</strong></em> as well as the <em><strong>Sitemap</strong></em>. There are two more options for the <em>Demo</em> user, that is the <em><strong>Launchpad</strong></em> and the <em><strong>Explorer</strong></em>. </p>
 <p>Click on <em><strong>Launchpad</strong></em> first. You see a number of icons. Each icon represents an app installed in OpenCms. The <em>Demo</em> user has restricted permissions, so only a subset of the possible apps is shown to him. You can also use the <em>Admin</em> user (Password is "<em>admin</em>") to get the full list of currently available apps in OpenCms.</p>
 <p>Many Apps are quite special and can not be covered in this beginners tutorial. However, the most important app for power users in OpenCms is the <em><strong>Explorer</strong></em>. Go ahead and click on the Explorer icon, either on the <em><strong>Quick lauch</strong></em> menu or the <em><strong>Launchpad</strong></em>.</p>]]></content>
     </Text>

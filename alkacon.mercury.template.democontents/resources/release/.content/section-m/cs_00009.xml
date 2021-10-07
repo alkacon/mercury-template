@@ -2,128 +2,127 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 8.0.2]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 10.5]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
           <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
         </link>
-        <link name="link1" internal="true" type="A">
-          <target><![CDATA[/sites/default/release/mailing-list/index.html]]></target>
-          <uuid>f4eece98-3a95-11e9-bd84-0242ac11002b</uuid>
-        </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[http://bugzilla.opencms.org/]]></target>
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>August 18, 2011: This is the release of OpenCms 8.0.2. Some important additional features have been added to OpenCms 8 in this version. Moreover, a number of issues that persisted in the 8.0.1 release have been fixed.</p>
-<h2>Important features of OpenCms 8</h2>
+      <content><![CDATA[<p>November 30, 2016: Introducing OpenCms 10.5. This release focuses on site localization, adding tools for assisted translation of pages and sitemaps. Many usability improvements have been made for the Page Editor and the Explorer. OpenCms 10.5 also ships a much improved version of the Apollo Template. Based on Bootstrap, the Apollo Template is fully customizable without coding. </p>
+<h2>New in OpenCms 10.5</h2>
 <ul>
-<li>The "Advanced Direct Edit" (ADE) mode allows to create page content by drag &amp; drop.</li>
+<li><span class="label label-orange">#</span> Localization: Compare localized subsites side-by-side.</li>
+<li><span class="label label-orange">#</span> Localization: Copy pages from one language to another, including content.</li>
+<li><span class="label label-orange">#</span> Localization: Connect the same page in different languages using locale relations.</li>
+<li><span class="label label-orange">#</span> Localization: Message bundle translator.</li>
+<li><span class="label label-orange">#</span> Localization: Support for localized properties.</li>
+<li><span class="label label-orange">#</span> Asset Connection: Data view widget API allows to natively integrate external assets in the content editor.</li>
+<li><span class="label label-orange">#</span> Asset Connection: Support for using external assets in templates through EL functions.</li>
+<li><span class="label label-orange">#</span> Enhanced online preview in the page editor hides all OpenCms added markup for HTML debugging.</li>
+<li><span class="label label-orange">#</span> The Apollo Template has been greatly enhanced with new options and functionality.</li>
+<li>The user interface now uses mostly font icons for better support in high resolution (retina) screens.</li>
+<li>Unified toolbar appearance and context menus for editors and workplace.</li>
+<li>New and improved Project Management app.</li>
+<li>Expired / unreleased resources in lists can now be shown on their detail page.</li>
+<li>Security: Added password expiration option.</li>
+<li>Security: Added password strength indicator in password dialog.</li>
+<li>Security: Added dialog "Edit user" so users can update their personal information.</li>
+<li>Security: Added optional "Confirm personal information" dialog after user login.</li>
+<li>Added OpenCmsUrlServletFilter to easily remove the /opencms servlet name.</li>
+<li>Added &lt;cms:jsonpart&gt; tag and CmsJsonPartFilter to split the output of a page to JSON fragments. </li>
+<li>Added &lt;cms:scaleImage&gt; tag for creating responsive image variations, provided by mwxwidmann.</li>
+</ul>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
+<h2>Improved in OpenCms 10.5</h2>
+<ul>
+<li>Improved behavior when switching between page editor, sitemap and explorer views.</li>
+<li>Explorer: Displays of icon overlays on folders showing the default file type.</li>
+<li>Explorer: Resources that are part of a sitemap are shown with a bold title.</li>
+<li>Explorer: Option to sort by navigation position by click on icon column.</li>
+<li>Explorer: Added optional "Copyright" and "Cache" columns.</li>
+<li>Explorer: Improved Display / Edit default actions when clicking on a file. </li>
+<li>Explorer: Improved Copy / Move / Rename functions and dialogs.</li>
+<li>Explorer: Values for Title, Navigation, Copyright and Cache columns can be edited directly by clicking.</li>
+<li>Keyboard shortcuts: Added "step through element views" to page editor (Ctrl-E).</li>
+<li>Keyboard shortcuts: Added "step through overlapping edit points" to page editor (Ctrl-Shift-E).</li>
+<li>Keyboard shortcuts: Added "save" and "save and exit" to content editor (Ctrl-S, Ctrl-Shift-S).</li>
+<li>Keyboard shortcuts: Added option to show "copy or reuse" dialog after drag &amp; drop (Ctrl + mouse up).</li>
+<li>Keyboard shortcuts: Added option to switch the Explorer view to the "Online" project (Ctrl-O).</li>
+<li>Page editor now "remembers" the last formatter set for a content type as default.</li>
+<li>Categories attached to contents are now by default stored in the relation engine, not the XML.</li>
+<li>Added "Show Online" option to page editor (requires correct site configuration). </li>
+<li>Added option to disable all formatter in a subsitemap configuration.</li>
+<li>Added support for connecting with encrypted email servers.</li>
+<li>Added JSP EL functions to read categories from a resource.</li>
+<li>Added JSP EL functions to read locale relations for a page.</li>
+<li>Added support for Google API keys to the location picker widget that uses Google Maps.</li>
+<li>Transferred edit JSP permission from "Template developer" role to "VFS manager" role.</li>
+<li>Extended macro formatters for better handling of new contents.</li>
+<li>Improved model group handling to keep all group data in a single resource.</li>
+<li>Improved user info dialog.</li>
+<li>Enhanced &lt;cms:link&gt; tag to allow links to specific detail pages.</li>
+<li>Updated Chinese and Japanese localization, provided by twofisher.</li>
+<li>Updated Russian localization, provided by makarov-iliya.</li>
+<li>Updated CodeMirror to version 5.21.0.</li>
+<li>Updated TinyMCE to version 4.4.3.</li>
+<li>Updated Lucene/SOLR to Version 5.5.3.</li>
+<li>Fixed performance issues with inheritance groups.</li>
+<li>Fixed issue #422 with bad performance of 'Choice' elements for XML contents, provided by mwxwidmann.</li>
+<li>Fixed issue #425 where wrong content encoding header was set for GWT dialog messages by gallardo.</li>
+<li>Fixed issue #451 where too many tabs caused layout problems in content editor.</li>
+<li>Fixed issue #455 with TinyMCE when using Portuguese as workplace language.</li>
+</ul>
+<p> </p>
+<h2>General OpenCms features</h2>
+<ul>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
+<li>The form based editor allows editing of structured content in a well defined form mask.</li>
 <li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
-<li>The "Content Subscription Engine" allows to inform users when subscribed documents have changed.</li>
-<li>Extended support for creation of content for mobile devices with the &lt;cms:mobile&gt; tag.</li>
-</ul>
-<h2>Main new features in OpenCms 8.0.2</h2>
-<ul>
-<li>It's now possible to easily enable drag &amp; drop for any existing JSP. Just create a reference to the JSP with the new ADE resource type "Dynamic Function". See the "Login Box" or "Search Box" in the Template III demo for examples.</li>
-<li>Refined element permissions for ADE now support Elements dragable by everyone, but editable only with special permissions.</li>
-<li>The sitemap editor now displays status information such as title and VFS location above the currently edited sitemap. It also features a "go to the parent sitemap" button in the toolbar.</li>
-<li>Group containers now have a "Break Up" option which removes the group and places all elements individually on currently edited page, making it easier to create pages with slightly different configurations.</li>
-<li>If a content is previewed in the ADE content gallery, it can now directly be dragged &amp; dropped from the content preview to the current page.</li>
-<li>The legacy direct edit provider for pages using "old" templates now allows to open the "Property" dialog to edit the page properties in direct edit mode. Moreover, it also features a "Logout" option.</li>
-<li>A full demo of the content subscription engine has been added to Template III.</li>
-</ul>
-<h2>Other new features and improvements in OpenCms 8.0.2</h2>
-<ul>
-<li>Optimized gallery performance using dynamic scroll-bar and lazily added elements in gallery list.</li>
-<li>Refined naming schema for automatically created resources now uses "-" instead of "_" for SEO reasons.</li>
-<li>Restyled message box on top screen now follows the general OpenCms 8 look &amp; feel.</li>
-<li>Refined the option in the "Simple" tab of the new ADE Properties Dialog.</li>
-<li>Improved sitemap configuration with "Combo Box" displaying all configured resource types.</li>
-<li>Improved sitemap configuration with option "Local contents" to create all new resources automatically below the current sitemap.</li>
-<li>Improved sitemap configuration with new option "Disable all" to disable all inherited configurations.</li>
-<li>Improved sitemap editor now shows sub sitemap folder resource type icon if a resource is the start of a Sub-Sitemap.</li>
-<li>Added new EL function for JSP that tests if a detail page is configured for a resource type.</li>
-<li>Improved server side filtering of &lt;script&gt; tags in user generated content of ADE elements.</li>
-<li>New XSD path translation feature allows to configure old and new location for moved XSD files that are referenced in existing XML resouces.</li>
-<li>Removed jQuery references from the devDemo module to simplify it.</li>
-<li>Unified VFS image widget now used for different gallery types.</li>
-<li>Changed some JSPs for Template III to use %(link.strong) macro.</li>
-<li>ADE base schemas are now stored in Java package files, not VFS.</li>
-<li>Applied patch to abstrract the Lucene index writer used, contributed by Florian Hopf.</li>
-</ul>
-<h2>Fixed issues in OpenCms 8.0.2</h2>
-<ul>
-<li>Fixed issue in ADE Editor where elements last used (edited, moved, removed, etc.) where not moved to top of the "recent" list.</li>
-<li>Fixed issue in the ADE gallery full text search of the "Advanced" tab, where options were not shown correctly in localized versions.</li>
-<li>Fixed issue in sitemap editor, where creating a new page resulted in different names if either the "+" symbol in the top menu or the context menu was used.</li>
-<li>Fixed issue that sitemap editor in online projects displayed only an empty page., instead the sitemap in now shown in "read only" mode.</li>
-<li>Fixed issue in the sitemap editor where the "Back" button was not working anymore when the sitemap got changed.</li>
-<li>Fixed issue with sitemap / module configuration and OCEE cache, where a previously added element was not visible when editing it again.</li>
-<li>Fixed issue that deleting a user with Root-Admin role failed.</li>
-<li>Fixed issue where the toolbar could not be switched off in "old" version 7 templates.</li>
-<li>Fixed several issues in image gallery regarding scaling, resizing, cropping and setting of title / alt text when editing xmlpages.</li>
-<li>Fixed several issues in download gallery regarding the creation of download links when editing xmlpages.</li>
-<li>Fixed issue that the ADE button may become overlayed and thus unreachable when pasting external script code in a container.</li>
-<li>Fixed issue with mouse over handling where buttons often still shown even though the mouse pointer was no longer above the item.</li>
-<li>Fixed issues that creating a new detail page for a content type in ADE sitemap created a blank container page and not the default model page.</li>
-<li>Fixed issue that drag &amp; drop of elements did not work if the element type was not configured in the ADE configuration.</li>
-<li>Fixed issues with preview in galleries regarding scrolling and localization.</li>
-<li>Fixed issue within image gallery where the fields "Title/Alt Text" and "Copyright" were not filled with the according property values of the selected image.</li>
-<li>Fixed issue that when a new page is created and repeatedly renamed in the sitemap editor an exception might get thrown in the ADE Editor when this page was edited afterwards.</li>
-<li>Fixed several issues in style and coloring.</li>
-<li>Fixed issue that in certain cases the position of a page in the navigation as defined in the sitemap editor was lost after leaving the sitemap editor.</li>
-<li>Fixed issue that a ConcurrentModificationException happened sometimes when demo content modules were imported.</li>
-<li>Fixed issue that paging in Template III search did not work.</li>
-<li>Fixed issue in sitemap editor that the icon of a sub-sitemap moved around in the sitemap changed to the container page icon.</li>
-<li>Fixed issue where articles assigned to categories where not found in the ADE new wizard.</li>
-<li>Fixed issue where the "Show last page" button did not work anymore when switching from the sitemap editor to the parent sitemap.</li>
-<li>Fixed issues with the "Favorites" tab in the ADE clipboard where elements appeared multiple times or removal of elements failed.</li>
-<li>Fixed issue that newly created empty group containers vanished if the title was not entered.</li>
-<li>Fixed issue in the property dialog where inherited values were displayed ambiguously after entering / leaving the field without changes.</li>
-<li>Fixed issue #1976:  Error in ADE to create new section.</li>
-<li>Fixed issue #1982: "change navigation" fails on expired resources.</li>
-<li>Fixed issue #1983: Can't create user under sub "Webuser organizational unit".</li>
-<li>Fixed issue #1986: ADE toolbar cannot be closed when using &lt;cms:editable /&gt;.</li>
-<li>Fixed issue #1988: ADE toolbar covers &lt;cms:editable/&gt; "direct edit" button.</li>
-<li>Fixed issue #1989: When leaving the ADE sitemap “/cms/” (servlet-mapping) remains in the path.</li>
-</ul>
-<h2>Other features of OpenCms</h2>
-<ul>
-<li>"Direct Edit" allows creation and modification of content directly from a web page.</li>
+<li>Responsive demo template based on Bootstrap 3.</li>
+<li>Content creation for mobile devices with preview and device specific content control.</li>
 <li>Structured contents can be defined using a simple XML schema.</li>
-<li>Includes editors with WYSIWYG and syntax highlighting functionality.</li>
 <li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
 <li>Link management for all internal resources with broken link detection.</li>
-<li>Support for WebDAV access to all resources in the OpenCms repository.</li>
 <li>Integrated image scaling and cropping.</li>
-<li>Full featured internal user management that supports the concept of "Organizational Units" (OUs).</li>
+<li>SEO features with automatic sitemap.xml generation and page alias support.</li>
+<li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
 <li>Allows management of multiple websites within one installation.</li>
 <li>Contents can be served dynamically or exported to static HTML files.</li>
+<li>Direct access to the OpenCms content repository over a shared network drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
+<li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
 <li>Extensions can be added through a flexible module system.</li>
-<li>Full text search for web pages, but also in PDF, MS Office documents etc.</li>
 <li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
 <li>JSP integration for dynamic functionality in templates, dynamic forms etc.</li>
-<li>Distribution includes a complete demo website "Wonderful World of Flowers".</li>
 <li>... and many more</li>
 </ul>
-<h2>Backward compatibility</h2>
-<p>We recommend everyone who uses OpenCms to update to the 8.0.2 release.</p>
-<p>OpenCms 8.0.2 is fully backward compatible to all prior 7.x versions. Templates and other OpenCms developed code from version 7.0 or 7.5 should work "out of the box" with version 8.0.2.</p>
-<p><strong>Notice for users of Alkacon OCEE:</strong> OpenCms version 8.0.2 requires Alkacon OCEE version 3.0.2 or later. In case you want to update your OpenCms installation to 8.0.2, please make sure you update Alkacon OCEE to 3.0.2 or later first!</p>
-<h2>Compatibility with Java versions, Servlet containers and Databases</h2>
-<p>OpenCms 8.0 has been written and tested using Java 5 / 6. We have tested only with Oracles version (formerly SUNs version) of the JDK. However, OpenCms has no dependencies to sun.* packages so it should in theory run with all compliant JVMs.</p>
-<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 6.0, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional. We appreciate any feedback regarding other servlet containers.</p>
-<p>On the database side, we have tested with MySQL 5.x, Oracle 9.x and Oracle 10.x, as well as PostgreSQL 8.2.x, MS SQL Server 2000 / 2003, DB2 9.1 and HSQLDB 1.8.0. The automatic update wizard for OpenCms 8 supports MySQL, Oracle and PostgreSQL.</p>
-<h2>Regarding version numbers and build tags</h2>
-<p>In case you want to check out OpenCms from Git, please keep the following in mind: The tag numbers for all OpenCms 8.0 final releases are "build_8_0_x", so the 8.0.2 release is tagged "build_8_0_2".</p>
-<p>The main OpenCms Git repository is available on Github at <a href="%(link0)">github.com/alkacon/opencms-core</a>.</p>
-<h2>How you can help</h2>
-<p>Contributions to the OpenCms core development are most welcome. Please contact the core development team on the <a href="%(link1)">opencms-dev</a> mailing list in case you are interested in supporting the development of OpenCms.</p>
-<p>Please use our Bugzilla to report bugs in this release: <a href="%(link2)">http://bugzilla.opencms.org/</a></p>
-<p> </p>
-<p>Thank you for using OpenCms and have fun with OpenCms 8 :-)</p>]]></content>
+<h3>Backward compatibility</h3>
+<p>OpenCms 10.5 is fully backward compatible with all 9.0, 9.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
+<h3>Compatibility with Java versions, servlet containers and databases</h3>
+<p>OpenCms 10.5 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8 or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<h3>Regarding version numbers and build tags</h3>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank" rel="noopener">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5 release is tagged <span class="label label-cyan">build_10_5_0</span>.</p>
+<h3>How you can help</h3>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank" rel="noopener">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank" rel="noopener">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms 10.5 :-)</p>]]></content>
     </Text>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 10.5]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

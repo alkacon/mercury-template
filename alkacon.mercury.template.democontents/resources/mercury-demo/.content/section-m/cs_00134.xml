@@ -6,7 +6,7 @@
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>A <em>Decoy</em> element is displayed very similar to an <em>Article</em> element when used in a list or directly on a page using any <em>Decoy Teaser</em> formatter.</p>
-<p>However, in contrast to an <em>Article</em>, a <em>Decoy</em> never has a detail page. If a link is placed in the <em>Decoy</em>, this link will lead the user to an arbitarty page, even on external servers.&nbsp;</p>]]></content>
+<p>However, in contrast to an <em>Article</em>, a <em>Decoy</em> never has a detail page. If a link is placed in the <em>Decoy</em>, this link will lead the user to an arbitarty page, even on external servers. </p>]]></content>
     </Text>
     <Image>
       <Image>

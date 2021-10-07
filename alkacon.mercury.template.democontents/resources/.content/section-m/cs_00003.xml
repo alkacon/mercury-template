@@ -5,7 +5,7 @@
     <Title><![CDATA[Mercury Demo]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Example website build with&nbsp;the&nbsp;<strong>Mercury Template</strong>.</p>]]></content>
+      <content><![CDATA[<p>Example website build with the <strong>Mercury Template</strong>.</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Demo Website]]></Text>

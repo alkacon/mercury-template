@@ -13,7 +13,7 @@
     <Title><![CDATA[English text page]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This page is part of the multi language demo. The contents are in english.&nbsp;</p>
+      <content><![CDATA[<p>This page is part of the multi language demo. The contents are in english. </p>
 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>]]></content>
     </Text>
   </ContentSection>

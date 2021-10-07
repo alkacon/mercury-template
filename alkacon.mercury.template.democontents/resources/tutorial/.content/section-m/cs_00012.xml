@@ -5,9 +5,9 @@
     <Title><![CDATA[Link to Step 6]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em><strong>Explorer</strong></em>&nbsp;allows you a behind the scenes look about the file&nbsp;and folder&nbsp;structure that is created when you use the <em><strong>Page editor</strong></em> and the <em><strong>Sitemap</strong></em>.&nbsp;</p>
-<p>All resources in OpenCms are managed in a tree structure familiar to many users with general IT&nbsp;knowledge. Since this tree is completely stored in a database we call this file structure the Virtual File System, or VFS.&nbsp;</p>
-<p>Using the <em><strong>Explorer</strong></em>, you can browse the VFS and check the structure of files and folders. When you click either on the icon of an entry, or do a right-click anywhere over an entry, the <strong><em>Context menu</em></strong> opens. Many options available here&nbsp;are also available somehow in the <em><strong>Page editor</strong></em> or <em><strong>Sitemap</strong></em>. However, some advanced&nbsp;options such as setting the resource permissions&nbsp;are available in the <em><strong>Explorer</strong></em> only.&nbsp;</p>
+      <content><![CDATA[<p>The <em><strong>Explorer</strong></em> allows you a behind the scenes look about the file and folder structure that is created when you use the <em><strong>Page editor</strong></em> and the <em><strong>Sitemap</strong></em>. </p>
+<p>All resources in OpenCms are managed in a tree structure familiar to many users with general IT knowledge. Since this tree is completely stored in a database we call this file structure the Virtual File System, or VFS. </p>
+<p>Using the <em><strong>Explorer</strong></em>, you can browse the VFS and check the structure of files and folders. When you click either on the icon of an entry, or do a right-click anywhere over an entry, the <strong><em>Context menu</em></strong> opens. Many options available here are also available somehow in the <em><strong>Page editor</strong></em> or <em><strong>Sitemap</strong></em>. However, some advanced options such as setting the resource permissions are available in the <em><strong>Explorer</strong></em> only. </p>
 <p>Go ahead and try out the Explorer. Once you are finished, come back to the tutorial and continue with the next step.</p>]]></content>
     </Text>
     <Link>

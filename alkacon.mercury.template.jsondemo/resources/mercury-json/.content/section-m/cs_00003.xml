@@ -5,7 +5,7 @@
     <Title><![CDATA[Demo 2 notes]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>OpenCms lists can use multiple filter and sorting criteria. For example, a list may be configured to "show up to 10 articles in the category <em>company news</em>,&nbsp;where<em> the date is not older than 8 weeks</em>".</p>
+      <content><![CDATA[<p>OpenCms lists can use multiple filter and sorting criteria. For example, a list may be configured to "show up to 10 articles in the category <em>company news</em>, where<em> the date is not older than 8 weeks</em>".</p>
 <p>Development time can be saved using this already existing functionality from OpenCms instead of implementing such logic inside an app.</p>
 <p>Moreover, if the filter has to be changed, e.g. to include another category, the app does not need to be updated.</p>]]></content>
     </Text>

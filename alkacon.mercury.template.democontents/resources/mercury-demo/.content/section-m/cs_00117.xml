@@ -5,7 +5,7 @@
     <Title><![CDATA[The Image Gallery Element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>Image Gallery</em> creates a list of all images found in&nbsp;a given source folder. The gallery supports zooming and swiping on mobile devices.</p>
+      <content><![CDATA[<p>The <em>Image Gallery</em> creates a list of all images found in a given source folder. The gallery supports zooming and swiping on mobile devices.</p>
 <p>The zoom effect can also be applied to individual images, which create a gallery from all zooming images on the page.</p>]]></content>
     </Text>
     <Image>

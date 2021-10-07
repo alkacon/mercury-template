@@ -5,9 +5,9 @@
     <Title><![CDATA[Default login info]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p><span class="badge badge-orange">Username:&nbsp;Demo</span></p>
-<p><span class="badge badge-orange">Password:&nbsp;password</span></p>
-<p><em>Please note: This is one of several&nbsp;users created only for this demo. You should make sure to disable or&nbsp;delete these users in a live installation later.</em></p>]]></content>
+      <content><![CDATA[<p><span class="badge badge-orange">Username: Demo</span></p>
+<p><span class="badge badge-orange">Password: password</span></p>
+<p><em>Please note: This is one of several users created only for this demo. You should make sure to disable or delete these users in a live installation later.</em></p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

@@ -2,102 +2,116 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 8.0.1]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 10.5.1]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
         </link>
-        <link name="link1" internal="true" type="A">
-          <target><![CDATA[/sites/default/release/mailing-list/index.html]]></target>
-          <uuid>f4eece98-3a95-11e9-bd84-0242ac11002b</uuid>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/apollo-template]]></target>
         </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[http://bugzilla.opencms.org/]]></target>
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>June 29, 2011: This is the release of OpenCms 8.0.1. With OpenCms 8.0.1, a number of issues that persisted in the 8.0.0 release have been fixed. Some new features have been added as well.</p>
-<h2>Main new features of OpenCms 8</h2>
+      <content><![CDATA[<p>February 15, 2017: OpenCms 10.5.1 is a maintenance update that fixes several issues that persisted in the 10.5.0 release. This version focuses on security and stability, also adding some new features and enhancements.</p>
+<h2>New in OpenCms 10.5.1</h2>
 <ul>
-<li>The "Advanced Direct Edit" mode allows to create page content by drag &amp; drop.</li>
-<li>The new sitemap editor allows to create new pages and rearrange the navigation tree by drag &amp; drop.</li>
-<li>A multiple file enabled upload dialog all based on HTML replaced the old "Upload Applet".</li>
-<li>The new "Content Subscription Engine" allows to inform users when important documents have changed.</li>
-<li>The XML content editor now support &lt;xsd:choice&gt; elements.</li>
-<li>The new publish dialog supports session based selection of content as well as add/remove of individual resources.</li>
-<li>Extended support for creation of content for mobile devices with the &lt;cms:mobile&gt; tag.</li>
-<li>A central "Shared Folder" has been added that is available from all sites for sharing content.</li>
-<li>JPA support has been added to the database layer, so there's support for 10+ additional databases.</li>
+<li><span class="label label-orange">#</span> Rewritten and improved source search app.</li>
+<li><span class="label label-orange">#</span> Apollo Template: Mayor optimization of all formatters, CSS and JavsScript.</li>
+<li>Rewritten and improved integrated source code editor.</li>
+<li>Page editor now offers filter options in most tabs of the "Add content" dialog.</li>
 </ul>
-<h2>New features and improvements in OpenCms 8.0.1</h2>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
+<h2>Improved in OpenCms 10.5.1</h2>
 <ul>
-<li>The sitemap and ADE configuration has been greatly simplified and improved.</li>
-<li>The properties of a page can now be modified directly in the ADE editor.</li>
-<li>The full text search now also works on MS Office Open XML based documents (.docx, .xlsx, .pptx).</li>
-<li>German content was added to the Template III flower showcase to demonstrate a possible multi language setup.</li>
-<li>A "log out" option has been added to the menu in the ADE editor.</li>
-<li>In the sitemap editor there is a new option to go back to the last page viewed in the ADE editor.</li>
-<li>The sitemap editor now displays the lock status of pages and sub-pages and handles lock conflicts.</li>
-<li>A dialog in the sitemap editor allows to display and change the lock status of all sub-pages of a page.</li>
-<li>The sitemap editor now shows different icons for container pages and detail pages.</li>
-<li>The boundaries of a group container are now highlighted when the elements in the group are edited.</li>
-<li>Modules can now automatically add new resource types to the sitemap configuration with default settings.</li>
-<li>It's now possible to disable selected resource types in the configuration of sub-sitemaps.</li>
-<li>A development demo (dev.demo) module and content has been added to document the new OpenCms 8 features for developers.</li>
-<li>Container element settings are accessible in a formatter JSP using the EL with ${cms.element.settings}.</li>
-<li>Localization strings can now be directly added to an XSD schema for an XML content document.</li>
-<li>The model files for new XML content elements have been replaced by the XSD schema based creation with default values.</li>
-<li>The full text search extraction is now based on the Apache Tika library.</li>
-<li>GWT has been updated to version 2.3.</li>
+<li>Apollo Template: Improved CSS, reduced size by more then 100kb.</li>
+<li>Apollo Template: Optimized and rewrote most JavaScript functions.</li>
+<li>Apollo Template: Updated to jQuery 3.1.1, Bootstrap 3.3.7, Font-Awesome 4.7.0.</li>
+<li>Page editor: Added access to context menu in element settings dialog.</li>
+<li>Page editor: Added option to configure the element deletion default in the "remove element" dialog.</li>
+<li>Localization: Formatter names can now be localized.</li>
+<li>Localization: Bundle translator now stores message properties in alphabetical order.</li>
+<li>Localization: Bundle translator now offers a direct publish button in the toolbar.</li>
+<li>Localization: Allowing locale specific detail only container contents.</li>
+<li>Sitemap editor: Copy function now allows manual editing of target folder.</li>
+<li>Template API: Added multiple utility functions to the &lt;cms&gt; taglib.</li>
+<li>Detail pages: Settings on matching elements are now reused for detail content display.</li>
+<li>Detail pages: &lt;cms:link&gt; tag now supports manually forcing a specific detail page.</li>
+<li>Properties: Added text area widget option for editing properties.</li>
+<li>Improved the project management app.</li>
+<li>Improved writing of container pages to store containers and element settings in a reproducible order.</li>
+<li>Improved handling of model groups.</li>
+<li>Improved handling of locales with country variant.</li>
+<li>Improved email validation regex to allow more valid email addresses.</li>
+<li>Improved touch function to use automatic XML correction.</li>
+<li>Improved copy element function to use automatic XML correction.</li>
+<li>Improved link generation for static resources to use VFS prefix settings.</li>
+<li>Updated CMIS Java libraries.</li>
+<li>Defined calendar mime-type for .ics files, PR provided by gallardo.</li>
+<li>Removed password output from standard out, PR provided by adrianrm.</li>
+<li>Improved message in delete dialog if deleting is not allowed, PR provided by AnnJul.</li>
+<li>Renamed copy dialog label 'Target folder' to 'Target', PR provided by gallardo.</li>
+<li>Fixed issue with element settings not being saved on newly placed content elements.</li>
+<li>Fixed issue with double conversion of dates in search field mappings for attributes.</li>
+<li>Fixed issue with order of content elements mapped to multi-valued Solr-fields.</li>
+<li>Fixed issue with context menu for deleted resources in publish dialog not displaying correctly.</li>
+<li>Fixed issue with project tool tip not being displayed in file tables.</li>
+<li>Fixed issue #408 with permanent redirects.</li>
+<li>Fixed issue #457 in the Apollo template where user blog articles generation failed.</li>
+<li>Fixed issue #462 where gallery dialog would not open on preselected values.</li>
+<li>Fixed issue #475 where dynamic functions disappeared from a containerpage.</li>
+<li>Fixed issue #477 where create containerpage with content elements would not work for non Admin users.</li>
 </ul>
-<h2>Fixed issues in OpenCms 8.0.1</h2>
+<h2>General OpenCms features</h2>
 <ul>
-<li>Fixed issue with the ADE editor overlay that sometimes crashed and / or could not be closed.</li>
-<li>Fixed issue with group containers not being properly saved after editing.</li>
-<li>Fixed issue where an idle user's browser session expired even if the ADE editor was open.</li>
-<li>Fixed issue where two users that open a page in the ADE editor concurrently could overwrite each other's work.</li>
-<li>Fixed issue with concurrent lock states in the sitemap editor.</li>
-<li>Fixed issue with recent list not being properly updated if the individual settings where edited.</li>
-<li>Fixed issue in the new property dialog where an inherited or shared value remained visible and changeable.</li>
-<li>Fixed issue with full text extraction of MS PowerPoint (.ppt) documents.</li>
-<li>Fixed issue with the CSS layout for Template III.</li>
-<li>Fixed issue #1981: Static export after publish fails on exporting template resources with parameters.</li>
-</ul>
-<h2>Features of OpenCms in General</h2>
-<ul>
-<li>"Direct Edit" allows creation and modification of content directly from a web page.</li>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
+<li>The form based editor allows editing of structured content in a well defined form mask.</li>
+<li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
+<li>Responsive "Apollo" default template based on Bootstrap 3 with many features.</li>
+<li>Content creation for mobile devices with preview and device specific content control.</li>
 <li>Structured contents can be defined using a simple XML schema.</li>
-<li>Includes editors with WYSIWYG and syntax highlighting functionality.</li>
 <li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
 <li>Link management for all internal resources with broken link detection.</li>
-<li>Support for WebDAV access to all resources in the OpenCms repository.</li>
 <li>Integrated image scaling and cropping.</li>
-<li>Full featured internal user management that supports the concept of "Organizational Units" (OUs).</li>
+<li>SEO features with automatic sitemap.xml generation and page alias support.</li>
+<li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
 <li>Allows management of multiple websites within one installation.</li>
 <li>Contents can be served dynamically or exported to static HTML files.</li>
+<li>Direct access to the OpenCms content repository over a shared network drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
+<li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
 <li>Extensions can be added through a flexible module system.</li>
-<li>Full text search for web pages, but also in PDF, MS Office documents etc.</li>
 <li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
 <li>JSP integration for dynamic functionality in templates, dynamic forms etc.</li>
-<li>Distribution includes a complete demo website "Wonderful World of Flowers".</li>
 <li>... and many more</li>
 </ul>
-<h2>Backward compatibility</h2>
-<p>We recommend everyone who uses OpenCms to update to the 8.0.1 release.</p>
-<p>OpenCms 8.0.1 is fully backward compatible to all prior 7.x versions. Templates and other OpenCms developed code from version 7.0 or 7.5 should work "out of the box" with version 8.0.1.</p>
-<p><strong>Notice for users of Alkacon OCEE:</strong> OpenCms version 8.0 requires Alkacon OCEE version 3.0 or later. In case you want to update your OpenCms installation to 8.0, please make sure you update Alkacon OCEE to 3.0 or later first!</p>
-<h2>Compatibility with Java versions, Servlet containers and Databases</h2>
-<p>OpenCms 8.0 has been written and tested using Java 5 / 6. We have tested only with Oracles version (formerly SUNs version) of the JDK. However, OpenCms has no dependencies to sun.* packages so it should in theory run with all compliant JVMs.</p>
-<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 6.0, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional. We appreciate any feedback regarding other servlet containers.</p>
-<p>On the database side, we have tested with MySQL 5.x, Oracle 9.x and Oracle 10.x, as well as PostgreSQL 8.2.x, MS SQL Server 2000 / 2003, DB2 9.1 and HSQLDB 1.8.0. The automatic update wizard for OpenCms 8 supports MySQL, Oracle and PostgreSQL.</p>
-<h2>Regarding version numbers and build tags</h2>
-<p>We are currently migrating the OpenCms repository from CVS to Git. The "blessed" Git repository will be made available from Github at <a href="%(link0)">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to check out OpenCms from Git, please keep the following in mind: The tag numbers for all OpenCms 8.0 final releases are "build_8_0_x", so the 8.0.1 release is tagged "build_8_0_1".</p>
-<h2>How you can help</h2>
-<p>Contributions to the OpenCms core development are most welcome. Please contact the core development team on the <a href="%(link1)">opencms-dev</a> mailing list in case you are interested in supporting the development of OpenCms.</p>
-<p>Please use our Bugzilla to report bugs in this release: <a href="%(link2)">http://bugzilla.opencms.org/<br /></a></p>
-<p> </p>
-<p>Thank you for using OpenCms and have fun with OpenCms 8 :-)</p>]]></content>
+<h3>Backward compatibility</h3>
+<p>OpenCms 10.5.1 is fully backward compatible with all 9.0, 9.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.1.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.1. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a> to receive the new version.</p>
+<h3>About the Apollo Template</h3>
+<p>The Apollo template is our main demo showcase. It is build using best practices of the latest OpenCms version. The Apollo template sources are available on Github at <a href="%(link1)">https://github.com/alkacon/apollo-template</a>.</p>
+<h3>Compatibility with Java versions, servlet containers and databases</h3>
+<p>OpenCms 10.5 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8 or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<h3>Regarding version numbers and build tags</h3>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5.1 release is tagged <span class="label label-cyan">build_10_5_1</span>.</p>
+<h3>How you can help</h3>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
     </Text>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 10.5.1]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

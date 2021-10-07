@@ -5,7 +5,7 @@
     <Title><![CDATA[It's the same element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This&nbsp;content section element is reused twice on this page. The output is created using different formatters with special style settings.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>This content section element is reused twice on this page. The output is created using different formatters with special style settings. </p>]]></content>
     </Text>
     <Image>
       <Image>

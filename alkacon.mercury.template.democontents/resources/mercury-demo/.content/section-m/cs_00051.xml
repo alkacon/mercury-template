@@ -5,7 +5,7 @@
     <Title><![CDATA[Using the Content Section to display icon boxes]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This page demonstrates repeated use of the same <em>Content&nbsp;Section</em>element using&nbsp;the special&nbsp;<em>Icon box </em>layout formatter. By using element settings the icon is selected and custom styles are applied.</p>]]></content>
+      <content><![CDATA[<p>This page demonstrates repeated use of the same <em>Content Section</em>element using the special <em>Icon box </em>layout formatter. By using element settings the icon is selected and custom styles are applied.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

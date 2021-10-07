@@ -5,8 +5,8 @@
     <Title><![CDATA[Article vs. Content section - Comparison of the output]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The<em> Article</em> element can be displayed very similar to the <em>Content Section.&nbsp;</em>Depending on the formatter and element settings chosen, there should be no visible difference in the generated output.</p>
-<p>This page shows a comparison of the output in where the content of the <em>Article</em> and the <em>Content section</em> is almost identical. The <em>Article</em> formatter used is always the <em>Elaborate article teaser</em>.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>The<em> Article</em> element can be displayed very similar to the <em>Content Section. </em>Depending on the formatter and element settings chosen, there should be no visible difference in the generated output.</p>
+<p>This page shows a comparison of the output in where the content of the <em>Article</em> and the <em>Content section</em> is almost identical. The <em>Article</em> formatter used is always the <em>Elaborate article teaser</em>. </p>]]></content>
     </Text>
     <Image>
       <Image>

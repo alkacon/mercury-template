@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.27</version>
+		<version>11.0.1.29</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -54,6 +54,10 @@
 				<property>
 					<name>default-file</name>
 					<value><![CDATA[##navigation_level_folder##]]></value>
+				</property>
+				<property>
+					<name>search.subsite</name>
+					<value><![CDATA[JSPON API]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -353,7 +357,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Accessing the OpenCms file system]]></value>
+					<value><![CDATA[Demo 1: Content Access: Accessing the OpenCms file system]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1742,9 +1746,9 @@
 			<source>mercury-json/demo-3/sample-app/asset-manifest.json</source>
 			<destination>mercury-json/demo-3/sample-app/asset-manifest.json</destination>
 			<type>plain</type>
-			<uuidstructure>5b18b8b5-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>5b18b8b6-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:05 GMT</datecreated>
+			<uuidstructure>d69dd4ff-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>d69dd500-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:45:31 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1759,9 +1763,9 @@
 			<source>mercury-json/demo-3/sample-app/favicon.ico</source>
 			<destination>mercury-json/demo-3/sample-app/favicon.ico</destination>
 			<type>plain</type>
-			<uuidstructure>5b1ab488-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>5b1ab489-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:05 GMT</datecreated>
+			<uuidstructure>d69e9752-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>d69e9753-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:45:31 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1776,9 +1780,9 @@
 			<source>mercury-json/demo-3/sample-app/index.html</source>
 			<destination>mercury-json/demo-3/sample-app/index.html</destination>
 			<type>plain</type>
-			<uuidstructure>5b1bed0b-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>5b1bed0c-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:05 GMT</datecreated>
+			<uuidstructure>d69f5aa5-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>d69f5aa6-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:45:31 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1793,9 +1797,9 @@
 			<source>mercury-json/demo-3/sample-app/manifest.json</source>
 			<destination>mercury-json/demo-3/sample-app/manifest.json</destination>
 			<type>plain</type>
-			<uuidstructure>5b1d73ae-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>5b1d73af-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:05 GMT</datecreated>
+			<uuidstructure>d69ff6e8-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>d69ff6e9-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:45:31 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1830,9 +1834,9 @@
 			<source>mercury-json/demo-3/sample-app/static/css/main.94a2d699.chunk.css</source>
 			<destination>mercury-json/demo-3/sample-app/static/css/main.94a2d699.chunk.css</destination>
 			<type>plain</type>
-			<uuidstructure>61723d9b-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>61723d9c-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:16 GMT</datecreated>
+			<uuidstructure>e2419097-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>e2419098-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:45:50 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1847,9 +1851,9 @@
 			<source>mercury-json/demo-3/sample-app/static/css/main.94a2d699.chunk.css.map</source>
 			<destination>mercury-json/demo-3/sample-app/static/css/main.94a2d699.chunk.css.map</destination>
 			<type>plain</type>
-			<uuidstructure>61739d2e-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>61739d2f-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:16 GMT</datecreated>
+			<uuidstructure>e2427afa-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>e2427afb-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:45:50 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1874,9 +1878,9 @@
 			<source>mercury-json/demo-3/sample-app/static/js/2.06af773a.chunk.js</source>
 			<destination>mercury-json/demo-3/sample-app/static/js/2.06af773a.chunk.js</destination>
 			<type>plain</type>
-			<uuidstructure>6953e91c-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>6953e91d-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:29 GMT</datecreated>
+			<uuidstructure>ee35b71d-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>ee35b71e-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:46:10 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1891,9 +1895,9 @@
 			<source>mercury-json/demo-3/sample-app/static/js/2.06af773a.chunk.js.LICENSE.txt</source>
 			<destination>mercury-json/demo-3/sample-app/static/js/2.06af773a.chunk.js.LICENSE.txt</destination>
 			<type>plain</type>
-			<uuidstructure>69560bff-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>69560c00-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:29 GMT</datecreated>
+			<uuidstructure>ee36efa0-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>ee36efa1-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:46:10 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1908,9 +1912,9 @@
 			<source>mercury-json/demo-3/sample-app/static/js/2.06af773a.chunk.js.map</source>
 			<destination>mercury-json/demo-3/sample-app/static/js/2.06af773a.chunk.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>69574482-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>69574483-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:29 GMT</datecreated>
+			<uuidstructure>ee37da03-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>ee37da04-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:46:10 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1925,9 +1929,9 @@
 			<source>mercury-json/demo-3/sample-app/static/js/main.c79fc32c.chunk.js</source>
 			<destination>mercury-json/demo-3/sample-app/static/js/main.c79fc32c.chunk.js</destination>
 			<type>plain</type>
-			<uuidstructure>69591945-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>69591946-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:29 GMT</datecreated>
+			<uuidstructure>ee3960a6-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>ee3960a7-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:46:10 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1942,9 +1946,9 @@
 			<source>mercury-json/demo-3/sample-app/static/js/main.c79fc32c.chunk.js.map</source>
 			<destination>mercury-json/demo-3/sample-app/static/js/main.c79fc32c.chunk.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>695b8a48-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>695b8a49-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:29 GMT</datecreated>
+			<uuidstructure>ee39fce9-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>ee39fcea-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:46:10 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1959,9 +1963,9 @@
 			<source>mercury-json/demo-3/sample-app/static/js/runtime-main.19bd7348.js</source>
 			<destination>mercury-json/demo-3/sample-app/static/js/runtime-main.19bd7348.js</destination>
 			<type>plain</type>
-			<uuidstructure>695e225b-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>695e225c-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:29 GMT</datecreated>
+			<uuidstructure>ee3a721c-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>ee3a721d-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:46:10 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -1976,9 +1980,9 @@
 			<source>mercury-json/demo-3/sample-app/static/js/runtime-main.19bd7348.js.map</source>
 			<destination>mercury-json/demo-3/sample-app/static/js/runtime-main.19bd7348.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>695f81ee-1fae-11ec-a7b2-0242ac11002b</uuidstructure>
-			<uuidresource>695f81ef-1fae-11ec-a7b2-0242ac11002b</uuidresource>
-			<datecreated>Mon, 27 Sep 2021 16:17:29 GMT</datecreated>
+			<uuidstructure>ee3b0e5f-2774-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>ee3b0e60-2774-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Thu, 07 Oct 2021 13:46:10 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>

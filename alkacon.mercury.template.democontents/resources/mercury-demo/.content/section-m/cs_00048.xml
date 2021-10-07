@@ -5,7 +5,7 @@
     <Title><![CDATA[Using the Content Section to display text]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This page demonstrates repeated use of the same<em> Content&nbsp;Section<strong>&nbsp;</strong></em>element for <em>Text </em>only display. Different styles are applied through custom element settings.</p>]]></content>
+      <content><![CDATA[<p>This page demonstrates repeated use of the same<em> Content Section<strong> </strong></em>element for <em>Text </em>only display. Different styles are applied through custom element settings.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

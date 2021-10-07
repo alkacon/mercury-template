@@ -119,5 +119,6 @@
 <p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>
 <p>Thank you for using OpenCms and have fun with OpenCms 9 :-)</p>]]></content>
     </Text>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 9.0.1]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

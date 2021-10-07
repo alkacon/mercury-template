@@ -5,7 +5,7 @@
     <Title><![CDATA[The Location Map element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>Location Map</em> element allows you to add one or many interactive maps to your pages. Maps can be either loaded from <em>OpenStreetMap</em> or <em>Google maps</em>. The map is configured in the content and can contain multiple markers.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>The <em>Location Map</em> element allows you to add one or many interactive maps to your pages. Maps can be either loaded from <em>OpenStreetMap</em> or <em>Google maps</em>. The map is configured in the content and can contain multiple markers. </p>]]></content>
     </Text>
     <Image>
       <Image>

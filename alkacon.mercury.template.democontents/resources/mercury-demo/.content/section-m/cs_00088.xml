@@ -5,8 +5,8 @@
     <Title><![CDATA[The Content section element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The<em> Content Section</em> element contains&nbsp;a versatile combination of <em>Title</em>, <em>Text</em>, <em>Link</em> and <em>Image</em>. Using these simple building blocks, you can create individual pages with free content.</p>
-<p>Several formatters available for the <em>Content Section</em>&nbsp;allow you to style the output in a variety&nbsp;of combinations.</p>]]></content>
+      <content><![CDATA[<p>The<em> Content Section</em> element contains a versatile combination of <em>Title</em>, <em>Text</em>, <em>Link</em> and <em>Image</em>. Using these simple building blocks, you can create individual pages with free content.</p>
+<p>Several formatters available for the <em>Content Section</em> allow you to style the output in a variety of combinations.</p>]]></content>
     </Text>
     <Image>
       <Image>

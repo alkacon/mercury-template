@@ -5,7 +5,7 @@
     <Title><![CDATA[The Flexible content element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>Flexible content</em> allows you to place HTML source snippets in your page. These can be useful e.g. to embed external widgets. Of course, you can also use the <em>Flexible content</em> to add&nbsp;special markup for your page&nbsp;that is not available from the&nbsp;other elements.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>The <em>Flexible content</em> allows you to place HTML source snippets in your page. These can be useful e.g. to embed external widgets. Of course, you can also use the <em>Flexible content</em> to add special markup for your page that is not available from the other elements. </p>]]></content>
     </Text>
     <Image>
       <Image>

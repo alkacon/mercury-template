@@ -5,8 +5,8 @@
     <Title><![CDATA[The Job advertisment element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The <em>Job advertisment</em> is a specialized content for creating job offers. It can contain several paragraphs and images, as well as information about location, start and end date etc. The <em>Job advertisment</em> is similar to the<em>&nbsp;Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the <em>Job advertisment</em> is&nbsp;a semantic entity.</p>
-<p>The&nbsp;full content of an <em>Job advertisment</em> is usually displayed on a&nbsp;<em>Detail page </em>that is accessed&nbsp;through a<em> List </em>like the one below.</p>]]></content>
+      <content><![CDATA[<p>The <em>Job advertisment</em> is a specialized content for creating job offers. It can contain several paragraphs and images, as well as information about location, start and end date etc. The <em>Job advertisment</em> is similar to the<em> Article.</em> Compared to the much simpler <em>Content Section </em>the <em>Job advertisment</em> is a semantic entity.</p>
+<p>The full content of an <em>Job advertisment</em> is usually displayed on a <em>Detail page </em>that is accessed through a<em> List </em>like the one below.</p>]]></content>
     </Text>
     <Image>
       <Image>

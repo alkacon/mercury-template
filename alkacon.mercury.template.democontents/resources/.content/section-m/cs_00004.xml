@@ -5,7 +5,7 @@
     <Title><![CDATA[Login]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Takes you to the login page. Remember to disable the demo accounts&nbsp;later.</p>]]></content>
+      <content><![CDATA[<p>Takes you to the login page. Remember to disable the demo accounts later.</p>]]></content>
     </Text>
     <Link>
       <Text><![CDATA[Login]]></Text>

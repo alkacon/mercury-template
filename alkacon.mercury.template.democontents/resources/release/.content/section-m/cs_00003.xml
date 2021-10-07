@@ -2,71 +2,95 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 9]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 9.5]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
         </link>
         <link name="link1" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
         </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core/issues%20]]></target>
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>November 8, 2013: OpenCms reaches the next milestone with reaching version 9. OpenCms 9 brings several enhancements while being fully backward compatible with OpenCms 8.x.&nbsp;</p>
-<h2>New in OpenCms 9</h2>
+      <content><![CDATA[<p>November 3, 2014: Step up to OpenCms 9.5! This version brings template creation without the need to code, plus other features like user generated content, on-the-fly PDF generation, greatly improved documentation and much more - all presented in a responsive demo website based on Bootstrap.</p>
+<h2>New in OpenCms 9.5</h2>
 <ul>
-<li>Improved "in place" editing of web pages for text and also for images and other content types.</li>
-<li>Enhanced support for different devices with&nbsp;preview and device specific content control.</li>
-<li>Access to the content repository over a shared network drive.</li>
-<li>Detail pages now allow individual content to be added with drag &amp; drop.</li>
-<li>A new site management tool allows simple configuration of multiple sites.</li>
-<li>Automated / scripted setup option, great for continuous integration&nbsp;builds.</li>
-<li>Optimized build process using Gradle.</li>
-<li><span class="label label-orange">#</span>&nbsp;Improved configuration for content formatters.</li>
-<li><span class="label label-orange">#</span> Updated responsive demo template based on Bootstrap 3.</li>
+<li><span class="label label-orange">#</span> Drag &amp; drop template and layout creation with nested containers.</li>
+<li><span class="label label-orange">#</span> User generated content for website visitors.</li>
+<li><span class="label label-orange">#</span> Editors don't need to access the workplace anymore.</li>
+<li><span class="label label-orange">#</span> Managing of galleries, categories and templates in the sitemap editor.</li>
+<li><span class="label label-orange">#</span> Greatly enhanced documentation.</li>
+<li><span class="label label-orange">#</span> Generate PDF documents on the fly.</li>
+<li><span class="label label-orange">#</span> Grid based responsive demo website build with Bootstrap.</li>
+<li>Integrated Spell Checker for the WYSIWYG editor component.</li>
+<li>New roles for fine grained access to the content management functions.</li>
+<li>Element views allow easy grouping and permission setting for content types.</li>
+<li>Create, copy or reuse options when using existing contents.</li>
+<li>Updated user preferences dialog accessible in the page editor.</li>
 </ul>
-<p>Items marked with <span class="label label-orange">#</span> have been added or greatly improved since the OpenCms 9 release candidate (RC).</p>
-<h2>Improved in OpenCms 9</h2>
+<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
+<h2>Improved in OpenCms 9.5</h2>
 <ul>
-<li>Added gallery access to the toolbar.</li>
-<li>Added enhanced page / element info dialog, accessible from the toolbar.</li>
-<li>Added undo / redo function to the form content editor.</li>
-<li>Added direct upload option to image widget in the form&nbsp;content editor.</li>
-<li>Added automatic optimized layout of widgets in the form content editor.</li>
-<li>Added 'This page' publishing mode and other improvements to the publish dialog.</li>
-<li>Added option to create new contents for empty collector lists.</li>
-<li>Added XML content based resource bundles.</li>
-<li>Added dynamic HTML update during in place editing.</li>
-<li>Added option to configure an individual error page per site.</li>
-<li>Added global permission overview dialog.</li>
-<li>Added option to retrieve the database password from a configurable source.</li>
-<li>Added optional feature to prevent users from having more than one session.</li>
-<li>Added feature to destroy sessions of logged in users.</li>
-<li>Added feature to unlock users who are locked out because of too many login attempts.</li>
-<li>Updated Italian localization.</li>
-<li>Updated Spanish localization.</li>
-<li>Updated Russian localization.</li>
-<li>Removed obsolete upload applet.</li>
-<li>Removed obsolete FCKEditor and EditArea.</li>
-<li>Updated SOLR and Lucene libraries.</li>
-<li>Improved SOLR search field mapping for multi-lingual XML contents that are using nested elements.</li>
-<li>Improved text based language detection.</li>
-<li>Fixed issue #23 where parsing the publish scheduled date failed due to a wrong locale.</li>
-<li>Fixed issue #61 where the removal of mapped properties failed.</li>
-<li>Fixed issue #67 where a malformed nested XML content schema resulted in misleading error messages.</li>
-<li>Fixed issue #130 where container page elements where removed without confirmation.</li>
-<li>Fixed issue #168 where the source code contained some spelling errors.</li>
-<li>Fixed issue #180 where database names where not validated during setup.</li>
-<li>Fixed issue #187 where sort by title did not work in the gallery dialogs.</li>
+<li>Added broadcast messages to be shown in the page editor.</li>
+<li>Added feature to generate thumbnail images of PDF documents.</li>
+<li>Added option to show historic versions of elements, available in element info dialog.</li>
+<li>Added editor visibility handler for content fields in the XSD.</li>
+<li>Added locale synchronization for content fields in the XSD.</li>
+<li>Added dynamic field handlers for content fields in the XSD.</li>
+<li>Added new mappings to generate gallery descriptions in the XSD.</li>
+<li>Added "generic locale" for container pages so that elements are valid for all languages.</li>
+<li>Added support for CMYK .jpg images.</li>
+<li>Added thumbnail size display options for images galleries.</li>
+<li>Added option to run a script with CmsShell commands on module import.</li>
+<li>Updated to latest version of TinyMCE.</li>
+<li>Improved password encryption with strong scrypt algorithm.</li>
+<li>Improved screen usage, dialog adjusts to available screen size.</li>
+<li>Improved publishing dialog, especially for thousands of resources.</li>
+<li>Improved user preferences definition to be flexible instead of hard coded.</li>
+<li>Improved status information for new or changed elements in the gallery lists.</li>
+<li>Improved collector list edit points to have a full set of options.</li>
+<li>Improved result lists displayed in ADE to show more infos and options.</li>
+<li>Removed default group "Projectmanagers", use the PROJECT_MANAGER role instead if required.</li>
+<li>Fixed issue with checking "secure" property for resources in some cases.</li>
+<li>Fixed issues with duplicate elements in inheritance groups.</li>
+<li>Fixed several issues in the default link substitution handler.</li>
+<li>Fixed issue with wrong resource filter usage during the relation check before deleting sitemap entries.</li>
+<li>Fixed issue with 'subsite' search scope in the gallery dialog not working correctly.</li>
+<li>Fixed issue with order of settings from formatter configuration not being used.</li>
+<li>Fixed issue with detail containers if detail contents and detail page are located in different sites.</li>
+<li>Fixed issue with detail links where the detail content was located in a different site.</li>
+<li>Fixed issue with redirection to secure site for detail pages.</li>
+<li>Fixed issue with incorrect wildcard handling on SMB network shares.</li>
+<li>Fixed issue with file copying on SMB network shares.</li>
+<li>Fixed issue with scrollbar not appearing for text area widget if very long lines without spaces were entered.</li>
+<li>Fixed issue with creating files in expired folders.</li>
+<li>Fixed issue with head includes not working correctly for container elements in some cases.</li>
+<li>Fixed issue with editor CSS handler related to changed template provider configuration syntax.</li>
+<li>Fixed issue with handling of locale-available property in the editor.</li>
+<li>Fixed issue with the editor calendar display in some environments.</li>
+<li>Fixed issue with the editor VFS file widget configuration.</li>
+<li>Fixed caching issue with XML message bundles.</li>
+<li>Fixed caching issue with default template context provider.</li>
+<li>Fixed search filtering for the search scope "Everything".</li>
+<li>Fixed issue with link handling for detail contents in HTML fields.</li>
+<li>Fixed issue with container page search indexing.</li>
+<li>Fixed issue #192 where the HTML cleanup inserted invalid characters.</li>
+<li>Fixed issue #203 where source search was referring to a non existing constant.</li>
+<li>Fixed issue #205 where message bundles were accessed without locale.</li>
 </ul>
-<h2>Main features of OpenCms</h2>
+<h2>General OpenCms features</h2>
 <ul>
-<li>The page editor allows WYSIWYG&nbsp;inline editing of web pages&nbsp;and arrangement of content by drag &amp; drop.</li>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
 <li>The form based editor allows editing of structured content in a well defined form mask.</li>
 <li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
+<li>Responsive demo template based on Bootstrap 3.</li>
 <li>Content creation for mobile devices with preview and device specific content control.</li>
 <li>Structured contents can be defined using a simple XML schema.</li>
 <li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
@@ -76,8 +100,9 @@
 <li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
 <li>Allows management of multiple websites within one installation.</li>
 <li>Contents can be served dynamically or exported to static HTML files.</li>
-<li>CMIS ans WebDAV access to the OpenCms content repository.</li>
-<li><span style="line-height: 1.6;">Integrates Apache SOLR for powerful content searching and noSQL like queries.</span></li>
+<li>Direct access to the OpenCms content repository over a shared network drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
 <li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
 <li>Extensions can be added through a flexible module system.</li>
 <li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
@@ -85,19 +110,20 @@
 <li>... and many more</li>
 </ul>
 <h3>Backward compatibility</h3>
-<p>OpenCms 9 is fully backward compatible with all 8.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.</p>
-<p><span class="label label-red">Notice for users of Alkacon OCEE</span>&nbsp;OpenCms 9 requires an new version of Alkacon OCEE that will be released until November 15th.</p>
+<p>OpenCms 9.5 is fully backward compatible with all 8.x and 9.0.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.5.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> OpenCms 9.5 requires a new version of Alkacon OCEE. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a> to receive the new version. </p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
-<p>OpenCms 9 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>OpenCms 9.5 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional.</p>
 <p>On the database side, we have tested with MySQL, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
-<p>The main OpenCms Git repository is available on Github at&nbsp;<a href="%(link0)">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 9 sources from Git, please check out <span class="label label-cyan">branch_9_0_x</span>. The 9.0.0 release is tagged <span class="label label-cyan">build_9_0_0</span>.</p>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 9.5 sources from Git, please check out <span class="label label-cyan">branch_9_5_x</span>. The 9.5.0 release is tagged <span class="label label-cyan">build_9_5_0</span>.</p>
 <h3>How you can help</h3>
-<p>Contributions to the OpenCms core development are most welcome. <a href="%(link1)">Please send us your pull requests directly on GitHub.</a></p>
-<p>Please report issues found in OpenCms 9 using&nbsp;<a href="%(link2)">our GitHub issue tracker</a>.</p>
-<p>Thank you for using OpenCms and have fun with OpenCms 9 :-)</p>]]></content>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms 9.5 :-)</p>]]></content>
     </Text>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 9.5]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

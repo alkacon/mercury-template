@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 10]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 12]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
@@ -19,54 +19,81 @@
           <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>March 23, 2016: OpenCms 10 - X marks the spot. Being the greatest OpenCms update for years, version 10 brings a vastly improved user experience that combines the intuitive "Direct Edit" approach of OpenCms with a new, well integrated Lauchpad app center. OpenCms 10 also ships with the new, responsive Apollo Template. Based on Bootstrap, the Apollo Template is fully customizable without coding.</p>
-<h2>New in OpenCms 10</h2>
+      <content><![CDATA[<p>October 12, 2021: OpenCms 12 features a headless JSON API for REST content access, together with several JavaScript demo application that show how to use it. The default "Mercury" template has been greatly improved. Template variants allow to completely switch the generated HTML of a website simply by configuration. A greatly improved WebDAV implementation enables mounting the OpenCms virtual file system from any WebDAV client.</p>
+<h2>Main new features of OpenCms 12</h2>
+<div>
 <ul>
-<li><span class="label label-orange">#</span> Modernized the look &amp; feel of the overall user interface</li>
-<li><span class="label label-orange">#</span> New ready-to-use responsive Apollo Template based on Bootstrap</li>
-<li><span class="label label-orange">#</span> Introduced the Launchpad as the central app starting place for the user</li>
-<li><span class="label label-orange">#</span> Drag and Drop of images directly in the web page editor</li>
-<li><span class="label label-orange">#</span> New file explorer with support for column sorting, filtering and large folders</li>
-<li><span class="label label-orange">#</span> Developers can now export and import modules through a SMB network share</li>
-<li><span class="label label-orange">#</span> New Git app allows pushing and pulling of module content directly from the workplace</li>
-<li><span class="label label-orange">#</span> New &lt;cms:search&gt; tag combines SOLR based resource collection and full text searches</li>
-<li><span class="label label-orange">#</span> New &lt;cms:display&gt; tag generates the output for a single resource with a selected formatter</li>
-<li><span class="label label-orange">#</span> New &lt;cms:edit&gt; tag allows editing of arbitrary resources based on UID</li>
-<li><span class="label label-orange">#</span> Reuse groups allow reusing nested container structures on several pages</li>
-<li><span class="label label-orange">#</span> Copy groups allow creation of boiler plate layouts with text / images</li>
-<li>Users are identified with an identicon or a personal image in the toolbar</li>
-<li>Improved the template editor with support for inherited and disabled templates</li>
-<li>Added a "reset password" option to the login dialog</li>
-<li>Nested container structures can now be copied using the clipboard</li>
-<li>Macro formatters allow to quickly compose new formatters from existing JSP</li>
-<li>Support for system configuration change sets based on XSLT</li>
-<li>Modules are exported with a reduced manifest.xml to avoid merge conflicts</li>
+<li>Headless API: Access XML contents as JSON objects.</li>
+<li>Headless API: List all resources in a folder tree as JSON.</li>
+<li>Headless API: Load the results of a user defined list as JSON.</li>
+<li>Headless API: Load structure and settings of a container page as JSON.</li>
+<li>Headless API: React demo applications showcase the use of the new features.</li>
+<li>Template Variants: Introducing a new container page format (the old format can still be read).</li>
+<li>Template Variants: Store "formatter keys" instead of UUIDs of confifuration files in new container pages.</li>
+<li>Template Variants: Sitemap attributes allow to display different element settings per variant.</li>
+<li>Template Variants: Add and remove content types, formatters and / or functions per master configuration.</li>
+<li>Template Variants: Master configurations can be chained to allow variant specific adjustments of a base variant.</li>
+<li>Workplace: New "Optimize gallery" dialog for image and download galleries.</li>
+<li>Workplace: It's now possible to change properties of a folder without locking all resources in the folder.</li>
+<li>General: Greatly improved WebDAV implementation, allowing to mount the OpenCms virtual file system from any WebDAV client.</li>
 </ul>
-<p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
-<h2>Improved in OpenCms 10 Final over 10 Beta</h2>
+<h2>Further improvements in OpenCms 12</h2>
+<div>
 <ul>
-<li>Added user info dialog and quick launch menu to Page and Sitemap editor toolbar</li>
-<li>Added editor to allow individual customization of the quick launch menu</li>
-<li>Added option to upload a personal image in the user info dialog</li>
-<li>Improved workplace dialog key bindings with 'Enter' and 'Esc' shortcuts</li>
-<li>Improved binary and image file indexing for all configured locales</li>
-<li>Improved error dialog in direct edit view with "Copy to clipboard" function</li>
-<li>Improved site selector paging in the Explorer</li>
-<li>Improved copy/move dialog to preset target folder to current folder</li>
-<li>Fixed issue with role checks and permission for the new workplace apps</li>
-<li>Fixed issue with visibility check in explorer context menu in case of multi selects</li>
-<li>Fixed issue in permission dialog where it was not possible to add role based entries</li>
-<li>Fixed issue in permission dialog where inherited entries where not displayed correctly</li>
-<li>Fixed issue with "Create new" dialog where resources where created to early</li>
-<li>Fixed issue in the Page editor where elements where wrongly marked as new</li>
-<li>Fixed issue with invisible scroll bars in select boxes on Mac OS</li>
+<li>Workplace: "Optimize gallery" dialog allows to find and delete unused images / documents.</li>
+<li>Workplace: "Optimize gallery" dialog allows editing the properties of several images / documents.</li>
+<li>Workplace: Changing the availability date released / expired in the explorer will now also update an XML content that contains a mapping to these properties.</li>
+<li>Workplace: Added a "show password" button on the login dialog.</li>
+<li>Workplace: Combined the "Versoning" workplace apps into a single app.</li>
+<li>Workplace: Added an option to clean up the publish history in the "Versioning" app.</li>
+<li>Workplace: Added "Advanced &gt; Reindex" option in the Explorer context menu to update selected parts of the search index.</li>
+<li>Workplace: Added support for custom gallery upload actions in the explorer.</li>
+<li>Editor: Added editing and other content menu actions on the publish dialog "broken links" panel.</li>
+<li>Editor: Added support for custom gallery upload actions to the gallery dialog and the form editor.</li>
+<li>Editor: Improved "edit point" icon and menu for functions.</li>
+<li>Editor: Disabled editing of elements on a page for types disabled in the sitemap configuration.</li>
+<li>Editor: Preventing session timeout in page editor preview mode.</li>
+<li>Template API: Added support for external URLs in headinclude links.</li>
+<li>Template API: Added support for request parameters in headinclude links.</li>
+<li>Template API: Added "ignore" flex cache directive for dynamic function JSPs.</li>
+<li>Template API: Extended the XSD widget configuration to allow macros in widget names.</li>
+<li>Template API: Added tag "cms:setBundle" as substitute for "fmt:setBundle" with additional support for the OpenCms bundle loader mechanism.</li>
+<li>Template API: Added "isDetailPage?" macro for choosing different element settings depending on whether an element is displayed on a detail page or not.</li>
+<li>Search: Added a list configuration option to limit the maximal number of search results.</li>
+<li>Search: Extended the document factory configuration for indexing, allowing to use different document factories for different search indexes.</li>
+<li>Search: Added an option to configure external SOLR servers per index.</li>
+<li>General: Added new 404/500 error handler page with "spin" and "snow" CSS animations.</li>
+<li>General: Expanded the list of default static export suffixes and mime types.</li>
+<li>General: Added .webp as suffix to detect uploaded files as image resources.</li>
+<li>General: Enabled XML content correction during import.</li>
+<li>General: Added "sort by display order" option to the sitemap configuration.</li>
+<li>General: Use mariadb client instead of mysql connector for MariaDB / MySQL by default.</li>
+<li>General: Using the default table engine for MariaDB / MySQL instead of forcing MyIsam.</li>
+<li>Components: Updated GWT libraries to version to 2.9.0.</li>
+<li>Components: Updated Vaadin libraries to version to 8.11.2.</li>
+<li>Components: Updated SOLR libraries to version to 8.6.2.</li>
+<li>Components: Updated HikariCP libraries to version to 4.0.2.</li>
+<li>Components: Updated Xerces libraries to version to 2.12.0.</li>
+<li>Components: Updated Gradle version to 6.4.1.</li>
+<li>Fixed a number of security issues.</li>
+<li>Fixed issue #706 wrong list item indentation in editor tooltip.</li>
+<li>Fixed issue #709 so the publish dialog does not list resources invisible to a user.</li>
+<li>Fixed issue #711 where using &lt;cms:display&gt; before the first &lt;cms:container&gt; tag caused an NPE in the Offline project.</li>
+<li>Fixed issue #712 with illegal reflexive operation from GWT-Servlet 2.8.2.</li>
+<li>Fixed issue #713 where import module disables new content editing.</li>
+<li>Fixed issue #714 with sorting by title in the gallery dialog.</li>
+<li>Fixed issue #716 with problems displaying offline content with a future release date.</li>
+<li>Fixed issue #719 with anyGroups filter in user search API.</li>
 </ul>
+</div>
+</div>
 <h2>General OpenCms features</h2>
 <ul>
 <li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
 <li>The form based editor allows editing of structured content in a well defined form mask.</li>
 <li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
-<li>Responsive demo template based on Bootstrap 3.</li>
+<li>Responsive "Mercury" default template based on Bootstrap 4 with many features.</li>
+<li>Headless API for accessing content as JSON from external applications.</li>
 <li>Content creation for mobile devices with preview and device specific content control.</li>
 <li>Structured contents can be defined using a simple XML schema.</li>
 <li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
@@ -76,7 +103,7 @@
 <li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
 <li>Allows management of multiple websites within one installation.</li>
 <li>Contents can be served dynamically or exported to static HTML files.</li>
-<li>Direct access to the OpenCms content repository over a shared network drive.</li>
+<li>File access to the OpenCms content repository over a shared network / SMB drive.</li>
 <li>CMIS and WebDAV access to the OpenCms content repository.</li>
 <li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
 <li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
@@ -86,19 +113,20 @@
 <li>... and many more</li>
 </ul>
 <h3>Backward compatibility</h3>
-<p>OpenCms 10.0.0 is fully backward compatible with all 9.0 and 9.5 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.0.0.</p>
-<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a>&nbsp;to receive the new version.</p>
+<p>OpenCms 12.0 is backward compatible with all 11,0, 10.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 12.0.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 12.0. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link0)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
-<p>OpenCms 10.0.0 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
-<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8&nbsp;or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
-<p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<p>OpenCms 12.0 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9 and 8.5. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
-<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 10.0.0 sources from Git, please check out <span class="label label-cyan">branch_10_0_x</span>. The 10.0.0 release is tagged <span class="label label-cyan">build_10_0_0</span>.</p>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 11.0 sources from Git, please check out <span class="label label-cyan">branch_12_0_x</span>. This release is tagged <span class="label label-cyan">build_12_0_0</span>.</p>
 <h3>How you can help</h3>
-<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
-<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>
-<p>Thank you for using OpenCms and have fun with OpenCms 10 :-)</p>]]></content>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
     </Text>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 12.0.0]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

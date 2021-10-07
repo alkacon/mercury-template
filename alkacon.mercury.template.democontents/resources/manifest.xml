@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.1.45</version>
+		<version>11.0.1.47</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -4450,7 +4450,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText_de</name>
-					<value><![CDATA[Mercury Demo DE]]></value>
+					<value><![CDATA[Mercury Demo]]></value>
 				</property>
 				<property>
 					<name>Title</name>
@@ -15580,33 +15580,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>release/.content/flexible-m</destination>
-			<type>folder</type>
-			<uuidstructure>f4ead6e6-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 12:57:27 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/flexible-m/fc_00001.xml</source>
-			<destination>release/.content/flexible-m/fc_00001.xml</destination>
-			<type>m-flexible</type>
-			<uuidstructure>f4eb4c18-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4eb4c19-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 12:57:27 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Mailing list: Mailing list form]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<destination>release/.content/section-m</destination>
 			<type>folder</type>
 			<uuidstructure>f4dd9132-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -15620,14 +15593,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00001.xml</source>
 			<destination>release/.content/section-m/cs_00001.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4de0664-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4de0665-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<uuidstructure>f4df3eea-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4df3eeb-3a95-11e9-bd84-0242ac11002b</uuidresource>
 			<datecreated>Mon, 21 Sep 2015 13:30:39 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 9.5.0: Release Notes for OpenCms 9.5]]></value>
+					<value><![CDATA[Release Notes for OpenCms 9]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15644,7 +15617,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 9.0.1: Release Notes for OpenCms 9.0.1]]></value>
+					<value><![CDATA[Release Notes for OpenCms 9.0.1]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15654,14 +15627,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00003.xml</source>
 			<destination>release/.content/section-m/cs_00003.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4df3eea-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4df3eeb-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<uuidstructure>f4de0664-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4de0665-3a95-11e9-bd84-0242ac11002b</uuidresource>
 			<datecreated>Mon, 21 Sep 2015 13:30:39 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 9.0.0: Release Notes for OpenCms 9]]></value>
+					<value><![CDATA[Release Notes for OpenCms 9.5]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15671,14 +15644,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00004.xml</source>
 			<destination>release/.content/section-m/cs_00004.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4dfdb2d-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4dfdb2e-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:37 GMT</datecreated>
+			<uuidstructure>f4e5f4cb-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e5f4cc-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Mon, 21 Sep 2015 13:30:39 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.5.2: Release Notes for OpenCms 8.5.2]]></value>
+					<value><![CDATA[Release Notes for OpenCms 9.5.1]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15688,14 +15661,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00005.xml</source>
 			<destination>release/.content/section-m/cs_00005.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e07770-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e07771-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:38 GMT</datecreated>
+			<uuidstructure>f4e669fe-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e669ff-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Thu, 24 Sep 2015 08:34:26 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.5.1: Release Notes for OpenCms 8.5.1]]></value>
+					<value><![CDATA[Release Notes for OpenCms 9.5.2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15705,14 +15678,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00006.xml</source>
 			<destination>release/.content/section-m/cs_00006.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e113b3-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e113b4-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:38 GMT</datecreated>
+			<uuidstructure>f4e70641-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e70642-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Thu, 25 Feb 2016 07:48:52 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.5.0: Release Notes for OpenCms 8.5]]></value>
+					<value><![CDATA[Release Notes for OpenCms 9.5.3]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15722,14 +15695,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00007.xml</source>
 			<destination>release/.content/section-m/cs_00007.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e1aff6-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e1aff7-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:38 GMT</datecreated>
+			<uuidstructure>f4e7a284-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e7a285-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Tue, 22 Mar 2016 14:49:57 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.4: Release Notes for OpenCms 8.0.4]]></value>
+					<value><![CDATA[Release Notes for OpenCms 10]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15739,14 +15712,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00008.xml</source>
 			<destination>release/.content/section-m/cs_00008.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e24c39-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e24c3a-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:38 GMT</datecreated>
+			<uuidstructure>f4e83ec7-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e83ec8-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Wed, 24 Aug 2016 09:10:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.3: Release Notes for OpenCms 8.0.3]]></value>
+					<value><![CDATA[Release Notes for OpenCms 10.0.1]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15756,14 +15729,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00009.xml</source>
 			<destination>release/.content/section-m/cs_00009.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e2e87c-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e2e87d-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:38 GMT</datecreated>
+			<uuidstructure>f4e8b3fa-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e8b3fb-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Tue, 13 Sep 2016 09:23:57 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.2: Release Notes for OpenCms 8.0.2]]></value>
+					<value><![CDATA[Release Notes for OpenCms 10.5]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15773,14 +15746,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00010.xml</source>
 			<destination>release/.content/section-m/cs_00010.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e384bf-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e384c0-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:38 GMT</datecreated>
+			<uuidstructure>f4e9503d-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e9503e-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Tue, 14 Feb 2017 13:38:40 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.1: Release Notes for OpenCms 8.0.1]]></value>
+					<value><![CDATA[Release Notes for OpenCms 10.5.1]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15790,14 +15763,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00011.xml</source>
 			<destination>release/.content/section-m/cs_00011.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e42002-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e42003-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:38 GMT</datecreated>
+			<uuidstructure>f4e9c570-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4e9c571-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Mon, 10 Jul 2017 10:04:12 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.0: Release Notes for OpenCms 8]]></value>
+					<value><![CDATA[Release Notes for OpenCms 10.5.2]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15807,14 +15780,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00012.xml</source>
 			<destination>release/.content/section-m/cs_00012.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e4bc45-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e4bc46-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:39 GMT</datecreated>
+			<uuidstructure>f4ea61b3-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f4ea61b4-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Wed, 18 Oct 2017 06:31:41 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Installation: OpenCms 10.5 Server installation]]></value>
+					<value><![CDATA[Release Notes for OpenCms 10.5.3]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15824,14 +15797,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<source>release/.content/section-m/cs_00013.xml</source>
 			<destination>release/.content/section-m/cs_00013.xml</destination>
 			<type>m-section</type>
-			<uuidstructure>f4e55888-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e55889-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:39 GMT</datecreated>
+			<uuidstructure>b5408263-512e-11e9-92c0-0242ac11002b</uuidstructure>
+			<uuidresource>b5408264-512e-11e9-92c0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 28 Mar 2019 07:54:26 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Mailing list: Mailing list]]></value>
+					<value><![CDATA[Release Notes for OpenCms 10.5.4]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -15840,193 +15813,6 @@ This module also creates a set of demo users during the import.]]></description>
 		<file>
 			<source>release/.content/section-m/cs_00014.xml</source>
 			<destination>release/.content/section-m/cs_00014.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e5f4cb-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e5f4cc-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:30:39 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 9.5.1: Release Notes for OpenCms 9.5.1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00015.xml</source>
-			<destination>release/.content/section-m/cs_00015.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e669fe-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e669ff-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Sep 2015 08:34:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 9.5.2: Release Notes for OpenCms 9.5.2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00016.xml</source>
-			<destination>release/.content/section-m/cs_00016.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e70641-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e70642-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Thu, 25 Feb 2016 07:48:52 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 9.5.3: Release Notes for OpenCms 9.5.3]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00017.xml</source>
-			<destination>release/.content/section-m/cs_00017.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e7a284-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e7a285-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Tue, 22 Mar 2016 14:49:57 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 10.0.0: Release Notes for OpenCms 10]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00018.xml</source>
-			<destination>release/.content/section-m/cs_00018.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e83ec7-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e83ec8-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 24 Aug 2016 09:10:05 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 10.0.1: Release Notes for OpenCms 10.0.1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00019.xml</source>
-			<destination>release/.content/section-m/cs_00019.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e8b3fa-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e8b3fb-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Tue, 13 Sep 2016 09:23:57 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 10.5.0: Release Notes for OpenCms 10.5]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00020.xml</source>
-			<destination>release/.content/section-m/cs_00020.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e9503d-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e9503e-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Tue, 14 Feb 2017 13:38:40 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 10.5.1: Release Notes for OpenCms 10.5.1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00021.xml</source>
-			<destination>release/.content/section-m/cs_00021.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4e9c570-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4e9c571-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 10 Jul 2017 10:04:12 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 10.5.2: Release Notes for OpenCms 10.5.2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00022.xml</source>
-			<destination>release/.content/section-m/cs_00022.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>f4ea61b3-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4ea61b4-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 18 Oct 2017 06:31:41 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 10.5.3: Release Notes for OpenCms 10.5.3]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00023.xml</source>
-			<destination>release/.content/section-m/cs_00023.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>b5408263-512e-11e9-92c0-0242ac11002b</uuidstructure>
-			<uuidresource>b5408264-512e-11e9-92c0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 28 Mar 2019 07:54:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 10.5.4: Release Notes for OpenCms 10.5.4]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00024.xml</source>
-			<destination>release/.content/section-m/cs_00024.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>699dc7b8-26a5-11ec-a282-0242ac11002b</uuidstructure>
-			<uuidresource>699dc7b9-26a5-11ec-a282-0242ac11002b</uuidresource>
-			<datecreated>Wed, 06 Oct 2021 13:00:42 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release Notes for OpenCms 12.0.0]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/.content/section-m/cs_00027.xml</source>
-			<destination>release/.content/section-m/cs_00027.xml</destination>
 			<type>m-section</type>
 			<uuidstructure>3ea6783f-67fb-11e9-b673-0242ac11002b</uuidstructure>
 			<uuidresource>3ea67840-67fb-11e9-b673-0242ac11002b</uuidresource>
@@ -16042,8 +15828,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>release/.content/section-m/cs_00028.xml</source>
-			<destination>release/.content/section-m/cs_00028.xml</destination>
+			<source>release/.content/section-m/cs_00015.xml</source>
+			<destination>release/.content/section-m/cs_00015.xml</destination>
 			<type>m-section</type>
 			<uuidstructure>47c919bf-ce39-11e9-a5ac-0242ac11002b</uuidstructure>
 			<uuidresource>47c919c0-ce39-11e9-a5ac-0242ac11002b</uuidresource>
@@ -16059,8 +15845,8 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>release/.content/section-m/cs_00029.xml</source>
-			<destination>release/.content/section-m/cs_00029.xml</destination>
+			<source>release/.content/section-m/cs_00016.xml</source>
+			<destination>release/.content/section-m/cs_00016.xml</destination>
 			<type>m-section</type>
 			<uuidstructure>078b580b-dbd9-11ea-acb2-0242ac11002b</uuidstructure>
 			<uuidresource>078b580c-dbd9-11ea-acb2-0242ac11002b</uuidresource>
@@ -16076,80 +15862,17 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>release/installation</destination>
-			<type>folder</type>
-			<uuidstructure>f4ebe85b-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:41:21 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[65.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Installation]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Installation notes]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/installation/index.html</source>
-			<destination>release/installation/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4ed20e0-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4ed20e1-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:41:21 GMT</datecreated>
+			<source>release/.content/section-m/cs_00017.xml</source>
+			<destination>release/.content/section-m/cs_00017.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>699dc7b8-26a5-11ec-a282-0242ac11002b</uuidstructure>
+			<uuidresource>699dc7b9-26a5-11ec-a282-0242ac11002b</uuidresource>
+			<datecreated>Wed, 06 Oct 2021 13:00:42 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Installation]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/mailing-list</destination>
-			<type>folder</type>
-			<uuidstructure>f4ee0b43-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:39:15 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[70.0]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Mailing list]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[The OpenCms Mailing list]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/mailing-list/index.html</source>
-			<destination>release/mailing-list/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4eece98-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4eece99-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:39:15 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Mailing list]]></value>
+					<value><![CDATA[Release Notes for OpenCms 12.0.0]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16594,326 +16317,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 12.0.0]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.0.0-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f4f81d9c-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:41:39 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[62.5]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.0.0]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.0.0]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.0.0-notes/index.html</source>
-			<destination>release/opencms-8.0.0-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4f8b9e1-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4f8b9e2-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:41:39 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.0]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.0.1-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f4f95624-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:42:21 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[61.25]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.0.1]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.0.1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.0.1-notes/index.html</source>
-			<destination>release/opencms-8.0.1-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4fa1979-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4fa197a-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:42:21 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.0.2-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f4fab5bc-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:42:45 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[60.625]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.0.2]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.0.2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.0.2-notes/index.html</source>
-			<destination>release/opencms-8.0.2-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4fb7911-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4fb7912-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:42:46 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.0.3-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f4fc1554-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:43:04 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[60.3125]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.0.3]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.0.3]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.0.3-notes/index.html</source>
-			<destination>release/opencms-8.0.3-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4fdea19-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4fdea1a-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:43:04 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.3]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.0.4-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f4fed47c-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:43:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[60.15625]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.0.4]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.0.4]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.0.4-notes/index.html</source>
-			<destination>release/opencms-8.0.4-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f4ffe5f1-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4ffe5f2-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:43:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.0.4]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.5.0-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f500f764-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:43:52 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[60.078125]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.5.0]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.5.0]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.5.0-notes/index.html</source>
-			<destination>release/opencms-8.5.0-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f50193a9-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f50193aa-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:43:52 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.5.0]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.5.1-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f5027e0c-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:44:10 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[60.039062]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.5.1]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.5.1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.5.1-notes/index.html</source>
-			<destination>release/opencms-8.5.1-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f5034161-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f5034162-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:44:10 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.5.1]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>release/opencms-8.5.2-notes</destination>
-			<type>folder</type>
-			<uuidstructure>f503dda4-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<datecreated>Mon, 21 Sep 2015 13:44:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[60.01953]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[OpenCms 8.5.2]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Release notes for OpenCms 8.5.2]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>release/opencms-8.5.2-notes/index.html</source>
-			<destination>release/opencms-8.5.2-notes/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>f504a0f9-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f504a0fa-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Mon, 21 Sep 2015 13:44:31 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms 8.5.2]]></value>
 				</property>
 			</properties>
 			<relations/>

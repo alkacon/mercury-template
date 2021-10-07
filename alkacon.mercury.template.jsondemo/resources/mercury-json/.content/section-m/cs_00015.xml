@@ -5,7 +5,7 @@
     <Title><![CDATA[About the demo backend / template]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Even though this demo uses the OpenCms Mercury template and demo contents, the headless JSON API does not depended on Mercury in any way. <span style="font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; font-size: 1.6rem;">The API automatically works with the template and content types currently installed on an OpenCms server.</span></p>]]></content>
+      <content><![CDATA[<p>Even though this demo uses the OpenCms Mercury template and demo contents, the headless JSON API does NOT depend on Mercury in any way. <span style="font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; font-size: 1.6rem;">The headless JSON API works with any OpenCms template.</span></p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

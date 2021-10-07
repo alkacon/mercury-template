@@ -5,8 +5,8 @@
     <Title><![CDATA[The Article element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The<em> Article</em> element can contain several paragraphs and images, as well as information about author, publishing date etc. It is well suited to write <em>News Messages</em> or <em>Blog entries.</em> Compared to the much simpler <em>Content Section</em>, an<em>&nbsp;Article</em>&nbsp;forms a semantic entity.&nbsp;&nbsp;</p>
-<p>The full content of a Article is usually displayed on a&nbsp;<em>Detail page&nbsp;</em>that is accessed&nbsp;through a<em><em> List</em></em>. On this page, teaser elements are directly placed using the<em>&nbsp;Article Teaser</em> formatters.</p>]]></content>
+      <content><![CDATA[<p>The<em> Article</em> element can contain several paragraphs and images, as well as information about author, publishing date etc. It is well suited to write <em>News Messages</em> or <em>Blog entries.</em> Compared to the much simpler <em>Content Section</em>, an<em> Article</em> forms a semantic entity.  </p>
+<p>The full content of a Article is usually displayed on a <em>Detail page </em>that is accessed through a<em><em> List</em></em>. On this page, teaser elements are directly placed using the<em> Article Teaser</em> formatters.</p>]]></content>
     </Text>
     <Image>
       <Image>

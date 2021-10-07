@@ -12,7 +12,7 @@
           <target><![CDATA[http://www.alkacon.com/contact/]]></target>
         </link>
       </links>
-      <content><![CDATA[<p><strong>Unsere Adresse:</strong><br /><a href="%(link0)">Alkacon Software GmbH &amp; Co. KG</a>&nbsp;<br />An der Wachsfabrik 13 <br />50996 Köln</p>
+      <content><![CDATA[<p><strong>Unsere Adresse:</strong><br /><a href="%(link0)">Alkacon Software GmbH &amp; Co. KG</a> <br />An der Wachsfabrik 13 <br />50996 Köln</p>
 <p><a href="%(link1)">Zum Kontaktformular</a></p>]]></content>
     </Text>
   </ContentSection>

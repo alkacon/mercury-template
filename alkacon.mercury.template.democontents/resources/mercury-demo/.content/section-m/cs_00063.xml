@@ -5,8 +5,8 @@
     <Title><![CDATA[Tile demonstration]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>This page demonstrates the use of the special "Row for tiles". This row does not generate predefined columns. Instead, the elements in the row have to generate the columns. Special formatters like for the section can do this.&nbsp;</p>
-<p>This allows you to generate "floating" layouts where the elements float depending on the screen size.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>This page demonstrates the use of the special "Row for tiles". This row does not generate predefined columns. Instead, the elements in the row have to generate the columns. Special formatters like for the section can do this. </p>
+<p>This allows you to generate "floating" layouts where the elements float depending on the screen size. </p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

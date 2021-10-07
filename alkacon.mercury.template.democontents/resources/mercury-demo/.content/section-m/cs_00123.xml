@@ -5,10 +5,10 @@
     <Title><![CDATA[Filter options for dynamic lists]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The list element provides powerful features&nbsp;to collect and display collections of elements on a page. The "Dynamic List" formatter provides Ajax-based paging trough long lists. For sorting and filtering a dynamic list, two special formatters are available:</p>
+      <content><![CDATA[<p>The list element provides powerful features to collect and display collections of elements on a page. The "Dynamic List" formatter provides Ajax-based paging trough long lists. For sorting and filtering a dynamic list, two special formatters are available:</p>
 <ul>
 <li>The "<em>Dynamic list: Sort options bar</em>" formatter allows to sort the list and filter by category using dropdown menus normally placed above the list.</li>
-<li>The "<em>Dynamic list : Content&nbsp;filters</em>" formatter provides full text search in the list, filtering by date (year / month), filtering by folder and also filtering by category. This is normally placed in a column aside of the list.</li>
+<li>The "<em>Dynamic list : Content filters</em>" formatter provides full text search in the list, filtering by date (year / month), filtering by folder and also filtering by category. This is normally placed in a column aside of the list.</li>
 </ul>
 <p>In order to use these features, just drop the same list element on the page multiple times and select different "Dynamic List" formatters.</p>]]></content>
     </Text>

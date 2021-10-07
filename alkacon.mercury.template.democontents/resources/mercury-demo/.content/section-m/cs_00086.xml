@@ -5,7 +5,7 @@
     <Title><![CDATA[Sample Text]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Text is created from <em>Content Section</em> elements. Text can be displayed either in&nbsp;<em>Normal</em>&nbsp;or <em>Lead&nbsp;</em>style. The style can be further modified with a custom CSS class.</p>]]></content>
+      <content><![CDATA[<p>Text is created from <em>Content Section</em> elements. Text can be displayed either in <em>Normal</em> or <em>Lead </em>style. The style can be further modified with a custom CSS class.</p>]]></content>
     </Text>
     <Image>
       <Image>

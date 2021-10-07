@@ -5,8 +5,8 @@
     <Title><![CDATA[The Event element]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The&nbsp;<em>Event </em>is a specialized content for creating event entries. It can contain several paragraphs and images, as well as information about author, publishing&nbsp;date etc. The <em>Event</em> is similar to the<em>&nbsp;Article.</em>&nbsp;Compared to the much simpler&nbsp;<em>Content Section&nbsp;</em>the <em>Event</em>&nbsp;is&nbsp;a semantic entity.</p>
-<p>The&nbsp;full content of an <em>Event</em>&nbsp;is usually displayed on a&nbsp;<em>Detail page </em>that is accessed&nbsp;through a<em> List</em>. On this page, teaser elements are directly placed&nbsp;with the&nbsp;<em>Event Teaser</em> formatters.&nbsp;</p>]]></content>
+      <content><![CDATA[<p>The <em>Event </em>is a specialized content for creating event entries. It can contain several paragraphs and images, as well as information about author, publishing date etc. The <em>Event</em> is similar to the<em> Article.</em> Compared to the much simpler <em>Content Section </em>the <em>Event</em> is a semantic entity.</p>
+<p>The full content of an <em>Event</em> is usually displayed on a <em>Detail page </em>that is accessed through a<em> List</em>. On this page, teaser elements are directly placed with the <em>Event Teaser</em> formatters. </p>]]></content>
     </Text>
     <Image>
       <Image>

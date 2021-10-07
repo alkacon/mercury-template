@@ -13,13 +13,11 @@
           <target><![CDATA[/sites/default/mercury-json/demo-3/page-editor/]]></target>
           <uuid>c5d2466c-04b0-11ec-a85e-0242ac11002b</uuid>
         </link>
-        <link name="link2" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/json-api/]]></target>
         </link>
-        <link name="link3" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/mercury-json/demo3]]></target>
         </link>
       </links>
       <content><![CDATA[<ul>
@@ -28,7 +26,7 @@
 <li>Open the same page in the <a title="Editable web view" href="%(link1)">OpenCms page editor</a>.</li>
 <li>In the page editor, open the element settings dialog (requires login).</li>
 <li>Change the element settings in the dialog, click save, and see how the changes are reflected in the demo application.</li>
-<li>Read more about the technical details of the JSON page handler in the <a href="%(link2)" target="_blank" rel="noopener">OpenCms JSON API documentation.</a></li>
+<li>Read more about the technical details of the JSON page handler in the <a href="%(link2)" target="_blank" rel="noopener">OpenCms JSON API documentation</a>.</li>
 <li>Have a look at the <a href="%(link3)" target="_blank" rel="noopener">source code of the demo 3 app</a>.</li>
 </ul>]]></content>
     </Text>

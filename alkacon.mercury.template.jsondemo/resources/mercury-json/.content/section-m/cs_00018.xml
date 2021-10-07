@@ -13,13 +13,11 @@
           <target><![CDATA[/sites/default/mercury-json/demo-2/list-editor/]]></target>
           <uuid>43d3b268-04bd-11ec-a85e-0242ac11002b</uuid>
         </link>
-        <link name="link2" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/json-api/]]></target>
         </link>
-        <link name="link3" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/mercury-json/demo2]]></target>
         </link>
       </links>
       <content><![CDATA[<ul>

@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>11.0.1.29</version>
+		<version>11.0.1.31</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -87,23 +87,6 @@
 				<property type="shared">
 					<name>template-elements</name>
 					<value><![CDATA[/system/modules/org.opencms.ade.sitemap/pages/redirect-detail.jsp]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-json/jsonapi.jsp</source>
-			<destination>mercury-json/jsonapi.jsp</destination>
-			<type>jsp</type>
-			<uuidstructure>b717e858-041e-11ec-a85e-0242ac11002b</uuidstructure>
-			<uuidresource>b717e859-041e-11ec-a85e-0242ac11002b</uuidresource>
-			<datecreated>Mon, 23 Aug 2021 14:30:50 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -714,7 +697,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Page Request]]></value>
+					<value><![CDATA[Demo 3: Page Layout: Page Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -2073,6 +2056,33 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.template.jsondemo/elements</destination>
+			<type>folder</type>
+			<uuidstructure>aa937fdc-2776-11ec-a282-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 07 Oct 2021 13:58:36 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp</source>
+			<destination>system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>b717e858-041e-11ec-a85e-0242ac11002b</uuidstructure>
+			<uuidresource>b717e859-041e-11ec-a85e-0242ac11002b</uuidresource>
+			<datecreated>Mon, 23 Aug 2021 14:30:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -12,8 +12,8 @@
       </links>
       <content><![CDATA[<p>The approach to display content in the demo 1 app is straightforward, but has some potential drawbacks:</p>
 <ul>
-<li>If filtering of the content is required, this needs to be implemented in the app. </li>
-<li>The content manager lacks an interface that shows him the content that will be included in the app.</li>
+<li>If filtering of the content is required, this needs to be implemented in the app.</li>
+<li>The content manager lacks an user interface that shows him the content that will be included in the app.</li>
 </ul>
 <p>These drawbacks are addressed in the <a href="%(link0)">demo 2 app</a> using dynamic lists.</p>]]></content>
     </Text>

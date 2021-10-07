@@ -6,13 +6,13 @@
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-json/demo-3/sample-page/index.html]]></query>
+          <query><![CDATA[uri=/json/sites/default/mercury-json/demo-3/page-editor/index.html]]></query>
         </link>
       </links>
       <content><![CDATA[<p>Element settings such as the sizes and the visibility of texts and headings are part of the JSON page response.</p>
-<pre>GET <a title="JSON Page Response" href="%(link0)" target="_blank" rel="noopener">/json/sites/default/mercury-json/demo-3/sample-page/index.html</a>
+<pre>GET <a title="JSON Page Response" href="%(link0)" target="_blank" rel="noopener">/json/sites/default/mercury-json/demo-3/page-editor/index.html</a>
 {
   "containers": [
     {

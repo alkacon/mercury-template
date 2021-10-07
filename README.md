@@ -2,11 +2,33 @@
 
 ### A full-featured, customizable, great looking responsive template for OpenCms ###
 
-The Mercury Template is a complete, modular template for [OpenCms](http://opencms.org).
-It is based on Bootstrap 4 and allows you to create even complex grid-layouts with drag & drop.
-It packs a ton of CSS features and JavaScript plugins that have carefully been integrated to be simple to use for the content manager. And it ships with all Java and SASS sources so you can fully customize it for your unique requirements.
+The Mercury Template is a complete, modular template for [OpenCms](http://opencms.org). It is based on Bootstrap 4 and allows you to create simple or advanced grid-layouts with drag & drop. It packs a ton of CSS features and JavaScript plugins that have carefully been integrated to be simple to use for the content manager. And it ships with all Java and SASS sources so you can fully customize it for your unique requirements.
 
 ### Release history ###
+
+**Version 12.0.0** - October 12, 2021:
+
+This is a major update of the Mercury template. Mercury has been used to create hundreds of websites since the 11.x release in 2019. A lot of fine-tuning and issue fixing has been included in the 12 release. Mercury 12 should be largely backward compatible with the 11 version.
+
+* Updated for OpenCms 12.0.0.
+* Configurable cookie banner that allows users to opt-out of statistical and external cookies.
+* Contact informations in lists.
+* iCalendar links for events.
+* Media element extended with SoundCloud audio, external video and external audio option.
+* Added several options to show the copyright information for images.
+* Content sections can be displayed as image tile.
+* Content sections can be hidden based on the screen size.
+* Image size for content sections can be set separately for 'desktop' and 'mobile'.
+* Added center / left / right alignment options to the content section.
+* Decoys linking to an invalid content are automatically hidden.
+* Improved the CAPTCHA session handling for the webform.
+* Using maplibre-gl instead of mapbox-gl to display OSM vector maps.
+* Using 'Fork awesome' instead of 'Font awesome' for icons.
+* The SCSS has been improved for several edge cases.
+* Bootstrap updated to 4.6.0.
+* jQuery updated to 3.6.0.
+* Using recent dart sass to compile the SASS sources to CSS.
+* All other NPM dependencies have also been updated to a recent version.
 
 **Version 11.0.1** - September 4, 2019:
 
@@ -45,6 +67,7 @@ It packs a ton of CSS features and JavaScript plugins that have carefully been i
 * 'Sitemap' element for the generation of sitemaps.
 * 'Shariff social media' element based on [Shariff](https://github.com/heiseonline/shariff).
 * [Disqus](https://disqus.com/) comments function that can be placed on any page.
+* Optimized image generation that automatically creates multiple image variations for different screen sizes.
 * Full featured search function with support for categories, facets and "did you mean" suggestions in case of misspellings.
 * Privacy policy functions that display a cookie banner and enable users to manage their cookie preferences.
 * Flexible header layout group that allows to create multiple header layouts easily.
@@ -57,7 +80,7 @@ For the technical minded here are some more background facts about Mercury:
 * **All minified** Mercurys npm build process minifies all CSS and JavaScript to give website visitors the best page loading performance.
 * **Source maps provided** Mercury provides full CSS and JavaScript source maps so you can see the original sources in the Chrome or Firefox developer tools.
 
-**The Mercury Template is shipped as demo website as part of the main [OpenCms](http://opencms.org) download.**
+**A demo website for the Mercury template is shipped as part of the main [OpenCms](http://opencms.org) download.**
 
 ## Customizing Mercury from source ##
 
@@ -77,25 +100,13 @@ The CSS themes are generated from the resources under `./template-src/scss`.
 
 The JavaScript is generated from the resources under `./template-src/js`.
 
-### Building the Mercury OpenCms modules ###
+### Building the Mercury CSS and JavaScript  ###
 
-Mercurys modules are built using [Gradle](https://gradle.org). The interesting targets are:
-
-* `dist_{module name}` to build a single module (includes building the module's JAR if required)
-* `jar_{module name}` to build only a modules JAR
-* `bindist` to build all modules
-
-The module *alkacon.mercury.template.democontents* contains a complete web site built with the Mercury Template. It serves as demonstration of the various content elements that are part of the template.
-
-The  [OpenCms Documentation](http://documentation.opencms.org) has more details about the general process required to build general OpenCms modules. Here we want to focus on the special way the Mercury CSS / JavaScript sources are build.
-
-### Building the Mercury CSS  and JavaScript  ###
-
-To customize the template, you can add or change files under `template-src` and then use SASS / npm to compile the sources and place the results in the  *alkacon.mercury.theme* module.
+To customize the template, you can add or change files under `template-src` and then use SASS / npm to compile the sources and place the results in the *alkacon.mercury.theme* module.
 
 To create Mercurys CSS and JavaScript resources from source, you need to setup a compile environment with [SASS](https://sass-lang.com) and [npm](https://www.npmjs.com). There are many articles available in the web on the details on how to setup such an environment, so we will provide only some brief details about the process here. We will assume that you have the basic environment already in place here.
 
-Of course, you need to check out this repository first. Then run
+You need to check out this repository from GitHub first. Then run
 
 ```shell
 sudo npm install
@@ -132,6 +143,18 @@ Our npm process uses Webpack to generate minified JavaScript files (with source 
 The main entry script is called `mercury.js`. Other scripts are either directly included here, or loaded on demand when required on the web page.
 
 You can modify or extend the files found in `./template-src/js` according to your requirements.
+
+### Building the Mercury OpenCms modules ###
+
+Mercurys modules are built using [Gradle](https://gradle.org). The interesting targets are:
+
+* `dist_{module name}` to build a single module (includes building the module's JAR if required)
+* `jar_{module name}` to build only a module JAR
+* `bindist` to build all modules
+
+The module *alkacon.mercury.template.democontents* contains a complete web site built with the Mercury Template. It serves as demonstration of the various content elements that are part of the template.
+
+The  [OpenCms Documentation](http://documentation.opencms.org) has more details about the general process required to build general OpenCms modules. Here we want to focus on the special way the Mercury CSS / JavaScript sources are build.
 
 ## License ##
 

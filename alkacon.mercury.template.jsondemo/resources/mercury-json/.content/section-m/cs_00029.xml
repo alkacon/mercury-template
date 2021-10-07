@@ -10,18 +10,16 @@
           <uuid>14df8005-04eb-11ec-a6af-0242ac11002b</uuid>
         </link>
         <link name="link1" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
           <anchor><![CDATA[!explorer/9c8c654b-0503-11ec-bbda-0242ac11002b!!/sites/default!!/mercury-demo/.content/!!]]></anchor>
           <query><![CDATA[uri=/workplace]]></query>
         </link>
-        <link name="link2" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/json-api/]]></target>
         </link>
-        <link name="link3" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/demo-1/]]></target>
-          <uuid>82440275-00f7-11ec-8018-0242ac11002b</uuid>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/mercury-json/demo2]]></target>
         </link>
       </links>
       <content><![CDATA[<ul>

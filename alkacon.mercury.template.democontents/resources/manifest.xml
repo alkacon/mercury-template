@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <export>
 	<info>
 		<infoproject>Offline</infoproject>
@@ -42,7 +41,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>11.0.1.48</version>
+		<version>12.0.0</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -50,9 +49,9 @@ This module also creates a set of demo users during the import.]]></description>
 		<userinstalled/>
 		<dateinstalled/>
 		<dependencies>
-			<dependency name="alkacon.mercury.template" version="11.0.1"/>
-			<dependency name="alkacon.mercury.theme" version="11.0.1"/>
-			<dependency name="alkacon.mercury.webform" version="11.0.1"/>
+			<dependency name="alkacon.mercury.template" version="12.0.0"/>
+			<dependency name="alkacon.mercury.theme" version="12.0.0"/>
+			<dependency name="alkacon.mercury.webform" version="12.0.0"/>
 		</dependencies>
 		<exportpoints/>
 		<resources>

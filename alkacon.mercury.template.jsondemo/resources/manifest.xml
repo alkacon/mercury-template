@@ -204,7 +204,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Sample Page: Turbine]]></value>
+					<value><![CDATA[Page editor: Turbine]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -306,7 +306,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 1: Content Access: Technical details]]></value>
+					<value><![CDATA[Technical details]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -357,7 +357,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Endpoint Folder Request]]></value>
+					<value><![CDATA[Demo 1: Content Access: Endpoint Folder Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -374,7 +374,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: Site Folder Request]]></value>
+					<value><![CDATA[Demo 1: Content Access: Site Folder Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -391,7 +391,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Content Folder Request]]></value>
+					<value><![CDATA[Demo 1: Content Access: Content Folder Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -408,7 +408,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Sample Page: Turbine]]></value>
+					<value><![CDATA[Page editor: Turbine]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -442,7 +442,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Accessing list contents]]></value>
+					<value><![CDATA[Demo 2: Dynamic Lists: Accessing list contents]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -527,7 +527,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Introduction: List Request]]></value>
+					<value><![CDATA[Demo 2: Dynamic Lists: List Request]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -629,7 +629,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Demo 3: Page Formatting: View]]></value>
+					<value><![CDATA[Demo 3: Page Layout: View]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -6,7 +6,7 @@
     <Text name="Text0">
       <links>
         <link name="link0" internal="true" type="A">
-          <target><![CDATA[/sites/default/mercury-json/jsonapi.jsp]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
           <query><![CDATA[uri=/json/sites/default/mercury-json/.content/list-m/list_00001.xml&content&wrapper=false&locale=en&fallbackLocale&rows=1]]></query>
         </link>

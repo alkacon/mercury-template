@@ -918,7 +918,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Footer Built with OpenCms 11]]></value>
+					<value><![CDATA[Footer Built with OpenCms]]></value>
 				</property>
 			</properties>
 			<relations/>

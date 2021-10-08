@@ -1711,7 +1711,7 @@ public class CmsForm {
                 VFS_PATH_DEFAULT_TEMPLATEFILE);
             setTemplateFile(configParser.getConfigurationValue(pathPrefix + NODE_TEMPLATE_FILE, defaultTemplateFile));
             // get the optional web form action class
-            setActionClass(configParser.getConfigurationValue(pathPrefix + NODE_TEMPLATE_FILE, ""));
+            setActionClass(configParser.getConfigurationValue(pathPrefix + NODE_ACTION_CLASS, ""));
             // get the show mandatory setting
             setShowMandatory(
                 Boolean.parseBoolean(

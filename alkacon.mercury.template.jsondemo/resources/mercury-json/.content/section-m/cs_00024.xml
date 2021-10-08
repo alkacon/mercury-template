@@ -9,7 +9,7 @@
           <target><![CDATA[https://documentation.opencms.org/opencms-documentation/content-in-opencms/lists-and-detail-pages/]]></target>
         </link>
       </links>
-      <content><![CDATA[<p>Demo 2 showcases how an app can leverage dynamic OpenCms <a href="%(link0)">lists</a>. Lists provide content managers with an edior interface in the web browser that shows contents in the order as they will appear in the app later.</p>]]></content>
+      <content><![CDATA[<p>Demo 2 showcases how an app can leverage dynamic OpenCms <a href="%(link0)">lists</a>. Lists provide content managers with an editor interface in the web browser that shows contents in the order as they will appear in the app later.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

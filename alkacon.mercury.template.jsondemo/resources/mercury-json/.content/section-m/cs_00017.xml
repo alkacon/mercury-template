@@ -7,7 +7,7 @@
       <links/>
       <content><![CDATA[<p>With the headless JSON API, OpenCms can be used to manage content in mobile apps.</p>
 <p>Mobile apps typically provide a combination of features and information. One challenge is to keep the information in the app current and up to date. The easier it is to manage the content information in the app, the better.</p>
-<p>With OpenCms, content managers can use intuitive "drag &amp; drop" based editors to create and update information in mobile apps. App developers can access this information though the OpenCms headless JSON API. Optionally content can be enriched with meta information used to control the layout in the app.</p>]]></content>
+<p>With OpenCms, content managers can use intuitive "drag &amp; drop" based editors to create and update information in mobile apps. App developers can access this information through the OpenCms headless JSON API. Optionally content can be enriched with meta information used to control the layout in the app.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

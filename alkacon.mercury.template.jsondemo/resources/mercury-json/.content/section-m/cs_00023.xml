@@ -5,7 +5,7 @@
     <Title><![CDATA[Accessing element container pages and element settings]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Access to OpenCms container pages is available via the JSON API. A container page URL called with the JSON API will provide an JSON representation of the page, including links to the individual elements and a list of the individual element settings.</p>]]></content>
+      <content><![CDATA[<p>Access to OpenCms container pages is available via the JSON API. A container page URL called with the JSON API will provide a JSON representation of the page, including links to the individual elements and a list of the individual element settings.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

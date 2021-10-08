@@ -19,7 +19,7 @@
           <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>October 12, 2021: OpenCms 12 features a headless JSON API for REST content access, together with several JavaScript demo application that show how to use it. The default "Mercury" template has been greatly improved. Template variants allow to completely switch the generated HTML of a website simply by configuration. A greatly improved WebDAV implementation enables mounting the OpenCms virtual file system from any WebDAV client.</p>
+      <content><![CDATA[<p>October 12, 2021: OpenCms 12 features a headless JSON API for REST content access, together with several JavaScript demo applications that show how to use it. The default "Mercury" template has been greatly improved. Template variants allow to completely switch the generated HTML of a website simply by configuration. A greatly improved WebDAV implementation enables mounting the OpenCms virtual file system from any WebDAV client.</p>
 <h2>Main new features of OpenCms 12</h2>
 <div>
 <ul>
@@ -29,7 +29,7 @@
 <li>Headless API: Load structure and settings of a container page as JSON.</li>
 <li>Headless API: React demo applications showcase the use of the new features.</li>
 <li>Template Variants: Introducing a new container page format (the old format can still be read).</li>
-<li>Template Variants: Store "formatter keys" instead of UUIDs of confifuration files in new container pages.</li>
+<li>Template Variants: Store "formatter keys" instead of UUIDs of configuration files in new container pages.</li>
 <li>Template Variants: Sitemap attributes allow to display different element settings per variant.</li>
 <li>Template Variants: Add and remove content types, formatters and / or functions per master configuration.</li>
 <li>Template Variants: Master configurations can be chained to allow variant specific adjustments of a base variant.</li>
@@ -44,11 +44,11 @@
 <li>Workplace: "Optimize gallery" dialog allows editing the properties of several images / documents.</li>
 <li>Workplace: Changing the availability date released / expired in the explorer will now also update an XML content that contains a mapping to these properties.</li>
 <li>Workplace: Added a "show password" button on the login dialog.</li>
-<li>Workplace: Combined the "Versoning" workplace apps into a single app.</li>
+<li>Workplace: Combined the "Versioning" workplace apps into a single app.</li>
 <li>Workplace: Added an option to clean up the publish history in the "Versioning" app.</li>
 <li>Workplace: Added "Advanced &gt; Reindex" option in the Explorer context menu to update selected parts of the search index.</li>
 <li>Workplace: Added support for custom gallery upload actions in the explorer.</li>
-<li>Editor: Added editing and other content menu actions on the publish dialog "broken links" panel.</li>
+<li>Editor: Added editing and other context menu actions on the publish dialog "broken links" panel.</li>
 <li>Editor: Added support for custom gallery upload actions to the gallery dialog and the form editor.</li>
 <li>Editor: Improved "edit point" icon and menu for functions.</li>
 <li>Editor: Disabled editing of elements on a page for types disabled in the sitemap configuration.</li>
@@ -69,12 +69,12 @@
 <li>General: Added "sort by display order" option to the sitemap configuration.</li>
 <li>General: Use mariadb client instead of mysql connector for MariaDB / MySQL by default.</li>
 <li>General: Using the default table engine for MariaDB / MySQL instead of forcing MyIsam.</li>
-<li>Components: Updated GWT libraries to version to 2.9.0.</li>
-<li>Components: Updated Vaadin libraries to version to 8.11.2.</li>
-<li>Components: Updated SOLR libraries to version to 8.6.2.</li>
-<li>Components: Updated HikariCP libraries to version to 4.0.2.</li>
-<li>Components: Updated Xerces libraries to version to 2.12.0.</li>
-<li>Components: Updated Gradle version to 6.4.1.</li>
+<li>Components: Updated GWT libraries to version 2.9.0.</li>
+<li>Components: Updated Vaadin libraries to version 8.11.2.</li>
+<li>Components: Updated SOLR libraries to version 8.6.2.</li>
+<li>Components: Updated HikariCP libraries to version 4.0.2.</li>
+<li>Components: Updated Xerces libraries to version 2.12.0.</li>
+<li>Components: Updated Gradle to version 6.4.1.</li>
 <li>Fixed a number of security issues.</li>
 <li>Fixed issue #706 wrong list item indentation in editor tooltip.</li>
 <li>Fixed issue #709 so the publish dialog does not list resources invisible to a user.</li>
@@ -121,7 +121,7 @@
 <p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 11.0 sources from Git, please check out <span class="label label-cyan">branch_12_0_x</span>. This release is tagged <span class="label label-cyan">build_12_0_0</span>.</p>
+<p>In case you want to get the most current OpenCms 12.0 sources from Git, please check out <span class="label label-cyan">branch_12_0_x</span>. This release is tagged <span class="label label-cyan">build_12_0_0</span>.</p>
 <h3>How you can help</h3>
 <p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
 <p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>

@@ -155,7 +155,7 @@
             <div class="search-query ${hasFacets ? ' has-facets' : ' no-facets'}"><%----%>
                 <section class="input-group"><%----%>
                     <div class="input button"><%----%>
-                        <label for="searchFormQuery" class="sr-only">Search</label><%----%>
+                        <label for="searchFormQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                         <input id="searchFormQuery" name="${common.config.queryParam}" <%--
                             --%>value="${escapedQuery}" class="form-control blur-focus" type="text" autocomplete="off" <%--
                             --%>placeholder="<fmt:message key='msg.page.search.enterquery' />" /><%----%>

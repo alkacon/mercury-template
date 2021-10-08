@@ -14,7 +14,7 @@
       </links>
       <content><![CDATA[<p>The demo apps are simple React applications intended to showcase how the OpenCms headless JSON API works. There are no React dependencies, so the same principles can easily be used with other frameworks such as Angular, Vue or whatever else you prefer.</p>
 <p>The demos are not intended to be real-world use cases. These apps have been created specifically as short and simple examples that concentrate on various aspects of the OpenCms headless JSON API.</p>
-<p>The <a title="Source Code" href="%(link0)" target="_blank" rel="noopener">source code</a> of the demo apps is available on GitHub. It contains useful comments about technical details. The <a title="API Documentation" href="%(link1)" target="_blank" rel="noopener">OpenCms heasless JSON API documentation</a> explains the features of the API in detail.</p>]]></content>
+<p>The <a title="Source Code" href="%(link0)" target="_blank" rel="noopener">source code</a> of the demo apps is available on GitHub. It contains useful comments about technical details. The <a title="API Documentation" href="%(link1)" target="_blank" rel="noopener">OpenCms headless JSON API documentation</a> explains the features of the API in detail.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

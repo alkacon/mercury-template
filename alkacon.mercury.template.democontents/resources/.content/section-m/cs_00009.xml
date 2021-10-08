@@ -2,15 +2,15 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Built with OpenCms 11]]></Title>
+    <Title><![CDATA[Built with OpenCms]]></Title>
     <Link>
-      <Text><![CDATA[Built with OpenCms 11]]></Text>
+      <Text><![CDATA[Built with OpenCms]]></Text>
       <URI>
         <link internal="false" type="WEAK">
           <target><![CDATA[http://opencms.org]]></target>
         </link>
       </URI>
     </Link>
-    <GalleryTitle><![CDATA[Footer Built with OpenCms 11]]></GalleryTitle>
+    <GalleryTitle><![CDATA[Footer Built with OpenCms]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

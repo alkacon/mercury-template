@@ -566,6 +566,22 @@ public class CmsForm {
     }
 
     /**
+     * Adds a field to the form.<p>
+     *
+     * @param field the field to be added to the form
+     */
+    protected void addField(I_CmsField field) {
+
+        m_fields.add(field);
+        // store information about privacy field
+        if (field instanceof CmsPrivacyField) {
+            m_hasPrivacyField = true;
+        }
+        // the fields are also internally backed in a map keyed by their field name
+        m_fieldsByName.put(field.getName(), field);
+    }
+
+    /**
      * Tests, if the captcha field (if configured at all) should be displayed on the check page.<p>
      *
      * @return true, if the captcha field should be displayed on the check page
@@ -586,918 +602,35 @@ public class CmsForm {
     }
 
     /**
-     * Returns the action class.
-     * <p>
+     * Creates the checkbox field to activate the confirmation mail in the input form.<p>
      *
-     * @return the action class.
-     */
-    public String getActionClass() {
-
-        return m_actionClass;
-    }
-
-    /**
-     * Returns a list of field objects, exclusive sub fields, inclusive dynamic fields, for the online form.<p>
-     *
-     * @return a list of field objects, exclusive sub fields, inclusive dynamic fields
-     */
-    public List<I_CmsField> getAllFields() {
-
-        return getAllFields(false, false, true);
-    }
-
-    /**
-     * Returns a list of field objects, depending on the given parameters.<p>
-     * @param includeShownSubFields indicates if only the shown sub fields should be included
-     * @param includeAllSubFields indicates if all possible sub fields should be included
-     * @param includeDynamicFields indicates if the dynamic fields should be included
-     *
-     * @return a list of field objects, depending on the given parameters
-     */
-    public List<I_CmsField> getAllFields(
-        boolean includeShownSubFields,
-        boolean includeAllSubFields,
-        boolean includeDynamicFields) {
-
-        List<I_CmsField> result = new ArrayList<>(m_fields.size() + 16);
-        if (includeAllSubFields) {
-            // all sub fields have to be added
-            Iterator<I_CmsField> i = m_fields.iterator();
-            while (i.hasNext()) {
-                I_CmsField field = i.next();
-                result.add(field);
-                if (field.isHasSubFields()) {
-                    Iterator<Entry<String, List<I_CmsField>>> k = field.getSubFields().entrySet().iterator();
-                    while (k.hasNext()) {
-                        Map.Entry<String, List<I_CmsField>> entry = k.next();
-                        result.addAll(entry.getValue());
-                    }
-                }
-            }
-        } else if (includeShownSubFields) {
-            // only shown sub fields have to be added
-            Iterator<I_CmsField> i = m_fields.iterator();
-            while (i.hasNext()) {
-                I_CmsField field = i.next();
-                result.add(field);
-                if (field.hasCurrentSubFields()) {
-                    result.addAll(field.getCurrentSubFields());
-                }
-            }
-        } else {
-            // no sub fields have to be added
-            result = new ArrayList<>(m_fields);
-        }
-
-        if (includeDynamicFields) {
-            result.addAll(m_dynaFields);
-        }
-
-        return result;
-    }
-
-    /**
-     * Returns the (opt.) captcha field of this form.<p>
-     *
-     * @return the (opt.) captcha field of this form
-     */
-    public CmsCaptchaField getCaptchaField() {
-
-        return m_captchaField;
-    }
-
-    /**
-     * Returns the configuration ID of this form.<p>
-     *
-     * This ID is used as suffix for form field names and other field specific stuff,
-     * making it possible to have more than one form on a page.<p>
-     *
-     * @return the configuration ID of this form
-     */
-    public int getConfigId() {
-
-        if (m_configId == 0) {
-            m_configId = getConfigUri().hashCode();
-        }
-        return m_configId;
-    }
-
-    /**
-     * Returns the form configuration errors.<p>
-     *
-     * @return the form configuration errors
-     */
-    public List<String> getConfigurationErrors() {
-
-        return m_configurationErrors;
-    }
-
-    /**
-     * Returns the configuration Uri.<p>
-     *
-     * @return the configuration Uri
-     */
-    public String getConfigUri() {
-
-        return m_configUri;
-    }
-
-    /**
-     * Returns the label for the optional confirmation mail checkbox on the input form.<p>
-     *
-     * @return the label for the optional confirmation mail checkbox on the input form
-     */
-    public String getConfirmationMailCheckboxLabel() {
-
-        return m_confirmationMailCheckboxLabel;
-    }
-
-    /**
-     * Returns the confirmation mail receiver email address.<p>
-     *
-     * @return the confirmation mail receiver email address or <code>null</code> if not found
-     */
-    public String getConfirmationMailEmail() {
-
-        if (getConfirmationMailField() != -1) {
-            try {
-                I_CmsField mailField = getFields().get(getConfirmationMailField());
-                return mailField.getValue();
-            } catch (Exception e) {
-                // field not found
-            }
-        } else if (CmsStringUtil.isNotEmpty(getConfirmationMailFieldDbLabel())) {
-            I_CmsField mailField = getFieldByDbLabel(getConfirmationMailFieldDbLabel());
-            if (mailField != null) {
-                return mailField.getValue();
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the index number of the input field containing the email address for the optional confirmation mail.<p>
-     *
-     * @return the index number of the input field containing the email address for the optional confirmation mail
-     *
-     * @deprecated use {@link #getConfirmationMailFieldDbLabel()} instead
-     */
-    @Deprecated
-    public int getConfirmationMailField() {
-
-        return m_confirmationMailField;
-    }
-
-    /**
-     * Returns the DB label of the input field containing the email address for the optional confirmation mail.<p>
-     *
-     * @return the DB label of the input field containing the email address for the optional confirmation mail
-     */
-    public String getConfirmationMailFieldDbLabel() {
-
-        return m_confirmationMailFieldDbLabel;
-    }
-
-    /**
-     * Returns the optional confirmation mail from.<p>
-     *
-     * @return the optional confirmation mail from
-     */
-    public String getConfirmationMailFrom() {
-
-        return m_confirmationMailFrom;
-    }
-
-    /**
-     * Returns the optional confirmation mail from name.<p>
-     *
-     * @return the optional confirmation mail from name
-     */
-    public String getConfirmationMailFromName() {
-
-        return m_confirmationMailFromName;
-    }
-
-    /**
-     * Returns the subject of the optional confirmation mail.<p>
-     *
-     * @return the subject of the optional confirmation mail
-     */
-    public String getConfirmationMailSubject() {
-
-        return m_confirmationMailSubject;
-    }
-
-    /**
-     * Returns the text of the optional confirmation mail.<p>
-     *
-     * @return the text of the optional confirmation mail
-     */
-    public String getConfirmationMailText() {
-
-        return m_confirmationMailText;
-    }
-
-    /**
-     * Returns the plain text of the optional confirmation mail.<p>
-     *
-     * @return the plain text of the optional confirmation mail
-     */
-    public String getConfirmationMailTextPlain() {
-
-        return m_confirmationMailTextPlain;
-    }
-
-    /**
-     * Returns the optional form expiration date.<p>
-     *
-     * @return the optional form expiration date
-     */
-    public long getExpirationDate() {
-
-        return m_expirationDate;
-    }
-
-    /**
-     * Returns the form expiration text.<p>
-     *
-     * @return the form expiration text
-     */
-    public String getExpirationText() {
-
-        return m_expirationText;
-    }
-
-    /**
-     * Returns a map of additional configuration values to be accessed in the string template.
-     * @return a map of additional configuration values to be accessed in the string template.
-     */
-    public Map<String, String> getExtraConfig() {
-
-        return m_extraConfig;
-    }
-
-    /**
-     * Returns the field with the given database label.<p>
-     *
-     * @param dbLabel the database label
-     *
-     * @return the field with the given database label or <code>null</code> if not found
-     */
-    public I_CmsField getFieldByDbLabel(String dbLabel) {
-
-        Iterator<I_CmsField> it = getAllFields(false, true, true).iterator();
-        while (it.hasNext()) {
-            I_CmsField field = it.next();
-            if (field.getDbLabel().equals(dbLabel)) {
-                return field;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the field specified by it's name (Xpath).<p>
-     *
-     * @param fieldName the field's name (Xpath)
-     *
-     * @return the field, or null
-     */
-    public I_CmsField getFieldByName(String fieldName) {
-
-        return m_fieldsByName.get(fieldName);
-    }
-
-    /**
-     * Returns a list of field objects for the online form.<p>
-     *
-     * @return a list of field objects for the online form
-     */
-    public List<I_CmsField> getFields() {
-
-        return m_fields;
-    }
-
-    /**
-     * Returns the value for a field specified by it's name (Xpath).<p>
-     *
-     * @param fieldName the field's name (Xpath)
-     *
-     * @return the field value, or null
-     */
-    public String getFieldStringValueByName(String fieldName) {
-
-        I_CmsField field = m_fieldsByName.get(fieldName);
-        if (field != null) {
-            String fieldValue = field.getValue();
-            return (fieldValue != null) ? fieldValue.trim() : "";
-        }
-
-        return "";
-    }
-
-    /**
-     * Returns the form check text.<p>
-     *
-     * @return the form check text
-     */
-    public String getFormCheckText() {
-
-        return m_formCheckText;
-    }
-
-    /**
-     * Returns the form confirmation text.<p>
-     *
-     * @return the form confirmation text
-     */
-    public String getFormConfirmationText() {
-
-        return m_formConfirmationText;
-    }
-
-    /**
-     * Returns the form footer text.<p>
-     *
-     * @return the form footer text
-     */
-    public String getFormFooterText() {
-
-        return m_formFooterText;
-    }
-
-    /**
-     * Returns the form middle text.<p>
-     *
-     * @return the form middle text
-     */
-    public String getFormMiddleText() {
-
-        return m_formMiddleText;
-    }
-
-    /**
-     * Returns the form text.<p>
-     *
-     * @return the form text
-     */
-    public String getFormText() {
-
-        return m_formText;
-    }
-
-    /**
-     * Returns the current jsp action element.<p>
-     *
-     * @return the jsp action element
-     */
-    public CmsJspActionElement getJspAction() {
-
-        return m_jspAction;
-    }
-
-    /**
-     * Returns the mail bcc recipient(s).<p>
-     *
-     * @return the mail bcc recipient(s)
-     */
-    public String getMailBCC() {
-
-        return m_mailBCC;
-    }
-
-    /**
-     * Returns the mail cc recipient(s).<p>
-     *
-     * @return the mail cc recipient(s)
-     */
-    public String getMailCC() {
-
-        return m_mailCC;
-    }
-
-    /**
-     * Returns the optional email CSS style sheet.<p>
-     *
-     * @return the optional email CSS style sheet
-     */
-    public String getMailCSS() {
-
-        return m_mailCSS;
-    }
-
-    /**
-     * Returns the mail sender address.<p>
-     *
-     * @return the mail sender address
-     */
-    public String getMailFrom() {
-
-        return m_mailFrom;
-    }
-
-    /**
-     * Returns the mail sender name.<p>
-     *
-     * @return the mail sender name
-     */
-    public String getMailFromName() {
-
-        return m_mailFromName;
-    }
-
-    /**
-     * Returns the mail subject.<p>
-     *
-     * @return the mail subject
-     */
-    public String getMailSubject() {
-
-        return m_mailSubject;
-    }
-
-    /**
-     * Returns the mail subject prefix.<p>
-     *
-     * @return the mail subject prefix
-     */
-    public String getMailSubjectPrefix() {
-
-        return m_mailSubjectPrefix;
-    }
-
-    /**
-     * Returns the mail text.<p>
-     *
-     * @return the mail text
-     */
-    public String getMailText() {
-
-        return m_mailText;
-    }
-
-    /**
-     * Returns the mail text as plain text.<p>
-     *
-     * @return the mail text as plain text
-     */
-    public String getMailTextPlain() {
-
-        return m_mailTextPlain;
-    }
-
-    /**
-     * Returns the mail recipient(s).<p>
-     *
-     * @return the mail recipient(s)
-     */
-    public String getMailTo() {
-
-        return m_mailTo;
-    }
-
-    /**
-     * Returns the mail type ("text" or "html").<p>
-     *
-     * @return the mail type
-     */
-    public String getMailType() {
-
-        return m_mailType;
-    }
-
-    /**
-     * Returns the optional form maximum submissions number.<p>
-     *
-     * @return the optional form maximum submissions number
-     */
-    public long getMaximumSubmissions() {
-
-        return m_maxSubmissions;
-    }
-
-    /**
-     * Returns the form maximum submissions text.<p>
-     *
-     * @return the form maximum submissions text
-     */
-    public String getMaximumSubmissionsText() {
-
-        return m_maxSubmissionsText;
-    }
-
-    /**
-     * Returns the interval to refresh the session.<p>
-     *
-     * @return the interval to refresh the session
-     */
-    public int getRefreshSessionInterval() {
-
-        return m_refreshSessionInterval;
-    }
-
-    /**
-     * Returns the optional form release date.<p>
-     *
-     * @return the optional form release date
-     */
-    public long getReleaseDate() {
-
-        return m_releaseDate;
-    }
-
-    /**
-     * Returns the form release text.<p>
-     *
-     * @return the form release text
-     */
-    public String getReleaseText() {
-
-        return m_releaseText;
-    }
-
-    /**
-     * Returns if the check page should be shown.<p>
-     *
-     * @return true if the check page should be shown, otherwise false
-     */
-    public boolean getShowCheck() {
-
-        return m_showCheck;
-    }
-
-    /**
-     * Returns the target URI of this form.<p>
-     *
-     * This optional target URI can be used to redirect the user to an OpenCms page instead of displaying a confirmation
-     * text from the form's XML content.<p>
-     *
-     * @return the target URI
-     */
-    public String getTargetUri() {
-
-        return m_targetUri;
-    }
-
-    /**
-     * Returns the optional HTML template file.<p>
-     *
-     * @return the optional HTML template file
-     */
-    public String getTemplateFile() {
-
-        return m_templateFile;
-    }
-
-    /**
-     * Returns the form title.<p>
-     *
-     * @return the form title
-     */
-    public String getTitle() {
-
-        return m_title;
-    }
-
-    /**
-     * Returns the UGC configuration for saving form data in XML contents.
-     * @return the UGC configuration for saving form data in XML contents.
-     */
-    public CmsFormUgcConfiguration getUgcConfiguration() {
-
-        return m_ugcConfig;
-    }
-
-    /**
-         * Tests if a captcha field is configured for this form.<p>
-         *
-         * @return true, if a captcha field is configured for this form
-         */
-    public boolean hasCaptchaField() {
-
-        return m_captchaField != null;
-    }
-
-    /**
-     * Returns if the form has configuration errors.<p>
-     *
-     * @return true if the form has configuration errors, otherwise false
-     */
-    public boolean hasConfigurationErrors() {
-
-        return m_configurationErrors.size() > 0;
-    }
-
-    /**
-     * Returns true if at least one of the configured fields is mandatory.<p>
-     *
-     * @return true if at least one of the configured fields is mandatory, otherwise false
-     */
-    public boolean hasMandatoryFields() {
-
-        return m_hasMandatoryFields;
-    }
-
-    /**
-     * Returns true if a privacy field is configured manually.<p>
-     *
-     * @return true if a privacy field is configured manually
-     */
-    public boolean hasPrivacyField() {
-
-        return m_hasPrivacyField;
-    }
-
-    /**
-     * Tests if this form has a target URI specified.<p>
-     *
-     * This optional target URI can be used to redirect the user to an OpenCms page instead of displaying a confirmation
-     * text from the form's XML content.<p>
-     *
-     * @return the target URI
-     */
-    public boolean hasTargetUri() {
-
-        return CmsStringUtil.isNotEmpty(m_targetUri);
-    }
-
-    /**
-     * Initializes the form configuration and creates the necessary form field objects.<p>
-     *
-     * @param jsp the initialized CmsJspActionElement to access the OpenCms API
      * @param messages the localized messages
-     * @param initial if true, field values are filled with values specified in the XML configuration
-     * @param formConfigUri URI of the form configuration file, if not provided, current URI is used for configuration
-     * @param formAction the desired action submitted by the form
+     * @param initial if true, field values are filled with values specified in the XML configuration, otherwise values are read from the request
      *
-     * @throws Exception if parsing the configuration fails
+     * @return the checkbox field to activate the confirmation mail in the input form
      */
-    public void init(CmsFormHandler jsp, CmsMessages messages, boolean initial, String formConfigUri, String formAction)
-    throws Exception {
+    protected I_CmsField createConfirmationMailCheckbox(CmsMessages messages, boolean initial) {
 
-        init(jsp, messages, initial, formConfigUri, formAction, null, null);
-    }
-
-    /**
-     * Initializes the form configuration and creates the necessary form field objects.<p>
-     *
-     * @param jsp the initialized CmsJspActionElement to access the OpenCms API
-     * @param messages the localized messages
-     * @param initial if true, field values are filled with values specified in the XML configuration
-     * @param formConfigUri URI of the form configuration file, if not provided, current URI is used for configuration
-     * @param formAction the desired action submitted by the form
-     * @param dynamicConfig map of configurations that can overwrite the configuration from the configuration file
-     *
-     * @throws Exception if parsing the configuration fails
-     */
-    public void init(
-        CmsFormHandler jsp,
-        CmsMessages messages,
-        boolean initial,
-        String formConfigUri,
-        String formAction,
-        Map<String, String> dynamicConfig)
-    throws Exception {
-
-        init(jsp, messages, initial, formConfigUri, formAction, dynamicConfig, null);
-    }
-
-    /**
-     * Initializes the form configuration and creates the necessary form field objects.<p>
-     *
-     * @param jsp the initialized CmsJspActionElement to access the OpenCms API
-     * @param messages the localized messages
-     * @param initial if true, field values are filled with values specified in the XML configuration
-     * @param formConfigUri URI of the form configuration file, if not provided, current URI is used for configuration
-     * @param formAction the desired action submitted by the form
-     * @param dynamicConfig map of configurations that can overwrite the configuration from the configuration file
-     * @param extraConfig additional map accessible in the string template for the form.
-     *
-     * @throws Exception if parsing the configuration fails
-     */
-    public void init(
-        CmsFormHandler jsp,
-        CmsMessages messages,
-        boolean initial,
-        String formConfigUri,
-        String formAction,
-        Map<String, String> dynamicConfig,
-        Map<String, String> extraConfig)
-    throws Exception {
-
-        if ((null != dynamicConfig) && dynamicConfig.containsKey(CONFIG_KEY_FORM_ID)) {
-            setConfigId(dynamicConfig.get(CONFIG_KEY_FORM_ID));
+        A_CmsField field = new CmsCheckboxField();
+        field.setName(PARAM_SENDCONFIRMATION + getConfigId());
+        field.setDbLabel(PARAM_SENDCONFIRMATION);
+        field.setLabel(messages.key(I_CmsFormMessages.FORM_CONFIRMATION_LABEL));
+        // check the field status
+        boolean isChecked = false;
+        if (!initial && Boolean.valueOf(getParameter(PARAM_SENDCONFIRMATION + getConfigId())).booleanValue()) {
+            // checkbox is checked by user
+            isChecked = true;
         }
-        if ((null != extraConfig)) {
-            m_extraConfig = extraConfig;
-        } else {
-            m_extraConfig = Collections.emptyMap();
-        }
-        m_parameterMap = jsp.getParameterMap();
-        // read the form configuration file from VFS
-        if (CmsStringUtil.isEmpty(formConfigUri)) {
-            formConfigUri = jsp.getRequestContext().getUri();
-        }
-        m_configUri = formConfigUri;
-        CmsObject cms = jsp.getCmsObject();
-        CmsFile file = cms.readFile(formConfigUri);
-        CmsXmlContent content = CmsXmlContentFactory.unmarshal(cms, file);
-
-        CmsRequestContext requestContext = cms.getRequestContext();
-        Locale locale = OpenCms.getLocaleManager().getBestMatchingLocale(
-            requestContext.getLocale(),
-            OpenCms.getLocaleManager().getDefaultLocales(cms, requestContext.getUri()),
-            content.getLocales());
-
-        // init member variables
-        initMembers();
-
-        m_formAction = formAction;
-        m_fields = new ArrayList<>();
-        m_dynaFields = new ArrayList<>();
-        m_fieldsByName = new HashMap<>();
-        m_jspAction = jsp;
-
-        // initialize general form configuration
-        initFormGlobalConfiguration(content, cms, locale, messages, dynamicConfig);
-
-        // initialize the form input fields
-        initInputFields(content, jsp, locale, messages, initial);
-
-        // init. the optional captcha field
-        initCaptchaField(jsp, content, locale, initial);
-
-        // add the captcha field to the list of all fields, if the form has no check page
-        if (captchaFieldIsOnInputPage() && (m_captchaField != null)) {
-            addField(m_captchaField);
-        }
-    }
-
-    /**
-     * Tests if the check page was submitted.<p>
-     *
-     * @return true, if the check page was submitted
-     */
-    public boolean isCheckPageSubmitted() {
-
-        return CmsFormHandler.ACTION_CONFIRMED.equals(m_formAction);
-    }
-
-    /**
-     * Returns if the optional confirmation mail is enabled.<p>
-     *
-     * @return true if the optional confirmation mail is enabled, otherwise false
-     */
-    public boolean isConfirmationMailEnabled() {
-
-        return m_confirmationMailEnabled;
-    }
-
-    /**
-     * Returns if the confirmation mail if optional, i.e. selectable by the form submitter.<p>
-     *
-     * @return true if the confirmation mail if optional, i.e. selectable by the form submitter, otherwise false
-     */
-    public boolean isConfirmationMailOptional() {
-
-        return m_confirmationMailOptional;
-    }
-
-    /**
-     * Returns <code>true</code> if the request should be forwarded to
-     * the given target URI, <code>false</code> otherwise.<p>
-     *
-     * @return the <code>true</code> if the request should be forwarded
-     */
-    public boolean isForwardMode() {
-
-        return m_forwardMode;
-    }
-
-    /**
-     * Tests if the input page was submitted.<p>
-     *
-     * @return true, if the input page was submitted
-     */
-    public boolean isInputFormSubmitted() {
-
-        return CmsFormHandler.ACTION_SUBMIT.equals(m_formAction);
-    }
-
-    /**
-     * Returns the flag if an instant redirect to the configured target URI should be executed.<p>
-     *
-     * @return the flag if an instant redirect to the configured target URI should be executed
-     */
-    public boolean isInstantRedirect() {
-
-        return m_instantRedirect;
-    }
-
-    /**
-     * Returns if the session should be refreshed when displaying the form.<p>
-     *
-     * @return <code>true</code> if the session should be refreshed, otherwise <code>false</code>
-     */
-    public boolean isRefreshSession() {
-
-        return m_refreshSessionInterval > 0;
-    }
-
-    /**
-     * Returns if the mandatory marks and text should be shown.<p>
-     *
-     * @return true if the mandatory marks and text should be shown, otherwise false
-     */
-    public boolean isShowMandatory() {
-
-        return m_showMandatory;
-    }
-
-    /**
-     * Returns if the reset button should be shown.<p>
-     *
-     * @return true if the reset button should be shown, otherwise false
-     */
-    public boolean isShowReset() {
-
-        return m_showReset;
-    }
-
-    /**
-     * Returns <code>true</code>, iff UGC is configured, i.e., if the data from the form should be stored in XML files.
-     * @return <code>true</code>, iff UGC is configured, i.e., if the data from the form should be stored in XML files.
-     */
-    public boolean isUgcConfigured() {
-
-        return null != m_ugcConfig;
-    }
-
-    /**
-     * Removes the captcha field from the list of all fields, if present.<p>
-     */
-    public void removeCaptchaField() {
-
-        Iterator<I_CmsField> it = m_fields.iterator();
-        while (it.hasNext()) {
-            I_CmsField field = it.next();
-            if (field instanceof CmsCaptchaField) {
-                it.remove();
-                m_fieldsByName.remove(field.getName());
-            }
-        }
-    }
-
-    /**
-     * Sets the form text.<p>
-     *
-     * @param formText the form text
-     */
-    public void setFormText(String formText) {
-
-        m_formText = formText;
-    }
-
-    /**
-     * Sets if the mandatory marks and text should be shown.<p>
-     *
-     * @param showMandatory the setting for the mandatory marks
-     */
-    public void setShowMandatory(boolean showMandatory) {
-
-        m_showMandatory = showMandatory;
-    }
-
-    /**
-     * Sets if the reset button should be shown.<p>
-     *
-     * @param showReset the setting for the reset button
-     */
-    public void setShowReset(boolean showReset) {
-
-        m_showReset = showReset;
-    }
-
-    /**
-     * Sets the HTML template file.<p>
-     *
-     * This is public to be able to set the template file from a formatter JSP file.<p>
-     *
-     * @param templateFile the HTML template file
-     */
-    public void setTemplateFile(final String templateFile) {
-
-        m_templateFile = templateFile;
-    }
-
-    /**
-     * Sets the form title.<p>
-     *
-     * @param title the form title
-     */
-    public void setTitle(String title) {
-
-        m_title = title;
+        // create item for field
+        CmsFieldItem item = new CmsFieldItem(
+            Boolean.toString(true),
+            getConfirmationMailCheckboxLabel(),
+            isChecked,
+            false);
+        List<CmsFieldItem> items = new ArrayList<>(1);
+        items.add(item);
+        field.setItems(items);
+        return field;
     }
 
     /**
@@ -1796,63 +929,255 @@ public class CmsForm {
     }
 
     /**
-     * Sets the configuration ID for this form.<p>
+     * Returns the action class.
+     * <p>
      *
-     * @param configIdObj the hashCode of the given Object is used a configuration ID for this form
+     * @return the action class.
      */
-    private void setConfigId(Object configIdObj) {
+    public String getActionClass() {
 
-        if (configIdObj != null) {
-            m_configId = configIdObj.hashCode();
-        }
+        return m_actionClass;
     }
 
     /**
-     * Adds a field to the form.<p>
+     * Returns a list of field objects, exclusive sub fields, inclusive dynamic fields, for the online form.<p>
      *
-     * @param field the field to be added to the form
+     * @return a list of field objects, exclusive sub fields, inclusive dynamic fields
      */
-    protected void addField(I_CmsField field) {
+    public List<I_CmsField> getAllFields() {
 
-        m_fields.add(field);
-        // store information about privacy field
-        if (field instanceof CmsPrivacyField) {
-            m_hasPrivacyField = true;
-        }
-        // the fields are also internally backed in a map keyed by their field name
-        m_fieldsByName.put(field.getName(), field);
+        return getAllFields(false, false, true);
     }
 
     /**
-     * Creates the checkbox field to activate the confirmation mail in the input form.<p>
+     * Returns a list of field objects, depending on the given parameters.<p>
+     * @param includeShownSubFields indicates if only the shown sub fields should be included
+     * @param includeAllSubFields indicates if all possible sub fields should be included
+     * @param includeDynamicFields indicates if the dynamic fields should be included
      *
-     * @param messages the localized messages
-     * @param initial if true, field values are filled with values specified in the XML configuration, otherwise values are read from the request
-     *
-     * @return the checkbox field to activate the confirmation mail in the input form
+     * @return a list of field objects, depending on the given parameters
      */
-    protected I_CmsField createConfirmationMailCheckbox(CmsMessages messages, boolean initial) {
+    public List<I_CmsField> getAllFields(
+        boolean includeShownSubFields,
+        boolean includeAllSubFields,
+        boolean includeDynamicFields) {
 
-        A_CmsField field = new CmsCheckboxField();
-        field.setName(PARAM_SENDCONFIRMATION + getConfigId());
-        field.setDbLabel(PARAM_SENDCONFIRMATION);
-        field.setLabel(messages.key(I_CmsFormMessages.FORM_CONFIRMATION_LABEL));
-        // check the field status
-        boolean isChecked = false;
-        if (!initial && Boolean.valueOf(getParameter(PARAM_SENDCONFIRMATION + getConfigId())).booleanValue()) {
-            // checkbox is checked by user
-            isChecked = true;
+        List<I_CmsField> result = new ArrayList<>(m_fields.size() + 16);
+        if (includeAllSubFields) {
+            // all sub fields have to be added
+            Iterator<I_CmsField> i = m_fields.iterator();
+            while (i.hasNext()) {
+                I_CmsField field = i.next();
+                result.add(field);
+                if (field.isHasSubFields()) {
+                    Iterator<Entry<String, List<I_CmsField>>> k = field.getSubFields().entrySet().iterator();
+                    while (k.hasNext()) {
+                        Map.Entry<String, List<I_CmsField>> entry = k.next();
+                        result.addAll(entry.getValue());
+                    }
+                }
+            }
+        } else if (includeShownSubFields) {
+            // only shown sub fields have to be added
+            Iterator<I_CmsField> i = m_fields.iterator();
+            while (i.hasNext()) {
+                I_CmsField field = i.next();
+                result.add(field);
+                if (field.hasCurrentSubFields()) {
+                    result.addAll(field.getCurrentSubFields());
+                }
+            }
+        } else {
+            // no sub fields have to be added
+            result = new ArrayList<>(m_fields);
         }
-        // create item for field
-        CmsFieldItem item = new CmsFieldItem(
-            Boolean.toString(true),
-            getConfirmationMailCheckboxLabel(),
-            isChecked,
-            false);
-        List<CmsFieldItem> items = new ArrayList<>(1);
-        items.add(item);
-        field.setItems(items);
-        return field;
+
+        if (includeDynamicFields) {
+            result.addAll(m_dynaFields);
+        }
+
+        return result;
+    }
+
+    /**
+     * Returns the (opt.) captcha field of this form.<p>
+     *
+     * @return the (opt.) captcha field of this form
+     */
+    public CmsCaptchaField getCaptchaField() {
+
+        return m_captchaField;
+    }
+
+    /**
+     * Returns the configuration ID of this form.<p>
+     *
+     * This ID is used as suffix for form field names and other field specific stuff,
+     * making it possible to have more than one form on a page.<p>
+     *
+     * @return the configuration ID of this form
+     */
+    public int getConfigId() {
+
+        if (m_configId == 0) {
+            m_configId = getConfigUri().hashCode();
+        }
+        return m_configId;
+    }
+
+    /**
+     * Returns the form configuration errors.<p>
+     *
+     * @return the form configuration errors
+     */
+    public List<String> getConfigurationErrors() {
+
+        return m_configurationErrors;
+    }
+
+    /**
+     * Returns the configuration Uri.<p>
+     *
+     * @return the configuration Uri
+     */
+    public String getConfigUri() {
+
+        return m_configUri;
+    }
+
+    /**
+     * Returns the label for the optional confirmation mail checkbox on the input form.<p>
+     *
+     * @return the label for the optional confirmation mail checkbox on the input form
+     */
+    public String getConfirmationMailCheckboxLabel() {
+
+        return m_confirmationMailCheckboxLabel;
+    }
+
+    /**
+     * Returns the confirmation mail receiver email address.<p>
+     *
+     * @return the confirmation mail receiver email address or <code>null</code> if not found
+     */
+    public String getConfirmationMailEmail() {
+
+        if (getConfirmationMailField() != -1) {
+            try {
+                I_CmsField mailField = getFields().get(getConfirmationMailField());
+                return mailField.getValue();
+            } catch (Exception e) {
+                // field not found
+            }
+        } else if (CmsStringUtil.isNotEmpty(getConfirmationMailFieldDbLabel())) {
+            I_CmsField mailField = getFieldByDbLabel(getConfirmationMailFieldDbLabel());
+            if (mailField != null) {
+                return mailField.getValue();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the index number of the input field containing the email address for the optional confirmation mail.<p>
+     *
+     * @return the index number of the input field containing the email address for the optional confirmation mail
+     *
+     * @deprecated use {@link #getConfirmationMailFieldDbLabel()} instead
+     */
+    @Deprecated
+    public int getConfirmationMailField() {
+
+        return m_confirmationMailField;
+    }
+
+    /**
+     * Returns the DB label of the input field containing the email address for the optional confirmation mail.<p>
+     *
+     * @return the DB label of the input field containing the email address for the optional confirmation mail
+     */
+    public String getConfirmationMailFieldDbLabel() {
+
+        return m_confirmationMailFieldDbLabel;
+    }
+
+    /**
+     * Returns the optional confirmation mail from.<p>
+     *
+     * @return the optional confirmation mail from
+     */
+    public String getConfirmationMailFrom() {
+
+        return m_confirmationMailFrom;
+    }
+
+    /**
+     * Returns the optional confirmation mail from name.<p>
+     *
+     * @return the optional confirmation mail from name
+     */
+    public String getConfirmationMailFromName() {
+
+        return m_confirmationMailFromName;
+    }
+
+    /**
+     * Returns the subject of the optional confirmation mail.<p>
+     *
+     * @return the subject of the optional confirmation mail
+     */
+    public String getConfirmationMailSubject() {
+
+        return m_confirmationMailSubject;
+    }
+
+    /**
+     * Returns the text of the optional confirmation mail.<p>
+     *
+     * @return the text of the optional confirmation mail
+     */
+    public String getConfirmationMailText() {
+
+        return m_confirmationMailText;
+    }
+
+    /**
+     * Returns the plain text of the optional confirmation mail.<p>
+     *
+     * @return the plain text of the optional confirmation mail
+     */
+    public String getConfirmationMailTextPlain() {
+
+        return m_confirmationMailTextPlain;
+    }
+
+    /**
+     * Returns the optional form expiration date.<p>
+     *
+     * @return the optional form expiration date
+     */
+    public long getExpirationDate() {
+
+        return m_expirationDate;
+    }
+
+    /**
+     * Returns the form expiration text.<p>
+     *
+     * @return the form expiration text
+     */
+    public String getExpirationText() {
+
+        return m_expirationText;
+    }
+
+    /**
+     * Returns a map of additional configuration values to be accessed in the string template.
+     * @return a map of additional configuration values to be accessed in the string template.
+     */
+    public Map<String, String> getExtraConfig() {
+
+        return m_extraConfig;
     }
 
     /**
@@ -1868,6 +1193,255 @@ public class CmsForm {
     }
 
     /**
+     * Returns the field with the given database label.<p>
+     *
+     * @param dbLabel the database label
+     *
+     * @return the field with the given database label or <code>null</code> if not found
+     */
+    public I_CmsField getFieldByDbLabel(String dbLabel) {
+
+        Iterator<I_CmsField> it = getAllFields(false, true, true).iterator();
+        while (it.hasNext()) {
+            I_CmsField field = it.next();
+            if (field.getDbLabel().equals(dbLabel)) {
+                return field;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the field specified by it's name (Xpath).<p>
+     *
+     * @param fieldName the field's name (Xpath)
+     *
+     * @return the field, or null
+     */
+    public I_CmsField getFieldByName(String fieldName) {
+
+        return m_fieldsByName.get(fieldName);
+    }
+
+    /**
+     * Returns a list of field objects for the online form.<p>
+     *
+     * @return a list of field objects for the online form
+     */
+    public List<I_CmsField> getFields() {
+
+        return m_fields;
+    }
+
+    /**
+     * Returns the value for a field specified by it's name (Xpath).<p>
+     *
+     * @param fieldName the field's name (Xpath)
+     *
+     * @return the field value, or null
+     */
+    public String getFieldStringValueByName(String fieldName) {
+
+        I_CmsField field = m_fieldsByName.get(fieldName);
+        if (field != null) {
+            String fieldValue = field.getValue();
+            return (fieldValue != null) ? fieldValue.trim() : "";
+        }
+
+        return "";
+    }
+
+    /**
+     * Returns the form check text.<p>
+     *
+     * @return the form check text
+     */
+    public String getFormCheckText() {
+
+        return m_formCheckText;
+    }
+
+    /**
+     * Returns the form confirmation text.<p>
+     *
+     * @return the form confirmation text
+     */
+    public String getFormConfirmationText() {
+
+        return m_formConfirmationText;
+    }
+
+    /**
+     * Returns the form footer text.<p>
+     *
+     * @return the form footer text
+     */
+    public String getFormFooterText() {
+
+        return m_formFooterText;
+    }
+
+    /**
+     * Returns the form middle text.<p>
+     *
+     * @return the form middle text
+     */
+    public String getFormMiddleText() {
+
+        return m_formMiddleText;
+    }
+
+    /**
+     * Returns the form text.<p>
+     *
+     * @return the form text
+     */
+    public String getFormText() {
+
+        return m_formText;
+    }
+
+    /**
+     * Returns the current jsp action element.<p>
+     *
+     * @return the jsp action element
+     */
+    public CmsJspActionElement getJspAction() {
+
+        return m_jspAction;
+    }
+
+    /**
+     * Returns the mail bcc recipient(s).<p>
+     *
+     * @return the mail bcc recipient(s)
+     */
+    public String getMailBCC() {
+
+        return m_mailBCC;
+    }
+
+    /**
+     * Returns the mail cc recipient(s).<p>
+     *
+     * @return the mail cc recipient(s)
+     */
+    public String getMailCC() {
+
+        return m_mailCC;
+    }
+
+    /**
+     * Returns the optional email CSS style sheet.<p>
+     *
+     * @return the optional email CSS style sheet
+     */
+    public String getMailCSS() {
+
+        return m_mailCSS;
+    }
+
+    /**
+     * Returns the mail sender address.<p>
+     *
+     * @return the mail sender address
+     */
+    public String getMailFrom() {
+
+        return m_mailFrom;
+    }
+
+    /**
+     * Returns the mail sender name.<p>
+     *
+     * @return the mail sender name
+     */
+    public String getMailFromName() {
+
+        return m_mailFromName;
+    }
+
+    /**
+     * Returns the mail subject.<p>
+     *
+     * @return the mail subject
+     */
+    public String getMailSubject() {
+
+        return m_mailSubject;
+    }
+
+    /**
+     * Returns the mail subject prefix.<p>
+     *
+     * @return the mail subject prefix
+     */
+    public String getMailSubjectPrefix() {
+
+        return m_mailSubjectPrefix;
+    }
+
+    /**
+     * Returns the mail text.<p>
+     *
+     * @return the mail text
+     */
+    public String getMailText() {
+
+        return m_mailText;
+    }
+
+    /**
+     * Returns the mail text as plain text.<p>
+     *
+     * @return the mail text as plain text
+     */
+    public String getMailTextPlain() {
+
+        return m_mailTextPlain;
+    }
+
+    /**
+     * Returns the mail recipient(s).<p>
+     *
+     * @return the mail recipient(s)
+     */
+    public String getMailTo() {
+
+        return m_mailTo;
+    }
+
+    /**
+     * Returns the mail type ("text" or "html").<p>
+     *
+     * @return the mail type
+     */
+    public String getMailType() {
+
+        return m_mailType;
+    }
+
+    /**
+     * Returns the optional form maximum submissions number.<p>
+     *
+     * @return the optional form maximum submissions number
+     */
+    public long getMaximumSubmissions() {
+
+        return m_maxSubmissions;
+    }
+
+    /**
+     * Returns the form maximum submissions text.<p>
+     *
+     * @return the form maximum submissions text
+     */
+    public String getMaximumSubmissionsText() {
+
+        return m_maxSubmissionsText;
+    }
+
+    /**
      * Returns the request parameter with the specified name.<p>
      *
      * @param parameter the parameter to return
@@ -1880,6 +1454,253 @@ public class CmsForm {
             return (m_parameterMap.get(parameter))[0];
         } catch (NullPointerException e) {
             return "";
+        }
+    }
+
+    /**
+     * Returns the interval to refresh the session.<p>
+     *
+     * @return the interval to refresh the session
+     */
+    public int getRefreshSessionInterval() {
+
+        return m_refreshSessionInterval;
+    }
+
+    /**
+     * Returns the optional form release date.<p>
+     *
+     * @return the optional form release date
+     */
+    public long getReleaseDate() {
+
+        return m_releaseDate;
+    }
+
+    /**
+     * Returns the form release text.<p>
+     *
+     * @return the form release text
+     */
+    public String getReleaseText() {
+
+        return m_releaseText;
+    }
+
+    /**
+     * Returns if the check page should be shown.<p>
+     *
+     * @return true if the check page should be shown, otherwise false
+     */
+    public boolean getShowCheck() {
+
+        return m_showCheck;
+    }
+
+    /**
+     * Returns the target URI of this form.<p>
+     *
+     * This optional target URI can be used to redirect the user to an OpenCms page instead of displaying a confirmation
+     * text from the form's XML content.<p>
+     *
+     * @return the target URI
+     */
+    public String getTargetUri() {
+
+        return m_targetUri;
+    }
+
+    /**
+     * Returns the optional HTML template file.<p>
+     *
+     * @return the optional HTML template file
+     */
+    public String getTemplateFile() {
+
+        return m_templateFile;
+    }
+
+    /**
+     * Returns the form title.<p>
+     *
+     * @return the form title
+     */
+    public String getTitle() {
+
+        return m_title;
+    }
+
+    /**
+     * Returns the UGC configuration for saving form data in XML contents.
+     * @return the UGC configuration for saving form data in XML contents.
+     */
+    public CmsFormUgcConfiguration getUgcConfiguration() {
+
+        return m_ugcConfig;
+    }
+
+    /**
+         * Tests if a captcha field is configured for this form.<p>
+         *
+         * @return true, if a captcha field is configured for this form
+         */
+    public boolean hasCaptchaField() {
+
+        return m_captchaField != null;
+    }
+
+    /**
+     * Returns if the form has configuration errors.<p>
+     *
+     * @return true if the form has configuration errors, otherwise false
+     */
+    public boolean hasConfigurationErrors() {
+
+        return m_configurationErrors.size() > 0;
+    }
+
+    /**
+     * Returns true if at least one of the configured fields is mandatory.<p>
+     *
+     * @return true if at least one of the configured fields is mandatory, otherwise false
+     */
+    public boolean hasMandatoryFields() {
+
+        return m_hasMandatoryFields;
+    }
+
+    /**
+     * Returns true if a privacy field is configured manually.<p>
+     *
+     * @return true if a privacy field is configured manually
+     */
+    public boolean hasPrivacyField() {
+
+        return m_hasPrivacyField;
+    }
+
+    /**
+     * Tests if this form has a target URI specified.<p>
+     *
+     * This optional target URI can be used to redirect the user to an OpenCms page instead of displaying a confirmation
+     * text from the form's XML content.<p>
+     *
+     * @return the target URI
+     */
+    public boolean hasTargetUri() {
+
+        return CmsStringUtil.isNotEmpty(m_targetUri);
+    }
+
+    /**
+     * Initializes the form configuration and creates the necessary form field objects.<p>
+     *
+     * @param jsp the initialized CmsJspActionElement to access the OpenCms API
+     * @param messages the localized messages
+     * @param initial if true, field values are filled with values specified in the XML configuration
+     * @param formConfigUri URI of the form configuration file, if not provided, current URI is used for configuration
+     * @param formAction the desired action submitted by the form
+     *
+     * @throws Exception if parsing the configuration fails
+     */
+    public void init(CmsFormHandler jsp, CmsMessages messages, boolean initial, String formConfigUri, String formAction)
+    throws Exception {
+
+        init(jsp, messages, initial, formConfigUri, formAction, null, null);
+    }
+
+    /**
+     * Initializes the form configuration and creates the necessary form field objects.<p>
+     *
+     * @param jsp the initialized CmsJspActionElement to access the OpenCms API
+     * @param messages the localized messages
+     * @param initial if true, field values are filled with values specified in the XML configuration
+     * @param formConfigUri URI of the form configuration file, if not provided, current URI is used for configuration
+     * @param formAction the desired action submitted by the form
+     * @param dynamicConfig map of configurations that can overwrite the configuration from the configuration file
+     *
+     * @throws Exception if parsing the configuration fails
+     */
+    public void init(
+        CmsFormHandler jsp,
+        CmsMessages messages,
+        boolean initial,
+        String formConfigUri,
+        String formAction,
+        Map<String, String> dynamicConfig)
+    throws Exception {
+
+        init(jsp, messages, initial, formConfigUri, formAction, dynamicConfig, null);
+    }
+
+    /**
+     * Initializes the form configuration and creates the necessary form field objects.<p>
+     *
+     * @param jsp the initialized CmsJspActionElement to access the OpenCms API
+     * @param messages the localized messages
+     * @param initial if true, field values are filled with values specified in the XML configuration
+     * @param formConfigUri URI of the form configuration file, if not provided, current URI is used for configuration
+     * @param formAction the desired action submitted by the form
+     * @param dynamicConfig map of configurations that can overwrite the configuration from the configuration file
+     * @param extraConfig additional map accessible in the string template for the form.
+     *
+     * @throws Exception if parsing the configuration fails
+     */
+    public void init(
+        CmsFormHandler jsp,
+        CmsMessages messages,
+        boolean initial,
+        String formConfigUri,
+        String formAction,
+        Map<String, String> dynamicConfig,
+        Map<String, String> extraConfig)
+    throws Exception {
+
+        if ((null != dynamicConfig) && dynamicConfig.containsKey(CONFIG_KEY_FORM_ID)) {
+            setConfigId(dynamicConfig.get(CONFIG_KEY_FORM_ID));
+        }
+        if ((null != extraConfig)) {
+            m_extraConfig = extraConfig;
+        } else {
+            m_extraConfig = Collections.emptyMap();
+        }
+        m_parameterMap = jsp.getParameterMap();
+        // read the form configuration file from VFS
+        if (CmsStringUtil.isEmpty(formConfigUri)) {
+            formConfigUri = jsp.getRequestContext().getUri();
+        }
+        m_configUri = formConfigUri;
+        CmsObject cms = jsp.getCmsObject();
+        CmsFile file = cms.readFile(formConfigUri);
+        CmsXmlContent content = CmsXmlContentFactory.unmarshal(cms, file);
+
+        CmsRequestContext requestContext = cms.getRequestContext();
+        Locale locale = OpenCms.getLocaleManager().getBestMatchingLocale(
+            requestContext.getLocale(),
+            OpenCms.getLocaleManager().getDefaultLocales(cms, requestContext.getUri()),
+            content.getLocales());
+
+        // init member variables
+        initMembers();
+
+        m_formAction = formAction;
+        m_fields = new ArrayList<>();
+        m_dynaFields = new ArrayList<>();
+        m_fieldsByName = new HashMap<>();
+        m_jspAction = jsp;
+
+        // initialize general form configuration
+        initFormGlobalConfiguration(content, cms, locale, messages, dynamicConfig);
+
+        // initialize the form input fields
+        initInputFields(content, jsp, locale, messages, initial);
+
+        // init. the optional captcha field
+        initCaptchaField(jsp, content, locale, initial);
+
+        // add the captcha field to the list of all fields, if the form has no check page
+        if (captchaFieldIsOnInputPage() && (m_captchaField != null)) {
+            addField(m_captchaField);
         }
     }
 
@@ -2018,7 +1839,7 @@ public class CmsForm {
                 VFS_PATH_DEFAULT_TEMPLATEFILE);
             setTemplateFile(configParser.getConfigurationValue(pathPrefix + NODE_TEMPLATE_FILE, defaultTemplateFile));
             // get the optional web form action class
-            setActionClass(configParser.getConfigurationValue(pathPrefix + NODE_ACTION_CLASS, ""));
+            setActionClass(configParser.getConfigurationValue(pathPrefix + NODE_TEMPLATE_FILE, ""));
             // get the show mandatory setting
             setShowMandatory(
                 Boolean.parseBoolean(
@@ -2348,6 +2169,106 @@ public class CmsForm {
     }
 
     /**
+     * Tests if the check page was submitted.<p>
+     *
+     * @return true, if the check page was submitted
+     */
+    public boolean isCheckPageSubmitted() {
+
+        return CmsFormHandler.ACTION_CONFIRMED.equals(m_formAction);
+    }
+
+    /**
+     * Returns if the optional confirmation mail is enabled.<p>
+     *
+     * @return true if the optional confirmation mail is enabled, otherwise false
+     */
+    public boolean isConfirmationMailEnabled() {
+
+        return m_confirmationMailEnabled;
+    }
+
+    /**
+     * Returns if the confirmation mail if optional, i.e. selectable by the form submitter.<p>
+     *
+     * @return true if the confirmation mail if optional, i.e. selectable by the form submitter, otherwise false
+     */
+    public boolean isConfirmationMailOptional() {
+
+        return m_confirmationMailOptional;
+    }
+
+    /**
+     * Returns <code>true</code> if the request should be forwarded to
+     * the given target URI, <code>false</code> otherwise.<p>
+     *
+     * @return the <code>true</code> if the request should be forwarded
+     */
+    public boolean isForwardMode() {
+
+        return m_forwardMode;
+    }
+
+    /**
+     * Tests if the input page was submitted.<p>
+     *
+     * @return true, if the input page was submitted
+     */
+    public boolean isInputFormSubmitted() {
+
+        return CmsFormHandler.ACTION_SUBMIT.equals(m_formAction);
+    }
+
+    /**
+     * Returns the flag if an instant redirect to the configured target URI should be executed.<p>
+     *
+     * @return the flag if an instant redirect to the configured target URI should be executed
+     */
+    public boolean isInstantRedirect() {
+
+        return m_instantRedirect;
+    }
+
+    /**
+     * Returns if the session should be refreshed when displaying the form.<p>
+     *
+     * @return <code>true</code> if the session should be refreshed, otherwise <code>false</code>
+     */
+    public boolean isRefreshSession() {
+
+        return m_refreshSessionInterval > 0;
+    }
+
+    /**
+     * Returns if the mandatory marks and text should be shown.<p>
+     *
+     * @return true if the mandatory marks and text should be shown, otherwise false
+     */
+    public boolean isShowMandatory() {
+
+        return m_showMandatory;
+    }
+
+    /**
+     * Returns if the reset button should be shown.<p>
+     *
+     * @return true if the reset button should be shown, otherwise false
+     */
+    public boolean isShowReset() {
+
+        return m_showReset;
+    }
+
+    /**
+     * Returns <code>true</code>, iff UGC is configured, i.e., if the data from the form should be stored in XML files.
+     * @return <code>true</code>, iff UGC is configured, i.e., if the data from the form should be stored in XML files.
+     */
+    public boolean isUgcConfigured() {
+
+        return null != m_ugcConfig;
+    }
+
+    /**
      * Marks the individual items of checkboxes, selectboxes and radiobuttons as selected depending on the given request parameters.<p>
      *
      * @param field the current field
@@ -2380,6 +2301,21 @@ public class CmsForm {
     }
 
     /**
+     * Removes the captcha field from the list of all fields, if present.<p>
+     */
+    public void removeCaptchaField() {
+
+        Iterator<I_CmsField> it = m_fields.iterator();
+        while (it.hasNext()) {
+            I_CmsField field = it.next();
+            if (field instanceof CmsCaptchaField) {
+                it.remove();
+                m_fieldsByName.remove(field.getName());
+            }
+        }
+    }
+
+    /**
      * Sets the action class.
      * <p>
      *
@@ -2388,6 +2324,18 @@ public class CmsForm {
     protected void setActionClass(final String actionClass) {
 
         m_actionClass = actionClass;
+    }
+
+    /**
+     * Sets the configuration ID for this form.<p>
+     *
+     * @param configIdObj the hashCode of the given Object is used a configuration ID for this form
+     */
+    private void setConfigId(Object configIdObj) {
+
+        if (configIdObj != null) {
+            m_configId = configIdObj.hashCode();
+        }
     }
 
     /**
@@ -2561,6 +2509,16 @@ public class CmsForm {
     protected void setFormMiddleText(String formMiddleText) {
 
         m_formMiddleText = formMiddleText;
+    }
+
+    /**
+     * Sets the form text.<p>
+     *
+     * @param formText the form text
+     */
+    public void setFormText(String formText) {
+
+        m_formText = formText;
     }
 
     /**
@@ -2764,6 +2722,26 @@ public class CmsForm {
     }
 
     /**
+     * Sets if the mandatory marks and text should be shown.<p>
+     *
+     * @param showMandatory the setting for the mandatory marks
+     */
+    public void setShowMandatory(boolean showMandatory) {
+
+        m_showMandatory = showMandatory;
+    }
+
+    /**
+     * Sets if the reset button should be shown.<p>
+     *
+     * @param showReset the setting for the reset button
+     */
+    public void setShowReset(boolean showReset) {
+
+        m_showReset = showReset;
+    }
+
+    /**
      * Sets the target URI of this form.<p>
      *
      * This optional target URI can be used to redirect the user to an OpenCms page instead of displaying a confirmation
@@ -2774,6 +2752,28 @@ public class CmsForm {
     protected void setTargetUri(String targetUri) {
 
         m_targetUri = targetUri;
+    }
+
+    /**
+     * Sets the HTML template file.<p>
+     *
+     * This is public to be able to set the template file from a formatter JSP file.<p>
+     *
+     * @param templateFile the HTML template file
+     */
+    public void setTemplateFile(final String templateFile) {
+
+        m_templateFile = templateFile;
+    }
+
+    /**
+     * Sets the form title.<p>
+     *
+     * @param title the form title
+     */
+    public void setTitle(String title) {
+
+        m_title = title;
     }
 
     /**

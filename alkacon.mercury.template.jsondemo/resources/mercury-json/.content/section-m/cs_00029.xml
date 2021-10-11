@@ -16,10 +16,10 @@
           <query><![CDATA[uri=/workplace]]></query>
         </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/json-api/]]></target>
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/headless-json-api/]]></target>
         </link>
         <link name="link3" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/mercury-json/demo2]]></target>
+          <target><![CDATA[https://github.com/alkacon/mercury-json/demo1]]></target>
         </link>
       </links>
       <content><![CDATA[<ul>
@@ -29,7 +29,7 @@
 <li>Edit the title of an article or the question of an FAQ entry and see that the changes are immediately reflected in the demo application.</li>
 <li>Add or delete FAQ entries and articles and see that the contents immediately appear or disappear in the demo application.</li>
 <li>Read more about the technical details of the JSON folder handler and the content handler in the <a href="%(link2)" target="_blank" rel="noopener">OpenCms JSON API documentation</a>.</li>
-<li>Have a look at the <a href="%(link3)" target="_blank" rel="noopener">source code of the demo 2 app</a>.</li>
+<li>Have a look at the <a href="%(link3)" target="_blank" rel="noopener">source code of the demo 1 app</a>.</li>
 </ul>]]></content>
     </Text>
   </ContentSection>

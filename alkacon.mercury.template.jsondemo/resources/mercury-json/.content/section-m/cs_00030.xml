@@ -9,7 +9,7 @@
           <target><![CDATA[https://github.com/alkacon/mercury-json]]></target>
         </link>
         <link name="link1" internal="false" type="A">
-          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/json-api/]]></target>
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/headless-json-api/]]></target>
         </link>
       </links>
       <content><![CDATA[<p>The demo apps are simple React applications intended to showcase how the OpenCms headless JSON API works. There are no React dependencies, so the same principles can easily be used with other frameworks such as Angular, Vue or whatever else you prefer.</p>

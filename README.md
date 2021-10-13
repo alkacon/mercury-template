@@ -6,11 +6,11 @@ The Mercury Template is a complete, modular template for [OpenCms](http://opencm
 
 ### Release history ###
 
-**Version 12.0.0** - October 12, 2021:
+**Version 12.0** - October 12, 2021:
 
 This is a major update of the Mercury template. Mercury has been used to create hundreds of websites since the initial 11.x release in 2019. A lot of fine-tuning and issue fixing has been included in this release. Mercury 12 should be largely backward compatible with the 11 version.
 
-* Updated for OpenCms 12.0.0.
+* Updated for OpenCms 12.0.
 * Configurable cookie banner that allows users to opt-out of statistical and external cookies.
 * Contact informations in lists.
 * iCalendar links for events.

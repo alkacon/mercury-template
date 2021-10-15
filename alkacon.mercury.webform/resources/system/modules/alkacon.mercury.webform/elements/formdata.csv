@@ -22,7 +22,7 @@
         <c:set var="exportBean" value='${cms.getBean("alkacon.mercury.webform.CmsCsvExportBean")}' />
 
         ${exportBean.init(form, formTitle, cms.locale)}
-        ${exportBean.export()}
+        ${exportBean.export().toString()}
 
     </c:if>
 

@@ -1,0 +1,38 @@
+<%@page
+    pageEncoding="UTF-8"
+    buffer="none"
+    session="false"
+    trimDirectiveWhitespaces="true" %>
+<%@page import="alkacon.mercury.webform.CmsExcelExportBean" %>
+<%@page import="alkacon.mercury.template.writer.CmsExcelWriter" %>
+
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+        response.setHeader("Content-Type", "application/xlsx");
+        response.setContentType("application/xlsx");
+        response.setHeader("Content-Disposition","inline; filename=formdata.xlsx");
+%>
+<c:if test="${not cms.isOnlineProject}">
+
+    <mercury:webform-vars webform="${param.f}" bookingInfo="${param.b}">
+
+    <c:if test="${form.userCanManage}">
+
+        <c:set var="exportBean" value='${cms.getBean("alkacon.mercury.webform.CmsExcelExportBean")}' />
+
+        ${exportBean.init(form, formTitle, cms.locale)}
+
+    </c:if>
+
+    </mercury:webform-vars>
+    <%
+        CmsExcelExportBean exportBean = (CmsExcelExportBean)pageContext.getAttribute("exportBean");
+        if (exportBean != null) {
+            ((CmsExcelWriter)exportBean.export()).getWorkbook().write(response.getOutputStream());
+            ((CmsExcelWriter)exportBean.export()).getWorkbook().close();
+        }
+    %>
+
+</c:if>

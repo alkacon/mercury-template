@@ -29,10 +29,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-package alkacon.mercury.template.csv;
+package alkacon.mercury.template.writer;
 
 /** Helper to produce Csv files. */
-public class CmsCsvWriter {
+public class CmsCsvWriter extends A_CmsWriter {
 
     /** The "bom" bytes as String that need to be placed at the very beginning of the produced csv. */
     private static final String BOM = "\ufeff";
@@ -44,7 +44,8 @@ public class CmsCsvWriter {
      * Adds a line to the CSV.
      * @param values the (unescaped) values to add.
      */
-    public void addLine(String... values) {
+    @Override
+    public void addRow(String... values) {
 
         if (null != values) {
             if (values.length > 0) {

@@ -128,18 +128,33 @@
 
         <c:if test="${not empty form.submissions}">
 
-            <div class="subelement clearfix"><%----%>
-                <c:set var="formId">${formXml.file.structureId}</c:set>
-                <c:set var="bookingId">${formBookingXml.file.structureId}</c:set>
-                <c:set var="csvLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}</cms:link></c:set>
-                <mercury:link link="${csvLink}" css="btn btn-xs pull-right oct-meta-info">
-                    <fmt:message key="msg.page.form.button.submissions.csv" />
-                </mercury:link>
+            <div class="row"><%----%>
+                <div class="col-sm-6"><%----%>
+                    <c:set var="id"><mercury:idgen prefix="wf" uuid="${cms.element.id}" /></c:set>
+                    <h3><fmt:message key="msg.page.form.bookingstatus.submissiondata.heading"/></h3><%----%>
+                </div><%----%>
+                <div class="col-sm-6"><%----%>
+                    <div class="subelement clearfix"><%----%>
+                        <c:set var="formId">${formXml.file.structureId}</c:set>
+                        <c:set var="bookingId">${formBookingXml.file.structureId}</c:set>
+                        <c:set var="csvLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}</cms:link></c:set>
+                        <c:set var="excelLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}</cms:link></c:set>
+                        <div class="pull-right"><%----%>
+                            <small><%----%>
+                                <fmt:message key="msg.page.form.label.submissions.export" />
+                            </small><%----%>
+                            <mercury:link link="${csvLink}" css="btn btn-xs oct-meta-info">
+                                <fmt:message key="msg.page.form.button.submissions.csv" />
+                            </mercury:link><%----%>
+                            <mercury:link link="${excelLink}" css="btn btn-xs oct-meta-info">
+                                <fmt:message key="msg.page.form.button.submissions.excel" />
+                            </mercury:link><%----%>
+                        </div><%----%>
+                    </div><%----%>
+                    <mercury:nl />
+                </div><%----%>
             </div><%----%>
             <mercury:nl />
-
-            <c:set var="id"><mercury:idgen prefix="wf" uuid="${cms.element.id}" /></c:set>
-            <h3><fmt:message key="msg.page.form.bookingstatus.submissiondata.heading"/></h3><%----%>
             <div class=list-box><%----%>
                 <div class="list-entries accordion-items" id="${id}"><%----%>
                     <c:forEach var="submission" items="${form.submissions}" varStatus="status">

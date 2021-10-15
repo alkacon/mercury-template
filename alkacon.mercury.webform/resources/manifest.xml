@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>12.0.0</version>
+		<version>12.0.3</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -549,7 +549,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Exports submission data of webforms]]></value>
+					<value><![CDATA[Exports submission data of webforms in CSV format]]></value>
 				</property>
 				<property>
 					<name>cache</name>
@@ -558,6 +558,27 @@
 				<property>
 					<name>content-encoding</name>
 					<value><![CDATA[utf-8]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/elements/formdata.xlsx</source>
+			<destination>system/modules/alkacon.mercury.webform/elements/formdata.xlsx</destination>
+			<type>jsp</type>
+			<uuidstructure>0e296ce8-2dbc-11ec-835c-0242ac11002b</uuidstructure>
+			<uuidresource>0e296ce9-2dbc-11ec-835c-0242ac11002b</uuidresource>
+			<datecreated>Fri, 15 Oct 2021 13:30:25 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Exports submission data of webforms in Excel format]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

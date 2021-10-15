@@ -3,7 +3,7 @@
     buffer="none"
     session="false"
     trimDirectiveWhitespaces="true" %>
-<%@page import="alkacon.mercury.webform.CmsExcelExportBean" %>
+<%@page import="alkacon.mercury.webform.CmsExportBeanExcel" %>
 <%@page import="alkacon.mercury.template.writer.CmsExcelWriter" %>
 
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
@@ -20,7 +20,7 @@
 
     <c:if test="${form.userCanManage}">
 
-        <c:set var="exportBean" value='${cms.getBean("alkacon.mercury.webform.CmsExcelExportBean")}' />
+        <c:set var="exportBean" value='${cms.getBean("alkacon.mercury.webform.CmsExportBeanExcel")}' />
 
         ${exportBean.init(form, formTitle, cms.locale)}
 
@@ -28,7 +28,7 @@
 
     </mercury:webform-vars>
     <%
-        CmsExcelExportBean exportBean = (CmsExcelExportBean)pageContext.getAttribute("exportBean");
+        CmsExportBeanExcel exportBean = (CmsExportBeanExcel)pageContext.getAttribute("exportBean");
         if (exportBean != null) {
             ((CmsExcelWriter)exportBean.export()).getWorkbook().write(response.getOutputStream());
             ((CmsExcelWriter)exportBean.export()).getWorkbook().close();

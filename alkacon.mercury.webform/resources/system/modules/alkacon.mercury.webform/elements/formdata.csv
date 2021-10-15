@@ -19,7 +19,7 @@
 
     <c:if test="${form.userCanManage}">
 
-        <c:set var="exportBean" value='${cms.getBean("alkacon.mercury.webform.CmsCsvExportBean")}' />
+        <c:set var="exportBean" value='${cms.getBean("alkacon.mercury.webform.CmsExportBeanCsv")}' />
 
         ${exportBean.init(form, formTitle, cms.locale)}
         ${exportBean.export().toString()}

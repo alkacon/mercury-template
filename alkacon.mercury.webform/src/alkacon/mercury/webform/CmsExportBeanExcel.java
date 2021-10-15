@@ -33,7 +33,7 @@ import alkacon.mercury.template.writer.CmsExcelWriter;
 /**
  * Class representing an Excel export bean.
  */
-public class CmsExcelExportBean extends A_CmsExportBean {
+public class CmsExportBeanExcel extends A_CmsExportBean {
 
     /**
      * @see alkacon.mercury.webform.A_CmsExportBean#export()

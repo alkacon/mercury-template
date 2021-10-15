@@ -46,7 +46,7 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 
 /**
- * Class representing a data export bean.
+ * Class representing an export bean for data submitted by a form.
  */
 public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
 
@@ -123,7 +123,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     protected CmsMessages m_messages;
 
     /**
-     * Exports t
+     * Exports the submission data and returns the writer holding the data.
      * @return the writer
      */
     abstract public A_CmsWriter export();
@@ -139,6 +139,16 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         m_form = form;
         m_formTitle = formTitle;
         m_messages = new CmsMessages(BUNDLE_NAME, locale);
+    }
+
+    /**
+     * Generates the String value to put in the CSV instead of the boolean value provided.
+     * @param b the value to convert to a String.
+     * @return the value as it is printed in the CSV output.
+     */
+    protected String asString(boolean b) {
+
+        return b ? "X" : "";
     }
 
     /**
@@ -213,21 +223,11 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     }
 
     /**
-     * Generates the String value to put in the CSV instead of the boolean value provided.
-     * @param b the value to convert to a String.
-     * @return the value as it is printed in the CSV output.
-     */
-    String asString(boolean b) {
-
-        return b ? "X" : "";
-    }
-
-    /**
      * Returns the submission data as String array with the values for one line in the CSV output.
      * @param formData the submission data as bean.
      * @return the submission data as String array with the values for one line in the CSV output.
      */
-    String[] getData(CmsFormDataBean formData) {
+    protected String[] getData(CmsFormDataBean formData) {
 
         Map<String, String> data = formData.getData();
         String[] result = new String[data.keySet().size() + 5];
@@ -248,7 +248,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
      * @param formData a sample submitted data.
      * @return the headline for the submission with the separate CSV values for the line in a String array.
      */
-    String[] getHeadline(CmsFormDataBean formData) {
+    protected String[] getHeadline(CmsFormDataBean formData) {
 
         Map<String, String> data = formData.getData();
         String[] result = new String[data.keySet().size() + 5];

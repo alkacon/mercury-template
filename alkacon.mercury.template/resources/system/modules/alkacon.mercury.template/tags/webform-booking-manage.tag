@@ -140,7 +140,7 @@
                         <c:set var="csvLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}</cms:link></c:set>
                         <c:set var="excelLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}</cms:link></c:set>
                         <div class="pull-right"><%----%>
-                            <small><%----%>
+                            <small class="mr-5">
                                 <fmt:message key="msg.page.form.label.submissions.export" />
                             </small><%----%>
                             <mercury:link link="${csvLink}" css="btn btn-xs oct-meta-info">

@@ -33,7 +33,7 @@ import alkacon.mercury.template.writer.CmsCsvWriter;
  *   <li>line breaks are only "\n".</li>
  * </ul>
  */
-public class CmsCsvExportBean extends A_CmsExportBean {
+public class CmsExportBeanCsv extends A_CmsExportBean {
 
     /**
      * @see alkacon.mercury.webform.A_CmsExportBean#export()

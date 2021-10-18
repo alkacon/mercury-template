@@ -27,14 +27,62 @@
 
 package alkacon.mercury.template.writer;
 
+import org.opencms.main.CmsLog;
+
+import java.util.Map;
+
+import org.apache.commons.logging.Log;
+
+import org.bouncycastle.util.Arrays;
+
 /**
  * Class representing a writer for tabular data such as CSV or Excel.
  */
 public abstract class A_CmsWriter {
 
+    /** Logger instance for this class. */
+    private static final Log LOG = CmsLog.getLog(A_CmsWriter.class);
+
+    /** Column names of the current table. */
+    private Map<String, Integer> m_columnNames;
+
     /**
-     * Creates a table row and adds String values to the table row.
+     * Adds String values to a table row.
      * @param values the values to add
      */
     abstract public void addRow(String... values);
+
+    /**
+     * Starts a new table for given column names.
+     * @param columnNames the columnNames
+     */
+    public void addTable(Map<String, Integer> columnNames) {
+
+        m_columnNames = columnNames;
+        addRow(columnNames.keySet().toArray(new String[0]));
+    }
+
+    /**
+     * Inserts data into a table row respecting columns.
+     * @param tableData the table data
+     */
+    public void addTableRow(Map<String, String> tableData) {
+
+        if (m_columnNames == null) {
+            LOG.warn("Trying to insert data into table columns but no columns are defined.");
+            return;
+        }
+        String[] row = new String[m_columnNames.size()];
+        Arrays.fill(row, "");
+        for (Map.Entry<String, String> entry : tableData.entrySet()) {
+            Integer position = m_columnNames.get(entry.getKey());
+            if ((position != null) && (position.intValue() >= 0) && (position.intValue() < (row.length))) {
+                row[position.intValue()] = entry.getValue();
+            } else {
+                LOG.warn("Trying to insert data into table column <" + entry.getKey() + "> which is not defined.");
+                return;
+            }
+        }
+        addRow(row);
+    }
 }

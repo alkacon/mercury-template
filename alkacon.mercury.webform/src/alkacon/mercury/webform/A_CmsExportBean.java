@@ -39,7 +39,11 @@ import org.opencms.xml.I_CmsXmlDocument;
 import org.opencms.xml.content.CmsXmlContentFactory;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -152,13 +156,36 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     }
 
     /**
+     * Collects all actual and former data keys from a collection of stored form submissions and
+     * transforms the collected data keys into a ordered map with the column names as the keys
+     * of the map and the position as the value.
+     * @param formDataBeans the form data beans
+     * @return the column name / position map.
+     */
+    protected Map<String, Integer> collectColumnNames(List<CmsFormDataBean> formDataBeans) {
+
+        Map<String, Integer> columnNames = new LinkedHashMap<String, Integer>();
+        for (CmsFormDataBean formDataBean : formDataBeans) {
+            for (String field : formDataBean.getData().keySet()) {
+                if (!columnNames.containsKey(field)) {
+                    columnNames.put(field, Integer.valueOf(columnNames.size()));
+                }
+            }
+        }
+        columnNames.put(m_messages.key(KEY_STATUS_CANCELLED), Integer.valueOf(columnNames.size()));
+        columnNames.put(m_messages.key(KEY_STATUS_WAITLIST), Integer.valueOf(columnNames.size()));
+        columnNames.put(m_messages.key(KEY_STATUS_CONFIRMED), Integer.valueOf(columnNames.size()));
+        columnNames.put(m_messages.key(KEY_STATUS_CHANGED), Integer.valueOf(columnNames.size()));
+        return columnNames;
+    }
+
+    /**
      * Produces the CSV export or Excel export for data submitted by a form.
      * @param writer the writer
      * @return the CSV or Excel export data.
      */
     protected A_CmsWriter export(A_CmsWriter writer) {
 
-        CmsObject cms = getCmsObject();
         CmsSubmissionStatus status = m_form.getSubmissionStatus();
         // Add meta data
         writer.addRow(m_messages.key(KEY_HEADLINE_1, m_formTitle));
@@ -197,70 +224,50 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         writer.addRow();
         writer.addRow(m_messages.key(KEY_SUBMISSIONDATA_HEADLINE));
         writer.addRow();
-
-        boolean first = true;
-        for (CmsResource submission : m_form.getSubmissions()) {
-            try {
-                I_CmsXmlDocument formDataXml;
-                formDataXml = CmsXmlContentFactory.unmarshal(cms, cms.readFile(submission));
-                CmsFormDataBean formData = new CmsFormDataBean(formDataXml);
-                if (first) {
-                    writer.addRow(getHeadline(formData));
-                    writer.addRow();
-                    first = false;
-                }
-                writer.addRow(getData(formData));
-            } catch (CmsException e) {
-                LOG.warn(
-                    "Failed to read submission data from "
-                        + submission.getRootPath()
-                        + " when exporting the data as CSV.",
-                    e);
-                writer.addRow("??? " + submission.getRootPath() + "???");
-            }
+        List<CmsFormDataBean> formDataBeans = readFormDataBeans();
+        Collections.reverse(formDataBeans);
+        writer.addTable(collectColumnNames(formDataBeans));
+        for (CmsFormDataBean formDataBean : formDataBeans) {
+            writer.addTableRow(getData(formDataBean));
         }
         return writer;
     }
 
     /**
-     * Returns the submission data as String array with the values for one line in the CSV output.
+     * Returns the data of one submission as a map. May include inactive former columns.
      * @param formData the submission data as bean.
-     * @return the submission data as String array with the values for one line in the CSV output.
+     * @return the submission data as map.
      */
-    protected String[] getData(CmsFormDataBean formData) {
+    protected Map<String, String> getData(CmsFormDataBean formData) {
 
         Map<String, String> data = formData.getData();
-        String[] result = new String[data.keySet().size() + 5];
-        int i = 0;
-        for (String field : data.keySet()) {
-            result[i++] = data.get(field);
-        }
-        result[i++] = "";
-        result[i++] = asString(formData.isCancelled());
-        result[i++] = asString(formData.isWaitlist());
-        result[i++] = asString(formData.isConfirmationMailSent());
-        result[i++] = asString(formData.isChanged());
-        return result;
+        data.put(m_messages.key(KEY_STATUS_CANCELLED), asString(formData.isCancelled()));
+        data.put(m_messages.key(KEY_STATUS_WAITLIST), asString(formData.isWaitlist()));
+        data.put(m_messages.key(KEY_STATUS_CONFIRMED), asString(formData.isConfirmationMailSent()));
+        data.put(m_messages.key(KEY_STATUS_CHANGED), asString(formData.isChanged()));
+        return data;
     }
 
     /**
-     * Returns the headline for the submission with the separate CSV values for the line in a String array.
-     * @param formData a sample submitted data.
-     * @return the headline for the submission with the separate CSV values for the line in a String array.
+     * Reads all form submissions from the database and returns the data as a list of form data beans.
+     * @return the list of form data beans
      */
-    protected String[] getHeadline(CmsFormDataBean formData) {
+    protected List<CmsFormDataBean> readFormDataBeans() {
 
-        Map<String, String> data = formData.getData();
-        String[] result = new String[data.keySet().size() + 5];
-        int i = 0;
-        for (String field : formData.getData().keySet()) {
-            result[i++] = field;
+        CmsObject cms = getCmsObject();
+        List<CmsFormDataBean> formDataBeans = new ArrayList<CmsFormDataBean>();
+        for (CmsResource submission : m_form.getSubmissions()) {
+            try {
+                I_CmsXmlDocument formDataXml;
+                formDataXml = CmsXmlContentFactory.unmarshal(cms, cms.readFile(submission));
+                CmsFormDataBean formDataBean = new CmsFormDataBean(formDataXml);
+                formDataBeans.add(formDataBean);
+            } catch (CmsException e) {
+                LOG.warn(
+                    "Failed to read submission data from " + submission.getRootPath() + " when exporting the data.",
+                    e);
+            }
         }
-        result[i++] = "";
-        result[i++] = m_messages.key(KEY_STATUS_CANCELLED);
-        result[i++] = m_messages.key(KEY_STATUS_WAITLIST);
-        result[i++] = m_messages.key(KEY_STATUS_CONFIRMED);
-        result[i++] = m_messages.key(KEY_STATUS_CHANGED);
-        return result;
+        return formDataBeans;
     }
 }

@@ -1,0 +1,41 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="WebFormDatabaseExportRenameData" type="OpenCmsWebFormDatabaseExportRenameData" />
+
+    <xsd:complexType name="OpenCmsWebFormDatabaseExportRenameData">
+        <xsd:sequence>
+            <xsd:element name="WebFormDatabaseExportRename" type="OpenCmsWebFormDatabaseExportRename" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsWebFormDatabaseExportRename">
+        <xsd:sequence>
+            <xsd:element name="RenameFieldOrig" type="OpenCmsString" />
+            <xsd:element name="RenameFieldNew" type="OpenCmsString" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.webform.messages" />
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>RenameFieldOrig</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.RenameFieldOrig)]]></DisplayName>
+                    <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
+                    <Display>column</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>RenameFieldNew</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.RenameFieldNew)]]></DisplayName>
+                    <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
+                    <Display>column</Display>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

@@ -1,5 +1,4 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    elementFormDefault="qualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
 
@@ -27,7 +26,6 @@
                 <Setting>
                     <PropertyName>IgnoreInputField</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.IgnoreInputField)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.IgnoreInputField.help)]]></Description>
                     <Widget>org.opencms.widgets.CmsDependentSelectWidget</Widget>
                     <WidgetConfig>InputField|FieldLabel</WidgetConfig>
                     <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
@@ -36,7 +34,6 @@
                 <Setting>
                     <PropertyName>IgnoreDependentField</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.IgnoreDependentField)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.IgnoreDependentField.help)]]></Description>
                     <Widget>org.opencms.widgets.CmsDependentSelectWidget</Widget>
                     <WidgetConfig>OptionalSubField/InputField|FieldLabel</WidgetConfig>
                     <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
@@ -45,7 +42,6 @@
                 <Setting>
                     <PropertyName>IgnoreFormerField</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.IgnoreFormerField)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.IgnoreFormerField.help)]]></Description>
                     <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
                     <Display>singleline</Display>
                 </Setting>

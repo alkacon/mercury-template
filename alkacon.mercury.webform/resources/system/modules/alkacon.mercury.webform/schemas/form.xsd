@@ -10,6 +10,7 @@
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalformcaptcha.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalsubfield.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/dbconfig.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/dbexport.xsd"/>
 
     <xsd:element name="WebForms" type="OpenCmsWebForms"/>
 
@@ -48,6 +49,7 @@
             <xsd:element name="OptionalConfirmationMail" type="OpenCmsOptionalWebFormConfirmationMail" minOccurs="0" />
 
             <xsd:element name="DBConfig" type="OpenCmsWebFormDatabaseConfiguration" minOccurs="0" />
+            <xsd:element name="DBExport" type="OpenCmsWebFormDatabaseExport" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -208,6 +210,11 @@
                     <PropertyName>DBConfig</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.DBConfig)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.DBConfig.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>DBConfig</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.DBExport)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.DBExport.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

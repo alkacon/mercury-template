@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>12.0.5</version>
+		<version>12.0.6</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -923,6 +923,18 @@
 			<uuidstructure>93aacf91-b396-490c-a7ee-c5ecfc4c1874</uuidstructure>
 			<uuidresource>16de37dc-68a4-4a91-a588-9b73919e5d05</uuidresource>
 			<datecreated>Tue, 08 Jan 2019 12:44:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/dbexport-ignore.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/dbexport-ignore.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>d8323ceb-30ce-11ec-a039-0242ac11002b</uuidstructure>
+			<uuidresource>d8323cec-30ce-11ec-a039-0242ac11002b</uuidresource>
+			<datecreated>Tue, 19 Oct 2021 11:22:29 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/dbexport-ignore.xsd"/>
 
     <xsd:element name="WebFormDatabaseExportData" type="OpenCmsWebFormDatabaseExportData"/>
 
@@ -12,7 +13,7 @@
 
     <xsd:complexType name="OpenCmsWebFormDatabaseExport">
         <xsd:sequence>
-           <xsd:element name="IgnoreField" type="OpenCmsString" />
+           <xsd:element name="IgnoreField" type="OpenCmsWebFormDatabaseExportIgnore" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>

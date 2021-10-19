@@ -212,7 +212,7 @@
                     <Description><![CDATA[%(key.msg.label.form.WebForm.DBConfig.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>DBConfig</PropertyName>
+                    <PropertyName>DBExport</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.DBExport)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.DBExport.help)]]></Description>
                 </Setting>

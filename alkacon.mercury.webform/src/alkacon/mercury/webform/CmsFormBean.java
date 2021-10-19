@@ -123,6 +123,15 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
     }
 
     /**
+     * Returns the form configuration.
+     * @return the form configuration
+     */
+    public I_CmsXmlDocument getFormConfig() {
+
+        return m_formConfig;
+    }
+
+    /**
      * Returns the resource of the folder where the submitted data is stored in.
      * @return the resource of the folder where the submitted data is stored in.
      */
@@ -174,24 +183,6 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
             result = new CmsSubmissionStatus();
         }
         return result;
-    }
-
-    /**
-     * Returns the lazily initialized UGC configuration. Lazy initialization is necessary since the dynamic configuration has to be set first.
-     * @return the lazily initialized UGC configuration.
-     */
-    private CmsFormUgcConfiguration getUgcConfig() {
-
-        if (!m_isUgcInitialized) {
-            CmsFormUgcConfigurationReader ugcConfigReader = new CmsFormUgcConfigurationReader();
-            try {
-                m_ugcConfig = ugcConfigReader.readConfiguration(getCmsObject(), m_formConfig, m_dynamicConfig);
-            } catch (Exception e) {
-                //DO nothing, just return null.
-            }
-            m_isUgcInitialized = true;
-        }
-        return m_ugcConfig;
     }
 
     /**
@@ -261,6 +252,24 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
             LOG.error(LogMessages.get().getBundle().key(LogMessages.ERR_READING_FORM_CONFIG_FAILED_0), e);
         }
         return this;
+    }
+
+    /**
+     * Returns the lazily initialized UGC configuration. Lazy initialization is necessary since the dynamic configuration has to be set first.
+     * @return the lazily initialized UGC configuration.
+     */
+    private CmsFormUgcConfiguration getUgcConfig() {
+
+        if (!m_isUgcInitialized) {
+            CmsFormUgcConfigurationReader ugcConfigReader = new CmsFormUgcConfigurationReader();
+            try {
+                m_ugcConfig = ugcConfigReader.readConfiguration(getCmsObject(), m_formConfig, m_dynamicConfig);
+            } catch (Exception e) {
+                //DO nothing, just return null.
+            }
+            m_isUgcInitialized = true;
+        }
+        return m_ugcConfig;
     }
 
 }

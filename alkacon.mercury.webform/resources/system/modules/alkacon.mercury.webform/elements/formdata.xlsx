@@ -9,11 +9,6 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-        response.setHeader("Content-Type", "application/xlsx");
-        response.setContentType("application/xlsx");
-        response.setHeader("Content-Disposition","inline; filename=formdata.xlsx");
-%>
 <c:if test="${not cms.isOnlineProject}">
 
     <mercury:webform-vars webform="${param.f}" bookingInfo="${param.b}">
@@ -30,6 +25,9 @@
     <%
         CmsExportBeanExcel exportBean = (CmsExportBeanExcel)pageContext.getAttribute("exportBean");
         if (exportBean != null) {
+            response.setHeader("Content-Type", "application/xlsx");
+            response.setContentType("application/xlsx");
+            response.setHeader("Content-Disposition","inline; filename=" + exportBean.getSafeFileName());
             ((CmsExcelWriter)exportBean.export()).getWorkbook().write(response.getOutputStream());
             ((CmsExcelWriter)exportBean.export()).getWorkbook().close();
         }

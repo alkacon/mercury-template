@@ -43,4 +43,13 @@ public class CmsExportBeanExcel extends A_CmsExportBean {
 
         return export(new CmsExcelWriter(m_formTitle));
     }
+
+    /**
+     * Returns a safe export file name.
+     * @return the file name
+     */
+    public String getSafeFileName() {
+
+        return super.getSafeFileNameNoSuffix() + ".xlsx";
+    }
 }

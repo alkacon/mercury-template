@@ -35,12 +35,15 @@ import org.opencms.i18n.CmsMessages;
 import org.opencms.jsp.util.A_CmsJspCustomContextBean;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
+import org.opencms.main.OpenCms;
 import org.opencms.util.CmsStringUtil;
 import org.opencms.xml.I_CmsXmlDocument;
 import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
 
 import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -139,6 +142,12 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     /** Configuration node name for the value. */
     public static final String NODE_EXPORT_RENAME_FIELD = "RenameField";
 
+    /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_RENAME_FIELD_ORIG = "RenameFieldOrig";
+
+    /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_RENAME_FIELD_NEW = "RenameFieldNew";
+
     /** List of fields to ignore during export. */
     private List<String> m_exportConfigFieldIgnore = new ArrayList<String>();
 
@@ -159,6 +168,19 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
      * @return the writer
      */
     abstract public A_CmsWriter export();
+
+    /**
+     * Returns a safe export file name with no suffix.
+     * @return the export file name
+     */
+    public String getSafeFileNameNoSuffix() {
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formatted = formatter.format(now);
+        String safeFileName = OpenCms.getResourceManager().getFileTranslator().translateResource(m_formTitle);
+        return safeFileName + formatted;
+    }
 
     /**
      * Initializes this export bean.
@@ -320,8 +342,8 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             String pathPrefix = NODE_EXPORT + "/" + NODE_EXPORT_RENAME_FIELD;
             int numRenameFields = m_form.getFormConfig().getIndexCount(pathPrefix, locale);
             for (int i = 1; i <= numRenameFields; i++) {
-                String pathRenameFieldOrig = pathPrefix + "[" + i + "]/RenameFieldOrig";
-                String pathRenameFieldNew = pathPrefix + "[" + i + "]/RenameFieldNew";
+                String pathRenameFieldOrig = pathPrefix + "[" + i + "]/" + NODE_EXPORT_RENAME_FIELD_ORIG;
+                String pathRenameFieldNew = pathPrefix + "[" + i + "]/" + NODE_EXPORT_RENAME_FIELD_NEW;
                 String renameFieldOrig = m_form.getFormConfig().getValue(pathRenameFieldOrig, locale).getStringValue(
                     cms);
                 String renameFieldNew = m_form.getFormConfig().getValue(pathRenameFieldNew, locale).getStringValue(cms);

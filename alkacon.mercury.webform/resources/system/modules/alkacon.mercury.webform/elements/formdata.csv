@@ -3,16 +3,11 @@
     buffer="none"
     session="false"
     trimDirectiveWhitespaces="true" %>
+<%@page import="alkacon.mercury.webform.CmsExportBeanCsv" %>
 
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-        response.setHeader("Content-Encoding", "UTF-8");
-        response.setHeader("Content-Type","text/csv; charset=UTF-8");
-        response.setContentType("text/csv; charset=UTF-8");
-        response.setHeader("Content-Disposition","inline; filename=formdata.csv");
-%>
 <c:if test="${not cms.isOnlineProject}">
 
     <mercury:webform-vars webform="${param.f}" bookingInfo="${param.b}">
@@ -27,5 +22,13 @@
     </c:if>
 
     </mercury:webform-vars>
-
+    <%
+        CmsExportBeanCsv exportBean = (CmsExportBeanCsv)pageContext.getAttribute("exportBean");
+        if (exportBean != null) {
+            response.setHeader("Content-Encoding", "UTF-8");
+            response.setHeader("Content-Type","text/csv; charset=UTF-8");
+            response.setContentType("text/csv; charset=UTF-8");
+            response.setHeader("Content-Disposition","inline; filename=" + exportBean.getSafeFileName());
+        }
+    %>
 </c:if>

@@ -271,8 +271,12 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             if (m_exportConfigFieldRename.containsKey(key)) {
                 key = m_exportConfigFieldRename.get(key);
             }
-            if (merged.containsKey(key) && !CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
-                merged.put(key, merged.get(key) + " " + value);
+            if (merged.containsKey(key)) {
+                String merge = merged.get(key);
+                if (!CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
+                    merge += " " + value;
+                }
+                merged.put(key, merge);
             } else {
                 merged.put(key, value);
             }

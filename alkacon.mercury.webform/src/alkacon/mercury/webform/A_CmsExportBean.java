@@ -35,6 +35,7 @@ import org.opencms.i18n.CmsMessages;
 import org.opencms.jsp.util.A_CmsJspCustomContextBean;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
+import org.opencms.util.CmsStringUtil;
 import org.opencms.xml.I_CmsXmlDocument;
 import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
@@ -248,7 +249,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             if (m_exportConfigFieldRename.containsKey(key)) {
                 key = m_exportConfigFieldRename.get(key);
             }
-            if (merged.containsKey(key)) {
+            if (merged.containsKey(key) && !CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
                 merged.put(key, merged.get(key) + " " + value);
             } else {
                 merged.put(key, value);

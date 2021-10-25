@@ -218,8 +218,8 @@
                         .concat(slideLink)
                         .concat('" rel="noopener"')
                         .concat(image.value.NewWin.toBoolean ? ' target="_blank"' : '')
-                        .concat('>')
-                    : ''}
+                        .concat(' class="captions">')
+                    : '<span class="captions">'}
 
                     <cms:addparams>
                         <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl' : cssgridCols}</cms:param>
@@ -291,7 +291,7 @@
 
                     </c:if>
 
-                ${not empty slideLink ? '</a>':''}
+                ${not empty slideLink ? '</a>':'</span>'}
 
                 <c:if test="${showImageCopyright and (not empty copyright)}">
                     <div class="copyright rs_skip">${copyright}</div><mercury:nl/>
@@ -306,8 +306,8 @@
                         .concat(slideLink)
                         .concat('" rel="noopener"')
                         .concat(image.value.NewWin.toBoolean ? ' target="_blank"' : '')
-                        .concat('>')
-                    : ''}
+                        .concat(' class="captions">')
+                    : '<span class="captions">'}
 
                 <div class="caption background ${posTop}${' '}${posLeft} rs_skip" aria-hidden="true" ${bgStyle}><%----%>
                     <c:if test="${image.value.SuperTitle.isSet}">
@@ -341,7 +341,7 @@
                     </c:if>
                 </div><%----%>
 
-                ${not empty slideLink ? '</a>':''}
+                ${not empty slideLink ? '</a>':'</span>'}
 
                 <mercury:nl />
             </c:if>

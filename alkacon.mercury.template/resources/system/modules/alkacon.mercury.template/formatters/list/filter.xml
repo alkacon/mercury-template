@@ -47,6 +47,9 @@
       <IncludeName><![CDATA[catdisplayoptions.filter]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showCatCount.filter]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[catfilters.filter]]></IncludeName>
     </Setting>
     <Setting>

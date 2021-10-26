@@ -26,6 +26,9 @@
 <%@ attribute name="displayCatPath" type="java.lang.Boolean" required="false"
     description="Flag, indicating if the whole path of the category should be displayed." %>
 
+<%@ attribute name="showCatCount" type="java.lang.Boolean" required="false"
+    description="Flag, indicating if count for category should be displayed. Default is 'true'." %>
+
 <%@ attribute name="showAll" type="java.lang.Boolean" required="false"
     description="If provided, the 'all' option is displayed." %>
 
@@ -38,11 +41,12 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<c:if test="${empty onlyLeafs}"><c:set var="onlyLeafs" value="false" /></c:if>
-<c:if test="${empty displayCatPath}"><c:set var="displayCatPath" value="false" /></c:if>
-<c:set var="showAllOption" value="${not empty showAll && showAll}" />
-<c:if test="${empty onlyLeafs}"><c:set var="onlyLeafs" value="false" /></c:if>
-<c:if test="${empty targetUri}"><c:set var="targetUri" value="${cms.requestContext.uri}" /></c:if>
+<c:set var="onlyLeafs"          value="${empty onlyLeafs ? false : onlyLeafs}" />
+<c:set var="displayCatPath"     value="${empty displayCatPath ? false : displayCatPath}" />
+<c:set var="showCatCount"       value="${empty showCatCount ? true : showCatCount}" />
+<c:set var="showAllOption"      value="${empty showAll ? false : showAll}" />
+<c:set var="onlyLeafs"          value="${empty onlyLeafs ? false : onlyLeafs}" />
+<c:set var="targetUri"          value="${empty targetUri ? cms.requestContext.uri : targetUri}" />
 
 <mercury:nl />
 <ul><%----%>
@@ -123,7 +127,10 @@
                             --%>'${catId}'<%--
                             --%>);return false;" href="<cms:link>${targetUri}?${empty active ? basicSearchStateParameters.checkFacetItem[facetController.config.name][value.name] : basicSearchStateParameters}</cms:link>"><%----%>
                             <span class="li-entry"><%----%>
-                                <span class="li-label">${label}</span><span class="li-count">${value.count}</span><%----%>
+                                <span class="li-label">${label}</span><%----%>
+                                <c:if test="${showCatCount}">
+                                    <span class="li-count">${value.count}</span><%----%>
+                                </c:if>
                             </span><%----%>
                         </a><%----%>
                     </li><%----%>

@@ -22,31 +22,30 @@
         count="0"
     />
 
-    <c:set var="settings" value="${cms.element.settings}" />
-    <c:set var="wrappedSettings" value="${cms.element.setting}" />
+    <c:set var="setting"        value="${cms.element.setting}" />
+    <c:set var="cssWrapper"     value="${setting.cssWrapper}" />
+    <c:set var="showSearch"     value="${setting.showsearch.toBoolean}" />
+    <c:set var="categoriesOpen" value="${setting.showcategories.toString eq 'opened'}" />
+    <c:set var="showCategories" value="${(categoriesOpen || setting.showcategories.toString eq 'closed') and not empty categoryFacetResult and cms:getListSize(categoryFacetResult.values) > 0}" />
+    <c:set var="archiveOpen"    value="${setting.showarchive.toString eq 'opened'}" />
+    <c:set var="showArchive"    value="${(archiveOpen || setting.showarchive.toString eq 'closed') and not empty rangeFacet and cms:getListSize(rangeFacet.counts) > 0}" />
+    <c:set var="foldersOpen"    value="${setting.showfolders.toString eq 'opened'}" />
+    <c:set var="showFolders"    value="${(foldersOpen || setting.showfolders.toString eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) > 0}" />
+    <c:set var="combine"        value="${setting.combine.toBoolean}" />
+    <c:set var="searchLabel"    value="${setting.searchlabel.toString}" />
+    <c:set var="categoryLabel"  value="${setting.headline.toString}" />
+    <c:set var="showCatCount"   value="${setting.showCatCount.useDefault('true').toBoolean}" />
+    <c:set var="folderLabel"    value="${setting.folderlabel.toString}" />
+    <c:set var="archiveLabel"   value="${setting.archivelabel.toString}" />
 
-    <c:set var="csswrapper" value="${settings.cssWrapper}" />
+    <c:set var="targetUri"      value="${setting.targetUri.toString}" />
+
+    <%-- This setting is supported, but currently not shown in the dialog to reduce the number of options. --%>
+    <c:set var="showAllOption"  value="${setting.showalloption.useDefault('true').toBoolean}" />
 
     <c:set var="elementId"><mercury:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
     <c:set var="filterId"><mercury:idgen prefix="la" uuid="${cms.element.instanceId}" /></c:set>
 
-    <c:set var="showSearch" value="${wrappedSettings.showsearch.toBoolean}" />
-    <c:set var="categoriesOpen" value="${settings.showcategories eq 'opened'}" />
-    <c:set var="showCategories" value="${(categoriesOpen || settings.showcategories eq 'closed') and not empty categoryFacetResult and cms:getListSize(categoryFacetResult.values) > 0}" />
-    <c:set var="archiveOpen" value="${settings.showarchive eq 'opened'}" />
-    <c:set var="showArchive" value="${(archiveOpen || settings.showarchive eq 'closed') and not empty rangeFacet and cms:getListSize(rangeFacet.counts) > 0}" />
-    <c:set var="foldersOpen" value="${settings.showfolders eq 'opened'}" />
-    <c:set var="showFolders" value="${(foldersOpen || settings.showfolders eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) > 0}" />
-    <c:set var="combine" value="${wrappedSettings.combine.toBoolean}" />
-    <c:set var="searchLabel" value="${settings.searchlabel}" />
-    <c:set var="categoryLabel" value="${settings.headline}" />
-    <c:set var="folderLabel" value="${settings.folderlabel}" />
-    <c:set var="archiveLabel" value="${settings.archivelabel}" />
-
-    <%-- show all option is enabled by default. The setting is supported, but currently not added to reduce the number of options. --%>
-    <c:set var="showAllOption" value="${empty settings.showalloption ? true : wrappedSettings.showalloption.toBoolean}" />
-
-    <c:set var="targetUri" value="${settings.targetUri}" />
     <c:if test="${empty targetUri}">
         <c:set var="targetUri" value="${cms.vfs.propertySearch[cms.requestContext.uri]['mercury.list']}" />
     </c:if>
@@ -70,7 +69,7 @@
     </c:if>
 
     <mercury:nl />
-    <div class="element type-list-filter ${csswrapper}" <%--
+    <div class="element type-list-filter ${cssWrapper}" <%--
     --%>id="${filterId}" <%--
     --%>data-id="${elementId}" <%--
     --%>data-filter='{<%--
@@ -82,7 +81,7 @@
         --%>"archiveparamkey":"${rangeFacetController.config.paramKey}", <%--
         --%>"folderparamkey":"${folderFacetController.config.paramKey}", <%--
         --%>"combinable": true, <%--
-        --%>"combine": ${empty combine ? "false" : combine}<%--
+        --%>"combine": ${combine}<%--
         --%><c:if test="${not empty targetUri}">, "target":"<cms:link>${targetUri}</cms:link>"</c:if><%--
         --%><c:if test="${not empty initparams}">, "initparams":"${initparams}"</c:if><%--
         --%>}'><%----%>
@@ -147,9 +146,10 @@
                         facetValues="${categoryFacetResult.values}"
                         facetController="${categoryFacetController}"
                         categoryFilterId="${filterId}"
-                        catfilter="${settings.catfilters}"
-                        onlyLeafs="${fn:contains(settings.catdisplayoptions, 'onlyleafs')}"
-                        displayCatPath="${fn:contains(settings.catdisplayoptions, 'fullpath')}"
+                        catfilter="${setting.catfilters.toString}"
+                        onlyLeafs="${fn:contains(setting.catdisplayoptions.toString, 'onlyleafs')}"
+                        displayCatPath="${fn:contains(setting.catdisplayoptions.toString, 'fullpath')}"
+                        showCatCount="${showCatCount}"
                         targetUri="${targetUri}"
                         showAll="${showAllOption}"
                     />
@@ -270,14 +270,14 @@
                                     <c:when test="${currentDeps > previousDeps}">
                                         <c:set var="collapseId">${collapseIdPrefix}_${status.count}</c:set>
                                         <a href="#${collapseId}" <%--
-                                        --%>class="collapse${foldersOpen || isCurrentPage ? ' show' : ''}" <%--
+                                        --%>class="collapse${foldersOpen || isCurrentPage ? ' show' : ' collapsed'}" <%--
                                         --%>data-toggle="collapse"  <%--
                                         --%>aria-controls="${collapseId}" <%--
                                         --%>data-target="#${collapseId}"  <%--
                                         --%>aria-expanded="${foldersOpen || isCurrentPage}">&nbsp;</a><%----%>
                                         <mercury:nl />
                                         <c:set var="collapseIn" value="${foldersOpen || isCurrentPage ? ' show' : ''}" />
-                                           <c:out escapeXml='false' value='<ul class="collapse${collapseIn}" id="${collapseId}">' />
+                                        <c:out escapeXml='false' value='<ul class="collapse${collapseIn}" id="${collapseId}">' />
                                     </c:when>
 
                                     <%-- Stay on the same level or go some levels up --%>

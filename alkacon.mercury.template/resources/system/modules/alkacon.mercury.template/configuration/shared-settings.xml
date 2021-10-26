@@ -2066,6 +2066,18 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showCatCount.filter]]></IncludeName>
+      <PropertyName><![CDATA[showCatCount]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showCatCount)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showCatCount.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[true]]></Default>
+      <WidgetConfig><![CDATA[
+              true:           %(key.msg.option.show)|
+              false:          %(key.msg.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[catfilters.filter]]></IncludeName>
       <PropertyName><![CDATA[catfilters]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.list.categoryFilterSelection)]]></DisplayName>

@@ -1985,6 +1985,9 @@
       <Default><![CDATA[opened]]></Default>
       <WidgetConfig><![CDATA[
               opened:          %(key.msg.option.show.unfolded)|
+              op-sm:           %(key.msg.option.show.op-sm)|
+              op-md:           %(key.msg.option.show.op-md)|
+              op-lg:           %(key.msg.option.show.op-lg)|
               closed:          %(key.msg.option.show.folded)|
               hidden:          %(key.msg.option.hide)
         ]]></WidgetConfig>
@@ -1998,6 +2001,9 @@
       <Default><![CDATA[hidden]]></Default>
       <WidgetConfig><![CDATA[
               opened:          %(key.msg.option.show.unfolded)|
+              op-sm:           %(key.msg.option.show.op-sm)|
+              op-md:           %(key.msg.option.show.op-md)|
+              op-lg:           %(key.msg.option.show.op-lg)|
               closed:          %(key.msg.option.show.folded)|
               hidden:          %(key.msg.option.hide)
         ]]></WidgetConfig>
@@ -2011,6 +2017,9 @@
       <Default><![CDATA[opened]]></Default>
       <WidgetConfig><![CDATA[
               opened:          %(key.msg.option.show.unfolded)|
+              op-sm:           %(key.msg.option.show.op-sm)|
+              op-md:           %(key.msg.option.show.op-md)|
+              op-lg:           %(key.msg.option.show.op-lg)|
               closed:          %(key.msg.option.show.folded)|
               hidden:          %(key.msg.option.hide)
         ]]></WidgetConfig>

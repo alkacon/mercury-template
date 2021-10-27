@@ -24,19 +24,30 @@
 
     <c:set var="setting"        value="${cms.element.setting}" />
     <c:set var="cssWrapper"     value="${setting.cssWrapper}" />
-    <c:set var="showSearch"     value="${setting.showsearch.toBoolean}" />
-    <c:set var="categoriesOpen" value="${setting.showcategories.toString eq 'opened'}" />
-    <c:set var="showCategories" value="${(categoriesOpen || setting.showcategories.toString eq 'closed') and not empty categoryFacetResult and cms:getListSize(categoryFacetResult.values) > 0}" />
-    <c:set var="archiveOpen"    value="${setting.showarchive.toString eq 'opened'}" />
-    <c:set var="showArchive"    value="${(archiveOpen || setting.showarchive.toString eq 'closed') and not empty rangeFacet and cms:getListSize(rangeFacet.counts) > 0}" />
-    <c:set var="foldersOpen"    value="${setting.showfolders.toString eq 'opened'}" />
-    <c:set var="showFolders"    value="${(foldersOpen || setting.showfolders.toString eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) > 0}" />
-    <c:set var="combine"        value="${setting.combine.toBoolean}" />
+
     <c:set var="searchLabel"    value="${setting.searchlabel.toString}" />
+    <c:set var="showSearch"     value="${setting.showsearch.toBoolean}" />
+
     <c:set var="categoryLabel"  value="${setting.headline.toString}" />
+    <c:set var="categoryVal"    value="${setting.showcategories.toString}" />
+    <c:set var="categoriesOpen" value="${categoryVal eq 'opened'}" />
+    <c:set var="categoriesResp" value="${categoryVal.contains('op-')}" />
+    <c:set var="showCategories" value="${(categoriesOpen || categoriesResp || categoryVal eq 'closed') and not empty categoryFacetResult and cms:getListSize(categoryFacetResult.values) > 0}" />
     <c:set var="showCatCount"   value="${setting.showCatCount.useDefault('true').toBoolean}" />
-    <c:set var="folderLabel"    value="${setting.folderlabel.toString}" />
+
     <c:set var="archiveLabel"   value="${setting.archivelabel.toString}" />
+    <c:set var="archiveVal"     value="${setting.showarchive.toString}" />
+    <c:set var="archiveOpen"    value="${archiveVal eq 'opened'}" />
+    <c:set var="archiveResp"    value="${archiveVal.contains('op-')}" />
+    <c:set var="showArchive"    value="${(archiveOpen || archiveResp || archiveVal eq 'closed') and not empty rangeFacet and cms:getListSize(rangeFacet.counts) > 0}" />
+
+    <c:set var="folderLabel"    value="${setting.folderlabel.toString}" />
+    <c:set var="folderVal"      value="${setting.showfolders.toString}" />
+    <c:set var="foldersOpen"    value="${folderVal eq 'opened'}" />
+    <c:set var="foldersResp"    value="${folderVal.contains('op-')}" />
+    <c:set var="showFolders"    value="${(foldersOpen || foldersResp || setting.showfolders.toString eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) > 0}" />
+
+    <c:set var="combine"        value="${setting.combine.toBoolean}" />
 
     <c:set var="targetUri"      value="${setting.targetUri.toString}" />
 
@@ -133,14 +144,14 @@
                 <c:set var="categoriesOpen" value="${categoriesOpen || not empty checkedItem}"/>
 
                 <button type="button" <%--
-                --%>class="btn btn-block li-label ${categoriesOpen ? '' : 'collapsed'}" <%--
+                --%>class="btn btn-block li-label ${categoriesOpen ? '' : 'collapsed'}${categoriesResp ? ' resp' : ''}" <%--
                 --%>data-target="#cats_${filterId}" <%--
                 --%>aria-controls="cats_${filterId}" <%--
                 --%>aria-expanded="${categoriesOpen}" <%--
                 --%>data-toggle="collapse"><%--
                 --%><c:out value="${categoryLabel}" /><%--
              --%></button><%----%>
-                <div id="cats_${filterId}" class="collapse${categoriesOpen ? ' show' : ''}"><%----%>
+                <div id="cats_${filterId}" class="collapse${categoriesOpen ? ' show' : ''}${categoriesResp ? ' '.concat(categoryVal) : ''}"><%----%>
                     <mercury:list-filter-category
                         search="${search}"
                         facetValues="${categoryFacetResult.values}"
@@ -179,13 +190,14 @@
                 --%><c:out value="${folderLabel}" /><%--
              --%></button><%----%>
 
-                <div id="folder_${filterId}" class="collapse${foldersOpen ? ' show' : ''}"><%----%>
+                <div id="folder_${filterId}" class="collapse${foldersOpen ? ' show' : ''}${foldersResp ? ' '.concat(folderVal) : ''}"><%----%>
                     <%-- check if there might be more than one main folder (TODO: Improve this check) --%>
                     <c:set var="hasMultiplePaths" value="${cms:getListSize(content.valueList.SearchFolder) > 1}" />
 
                     <%-- Get the currently checked folder facet items. --%>
                     <c:set var="checkedEntries" value="${folderFacetController.state.checkedEntries}" />
 
+                    <c:set var="foldersOpen" value="${foldersOpen || foldersResp}"/>
                     <c:set var="collapseIdPrefix"><mercury:idgen prefix="nav" uuid="${cms.element.instanceId}" /></c:set>
 
                     <%-- Start building the HTML for the folder facet items.
@@ -366,7 +378,7 @@
                 --%><c:out value="${archiveLabel}" /><%--
             --%></button><%----%>
 
-                <div id="arch_${filterId}" class="collapse${archiveOpen ? ' show' : ''}"><%----%>
+                <div id="arch_${filterId}" class="collapse${archiveOpen ? ' show' : ''}${archiveResp ? ' '.concat(archiveVal) : ''}"><%----%>
 
                     <c:set var="archiveHtml" value="" />
                     <c:set var="yearHtml" value="" />

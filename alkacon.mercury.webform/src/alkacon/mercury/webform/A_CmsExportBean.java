@@ -128,6 +128,21 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     public static final String NODE_EXPORT = "DBExport";
 
     /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_ADD_FIELD = "AddField";
+
+    /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_ADD_SYSTEM_FIELD = "AddSystemField";
+
+    /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_CONFIG_FIELD = "ConfigField";
+
+    /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_CONFIG_OVERVIEW_INFORMATION = "ConfigOverviewInformation";
+
+    /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_CONFIG_CANCELLED = "ConfigCancelled";
+
+    /** Configuration node name for the value. */
     public static final String NODE_EXPORT_IGNORE_FIELD = "IgnoreField";
 
     /** Configuration node name for the value. */
@@ -148,11 +163,41 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     /** Configuration node name for the value. */
     public static final String NODE_EXPORT_RENAME_FIELD_NEW = "RenameFieldNew";
 
+    /** Constant for configuration option. */
+    public static final String OPTION_CANCELLED_SELECTED = "cancelled";
+
+    /** Constant for configuration option. */
+    public static final String OPTION_CONFIRMED_SELECTED = "confirmed";
+
+    /** Constant for configuration option. */
+    public static final String OPTION_CHANGED_SELECTED = "changed";
+
+    /** Constant for configuration option. */
+    public static final String OPTION_WAITLIST_SELECTED = "waitlist";
+
+    /** Export a field with information about whether a registration was cancelled in the meantime. */
+    private boolean m_exportConfigAddCancelled = false;
+
+    /** Export a field with information about whether a submission was changed after submission. */
+    private boolean m_exportConfigAddChanged = false;
+
+    /** Export a field with information about whether a confirmation mail was sent. */
+    private boolean m_exportConfigAddConfirmed = false;
+
+    /** Export a field with information about whether a waitlist notification was sent. */
+    private boolean m_exportConfigAddWaitlist = false;
+
     /** List of fields to ignore during export. */
     private List<String> m_exportConfigFieldIgnore = new ArrayList<String>();
 
     /** List of fields to rename or merge during export. */
     private Map<String, String> m_exportConfigFieldRename = new HashMap<String, String>();
+
+    /** Flag indicating whether to export overview information. */
+    private boolean m_exportConfigOverviewInformation = true;
+
+    /** Flag indicating whether to export the cancelled submissions. */
+    private boolean m_exportConfigCancelled = false;
 
     /** The form to export submissions for. */
     protected CmsFormBean m_form;
@@ -193,24 +238,26 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         m_form = form;
         m_formTitle = formTitle;
         m_messages = new CmsMessages(BUNDLE_NAME, locale);
+        initExportConfigConfig(locale);
+        initExportConfigAdd(locale);
         initExportConfigFieldIgnore(locale);
         initExportConfigFieldRename(locale);
     }
 
     /**
-     * Generates the String value to put in the CSV instead of the boolean value provided.
+     * Generates the String value to put in the table instead of the boolean value provided.
      * @param b the value to convert to a String.
-     * @return the value as it is printed in the CSV output.
+     * @return the value as it is printed in the table output.
      */
     protected String asString(boolean b) {
 
-        return b ? "X" : "";
+        return b ? "X" : "-";
     }
 
     /**
      * Collects all actual and former data keys from a collection of stored form submissions and
      * transforms the collected data keys into a ordered map with the column names as the keys
-     * of the map and the position as the value.
+     * of the map and the position as the value. Adds system fields if configured.
      * @param formDataBeans the form data beans
      * @return the column name / position map.
      */
@@ -230,10 +277,18 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 }
             }
         }
-        columnNames.put(m_messages.key(KEY_STATUS_CANCELLED), Integer.valueOf(columnNames.size()));
-        columnNames.put(m_messages.key(KEY_STATUS_WAITLIST), Integer.valueOf(columnNames.size()));
-        columnNames.put(m_messages.key(KEY_STATUS_CONFIRMED), Integer.valueOf(columnNames.size()));
-        columnNames.put(m_messages.key(KEY_STATUS_CHANGED), Integer.valueOf(columnNames.size()));
+        if (m_exportConfigAddCancelled) {
+            columnNames.put(m_messages.key(KEY_STATUS_CANCELLED), Integer.valueOf(columnNames.size()));
+        }
+        if (m_exportConfigAddWaitlist) {
+            columnNames.put(m_messages.key(KEY_STATUS_WAITLIST), Integer.valueOf(columnNames.size()));
+        }
+        if (m_exportConfigAddConfirmed) {
+            columnNames.put(m_messages.key(KEY_STATUS_CONFIRMED), Integer.valueOf(columnNames.size()));
+        }
+        if (m_exportConfigAddChanged) {
+            columnNames.put(m_messages.key(KEY_STATUS_CHANGED), Integer.valueOf(columnNames.size()));
+        }
         return columnNames;
     }
 
@@ -253,6 +308,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     /**
      * Returns the data of one submission as a map. May include inactive former columns.
      * Filters fields to ignore. Renames and merges fields according to the export configuration.
+     * Adds system fields if configured.
      * @param formData the submission data as bean.
      * @return the submission data as map.
      */
@@ -281,15 +337,24 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 merged.put(key, value);
             }
         }
-        merged.put(m_messages.key(KEY_STATUS_CANCELLED), asString(formData.isCancelled()));
-        merged.put(m_messages.key(KEY_STATUS_WAITLIST), asString(formData.isWaitlist()));
-        merged.put(m_messages.key(KEY_STATUS_CONFIRMED), asString(formData.isConfirmationMailSent()));
-        merged.put(m_messages.key(KEY_STATUS_CHANGED), asString(formData.isChanged()));
+        if (m_exportConfigAddCancelled) {
+            merged.put(m_messages.key(KEY_STATUS_CANCELLED), asString(formData.isCancelled()));
+        }
+        if (m_exportConfigAddWaitlist) {
+            merged.put(m_messages.key(KEY_STATUS_WAITLIST), asString(formData.isWaitlist()));
+        }
+        if (m_exportConfigAddConfirmed) {
+            merged.put(m_messages.key(KEY_STATUS_CONFIRMED), asString(formData.isConfirmationMailSent()));
+        }
+        if (m_exportConfigAddChanged) {
+            merged.put(m_messages.key(KEY_STATUS_CHANGED), asString(formData.isChanged()));
+        }
         return merged;
     }
 
     /**
      * Reads all form submissions from the database and returns the data as a list of form data beans.
+     * If configuration option cancelled is set to false, cancelled submissions are not added to the list.
      * @return the list of form data beans
      */
     protected List<CmsFormDataBean> readFormDataBeans() {
@@ -301,7 +366,11 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 I_CmsXmlDocument formDataXml;
                 formDataXml = CmsXmlContentFactory.unmarshal(cms, cms.readFile(submission));
                 CmsFormDataBean formDataBean = new CmsFormDataBean(formDataXml);
-                formDataBeans.add(formDataBean);
+                if (!m_exportConfigCancelled) {
+                    formDataBeans.add(formDataBean);
+                } else if (!formDataBean.isCancelled()) {
+                    formDataBeans.add(formDataBean);
+                }
             } catch (CmsException e) {
                 LOG.warn(
                     "Failed to read submission data from " + submission.getRootPath() + " when exporting the data.",
@@ -309,6 +378,54 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             }
         }
         return formDataBeans;
+    }
+
+    /**
+     * Reads the system fields to add configuration from the form content.
+     * @param locale the locale
+     */
+    private void initExportConfigAdd(Locale locale) {
+
+        CmsObject cms = getCmsObject();
+        String pathPrefix = NODE_EXPORT + "/" + NODE_EXPORT_ADD_FIELD;
+        I_CmsXmlDocument formConfig = m_form.getFormConfig();
+        if (formConfig.hasValue(NODE_EXPORT, locale) && formConfig.hasValue(pathPrefix, locale)) {
+            pathPrefix = pathPrefix + "/" + NODE_EXPORT_ADD_SYSTEM_FIELD;
+            int numAddSystemFields = m_form.getFormConfig().getIndexCount(pathPrefix, locale);
+            for (int i = 1; i <= numAddSystemFields; i++) {
+                String pathAddSystemField = pathPrefix + "[" + i + "]/";
+                String addSystemField = m_form.getFormConfig().getValue(pathAddSystemField, locale).getStringValue(cms);
+                if (addSystemField.equals(OPTION_CANCELLED_SELECTED)) {
+                    m_exportConfigAddCancelled = true;
+                } else if (addSystemField.equals(OPTION_CHANGED_SELECTED)) {
+                    m_exportConfigAddChanged = true;
+                } else if (addSystemField.equals(OPTION_CONFIRMED_SELECTED)) {
+                    m_exportConfigAddConfirmed = true;
+                } else if (addSystemField.equals(OPTION_WAITLIST_SELECTED)) {
+                    m_exportConfigAddWaitlist = true;
+                }
+            }
+        }
+    }
+
+    /**
+     * Reads the overview information configuration from the form content.
+     * @param locale the locale
+     */
+    private void initExportConfigConfig(Locale locale) {
+
+        CmsObject cms = getCmsObject();
+        String pathPrefix = NODE_EXPORT + "/" + NODE_EXPORT_CONFIG_FIELD;
+        I_CmsXmlDocument formConfig = m_form.getFormConfig();
+        if (formConfig.hasValue(NODE_EXPORT, locale) && formConfig.hasValue(pathPrefix, locale)) {
+            String prefixOverviewInformation = pathPrefix + "/" + NODE_EXPORT_CONFIG_OVERVIEW_INFORMATION;
+            String configOverviewInformation = formConfig.getValue(prefixOverviewInformation, locale).getStringValue(
+                cms);
+            m_exportConfigOverviewInformation = Boolean.valueOf(configOverviewInformation).booleanValue();
+            String prefixCancelled = pathPrefix + "/" + NODE_EXPORT_CONFIG_CANCELLED;
+            String configCancelled = m_form.getFormConfig().getValue(prefixCancelled, locale).getStringValue(cms);
+            m_exportConfigCancelled = Boolean.valueOf(configCancelled).booleanValue();
+        }
     }
 
     /**
@@ -376,6 +493,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
      */
     private void writeMetadata(A_CmsWriter writer) {
 
+        if (!m_exportConfigOverviewInformation) {
+            return;
+        }
         CmsSubmissionStatus status = m_form.getSubmissionStatus();
         writer.addRow(m_messages.key(KEY_HEADLINE_1, m_formTitle));
         writer.addRow();

@@ -39,7 +39,7 @@
                     <c:if test="${bean.changed}">
                         <span class="oct-meta-info severe"><fmt:message key="msg.page.form.status.submission.changed" /></span><%----%>
                     </c:if>
-                    <c:if test="${ean.cancelled}">
+                    <c:if test="${bean.cancelled}">
                         <span class="oct-meta-info"><fmt:message key="msg.page.form.status.submission.cancelled" /></span><%----%>
                     </c:if>
                     <c:if test="${bean.waitlist}">

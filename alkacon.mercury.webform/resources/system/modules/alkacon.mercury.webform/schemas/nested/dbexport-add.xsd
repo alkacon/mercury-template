@@ -12,7 +12,7 @@
 
     <xsd:complexType name="OpenCmsWebFormDatabaseExportAdd">
         <xsd:sequence>
-            <xsd:element name="AddSystemField" type="OpenCmsString" minOccurs="1" maxOccurs="3"/>
+            <xsd:element name="AddSystemField" type="OpenCmsString" minOccurs="1" maxOccurs="4"/>
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
     </xsd:complexType>
@@ -26,8 +26,9 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.AddSystemField)]]></DisplayName>
                     <Widget>SelectorWidget</Widget>
                     <WidgetConfig><![CDATA[
-                        value='waitlist' option='%(key.msg.label.form.WebFormDataSet.WaitlistNotification)' help='%(key.msg.label.form.WebFormDataSet.WaitlistNotification.help)'|
                         value='cancelled' option='%(key.msg.label.form.WebFormDataSet.Cancelled)' help='%(key.msg.label.form.WebFormDataSet.Cancelled.help)'|
+                        value='waitlist' option='%(key.msg.label.form.WebFormDataSet.WaitlistNotification)' help='%(key.msg.label.form.WebFormDataSet.WaitlistNotification.help)'|
+                        value='confirmed' option='%(key.msg.label.form.WebFormDataSet.ConfirmationMailSent)' help='%(key.msg.label.form.WebFormDataSet.ConfirmationMailSent.help)'|
                         value='changed' option='%(key.msg.label.form.WebFormDataSet.Changed)' help='%(key.msg.label.form.WebFormDataSet.Changed.help)'
                     ]]></WidgetConfig>
                     <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>

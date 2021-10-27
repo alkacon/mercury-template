@@ -244,6 +244,7 @@ msg.label.form.WebFormDataSet.Cancelled.help=Whether the registration was cancel
 msg.label.form.WebFormDataSet.Changed=Dataset has changes
 msg.label.form.WebFormDataSet.Changed.help=Whether the dataset was subsequently modified after it was submitted.
 msg.label.form.WebFormDataSet.ConfirmationMailSent=Confirmation email sent
+msg.label.form.WebFormDataSet.ConfirmationMailSent.help=Whether a confirmation mail has been sent.
 msg.label.form.WebFormDataSet.Data=Field data
 msg.label.form.WebFormDataSet.DeletionDate=Deletion date
 msg.label.form.WebFormDataSet.DeletionDate.help=The date on which this resource should be deleted.  

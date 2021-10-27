@@ -244,6 +244,7 @@ msg.label.form.WebFormDataSet.Cancelled.help=Zeigt an, ob die Anmeldung mitterwe
 msg.label.form.WebFormDataSet.Changed=Datensatz hat Änderungen
 msg.label.form.WebFormDataSet.Changed.help=Zeigt an, ob der Datensatz nach Eingang nachträglich verändert wurde.
 msg.label.form.WebFormDataSet.ConfirmationMailSent=Bestätigungsmail versendet
+msg.label.form.WebFormDataSet.ConfirmationMailSent.help=Zeigt an, ob eine Bestätigungsmail versendet wurde.
 msg.label.form.WebFormDataSet.Data=Felddaten
 msg.label.form.WebFormDataSet.DeletionDate=Löschdatum
 msg.label.form.WebFormDataSet.DeletionDate.help=Das Datum, an dem diese Datei gelöscht werden sollte. 

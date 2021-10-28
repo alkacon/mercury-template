@@ -257,18 +257,19 @@
         <%-- la_00002 / la_00003 --%>
         <c:set var="asideFirst"                 value="${variant eq 'area-side-main'}" />
         <c:set var="asideWide"                  value="${'true' eq cms.vfs.readResource[cms.requestContext.uri].propertySearch['mercury.side.wide']}" />
+        <c:set var="asideOnTop"                 value="${cms.element.setting.asideOnTop.toBoolean}" />
         <main class="area-content ${variant}${cssWrapper}"><%----%>
             <div class="container"><%----%>
                 <div class="row"><%----%>
                     <c:set target="${valueMap}" property="Type"             value="row" />
                     <c:set target="${valueMap}" property="Name"             value="main" />
                     <c:set target="${valueMap}" property="Tag"              value="div" />
-                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '8' : '9'}${asideFirst ? ' order-lg-last ' : ' '}area-wide" />
+                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '8' : '9'}${asideOnTop ? ' order-last' : ''}${asideFirst ? ' order-lg-last ' : ' '}area-wide" />
                     <mercury:container value="${valueMap}" title="${value.Title}" />
                     <c:set target="${valueMap}" property="Type"             value="element, side-group"/>
                     <c:set target="${valueMap}" property="Name"             value="aside"/>
                     <c:set target="${valueMap}" property="Tag"              value="aside" />
-                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '4' : '3'}${asideFirst ? ' order-lg-first ' : ' '}area-narrow" />
+                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '4' : '3'}${asideOnTop ? ' order-first' : ''}${asideFirst ? ' order-lg-first ' : ' '}area-narrow" />
                     <mercury:container value="${valueMap}" title="${value.Title}" />
                     <mercury:nl />
                 </div><%----%>

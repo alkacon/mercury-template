@@ -2657,6 +2657,14 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[asideOnTop.layout]]></IncludeName>
+      <PropertyName><![CDATA[asideOnTop]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.asideOnTop)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.asideOnTop.help)]]></Description>
+      <Widget><![CDATA[%(stringtemplate:needAsideOnTop)]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[loginproject.login]]></IncludeName>
       <PropertyName><![CDATA[loginproject]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.login.project)]]></DisplayName>

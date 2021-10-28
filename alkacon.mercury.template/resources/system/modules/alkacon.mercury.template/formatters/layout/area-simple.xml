@@ -33,6 +33,9 @@
       <IncludeName><![CDATA[bgImage.layout]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[asideOnTop.layout]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bgColor.layout]]></IncludeName>
     </Setting>
     <Setting>
@@ -53,6 +56,17 @@
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).isEqual.("area-one-row"))%%!
                 !%${attribute:selectOrCombo:selectcombo}%!
+            !%%else%%!
+                !%hidden%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[needAsideOnTop]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).isEqual.("area-side-main")
+                || fn.(content.value.("Variant")).isEqual.("area-main-side"))%%!
+                !%checkbox%!
             !%%else%%!
                 !%hidden%!
             !%%endif%%!

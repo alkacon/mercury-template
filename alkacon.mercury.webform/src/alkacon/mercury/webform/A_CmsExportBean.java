@@ -101,6 +101,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     protected static final String KEY_ONLYWAITLIST_1 = "msg.page.form.bookingstatus.onlywaitlist.1";
 
     /** Constant for message key. */
+    protected static final String KEY_REMAININGSUBMISSIONS_NOWAITLIST_0 = "msg.page.form.remaining.places";
+
+    /** Constant for message key. */
     protected static final String KEY_REMAININGSUBMISSIONS_NOWAITLIST_1 = "msg.page.form.bookingstatus.remainingsubmissions.nowaitlist.1";
 
     /** Constant for message key. */
@@ -501,35 +504,44 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         writer.addRow();
         writer.addRow(m_messages.key(KEY_EXPORT_DATE_0), m_messages.getDateTime(new Date(), DateFormat.LONG));
         writer.addRow();
-        writer.addRow(
-            m_messages.key(KEY_SUBMISSIONS_LABEL),
-            m_messages.key(
-                KEY_SUBMISSIONS_STATUS_3,
-                Integer.valueOf(status.getNumTotalSubmissions()),
-                Integer.valueOf(status.getNumFormSubmissions()),
-                Integer.valueOf(status.getNumOtherSubmissions())));
-        writer.addRow(
-            m_messages.key(KEY_PLACES_LABEL),
-            null == status.getMaxRegularSubmissions()
-            ? m_messages.key(m_messages.key(KEY_PLACES_LABEL_UNLIMITED))
-            : status.getMaxWaitlistSubmissions() == 0
-            ? m_messages.key(KEY_MAXSUBMISSIONS_NOWAITLIST_1, status.getMaxRegularSubmissions())
-            : m_messages.key(
-                KEY_MAXSUBMISSIONS_WAITLIST_2,
-                status.getMaxRegularSubmissions(),
-                Integer.valueOf(status.getMaxWaitlistSubmissions())));
-        writer.addRow(
-            m_messages.key(KEY_FREEPLACES_LABEL),
-            status.isFullyBooked()
-            ? m_messages.key(KEY_FULLYBOOKED)
-            : status.isOnlyWaitlist()
-            ? m_messages.key(KEY_ONLYWAITLIST_1, Integer.valueOf(status.getNumRemainingWaitlistSubmissions()))
-            : status.getMaxWaitlistSubmissions() == 0
-            ? m_messages.key(KEY_REMAININGSUBMISSIONS_NOWAITLIST_1, status.getNumRemainingRegularSubmissions())
-            : m_messages.key(
+        String submissionsValue = m_messages.key(
+            KEY_SUBMISSIONS_STATUS_3,
+            Integer.valueOf(status.getNumTotalSubmissions()),
+            Integer.valueOf(status.getNumFormSubmissions()),
+            Integer.valueOf(status.getNumOtherSubmissions()));
+        writer.addRow(m_messages.key(KEY_SUBMISSIONS_LABEL), submissionsValue);
+        String placesValue = m_messages.key(
+            KEY_MAXSUBMISSIONS_WAITLIST_2,
+            status.getMaxRegularSubmissions(),
+            Integer.valueOf(status.getMaxWaitlistSubmissions()));
+        if (status.getMaxWaitlistSubmissions() == 0) {
+            placesValue = m_messages.key(KEY_PLACES_LABEL_UNLIMITED);
+        } else if (status.getMaxWaitlistSubmissions() == 0) {
+            placesValue = m_messages.key(KEY_MAXSUBMISSIONS_NOWAITLIST_1, status.getMaxRegularSubmissions());
+        }
+        writer.addRow(m_messages.key(KEY_PLACES_LABEL), placesValue);
+        String freeplacesValue = "";
+        if (status.isFullyBooked()) {
+            freeplacesValue = m_messages.key(KEY_FULLYBOOKED);
+        } else if (status.isOnlyWaitlist()) {
+            freeplacesValue = m_messages.key(
+                KEY_ONLYWAITLIST_1,
+                Integer.valueOf(status.getNumRemainingWaitlistSubmissions()));
+        } else if (status.getMaxWaitlistSubmissions() == 0) {
+            if (status.getNumRemainingRegularSubmissions() == null) {
+                freeplacesValue = m_messages.key(KEY_REMAININGSUBMISSIONS_NOWAITLIST_0);
+            } else {
+                freeplacesValue = m_messages.key(
+                    KEY_REMAININGSUBMISSIONS_NOWAITLIST_1,
+                    status.getNumRemainingRegularSubmissions());
+            }
+        } else {
+            freeplacesValue = m_messages.key(
                 KEY_REMAININGSUBMISSIONS_WAITLIST_2,
                 status.getNumRemainingRegularSubmissions(),
-                Integer.valueOf(status.getNumRemainingWaitlistSubmissions())));
+                Integer.valueOf(status.getNumRemainingWaitlistSubmissions()));
+        }
+        writer.addRow(m_messages.key(KEY_FREEPLACES_LABEL), freeplacesValue);
         writer.addRow();
         writer.addRow(m_messages.key(KEY_SUBMISSIONDATA_HEADLINE));
         writer.addRow();

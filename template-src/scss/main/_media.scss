@@ -350,11 +350,21 @@
     }
 }
 
-.piece > .visual .audio-player .copyright > div {
-    padding-right: $audio-player-spacing;
-    background-color: transparent;
-    bottom: 1px;
- }
+.square-col > .content .audio-player .copyright{
+    position: relative;
+    > div {
+        @include image-copyright;
+    }
+}
+
+.piece > .visual,
+.square-col > .content {
+    .audio-player .copyright > div {
+        padding-right: $audio-player-spacing;
+        background-color: transparent;
+        bottom: 1px;
+    }
+}
 
 // Onclick activation
 

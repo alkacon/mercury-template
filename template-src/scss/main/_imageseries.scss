@@ -78,9 +78,14 @@ $imageseries-square-margin: 2px !default;
         }
     }
 
-    .square-col .content {
-        // must always set this because this may reset tile rounding
-        @include round-corners($image-border-radius);
+    .square-col {
+        .content {
+            // must always set this because this may reset tile rounding
+            @include round-corners($image-border-radius);
+        }
+        .copyright {
+            @include image-copyright;
+        }
     }
 }
 

@@ -30,7 +30,8 @@
 <c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 <c:set var="showImageTitle"         value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageCount"         value="${setting.showImageCount.toBoolean}" />
-<c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
+<c:set var="showImageZoomCopyright" value="${setting.showImageCopyright.toBoolean}" />
+<c:set var="showImageListCopyright" value="${setting.showImageSeriesListCopyright.toBoolean}" />
 <c:set var="autoLoad"               value="${setting.autoLoad.toBoolean}" />
 <c:set var="showTitle"              value="${setting.showTitle.toBoolean}" />
 
@@ -77,6 +78,9 @@
                     --%><span class="fa fa-search"></span><%--
                --%></span><%--
             --%></span><%--
+            --%><c:if test="${showImageListCopyright}"><%--
+                --%><span class="copyright">%(copyright)</span><%--
+            --%></c:if><%--
         --%></span><%--
     --%></a><%--
 --%></div>
@@ -211,19 +215,20 @@
                             <c:if test="${not empty imageBean}">
 
                                 <c:set var="title" value="${showImageTitle ? imageTitle : ''}" />
-                                <c:set var="copyright" value="${showImageCopyright ? imageCopyright : ''}" />
+                                <c:set var="zoomCopyright" value="${showImageZoomCopyright ? imageCopyright : ''}" />
+                                <c:set var="listCopyright" value="${showImageListCopyright ? imageCopyrightHtml : ''}" />
 
                                 <%-- Caption shown in series can contain HTML markup for formatting --%>
                                 <c:set var="caption">
                                     <c:if test="${not empty title}"><div class="title">${title}</div></c:if>
-                                    <c:if test="${not empty copyright}"><div class="copyright">${imageCopyrightHtml}</div></c:if>
+                                    <c:if test="${not empty zoomCopyright}"><div class="copyright">${imageCopyrightHtml}</div></c:if>
                                 </c:set>
 
                                 <%-- Title attribute for a href tag can not contain any HTML markup--%>
                                 <c:set var="titleAttr">
                                     <c:if test="${not empty title}">${title}</c:if>
-                                    <c:if test="${not empty title || not empty copyright}"> </c:if>
-                                    <c:if test="${not empty copyright}">${copyright}</c:if>
+                                    <c:if test="${not empty title || not empty zoomCopyright}"> </c:if>
+                                    <c:if test="${not empty zoomCopyright}">${zoomCopyright}</c:if>
                                 </c:set>
 
                                 <c:set var="maxWidth" value="${1200}" />
@@ -256,6 +261,7 @@
                                     <cms:jsonvalue key="tileSrcSet" value="${tileSrcSet}" />
                                     <cms:jsonvalue key="size" value="w:${imageBean.scaler.width},h:${imageBean.scaler.height}" />
                                     <cms:jsonvalue key="caption" value="${caption}" />
+                                    <cms:jsonvalue key="copyright" value="${listCopyright}" />
                                     <cms:jsonvalue key="titleAttr" value="${fn:replace(titleAttr, '\"', '')}" />
                                 </cms:jsonobject>
                                 <li data-image='${dataImage.compact}'></li><%----%>

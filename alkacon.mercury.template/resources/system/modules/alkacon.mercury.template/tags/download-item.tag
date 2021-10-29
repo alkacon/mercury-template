@@ -76,10 +76,13 @@
         <c:set var="resSuffix"          value="${res.extension}" />
         <c:set var="mimeType"           value="${res.mimeType}" />
         <c:set var="propertiesLocale"   value="${res.propertyLocale[cms.locale]}" />
+        <c:set var="resCopyright"       value="${propertiesLocale['Copyright']}" />
+        <c:set var="resCopyright"       value="${not empty resCopyright ? '<div class=\"dl-copy\">&copy '.concat(resCopyright).concat('</div>') : null}" />
         <c:set var="resSize"            value="${empty resSize ? res.length : resSize}" />
         <c:set var="resCategories"      value="${empty resCategories ? res.categories : resCategories}" />
         <c:set var="resTitle"           value="${empty resTitle ? propertiesLocale['Title'] : resTitle}" />
         <c:set var="resDescription"     value="${empty resDescription ? propertiesLocale['Description'] : resDescription}" />
+        <c:set var="resDescription"     value="${empty resDescription ? resCopyright : resDescription.concat(resCopyright)}" />
         <c:set var="resDate"            value="${empty resDate ? res.dateLastModified : resDate}" />
     </c:when>
     <c:otherwise>

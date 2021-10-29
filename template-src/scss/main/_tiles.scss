@@ -509,6 +509,16 @@ $sq-margin: 20px;
     }
 }
 
+.square-col {
+    .square-copyright {
+        // selector must not be named 'image-copyright' here, otherwise there will be problems for image flipping tiles
+        @include image-copyright;
+        color: $square-overlay-text-color;
+        text-shadow: $square-overlay-text-shadow;
+        background-color: transparent;
+    }
+}
+
 .tile-col,
 .square-col {
     .text-overlay {
@@ -546,13 +556,6 @@ $sq-margin: 20px;
         div.teaser-date + h2 {
             margin-top: $default-margin-verysmall;
         }
-    }
-    .copyright {
-        // selector must not be named 'image-copyright' here, otherwise there will be problems for image flipping tiles
-        @include image-copyright;
-        color: $square-overlay-text-color;
-        text-shadow: $square-overlay-text-shadow;
-        background-color: transparent;
     }
     a:hover {
         text-decoration: none;

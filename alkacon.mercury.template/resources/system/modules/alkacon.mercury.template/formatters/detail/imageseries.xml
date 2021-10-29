@@ -65,7 +65,10 @@
       <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
+      <IncludeName><![CDATA[showImageSeriesZoomCopyright.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageSeriesListCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[autoLoad.false]]></IncludeName>

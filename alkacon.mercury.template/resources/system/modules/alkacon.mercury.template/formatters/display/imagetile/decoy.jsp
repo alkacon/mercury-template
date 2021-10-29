@@ -22,6 +22,7 @@
 <c:set var="dateFormat"         value="${setting.dateFormat}"/>
 <c:set var="ratio"              value="${setting.imageRatio.toString}"/>
 <c:set var="effect"             value="${setting.effect.isSetNotNone ? setting.effect.toString.concat(' effect-piece') : ''}" />
+<c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 
 <c:set var="paragraph"          value="${content.valueList.Paragraph['0']}" />
 
@@ -93,7 +94,9 @@
             <mercury:image-animated
                 image="${image}"
                 ratio="${imgRatio}"
-                title="${title}" />
+                title="${title}">
+                <c:set var="copyright" value="${imageCopyrightHtml}" />
+            </mercury:image-animated>
         </cms:addparams>
 
         <div class="text-overlay"><%----%>
@@ -101,6 +104,7 @@
             <h2 class="title"><c:out value="${title}" /></h2><%----%>
             <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
+        <c:if test="${showImageCopyright}"><div class="square-copyright">${copyright}</div></c:if>
     </mercury:link>
 
     </div><%----%>

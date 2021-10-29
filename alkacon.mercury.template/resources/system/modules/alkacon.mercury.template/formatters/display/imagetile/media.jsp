@@ -25,6 +25,7 @@
 <c:set var="dateFormat"         value="${setting.dateFormat}"/>
 <c:set var="ratio"              value="${setting.imageRatio.toString}"/>
 <c:set var="effect"             value="${setting.effect.toString}" />
+<c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 
 <c:set var="title"              value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
 
@@ -95,7 +96,7 @@
     link="${isFlexible ? linkToDetail : ''}"
     effect="${effect}"
     showMediaTime="${true}"
-    showCopyright="${false}">
+    showCopyright="${isAudio ? showImageCopyright : false}">
 
     <jsp:attribute name="markupBottomText">
         <div class="text-overlay"><%----%>
@@ -104,6 +105,7 @@
             <h2 class="title"><c:out value="${title}" /></h2><%----%>
             <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
+        <c:if test="${not isAudio and showImageCopyright}"><div class="square-copyright">&copy; ${copyright}</div></c:if>
     </jsp:attribute>
 
 </mercury:media-box>

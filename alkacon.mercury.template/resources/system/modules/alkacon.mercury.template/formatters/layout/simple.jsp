@@ -269,7 +269,7 @@
                     <c:set target="${valueMap}" property="Type"             value="element, side-group"/>
                     <c:set target="${valueMap}" property="Name"             value="aside"/>
                     <c:set target="${valueMap}" property="Tag"              value="aside" />
-                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '4' : '3'}${asideOnTop ? ' order-first' : ''}${asideFirst ? ' order-lg-first ' : ' '}area-narrow" />
+                    <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '4' : '3'}${asideOnTop ? ' order-first'.concat(asideFirst ? '' : ' order-lg-last') : ''}${asideFirst ? ' order-lg-first ' : ' '}area-narrow" />
                     <mercury:container value="${valueMap}" title="${value.Title}" />
                     <mercury:nl />
                 </div><%----%>

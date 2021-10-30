@@ -782,6 +782,15 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showDownloadCopyright.default]]></IncludeName>
+      <PropertyName><![CDATA[showDownloadCopyright]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showDownloadCopyright)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showDownloadCopyright.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
       <PropertyName><![CDATA[showImageSubtitle]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showImageSubtitle)]]></DisplayName>

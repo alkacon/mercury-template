@@ -44,6 +44,9 @@
       <Description><![CDATA[%(key.msg.setting.download.showDescription.help)]]></Description>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showDownloadCopyright.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listWrapper.default]]></IncludeName>
     </Setting>
     <Setting>

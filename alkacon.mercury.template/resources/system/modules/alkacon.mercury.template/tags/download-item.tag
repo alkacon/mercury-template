@@ -12,24 +12,28 @@
 <%@ attribute name="resSize" type="java.lang.Integer" required="false"
     description="The size of resource download in bytes.
     Required for external resources that are not folders.
-    Not required in case a CmsResource is provided." %>
+    Not required in case a CmsResource is provided - in this case the information can be read from the resource attributes." %>
 
 <%@ attribute name="resDate" type="java.lang.Object" required="false"
     description="The date to be displayed for the download resource.
     This can be a java.util.Date Object, a Long value representing a date, or a String representing a Long value for a date.
-    Not required in case a CmsResource is provided." %>
+    Not required in case a CmsResource is provided - in this case the information can be read from the resource properties." %>
 
 <%@ attribute name="resTitle" type="java.lang.String" required="false"
     description="The title of the download resource, e.g. 'My important PDF file'.
-    Not required in case a CmsResource is provided." %>
+    Not required in case a CmsResource is provided - in this case the information can be read from the resource properties." %>
 
 <%@ attribute name="resDescription" type="java.lang.String" required="false"
     description="The description of the download resource.
-    Not required in case a CmsResource is provided." %>
+    Not required in case a CmsResource is provided - in this case the information can be read from the resource properties." %>
+
+<%@ attribute name="resCoypright" type="java.lang.String" required="false"
+    description="The copyright of the download resource.
+    Not required in case a CmsResource is provided - in this case the information can be read from the resource properties." %>
 
 <%@ attribute name="resCategories" type="org.opencms.jsp.util.CmsJspCategoryAccessBean" required="false"
     description="The categories of the download resource.
-    Not required in case a CmsResource is provided." %>
+    Not required in case a CmsResource is provided- in this case the information can be read from the resource relations." %>
 
 <%@ attribute name="displayFormat" type="java.lang.String" required="false"
     description="Display output format to generate. Possible values are:
@@ -47,6 +51,9 @@
 
 <%@ attribute name="showDescription" type="java.lang.Boolean" required="false"
     description="Controls if the description is displayed." %>
+
+<%@ attribute name="showCopyright" type="java.lang.Boolean" required="false"
+    description="Controls if the copyright is displayed." %>
 
 <%@ attribute name="showCategories" type="java.lang.Boolean" required="false"
     description="Controls if categories for the file are displayed." %>
@@ -76,13 +83,11 @@
         <c:set var="resSuffix"          value="${res.extension}" />
         <c:set var="mimeType"           value="${res.mimeType}" />
         <c:set var="propertiesLocale"   value="${res.propertyLocale[cms.locale]}" />
-        <c:set var="resCopyright"       value="${propertiesLocale['Copyright']}" />
-        <c:set var="resCopyright"       value="${not empty resCopyright ? '<div class=\"dl-copy\">&copy '.concat(resCopyright).concat('</div>') : null}" />
         <c:set var="resSize"            value="${empty resSize ? res.length : resSize}" />
         <c:set var="resCategories"      value="${empty resCategories ? res.categories : resCategories}" />
         <c:set var="resTitle"           value="${empty resTitle ? propertiesLocale['Title'] : resTitle}" />
         <c:set var="resDescription"     value="${empty resDescription ? propertiesLocale['Description'] : resDescription}" />
-        <c:set var="resDescription"     value="${empty resDescription ? resCopyright : resDescription.concat(resCopyright)}" />
+        <c:set var="resCopyright"       value="${empty resCopyright ? propertiesLocale['Copyright'] : resCopyright}" />
         <c:set var="resDate"            value="${empty resDate ? res.dateLastModified : resDate}" />
     </c:when>
     <c:otherwise>
@@ -98,6 +103,16 @@
         %>
     </c:otherwise>
 </c:choose>
+
+<c:if test="${showCopyright and not empty resCopyright}">
+    <%-- Copyright is displayed as part of the description --%>
+    <c:if test="${not showDescription}">
+        <c:set var="showDescription" value="${true}" />
+        <c:set var="resDescription" value="" />
+    </c:if>
+    <c:set var="resCopyrightMarkup"><div class="dl-copy">&copy ${resCopyright}</div></c:set>
+    <c:set var="resDescription"     value="${empty resDescription ? resCopyrightMarkup : resDescription.concat(resCopyrightMarkup)}" />
+</c:if>
 
 <c:set var="showCategories"             value="${showCategories and (not empty resCategories) and (not resCategories.isEmpty)}" />
 <c:set var="title"                      value="${empty resTitle ? resName : resTitle}" />

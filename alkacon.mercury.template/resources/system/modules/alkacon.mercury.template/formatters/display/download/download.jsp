@@ -19,6 +19,7 @@
     displayFormat="${setting.listCssWrapper.toString}"
     showFileName="${setting.showFile.toBoolean}"
     showDescription="${setting.showDescription.toBoolean}"
+    showCopyright="${setting.showDownloadCopyright.toBoolean}"
     showCategories="${(setting.categoryOption.toString eq 'allnopath') or (setting.categoryOption.toString eq 'onlyleafs')}"
     showCategoryLeafsOnly="${showCategories and (setting.categoryOption.toString eq 'onlyleafs')}"
 />

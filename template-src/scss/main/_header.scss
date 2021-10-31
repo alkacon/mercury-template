@@ -898,7 +898,7 @@
                             }
                         }
                     }
-                    @if (($logo-padding == $default-margin-verysmall) && ($fh-title-bg-color != none)) {
+                    @if (($logo-padding == $default-margin-verysmall) and ($fh-title-bg-color != none)) {
                         &.header-notfixed,
                         &.header-isfixed.fix-complete {
                             &.nav-below {
@@ -1308,12 +1308,12 @@
             }
             &.lp-l {
                 .h-toggle-col {
-                    right: $grid-gutter-width / 2;
+                    right: $grid-gutter-width * 0.5;
                 }
             }
             &.lp-r {
                 .h-toggle-col {
-                    left: $grid-gutter-width / 2;
+                    left: $grid-gutter-width * 0.5;
                 }
             }
         }

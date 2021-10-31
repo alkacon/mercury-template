@@ -509,14 +509,14 @@ $sq-margin: 20px;
     }
 }
 
-.square-col {
-    .square-copyright {
-        // selector must not be named 'image-copyright' here, otherwise there will be problems for image flipping tiles
-        @include image-copyright;
-        color: $square-overlay-text-color;
-        text-shadow: $square-overlay-text-shadow;
-        background-color: transparent;
-    }
+.tile-col.element .copyright,
+.tile-col.freefloat .copyright,
+.square-col .square-copyright {
+    // selector must not be named 'image-copyright' here, otherwise there will be problems for image flipping tiles
+    @include image-copyright;
+    color: $square-overlay-text-color;
+    text-shadow: $square-overlay-text-shadow;
+    background-color: transparent;
 }
 
 .tile-col,

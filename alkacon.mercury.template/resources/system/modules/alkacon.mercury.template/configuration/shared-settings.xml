@@ -786,7 +786,7 @@
       <PropertyName><![CDATA[showDownloadCopyright]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showDownloadCopyright)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.showDownloadCopyright.help)]]></Description>
-      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Visibility><![CDATA[parent]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>

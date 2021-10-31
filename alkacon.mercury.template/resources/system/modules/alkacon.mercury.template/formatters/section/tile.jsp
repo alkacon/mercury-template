@@ -36,6 +36,7 @@
     </c:when>
     <c:otherwise>
         <c:set var="tileCss"            value="${empty param.tilegrid ? 'tile-col col-sm-6 col-lg-3' : param.tilegrid}" />
+        <c:set var="tileCss"            value="${tileCss.concat(' freefloat')}" />
         <c:set var="tileClass"          value="${tileCss} min-height-px" />
         <c:set var="tileClass"          value="${tileClass}${fullOverlay ? ' f-o' : ' t-o'}" />
     </c:otherwise>

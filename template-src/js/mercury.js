@@ -516,7 +516,7 @@ var Mercury = function(jQ) {
     function loadAudioScript(callback) {
         // load audio script if required
         var audioScriptRequired = requiresModule(".type-media.audio, [data-audio]");
-        if (audioScriptRequired && (typeof window.AudioData === "undefined")) {
+        if (audioScriptRequired && ((typeof window.AudioData === "undefined") || (typeof window.AudioData.initAudioElement !== "function"))) {
             window.AudioData = false;
             if (DEBUG) console.info("Mercury.loadAudioScript() - Loading audio script...");
             try {

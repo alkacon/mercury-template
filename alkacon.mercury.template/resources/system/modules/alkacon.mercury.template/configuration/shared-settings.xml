@@ -2704,17 +2704,24 @@
       <Widget><![CDATA[string]]></Widget>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[disqusSite.disqus]]></IncludeName>
+      <IncludeName><![CDATA[disqusSite.comments]]></IncludeName>
       <PropertyName><![CDATA[disqusSite]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.disqus.disqusSite)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.disqus.disqusSite.help)]]></Description>
       <Widget><![CDATA[string]]></Widget>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[clickToLoad.disqus]]></IncludeName>
+      <IncludeName><![CDATA[hyvorTalkSite.comments]]></IncludeName>
+      <PropertyName><![CDATA[hyvorTalkSite]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hyvor-talk.site)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hyvor-talk.site.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[clickToLoad.comments]]></IncludeName>
       <PropertyName><![CDATA[clickToLoad]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.disqus.clickToLoad)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.disqus.clickToLoad.help)]]></Description>
+      <DisplayName><![CDATA[%(key.msg.setting.comments.clickToLoad)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.comments.clickToLoad.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>

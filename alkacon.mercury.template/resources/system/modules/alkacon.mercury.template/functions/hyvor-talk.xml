@@ -2,15 +2,15 @@
 
 <FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
   <FunctionConfig language="en">
-    <NiceName><![CDATA[%(key.function.disqus)]]></NiceName>
-    <Key><![CDATA[m/functions/disqus]]></Key>
+    <NiceName><![CDATA[%(key.function.hyvor-talk)]]></NiceName>
+    <Key><![CDATA[m/functions/hyvor-talk]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/disqus.jsp]]></target>
-        <uuid>f250ed19-677d-4790-b5eb-246678610801</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/hyvor-talk.jsp]]></target>
+        <uuid>b90533de-3ada-11ec-8f7c-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.function.disqus.help)]]></Description>
+    <Description><![CDATA[%(key.function.hyvor-talk.help)]]></Description>
     <Match>
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
@@ -27,7 +27,7 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[disqusSite.comments]]></IncludeName>
+      <IncludeName><![CDATA[hyvorTalkSite.comments]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[clickToLoad.comments]]></IncludeName>

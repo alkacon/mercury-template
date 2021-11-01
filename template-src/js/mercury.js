@@ -30,7 +30,7 @@ import lazySizes                    from 'lazysizes';
 
 import * as DynamicListElemements   from './lists.js';
 import * as NavigationElements      from './navigation.js';
-import * as DisqusElements          from './disqus.js';
+import * as CommentElements         from './comments.js';
 import * as AnalyticElements        from './analytics.js';
 import * as PrivacyPolicy           from './privacy-policy.js';
 
@@ -808,9 +808,9 @@ var Mercury = function(jQ) {
         }
 
         try {
-            DisqusElements.init(jQ, DEBUG);
+            CommentElements.init(jQ, DEBUG);
         } catch (err) {
-            console.warn("Disqus.init() error", err);
+            console.warn("Comments.init() error", err);
         }
 
         try {

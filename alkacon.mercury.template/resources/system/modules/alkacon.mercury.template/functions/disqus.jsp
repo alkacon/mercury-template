@@ -62,9 +62,9 @@
         </c:choose>
 
         <c:if test="${clickToLoad}">
-            <button type="button" class="btn-block btn btn-comments btn-toggle" ><%----%>
+            <button type="button" class="btn-toggle btn-block btn" ><%----%>
                 <span class="pull-left"><fmt:message key="msg.page.comments" /></span><%----%>
-                <span id="comments_toggle" class="fa fa-chevron-down pull-right"></span><%----%>
+                <span class="fa fa-chevron-down pull-right"></span><%----%>
             </button><%----%>
         </c:if>
 
@@ -78,7 +78,7 @@
 
         <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.disqus" />
 
-        <div id="disqus_thread" class="comments-view" <%--
+        <div id="disqus_thread" <%--
         --%><c:if test="${clickToLoad}">style="display: none;" </c:if><%--
             --%>data-comments='${commentsData.compact}'<%--
             --%><mercury:data-external-cookies message="${cookieMessage}" /><%--

@@ -726,6 +726,12 @@
     </Function>
     <Function>
       <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/hyvor-talk.xml]]></target>
+        <uuid>c09c8fe2-3ada-11ec-8f7c-0242ac11002b</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/functions/pdf-download.xml]]></target>
         <uuid>451b8424-6099-43f0-8782-5c5431374c68</uuid>
       </link>

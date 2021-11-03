@@ -29,23 +29,21 @@ var DEBUG;
 
 var DISQUS_DATA = {};
 var HYVORTALK_DATA = {};
+var m_firstInit = true;
 
 function toggleComments(commentData) {
 
-    if (DEBUG) console.info("Comments.toggleComments() " + (commentData.open ? "Close " : "Open ") + commentData.type);
-    if (commentData.open) {
-        commentData.$toggle.find("fa").toggleClass("open");
+    var open = commentData.$fa.hasClass("open");
+    if (DEBUG) console.info("Comments.toggleComments() " + (open ? "Close " : "Open ") + commentData.type);
+    if (open) {
         commentData.$view.slideUp();
     } else {
-        commentData.$toggle.find("fa").toggleClass("open");
         if (!commentData.loaded) {
-            commentData.$view.show();
             commentData.loadComments();
-        } else {
-            commentData.$view.slideDown();
         }
+        commentData.$view.slideDown();
     }
-    commentData.open = !commentData.open;
+    commentData.$fa.toggleClass("open");
 }
 
 /****** Exported functions ******/
@@ -60,114 +58,104 @@ export function init(jQuery, debug) {
     var $commentElements = jQ('.type-comments');
     if (DEBUG) console.info("Comments.init() .type-comments [data-comments] elements found: " + $commentElements.length);
 
-    if (PrivacyPolicy.cookiesAcceptedExternal()) {
+    $commentElements.each(function() {
+        var $commentElement = jQ(this);
+        var $view = $commentElement.find("[data-comments]");
+        if (typeof $view.data("comments") != 'undefined') {
 
-        $commentElements.each(function() {
-            var $commentElement = jQ(this);
-            var $view = $commentElement.find("[data-comments]");
-            if (typeof $view.data("comments") != 'undefined') {
+            var commentData = $view.data("comments");
 
-                var commentData = $view.data("comments");
+            commentData.$element = $commentElement;
+            commentData.$view = $view;
+            commentData.$toggle = commentData.$element.find(".btn-toggle");
+            commentData.$fa = commentData.$toggle.find(".fa");
 
-                commentData.$element = $commentElement;
-                commentData.$view = $view;
-                commentData.$toggle = commentData.$element.find(".btn-toggle");
+            commentData.loaded = false;
+            commentData.site = decodeURIComponent(commentData.site);
+            commentData.url = decodeURIComponent(commentData.url);
 
-                commentData.loaded = false;
-                commentData.open = false;
-                commentData.site = decodeURIComponent(commentData.site);
-                commentData.url = decodeURIComponent(commentData.url);
+            var commentId = commentData.$view.attr('id');
+            if (commentId == "disqus_thread") {
+                if (DEBUG) console.info("Comments.init() found DISQUS data for page id: " + commentData.id);
+                commentData.valid = true;
+                commentData.type = "DISQUS";
 
-                var commentId = commentData.$view.attr('id');
-                if (commentId == "disqus_thread") {
-                    if (DEBUG) console.info("Comments.init() found DISQUS data for page id: " + commentData.id);
-                    commentData.valid = true;
-                    commentData.type = "DISQUS";
-
-                    if (commentData.site.endsWith(".disqus.com")) {
-                        commentData.site = commentData.site + "#";
-                        commentData.site = commentData.site.replace(".disqus.com#", "");
-                    }
-
-                    // this need to be visible in global JS context for DISQUS
-                    window.disqus_config = function() {
-                        this.page.url = window.disqus_pageUrl;
-                        this.page.identifier = window.disqus_pageId;
-                    };
-                    window.disqus_pageUrl = commentData.url;
-                    window.disqus_pageId = commentData.id;
-
-                    DISQUS_DATA = commentData;
-                    DISQUS_DATA.loadComments = function () {
-                        if (DEBUG) console.info("Comments DISQUS .loadComments()");
-                        if (PrivacyPolicy.cookiesAcceptedExternal()) {
-                            if (! DISQUS_DATA.loaded) {
-                                DISQUS_DATA.loaded = true;
-                                var d = document, s = d.createElement('script');
-                                s.src = '//' + DISQUS_DATA.site + '.disqus.com/embed.js';
-                                s.setAttribute('data-timestamp', + new Date());
-                                (d.head || d.body).appendChild(s);
-                            } else {
-                                DISQUS.reset({
-                                    reload: true,
-                                    config: window.disqus_config
-                                });
-                            }
-                        }
-                    };
-
-                } else if (commentId == "hyvor-talk-view") {
-                    if (DEBUG) console.info("Comments.init() found HYVOR TALK data for page id: " + commentData.id);
-                    commentData.valid = true;
-                    commentData.type = "HYVOR TALK";
-
-                    // this need to be visible in global JS context for HYVOR TALK
-                    window.HYVOR_TALK_WEBSITE = commentData.site;
-                    window.HYVOR_TALK_CONFIG = {
-                        url: commentData.url,
-                        id: commentData.id,
-                        language: commentData.locale,
-                        palette: {
-                            accent: Mercury.getThemeJSON("main-theme", [])
-                        }
-                    };
-
-                    HYVORTALK_DATA = commentData;
-                    HYVORTALK_DATA.loadComments = function () {
-                        if (DEBUG) console.info("Comments HYVOR TALK .loadComments()");
-                        if (PrivacyPolicy.cookiesAcceptedExternal()) {
-                            if (! HYVORTALK_DATA.loaded) {
-                                HYVORTALK_DATA.loaded = true;
-                                var d = document, s = d.createElement('script');
-                                s.src = '//talk.hyvor.com/web-api/embed';
-                                (d.head || d.body).appendChild(s);
-                            } else {
-                                window.hyvor_talk.reload();
-                            }
-                        }
-                    };
+                if (commentData.site.endsWith(".disqus.com")) {
+                    commentData.site = commentData.site + "#";
+                    commentData.site = commentData.site.replace(".disqus.com#", "");
                 }
-                if (commentData.valid) {
-                    var clickToLoad = commentData.load && !commentData.open;
-                    if (DEBUG) console.info("Comments.init() " + commentData.type + " clickToLoad='" + clickToLoad + "' url=" + commentData.url + " site=" + commentData.site);
-                    if (clickToLoad) {
-                        commentData.$toggle.on('click', function(event) {
-                            toggleComments(commentData);
-                        });
-                    } else {
-                        commentData.loadComments();
+
+                // this need to be visible in global JS context for DISQUS
+                window.disqus_config = function() {
+                    this.page.url = commentData.url;
+                    this.page.identifier = commentData.id;
+                    this.language = commentData.locale;
+                };
+
+                DISQUS_DATA = commentData;
+                DISQUS_DATA.loadComments = function () {
+                    if (DEBUG) console.info("Comments DISQUS .loadComments()");
+                    if (PrivacyPolicy.cookiesAcceptedExternal()) {
+                        if (! DISQUS_DATA.loaded) {
+                            DISQUS_DATA.loaded = true;
+                            var d = document, s = d.createElement('script');
+                            s.src = '//' + DISQUS_DATA.site + '.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', + new Date());
+                            (d.head || d.body).appendChild(s);
+                        } else {
+                            DISQUS.reset({
+                                reload: true,
+                                config: window.disqus_config
+                            });
+                        }
                     }
-                } else {
-                    if (DEBUG) console.warn("Comments.init() UNKNOWN data for id: " + commentId);
-                }
+                };
+
+            } else if (commentId == "hyvor-talk-view") {
+                if (DEBUG) console.info("Comments.init() found HYVOR TALK data for page id: " + commentData.id);
+                commentData.valid = true;
+                commentData.type = "HYVOR TALK";
+
+                // this need to be visible in global JS context for HYVOR TALK
+                window.HYVOR_TALK_WEBSITE = commentData.site;
+                window.HYVOR_TALK_CONFIG = {
+                    url: commentData.url,
+                    id: commentData.id,
+                    language: commentData.locale,
+                    palette: {
+                        accent: Mercury.getThemeJSON("main-theme", [])
+                    }
+                };
+
+                HYVORTALK_DATA = commentData;
+                HYVORTALK_DATA.loadComments = function () {
+                    if (DEBUG) console.info("Comments HYVOR TALK .loadComments()");
+                    if (PrivacyPolicy.cookiesAcceptedExternal()) {
+                        if (! HYVORTALK_DATA.loaded) {
+                            HYVORTALK_DATA.loaded = true;
+                            var d = document, s = d.createElement('script');
+                            s.src = '//talk.hyvor.com/web-api/embed';
+                            (d.head || d.body).appendChild(s);
+                        } else {
+                            window.hyvor_talk.reload();
+                        }
+                    }
+                };
             }
-        });
+            if (commentData.valid) {
+                if (DEBUG) console.info("Comments.init() " + commentData.type + " data=" + commentData.url + " id=" + commentData.id + " site=" + commentData.site);
+                if ((commentData.$toggle.length > 0) && m_firstInit) {
+                    commentData.$toggle.on('click', function(event) {
+                        toggleComments(commentData);
+                    });
+                } else {
+                    commentData.loadComments();
+                }
+            } else {
+                if (DEBUG) console.warn("Comments.init() UNKNOWN data for id: " + commentId);
+            }
+        }
+    });
 
-    } else {
-
-        if (DEBUG) console.info("Comments.init() External cookies not accepted be the user - External comments are disabled!");
-        jQ('.btn-comments').on('click', function(event) {
-            toggleComments()
-        });
-    }
+    m_firstInit = false;
 }

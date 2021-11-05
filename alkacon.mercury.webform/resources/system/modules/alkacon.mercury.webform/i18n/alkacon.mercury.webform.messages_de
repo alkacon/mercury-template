@@ -48,7 +48,7 @@ form.message.waitlist=Die Veranstaltung ist bereits ausgebucht. Sie können sich
 form.privacy.label=Datenschutz
 form.privacy.linktext=Ich bestätige hiermit, die Datenschutzerklärung gelesen und verstanden zu haben.
 label.WebForm.Tab.DB=Datenbank Konfiguration
-label.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Stellen Sie ein, ob und wie Datensätze als XML-Inhalte gespeichert werden.</div>
+label.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Stellen Sie ein, ob und wie Datensätze als XML-Inhalte gespeichert und exportiert werden.</div>
 label.WebForm.Tab.Fields=Eingabefelder
 label.WebForm.Tab.Fields.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Definiert die angezeigten Eingabefelder des Formulars.</div>
 label.WebForm.Tab.FormPage=Formularseite
@@ -198,7 +198,7 @@ msg.label.form.WebForm.OptionalSubField=Abhängige Felder
 msg.label.form.WebForm.ReturnUri=Zurück URI
 msg.label.form.WebForm.ReturnUri.help=Eine interne URI, die auf der Bestätigungsseite angezeigt wird, um dem Benutzer zu ermöglichen über diesen Link weiter zu navigieren.
 msg.label.form.WebForm.Tab.DB=Datenbank Konfiguration
-msg.label.form.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Stellen Sie ein, ob und wie Datensätze als XML-Inhalte gespeichert werden.</div>
+msg.label.form.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Stellen Sie ein, ob und wie Datensätze als XML-Inhalte gespeichert und exportiert werden.</div>
 msg.label.form.WebForm.Tab.Fields=Eingabefelder
 msg.label.form.WebForm.Tab.Fields.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Definiert die angezeigten Eingabefelder des Formulars.</div>
 msg.label.form.WebForm.Tab.FormPage=Formularseite

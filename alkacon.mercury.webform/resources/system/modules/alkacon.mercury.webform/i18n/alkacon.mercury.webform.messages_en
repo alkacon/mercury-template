@@ -48,7 +48,7 @@ form.message.waitlist=The event is already fully booked. But you can register fo
 form.privacy.label=Privacy policy
 form.privacy.linktext=I confirm that I have read and understood the privacy policy.
 label.WebForm.Tab.DB=Database configuration
-label.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Configure if and how form data is stored as XML content.</div>
+label.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Configure if and how form data is stored as XML content and exported.</div>
 label.WebForm.Tab.Fields=Inputs fields
 label.WebForm.Tab.Fields.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Defines the shown fields of the form.</div>
 label.WebForm.Tab.FormPage=Form page
@@ -198,7 +198,7 @@ msg.label.form.WebForm.OptionalSubField=Dependent field(s)
 msg.label.form.WebForm.ReturnUri=Return URI
 msg.label.form.WebForm.ReturnUri.help=An internal link that is shown on the confirmation page to allow the user to continue browsing the website.
 msg.label.form.WebForm.Tab.DB=Database configuration
-msg.label.form.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Configure if and how form data is stored as XML content.</div>
+msg.label.form.WebForm.Tab.DB.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Configure if and how form data is stored as XML content and exported.</div>
 msg.label.form.WebForm.Tab.Fields=Inputs fields
 msg.label.form.WebForm.Tab.Fields.Description=<div style\="background-color\: \#ffffcc; color\: \#474747; border\: 1px solid \#c9c9c9; border-radius\: 4px; padding\: 6px; margin\: 8px 25px 2px 3px; font-size\: 14px;">Defines the shown fields of the form.</div>
 msg.label.form.WebForm.Tab.FormPage=Form page

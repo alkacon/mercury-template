@@ -227,7 +227,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formatted = formatter.format(now);
         String safeFileName = OpenCms.getResourceManager().getFileTranslator().translateResource(m_formTitle);
-        return safeFileName + formatted;
+        return safeFileName + "-" + formatted;
     }
 
     /**

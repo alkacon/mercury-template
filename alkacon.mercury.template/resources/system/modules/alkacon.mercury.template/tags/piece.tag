@@ -18,6 +18,7 @@
     // 8.  Image left, Heading, Text and Link right (floating around image)
     // 9.  Image right, Heading, Text and Link left (floating around image)
     // 10. Heading, Text, Link, Image (full width)
+    // 11. Heading, Text, Image (full width), Link
     " %>
 
 <%@ attribute name="sizeMobile" type="java.lang.Integer" required="false"
@@ -122,11 +123,12 @@
 
 
 <c:set var="pieceTag"       value="${empty pieceTag ? 'div' : pieceTag}" />
-<c:set var="fullWidth"      value="${(pieceLayout <= 1) or (pieceLayout == 10)}" />
+<c:set var="fullWidth"      value="${(pieceLayout <= 1) or (pieceLayout == 10) or (pieceLayout == 11)}" />
 <c:set var="inlineLink"     value="${empty inlineLink ? not fullWidth : inlineLink}" />
 
 <c:set var="inlineHeading"  value="${(pieceLayout == 1) or (pieceLayout >= 6)}" />
-<c:set var="visualLast"     value="${pieceLayout == 10}" />
+<c:set var="visualLast"     value="${pieceLayout == 10 or (pieceLayout == 11)}" />
+<c:set var="linkLast"       value="${pieceLayout == 11}" />
 
 <c:choose>
     <c:when test="${fullWidth}">
@@ -238,6 +240,34 @@
     </c:otherwise>
 </c:choose>
 
+<c:if test="${showLink}">
+    <c:set var="linkMarkup">
+        <div class="link${empty cssLink ? '' : ' '.concat(cssLink)}"${empty attrLink ? '' : ' '.concat(attrLink)}><%----%>
+            ${pieceLink}
+        </div><%----%>
+        <mercury:nl />
+    </c:set>
+</c:if>
+
+<c:if test="${showVisual}">
+    <c:set var="visualMarkup">
+        <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
+            ${pieceVisual}
+        </div><%----%>
+        <mercury:nl />
+    </c:set>
+</c:if>
+
+<c:if test="${showHeading}">
+    <c:set var="headingMarkup">
+        <div class="heading${empty cssHeading ? '' : ' '.concat(cssHeading)}"${empty attrHeading ? '' : ' '.concat(attrHeading)}><%----%>
+            ${pieceHeading}
+        </div><%----%>
+        <mercury:nl />
+    </c:set>
+</c:if>
+
+
 <mercury:nl />
 ${'<'}${pieceTag}${' '}
     ${'class=\"'}
@@ -253,27 +283,18 @@ ${'>'}
 <mercury:nl />
 
 <c:if test="${showHeading and not inlineHeading}">
-    <div class="heading${empty cssHeading ? '' : ' '.concat(cssHeading)}"${empty attrHeading ? '' : ' '.concat(attrHeading)}><%----%>
-        ${pieceHeading}
-    </div><%----%>
-    <mercury:nl />
+    ${headingMarkup}
 </c:if>
 
 <c:if test="${showVisual and not visualLast}">
-    <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
-        ${pieceVisual}
-    </div><%----%>
-    <mercury:nl />
+    ${visualMarkup}
 </c:if>
 
 <c:if test="${showBody}">
     <div class="body${empty cssBody ? '' : ' '.concat(cssBody)}"${empty attrBody ? '' : ' '.concat(attrBody)}><%----%>
         ${bodyPreMarkup}
         <c:if test="${showHeading and inlineHeading}">
-            <div class="heading${empty cssHeading ? '' : ' '.concat(cssHeading)}"${empty attrHeading ? '' : ' '.concat(attrHeading)}><%----%>
-                ${pieceHeading}
-            </div><%----%>
-            <mercury:nl />
+            ${headingMarkup}
         </c:if>
         <c:if test="${showText}">
             <div class="text${empty cssText ? '' : ' '.concat(cssText)}"${empty attrText ? '' : ' '.concat(attrText)}><%----%>
@@ -282,29 +303,25 @@ ${'>'}
             <mercury:nl />
         </c:if>
         <c:if test="${showLink and inlineLink}">
-            <div class="link${empty cssLink ? '' : ' '.concat(cssLink)}"${empty attrLink ? '' : ' '.concat(attrLink)}><%----%>
-                ${pieceLink}
-            </div><%----%>
-            <mercury:nl />
+            ${linkMarkup}
         </c:if>
         ${bodyPostMarkup}
     </div><%----%>
     <mercury:nl />
 </c:if>
 
-<c:if test="${showLink and not inlineLink}">
-    <div class="link${empty cssLink ? '' : ' '.concat(cssLink)}"${empty attrLink ? '' : ' '.concat(attrLink)}><%----%>
-        ${pieceLink}
-    </div><%----%>
-    <mercury:nl />
+<c:if test="${showLink and not inlineLink and not linkLast}">
+    ${linkMarkup}
 </c:if>
 
 <c:if test="${showVisual and visualLast}">
-    <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
-        ${pieceVisual}
-    </div><%----%>
-    <mercury:nl />
+    ${visualMarkup}
 </c:if>
+
+<c:if test="${showLink and not inlineLink and linkLast}">
+    ${linkMarkup}
+</c:if>
+
 
 ${'</'}${pieceTag}${'>'}
 <mercury:nl />

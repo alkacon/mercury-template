@@ -32,6 +32,16 @@
         <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'col-xs-12'}}" />
         <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
     </c:when>
+    <c:when test="${variant eq 'adjust'}">
+        <%-- lr_00013 --%>
+        <c:set var="colWidth"           value="${cms.element.setting.colWidth.validate(['6','7','8','9','10','11','12'],'10').toInteger}" />
+        <div class="row justify-content-lg-center${cssWrapper}"><%----%>
+            <c:set target="${valueMap}" property="Type"             value="element"/>
+            <c:set target="${valueMap}" property="Name"             value="maincol"/>
+            <c:set target="${valueMap}" property="Css"              value="col-lg-${colWidth + 1 <= 12 ? colWidth + 1 : 12} col-xl-${colWidth}" />
+            <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'maincol'}" />
+        </div><%----%>
+    </c:when>
     <c:when test="${variant eq '3-9'}">
         <%-- lr_00002 --%>
         <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />

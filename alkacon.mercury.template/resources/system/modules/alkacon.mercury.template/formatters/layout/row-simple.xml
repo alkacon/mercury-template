@@ -40,6 +40,9 @@
       <IncludeName><![CDATA[useFlex.layout]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[colWidth.layout]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[tileCss.layout]]></IncludeName>
     </Setting>
     <Setting>
@@ -48,7 +51,8 @@
     <Attribute>
       <Key><![CDATA[showCssWrapper]]></Key>
       <Value><![CDATA[%!
-            !%%if (fn.(content.value.("Variant")).isEqual.("12"))%%!
+            !%%if (fn.(content.value.("Variant")).isEqual.("12")
+                || fn.(content.value.("Variant")).isEqual.("adjust"))%%!
                 !%${attribute:cssWrapperWidget:selectcombo}%!
             !%%else%%!
                 !%${attribute:cssWrapperWidgetOptional:string}%!
@@ -60,6 +64,7 @@
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).isEqual.("12")
                 || fn.(content.value.("Variant")).isEqual.("6-6")
+                || fn.(content.value.("Variant")).isEqual.("adjust")
                 || fn.(content.value.("Variant")).isEqual.("tile-row"))%%!
                 !%hidden%!
             !%%else%%!
@@ -71,6 +76,7 @@
       <Key><![CDATA[useFlex]]></Key>
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).isEqual.("12")
+                || fn.(content.value.("Variant")).isEqual.("adjust")
                 || fn.(content.value.("Variant")).isEqual.("tile-row"))%%!
                 !%hidden%!
             !%%else%%!
@@ -83,6 +89,16 @@
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).isEqual.("tile-row"))%%!
                 !%${attribute:selectOrCombo:selectcombo}%!
+            !%%else%%!
+                !%hidden%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[showColWidth]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).isEqual.("adjust"))%%!
+                !%select%!
             !%%else%%!
                 !%hidden%!
             !%%endif%%!

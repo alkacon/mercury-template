@@ -2622,6 +2622,24 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[colWidth.layout]]></IncludeName>
+      <PropertyName><![CDATA[colWidth]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.colWidth)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.colWidth.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(stringtemplate:showColWidth)]]></Widget>
+      <Default><![CDATA[10]]></Default>
+      <WidgetConfig><![CDATA[
+            6: 6|
+            7: 7|
+            8: 8|
+            9: 9|
+            10: 10|
+            11: 11|
+            12: 12
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[headerPosition.layout]]></IncludeName>
       <PropertyName><![CDATA[headerPosition]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.header.position)]]></DisplayName>

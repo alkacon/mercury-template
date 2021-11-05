@@ -143,7 +143,7 @@
                             <small class="mr-5">
                                 <fmt:message key="msg.page.form.label.submissions.export" />
                             </small><%----%>
-                            <mercury:link link="${csvLink}" css="btn btn-xs oct-meta-info">
+                            <mercury:link link="${csvLink}" css="btn btn-xs oct-meta-info mr-5">
                                 <fmt:message key="msg.page.form.button.submissions.csv" />
                             </mercury:link><%----%>
                             <mercury:link link="${excelLink}" css="btn btn-xs oct-meta-info">

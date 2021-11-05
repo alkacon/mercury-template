@@ -98,9 +98,12 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     &.pvl {
-        // piece visual last
+        // piece visual last - however, there still may be a link behind the visual
         > .visual {
             margin-bottom: 0;
+            + .link {
+                 margin-top: $piece-visual-last-top-margin;
+            }
         }
         > .body,
         > .link {

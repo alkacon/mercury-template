@@ -507,6 +507,10 @@ var Mercury = function(jQ) {
         loadAudioScript(function() { initMedia(parent) });
         initOnclickActivation(parent);
         initTooltips(parent);
+        // re-init lists that contain zoomer images
+        if (window.ImageSeries) {
+            window.ImageSeries.reInit(parent);
+        }
 
         // reset the OpenCms edit buttons
         debounce(_OpenCmsReinitEditButtons, 500);
@@ -889,6 +893,7 @@ var Mercury = function(jQ) {
                     /* webpackChunkName: "mercury-imageseries" */
                     "./imageseries.js").then( function ( ImageSeries ) {
                     ImageSeries.init(jQ, DEBUG);
+                    window.ImageSeries = ImageSeries;
                 });
             } catch (err) {
                 console.warn("ImageSeries.init() error", err);

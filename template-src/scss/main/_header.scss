@@ -729,6 +729,13 @@
                         margin-top: $default-margin-verysmall;
                     }
                 }
+
+                &.ac-full-size {
+                    .h-ac {
+                        // full size container - remove top margin on the meta container
+                        margin-top: 0;
+                    }
+                }
             }
 
             &.ac-below-logo {
@@ -1435,10 +1442,8 @@
             }
             &.ac-full-size {
                 .h-ac {
-                    @if (($fh-meta-bg-color != none) and ($fh-meta-bg-color != $fh-header-bg-color)) {
-                        // full size container - remove margin if there is a bg color on the meta container
-                        margin-top: 0;
-                    }
+                    // full size container - remove top margin on the meta container
+                    margin-top: 0;
                 }
             }
         }

@@ -553,6 +553,9 @@ $list-side-adjust:                  true !default; // make side lists less "prom
 $list-side-color:                   $grey-light !default; // color of pagination in side lists and small pagination
 $list-side-headings-color:          $text-dark !default; // color of headings in side lists
 $list-side-intro-color:             $list-side-headings-color !default; // color of intro line in side lists
+$list-filter-background:            $btn-default !default;
+$list-filter-hover:                 $btn-default-hover !default;
+$list-filter-color:                 get-text-color($list-filter-background) !default;
 
 $pagination-text-color:             $text-dark !default;
 $pagination-text-active-color:      $text-light !default;

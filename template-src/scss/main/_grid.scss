@@ -111,3 +111,17 @@
 .area-content.colored-row + .area-content:not(.colored-row) {
     margin-top: $default-margin;
 }
+
+// remove rounded corners in wide area images
+.area-header.ac-full-size .h-ac,
+.area-wide.area-full-row {
+
+    .type-slider .slider-box,
+    .type-slider .slide-wrapper,
+    .type-slider .image-src-box,
+    .piece.full .image-src-box,
+    .element.tile-col .image-src-box,
+    .element.tile-col  .content-box, {
+        border-radius: 0;
+    }
+}

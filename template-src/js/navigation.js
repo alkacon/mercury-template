@@ -459,7 +459,7 @@ function updateFixed(resize) {
             // if mobile nav is active, don't fix the header, otherwise there would be an ugly css effect on the mobile nav
             if (!mobileNavActive()) {
                 // header should be fixed, but is not
-                if (VERBOSE) console.info("Fixed header fixing at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop);
+                if (VERBOSE) console.info("Fixed header fixing at m_lastScrollTop=" + m_lastScrollTop  +  " m_checkScrollTop=" + m_checkScrollTop + " m_fixedHeader.bottom=" + m_fixedHeader.bottom);
                 if (m_lastScrollTop < m_checkScrollTop) {
                     m_fixedHeader.isFixed = true;
                     m_fixedHeader.isScrolled = false;

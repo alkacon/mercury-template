@@ -10,6 +10,9 @@
 <%@ attribute name="link" type="java.lang.Object" required="true"
     description="An object that contains the link." %>
 
+<%@ attribute name="fragment" type="java.lang.Object" required="false"
+    description="An fragment that is appended to the generated link, provided the link does not contain a fragment already." %>
+
 <%@ attribute name="text" type="java.lang.String" required="false"
     description="Text shown in the link ONLY if body of tag is empty.
     Defaults to the 'Text' value of the provided XML content node if not set." %>
@@ -121,6 +124,9 @@
 
                     <c:if test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:') or fn:startsWith(targetLink, 'opencms:')}">
                         <c:set var="internal" value="${true}" />
+                    </c:if>
+                    <c:if test="${(not empty fragment) and (not fn:contains(targetLink, '#'))}">
+                        <c:set var="targetLink" value="${targetLink}#${fragment}" />
                     </c:if>
                     <c:set var="targetLink"><mercury:link-opencms targetLink="${targetLink}" /></c:set>
 

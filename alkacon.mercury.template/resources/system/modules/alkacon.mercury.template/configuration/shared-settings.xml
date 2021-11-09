@@ -2556,7 +2556,8 @@
       <WidgetConfig><![CDATA[
             none:       %(key.msg.setting.detailContainer.none)|
             maincol:    %(key.msg.setting.detailContainer.maincol)|
-            sidecol:    %(key.msg.setting.detailContainer.sidecol)
+            sidecol:    %(key.msg.setting.detailContainer.sidecol)|
+            maincust:   %(key.msg.setting.detailContainer.maincust)
         ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -2742,6 +2743,14 @@
       <Description><![CDATA[%(key.msg.setting.comments.clickToLoad.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[loadCounter.comments]]></IncludeName>
+      <PropertyName><![CDATA[loadCounter]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.comments.loadCounter)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.comments.loadCounter.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[anchor.anchor]]></IncludeName>

@@ -499,7 +499,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     }
 
     // there may be media elements in the list
-    Mercury.initElements('#' + list.id);
+    Mercury.update('#' + list.id);
 
     if (resultData.reloaded == "true" && reloadEntries) {
         if (! list.$element.visible()) {
@@ -864,7 +864,7 @@ export function switchPage(id, page) {
         jQ(paginationString).appendTo(list.$pagination);
     }
     // there may be media elements in the list
-    Mercury.initElements('#' + list.id);
+    Mercury.update('#' + list.id);
     if (! list.$element.visible()) {
         if (DEBUG) console.info("Lists.switchPage() - scrolling to anchor");
         Mercury.scrollToAnchor(list.$element, -20);
@@ -887,7 +887,7 @@ export function appendPage(id, page) {
         jQ(paginationString).appendTo(list.$pagination);
     }
     // there may be media elements in the list
-    Mercury.initElements('#' + list.id);
+    Mercury.update('#' + list.id);
 }
 
 /**

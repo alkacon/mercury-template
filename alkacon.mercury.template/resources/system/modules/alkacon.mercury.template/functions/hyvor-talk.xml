@@ -32,5 +32,8 @@
     <Setting>
       <IncludeName><![CDATA[clickToLoad.comments]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[loadCounter.comments]]></IncludeName>
+    </Setting>
   </FunctionConfig>
 </FunctionConfigs>

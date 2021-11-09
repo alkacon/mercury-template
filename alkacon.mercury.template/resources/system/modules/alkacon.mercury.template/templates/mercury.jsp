@@ -91,6 +91,11 @@
     </c:if>
 </c:if>
 
+<c:set var="extraPlugin" value="${cms.sitemapConfig.attribute['extra.plugin']}" />
+<c:if test="${not empty extraPlugin and (extraPlugin ne 'none') and cms.vfs.exists[extraPlugin]}">
+    <cms:include file="${extraPlugin}" />
+</c:if>
+
 </head>
 <body>
 </jsp:attribute>

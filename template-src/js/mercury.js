@@ -67,10 +67,14 @@ var Mercury = function(jQ) {
     // width of current window
     var m_windowWidth = m_$window.width();
 
+    // element update callback functions
+    var m_updateCallbacks = [];
+
     // attach event listener to window resize event (debounced)
     m_$window.resize(debounce(function() {
         m_windowHeight = m_$window.height();
         m_windowWidth = m_$window.width();
+        setCssVars();
 
         if (DEBUG) console.info("Mercury current grid size: " + m_gridInfo.currentSize());
     }, 50));
@@ -93,6 +97,16 @@ var Mercury = function(jQ) {
 
     function windowScrollTop() {
         return m_$window.scrollTop();
+    }
+
+
+    function setCssVars() {
+        var $root = jQ(':root');
+        var $header = jQ('header');
+        $root.css('--vh', m_windowHeight + 'px');
+        if ($header.length > 0) {
+            $root.css('--hh', Math.ceil($header.outerHeight(true)) + 'px');
+        }
     }
 
 
@@ -497,23 +511,39 @@ var Mercury = function(jQ) {
     }
 
 
-    function initElements(parent) {
+    function update(parent) {
+        // called by Ajax methods to update dynamic template elements
+        // used for example after new elements have been loaded in dynamic lists
+        if (DEBUG) console.info("Mercury.update() parent=" + parent);
 
-        if (DEBUG) console.info("Mercury.initElements() parent=" + parent);
-
-        // call back for Ajax methods to initialize dynamic template elements
         initFitVids();
         // in case a dynamic list contains audio elements, make sure the required audio script is available
         loadAudioScript(function() { initMedia(parent) });
         initOnclickActivation(parent);
         initTooltips(parent);
-        // re-init lists that contain zoomer images
-        if (window.ImageSeries) {
-            window.ImageSeries.reInit(parent);
+
+        // run registered update callbacks
+        for (var i=0; i < m_updateCallbacks.length; i++) {
+            try {
+                if (DEBUG) console.info("Mercury.update() running callback: " + m_updateCallbacks[i].name);
+                m_updateCallbacks[i](jQ, DEBUG, parent);
+            } catch (err) {
+                console.warn("Mercury.update() error in callback", err);
+            }
         }
 
         // reset the OpenCms edit buttons
         debounce(_OpenCmsReinitEditButtons, 500);
+    }
+
+
+    function addUpdateCallback(callback) {
+        if (typeof callback === "function") {
+            if (DEBUG) console.info("Mercury.addUpdateCallback() added function: " + callback.name);
+            m_updateCallbacks.push(callback);
+        } else {
+            console.warn("Mercury.addUpdateCallback() added object is not a function", callback);
+        }
     }
 
 
@@ -749,6 +779,7 @@ var Mercury = function(jQ) {
         }
     }
 
+
     function requiresModule(selector) {
         // checks if a specific module is required by checking for special selectors
         return (jQ(selector).length > 0);
@@ -766,10 +797,14 @@ var Mercury = function(jQ) {
         }
     }
 
+
     function initAfterCss() {
 
         if (DEBUG) console.info("Mercury.initAfterCss() - CSS wait time: " + m_cssTimer + "ms");
         if (DEBUG) console.info("Mercury device info: " + device().type);
+
+        // set CSS variables for window and header height
+        setCssVars();
 
         // initialize
         try {
@@ -793,9 +828,9 @@ var Mercury = function(jQ) {
         }
 
         try {
-            initElements();
+            update();
         } catch (err) {
-            console.warn("Mercury.initElements() error", err);
+            console.warn("Mercury.update() error", err);
         }
 
         try {
@@ -951,6 +986,9 @@ var Mercury = function(jQ) {
 
         // add event listeners for Bootstrap elements
         _OpenCmsInit(jQ, DEBUG)
+
+        // set CSS variables for window and header height
+        setCssVars();
     }
 
 
@@ -977,6 +1015,7 @@ var Mercury = function(jQ) {
     // public available functions
     return {
         init: init,
+        addUpdateCallback: addUpdateCallback,
         calcRatio: calcRatio,
         debounce: debounce,
         device: device,
@@ -987,7 +1026,7 @@ var Mercury = function(jQ) {
         getThemeJSON: getThemeJSON,
         gridInfo: gridInfo,
         hasInfo: hasInfo,
-        initElements: initElements,
+        initElements: update,
         initPlaceholder: initPlaceholder,
         initTabAccordion: initTabAccordion,
         isEditMode: isEditMode,
@@ -995,6 +1034,7 @@ var Mercury = function(jQ) {
         post: post,
         scrollToAnchor: scrollToAnchor,
         toolbarHeight: toolbarHeight,
+        update: update,
         windowHeight: windowHeight,
         windowWidth: windowWidth,
         windowScrollTop: windowScrollTop

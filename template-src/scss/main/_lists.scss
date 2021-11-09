@@ -733,6 +733,14 @@
             text-align: left;
             border-radius: $list-border-radius;
 
+            @if ($list-filter-background != $btn-default) {
+                background: $list-filter-background;
+                color: $list-filter-color;
+                &:hover {
+                    background: $list-filter-hover;
+                }
+            }
+
             &::before {
                 font-family: ForkAwesome;
                 font-weight: normal;

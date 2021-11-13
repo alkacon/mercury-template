@@ -705,6 +705,10 @@
                 left: auto !important;
             }
 
+            &.nav-icon > a {
+                padding-right: 0;
+            }
+
             > .nav-menu {
                 top: #{$nav-header-total-height};
             }

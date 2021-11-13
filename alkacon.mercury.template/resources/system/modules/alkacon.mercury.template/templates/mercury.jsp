@@ -93,7 +93,7 @@
 
 <c:set var="extraPlugin" value="${cms.sitemapConfig.attribute['extra.plugin']}" />
 <c:if test="${not empty extraPlugin and (extraPlugin ne 'none') and cms.vfs.exists[extraPlugin]}">
-    <cms:include file="${extraPlugin}" />
+    <cms:include file="${extraPlugin}" cacheable="false" />
 </c:if>
 
 </head>

@@ -70,14 +70,8 @@
         <c:when test="${not emptyLinkSequence}">
             <ul ${ulWrapper}><%----%>
                 <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
-                    <c:set var="linkText" value="${link.value.Text}" />
-                    <c:if test="${fn:startsWith(linkText, 'icon:')}">
-                        <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
-                    </c:if>
                     <li ${liWrapper}><%----%>
-                        <mercury:link link="${link}" css="${aWrapper}">
-                            <span class="ls-item">${linkText}</span><%----%>
-                        </mercury:link>
+                        <mercury:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" />
                     </li><%----%>
                 </c:forEach>
             </ul><%----%>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>12.0.26</version>
+		<version>12.0.28</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7353,6 +7353,23 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/link-icon.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/link-icon.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>8ac6a0f8-4453-11ec-bb51-0242ac11002b</uuidstructure>
+			<uuidresource>8ac6a0f9-4453-11ec-bb51-0242ac11002b</uuidresource>
+			<datecreated>Sat, 13 Nov 2021 07:30:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates a link with optional icon prefix]]></value>
 				</property>
 			</properties>
 			<relations/>

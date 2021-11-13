@@ -95,10 +95,6 @@
             </c:otherwise>
         </c:choose>
 
-        <mercury:nl />
-        <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
-        <mercury:nl />
-
         <c:if test="${metaLinks ne 'none'}">
             <c:set var="metaLinkElements" value="${cms.elementsInContainers['header-linksequence']}" />
             <c:if test="${not empty metaLinkElements}">
@@ -109,18 +105,31 @@
                         <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
                             <mercury:nl />
                             <c:forEach var="link" items="${metaLinksequence.valueList.LinkEntry}" varStatus="status">
-                                <c:set var="linkText" value="${link.value.Text}" />
-                                <c:if test="${fn:startsWith(linkText, 'icon:')}">
-                                    <c:set var="linkText"><span class="fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
-                                </c:if>
-                                <li><mercury:link link="${link}">${linkText}</mercury:link></li><mercury:nl />
+                                 <li><mercury:link-icon link="${link}" /></li><mercury:nl />
                             </c:forEach>
                         </ul><%----%>
                     </li><%----%>
                 </c:set>
             </c:if>
         </c:if>
-        <c:if test="${not empty metaLinksHtml and metaLinks ne 'bottom'}">
+
+        <c:set var="navPlugin" value="${cms.sitemapConfig.attribute['nav.plugin']}" />
+        <c:if test="${not empty navPlugin and (navPlugin ne 'none') and cms.vfs.exists[navPlugin]}">
+            <c:set var="navPluginHtml">
+                <cms:include file="${navPlugin}" cacheable="false"/>
+            </c:set>
+            <c:set var="navPluginLinks" value="${cms.sitemapConfig.attribute['nav.plugin.position'] eq 'top' ? 'top' : 'bottom'}" />
+        </c:if>
+
+        <mercury:nl />
+        <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
+        <mercury:nl />
+
+        <c:if test="${not empty navPluginHtml and (navPluginLinks ne 'bottom')}">
+            ${navPluginHtml}
+        </c:if>
+
+        <c:if test="${not empty metaLinksHtml and (metaLinks ne 'bottom')}">
             ${metaLinksHtml}
         </c:if>
 
@@ -238,13 +247,17 @@
 
         </c:forEach>
 
-        <c:if test="${not empty metaLinksHtml and metaLinks eq 'bottom'}">
+        <c:if test="${not empty metaLinksHtml and (metaLinks eq 'bottom')}">
             ${metaLinksHtml}
+        </c:if>
+
+        <c:if test="${not empty navPluginHtml and (navPluginLinks eq 'bottom')}">
+            ${navPluginHtml}
         </c:if>
 
         <c:if test="${showSearch}">
             <li id="nav-main-search" aria-expanded="false"><%----%>
-                <a href="#" title="Search" aria-controls="nav_nav-main-search" id="label_nav-main-search"><%----%>
+                <a href="#" title="<fmt:message key="msg.page.search" />" aria-controls="nav_nav-main-search" id="label_nav-main-search"><%----%>
                     <span class="search search-btn fa fa-search"></span><%----%>
                 </a><%----%>
                 <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>

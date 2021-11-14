@@ -55,6 +55,8 @@
 <cms:enable-ade />
 <cms:headincludes type="css" />
 
+<mercury:load-plugins type="headIncludes" />
+
 <c:if test="${allowTemplateMods}">
     <c:set var="replaceCss" value="${empty contentPropertiesSearch['mercury.replace.head'] ? 'none' : contentPropertiesSearch['mercury.replace.head']}" />
 </c:if>
@@ -89,11 +91,6 @@
     <c:if test="${not empty extraHead and (extraHead ne 'none') and cms.vfs.exists[extraHead]}">
         <cms:include file="${extraHead}" />
     </c:if>
-</c:if>
-
-<c:set var="extraPlugin" value="${cms.sitemapConfig.attribute['extra.plugin']}" />
-<c:if test="${not empty extraPlugin and (extraPlugin ne 'none') and cms.vfs.exists[extraPlugin]}">
-    <cms:include file="${extraPlugin}" cacheable="false" />
 </c:if>
 
 </head>

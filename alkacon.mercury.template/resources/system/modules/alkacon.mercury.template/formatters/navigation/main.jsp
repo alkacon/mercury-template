@@ -113,21 +113,13 @@
             </c:if>
         </c:if>
 
-        <c:set var="navPlugin" value="${cms.sitemapConfig.attribute['nav.plugin']}" />
-        <c:if test="${not empty navPlugin and (navPlugin ne 'none') and cms.vfs.exists[navPlugin]}">
-            <c:set var="navPluginHtml">
-                <cms:include file="${navPlugin}" cacheable="false"/>
-            </c:set>
-            <c:set var="navPluginLinks" value="${cms.sitemapConfig.attribute['nav.plugin.position'] eq 'top' ? 'top' : 'bottom'}" />
-        </c:if>
+        <c:set var="navPluginHtml">
+            <mercury:load-plugins type="navIncludes" />
+        </c:set>
 
         <mercury:nl />
         <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
         <mercury:nl />
-
-        <c:if test="${not empty navPluginHtml and (navPluginLinks ne 'bottom')}">
-            ${navPluginHtml}
-        </c:if>
 
         <c:if test="${not empty metaLinksHtml and (metaLinks ne 'bottom')}">
             ${metaLinksHtml}
@@ -251,7 +243,7 @@
             ${metaLinksHtml}
         </c:if>
 
-        <c:if test="${not empty navPluginHtml and (navPluginLinks eq 'bottom')}">
+        <c:if test="${not empty navPluginHtml}">
             ${navPluginHtml}
         </c:if>
 
@@ -265,7 +257,7 @@
                         <div class="styled-form search-form"><%----%>
                             <form action="${searchPageUrl}" method="post"><%----%>
                                 <div class="input button"><%----%>
-                                    <label for="searchNavQuery" class="sr-only">Search</label><%----%>
+                                    <label for="searchNavQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                                     <input id="searchNavQuery" name="q" type="text" class="blur-focus" autocomplete="off" placeholder='<fmt:message key="msg.page.search.enterquery" />' /><%----%>
                                     <button class="btn" type="button" onclick="this.form.submit(); return false;"><fmt:message key="msg.page.search.submit" /></button><%----%>
                                 </div><%----%>

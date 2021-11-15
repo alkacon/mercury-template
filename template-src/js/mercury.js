@@ -74,7 +74,6 @@ var Mercury = function(jQ) {
     m_$window.resize(debounce(function() {
         m_windowHeight = m_$window.height();
         m_windowWidth = m_$window.width();
-        setCssVars();
 
         if (DEBUG) console.info("Mercury current grid size: " + m_gridInfo.currentSize());
     }, 50));
@@ -97,16 +96,6 @@ var Mercury = function(jQ) {
 
     function windowScrollTop() {
         return m_$window.scrollTop();
-    }
-
-
-    function setCssVars() {
-        var $root = jQ(':root');
-        var $header = jQ('header');
-        $root.css('--vh', m_windowHeight + 'px');
-        if ($header.length > 0) {
-            $root.css('--hh', Math.ceil($header.outerHeight(true)) + 'px');
-        }
     }
 
 
@@ -803,9 +792,6 @@ var Mercury = function(jQ) {
         if (DEBUG) console.info("Mercury.initAfterCss() - CSS wait time: " + m_cssTimer + "ms");
         if (DEBUG) console.info("Mercury device info: " + device().type);
 
-        // set CSS variables for window and header height
-        setCssVars();
-
         // initialize
         try {
             initInfo();
@@ -986,9 +972,6 @@ var Mercury = function(jQ) {
 
         // add event listeners for Bootstrap elements
         _OpenCmsInit(jQ, DEBUG)
-
-        // set CSS variables for window and header height
-        setCssVars();
     }
 
 

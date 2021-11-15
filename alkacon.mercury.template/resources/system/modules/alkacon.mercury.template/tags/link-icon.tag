@@ -34,6 +34,9 @@
                 <c:when test="${fn:startsWith(linkPart, 'id:')}">
                     <c:set var="linkAttr">id="${fn:substringAfter(linkPart, 'id:')}"</c:set>
                 </c:when>
+                <c:when test="${fn:startsWith(linkPart, 'class:')}">
+                    <c:set var="cssWrapper">${fn:substringAfter(linkPart, 'class:')}</c:set>
+                </c:when>
                 <c:otherwise>
                      <c:set var="linkMessage"><span>${linkPart}</span></c:set>
                 </c:otherwise>
@@ -48,7 +51,7 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:link link="${link}" css="${css}" attr="${linkAttr}">
+<mercury:link link="${link}" css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}" attr="${linkAttr}">
     ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
     ${linkIcon}${linkMessage}
     ${empty addSpan ? '' : '</span>'}

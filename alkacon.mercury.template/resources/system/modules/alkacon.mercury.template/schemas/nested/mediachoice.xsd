@@ -35,7 +35,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Video</PropertyName>
-                    <DisplayName><![CDATA[%(attribute:mercuryVideoMediaChoice:%(param:mercuryVideoMediaChoice))]]></DisplayName>
+                    <DisplayName><![CDATA[%(attribute:mercuryVideoMediaChoice)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>SoundCloud</PropertyName>
@@ -43,7 +43,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Audio</PropertyName>
-                    <DisplayName><![CDATA[%(attribute:mercuryAudioMediaChoice:%(param:mercuryAudioMediaChoice))]]></DisplayName>
+                    <DisplayName><![CDATA[%(attribute:mercuryAudioMediaChoice)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>Flexible</PropertyName>

@@ -55,7 +55,7 @@
 <cms:enable-ade />
 <cms:headincludes type="css" />
 
-<mercury:load-plugins type="headIncludes" />
+<mercury:load-plugins group="template-head-includes" type="jsp-nocache" />
 
 <c:if test="${allowTemplateMods}">
     <c:set var="replaceCss" value="${empty contentPropertiesSearch['mercury.replace.head'] ? 'none' : contentPropertiesSearch['mercury.replace.head']}" />

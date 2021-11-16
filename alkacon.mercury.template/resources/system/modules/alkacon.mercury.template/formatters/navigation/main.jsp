@@ -114,7 +114,7 @@
         </c:if>
 
         <c:set var="navPluginHtml">
-            <mercury:load-plugins type="navIncludes" />
+            <mercury:load-plugins group="nav-main-additions" type="jsp-nocache" />
         </c:set>
 
         <mercury:nl />

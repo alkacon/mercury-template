@@ -4,16 +4,28 @@
     trimDirectiveWhitespaces="true"
     description="Loads template plugins." %>
 
+<%@ attribute name="group" type="java.lang.String" required="true"
+    description="Group of plugins to load." %>
+
 <%@ attribute name="type" type="java.lang.String" required="true"
-    description="Type of plugins to load." %>
+    description="How to include the group." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 
 
-<c:set var="plugin" value="${cms.sitemapConfig.attribute[type]}" />
-<c:if test="${plugin.isSetNotNone and cms.vfs.exists[plugin]}">
-    <cms:include file="${plugin}" cacheable="false" />
-</c:if>
-
+<c:set var="plugins" value="${cms.plugins[group]}" />
+<c:forEach var="plugin" items="${plugins}">
+    <c:choose>
+        <c:when test="${type eq 'jsp-nocache'}">
+            <cms:include file="${plugin.link}" cacheable="false" />
+        </c:when>
+        <c:when test="${type eq 'js-async'}">
+            <script async src="${plugin.link}"></script><mercury:nl />
+        </c:when>
+        <c:when test="${type eq 'js'}">
+            <script src="${plugin.link}"></script><mercury:nl />
+        </c:when>
+    </c:choose>
+</c:forEach>

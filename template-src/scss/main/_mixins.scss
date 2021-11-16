@@ -481,5 +481,13 @@
     }
 }
 
-
+@mixin awesome-icons() {
+    // Adds font definitions required to switch to ForkAwesome font
+    font-family: ForkAwesome;
+    font-size: inherit;
+    line-height: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 

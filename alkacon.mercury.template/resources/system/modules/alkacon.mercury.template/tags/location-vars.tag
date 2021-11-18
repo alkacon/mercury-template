@@ -65,6 +65,7 @@
     <c:if test="${not empty poi}">
         <c:set var="adr" value="${poi.value.Address}" />
         <c:set target="${locData}" property="name" value="${poi.value.Title.toString}" />
+        <c:set target="${locData}" property="paragraph" value="${poi.value.Paragraph}" />
         <c:if test="${poi.value.Coord.isSet}">
             <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
             <jsp:setProperty name="coordBean" property="wrappedValue" value="${poi.value.Coord}" />

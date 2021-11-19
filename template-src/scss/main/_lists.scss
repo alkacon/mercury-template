@@ -550,6 +550,7 @@
                 display: block;
                 float: left;
                 min-width: 0;
+                width: 99%;
             }
         }
         @include media-breakpoint-down(sm) {

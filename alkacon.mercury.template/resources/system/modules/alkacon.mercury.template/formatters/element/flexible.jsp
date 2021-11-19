@@ -10,9 +10,9 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
+<cms:formatter var="content" val="value">
 <c:set var="hasScript" value="${cms.isEditMode and fn:contains(fn:toLowerCase(value.Code), 'script')}" />
 <mercury:init-messages reload="${value.RequireReload.toBoolean or hasScript}">
-<cms:formatter var="content" val="value">
 
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
@@ -35,5 +35,5 @@
 </div><%----%>
 <mercury:nl />
 
-</cms:formatter>
 </mercury:init-messages>
+</cms:formatter>

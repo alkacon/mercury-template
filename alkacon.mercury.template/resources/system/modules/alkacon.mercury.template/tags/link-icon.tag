@@ -24,8 +24,8 @@
 
 <c:set var="linkText" value="${link.value.Text}" />
 <c:choose>
-    <c:when test="${fn:contains(linkText, '//')}">
-        <c:set var="linkParts" value="${fn:split(linkText, '//')}" />
+    <c:when test="${fn:contains(linkText, '||')}">
+        <c:set var="linkParts" value="${fn:split(linkText, '||')}" />
         <c:forEach var="linkPart" items="${linkParts}">
             <c:choose>
                 <c:when test="${fn:startsWith(linkPart, 'icon:')}">

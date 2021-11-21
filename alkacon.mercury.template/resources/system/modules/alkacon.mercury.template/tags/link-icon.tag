@@ -41,10 +41,13 @@
                     <c:set var="linkTitle">${fn:substringAfter(linkPart, 'title:')}</c:set>
                 </c:when>
                 <c:otherwise>
-                     <c:set var="linkMessage"><span>${linkPart}</span></c:set>
+                     <c:set var="linkMessage">${empty linkMessage ? '' : linkMessage.concat(' ')}${linkPart}</c:set>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
+        <c:if test="${not empty linkMessage}">
+            <c:set var="linkMessage"><span>${linkMessage}</span></c:set>
+        </c:if>
     </c:when>
     <c:when test="${fn:startsWith(linkText, 'icon:')}">
         <c:set var="linkIcon"><span class="ls-icon fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>

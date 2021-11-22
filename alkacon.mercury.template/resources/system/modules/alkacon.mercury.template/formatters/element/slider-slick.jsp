@@ -159,13 +159,15 @@
         </c:when>
         <c:otherwise>
             <c:set var="sliderAttrs">
-                class="slide-definitions list-of-slides ${slideRowSpace}" data-typeslick='{<%--
+                class="slide-definitions list-of-slides ${slideRowSpace}" data-typeslick-new='${cms.isOnlineProject ? sliderData.compact : sliderData.verbose}' data-typeslick='{<%--
                 --%>"dots": ${showDots}, <%--
                 --%>"arrows": ${showArrows}, <%--
                 --%>"autoplaySpeed": ${rotationTime}, <%--
                 --%>"animationSpeed": ${animationSpeed}, <%--
                 --%>"pauseOnHover": ${pauseOnHover}, <%--
                 --%>"pauseOnFocus": ${pauseOnHover}, <%--
+                --%>"prevArrow": "<button class=\"slick-prev\" aria-label=\"<fmt:message key='msg.page.list.pagination.previous.title' />\" type=\"button\"><fmt:message key='msg.page.list.pagination.previous.title' /></button>", <%--
+                --%>"nextArrow": "<button class=\"slick-next\" aria-label=\"<fmt:message key='msg.page.list.pagination.next.title' />\" type=\"button\"><fmt:message key='msg.page.list.pagination.next.title' /></button>", <%--
                 --%>"fade": ${useFade}, <%--
                 --%>"slidesToShow": ${visibleSlidesXL}, <%--
                 --%>${responsiveData}<%--

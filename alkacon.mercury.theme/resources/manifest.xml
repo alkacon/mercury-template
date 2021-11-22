@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>12.0.25</version>
+		<version>12.0.27</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -8198,7 +8198,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Row 1 Spalte (Einstellbare Breite)]]></value>
+					<value><![CDATA[Row 1 column (adjustable width)]]></value>
 				</property>
 			</properties>
 			<relations/>

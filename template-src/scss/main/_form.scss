@@ -686,6 +686,20 @@
 }
 
 
+// keyboard navigation outline
+
+html.keyboard-nav {
+    .styled-form {
+        .radio,
+        .checkbox {
+            input:focus + i {
+                @include focus-outline;
+            }
+        }
+    }
+}
+
+
 // stuff around the form itself
 
 .type-webform  {

@@ -161,6 +161,7 @@ function displayBanner() {
             $bannerElement.height($banner.outerHeight());
         });
         $banner.addClass("fixed " + (onTop ? "top" : "bottom" ));
+        $banner.find(".btn-save").focus();
         if (DEBUG) console.info("PrivacyPolicy: Banner loaded and displayed");
     } else {
         if (DEBUG) console.info("PrivacyPolicy: No banner displayed");

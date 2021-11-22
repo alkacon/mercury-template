@@ -158,6 +158,14 @@
 
         .btn-save {
             @include button-color($policy-banner-save-button-color, $policy-banner-save-hover-color);
+            &:focus {
+                background-color: $policy-banner-save-button-color;
+                color: get-text-color($policy-banner-save-button-color);
+            }
+            &:hover {
+                background-color: $policy-banner-save-hover-color;
+                color: get-text-color($policy-banner-save-hover-color);
+            }
             @if ($policy-banner-save-button-color == $policy-banner-background) {
                 border-color: get-text-color($policy-banner-save-button-color);
             }
@@ -461,10 +469,17 @@ html.opencms-page-editor .pp-toggle {
     }
 }
 
-html.keyboard-nav .pp-toggle {
-    .toggle-check {
-        &:focus + .toggle-label .toggle-box {
+html.keyboard-nav {
+    .pp-banner .selection {
+        input:focus + i {
             @include focus-outline();
+        }
+    }
+    .pp-toggle {
+        .toggle-check {
+            &:focus + .toggle-label .toggle-box {
+                @include focus-outline();
+            }
         }
     }
 }

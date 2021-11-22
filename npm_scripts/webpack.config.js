@@ -47,11 +47,6 @@ module.exports = {
           $: 'jquery',
           jQuery: 'jquery',
           'window.jQuery': 'jquery'
-      }),
-      new webpack.DefinePlugin({
-          WEBPACK_SCRIPT_VERSION: '"'
-              + ((new Date()).toLocaleDateString('de-DE', { formatMatcher : 'basic', year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' } ))
-              + '"'
-      }),
+      })
   ]
 };

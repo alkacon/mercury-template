@@ -931,4 +931,3 @@ $list-tile-spacers:                 (0, 2, 5, 10, 15) !default;
 // Start of theme JSON with main colors
 $themeJSON: '"main-theme":"#{$main-theme}"';
 $themeJSON: append-json($themeJSON, "main-theme-hover", $main-theme-hover);
-$themeJSON: append-json($themeJSON, "sass-version", mercury-#{unique-id()});

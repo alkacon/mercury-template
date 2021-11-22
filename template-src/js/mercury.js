@@ -720,15 +720,6 @@ var Mercury = function(jQ) {
     }
 
 
-    function checkVersion() {
-        // writes version information about the template to the console
-        var sassVersion = getThemeJSON("sass-version", "unknown");
-        if (DEBUG) console.info("Mercury asset versions: " +
-        "SASS " + sassVersion +
-        " - JavaScript " + WEBPACK_SCRIPT_VERSION);
-    }
-
-
     function addInit(initFunction) {
         // add a function to the template script init process
         if (DEBUG) console.info("Mercury added init function: " + initFunction.name);
@@ -795,7 +786,6 @@ var Mercury = function(jQ) {
         // initialize
         try {
             initInfo();
-            checkVersion(); // output a JS console information about the template version
         } catch (err) {
             console.warn("Mercury.initInfo() error", err);
         }

@@ -17,7 +17,7 @@
           <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/headless-json-api/]]></target>
         </link>
         <link name="link3" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/mercury-json/demo2]]></target>
+          <target><![CDATA[https://github.com/alkacon/mercury-json/]]></target>
         </link>
       </links>
       <content><![CDATA[<ul>

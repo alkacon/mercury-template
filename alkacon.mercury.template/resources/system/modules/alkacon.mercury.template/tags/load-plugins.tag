@@ -19,7 +19,7 @@
 <c:forEach var="plugin" items="${plugins}">
     <c:choose>
         <c:when test="${type eq 'jsp-nocache'}">
-            <cms:include file="${plugin.link}" cacheable="false" />
+            <cms:include file="${plugin.path}" cacheable="false" />
         </c:when>
         <c:when test="${type eq 'js-async'}">
             <script async src="${plugin.link}"></script><mercury:nl />

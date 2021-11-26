@@ -158,7 +158,8 @@ function displayBanner() {
             if (onTop && Mercury.isEditMode()) {
                 $banner.css({top: Mercury.toolbarHeight()});
             }
-            $bannerElement.height($banner.outerHeight());
+            jQ("#privacy-policy-placeholder").height($banner.outerHeight());
+            // $bannerElement.height($banner.outerHeight());
         });
         $banner.addClass("fixed " + (onTop ? "top" : "bottom" ));
         $banner.find(".btn-save").focus();

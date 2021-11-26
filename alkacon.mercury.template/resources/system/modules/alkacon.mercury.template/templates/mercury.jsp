@@ -95,6 +95,10 @@
 
 </head>
 <body>
+
+<%-- Privacy policy markup is inserted first --%>
+<mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
+
 </jsp:attribute>
 
 
@@ -146,9 +150,7 @@
     <c:if test="${not empty extraFoot and extraFoot ne 'none'}"><cms:include file="${extraFoot}" /></c:if>
 </c:if>
 
-<%-- Privacy policy markup is inserted last --%>
-<mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
-
+<div id="privacy-policy-placeholder"></div><%----%>
 </body>
 </html>
 </jsp:attribute>

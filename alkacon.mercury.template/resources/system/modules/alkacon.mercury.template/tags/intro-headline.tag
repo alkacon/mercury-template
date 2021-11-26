@@ -27,6 +27,11 @@
 <%@ attribute name="css" type="java.lang.String" required="false"
     description="Optional CSS classes to attach to the heading tag." %>
 
+<%@ attribute name="tabindex" type="java.lang.Boolean" required="false"
+    description="Force adding 'tabindex=0' attribute to the generated markup
+    If not set, use default 'true' for h1 and h2, 'false' for all other sizes.
+    If 'false' is set explicitly, supress genertion of tabindex attribute even for h1 and h2." %>
+
 <%@ attribute name="attr" type="java.lang.String" required="false"
     description="Optional HTML attributes to attach to the heading tag." %>
 
@@ -47,6 +52,7 @@
     <mercury:heading
         css="${empty css ? '' : css.concat(' ')}intro-headline"
         level="${level}"
+        tabindex="${tabindex}"
         attr="${attr}">
 
         <jsp:attribute name="markupText">

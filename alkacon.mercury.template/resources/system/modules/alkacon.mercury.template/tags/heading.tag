@@ -23,6 +23,11 @@
 <%@ attribute name="css" type="java.lang.String" required="false"
     description="Optional CSS classes to attach to the heading tag." %>
 
+<%@ attribute name="tabindex" type="java.lang.Boolean" required="false"
+    description="Force adding 'tabindex=0' attribute to the generated markup
+    If not set, use default 'true' for h1 and h2, 'false' for all other sizes.
+    If 'false' is set explicitly, supress genertion of tabindex attribute even for h1 and h2." %>
+
 <%@ attribute name="attr" type="java.lang.String" required="false"
     description="Optional HTML attributes to attach to the heading tag." %>
 
@@ -51,6 +56,7 @@
 <c:if test="${(level > 0) and (level <= 7) and (empty test or test)}">
 
     <c:set var="escapeXml" value="${empty escapeXml ? true : escapeXml}" />
+    <c:set var="addTabindex" value="${empty tabindex ? ((level > 0) and (level <=2)) : tabindex}" />
 
     <c:if test="${(not empty markupText) or (not empty text)}">
         <c:choose>
@@ -63,6 +69,7 @@
         </c:choose>
 
         <c:if test="${not empty css}">${' '}class="${css}"</c:if>
+        <c:if test="${addTabindex}">${' '}tabindex="0"</c:if>
         <c:if test="${not empty attr}">${' '}${attr}</c:if>
         <c:if test="${ade and cms:isWrapper(text) }">${' '}${text.rdfaAttr}</c:if>
         ${'>'}

@@ -213,17 +213,21 @@
             ${dateMarkup}
         </c:if>
         <c:if test="${not empty headline or not empty intro}">
+            <c:set var="linkHeadline" value="${linkOnHeadline and (hsize > 0)}" />
             <mercury:link
                 link="${link}"
                 title="${linkTitle}"
-                test="${linkOnHeadline and (hsize > 0)}">
+                test="${linkHeadline}">
+
                 <mercury:intro-headline
                     intro="${intro}"
                     headline="${headline}"
                     prefix="${headlinePrefix}"
                     suffix="${headlineSuffix}"
                     level="${hsize}"
+                    tabindex="${not linkHeadline}"
                     ade="${ade}" />
+
             </mercury:link>
         </c:if>
     </jsp:attribute>

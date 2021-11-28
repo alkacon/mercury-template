@@ -152,14 +152,15 @@ function displayBanner() {
 
         // append the banner HTML - still hidden by CSS
         $banner.appendTo($bannerElement);
-
+        // move policy banner on top so that screen readers read this first
+        var body = document.querySelector('body');
+        body.insertBefore(document.querySelector('#privacy-policy-banner'), body.firstChild);
         // now reveal the banner
         $banner.slideDown(800, function() {
             if (onTop && Mercury.isEditMode()) {
                 $banner.css({top: Mercury.toolbarHeight()});
             }
             jQ("#privacy-policy-placeholder").height($banner.outerHeight());
-            // $bannerElement.height($banner.outerHeight());
         });
         $banner.addClass("fixed " + (onTop ? "top" : "bottom" ));
         $banner.find(".btn-save").focus();

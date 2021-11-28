@@ -186,6 +186,7 @@
         ${not empty intro ? ': ' : ''}
         <mercury:out value="${headline}" />
     </c:set>
+    <c:set var="linkHeadline" value="${linkOnHeadline and (hsize > 0)}" />
 </c:if>
 
 <c:if test="${(not empty date) and (dateFormat ne 'none')}">
@@ -213,7 +214,6 @@
             ${dateMarkup}
         </c:if>
         <c:if test="${not empty headline or not empty intro}">
-            <c:set var="linkHeadline" value="${linkOnHeadline and (hsize > 0)}" />
             <mercury:link
                 link="${link}"
                 title="${linkTitle}"
@@ -239,6 +239,7 @@
         <mercury:link
             link="${link}"
             title="${linkTitle}"
+            attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
             ${markupVisualOutput}
         </mercury:link>
@@ -297,6 +298,7 @@
                     link="${link}"
                     title="${linkTitle}"
                     css='uncolored'
+                    attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
                     test="${linkOnText and not empty markupTextOutput}">
                     ${markupTextOutput}
                 </mercury:link>

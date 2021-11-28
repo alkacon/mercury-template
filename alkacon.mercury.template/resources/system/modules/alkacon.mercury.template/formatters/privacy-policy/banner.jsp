@@ -77,7 +77,7 @@
     <c:set var="bannerHtml">
         <div class="banner"><%----%>
             <div class="container"><%----%>
-                <div class="title">${value.Title}</div><%----%>
+                <div class="title" tabindex="0">${value.Title}</div><%----%>
                 <div class="message"><%----%>
                     <div>${value.PolicyText}</div><%----%>
                 </div><%----%>

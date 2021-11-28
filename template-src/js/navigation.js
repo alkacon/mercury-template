@@ -608,6 +608,9 @@ var debScrollToAnchor;
 
 function initDependencies() {
 
+    // add id to first 'main' element'
+    jQ('#mercury-page main').first().attr('id', 'main-content');
+
     debUpdateFixedResize = Mercury.debounce(function() {
         updateFixed(true)
     }, 10, true);

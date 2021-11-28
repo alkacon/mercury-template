@@ -10,6 +10,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+
+<fmt:setLocale value="${cms.workplaceLocale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
+
 <mercury:content-properties>
 <mercury:template-parts containerName="mercury-page">
 
@@ -96,8 +100,8 @@
 </head>
 <body>
 
-<%-- Privacy policy markup is inserted first --%>
-<mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
+<%-- Skip to main content link  --%>
+<a class="btn sr-only sr-only-focusable" href="#main-content"><fmt:message key="msg.aria.skip-to-content" /></a>
 
 </jsp:attribute>
 
@@ -113,17 +117,14 @@
     <cms:param name="cssgutter" value="${cssgutter}" />
     <cms:param name="cssgutterbase" value="${cssgutter}" />
 
-    <fmt:setLocale value="${cms.workplaceLocale}" />
-    <cms:bundle basename="alkacon.mercury.template.messages">
-        <c:set var="message"><fmt:message key="msg.page.layout.topContainer" /></c:set>
-    </cms:bundle>
-
+    <c:set var="message"><fmt:message key="msg.page.layout.topContainer" /></c:set>
     <mercury:container-box
         label="${message}"
         boxType="container-box"
         type="area"
         role="ROLE.DEVELOPER"
     />
+
 </cms:container>
 <mercury:nl/>
 </jsp:attribute>
@@ -150,10 +151,14 @@
     <c:if test="${not empty extraFoot and extraFoot ne 'none'}"><cms:include file="${extraFoot}" /></c:if>
 </c:if>
 
-<div id="privacy-policy-placeholder"></div><%----%>
+<%-- Privacy policy banner markup --%>
+<mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
+
 </body>
 </html>
 </jsp:attribute>
 
 </mercury:template-parts>
 </mercury:content-properties>
+
+</cms:bundle>

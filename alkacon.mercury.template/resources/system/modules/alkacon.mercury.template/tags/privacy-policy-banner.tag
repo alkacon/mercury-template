@@ -48,6 +48,7 @@
         </c:if>
     </cms:jsonobject>
 
+    <div id="privacy-policy-placeholder"></div><%----%>
     <div id="privacy-policy-banner" class="pp-banner" data-banner='${bannerData.compact}'></div><%----%>
     <mercury:nl />
 

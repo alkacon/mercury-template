@@ -97,8 +97,8 @@
                         </label><%----%>
                     </div><%----%>
                     <div class="buttons"><%----%>
-                        <input class="btn btn-save" type="submit" tabindex="0" value="${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}" /><%----%>
-                        <input class="btn btn-accept" type="submit" tabindex="0" value="${value.AcceptAllButtonText.isSet ? value.AcceptAllButtonText : btnAcceptDef}" /><%----%>
+                        <button class="btn btn-save" type="submit" tabindex="0">${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}</button><%----%>
+                        <button class="btn btn-accept" type="submit" tabindex="0">${value.AcceptAllButtonText.isSet ? value.AcceptAllButtonText : btnAcceptDef}</button><%----%>
                     </div><%----%>
                 </form><%----%>
                 <c:if test="${hasLinks and value.ShowLinks.useDefault('true').toBoolean}">

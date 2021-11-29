@@ -163,7 +163,7 @@ function displayBanner() {
             jQ("#privacy-policy-placeholder").height($banner.outerHeight());
         });
         $banner.addClass("fixed " + (onTop ? "top" : "bottom" ));
-        $banner.find(".btn-save").focus();
+        $banner.find(".title").focus();
         if (DEBUG) console.info("PrivacyPolicy: Banner loaded and displayed");
     } else {
         if (DEBUG) console.info("PrivacyPolicy: No banner displayed");
@@ -348,7 +348,7 @@ function createExternalElementToggle(heading, message, footer, isModal) {
 
     var cookieHtml =
         '<div class=\"cookie-content\">' +
-            '<div class=\"cookie-header\">' + heading + '</div>' +
+            '<div class=\"cookie-header\" tabindex=\"0\">' + heading + '</div>' +
             '<div class=\"cookie-message\">' + message + '</div>' +
             '<div class=\"cookie-switch pp-toggle pp-toggle-external animated\">' +
                 '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\"' + (isModal ? ' disabled' : '') + '>' +

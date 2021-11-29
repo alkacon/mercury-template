@@ -54,6 +54,12 @@ html {
                 @include focus-outline();
             }
         }
+        .media-box,
+        .focus-within {
+            &:focus-within {
+                @include focus-outline();
+            }
+        }
     }
 
     // rem based font adjustment is done in mixin
@@ -79,7 +85,6 @@ html {
 
 
 // Headings
-
 h1, h2, h3, h4, h5, h6 {
     @include heading-base(true);
 }
@@ -127,7 +132,6 @@ h6, .h6 {
 
 
 // Links
-
 a {
     &:focus,
     &:hover {
@@ -196,7 +200,6 @@ a {
 
 
 // Badges
-
 .badge {
     border-radius: 4px !important;
 }
@@ -210,7 +213,6 @@ span.badge {
 
 
 // Colored badges
-
 @each $color-name, $bg-color, $highlight-color in $bg-colors {
 
     span.badge-#{""+$color-name} {
@@ -220,8 +222,41 @@ span.badge {
 }
 
 
-// Basic Print support
+// Screen reader buttons with absolute position
+.sr-only-focusable-fixed {
+    @include sr-only-focusable();
+    &:active,
+    &:focus {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+}
 
+html.opencms-page-editor {
+    .sr-only-focusable-fixed {
+        &:active,
+        &:focus {
+            top: $opencms-toolbar-height;
+        }
+    }
+}
+
+#keyboard-toggle {
+    &::after {
+         @include awesome-icons();
+         margin-left: 1rem;
+         content: "\f096"
+    }
+    &[aria-checked="true"] {
+        &::after {
+            content: "\f046"
+        }
+    }
+}
+
+
+// Basic Print support
 @media print {
     html {
         font-size: $font-rem-base-print-size;

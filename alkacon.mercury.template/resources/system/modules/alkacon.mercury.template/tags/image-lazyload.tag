@@ -106,7 +106,7 @@
 
 <mercury:nl />
 <mercury:padding-box
-    cssWrapper="image-src-box rs_skip ${cssWrapper}"
+    cssWrapper="image-src-box ${cssWrapper}"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
     width="${width}"
@@ -119,7 +119,15 @@
         <c:if test="${true}">${' '}alt="${alt}"</c:if><%-- Always provide an alt, even if it's empty --%>
         <c:if test="${not empty title and (title ne alt)}">${' '}title="${title}"</c:if>
         <c:if test="${not empty attrImage}">${' '}${attrImage}</c:if>
-        <c:if test="${not empty zoomData}">${' '}${zoomData}</c:if><%--
+        <c:if test="${not empty zoomData}">
+            <fmt:setLocale value="${cms.locale}" />
+            <cms:bundle basename="alkacon.mercury.template.messages">
+                ${' '}${zoomData}
+                ${' '}aria-label="${not empty alt ? alt.concat(' - ') : ''}
+                <fmt:message key="msg.aria.click-to-enlarge" />
+                ${'\" '}role="button" tabindex="0"<%----%>
+            </cms:bundle>
+        </c:if><%--
 --%>><%----%>
 
     <c:if test="${useNoScript}">
@@ -135,7 +143,7 @@
     </c:if>
 
     <c:if test="${not empty copyright}">
-        <div class="image-copyright"><%----%>
+        <div class="image-copyright" aria-hidden="true"><%----%>
             ${copyright}
         </div><%----%>
     </c:if>

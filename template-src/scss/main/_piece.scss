@@ -71,6 +71,10 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         width: 100%;
 
         @include copyright-subtitle;
+
+        > a {
+            display: block;
+        }
     }
 
     &.only-visual {
@@ -153,6 +157,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             overflow: hidden;
         }
         > .piece-heading-link {
+            display: block;
             &:hover {
                 text-decoration: none;
             }
@@ -242,12 +247,24 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 }
 
+.col-6 {
+    &.flex-col {
+        // .flex-col makes single columns in a row use the complete available height
+        // mercury simple layout rows only use col-6 and no other selector for columns on smaller screens
+        // a col-6 column must use the complete available height in small screens
+        // for columns that are not col-6, same height is not required since the columns will be stacked upon each other in small screens
+        > .piece.full:only-child {
+            flex-grow: 1;
+            @include text-tile(false);
+        }
+    }
+}
+
 @include media-breakpoint-up(md) {
 
     .flex-col {
+        // .flex-col makes single columns in a row use the complete available height
         > .piece.full:only-child {
-            // this makes single content elements in a .flex-col using the complete element height
-            // and allows to align links at the bottom
             flex-grow: 1;
             @include text-tile(false);
         }
@@ -361,7 +378,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 }
-
 
 .intro-headline {
     // formatting for headings with intro

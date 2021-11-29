@@ -11,7 +11,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<fmt:setLocale value="${cms.workplaceLocale}" />
+<fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <mercury:content-properties>
@@ -100,8 +100,8 @@
 </head>
 <body>
 
-<%-- Skip to main content link  --%>
-<a class="btn sr-only sr-only-focusable" href="#main-content"><fmt:message key="msg.aria.skip-to-content" /></a>
+<%-- Skip to main content links  --%>
+<a class="btn sr-only sr-only-focusable-fixed" id="skip-to-content" href="#main-content"><fmt:message key="msg.aria.skip-to-content" /></a><%----%>
 
 </jsp:attribute>
 

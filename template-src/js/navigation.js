@@ -24,20 +24,48 @@ var VERBOSE;
 
 "use strict";
 
+var KEYBOARD_PERMANENT = "keyboard-permenent";
+
 var m_fixedHeader = null;
 var m_$anchor = null;
 var m_menuTimeout = null;
 var m_subMenuTimeout = null;
 var m_firstInit = true;
+var m_isBurgerHeader = false;
+var m_keyboardNavActive = false;
+var m_keyboardNavPermanent = false;
+
 var $topControl = null;
 
-var m_isBurgerHeader = false;
+function removeKeyboardClass(event) {
+    setKeyboardClass(false);
+}
 
 function setKeyboardClass(active) {
-    if (active) {
-        jQ(document.documentElement).addClass('keyboard-nav');
+    if (active || m_keyboardNavPermanent) {
+        if (! m_keyboardNavActive) {
+            m_keyboardNavActive = true;
+            jQ(document.documentElement).addClass('keyboard-nav');
+            jQ(document.documentElement).on('mousemove', removeKeyboardClass);
+        }
     } else {
-        jQ(document.documentElement).removeClass('keyboard-nav');
+        if (m_keyboardNavActive) {
+            m_keyboardNavActive = false;
+            jQ(document.documentElement).removeClass('keyboard-nav');
+            jQ(document.documentElement).off('mousemove', removeKeyboardClass);
+        }
+    }
+}
+
+function setKeyboardNavPermanent(active) {
+    m_keyboardNavPermanent = active;
+    if (m_keyboardNavPermanent) {
+        setKeyboardClass(true);
+        jQ('#keyboard-toggle').attr("aria-checked", "true");
+        PrivacyPolicy.setCookie(KEYBOARD_PERMANENT, "true", { expires: Number(7) });
+    } else {
+        jQ('#keyboard-toggle').attr("aria-checked", "false");
+        PrivacyPolicy.removeCookie(KEYBOARD_PERMANENT);
     }
 }
 
@@ -300,10 +328,11 @@ function initHeadNavigation() {
     var $topControlBtn = jQ('#topcontrol, .topcontrol, .topcontrol-nohide');
     // multiple selectors allow to add topcontrol in template as well
     if ($topControlBtn) {
-            // just the function, no hiding of the button on mobile
-            $topControlBtn.on('click', function(e) {
+        // just the function, no hiding of the button on mobile
+        $topControlBtn.on('click', function(e) {
             scrollToAnchor(jQ('body'));
         });
+        addEnterIsClick($topControlBtn);
     }
     $topControl = jQ('#topcontrol, .topcontrol');
     if ($topControl) {
@@ -338,10 +367,15 @@ function initHeadNavigation() {
         }
     });
 
-    // If the mouse is moved, remove focus highlight marker class
-    jQ(document.documentElement).on('mousemove', function(e) {
-        setKeyboardClass(false);
+    jQ('#skip-to-content').on('keydown', function(e) {
+        if (e.which == 13) {
+            setKeyboardNavPermanent(!m_keyboardNavPermanent);
+        }
     });
+
+    if (PrivacyPolicy.hasCookie(KEYBOARD_PERMANENT)) {
+        setKeyboardNavPermanent(true);
+    }
 
     // Fixed / sticky header
     var $header = jQ('.area-header');
@@ -528,6 +562,7 @@ function initSmoothScrolling() {
             if ($target.length) {
                 jQ(this).blur();
                 scrollToAnchor($target);
+                focusOnElement($target);
                 return false;
             }
         }
@@ -537,6 +572,7 @@ function initSmoothScrolling() {
     if (location.hash.length) {
         if (DEBUG) console.info("Navigation.initSmoothScrolling() Initial anchor (location.hash): " + location.hash);
         scrollToAnchor(jQ(location.hash));
+        focusOnElement(jQ(location.hash));
     }
 }
 
@@ -600,6 +636,34 @@ function initExternalLinks() {
     }
 }
 
+function addEnterIsClick($element) {
+    if (DEBUG) console.info("Navigation.addEnterIsClick()", $element);
+    $element.keyup(function(event) {
+        if (event.keyCode === 13) {
+            $element.trigger('click');
+            return false;
+        }
+    });
+}
+
+// fix 'skip links'
+// see https://axesslab.com/skip-links/
+// see https://github.com/selfthinker/dokuwiki_template_writr/blob/master/js/skip-link-focus-fix.js
+// even though the problem is apparently fixed in regular browser use, it is stell needed because of our initSmoothScrolling() function
+function focusOnElement($element) {
+    if (DEBUG) console.info("Navigation.focusOnElement()", $element);
+    if (!$element.length) {
+        return;
+    }
+    if (!($element.is(':input:enabled, a[href], area[href], object, [tabindex]') && !$element.is(':hidden'))) {
+        // add tabindex to make focusable and remove again
+        $element.attr('tabindex', -1).on('blur focusout', function () {
+            $(this).removeAttr('tabindex');
+        });
+    }
+    $element.focus();
+}
+
 // functions that require the Mercury object
 var debUpdateFixedResize;
 var debUpdateFixedScroll;
@@ -628,7 +692,7 @@ function initDependencies() {
             offset = offset || 0;
             var targetTop = $anchor.offset().top + offset;
             targetTop = targetTop < 0 ? 0 : targetTop;
-            if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") position:" + targetTop);
+            if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") position:" + targetTop, $anchor);
             if (fixedHeaderActive() && (targetTop > m_fixedHeader.bottom)) {
                 if (m_fixedHeader.height < 0) {
                     // fixed header height is unknown, i.e. page was not scrolled down so far

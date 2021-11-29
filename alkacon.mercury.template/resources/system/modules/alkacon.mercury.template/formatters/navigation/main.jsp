@@ -118,7 +118,7 @@
         </c:set>
 
         <mercury:nl />
-        <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
+        <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}" role="application"><%----%>
         <mercury:nl />
 
         <c:if test="${not empty metaLinksHtml and (metaLinks ne 'bottom')}">

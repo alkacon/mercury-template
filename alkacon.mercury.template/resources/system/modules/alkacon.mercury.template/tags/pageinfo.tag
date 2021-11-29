@@ -67,5 +67,5 @@
 </div><%----%>
 <mercury:nl/>
 
-<div id="topcontrol"></div>
+<div id="topcontrol" tabindex="0"></div>
 

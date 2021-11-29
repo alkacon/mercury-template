@@ -216,7 +216,6 @@
         <c:if test="${not empty headline or not empty intro}">
             <mercury:link
                 link="${link}"
-                title="${linkTitle}"
                 test="${linkHeadline}">
 
                 <mercury:intro-headline
@@ -238,7 +237,7 @@
         </c:if>
         <mercury:link
             link="${link}"
-            title="${linkTitle}"
+            title="${linkHeadline ? null : linkTitle}"
             attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
             ${markupVisualOutput}
@@ -296,7 +295,7 @@
 
                 <mercury:link
                     link="${link}"
-                    title="${linkTitle}"
+                    title="${linkHeadline ? null : linkTitle}"
                     css='uncolored'
                     attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
                     test="${linkOnText and not empty markupTextOutput}">

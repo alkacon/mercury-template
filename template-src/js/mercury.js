@@ -627,12 +627,13 @@ var Mercury = function(jQ) {
     function revalOnClickTemplate($element, template, isMedia, autoplay) {
         if (DEBUG) console.info("revalOnClickTemplate(): isMedia=" + isMedia + " autoplay=" + autoplay);
         $element.removeClass("reveal-registered");
+        $element.off("click");
+        $element.off("keydown");
         var $p = $element.parent();
         $p.removeClass("concealed enlarged");
         $p.addClass("revealed");
         if (template == "audio") {
             autoplay = (typeof autoplay === "undefined") ? true : autoplay;
-            $element.off("click");
             if (window.AudioData) {
                 window.AudioData.initAudioElement($element, autoplay);
             }
@@ -651,6 +652,20 @@ var Mercury = function(jQ) {
     }
 
 
+    function checkOnClickTemplateCookies(event) {
+        var data = event.data;
+        var cookieData = data.$element.data("modal-external-cookies");
+        if (!cookieData || PrivacyPolicy.cookiesAcceptedExternal()) {
+            revalOnClickTemplate(data.$element, data.template, data.isMedia);
+        } else {
+            PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
+            function() {
+                revalOnClickTemplate(data.$element, cata.template, cata.isMedia);
+            });
+        }
+    }
+
+
     function initOnclickTemplates(selector, isMedia) {
         var $onclickTemplates = jQ(selector);
         if (DEBUG) console.info("Mercury.initOnclickTemplates(): " + selector + " elements found: " + $onclickTemplates.length);
@@ -661,6 +676,8 @@ var Mercury = function(jQ) {
             if (data && data.template) {
                 var template = data.template;
                 var color = getThemeJSON("main-theme");
+                data.isMedia = isMedia;
+                data.$element = $element;
                 if (typeof color !== "undefined") {
                     template = template.replace("XXcolor-main-themeXX", color.substring(1));
                 }
@@ -686,18 +703,11 @@ var Mercury = function(jQ) {
                 } else {
                     // this external element has a preview template that has to be clicked before the external content is shown
                     if (! $element.hasClass("reveal-registered")) {
-                        // only attach event listerner once, important for dynamic lists
+                        // only attach event listerners once, important for dynamic lists
                         $element.addClass("reveal-registered");
-                        $element.on("click", data, function() {
-                            var cookieData = $element.data("modal-external-cookies");
-                            if (!cookieData || PrivacyPolicy.cookiesAcceptedExternal()) {
-                                revalOnClickTemplate($element, template, isMedia);
-                            } else {
-                                PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
-                                function() {
-                                    revalOnClickTemplate($element, template, isMedia);
-                                });
-                            }
+                        $element.on("click", data, checkOnClickTemplateCookies);
+                        $element.on("keydown", data, function(e) {
+                            if (e.which == 13) { checkOnClickTemplateCookies(e); }
                         });
                     }
                 }

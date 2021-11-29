@@ -25,8 +25,8 @@
 
 <%@ attribute name="tabindex" type="java.lang.Boolean" required="false"
     description="Force adding 'tabindex=0' attribute to the generated markup
-    If not set, use default 'true' for h1 and h2, 'false' for all other sizes.
-    If 'false' is set explicitly, supress genertion of tabindex attribute even for h1 and h2." %>
+    If not set, use default 'true' for h1, h2 and h3, 'false' for all other sizes.
+    If 'false' is set explicitly, supress genertion of tabindex attribute even for h1, h2 and h3." %>
 
 <%@ attribute name="attr" type="java.lang.String" required="false"
     description="Optional HTML attributes to attach to the heading tag." %>
@@ -56,7 +56,7 @@
 <c:if test="${(level > 0) and (level <= 7) and (empty test or test)}">
 
     <c:set var="escapeXml" value="${empty escapeXml ? true : escapeXml}" />
-    <c:set var="addTabindex" value="${empty tabindex ? ((level > 0) and (level <=2)) : tabindex}" />
+    <c:set var="addTabindex" value="${empty tabindex ? ((level > 0) and (level <=3)) : tabindex}" />
 
     <c:if test="${(not empty markupText) or (not empty text)}">
         <c:choose>

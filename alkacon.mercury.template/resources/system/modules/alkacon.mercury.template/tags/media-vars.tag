@@ -171,7 +171,7 @@
                 <mercury:image-lazyload
                     srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
                     srcSet="${srcSet}"
-                    alt="${content.value.Title}"
+                    alt="${placeholderMessage} - ${content.value.Title}"
                     cssImage="animated"
                     noScript="${caseStandardElement}"
                     lazyLoad="${not caseDynamicListNoscript}"

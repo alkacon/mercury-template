@@ -296,7 +296,7 @@
                 ${not empty slideLink ? '</a>':'</span>'}
 
                 <c:if test="${showImageCopyright and (not empty copyright)}">
-                    <div class="copyright rs_skip">${copyright}</div><mercury:nl/>
+                    <div class="copyright rs_skip" aria-hidden="true">${copyright}</div><mercury:nl/>
                 </c:if>
             </div><mercury:nl/>
 

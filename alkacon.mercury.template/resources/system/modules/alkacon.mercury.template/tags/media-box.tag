@@ -152,7 +152,7 @@
                     </c:otherwise>
                 </c:choose>
 
-                <div ${previewAttrs}><%----%>
+                <div ${previewAttrs} tabindex="0" title="${placeholderMessage}"><%----%>
                     <c:choose>
                         <c:when test="${isAudio}">
                             <c:if test="${not empty image}">
@@ -172,7 +172,12 @@
                         <c:when test="${not empty link or not autoPlay}">
                             <c:choose>
                                 <c:when test="${not empty image}">
-                                    <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
+                                    <mercury:image-animated
+                                        image="${image}"
+                                        ratio="${usedRatio}"
+                                        alt="${placeholderMessage} - ${content.value.Title}"
+                                        setTitle="${false}"
+                                    />
                                 </c:when>
                                 <c:when test="${not empty mediaPreviewHtml}">
                                     <div class="centered image">${mediaPreviewHtml}</div><%----%>
@@ -189,7 +194,7 @@
                     </c:choose>
                 </div><%----%>
                 <c:if test="${not isAudio and not autoPlay and showCopyright and ((not empty copyright))}">
-                    <div class="copyright"><div>&copy; ${copyright}</div></div><%----%>
+                    <div class="copyright" aria-hidden="true"><div>&copy; ${copyright}</div></div><%----%>
                 </c:if>
 
             </mercury:link>

@@ -152,17 +152,21 @@
                 <c:when test="${showVisual and empty markupVisual}">
                     <c:set var="showImageLink"  value="${empty showImageLink ? false : showImageLink}" />
                     <c:set var="showImageZoom" value="${empty showImageZoom ? true : showImageZoom}" />
-                    <mercury:link link="${link}" test="${showImageLink}" setTitle="${true}" >
+                    <mercury:link
+                        link="${link}"
+                        test="${showImageLink}"
+                        attr="${showLink or linkHeading ? 'tabindex=\"-1\"' : ''}"
+                        setTitle="${true}" >
                         <mercury:image-animated
                             image="${image}"
                             ratio="${imageRatio}"
                             setTitle="${not showImageLink}"
                             showCopyright="${showImageCopyright}"
-                            showImageZoom="${showImageZoom}"
+                            showImageZoom="${showImageZoom and not showImageLink}"
                             ade="${ade}">
                             <c:set var="imageSubtext">
                                 <c:if test="${showImageSubtitle and not empty imageTitle}">
-                                    <div class="subtitle">${imageTitle}</div><%----%>
+                                    <div class="subtitle"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
                                 </c:if>
                             </c:set>
                             <c:set var="emptyImage" value="${empty imageBean}" />

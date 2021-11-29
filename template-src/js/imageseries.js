@@ -276,6 +276,12 @@ function initZoomers($elements) {
                     e.preventDefault();
                     openPhotoSwipe(targetIndex, "imagezoom");
                 });
+                $this.keyup(function(e) {
+                    if (e.keyCode === 13) {
+                        e.preventDefault();
+                        openPhotoSwipe(targetIndex, "imagezoom");
+                    }
+                });
             }
 
             if (DEBUG) console.info("Image zoom element added path=" + imageData.src + ", index=" + imageData.index);

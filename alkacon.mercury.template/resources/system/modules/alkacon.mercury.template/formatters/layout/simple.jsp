@@ -222,12 +222,19 @@
         <c:set var="useTile"                                    value="${not useSquare and not (cms.element.settings.tileCss eq 'none')}" />
         <c:set var="params"                                     value="${{'cssgrid': 'col-xs-12'}}" />
         <c:choose>
-            <c:when test="${useTile or useSquare}">
+            <c:when test="${useSquare}">
+                <%-- Generate square row --%>
+                <c:set var="squareMargin"                       value="square-m-${fn:substringAfter(cms.element.settings.tileMargin, 'tile-margin-')}" />
+                <c:set target="${valueMap}" property="Type"     value="square"/>
+                <c:set target="${valueMap}" property="Css"      value="${'row-square '}${squareMargin}${cssWrapper}" />
+                <c:set target="${params}"   property="tilegrid" value="" />
+            </c:when>
+            <c:when test="${useTile}">
                 <%-- Generate tile row --%>
                 <c:set var="tileCss"                            value="${cms.element.settings.tileCss}" />
                 <c:set var="tileMargin"                         value="${cms.element.settings.tileMargin}" />
                 <c:set target="${valueMap}" property="Type"     value="tile"/>
-                <c:set target="${valueMap}" property="Css"      value="${useTile ? 'row-tile ' : 'row-square '}${tileMargin}${cssWrapper}" />
+                <c:set target="${valueMap}" property="Css"      value="${'row-tile '}${tileMargin}${cssWrapper}" />
                 <c:set target="${params}"   property="tilegrid" value="${tileCss}" />
             </c:when>
             <c:otherwise>

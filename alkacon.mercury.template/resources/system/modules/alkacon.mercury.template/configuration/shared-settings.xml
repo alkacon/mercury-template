@@ -2603,6 +2603,7 @@
             tile-col col-md-6:                          %(key.msg.setting.tileCss.md6)|
             tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
             tile-col col-12:                            %(key.msg.setting.tileCss.xs12)|
+            square:                                     %(key.msg.setting.tileCss.square)|
             from-tiles:                                 %(key.msg.setting.tileCss.tile-defined)
         ]]></WidgetConfig>
     </Setting>
@@ -2614,13 +2615,7 @@
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[%(stringtemplate:isTile)]]></Widget>
       <Default><![CDATA[tile-margin-0]]></Default>
-      <WidgetConfig><![CDATA[
-            tile-margin-0:   0|
-            tile-margin-2:   4|
-            tile-margin-5:   10|
-            tile-margin-10:  20|
-            tile-margin-15:  30
-        ]]></WidgetConfig>
+      <WidgetConfig><![CDATA[%(attribute:tileMargin.layout.config)]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[colWidth.layout]]></IncludeName>
@@ -2684,7 +2679,7 @@
       <Description><![CDATA[%(key.msg.setting.bgColor.area.help)]]></Description>
       <Widget><![CDATA[%(stringtemplate:needBgColor)]]></Widget>
       <Default><![CDATA[none]]></Default>
-      <WidgetConfig><![CDATA[%(attribute:bgColorLayoutConfig)]]></WidgetConfig>
+      <WidgetConfig><![CDATA[%(attribute:bgColor.layout.config)]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[bgSpacing.layout]]></IncludeName>

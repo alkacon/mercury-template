@@ -207,20 +207,10 @@ $sq-heights-xl:    () !default;
             margin: #{$m}px;
         }
 
-
         &.row-square {
-            margin: #{$m * -1}px;
-        }
-    }
-}
-
-
-@include media-breakpoint-down(sm) {
-    @each $m in $sq-margins  {
-        .square-col.square-sm-12.square-m-#{$m} .content {
-            height: calc(100% - #{$grid-gutter-width});
-            width:  calc(100% - #{$grid-gutter-width});
-            margin: $grid-gutter-width-half;
+            margin-left: -#{$m}px;
+            margin-right: -#{$m}px;
+            padding-bottom: #{$grid-gutter-width - (2px * $m)};
         }
     }
 }
@@ -378,6 +368,9 @@ $sq-margin: 20px;
         &.square-md-6 {
             padding-bottom: calc-square-height(container-useable-width(md), $sq-margin, $ratio16-9, 6) !important;
         }
+        &.square-md-4 {
+            padding-bottom: calc-square-height(container-useable-width(md), $sq-margin, $ratio16-9, 4) !important;
+        }
     }
 }
 
@@ -399,9 +392,16 @@ $sq-margin: 20px;
         &.square-lg-12 {
             padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 12) !important;
         }
+        &.square-lg-8 {
+            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 4) * 2 !important;
+        }
         &.square-md-6,
         &.square-lg-6 {
             padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 6) !important;
+        }
+        &.square-md-4,
+        &.square-lg-4 {
+            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 4) !important;
         }
     }
 }
@@ -472,6 +472,8 @@ $sq-margin: 20px;
         display: table;
         height: 100%;
         width: 100%;
+        margin-bottom: 0;
+        color: inherit;
     }
 
     .table-cell {

@@ -913,7 +913,17 @@
       <Value><![CDATA[selectcombo]]></Value>
     </Attribute>
     <Attribute>
-      <Key><![CDATA[bgColorLayoutConfig]]></Key>
+      <Key><![CDATA[tileMargin.layout.config]]></Key>
+      <Value><![CDATA[
+        tile-margin-0:   0|
+        tile-margin-2:   4|
+        tile-margin-5:   10|
+        tile-margin-10:  20|
+        tile-margin-15:  30
+      ]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[bgColor.layout.config]]></Key>
       <Value><![CDATA[
         none:               %(key.msg.setting.bgColor.area.none)|
         bg-highlight:       %(key.msg.setting.bgColor.area.highlight)|

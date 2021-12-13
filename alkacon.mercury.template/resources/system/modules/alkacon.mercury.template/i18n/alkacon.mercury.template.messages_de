@@ -1398,6 +1398,7 @@ msg.setting.tileCss.md6-lg4-xl3=1 Kachel für XS und SM - 2 für MD - 3 für LG 
 msg.setting.tileCss.md6-xl3=1 Kachel für XS und SM - 2 für MD und LG - 4 für XL
 msg.setting.tileCss.md6-xl4=1 Kachel für XS und SM - 2 für MD und LG - 3 für XL
 msg.setting.tileCss.none=Keine Kacheln verwenden
+msg.setting.tileCss.square=Spezielle 'square' Kacheln verwenden
 msg.setting.tileCss.tile-defined=Werte werden in der Kachel definiert
 msg.setting.tileCss.xs12=1 Kachel für XS, SM, MD, LG und XL
 msg.setting.tileCss.xs6=2 Kacheln für XS, SM, MD, LG und XL

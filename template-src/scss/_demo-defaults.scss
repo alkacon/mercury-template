@@ -134,7 +134,7 @@ $map-colors: (
 
 // Tile and square settings
 
-$sq-margins:                    (2, 4, 5, 10, 15, 20, 25, 50, 100) !default;
+$sq-margins:                    (0, 2, 4, 5, 10, 15, 20, 25, 50, 100) !default;
 $sq-cols-sm:                    ((12, 12), (6, 6)) !default;
 $sq-cols-md:                    ((12, 12), (9, 9), (6, 6), (4, 4), (3, 3)) !default;
 $sq-cols-lg:                    ((12, 12), (9, 9), (8, 8), (6, 6), (4, 4), (3, 3), (2o4, 2.4), (2,2)) !default;

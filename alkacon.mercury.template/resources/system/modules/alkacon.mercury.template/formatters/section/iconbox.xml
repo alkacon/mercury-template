@@ -15,7 +15,8 @@
     <Match>
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
-        <ContainerType><![CDATA[section]]></ContainerType>
+        <ContainerType><![CDATA[content-section]]></ContainerType>
+        <ContainerType><![CDATA[iconbox]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>

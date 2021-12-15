@@ -476,6 +476,7 @@ $bh-header-padding-small:           round($bh-header-padding * 50) * 0.01 !defau
 $bh-header-padding-verysmall:       round($bh-header-padding * 25) * 0.01 !default; // used mostly for sticky burger header
 $bh-nav-mobile-toggle-top:          $grid-gutter-width !default; // top position for floating burger menu icon
 $bh-nav-mobile-logo-max-width:      350px !default; // max size of logo in menu
+$bh-header-padding-meta:            $bh-header-padding-verysmall !default; // padding for meta link bar
 
 // The "nav-toggle" button - this is the "burger" button to show / hide the mobile navigation
 
@@ -638,6 +639,7 @@ $slider-caption-border-radius:      $default-border-radius !default;
 $slider-caption-padding:            $default-margin-verysmall 0 !default;
 $slider-text-shadow:                1px 1px 1px rgba(#333, .5) !default;
 $logo-slider-paddings:              (5, 10, 15, 20) !default;
+$slider-background-opacity:         0.75 !default;
 
 
 // Media

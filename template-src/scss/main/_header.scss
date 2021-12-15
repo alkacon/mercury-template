@@ -1726,7 +1726,7 @@
                 font-size: $bh-title-ac-font-size;
             }
 
-            @include add-meta("bh", $bh-header-padding-verysmall);
+            @include add-meta("bh", $bh-header-padding-meta);
 
             // breadcrumbs
 

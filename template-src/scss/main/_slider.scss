@@ -54,7 +54,7 @@
                     opacity: 1.0;
                 }
                 &.background {
-                    opacity: 0.75;
+                    opacity: $slider-background-opacity;
                 }
             }
         }
@@ -380,10 +380,10 @@
                     white-space: initial !important;
                     transform: initial !important;
 
-                    &.foreground {
+                    &.background {
                         display: none;
                     }
-                    &.background {
+                    &.foreground {
                         strong,
                         small {
                             color: get-text-color($main-theme);

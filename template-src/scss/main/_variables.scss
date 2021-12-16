@@ -444,6 +444,7 @@ $fh-meta-bg-color:                  none !default; // background color of the me
 $fh-meta-color:                     check-text-color($fh-meta-bg-color, $nav-header-text, $fh-header-bg-color) !default; // font color for meta / service links
 $fh-meta-hover-color:               check-text-color($fh-meta-bg-color, $nav-header-text-hover, $fh-header-bg-color) !default; // font hover color for meta / service links
 $fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
+$fh-meta-text-transform:            uppercase !default; // text transformation for meta / service links
 $fh-title-font-size:                $h4-font-size !default; // font size for title in header
 $fh-title-bg-color:                 none !default; // background color of the title
 $fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text, $fh-header-bg-color) !default; // background color of the title
@@ -482,7 +483,7 @@ $bh-header-padding-meta:            $bh-header-padding-verysmall !default; // pa
 
 $nav-toggle-bg:                     $main-theme !default; // color of toggle button
 $nav-toggle-bg-hover:               $main-theme-hover !default; // hover color of toggle button
-$nav-toggle-bg-active:              $main-theme !default; // color of toggle button if activated
+$nav-toggle-bg-active:              $nav-toggle-bg !default; // color of toggle button if activated
 $nav-toggle-text:                   $white !default; // color of text in toggle button
 $nav-toggle-size:                   40px !default; // height of toggle button
 $nav-toggle-size-xs:                30px !default; // on smaller screens the button size is reduced further

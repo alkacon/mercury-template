@@ -1801,8 +1801,7 @@
 
                     > a {
                         color: $fh-meta-color;
-                        // default is uppercase if not set (for backwards compatibility)
-                        text-transform: uppercase;
+                        text-transform: $fh-meta-text-transform;
 
                         &:hover {
                             text-decoration: none;

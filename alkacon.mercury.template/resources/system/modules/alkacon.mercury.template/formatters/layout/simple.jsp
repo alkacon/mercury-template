@@ -13,6 +13,7 @@
 <cms:formatter var="content" val="value">
 
 <c:set var="variant"            value="${value.Variant}" />
+<c:set var="subVariantFull"     value="${param.subvariant eq 'full'}" />
 <c:set var="setting"            value="${cms.element.setting}" />
 <c:set var="detailContainer"    value="${setting.detailContainer.toString}" />
 <c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(setting.cssWrapper.toString) : ''}" />
@@ -32,8 +33,18 @@
         <c:set target="${valueMap}" property="Type"             value="${mainDetailType}"/>
         <c:set target="${valueMap}" property="Name"             value="maincol"/>
         <c:set target="${valueMap}" property="Css"              value="row-12${cssWrapper}" />
-        <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'col-xs-12'}}" />
-        <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
+        <c:choose>
+            <c:when test="${subVariantFull}">
+                <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'fullwidth'}}" />
+                <div class="container"><%----%>
+                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
+                </div><%----%>
+            </c:when>
+            <c:otherwise>
+                <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'col-xs-12'}}" />
+                <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
+            </c:otherwise>
+        </c:choose>
     </c:when>
     <c:when test="${variant eq 'adjust'}">
         <%-- lr_00013 --%>
@@ -152,21 +163,41 @@
     </c:when>
     <c:when test="${variant eq '4-4-4'}">
         <%-- lr_00009 --%>
-        <c:set var="colCss"            value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
-        <div class="row${cssWrapper}"><%----%>
-            <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
-            <c:set target="${valueMap}" property="Name"         value="maincol"/>
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-last order-lg-first' : ''}" />
-            <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
-            <c:set target="${valueMap}" property="Type"         value="element"/>
-            <c:set target="${valueMap}" property="Name"         value="sidecol"/>
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}" />
-            <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
-            <c:set target="${valueMap}" property="Name"         value="addcol1"/>
-            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
-            <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
-            <mercury:nl />
-        </div><%----%>
+        <c:choose>
+            <c:when test="${subVariantFull}">
+                <div class="row no-gutters row-cols-1 row-cols-lg-3${cssWrapper}"><%----%>
+                    <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
+                    <c:set target="${valueMap}" property="Name"         value="maincol"/>
+                    <c:set target="${valueMap}" property="Css"          value="col${colCss}${reverseOrder ? ' order-last order-lg-first' : ''}" />
+                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
+                    <c:set target="${valueMap}" property="Type"         value="element"/>
+                    <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+                    <c:set target="${valueMap}" property="Css"          value="col${colCss}" />
+                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
+                    <c:set target="${valueMap}" property="Name"         value="addcol1"/>
+                    <c:set target="${valueMap}" property="Css"          value="col${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
+                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
+                    <mercury:nl />
+                </div><%----%>
+            </c:when>
+            <c:otherwise>
+                <c:set var="colCss"            value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+                <div class="row${cssWrapper}"><%----%>
+                    <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
+                    <c:set target="${valueMap}" property="Name"         value="maincol"/>
+                    <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-last order-lg-first' : ''}" />
+                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
+                    <c:set target="${valueMap}" property="Type"         value="element"/>
+                    <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+                    <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}" />
+                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
+                    <c:set target="${valueMap}" property="Name"         value="addcol1"/>
+                    <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
+                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
+                    <mercury:nl />
+                </div><%----%>
+            </c:otherwise>
+        </c:choose>
     </c:when>
     <c:when test="${variant eq '3-3-3-3'}">
         <%-- lr_00010 --%>
@@ -249,9 +280,11 @@
     </c:when>
     <c:when test="${variant eq 'area-one-row'}">
         <%-- la_00001 --%>
-        <c:set var="bgImage" value="${cms.element.setting.bgImage.toLink}" />
-        <c:set var="bgSpacing" value="${cms.element.setting.bgSpacing.isSetNotNone ? cms.element.setting.bgSpacing.toString : null}" />
-        <c:set var="bgColor" value="${cms.element.setting.bgColor.isSetNotNone ? cms.element.setting.bgColor.toString : null}" />
+        <c:set var="areaType" value="${setting.areaType.validate(['default','full'],'default').toString}" />
+
+        <c:set var="bgImage" value="${setting.bgImage.toLink}" />
+        <c:set var="bgSpacing" value="${setting.bgSpacing.isSetNotNone ? setting.bgSpacing.toString : null}" />
+        <c:set var="bgColor" value="${setting.bgColor.isSetNotNone ? setting.bgColor.toString : null}" />
 
         <c:if test="${not empty bgImage}">
              <c:set var="styleAttr">background-image: url('${bgImage}');</c:set>
@@ -274,12 +307,26 @@
         <c:if test="${not empty styleAttr}">
               <c:set var="styleAttr"> style="${styleAttr}"</c:set>
         </c:if>
+
+        <c:choose>
+            <c:when test="${areaType eq 'full'}">
+                <c:set var="tagCss" value="area-wide sv-full" />
+                <c:set var="tagParams" value="${{'subvariant': 'full'}}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="tagCss" value="container area-wide" />
+            </c:otherwise>
+        </c:choose>
+
         <main class="area-content ${variant}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"${styleAttr}>
             <%-- Since the cssWrapper has been manipulated, it is required to add the ' ' prefix again. --%>
             <c:set target="${valueMap}" property="Type"             value="row" />
             <c:set target="${valueMap}" property="Name"             value="main" />
             <c:set target="${valueMap}" property="Tag"              value="div" />
-            <c:set target="${valueMap}" property="Css"              value="container area-wide" />
+            <c:set target="${valueMap}" property="Css"              value="${tagCss}" />
+            <c:if test="${not empty tagParams}">
+                <c:set target="${valueMap}" property="Parameters"       value="${tagParams}" />
+            </c:if>
             <mercury:container value="${valueMap}" title="${value.Title}" />
         </main>
     </c:when>

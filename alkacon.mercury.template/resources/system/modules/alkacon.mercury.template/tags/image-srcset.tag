@@ -24,7 +24,7 @@
     description="'title' atttribute to set on the generated img tag."%>
 
 <%@ attribute name="copyright" type="java.lang.String" required="false"
-    description="Copyright infotmation to display as an image overlay.
+    description="Copyright information to display as an image overlay.
     If this is emtpy, no copyright overlay will be displayed." %>
 
 <%@ attribute name="srcSet" type="java.lang.Boolean" required="false"

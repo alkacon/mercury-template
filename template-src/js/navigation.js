@@ -150,29 +150,32 @@ function initMenu() {
     if (initMenuStatus != lastInitMenuStatus) {
         lastInitMenuStatus = initMenuStatus;
         // Close all menus
-        var $allMenus = jQ('.nav-main-items [aria-expanded]');
+        var $allMenus = jQ('.nav-main-items li[aria-expanded]');
         if (DEBUG) console.info("Navigation.initMenu() .nav-main-items [aria-expanded] elements found: " + $allMenus.length);
         if ($allMenus.length > 0 ) {
-            $allMenus.attr("aria-expanded", "false");
+            $allMenus.children("[aria-expanded]").attr('aria-expanded', false);
+            $allMenus.attr("aria-expanded", false);
         }
         if (Mercury.gridInfo().isMobileNav()) {
             // Activate current menu position
             var $activeMenus = jQ('.nav-main-items [aria-expanded].active');
             if (DEBUG) console.info("Navigation.initMenu() .nav-main-items [aria-expanded].active elements found: " + $activeMenus.length);
             if ($activeMenus.length > 0 ) {
-                $activeMenus.attr("aria-expanded", "true");
+                $activeMenus.children("[aria-expanded]").attr('aria-expanded', true);
+                $activeMenus.attr("aria-expanded", true);
             }
         }
     }
 }
 
 function resetMenu($menuToggle) {
-    jQ(".nav-main-items [aria-expanded]").each(function(i) {
+    jQ(".nav-main-items li[aria-expanded]").each(function(i) {
         if (!$menuToggle || !jQ.contains(this, $menuToggle[0])) {
             var $this = jQ(this);
             $this.removeClass("open-left");
             $this.removeClass("open-right");
-            $this.attr("aria-expanded", "false");
+            $this.children("[aria-expanded]").attr('aria-expanded', false);
+            $this.attr("aria-expanded", false);
             $this.find(".nav-menu").first().css("right", "");
         }
     });
@@ -204,7 +207,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
         if (!expanded && (eventMouseenter || eventKeydown || eventTouchstart)) {
             stopEventPropagation = true;
             resetMenu($menuToggle);
-            $submenu.attr("aria-expanded", "true");
+            $submenu.attr("aria-expanded", true);
             if ($submenu.parent().hasClass("nav-main-items")) {
                 // this is a toplevel menu entry
                 if ($targetmenu.offset().left + $targetmenu.outerWidth() > Mercury.windowWidth()) {
@@ -236,24 +239,38 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
                 if (!$submenu.parent().hasClass("nav-main-items")) {
                     // stopEventPropagation must remain false, otherwise top level menus would not close
                     m_subMenuTimeout = setTimeout(function() {
-                        $submenu.attr("aria-expanded", "false");
+                        $submenu.attr("aria-expanded", false);
                     }, 375);
                 }
             } else {
                 stopEventPropagation = true;
-                $submenu.attr("aria-expanded", "false");
+                $submenu.attr("aria-expanded", false);
             }
         }
     } else if (eventTouchstart || eventClick) {
         // mobile navigation
         stopEventPropagation = true;
         resetMenu($menuToggle);
+        $submenu.children("[aria-expanded]").attr('aria-expanded', !expanded);
         $submenu.attr("aria-expanded", !expanded);
     }
 
     if (stopEventPropagation) {
         event.preventDefault();
         event.stopPropagation();
+    }
+}
+
+function toggleHeadNavigation() {
+    var toggle = jQ('.nav-toggle');
+    toggle.toggleClass('active');
+    var active = toggle.hasClass('active');
+    toggle.attr('aria-expanded', active);
+    jQ(document.documentElement).toggleClass('active-nav');
+    if (active) {
+        jQ('#nav-toggle-label-close > .nav-toggle.active').focus();
+    } else {
+        jQ('#nav-toggle-label-open > .nav-toggle').focus();
     }
 }
 
@@ -315,10 +332,7 @@ function initHeadNavigation() {
     m_isBurgerHeader = false || jQ('header.bh').length;
 
     // Responsive navbar toggle button
-    jQ('.nav-toggle').click(function() {
-        jQ('.nav-toggle').toggleClass('active');
-        jQ(document.documentElement).toggleClass('active-nav');
-    });
+    jQ('.nav-toggle').on('click', toggleHeadNavigation);
     jQ('.head-overlay').click(function() {
         jQ('.nav-toggle').removeClass('active');
         jQ(document.documentElement).removeClass('active-nav');
@@ -368,7 +382,7 @@ function initHeadNavigation() {
     });
 
     jQ('#skip-to-content').on('keydown', function(e) {
-        if (e.which == 13) {
+        if ((e.which == 13) || (e.which == 32)) {
             setKeyboardNavPermanent(!m_keyboardNavPermanent);
         }
     });

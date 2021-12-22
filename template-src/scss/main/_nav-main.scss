@@ -115,6 +115,7 @@
                         border: none;
                         padding: 0;
                         margin: 0;
+                        font-size: 0;
                     }
                 }
 
@@ -154,6 +155,25 @@
             &[aria-expanded="true"] > .nav-menu {
                 transition: max-height $nav-animation-time * 2 ease-in;
                 max-height: 2000px;
+            }
+        }
+    }
+
+    html.keyboard-nav {
+        .nav-main-items {
+            li {
+                // for keyboard navigation, make sure submenues are "not there" instead of just "very small"
+                // otherwise tab navigation does not work
+                > .nav-menu {
+                    transition: none;
+                    max-height: none;
+                    display: none;
+                    overflow: hidden;
+                }
+
+                &[aria-expanded="true"] > .nav-menu {
+                    display: block;
+                }
             }
         }
     }
@@ -830,6 +850,7 @@
                     padding-right: 0;
                     top: 0;
                     right: 0;
+                    font-size: 0;
                 }
             }
 

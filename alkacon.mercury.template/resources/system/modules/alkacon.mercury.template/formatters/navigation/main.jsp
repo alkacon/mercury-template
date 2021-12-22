@@ -47,12 +47,10 @@
         <c:choose>
             <c:when test="${temlateVariant eq 'burger'}">
                 <div class="nav-menu-header"><%----%>
-                    <div class="nav-menu-toggle"><%----%>
-                        <label for="nav-toggle-check" id="nav-toggle-label-close" class="nav-toggle-label"><%----%>
-                            <span class="nav-toggle"><%----%>
-                                <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
-                            </span><%----%>
-                        </label><%----%>
+                    <div id="nav-toggle-label-close" class="nav-menu-toggle nav-toggle-label"><%----%>
+                        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
+                            <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                        </button><%----%>
                     </div><%----%>
                     <c:if test="${(cssWrapper ne 'no-image') and (not empty logoImage)}">
                         <div class="nav-menu-logo"><%----%>
@@ -118,7 +116,7 @@
         </c:set>
 
         <mercury:nl />
-        <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}" role="application"><%----%>
+        <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
         <mercury:nl />
 
         <c:if test="${not empty metaLinksHtml and (metaLinks ne 'bottom')}">
@@ -198,25 +196,38 @@
 
                 <c:when test="${startSubMenu and not navElem.navigationLevel}">
                     <%-- Navigation item with sub-menu and direct child pages --%>
-                    <a href="${navLink}"${navTarget} class="nav-label" id="${parentLabelId}">${navText}</a><%----%>
-                    <a href="${navLink}"${navTarget} aria-controls="${targetMenuId}" aria-label="<fmt:message key="msg.page.navigation.sublevel" />">&nbsp;</a><%----%>
+                    <a href="${navLink}"${navTarget}${' '}<%--
+                    --%>class="nav-label"${' '}<%--
+                    --%>title="Seite anzeigen"<%--
+                    --%>${'>'}${navText}</a><%----%>
+
+                    <a href="${navLink}"${navTarget}${' '}<%--
+                    --%>id="${parentLabelId}"${' '}<%--
+                    --%>aria-expanded="false"${' '}<%--
+                    --%>aria-controls="${targetMenuId}"${' '}<%--
+                    --%>title="<fmt:message key="msg.page.navigation.sublevel" />"<%--
+                    --%>${'>'}${navText}</a><%----%>
                 </c:when>
 
                 <c:when test="${startSubMenu}">
                     <%-- Navigation item with sub-menu but without direct child pages --%>
                     <a href="${navLink}"${navTarget}${' '}<%--
                     --%>id="${parentLabelId}"${' '}<%--
-                    --%>aria-controls="${targetMenuId}">${navText}</a><%----%>
+                    --%>aria-expanded="false"${' '}<%--
+                    --%>aria-controls="${targetMenuId}"${' '}<%--
+                    --%>title="<fmt:message key="msg.page.navigation.sublevel" />"<%--
+                    --%>${'>'}${navText}</a><%----%>
                 </c:when>
 
                 <c:otherwise>
                     <%--Navigation item without sub-menu --%>
-                    <a href="${navLink}"${navTarget}<%----%>
+                    <a href="${navLink}"${navTarget}${' '}<%----%>
                     <c:if test="${hasMegaMenu}">
                         <%-- mega menu requires aria-controls - will be removed by JavaScript if mega menu is not displayed in mobile --%>
-                        ${' '}aria-controls="${targetMenuId}"<%----%>
+                        aria-controls="${targetMenuId}"${' '}<%----%>
                     </c:if>
-                    ${'>'}${navText}</a><%----%>
+                    <%----%>title="Seite anzeigen"<%--
+                    --%>${'>'}${navText}</a><%----%>
                 </c:otherwise>
             </c:choose>
 

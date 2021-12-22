@@ -1161,6 +1161,9 @@
         .nav-main-container {
             #{$toggle-position}: -1 * $nav-mobile-width-xs;
             transition: #{$toggle-position} 0.5s, opacity 0.25s;
+            > .nav-main-group {
+                display: none;
+            }
         }
     }
 
@@ -1170,6 +1173,9 @@
         .nav-main-container {
             opacity: 1;
             #{$toggle-position}: 0;
+            > .nav-main-group {
+                display: block;
+            }
         }
     }
 }

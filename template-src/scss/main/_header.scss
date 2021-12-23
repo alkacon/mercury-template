@@ -108,7 +108,7 @@
         html.noscript {
             // JavaScript disabled navigation
             // displays the menu elements on hover if JavaScript is disabled
-            .area-header#{$selector} .nav-main-items li[aria-expanded]:hover > .nav-menu {
+            .area-header#{$selector} .nav-main-items li.expand:hover > .nav-menu {
                 display: block;
             }
         }
@@ -1167,8 +1167,7 @@
         }
     }
 
-    html.active-nav header.bh.#{$position-selector},
-    html.noscript header.bh.#{$position-selector} #nav-toggle-check:checked ~ #nav-toggle-group {
+    html.active-nav header.bh.#{$position-selector} {
         // nav menu is active
         .nav-main-container {
             opacity: 1;
@@ -1551,10 +1550,10 @@
 
         .nav-main-items {
             // this expands the arrow links to the right so they can be touch-clicked easier
-            li[aria-expanded] > a::after {
+            li.expand > a::after {
                 right: $nav-mobile-toggle-side;
             }
-            li[aria-expanded] > a {
+            li.expand > a {
                 padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
             }
         }
@@ -1578,10 +1577,10 @@
                 li > a {
                     padding-left: $nav-mobile-toggle-side-xs;
                 }
-                li[aria-expanded] > a::after {
+                li.expand > a::after {
                     right: $nav-mobile-toggle-side-xs;
                 }
-                li[aria-expanded] > a {
+                li.expand > a {
                     padding-right: $nav-mobile-toggle-side-xs + $nav-mobile-box-height !important;
                 }
             }

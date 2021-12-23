@@ -77,8 +77,8 @@
         }
 
         li {
-            &[aria-expanded] {
-                // if NOT li[aria-expanded], then this is a single head link without submenu
+            &.expand {
+                // if NOT li.expand, then this is a single head link without submenu
                 position: relative;
 
                 > a {
@@ -115,17 +115,16 @@
                         border: none;
                         padding: 0;
                         margin: 0;
-                        font-size: 0;
                     }
                 }
 
-                &[aria-expanded="true"] > a[aria-controls]::after {
+                &.expand.ed > a[aria-controls]::after {
                     transform: rotate(-180deg);
                     transition: transform $nav-animation-time;
                 }
             }
 
-            &.active[aria-expanded="true"] > a,
+            &.active.expand.ed > a,
             &.active > a {
                 // the page highlighted by the OpenCms navigation (from the URL)
                 color: $nav-text-active-mobile;
@@ -137,7 +136,7 @@
                 font-weight: $nav-mobile-font-weight-final;
             }
 
-            &[aria-expanded="true"] > a {
+            &.expand.ed  > a {
                 color: $nav-text-hover-mobile;
                 background-color: $nav-bg-hover-mobile;
                 border-color: $nav-mobile-border-color;
@@ -152,7 +151,7 @@
                 overflow: hidden;
             }
 
-            &[aria-expanded="true"] > .nav-menu {
+            &.expand.ed > .nav-menu {
                 transition: max-height $nav-animation-time * 2 ease-in;
                 max-height: 2000px;
             }
@@ -171,7 +170,7 @@
                     overflow: hidden;
                 }
 
-                &[aria-expanded="true"] > .nav-menu {
+                &.expand.ed > .nav-menu {
                     display: block;
                 }
             }
@@ -412,21 +411,6 @@
         transition: opacity 0.5s, height 0.001s 0.5s, width 0.001s 0.5s;
     }
 
-    #nav-toggle-check {
-        display: none;
-    }
-
-    html.noscript #nav-toggle-check:checked ~ #nav-toggle-group,
-    html.noscript #nav-toggle-check:checked ~ .header-group #nav-toggle-group,
-    html.active-nav .area-header {
-        .head-overlay {
-            width: 100vw;
-            height: 100vh;
-            opacity: 0.75;
-            transition: opacity 0.5s;
-        }
-    }
-
     #mercury-page {
         position: relative;
     }
@@ -478,7 +462,6 @@
             }
         }
 
-        html.noscript #nav-toggle-check:checked ~ .header-group,
         html.active-nav .area-header .header-group {
             .nav-main-container {
                 opacity: 1;
@@ -487,16 +470,16 @@
 
             @if ($nav-mobile-position == right) {
                 // this expands the arrow links to the right so they can be touch-clicked easier
-                li[aria-expanded] > a::after {
+                li.expand > a::after {
                     right: $nav-mobile-box-offset;
                 }
-                li[aria-expanded] > a {
+                li.expand > a {
                     padding-right: 2 * $nav-mobile-box-offset !important;
                 }
 
                 @if ($nav-mobile-box-offset-xs != $nav-mobile-box-offset) {
                     @include media-breakpoint-down(xs) {
-                        li[aria-expanded] > a::after {
+                        li.expand > a::after {
                             right: $nav-mobile-box-offset-xs;
                         }
                     }
@@ -641,7 +624,7 @@
                 }
             }
 
-            &:last-of-type:not([aria-expanded]) {
+            &:last-of-type:not(.expand) {
                 > a {
                     padding-right: 0;
                 }
@@ -652,9 +635,9 @@
             &.active > a,
             &.active > a:focus,
             &.active > a:hover,
-            &[aria-expanded="true"] > a,
-            &[aria-expanded="true"] > a:focus,
-            &[aria-expanded="true"] > a:hover {
+            &.expand.ed > a,
+            &.expand.ed > a:focus,
+            &.expand.ed > a:hover {
                 text-decoration: none;
                 color: $nav-header-text-hover;
                 margin-bottom: 0;
@@ -665,14 +648,14 @@
                 color: $nav-header-text-active;
             }
 
-            &[aria-expanded="true"] > a.nav-label + a[aria-controls] {
+            &.expand.ed > a.nav-label + a[aria-controls] {
                 // special case for pages in main navigation with direct subpages
                 display: none;
             }
 
-            &[aria-expanded] {
+            &.expand  {
                 > a {
-                    // if NOT li[aria-expanded], then this is a single head link that can be clicked
+                    // if NOT li.expand, then this is a single head link that can be clicked
                     // cursor: default; // mercury header links can always be clicked on desktop
 
                     @if ($nav-header-show-arrows == true) {
@@ -734,7 +717,7 @@
             }
         }
 
-        [aria-expanded="true"] > .nav-menu {
+        .expand.ed > .nav-menu {
             // show menus if expanded
             display: block;
         }
@@ -798,7 +781,7 @@
                 border-bottom: none;
             }
 
-            &[aria-expanded="true"] > a {
+            &.expand.ed > a {
                 color: $nav-text-hover;
                 background-color: $nav-bg-hover;
             }
@@ -818,7 +801,7 @@
             }
         }
 
-        [aria-expanded] {
+        .expand {
             // sublevel menus
             position: relative;
 
@@ -850,7 +833,6 @@
                     padding-right: 0;
                     top: 0;
                     right: 0;
-                    font-size: 0;
                 }
             }
 
@@ -858,7 +840,7 @@
                 // adjust submenus to open left / right for submenus
                 // CSS classes will be set by JavaScript
                 &,
-                [aria-expanded] {
+                .expand {
                     > .nav-menu {
                         left: auto;
                         right: $nav-menu-min-width;
@@ -869,9 +851,9 @@
                     }
                 }
 
-                [aria-expanded].open-right {
+                .expand.open-right {
                     &,
-                    [aria-expanded] {
+                    .expand {
                         > .nav-menu {
                             left: 100%;
                             right: auto;
@@ -889,7 +871,7 @@
                     }
                 }
 
-                [aria-expanded].open-right a {
+                .expand.open-right a {
                     &[aria-controls]::after {
                         content: "\f105";
                     }
@@ -912,8 +894,7 @@
 
     // the button used to show / hide the nav on small screens
     // this is not visible in desktop menu
-    #nav-toggle-group,
-    #nav-toggle-check {
+    #nav-toggle-group {
         display: none;
     }
 
@@ -938,7 +919,7 @@
             width: 100%;
         }
 
-        &[aria-expanded] > a {
+        &.expand > a {
             padding-right: 0;
             &::after {
                 content: ""; // no arrow here
@@ -970,7 +951,7 @@
                 background-color: $nav-megamenu-bg;
             }
 
-            .nav-main-items > li[aria-expanded].mega {
+            .nav-main-items > li.expand.mega {
                 position: static;
             }
 
@@ -986,7 +967,7 @@
     html.keyboard-nav .nav-main-items {
         // Keyboard navigation
         // Special focus highlighting - requires JS to set class at html top element
-        > li[aria-expanded] > a {
+        > li.expand > a {
             &:focus::after {
                 // special formatting for text navigation
                 content: "\f107"; // arrow pointing down forced on focus

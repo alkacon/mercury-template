@@ -47,10 +47,12 @@
         <c:choose>
             <c:when test="${temlateVariant eq 'burger'}">
                 <div class="nav-menu-header"><%----%>
-                    <div id="nav-toggle-label-close" class="nav-menu-toggle nav-toggle-label"><%----%>
-                        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
-                            <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
-                        </button><%----%>
+                    <div class="nav-menu-toggle"><%----%>
+                        <span id="nav-toggle-label-close" class="nav-toggle-label"><%----%>
+                            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
+                                <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                            </button><%----%>
+                        </span><%----%>
                     </div><%----%>
                     <c:if test="${(cssWrapper ne 'no-image') and (not empty logoImage)}">
                         <div class="nav-menu-logo"><%----%>
@@ -98,7 +100,7 @@
             <c:if test="${not empty metaLinkElements}">
                 <c:set var="metaLinksHtml">
                     <c:set var="metaLinksequence" value="${metaLinkElements.get(0).toXml}" />
-                    <li id="nav-main-addition" aria-expanded="false" class="hidden-lg hidden-xl"><%----%>
+                    <li id="nav-main-addition" class="expand hidden-lg hidden-xl"><%----%>
                         <a href="#" title="Search" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${metaLinksequence.value.Title}</a><%----%>
                         <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
                             <mercury:nl />
@@ -183,10 +185,9 @@
                 </c:otherwise>
             </c:choose>
 
-            <c:set var="menuType" value="${empty menuType ? '' : ' class=\"'.concat(menuType).concat('\"')}" />
-            <c:set var="menuType" value="${startSubMenu or hasMegaMenu ? menuType.concat(' aria-expanded=\"false\"') : menuType}" />
+            <c:set var="menuType" value="${startSubMenu or hasMegaMenu ? menuType.concat(' expand') : menuType}" />
 
-            <c:out value='<li${menuType}${megaMenu}>${empty menuType ? "" : nl}' escapeXml="false" />
+            <c:out value='<li class="${menuType}"${megaMenu}>${empty menuType ? "" : nl}' escapeXml="false" />
 
             <c:set var="navText"><c:out value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
                 ? navElem.title : navElem.navText}" /></c:set>
@@ -197,22 +198,25 @@
                 <c:when test="${startSubMenu and not navElem.navigationLevel}">
                     <%-- Navigation item with sub-menu and direct child pages --%>
                     <a href="${navLink}"${navTarget}${' '}<%--
+                    --%>id="${parentLabelId}"${' '}<%--
                     --%>class="nav-label"${' '}<%--
-                    --%>title="Seite anzeigen"<%--
+                    --%>title="<fmt:message key="msg.page.navigation.showpage" />"<%--
                     --%>${'>'}${navText}</a><%----%>
 
                     <a href="${navLink}"${navTarget}${' '}<%--
-                    --%>id="${parentLabelId}"${' '}<%--
+                    --%>role="button"${' '}<%--
                     --%>aria-expanded="false"${' '}<%--
                     --%>aria-controls="${targetMenuId}"${' '}<%--
+                    --%>aria-labelledby="${parentLabelId}"<%--
                     --%>title="<fmt:message key="msg.page.navigation.sublevel" />"<%--
-                    --%>${'>'}${navText}</a><%----%>
+                    --%>${'>'}&nbsp;</a><%----%>
                 </c:when>
 
                 <c:when test="${startSubMenu}">
                     <%-- Navigation item with sub-menu but without direct child pages --%>
                     <a href="${navLink}"${navTarget}${' '}<%--
                     --%>id="${parentLabelId}"${' '}<%--
+                    --%>role="button"${' '}<%--
                     --%>aria-expanded="false"${' '}<%--
                     --%>aria-controls="${targetMenuId}"${' '}<%--
                     --%>title="<fmt:message key="msg.page.navigation.sublevel" />"<%--
@@ -226,7 +230,7 @@
                         <%-- mega menu requires aria-controls - will be removed by JavaScript if mega menu is not displayed in mobile --%>
                         aria-controls="${targetMenuId}"${' '}<%----%>
                     </c:if>
-                    <%----%>title="Seite anzeigen"<%--
+                    <%----%>title="<fmt:message key="msg.page.navigation.showpage" />"<%--
                     --%>${'>'}${navText}</a><%----%>
                 </c:otherwise>
             </c:choose>
@@ -259,8 +263,8 @@
         </c:if>
 
         <c:if test="${showSearch}">
-            <li id="nav-main-search" aria-expanded="false"><%----%>
-                <a href="#" title="<fmt:message key="msg.page.search" />" aria-controls="nav_nav-main-search" id="label_nav-main-search"><%----%>
+            <li id="nav-main-search" class="expand"><%----%>
+                <a href="#" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search"><%----%>
                     <span class="search search-btn fa fa-search"></span><%----%>
                 </a><%----%>
                 <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>
@@ -270,7 +274,9 @@
                                 <div class="input button"><%----%>
                                     <label for="searchNavQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                                     <input id="searchNavQuery" name="q" type="text" class="blur-focus" autocomplete="off" placeholder='<fmt:message key="msg.page.search.enterquery" />' /><%----%>
-                                    <button class="btn" type="button" onclick="this.form.submit(); return false;"><fmt:message key="msg.page.search.submit" /></button><%----%>
+                                    <button class="btn" type="button" title="<fmt:message key="msg.page.search" />" onclick="this.form.submit(); return false;"><%----%>
+                                        <fmt:message key="msg.page.search.submit" /><%----%>
+                                    </button><%----%>
                                 </div><%----%>
                             </form><%----%>
                         </div><%----%>

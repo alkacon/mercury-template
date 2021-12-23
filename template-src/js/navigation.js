@@ -62,7 +62,7 @@ function setKeyboardNavPermanent(active) {
     if (m_keyboardNavPermanent) {
         setKeyboardClass(true);
         jQ('#keyboard-toggle').attr("aria-checked", "true");
-        PrivacyPolicy.setCookie(KEYBOARD_PERMANENT, "true", { expires: Number(7) });
+        PrivacyPolicy.setCookie(KEYBOARD_PERMANENT, "true");
     } else {
         jQ('#keyboard-toggle').attr("aria-checked", "false");
         PrivacyPolicy.removeCookie(KEYBOARD_PERMANENT);
@@ -103,7 +103,7 @@ function initMegaMenu() {
     if (DEBUG) console.info("Navigation.initMegaMenu()");
 
     if (Mercury.gridInfo().isMobileNav()) {
-        // .mega-only marks mega menus that are a) not displayed in mobile and b) have no submenu
+        // .mega-only marks mega menus that a) are not displayed in mobile and b) have no submenu
         var $megaMenus = jQ(".mega-only[data-megamenu]");
         if (DEBUG) console.info("Navigation.initMegaMenu() .mega-only[data-megamenu] elements found: " + $megaMenus.length);
         $megaMenus.each(function() {
@@ -150,32 +150,32 @@ function initMenu() {
     if (initMenuStatus != lastInitMenuStatus) {
         lastInitMenuStatus = initMenuStatus;
         // Close all menus
-        var $allMenus = jQ('.nav-main-items li[aria-expanded]');
-        if (DEBUG) console.info("Navigation.initMenu() .nav-main-items [aria-expanded] elements found: " + $allMenus.length);
+        var $allMenus = jQ('.nav-main-items li.expand');
+        if (DEBUG) console.info("Navigation.initMenu() .nav-main-items li.expand elements found: " + $allMenus.length);
         if ($allMenus.length > 0 ) {
             $allMenus.children("[aria-expanded]").attr('aria-expanded', false);
-            $allMenus.attr("aria-expanded", false);
+            $allMenus.removeClass("ed");
         }
         if (Mercury.gridInfo().isMobileNav()) {
             // Activate current menu position
-            var $activeMenus = jQ('.nav-main-items [aria-expanded].active');
-            if (DEBUG) console.info("Navigation.initMenu() .nav-main-items [aria-expanded].active elements found: " + $activeMenus.length);
+            var $activeMenus = jQ('.nav-main-items li.expand.active');
+            if (DEBUG) console.info("Navigation.initMenu() .nav-main-items li.expand.active elements found: " + $activeMenus.length);
             if ($activeMenus.length > 0 ) {
                 $activeMenus.children("[aria-expanded]").attr('aria-expanded', true);
-                $activeMenus.attr("aria-expanded", true);
+                $activeMenus.addClass("ed");
             }
         }
     }
 }
 
 function resetMenu($menuToggle) {
-    jQ(".nav-main-items li[aria-expanded]").each(function(i) {
+    jQ(".nav-main-items li.expand").each(function() {
         if (!$menuToggle || !jQ.contains(this, $menuToggle[0])) {
             var $this = jQ(this);
+            $this.removeClass("ed");
             $this.removeClass("open-left");
             $this.removeClass("open-right");
             $this.children("[aria-expanded]").attr('aria-expanded', false);
-            $this.attr("aria-expanded", false);
             $this.find(".nav-menu").first().css("right", "");
         }
     });
@@ -190,7 +190,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
     var eventTouchstart = event.type == "touchstart";
     var eventClick = event.type == "click";
 
-    var expanded = $submenu.attr("aria-expanded") == "true";
+    var expanded = $submenu.hasClass("ed");
     var stopEventPropagation = false;
 
     if (eventMouseenter && m_menuTimeout) {
@@ -201,13 +201,19 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
     }
 
     if (Mercury.gridInfo().isDesktopNav()) {
-        if (VERBOSE) console.info("Navigation.toggleMenu, isDesktopNav=true eventMouseenter=" + eventMouseenter + " eventMouseleave=" + eventMouseleave);
+        if (eventClick && m_keyboardNavActive) {
+            // screen reades like NVDA will send click instead of keydown
+            eventKeydown = true;
+            eventClick = false;
+        }
+        if (VERBOSE) console.info("Navigation.toggleMenu, isDesktopNav=true eventMouseenter=" + eventMouseenter + " eventMouseleave=" + eventMouseleave, $submenu ,$menuToggle);
         // desktop navigation
         var $targetmenu = jQ("#" + targetmenuId).first();
         if (!expanded && (eventMouseenter || eventKeydown || eventTouchstart)) {
             stopEventPropagation = true;
             resetMenu($menuToggle);
-            $submenu.attr("aria-expanded", true);
+            $submenu.addClass("ed");
+            $submenu.children("[aria-expanded]").attr('aria-expanded', true);
             if ($submenu.parent().hasClass("nav-main-items")) {
                 // this is a toplevel menu entry
                 if ($targetmenu.offset().left + $targetmenu.outerWidth() > Mercury.windowWidth()) {
@@ -239,12 +245,14 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
                 if (!$submenu.parent().hasClass("nav-main-items")) {
                     // stopEventPropagation must remain false, otherwise top level menus would not close
                     m_subMenuTimeout = setTimeout(function() {
-                        $submenu.attr("aria-expanded", false);
+                        $submenu.removeClass("ed");
+                        $submenu.children("[aria-expanded]").attr('aria-expanded', false);
                     }, 375);
                 }
             } else {
                 stopEventPropagation = true;
-                $submenu.attr("aria-expanded", false);
+                $submenu.removeClass("ed");
+                $submenu.children("[aria-expanded]").attr('aria-expanded', false);
             }
         }
     } else if (eventTouchstart || eventClick) {
@@ -252,7 +260,11 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
         stopEventPropagation = true;
         resetMenu($menuToggle);
         $submenu.children("[aria-expanded]").attr('aria-expanded', !expanded);
-        $submenu.attr("aria-expanded", !expanded);
+        if (expanded) {
+            $submenu.removeClass("ed");
+        } else {
+            $submenu.addClass("ed");
+        }
     }
 
     if (stopEventPropagation) {
@@ -278,7 +290,7 @@ function toggleHeadNavigation() {
 function initHeadNavigation() {
 
     // If the mouse leaves a toplevel menu, set a timeout to close the menu
-    jQ('.nav-main-items > li[aria-expanded]').on('mouseleave', function(e) {
+    jQ('.nav-main-items > li.expand').on('mouseleave', function(e) {
         if (m_subMenuTimeout) {
             clearTimeout(m_subMenuTimeout);
         }
@@ -288,7 +300,7 @@ function initHeadNavigation() {
     });
 
     // If the mouse enters a toplevel menu, close all other menus
-    jQ('.nav-main-items > li > a').on('mouseenter', function(e) {
+    jQ('.nav-main-items > li > a:last-of-type:not([aria-controls])').on('mouseenter', function(e) {
         // This will be triggered only for toplevel menu items
         if (Mercury.gridInfo().isDesktopNav()) {
             if (m_menuTimeout) {
@@ -308,7 +320,7 @@ function initHeadNavigation() {
     if ($menuToggles.length > 0 ) {
         $menuToggles.each(function() {
 
-            // initialize menus with values from data attributes
+            // initialize menus with values from aria attributes
             var $menuToggle = jQ(this);
             var targetmenuId = $menuToggle.attr("aria-controls");
             if (typeof targetmenuId !== 'undefined') {

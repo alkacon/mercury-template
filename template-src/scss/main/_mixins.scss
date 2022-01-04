@@ -245,6 +245,50 @@
     @include button-color($btn-default, $btn-default-hover, $btn-disabled);
 }
 
+// Reset buttons
+@mixin reset-button {
+    padding: 0;
+    text-align: inherit;
+    user-select: initial;
+    @if ($btn-border-style != none) {
+        border: none;
+    }
+    @if ($btn-white-space != normal) {
+        white-space: normal;
+    }
+    @if ($btn-text-transform != none) {
+        text-transform: none;
+    }
+    @if ($btn-min-width > 0) {
+        min-width: 0;
+    }
+    @if ($btn-font-family != $font-family-base) {
+        font-family: inherit;
+    }
+    @if ($btn-font-size != $font-size-base) {
+        font-size: inherit;
+    }
+    @if ($btn-font-weight != $font-weight-base) {
+        font-weight: inherit;
+    }
+    @if ($btn-line-height != $line-height-base) {
+        line-height: inherit;
+    }
+    border-radius: 0;
+    background-color: inherit;
+    color: $link-color;;
+    text-decoration: $link-decoration;
+
+    &:focus,
+    &:hover,
+    &.active {
+        color: $link-hover-color;
+        background-color: inherit;
+        text-decoration: $link-hover-decoration;
+        border: none;
+    }
+}
+
 // Font size REM rebasing, usually on the HTML element
 @mixin rem-base {
     @if ($font-rem-base-mobile-size != $font-rem-base-desktop-size) {

@@ -13,7 +13,6 @@
 <cms:formatter var="content" val="value">
 
 <c:set var="variant"            value="${value.Variant}" />
-<c:set var="subVariantFull"     value="${param.subvariant eq 'full'}" />
 <c:set var="setting"            value="${cms.element.setting}" />
 <c:set var="detailContainer"    value="${setting.detailContainer.toString}" />
 <c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(setting.cssWrapper.toString) : ''}" />
@@ -33,22 +32,12 @@
         <c:set target="${valueMap}" property="Type"             value="${mainDetailType}"/>
         <c:set target="${valueMap}" property="Name"             value="maincol"/>
         <c:set target="${valueMap}" property="Css"              value="row-12${cssWrapper}" />
-        <c:choose>
-            <c:when test="${subVariantFull}">
-                <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'fullwidth'}}" />
-                <div class="container"><%----%>
-                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
-                </div><%----%>
-            </c:when>
-            <c:otherwise>
-                <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'col-xs-12'}}" />
-                <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
-            </c:otherwise>
-        </c:choose>
+        <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'col-xs-12'}}" />
+        <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
     </c:when>
     <c:when test="${variant eq 'adjust'}">
         <%-- lr_00013 --%>
-        <c:set var="colWidth"           value="${cms.element.setting.colWidth.validate(['6','7','8','9','10','11','12'],'10').toInteger}" />
+        <c:set var="colWidth"           value="${setting.colWidth.validate(['6','7','8','9','10','11','12'],'10').toInteger}" />
         <div class="row justify-content-lg-center${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -58,7 +47,7 @@
     </c:when>
     <c:when test="${variant eq '3-9'}">
         <%-- lr_00002 --%>
-        <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -73,7 +62,7 @@
     </c:when>
     <c:when test="${variant eq '4-8'}">
         <%-- lr_00003 --%>
-        <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -88,7 +77,7 @@
     </c:when>
     <c:when test="${variant eq '6-6'}">
         <%-- lr_00004 --%>
-        <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -102,7 +91,7 @@
     </c:when>
     <c:when test="${variant eq '6-6-sm'}">
         <%-- lr_00005 --%>
-        <c:set var="colCss"            value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"            value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -117,7 +106,7 @@
     </c:when>
     <c:when test="${variant eq '6-6-md'}">
         <%-- lr_00006 --%>
-        <c:set var="colCss"            value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"            value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -132,7 +121,7 @@
     </c:when>
     <c:when test="${variant eq '9-3'}">
         <%-- lr_00007 --%>
-        <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -147,7 +136,7 @@
     </c:when>
     <c:when test="${variant eq '8-4'}">
         <%-- lr_00008 --%>
-        <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}">
             <mercury:nl />
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
@@ -163,45 +152,25 @@
     </c:when>
     <c:when test="${variant eq '4-4-4'}">
         <%-- lr_00009 --%>
-        <c:choose>
-            <c:when test="${subVariantFull}">
-                <div class="row no-gutters row-cols-1 row-cols-lg-3${cssWrapper}"><%----%>
-                    <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
-                    <c:set target="${valueMap}" property="Name"         value="maincol"/>
-                    <c:set target="${valueMap}" property="Css"          value="col${colCss}${reverseOrder ? ' order-last order-lg-first' : ''}" />
-                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
-                    <c:set target="${valueMap}" property="Type"         value="element"/>
-                    <c:set target="${valueMap}" property="Name"         value="sidecol"/>
-                    <c:set target="${valueMap}" property="Css"          value="col${colCss}" />
-                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
-                    <c:set target="${valueMap}" property="Name"         value="addcol1"/>
-                    <c:set target="${valueMap}" property="Css"          value="col${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
-                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
-                    <mercury:nl />
-                </div><%----%>
-            </c:when>
-            <c:otherwise>
-                <c:set var="colCss"            value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
-                <div class="row${cssWrapper}"><%----%>
-                    <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
-                    <c:set target="${valueMap}" property="Name"         value="maincol"/>
-                    <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-last order-lg-first' : ''}" />
-                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
-                    <c:set target="${valueMap}" property="Type"         value="element"/>
-                    <c:set target="${valueMap}" property="Name"         value="sidecol"/>
-                    <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}" />
-                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
-                    <c:set target="${valueMap}" property="Name"         value="addcol1"/>
-                    <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
-                    <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
-                    <mercury:nl />
-                </div><%----%>
-            </c:otherwise>
-        </c:choose>
+        <c:set var="colCss"            value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <div class="row${cssWrapper}"><%----%>
+            <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
+            <c:set target="${valueMap}" property="Name"         value="maincol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-last order-lg-first' : ''}" />
+            <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
+            <c:set target="${valueMap}" property="Type"         value="element"/>
+            <c:set target="${valueMap}" property="Name"         value="sidecol"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}" />
+            <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
+            <c:set target="${valueMap}" property="Name"         value="addcol1"/>
+            <c:set target="${valueMap}" property="Css"          value="col-lg-4${colCss}${reverseOrder ? ' order-first order-lg-last' : ''}" />
+            <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
+            <mercury:nl />
+        </div><%----%>
     </c:when>
     <c:when test="${variant eq '3-3-3-3'}">
         <%-- lr_00010 --%>
-        <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -222,7 +191,7 @@
     </c:when>
     <c:when test="${variant eq '2-2-2-2-2-2'}">
         <%-- lr_00011 --%>
-        <c:set var="colCss"             value="${cms.element.setting.useFlex.toBoolean ? ' flex-col' : ''}" />
+        <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
@@ -249,21 +218,22 @@
     </c:when>
     <c:when test="${variant eq 'tile-row'}">
         <%-- lr_00012 - special row for tiles --%>
-        <c:set var="useSquare"                                  value="${cms.element.settings.tileCss eq 'square'}" />
-        <c:set var="useTile"                                    value="${not useSquare and not (cms.element.settings.tileCss eq 'none')}" />
+        <c:set var="tileCss"                                    value="${setting.tileCss.toString}" />
+        <c:set var="tileMargin"                                 value="${setting.tileMargin.toString}" />
+
+        <c:set var="useSquare"                                  value="${tileCss eq 'square'}" />
+        <c:set var="useTile"                                    value="${not useSquare and not (tileCss eq 'none')}" />
         <c:set var="params"                                     value="${{'cssgrid': 'col-xs-12'}}" />
         <c:choose>
             <c:when test="${useSquare}">
                 <%-- Generate square row --%>
-                <c:set var="squareMargin"                       value="square-m-${fn:substringAfter(cms.element.settings.tileMargin, 'tile-margin-')}" />
+                <c:set var="squareMargin"                       value="square-m-${fn:substringAfter(tileMargin, 'tile-margin-')}" />
                 <c:set target="${valueMap}" property="Type"     value="square"/>
                 <c:set target="${valueMap}" property="Css"      value="${'row-square '}${squareMargin}${cssWrapper}" />
                 <c:set target="${params}"   property="tilegrid" value="" />
             </c:when>
             <c:when test="${useTile}">
                 <%-- Generate tile row --%>
-                <c:set var="tileCss"                            value="${cms.element.settings.tileCss}" />
-                <c:set var="tileMargin"                         value="${cms.element.settings.tileMargin}" />
                 <c:set target="${valueMap}" property="Type"     value="tile"/>
                 <c:set target="${valueMap}" property="Css"      value="${'row-tile '}${tileMargin}${cssWrapper}" />
                 <c:set target="${params}"   property="tilegrid" value="${tileCss}" />
@@ -280,8 +250,6 @@
     </c:when>
     <c:when test="${variant eq 'area-one-row'}">
         <%-- la_00001 --%>
-        <c:set var="areaType" value="${setting.areaType.validate(['default','full'],'default').toString}" />
-
         <c:set var="bgImage" value="${setting.bgImage.toLink}" />
         <c:set var="bgSpacing" value="${setting.bgSpacing.isSetNotNone ? setting.bgSpacing.toString : null}" />
         <c:set var="bgColor" value="${setting.bgColor.isSetNotNone ? setting.bgColor.toString : null}" />
@@ -307,26 +275,12 @@
         <c:if test="${not empty styleAttr}">
               <c:set var="styleAttr"> style="${styleAttr}"</c:set>
         </c:if>
-
-        <c:choose>
-            <c:when test="${areaType eq 'full'}">
-                <c:set var="tagCss" value="area-wide sv-full" />
-                <c:set var="tagParams" value="${{'subvariant': 'full'}}" />
-            </c:when>
-            <c:otherwise>
-                <c:set var="tagCss" value="container area-wide" />
-            </c:otherwise>
-        </c:choose>
-
         <main class="area-content ${variant}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"${styleAttr}>
             <%-- Since the cssWrapper has been manipulated, it is required to add the ' ' prefix again. --%>
             <c:set target="${valueMap}" property="Type"             value="row" />
             <c:set target="${valueMap}" property="Name"             value="main" />
             <c:set target="${valueMap}" property="Tag"              value="div" />
-            <c:set target="${valueMap}" property="Css"              value="${tagCss}" />
-            <c:if test="${not empty tagParams}">
-                <c:set target="${valueMap}" property="Parameters"       value="${tagParams}" />
-            </c:if>
+            <c:set target="${valueMap}" property="Css"              value="container area-wide" />
             <mercury:container value="${valueMap}" title="${value.Title}" />
         </main>
     </c:when>
@@ -334,7 +288,7 @@
         <%-- la_00002 / la_00003 --%>
         <c:set var="asideFirst"                 value="${variant eq 'area-side-main'}" />
         <c:set var="asideWide"                  value="${'true' eq cms.vfs.readResource[cms.requestContext.uri].propertySearch['mercury.side.wide']}" />
-        <c:set var="asideOnTop"                 value="${cms.element.setting.asideOnTop.toBoolean}" />
+        <c:set var="asideOnTop"                 value="${setting.asideOnTop.toBoolean}" />
         <main class="area-content ${variant}${cssWrapper}"><%----%>
             <div class="container"><%----%>
                 <div class="row"><%----%>

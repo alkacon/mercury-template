@@ -12,6 +12,7 @@
 
     <xsd:complexType name="OpenCmsAddress">
         <xsd:sequence>
+            <xsd:element name="Name" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="StreetAddress" type="OpenCmsString" />
             <xsd:element name="ExtendedAddress" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="PostalCode" type="OpenCmsString" />
@@ -25,6 +26,12 @@
     <xsd:annotation>
         <xsd:appinfo>
             <FieldSettings>
+                <Setting>
+                    <PropertyName>Name</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ExtendedAddress.Name)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ExtendedAddress.Name.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
                 <Setting>
                     <PropertyName>StreetAddress</PropertyName>
                     <DisplayName><![CDATA[%(key.label.StreetAddress)]]></DisplayName>

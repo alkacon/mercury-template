@@ -124,6 +124,10 @@
                     <Description><![CDATA[%(key.label.Contact.Contact.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>Contact/AddressChoice/Address/Name</PropertyName>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
                     <PropertyName>Title</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>

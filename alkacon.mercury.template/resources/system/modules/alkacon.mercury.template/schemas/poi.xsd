@@ -55,6 +55,10 @@
                     <Description><![CDATA[%(key.label.Address.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>Address/Name</PropertyName>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
                     <PropertyName>Facilities</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Poi.Facilities)]]></DisplayName>
                 </Setting>

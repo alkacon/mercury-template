@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>12.0.54</version>
+		<version>12.0.56</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -5886,23 +5886,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/schemas/nested/address-choice-extended.xsd</source>
-			<destination>system/modules/alkacon.mercury.template/schemas/nested/address-choice-extended.xsd</destination>
-			<type>plain</type>
-			<uuidstructure>cade43bf-9abf-4e84-807f-c14cefa28862</uuidstructure>
-			<uuidresource>d5d70dbf-d779-4e71-a51d-5c8d27261ba9</uuidresource>
-			<datecreated>Tue, 15 Jan 2019 07:38:01 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Nested XSD for an extended address choice]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/address-choice.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/address-choice.xsd</destination>
 			<type>plain</type>
@@ -5914,23 +5897,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Nested XSD for an address choice]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/schemas/nested/address-extended.xsd</source>
-			<destination>system/modules/alkacon.mercury.template/schemas/nested/address-extended.xsd</destination>
-			<type>plain</type>
-			<uuidstructure>ea3086d5-1f2c-4702-aba4-602ac15ffa88</uuidstructure>
-			<uuidresource>45a5d09c-36d0-4a70-a14d-73ade5422af9</uuidresource>
-			<datecreated>Tue, 15 Jan 2019 10:33:33 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Nested XSD for extended address information]]></value>
 				</property>
 			</properties>
 			<relations/>

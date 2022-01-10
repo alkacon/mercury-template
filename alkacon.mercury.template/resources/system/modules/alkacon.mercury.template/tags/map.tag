@@ -35,6 +35,10 @@
     description="If set, the map is generated as sub element of another element, e.g. from a POI.
     In this case the a surrounding div is added required for JS map initialization." %>
 
+<%@ attribute name="jsonDataOnly" type="java.lang.Boolean" required="false"
+    description="If set, only the map data are returned in JSON format. Can be used
+    for fetching map data with Ajax." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -74,6 +78,7 @@
 <c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
 <c:set var="showRoute" value="${showRoute and not isOsm}" />
 <c:set var="type" value="${isOsm ? null : type}" />
+<c:set var="jsonDataOnly" value="${not empty jsonDataOnly ? jsonDataOnly : false}" />
 
 <%-- Set zoom level --%>
 <c:choose>
@@ -158,39 +163,46 @@
 
 <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.map-${provider}" />
 
-<c:if test="${not empty subelementWrapper}">
-${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
-<mercury:nl />
-</c:if>
-
-<mercury:padding-box ratio="${ratio}">
-
-    ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
-    --%>data-map='${mapData.compact}'<%--
-    --%><mercury:data-external-cookies message="${cookieMessage}" test="${not noApiKey}" /><%--
-    --%><c:if test="${cms.isEditMode}">
-            <fmt:setLocale value="${cms.workplaceLocale}" />
-            <cms:bundle basename="alkacon.mercury.template.messages">
-                <c:choose>
-                    <c:when test="${noApiKey}">
-                        data-placeholder='<fmt:message key="msg.page.map.${provider}.nokey" />' <%----%>
-                    </c:when>
-                    <c:otherwise>
-                        data-placeholder='<fmt:message key="msg.page.placeholder.map.${provider}" />' <%----%>
-                    </c:otherwise>
-                </c:choose>
-            </cms:bundle>
-        </c:if>
-    ${'>'}
-    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
-    ${'</div>'}
+<c:choose>
+<c:when test="${jsonDataOnly}">
+    ${mapData.compact}
+</c:when>
+<c:otherwise>
+    <c:if test="${not empty subelementWrapper}">
+    ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
     <mercury:nl />
-
-</mercury:padding-box>
-
-<c:if test="${not empty subelementWrapper}">
-${'</div>'}
-</c:if>
+    </c:if>
+    
+    <mercury:padding-box ratio="${ratio}">
+    
+        ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
+        --%>data-map='${mapData.compact}'<%--
+        --%><mercury:data-external-cookies message="${cookieMessage}" test="${not noApiKey}" /><%--
+        --%><c:if test="${cms.isEditMode}">
+                <fmt:setLocale value="${cms.workplaceLocale}" />
+                <cms:bundle basename="alkacon.mercury.template.messages">
+                    <c:choose>
+                        <c:when test="${noApiKey}">
+                            data-placeholder='<fmt:message key="msg.page.map.${provider}.nokey" />' <%----%>
+                        </c:when>
+                        <c:otherwise>
+                            data-placeholder='<fmt:message key="msg.page.placeholder.map.${provider}" />' <%----%>
+                        </c:otherwise>
+                    </c:choose>
+                </cms:bundle>
+            </c:if>
+        ${'>'}
+        <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+        ${'</div>'}
+        <mercury:nl />
+    
+    </mercury:padding-box>
+    
+    <c:if test="${not empty subelementWrapper}">
+    ${'</div>'}
+    </c:if>
+</c:otherwise>
+</c:choose>
 
 </mercury:content-properties>
 </cms:bundle>

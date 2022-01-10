@@ -51,26 +51,33 @@ function getPuempel(color) {
       '</svg>'
 }
 
-function showSingleMap(mapData){
-    m_maps[mapData.id] = new mapgl.Map({
-        container: mapData.id,
-        style: m_style,
-        center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
-        zoom: mapData.zoom,
-        interactive: false
-    });
+function showSingleMap(mapData) {
 
-    m_maps[mapData.id].on('mousedown', function (e) {
-        this.scrollZoom.enable();
-        this.dragPan.enable();
-        this.touchZoomRotate.enable();
-    });
+    if (!m_maps[mapData.id]) {
+        m_maps[mapData.id] = new mapgl.Map({
+            container: mapData.id,
+            style: m_style,
+            center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)], //TODO
+            zoom: mapData.zoom, //TODO
+            interactive: false
+        });
 
-    m_maps[mapData.id].on('click', function (e) {
-        this.scrollZoom.enable();
-        this.dragPan.enable();
-        this.touchZoomRotate.enable();
-    });
+        m_maps[mapData.id].on('mousedown', function (e) {
+            this.scrollZoom.enable();
+            this.dragPan.enable();
+            this.touchZoomRotate.enable();
+        });
+
+        m_maps[mapData.id].on('click', function (e) {
+            this.scrollZoom.enable();
+            this.dragPan.enable();
+            this.touchZoomRotate.enable();
+        });
+
+        m_maps[mapData.id].on('load', function () {
+            this.addControl(new mapgl.NavigationControl());
+        });
+    }
 
     m_maps[mapData.id].marker=[];
     var groups = {};
@@ -101,10 +108,6 @@ function showSingleMap(mapData){
             m_maps[mapData.id].marker.push(markerObject);
         }
     }
-
-    m_maps[mapData.id].on('load', function () {
-        this.addControl(new mapgl.NavigationControl());
-    });
 }
 
 function showMaps(jQ, apiKey){
@@ -152,6 +155,29 @@ export function showMarkers(mapId, group){
                 markers[i].remove();
             }
         }
+    }
+}
+
+export function updateMarkers(mapId, mapData) {
+
+    if (DEBUG) console.info("OSM update markers for map with id: " + mapId);
+    let mapDataIndex;
+    for (let i = 0; i < m_mapData.length; i++) {
+        if (m_mapData[i].id === mapId) {
+            mapDataIndex = i;
+            break;
+        }
+    }
+    const mapDataOrig = m_mapData[mapDataIndex];
+    if (!mapDataOrig) {
+        console.error("Error when updating markers. Map with id " + mapId + " not found.");
+        return;
+    }
+    mapData.id = mapId;
+    mapData.showPlaceholder = mapDataOrig.showPlaceholder;
+    m_mapData[mapDataIndex] = mapData;
+    if (!mapData.showPlaceholder) {
+        showSingleMap(mapData);
     }
 }
 

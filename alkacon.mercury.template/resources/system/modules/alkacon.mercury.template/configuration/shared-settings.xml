@@ -2248,6 +2248,17 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[schemaKind.contact]]></IncludeName>
+      <PropertyName><![CDATA[schemaKind]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showName.contact]]></IncludeName>
+      <PropertyName><![CDATA[showName]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
       <PropertyName><![CDATA[showDescription]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>

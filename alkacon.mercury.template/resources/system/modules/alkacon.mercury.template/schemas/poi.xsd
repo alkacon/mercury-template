@@ -59,6 +59,10 @@
                     <Visibility>hidden</Visibility>
                 </Setting>
                 <Setting>
+                    <PropertyName>Address/Coord</PropertyName>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
                     <PropertyName>Facilities</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Poi.Facilities)]]></DisplayName>
                 </Setting>

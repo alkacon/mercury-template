@@ -7,7 +7,7 @@
     <Key><![CDATA[m/element/meta-info]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/meta-info.jsp]]></target>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/meta-info.jsp]]></target>
         <uuid>bfcede8b-81b3-462d-a663-9a158c2317c3</uuid>
       </link>
     </Jsp>

@@ -105,12 +105,6 @@
         <c:if test="${not empty param['facet_parent-folders']}">
             <c:set var="initparams" value="${initparams}&facet_parent-folders=${param['facet_parent-folders']}" />
         </c:if>
-        <c:if test="${not empty param['pt']}">
-            <c:set var="initparams" value="${initparams}&pt=${param['pt']}" />
-        </c:if>
-        <c:if test="${not empty param['d']}">
-            <c:set var="initparams" value="${initparams}&d=${param['d']}" />
-        </c:if>
         <c:if test="${not isLoadAll and not empty param['page']}">
             <c:set var="initparams" value="${initparams}&page=${param['page']}" />
         </c:if>

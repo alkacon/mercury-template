@@ -291,6 +291,29 @@ function showSingleMap(mapData){
     m_maps[mapId] = map;
 }
 
+export function updateMarkers(mapId, mapData) {
+
+    if (DEBUG) console.info("OSM update markers for map with id: " + mapId);
+    let mapDataIndex;
+    for (let i = 0; i < m_mapData.length; i++) {
+        if (m_mapData[i].id === mapId) {
+            mapDataIndex = i;
+            break;
+        }
+    }
+    const mapDataOrig = m_mapData[mapDataIndex];
+    if (!mapDataOrig) {
+        console.error("Error when updating markers. Map with id " + mapId + " not found.");
+        return;
+    }
+    mapData.id = mapId;
+    mapData.showPlaceholder = mapDataOrig.showPlaceholder;
+    m_mapData[mapDataIndex] = mapData;
+    if (!mapData.showPlaceholder) {
+        showSingleMap(mapData);
+    }
+}
+
 export function initGoogleMaps() {
 
     if (DEBUG) console.info("GoogleMap initGoogleMaps() called with data for " + m_mapData.length + " maps!" );

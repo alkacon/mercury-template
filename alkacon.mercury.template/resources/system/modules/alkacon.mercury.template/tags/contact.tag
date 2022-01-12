@@ -32,6 +32,9 @@
 <%@ attribute name="data" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact data that includes address, telephone etc. From nested schema type contact-data." %>
 
+<%@ attribute name="address" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
+    description="Value wrapper for the contact data that includes the address (or link a to a POI). From nested schema type address." %>
+
 <%@ attribute name="hsize" type="java.lang.Integer" required="false"
     description="The heading level of the contact headline. Default is '3'." %>
 
@@ -88,22 +91,25 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
+<c:set var="addressData"        value="${empty address ? data.value.AddressChoice : address}"/>
+
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}"/>
-<c:set var="showName"           value="${showName and name.isSet}"/>
-<c:set var="showPosition"       value="${showPosition and position.isSet}"/>
-<c:set var="showImage"          value="${showImage and image.isSet}" />
-<c:set var="showOrganization"   value="${showOrganization and organization.isSet}"/>
-<c:set var="showDescription"    value="${showDescription and description.isSet}"/>
-<c:set var="showAddressAlways"  value="${showAddressAlways and data.isSet}"/>
-<c:set var="showAddress"        value="${showAddressAlways or (showAddress and data.isSet)}"/>
-<c:set var="showPhone"          value="${showPhone and data.isSet}"/>
-<c:set var="showWebsite"        value="${showWebsite and data.isSet and data.value.Website.isSet}"/>
-<c:set var="showEmail"          value="${showEmail and data.isSet and data.value.Email.isSet and data.value.Email.value.Email.isSet}"/>
+<c:set var="showName"           value="${showName and (not empty name)}"/>
+<c:set var="showPosition"       value="${showPosition and (not empty position)}"/>
+<c:set var="showImage"          value="${showImage and (not empty image)}" />
+<c:set var="showOrganization"   value="${showOrganization and (not empty organization)}"/>
+<c:set var="showDescription"    value="${showDescription and (not empty description)}"/>
+<c:set var="showAddressAlways"  value="${showAddressAlways and (not empty data or not empty addressData)}"/>
+<c:set var="showAddress"        value="${showAddressAlways or (showAddress and (not empty data or not empty addressData))}"/>
+<c:set var="showPhone"          value="${showPhone and (not empty data)}"/>
+<c:set var="showWebsite"        value="${showWebsite and (not empty data) and (not empty data.value.Website)}"/>
+<c:set var="showEmail"          value="${showEmail and (not empty data) and (not empty data.value.Email) and (not empty data.value.Email.value.Email)}"/>
+
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<%-- #### This is not choice since a value "label-text-label-icon" is also possible #### --%>
+<%-- #### This is not a choice since a value "label-text-label-icon" is also possible #### --%>
 <c:if test="${fn:contains(labelOption, 'label-text')}">
     <c:set var="showTextLabels" value="${true}" />
 </c:if>
@@ -128,7 +134,7 @@
 
 <%-- #### Contact exposed as 'Person' or 'Organization', see http://schema.org/ #### --%>
 <c:choose>
-    <c:when test="${showImage and not empty name}">
+    <c:when test="${showImage and (not empty name)}">
         <c:set var="persontxtname">
             <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
             ${name.value.FirstName}${' '}
@@ -145,7 +151,7 @@
             </c:when>
         </c:choose>
     </c:when>
-    <c:when test="${showImage and not empty organization and (kind eq 'org')}">
+    <c:when test="${showImage and (not empty organization) and (kind eq 'org')}">
         <c:set var="imgtitle" value="${organization}" />
     </c:when>
 </c:choose>
@@ -165,23 +171,25 @@
         <div class="text-box"><%----%>
         <mercury:nl />
 
-            <c:set var="personname">
-                <c:if test="${name.value.Title.isSet}">
-                    <span itemprop="honorificPrefix" ${name.value.Title.rdfaAttr}>${name.value.Title}${' '}</span><%----%>
-                </c:if>
-                <span itemprop="givenName" ${name.value.FirstName.rdfaAttr}> ${name.value.FirstName}</span><%----%>
-                <c:if test="${name.value.MiddleName.isSet}">
-                    <span itemprop="additionalName" ${name.value.MiddleName.rdfaAttr}> ${name.value.MiddleName}</span><%----%>
-                </c:if>
-                <span itemprop="familyName" ${name.value.LastName.rdfaAttr}> ${name.value.LastName}</span><%----%>
-                <c:if test="${name.value.Suffix.isSet}">
-                    <span itemprop="honorificSuffix"  ${name.value.Suffix.rdfaAttr}> ${name.value.Suffix}</span><%----%>
-                </c:if>
-            </c:set>
+            <c:if test="${showName}">
+                <c:set var="personname">
+                    <c:if test="${name.value.Title.isSet}">
+                        <span itemprop="honorificPrefix">${name.value.Title}${' '}</span><%----%>
+                    </c:if>
+                    <span itemprop="givenName"> ${name.value.FirstName}</span><%----%>
+                    <c:if test="${name.value.MiddleName.isSet}">
+                        <span itemprop="additionalName"> ${name.value.MiddleName}</span><%----%>
+                    </c:if>
+                    <span itemprop="familyName"> ${name.value.LastName}</span><%----%>
+                    <c:if test="${name.value.Suffix.isSet}">
+                        <span itemprop="honorificSuffix"> ${name.value.Suffix}</span><%----%>
+                    </c:if>
+                </c:set>
+            </c:if>
 
             <c:choose>
                 <c:when test="${kind eq 'org'}">
-                    <c:if test="${organization.isSet}">
+                    <c:if test="${showOrganization}">
                         <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" text="${organization}" ade="${false}"/>
                     </c:if>
                     <c:if test="${showOrganization and (showName or showPosition)}">
@@ -191,7 +199,7 @@
                                 <div class="h${hsize + 1} org">${personname}</div><%----%>
                             </c:if>
                             <c:if test="${showPosition}"><%----%>
-                                <div class="pos" itemprop="description" class="title" ${position.rdfaAttr}><%----%>
+                                <div class="pos" itemprop="description" class="title"><%----%>
                                     ${position}
                                 </div><%----%>
                             </c:if>
@@ -204,19 +212,19 @@
                             <jsp:attribute name="markupText">${personname}</jsp:attribute>
                         </mercury:heading>
                         <c:if test="${showPosition}">
-                            <div class="h${hsize + 1} pos" itemprop="description" class="title" ${position.rdfaAttr}><%----%>
+                            <div class="h${hsize + 1} pos" itemprop="description" class="title"><%----%>
                                 ${position}
                             </div><%----%>
                         </c:if>
                     </c:if>
                     <c:if test="${showOrganization}">
-                        <div class="org" itemprop="worksFor" ${organization.rdfaAttr}>${organization}</div><%----%>
+                        <div class="org" itemprop="worksFor">${organization}</div><%----%>
                     </c:if>
                 </c:otherwise>
             </c:choose>
 
             <c:if test="${showAddress}">
-                <mercury:location-vars data="${data.value.AddressChoice}">
+                <mercury:location-vars data="${addressData}">
 
                     <c:set var="animatedAddress" value="${not showAddressAlways}" />
                     <div class="${animatedAddress ? 'clickme-showme adr-p' : 'adr-p'}"><%----%>
@@ -352,7 +360,7 @@
             </c:if>
 
             <c:if test="${showDescription}">
-                <div itemprop="description" class="note" ${description.rdfaAttr}>${description}</div><%----%>
+                <div itemprop="description" class="note">${description}</div><%----%>
             </c:if>
 
             <c:if test="${showLinkAsText}">

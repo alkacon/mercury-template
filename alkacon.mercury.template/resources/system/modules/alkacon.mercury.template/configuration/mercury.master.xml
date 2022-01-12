@@ -430,7 +430,7 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/contact.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/contact.xml]]></target>
           <uuid>6f8b18ad-dd65-46d9-a3a5-767a3b8cb808</uuid>
         </link>
       </AddFormatter>
@@ -484,19 +484,19 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/map-osm.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/map-osm.xml]]></target>
           <uuid>092f759a-726c-4169-8469-e24131b734d3</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/meta-info.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/meta-info.xml]]></target>
           <uuid>2a768a4d-4e6d-4932-9af4-9b51502f9cdd</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/poi.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/poi.xml]]></target>
           <uuid>08d2a739-0286-492b-a3d4-d302dd64d3f6</uuid>
         </link>
       </AddFormatter>

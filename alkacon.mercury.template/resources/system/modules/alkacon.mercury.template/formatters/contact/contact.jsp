@@ -4,24 +4,21 @@
     session="false"
     trimDirectiveWhitespaces="true"%>
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-
 <cms:secureparams />
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">
-<mercury:teaser-settings content="${content}">
 
-<c:set var="title"                  value="${value.Title}" />
+<c:set var="setting"                value="${cms.element.setting}" />
 
-<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact ' : ''}" />
-<c:set var="hsizeTitle"             value="${setHsize}" />
-<c:set var="hsize"                  value="${title.isSet ? hsizeTitle + 1 : hsizeTitle}" />
+<c:set var="cssWrapper"             value="${setting.cssWrapper.toString}" />
+<c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 
 <c:set var="showOrganization"       value="${setting.showOrganization.toBoolean}" />
 <c:set var="showName"               value="${setting.showName.useDefault('true').toBoolean}" />
@@ -34,9 +31,24 @@
 <c:set var="showEmail"              value="${setting.showEmail.toBoolean}" />
 <c:set var="showVcard"              value="${setting.showVcard.toBoolean}" />
 
-<c:set var="labelOption"            value="${setting.labels.toString}" />
+<c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
+<c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
+<c:set var="imageRatio"             value="${setting.imageRatio.toString}" />
+<c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
 
-<c:set var="valKind"                value="${value.Kind.isSet ? value.Kind : setting.schemaKind.toString}" /><%-- Note: '.useDefault()' does not work in lists --%>
+<c:set var="effect"                 value="${showImage and setting.effect.isSetNotNone ? setting.effect.toString : null}" />
+<c:set var="setSizeDesktop"         value="${setting.pieceSizeDesktop.toInteger}" />
+<c:set var="setSizeMobile"          value="${setting.pieceSizeMobile.toInteger}" />
+
+<c:set var="labelOption"            value="${setting.labels.toString}" />
+<c:set var="linkOption"             value="${setting.linkOption.toString}" />
+
+<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact ' : ''}" />
+
+<c:set var="hsizeTitle"             value="${hsize}" />
+<c:set var="hsize"                  value="${value.Title.isSet ? hsize + 1 : hsize}" />
+
+<c:set var="valKind"                value="${value.Kind.isSet ? value.Kind : setting.schemaKind.useDefault('pers').toString}" />
 
 <mercury:contact-vars
     content="${content}"
@@ -45,36 +57,39 @@
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
 
-<mercury:teaser-piece
-    cssWrapper="type-contact ${compactLayout}${setEffect}${' '}${setCssWrapper}"
-    attrWrapper="${kind}"
-    headline="${title}"
-    pieceLayout="${setPieceLayout}"
+<mercury:nl />
+<mercury:section-piece
+    cssWrapper="element type-contact ${kindCss}${compactLayout}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}"
+    pieceLayout="${pieceLayout}"
+    attrWrapper="${kindAttr}"
+    heading="${value.Title}"
+    hsize="${hsizeTitle}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
-
-    teaserType="${displayType}"
-    link="${setting.linkOption.toString ne 'none' ? value.Link : null}"
-    hsize="${hsizeTitle}">
+    ade="${false}">
 
     <jsp:attribute name="markupVisual">
-        <c:if test="${setShowVisual}">
+        <c:if test="${showImage}">
             <mercury:contact
                 kind="${valKind}"
                 image="${value.Image}"
                 name="${valName}"
                 organization="${valOrganization}"
-                imageRatio="${setRatio}"
+                imageRatio="${imageRatio}"
+                link="${value.Link}"
+                linkOption="${linkOption eq 'imageOverlay' ? 'imageOverlay' : ''}"
                 hsize="${hsize}"
-                showImageCopyright="${setShowCopyright}"
                 showImage="${true}"
+                showImageZoom="${showImageZoom}"
+                showImageCopyright="${showImageCopyright}"
             />
         </c:if>
     </jsp:attribute>
 
-    <jsp:attribute name="markupBody">
+    <jsp:attribute name="markupText">
         <mercury:contact
             kind="${valKind}"
+            link="${value.Link}"
             name="${valName}"
             position="${valPosition}"
             organization="${valOrganization}"
@@ -82,6 +97,7 @@
             data="${value.Contact}"
             address="${valAddress}"
             labelOption="${labelOption}"
+            linkOption="${linkOption}"
             hsize="${hsize}"
             showName="${setShowName}"
             showPosition="${setShowPosition}"
@@ -95,10 +111,8 @@
             showVcard="${showVcard}"
         />
     </jsp:attribute>
-
-</mercury:teaser-piece>
+</mercury:section-piece>
 </mercury:contact-vars>
 
-</mercury:teaser-settings>
 </cms:formatter>
 </mercury:init-messages>

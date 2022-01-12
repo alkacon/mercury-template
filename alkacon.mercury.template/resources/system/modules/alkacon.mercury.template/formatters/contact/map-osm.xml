@@ -7,7 +7,7 @@
     <Key><![CDATA[m/element/map-osm]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/map-osm.jsp]]></target>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/map-osm.jsp]]></target>
         <uuid>5935f24a-a918-436b-8bd1-c7f440860da3</uuid>
       </link>
     </Jsp>

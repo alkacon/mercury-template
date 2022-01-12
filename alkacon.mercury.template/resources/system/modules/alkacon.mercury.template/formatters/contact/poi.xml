@@ -7,7 +7,7 @@
     <Key><![CDATA[m/element/poi]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/poi.jsp]]></target>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/poi.jsp]]></target>
         <uuid>bc38c5f6-8c7d-4355-9d3a-f756faeb857a</uuid>
       </link>
     </Jsp>

@@ -2,7 +2,7 @@
     display-name="location-vars"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
-    description="Collects location data from a POI file or inline fields and sets a series of variables for quick acesss." %>
+    description="Collects location data from a POI file or inline fields and sets a series of variables for quick acess." %>
 
 
 <%@ attribute name="data" type="java.lang.Object" required="true"
@@ -66,14 +66,7 @@
         <c:set var="adr" value="${poi.value.Address}" />
         <c:set target="${locData}" property="name" value="${poi.value.Title.toString}" />
         <c:set target="${locData}" property="paragraph" value="${poi.value.Paragraph}" />
-        <c:if test="${poi.value.Coord.isSet}">
-            <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
-            <jsp:setProperty name="coordBean" property="wrappedValue" value="${poi.value.Coord}" />
-            <c:set target="${locData}" property="lat" value="${coordBean.lat.toString()}" />
-            <c:set target="${locData}" property="lng" value="${coordBean.lng.toString()}" />
-            <c:set target="${locData}" property="zoom" value="${coordBean.zoom}" />
-            <c:set target="${locData}" property="geocode" value="${false}" />
-        </c:if>
+        <c:set var="coordData" value="${poi.value.Coord}" />
     </c:if>
 
     <c:if test="${not empty adr}">
@@ -83,6 +76,16 @@
         <c:set target="${locData}" property="locality" value="${adr.value.Locality.toString}" />
         <c:set target="${locData}" property="region" value="${adr.value.Region.toString}" />
         <c:set target="${locData}" property="country" value="${adr.value.Country.toString}" />
+        <c:set var="coordData" value="${coordData.isSet ? coordData : adr.value.Coord}" />
+    </c:if>
+
+    <c:if test="${coordData.isSet}">
+        <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
+        <jsp:setProperty name="coordBean" property="wrappedValue" value="${coordData}" />
+        <c:set target="${locData}" property="lat" value="${coordBean.lat.toString()}" />
+        <c:set target="${locData}" property="lng" value="${coordBean.lng.toString()}" />
+        <c:set target="${locData}" property="zoom" value="${coordBean.zoom}" />
+        <c:set target="${locData}" property="geocode" value="${false}" />
     </c:if>
 
     <c:if test="${addMapInfo and (not empty locData.streetAddress)}">

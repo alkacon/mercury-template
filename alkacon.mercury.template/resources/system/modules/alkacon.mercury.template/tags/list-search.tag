@@ -52,10 +52,15 @@
 <%-- ####### Build search config JSON   ######## --%>
 <%-- ########################################### --%>
 
+<c:set var="isGeoSearch" value="${not empty param.pt and not empty param.d}" />
+<c:if test="${isGeoSearch}">
+    <c:set var="geoQueryString">&fq={!geofilt sfield=geocoords_loc}&pt=${param.pt}&d=${param.d}</c:set>
+</c:if>
 <c:set var="searchConfig">
 {
     "pagesize" : "${pageSize}",
-    "pagenavlength" : 5
+    "pagenavlength" : 5,
+    "extrasolrparams": "${geoQueryString}"
 }
 </c:set>
 

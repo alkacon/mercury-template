@@ -18,6 +18,7 @@
  */
 
 import tinycolor from 'tinycolor2';
+import { MarkerClusterer } from "@googlemaps/markerclusterer";
 
 // the global objects that must be passed to this module
 var jQ;
@@ -281,6 +282,7 @@ function showSingleMap(mapData){
         }
     }
 
+    new MarkerClusterer({ markers, map });
     // store map in global array, required e.g. to select marker groups etc.
     var map = {
         'id': mapId,

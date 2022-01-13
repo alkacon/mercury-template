@@ -162,7 +162,14 @@
                         <UseDefault>true</UseDefault>
                     </Mapping>
                 </Setting>
+                <Setting>
+                    <PropertyName>Contact/AddressChoice/Address/Coord</PropertyName>
+                    <Search>listgeocoords</Search>
+                </Setting>
             </FieldSettings>
+            <geomapping>
+                <link>Contact/AddressChoice/PoiLink</link>
+            </geomapping>
         </xsd:appinfo>
     </xsd:annotation>
 </xsd:schema>

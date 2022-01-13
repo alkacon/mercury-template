@@ -62,7 +62,13 @@ function showSingleMap(mapData) {
             interactive: false
         });
 
-        m_maps[mapData.id].on('mousedown click', function (e) {
+        m_maps[mapData.id].on('mousedown', function (e) {
+            this.scrollZoom.enable();
+            this.dragPan.enable();
+            this.touchZoomRotate.enable();
+        });
+
+        m_maps[mapData.id].on('click', function (e) {
             this.scrollZoom.enable();
             this.dragPan.enable();
             this.touchZoomRotate.enable();

@@ -112,6 +112,7 @@
                 <c:set var="bcDisplay"          value="${config.setting.bcDisplay.useDefault('bc-show').toString}" />
                 <c:set var="bcAlignment"        value="${config.setting.bcAlignment.useDefault('bc-left').toString}" />
                 <c:set var="showBreadcrumbs"    value="${showBreadcrumbs and (bcDisplay eq 'bc-show')}" />
+                <c:set var="bcAlignment"        value="${not showBreadcrumbs ? 'bc-hide' : bcAlignment}" />
 
                 <c:set var="showNavAside"       value="${not logoPosCenter and (navPosition ne 'nav-below')}" />
                 <c:set var="showMetaAside"      value="${not logoPosCenter and showMeta and (metaPosition ne 'meta-above')}" />

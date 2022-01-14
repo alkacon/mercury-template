@@ -312,6 +312,7 @@ $piece-btn-lg-padding:              $btn-lg-padding !default;
 $piece-text-margin:                 $default-margin-small !default;
 $piece-text-to-link-margin:         $piece-text-margin !default;
 $piece-visual-last-top-margin:      $piece-text-margin !default;
+$piece-desktop-breakpoint:          md !default;
 
 $use-hyphens:                       true !default; // enable hyphenation / word breaks (not all browsers support this)
 $piece-hyphens:                     $use-hyphens !default; // enable hyphenation / word breaks specially in piece
@@ -452,6 +453,8 @@ $fh-nav-bg-color:                   none !default; // background color of the fi
 $fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
 $fh-ac-bg-color:                    none !default; // color of additional container
 $fh-logo-image-bg:                  none !default; // background color for the logo image in the header
+$fh-grid-gutter-width:              $grid-gutter-width !default; // grid gutter to use in the header
+$fh-grid-gutter-width-half:         $fh-grid-gutter-width * 0.5 !default; // half grid gutter to use in the header
 
 
 // Burger header

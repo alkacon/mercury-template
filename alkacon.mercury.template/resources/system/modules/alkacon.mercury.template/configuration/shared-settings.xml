@@ -338,57 +338,32 @@
     <Setting>
       <IncludeName><![CDATA[effect.section.text-image]]></IncludeName>
       <PropertyName><![CDATA[effect]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
-      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
-      <Default><![CDATA[none]]></Default>
-      <WidgetConfig><![CDATA[
-            none:                                       %(key.msg.setting.effect.none)|
-            effect-shadow:                              %(key.msg.setting.effect.shadow) %(key.msg.setting.effect.onimage)|
-            effect-raise:                               %(key.msg.setting.effect.raise) %(key.msg.setting.effect.onimage)|
-            effect-rotate:                              %(key.msg.setting.effect.rotate)|
-            effect-shadow effect-rotate:                %(key.msg.setting.effect.shadow-rotate) %(key.msg.setting.effect.onimage)|
-            effect-raise effect-rotate:                 %(key.msg.setting.effect.raise-rotate)  %(key.msg.setting.effect.onimage)|
-            effect-piece effect-shadow:                 %(key.msg.setting.effect.shadow) %(key.msg.setting.effect.onpiece)|
-            effect-piece effect-inset:                  %(key.msg.setting.effect.inset) %(key.msg.setting.effect.onpiece)|
-            effect-piece effect-raise:                  %(key.msg.setting.effect.raise) %(key.msg.setting.effect.onpiece)|
-            effect-piece effect-shadow effect-rotate:   %(key.msg.setting.effect.shadow-rotate) %(key.msg.setting.effect.onpiece)|
-            effect-piece effect-inset effect-rotate:    %(key.msg.setting.effect.inset-rotate) %(key.msg.setting.effect.onpiece)|
-            effect-piece effect-raise effect-rotate:    %(key.msg.setting.effect.raise-rotate) %(key.msg.setting.effect.onpiece)
-        ]]></WidgetConfig>
+      <DisplayName><![CDATA[%(attribute:setting.effect.section.DisplayName:%(key.msg.setting.effect))]]></DisplayName>
+      <Description><![CDATA[%(attribute:setting.effect.section.Description:%(key.msg.setting.effect.help))]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(attribute:setting.effect.section.Widget:hidden)]]></Widget>
+      <Default><![CDATA[%(attribute:setting.effect.section.Default:none)]]></Default>
+      <WidgetConfig><![CDATA[%(attribute:setting.effect.section.text-image.WidgetConfig)]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.section.image-only]]></IncludeName>
       <PropertyName><![CDATA[effect]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
-      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
-      <Default><![CDATA[none]]></Default>
-      <WidgetConfig><![CDATA[
-            none:                           %(key.msg.setting.effect.none)|
-            effect-shadow:                  %(key.msg.setting.effect.shadow)|
-            effect-raise:                   %(key.msg.setting.effect.raise)|
-            effect-rotate:                  %(key.msg.setting.effect.rotate)|
-            effect-shadow effect-rotate:    %(key.msg.setting.effect.shadow-rotate)|
-            effect-raise effect-rotate:     %(key.msg.setting.effect.raise-rotate)
-      ]]></WidgetConfig>
+      <DisplayName><![CDATA[%(attribute:setting.effect.section.DisplayName:%(key.msg.setting.effect))]]></DisplayName>
+      <Description><![CDATA[%(attribute:setting.effect.section.Description:%(key.msg.setting.effect.help))]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(attribute:setting.effect.section.Widget:hidden)]]></Widget>
+      <Default><![CDATA[%(attribute:setting.effect.section.Default:none)]]></Default>
+      <WidgetConfig><![CDATA[%(attribute:setting.effect.section.image-only.WidgetConfig)]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.section.text-only]]></IncludeName>
       <PropertyName><![CDATA[effect]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
-      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
-      <Default><![CDATA[none]]></Default>
-      <WidgetConfig><![CDATA[
-            none:                           %(key.msg.setting.effect.none)|
-            effect-piece effect-shadow:                 %(key.msg.setting.effect.shadow)|
-            effect-piece effect-inset:                  %(key.msg.setting.effect.inset)|
-            effect-piece effect-raise:                  %(key.msg.setting.effect.raise)
-      ]]></WidgetConfig>
+      <DisplayName><![CDATA[%(attribute:setting.effect.section.DisplayName:%(key.msg.setting.effect))]]></DisplayName>
+      <Description><![CDATA[%(attribute:setting.effect.section.Description:%(key.msg.setting.effect.help))]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(attribute:setting.effect.section.Widget:hidden)]]></Widget>
+      <Default><![CDATA[%(attribute:setting.effect.section.Default:none)]]></Default>
+      <WidgetConfig><![CDATA[%(attribute:setting.effect.section.text-only.WidgetConfig)]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.2]]></IncludeName>

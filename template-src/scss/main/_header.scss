@@ -147,7 +147,7 @@
             .h-info {
                 .h-meta {
                     // make sure meta links are aligned to navigation
-                    padding-left: $grid-gutter-width-half;
+                    padding-left: $fh-grid-gutter-width-half;
                 }
             }
         }
@@ -240,8 +240,8 @@
             width: 100%;
             padding-top: $default-margin-verysmall;
             padding-bottom: $default-margin-verysmall;
-            padding-right: $grid-gutter-width-half;
-            padding-left: $grid-gutter-width-half;
+            padding-right: $fh-grid-gutter-width-half;
+            padding-left: $fh-grid-gutter-width-half;
         }
 
         .h-ac {
@@ -449,7 +449,7 @@
 
             &.lp-l {
                 .h-info {
-                    padding-right: $grid-gutter-width-half;
+                    padding-right: $fh-grid-gutter-width-half;
                 }
             }
 
@@ -466,7 +466,7 @@
                     order: 3;
                     .h-meta,
                     .h-title {
-                        padding-left: $grid-gutter-width-half;
+                        padding-left: $fh-grid-gutter-width-half;
                     }
                 }
             }
@@ -526,7 +526,7 @@
                 .h-info {
                     .h-title {
                         // make sure title is aligned to navigation
-                        padding-left: $grid-gutter-width-half;
+                        padding-left: $fh-grid-gutter-width-half;
                     }
                 }
             }
@@ -577,7 +577,7 @@
                     .h-info .h-nav,
                     .h-nav .co-lg-xl {
                         // remove gutter from surrounding container
-                        padding-left: $grid-gutter-width-half - $nav-header-hor-padding;
+                        padding-left: $fh-grid-gutter-width-half - $nav-header-hor-padding;
                     }
                     .nav-main-items {
                         justify-content: flex-start;
@@ -999,8 +999,8 @@
                             content: "";
                             position: absolute;
                             top: $nav-header-total-height;
-                            left: calc(#{$grid-gutter-width-half} - #{$fixed-logo-padding});
-                            width: calc(100% - #{$grid-gutter-width} + #{2 * $fixed-logo-padding});
+                            left: calc(#{$fh-grid-gutter-width-half} - #{$fixed-logo-padding});
+                            width: calc(100% - #{$fh-grid-gutter-width} + #{2 * $fixed-logo-padding});
                             height: calc(100% - #{$nav-header-total-height});
                             box-shadow: 0 8px 10px -4px $dropshadow;
                             background-color: $fh-header-bg-color;
@@ -1031,8 +1031,8 @@
                     &.padding-none {
                         .h-logo {
                             &::before {
-                                left: $grid-gutter-width-half;
-                                width: calc(100% - #{$grid-gutter-width});
+                                left: $fh-grid-gutter-width-half;
+                                width: calc(100% - #{$fh-grid-gutter-width});
                             }
                         }
                     }
@@ -1049,7 +1049,7 @@
                 }
                 @if ($logo-size < 6) {
                     .nav-main-mobile-logo .mobile-logolink {
-                        width: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
+                        width: calc-abs-col(lg, $logo-size) - $fh-grid-gutter-width;
                         max-width: 100%;
                     }
                 }
@@ -1066,7 +1066,7 @@
                     &.header-isfixed {
                         &.fix-compact {
                             .h-logo {
-                                max-width: floor((calc-abs-col(xl, $logo-size) - $grid-gutter-width) * 0.5) + $grid-gutter-width;
+                                max-width: floor((calc-abs-col(xl, $logo-size) - $fh-grid-gutter-width) * 0.5) + $fh-grid-gutter-width;
                             }
                         }
                         &.fix-overlay {
@@ -1293,8 +1293,8 @@
                 flex-grow: 10000;
                 order: 2;
 
-                padding-right: $grid-gutter-width;
-                padding-left: $grid-gutter-width;
+                padding-right: $fh-grid-gutter-width;
+                padding-left: $fh-grid-gutter-width;
 
                 .h-title {
                     width: 100%;
@@ -1320,12 +1320,12 @@
             }
             &.lp-l {
                 .h-toggle-col {
-                    right: $grid-gutter-width * 0.5;
+                    right: $fh-grid-gutter-width-half;
                 }
             }
             &.lp-r {
                 .h-toggle-col {
-                    left: $grid-gutter-width * 0.5;
+                    left: $fh-grid-gutter-width-half;
                 }
             }
         }
@@ -1499,7 +1499,7 @@
             .nav-menu-toggle {
                 display: flex;
                 align-items: center;
-                padding-right: $grid-gutter-width;
+                padding-right: $fh-grid-gutter-width;
             }
 
             .nav-menu-logo {
@@ -1533,7 +1533,7 @@
                 .nav-menu-toggle {
                     order: 2;
                     padding-right: 0;
-                    padding-left: $grid-gutter-width;
+                    padding-left: $fh-grid-gutter-width;
                 }
 
                 .nav-menu-logo {
@@ -1667,10 +1667,10 @@
                     }
                 }
 
-                $logo-px-size-md: calc-abs-col(md, $logo-size) - $grid-gutter-width;
-                $logo-px-size-lg: calc-abs-col(lg, $logo-size) - $grid-gutter-width;
-                $logo-px-size-xl: calc-abs-col(xl, $logo-size) - $grid-gutter-width;
-                $toggle-offset: $nav-toggle-size + $nav-toggle-border-width + $grid-gutter-width;
+                $logo-px-size-md: calc-abs-col(md, $logo-size) - $fh-grid-gutter-width;
+                $logo-px-size-lg: calc-abs-col(lg, $logo-size) - $fh-grid-gutter-width;
+                $logo-px-size-xl: calc-abs-col(xl, $logo-size) - $fh-grid-gutter-width;
+                $toggle-offset: $nav-toggle-size + $nav-toggle-border-width + $fh-grid-gutter-width;
 
                 @include media-breakpoint-up(md) {
 

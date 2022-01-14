@@ -260,7 +260,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 }
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up($piece-desktop-breakpoint) {
 
     .flex-col {
         // .flex-col makes single columns in a row use the complete available height

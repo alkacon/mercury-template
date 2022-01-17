@@ -51,14 +51,37 @@ function getPuempel(color) {
       '</svg>'
 }
 
+function getCenterPoint() {
+    var color = Mercury.getThemeJSON("map-color[0]", "#ffffff");
+    return getPuempel(color);
+}
+
+function getClusterCircle() {
+    return {
+        'circle-color': '#51bbd6',
+        'circle-radius': 20,
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#fff'
+    }
+}
+
+function getFeatureCircle() {
+    return {
+        'circle-color': '#11b4da',
+        'circle-radius': 10,
+        'circle-stroke-width': 1,
+        'circle-stroke-color': '#fff'
+    };
+}
+
 function showSingleMap(mapData) {
 
     if (!m_maps[mapData.id]) {
         m_maps[mapData.id] = new mapgl.Map({
             container: mapData.id,
             style: m_style,
-            center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)], //TODO
-            zoom: mapData.zoom, //TODO
+            center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
+            zoom: mapData.zoom,
             interactive: false
         });
 
@@ -87,7 +110,10 @@ function showSingleMap(mapData) {
         for (var p=0; p < mapData.markers.length; p++) {
             var marker=mapData.markers[p];
             var group = marker.group;
-            if (typeof groups[group] === "undefined" ) {
+            if (group === "centerpoint") {
+                if (DEBUG) console.info("OSM new center point added.");
+                groups[group] = getCenterPoint();
+            } else if (typeof groups[group] === "undefined" ) {
                 var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
                 if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
                 groups[group] = getPuempel(color);
@@ -177,12 +203,7 @@ export function showGeoJson(mapId, mapData) {
         type: 'circle',
         source: 'features',
         filter: ['has', 'point_count'],
-        paint: {
-            'circle-color': '#51bbd6',
-            'circle-radius': 20,
-            'circle-stroke-width': 2,
-            'circle-stroke-color': '#fff'
-        }
+        paint: getClusterCircle()
     });
     map.addLayer({
         id: 'cluster-count',
@@ -200,12 +221,7 @@ export function showGeoJson(mapId, mapData) {
         type: 'circle',
         source: 'features',
         filter: ['!', ['has', 'point_count']],
-        paint: {
-            'circle-color': '#11b4da',
-            'circle-radius': 10,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff'
-        }
+        paint: getFeatureCircle()
     });
     map.on('click', 'clusters', function (e) {
         var features = map.queryRenderedFeatures(e.point, {
@@ -225,19 +241,13 @@ export function showGeoJson(mapId, mapData) {
     });
     map.on('click', 'unclustered-point', function (e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
-        var mag = e.features[0].properties.mag;
-        var tsunami;
-        if (e.features[0].properties.tsunami === 1) {
-            tsunami = 'yes';
-        } else {
-            tsunami = 'no';
-        }
+        var info = e.features[0].properties.info;
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-        new mapgl.Popup()
+        new mapgl.Popup({ offset: [0, -25] })
             .setLngLat(coordinates)
-            .setHTML('magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami)
+            .setHTML(info ? info : "")
             .addTo(map);
     });
     map.on('mouseenter', 'clusters', function () {

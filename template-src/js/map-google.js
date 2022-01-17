@@ -161,7 +161,6 @@ function loadGoogleApi() {
     }
 }
 
-
 function getPuempel(color) {
 
     var shade = "" + tinycolor(color).darken(20);
@@ -173,6 +172,19 @@ function getPuempel(color) {
         strokeColor: shade,
         strokeWeight: 1
     };
+}
+
+function getFeatureCircle() {
+
+    return {
+        path: "M-10,0a10,10 0 1,0 20,0a10,10 0 1,0 -20,0",
+        scale: 1,
+        fillColor: '#11b4da',
+        fillOpacity: 1,
+        strokeWeight: 1,
+        strokeColor: '#fff',
+        strokeOpacity: 1
+    }
 }
 
 /****** Exported functions ******/
@@ -282,7 +294,6 @@ function showSingleMap(mapData){
         }
     }
 
-    new MarkerClusterer({ markers, map });
     // store map in global array, required e.g. to select marker groups etc.
     var map = {
         'id': mapId,
@@ -295,25 +306,39 @@ function showSingleMap(mapData){
 
 export function updateMarkers(mapId, mapData) {
 
-    if (DEBUG) console.info("OSM update markers for map with id: " + mapId);
-    let mapDataIndex;
-    for (let i = 0; i < m_mapData.length; i++) {
-        if (m_mapData[i].id === mapId) {
-            mapDataIndex = i;
-            break;
-        }
-    }
-    const mapDataOrig = m_mapData[mapDataIndex];
-    if (!mapDataOrig) {
-        console.error("Error when updating markers. Map with id " + mapId + " not found.");
+    if (DEBUG) console.info("Google update markers for map with id: " + mapId);
+    const map = m_maps[mapId].map;
+    if (!map) { // no cookie consent yet
         return;
     }
-    mapData.id = mapId;
-    mapData.showPlaceholder = mapDataOrig.showPlaceholder;
-    m_mapData[mapDataIndex] = mapData;
-    if (!mapData.showPlaceholder) {
-        showSingleMap(mapData);
+    const features = mapData.features || [];
+    const markers = [];
+    for (let i = 0; i < features.length; i++) {
+        const feature = features[i];
+        const coordinates = feature.geometry.coordinates;
+        const info = feature.properties.info;
+        const marker = new google.maps.Marker({
+            position: new google.maps.LatLng(coordinates[1], coordinates[0]),
+            map: map,
+            icon: getFeatureCircle(),
+            info: info,
+            index: i,
+            mapId: mapId
+        });
+        markers.push(marker);
+        if (map.infoWindow) {
+            map.infoWindow.close();
+        }
+        map.infoWindow = new google.maps.InfoWindow({
+            content: marker.info,
+            marker: marker,
+            index: i
+        });
+        marker.addListener('click', function() {
+            map.infoWindow.open(map, marker);
+        });
     }
+    const clusterer = new MarkerClusterer({markers, map});
 }
 
 export function initGoogleMaps() {

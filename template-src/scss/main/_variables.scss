@@ -174,6 +174,9 @@ $h4-font-size-mobile:               round($font-size-headings * 8) * 0.1 !defaul
 $h5-font-size:                      $h4-font-size !default;
 $h6-font-size:                      $h4-font-size !default;
 
+$lead-font-size:                    $h3-font-size !default;
+$lead-font-size-mobile:             round($lead-font-size * 9) * 0.1 !default;
+
 
 // Controls the lightness threshold where the text is switched
 $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text

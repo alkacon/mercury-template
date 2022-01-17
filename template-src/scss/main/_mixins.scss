@@ -126,10 +126,10 @@
         line-height: $line-height-lead;
     }
     @include media-breakpoint-down(md) {
-        font-size: $h3-font-size-mobile;
+        font-size: $lead-font-size-mobile;
     }
     @include media-breakpoint-up(lg) {
-        font-size: $h3-font-size;
+        font-size: $lead-font-size;
     }
 }
 

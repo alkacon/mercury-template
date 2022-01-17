@@ -198,6 +198,36 @@ export function showGeoJson(mapId, mapData) {
         clusterMaxZoom: 14,
         clusterRadius: 50
     });
+    const boundsNorthEast = {lat: null, lng: null};
+    const boundSouthWest = {lat: null, lng: null};
+    let checkBounds = function(coordinates) {
+        let lat = coordinates[1];
+        let lng = coordinates[0];
+        if (boundsNorthEast.lat === null || boundsNorthEast.lat < lat) {
+            boundsNorthEast.lat = lat;
+        }
+        if (boundsNorthEast.lng === null || boundsNorthEast.lng < lng) {
+            boundsNorthEast.lng = lng;
+        }
+        if (boundSouthWest.lat === null || boundSouthWest.lat > lat) {
+            boundSouthWest.lat = lat;
+        }
+        if (boundSouthWest.lng === null || boundSouthWest.lng > lng) {
+            boundSouthWest.lng = lng;
+        }
+    }
+    let features = mapData.features || [];
+    for (let i = 0; i < features.length; i++) {
+        const feature = features[i];
+        const coordinates = feature.geometry.coordinates;
+        checkBounds(coordinates);
+    }
+    let bounds = [[boundsNorthEast.lng,boundsNorthEast.lat],[boundSouthWest.lng,boundSouthWest.lat]];
+    map.on("data", function(event) {
+        map.fitBounds(bounds, {
+            padding: {top: 20, bottom: 20, left: 20, right: 20}
+        });
+    });
     map.addLayer({
         id: 'clusters',
         type: 'circle',

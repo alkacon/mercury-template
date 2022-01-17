@@ -304,7 +304,7 @@ function showSingleMap(mapData){
     m_maps[mapId] = map;
 }
 
-export function updateMarkers(mapId, mapData) {
+export function showGeoJson(mapId, mapData) {
 
     if (DEBUG) console.info("Google update markers for map with id: " + mapId);
     const map = m_maps[mapId].map;
@@ -313,9 +313,28 @@ export function updateMarkers(mapId, mapData) {
     }
     const features = mapData.features || [];
     const markers = [];
+    const boundsNorthEast = {lat: null, lng: null};
+    const boundSouthWest = {lat: null, lng: null};
+    let checkBounds = function(coordinates) {
+        let lat = coordinates[1];
+        let lng = coordinates[0];
+        if (boundsNorthEast.lat === null || boundsNorthEast.lat < lat) {
+            boundsNorthEast.lat = lat;
+        }
+        if (boundsNorthEast.lng === null || boundsNorthEast.lng < lng) {
+            boundsNorthEast.lng = lng;
+        }
+        if (boundSouthWest.lat === null || boundSouthWest.lat > lat) {
+            boundSouthWest.lat = lat;
+        }
+        if (boundSouthWest.lng === null || boundSouthWest.lng > lng) {
+            boundSouthWest.lng = lng;
+        }
+    }
     for (let i = 0; i < features.length; i++) {
         const feature = features[i];
         const coordinates = feature.geometry.coordinates;
+        checkBounds(coordinates);
         const info = feature.properties.info;
         const marker = new google.maps.Marker({
             position: new google.maps.LatLng(coordinates[1], coordinates[0]),
@@ -339,6 +358,12 @@ export function updateMarkers(mapId, mapData) {
         });
     }
     const clusterer = new MarkerClusterer({markers, map});
+    console.log(boundsNorthEast);
+    console.log(boundSouthWest);
+    const bounds = new google.maps.LatLngBounds();
+    bounds.extend(boundsNorthEast);
+    bounds.extend(boundSouthWest);
+    map.fitBounds(bounds);
 }
 
 export function initGoogleMaps() {

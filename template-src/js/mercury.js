@@ -865,6 +865,9 @@ var Mercury = function(jQ) {
                     "./map-osm.js").then( function ( OsmMap ) {
                        OsmMap.init(jQ, DEBUG);
                        window.OsmMap = OsmMap;
+                       window.dispatchEvent(new CustomEvent("load-module-map-osm", {
+                           detail: OsmMap
+                       }));
                  });
             } catch (err) {
                  console.warn("OsmMap.init() error", err);
@@ -878,6 +881,9 @@ var Mercury = function(jQ) {
                     "./map-google.js").then( function ( GoogleMap ) {
                     GoogleMap.init(jQ, DEBUG);
                     window.GoogleMap = GoogleMap;
+                    window.dispatchEvent(new CustomEvent("load-module-map-google", {
+                        detail: GoogleMap
+                    }));
                 });
             } catch (err) {
                  console.warn("GoogleMap.init() error", err);

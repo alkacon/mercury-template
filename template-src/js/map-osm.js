@@ -223,10 +223,14 @@ export function showGeoJson(mapId, mapData) {
         checkBounds(coordinates);
     }
     let bounds = [[boundsNorthEast.lng,boundsNorthEast.lat],[boundSouthWest.lng,boundSouthWest.lat]];
+    let fitted = false;
     map.on("data", function(event) {
-        map.fitBounds(bounds, {
-            padding: {top: 20, bottom: 20, left: 20, right: 20}
-        });
+        if (!fitted) {
+            map.fitBounds(bounds, {
+                padding: {top: 20, bottom: 20, left: 20, right: 20}
+            });
+            fitted = true;
+        }
     });
     map.addLayer({
         id: 'clusters',

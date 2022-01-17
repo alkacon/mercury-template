@@ -307,7 +307,13 @@ function showSingleMap(mapData){
 export function showGeoJson(mapId, mapData) {
 
     if (DEBUG) console.info("Google update markers for map with id: " + mapId);
-    const map = m_maps[mapId].map;
+    let map;
+    try {
+        map = m_maps[mapId].map;
+    } catch (e) {
+        // map data may already be loaded but not the map
+    }
+    
     if (!map) { // no cookie consent yet
         return;
     }
@@ -358,8 +364,6 @@ export function showGeoJson(mapId, mapData) {
         });
     }
     const clusterer = new MarkerClusterer({markers, map});
-    console.log(boundsNorthEast);
-    console.log(boundSouthWest);
     const bounds = new google.maps.LatLngBounds();
     bounds.extend(boundsNorthEast);
     bounds.extend(boundSouthWest);

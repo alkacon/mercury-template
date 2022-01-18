@@ -34,7 +34,7 @@
     "jquery": "3.6.0",
     "js-cookie": "3.0.1",
     "lazysizes": "5.3.2",
-    "maplibre-gl": "2.0.1",
+    "maplibre-gl": "1.15.2",
     "masonry-layout": "4.2.2",
     "mdn-polyfills": "5.20.0",
     "photoswipe": "4.1.3",

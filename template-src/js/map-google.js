@@ -354,13 +354,14 @@ export function showGeoJson(mapId, mapData) {
         if (map.infoWindow) {
             map.infoWindow.close();
         }
-        map.infoWindow = new google.maps.InfoWindow({
+        const infoWindow = new google.maps.InfoWindow({
             content: marker.info,
             marker: marker,
             index: i
         });
         marker.addListener('click', function() {
-            map.infoWindow.open(map, marker);
+            infoWindow.open(map, marker);
+            map.infoWindow = infoWindow;
         });
     }
     const clusterer = new MarkerClusterer({markers, map});

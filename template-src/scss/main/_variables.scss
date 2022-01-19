@@ -70,7 +70,7 @@ $font-weight-bolder:                $font-weight-bold !default; // used in Boost
 
 $font-weight-base:                  $font-weight-normal !default;
 $font-weight-headings:              $font-weight-bold !default;
-$font-weight-intro-headings:        $font-weight-bold !default;
+$font-weight-intro-headings:        $font-weight-headings !default;
 
 $font-weight-base:                  get-font-weight($font-family-base, $font-weight-base);
 $font-weight-headings:              get-font-weight($font-family-headings, $font-weight-headings);

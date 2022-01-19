@@ -80,6 +80,10 @@
             color:  $color !important;
         }
 
+        .btn {
+            @include button-color-simple($color-link, $color-hover);
+        }
+
         &.transparent {
             background-color: rgba($bg-color, 0.7);
             background-image: none;

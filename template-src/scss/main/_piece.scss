@@ -247,10 +247,11 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 }
 
-.col-6 {
+.col-6,
+.col-md-6,
+.col-lg-6 {
     &.flex-col {
         // .flex-col makes single columns in a row use the complete available height
-        // mercury simple layout rows only use col-6 and no other selector for columns on smaller screens
         // a col-6 column must use the complete available height in small screens
         // for columns that are not col-6, same height is not required since the columns will be stacked upon each other in small screens
         > .piece.full:only-child {

@@ -126,7 +126,7 @@
 
     .heading {
         > a {
-            display: inline-block;
+            display: block;
             &,
             &:focus,
             &:hover {
@@ -137,7 +137,7 @@
 
     .text {
         > a {
-            display: inline-block;
+            display: block;
             &,
             &:focus,
             &:hover {

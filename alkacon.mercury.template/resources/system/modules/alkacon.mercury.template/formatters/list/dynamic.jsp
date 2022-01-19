@@ -108,6 +108,12 @@
         <c:if test="${not isLoadAll and not empty param['page']}">
             <c:set var="initparams" value="${initparams}&page=${param['page']}" />
         </c:if>
+        <c:if test="${not empty coordinates}">
+            <c:set var="initparams" value="${initparams}&coordinates=${param['coordinates']}" />
+        </c:if>
+        <c:if test="${not empty coordinates}">
+            <c:set var="initparams" value="${initparams}&distance=${param['distance']}" />
+        </c:if>
         <c:if test="${not empty initparams}">
             <c:set var="initparams" value="reloaded${initparams}" />
         </c:if>

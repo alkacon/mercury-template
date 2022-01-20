@@ -854,6 +854,9 @@ $tooltip-border-radius:             $default-border-radius !default;
 
 // Link sequence
 $ls-margin-left:                    2.5rem !default;
+$ls-margin:                         $default-margin !default;
+$ls-margin-small:                   round($ls-margin * 50) * 0.01 !default;
+$ls-margin-verysmall:               round($ls-margin * 25) * 0.01 !default;
 
 
 // Animations

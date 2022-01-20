@@ -166,7 +166,8 @@ $zoom-bg:               rgba($black, 0.5) !default;
 $zoom-fg:               $text-light !default;
 $zoomer-bg:             rgba($white, 0.6) !default;
 $zoomer-fg:             $black !default;
-$zoomer-overlay-size:   35px;
+$zoomer-overlay-size:   35px !default;
+$zoomer-icon:           "\f002" !default; // magifying glass
 
 a:focus .zoom-overlay .zoom-icon,
 .zoom:hover .zoom-overlay .zoom-icon {
@@ -224,7 +225,7 @@ a:focus .zoom-overlay .zoom-icon,
 
         &::after {
             font-family: ForkAwesome;
-            content: "\f002"; // search / zoom
+            content: $zoomer-icon;
             @include image-icon-overlay;
         }
     }

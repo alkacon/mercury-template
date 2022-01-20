@@ -99,14 +99,14 @@
         li:not(:last-child) {
             &::after {
                 content: "|";
-                margin: 0 $default-margin-small;
+                margin: 0 $ls-margin-small;
             }
         }
     }
 
     &.no-icon {
         li:not(:last-child) {
-            margin-right: $default-margin;
+            margin-right: $ls-margin;
         }
     }
 
@@ -115,11 +115,11 @@
         li {
             &::before {
                 float: none;
-                padding-right: $default-margin-verysmall;
+                padding-right: $ls-margin-verysmall;
             }
             + li {
                 &::before {
-                    padding-left: $default-margin-small + $default-margin-verysmall;
+                    padding-left: $ls-margin-small + $ls-margin-verysmall;
                 }
             }
         }
@@ -145,5 +145,5 @@
 }
 
 .ls-icon + span {
-    margin-left: $default-margin-verysmall;
+    margin-left: $ls-margin-verysmall;
 }

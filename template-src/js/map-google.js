@@ -349,6 +349,7 @@ export function showGeoJson(mapId, mapData) {
             boundSouthWest.lng = lng;
         }
     }
+    checkBounds([map.getCenter().lng(), map.getCenter().lat()]); // bounding box includes the center point
     for (let i = 0; i < features.length; i++) {
         const feature = features[i];
         const coordinates = feature.geometry.coordinates;

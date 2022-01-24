@@ -237,7 +237,7 @@ export function showGeoJson(mapId, mapData) {
         }
     }
     let features = mapData.features || [];
-    checkBounds([map.getCenter().lng(), map.getCenter().lat()]); // bounding box includes the center point
+    checkBounds([map.getCenter().lng, map.getCenter().lat]); // bounding box includes the center point
     for (let i = 0; i < features.length; i++) {
         const feature = features[i];
         const coordinates = feature.geometry.coordinates;

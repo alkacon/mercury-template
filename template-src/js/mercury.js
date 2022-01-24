@@ -879,11 +879,19 @@ var Mercury = function(jQ) {
                 import(
                     /* webpackChunkName: "mercury-map-google" */
                     "./map-google.js").then( function ( GoogleMap ) {
-                    GoogleMap.init(jQ, DEBUG);
                     window.GoogleMap = GoogleMap;
-                    window.dispatchEvent(new CustomEvent("load-module-map-google", {
-                        detail: GoogleMap
-                    }));
+                    let response = GoogleMap.init(jQ, DEBUG);
+                    if (response) {
+                        response.then(function(event) {
+                            window.dispatchEvent(new CustomEvent("load-module-map-google", {
+                                detail: GoogleMap
+                            }));
+                        });
+                    } else { // Google map was loaded already
+                        window.dispatchEvent(new CustomEvent("load-module-map-google", {
+                            detail: GoogleMap
+                        }));
+                    }
                 });
             } catch (err) {
                  console.warn("GoogleMap.init() error", err);

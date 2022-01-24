@@ -188,8 +188,9 @@ function loadGoogleApi() {
             addLibs = "&libraries=places"
         }
         if (DEBUG) console.info("GoogleMap API key: " + (mapKey == '' ? '(undefined)' : mapKey));
-        jQ.loadScript("https://maps.google.com/maps/api/js?callback=GoogleMap.initGoogleMaps&language=" + locale + addLibs + mapKey, {}, DEBUG);
+        let response = jQ.loadScript("https://maps.google.com/maps/api/js?callback=GoogleMap.initGoogleMaps&language=" + locale + addLibs + mapKey, {}, DEBUG);
         m_googleApiLoaded = true;
+        return response;
     } else {
         initGoogleMaps();
     }
@@ -457,7 +458,7 @@ export function init(jQuery, debug) {
                 });
 
                 // load the Google map API
-                loadGoogleApi();
+                return loadGoogleApi();
 
             } else {
                 if (DEBUG) console.info("External cookies not accepted by the user - Google maps are disabled!");

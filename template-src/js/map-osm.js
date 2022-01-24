@@ -51,27 +51,43 @@ function getPuempel(color) {
       '</svg>'
 }
 
-function getCenterPoint() {
-    var color = Mercury.getThemeJSON("map-color[0]", "#ffffff");
-    return getPuempel(color);
+function getCenterPointGraphic() {
+    const color1 = Mercury.getThemeJSON("map-color[3]", "#000000");
+    const color2 = tinycolor(color1).darken(20);
+    return '<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">' + 
+        '<circle cx="8" cy="8" r="6" stroke="' + color1 + '" stroke-width="2" fill="' + color2 + '" />' +
+        '</svg>';
 }
 
-function getClusterCircle() {
+function getClusterGraphic() {
+    const color = Mercury.getThemeJSON("map-color[2]", "#000000");
+    const strokeColor = tinycolor(color).darken(20);
     return {
-        'circle-color': '#51bbd6',
+        'circle-color': color,
         'circle-radius': 20,
         'circle-stroke-width': 2,
-        'circle-stroke-color': '#fff'
+        'circle-stroke-color': strokeColor.toString()
     }
 }
 
-function getFeatureCircle() {
-    return {
-        'circle-color': '#11b4da',
-        'circle-radius': 10,
-        'circle-stroke-width': 1,
-        'circle-stroke-color': '#fff'
-    };
+function getFeatureGraphic() {
+    const color = Mercury.getThemeJSON("map-color[2]", "#000000");
+    const strokeColor = tinycolor(color).darken(20);
+    const canvas = document.createElement("canvas");
+    canvas.width = 19;
+    canvas.height = 34;
+    const path1 = new Path2D("M-9-28h7v7h-7z");
+    const path2 = new Path2D("M-5.5-33.4c-4.9 0-8.9 3.6-9 8.4 0 6.6 7.2 8.3 9 25 1.8-16.7 8.9-18.4 8.9-25 0-4.6-4-8.4-8.9-8.4zm0 6.4c1.4 0 2.6 1 2.7 2.5 0 1.5-1.2 2.7-2.7 2.7A2.7 2.7 0 0 1-8-24.5c0-1.4 1.2-2.4 2.5-2.5z");
+    const context = canvas.getContext("2d");
+    context.translate(15,34);
+    context.fillStyle = "#fff";
+    context.fill(path1);
+    context.strokeStyle = strokeColor;
+    context.lineWidth = 2;
+    context.fillStyle = color;
+    context.stroke(path2);
+    context.fill(path2);
+    return context.getImageData(0, 0, 19, 34);
 }
 
 function showSingleMap(mapData) {
@@ -82,7 +98,8 @@ function showSingleMap(mapData) {
             style: m_style,
             center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
             zoom: mapData.zoom,
-            interactive: false
+            interactive: false,
+            maxZoom: 18
         });
 
         m_maps[mapData.id].on('mousedown', function (e) {
@@ -112,7 +129,7 @@ function showSingleMap(mapData) {
             var group = marker.group;
             if (group === "centerpoint") {
                 if (DEBUG) console.info("OSM new center point added.");
-                groups[group] = getCenterPoint();
+                groups[group] = getCenterPointGraphic();
             } else if (typeof groups[group] === "undefined" ) {
                 var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
                 if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
@@ -191,12 +208,15 @@ export function showGeoJson(mapId, mapData) {
     if (!map) { // no cookie consent yet
         return;
     }
+    if (!map.hasImage("featureGraphic")) {
+        map.addImage("featureGraphic", getFeatureGraphic());
+    }
     map.addSource('features', {
         type: 'geojson',
         data: mapData,
         cluster: true,
         clusterMaxZoom: 14,
-        clusterRadius: 50
+        clusterRadius: 25
     });
     const boundsNorthEast = {lat: null, lng: null};
     const boundSouthWest = {lat: null, lng: null};
@@ -237,7 +257,7 @@ export function showGeoJson(mapId, mapData) {
         type: 'circle',
         source: 'features',
         filter: ['has', 'point_count'],
-        paint: getClusterCircle()
+        paint: getClusterGraphic()
     });
     map.addLayer({
         id: 'cluster-count',
@@ -251,11 +271,13 @@ export function showGeoJson(mapId, mapData) {
         }
     });
     map.addLayer({
-        id: 'unclustered-point',
-        type: 'circle',
-        source: 'features',
+        id: "unclustered-point",
+        type: "symbol",
+        source: "features",
         filter: ['!', ['has', 'point_count']],
-        paint: getFeatureCircle()
+        layout: {
+            "icon-image": "featureGraphic"
+        }
     });
     map.on('click', 'clusters', function (e) {
         var features = map.queryRenderedFeatures(e.point, {

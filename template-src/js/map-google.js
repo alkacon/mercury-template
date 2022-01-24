@@ -44,6 +44,40 @@ var m_googleGeocoder = null;
 // check if the API has already been loaded
 var m_googleApiLoaded = false;
 
+function getPuempel(color) {
+
+    var shade = "" + tinycolor(color).darken(20);
+    return {
+        path: 'M0-37.06c-5.53 0-10 4.15-10 9.26 0 7.4 8 9.26 10 27.8 2-18.54 10-20.4 10-27.8 0-5.1-4.47-9.26-10-9.26zm.08 7a2.9 2.9 0 0 1 2.9 2.9 2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9z',
+        scale: 1,
+        fillOpacity: 1,
+        fillColor: color,
+        strokeColor: shade,
+        strokeWeight: 1
+    };
+}
+
+function getFeatureGraphic() {
+
+    const color = Mercury.getThemeJSON("map-color[2]", "#000000");
+    return getPuempel(color);
+}
+
+function getCenterPointGraphic() {
+
+    const color1 = Mercury.getThemeJSON("map-color[3]", "#000000");
+    const color2 = tinycolor(color1).darken(20);
+    return {
+        path: "M2,8a6,6 0 1,0 12,0a6,6 0 1,0 -12,0",
+        scale: 1,
+        fillColor: color2.toString(),
+        fillOpacity: 1,
+        strokeWeight: 2,
+        strokeColor: color1.toString(),
+        strokeOpacity: 1
+    }
+}
+
 function showInfo(mapId, infoId) {
 
     if (DEBUG) console.info("GoogleMap showInfo() called with map id: " + mapId + " info id: " + infoId);
@@ -161,32 +195,6 @@ function loadGoogleApi() {
     }
 }
 
-function getPuempel(color) {
-
-    var shade = "" + tinycolor(color).darken(20);
-    return {
-        path: 'M0-37.06c-5.53 0-10 4.15-10 9.26 0 7.4 8 9.26 10 27.8 2-18.54 10-20.4 10-27.8 0-5.1-4.47-9.26-10-9.26zm.08 7a2.9 2.9 0 0 1 2.9 2.9 2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9z',
-        scale: 1,
-        fillOpacity: 1,
-        fillColor: color,
-        strokeColor: shade,
-        strokeWeight: 1
-    };
-}
-
-function getFeatureCircle() {
-
-    return {
-        path: "M-10,0a10,10 0 1,0 20,0a10,10 0 1,0 -20,0",
-        scale: 1,
-        fillColor: '#11b4da',
-        fillOpacity: 1,
-        strokeWeight: 1,
-        strokeColor: '#fff',
-        strokeOpacity: 1
-    }
-}
-
 /****** Exported functions ******/
 
 export function showMarkers(mapId, group) {
@@ -249,7 +257,10 @@ function showSingleMap(mapData){
 
             var point = mapData.markers[p];
             var group = point.group;
-            if (typeof groups[group] === "undefined" ) {
+            if (group === "centerpoint") {
+                if (DEBUG) console.info("OSM new center point added.");
+                groups[group] = getCenterPointGraphic();
+            } else if (typeof groups[group] === "undefined" ) {
                 // Array? Object?
                 // see http://stackoverflow.com/questions/9526860/why-does-a-string-index-in-a-javascript-array-not-increase-the-length-size
                 var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
@@ -345,7 +356,7 @@ export function showGeoJson(mapId, mapData) {
         const marker = new google.maps.Marker({
             position: new google.maps.LatLng(coordinates[1], coordinates[0]),
             map: map,
-            icon: getFeatureCircle(),
+            icon: getFeatureGraphic(),
             info: info,
             index: i,
             mapId: mapId

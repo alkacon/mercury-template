@@ -263,28 +263,27 @@ export function showGeoJson(mapId, mapData) {
         }
     });
     map.addLayer({
-        id: 'clusters',
-        type: 'circle',
-        source: 'features',
-        filter: ['has', 'point_count'],
+        id: "clusters",
+        type: "circle",
+        source: "features",
+        filter: ["has", "point_count"],
         paint: getClusterGraphic()
     });
     map.addLayer({
-        id: 'cluster-count',
-        type: 'symbol',
-        source: 'features',
-        filter: ['has', 'point_count'],
+        id: "cluster-count",
+        type: "symbol",
+        source: "features",
+        filter: ["has", "point_count"],
         layout: {
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12
+            "text-field": "{point_count_abbreviated}",
+            "text-size": 12
         }
     });
     map.addLayer({
         id: "unclustered-point",
         type: "symbol",
         source: "features",
-        filter: ['!', ['has', 'point_count']],
+        filter: ["!", ["has", "point_count"]],
         layout: {
             "icon-image": "featureGraphic"
         }
@@ -304,7 +303,7 @@ export function showGeoJson(mapId, mapData) {
         });
         
     });
-    map.on('click', 'unclustered-point', function (e) {
+    map.on("click", "unclustered-point", function (e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
         var info = e.features[0].properties.info;
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -315,17 +314,17 @@ export function showGeoJson(mapId, mapData) {
             .setHTML(info ? info : "")
             .addTo(map);
     });
-    map.on('mouseenter', 'clusters', function () {
-        map.getCanvas().style.cursor = 'pointer';
+    map.on("mouseenter", "clusters", function () {
+        map.getCanvas().style.cursor = "pointer";
     });
-    map.on('mouseleave', 'clusters', function () {
-        map.getCanvas().style.cursor = '';
+    map.on("mouseleave", "clusters", function () {
+        map.getCanvas().style.cursor = "";
     });
-    map.on('mouseenter', 'unclustered-point', function () {
-        map.getCanvas().style.cursor = 'pointer';
+    map.on("mouseenter", "unclustered-point", function () {
+        map.getCanvas().style.cursor = "pointer";
     });
-    map.on('mouseleave', 'unclustered-point', function () {
-        map.getCanvas().style.cursor = '';
+    map.on("mouseleave", "unclustered-point", function () {
+        map.getCanvas().style.cursor = "";
     });
 }
 

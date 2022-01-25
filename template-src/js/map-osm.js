@@ -60,7 +60,7 @@ function getCenterPointGraphic() {
 }
 
 function getClusterGraphic() {
-    const color = Mercury.getThemeJSON("map-color[2]", "#000000");
+    const color = Mercury.getThemeJSON("map-color[5]", "#000000");
     const strokeColor = tinycolor(color).darken(20);
     return {
         'circle-color': color,
@@ -98,8 +98,7 @@ function showSingleMap(mapData) {
             style: m_style,
             center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
             zoom: mapData.zoom,
-            interactive: false,
-            maxZoom: 18
+            interactive: false
         });
 
         m_maps[mapData.id].on('mousedown', function (e) {
@@ -215,35 +214,45 @@ export function showGeoJson(mapId, mapData) {
         type: 'geojson',
         data: mapData,
         cluster: true,
-        clusterMaxZoom: 14,
+        clusterMaxZoom: 12,
         clusterRadius: 25
     });
-    const boundsNorthEast = {lat: null, lng: null};
-    const boundSouthWest = {lat: null, lng: null};
-    let checkBounds = function(coordinates) {
-        let lat = coordinates[1];
-        let lng = coordinates[0];
-        if (boundsNorthEast.lat === null || boundsNorthEast.lat < lat) {
-            boundsNorthEast.lat = lat;
+    const getBounds = function(features, centerPoint) {
+        const boundsNorthEast = {lat: null, lng: null};
+        const boundSouthWest = {lat: null, lng: null};
+        const checkBounds = function(coordinates) {
+            let lat = coordinates[1];
+            let lng = coordinates[0];
+            if (boundsNorthEast.lat === null || boundsNorthEast.lat < lat) {
+                boundsNorthEast.lat = lat;
+            }
+            if (boundsNorthEast.lng === null || boundsNorthEast.lng < lng) {
+                boundsNorthEast.lng = lng;
+            }
+            if (boundSouthWest.lat === null || boundSouthWest.lat > lat) {
+                boundSouthWest.lat = lat;
+            }
+            if (boundSouthWest.lng === null || boundSouthWest.lng > lng) {
+                boundSouthWest.lng = lng;
+            }
         }
-        if (boundsNorthEast.lng === null || boundsNorthEast.lng < lng) {
-            boundsNorthEast.lng = lng;
+        if (centerPoint) {
+            checkBounds(centerPoint);
         }
-        if (boundSouthWest.lat === null || boundSouthWest.lat > lat) {
-            boundSouthWest.lat = lat;
+        for (let i = 0; i < features.length; i++) {
+            const feature = features[i];
+            const coordinates = feature.geometry.coordinates;
+            checkBounds(coordinates);
         }
-        if (boundSouthWest.lng === null || boundSouthWest.lng > lng) {
-            boundSouthWest.lng = lng;
-        }
+        return [[boundsNorthEast.lng,boundsNorthEast.lat],[boundSouthWest.lng,boundSouthWest.lat]];
     }
-    let features = mapData.features || [];
-    checkBounds([map.getCenter().lng, map.getCenter().lat]); // bounding box includes the center point
-    for (let i = 0; i < features.length; i++) {
-        const feature = features[i];
-        const coordinates = feature.geometry.coordinates;
-        checkBounds(coordinates);
+    let centerPoint;
+    for (let md of m_mapData) {
+        if (md.id === mapId && md.markers && md.markers.length > 0) {
+            centerPoint = md;
+        } 
     }
-    let bounds = [[boundsNorthEast.lng,boundsNorthEast.lat],[boundSouthWest.lng,boundSouthWest.lat]];
+    let bounds = getBounds(mapData.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null));
     let fitted = false;
     map.on("data", function(event) {
         if (!fitted) {
@@ -280,21 +289,20 @@ export function showGeoJson(mapId, mapData) {
             "icon-image": "featureGraphic"
         }
     });
-    map.on('click', 'clusters', function (e) {
-        var features = map.queryRenderedFeatures(e.point, {
-            layers: ['clusters']
+    map.on("click", "clusters", function (e) {
+        const features = map.queryRenderedFeatures(e.point, {
+            layers: ["clusters"]
         });
-        var clusterId = features[0].properties.cluster_id;
-        map.getSource('features').getClusterExpansionZoom(
-            clusterId,
-            function (err, zoom) {
-                if (err) return;
-                map.easeTo({
-                    center: features[0].geometry.coordinates,
-                    zoom: zoom
-                });
-            }
-        );
+        const clusterId = features[0].properties.cluster_id;
+        const pointCount = features[0].properties.point_count;
+        map.getSource("features").getClusterLeaves(clusterId, pointCount, 0, function(error, clusterFeatures) {
+            const bounds = getBounds(clusterFeatures);
+            map.fitBounds(bounds, {
+                padding: {top: 100, bottom: 100, left: 100, right: 100},
+                maxZoom: 16
+            });
+        });
+        
     });
     map.on('click', 'unclustered-point', function (e) {
         var coordinates = e.features[0].geometry.coordinates.slice();

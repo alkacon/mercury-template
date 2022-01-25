@@ -70,6 +70,12 @@ function getClusterGraphic() {
     }
 }
 
+function getClusterGraphicTextColor() {
+    const color = Mercury.getThemeJSON("map-color[1]", "#000000");
+    const perceivedColor = tinycolor(color);
+    return perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
+}
+
 function getFeatureGraphic() {
     const color = Mercury.getThemeJSON("map-color[2]", "#000000");
     const strokeColor = tinycolor(color).darken(20);
@@ -291,7 +297,10 @@ export function showGeoJson(mapId, geoJson) {
         filter: ["has", "point_count"],
         layout: {
             "text-field": "{point_count_abbreviated}",
-            "text-size": 12
+            "text-size": 14
+        },
+        paint: {
+            "text-color": getClusterGraphicTextColor().toString(),
         }
     });
     map.addLayer({

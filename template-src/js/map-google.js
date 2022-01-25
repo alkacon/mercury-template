@@ -78,6 +78,36 @@ function getCenterPointGraphic() {
     }
 }
 
+function getClusterGraphic() {
+
+    return {
+        render: function({count, position}, stats) {
+            const color = Mercury.getThemeJSON("map-color[1]", "#000000");
+            const perceivedColor = tinycolor(color);
+            const strokeColor = tinycolor(color).darken(20);
+            const textColor = perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
+            const svg = window.btoa(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" r="20" stroke="${strokeColor}" stroke-width="2" fill="${color}"/>    
+      </svg>`);
+            return new google.maps.Marker({
+                position,
+                icon: {
+                    url: `data:image/svg+xml;base64,${svg}`,
+                    scaledSize: new google.maps.Size(60, 60)
+                },
+                label: {
+                    text: String(count),
+                    color: textColor.toString(),
+                    fontSize: "12px",
+                    fontWeight: "bold"
+                },
+                zIndex: Number(google.maps.Marker.MAX_ZINDEX) + count,
+            });
+        }
+    }
+}
+
 function showInfo(mapId, infoId) {
 
     if (DEBUG) console.info("GoogleMap showInfo() called with map id: " + mapId + " info id: " + infoId);
@@ -393,30 +423,7 @@ export function showGeoJson(mapId, geoJson) {
             m_maps[mapId].infoWindow = infoWindow;
         });
     }
-    const renderer = {
-        render: function({count, position}, stats) {
-            const color = Mercury.getThemeJSON("map-color[5]", "#000000");
-            const strokeColor = tinycolor(color).darken(20);
-            const svg = window.btoa(`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-        <circle cx="25" cy="25" r="20" stroke="${strokeColor}" stroke-width="2" fill="${color}"/>    
-      </svg>`);
-            return new google.maps.Marker({
-                position,
-                icon: {
-                    url: `data:image/svg+xml;base64,${svg}`,
-                    scaledSize: new google.maps.Size(60, 60)
-                },
-                label: {
-                    text: String(count),
-                    color: "#000000",
-                    fontSize: "12px"
-                },
-                zIndex: Number(google.maps.Marker.MAX_ZINDEX) + count,
-            });
-        }
-    }
-    const clusterer = new MarkerClusterer({markers: markers, map: map, renderer: renderer});
+    const clusterer = new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic()});
     const bounds = new google.maps.LatLngBounds();
     bounds.extend(boundsNorthEast);
     bounds.extend(boundSouthWest);

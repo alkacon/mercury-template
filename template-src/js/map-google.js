@@ -316,7 +316,7 @@ function showSingleMap(mapData){
     m_maps[mapId] = map;
 }
 
-export function showGeoJson(mapId, mapData) {
+export function showGeoJson(mapId, geoJson) {
 
     if (DEBUG) console.info("Google update markers for map with id: " + mapId);
     let map;
@@ -329,7 +329,7 @@ export function showGeoJson(mapId, mapData) {
     if (!map) { // no cookie consent yet
         return;
     }
-    const features = mapData.features || [];
+    const features = geoJson.features || [];
     const markers = [];
     const boundsNorthEast = {lat: null, lng: null};
     const boundSouthWest = {lat: null, lng: null};
@@ -358,6 +358,7 @@ export function showGeoJson(mapId, mapData) {
     if (centerPoint) {
         checkBounds([map.getCenter().lng(), map.getCenter().lat()]); // bounding box includes the center point
     }
+    const infoWindows = new Map();
     for (let i = 0; i < features.length; i++) {
         const feature = features[i];
         const coordinates = feature.geometry.coordinates;
@@ -367,17 +368,24 @@ export function showGeoJson(mapId, mapData) {
             position: new google.maps.LatLng(coordinates[1], coordinates[0]),
             map: map,
             icon: getFeatureGraphic(),
-            info: info,
-            index: i,
-            mapId: mapId
+            zIndex: i
         });
         markers.push(marker);
         const infoWindow = new google.maps.InfoWindow({
-            content: marker.info,
+            content: info,
             marker: marker,
-            index: i
+            zIndex: i
         });
-        marker.addListener("click", function() {
+        const key = coordinates.join(",");
+        if (!infoWindows.has(key)) {
+            infoWindows.set(key, [infoWindow]);
+        } else {
+            let contents = infoWindow.getContent() + "<hr>";
+            contents += infoWindows.get(key)[infoWindows.get(key).length - 1].getContent();
+            infoWindow.setContent(contents);
+            infoWindows.get(key).push(infoWindow);
+        }
+        marker.addListener("click", function(event) {
             if (m_maps[mapId].infoWindow) {
                 m_maps[mapId].infoWindow.close();
             }

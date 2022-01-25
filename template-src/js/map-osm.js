@@ -60,7 +60,7 @@ function getCenterPointGraphic() {
 }
 
 function getClusterGraphic() {
-    const color = Mercury.getThemeJSON("map-color[5]", "#000000");
+    const color = Mercury.getThemeJSON("map-color[1]", "#000000");
     const strokeColor = tinycolor(color).darken(20);
     return {
         'circle-color': color,
@@ -200,7 +200,7 @@ export function showMarkers(mapId, group){
     }
 }
 
-export function showGeoJson(mapId, mapData) {
+export function showGeoJson(mapId, geoJson) {
 
     if (DEBUG) console.info("OSM update markers for map with id: " + mapId);
     const map = m_maps[mapId];
@@ -212,12 +212,18 @@ export function showGeoJson(mapId, mapData) {
     }
     map.addSource('features', {
         type: 'geojson',
-        data: mapData,
+        data: geoJson,
         cluster: true,
         clusterMaxZoom: 12,
         clusterRadius: 25
     });
-    const getBounds = function(features, centerPoint) {
+    const infos = new Map();
+    const getKey = function(coordinates) {
+        let c0 = ("" + coordinates[0]).substring(0, 5);
+        let c1 = ("" + coordinates[1]).substring(0, 5);
+        return [c0, c1].join(",");
+     }
+    const getBoundsAndInfos = function(features, centerPoint, getInfo) {
         const boundsNorthEast = {lat: null, lng: null};
         const boundSouthWest = {lat: null, lng: null};
         const checkBounds = function(coordinates) {
@@ -242,6 +248,15 @@ export function showGeoJson(mapId, mapData) {
         for (let i = 0; i < features.length; i++) {
             const feature = features[i];
             const coordinates = feature.geometry.coordinates;
+            const key = getKey(coordinates);
+            if (getInfo === true) {
+                const info = feature.properties.info;
+                if (!infos.has(key)) {
+                    infos.set(key, info);
+                } else {
+                    infos.set(key, info + "<hr>" + infos.get(key));
+                }
+            }
             checkBounds(coordinates);
         }
         return [[boundsNorthEast.lng,boundsNorthEast.lat],[boundSouthWest.lng,boundSouthWest.lat]];
@@ -252,7 +267,7 @@ export function showGeoJson(mapId, mapData) {
             centerPoint = md;
         } 
     }
-    let bounds = getBounds(mapData.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null));
+    let bounds = getBoundsAndInfos(geoJson.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null), true);
     let fitted = false;
     map.on("data", function(event) {
         if (!fitted) {
@@ -295,7 +310,7 @@ export function showGeoJson(mapId, mapData) {
         const clusterId = features[0].properties.cluster_id;
         const pointCount = features[0].properties.point_count;
         map.getSource("features").getClusterLeaves(clusterId, pointCount, 0, function(error, clusterFeatures) {
-            const bounds = getBounds(clusterFeatures);
+            const bounds = getBoundsAndInfos(clusterFeatures);
             map.fitBounds(bounds, {
                 padding: {top: 100, bottom: 100, left: 100, right: 100},
                 maxZoom: 16
@@ -304,14 +319,14 @@ export function showGeoJson(mapId, mapData) {
         
     });
     map.on("click", "unclustered-point", function (e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var info = e.features[0].properties.info;
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const key = getKey(coordinates);
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
         new mapgl.Popup({ offset: [0, -25] })
             .setLngLat(coordinates)
-            .setHTML(info ? info : "")
+            .setHTML(infos.get(key))
             .addTo(map);
     });
     map.on("mouseenter", "clusters", function () {

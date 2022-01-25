@@ -31,6 +31,12 @@
     }
 }
 
+.element > .subelement:last-child {
+    // do not add a margin bottom in a subelement that is the last child in an element
+    // because here the margins would add up in case display:flex is used
+    margin-bottom: 0;
+}
+
 // Hyphenation for generic element headings
 .element:not(.piece) {
     // piece already has handling for hyphens

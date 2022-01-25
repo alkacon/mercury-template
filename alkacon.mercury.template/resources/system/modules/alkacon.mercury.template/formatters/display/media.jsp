@@ -24,7 +24,7 @@
 <c:set var="isFlexible" value="${value.MediaContent.value.Flexible.isSet}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-media${isAudio ? ' audio ' : ' '}${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-media${isAudio ? ' audio ' : ' '}${setCssWrapper}${setEffect}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"
@@ -37,6 +37,7 @@
 
     teaserType="${displayType}"
     link="${linkToDetail}"
+    linkOption="${setLinkOption}"
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
     textLength="${value['TeaserData/TeaserPreface'].isSet ? -1 : setTextLength}"

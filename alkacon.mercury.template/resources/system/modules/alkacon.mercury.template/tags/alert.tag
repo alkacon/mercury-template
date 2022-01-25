@@ -25,7 +25,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${empty test ? cms.isEditMode : test}">
-    <div class="oct-alert oct-alert-${type}${' '}${css}"><%----%>
+    <div class="pivot oct-alert oct-alert-${type}${' '}${css}"><%----%>
         <c:if test="${not empty head}">
             <div class="head"><jsp:invoke fragment="head" /></div><%----%>
         </c:if>

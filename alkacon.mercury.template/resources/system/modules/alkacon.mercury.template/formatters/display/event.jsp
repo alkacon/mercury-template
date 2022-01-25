@@ -82,7 +82,7 @@
 <c:set var="preface" value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : value.Preface}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-event${setShowCalendar ? ' calendar-sheet-piece ' : ' '}${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-event${setShowCalendar ? ' calendar-sheet-piece ' : ' '}${setCssWrapper}${setEffect}"
     gridOption="${setShowCalendar and smallCalendarSheet ? ' fixed' : ''}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
@@ -100,6 +100,7 @@
 
     teaserType="${displayType}"
     link="${link}"
+    linkOption="${setLinkOption}"
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
     textLength="${value['TeaserData/TeaserPreface'].isSet ? -1 : setTextLength}"

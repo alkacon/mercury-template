@@ -19,7 +19,7 @@
 
 <c:set var="title"                  value="${value.Title}" />
 
-<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact ' : ''}" />
+<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? ' compact' : ''}" />
 <c:set var="hsizeTitle"             value="${setHsize}" />
 <c:set var="hsize"                  value="${title.isSet ? hsizeTitle + 1 : hsizeTitle}" />
 
@@ -46,7 +46,7 @@
     showOrganization="${showOrganization}">
 
 <mercury:teaser-piece
-    cssWrapper="type-contact ${compactLayout}${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-contact${compactLayout}${setCssWrapper}${setEffect}"
     attrWrapper="${kind}"
     headline="${title}"
     pieceLayout="${setPieceLayout}"
@@ -55,6 +55,7 @@
 
     teaserType="${displayType}"
     link="${setting.linkOption.toString ne 'none' ? value.Link : null}"
+    linkOption="${setLinkOption}"
     hsize="${hsizeTitle}">
 
     <jsp:attribute name="markupVisual">

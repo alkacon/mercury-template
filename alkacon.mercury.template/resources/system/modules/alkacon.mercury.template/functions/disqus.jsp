@@ -24,7 +24,7 @@
 </c:if>
 
 <mercury:nl/>
-<div class="element type-comments comments-disqus ${cssWrapper}"><%----%>
+<div class="element type-comments comments-disqus pivot ${cssWrapper}"><%----%>
 
 <c:choose>
     <c:when test="${cms.edited}">

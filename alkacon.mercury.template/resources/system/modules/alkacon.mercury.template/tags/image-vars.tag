@@ -65,6 +65,10 @@
 <%@ variable name-given="imageHeight" declare="true"
     description="The height of the image in pixel." %>
 
+<%@ variable name-given="imageOrientation" declare="true"
+    description="A CSS selector that describes the image orientation.
+    This can be 'ori-ls' for landscape, 'ori-sq' for square or 'ori-po' for portrait." %>
+
 <%@ variable name-given="imageDndAttr" declare="true"
     description="The DND attribute for the image." %>
 
@@ -86,6 +90,7 @@
 <c:set var="imageTitle" value="" />
 <c:set var="imageWidth" value="" />
 <c:set var="imageHeight" value="" />
+<c:set var="imageOrientation" value="" />
 <c:set var="imageDndAttr" value="" />
 
 <c:choose>
@@ -142,6 +147,17 @@
     <c:set var="imageWidth" value="${imageBean.scaler.width}" />
     <c:set var="imageHeight" value="${imageBean.scaler.height}" />
 
+    <c:choose>
+        <c:when test="${imageWidth > (imageHeight * 1.1)}">
+            <c:set var="imageOrientation" value="ori-ls" />
+        </c:when>
+        <c:when test="${imageHeight > (imageWidth * 1.1)}">
+            <c:set var="imageOrientation" value="ori-po" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="imageOrientation" value="ori-sq" />
+        </c:otherwise>
+    </c:choose>
     <%--
         For the copyright, we check if this is set in the content first,
         if not we try to read it from the property.

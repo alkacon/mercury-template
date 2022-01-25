@@ -19,7 +19,7 @@
 <c:set var="title"   value="${value.Question}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-faq ${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-faq${setCssWrapper}${setEffect}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     date="${value.Date.toInstanceDate}"
@@ -31,6 +31,7 @@
 
     teaserType="${displayType}"
     link="${linkToDetail}"
+    linkOption="${setLinkOption}"
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
     textLength="${setTextLength}"

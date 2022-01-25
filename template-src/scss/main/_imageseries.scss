@@ -87,6 +87,11 @@ $imageseries-square-margin: 2px !default;
             @include image-copyright;
         }
     }
+
+    .btn-append {
+        display: block;
+        width: 100%;
+    }
 }
 
 html.noscript .type-imageseries .series {

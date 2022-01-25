@@ -79,6 +79,7 @@
 <%@ variable name-given="imageTitleCopyright" declare="true" %>
 <%@ variable name-given="imageWidth" declare="true" %>
 <%@ variable name-given="imageHeight" declare="true" %>
+<%@ variable name-given="imageOrientation" declare="true" %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

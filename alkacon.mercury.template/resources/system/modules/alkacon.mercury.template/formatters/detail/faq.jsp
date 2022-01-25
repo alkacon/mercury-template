@@ -20,6 +20,7 @@
 
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<c:set var="keyPieceWrapper"        value="${setting.keyPieceWrapper.isSetNotNone ? 'detail-visual '.concat(setting.keyPieceWrapper) : 'detail-visual'}" />
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="visualEffect"           value="${setting.effect.toString}" />
@@ -58,7 +59,7 @@
 
 
 <mercury:piece
-    cssWrapper="detail-visual"
+    cssWrapper="${keyPieceWrapper}"
     pieceLayout="${keyPieceLayout}"
     allowEmptyBodyColumn="${true}"
     sizeDesktop="${keyPieceLayout > 1 ? 6 : 12}"

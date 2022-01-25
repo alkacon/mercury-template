@@ -73,6 +73,9 @@
 <%@ attribute name="link" type="java.lang.Object" required="false"
     description="The link used in the teaser element." %>
 
+<%@ attribute name="linkOption" type="java.lang.String" required="false"
+    description="Controls if and how the link is displayed. Default is 'button'." %>
+
 <%@ attribute name="buttonText" type="java.lang.String" required="false"
     description="An optional button label used on the link button, or 'none' which means no link button will be shown.
     HTML in this will be escaped." %>
@@ -322,9 +325,24 @@
                             </cms:bundle>
                         </c:set>
                     </c:if>
+                    <c:choose>
+                        <c:when test="${linkOption eq 'button-full'}">
+                            <c:set var="linkCss" value="btn btn-block piece-btn" />
+                        </c:when>
+                        <c:when test="${linkOption eq 'button-sm'}">
+                            <c:set var="linkCss" value="btn btn-sm piece-btn" />
+                        </c:when>
+                        <c:when test="${linkOption eq 'text'}">
+                            <c:set var="linkCss" value="piece-text-link" />
+                        </c:when>
+                        <c:otherwise>
+                            <%-- default is 'button' --%>
+                            <c:set var="linkCss" value="btn piece-btn" />
+                        </c:otherwise>
+                    </c:choose>
                     <mercury:link
                         link="${link}"
-                        css="btn teaser-btn"
+                        css="${linkCss}"
                         text="${buttonText}"
                         forceText="${forceText}"
                         title="${linkTitle}"

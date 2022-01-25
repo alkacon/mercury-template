@@ -69,7 +69,7 @@
 
     <c:if test="${isCompatible}">
 
-        <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading" />
+        <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />
 
         <c:set var="count" value="${wrappedSettings.itemsPerPage.isSet ? wrappedSettings.itemsPerPage : 5}" />
         <c:set var="listTag" value="${wrappedSettings.listTag.isSet ? wrappedSettings.listTag : 'ul' }" />
@@ -197,7 +197,7 @@
 
             <%-- ####### List pagination ######## --%>
             <c:if test="${settings.appendSwitch != 'disable'}">
-                <div class="list-pagination ${settings.listPaginationWrapper}"><%----%>
+                <div class="list-pagination pivot ${settings.listPaginationWrapper}"><%----%>
                     <noscript><%----%>
                         <mercury:list-pagination
                             search="${search}"

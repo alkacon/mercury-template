@@ -52,12 +52,29 @@
 <%-- ####### Build search config JSON   ######## --%>
 <%-- ########################################### --%>
 
-<c:set var="searchConfig">
-{
-    "pagesize" : "${pageSize}",
-    "pagenavlength" : 5
-}
-</c:set>
+<c:set var="isGeoSearch" value="${not empty param.coordinates and not empty param.distance}" />
+<c:choose>
+    <c:when test="${isGeoSearch}">
+        <c:set var="searchConfig">
+        {
+            "pagesize" : "${pageSize}",
+            "pagenavlength" : 5,
+            "additionalrequestparams" : [
+                { "param" : "coordinates", "solrquery" : "fq={!geofilt sfield=geocoords_loc}&pt=%(value)" },
+                { "param" : "distance", "solrquery" : "d=%(value)" }
+            ]
+        }
+        </c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="searchConfig">
+        {
+            "pagesize" : "${pageSize}",
+            "pagenavlength" : 5
+        }
+        </c:set>
+    </c:otherwise>
+</c:choose>
 
 <%-- ############################################# --%>
 <%-- ####### Perform search based on JSON ######## --%>

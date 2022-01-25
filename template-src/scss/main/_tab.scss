@@ -128,7 +128,7 @@
     min-width: 0;
     overflow-wrap: break-word;
     margin-bottom: $accordion-margin;
-    box-shadow: $panel-shadow;
+    box-shadow: $accordion-panel-shadow;
     border: $accordion-border;
     @include round-corners($accordion-border-radius, true);
 

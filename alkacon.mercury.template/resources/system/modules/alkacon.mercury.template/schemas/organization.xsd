@@ -19,6 +19,7 @@
         <xsd:sequence>
             <xsd:element name="Organization" type="OpenCmsString" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
+            <xsd:element name="LinkToParentOrganization" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="LinkToManager" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="Contact" type="OpenCmsContactItem" />
             <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
@@ -80,6 +81,13 @@
                     <Description><![CDATA[%(key.label.Contact.LinkToManager.help)]]></Description>
                     <Widget>file</Widget>
                     <WidgetConfig>selectabletypes=m-person</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkToParentOrganization</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Contact.LinkToParentOrganization)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Contact.LinkToParentOrganization.help)]]></Description>
+                    <Widget>file</Widget>
+                    <WidgetConfig>selectabletypes=m-organization</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Contact</PropertyName>

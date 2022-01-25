@@ -24,7 +24,7 @@
 <c:set var="preface" value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : null}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-job ${setEffect}${' '}${setCssWrapper}"
+    cssWrapper="type-job${setCssWrapper}${setEffect}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"
@@ -37,6 +37,7 @@
 
     teaserType="${displayType}"
     link="${linkToDetail}"
+    linkOption="${setLinkOption}"
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
     textLength="${value['TeaserData/TeaserPreface'].isSet ? -1 : setTextLength}"

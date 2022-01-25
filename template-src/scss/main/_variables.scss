@@ -637,7 +637,7 @@ $accordion-margin:                  $default-margin-verysmall !default;
 $accordion-toggle-arrows:           true !default;
 $accordion-border-radius:           $default-border-radius !default;
 $accordion-colors:                  $tab-colors !default;
-
+$accordion-panel-shadow:            $panel-shadow !default;
 
 // Slider
 
@@ -716,6 +716,7 @@ $map-text-color:                    $body-color !default;
 $map-text-size:                     1.4rem !default;
 $map-header-size:                   1.8rem !default;
 $map-label-color:                   $main-theme !default;
+$map-center-color:                  $main-theme !default;
 
 
 // Map colors (for marker groups)

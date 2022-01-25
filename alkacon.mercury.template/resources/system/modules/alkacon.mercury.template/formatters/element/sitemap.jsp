@@ -27,7 +27,7 @@ ${nl}
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<div class="element type-sitemap ${cssWrapper}">${nl}
+<div class="element type-sitemap pivot ${cssWrapper}">${nl}
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 

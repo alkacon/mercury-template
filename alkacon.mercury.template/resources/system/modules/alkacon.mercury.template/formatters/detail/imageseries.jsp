@@ -176,7 +176,7 @@
 </c:if>
 
 <c:if test="${showText and text.isSet}">
-    <div class="detail-content" ${ade ? text.rdfaAttr : ''}><%----%>
+    <div class="detail-content pivot" ${ade ? text.rdfaAttr : ''}><%----%>
         ${text}
     </div><%----%>
     <mercury:nl />
@@ -202,7 +202,7 @@
                 <div class="spinnerInnerBox"><i class="fa fa-spinner"></i></div><%----%>
             </div><%----%>
 
-            <button class="btn btn-block more blur-focus"><%----%>
+            <button class="btn btn-append more blur-focus"><%----%>
                 <fmt:message key="msg.page.imageseries.moreButton" />
             </button><%----%>
 

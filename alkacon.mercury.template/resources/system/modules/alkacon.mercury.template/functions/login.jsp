@@ -65,7 +65,7 @@
 <c:set var="loginError" value="${not loginBean.loginSuccess}" />
 
 <mercury:nl/>
-<div class="element type-login-form ${cssWrapper}"><%----%>
+<div class="element type-login-form pivot ${cssWrapper}"><%----%>
 
     <form class="styled-form" target="_self" method="post"><%----%>
         <input type="hidden" name="requestedResource" value="${param.requestedResource}" /><%----%>

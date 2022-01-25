@@ -27,14 +27,13 @@
     @return null;
 }
 
-@function get-link-colors($bg-color, $text-color, $l-color: $link-color, $lh-color: $link-hover-color, $contrast-threshold: 2.5) {
+@function get-link-colors($bg-color, $text-color: $text-dark, $l-color: $link-color, $lh-color: $link-hover-color, $contrast-threshold: 2.5) {
     @if (($bg-color == transparent) or ($bg-color == none)) {
         // if no background color is set, no need to set any color
         @return ($l-color, $lh-color);
     } @else if (map-get($match-text-bg-colors, $bg-color) != null) {
         // if we have a predefined color match, use this
         $colors: map-get($match-text-bg-colors, $bg-color);
-        $t-color: nth($colors, 1);
         $li-color: nth($colors, conditional-value(length($colors) > 1, 2, 1));
         $lih-color: nth($colors, conditional-value(length($colors) > 2, 3, 1));
         @return ($li-color, $lih-color);

@@ -28,7 +28,7 @@
 <c:when test="${not loadCounter}">
 
     <mercury:nl/>
-    <div class="element type-comments comments-hvyor-talk ${cssWrapper}"><%----%>
+    <div class="element type-comments comments-hvyor-talk pivot ${cssWrapper}"><%----%>
 
     <c:choose>
         <c:when test="${cms.edited}">

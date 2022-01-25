@@ -18,7 +18,7 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 
 <mercury:nl/>
-<div class="element type-opencms-info ${cssWrapper}"><%----%>
+<div class="element type-opencms-info pivot ${cssWrapper}"><%----%>
 
     <div class="float-left mr-10"><%----%>
         <span class="fs-36 fa fa-info-circle"></span><%----%>

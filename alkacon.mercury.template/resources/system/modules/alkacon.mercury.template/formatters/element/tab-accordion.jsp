@@ -48,7 +48,7 @@
 <div class="element type-tab variant-accordion ${cssWrapper}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
+    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
 
     <div class="accordion-items" id="${parentId}"><%----%>
 
@@ -62,7 +62,7 @@
 
             <mercury:nl />
             <article class="accordion ${cssWrapper}"><%----%>
-                ${'<h'}${itemHsize} class="acco-header"${'>'}
+                ${'<h'}${itemHsize} class="acco-header pivot"${'>'}
                     <a class="acco-toggle ${open ? '':'collapsed'}"<%--
                     --%>data-toggle="collapse" <%--
                     --%>data-target="#${itemId}" <%--

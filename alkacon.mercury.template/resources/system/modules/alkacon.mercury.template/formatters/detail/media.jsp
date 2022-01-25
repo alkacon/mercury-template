@@ -18,6 +18,7 @@
 
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<c:set var="keyPieceWrapper"        value="${setting.keyPieceWrapper.isSetNotNone ? 'detail-visual '.concat(setting.keyPieceWrapper) : 'detail-visual'}" />
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="visualEffect"           value="${setting.effect.toString}" />
@@ -44,7 +45,8 @@
 <c:set var="showDate"               value="${not empty date}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<c:set var="showText"               value="${setting.showText.toBoolean}" />
+<c:set var="showText"               value="${setting.showText.toBoolean and text.isSet}" />
+<c:set var="showTextDetailContent"  value="${showText and setting.showTextDetailContent.toBoolean}" />
 <c:set var="showPrefaceAsSubtitle"  value="${false}" />
 <c:set var="showPreface"            value="${not showPrefaceAsSubtitle and setting.showPreface.toBoolean}" />
 <c:set var="showMediaTime"          value="${true}" />
@@ -59,7 +61,7 @@
 <mercury:nl />
 
 <mercury:piece
-    cssWrapper="detail-visual"
+    cssWrapper="${keyPieceWrapper}"
     pieceLayout="${keyPieceLayout}"
     sizeDesktop="${keyPieceLayout > 1 ? 6 : 12}"
     sizeMobile="${12}">
@@ -106,7 +108,7 @@
     <jsp:attribute name="text">
         <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface and not showOverlay and (keyPieceLayout > 1)}" />
 
-        <c:if test="${showText and text.isSet}">
+        <c:if test="${showText and not showTextDetailContent}">
             <div class="detail-content" ${ade ? text.rdfaAttr : ''}><%----%>
                 ${text}
             </div><%----%>
@@ -116,6 +118,20 @@
     </jsp:attribute>
 
 </mercury:piece>
+
+<c:if test="${showTextDetailContent}">
+
+    <div class="detail-content"><%----%>
+        <mercury:section-piece
+            pieceLayout="${1}"
+            text="${text}"
+            hsize="${hsize + 1}"
+            ade="${ade}"
+        />
+    </div><%----%>
+    <mercury:nl />
+
+</c:if>
 
 <mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
 

@@ -127,7 +127,7 @@
 <c:set var="common" value="${controllers.common}" />
 
 <mercury:nl/>
-<div class="element type-search ${cssWrapper}"><%----%>
+<div class="element type-search pivot ${cssWrapper}"><%----%>
     <mercury:nl/>
 
     <%-- The search form --%>

@@ -48,7 +48,7 @@
 <div class="element type-tab ${showTabs ? 'variant-tabs ' : 'variant-hidden-tabs '}${cssWrapper}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
+    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
 
     <c:choose>
         <c:when test="${showTabs}">
@@ -56,7 +56,7 @@
             <div class="tabs-parent"><%----%>
 
                 <mercury:nl />
-                <ul class="tab-list nav"><%----%>
+                <ul class="tab-list nav pivot"><%----%>
 
                     <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
                         <c:set var="tabLabel" value="${tabEntry.value.Label}" />

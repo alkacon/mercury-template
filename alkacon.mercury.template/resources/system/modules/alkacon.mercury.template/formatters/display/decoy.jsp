@@ -29,7 +29,7 @@
     <c:set var="preface"    value="${value.Preface}" />
 
     <mercury:teaser-piece
-        cssWrapper="type-decoy ${setEffect}${' '}${setCssWrapper}${invalidDecoy ? ' disabled' : ''}"
+        cssWrapper="type-decoy${setCssWrapper}${setEffect}${invalidDecoy ? ' disabled' : ''}"
         intro="${setShowIntro ? intro : null}"
         headline="${title}"
         preface="${preface}"
@@ -41,6 +41,7 @@
 
         teaserType="${displayType}"
         link="${value.Link}"
+        linkOption="${setLinkOption}"
         hsize="${setHsize}"
         dateFormat="${setDateFormat}"
         textLength="${setTextLength}"

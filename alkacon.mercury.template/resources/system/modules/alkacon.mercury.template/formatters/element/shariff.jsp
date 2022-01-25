@@ -27,7 +27,7 @@
 </c:set>
 
 <mercury:nl />
-<div class="element type-shariff social-icons ${fn:replace(cssWrapper, 'default', '')}"><%----%>
+<div class="element type-shariff pivot social-icons ${fn:replace(cssWrapper, 'default', '')}"><%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 

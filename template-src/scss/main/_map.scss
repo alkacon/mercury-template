@@ -128,6 +128,9 @@ $themeMAP: ', "map-color":[';
 $themeMAP: $themeMAP + '"' + $grey + '"]';
 $themeJSON: $themeJSON + $themeMAP;
 
+// map center point for geo searches
+$themeJSON: $themeJSON + ', "map-center":"' + $map-center-color + '"';
+
 // styled maps for google maps (from https://snazzymaps.com)
 // this is optional, in case the themeStyleMAP JSON is empty, the default map theme will be used
 // use https://www.freeformatter.com/json-formatter.html to compact the JSON to one line

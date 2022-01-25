@@ -30,14 +30,14 @@
     <c:if test="${not empty pagination && search.numPages > 1}">
         <c:if test="${pagination.state.currentPage < search.numPages}">
             <c:set var="next">${pagination.state.currentPage < search.numPages ? pagination.state.currentPage + 1 : pagination.state.currentPage}</c:set>
-            <div class="list-append-position" data-dynamic="true">
-                <button
-                    class="btn btn-append"
-                    data-load="${search.stateParameters.setPage[next]}"
-                    onclick='${fn:replace(onclickAction, "$(LINK)", search.stateParameters.setPage[next])}'>
-                    <span>${label}</span>
-                </button>
-            </div>
+            <div class="list-append-position" data-dynamic="true"><%----%>
+                <button <%--
+                --%>class="btn btn-append" <%--
+                --%>data-load="${search.stateParameters.setPage[next]}" <%--
+                --%>onclick='${fn:replace(onclickAction, "$(LINK)", search.stateParameters.setPage[next])}'><%--
+                --%><span>${label}</span><%----%>
+                </button><%----%>
+            </div><%----%>
         </c:if>
     </c:if>
 

@@ -37,7 +37,7 @@
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <mercury:nl />
-<div class="element type-poi ${cssWrapper}"><%----%>
+<div class="element type-poi pivot ${cssWrapper}"><%----%>
 <mercury:nl />
 
     <div class="poi-head"><%----%>

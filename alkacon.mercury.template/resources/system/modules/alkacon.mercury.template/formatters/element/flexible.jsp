@@ -19,7 +19,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 
 <mercury:nl />
-<div class="element type-flexible ${cssWrapper}"><%----%>
+<div class="element type-flexible pivot ${cssWrapper}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />

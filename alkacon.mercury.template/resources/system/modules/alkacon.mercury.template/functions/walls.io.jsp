@@ -65,7 +65,7 @@
 
     <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.wallsio" />
 
-    <div class="element type-wallsio force-init ${cssWrapper}${wallsioRemoveMargin ? ' remove-margin' : ''}" data-external-cookies='{"message":"${cookieMessage}"}'><%----%>
+    <div class="element type-wallsio pivot force-init ${cssWrapper}${wallsioRemoveMargin ? ' remove-margin' : ''}" data-external-cookies='{"message":"${cookieMessage}"}'><%----%>
         ${cms.reloadMarker}<%----%>
 
         <div id="${htmlId}" class="wallsio-container"></div><%----%>

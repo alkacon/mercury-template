@@ -19,7 +19,7 @@
 <c:set var="sitename"               value="${not empty currentSiteProps['mercury.sitename'] ? currentSiteProps['mercury.sitename'] : currentSiteProps['Title'] }" />
 
 <mercury:section-piece
-    cssWrapper="element type-sitename${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
+    cssWrapper="element type-sitename pivot ${cssWrapper}"
     pieceLayout="${0}"
     heading="${sitename}"
     hsize="${hsize}"

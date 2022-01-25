@@ -31,14 +31,15 @@
 <%@ variable name-given="setShowVisual"     declare="true" %>
 <%@ variable name-given="pageUri"           declare="true" %>
 <%@ variable name-given="displayType"       declare="true" %>
+<%@ variable name-given="setLinkOption"     declare="true" %>
 
 <%@ variable name-given="paragraph"         declare="true" %>
 <%@ variable name-given="linkToDetail"      declare="true" %>
 
 <c:set var="setting"                        value="${cms.element.setting}" />
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
-<c:set var="setCssWrapper"                  value="${inList ? null : setting.cssWrapper.toString}" />
-<c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? setting.effect.toString : null}" />
+<c:set var="setCssWrapper"                  value="${inList ? ' in-list' : (setting.cssWrapper.isSetNotNone ? ' no-list '.concat(setting.cssWrapper.toString) : ' no-list')}" />
+<c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>
 <c:set var="setTextLength"                  value="${setting.textLength.toInteger}" />
@@ -50,6 +51,7 @@
 <c:set var="setSizeDesktop"                 value="${setting.pieceSizeDesktop.toInteger}" />
 <c:set var="setSizeMobile"                  value="${setting.pieceSizeMobile.toInteger}" />
 <c:set var="setShowVisual"                  value="${setting.visualOption.toString ne 'none'}" />
+<c:set var="setLinkOption"                  value="${setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />
 
 <c:set var="pageUri"                        value="${setting.pageUri.toString}" />
 <c:set var="requiredCssWrapper"             value="${setting.requiredCssWrapper.toString}" />

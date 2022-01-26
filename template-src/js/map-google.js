@@ -266,7 +266,8 @@ function showSingleMap(mapData){
                 google.maps.MapTypeId.TERRAIN
             )
         },
-        center: new google.maps.LatLng(mapData.centerLat, mapData.centerLng)
+        center: new google.maps.LatLng(mapData.centerLat, mapData.centerLng),
+        maxZoom: 18
     }
 
     // create the map
@@ -330,9 +331,11 @@ function showSingleMap(mapData){
 
             // attach event listener that shows info window to marker
             // see http://you.arenot.me/2010/06/29/google-maps-api-v3-0-multiple-markers-multiple-infowindows/
-            marker.addListener('click', function() {
-                showInfo(this.mapId, this.index);
-            });
+            if (group !== "centerpoint") {
+                marker.addListener('click', function() {
+                    showInfo(this.mapId, this.index);
+                });
+            }
         }
     }
 

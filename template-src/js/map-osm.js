@@ -104,7 +104,8 @@ function showSingleMap(mapData) {
             style: m_style,
             center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
             zoom: mapData.zoom,
-            interactive: false
+            interactive: false,
+            maxZoom: 18
         });
 
         m_maps[mapData.id].on('mousedown', function (e) {
@@ -148,8 +149,8 @@ function showSingleMap(mapData) {
             });
 
             markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
-            if (marker.info.length > 0){
-              markerObject.setPopup(new mapgl.Popup({ offset: [0, -25] }).setHTML(marker.info));
+            if (marker.info.length > 0 && group !== "centerpoint"){
+                markerObject.setPopup(new mapgl.Popup({ offset: [0, -25] }).setHTML(marker.info));
             }
             markerObject.addTo(m_maps[mapData.id]);
             markerObject.group=group;

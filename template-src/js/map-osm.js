@@ -225,8 +225,8 @@ export function showGeoJson(mapId, geoJson) {
     });
     const infos = new Map();
     const getKey = function(coordinates) {
-        let c0 = ("" + coordinates[0]).substring(0, 5);
-        let c1 = ("" + coordinates[1]).substring(0, 5);
+        let c0 = ("" + coordinates[0].toFixed(5));
+        let c1 = ("" + coordinates[1].toFixed(5));
         return [c0, c1].join(",");
      }
     const getBoundsAndInfos = function(features, centerPoint, getInfo) {
@@ -329,13 +329,14 @@ export function showGeoJson(mapId, geoJson) {
     });
     map.on("click", "unclustered-point", function (e) {
         const coordinates = e.features[0].geometry.coordinates.slice();
+        const info = e.features[0].properties.info;
         const key = getKey(coordinates);
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
         new mapgl.Popup({ offset: [0, -25] })
             .setLngLat(coordinates)
-            .setHTML(infos.get(key))
+            .setHTML(infos.get(key) ? infos.get(key) : info)
             .addTo(map);
     });
     map.on("mouseenter", "clusters", function () {

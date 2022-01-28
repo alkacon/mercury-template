@@ -427,10 +427,12 @@ export function showGeoJson(mapId, geoJson) {
         });
     }
     const clusterer = new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic()});
-    const bounds = new google.maps.LatLngBounds();
-    bounds.extend(boundsNorthEast);
-    bounds.extend(boundSouthWest);
-    map.fitBounds(bounds);
+    if (boundsNorthEast.lat) { // catch no center point and no features
+        const bounds = new google.maps.LatLngBounds();
+        bounds.extend(boundsNorthEast);
+        bounds.extend(boundSouthWest);
+        map.fitBounds(bounds);
+    }
 }
 
 export function initGoogleMaps() {

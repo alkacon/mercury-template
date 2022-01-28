@@ -1556,6 +1556,29 @@
             li.expand > a {
                 padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
             }
+
+            .nav-meta-icons > ul {
+                margin: 0;
+                padding: 0 $nav-mobile-indent-offset;
+                border-bottom: $nav-mobile-border;
+
+                > li {
+                    display: inline-block;
+
+                    > a {
+                        display: inline-block;
+                        border-bottom: none;
+                        font-size: $nav-mobile-line-height;
+                        padding-left: 0;
+                        padding-right: 0;
+                        margin-right: round($nav-mobile-line-height * 0.5);
+
+                        .fa {
+                            min-width: $nav-mobile-line-height;
+                        }
+                    }
+                }
+            }
         }
 
         .nav-mega-menu .nav-side li > a {

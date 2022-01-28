@@ -22,9 +22,7 @@
 <c:set var="showSearch"                 value="${setting.showSearch.useDefault(true).toBoolean}" />
 <c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
 <c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
-<c:set var="showImageLink"              value="${setting.showImageLink.useDefault(false).toBoolean}" />
-
-<c:set var="temlateVariant"             value="${cms.sitemapConfig.attribute['template.variant'].useDefault('default').toString}" />
+<c:set var="showImageLink"              value="${setting.showImageLink.toBoolean}" />
 
 <c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
 <c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
@@ -44,34 +42,13 @@
         currentPageFolder="${currentPageFolder}"
         currentPageUri="${currentPageUri}">
 
+        <c:set var="mobileHeaderPlugins" value="${cms.plugins['nav-mobile-header']}" />
         <c:choose>
-            <c:when test="${temlateVariant eq 'burger'}">
-                <div class="nav-menu-header"><%----%>
-                    <div class="nav-menu-toggle"><%----%>
-                        <span id="nav-toggle-label-close" class="nav-toggle-label"><%----%>
-                            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
-                                <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
-                            </button><%----%>
-                        </span><%----%>
-                    </div><%----%>
-                    <c:if test="${(cssWrapper ne 'no-image') and (not empty logoImage)}">
-                        <div class="nav-menu-logo"><%----%>
-                            <mercury:link
-                                link="${logoContent.value.Link}"
-                                test="${showImageLink}"
-                                testFailTag="div"
-                                setTitle="${true}"
-                                css="mobile-logolink" >
-                                <mercury:image-simple
-                                    image="${logoImage}"
-                                    sizes="200,350,400,700,800"
-                                    cssWrapper="img-responsive"
-                                    title="${imageTitleCopyright}"
-                                />
-                            </mercury:link>
-                        </div><%----%>
-                    </c:if>
-                </div>
+            <c:when test="${not empty mobileHeaderPlugins}">
+                <c:set var="mobileHeaderPlugin" value="${mobileHeaderPlugins.get(0)}" />
+                <c:set var="reqScopeLogoContent" value="${logoContent}" scope="request" />
+                <c:set var="reqScopeSetting" value="${setting}" scope="request" />
+                <cms:include file="${mobileHeaderPlugin.link}" cacheable="false" />
             </c:when>
             <c:otherwise>
                 <div class="nav-main-mobile-logo"><%----%>
@@ -86,12 +63,11 @@
                                 image="${logoImage}"
                                 sizes="100,200,400,800"
                                 cssWrapper="img-responsive"
-                                title="${imageTitleCopyright}"
                             />
-
                         </mercury:link>
                     </c:if>
                 </div><%----%>
+                <mercury:nl />
             </c:otherwise>
         </c:choose>
 
@@ -99,16 +75,27 @@
             <c:set var="metaLinkElements" value="${cms.elementsInContainers['header-linksequence']}" />
             <c:if test="${not empty metaLinkElements}">
                 <c:set var="metaLinksHtml">
-                    <c:set var="metaLinksequence" value="${metaLinkElements.get(0).toXml}" />
-                    <li id="nav-main-addition" class="expand hidden-lg hidden-xl"><%----%>
-                        <a href="#" title="Search" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${metaLinksequence.value.Title}</a><%----%>
-                        <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
-                            <mercury:nl />
-                            <c:forEach var="link" items="${metaLinksequence.valueList.LinkEntry}" varStatus="status">
-                                 <li><mercury:link-icon link="${link}" /></li><mercury:nl />
-                            </c:forEach>
-                        </ul><%----%>
-                    </li><%----%>
+                    <c:set var="metaLinksContent" value="${metaLinkElements.get(0).toXml}" />
+                    <c:set var="metaLinksPlugins" value="${cms.plugins['nav-meta-links']}" />
+                    <c:choose>
+                        <c:when test="${not empty metaLinksPlugins}">
+                            <c:set var="metaLinksPlugin" value="${metaLinksPlugins.get(0)}" />
+                            <c:set var="reqScopeMetaLinksContent" value="${metaLinksContent}" scope="request" />
+                            <c:set var="reqScopeSetting" value="${setting}" scope="request" />
+                            <cms:include file="${metaLinksPlugin.link}" cacheable="false" />
+                        </c:when>
+                        <c:otherwise>
+                            <li id="nav-main-addition" class="expand hidden-lg hidden-xl"><%----%>
+                                <a href="#" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${metaLinksContent.value.Title}</a><%----%>
+                                <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
+                                    <mercury:nl />
+                                    <c:forEach var="link" items="${metaLinksContent.valueList.LinkEntry}" varStatus="status">
+                                         <li><mercury:link-icon link="${link}" /></li><mercury:nl />
+                                    </c:forEach>
+                                </ul><%----%>
+                            </li><%----%>
+                        </c:otherwise>
+                    </c:choose>
                 </c:set>
             </c:if>
         </c:if>

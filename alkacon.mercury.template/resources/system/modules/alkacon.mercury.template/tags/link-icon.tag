@@ -15,6 +15,9 @@
 <%@ attribute name="addSpan" type="java.lang.String" required="false"
     description="If provided, adds a SPAN tag around the generated href tag with a class containing the argument value." %>
 
+<%@ attribute name="resultMap" type="java.util.HashMap" required="false"
+    description="If provided, store the results in this map and do NOT generate any HTML output." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -57,15 +60,35 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:link
-    link="${link}"
-    title="${linkTitle}"
-    css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}"
-    attr="${linkAttr}">
+<c:choose>
+    <c:when test="${resultMap != null}">
+        <c:set var="ignore">
+            ${resultMap.clear()}
+            ${resultMap.putAll(
+                {
+                    "link": link,
+                    "message": linkMessage,
+                    "icon": linkIcon,
+                    "title": linkTitle,
+                    "css": cssWrapper,
+                    "attr": linkAttr
+                }
+            )}
+        </c:set>
+    </c:when>
+    <c:otherwise>
+        <mercury:link
+            link="${link}"
+            title="${linkTitle}"
+            css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}"
+            attr="${linkAttr}">
 
-    ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
-    ${linkIcon}${linkMessage}
-    ${empty addSpan ? '' : '</span>'}
+            ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
+            ${linkIcon}${linkMessage}
+            ${empty addSpan ? '' : '</span>'}
 
-</mercury:link>
+        </mercury:link>
+    </c:otherwise>
+</c:choose>
+
 

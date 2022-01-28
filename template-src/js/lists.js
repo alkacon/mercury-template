@@ -95,6 +95,9 @@ var m_archiveFilterGroups = {};
 /** @type {List[]} all auto loading lists as array for easy iteration  */
 var m_autoLoadLists = [];
 
+/** @type {boolean} flag indicating whether to scroll to the list head on filter or on page change. */
+var m_flagScrollToAnchor = true;
+
 /**
  * Calculates the search state parameters.
  * @param {*} filter
@@ -504,7 +507,9 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     if (resultData.reloaded == "true" && reloadEntries) {
         if (! list.$element.visible()) {
             if (DEBUG) console.info("Lists.generateListHtml() Scrolling to anchor");
-            Mercury.scrollToAnchor(list.$element, -20);
+            if (m_flagScrollToAnchor) {
+                Mercury.scrollToAnchor(list.$element, -20);
+            }
         }
     }
 }
@@ -867,7 +872,9 @@ export function switchPage(id, page) {
     Mercury.update('#' + list.id);
     if (! list.$element.visible()) {
         if (DEBUG) console.info("Lists.switchPage() - scrolling to anchor");
-        Mercury.scrollToAnchor(list.$element, -20);
+        if (m_flagScrollToAnchor) {
+            Mercury.scrollToAnchor(list.$element, -20);
+        }
     }
 }
 
@@ -1096,4 +1103,9 @@ export function init(jQuery, debug) {
 
         });
     }
+}
+
+export function setFlagScrollToAnchor(flagScrollToAnchor) {
+
+    m_flagScrollToAnchor = !!flagScrollToAnchor;
 }

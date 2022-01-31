@@ -638,21 +638,29 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/contact/map-osm.jsp</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/contact/map-osm.jsp</destination>
-			<type>jsp</type>
-			<uuidstructure>5935f24a-a918-436b-8bd1-c7f440860da3</uuidstructure>
-			<uuidresource>68c30adc-5fec-49c9-a04b-087e6b173317</uuidresource>
-			<datecreated>Fri, 25 Jan 2019 13:55:56 GMT</datecreated>
+			<source>system/modules/alkacon.mercury.template/formatters/contact/map-google.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/contact/map-google.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>7bd4ba6a-f005-4732-8cf5-5ec60f80c627</uuidstructure>
+			<uuidresource>15aee103-48a3-45fc-966f-f2bca97f6dac</uuidresource>
+			<datecreated>Mon, 14 Sep 2015 11:46:08 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
-					<name>cache</name>
-					<value><![CDATA[container-element;locale;user]]></value>
+					<name>Title</name>
+					<value><![CDATA[Google map]]></value>
 				</property>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -682,6 +690,27 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/contact/map.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/contact/map.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>cca8d42a-827a-11ec-90e1-0242ac11002b</uuidstructure>
+			<uuidresource>cca8d42b-827a-11ec-90e1-0242ac11002b</uuidresource>
+			<datecreated>Mon, 31 Jan 2022 09:47:27 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;user]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -3166,56 +3195,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Link sequence]]></value>
-				</property>
-				<property>
-					<name>locale</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/element/map-google.jsp</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/element/map-google.jsp</destination>
-			<type>jsp</type>
-			<uuidstructure>c28fa8b9-f8b0-41b8-8fb7-6c2e120a9bd7</uuidstructure>
-			<uuidresource>1b2de0dc-857f-42b4-acdd-5d41cf6ed1fe</uuidresource>
-			<datecreated>Mon, 14 Sep 2015 11:46:08 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>cache</name>
-					<value><![CDATA[container-element;locale;user]]></value>
-				</property>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/element/map-google.xml</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/element/map-google.xml</destination>
-			<type>formatter_config</type>
-			<uuidstructure>7bd4ba6a-f005-4732-8cf5-5ec60f80c627</uuidstructure>
-			<uuidresource>15aee103-48a3-45fc-966f-f2bca97f6dac</uuidresource>
-			<datecreated>Mon, 14 Sep 2015 11:46:08 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Google map]]></value>
 				</property>
 				<property>
 					<name>locale</name>

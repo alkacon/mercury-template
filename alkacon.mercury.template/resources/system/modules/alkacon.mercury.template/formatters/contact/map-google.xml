@@ -7,8 +7,8 @@
     <Key><![CDATA[m/element/map-google]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/map-google.jsp]]></target>
-        <uuid>c28fa8b9-f8b0-41b8-8fb7-6c2e120a9bd7</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/map.jsp]]></target>
+        <uuid>cca8d42a-827a-11ec-90e1-0242ac11002b</uuid>
       </link>
     </Jsp>
     <Rank><![CDATA[1000]]></Rank>
@@ -35,6 +35,9 @@
         <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
       </link>
     </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[mapProvider.google]]></IncludeName>
+    </Setting>
     <Setting>
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>

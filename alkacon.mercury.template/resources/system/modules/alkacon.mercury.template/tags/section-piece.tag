@@ -16,6 +16,8 @@
     // 7. Image right, Heading, Text and Link left (separate column)
     // 8. Image left, Heading, Text and Link right (floating around image)
     // 9. Image right, Heading, Text and Link left (floating around image)
+    // 10. Heading, Text, Link, Image (full width)
+    // 11. Heading, Text, Image, Link (full width)
     " %>
 
 <%@ attribute name="sizeMobile" type="java.lang.Integer" required="false"

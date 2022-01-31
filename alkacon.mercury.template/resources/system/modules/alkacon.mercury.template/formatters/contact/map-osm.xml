@@ -7,8 +7,8 @@
     <Key><![CDATA[m/element/map-osm]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/map-osm.jsp]]></target>
-        <uuid>5935f24a-a918-436b-8bd1-c7f440860da3</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/map.jsp]]></target>
+        <uuid>cca8d42a-827a-11ec-90e1-0242ac11002b</uuid>
       </link>
     </Jsp>
     <Rank><![CDATA[2000]]></Rank>
@@ -37,6 +37,9 @@
       </link>
     </IncludeSettings>
     <Setting>
+      <IncludeName><![CDATA[mapProvider.osm]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
@@ -57,6 +60,9 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showGroupButtons.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapProvider.osm]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

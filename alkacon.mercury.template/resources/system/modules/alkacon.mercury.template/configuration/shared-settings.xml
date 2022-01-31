@@ -1213,6 +1213,18 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[mapProvider.osm]]></IncludeName>
+      <PropertyName><![CDATA[mapProvider]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[osm]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapProvider.google]]></IncludeName>
+      <PropertyName><![CDATA[mapProvider]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[google]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showGroupButtons.true]]></IncludeName>
       <PropertyName><![CDATA[showGroupButtons]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.map.showGroupButtons)]]></DisplayName>

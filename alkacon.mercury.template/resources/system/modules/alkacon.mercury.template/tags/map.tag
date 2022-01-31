@@ -172,7 +172,7 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
     ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
     --%>data-map='${mapData.compact}'<%--
     --%><mercury:data-external-cookies message="${cookieMessage}" test="${not noApiKey}" /><%--
-    --%><c:if test="${cms.isEditMode or disableEditModePlaceholder}">
+    --%><c:if test="${cms.isEditMode and not disableEditModePlaceholder}">
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">
                 <c:choose>

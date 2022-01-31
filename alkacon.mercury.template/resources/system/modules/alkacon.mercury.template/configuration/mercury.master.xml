@@ -478,7 +478,7 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/map-google.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/map-google.xml]]></target>
           <uuid>7bd4ba6a-f005-4732-8cf5-5ec60f80c627</uuid>
         </link>
       </AddFormatter>

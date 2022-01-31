@@ -52,15 +52,15 @@ function getPuempel(color) {
 }
 
 function getCenterPointGraphic() {
-    const color1 = Mercury.getThemeJSON("map-color[3]", "#000000");
+    const color1 = Mercury.getThemeJSON("map-center", "#000000");
     const color2 = tinycolor(color1).darken(20);
-    return '<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">' + 
-        '<circle cx="8" cy="8" r="6" stroke="' + color1 + '" stroke-width="2" fill="' + color2 + '" />' +
+    return '<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">' +
+        '<circle cx="8" cy="8" r="6" stroke="' + color2 + '" stroke-width="1" fill="' + color1 + '" />' +
         '</svg>';
 }
 
 function getClusterGraphic() {
-    const color = Mercury.getThemeJSON("map-color[1]", "#000000");
+    const color = Mercury.getThemeJSON("map-cluster", "#999999");
     const strokeColor = tinycolor(color).darken(20);
     return {
         'circle-color': color,
@@ -71,13 +71,13 @@ function getClusterGraphic() {
 }
 
 function getClusterGraphicTextColor() {
-    const color = Mercury.getThemeJSON("map-color[1]", "#000000");
+    const color = Mercury.getThemeJSON("map-cluster", "#999999");
     const perceivedColor = tinycolor(color);
     return perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
 }
 
 function getFeatureGraphic() {
-    const color = Mercury.getThemeJSON("map-color[2]", "#000000");
+    const color = Mercury.getThemeJSON("map-color[0]", "#ffffff");
     const strokeColor = tinycolor(color).darken(20);
     const canvas = document.createElement("canvas");
     canvas.width = 19;
@@ -272,7 +272,7 @@ export function showGeoJson(mapId, geoJson) {
     for (let md of m_mapData) {
         if (md.id === mapId && md.markers && md.markers.length > 0) {
             centerPoint = md;
-        } 
+        }
     }
     let bounds = getBoundsAndInfos(geoJson.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null), true);
     let fitted = false;
@@ -326,7 +326,7 @@ export function showGeoJson(mapId, geoJson) {
                 maxZoom: 16
             });
         });
-        
+
     });
     map.on("click", "unclustered-point", function (e) {
         const coordinates = e.features[0].geometry.coordinates.slice();

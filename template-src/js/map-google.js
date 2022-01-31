@@ -59,21 +59,21 @@ function getPuempel(color) {
 
 function getFeatureGraphic() {
 
-    const color = Mercury.getThemeJSON("map-color[2]", "#000000");
+    const color = Mercury.getThemeJSON("map-color[0]", "#ffffff");
     return getPuempel(color);
 }
 
 function getCenterPointGraphic() {
 
-    const color1 = Mercury.getThemeJSON("map-color[3]", "#000000");
+    const color1 = Mercury.getThemeJSON("map-center", "#000000");
     const color2 = tinycolor(color1).darken(20);
     return {
         path: "M2,8a6,6 0 1,0 12,0a6,6 0 1,0 -12,0",
         scale: 1,
-        fillColor: color2.toString(),
+        fillColor: color1.toString(),
         fillOpacity: 1,
-        strokeWeight: 2,
-        strokeColor: color1.toString(),
+        strokeWeight: 1,
+        strokeColor: color2.toString(),
         strokeOpacity: 1
     }
 }
@@ -82,14 +82,11 @@ function getClusterGraphic() {
 
     return {
         render: function({count, position}, stats) {
-            const color = Mercury.getThemeJSON("map-color[1]", "#000000");
+            const color = Mercury.getThemeJSON("map-cluster", "#999999");
             const perceivedColor = tinycolor(color);
             const strokeColor = tinycolor(color).darken(20);
             const textColor = perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
-            const svg = window.btoa(`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-        <circle cx="25" cy="25" r="20" stroke="${strokeColor}" stroke-width="2" fill="${color}"/>    
-      </svg>`);
+            const svg = window.btoa(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="${strokeColor}" stroke-width="2" fill="${color}"/></svg>`);
             return new google.maps.Marker({
                 position,
                 icon: {
@@ -99,8 +96,8 @@ function getClusterGraphic() {
                 label: {
                     text: String(count),
                     color: textColor.toString(),
-                    fontSize: "12px",
-                    fontWeight: "bold"
+                    fontSize: "14px",
+                    fontWeight: "normal"
                 },
                 zIndex: Number(google.maps.Marker.MAX_ZINDEX) + count,
             });
@@ -358,7 +355,7 @@ export function showGeoJson(mapId, geoJson) {
     } catch (e) {
         // map data may already be loaded but not the map
     }
-    
+
     if (!map) { // no cookie consent yet
         return;
     }
@@ -386,7 +383,7 @@ export function showGeoJson(mapId, geoJson) {
     for (let md of m_mapData) {
         if (md.id === mapId && md.markers && md.markers.length > 0) {
             centerPoint = md;
-        } 
+        }
     }
     if (centerPoint) {
         checkBounds([map.getCenter().lng(), map.getCenter().lat()]); // bounding box includes the center point

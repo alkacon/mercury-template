@@ -304,7 +304,8 @@ export function showGeoJson(mapId, geoJson) {
         source: "features",
         filter: ["!", ["has", "point_count"]],
         layout: {
-            "icon-image": "featureGraphic"
+            "icon-image": "featureGraphic",
+            "icon-anchor": "bottom"
         }
     });
     map.on("click", "clusters", function (e) {

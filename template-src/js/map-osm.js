@@ -271,7 +271,7 @@ export function showGeoJson(mapId, geoJson) {
     let bounds = getBoundsAndInfos(geoJson.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null), true);
     let fitted = false;
     map.on("data", function(event) {
-        if (!fitted) {
+        if (!fitted && geoJson.features && geoJson.features.length > 0) {
             map.fitBounds(bounds, {
                 padding: {top: 100, bottom: 100, left: 100, right: 100}
             });

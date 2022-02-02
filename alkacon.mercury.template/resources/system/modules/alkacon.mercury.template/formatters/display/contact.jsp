@@ -35,6 +35,7 @@
 <c:set var="showVcard"              value="${setting.showVcard.toBoolean}" />
 
 <c:set var="labelOption"            value="${setting.labels.toString}" />
+<c:set var="websiteNewWin"          value="${setting.websiteNewWin.toBoolean}" />
 
 <c:set var="valKind"                value="${value.Kind.isSet ? value.Kind : setting.schemaKind.toString}" /><%-- Note: '.useDefault()' does not work in lists --%>
 
@@ -46,7 +47,7 @@
     showOrganization="${showOrganization}">
 
 <mercury:teaser-piece
-    cssWrapper="type-contact${compactLayout}${setCssWrapper}${setEffect}"
+    cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapper}${setEffect}"
     attrWrapper="${kind}"
     headline="${title}"
     pieceLayout="${setPieceLayout}"
@@ -92,6 +93,7 @@
             showDescription="${showDescription}"
             showPhone="${showPhone}"
             showWebsite="${showWebsite}"
+            websiteNewWin="${websiteNewWin}"
             showEmail="${showEmail}"
             showVcard="${showVcard}"
         />

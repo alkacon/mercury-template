@@ -38,7 +38,7 @@
 
 <c:set var="setting"                        value="${cms.element.setting}" />
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
-<c:set var="setCssWrapper"                  value="${inList ? ' in-list' : (setting.cssWrapper.isSetNotNone ? ' no-list '.concat(setting.cssWrapper.toString) : ' no-list')}" />
+<c:set var="setCssWrapper"                  value="${inList ? ' in-list' : ' no-list'}${setting.cssWrapper.isSetNotNone ? ' '.concat(setting.cssWrapper.toString) : ''}" />
 <c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>

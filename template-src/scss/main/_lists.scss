@@ -747,7 +747,7 @@
             &::before {
                 font-family: ForkAwesome;
                 font-weight: normal;
-                padding-right: $btn-padding;
+                padding-right: $btn-h-padding;
             }
         }
 
@@ -951,7 +951,7 @@
             font-family: ForkAwesome;
             font-weight: normal;
             content: "\f078";
-            right: $btn-padding;
+            right: $btn-h-padding;
             transition: $nav-animation-time;
             margin: 0;
             border: none;

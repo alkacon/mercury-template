@@ -65,6 +65,9 @@
 <%@ attribute name="showWebsite" type="java.lang.Boolean" required="false"
     description="Show the contact website URL." %>
 
+<%@ attribute name="websiteNewWin" type="java.lang.Boolean" required="false"
+    description="Open the website URL in a new window." %>
+
 <%@ attribute name="showEmail" type="java.lang.Boolean" required="false"
     description="Show the contact email address." %>
 
@@ -353,7 +356,7 @@
                         </mercury:icon-prefix>
                     </c:if>
                     <span><%----%>
-                         <mercury:link link="${data.value.Website}" attr="${linkattr}">${websiteURL}</mercury:link><%----%>
+                         <mercury:link link="${data.value.Website}" attr="${linkattr}" newWin="${websiteNewWin}" >${websiteURL}</mercury:link><%----%>
                     </span><%----%>
                 </div><%----%>
                 <c:set var="linkattr" value="" />
@@ -365,7 +368,7 @@
 
             <c:if test="${showLinkAsText}">
                 <div class="contactlink"><%----%>
-                    <mercury:link link="${link}" attr="${linkattr}" />
+                    <mercury:link link="${link}" attr="${linkattr}" newWin="${websiteNewWin}" />
                 </div><%----%>
             </c:if>
 
@@ -378,7 +381,7 @@
             </c:if>
 
             <c:if test="${showLinkAsButton}">
-                <mercury:link link="${link}" css="contactlink btn btn-sm" attr="${linkattr}" />
+                <mercury:link link="${link}" css="contactlink btn btn-sm" attr="${linkattr}" newWin="${websiteNewWin}" />
             </c:if>
 
         </div><%----%>

@@ -49,6 +49,9 @@
                 <mapping element="Availability/Release" mapto="attribute:datereleased" />
                 <mapping element="Availability/Expiration" mapto="attribute:dateexpired" />
             </mappings>
+            <geomapping>
+                <link>Contact/AddressChoice/PoiLink</link>
+            </geomapping>
             <searchsettings containerPageOnly="false">
                 <searchsetting element="GalleryTitle" searchcontent="false">
                     <solrfield targetfield="disptitle" sourcefield="*_sort" />
@@ -175,9 +178,6 @@
                     <Search>listgeocoords</Search>
                 </Setting>
             </FieldSettings>
-            <geomapping>
-                <link>Contact/AddressChoice/PoiLink</link>
-            </geomapping>
         </xsd:appinfo>
     </xsd:annotation>
 </xsd:schema>

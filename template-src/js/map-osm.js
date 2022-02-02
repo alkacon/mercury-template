@@ -150,7 +150,7 @@ function showSingleMap(mapData) {
 
             markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
             if (marker.info.length > 0 && group !== "centerpoint"){
-                markerObject.setPopup(new mapgl.Popup({ offset: [0, -25] }).setHTML(marker.info));
+                markerObject.setPopup(new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' }).setHTML(marker.info));
             }
             markerObject.addTo(m_maps[mapData.id]);
             markerObject.group=group;
@@ -261,7 +261,7 @@ export function showGeoJson(mapId, geoJson) {
                 if (!infos.has(key)) {
                     infos.set(key, info);
                 } else {
-                    infos.set(key, info + "<hr>" + infos.get(key));
+                    infos.set(key, info + infos.get(key));
                 }
             }
             checkBounds(coordinates);
@@ -335,7 +335,7 @@ export function showGeoJson(mapId, geoJson) {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-        new mapgl.Popup({ offset: [0, -25] })
+        new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' })
             .setLngLat(coordinates)
             .setHTML(infos.get(key) ? infos.get(key) : info)
             .addTo(map);

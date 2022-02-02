@@ -410,7 +410,7 @@ export function showGeoJson(mapId, geoJson) {
         if (!infoWindows.has(key)) {
             infoWindows.set(key, [infoWindow]);
         } else {
-            let contents = infoWindow.getContent() + "<hr>";
+            let contents = infoWindow.getContent();
             contents += infoWindows.get(key)[infoWindows.get(key).length - 1].getContent();
             infoWindow.setContent(contents);
             infoWindows.get(key).push(infoWindow);

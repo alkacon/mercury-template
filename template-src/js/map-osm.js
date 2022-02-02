@@ -48,7 +48,7 @@ function getPuempel(color) {
       '<path fill="' + color +
       '" stroke="' + strokeColor +
       '" d="M-5.5-33.4c-4.9 0-8.9 3.6-9 8.4 0 6.6 7.2 8.3 9 25 1.8-16.7 8.9-18.4 8.9-25 0-4.6-4-8.4-8.9-8.4zm0 6.4c1.4 0 2.6 1 2.7 2.5 0 1.5-1.2 2.7-2.7 2.7A2.7 2.7 0 0 1-8-24.5c0-1.4 1.2-2.4 2.5-2.5z"/>' +
-      '</svg>'
+      '</svg>';
 }
 
 function getCenterPointGraphic() {
@@ -76,24 +76,15 @@ function getClusterGraphicTextColor() {
     return perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
 }
 
-function getFeatureGraphic() {
+function getFeatureGraphic(mapId) {
     const color = Mercury.getThemeJSON("map-color[0]", "#ffffff");
-    const strokeColor = tinycolor(color).darken(20);
-    const canvas = document.createElement("canvas");
-    canvas.width = 19;
-    canvas.height = 34;
-    const path1 = new Path2D("M-9-28h7v7h-7z");
-    const path2 = new Path2D("M-5.5-33.4c-4.9 0-8.9 3.6-9 8.4 0 6.6 7.2 8.3 9 25 1.8-16.7 8.9-18.4 8.9-25 0-4.6-4-8.4-8.9-8.4zm0 6.4c1.4 0 2.6 1 2.7 2.5 0 1.5-1.2 2.7-2.7 2.7A2.7 2.7 0 0 1-8-24.5c0-1.4 1.2-2.4 2.5-2.5z");
-    const context = canvas.getContext("2d");
-    context.translate(15,34);
-    context.fillStyle = "#fff";
-    context.fill(path1);
-    context.strokeStyle = strokeColor;
-    context.lineWidth = 2;
-    context.fillStyle = color;
-    context.stroke(path2);
-    context.fill(path2);
-    return context.getImageData(0, 0, 19, 34);
+    const svg = window.btoa(getPuempel(color));
+    const image = new Image(19, 34);
+    image.src = `data:image/svg+xml;base64,${svg}`;
+    image.id = "featureGraphic" + mapId;
+    image.style.display = "none";
+    document.querySelector("body").appendChild(image);
+    return document.getElementById(image.id);
 }
 
 function showSingleMap(mapData) {
@@ -215,7 +206,10 @@ export function showGeoJson(mapId, geoJson) {
         return;
     }
     if (!map.hasImage("featureGraphic")) {
-        map.addImage("featureGraphic", getFeatureGraphic());
+        const featureGraphic = getFeatureGraphic(mapId);
+        featureGraphic.addEventListener("load", function() {
+            map.addImage("featureGraphic", featureGraphic);
+        });
     }
     map.addSource('features', {
         type: 'geojson',

@@ -279,7 +279,7 @@ export function showGeoJson(mapId, geoJson) {
     map.on("data", function(event) {
         if (!fitted) {
             map.fitBounds(bounds, {
-                padding: {top: 20, bottom: 20, left: 20, right: 20}
+                padding: {top: 100, bottom: 100, left: 100, right: 100}
             });
             fitted = true;
         }

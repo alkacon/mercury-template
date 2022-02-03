@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>12.0.81</version>
+		<version>12.0.82</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -29,10 +29,6 @@
 		</exportpoints>
 		<resources>
 			<resource uri="/system/modules/alkacon.mercury.template/"/>
-			<resource uri="/system/workplace/resources/filetypes/m-organization-16.svg"/>
-			<resource uri="/system/workplace/resources/filetypes/m-organization-24.svg"/>
-			<resource uri="/system/workplace/resources/filetypes/m-person-16.svg"/>
-			<resource uri="/system/workplace/resources/filetypes/m-person-24.svg"/>
 		</resources>
 		<excluderesources/>
 		<parameters>
@@ -198,10 +194,10 @@
 			<explorertype name="m-layout-group-simple" key="type.m-layout-group-simple.name" smalliconstyle="m-icon-16-layout-header" bigiconstyle="m-icon-24-layout-header" reference="xmlcontent">
 				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-layout-group-simple.description" key="type.m-layout-group-simple.title"/>
 			</explorertype>
-			<explorertype name="m-person" key="type.m-person.name" icon="m-person-16.svg" bigicon="m-person-24.svg" reference="xmlcontent">
+			<explorertype name="m-person" key="type.m-person.name" smalliconstyle="m-icon-16-person" bigiconstyle="m-icon-24-person" reference="xmlcontent">
 				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-person.description" key="type.m-person.title"/>
 			</explorertype>
-			<explorertype name="m-organization" key="type.m-organization.name" icon="m-organization-16.svg" bigicon="m-organization-24.svg" reference="xmlcontent">
+			<explorertype name="m-organization" key="type.m-organization.name" smalliconstyle="m-icon-16-organization" bigiconstyle="m-icon-24-organization" reference="xmlcontent">
 				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-organization.description" key="type.m-organization.title"/>
 			</explorertype>
 		</explorertypes>
@@ -8581,7 +8577,7 @@
 			<properties>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:496,h:48]]></value>
+					<value><![CDATA[w:752,h:48]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8598,90 +8594,7 @@
 			<properties>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:624,h:64]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>system/workplace</destination>
-			<type>folder</type>
-			<properties/>
-		</file>
-		<file>
-			<destination>system/workplace/resources</destination>
-			<type>folder</type>
-			<properties/>
-		</file>
-		<file>
-			<destination>system/workplace/resources/filetypes</destination>
-			<type>folder</type>
-			<properties/>
-		</file>
-		<file>
-			<source>system/workplace/resources/filetypes/m-organization-16.svg</source>
-			<destination>system/workplace/resources/filetypes/m-organization-16.svg</destination>
-			<type>image</type>
-			<uuidstructure>5e99d784-843b-11ec-b3c1-0242ac11002b</uuidstructure>
-			<uuidresource>5e99d785-843b-11ec-b3c1-0242ac11002b</uuidresource>
-			<datecreated>Wed, 02 Feb 2022 15:18:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property type="shared">
-					<name>image.size</name>
-					<value><![CDATA[w:16,h:16]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/workplace/resources/filetypes/m-organization-24.svg</source>
-			<destination>system/workplace/resources/filetypes/m-organization-24.svg</destination>
-			<type>image</type>
-			<uuidstructure>5e9ac1e8-843b-11ec-b3c1-0242ac11002b</uuidstructure>
-			<uuidresource>5e9ac1e9-843b-11ec-b3c1-0242ac11002b</uuidresource>
-			<datecreated>Wed, 02 Feb 2022 15:18:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property type="shared">
-					<name>image.size</name>
-					<value><![CDATA[w:24,h:24]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/workplace/resources/filetypes/m-person-16.svg</source>
-			<destination>system/workplace/resources/filetypes/m-person-16.svg</destination>
-			<type>image</type>
-			<uuidstructure>5e9b5e2c-843b-11ec-b3c1-0242ac11002b</uuidstructure>
-			<uuidresource>5e9b5e2d-843b-11ec-b3c1-0242ac11002b</uuidresource>
-			<datecreated>Wed, 02 Feb 2022 15:18:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property type="shared">
-					<name>image.size</name>
-					<value><![CDATA[w:16,h:16]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/workplace/resources/filetypes/m-person-24.svg</source>
-			<destination>system/workplace/resources/filetypes/m-person-24.svg</destination>
-			<type>image</type>
-			<uuidstructure>5e9bd360-843b-11ec-b3c1-0242ac11002b</uuidstructure>
-			<uuidresource>5e9bd361-843b-11ec-b3c1-0242ac11002b</uuidresource>
-			<datecreated>Wed, 02 Feb 2022 15:18:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property type="shared">
-					<name>image.size</name>
-					<value><![CDATA[w:24,h:24]]></value>
+					<value><![CDATA[w:944,h:64]]></value>
 				</property>
 			</properties>
 			<relations/>

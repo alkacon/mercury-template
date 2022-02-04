@@ -18,7 +18,7 @@
         <ContainerType><![CDATA[person]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[teaser-compact]]></Display>
+    <Display><![CDATA[teaser-compact contact-teaser]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
@@ -30,6 +30,7 @@
     </IncludeSettings>
     <Setting>
       <IncludeName><![CDATA[schemaKind.contact]]></IncludeName>
+      <Visibility><![CDATA[parentIndividual]]></Visibility>
       <Default><![CDATA[pers]]></Default>
     </Setting>
     <Setting>
@@ -52,33 +53,43 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[labels.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showAddress.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPhone.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showWebsite.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showEmail.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showVcard.contact]]></IncludeName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>

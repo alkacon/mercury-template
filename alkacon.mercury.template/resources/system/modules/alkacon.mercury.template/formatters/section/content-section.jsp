@@ -13,9 +13,8 @@
 <mercury:init-messages>
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"            value="${cms.element.setting}" />
-<c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(setting.cssWrapper.toString) : null}" />
-<c:set var="effect"             value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="cssVisibility"      value="${setting.cssVisibility.toString ne 'always' ? ' '.concat(setting.cssVisibility.toString) : null}" />
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />
 <c:set var="sizeDesktop"        value="${setting.visualOption.toInteger}" />
@@ -33,7 +32,7 @@
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
 <mercury:section-piece
-    cssWrapper="element type-section${cssWrapper}${effect}${cssVisibility}"
+    cssWrapper="element type-section${setCssWrapperAll}${cssVisibility}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"
@@ -53,6 +52,8 @@
     ade="${cms.isEditMode}"
     emptyWarning="${true}"
 />
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 </mercury:init-messages>

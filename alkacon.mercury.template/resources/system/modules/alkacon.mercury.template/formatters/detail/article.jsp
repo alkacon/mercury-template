@@ -20,9 +20,8 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
-<c:set var="keyPieceWrapper"        value="${setting.keyPieceWrapper.isSetNotNone ? 'detail-visual '.concat(setting.keyPieceWrapper) : 'detail-visual'}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="visualEffect"           value="${setting.effect.toString}" />
@@ -59,14 +58,14 @@
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <mercury:nl />
-<div class="detail-page type-article layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
+<div class="detail-page type-article layout-${setting.keyPieceLayout.toInteger}${setCssWrapper12}"><%----%>
 <mercury:nl />
 
 <mercury:piece
-    cssWrapper="${keyPieceWrapper}"
+    cssWrapper="detail-visual${setCssWrapper3}"
     pieceLayout="${keyPieceLayout}"
     allowEmptyBodyColumn="${true}"
-    sizeDesktop="${keyPieceLayout > 1 ? 6 : 12}"
+    sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
     sizeMobile="${12}">
 
     <jsp:attribute name="heading">
@@ -148,6 +147,8 @@
 <mercury:nl />
 
 </mercury:paragraph-split>
+
+</mercury:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>

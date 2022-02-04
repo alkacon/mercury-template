@@ -21,6 +21,18 @@
       <WidgetConfig><![CDATA[%(attribute:cssWrapperWidgetOptionalConfig)]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapper2]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapper3]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[cssWrapperInner.default]]></IncludeName>
       <PropertyName><![CDATA[cssWrapperInner]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.cssWrapperInner)]]></DisplayName>
@@ -786,7 +798,7 @@
       <PropertyName><![CDATA[showDownloadCopyright]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showDownloadCopyright)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.showDownloadCopyright.help)]]></Description>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>
@@ -1098,11 +1110,26 @@
       <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[0]]></Default>
       <WidgetConfig><![CDATA[
-            0:       %(key.msg.setting.keyVisualOption.textAboveImage)|
-            1:       %(key.msg.setting.keyVisualOption.textBelowImage)|
+            0:       %(key.msg.setting.keyVisualOption.title-image-text)|
+            1:       %(key.msg.setting.keyVisualOption.image-title-text)|
             4:       %(key.msg.setting.keyVisualOption.sideImageLeft)|
             5:       %(key.msg.setting.keyVisualOption.sideImageRight)|
             50:      %(key.msg.setting.keyVisualOption.imageOverlay)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[keyPieceLayout.poi]]></IncludeName>
+      <PropertyName><![CDATA[keyPieceLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.keyVisualOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.keyVisualOption.help)]]></Description>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[10]]></Default>
+      <WidgetConfig><![CDATA[
+            0:       %(key.msg.setting.keyVisualOption.title-image-text)|
+            10:      %(key.msg.setting.keyVisualOption.title-text-image)|
+            1:       %(key.msg.setting.keyVisualOption.image-title-text)|
+            4:       %(key.msg.setting.keyVisualOption.sideImageLeft)|
+            5:       %(key.msg.setting.keyVisualOption.sideImageRight)
         ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -1167,7 +1194,7 @@
       <PropertyName><![CDATA[visualOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.visualOption)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[show]]></Default>
       <WidgetConfig><![CDATA[
@@ -1764,7 +1791,7 @@
       <PropertyName><![CDATA[listWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[row-tile tile-margin-15]]></Default>
       <WidgetConfig><![CDATA[
@@ -1778,14 +1805,14 @@
     <Setting>
       <IncludeName><![CDATA[listWrapper.default]]></IncludeName>
       <PropertyName><![CDATA[listWrapper]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default/>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
       <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default/>
     </Setting>
@@ -1801,7 +1828,7 @@
       <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.download.displayFormat)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.download.displayFormat.help)]]></Description>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[download-list dl-list-compact]]></Default>
       <WidgetConfig><![CDATA[
@@ -1815,7 +1842,7 @@
       <PropertyName><![CDATA[showFile]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.download.showFile)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.download.showFile.help)]]></Description>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -1824,7 +1851,7 @@
       <PropertyName><![CDATA[categoryOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.download.categoryOption)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.download.categoryOption.help)]]></Description>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
@@ -1836,21 +1863,21 @@
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.0]]></IncludeName>
       <PropertyName><![CDATA[listEntryMinHeight]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[0]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
       <PropertyName><![CDATA[listEntryMinHeight]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[125]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[requiredListWrapper.group]]></IncludeName>
       <PropertyName><![CDATA[requiredListWrapper]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[list-with-groups]]></Default>
     </Setting>
@@ -1863,28 +1890,28 @@
     <Setting>
       <IncludeName><![CDATA[listCssWrapper.masonry]]></IncludeName>
       <PropertyName><![CDATA[listCssWrapper]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[masonry-list]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listWrapper.accordion]]></IncludeName>
       <PropertyName><![CDATA[listWrapper]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[accordion-items]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryWrapper.accordion]]></IncludeName>
       <PropertyName><![CDATA[listEntryWrapper]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[none]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listTag.accordion]]></IncludeName>
       <PropertyName><![CDATA[listTag]]></PropertyName>
-      <Visibility><![CDATA[parent]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[div]]></Default>
     </Setting>

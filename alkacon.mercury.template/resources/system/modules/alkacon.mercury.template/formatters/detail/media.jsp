@@ -16,7 +16,8 @@
 
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                value="${cms.element.setting}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="keyPieceWrapper"        value="${setting.keyPieceWrapper.isSetNotNone ? 'detail-visual '.concat(setting.keyPieceWrapper) : 'detail-visual'}" />
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
@@ -57,13 +58,13 @@
 <c:set var="isAudio"                value="${value.MediaContent.value.Audio.isSet}" />
 
 <mercury:nl />
-<div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${setting.keyPieceLayout.toInteger}${' '}${cssWrapper}"><%----%>
+<div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${setting.keyPieceLayout.toInteger}${setCssWrapper12}"><%----%>
 <mercury:nl />
 
 <mercury:piece
-    cssWrapper="${keyPieceWrapper}"
+    cssWrapper="detail-visual${setCssWrapper3}"
     pieceLayout="${keyPieceLayout}"
-    sizeDesktop="${keyPieceLayout > 1 ? 6 : 12}"
+    sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
     sizeMobile="${12}">
 
     <jsp:attribute name="heading">
@@ -137,6 +138,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 </mercury:init-messages>

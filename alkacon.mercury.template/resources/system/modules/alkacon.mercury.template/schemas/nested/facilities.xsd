@@ -16,6 +16,7 @@
             <xsd:element name="HearingImpaired" type="OpenCmsBoolean" />
             <xsd:element name="LowVision" type="OpenCmsBoolean" />
             <xsd:element name="PublicRestrooms" type="OpenCmsBoolean" />
+            <xsd:element name="PublicRestroomsAccessible" type="OpenCmsBoolean" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
     </xsd:complexType>
@@ -41,6 +42,11 @@
                 <Setting>
                     <PropertyName>PublicRestrooms</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Facility.PublicRestrooms)]]></DisplayName>
+                    <Widget>checkbox</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>PublicRestroomsAccessible</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Facility.PublicRestroomsAccessible)]]></DisplayName>
                     <Widget>checkbox</Widget>
                 </Setting>
             </FieldSettings>

@@ -118,7 +118,7 @@
     </c:otherwise>
 </c:choose>
 
-<div class="element type-slider type-slick-slider pivot ${sliderClass}${' '}${cssWrapper}${' '}${textDisplay}" <%--
+<div class="element type-slider type-slick-slider pivot pivot-full ${sliderClass}${' '}${cssWrapper}${' '}${textDisplay}" <%--
 --%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
 --%>><mercury:nl />
 

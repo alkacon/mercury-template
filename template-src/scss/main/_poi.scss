@@ -19,65 +19,84 @@
  * Source file: _poi.scss
  */
 
-.accessible {
-    line-height: 1;
-    margin-bottom: $default-margin-small;
-}
+.type-poi {
 
-@include media-breakpoint-up(md) {
-
-    .element .poi-head {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-}
-
-.acc-icon {
-    position: relative;
-    width: $acc-icon-size;
-    padding: 0 0 $acc-icon-size 0!important;
-    display: inline-block;
-    color: $acc-icon-text-color;
-    background-color: $acc-icon-bg-color;
-    border-radius: $acc-icon-border-radius;
-    margin-right: 10px;
-    font-size: $h3-font-size;
-
-    &:last-of-type {
-        margin-right: 0;
+    .accessible {
+        line-height: 1;
+        margin-bottom: $default-margin-small;
     }
 
-    .acc-inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        display: flex;
-    }
+    @include media-breakpoint-up(md) {
 
-    .fa {
-        font-weight: normal;
-    }
-
-    .fa-male {
-        position: relative;
-        margin: 0 1px 0 2px;
-        font-weight: normal;
-
-        &::after {
-            display: block;
-            content: "";
-            border-right: 1px solid $acc-icon-text-color;
-            position: absolute;
-            height: 100%;
-            bottom: 0;
-            right: -2px;
+        .poi-head {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
     }
 
-    .fa-female {
-        font-weight: normal;
-        transform: scale(0.85, 1);
+    .acc-icon {
+        position: relative;
+        width: $acc-icon-size;
+        padding: 0 0 $acc-icon-size 0!important;
+        display: inline-block;
+        color: $acc-icon-text-color;
+        background-color: $acc-icon-bg-color;
+        border-radius: $acc-icon-border-radius;
+        margin-right: 10px;
+        font-size: $h3-font-size;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+        .acc-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            display: flex;
+        }
+
+        .acc-wc {
+            &.acc-inner {
+                transform: translateX(-50%) translateY(-50%) scale(0.85);
+                top: 60%;
+                left: 38%;
+            }
+            &.acc-add {
+                position: absolute;
+                display: flex;
+                top: 55%;
+                left: 40%;
+                transform: translateX(-20%) translateY(-90%) scale(0.6);
+            }
+        }
+
+        .fa {
+            font-weight: normal;
+        }
+
+        .fa-male {
+            position: relative;
+            margin: 0 1px 0 2px;
+            font-weight: normal;
+
+            &::after {
+                display: block;
+                content: "";
+                border-right: 1px solid $acc-icon-text-color;
+                position: absolute;
+                height: 100%;
+                bottom: 0;
+                right: -2px;
+            }
+        }
+
+        .fa-female {
+            font-weight: normal;
+            transform: scale(0.85, 1);
+        }
     }
+
 }

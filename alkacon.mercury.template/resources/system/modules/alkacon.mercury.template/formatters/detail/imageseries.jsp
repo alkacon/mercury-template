@@ -20,8 +20,8 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="imageSeriesCss"         value="${setting.imageSeriesCss.toString}" />
 <c:set var="imageSeriesSortOrder"   value="${setting.imageSeriesSortOrder.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
@@ -148,7 +148,7 @@
 </c:if>
 
 <mercury:nl />
-<div class="detail-page type-imageseries ${cssWrapper}"><%----%>
+<div class="detail-page type-imageseries${setCssWrapper12}"><%----%>
 <mercury:nl />
 
 <c:if test="${(not empty titleMarkup) or showDate or showImageCount}">
@@ -310,6 +310,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>

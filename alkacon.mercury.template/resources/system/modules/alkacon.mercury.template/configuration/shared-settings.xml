@@ -41,6 +41,18 @@
       <Widget><![CDATA[string]]></Widget>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapperKeyPiece]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapperParagraphs]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[formCssWrapper.default]]></IncludeName>
       <PropertyName><![CDATA[formCssWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.formCssWrapper)]]></DisplayName>
@@ -898,6 +910,14 @@
       <PropertyName><![CDATA[showLocation]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showLocation)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.showLocation.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showFacilities.true]]></IncludeName>
+      <PropertyName><![CDATA[showFacilities]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showFacilities)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showFacilities.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>

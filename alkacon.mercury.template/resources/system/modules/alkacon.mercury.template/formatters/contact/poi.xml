@@ -40,16 +40,19 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[keyPieceLayout.poi]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceLayout.detail]]></IncludeName>
+      <IncludeName><![CDATA[keyPieceLayout.poi]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
@@ -68,6 +71,9 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDescription.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showFacilities.true]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>

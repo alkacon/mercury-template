@@ -4,7 +4,7 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-person.formatter.element)]]></NiceName>
     <Type><![CDATA[m-person]]></Type>
-    <Key><![CDATA[m/element/person]]></Key>
+    <Key><![CDATA[m/contact/person]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/contact.jsp]]></target>

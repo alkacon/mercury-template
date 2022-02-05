@@ -18,11 +18,8 @@
 
 <mercury:setting-defaults content="${content}">
 
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
-<c:set var="keyPieceWrapper"        value="${setting.keyPieceWrapper.isSetNotNone ? 'detail-visual '.concat(setting.keyPieceWrapper) : 'detail-visual'}" />
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
-<c:set var="visualEffect"           value="${setting.effect.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="titleOption"            value="${setting.titleOption.toString}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
@@ -53,16 +50,17 @@
 <c:set var="showMediaTime"          value="${true}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="showIntro"              value="${titleOption ne 'none'}" />
-<c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
 <c:set var="isAudio"                value="${value.MediaContent.value.Audio.isSet}" />
 
 <mercury:nl />
-<div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${setting.keyPieceLayout.toInteger}${setCssWrapper12}"><%----%>
+<div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
 <mercury:nl />
 
+<c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
+
 <mercury:piece
-    cssWrapper="detail-visual${setCssWrapper3}"
+    cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
     sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
     sizeMobile="${12}">
@@ -77,7 +75,7 @@
     <jsp:attribute name="visual">
         <mercury:key-visual-piece
             image="${image}"
-            effect="${visualEffect}"
+            effect="${setEffect}"
             showOverlay="${showOverlay}"
             imageRatio="${imageRatio}"
             showImageSubtitle="${showImageSubtitle}"
@@ -90,7 +88,7 @@
             <jsp:attribute name="markupImage">
                 <mercury:media-box
                     content="${content}"
-                    effect="${visualEffect}"
+                    effect="${setEffect}"
                     ratio="${imageRatio}"
                     hsize="${hsize}"
                     mediaDate="${showDate ? datePrefix.concat(date) : ''}"
@@ -124,6 +122,7 @@
 
     <div class="detail-content"><%----%>
         <mercury:section-piece
+            cssWrapper="${setCssWrapperParagraphs}"
             pieceLayout="${1}"
             text="${text}"
             hsize="${hsize + 1}"

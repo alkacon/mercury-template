@@ -16,6 +16,7 @@
       <HearingImpaired>true</HearingImpaired>
       <LowVision>true</LowVision>
       <PublicRestrooms>true</PublicRestrooms>
+      <PublicRestroomsAccessible>true</PublicRestroomsAccessible>
     </Facilities>
     <Coord><![CDATA[{"lat":50.8704,"lng":6.99818,"zoom":11,"type":"roadmap","mode":"dynamic","height":0,"width":0,"address":"An der Wachsfabrik 13, 50996 Köln, Deutschland"}]]></Coord>
     <Paragraph>
@@ -53,6 +54,7 @@
       <HearingImpaired>true</HearingImpaired>
       <LowVision>true</LowVision>
       <PublicRestrooms>false</PublicRestrooms>
+      <PublicRestroomsAccessible>false</PublicRestroomsAccessible>
     </Facilities>
     <Coord><![CDATA[{"lat":50.8704,"lng":6.99818,"zoom":11,"type":"roadmap","mode":"dynamic","height":0,"width":0,"address":"An der Wachsfabrik 13, 50996 Köln, Deutschland"}]]></Coord>
     <Paragraph>

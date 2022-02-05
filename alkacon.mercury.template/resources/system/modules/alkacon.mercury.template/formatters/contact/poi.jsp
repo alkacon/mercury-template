@@ -31,18 +31,15 @@
 <c:set var="showLocation"           value="${value.Address.isSet and setting.showLocation.toBoolean}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
+<c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<mercury:nl />
-<div class="detail-page type-poi${setCssWrapper12}"><%----%>
-<mercury:nl />
-
-<c:set var="accessibleFacilities">
-    <c:if test="${value.Facilities.isSet}">
+<c:if test="${showFacilities and value.Facilities.isSet}">
+    <c:set var="accessibleFacilities">
         <div class="accessible"><%----%>
             <c:if test="${value.Facilities.value.WheelchairAccess.toBoolean}">
                 <div title="<fmt:message key='label.Facility.WheelchairAccess' />" tabindex="0" data-toggle="tooltip" class="acc-icon"><%----%>
@@ -86,11 +83,15 @@
             </c:if>
         </div><%----%>
         <mercury:nl />
-    </c:if>
-</c:set>
+    </c:set>
+</c:if>
+
+<mercury:nl />
+<div class="detail-page type-poi layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
+<mercury:nl />
 
 <mercury:piece
-    cssWrapper="detail-visual${setCssWrapper3}"
+    cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
     allowEmptyBodyColumn="${true}"
     sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
@@ -160,6 +161,7 @@
 <c:if test="${showDescription}">
     <div class="detail-content"><%----%>
         <mercury:paragraphs
+            cssWrapper="${setCssWrapperParagraphs}"
             paragraphs="${content.valueList.Paragraph}"
             pieceLayout="${pieceLayout}"
             splitDownloads="${false}"

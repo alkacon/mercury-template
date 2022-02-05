@@ -148,11 +148,11 @@
 </c:if>
 
 <mercury:nl />
-<div class="detail-page type-imageseries${setCssWrapper12}"><%----%>
+<div class="detail-page type-imageseries${setCssWrapper123}"><%----%>
 <mercury:nl />
 
 <c:if test="${(not empty titleMarkup) or showDate or showImageCount}">
-    <div class="detail-visual piece full"><%----%>
+    <div class="detail-visual piece full${setCssWrapperKeyPiece}"><%----%>
         <div class="heading"><%----%>
             ${titleMarkup}
         </div><%----%>
@@ -176,7 +176,7 @@
 </c:if>
 
 <c:if test="${showText and text.isSet}">
-    <div class="detail-content pivot" ${ade ? text.rdfaAttr : ''}><%----%>
+    <div class="detail-content pivot${setCssWrapperParagraphs}" ${ade ? text.rdfaAttr : ''}><%----%>
         ${text}
     </div><%----%>
     <mercury:nl />

@@ -38,6 +38,12 @@
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageSeriesCss.default]]></IncludeName>
     </Setting>
     <Setting>

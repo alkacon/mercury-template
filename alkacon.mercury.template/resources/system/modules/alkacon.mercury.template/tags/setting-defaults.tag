@@ -10,28 +10,35 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
     description="The content element that is formatted." %>
 
 
-<%@ variable name-given="setting"           declare="true" variable-class="java.util.Map" %>
-<%@ variable name-given="setCssWrapper1"    declare="true" %>
-<%@ variable name-given="setCssWrapper2"    declare="true" %>
-<%@ variable name-given="setCssWrapper3"    declare="true" %>
-<%@ variable name-given="setCssWrapper12"   declare="true" %>
-<%@ variable name-given="setCssWrapper123"  declare="true" %>
-<%@ variable name-given="setCssWrapperAll"  declare="true" %>
-<%@ variable name-given="setEffect"         declare="true" %>
+<%@ variable name-given="setting"                   declare="true" variable-class="java.util.Map" %>
+<%@ variable name-given="setCssWrapper"             declare="true" %>
+<%@ variable name-given="setCssWrapper2"            declare="true" %>
+<%@ variable name-given="setCssWrapper3"            declare="true" %>
+<%@ variable name-given="setCssWrapperKeyPiece"     declare="true" %>
+<%@ variable name-given="setCssWrapperParagraphs"   declare="true" %>
+<%@ variable name-given="setEffect"                 declare="true" %>
+
+<%@ variable name-given="setCssWrapper12"           declare="true" %>
+<%@ variable name-given="setCssWrapper123"          declare="true" %>
+<%@ variable name-given="setCssWrapperAll"          declare="true" %>
 
 
-<c:set var="setting"                        value="${cms.element.setting}" />
-<c:set var="setCssWrapper1"                 value="${setting.cssWrapper.isSetNotNone ? ' '.concat(setting.cssWrapper.toString) : null}" />
-<c:set var="setCssWrapper2"                 value="${setting.cssWrapper2.isSetNotNone ? ' '.concat(setting.cssWrapper2.toString) : null}" />
-<c:set var="setCssWrapper3"                 value="${setting.cssWrapper3.isSetNotNone ? ' '.concat(setting.cssWrapper3.toString) : null}" />
-<c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
-<c:set var="setCssWrapper12"                value="${setCssWrapper1}${setCssWrapper2}" />
-<c:set var="setCssWrapper123"               value="${setCssWrapper12}${setCssWrapper3}" />
-<c:set var="setCssWrapperAll"               value="${setCssWrapper123}${setEffect}" />
+<c:set var="setting"                                value="${cms.element.setting}" />
+<c:set var="setCssWrapper"                          value="${setting.cssWrapper.isSetNotNone ? ' '.concat(setting.cssWrapper.toString) : null}" />
+<c:set var="setCssWrapper2"                         value="${setting.cssWrapper2.isSetNotNone ? ' '.concat(setting.cssWrapper2.toString) : null}" />
+<c:set var="setCssWrapper3"                         value="${setting.cssWrapper3.isSetNotNone ? ' '.concat(setting.cssWrapper3.toString) : null}" />
+<c:set var="setCssWrapperKeyPiece"                  value="${setting.cssWrapperKeyPiece.isSetNotNone ? ' '.concat(setting.cssWrapperKeyPiece.toString) : null}" />
+<c:set var="setCssWrapperParagraphs"                value="${setting.cssWrapperParagraphs.isSetNotNone ? ' '.concat(setting.cssWrapperParagraphs.toString) : null}" />
+<c:set var="setEffect"                              value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
+
+<c:set var="setCssWrapper12"                        value="${setCssWrapper}${setCssWrapper2}" />
+<c:set var="setCssWrapper123"                       value="${setCssWrapper12}${setCssWrapper3}" />
+<c:set var="setCssWrapperAll"                       value="${setCssWrapper123}${setEffect}" />
 
 
 <jsp:doBody/>

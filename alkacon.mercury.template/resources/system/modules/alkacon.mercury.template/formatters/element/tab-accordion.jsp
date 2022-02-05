@@ -19,7 +19,7 @@
 <fmt:setLocale value="${cms.workplaceLocale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults content="${content}">
+<mercury:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="visualOption"           value="${setting.visualOption.toString}" />
@@ -32,6 +32,7 @@
 <c:set var="param_parts"        value="${fn:split(cms.container.param, '#')}" />
 <c:set var="parent_role"        value="${param_parts[0]}" />
 <c:set var="parent_classes"     value="${param_parts[1]}" />
+
 
 
 <c:choose>

@@ -18,8 +18,8 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults>
+
 <c:set var="searchSubsite"          value="${setting.searchscope.toString eq 'subsite'}" />
 <c:set var="searchForEmptyQuery"    value="${setting.searchForEmptyQuery.toBoolean}" />
 <c:set var="numFacetItems"          value="${empty setting.numFacetItems.toInteger ? 10 : setting.numFacetItems.toInteger}" />
@@ -127,7 +127,7 @@
 <c:set var="common" value="${controllers.common}" />
 
 <mercury:nl/>
-<div class="element type-search pivot ${cssWrapper}"><%----%>
+<div class="element type-search pivot${setCssWrapperAll}"><%----%>
     <mercury:nl/>
 
     <%-- The search form --%>
@@ -482,6 +482,7 @@
 </div><%----%>
 <mercury:nl />
 
-</cms:bundle>
+</mercury:setting-defaults>
 
+</cms:bundle>
 </mercury:init-messages>

@@ -27,7 +27,8 @@
 <c:choose>
 <c:when test="${value.Image.isSet}">
 
-<c:set var="cssWrapper"             value="${setting.cssWrapper.toString}" />
+<mercury:setting-defaults>
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="ratio"                  value="${setting.imageRatio.toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
@@ -35,7 +36,6 @@
 <c:set var="doNotFlip"              value="${setting.doNotFlip.toBoolean}" />
 <c:set var="flipColor"              value="${setting.flipColor.toString}" />
 <c:set var="flipTitle"              value="${setting.flipTitle.useDefault('on-text').toString}" />
-<c:set var="effect"                 value="${setting.effect.toString != 'none' ? setting.effect.toString : ''}" />
 
 <c:set var="title"                  value="${value.Title.toString}" />
 
@@ -79,7 +79,7 @@
 </c:set>
 
 <mercury:nl />
-<div class="element imageflip h-${flipTitle}${' '}${tileCss}${' '}${flipColor}${' '}${cssWrapper}${' '}${effect}" ontouchstart="this.classList.toggle('hover');"><%----%>
+<div class="element imageflip h-${flipTitle}${' '}${tileCss}${' '}${flipColor}${setCssWrapperAll}" ontouchstart="this.classList.toggle('hover');"><%----%>
     <mercury:padding-box ratio="${ratio}" cssWrapper="flipper">
         ${showTextFirst ? textSide : imageSide}
         <c:if test="${not doNotFlip}">
@@ -90,14 +90,14 @@
 <mercury:nl />
 
 </mercury:image-vars>
+</mercury:setting-defaults>
 
 </c:when>
+
 <c:when test="${cms.isEditMode}">
 <%-- ###### No image: Offline version: Output warning ###### --%>
-
 <fmt:setLocale value="${cms.workplaceLocale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
-
 <mercury:nl />
 <div class="element imageflip ${tileCss}"><%----%>
     <mercury:alert type="warning">
@@ -110,22 +110,19 @@
     </mercury:alert>
 </div><%----%>
 <mercury:nl />
-
 </cms:bundle>
-
 </c:when>
+
 <c:otherwise>
 <%-- ######  No image: Online version: Output nothing ###### --%>
-
 <mercury:nl />
 <div></div><%----%>
 <mercury:nl />
-
 </c:otherwise>
+
 </c:choose>
 
 </cms:bundle>
-
 </cms:formatter>
 </mercury:init-messages>
 

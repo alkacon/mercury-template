@@ -20,7 +20,7 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults content="${content}">
+<mercury:setting-defaults>
 
 <c:set var="provider"               value="${setting.mapProvider.validate(['osm','google'],'google').toString}" />
 <c:set var="pieceLayout"            value="${10}" />

@@ -16,7 +16,7 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults content="${content}">
+<mercury:setting-defaults>
 
 <c:set var="addCssWrapper"          value="${setting.addCssWrapper.isSetNotNone ? ' '.concat(setting.addCssWrapper.toString) : null}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />

@@ -11,18 +11,16 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <mercury:init-messages>
-
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                    value="${cms.element.setting}" />
-<c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
-<c:set var="cssVisibility"              value="${setting.cssVisibility.toString != 'always' ? setting.cssVisibility.toString : ''}" />
+<mercury:setting-defaults>
+
 <c:set var="breadcrumbsIncludeHidden"   value="${setting.breadcrumbsIncludeHidden.toBoolean}" />
 <c:set var="breadcrumbsFullPath"        value="${setting.breadcrumbsFullPath.toBoolean}" />
 <c:set var="breadcrumbsFromRoot"        value="${setting.breadcrumbsFromRoot.toBoolean}" />
 
 <mercury:nl />
-<div class="element type-nav-breadcrumbs ${cssWrapper}${' '}${cssVisibility}"><%----%>
+<div class="element type-nav-breadcrumbs${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
     <mercury:nav-vars params="${param}">
@@ -109,5 +107,6 @@
 </div><%----%>
 <mercury:nl />
 
+</mercury:setting-defaults>
 </cms:formatter>
 </mercury:init-messages>

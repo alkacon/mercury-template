@@ -14,13 +14,11 @@
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
-
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults>
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
-<c:set var="cssVisibility"          value="${setting.cssVisibility.toString != 'always' ? setting.cssVisibility.toString : ''}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <mercury:nl />
@@ -34,7 +32,7 @@
 
     <%-- If no navigation items are found, no output must be generated online --%>
 
-    <div class="element type-nav-side ${cssWrapper}${' '}${cssVisibility}"><%----%>
+    <div class="element type-nav-side${setCssWrapperAll}"><%----%>
     <mercury:nl />
 
         <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
@@ -125,6 +123,8 @@
 </mercury:nav-vars>
 
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 </cms:bundle>

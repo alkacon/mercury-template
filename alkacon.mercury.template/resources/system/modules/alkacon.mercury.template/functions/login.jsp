@@ -12,11 +12,14 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+<mercury:setting-defaults>
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<c:set var="cssWrapper"             value="${setCssWrapperAll}" />
 <c:set var="loginproject"           value="${setting.loginproject.isSet ? setting.loginproject.toString : 'Online'}" />
 <c:set var="loginou"                value="${setting.loginou.isSet ? fn:trim(cms.element.setting.loginou.toString) : ''}" />
+
+<%-- Must close setting tag here because the loginBean uses inline code --%>
+</mercury:setting-defaults>
 
 <c:if test="${not empty loginou and 'Online' ne loginproject}">
     <c:set var="loginproject" value="${loginou eq '/' ? '' : loginou}${loginproject}"/>
@@ -65,7 +68,7 @@
 <c:set var="loginError" value="${not loginBean.loginSuccess}" />
 
 <mercury:nl/>
-<div class="element type-login-form pivot ${cssWrapper}"><%----%>
+<div class="element type-login-form pivot${cssWrapper}"><%----%>
 
     <form class="styled-form" target="_self" method="post"><%----%>
         <input type="hidden" name="requestedResource" value="${param.requestedResource}" /><%----%>
@@ -121,3 +124,4 @@
 <mercury:nl/>
 
 </cms:bundle>
+

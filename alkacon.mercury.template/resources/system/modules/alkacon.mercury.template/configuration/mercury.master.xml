@@ -490,7 +490,7 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/meta-info.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/meta-info.xml]]></target>
           <uuid>2a768a4d-4e6d-4932-9af4-9b51502f9cdd</uuid>
         </link>
       </AddFormatter>

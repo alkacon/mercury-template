@@ -11,10 +11,6 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
-    description="The content element that is formatted." %>
-
-
 <%@ variable name-given="setting"                   declare="true" variable-class="java.util.Map" %>
 <%@ variable name-given="setCssWrapper"             declare="true" %>
 <%@ variable name-given="setCssWrapper2"            declare="true" %>
@@ -22,6 +18,7 @@
 <%@ variable name-given="setCssWrapperKeyPiece"     declare="true" %>
 <%@ variable name-given="setCssWrapperParagraphs"   declare="true" %>
 <%@ variable name-given="setEffect"                 declare="true" %>
+<%@ variable name-given="setCssVisibility"          declare="true" %>
 
 <%@ variable name-given="setCssWrapper12"           declare="true" %>
 <%@ variable name-given="setCssWrapper123"          declare="true" %>
@@ -35,10 +32,12 @@
 <c:set var="setCssWrapperKeyPiece"                  value="${setting.cssWrapperKeyPiece.isSetNotNone ? ' '.concat(setting.cssWrapperKeyPiece.toString) : null}" />
 <c:set var="setCssWrapperParagraphs"                value="${setting.cssWrapperParagraphs.isSetNotNone ? ' '.concat(setting.cssWrapperParagraphs.toString) : null}" />
 <c:set var="setEffect"                              value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
+<c:set var="setCssVisibility"                       value="${(setting.cssVisibility.isSetNotNone and (setting.cssVisibility.toString ne 'always'))
+                                                           ? ' '.concat(setting.cssVisibility.toString) : null}" />
 
 <c:set var="setCssWrapper12"                        value="${setCssWrapper}${setCssWrapper2}" />
 <c:set var="setCssWrapper123"                       value="${setCssWrapper12}${setCssWrapper3}" />
-<c:set var="setCssWrapperAll"                       value="${setCssWrapper123}${setEffect}" />
+<c:set var="setCssWrapperAll"                       value="${setCssWrapper123}${setEffect}${setCssVisibility}" />
 
 
 <jsp:doBody/>

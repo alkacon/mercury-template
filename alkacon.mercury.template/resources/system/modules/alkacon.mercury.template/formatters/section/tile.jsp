@@ -12,13 +12,10 @@
 
 
 <mercury:init-messages>
-
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"            value="${cms.element.setting}" />
-<c:set var="cssWrapper"         value="${setting.cssWrapper.isSet ? ' '.concat(setting.cssWrapper.toString) : null}" />
-<c:set var="effect"             value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
-<c:set var="cssVisibility"      value="${setting.cssVisibility.toString ne 'always' ? ' '.concat(setting.cssVisibility.toString) : null}" />
+<mercury:setting-defaults>
+
 <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio}" />
 <c:set var="tileContainer"      value="${setting.tileContainer.toString}" />
@@ -49,7 +46,7 @@
 <mercury:nl />
 <div class="${tileClass}"><%----%>
 
-    <div class="content-box${cssWrapper}${effect}${cssVisibility}"><%----%>
+    <div class="content-box${setCssWrapperAll}"><%----%>
 
         <mercury:link link="${value.Link}" test="${linkOption eq 'none'}">
 
@@ -102,6 +99,8 @@
     </div><%----%>
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 </mercury:init-messages>

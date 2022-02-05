@@ -11,15 +11,15 @@
 <mercury:init-messages>
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults>
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="iconClass"              value="${setting.iconClass.isSet ? setting.iconClass.toString : 'warning'}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}"/>
 
 <mercury:nl />
-<div class="element type-iconbox pivot ${cssWrapper}"><%----%>
+<div class="element type-iconbox pivot${setCssWrapperAll}><%----%>
 <mercury:nl />
 
     <mercury:link link="${value.Link}" setTitle="${true}" css="icon-link">
@@ -34,6 +34,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 </mercury:init-messages>

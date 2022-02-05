@@ -31,8 +31,13 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
-      <Default><![CDATA[hidden-xs hidden-sm hidden-md]]></Default>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssVisibility.hidemobile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[breadcrumbsIncludeHidden.navigation]]></IncludeName>

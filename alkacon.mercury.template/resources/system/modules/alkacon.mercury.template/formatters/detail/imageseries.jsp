@@ -20,7 +20,7 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults content="${content}">
+<mercury:setting-defaults>
 
 <c:set var="imageSeriesCss"         value="${setting.imageSeriesCss.toString}" />
 <c:set var="imageSeriesSortOrder"   value="${setting.imageSeriesSortOrder.toString}" />

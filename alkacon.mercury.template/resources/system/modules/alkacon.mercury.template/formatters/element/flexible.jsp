@@ -14,7 +14,7 @@
 <c:set var="hasScript" value="${cms.isEditMode and fn:contains(fn:toLowerCase(value.Code), 'script')}" />
 <mercury:init-messages reload="${value.RequireReload.toBoolean or hasScript}">
 
-<mercury:setting-defaults content="${content}">
+<mercury:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 

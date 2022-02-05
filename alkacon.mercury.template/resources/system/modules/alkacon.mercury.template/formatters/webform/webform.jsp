@@ -16,7 +16,7 @@
 
 <cms:formatter var="content">
 
-<mercury:setting-defaults content="${content}">
+<mercury:setting-defaults>
 
 <div class="element type-webform${setCssWrapperAll}">
 

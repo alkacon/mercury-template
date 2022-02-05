@@ -13,7 +13,7 @@
 <mercury:init-messages reload="true">
 <cms:formatter var="content" val="value">
 
-<mercury:setting-defaults content="${content}">
+<mercury:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />

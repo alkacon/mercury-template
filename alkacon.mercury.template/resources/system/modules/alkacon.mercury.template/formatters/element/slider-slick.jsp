@@ -16,10 +16,9 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
-<c:set var="visualEffect"           value="${setting.effect.toString}" />
 
 <c:set var="useFade"                value="${setting.transition eq 'fade'}" />
 <c:set var="animationSpeed"         value="${useFade ? 1000 : 500}" />
@@ -105,8 +104,8 @@
         <c:set var="showDots" value="${false}" />
         <c:set var="pauseOnHover" value="${false}" />
         <c:set var="adoptRatioToScreen" value="${false}" />
-        <c:set var="animationTrigger" value="${visualEffect eq 'none' ? '' : visualEffect}" />
-        <c:set var="animationTarget" value="${visualEffect eq 'none' ? '' : 'effect-box'}" />
+        <c:set var="animationTrigger" value="${empty setEffect ? '' : setEffect}" />
+        <c:set var="animationTarget" value="${empty setEffect ? '' : 'effect-box'}" />
     </c:when>
     <c:otherwise>
     <%-- ###### Hero slider (default) ###### --%>
@@ -118,7 +117,7 @@
     </c:otherwise>
 </c:choose>
 
-<div class="element type-slider type-slick-slider pivot pivot-full ${sliderClass}${' '}${cssWrapper}${' '}${textDisplay}" <%--
+<div class="element type-slider type-slick-slider pivot pivot-full ${sliderClass}${setCssWrapper123}${' '}${textDisplay}" <%--
 --%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
 --%>><mercury:nl />
 
@@ -357,6 +356,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>

@@ -16,9 +16,9 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper.toString}" />
-<c:set var="addCssWrapper"          value="${setting.addCssWrapper.isSetNotNone ? setting.addCssWrapper.toString : null}" />
+<mercury:setting-defaults content="${content}">
+
+<c:set var="addCssWrapper"          value="${setting.addCssWrapper.isSetNotNone ? ' '.concat(setting.addCssWrapper.toString) : null}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="iconClass"              value="${setting.iconClass.useDefault('caret-right').toString}" />
 <c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
@@ -57,7 +57,7 @@
 </c:choose>
 
 <mercury:nl />
-<div class="element type-linksequence pivot ${linksequenceType}${' '}${listBulletStyle}${' '}${cssWrapper}${' '}${addCssWrapper}"><%----%>
+<div class="element type-linksequence pivot ${linksequenceType}${' '}${listBulletStyle}${addCssWrapper}${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
@@ -83,6 +83,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>

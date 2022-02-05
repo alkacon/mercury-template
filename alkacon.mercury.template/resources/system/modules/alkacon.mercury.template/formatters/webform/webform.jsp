@@ -14,9 +14,11 @@
 <mercury:init-messages>
 <cms:secureparams />
 
-
 <cms:formatter var="content">
-<div class="element type-webform ${cms.element.settings.cssWrapper}">
+
+<mercury:setting-defaults content="${content}">
+
+<div class="element type-webform${setCssWrapperAll}">
 
     <c:set var="formId" value="${cms.element.id.stringValue}" />
     <c:set var="fid" value="${formId.hashCode()}" />
@@ -41,6 +43,8 @@
     </c:choose>
 
 </div>
+
+</mercury:setting-defaults>
 </cms:formatter>
 
 </mercury:init-messages>

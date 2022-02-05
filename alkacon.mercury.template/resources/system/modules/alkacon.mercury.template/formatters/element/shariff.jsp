@@ -13,21 +13,15 @@
 <mercury:init-messages reload="true">
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<c:set var="cssWrapper">
-    ${cssWrapper}
-    ${' '}${setting.theme}
-    ${' '}${setting.orientation}
-    ${' '}${setting.verbose}
-    ${' '}${setting.shape}
-</c:set>
+<c:set var="cssWrapper"             value="${setCssWrapperAll}${' '}${setting.theme}${' '}${setting.orientation}${' '}${setting.verbose}${' '}${setting.shape}" />
 
 <mercury:nl />
-<div class="element type-shariff pivot social-icons ${fn:replace(cssWrapper, 'default', '')}"><%----%>
+<div class="element type-shariff pivot social-icons${fn:replace(cssWrapper, 'default', '')}"><%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
@@ -61,6 +55,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 

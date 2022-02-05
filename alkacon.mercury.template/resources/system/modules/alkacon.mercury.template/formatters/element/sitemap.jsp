@@ -14,11 +14,10 @@
 <cms:secureparams />
 <mercury:init-messages>
 
-${nl}
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
 <c:set var="cols"                   value="${empty cms.element.settings.cols ? '4' : cms.element.settings.cols}" />
@@ -27,7 +26,8 @@ ${nl}
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<div class="element type-sitemap pivot ${cssWrapper}">${nl}
+<mercury:nl />
+<div class="element type-sitemap pivot${setCssWrapperAll}"><%----%>
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
@@ -128,7 +128,10 @@ ${nl}
 
     </c:if>
 
-</div>${nl}
+</div><%----%>
+<mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 </mercury:init-messages>

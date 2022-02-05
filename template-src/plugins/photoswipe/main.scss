@@ -8,7 +8,7 @@
 
 @import "main-settings";
 
- 
+
 /* pswp = photoswipe */
 .pswp {
 	display: none;
@@ -31,7 +31,7 @@
 			box-sizing: border-box;
 		}
 	}
-	
+
 	img {
 		max-width: none;
 	}
@@ -39,7 +39,6 @@
 
 /* style is added when JS option showHideOpacity is set to true */
 .pswp--animate_opacity {
-	/* 0.001, because opacity:0 doesn't trigger Paint action, which causes lag at start of transition */
 	opacity: 0.001;
 	will-change:opacity;
 	/* for open/close transition */
@@ -51,21 +50,18 @@
 }
 
 .pswp--zoom-allowed .pswp__img {
-	/* autoprefixer: off */
 	cursor: -webkit-zoom-in;
 	cursor: -moz-zoom-in;
 	cursor: zoom-in;
 }
 
 .pswp--zoomed-in .pswp__img {
-	/* autoprefixer: off */
 	cursor: -webkit-grab;
 	cursor: -moz-grab;
 	cursor: grab;
 }
 
 .pswp--dragging  .pswp__img {
-	/* autoprefixer: off */
 	cursor: -webkit-grabbing;
 	cursor: -moz-grabbing;
 	cursor: grabbing;
@@ -99,7 +95,7 @@
 
 .pswp__container,
 .pswp__zoom-wrap {
-	-ms-touch-action: none; 
+	-ms-touch-action: none;
 	touch-action: none;
 	position: absolute;
 	left: 0;

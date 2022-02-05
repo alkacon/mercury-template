@@ -33,6 +33,12 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>

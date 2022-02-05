@@ -20,9 +20,9 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"                value="${cms.element.setting}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="provider"               value="${setting.mapProvider.validate(['osm','google'],'google').toString}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper.toString}" />
 <c:set var="pieceLayout"            value="${10}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
@@ -53,7 +53,7 @@
 </c:choose>
 
 <mercury:section-piece
-    cssWrapper="element type-map map-${provider}${' '}${cssWrapper}"
+    cssWrapper="element type-map map-${provider}${setCssWrapperAll}"
     pieceLayout="${pieceLayout}"
     heading="${value.Title}"
     hsize="${hsize}"
@@ -144,6 +144,8 @@
     </jsp:attribute>
 
 </mercury:section-piece>
+
+</mercury:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>

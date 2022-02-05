@@ -14,12 +14,12 @@
 <c:set var="hasScript" value="${cms.isEditMode and fn:contains(fn:toLowerCase(value.Code), 'script')}" />
 <mercury:init-messages reload="${value.RequireReload.toBoolean or hasScript}">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 
 <mercury:nl />
-<div class="element type-flexible pivot ${cssWrapper}"><%----%>
+<div class="element type-flexible pivot${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />
@@ -34,6 +34,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </mercury:init-messages>
 </cms:formatter>

@@ -16,9 +16,11 @@
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">
+<fmt:setLocale value="${cms.workplaceLocale}" />
+<cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="setting"                value="${cms.element.setting}" />
-<c:set var="cssWrapper"             value="${setting.cssWrapper}" />
+<mercury:setting-defaults content="${content}">
+
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="visualOption"           value="${setting.visualOption.toString}" />
 <c:set var="firstOpen"              value="${setting.firstOpen.toBoolean}" />
@@ -32,9 +34,6 @@
 <c:set var="parent_classes"     value="${param_parts[1]}" />
 
 
-<fmt:setLocale value="${cms.workplaceLocale}" />
-<cms:bundle basename="alkacon.mercury.template.messages">
-
 <c:choose>
     <c:when test="${containerType eq 'row'}">
         <c:set var="msg"><fmt:message key="msg.page.tab.emptycontainer.row"/></c:set>
@@ -45,7 +44,7 @@
 </c:choose>
 
 <mercury:nl />
-<div class="element type-tab variant-accordion ${cssWrapper}"><%----%>
+<div class="element type-tab variant-accordion${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
@@ -91,6 +90,8 @@
 
 </div><%----%>
 <mercury:nl />
+
+</mercury:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>

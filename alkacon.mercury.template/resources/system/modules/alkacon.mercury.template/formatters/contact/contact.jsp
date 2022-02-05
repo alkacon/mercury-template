@@ -14,9 +14,8 @@
 
 <cms:formatter var="content" val="value">
 
-<c:set var="setting"                value="${cms.element.setting}" />
+<mercury:setting-defaults content="${content}">
 
-<c:set var="cssWrapper"             value="${setting.cssWrapper.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 
@@ -36,7 +35,6 @@
 <c:set var="imageRatio"             value="${setting.imageRatio.toString}" />
 <c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
 
-<c:set var="effect"                 value="${showImage and setting.effect.isSetNotNone ? setting.effect.toString : null}" />
 <c:set var="setSizeDesktop"         value="${setting.pieceSizeDesktop.toInteger}" />
 <c:set var="setSizeMobile"          value="${setting.pieceSizeMobile.toInteger}" />
 
@@ -59,7 +57,7 @@
 
 <mercury:nl />
 <mercury:section-piece
-    cssWrapper="element type-contact ${kindCss}${compactLayout}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty effect ? '' : ' '.concat(effect)}"
+    cssWrapper="element type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     pieceLayout="${pieceLayout}"
     attrWrapper="${kindAttr}"
     heading="${value.Title}"
@@ -113,6 +111,8 @@
     </jsp:attribute>
 </mercury:section-piece>
 </mercury:contact-vars>
+
+</mercury:setting-defaults>
 
 </cms:formatter>
 </mercury:init-messages>

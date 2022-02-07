@@ -19,7 +19,7 @@
 <c:set var="ade"                    value="${cms.isEditMode}"/>
 
 <mercury:nl />
-<div class="element type-iconbox pivot${setCssWrapperAll}><%----%>
+<div class="element type-iconbox pivot${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
     <mercury:link link="${value.Link}" setTitle="${true}" css="icon-link">

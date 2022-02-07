@@ -33,7 +33,7 @@
     <%-- ##################################### --%>
 
     <mercury:nl />
-    <div class="type-list-sortoptions ${settings.cssWrapper}" <%--
+    <div class="type-list-sortoptions pivot pivot-full ${settings.cssWrapper}" <%--
     --%>id="facets_${elementId}" <%--
     --%>data-facets="${facetsettings}" <%--
     --%>data-settings="${settingparams}"><%----%>

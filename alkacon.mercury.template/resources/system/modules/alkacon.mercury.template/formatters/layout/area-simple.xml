@@ -41,17 +41,6 @@
     <Setting>
       <IncludeName><![CDATA[bgSpacing.layout]]></IncludeName>
     </Setting>
-    <Setting>
-      <PropertyName><![CDATA[areaType]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.areaType)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.areaType.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
-      <Default><![CDATA[default]]></Default>
-      <WidgetConfig><![CDATA[
-            default:                                    %(key.msg.setting.areaType.none)|
-            full:                                       %(key.msg.setting.areaType.full)
-        ]]></WidgetConfig>
-    </Setting>
     <Attribute>
       <Key><![CDATA[needBgImage]]></Key>
       <Value><![CDATA[%!

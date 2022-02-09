@@ -29,21 +29,21 @@
     <c:when test="${(not empty sourceSite) and not (currentSite eq sourceSite)}">
         <c:set var="sourceSiteProps" value="${cms.vfs.readProperties[sourceSite]}" />
         <c:set var="sourceSiteName" value="${not empty sourceSiteProps['mercury.sitename'] ? sourceSiteProps['mercury.sitename'] : sourceSiteProps['Title'] }" />
-        <div class="element type-sourcesite ${cssWrapper}"><%----%>
+        <div class="element type-sourcesite pivot ${cssWrapper}"><%----%>
             <fmt:message key="msg.page.sourcesite.other">
                 <fmt:param><a href="${cms.vfs.link[sourceSite.rootPath]}">${sourceSiteName}</a></fmt:param>
             </fmt:message>
         </div><%----%>
     </c:when>
     <c:when test="${empty sourceSite and cms.isEditMode}">
-        <mercury:alert-meta icon="info-circle" css="element type-sourcesite ${cssWrapper}">
+        <mercury:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.sourcesite.unknown" />
             </jsp:attribute>
         </mercury:alert-meta>
     </c:when>
     <c:when test="${cms.isEditMode}">
-        <mercury:alert-meta icon="info-circle" css="element type-sourcesite ${cssWrapper}">
+        <mercury:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.sourcesite.same" />
             </jsp:attribute>

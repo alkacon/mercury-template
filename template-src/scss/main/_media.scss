@@ -193,7 +193,15 @@
 
     // special adjustment for YouTube media element in 16x9 squares
     .preview.video .centered.image {
-        width: 101%;
+        // width: 101%;
+        height: 100%;
+        > .image-src-box {
+            height: 100%;
+            > img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
     }
     @include media-breakpoint-up(xl) {
         &.square-large.square-16-9 .preview.video .centered.image {

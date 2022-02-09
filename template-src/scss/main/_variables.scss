@@ -598,12 +598,14 @@ $dl-list-highlight-color:           $highlight-color !default; // highlight back
 
 // Event calendar sheet
 
+$calendar-sheet-width:              165px !default;
 $calendar-sheet-barcolor:           $main-theme !default;
 $calendar-sheet-bgcolor:            $grey-lighter !default;
 $calendar-sheet-border:             $grey-light !default;
 $calendar-sheet-border-radius:      $default-border-radius !default;
 $calendar-sheet-margin:             10% !default;
 $calendar-sheet-colors:             $bg-colors !default;
+$calendar-sheet-bar-height:         15px  !default;
 
 
 // Contacts

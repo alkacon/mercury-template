@@ -75,32 +75,30 @@
 
 .area-wide {
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(breakpoint-prev($piece-desktop-breakpoint)) {
 
         @include calendar-sheet-base();
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up($piece-desktop-breakpoint) {
 
         .calendar-sheet-piece.fixed {
             &.flex {
                 > .visual {
-                    min-width: 135px + $grid-gutter-width;
-                    max-width: 135px + $grid-gutter-width;
+                    // .piece will add a padding of (0.5 * $grid-gutter-width) to the visual
+                    // to get the wanted calendar sheet size we must add this
+                    min-width: #{$calendar-sheet-width + (0.5 * $grid-gutter-width)};
+                    max-width: #{$calendar-sheet-width + (0.5 * $grid-gutter-width)};
                 }
                 > .body {
-                    flex: 0 0 calc(100% - #{135px + $grid-gutter-width});
-                    max-width: calc(100% - #{135px + $grid-gutter-width});
+                    flex: 0 0 calc(100% - #{$calendar-sheet-width + (0.5 * $grid-gutter-width)});
+                    max-width: calc(100% - #{$calendar-sheet-width + (0.5 * $grid-gutter-width)});
                 }
             }
             &.float {
                 > .visual {
-                    min-width: 135px + (0.5 * $grid-gutter-width);
-                    max-width: 135px + (0.5 * $grid-gutter-width);
-                }
-                > .body {
-                    flex: 0 0 calc(100% - #{135px + (0.5 * $grid-gutter-width)});
-                    max-width: calc(100% - #{135px + (0.5 * $grid-gutter-width)});
+                    min-width: $calendar-sheet-width;
+                    max-width: $calendar-sheet-width;
                 }
             }
         }
@@ -123,7 +121,7 @@
                 position: absolute;
                 top: 0;
                 left: $calendar-sheet-margin;
-                height: 15px;
+                height: $calendar-sheet-bar-height;
                 border-bottom: none;
                 margin: 0;
                 background-color: $calendar-sheet-barcolor;

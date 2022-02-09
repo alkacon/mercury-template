@@ -21,11 +21,13 @@
 <c:set var="tileContainer"      value="${setting.tileContainer.toString}" />
 <c:set var="fullOverlay"        value="${setting.fullOverlay.toBoolean}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
-<c:set var="linkOption"         value="${fullOverlay ? setting.linkOption.toString : 'none'}" />
+<c:set var="linkOption"         value="${setting.linkOption.toString}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="textAlignment"      value="${setting.textAlignment.useDefault('pal').toString}" />
 <c:set var="useAsElement"       value="${tileContainer eq 'element'}" />
 <c:set var="ade"                value="${cms.isEditMode}" />
+
+<c:set var="linkFullTile"       value="${value.Link.isSet and (not fullOverlay) and (linkOption ne 'hide')}" />
 
 <c:choose>
     <c:when test="${useAsElement}">
@@ -48,7 +50,7 @@
 
     <div class="content-box${setCssWrapperAll}"><%----%>
 
-        <mercury:link link="${value.Link}" test="${linkOption eq 'none'}">
+        <mercury:link link="${value.Link}" test="${linkFullTile}">
 
             <c:choose>
                 <c:when test="${not empty image}">
@@ -77,9 +79,9 @@
                     text="${value.Text}"
                     link="${value.Link}"
                     hsize="${hsize}"
-                    linkOption="${linkOption}"
+                    linkOption="${fullOverlay and (linkOption ne 'hide') ? linkOption : 'none'}"
                     textOption="${textOption}"
-                    ade="${ade and (linkOption ne 'none')}"
+                    ade="${ade and not linkFullTile}"
                     emptyWarning="${false}"
                 />
             </c:set>

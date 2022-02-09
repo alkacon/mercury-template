@@ -1492,6 +1492,7 @@
             button-sm:      %(key.msg.setting.linkOption.button-sm)|
             text:           %(key.msg.setting.linkOption.text)|
             heading:        %(key.msg.setting.linkOption.heading)|
+            hide:           %(key.msg.setting.linkOption.none)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

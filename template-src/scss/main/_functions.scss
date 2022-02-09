@@ -498,7 +498,7 @@ $linear-channel-values:
 
 // Name of the previous breakpoint, or null for the first breakpoint.
 //
-//    >> breakpoint-next(md)
+//    >> breakpoint-prev(md)
 //    sm
 //
 @function breakpoint-prev($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {

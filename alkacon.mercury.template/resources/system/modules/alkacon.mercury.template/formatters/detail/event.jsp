@@ -215,7 +215,7 @@
     </c:if>
 
     <c:if test="${showiCalendar}">
-        <div class="detail-addition element ical-link"><%----%>
+        <div class="detail-addition element pivot ical-link"><%----%>
             <a class="btn" download="${fn:escapeXml(fn:replace(value.Title, '\"', ''))}"<%--
             --%>href="<cms:link>/system/modules/alkacon.mercury.template/elements/event.ics<%--
                 --%>?id=${cms.element.id}<%--

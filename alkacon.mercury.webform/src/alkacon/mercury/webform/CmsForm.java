@@ -72,7 +72,7 @@ import org.apache.commons.logging.Log;
  *
  * Provides the necessary information to create an input form, email messages and confirmation outputs.<p>
  */
-public class CmsForm {
+public class CmsForm implements I_CmsForm {
 
     /** The log object for this class. */
     private static final Log LOG = CmsLog.getLog(CmsForm.class);

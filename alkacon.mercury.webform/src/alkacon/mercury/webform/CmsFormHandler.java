@@ -19,7 +19,9 @@
 
 package alkacon.mercury.webform;
 
+import alkacon.mercury.webform.captcha.CmsCaptchaPluginLoader;
 import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
+import alkacon.mercury.webform.captcha.I_CmsCaptchaProvider;
 import alkacon.mercury.webform.fields.CmsCaptchaField;
 import alkacon.mercury.webform.fields.CmsCheckboxField;
 import alkacon.mercury.webform.fields.CmsEmptyField;
@@ -108,7 +110,7 @@ import com.octo.captcha.service.text.TextCaptchaService;
  * output formats of a submitted form.<p>
  *
  */
-public class CmsFormHandler extends CmsJspActionElement {
+public class CmsFormHandler extends CmsJspActionElement implements I_CmsFormHandler {
 
     /** Request parameter value for the form action parameter: correct the input. */
     public static final String ACTION_CONFIRMED = "confirmed";
@@ -1455,32 +1457,38 @@ public class CmsFormHandler extends CmsJspActionElement {
                 }
             }
             sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_ERROR, errorMessage);
-            String tokenId = getParameter(CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID);
-            if (tokenId.isEmpty()) {
-                tokenId = UUID.randomUUID().toString();
-            }
-            if (captchaField.getCaptchaSettings().isMathField()) {
-                TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
-                    captchaField.getCaptchaSettings(),
-                    this.getCmsObject());
-                String captchaChallenge = service.getTextChallengeForID(
-                    tokenId,
-                    this.getCmsObject().getRequestContext().getLocale());
-                sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_TEXT, captchaChallenge);
+            CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(this);
+            if (captchaPluginLoader.findPlugin() != null) {
+                I_CmsCaptchaProvider captchaPlugin = captchaPluginLoader.loadCaptchaProvider();
+                sTemplate.setAttribute("captchawidget", captchaPlugin.getWidgetMarkup(this, captchaField.getName()));
             } else {
-                sTemplate.setAttribute(
-                    I_CmsTemplateCheckPage.ATTR_CAPTCHA_IMAGE_LINK,
-                    OpenCms.getLinkManager().substituteLink(
-                        getCmsObject(),
-                        PATH_CAPTCHA_JSP
-                            + "?"
-                            + captchaField.getCaptchaSettings().toRequestParams(getCmsObject())
-                            + "&"
-                            + CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID
-                            + "="
-                            + tokenId));
+                String tokenId = getParameter(CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID);
+                if (tokenId.isEmpty()) {
+                    tokenId = UUID.randomUUID().toString();
+                }
+                if (captchaField.getCaptchaSettings().isMathField()) {
+                    TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
+                        captchaField.getCaptchaSettings(),
+                        this.getCmsObject());
+                    String captchaChallenge = service.getTextChallengeForID(
+                        tokenId,
+                        this.getCmsObject().getRequestContext().getLocale());
+                    sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_TEXT, captchaChallenge);
+                } else {
+                    sTemplate.setAttribute(
+                        I_CmsTemplateCheckPage.ATTR_CAPTCHA_IMAGE_LINK,
+                        OpenCms.getLinkManager().substituteLink(
+                            getCmsObject(),
+                            PATH_CAPTCHA_JSP
+                                + "?"
+                                + captchaField.getCaptchaSettings().toRequestParams(getCmsObject())
+                                + "&"
+                                + CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID
+                                + "="
+                                + tokenId));
+                }
+                sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_TOKEN_ID, tokenId);
             }
-            sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_TOKEN_ID, tokenId);
         }
 
         List<I_CmsField> fields = getFormConfiguration().getAllFields(true, false, false);

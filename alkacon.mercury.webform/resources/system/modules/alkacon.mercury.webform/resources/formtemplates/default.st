@@ -92,16 +92,21 @@ $endif$
 >>
 
 
-field_captcha(field,formconfig,attributes,errormessage,mandatory,captcha,readonly) ::= <<
+field_captcha(field,formconfig,attributes,errormessage,mandatory,captcha,readonly,captchawidget) ::= <<
 $! ###### CAPTCHA field ###### !$
 $row_start(field=field)$
 $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=mandatory)$
-<div class="input $if(errormessage)$state-error$endif$">
-$!  !$<div class="captcha">
-$!  !$$captcha$
+$if(captcha)$
+$!  !$<div class="input $if(errormessage)$state-error$endif$">
+$!       !$<div class="captcha">
+$!       !$$captcha$
+$!       !$</div>
+$!       !$<input type="text" id="$field.name$" name="$field.name$" value="$field.valueEscaped$" $readonly$/>
 $!  !$</div>
-$!  !$<input type="text" id="$field.name$" name="$field.name$" value="$field.valueEscaped$" $readonly$/>
-</div>
+$elseif(captchawidget)$
+$!  !$<input type="hidden" id="$field.name$" name="$field.name$"/>
+$!  !$$captchawidget$
+$endif$
 $if(errormessage)$
     <div class="note note-error">$errormessage$</div>
 $endif$
@@ -388,7 +393,7 @@ $endif$
 >>
 
 
-checkpage(formuri,formconfig,checktext,captchafield,captchaerror,captchaimagelink,captchatokenid,checkfields,hiddenfields,checkbutton,correctbutton,captchatext) ::= <<
+checkpage(formuri,formconfig,checktext,captchafield,captchawidget,captchaerror,captchaimagelink,captchatokenid,checkfields,hiddenfields,checkbutton,correctbutton,captchatext) ::= <<
 $! ###### CHECK page of the form ###### !$
 $checktext$
 <table class="webform-input table table-responsive table-bordered table-striped">
@@ -418,20 +423,25 @@ $!  !$<form id="webformcaptcha$formconfig.configId$" action="" method="post" enc
 $!  !$<fieldset>
 $!  !$$row_start(field=captchafield)$
 $!  !$<label class="label">$captchafield.label$</label>
-$!  !$<div class="input">
-$!      !$<div class="captcha">
-$!          !$$if (captchaimagelink)$
-$!             !$<img src="$captchaimagelink$" class="img-responsive" alt="" />
-$!          !$$endif$
-$!          !$$if (captchatext)$
-$!             !$<div>$captchatext$</div>
-$!          !$$endif$
+$!  !$$if(captchawidget)$
+$!      !$<input type="hidden" id="$captchafield.name$" name="$captchafield.name$" value="" />
+$!      !$$captchawidget$
+$!  !$$else$
+$!      !$<div class="input">
+$!          !$<div class="captcha">
+$!              !$$if (captchaimagelink)$
+$!                 !$<img src="$captchaimagelink$" class="img-responsive" alt="" />
+$!              !$$endif$
+$!              !$$if (captchatext)$
+$!                 !$<div>$captchatext$</div>
+$!              !$$endif$
+$!          !$</div>
+$!          !$<input type="hidden" id="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" name="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" value="$captchatokenid$"/>
 $!      !$</div>
-$!      !$<input type="hidden" id="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" name="$captchafield.C_PARAM_CAPTCHA_TOKEN_ID$" value="$captchatokenid$"/>
-$!  !$</div>
-$!  !$<label class="input$if(captchaerror)$ state-error$endif$">
-$!      !$<input type="text" name="$captchafield.name$" value="" />
-$!  !$</label>
+$!      !$<label class="input$if(captchaerror)$ state-error$endif$">
+$!          !$<input type="text" name="$captchafield.name$" value="" />
+$!      !$</label>
+$!  !$$endif$
 $!  !$$if(captchaerror)$
 $!      !$<div class="note note-error">$captchaerror$</div>
 $!  !$$endif$

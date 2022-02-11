@@ -20,13 +20,16 @@
 package alkacon.mercury.webform.fields;
 
 import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.captcha.CmsCaptchaPluginLoader;
 import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
 import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
 import alkacon.mercury.webform.captcha.CmsCaptchaStore;
 import alkacon.mercury.webform.captcha.CmsCaptchaToken;
+import alkacon.mercury.webform.captcha.I_CmsCaptchaProvider;
 
 import org.opencms.flex.CmsFlexController;
 import org.opencms.i18n.CmsMessages;
+import org.opencms.json.JSONException;
 import org.opencms.jsp.CmsJspActionElement;
 import org.opencms.main.CmsLog;
 import org.opencms.util.CmsStringUtil;
@@ -116,59 +119,67 @@ public class CmsCaptchaField extends A_CmsField {
         StringBuffer captchaHtml = new StringBuffer(256);
         String errorMessage = createStandardErrorMessage(errorKey, messages);
 
-        CmsCaptchaSettings captchaSettings = getCaptchaSettings();
-        String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
-        if (tokenId.isEmpty()) {
-            tokenId = UUID.randomUUID().toString();
-        }
-        CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
-        String hiddenInput = "<input type=\"hidden\" id=\""
-            + C_PARAM_CAPTCHA_TOKEN_ID
-            + "\" name=\""
-            + C_PARAM_CAPTCHA_TOKEN_ID
-            + "\" value=\""
-            + tokenId
-            + "\">\n";
-        captchaHtml.append(hiddenInput);
-
-        if (m_captchaSettings.isMathField()) {
-            // this is a math captcha, print the challenge directly
-            captchaHtml.append("<div style=\"margin: 0 0 2px 0;\">");
-            if (captchaStore.contains(tokenId)) {
-                captchaHtml.append(captchaStore.get(tokenId).getText());
-            } else {
-                TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
-                    m_captchaSettings,
-                    formHandler.getCmsObject());
-                String captchaChallenge = service.getTextChallengeForID(
-                    tokenId,
-                    formHandler.getCmsObject().getRequestContext().getLocale());
-                captchaHtml.append(captchaChallenge);
-                captchaStore.put(tokenId, new CmsCaptchaToken(captchaChallenge));
-            }
-            captchaHtml.append("</div>\n");
-        } else {
-            // image captcha, insert image
-            captchaHtml.append("<img id=\"form_captcha_id\" src=\"").append(
-                formHandler.link(
-                    "/system/modules/alkacon.mercury.webform/elements/captcha.jsp?"
-                        + captchaSettings.toRequestParams(formHandler.getCmsObject())
-                        + "&"
-                        + C_PARAM_CAPTCHA_TOKEN_ID
-                        + "="
-                        + tokenId
-                        + "#"
-                        + System.currentTimeMillis())).append("\" width=\"").append(
-                            captchaSettings.getImageWidth()).append("\" height=\"").append(
-                                captchaSettings.getImageHeight()).append("\" alt=\"\"/>").append("\n");
-            captchaHtml.append("<br/>\n");
-        }
-
         Map<String, Object> stAttributes = new HashMap<>();
-        // set captcha HTML code as additional attribute
-        stAttributes.put("captcha", captchaHtml.toString());
-        if (captchaStore.isPhraseValid(tokenId)) {
-            stAttributes.put("readonly", "readonly");
+        CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(formHandler);
+        if (captchaPluginLoader.findPlugin() != null) {
+            I_CmsCaptchaProvider captchaProvider = captchaPluginLoader.loadCaptchaProvider();
+            if (captchaProvider != null) {
+                stAttributes.put("captchawidget", captchaProvider.getWidgetMarkup(formHandler, getName()));
+            }
+        } else {
+            CmsCaptchaSettings captchaSettings = getCaptchaSettings();
+            String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+            if (tokenId.isEmpty()) {
+                tokenId = UUID.randomUUID().toString();
+            }
+            CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
+            String hiddenInput = "<input type=\"hidden\" id=\""
+                + C_PARAM_CAPTCHA_TOKEN_ID
+                + "\" name=\""
+                + C_PARAM_CAPTCHA_TOKEN_ID
+                + "\" value=\""
+                + tokenId
+                + "\">\n";
+            captchaHtml.append(hiddenInput);
+
+            if (m_captchaSettings.isMathField()) {
+                // this is a math captcha, print the challenge directly
+                captchaHtml.append("<div style=\"margin: 0 0 2px 0;\">");
+                if (captchaStore.contains(tokenId)) {
+                    captchaHtml.append(captchaStore.get(tokenId).getText());
+                } else {
+                    TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
+                        m_captchaSettings,
+                        formHandler.getCmsObject());
+                    String captchaChallenge = service.getTextChallengeForID(
+                        tokenId,
+                        formHandler.getCmsObject().getRequestContext().getLocale());
+                    captchaHtml.append(captchaChallenge);
+                    captchaStore.put(tokenId, new CmsCaptchaToken(captchaChallenge));
+                }
+                captchaHtml.append("</div>\n");
+            } else {
+                // image captcha, insert image
+                captchaHtml.append("<img id=\"form_captcha_id\" src=\"").append(
+                    formHandler.link(
+                        "/system/modules/alkacon.mercury.webform/elements/captcha.jsp?"
+                            + captchaSettings.toRequestParams(formHandler.getCmsObject())
+                            + "&"
+                            + C_PARAM_CAPTCHA_TOKEN_ID
+                            + "="
+                            + tokenId
+                            + "#"
+                            + System.currentTimeMillis())).append("\" width=\"").append(
+                                captchaSettings.getImageWidth()).append("\" height=\"").append(
+                                    captchaSettings.getImageHeight()).append("\" alt=\"\"/>").append("\n");
+                captchaHtml.append("<br/>\n");
+            }
+
+            // set captcha HTML code as additional attribute
+            stAttributes.put("captcha", captchaHtml.toString());
+            if (captchaStore.isPhraseValid(tokenId)) {
+                stAttributes.put("readonly", "readonly");
+            }
         }
 
         return createHtml(formHandler, messages, stAttributes, getType(), null, errorMessage, showMandatory);
@@ -204,36 +215,47 @@ public class CmsCaptchaField extends A_CmsField {
      */
     public boolean validateCaptchaPhrase(CmsFormHandler formHandler, String captchaPhrase) {
 
-        String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
-        CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
-        if (captchaStore.isPhraseValid(tokenId)) {
-            return true;
-        }
         boolean result = false;
-        CmsCaptchaSettings settings = m_captchaSettings;
-        if (CmsStringUtil.isNotEmpty(captchaPhrase)) {
-            // try to validate the phrase
-            captchaPhrase = captchaPhrase.toLowerCase();
+        CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(formHandler);
+        if (captchaPluginLoader.findPlugin() != null) {
             try {
-                CaptchaService captchaService = CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
-                    settings,
-                    formHandler.getCmsObject());
-                if (captchaService != null) {
-                    result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();
-                    if (result == false) {
-                        captchaStore.remove(tokenId);
-                        formHandler.getFormConfiguration().getCaptchaField().setValue("");
-                    } else {
-                        captchaStore.setPhraseValid(tokenId);
-                        formHandler.getFormConfiguration().getCaptchaField().setParameters("readonly");
+                I_CmsCaptchaProvider captchaProvider = captchaPluginLoader.loadCaptchaProvider();
+                result = captchaProvider.verifySolution(formHandler, captchaPhrase);
+            } catch (IOException | JSONException e) {
+                LOG.error("Error when validating the client's captcha solution.", e);
+                result = false;
+            }
+        } else {
+            String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
+            CmsCaptchaStore captchaStore = new CmsCaptchaStore(formHandler);
+            if (captchaStore.isPhraseValid(tokenId)) {
+                return true;
+            }
+            CmsCaptchaSettings settings = m_captchaSettings;
+            if (CmsStringUtil.isNotEmpty(captchaPhrase)) {
+                // try to validate the phrase
+                captchaPhrase = captchaPhrase.toLowerCase();
+                try {
+                    CaptchaService captchaService = CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
+                        settings,
+                        formHandler.getCmsObject());
+                    if (captchaService != null) {
+                        result = captchaService.validateResponseForID(tokenId, captchaPhrase).booleanValue();
+                        if (result == false) {
+                            captchaStore.remove(tokenId);
+                            formHandler.getFormConfiguration().getCaptchaField().setValue("");
+                        } else {
+                            captchaStore.setPhraseValid(tokenId);
+                            formHandler.getFormConfiguration().getCaptchaField().setParameters("readonly");
+                        }
                     }
+                } catch (CaptchaServiceException cse) {
+                    // most often this will be
+                    // "com.octo.captcha.service.CaptchaServiceException: Invalid ID, could not validate unexisting or already validated captcha"
+                    // in case someone hits the back button and submits again
+                    captchaStore.remove(tokenId);
+                    formHandler.getFormConfiguration().getCaptchaField().setValue("");
                 }
-            } catch (CaptchaServiceException cse) {
-                // most often this will be
-                // "com.octo.captcha.service.CaptchaServiceException: Invalid ID, could not validate unexisting or already validated captcha"
-                // in case someone hits the back button and submits again
-                captchaStore.remove(tokenId);
-                formHandler.getFormConfiguration().getCaptchaField().setValue("");
             }
         }
         return result;
@@ -308,5 +330,4 @@ public class CmsCaptchaField extends A_CmsField {
             }
         }
     }
-
 }

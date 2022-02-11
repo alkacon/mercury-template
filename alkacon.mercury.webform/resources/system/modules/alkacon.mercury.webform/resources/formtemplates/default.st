@@ -104,8 +104,10 @@ $!       !$</div>
 $!       !$<input type="text" id="$field.name$" name="$field.name$" value="$field.valueEscaped$" $readonly$/>
 $!  !$</div>
 $elseif(captchawidget)$
-$!  !$<input type="hidden" id="$field.name$" name="$field.name$"/>
-$!  !$$captchawidget$
+$!  !$<div class="input">
+$!      !$<input type="hidden" id="$field.name$" name="$field.name$"/>
+$!      !$$captchawidget$
+$!  !$</div>
 $endif$
 $if(errormessage)$
     <div class="note note-error">$errormessage$</div>
@@ -424,8 +426,10 @@ $!  !$<fieldset>
 $!  !$$row_start(field=captchafield)$
 $!  !$<label class="label">$captchafield.label$</label>
 $!  !$$if(captchawidget)$
-$!      !$<input type="hidden" id="$captchafield.name$" name="$captchafield.name$" value="" />
-$!      !$$captchawidget$
+$!      !$<div class="input">
+$!          !$<input type="hidden" id="$captchafield.name$" name="$captchafield.name$" value="" />
+$!          !$$captchawidget$
+$!      !$</div>
 $!  !$$else$
 $!      !$<div class="input">
 $!          !$<div class="captcha">

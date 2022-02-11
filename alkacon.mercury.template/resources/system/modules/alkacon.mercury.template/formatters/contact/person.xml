@@ -79,6 +79,9 @@
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showPhone.contact]]></IncludeName>
     </Setting>
     <Setting>

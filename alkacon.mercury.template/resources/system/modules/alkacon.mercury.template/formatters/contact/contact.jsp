@@ -24,6 +24,7 @@
 <c:set var="showPosition"           value="${setting.showPosition.toBoolean}" />
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
+<c:set var="showAddInfo"            value="${setting.showAddInfo.useDefault('true').toBoolean}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
 <c:set var="showPhone"              value="${setting.showPhone.toBoolean}" />
 <c:set var="showWebsite"            value="${setting.showWebsite.toBoolean}" />
@@ -44,7 +45,7 @@
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact ' : ''}" />
 
 <c:set var="hsizeTitle"             value="${hsize}" />
-<c:set var="hsize"                  value="${value.Title.isSet ? hsize + 1 : hsize}" />
+<c:set var="hsize"                  value="${showAddInfo and value.Title.isSet ? hsize + 1 : hsize}" />
 
 <c:set var="valKind"                value="${value.Kind.isSet ? value.Kind : setting.schemaKind.useDefault('pers').toString}" />
 
@@ -60,7 +61,7 @@
     cssWrapper="element type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     pieceLayout="${pieceLayout}"
     attrWrapper="${kindAttr}"
-    heading="${value.Title}"
+    heading="${showAddInfo ? value.Title : null}"
     hsize="${hsizeTitle}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
@@ -74,7 +75,7 @@
                 name="${valName}"
                 organization="${valOrganization}"
                 imageRatio="${imageRatio}"
-                link="${value.Link}"
+                link="${showAddInfo ? value.Link : null}"
                 linkOption="${linkOption eq 'imageOverlay' ? 'imageOverlay' : ''}"
                 hsize="${hsize}"
                 showImage="${true}"

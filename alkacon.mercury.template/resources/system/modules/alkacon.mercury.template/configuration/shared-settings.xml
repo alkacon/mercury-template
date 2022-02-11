@@ -2321,6 +2321,15 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
+      <PropertyName><![CDATA[showAddInfo]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showAddInfo)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showAddInfo.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
       <PropertyName><![CDATA[showOrganization]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganization)]]></DisplayName>
@@ -2343,6 +2352,7 @@
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
       <PropertyName><![CDATA[showDescription]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showDescription.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>

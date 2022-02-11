@@ -504,7 +504,7 @@ $sq-margin: 20px;
             margin: $default-margin-small;
         }
 
-        h1, h2, h3, h4, div.body {
+        h1, h2, h3, h4, div.body, a.piece-text-link {
             color: $square-overlay-text-color;
             text-shadow: $square-overlay-text-shadow;
         }

@@ -1459,8 +1459,29 @@
     <Setting>
       <IncludeName><![CDATA[linkOption.fixed.none]]></IncludeName>
       <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[none]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[button]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.contact]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.linkOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[button]]></Default>
+      <WidgetConfig><![CDATA[
+        button:         %(key.msg.setting.linkOption.button)|
+        text:           %(key.msg.setting.linkOption.text)|
+        none:           %(key.msg.setting.linkOption.none)
+      ]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[linkOption.default]]></IncludeName>
@@ -2252,31 +2273,6 @@
         effect-piece effect-shadow effect-rotate:   %(key.msg.setting.effect.shadow-rotate) %(key.msg.setting.effect.onpiece)|
         effect-piece effect-inset effect-rotate:    %(key.msg.setting.effect.inset-rotate) %(key.msg.setting.effect.onpiece)|
         effect-piece effect-raise effect-rotate:    %(key.msg.setting.effect.raise-rotate) %(key.msg.setting.effect.onpiece)
-      ]]></WidgetConfig>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[linkOption.contact]]></IncludeName>
-      <PropertyName><![CDATA[linkOption]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.contact.linkOption.help)]]></Description>
-      <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[text]]></Default>
-      <WidgetConfig><![CDATA[
-        button:         %(key.msg.setting.linkOption.button)|
-        text:           %(key.msg.setting.linkOption.text)|
-        none:           %(key.msg.setting.linkOption.none)
-      ]]></WidgetConfig>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[linkOption.contact.listTeaser]]></IncludeName>
-      <PropertyName><![CDATA[linkOption]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.contact.linkOption.help)]]></Description>
-      <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[button]]></Default>
-      <WidgetConfig><![CDATA[
-        button:         %(key.msg.setting.linkOption.button)|
-        none:           %(key.msg.setting.linkOption.none)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

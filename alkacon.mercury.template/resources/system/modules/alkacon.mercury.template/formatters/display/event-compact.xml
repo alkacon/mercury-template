@@ -50,6 +50,9 @@
       <IncludeName><![CDATA[titleOption.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
     </Setting>
     <Setting>

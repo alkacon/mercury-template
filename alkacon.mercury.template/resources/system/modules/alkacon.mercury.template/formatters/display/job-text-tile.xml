@@ -59,6 +59,9 @@
       <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>

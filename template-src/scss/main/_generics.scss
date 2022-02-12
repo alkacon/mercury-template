@@ -46,43 +46,8 @@
 @each $color-name, $bg-color, $highlight-color in $box-colors {
 
     .box-#{""+$color-name} {
-        $color: get-text-color($bg-color); // we normally want light text
-        $color-headings-base: conditional-value($color == $text-light, $text-light, $headings-color);
-        $color-headings: get-text-color($bg-color, $color-headings-base);
 
-        $color-links: get-link-colors($bg-color, $color);
-        $color-link: nth($color-links, 1);
-        $color-hover: nth($color-links, 2);
-
-        background-color: $bg-color;
-        // background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
-        color: $color;
-
-        @include colored-a($color-link, $color-hover, true);
-
-        h1, h2, h3, h4, h5, h6  {
-            // required in order to override colors set in headings
-            color: $color-headings;
-        }
-
-        @if ($linked-headings-color != none) {
-            a:hover {
-                h1, h2, h3, h4, h5, h6 {
-                    color: $color-hover;
-                }
-            }
-        }
-
-        .sub-header, // detail page
-        .text > a, // list teaser
-        .teaser-date, // list teaser
-        .intro-headline > .intro {
-            color:  $color !important;
-        }
-
-        .btn {
-            @include button-color-simple($color-link, $color-hover);
-        }
+        @include box-color($bg-color);
 
         &.transparent {
             background-color: rgba($bg-color, 0.7);
@@ -92,7 +57,6 @@
 
     .bc-#{""+$color-name} {
         background-color: $bg-color;
-        // background-image: linear-gradient($bg-color, $bg-color); // tricks WCAG test
 
         &.transparent {
             background-color: rgba($bg-color, 0.7);

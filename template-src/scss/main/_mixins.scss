@@ -550,3 +550,48 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+@mixin box-color($bg-color) {
+    // for a colored background, make sure the text and link color matches the background
+    // normally this means dark background > light text and light background > dark text
+    $color: get-text-color($bg-color);
+    $color-headings-base: conditional-value($color == $text-light, $text-light, $headings-color); // we normally want light text
+    $color-headings: get-text-color($bg-color, $color-headings-base);
+
+    $color-links: get-link-colors($bg-color, $color);
+    $color-link: nth($color-links, 1);
+    $color-hover: nth($color-links, 2);
+
+    background-color: $bg-color;
+    color: $color;
+
+    @include colored-a($color-link, $color-hover, true);
+
+    h1, h2, h3, h4, h5, h6  {
+        // required in order to override colors set in headings
+        color: $color-headings;
+    }
+
+    @if ($linked-headings-color != none) {
+        a:hover {
+            h1, h2, h3, h4, h5, h6 {
+                color: $color-hover;
+            }
+        }
+    }
+
+    .sub-header, // detail page
+    .text > a, // list teaser
+    .teaser-date, // list teaser
+    .intro-headline > .intro {
+        color:  $color !important;
+    }
+
+    .btn {
+        @include button-color-simple($color-link, $color-hover);
+    }
+}
+
+
+
+

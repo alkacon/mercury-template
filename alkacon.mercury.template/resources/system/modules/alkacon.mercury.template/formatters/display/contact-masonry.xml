@@ -53,10 +53,13 @@
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.contact.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[labels.contact]]></IncludeName>

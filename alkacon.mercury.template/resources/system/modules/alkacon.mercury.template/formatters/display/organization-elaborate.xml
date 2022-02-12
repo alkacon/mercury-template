@@ -61,7 +61,7 @@
       <IncludeName><![CDATA[effect.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.contact.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
     </Setting>
     <Setting>

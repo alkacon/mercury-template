@@ -43,7 +43,7 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.contact.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>

@@ -120,7 +120,7 @@ field_checkbox(field,formconfig,attributes,errormessage,mandatory) ::= <<
 $! ###### Checkbox field ###### !$
 $row_start(field=field)$
 <label for="$field.name$_box" class="label">
-$!  !$$field.label$$mandatory$
+$!  !$$field.label$ $mandatory$
 </label>
 $if(field.parameters)$$if(field.parameters.full)$$else$<div class="inline-group">$endif$$else$<div class="inline-group">$endif$
 $!  !$<div id="$field.name$_box">
@@ -171,7 +171,7 @@ $!  !$<div class="button">
 $!      !$<input type="file" name="$field.name$" id="$field.name$" onchange="document.getElementById('$field.name$-Visible').value = this.value" value="$field.valueEscaped$"/>
 $!      !$$if(field.parameters)$$if(field.parameters.buttontext)$$field.parameters.buttontext$$else$Browse$endif$$else$Browse$endif$
 $!  !$</div>
-$!  !$<label for="$field.name$-Visible" class="sr-only">$field.label$$mandatory$</label>
+$!  !$<label for="$field.name$-Visible" class="sr-only">$field.label$ $mandatory$</label>
 $!  !$<input type="text" id="$field.name$-Visible" readonly=""$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$>
 </div>
 $if(errormessage)$
@@ -249,7 +249,7 @@ $row_end(field=field,formconfig=formconfig)$
 field_radio(field,formconfig,attributes,errormessage,mandatory) ::= <<
 $! ###### RADIO BUTTONS field ###### !$
 $row_start(field=field)$
-<label for="$field.name$_box" class="label">$field.label$$mandatory$</label>
+<label for="$field.name$_box" class="label">$field.label$ $mandatory$</label>
 $!  !$<div id="$field.name$_box">
 $!      !$$field.items:{
 $!          !$<label for="$field.name$_$i0$" class="$if(field.parameters)$$if(field.parameters.toggle)$toggle$else$radio$endif$$else$radio$endif$$if(errormessage)$ state-error$endif$">
@@ -324,7 +324,7 @@ $row_end(field=field,formconfig=formconfig)$
 field_textarea(field,formconfig,attributes,errormessage,mandatory) ::= <<
 $! ###### TEXTAREA field ###### !$
 $row_start(field=field)$
-<label for="$field.name$" class="label">$field.label$$mandatory$</label>
+<label for="$field.name$" class="label">$field.label$ $mandatory$</label>
 <div class="textarea$if(errormessage)$ state-error$endif$">
 $!  !$$if(field.parameters)$
 $!      !$$if(field.parameters.icon)$
@@ -342,7 +342,7 @@ $row_end(field=field,formconfig=formconfig)$
 
 label(field,formconfig,errormessage,mandatory) ::= <<
 $! ###### Standard LABEL for a field ###### !$
-<label for="$field.name$" class="label">$field.label$$mandatory$</label>
+<label for="$field.name$" class="label">$field.label$ $mandatory$</label>
 >>
 
 

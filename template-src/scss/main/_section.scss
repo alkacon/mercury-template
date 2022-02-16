@@ -147,7 +147,7 @@
     .front {
         z-index: 2;
         transform: rotateY(0deg);
-        // front will be the image so we don't need to set height since image tags already do this
+        // front will be only the image so we don't need to set height since image tags already do this
     }
 
     .back {

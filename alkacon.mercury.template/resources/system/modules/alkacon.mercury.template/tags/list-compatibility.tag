@@ -17,8 +17,16 @@
 <%@ attribute name="listTitle" type="java.lang.String" required="true"
     description="The list title shown in the displayed incompatibility message." %>
 
+<%@ attribute name="customType" type="java.lang.String" required="false"
+    description="Required in case a custom list type is to be loaded, different from the default 'static' or 'dynamic' lists.
+    Note that for custom list types, it is required to always include a colon ':' in the list type in the diyplay formatter configuration.
+    Example: 'listtype:teasertype'.
+    If this is set the 'isStaticList' is ignored." %>
+
+
 <%@ variable name-given="isCompatible" scope="AT_END" declare="true" variable-class="java.lang.Boolean"
     description="Flag, indicating if all compatibility conditions for the list are met." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
@@ -27,34 +35,43 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="compatibilityGroup" value="" />
-<c:set var="incompatibleWithList" value="false" />
-<c:set var="incompatibleGroups" value="false" />
-<c:set var="incompatibleListType" value="${isStaticList ? 'dynamic' : 'static'}" />
-<c:set var="isCompatible" value="true" />
+<c:set var="incompatibleWithList" value="${false}" />
+<c:set var="incompatibleGroups" value="${false}" />
+
+<c:set var="requiredListType" value="${empty customType ? (isStaticList ? 'static' : 'dynamic') : customType}" />
 
 <c:forEach var="type" items="${types}">
-    <c:set var="compatibilityKey" value="${type.contentValue.formatterId}_displayType" />
-    <c:set var="compatibilityValue" value="${settings[compatibilityKey]}" />
-    <c:if test="${fn:startsWith(compatibilityValue, incompatibleListType)}">
-        <c:set var="incompatibleWithList" value="true" />
+
+    <c:if test="${not incompatibleGroups and not incompatibleWithList}">
+        <%-- Continue the loop only as long as no incompatibility is found --%>
+
+        <c:set var="compatibilityKey" value="${type.contentValue.formatterId}_displayType" />
+        <c:set var="configuredGroup" value="${settings[compatibilityKey]}" />
+
+        <c:if test="${fn:contains(configuredGroup,':')}">
+            <c:set var="configuredList" value="${fn:substringBefore(configuredGroup, ':')}" />
+            <c:set var="configuredGroup" value="${fn:substringAfter(configuredGroup, ':')}" />
+            <c:if test="${requiredListType ne configuredList}">
+                <c:set var="incompatibleWithList" value="${true}" />
+            </c:if>
+        </c:if>
+
+        <c:if test="${not empty configuredGroup}">
+            <c:choose>
+                <c:when test="${empty requiredGroup}">
+                    <c:set var="requiredGroup" value="${configuredGroup}" />
+                </c:when>
+                <c:when test="${not (configuredGroup eq requiredGroup)}">
+                    <c:set var="incompatibleGroups" value="${true}" />
+                </c:when>
+            </c:choose>
+        </c:if>
     </c:if>
-    <c:if test="${fn:contains(compatibilityValue,':')}">
-        <c:set var="compatibilityValue" value="${fn:substringAfter(compatibilityValue, ':')}" />
-    </c:if>
-    <c:if test="${not empty compatibilityValue}">
-        <c:choose>
-        <c:when test="${empty compatibilityGroup}">
-            <c:set var="compatibilityGroup" value="${compatibilityValue}" />
-        </c:when>
-        <c:when test="${not (compatibilityValue eq  compatibilityGroup)}">
-            <c:set var="incompatibleGroups" value="true" />
-        </c:when>
-        </c:choose>
-    </c:if>
+
 </c:forEach>
 
-<c:set var="isCompatible" value="${not (incompatibleGroups || incompatibleWithList)}" />
+<c:set var="isCompatible" value="${not incompatibleGroups and not incompatibleWithList}" />
+
 <c:if test="${not isCompatible && cms.isEditMode}">
     <fmt:setLocale value="${cms.workplaceLocale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">

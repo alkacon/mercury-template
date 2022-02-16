@@ -14,14 +14,28 @@
     description="The suffix to append to the filename.
     Will not be translated or otherwise modified."%>
 
+<%@ attribute name="setFilenameOnly" type="java.lang.Boolean" required="false"
+    description="If this is 'true', then the header is not set but the filename is returned in the variable 'contentDispositionFilename'."%>
+
+
+<%@ variable name-given="contentDispositionFilename" scope="AT_END" declare="true" variable-class="java.lang.String"
+    description="The filename set for the content disposition." %>
+
 <%
 
     String name = (String)getJspContext().getAttribute("name");
     String suffix = (String)getJspContext().getAttribute("suffix");
+    Boolean setFilenameOnly = (Boolean)getJspContext().getAttribute("setFilenameOnly");
+    boolean setHeader = (setFilenameOnly != null) ? !setFilenameOnly.booleanValue() : true;
+
     if (name.length() > 0) {
         name = name.replaceAll("[.]","");
         name = org.opencms.main.OpenCms.getResourceManager().getFileTranslator().translateResource(name);
     }
-    response.setHeader("Content-Disposition","attachment; filename=" + name + suffix);
 
+    String fileName = "" + name + suffix;
+    if (setHeader) {
+        response.setHeader("Content-Disposition","attachment; filename=" + fileName);
+    }
+    getJspContext().setAttribute("contentDispositionFilename", fileName);
 %>

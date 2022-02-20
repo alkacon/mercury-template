@@ -39,7 +39,6 @@
                     <Search>false</Search>
                     <Display>singleline</Display>
                     <ChangeHandler configuration="Copyright|../Copyright">org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty</ChangeHandler>
-                    <ChangeHandler configuration="Title|../SuperTitle">org.opencms.ade.contenteditor.CmsEditorChangeHandlerProperty</ChangeHandler>
                 </Setting>
                 <Setting>
                     <PropertyName>Link</PropertyName>

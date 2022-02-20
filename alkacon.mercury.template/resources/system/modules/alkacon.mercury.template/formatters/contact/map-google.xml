@@ -4,7 +4,8 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-map.formatter.google)]]></NiceName>
     <Type><![CDATA[m-map]]></Type>
-    <Key><![CDATA[m/element/map-google]]></Key>
+    <Key><![CDATA[m/contact/map-google]]></Key>
+    <KeyAlias><![CDATA[m/element/map-google]]></KeyAlias>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/map.jsp]]></target>
@@ -21,14 +22,15 @@
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
-    <HeadIncludeCss>
-      <CssLink>
+    <Plugin>
+      <Group><![CDATA[css-includes]]></Group>
+      <Target>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/osmviewer/map.css]]></target>
           <uuid>bb1e189e-24ab-11e9-bcf4-0242ac11002b</uuid>
         </link>
-      </CssLink>
-    </HeadIncludeCss>
+      </Target>
+    </Plugin>
     <IncludeSettings>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>

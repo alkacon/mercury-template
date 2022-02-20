@@ -54,10 +54,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}">
 <link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}">
 <%-- Preload Fork Awesome --%>
-<link rel="preload" href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+<link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
 
 <cms:enable-ade />
+
+<mercury:load-plugins group="css-includes" type="css" />
 <cms:headincludes type="css" />
+
+<mercury:load-plugins group="js-includes" type="js" />
 
 <mercury:load-plugins group="template-head-includes" type="jsp-nocache" />
 
@@ -73,9 +77,9 @@
     <c:otherwise>
         <%-- Common CSS and theme CSS --%>
         <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-red.min.css' : contentPropertiesSearch['mercury.theme']}" />
-        <link rel="stylesheet" href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>"><%----%>
+        <link href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>" rel="stylesheet"><%----%>
         <mercury:nl />
-        <link rel="stylesheet" href="<mercury:link-resource resource='${cssTheme}'/>"><%----%>
+        <link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
         <mercury:nl />
     </c:otherwise>
 </c:choose>
@@ -86,7 +90,7 @@
     <c:if test="${not empty extraCSS and (extraCSS ne 'none')}">
         <c:set var="extraCSS" value="${extraCSS}custom.css" />
         <c:if test="${cms.vfs.exists[extraCSS]}">
-            <link rel="stylesheet" href="<mercury:link-resource resource='${extraCSS}'/>"><%----%>
+            <link href="<mercury:link-resource resource='${extraCSS}'/>" rel="stylesheet"><%----%>
             <mercury:nl />
         </c:if>
     </c:if>

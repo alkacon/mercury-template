@@ -4,7 +4,8 @@
   <NewFormatter language="en">
     <NiceName><![CDATA[%(key.type.m-poi.formatter.element)]]></NiceName>
     <Type><![CDATA[m-poi]]></Type>
-    <Key><![CDATA[m/element/poi]]></Key>
+    <Key><![CDATA[m/contact/poi]]></Key>
+    <KeyAlias><![CDATA[m/element/poi]]></KeyAlias>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/poi.jsp]]></target>
@@ -22,14 +23,15 @@
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
     <Preview>true</Preview>
-    <HeadIncludeCss>
-      <CssLink>
+    <Plugin>
+      <Group><![CDATA[css-includes]]></Group>
+      <Target>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/osmviewer/map.css]]></target>
           <uuid>bb1e189e-24ab-11e9-bcf4-0242ac11002b</uuid>
         </link>
-      </CssLink>
-    </HeadIncludeCss>
+      </Target>
+    </Plugin>
     <IncludeSettings>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>

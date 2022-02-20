@@ -9,7 +9,7 @@
       <IsRootContainer>true</IsRootContainer>
       <Elements>
         <ElementInstanceId>4d44cbb9-76bd-11e7-8e37-55d02eb444f6</ElementInstanceId>
-        <FormatterKey>m/element/map-osm</FormatterKey>
+        <FormatterKey>m/contact/map-osm</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/sites/default/mercury-demo/.content/map-m/m_00001.xml]]></target>

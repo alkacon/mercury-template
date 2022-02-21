@@ -40,5 +40,8 @@
     <Setting>
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssVisibility.flexible]]></IncludeName>
+    </Setting>
   </NewFormatter>
 </NewFormatters>

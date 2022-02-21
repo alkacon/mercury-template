@@ -66,6 +66,25 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
+      <PropertyName><![CDATA[cssVisibility]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.cssVisibility.help)]]></Description>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[always]]></Default>
+      <WidgetConfig><![CDATA[
+        always:%(key.msg.setting.cssVisibility.always)|
+        hidden-xs:%(key.msg.setting.cssVisibility.hidden-xs)|
+        hidden-xs-sm:%(key.msg.setting.cssVisibility.hidden-xs-sm)|
+        hidden-xs-sm-md:%(key.msg.setting.cssVisibility.hidden-xs-sm-md)|
+        hidden-xs-sm-md-lg:%(key.msg.setting.cssVisibility.hidden-xs-sm-md-lg)|
+        hidden-sm-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-sm-md-lg-xl)|
+        hidden-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-md-lg-xl)|
+        hidden-lg-xl:%(key.msg.setting.cssVisibility.hidden-lg-xl)|
+        hidden-xl:%(key.msg.setting.cssVisibility.hidden-xl)
+       ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[cssVisibility.hidemobile]]></IncludeName>
       <PropertyName><![CDATA[cssVisibility]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
@@ -89,6 +108,25 @@
       <PropertyName><![CDATA[cssVisibility]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.cssVisibility.help)]]></Description>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[always]]></Default>
+      <WidgetConfig><![CDATA[
+        always:%(key.msg.setting.cssVisibility.always)|
+        hidden-xs:%(key.msg.setting.cssVisibility.hidden-xs)|
+        hidden-xs-sm:%(key.msg.setting.cssVisibility.hidden-xs-sm)|
+        hidden-xs-sm-md:%(key.msg.setting.cssVisibility.hidden-xs-sm-md)|
+        hidden-xs-sm-md-lg:%(key.msg.setting.cssVisibility.hidden-xs-sm-md-lg)|
+        hidden-sm-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-sm-md-lg-xl)|
+        hidden-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-md-lg-xl)|
+        hidden-lg-xl:%(key.msg.setting.cssVisibility.hidden-lg-xl)|
+        hidden-xl:%(key.msg.setting.cssVisibility.hidden-xl)
+       ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssVisibility.flexible]]></IncludeName>
+      <PropertyName><![CDATA[cssVisibility]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.cssVisibility.flexible.help)]]></Description>
       <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[always]]></Default>
       <WidgetConfig><![CDATA[
@@ -730,6 +768,15 @@
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[multipleOpen.false]]></IncludeName>
+      <PropertyName><![CDATA[multipleOpen]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.multipleOpen)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.multipleOpen.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[containerType.tab]]></IncludeName>

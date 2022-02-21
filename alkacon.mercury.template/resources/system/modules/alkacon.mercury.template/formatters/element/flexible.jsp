@@ -17,9 +17,10 @@
 <mercury:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="cssVisibility"          value="${value.RequireCookies.toBoolean ? null : setCssVisibility}" />
 
 <mercury:nl />
-<div class="element type-flexible pivot${setCssWrapperAll}"><%----%>
+<div class="element type-flexible pivot${setCssWrapper123}${cssVisibility}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" css="heading" />

@@ -86,6 +86,9 @@
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
     description="The option for the link display." %>
 
+<%@ attribute name="nameSuffix" type="java.lang.String" required="false"
+    description="Suffix for the name. HTML in this will NOT be escaped." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -193,7 +196,7 @@
             <c:choose>
                 <c:when test="${kind eq 'org'}">
                     <c:if test="${showOrganization}">
-                        <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" text="${organization}" ade="${false}"/>
+                        <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
                     </c:if>
                     <c:if test="${showOrganization and (showName or showPosition)}">
                         <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
@@ -211,7 +214,7 @@
                 </c:when>
                 <c:otherwise>
                     <c:if test="${showName}">
-                        <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" ade="${false}">
+                        <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" suffix="${nameSuffix}" ade="${false}">
                             <jsp:attribute name="markupText">${personname}</jsp:attribute>
                         </mercury:heading>
                         <c:if test="${showPosition}">

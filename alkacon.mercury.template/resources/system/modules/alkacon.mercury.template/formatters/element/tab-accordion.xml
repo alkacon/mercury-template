@@ -45,5 +45,8 @@
     <Setting>
       <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[multipleOpen.false]]></IncludeName>
+    </Setting>
   </NewFormatter>
 </NewFormatters>

@@ -176,6 +176,7 @@
                                         image="${image}"
                                         ratio="${usedRatio}"
                                         alt="${placeholderMessage} - ${content.value.Title}"
+                                        showCopyright="${showCopyright}"
                                         setTitle="${false}"
                                     />
                                 </c:when>

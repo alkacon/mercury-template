@@ -24,6 +24,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="visualOption"           value="${setting.visualOption.toString}" />
 <c:set var="firstOpen"              value="${setting.firstOpen.toBoolean}" />
+<c:set var="multipleOpen"           value="${setting.multipleOpen.toBoolean}" />
 <c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
@@ -71,7 +72,7 @@
                     </a><%----%>
                 ${'</h'}${itemHsize}${'>'}
 
-                <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}" data-parent="#${parentId}"><%----%>
+                <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-parent=\"#'.concat(parentId).concat('\"')}><%----%>
 
                         <mercury:container
                             title="${msg}"

@@ -51,8 +51,7 @@
       <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
-      <Default><![CDATA[simple]]></Default>
+      <IncludeName><![CDATA[bookingOption.simple]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.detail]]></IncludeName>

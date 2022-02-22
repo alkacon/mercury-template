@@ -18,7 +18,7 @@
         <ContainerType><![CDATA[contact]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[teaser-masonry]]></Display>
+    <Display><![CDATA[teaser-masonry contact-teaser]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
@@ -75,6 +75,9 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>

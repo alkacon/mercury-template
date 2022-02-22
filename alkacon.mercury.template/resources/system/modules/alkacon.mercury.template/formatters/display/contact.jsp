@@ -20,8 +20,6 @@
 <c:set var="title"                  value="${value.Title}" />
 
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? ' compact' : ''}" />
-<c:set var="hsizeTitle"             value="${setHsize}" />
-<c:set var="hsize"                  value="${title.isSet ? hsizeTitle + 1 : hsizeTitle}" />
 
 <c:set var="showOrganization"       value="${setting.showOrganization.toBoolean}" />
 <c:set var="showName"               value="${setting.showName.useDefault('true').toBoolean}" />
@@ -29,15 +27,19 @@
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
+<c:set var="showAddInfo"            value="${setting.showAddInfo.toBoolean}" />
 <c:set var="showPhone"              value="${setting.showPhone.toBoolean}" />
 <c:set var="showWebsite"            value="${setting.showWebsite.toBoolean}" />
 <c:set var="showEmail"              value="${setting.showEmail.toBoolean}" />
 <c:set var="showVcard"              value="${setting.showVcard.toBoolean}" />
 
+<c:set var="hsizeTitle"             value="${setHsize}" />
+<c:set var="hsize"                  value="${showAddInfo and title.isSet ? hsizeTitle + 1 : hsizeTitle}" />
+
 <c:set var="labelOption"            value="${setting.labels.toString}" />
 <c:set var="websiteNewWin"          value="${setting.websiteNewWin.toBoolean}" />
 
-<c:set var="valKind"                value="${value.Kind.isSet ? value.Kind : setting.schemaKind.toString}" /><%-- Note: '.useDefault()' does not work in lists --%>
+<c:set var="valKind"                value="${value.Kind.isSet ? value.Kind : setting.schemaKind.toString}" />
 
 <mercury:contact-vars
     content="${content}"
@@ -49,13 +51,13 @@
 <mercury:teaser-piece
     cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapper}${setEffect}"
     attrWrapper="${kind}"
-    headline="${title}"
+    headline="${showAddInfo ? title : null}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
 
     teaserType="${displayType}"
-    link="${setting.linkOption.toString ne 'none' ? value.Link : null}"
+    link="${showAddInfo and (setting.linkOption.toString ne 'none') ? value.Link : null}"
     linkOption="${setLinkOption}"
     hsize="${hsizeTitle}">
 

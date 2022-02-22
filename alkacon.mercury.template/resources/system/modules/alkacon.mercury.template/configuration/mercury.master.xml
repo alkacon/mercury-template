@@ -166,26 +166,20 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/article-elaborate.xml]]></target>
-          <uuid>98f8a594-86c6-4899-9559-a418b663ff57</uuid>
-        </link>
-      </AddFormatter>
-      <AddFormatter>
-        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/article-compact.xml]]></target>
           <uuid>3e5715df-c95c-4f64-8d53-69d19324dd2e</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/article-text-tile.xml]]></target>
-          <uuid>04fff1a9-01cb-41c8-bd70-d438540e63fd</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/article-elaborate.xml]]></target>
+          <uuid>98f8a594-86c6-4899-9559-a418b663ff57</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/article.xml]]></target>
-          <uuid>794441db-3bfa-11e9-a38a-0242ac11002b</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/article-text-tile.xml]]></target>
+          <uuid>04fff1a9-01cb-41c8-bd70-d438540e63fd</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -202,8 +196,8 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/decoy-elaborate.xml]]></target>
-          <uuid>4eb911ff-6e06-4fdc-ba25-1865d6c5f1f5</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/article.xml]]></target>
+          <uuid>794441db-3bfa-11e9-a38a-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -214,14 +208,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/decoy-text-tile.xml]]></target>
-          <uuid>a6d383c5-21f4-4cb4-8826-a305ce75fefa</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/decoy-elaborate.xml]]></target>
+          <uuid>4eb911ff-6e06-4fdc-ba25-1865d6c5f1f5</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/decoy.xml]]></target>
-          <uuid>7eef8557-3bfa-11e9-a38a-0242ac11002b</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/decoy-text-tile.xml]]></target>
+          <uuid>a6d383c5-21f4-4cb4-8826-a305ce75fefa</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -238,14 +232,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/event.xml]]></target>
-          <uuid>ccfbdd4a-863d-4424-b325-a709098b00c5</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/decoy.xml]]></target>
+          <uuid>7eef8557-3bfa-11e9-a38a-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/event-elaborate.xml]]></target>
-          <uuid>514d402e-bd6f-4a32-90bc-bb3a84db9931</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/event.xml]]></target>
+          <uuid>ccfbdd4a-863d-4424-b325-a709098b00c5</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -256,14 +250,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/event-text-tile.xml]]></target>
-          <uuid>2811daab-5d46-4a15-87cb-473bbb7d0017</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/event-elaborate.xml]]></target>
+          <uuid>514d402e-bd6f-4a32-90bc-bb3a84db9931</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/event.xml]]></target>
-          <uuid>8489fff3-3bfa-11e9-a38a-0242ac11002b</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/event-text-tile.xml]]></target>
+          <uuid>2811daab-5d46-4a15-87cb-473bbb7d0017</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -280,14 +274,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/imageseries.xml]]></target>
-          <uuid>979984f6-6149-4f2b-8968-a0a60d62a0b5</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/event.xml]]></target>
+          <uuid>8489fff3-3bfa-11e9-a38a-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imageseries-elaborate.xml]]></target>
-          <uuid>a7cb514a-b3ea-448b-95ca-f6e7b040c0f0</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/imageseries.xml]]></target>
+          <uuid>979984f6-6149-4f2b-8968-a0a60d62a0b5</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -298,8 +292,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/faq-text-tile.xml]]></target>
-          <uuid>0bc55ee2-e595-4263-8b30-fa6ef3f7d125</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imageseries-elaborate.xml]]></target>
+          <uuid>a7cb514a-b3ea-448b-95ca-f6e7b040c0f0</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imageseries-text-tile.xml]]></target>
+          <uuid>e617f1f1-36c3-4925-b09c-5b77f6ef56bd</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -310,8 +310,8 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imageseries-masonry.xml]]></target>
-          <uuid>99827166-2c67-423b-be67-a3523ad73776</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/accordion/imageseries.xml]]></target>
+          <uuid>0d0f00d0-4635-4127-952a-9f7ec8475f05</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -322,26 +322,20 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/media-elaborate.xml]]></target>
-          <uuid>1295a777-6dbd-4b9b-b7f2-edcd9c53800e</uuid>
-        </link>
-      </AddFormatter>
-      <AddFormatter>
-        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/media-compact.xml]]></target>
           <uuid>14fc1a56-1094-4b6e-a65f-0007024397f0</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/media-text-tile.xml]]></target>
-          <uuid>0f65d461-09b9-43e3-8f78-f731cce7dac4</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/media-elaborate.xml]]></target>
+          <uuid>1295a777-6dbd-4b9b-b7f2-edcd9c53800e</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/media.xml]]></target>
-          <uuid>9064f91e-3bfa-11e9-a38a-0242ac11002b</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/media-text-tile.xml]]></target>
+          <uuid>0f65d461-09b9-43e3-8f78-f731cce7dac4</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -358,20 +352,26 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/imagetile/media.xml]]></target>
+          <uuid>9064f91e-3bfa-11e9-a38a-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/faq.xml]]></target>
           <uuid>a446655b-6c2d-4c89-90fa-e9e82424f68c</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/faq-elaborate.xml]]></target>
-          <uuid>3ee95f3e-b9a0-486d-9a24-1a67bd5d8941</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/faq-compact.xml]]></target>
+          <uuid>9fc5f19a-177f-48d5-9040-0adb6de9ac2a</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/faq-compact.xml]]></target>
-          <uuid>9fc5f19a-177f-48d5-9040-0adb6de9ac2a</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/faq-elaborate.xml]]></target>
+          <uuid>3ee95f3e-b9a0-486d-9a24-1a67bd5d8941</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -400,14 +400,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/job-elaborate.xml]]></target>
-          <uuid>3f8405ac-63bc-4bcd-93b3-509713a2a789</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/job-compact.xml]]></target>
+          <uuid>be42f6c2-e49d-4a83-a1d5-6d0f0ef211ef</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/job-compact.xml]]></target>
-          <uuid>be42f6c2-e49d-4a83-a1d5-6d0f0ef211ef</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/job-elaborate.xml]]></target>
+          <uuid>3f8405ac-63bc-4bcd-93b3-509713a2a789</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
@@ -436,14 +436,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-elaborate.xml]]></target>
-          <uuid>3f96bd48-74b4-11ea-8d2f-0242ac11002b</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-compact.xml]]></target>
+          <uuid>c7f7eef8-74d2-11ea-8d2f-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-compact.xml]]></target>
-          <uuid>c7f7eef8-74d2-11ea-8d2f-0242ac11002b</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact-elaborate.xml]]></target>
+          <uuid>3f96bd48-74b4-11ea-8d2f-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>

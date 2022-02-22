@@ -75,6 +75,9 @@
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
     </Setting>
     <Setting>

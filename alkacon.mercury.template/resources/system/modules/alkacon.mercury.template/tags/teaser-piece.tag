@@ -133,13 +133,13 @@
 <c:set var="pieceLayout"        value="${empty pieceLayout ? 6 : pieceLayout}" />
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}" />
 <c:choose>
-    <c:when test="${(teaserType eq 'teaser-text-tile') or (teaserType eq 'teaser-masonry')}">
+    <c:when test="${fn:contains(teaserType, 'teaser-text-tile') or fn:contains(teaserType, 'teaser-masonry')}">
         <c:set var="addButtonDiv" value="${true}" />
         <c:set var="pieceLayout" value="${1}"/>
         <c:set var="sizeDesktop" value="${12}" />
         <c:set var="sizeMobile" value="${12}" />
     </c:when>
-    <c:when test="${teaserType eq 'teaser-compact'}">
+    <c:when test="${fn:contains(teaserType, 'teaser-compact')}">
         <c:set var="hideImage"  value="${true}"/>
     </c:when>
 </c:choose>

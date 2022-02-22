@@ -84,7 +84,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showName.contact]]></IncludeName>
-      <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>

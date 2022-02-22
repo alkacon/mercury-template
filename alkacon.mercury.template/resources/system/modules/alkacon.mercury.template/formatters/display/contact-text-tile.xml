@@ -19,7 +19,7 @@
         <ContainerType><![CDATA[contact]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[teaser-text-tile]]></Display>
+    <Display><![CDATA[teaser-text-tile contact-teaser]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
@@ -70,6 +70,9 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>

@@ -72,7 +72,7 @@
 <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
 
 <c:if test="${not empty requiredCssWrapper}">
-    <c:set var="setCssWrapper">${setCssWrapper}${' '}${requiredCssWrapper}</c:set>
+    <c:set var="setCssWrapper" value="${setCssWrapper}${' '}${requiredCssWrapper}" />
 </c:if>
 
 <c:if test="${setting.dateFormatAddTime.toBoolean and fn:startsWith(setDateFormat, 'fmt-') and not fn:endsWith(setDateFormat, '-TIME')}">

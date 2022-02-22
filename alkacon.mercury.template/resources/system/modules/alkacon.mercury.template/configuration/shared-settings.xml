@@ -173,6 +173,19 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[bookingOption.simple]]></IncludeName>
+      <PropertyName><![CDATA[bookingOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.bookingOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.bookingOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[simple]]></Default>
+      <WidgetConfig><![CDATA[
+            none:       %(key.msg.setting.bookingOption.none)|
+            simple:     %(key.msg.setting.bookingOption.simple)|
+            places:     %(key.msg.setting.bookingOption.places)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showButtonOnlyForBooking.default]]></IncludeName>
       <PropertyName><![CDATA[showButtonOnlyForBooking]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showButtonOnlyForBooking)]]></DisplayName>
@@ -1522,6 +1535,7 @@
       <PropertyName><![CDATA[linkOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.linkOption.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[button]]></Default>
       <WidgetConfig><![CDATA[
@@ -2326,6 +2340,8 @@
       <IncludeName><![CDATA[labels.contact]]></IncludeName>
       <PropertyName><![CDATA[labels]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.labels)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.labels.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[label-text]]></Default>
       <WidgetConfig><![CDATA[
@@ -2339,6 +2355,8 @@
       <IncludeName><![CDATA[showAddress.contact]]></IncludeName>
       <PropertyName><![CDATA[showAddress]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showAddress)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showAddress.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[always]]></Default>
       <WidgetConfig><![CDATA[
@@ -2352,6 +2370,7 @@
       <PropertyName><![CDATA[compactLayout]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.compactLayout)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.compactLayout.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>
@@ -2360,6 +2379,7 @@
       <PropertyName><![CDATA[showPosition]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showPosition)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.showPosition.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -2377,6 +2397,7 @@
       <PropertyName><![CDATA[showOrganization]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganization)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.showOrganization.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -2389,13 +2410,14 @@
       <IncludeName><![CDATA[showName.contact]]></IncludeName>
       <PropertyName><![CDATA[showName]]></PropertyName>
       <Widget><![CDATA[hidden]]></Widget>
-      <Default><![CDATA[true]]></Default>
+      <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
       <PropertyName><![CDATA[showDescription]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.showDescription.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -2403,6 +2425,8 @@
       <IncludeName><![CDATA[showPhone.contact]]></IncludeName>
       <PropertyName><![CDATA[showPhone]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showPhone)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showPhone.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -2410,6 +2434,8 @@
       <IncludeName><![CDATA[showWebsite.contact]]></IncludeName>
       <PropertyName><![CDATA[showWebsite]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showWebsite)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showWebsite.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -2417,6 +2443,8 @@
       <IncludeName><![CDATA[showEmail.contact]]></IncludeName>
       <PropertyName><![CDATA[showEmail]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showEmail)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showEmail.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
@@ -2424,6 +2452,8 @@
       <IncludeName><![CDATA[showVcard.contact]]></IncludeName>
       <PropertyName><![CDATA[showVcard]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showVcard)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showVcard.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>

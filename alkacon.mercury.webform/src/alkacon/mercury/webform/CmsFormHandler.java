@@ -19,9 +19,9 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.captcha.CmsCaptchaPluginLoader;
+import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
+import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
 import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
-import alkacon.mercury.webform.captcha.I_CmsCaptchaProvider;
 import alkacon.mercury.webform.fields.CmsCaptchaField;
 import alkacon.mercury.webform.fields.CmsCheckboxField;
 import alkacon.mercury.webform.fields.CmsEmptyField;
@@ -110,7 +110,7 @@ import com.octo.captcha.service.text.TextCaptchaService;
  * output formats of a submitted form.<p>
  *
  */
-public class CmsFormHandler extends CmsJspActionElement implements I_CmsFormHandler {
+public class CmsFormHandler extends CmsJspActionElement {
 
     /** Request parameter value for the form action parameter: correct the input. */
     public static final String ACTION_CONFIRMED = "confirmed";
@@ -1457,10 +1457,14 @@ public class CmsFormHandler extends CmsJspActionElement implements I_CmsFormHand
                 }
             }
             sTemplate.setAttribute(I_CmsTemplateCheckPage.ATTR_CAPTCHA_ERROR, errorMessage);
-            CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(this);
+            CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(this.getRequest());
             if (captchaPluginLoader.findPlugin() != null) {
-                I_CmsCaptchaProvider captchaPlugin = captchaPluginLoader.loadCaptchaProvider();
-                sTemplate.setAttribute("captchawidget", captchaPlugin.getWidgetMarkup(this, captchaField.getName()));
+                I_CmsCaptchaProvider captchaPlugin = captchaPluginLoader.loadCaptchaProvider(getCmsObject());
+                String widgetMarkup = captchaPlugin.getWidgetMarkup(
+                    this.getCmsObject(),
+                    this.getRequest(),
+                    captchaField.getName());
+                sTemplate.setAttribute("captchawidget", widgetMarkup);
             } else {
                 String tokenId = getParameter(CmsCaptchaField.C_PARAM_CAPTCHA_TOKEN_ID);
                 if (tokenId.isEmpty()) {

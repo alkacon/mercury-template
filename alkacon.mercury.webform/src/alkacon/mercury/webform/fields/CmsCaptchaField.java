@@ -19,13 +19,13 @@
 
 package alkacon.mercury.webform.fields;
 
+import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
+import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
 import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.captcha.CmsCaptchaPluginLoader;
 import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
 import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
 import alkacon.mercury.webform.captcha.CmsCaptchaStore;
 import alkacon.mercury.webform.captcha.CmsCaptchaToken;
-import alkacon.mercury.webform.captcha.I_CmsCaptchaProvider;
 
 import org.opencms.flex.CmsFlexController;
 import org.opencms.i18n.CmsMessages;
@@ -120,12 +120,14 @@ public class CmsCaptchaField extends A_CmsField {
         String errorMessage = createStandardErrorMessage(errorKey, messages);
 
         Map<String, Object> stAttributes = new HashMap<>();
-        CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(formHandler);
-        if (captchaPluginLoader.findPlugin() != null) {
-            I_CmsCaptchaProvider captchaProvider = captchaPluginLoader.loadCaptchaProvider();
-            if (captchaProvider != null) {
-                stAttributes.put("captchawidget", captchaProvider.getWidgetMarkup(formHandler, getName()));
-            }
+        CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(formHandler.getRequest());
+        I_CmsCaptchaProvider captchaProvider = captchaPluginLoader.loadCaptchaProvider(formHandler.getCmsObject());
+        if (captchaProvider != null) {
+            String widgetMarkup = captchaProvider.getWidgetMarkup(
+                formHandler.getCmsObject(),
+                formHandler.getRequest(),
+                getName());
+            stAttributes.put("captchawidget", widgetMarkup);
         } else {
             CmsCaptchaSettings captchaSettings = getCaptchaSettings();
             String tokenId = formHandler.getParameter(C_PARAM_CAPTCHA_TOKEN_ID);
@@ -216,11 +218,11 @@ public class CmsCaptchaField extends A_CmsField {
     public boolean validateCaptchaPhrase(CmsFormHandler formHandler, String captchaPhrase) {
 
         boolean result = false;
-        CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(formHandler);
-        if (captchaPluginLoader.findPlugin() != null) {
+        CmsCaptchaPluginLoader captchaPluginLoader = new CmsCaptchaPluginLoader(formHandler.getRequest());
+        I_CmsCaptchaProvider captchaProvider = captchaPluginLoader.loadCaptchaProvider(formHandler.getCmsObject());
+        if (captchaProvider != null) {
             try {
-                I_CmsCaptchaProvider captchaProvider = captchaPluginLoader.loadCaptchaProvider();
-                result = captchaProvider.verifySolution(formHandler, captchaPhrase);
+                result = captchaProvider.verifySolution(formHandler.getCmsObject(), captchaPhrase);
             } catch (IOException | JSONException e) {
                 LOG.error("Error when validating the client's captcha solution.", e);
                 result = false;

@@ -59,7 +59,9 @@ public class CmsSubscriptionParameterHandler {
         /** The subscription groups to take an action for. */
         GROUPS,
         /** The agreement for the terms & conditions */
-        AGREEMENT;
+        AGREEMENT,
+        /** The captcha solution solved by the subscriber. */
+        CAPTCHA;
 
         /**
          * Extracts the subscription-relevant information from the provided request parameters.
@@ -115,6 +117,8 @@ public class CmsSubscriptionParameterHandler {
                     return "c";
                 case AGREEMENT:
                     return "d";
+                case CAPTCHA:
+                    return "e";
                 default:
                     throw new IllegalArgumentException("The parameter has no String value defined.");
             }
@@ -153,6 +157,12 @@ public class CmsSubscriptionParameterHandler {
     /** The current subscription action. */
     private SubscriptionAction m_action = SubscriptionAction.NONE;
 
+    /** The captcha handler. */
+    private CmsSubscriptionCaptchaHandler m_captchaHandler;
+
+    /** The current Captcha solution. */
+    private String m_captchaSolution;
+
     /** The email address as determined from the request parameters. */
     private String m_email;
 
@@ -171,20 +181,26 @@ public class CmsSubscriptionParameterHandler {
     /** Flag, indicating if for the current action the user committed himself to the necessary terms & conditions. */
     private boolean m_isValidAgreement;
 
+    /** Flag, indicating whether the user did provide a valid Captcha solution. */
+    private boolean m_isValidCaptcha;
+
     /**
      * Default constructor for the parameter handler.
      *
      * @param manager the subscription manager to use.
-     * @param subscriptionConfig the subscription configuraiton to use.
+     * @param subscriptionConfig the subscription configuration to use.
      * @param requestParameters the current request parameters.
+     * @param captchaHandler the captcha handler
      */
     public CmsSubscriptionParameterHandler(
         CmsSubscriptionManager manager,
         I_CmsSubscriptionConfiguration subscriptionConfig,
-        Map<String, String[]> requestParameters) {
+        Map<String, String[]> requestParameters,
+        CmsSubscriptionCaptchaHandler captchaHandler) {
 
         m_subscriptionManager = manager;
         m_subscriptionConfig = subscriptionConfig;
+        m_captchaHandler = captchaHandler;
         Map<String, String[]> requestParams;
         String encodedParams = getEncodedParams(requestParameters);
         if (null != encodedParams) {
@@ -226,6 +242,10 @@ public class CmsSubscriptionParameterHandler {
             m_requestedGroups = Collections.emptyList();
         }
         m_hasAgreed = null != paramMap.get(Parameter.AGREEMENT);
+        List<String> captchaSolutions = paramMap.get(Parameter.CAPTCHA);
+        if ((captchaSolutions != null) && (captchaSolutions.size() >= 1)) {
+            m_captchaSolution = captchaSolutions.get(0);
+        }
         validate();
     }
 
@@ -310,12 +330,31 @@ public class CmsSubscriptionParameterHandler {
     }
 
     /**
+     * Returns the Captcha solution as extracted from the request parameters.
+     * @return the Captcha solution as extracted from the request parameters
+     */
+    public String getCaptchaSolution() {
+
+        return m_captchaSolution;
+    }
+
+    /**
      * Returns the current subscription action to perform that is determined by the request parameters.
      * @return the current subscription action to perform that is determined by the request parameters.
      */
     public SubscriptionAction getCurrentAction() {
 
         return m_action;
+    }
+
+    /**
+     * Returns whether the current action needs a Captcha protection.
+     * @return whether the current action needs a Captcha protection
+     */
+    public boolean getCurrentActionNeedsCaptcha() {
+
+        return m_captchaHandler.hasCaptchaProvider()
+            && (m_action.equals(SubscriptionAction.SUBSCRIBE) || m_action.equals(SubscriptionAction.UNSUBSCRIBE));
     }
 
     /**
@@ -343,6 +382,15 @@ public class CmsSubscriptionParameterHandler {
     public String getParamAgreement() {
 
         return Parameter.AGREEMENT.toString();
+    }
+
+    /**
+     * Returns the name of the request parameter that should hold the value of the captcha solution to be verified before performing the action.
+     * @return the name of the request parameter that should hold the value of the captcha solution to be verified before performing the action.
+     */
+    public String getParamCaptcha() {
+
+        return Parameter.CAPTCHA.toString();
     }
 
     /**
@@ -424,7 +472,7 @@ public class CmsSubscriptionParameterHandler {
      */
     public boolean isValid() {
 
-        return m_isValidGroups && m_isValidEmail && m_isValidAgreement;
+        return m_isValidGroups && m_isValidEmail && m_isValidAgreement && m_isValidCaptcha;
     }
 
     /**
@@ -500,12 +548,15 @@ public class CmsSubscriptionParameterHandler {
             m_isValidGroups = true;
             m_isValidEmail = true;
             m_isValidAgreement = true;
+            m_isValidCaptcha = true;
         } else {
             m_isValidEmail = m_subscriptionManager.isValidEmail(getEmail());
             m_isValidGroups = (m_requestedGroups.size() > 0)
                 && ((m_subscriptionConfig.getManagedGroups() == null)
                     || m_subscriptionConfig.getManagedGroups().containsAll(m_requestedGroups));
             m_isValidAgreement = !m_action.equals(SubscriptionAction.SUBSCRIBE) || m_hasAgreed;
+            m_captchaHandler.verifyCaptchaSolution(getCaptchaSolution());
+            m_isValidCaptcha = !getCurrentActionNeedsCaptcha() || m_captchaHandler.getVerificationResult();
         }
     }
 

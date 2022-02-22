@@ -25,10 +25,9 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-package alkacon.mercury.webform.captcha;
+package alkacon.mercury.template.captcha;
 
-import alkacon.mercury.webform.I_CmsFormHandler;
-
+import org.opencms.file.CmsObject;
 import org.opencms.jsp.util.CmsJspStandardContextBean;
 import org.opencms.jsp.util.CmsTemplatePluginWrapper;
 import org.opencms.main.CmsLog;
@@ -36,10 +35,12 @@ import org.opencms.main.CmsLog;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
+
 import org.apache.commons.logging.Log;
 
 /**
- * Class handling external Captcha plugins.
+ * Class handling Captcha plugins.
  */
 public class CmsCaptchaPluginLoader {
 
@@ -49,16 +50,16 @@ public class CmsCaptchaPluginLoader {
     /** Plugin group name. */
     public static final String PLUGIN_WEBFORM_CAPTCHA = "webform-captcha";
 
-    /** The form handler. */
-    I_CmsFormHandler m_formHandler;
+    /** The servlet request. */
+    ServletRequest m_servletRequest;
 
     /**
      * Creates a Captcha plugin loader.
-     * @param formHandler the form handler
+     * @param servletRequest the servlet request
      */
-    public CmsCaptchaPluginLoader(I_CmsFormHandler formHandler) {
+    public CmsCaptchaPluginLoader(ServletRequest servletRequest) {
 
-        m_formHandler = formHandler;
+        m_servletRequest = servletRequest;
     }
 
     /**
@@ -67,8 +68,7 @@ public class CmsCaptchaPluginLoader {
      */
     public CmsTemplatePluginWrapper findPlugin() {
 
-        CmsJspStandardContextBean standardContextBean = CmsJspStandardContextBean.getInstance(
-            m_formHandler.getRequest());
+        CmsJspStandardContextBean standardContextBean = CmsJspStandardContextBean.getInstance(m_servletRequest);
         Map<String, List<CmsTemplatePluginWrapper>> plugins = standardContextBean.getPlugins();
         if (plugins.containsKey(PLUGIN_WEBFORM_CAPTCHA) && !plugins.get(PLUGIN_WEBFORM_CAPTCHA).isEmpty()) {
             return plugins.get(PLUGIN_WEBFORM_CAPTCHA).get(0);
@@ -77,10 +77,12 @@ public class CmsCaptchaPluginLoader {
     }
 
     /**
-     * Loads the Captcha provider for the current site context.
+     * Loads the Captcha provider for the current site context or null if the provider is disabled
+     * for the current site context.
+     * @param cms the CMS context
      * @return the Captcha provider
      */
-    public I_CmsCaptchaProvider loadCaptchaProvider() {
+    public I_CmsCaptchaProvider loadCaptchaProvider(CmsObject cms) {
 
         CmsTemplatePluginWrapper pluginWrapper = findPlugin();
         if (pluginWrapper == null) {
@@ -93,6 +95,9 @@ public class CmsCaptchaPluginLoader {
                 Class<?> providerClass = Class.forName(className, false, getClass().getClassLoader());
                 if (I_CmsCaptchaProvider.class.isAssignableFrom(providerClass)) {
                     captchaProvider = ((Class<? extends I_CmsCaptchaProvider>)providerClass).newInstance();
+                }
+                if ((captchaProvider != null) && captchaProvider.isDisabled(cms)) {
+                    captchaProvider = null;
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                 LOG.error(e.getLocalizedMessage(), e);

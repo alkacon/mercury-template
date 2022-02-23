@@ -30,20 +30,7 @@
 <noscript><style>html.noscript .hide-noscript { display: none !important; }</style></noscript>
 
 <script><%-- Static JavaScript that provides a 'mercury.ready()' method for additional scripts
---%>mercury=function(){<%--
-    --%>var n=function(){<%--
-        --%>var n=[];<%--
-        --%>return{<%--
-            --%>ready:function(t){n.push(t)},<%--
-            --%>load:function(t){n.push(t)},<%--
-            --%>getInitFunctions:function(){return n}<%--
-        --%>}<%--
-    --%>}(),<%--
-    --%>t=function(t){if("function"!=typeof t)return n;n.ready(t)};return t.getInitFunctions=function(){return n.getInitFunctions()},<%--
-    --%>t.load=function(n){this(n)},<%--
-    --%>t.ready=function(n){this(n)},<%--
-    --%>t<%--
---%>}();<%--
+--%>mercury=function(){var n=function(){var n=[];return{ready:function(t){n.push(t)},load:function(t){n.push(t)},getInitFunctions:function(){return n}}}(),t=function(t){if("function"!=typeof t)return n;n.ready(t)};return t.getInitFunctions=function(){return n.getInitFunctions()},t.load=function(n){this(n)},t.ready=function(n){this(n)},t}();<%--
 --%>var __isOnline=${cms.isOnlineProject},<%--
 --%>__scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)</cms:link>"<%--
 --%></script>
@@ -51,31 +38,14 @@
 <script async src="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
 
 <mercury:meta-canonical renderMetaTags="${true}" >
-    <mercury:meta-info
-        canonicalURL="${canonicalURL}"
-        contentPropertiesSearch="${contentPropertiesSearchDetail}"
-    />
+    <mercury:meta-info canonicalURL="${canonicalURL}" contentPropertiesSearch="${contentPropertiesSearchDetail}" />
 </mercury:meta-canonical>
-
-<%-- Add favicon --%>
-<c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />
-<c:if test="${not (cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage)}">
-    <c:set var="faviconPath">/system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
-</c:if>
-<c:set var="favIconImage" value="${cms.vfs.readResource[faviconPath].toImage.scaleRatio['1-1']}" />
-<link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}">
-<link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}">
-<link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}">
-<%-- Preload Fork Awesome --%>
-<link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
 
 <cms:enable-ade />
 
-<mercury:load-plugins group="css-includes" type="css" />
-<cms:headincludes type="css" />
-
-<mercury:load-plugins group="js-includes" type="js" />
-
+<mercury:load-plugins group="css" />
+<mercury:load-plugins group="js-async" />
+<mercury:load-plugins group="js-defer" />
 <mercury:load-plugins group="template-head-includes" type="jsp-nocache" />
 
 <%-- Common CSS and theme CSS --%>
@@ -84,6 +54,9 @@
 <mercury:nl />
 <link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
 <mercury:nl />
+
+<%-- Preload Fork Awesome --%>
+<link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
 
 <c:if test="${allowTemplateMods}">
     <%-- Additional CSS --%>
@@ -95,14 +68,25 @@
             <mercury:nl />
         </c:if>
     </c:if>
-    <c:if test="${allowTemplateIncludes}">
-        <%-- Additional head include, can e.g. be used to add inline CSS --%>
-        <c:set var="extraHead" value="${empty contentPropertiesSearch['mercury.extra.head'] ? 'none' : contentPropertiesSearch['mercury.extra.head']}" />
-        <c:if test="${not empty extraHead and (extraHead ne 'none') and cms.vfs.exists[extraHead]}">
-            <cms:include file="${extraHead}" cacheable="false" />
+    <%-- Additional JS include --%>
+    <c:set var="extraJS" value="${empty contentPropertiesSearch['mercury.extra.js'] ? 'none' : contentPropertiesSearch['mercury.extra.js']}" />
+    <c:if test="${not empty extraJS and (extraJS ne 'none')}">
+        <c:set var="extraJS" value="${extraJS}custom.js" />
+        <c:if test="${cms.vfs.exists[extraJS]}">
+            <script src="<mercury:link-resource resource='${extraJS}'/>" defer></script>
         </c:if>
     </c:if>
 </c:if>
+
+<%-- Add favicon --%>
+<c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />
+<c:if test="${not (cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage)}">
+    <c:set var="faviconPath">/system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
+</c:if>
+<c:set var="favIconImage" value="${cms.vfs.readResource[faviconPath].toImage.scaleRatio['1-1']}" />
+<link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}">
+<link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}">
+<link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}">
 
 </head>
 <body>
@@ -140,27 +124,6 @@
 <jsp:attribute name="bottom">
 <%-- Page information transfers OpenCms state information to JavaScript --%>
 <mercury:pageinfo contentPropertiesSearch="${contentPropertiesSearch}" />
-
-<%-- JavaScript blocking files placed at the end of the document so the pages load faster --%>
-<cms:headincludes type="javascript" />
-
-<c:if test="${allowTemplateMods}">
-    <%-- Additional JS include --%>
-    <c:set var="extraJS" value="${empty contentPropertiesSearch['mercury.extra.js'] ? 'none' : contentPropertiesSearch['mercury.extra.js']}" />
-    <c:if test="${not empty extraJS and (extraJS ne 'none')}">
-        <c:set var="extraJS" value="${extraJS}custom.js" />
-        <c:if test="${cms.vfs.exists[extraJS]}">
-            <script src="<mercury:link-resource resource='${extraJS}'/>"></script>
-        </c:if>
-    </c:if>
-    <c:if test="${allowTemplateIncludes}">
-        <%-- Additional foot include, can e.g. be used to add scripts --%>
-        <c:set var="extraFoot" value="${empty contentPropertiesSearch['mercury.extra.foot'] ? 'none' : contentPropertiesSearch['mercury.extra.foot']}" />
-        <c:if test="${not empty extraFoot and extraFoot ne 'none'}">
-            <cms:include file="${extraFoot}" cacheable="false" />
-        </c:if>
-    </c:if>
-</c:if>
 
 <%-- Privacy policy banner markup --%>
 <mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />

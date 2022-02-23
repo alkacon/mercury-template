@@ -57,7 +57,7 @@
 ]]></CssInline>
     </HeadIncludeCss>
     <Plugin>
-      <Group><![CDATA[js-includes]]></Group>
+      <Group><![CDATA[js-defer]]></Group>
       <Target>
         <link internal="true" type="WEAK">
           <target><![CDATA[/handleStatic/gwt/ugc/ugc.nocache.js]]></target>
@@ -66,7 +66,7 @@
       </Target>
     </Plugin>
     <Plugin>
-      <Group><![CDATA[js-includes]]></Group>
+      <Group><![CDATA[js-defer]]></Group>
       <Target>
         <link internal="true" type="WEAK">
           <target><![CDATA[/handleStatic/ugc/ugc-jquery.js]]></target>
@@ -75,7 +75,7 @@
       </Target>
     </Plugin>
     <Plugin>
-      <Group><![CDATA[js-includes]]></Group>
+      <Group><![CDATA[js-defer]]></Group>
       <Target>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/resources/js/ugc-article.js]]></target>

@@ -24,7 +24,7 @@
     <StrictContainers>true</StrictContainers>
     <Preview>true</Preview>
     <Plugin>
-      <Group><![CDATA[css-includes]]></Group>
+      <Group><![CDATA[css]]></Group>
       <Target>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/osmviewer/map.css]]></target>

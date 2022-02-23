@@ -30,7 +30,20 @@
 <noscript><style>html.noscript .hide-noscript { display: none !important; }</style></noscript>
 
 <script><%-- Static JavaScript that provides a 'mercury.ready()' method for additional scripts
---%>mercury=function(){var n=function(){var n=[];return{ready:function(t){n.push(t)},load:function(t){n.push(t)},getInitFunctions:function(){return n}}}(),t=function(t){if("function"!=typeof t)return n;n.ready(t)};return t.getInitFunctions=function(){return n.getInitFunctions()},t.load=function(n){this(n)},t.ready=function(n){this(n)},t}();<%--
+--%>mercury=function(){<%--
+    --%>var n=function(){<%--
+        --%>var n=[];<%--
+        --%>return{<%--
+            --%>ready:function(t){n.push(t)},<%--
+            --%>load:function(t){n.push(t)},<%--
+            --%>getInitFunctions:function(){return n}<%--
+        --%>}<%--
+    --%>}(),<%--
+    --%>t=function(t){if("function"!=typeof t)return n;n.ready(t)};return t.getInitFunctions=function(){return n.getInitFunctions()},<%--
+    --%>t.load=function(n){this(n)},<%--
+    --%>t.ready=function(n){this(n)},<%--
+    --%>t<%--
+--%>}();<%--
 --%>var __isOnline=${cms.isOnlineProject},<%--
 --%>__scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)</cms:link>"<%--
 --%></script>
@@ -65,24 +78,12 @@
 
 <mercury:load-plugins group="template-head-includes" type="jsp-nocache" />
 
-<c:if test="${allowTemplateMods}">
-    <c:set var="replaceCss" value="${empty contentPropertiesSearch['mercury.replace.head'] ? 'none' : contentPropertiesSearch['mercury.replace.head']}" />
-</c:if>
-
-<c:choose>
-    <c:when test="${not empty replaceCss and replaceCss ne 'none'}">
-        <%-- This way an "replaceCss" JSP can override the default CSS theme. --%>
-        <cms:include file="${replaceCss}" />
-    </c:when>
-    <c:otherwise>
-        <%-- Common CSS and theme CSS --%>
-        <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-red.min.css' : contentPropertiesSearch['mercury.theme']}" />
-        <link href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>" rel="stylesheet"><%----%>
-        <mercury:nl />
-        <link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
-        <mercury:nl />
-    </c:otherwise>
-</c:choose>
+<%-- Common CSS and theme CSS --%>
+<c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-red.min.css' : contentPropertiesSearch['mercury.theme']}" />
+<link href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>" rel="stylesheet"><%----%>
+<mercury:nl />
+<link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
+<mercury:nl />
 
 <c:if test="${allowTemplateMods}">
     <%-- Additional CSS --%>
@@ -94,10 +95,12 @@
             <mercury:nl />
         </c:if>
     </c:if>
-    <%-- Additional head include, can e.g. be used to add inline CSS --%>
-    <c:set var="extraHead" value="${empty contentPropertiesSearch['mercury.extra.head'] ? 'none' : contentPropertiesSearch['mercury.extra.head']}" />
-    <c:if test="${not empty extraHead and (extraHead ne 'none') and cms.vfs.exists[extraHead]}">
-        <cms:include file="${extraHead}" />
+    <c:if test="${allowTemplateIncludes}">
+        <%-- Additional head include, can e.g. be used to add inline CSS --%>
+        <c:set var="extraHead" value="${empty contentPropertiesSearch['mercury.extra.head'] ? 'none' : contentPropertiesSearch['mercury.extra.head']}" />
+        <c:if test="${not empty extraHead and (extraHead ne 'none') and cms.vfs.exists[extraHead]}">
+            <cms:include file="${extraHead}" cacheable="false" />
+        </c:if>
     </c:if>
 </c:if>
 
@@ -150,9 +153,13 @@
             <script src="<mercury:link-resource resource='${extraJS}'/>"></script>
         </c:if>
     </c:if>
-    <%-- Additional foot include, can e.g. be used to add scripts --%>
-    <c:set var="extraFoot" value="${empty contentPropertiesSearch['mercury.extra.foot'] ? 'none' : contentPropertiesSearch['mercury.extra.foot']}" />
-    <c:if test="${not empty extraFoot and extraFoot ne 'none'}"><cms:include file="${extraFoot}" /></c:if>
+    <c:if test="${allowTemplateIncludes}">
+        <%-- Additional foot include, can e.g. be used to add scripts --%>
+        <c:set var="extraFoot" value="${empty contentPropertiesSearch['mercury.extra.foot'] ? 'none' : contentPropertiesSearch['mercury.extra.foot']}" />
+        <c:if test="${not empty extraFoot and extraFoot ne 'none'}">
+            <cms:include file="${extraFoot}" cacheable="false" />
+        </c:if>
+    </c:if>
 </c:if>
 
 <%-- Privacy policy banner markup --%>

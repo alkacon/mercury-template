@@ -17,14 +17,21 @@
 
 <c:if test="${not empty cms.detailContent}">
     <c:set var="content" value="${cms.detailContent.toXml}" />
+    <c:set var="value" value="${content.value}" />
     <c:set var="hasPdfSupport" value="${content.typeName eq 'm-article'}" />
 </c:if>
 
 <c:choose>
 
     <c:when test="${hasPdfSupport}">
+        <mercury:set-content-disposition name="${value.Title}" suffix=".pdf" setFilenameOnly="${true}" />
         <c:set var="pdfLink">
-            <cms:pdf format='%(link.weak:/system/modules/alkacon.mercury.template/elements/article-pdf.jsp:d6a236ad-4558-4628-b211-bcc7cff695b5)' content='${content.filename}' locale='${cms.locale}'/>
+            <cms:pdf
+                format='%(link.weak:/system/modules/alkacon.mercury.template/elements/article-pdf.jsp:d6a236ad-4558-4628-b211-bcc7cff695b5)'
+                content='${content.filename}'
+                locale='${cms.locale}'
+                filename="${contentDispositionFilename}"
+            />
         </c:set>
 
         <mercury:nl />

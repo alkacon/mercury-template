@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ListConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/list_config.xsd">
+  <ListConfig language="en">
+    <Title><![CDATA[Download list for images, binary and plain resources]]></Title>
+    <TypesToCollect>binary:m/display/download/binary</TypesToCollect>
+    <TypesToCollect>image:m/display/download/image</TypesToCollect>
+    <TypesToCollect>plain:m/display/download/plain</TypesToCollect>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/]]></target>
+        <uuid>0ecdb2e6-93e8-11ec-bb8b-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <Category>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.categories/location/europe/]]></target>
+        <uuid>efb9f44e-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.categories/topic/machines/]]></target>
+        <uuid>efbdc4f2-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.categories/topic/opencms/]]></target>
+        <uuid>6f018df5-949a-11ec-a6ff-0242ac11002b</uuid>
+      </link>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/.categories/topic/people/]]></target>
+        <uuid>efbefd7a-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </Category>
+    <CategoryMode><![CDATA[OR]]></CategoryMode>
+    <SortOrder><![CDATA[TITLE_ASC]]></SortOrder>
+  </ListConfig>
+</ListConfigs>

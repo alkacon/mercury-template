@@ -6,11 +6,10 @@
     <TypesToCollect>m-article:m/display/article-elaborate</TypesToCollect>
     <TypesToCollect>m-decoy:m/display/decoy-elaborate</TypesToCollect>
     <TypesToCollect>m-media:m/display/media-elaborate</TypesToCollect>
-    <TypesToCollect>m-imageseries:m/display/imageseries-</TypesToCollect>
+    <TypesToCollect>m-imageseries:m/display/imageseries-elaborate</TypesToCollect>
     <TypesToCollect>m-event:m/display/event-elaborate</TypesToCollect>
     <TypesToCollect>m-faq:m/display/faq-elaborate</TypesToCollect>
     <TypesToCollect>m-job:m/display/job-elaborate</TypesToCollect>
-    <TypesToCollect>m-contact:m/display/contact-elaborate</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/]]></target>

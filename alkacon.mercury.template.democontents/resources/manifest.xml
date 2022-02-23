@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>12.0.6</version>
+		<version>12.0.7</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -367,6 +367,21 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title_de</name>
 					<value><![CDATA[Natur]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>.categories/topic/opencms</destination>
+			<type>folder</type>
+			<uuidstructure>6f018df5-949a-11ec-a6ff-0242ac11002b</uuidstructure>
+			<datecreated>Wed, 23 Feb 2022 11:19:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1522,18 +1537,37 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[Alkacon Software]]></value>
+					<value><![CDATA[Alkacon Software - https://alkacon.com]]></value>
+				</property>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[The Alkacon logo as SVG]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Alkacon Logo (SVG)]]></value>
+					<value><![CDATA[Alkacon logo]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:129,h:42]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -1547,7 +1581,11 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[CC BY-NC-SA / Alkacon Software - http://alkacon.com]]></value>
+					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms name tags]]></value>
 				</property>
 				<property type="shared">
 					<name>image.focalpoint</name>
@@ -1558,7 +1596,22 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[w:1920,h:500]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -1572,7 +1625,15 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[CC BY-NC-SA / Alkacon Software - http://alkacon.com]]></value>
+					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
+				</property>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[Several OpenCms bags standing in a row]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms bags]]></value>
 				</property>
 				<property type="shared">
 					<name>image.focalpoint</name>
@@ -1583,7 +1644,22 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[w:1920,h:500]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -1597,14 +1673,29 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[CC BY-NC-SA / Alkacon Software - http://alkacon.com]]></value>
+					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:1920,h:500]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -1618,7 +1709,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[CC BY-NC-SA / Alkacon Software - http://alkacon.com]]></value>
+					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
 					<name>image.focalpoint</name>
@@ -1643,7 +1734,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[CC BY-NC-SA / Alkacon Software - http://alkacon.com]]></value>
+					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -1664,7 +1755,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[CC BY-NC-SA / Alkacon Software - http://alkacon.com]]></value>
+					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
 					<name>image.focalpoint</name>
@@ -1689,18 +1780,37 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Copyright</name>
-					<value><![CDATA[Alkacon Software]]></value>
+					<value><![CDATA[Alkacon Software - https://alkacon.com]]></value>
+				</property>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[The OpenCms logo as SVG]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms Logo (SVG)]]></value>
+					<value><![CDATA[OpenCms logo]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:170,h:42]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -1712,12 +1822,39 @@ This module also creates a set of demo users during the import.]]></description>
 			<datecreated>Tue, 26 Mar 2019 12:36:39 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>Copyright</name>
+					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
+				</property>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[Used as a background image for the tutorial]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Code background]]></value>
+				</property>
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:1200,h:100]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -3137,7 +3274,22 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[w:1024,h:768]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbdc4f2-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/machines/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -3162,7 +3314,22 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[w:1024,h:768]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efb698da-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efb9f44e-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/europe/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -3187,7 +3354,22 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[w:1024,h:768]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbefd7a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/people/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -3212,7 +3394,22 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[w:1024,h:768]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efb698da-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efb9f44e-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/europe/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -8532,6 +8729,62 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>mercury-demo/.content/list-m/list_00021.xml</source>
+			<destination>mercury-demo/.content/list-m/list_00021.xml</destination>
+			<type>listconfig</type>
+			<uuidstructure>c860f5f3-9498-11ec-a6ff-0242ac11002b</uuidstructure>
+			<uuidresource>c860f5f4-9498-11ec-a6ff-0242ac11002b</uuidresource>
+			<datecreated>Wed, 23 Feb 2022 11:07:25 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Download list for images, binary and plain resources]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations>
+				<relation>
+					<id>efb698da-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efb9f44e-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/location/europe/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbdc4f2-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/machines/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>efbefd7a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/people/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>mercury-demo/.content/map-m</destination>
 			<type>folder</type>
 			<uuidstructure>f3fc3135-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -11857,6 +12110,46 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>mercury-demo/.galleries/Downloads/OpenCms-is-amazing.pdf</source>
+			<destination>mercury-demo/.galleries/Downloads/OpenCms-is-amazing.pdf</destination>
+			<type>binary</type>
+			<uuidstructure>8dd140b0-949d-11ec-a6ff-0242ac11002b</uuidstructure>
+			<uuidresource>8dd140b1-949d-11ec-a6ff-0242ac11002b</uuidresource>
+			<datecreated>Wed, 23 Feb 2022 11:41:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Copyright</name>
+					<value><![CDATA[CC0 1.0 - Public Domain]]></value>
+				</property>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[This is a test description]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms is amazing]]></value>
+				</property>
+			</properties>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>mercury-demo/.galleries/Downloads/OpenCms-is-just-fun.pdf</source>
 			<destination>mercury-demo/.galleries/Downloads/OpenCms-is-just-fun.pdf</destination>
 			<type>binary</type>
@@ -11866,49 +12159,66 @@ This module also creates a set of demo users during the import.]]></description>
 			<flags>0</flags>
 			<properties>
 				<property>
+					<name>Copyright</name>
+					<value><![CDATA[CC0 1.0 - Public Domain]]></value>
+				</property>
+				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is just fun]]></value>
 				</property>
 			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/.galleries/Downloads/OpenCms-is-powerful.pdf</source>
-			<destination>mercury-demo/.galleries/Downloads/OpenCms-is-powerful.pdf</destination>
+			<source>mercury-demo/.galleries/Downloads/OpenCms-makes-editing-effortless.pdf</source>
+			<destination>mercury-demo/.galleries/Downloads/OpenCms-makes-editing-effortless.pdf</destination>
 			<type>binary</type>
-			<uuidstructure>f467280f-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4672810-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 27 Sep 2017 10:02:17 GMT</datecreated>
+			<uuidstructure>8dd25223-949d-11ec-a6ff-0242ac11002b</uuidstructure>
+			<uuidresource>8dd25224-949d-11ec-a6ff-0242ac11002b</uuidresource>
+			<datecreated>Wed, 23 Feb 2022 11:41:35 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Description</name>
-					<value><![CDATA[This is a test description.]]></value>
+					<value><![CDATA[This document was created with the article PDF generation]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms is powerful]]></value>
+					<value><![CDATA[OpenCms makes editing effortless and this document has a long title]]></value>
 				</property>
 			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/.galleries/Downloads/OpenCms-is-simple-to-use.pdf</source>
-			<destination>mercury-demo/.galleries/Downloads/OpenCms-is-simple-to-use.pdf</destination>
-			<type>binary</type>
-			<uuidstructure>f4686093-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f4686094-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 27 Sep 2017 09:56:08 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[OpenCms is simple to use and this document has a long title]]></value>
-				</property>
-			</properties>
-			<relations/>
+			<relations>
+				<relation>
+					<id>efbc3e4a-3a95-11e9-bd84-0242ac11002b</id>
+					<path>/.categories/topic/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<id>6f018df5-949a-11ec-a6ff-0242ac11002b</id>
+					<path>/.categories/topic/opencms/</path>
+					<type>CATEGORY</type>
+				</relation>
+				<relation>
+					<path>/system/categories/</path>
+					<type>CATEGORY</type>
+				</relation>
+			</relations>
 			<accesscontrol/>
 		</file>
 		<file>
@@ -14843,6 +15153,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Compact list]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/lists/downloads</destination>
+			<type>folder</type>
+			<uuidstructure>bbe8f952-9498-11ec-a6ff-0242ac11002b</uuidstructure>
+			<datecreated>Wed, 23 Feb 2022 11:07:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[7.5]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Download list]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Download list]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/lists/downloads/index.html</source>
+			<destination>mercury-demo/lists/downloads/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>bbeb9167-9498-11ec-a6ff-0242ac11002b</uuidstructure>
+			<uuidresource>bbeb9168-9498-11ec-a6ff-0242ac11002b</uuidresource>
+			<datecreated>Wed, 23 Feb 2022 11:07:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Download list]]></value>
 				</property>
 			</properties>
 			<relations/>

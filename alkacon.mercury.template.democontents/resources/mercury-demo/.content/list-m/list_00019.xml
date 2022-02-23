@@ -10,7 +10,6 @@
     <TypesToCollect>m-imageseries:m/display/imageseries-compact</TypesToCollect>
     <TypesToCollect>m-job:m/display/job-compact</TypesToCollect>
     <TypesToCollect>m-media:m/display/media-compact</TypesToCollect>
-    <TypesToCollect>m-contact:m/display/contact-compact</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
         <target><![CDATA[/sites/default/mercury-demo/]]></target>

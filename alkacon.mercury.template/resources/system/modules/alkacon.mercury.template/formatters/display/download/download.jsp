@@ -11,7 +11,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<c:set var="setting"                value="${cms.element.setting}" />
+<c:set var="setting"            value="${cms.element.setting}" />
 
 <mercury:download-item
     resource="${cms.wrap[cms.element.resource]}"
@@ -21,5 +21,5 @@
     showDescription="${setting.showDescription.toBoolean}"
     showCopyright="${setting.showDownloadCopyright.toBoolean}"
     showCategories="${(setting.categoryOption.toString eq 'allnopath') or (setting.categoryOption.toString eq 'onlyleafs')}"
-    showCategoryLeafsOnly="${showCategories and (setting.categoryOption.toString eq 'onlyleafs')}"
+    showCategoryLeafsOnly="${setting.categoryOption.toString eq 'onlyleafs'}"
 />

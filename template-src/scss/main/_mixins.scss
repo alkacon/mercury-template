@@ -65,6 +65,8 @@
     pointer-events: none;
     z-index: #{$overflow-z-index + 2};
     box-shadow: none;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 // Add an image overlay that is aligned to the right

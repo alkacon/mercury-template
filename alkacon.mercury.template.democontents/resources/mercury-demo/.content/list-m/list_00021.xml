@@ -8,8 +8,14 @@
     <TypesToCollect>plain:m/display/download/plain</TypesToCollect>
     <SearchFolder>
       <link type="WEAK">
-        <target><![CDATA[/sites/default/]]></target>
-        <uuid>0ecdb2e6-93e8-11ec-bb8b-0242ac11002b</uuid>
+        <target><![CDATA[/sites/default/.galleries/]]></target>
+        <uuid>efd08904-3a95-11e9-bd84-0242ac11002b</uuid>
+      </link>
+    </SearchFolder>
+    <SearchFolder>
+      <link type="WEAK">
+        <target><![CDATA[/sites/default/mercury-demo/]]></target>
+        <uuid>acb43685-5224-11e5-9495-0242ac11002b</uuid>
       </link>
     </SearchFolder>
     <Category>

@@ -70,6 +70,10 @@ $imageseries-square-margin: 2px !default;
         }
     }
 
+    > .detail-visual + .series {
+        margin-top: $default-margin;
+    }
+
     .effect-box {
         position: relative;
 

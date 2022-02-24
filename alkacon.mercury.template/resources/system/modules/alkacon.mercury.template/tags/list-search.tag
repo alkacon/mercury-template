@@ -41,8 +41,9 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 
 <c:set var="categoryFacetField">category_exact</c:set>
-<c:set var="rangeFacetField">instancedate</c:set>
+<c:set var="rangeFacetField">instancedaterange</c:set>
 <c:set var="folderFacetField">parent-folders</c:set>
+<c:set var="instancedaterangefield">instancedaterange_${cms.locale}_dr</c:set>
 
 <c:set var="pageSize">100</c:set>
 <c:if test="${not empty count}"><c:set var="pageSize">${count}</c:set></c:if>
@@ -55,7 +56,10 @@
 <c:set var="searchConfig">
 {
     "pagesize" : "${pageSize}",
-    "pagenavlength" : 5
+    "pagenavlength" : 5,
+    "additionalrequestparams" : [
+        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dinstancedaterange}${instancedaterangefield}:([%(value)+TO+%(value)%2B1DAYS})" }
+    ]
 }
 </c:set>
 

@@ -101,14 +101,14 @@ var m_flagScrollToAnchor = true;
 /**
  * Calculates the search state parameters.
  * @param {*} filter
- * @param {string} liId id of the list the search state parameters should be calculated for.
+ * @param {string} elId id of the element the search state parameters should be calculated for.
  * @param {boolean} resetActive flag, indicating if other active filters should be reset.
  * @returns {string} the search state parameters corresponding to the filter action.
  */
-function calculateStateParameter(filter, liId, resetActive) {
-    var $li = $( 'li#' + liId);
-    var value = $li.data("value")
-    var paramkey = liId.indexOf('cat_') == 0 ? (resetActive && $li.hasClass("active") ? '' : filter.catparamkey) : liId.indexOf('folder_') == 0 ? filter.folderparamkey : resetActive && $li.hasClass("active") ? '' : filter.archiveparamkey;
+function calculateStateParameter(filter, elId, resetActive) {
+    var $el = $( '#' + elId);
+    var value = $el.data("value")
+    var paramkey = elId.indexOf('cat_') == 0 ? (resetActive && $el.hasClass("active") ? '' : filter.catparamkey) : elId.indexOf('folder_') == 0 ? filter.folderparamkey : resetActive && $el.hasClass("active") ? '' : filter.archiveparamkey;
     var stateParameter =
         typeof paramkey !== 'undefined' && paramkey != '' && typeof value !== 'undefined' && value != ''
             ? '&' + paramkey + '=' + encodeURIComponent(value)
@@ -150,7 +150,7 @@ function getAdditionalFilterParams(filter) {
                 if(typeof query !== 'undefined' && query != '') {
                     params += '&' + fi.$textsearch.attr('name') + '=' + encodeURIComponent(query);
                 }
-                fi.$element.find("li.active").each( function() {
+                fi.$element.find(".active").each( function() {
                     var p = calculateStateParameter(fi, this.id, false);
                     params += p;
                 });
@@ -187,15 +187,15 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
             // remove all active / highlighted filters
             // unless filters should be combined
             if (removeOthers && (removeAllFilters || !fi.combinable || fi.id == filterId)) {
-                var $liactive = fi.$element.find("li.active");
-                $liactive.removeClass("active");
+                var $elactive = fi.$element.find(".active");
+                $elactive.removeClass("active");
                 // clear text input if wanted
                 if (triggerId != fi.$textsearch.id) {
                     fi.$textsearch.val('');
                 }
             }
             if (triggerId != null) {
-                fi.$element.find("li.currentpage").removeClass("currentpage");
+                fi.$element.find(".currentpage").removeClass("currentpage");
                 var $current = fi.$element.find("#" + triggerId).first();
                 if (DEBUG) console.info("Lists.listFilter() Current has class active? : " + $current.hasClass("active") + " - " + $current.attr("class"));
                 // activate / highlight clicked filter
@@ -1041,7 +1041,7 @@ export function init(jQuery, debug) {
         _OpenCmsReinitEditButtons(DEBUG);
     }
 
-    var $listArchiveFilters = jQ('.type-list-filter');
+    var $listArchiveFilters = jQ('.type-list-filter, .type-list-calendar');
     if (DEBUG) console.info("Lists.init() .type-list-filter elements found: " + $listArchiveFilters.length);
 
     if ($listArchiveFilters.length > 0) {

@@ -214,16 +214,18 @@
 }
 
 // Colored buttons with hover effects - simplified for less markup
-@mixin button-color-simple($bg-color, $hover-color) {
+@mixin button-color-simple($bg-color, $hover-color, $hover: true) {
     background-color: $bg-color;
     color: get-text-color($bg-color);
 
-    &:focus,
-    &:hover {
-        color: get-text-color($hover-color);
-        background-color: $hover-color;
-        @if ($btn-border-style != none) {
-            border-color: $hover-color;
+    @if ($hover) {
+        &:focus,
+        &:hover {
+            color: get-text-color($hover-color);
+            background-color: $hover-color;
+            @if ($btn-border-style != none) {
+                border-color: $hover-color;
+            }
         }
     }
 }
@@ -591,6 +593,9 @@
 
     .btn {
         @include button-color-simple($color-link, $color-hover);
+    }
+    .btn-colored {
+        @include button-color-simple($color-link, $color-hover, false);
     }
 }
 

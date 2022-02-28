@@ -103,3 +103,7 @@
     }
 }
 
+
+.btn-colored {
+    @include button-color-simple($btn-default, $btn-default-hover, false);
+}

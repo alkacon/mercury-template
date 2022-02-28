@@ -699,8 +699,9 @@
     }
 
     .filterbox {
+        border-radius: $list-border-radius;
         margin-bottom: $default-margin;
-        background-color: $white;
+        background-color: $body-bg;
 
         &:last-of-type {
             margin-bottom: 0;

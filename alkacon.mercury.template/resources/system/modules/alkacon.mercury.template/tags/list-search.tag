@@ -17,6 +17,9 @@
 <%@ attribute name="addContentInfo" type="java.lang.Boolean" required="false"
     description="Controls if the list content info required for finding deleted items when publishing 'this page' is added to the generated HTML. Default is 'false'." %>
 
+<%@ attribute name="multiDayRangeFacet" type="java.lang.Boolean" required="false"
+    description="Whether the range facet shall return all days of a multi-day event or the start day only." %>
+
 
 <%@ variable name-given="search" scope="AT_END" declare="true" variable-class="org.opencms.jsp.search.result.I_CmsSearchResultWrapper"
     description="The results of the search" %>
@@ -40,10 +43,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 
+<c:set var="multiDay" value="${not empty multiDayRangeFacet and multiDayRangeFacet eq true}" />
 <c:set var="categoryFacetField">category_exact</c:set>
 <c:set var="rangeFacetField">instancedaterange</c:set>
 <c:set var="folderFacetField">parent-folders</c:set>
-<c:set var="instancedaterangefield">instancedaterange_${cms.locale}_dr</c:set>
+<c:choose>
+    <c:when test="${multiDay eq true}">
+        <c:set var="instancedaterangefield">instancedaterange_${cms.locale}_dr</c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="instancedaterangefield">instancedate_${cms.locale}_dt</c:set>
+    </c:otherwise>
+</c:choose>
 
 <c:set var="pageSize">100</c:set>
 <c:if test="${not empty count}"><c:set var="pageSize">${count}</c:set></c:if>
@@ -58,7 +69,7 @@
     "pagesize" : "${pageSize}",
     "pagenavlength" : 5,
     "additionalrequestparams" : [
-        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dinstancedaterange}${instancedaterangefield}:([%(value)+TO+%(value)%2B1DAYS})" }
+        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dinstancedaterange}${instancedaterangefield}:([%(value)+TO+%(value)%2B1DAYS])" }
     ]
 }
 </c:set>

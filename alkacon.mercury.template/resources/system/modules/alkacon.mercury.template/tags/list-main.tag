@@ -40,6 +40,9 @@
 <%@ attribute name="addContentInfo" type="java.lang.Boolean" required="false"
     description="Controls if the list content info required for finding deleted items when publishing 'this page' is added to the generated HTML. Default is 'false'." %>
 
+<%@ attribute name="multiDayRangeFacet" type="java.lang.Boolean" required="false"
+    description="Whether the range facet shall return all days of a multi-day event or the start day only." %>
+
 
 <%@ variable name-given="search" scope="AT_END" declare="true" variable-class="org.opencms.jsp.search.result.I_CmsSearchResultWrapper"
     description="The search result given from the search tag." %>
@@ -61,6 +64,7 @@
     subsite="${subsite}"
     count="${count}"
     addContentInfo="${addContentInfo}"
+    multiDayRangeFacet="${multiDayRangeFacet}"
 />
 
 <c:if test="${search.numFound > 0}">

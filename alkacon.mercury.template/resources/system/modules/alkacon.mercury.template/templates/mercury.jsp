@@ -60,7 +60,7 @@
 
 <c:if test="${allowTemplateMods}">
     <%-- Additional CSS --%>
-    <c:set var="extraCSS" value="${empty contentPropertiesSearch['mercury.extra.css'] ? 'none' : contentPropertiesSearch['mercury.extra.css']}" />
+    <c:set var="extraCSS" value="${empty contentPropertiesSearch['mercury.extra.css'] ? cms.subSitePath : contentPropertiesSearch['mercury.extra.css']}" />
     <c:if test="${not empty extraCSS and (extraCSS ne 'none')}">
         <c:set var="extraCSS" value="${extraCSS}custom.css" />
         <c:if test="${cms.vfs.exists[extraCSS]}">
@@ -69,7 +69,7 @@
         </c:if>
     </c:if>
     <%-- Additional JS include --%>
-    <c:set var="extraJS" value="${empty contentPropertiesSearch['mercury.extra.js'] ? 'none' : contentPropertiesSearch['mercury.extra.js']}" />
+    <c:set var="extraJS" value="${empty contentPropertiesSearch['mercury.extra.js'] ? cms.subSitePath : contentPropertiesSearch['mercury.extra.js']}" />
     <c:if test="${not empty extraJS and (extraJS ne 'none')}">
         <c:set var="extraJS" value="${extraJS}custom.js" />
         <c:if test="${cms.vfs.exists[extraJS]}">

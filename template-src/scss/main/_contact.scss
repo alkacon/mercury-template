@@ -90,6 +90,8 @@
 
     .tablerow {
         display: table-row;
+        hyphens: none;
+        overflow-wrap: normal;
 
         > span {
             padding-right: $default-margin-verysmall;

@@ -41,6 +41,9 @@
       <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[multipleOpen.false]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
     </Setting>
     <Setting>

@@ -33,6 +33,7 @@
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="open"               value="${setting.firstOpen.toBoolean and (setting.index.toInteger == 0)}" />
+<c:set var="multipleOpen"       value="${setting.multipleOpen.toBoolean}" />
 <c:set var="accordionId"        value="${empty accordionId ? setting.listid.toString : accordionId}" />
 <c:set var="itemId"><mercury:idgen prefix="acco" uuid="${cms.element.instanceId}" />_${setting.index.toInteger}</c:set>
 
@@ -40,7 +41,7 @@
 <article class="accordion ${cssWrapper}"><%----%>
 <mercury:nl />
 
-    ${'<h'}${hsize} class="acco-header"${'>'}
+    ${'<h'}${hsize} class="acco-header pivot"${'>'}
         <a class="acco-toggle ${open ? '':'collapsed'}"<%--
         --%>data-toggle="collapse" <%--
         --%>data-target="#${itemId}" <%--
@@ -49,9 +50,9 @@
         </a><%----%>
     ${'</h'}${hsize}${'>'}
 
-    <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}" data-parent="#${accordionId}"><%----%>
+    <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-parent=\"#'.concat(accordionId).concat('\"')}><%----%>
         <c:if test="${not empty preface}">
-             <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${false}" />
+             <mercury:heading text="${preface}" level="${7}" css="sub-header pivot" ade="${false}" />
         </c:if>
         <mercury:paragraphs
             pieceLayout="${9}"

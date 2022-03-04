@@ -18,7 +18,7 @@
 
 <mercury:setting-defaults>
 
-<div class="element type-webform${setCssWrapperAll}">
+<div class="element type-webform${setCssWrapperAll} pivot">
 
     <c:set var="formId" value="${cms.element.id.stringValue}" />
     <c:set var="fid" value="${formId.hashCode()}" />

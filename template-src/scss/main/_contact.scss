@@ -97,6 +97,13 @@
             padding-right: $default-margin-verysmall;
             display: table-cell;
         }
+
+        &.website,
+        &.mail {
+            a {
+                overflow-wrap: anywhere;
+            }
+        }
     }
 
     .only-icon {

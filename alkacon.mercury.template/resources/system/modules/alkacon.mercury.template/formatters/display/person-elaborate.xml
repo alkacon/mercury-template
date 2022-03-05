@@ -29,11 +29,6 @@
       </link>
     </IncludeSettings>
     <Setting>
-      <IncludeName><![CDATA[schemaKind.contact]]></IncludeName>
-      <Visibility><![CDATA[parentIndividual]]></Visibility>
-      <Default><![CDATA[pers]]></Default>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>

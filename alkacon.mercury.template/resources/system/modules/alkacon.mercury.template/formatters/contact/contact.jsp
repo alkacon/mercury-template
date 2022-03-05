@@ -20,7 +20,6 @@
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 
 <c:set var="showOrganization"       value="${setting.showOrganization.toBoolean}" />
-<c:set var="showName"               value="${setting.showName.useDefault('true').toBoolean}" />
 <c:set var="showPosition"           value="${setting.showPosition.toBoolean}" />
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
@@ -47,12 +46,9 @@
 <c:set var="hsizeTitle"             value="${hsize}" />
 <c:set var="hsize"                  value="${showAddInfo and value.Title.isSet ? hsize + 1 : hsize}" />
 
-<c:set var="valKind"                value="${value.Kind.isSet ? value.Kind : setting.schemaKind.useDefault('pers').toString}" />
 
 <mercury:contact-vars
     content="${content}"
-    kind="${valKind}"
-    showName="${showName}"
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
 

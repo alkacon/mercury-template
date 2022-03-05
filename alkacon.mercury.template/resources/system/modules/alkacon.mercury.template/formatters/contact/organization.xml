@@ -73,19 +73,6 @@
       <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
-      <Widget><![CDATA[hidden]]></Widget>
-      <Default><![CDATA[false]]></Default>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
-      <Widget><![CDATA[hidden]]></Widget>
-      <Default><![CDATA[true]]></Default>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showName.contact]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
     </Setting>
     <Setting>

@@ -325,10 +325,12 @@ function initHeadNavigation() {
             var targetmenuId = $menuToggle.attr("aria-controls");
             if (typeof targetmenuId !== 'undefined') {
                 var $submenu = $menuToggle.parent();
-                $menuToggle.on('keydown touchstart click', function(e) {
-                    // open menus if trigger is clicked
-                    toggleMenu($submenu, $menuToggle, targetmenuId, e);
-                });
+                if (!$menuToggle.hasClass("click-direct")) {
+                    $menuToggle.on('keydown touchstart click', function(e) {
+                        // open menus if trigger is clicked
+                        toggleMenu($submenu, $menuToggle, targetmenuId, e);
+                    });
+                }
                 $submenu.on('mouseenter mouseleave', function(e) {
                     // also open menus if mouse enters (hovers) above it and closes if mouse leaves
                     toggleMenu($submenu, $menuToggle, targetmenuId, e);

@@ -21,7 +21,7 @@ $if(waitlistmessage)$$waitlist_notification(waitlistmessage)$$endif$
 
 $! --- show validation errors -- !$
 $if(errormessage)$
-$!  !$<header class="note-error">
+$!  !$<header class="note-error" tabindex="0">
 $!    !$$errormessage$
 $!  !$</header>
 $endif$
@@ -110,7 +110,7 @@ $!      !$$captchawidget$
 $!  !$</div>
 $endif$
 $if(errormessage)$
-    <div class="note note-error">$errormessage$</div>
+    <div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -119,7 +119,7 @@ $row_end(field=field,formconfig=formconfig)$
 field_checkbox(field,formconfig,attributes,errormessage,mandatory) ::= <<
 $! ###### Checkbox field ###### !$
 $row_start(field=field)$
-<label for="$field.name$_box" class="label">
+<label for="$field.name$_box" class="label" tabindex="0">
 $!  !$$field.label$ $mandatory$
 </label>
 $if(field.parameters)$$if(field.parameters.full)$$else$<div class="inline-group">$endif$$else$<div class="inline-group">$endif$
@@ -132,7 +132,7 @@ $!  !$}$
 $!  !$</div>
 $if(field.parameters)$$if(field.parameters.full)$$else$</div>$endif$$else$</div>$endif$
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -156,7 +156,7 @@ $!          !$&nbsp;
 $!      !$$endif$
 $!  !$</div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -175,7 +175,7 @@ $!  !$<label for="$field.name$-Visible" class="sr-only">$field.label$ $mandatory
 $!  !$<input type="text" id="$field.name$-Visible" readonly=""$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$>
 </div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $if(infomessage)$
 $!  !$<div class="note note-info">$infomessage$</div>
@@ -222,7 +222,7 @@ $!  !$$endif$
 $!  !$<input type="password" name="$field.name$" id="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
 </div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -240,7 +240,7 @@ $!      !$</label>
 $!  !$}$
 </div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -249,7 +249,7 @@ $row_end(field=field,formconfig=formconfig)$
 field_radio(field,formconfig,attributes,errormessage,mandatory) ::= <<
 $! ###### RADIO BUTTONS field ###### !$
 $row_start(field=field)$
-<label for="$field.name$_box" class="label">$field.label$ $mandatory$</label>
+<label for="$field.name$_box" class="label" tabindex="0">$field.label$ $mandatory$</label>
 $!  !$<div id="$field.name$_box">
 $!      !$$field.items:{
 $!          !$<label for="$field.name$_$i0$" class="$if(field.parameters)$$if(field.parameters.toggle)$toggle$else$radio$endif$$else$radio$endif$$if(errormessage)$ state-error$endif$">
@@ -258,7 +258,7 @@ $!          !$</label>
 $!      !$}$
 $!  !$</div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -277,7 +277,7 @@ $!  !$</select>
 $!  !$<i></i>
 </div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -296,7 +296,7 @@ $!  !$</select>
 $!  !$<i></i>
 </div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -315,7 +315,7 @@ $!  !$$endif$
 $!  !$<input type="text" id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
 </div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -334,7 +334,7 @@ $!  !$$endif$
 $!  !$<textarea cols="5" rows="5" id="$field.name$" name="$field.name$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$ $attributes$>$field.valueEscaped$</textarea>
 </div>
 $if(errormessage)$
-$!  !$<div class="note note-error">$errormessage$</div>
+$!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
 $endif$
 $row_end(field=field,formconfig=formconfig)$
 >>
@@ -447,7 +447,7 @@ $!          !$<input type="text" name="$captchafield.name$" value="" />
 $!      !$</label>
 $!  !$$endif$
 $!  !$$if(captchaerror)$
-$!      !$<div class="note note-error">$captchaerror$</div>
+$!      !$<div class="note note-error" tabindex="0">$captchaerror$</div>
 $!  !$$endif$
 $!  !$$row_end(field=captchafield,formconfig=formconfig)$
 $!  !$</fieldset>

@@ -251,7 +251,7 @@
 
         <c:if test="${showSearch}">
             <li id="nav-main-search" class="expand"><%----%>
-                <a href="#" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search"><%----%>
+                <a href="${searchPageUrl}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
                     <span class="search search-btn fa fa-search"></span><%----%>
                 </a><%----%>
                 <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>

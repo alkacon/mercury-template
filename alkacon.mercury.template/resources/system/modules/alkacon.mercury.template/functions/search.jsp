@@ -307,7 +307,7 @@
                 <c:choose>
                     <c:when test="${not empty search.exception}">
                         <div class="search-exception">
-                            <h3><fmt:message key="msg.page.search.failed" /></h3><%----%>
+                            <h3 tabindex="0"><fmt:message key="msg.page.search.failed" /></h3><%----%>
                             <p><%----%>
                                 <fmt:message key="msg.page.search.query.changed">
                                     <fmt:param>${common.state.query}</fmt:param>
@@ -320,7 +320,7 @@
                         <c:choose>
                         <c:when test="${not common.config.searchForEmptyQueryParam && empty common.state.query}">
                             <div class="search-no-result"><%----%>
-                                <h3><fmt:message key="msg.page.search.noResults.enterQuery" /></h3><%----%>
+                                <h3 tabindex="0"><fmt:message key="msg.page.search.noResults.enterQuery" /></h3><%----%>
                             </div><%----%>
                         </c:when>
                         <c:when test="${not empty controllers.didYouMean.config}" >
@@ -328,7 +328,7 @@
                             <c:choose>
                             <c:when test="${controllers.didYouMean.config.collate && not empty search.didYouMeanCollated}">
                                 <div class="search-suggestion"><%----%>
-                                    <h3><%----%>
+                                    <h3 tabindex="0"><%----%>
                                         <fmt:message key="msg.page.search.didyoumean_1">
                                             <fmt:param><a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[search.didYouMeanCollated]}</cms:link>">${search.didYouMeanCollated}</a></fmt:param>
                                         </fmt:message>
@@ -337,7 +337,7 @@
                             </c:when>
                             <c:when test="${not controllers.didYouMean.config.collate and not empty suggestion.alternatives and cms:getListSize(suggestion.alternatives) > 0}">
                                 <div class="search-suggestion"><%----%>
-                                    <h3><fmt:message key="msg.page.search.didyoumean_0" /></h3><%----%>
+                                    <h3 tabindex="0"><fmt:message key="msg.page.search.didyoumean_0" /></h3><%----%>
                                     <ul><%----%>
                                         <mercury:nl/>
                                         <c:forEach var="alternative" items="${suggestion.alternatives}" varStatus="status">
@@ -351,24 +351,24 @@
                             </c:when>
                             <c:otherwise>
                                 <div class="search-no-result"><%----%>
-                                    <h3><fmt:message key="msg.page.search.noResult" /></h3><%----%>
+                                    <h3 tabindex="0"><fmt:message key="msg.page.search.noResult" /></h3><%----%>
                                 </div><%----%>
                             </c:otherwise>
                             </c:choose>
                         </c:when>
                         <c:otherwise>
                             <div class="search-no-result"><%----%>
-                                <h3><fmt:message key="msg.page.search.noResult" /></h3><%----%>
+                                <h3 tabindex="0"><fmt:message key="msg.page.search.noResult" /></h3><%----%>
                             </div><%----%>
                         </c:otherwise>
                         </c:choose>
                     </c:when>
                     <c:otherwise>
                         <div class="search-results-header"><%----%>
-                            <h3 class="search-results-head"><%----%>
+                            <h3 class="search-results-head" tabindex="0"><%----%>
                                 <fmt:message key="msg.page.search.result.heading"/>
                             </h3><%----%>
-                            <div class="search-results-count"><%----%>
+                            <div class="search-results-count" tabindex="0"><%----%>
                                 <fmt:message key="msg.page.search.result.info">
                                     <fmt:param value="${search.start}"/>
                                     <fmt:param value="${search.end}"/>

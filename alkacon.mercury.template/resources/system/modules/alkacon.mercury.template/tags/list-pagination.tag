@@ -103,7 +103,7 @@
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}'${' '}<%--
                             --%>title='<fmt:message key="msg.page.list.pagination.first.title"/>'><%--
                                 --%><span class="sr-only"><fmt:message key="msg.page.list.pagination.first.title" /></span><%----%>
-                                    <span class="number">1</span><%----%>
+                                    <span class="number" aria-hidden="true">1</span><%----%>
                             </a><%----%>
                         </li><%----%>
                     </c:if>
@@ -114,8 +114,15 @@
                     <li <mercury:nl />class="${pageNr eq lastShownPage ? 'lastpage' : 'page'}${currentPage eq page ? ' active' : ''}"><%----%>
                         <a href="${empty onclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
                         --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}'${' '}<%--
-                        --%>title='<fmt:message key="msg.page.list.pagination.page.title"><fmt:param>${pageNr}</fmt:param></fmt:message>'><%--
-                            --%><span class="number">${pageNr}</span><%----%>
+                        --%>title='<c:choose>
+                                <c:when test="${currentPage eq page}">
+                                    <fmt:message key="msg.page.list.pagination.page.current"><fmt:param>${pageNr}</fmt:param></fmt:message>
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:message key="msg.page.list.pagination.page.title"><fmt:param>${pageNr}</fmt:param></fmt:message>
+                                </c:otherwise>
+                            </c:choose>'><%--
+                            --%><span class="number" aria-hidden="true">${pageNr}</span><%----%>
                         </a><%----%>
                     </li><%----%>
                 </c:forEach>

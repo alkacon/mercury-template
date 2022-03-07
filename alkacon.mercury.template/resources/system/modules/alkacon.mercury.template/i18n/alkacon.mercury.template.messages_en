@@ -654,6 +654,7 @@ msg.page.list.pagination.first.title=First page
 msg.page.list.pagination.last.title=Last page
 msg.page.list.pagination.more=Show more
 msg.page.list.pagination.next.title=Next page
+msg.page.list.pagination.page.current=Current page {0}
 msg.page.list.pagination.page.title=Show page {0}
 msg.page.list.pagination.previous.title=Previous page
 msg.page.list.sort.asc=Ascending

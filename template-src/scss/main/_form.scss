@@ -508,6 +508,11 @@
         }
         .note-error {
             color: $form-error-text-color;
+            &::before {
+                @include awesome-icons();
+                content: "\f071";
+                margin-right: 10px;
+            }
         }
     }
 

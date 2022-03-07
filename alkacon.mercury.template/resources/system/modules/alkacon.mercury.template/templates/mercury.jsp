@@ -58,24 +58,14 @@
 <%-- Preload Fork Awesome --%>
 <link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
 
+<%-- Include custom CSS / JS if allowed --%>
 <c:if test="${allowTemplateMods}">
-    <%-- Additional CSS --%>
-    <c:set var="extraCSS" value="${empty contentPropertiesSearch['mercury.extra.css'] ? cms.subSitePath : contentPropertiesSearch['mercury.extra.css']}" />
-    <c:if test="${not empty extraCSS and (extraCSS ne 'none')}">
-        <c:set var="extraCSS" value="${extraCSS}custom.css" />
-        <c:if test="${cms.vfs.exists[extraCSS]}">
-            <link href="<mercury:link-resource resource='${extraCSS}'/>" rel="stylesheet"><%----%>
-            <mercury:nl />
-        </c:if>
-    </c:if>
-    <%-- Additional JS include --%>
-    <c:set var="extraJS" value="${empty contentPropertiesSearch['mercury.extra.js'] ? cms.subSitePath : contentPropertiesSearch['mercury.extra.js']}" />
-    <c:if test="${not empty extraJS and (extraJS ne 'none')}">
-        <c:set var="extraJS" value="${extraJS}custom.js" />
-        <c:if test="${cms.vfs.exists[extraJS]}">
-            <script src="<mercury:link-resource resource='${extraJS}'/>" defer></script>
-        </c:if>
-    </c:if>
+    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
+        <link href="<mercury:link-resource resource='${resourcePath}'/>" rel="stylesheet"><mercury:nl />
+    </mercury:load-resource>
+    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
+        <script src="<mercury:link-resource resource='${resourcePath}'/>" defer></script><mercury:nl />
+    </mercury:load-resource>
 </c:if>
 
 <%-- Add favicon --%>
@@ -124,6 +114,13 @@
 <jsp:attribute name="bottom">
 <%-- Page information transfers OpenCms state information to JavaScript --%>
 <mercury:pageinfo contentPropertiesSearch="${contentPropertiesSearch}" />
+
+<%-- Include custom foot if allowed --%>
+<c:if test="${allowTemplateIncludes}">
+    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.foot']}">
+        <cms:include file="${resourcePath}" cacheable="false" /><mercury:nl />
+    </mercury:load-resource>
+</c:if>
 
 <%-- Privacy policy banner markup --%>
 <mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />

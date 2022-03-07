@@ -13,6 +13,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:choose>
@@ -30,7 +31,7 @@
         <cms:link>${targetLink}?ver=${targetRes.dateLastModified}</cms:link>
     </c:when>
     <c:when test="${not cms.isOnlineProject}">
-        <!-- Unable to generate a link to resource '${resource} -->
+        <!-- Unable to link to resource '${resource}' --><mercury:nl />
     </c:when>
 </c:choose>
 

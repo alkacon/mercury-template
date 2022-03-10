@@ -53,7 +53,7 @@
     }
     &.only-text,
     &.phb:not(.phl) {
-        // if a text-only piece element fowllows a text-only pieve element, reduce top margin
+        // if a text-only piece element fowllows a text-only piece element, reduce top margin
         // goal: make text from 2nd element apperar as if it belongs to first element
         + .element.piece.type-section:not(.box) {
             &.only-text {

@@ -517,6 +517,8 @@
         }
         .dl-content {
             flex-grow: 10;
+            display: flex;
+            flex-direction: column;
             .dl-title {
                 @extend .default-font;
                 font-weight: $font-weight-bold;
@@ -531,11 +533,11 @@
         .dl-date,
         .dl-size {
             white-space: nowrap;
-            float: right;
             min-width: 7.0rem;
         }
         .dl-info {
             min-width: 14.0rem;
+            display: flex;
         }
         .dl-show-file {
             .dl-link {
@@ -546,13 +548,7 @@
             }
             .dl-info {
                 min-width: 7.0rem;
-            }
-            .dl-date,
-            .dl-size {
-                display: block;
-                float: left;
-                min-width: 0;
-                width: 99%;
+                flex-direction: column;
             }
         }
         @include media-breakpoint-down(sm) {
@@ -560,22 +556,35 @@
                 flex-direction: column;
             }
             .dl-link {
+                .dl-type {
+                    min-width: 50px;
+                }
+                &.dl-link-disp {
+                    padding-bottom: 0;
+                }
                 &.dl-link-down {
-                    justify-content: flex-end;
+                    flex-direction: row;
+                    justify-content: flex-start;
                     padding-top: 0;
+                    padding-bottom: 1rem;
                     .fa {
                         padding-top: 0;
                         font-size: 1.8rem;
+                    }
+                    .dl-info {
+                        order: 2;
+                        flex-direction: row;
                     }
                     .dl-date,
                     .dl-size {
                         min-width: 7.0rem;
                     }
-                }
-            }
-            .dl-show-file .dl-link {
-                > span.dl-dl {
-                    display: block;
+                    .dl-dl {
+                        order: 1;
+                        min-width: 50px;
+                        padding: 0 1rem;
+                        line-height: inherit;
+                    }
                 }
             }
         }

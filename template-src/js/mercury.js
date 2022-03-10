@@ -652,6 +652,20 @@ var Mercury = function(jQ) {
     }
 
 
+    function registerRevealFunttion($element, template, isMedia, autoplay) {
+        // adds a placeholder that has to be clicked in edit mode in order to reveal the template
+        // mostly used for JavaScripts that contact external servers which may not be wanted in edit mode
+        var revealFunction = function() {
+            // first we create a finction that revelas the template when clicked
+            revalOnClickTemplate($element, template, isMedia, autoplay);
+        };
+        if (!initPlaceholder($element, revealFunction)) {
+            // check if a placeholder is required in edit mode, otherwise directly show the element
+            revealFunction();
+        }
+    }
+
+
     function checkOnClickTemplateCookies(event) {
         var data = event.data;
         var cookieData = data.$element.data("modal-external-cookies");
@@ -687,21 +701,17 @@ var Mercury = function(jQ) {
                 // for autoplay check if element is rendered in our template - like e.g. the audio player - or from an external server
                 var noAutoPlay = (template == "audio") && (!PrivacyPolicy.cookiesAcceptedExternal() || isEditMode());
                 if ($element.hasClass("ensure-external-cookies") && !noAutoPlay) {
-                    // this external element should be rendered directly (e.g. video that plays when the page is loaded)
+                    // this element requires external coodies to be accepted before it is shown
+                    // if cookies are not accepted the external cookie notice will be rendered from initExternalElements() in privacy-policy.js
                     if (PrivacyPolicy.cookiesAcceptedExternal()) {
                         // only render this if external cookies are allowed
-                        var revealFunction = function() {
-                            revalOnClickTemplate($element, template, isMedia, !isEditMode());
-                        };
-                        if (!initPlaceholder($element, revealFunction)) {
-                            // add placeholder if in edit mode, otherwise directly show the element
-                            revealFunction();
-                        }
+                        registerRevealFunttion($element, template, isMedia, !isEditMode());
                     }
-                    // if external cookies are not accepted, the external element will not be rendered directly
-                    // in this case the external cookie notice will be rendered from initExternalElements() in privacy-policy.js
+                } else if ($element.hasClass("placeholder-in-editor") && !noAutoPlay) {
+                    // this element has a placeholder so it should NOT be shown direclty in edit mode, only online or in preview mode
+                    registerRevealFunttion($element, template, isMedia, !isEditMode());
                 } else {
-                    // this external element has a preview template that has to be clicked before the external content is shown
+                    // this element has a preview template that has to be clicked before the external content is shown
                     if (! $element.hasClass("reveal-registered")) {
                         // only attach event listerners once, important for dynamic lists
                         $element.addClass("reveal-registered");

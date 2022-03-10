@@ -58,6 +58,7 @@
     --%><c:if test="${not empty googleApiKeyWorkplace}">"googleApiKeyWorkplace":"${googleApiKeyWorkplace}",</c:if><%--
     --%>"editMode":"${cms.isEditMode}",<%--
     --%>"project":"${project}",<%--
+    --%>"context":"<cms:link>/</cms:link>",<%--
     --%>"locale":"${cms.locale}"<%--
 --%>}'${' '}${piwikData}><%----%>
 <mercury:nl/>

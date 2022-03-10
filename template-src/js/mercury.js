@@ -155,6 +155,15 @@ var Mercury = function(jQ) {
     }
 
 
+    function addContext(path) {
+
+        var contextPath = getInfo("context");
+        contextPath = (typeof contextPath !== "undefined") ? contextPath : "/";
+        path = path.startsWith("/") ? path.substr(1) : path;
+        return contextPath + path;
+    }
+
+
     function isNotEmpty(string) {
         // checks if the argument variable is of type string and has a length > 0
         var result = false;
@@ -1022,6 +1031,7 @@ var Mercury = function(jQ) {
     // public available functions
     return {
         init: init,
+        addContext: addContext,
         addUpdateCallback: addUpdateCallback,
         calcRatio: calcRatio,
         debounce: debounce,

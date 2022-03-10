@@ -64,19 +64,6 @@ function initBannerData() {
 function loadPolicy(callback) {
 
     if (! m_policy.loaded) {
-        var policyUrl = "/system/modules/alkacon.mercury.template/elements/privacy-policy.jsp";
-        var policyPath = window.atob(m_bannerData.policy);
-
-        try {
-            var hostUrl = new URL(policyPath);
-            var policyHost = hostUrl.protocol + "//" + hostUrl.host;
-            policyUrl = policyHost + policyUrl;
-            policyPath = hostUrl.pathname;
-            m_bannerData.policy = window.btoa(policyPath);
-            if (DEBUG) console.info("PrivacyPolicy: policyHost=" + policyHost + " policyPath=" + policyPath);
-        } catch (err) {
-            // assuming policyPath omits the server name and starts and with "/"
-        }
 
         var params =
             "policy=" + encodeURIComponent(m_bannerData.policy) + "&" +
@@ -88,6 +75,7 @@ function loadPolicy(callback) {
             params += "&display=" + m_bannerData.display;
         }
 
+        var policyUrl = Mercury.addContext("/system/modules/alkacon.mercury.template/elements/privacy-policy.jsp");
         var policyLink = policyUrl + '?' + params;
 
         if (DEBUG) console.info("PrivacyPolicy: Loading policy data from " + policyLink);

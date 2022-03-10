@@ -24,7 +24,7 @@
 <c:forEach var="plugin" items="${plugins}">
     <c:choose>
         <c:when test="${type eq 'jsp-nocache'}">
-            <cms:include file="${plugin.link}" cacheable="false" />
+            <cms:include file="${plugin.path}" cacheable="false" />
         </c:when>
         <c:when test="${type eq 'css'}">
             <link href="${plugin.link}" rel="stylesheet"><mercury:nl />

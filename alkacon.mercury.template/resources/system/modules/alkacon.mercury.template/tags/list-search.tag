@@ -70,7 +70,11 @@
     "pagenavlength" : 5,
     "additionalrequestparams" : [
         { "param" : "calendarday", "solrquery" : "fq={!tag%3Dinstancedaterange}${instancedaterangefield}:([%(value)+TO+%(value)%2B1DAYS])" }
-    ]
+    ],
+    "geofilter" : {
+        "coordinates": "${param.coordinates}",
+        "radius" : "${param.radius}"
+    }
 }
 </c:set>
 

@@ -45,7 +45,7 @@
 
 <c:set var="multiDay" value="${not empty multiDayRangeFacet and multiDayRangeFacet eq true}" />
 <c:set var="categoryFacetField">category_exact</c:set>
-<c:set var="rangeFacetField">instancedaterange</c:set>
+<c:set var="rangeFacetField">instancedatefacet</c:set>
 <c:set var="folderFacetField">parent-folders</c:set>
 <c:choose>
     <c:when test="${multiDay eq true}">

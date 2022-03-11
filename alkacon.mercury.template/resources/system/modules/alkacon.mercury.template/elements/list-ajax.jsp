@@ -47,7 +47,7 @@
     <c:set var="listTag" value="${empty settings.listTag ? 'ul' : settings.listTag}" />
     <c:set var="count">${settings.itemsPerPage}</c:set>
     <c:set var="loadAll" value="${settings.loadAll eq 'true'}" />
-    <c:set var="multiDay" value="${settings.multiDay eq 'true'}" />
+    <c:set var="multiDay" value="${conf.value['FilterMultiDay'] eq 'true'}" />
 
     ${'<'}${listTag} class="list-entries ${settings.listWrapper}${'\">'}
         <%-- ####### List entries ######## --%>

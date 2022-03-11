@@ -169,7 +169,7 @@ function setStyle(jQ, apiKey, showMapFunction){
         m_style = Mercury.getInfo("osmStyleUrl")
         showMapFunction();
     } else {
-        jQ.getJSON("/system/modules/alkacon.mercury.template/osmviewer/style.json",function (data){
+        jQ.getJSON(Mercury.addContext("/system/modules/alkacon.mercury.template/osmviewer/style.json"),function (data){
             data["sprite"]=window.location.protocol+"//"+window.location.host+Mercury.getInfo("osmSpriteUrl");
             var styleStr = JSON.stringify(data);
             m_style = JSON.parse(styleStr.replace(new RegExp("maptiler-api-key", 'g'),apiKey).replace(new RegExp('#b31b34','g'),Mercury.getThemeJSON("main-theme", [])));

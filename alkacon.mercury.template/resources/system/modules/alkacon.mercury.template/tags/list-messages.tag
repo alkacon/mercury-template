@@ -7,6 +7,8 @@
 
 <%@ attribute name="type" type="java.lang.String" required="true"
     description="The resoure type to create using the cms:edit tag." %>
+<%@ attribute name="uploadFolder" type="java.lang.String" required="false"
+    description="The upload folder to use for binary files." %>
 <%@ attribute name="defaultCats" type="java.lang.String" required="false"
     description="The categories that should automatically be assigned to a newly created resource.
         This can be a comma-separated list of category paths (NOT starting with slash), site paths or root paths." %>
@@ -24,7 +26,7 @@
     <fmt:setLocale value="${cms.workplaceLocale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">
 
-    <cms:edit createType="${type}" create="true" postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${defaultCats}" >
+    <cms:edit createType="${type}" create="true" postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${defaultCats}" uploadFolder="${uploadFolder}">
         <mercury:alert type="warning">
             <jsp:attribute name="head">
                 <fmt:message key="msg.page.list.empty" />

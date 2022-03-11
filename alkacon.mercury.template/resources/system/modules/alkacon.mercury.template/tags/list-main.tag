@@ -113,6 +113,7 @@
             create="true"
             delete="true"
             postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${categories}"
+			uploadFolder="${cms.getBinaryUploadFolder(config)}"
             >
 
             <c:forEach var="parameter" items="${settings}">

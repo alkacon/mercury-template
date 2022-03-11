@@ -220,7 +220,7 @@
                 <c:forEach var="type" items="${content.valueList.TypesToCollect}">
                     <c:set var="createType">${fn:substringBefore(type.stringValue, ':')}</c:set>
                     <div class="list-editbox" style="display: none;" ><%----%>
-                        <mercury:list-messages type="${createType}" defaultCats="${content.value.Category}" />
+                        <mercury:list-messages type="${createType}" defaultCats="${content.value.Category}" uploadFolder="${cms.getBinaryUploadFolder(content)}" />
                     </div><%----%>
                     <mercury:nl />
                 </c:forEach>

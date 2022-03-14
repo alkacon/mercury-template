@@ -48,7 +48,7 @@
                 <c:set var="mobileHeaderPlugin" value="${mobileHeaderPlugins.get(0)}" />
                 <c:set var="reqScopeLogoContent" value="${logoContent}" scope="request" />
                 <c:set var="reqScopeSetting" value="${setting}" scope="request" />
-                <cms:include file="${mobileHeaderPlugin.link}" cacheable="false" />
+                <cms:include file="${mobileHeaderPlugin.path}" cacheable="false" />
             </c:when>
             <c:otherwise>
                 <div class="nav-main-mobile-logo"><%----%>
@@ -82,7 +82,7 @@
                             <c:set var="metaLinksPlugin" value="${metaLinksPlugins.get(0)}" />
                             <c:set var="reqScopeMetaLinksContent" value="${metaLinksContent}" scope="request" />
                             <c:set var="reqScopeSetting" value="${setting}" scope="request" />
-                            <cms:include file="${metaLinksPlugin.link}" cacheable="false" />
+                            <cms:include file="${metaLinksPlugin.path}" cacheable="false" />
                         </c:when>
                         <c:otherwise>
                             <li id="nav-main-addition" class="expand hidden-lg hidden-xl"><%----%>

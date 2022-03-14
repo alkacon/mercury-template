@@ -2337,6 +2337,45 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[buttonText.contact]]></IncludeName>
+      <PropertyName><![CDATA[buttonText]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.buttonText)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.buttonText.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTitle.contact]]></IncludeName>
+      <PropertyName><![CDATA[showTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showTitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showTitle.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showLink.contact]]></IncludeName>
+      <PropertyName><![CDATA[showLink]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showLink)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showLink.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkTarget.contact]]></IncludeName>
+      <PropertyName><![CDATA[linkTarget]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.linkTarget)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.linkTarget.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[content]]></Default>
+      <WidgetConfig><![CDATA[
+        content:%(key.msg.setting.contact.linkTarget.content)|
+        detail:%(key.msg.setting.contact.linkTarget.detail)|
+        none:%(key.msg.setting.contact.linkTarget.none)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[labels.contact]]></IncludeName>
       <PropertyName><![CDATA[labels]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.labels)]]></DisplayName>

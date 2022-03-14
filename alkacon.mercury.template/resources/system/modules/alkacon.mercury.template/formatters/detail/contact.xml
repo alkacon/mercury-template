@@ -2,12 +2,14 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-person.formatter.element)]]></NiceName>
-    <Type><![CDATA[m-person]]></Type>
-    <Key><![CDATA[m/contact/person]]></Key>
+    <NiceName><![CDATA[%(key.type.m-contact.formatter.detail)]]></NiceName>
+    <Type><![CDATA[m-contact]]></Type>
+    <Key><![CDATA[m/detail/contact]]></Key>
+    <KeyAlias><![CDATA[m/element/contact]]></KeyAlias>
+    <KeyAlias><![CDATA[m/contact/contact]]></KeyAlias>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/contact/contact.jsp]]></target>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/contact.jsp]]></target>
         <uuid>bea1f1dd-7411-4ac6-a40b-e581d88bed99</uuid>
       </link>
     </Jsp>
@@ -16,7 +18,6 @@
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
         <ContainerType><![CDATA[contact]]></ContainerType>
-        <ContainerType><![CDATA[person]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>
@@ -29,10 +30,6 @@
         <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
       </link>
     </IncludeSettings>
-    <Setting>
-      <IncludeName><![CDATA[schemaKind.contact]]></IncludeName>
-      <Default><![CDATA[pers]]></Default>
-    </Setting>
     <Setting>
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
@@ -76,10 +73,13 @@
       <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
+      <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPhone.contact]]></IncludeName>

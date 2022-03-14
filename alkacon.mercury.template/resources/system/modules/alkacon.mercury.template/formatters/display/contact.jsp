@@ -23,26 +23,29 @@
 
 <c:set var="showOrganization"       value="${setting.showOrganization.toBoolean}" />
 <c:set var="showPosition"           value="${setting.showPosition.toBoolean}" />
-
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
+<c:set var="showTitle"              value="${setting.showTitle.toBoolean}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
-<c:set var="showAddInfo"            value="${setting.showAddInfo.toBoolean}" />
 <c:set var="showPhone"              value="${setting.showPhone.toBoolean}" />
 <c:set var="showWebsite"            value="${setting.showWebsite.toBoolean}" />
 <c:set var="showEmail"              value="${setting.showEmail.toBoolean}" />
 <c:set var="showVcard"              value="${setting.showVcard.toBoolean}" />
 
-<c:set var="hsizeTitle"             value="${setHsize}" />
-<c:set var="hsize"                  value="${showAddInfo and title.isSet ? hsizeTitle + 1 : hsizeTitle}" />
-
+<c:set var="linkTarget"             value="${setting.linkTarget.toString}" />
 <c:set var="labelOption"            value="${setting.labels.toString}" />
 <c:set var="websiteNewWin"          value="${setting.websiteNewWin.toBoolean}" />
+
+<c:set var="hsizeTitle"             value="${setHsize}" />
+<c:set var="hsize"                  value="${showTitle and title.isSet ? hsizeTitle + 1 : hsizeTitle}" />
+
 
 <mercury:contact-vars
     content="${content}"
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
+
+<c:set var="linkTarget"             value="${(setLinkOption ne 'none') and (linkTarget ne 'none') ? (linkTarget eq 'detail' ? linkToDetail : value.Link) : null}" />
 
 <mercury:teaser-piece
     cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapper}${setEffect}"
@@ -53,8 +56,9 @@
     sizeMobile="${setSizeMobile}"
 
     teaserType="${displayType}"
-    link="${showAddInfo and (setting.linkOption.toString ne 'none') ? value.Link : null}"
+    link="${linkTarget}"
     linkOption="${setLinkOption}"
+    buttonText="${setButtonText}"
     hsize="${hsizeTitle}">
 
     <jsp:attribute name="markupVisual">

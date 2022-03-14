@@ -359,7 +359,7 @@
                         </mercury:icon-prefix>
                     </c:if>
                     <span><%----%>
-                         <mercury:link link="${data.value.Website}" attr="${linkattr}" newWin="${websiteNewWin}" >${websiteURL}</mercury:link><%----%>
+                         <mercury:link link="${data.value.Website}" attr="${linkattr}" newWin="${websiteNewWin}">${websiteURL}</mercury:link><%----%>
                     </span><%----%>
                 </div><%----%>
                 <c:set var="linkattr" value="" />
@@ -371,7 +371,7 @@
 
             <c:if test="${showLinkAsText}">
                 <div class="contactlink"><%----%>
-                    <mercury:link link="${link}" attr="${linkattr}" newWin="${websiteNewWin}" />
+                    <mercury:link link="${link}" css="piece-text-link" attr="${linkattr}" newWin="${websiteNewWin}" />
                 </div><%----%>
             </c:if>
 

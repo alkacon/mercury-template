@@ -52,10 +52,16 @@
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkTarget.contact]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[buttonText.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[labels.contact]]></IncludeName>
@@ -73,7 +79,7 @@
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
+      <IncludeName><![CDATA[showTitle.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>

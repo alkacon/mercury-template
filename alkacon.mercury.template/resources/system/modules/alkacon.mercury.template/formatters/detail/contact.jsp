@@ -23,8 +23,9 @@
 <c:set var="showPosition"           value="${setting.showPosition.toBoolean}" />
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
-<c:set var="showAddInfo"            value="${setting.showAddInfo.useDefault('true').toBoolean}" />
+<c:set var="showTitle"              value="${setting.showTitle.toBoolean}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
+<c:set var="showLink"               value="${setting.showLink.toBoolean}" />
 <c:set var="showPhone"              value="${setting.showPhone.toBoolean}" />
 <c:set var="showWebsite"            value="${setting.showWebsite.toBoolean}" />
 <c:set var="showEmail"              value="${setting.showEmail.toBoolean}" />
@@ -44,7 +45,7 @@
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact ' : ''}" />
 
 <c:set var="hsizeTitle"             value="${hsize}" />
-<c:set var="hsize"                  value="${showAddInfo and value.Title.isSet ? hsize + 1 : hsize}" />
+<c:set var="hsize"                  value="${showTitle and value.Title.isSet ? hsize + 1 : hsize}" />
 
 
 <mercury:contact-vars
@@ -57,7 +58,7 @@
     cssWrapper="element type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     pieceLayout="${pieceLayout}"
     attrWrapper="${kindAttr}"
-    heading="${showAddInfo ? value.Title : null}"
+    heading="${showTitle ? value.Title : null}"
     hsize="${hsizeTitle}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
@@ -71,7 +72,7 @@
                 name="${valName}"
                 organization="${valOrganization}"
                 imageRatio="${imageRatio}"
-                link="${showAddInfo ? value.Link : null}"
+                link="${showLink ? value.Link : null}"
                 linkOption="${linkOption eq 'imageOverlay' ? 'imageOverlay' : ''}"
                 hsize="${hsize}"
                 showImage="${true}"
@@ -84,7 +85,7 @@
     <jsp:attribute name="markupText">
         <mercury:contact
             kind="${valKind}"
-            link="${value.Link}"
+            link="${showLink ? value.Link : null}"
             name="${valName}"
             position="${valPosition}"
             organization="${valOrganization}"

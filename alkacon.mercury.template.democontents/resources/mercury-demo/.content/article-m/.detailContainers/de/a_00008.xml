@@ -37,7 +37,7 @@
       </Elements>
       <Elements>
         <ElementInstanceId>4d975d9c-ef6c-11e5-9b44-0242ac11002b</ElementInstanceId>
-        <FormatterKey>m/contact/map-osm</FormatterKey>
+        <FormatterKey>m/element/map-osm</FormatterKey>
         <Uri>
           <link type="STRONG">
             <target><![CDATA[/sites/default/mercury-demo/.content/map-m/m_00004.xml]]></target>

@@ -177,6 +177,15 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     }
 
     /**
+     * @see org.opencms.ugc.CmsUgcConfiguration#getForceUserSubstitution()
+     */
+    @Override
+    public boolean getForceUserSubstitution() {
+
+        return true;
+    }
+
+    /**
      * Gets the number of days to keep the form data after the event (if null, keep indefinitely).
      *
      * @return the number of days to keep the data

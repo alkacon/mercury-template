@@ -14,6 +14,7 @@
         <xsd:sequence>
 
            <xsd:element name="UserForGuest" type="OpenCmsString" />
+           <xsd:element name="GuestsOnly" type="OpenCmsBoolean" minOccurs="0" maxOccurs="1" />
            <xsd:element name="ProjectGroup" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
            <xsd:element name="ContentPath" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
            <!-- xsd:element name="UploadPath" type="OpenCmsVfsFile" minOccurs="0" maxOccurs="1" / -->
@@ -40,6 +41,12 @@
                     <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.UserForGuest.help)]]></Description>
                     <Default>%(currentuser.name)</Default>
                     <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>GuestsOnly</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.GuestsOnly)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.GuestsOnly.help)]]></Description>
+                    <Default><![CDATA[false]]></Default>
                 </Setting>
                 <Setting>
                     <PropertyName>ProjectGroup</PropertyName>

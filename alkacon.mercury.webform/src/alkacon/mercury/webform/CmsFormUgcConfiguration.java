@@ -54,10 +54,13 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
 
     /** The title property for datasets which can contain macros for form fields. */
     private String m_datasetTitle;
+
     /** Number of days to keep the form data - if null, keep indefinitely. */
     private Integer m_keepDays;
+
     /** The maximally allowed submissions without waitlist. */
     private Integer m_maxRegularDataSets;
+
     /** The maximal number of additional data sets accepted on a waitlist. */
     private int m_maxWaitlistDataSets;
 
@@ -73,11 +76,15 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     /** Flag, indicating if permissions for the folder should be set. */
     private boolean m_setFolderPermissions;
 
+    /** Flag, indicating if only for guest users, the configured user shall be used to write form data contents. */
+    private boolean m_guestsOnly;
+
     /**
      * Creates a new form configuration.
      *
      * @param id the id for the form configuration
-     * @param userForGuests the user to use for VFS operations caused by guests who submit the XML content form
+     * @param userForSubmitter the user to use for VFS operations instead of the submitting user
+     * @param guestsOnly flag indicating whether <code>userForSubmitter</code> is relevant for guest users only
      * @param projectGroup the group to be used as the manager group for projects based on this configuration
      * @param contentFolderRootPath the root path of the folder for XML contents.
      * @param maxRegularDataSets the maximally allowed submissions without waitlist.
@@ -89,7 +96,8 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
      */
     public CmsFormUgcConfiguration(
         CmsUUID id,
-        Optional<CmsUser> userForGuests,
+        Optional<CmsUser> userForSubmitter,
+        Optional<Boolean> guestsOnly,
         CmsGroup projectGroup,
         String contentFolderRootPath,
         Optional<Integer> maxRegularDataSets,
@@ -101,7 +109,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
 
         super(
             id,
-            userForGuests,
+            userForSubmitter,
             projectGroup,
             CONTENT_TYPE_FORM_DATA,
             null,
@@ -122,6 +130,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         m_keepDays = keepDays;
         m_contentFolderRootPath = contentFolderRootPath;
         m_setFolderPermissions = setFolderPermissions;
+        m_guestsOnly = guestsOnly.isPresent() ? guestsOnly.get().booleanValue() : false;
         initContentFolderIfPresent();
     }
 
@@ -182,7 +191,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     @Override
     public boolean getForceUserSubstitution() {
 
-        return true;
+        return !m_guestsOnly;
     }
 
     /**

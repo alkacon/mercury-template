@@ -48,6 +48,9 @@ public class CmsFormUgcConfigurationReader {
     public static final String N_DB_CONFIG = "DBConfig";
 
     /** XML content value name. */
+    public static final String N_GUESTS_ONLY = "GuestsOnly";
+
+    /** XML content value name. */
     public static final String N_MAX_REGULAR_DATASETS = "MaxRegularDatasets";
 
     /** XML content value name. */
@@ -138,6 +141,7 @@ public class CmsFormUgcConfigurationReader {
             Optional<Integer> maxWaitlistDataSets = getIntValue(pathPrefix + N_NUM_WAITLIST_DATASETS);
             String userForGuestStr = m_formConfigParser.getConfigurationValue(pathPrefix + N_USER_FOR_GUEST, null);
             Optional<CmsUser> userForGuest = Optional.absent();
+            Optional<Boolean> guestsOnly = getBooleanValue(pathPrefix + N_GUESTS_ONLY);
             String projectGroupStr = m_formConfigParser.getConfigurationValue(pathPrefix + N_PROJECT_GROUP, null);
             if (userForGuestStr != null) {
                 userForGuest = Optional.of(m_adminCms.readUser(userForGuestStr.trim()));
@@ -173,6 +177,7 @@ public class CmsFormUgcConfigurationReader {
             CmsFormUgcConfiguration result = new CmsFormUgcConfiguration(
                 id,
                 userForGuest,
+                guestsOnly,
                 null != projectGroup
                 ? projectGroup
                 : m_adminCms.readGroup(OpenCms.getDefaultUsers().getGroupAdministrators()),
@@ -206,6 +211,26 @@ public class CmsFormUgcConfigurationReader {
 
         return readConfiguration(cmsObject, formConfig, null, dynamicConfig);
 
+    }
+
+    /**
+     * Parses an optional boolean value.<p>
+     *
+     * @param path the xpath of the content field (without prefix)
+     * @return the optional integer value in that field
+     */
+    private Optional<Boolean> getBooleanValue(String path) {
+
+        String stringValue = m_formConfigParser.getConfigurationValue(path, null);
+        if (stringValue == null) {
+            return Optional.absent();
+        } else {
+            try {
+                return Optional.<Boolean> of(Boolean.valueOf(stringValue.trim()));
+            } catch (NumberFormatException e) {
+                throw new NumberFormatException("Could not read a boolean from " + path + " ,value= " + stringValue);
+            }
+        }
     }
 
     /**

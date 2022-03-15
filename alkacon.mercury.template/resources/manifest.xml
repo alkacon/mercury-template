@@ -7793,6 +7793,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/list-types.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/list-types.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>d64a6f5f-a3ab-11ec-a8d2-6777b3226fc3</uuidstructure>
+			<uuidresource>d64a6f60-a3ab-11ec-a8d2-6777b3226fc3</uuidresource>
+			<datecreated>Mon, 14 Mar 2022 15:31:37 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Finds those types from a list configuration for which the list-messages tag should be called. ]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/load-plugins.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/load-plugins.tag</destination>
 			<type>jsp</type>

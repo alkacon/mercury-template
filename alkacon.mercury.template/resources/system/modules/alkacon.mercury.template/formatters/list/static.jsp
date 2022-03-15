@@ -58,8 +58,8 @@
 
             <%-- ####### Boxes to create new entries in case of empty result ######## --%>
             <c:if test="${cms.isEditMode and (search.numFound == 0)}">
-                <c:forEach var="type" items="${content.valueList.TypesToCollect}">
-                    <c:set var="createType">${fn:substringBefore(type.stringValue, ':')}</c:set>
+                <mercury:list-types types="${content.valueList.TypesToCollect}" var="types" uploadFolder="${cms.getBinaryUploadFolder(content)}" />
+                <c:forEach var="createType" items="${types}">
                     <mercury:list-messages type="${createType}" defaultCats="${content.value.Category}"  uploadFolder="${cms.getBinaryUploadFolder(content)}"/>
                 </c:forEach>
             </c:if>

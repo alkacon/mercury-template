@@ -30,6 +30,12 @@
         }
     }
 
+    &:not(.visible) {
+        .mapbuttons {
+            display: none;
+        }
+    }
+
     .presized {
         &:not(.enlarged) {
             position: relative;

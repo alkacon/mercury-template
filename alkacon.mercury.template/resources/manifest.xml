@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>12.0.130</version>
+		<version>12.0.131</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7803,7 +7803,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Finds those types from a list configuration for which the list-messages tag should be called. ]]></value>
+					<value><![CDATA[Finds those types from a list configuration for which the list-messages tag should be called.]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

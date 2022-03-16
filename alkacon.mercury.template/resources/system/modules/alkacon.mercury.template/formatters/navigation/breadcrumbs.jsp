@@ -40,14 +40,38 @@
                         <c:if test="${
                             ((breadcrumbsIncludeHidden or (status.last and not cms.detailRequest)) and (navElem.navPosition > 0))
                             or (navElem.info ne 'ignoreInDefaultNav')}">
+                            <c:set var="navImage" value="${navElem.navImage}" />
                             <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
-                                ? navElem.title : navElem.navText}" />
-                            <c:if test="${!empty navText}">
+                                ? (empty navElem.navImage ? navElem.title : null) : navElem.navText}" />
+                            <c:if test="${(not empty navText) or (not empty navImage)}">
                                 <c:set var="navLink"><cms:link>${navElem.resourceName}</cms:link></c:set>
                                 <c:if test="${breadcrumbsFullPath or (navLink ne lastNavLink)}">
                                     <c:set var="lastNavLink" value="${navLink}" />
                                     <c:out value='<li><a href="${navLink}">' escapeXml="false" />
-                                    <c:out value='${navText}' escapeXml="true" />
+                                    <c:if test="${not empty navImage}">
+                                        <c:set var="navImageMarkup">
+                                            <c:choose>
+                                                <c:when test="${fn:startsWith(navImage, '/')}">
+                                                    <img src="<cms:link>${navImage}</cms:link>" height="12" width="12" /><%----%>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <i class="fa fa-<c:out value='${navImage}' escapeXml="true" />"></i><%----%>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:set>
+                                    </c:if>
+                                    <c:choose>
+                                        <c:when test="${empty navImage}">
+                                            <c:out value='${navText}' escapeXml="true" />
+                                        </c:when>
+                                        <c:when test="${empty navText}">
+                                            ${navImageMarkup}
+                                        </c:when>
+                                        <c:otherwise>
+                                            ${navImageMarkup}
+                                            <span><c:out value='${navText}' escapeXml="true" /></span>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <c:out value='</a></li>' escapeXml="false" />
                                     <mercury:nl />
 

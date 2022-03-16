@@ -508,6 +508,7 @@ $nav-breadcrumb-padding:            $default-margin-verysmall 0 0 0 !default; //
 $nav-breadcrumb-text-color:         check-text-color($nav-breadcrumb-bg-color, $nav-header-text) !default; // text color of breadcrumbs
 $nav-breadcrumb-text-hover-color:   check-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
 $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs
+$nav-breadcrumb-image-size:         round($nav-breadcrumb-font-size * 80) * 0.01 !default; // image height / width for the breadcrumbs
 $nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
 $nav-breadcrumb-separator-color:    conditional-value($nav-breadcrumb-bg-color == none, $grey, $nav-breadcrumb-text-color) !default; // color of breadcrumbs separator
 $nav-breadcrumb-separator-font:     ForkAwesome !default; // font-family for breadcrumbs separator

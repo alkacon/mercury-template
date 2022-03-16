@@ -90,6 +90,10 @@ function getFeatureGraphic(mapId) {
 function showSingleMap(mapData) {
 
     if (!m_maps[mapData.id]) {
+
+        var $typeParent = jQ("#" + mapData.id).closest("*[class*='type-map']");
+        $typeParent.addClass("visible");
+
         m_maps[mapData.id] = new mapgl.Map({
             container: mapData.id,
             style: m_style,

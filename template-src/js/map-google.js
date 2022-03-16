@@ -267,6 +267,9 @@ function showSingleMap(mapData){
         maxZoom: 18
     }
 
+    var $typeParent = jQ("#" + mapData.id).closest("*[class*='type-map']");
+    $typeParent.addClass("visible");
+
     // create the map
     var map = new google.maps.Map(document.getElementById(mapId), mapOptions);
 
@@ -287,7 +290,7 @@ function showSingleMap(mapData){
             var point = mapData.markers[p];
             var group = point.group;
             if (group === "centerpoint") {
-                if (DEBUG) console.info("OSM new center point added.");
+                if (DEBUG) console.info("GoogleMap new center point added.");
                 groups[group] = getCenterPointGraphic();
             } else if (typeof groups[group] === "undefined" ) {
                 // Array? Object?

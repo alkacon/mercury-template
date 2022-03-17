@@ -30,9 +30,11 @@
         }
     }
 
-    &:not(.visible) {
-        .mapbuttons {
-            display: none;
+    @if ($map-hide-buttons-if-not-visible) {
+        &:not(.visible) {
+            .mapbuttons {
+                display: none;
+            }
         }
     }
 

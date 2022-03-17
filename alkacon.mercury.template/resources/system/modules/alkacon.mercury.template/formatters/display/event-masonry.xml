@@ -65,16 +65,16 @@
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showButtonOnlyForBooking.default]]></IncludeName>

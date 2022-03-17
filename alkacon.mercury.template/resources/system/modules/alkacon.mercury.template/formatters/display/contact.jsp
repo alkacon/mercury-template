@@ -50,7 +50,7 @@
 <mercury:teaser-piece
     cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapper}${setEffect}"
     attrWrapper="${kind}"
-    headline="${showAddInfo ? title : null}"
+    headline="${showTitle ? title : null}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"

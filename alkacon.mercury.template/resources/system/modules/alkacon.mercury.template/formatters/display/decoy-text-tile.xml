@@ -24,7 +24,6 @@
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
-    <Preview>true</Preview>
     <IncludeSettings>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
@@ -63,10 +62,10 @@
       <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[effect.tile]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[buttonText.default]]></IncludeName>

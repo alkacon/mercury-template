@@ -2354,15 +2354,6 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showLink.contact]]></IncludeName>
-      <PropertyName><![CDATA[showLink]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.contact.showLink)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.contact.showLink.help)]]></Description>
-      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[true]]></Default>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[linkTarget.contact]]></IncludeName>
       <PropertyName><![CDATA[linkTarget]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.linkTarget)]]></DisplayName>

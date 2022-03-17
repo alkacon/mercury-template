@@ -69,7 +69,7 @@
     "pagesize" : "${pageSize}",
     "pagenavlength" : 5,
     "additionalrequestparams" : [
-        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dinstancedaterange}${instancedaterangefield}:([%(value)+TO+%(value)%2B1DAYS])" }
+        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dcalendarday}${instancedaterangefield}:(%(value))" }
     ],
     "geofilter" : {
         "coordinates": "${param.coordinates}",

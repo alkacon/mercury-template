@@ -94,8 +94,8 @@
 
     @if $use-hyphens {
         hyphens: auto;
-        word-break: normal;
-        overflow-wrap: break-word;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
     @if ($nav-side-boxed) {

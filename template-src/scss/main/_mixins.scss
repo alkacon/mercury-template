@@ -66,6 +66,8 @@
     z-index: #{$overflow-z-index + 2};
     box-shadow: none;
     overflow-wrap: anywhere;
+    word-break: break-word;
+
     hyphens: auto;
 }
 
@@ -461,18 +463,21 @@
     @if ($piece-hyphens-headings) {
         @if ($piece-hyphens-headings-xs and $piece-hyphens-headings-md) {
             hyphens: auto;
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         } @else {
             @if ($piece-hyphens-headings-xs) {
                 @include media-breakpoint-down(sm) {
                     hyphens: auto;
-                    overflow-wrap: break-word;
+                    overflow-wrap: anywhere;
+                    word-break: break-word;
                 }
             }
             @if ($piece-hyphens-headings-md) {
                 @include media-breakpoint-up(md) {
                     hyphens: auto;
-                    overflow-wrap: break-word;
+                    overflow-wrap: anywhere;
+                    word-break: break-word;
                 }
             }
         }
@@ -487,18 +492,21 @@
     @if ($piece-hyphens-text) {
         @if ($piece-hyphens-text-xs and $piece-hyphens-text-md) {
             hyphens: auto;
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         } @else {
             @if ($piece-hyphens-text-xs) {
                 @include media-breakpoint-down(sm) {
                     hyphens: auto;
-                    overflow-wrap: break-word;
+                    overflow-wrap: anywhere;
+                    word-break: break-word;
                 }
             }
             @if ($piece-hyphens-text-md) {
                 @include media-breakpoint-up(md) {
                     hyphens: auto;
-                    overflow-wrap: break-word;
+                    overflow-wrap: anywhere;
+                    word-break: break-word;
                 }
             }
         }

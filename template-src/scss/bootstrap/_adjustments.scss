@@ -25,6 +25,16 @@
   }
 }
 
+@mixin responsive-invisibility-showineditor($parent) {
+  html:not(.opencms-page-editor) #{$parent} {
+    display: none !important;
+  }
+  html.opencms-page-editor #{$parent} {
+    opacity: .5;
+    background-image: $disabled-bg;
+  }
+}
+
 @mixin responsive-visibility($parent) {
   #{$parent} {
     display: block !important;
@@ -40,50 +50,61 @@
 @include media-breakpoint-down(xs) {
   @include responsive-visibility('.visible-xs');
   @include responsive-invisibility('.hidden-xs');
+  @include responsive-invisibility-showineditor('.hide-xs');
 }
 
 @include media-breakpoint-down(sm) {
   @include responsive-invisibility('.hidden-xs-sm');
+  @include responsive-invisibility-showineditor('.hide-xs-sm');
 }
 
 @include media-breakpoint-down(md) {
   @include responsive-invisibility('.hidden-xs-sm-md');
+  @include responsive-invisibility-showineditor('.hide-xs-sm-md');
 }
 
 @include media-breakpoint-down(lg) {
   @include responsive-invisibility('.hidden-xs-sm-md-lg');
+  @include responsive-invisibility-showineditor('.hide-xs-sm-md-lg');
 }
 
 @include media-breakpoint-only(sm) {
   @include responsive-visibility('.visible-sm');
   @include responsive-invisibility('.hidden-sm');
+  @include responsive-invisibility-showineditor('.hide-sm');
 }
 
 @include media-breakpoint-only(md) {
   @include responsive-visibility('.visible-md');
   @include responsive-invisibility('.hidden-md');
+  @include responsive-invisibility-showineditor('.hide-md');
 }
 
 @include media-breakpoint-only(lg) {
   @include responsive-visibility('.visible-lg');
   @include responsive-invisibility('.hidden-lg');
+  @include responsive-invisibility-showineditor('.hide-lg');
 }
 
 @include media-breakpoint-up(sm) {
   @include responsive-invisibility('.hidden-sm-md-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-sm-lg-xl');
 }
 
 @include media-breakpoint-up(md) {
   @include responsive-invisibility('.hidden-md-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-md-lg-xl');
 }
 
 @include media-breakpoint-up(lg) {
   @include responsive-invisibility('.hidden-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-lg-xl');
 }
 
 @include media-breakpoint-up(xl) {
   @include responsive-visibility('.visible-xl');
   @include responsive-invisibility('.hidden-xl');
+  @include responsive-invisibility-showineditor('.hide-xl');
 }
 
 

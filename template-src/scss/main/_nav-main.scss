@@ -40,7 +40,8 @@
 
         @if $nav-hyphens {
             hyphens: auto;
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         li {
@@ -757,7 +758,8 @@
 
         @if $nav-hyphens {
             hyphens: auto;
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         @if ($nav-header-animate-menu == "move") {

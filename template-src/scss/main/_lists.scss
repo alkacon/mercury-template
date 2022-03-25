@@ -361,7 +361,8 @@
     .dl-content {
         hyphens: auto;
         overflow: hidden;
-        overflow-wrap: break-word;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
     .dl-copy {

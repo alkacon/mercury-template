@@ -61,7 +61,8 @@
 @if $nav-hyphens {
     .type-linksequence {
         hyphens: auto;
-        overflow-wrap: break-word;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 }
 

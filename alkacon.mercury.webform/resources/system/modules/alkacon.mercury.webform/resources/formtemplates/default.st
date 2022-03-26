@@ -331,7 +331,7 @@ $!      !$$if(field.parameters.icon)$
 $!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>
 $!      !$$endif$
 $!  !$$endif$
-$!  !$<textarea cols="5" rows="5" id="$field.name$" name="$field.name$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$ $attributes$>$field.valueEscaped$</textarea>
+$!  !$<textarea cols="50" rows="$if(field.parameters.rows)$$field.parameters.rows$$else$5$endif$" id="$field.name$" name="$field.name$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$ $attributes$>$field.valueEscaped$</textarea>
 </div>
 $if(errormessage)$
 $!  !$<div class="note note-error" tabindex="0">$errormessage$</div>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>12.0.92</version>
+		<version>12.0.1</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -151,6 +151,30 @@
 			<uuidstructure>2bb89d39-fea8-11e8-aee0-0242ac11002b</uuidstructure>
 			<uuidresource>2bb89d3a-fea8-11e8-aee0-0242ac11002b</uuidresource>
 			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/theme-burger.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/theme-burger.min.css</destination>
+			<type>plain</type>
+			<uuidstructure>662c131c-ab5f-11ec-bba0-0242ac11002b</uuidstructure>
+			<uuidresource>662c131d-ab5f-11ec-bba0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 24 Mar 2022 10:44:36 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/theme-burger.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/theme-burger.min.css.map</destination>
+			<type>plain</type>
+			<uuidstructure>6632a2cf-ab5f-11ec-bba0-0242ac11002b</uuidstructure>
+			<uuidresource>6632a2d0-ab5f-11ec-bba0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 24 Mar 2022 10:44:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

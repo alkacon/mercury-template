@@ -102,6 +102,11 @@
     description="Markup shown for the text if the text is not an XML content value.
     If both attributes 'markupText' and 'text' are provided, only the 'markupText' will be displayed." %>
 
+<%@ attribute name="addHeadingId" type="java.lang.Boolean" required="false"
+    description="Adds an automatically generated ID attribute for the heading, for use in anchor links.
+    The ID attribute will be generated from the provided text, which will be translated according to the configured file name translation rules.
+    The result will also be all lower case." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -173,7 +178,7 @@
         <jsp:attribute name="heading">
             <c:if test="${showHeading}">
                 <mercury:link link="${link}" css="piece-heading-link" test="${linkHeading}" setTitle="true">
-                    <mercury:heading text="${heading}" level="${hsize}" ade="${linkHeading ? false : ade}" css="piece-heading" />
+                    <mercury:heading text="${heading}" level="${hsize}" ade="${linkHeading ? false : ade}" css="piece-heading" addId="${addHeadingId}" />
                 </mercury:link>
             </c:if>
         </jsp:attribute>

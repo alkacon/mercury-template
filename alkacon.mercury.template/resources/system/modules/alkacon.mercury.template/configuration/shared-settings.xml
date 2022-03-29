@@ -85,31 +85,12 @@
        ]]></WidgetConfig>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssVisibility.hidemobile]]></IncludeName>
-      <PropertyName><![CDATA[cssVisibility]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.cssVisibility.help)]]></Description>
-      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
-      <Default><![CDATA[hide-xs-sm-md]]></Default>
-      <WidgetConfig><![CDATA[
-        always:%(key.msg.setting.cssVisibility.always)|
-        hide-xs:%(key.msg.setting.cssVisibility.hidden-xs)|
-        hide-xs-sm:%(key.msg.setting.cssVisibility.hidden-xs-sm)|
-        hide-xs-sm-md:%(key.msg.setting.cssVisibility.hidden-xs-sm-md)|
-        hide-xs-sm-md-lg:%(key.msg.setting.cssVisibility.hidden-xs-sm-md-lg)|
-        hide-sm-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-sm-md-lg-xl)|
-        hide-md-lg-xl:%(key.msg.setting.cssVisibility.hidden-md-lg-xl)|
-        hide-lg-xl:%(key.msg.setting.cssVisibility.hidden-lg-xl)|
-        hide-xl:%(key.msg.setting.cssVisibility.hidden-xl)
-       ]]></WidgetConfig>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[cssVisibility.breadcrumb]]></IncludeName>
       <PropertyName><![CDATA[cssVisibility]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.cssVisibility)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.cssVisibility.help)]]></Description>
       <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
-      <Default><![CDATA[always]]></Default>
+      <Default><![CDATA[hidden-xs-sm-md]]></Default>
       <WidgetConfig><![CDATA[
         always:%(key.msg.setting.cssVisibility.always)|
         hidden-xs:%(key.msg.setting.cssVisibility.hidden-xs)|

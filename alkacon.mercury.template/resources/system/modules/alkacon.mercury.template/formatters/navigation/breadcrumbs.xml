@@ -37,7 +37,7 @@
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssVisibility.hidemobile]]></IncludeName>
+      <IncludeName><![CDATA[cssVisibility.breadcrumb]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[breadcrumbsIncludeHidden.navigation]]></IncludeName>

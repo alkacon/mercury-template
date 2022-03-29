@@ -32,7 +32,7 @@
 
     <%-- If no navigation items are found, no output must be generated online --%>
 
-    <div class="element type-nav-side${setCssWrapperAll}"><%----%>
+    <div class="element type-nav-side pivot${setCssWrapperAll}"><%----%>
     <mercury:nl />
 
         <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />

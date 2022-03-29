@@ -30,12 +30,15 @@
 <c:set var="headingOption"      value="${setting.headingOption.toString}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
+<c:set var="addHeadingId"       value="${cms.sitemapConfig.attribute['template.section.add.heading.id'].toBoolean}" />
+
 <mercury:section-piece
     cssWrapper="element type-section${setCssWrapperAll}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"
     heading="${value.Title}"
+    addHeadingId="${addHeadingId}"
     image="${value.Image}"
     text="${value.Text}"
     link="${value.Link}"

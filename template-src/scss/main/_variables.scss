@@ -343,6 +343,7 @@ $nav-head-border:                   1px solid $nav-border !default; // border be
 $nav-setting-fixheader:             true !default; // Valid: true, false, upscroll
 $nav-bg-active-mobile:              $nav-bg-active !default; // the current page in navigation background color in mobile menu
 $nav-bg-hover-mobile:               $nav-bg-hover !default; // hover background of the nav menu entries for mobile
+$nav-text-mobile:                   $nav-text !default; // color of mobile navigation links
 $nav-text-hover-mobile:             $nav-text-hover !default; // hover text color for mobile navigation
 $nav-text-active-mobile:            $nav-text-active !default; // the current page in navigation text color in mobile
 $nav-font-size:                     14px !default; // font size of dropdown entries and side navigation

@@ -21,10 +21,15 @@
 <c:if test="${(not empty siteRoot) and (siteRoot ne cms.requestContext.siteRoot)}">
     <c:set var="ignore" value="${cms.requestContext.setSiteRoot(siteRoot)}" />
     <c:set var="ignore" value="${cms.controllerCms.requestContext.setSiteRoot(siteRoot)}" />
+    <c:set var="updateCmsObject" value="${true}" />
 </c:if>
 
 <c:if test="${(not empty sitePath) and (sitePath ne cms.requestContext.uri)}">
     <c:set var="ignore" value="${cms.requestContext.setUri(sitePath)}" />
     <c:set var="ignore" value="${cms.controllerCms.requestContext.setUri(sitePath)}" />
+    <c:set var="updateCmsObject" value="${true}" />
 </c:if>
 
+<c:if test="${updateCmsObject}">
+    <c:set var="ignore" value="${cms.updateCmsObject(cms.controllerCms)}" />
+</c:if>

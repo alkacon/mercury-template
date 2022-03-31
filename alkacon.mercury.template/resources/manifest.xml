@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>12.0.145</version>
+		<version>12.0.146</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -375,8 +375,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/elements/contact.vcf</source>
-			<destination>system/modules/alkacon.mercury.template/elements/contact.vcf</destination>
+			<source>system/modules/alkacon.mercury.template/elements/contact-vcf.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/elements/contact-vcf.jsp</destination>
 			<type>jsp</type>
 			<uuidstructure>c3d5a1fd-490f-4076-aae0-c5430aea4a4a</uuidstructure>
 			<uuidresource>27133f3f-0873-4c13-bfbc-d96b8def4d47</uuidresource>

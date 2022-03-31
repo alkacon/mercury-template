@@ -377,7 +377,7 @@
 
             <c:if test="${showVcard}">
                 <div class="vcard"><%----%>
-                    <a href="<cms:link>/system/modules/alkacon.mercury.template/elements/contact.vcf?id=${cms.element.id}</cms:link>"><%----%>
+                    <a href="<cms:link>/system/modules/alkacon.mercury.template/elements/contact-vcf.jsp?id=${cms.element.id}</cms:link>"><%----%>
                         <fmt:message key="msg.page.contact.vcard.download"/>
                     </a><%----%>
                 </div><%----%>

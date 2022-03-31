@@ -8,23 +8,27 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="uid" value="${cms:convertUUID(param.id)}" />
-<c:set var="value" value="${cms.vfs.xml[uid].value}" />
+<c:set var="content" value="${cms.vfs.xml[uid]}" />
+<c:set var="value" value="${content.value}" />
 
-<c:set var="name">
-${value.Name.value.Title}${' '}
-${value.Name.value.FirstName}${' '}
-${value.Name.value.MiddleName}${' '}
-${value.Name.value.LastName}${' '}
-${value.Name.value.Suffix}
-</c:set>
+<mercury:contact-vars
+    content="${content}"
+    showPosition="${showPosition}"
+    showOrganization="${showOrganization}">
 
 <c:choose>
-    <c:when test="${value.Kind eq 'org'}">
+    <c:when test="${valKind eq 'org'}">
         <c:set var="fullname">${value.Organization}</c:set>
         <c:set var="kind">organization</c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="fullname">${name}</c:set>
+        <c:set var="fullname">
+            ${value.Name.value.Title}${' '}
+            ${value.Name.value.FirstName}${' '}
+            ${value.Name.value.MiddleName}${' '}
+            ${value.Name.value.LastName}${' '}
+            ${value.Name.value.Suffix}
+        </c:set>
         <c:set var="kind">individual</c:set>
     </c:otherwise>
 </c:choose>
@@ -108,3 +112,5 @@ X-ABShowAs:COMPANY
 
 --%>
 END:VCARD
+
+</mercury:contact-vars>

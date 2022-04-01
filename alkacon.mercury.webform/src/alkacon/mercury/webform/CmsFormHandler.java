@@ -50,6 +50,7 @@ import org.opencms.cache.CmsVfsMemoryObjectCache;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsProperty;
 import org.opencms.file.CmsResource;
+import org.opencms.flex.CmsFlexController;
 import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.i18n.CmsMultiMessages;
@@ -138,6 +139,12 @@ public class CmsFormHandler extends CmsJspActionElement {
 
     /** Form error: validation error of input. */
     public static final String ERROR_VALIDATION = "validation";
+
+    /** HTTP webform response header. */
+    public static final String HEADER_OC_WEBFORM = "X-Oc-Webform";
+
+    /** HTTP webform response header value. */
+    public static final String HEADER_VALUE_OC_WEBFORM = "YES";
 
     /** Form info: mandatory upload field filled out already. */
     public static final String INFO_UPLOAD_FIELD_MANDATORY_FILLED_OUT = "uploadfield_mandatory_filled_out";
@@ -1023,6 +1030,9 @@ public class CmsFormHandler extends CmsJspActionElement {
 
         super.init(context, req, res);
         try {
+            // set the webform HTTP header
+            HttpServletResponse topResponse = CmsFlexController.getController(req).getTopResponse();
+            topResponse.setHeader(HEADER_OC_WEBFORM, HEADER_VALUE_OC_WEBFORM);
             // initialize the form configuration
             configureForm(req, formConfigUri, dynamicConfig, extraConfig);
             m_initSuccess = true;

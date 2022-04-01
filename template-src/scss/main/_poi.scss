@@ -24,6 +24,7 @@
     .accessible {
         line-height: 1;
         margin-bottom: $default-margin-small;
+        hyphens: initial;
     }
 
     @include media-breakpoint-up(md) {

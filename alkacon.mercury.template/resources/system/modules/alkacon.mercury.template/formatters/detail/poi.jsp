@@ -99,7 +99,7 @@
 
     <jsp:attribute name="heading">
         <div class="poi-head"><%----%>
-            <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading" />
+            <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" />
             ${accessibleFacilities}
         </div><%----%>
     </jsp:attribute>

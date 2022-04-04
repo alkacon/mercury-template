@@ -2,7 +2,7 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 9.5]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 10.5]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
@@ -19,72 +19,71 @@
           <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>November 3, 2014: Step up to OpenCms 9.5! This version brings template creation without the need to code, plus other features like user generated content, on-the-fly PDF generation, greatly improved documentation and much more - all presented in a responsive demo website based on Bootstrap.</p>
-<h2>New in OpenCms 9.5</h2>
+      <content><![CDATA[<p>November 30, 2016: Introducing OpenCms 10.5. This release focuses on site localization, adding tools for assisted translation of pages and sitemaps. Many usability improvements have been made for the Page Editor and the Explorer. OpenCms 10.5 also ships a much improved version of the Apollo Template. Based on Bootstrap, the Apollo Template is fully customizable without coding. </p>
+<h2>New in OpenCms 10.5</h2>
 <ul>
-<li><span class="label label-orange">#</span> Drag &amp; drop template and layout creation with nested containers.</li>
-<li><span class="label label-orange">#</span> User generated content for website visitors.</li>
-<li><span class="label label-orange">#</span> Editors don't need to access the workplace anymore.</li>
-<li><span class="label label-orange">#</span> Managing of galleries, categories and templates in the sitemap editor.</li>
-<li><span class="label label-orange">#</span> Greatly enhanced documentation.</li>
-<li><span class="label label-orange">#</span> Generate PDF documents on the fly.</li>
-<li><span class="label label-orange">#</span> Grid based responsive demo website build with Bootstrap.</li>
-<li>Integrated Spell Checker for the WYSIWYG editor component.</li>
-<li>New roles for fine grained access to the content management functions.</li>
-<li>Element views allow easy grouping and permission setting for content types.</li>
-<li>Create, copy or reuse options when using existing contents.</li>
-<li>Updated user preferences dialog accessible in the page editor.</li>
+<li><span class="label label-orange">#</span> Localization: Compare localized subsites side-by-side.</li>
+<li><span class="label label-orange">#</span> Localization: Copy pages from one language to another, including content.</li>
+<li><span class="label label-orange">#</span> Localization: Connect the same page in different languages using locale relations.</li>
+<li><span class="label label-orange">#</span> Localization: Message bundle translator.</li>
+<li><span class="label label-orange">#</span> Localization: Support for localized properties.</li>
+<li><span class="label label-orange">#</span> Asset Connection: Data view widget API allows to natively integrate external assets in the content editor.</li>
+<li><span class="label label-orange">#</span> Asset Connection: Support for using external assets in templates through EL functions.</li>
+<li><span class="label label-orange">#</span> Enhanced online preview in the page editor hides all OpenCms added markup for HTML debugging.</li>
+<li><span class="label label-orange">#</span> The Apollo Template has been greatly enhanced with new options and functionality.</li>
+<li>The user interface now uses mostly font icons for better support in high resolution (retina) screens.</li>
+<li>Unified toolbar appearance and context menus for editors and workplace.</li>
+<li>New and improved Project Management app.</li>
+<li>Expired / unreleased resources in lists can now be shown on their detail page.</li>
+<li>Security: Added password expiration option.</li>
+<li>Security: Added password strength indicator in password dialog.</li>
+<li>Security: Added dialog "Edit user" so users can update their personal information.</li>
+<li>Security: Added optional "Confirm personal information" dialog after user login.</li>
+<li>Added OpenCmsUrlServletFilter to easily remove the /opencms servlet name.</li>
+<li>Added &lt;cms:jsonpart&gt; tag and CmsJsonPartFilter to split the output of a page to JSON fragments. </li>
+<li>Added &lt;cms:scaleImage&gt; tag for creating responsive image variations, provided by mwxwidmann.</li>
 </ul>
 <p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
-<h2>Improved in OpenCms 9.5</h2>
+<h2>Improved in OpenCms 10.5</h2>
 <ul>
-<li>Added broadcast messages to be shown in the page editor.</li>
-<li>Added feature to generate thumbnail images of PDF documents.</li>
-<li>Added option to show historic versions of elements, available in element info dialog.</li>
-<li>Added editor visibility handler for content fields in the XSD.</li>
-<li>Added locale synchronization for content fields in the XSD.</li>
-<li>Added dynamic field handlers for content fields in the XSD.</li>
-<li>Added new mappings to generate gallery descriptions in the XSD.</li>
-<li>Added "generic locale" for container pages so that elements are valid for all languages.</li>
-<li>Added support for CMYK .jpg images.</li>
-<li>Added thumbnail size display options for images galleries.</li>
-<li>Added option to run a script with CmsShell commands on module import.</li>
-<li>Updated to latest version of TinyMCE.</li>
-<li>Improved password encryption with strong scrypt algorithm.</li>
-<li>Improved screen usage, dialog adjusts to available screen size.</li>
-<li>Improved publishing dialog, especially for thousands of resources.</li>
-<li>Improved user preferences definition to be flexible instead of hard coded.</li>
-<li>Improved status information for new or changed elements in the gallery lists.</li>
-<li>Improved collector list edit points to have a full set of options.</li>
-<li>Improved result lists displayed in ADE to show more infos and options.</li>
-<li>Removed default group "Projectmanagers", use the PROJECT_MANAGER role instead if required.</li>
-<li>Fixed issue with checking "secure" property for resources in some cases.</li>
-<li>Fixed issues with duplicate elements in inheritance groups.</li>
-<li>Fixed several issues in the default link substitution handler.</li>
-<li>Fixed issue with wrong resource filter usage during the relation check before deleting sitemap entries.</li>
-<li>Fixed issue with 'subsite' search scope in the gallery dialog not working correctly.</li>
-<li>Fixed issue with order of settings from formatter configuration not being used.</li>
-<li>Fixed issue with detail containers if detail contents and detail page are located in different sites.</li>
-<li>Fixed issue with detail links where the detail content was located in a different site.</li>
-<li>Fixed issue with redirection to secure site for detail pages.</li>
-<li>Fixed issue with incorrect wildcard handling on SMB network shares.</li>
-<li>Fixed issue with file copying on SMB network shares.</li>
-<li>Fixed issue with scrollbar not appearing for text area widget if very long lines without spaces were entered.</li>
-<li>Fixed issue with creating files in expired folders.</li>
-<li>Fixed issue with head includes not working correctly for container elements in some cases.</li>
-<li>Fixed issue with editor CSS handler related to changed template provider configuration syntax.</li>
-<li>Fixed issue with handling of locale-available property in the editor.</li>
-<li>Fixed issue with the editor calendar display in some environments.</li>
-<li>Fixed issue with the editor VFS file widget configuration.</li>
-<li>Fixed caching issue with XML message bundles.</li>
-<li>Fixed caching issue with default template context provider.</li>
-<li>Fixed search filtering for the search scope "Everything".</li>
-<li>Fixed issue with link handling for detail contents in HTML fields.</li>
-<li>Fixed issue with container page search indexing.</li>
-<li>Fixed issue #192 where the HTML cleanup inserted invalid characters.</li>
-<li>Fixed issue #203 where source search was referring to a non existing constant.</li>
-<li>Fixed issue #205 where message bundles were accessed without locale.</li>
+<li>Improved behavior when switching between page editor, sitemap and explorer views.</li>
+<li>Explorer: Displays of icon overlays on folders showing the default file type.</li>
+<li>Explorer: Resources that are part of a sitemap are shown with a bold title.</li>
+<li>Explorer: Option to sort by navigation position by click on icon column.</li>
+<li>Explorer: Added optional "Copyright" and "Cache" columns.</li>
+<li>Explorer: Improved Display / Edit default actions when clicking on a file. </li>
+<li>Explorer: Improved Copy / Move / Rename functions and dialogs.</li>
+<li>Explorer: Values for Title, Navigation, Copyright and Cache columns can be edited directly by clicking.</li>
+<li>Keyboard shortcuts: Added "step through element views" to page editor (Ctrl-E).</li>
+<li>Keyboard shortcuts: Added "step through overlapping edit points" to page editor (Ctrl-Shift-E).</li>
+<li>Keyboard shortcuts: Added "save" and "save and exit" to content editor (Ctrl-S, Ctrl-Shift-S).</li>
+<li>Keyboard shortcuts: Added option to show "copy or reuse" dialog after drag &amp; drop (Ctrl + mouse up).</li>
+<li>Keyboard shortcuts: Added option to switch the Explorer view to the "Online" project (Ctrl-O).</li>
+<li>Page editor now "remembers" the last formatter set for a content type as default.</li>
+<li>Categories attached to contents are now by default stored in the relation engine, not the XML.</li>
+<li>Added "Show Online" option to page editor (requires correct site configuration). </li>
+<li>Added option to disable all formatter in a subsitemap configuration.</li>
+<li>Added support for connecting with encrypted email servers.</li>
+<li>Added JSP EL functions to read categories from a resource.</li>
+<li>Added JSP EL functions to read locale relations for a page.</li>
+<li>Added support for Google API keys to the location picker widget that uses Google Maps.</li>
+<li>Transferred edit JSP permission from "Template developer" role to "VFS manager" role.</li>
+<li>Extended macro formatters for better handling of new contents.</li>
+<li>Improved model group handling to keep all group data in a single resource.</li>
+<li>Improved user info dialog.</li>
+<li>Enhanced &lt;cms:link&gt; tag to allow links to specific detail pages.</li>
+<li>Updated Chinese and Japanese localization, provided by twofisher.</li>
+<li>Updated Russian localization, provided by makarov-iliya.</li>
+<li>Updated CodeMirror to version 5.21.0.</li>
+<li>Updated TinyMCE to version 4.4.3.</li>
+<li>Updated Lucene/SOLR to Version 5.5.3.</li>
+<li>Fixed performance issues with inheritance groups.</li>
+<li>Fixed issue #422 with bad performance of 'Choice' elements for XML contents, provided by mwxwidmann.</li>
+<li>Fixed issue #425 where wrong content encoding header was set for GWT dialog messages by gallardo.</li>
+<li>Fixed issue #451 where too many tabs caused layout problems in content editor.</li>
+<li>Fixed issue #455 with TinyMCE when using Portuguese as workplace language.</li>
 </ul>
+<p> </p>
 <h2>General OpenCms features</h2>
 <ul>
 <li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
@@ -110,20 +109,20 @@
 <li>... and many more</li>
 </ul>
 <h3>Backward compatibility</h3>
-<p>OpenCms 9.5 is fully backward compatible with all 8.x and 9.0.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.5.</p>
-<p><span class="label label-red">Notice for users of Alkacon OCEE</span> OpenCms 9.5 requires a new version of Alkacon OCEE. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a> to receive the new version. </p>
+<p>OpenCms 10.5 is fully backward compatible with all 9.0, 9.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
-<p>OpenCms 9.5 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
-<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional.</p>
-<p>On the database side, we have tested with MySQL, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<p>OpenCms 10.5 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8 or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
-<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 9.5 sources from Git, please check out <span class="label label-cyan">branch_9_5_x</span>. The 9.5.0 release is tagged <span class="label label-cyan">build_9_5_0</span>.</p>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank" rel="noopener">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5 release is tagged <span class="label label-cyan">build_10_5_0</span>.</p>
 <h3>How you can help</h3>
-<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
-<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>
-<p>Thank you for using OpenCms and have fun with OpenCms 9.5 :-)</p>]]></content>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank" rel="noopener">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank" rel="noopener">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms 10.5 :-)</p>]]></content>
     </Text>
-    <GalleryTitle><![CDATA[Release Notes for OpenCms 9.5]]></GalleryTitle>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 10.5]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

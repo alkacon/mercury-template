@@ -2,14 +2,14 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 10.5.1]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 11.0.2]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
-          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+          <target><![CDATA[https://github.com/alkacon/mercury-template]]></target>
         </link>
         <link name="link1" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/apollo-template]]></target>
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
         </link>
         <link name="link2" internal="false" type="A">
           <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
@@ -21,62 +21,98 @@
           <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
           <query><![CDATA[state=open]]></query>
         </link>
+        <link name="link5" internal="false" type="A">
+          <target><![CDATA[https://www.alkacon.com]]></target>
+        </link>
       </links>
-      <content><![CDATA[<p>February 15, 2017: OpenCms 10.5.1 is a maintenance update that fixes several issues that persisted in the 10.5.0 release. This version focuses on security and stability, also adding some new features and enhancements.</p>
-<h2>New in OpenCms 10.5.1</h2>
+      <content><![CDATA[<p>August 18, 2020: OpenCms 11.0.2 is a maintenance release for OpenCms 11. It fixes a number of issues that have been detected in OpenCms 11. Also incuded are some improvements and security enhancements.</p>
+<h2>New in OpenCms 11.0.2</h2>
 <ul>
-<li><span class="label label-orange">#</span> Rewritten and improved source search app.</li>
-<li><span class="label label-orange">#</span> Apollo Template: Mayor optimization of all formatters, CSS and JavsScript.</li>
-<li>Rewritten and improved integrated source code editor.</li>
-<li>Page editor now offers filter options in most tabs of the "Add content" dialog.</li>
+<li><span class="label label-orange">#</span> Extended import/export so that unknown resource types are kept.</li>
+<li><span class="label label-orange">#</span> Extended list type by combined category and folder restrictions.</li>
 </ul>
 <p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
-<h2>Improved in OpenCms 10.5.1</h2>
+<h2>Improved in OpenCms 11.0.2</h2>
 <ul>
-<li>Apollo Template: Improved CSS, reduced size by more then 100kb.</li>
-<li>Apollo Template: Optimized and rewrote most JavaScript functions.</li>
-<li>Apollo Template: Updated to jQuery 3.1.1, Bootstrap 3.3.7, Font-Awesome 4.7.0.</li>
-<li>Page editor: Added access to context menu in element settings dialog.</li>
-<li>Page editor: Added option to configure the element deletion default in the "remove element" dialog.</li>
-<li>Localization: Formatter names can now be localized.</li>
-<li>Localization: Bundle translator now stores message properties in alphabetical order.</li>
-<li>Localization: Bundle translator now offers a direct publish button in the toolbar.</li>
-<li>Localization: Allowing locale specific detail only container contents.</li>
-<li>Sitemap editor: Copy function now allows manual editing of target folder.</li>
-<li>Template API: Added multiple utility functions to the &lt;cms&gt; taglib.</li>
-<li>Detail pages: Settings on matching elements are now reused for detail content display.</li>
-<li>Detail pages: &lt;cms:link&gt; tag now supports manually forcing a specific detail page.</li>
-<li>Properties: Added text area widget option for editing properties.</li>
-<li>Improved the project management app.</li>
-<li>Improved writing of container pages to store containers and element settings in a reproducible order.</li>
-<li>Improved handling of model groups.</li>
-<li>Improved handling of locales with country variant.</li>
-<li>Improved email validation regex to allow more valid email addresses.</li>
-<li>Improved touch function to use automatic XML correction.</li>
-<li>Improved copy element function to use automatic XML correction.</li>
-<li>Improved link generation for static resources to use VFS prefix settings.</li>
-<li>Updated CMIS Java libraries.</li>
-<li>Defined calendar mime-type for .ics files, PR provided by gallardo.</li>
-<li>Removed password output from standard out, PR provided by adrianrm.</li>
-<li>Improved message in delete dialog if deleting is not allowed, PR provided by AnnJul.</li>
-<li>Renamed copy dialog label 'Target folder' to 'Target', PR provided by gallardo.</li>
-<li>Fixed issue with element settings not being saved on newly placed content elements.</li>
-<li>Fixed issue with double conversion of dates in search field mappings for attributes.</li>
-<li>Fixed issue with order of content elements mapped to multi-valued Solr-fields.</li>
-<li>Fixed issue with context menu for deleted resources in publish dialog not displaying correctly.</li>
-<li>Fixed issue with project tool tip not being displayed in file tables.</li>
-<li>Fixed issue #408 with permanent redirects.</li>
-<li>Fixed issue #457 in the Apollo template where user blog articles generation failed.</li>
-<li>Fixed issue #462 where gallery dialog would not open on preselected values.</li>
-<li>Fixed issue #475 where dynamic functions disappeared from a containerpage.</li>
-<li>Fixed issue #477 where create containerpage with content elements would not work for non Admin users.</li>
+<li>Improved column sorting in file tables.</li>
+<li>Changed 'LOCALE_VARIANT' relation type to weak, preventing unintended publishing of related resources.</li>
+<li>Removed mimetype check on CSV user import.</li>
+<li>Improved &lt;cms:search&gt; to ignore facet filter parameters with empty values.</li>
+<li>Restricted 'wt' parameter in SOLR handler to 'json' and 'xml' to prevent security issues.</li>
+<li>Improved date mappings in SOLR - always fill instancedatecurrenttill_dt.</li>
+<li>Improved searchfield mappings with locale 'none'.</li>
+<li>Added support for the 'prefix' attribute to the &lt;cms:bundle&gt; tag.</li>
+<li>CmsLockInactiveAccountsJob now disables inactive users instead of locking them.</li>
+<li>Updated TinyMCE to version 5.1.5.</li>
+<li>Updated CodeMirror to version 5.50.2.</li>
+<li>Updated icu4j dependency to version 62.1.</li>
+<li>Fixed issue where some caches are not cleared when static export is disabled.</li>
+<li>Fixed issue where automatically generated file names matched existing ones.</li>
+<li>Fixed issue where edited container pages were not unlocked (using Chrome).</li>
+<li>Fixed issue where 'This page' publish mode ignored search-based lists.</li>
+<li>Fixed issue where &lt;cms:edit&gt; displayed edit points in the wrong element view.</li>
+<li>Fixed issue where links with question marks in their fragments (http://...#aaa?bbb) were not saved correctly.</li>
+<li>Fixed issue with moving/copying expired resources in the explorer.</li>
+<li>Fixed issue where preview mode would not work on detail pages after changing the title.</li>
+<li>Fixed issue with TinyMCE covering edit points in the content editor.</li>
+<li>Fixed session timeout errors in the login dialog.</li>
+<li>Fixed issue with expired resources not being included in the gallery search.</li>
+<li>Fixed issue where Solr handler returned wrong JSON.</li>
+<li>Fixed issue where flex cache could become corrupted if JSPs threw exceptions.</li>
+<li>Fixed issue where viewing help texts for nested contents caused errors in the content editor.</li>
+<li>Fixed issue where users could not be removed from default groups unless they had the corresponding role.</li>
+<li>Fixed issue with the layout of reuse groups in the page editor.</li>
+<li>Fixed issue where the date picker in the editor did not work correctly when the __locale request parameter was used.</li>
+<li>Fixed issue where single selection mode did not work for repository-grouped category widgets.</li>
+<li>Fixed issue where trailing empty values in a user CSV file caused the user import to fail.</li>
+<li>Fixed issue with the module update function not handling expired resources correctly.</li>
+<li>Fixed issue where the "Creation disabled" setting in sitemap configuration was not inherited in sub-sitemaps.</li>
+<li>Fixed issue where the site switcher in the page editor didn't work correctly for multiple workplace URLs.</li>
+<li>Fixed issue where updating a module would fail if it contained moved folders with renamed direct subfolders.</li>
+<li>Fixed issue with gallery dialog resizing in folder/sitemap tabs.</li>
+<li>Fixed issue where some user publish list data was never cleaned up in the database.</li>
+<li>Fixed issue where content change handlers were not working correctly for contents with xsd:choice elements.</li>
+<li>Fixed issue where CmsLockInactiveAccountsJob would lock/disable new users that had not logged in yet.</li>
+<li>Fixed issue with the configuration for custom file name generators.</li>
+<li>Fixed issue with module actions not being executed when installing modules.</li>
+<li>Fixed issue where contents from the clipboards 'Favorites' did not get a new element instance id.</li>
+<li>Fixed issue #674 with color picker popup positioning.</li>
+<li>Fixed issue #669 with month filtering in list manager app.</li>
+<li>Fixed issue #700 where the user edit dialog didn't work because of an invalid start view.</li>
+<li>Fixed issue #693 with uploading to expired folders.</li>
+<li>Fixed issue #682 by adding missing localization for htmlredirect fields.</li>
+<li>Fixed issue #688 by adding missing encoding to CMS_HISTORY_PROPERTIES table definition.</li>
+<li>Fixed wrong reference to UGC formatter JSP (github pull request #699).</li>
+</ul>
+<h2>Main features of OpenCms 11</h2>
+<p>OpenCms 11 compared to version 10 brings a major update for the workplace, all apps have been replaced with modernized versions. Moreover, this release is compatible with Java 11 and comes with the new "Mercury" default template.</p>
+<ul>
+<li>Includes the 'Mercury' default template, source code available <a href="%(link0)">on GitHub</a>.</li>
+<li>Workplace: Restructured the workplace for improved usability with a modern GUI.</li>
+<li>Workplace: 'Lists' app for management of default 'List' content type using SOLR.</li>
+<li>Workplace: 'Bookmarks' app for quick access to workplace locations.</li>
+<li>Workplace: 'Resource types' app to create, read, edit and delete resource types.</li>
+<li>Workplace: 'Sessions' app to manage current user sessions and send messages to users.</li>
+<li>Workplace: 'Script terminal' app to run OpenCms shell scripts from the workplace.</li>
+<li>Workplace: 'SQL console' app to query the configured database pools.</li>
+<li>Template API: Meta mappings allow transferring values from XML contents to the page template (e.g. for SEO meta infos).</li>
+<li>Template API: The 'List' content type provides filter and sort options for title / date / category / folder.</li>
+<li>Template API: EL functions to create image variations for 'srcset' or 'picture'.</li>
+<li>Editor: Image now have a 'focal point' to control automatic image cropping around this point.</li>
+<li>Management: Option to execute shell commands in a running OpenCms instance using RMI.</li>
+<li>Management: The flex-cache bucket feature allows selective flex-cache purging.</li>
+<li>Management: Updating a module will now import only the changes instead of deleting and reinstalling the module.</li>
+<li>Setup: Removed all legacy workplace modules, leaving only two core modules in a new installation.</li>
+<li>Setup: Modernized the 'Setup wizard' user interface.</li>
+<li>Setup: Modernized the 'Updater' user interface, providing suport for 10.5, 10.0 and 9.5 versions.</li>
+<li>Support for Java 11.</li>
 </ul>
 <h2>General OpenCms features</h2>
 <ul>
 <li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
 <li>The form based editor allows editing of structured content in a well defined form mask.</li>
 <li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
-<li>Responsive "Apollo" default template based on Bootstrap 3 with many features.</li>
+<li>Responsive "Mercury" default template based on Bootstrap 4 with many features.</li>
 <li>Content creation for mobile devices with preview and device specific content control.</li>
 <li>Structured contents can be defined using a simple XML schema.</li>
 <li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
@@ -86,7 +122,7 @@
 <li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
 <li>Allows management of multiple websites within one installation.</li>
 <li>Contents can be served dynamically or exported to static HTML files.</li>
-<li>Direct access to the OpenCms content repository over a shared network drive.</li>
+<li>File access to the OpenCms content repository over a shared network / SMB drive.</li>
 <li>CMIS and WebDAV access to the OpenCms content repository.</li>
 <li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
 <li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
@@ -96,22 +132,21 @@
 <li>... and many more</li>
 </ul>
 <h3>Backward compatibility</h3>
-<p>OpenCms 10.5.1 is fully backward compatible with all 9.0, 9.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.1.</p>
-<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.1. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a> to receive the new version.</p>
-<h3>About the Apollo Template</h3>
-<p>The Apollo template is our main demo showcase. It is build using best practices of the latest OpenCms version. The Apollo template sources are available on Github at <a href="%(link1)">https://github.com/alkacon/apollo-template</a>.</p>
+<p>OpenCms 11.0 is backward compatible with all 10.5, 10.0, and 9.5 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 11.0.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 11.0. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link1)" target="_blank" rel="noopener noreferrer">Please contact Alkacon</a> to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
-<p>OpenCms 10.5 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
-<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8 or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
-<p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<p>OpenCms 11.0 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9, 8.5 or 8. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
-<p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5.1 release is tagged <span class="label label-cyan">build_10_5_1</span>.</p>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 11.0 sources from Git, please check out <span class="label label-cyan">branch_11_0_x</span>. This release is tagged <span class="label label-cyan">build_11_0_2</span>.</p>
 <h3>How you can help</h3>
-<p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
-<p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank">our GitHub issue tracker</a>.</p>
-<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>The team at <a title="Alkacon Software - The OpenCms Experts" href="%(link5)">Alkacon Software - The OpenCms Experts</a> wants to thank everyone who has contributed to this release of OpenCms.</p>
+<p>Have fun using OpenCms :-)</p>]]></content>
     </Text>
-    <GalleryTitle><![CDATA[Release Notes for OpenCms 10.5.1]]></GalleryTitle>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 11.0.2]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

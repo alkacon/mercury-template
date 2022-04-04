@@ -2,74 +2,65 @@
 
 <ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
   <ContentSection language="en">
-    <Title><![CDATA[Release Notes for OpenCms 9.5.2]]></Title>
+    <Title><![CDATA[Release Notes for OpenCms 10.5.2]]></Title>
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
           <target><![CDATA[http://www.alkacon.com/contact/]]></target>
         </link>
         <link name="link1" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+          <target><![CDATA[https://github.com/alkacon/apollo-template]]></target>
         </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
         </link>
         <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
           <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
           <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>June 22, 2015: OpenCms 9.5.2 fixes a number of issues that persisted in the 9.5.1 release. This version also contains important security improvements against XSS attacks.</p>
-<h2>New in OpenCms 9.5.2</h2>
+      <content><![CDATA[<p>July 12, 2017: OpenCms 10.5.2 is a maintenance release for OpenCms 10.5. This version fixes a number of issues that have been detected in OpenCms 10.5, and includes several performance and some security enhancements.</p>
+<h2>New in OpenCms 10.5.2</h2>
 <ul>
-<li><span class="label label-orange">#</span> Added Japanese localization (provided by Yuta Aoki).</li>
-<li><span class="label label-orange">#</span> Added Czech localization (provided by Filip Kratochvil).</li>
-<li>Added additional search settings in XSD for mapping of Solr fields to container pages.</li>
-<li>Improved loading times for VfsFileWidget (and other widgets based on the gallery dialog).</li>
-<li>Changed HtmlWidget to list styles from the content CSS in the style select box.</li>
-<li>Demo template updated to Bootstrap 3.3.5.</li>
+<li><span class="label label-orange">#</span> Copy / move dialog now allows naming of target files and better handles deleted and unreleased resources.</li>
+<li>Added option to configure multiple URLs for the workplace server.</li>
 </ul>
 <p>Items marked with <span class="label label-orange">#</span> are considered important improvements in this version.</p>
-<h2>Improved in OpenCms 9.5.2</h2>
+<h2>Improved in OpenCms 10.5.2</h2>
 <ul>
-<li>Updated Spanish localization (provided by Sergio Raposo Vargas).</li>
-<li>Updated Russian localization (provided by Iliya Makarov).</li>
-<li>Add use pages to Javadocs (provided by Alberto Gallardo).</li>
-<li>Improved 'This page' option in publish dialog to show changed contents of detail containers.</li>
-<li>Improved availability handling in conjunction with the sitemap editor and navigation builder.</li>
-<li>Fixed issue #236 with wrong localization of "Direct Edit" in the workplace's preferences (provided by rohtake).</li>
-<li>Fixed issue #278 with mangled javadocs when compiling with JDK 8.</li>
-<li>Fixed issue #304 to resolve some XSS vulnerabilities.</li>
-<li>Fixed issue #312 with modified MySQL create tables to support innodb (provided by Enrico Marongiu).</li>
-<li>Fixed issue #313 with the demo pages tabs formatter not working online.</li>
-<li>Fixed issue #314 regarding setup with JPA supported DBMSs (provided by Smyatkin Maxim).</li>
-<li>Fixed issue #315 with workplace search not working when selecting a specific site.</li>
-<li>Fixed issue #320 with the demo pages tabs (duplicate of #313).</li>
-<li>Fixed a number of XSS issues in the workplace.</li>
-<li>Fixed issue where the types in the container page editor's 'Add' menu were not updated after changes to nested containers.</li>
-<li>Fixed issue where the information for locked images was copied to the title attribute in the WYSIWYG editor.</li>
-<li>Fixed issue with the toolbar being blocked by an overlay when using the model selection dialog in the page editor.</li>
-<li>Fixed issue in the publish dialog where sometimes publishing resources in the root folder caused an error.</li>
-<li>Fixed stack overflow error caused by incomplete preference configuration after running the updater.</li>
-<li>Fixed issue with message bundle caching where sometimes XML message bundles were not found.</li>
-<li>Fixed issue with secure server links on error pages.</li>
-<li>Fixed issue with workplace search not working for indexes other than the Gallery index.</li>
-<li>Fixed issue where detail container pages failed to be unlocked after editing.</li>
-<li>Fixed issue with Lucene index for container pages where content for locales other than "en" was not indexed.</li>
-<li>Fixed issue where registering change listeners in custom content editor widgets could cause a stack overflow.</li>
-<li>Fixed doctype for workplace dialogs to avoid compatibility mode in IE.</li>
-<li>Fixed corrupted images in updater.</li>
-<li>Fixed issue where the resource info dialog crashed when reading a relation whose source did not exist anymore.</li>
-<li>Fixed issue where the category folder name configured on /system/categories was ignored by the sitemap editor.</li>
-<li>Fixed IE browser mode issue which sometimes caused problems with the upload dialog.</li>
-<li>Fixed issue with legacy direct edit text button provider not showing localized messages.</li>
+<li>Updated TinyMCE to version 4.6.2 to fix issue #508.</li>
+<li>Performance: Reduced synchronization.</li>
+<li>Performance: Updated LRUMap implementation.</li>
+<li>Performance: Improved role inheritance to avoid unnecessary UUID generation.</li>
+<li>Performance: Improved workplace bundle access.</li>
+<li>Performance: Option to speed up XML unmarshalling by setting SAX parser configuration in system properties.</li>
+<li>Security: Fixed permission issue on account manager dialogs where non account manager users where able to view users list.</li>
+<li>Improved unique file name generator to also check for existing online resources too.</li>
+<li>ADE configuration initialization now happens at startup to avoid long response times on first page view.</li>
+<li>Fixed issue with accessing related resources from other sites in various workplace dialogs.</li>
+<li>Fixed issue where closing the HTML source view would introduce additional tags.</li>
+<li>Fixed issue #478 where validation state was not cleared on editor close.</li>
+<li>Fixed issue #484 where dynamic function content HTML was sometimes not replaced after edit.</li>
+<li>Fixed issue #485 where drop down menus in TinyMCE where shown at the wrong position in case of a body position 'relative'.</li>
+<li>Fixed issue #486 where location position was changed on picker dialog close.</li>
+<li>Fixed issue #487 where 'Show in device' preview would show edit tool bar.</li>
+<li>Fixed issue #488 where an optional scroll bar would reduce the screen size of the 'Show in device' preview.</li>
+<li>Fixed issue #490 where exceptions where written to the web server log and not to the opencms.log file.</li>
+<li>Fixed issue #491 where misleading API error message was shown in location picker widget if no default value was set.</li>
+<li>Fixed issue #493 where gallery dialog would fail in case of folders only configurations.</li>
+<li>Fixed issue #495 where a missing explorer type declaration would cause null pointers in the explorer view.</li>
+<li>Fixed issue #497 where export links where cached locale independent for sites using the single tree localization mode.</li>
+<li>Fixed issue #500 where parsing of the CmsShell command line would fail on special characters, PR by gallardo.</li>
 </ul>
 <h2>General OpenCms features</h2>
 <ul>
 <li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
 <li>The form based editor allows editing of structured content in a well defined form mask.</li>
 <li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
-<li>Responsive demo template based on Bootstrap 3.</li>
+<li>Responsive "Apollo" default template based on Bootstrap 3 with many features.</li>
 <li>Content creation for mobile devices with preview and device specific content control.</li>
 <li>Structured contents can be defined using a simple XML schema.</li>
 <li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
@@ -89,20 +80,22 @@
 <li>... and many more</li>
 </ul>
 <h3>Backward compatibility</h3>
-<p>OpenCms 9.5.2 is fully backward compatible with all 8.x and 9.x versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 9.5.2.</p>
-<p><span class="label label-red">Notice for users of Alkacon OCEE</span> OpenCms 9.5.2 requires a new version of Alkacon OCEE. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank">Please contact Alkacon</a> to receive the new version. </p>
+<p>OpenCms 10.5.2 is fully backward compatible with all 10.5, 10.0, 9.5 and 9.0 versions. Templates and other OpenCms developed code from these versions should work "out of the box" with version 10.5.2.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 10.5.2. The update is free for Alkacon customers with a valid OCEE update subscription. <a href="%(link0)" target="_blank" rel="noopener noreferrer">Please contact Alkacon</a> to receive the new version.</p>
+<h3>About the Apollo Template</h3>
+<p>The Apollo template is our main demo showcase. It is build using best practices of the latest OpenCms version. The Apollo template sources are available on Github at <a href="%(link1)">https://github.com/alkacon/apollo-template</a>.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
-<p>OpenCms 9.5.2 has been written and tested for Java 6 and 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs. Regarding Java 8, we have problems finding Java 8 compliant versions of all used external components. We hope to offer full support for Java 8 in the next major release.</p>
-<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, BEA, Websphere, Glassfish and Resin Professional.</p>
-<p>On the database side, we have tested with MySQL, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<p>OpenCms 10.5 has been written and tested for Java 8 and Java 7. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine. OpenCms works "out of the box" with Tomcat 8 or 7, which we recommend. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we have tested with MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
-<p>The main OpenCms Git repository is available on Github at <a href="%(link1)" target="_blank">github.com/alkacon/opencms-core</a>.</p>
-<p>In case you want to get the most current OpenCms 9.5.2 sources from Git, please check out <span class="label label-cyan">branch_9_5_x</span>. The 9.5.2 release is tagged <span class="label label-cyan">build_9_5_2</span>.</p>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link2)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms 10.5 sources from Git, please check out <span class="label label-cyan">branch_10_5_x</span>. The 10.5.2 release is tagged <span class="label label-cyan">build_10_5_2</span>.</p>
 <h3>How you can help</h3>
-<p>Contributions to the OpenCms core development are most welcome. <a href="%(link2)" target="_blank">Please send us your pull requests directly on GitHub.</a></p>
-<p>Please report issues found in OpenCms using <a href="%(link3)" target="_blank">our GitHub issue tracker</a>.</p>
-<p>Thank you for using OpenCms and have fun with OpenCms 9.5.2 :-)</p>]]></content>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link3)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link4)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
     </Text>
-    <GalleryTitle><![CDATA[Release Notes for OpenCms 9.5.2]]></GalleryTitle>
+    <GalleryTitle><![CDATA[Release Notes for OpenCms 10.5.2]]></GalleryTitle>
   </ContentSection>
 </ContentSectionData>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
+  <FunctionConfig language="en">
+    <NiceName><![CDATA[%(key.function.header-config)]]></NiceName>
+    <Key><![CDATA[m/functions/header-config]]></Key>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/header-config.jsp]]></target>
+        <uuid>b881b45a-c8e3-11e9-bfcb-0242ac11002b</uuid>
+      </link>
+    </Jsp>
+    <Description><![CDATA[%(key.function.header-config.help)]]></Description>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[header-config]]></ContainerType>
+      </Types>
+    </Match>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/configuration/burger.settings.xml]]></target>
+        <uuid>80290a06-79fe-11ec-a0cc-0242ac11002b</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.optional]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[logoAlignment.burger]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[logoSize.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaDisplay.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaAlignment.burger]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTitle.burger]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[titleAlignment.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headerPosition.burger]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[navFixDisplay.burger]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[acDisplay.burger]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[acPosition.burger]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bcDisplay.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[bcAlignment.header]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[breadcrumbsIncludeHidden.navigation]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[breadcrumbsFromRoot.navigation]]></IncludeName>
+    </Setting>
+  </FunctionConfig>
+</FunctionConfigs>

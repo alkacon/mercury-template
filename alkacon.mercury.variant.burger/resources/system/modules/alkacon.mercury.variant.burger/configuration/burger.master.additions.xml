@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SitemapMasterConfigurations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/sitemap_master_config.xsd">
+  <SitemapMasterConfiguration language="en">
+    <TypeOrderingMode>true</TypeOrderingMode>
+    <UseFormatterKeys>true</UseFormatterKeys>
+    <AddFormatters>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/formatters/layout/group.xml]]></target>
+          <uuid>802c3e65-79fe-11ec-a0cc-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+    </AddFormatters>
+    <RemoveAllFunctions>false</RemoveAllFunctions>
+    <RemoveFunctions>
+      <Function>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/functions/header-config.xml]]></target>
+          <uuid>caf9cb05-c8e3-11e9-bfcb-0242ac11002b</uuid>
+        </link>
+      </Function>
+    </RemoveFunctions>
+    <Function>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/functions/header-config.xml]]></target>
+        <uuid>802e6152-79fe-11ec-a0cc-0242ac11002b</uuid>
+      </link>
+    </Function>
+    <AddPlugins>
+      <Plugin>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/plugins/nav-mobile-header.xml]]></target>
+          <uuid>36511a93-7f87-11ec-90e1-0242ac11002b</uuid>
+        </link>
+      </Plugin>
+      <Plugin>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/plugins/nav-meta-links.xml]]></target>
+          <uuid>75701f9e-801a-11ec-90e1-0242ac11002b</uuid>
+        </link>
+      </Plugin>
+    </AddPlugins>
+  </SitemapMasterConfiguration>
+</SitemapMasterConfigurations>

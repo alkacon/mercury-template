@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SettingsConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/settings_config.xsd">
+  <SettingsConfig language="en">
+    <Setting>
+      <IncludeName><![CDATA[logoAlignment.burger]]></IncludeName>
+      <PropertyName><![CDATA[logoAlignment]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.logoAlignment)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.logoAlignment.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[lp-l]]></Default>
+      <WidgetConfig><![CDATA[
+            lp-l:           %(key.msg.setting.header.option.left)|
+            lp-r:           %(key.msg.setting.header.option.right)|
+            none:           %(key.msg.setting.header.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaAlignment.burger]]></IncludeName>
+      <PropertyName><![CDATA[metaAlignment]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.metaAlignment)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.metaAlignment.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+            default:            %(key.msg.setting.header.option.defaultForLogo)|
+            meta-left:          %(key.msg.setting.header.option.left)|
+            meta-right:         %(key.msg.setting.header.option.right)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTitle.burger]]></IncludeName>
+      <PropertyName><![CDATA[showTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.showTitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.showTitle.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[show-title]]></Default>
+      <WidgetConfig><![CDATA[
+            show-title:         %(key.msg.setting.header.option.defaultShow)|
+            ac-title:           %(key.msg.setting.header.showTitle.ac)|
+            hide-title:         %(key.msg.setting.header.option.hide)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[navFixDisplay.burger]]></IncludeName>
+      <PropertyName><![CDATA[navFixDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.navFixDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.navFixDisplay.burger.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[fix-lg]]></Default>
+      <WidgetConfig><![CDATA[
+            fix-lg:             %(key.msg.setting.header.navFixDisplay.fix-lg)|
+            fix-md:             %(key.msg.setting.header.navFixDisplay.fix-md)|
+            fix-sm:             %(key.msg.setting.header.navFixDisplay.fix-sm)|
+            fix-xs:             %(key.msg.setting.header.navFixDisplay.fix-xs)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headerPosition.burger]]></IncludeName>
+      <PropertyName><![CDATA[headerPosition]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.position)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.position.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[css]]></Default>
+      <WidgetConfig><![CDATA[
+        css:        %(key.msg.setting.header.position.css.burger)|
+        upscroll:   %(key.msg.setting.header.position.upscroll)|
+        static:     %(key.msg.setting.header.position.static)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[acPosition.burger]]></IncludeName>
+      <PropertyName><![CDATA[acPosition]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.acPosition)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.acPosition.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[ac-below-logo]]></Default>
+      <WidgetConfig><![CDATA[
+            ac-above-logo:      %(key.msg.setting.header.option.above)|
+            ac-below-logo:      %(key.msg.setting.header.option.defaultBelow)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[acDisplay.burger]]></IncludeName>
+      <PropertyName><![CDATA[acDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.acDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.acDisplay.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:               %(key.msg.setting.header.acDisplay.none)|
+            ac-page-size:       %(key.msg.setting.header.acDisplay.ac-page-size-burger)|
+            ac-full-size:       %(key.msg.setting.header.acDisplay.ac-full-size-burger)
+        ]]></WidgetConfig>
+    </Setting>
+  </SettingsConfig>
+</SettingsConfigs>

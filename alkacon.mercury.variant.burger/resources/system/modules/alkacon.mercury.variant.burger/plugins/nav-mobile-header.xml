@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SitePlugins xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/site_plugin.xsd">
+  <SitePlugin language="en">
+    <NiceName><![CDATA[Burger variant mobile navigation header]]></NiceName>
+    <Description/>
+    <Plugin>
+      <Group><![CDATA[nav-mobile-header]]></Group>
+      <Target>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/plugins/nav-mobile-header.jsp]]></target>
+          <uuid>364fbb00-7f87-11ec-90e1-0242ac11002b</uuid>
+        </link>
+      </Target>
+      <Order><![CDATA[100]]></Order>
+    </Plugin>
+  </SitePlugin>
+</SitePlugins>

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<export>
+	<info>
+		<infoproject>Offline</infoproject>
+		<export_version>10</export_version>
+	</info>
+	<module>
+		<name>alkacon.mercury.variant.burger</name>
+		<nicename><![CDATA[Mercury variant: Burger]]></nicename>
+		<group>Mercury variants</group>
+		<class/>
+		<import-site>/</import-site>
+		<export-mode name="reduced"/>
+		<description><![CDATA[The Burger variant generates a "Hamburger" menu for the main header navigation.]]></description>
+		<version>12.0.6</version>
+		<autoincrement>true</autoincrement>
+		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
+		<authoremail/>
+		<datecreated/>
+		<userinstalled/>
+		<dateinstalled/>
+		<dependencies>
+			<dependency name="alkacon.mercury.template" version="12.0.0"/>
+		</dependencies>
+		<exportpoints/>
+		<resources>
+			<resource uri="/system/modules/alkacon.mercury.variant.burger/"/>
+		</resources>
+		<excluderesources/>
+		<parameters/>
+	</module>
+	<files>
+		<file>
+			<destination>system</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/modules</destination>
+			<type>folder</type>
+			<properties/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.variant.burger</destination>
+			<type>folder</type>
+			<uuidstructure>80227a4b-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/.config</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/.config</destination>
+			<type>module_config</type>
+			<uuidstructure>802f24a9-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<uuidresource>802f24aa-79fe-11ec-a0cc-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.variant.burger/configuration</destination>
+			<type>folder</type>
+			<uuidstructure>802364ad-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger variant configuration]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/configuration/burger.master.additions.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/configuration/burger.master.additions.xml</destination>
+			<type>sitemap_master_config</type>
+			<uuidstructure>6da7ed42-8030-11ec-90e1-0242ac11002b</uuidstructure>
+			<uuidresource>6da7ed43-8030-11ec-90e1-0242ac11002b</uuidresource>
+			<datecreated>Fri, 28 Jan 2022 11:50:02 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger master configuration (additions only)]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/configuration/burger.master.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/configuration/burger.master.xml</destination>
+			<type>sitemap_master_config</type>
+			<uuidstructure>802400f0-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<uuidresource>802400f1-79fe-11ec-a0cc-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger master configuration (including Mercury base)]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/configuration/burger.settings.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/configuration/burger.settings.xml</destination>
+			<type>settings_config</type>
+			<uuidstructure>80290a06-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<uuidresource>80290a07-79fe-11ec-a0cc-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger shared formatter settings]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.variant.burger/formatters</destination>
+			<type>folder</type>
+			<uuidstructure>802a1b7c-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger variant formatters]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.variant.burger/formatters/layout</destination>
+			<type>folder</type>
+			<uuidstructure>802adecf-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/formatters/layout/group.jsp</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/formatters/layout/group.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>802b7b11-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<uuidresource>802b7b12-79fe-11ec-a0cc-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid)]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/formatters/layout/group.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/formatters/layout/group.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>802c3e65-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<uuidresource>802c3e66-79fe-11ec-a0cc-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Layout group]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.variant.burger/functions</destination>
+			<type>folder</type>
+			<uuidstructure>802d01bb-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger variant functions]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/functions/header-config.jsp</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/functions/header-config.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>802d9dfe-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<uuidresource>802d9dff-79fe-11ec-a0cc-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;uri]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/functions/header-config.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/functions/header-config.xml</destination>
+			<type>function_config</type>
+			<uuidstructure>802e6152-79fe-11ec-a0cc-0242ac11002b</uuidstructure>
+			<uuidresource>802e6153-79fe-11ec-a0cc-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Jan 2022 14:37:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[??? function.login.help ???]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger header configuration]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.variant.burger/plugins</destination>
+			<type>folder</type>
+			<uuidstructure>235c0bbe-7f87-11ec-90e1-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 27 Jan 2022 15:38:13 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger variant plugins]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/plugins/nav-meta-links.jsp</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/plugins/nav-meta-links.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>7e10d553-801a-11ec-90e1-0242ac11002b</uuidstructure>
+			<uuidresource>7e10d554-801a-11ec-90e1-0242ac11002b</uuidresource>
+			<datecreated>Fri, 28 Jan 2022 09:13:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/plugins/nav-meta-links.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/plugins/nav-meta-links.xml</destination>
+			<type>site_plugin</type>
+			<uuidstructure>75701f9e-801a-11ec-90e1-0242ac11002b</uuidstructure>
+			<uuidresource>75701f9f-801a-11ec-90e1-0242ac11002b</uuidresource>
+			<datecreated>Fri, 28 Jan 2022 09:12:46 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger nav meta links]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/plugins/nav-mobile-header.jsp</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/plugins/nav-mobile-header.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>364fbb00-7f87-11ec-90e1-0242ac11002b</uuidstructure>
+			<uuidresource>364fbb01-7f87-11ec-90e1-0242ac11002b</uuidresource>
+			<datecreated>Thu, 27 Jan 2022 15:38:45 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/plugins/nav-mobile-header.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/plugins/nav-mobile-header.xml</destination>
+			<type>site_plugin</type>
+			<uuidstructure>36511a93-7f87-11ec-90e1-0242ac11002b</uuidstructure>
+			<uuidresource>36511a94-7f87-11ec-90e1-0242ac11002b</uuidresource>
+			<datecreated>Thu, 27 Jan 2022 15:38:45 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger nav mobile header]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+	</files>
+</export>

@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>12.0.18</version>
+		<version>12.0.19</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -15869,6 +15869,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
+					<name>mercury.theme</name>
+					<value><![CDATA[/system/modules/alkacon.mercury.theme/css/theme-burger.min.css]]></value>
+				</property>
+				<property>
 					<name>search.subsite</name>
 					<value><![CDATA[Release Notes]]></value>
 				</property>
@@ -15937,6 +15941,63 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[all]]></value>
 				</property>
 			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/.content/modelgroup</destination>
+			<type>folder</type>
+			<uuidstructure>dcd157a4-ab6b-11ec-bba0-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 24 Mar 2022 12:13:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/.content/modelgroup/modelgroup-00001.html</source>
+			<destination>release/.content/modelgroup/modelgroup-00001.html</destination>
+			<type>modelgroup</type>
+			<uuidstructure>dcd30556-ab6b-11ec-bba0-0242ac11002b</uuidstructure>
+			<uuidresource>dcd30557-ab6b-11ec-bba0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 24 Mar 2022 12:13:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[Burger Menu Header]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Burger Menu Header]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/.content/navigation-m</destination>
+			<type>folder</type>
+			<uuidstructure>d099c311-ab6f-11ec-bba0-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 24 Mar 2022 12:42:07 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/.content/navigation-m/nav_00001.xml</source>
+			<destination>release/.content/navigation-m/nav_00001.xml</destination>
+			<type>m-navigation</type>
+			<uuidstructure>d09b22a3-ab6f-11ec-bba0-0242ac11002b</uuidstructure>
+			<uuidresource>d09b22a4-ab6f-11ec-bba0-0242ac11002b</uuidresource>
+			<datecreated>Thu, 24 Mar 2022 12:42:07 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -18487,300 +18548,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Step 6: Publish your changes]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants</destination>
-			<type>folder</type>
-			<uuidstructure>94291bd6-ab78-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 13:44:51 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[0.28570312]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA[Variants]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Variants]]></value>
-				</property>
-				<property>
-					<name>default-file</name>
-					<value><![CDATA[##navigation_level_folder##]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/index.html</source>
-			<destination>variants/index.html</destination>
-			<type>htmlredirect</type>
-			<uuidstructure>942b65cc-ab78-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>942b65cd-ab78-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 13:44:51 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Redirect to first page in navigation]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
-				</property>
-				<property type="shared">
-					<name>template-elements</name>
-					<value><![CDATA[/system/modules/org.opencms.ade.sitemap/pages/redirect-detail.jsp]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants/burger-navigation</destination>
-			<type>subsitemap</type>
-			<uuidstructure>40ae7df8-ab60-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 10:50:43 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>NavPos</name>
-					<value><![CDATA[0.75]]></value>
-				</property>
-				<property>
-					<name>NavText</name>
-					<value><![CDATA["Burger Menu" Variant]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA["Burger Menu" Variant]]></value>
-				</property>
-				<property>
-					<name>mercury.theme</name>
-					<value><![CDATA[/system/modules/alkacon.mercury.theme/css/theme-burger.min.css]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/index.html</source>
-			<destination>variants/burger-navigation/index.html</destination>
-			<type>containerpage</type>
-			<uuidstructure>40bde74d-ab60-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>40bde74e-ab60-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 10:50:43 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Burger Navigation]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants/burger-navigation/.content</destination>
-			<type>content_folder</type>
-			<uuidstructure>50e0c35b-ab60-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 10:51:10 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/.content/.config</source>
-			<destination>variants/burger-navigation/.content/.config</destination>
-			<type>sitemap_config</type>
-			<uuidstructure>50e5cc6d-ab60-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>50e5cc6e-ab60-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 10:51:10 GMT</datecreated>
-			<flags>512</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Sitemap configuration file]]></value>
-				</property>
-				<property>
-					<name>locale</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants/burger-navigation/.content/linksequence-m</destination>
-			<type>folder</type>
-			<uuidstructure>ad8b8687-ab6d-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 12:26:49 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/.content/linksequence-m/ls_00001.xml</source>
-			<destination>variants/burger-navigation/.content/linksequence-m/ls_00001.xml</destination>
-			<type>m-linksequence</type>
-			<uuidstructure>ad8ce619-ab6d-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>ad8ce61a-ab6d-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 12:26:49 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Burger Menu Header: New link sequence]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants/burger-navigation/.content/modelgroup</destination>
-			<type>folder</type>
-			<uuidstructure>dcd157a4-ab6b-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 12:13:49 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/.content/modelgroup/modelgroup-00001.html</source>
-			<destination>variants/burger-navigation/.content/modelgroup/modelgroup-00001.html</destination>
-			<type>modelgroup</type>
-			<uuidstructure>dcd30556-ab6b-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>dcd30557-ab6b-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 12:13:49 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Description</name>
-					<value><![CDATA[Burger Menu Header]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Burger Menu Header]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[true]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants/burger-navigation/.content/navigation-m</destination>
-			<type>folder</type>
-			<uuidstructure>d099c311-ab6f-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 12:42:07 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/.content/navigation-m/nav_00001.xml</source>
-			<destination>variants/burger-navigation/.content/navigation-m/nav_00001.xml</destination>
-			<type>m-navigation</type>
-			<uuidstructure>d09b22a3-ab6f-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>d09b22a4-ab6f-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 12:42:07 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants/burger-navigation/.content/section-m</destination>
-			<type>folder</type>
-			<uuidstructure>3116b7fb-ab6d-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 12:23:20 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/.content/section-m/cs_00001.xml</source>
-			<destination>variants/burger-navigation/.content/section-m/cs_00001.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>31183e9d-ab6d-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>31183e9e-ab6d-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 12:23:20 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Burger Menu Header: Header Logo for Burger Menu]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/.content/section-m/cs_00002.xml</source>
-			<destination>variants/burger-navigation/.content/section-m/cs_00002.xml</destination>
-			<type>m-section</type>
-			<uuidstructure>0c5754f4-ab61-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>0c5754f5-ab61-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 10:56:24 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Burger Navigation: Template Variant "Burger Menu"]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<destination>variants/burger-navigation/.content/slider-m</destination>
-			<type>folder</type>
-			<uuidstructure>05b171e8-ab6e-11ec-bba0-0242ac11002b</uuidstructure>
-			<datecreated>Thu, 24 Mar 2022 12:29:17 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>variants/burger-navigation/.content/slider-m/slider_00001.xml</source>
-			<destination>variants/burger-navigation/.content/slider-m/slider_00001.xml</destination>
-			<type>m-slider</type>
-			<uuidstructure>05b2d17a-ab6e-11ec-bba0-0242ac11002b</uuidstructure>
-			<uuidresource>05b2d17b-ab6e-11ec-bba0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 24 Mar 2022 12:29:17 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Burger Menu Header: Slider for Burger Menu Header]]></value>
 				</property>
 			</properties>
 			<relations/>

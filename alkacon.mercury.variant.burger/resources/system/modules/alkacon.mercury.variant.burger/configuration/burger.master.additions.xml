@@ -11,6 +11,12 @@
           <uuid>802c3e65-79fe-11ec-a0cc-0242ac11002b</uuid>
         </link>
       </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/formatters/navigation/main.xml]]></target>
+          <uuid>ecf68db7-b5b2-11ec-92fe-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
     </AddFormatters>
     <RemoveAllFunctions>false</RemoveAllFunctions>
     <RemoveFunctions>

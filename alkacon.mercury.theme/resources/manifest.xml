@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>12.0.1</version>
+		<version>12.0.3</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -133,30 +133,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/css/theme-blue.min.css</source>
-			<destination>system/modules/alkacon.mercury.theme/css/theme-blue.min.css</destination>
-			<type>plain</type>
-			<uuidstructure>2bb23497-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bb23498-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/css/theme-blue.min.css.map</source>
-			<destination>system/modules/alkacon.mercury.theme/css/theme-blue.min.css.map</destination>
-			<type>plain</type>
-			<uuidstructure>2bb89d39-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bb89d3a-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>system/modules/alkacon.mercury.theme/css/theme-burger.min.css</source>
 			<destination>system/modules/alkacon.mercury.theme/css/theme-burger.min.css</destination>
 			<type>plain</type>
@@ -181,24 +157,24 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/css/theme-red.min.css</source>
-			<destination>system/modules/alkacon.mercury.theme/css/theme-red.min.css</destination>
+			<source>system/modules/alkacon.mercury.theme/css/theme-standard.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/theme-standard.min.css</destination>
 			<type>plain</type>
-			<uuidstructure>2bc3248b-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bc3248c-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<uuidstructure>ef52228f-b4f4-11ec-92fe-0242ac11002b</uuidstructure>
+			<uuidresource>ef522290-b4f4-11ec-92fe-0242ac11002b</uuidresource>
+			<datecreated>Tue, 05 Apr 2022 15:27:42 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/css/theme-red.min.css.map</source>
-			<destination>system/modules/alkacon.mercury.theme/css/theme-red.min.css.map</destination>
+			<source>system/modules/alkacon.mercury.theme/css/theme-standard.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/theme-standard.min.css.map</destination>
 			<type>plain</type>
-			<uuidstructure>2bc9661d-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bc9661e-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<uuidstructure>efba0c23-b4f4-11ec-92fe-0242ac11002b</uuidstructure>
+			<uuidresource>efba0c24-b4f4-11ec-92fe-0242ac11002b</uuidresource>
+			<datecreated>Tue, 05 Apr 2022 15:27:42 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

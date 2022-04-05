@@ -14,16 +14,19 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="metaLinksOnTop" value="${setting.metaLinks.useDefault('top').toString ne 'bottom'}" />
+<c:set var="metaLinksOnTop"     value="${reqScopeSetting.metaLinks.useDefault('top').toString ne 'bottom'}" />
+<c:set var="metaLinksIconsOut"  value="${reqScopeSetting.metaLinksIconsOut.toBoolean}" />
+<c:set var="metaLinksTextOut"   value="${reqScopeSetting.metaLinksTextOut.toBoolean}" />
+
 
 <jsp:useBean id="metaMap" class="java.util.HashMap" />
 <c:forEach var="link" items="${reqScopeMetaLinksContent.valueList.LinkEntry}" varStatus="status">
     <mercury:link-icon link="${link}" resultMap="${metaMap}" />
     <c:choose>
-        <c:when test="${empty metaMap.message}">
+        <c:when test="${metaLinksIconsOut and not empty metaMap.icon and empty metaMap.message}">
             <c:set var="metaLinksIconOnly">
                 ${metaLinksIconOnly}
-                 <li><%----%>
+                <li><%----%>
                     <mercury:link
                         link="${metaMap.link}"
                         title="${metaMap.title}"
@@ -48,6 +51,19 @@
         </c:otherwise>
     </c:choose>
 </c:forEach>
+
+<c:if test="${not metaLinksTextOut and not empty metaLinksWithText}">
+    <c:set var="metaLinksWithText">
+        <li id="nav-main-addition" class="expand"><%----%>
+            <a href="#" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${reqScopeMetaLinksContent.value.Title}</a><%----%>
+            <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
+                <mercury:nl />
+                ${metaLinksWithText}
+            </ul><%----%>
+        </li><%----%>
+    </c:set>
+</c:if>
+
 
 <c:if test="${not metaLinksOnTop}">
     <%-- If meta links are NOT on top, show icons first, i.e. do not show the text links here --%>

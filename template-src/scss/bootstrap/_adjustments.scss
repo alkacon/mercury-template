@@ -88,7 +88,7 @@
 
 @include media-breakpoint-up(sm) {
   @include responsive-invisibility('.hidden-sm-md-lg-xl');
-  @include responsive-invisibility-showineditor('.hide-sm-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-sm-md-lg-xl');
 }
 
 @include media-breakpoint-up(md) {

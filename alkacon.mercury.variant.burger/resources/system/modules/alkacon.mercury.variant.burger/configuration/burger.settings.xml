@@ -93,5 +93,21 @@
             ac-full-size:       %(key.msg.setting.header.acDisplay.ac-full-size-burger)
         ]]></WidgetConfig>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaLinksTextOut.burger]]></IncludeName>
+      <PropertyName><![CDATA[metaLinksTextOut]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.metaLinksTextOut)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.metaLinksTextOut.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[metaLinksIconsOut.burger]]></IncludeName>
+      <PropertyName><![CDATA[metaLinksIconsOut]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.header.metaLinksIconsOut)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.header.metaLinksIconsOut.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
   </SettingsConfig>
 </SettingsConfigs>

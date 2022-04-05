@@ -2067,6 +2067,8 @@ html.opencms-group-editor {
                     transition: none;
 
                     .nav-main-group {
+                        display: block;
+
                         &.has-sidelogo {
                             padding-top: 0;
                         }

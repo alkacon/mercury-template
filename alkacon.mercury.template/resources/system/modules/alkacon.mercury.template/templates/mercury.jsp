@@ -49,7 +49,7 @@
 <mercury:load-plugins group="template-head-includes" type="jsp-nocache" />
 
 <%-- Common CSS and theme CSS --%>
-<c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-red.min.css' : contentPropertiesSearch['mercury.theme']}" />
+<c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
 <link href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>" rel="stylesheet"><%----%>
 <mercury:nl />
 <link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>

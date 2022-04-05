@@ -22,13 +22,13 @@
  */
 
 // Main theme colors
-$main-theme:                    #b31b34; // dark red
-$main-theme-hover:              #ff264a; // light red
+$main-theme:                    #b31b34 !default; // dark red
+$main-theme-hover:              #ff264a !default; // light red
 
-$default-border-radius:         3px;
-$btn-border-radius:             2px;
+$default-border-radius:         3px !default;
+$btn-border-radius:             2px !default;
 
-$focus-outline-color:           rgba(77,144,255,.5);
+$focus-outline-color:           rgba(77,144,255,.5) !default;
 
 $font-family-headings:          "Open Sans";
 $font-family-base:              "Montserrat";
@@ -50,7 +50,7 @@ $nav-header-font-family:        $font-family-headings !default;
 $nav-breadcrumb-padding:        5px 0 !default;
 $nav-menu-font-weight:          300 !default;
 $nav-menu-entry-border-bottom:  none !default;
-$nav-menu-border:               solid 1px $main-theme;
+$nav-menu-border:               solid 1px $main-theme !default;
 $nav-side-border-radius:        0 !default;
 $nav-side-font-weight:          400 !default;
 $fh-ac-bg-color:                $main-theme !default;
@@ -69,14 +69,14 @@ $btn-default:                   $grey-light !default;
 $btn-default-hover:             $main-theme !default;
 
 // Import the other files
-@import '../demo-defaults';
+@import './demo-defaults';
 
-$teaser-btn-color:              $grey-light;
+$teaser-btn-color:              $grey-light !default;
 
-$nav-header-show-arrows:        true;
-$nav-mobile-show-box:           true;
-$nav-mobile-position:           right;
-$nav-mobile-side-content-move:  true;
+$nav-header-show-arrows:        true !default;
+$nav-mobile-show-box:           true !default;
+$nav-mobile-position:           right !default;
+$nav-mobile-side-content-move:  true !default;
 
 $nav-header-ver-padding:        5px !default;
 

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The Burger variant generates a "Hamburger" menu for the main header navigation.]]></description>
-		<version>12.0.6</version>
+		<version>12.0.7</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -236,6 +236,45 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Layout group]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.variant.burger/formatters/navigation</destination>
+			<type>folder</type>
+			<uuidstructure>d575dc45-b5b2-11ec-92fe-0242ac11002b</uuidstructure>
+			<datecreated>Wed, 06 Apr 2022 14:07:03 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/formatters/navigation/main.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/formatters/navigation/main.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>ecf68db7-b5b2-11ec-92fe-0242ac11002b</uuidstructure>
+			<uuidresource>ecf68db8-b5b2-11ec-92fe-0242ac11002b</uuidresource>
+			<datecreated>Wed, 06 Apr 2022 14:07:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Main navigation for the header]]></value>
 				</property>
 				<property>
 					<name>locale</name>

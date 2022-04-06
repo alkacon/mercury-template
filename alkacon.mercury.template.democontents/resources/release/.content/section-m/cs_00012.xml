@@ -24,6 +24,7 @@
 <div>
 <ul>
 <li>Introduced a plugin system for formatters and dynamic functions as a more flexible replacement of the "headincludes" feature.</li>
+<li>Added a "burger" Mercury template vartiant to the default demo.</li>
 <li>Introduced a Geo search feature in order to retrieve XML contents by geo coordinates.</li>
 <li>Element setting overrides allow to change formatter settings by template variant master configuration.</li>
 </ul>

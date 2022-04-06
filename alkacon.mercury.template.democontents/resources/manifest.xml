@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>12.0.20</version>
+		<version>12.0.21</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -16232,7 +16232,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[OpenCms 10.0.0]]></value>
+					<value><![CDATA[OpenCms 10]]></value>
 				</property>
 				<property>
 					<name>Title</name>
@@ -16253,7 +16253,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 10.0.0]]></value>
+					<value><![CDATA[OpenCms 10]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16312,7 +16312,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[OpenCms 10.5.0]]></value>
+					<value><![CDATA[OpenCms 10.5]]></value>
 				</property>
 				<property>
 					<name>Title</name>
@@ -16333,7 +16333,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 10.5.0]]></value>
+					<value><![CDATA[OpenCms 10.5]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16512,11 +16512,11 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[OpenCms 11.0.0]]></value>
+					<value><![CDATA[OpenCms 11]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 11.0.0]]></value>
+					<value><![CDATA[OpenCms 11]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16533,7 +16533,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 11.0.0]]></value>
+					<value><![CDATA[OpenCms 11]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -16620,7 +16620,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>release/opencms-12.0.0-notes</destination>
+			<destination>release/opencms-12.0-notes</destination>
 			<type>folder</type>
 			<uuidstructure>69995ae0-26a5-11ec-a282-0242ac11002b</uuidstructure>
 			<datecreated>Wed, 06 Oct 2021 13:00:42 GMT</datecreated>
@@ -16632,19 +16632,19 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[OpenCms 12.0.0]]></value>
+					<value><![CDATA[OpenCms 12]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 12.0.0]]></value>
+					<value><![CDATA[OpenCms 12]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>release/opencms-12.0.0-notes/index.html</source>
-			<destination>release/opencms-12.0.0-notes/index.html</destination>
+			<source>release/opencms-12.0-notes/index.html</source>
+			<destination>release/opencms-12.0-notes/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>699b0895-26a5-11ec-a282-0242ac11002b</uuidstructure>
 			<uuidresource>699b0896-26a5-11ec-a282-0242ac11002b</uuidresource>
@@ -16653,14 +16653,14 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 12.0.0]]></value>
+					<value><![CDATA[OpenCms 12]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>release/opencms-13.0.0-notes</destination>
+			<destination>release/opencms-13.0-notes</destination>
 			<type>folder</type>
 			<uuidstructure>a37cfccb-b40b-11ec-8b99-0242ac11002b</uuidstructure>
 			<datecreated>Mon, 04 Apr 2022 11:37:42 GMT</datecreated>
@@ -16672,19 +16672,19 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property>
 					<name>NavText</name>
-					<value><![CDATA[OpenCms 13.0.0]]></value>
+					<value><![CDATA[OpenCms 13]]></value>
 				</property>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 13.0.0]]></value>
+					<value><![CDATA[OpenCms 13]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>release/opencms-13.0.0-notes/index.html</source>
-			<destination>release/opencms-13.0.0-notes/index.html</destination>
+			<source>release/opencms-13.0-notes/index.html</source>
+			<destination>release/opencms-13.0-notes/index.html</destination>
 			<type>containerpage</type>
 			<uuidstructure>a380cd60-b40b-11ec-8b99-0242ac11002b</uuidstructure>
 			<uuidresource>a380cd61-b40b-11ec-8b99-0242ac11002b</uuidresource>
@@ -16693,7 +16693,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[OpenCms 13.0.0]]></value>
+					<value><![CDATA[OpenCms 13]]></value>
 				</property>
 			</properties>
 			<relations/>

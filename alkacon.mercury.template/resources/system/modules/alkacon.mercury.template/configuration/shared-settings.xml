@@ -1283,6 +1283,19 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[visualOption.contact]]></IncludeName>
+      <PropertyName><![CDATA[visualOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.visualOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.visualOption.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[show]]></Default>
+      <WidgetConfig><![CDATA[
+            show:               %(key.msg.setting.visualOption.show)|
+            none:               %(key.msg.setting.visualOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[headlineOption.section]]></IncludeName>
       <PropertyName><![CDATA[headlineOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.headlineOption)]]></DisplayName>

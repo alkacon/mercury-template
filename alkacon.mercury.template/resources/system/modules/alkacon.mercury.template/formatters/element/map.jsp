@@ -54,6 +54,7 @@
 
 <mercury:section-piece
     cssWrapper="element type-map map-${provider}${setCssWrapperAll}"
+    cssVisual="map-visual"
     pieceLayout="${pieceLayout}"
     heading="${value.Title}"
     hsize="${hsize}"

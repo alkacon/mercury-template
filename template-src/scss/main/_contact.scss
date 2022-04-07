@@ -98,6 +98,10 @@
         > span {
             padding-right: $default-margin-verysmall;
             display: table-cell;
+
+            &.icon-label {
+                white-space: nowrap;
+            }
         }
 
         &.website,

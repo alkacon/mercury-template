@@ -40,13 +40,16 @@
       <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[visualOption.contact]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>

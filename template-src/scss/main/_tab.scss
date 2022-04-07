@@ -217,6 +217,15 @@
     }
 }
 
+.box .accordion .acco-header > a:not(.btn):not(.uncolored)  {
+    // in a box the heading color must not be changed becasue the panel will generate the background
+    color: $accordion-header-color;
+    &:focus,
+    &:hover {
+        color: get-text-color($accordion-header-bg-hover);
+    }
+}
+
 // Colored tabs
 
 @each $color-name, $bg-color, $highlight-color in $tab-colors {

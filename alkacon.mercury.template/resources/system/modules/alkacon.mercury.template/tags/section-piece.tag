@@ -98,9 +98,15 @@
     description="Markup shown for the visual if the visual is not an image.
     If both attributes 'markupVisual' and 'image' are provided, only the 'markupVisual' will be displayed." %>
 
+<%@ attribute name="cssVisual" type="java.lang.String" required="false"
+    description="'class' selectors to add to the tag surrounding the visual." %>
+
 <%@ attribute name="markupText" fragment="true" required="false"
     description="Markup shown for the text if the text is not an XML content value.
     If both attributes 'markupText' and 'text' are provided, only the 'markupText' will be displayed." %>
+
+<%@ attribute name="cssText" type="java.lang.String" required="false"
+    description="'class' selectors to add to the tag surrounding the text." %>
 
 <%@ attribute name="addHeadingId" type="java.lang.Boolean" required="false"
     description="Adds an automatically generated ID attribute for the heading, for use in anchor links.
@@ -166,9 +172,9 @@
         sizeMobile="${sizeMobile}"
         pieceTag="${pieceTag}"
         pieceClass="${pieceClass}"
-        cssText="${showText and (textOption ne 'default') ? textOption : ''}"
+        cssText="${showText and (textOption ne 'default') ? textOption : ''}${not empty cssText ? ' '.concat(cssText) : null}"
         attrVisual="${ade ? image.rdfaAttr : null}"
-        cssVisual="rs_skip${imageOri}"
+        cssVisual="rs_skip${imageOri}${not empty cssVisual ? ' '.concat(cssVisual) : null}"
         textAlignment="${textAlignment}"
         attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
         cssBody="${defaultText ? 'default' :_null}"

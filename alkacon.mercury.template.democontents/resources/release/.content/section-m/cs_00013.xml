@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[This is the Mercury "Burger" variant]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>This template variant uses a "burger" menu for all display sizes.</p>
+<p>More information about template variantes is available in the OpenCms documentation.</p>]]></content>
+    </Text>
+    <Link>
+      <Text><![CDATA[OpenCms Documentation]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/introduction/]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </Link>
+  </ContentSection>
+</ContentSectionData>

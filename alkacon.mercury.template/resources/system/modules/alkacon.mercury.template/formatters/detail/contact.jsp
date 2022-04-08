@@ -25,7 +25,6 @@
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
 <c:set var="showTitle"              value="${setting.showTitle.toBoolean}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
-<c:set var="showLink"               value="${setting.showLink.toBoolean}" />
 <c:set var="showPhone"              value="${setting.showPhone.toBoolean}" />
 <c:set var="showWebsite"            value="${setting.showWebsite.toBoolean}" />
 <c:set var="showEmail"              value="${setting.showEmail.toBoolean}" />
@@ -68,13 +67,13 @@
         <c:if test="${showImage}">
             <mercury:contact
                 kind="${valKind}"
-                image="${value.Image}"
+                link="${value.Link}"
+                linkOption="${linkOption eq 'imageOverlay' ? 'imageOverlay' : ''}"
                 name="${valName}"
                 organization="${valOrganization}"
-                imageRatio="${imageRatio}"
-                link="${showLink ? value.Link : null}"
-                linkOption="${linkOption eq 'imageOverlay' ? 'imageOverlay' : ''}"
                 hsize="${hsize}"
+                image="${value.Image}"
+                imageRatio="${imageRatio}"
                 showImage="${true}"
                 showImageZoom="${showImageZoom}"
                 showImageCopyright="${showImageCopyright}"
@@ -85,7 +84,8 @@
     <jsp:attribute name="markupText">
         <mercury:contact
             kind="${valKind}"
-            link="${showLink ? value.Link : null}"
+            link="${value.Link}"
+            linkOption="${linkOption}"
             name="${valName}"
             position="${valPosition}"
             organization="${valOrganization}"
@@ -93,7 +93,6 @@
             data="${value.Contact}"
             address="${valAddress}"
             labelOption="${labelOption}"
-            linkOption="${linkOption}"
             hsize="${hsize}"
             showName="${setShowName}"
             showPosition="${setShowPosition}"

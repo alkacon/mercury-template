@@ -6,11 +6,32 @@ The Mercury Template is a complete, modular template for [OpenCms](http://opencm
 
 ### Release history ###
 
-**Version 12.0.0** - October 12, 2021:
+**Version 13** - April 13, 2022:
+
+This update adds the 'Burger' variant for the Mercury template and provides incremental improvements to several other features. Mercury 13 should be largely backward compatible with the 12 version.
+
+* Updated for OpenCms 13.
+* Added the 'Burger' template variant that displays a buger menu for all display sizes.
+* Greatly improved the accessibility of template.
+* Added a 'skip to content' link for screen readers.
+* Added automatic tab indexing for all headings on a page.
+* Integrated the Hyvor Talk comment service with a dynamic function.
+* New setting for the accordion formatter to allow multiple open entries at once.
+* The link sequence formatters can now generate icon, text, css, title and id for each entry in a sequence.
+* The POI content has a new facility option 'Accessible public restrooms available'.
+* The flexible content formatter has a new setting to hide the output depending on screen size.
+* The dynamic list content filters formatter allows to show filters either folded or unfolded depending on screen size.
+* Improved the export options for the webform data.
+* A new setting on layout areas allows to show the side column on top of the main content on mobile devices.
+* Fixed the display of image copyright information for certain formatters.
+* Bootstrap updated to 4.6.1.
+* All NPM dependencies have been updated to a recent version.
+
+**Version 12** - October 12, 2021:
 
 This is a major update of the Mercury template. Mercury has been used to create hundreds of websites since the initial 11.x release in 2019. A lot of fine-tuning and issue fixing has been included in this release. Mercury 12 should be largely backward compatible with the 11 version.
 
-* Updated for OpenCms 12.0.0.
+* Updated for OpenCms 12.
 * Configurable cookie banner that allows users to opt-out of statistical and external cookies.
 * Contact informations in lists.
 * iCalendar links for events.
@@ -28,7 +49,7 @@ This is a major update of the Mercury template. Mercury has been used to create 
 * Bootstrap updated to 4.6.0.
 * jQuery updated to 3.6.0.
 * Using recent dart sass to compile the SASS sources to CSS.
-* All other NPM dependencies have also been updated to a recent version.
+* All NPM dependencies have been updated to a recent version.
 
 **Version 11.0.2** - August 18, 2020:
 
@@ -43,7 +64,7 @@ This is a major update of the Mercury template. Mercury has been used to create 
 * Added many new fonts and improved font handling in SCSS.
 * Added support for hyphenation, enabled by default.
 
-**Version 11.0.0** - April 30, 2019:
+**Version 11** - April 30, 2019:
 
 * Initial release with OpenCms 11.0.0.
 

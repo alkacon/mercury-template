@@ -156,9 +156,9 @@ var Mercury = function(jQ) {
 
 
     function addContext(path) {
-
         var contextPath = getInfo("context");
-        contextPath = (typeof contextPath !== "undefined") ? contextPath : "/";
+        contextPath = ((contextPath != null) && (typeof contextPath !== "undefined")) ? contextPath : "/";
+        if (DEBUG) console.info("Mercury.addContext: path=" + path + " contextPath=" + contextPath);
         path = path.startsWith("/") ? path.substr(1) : path;
         return contextPath + path;
     }

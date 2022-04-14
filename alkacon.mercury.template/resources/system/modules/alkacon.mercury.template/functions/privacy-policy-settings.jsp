@@ -25,7 +25,7 @@
 
     <c:choose>
         <c:when test="${not empty policyfile and cms.vfs.exists[policyfile]}">
-            <mercury:privacy-policy-settings cssWrapper="${cms.element.settings.cssWrapper}" />
+            <mercury:privacy-policy-settings cssWrapper="${cms.element.settings.cssWrapper}" contentPropertiesSearch="${contentPropertiesSearch}" />
         </c:when>
         <c:otherwise>
             <fmt:setLocale value="${cms.locale}" />

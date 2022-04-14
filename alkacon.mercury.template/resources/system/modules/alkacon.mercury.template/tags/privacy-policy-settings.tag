@@ -8,6 +8,9 @@
 <%@ attribute name="cssWrapper" type="java.lang.String" required="true"
     description="The CSS wrapper class to use." %>
 
+<%@ attribute name="contentPropertiesSearch" type="java.util.Map" required="false"
+    description="The properties read from the URI resource with search." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -63,6 +66,37 @@
     </label><%----%>
     <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></div><%----%>
 </div><%----%>
+
+<c:if test="${not empty contentPropertiesSearch}">
+<c:set var="matomoUrl"  value="${contentPropertiesSearch['matomo.url']}" />
+<c:set var="hasMatomoUrl" value="${not empty matomoUrl ? matomoUrl ne 'none' : false}" />
+
+<c:if test="${hasMatomoUrl}">
+    <div class="pp-element pp-matomo box"><%----%>
+    <c:choose>
+        <c:when test="${not cms.isOnlineProject}">
+            <div class="not-online"><%----%>
+                <fmt:message key="msg.page.privacypolicy.matomo.label.notonline" />
+            </div><%----%>
+        </c:when>
+        <c:otherwise>
+            <div class="optout-form"><%----%>
+                <div><%----%>
+                    <fmt:message key="msg.page.privacypolicy.matomo.label.optoutmessage" />
+                </div><%----%>
+                <div><%----%>
+                    <input type="checkbox" id="pp-matomo-optout" <%--
+                    --%>data-msg='{"msgin":"<fmt:message key="msg.page.privacypolicy.matomo.label.optedin" />",<%--
+                             --%> "msgout":"<fmt:message key="msg.page.privacypolicy.matomo.label.optedout" />"}' /><%----%>
+                    <label for="pp-matomo-optout"><span></span></label><%----%>
+                </div><%----%>
+            </div><%----%>
+        </c:otherwise>
+    </c:choose>
+    </div><%----%>
+    <mercury:nl />
+</c:if>
+</c:if>
 
 </div><%----%>
 <mercury:nl />

@@ -463,6 +463,21 @@
     }
 }
 
+.pp-element {
+    margin-top: $policy-banner-margin;
+}
+
+.pp-matomo {
+    #pp-matomo-optout {
+        margin-right: $policy-banner-margin-small;
+    }
+    .optout-form {
+        div + div {
+            margin-top: $policy-banner-margin-small;
+        }
+    }
+}
+
 html.opencms-page-editor .pp-toggle {
     .toggle-check {
         @extend %toggle-disabled;

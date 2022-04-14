@@ -38,10 +38,23 @@
 <c:if test="${not empty piwikUrl}">
     <c:set var="piwikId" value="${contentPropertiesSearch['piwik.id']}" />
     <c:set var="piwikAddData" value="${contentPropertiesSearch['piwik.data']}" />
-    <c:set var="piwikData"> data-piwik='{<%--
+    <c:set var="piwikData">data-piwik='{<%--
         --%><c:if test="${not empty piwikId}">"id":"${piwikId}",</c:if><%--
         --%><c:if test="${not empty piwikAddData}">${piwikAddData},</c:if><%--
         --%>"url":"${piwikUrl}"}' <%--
+--%></c:set>
+</c:if>
+
+<%-- Matomo URL --%>
+<c:set var="matomoUrl" value="${contentPropertiesSearch['matomo.url']}" />
+
+<c:if test="${not empty matomoUrl}">
+    <c:set var="matomoId" value="${contentPropertiesSearch['matomo.id']}" />
+    <c:set var="matomoAddData" value="${contentPropertiesSearch['matomo.data']}" />
+    <c:set var="matomoData">data-matomo='{<%--
+        --%><c:if test="${not empty matomoId}">"id":"${matomoId}",</c:if><%--
+        --%><c:if test="${not empty matomoAddData}">${matomoAddData},</c:if><%--
+        --%>"url":"${matomoUrl}"}' <%--
 --%></c:set>
 </c:if>
 
@@ -60,7 +73,7 @@
     --%>"project":"${project}",<%--
     --%>"context":"<cms:link>/</cms:link>",<%--
     --%>"locale":"${cms.locale}"<%--
---%>}'${' '}${piwikData}><%----%>
+--%>}'${empty matomoData ? '' : ' '.concat(matomoData)}${empty piwikData ? '' : ' '.concat(piwikData)}><%----%>
 <mercury:nl/>
 
 <div id="template-grid-info"></div><%----%>

@@ -467,13 +467,68 @@
     margin-top: $policy-banner-margin;
 }
 
-.pp-matomo {
-    #pp-matomo-optout {
-        margin-right: $policy-banner-margin-small;
+#pp-matomo-jst {
+    > div + div {
+        margin-top: $policy-banner-margin-small;
     }
-    .optout-form {
-        div + div {
-            margin-top: $policy-banner-margin-small;
+    .jst-msg {
+        > * {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        @include use-hyphens-text;
+    }
+    .jst-btn {
+        label.checkbox {
+            display: flex;
+            align-items: center;
+            gap: $policy-banner-margin-small;
+            font-weight: $font-weight-bold;
+            margin-bottom: 0;
+            cursor: pointer;
+
+            input {
+                position: absolute;
+                left: -9999px;
+            }
+
+            i {
+                @include round-corners($form-input-border-radius);
+                position: relative;
+                display: block;
+                width: 20px;
+                height: 20px;
+                outline: none;
+                border-width: 1px;
+                border-style: solid;
+                border-color: $form-radio-unchecked-border-color;
+                background-color: $form-input-background;
+            }
+
+            span {
+                display: block;
+                flex-shrink: 10;
+            }
+
+            input:checked + i {
+                border-color: $form-radio-checked-border-color;
+
+                &::after {
+                    color: $form-radio-checked-color;
+                    position: absolute;
+                    z-index: 10;
+                    content: '\f00c';
+                    top: -5px;
+                    left: -1px;
+                    font-size: 23px;
+                    line-height: 23px;
+                    font-family: ForkAwesome;
+                    font-weight: normal;
+                    text-align: center;
+                    overflow: visible;
+                }
+            }
         }
     }
 }

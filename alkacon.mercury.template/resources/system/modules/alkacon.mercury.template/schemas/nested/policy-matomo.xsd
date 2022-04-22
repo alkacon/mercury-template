@@ -1,0 +1,68 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+
+    <xsd:element name="MatomoPolicyData" type="OpenCmsMatomoPolicyData" />
+
+    <xsd:complexType name="OpenCmsMatomoPolicyData">
+        <xsd:sequence>
+            <xsd:element name="MatomoPolicy" type="OpenCmsMatomoPolicy" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsMatomoPolicy">
+        <xsd:sequence>
+            <xsd:element name="JsTrackingText" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="JsTrackingOn" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="JsTrackingOff" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="DntText" type="OpenCmsString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <searchsettings containerPageOnly="true"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>JsTrackingText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.Matomo.JsTrackingText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.Matomo.JsTrackingText.help)]]></Description>
+                    <Widget>html</Widget>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.Matomo.JsTrackingText)]]></Default>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>JsTrackingOn</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.Matomo.JsTrackingOn)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.Matomo.JsTrackingOn.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.Matomo.JsTrackingOn)]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>JsTrackingOff</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.Matomo.JsTrackingOff)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.Matomo.JsTrackingOff.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.Matomo.JsTrackingOff)]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>DntText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.Matomo.DntText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.Matomo.DntText.help)]]></Description>
+                    <Widget>html</Widget>
+                    <Default><![CDATA[%(key.msg.page.privacypolicy.Matomo.DntText)]]></Default>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

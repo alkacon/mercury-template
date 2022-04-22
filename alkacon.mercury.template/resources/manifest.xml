@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.1</version>
+		<version>13.0.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6510,6 +6510,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Nested XSD for parameters]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/policy-matomo.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/policy-matomo.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>bc9fc2ff-c16f-11ec-a7e5-0242ac11002b</uuidstructure>
+			<uuidresource>bc9fc300-c16f-11ec-a7e5-0242ac11002b</uuidresource>
+			<datecreated>Thu, 21 Apr 2022 12:36:59 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for Matomo specific privacy policy options]]></value>
 				</property>
 			</properties>
 			<relations/>

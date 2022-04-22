@@ -50,9 +50,14 @@
 
 <c:if test="${not empty matomoUrl}">
     <c:set var="matomoId" value="${contentPropertiesSearch['matomo.id']}" />
+    <c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
+    <c:set var="useMatomoJst" value="${not empty matomoJst ? fn:contains(matomoJst, 'true') : false}" />
+    <c:set var="useMatomoDnt" value="${not empty matomoJst ? fn:contains(matomoJst, 'dnt') : false}" />
     <c:set var="matomoAddData" value="${contentPropertiesSearch['matomo.data']}" />
     <c:set var="matomoData">data-matomo='{<%--
         --%><c:if test="${not empty matomoId}">"id":"${matomoId}",</c:if><%--
+        --%>"jst":${useMatomoJst},<%--
+        --%>"dnt":${useMatomoDnt},<%--
         --%><c:if test="${not empty matomoAddData}">${matomoAddData},</c:if><%--
         --%>"url":"${matomoUrl}"}' <%--
 --%></c:set>
@@ -73,7 +78,8 @@
     --%>"project":"${project}",<%--
     --%>"context":"<cms:link>/</cms:link>",<%--
     --%>"locale":"${cms.locale}"<%--
---%>}'${empty matomoData ? '' : ' '.concat(matomoData)}${empty piwikData ? '' : ' '.concat(piwikData)}><%----%>
+--%>}'${empty matomoData ? '' : ' '.concat(matomoData)}<%--
+--%>${empty piwikData ? '' : ' '.concat(piwikData)}><%----%>
 <mercury:nl/>
 
 <div id="template-grid-info"></div><%----%>

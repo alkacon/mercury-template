@@ -89,7 +89,7 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
     if (matomoData.url.endsWith("/")) {
         matomoData.url = matomoData.url.substring(0, matomoData.url.length - 1);
     }
-    if (DEBUG) console.info("Analytics.addMatomo() initializing Matomo using url: " + matomoData.url + " and id: " + matomoData.id + " cookie Consent: " + userAllowedStatisticalCookies);
+    if (DEBUG) console.info("Analytics.addMatomo() Initializing Matomo using url: " + matomoData.url + " and id: " + matomoData.id + " - Cookie Consent: " + userAllowedStatisticalCookies + " - JS Tracking: " + matomoData.jst+ " - DNT: " + matomoData.dnt);
 
     // see: https://developer.matomo.org/guides/tracking-javascript-guide
     if (matomoData.setDocumentTitle == "true"){
@@ -121,27 +121,6 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
     m_matomoInitialized = true;
 }
 
-function setMatomoOptOutText(element, data) {
-    _paq.push([function() {
-          element.checked = this.isUserOptedOut();
-          document.querySelector('.pp-matomo label[for=pp-matomo-optout] span').innerText = this.isUserOptedOut() ? data.msgout : data.msgin;
-    }]);
-}
-
-function initMatomoOptOut(element) {
-    // see: https://developer.matomo.org/guides/tracking-javascript-guide#asking-for-consent
-    var optOutData = $("#pp-matomo-optout").data("msg");
-    element.addEventListener("click", function() {
-        if (this.checked) {
-            _paq.push(['optUserOut']);
-        } else {
-            _paq.push(['forgetUserOptOut']);
-        }
-        setMatomoOptOutText(element, optOutData);
-    });
-    setMatomoOptOutText(element, optOutData);
-}
-
 /****** Exported functions ******/
 
 export function init(jQuery, debug) {
@@ -170,7 +149,7 @@ export function init(jQuery, debug) {
                     console.info("Analytics.init() Google analytic ID is: " + googleAnalyticsId);
                     if (! Mercury.isOnlineProject()) console.info("Analytics.init() Google analytics NOT initialized because not in the ONLINE project!");
                 } else {
-                    console.info("Analytics.init() Google analytic ID (property 'google.analytics') not set in OpenCms VFS!");
+                    console.info("Analytics.init() Google analytic ID (property 'google.analytics') not set!");
                 }
             }
             if (Mercury.isOnlineProject() && (googleAnalyticsId != null)) {
@@ -199,16 +178,16 @@ export function init(jQuery, debug) {
                             if (DEBUG) console.info("Analytics.init() Piwik NOT initialized because not in the ONLINE project!");
                         }
                     } else {
-                        if (DEBUG) console.info("Analytics.init() Piwik ID (property 'piwik.id') not set in OpenCms VFS!");
+                        if (DEBUG) console.info("Analytics.init() Piwik ID (property 'piwik.id') not set!");
                     }
                 } else {
-                    if (DEBUG) console.info("Analytics.init() Piwik URL (property 'piwik.url') not set in OpenCms VFS!");
+                    if (DEBUG) console.info("Analytics.init() Piwik URL (property 'piwik.url') not set!");
                 }
             });
         }
 
     } else {
-        if (DEBUG) console.info("Analytics.init() Statistical cookies not accepted be the user - Google / Piwik analytics are disabled!");
+        if (DEBUG) console.info("Analytics.init() Statistical cookies not accepted - Google / Piwik analytics disabled!");
     }
 
     if (! m_matomoInitialized) {
@@ -217,30 +196,30 @@ export function init(jQuery, debug) {
 
             var $element = jQ(this);
             var matomoData = null;
-            if (typeof $element.data("matomo") != 'undefined') {
+            if (typeof $element.data("matomo") !== 'undefined') {
                 matomoData = $element.data("matomo");
             }
             if (matomoData != null) {
                 if (DEBUG) console.info("Analytics.init() Matomo data found:");
                 if (DEBUG) jQ.each(matomoData, function( key, value ) { console.info( "- " + key + ": " + value ); });
-                if (typeof matomoData.id != 'undefined') {
-                    if (Mercury.isOnlineProject()) {
-                        // only enable Matomo in the online project when ID and URL is set
-                        addMatomo(matomoData, userAllowedStatisticalCookies);
+                if (userAllowedStatisticalCookies || matomoData.jst) {
+                    if ((typeof matomoData.id !== 'undefined') && (typeof matomoData.url !== 'undefined')) {
+                        if (Mercury.isOnlineProject()) {
+                            // only enable Matomo in the online project when ID and URL is set
+                                addMatomo(matomoData, userAllowedStatisticalCookies);
+                        } else {
+                            if (DEBUG) console.info("Analytics.init() Matomo NOT initialized because not in the ONLINE project!");
+                        }
                     } else {
-                        if (DEBUG) console.info("Analytics.init() Matomo NOT initialized because not in the ONLINE project!");
+                        if (DEBUG && (typeof matomoData.id === 'undefined')) console.info("Analytics.init() Matomo ID (property 'matomo.id') not set!");
+                        if (DEBUG && (typeof matomoData.url === 'undefined')) console.info("Analytics.init() Matomo URL (property 'matomo.url') not set!");
                     }
                 } else {
-                    if (DEBUG) console.info("Analytics.init() Matomo ID (property 'matomo.id') not set in OpenCms VFS!");
+                    if (DEBUG) console.info("Analytics.init() Statistical cookies not accepted AND tracking by JavaScript not enabled - Matomo analytics disabled!");
                 }
             } else {
-                if (DEBUG) console.info("Analytics.init() Matomo URL (property 'matomo.url') not set in OpenCms VFS!");
+                if (DEBUG) console.info("Analytics.init() Matomo properties 'matomo.url' and 'matomo.id' not set!");
             }
         });
-
-        var matomoOptOut = document.getElementById("pp-matomo-optout");
-        if (matomoOptOut != null) {
-            initMatomoOptOut(matomoOptOut);
-        }
     }
 }

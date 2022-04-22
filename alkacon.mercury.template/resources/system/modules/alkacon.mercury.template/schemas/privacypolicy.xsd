@@ -2,6 +2,7 @@
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/policy-matomo.xsd" />
 
     <xsd:element name="PrivacyPolicyData" type="OpenCmsPrivacyPolicyData"/>
 
@@ -25,6 +26,7 @@
             <xsd:element name="LinkLegal" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="CookieExpirationDays" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="CookieExpirationDaysNoStats" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MatomoPolicy" type="OpenCmsMatomoPolicy" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -152,6 +154,11 @@
                     ]]></WidgetConfig>
                     <Search>false</Search>
                     <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>MatomoPolicy</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.Matomo)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.Matomo.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

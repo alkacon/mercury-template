@@ -260,6 +260,7 @@ function initPrivacyToggle() {
                     var checked = jQ(this).prop('checked');
                     if (DEBUG) console.info("PrivacyPolicy: Statistical cookie toggle changed to value=" + checked);
                     setPrivacyCookiesStatistical(checked);
+                    initMatomoJstControl();
                     resetTemplateScript();
                 });
             }
@@ -267,6 +268,54 @@ function initPrivacyToggle() {
     });
 
     m_bannerData.togglesInitialized = true;
+}
+
+
+function setMatomoOptOutText(jstCheckbox, data) {
+    _paq.push([function() {
+          jstCheckbox.checked = this.isUserOptedOut();
+          document.querySelector('#pp-matomo-jst label[for=pp-matomo-optout] span').innerText = (jstCheckbox.checked ? data.jstoff : data.jston);
+          if (DEBUG) console.info("PrivacyPolicy: Matomo JS tracking opt-out checkbox set to value=" + jstCheckbox.checked);
+    }]);
+}
+
+function initMatomoJstControl() {
+    var $matomoJstControl = jQ("#pp-matomo-jst").first();
+    if ($matomoJstControl.length) {
+        if (! cookiesAcceptedStatistical()) {
+            $matomoJstControl.show();
+            var jstData = $matomoJstControl.data("jst");
+            var showDntText = false;
+            if (jstData.dnttext) {
+                // see: https://www.cogmentis.com/848/how-to-properly-check-for-do-not-track-with-javascript/
+                var dnt = (typeof navigator.doNotTrack !== 'undefined')   ? navigator.doNotTrack
+                    : (typeof window.doNotTrack !== 'undefined')      ? window.doNotTrack
+                    : (typeof navigator.msDoNotTrack !== 'undefined') ? navigator.msDoNotTrack
+                    : null;
+                showDntText = (1 === parseInt(dnt) || 'yes' == dnt);
+            }
+            // see: https://developer.matomo.org/guides/tracking-javascript-guide#asking-for-consent
+            if (showDntText) {
+                jQ("#pp-matomo-jst .jst-msg").html(jstData.dnttext);
+                jQ("#pp-matomo-jst .jst-btn").remove();
+            } else {
+                jQ("#pp-matomo-jst .jst-msg").html(jstData.jsttext);
+                var jstCheckbox = document.getElementById("pp-matomo-optout");
+                jstCheckbox.addEventListener("click", function() {
+                    if (jstCheckbox.checked) {
+                        _paq.push(['optUserOut']);
+                    } else {
+                        _paq.push(['forgetUserOptOut']);
+                    }
+                    setMatomoOptOutText(jstCheckbox, jstData);
+                });
+                setMatomoOptOutText(jstCheckbox, jstData);
+            }
+        } else {
+             $matomoJstControl.hide();
+             if (DEBUG) console.info("PrivacyPolicy: Matomo JS tracking options not displayed, cookies are accrepted.");
+        }
+    }
 }
 
 function setPrivacyCookies(allowTechnical, allowExternal, allowStatistical) {
@@ -558,4 +607,5 @@ export function init(jQuery, debug) {
     initBannerData();
     initPrivacyBanner();
     initPrivacyToggle();
+    initMatomoJstControl();
 }

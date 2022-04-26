@@ -85,5 +85,8 @@
     <Setting>
       <IncludeName><![CDATA[listEntryWrapper.default]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listDetailLinkOverride.default]]></IncludeName>
+    </Setting>
   </NewFormatter>
 </NewFormatters>

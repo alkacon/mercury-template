@@ -1954,6 +1954,13 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[listDetailLinkOverride.default]]></IncludeName>
+      <PropertyName><![CDATA[listDetailLinkOverride]]></PropertyName>
+      <Visibility><![CDATA[elementAndParentIndividual]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showFile.true]]></IncludeName>
       <PropertyName><![CDATA[showFile]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.download.showFile)]]></DisplayName>

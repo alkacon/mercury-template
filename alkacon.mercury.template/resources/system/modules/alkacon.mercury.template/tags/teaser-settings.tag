@@ -75,6 +75,12 @@
 <c:set var="paragraph"                      value="${content.valueList.Paragraph['0']}" />
 
 <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
+<c:if test="${setting.listDetailLinkOverride.toBoolean}">
+    <c:set var="propertyDetailLink" value="${content.resource.property['mercury.detail.link']}" />
+    <c:if test="${not empty propertyDetailLink and cms.vfs.exists[propertyDetailLink]}">
+        <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${propertyDetailLink}</cms:link></c:set>
+    </c:if>
+</c:if>
 
 <c:if test="${setting.dateFormatAddTime.toBoolean and fn:startsWith(setDateFormat, 'fmt-') and not fn:endsWith(setDateFormat, '-TIME')}">
     <c:set var="setDateFormat" value="${setDateFormat}-TIME" />

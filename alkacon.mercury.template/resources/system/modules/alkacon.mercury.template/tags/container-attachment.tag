@@ -28,19 +28,43 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
+<c:set var="isDetailRequest" value="${cms.detailRequest}" />
+<c:choose>
+    <c:when test="${isDetailRequest}">
+        <%-- This is a standard request to a detail page --%>
+        <c:set var="isRequestToMatchingPage"         value="${cms.detailContentId eq content.file.structureId}" />
+        <c:set var="isDetailOnly"                    value="${true}" />
+    </c:when>
+    <c:otherwise>
+         <%-- This is not a detail request  --%>
+        <c:set var="propDetailLink"                  value="${content.resource.property['mercury.detail.link']}" />
+         <c:choose>
+            <c:when test="${not empty propDetailLink and cms.vfs.exists[propDetailLink]}">
+                <%-- The detail content hat the property 'mercury.detail.link' set - check if the current uri is identical to one set in the property --%>
+                <c:set var="propDetailLinkRes"       value="${cms.vfs.readResource[propDetailLink]}" />
+                <c:if test="${propDetailLinkRes.isFolder()}">
+                    <c:set var="propDetailLinkRes"   value="${cms.wrap[cms.vfs.cmsObject.readDefaultFile(propDetailLink)]}" />
+                </c:if>
+                <c:set var="isRequestToMatchingPage" value="${cms.vfs.readResource[cms.requestContext.uri].structureId eq propDetailLinkRes.structureId}" />
+                <c:set var="isDetailRequest"         value="${isRequestToMatchingPage}" />
+                <c:set var="isDetailOnly"            value="${false}" />
+            </c:when>
+            <c:otherwise>
+                <%-- Check if this is a request on the matching detail page to display a placeholder for the container  --%>
+                <c:set var="isDetailPageEditMode"    value="${cms.isEditMode and (fn:replace(cms.requestContext.uri, '/index.html' ,'/') eq cms.typeDetailPage[content.typeName])}" />
+            </c:otherwise>
+         </c:choose>
+    </c:otherwise>
+</c:choose>
 
-<%-- Only render attachment containers for a detail request to the matching detail page. --%>
-<%-- Required so we can use a detail formatter, e.g. for the image series, inside an attachment container of another content. --%>
-<c:set var="isRequestToMatchingPage"    value="${cms.detailContentId eq content.file.structureId}" />
-<%-- Render a placeholder in the editor in case the configured detail page of the content is edited --%>
-<c:set var="isDetailPageEditMode"       value="${cms.isEditMode and (fn:replace(cms.requestContext.uri, '/index.html' ,'/') eq cms.typeDetailPage[content.typeName])}" />
 <c:if test="${isRequestToMatchingPage or isDetailPageEditMode}">
 
     <c:set var="type" value="${empty type ? 'element' : type }" />
     <c:set var="cssWrapper" value="${empty cssWrapper ? 'attachment-container' : cssWrapper}" />
 
     <c:choose>
-        <c:when test="${not cms.detailRequest and isDetailPageEditMode}">
+        <c:when test="${not isDetailRequest and isDetailPageEditMode}">
+            <%-- Render a placeholder in the editor in case the configured detail page of the content is edited --%>
             <div class="${cssWrapper}"><%----%>
                 <mercury:container-box
                     label="${name}"
@@ -53,13 +77,14 @@
             <mercury:nl />
         </c:when>
 
-        <c:when test="${cms.detailRequest and isRequestToMatchingPage}">
+        <c:when test="${isDetailRequest and isRequestToMatchingPage}">
+            <%-- Render the container in case this is a detail request to the matching page --%>
             <cms:container
                 name="${name}"
                 nameprefix="none"
                 type="${type}"
                 tagClass="${cssWrapper}"
-                detailonly="true"
+                detailonly="${isDetailOnly}"
                 editableby="${role}"
                 maxElements="${maxElements}" >
                 <mercury:container-box

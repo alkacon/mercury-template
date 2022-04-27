@@ -81,15 +81,16 @@ function loadPolicy(callback) {
         if (DEBUG) console.info("PrivacyPolicy: Loading policy data from " + policyLink);
 
         jQ.get(policyLink, function(ajaxResult) {
-
             m_policy = ajaxResult;
             m_policy.loaded = true;
 
             if (callback) {
                 callback();
             }
-
-        }, "json");
+        }, "json").fail(function() {
+            if (DEBUG) console.info("PrivacyPolicy: Failed to load policy data!");
+            initExternalElements(true);
+        });
     }
 }
 
@@ -385,19 +386,21 @@ function createExternalElementToggle(heading, message, footer, isModal) {
 
     var cookieHtml =
         '<div class=\"cookie-content\">' +
-            '<div class=\"cookie-header\" tabindex=\"0\">' + heading + '</div>' +
+            (typeof heading !== "undefined" ? '<div class=\"cookie-header\" tabindex=\"0\">' + heading + '</div>' : '') +
             '<div class=\"cookie-message\">' + message + '</div>' +
-            '<div class=\"cookie-switch pp-toggle pp-toggle-external animated\">' +
-                '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\"' + (isModal ? ' disabled' : '') + '>' +
-                '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
-                    '<span class=\"toggle-box\">' +
-                        '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togOn + '\" data-unchecked=\"' + m_policy.togOff + '\"></span>' +
-                        '<span class=\"toggle-slider\"></span>' +
-                    '</span>' +
-                '</label>' +
-                '<div class=\"toggle-text\">' + m_policy.togLEx + '</div>' +
-            '</div>' +
-            '<div class=\"cookie-footer\">' + footer + '</div>' +
+            (typeof m_policy.togLEx !== "undefined" ?
+                '<div class=\"cookie-switch pp-toggle pp-toggle-external animated\">' +
+                    '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\"' + (isModal ? ' disabled' : '') + '>' +
+                    '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
+                        '<span class=\"toggle-box\">' +
+                            '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togOn + '\" data-unchecked=\"' + m_policy.togOff + '\"></span>' +
+                            '<span class=\"toggle-slider\"></span>' +
+                        '</span>' +
+                    '</label>' +
+                    '<div class=\"toggle-text\">' + m_policy.togLEx + '</div>' +
+                '</div>'
+            : '' ) +
+            (typeof footer !== "undefined" ? '<div class=\"cookie-footer\">' + footer + '</div>' : '') +
         '</div>';
 
     return replaceLinkMacros(cookieHtml);

@@ -8,6 +8,9 @@
 <%@ attribute name="cssWrapper" type="java.lang.String" required="true"
     description="The CSS wrapper class to use." %>
 
+<%@ attribute name="policyFile" type="java.lang.String" required="false"
+    description="The privacy policy configuration file." %>
+
 <%@ attribute name="contentPropertiesSearch" type="java.util.Map" required="false"
     description="The properties read from the URI resource with search." %>
 
@@ -71,26 +74,23 @@
 </div><%----%>
 <mercury:nl />
 
-<c:if test="${not empty contentPropertiesSearch}">
-<c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
-<c:set var="useMatomoJst" value="${not empty matomoJst ? fn:contains(matomoJst, 'true') : false}" />
-<c:set var="useMatomoDnt" value="${not empty matomoJst ? fn:contains(matomoJst, 'dnt') : false}" />
-<c:set var="matomoUrl"  value="${contentPropertiesSearch['matomo.url']}" />
-<c:set var="hasMatomoUrl" value="${not empty matomoUrl ? matomoUrl ne 'none' : false}" />
-<c:set var="matomoId"  value="${contentPropertiesSearch['matomo.id']}" />
-<c:set var="hasMatomoId" value="${not empty matomoId ? matomoId ne 'none' : false}" />
+<c:if test="${not empty contentPropertiesSearch and not empty policyFile and policyFile ne 'none'}">
+    <c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
+    <c:set var="useMatomoJst" value="${not empty matomoJst ? fn:contains(matomoJst, 'true') : false}" />
+    <c:set var="useMatomoDnt" value="${not empty matomoJst ? fn:contains(matomoJst, 'dnt') : false}" />
+    <c:set var="matomoUrl"  value="${contentPropertiesSearch['matomo.url']}" />
+    <c:set var="hasMatomoUrl" value="${not empty matomoUrl ? matomoUrl ne 'none' : false}" />
+    <c:set var="matomoId"  value="${contentPropertiesSearch['matomo.id']}" />
+    <c:set var="hasMatomoId" value="${not empty matomoId ? matomoId ne 'none' : false}" />
 
-<c:if test="${useMatomoJst and hasMatomoUrl and hasMatomoId}">
+    <c:if test="${useMatomoJst and hasMatomoUrl and hasMatomoId}">
 
-    <c:set var="policyfile" value="${empty contentPropertiesSearch['mercury.privacy.policy'] ? 'none' : contentPropertiesSearch['mercury.privacy.policy']}" />
-    <c:if test="${not empty policyfile and policyfile ne 'none'}">
-
-        <c:if test="${not fn:startsWith(policyfile, '/')}">
-            <c:set var="subSitePolicy" value="${cms.subSitePath.concat('.content/').concat(policyfile)}" />
-            <c:set var="sitePolicy" value="${'/.content/'.concat(policyfile)}" />
-            <c:set var="policyfile" value="${cms.vfs.exists[subSitePolicy] ? subSitePolicy : sitePolicy}" />
+        <c:if test="${not fn:startsWith(policyFile, '/')}">
+            <c:set var="subSitePolicy" value="${cms.subSitePath.concat('.content/').concat(policyFile)}" />
+            <c:set var="sitePolicy" value="${'/.content/'.concat(policyFile)}" />
+            <c:set var="policyFile" value="${cms.vfs.exists[subSitePolicy] ? subSitePolicy : sitePolicy}" />
         </c:if>
-        <c:set var="policyRes" value="${cms.vfs.readXml[policyfile]}" />
+        <c:set var="policyRes" value="${cms.vfs.readXml[policyFile]}" />
 
         <c:choose>
             <c:when test="${not cms.isOnlineProject}">
@@ -126,7 +126,6 @@
         <mercury:nl />
 
     </c:if>
-</c:if>
 </c:if>
 
 </div><%----%>

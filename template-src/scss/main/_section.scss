@@ -191,7 +191,6 @@
         color: get-text-color($body-bg);
 
         .text-section {
-            background-color: $body-bg;
             border: 1px solid $grey-lighter;
         }
 
@@ -203,6 +202,7 @@
 
     &.color-grey {
         color: get-text-color($grey-lighter);
+
         h1, h2, h3, h4, h5, h6 {
             color: get-text-color($grey-lighter);
         }
@@ -212,18 +212,9 @@
         color: get-text-color($main-theme);
 
         .text-section {
-            background-color: $main-theme;
-
-            *:not(a):not(span) {
-                color: get-text-color($main-theme);
-            }
-
-            .btn {
-                border-color: $white;
-                background-color: $white;
-                color: $text-dark;
-            }
+            @include box-color($main-theme);
         }
+
         .image-section .heading .text-heading {
             background-color: transparentize($main-theme, 0.35);
         }

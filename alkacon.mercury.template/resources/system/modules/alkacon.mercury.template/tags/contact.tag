@@ -337,31 +337,50 @@
 
             <c:set var="linkattr">itemprop="url"</c:set>
             <c:if test="${showWebsite}">
-                <c:set var="websiteURL" value="${data.value.Website.toLink}" />
-                <c:if test="${fn:startsWith(websiteURL, '/')}">
-                    <c:set var="websiteURL" value="${cms.site.url}${websiteURL}" />
-                </c:if>
-                <c:if test="${fn:endsWith(websiteURL, '/')}">
-                    <c:set var="websiteURL" value="${fn:substring(websiteURL, 0, fn:length(websiteURL)-1)}"/>
-                </c:if>
+
+                <c:set var="websiteLink" value="${data.value.Website}" />
                 <c:choose>
-                    <c:when test="${fn:startsWith(websiteURL, 'https://')}">
-                        <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'https://'))}" />
+                    <c:when test="${websiteLink.isSet and websiteLink.value.URI.isSet}">
+                        <c:set var="websiteURL" value="${websiteLink.value.Text.isSet ? websiteLink.value.Text.toString : websiteLink.value.URI.toLink}" />
+                        <c:set var="websiteNewWin" value="${websiteNewWin or websiteLink.value.NewWindow.toBoolean}" />
+                        <c:if test="${websiteLink.value.Text.isSet}">
+                            <c:set var="websiteTitle" value="${websiteLink.value.Text.toString}" />
+                        </c:if>
                     </c:when>
-                    <c:when test="${fn:startsWith(websiteURL, 'http://')}">
-                        <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'http://'))}" />
+                    <c:when test="${websiteLink.isSet}">
+                         <c:set var="websiteURL" value="${websiteLink.toLink}" />
                     </c:when>
                 </c:choose>
-                <div class="${showMinLabels ? 'website' : 'website tablerow'}"><%----%>
-                     <c:if test="${not showMinLabels}">
-                        <mercury:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                            <jsp:attribute name="text"><fmt:message key="msg.page.contact.website"/></jsp:attribute>
-                        </mercury:icon-prefix>
+
+                <c:if test="${not empty websiteURL}">
+                    <c:if test="${not websiteLink.value.Text.isSet}">
+                        <c:if test="${fn:startsWith(websiteURL, '/')}">
+                            <c:set var="websiteURL" value="${cms.site.url}${websiteURL}" />
+                        </c:if>
+                        <c:if test="${fn:endsWith(websiteURL, '/')}">
+                            <c:set var="websiteURL" value="${fn:substring(websiteURL, 0, fn:length(websiteURL)-1)}"/>
+                        </c:if>
+                        <c:choose>
+                            <c:when test="${fn:startsWith(websiteURL, 'https://')}">
+                                <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'https://'))}" />
+                            </c:when>
+                            <c:when test="${fn:startsWith(websiteURL, 'http://')}">
+                                <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'http://'))}" />
+                            </c:when>
+                        </c:choose>
                     </c:if>
-                    <span><%----%>
-                         <mercury:link link="${data.value.Website}" attr="${linkattr}" newWin="${websiteNewWin}">${websiteURL}</mercury:link><%----%>
-                    </span><%----%>
-                </div><%----%>
+                    <div class="${showMinLabels ? 'website' : 'website tablerow'}"><%----%>
+                         <c:if test="${not showMinLabels}">
+                            <mercury:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                                <jsp:attribute name="text"><fmt:message key="msg.page.contact.website"/></jsp:attribute>
+                            </mercury:icon-prefix>
+                        </c:if>
+                        <span><%----%>
+                             <mercury:link link="${data.value.Website}" attr="${linkattr}" newWin="${websiteNewWin}">${websiteURL}</mercury:link><%----%>
+                        </span><%----%>
+                    </div><%----%>
+                </c:if>
+
                 <c:set var="linkattr" value="" />
             </c:if>
 

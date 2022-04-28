@@ -33,6 +33,9 @@
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[formCssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[loginproject.login]]></IncludeName>
     </Setting>
     <Setting>

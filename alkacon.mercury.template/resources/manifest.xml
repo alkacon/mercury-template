@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.8</version>
+		<version>13.0.10</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6136,6 +6136,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Nested XSD for booking form]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/contact-data.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/contact-data.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>55342bee-c6e7-11ec-9e26-0242ac11002b</uuidstructure>
+			<uuidresource>55342bef-c6e7-11ec-9e26-0242ac11002b</uuidresource>
+			<datecreated>Thu, 28 Apr 2022 11:35:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for organization / person contact data]]></value>
 				</property>
 			</properties>
 			<relations/>

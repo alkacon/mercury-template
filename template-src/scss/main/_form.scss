@@ -650,6 +650,19 @@
             padding: 4px 10px;
         }
 
+        .input,
+        .textarea {
+            .icon-append ~ input, // "~" instead of "+" required by datepicker
+            .icon-append + textarea {
+                padding-right: 34px;
+            }
+
+            .icon-prepend ~ input,
+            .icon-prepend + textarea {
+                padding-left: 42px;
+            }
+        }
+
         .select {
             i {
                 &::before {

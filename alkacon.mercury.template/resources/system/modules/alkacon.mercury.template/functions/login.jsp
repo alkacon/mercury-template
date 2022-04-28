@@ -17,6 +17,7 @@
 <c:set var="cssWrapper"             value="${setCssWrapperAll}" />
 <c:set var="loginproject"           value="${setting.loginproject.isSet ? setting.loginproject.toString : 'Online'}" />
 <c:set var="loginou"                value="${setting.loginou.isSet ? fn:trim(cms.element.setting.loginou.toString) : ''}" />
+<c:set var="formCssWrapper"         value="${setting.formCssWrapper}" />
 
 <%-- Must close setting tag here because the loginBean uses inline code --%>
 </mercury:setting-defaults>
@@ -70,7 +71,7 @@
 <mercury:nl/>
 <div class="element type-login-form pivot${cssWrapper}"><%----%>
 
-    <form class="styled-form" target="_self" method="post"><%----%>
+    <form class="styled-form ${formCssWrapper}" target="_self" method="post"><%----%>
         <input type="hidden" name="requestedResource" value="${param.requestedResource}" /><%----%>
         <c:choose>
 

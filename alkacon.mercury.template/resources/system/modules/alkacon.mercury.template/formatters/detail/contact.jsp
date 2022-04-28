@@ -41,7 +41,7 @@
 <c:set var="labelOption"            value="${setting.labels.toString}" />
 <c:set var="linkOption"             value="${setting.linkOption.toString}" />
 
-<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? 'compact ' : ''}" />
+<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? ' compact ' : ''}" />
 
 <c:set var="hsizeTitle"             value="${hsize}" />
 <c:set var="hsize"                  value="${showTitle and value.Title.isSet ? hsize + 1 : hsize}" />

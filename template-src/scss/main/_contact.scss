@@ -125,4 +125,15 @@
     .img-responsive {
         width: 100%;
     }
+
+    .note {
+        > * {
+            // add margins for all elements in text piece
+            margin-bottom: $piece-text-margin;
+            &:last-child {
+                // last element in text must not add margin
+                margin-bottom: 0;
+            }
+        }
+    }
 }

@@ -4,7 +4,7 @@
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/image.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/contact-name.xsd" />
-    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/contact-item.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/contact-data.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
 
     <xsd:element name="ContactData" type="OpenCmsContactData" />

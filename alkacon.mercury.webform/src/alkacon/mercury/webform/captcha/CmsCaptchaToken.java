@@ -138,6 +138,7 @@ public class CmsCaptchaToken {
     public boolean isValid() {
 
         Date now = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
+        LOG.debug("Token is valid " + now.before(m_expiresAt) + ", now " + now + ", expires at " + m_expiresAt);
         return now.before(m_expiresAt);
     }
 

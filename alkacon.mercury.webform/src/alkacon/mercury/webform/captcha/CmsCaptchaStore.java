@@ -27,41 +27,23 @@
 
 package alkacon.mercury.webform.captcha;
 
-import org.opencms.jsp.CmsJspActionElement;
 import org.opencms.main.CmsLog;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import javax.servlet.jsp.PageContext;
 
 import org.apache.commons.logging.Log;
 
 /**
- * Class that gives access to a concurrent captcha token store
- * on the application context level.
+ * Class that gives access to a concurrent captcha token store.
  */
 public class CmsCaptchaStore {
-
-    /** Name of the captcha store attribute */
-    public static final String ATTRIBUTE_CAPTCHASTORE = CmsCaptchaStore.class.getName();
 
     /** The log object for this class. */
     private static final Log LOG = CmsLog.getLog(CmsCaptchaStore.class);
 
-    /** The JSP context. */
-    CmsJspActionElement m_jspActionElement;
-
-    /**
-     * Creates a new captcha store.
-     * <p>
-     *
-     * @param jsp The JSP context
-     */
-    public CmsCaptchaStore(CmsJspActionElement jsp) {
-
-        m_jspActionElement = jsp;
-    }
+    /** The token store. */
+    private static final Map<String, CmsCaptchaToken> STORE = new HashMap<String, CmsCaptchaToken>();
 
     /**
      * Whether a valid captcha token is stored for a given token ID.
@@ -70,9 +52,13 @@ public class CmsCaptchaStore {
      * @param tokenId The token ID.
      * @return Whether a captcha token is available.
      */
-    public boolean contains(String tokenId) {
+    public static synchronized boolean contains(String tokenId) {
 
-        return getStore().containsKey(tokenId) && getStore().get(tokenId).isValid();
+        LOG.debug(tokenId + ": Store contains key " + STORE.containsKey(tokenId));
+        if (STORE.containsKey(tokenId)) {
+            LOG.debug(tokenId + ": Token is valid " + STORE.get(tokenId).isValid());
+        }
+        return STORE.containsKey(tokenId) && STORE.get(tokenId).isValid();
     }
 
     /**
@@ -83,13 +69,15 @@ public class CmsCaptchaStore {
      * @param tokenId The token ID
      * @return The stored captcha token.
      */
-    public CmsCaptchaToken get(String tokenId) {
+    public static synchronized CmsCaptchaToken get(String tokenId) {
 
-        clean();
         if (!contains(tokenId)) {
+            LOG.debug(tokenId + ": Token is not stored, returning null.");
             return null;
         }
-        return getStore().get(tokenId);
+        clean();
+        LOG.debug(tokenId + ": Token is stored.");
+        return STORE.get(tokenId);
     }
 
     /**
@@ -100,9 +88,14 @@ public class CmsCaptchaStore {
      * @param tokenId the token ID
      * @return Whether the captcha phrase was evaluated successfully
      */
-    public boolean isPhraseValid(String tokenId) {
+    public static synchronized boolean isPhraseValid(String tokenId) {
 
         CmsCaptchaToken captchaToken = get(tokenId);
+        if (captchaToken == null) {
+            LOG.debug(tokenId + ": Phrase is assumed invalid because token is null.");
+        } else {
+            LOG.debug(tokenId + ": Phrase is valid " + captchaToken.isPhraseValid());
+        }
         return (captchaToken != null) && captchaToken.isPhraseValid();
     }
 
@@ -113,9 +106,14 @@ public class CmsCaptchaStore {
      * @param tokenId The token ID
      * @param captchaToken The captcha token
      */
-    public void put(String tokenId, CmsCaptchaToken captchaToken) {
+    public static synchronized void put(String tokenId, CmsCaptchaToken captchaToken) {
 
-        getStore().put(tokenId, captchaToken);
+        if (captchaToken != null) {
+            LOG.debug(tokenId + ": Adding token to store.");
+        } else {
+            LOG.debug(tokenId + ": Adding null token to store.");
+        }
+        STORE.put(tokenId, captchaToken);
     }
 
     /**
@@ -124,9 +122,10 @@ public class CmsCaptchaStore {
      *
      * @param tokenId The token ID of the captcha token to remove
      */
-    public void remove(String tokenId) {
+    public static synchronized void remove(String tokenId) {
 
-        getStore().remove(tokenId);
+        LOG.debug(tokenId + ": Removing token from store.");
+        STORE.remove(tokenId);
     }
 
     /**
@@ -135,23 +134,15 @@ public class CmsCaptchaStore {
      *
      * @param tokenId the token ID
      */
-    public void setPhraseValid(String tokenId) {
+    public static synchronized void setPhraseValid(String tokenId) {
 
         CmsCaptchaToken captchaToken = get(tokenId);
         if (captchaToken != null) {
+            LOG.debug(tokenId + ": Set phrase valid.");
             captchaToken.setPhraseValid();
+        } else {
+            LOG.debug(tokenId + ": Trying to set phrase valid to a null token.");
         }
-    }
-
-    /**
-     * Returns the size of this store.
-     * <p>
-     *
-     * @return The size of the store
-     */
-    public int size() {
-
-        return getStore().size();
     }
 
     /**
@@ -159,29 +150,10 @@ public class CmsCaptchaStore {
      * <p>
      *
      */
-    private void clean() {
+    private static synchronized void clean() {
 
-        getStore().entrySet().removeIf(entry -> !entry.getValue().isValid());
-    }
-
-    /**
-     * Returns the internal captcha token store with lazy initialization.
-     * <p>
-     *
-     * @return The concurrent hash map storing the captcha tokens.
-     */
-    @SuppressWarnings("unchecked")
-    private synchronized Map<String, CmsCaptchaToken> getStore() {
-
-        PageContext context = m_jspActionElement.getJspContext();
-        if (context.getAttribute(ATTRIBUTE_CAPTCHASTORE, PageContext.APPLICATION_SCOPE) == null) {
-            context.setAttribute(
-                ATTRIBUTE_CAPTCHASTORE,
-                new ConcurrentHashMap<String, CmsCaptchaToken>(),
-                PageContext.APPLICATION_SCOPE);
-        }
-        return (Map<String, CmsCaptchaToken>)context.getAttribute(
-            ATTRIBUTE_CAPTCHASTORE,
-            PageContext.APPLICATION_SCOPE);
+        LOG.debug("Stored token IDs before cleaning: " + STORE.keySet() + ", size is " + STORE.size());
+        STORE.entrySet().removeIf(entry -> !entry.getValue().isValid());
+        LOG.debug("Stored token IDs after cleaning: " + STORE.keySet() + ", size is " + STORE.size());
     }
 }

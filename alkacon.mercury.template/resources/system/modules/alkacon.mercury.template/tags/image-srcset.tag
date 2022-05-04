@@ -100,16 +100,24 @@ SVG placeholder image, background image and image sizing
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
 <c:set var="useSizes" value="${not empty sizes}" />
 
-<%-- ###### Enable / disable output for debug purposes if required by setting test="${true}" ###### --%>
+<%-- ###### Enable / disable output for debug purposes if required by setting DEBUG="${true}" ###### --%>
 <c:set var="DEBUG" value="${false}" />
 
 <c:if test="${DEBUG}">
-    <!-- isSvg=${isSvg} useSizes=${useSizes} useLazyLoading=${useLazyLoading} useSrcSet=${useSrcSet} useNoScript=${useNoScript} -->
+<!--
+image-srcset parameters:
+
+isSvg=${isSvg}
+useSizes=${useSizes}
+useLazyLoading=${useLazyLoading}
+useSrcSet=${useSrcSet}
+useNoScript=${useNoScript}
+-->
 </c:if>
 
 <c:if test="${not isSvg}">
 
-<c:set var="maxScaledWidth" value="2000" />
+<mercury:image-sizes debug="${DEBUG}">
 
 <c:choose>
 <c:when test="${not useSizes}">
@@ -125,19 +133,20 @@ SVG placeholder image, background image and image sizing
         <c:when test="${fullwidth}">
             <%-- ###### Assume all images are full screen ###### --%>
             ${bb.setGutter(0)}
-            ${bb.setGridSize(0, 552)}
-            ${bb.setGridSize(1, 764)}
-            ${bb.setGridSize(2, 1014)}
-            ${bb.setGridSize(3, 1200)}
-            ${bb.setGridSize(4, maxScaledWidth)}
+            ${bb.setGridSize(0, bsBpSm)}
+            ${bb.setGridSize(1, bsBpMd)}
+            ${bb.setGridSize(2, bsBpLg)}
+            ${bb.setGridSize(3, bsBpXl)}
+            ${bb.setGridSize(4, maxScaleWidth)}
         </c:when>
         <c:otherwise>
             <%-- ###### Calculate image size based on column width ###### --%>
             <c:set var="gutter" value="${param.cssgutter}" />
             <c:set var="gutterAdjust" value="${0}" />
-            <c:if test="${gutter ne '#'}">
+            <c:set var="gutterInt" value="${bsGutter}" />
+            <c:if test="${not empty gutter and gutter ne '#'}">
                 <%-- ###### A custom gutter has been set, adjust  gutter in bean ###### --%>
-                <c:set var="gutterInt" value="${cms:toNumber(gutter, 15)}" />
+                <c:set var="gutterInt" value="${cms:toNumber(gutter, gutterInt)}" />
                 ${bb.setGutter(gutterInt)}
                 <c:if test="${gutter ne param.cssgutterbase}">
                     <%-- ###### Special case: Gutter has been changed in template (e.g. logo slider does this).
@@ -148,14 +157,23 @@ SVG placeholder image, background image and image sizing
                     </c:if>
                 </c:if>
                 <c:if test="${DEBUG}">
-                    <!-- gutter=${gutter} bb.gutter=${bb.gutter} gutterAdjust=${gutterAdjust} -->
+<!--
+image-srcset gutter adjust:
+
+param.cssgutter: [${param.cssgutter}]
+bsGutter: ${bsGutter}
+gutterInt: ${gutterInt}
+bb.gutter: ${bb.gutter}
+gutterAdjust: ${gutterAdjust}
+-->
                 </c:if>
             </c:if>
-            ${bb.setGridSize(0, 375 - gutterAdjust)}
-            ${bb.setGridSize(1, 540 - gutterAdjust)}
-            ${bb.setGridSize(2, 744 - gutterAdjust)}
-            ${bb.setGridSize(3, 992 - gutterAdjust)}
-            ${bb.setGridSize(4, 1170 - gutterAdjust)}
+            ${bb.setGutter(gutterInt)}
+            ${bb.setGridSize(0, bsMwXs - gutterAdjust)}
+            ${bb.setGridSize(1, bsMwSm - gutterAdjust)}
+            ${bb.setGridSize(2, bsMwMd - gutterAdjust)}
+            ${bb.setGridSize(3, bsMwLg - gutterAdjust)}
+            ${bb.setGridSize(4, bsMwXl - gutterAdjust)}
         </c:otherwise>
     </c:choose>
 
@@ -163,16 +181,29 @@ SVG placeholder image, background image and image sizing
     <jsp:setProperty name="bb" property="cssArray" value="${paramValues.cssgrid}" />
 
     <c:if test="${DEBUG}">
-        <!-- fullwidth=${fullwidth eq true} -->
-        <!-- maxScaledWidth=${maxScaledWidth} -->
-        <!-- ib.scaler.width=${ib.scaler.width} -->
-        <c:forEach var="grid" items="${paramValues.cssgrid}">
-            <!-- grid: ${grid}  -->
-        </c:forEach>
+<!--
+image-srcset calculated grid values::
+
+fullwidth: ${fullwidth eq true}
+ib.scaler.width: ${ib.scaler.width}
+
+Gutter: ${bb.gutter}
+Max scale width: ${maxScaleWidth}
+
+Max width XS: ${bb.getGridSize(0)}
+Max width SM: ${bb.getGridSize(1)}
+Max width MD: ${bb.getGridSize(2)}
+Max width LG: ${bb.getGridSize(3)}
+Max width XL: ${bb.getGridSize(4)}
+<mercury:nl />
+<c:forEach var="grid" items="${paramValues.cssgrid}">
+grid: ${grid}
+</c:forEach>
+ -->
     </c:if>
 
-    <c:if test="${ib.scaler.width > maxScaledWidth}">
-        <c:set var="ib" value="${ib.scaleWidth[maxScaledWidth]}" />
+    <c:if test="${ib.scaler.width > maxScaleWidth}">
+        <c:set var="ib" value="${ib.scaleWidth[maxScaleWidth]}" />
     </c:if>
 
     <c:if test="${useSrcSet and bb.isInitialized}">
@@ -180,10 +211,10 @@ SVG placeholder image, background image and image sizing
         <c:if test="${not useLazyLoading}">
             <%-- ###### Calculate the sizes (if we are lazy loading the script will do this for us) ###### --%>
             <c:set var="srcSetSizes"><%--
-            --%>(min-width: 1200px) ${bb.sizeXl}px, <%--
-            --%>(min-width: 1014px) ${bb.sizeLg}px, <%--
-            --%>(min-width: 764px) ${bb.sizeMd}px, <%--
-            --%>(min-width: 552px) ${bb.sizeSm}px, <%--
+            --%>(min-width: ${bsMwXl}px) ${bb.sizeXl}px, <%--
+            --%>(min-width: ${bsMwLg}px) ${bb.sizeLg}px, <%--
+            --%>(min-width: ${bsMwMd}px) ${bb.sizeMd}px, <%--
+            --%>(min-width: ${bsMwSm}px) ${bb.sizeSm}px, <%--
             --%>100vw</c:set>
         </c:if>
 
@@ -205,20 +236,36 @@ SVG placeholder image, background image and image sizing
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeLg]}" />
         </c:if>
         <c:if test="${bb.sizeXl > -1}">
-            <c:if test="${fullwidth and empty ib.getSrcSetMap()}">
+            <c:if test="${fullwidth}">
                 <%-- Add size variations to avoid offering only one very large image for full screen backgrounds --%>
-                <%-- This is optimized for a maxScaledWidth of 2000 --%>
-                <c:if test="${ib.scaler.width > 1500}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[1400]}" />
-                    <c:if test="${ib.scaler.width > 1700}">
-                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[1600]}" />
-                        <c:if test="${ib.scaler.width > 1900}">
-                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[1800]}" />
-                        </c:if>
+                <c:set var="scaleGapStep" value="${Math.round((ib.scaler.width - bsBpXl) / 4)}" />
+                <c:if test="${DEBUG}">
+<!--
+image-srcset optimizing for full width:
+
+ib.scaler.width: ${ib.scaler.width}
+bsBpXl: ${bsBpXl}
+scaleGapStep: ${scaleGapStep}
+-->
+                </c:if>
+                <c:if test="${scaleGapStep > 100}">
+                    <c:if test="${maxScaleWidth > 2 * (bsBpXl + scaleGapStep)}">
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * (bsBpXl + scaleGapStep)]}" />
                     </c:if>
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + scaleGapStep]}" />
+                    <c:if test="${maxScaleWidth > 2 * (bsBpXl + 2 * scaleGapStep)}">
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 2 * scaleGapStep]}" />
+                    </c:if>
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 2 * scaleGapStep]}" />
+                    <c:if test="${maxScaleWidth > 2 * (bsBpXl + 3 * scaleGapStep)}">
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 3 * scaleGapStep]}" />
+                    </c:if>
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 3 * scaleGapStep]}" />
                 </c:if>
             </c:if>
-            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXl]}" />
+            <c:if test="${maxScaleWidth > (2 * bb.sizeXl)}">
+                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXl]}" />
+            </c:if>
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXl]}" />
         </c:if>
     </c:if>
@@ -230,7 +277,7 @@ SVG placeholder image, background image and image sizing
         <%-- ###### Otherwise we get the grid sizes information from the bean ###### --%>
         <c:if test="${not bbInitialized or (bb.sizeXs >= sizeXsMax)}">
             <%-- ###### Add size based versions for large images ###### --%>
-            ${ib.addSrcSetWidthVariants(640, maxScaledWidth)}
+            ${ib.addSrcSetWidthVariants(640, maxScaleWidth)}
         </c:if>
     </c:if>
 
@@ -268,6 +315,9 @@ SVG placeholder image, background image and image sizing
 
 </c:otherwise>
 </c:choose>
+
+</mercury:image-sizes>
+
 
 <c:if test="${useSrcSet and (useLazyLoading or useSizes or bbInitialized)}" >
     <%-- ###### Set quality higher for smaller images to avoid blur ###### --%>

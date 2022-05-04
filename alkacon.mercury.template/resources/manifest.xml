@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.10</version>
+		<version>13.0.15</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7377,6 +7377,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays a responsive image without effects]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/image-sizes.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/image-sizes.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>c86ab516-cbb8-11ec-9c72-0242ac11002b</uuidstructure>
+			<uuidresource>c86ab517-cbb8-11ec-9c72-0242ac11002b</uuidresource>
+			<datecreated>Wed, 04 May 2022 14:45:03 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Sets the image sizes for the Bootstrap grid]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

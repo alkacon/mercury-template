@@ -52,10 +52,10 @@ public class CmsJspBootstrapBean {
     /** The calculated grid columns width in percent (initial value is 100% for all). */
     protected double[] m_column = {100.0D, 100.0D, 100.0D, 100.0D, 100.0D};
 
-    /** The grid columns width in pixel. */
-    // Note: All columns are set to the bootstrap default "min-width" values.
+    /** The grid container width in pixel. */
+    // Note: This is set to the Mercury default "$container-max-widths" values (which are different from standard Bootstrap 4)
     // For XS there is no "min-width", so we set the target size to 375 pixel which is the iPhone 6 display width
-    protected int[] m_gridSize = {375, 540, 750, 970, 1170};
+    protected int[] m_gridSize = {375, 540, 744, 992, 1170};
 
     /** public empty constructor for use on JSP.<p> */
     public CmsJspBootstrapBean() {

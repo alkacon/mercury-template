@@ -19,6 +19,7 @@
 <mercury:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="allOpen"                value="${setting.allOpen.toBoolean}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <mercury:nl />
@@ -76,17 +77,23 @@
                         <%-- Navigation item with sub-menu but without direct child pages --%>
                         <a href="${navLink}"${navTarget}${' '}<%--
                         --%>id="${parentLabelId}"${' '}<%--
-                        --%>${isCurrentPage ? 'aria-expanded=\"true\" class=\"collapse show\"' : 'aria-expanded=\"false\"'}${' '}<%--
-                        --%>data-toggle="collapse" data-target="#${targetMenuId}"${' '}<%--
-                        --%>aria-controls="${targetMenuId}">${navText}</a><%--
+                        --%><c:if test="${not allOpen}"><%--
+                            --%>${isCurrentPage ? 'aria-expanded=\"true\" class=\"collapse show\"' : 'aria-expanded=\"false\"'}${' '}<%--
+                            --%>data-toggle="collapse" data-target="#${targetMenuId}"${' '}<%--
+                            --%>aria-controls="${targetMenuId}"<%--
+                        --%></c:if><%--
+                        --%>><%--
+                        --%>${navText}</a><%--
                 --%></c:when>
 
                     <c:when test="${startSubMenu}">
                         <%-- Navigation item with sub-menu and direct child pages --%>
                         <a href="${navLink}"${navTarget} class="nav-label" id="${parentLabelId}">${navText}</a><%--
-                        --%><a href="${navLink}"${navTarget} data-toggle="collapse" data-target="#${targetMenuId}"${' '}<%--
-                        --%>${isCurrentPage ? 'aria-expanded=\"true\" class=\"collapse show\"' : 'aria-expanded=\"false\"'}${' '}<%--
-                        --%>aria-controls="${targetMenuId}" aria-label="<fmt:message key="msg.page.navigation.sublevel" />">&nbsp;</a><%--
+                        --%><c:if test="${not allOpen}"><%--
+                            --%><a href="${navLink}"${navTarget} data-toggle="collapse" data-target="#${targetMenuId}"${' '}<%--
+                            --%>${isCurrentPage ? 'aria-expanded=\"true\" class=\"collapse show\"' : 'aria-expanded=\"false\"'}${' '}<%--
+                            --%>aria-controls="${targetMenuId}" aria-label="<fmt:message key="msg.page.navigation.sublevel" />">&nbsp;</a><%--
+                        --%></c:if><%--
                 --%></c:when>
 
                     <c:otherwise>
@@ -96,9 +103,9 @@
                 </c:choose>
 
                 <c:if test="${startSubMenu}">
-                   <c:set var="collapseIn" value="${isCurrentPage ? ' show' : ''}" />
+                   <c:set var="collapseIn" value="${isCurrentPage and not allOpen ? ' show' : ''}" />
                    <mercury:nl />
-                   <c:out value='<ul class="collapse${collapseIn}" id="${targetMenuId}">' escapeXml="false" />
+                   <c:out value="<ul${allOpen ? ' ' : ' class=\"collapse'.concat(collapseIn).concat('\" ')} id=\"${targetMenuId}\">" escapeXml="false" />
                 </c:if>
 
                 <c:if test="${nextLevel < navElem.navTreeLevel}">

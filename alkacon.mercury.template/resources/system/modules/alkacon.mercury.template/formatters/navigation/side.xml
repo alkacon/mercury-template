@@ -42,5 +42,8 @@
     <Setting>
       <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[allOpen.false]]></IncludeName>
+    </Setting>
   </NewFormatter>
 </NewFormatters>

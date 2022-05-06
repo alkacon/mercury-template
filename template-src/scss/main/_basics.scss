@@ -162,15 +162,23 @@ a {
     }
 }
 
-@if (($linked-headings-color != none) or ($linked-headings-decoration != none)) {
+@if ($linked-headings-color != none) {
+    a {
+        h1, h2, h3, h4, h5, h6 {
+            color: $linked-headings-color;
+        }
+    }
+}
+
+@if (($linked-headings-hover-color != none) or ($linked-headings-decoration != none)) {
     a {
         &:hover {
             h1, h2, h3, h4, h5, h6 {
-                @if ($linked-headings-color != none) {
+                @if ($linked-headings-hover-color != none) {
                     @include media-breakpoint-up(md) {
                         @include color-transition;
                     }
-                    color: $linked-headings-color;
+                    color: $linked-headings-hover-color;
                 }
                 @if ($linked-headings-decoration != none) {
                     text-decoration: $linked-headings-decoration;

@@ -44,7 +44,7 @@
                     <PropertyName>Code</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Code)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Code.help)]]></Description>
-                    <Widget>textarea</Widget>
+                    <Widget>sourcecode</Widget>
                     <WidgetConfig>12</WidgetConfig>
                     <Search>false</Search>
                 </Setting>

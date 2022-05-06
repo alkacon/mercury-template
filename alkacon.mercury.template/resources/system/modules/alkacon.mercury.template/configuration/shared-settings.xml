@@ -141,6 +141,14 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[allOpen.false]]></IncludeName>
+      <PropertyName><![CDATA[allOpen]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.allOpen)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.allOpen.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
       <PropertyName><![CDATA[bookingOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.bookingOption)]]></DisplayName>

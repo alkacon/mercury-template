@@ -26,7 +26,7 @@
 }
 
 .row-tile {
-    @extend .row;
+    @include make-row();
     flex-direction: row;
 }
 

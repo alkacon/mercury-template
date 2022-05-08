@@ -65,10 +65,12 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
 .piece {
     display: block;
     position: relative;
+    contain: content;
 
     > .visual {
         margin-bottom: $default-margin-small;
         width: 100%;
+        contain: content;
 
         @include copyright-subtitle;
 
@@ -152,6 +154,8 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     .heading {
+        @include use-hyphens-headings;
+
         > .piece-heading {
             text-overflow: ellipsis;
             overflow: hidden;
@@ -189,6 +193,8 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
 
     > .body {
         .text {
+            @include use-hyphens-text;
+
             > .detail-content > *,
             > * {
                 // add margins for all elements in text piece
@@ -203,16 +209,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         .text + .link {
             // add margin between body / text and link
             margin-top: $piece-text-to-link-margin;
-        }
-    }
-
-    .heading {
-        @include use-hyphens-headings;
-    }
-
-    > .body {
-        .text {
-            @include use-hyphens-text;
         }
     }
 

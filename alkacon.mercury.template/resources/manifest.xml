@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.17</version>
+		<version>13.0.20</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -117,6 +117,9 @@
 			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-organization" id="8527">
 				<param name="schema">/system/modules/alkacon.mercury.template/schemas/organization.xsd</param>
 			</type>
+			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-flexible-up" id="8528">
+				<param name="schema">/system/modules/alkacon.mercury.template/schemas/flexible-up.xsd</param>
+			</type>
 		</resourcetypes>
 		<explorertypes>
 			<explorertype name="m-layout-row-complex" key="type.m-layout-row-complex.name" smalliconstyle="m-icon-16-layout-row-complex" bigiconstyle="m-icon-24-layout-row-complex" reference="xmlcontent">
@@ -199,6 +202,9 @@
 			</explorertype>
 			<explorertype name="m-organization" key="type.m-organization.name" smalliconstyle="m-icon-16-organization" bigiconstyle="m-icon-24-organization" reference="xmlcontent">
 				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-organization.description" key="type.m-organization.title"/>
+			</explorertype>
+			<explorertype name="m-flexible-up" key="type.m-flexible.name" smalliconstyle="m-icon-16-flexible" bigiconstyle="m-icon-24-flexible" reference="xmlcontent">
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-flexible-up.description" key="type.m-flexible.title"/>
 			</explorertype>
 		</explorertypes>
 	</module>
@@ -5735,6 +5741,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[XSD for FAQs]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/flexible-up.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/flexible-up.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>98b41e1a-cf8a-11ec-8701-0242ac11002b</uuidstructure>
+			<uuidresource>98b41e1b-cf8a-11ec-8701-0242ac11002b</uuidresource>
+			<datecreated>Mon, 09 May 2022 11:24:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for flexible elements (update)]]></value>
 				</property>
 			</properties>
 			<relations/>

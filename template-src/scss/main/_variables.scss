@@ -507,6 +507,7 @@ $nav-breadcrumb-space-left:         0.8 * $nav-breadcrumb-space !default; // spa
 $nav-breadcrumb-space-right:        1.5 * $nav-breadcrumb-space !default; // spacing after separator before breadcrumb
 $nav-breadcrumb-bg-color:           none !default; // background color for breadcrumbs
 $nav-breadcrumb-padding:            $default-margin-verysmall 0 0 0 !default; // padding around breadcrumbs
+$nav-breadcrumb-colored-padding:    $default-margin-small 0 !default; // padding if breadcrumbs background is colored
 $nav-breadcrumb-text-color:         check-text-color($nav-breadcrumb-bg-color, $nav-header-text) !default; // text color of breadcrumbs
 $nav-breadcrumb-text-hover-color:   check-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
 $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs

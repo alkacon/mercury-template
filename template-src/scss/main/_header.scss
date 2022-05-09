@@ -1778,8 +1778,7 @@
                 .h-bc {
                     background-color: $nav-breadcrumb-bg-color;
                     .nav-breadcrumbs {
-                        padding-top: $default-margin-small;
-                        padding-bottom: $default-margin-small;
+                        padding: $nav-breadcrumb-colored-padding;
                     }
                 }
             }

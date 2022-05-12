@@ -175,9 +175,6 @@ a {
         &:hover {
             h1, h2, h3, h4, h5, h6 {
                 @if ($linked-headings-hover-color != none) {
-                    @include media-breakpoint-up(md) {
-                        @include color-transition;
-                    }
                     color: $linked-headings-hover-color;
                 }
                 @if ($linked-headings-decoration != none) {

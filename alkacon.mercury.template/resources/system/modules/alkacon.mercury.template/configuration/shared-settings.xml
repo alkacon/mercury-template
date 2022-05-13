@@ -3004,7 +3004,7 @@
       <Description><![CDATA[%(key.msg.setting.search.numFacetItems.help)]]></Description>
       <Widget><![CDATA[string]]></Widget>
       <Default><![CDATA[10]]></Default>
-      <RuleRegex><![CDATA[[1-9]\d{0,2}]]></RuleRegex>
+      <RuleRegex><![CDATA[[0-9]\d{0,2}]]></RuleRegex>
       <RuleType><![CDATA[error]]></RuleType>
       <Error><![CDATA[%(key.msg.error.numFacetItems)]]></Error>
     </Setting>

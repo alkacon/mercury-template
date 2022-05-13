@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.20</version>
+		<version>13.0.21</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -5223,6 +5223,52 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/search-slot.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/functions/search-slot.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>ff6e8b2a-d294-11ec-ba99-0242ac11002b</uuidstructure>
+			<uuidresource>ff6e8b2b-d294-11ec-ba99-0242ac11002b</uuidresource>
+			<datecreated>Fri, 13 May 2022 08:16:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[never]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/search-slot.xml</source>
+			<destination>system/modules/alkacon.mercury.template/functions/search-slot.xml</destination>
+			<type>function_config</type>
+			<uuidstructure>ff714a4e-d294-11ec-ba99-0242ac11002b</uuidstructure>
+			<uuidresource>ff714a4f-d294-11ec-ba99-0242ac11002b</uuidresource>
+			<datecreated>Fri, 13 May 2022 08:16:32 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Search slot linking to the search page]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
 				</property>
 			</properties>
 			<relations/>

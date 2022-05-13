@@ -31,6 +31,8 @@
 <c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
 <c:set var="showDateLastModified"   value="${dateFormat ne 'none'}" />
 
+<c:set var="showFacets"             value="${numFacetItems != 0}" />
+
 
 <%-- Generate the search configuration --%>
 <c:choose>
@@ -98,9 +100,12 @@
                                 , { "label" : "<fmt:message key='msg.page.search.sort.title.asc'/>", "solrvalue" : "disptitle_${cms.locale}_sort asc" }
                                 , { "label" : "<fmt:message key='msg.page.search.sort.title.desc'/>", "solrvalue" : "disptitle_${cms.locale}_sort desc" }
                                 ],
-        "fieldfacets" :         [ { "field" : "type", "label" : "<fmt:message key="msg.page.search.facet.type"/>", "mincount" : 1, "limit" : ${numFacetItems} }
+        <c:if test="${showFacets}">
+        "fieldfacets" :         [
+                                  { "field" : "type", "label" : "<fmt:message key="msg.page.search.facet.type"/>", "mincount" : 1, "limit" : ${numFacetItems} }
                                 , { "field" : "category_exact", "label" : "<fmt:message key="msg.page.search.facet.category"/>", "mincount" : 1, "order" : "index" }
                                 ],
+        </c:if>
         "highlighter" :         {
                                     "field" :                       "content_${cms.locale}",
                                     "alternateField":               "content_${cms.locale}",

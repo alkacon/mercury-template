@@ -750,6 +750,12 @@
     </Function>
     <Function>
       <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/search-slot.xml]]></target>
+        <uuid>ff714a4e-d294-11ec-ba99-0242ac11002b</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/functions/pagetitle.xml]]></target>
         <uuid>6acfc9a8-c9bb-4126-85b8-bcccadc465ee</uuid>
       </link>

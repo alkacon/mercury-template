@@ -30,9 +30,13 @@
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
 <c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
 <c:set var="showDateLastModified"   value="${dateFormat ne 'none'}" />
+<c:set var="slotText"               value="${setting.slotText.toString}" />
+
+<c:if test="${empty slotText}">
+    <c:set var="slotText"><fmt:message key='msg.page.search.enterquery' /></c:set>
+</c:if>
 
 <c:set var="showFacets"             value="${numFacetItems != 0}" />
-
 
 <%-- Generate the search configuration --%>
 <c:choose>
@@ -163,7 +167,7 @@
                         <label for="searchFormQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                         <input id="searchFormQuery" name="${common.config.queryParam}" <%--
                             --%>value="${escapedQuery}" class="form-control blur-focus" type="text" autocomplete="off" <%--
-                            --%>placeholder="<fmt:message key='msg.page.search.enterquery' />" /><%----%>
+                            --%>placeholder="<c:out value="${slotText}" />" /><%----%>
                         <button class="btn btn-submit-search" type="submit"><fmt:message key="msg.page.search.submit" /></button><%----%>
                     </div><%----%>
                 </section><%----%>

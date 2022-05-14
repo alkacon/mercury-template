@@ -3009,6 +3009,13 @@
       <Error><![CDATA[%(key.msg.error.numFacetItems)]]></Error>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[slotText.default]]></IncludeName>
+      <PropertyName><![CDATA[slotText]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.slotText)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.slotText.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showTypeBadge.search]]></IncludeName>
       <PropertyName><![CDATA[showTypeBadge]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.search.showTypeBadge)]]></DisplayName>

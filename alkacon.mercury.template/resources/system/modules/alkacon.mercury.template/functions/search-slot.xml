@@ -32,5 +32,8 @@
     <Setting>
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[slotText.default]]></IncludeName>
+    </Setting>
   </FunctionConfig>
 </FunctionConfigs>

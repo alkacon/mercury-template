@@ -412,12 +412,26 @@
         transition: opacity 0.5s, height 0.001s 0.5s, width 0.001s 0.5s;
     }
 
-    html.active-nav .area-header {
-        .head-overlay {
-            width: 100vw;
-            height: 100vh;
-            opacity: 0.75;
-            transition: opacity 0.5s;
+    html.active-nav {
+        .area-header {
+            .head-overlay {
+                width: 100vw;
+                height: 100vh;
+                opacity: 0.75;
+                transition: opacity 0.5s;
+            }
+        }
+        &.keyboard-nav {
+            .nav-main-items {
+                *,
+                .dropdown > a,
+                .dropdown-menu > a {
+
+                    &:focus {
+                        @include focus-outline(false);
+                    }
+                }
+            }
         }
     }
 

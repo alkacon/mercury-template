@@ -222,7 +222,7 @@ $default-transition-time:           0.33s !default; // default timing for animat
 $default-border-radius:             0 !default;
 $copyright-border-radius:           floor($default-border-radius * 0.5) !default;
 $image-border-radius:               $default-border-radius !default;
-
+$focus-outline-border-radius:       $copyright-border-radius !default;
 
 // OpenCms default Z-index for edit points
 

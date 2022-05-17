@@ -26,13 +26,18 @@
 }
 
 // Focus outline color
-@mixin focus-outline() {
+@mixin focus-outline($outside: true) {
     outline-color: $focus-outline-color;
-    outline-width: 3px;
     outline-style: solid;
-    outline-offset: -2px;
-    box-shadow: inset 0 0 4px 1px $focus-outline-color, 0 0 7px 2px $focus-outline-color;
-    z-index: $above-oc-z-index + 5000; // well above OpenCms edit points AND menu dropdowns
+    @if ($outside == true) {
+        outline-width: 3px;
+        outline-offset: 2px;
+    } @else {
+        outline-width: 2px;
+        outline-offset: -2px;
+    }
+    @include round-corners($focus-outline-border-radius);
+    z-index: $above-oc-z-index + 500000; // well above OpenCms edit points AND menu dropdowns
 }
 
 // Sets the text color for all elements but 'a' and 'span'

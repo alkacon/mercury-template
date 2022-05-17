@@ -355,6 +355,7 @@ scaleGapStep: ${scaleGapStep}
 <c:choose>
     <c:when test="${isSvg}">
         <c:set var="srcurl"><cms:link>${ib.vfsUri}</cms:link></c:set>
+        <c:set var="attrImage">role="img"<c:if test="${not empty attrImage}">${' '}${attrImage}</c:if></c:set>
     </c:when>
     <c:when test="${not empty srcset}">
         <c:set var="srcurl" value="${not empty maxImage ? maxImage.srcUrl : ib.getSrcSetMaxImage().srcUrl}" />

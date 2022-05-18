@@ -89,7 +89,7 @@
     <c:set var="typesRestriction">${typesRestriction}${status.first ? '' : ' OR '}${fn:trim(type)}</c:set>
 </c:forEach>
 
-<c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,lastmodified,${cms.locale}_excerpt,id,path</c:set>
+<c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,lastmodified,${cms.locale}_excerpt,id,path,mercury.detail.link_dprop</c:set>
 <c:set var="config">
     {
         "searchforemptyquery" : ${searchForEmptyQuery},
@@ -418,7 +418,8 @@
                                 </c:if>
 
                                 <h4 class="search-result-heading"><%----%>
-                                    <a href='<cms:link>${searchResult.fields["path"]}</cms:link>'><%----%>
+                                    <c:set var="resultLink" value="${empty searchResult.fields['mercury.detail.link_dprop'] ? searchResult.fields['path'] : searchResult.fields['mercury.detail.link_dprop']}" />
+                                    <a href='<cms:link>${resultLink}</cms:link>'><%----%>
                                         <span class="result-title">${title}</span><%----%>
                                         <c:out value="${showTypeBadge ? typeName : ''}" escapeXml="${false}" />
                                     </a><%----%>

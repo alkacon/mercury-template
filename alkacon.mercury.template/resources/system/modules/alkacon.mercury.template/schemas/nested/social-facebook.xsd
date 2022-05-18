@@ -36,7 +36,7 @@
                     <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Description.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>5</WidgetConfig>
+                    <WidgetConfig>5|proportional</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>

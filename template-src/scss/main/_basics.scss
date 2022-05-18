@@ -46,7 +46,7 @@ html {
     }
 
     &.keyboard-nav {
-        *,
+        *:not(.mce-edit-focus),
         .dropdown > a,
         .dropdown-menu > a {
 
@@ -57,7 +57,7 @@ html {
         .media-box,
         .focus-within {
             &:focus-within {
-                @include focus-outline();
+                @include focus-outline(true);
             }
         }
     }

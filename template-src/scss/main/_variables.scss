@@ -53,10 +53,10 @@ $match-text-bg-colors:              () !default;
 
 // Font definitions
 
-$font-family-base:                  "Montserrat", sans-serif !default;
-$font-family-headings:              "Open Sans", sans-serif !default;
+$font-family-base:                  "default-sans-serif" !default;
+$font-family-headings:              $font-family-base !default;
 $font-family-sans-serif:            $font-family-base !default; // Boostrap 4 defines this the other way around
-$font-family-gui:                   "-apple-system" !default; // the font used in containers and other "GUI" components
+$font-family-gui:                   "default-sans-serif" !default; // the font used in containers and other "GUI" components
 
 $font-family-base:                  get-font-family($font-family-base); // match given names against preloaded font list
 $font-family-headings:              get-font-family($font-family-headings);
@@ -202,7 +202,7 @@ $piece-headings-margin-bottom:      $headings-margin-bottom !default;
 // Text and page colors
 
 $text-light:                        $white !default;
-$text-dark:                         #555 !default;
+$text-dark:                         #444 !default;
 $body-bg:                           $white !default;
 $body-color:                        $text-dark !default;
 $headings-color:                    $text-dark !default;
@@ -313,7 +313,7 @@ $section-subtitle-size:             13px !default;
 
 $piece-btn-padding:                 $btn-def-padding !default;
 $piece-btn-lg-padding:              $btn-lg-padding !default;
-$piece-text-margin:                 $default-margin-small !default;
+$piece-text-margin:                 $paragraph-margin-bottom !default;
 $piece-text-to-link-margin:         $piece-text-margin !default;
 $piece-visual-last-top-margin:      $piece-text-margin !default;
 $piece-desktop-breakpoint:          md !default;

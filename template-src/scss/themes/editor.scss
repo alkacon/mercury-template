@@ -1,0 +1,74 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: editor.scss
+ */
+
+$main-theme:                        #b31b34 !default;
+$main-theme-hover:                  #ff264a !default;
+
+$font-size-base:                    1.4rem !default;
+$font-size-headings:                2.0rem !default;
+
+@import "../imports-pre-fonts";
+
+@import "../../bootstrap/scss/functions";
+@import "../../bootstrap/scss/variables";
+@import "../../bootstrap/scss/mixins";
+@import "../bootstrap/overrides";
+
+@import "../../bootstrap/scss/reboot";
+
+html {
+    font-size: $font-rem-base-desktop-size;
+}
+
+body#tinymce {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include heading-base(true);
+}
+
+h1 {
+    font-size: $h1-font-size;
+}
+
+h2 {
+    font-size: $h2-font-size;
+}
+
+h3 {
+    font-size: $h3-font-size;
+}
+
+h4 {
+    font-size: $h4-font-size;
+}
+
+h5 {
+    font-size: $h5-font-size;
+}
+
+h6 {
+    font-size: $h6-font-size;
+}
+
+

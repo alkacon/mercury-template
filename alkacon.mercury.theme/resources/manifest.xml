@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>13.0.8</version>
+		<version>13.0.10</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -121,12 +121,24 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/css/style-editor.css</source>
-			<destination>system/modules/alkacon.mercury.theme/css/style-editor.css</destination>
+			<source>system/modules/alkacon.mercury.theme/css/editor.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/editor.min.css</destination>
 			<type>plain</type>
-			<uuidstructure>2bb038c5-fea8-11e8-aee0-0242ac11002b</uuidstructure>
-			<uuidresource>2bb038c6-fea8-11e8-aee0-0242ac11002b</uuidresource>
-			<datecreated>Thu, 13 Dec 2018 07:24:47 GMT</datecreated>
+			<uuidstructure>938d3a88-d6ba-11ec-9927-0242ac11002b</uuidstructure>
+			<uuidresource>938d3a89-d6ba-11ec-9927-0242ac11002b</uuidresource>
+			<datecreated>Wed, 18 May 2022 14:55:36 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/editor.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/editor.min.css.map</destination>
+			<type>plain</type>
+			<uuidstructure>93ca1c7c-d6ba-11ec-9927-0242ac11002b</uuidstructure>
+			<uuidresource>93ca1c7d-d6ba-11ec-9927-0242ac11002b</uuidresource>
+			<datecreated>Wed, 18 May 2022 14:55:37 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

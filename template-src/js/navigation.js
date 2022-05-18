@@ -634,9 +634,20 @@ function initAccordionScroll() {
     jQ('.type-tab.variant-accordion article.accordion').on('shown.bs.collapse', function() {
         var $tab = $(this).closest('article.accordion').find('.acco-header');
         if (! $tab.visible()) {
-            scrollToAnchor($tab, -5);
+            doScrollToAnchor($tab, -5);
         }
     })
+}
+
+// auto-scroll to and open a regular tab
+function initRevealTabFromHash($tab) {
+    var id = $tab.attr('id');
+    var num = parseInt(id.substr(id.lastIndexOf('_') + 1));
+    var $parent = $tab.closest('.tabs-parent');
+    $parent.find('ul.tab-list > li:nth-child(' + num + ') a').tab('show');
+    if (! $parent.visible()) {
+        doScrollToAnchor($parent, -5);
+    }
 }
 
 // apply "external" class to all a href links
@@ -692,6 +703,54 @@ function focusOnElement($element) {
     $element.focus();
 }
 
+function doScrollToAnchor($anchor, offset) {
+    if (DEBUG) console.info("Navigation.debScrollToAnchor() called!");
+    if ($anchor.length) {
+        if ($anchor.collapse && (! $anchor.hasClass('show'))) {
+            // this anchor is a bootstrap collapse, show it
+            if ($anchor.hasClass('tab-pane')) {
+                // this anchor is a bootstrap tab, show it
+                if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") is a tab!");
+                initRevealTabFromHash($anchor);
+                return;
+            } else if ($anchor.hasClass('acco-body')) {
+                if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") is a collapse!");
+                $anchor.collapse("show");
+                return;
+            }
+        }
+        offset = offset || 0;
+        var targetTop = $anchor.offset().top + offset;
+        targetTop = targetTop < 0 ? 0 : targetTop;
+        if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") position:" + targetTop, $anchor);
+        if (fixedHeaderActive() && (targetTop > m_fixedHeader.bottom)) {
+            if (m_fixedHeader.height < 0) {
+                // fixed header height is unknown, i.e. page was not scrolled down so far
+                // jump to header bottom to activate the fixed header first
+                if (targetTop > m_fixedHeader.bottom) {
+                    jQ('html, body').scrollTop(m_fixedHeader.bottom - Mercury.toolbarHeight() + 1);
+                    updateFixed(true);
+                }
+            }
+            targetTop = targetTop - m_fixedHeader.getHeight();
+            if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") adjusting position to:" + targetTop);
+        }
+        var page = $("html, body");
+        // see: https://stackoverflow.com/questions/18445590/jquery-animate-stop-scrolling-when-user-scrolls-manually
+        page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+            page.stop();
+        });
+        page.animate({ scrollTop: Math.ceil(targetTop - Mercury.toolbarHeight()) }, 750, function(){
+            page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+        });
+        if (Mercury.gridInfo().isMobileNav()) {
+            // close the mobile navigation
+            jQ('.nav-toggle').removeClass('active');
+            jQ(document.documentElement).removeClass('active-nav');
+        }
+    }
+}
+
 // functions that require the Mercury object
 var debUpdateFixedResize;
 var debUpdateFixedScroll;
@@ -715,39 +774,7 @@ function initDependencies() {
         initMenu();
     }, 100);
 
-    debScrollToAnchor = Mercury.debounce(function($anchor, offset) {
-        if ($anchor.length) {
-            offset = offset || 0;
-            var targetTop = $anchor.offset().top + offset;
-            targetTop = targetTop < 0 ? 0 : targetTop;
-            if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") position:" + targetTop, $anchor);
-            if (fixedHeaderActive() && (targetTop > m_fixedHeader.bottom)) {
-                if (m_fixedHeader.height < 0) {
-                    // fixed header height is unknown, i.e. page was not scrolled down so far
-                    // jump to header bottom to activate the fixed header first
-                    if (targetTop > m_fixedHeader.bottom) {
-                        jQ('html, body').scrollTop(m_fixedHeader.bottom - Mercury.toolbarHeight() + 1);
-                        updateFixed(true);
-                    }
-                }
-                targetTop = targetTop - m_fixedHeader.getHeight();
-                if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") adjusting position to:" + targetTop);
-            }
-            var page = $("html, body");
-            // see: https://stackoverflow.com/questions/18445590/jquery-animate-stop-scrolling-when-user-scrolls-manually
-            page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
-                page.stop();
-            });
-            page.animate({ scrollTop: Math.ceil(targetTop - Mercury.toolbarHeight()) }, 750, function(){
-                page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
-            });
-            if (Mercury.gridInfo().isMobileNav()) {
-                // close the mobile navigation
-                jQ('.nav-toggle').removeClass('active');
-                jQ(document.documentElement).removeClass('active-nav');
-            }
-        }
-    }, 500, true);
+    debScrollToAnchor = Mercury.debounce(doScrollToAnchor, 500, true);
 }
 
 /****** Exported functions ******/

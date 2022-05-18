@@ -51,7 +51,7 @@
     <c:choose>
         <c:when test="${showTabs}">
 
-            <div class="tabs-parent"><%----%>
+            <div class="tabs-parent" id="${itemId}"><%----%>
 
                 <mercury:nl />
                 <ul class="tab-list nav pivot"><%----%>

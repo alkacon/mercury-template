@@ -29,7 +29,7 @@
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<c:set var="parentId"><mercury:idgen prefix="acco" uuid="${cms.element.instanceId}" /></c:set>
+<c:set var="parentId"><mercury:idgen prefix="a" uuid="${cms.element.instanceId}" /></c:set>
 <c:set var="param_parts"        value="${fn:split(cms.container.param, '#')}" />
 <c:set var="parent_role"        value="${param_parts[0]}" />
 <c:set var="parent_classes"     value="${param_parts[1]}" />
@@ -58,25 +58,29 @@
             <c:set var="tabLabel"           value="${tabEntry.value.Label}" />
             <c:set var="tabContainerName"   value="${tabEntry.value.Id}" />
             <c:set var="open"               value="${firstOpen and status.first}" />
-            <c:set var="itemId"             value="${parentId}_${status.count}" />
+            <c:set var="itemId"             value="${parentId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" />
             <c:set var="itemHsize"          value="${hsize > 0 ? hsize + 1 : 2}" />
 
             <mercury:nl />
             <article class="accordion ${cssWrapper}"><%----%>
                 ${'<h'}${itemHsize} class="acco-header pivot"${'>'}
-                    <a class="acco-toggle ${open ? '':'collapsed'}"<%--
-                    --%>data-toggle="collapse" <%--
-                    --%>data-target="#${itemId}" <%--
-                    --%>href="#${itemId}"><%----%>
+                    <button class="acco-toggle ${open ? '':'collapsed'}" <%--
+                    --%>data-toggle="collapse" type="button" <%--
+                    --%>aria-expanded="${open}" <%--
+                    --%>aria-controls="${itemId}"<%--
+                    --%>data-target="#${itemId}"><%----%>
                         <c:out value="${tabLabel}"></c:out>
-                    </a><%----%>
+                        <c:if test="${cms.isEditMode}">
+                            <wbr><a href="#${itemId}"><span class="list-badge oct-meta-info"><span class="fa fa-refresh"></span></span></a><%----%>
+                        </c:if>
+                    </button><%----%>
                 ${'</h'}${itemHsize}${'>'}
 
                 <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-parent=\"#'.concat(parentId).concat('\"')}><%----%>
 
                         <mercury:container
                             title="${msg}"
-                            name="${tabContainerName}"
+                            name="${tabEntry.value.Id}"
                             hideName="${true}"
                             hideParentType="${true}"
                             type="${containerType}"

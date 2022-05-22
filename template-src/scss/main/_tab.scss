@@ -46,7 +46,7 @@
     > li {
         margin-bottom: $accordion-margin;
 
-        > a {
+        > .tab-toggle {
             border: 1px solid $accordion-border-color;
             font-size: $accordion-header-font-size;
             line-height: $accordion-header-line-height;
@@ -102,7 +102,7 @@
             float: left;
             margin-bottom: 0;
 
-            > a {
+            > .tab-toggle {
                 text-transform: $tab-text-transform;
                 font-size: $tab-header-font-size;
                 line-height: $tab-header-line-height;
@@ -149,9 +149,12 @@
         line-height: $accordion-header-line-height;
         text-transform: $accordion-text-transform;
 
-        > a {
+        > .acco-toggle {
             overflow: hidden;
             text-overflow: ellipsis;
+            border: none;
+            width: 100%;
+            text-align: inherit;
             display: block;
             padding: $accordion-header-padding;
             color: $accordion-header-color;
@@ -188,7 +191,7 @@
     }
 
     @if ($accordion-toggle-arrows) {
-        .acco-header > a {
+        .acco-header > .acco-toggle {
             padding-right: 3 * $default-margin-small;
         }
 
@@ -233,7 +236,7 @@
     .color-#{""+$color-name} .tab-list {
         border-bottom-color: $bg-color;
         > li {
-            > a {
+            > .tab-toggle {
                 &.active {
                     color: get-text-color($bg-color);
                     background: $bg-color;
@@ -255,7 +258,7 @@
 
     .color-#{""+$type-name} .accordion .acco-header {
 
-        > a {
+        > .acco-toggle {
             color: get-text-color($bg-color);
             background: $bg-color;
 

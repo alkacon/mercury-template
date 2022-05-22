@@ -28,7 +28,7 @@
 <c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="showTabs"               value="${showSingleTab or (content.valueList.TabEntry.size() ne 1)}" />
 
-<c:set var="itemId"><mercury:idgen prefix="acco" uuid="${cms.element.instanceId}" /></c:set>
+<c:set var="itemId"><mercury:idgen prefix="t" uuid="${cms.element.instanceId}" /></c:set>
 <c:set var="param_parts"            value="${fn:split(cms.container.param, '#')}" />
 <c:set var="parent_role"            value="${param_parts[0]}" />
 <c:set var="parent_classes"         value="${param_parts[1]}" />
@@ -60,7 +60,12 @@
                         <c:set var="tabLabel" value="${tabEntry.value.Label}" />
                         <mercury:nl />
                         <li><%----%>
-                            <a href="#${itemId}_${status.count}" ${status.first ? ' class="active"' : ''} data-toggle="tab">${tabLabel}</a><%----%>
+                            <button <%--
+                            --%>class="tab-toggle${status.first ? ' active' : ''}" <%--
+                            --%>type="button" <%--
+                            --%>aria-controls="${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" <%--
+                            --%>data-target="#${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" <%--
+                            --%>data-toggle="tab">${tabLabel}</button><%----%>
                         </li><%----%>
                     </c:forEach>
 
@@ -72,16 +77,13 @@
                 <mercury:nl />
 
                     <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
-                        <c:set var="tabContainerName" value="${tabEntry.value.Id}" />
 
                         <mercury:nl />
-                        <div id="${itemId}_${status.count}" class="tab-pane fade ${status.first? 'active show':''}" ><%----%>
+                        <div id="${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" class="tab-pane fade ${status.first? 'active show':''}" ><%----%>
                             <mercury:nl />
-                            <mercury:nl />
-
                             <mercury:container
                                 title="${msg}"
-                                name="${tabContainerName}"
+                                name="${tabEntry.value.Id}"
                                 hideName="${true}"
                                 hideParentType="${true}"
                                 type="${containerType}"

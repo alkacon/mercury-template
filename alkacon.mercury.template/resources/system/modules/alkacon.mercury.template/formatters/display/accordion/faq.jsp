@@ -16,6 +16,7 @@
     title="${value.Question}"
     cssWrapper="type-faq"
     paragraphs="${content.valueList.Paragraph}"
+    contentId="${content.id}"
 />
 
 <c:if test="${listGeneratedJson != null}">

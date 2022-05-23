@@ -70,11 +70,16 @@
                     --%>aria-controls="${itemId}"<%--
                     --%>data-target="#${itemId}"><%----%>
                         <c:out value="${tabLabel}"></c:out>
-                        <c:if test="${cms.isEditMode}">
-                            <wbr><a href="#${itemId}"><span class="list-badge oct-meta-info"><span class="fa fa-refresh"></span></span></a><%----%>
-                        </c:if>
                     </button><%----%>
                 ${'</h'}${itemHsize}${'>'}
+
+                <c:if test="${cms.isEditMode}">
+                    <a href="#${itemId}" class="acco-hash" data-toggle="hashlink"><%----%>
+                        <span class="badge oct-meta-info"><%----%>
+                            <span class="fa fa-hashtag"></span><%----%>
+                        </span><%----%>
+                    </a><%----%>
+                </c:if>
 
                 <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-parent=\"#'.concat(parentId).concat('\"')}><%----%>
 

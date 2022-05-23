@@ -17,6 +17,8 @@
     cssWrapper="type-event"
     preface="${value.Preface}"
     paragraphs="${content.valueList.Paragraph}"
+    contentId="${content.id}"
+    instancedate="${value.Dates.toDateSeries.isSeries ? cms.element.settings.instancedate : null}"
 />
 
 </cms:formatter>

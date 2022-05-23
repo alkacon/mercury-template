@@ -16,6 +16,7 @@
     title="${value.Title}"
     cssWrapper="type-job"
     paragraphs="${content.valueList.Text}"
+    contentId="${content.id}"
 />
 
 </cms:formatter>

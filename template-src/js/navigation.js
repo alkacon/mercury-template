@@ -631,7 +631,7 @@ function initClickmeShowme() {
 
 // auto-scroll to an opened accordion tab
 function initAccordionScroll() {
-    jQ('.type-tab.variant-accordion article.accordion').on('shown.bs.collapse', function() {
+    jQ('article.accordion').on('shown.bs.collapse', function() {
         var $tab = $(this).closest('article.accordion').find('.acco-header');
         if (! $tab.visible()) {
             doScrollToAnchor($tab, -5);
@@ -640,14 +640,11 @@ function initAccordionScroll() {
 }
 
 // auto-scroll to and open a regular tab
-function initRevealTabFromHash($tab) {
-    var id = $tab.attr('id');
-    var num = parseInt(id.substr(id.lastIndexOf('_') + 1));
-    var $parent = $tab.closest('.tabs-parent');
-    $parent.find('ul.tab-list > li:nth-child(' + num + ') a').tab('show');
-    if (! $parent.visible()) {
-        doScrollToAnchor($parent, -5);
-    }
+function openTabFromHash($tab) {
+    var parentId = "#b_" + $tab.attr('id');
+    var $parent = jQ(parentId);
+    $parent.tab('show');
+    doScrollToAnchor($parent, -5);
 }
 
 // apply "external" class to all a href links
@@ -711,7 +708,7 @@ function doScrollToAnchor($anchor, offset) {
             if ($anchor.hasClass('tab-pane')) {
                 // this anchor is a bootstrap tab, show it
                 if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") is a tab!");
-                initRevealTabFromHash($anchor);
+                openTabFromHash($anchor);
                 return;
             } else if ($anchor.hasClass('acco-body')) {
                 if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") is a collapse!");

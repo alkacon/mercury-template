@@ -54,18 +54,30 @@
             <div class="tabs-parent" id="${itemId}"><%----%>
 
                 <mercury:nl />
-                <ul class="tab-list nav pivot"><%----%>
-
+                <ul class="tab-list nav pivot" role="tablist"><%----%>
+                    <c:set var="tabIds" value="${[]}" />
                     <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
                         <c:set var="tabLabel" value="${tabEntry.value.Label}" />
+                        <c:set var="tabId" value="${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" />
+                        <c:set var="ignore" value="${tabIds.add(tabId)}" />
                         <mercury:nl />
                         <li><%----%>
                             <button <%--
+                            --%>id="b_${tabId}" <%--
                             --%>class="tab-toggle${status.first ? ' active' : ''}" <%--
                             --%>type="button" <%--
-                            --%>aria-controls="${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" <%--
-                            --%>data-target="#${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" <%--
-                            --%>data-toggle="tab">${tabLabel}</button><%----%>
+                            --%>aria-controls="${tabId}" <%--
+                            --%>data-target="#${tabId}" <%--
+                            --%>data-toggle="tab"><%----%>
+                                <c:out value="${tabLabel}" />
+                            </button><%----%>
+                            <c:if test="${cms.isEditMode}">
+                                <a href="#${tabId}" class="tab-hash" data-toggle="hashlink"><%----%>
+                                    <span class="badge oct-meta-info"><%----%>
+                                        <span class="fa fa-hashtag"></span><%----%>
+                                    </span><%----%>
+                                </a><%----%>
+                            </c:if>
                         </li><%----%>
                     </c:forEach>
 
@@ -79,7 +91,11 @@
                     <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
 
                         <mercury:nl />
-                        <div id="${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" class="tab-pane fade ${status.first? 'active show':''}" ><%----%>
+                        <div <%--
+                        --%>id="${tabIds[status.index]}" <%--
+                        --%>role="tabpanel" <%--
+                        --%>aria-labelledby="b_${tabIds[status.index]}" <%--
+                        --%>class="tab-pane fade ${status.first? 'show active':''}" ><%----%>
                             <mercury:nl />
                             <mercury:container
                                 title="${msg}"

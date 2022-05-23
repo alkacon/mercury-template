@@ -22,6 +22,7 @@
     title="${value.Title}"
     cssWrapper="type-imageseries"
     paragraphs="${[paragraph]}"
+    contentId="${content.id}"
 />
 
 </cms:formatter>

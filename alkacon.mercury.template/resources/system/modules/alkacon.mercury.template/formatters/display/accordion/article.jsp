@@ -17,6 +17,7 @@
     cssWrapper="type-article"
     preface="${value.Preface}"
     paragraphs="${content.valueList.Paragraph}"
+    contentId="${content.id}"
 />
 
 </cms:formatter>

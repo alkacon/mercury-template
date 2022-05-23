@@ -24,7 +24,10 @@
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 
-<mercury:teaser-accordion title="${value.Title}" cssWrapper="type-media">
+<mercury:teaser-accordion
+    title="${value.Title}"
+    contentId="${content.id}"
+    cssWrapper="type-media">
 
     <mercury:section-piece
         pieceLayout="${9}"

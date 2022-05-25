@@ -159,10 +159,12 @@
 
         <jsp:attribute name="heading">
             <c:if test="${showHeading}">
+                <c:set var="headingCss" value="piece-heading" />
                 <c:if test="${addHeadingId or addHeadingAnchorlink}">
                     <c:set var="headingId"><mercury:translate-name name="${fn:trim(heading)}" />-${fn:substringBefore(cms.element.instanceId, '-')}</c:set>
                     <c:if test="${addHeadingAnchorlink}">
                         <c:set var="anchorLinkSuffix"><a class="anchor-link" href="#${headingId}"></a></c:set>
+                         <c:set var="headingCss" value="piece-heading anchor-link-parent" />
                     </c:if>
                 </c:if>
                 <c:choose>
@@ -170,8 +172,9 @@
                         <mercury:heading
                             level="${hsize}"
                             suffix="${anchorLinkSuffix}"
+                            tabindex="${empty anchorLinkSuffix}"
                             ade="${false}"
-                            css="piece-heading"
+                            css="${headingCss}"
                             id="${headingId}">
                             <jsp:attribute name="markupText">
                                 <mercury:link link="${link}" css="piece-heading-link" setTitle="true">
@@ -186,7 +189,7 @@
                             level="${hsize}"
                             suffix="${anchorLinkSuffix}"
                             ade="${ade}"
-                            css="piece-heading"
+                            css="${headingCss}"
                             id="${headingId}"
                         />
                     </c:otherwise>

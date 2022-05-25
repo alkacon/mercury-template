@@ -241,6 +241,15 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 }
 
+html.keyboard-nav .piece {
+    .heading {
+        > .piece-heading {
+            // must show overflow or the border may be hidden
+            overflow: visible;
+        }
+    }
+}
+
 .col-6,
 .col-md-6,
 .col-lg-6 {

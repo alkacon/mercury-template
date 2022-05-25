@@ -261,6 +261,23 @@ html.opencms-page-editor {
 }
 
 
+// anchor-links, usually after a heading
+.anchor-link-parent {
+    .anchor-link {
+        display: none;
+        &::after {
+            content: " #";
+        }
+    }
+
+    &:hover {
+        .anchor-link {
+            display: inline;
+            text-decoration: none;
+        }
+    }
+}
+
 // Basic Print support
 @media print {
     html {

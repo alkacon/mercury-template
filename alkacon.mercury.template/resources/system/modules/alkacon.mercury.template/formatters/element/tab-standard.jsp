@@ -72,7 +72,7 @@
                                 <c:out value="${tabLabel}" />
                             </button><%----%>
                             <c:if test="${cms.isEditMode}">
-                                <a href="#${tabId}" class="tab-hash anchor-link"><%----%>
+                                <a href="#${tabId}" class="tab-hash"><%----%>
                                     <span class="badge oct-meta-info"><%----%>
                                         <span class="fa fa-hashtag"></span><%----%>
                                     </span><%----%>

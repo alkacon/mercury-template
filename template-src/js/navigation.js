@@ -584,13 +584,14 @@ function fixedHeaderActive() {
 function initSmoothScrolling() {
 
     // attach click handler to anchor links on the page
-    jQ('a[href*="#"]:not([href="#"]):not([data-toggle]):not([data-slide]):not(.anchor-link)').click(function() {
+    jQ('a[href*="#"]:not([href="#"]):not([data-toggle]):not([data-slide])').click(function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var $target = jQ(this.hash);
             if ($target.length) {
                 jQ(this).blur();
                 scrollToAnchor($target);
                 focusOnElement($target);
+                window.history.pushState(null, null, this.hash);
                 return false;
             }
         }

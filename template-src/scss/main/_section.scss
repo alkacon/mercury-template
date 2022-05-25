@@ -250,22 +250,3 @@
         }
     }
 }
-
-// anchor-links after the heading
-dt,
-.sectiontitle,
-.heading {
-    .anchor-link {
-        display: none;
-        &::after {
-            content: " #";
-        }
-    }
-
-    &:hover {
-        .anchor-link {
-            display: inline;
-            text-decoration: none;
-        }
-    }
-}

@@ -74,7 +74,7 @@
                 ${'</h'}${itemHsize}${'>'}
 
                 <c:if test="${cms.isEditMode}">
-                    <a href="#${itemId}" class="acco-hash anchor-link"><%----%>
+                    <a href="#${itemId}" class="acco-hash"><%----%>
                         <span class="badge oct-meta-info"><%----%>
                             <span class="fa fa-hashtag"></span><%----%>
                         </span><%----%>

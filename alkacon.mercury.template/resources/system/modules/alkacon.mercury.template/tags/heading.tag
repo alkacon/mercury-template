@@ -43,12 +43,8 @@
     description="Enables advanced direct edit for the generated heading.
     Default is 'false' if not provided." %>
 
-<%@ attribute name="addId" type="java.lang.Boolean" required="false"
-    description="Adds an automatically generated ID attribute for the heading, for use in anchor links.
-    The ID attribute will be generated from the provided text, which will be translated according to the configured file name translation rules.
-    The result will also be all lower case.
-    This requires that the 'text' attribute is provided, if only 'markupText' is provided no ID can be generated.
-    Default is 'false' if not provided." %>
+<%@ attribute name="id" type="java.lang.String" required="false"
+    description="Adds an the provided ID attribute to the heading, useful for use in anchor links." %>
 
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="The heading markup will only be generated if this evaluates to 'true'." %>
@@ -62,10 +58,11 @@
 
 <c:if test="${(level > 0) and (level <= 7) and (empty test or test)}">
 
-    <c:set var="escapeXml" value="${empty escapeXml ? true : escapeXml}" />
-    <c:set var="addTabindex" value="${empty tabindex ? ((level > 0) and (level <=3)) : tabindex}" />
-
     <c:if test="${(not empty markupText) or (not empty text)}">
+
+        <c:set var="escapeXml"      value="${empty escapeXml ? true : escapeXml}" />
+        <c:set var="addTabindex"    value="${empty tabindex ? ((level > 0) and (level <=3)) : tabindex}" />
+
         <c:choose>
             <c:when test="${level == 7}">
                 ${'<div'}
@@ -76,18 +73,22 @@
         </c:choose>
 
         <c:if test="${not empty css}">${' '}class="${css}"</c:if>
-        <c:if test="${addId and not empty text}">${' id=\"'}<mercury:translate-name name="${text}" />${'\"'}</c:if>
+        <c:if test="${not empty id}">${' id=\"'}${id}${'\"'}</c:if>
         <c:if test="${addTabindex}">${' '}tabindex="0"</c:if>
         <c:if test="${not empty attr}">${' '}${attr}</c:if>
-        <c:if test="${ade and cms:isWrapper(text) }">${' '}${text.rdfaAttr}</c:if>
+        <c:if test="${useAde}">${' '}${text.rdfaAttr}</c:if>
         ${'>'}
+
             ${prefix}
             <c:choose>
                 <c:when test="${not empty markupText}">
                     <jsp:invoke fragment="markupText" />
                 </c:when>
                 <c:when test="${not empty text}">
+                    <c:set var="useAde" value="${ade and cms:isWrapper(text)}" />
+                    <c:if test="${useAde}"><span${' '}${text.rdfaAttr}></c:if>
                     <mercury:out value="${text}" escapeXml="${escapeXml}" />
+                    <c:if test="${useAde}"></span></c:if>
                 </c:when>
             </c:choose>
             ${suffix}

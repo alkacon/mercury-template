@@ -111,8 +111,13 @@
 <%@ attribute name="addHeadingId" type="java.lang.Boolean" required="false"
     description="Adds an automatically generated ID attribute for the heading, for use in anchor links.
     The ID attribute will be generated from the provided text, which will be translated according to the configured file name translation rules.
-    The result will also be all lower case." %>
+    The result will also be all lower case.
+    Default is 'false' if not provided." %>
 
+<%@ attribute name="addHeadingAnchorlink" type="java.lang.Boolean" required="false"
+    description="Adds a heading anchor link after the heading that can be used do easily bookmark or link to this heading.
+    If this option is 'true', then the value of 'addHeadingId' is ignored and the ID is always generated.
+    Default is 'false' if not provided." %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -154,9 +159,38 @@
 
         <jsp:attribute name="heading">
             <c:if test="${showHeading}">
-                <mercury:link link="${link}" css="piece-heading-link" test="${linkHeading}" setTitle="true">
-                    <mercury:heading text="${heading}" level="${hsize}" ade="${linkHeading ? false : ade}" css="piece-heading" addId="${addHeadingId}" />
-                </mercury:link>
+                <c:if test="${addHeadingId or addHeadingAnchorlink}">
+                    <c:set var="headingId"><mercury:translate-name name="${fn:trim(heading)}" />-${fn:substringBefore(cms.element.instanceId, '-')}</c:set>
+                    <c:if test="${addHeadingAnchorlink}">
+                        <c:set var="anchorLinkSuffix"><a class="anchor-link" href="#${headingId}"></a></c:set>
+                    </c:if>
+                </c:if>
+                <c:choose>
+                    <c:when test="${linkHeading}">
+                        <mercury:heading
+                            level="${hsize}"
+                            suffix="${anchorLinkSuffix}"
+                            ade="${false}"
+                            css="piece-heading"
+                            id="${headingId}">
+                            <jsp:attribute name="markupText">
+                                <mercury:link link="${link}" css="piece-heading-link" setTitle="true">
+                                    <c:out value="${heading}" />
+                                </mercury:link>
+                            </jsp:attribute>
+                        </mercury:heading>
+                    </c:when>
+                    <c:otherwise>
+                        <mercury:heading
+                            text="${heading}"
+                            level="${hsize}"
+                            suffix="${anchorLinkSuffix}"
+                            ade="${ade}"
+                            css="piece-heading"
+                            id="${headingId}"
+                        />
+                    </c:otherwise>
+                </c:choose>
             </c:if>
         </jsp:attribute>
 

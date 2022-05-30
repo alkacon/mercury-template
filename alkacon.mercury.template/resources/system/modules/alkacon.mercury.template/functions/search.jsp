@@ -166,7 +166,7 @@
                     <div class="input button"><%----%>
                         <label for="searchFormQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                         <input id="searchFormQuery" name="${common.config.queryParam}" <%--
-                            --%>value="${escapedQuery}" class="form-control blur-focus" type="text" autocomplete="off" <%--
+                            --%>value="${escapedQuery}" class="form-control" type="text" autocomplete="off" <%--
                             --%>placeholder="<c:out value="${slotText}" />" /><%----%>
                         <button class="btn btn-submit-search" type="submit"><fmt:message key="msg.page.search.submit" /></button><%----%>
                     </div><%----%>

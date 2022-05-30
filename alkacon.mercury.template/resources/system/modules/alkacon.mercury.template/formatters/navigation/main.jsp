@@ -260,7 +260,7 @@
                             <form action="${searchPageUrl}" method="post"><%----%>
                                 <div class="input button"><%----%>
                                     <label for="searchNavQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
-                                    <input id="searchNavQuery" name="q" type="text" class="blur-focus" autocomplete="off" placeholder='<fmt:message key="msg.page.search.enterquery" />' /><%----%>
+                                    <input id="searchNavQuery" name="q" type="text" autocomplete="off" placeholder='<fmt:message key="msg.page.search.enterquery" />' /><%----%>
                                     <button class="btn" type="button" title="<fmt:message key="msg.page.search" />" onclick="this.form.submit(); return false;"><%----%>
                                         <fmt:message key="msg.page.search.submit" /><%----%>
                                     </button><%----%>

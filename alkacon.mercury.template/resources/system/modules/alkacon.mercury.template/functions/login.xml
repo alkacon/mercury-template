@@ -41,5 +41,8 @@
     <Setting>
       <IncludeName><![CDATA[loginou.login]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[loginpage.login]]></IncludeName>
+    </Setting>
   </FunctionConfig>
 </FunctionConfigs>

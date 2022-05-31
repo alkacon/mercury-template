@@ -16,7 +16,8 @@
 
 <c:set var="cssWrapper"             value="${setCssWrapperAll}" />
 <c:set var="loginproject"           value="${setting.loginproject.isSet ? setting.loginproject.toString : 'Online'}" />
-<c:set var="loginou"                value="${setting.loginou.isSet ? fn:trim(cms.element.setting.loginou.toString) : ''}" />
+<c:set var="loginou"                value="${setting.loginou.isSet ? fn:trim(cms.element.setting.loginou.toString) : null}" />
+<c:set var="loginpage"              value="${setting.loginpage.isSet ? fn:trim(cms.element.setting.loginpage.toString) : null}" />
 <c:set var="formCssWrapper"         value="${setting.formCssWrapper}" />
 
 <%-- Must close setting tag here because the loginBean uses inline code --%>
@@ -36,7 +37,7 @@
 
     <c:choose>
         <c:when test="${(param.action eq 'login') and (not empty param.loginName) and (not empty param.loginPassword)}">
-            <c:set var="loginpage"      value="${empty cms.pageResource.property['login-start'] ? cms.requestContext.uri : cms.pageResource.property['login-start']}" />
+            <c:set var="loginpage"      value="${empty loginpage ? (empty cms.pageResource.property['login-start'] ? cms.requestContext.uri : cms.pageResource.property['login-start']) : loginpage}" />
             <c:set var="loginresource"  value="${empty param.requestedResource ? loginpage : param.requestedResource}" />
             <c:set var="loginuri"       value="${cms.requestContext.siteRoot}${loginresource}" />
             <c:set var="loginuser"      value="${param.loginName}"/>

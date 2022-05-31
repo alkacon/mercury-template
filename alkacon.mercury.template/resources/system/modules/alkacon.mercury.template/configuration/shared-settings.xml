@@ -2926,6 +2926,13 @@
       <Widget><![CDATA[string]]></Widget>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[loginpage.login]]></IncludeName>
+      <PropertyName><![CDATA[loginpage]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.login.loginpage)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.login.loginpage.help)]]></Description>
+      <Widget><![CDATA[gallery]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[loginou.login]]></IncludeName>
       <PropertyName><![CDATA[loginou]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.login.ou)]]></DisplayName>

@@ -172,6 +172,18 @@
         }
     }
 
+    .btn-close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        font-size: 2.5rem;
+        line-height: 1;
+        padding: 5px 8px;
+        &:not(:hover):not(:focus) {
+            background-color: transparent;
+        }
+    }
+
     .links {
         order: 4;
         font-size: 80%;
@@ -229,6 +241,11 @@
             }
         }
 
+        .btn-close {
+            font-size: 1.5rem;
+            right: 10px;
+        }
+
         .message {
             font-size: 1.2rem;
             line-height: 1.25;
@@ -257,6 +274,12 @@
             .btn {
                 margin-bottom: 5px;
             }
+        }
+
+        .btn-close {
+            right: 5px;
+            top: 8px;
+            padding: 4px 6px;
         }
 
         .links {

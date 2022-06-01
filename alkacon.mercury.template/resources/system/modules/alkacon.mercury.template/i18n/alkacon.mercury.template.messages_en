@@ -722,6 +722,7 @@ msg.page.placeholder.media.video=Placeholder for external video. Click to show t
 msg.page.placeholder.media.youtube=Placeholder for YouTube video. Click to show the video.
 msg.page.poi.nomap=Can not show map, no coordinates are set in the content.
 msg.page.policyfile.missing=Privacy policy not configured
+msg.page.privacypolicy.btn-close=Close
 msg.page.privacypolicy.button.banner.accept=Accept all
 msg.page.privacypolicy.button.banner.save=Save
 msg.page.privacypolicy.button.modal.accept=Accept

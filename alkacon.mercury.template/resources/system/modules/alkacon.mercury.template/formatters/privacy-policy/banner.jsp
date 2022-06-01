@@ -101,6 +101,7 @@
                         <button class="btn btn-accept" type="submit" tabindex="0">${value.AcceptAllButtonText.isSet ? value.AcceptAllButtonText : btnAcceptDef}</button><%----%>
                     </div><%----%>
                 </form><%----%>
+                <button class="btn btn-close" tabindex="0" title="<fmt:message key="msg.page.privacypolicy.btn-close" />">&#x2715</button><%----%>
                 <c:if test="${hasLinks and value.ShowLinks.useDefault('true').toBoolean}">
                     <div class="links"><%----%>
                         <ul><%----%>

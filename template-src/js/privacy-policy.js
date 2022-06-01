@@ -106,6 +106,10 @@ function displayBanner() {
         var onTop = m_bannerData.onTop;
 
         // add click handlers to buttons on banner
+        $banner.find(".btn-close").on('click', function(e) {
+            $banner.slideUp();
+            $bannerElement.slideUp();
+        });
         $banner.find(".btn-accept").on('click', function(e) {
             $banner.find("#use-statistical").prop('checked', true);
             $banner.find("#use-external").prop('checked', true);

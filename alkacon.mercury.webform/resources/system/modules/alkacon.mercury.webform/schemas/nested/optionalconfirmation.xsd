@@ -17,6 +17,7 @@
             <xsd:element name="ConfirmationCheckboxLabel" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationField" type="OpenCmsString" />
             <xsd:element name="ConfirmationMailFrom" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ConfirmationMailReplyTo" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationMailFromName" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationMailSubject" type="OpenCmsString" />
             <xsd:element name="ConfirmationMailText" type="OpenCmsHtml" minOccurs="0" />
@@ -55,6 +56,14 @@
                     <PropertyName>ConfirmationMailFrom</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFrom)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFrom.help)]]></Description>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailReplyTo</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailReplyTo)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailReplyTo.help)]]></Description>
                     <RuleRegex><![CDATA[.+]]></RuleRegex>
                     <RuleType>warning</RuleType>
                     <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>

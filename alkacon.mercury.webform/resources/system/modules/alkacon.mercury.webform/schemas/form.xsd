@@ -39,6 +39,7 @@
 
             <xsd:element name="MailType" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MailFrom" type="OpenCmsString" />
+            <xsd:element name="MailReplyTo" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MailFromName" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MailTo" type="OpenCmsString" />
             <xsd:element name="MailCC" type="OpenCmsString" minOccurs="0" />
@@ -151,6 +152,14 @@
                     <PropertyName>MailFrom</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailFrom)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.MailFrom.help)]]></Description>
+                    <RuleRegex><![CDATA[.+]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>MailReplyTo</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailReplyTo)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebForm.MailReplyTo.help)]]></Description>
                     <RuleRegex><![CDATA[.+]]></RuleRegex>
                     <RuleType>warning</RuleType>
                     <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>

@@ -1093,28 +1093,48 @@ public class CmsFormHandler extends CmsJspActionElement {
 
         String mailTo = getFormConfiguration().getConfirmationMailEmail();
         if (CmsStringUtil.isNotEmpty(mailTo)) {
+            String confirmationMailFrom = getFormConfiguration().getConfirmationMailFrom();
+            String confirmationMailFromName = getFormConfiguration().getConfirmationMailFromName();
+            String mailFrom = getFormConfiguration().getMailFrom();
+            String mailFromName = getFormConfiguration().getMailFromName();
+            String confirmationMailReplyTo = getFormConfiguration().getConfirmationMailReplyTo();
+            String mailReplyTo = getFormConfiguration().getMailReplyTo();
             // create the new confirmation mail message depending on the configured email type
             if (getFormConfiguration().getMailType().equals(CmsForm.MAILTYPE_HTML)) {
                 // create a HTML email
                 CmsHtmlMail theMail = new CmsHtmlMail();
                 theMail.setCharset(getCmsObject().getRequestContext().getEncoding());
-                if (CmsStringUtil.isNotEmpty(getFormConfiguration().getConfirmationMailFrom())) {
-                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(
-                        getFormConfiguration().getConfirmationMailFromName())) {
+                if (CmsStringUtil.isNotEmpty(confirmationMailFrom)) {
+                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(confirmationMailFromName)) {
                         theMail.setFrom(
-                            m_macroResolver.resolveMacros(getFormConfiguration().getConfirmationMailFrom()),
-                            m_macroResolver.resolveMacros(getFormConfiguration().getConfirmationMailFromName()));
+                            m_macroResolver.resolveMacros(confirmationMailFrom),
+                            m_macroResolver.resolveMacros(confirmationMailFromName));
+                        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(confirmationMailReplyTo)) {
+                            theMail.addReplyTo(
+                                m_macroResolver.resolveMacros(confirmationMailReplyTo),
+                                m_macroResolver.resolveMacros(confirmationMailFromName));
+                        }
                     } else {
-                        theMail.setFrom(
-                            m_macroResolver.resolveMacros(getFormConfiguration().getConfirmationMailFrom()));
+                        theMail.setFrom(m_macroResolver.resolveMacros(confirmationMailFrom));
+                        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(confirmationMailReplyTo)) {
+                            theMail.addReplyTo(m_macroResolver.resolveMacros(confirmationMailReplyTo));
+                        }
                     }
-                } else if (CmsStringUtil.isNotEmpty(getFormConfiguration().getMailFrom())) {
-                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(getFormConfiguration().getMailFromName())) {
+                } else if (CmsStringUtil.isNotEmpty(mailFrom)) {
+                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
                         theMail.setFrom(
-                            m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()),
-                            m_macroResolver.resolveMacros(getFormConfiguration().getMailFromName()));
+                            m_macroResolver.resolveMacros(mailFrom),
+                            m_macroResolver.resolveMacros(mailFromName));
+                        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                            theMail.addReplyTo(
+                                m_macroResolver.resolveMacros(mailReplyTo),
+                                m_macroResolver.resolveMacros(mailFromName));
+                        }
                     } else {
-                        theMail.setFrom(m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()));
+                        theMail.setFrom(m_macroResolver.resolveMacros(mailFrom));
+                        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                            theMail.addReplyTo(m_macroResolver.resolveMacros(mailReplyTo));
+                        }
                     }
                 }
                 theMail.setTo(createInternetAddresses(mailTo));
@@ -1130,12 +1150,20 @@ public class CmsFormHandler extends CmsJspActionElement {
                 CmsSimpleMail theMail = new CmsSimpleMail();
                 theMail.setCharset(getCmsObject().getRequestContext().getEncoding());
                 if (CmsStringUtil.isNotEmpty(getFormConfiguration().getMailFrom())) {
-                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(getFormConfiguration().getMailFromName())) {
+                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
                         theMail.setFrom(
-                            m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()),
-                            m_macroResolver.resolveMacros(getFormConfiguration().getMailFromName()));
+                            m_macroResolver.resolveMacros(mailFrom),
+                            m_macroResolver.resolveMacros(mailFromName));
+                        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                            theMail.addReplyTo(
+                                m_macroResolver.resolveMacros(mailReplyTo),
+                                m_macroResolver.resolveMacros(mailFromName));
+                        }
                     } else {
-                        theMail.setFrom(m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()));
+                        theMail.setFrom(m_macroResolver.resolveMacros(mailFrom));
+                        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                            theMail.addReplyTo(m_macroResolver.resolveMacros(mailReplyTo));
+                        }
                     }
                 }
                 theMail.setTo(createInternetAddresses(mailTo));
@@ -2105,17 +2133,28 @@ public class CmsFormHandler extends CmsJspActionElement {
     protected void sendMail() throws EmailException, AddressException {
 
         // create the new mail message depending on the configured email type
+        String mailFrom = getFormConfiguration().getMailFrom();
+        String mailFromName = getFormConfiguration().getMailFromName();
+        String mailReplyTo = getFormConfiguration().getMailReplyTo();
         if (getFormConfiguration().getMailType().equals(CmsForm.MAILTYPE_HTML)) {
             // create a HTML email
             CmsHtmlMail theMail = new CmsHtmlMail();
             theMail.setCharset(getCmsObject().getRequestContext().getEncoding());
-            if (CmsStringUtil.isNotEmpty(getFormConfiguration().getMailFrom())) {
-                if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(getFormConfiguration().getMailFromName())) {
+            if (CmsStringUtil.isNotEmpty(mailFrom)) {
+                if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
                     theMail.setFrom(
-                        m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()),
-                        m_macroResolver.resolveMacros(getFormConfiguration().getMailFromName()));
+                        m_macroResolver.resolveMacros(mailFrom),
+                        m_macroResolver.resolveMacros(mailFromName));
+                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                        theMail.addReplyTo(
+                            m_macroResolver.resolveMacros(mailReplyTo),
+                            m_macroResolver.resolveMacros(mailFromName));
+                    }
                 } else {
-                    theMail.setFrom(m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()));
+                    theMail.setFrom(m_macroResolver.resolveMacros(mailFrom));
+                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                        theMail.addReplyTo(m_macroResolver.resolveMacros(mailReplyTo));
+                    }
                 }
             }
             theMail.setTo(createInternetAddresses(m_macroResolver.resolveMacros(getFormConfiguration().getMailTo())));
@@ -2159,13 +2198,21 @@ public class CmsFormHandler extends CmsJspActionElement {
             // create a plain text email
             CmsSimpleMail theMail = new CmsSimpleMail();
             theMail.setCharset(getCmsObject().getRequestContext().getEncoding());
-            if (CmsStringUtil.isNotEmpty(getFormConfiguration().getMailFrom())) {
-                if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(getFormConfiguration().getMailFromName())) {
+            if (CmsStringUtil.isNotEmpty(mailFrom)) {
+                if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
                     theMail.setFrom(
-                        m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()),
-                        m_macroResolver.resolveMacros(getFormConfiguration().getMailFromName()));
+                        m_macroResolver.resolveMacros(mailFrom),
+                        m_macroResolver.resolveMacros(mailFromName));
+                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                        theMail.addReplyTo(
+                            m_macroResolver.resolveMacros(mailReplyTo),
+                            m_macroResolver.resolveMacros(mailFromName));
+                    }
                 } else {
-                    theMail.setFrom(m_macroResolver.resolveMacros(getFormConfiguration().getMailFrom()));
+                    theMail.setFrom(m_macroResolver.resolveMacros(mailFrom));
+                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
+                        theMail.addReplyTo(m_macroResolver.resolveMacros(mailReplyTo));
+                    }
                 }
             }
             theMail.setTo(createInternetAddresses(m_macroResolver.resolveMacros(getFormConfiguration().getMailTo())));

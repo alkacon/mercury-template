@@ -137,6 +137,9 @@ public class CmsForm {
     /** Configuration node name for the confirmation mail optional flag node. */
     public static final String NODE_CONFIRMATIONMAILOPTIONAL = "ConfirmationMailOptional";
 
+    /** Configuration node name for the option confirmation mail reply-to node. */
+    public static final String NODE_CONFIRMATIONMAILREPLYTO = "ConfirmationMailReplyTo";
+
     /** Configuration node name for the confirmation mail subject node. */
     public static final String NODE_CONFIRMATIONMAILSUBJECT = "ConfirmationMailSubject";
 
@@ -226,6 +229,9 @@ public class CmsForm {
 
     /** Configuration node name for the email sender name node. */
     public static final String NODE_MAILFROMNAME = "MailFromName";
+
+    /** Configuration node name for the email reply-to node. */
+    public static final String NODE_MAILREPLYTO = "MailReplyTo";
 
     /** Configuration node name for the email subject node. */
     public static final String NODE_MAILSUBJECT = "MailSubject";
@@ -355,6 +361,9 @@ public class CmsForm {
     protected boolean m_confirmationMailOptional;
 
     /** configuration value. */
+    protected String m_confirmationMailReplyTo;
+
+    /** configuration value. */
     protected String m_confirmationMailSubject;
 
     /** configuration value. */
@@ -422,6 +431,9 @@ public class CmsForm {
 
     /** The mail sender name. */
     protected String m_mailFromName;
+
+    /** The mail reply-to address. */
+    protected String m_mailReplyTo;
 
     /** configuration value. */
     protected String m_mailSubject;
@@ -779,6 +791,16 @@ public class CmsForm {
     }
 
     /**
+     * Returns the optional confirmation mail reply-to address.<p>
+     *
+     * @return the optional confirmation mail reply-to address
+     */
+    public String getConfirmationMailReplyTo() {
+
+        return m_confirmationMailReplyTo;
+    }
+
+    /**
      * Returns the subject of the optional confirmation mail.<p>
      *
      * @return the subject of the optional confirmation mail
@@ -1004,6 +1026,16 @@ public class CmsForm {
     public String getMailFromName() {
 
         return m_mailFromName;
+    }
+
+    /**
+     * Returns the mail reply-to address.<p>
+     *
+     * @return the mail reply-to address
+     */
+    public String getMailReplyTo() {
+
+        return m_mailReplyTo;
     }
 
     /**
@@ -1660,6 +1692,8 @@ public class CmsForm {
         setMailType(configParser.getConfigurationValue(NODE_MAILTYPE, MAILTYPE_HTML));
         // get the mail from address
         setMailFrom(configParser.getConfigurationValue(NODE_MAILFROM, ""));
+        // get the mail reply-to address
+        setMailReplyTo(configParser.getConfigurationValue(NODE_MAILREPLYTO, ""));
         // get the mail from name
         setMailFromName(configParser.getConfigurationValue(NODE_MAILFROMNAME, ""));
         // get the mail to address(es)
@@ -1756,6 +1790,9 @@ public class CmsForm {
         if (isConfirmationMailEnabled()) {
             // get the optional confirmation mail from
             setConfirmationMailFrom(configParser.getConfigurationValue(pathPrefix + NODE_CONFIRMATIONMAILFROM, ""));
+            // get the optional confirmation mail reply-to
+            setConfirmationMailReplyTo(
+                configParser.getConfigurationValue(pathPrefix + NODE_CONFIRMATIONMAILREPLYTO, ""));
             // get the optional confirmation mail from name
             setConfirmationMailFromName(
                 configParser.getConfigurationValue(pathPrefix + NODE_CONFIRMATIONMAILFROMNAME, ""));
@@ -2167,6 +2204,16 @@ public class CmsForm {
     }
 
     /**
+     * Sets the optional confirmation mail reply-to address.<p>
+     *
+     * @param confirmationMailReplyTo the optional confirmation mail reply-to address
+     */
+    protected void setConfirmationMailReplyTo(String confirmationMailReplyTo) {
+
+        m_confirmationMailReplyTo = confirmationMailReplyTo;
+    }
+
+    /**
      * Sets the subject of the optional confirmation mail.<p>
      *
      * @param confirmationMailSubject the subject of the optional confirmation mail
@@ -2334,6 +2381,16 @@ public class CmsForm {
     protected void setMailFromName(String mailFromName) {
 
         m_mailFromName = mailFromName;
+    }
+
+    /**
+     * Sets the mail reply-to address.<p>
+     *
+     * @param replyTo the mail reply-to address
+     */
+    protected void setMailReplyTo(String replyTo) {
+
+        m_mailReplyTo = replyTo;
     }
 
     /**

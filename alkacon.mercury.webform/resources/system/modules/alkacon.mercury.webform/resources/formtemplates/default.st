@@ -482,7 +482,7 @@ $!  !$</footer>
 confirmationpage(formconfig,confirmtext,confirmfields) ::= <<
 $! ###### CONFIRMATION page of the form ###### !$
 $confirmtext$
-<table class="webform-input table table-responsive table-bordered table-striped">
+<table class="webform-input table table-responsive table-bordered table-striped matomo-goal">
 $confirmfields:{$!
     !$<tr>$!
         !$<td class="label">$it.label$</td>$!

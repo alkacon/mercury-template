@@ -119,6 +119,12 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
         g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
     })();
     m_matomoInitialized = true;
+    $(".matomo-goal").each(function(index, element) {
+        var goal = location.pathname;
+        if (DEBUG) console.info('Initializing Matomo goal: ' + goal);
+        _paq.push(['setDocumentTitle', document.title + ' [' + goal + ']']);
+        _paq.push(['trackPageView']);
+    })
 }
 
 /****** Exported functions ******/

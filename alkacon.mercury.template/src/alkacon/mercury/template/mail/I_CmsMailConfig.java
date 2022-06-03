@@ -47,6 +47,12 @@ public interface I_CmsMailConfig {
     String getSenderName();
 
     /**
+     * Returns the reply-to address of the emails sender.
+     * @return the reply-to address of the emails sender.
+     */
+    String getSenderReplyTo();
+
+    /**
      * Returns the subject of the email.
      * @return the subject of the email.
      */

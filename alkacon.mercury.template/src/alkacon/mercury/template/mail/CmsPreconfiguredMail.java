@@ -80,13 +80,20 @@ public class CmsPreconfiguredMail implements I_CmsPreconfiguredMail {
         try {
             String senderName = m_mailConfig.getSenderName();
             String senderEmail = m_mailConfig.getSenderAddress();
+            String senderReplyTo = m_mailConfig.getSenderReplyTo();
             if (CmsStringUtil.isEmptyOrWhitespaceOnly(senderEmail)) {
                 senderEmail = mail.getFromAddress().getAddress();
             }
             if (CmsStringUtil.isEmptyOrWhitespaceOnly(senderName)) {
                 mail.setFrom(senderEmail);
+                if (!CmsStringUtil.isEmptyOrWhitespaceOnly(senderReplyTo)) {
+                    mail.addReplyTo(senderReplyTo);
+                }
             } else {
                 mail.setFrom(senderEmail, senderName);
+                if (!CmsStringUtil.isEmptyOrWhitespaceOnly(senderReplyTo)) {
+                    mail.addReplyTo(senderReplyTo, senderName);
+                }
             }
             mail.setSubject(
                 null != receipientspecificMacros

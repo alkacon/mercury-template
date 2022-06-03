@@ -28,16 +28,22 @@
 <div class="element type-search-slot pivot${setCssWrapperAll}"><%----%>
     <mercury:nl/>
 
-    <c:set var="link">${cms.functionDetail['Search']}</c:set>
+    <c:set var="defaultDetailUri" value="${cms.functionDetailPage['##DEFAULT##']}" />
+    <c:set var="searchPageUri" value="${cms.functionDetailPage['Search page']}" />
+    <c:if test="${(searchPageUri eq defaultDetailUri) or not fn:startsWith(searchPageUri, '/')}">
+        <c:set var="searchPageUri" value="${null}" />
+    </c:if>
+
     <c:choose>
-    <c:when test="${not cms.vfs.exists[link] and cms.isEditMode}">
-        <cms:bundle basename="alkacon.mercury.template.messages">
-            <mercury:alert type="warning">
-                <jsp:attribute name="head">
-                    <fmt:message key="msg.page.search.nofunction" />
-                </jsp:attribute>
-            </mercury:alert>
-        </cms:bundle>
+    <c:when test="${empty searchPageUri and cms.isEditMode}">
+        <mercury:alert type="warning">
+            <jsp:attribute name="head">
+                <fmt:message key="msg.page.search.nofunction" />
+            </jsp:attribute>
+        </mercury:alert>
+    </c:when>
+    <c:when test="${empty searchPageUri and not cms.isEditMode}">
+        <!-- <fmt:message key="msg.page.search.nofunction" /> --><%----%>
     </c:when>
     <c:otherwise>
 
@@ -48,7 +54,7 @@
             --%> id="search-slot-form"<%--
             --%> role="form"<%--
             --%> class="styled-form no-border"<%--
-            --%> action="${link}"<%--
+            --%> action="${searchPageUri}"<%--
             --%>><%----%>
 
             <%--We add this parameter to ensure that it is really searched and search is not starting in initial mode --%>

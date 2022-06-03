@@ -24,8 +24,13 @@
 <c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
 <c:set var="showImageLink"              value="${setting.showImageLink.toBoolean}" />
 
-<c:set var="searchPageUrl" value="${cms.functionDetail['Search page']}" />
-<c:set var="showSearch" value="${showSearch and not fn:startsWith(searchPageUrl,'[')}" />
+<c:if test="${showSearch}">
+    <c:set var="defaultDetailUri" value="${cms.functionDetailPage['##DEFAULT##']}" />
+    <c:set var="searchPageUri" value="${cms.functionDetailPage['Search page']}" />
+    <c:if test="${(searchPageUri eq defaultDetailUri) or not fn:startsWith(searchPageUri, '/')}">
+        <c:set var="showSearch" value="${false}" />
+    </c:if>
+</c:if>
 
 <c:set var="logoElements" value="${cms.elementsInContainers['header-image']}" />
 <c:if test="${not empty logoElements}">
@@ -251,13 +256,13 @@
 
         <c:if test="${showSearch}">
             <li id="nav-main-search" class="expand"><%----%>
-                <a href="${searchPageUrl}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
+                <a href="${searchPageUri}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
                     <span class="search search-btn fa fa-search"></span><%----%>
                 </a><%----%>
                 <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>
                     <li><%----%>
                         <div class="styled-form search-form"><%----%>
-                            <form action="${searchPageUrl}" method="post"><%----%>
+                            <form action="${searchPageUri}" method="post"><%----%>
                                 <div class="input button"><%----%>
                                     <label for="searchNavQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                                     <input id="searchNavQuery" name="q" type="text" autocomplete="off" placeholder='<fmt:message key="msg.page.search.enterquery" />' /><%----%>

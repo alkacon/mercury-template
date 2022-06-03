@@ -26,12 +26,12 @@
 <fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
 <fmt:message var="extFootDef" key="msg.page.privacypolicy.external.footer" />
 
-<c:set var="linkDefaultUri" value="${cms.functionDetail['##DEFAULT##']}" />
+<c:set var="defaultDetailUri" value="${cms.functionDetailPage['##DEFAULT##']}" />
 
 <c:set var="linkImprintUri" value="${value.LinkImprint.value.URI.toLink}" />
 <c:if test="${empty linkImprintUri}">
-    <c:set var="linkImprintUri" value="${cms.functionDetail['Imprint']}" />
-    <c:if test="${(linkImprintUri eq linkDefaultUri) or fn:contains(linkImprintUri, 'No detail page')}">
+    <c:set var="linkImprintUri" value="${cms.functionDetailPage['Imprint']}" />
+    <c:if test="${(linkImprintUri eq defaultDetailUri) or not fn:startsWith(linkImprintUri, '/')}">
         <c:set var="linkImprintUri" value="${null}" />
     </c:if>
 </c:if>
@@ -45,8 +45,8 @@
 
 <c:set var="linkPolicyUri" value="${value.LinkPolicy.value.URI.toLink}" />
 <c:if test="${empty linkPolicyUri}">
-    <c:set var="linkPolicyUri" value="${cms.functionDetail['Datenschutz']}" />
-    <c:if test="${(linkPolicyUri eq linkDefaultUri) or fn:contains(linkPolicyUri, 'No detail page')}">
+    <c:set var="linkPolicyUri" value="${cms.functionDetailPage['Datenschutz']}" />
+    <c:if test="${(linkPolicyUri eq defaultDetailUri) or not fn:startsWith(linkPolicyUri, '/')}">
         <c:set var="linkPolicyUri" value="${null}" />
     </c:if>
 </c:if>
@@ -60,8 +60,8 @@
 
 <c:set var="linkLegalUri" value="${value.LinkLegal.value.URI.toLink}" />
 <c:if test="${empty linkLegalUri}">
-    <c:set var="linkLegalUri" value="${cms.functionDetail['Rechtliche Hinweise']}" />
-    <c:if test="${(linkLegalUri eq linkDefaultUri) or fn:contains(linkLegalUri, 'No detail page')}">
+    <c:set var="linkLegalUri" value="${cms.functionDetailPage['Rechtliche Hinweise']}" />
+    <c:if test="${(linkLegalUri eq defaultDetailUri) or not fn:startsWith(linkLegalUri, '/')}">
         <c:set var="linkLegalUri" value="${null}" />
     </c:if>
 </c:if>

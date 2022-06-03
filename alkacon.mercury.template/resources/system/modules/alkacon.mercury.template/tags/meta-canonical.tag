@@ -18,7 +18,7 @@
     description="The canonical URL of the resource currently rendered." %>
 
 
-<c:set var="isSearchPage"       value="${fn:startsWith(cms.pageResource.link, cms.functionDetail['Search page'])}" />
+<c:set var="isSearchPage"       value="${fn:startsWith(cms.pageResource.link, cms.functionDetailPage['Search page'])}" />
 <c:set var="isListPage"         value="${not isSearchPage and (not empty param.page)}" />
 <c:set var="hasRequestLocale"   value="${not empty param.__locale}" />
 <c:set var="isPreviewLink"      value="${not empty param.__disableDirectEdit}" />

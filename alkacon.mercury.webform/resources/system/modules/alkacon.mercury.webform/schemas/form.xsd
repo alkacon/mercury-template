@@ -160,9 +160,6 @@
                     <PropertyName>MailReplyTo</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.MailReplyTo)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.MailReplyTo.help)]]></Description>
-                    <RuleRegex><![CDATA[.+]]></RuleRegex>
-                    <RuleType>warning</RuleType>
-                    <Error><![CDATA[%(key.msg.error.form.notempty)]]></Error>
                 </Setting>
                 <Setting>
                     <PropertyName>MailFromName</PropertyName>

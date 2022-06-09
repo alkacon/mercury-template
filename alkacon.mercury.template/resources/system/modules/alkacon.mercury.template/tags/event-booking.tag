@@ -65,7 +65,7 @@
 <c:choose>
     <c:when test="${showBookingsList}">
         <%-- ###### Booking form action: Display list of submissions ###### --%>
-        <div class="element type-webform-manage"><%----%>
+        <div class="element pivot type-webform-manage"><%----%>
             <mercury:webform-booking-manage
                 webform="${content.value.Booking.value.Webform}"
                 bookingInfo="${content}"
@@ -74,7 +74,7 @@
     </c:when>
     <c:when test="${showBookingsFormResult}">
         <%-- ###### Booking form action: Display posted form ###### --%>
-        <div class="subelement type-webform"><%----%>
+        <div class="subelement pivot type-webform"><%----%>
             <mercury:webform
                 webform="${content.value.Booking.value.Webform}"
                 bookingInfo="${content}"

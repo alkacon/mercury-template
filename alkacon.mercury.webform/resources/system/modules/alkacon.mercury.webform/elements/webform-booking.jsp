@@ -20,14 +20,14 @@
     <c:set var="bookingContent"     value="${cms.vfs.readXml[bookingInfo]}" />
 
     <c:if test="${not (bookingOption eq 'none')}">
-        <div class="subelement detail-bookingstatus"><%----%>
+        <div class="subelement pivot detail-bookingstatus"><%----%>
             <mercury:webform-booking-status
                 bookingContent="${bookingContent}"
                 style="${bookingOption}"
             />
         </div><%----%>
     </c:if>
-    <div class="subelement type-webform"><%----%>
+    <div class="subelement pivot type-webform"><%----%>
         <mercury:webform
             webform="${formContent}"
             bookingInfo="${bookingContent}"

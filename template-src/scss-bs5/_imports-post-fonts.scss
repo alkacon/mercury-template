@@ -1,0 +1,71 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/*!
+ * This is the Mercury template for OpenCms, created by Alkacon Software
+ */
+
+/*!
+ * Mercury includes parts of Bootstrap 4.
+ * Copyright (c) 2011-2019 Twitter, Inc.
+ * Copyright (c) 2011-2019 The Bootstrap Authors
+ * https://github.com/twbs/bootstrap/blob/master/LICENSE
+ */
+
+// import customized bootstrap
+@import 'imports-bootstrap';
+
+// the order of the following imports does not matter, sort by alphabet
+@import '../scss/main/animations';
+@import '../scss/main/basics';
+@import '../scss/main/element';
+@import '../scss/main/placeholder';
+@import '../scss/main/buttons';
+@import '../scss/main/contact';
+@import '../scss/main/container';
+@import '../scss/main/datepicker';
+@import '../scss/main/detail-page';
+@import '../scss/main/dynamic';
+@import '../scss/main/event';
+@import '../scss/main/footer';
+@import '../scss/main/form';
+@import '../scss/main/grid';
+@import '../scss/main/header';
+@import '../scss/main/images';
+@import '../scss/main/imageseries';
+@import '../scss/main/linksequence';
+@import '../scss/main/map';
+@import '../scss/main/media';
+@import '../scss/main/nav-components';
+@import '../scss/main/nav-main';
+@import '../scss/main/pagination';
+@import '../scss/main/piece';
+@import '../scss/main/poi';
+@import '../scss/main/privacy-policy';
+@import '../scss/main/search';
+@import '../scss/main/section';
+@import '../scss/main/sitemap';
+@import '../scss/main/slider';
+@import '../scss/main/socialicons';
+@import '../scss/main/tab';
+@import '../scss/main/tiles';
+
+// these imports must come late because CSS rules rely on being higher order
+@import '../scss/main/lists';
+@import '../scss/main/generics';
+@import '../scss/main/jsondata';
+

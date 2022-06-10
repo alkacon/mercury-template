@@ -26,7 +26,7 @@
         }
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-my-down(sm) {
         &.text-below-on-xs {
             &.square-col .preview .image-src-box {
                 position: relative;
@@ -470,7 +470,7 @@
         }
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-my-down(sm) {
         &.presized {
             &.no-image,
             &.has-image {

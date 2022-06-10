@@ -63,7 +63,7 @@
     &::after {
         display: none;
         content: '{' +
-            '"xsMax":' + breakpoint-max(xs) + ', ' +
+            '"xsMax":0, ' +
             '"smMin":' + breakpoint-min(sm) + ', ' +
             '"smMax":' + breakpoint-max(sm) + ', ' +
             '"mdMin":' + breakpoint-min(md) + ', ' +

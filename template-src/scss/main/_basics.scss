@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
     @include heading-base(false);
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-my-down(md) {
     h1, .h1 {
         font-size: $h1-font-size-mobile;
     }

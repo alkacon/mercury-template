@@ -157,7 +157,7 @@
         margin: 0;
         font-size: $accordion-header-font-size;
         @if ($accordion-header-font-size-md != $accordion-header-font-size) {
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-my-down(md) {
                 font-size: $accordion-header-font-size-md;
             }
         }

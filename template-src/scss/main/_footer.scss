@@ -21,7 +21,7 @@
 
 .area-foot {
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-my-down(sm) {
         // Fix for Lighthouse "Tap targets are not sized appropriately"
         // Increase line height in footer so that links are wider apart
         line-height: $foot-line-height-mobile;
@@ -95,7 +95,7 @@
                     right: $grid-gutter-width-half;
                 }
                 @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
-                    @include media-breakpoint-down(xs) {
+                    @include media-breakpoint-my-down(sm) {
                         right: $nav-mobile-toggle-side-xs;
                     }
                 }
@@ -124,7 +124,7 @@
             font-family: ForkAwesome;
         }
 
-        @include media-breakpoint-down(xs) {
+        @include media-breakpoint-my-down(sm) {
             width: round($nav-toggle-size-xs);
             height: round($nav-toggle-size-xs);
 

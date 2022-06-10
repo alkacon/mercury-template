@@ -205,7 +205,7 @@
         }
     }
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-my-down(md) {
         .title {
             text-align: center;
             font-size: 1.8rem;
@@ -258,7 +258,7 @@
         }
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-my-down(sm) {
 
         .banner {
             padding: 15px 15px 10px 15px;
@@ -287,7 +287,7 @@
         }
     }
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-my-down(xs) {
 
         .selection {
             .options {
@@ -471,7 +471,7 @@
     }
 
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-my-down(sm) {
         // this applies to .pp-toggle
         flex-direction: column;
 

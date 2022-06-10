@@ -18,7 +18,8 @@
 @import "../bootstrap/scss/functions";
 @import "../bootstrap/scss/variables";
 @import "../bootstrap/scss/mixins";
-@import "bootstrap/overrides";
+
+@import "bootstrap/bs4-overrides";
 
 // @import "../bootstrap/scss/root";
 @import "../bootstrap/scss/reboot";
@@ -59,4 +60,4 @@
 // @import "../bootstrap/scss/utilities/sizing";
 @import "../bootstrap/scss/print";
 
-@import "bootstrap/adjustments";
+@import "bootstrap/bs4-adjustments";

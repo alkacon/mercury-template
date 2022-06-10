@@ -313,7 +313,7 @@
         }
 
         @if ($nav-mobile-smaller-xs-toggle != false) {
-            @include media-breakpoint-down(xs) {
+            @include media-breakpoint-my-down(xs) {
                 // on very small screens use a smaller button
                 // otherwise the button may become larger than the head itself
                 width: round($nav-toggle-size-xs);
@@ -480,7 +480,7 @@
             #{$nav-mobile-position}: $nav-mobile-toggle-side;
 
             @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
-                @include media-breakpoint-down(xs) {
+                @include media-breakpoint-my-down(xs) {
                     #{$nav-mobile-position}:  $nav-mobile-toggle-side-xs;
                 }
             }
@@ -502,7 +502,7 @@
                 }
 
                 @if ($nav-mobile-box-offset-xs != $nav-mobile-box-offset) {
-                    @include media-breakpoint-down(xs) {
+                    @include media-breakpoint-my-down(xs) {
                         li.expand > a::after {
                             right: $nav-mobile-box-offset-xs;
                         }

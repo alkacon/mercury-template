@@ -75,7 +75,7 @@
 
 .area-wide {
 
-    @include media-breakpoint-down(breakpoint-prev($piece-desktop-breakpoint)) {
+    @include media-breakpoint-my-down(breakpoint-prev($piece-desktop-breakpoint)) {
 
         @include calendar-sheet-base();
     }

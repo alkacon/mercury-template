@@ -134,7 +134,7 @@
     @if ($line-height-lead != $line-height-base) {
         line-height: $line-height-lead;
     }
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-my-down(md) {
         font-size: $lead-font-size-mobile;
     }
     @include media-breakpoint-up(lg) {
@@ -318,7 +318,7 @@
 // Font size REM rebasing, usually on the HTML element
 @mixin rem-base {
     @if ($font-rem-base-mobile-size != $font-rem-base-desktop-size) {
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-my-down(md) {
             font-size: $font-rem-base-mobile-size;  // font size for rem units in mobile
         }
         @include media-breakpoint-up(lg) {
@@ -446,7 +446,7 @@
 
 @mixin media-breakpoint-mobile {
     @if ($nav-breakpoint-mobile != none) {
-        @include media-breakpoint-down($nav-breakpoint-mobile) {
+        @include media-breakpoint-my-down($nav-breakpoint-mobile) {
             @content;
         }
     }
@@ -472,7 +472,7 @@
             word-break: break-word;
         } @else {
             @if ($piece-hyphens-headings-xs) {
-                @include media-breakpoint-down(sm) {
+                @include media-breakpoint-my-down(sm) {
                     hyphens: auto;
                     overflow-wrap: anywhere;
                     word-break: break-word;
@@ -501,7 +501,7 @@
             word-break: break-word;
         } @else {
             @if ($piece-hyphens-text-xs) {
-                @include media-breakpoint-down(sm) {
+                @include media-breakpoint-my-down(sm) {
                     hyphens: auto;
                     overflow-wrap: anywhere;
                     word-break: break-word;

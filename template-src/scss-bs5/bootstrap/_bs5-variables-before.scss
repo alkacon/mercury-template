@@ -38,5 +38,6 @@ $container-max-widths: (
    xxl: 1320px
 ) !default;
 
+$rfs-breakpoint:        552px;
 
-$rfs-breakpoint: 552px;
+$use-css-vars:          true;

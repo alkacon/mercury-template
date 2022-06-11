@@ -949,6 +949,13 @@ $margins-paddings:                  (0, 5, 10, 20, 30, 40) !default;
 // Spaces used for tile margins
 $list-tile-spacers:                 (0, 2, 5, 10, 15) !default;
 
+// Bootstrap 5 <-> 4 compatibility
+$use-css-vars:                      false !default;
+
+$var-default-map: (
+    grid-gutter-width: ($grid-gutter-width, gutter-x)
+);
+
 // Start of theme JSON with main colors
 $themeJSON: '"main-theme":"#{$main-theme}"';
 $themeJSON: append-json($themeJSON, "main-theme-hover", $main-theme-hover);

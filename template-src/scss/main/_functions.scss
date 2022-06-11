@@ -505,3 +505,15 @@ $linear-channel-values:
     $n: index($breakpoint-names, $name);
     @return if(($n != null and $n > 1), nth($breakpoint-names, $n - 1), null);
 }
+
+// Given the name of a SASS variable, return
+// either a reference to a CSS variable with the same name in Boostrap 5
+// or the value of the SASS variable in Boostrap 4
+@function var-get($var-name, $var-map: $var-default-map) {
+    $var-list: map-get($var-map, $var-name);
+    @if ($use-css-vars) {
+        @return var(--#{$prefix}#{nth($var-list, 2)});
+    } @else {
+        @return nth($var-list, 1);
+    }
+}

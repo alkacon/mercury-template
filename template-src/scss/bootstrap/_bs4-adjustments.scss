@@ -16,8 +16,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /**********
- * Source file: _adjustments.scss
+ * Source file: _bs4-adjustments.scss
  */
+
 @mixin responsive-invisibility($parent) {
   #{$parent} {
     display: none !important;

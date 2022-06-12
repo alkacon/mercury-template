@@ -221,14 +221,14 @@
 }
 
 // Colored buttons with hover effects - simplified for less markup
-@mixin button-color-simple($bg-color, $hover-color, $hover: true) {
+@mixin button-color-simple($bg-color, $hover-color, $hover: true, $color-text: get-text-color($bg-color), $color-text-hover: get-text-color($hover-color)) {
     background-color: $bg-color;
-    color: get-text-color($bg-color);
+    color: $color-text;
 
     @if ($hover) {
         &:focus,
         &:hover {
-            color: get-text-color($hover-color);
+            color: $color-text-hover;
             background-color: $hover-color;
             @if ($btn-border-style != none) {
                 border-color: $hover-color;
@@ -620,6 +620,76 @@
     }
 }
 
+@mixin box-color-vars($bg-color, $color-name) {
+    $color: get-text-color($bg-color);
+    $color-headings-base: conditional-value($color == $text-light, $text-light, $headings-color); // we normally want light text
+    $color-headings: get-text-color($bg-color, $color-headings-base);
 
+    $color-links: get-link-colors($bg-color, $color);
+    $color-link: nth($color-links, 1);
+    $color-hover: nth($color-links, 2);
 
+    --#{$prefix}box-color: #{$color};
+    --#{$prefix}box-bg-color: #{$bg-color};
+    --#{$prefix}box-bg-tp-color: #{rgba($bg-color, 0.7)};
+    --#{$prefix}box-color-link: #{$color-link};
+    --#{$prefix}box-color-hover: #{$color-hover};
+    --#{$prefix}box-color-headings: #{$color-headings};
+    --#{$prefix}box-color-btn-text: #{get-text-color($color-link)};
+    --#{$prefix}box-color-btn-hover-text: #{get-text-color($color-hover)};
+}
+
+@mixin box-color-var-rules() {
+    color: var(--#{$prefix}box-color);
+    background-color: var(--#{$prefix}box-bg-color);
+
+    @include colored-a(var(--#{$prefix}box-color-link), var(--#{$prefix}box-color-hover), true);
+
+    h1, h2, h3, h4, h5, h6  {
+        // required in order to override colors set in headings
+        color: var(--#{$prefix}box-color-headings);
+    }
+
+    @if ($linked-headings-color != none) {
+        a {
+            h1, h2, h3, h4, h5, h6 {
+                color: var(--#{$prefix}box-color-link);
+            }
+        }
+    }
+
+    @if ($linked-headings-hover-color != none) {
+        a:hover {
+            h1, h2, h3, h4, h5, h6 {
+                color: var(--#{$prefix}box-color-hover);
+            }
+        }
+    }
+
+    .sub-header, // detail page
+    .text > a, // list teaser
+    .teaser-date, // list teaser
+    .intro-headline > .intro {
+        color: var(--#{$prefix}box-color) !important;
+    }
+
+    .btn {
+        @include button-color-simple(
+            var(--#{$prefix}box-color-link),
+            var(--#{$prefix}box-color-hover),
+            true,
+            var(--#{$prefix}box-color-btn-text),
+            var(--#{$prefix}box-color-btn-hover-text)
+        );
+    }
+    .btn-colored {
+        @include button-color-simple(
+            var(--#{$prefix}box-color-link),
+            var(--#{$prefix}box-color-hover),
+            false,
+            var(--#{$prefix}box-color-btn-text),
+            var(--#{$prefix}box-color-btn-hover-text)
+        );
+    }
+}
 

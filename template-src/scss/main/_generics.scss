@@ -43,24 +43,42 @@
     }
 }
 
-@each $color-name, $bg-color, $highlight-color in $box-colors {
+@if (not $use-css-vars) {
+    @each $color-name, $bg-color, $highlight-color in $box-colors {
+        .box-#{""+$color-name} {
 
-    .box-#{""+$color-name} {
+            @include box-color($bg-color);
 
-        @include box-color($bg-color);
+            &.transparent {
+                background-color: rgba($bg-color, 0.7);
+            }
+        }
 
-        &.transparent {
-            background-color: rgba($bg-color, 0.7);
-            background-image: none;
+        .bc-#{""+$color-name} {
+            background-color: $bg-color;
+
+            &.transparent {
+                background-color: rgba($bg-color, 0.7);
+            }
         }
     }
-
-    .bc-#{""+$color-name} {
-        background-color: $bg-color;
-
+} @else {
+    @each $color-name, $bg-color, $highlight-color in $box-colors {
+        .box-#{""+$color-name},
+        .bc-#{""+$color-name} {
+            @include box-color-vars($bg-color, $color-name);
+        }
+    }
+    .box[class*="box-"] {
+        @include box-color-var-rules;
         &.transparent {
-            background-color: rgba($bg-color, 0.7);
-            background-image: none;
+            background-color: var(--#{$prefix}box-bg-tp-color);
+        }
+    }
+    [class*="bc-"] {
+        background-color: var(--#{$prefix}box-bg-color);
+        &.transparent {
+            background-color: var(--#{$prefix}box-bg-tp-color);
         }
     }
 }

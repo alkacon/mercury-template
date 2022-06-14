@@ -64,7 +64,7 @@
 <mercury:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
-    allowEmptyBodyColumn="${true}"
+    allowEmptyBodyColumn="${image.isSet}"
     sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
     sizeMobile="${12}">
 

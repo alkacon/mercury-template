@@ -80,7 +80,7 @@
       <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
+      <IncludeName><![CDATA[showOrganization.organization]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showTitle.contact]]></IncludeName>

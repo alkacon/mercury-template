@@ -53,7 +53,7 @@
       <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
+      <IncludeName><![CDATA[showOrganization.person]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>

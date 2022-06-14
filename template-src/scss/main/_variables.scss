@@ -235,6 +235,8 @@ $overflow-z-index:                  5 !default;                     // Used by e
 // Bootstrap container sizes
 // Note: These values are also hardcoded in image-srcset.tag
 
+$prefix:                            'my-'; // prefix for the generated CSS variables
+
 $grid-breakpoints: (
     xs: 0,
     sm: 552px,

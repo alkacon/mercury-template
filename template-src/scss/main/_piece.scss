@@ -39,29 +39,22 @@
 @function get-col-flex-size($cols, $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
-            (100% + #{var-get(grid-gutter-width)})
+            (100% + var(--#{$prefix}gutter-x))
             * #{divide($cols, $grid-columns)}
-            - (0.5 * #{var-get(grid-gutter-width)}#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
+            - (0.5 * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
         );
     } @else {
         @return 100%;
     }
 }
 
-@function get-col-float-size($cols, $reduce: 0, $gutter-width: $grid-gutter-width) {
-    $vars: (
-        gutter-width: ($gutter-width, gutter-x)
-    );
+@function get-col-float-size($cols, $reduce: 0) {
     @if ($cols < 12) {
-        @if (($reduce != 0) or ($gutter-width != 0)) {
-            @return calc(
-                (100% + #{var-get(gutter-width, $vars)})
-                * #{divide($cols, $grid-columns)}
-                - #{var-get(gutter-width, $vars)}#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
-            );
-        } @else {
-            @return 100% * #{divide($cols, $grid-columns)};
-        }
+        @return calc(
+            (100% + var(--#{$prefix}gutter-x))
+            * #{divide($cols, $grid-columns)}
+            - var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
+        );
     } @else {
         @return 100%;
     }
@@ -74,11 +67,20 @@
 $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column sizes for the piece visual
 
 .piece {
+    --#{$prefix}gutter-x: #{$grid-gutter-width};
+    --#{$prefix}visual-margin-bottom: #{$default-margin-small};
+    --#{$prefix}visual-last-margin-top: #{$piece-visual-last-top-margin};
+    --#{$prefix}heading-margin-bottom: #{$piece-headings-margin-bottom}; // $piece-headings-margin-bottom != $headings-margin-bottom
+    --#{$prefix}btn-padding: #{$piece-btn-padding}; // $piece-btn-padding != $btn-def-padding
+    --#{$prefix}btn-lg-padding: #{$piece-btn-lg-padding};
+    --#{$prefix}text-margin: #{$piece-text-margin};
+    --#{$prefix}text-to-link-margin: #{$piece-text-to-link-margin};
+
     display: block;
     position: relative;
 
     > .visual {
-        margin-bottom: $default-margin-small;
+        margin-bottom: var(--#{$prefix}visual-margin-bottom);
         width: 100%;
 
         @include copyright-subtitle;
@@ -117,13 +119,13 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         > .visual {
             margin-bottom: 0;
             + .link {
-                 margin-top: $piece-visual-last-top-margin;
+                 margin-top: var(--#{$prefix}visual-last-margin-top);
             }
         }
         > .body,
         > .link {
             + .visual {
-                 margin-top: $piece-visual-last-top-margin;
+                 margin-top: var(--#{$prefix}visual-last-margin-top);
             }
         }
     }
@@ -184,20 +186,16 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
-    @if ($piece-headings-margin-bottom != $headings-margin-bottom) {
-        .piece-heading {
-            margin-bottom: $piece-headings-margin-bottom;
-        }
+    .piece-heading {
+        margin-bottom: var(--#{$prefix}heading-margin-bottom);
     }
 
-    @if ($piece-btn-padding != $btn-def-padding) {
-        .piece-btn {
-            padding: $piece-btn-padding;
-        }
+    .piece-btn {
+        padding: var(--#{$prefix}btn-padding);
     }
 
     .piece-btn-lg {
-        padding: $piece-btn-lg-padding;
+        padding: var(--#{$prefix}btn-lg-padding);
     }
 
     > .body {
@@ -207,7 +205,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             > .detail-content > *,
             > * {
                 // add margins for all elements in text piece
-                margin-bottom: $piece-text-margin;
+                margin-bottom: var(--#{$prefix}text-margin);
                 &:last-child {
                     // last element in text must not add margin
                     margin-bottom: 0;
@@ -217,22 +215,11 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         + .link, // link may also be a sibling to the body
         .text + .link {
             // add margin between body / text and link
-            margin-top: $piece-text-to-link-margin;
+            margin-top: var(--#{$prefix}text-to-link-margin);
         }
     }
 
     @include media-breakpoint-my-down(breakpoint-prev($piece-desktop-breakpoint)) {
-
-        // uncomment this if images floating right in desktop should also float right on mobile
-        // attention: if headline is displayed above the image, this does not look good
-        // &.p-r {
-        //    > .visual {
-        //        float: right;
-        //        + div {
-        //            @include clearfix-before;
-        //        }
-        //    }
-        // }
 
         @each  $piece-col-size in $piece-cols {
             // generate size variations for the mobile visual column
@@ -318,18 +305,18 @@ html.keyboard-nav .piece {
             &.right {
                 > .visual {
                     order: 13;
-                    padding-left: calc(0.5 * #{var-get(grid-gutter-width)});
+                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
                 > .body {
-                    padding-right: calc(0.5 * #{var-get(grid-gutter-width)});
+                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
             }
             &.left {
                 > .visual {
-                    padding-right: calc(0.5 * #{var-get(grid-gutter-width)});
+                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
                 > .body {
-                    padding-left: calc(0.5 * #{var-get(grid-gutter-width)});
+                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
             }
 
@@ -350,14 +337,14 @@ html.keyboard-nav .piece {
             &.left {
                 > .visual {
                     float: left;
-                    margin-right: #{var-get(grid-gutter-width)};
+                    margin-right: var(--#{$prefix}gutter-x);
                 }
             }
 
             &.right {
                 > .visual {
                     float: right;
-                    margin-left: #{var-get(grid-gutter-width)};
+                    margin-left: var(--#{$prefix}gutter-x);
                 }
             }
         }
@@ -376,7 +363,7 @@ html.keyboard-nav .piece {
                 &.full,
                 &.float {
                     > .visual {
-                        width: get-col-float-size($piece-col-size );
+                        width: get-col-float-size($piece-col-size);
                     }
                 }
             }
@@ -416,26 +403,27 @@ html.keyboard-nav .piece {
 }
 
 
-// labels
-.piece .text {
-    .label {
-        display: inline-block;
-        padding: 0 0.4rem;
-        color: white;
-
-        &.label-orange {
-            background-color: $con-col-orange;
-        }
-        &.label-red {
-            background-color: $con-col-red;
-        }
-        &.label-cyan {
-            background-color: $con-col-cyan;
-        }
-    }
-}
+//// labels - where is this used ???
+//.piece .text {
+//    .label {
+//        display: inline-block;
+//        padding: 0 0.4rem;
+//        color: white;
+//
+//        &.label-orange {
+//            background-color: $con-col-orange;
+//        }
+//        &.label-red {
+//            background-color: $con-col-red;
+//        }
+//        &.label-cyan {
+//            background-color: $con-col-cyan;
+//        }
+//    }
+//}
 
 // element text that should display like piece text (use for text inserted from editor)
+//// only known usage: newsletterconfig-detail-formatter.jsp
 .element {
     .body-text {
         > * {

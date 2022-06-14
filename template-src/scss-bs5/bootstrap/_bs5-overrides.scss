@@ -28,43 +28,19 @@ $colors: ();
 $theme-colors: ();
 
 // Disable unwanted utilities
-$utilities: map-merge(
-  $utilities,
-  (
-    "margin": (),
-    "margin-x": (),
-    "margin-y": (),
-    "margin-top": (),
-    "margin-end": (),
-    "margin-bottom": (),
-    "margin-start": (),
-    "negative-margin": (),
-    "negative-margin-x": (),
-    "negative-margin-y": (),
-    "negative-margin-top": (),
-    "negative-margin-end": (),
-    "negative-margin-bottom": (),
-    "negative-margin-start": (),
-
-    "padding": (),
-    "padding-x": (),
-    "padding-y": (),
-    "padding-top": (),
-    "padding-end": (),
-    "padding-bottom": (),
-    "padding-start": (),
-
-    "rounded": (),
-    "rounded-top": (),
-    "rounded-end": (),
-    "rounded-bottom": (),
-    "rounded-start": (),
-
-    "font-family": (),
-    "font-size": (),
-    "font-style": (),
-    "font-weight": (),
-    "line-height": (),
-    "text-align": (),
-  )
+$utilities: (
+    "order": (
+      responsive: true,
+      property: order,
+      values: (
+        first: -1,
+        0: 0,
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        last: 6,
+      ),
+    )
 );

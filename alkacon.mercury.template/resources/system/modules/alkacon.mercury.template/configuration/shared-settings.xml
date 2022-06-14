@@ -2435,8 +2435,26 @@
     <Setting>
       <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
       <PropertyName><![CDATA[showOrganization]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganizationPerson)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showOrganizationPerson.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showOrganization.organization]]></IncludeName>
+      <PropertyName><![CDATA[showOrganization]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganization)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.showOrganization.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showOrganization.person]]></IncludeName>
+      <PropertyName><![CDATA[showOrganization]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showPerson)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showPerson.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>

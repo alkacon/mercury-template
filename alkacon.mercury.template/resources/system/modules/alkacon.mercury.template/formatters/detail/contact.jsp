@@ -54,7 +54,7 @@
 
 <mercury:nl />
 <mercury:section-piece
-    cssWrapper="element type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
+    cssWrapper="detail-page type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     pieceLayout="${pieceLayout}"
     attrWrapper="${kindAttr}"
     heading="${showTitle ? value.Title : null}"

@@ -70,6 +70,9 @@
       <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showOrganization.person]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showTitle.contact]]></IncludeName>
     </Setting>
     <Setting>

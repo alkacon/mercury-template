@@ -29,7 +29,8 @@
     boolean setHeader = (setFilenameOnly != null) ? !setFilenameOnly.booleanValue() : true;
 
     if (name.length() > 0) {
-        name = name.replaceAll("[.]","");
+        name = name.trim();
+        name = name.replaceAll("[./]","-");
         name = org.opencms.main.OpenCms.getResourceManager().getFileTranslator().translateResource(name);
     }
 

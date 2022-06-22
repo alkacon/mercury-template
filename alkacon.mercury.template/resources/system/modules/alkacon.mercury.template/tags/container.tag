@@ -73,7 +73,7 @@
 <c:set var="role"           value="${empty role ? (not empty value.Role ? value.Role.toString() : null) : role}" />
 <c:set var="css"            value="${empty css ? (not empty value.Css ? value.Css.toString() : null) : css}" />
 <c:set var="tag"            value="${empty tag ? (not empty value.Tag ? value.Tag.toString() : null) : tag}" />
-<c:set var="maxElements"    value="${empty maxElements ? (not empty value.Count and not empty value.Count.toString() ? value.Count.toString() : '100') : maxElements}" />
+<c:set var="maxElements"    value="${empty maxElements ? (not empty value.Count and not empty value.Count.toString() ? value.Count.toString() : '1000') : maxElements}" />
 <c:set var="preMarkup"      value="${not empty value.PreMarkup ? value.PreMarkup.toString() : null}" />
 <c:set var="postMarkup"     value="${not empty value.PostMarkup ? value.PostMarkup.toString() : null}" />
 <c:set var="parameters"     value="${empty parameters ? (not empty value.Parameters ? value.Parameters : null) : parameters}" />

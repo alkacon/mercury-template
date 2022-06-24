@@ -185,7 +185,11 @@ gutterAdjust: ${gutterAdjust}
 image-srcset calculated grid values::
 
 fullwidth: ${fullwidth eq true}
+ib.vfsUri: ${ib.vfsUri}
 ib.scaler.width: ${ib.scaler.width}
+ib.scaler.height: ${ib.scaler.height}
+ib.scaler.pixelCount: ${ib.scaler.pixelCount}
+
 
 Gutter: ${bb.gutter}
 Max scale width: ${maxScaleWidth}

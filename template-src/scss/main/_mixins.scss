@@ -62,9 +62,9 @@
 // Basic image overlay
 @mixin image-overlay {
     display: inline-block;
-    color: $black;
-    background-color: rgba($white, 0.6);
-    opacity: 0.8;
+    color: var(--#{$prefix}copyright-color);
+    background-color: var(--#{$prefix}copyright-bg-color);
+    opacity: var(--#{$prefix}copyright-opacity);
     position: absolute;
     bottom: 0;
     pointer-events: none;
@@ -98,13 +98,20 @@
     }
 }
 
+@mixin image-overlay-var {
+}
+
+
 // Image overlay for copyright notices
 @mixin image-copyright {
-    padding: 2px 4px;
-    font-family: $font-family-base;
-    font-size: 8px;
     line-height: 1;
-    @include image-overlay-right;
+    padding: var(--#{$prefix}copyright-padding);
+    font-family: var(--#{$prefix}copyright-font-family);
+    font-size: var(--#{$prefix}copyright-font-size);
+    border-radius: var(--#{$prefix}copyright-border-radius);
+    text-align: var(--#{$prefix}copyright-pos-right, right);
+    right: var(--#{$prefix}copyright-pos-right, 0);
+    @include image-overlay;
 }
 
 // Icon overlays for images, e.g. used for the "zoom image" icon

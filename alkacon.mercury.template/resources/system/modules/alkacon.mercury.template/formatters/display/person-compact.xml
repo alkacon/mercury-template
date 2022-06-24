@@ -38,6 +38,9 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkTarget.contact]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
@@ -59,7 +62,7 @@
       <IncludeName><![CDATA[showOrganization.organization]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
+      <IncludeName><![CDATA[showTitle.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDescription.contact]]></IncludeName>

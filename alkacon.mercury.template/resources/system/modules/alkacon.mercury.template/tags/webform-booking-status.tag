@@ -111,14 +111,15 @@
     </c:when>
     <c:otherwise>
 
-        <c:if test="${cms.isEditMode}">
-            <div class="book-info"><%----%>
-                <span class="oct-meta-info"><%----%>
-                    <fmt:message key="msg.page.form.submissions.configerror" />
-                </span><%----%>
-            </div><%----%>
+        <div class="book-info"><%----%>
+            <span class="book-msg"><fmt:message key="msg.page.form.remaining.places" /></span><%----%>
+            <c:if test="${cms.isEditMode and form.userCanManage}">
+            <span class="oct-meta-info"><%----%>
+                <fmt:message key="msg.page.form.bookingstatus.places.unlimited" />
+            </span><%----%>
+            </c:if>
+        </div><%----%>
         <mercury:nl />
-        </c:if>
 
     </c:otherwise>
     </c:choose>

@@ -27,12 +27,12 @@ $font-size-headings:                2.0rem !default;
 
 @import "../imports-pre-fonts";
 
-@import "../../bootstrap/scss/functions";
-@import "../../bootstrap/scss/variables";
-@import "../../bootstrap/scss/mixins";
+@import "../../bootstrap4/scss/functions";
+@import "../../bootstrap4/scss/variables";
+@import "../../bootstrap4/scss/mixins";
 @import "../bootstrap/bs4-overrides";
 
-@import "../../bootstrap/scss/reboot";
+@import "../../bootstrap4/scss/reboot";
 
 html {
     font-size: $font-rem-base-desktop-size;

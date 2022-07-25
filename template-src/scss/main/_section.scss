@@ -16,7 +16,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /**********
- * Source file: _sections.scss
+ * Source file: _section.scss
  */
 
 // Icon box formatter
@@ -42,7 +42,7 @@
     }
 
     @include colored-a($color-link, $color-hover);
-    &.box {
+    &.box.pivot {
         // overwrite box link and hover colors
         @include colored-a(inherit, inherit);
         padding: $default-margin $default-margin-small;
@@ -95,7 +95,7 @@
     @include media-breakpoint-up(md) {
         // making the icon box padding larger on large screens
         padding: $default-margin; // extending the margin
-        &.box {
+        &.box.pivot {
             padding: $default-margin;
         }
         .icon-title {

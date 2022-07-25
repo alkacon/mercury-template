@@ -1,0 +1,59 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+// Download Google fonts using:
+// https://google-webfonts-helper.herokuapp.com/
+// font-weights (if available): 300 (light), 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
+// font-styles  (if available): normal, italic;
+
+// In case herokuapp is not available use node app:
+// https://github.cojrnm/ewell/goog-webfont-dl (alternative
+// > goog-webfont-dl -w -W -u latin,latin-ext -y 300,400,500,600,700,300italic,400italic,500italic,600italic,700italic "FONT NAME"
+
+@import '../scss/fonts/exo-2';
+@import '../scss/fonts/fira-sans';
+@import '../scss/fonts/fira-sans-condensed';
+@import '../scss/fonts/ibm-plex-sans';
+@import '../scss/fonts/ibm-plex-sans-condensed';
+@import '../scss/fonts/ibm-plex-serif';
+@import '../scss/fonts/lato';
+@import '../scss/fonts/literata';
+@import '../scss/fonts/merriweather';
+@import '../scss/fonts/merriweather-sans';
+@import '../scss/fonts/montserrat';
+@import '../scss/fonts/noto-sans';
+@import '../scss/fonts/noto-serif';
+@import '../scss/fonts/open-sans';
+@import '../scss/fonts/open-sans-condensed';
+@import '../scss/fonts/oswald';
+@import '../scss/fonts/poppins';
+@import '../scss/fonts/prompt';
+@import '../scss/fonts/pt-sans';
+@import '../scss/fonts/pt-sans-narrow';
+@import '../scss/fonts/pt-sans-caption';
+@import '../scss/fonts/pt-serif';
+@import '../scss/fonts/pt-serif-caption';
+@import '../scss/fonts/raleway';
+@import '../scss/fonts/roboto';
+@import '../scss/fonts/roboto-condensed';
+@import '../scss/fonts/roboto-slab';
+@import '../scss/fonts/source-sans-pro';
+@import '../scss/fonts/titillum-web';
+@import '../scss/fonts/ubuntu';
+@import '../scss/fonts/ubuntu-condensed';
+@import '../scss/fonts/yanone-kaffeesatz';

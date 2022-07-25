@@ -298,7 +298,7 @@
             }
         }
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-my-down(md) {
             @include hide-mega-menu-content;
 
             &.title-mobile {
@@ -1588,7 +1588,7 @@
         // hide content elements in mega menu (mega menu may be from a site using a different header type)
         @include hide-mega-menu-content;
 
-        @include media-breakpoint-down(xs) {
+        @include media-breakpoint-my-down(xs) {
             // reduce nav menu padding on very small screens
 
             .nav-menu-header {
@@ -1897,7 +1897,7 @@
                 background-color: $header-image-ribbon-bg;
             }
 
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-my-down(md) {
                 @include hide-mega-menu-content;
             }
 
@@ -2034,7 +2034,7 @@ html.opencms-group-editor {
             }
         }
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-my-down(md) {
 
             .area-header {
                 .hidden-xs,

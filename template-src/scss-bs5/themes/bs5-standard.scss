@@ -1,0 +1,83 @@
+/**
+ * This program is part of the OpenCms Mercury Template.
+ *
+ * Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**********
+ * Theme file: theme-red.scss
+ */
+
+// Main theme colors
+$main-theme:                    #b31b34 !default; // dark red
+$main-theme-hover:              #ff264a !default; // light red
+
+$default-border-radius:         3px !default;
+$btn-border-radius:             2px !default;
+
+$focus-outline-color:           rgba(77,144,255,.5) !default;
+
+$font-family-headings:          "Open Sans";
+$font-family-base:              "Montserrat";
+
+$font-weight-base:              300 !default;
+$font-weight-bold:              600 !default;
+$font-weight-headings:          $font-weight-bold !default;
+$font-size-base:                1.6rem !default;
+$font-size-headings:            2.2rem !default;
+$font-style-headings:           normal !default;
+
+$line-height-base:              1.4 !default;
+$line-height-headings:          1.25 !default;
+$text-dark:                     #555 !default;
+$headings-color:                #222 !default;
+$headings-margin-bottom:        1.5rem !default;
+
+$nav-header-font-family:        $font-family-headings !default;
+$nav-breadcrumb-padding:        5px 0 !default;
+$nav-menu-font-weight:          300 !default;
+$nav-menu-entry-border-bottom:  none !default;
+$nav-menu-border:               solid 1px $main-theme !default;
+$nav-side-border-radius:        0 !default;
+$nav-side-font-weight:          400 !default;
+$fh-ac-bg-color:                $main-theme !default;
+
+$white:                         #fff !default;
+$grey-light:                    #ddd !default;
+$grey-lighter:                  #f7f7f7 !default;
+$foot-sub-bg-color:             $grey-lighter !default;
+$foot-main-bg-color:            #222 !default;
+
+$social-links-bg:               $grey-light !default;
+$social-links-color:            $text-dark !default;
+$social-links-size:             1.5rem !default;
+
+$btn-default:                   $grey-light !default;
+$btn-default-hover:             $main-theme !default;
+
+// Import the other files
+@import './demo-defaults';
+
+$teaser-btn-color:              $grey-light !default;
+
+$nav-header-show-arrows:        true !default;
+$nav-mobile-show-box:           true !default;
+$nav-mobile-position:           right !default;
+$nav-mobile-side-content-move:  true !default;
+
+$nav-header-ver-padding:        5px !default;
+
+@import '../imports';

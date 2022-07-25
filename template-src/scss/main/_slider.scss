@@ -101,7 +101,7 @@
             }
         }
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-my-down(sm) {
             &.text-below-on-xs {
                 // adjust slick slider controls for small screen sizes
 
@@ -354,7 +354,7 @@
         }
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-my-down(sm) {
         &.text-below-on-xs {
 
             .slide-wrapper,

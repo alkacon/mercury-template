@@ -567,7 +567,7 @@
         }
     }
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-my-down(xs) {
         header,
         footer,
         fieldset {
@@ -734,7 +734,7 @@ html.keyboard-nav {
         }
     }
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-my-down(xs) {
         .table.table-responsive {
             font-size: 12px; // table might ge too big otherwise
         }

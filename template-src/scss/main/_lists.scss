@@ -446,7 +446,7 @@
             }
         }
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-my-down(sm) {
             .dl-info {
                 text-align: left;
                 margin-top: $default-margin-verysmall;
@@ -552,7 +552,7 @@
                 flex-direction: column;
             }
         }
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-my-down(sm) {
             .dl-teaser-compact {
                 flex-direction: column;
             }
@@ -1049,7 +1049,7 @@
         }
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-my-down(sm) {
         .dropdown-menu,
         .dropdown-toggle {
             width: 100%;

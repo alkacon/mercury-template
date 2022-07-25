@@ -1,0 +1,43 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _bs5-variables-before.scss
+ */
+
+// Bootstrap 5 container sizes
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 552px,
+    md: 764px,
+    lg: 1014px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+
+$container-max-widths: (
+    sm: 540px,
+    md: 744px,
+    lg: 992px,
+    xl: 1170px,
+   xxl: 1320px
+) !default;
+
+$rfs-breakpoint:        552px;
+
+$use-css-vars:          true;

@@ -58,7 +58,8 @@
   },
   "scripts": {
     "dist": "npm-run-all css js",
-    "css": "npm run --silent cssg:all --xsrcdir=template-src/scss/themes --xbuilddir=build/npm --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
+    "css": "npm run --silent cssg:all --xsrcdir=template-src/scss/themes --xbuilddir=build/npm/bs4 --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
+    "css-bs5": "npm run --silent cssg:all --xsrcdir=template-src/scss-bs5/themes --xbuilddir=build/npm/bs5 --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
     "cssg:all": "npm-run-all cssg:clean cssg:sass cssg:plugins cssg:postcss cssg:minify cssg:deploy",
     "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $npm_config_xbuilddir/1_processed/base.css template-src/fork-awesome/css/fork-awesome.css",
     "cssg:clean": "del-cli $npm_config_xbuilddir/1_processed/* $npm_config_xbuilddir/2_postcssed/* $npm_config_xbuilddir/3_minified/*",
@@ -72,6 +73,7 @@
     "js:deploy": "copyfiles -f -V build/npm/js/* ${OCMOUNT}/$npm_package_config_templateThemeVfsDir/js/",
     "watch": "npm-run-all --parallel watch:*",
     "watch:js": "nodemon --watch $npm_package_config_basedir/template-src/js --ext js --exec \"npm run js\"",
-    "watch:css": "nodemon --watch $npm_package_config_basedir/template-src --ext scss --exec \"npm run css\""
+    "watch:css": "nodemon --watch $npm_package_config_basedir/template-src --ext scss --exec \"npm run css\"",
+    "watch:css-bs5": "nodemon --watch $npm_package_config_basedir/template-src --ext scss --exec \"npm run css-bs5\""
   }
 }

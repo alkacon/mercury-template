@@ -187,10 +187,10 @@
                         <div class="filterbox facet-query">
                             <button type="button" <%--
                             --%>class="btn btn-block li-label" <%--
-                            --%>data-target="#qf${id}" <%--
+                            --%>data-bs-target="#qf${id}" <%--
                             --%>aria-controls="qf${id}" <%--
                             --%>aria-expanded="true" <%--
-                            --%>data-toggle="collapse"><%--
+                            --%>data-bs-toggle="collapse"><%--
                             --%>${facetController.config.label}<%--
                          --%></button><%----%>
                             <div id="qf${id}" class="collapse show"><%----%>
@@ -222,10 +222,10 @@
                                 <c:if test="${fn:contains(flabel, '???')}"><c:set var="flabel">${facetController.config.label}</c:set></c:if>
                                 <button type="button" <%--
                                 --%>class="btn btn-block li-label" <%--
-                                --%>data-target="#ff${id}_${status.index}" <%--
+                                --%>data-bs-target="#ff${id}_${status.index}" <%--
                                 --%>aria-controls="ff${id}_${status.index}" <%--
                                 --%>aria-expanded="true" <%--
-                                --%>data-toggle="collapse"><%--
+                                --%>data-bs-toggle="collapse"><%--
                                 --%>${facetController.config.label}<%--
                              --%></button><%----%>
                                 <mercury:nl/>

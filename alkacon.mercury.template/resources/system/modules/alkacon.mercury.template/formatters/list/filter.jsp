@@ -145,10 +145,10 @@
 
                 <button type="button" <%--
                 --%>class="btn btn-block li-label ${categoriesOpen ? '' : 'collapsed'}${categoriesResp ? ' resp' : ''}" <%--
-                --%>data-target="#cats_${filterId}" <%--
+                --%>data-bs-target="#cats_${filterId}" <%--
+                --%>data-bs-toggle="collapse" <%--
                 --%>aria-controls="cats_${filterId}" <%--
-                --%>aria-expanded="${categoriesOpen}" <%--
-                --%>data-toggle="collapse"><%--
+                --%>aria-expanded="${categoriesOpen}"><%--
                 --%><c:out value="${categoryLabel}" /><%--
              --%></button><%----%>
                 <div id="cats_${filterId}" class="collapse${categoriesOpen ? ' show' : ''}${categoriesResp ? ' '.concat(categoryVal) : ''}"><%----%>
@@ -183,10 +183,10 @@
 
                 <button type="button" <%--
                 --%>class="btn btn-block li-label ${foldersOpen ? '' : 'collapsed'}" <%--
-                --%>data-target="#folder_${filterId}" <%--
+                --%>data-bs-target="#folder_${filterId}" <%--
+                --%>data-bs-toggle="collapse" <%--
                 --%>aria-controls="folder_${filterId}" <%--
-                --%>aria-expanded="${foldersOpen}" <%--
-                --%>data-toggle="collapse"><%--
+                --%>aria-expanded="${foldersOpen}"><%--
                 --%><c:out value="${folderLabel}" /><%--
              --%></button><%----%>
 
@@ -217,10 +217,10 @@
                                 <a ${onclick} href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>" class="nav-label"><fmt:message key="msg.page.list.facet.folder.all"/></a><%--
                             --%><a href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>" <%--
                                 --%>class="collapse show" <%--
-                                --%>data-toggle="collapse" <%--
+                                --%>data-bs-toggle="collapse" <%--
+                                --%>data-bs-target="#${collapseId}" <%--
                                 --%>aria-expanded="true" <%--
-                                --%>aria-controls="${collapseId}" <%--
-                                --%>data-target="#${collapseId}">&nbsp;</a><%----%>
+                                --%>aria-controls="${collapseId}">&nbsp;</a><%----%>
                                 <c:out escapeXml='false' value='<ul class="collapse show" id="${collapseId}">' />
                         </c:if>
 
@@ -283,9 +283,9 @@
                                         <c:set var="collapseId">${collapseIdPrefix}_${status.count}</c:set>
                                         <a href="#${collapseId}" <%--
                                         --%>class="collapse${foldersOpen || isCurrentPage ? ' show' : ' collapsed'}" <%--
-                                        --%>data-toggle="collapse"  <%--
+                                        --%>data-bs-toggle="collapse"  <%--
+                                        --%>data-bs-target="#${collapseId}"  <%--
                                         --%>aria-controls="${collapseId}" <%--
-                                        --%>data-target="#${collapseId}"  <%--
                                         --%>aria-expanded="${foldersOpen || isCurrentPage}">&nbsp;</a><%----%>
                                         <mercury:nl />
                                         <c:set var="collapseIn" value="${foldersOpen || isCurrentPage ? ' show' : ''}" />
@@ -371,10 +371,10 @@
 
                 <button type="button" <%--
                 --%>class="btn btn-block li-label ${archiveOpen ? '' : 'collapsed'}" <%--
-                --%>data-target="#arch_${filterId}" <%--
+                --%>data-bs-target="#arch_${filterId}" <%--
+                --%>data-bs-toggle="collapse" <%--
                 --%>aria-controls="arch_${filterId}" <%--
-                --%>aria-expanded="${archiveOpen}" <%--
-                --%>data-toggle="collapse"><%--
+                --%>aria-expanded="${archiveOpen}"><%--
                 --%><c:out value="${archiveLabel}" /><%--
             --%></button><%----%>
 
@@ -411,10 +411,10 @@
                             <c:set var="yearHtml">
                                 <button type="button" <%--
                                 --%>class="btn btn-block year li-label ${activeYear ? '' : 'collapsed'}" <%--
-                                --%>data-target="#${yearId}" <%--
+                                --%>data-bs-target="#${yearId}" <%--
+                                --%>data-bs-toggle="collapse" <%--
                                 --%>aria-controls="${yearId}" <%--
-                                --%>aria-expanded="${activeYear}" <%--
-                                --%>data-toggle="collapse"><%--
+                                --%>aria-expanded="${activeYear}"><%--
                                 --%>${currYear}<%--
                             --%></button><%----%>
                                 <c:set var="in" value="${activeYear ? 'show' : ''}" />

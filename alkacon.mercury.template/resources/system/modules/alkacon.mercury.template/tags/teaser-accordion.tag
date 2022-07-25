@@ -49,12 +49,13 @@
 <mercury:nl />
 
     ${'<h'}${hsize} class="acco-header pivot"${'>'}
-        <button class="acco-toggle ${open ? '':'collapsed'}" <%--
-        --%>data-toggle="collapse" type="button" <%--
-        --%>aria-expanded="${open}" <%--
-        --%>aria-controls="${itemId}"<%--
-        --%>data-target="#${itemId}"><%----%>
-            <c:out value="${title}"></c:out>
+        <button type="button" <%--
+        --%>class="acco-toggle ${open ? '':'collapsed'}" <%--
+        --%>data-bs-toggle="collapse" <%--
+        --%>data-bs-target="#${itemId}" <%--
+        --%>aria-controls="${itemId}" <%--
+        --%>aria-expanded="${open}"><%--
+        --%><c:out value="${title}"></c:out>
         </button><%----%>
     ${'</h'}${hsize}${'>'}
 
@@ -66,7 +67,7 @@
         </a><%----%>
     </c:if>
 
-    <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-parent=\"#'.concat(parentId).concat('\"')}><%----%>
+    <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-bs-parent=\"#'.concat(parentId).concat('\"')}><%----%>
         <c:if test="${not empty preface}">
              <mercury:heading text="${preface}" level="${7}" css="sub-header pivot" ade="${false}" />
         </c:if>

@@ -42,28 +42,28 @@
     <c:set var="accessibleFacilities">
         <div class="accessible"><%----%>
             <c:if test="${value.Facilities.value.WheelchairAccess.toBoolean}">
-                <div title="<fmt:message key='label.Facility.WheelchairAccess' />" tabindex="0" data-toggle="tooltip" class="acc-icon"><%----%>
+                <div title="<fmt:message key='label.Facility.WheelchairAccess' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
                         <span class="fa fa-wheelchair"></span><%----%>
                      </span><%----%>
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.HearingImpaired.toBoolean}">
-                <div title="<fmt:message key='label.Facility.HearingImpaired' />" tabindex="0" data-toggle="tooltip" class="acc-icon"><%----%>
+                <div title="<fmt:message key='label.Facility.HearingImpaired' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
                         <span class="fa fa-assistive-listening-systems"></span><%----%>
                     </span><%----%>
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.LowVision.toBoolean}">
-                <div title="<fmt:message key='label.Facility.LowVision' />" tabindex="0" data-toggle="tooltip" class="acc-icon"><%----%>
+                <div title="<fmt:message key='label.Facility.LowVision' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
                         <span class="fa fa-low-vision"></span><%----%>
                     </span><%----%>
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.PublicRestrooms.toBoolean}">
-                <div title="<fmt:message key='label.Facility.PublicRestrooms' />" tabindex="0" data-toggle="tooltip" class="acc-icon"><%----%>
+                <div title="<fmt:message key='label.Facility.PublicRestrooms' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
                         <span class="fa fa-male"></span><%----%>
                         <span class="fa fa-female"></span><%----%>
@@ -71,7 +71,7 @@
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.PublicRestroomsAccessible.toBoolean}">
-                <div title="<fmt:message key='label.Facility.PublicRestroomsAccessible' />" tabindex="0" data-toggle="tooltip" class="acc-icon"><%----%>
+                <div title="<fmt:message key='label.Facility.PublicRestroomsAccessible' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner acc-wc"><%----%>
                         <span class="fa fa-wheelchair"></span><%----%>
                     </span><%----%>

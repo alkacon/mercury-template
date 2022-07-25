@@ -67,8 +67,8 @@
                             --%>class="tab-toggle${status.first ? ' active' : ''}" <%--
                             --%>type="button" <%--
                             --%>aria-controls="${tabId}" <%--
-                            --%>data-target="#${tabId}" <%--
-                            --%>data-toggle="tab"><%----%>
+                            --%>data-bs-target="#${tabId}" <%--
+                            --%>data-bs-toggle="tab"><%----%>
                                 <c:out value="${tabLabel}" />
                             </button><%----%>
                             <c:if test="${cms.isEditMode}">

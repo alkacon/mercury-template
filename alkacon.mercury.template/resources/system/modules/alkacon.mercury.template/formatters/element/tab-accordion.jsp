@@ -65,10 +65,10 @@
             <article class="accordion ${cssWrapper}"><%----%>
                 ${'<h'}${itemHsize} class="acco-header pivot"${'>'}
                     <button class="acco-toggle ${open ? '':'collapsed'}" <%--
-                    --%>data-toggle="collapse" type="button" <%--
+                    --%>data-bs-toggle="collapse" type="button" <%--
                     --%>aria-expanded="${open}" <%--
                     --%>aria-controls="${itemId}"<%--
-                    --%>data-target="#${itemId}"><%----%>
+                    --%>data-bs-target="#${itemId}"><%----%>
                         <c:out value="${tabLabel}"></c:out>
                     </button><%----%>
                 ${'</h'}${itemHsize}${'>'}
@@ -81,7 +81,7 @@
                     </a><%----%>
                 </c:if>
 
-                <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-parent=\"#'.concat(parentId).concat('\"')}><%----%>
+                <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-bs-parent=\"#'.concat(parentId).concat('\"')}><%----%>
 
                         <mercury:container
                             title="${msg}"

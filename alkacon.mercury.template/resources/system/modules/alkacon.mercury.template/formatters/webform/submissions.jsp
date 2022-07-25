@@ -22,7 +22,7 @@
         <div class="acco-header"><%----%>
             <c:set var="parentId" value="${cms.element.settings.id}" />
             <c:set var="itemId" value="${parentId}_${cms.element.settings.index}" />
-            <a class="acco-toggle collapsed" data-toggle="collapse" data-parent="#${parentId}" href="#${itemId}"><%----%>
+            <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${parentId}" href="#${itemId}"><%----%>
                 <div class="h3"><%----%>
                     <c:choose>
                         <c:when test="${empty bean.titleProperty}">
@@ -58,7 +58,7 @@
         </div><%----%>
         <mercury:nl />
 
-        <div id="${itemId}" class="acco-body collapse" data-parent="#${parentId}"><%----%>
+        <div id="${itemId}" class="acco-body collapse" data-bs-parent="#${parentId}"><%----%>
             <table class="submissions"><%----%>
                 <c:forEach var="data" items="${bean.data}">
                     <tr><%----%>

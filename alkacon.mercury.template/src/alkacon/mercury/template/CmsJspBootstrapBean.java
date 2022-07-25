@@ -29,7 +29,7 @@ import java.util.Locale;
 /**
  * Provides convenient functions to calculate the with of bootstrap columns.<p>
  *
- * Supports bootstrap 4, i.e. works with XS, SM, MD, LG and XL column sizes.
+ * Supports bootstrap 5, i.e. works with XS, SM, MD, LG, XL and XXL column sizes.
  *
  */
 public class CmsJspBootstrapBean {
@@ -50,12 +50,12 @@ public class CmsJspBootstrapBean {
     private int m_maxCols = 12;
 
     /** The calculated grid columns width in percent (initial value is 100% for all). */
-    protected double[] m_column = {100.0D, 100.0D, 100.0D, 100.0D, 100.0D};
+    protected double[] m_column = {100.0D, 100.0D, 100.0D, 100.0D, 100.0D, 100.0D};
 
     /** The grid container width in pixel. */
-    // Note: This is set to the Mercury default "$container-max-widths" values (which are different from standard Bootstrap 4)
+    // Note: This is set to the Mercury default "$container-max-widths" values (which are different from standard Bootstrap 5)
     // For XS there is no "min-width", so we set the target size to 375 pixel which is the iPhone 6 display width
-    protected int[] m_gridSize = {375, 540, 744, 992, 1170};
+    protected int[] m_gridSize = {375, 540, 744, 992, 1170, 1320};
 
     /** public empty constructor for use on JSP.<p> */
     public CmsJspBootstrapBean() {
@@ -91,11 +91,13 @@ public class CmsJspBootstrapBean {
         int md = -1;
         int lg = -1;
         int xl = -1;
+        int xxl = -1;
         boolean hideXs = false;
         boolean hideSm = false;
         boolean hideMd = false;
         boolean hideLg = false;
         boolean hideXl = false;
+        boolean hideXxl = false;
 
         String[] items = gridCss.toLowerCase().split("\\s+");
         for (String i : items) {
@@ -111,8 +113,10 @@ public class CmsJspBootstrapBean {
                     lg = parseCol(i);
                 } else if (iSub.startsWith("-xl-")) {
                     xl = parseCol(i);
+                } else if (iSub.startsWith("-xxl-")) {
+                    xxl = parseCol(i);
                 } else if (iSub.startsWith("-")) {
-                    // BS 4 uses 'col-4' instead of 'col-xs-4' so we fall back to XS in case all others don't match
+                    // BS 5 uses 'col-4' instead of 'col-xs-4' so we fall back to XS in case all others don't match
                     xs = parseCol(i);
                 }
             } else if (i.startsWith("hidden-")) {
@@ -127,6 +131,8 @@ public class CmsJspBootstrapBean {
                     hideLg = true;
                 } else if (iSub.startsWith("xl")) {
                     hideXl = true;
+                } else if (iSub.startsWith("xxl")) {
+                    hideXxl = true;
                 }
             }
         }
@@ -142,11 +148,13 @@ public class CmsJspBootstrapBean {
         last = (lg < 0) ? last : lg;
         int xlCols = hideXl ? 0 : (xl < 0) ? last : xl;
         last = (xl < 0) ? last : xl;
+        int xxlCols = hideXxl ? 0 : (xxl < 0) ? last : xxl;
+        last = (xxl < 0) ? last : xxl;
 
-        boolean newLayer = (last != m_maxCols) || hideXs || hideSm || hideMd || hideLg || hideXl;
-        newLayer = newLayer || (xs > -1) || (sm > -1) || (md > -1) || (lg > -1) || (xl > -1);
+        boolean newLayer = (last != m_maxCols) || hideXs || hideSm || hideMd || hideLg || hideXl || hideXxl;
+        newLayer = newLayer || (xs > -1) || (sm > -1) || (md > -1) || (lg > -1) || (xl > -1) || (xxl > -1);
         if (newLayer) {
-            int[] result = {xsCols, smCols, mdCols, lgCols, xlCols};
+            int[] result = {xsCols, smCols, mdCols, lgCols, xlCols, xxlCols};
             addLayer(result);
         }
         return newLayer;
@@ -185,7 +193,7 @@ public class CmsJspBootstrapBean {
     /**
      * Returns the pixel size of a grid column.<p>
      *
-     * The index must be between 0 (XS) and 4 (XL).<p>
+     * The index must be between 0 (XS) and 5 (XXL).<p>
      *
      * @param gridIndex the grid index to get the size for
      *
@@ -305,6 +313,16 @@ public class CmsJspBootstrapBean {
     }
 
     /**
+     * Returns the column pixel width calculated for the XXL screen size.<p>
+     *
+     * @return the column pixel width calculated for the XXL screen size
+     */
+    public int getSizeXxl() {
+
+        return getSize(5);
+    }
+
+    /**
      * Initialize the CSS used for this bootstrap bean.<p>
      *
      * @param css the CSS used for this bootstrap bean
@@ -349,7 +367,7 @@ public class CmsJspBootstrapBean {
     /**
      * Sets the pixel size of a grid column.<p>
      *
-     * The index must be between 0 (XS) and 4 (XL).<p>
+     * The index must be between 0 (XS) and 5 (XXL).<p>
      *
      * @param gridIndex the grid index to set the size for
      * @param gridWidth the grid width to set
@@ -398,6 +416,10 @@ public class CmsJspBootstrapBean {
             + getSizeXl()
             + "px("
             + nf.format(m_column[4])
+            + "%) xxl="
+            + getSizeXxl()
+            + "px("
+            + nf.format(m_column[5])
             + "%)";
     }
 

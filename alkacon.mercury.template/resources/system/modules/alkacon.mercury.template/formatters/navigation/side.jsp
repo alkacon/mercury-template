@@ -79,7 +79,7 @@
                         --%>id="${parentLabelId}"${' '}<%--
                         --%><c:if test="${not allOpen}"><%--
                             --%>${isCurrentPage ? 'aria-expanded=\"true\" class=\"collapse show\"' : 'aria-expanded=\"false\"'}${' '}<%--
-                            --%>data-toggle="collapse" data-target="#${targetMenuId}"${' '}<%--
+                            --%>data-bs-toggle="collapse" data-bs-target="#${targetMenuId}"${' '}<%--
                             --%>aria-controls="${targetMenuId}"<%--
                         --%></c:if><%--
                         --%>><%--
@@ -90,7 +90,7 @@
                         <%-- Navigation item with sub-menu and direct child pages --%>
                         <a href="${navLink}"${navTarget} class="nav-label" id="${parentLabelId}">${navText}</a><%--
                         --%><c:if test="${not allOpen}"><%--
-                            --%><a href="${navLink}"${navTarget} data-toggle="collapse" data-target="#${targetMenuId}"${' '}<%--
+                            --%><a href="${navLink}"${navTarget} data-bs-toggle="collapse" data-bs-target="#${targetMenuId}"${' '}<%--
                             --%>${isCurrentPage ? 'aria-expanded=\"true\" class=\"collapse show\"' : 'aria-expanded=\"false\"'}${' '}<%--
                             --%>aria-controls="${targetMenuId}" aria-label="<fmt:message key="msg.page.navigation.sublevel" />">&nbsp;</a><%--
                         --%></c:if><%--

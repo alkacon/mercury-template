@@ -67,12 +67,10 @@
         <c:out value='<div class="list-option">' escapeXml='false' />
             <button${' '}<%--
                 --%>type="button"${' '}<%--
-                --%>class="dropdown-toggle btn"${' '}<%--
-                --%>data-toggle="dropdown"${' '}<%--
-                --%>data-display="static"${' '}<%--
-                --%>aria-haspopup="true"${' '}<%--
-                --%>aria-expanded="false"${' '}<%--
-                --%>aria-expanded="true"<%--
+                --%>class="btn dropdown-toggle"${' '}<%--
+                --%>data-bs-toggle="dropdown"${' '}<%--
+                --%>data-bs-display="static"${' '}<%--
+                --%>aria-expanded="false"$<%--
             --%>><%--
             --%><span>${label}</span><%--
             --%></button><%----%>

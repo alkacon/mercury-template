@@ -86,15 +86,18 @@
         <%-- ################################################################################################################# HEAD ######## --%>
         <c:set var="head">
             <c:out value='<div class="list-option">' escapeXml='false' />
-            <button type="button" class="dropdown-toggle btn"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                id="dropdownMenu1" aria-expanded="true">
-                ${buttonLabel}
-            </button>
-
-            <c:out
-                value='<ul class="list-optionlist dropdown-menu dropdown-${buttonColor}">'
-                escapeXml='false' />
+            <button${' '}<%--
+                --%>type="button"${' '}<%--
+                --%>id="dropdownMenu1"${' '}<%--
+                --%>class="btn dropdown-toggle"${' '}<%--
+                --%>data-bs-toggle="dropdown"${' '}<%--
+                --%>data-bs-display="static"${' '}<%--
+                --%>aria-expanded="false"$<%--
+            --%>><%--
+            --%>${buttonLabel}<%--
+            --%></button><%----%>
+            <mercury:nl />
+            <c:out value='<ul class="list-optionlist dropdown-menu">' escapeXml='false' />
         </c:set>
 
         <c:set var="delimiter" value="|" />

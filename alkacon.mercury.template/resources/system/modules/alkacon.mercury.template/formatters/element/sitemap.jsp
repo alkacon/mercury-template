@@ -99,7 +99,7 @@
                             <c:set var="collapseId"><mercury:idgen prefix="nav" uuid="${cms.element.instanceId}" />_${i}</c:set>
                             <a href="#${collapseId}" <%--
                             --%>class="tree-toggle ${openCurrent ? '' : 'collapsed'}" <%--
-                            --%>data-toggle="collapse" <%--
+                            --%>data-bs-toggle="collapse" <%--
                             --%>aria-expanded="${openCurrent}">${navElem.navText}</a><%----%>
                             <c:set var="collapseIn" value="${openCurrent ? 'show' : ''}" />
                             <c:out value='${nl}<ul class="collapse ${collapseIn}" id="${collapseId}">' escapeXml="false" />

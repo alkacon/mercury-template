@@ -26,12 +26,12 @@ Add borders to custom elements:
 
 Or remove borders:
 
-{{< example class="bd-example-border-utils bd-example-border-utils-0" >}}
-<span class="border-0"></span>
-<span class="border-top-0"></span>
-<span class="border-end-0"></span>
-<span class="border-bottom-0"></span>
-<span class="border-start-0"></span>
+{{< example class="bd-example-border-utils" >}}
+<span class="border border-0"></span>
+<span class="border border-top-0"></span>
+<span class="border border-end-0"></span>
+<span class="border border-bottom-0"></span>
+<span class="border border-start-0"></span>
 {{< /example >}}
 
 ## Color
@@ -128,7 +128,7 @@ Add classes to an element to easily round its corners.
 
 ### Sizes
 
-Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3`, and can be configured by modifying the utilities API.
+Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `5`, and can be configured by modifying the utilities API.
 
 {{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" >}}

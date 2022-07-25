@@ -22,7 +22,20 @@ import 'promise-polyfill/src/polyfill';
 import 'mdn-polyfills/Object.assign';
 
 import jQuery                       from 'jquery';
-import bootstrap                    from 'bootstrap';
+
+// import 'bootstrap/js/dist/alert';
+// import 'bootstrap/js/dist/button';
+// import 'bootstrap/js/dist/carousel';
+import 'bootstrap/js/dist/collapse';
+import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/modal';
+// import 'bootstrap/js/dist/offcanvas';
+// import 'bootstrap/js/dist/popover';
+// import 'bootstrap/js/dist/scrollspy';
+import 'bootstrap/js/dist/tab';
+// import 'bootstrap/js/dist/toast';
+import 'bootstrap/js/dist/tooltip';
+
 import jsDevice                     from 'current-device';
 import fitVids                      from 'fitvids';
 Object.assign(lazySizes.cfg,        { init:false }); // otherwise device based configuration will not work
@@ -34,8 +47,8 @@ import * as CommentElements         from './comments.js';
 import * as AnalyticElements        from './analytics.js';
 import * as PrivacyPolicy           from './privacy-policy.js';
 
-import jQueryExtensions             from './jquery-extensions.js';
-import unobfuscateString            from './unobfuscate.js';
+import './jquery-extensions.js';
+import './unobfuscate.js';
 
 import { _OpenCmsReinitEditButtons, _OpenCmsInit } from './opencms-callbacks.js';
 
@@ -592,7 +605,12 @@ var Mercury = function(jQ) {
     function initTooltips(parent) {
         // initialize bootstrap tooltips
         parent = parent || '';
-        var selector = parent + ' [data-toggle="tooltip"]';
+        var selector = parent + ' [data-bs-toggle="tooltip"]';
+        /*
+        const tooltips = document.querySelectorAll(selector);
+        if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " +  tooltips.length);
+        const tooltipList = [...tooltips].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        */
         var $tooltips = jQ(selector);
         if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " +  $tooltips.length);
             if ($tooltips.length > 0) {

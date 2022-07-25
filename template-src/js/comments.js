@@ -17,10 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Module implemented using the "revealing module pattern", see
-// https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript
-// https://www.christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
-
 // the global objects that must be passed to this module
 var jQ;
 var DEBUG;

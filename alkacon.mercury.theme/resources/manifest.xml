@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>13.0.26</version>
+		<version>13.0.31</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -115,6 +115,54 @@
 			<uuidstructure>bfa40440-feab-11e8-aee0-0242ac11002b</uuidstructure>
 			<uuidresource>bfa40441-feab-11e8-aee0-0242ac11002b</uuidresource>
 			<datecreated>Thu, 13 Dec 2018 07:50:24 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/bs5-burger.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/bs5-burger.min.css</destination>
+			<type>plain</type>
+			<uuidstructure>eed36c29-0c30-11ed-a329-0242ac11002b</uuidstructure>
+			<uuidresource>eed36c2a-0c30-11ed-a329-0242ac11002b</uuidresource>
+			<datecreated>Mon, 25 Jul 2022 15:46:22 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/bs5-burger.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/bs5-burger.min.css.map</destination>
+			<type>plain</type>
+			<uuidstructure>f11bfc9e-0c30-11ed-a329-0242ac11002b</uuidstructure>
+			<uuidresource>f11bfc9f-0c30-11ed-a329-0242ac11002b</uuidresource>
+			<datecreated>Mon, 25 Jul 2022 15:46:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/bs5-standard.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/bs5-standard.min.css</destination>
+			<type>plain</type>
+			<uuidstructure>f1607fb1-0c30-11ed-a329-0242ac11002b</uuidstructure>
+			<uuidresource>f1607fb2-0c30-11ed-a329-0242ac11002b</uuidresource>
+			<datecreated>Mon, 25 Jul 2022 15:46:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/bs5-standard.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/bs5-standard.min.css.map</destination>
+			<type>plain</type>
+			<uuidstructure>f1b29755-0c30-11ed-a329-0242ac11002b</uuidstructure>
+			<uuidresource>f1b29756-0c30-11ed-a329-0242ac11002b</uuidresource>
+			<datecreated>Mon, 25 Jul 2022 15:46:27 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

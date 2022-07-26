@@ -17,11 +17,13 @@
 <%@ variable name-given="bsBpMd" declare="true" %>
 <%@ variable name-given="bsBpLg" declare="true" %>
 <%@ variable name-given="bsBpXl" declare="true" %>
+<%@ variable name-given="bsBpXxl" declare="true" %>
 <%@ variable name-given="bsMwXs" declare="true" %>
 <%@ variable name-given="bsMwSm" declare="true" %>
 <%@ variable name-given="bsMwMd" declare="true" %>
 <%@ variable name-given="bsMwLg" declare="true" %>
 <%@ variable name-given="bsMwXl" declare="true" %>
+<%@ variable name-given="bsMwXxl" declare="true" %>
 
 
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -36,7 +38,7 @@
 <c:set var="bootstrapGrid" value="${cms.sitemapConfig.attribute['template.bootstrap.grid'].toString}" />
 <c:set var="bootstrapGridEmpty" value="${empty bootstrapGrid}" />
 <c:set var="bootstrapGrid" value="${bootstrapGridEmpty ? 'template.bootstrap.grid.default' : bootstrapGrid}" />
-<c:set var="clearCache"    value="${cms.sitemapConfig.attribute['template.clearCache'].toBoolean}" />
+<c:set var="clearCache"    value="${DEBUG or cms.sitemapConfig.attribute['template.clearCache'].toBoolean}" />
 
 
 <c:if test="${empty applicationScope.bootstrapCache or clearCache}">
@@ -62,11 +64,13 @@ ${bootstrapGridData}
         <c:set var="bsBpMd"  value="${bootstrapGridData['bsBpMd']}" />
         <c:set var="bsBpLg"  value="${bootstrapGridData['bsBpLg']}" />
         <c:set var="bsBpXl"  value="${bootstrapGridData['bsBpXl']}" />
+        <c:set var="bsBpXxl" value="${bootstrapGridData['bsBpXxl']}" />
         <c:set var="bsMwXs"  value="${bootstrapGridData['bsMwXs']}" />
         <c:set var="bsMwSm"  value="${bootstrapGridData['bsMwSm']}" />
         <c:set var="bsMwMd"  value="${bootstrapGridData['bsMwMd']}" />
         <c:set var="bsMwLg"  value="${bootstrapGridData['bsMwLg']}" />
         <c:set var="bsMwXl"  value="${bootstrapGridData['bsMwXl']}" />
+        <c:set var="bsMwXxl" value="${bootstrapGridData['bsMwXxl']}" />
 
     </c:when>
     <c:otherwise>
@@ -80,11 +84,13 @@ ${bootstrapGridData}
                 <c:set var="bsBpMd"  value="${bsGrid.getInt('bp-md')}" />
                 <c:set var="bsBpLg"  value="${bsGrid.getInt('bp-lg')}" />
                 <c:set var="bsBpXl"  value="${bsGrid.getInt('bp-xl')}" />
+                <c:set var="bsBpXxl" value="${bsGrid.getInt('bp-xxl')}" />
                 <c:set var="bsMwXs"  value="${bsGrid.getInt('mw-xs')}" />
                 <c:set var="bsMwSm"  value="${bsGrid.getInt('mw-sm')}" />
                 <c:set var="bsMwMd"  value="${bsGrid.getInt('mw-md')}" />
                 <c:set var="bsMwLg"  value="${bsGrid.getInt('mw-lg')}" />
                 <c:set var="bsMwXl"  value="${bsGrid.getInt('mw-xl')}" />
+                <c:set var="bsMwXl"  value="${bsGrid.getInt('mw-xxl')}" />
                 <c:set var="bsStatus">Source: JSON</c:set>
             </c:catch>
             <c:choose>
@@ -113,18 +119,20 @@ ${jsonException.message}
         </c:if>
 
         <c:set var="bsGutter" value="${empty bsGutter ? 30 : bsGutter}" />
-        <c:set var="bsBpXs"  value="${empty bsBpXs ? 0    : bsBpXs}" />
-        <c:set var="bsBpSm"  value="${empty bsBpSm ? 552  : bsBpSm}" />
-        <c:set var="bsBpMd"  value="${empty bsBpMd ? 764  : bsBpMd}" />
-        <c:set var="bsBpLg"  value="${empty bsBpLg ? 1014 : bsBpLg}" />
-        <c:set var="bsBpXl"  value="${empty bsBpXl ? 1200 : bsBpXl}" />
-        <c:set var="bsMwXs"  value="${empty bsMwXs ? 375  : bsMwXs}" />
-        <c:set var="bsMwSm"  value="${empty bsMwSm ? 540  : bsMwSm}" />
-        <c:set var="bsMwMd"  value="${empty bsMwMd ? 744  : bsMwMd}" />
-        <c:set var="bsMwLg"  value="${empty bsMwLg ? 992  : bsMwLg}" />
-        <c:set var="bsMwXl"  value="${empty bsMwXl ? 1170 : bsMwXl}" />
+        <c:set var="bsBpXs"  value="${empty bsBpXs ? 0     : bsBpXs}" />
+        <c:set var="bsBpSm"  value="${empty bsBpSm ? 552   : bsBpSm}" />
+        <c:set var="bsBpMd"  value="${empty bsBpMd ? 764   : bsBpMd}" />
+        <c:set var="bsBpLg"  value="${empty bsBpLg ? 1014  : bsBpLg}" />
+        <c:set var="bsBpXl"  value="${empty bsBpXl ? 1200  : bsBpXl}" />
+        <c:set var="bsBpXxl" value="${empty bsBpXxl ? 1400 : bsBpXxl}" />
+        <c:set var="bsMwXs"  value="${empty bsMwXs ? 375   : bsMwXs}" />
+        <c:set var="bsMwSm"  value="${empty bsMwSm ? 540   : bsMwSm}" />
+        <c:set var="bsMwMd"  value="${empty bsMwMd ? 744   : bsMwMd}" />
+        <c:set var="bsMwLg"  value="${empty bsMwLg ? 992   : bsMwLg}" />
+        <c:set var="bsMwXl"  value="${empty bsMwXl ? 1170  : bsMwXl}" />
+        <c:set var="bsMwXxl" value="${empty bsMwXxl ? 1320 : bsMwXxl}" />
         <c:set var="maxScaleWidth"  value="${empty maxScaleWidth ? 2500 : maxScaleWidth}" />
-        <c:set var="maxScaleWidth"  value="${maxScaleWidth < bsBpXl ? bsBpXl : maxScaleWidth}" />
+        <c:set var="maxScaleWidth"  value="${maxScaleWidth < bsBpXxl ? bsBpXxl : maxScaleWidth}" />
         <c:set var="bsStatus"  value="${empty bsStatus ? 'Source: Defaults' : bsStatus}" />
 
         <c:set var="dataMap" value="${{
@@ -135,11 +143,13 @@ ${jsonException.message}
             'bsBpMd': bsBpMd,
             'bsBpLg': bsBpLg,
             'bsBpXl': bsBpXl,
+            'bsBpXxl': bsBpXxl,
             'bsMwXs': bsMwXs,
             'bsMwSm': bsMwSm,
             'bsMwMd': bsMwMd,
             'bsMwLg': bsMwLg,
             'bsMwXl': bsMwXl,
+            'bsMwXxl': bsMwXxl,
             'status': bsStatus
         }}" />
 
@@ -168,12 +178,14 @@ Breakpoint SM: ${bsBpSm}
 Breakpoint MD: ${bsBpMd}
 Breakpoint LG: ${bsBpLg}
 Breakpoint XL: ${bsBpXl}
+Breakpoint XXL: ${bsBpXxl}
 
 Max width XS: ${bsMwXs}
 Max width SM: ${bsMwSm}
 Max width MD: ${bsMwMd}
 Max width LG: ${bsMwLg}
 Max width XL: ${bsMwXl}
+Max width XXL: ${bsMwXxl}
 -->
 </c:if>
 

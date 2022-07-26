@@ -87,8 +87,8 @@
     }
 
     .search-badge {
-        font-weight: $font-weight-base;
-        font-family: $font-family-base;
+        font-family: var(--#{$prefix}body-font-family);
+        font-weight: var(--#{$prefix}body-font-weight);
         font-size: 50%;
         padding: $default-margin-extremesmall $default-margin-verysmall;
         @include round-corners($search-badge-border-radius);

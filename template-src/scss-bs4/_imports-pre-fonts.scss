@@ -20,18 +20,16 @@
  */
 
 // import functions
-@import '../scss/main/functions';
+@import 'main/functions';
 
 // import font definitions for pre-downloaded fonts
-@import '../scss/main/font-definitions';
+@import 'main/font-definitions';
 
 // define the global variables
-@import 'bootstrap/bs5-variables-before';
-@import '../scss/main/variables';
-@import 'bootstrap/bs5-variables-after';
+@import 'main/variables';
 
 // import mixins
-@import '../scss/main/mixins';
+@import 'main/mixins';
 
 // import font definitions on top
 @import 'imports-fonts';

@@ -24,7 +24,16 @@
     <mercury:container-box label="${value.Title}" boxType="model-start" />
 
     <c:if test="${value.PreMarkup.isSet}">
-        ${value.PreMarkup}
+        <c:choose>
+            <c:when test="${not empty cssWrapper and fn:contains(value.PreMarkup, '$(cssWrapper)')}">
+                <c:set var="preMarkup" value="${fn:replace(value.PreMarkup, '$(cssWrapper)', cssWrapper)}" />
+                <c:set var="cssWrapper"         value="${null}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="preMarkup" value="${value.PreMarkup}" />
+            </c:otherwise>
+        </c:choose>
+        ${preMarkup}
     </c:if>
 
     <c:forEach var="container" items="${content.valueList.Container}" varStatus="loop">

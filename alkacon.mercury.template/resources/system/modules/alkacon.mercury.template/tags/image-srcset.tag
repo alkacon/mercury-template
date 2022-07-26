@@ -137,7 +137,8 @@ useNoScript=${useNoScript}
             ${bb.setGridSize(1, bsBpMd)}
             ${bb.setGridSize(2, bsBpLg)}
             ${bb.setGridSize(3, bsBpXl)}
-            ${bb.setGridSize(4, maxScaleWidth)}
+            ${bb.setGridSize(4, bsBpXxl)}
+            ${bb.setGridSize(5, maxScaleWidth)}
         </c:when>
         <c:otherwise>
             <%-- ###### Calculate image size based on column width ###### --%>
@@ -174,6 +175,7 @@ gutterAdjust: ${gutterAdjust}
             ${bb.setGridSize(2, bsMwMd - gutterAdjust)}
             ${bb.setGridSize(3, bsMwLg - gutterAdjust)}
             ${bb.setGridSize(4, bsMwXl - gutterAdjust)}
+            ${bb.setGridSize(5, bsMwXxl - gutterAdjust)}
         </c:otherwise>
     </c:choose>
 
@@ -199,6 +201,7 @@ Max width SM: ${bb.getGridSize(1)}
 Max width MD: ${bb.getGridSize(2)}
 Max width LG: ${bb.getGridSize(3)}
 Max width XL: ${bb.getGridSize(4)}
+Max width XXL: ${bb.getGridSize(5)}
 <mercury:nl />
 <c:forEach var="grid" items="${paramValues.cssgrid}">
 grid: ${grid}
@@ -215,6 +218,7 @@ grid: ${grid}
         <c:if test="${not useLazyLoading}">
             <%-- ###### Calculate the sizes (if we are lazy loading the script will do this for us) ###### --%>
             <c:set var="srcSetSizes"><%--
+            --%>(min-width: ${bsMwXxl}px) ${bb.sizeXxl}px, <%--
             --%>(min-width: ${bsMwXl}px) ${bb.sizeXl}px, <%--
             --%>(min-width: ${bsMwLg}px) ${bb.sizeLg}px, <%--
             --%>(min-width: ${bsMwMd}px) ${bb.sizeMd}px, <%--
@@ -240,37 +244,41 @@ grid: ${grid}
             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeLg]}" />
         </c:if>
         <c:if test="${bb.sizeXl > -1}">
+            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXl]}" />
+            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXl]}" />
+        </c:if>
+        <c:if test="${bb.sizeXxl > -1}">
             <c:if test="${fullwidth}">
                 <%-- Add size variations to avoid offering only one very large image for full screen backgrounds --%>
-                <c:set var="scaleGapStep" value="${Math.round((ib.scaler.width - bsBpXl) / 4)}" />
+                <c:set var="scaleGapStep" value="${Math.round((ib.scaler.width - bsBpXxl) / 4)}" />
                 <c:if test="${DEBUG}">
 <!--
 image-srcset optimizing for full width:
 
 ib.scaler.width: ${ib.scaler.width}
-bsBpXl: ${bsBpXl}
+bsBpXxl: ${bsBpXxl}
 scaleGapStep: ${scaleGapStep}
 -->
                 </c:if>
                 <c:if test="${scaleGapStep > 100}">
-                    <c:if test="${maxScaleWidth > 2 * (bsBpXl + scaleGapStep)}">
-                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * (bsBpXl + scaleGapStep)]}" />
+                    <c:if test="${maxScaleWidth > 2 * (bsBpXxl + scaleGapStep)}">
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * (bsBpXxl + scaleGapStep)]}" />
                     </c:if>
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + scaleGapStep]}" />
-                    <c:if test="${maxScaleWidth > 2 * (bsBpXl + 2 * scaleGapStep)}">
-                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 2 * scaleGapStep]}" />
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXxl + scaleGapStep]}" />
+                    <c:if test="${maxScaleWidth > 2 * (bsBpXxl + 2 * scaleGapStep)}">
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXxl + 2 * scaleGapStep]}" />
                     </c:if>
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 2 * scaleGapStep]}" />
-                    <c:if test="${maxScaleWidth > 2 * (bsBpXl + 3 * scaleGapStep)}">
-                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 3 * scaleGapStep]}" />
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXxl + 2 * scaleGapStep]}" />
+                    <c:if test="${maxScaleWidth > 2 * (bsBpXxl + 3 * scaleGapStep)}">
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXxl + 3 * scaleGapStep]}" />
                     </c:if>
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXl + 3 * scaleGapStep]}" />
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bsBpXxl + 3 * scaleGapStep]}" />
                 </c:if>
             </c:if>
-            <c:if test="${maxScaleWidth > (2 * bb.sizeXl)}">
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXl]}" />
+            <c:if test="${maxScaleWidth > (2 * bb.sizeXxl)}">
+                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXxl]}" />
             </c:if>
-            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXl]}" />
+            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXxl]}" />
         </c:if>
     </c:if>
 

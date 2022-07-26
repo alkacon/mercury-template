@@ -21,14 +21,18 @@
 
 .styled-form {
 
+    @if ($form-font-family != $font-family-base) {
+        --#{$prefix}form-font-family: #{inspect($form-font-family)};
+    } @else {
+        --#{$prefix}form-font-family: var(--#{$prefix}font-family-base);
+    }
+
     margin: 0;
     outline: none;
     font-size: $form-font-size;
     font-weight: $form-font-weight;
     line-height: $form-line-height;
-    @if ($form-font-family != $font-family-base) {
-        font-family: $form-font-family;
-    }
+    font-family: var(--#{$prefix}form-font-family);
     border: $form-border;
     @include round-corners($form-border-radius);
     @include use-hyphens-text;

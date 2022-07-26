@@ -101,9 +101,9 @@
 .map-osm {
     .mapboxgl-map {
         color: $map-text-color;
-        font-family: $font-family-base;
+        font-family: var(--#{$prefix}body-font-family);
+        font-weight: var(--#{$prefix}body-font-weight);
         font-size: 1.0rem;
-        font-weight: $font-weight-base;
         line-height: 1.2;
     }
 

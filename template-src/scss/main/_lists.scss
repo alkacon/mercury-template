@@ -899,9 +899,7 @@
                     font-size: 1.2rem;
                     text-align: center;
                     cursor: pointer;
-                    @if ($btn-font-family != $font-family-base) {
-                        font-family: $btn-font-family;
-                    }
+                    font-family: var(--#{$prefix}btn-font-family);
 
                     a {
                         color: $text-dark;

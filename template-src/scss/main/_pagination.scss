@@ -34,12 +34,11 @@
     text-align: center;
     text-decoration: none;
     padding: 5px 12px;
-    line-height: $line-height-base;
     min-width: calc(#{($font-size-base * $line-height-base)} + 10px); // 10px = top + bottom padding
-    font-size: $font-size-base;
-    @if ($pagination-font-family != $font-family-base) {
-        font-family: $pagination-font-family;
-    }
+
+    font-family: var(--#{$prefix}pagination-font-family);
+    font-size: var(--#{$prefix}body-font-size);
+    line-height: var(--#{$prefix}body-line-height);
 
     .number {
         font-weight: $font-weight-base;
@@ -66,6 +65,12 @@
 }
 
 .pagination {
+
+    @if ($pagination-font-family != $font-family-base) {
+        --#{$prefix}pagination-font-family: #{inspect($pagination-font-family)};
+    } @else {
+        --#{$prefix}pagination-font-family: var(--#{$prefix}font-family-base);
+    }
 
     display: initial;
     margin: 0;

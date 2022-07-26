@@ -55,7 +55,7 @@ $match-text-bg-colors:              () !default;
 
 $font-family-base:                  "default-sans-serif" !default;
 $font-family-headings:              $font-family-base !default;
-$font-family-sans-serif:            $font-family-base !default; // Bootstrap defines this the other way around
+$font-family-sans-serif:            $font-family-base !default; // Boostrap 4 defines this the other way around
 $font-family-gui:                   "default-sans-serif" !default; // the font used in containers and other "GUI" components
 
 $font-family-base:                  get-font-family($font-family-base); // match given names against preloaded font list
@@ -66,7 +66,7 @@ $font-family-gui:                   get-font-family($font-family-gui);
 $font-weight-light:                 300 !default;
 $font-weight-normal:                400 !default;
 $font-weight-bold:                  600 !default;
-$font-weight-bolder:                $font-weight-bold !default; // used in Bootstrap reboot.scss for <b> and <strong>
+$font-weight-bolder:                $font-weight-bold !default; // used in Boostrap 4 reboot.scss for <b> and <strong>
 
 $font-weight-base:                  $font-weight-normal !default;
 $font-weight-headings:              $font-weight-bold !default;
@@ -242,21 +242,18 @@ $grid-breakpoints: (
     sm: 552px,
     md: 764px,
     lg: 1014px,
-    xl: 1200px,
-    xxl: 1400px
+    xl: 1200px
 ) !default;
 
 $container-max-widths: (
     sm: 540px,
     md: 744px,
     lg: 992px,
-    xl: 1170px,
-   xxl: 1320px
+    xl: 1170px
 ) !default;
 
 
 // Bootstrap variables
-$rfs-breakpoint:                    552px !default;
 
 $grid-gutter-width:                 30px !default;
 $grid-gutter-width-half:            $grid-gutter-width * 0.5 !default;
@@ -472,7 +469,7 @@ $fh-grid-gutter-width-half:         $fh-grid-gutter-width * 0.5 !default; // hal
 @if ($feature-use-burger-header) {
     // set required variables to force wrap menu for desktop
     $feature-use-flexible-header:       false !global; // burger header setting is stronger than flexible header
-    $nav-breakpoint-mobile:             xxl !global;
+    $nav-breakpoint-mobile:             xl !global;
     $nav-breakpoint-desktop:            none !global;
     $nav-breakpoint-sticky-header-size: 2 !global;
     $nav-mobile-side-content-move:      false !global; // this feature is not supported

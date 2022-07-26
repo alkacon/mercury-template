@@ -27,6 +27,30 @@ $copyright-bg-color:                        rgba($white, 0.6) !default;
 $copyright-opacity:                         0.8 !default;
 
 :root {
+
+    // body
+    --#{$prefix}body-font-family: #{inspect($font-family-base)};
+    --#{$prefix}body-font-size:  #{$font-size-base};
+    --#{$prefix}body-font-weight: #{$font-weight-base};
+    --#{$prefix}body-line-height: #{$line-height-base};
+    --#{$prefix}body-color: #{$body-color};
+    --#{$prefix}body-bg: #{$body-bg};
+
+    // fonts
+    --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
+    @if ($font-family-headings != $font-family-base) {
+        --#{$prefix}font-family-headings: #{inspect($font-family-headings)};
+    } @else {
+        --#{$prefix}font-family-headings: var(--#{$prefix}font-family-base);
+    }
+    @if ($btn-font-family != $font-family-base) {
+        --#{$prefix}btn-font-family: #{inspect($btn-font-family)};
+    } @else {
+        --#{$prefix}btn-font-family: var(--#{$prefix}font-family-base);
+    }
+
+
+    // copyright
     --#{$prefix}copyright-padding: #{$copyright-padding};
     --#{$prefix}copyright-font-size: #{$copyright-font-size};
     --#{$prefix}copyright-color: #{$copyright-color};

@@ -268,10 +268,9 @@
             }
 
             small {
-                font-family: $font-family-base;
-                font-size: $font-size-base;
-                line-height: $line-height-base;
-
+                font-family: var(--#{$prefix}body-font-family);
+                font-size: var(--#{$prefix}body-font-size);
+                line-height: var(--#{$prefix}body-line-height);
                 ~ small {
                     margin-top: 0;
                 }

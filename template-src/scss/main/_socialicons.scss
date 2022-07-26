@@ -99,9 +99,7 @@
         text-align: left;
         padding-right: $default-margin-small;
         font-size: $font-size-base;
-        @if ($btn-font-family != $font-family-base) {
-            font-family: $btn-font-family;
-        }
+        font-family: var(--#{$prefix}btn-font-family);
         @if ($btn-font-weight != $font-weight-base) {
             font-weight: $btn-font-weight;
         }

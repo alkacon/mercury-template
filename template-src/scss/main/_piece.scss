@@ -39,9 +39,9 @@
 @function get-col-flex-size($cols, $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
-            (100% + var(--#{$prefix}gutter-x))
+            (100% + var(--#{$prefix}p-gutter-x))
             * #{divide($cols, $grid-columns)}
-            - (0.5 * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
+            - (0.5 * var(--#{$prefix}p-gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
         );
     } @else {
         @return 100%;
@@ -51,9 +51,9 @@
 @function get-col-float-size($cols, $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
-            (100% + var(--#{$prefix}gutter-x))
+            (100% + var(--#{$prefix}p-gutter-x))
             * #{divide($cols, $grid-columns)}
-            - var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
+            - var(--#{$prefix}p-gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
         );
     } @else {
         @return 100%;
@@ -67,7 +67,8 @@
 $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column sizes for the piece visual
 
 .piece {
-    --#{$prefix}gutter-x: #{$grid-gutter-width};
+    --#{$prefix}p-gutter-x: var(--#{$prefix}gutter-x);
+
     --#{$prefix}visual-margin-bottom: #{$default-margin-small};
     --#{$prefix}visual-last-margin-top: #{$piece-visual-last-top-margin};
     --#{$prefix}heading-margin-bottom: #{$piece-headings-margin-bottom}; // $piece-headings-margin-bottom != $headings-margin-bottom
@@ -305,18 +306,18 @@ html.keyboard-nav .piece {
             &.right {
                 > .visual {
                     order: 13;
-                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-left: calc(0.5 * var(--#{$prefix}p-gutter-x));
                 }
                 > .body {
-                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-right: calc(0.5 * var(--#{$prefix}p-gutter-x));
                 }
             }
             &.left {
                 > .visual {
-                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-right: calc(0.5 * var(--#{$prefix}p-gutter-x));
                 }
                 > .body {
-                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-left: calc(0.5 * var(--#{$prefix}p-gutter-x));
                 }
             }
 
@@ -337,14 +338,14 @@ html.keyboard-nav .piece {
             &.left {
                 > .visual {
                     float: left;
-                    margin-right: var(--#{$prefix}gutter-x);
+                    margin-right: var(--#{$prefix}p-gutter-x);
                 }
             }
 
             &.right {
                 > .visual {
                     float: right;
-                    margin-left: var(--#{$prefix}gutter-x);
+                    margin-left: var(--#{$prefix}p-gutter-x);
                 }
             }
         }

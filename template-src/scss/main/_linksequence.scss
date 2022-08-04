@@ -23,7 +23,7 @@
     padding-left: $ls-margin-left;
     &::before {
         float: left;
-        margin-left: -$ls-margin-left;
+        margin-left: calc(-1 * $ls-margin-left);
         display: inline-block;
         line-height: $line-height-base;
     }
@@ -120,7 +120,7 @@
             }
             + li {
                 &::before {
-                    padding-left: $ls-margin-small + $ls-margin-verysmall;
+                    padding-left: calc($ls-margin-small + $ls-margin-verysmall);
                 }
             }
         }

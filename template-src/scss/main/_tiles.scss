@@ -19,8 +19,6 @@
  * Source file:_tiles.scss
  */
 
-$tile-border-radius:        $default-border-radius !default;
-
 $ti-maxCols:    12 !default;
 $ti-margin:     0 !default;
 
@@ -102,7 +100,7 @@ $sq-heights-xl:    () !default;
     width: 100%;
     padding: 0 0 100% 0 !important; // !important because the "padding-bottom: 100%" is what makes the squares square
     .content {
-        @include round-corners($tile-border-radius, true);
+        @include round-corners(var(--#{$prefix}border-radius), true);
     }
 }
 
@@ -486,7 +484,7 @@ $sq-margin: 20px;
 
 .content-box {
     position: relative;
-    @include round-corners($tile-border-radius, true);
+    @include round-corners(var(--#{$prefix}border-radius), true);
 }
 
 .tile-col {
@@ -501,7 +499,7 @@ $sq-margin: 20px;
         background: $tile-overlay-bg-color;
 
         .piece {
-            margin: $default-margin-small;
+            margin: var(--#{$prefix}spacer);
         }
 
         h1, h2, h3, h4, div.body, a.piece-text-link {
@@ -526,7 +524,7 @@ $sq-margin: 20px;
     .text-overlay {
         position: absolute;
         bottom: 0;
-        padding: $default-margin-small $default-margin;
+        padding: var(--#{$prefix}spacer) var(--#{$prefix}spacer-xl);
         background: $square-overlay-bg-color;
         width: 100%;
         z-index: $overflow-z-index;
@@ -556,14 +554,14 @@ $sq-margin: 20px;
         .heading + .body,
         h2 + h3,
         div.teaser-date + h2 {
-            margin-top: $default-margin-verysmall;
+            margin-top: var(--#{$prefix}spacer-sm);
         }
     }
     a:hover {
         text-decoration: none;
     }
 
-    @include media-breakpoint-my-down(sm) {
+    @include media-breakpoint-down(md) {
 
         &.text-below-on-xs:not(.revealed) {
             // reset tiles so that the overlay is below the image
@@ -601,7 +599,7 @@ $sq-margin: 20px;
     }
 
     &.min-height-px .text-overlay {
-        min-height: calc(#{2 * $square-overlay-h2-size * $square-overlay-line-height} + #{2 * $default-margin-small});
+        min-height: calc(#{2 * $square-overlay-h2-size * $square-overlay-line-height} + var(--#{$prefix}spacer));
     }
 
     @include media-breakpoint-up(md) {
@@ -613,7 +611,7 @@ $sq-margin: 20px;
 
         &.square-large {
             .text-overlay {
-                padding: $default-margin;
+                padding: var(--#{$prefix}spacer-xl);
                 h2 {
                     font-size: 2.0rem;
                 }
@@ -648,7 +646,7 @@ $sq-margin: 20px;
             }
             &.square-large {
                 .text-overlay {
-                    padding: $default-margin-small $default-margin;
+                    padding: var(--#{$prefix}spacer) var(--#{$prefix}spacer-xl);
                     min-height: 18.5%;
                 }
             }

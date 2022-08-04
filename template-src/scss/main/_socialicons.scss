@@ -51,7 +51,7 @@
 
     &.element {
         // social icons use display flex, so margin of items must be subtracted from element default margin
-        margin-bottom: $default-margin - $social-links-margin;
+        margin-bottom: calc(var(--#{$prefix}element-margin) - $social-links-margin);
     }
 
     li {
@@ -97,17 +97,15 @@
     .share_text {
         display: none;
         text-align: left;
-        padding-right: $default-margin-small;
-        font-size: $font-size-base;
+        padding-right: var(--#{$prefix}spacer);
+        font-size: var(--#{$prefix}body-font-size);
         font-family: var(--#{$prefix}btn-font-family);
-        @if ($btn-font-weight != $font-weight-base) {
-            font-weight: $btn-font-weight;
-        }
+        font-weight: $btn-font-weight;
     }
 
     .fa,
     .fas,
-    .fab, {
+    .fab {
         width: #{$social-links-box-height - 2*$social-links-border-width};
         line-height: #{$social-links-box-height - 2*$social-links-border-width};
         text-align: center;
@@ -225,9 +223,9 @@
 // Add class 'themed' to use the main theme color for the icons
 
 .social-icons.themed li a {
-    background-color: $main-theme;
+    background-color: var(--#{$prefix}main-theme);
     * {
-        color: get-text-color($main-theme);
+        color: var(--#{$prefix}main-theme-fg);
     }
 }
 

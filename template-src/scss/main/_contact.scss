@@ -35,22 +35,23 @@
     .note,
     .mail,
     .vcard {
-        margin-top: $contact-margins;
-        margin-bottom: $contact-margins;
+        margin-top: var(--#{$prefix}margin-sm);
+        margin-bottom: var(--#{$prefix}margin-sm);
     }
 
     .mail {
         // make sure emails are NOT changed with "-" when line break is inserted
+        hyphenate-character: " ";
         -webkit-hyphenate-character: " ";
     }
 
     > * > .image-src-box {
         // this will not add bottom margin if piece grid is used
-        margin-bottom: 2 * $contact-margins;
+        margin-bottom: var(--#{$prefix}margin);
     }
 
     .contactlink {
-        margin-top: $contact-margins;
+        margin-top: var(--#{$prefix}margin-sm);
     }
 
     &.compact {
@@ -96,7 +97,7 @@
         word-break: normal;
 
         > span {
-            padding-right: $default-margin-verysmall;
+            padding-right: var(--#{$prefix}spacer-sm);
             display: table-cell;
 
             &.icon-label {
@@ -114,12 +115,12 @@
     }
 
     .only-icon {
-        padding-left: $default-margin-verysmall;
+        padding-left: var(--#{$prefix}spacer-sm);
     }
 
     .fa {
-       margin-right: $default-margin-verysmall;
-       width: $default-margin;
+       margin-right: var(--#{$prefix}spacer-sm);
+       width: calc(2 * var(--#{$prefix}spacer));
     }
 
     .img-responsive {
@@ -129,7 +130,7 @@
     .note {
         > * {
             // add margins for all elements in text piece
-            margin-bottom: $piece-text-margin;
+            margin-bottom: var(--#{$prefix}margin);
             &:last-child {
                 // last element in text must not add margin
                 margin-bottom: 0;

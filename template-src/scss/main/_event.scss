@@ -22,26 +22,38 @@
 // Calendar sheet base
 
 .calendar-sheet {
+    --#{$prefix}cs-color: var(--#{$prefix}highlight-fg-color);
+    --#{$prefix}cs-bg-color: var(--#{$prefix}highlight-color);
+    --#{$prefix}cs-border-color: var(--#{$prefix}grey-light);
 
-    background: $calendar-sheet-bgcolor;
-    font-family: $font-family-headings;
+    --#{$prefix}cs-bar-height: #{$calendar-sheet-bar-height};
+    --#{$prefix}cs-bar-width: #{$calendar-sheet-bar-width};
+}
+
+.calendar-sheet-piece {
+    --#{$prefix}cs-width: #{$calendar-sheet-width};
+    --#{$prefix}cs-border-radius: var(--#{$prefix}border-radius);
+}
+
+.calendar-sheet {
+    background-color: var(--#{$prefix}cs-bg-color);
+    font-family: var(--#{$prefix}font-family-headings);
 
     > span {
-        color: get-text-color($calendar-sheet-bgcolor);
+        color: var(--#{$prefix}cs-color);
     }
 
     > .day-number {
         font-size: 24px;
         font-weight: $font-weight-bold;
-        color: $main-theme;
+        color: var(--#{$prefix}main-theme);
         line-height: 30px;
     }
 }
 
 @mixin calendar-sheet-base {
 
-    .calendar-sheet-piece,
-    .calendar-sheet-parent {
+    .calendar-sheet-piece {
         .image-src-box.presized {
             padding-bottom: 0 !important;
             height: auto;
@@ -49,19 +61,19 @@
     }
 
     .calendar-sheet {
-        border-bottom: 2px solid $calendar-sheet-barcolor;
+        border-bottom: 2px solid var(--#{$prefix}main-theme);
         display: inline-block;
         width: 100%;
         padding: 10px 0;
 
         .day-name {
-            margin-right: $grid-gutter-width-half;
+            margin-right: calc(0.5 * var(--#{$prefix}gutter-x));
             float: right;
         }
 
         .month-year,
         .day-number {
-            margin-left: $grid-gutter-width-half;
+            margin-left: calc(0.5 * var(--#{$prefix}gutter-x));
             float: left;
         }
 
@@ -75,7 +87,7 @@
 
 .area-wide {
 
-    @include media-breakpoint-my-down(breakpoint-prev($piece-desktop-breakpoint)) {
+    @include media-breakpoint-down($piece-desktop-breakpoint) {
 
         @include calendar-sheet-base();
     }
@@ -87,18 +99,18 @@
                 > .visual {
                     // .piece will add a padding of (0.5 * $grid-gutter-width) to the visual
                     // to get the wanted calendar sheet size we must add this
-                    min-width: #{$calendar-sheet-width + (0.5 * $grid-gutter-width)};
-                    max-width: #{$calendar-sheet-width + (0.5 * $grid-gutter-width)};
+                    min-width: calc(var(--#{$prefix}cs-width) + (0.5 * var(--#{$prefix}gutter-x)));
+                    max-width: calc(var(--#{$prefix}cs-width) + (0.5 * var(--#{$prefix}gutter-x)));
                 }
                 > .body {
-                    flex: 0 0 calc(100% - #{$calendar-sheet-width + (0.5 * $grid-gutter-width)});
-                    max-width: calc(100% - #{$calendar-sheet-width + (0.5 * $grid-gutter-width)});
+                    flex: 0 0 calc(100% - (var(--#{$prefix}cs-width) + (0.5 * var(--#{$prefix}gutter-x))));
+                    max-width: calc(100% - (var(--#{$prefix}cs-width) + (0.5 * var(--#{$prefix}gutter-x))));
                 }
             }
             &.float {
                 > .visual {
-                    min-width: $calendar-sheet-width;
-                    max-width: $calendar-sheet-width;
+                    min-width: var(--#{$prefix}cs-width);
+                    max-width: var(--#{$prefix}cs-width);
                 }
             }
         }
@@ -110,26 +122,22 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border:     1px solid $calendar-sheet-border;
-            @include round-corners($calendar-sheet-border-radius);
-            box-shadow: $panel-shadow;
+            border: 1px solid var(--#{$prefix}cs-border-color);
+            @include round-corners(var(--#{$prefix}cs-border-radius));
             text-align: center;
+            overflow: hidden;
 
             &::before {
                 display: block;
                 content: '';
                 position: absolute;
                 top: 0;
-                left: $calendar-sheet-margin;
-                height: $calendar-sheet-bar-height;
+                left: calc(0.5 * (100% - var(--#{$prefix}cs-bar-width)));
+                height: var(--#{$prefix}cs-bar-height);
                 border-bottom: none;
                 margin: 0;
-                background-color: $calendar-sheet-barcolor;
-                width: calc(100% - #{2 * $calendar-sheet-margin});
-                @if ($calendar-sheet-margin == 0) {
-                    border-top-left-radius: $calendar-sheet-border-radius;
-                    border-top-right-radius: $calendar-sheet-border-radius;
-                }
+                background-color: var(--#{$prefix}main-theme);
+                width: var(--#{$prefix}cs-bar-width);
             }
             & > span {
                 display: block;
@@ -157,26 +165,6 @@
     }
 }
 
-
-// Colored calendar sheets
-
-@each $type-name, $bg-color, $highlight-color in $calendar-sheet-colors {
-
-    .color-#{""+$type-name} {
-
-        .calendar-sheet {
-            &:before {
-                background-color: $bg-color;
-                border-color: $bg-color;
-            }
-
-            .day-number {
-                color: $bg-color;
-            }
-        }
-    }
-}
-
 // Event booking submissions
 
 table.submissions {
@@ -193,7 +181,7 @@ table.submissions {
     }
 
     td {
-        padding-bottom: $default-margin-verysmall;
+        padding-bottom: var(--#{$prefix}spacer-sm);
         vertical-align: top;
     }
 }
@@ -207,9 +195,9 @@ table.submissions {
     }
 
     .book-msg {
-        background-color: $calendar-sheet-bgcolor;
+        background-color: var(--#{$prefix}highlight-color);;
         font-weight: normal;
-        @include round-corners($default-border-radius);
+        @include round-corners(var(--#{$prefix}cs-border-radius));
 
         + .oct-meta-info {
             margin-left: 10px;
@@ -229,8 +217,8 @@ table.submissions {
 .teaser .book-info,
 .accordion .book-info {
 
-    font-size: round($font-size-base * 8) * 0.1 ;
-    line-height: round($line-height-base * 8) * 0.1;
+    font-size: 80%;
+    line-height: 1.2;
     margin: 8px 0;
 
     .oct-meta-info,
@@ -242,7 +230,7 @@ table.submissions {
 
 .accordion .book-info {
     .oct-meta-info {
-        margin-right: $default-margin-small;
+        margin-right: var(--#{$prefix}spacer-sm);
 
         &:last-of-type {
             margin-right: 0;

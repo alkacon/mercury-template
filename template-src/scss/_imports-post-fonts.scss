@@ -26,8 +26,6 @@
  * https://github.com/twbs/bootstrap/blob/master/LICENSE
  */
 
-@import 'main/root';
-
 // import customized bootstrap
 @import 'imports-bootstrap';
 
@@ -69,5 +67,6 @@
 // these imports must come late because CSS rules rely on being higher order
 @import 'main/lists';
 @import 'main/generics';
+@import 'main/root';
 @import 'main/jsondata';
 

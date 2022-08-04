@@ -41,9 +41,12 @@
 }
 
 .btn-default  {
-    @include button-color($btn-default, $btn-default-hover);
+    @include button-color();
 }
 
+.btn-colored {
+    @include button-color-simple(false);
+}
 
 // Block button
 
@@ -83,27 +86,3 @@
     }
 }
 
-
-// Colored buttons
-
-@each $color-name, $bg-color, $highlight-color in $btn-colors {
-
-    .color-#{""+$color-name} .btn,
-    .btn.color-#{""+$color-name}  {
-        @include button-color($bg-color, $highlight-color);
-    }
-
-    .color-#{""+$color-name} .dropdown-menu > .active {
-        > a,
-        > a:focus,
-        > a:hover {
-            color: get-text-color($bg-color);
-            background-color: $bg-color;
-        }
-    }
-}
-
-
-.btn-colored {
-    @include button-color-simple($btn-default, $btn-default-hover, false);
-}

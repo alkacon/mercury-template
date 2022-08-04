@@ -191,7 +191,7 @@
         // sticky header is not enabled for mobile devices (this is the default)
         .co-sm-md {
             // container only for screen size SM And MD
-            @include media-breakpoint-between(sm, md) {
+            @include media-breakpoint-between(sm, lg) {
                 @include make-container(0);
                 max-width: map-get($container-max-widths, sm);
             }
@@ -209,11 +209,14 @@
             @include media-breakpoint-up(xl) {
                 max-width: map-get($container-max-widths, xl);
             }
+            @include media-breakpoint-up(xxl) {
+                max-width: map-get($container-max-widths, xxl);
+            }
         }
     } @else {
         .co-lg-xl {
             // sticky header is enabled for all devices (also mobile)
-            @include media-breakpoint-between(sm, md) {
+            @include media-breakpoint-between(sm, lg) {
                 @include make-container(0);
                 max-width: map-get($container-max-widths, sm);
             }
@@ -227,6 +230,9 @@
             @include media-breakpoint-up(xl) {
                 max-width: map-get($container-max-widths, xl);
             }
+            @include media-breakpoint-up(xxl) {
+                max-width: map-get($container-max-widths, xxl);
+            }
         }
     }
 
@@ -238,8 +244,8 @@
 
         .h-logo {
             width: 100%;
-            padding-top: $default-margin-verysmall;
-            padding-bottom: $default-margin-verysmall;
+            padding-top: var(--#{$prefix}spacer-sm);
+            padding-bottom: var(--#{$prefix}spacer-sm);
             padding-right: $fh-grid-gutter-width-half;
             padding-left: $fh-grid-gutter-width-half;
         }
@@ -298,7 +304,7 @@
             }
         }
 
-        @include media-breakpoint-my-down(md) {
+        @include media-breakpoint-down(lg) {
             @include hide-mega-menu-content;
 
             &.title-mobile {
@@ -322,7 +328,7 @@
 
                 %format-title {
                     @include use-hyphens-headings(true);
-                    @include heading-base(false);
+                    @include heading-base;
                     line-height: 1.2;
                     font-size: $bh-title-font-size-mobile;
                     text-align: left;
@@ -481,9 +487,9 @@
                 flex-direction: column;
                 flex-basis: auto;
                 flex-grow: 1000;
-                @include heading-base(false);
-                padding-top: $default-margin-verysmall;
-                padding-bottom: $default-margin-verysmall;
+                @include heading-base;
+                padding-top: var(--#{$prefix}spacer-sm);
+                padding-bottom: var(--#{$prefix}spacer-sm);
                 color: $fh-title-color;
                 @if ($fh-title-bg-color != none) {
                     background-color: $fh-title-bg-color;
@@ -512,7 +518,7 @@
                 &.nav-aside {
                     // add padding above nav if title sits directly over it
                     .h-nav {
-                        padding-top: $default-margin-verysmall;
+                        padding-top: var(--#{$prefix}spacer-sm);
                     }
                 }
             }
@@ -726,7 +732,7 @@
                     order: 2;
                     @if ($fh-ac-bg-color == none) {
                         // add top margin only if no bg color is set, colored bg and top margin looks crappy
-                        margin-top: $default-margin-verysmall;
+                        margin-top: var(--#{$prefix}spacer-sm);
                     }
                 }
 
@@ -769,8 +775,8 @@
                 .h-bc {
                     background-color: $nav-breadcrumb-bg-color;
                     .nav-breadcrumbs {
-                        padding-top: $default-margin-small;
-                        padding-bottom: $default-margin-small;
+                        padding-top: var(--#{$prefix}spacer);
+                        padding-bottom: var(--#{$prefix}spacer);
                     }
                 }
             }
@@ -1588,7 +1594,7 @@
         // hide content elements in mega menu (mega menu may be from a site using a different header type)
         @include hide-mega-menu-content;
 
-        @include media-breakpoint-my-down(xs) {
+        @include media-breakpoint-down(sm) {
             // reduce nav menu padding on very small screens
 
             .nav-menu-header {
@@ -1878,8 +1884,8 @@
             }
 
             .col-head-logo {
-                padding-top: $default-margin-verysmall;
-                padding-bottom: $default-margin-verysmall;
+                padding-top: var(--#{$prefix}spacer-sm);
+                padding-bottom: var(--#{$prefix}spacer-sm);
 
                 @include make-col(9);
                 max-width: $header-logo-xs-width;
@@ -1897,7 +1903,7 @@
                 background-color: $header-image-ribbon-bg;
             }
 
-            @include media-breakpoint-my-down(md) {
+            @include media-breakpoint-down(lg) {
                 @include hide-mega-menu-content;
             }
 
@@ -1951,16 +1957,16 @@
                 }
 
                 .col-head-info {
-                    padding-top: $default-margin-verysmall;
+                    padding-top: var(--#{$prefix}spacer-sm);
                     padding-left: 0; // remove bootstrap gutter here to extend space available for menu items
                     display: flex;
                     flex-direction: column;
                 }
 
                 .header-title {
-                    @include heading-base(false);
-                    padding-top: $default-margin-verysmall;
-                    padding-bottom: $default-margin-verysmall;
+                    @include heading-base;
+                    padding-top: var(--#{$prefix}spacer-sm);
+                    padding-bottom: var(--#{$prefix}spacer-sm);
                     flex-basis: auto;
                     flex-grow: 10;
                     justify-content: center;
@@ -2034,7 +2040,7 @@ html.opencms-group-editor {
             }
         }
 
-        @include media-breakpoint-my-down(md) {
+        @include media-breakpoint-down(lg) {
 
             .area-header {
                 .hidden-xs,

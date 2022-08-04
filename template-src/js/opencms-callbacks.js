@@ -48,15 +48,15 @@ export function _OpenCmsInit(jQuery, DEBUG) {
     })
 
     // tabs
-    jQuery('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+    jQuery('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
 
-        if (DEBUG) console.info('Event handler a[data-toggle=tab](shown.bs.tab) triggered!');
+        if (DEBUG) console.info('Event handler a[data-bs-toggle=tab](shown.bs.tab) triggered!');
         _OpenCmsReinitEditButtons(DEBUG);
     })
 
-    jQuery('a[data-toggle="tab"]').on('hidden.bs.tab', function(e) {
+    jQuery('a[data-bs-toggle="tab"]').on('hidden.bs.tab', function(e) {
 
-        if (DEBUG) console.info('Event handler a[data-toggle=tab](hidden.bs.tab) triggered!');
+        if (DEBUG) console.info('Event handler a[data-bs-toggle=tab](hidden.bs.tab) triggered!');
         _OpenCmsReinitEditButtons(DEBUG);
     })
 }

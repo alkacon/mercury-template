@@ -41,7 +41,7 @@ $font-size-headings:            2.2rem !default;
 $font-style-headings:           normal !default;
 
 $line-height-base:              1.4 !default;
-$line-height-headings:          1.25 !default;
+$headings-line-height:          1.25 !default;
 $text-dark:                     #555 !default;
 $headings-color:                #222 !default;
 $headings-margin-bottom:        1.5rem !default;
@@ -70,8 +70,6 @@ $btn-default-hover:             $main-theme !default;
 
 // Import the other files
 @import './demo-defaults';
-
-$teaser-btn-color:              $grey-light !default;
 
 $nav-header-show-arrows:        true !default;
 $nav-mobile-show-box:           true !default;

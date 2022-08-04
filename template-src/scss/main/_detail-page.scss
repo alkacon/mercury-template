@@ -21,7 +21,7 @@
 
 .detail-page {
 
-    margin-bottom: $default-margin;
+    margin-bottom: var(--#{$prefix}element-margin);
 
     // visual image overlay as used on detail pages
     .piece > .visual .overlay { // strong selector needed to override .piece defaults
@@ -53,12 +53,12 @@
 
             > div + div,
             .infogroup > div + div {
-                margin-top: $default-margin-small;
+                margin-top: var(--#{$prefix}margin);
             }
 
             .location {
                 .locname {
-                    margin-bottom: $default-margin-verysmall;
+                    margin-bottom: var(--#{$prefix}margin-sm);
                 }
                 .adressInfo {
                     margin-bottom: 0;
@@ -68,7 +68,7 @@
                 }
                 .locname + .address,
                 .address + .adressInfo {
-                    margin-top: $default-margin-small;
+                    margin-top: var(--#{$prefix}margin);
                 }
             }
 
@@ -78,7 +78,7 @@
                     display: inline-block;
                     width: 2.5rem;
                     font-family: ForkAwesome;
-                    padding-right: $default-margin-small;
+                    padding-right: var(--#{$prefix}spacer);
                 }
                 > div {
                     display: inline-block;
@@ -116,7 +116,7 @@
 
     .sub-header {
         @extend .h4;
-        margin-bottom: $headings-margin-bottom;
+        margin-bottom: var(--#{$prefix}headings-margin-bottom);
     }
 
     &.layout-0 {
@@ -133,26 +133,28 @@
         .detail-visual.piece.phv.phh {
             // add larger margin below visual if heading is available
             > .visual {
-                margin-bottom: $headings-margin-bottom;
+                margin-bottom: var(--#{$prefix}headings-margin-bottom);
             }
         }
     }
 
     .detail-visual {
-        + .detail-content,
+        // .detail-visual has no bottom margin, add top margin to first detail-content or attachment container
+        + .detail-content {
+            margin-top: var(--#{$prefix}margin-xl);
+        }
         + .attachment-container {
-            // .detail-visual has no bottom margin, add top margin to first detail-content or attachment container
-            margin-top: $detail-piece-margin-bottom;
+            margin-top: var(--#{$prefix}element-margin);
         }
     }
 
     .detail-content {
 
         @include clearfix;
-        @include piece-bottom-margin($detail-piece-margin-bottom);
+        @include piece-bottom-margin(var(--#{$prefix}margin-xl));
 
         + div {
-            margin-top: $default-margin;
+            margin-top: var(--#{$prefix}element-margin);
         }
         + div.attachment-container:empty {
             display: none;
@@ -200,7 +202,7 @@
                 }
                 > .intro {
                     font-size: $h3-font-size;
-                    margin-bottom: $default-margin-verysmall;
+                    margin-bottom: var(--#{$prefix}margin-sm);
                 }
                 > .headline {
                     font-size: $h1-font-size * 1.5;

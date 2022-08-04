@@ -21,7 +21,7 @@
 
 $pswp-title-size:           1.8rem !default;
 $pswp-copyright-size:       1.1rem !default;
-$pswp-title-height:         $line-height-headings !default;
+$pswp-title-height:         $headings-line-height !default;
 
 $pswp__root-z-index:        $above-oc-toolbar !default;
 $pswp__assets-path:         '../photoswipe/default-skin/' !default;
@@ -30,10 +30,8 @@ $pswp__assets-path:         '../photoswipe/default-skin/' !default;
 @import '../../plugins/photoswipe/main';
 @import '../../plugins/photoswipe/default-skin/default-skin';
 
-$imageseries-border-radius: ($image-border-radius) * 2 !default;
-
 // Note: This value must be available in _tiles.scss $sq-margins.
-// This value is currently also hardcoded in the imageseries formatter JSP as css class.
+// This value is currently also hardcoded as "square-m-2" in the imageseries formatter JSP as css class.
 $imageseries-square-margin: 2px !default;
 
 // Image series base classes
@@ -71,7 +69,7 @@ $imageseries-square-margin: 2px !default;
     }
 
     > .detail-visual + .series {
-        margin-top: $default-margin;
+        margin-top: var(--#{$prefix}element-margin);
     }
 
     .effect-box {
@@ -85,7 +83,7 @@ $imageseries-square-margin: 2px !default;
     .square-col {
         .content {
             // must always set this because this may reset tile rounding
-            @include round-corners($image-border-radius);
+            @include round-corners(var(--#{$prefix}border-radius));
         }
         .copyright {
             @include image-copyright;
@@ -108,8 +106,8 @@ html.noscript .type-imageseries .series {
 
     .title {
         color: #eee;
-        font-family: $font-family-headings;
-        font-weight: $font-weight-headings;
+        font-family: var(--#{$prefix}font-family-headings);
+        font-weight: var(--#{$prefix}font-weight-headings);
         font-size: $pswp-title-size;
         line-height: $pswp-title-height;
         text-shadow: 1px 1px 1px #000;
@@ -122,10 +120,8 @@ html.noscript .type-imageseries .series {
         text-shadow: 1px 1px 1px #000;
     }
 
-    @if ($imageseries-border-radius != 0) {
-        img {
-            @include round-corners($imageseries-border-radius);
-        }
+    img {
+        @include round-corners(calc(2 * var(--#{$prefix}border-radius)));
     }
 
     .pswp__top-bar {
@@ -247,23 +243,12 @@ a .effect-box .zoomer {
     }
 }
 
-@if ($image-border-radius != 0) {
-    .zoom-overlay .zoom-icon,
-    .zoom-overlay .image-src-box > img,
-    .image-src-box {
-         border-radius: $image-border-radius;
-    }
+.zoom-overlay .zoom-icon,
+.zoom-overlay .image-src-box > img,
+.image-src-box {
+    border-radius: var(--#{$prefix}border-radius);
+}
 
-    .image-src-box {
-        overflow: hidden;
-    }
-
-    // special reset for images in sections
-    .bo-radius-0 {
-        .zoom-overlay .zoom-icon,
-        .zoom-overlay .image-src-box > img,
-        .image-src-box {
-             border-radius: 0;
-        }
-    }
+.image-src-box {
+    overflow: hidden;
 }

@@ -44,6 +44,47 @@
     }
 }
 
+// colored layout areas
+.colored-row {
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--#{$prefix}element-margin);
+
+    &.bg-highlight {
+        background-color: var(--#{$prefix}highlight-color);
+    }
+    &.bg-switch:nth-of-type(even) {
+        background-color: var(--#{$prefix}highlight-color);
+    }
+    &.bg-theme {
+        background-color: var(--#{$prefix}main-theme);
+    }
+    &.bg-grey-light {
+        background-color: var(--#{$prefix}grey-light);
+    }
+    &.bg-grey {
+        background-color: var(--#{$prefix}grey);
+    }
+}
+
+.area-content.colored-row + .area-content:not(.colored-row) {
+    margin-top: var(--#{$prefix}element-margin);
+}
+
+// remove rounded corners in wide area images
+.area-header.ac-full-size .h-ac,
+.area-wide.area-full-row {
+
+    .type-slider .slider-box,
+    .type-slider .slide-wrapper,
+    .type-slider .image-src-box,
+    .piece.full .image-src-box,
+    .element.tile-col .image-src-box,
+    .element.tile-col  .content-box {
+        border-radius: 0;
+    }
+}
+
 // left/right margins for tile rows
 @each $space in $list-tile-spacers {
 
@@ -66,7 +107,7 @@
             } @else if ($space > 0) {
                 // on mobile devices very small bottom spacing looks wrong,
                 // therefore we adjust depending on the configured tile margin
-                margin-bottom: $default-margin-small;
+                margin-bottom: var(--#{$prefix}spacer);
                 @include media-breakpoint-up(md) {
                     margin-bottom: #{2 * $space}px;
                 }
@@ -85,43 +126,3 @@
 }
 
 
-// colored layout areas
-.colored-row {
-    display: flex;
-    flex-direction: column;
-    padding-top: $default-margin;
-
-    &.bg-highlight {
-        background-color: $highlight-color;
-    }
-    &.bg-switch:nth-of-type(even) {
-        background-color: $highlight-color;
-    }
-    &.bg-theme {
-        background-color: $main-theme;
-    }
-    &.bg-grey-light {
-        background-color: $grey-light;
-    }
-    &.bg-grey {
-        background-color: $grey;
-    }
-}
-
-.area-content.colored-row + .area-content:not(.colored-row) {
-    margin-top: $default-margin;
-}
-
-// remove rounded corners in wide area images
-.area-header.ac-full-size .h-ac,
-.area-wide.area-full-row {
-
-    .type-slider .slider-box,
-    .type-slider .slide-wrapper,
-    .type-slider .image-src-box,
-    .piece.full .image-src-box,
-    .element.tile-col .image-src-box,
-    .element.tile-col  .content-box, {
-        border-radius: 0;
-    }
-}

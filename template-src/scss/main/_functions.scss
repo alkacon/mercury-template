@@ -49,7 +49,7 @@
 
 // Calculates the best color for text based on the background.
 // This should be used if the text color is NOT configurable by a variable, but the background color is.
-@function get-text-color($bg-color, $text-color: $text-dark, $dark-color: $text-dark, $light-color: $text-light) {
+@function get-text-color($bg-color, $dark-color: $text-dark, $light-color: $text-light) {
     @if (($bg-color == transparent) or ($bg-color == none)) {
         // if no background color is set, just use the body text color
         @return $body-color;
@@ -72,8 +72,8 @@
 // to ensure that the text color is visible on the background.
 @function check-text-color($bg-color, $text-color: $body-color, $default-bg-color: $body-bg, $contrast-threshold: $text-contrast-threshold, $dark-color: $text-dark, $light-color: $text-light) {
     @if (($bg-color == transparent) or ($bg-color == none)) {
-        // if no background color is set, assume background $default-bg-color
-        @return get-text-color($default-bg-color, $text-color, $dark-color, $light-color);
+        // if no background color is set, just use the body text color
+        @return $body-color;
     } @else {
         // check the contrast of the background and the text
         $contrast: contrast($bg-color, $text-color);
@@ -82,18 +82,18 @@
             @return $text-color;
         }
         // contrast not ok, return a matching text color
-        @return get-text-color($bg-color, $text-color, $dark-color, $light-color); // not enough difference in contrast, use default
+        @return get-text-color($bg-color, $dark-color, $light-color); // not enough difference in contrast, use default
     }
 }
 
 // Calculates an accent color for the given base color
 // In case the base color is  dark, a lighter color is returned, otherwise a darker color
 @function get-accent-color($color, $percentage: 25%) {
-    $highlight-color: lighten($color, $percentage);
-    @if (lightness($highlight-color) > 95) {
-        $highlight-color: darken($color, $percentage);
+    $accent-color: lighten($color, $percentage);
+    @if (lightness($accent-color) > 95) {
+        $accent-color: darken($color, $percentage);
     }
-    @return $highlight-color;
+    @return $accent-color;
 }
 
 // Appends a string to a JSON fragment
@@ -104,7 +104,7 @@
 // Generates a JSON from a color array
 @function get-json($color-array) {
     $json: '';
-    @each $color-name, $color-val, $highlight-color in $color-array {
+    @each $color-name, $color-val, $hl-color in $color-array {
         $json: $json + '{' +
             '"name": "' + $color-name + '",' +
             '"value": "' + $color-val + '"' +
@@ -114,11 +114,15 @@
 }
 
 // Returns the usable width of a container
-@function container-useable-width($size) {
+@function container-useable-width($size, $calc: false) {
     @if ($size == "xs") {
         @return 100%;
     } @else {
-        @return map-get($container-max-widths, $size) - $grid-gutter-width;
+        @if ($calc) {
+            @return calc(#{map-get($container-max-widths, $size)} - var(--#{$prefix}gutter-x));
+        } @else {
+            @return map-get($container-max-widths, $size) - $grid-gutter-width;
+        }
     }
 }
 

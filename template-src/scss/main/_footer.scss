@@ -21,7 +21,7 @@
 
 .area-foot {
 
-    @include media-breakpoint-my-down(sm) {
+    @include media-breakpoint-down(md) {
         // Fix for Lighthouse "Tap targets are not sized appropriately"
         // Increase line height in footer so that links are wider apart
         line-height: $foot-line-height-mobile;
@@ -29,7 +29,7 @@
 
     .topfoot {
         display: flex;
-        padding-top: $default-margin;
+        padding-top: var(--#{$prefix}element-margin);
         background-color: $foot-top-bg-color;
         color: $foot-top-text-color;
 
@@ -48,7 +48,7 @@
     }
     .subfoot {
         display: flex;
-        padding-top: $default-margin;
+        padding-top: var(--#{$prefix}element-margin);
         background-color: $foot-sub-bg-color;
         color: $foot-sub-text-color;
 
@@ -72,8 +72,8 @@
 @if ($nav-mobile-topcontrol-default) {
 
     #topcontrol {
-        color: $nav-toggle-text;
-        background: $nav-toggle-bg;
+        color: var(--#{$prefix}nav-toggle-fg);
+        background: var(--#{$prefix}nav-toggle-bg);
         z-index: #{$above-oc-z-index + 150}; // the back to top icon should be above the edit points and the privacy policy banner
         width: $nav-toggle-size;
         height: $nav-toggle-size;
@@ -90,12 +90,12 @@
 
         @if ($nav-mobile-position == right) {
             right: $nav-mobile-toggle-side;
-            @if ($nav-breakpoint-mobile != xl) {
+            @if ($nav-breakpoint-mobile != xxl) {
                 @include media-breakpoint-up($nav-breakpoint-desktop) {
                     right: $grid-gutter-width-half;
                 }
                 @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
-                    @include media-breakpoint-my-down(sm) {
+                    @include media-breakpoint-down(md) {
                         right: $nav-mobile-toggle-side-xs;
                     }
                 }
@@ -110,11 +110,6 @@
             opacity: 1;
         }
 
-        &:hover {
-            @include color-transition;
-            background-color: $nav-toggle-bg-hover;
-        }
-
         &::after {
             width: $nav-toggle-size;
             line-height: floor($nav-toggle-size * 0.95); // fa-angle-up symbol has too much white space on top
@@ -124,7 +119,7 @@
             font-family: ForkAwesome;
         }
 
-        @include media-breakpoint-my-down(sm) {
+        @include media-breakpoint-down(md) {
             width: round($nav-toggle-size-xs);
             height: round($nav-toggle-size-xs);
 

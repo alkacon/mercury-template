@@ -27,6 +27,9 @@
 
 .type-slider {
 
+    --#{$prefix}slider-slide-border-radius: #{$slider-slide-border-radius};
+    --#{$prefix}slider-caption-border-radius: #{$slider-caption-border-radius};
+
     // add fade in/out effects to text in slider
     // this must not be active in general because for just on slide there is no effect required
 
@@ -101,7 +104,7 @@
             }
         }
 
-        @include media-breakpoint-my-down(sm) {
+        @include media-breakpoint-down(md) {
             &.text-below-on-xs {
                 // adjust slick slider controls for small screen sizes
 
@@ -153,12 +156,12 @@
         // must set round corner here in case a custom bg color for caption has been set
         // JSP does this as inline style attribute
         // can not hide overflow because of dot buttons in XS view
-        @include round-corners($slider-slide-border-radius, false);
+        @include round-corners(var(--#{$prefix}slider-slide-border-radius), false);
     }
 
     .slide-wrapper {
         position: relative;
-        @include round-corners($slider-slide-border-radius, true);
+        @include round-corners(var(--#{$prefix}slider-slide-border-radius), true);
 
         .visual {
             position: relative;
@@ -189,13 +192,13 @@
         .caption {
             padding: $slider-caption-padding;
             position: absolute;
-            max-width: calc(100% - #{$default-margin * 3});
-            background-color: $main-theme;
-            @include round-corners($slider-caption-border-radius, true);
+            max-width: calc(100% - (6 * var(--#{$prefix}spacer)));
+            background-color: var(--#{$prefix}main-theme);
+            @include round-corners(var(--#{$prefix}slider-caption-border-radius), true);
 
             &.background {
                 opacity: 0.75;
-                background-color: $main-theme;
+                background-color: var(--#{$prefix}main-theme);
                 // background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
             }
 
@@ -204,10 +207,10 @@
             }
 
             &.bottom {
-                bottom: $default-margin;
+                bottom: var(--#{$prefix}spacer-xl);
             }
             &.top {
-                top: $default-margin;
+                top: var(--#{$prefix}spacer-xl);
             }
             &.middle {
                 top: 50%;
@@ -215,10 +218,10 @@
             }
 
             &.left {
-                left: $default-margin;
+                left: var(--#{$prefix}spacer-xl);
             }
             &.right {
-                right: $default-margin;
+                right: var(--#{$prefix}spacer-xl);
                 text-align: right;
             }
             &.center {
@@ -242,10 +245,10 @@
             small {
                 display: block;
                 margin: 0;
-                padding: 0 $default-margin-small;
+                padding: 0 var(--#{$prefix}spacer);
                 color: transparent;
-                font-family: $font-family-headings;
-                font-weight: $font-weight-headings;
+                font-family: var(--#{$prefix}font-family-headings);
+                font-weight: var(--#{$prefix}font-weight-headings);
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
             }
@@ -253,18 +256,18 @@
             &.foreground {
                 strong,
                 small {
-                    color: get-text-color($main-theme);
+                    color: var(--#{$prefix}main-theme-fg);
                     text-shadow: $slider-text-shadow;
                 }
             }
 
             strong {
                 font-size: $h4-font-size;
-                line-height: $line-height-headings;
+                line-height: $headings-line-height;
             }
 
             strong + .subcaption small {
-                margin-top: $default-margin-verysmall;
+                margin-top: var(--#{$prefix}spacer-sm);
             }
 
             small {
@@ -288,7 +291,7 @@
                 }
                 small {
                     font-size: $h3-font-size;
-                    line-height: $line-height-headings;
+                    line-height: $headings-line-height;
                 }
             }
         }
@@ -320,18 +323,17 @@
             &.background {
                 strong,
                 small {
-                    background-color: $main-theme;
-                    // background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
+                    background-color: var(--#{$prefix}main-theme);
                 }
             }
             strong {
-                padding-top: $default-margin-verysmall;
-                padding-bottom: $default-margin-verysmall;
+                padding-top: var(--#{$prefix}spacer-sm);
+                padding-bottom: var(--#{$prefix}spacer-sm);
             }
             small {
                 padding-top: 2px;
                 padding-bottom: 2px;
-                margin-top: $default-margin-verysmall;
+                margin-top: var(--#{$prefix}spacer-sm);
                 &:nth-of-type(2) {
                     margin-top: 0;
                 }
@@ -343,7 +345,7 @@
                 }
                 strong,
                 small {
-                    @include round-corners($slider-caption-border-radius, false);
+                    @include round-corners(var(--#{$prefix}slider-caption-border-radius), false);
                 }
             }
         }
@@ -353,7 +355,7 @@
         }
     }
 
-    @include media-breakpoint-my-down(sm) {
+    @include media-breakpoint-down(md) {
         &.text-below-on-xs {
 
             .slide-wrapper,
@@ -363,7 +365,7 @@
             }
 
             .slider-box {
-                background-color: $main-theme;
+                background-color: var(--#{$prefix}main-theme);
             }
 
             .slide-wrapper {
@@ -373,7 +375,7 @@
                     position: static;
                     max-width: initial;
                     min-height: calc(#{ceil($h2-font-size * 2)} + 10px);
-                    background-color: $main-theme;
+                    background-color: var(--#{$prefix}main-theme);
                     opacity: 1 !important;
                     text-align: initial !important;
                     white-space: initial !important;
@@ -385,15 +387,15 @@
                     &.foreground {
                         strong,
                         small {
-                            color: get-text-color($main-theme);
+                            color: var(--#{$prefix}main-theme-fg);
                             text-shadow: $slider-text-shadow;
                         }
                     }
                 }
                 strong {
                     font-size: $h2-font-size;
-                    line-height: $line-height-headings;
-                    font-weight: $font-weight-headings;
+                    line-height: $headings-line-height;
+                    font-weight: var(--#{$prefix}font-weight-headings);
                 }
                 small {
                     display: inline;
@@ -411,7 +413,7 @@
                         background-color: transparent;
                         strong {
                             display: block;
-                            padding: $default-margin-verysmall $default-margin-small;
+                            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
                         }
                         strong, small {
                             float: none;
@@ -425,7 +427,7 @@
                 }
                 .subcaption {
                     display: block;
-                    padding: $default-margin-verysmall $default-margin-small;
+                    padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
                 }
             }
         }

@@ -22,11 +22,11 @@
 .type-map {
 
     .mapbuttons {
-        margin-top: $default-margin-small;
+        margin-top: var(--#{$prefix}spacers);
 
         .btn {
-            margin-top: $default-margin-verysmall;
-            margin-right: $default-margin-verysmall;
+            margin-top: var(--#{$prefix}spacer-sm);
+            margin-right: var(--#{$prefix}spacer-sm);
         }
     }
 
@@ -67,15 +67,15 @@
     }
 
     .map-marker {
-        color: $map-text-color;
+        color: var(--#{$prefix}body-color);
         font-size: $map-text-size;
         font-weight: $map-text-weight;
 
         .markhead {
-            font-family: $font-family-headings;
+            font-family: var(--#{$prefix}font-family-headings);
             font-size: $map-header-size;
             font-weight: $map-header-weight;
-            margin-bottom: $default-margin-verysmall;
+            margin-bottom: var(--#{$prefix}margin-sm);
         }
 
         .marktxt {
@@ -100,7 +100,7 @@
 
 .map-osm {
     .mapboxgl-map {
-        color: $map-text-color;
+        color: var(--#{$prefix}body-color);
         font-family: var(--#{$prefix}body-font-family);
         font-weight: var(--#{$prefix}body-font-weight);
         font-size: 1.0rem;
@@ -121,7 +121,7 @@
         &:hover {
             background-color: $white;
             opacity: 0.8;
-            color: $main-theme;
+            color: var(--#{$prefix}main-theme)
         }
     }
 

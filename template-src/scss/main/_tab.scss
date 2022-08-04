@@ -19,9 +19,27 @@
  * Source file: _tab.scss
  */
 
+.variant-tabs,
+.accordion {
+    --#{$prefix}ac-header-base: var(--#{$prefix}highlight-fg-color);
+    --#{$prefix}ac-header-base-bg: var(--#{$prefix}highlight-color);
+    --#{$prefix}ac-header-theme: var(--#{$prefix}main-theme-fg);
+    --#{$prefix}ac-header-theme-bg: var(--#{$prefix}main-theme);
+    --#{$prefix}ac-header-hover: var(--#{$prefix}main-theme-hover-fg);
+    --#{$prefix}ac-header-hover-bg: var(--#{$prefix}main-theme-hover);
+
+    --#{$prefix}ac-border-radius: #{$accordion-border-radius};
+    --#{$prefix}ac-body-padding: #{$accordion-body-padding};
+    --#{$prefix}ac-margin-bottom: #{$accordion-margin-bottom};
+
+    --#{$prefix}ac-border-color: var(--#{$prefix}grey-light);
+    --#{$prefix}ac-border: 1px solid var(--#{$prefix}ac-border-color);
+}
+
 // Tabs
+
 .tab-content {
-    padding: $default-margin-small 0;
+    padding: var(--#{$prefix}box-padding-sm) 0;
 
     > .tab-pane {
         display: none;
@@ -32,7 +50,6 @@
 }
 
 .tab-list {
-
     list-style: none;
     padding: 0;
     margin: 0;
@@ -44,35 +61,41 @@
     }
 
     > li {
-        margin-bottom: $accordion-margin;
+        margin-bottom: var(--#{$prefix}ac-margin-bottom);
         position: relative;
 
         > .tab-toggle {
-            border: 1px solid $accordion-border-color;
             font-size: $accordion-header-font-size;
             line-height: $accordion-header-line-height;
-            background: $accordion-header-bg;
             text-transform: $accordion-text-transform;
             // note: for small screens, tabs are formatted like accordions, hence use these variables here
             display: block;
             position: relative;
             text-align: inherit;
-            font-family: $font-family-headings;
-            font-weight: $font-weight-headings;
-            color: $accordion-header-color;
+            font-family: var(--#{$prefix}font-family-headings);
+            font-weight: var(--#{$prefix}font-weight-headings);
             margin: 0;
-            padding: $default-margin-verysmall $default-margin-small;
+            width: 100%;
+
+            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+            border: var(--#{$prefix}ac-border);
+
             @include use-hyphens-headings;
-            @include round-corners($tab-border-radius);
+            @include round-corners(var(--#{$prefix}ac-border-radius), true);
+
+            color: var(--#{$prefix}ac-header-base);
+            background-color: var(--#{$prefix}ac-header-base-bg);
 
             &.active {
-                color: get-text-color($main-theme);
-                background: $main-theme;
+                color: var(--#{$prefix}ac-header-theme);
+                background-color: var(--#{$prefix}ac-header-theme-bg);
+                border-color: var(--#{$prefix}ac-header-theme-bg);
             }
 
             &:hover {
-                color: get-text-color($tab-header-bg-hover);
-                background: $tab-header-bg-hover;
+                color: var(--#{$prefix}ac-header-hover);
+                background-color: var(--#{$prefix}ac-header-hover-bg);
+                border-color: var(--#{$prefix}ac-header-hover-bg);
                 text-decoration: none;
             }
         }
@@ -84,23 +107,27 @@
         &:hover {
             > .tab-hash {
                 position: absolute;
-                right: $default-margin-verysmall;
-                top: $default-margin-verysmall;
+                right: calc(0.25 * var(--#{$prefix}spacer));
+                top: var(--#{$prefix}spacer-sm);
                 display: block;
+                z-index: $overflow-z-index;
             }
         }
     }
 }
 
+.acco-body > div > .row-12,
+.acco-body > div > .row,
 .tab-pane > div > .row-12,
 .tab-pane > div > .row {
     // tabs that have a nested container row first:
     // remove bottom margin that was added by the elements on a page from last row in nested tabs
     // using a negative margin
     &:last-child {
-         margin-bottom: -1 * $default-margin;
+         margin-bottom: calc(-1 * var(--#{$prefix}element-margin));
     }
 }
+.acco-body > div > .element,
 .tab-pane > div > .element {
     // tabs that directly contain elements:
     // remove bottom margin from the last element in the tab
@@ -112,22 +139,22 @@
 @include media-breakpoint-up(lg) {
 
     .tab-list {
-        border-bottom: solid 2px $main-theme;
+        border-bottom: solid 2px var(--#{$prefix}main-theme);
 
         > li {
             float: left;
             margin-bottom: 0;
 
             > .tab-toggle {
+                width: auto;
                 text-transform: $tab-text-transform;
                 font-size: $tab-header-font-size;
                 line-height: $tab-header-line-height;
-                background: transparent;
+                color: var(--#{$prefix}body-color);
+                background-color: transparent;
                 border: none;
-                @if ($tab-border-radius > 0) {
-                    border-bottom-left-radius: 0;
-                    border-bottom-right-radius: 0;
-                }
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
             }
         }
     }
@@ -137,17 +164,16 @@
 // Accordion panels
 
 .accordion {
-
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
-    margin-bottom: $accordion-margin;
+    margin-bottom: var(--#{$prefix}ac-margin-bottom);
     box-shadow: $accordion-panel-shadow;
-    border: $accordion-border;
-    @include round-corners($accordion-border-radius, false);
+    border: var(--#{$prefix}ac-border);
+    @include round-corners(var(--#{$prefix}ac-border-radius), true);
 
     &:last-of-type {
         margin-bottom: 0;
@@ -157,7 +183,7 @@
         margin: 0;
         font-size: $accordion-header-font-size;
         @if ($accordion-header-font-size-md != $accordion-header-font-size) {
-            @include media-breakpoint-my-down(md) {
+            @include media-breakpoint-down(lg) {
                 font-size: $accordion-header-font-size-md;
             }
         }
@@ -172,16 +198,14 @@
             width: 100%;
             text-align: inherit;
             display: block;
-            padding: $accordion-header-padding;
-            color: $accordion-header-color;
-            @if ($accordion-header-bg != transparent) {
-                background: $accordion-header-bg;
-            }
+            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+            color: var(--#{$prefix}ac-header-base);
+            background-color: var(--#{$prefix}ac-header-base-bg);
 
             &:focus,
             &:hover {
-                color: get-text-color($accordion-header-bg-hover);
-                background: $accordion-header-bg-hover;
+                color: var(--#{$prefix}ac-header-theme);
+                background-color: var(--#{$prefix}ac-header-theme-bg);
                 text-decoration: none;
             }
         }
@@ -193,34 +217,30 @@
 
     &:hover .acco-hash {
         position: absolute;
-        right: 2 * $default-margin;
-        top: $default-margin-verysmall;
+        right: calc(4 * var(--#{$prefix}spacer));
+        top: var(--#{$prefix}spacer-sm);
         display: block;
     }
 
     .acco-body {
-        border-top: $accordion-border-between;
+        border-top: var(--#{$prefix}ac-border);
         overflow: hidden;
-        padding: $accordion-body-padding;
-        // note: bottom space will be added as margin, either from floating image or piece text
-        @if ($accordion-body-bg != transparent) {
-            background: $accordion-body-bg;
-        }
+        padding: var(--#{$prefix}ac-body-padding);
 
         @include piece-bottom-margin;
         > .piece:last-of-type {
-            margin-bottom: $default-margin-small;
+            margin-bottom: var(--#{$prefix}spacer-sm);
         }
     }
 
     .sub-header {
         @extend .h3;
-        margin-bottom: $headings-margin-bottom;
+        margin-bottom: var(--#{$prefix}headings-margin-bottom);
     }
 
     @if ($accordion-toggle-arrows) {
         .acco-header > .acco-toggle {
-            padding-right: 3 * $default-margin-small;
+            padding-right: calc(3 * var(--#{$prefix}spacer));
         }
 
         .acco-toggle {
@@ -235,65 +255,14 @@
                 font-style: normal;
                 line-height: inherit;
                 content: "\f078";
-                top: $default-margin-verysmall;
-                right: $default-margin-small;
+                top: var(--#{$prefix}spacer-sm);
+                right: var(--#{$prefix}spacer);
                 transform: rotate(-180deg) translate(0,0);
                 transition: transform .33s;
             }
             &.collapsed::after {
                 transform: rotate(0) translate(0,0);
                 transition: transform 0.33s;
-            }
-        }
-    }
-}
-
-.box .accordion .acco-header > a:not(.btn):not(.uncolored)  {
-    // in a box the heading color must not be changed becasue the panel will generate the background
-    color: $accordion-header-color;
-    &:focus,
-    &:hover {
-        color: get-text-color($accordion-header-bg-hover);
-    }
-}
-
-// Colored tabs
-
-@each $color-name, $bg-color, $highlight-color in $tab-colors {
-
-    .color-#{""+$color-name} .tab-list {
-        border-bottom-color: $bg-color;
-        > li {
-            > .tab-toggle {
-                &.active {
-                    color: get-text-color($bg-color);
-                    background: $bg-color;
-                }
-
-                &:focus,
-                &:hover {
-                    color: get-text-color($highlight-color);
-                    background: $highlight-color;
-                }
-            }
-        }
-    }
-}
-
-// Colored accordion panels
-
-@each $type-name, $bg-color, $highlight-color in $accordion-colors {
-
-    .color-#{""+$type-name} .accordion .acco-header {
-
-        > .acco-toggle {
-            color: get-text-color($bg-color);
-            background: $bg-color;
-
-            &:hover,
-            &:hover {
-                color: get-text-color($highlight-color);
-                background: $highlight-color;
             }
         }
     }

@@ -32,23 +32,23 @@
     }
 
     .show-more {
-        margin-top: $default-margin-small;
+        margin-top: var(--#{$prefix}margin);
     }
 
     .search-results-header {
         @include clearfix;
-        margin-bottom: $default-margin;
+        margin-bottom: var(--#{$prefix}element-margin);
     }
 
     .search-query,
     .search-sort,
     .search-result {
-        margin-bottom: $default-margin;
+        margin-bottom: var(--#{$prefix}element-margin);
     }
 
     .search-input,
     .search-sort-options {
-        margin-bottom: $default-margin;
+        margin-bottom: var(--#{$prefix}element-margin);
     }
 
     .search-results-count {
@@ -62,16 +62,15 @@
         }
 
         &:last-of-type {
-           margin-bottom: $default-margin; // for lists this is 0, but in the search we want the margin always
+           margin-bottom: var(--#{$prefix}element-margin); // for lists this is 0, but in the search we want the margin always
         }
     }
 
     .search-result-heading {
-        @extend .h4;
-        margin-bottom: $default-margin-verysmall;
+        margin-bottom: var(--#{$prefix}margin-sm);
 
         .result-title {
-            margin-right: $default-margin-verysmall;
+            margin-right: var(--#{$prefix}spacer);
             vertical-align: middle;
         }
 
@@ -80,8 +79,8 @@
         }
 
         + .search-result-date {
-            margin-top: -1 * $default-margin-verysmall;
-            margin-bottom: $default-margin-verysmall;
+            margin-top: calc(-1 * var(--#{$prefix}margin-sm));
+            margin-bottom: var(--#{$prefix}margin-sm);
             color: $search-datelastmod-color;
         }
     }
@@ -89,9 +88,9 @@
     .search-badge {
         font-family: var(--#{$prefix}body-font-family);
         font-weight: var(--#{$prefix}body-font-weight);
-        font-size: 50%;
-        padding: $default-margin-extremesmall $default-margin-verysmall;
-        @include round-corners($search-badge-border-radius);
+        font-size: 60%;
+        padding: 0.2rem 0.75rem;
+        @include round-corners(var(--#{$prefix}btn-border-radius));
         color: $search-badge-color;
         @if ($search-badge-background != transparent) {
             background: $search-badge-background;
@@ -126,16 +125,14 @@
         .search-results-count {
             float: right;
         }
-
-        .search-result-heading {
-            .result-title {
-                margin-right: $default-margin-quitesmall;
-            }
-        }
-
-        .search-badge {
-            font-size: 60%;
-            padding: $default-margin-extremesmall $default-margin-quitesmall;
-        }
     }
+}
+
+// copied from the BS input-group source that we don't include
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
 }

@@ -16,15 +16,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-// Intro header, usually for teaser elements in lists
-@mixin intro-header() {
-    line-height: 1.25;
-    font-size: 65%;
-    font-weight: $font-weight-intro-headings;
-    color: $intro-headings-color;
-    margin-bottom: $intro-headings-margin-bottom;
-}
-
 // Focus outline color
 @mixin focus-outline($outside: true) {
     outline-color: $focus-outline-color;
@@ -141,7 +132,7 @@
     @if ($line-height-lead != $line-height-base) {
         line-height: $line-height-lead;
     }
-    @include media-breakpoint-my-down(md) {
+    @include media-breakpoint-down(lg) {
         font-size: $lead-font-size-mobile;
     }
     @include media-breakpoint-up(lg) {
@@ -183,39 +174,45 @@
 }
 
 // Default Headings
-@mixin heading-base($set-color: true) {
-    font-weight: $font-weight-headings; // must be set because otherwise the default would be "bold"
-
+@mixin heading-base {
+    font-weight: var(--#{$prefix}font-weight-headings);
     font-family: var(--#{$prefix}font-family-headings);
+    font-style: var(--#{$prefix}font-style-headings);
+}
 
-    @if ($set-color) {
-        color: $headings-color;  // must be set because otherwise linked headlines would have the link color
+@mixin button-color-setvars($btn-bg, $btn-hover-bg) {
+    --#{$prefix}btn-fg: #{get-text-color($btn-bg)};
+    --#{$prefix}btn-bg: #{$btn-bg};
+    @if ($btn-border-style != none) {
+        border-color: var(--#{$prefix}btn-border);
     }
-    @if ($font-style-headings != normal) {
-        font-style: $font-style-headings;
-    }
-    @if ($line-height-headings != $line-height-base) {
-        line-height: $line-height-headings;
+    &:focus,
+    &:hover {
+        --#{$prefix}btn-fg: #{get-text-color($btn-hover-bg)};
+        --#{$prefix}btn-bg: #{$btn-hover-bg};
     }
 }
 
 // Colored buttons with hover effects
-@mixin button-color($bg-color, $hover-color, $disabled-color: $btn-disabled) {
-    background-color: $bg-color;
-    color: get-text-color($bg-color);
+@mixin button-color($disabled-color: $btn-disabled) {
+    color: var(--#{$prefix}btn-fg);
+    background-color: var(--#{$prefix}btn-bg);
+    @if ($btn-border-style != none) {
+        border-color: var(--#{$prefix}btn-border);
+    }
 
     &:focus,
     &:hover,
     &.active,
     .open .dropdown-toggle & {
-        color: get-text-color($hover-color);
-        background-color: $hover-color;
+        color: var(--#{$prefix}btn-hover-fg);
+        background-color: var(--#{$prefix}btn-hover-bg);
+        @if ($btn-border-style != none) {
+            border-color: var(--#{$prefix}btn-hover-border);
+        }
         text-decoration: none;
         cursor: pointer;
         @include color-transition;
-        @if ($btn-border-style != none) {
-            border-color: $hover-color;
-        }
     }
 
     &.disabled,
@@ -228,17 +225,20 @@
 }
 
 // Colored buttons with hover effects - simplified for less markup
-@mixin button-color-simple($bg-color, $hover-color, $hover: true, $color-text: get-text-color($bg-color), $color-text-hover: get-text-color($hover-color)) {
-    background-color: $bg-color;
-    color: $color-text;
+@mixin button-color-simple($hover: true) {
+    color: var(--#{$prefix}btn-fg);
+    background-color: var(--#{$prefix}btn-bg);
+    @if ($btn-border-style != none) {
+        border-color: var(--#{$prefix}btn-border);
+    }
 
     @if ($hover) {
         &:focus,
         &:hover {
-            color: $color-text-hover;
-            background-color: $hover-color;
+            color: var(--#{$prefix}btn-hover-fg);
+            background-color: var(--#{$prefix}btn-hover-bg);
             @if ($btn-border-style != none) {
-                border-color: $hover-color;
+                border-color: var(--#{$prefix}btn-hover-border);
             }
         }
     }
@@ -274,8 +274,8 @@
     @if ($btn-line-height != $line-height-base) {
         line-height: $btn-line-height;
     }
-    @include round-corners($btn-border-radius);
-    @include button-color($btn-default, $btn-default-hover, $btn-disabled);
+    @include round-corners(var(--#{$prefix}btn-border-radius));
+    @include button-color($btn-disabled);
 }
 
 // Reset buttons
@@ -325,7 +325,7 @@
 // Font size REM rebasing, usually on the HTML element
 @mixin rem-base {
     @if ($font-rem-base-mobile-size != $font-rem-base-desktop-size) {
-        @include media-breakpoint-my-down(md) {
+        @include media-breakpoint-down(lg) {
             font-size: $font-rem-base-mobile-size;  // font size for rem units in mobile
         }
         @include media-breakpoint-up(lg) {
@@ -363,7 +363,7 @@
     }
 }
 
-@mixin piece-bottom-margin($margin-bottom: $default-margin)  {
+@mixin piece-bottom-margin($margin-bottom: var(--#{$prefix}element-margin))  {
     > .piece:not(:last-of-type) {
         margin-bottom: $margin-bottom;
     }
@@ -378,7 +378,7 @@
     }
 
     .subtitle {
-        margin-top: $default-margin-verysmall;
+        margin-top: var(--#{$prefix}spacer-sm);
         line-height: 1.15;
         font-style: italic;
         font-size: $section-subtitle-size;
@@ -422,14 +422,14 @@
     }
 }
 
-@mixin colored-a($text-color, $highlight-color: none, $force: false) {
+@mixin colored-a($text-color, $hover-color: none, $force: false) {
     a:not(.btn):not(.uncolored) {
         color: $text-color;
 
-        @if (($highlight-color != none) and (($force == true) or ($highlight-color != $text-color))) {
+        @if (($hover-color != none) and (($force == true) or ($hover-color != $text-color))) {
             &:focus,
             &:hover {
-                color: $highlight-color;
+                color: $hover-color;
             }
         }
     }
@@ -453,7 +453,7 @@
 
 @mixin media-breakpoint-mobile {
     @if ($nav-breakpoint-mobile != none) {
-        @include media-breakpoint-my-down($nav-breakpoint-mobile) {
+        @include media-breakpoint-down(breakpoint-next($nav-breakpoint-mobile)) {
             @content;
         }
     }
@@ -479,7 +479,7 @@
             word-break: break-word;
         } @else {
             @if ($piece-hyphens-headings-xs) {
-                @include media-breakpoint-my-down(sm) {
+                @include media-breakpoint-down(md) {
                     hyphens: auto;
                     overflow-wrap: anywhere;
                     word-break: break-word;
@@ -508,7 +508,7 @@
             word-break: break-word;
         } @else {
             @if ($piece-hyphens-text-xs) {
-                @include media-breakpoint-my-down(sm) {
+                @include media-breakpoint-down(md) {
                     hyphens: auto;
                     overflow-wrap: anywhere;
                     word-break: break-word;
@@ -538,10 +538,10 @@
     &::before {
         font-family: ForkAwesome;
         content: "\f02b";
-        padding-right: $default-margin-verysmall;
+        padding-right: var(--#{$prefix}spacer-sm);
     }
     @if ($add-box) {
-        padding: $default-margin-verysmall;
+        padding: var(--#{$prefix}spacer-sm);
         border-radius: $list-category-radius;
         background-color: $grey-lighter;
         @if ($add-hover) {
@@ -574,129 +574,59 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin box-colors($theme-color, $complete: false) {
 
-@mixin box-color($bg-color) {
-    // for a colored background, make sure the text and link color matches the background
-    // normally this means dark background > light text and light background > dark text
-    $color: get-text-color($bg-color);
-    $color-headings-base: conditional-value($color == $text-light, $text-light, $headings-color); // we normally want light text
-    $color-headings: get-text-color($bg-color, $color-headings-base);
+    @if ($theme-color != none) {
+        $fg-color: get-text-color($theme-color);
+        $link-colors: get-link-colors($theme-color, $fg-color);
+        $link-color: nth($link-colors, 1);
+        $link-hover-color: nth($link-colors, 2);
 
-    $color-links: get-link-colors($bg-color, $color);
-    $color-link: nth($color-links, 1);
-    $color-hover: nth($color-links, 2);
+        --#{$prefix}body-color: #{$fg-color};
+        --#{$prefix}body-bg: #{$theme-color};
 
-    background-color: $bg-color;
-    color: $color;
+        --#{$prefix}link-color: #{$link-color};
+        --#{$prefix}link-hover-color: #{$link-hover-color};
+        --#{$prefix}link-fg-color: #{get-text-color($link-color)};
+        --#{$prefix}link-hover-fg-color: #{get-text-color($link-hover-color)};
 
-    @include colored-a($color-link, $color-hover, true);
-
-    h1, h2, h3, h4, h5, h6  {
-        // required in order to override colors set in headings
-        color: $color-headings;
+        --#{$prefix}body-bg-rgb: #{to-rgb($theme-color)};
     }
 
-    @if ($linked-headings-color != none) {
-        a {
-            h1, h2, h3, h4, h5, h6 {
-                color: $color-link;
-            }
+    @if ($complete == true) {
+        --#{$prefix}btn-bg: var(--#{$prefix}link-color);
+        --#{$prefix}btn-fg: var(--#{$prefix}link-fg-color);
+        --#{$prefix}btn-hover-bg: var(--#{$prefix}link-hover-color);
+        --#{$prefix}btn-hover-fg: var(--#{$prefix}link-hover-fg-color);
+
+        --#{$prefix}main-theme: var(--#{$prefix}link-color);
+        --#{$prefix}main-theme-fg: var(--#{$prefix}link-fg-color);
+        --#{$prefix}main-theme-hover: var(--#{$prefix}link-hover-color);
+        --#{$prefix}main-theme-hover-fg: var(--#{$prefix}link-hover-fg-color);
+
+        --#{$prefix}headings-color: var(--#{$prefix}body-color);
+        @if ($linked-headings-color != inherit) {
+            --#{$prefix}linked-headings-color: var(--#{$prefix}link-color);
         }
-    }
-
-    @if ($linked-headings-hover-color != none) {
-        a:hover {
-            h1, h2, h3, h4, h5, h6 {
-                color: $color-hover;
-            }
+        @if ($linked-headings-hover-color != inherit) {
+            --#{$prefix}linked-headings-hover-color: var(--#{$prefix}link-hover-color);
         }
-    }
+        --#{$prefix}intro-headings-color: var(--#{$prefix}headings-color);
 
-    .sub-header, // detail page
-    .text > a, // list teaser
-    .teaser-date, // list teaser
-    .intro-headline > .intro {
-        color:  $color !important;
-    }
-
-    .btn {
-        @include button-color-simple($color-link, $color-hover);
-    }
-    .btn-colored {
-        @include button-color-simple($color-link, $color-hover, false);
+        --#{$prefix}highlight-color: rgb(var(--#{$prefix}highlight-color-rgb),0.25);
+        --#{$prefix}highlight-fg-color: var(--#{$prefix}body-color);
+        --#{$prefix}highlight-border-color: var(--#{$prefix}body-color);
+        --#{$prefix}highlight-border-fg-color: var(--#{$prefix}body-bg);
     }
 }
 
-@mixin box-color-vars($bg-color, $color-name) {
-    $color: get-text-color($bg-color);
-    $color-headings-base: conditional-value($color == $text-light, $text-light, $headings-color); // we normally want light text
-    $color-headings: get-text-color($bg-color, $color-headings-base);
+@mixin change-colors($theme-color, $complete: false) {
 
-    $color-links: get-link-colors($bg-color, $color);
-    $color-link: nth($color-links, 1);
-    $color-hover: nth($color-links, 2);
+    $fg-color: get-text-color($theme-color);
 
-    --#{$prefix}box-color: #{$color};
-    --#{$prefix}box-bg-color: #{$bg-color};
-    --#{$prefix}box-bg-tp-color: #{rgba($bg-color, 0.7)};
-    --#{$prefix}box-color-link: #{$color-link};
-    --#{$prefix}box-color-hover: #{$color-hover};
-    --#{$prefix}box-color-headings: #{$color-headings};
-    --#{$prefix}box-color-btn-text: #{get-text-color($color-link)};
-    --#{$prefix}box-color-btn-hover-text: #{get-text-color($color-hover)};
+    --#{$prefix}main-theme: #{$theme-color};
+    --#{$prefix}main-theme-fg: #{$fg-color};
+
+    --#{$prefix}btn-bg: var(--#{$prefix}main-theme);
+    --#{$prefix}btn-fg: #{get-text-color($theme-color)};
 }
-
-@mixin box-color-var-rules() {
-    color: var(--#{$prefix}box-color);
-    background-color: var(--#{$prefix}box-bg-color);
-
-    @include colored-a(var(--#{$prefix}box-color-link), var(--#{$prefix}box-color-hover), true);
-
-    h1, h2, h3, h4, h5, h6  {
-        // required in order to override colors set in headings
-        color: var(--#{$prefix}box-color-headings);
-    }
-
-    @if ($linked-headings-color != none) {
-        a {
-            h1, h2, h3, h4, h5, h6 {
-                color: var(--#{$prefix}box-color-link);
-            }
-        }
-    }
-
-    @if ($linked-headings-hover-color != none) {
-        a:hover {
-            h1, h2, h3, h4, h5, h6 {
-                color: var(--#{$prefix}box-color-hover);
-            }
-        }
-    }
-
-    .sub-header, // detail page
-    .text > a, // list teaser
-    .teaser-date, // list teaser
-    .intro-headline > .intro {
-        color: var(--#{$prefix}box-color) !important;
-    }
-
-    .btn {
-        @include button-color-simple(
-            var(--#{$prefix}box-color-link),
-            var(--#{$prefix}box-color-hover),
-            true,
-            var(--#{$prefix}box-color-btn-text),
-            var(--#{$prefix}box-color-btn-hover-text)
-        );
-    }
-    .btn-colored {
-        @include button-color-simple(
-            var(--#{$prefix}box-color-link),
-            var(--#{$prefix}box-color-hover),
-            false,
-            var(--#{$prefix}box-color-btn-text),
-            var(--#{$prefix}box-color-btn-hover-text)
-        );
-    }
-}
-

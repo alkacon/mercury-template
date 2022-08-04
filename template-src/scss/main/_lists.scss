@@ -66,7 +66,7 @@
         position: relative; // required otherwise edit points may get mixed up
 
         &:not(:last-of-type) {
-            margin-bottom: $default-margin;
+            margin-bottom: var(--#{$prefix}element-margin);
         }
     }
 
@@ -75,14 +75,14 @@
     }
 
     .list-link {
-        margin-top: $default-margin;
+        margin-top: var(--#{$prefix}element-margin);
     }
 }
 
 // Teasers - applies for teasers in lists as well as teasers placed directly on a page
 
 .teaser {
-    margin-bottom: $default-margin;
+    margin-bottom: var(--#{$prefix}element-margin);
     @include clearfix;
 
     &.teaser-compact {
@@ -95,25 +95,15 @@
     .intro-headline {
         @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
         line-height: $teaser-title-height;
-        margin-bottom: $default-margin-small;
+        margin-bottom: var(--#{$prefix}margin);
     }
 
     .teaser-btn {
           &:not(:last-child) {
-            margin-right: $default-margin-small;
+            margin-right: var(--#{$prefix}margin);
         }
         @if ($teaser-btn-def-padding != $btn-def-padding) {
             padding: $teaser-btn-def-padding;
-        }
-        @if ($teaser-btn-color != $btn-default) {
-            background-color: $teaser-btn-color;
-            color:  get-text-color($teaser-btn-color);
-            font-size: $font-size-sm;
-
-            &:hover {
-                background-color: $teaser-btn-hover-color;
-                color:  get-text-color($teaser-btn-hover-color);
-            }
         }
     }
 
@@ -121,7 +111,7 @@
         line-height: 1.2;
         font-size: 80%;
         color: $teaser-info-color;
-        margin-bottom: $default-margin-verysmall;
+        margin-bottom: var(--#{$prefix}margin-sm);
     }
 
     .heading {
@@ -141,7 +131,7 @@
             &,
             &:focus,
             &:hover {
-                color: $body-color;
+                color: var(--#{$prefix}body-color);
                 text-decoration: none;
             }
         }
@@ -194,7 +184,7 @@
             margin-bottom: $list-teaser-margin-compact;
 
             .intro-headline {
-                margin-bottom: $default-margin-verysmall;
+                margin-bottom: var(--#{$prefix}margin-sm);
                 font-size: inherit; // this way the heading will have the same size as the text
             }
 
@@ -214,8 +204,8 @@
         .teaser {
             // make buttons in side grey so that they don't distract from main content
             .teaser-btn:not(:hover) {
-                background-color: $list-side-color;
-                color: get-text-color($list-side-color);
+                background-color: var(--#{$prefix}highlight-color);
+                color: var(--#{$prefix}highlight-fg-color);
             }
 
             .intro-headline {
@@ -329,11 +319,11 @@
 // Download lists
 
 @mixin dl-btn {
-    margin-top: $default-margin-verysmall;
+    margin-top: var(--#{$prefix}margin-sm);
     min-width: 200px;
 
     .fa {
-        padding-right: $default-margin-small;
+        padding-right: var(--#{$prefix}spacer);
     }
 }
 
@@ -346,7 +336,7 @@
                 text-decoration: underline;
             }
             .dl-desc {
-                color: $text-dark;
+                color: var(--#{$prefix}body-color);
             }
         }
     }
@@ -354,7 +344,7 @@
     a:not(:hover) .dl-content {
         .dl-desc,
         .dl-file {
-            color: $text-dark;
+            color: var(--#{$prefix}body-color);
         }
     }
 
@@ -376,21 +366,21 @@
     .dl-cat {
         .dl-cat-label {
             @include list-category-label(false, false);
-            margin-right: $default-margin-small;
+            margin-right: var(--#{$prefix}spacer);
         }
     }
 
     &.dl-list-elaborate {
 
         li.list-entry {
-            padding-top: $default-margin-small;
-            padding-bottom: $default-margin-small;
+            padding-top: var(--#{$prefix}margin);
+            padding-bottom: var(--#{$prefix}margin);
             border-bottom: 1px solid $highlight-color;
 
             &:last-child {
                 padding-bottom: 0;
                 border-bottom: none;
-                margin-bottom: $default-margin;
+                margin-bottom: var(--#{$prefix}element-margin);
             }
 
             &:first-child {
@@ -401,13 +391,13 @@
         .dl-content {
             .dl-title {
                 margin-top: 0;
-                margin-bottom: $default-margin-verysmall;
+                margin-bottom: var(--#{$prefix}margin-sm);
             }
             .dl-file {
-                margin-bottom: $default-margin-verysmall;
+                margin-bottom: var(--#{$prefix}margin-sm);
             }
             .dl-desc {
-                margin-bottom: $default-margin-verysmall;
+                margin-bottom: var(--#{$prefix}margin-sm);
             }
             .dl-btn {
                 @include dl-btn;
@@ -428,17 +418,17 @@
                     float: left;
                 }
                 > .dl-cat {
-                    padding-left: $default-margin;
+                    padding-left: var(--#{$prefix}spacer-xl);
                     float: right;
                 }
             }
 
             .dl-info {
-                margin-top: $default-margin-small;
+                margin-top: var(--#{$prefix}p-spacer);
                 text-align: center;
                 .fa {
                     font-size: 4.0rem;
-                    margin-bottom: $default-margin-verysmall;
+                    margin-bottom: var(--#{$prefix}spacer-sm);
                 }
                 .dl-info-text {
                     display: none;
@@ -446,10 +436,10 @@
             }
         }
 
-        @include media-breakpoint-my-down(sm) {
+        @include media-breakpoint-down(md) {
             .dl-info {
                 text-align: left;
-                margin-top: $default-margin-verysmall;
+                margin-top: var(--#{$prefix}spacer-sm);
 
                 .btn-info {
                     @include button-base;
@@ -458,14 +448,14 @@
                     min-width: 50%;
                 }
                 .fa {
-                    min-width: 2*$default-margin;
+                    min-width: calc(4 * var(--#{$prefix}spacer));
                 }
             }
             .dl-content .dl-btn {
                 min-width: 50%;
                 text-align: left;
                 .fa {
-                    min-width: 2*$default-margin;
+                    min-width: calc(4 * var(--#{$prefix}spacer));
                 }
             }
             .dl-stats {
@@ -477,17 +467,17 @@
     &.dl-list-compact {
 
         .list-entries {
-            border-bottom: 1px solid $dl-list-highlight-color;
-            margin-bottom: $default-margin-small;
+            border-bottom: 1px solid var(--#{$prefix}highlight-color);
+            margin-bottom: var(--#{$prefix}margin);
         }
 
         li:nth-child(odd) .dl-link {
-            background-color: $dl-list-highlight-color;
+            background-color: var(--#{$prefix}highlight-color);
         }
 
         .dl-link {
-            padding-top: $default-margin-small;
-            padding-bottom: $default-margin-small;
+            padding-top: var(--#{$prefix}margin);
+            padding-bottom: var(--#{$prefix}margin);
         }
         a.dl-link:hover {
             .dl-title {
@@ -511,10 +501,10 @@
             }
         }
         .dl-type {
-            padding: 0 $default-margin-small;
+            padding: 0 var(--#{$prefix}spacer);
         }
         .dl-dl {
-            padding-right: $default-margin-small;
+            padding-right: var(--#{$prefix}spacer);
         }
         .dl-content {
             flex-grow: 10;
@@ -552,7 +542,7 @@
                 flex-direction: column;
             }
         }
-        @include media-breakpoint-my-down(sm) {
+        @include media-breakpoint-down(md) {
             .dl-teaser-compact {
                 flex-direction: column;
             }
@@ -615,15 +605,15 @@
             &:not(.disabled) {
                 // make buttons in side grey so that they don't distract from main content
                 > a:not(:hover) {
-                    background-color: $body-bg;
-                    border-color: $list-side-color;
-                    color: get-text-color($body-bg);
+                    background-color: var(--#{$prefix}body-bg);
+                    border-color: var(--#{$prefix}highlight-border-color);
+                    color: var(--#{$prefix}body-color);
                 }
                 &.active {
                     > a:not(:hover) {
-                        background-color: $list-side-color;
-                        border-color: $list-side-color;
-                        color: get-text-color($list-side-color);
+                        background-color: var(--#{$prefix}highlight-border-color);
+                        border-color: var(--#{$prefix}highlight-border-color);
+                        color: var(--#{$prefix}highlight-border-fg-color);
                     }
                 }
             }
@@ -632,14 +622,14 @@
                 // assume on small screens side columns are full width
                 // on large screens button in side columns must be smaller to fit into column
                 &.previous {
-                    margin-right: $default-margin-verysmall;
+                    margin-right: var(--#{$prefix}spacer-sm);
                 }
                 &.next {
-                    margin-left: $default-margin-verysmall;
+                    margin-left: var(--#{$prefix}spacer-sm);
                 }
                 &.first {
                     &.gap::after {
-                        margin: 0 $default-margin-verysmall;
+                        margin: 0 var(--#{$prefix}spacer-sm);
                     }
                 }
 
@@ -654,9 +644,9 @@
     .btn-append {
         // also recolor append button in side lists
         &:not(:hover) {
-            background-color: $list-side-color;
-            border-color: $list-side-color;
-            color: get-text-color($list-side-color);
+            background-color: var(--#{$prefix}highlight-color);
+            border-color: var(--#{$prefix}highlight-color);
+            color: var(--#{$prefix}highlight-fg-color);
         }
     }
 }
@@ -705,12 +695,12 @@
 
     button {
         padding-left: $nav-side-left-padding-step;
-        padding-right: $default-margin;
+        padding-right: var(--#{$prefix}spacer-xl);
     }
 
     .filterbox {
         border-radius: $list-border-radius;
-        margin-bottom: $default-margin;
+        margin-bottom: var(--#{$prefix}element-margin);
         background-color: $body-bg;
 
         &:last-of-type {
@@ -847,7 +837,6 @@
                 margin-right: 0;
 
                 li > a {
-                    // padding-left: $default-margin;
                     padding-right: $nav-handle-right-padding;
                     + a {
                         padding-left: 0;
@@ -894,7 +883,7 @@
 
                 li {
                     display: inline-block;
-                    padding: $default-margin-small 0;
+                    padding: var(--#{$prefix}margin) 0;
                     width: 16.666666%;
                     font-size: 1.2rem;
                     text-align: center;
@@ -1000,7 +989,7 @@
         }
 
         > li > a {
-            padding: $default-margin-verysmall $default-margin;
+            padding: var(--#{$prefix}margin-sm) var(--#{$prefix}spacer-xl);
             color: $text-dark;
             text-decoration: none;
             clear: both;
@@ -1023,14 +1012,14 @@
         }
 
         .divider {
-            margin: $default-margin-verysmall 0;
+            margin: var(--#{$prefix}margin-sm) 0;
         }
     }
 
     .list-option {
         position: relative;
-        margin-bottom: $default-margin;
-        margin-left: $default-margin-small;
+        margin-bottom: var(--#{$prefix}element-margin);
+        margin-left: var(--#{$prefix}spacer);
 
         &.btn.placeholder {
             // make button already occupy space without displaying anything
@@ -1043,11 +1032,11 @@
         }
 
         span {
-            margin-right: $default-margin-verysmall;
+            margin-right: var(--#{$prefix}spacer-sm);
         }
     }
 
-    @include media-breakpoint-my-down(sm) {
+    @include media-breakpoint-down(md) {
         .dropdown-menu,
         .dropdown-toggle {
             width: 100%;

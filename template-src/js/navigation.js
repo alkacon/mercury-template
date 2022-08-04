@@ -384,7 +384,7 @@ function initHeadNavigation() {
     });
 
     // Add handler for elements that should not keep the focus
-    jQ('[data-toggle], .blur-focus').on('mouseleave', function(e) {
+    jQ('[data-bs-toggle], .blur-focus').on('mouseleave', function(e) {
         jQ(this).blur();
     });
 
@@ -584,7 +584,7 @@ function fixedHeaderActive() {
 function initSmoothScrolling() {
 
     // attach click handler to anchor links on the page
-    jQ('a[href*="#"]:not([href="#"]):not([data-toggle]):not([data-slide])').click(function() {
+    jQ('a[href*="#"]:not([href="#"]):not([data-bs-toggle]):not([data-slide])').click(function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var $target = jQ(this.hash);
             if ($target.length) {

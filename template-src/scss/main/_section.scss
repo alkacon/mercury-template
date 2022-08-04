@@ -22,43 +22,35 @@
 // Icon box formatter
 
 .type-iconbox {
-    $color: check-text-color($main-theme);
-    $color-link: check-text-color($main-theme, $link-color);
-    $color-hover: check-text-color($main-theme, $link-hover-color);
+    @include box-colors($main-theme, true);
 
-    background-color: $main-theme;
-    color: $color;
+    color: var(--#{$prefix}body-color);
+    background-color: var(--#{$prefix}body-bg);
 
-    padding: $default-margin $default-margin-small;
+    padding: var(--#{$prefix}box-padding);
     text-align: center;
     display: flex;
     flex-direction: column;
 
     @include round-corners($iconbox-border-radius, true);
+    @include colored-a(inherit, var(--#{$prefix}link-color));
 
     &:only-child {
         flex-grow: 1;
         flex-shrink: 1;
     }
 
-    @include colored-a($color-link, $color-hover);
-    &.box.pivot {
-        // overwrite box link and hover colors
-        @include colored-a(inherit, inherit);
-        padding: $default-margin $default-margin-small;
-    }
-
     .icon-title {
         color: inherit;
         flex-grow: 1;
-        margin-bottom: $default-margin;
+        margin-bottom: var(--#{$prefix}box-padding);
         font-size: $h4-font-size;
-        line-height: $line-height-headings;
+        line-height: $headings-line-height;
         @include use-hyphens-headings(true);
     }
 
     .icon-text {
-        margin-top: $default-margin;
+        margin-top: var(--#{$prefix}box-padding);
         margin-bottom: 0;
         > p {
             overflow-wrap: anywhere; // dont use hyphens: auto
@@ -85,22 +77,15 @@
         &:hover {
             text-decoration: none;
             h1, h2, h3, h4, h5, h6 {
-                @if ($linked-headings-decoration != none) {
-                    text-decoration: none;
-                }
+                text-decoration: none;
             }
         }
     }
 
     @include media-breakpoint-up(md) {
-        // making the icon box padding larger on large screens
-        padding: $default-margin; // extending the margin
-        &.box.pivot {
-            padding: $default-margin;
-        }
         .icon-title {
             font-size: $h3-font-size;
-            line-height: $line-height-headings;
+            line-height: $headings-line-height;
         }
     }
 }
@@ -108,6 +93,10 @@
 // Image / text flip animation, see https://davidwalsh.name/css-flip#ieflip
 
 .imageflip {
+    @include box-colors($body-bg, true);
+
+    color: var(--#{$prefix}body-color);
+
     perspective: 1000px;
     transform-style: preserve-3d;
     position: relative;
@@ -163,11 +152,11 @@
     }
 
     .text-section {
-        @include round-corners($image-border-radius);
-        padding: $default-margin;
+        @include round-corners(var(--#{$prefix}border-radius));
+        padding: var(--#{$prefix}box-padding);
         height: 100%; // works because .flipper has the height fixed with padding-bottom
         overflow: auto; // shows scrollbars on demand
-        background-color: $grey-lighter;
+        background-color: var(--#{$prefix}highlight-color);
 
         &.front:not(.noflip) {
             overflow: hidden; // if text is shown on front with flip, we can't scroll anyway
@@ -179,53 +168,41 @@
             position: absolute;
             top: 0;
             left: 0;
-            padding: $default-margin-small;
+            padding: var(--#{$prefix}box-padding-sm);
             z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
 
             .text-heading {
-                @include round-corners($image-border-radius);
+                @include round-corners(var(--#{$prefix}border-radius));
                 @include use-hyphens-headings(true);
-                background-color: transparentize($grey-lighter, 0.25);
-                padding: $default-margin-small;
+                background-color: rgba(var(--#{$prefix}highlight-color-rgb), .75);
+                padding: var(--#{$prefix}box-padding-sm);
                 margin-bottom: 0;
             }
         }
     }
 
     &.color-white {
-        color: get-text-color($body-bg);
+        @include box-colors($body-bg);
 
         .text-section {
-            border: 1px solid $grey-lighter;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            // required in order to override colors set with 'box'
-            color: get-text-color($body-bg);
+            border: 1px solid var(--#{$prefix}body-color);
+            background-color: var(--#{$prefix}body-bg);
         }
     }
 
     &.color-grey {
-        color: get-text-color($grey-lighter);
-
-        h1, h2, h3, h4, h5, h6 {
-            color: get-text-color($grey-lighter);
-        }
+        @include box-colors($grey-lighter);
     }
 
     &.color-theme {
-        color: get-text-color($main-theme);
+        @include box-colors($main-theme);
 
         .text-section {
-            @include box-color($main-theme);
+            background-color: var(--#{$prefix}body-bg);
         }
 
         .image-section .heading .text-heading {
-            background-color: transparentize($main-theme, 0.35);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: get-text-color($main-theme);
+            background-color: rgba(var(--#{$prefix}main-theme-rgb), .65);
         }
     }
 }
@@ -237,13 +214,13 @@
         .effect-flipraise.imageflip {
             &:hover {
                 .back {
-                    top: #{-2 * $default-margin};
-                    left: #{-2 * $default-margin};;
+                    top: calc(-2 * var(--#{$prefix}box-padding));
+                    left: calc(-2 * var(--#{$prefix}box-padding));
                     box-shadow: 0 0 15px 0 rgba(0,0,0,0.25);
-                    width: calc(100% + #{4 * $default-margin});
-                    height: calc(100% + #{4 * $default-margin});
+                    width: calc(100% + (4 * var(--#{$prefix}box-padding)));
+                    height: calc(100% + (4 * var(--#{$prefix}box-padding)));
                     &.text-section {
-                        padding: $default-margin;
+                        padding: var(--#{$prefix}box-padding);
                     }
                 }
             }

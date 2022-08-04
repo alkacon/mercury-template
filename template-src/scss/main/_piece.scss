@@ -39,9 +39,9 @@
 @function get-col-flex-size($cols, $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
-            (100% + var(--#{$prefix}p-gutter-x))
+            (100% + var(--#{$prefix}gutter-x))
             * #{divide($cols, $grid-columns)}
-            - (0.5 * var(--#{$prefix}p-gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
+            - (0.5 * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
         );
     } @else {
         @return 100%;
@@ -51,9 +51,9 @@
 @function get-col-float-size($cols, $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
-            (100% + var(--#{$prefix}p-gutter-x))
+            (100% + var(--#{$prefix}gutter-x))
             * #{divide($cols, $grid-columns)}
-            - var(--#{$prefix}p-gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
+            - var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
         );
     } @else {
         @return 100%;
@@ -67,21 +67,15 @@
 $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column sizes for the piece visual
 
 .piece {
-    --#{$prefix}p-gutter-x: var(--#{$prefix}gutter-x);
-
-    --#{$prefix}visual-margin-bottom: #{$default-margin-small};
-    --#{$prefix}visual-last-margin-top: #{$piece-visual-last-top-margin};
-    --#{$prefix}heading-margin-bottom: #{$piece-headings-margin-bottom}; // $piece-headings-margin-bottom != $headings-margin-bottom
-    --#{$prefix}btn-padding: #{$piece-btn-padding}; // $piece-btn-padding != $btn-def-padding
-    --#{$prefix}btn-lg-padding: #{$piece-btn-lg-padding};
-    --#{$prefix}text-margin: #{$piece-text-margin};
+    --#{$prefix}gutter-x: #{$piece-gutter-width};
+    --#{$prefix}visual-last-margin-top: #{$piece-visual-last-margin-top};
     --#{$prefix}text-to-link-margin: #{$piece-text-to-link-margin};
 
     display: block;
     position: relative;
 
     > .visual {
-        margin-bottom: var(--#{$prefix}visual-margin-bottom);
+        margin-bottom: var(--#{$prefix}spacer);
         width: 100%;
 
         @include copyright-subtitle;
@@ -106,6 +100,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         > .visual {
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: var(--#{$prefix}element-margin-sm);
         }
 
         &.align-right {
@@ -188,15 +183,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     .piece-heading {
-        margin-bottom: var(--#{$prefix}heading-margin-bottom);
-    }
-
-    .piece-btn {
-        padding: var(--#{$prefix}btn-padding);
-    }
-
-    .piece-btn-lg {
-        padding: var(--#{$prefix}btn-lg-padding);
+        margin-bottom: var(--#{$prefix}headings-margin-bottom);
     }
 
     > .body {
@@ -206,7 +193,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             > .detail-content > *,
             > * {
                 // add margins for all elements in text piece
-                margin-bottom: var(--#{$prefix}text-margin);
+                margin-bottom: var(--#{$prefix}margin);
                 &:last-child {
                     // last element in text must not add margin
                     margin-bottom: 0;
@@ -220,7 +207,25 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
-    @include media-breakpoint-my-down(breakpoint-prev($piece-desktop-breakpoint)) {
+    // special margin adjustments for section pieces
+    &.element.type-section:not(.box) {
+        &.only-heading {
+            // if piece element has only a header, set margin the same height as normally used by the headers
+            margin-bottom: var(--#{$prefix}headings-margin-bottom);
+        }
+        &.only-text,
+        &.phb:not(.phl) {
+            // if a text-only piece element fowllows a text-only piece element, reduce top margin
+            // goal: make text from 2nd element apperar as if it belongs to first element
+            + .piece.element.type-section:not(.box) {
+                &.only-text {
+                    margin-top: calc(var(--#{$prefix}margin) - var(--#{$prefix}element-margin));
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down($piece-desktop-breakpoint) {
 
         @each  $piece-col-size in $piece-cols {
             // generate size variations for the mobile visual column
@@ -306,18 +311,18 @@ html.keyboard-nav .piece {
             &.right {
                 > .visual {
                     order: 13;
-                    padding-left: calc(0.5 * var(--#{$prefix}p-gutter-x));
+                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
                 > .body {
-                    padding-right: calc(0.5 * var(--#{$prefix}p-gutter-x));
+                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
             }
             &.left {
                 > .visual {
-                    padding-right: calc(0.5 * var(--#{$prefix}p-gutter-x));
+                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
                 > .body {
-                    padding-left: calc(0.5 * var(--#{$prefix}p-gutter-x));
+                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
                 }
             }
 
@@ -338,14 +343,14 @@ html.keyboard-nav .piece {
             &.left {
                 > .visual {
                     float: left;
-                    margin-right: var(--#{$prefix}p-gutter-x);
+                    margin-right: var(--#{$prefix}gutter-x);
                 }
             }
 
             &.right {
                 > .visual {
                     float: right;
-                    margin-left: var(--#{$prefix}p-gutter-x);
+                    margin-left: var(--#{$prefix}gutter-x);
                 }
             }
         }
@@ -390,38 +395,27 @@ html.keyboard-nav .piece {
         text-overflow: ellipsis;
     }
     > .intro {
-        @include intro-header;
-    }
-    @if ($linked-headings-decoration != none) {
-        &:hover {
-            // decoration does not look good for intro
-            text-decoration: none;
-            > .headline {
-                text-decoration: $linked-headings-decoration;
-            }
-        }
+        line-height: 1.25;
+        font-size: 65%;
+        font-weight: $font-weight-intro-headings;
+        color: var(--#{$prefix}intro-headings-color);
+        margin-bottom: calc(0.25 * var(--#{$prefix}margin));
     }
 }
 
-
-//// labels - where is this used ???
-//.piece .text {
-//    .label {
-//        display: inline-block;
-//        padding: 0 0.4rem;
-//        color: white;
-//
-//        &.label-orange {
-//            background-color: $con-col-orange;
-//        }
-//        &.label-red {
-//            background-color: $con-col-red;
-//        }
-//        &.label-cyan {
-//            background-color: $con-col-cyan;
-//        }
-//    }
-//}
+a .intro-headline {
+    // decoration does not look good for intro, however must set on parent which is the hx element
+    text-decoration: none;
+    > .headline {
+        text-decoration: $linked-headings-decoration;
+    }
+    &:hover {
+        text-decoration: none;
+        > .headline {
+            text-decoration: $linked-headings-hover-decoration;
+        }
+    }
+}
 
 // element text that should display like piece text (use for text inserted from editor)
 //// only known usage: newsletterconfig-detail-formatter.jsp
@@ -429,7 +423,7 @@ html.keyboard-nav .piece {
     .body-text {
         > * {
             // add margins for all elements in text piece
-            margin-bottom: $piece-text-margin;
+            margin-bottom: var(--#{$prefix}margin);
             &:last-child {
                 // last element in text must not add margin
                 margin-bottom: 0;

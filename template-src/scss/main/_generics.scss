@@ -22,55 +22,56 @@
 // Colored backgrounds
 
 .box {
-    $color: check-text-color($highlight-color);
-    $color-headings: check-text-color($highlight-color, $headings-color);
+    @include box-colors($highlight-color, true);
 
-    background-color: $highlight-color;
-    color: $color;
+    color: var(--#{$prefix}body-color);
+    background-color: var(--#{$prefix}body-bg);
+
     overflow: hidden;
-    padding: $box-padding;
+    padding: var(--#{$prefix}box-padding);
 
-    @include round-corners($default-border-radius);
+    @include round-corners(var(--#{$prefix}border-radius));
 
     &.oc-drag-element {
         // in edit mode allow overflow, otherwise edit points may not be visible (e.g. for lists)
         overflow: visible;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-        // required in order to override colors set in headings
-        color: $color-headings;
+    &.type-tab .tab-content {
+        padding-bottom: 0;
     }
 }
 
-@each $color-name, $bg-color, $highlight-color in $box-colors {
-    .box-#{""+$color-name},
-    .bc-#{""+$color-name} {
-        @include box-color-vars($bg-color, $color-name);
+@each $color-name, $theme-color, $hl-color in $box-colors {
+
+    .box-#{$color-name} {
+        @include box-colors($theme-color);
+
+        &.transparent {
+            background-color: rgb(var(--#{$prefix}body-bg-rgb), 0.7);
+        }
+    }
+
+    .bc-#{$color-name} {
+        --#{$prefix}body-bg: #{$theme-color};
+        background-color: var(--#{$prefix}body-bg);
+
+        &.transparent {
+            background-color: rgb(var(--#{$prefix}body-bg-rgb), 0.7);
+        }
+    }
+
+    .color-#{$color-name} {
+        @include change-colors($theme-color);
     }
 }
-
-.box[class*="box-"] {
-    @include box-color-var-rules;
-    &.transparent {
-        background-color: var(--#{$prefix}box-bg-tp-color);
-    }
-}
-
-[class*="bc-"] {
-    background-color: var(--#{$prefix}box-bg-color);
-    &.transparent {
-        background-color: var(--#{$prefix}box-bg-tp-color);
-    }
-}
-
 
 // Colored text
 
 @each $color-name, $text-color in $text-colors {
 
-    .text-#{""+$color-name} {
-        @if (""+$color-name != "default") {
+    .text-#{$color-name} {
+        @if ($color-name != "default") {
             @include set-text-color($text-color);
         } @else {
             @extend .text-dark;
@@ -82,8 +83,8 @@
 
 @each $color-name, $text-color, $hover-color in $link-colors {
 
-    .links-#{""+$color-name} {
-        @if (""+$color-name != "default") {
+    .links-#{$color-name} {
+        @if ($color-name != "default") {
             @include colored-a($text-color, $hover-color);
         } @else {
             @extend .links-theme;
@@ -123,7 +124,7 @@
 
 // Colored borders
 
-@each $color-name, $bg-color, $highlight-color in $border-colors {
+@each $color-name, $bg-color, $highlight-color in $bg-colors {
 
     .bo-#{""+$color-name}  {
         border-color: $bg-color;
@@ -152,13 +153,6 @@
         .bo-#{""+$position}-#{""+$line-size}  {
             border-#{$position}: #{$line-size}px solid $border-default-color;
             padding: 20px;
-        }
-    }
-
-    @each $color-name, $bg-color, $highlight-color in $border-colors {
-
-        .bo-#{""+$position}-#{""+$color-name}  {
-            border-#{$position}-color: $bg-color;
         }
     }
 

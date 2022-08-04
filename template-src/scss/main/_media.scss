@@ -26,7 +26,7 @@
         }
     }
 
-    @include media-breakpoint-my-down(sm) {
+    @include media-breakpoint-down(md) {
         &.text-below-on-xs {
             &.square-col .preview .image-src-box {
                 position: relative;
@@ -154,7 +154,7 @@
     }
 
     .content {
-        @include round-corners($image-border-radius);
+        @include round-corners(var(--#{$prefix}border-radius));
         position: absolute;
         top: 0;
         left: 0;
@@ -178,7 +178,7 @@
 
         // adjusting the preview background (pbg) color for social media types
         &.pbg-main {
-            background-color: $color-pbg-main;
+            background-color: var(--#{$prefix}main-theme);
         }
         &.pbg-facebook {
             background-color: $color-pbg-facebook;
@@ -266,10 +266,17 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            background-color: $audio-player-compact-bg;
 
             .audio-player .audio-box {
-                background-color: transparent;
+                color: $audio-player-compact-color;
+                background-color: $audio-player-compact-bg;
+
+                .audio-progress {
+                    border-color: $audio-player-compact-color;
+                    .progress-bar {
+                        background-color: $audio-player-compact-color;
+                    }
+                }
             }
 
             .media-overlay-top {
@@ -293,6 +300,7 @@
     .audio-box {
         display: flex;
         flex-direction: column;
+        color: $audio-player-color;
         background-color: $audio-player-bg;
         padding: $audio-player-spacing;
         font-size: $audio-player-font-size;
@@ -312,7 +320,7 @@
             .progress-bar {
                 // overwrite bootstrap standards
                 height: $audio-player-progress-height;
-                background-color: $audio-player-progress-bg;
+                background-color: $audio-player-color;
                 transition: none;
                 width: 0;
             }
@@ -379,15 +387,15 @@
 .onclick-activation {
     position: relative;
     cursor: pointer;
-    margin-bottom: $default-margin;
+    margin-bottom: var(--#{$prefix}element-margin);
 
-    @include round-corners($image-border-radius);
+    @include round-corners(var(--#{$prefix}border-radius));
 
     .oa-heading,
     .oa-notice {
         color: #fff;
         text-shadow: $media-preview-text-shadow;
-        padding: 0 $default-margin;
+        padding: 0 var(--#{$prefix}spacer-xl);
         margin: 0;
         z-index: #{$overflow-z-index + 2};
     }
@@ -427,24 +435,24 @@
     }
 
     &.no-image {
-        background-color: $main-theme;
+        background-color: var(--#{$prefix}main-theme);
     }
 
     @mixin compact-display {
         .oa-heading,
         .oa-notice {
             position: relative;
-            padding-top: $default-margin-small;
-            padding-bottom: $default-margin-small;
+            padding-top: var(--#{$prefix}margin);
+            padding-bottom: var(--#{$prefix}margin);
         }
         .centered {
-            top: $default-margin-small;
+            top: var(--#{$prefix}margin);
             left: auto;
             transform: none;
         }
         .oa-icon {
             text-align: right;
-            padding-right: $default-margin;
+            padding-right: var(--#{$prefix}spacer-xl);
         }
         &.has-icon {
             .oa-heading {
@@ -463,14 +471,14 @@
             position: absolute;
         }
         .oa-heading {
-            top: $default-margin;
+            top: var(--#{$prefix}margin-xl);
         }
         .oa-notice {
-            bottom: $default-margin-small;
+            bottom: var(--#{$prefix}margin);
         }
     }
 
-    @include media-breakpoint-my-down(sm) {
+    @include media-breakpoint-down(md) {
         &.presized {
             &.no-image,
             &.has-image {

@@ -141,31 +141,13 @@ small,
     order: 13;
 }
 
+.float-right {
+  float: right;
+}
+
 /* Variable adjustments for Boosttrap 5 */
 
 ol,
 ul {
   padding-left: 40px;
-}
-
-/* Compatibility - make Boostrap 5 compatible with version 4 */
-
-@function breakpoint-my-max($name, $breakpoints: $grid-breakpoints) {
-  $next: breakpoint-next($name, $breakpoints);
-  @return if($next, breakpoint-min($next, $breakpoints) - .02, null);
-}
-
-@mixin media-breakpoint-my-down($name, $breakpoints: $grid-breakpoints) {
-  $max: breakpoint-my-max($name, $breakpoints);
-  @if ($max and ($name != xxl)) {
-    @media (max-width: $max) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
-}
-
-@mixin sr-only-focusable() {
-    @include visually-hidden-focusable();
 }

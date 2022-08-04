@@ -33,6 +33,7 @@ $font-size-headings:                2.0rem !default;
 @import "../bootstrap/overrides";
 
 @import "../../bootstrap5/scss/reboot";
+@import "../main/root";
 
 html {
     font-size: $font-rem-base-desktop-size;
@@ -44,7 +45,9 @@ body#tinymce {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    @include heading-base(true);
+    @include heading-base;
+    color: var(--#{$prefix}headings-color);
+    margin-bottom: var(--#{$prefix}headings-margin-bottom);
 }
 
 h1 {

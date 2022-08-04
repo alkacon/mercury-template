@@ -23,7 +23,7 @@
 
     .accessible {
         line-height: 1;
-        margin-bottom: $default-margin-small;
+        margin-bottom: var(--#{$prefix}margin);
         hyphens: initial;
     }
 
@@ -41,9 +41,9 @@
         width: $acc-icon-size;
         padding: 0 0 $acc-icon-size 0!important;
         display: inline-block;
-        color: $acc-icon-text-color;
-        background-color: $acc-icon-bg-color;
-        border-radius: $acc-icon-border-radius;
+        color: var(--#{$prefix}main-theme-fg);
+        background-color: var(--#{$prefix}main-theme);
+        border-radius: var(--#{$prefix}border-radius);
         margin-right: 10px;
         font-size: $h3-font-size;
 
@@ -86,7 +86,7 @@
             &::after {
                 display: block;
                 content: "";
-                border-right: 1px solid $acc-icon-text-color;
+                border-right: 1px solid var(--#{$prefix}main-theme-fg);
                 position: absolute;
                 height: 100%;
                 bottom: 0;

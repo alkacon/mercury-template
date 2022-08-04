@@ -106,7 +106,7 @@
         }
     }
 
-    @include media-breakpoint-my-down(xs) {
+    @include media-breakpoint-down(sm) {
         // remove bootstrap gutter on small screens
         // we expect to be in "full width" mode here
         margin-left: -0.5 * $grid-gutter-width;
@@ -136,7 +136,7 @@
             padding: $nav-side-padding;
 
             @if ($nav-side-boxed == false) {
-                @include media-breakpoint-my-down(xs) {
+                @include media-breakpoint-down(sm) {
                     padding-left: $grid-gutter-width-half;
                 }
             }

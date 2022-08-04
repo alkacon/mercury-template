@@ -86,14 +86,16 @@ html {
 
 // Headings
 h1, h2, h3, h4, h5, h6 {
-    @include heading-base(true);
+    @include heading-base;
+    color: var(--#{$prefix}headings-color);
+    margin-bottom: var(--#{$prefix}headings-margin-bottom);
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    @include heading-base(false);
+    @include heading-base;
 }
 
-@include media-breakpoint-my-down(md) {
+@include media-breakpoint-down(lg) {
     h1, .h1 {
         font-size: $h1-font-size-mobile;
     }
@@ -150,7 +152,7 @@ a {
         }
         &:focus,
         &:hover {
-            color: $link-hover-color;
+            color: var(--#{$prefix}link-hover-color);
         }
 
         &.fully {
@@ -162,25 +164,29 @@ a {
     }
 }
 
-@if ($linked-headings-color != none) {
-    a {
+a {
+    h1, h2, h3, h4, h5, h6 {
+        @if ($linked-headings-color != inherit) {
+            color: var(--#{$prefix}linked-headings-color);
+        }
+        text-decoration: $linked-headings-decoration;
+    }
+    &:hover {
         h1, h2, h3, h4, h5, h6 {
-            color: $linked-headings-color;
+            @if ($linked-headings-hover-color != inherit) {
+                color: var(--#{$prefix}linked-headings-hover-color);
+            }
+            text-decoration: $linked-headings-hover-decoration;
         }
     }
 }
-
-@if (($linked-headings-hover-color != none) or ($linked-headings-decoration != none)) {
+h1, h2, h3, h4, h5, h6 {
     a {
+        color: var(--#{$prefix}linked-headings-color);
+        text-decoration: $linked-headings-decoration;
         &:hover {
-            h1, h2, h3, h4, h5, h6 {
-                @if ($linked-headings-hover-color != none) {
-                    color: $linked-headings-hover-color;
-                }
-                @if ($linked-headings-decoration != none) {
-                    text-decoration: $linked-headings-decoration;
-                }
-            }
+            color: var(--#{$prefix}linked-headings-hover-color);
+            text-decoration: $linked-headings-hover-decoration;
         }
     }
 }
@@ -218,9 +224,9 @@ span.badge {
 
 
 // Colored badges
-@each $color-name, $bg-color, $highlight-color in $bg-colors {
+@each $color-name, $bg-color, $hl-color in $bg-colors {
 
-    span.badge-#{""+$color-name} {
+    span.badge-#{$color-name} {
         color: get-text-color($bg-color);
         background: $bg-color;
     }
@@ -229,7 +235,7 @@ span.badge {
 
 // Screen reader buttons with absolute position
 .sr-only-focusable-fixed {
-    @include sr-only-focusable();
+    @include visually-hidden-focusable();
     &:active,
     &:focus {
         position: fixed;

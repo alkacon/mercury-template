@@ -19,13 +19,6 @@
  * Source file: _root.scss
  */
 
-
-$copyright-padding:                         2px 4px !default;
-$copyright-font-size:                       8px !default;
-$copyright-color:                           $black !default;
-$copyright-bg-color:                        rgba($white, 0.6) !default;
-$copyright-opacity:                         0.8 !default;
-
 :root {
 
     // body
@@ -33,22 +26,117 @@ $copyright-opacity:                         0.8 !default;
     --#{$prefix}body-font-size:  #{$font-size-base};
     --#{$prefix}body-font-weight: #{$font-weight-base};
     --#{$prefix}body-line-height: #{$line-height-base};
+
+    // colors
     --#{$prefix}body-color: #{$body-color};
     --#{$prefix}body-bg: #{$body-bg};
 
+    --#{$prefix}link-color: #{$link-color};
+    --#{$prefix}link-hover-color: #{$link-hover-color};
+    --#{$prefix}link-fg-color: #{get-text-color($link-color)};
+    --#{$prefix}link-hover-fg-color: #{get-text-color($link-hover-color)};
+
+    --#{$prefix}main-theme: #{$main-theme};
+    --#{$prefix}main-theme-hover: #{$main-theme-hover};
+    --#{$prefix}main-theme-fg: #{get-text-color($main-theme)};
+    --#{$prefix}main-theme-hover-fg: #{get-text-color($main-theme-hover)};
+
+    --#{$prefix}headings-color: #{$headings-color};
+
+    @if ($linked-headings-color != inherit) {
+        --#{$prefix}linked-headings-color: #{$linked-headings-color};
+    }
+    @if ($linked-headings-hover-color != inherit) {
+        --#{$prefix}linked-headings-hover-color: #{$linked-headings-hover-color};
+    }
+    @if ($intro-headings-color != $main-theme) {
+        --#{$prefix}intro-headings-color: #{$intro-headings-color};
+    } @else {
+        --#{$prefix}intro-headings-color: var(--#{$prefix}main-theme);
+    }
+
+    --#{$prefix}highlight-color: #{$highlight-color};
+    --#{$prefix}highlight-fg-color: #{get-text-color($highlight-color)};
+    --#{$prefix}highlight-border-color: #{$highlight-border-color};
+    --#{$prefix}highlight-border-fg-color: #{get-text-color($highlight-border-color)};
+
+    --#{$prefix}disabled-color: #{$disabled-color};
+    --#{$prefix}disabled-fg-color: #{get-text-color($disabled-color)};
+
+    --#{$prefix}grey-lighter: #{$grey-lighter};
+    --#{$prefix}grey-light: #{$grey-light};
+    --#{$prefix}grey: #{$grey};
+
+    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+    --#{$prefix}main-theme-rgb: #{to-rgb($main-theme)};
+    --#{$prefix}highlight-color-rgb: #{to-rgb($highlight-color)};
+
+    --#{$prefix}nav-toggle-bg: #{$nav-toggle-bg};
+    --#{$prefix}nav-toggle-fg: #{$nav-toggle-fg};
+
+    @if ($btn-default != $main-theme) {
+        --#{$prefix}btn-bg: #{$btn-default};
+        --#{$prefix}btn-fg: #{get-text-color($btn-default)};
+    } @else {
+        --#{$prefix}btn-bg: var(--#{$prefix}main-theme);
+        --#{$prefix}btn-fg: var(--#{$prefix}main-theme-fg);
+    }
+    @if ($btn-default-hover != $main-theme-hover) {
+        --#{$prefix}btn-hover-bg: #{$btn-default-hover};
+        --#{$prefix}btn-hover-fg: #{get-text-color($btn-default-hover)};
+    } @else {
+        --#{$prefix}btn-hover-bg: var(--#{$prefix}main-theme-hover);
+        --#{$prefix}btn-hover-fg: var(--#{$prefix}main-theme-hover-fg);
+    }
+    --#{$prefix}btn-border: var(--#{$prefix}btn-fg);
+    --#{$prefix}btn-hover-border: var(--#{$prefix}btn-hover-fg);
+
     // fonts
-    --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
     @if ($font-family-headings != $font-family-base) {
         --#{$prefix}font-family-headings: #{inspect($font-family-headings)};
     } @else {
-        --#{$prefix}font-family-headings: var(--#{$prefix}font-family-base);
+        --#{$prefix}font-family-headings: var(--#{$prefix}body-font-family);
     }
     @if ($btn-font-family != $font-family-base) {
         --#{$prefix}btn-font-family: #{inspect($btn-font-family)};
     } @else {
-        --#{$prefix}btn-font-family: var(--#{$prefix}font-family-base);
+        --#{$prefix}btn-font-family: var(--#{$prefix}body-font-family);
     }
+    --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
 
+    // headings
+    @if ($font-weight-headings != $font-weight-base) {
+        --#{$prefix}font-weight-headings: #{inspect($font-weight-headings)};
+    } @else {
+        --#{$prefix}font-weight-headings: var(--#{$prefix}body-font-weight);
+    }
+    --#{$prefix}font-style-headings: #{$font-style-headings};
+
+    // border radius
+    --#{$prefix}border-radius: #{$default-border-radius};
+    --#{$prefix}btn-border-radius: #{$btn-border-radius};
+
+
+    // margins
+    --#{$prefix}box-padding: #{$box-padding};
+    --#{$prefix}box-padding-sm: calc(0.5 * var(--#{$prefix}box-padding));
+
+    --#{$prefix}element-margin: #{$default-margin};
+    --#{$prefix}element-margin-sm: calc(0.5 * var(--#{$prefix}element-margin));
+
+    --#{$prefix}margin: #{$paragraph-margin-bottom};
+    --#{$prefix}margin-xl: calc(2 * var(--#{$prefix}margin));
+    --#{$prefix}margin-sm: calc(0.5 * var(--#{$prefix}margin));
+
+    --#{$prefix}spacer: #{$spacer};
+    --#{$prefix}spacer-xl: calc(2 * var(--#{$prefix}spacer));
+    --#{$prefix}spacer-sm: calc(0.5 * var(--#{$prefix}spacer));
+
+    @if ($headings-margin-bottom != $paragraph-margin-bottom) {
+        --#{$prefix}headings-margin-bottom: #{$headings-margin-bottom};
+    } @else {
+        --#{$prefix}headings-margin-bottom: var(--#{$prefix}margin);
+    }
 
     // copyright
     --#{$prefix}copyright-padding: #{$copyright-padding};

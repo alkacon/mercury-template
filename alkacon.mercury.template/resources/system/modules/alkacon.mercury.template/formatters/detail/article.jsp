@@ -120,6 +120,9 @@
                                 --%>${authorName.Suffix.isSet ? authorName.Suffix.toString.concat(' ') : ''}<%--
                             --%></div><%----%>
                             </c:when>
+                            <c:otherwise>
+                                <div ${author.rdfaAttr}>${author}</div><%----%>
+                            </c:otherwise>
                         </c:choose>
                     </div><%----%>
                 </c:if>

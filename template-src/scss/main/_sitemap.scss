@@ -21,7 +21,14 @@
 
 .type-sitemap {
 
-    margin-bottom: $default-margin-small; // sitemap itself has a padding-bottom
+    --#{$prefix}sm-color: var(--#{$prefix}main-theme-hover-fg);
+    --#{$prefix}sm-bg-color: var(--#{$prefix}main-theme-hover);
+    --#{$prefix}sm-hover-color: var(--#{$prefix}main-theme-fg);
+    --#{$prefix}sm-hover-bg-color: var(--#{$prefix}main-theme);
+
+    --#{$prefix}sm-hor-spacer: #{$sitemap-hor-padding};
+    --#{$prefix}sm-ver-spacer: #{$sitemap-ver-padding};
+    --#{$prefix}sm-border-radius: #{$sitemap-border-radius};
 
     ul,
     li {
@@ -33,25 +40,25 @@
     li {
 
         a {
-            color: $sitemap-sub-text-color;
-            background-color: $sitemap-sub-bg-color;
+            color: var(--#{$prefix}sm-color);
+            background-color: var(--#{$prefix}sm-bg-color);
             font-size: $sitemap-font-size;
             line-height: $sitemap-line-height;
-            padding: $sitemap-ver-padding $sitemap-hor-padding;
+            padding: var(--#{$prefix}sm-ver-spacer) var(--#{$prefix}sm-hor-spacer);
             width: 100%;
             display: block;
             text-decoration: none;
 
             &:hover {
-                color: $sitemap-hover-text-color;
-                background-color: $sitemap-hover-bg-color;
+                color: var(--#{$prefix}sm-hover-color);
+                background-color: var(--#{$prefix}sm-hover-bg-color);
                 text-decoration: none;
             }
 
             &.tree-toggle {
 
                 position: relative;
-                padding-right: 3 * $sitemap-hor-padding;
+                padding-right: calc(3 * var(--#{$prefix}sm-hor-spacer));
 
                 &:after {
                     position: absolute;
@@ -59,8 +66,8 @@
                     font-family: ForkAwesome;
                     font-weight: normal;
                     content: "\f078";
-                    top: $sitemap-ver-padding;
-                    right: 0.9rem;
+                    top: var(--#{$prefix}sm-ver-spacer);
+                    right: var(--#{$prefix}sm-hor-spacer);
                     line-height: $sitemap-line-height;
                     transform: rotate(-180deg) translate(0,0);
                     transition: transform .33s;
@@ -75,27 +82,27 @@
         &.top {
             float: left;
             width: 100%;
-            margin-bottom: $default-margin-small;
-            @include round-corners($sitemap-border-radius, true);
+            margin-bottom: var(--#{$prefix}sm-ver-spacer);
+            @include round-corners(var(--#{$prefix}sm-border-radius), true);
 
             > a {
-                color: $sitemap-top-text-color;
-                background-color: $sitemap-top-bg-color;
+                color: var(--#{$prefix}sm-hover-color);
+                background-color: var(--#{$prefix}sm-hover-bg-color);
                 font-weight: $font-weight-bold;
             }
             &::after {
                 content: ' ';
                 display: block;
                 float: left;
-                padding-right: $sitemap-hor-padding;
+                padding-right: var(--#{$prefix}sm-hor-spacer);
             }
         }
     }
 
     .sitemap-col-6 > li.top {
         @include media-breakpoint-up(lg) {
-            width: calc(50% - #{$sitemap-hor-padding});
-            margin-right: $sitemap-hor-padding;
+            width: calc(50% - var(--#{$prefix}sm-hor-spacer));
+            margin-right: var(--#{$prefix}sm-hor-spacer);
 
             &:nth-of-type(2n+1) {
                 clear: both;
@@ -105,16 +112,16 @@
 
     .sitemap-col-4 > li.top {
         @include media-breakpoint-only(lg) {
-            width: calc(50% - #{$sitemap-hor-padding});
-            margin-right: $sitemap-hor-padding;
+            width: calc(50% - var(--#{$prefix}sm-hor-spacer));
+            margin-right: var(--#{$prefix}sm-hor-spacer);
             &:nth-of-type(2n+1) {
                 clear: both;
             }
         }
 
         @include media-breakpoint-up(xl) {
-            width: calc(33.333333% - #{$sitemap-hor-padding});
-            margin-right: $sitemap-hor-padding;
+            width: calc(33.333333% - var(--#{$prefix}sm-hor-spacer));
+            margin-right: var(--#{$prefix}sm-hor-spacer);
             &:nth-of-type(3n+1) {
                 clear: both;
             }
@@ -123,24 +130,24 @@
 
     .sitemap-col-3 > li.top {
         @include media-breakpoint-only(md) {
-            width: calc(50% - #{$sitemap-hor-padding});
-            margin-right: $sitemap-hor-padding;
+            width: calc(50% - var(--#{$prefix}sm-hor-spacer));
+            margin-right: var(--#{$prefix}sm-hor-spacer);
             &:nth-of-type(2n+1) {
                 clear: both;
             }
         }
 
         @include media-breakpoint-only(lg) {
-            width: calc(33.333333% - #{$sitemap-hor-padding});
-            margin-right: $sitemap-hor-padding;
+            width: calc(33.333333% - var(--#{$prefix}sm-hor-spacer));
+            margin-right: var(--#{$prefix}sm-hor-spacer);
             &:nth-of-type(3n+1) {
                 clear: both;
             }
         }
 
        @include media-breakpoint-up(xl) {
-            width: calc(25% - #{$sitemap-hor-padding});
-            margin-right: $sitemap-hor-padding;
+            width: calc(25% - var(--#{$prefix}sm-hor-spacer));
+            margin-right: var(--#{$prefix}sm-hor-spacer);
             &:nth-of-type(4n+1) {
                 clear: both;
             }
@@ -151,46 +158,28 @@
         > ul {
             // add padding for 3nd level
             li a {
-                padding-left: 2 * $sitemap-hor-padding;
+                padding-left: calc(2 * var(--#{$prefix}sm-hor-spacer));
             }
 
             > li > ul {
                 // add padding for 4rd level
                 li a {
-                    padding-left: 3 * $sitemap-hor-padding;
+                    padding-left: calc(3 * var(--#{$prefix}sm-hor-spacer));
                 }
 
                 > li > ul {
                     // add padding for 5th level
                     li a {
-                        padding-left: 4 * $sitemap-hor-padding;
+                        padding-left: calc(4 * var(--#{$prefix}sm-hor-spacer));
                     }
 
                     > li > ul {
                         // add padding for 6th level
                         li a {
-                            padding-left: 5 * $sitemap-hor-padding;
+                            padding-left: calc(5 * var(--#{$prefix}sm-hor-spacer));
                         }
                     }
                 }
-            }
-        }
-    }
-}
-
-// Colored sitemap options
-
-@each $type-name, $bg-color, $highlight-color in $sitemap-colors {
-
-    .type-sitemap.color-#{""+$type-name} {
-        li a,
-        li.top > a {
-            color: get-text-color($bg-color);
-            background-color: $bg-color;
-
-            &:hover {
-                color: get-text-color($highlight-color);
-                background-color: $highlight-color;
             }
         }
     }

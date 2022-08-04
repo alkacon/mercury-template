@@ -248,8 +248,8 @@
         border: none;
         cursor: pointer;
         transition: background $nav-animation-time;
-        color: $nav-toggle-text;
-        background-color: $nav-toggle-bg;
+        color: var(--#{$prefix}nav-toggle-fg);
+        background-color: var(--#{$prefix}nav-toggle-bg);
         z-index: $above-oc-z-index + 1; // nav toggle should be above OC edit points
         float: right;
 
@@ -260,7 +260,7 @@
             left: round(0.2 * $nav-toggle-size);
             right: round(0.2 * $nav-toggle-size);
             height: $nav-toggle-stroke-height;
-            background: $nav-toggle-text;
+            background: var(--#{$prefix}nav-toggle-fg);
             transition: background 0s $nav-animation-time;
 
             &::before,
@@ -270,7 +270,7 @@
                 left: 0;
                 width: 100%;
                 height: $nav-toggle-stroke-height;
-                background-color: $nav-toggle-text;
+                background-color: var(--#{$prefix}nav-toggle-fg);
                 content: "";
                 transition-duration: $nav-animation-time, $nav-animation-time;
                 transition-delay: $nav-animation-time, 0s;
@@ -290,8 +290,6 @@
         }
 
         &.active {
-            background-color: $nav-toggle-bg-active;
-
             span {
                 background: none;
 
@@ -313,7 +311,7 @@
         }
 
         @if ($nav-mobile-smaller-xs-toggle != false) {
-            @include media-breakpoint-my-down(xs) {
+            @include media-breakpoint-down(sm) {
                 // on very small screens use a smaller button
                 // otherwise the button may become larger than the head itself
                 width: round($nav-toggle-size-xs);
@@ -390,7 +388,7 @@
                 width: $nav-mobile-width-md;
             }
         }
-        @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl)) {
+        @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl) or ($nav-breakpoint-mobile == xxl)) {
             @include media-breakpoint-up(lg) {
                 .nav-main-group  {
                     width: $nav-mobile-width-lg;
@@ -452,7 +450,7 @@
             @include media-breakpoint-up(md) {
                 #{$nav-mobile-position}: -1 * $nav-mobile-width-md;
             }
-            @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl)) {
+            @if (($nav-breakpoint-mobile == lg) or ($nav-breakpoint-mobile == xl) or or ($nav-breakpoint-mobile == xxl)) {
                 @include media-breakpoint-up(lg) {
                     #{$nav-mobile-position}: -1 * $nav-mobile-width-lg;
                 }
@@ -480,7 +478,7 @@
             #{$nav-mobile-position}: $nav-mobile-toggle-side;
 
             @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
-                @include media-breakpoint-my-down(xs) {
+                @include media-breakpoint-down(sm) {
                     #{$nav-mobile-position}:  $nav-mobile-toggle-side-xs;
                 }
             }
@@ -502,7 +500,7 @@
                 }
 
                 @if ($nav-mobile-box-offset-xs != $nav-mobile-box-offset) {
-                    @include media-breakpoint-my-down(xs) {
+                    @include media-breakpoint-down(sm) {
                         li.expand > a::after {
                             right: $nav-mobile-box-offset-xs;
                         }
@@ -971,8 +969,8 @@
                 left: 0; // this will be modified by JS later
                 position: absolute;
                 margin: 0;
-                width: calc(#{container-useable-width(lg)} + #{2 * $default-margin});
-                padding: $default-margin $default-margin 0 $default-margin;
+                width: calc(#{container-useable-width(lg, true)} + (2 * var(--#{$prefix}spacer-xl)));
+                padding: var(--#{$prefix}spacer-xl) var(--#{$prefix}spacer-xl) 0 var(--#{$prefix}spacer-xl);
                 background-color: $nav-megamenu-bg;
             }
 
@@ -982,7 +980,12 @@
 
             @include media-breakpoint-up(xl) {
                 .nav-mega-menu {
-                    width: calc(#{container-useable-width(xl)} + #{2 * $default-margin});
+                    width: calc(#{container-useable-width(xl, true)} + 2 * var(--#{$prefix}spacer-xl));
+                }
+            }
+            @include media-breakpoint-up(xxl) {
+                .nav-mega-menu {
+                    width: calc(#{container-useable-width(xxl, true)} + 2 * var(--#{$prefix}spacer-xl));
                 }
             }
         }
@@ -1018,8 +1021,8 @@
 
 #mega-menu-editor {
     background: $grey;
-    padding-top: $default-margin;
-    padding-bottom: $default-margin;
+    padding-top: var(--#{$prefix}spacer-xl);
+    padding-bottom: var(--#{$prefix}spacer-xl);
     height: calc(100vh - #{$opencms-toolbar-height});
 
     > .container {
@@ -1031,7 +1034,7 @@
     }
 
     .nav-main-items,
-    li.mega, {
+    li.mega {
         display: block;
     }
 
@@ -1042,7 +1045,7 @@
         display: block;
         overflow: visible;
         position: static;
-        margin-left: calc(#{$grid-gutter-width-half} - #{$default-margin});
+        margin-left: calc(#{$grid-gutter-width-half} - var(--#{$prefix}spacer-xl));
         animation-name: none;
     }
 }

@@ -61,11 +61,12 @@
                         <c:set var="tabId" value="${itemId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" />
                         <c:set var="ignore" value="${tabIds.add(tabId)}" />
                         <mercury:nl />
-                        <li><%----%>
+                        <li role="presentation"><%----%>
                             <button <%--
                             --%>id="b_${tabId}" <%--
                             --%>class="tab-toggle${status.first ? ' active' : ''}" <%--
                             --%>type="button" <%--
+                            --%>role="tab" <%--
                             --%>aria-controls="${tabId}" <%--
                             --%>data-bs-target="#${tabId}" <%--
                             --%>data-bs-toggle="tab"><%----%>
@@ -93,7 +94,6 @@
                         <mercury:nl />
                         <div <%--
                         --%>id="${tabIds[status.index]}" <%--
-                        --%>role="tabpanel" <%--
                         --%>aria-labelledby="b_${tabIds[status.index]}" <%--
                         --%>class="tab-pane fade ${status.first? 'show active':''}" ><%----%>
                             <mercury:nl />

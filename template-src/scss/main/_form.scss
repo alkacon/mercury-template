@@ -24,8 +24,21 @@
     @if ($form-font-family != $font-family-base) {
         --#{$prefix}form-font-family: #{inspect($form-font-family)};
     } @else {
-        --#{$prefix}form-font-family: var(--#{$prefix}font-family-base);
+        --#{$prefix}form-font-family: var(--#{$prefix}body-font-family);
     }
+    @if ($form-radio-checked-color != $main-theme) {
+        --#{$prefix}form-radio-checked-color: #{$form-radio-checked-color};
+    } @else {
+        --#{$prefix}form-radio-checked-color: var(--#{$prefix}main-theme);
+    }
+    @if ($form-input-border-radius != $btn-border-radius) {
+        --#{$prefix}form-input-border-radius: #{$form-input-border-radius};
+    } @else {
+        --#{$prefix}form-input-border-radius: var(--#{$prefix}btn-border-radius);
+    }
+
+    --#{$prefix}form-field-ver-padding: var(--#{$prefix}spacer-xl);
+    --#{$prefix}form-field-hor-padding: calc(1.5 * var(--#{$prefix}form-field-ver-padding));
 
     margin: 0;
     outline: none;
@@ -34,7 +47,7 @@
     line-height: $form-line-height;
     font-family: var(--#{$prefix}form-font-family);
     border: $form-border;
-    @include round-corners($form-border-radius);
+    @include round-corners(var(--#{$prefix}border-radius));
     @include use-hyphens-text;
     @if ($form-text-color != inherit) {
         color: $form-text-color;
@@ -45,18 +58,18 @@
 
     &.element,
     &.subelement {
-        margin-bottom: $default-margin;
+        margin-bottom: var(--#{$prefix}element-margin);
     }
 
     header {
         border-bottom: $form-border;
-        padding: $form-field-ver-padding $form-field-hor-padding;
+        padding: var(--#{$prefix}form-field-ver-padding) var(--#{$prefix}form-field-hor-padding);
         @extend .h4;
     }
 
     fieldset {
         display: block;
-        padding: $form-field-ver-padding $form-field-hor-padding;
+        padding: var(--#{$prefix}form-field-ver-padding) var(--#{$prefix}form-field-hor-padding);
         border: none;
 
         p:last-child {
@@ -76,14 +89,14 @@
 
     .webform_subfields,
     section {
-        margin-bottom: $form-field-ver-padding;
+        margin-bottom: var(--#{$prefix}form-field-ver-padding);
         &:last-child {
             margin-bottom: 0 !important;
         }
     }
     footer {
         display: block;
-        padding: $form-field-ver-padding $form-field-hor-padding;
+        padding: var(--#{$prefix}form-field-ver-padding) var(--#{$prefix}form-field-hor-padding);
         border-top: $form-border;
     }
     footer:after {
@@ -96,10 +109,11 @@
     .label {
         display: block;
         font-weight: $form-font-weight-label;
+        margin-bottom: var(--#{$prefix}spacer-sm);
     }
 
     .note {
-        margin-top: $default-margin-verysmall;
+        margin-top: var(--#{$prefix}spacer-sm);
         padding: 0;
         font-size: 100%;
         line-height: 1.5;
@@ -144,7 +158,7 @@
         outline: none;
         border-width: 1px;
         border-style: solid;
-        @include round-corners($form-input-border-radius, false, true);
+        @include round-corners(var(--#{$prefix}form-input-border-radius));
         background-color: $form-input-background;
         appearance: none;
 
@@ -159,15 +173,13 @@
         display: flex;
         flex: 1 1 auto;
 
-        @if ($form-input-border-radius > 0) {
-            input {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-            button {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-            }
+        input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
         }
         input {
             border-right-style: none;
@@ -189,7 +201,7 @@
         float: none;
         height: calc(100% - 8px);
         line-height: 31px;
-        padding: 0 $default-margin;
+        padding: 0 var(--#{$prefix}spacer-xl);
         font-size: 80%;
 
         input {
@@ -301,7 +313,7 @@
 
         input:checked + i::after {
             opacity: 1;
-            color: $form-radio-checked-color;
+            color: var(--#{$prefix}form-radio-checked-color);
         }
     }
 
@@ -351,12 +363,12 @@
 
             &:checked + i::before {
                 right: 36px;
-                background-color: $form-radio-checked-color;
+                background-color: var(--#{$prefix}form-radio-checked-color);
             }
             &:checked + i::after {
                 content: 'ON';
                 text-align: right;
-                color: $form-radio-checked-color;
+                color: var(--#{$prefix}form-radio-checked-color);
             }
         }
 
@@ -449,13 +461,11 @@
             border-bottom-width: 1px;
             border-bottom-style: solid;
         }
-        @if ($form-input-border-radius != 0) {
-            .icon-append {
-                border-bottom-left-radius: $form-input-border-radius;
-            }
-            .icon-prepend {
-                border-bottom-right-radius: $form-input-border-radius;
-            }
+        .icon-append {
+            border-bottom-left-radius: var(--#{$prefix}form-input-border-radius);
+        }
+        .icon-prepend {
+            border-bottom-right-radius: var(--#{$prefix}form-input-border-radius);
         }
     }
 
@@ -477,10 +487,10 @@
 
     // checked state
     .radio input + i::after {
-        background-color: $main-theme;
+        background-color: var(--#{$prefix}form-radio-checked-color);
     }
     .checkbox input + i::after {
-        color: $form-radio-checked-color;
+        color: var(--#{$prefix}form-radio-checked-color);
     }
     .radio,
     .checkbox,
@@ -496,7 +506,7 @@
     }
 
     .checkbox i {
-        @include round-corners($form-input-border-radius);
+        @include round-corners(var(--#{$prefix}form-input-border-radius));
     }
 
     // error state
@@ -560,9 +570,9 @@
     .input {
         .captcha {
             background-color: $form-captcha-background;
-            margin-bottom: $default-margin-small;
+            margin-bottom: var(--#{$prefix}spacer);
             border: $form-captcha-border;
-            @include round-corners($form-input-border-radius);
+            @include round-corners(var(--#{$prefix}form-input-border-radius));
             overflow: hidden;
 
             img {
@@ -571,15 +581,15 @@
         }
     }
 
-    @include media-breakpoint-my-down(xs) {
+    @include media-breakpoint-down(sm) {
         header,
         footer,
         fieldset {
-            padding: $form-field-ver-padding-xs $form-field-hor-padding-xs;
+            padding: calc(0.5 * var(--#{$prefix}form-field-ver-padding)) calc(0.5 * var(--#{$prefix}form-field-hor-padding));
         }
 
         section {
-            margin-bottom: $form-field-hor-padding-xs;
+            margin-bottom: calc(0.5 * var(--#{$prefix}form-field-hor-padding));
         }
 
         .input input,
@@ -608,7 +618,8 @@
         }
 
         .inline-group {
-            margin: 0 -30px #{-1 * $default-margin-verysmall} 0;
+            margin-right: -30px;
+            margin-bottom: calc(-1 * var(--my-p-margin-sm));
 
             &::after {
                 content: '';
@@ -620,33 +631,21 @@
             .checkbox {
                 float: left;
                 margin-right: 30px;
+                margin-bottom: var(--my-p-margin-sm);
             }
         }
 
         .webform_subfields fieldset {
-            padding-left: $form-field-hor-padding;
-            padding-right: $form-field-hor-padding;
-        }
-    }
-
-    @if ($btn-border-radius == 0) {
-        // must force 0 radius on buttons otherwise Safari will add radius
-        .btn {
-            border-radius: 0;
+            padding-left: var(--#{$prefix}form-field-hor-padding);
+            padding-right: var(--#{$prefix}form-field-hor-padding);
         }
     }
 
     // compact spacing form layout
     &.compact {
-        header,
-        footer,
-        fieldset {
-            padding: $default-margin-small;
-        }
 
-        section {
-            margin-bottom: $default-margin-small;
-        }
+        --#{$prefix}form-field-ver-padding: var(--#{$prefix}spacer);
+        --#{$prefix}form-field-hor-padding: var(--#{$prefix}form-field-ver-padding);
 
         .input input,
         .select select,
@@ -697,7 +696,7 @@
         fieldset {
             border: none;
             padding: 0;
-            margin-bottom: $default-margin-small;
+            margin-bottom: var(--#{$prefix}spacer);
         }
     }
 
@@ -727,32 +726,32 @@ html.keyboard-nav {
 .type-webform  {
 
     .form-header {
-        margin-bottom: $default-margin;
+        margin-bottom: var(--#{$prefix}element-margin);
     }
 
     .form-footer {
-        margin-top: $default-margin;
+        margin-top: var(--#{$prefix}element-margin);
 
         > p:last-of-type {
             margin-bottom: 0;
         }
     }
 
-    @include media-breakpoint-my-down(xs) {
+    @include media-breakpoint-down(sm) {
         .table.table-responsive {
             font-size: 12px; // table might ge too big otherwise
         }
     }
 
     .btn.resetbutton {
-        @include button-color($grey-light, $btn-default-hover);
+        @include button-color-setvars($grey-light, $btn-default-hover);
     }
 
     .formbtn-row {
         display: block;
 
         .formbtn {
-            margin-bottom: $default-margin;
+            margin-bottom: var(--#{$prefix}spacer-xl);
             &:last-of-type {
                 margin-bottom: 0;
             }
@@ -766,7 +765,7 @@ html.keyboard-nav {
     }
 
     table.webform-input {
-        background-color: $body-bg;
+        background-color: var(--#{$prefix}body-bg);
 
         td.label {
             white-space: nowrap;
@@ -784,8 +783,8 @@ html.keyboard-nav {
 
             .formbtn {
                 margin-bottom: 0;
-                margin-left: $default-margin-small;
-                margin-right: $default-margin-small;
+                margin-left: var(--#{$prefix}spacer);
+                margin-right: var(--#{$prefix}spacer);
                 width: auto;
 
                 &.btn,
@@ -800,7 +799,7 @@ html.keyboard-nav {
     .checkpage {
         // checkpage (optional confirmation page from webform) requires some special formatting
         .correctaction {
-            margin-bottom: $default-margin;
+            margin-bottom: var(--#{$prefix}element-margin);
         }
 
         @include media-breakpoint-up(md) {

@@ -5,3 +5,5 @@
 /build/
 /output/
 /module-export.sh
+*.ignore.txt
+.DS_Store

@@ -1,4 +1,4 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xsd:schema version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/onclick-activation.xsd"/>
@@ -14,7 +14,7 @@
     <xsd:complexType name="OpenCmsFlexible">
         <xsd:sequence>
             <xsd:element name="Title" type="OpenCmsString" />
-            <xsd:element name="Code" type="OpenCmsHtml" />
+            <xsd:element name="Code" type="OpenCmsString" />
             <xsd:element name="RequireReload" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="RequireCookies" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="OnclickActivation" type="OpenCmsOnclickActivation" minOccurs="0" />
@@ -25,6 +25,7 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <versiontransformation>/system/modules/alkacon.mercury.template/schemas/transformations/flexible.xslt</versiontransformation>
             <resourcebundles>
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>

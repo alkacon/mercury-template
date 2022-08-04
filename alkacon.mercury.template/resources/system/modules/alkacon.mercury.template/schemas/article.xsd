@@ -1,8 +1,9 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xsd:schema version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/image.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/author.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/teaser-data.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
@@ -13,6 +14,7 @@
         <xsd:sequence>
             <xsd:element name="Article" type="OpenCmsArticle" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
+        <xsd:attribute name="version" type="xsd:int" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="OpenCmsArticle">
@@ -23,7 +25,7 @@
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" minOccurs="1" maxOccurs="100" />
-            <xsd:element name="Author" type="OpenCmsString" />
+            <xsd:element name="Author" type="OpenCmsAuthor"  minOccurs="0" maxOccurs="1" />
             <xsd:element name="AuthorMail" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
@@ -37,6 +39,7 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <versiontransformation>/system/modules/alkacon.mercury.template/schemas/transformations/article.xslt</versiontransformation>
             <resourcebundles>
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>
@@ -98,12 +101,6 @@
                     <PropertyName>Author</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Author)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Author.help)]]></Description>
-                    <Widget>string</Widget>
-                    <Default><![CDATA[%(currentuser.firstname) %(currentuser.lastname)]]></Default>
-                    <RuleRegex>.+</RuleRegex>
-                    <RuleType>error</RuleType>
-                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
-                    <Synchronization>true</Synchronization>
                 </Setting>
                 <Setting>
                     <PropertyName>AuthorMail</PropertyName>

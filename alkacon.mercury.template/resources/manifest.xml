@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.51</version>
+		<version>13.0.56</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6177,6 +6177,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/author.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/author.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>b6888238-124b-11ed-9c96-0242ac11002b</uuidstructure>
+			<uuidresource>b6888239-124b-11ed-9c96-0242ac11002b</uuidresource>
+			<datecreated>Tue, 02 Aug 2022 10:13:11 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for author information]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/availability.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/availability.xsd</destination>
 			<type>plain</type>
@@ -6751,6 +6768,40 @@
 					<value><![CDATA[Nested XSD for teaser data]]></value>
 				</property>
 			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>system/modules/alkacon.mercury.template/schemas/transformations</destination>
+			<type>folder</type>
+			<uuidstructure>d611aebd-1250-11ed-9c96-0242ac11002b</uuidstructure>
+			<datecreated>Tue, 02 Aug 2022 10:49:51 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/transformations/article.xslt</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/transformations/article.xslt</destination>
+			<type>plain</type>
+			<uuidstructure>f46ab1f0-1250-11ed-9c96-0242ac11002b</uuidstructure>
+			<uuidresource>f46ab1f1-1250-11ed-9c96-0242ac11002b</uuidresource>
+			<datecreated>Tue, 02 Aug 2022 10:50:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/transformations/flexible.xslt</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/transformations/flexible.xslt</destination>
+			<type>plain</type>
+			<uuidstructure>5fb52f63-1270-11ed-9c96-0242ac11002b</uuidstructure>
+			<uuidresource>5fb52f64-1270-11ed-9c96-0242ac11002b</uuidresource>
+			<datecreated>Tue, 02 Aug 2022 14:35:36 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>

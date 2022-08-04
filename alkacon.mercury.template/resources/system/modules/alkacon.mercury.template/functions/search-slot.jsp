@@ -28,9 +28,8 @@
 <div class="element type-search-slot pivot${setCssWrapperAll}"><%----%>
     <mercury:nl/>
 
-    <c:set var="defaultDetailUri" value="${cms.functionDetailPage['##DEFAULT##']}" />
-    <c:set var="searchPageUri" value="${cms.functionDetailPage['Search page']}" />
-    <c:if test="${(searchPageUri eq defaultDetailUri) or not fn:startsWith(searchPageUri, '/')}">
+    <c:set var="searchPageUri" value="${cms.functionDetailPageExact['Search page']}" />
+    <c:if test="${not fn:startsWith(searchPageUri, '/')}">
         <c:set var="searchPageUri" value="${null}" />
     </c:if>
 

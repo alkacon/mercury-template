@@ -1,0 +1,46 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="AuthorData" type="OpenCmsAuthorData"/>
+
+    <xsd:complexType name="OpenCmsAuthorData">
+        <xsd:sequence>
+            <xsd:element name="Author" type="OpenCmsAuthor" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsAuthor">
+        <xsd:choice>
+            <xsd:element name="Name" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="LinkToPerson" type="OpenCmsVfsFile" minOccurs="0" />
+        </xsd:choice>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Name</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Author.Name)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Author.Name.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(currentuser.firstname) %(currentuser.lastname)]]></Default>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkToPerson</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Author.LinkToPerson)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Author.LinkToPerson.help)]]></Description>
+                    <Widget>file</Widget>
+                    <WidgetConfig>selectabletypes=m-person</WidgetConfig>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

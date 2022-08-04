@@ -25,11 +25,7 @@
 <c:set var="showImageLink"              value="${setting.showImageLink.toBoolean}" />
 
 <c:if test="${showSearch}">
-    <c:set var="defaultDetailUri" value="${cms.functionDetailPage['##DEFAULT##']}" />
-    <c:set var="searchPageUri" value="${cms.functionDetailPage['Search page']}" />
-    <c:if test="${(searchPageUri eq defaultDetailUri) or not fn:startsWith(searchPageUri, '/')}">
-        <c:set var="showSearch" value="${false}" />
-    </c:if>
+    <c:set var="searchPageUri" value="${cms.functionDetailPageExact['Search page']}" />
 </c:if>
 
 <c:set var="logoElements" value="${cms.elementsInContainers['header-image']}" />
@@ -254,7 +250,7 @@
             ${navPluginHtml}
         </c:if>
 
-        <c:if test="${showSearch}">
+        <c:if test="${not empty searchPageUri}">
             <li id="nav-main-search" class="expand"><%----%>
                 <a href="${searchPageUri}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
                     <span class="search search-btn fa fa-search"></span><%----%>

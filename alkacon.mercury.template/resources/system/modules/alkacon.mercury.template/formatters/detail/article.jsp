@@ -105,7 +105,22 @@
                 <c:if test="${showAuthor}">
                     <div class="info person"><%----%>
                         <span class="sr-only"><fmt:message key="msg.page.sr.by" /></span><%----%>
-                        <div ${author.rdfaAttr}>${author}</div><%----%>
+                        <c:choose>
+                            <c:when test="${author.value.Name.isSet}">
+                                <div ${author.value.Name.rdfaAttr}>${author.value.Name}</div><%----%>
+                            </c:when>
+                            <c:when test="${author.value.LinkToPerson.isSet}">
+                                <c:set var="authorContent" value="${author.value.LinkToPerson.toResource.toXml}" />
+                                <c:set var="authorName" value="${authorContent.value.Name.value}" />
+                                <div><%--
+                                --%>${authorName.Title.isSet ? authorName.Title.toString.concat(' ') : ''}<%--
+                                --%>${authorName.FirstName.isSet ? authorName.FirstName.toString.concat(' ') : ''}<%-- 
+                                --%>${authorName.MiddleName.isSet ? authorName.MiddleName.toString.concat(' ') : ''}<%--
+                                --%>${authorName.LastName.isSet ? authorName.LastName.toString.concat(' ') : ''}<%--
+                                --%>${authorName.Suffix.isSet ? authorName.Suffix.toString.concat(' ') : ''}<%--
+                            --%></div><%----%>
+                            </c:when>
+                        </c:choose>
                     </div><%----%>
                 </c:if>
             </div><%----%>

@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd" version="1">
   <Flexible language="en">
     <Title><![CDATA[Slideshare presentation]]></Title>
-    <Code name="Code0">
-      <links>
-        <link name="link0" internal="false" type="A">
-          <target><![CDATA[https://www.slideshare.net/slideshow/embed_code/key/i3PodN533aT4Pe]]></target>
-        </link>
-      </links>
-      <content><![CDATA[<iframe src="%(link0)" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> ]]></content>
-    </Code>
+    <Code><![CDATA[<iframe src="https://www.slideshare.net/slideshow/embed_code/key/i3PodN533aT4Pe" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> ]]></Code>
     <OnclickActivation>
       <Heading><![CDATA[Click here to show the presentation]]></Heading>
       <Notice><![CDATA[If you click this box, data will be loaded from Slideshares servers directly. Slideshare may use tracking cookies that impact your privacy. ]]></Notice>

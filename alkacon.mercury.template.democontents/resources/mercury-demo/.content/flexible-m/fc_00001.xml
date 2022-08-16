@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd" version="1">
   <Flexible language="en">
     <Title><![CDATA[CSS Background Classes]]></Title>
-    <Code name="Code0">
-      <links>
-        <link name="link0" internal="true" type="A">
-          <target><![CDATA[]]></target>
-          <anchor><![CDATA[]]></anchor>
-        </link>
-      </links>
-      <content><![CDATA[<!--
+    <Code><![CDATA[<!--
 
 Visualization of all available Background colors.
 Output is created from JavaScript using the color codes compiled into the theme.
@@ -23,11 +16,10 @@ HTML for the boxes is using Mercury tiles.
 
 <div class="lead">box box-$(name)</div>
 <div>$(value)</div>
-<div><a href="%(link0)">Link</a></div>
+<div><a href="#">Link</a></div>
 
 </div>
 </div>
-</div>]]></content>
-    </Code>
+</div>]]></Code>
   </Flexible>
 </FlexibleData>

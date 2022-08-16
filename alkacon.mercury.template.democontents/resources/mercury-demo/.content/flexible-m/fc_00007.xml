@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd" version="1">
   <Flexible language="de">
     <Title><![CDATA[Die OpenCms Mailing-Liste]]></Title>
-    <Code name="Code0">
-      <links/>
-      <content><![CDATA[<form method="post" action="http://lists.opencms.org/mailman/subscribe/opencms-dev" class="styled-form compact no-border no-bg" autocomplete="off">
+    <Code><![CDATA[<form method="post" action="http://lists.opencms.org/mailman/subscribe/opencms-dev" class="styled-form compact no-border no-bg" autocomplete="off">
 
 <fieldset>
     <section>
@@ -40,14 +38,11 @@
 
 </form>
 
-]]></content>
-    </Code>
+]]></Code>
   </Flexible>
   <Flexible language="en">
     <Title><![CDATA[The OpenCms mailing list form]]></Title>
-    <Code name="Code0">
-      <links/>
-      <content><![CDATA[<form method="post" action="https://lists.opencms.org/mailman/subscribe/opencms-dev" class="styled-form compact no-border no-bg" autocomplete="off">
+    <Code><![CDATA[<form method="post" action="https://lists.opencms.org/mailman/subscribe/opencms-dev" class="styled-form compact no-border no-bg" autocomplete="off">
 
 <fieldset>
     <section>
@@ -81,7 +76,6 @@
 </footer>
 
 </form>
-]]></content>
-    </Code>
+]]></Code>
   </Flexible>
 </FlexibleData>

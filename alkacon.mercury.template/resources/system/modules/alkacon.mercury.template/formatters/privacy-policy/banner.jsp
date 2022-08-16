@@ -29,7 +29,7 @@
 <c:set var="linkImprintUri" value="${value.LinkImprint.value.URI.toLink}" />
 <c:if test="${empty linkImprintUri}">
     <c:set var="linkImprintUri" value="${cms.functionDetailPageExact['Imprint']}" />
-    <c:if test="${not fn:startsWith(linkImprintUri, '/')}">
+    <c:if test="${not fn:startsWith(linkImprintUri, '/') and not fn:startsWith(linkImprintUri, 'http')}">
         <c:set var="linkImprintUri" value="${null}" />
     </c:if>
 </c:if>
@@ -44,7 +44,7 @@
 <c:set var="linkPolicyUri" value="${value.LinkPolicy.value.URI.toLink}" />
 <c:if test="${empty linkPolicyUri}">
     <c:set var="linkPolicyUri" value="${cms.functionDetailPageExact['Datenschutz']}" />
-    <c:if test="${not fn:startsWith(linkPolicyUri, '/')}">
+    <c:if test="${not fn:startsWith(linkPolicyUri, '/') and not fn:startsWith(linkPolicyUri, 'http')}">
         <c:set var="linkPolicyUri" value="${null}" />
     </c:if>
 </c:if>
@@ -59,7 +59,7 @@
 <c:set var="linkLegalUri" value="${value.LinkLegal.value.URI.toLink}" />
 <c:if test="${empty linkLegalUri}">
     <c:set var="linkLegalUri" value="${cms.functionDetailPageExact['Rechtliche Hinweise']}" />
-    <c:if test="${not fn:startsWith(linkLegalUri, '/')}">
+    <c:if test="${not fn:startsWith(linkLegalUri, '/') and not fn:startsWith(linkLegalUri, 'http')}">
         <c:set var="linkLegalUri" value="${null}" />
     </c:if>
 </c:if>

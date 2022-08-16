@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd" version="1">
   <Flexible language="en">
     <Title><![CDATA[CSS Text and Link Classes]]></Title>
-    <Code name="Code0">
-      <links>
-        <link name="link0" internal="true" type="A">
-          <target><![CDATA[]]></target>
-          <anchor><![CDATA[]]></anchor>
-        </link>
-        <link name="link1" internal="true" type="A">
-          <target><![CDATA[]]></target>
-          <anchor><![CDATA[]]></anchor>
-        </link>
-      </links>
-      <content><![CDATA[<!--
+    <Code><![CDATA[<!--
 
 Visualization of all available text / link color options.
 Output is created from JavaScript using the color codes compiled into the theme.
@@ -27,9 +16,9 @@ HTML for the boxes is using Mercury Tiles.
 <div class="tile-col col-md-6 col-lg-4">
 
 <div class="bo-1 bo-grey links-$(name) $(background)">
-<div class="lead"><a href="%(link0)">links-$(name)</a></div>
+<div class="lead"><a href="#">links-$(name)</a></div>
 <p>
-<a href="%(link1)">
+<a href="#">
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 <em>$(value)</em>
 </a>
@@ -69,7 +58,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 </div>
 
 </div>
-</div>]]></content>
-    </Code>
+</div>]]></Code>
   </Flexible>
 </FlexibleData>

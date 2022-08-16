@@ -1,132 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd">
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd" version="1">
   <Flexible language="de">
     <Title><![CDATA[In den sozialen Medien]]></Title>
-    <Code name="Code0">
-      <links>
-        <link name="link0" internal="false" type="A">
-          <target><![CDATA[http://facebook.com/opencms/]]></target>
-        </link>
-        <link name="link1" internal="false" type="A">
-          <target><![CDATA[http://twitter.com/opencms/]]></target>
-        </link>
-        <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://www.xing.com/communities/groups/opencms-usergroup-7901-1054980]]></target>
-        </link>
-        <link name="link3" internal="false" type="A">
-          <target><![CDATA[http://www.slideshare.com/AlkaconOpenCms]]></target>
-        </link>
-        <link name="link4" internal="false" type="A">
-          <target><![CDATA[http://www.youtube.com/alkacon]]></target>
-        </link>
-        <link name="link5" internal="false" type="A">
-          <target><![CDATA[http://www.github.com/alkacon/opencms-core]]></target>
-        </link>
-        <link name="link6" internal="false" type="A">
-          <target><![CDATA[http://www.opencms.org/en/home/rss-news.xml]]></target>
-        </link>
-      </links>
-      <content><![CDATA[<div>
+    <Code><![CDATA[<div>
 <ul class="social-icons">
-<li class="facebook"><a target="_blank" rel="noopener" title="OpenCms auf Facebook" href="%(link0)">
+<li class="facebook"><a target="_blank" rel="noopener" title="OpenCms auf Facebook" href="http://facebook.com/opencms/">
 <span class="fa fa-facebook"></span>
 <span class="sr-only">OpenCms auf Facebook</span>
 </a></li>
 
-<li class="twitter"><a target="_blank" rel="noopener" title="OpenCms auf Twitter" href="%(link1)">
+<li class="twitter"><a target="_blank" rel="noopener" title="OpenCms auf Twitter" href="http://twitter.com/opencms/">
 <span class="fa fa-twitter"></span>
 <span class="sr-only">OpenCms auf Twitter</span>
 </a></li>
 
-<li class="xing"><a target="_blank" rel="noopener" title="OpenCms auf Xing" href="%(link2)">
+<li class="xing"><a target="_blank" rel="noopener" title="OpenCms auf Xing" href="https://www.xing.com/communities/groups/opencms-usergroup-7901-1054980">
 <span class="fa fa-xing"></span>
 <span class="sr-only">OpenCms auf Xing</span>
 </a></li>
 
-<li class="slideshare"><a target="_blank" rel="noopener" title="OpenCms auf SlideShare" href="%(link3)">
+<li class="slideshare"><a target="_blank" rel="noopener" title="OpenCms auf SlideShare" href="http://www.slideshare.com/AlkaconOpenCms">
 <span class="fa fa-slideshare"></span>
 <span class="sr-only">OpenCms auf SlideShare</span>
 </a></li>
 
-<li class="youtube"><a target="_blank" rel="noopener" title="OpenCms auf YouTube" href="%(link4)">
+<li class="youtube"><a target="_blank" rel="noopener" title="OpenCms auf YouTube" href="http://www.youtube.com/alkacon">
 <span class="fa fa-youtube"></span>
 <span class="sr-only">OpenCms auf YouTube</span>
 </a></li>
 
-<li class="github"><a target="_blank" rel="noopener" title="OpenCms Quellcode auf GitHub" href="%(link5)"><span class="fa fa-github"></span>
+<li class="github"><a target="_blank" rel="noopener" title="OpenCms Quellcode auf GitHub" href="http://www.github.com/alkacon/opencms-core"><span class="fa fa-github"></span>
 <span class="sr-only">OpenCms Quellcode auf GitHub</span>
 </a></li>
 
-<li class="rss"><a target="_blank" rel="noopener" title="OpenCms RSS News Feed" href="%(link6)"><span class="fa fa-rss"></span>
+<li class="rss"><a target="_blank" rel="noopener" title="OpenCms RSS News Feed" href="http://www.opencms.org/en/home/rss-news.xml"><span class="fa fa-rss"></span>
 <span class="sr-only">OpenCms RSS News Feed</span>
 </a></li>
 </ul>
-</div>]]></content>
-    </Code>
+</div>]]></Code>
   </Flexible>
   <Flexible language="en">
     <Title><![CDATA[Stay connected]]></Title>
-    <Code name="Code0">
-      <links>
-        <link name="link0" internal="false" type="A">
-          <target><![CDATA[http://facebook.com/opencms/]]></target>
-        </link>
-        <link name="link1" internal="false" type="A">
-          <target><![CDATA[http://twitter.com/opencms/]]></target>
-        </link>
-        <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://www.xing.com/communities/groups/opencms-usergroup-7901-1054980]]></target>
-        </link>
-        <link name="link3" internal="false" type="A">
-          <target><![CDATA[http://www.slideshare.com/AlkaconOpenCms]]></target>
-        </link>
-        <link name="link4" internal="false" type="A">
-          <target><![CDATA[http://www.youtube.com/alkacon]]></target>
-        </link>
-        <link name="link5" internal="false" type="A">
-          <target><![CDATA[http://www.github.com/alkacon/opencms-core]]></target>
-        </link>
-        <link name="link6" internal="false" type="A">
-          <target><![CDATA[http://www.opencms.org/en/home/rss-news.xml]]></target>
-        </link>
-      </links>
-      <content><![CDATA[<div>
+    <Code><![CDATA[<div>
 <ul class="social-icons">
-<li class="facebook"><a target="_blank" rel="noopener" title="OpenCms on Facebook" href="%(link0)">
+<li class="facebook"><a target="_blank" rel="noopener" title="OpenCms on Facebook" href="http://facebook.com/opencms/">
 <span class="fa fa-facebook"></span>
 <span class="sr-only">OpenCms on Facebook</span>
 </a></li>
 
-<li class="twitter"><a target="_blank" rel="noopener" title="OpenCms on Twitter" href="%(link1)">
+<li class="twitter"><a target="_blank" rel="noopener" title="OpenCms on Twitter" href="http://twitter.com/opencms/">
 <span class="fa fa-twitter"></span>
 <span class="sr-only">OpenCms on Twitter</span>
 </a></li>
 
-<li class="xing"><a target="_blank" rel="noopener" title="OpenCms on Xing" href="%(link2)">
+<li class="xing"><a target="_blank" rel="noopener" title="OpenCms on Xing" href="https://www.xing.com/communities/groups/opencms-usergroup-7901-1054980">
 <span class="fa fa-xing"></span>
 <span class="sr-only">OpenCms on Xing</span>
 </a></li>
 
-<li class="slideshare"><a target="_blank" rel="noopener" title="OpenCms on SlideShare" href="%(link3)">
+<li class="slideshare"><a target="_blank" rel="noopener" title="OpenCms on SlideShare" href="http://www.slideshare.com/AlkaconOpenCms">
 <span class="fa fa-slideshare"></span>
 <span class="sr-only">OpenCms on SlideShare</span>
 </a></li>
 
-<li class="youtube"><a target="_blank" rel="noopener" title="OpenCms on YouTube" href="%(link4)">
+<li class="youtube"><a target="_blank" rel="noopener" title="OpenCms on YouTube" href="http://www.youtube.com/alkacon">
 <span class="fa fa-youtube"></span>
 <span class="sr-only">OpenCms on YouTube</span>
 </a></li>
 
-<li class="github"><a target="_blank" rel="noopener" title="OpenCms source code on GitHub" href="%(link5)"><span class="fa fa-github"></span>
+<li class="github"><a target="_blank" rel="noopener" title="OpenCms source code on GitHub" href="http://www.github.com/alkacon/opencms-core"><span class="fa fa-github"></span>
 <span class="sr-only">OpenCms source code on GitHub</span>
 </a></li>
 
-<li class="rss"><a target="_blank" rel="noopener" title="OpenCms RSS News Feed" href="%(link6)"><span class="fa fa-rss"></span>
+<li class="rss"><a target="_blank" rel="noopener" title="OpenCms RSS News Feed" href="http://www.opencms.org/en/home/rss-news.xml"><span class="fa fa-rss"></span>
 <span class="sr-only">OpenCms RSS News Feed</span>
 </a></li>
 </ul>
-</div>]]></content>
-    </Code>
+</div>]]></Code>
   </Flexible>
 </FlexibleData>

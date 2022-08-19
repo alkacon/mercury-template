@@ -46,6 +46,7 @@
 @include responsive-invisibility('.visible-md');
 @include responsive-invisibility('.visible-lg');
 @include responsive-invisibility('.visible-xl');
+@include responsive-invisibility('.visible-xxl');
 
 @include media-breakpoint-down(sm) {
   @include responsive-visibility('.visible-xs');
@@ -68,6 +69,11 @@
   @include responsive-invisibility-showineditor('.hide-xs-sm-md-lg');
 }
 
+@include media-breakpoint-down(xxl) {
+  @include responsive-invisibility('.hidden-xs-sm-md-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-xs-sm-md-lg-xl');
+}
+
 @include media-breakpoint-only(sm) {
   @include responsive-visibility('.visible-sm');
   @include responsive-invisibility('.hidden-sm');
@@ -88,25 +94,44 @@
 
 @include media-breakpoint-up(sm) {
   @include responsive-invisibility('.hidden-sm-md-lg-xl');
+  @include responsive-invisibility('.hidden-sm-up');
   @include responsive-invisibility-showineditor('.hide-sm-md-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-sm-up');
 }
 
 @include media-breakpoint-up(md) {
   @include responsive-invisibility('.hidden-md-lg-xl');
+  @include responsive-invisibility('.hidden-md-up');
   @include responsive-invisibility-showineditor('.hide-md-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-md-up');
 }
 
 @include media-breakpoint-up(lg) {
   @include responsive-invisibility('.hidden-lg-xl');
+  @include responsive-invisibility('.hidden-lg-up');
   @include responsive-invisibility-showineditor('.hide-lg-xl');
+  @include responsive-invisibility-showineditor('.hide-lg-up');
 }
 
 @include media-breakpoint-up(xl) {
-  @include responsive-visibility('.visible-xl');
-  @include responsive-invisibility('.hidden-xl');
-  @include responsive-invisibility-showineditor('.hide-xl');
+  @include responsive-invisibility('.hidden-xl-up');
+  @include responsive-invisibility-showineditor('.hide-xl-up');
 }
 
+@include media-breakpoint-up(xl) {
+  // XL used to be the largest breakpoint in bs4, so some settings in existing pages will expect this to work as before
+  @include responsive-visibility('.visible-xl'); // compatibltiy with bs4 where XL was the largest breakpoint
+  @include responsive-invisibility('.hidden-xl'); // compatibltiy with bs4 where XL was the largest breakpoint
+  @include responsive-invisibility('.hidden-xl-up'); // syntax for bs5
+  @include responsive-invisibility-showineditor('.hide-xl');  // compatibltiy with bs4 where XL was the largest breakpoint
+  @include responsive-invisibility-showineditor('.hide-xl-up'); // syntax for bs5
+}
+
+@include media-breakpoint-up(xxl) {
+  @include responsive-visibility('.visible-xxl');
+  @include responsive-invisibility('.hidden-xxl');
+  @include responsive-invisibility-showineditor('.hide-xxl');
+}
 
 .tooltip {
     .tooltip-inner {
@@ -143,6 +168,11 @@ small,
 
 .float-right {
   float: right;
+}
+
+.no-gutters {
+  --#{$prefix}gutter-x: 0;
+  --#{$prefix}gutter-y: 0;
 }
 
 /* Variable adjustments for Boosttrap 5 */

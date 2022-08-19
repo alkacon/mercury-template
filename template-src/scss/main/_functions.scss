@@ -145,6 +145,15 @@
     }
 }
 
+// add two values directly if comparable, or with calc otherwiese
+@function add-values($value1, $value2) {
+    @if comparable($value1, $value2) {
+        @return $value1 + $value2;
+    } @else {
+        @return calc(#{$value1} + #{$value2});
+    }
+}
+
 
 // Functions to calculate the contrast difference of two colors
 // See https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796

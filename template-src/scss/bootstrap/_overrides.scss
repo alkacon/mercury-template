@@ -50,5 +50,12 @@ $utilities: (
         around: space-around,
         evenly: space-evenly,
       )
+    ),
+    "display": (
+      responsive: true,
+      print: true,
+      property: display,
+      class: d,
+      values: block none
     )
 );

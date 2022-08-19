@@ -371,6 +371,21 @@
                 padding-top: 0;
             }
 
+            &.meta-seperate {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+
+                .nav-main-items {
+                    flex-grow: 100;
+                }
+
+                .nav-meta-items {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
             .nav-main-items {
                 // add border above the menu items
                 border-top: $nav-mobile-border;

@@ -694,7 +694,7 @@
                     .nav-main-items {
                         > li {
                             > a {
-                                font-size: $nav-header-font-size + 4px;
+                                font-size: add-values($nav-header-font-size, 4px);
                             }
                         }
                     }
@@ -881,11 +881,11 @@
                                     }
                                 }
                             }
-                            &.ac-below-nav {
-                                .h-ac {
-                                    margin-bottom: $logo-padding;
-                                    @if ($fh-nav-bg-color != none) {
-                                        // colored navigation above additional container
+                            @if ($fh-nav-bg-color != none) {
+                                &.ac-below-nav {
+                                    .h-ac {
+                                        // colored navigation above and below additional container
+                                        margin-bottom: $logo-padding;
                                         margin-top: $logo-padding;
                                     }
                                 }

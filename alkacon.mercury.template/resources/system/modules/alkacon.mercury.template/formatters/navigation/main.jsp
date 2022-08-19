@@ -24,6 +24,7 @@
 <c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
 <c:set var="showImageLink"              value="${setting.showImageLink.toBoolean}" />
 
+
 <c:if test="${showSearch}">
     <c:set var="searchPageUri" value="${cms.functionDetailPageExact['Search page']}" />
 </c:if>
@@ -86,7 +87,7 @@
                             <cms:include file="${metaLinksPlugin.path}" cacheable="false" />
                         </c:when>
                         <c:otherwise>
-                            <li id="nav-main-addition" class="expand hidden-lg hidden-xl"><%----%>
+                            <li id="nav-main-addition" class="expand hidden-lg-up"><%----%>
                                 <a href="#" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${metaLinksContent.value.Title}</a><%----%>
                                 <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
                                     <mercury:nl />
@@ -121,7 +122,7 @@
             <c:set var="startSubMenu" value="${nextLevel > navElem.navTreeLevel}" />
             <c:set var="isTopLevel" value="${navElem.navTreeLevel eq navStartLevel}" />
             <c:set var="nextIsTopLevel" value="${nextLevel eq navStartLevel}" />
-            <c:set var="navTarget" value="${fn:trim(navElem.info)eq 'extern' ? ' target=\"_blank\"' : ''}" />
+            <c:set var="navTarget" value="${fn:trim(navElem.info) eq 'extern' ? ' target=\"_blank\"' : ''}" />
 
             <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
             <c:set var="isFinalCurrentPage" value="${isCurrentPage and currentPageFolder eq cms.sitePath[navElem.resource.rootPath]}" />
@@ -134,6 +135,12 @@
             <%-- ###### Check for mega menu ######--%>
             <c:set var="megaMenu" value="" />
             <c:if test="${isTopLevel}">
+
+                <c:if test="${empty navTarget and not fn:startsWith(navElem.info, '#')}">
+	                <mercury:set-content-disposition name="${fn:toLowerCase(fn:trim(navElem.info))}" suffix="" setFilenameOnly="${true}"/>
+	                <c:set var="menuType" value="${menuType.concat(contentDispositionFilename)}" />
+                </c:if>
+
                 <c:set var="megaMenuVfsPath" value="${navElem.resourceName}mega.menu" />
                 <c:if test="${navElem.navigationLevel}">
                     <%-- ###### Path correction needed if navLevel ###### --%>
@@ -142,7 +149,7 @@
                 <c:set var="megaMenuRes" value="${cms.vfs.xml[megaMenuVfsPath]}" />
                 <c:if test="${not empty megaMenuRes}">
                     <c:set var="megaMenu" value=' data-megamenu="${megaMenuRes.resource.link}"' />
-                    <c:set var="menuType" value="${menuType.concat('mega')}" />
+                    <c:set var="menuType" value="${menuType.concat(' ').concat('mega')}" />
                     <c:choose>
                         <c:when test="${megaMenuRes.resource.property['mercury.mega.display'] eq 'mobile'}">
                             <c:set var="menuType" value="${menuType.concat(' mega-mobile')}" />

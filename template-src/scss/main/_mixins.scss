@@ -620,7 +620,7 @@
     }
 }
 
-@mixin change-colors($theme-color, $complete: false) {
+@mixin change-colors($theme-color) {
 
     $fg-color: get-text-color($theme-color);
 

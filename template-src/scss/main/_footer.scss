@@ -28,41 +28,33 @@
     }
 
     .topfoot {
-        display: flex;
-        padding-top: var(--#{$prefix}element-margin);
-        background-color: $foot-top-bg-color;
-        color: $foot-top-text-color;
-
-        h1, h2, h3, h4, h5, h6 {
-            color: $foot-top-header-color;
-        }
-
-        a:not(.btn) {
-            color: $foot-top-link-color;
-
-            &:focus,
-            &:hover {
-                color: $foot-top-link-hover-color;
-            }
-        }
+        --#{$prefix}body-color: #{$foot-top-text-color};
+        --#{$prefix}body-bg: #{$foot-top-bg-color};
+        --#{$prefix}headings-color: #{$foot-top-header-color};
+        --#{$prefix}link-color: #{$foot-top-link-color};
+        --#{$prefix}link-hover-color: #{$foot-top-link-hover-color};
     }
+
+    .subfoot {
+        --#{$prefix}body-color: #{$foot-sub-text-color};
+        --#{$prefix}body-bg: #{$foot-sub-bg-color};
+        --#{$prefix}headings-color: #{$foot-sub-header-color};
+        --#{$prefix}link-color: #{$foot-sub-link-color};
+        --#{$prefix}link-hover-color: #{$foot-sub-link-hover-color};
+    }
+
+    .topfoot,
     .subfoot {
         display: flex;
         padding-top: var(--#{$prefix}element-margin);
-        background-color: $foot-sub-bg-color;
-        color: $foot-sub-text-color;
+        color: var(--#{$prefix}body-color);
+        background-color: var(--#{$prefix}body-bg);
 
-        h1, h2, h3, h4, h5, h6 {
-            color: $foot-sub-header-color;
+        @if ($linked-headings-color != inherit) {
+            --#{$prefix}linked-headings-color: var(--#{$prefix}link-color);
         }
-
-        a:not(.btn) {
-            color: $foot-sub-link-color;
-
-            &:focus,
-            &:hover {
-                color: $foot-sub-link-hover-color;
-            }
+        @if ($linked-headings-hover-color != inherit) {
+            --#{$prefix}linked-headings-hover-color: var(--#{$prefix}link-hover-color);
         }
     }
 }

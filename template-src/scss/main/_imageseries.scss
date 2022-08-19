@@ -120,10 +120,6 @@ html.noscript .type-imageseries .series {
         text-shadow: 1px 1px 1px #000;
     }
 
-    img {
-        @include round-corners(calc(2 * var(--#{$prefix}border-radius)));
-    }
-
     .pswp__top-bar {
         background-color: rgba(0,0,0,.25);
     }
@@ -244,11 +240,11 @@ a .effect-box .zoomer {
 }
 
 .zoom-overlay .zoom-icon,
-.zoom-overlay .image-src-box > img,
-.image-src-box {
+.image-src-box,
+.image-src-box > img {
     border-radius: var(--#{$prefix}border-radius);
 }
 
-.image-src-box {
+.image-src-box > img {
     overflow: hidden;
 }

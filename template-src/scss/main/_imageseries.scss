@@ -24,11 +24,9 @@ $pswp-copyright-size:       1.1rem !default;
 $pswp-title-height:         $headings-line-height !default;
 
 $pswp__root-z-index:        $above-oc-toolbar !default;
-$pswp__assets-path:         '../photoswipe/default-skin/' !default;
 
-// import the slick-carousel distribution SCSS
-@import '../../plugins/photoswipe/main';
-@import '../../plugins/photoswipe/default-skin/default-skin';
+// import the photswipe distribution CSS
+@import '../../plugins/photoswipe/photoswipe';
 
 // Note: This value must be available in _tiles.scss $sq-margins.
 // This value is currently also hardcoded as "square-m-2" in the imageseries formatter JSP as css class.
@@ -104,6 +102,26 @@ html.noscript .type-imageseries .series {
 
 .pswp {
 
+    --pswp-root-z-index: #{$pswp__root-z-index};
+
+    .pswp__caption {
+        position: absolute;
+        left: 50%;
+        bottom: 16px;
+        transform: translateX(-50%);
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caption-wrapper {
+        text-align: center;
+        border-radius: var(--#{$prefix}border-radius);
+        max-width: calc(100% - (2 * var(--#{$prefix}spacer)));
+        padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
     .title {
         color: #eee;
         font-family: var(--#{$prefix}font-family-headings);
@@ -114,28 +132,15 @@ html.noscript .type-imageseries .series {
     }
 
     .copyright {
-        color: #bbb;
+        color: #eee;
         font-size: $pswp-copyright-size;
         line-height: 1.2;
         text-shadow: 1px 1px 1px #000;
     }
 
-    .pswp__top-bar {
-        background-color: rgba(0,0,0,.25);
-    }
-
-    .pswp__caption {
-        min-height: auto;
-        background-color: transparent;
-    }
-
-    .pswp__caption__center {
-        text-align: center;
-        padding: 0 0 10px 0;
-    }
 
     @include media-breakpoint-up(sm) {
-        .pswp__caption__center {
+        .pswp__caption {
             max-width: 90%;
         }
     }

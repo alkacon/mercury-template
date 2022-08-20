@@ -16,8 +16,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import PhotoSwipe   from 'photoswipe';
-import PhotoSwipeUi from 'photoswipe/dist/photoswipe-ui-default';
+
+import PhotoSwipe from 'photoswipe';
 
 // the global objects that must be passed to this module
 var jQ;
@@ -31,67 +31,32 @@ var m_autoLoadSeries = [];
 // all image galleries that have been initialized as object
 var m_galleries = {};
 
-function appendPhotoSwipeToBody() {
-
-jQ('body').append(
-'<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">' +
-    '<div class="pswp__bg"></div>' +
-    '<div class="pswp__scroll-wrap">' +
-        '<div class="pswp__container">' +
-            '<div class="pswp__item"></div>' +
-            '<div class="pswp__item"></div>' +
-            '<div class="pswp__item"></div>' +
-        '</div>' +
-        '<div class="pswp__ui pswp__ui--hidden">' +
-            '<div class="pswp__top-bar">' +
-                '<div class="pswp__counter"></div>' +
-                '<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>' +
-                '<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>' +
-                '<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>' +
-                '<div class="pswp__preloader">' +
-                    '<div class="pswp__preloader__icn">' +
-                        '<div class="pswp__preloader__cut">' +
-                            '<div class="pswp__preloader__donut"></div>' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-            '<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">' +
-                '<div class="pswp__share-tooltip"></div>' +
-            '</div>' +
-            '<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>' +
-            '<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>' +
-            '<div class="pswp__caption">' +
-                '<div class="pswp__caption__center"></div>' +
-            '</div>' +
-        '</div>' +
-    '</div>' +
-'</div>'
-);}
-
-
 function openPhotoSwipe(index, id) {
 
-    var pswpElement = document.querySelectorAll('.pswp')[0];
     var options = {
-        barsSize : {top:0, bottom:0},
-        history : false,
-        focus : true,
-        showHideOpacity : true,
-        getThumbBoundsFn : false,
-        showAnimationDuration : 0,
+        bgOpacity: 0.9,
         index : index,
-        closeEl : true,
-        counterEl : true
+        showHideAnimationType: 'none'
     };
 
-    var images = m_galleries[id].images;
-    var photoSwipe = new PhotoSwipe(pswpElement, PhotoSwipeUi, images, options);
-    // images could use .msrc pohotoswipe attribute but currently don't
-    // would have to calculate small image for series and large for fullscreen
-    // see http://photoswipe.com/documentation/getting-started.html#creating-slide-objects-array
-    // for possible resonsive image support see
-    // see http://photoswipe.com/documentation/responsive-images.html
+    options.dataSource = m_galleries[id].images;
+    var photoSwipe = new PhotoSwipe(options);
+
+    photoSwipe.on('uiRegister', function() {
+        photoSwipe.ui.registerElement({
+            name: 'caption',
+            order: 9,
+            isButton: false,
+            appendTo: 'root',
+            onInit: (el, pswp) => {
+                photoSwipe.on('change', () => {
+                    const currSlideData = photoSwipe.currSlide.data;
+                    el.innerHTML = '<div class="caption-wrapper">' + currSlideData.title + '</div>';
+                });
+            }
+        });
+    });
+
     photoSwipe.init();
 }
 
@@ -198,8 +163,8 @@ function collect(imageSeries) {
             // calculate image width and height by parsing the property string
             if (imageData.size.indexOf(',') >= 0 && imageData.size.indexOf(':') >= 0) {
                 var size = imageData.size.split(',');
-                imageData.w = size[0].split(':')[1];
-                imageData.h = size[1].split(':')[1];
+                imageData.width  = size[0].split(':')[1];
+                imageData.height = size[1].split(':')[1];
             }
             imageSrc.push(imageData.tilesrc);
             images.push(imageData);
@@ -320,7 +285,6 @@ export function init(jQuery, debug) {
 
     if ($imageSeriesElements.length > 0 || $imageZoomElements.length > 0) {
         // We have found image for a series, append the PhotoSwipe markup
-        appendPhotoSwipeToBody();
         if ($imageSeriesElements.length > 0) {
             initImageSeries($imageSeriesElements);
         }

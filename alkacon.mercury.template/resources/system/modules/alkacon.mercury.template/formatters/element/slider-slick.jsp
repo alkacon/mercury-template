@@ -223,7 +223,7 @@
                     : '<span class="captions">'}
 
                     <cms:addparams>
-                        <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl' : cssgridCols}</cms:param>
+                        <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl hidden-xxl' : cssgridCols}</cms:param>
                         <cms:param name="cssgutter">${not empty cssgutter ? cssgutter : '#'}</cms:param>
                         <div class="slide-xs ${adoptRatioToScreen ? 'visible-xs' : ''}"><%----%>
                             <mercury:image-simple
@@ -251,7 +251,7 @@
                         <c:set var="imageRatioLG" value="${w - (1 * wStep)}-${h - (1 * hStep)}" />
 
                         <cms:addparams>
-                            <cms:param name="cssgrid">hidden-xl hidden-lg hidden-md hidden-xs</cms:param>
+                            <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-lg hidden-md hidden-xs</cms:param>
                             <div class="slide-sm visible-sm"><%----%>
                                 <mercury:image-simple
                                     image="${image}"
@@ -261,7 +261,7 @@
                         </cms:addparams>
 
                         <cms:addparams>
-                            <cms:param name="cssgrid">hidden-xl hidden-lg hidden-sm hidden-xs</cms:param>
+                            <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-lg hidden-sm hidden-xs</cms:param>
                             <div class="slide-md visible-md"><%----%>
                                 <mercury:image-simple
                                     image="${image}"
@@ -271,7 +271,7 @@
                         </cms:addparams>
 
                         <cms:addparams>
-                            <cms:param name="cssgrid">hidden-xl hidden-xs hidden-sm hidden-md</cms:param>
+                            <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-xs hidden-sm hidden-md</cms:param>
                             <div class="slide-lg visible-lg"><%----%>
                                 <mercury:image-simple
                                     image="${image}"

@@ -245,9 +245,13 @@
                 <c:if test="${showAddContainer}">
                     <c:set var="addContainerElement">
                         <mercury:div css="h-ac" test="${acHasPageSize}">
+                            <c:if test="${not acHasPageSize}">
+                                <c:set var="acParams" value="${{'cssgrid': 'fullwidth'}}" />
+                            </c:if>
                             <mercury:container
                                 type="row"
                                 name="header-container"
+                                parameters="${acParams}"
                                 css="${acHasPageSize ? (acOnMobile ? 'container' : 'co-lg-xl p-xs-12') : 'h-ac'}"
                                 title="${value.Title}"
                             />

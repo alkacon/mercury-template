@@ -19,292 +19,23 @@
  * Source file: _slider.scss
  */
 
-// import the slick-carousel distribution SCSS
-@import '../../plugins/slick-carousel/slick-theme';
-@import '../../plugins/slick-carousel/slick';
-
 // Slider settings
 
-// add fade in/out effects to text in slider
-// this must not be active in general because for just on slide there is no effect required
-
-// slide that is not visible
-%slide-not-active {
-    .caption {
-        &.foreground,
-        &.background {
-            opacity: 0;
-        }
-    }
-}
-
-// slide that is currently visible
-%slide-is-active {
-    .caption {
-        &.foreground,
-        &.background {
-            transition: opacity 1.5s linear;
-        }
-        &.foreground {
-            opacity: 1.0;
-        }
-        &.background {
-            opacity: $slider-background-opacity;
-        }
-    }
-}
-
-// hero slider - activate slides not visible before the slider is initialized
-%show-hidden-slides-after-init {
-    .slide-wrapper.hide-noscript {
-        visibility: visible;
-        max-height: none;
-    }
-}
-
-// logo slider - activate all slides not visible before the slider is initialized
-%show-hidden-logos-after-init {
-    overflow: visible;
-    max-height: none;
-}
-
-.type-embla-slider {
-
-    .slider-box {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .slide-definitions {
-        display: flex;
-    }
-
-    .slide-wrapper {
-        @extend %slide-not-active;
-        &.slide-active {
-            @extend %slide-is-active;
-        }
-    }
-
-    &.hero-slider {
-        .slide-definitions.slider-initialized {
-            @extend %show-hidden-slides-after-init;
-        }
-
-        .slide-wrapper {
-            flex: 0 0 100%;
-            margin-right: var(--#{$prefix}spacer);
-        }
-    }
-
-    &.logo-slider {
-
-        .all-in-view {
-            .slide-definitions {
-                justify-content: center;
-            }
-            .nav-btn {
-                display: none;
-            }
-        }
-    }
-
-    .nav-btn {
-        position: absolute;
-        display: block;
-        bottom: 50%;
-        transform: translateY(50%);
-        height: $slick-button-size;
-        width: $slick-button-size;
-        line-height: 0px;
-        font-size: 0px;
-        cursor: pointer;
-        background: transparent;
-        color: transparent;
-        padding: 0;
-        border: none;
-        outline: none;
-        z-index: 1100;
-        &:hover,
-        &:focus {
-            outline: none;
-            background: transparent;
-            color: transparent;
-        }
-        &::before {
-            content: " ";
-            display: block;
-            width: $slick-button-size;
-            height:  $slick-button-size;
-            background-size: $slick-button-size $slick-button-size;
-            opacity: 0;
-            transition: opacity 0.5s linear;
-        }
-    }
-
-    .prev-btn {
-        left: $slick-button-position;
-        &::before {
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTQ0IDIyNGwzNi0zNi02MC02MCA2MC02MC0zNi0zNi05NiA5NnoiLz4NCjwvc3ZnPg0K");
-        }
-    }
-
-    .next-btn {
-        right: $slick-button-position;
-        &::before {
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTEyIDIyNGwtMzYtMzYgNjAtNjAtNjAtNjAgMzYtMzYgOTYgOTZ6Ii8+DQo8L3N2Zz4NCg==");
-        }
-    }
-}
-
-.slider-dots {
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    bottom: $slick-dots-position;
-
-    list-style: none;
-    display: block;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    z-index: 1100;
-    opacity: 0;
-
-    transition: opacity 0.5s linear;
-    li {
-        position: relative;
-        display: inline-block;
-        height: 20px;
-        width: 20px;
-        margin: 0 5px;
-        padding: 0;
-        cursor: pointer;
-        button {
-            border: 0;
-            background: transparent;
-            display: block;
-            height: 20px;
-            width: 20px;
-            outline: none;
-            line-height: 0px;
-            font-size: 0px;
-            color: transparent;
-            padding: 5px;
-            cursor: pointer;
-            &:hover,
-            &:focus {
-                outline: none;
-                &::before {
-                    opacity: $slick-opacity-on-hover;
-                }
-            }
-            &::before {
-                content: " ";
-                display: block;
-                width: $slick-dot-size;
-                height: $slick-dot-size;
-                background-size: $slick-dot-size $slick-dot-size;
-                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjA4IDEyOGE4MCA4MCAwIDEgMS0xNjAgMCA4MCA4MCAwIDAgMSAxNjAgMHoiLz4NCjwvc3ZnPg==");
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: $slick-opacity-default;
-            }
-            &.active::before {
-                color: $slick-dot-color-active;
-                opacity: $slick-opacity-on-hover;
-            }
-        }
-    }
-}
-
-html.keyboard-nav .type-embla-slider .slider-box,
-.type-embla-slider .slider-box:hover {
-
-    .nav-btn {
-        &::before {
-            opacity: $slick-opacity-default;
-            transition: opacity 0.5s linear;
-        }
-        &:hover,
-        &:focus {
-            &::before {
-                opacity: $slick-opacity-on-hover;
-            }
-        }
-    }
-
-    .slider-dots {
-        opacity: $slick-opacity-on-hover;
-        transition: opacity 0.5s linear;
-    }
-}
-
+$slider-button-position: 30px !default;
+$slider-button-size: 40px !default;
+$slider-dot-size: 18px !default;
+$slider-dots-position: 10px !default;
+$slider-opacity-default: 0.5 !default;
+$slider-opacity-on-hover: 1 !default;
 
 .type-slider {
 
     --#{$prefix}slider-slide-border-radius: #{$slider-slide-border-radius};
     --#{$prefix}slider-caption-border-radius: #{$slider-caption-border-radius};
-
-    // slick slider special requirements
-    &.type-slick-slider {
-        .slick-slide {
-            .slide-wrapper {
-                @extend %slide-not-active;
-            }
-        }
-
-        .slick-slide.slick-current.slick-active   {
-            .slide-wrapper {
-                @extend %slide-is-active;
-            }
-        }
-
-        .slick-slide > div {
-            // removes strange 5px extra bottom margin
-            display: flex;
-        }
-
-        &.hero-slider {
-            .slide-definitions.slick-initialized {
-                @extend %show-hidden-slides-after-init;
-            }
-        }
-
-        &.logo-slider {
-            .slide-definitions.slick-initialized {
-                @extend %show-hidden-logos-after-init;
-            }
-        }
-
-        &.logo-slider {
-
-            // hide all the logo slides before the slider is initialized
-            .slide-definitions {
-                overflow: hidden;
-                max-height: 0;
-            }
-        }
-
-        @include media-breakpoint-down(md) {
-            &.text-below-on-xs {
-                // adjust slick slider controls for small screen sizes
-
-                .slick-dots {
-                    bottom: -10px;
-                }
-
-                .slick-arrow {
-                    display: none !important;
-                }
-
-                .slider-box.custom .slick-list {
-                    background-color: transparent;
-                }
-            }
-        }
-    }
+    --#{$prefix}slider-bg: var(--#{$prefix}main-theme-rgb);
+    --#{$prefix}slider-fg: var(--#{$prefix}main-theme-fg);
+    --#{$prefix}slider-caption-top: var(--#{$prefix}slider-bg);
+    --#{$prefix}slider-caption-sub: var(--#{$prefix}slider-bg);
 
     &.hero-slider {
         // make sure not visible slides are hidden while loading
@@ -332,55 +63,84 @@ html.keyboard-nav .type-embla-slider .slider-box,
         // must set round corner here in case a custom bg color for caption has been set
         // JSP does this as inline style attribute
         // can not hide overflow because of dot buttons in XS view
+        position: relative;
         @include round-corners(var(--#{$prefix}slider-slide-border-radius), false);
+
+        &.custom .caption {
+            // custom colored caption
+            background-color: transparent !important;
+            padding: 0;
+            border-radius: 0;
+
+            strong,
+            small {
+                display: inline-block; // important - do not remove even if next lines shows a warning
+                float: left;
+                clear: both;
+            }
+            &.right {
+                strong,
+                small {
+                    float: right;
+                }
+            }
+            &.center {
+                strong,
+                small {
+                    float: none;
+                }
+            }
+            strong {
+                background-color: rgb(var(--#{$prefix}slider-caption-top), $slider-background-opacity);
+                padding-top: var(--#{$prefix}spacer-sm);
+                padding-bottom: var(--#{$prefix}spacer-sm);
+            }
+            small {
+                background-color: rgb(var(--#{$prefix}slider-caption-sub), $slider-background-opacity);
+                padding-top: 2px;
+                padding-bottom: 2px;
+                margin-top: var(--#{$prefix}spacer-sm);
+                &:nth-of-type(2) {
+                    margin-top: 0;
+                }
+            }
+
+            @include media-breakpoint-up(md) {
+                &.center .subcaption br {
+                    display: block;
+                }
+                strong,
+                small {
+                    @include round-corners(var(--#{$prefix}slider-caption-border-radius), false);
+                }
+            }
+        }
+    }
+
+    .slide-definitions {
+        display: flex;
     }
 
     .slide-wrapper {
         position: relative;
+        display: flex;
+        flex-direction: column;
         @include round-corners(var(--#{$prefix}slider-slide-border-radius), true);
 
-        .visual {
-            position: relative;
-        }
-
-        .img-responsive {
-            width: 100%;
-        }
-
-        img {
-            // slider conflicts with lazy loading background color, so disable this
-            &.lazyloading,
-            &.lazyload {
-                background-color: transparent;
-                opacity: 1;
+        &.slide-active {
+            .caption {
+                transition: opacity 1.5s linear;
+                opacity: 1; // fade in effect for slide captions (caption visible)
             }
-            &.lazyloaded {
-                transition: none;
-            }
-        }
-
-        a,
-        a:focus,
-        a:hover {
-            text-decoration: none;
         }
 
         .caption {
+            opacity: 0; // fade in effect for slide captions (caption hidden)
             padding: $slider-caption-padding;
             position: absolute;
             max-width: calc(100% - (6 * var(--#{$prefix}spacer)));
-            background-color: var(--#{$prefix}main-theme);
+            background-color: rgb(var(--#{$prefix}slider-bg), $slider-background-opacity);
             @include round-corners(var(--#{$prefix}slider-caption-border-radius), true);
-
-            &.background {
-                opacity: 0.75;
-                background-color: var(--#{$prefix}main-theme);
-                // background-image: linear-gradient($main-theme, $main-theme); // tricks WCAG test
-            }
-
-            &.foreground {
-                background-color: transparent;
-            }
 
             &.bottom {
                 bottom: var(--#{$prefix}spacer-xl);
@@ -422,19 +182,12 @@ html.keyboard-nav .type-embla-slider .slider-box,
                 display: block;
                 margin: 0;
                 padding: 0 var(--#{$prefix}spacer);
-                color: transparent;
+                color: var(--#{$prefix}slider-fg);
+                text-shadow: $slider-text-shadow;
                 font-family: var(--#{$prefix}font-family-headings);
                 font-weight: var(--#{$prefix}font-weight-headings);
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
-            }
-
-            &.foreground {
-                strong,
-                small {
-                    color: var(--#{$prefix}main-theme-fg);
-                    text-shadow: $slider-text-shadow;
-                }
             }
 
             strong {
@@ -442,7 +195,7 @@ html.keyboard-nav .type-embla-slider .slider-box,
                 line-height: $headings-line-height;
             }
 
-            strong + .subcaption small {
+            strong + .subcaption small:first-of-type {
                 margin-top: var(--#{$prefix}spacer-sm);
             }
 
@@ -450,7 +203,7 @@ html.keyboard-nav .type-embla-slider .slider-box,
                 font-family: var(--#{$prefix}body-font-family);
                 font-size: var(--#{$prefix}body-font-size);
                 line-height: var(--#{$prefix}body-line-height);
-                ~ small {
+                &:nth-of-type(2) {
                     margin-top: 0;
                 }
             }
@@ -472,58 +225,30 @@ html.keyboard-nav .type-embla-slider .slider-box,
             }
         }
 
-        &.custom .caption {
-            background-color: transparent !important;
-            background-image: none !important;
-            padding: 0;
-            border-radius: 0;
+        .visual {
+            position: relative;
+        }
 
-            strong,
-            small {
-                display: inline-block; // important - do not remove even if next lines shows a warning
-                float: left;
-                clear: both;
-            }
-            &.right {
-                strong,
-                small {
-                    float: right;
-                }
-            }
-            &.center {
-                strong,
-                small {
-                    float: none;
-                }
-            }
-            &.background {
-                strong,
-                small {
-                    background-color: var(--#{$prefix}main-theme);
-                }
-            }
-            strong {
-                padding-top: var(--#{$prefix}spacer-sm);
-                padding-bottom: var(--#{$prefix}spacer-sm);
-            }
-            small {
-                padding-top: 2px;
-                padding-bottom: 2px;
-                margin-top: var(--#{$prefix}spacer-sm);
-                &:nth-of-type(2) {
-                    margin-top: 0;
-                }
-            }
+        .img-responsive {
+            width: 100%;
+        }
 
-            @include media-breakpoint-up(md) {
-                &.center .subcaption br {
-                    display: block;
-                }
-                strong,
-                small {
-                    @include round-corners(var(--#{$prefix}slider-caption-border-radius), false);
-                }
+        img {
+            // slider conflicts with lazy loading background color, so disable this
+            &.lazyloading,
+            &.lazyload {
+                background-color: transparent;
+                opacity: 1;
             }
+            &.lazyloaded {
+                transition: none;
+            }
+        }
+
+        a,
+        a:focus,
+        a:hover {
+            text-decoration: none;
         }
 
         .copyright {
@@ -531,8 +256,17 @@ html.keyboard-nav .type-embla-slider .slider-box,
         }
     }
 
+
     @include media-breakpoint-down(md) {
         &.text-below-on-xs {
+
+            .slider-dots {
+                bottom: -10px;
+            }
+
+            .slider-nav-btn {
+                display: none !important;
+            }
 
             .slide-wrapper,
             .image-src-box {
@@ -540,8 +274,37 @@ html.keyboard-nav .type-embla-slider .slider-box,
                 border-bottom-right-radius: 0;
             }
 
+            .captions {
+                background-color: rgb(var(--#{$prefix}slider-bg));
+                width: 100%;
+                display: flex;
+                flex-grow: 10;
+            }
+
             .slider-box {
-                background-color: var(--#{$prefix}main-theme);
+                &.custom {
+                    .captions {
+                        width: 100%;
+                        background-color: rgb(var(--#{$prefix}slider-caption-sub));
+                    }
+                    .caption {
+                        width: 100%;
+                        strong {
+                            display: block;
+                            width: 100%;
+                            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+                            background-color: rgb(var(--#{$prefix}slider-caption-top));
+                        }
+                        strong, small {
+                            float: none;
+                            clear: none;
+                        }
+                        small {
+                            display: inline;
+                            margin-top: 0;
+                        }
+                    }
+                }
             }
 
             .slide-wrapper {
@@ -551,22 +314,11 @@ html.keyboard-nav .type-embla-slider .slider-box,
                     position: static;
                     max-width: initial;
                     min-height: calc(#{ceil($h2-font-size * 2)} + 10px);
-                    background-color: var(--#{$prefix}main-theme);
+                    background-color: rgb(var(--#{$prefix}slider-bg));
                     opacity: 1 !important;
                     text-align: initial !important;
                     white-space: initial !important;
                     transform: initial !important;
-
-                    &.background {
-                        display: none;
-                    }
-                    &.foreground {
-                        strong,
-                        small {
-                            color: var(--#{$prefix}main-theme-fg);
-                            text-shadow: $slider-text-shadow;
-                        }
-                    }
                 }
                 strong {
                     font-size: $h2-font-size;
@@ -577,28 +329,10 @@ html.keyboard-nav .type-embla-slider .slider-box,
                     display: inline;
                     padding: 0;
                 }
-                small ~ small {
+                small:nth-of-type(2) {
                     &::before {
                         display: inline-block;
                         content: "\00a0";
-                        // content: "\2013"; // ndash
-                    }
-                }
-                &.custom {
-                    .caption {
-                        background-color: transparent;
-                        strong {
-                            display: block;
-                            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
-                        }
-                        strong, small {
-                            float: none;
-                            clear: none;
-                        }
-                        small {
-                            display: inline;
-                            margin-top: 0;
-                        }
                     }
                 }
                 .subcaption {
@@ -611,15 +345,164 @@ html.keyboard-nav .type-embla-slider .slider-box,
 }
 
 
-// Width restrictions for slick slider
-html.noscript  {
-    .slide-count {
-        float: left;
-    }
-    @for $cols from 1 through 12 {
-        .slide-count-#{$cols} {
-            @extend .slide-count;
-            width: divide(100%, $cols);
+.type-embla-slider {
+
+    &.hero-slider {
+        .slide-definitions.slider-initialized {
+            // activate slides not visible before the slider was initialized
+            .slide-wrapper.hide-noscript {
+                visibility: visible;
+                max-height: none;
+            }
         }
+
+        .slide-wrapper {
+            flex: 0 0 100%;
+            margin-right: var(--#{$prefix}spacer);
+        }
+    }
+
+    &.logo-slider {
+        .all-in-view {
+            .slide-definitions {
+                justify-content: center;
+            }
+            .slider-nav-btn {
+                display: none;
+            }
+        }
+    }
+}
+
+
+.slider-nav-btn {
+    position: absolute;
+    display: block;
+    bottom: 50%;
+    transform: translateY(50%);
+    height: $slider-button-size;
+    width: $slider-button-size;
+    line-height: 0px;
+    font-size: 0px;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    padding: 0;
+    border: none;
+    outline: none;
+    z-index: 1100;
+    &:hover,
+    &:focus {
+        outline: none;
+        background: transparent;
+        color: transparent;
+    }
+    &::before {
+        content: " ";
+        display: block;
+        width: $slider-button-size;
+        height:  $slider-button-size;
+        background-size: $slider-button-size $slider-button-size;
+        opacity: 0;
+        transition: opacity 0.5s linear;
+    }
+
+    &.prev-btn {
+        left: $slider-button-position;
+        &::before {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTQ0IDIyNGwzNi0zNi02MC02MCA2MC02MC0zNi0zNi05NiA5NnoiLz4NCjwvc3ZnPg0K");
+        }
+    }
+
+    &.next-btn {
+        right: $slider-button-position;
+        &::before {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTEyIDIyNGwtMzYtMzYgNjAtNjAtNjAtNjAgMzYtMzYgOTYgOTZ6Ii8+DQo8L3N2Zz4NCg==");
+        }
+    }
+}
+
+
+.slider-dots {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    bottom: $slider-dots-position;
+
+    list-style: none;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    z-index: 1100;
+    opacity: 0;
+
+    transition: opacity 0.5s linear;
+    li {
+        position: relative;
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer;
+        button {
+            border: 0;
+            background: transparent;
+            display: block;
+            height: 20px;
+            width: 20px;
+            outline: none;
+            line-height: 0px;
+            font-size: 0px;
+            color: transparent;
+            padding: 5px;
+            cursor: pointer;
+            &:hover,
+            &:focus {
+                outline: none;
+                &::before {
+                    opacity: $slider-opacity-on-hover;
+                }
+            }
+            &::before {
+                content: " ";
+                display: block;
+                width: $slider-dot-size;
+                height: $slider-dot-size;
+                background-size: $slider-dot-size $slider-dot-size;
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjA4IDEyOGE4MCA4MCAwIDEgMS0xNjAgMCA4MCA4MCAwIDAgMSAxNjAgMHoiLz4NCjwvc3ZnPg==");
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: $slider-opacity-default;
+            }
+            &.active::before {
+                opacity: $slider-opacity-on-hover;
+            }
+        }
+    }
+}
+
+
+html.keyboard-nav .type-embla-slider .slider-box,
+.type-embla-slider .slider-box:hover {
+
+    .slider-nav-btn {
+        &::before {
+            opacity: $slider-opacity-default;
+            transition: opacity 0.5s linear;
+        }
+        &:hover,
+        &:focus {
+            &::before {
+                opacity: $slider-opacity-on-hover;
+            }
+        }
+    }
+
+    .slider-dots {
+        opacity: $slider-opacity-on-hover;
+        transition: opacity 0.5s linear;
     }
 }

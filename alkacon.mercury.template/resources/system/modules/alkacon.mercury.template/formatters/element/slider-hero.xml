@@ -2,11 +2,10 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[Embla %(key.type.m-slider.formatter.slick-hero)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-slider.formatter.slick-hero)]]></NiceName>
     <Type><![CDATA[m-slider]]></Type>
     <Key><![CDATA[m/element/slider-hero]]></Key>
     <KeyAlias><![CDATA[m/element/slider-slick-hero]]></KeyAlias>
-    <KeyAlias><![CDATA[m/element/slider-embla-hero]]></KeyAlias>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-embla.jsp]]></target>

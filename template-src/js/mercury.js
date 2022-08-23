@@ -883,7 +883,7 @@ var Mercury = function(jQ) {
 
         // now initialize optional modules
 
-        if (requiresModule(".type-slick-slider .slide-definitions.list-of-slides, .type-embla-slider .slider-box")) {
+        if (requiresModule(".type-embla-slider .slider-box")) {
             try {
                 import(
                     /* webpackChunkName: "mercury-slider" */

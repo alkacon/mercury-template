@@ -59,11 +59,13 @@
                 <c:forEach var="slideConfig" items="${visibleSlideConfig}" varStatus="status">
                     <c:if test="${visibleSlideConfig[status.index] > 0}">
                         <c:set var="logoRows" value="${logoRows}${' '}row-cols${Breakpoints[status.index]}-${visibleSlideConfig[status.index]}" />
+                        <%-- TODO: Generate cssgridCols for Image sizing, check if breakpoint is different from the one before... --%>
                     </c:if>
                 </c:forEach>
             </c:when>
             <c:otherwise>
                 <c:set var="logoRows" value=" row-cols-2 row-cols-lg-4" />
+                <c:set var="cssgridCols" value="col-xs-6 col-lg-3" />
             </c:otherwise>
         </c:choose>
         <c:set var="isHeroSlider" value="${false}" />
@@ -81,7 +83,6 @@
         <c:set var="visibleSlidesXL" value="${1}" />
         <c:set var="visibleSlidesXS" value="${1}" />
         <c:set var="adoptRatioToScreen" value="${not (imageRatioXL eq imageRatioXS)}" />
-        <c:set var="cssgridCols" value="col-12" />
     </c:otherwise>
 </c:choose>
 
@@ -103,21 +104,36 @@
         </c:otherwise>
     </c:choose>
 
+    <c:set var="customVars" value="" />
     <c:if test="${value.TextBackgroundColor.isSet}">
-        <c:set var="captionBgStyle">background-color: ${value.TextBackgroundColor};</c:set>
-        <c:set var="customStyle">style="${captionBgStyle}"</c:set>
-    </c:if>
-    <c:if test="${not empty bgColorHead}">
-        <c:set var="headBgStyle">style="background-color: ${bgColorHead};"</c:set>
-        <c:set var="customClass" value="custom" />
-    </c:if>
-    <c:if test="${not empty bgColorSub}">
-        <c:set var="subBgStyle">style="background-color: ${bgColorSub};"</c:set>
-        <c:set var="customStyle">${subBgStyle}</c:set>
-        <c:set var="customClass" value="custom" />
+        <c:set var="rgbVal"><mercury:parseColor value="${value.TextBackgroundColor}" /></c:set>
+        <c:if test="${not rgbVal}">
+            <c:set var="customVars">--my-slider-bg:${rgbVal};</c:set>
+        </c:if>
     </c:if>
     <c:if test="${value.TextColor.isSet}">
-        <c:set var="textStyle">style="color: ${value.TextColor}"</c:set>
+        <c:set var="rgbVal"><mercury:parseColor value="${value.TextColor}" /></c:set>
+        <c:if test="${not empty rgbVal}">
+            <%-- text color must nor be RGB, we use this as check for valid values --%>
+            <c:set var="customVars">${customVars}--my-slider-fg:${value.TextColor};</c:set>
+        </c:if>
+    </c:if>
+    <c:if test="${not empty bgColorHead}">
+        <c:set var="customClass" value="custom" />
+        <c:set var="rgbVal"><mercury:parseColor value="${bgColorHead}" /></c:set>
+        <c:if test="${not empty rgbVal}">
+            <c:set var="customVars">${customVars}--my-slider-caption-top:${rgbVal};</c:set>
+        </c:if>
+    </c:if>
+    <c:if test="${not empty bgColorSub}">
+        <c:set var="customClass" value="custom" />
+        <c:set var="rgbVal"><mercury:parseColor value="${bgColorSub}" /></c:set>
+        <c:if test="${not empty rgbVal}">
+            <c:set var="customVars">${customVars}--my-slider-caption-sub:${rgbVal};</c:set>
+        </c:if>
+    </c:if>
+    <c:if test="${not empty customVars}">
+        <c:set var="customVars">${' '}style="${customVars}"</c:set>
     </c:if>
 
     <c:choose>
@@ -139,7 +155,7 @@
         </c:otherwise>
     </c:choose>
 
-    <div class="slider-box clearfix ${customClass}${' '}${marginClass}"${' '}${customStyle}><mercury:nl/>
+    <div class="slider-box clearfix ${customClass}${' '}${marginClass}"${customVars}><mercury:nl/>
 
     <div ${sliderAttrs}><mercury:nl/>
 
@@ -173,7 +189,7 @@
         </c:if>
 
         <mercury:nl />
-        <div class="slide-wrapper ${isHeroSlider ? '' : 'col'}${' '}${isHiddenSlide ? 'hide-noscript rs_skip' : 'slide-active'}${' '}${animationTrigger}${' '}${customClass}"><%----%>
+        <div class="slide-wrapper ${isHeroSlider ? '' : 'col'}${' '}${isHiddenSlide ? 'hide-noscript rs_skip' : 'slide-active'}${' '}${animationTrigger}${' '}${customClassX}"><%----%>
             <div class="visual ${animationTarget}"><mercury:nl/>
 
                 ${not empty slideLink ?
@@ -181,8 +197,8 @@
                         .concat(slideLink)
                         .concat('" rel="noopener"')
                         .concat(image.value.NewWin.toBoolean ? ' target="_blank"' : '')
-                        .concat(' class="captions">')
-                    : '<span class="captions">'}
+                        .concat(' class="slides">')
+                    : '<span class="slides">'}
 
                     <cms:addparams>
                         <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl hidden-xxl' : cssgridCols}</cms:param>
@@ -272,23 +288,7 @@
                         .concat(' class="captions">')
                     : '<span class="captions">'}
 
-                <div class="caption background ${posTop}${' '}${posLeft} rs_skip" aria-hidden="true" ${bgStyle}><%----%>
-                    <c:if test="${image.value.SuperTitle.isSet}">
-                        <strong ${headBgStyle} aria-hidden="true">${image.value.SuperTitle}</strong><%----%>
-                    </c:if>
-                    <c:if test="${image.value.TitleLine1.isSet or image.value.TitleLine2.isSet}">
-                        <div class="subcaption"><%----%>
-                            <c:if test="${image.value.TitleLine1.isSet}">
-                                <small ${subBgStyle} aria-hidden="true">${image.value.TitleLine1}</small><%----%>
-                            </c:if>
-                            <c:if test="${image.value.TitleLine2.isSet}">
-                                <%-- br only needed here for "custom" CSS setting when subcaption has different color --%>
-                                <br><small ${subBgStyle} aria-hidden="true">${image.value.TitleLine2}</small><%----%>
-                            </c:if>
-                        </div><%----%>
-                    </c:if>
-                </div><%----%>
-                <div class="caption foreground ${posTop}${' '}${posLeft}" ${fgStyle}><%----%>
+                <div class="caption ${posTop}${' '}${posLeft}"><%----%>
                     <c:if test="${image.value.SuperTitle.isSet}">
                         <strong ${textStyle}>${image.value.SuperTitle}</strong><%----%>
                     </c:if>
@@ -298,6 +298,7 @@
                                 <small ${textStyle}>${image.value.TitleLine1}</small><%----%>
                             </c:if>
                             <c:if test="${image.value.TitleLine2.isSet}">
+                                <%-- br needed here for "custom" CSS setting when subcaption has different color --%>
                                 <br><small ${textStyle}>${image.value.TitleLine2}</small><%----%>
                             </c:if>
                         </div><%----%>
@@ -316,15 +317,19 @@
     </div><%----%>
 
     <c:if test="${showArrows}">
-        <button class="prev-btn nav-btn" aria-label="<fmt:message key='msg.page.list.pagination.previous.title' />" type="button"><%----%>
+        <button class="slider-nav-btn prev-btn" aria-label="<fmt:message key='msg.page.list.pagination.previous.title' />" type="button"><%----%>
             <fmt:message key='msg.page.list.pagination.previous.title' /><%----%>
         </button><%----%>
-        <button class="next-btn nav-btn" aria-label="<fmt:message key='msg.page.list.pagination.next.title' />" type="button"><%----%>
+        <button class="slider-nav-btn next-btn" aria-label="<fmt:message key='msg.page.list.pagination.next.title' />" type="button"><%----%>
             <fmt:message key='msg.page.list.pagination.next.title' /><%----%>
         </button><%----%>
     </c:if>
     <c:if test="${showDots}">
-        <ul class="slider-dots" role="tablist"></ul><%----%>
+        <ul class="slider-dots" role="tablist"><%----%>
+            <li type="button" role="presentation"><%----%>
+                <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1">Slide *slideIndex* of *slideTotal*</button><%----%>
+            </li><%----%>
+        </ul><%----%>
     </c:if>
 
     </div><%----%>

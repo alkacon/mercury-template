@@ -18,8 +18,6 @@
  */
 
 
-import SlickSlider from "slick-carousel";
-
 import EmblaCarousel from 'embla-carousel';
 import EmblaAutoplay from 'embla-carousel-autoplay';
 import EmblaClassNames from 'embla-carousel-class-names';
@@ -52,11 +50,12 @@ const setupPrevNextBtns = (prevBtn, nextBtn, embla) => {
 };
 
 const generateDotBtns = (dots, embla) => {
-    const template = '<li type="button" role="presentation"><button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1">*index*</button></li>';
+    const template = dots.innerHTML;
     let dotHtml = "";
-    [].forEach.call(embla.scrollSnapList(), (slide, i) => {
-        dotHtml += template.replace('*index*', i+1);
-    });
+    const slideTotal = embla.slideNodes().length;
+    for (let slideIndex=0; slideIndex<slideTotal; slideIndex++) {
+        dotHtml += template.replace('*slideIndex*', slideIndex + 1).replace('*slideTotal*', slideTotal);
+    };
     dots.innerHTML = dotHtml;
     return [].slice.call(dots.querySelectorAll(".dot-btn"));
 };
@@ -103,7 +102,7 @@ function initEmblaSliders(sliders) {
         options.align = 'start';
         options.inViewThreshold = 0.75;
 
-        let plugins = [EmblaClassNames({ selected: 'slide-active' })];
+        let plugins = [EmblaClassNames({ selected: 'slide-active', draggable: '', dragging: ''})];
         const autoplay = options.autoplay ? EmblaAutoplay({ delay: options.delay, stopOnMouseEnter: options.pause, stopOnInteraction: false }) : null;
         if (autoplay !=  null) {
             plugins.push(autoplay);
@@ -119,7 +118,7 @@ function initEmblaSliders(sliders) {
         }
 
         if (options.dots) {
-            const dots = document.querySelector(".slider-dots");
+            const dots = slider.querySelector(".slider-dots");
             const dotsArray = generateDotBtns(dots, embla);
             const setSelectedDotBtn = selectDotBtn(dotsArray, embla);
             setupDotBtns(dotsArray, embla);
@@ -154,12 +153,6 @@ export function init(jQuery, debug) {
     DEBUG = debug;
 
     if (DEBUG) console.info("Slider.init()");
-
-    var $sliders = jQuery('.type-slider.type-slick-slider .slide-definitions.list-of-slides');
-    if (DEBUG) console.info("Slider.init() .type-slick-slider .slide-definitions.list-of-slides elements found: " + $sliders.length);
-    if ($sliders.length > 0) {
-        initSlickSliders($sliders);
-    }
 
     let sliders = document.querySelectorAll('.type-slider.type-embla-slider .slider-box');
     if (DEBUG) console.info("Slider.init() .type-embla-slider .slider-box elements found: " + sliders.length);

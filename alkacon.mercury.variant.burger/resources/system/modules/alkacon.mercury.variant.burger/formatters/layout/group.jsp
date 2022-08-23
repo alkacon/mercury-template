@@ -190,9 +190,13 @@
                                 <c:if test="${(showTitle eq 'ac-title') and not empty pageTitle}">
                                     <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="h-ac-title container" />
                                 </c:if>
+                                <c:if test="${not acHasPageSize}">
+                                    <c:set var="acParams" value="${{'cssgrid': 'fullwidth'}}" />
+                                </c:if>
                                 <mercury:container
                                     type="row"
                                     name="header-container"
+                                    parameters="${acParams}"
                                     css="h-ac-element"
                                     title="${value.Title}" />
                             </div><%----%>

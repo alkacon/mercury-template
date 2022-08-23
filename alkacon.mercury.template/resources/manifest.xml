@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.68</version>
+		<version>13.0.71</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -3286,6 +3286,85 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Sitemap]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/slider-embla.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/slider-embla.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>0b1ade57-21e9-11ed-a9d9-0242ac11002b</uuidstructure>
+			<uuidresource>0b1ade58-21e9-11ed-a9d9-0242ac11002b</uuidresource>
+			<datecreated>Mon, 22 Aug 2022 07:07:11 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;user]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/slider-hero.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/slider-hero.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>16a7b77b-21e9-11ed-a9d9-0242ac11002b</uuidstructure>
+			<uuidresource>16a7b77c-21e9-11ed-a9d9-0242ac11002b</uuidresource>
+			<datecreated>Mon, 22 Aug 2022 07:07:30 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Hero image slider]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/slider-logo.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/slider-logo.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>2777d088-22b2-11ed-a9d9-0242ac11002b</uuidstructure>
+			<uuidresource>2777d089-22b2-11ed-a9d9-0242ac11002b</uuidresource>
+			<datecreated>Tue, 23 Aug 2022 07:06:48 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Logo carousel slider]]></value>
 				</property>
 				<property>
 					<name>locale</name>

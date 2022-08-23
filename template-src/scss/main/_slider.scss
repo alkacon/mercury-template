@@ -25,66 +25,240 @@
 
 // Slider settings
 
+// add fade in/out effects to text in slider
+// this must not be active in general because for just on slide there is no effect required
+
+// slide that is not visible
+%slide-not-active {
+    .caption {
+        &.foreground,
+        &.background {
+            opacity: 0;
+        }
+    }
+}
+
+// slide that is currently visible
+%slide-is-active {
+    .caption {
+        &.foreground,
+        &.background {
+            transition: opacity 1.5s linear;
+        }
+        &.foreground {
+            opacity: 1.0;
+        }
+        &.background {
+            opacity: $slider-background-opacity;
+        }
+    }
+}
+
+// hero slider - activate slides not visible before the slider is initialized
+%show-hidden-slides-after-init {
+    .slide-wrapper.hide-noscript {
+        visibility: visible;
+        max-height: none;
+    }
+}
+
+// logo slider - activate all slides not visible before the slider is initialized
+%show-hidden-logos-after-init {
+    overflow: visible;
+    max-height: none;
+}
+
+.type-embla-slider {
+
+    .slider-box {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .slide-definitions {
+        display: flex;
+    }
+
+    .slide-wrapper {
+        @extend %slide-not-active;
+        &.slide-active {
+            @extend %slide-is-active;
+        }
+    }
+
+    &.hero-slider {
+        .slide-definitions.slider-initialized {
+            @extend %show-hidden-slides-after-init;
+        }
+
+        .slide-wrapper {
+            flex: 0 0 100%;
+            margin-right: var(--#{$prefix}spacer);
+        }
+    }
+
+    &.logo-slider {
+
+        .all-in-view {
+            .slide-definitions {
+                justify-content: center;
+            }
+            .nav-btn {
+                display: none;
+            }
+        }
+    }
+
+    .nav-btn {
+        position: absolute;
+        display: block;
+        bottom: 50%;
+        transform: translateY(50%);
+        height: $slick-button-size;
+        width: $slick-button-size;
+        line-height: 0px;
+        font-size: 0px;
+        cursor: pointer;
+        background: transparent;
+        color: transparent;
+        padding: 0;
+        border: none;
+        outline: none;
+        z-index: 1100;
+        &:hover,
+        &:focus {
+            outline: none;
+            background: transparent;
+            color: transparent;
+        }
+        &::before {
+            content: " ";
+            display: block;
+            width: $slick-button-size;
+            height:  $slick-button-size;
+            background-size: $slick-button-size $slick-button-size;
+            opacity: 0;
+            transition: opacity 0.5s linear;
+        }
+    }
+
+    .prev-btn {
+        left: $slick-button-position;
+        &::before {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTQ0IDIyNGwzNi0zNi02MC02MCA2MC02MC0zNi0zNi05NiA5NnoiLz4NCjwvc3ZnPg0K");
+        }
+    }
+
+    .next-btn {
+        right: $slick-button-position;
+        &::before {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTEyIDIyNGwtMzYtMzYgNjAtNjAtNjAtNjAgMzYtMzYgOTYgOTZ6Ii8+DQo8L3N2Zz4NCg==");
+        }
+    }
+}
+
+.slider-dots {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    bottom: $slick-dots-position;
+
+    list-style: none;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    z-index: 1100;
+    opacity: 0;
+
+    transition: opacity 0.5s linear;
+    li {
+        position: relative;
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer;
+        button {
+            border: 0;
+            background: transparent;
+            display: block;
+            height: 20px;
+            width: 20px;
+            outline: none;
+            line-height: 0px;
+            font-size: 0px;
+            color: transparent;
+            padding: 5px;
+            cursor: pointer;
+            &:hover,
+            &:focus {
+                outline: none;
+                &::before {
+                    opacity: $slick-opacity-on-hover;
+                }
+            }
+            &::before {
+                content: " ";
+                display: block;
+                width: $slick-dot-size;
+                height: $slick-dot-size;
+                background-size: $slick-dot-size $slick-dot-size;
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjA4IDEyOGE4MCA4MCAwIDEgMS0xNjAgMCA4MCA4MCAwIDAgMSAxNjAgMHoiLz4NCjwvc3ZnPg==");
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: $slick-opacity-default;
+            }
+            &.active::before {
+                color: $slick-dot-color-active;
+                opacity: $slick-opacity-on-hover;
+            }
+        }
+    }
+}
+
+html.keyboard-nav .type-embla-slider .slider-box,
+.type-embla-slider .slider-box:hover {
+
+    .nav-btn {
+        &::before {
+            opacity: $slick-opacity-default;
+            transition: opacity 0.5s linear;
+        }
+        &:hover,
+        &:focus {
+            &::before {
+                opacity: $slick-opacity-on-hover;
+            }
+        }
+    }
+
+    .slider-dots {
+        opacity: $slick-opacity-on-hover;
+        transition: opacity 0.5s linear;
+    }
+}
+
+
 .type-slider {
 
     --#{$prefix}slider-slide-border-radius: #{$slider-slide-border-radius};
     --#{$prefix}slider-caption-border-radius: #{$slider-caption-border-radius};
 
-    // add fade in/out effects to text in slider
-    // this must not be active in general because for just on slide there is no effect required
-
-    // slide that is not visible
-    %slide-not-active {
-        .slide-wrapper {
-            .caption {
-                &.foreground,
-                &.background {
-                    opacity: 0;
-                }
-            }
-        }
-    }
-
-    // slide that is currently visible
-    %slide-is-active {
-        .slide-wrapper {
-            .caption {
-                &.foreground,
-                &.background {
-                    transition: opacity 1.5s linear;
-                }
-                &.foreground {
-                    opacity: 1.0;
-                }
-                &.background {
-                    opacity: $slider-background-opacity;
-                }
-            }
-        }
-    }
-
-    // hero slider - activate slides not visible before the slider is initialized
-    %show-hidden-slides-after-init {
-        .slide-wrapper.hide-noscript {
-            visibility: visible;
-            max-height: none;
-        }
-    }
-
-    // logo slider - activate all slides not visible before the slider is initialized
-    %show-hidden-logos-after-init {
-        overflow: visible;
-        max-height: none;
-    }
-
     // slick slider special requirements
     &.type-slick-slider {
         .slick-slide {
-            @extend %slide-not-active;
+            .slide-wrapper {
+                @extend %slide-not-active;
+            }
         }
 
         .slick-slide.slick-current.slick-active   {
-            @extend %slide-is-active;
+            .slide-wrapper {
+                @extend %slide-is-active;
+            }
         }
 
         .slick-slide > div {
@@ -101,6 +275,15 @@
         &.logo-slider {
             .slide-definitions.slick-initialized {
                 @extend %show-hidden-logos-after-init;
+            }
+        }
+
+        &.logo-slider {
+
+            // hide all the logo slides before the slider is initialized
+            .slide-definitions {
+                overflow: hidden;
+                max-height: 0;
             }
         }
 
@@ -133,13 +316,6 @@
     }
 
     &.logo-slider {
-
-        // hide all the logo slides before the slider is initialized
-        .slide-definitions {
-            overflow: hidden;
-            max-height: 0;
-        }
-
         // optional paddings for logo sliders
         @each $space in $logo-slider-paddings {
             > .lm-#{$space} {
@@ -304,7 +480,7 @@
 
             strong,
             small {
-                display: inline-block;
+                display: inline-block; // important - do not remove even if next lines shows a warning
                 float: left;
                 clear: both;
             }

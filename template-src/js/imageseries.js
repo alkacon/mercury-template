@@ -207,6 +207,10 @@ function initZoomers($elements) {
     var images = [];
     var imageSrc = [];
     var indexCount = -1;
+
+    const winWidth  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    const winHeight = window.innerHeight|| document.documentElement.clientHeight||  document.body.clientHeight;
+
     $elements.each(function(){
 
         var $this = jQ(this);
@@ -234,6 +238,18 @@ function initZoomers($elements) {
             }
             if (existingIndex < 0) {
                 images.push(imageData);
+            }
+            if (imageData.src.indexOf('.svg') > 0) {
+                if (imageData.width < (0.75 * winWidth) && (imageData.height < (0.75 * winHeight))) {
+                    var factor;
+                    if (imageData.width > imageData.height) {
+                        factor = (0.75 * winWidth) / imageData.width;
+                    } else {
+                        factor = (0.75 * winHeight) / imageData.height;
+                    }
+                    imageData.width = imageData.width * factor;
+                    imageData.height = imageData.height * factor;
+                }
             }
             imageSrc.push(imageData.src);
             if (addClick) {

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>13.0.49</version>
+		<version>13.0.55</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7656,24 +7656,29 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js</source>
-			<destination>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js</destination>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-slider.js</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-slider.js</destination>
 			<type>plain</type>
-			<uuidstructure>fc8a848f-33b7-11eb-88b9-0242ac11002b</uuidstructure>
-			<uuidresource>fc8a8490-33b7-11eb-88b9-0242ac11002b</uuidresource>
-			<datecreated>Tue, 01 Dec 2020 09:31:27 GMT</datecreated>
+			<uuidstructure>887d0174-21ee-11ed-a9d9-0242ac11002b</uuidstructure>
+			<uuidresource>887d0175-21ee-11ed-a9d9-0242ac11002b</uuidresource>
+			<datecreated>Mon, 22 Aug 2022 07:46:29 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>xDAV_aHR0cDovL2FwYWNoZS5vcmcvZGF2L3Byb3BzLw$$_executable</name>
+					<value><![CDATA[F]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js.map</source>
-			<destination>system/modules/alkacon.mercury.theme/js/mercury-slider-slick.js.map</destination>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-slider.js.map</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-slider.js.map</destination>
 			<type>plain</type>
-			<uuidstructure>fcc98961-33b7-11eb-88b9-0242ac11002b</uuidstructure>
-			<uuidresource>fcc98962-33b7-11eb-88b9-0242ac11002b</uuidresource>
-			<datecreated>Tue, 01 Dec 2020 09:31:27 GMT</datecreated>
+			<uuidstructure>c982bfc1-21f0-11ed-a9d9-0242ac11002b</uuidstructure>
+			<uuidresource>c982bfc2-21f0-11ed-a9d9-0242ac11002b</uuidresource>
+			<datecreated>Mon, 22 Aug 2022 08:02:37 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

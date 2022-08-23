@@ -514,14 +514,14 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-slick-hero.xml]]></target>
-          <uuid>d26f2818-4516-4e41-88f6-7403d1afa1fe</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-hero.xml]]></target>
+          <uuid>16a7b77b-21e9-11ed-a9d9-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-slick-logo.xml]]></target>
-          <uuid>d8f7c725-5cee-4b3d-b57f-16f2e92a4463</uuid>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-logo.xml]]></target>
+          <uuid>2777d088-22b2-11ed-a9d9-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>

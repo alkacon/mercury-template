@@ -883,15 +883,15 @@ var Mercury = function(jQ) {
 
         // now initialize optional modules
 
-        if (requiresModule(".type-slick-slider .slide-definitions.list-of-slides")) {
+        if (requiresModule(".type-slick-slider .slide-definitions.list-of-slides, .type-embla-slider .slider-box")) {
             try {
                 import(
-                    /* webpackChunkName: "mercury-slider-slick" */
-                    "./slider-slick.js").then( function ( SliderSlick ) {
+                    /* webpackChunkName: "mercury-slider" */
+                    "./slider.js").then( function ( SliderSlick ) {
                     SliderSlick.init(jQ, DEBUG);
                 });
             } catch (err) {
-                console.warn("SliderSlick.init() error", err);
+                console.warn("Slider.init() error", err);
             }
         }
 

@@ -103,6 +103,7 @@ html.noscript .type-imageseries .series {
 .pswp {
 
     --pswp-root-z-index: #{$pswp__root-z-index};
+    --pswp-placeholder-bg: none;
 
     .pswp__caption {
         position: absolute;
@@ -144,10 +145,6 @@ html.noscript .type-imageseries .series {
             max-width: 90%;
         }
     }
-}
-
-.pswp__img {
-    background-color: $grey-lighter;
 }
 
 // Image gallery image enter animation, used when the image gallery is displayed
@@ -248,6 +245,27 @@ a .effect-box .zoomer {
 .image-src-box,
 .image-src-box > img {
     border-radius: var(--#{$prefix}border-radius);
+}
+
+// remove rounded corners in wide area images
+.area-header.ac-full-size .h-ac,
+.area-wide.area-full-row {
+
+    .type-slider .slider-box,
+    .type-slider .slide-wrapper,
+    .type-slider .image-src-box,
+    .piece.full .image-src-box,
+    .element.tile-col .image-src-box,
+    .element.tile-col .content-box {
+        border-radius: 0;
+    }
+    .type-slider .slide-wrapper,
+    .piece.full .image-src-box,
+    .element.tile-col .image-src-box {
+        img {
+            border-radius: 0;
+        }
+    }
 }
 
 .image-src-box > img {

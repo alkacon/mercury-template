@@ -263,6 +263,7 @@ $rfs-breakpoint:                    552px !default;
 
 $grid-gutter-width:                 30px !default;
 $grid-gutter-width-half:            $grid-gutter-width * 0.5 !default;
+$grid-row-columns:                  12 !default;
 
 $primary:                           $main-theme !default;
 
@@ -625,7 +626,7 @@ $slider-slide-border-radius:        var(--#{$prefix}border-radius) !default;
 $slider-caption-border-radius:      var(--#{$prefix}border-radius) !default;
 $slider-caption-padding:            var(--#{$prefix}spacer-sm) 0 !default;
 $slider-text-shadow:                1px 1px 1px rgba(#333, .5) !default;
-$logo-slider-paddings:              (5, 10, 15, 20) !default;
+$logo-slider-paddings:              (10) !default;
 $slider-background-opacity:         0.75 !default;
 
 

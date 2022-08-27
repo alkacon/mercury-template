@@ -190,7 +190,8 @@ $default-margin-small:              round($default-margin * 50) * 0.01 !default;
 $default-margin-verysmall:          round($default-margin * 25) * 0.01 !default;   // 0.5 rem
 
 $spacer:                            $default-margin-small !default; // spacing mostly used for decorative purposes
-$paragraph-margin-bottom:           $default-margin-small !default; // margin used for text, can be top or bottom
+$paragraph-margin-bottom:           $default-margin-small !default; // margin used at the end of paragraphs
+$text-flow-margin:                  $paragraph-margin-bottom !default; // margin to separate text, can be top or bottom
 $headings-margin-bottom:            $paragraph-margin-bottom !default; // margin below <hx> elements
 
 // Text and page colors
@@ -314,7 +315,7 @@ $colored-row-color:                 $highlight-color !default;
 $section-subtitle-size:             13px !default;
 
 $piece-gutter-width:                $grid-gutter-width !default;
-$piece-text-to-link-margin:         var(--#{$prefix}margin) !default;
+$piece-text-to-link-margin:         var(--#{$prefix}p-margin) !default;
 $piece-visual-last-margin-top:      var(--#{$prefix}margin) !default;
 $piece-desktop-breakpoint:          md !default;
 
@@ -813,10 +814,9 @@ $tooltip-border-radius:             var(--#{$prefix}border-radius) !default;
 
 
 // Link sequence
-$ls-margin:                         var(--#{$prefix}spacer-xl) !default;
-$ls-margin-left:                    calc(2.5 * var(--#{$prefix}spacer)) !default;
-$ls-margin-small:                   var(--#{$prefix}spacer) !default;
-$ls-margin-verysmall:               var(--#{$prefix}spacer-sm) !default;
+
+$ls-margin-list:                    calc(2.5 * var(--#{$prefix}spacer)) !default;
+$ls-margin-row:                     calc(2 * var(--#{$prefix}spacer)) !default;
 
 
 // Animations

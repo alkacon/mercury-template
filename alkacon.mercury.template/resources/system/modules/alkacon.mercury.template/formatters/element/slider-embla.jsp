@@ -24,6 +24,9 @@
 
 <c:set var="rotationTime"           value="${setting.rotationTime.isSet ? setting.rotationTime.toInteger : 0}" />
 <c:set var="autoPlay"               value="${rotationTime > 0}" />
+<c:set var="transition"             value="${setting.transition.toString}" />
+<c:set var="transitionSpeed"        value="${setting.transitionSpeed.toInteger}" />
+<c:set var="marginClass"            value="${' '}${setting.marginClass.toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="imageRatioXS"           value="${setting.imageRatioSmall.toString}" />
 <c:set var="imageRatioXL"           value="${setting.imageRatioLarge.toString}" />
@@ -36,22 +39,22 @@
 <c:set var="bgColorHead"            value="${setting.textColorHead.isSet and not (setting.textColorHead eq 'css') ? setting.textColorHead.toString : ''}" />
 <c:set var="bgColorSub"             value="${setting.textColorSub.isSet and not (setting.textColorSub eq 'css') ? setting.textColorSub.toString : ''}" />
 
-<c:set var="sliderType"             value="${setting.slickType.value}" />
+<c:set var="sliderType"             value="${setting.sliderType.value}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
+<%-- note: only transitions 'scale' and 'parallax' currently use the param --%>
+<c:set var="transitionParam"        value="${transition eq 'scale' ? 2 : 0.75}" />
 
 <c:choose>
     <c:when test="${sliderType eq 'logo'}">
-    <%-- ###### Logo slider ###### --%>
+    <%-- Logo slider --%>
         <c:set var="visibleSlideList" value="${fn:split(visibleSlideSetting, '-')}" />
-
         <c:set var="visibleSlideConfig" value="${[0, 0, 0, 0, 0, 0]}" />
         <c:forEach var="sC"             items="${visibleSlideList}" varStatus="status">
             <c:set var="slideCount"     value="${cms.wrap[sC].toInteger}" />
             <c:set var="visibleSlides"  value="${slideCount > 0 ? slideCount : (status.index > 0 ? visibleSlideConfig[status.index - 1] : 1)}" />
             <c:set var="ignore"         value="${visibleSlideConfig.set(status.index, visibleSlides)}" />
         </c:forEach>
-
         <c:set var="logoRows" value="" />
         <c:choose>
             <c:when test="${visibleSlideConfig[0] > 0}">
@@ -59,7 +62,6 @@
                 <c:forEach var="slideConfig" items="${visibleSlideConfig}" varStatus="status">
                     <c:if test="${visibleSlideConfig[status.index] > 0}">
                         <c:set var="logoRows" value="${logoRows}${' '}row-cols${Breakpoints[status.index]}-${visibleSlideConfig[status.index]}" />
-                        <%-- TODO: Generate cssgridCols for Image sizing, check if breakpoint is different from the one before... --%>
                     </c:if>
                 </c:forEach>
             </c:when>
@@ -69,16 +71,17 @@
             </c:otherwise>
         </c:choose>
         <c:set var="isHeroSlider" value="${false}" />
-        <c:set var="marginClass" value="lm-10" />
+        <c:set var="marginClass" value=" lm-10" />
+        <c:set var="transition" value="swipe" />
         <c:set var="cssgutter" value="20" />
         <c:set var="showDots" value="${false}" />
         <c:set var="pauseOnHover" value="${false}" />
         <c:set var="adoptRatioToScreen" value="${false}" />
-        <c:set var="animationTrigger" value="${empty setEffect ? '' : setEffect}" />
-        <c:set var="animationTarget" value="${empty setEffect ? '' : 'effect-box'}" />
+        <c:set var="animationTrigger" value="${empty setEffect ? '' : ' '.concat(setEffect)}" />
+        <c:set var="animationTarget" value="${empty setEffect ? '' : ' effect-box'}" />
     </c:when>
     <c:otherwise>
-    <%-- ###### Hero slider (default) ###### --%>
+    <%-- Hero slider (default) --%>
         <c:set var="isHeroSlider" value="${true}" />
         <c:set var="visibleSlidesXL" value="${1}" />
         <c:set var="visibleSlidesXS" value="${1}" />
@@ -86,7 +89,7 @@
     </c:otherwise>
 </c:choose>
 
-<div class="element type-slider type-embla-slider pivot pivot-full ${isHeroSlider ? 'hero-slider' : 'logo-slider'}${setCssWrapper123}${' '}${textDisplay}" <%--
+<div class="element type-slider${justOneSlide ? '' : ' type-embla-slider'}${isHeroSlider ? ' hero-slider ' : ' logo-slider '}pivot pivot-full${setCssWrapper123}${' '}${textDisplay}" <%--
 --%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
 --%>><mercury:nl />
 
@@ -119,14 +122,14 @@
         </c:if>
     </c:if>
     <c:if test="${not empty bgColorHead}">
-        <c:set var="customClass" value="custom" />
+        <c:set var="customClass" value=" custom" />
         <c:set var="rgbVal"><mercury:parseColor value="${bgColorHead}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <c:set var="customVars">${customVars}--my-slider-caption-top:${rgbVal};</c:set>
         </c:if>
     </c:if>
     <c:if test="${not empty bgColorSub}">
-        <c:set var="customClass" value="custom" />
+        <c:set var="customClass" value=" custom" />
         <c:set var="rgbVal"><mercury:parseColor value="${bgColorSub}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <c:set var="customVars">${customVars}--my-slider-caption-sub:${rgbVal};</c:set>
@@ -136,28 +139,24 @@
         <c:set var="customVars">${' '}style="${customVars}"</c:set>
     </c:if>
 
-    <c:choose>
-        <c:when test="${justOneSlide}">
-            <c:set var="sliderAttrs" value='class="slide-definitions just-one-slide"' />
-        </c:when>
-        <c:otherwise>
-            <c:set var="sliderAttrs">
-                class="slide-definitions list-of-slides${logoRows}" <%--
-            --%>data-slider='{<%--
-                --%>"type": "${sliderType}", <%--
-                --%>"dots": ${showDots}, <%--
-                --%>"arrows": ${showArrows}, <%--
-                --%>"autoplay": ${autoPlay}, <%--
-                --%>"delay": ${rotationTime}, <%--
-                --%>"pause": ${pauseOnHover}<%--
-            --%>}'
-            </c:set>
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${not justOneSlide}">
+        <c:set var="sliderData">${' '}<%--
+        --%>data-slider='{<%--
+            --%>"type": "${sliderType}", <%--
+            --%>"arrows": ${showArrows}, <%--
+            --%>"dots": ${showDots}, <%--
+            --%>"autoplay": ${autoPlay}, <%--
+            --%>"transition": "${transition}", <%--
+            --%>"param": ${transitionParam}, <%--
+            --%>"delay": ${rotationTime}, <%--
+            --%>"speed": ${transitionSpeed}, <%--
+            --%>"pause": ${pauseOnHover}<%--
+        --%>}'<%--
+    --%></c:set>
+    </c:if>
 
-    <div class="slider-box clearfix ${customClass}${' '}${marginClass}"${customVars}><mercury:nl/>
-
-    <div ${sliderAttrs}><mercury:nl/>
+    <div class="slider-box${customClass}${marginClass}"${customVars}${sliderData}><mercury:nl/>
+    <div class="slide-definitions${logoRows}"><mercury:nl/>
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">
 
@@ -189,8 +188,10 @@
         </c:if>
 
         <mercury:nl />
-        <div class="slide-wrapper ${isHeroSlider ? '' : 'col'}${' '}${isHiddenSlide ? 'hide-noscript rs_skip' : 'slide-active'}${' '}${animationTrigger}${' '}${customClassX}"><%----%>
-            <div class="visual ${animationTarget}"><mercury:nl/>
+
+        <div class="slide-wrapper${isHeroSlider ? '' : ' col'}${isHiddenSlide ? ' hide-noscript rs_skip' : ' slide-active'}${animationTrigger}"><%----%>
+        <div class="slide-container"><%----%>
+            <div class="visual${animationTarget}"><mercury:nl/>
 
                 ${not empty slideLink ?
                     '<a href="'
@@ -310,28 +311,30 @@
                 <mercury:nl />
             </c:if>
         </div><%----%>
+        </div><%----%>
         <mercury:nl />
 
         <c:set var="isHiddenSlide" value="${isHeroSlider && (status.count >= 1)}" />
     </c:forEach>
     </div><%----%>
 
-    <c:if test="${showArrows}">
-        <button class="slider-nav-btn prev-btn" aria-label="<fmt:message key='msg.page.list.pagination.previous.title' />" type="button"><%----%>
-            <fmt:message key='msg.page.list.pagination.previous.title' /><%----%>
-        </button><%----%>
-        <button class="slider-nav-btn next-btn" aria-label="<fmt:message key='msg.page.list.pagination.next.title' />" type="button"><%----%>
-            <fmt:message key='msg.page.list.pagination.next.title' /><%----%>
-        </button><%----%>
+    <c:if test="${not justOneSlide}">
+        <c:if test="${showArrows}">
+            <button class="slider-nav-btn prev-btn" aria-label="<fmt:message key='msg.page.list.pagination.previous.title' />" type="button"><%----%>
+                <fmt:message key='msg.page.list.pagination.previous.title' /><%----%>
+            </button><%----%>
+            <button class="slider-nav-btn next-btn" aria-label="<fmt:message key='msg.page.list.pagination.next.title' />" type="button"><%----%>
+                <fmt:message key='msg.page.list.pagination.next.title' /><%----%>
+            </button><%----%>
+        </c:if>
+        <c:if test="${showDots}">
+            <ul class="slider-dots" role="tablist"><%----%>
+                <li type="button" role="presentation"><%----%>
+                    <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1"><fmt:message key='msg.page.slider.pagination.dots' /></button><%----%>
+                </li><%----%>
+            </ul><%----%>
+        </c:if>
     </c:if>
-    <c:if test="${showDots}">
-        <ul class="slider-dots" role="tablist"><%----%>
-            <li type="button" role="presentation"><%----%>
-                <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1">Slide *slideIndex* of *slideTotal*</button><%----%>
-            </li><%----%>
-        </ul><%----%>
-    </c:if>
-
     </div><%----%>
 
 </div><%----%>

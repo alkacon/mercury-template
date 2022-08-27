@@ -20,10 +20,10 @@
  */
 
 %ls-icon-base {
-    padding-left: $ls-margin-left;
+    padding-left: calc(var(--#{$prefix}ls-margin-list));
     &::before {
         float: left;
-        margin-left: calc(-1 * $ls-margin-left);
+        margin-left: calc(-1 * var(--#{$prefix}ls-margin-list));
         display: inline-block;
         line-height: $line-height-base;
     }
@@ -58,8 +58,11 @@
     }
 }
 
-@if $nav-hyphens {
-    .type-linksequence {
+.type-linksequence {
+    --#{$prefix}ls-margin-list: #{$ls-margin-list};
+    --#{$prefix}ls-margin-row: #{$ls-margin-row};
+
+    @if $nav-hyphens {
         hyphens: auto;
         overflow-wrap: anywhere;
         word-break: break-word;
@@ -100,14 +103,14 @@
         li:not(:last-child) {
             &::after {
                 content: "|";
-                margin: 0 $ls-margin-small;
+                margin: 0 calc(0.5 * var(--#{$prefix}ls-margin-row));
             }
         }
     }
 
     &.no-icon {
         li:not(:last-child) {
-            margin-right: $ls-margin;
+            margin-right: var(--#{$prefix}ls-margin-row);
         }
     }
 
@@ -116,11 +119,12 @@
         li {
             &::before {
                 float: none;
-                padding-right: $ls-margin-verysmall;
+                padding-right: calc(0.5 * var(--#{$prefix}ls-margin-row));
             }
             + li {
+                padding-left: var(--#{$prefix}ls-margin-row);
                 &::before {
-                    padding-left: calc($ls-margin-small + $ls-margin-verysmall);
+                    margin-left: 0;
                 }
             }
         }
@@ -146,5 +150,7 @@
 }
 
 .ls-icon + span {
-    margin-left: $ls-margin-verysmall;
+    // for "icon:" display from linksequence text - see link-icon.tag
+    --#{$prefix}ls-margin-row: #{$ls-margin-row};
+    margin-left: calc(0.5 * var(--#{$prefix}ls-margin-row));
 }

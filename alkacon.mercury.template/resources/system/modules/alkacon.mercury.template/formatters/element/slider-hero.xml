@@ -51,6 +51,15 @@
       <IncludeName><![CDATA[rotationTime.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[marginClass.slider]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[transition.slider]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[transitionSpeed.slider]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textDisplay.slider]]></IncludeName>
     </Setting>
     <Setting>
@@ -72,7 +81,7 @@
       <IncludeName><![CDATA[pauseOnHover.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[slickType.slider.hero]]></IncludeName>
+      <IncludeName><![CDATA[sliderType.slider.hero]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

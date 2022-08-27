@@ -193,7 +193,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             > .detail-content > *,
             > * {
                 // add margins for all elements in text piece
-                margin-bottom: var(--#{$prefix}margin);
+                margin-bottom: var(--#{$prefix}p-margin);
                 &:last-child {
                     // last element in text must not add margin
                     margin-bottom: 0;
@@ -219,7 +219,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             // goal: make text from 2nd element apperar as if it belongs to first element
             + .piece.element.type-section:not(.box) {
                 &.only-text {
-                    margin-top: calc(var(--#{$prefix}margin) - var(--#{$prefix}element-margin));
+                    margin-top: calc(var(--#{$prefix}p-margin) - var(--#{$prefix}element-margin));
                 }
             }
         }
@@ -423,7 +423,7 @@ a .intro-headline {
     .body-text {
         > * {
             // add margins for all elements in text piece
-            margin-bottom: var(--#{$prefix}margin);
+            margin-bottom: var(--#{$prefix}p-margin);
             &:last-child {
                 // last element in text must not add margin
                 margin-bottom: 0;

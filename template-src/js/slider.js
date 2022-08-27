@@ -19,34 +19,47 @@
 
 
 import EmblaCarousel from 'embla-carousel';
-import EmblaAutoplay from 'embla-carousel-autoplay';
+// import EmblaAutoplay from 'embla-carousel-autoplay';
 import EmblaClassNames from 'embla-carousel-class-names';
 
 // the global objects that must be passed to this module
-var jQ;
 var DEBUG;
 
 "use strict";
 
-function initSlickSliders($sliders) {
-
-    $sliders.each(function(){
-        var $slider = jQ(this);
-        var data = $slider.data('typeslick') || {};
-        if (Mercury.device().mobile()) {
-            data.arrows = false;
-            data.fade = false;
-        }
-        $slider.slick(data);
-    });
+//                      2     4   6   8   10
+const massTable = [1,20,14,11,8,6,4,4,2,2,1];
+const getMass = (speed) => {
+    if ((speed > 9) || (speed < 1)) return 1;
+    return massTable[speed];
 }
 
-// this is taken straight from the embla examples
-// see https://www.embla-carousel.com/examples/navigation/#arrows--dots
-// see https://codesandbox.io/s/embla-carousel-arrows-dots-vanilla-twh0h
-const setupPrevNextBtns = (prevBtn, nextBtn, embla) => {
-    prevBtn.addEventListener('click', embla.scrollPrev, false);
-    nextBtn.addEventListener('click', embla.scrollNext, false);
+const scrollTo = (engine, index, autoplay, direction, speed) => {
+    if (autoplay) autoplay.stop();
+    let sp = speed || 8;
+    engine.scrollBody.useSpeed(sp).useMass(getMass(sp));
+    engine.scrollTo.index(index, direction || 0);
+}
+
+const scrollNext = (engine, autoplay, speed) => {
+    const next = engine.index.clone().add(1);
+    scrollTo(engine, next.get(), autoplay, -1, speed);
+}
+
+const scrollPrev = (engine, autoplay, speed) => {
+    const prev = engine.index.clone().add(-1);
+    scrollTo(engine, prev.get(), autoplay, 1, speed);
+}
+
+const setupPrevNextBtns = (prevBtn, nextBtn, embla, autoplay) => {
+    prevBtn.addEventListener('click', () => { scrollPrev(embla.internalEngine(), autoplay) }, false);
+    nextBtn.addEventListener('click', () => { scrollNext(embla.internalEngine(), autoplay) }, false);
+};
+
+const setupDotBtns = (dotsArray, embla, autoplay) => {
+    dotsArray.forEach((dotBtn, i) => {
+        dotBtn.addEventListener('click', () => { scrollTo(embla.internalEngine(), i, autoplay) }, false);
+    });
 };
 
 const generateDotBtns = (dots, embla) => {
@@ -60,34 +73,175 @@ const generateDotBtns = (dots, embla) => {
     return [].slice.call(dots.querySelectorAll(".dot-btn"));
 };
 
-const setupDotBtns = (dotsArray, embla) => {
-    dotsArray.forEach((dotNode, i) => {
-        dotNode.addEventListener("click", () => embla.scrollTo(i), false);
-    });
-};
-
 const selectDotBtn = (dotsArray, embla) => () => {
     const previous = embla.previousScrollSnap();
     const selected = embla.selectedScrollSnap();
-    dotsArray[previous].classList.remove("active");
+    dotsArray[previous].classList.remove('active');
     dotsArray[previous].setAttribute('tabindex', '-1');
     dotsArray[previous].setAttribute('aria-selected', false);
-    dotsArray[selected].classList.add("active");
+    dotsArray[selected].classList.add('active');
     dotsArray[selected].setAttribute('tabindex', '0');
     dotsArray[selected].setAttribute('aria-selected', true);
 };
 
-const checkAutoplay = (embla, slider, autoplay) => () => {
-    autoplay.stop();
-    slider.classList.remove('all-in-view');
+// In order to use my custom mass functions I had to modfy the autoplay plugin from the distribution
+function AutoplayMod(userOptions) {
+
+    const defaultOptions = {
+        active: true,
+        breakpoints: {},
+        delay: 4000,
+        speed: 4,
+        stopOnInteraction: false,
+        stopOnMouseEnter: false
+    }
+
+    const optionsHandler = EmblaCarousel.optionsHandler();
+
+    let options;
+    let carousel;
+    let interaction;
+    let timer = 0;
+
+    function init(embla) {
+        if (DEBUG) console.info("Slider.init() AutoplayMod.init()");
+        carousel = embla;
+        options = optionsHandler.atMedia(self.options);
+        interaction = options.stopOnInteraction ? destroy : stop;
+        const { eventStore } = carousel.internalEngine();
+        const root = carousel.rootNode();
+
+        carousel.on('pointerDown', interaction);
+        if (!options.stopOnInteraction) carousel.on('pointerUp', reset);
+
+        if (options.stopOnMouseEnter) {
+            eventStore.add(root, 'mouseenter', stop);
+            eventStore.add(root, 'mouseleave', reset);
+        }
+
+        eventStore.add(document, 'visibilitychange', () => {
+            if (document.visibilityState === 'hidden') return stop();
+            reset()
+        })
+        eventStore.add(window, 'pagehide', (event) => {
+            if (event.persisted) stop();
+        })
+
+        play();
+    }
+
+    function stop() {
+        if (!timer) return;
+        window.clearTimeout(timer);
+    }
+
+    function play() {
+        stop();
+        timer = window.setTimeout(next, options.delay);
+    }
+
+    function destroy() {
+        carousel.off('pointerDown', interaction);
+        if (!options.stopOnInteraction) carousel.off('pointerUp', reset);
+        stop();
+        timer = 0;
+    }
+
+    function reset() {
+        if (!timer) return;
+        stop();
+        play();
+    }
+
+    function next() {
+        scrollNext(carousel.internalEngine(), null, options.speed);
+        play();
+    }
+
+    const self = {
+        name: 'autoplayMod',
+        options: optionsHandler.merge(defaultOptions, userOptions),
+        init,
+        destroy,
+        play,
+        stop,
+        reset
+    }
+
+    return self;
+}
+
+// see https://www.embla-carousel.com/examples/inspiration/#scale
+// see https://codesandbox.io/s/embla-carousel-scale-vanilla-gc3b0
+
+const calculateDiffToTarget = (embla) => {
+    const engine = embla.internalEngine();
+    const scrollProgress = embla.scrollProgress();
+
+    return embla.scrollSnapList().map((scrollSnap, index) => {
+        if (!embla.slidesInView().includes(index)) return 0;
+        let diffToTarget = scrollSnap - scrollProgress;
+
+        if (engine.options.loop) {
+            engine.slideLooper.loopPoints.forEach((loopItem) => {
+                const target = loopItem.target().get();
+                if (index === loopItem.index && target !== 0) {
+                    const sign = Math.sign(target);
+                    if (sign === -1) diffToTarget = scrollSnap - (1 + scrollProgress);
+                    if (sign === 1) diffToTarget = scrollSnap + (1 - scrollProgress);
+                }
+            });
+        }
+        return diffToTarget;
+    });
+};
+
+const checkNumber = (number) => {
+    let result = Math.min(Math.max(number, 0), 1);
+    if ((result - 0.001) < 0) {
+        result = 0
+    } else if ((result + 0.001) > 1) {
+        result = 1;
+    };
+    return result;
+}
+
+const scaleTransition = (diffToTarget, index, layers, transitionParam) => {
+    const transform = checkNumber(1 - Math.abs(diffToTarget * transitionParam));
+    layers[index].style.transform = `scale(${transform})`;
+}
+
+const parallaxTransition = (diffToTarget, index, layers, transitionParam) => {
+    const PARALLAX_FACTOR = 0.75;
+    const transform = checkNumber(diffToTarget * (-1 / transitionParam)) * 100;
+    layers[index].style.transform = `translateX(${transform}%)`;
+}
+
+const slideTransition = (embla, transition, transitionParam) => {
+    const slides = embla.slideNodes();
+    const layers = slides.map((s) => s.querySelector(".slide-container"));
+    const applyTransition = () => {
+        const scaleTransforms = calculateDiffToTarget(embla);
+        scaleTransforms.forEach((diffToTarget, index) => {
+            transition(diffToTarget, index, layers, transitionParam);
+        });
+    };
+    return applyTransition;
+};
+
+// for "logo" slider:
+// check if all slides are in view, and if so stop autoplay and center the slides
+const checkAutoplay = (embla, sliderBox, autoplay) => () => {
+    if (autoplay) autoplay.stop();
+    sliderBox.classList.remove('all-in-view');
     embla.scrollTo(0, true);
     const slides = embla.slidesNotInView().length;
     if (DEBUG) console.info("Slider.checkAutoplay() Slides not in view: " + slides) ;
     if (slides > 0) {
         embla.reInit({active: true});
-        autoplay.play();
+        if (autoplay) autoplay.play();
     } else {
-        slider.classList.add('all-in-view');
+        sliderBox.classList.add('all-in-view');
         embla.reInit({active: false});
     }
 }
@@ -95,44 +249,53 @@ const checkAutoplay = (embla, slider, autoplay) => () => {
 function initEmblaSliders(sliders) {
 
     [].forEach.call(sliders, (slider, i) => {
-        const optionNode = slider.getElementsByClassName('slide-definitions')[0];
 
-        const options = JSON.parse(optionNode.dataset.slider);
+        const sliderBox = slider.querySelector('.slider-box');
+        const options = JSON.parse(sliderBox.dataset.slider);
+
         options.loop = true;
         options.align = 'start';
-        options.inViewThreshold = 0.75;
+        options.speed = options.speed || 4;
+        options.inViewThreshold = (options.type == 'logo' ? 0.75 : 0);
 
         let plugins = [EmblaClassNames({ selected: 'slide-active', draggable: '', dragging: ''})];
-        const autoplay = options.autoplay ? EmblaAutoplay({ delay: options.delay, stopOnMouseEnter: options.pause, stopOnInteraction: false }) : null;
+        const autoplay = options.autoplay ? AutoplayMod({ delay: options.delay, stopOnMouseEnter: options.pause, speed: options.speed }) : null;
         if (autoplay !=  null) {
             plugins.push(autoplay);
         }
 
-        optionNode.classList.add('slider-initialized');
-        const embla = EmblaCarousel(slider, options, plugins);
+        sliderBox.classList.add('slider-initialized');
+        const embla = EmblaCarousel({root: sliderBox, container: sliderBox.querySelector('.slide-definitions')}, options, plugins);
 
         if (options.arrows) {
             const prevBtn = slider.querySelector(".prev-btn");
             const nextBtn = slider.querySelector(".next-btn");
-            setupPrevNextBtns(prevBtn, nextBtn, embla);
+            setupPrevNextBtns(prevBtn, nextBtn, embla, autoplay);
         }
 
         if (options.dots) {
             const dots = slider.querySelector(".slider-dots");
             const dotsArray = generateDotBtns(dots, embla);
             const setSelectedDotBtn = selectDotBtn(dotsArray, embla);
-            setupDotBtns(dotsArray, embla);
-            embla.on("select", setSelectedDotBtn);
+            setupDotBtns(dotsArray, embla, autoplay);
             embla.on("init", setSelectedDotBtn);
+            embla.on("select", setSelectedDotBtn);
+        }
+
+        if (options.transition == 'scale' || options.transition == 'parallax') {
+            const transitionParam = options.param || (options.transition == 'scale' ? 2.0 : 0.75);
+            const applyTransition = slideTransition(embla, options.transition == 'scale' ? scaleTransition : parallaxTransition, transitionParam);
+            embla.on("init", applyTransition);
+            embla.on("scroll", applyTransition);
         }
 
         if (options.type == 'logo') {
-            const setAutoPlay = checkAutoplay(embla, slider, autoplay);
+            const setAutoPlay = checkAutoplay(embla, sliderBox, autoplay);
             embla.on("init", setAutoPlay);
             embla.on("resize", setAutoPlay);
         }
 
-        slider.addEventListener('keydown', (event) => {
+        sliderBox.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case "ArrowLeft":
                     embla.scrollPrev();
@@ -149,13 +312,11 @@ function initEmblaSliders(sliders) {
 
 export function init(jQuery, debug) {
 
-    jQ = jQuery;
     DEBUG = debug;
-
     if (DEBUG) console.info("Slider.init()");
 
-    let sliders = document.querySelectorAll('.type-slider.type-embla-slider .slider-box');
-    if (DEBUG) console.info("Slider.init() .type-embla-slider .slider-box elements found: " + sliders.length);
+    let sliders = document.querySelectorAll('.type-slider.type-embla-slider');
+    if (DEBUG) console.info("Slider.init() .type-slider.type-embla-slider elements found: " + sliders.length);
     if (sliders.length > 0) {
         initEmblaSliders(sliders);
     }

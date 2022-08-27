@@ -50,6 +50,9 @@
       <IncludeName><![CDATA[rotationTime.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[transitionSpeed.slider]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.slider.logo]]></IncludeName>
     </Setting>
     <Setting>
@@ -59,7 +62,7 @@
       <IncludeName><![CDATA[showArrows.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[slickType.slider.logo]]></IncludeName>
+      <IncludeName><![CDATA[sliderType.slider.logo]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

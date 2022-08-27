@@ -21,12 +21,11 @@
 
 // Slider settings
 
-$slider-button-position: 30px !default;
+$slider-button-position: 20px !default;
 $slider-button-size: 40px !default;
-$slider-dot-size: 18px !default;
-$slider-dots-position: 10px !default;
-$slider-opacity-default: 0.5 !default;
-$slider-opacity-on-hover: 1 !default;
+$slider-dot-size: 20px !default;
+$slider-opacity-inactive: 0.5 !default;
+$slider-opacity-active: 1 !default;
 
 .type-slider {
 
@@ -49,7 +48,7 @@ $slider-opacity-on-hover: 1 !default;
     &.logo-slider {
         // optional paddings for logo sliders
         @each $space in $logo-slider-paddings {
-            > .lm-#{$space} {
+            .slider-box.lm-#{$space} {
                 margin-left: -#{$space}px;
                 margin-right: -#{$space}px;
                 .slide-wrapper .visual {
@@ -60,10 +59,9 @@ $slider-opacity-on-hover: 1 !default;
     }
 
     .slider-box {
-        // must set round corner here in case a custom bg color for caption has been set
-        // JSP does this as inline style attribute
-        // can not hide overflow because of dot buttons in XS view
         position: relative;
+        overflow: hidden;
+        // must set round corner here in case a custom bg color for caption has been set
         @include round-corners(var(--#{$prefix}slider-slide-border-radius), false);
 
         &.custom .caption {
@@ -121,24 +119,20 @@ $slider-opacity-on-hover: 1 !default;
         display: flex;
     }
 
+    .slide-container,
     .slide-wrapper {
+        @include round-corners(var(--#{$prefix}slider-slide-border-radius), true);
         position: relative;
         display: flex;
         flex-direction: column;
-        @include round-corners(var(--#{$prefix}slider-slide-border-radius), true);
+        flex-grow: 10;
+    }
 
-        &.slide-active {
-            .caption {
-                transition: opacity 1.5s linear;
-                opacity: 1; // fade in effect for slide captions (caption visible)
-            }
-        }
-
+    .slide-wrapper {
         .caption {
-            opacity: 0; // fade in effect for slide captions (caption hidden)
             padding: $slider-caption-padding;
             position: absolute;
-            max-width: calc(100% - (6 * var(--#{$prefix}spacer)));
+            max-width: calc(100% - (2 * var(--#{$prefix}spacer-xl)));
             background-color: rgb(var(--#{$prefix}slider-bg), $slider-background-opacity);
             @include round-corners(var(--#{$prefix}slider-caption-border-radius), true);
 
@@ -261,7 +255,7 @@ $slider-opacity-on-hover: 1 !default;
         &.text-below-on-xs {
 
             .slider-dots {
-                bottom: -10px;
+                bottom: 2px;
             }
 
             .slider-nav-btn {
@@ -269,7 +263,8 @@ $slider-opacity-on-hover: 1 !default;
             }
 
             .slide-wrapper,
-            .image-src-box {
+            .image-src-box,
+            .image-src-box img {
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
             }
@@ -344,21 +339,43 @@ $slider-opacity-on-hover: 1 !default;
     }
 }
 
-
+// styles that apply only in case it an Embla / JS controlled slider instance with multiple slides
 .type-embla-slider {
 
     &.hero-slider {
-        .slide-definitions.slider-initialized {
+        .slider-initialized {
             // activate slides not visible before the slider was initialized
             .slide-wrapper.hide-noscript {
                 visibility: visible;
                 max-height: none;
             }
         }
-
+        .mw-0 .slide-wrapper {
+            margin-right: 0;
+        }
+        .mw-sm .slide-wrapper {
+            margin-right: var(--#{$prefix}spacer);
+        }
+        .mw-md .slide-wrapper {
+            margin-right: var(--#{$prefix}spacer-xl);
+        }
+        .mw-lg .slide-wrapper {
+            margin-right: calc(2 * var(--#{$prefix}spacer-xl));
+        }
         .slide-wrapper {
             flex: 0 0 100%;
-            margin-right: var(--#{$prefix}spacer);
+
+            // fade in/out effect for slide captions (only on hero slider with multiple slides)
+            .caption {
+                transition: opacity 1.5s linear;
+                opacity: 0;
+            }
+
+            &.slide-active {
+                .caption {
+                    opacity: 1;
+                }
+            }
         }
     }
 
@@ -374,135 +391,143 @@ $slider-opacity-on-hover: 1 !default;
     }
 }
 
+.slider-box {
+    button,
+    [type="button"] {
+        -webkit-appearance: auto; // important for safari
+        border: none;
+        color: transparent;
+        background-color: transparent;
+        display: block;
+        line-height: 0px;
+        font-size: 0px;
+        cursor: pointer;
+    }
+}
 
 .slider-nav-btn {
+    display: flex;
     position: absolute;
-    display: block;
     bottom: 50%;
     transform: translateY(50%);
-    height: $slider-button-size;
-    width: $slider-button-size;
-    line-height: 0px;
-    font-size: 0px;
-    cursor: pointer;
-    background: transparent;
-    color: transparent;
-    padding: 0;
-    border: none;
-    outline: none;
     z-index: 1100;
+
+    padding: 0;
+    margin: 0;
+
+    opacity: 0;
+    transition: opacity 0.5s linear;
+
     &:hover,
     &:focus {
-        outline: none;
-        background: transparent;
-        color: transparent;
+        opacity: $slider-opacity-active;
     }
+
     &::before {
         content: " ";
         display: block;
         width: $slider-button-size;
-        height:  $slider-button-size;
-        background-size: $slider-button-size $slider-button-size;
-        opacity: 0;
-        transition: opacity 0.5s linear;
+        height: $slider-button-size;
+        background-size: $slider-button-size;
     }
 
-    &.prev-btn {
-        left: $slider-button-position;
+    &.prev-btn,
+    &.next-btn {
         &::before {
             background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTQ0IDIyNGwzNi0zNi02MC02MCA2MC02MC0zNi0zNi05NiA5NnoiLz4NCjwvc3ZnPg0K");
         }
     }
 
+    &.prev-btn {
+        left: $slider-button-position;
+    }
+
     &.next-btn {
         right: $slider-button-position;
         &::before {
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTEyIDIyNGwtMzYtMzYgNjAtNjAtNjAtNjAgMzYtMzYgOTYgOTZ6Ii8+DQo8L3N2Zz4NCg==");
+            transform: rotate(180deg);
         }
     }
 }
 
-
 .slider-dots {
+    display: flex;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
-    bottom: $slider-dots-position;
+    bottom: 5px;
+    z-index: 1100;
 
     list-style: none;
-    display: block;
     text-align: center;
+
     padding: 0;
     margin: 0;
-    z-index: 1100;
-    opacity: 0;
 
+    opacity: 0;
     transition: opacity 0.5s linear;
+
     li {
         position: relative;
         display: inline-block;
-        height: 20px;
-        width: 20px;
-        margin: 0 5px;
+        margin: 0 0.25rem;
         padding: 0;
-        cursor: pointer;
+
         button {
-            border: 0;
-            background: transparent;
-            display: block;
-            height: 20px;
-            width: 20px;
-            outline: none;
-            line-height: 0px;
-            font-size: 0px;
-            color: transparent;
+            margin: 0;
             padding: 5px;
-            cursor: pointer;
-            &:hover,
-            &:focus {
-                outline: none;
-                &::before {
-                    opacity: $slider-opacity-on-hover;
-                }
-            }
+
             &::before {
                 content: " ";
                 display: block;
                 width: $slider-dot-size;
                 height: $slider-dot-size;
-                background-size: $slider-dot-size $slider-dot-size;
+                background-size: $slider-dot-size;
                 background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjA4IDEyOGE4MCA4MCAwIDEgMS0xNjAgMCA4MCA4MCAwIDAgMSAxNjAgMHoiLz4NCjwvc3ZnPg==");
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: $slider-opacity-default;
+                opacity: $slider-opacity-inactive;
             }
+
+            &:hover,
+            &:focus {
+                &::before {
+                    opacity: $slider-opacity-active;
+                }
+            }
+
             &.active::before {
-                opacity: $slider-opacity-on-hover;
+                opacity: $slider-opacity-active;
             }
         }
     }
 }
 
+html.mobile {
+    .slider-dots {
+        li button {
+            &:hover {
+                &::before {
+                    opacity: $slider-opacity-inactive;
+                }
+            }
+            &.active::before {
+                opacity: $slider-opacity-active;
+            }
+        }
+    }
+}
 
-html.keyboard-nav .type-embla-slider .slider-box,
-.type-embla-slider .slider-box:hover {
+html.keyboard-nav .type-slider  .slider-box,
+.type-slider .slider-box:hover {
 
     .slider-nav-btn {
-        &::before {
-            opacity: $slider-opacity-default;
-            transition: opacity 0.5s linear;
-        }
+        opacity: $slider-opacity-inactive;
         &:hover,
         &:focus {
-            &::before {
-                opacity: $slider-opacity-on-hover;
-            }
+            opacity: $slider-opacity-active;
         }
     }
 
     .slider-dots {
-        opacity: $slider-opacity-on-hover;
-        transition: opacity 0.5s linear;
+        opacity: $slider-opacity-active;
     }
 }

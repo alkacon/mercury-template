@@ -2524,7 +2524,35 @@
       <Default><![CDATA[swipe]]></Default>
       <WidgetConfig><![CDATA[
         swipe:      %(key.msg.setting.slider.transition.swipe)|
-        fade:       %(key.msg.setting.slider.transition.fade)
+        scale:      %(key.msg.setting.slider.transition.scale)|
+        parallax:   %(key.msg.setting.slider.transition.parallax)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[transitionSpeed.slider]]></IncludeName>
+      <PropertyName><![CDATA[transitionSpeed]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.transitionSpeed)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.transitionSpeed.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[4]]></Default>
+      <WidgetConfig><![CDATA[
+        8:          %(key.msg.setting.slider.transitionSpeed.fast)|
+        4:          %(key.msg.setting.slider.transitionSpeed.medium)|
+        2:          %(key.msg.setting.slider.transitionSpeed.slow)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[marginClass.slider]]></IncludeName>
+      <PropertyName><![CDATA[marginClass]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.marginClass)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.marginClass.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[mw-0]]></Default>
+      <WidgetConfig><![CDATA[
+        mw-0:       %(key.msg.setting.slider.marginClass.mw-0)|
+        mw-sm:      %(key.msg.setting.slider.marginClass.mw-sm)|
+        mw-md:      %(key.msg.setting.slider.marginClass.mw-md)|
+        mw-lg:      %(key.msg.setting.slider.marginClass.mw-lg)
       ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -2585,15 +2613,15 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[slickType.slider.hero]]></IncludeName>
-      <PropertyName><![CDATA[slickType]]></PropertyName>
+      <IncludeName><![CDATA[sliderType.slider.hero]]></IncludeName>
+      <PropertyName><![CDATA[sliderType]]></PropertyName>
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[hero]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[slickType.slider.logo]]></IncludeName>
-      <PropertyName><![CDATA[slickType]]></PropertyName>
+      <IncludeName><![CDATA[sliderType.slider.logo]]></IncludeName>
+      <PropertyName><![CDATA[sliderType]]></PropertyName>
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[logo]]></Default>

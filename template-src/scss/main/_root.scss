@@ -124,7 +124,8 @@
     --#{$prefix}element-margin: #{$default-margin};
     --#{$prefix}element-margin-sm: calc(0.5 * var(--#{$prefix}element-margin));
 
-    --#{$prefix}margin: #{$paragraph-margin-bottom};
+    --#{$prefix}p-margin: #{$paragraph-margin-bottom};
+    --#{$prefix}margin: #{$text-flow-margin};
     --#{$prefix}margin-xl: calc(2 * var(--#{$prefix}margin));
     --#{$prefix}margin-sm: calc(0.5 * var(--#{$prefix}margin));
 

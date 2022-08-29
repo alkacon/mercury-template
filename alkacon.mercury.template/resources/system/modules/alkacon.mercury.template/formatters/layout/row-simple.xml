@@ -31,6 +31,12 @@
       <Widget><![CDATA[%(stringtemplate:showCssWrapper)]]></Widget>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[detailContainer.layout]]></IncludeName>
     </Setting>
     <Setting>

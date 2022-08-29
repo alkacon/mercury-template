@@ -293,6 +293,20 @@
     }
 }
 
+.tile-var {
+    .teaser.piece {
+        margin-bottom: 0;
+        width: 100%;
+
+        &.full {
+            > .body {
+                flex-basis: auto;
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
 @if ($list-tile-header-lines > 1) {
     .list-content.default-display {
         .teaser-tile {
@@ -689,6 +703,11 @@
     justify-content: flex-end;
 }
 
+.list-entries.row ~ .list-pagination {
+    // Bs5 row list do not have bottom margin, so add above pagination
+    margin-top: var(--#{$prefix}element-margin);
+}
+
 // List archive filter menu
 
 .type-list-filter {
@@ -737,7 +756,7 @@
             text-align: left;
             border-radius: $list-border-radius;
 
-            @if ($list-filter-background != $btn-default) {
+            @if ($list-filter-background != $btn-bg) {
                 background: $list-filter-background;
                 color: $list-filter-color;
                 &:hover {

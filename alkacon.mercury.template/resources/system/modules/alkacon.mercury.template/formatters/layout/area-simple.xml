@@ -30,6 +30,12 @@
       <IncludeName><![CDATA[cssWrapper.optional]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bgImage.layout]]></IncludeName>
     </Setting>
     <Setting>

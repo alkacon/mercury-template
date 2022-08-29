@@ -19,7 +19,6 @@
 
 
 import EmblaCarousel from 'embla-carousel';
-// import EmblaAutoplay from 'embla-carousel-autoplay';
 import EmblaClassNames from 'embla-carousel-class-names';
 
 // the global objects that must be passed to this module

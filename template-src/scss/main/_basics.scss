@@ -238,7 +238,7 @@ span.badge {
 
 
 // Screen reader buttons with absolute position
-.sr-only-focusable-fixed {
+.visually-hidden-focusable-fixed {
     @include visually-hidden-focusable();
     &:active,
     &:focus {
@@ -249,7 +249,7 @@ span.badge {
 }
 
 html.opencms-page-editor {
-    .sr-only-focusable-fixed {
+    .visually-hidden-focusable-fixed {
         &:active,
         &:focus {
             top: $opencms-toolbar-height;

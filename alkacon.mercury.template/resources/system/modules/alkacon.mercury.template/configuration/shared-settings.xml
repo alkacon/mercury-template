@@ -1126,6 +1126,28 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[pieceLayout.tile-var]]></IncludeName>
+      <PropertyName><![CDATA[pieceLayoutList]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.pieceLayout.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[6]]></Default>
+      <WidgetConfig><![CDATA[
+            0:      %(key.msg.setting.pieceLayout.0)|
+           10:      %(key.msg.setting.pieceLayout.10)|
+            1:      %(key.msg.setting.pieceLayout.1)|
+            2:      %(key.msg.setting.pieceLayout.2)|
+            3:      %(key.msg.setting.pieceLayout.3)|
+            4:      %(key.msg.setting.pieceLayout.4)|
+            5:      %(key.msg.setting.pieceLayout.5)|
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)|
+            8:      %(key.msg.setting.pieceLayout.8)|
+            9:      %(key.msg.setting.pieceLayout.9)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
       <PropertyName><![CDATA[pieceLayout]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.pieceLayout)]]></DisplayName>
@@ -1908,6 +1930,27 @@
             teaser-tile tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
             teaser-tile tile-col col-md-6:                          %(key.msg.setting.tileCss.md6)|
             teaser-tile tile-col col-12:                            %(key.msg.setting.tileCss.xs12)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.tile-var]]></IncludeName>
+      <PropertyName><![CDATA[listEntryWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCss)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCss.help)]]></Description>
+      <Visibility><![CDATA[parentShared]]></Visibility>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[tile-var tile-col col-md-6 col-lg-4 col-xl-3]]></Default>
+      <WidgetConfig><![CDATA[
+            tile-var tile-col col col-6 col-md-4 col-lg-3 col-xl-2:  %(key.msg.setting.tileCss.xs6-md4-lg3-xl2)|
+            tile-var tile-col col col-6 col-md-4 col-xl-2:           %(key.msg.setting.tileCss.xs6-md4-xl2)|
+            tile-var tile-col col col-12 col-md-6 col-lg-4 col-xl-3:        %(key.msg.setting.tileCss.md6-lg4-xl3)|
+            tile-var tile-col col col-12 col-md-6 col-xl-4:                 %(key.msg.setting.tileCss.md6-xl4)|
+            tile-var tile-col col col-12 col-md-6 col-xl-3:                 %(key.msg.setting.tileCss.md6-xl3)|
+            tile-var tile-col col col-12 col-md-6 col-lg-3:                 %(key.msg.setting.tileCss.md6-lg3)|
+            tile-var tile-col col col-12 col-md-6 col-lg-4:                 %(key.msg.setting.tileCss.md6-lg4)|
+            tile-var tile-col col col-12 col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
+            tile-var tile-col col col-12 col-md-6:                          %(key.msg.setting.tileCss.md6)|
+            tile-var tile-col col col-12:                            %(key.msg.setting.tileCss.xs12)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

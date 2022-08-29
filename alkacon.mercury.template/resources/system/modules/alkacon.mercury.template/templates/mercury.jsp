@@ -69,20 +69,27 @@
 </c:if>
 
 <%-- Add favicon --%>
-<c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />
-<c:if test="${not (cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage)}">
-    <c:set var="faviconPath">/system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
-</c:if>
-<c:set var="favIconImage" value="${cms.vfs.readResource[faviconPath].toImage.scaleRatio['1-1']}" />
-<link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}">
-<link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}">
-<link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}">
+<c:choose>
+    <c:when test="${empty cms.plugins['favicon']}">
+        <c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />
+        <c:if test="${not (cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage)}">
+            <c:set var="faviconPath">/system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
+        </c:if>
+        <c:set var="favIconImage" value="${cms.vfs.readResource[faviconPath].toImage.scaleRatio['1-1']}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}"><%----%>
+        <link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}"><%----%>
+        <link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}"><mercury:nl />
+    </c:when>
+    <c:otherwise>
+        <mercury:load-plugins group="favicon" type="jsp-nocache" />
+    </c:otherwise>
+</c:choose>
 
 </head>
 <body>
 
 <%-- Skip to main content links  --%>
-<a class="btn sr-only sr-only-focusable-fixed" id="skip-to-content" href="#main-content"><fmt:message key="msg.aria.skip-to-content" /></a><%----%>
+<a class="btn visually-hidden-focusable-fixed" id="skip-to-content" href="#main-content"><fmt:message key="msg.aria.skip-to-content" /></a><%----%>
 
 </jsp:attribute>
 

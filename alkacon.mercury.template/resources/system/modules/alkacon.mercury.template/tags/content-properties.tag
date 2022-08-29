@@ -54,11 +54,13 @@
 <c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[cms.requestContext.uri]}" />
 <c:set var="contentPropertiesSearchDetail" value="${cms.vfs.readPropertiesSearch[contentUri]}" />
 
-<c:set var="allowTemplateMods"      value="${cms.sitemapConfig.attribute['template.allow.mods'].toBoolean}" />
-<c:set var="allowTemplateIncludes"  value="${allowTemplateMods and cms.sitemapConfig.attribute['template.allow.includes'].toBoolean}" />
-<c:set var="templateVariant"        value="${cms.sitemapConfig.attribute['template.variant'].isSetNotNone ? ' v-'.concat(cms.sitemapConfig.attribute['template.variant'].toString) : null}" />
-<c:set var="templateCustomer"       value="${cms.sitemapConfig.attribute['template.customer'].isSetNotNone ? ' c-'.concat(cms.sitemapConfig.attribute['template.customer'].toString) : null}" />
-<c:set var="templateProject"        value="${cms.sitemapConfig.attribute['template.project'].isSetNotNone ? ' p-'.concat(cms.sitemapConfig.attribute['template.project'].toString) : null}" />
+<c:set var="siteAttribute"          value="${cms.sitemapConfig.attribute}" />
+
+<c:set var="allowTemplateMods"      value="${siteAttribute['template.allow.mods'].toBoolean}" />
+<c:set var="allowTemplateIncludes"  value="${allowTemplateMods and siteAttribute['template.allow.includes'].toBoolean}" />
+<c:set var="templateVariant"        value="${siteAttribute['template.variant'].isSetNotNone ? ' v-'.concat(siteAttribute['template.variant'].toString) : null}" />
+<c:set var="templateCustomer"       value="${siteAttribute['template.customer'].isSetNotNone ? ' c-'.concat(siteAttribute['template.customer'].toString) : null}" />
+<c:set var="templateProject"        value="${siteAttribute['template.project'].isSetNotNone ? ' p-'.concat(siteAttribute['template.project'].toString) : null}" />
 
 
 <jsp:doBody/>

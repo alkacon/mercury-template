@@ -480,7 +480,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     }
 
     // trigger "listLoaded" event
-    jQ('#' + list.id).trigger("list:loaded");
+    jQ('#' + list.id)[0].dispatchEvent(new CustomEvent("list:loaded", { bubbles: true, cancelable: true }));
 
     // fade out the spinner
     list.$spinner.fadeOut(250);
@@ -646,7 +646,7 @@ function generatePaginationItem(liClasses, isDisabled, isActive, page, title, la
     result.push('">');
     var noLabel = (label == null);
     if (noLabel) {
-        result.push('<span class="sr-only">');
+        result.push('<span class="visually-hidden">');
         result.push(resolvedTitle);
         result.push('</span>');
     }

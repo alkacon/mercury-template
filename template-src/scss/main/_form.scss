@@ -744,7 +744,7 @@ html.keyboard-nav {
     }
 
     .btn.resetbutton {
-        @include button-color-setvars($grey-light, $btn-default-hover);
+        @include button-color-setvars($grey-light, $btn-hover-bg);
     }
 
     .formbtn-row {

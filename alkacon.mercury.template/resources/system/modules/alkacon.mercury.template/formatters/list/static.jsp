@@ -36,6 +36,7 @@
         <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />
 
         <c:set var="listWrapper" value="${settings.listWrapper}${' '}${settings.requiredListWrapper}" />
+        <c:set var="listWrapper" value="${fn:replace(listWrapper, 'row-tile', 'row')}" />
         <c:set var="listTag" value="${wrappedSettings.listTag.isSet ? wrappedSettings.listTag : 'ul' }" />
         <c:set var="instanceId"><mercury:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
 

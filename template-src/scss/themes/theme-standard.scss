@@ -65,8 +65,8 @@ $social-links-bg:               $grey-light !default;
 $social-links-color:            $text-dark !default;
 $social-links-size:             1.5rem !default;
 
-$btn-default:                   $grey-light !default;
-$btn-default-hover:             $main-theme !default;
+$btn-bg:                   $grey-light !default;
+$btn-hover-bg:             $main-theme !default;
 
 // Import the other files
 @import './demo-defaults';

@@ -179,7 +179,9 @@
                 />
             </c:if>
 
-            ${'<'}${listTag} class="list-entries ${settings.listWrapper}" ${minHeightCss}${'>'}
+            <c:set var="listWrapper" value="${settings.listWrapper}" />
+            <c:set var="listWrapper" value="${fn:replace(listWrapper, 'row-tile', 'row')}" />
+            ${'<'}${listTag} class="list-entries ${listWrapper}" ${minHeightCss}${'>'}
                 <mercury:list-main
                     elementId="${elementId}"
                     instanceId="${instanceId}"

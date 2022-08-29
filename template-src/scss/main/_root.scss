@@ -74,16 +74,17 @@
     --#{$prefix}nav-toggle-bg: #{$nav-toggle-bg};
     --#{$prefix}nav-toggle-fg: #{$nav-toggle-fg};
 
-    @if ($btn-default != $main-theme) {
-        --#{$prefix}btn-bg: #{$btn-default};
-        --#{$prefix}btn-fg: #{get-text-color($btn-default)};
+    // buttons
+    @if ($btn-bg != $main-theme) {
+        --#{$prefix}btn-bg: #{$btn-bg};
+        --#{$prefix}btn-fg: #{$btn-fg};
     } @else {
         --#{$prefix}btn-bg: var(--#{$prefix}main-theme);
         --#{$prefix}btn-fg: var(--#{$prefix}main-theme-fg);
     }
-    @if ($btn-default-hover != $main-theme-hover) {
-        --#{$prefix}btn-hover-bg: #{$btn-default-hover};
-        --#{$prefix}btn-hover-fg: #{get-text-color($btn-default-hover)};
+    @if ($btn-hover-bg != $main-theme-hover) {
+        --#{$prefix}btn-hover-bg: #{$btn-hover-bg};
+        --#{$prefix}btn-hover-fg: #{$btn-hover-fg};
     } @else {
         --#{$prefix}btn-hover-bg: var(--#{$prefix}main-theme-hover);
         --#{$prefix}btn-hover-fg: var(--#{$prefix}main-theme-hover-fg);

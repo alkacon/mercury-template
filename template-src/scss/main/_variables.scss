@@ -295,8 +295,6 @@ $btn-lg-padding:                    round($btn-padding * 12.5) * 0.1 round($btn-
 $btn-sm-padding:                    round($btn-padding * 2.5) * 0.1 round($btn-padding * 12.5) * 0.1 !default;
 $btn-xs-padding:                    $btn-sm-padding !default;
 $btn-border-radius:                 $default-border-radius !default;
-$btn-default:                       $main-theme !default;
-$btn-default-hover:                 $main-theme-hover !default;
 $btn-disabled:                      $disabled-color !default;
 $btn-text-transform:                none !default;
 $btn-border-style:                  none !default;
@@ -306,6 +304,10 @@ $btn-line-height:                   $line-height-base !default;
 $btn-font-size:                     $font-size-base !default;
 $btn-xs-font-size:                  1.2rem !default;
 
+$btn-bg:                            $main-theme !default;
+$btn-fg:                            get-text-color($btn-bg) !default;
+$btn-hover-bg:                      $main-theme-hover !default;
+$btn-hover-fg:                      get-text-color($btn-hover-bg) !default;
 
 // Content sections
 
@@ -572,8 +574,8 @@ $list-tile-header-lines:            2 !default;
 $list-side-adjust:                  true !default; // make side lists less "prominent" - if 'false' lists in aside will be displayed like regular lists
 $list-side-headings-color:          var(--#{$prefix}body-color) !default; // color of headings in side lists
 $list-side-intro-color:             $list-side-headings-color !default; // color of intro line in side lists
-$list-filter-background:            $btn-default !default;
-$list-filter-hover:                 $btn-default-hover !default;
+$list-filter-background:            $btn-bg !default;
+$list-filter-hover:                 $btn-hover-bg !default;
 $list-filter-color:                 get-text-color($list-filter-background) !default;
 
 $pagination-border:                 1px solid var(--#{$prefix}pag-border-color) !default;
@@ -650,8 +652,8 @@ $media-preview-icon-shadow:         1px 1px 1px #000, 0px 0px 5px rgba(0,0,0,0.5
 // Privacy policy
 
 $policy-banner-background:          #222 !default;
-$policy-banner-accept-button-color: $btn-default !default;
-$policy-banner-accept-hover-color:  $btn-default-hover !default;
+$policy-banner-accept-button-color: $btn-bg !default;
+$policy-banner-accept-hover-color:  $btn-hover-bg !default;
 $policy-banner-save-button-color:   lighten($policy-banner-background, 10%) !default;
 $policy-banner-save-hover-color:    $policy-banner-accept-hover-color !default;
 $policy-banner-button-min-width:    100px !default;

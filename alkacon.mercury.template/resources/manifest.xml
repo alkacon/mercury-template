@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>13.0.77</version>
+		<version>13.0.83</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1125,6 +1125,35 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/article-masonry-var.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/article-masonry-var.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>2f60bcc9-2771-11ed-b020-0242ac11002b</uuidstructure>
+			<uuidresource>2f60bcca-2771-11ed-b020-0242ac11002b</uuidresource>
+			<datecreated>Mon, 29 Aug 2022 08:04:19 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Masonry article teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/formatters/display/article-masonry.xml</source>
 			<destination>system/modules/alkacon.mercury.template/formatters/display/article-masonry.xml</destination>
 			<type>formatter_config</type>
@@ -1136,6 +1165,35 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Masonry article teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/article-text-tile-var.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/article-text-tile-var.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>2a43d6a3-2771-11ed-b020-0242ac11002b</uuidstructure>
+			<uuidresource>2a43d6a4-2771-11ed-b020-0242ac11002b</uuidresource>
+			<datecreated>Mon, 29 Aug 2022 08:04:11 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Text tile article teaser]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -1367,6 +1425,35 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/decoy-masonry-var.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/decoy-masonry-var.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>368336ef-2771-11ed-b020-0242ac11002b</uuidstructure>
+			<uuidresource>368336f0-2771-11ed-b020-0242ac11002b</uuidresource>
+			<datecreated>Mon, 29 Aug 2022 08:04:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Masonry decoy teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/formatters/display/decoy-masonry.xml</source>
 			<destination>system/modules/alkacon.mercury.template/formatters/display/decoy-masonry.xml</destination>
 			<type>formatter_config</type>
@@ -1378,6 +1465,35 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Masonry decoy teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/decoy-text-tile-var.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/decoy-text-tile-var.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>3bc9c525-2771-11ed-b020-0242ac11002b</uuidstructure>
+			<uuidresource>3bc9c526-2771-11ed-b020-0242ac11002b</uuidresource>
+			<datecreated>Mon, 29 Aug 2022 08:04:40 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Text tile decoy teaser]]></value>
 				</property>
 				<property>
 					<name>locale</name>

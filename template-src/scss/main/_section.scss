@@ -156,7 +156,9 @@
         padding: var(--#{$prefix}box-padding);
         height: 100%; // works because .flipper has the height fixed with padding-bottom
         overflow: auto; // shows scrollbars on demand
-        background-color: var(--#{$prefix}highlight-color);
+
+        color: var(--#{$prefix}body-color);
+        background-color: var(--#{$prefix}body-bg);
 
         &.front:not(.noflip) {
             overflow: hidden; // if text is shown on front with flip, we can't scroll anyway
@@ -186,7 +188,6 @@
 
         .text-section {
             border: 1px solid var(--#{$prefix}body-color);
-            background-color: var(--#{$prefix}body-bg);
         }
     }
 
@@ -197,12 +198,8 @@
     &.color-theme {
         @include box-colors($main-theme);
 
-        .text-section {
-            background-color: var(--#{$prefix}body-bg);
-        }
-
         .image-section .heading .text-heading {
-            background-color: rgba(var(--#{$prefix}main-theme-rgb), .65);
+            background-color: rgba(var(--#{$prefix}main-theme-rgb), .75);
         }
     }
 }

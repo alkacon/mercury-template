@@ -340,7 +340,7 @@ $slider-opacity-active: 1 !default;
 }
 
 // styles that apply only in case it an Embla / JS controlled slider instance with multiple slides
-.type-embla-slider {
+.use-embla-slider {
 
     &.hero-slider {
         .slider-initialized {

@@ -29,27 +29,30 @@ $grey:                              #aaa !default;
 $grey-dark:                         #888 !default;
 $black:                             #000 !default;
 
-// Colors to be used for backgrounds
+// Theme colors to be used
 // This is a list of lists in the following format:
 // (
-//    name          bg-color        highlight-color
-//   ("red",        $color-red,     $color-orange)
+//    name          bg-color
+//   ("red",        $color-red)
 // )
-// highlight-color is used in case the _background_ changes on hover
-// this is e.g. the case for colored buttons, in the sitemap, pagination, tabs and accordions
 
-$bg-colors:                         () !default;
+$theme-colors:                        () !default;
 
-// Pre-defined text, link and hover colors for background colors
+// Pre-matched color configuration in case a theme color is uses as background color
 // This is a map in the following format:
-// (
-//    bg to match   list with text, link and hover colors
-//    $color-red:   ($text-color,  $link-color, $hover-color)
-// )
-// If no definitions are provided, an algorithm will try to pick suitable colors based on the background
+//    (bg-color-to-match: (map with variable names to match)) - For example:
+//    ( $color-red: (
+//        "body-color": $text-light,
+//        "link-color": $main-theme,
+//        "link-hover-color": $main-theme-hover,
+//        "btn-bg": $color-blue,
+//        "btn-fg": $text-light
+//      )
+//    )
+// See the "set-box-colors()" mixin for the values that are read from the map
+// If no definitions are provided, an algorithm will try to pick suitable colors based on the default background, text and link colors
 
-$match-text-bg-colors:              () !default;
-
+$theme-matched-colors:             () !default;
 
 // Font definitions
 
@@ -428,7 +431,7 @@ $nav-mobile-line-padding:           6px !default;
 $nav-mobile-line-height:            $nav-mobile-line-target-height - (2 * $nav-mobile-line-padding) !default;
 $nav-mobile-show-box:               true !default; // show a boxed color background behind arrows on mobile navigation
 $nav-mobile-box-bg-color:           $text-dark !default; // background behind "box" arrows on mobile navigation (if enabled)
-$nav-mobile-box-color:              check-text-color($nav-mobile-box-bg-color, $text-light) !default; // color of "box" arrows on mobile navigation (if enabled)
+$nav-mobile-box-color:              get-text-color($nav-mobile-box-bg-color, $text-light) !default; // color of "box" arrows on mobile navigation (if enabled)
 $nav-mobile-box-top:                4px !default; // top position for "box" with arrow
 $nav-mobile-box-right:              $grid-gutter-width-half !default; // right position for "box" with arrow
 $nav-mobile-box-height:             $nav-mobile-line-target-height - (2 * $nav-mobile-box-top) !default; // height for "box" background
@@ -443,7 +446,7 @@ $nav-mobile-toggle-side-xs:         $nav-mobile-toggle-side !default; // left / 
 $nav-mobile-border-color:           $nav-border !default; // border for mobile menu items
 $nav-mobile-border:                 solid 1px $nav-mobile-border-color !default; // border for mobile menu items
 $nav-mobile-smaller-xs-toggle:      true !default; // make toggle button smaller on xs screens, can be 'true' or 'false'
-$nav-mobile-header-color:           check-text-color($nav-mobile-menu-bg-color, $nav-header-text) !default; // text color of header links in mobile menu
+$nav-mobile-header-color:           get-text-color($nav-mobile-menu-bg-color, $nav-header-text) !default; // text color of header links in mobile menu
 $nav-mobile-header-text-transform:  $nav-header-text-transform !default; // text transform of header links in mobile menu
 $nav-mobile-header-font-size:       $nav-header-font-size !default; // font size of header links in mobile menu
 $nav-mobile-topcontrol-default:     true !default; // default topcontrol button, if false then no styling is supplied for topcontrol
@@ -459,13 +462,13 @@ $nav-megamenu-bg:                   $nav-bg; // background color for the mega me
 
 $fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
 $fh-meta-bg-color:                  none !default; // background color of the meta / service links
-$fh-meta-color:                     check-text-color($fh-meta-bg-color, $nav-header-text, $fh-header-bg-color) !default; // font color for meta / service links
-$fh-meta-hover-color:               check-text-color($fh-meta-bg-color, $nav-header-text-hover, $fh-header-bg-color) !default; // font hover color for meta / service links
+$fh-meta-color:                     get-text-color($fh-meta-bg-color, $nav-header-text) !default; // font color for meta / service links
+$fh-meta-hover-color:               get-text-color($fh-meta-bg-color, $nav-header-text-hover) !default; // font hover color for meta / service links
 $fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
 $fh-meta-text-transform:            uppercase !default; // text transformation for meta / service links
 $fh-title-font-size:                $h4-font-size !default; // font size for title in header
 $fh-title-bg-color:                 none !default; // background color of the title
-$fh-title-color:                    check-text-color($fh-title-bg-color, $nav-header-text, $fh-header-bg-color) !default; // background color of the title
+$fh-title-color:                    get-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
 $fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
 $fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
 $fh-ac-bg-color:                    none !default; // color of additional container
@@ -518,8 +521,8 @@ $nav-breadcrumb-space-right:        calc(1.5 * #{$nav-breadcrumb-space}) !defaul
 $nav-breadcrumb-bg-color:           none !default; // background color for breadcrumbs
 $nav-breadcrumb-padding:            var(--#{$prefix}spacer-sm) 0 0 0 !default; // padding around breadcrumbs
 $nav-breadcrumb-colored-padding:    var(--#{$prefix}spacer) 0 !default; // padding if breadcrumbs background is colored
-$nav-breadcrumb-text-color:         check-text-color($nav-breadcrumb-bg-color, $nav-header-text) !default; // text color of breadcrumbs
-$nav-breadcrumb-text-hover-color:   check-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
+$nav-breadcrumb-text-color:         get-text-color($nav-breadcrumb-bg-color, $nav-header-text) !default; // text color of breadcrumbs
+$nav-breadcrumb-text-hover-color:   get-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
 $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs
 $nav-breadcrumb-image-size:         round($nav-breadcrumb-font-size * 80) * 0.01 !default; // image height / width for the breadcrumbs
 $nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
@@ -895,7 +898,6 @@ $border-styles:                     () !default;
 
 // Further variables used by generics
 $box-padding:                       20px !default;
-$box-colors:                        $bg-colors !default;
 
 // Spaces used for margins and paddings
 $margins-paddings:                  (0, 5, 10, 20, 30, 40) !default;

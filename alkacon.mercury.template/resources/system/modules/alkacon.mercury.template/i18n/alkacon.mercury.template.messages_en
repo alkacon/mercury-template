@@ -1445,6 +1445,7 @@ msg.setting.slider.textDisplay.alwaysOnSlide=Text always over image
 msg.setting.slider.textDisplay.belowOnXs=Text over image on MD - LG, below image on XS and SM
 msg.setting.slider.textDisplay.help=Controls how the text is displayed in different devices.
 msg.setting.slider.transition=Slide transition
+msg.setting.slider.transition.direct=No transition (direct change) 
 msg.setting.slider.transition.fade=Fade
 msg.setting.slider.transition.help=Selects the effect when the slides are changed.
 msg.setting.slider.transition.parallax=Swipe to left with parallax effect

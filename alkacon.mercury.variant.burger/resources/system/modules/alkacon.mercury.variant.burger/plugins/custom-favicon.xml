@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SitePlugins xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/site_plugin.xsd">
+  <SitePlugin language="en">
+    <NiceName><![CDATA[Custom favicon configuration]]></NiceName>
+    <Description/>
+    <Plugin>
+      <Group><![CDATA[custom-favicon]]></Group>
+      <Target>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.variant.burger/plugins/custom-favicon.jsp]]></target>
+          <uuid>864dae6f-283c-11ed-b020-0242ac11002b</uuid>
+        </link>
+      </Target>
+    </Plugin>
+  </SitePlugin>
+</SitePlugins>

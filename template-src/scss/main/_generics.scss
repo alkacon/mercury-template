@@ -22,7 +22,7 @@
 // Colored backgrounds
 
 .box {
-    @include box-colors($highlight-color, true);
+    @include set-box-colors($highlight-color);
 
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
@@ -42,18 +42,18 @@
     }
 }
 
-@each $color-name, $theme-color, $hl-color in $box-colors {
+@each $color, $value in $theme-colors {
 
-    .box-#{$color-name} {
-        @include box-colors($theme-color);
+    .box-#{""+$color} {
+        @include set-box-colors($value);
 
         &.transparent {
             background-color: rgb(var(--#{$prefix}body-bg-rgb), 0.7);
         }
     }
 
-    .bc-#{$color-name} {
-        --#{$prefix}body-bg: #{$theme-color};
+    .bc-#{""+$color} {
+        --#{$prefix}body-bg: #{$value};
         background-color: var(--#{$prefix}body-bg);
 
         &.transparent {
@@ -61,8 +61,8 @@
         }
     }
 
-    .color-#{$color-name} {
-        @include change-colors($theme-color);
+    .color-#{""+$color} {
+        @include change-colors($value);
     }
 }
 
@@ -70,7 +70,7 @@
 
 @each $color-name, $text-color in $text-colors {
 
-    .text-#{$color-name} {
+    .text-#{""+$color-name} {
         @if ($color-name != "default") {
             @include set-text-color($text-color);
         } @else {
@@ -83,7 +83,7 @@
 
 @each $color-name, $text-color, $hover-color in $link-colors {
 
-    .links-#{$color-name} {
+    .links-#{""+$color-name} {
         @if ($color-name != "default") {
             @include colored-a($text-color, $hover-color);
         } @else {
@@ -105,7 +105,7 @@
 
 @each $line-size in $border-sizes {
 
-    .bo-#{""+$line-size}  {
+    .bo-#{$line-size}  {
         border: #{$line-size}px solid $border-default-color;
         padding: calc(#{$box-padding} - #{$line-size}px);
         @include round-corners($default-border-radius);
@@ -116,7 +116,7 @@
 
 @each $radius-name, $radius in $border-radiuses {
 
-    .bo-radius-#{""+$radius-name} {
+    .bo-radius-#{$radius-name} {
         border: 0 solid;
         border-radius: $radius;
     }
@@ -124,10 +124,10 @@
 
 // Colored borders
 
-@each $color-name, $bg-color, $highlight-color in $bg-colors {
+@each $color, $value in $theme-colors {
 
-    .bo-#{""+$color-name}  {
-        border-color: $bg-color;
+    .bo-#{""+$color}  {
+        border-color: $value;
     }
 }
 
@@ -135,7 +135,7 @@
 
 @each $border-style in $border-styles {
 
-    .bo-#{""+$border-style}  {
+    .bo-#{$border-style}  {
         border-style: $border-style;
     }
 }
@@ -150,7 +150,7 @@
 
     @each $line-size in $border-sizes {
 
-        .bo-#{""+$position}-#{""+$line-size}  {
+        .bo-#{$position}-#{$line-size}  {
             border-#{$position}: #{$line-size}px solid $border-default-color;
             padding: 20px;
         }
@@ -158,7 +158,7 @@
 
     @each $border-style in $border-styles {
 
-        .bo-#{""+$position}-#{""+$border-style}  {
+        .bo-#{$position}-#{$border-style}  {
             border-#{$position}-style: $border-style;
         }
     }

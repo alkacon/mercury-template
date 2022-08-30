@@ -40,8 +40,7 @@
     "lazysizes": "5.3.2",
     "maplibre-gl": "1.15.3",
     "masonry-layout": "4.2.2",
-    "mdn-polyfills": "5.20.0",
-    "photoswipe": "5.3.0",
+    "photoswipe": "5.3.2",
     "shariff": "3.2.1",
     "tinycolor2": "1.4.2"
   },
@@ -63,7 +62,7 @@
     "cssg:all": "npm-run-all cssg:clean cssg:sass cssg:plugins cssg:postcss cssg:minify cssg:deploy",
     "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $npm_config_xbuilddir/1_processed/base.css template-src/fork-awesome/css/fork-awesome.css",
     "cssg:clean": "del-cli $npm_config_xbuilddir/1_processed/* $npm_config_xbuilddir/2_postcssed/* $npm_config_xbuilddir/3_minified/*",
-    "cssg:sass": "sass --quiet --source-map --embed-sources --stop-on-error $npm_config_xsrcdir:$npm_config_xbuilddir/1_processed",
+    "cssg:sass": "sass --source-map --embed-sources --stop-on-error $npm_config_xsrcdir:$npm_config_xbuilddir/1_processed",
     "cssg:postcss": "postcss --config ./npm_scripts/postcss.config.js $npm_config_xbuilddir/1_processed/*.css --dir $npm_config_xbuilddir//2_postcssed",
     "cssg:minify": "node ./npm_scripts/cleancss.js --cleancss --inputDir $npm_config_xbuilddir/2_postcssed/ --outputDir $npm_config_xbuilddir//3_minified",
     "cssg:deploy": "copyfiles -f -V $npm_config_xbuilddir/3_minified/* ${OCMOUNT}/$npm_config_xdeploydir",

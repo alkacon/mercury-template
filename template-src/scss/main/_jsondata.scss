@@ -85,7 +85,7 @@
 
     &.bg-colors {
 
-        $JSON: get-json($bg-colors);
+        $JSON: get-json($theme-colors);
         &::before {
             display: none;
             content: '[#{$JSON}]';

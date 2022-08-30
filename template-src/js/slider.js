@@ -35,7 +35,7 @@ const getMass = (speed) => {
 
 const scrollTo = (engine, index, autoplay, direction, speed) => {
     if (autoplay) autoplay.stop();
-    let sp = speed || 8;
+    let sp = (engine.options.speed > 90) ? engine.options.speed : speed || 8;
     engine.scrollBody.useSpeed(sp).useMass(getMass(sp));
     engine.scrollTo.index(index, direction || 0);
 }
@@ -314,8 +314,8 @@ export function init(jQuery, debug) {
     DEBUG = debug;
     if (DEBUG) console.info("Slider.init()");
 
-    let sliders = document.querySelectorAll('.type-slider.type-embla-slider');
-    if (DEBUG) console.info("Slider.init() .type-slider.type-embla-slider elements found: " + sliders.length);
+    let sliders = document.querySelectorAll('.use-embla-slider');
+    if (DEBUG) console.info("Slider.init() .use-embla-slider elements found: " + sliders.length);
     if (sliders.length > 0) {
         initEmblaSliders(sliders);
     }

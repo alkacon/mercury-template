@@ -1033,6 +1033,7 @@
         1000:   1 %(key.msg.setting.slider.rotationTime.sec)|
         2000:   2 %(key.msg.setting.slider.rotationTime.secs)|
         3000:   3 %(key.msg.setting.slider.rotationTime.secs)|
+        4000:   4 %(key.msg.setting.slider.rotationTime.secs)|
         5000:   5 %(key.msg.setting.slider.rotationTime.secs)|
         8000:   8 %(key.msg.setting.slider.rotationTime.secs)|
         10000:  10 %(key.msg.setting.slider.rotationTime.secs)|
@@ -1960,13 +1961,13 @@
       <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
       <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
-      <Default><![CDATA[row-tile tile-margin-15]]></Default>
+      <Default><![CDATA[row tile-margin-15]]></Default>
       <WidgetConfig><![CDATA[
-            row-tile tile-margin-0:   0|
-            row-tile tile-margin-2:   4|
-            row-tile tile-margin-5:   10|
-            row-tile tile-margin-10:  20|
-            row-tile tile-margin-15:  30
+            row tile-margin-0:   0|
+            row tile-margin-2:   4|
+            row tile-margin-5:   10|
+            row tile-margin-10:  20|
+            row tile-margin-15:  30
         ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -2567,8 +2568,9 @@
       <Default><![CDATA[swipe]]></Default>
       <WidgetConfig><![CDATA[
         swipe:      %(key.msg.setting.slider.transition.swipe)|
+        parallax:   %(key.msg.setting.slider.transition.parallax)|
         scale:      %(key.msg.setting.slider.transition.scale)|
-        parallax:   %(key.msg.setting.slider.transition.parallax)
+        direct:     %(key.msg.setting.slider.transition.direct)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

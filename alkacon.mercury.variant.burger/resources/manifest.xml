@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The Burger variant generates a "Hamburger" menu for the main header navigation.]]></description>
-		<version>13.0.2</version>
+		<version>13.0.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -371,6 +371,48 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Burger variant plugins]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/plugins/custom-favicon.jsp</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/plugins/custom-favicon.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>864dae6f-283c-11ed-b020-0242ac11002b</uuidstructure>
+			<uuidresource>864dae70-283c-11ed-b020-0242ac11002b</uuidresource>
+			<datecreated>Tue, 30 Aug 2022 08:19:53 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.variant.burger/plugins/custom-favicon.xml</source>
+			<destination>system/modules/alkacon.mercury.variant.burger/plugins/custom-favicon.xml</destination>
+			<type>site_plugin</type>
+			<uuidstructure>810c505a-283c-11ed-b020-0242ac11002b</uuidstructure>
+			<uuidresource>810c505b-283c-11ed-b020-0242ac11002b</uuidresource>
+			<datecreated>Tue, 30 Aug 2022 08:19:44 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Custom favicon]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
 				</property>
 			</properties>
 			<relations/>

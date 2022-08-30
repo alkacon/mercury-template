@@ -20,25 +20,25 @@
  */
 
 @mixin responsive-invisibility($parent) {
-  #{$parent} {
-    display: none !important;
-  }
+    #{$parent} {
+        display: none !important;
+    }
 }
 
 @mixin responsive-invisibility-showineditor($parent) {
-  html:not(.opencms-page-editor) #{$parent} {
-    display: none !important;
-  }
-  html.opencms-page-editor #{$parent} {
-    opacity: .5;
-    background-image: $disabled-bg;
-  }
+    html:not(.opencms-page-editor) #{$parent} {
+        display: none !important;
+    }
+    html.opencms-page-editor #{$parent} {
+        opacity: .5;
+        background-image: $disabled-bg;
+    }
 }
 
 @mixin responsive-visibility($parent) {
-  #{$parent} {
-    display: block !important;
-  }
+    #{$parent} {
+        display: block !important;
+    }
 }
 
 @include responsive-invisibility('.visible-xs');
@@ -49,88 +49,88 @@
 @include responsive-invisibility('.visible-xxl');
 
 @include media-breakpoint-down(sm) {
-  @include responsive-visibility('.visible-xs');
-  @include responsive-invisibility('.hidden-xs');
-  @include responsive-invisibility-showineditor('.hide-xs');
+    @include responsive-visibility('.visible-xs');
+    @include responsive-invisibility('.hidden-xs');
+    @include responsive-invisibility-showineditor('.hide-xs');
 }
 
 @include media-breakpoint-down(md) {
-  @include responsive-invisibility('.hidden-xs-sm');
-  @include responsive-invisibility-showineditor('.hide-xs-sm');
+    @include responsive-invisibility('.hidden-xs-sm');
+    @include responsive-invisibility-showineditor('.hide-xs-sm');
 }
 
 @include media-breakpoint-down(lg) {
-  @include responsive-invisibility('.hidden-xs-sm-md');
-  @include responsive-invisibility-showineditor('.hide-xs-sm-md');
+    @include responsive-invisibility('.hidden-xs-sm-md');
+    @include responsive-invisibility-showineditor('.hide-xs-sm-md');
 }
 
 @include media-breakpoint-down(xl) {
-  @include responsive-invisibility('.hidden-xs-sm-md-lg');
-  @include responsive-invisibility-showineditor('.hide-xs-sm-md-lg');
+    @include responsive-invisibility('.hidden-xs-sm-md-lg');
+    @include responsive-invisibility-showineditor('.hide-xs-sm-md-lg');
 }
 
 @include media-breakpoint-down(xxl) {
-  @include responsive-invisibility('.hidden-xs-sm-md-lg-xl');
-  @include responsive-invisibility-showineditor('.hide-xs-sm-md-lg-xl');
+    @include responsive-invisibility('.hidden-xs-sm-md-lg-xl');
+    @include responsive-invisibility-showineditor('.hide-xs-sm-md-lg-xl');
 }
 
 @include media-breakpoint-only(sm) {
-  @include responsive-visibility('.visible-sm');
-  @include responsive-invisibility('.hidden-sm');
-  @include responsive-invisibility-showineditor('.hide-sm');
+    @include responsive-visibility('.visible-sm');
+    @include responsive-invisibility('.hidden-sm');
+    @include responsive-invisibility-showineditor('.hide-sm');
 }
 
 @include media-breakpoint-only(md) {
-  @include responsive-visibility('.visible-md');
-  @include responsive-invisibility('.hidden-md');
-  @include responsive-invisibility-showineditor('.hide-md');
+    @include responsive-visibility('.visible-md');
+    @include responsive-invisibility('.hidden-md');
+    @include responsive-invisibility-showineditor('.hide-md');
 }
 
 @include media-breakpoint-only(lg) {
-  @include responsive-visibility('.visible-lg');
-  @include responsive-invisibility('.hidden-lg');
-  @include responsive-invisibility-showineditor('.hide-lg');
+    @include responsive-visibility('.visible-lg');
+    @include responsive-invisibility('.hidden-lg');
+    @include responsive-invisibility-showineditor('.hide-lg');
 }
 
 @include media-breakpoint-up(sm) {
-  @include responsive-invisibility('.hidden-sm-md-lg-xl');
-  @include responsive-invisibility('.hidden-sm-up');
-  @include responsive-invisibility-showineditor('.hide-sm-md-lg-xl');
-  @include responsive-invisibility-showineditor('.hide-sm-up');
+    @include responsive-invisibility('.hidden-sm-md-lg-xl');
+    @include responsive-invisibility('.hidden-sm-up');
+    @include responsive-invisibility-showineditor('.hide-sm-md-lg-xl');
+    @include responsive-invisibility-showineditor('.hide-sm-up');
 }
 
 @include media-breakpoint-up(md) {
-  @include responsive-invisibility('.hidden-md-lg-xl');
-  @include responsive-invisibility('.hidden-md-up');
-  @include responsive-invisibility-showineditor('.hide-md-lg-xl');
-  @include responsive-invisibility-showineditor('.hide-md-up');
+    @include responsive-invisibility('.hidden-md-lg-xl');
+    @include responsive-invisibility('.hidden-md-up');
+    @include responsive-invisibility-showineditor('.hide-md-lg-xl');
+    @include responsive-invisibility-showineditor('.hide-md-up');
 }
 
 @include media-breakpoint-up(lg) {
-  @include responsive-invisibility('.hidden-lg-xl');
-  @include responsive-invisibility('.hidden-lg-up');
-  @include responsive-invisibility-showineditor('.hide-lg-xl');
-  @include responsive-invisibility-showineditor('.hide-lg-up');
+    @include responsive-invisibility('.hidden-lg-xl');
+    @include responsive-invisibility('.hidden-lg-up');
+    @include responsive-invisibility-showineditor('.hide-lg-xl');
+    @include responsive-invisibility-showineditor('.hide-lg-up');
 }
 
 @include media-breakpoint-up(xl) {
-  @include responsive-invisibility('.hidden-xl-up');
-  @include responsive-invisibility-showineditor('.hide-xl-up');
+    @include responsive-invisibility('.hidden-xl-up');
+    @include responsive-invisibility-showineditor('.hide-xl-up');
 }
 
 @include media-breakpoint-up(xl) {
-  // XL used to be the largest breakpoint in bs4, so some settings in existing pages will expect this to work as before
-  @include responsive-visibility('.visible-xl'); // compatibltiy with bs4 where XL was the largest breakpoint
-  @include responsive-invisibility('.hidden-xl'); // compatibltiy with bs4 where XL was the largest breakpoint
-  @include responsive-invisibility('.hidden-xl-up'); // syntax for bs5
-  @include responsive-invisibility-showineditor('.hide-xl');  // compatibltiy with bs4 where XL was the largest breakpoint
-  @include responsive-invisibility-showineditor('.hide-xl-up'); // syntax for bs5
+    // XL used to be the largest breakpoint in bs4, so some settings in existing pages will expect this to work as before
+    @include responsive-visibility('.visible-xl'); // compatibltiy with bs4 where XL was the largest breakpoint
+    @include responsive-invisibility('.hidden-xl'); // compatibltiy with bs4 where XL was the largest breakpoint
+    @include responsive-invisibility('.hidden-xl-up'); // syntax for bs5
+    @include responsive-invisibility-showineditor('.hide-xl');  // compatibltiy with bs4 where XL was the largest breakpoint
+    @include responsive-invisibility-showineditor('.hide-xl-up'); // syntax for bs5
 }
 
 @include media-breakpoint-up(xxl) {
-  @include responsive-visibility('.visible-xxl');
-  @include responsive-invisibility('.hidden-xxl');
-  @include responsive-invisibility-showineditor('.hide-xxl');
+    @include responsive-visibility('.visible-xxl');
+    @include responsive-invisibility('.hidden-xxl');
+    @include responsive-invisibility-showineditor('.hide-xxl');
 }
 
 .tooltip {
@@ -144,8 +144,8 @@
 
 small,
 .small {
-  font-size: $small-font-size;
-  font-weight: $font-weight-base;
+    font-size: $small-font-size;
+    font-weight: $font-weight-base;
 }
 
 /* Other staff missing in Boostrap 5 */
@@ -167,17 +167,21 @@ small,
 }
 
 .float-right {
-  float: right;
+    float: right;
 }
 
 .no-gutters {
-  --#{$prefix}gutter-x: 0;
-  --#{$prefix}gutter-y: 0;
+    --#{$prefix}gutter-x: 0;
+    --#{$prefix}gutter-y: 0;
+}
+
+.flex-fill {
+    flex: 1 1 auto!important;
 }
 
 /* Variable adjustments for Boosttrap 5 */
 
 ol,
 ul {
-  padding-left: 40px;
+    padding-left: 40px;
 }

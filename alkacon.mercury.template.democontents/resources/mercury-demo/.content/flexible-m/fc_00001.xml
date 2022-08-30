@@ -10,7 +10,7 @@ Output is created from JavaScript using the color codes compiled into the theme.
 HTML for the boxes is using Mercury tiles.
 
 -->
-<div id="backgrounds" class="row-tile tile-margin-2 template-info sample bg-colors">
+<div id="backgrounds" class="row tile-margin-2 template-info sample bg-colors">
 <div class="tile-col flex-col col-xs-6 col-sm-4 col-md-3 col-lg-2">
 <div class="flex-fill bo-1 bo-grey box box-$(name)">
 

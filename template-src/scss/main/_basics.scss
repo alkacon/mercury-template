@@ -228,11 +228,11 @@ span.badge {
 
 
 // Colored badges
-@each $color-name, $bg-color, $hl-color in $bg-colors {
+@each $color, $value in $theme-colors {
 
-    span.badge-#{$color-name} {
-        color: get-text-color($bg-color);
-        background: $bg-color;
+    span.badge-#{""+$color} {
+        color: get-text-color($value);
+        background: $value;
     }
 }
 

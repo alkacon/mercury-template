@@ -17,10 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Polyfills to support IE 11
-import 'promise-polyfill/src/polyfill';
-import 'mdn-polyfills/Object.assign';
-
 import jQuery                       from 'jquery';
 
 // import 'bootstrap/js/dist/alert';
@@ -883,7 +879,7 @@ var Mercury = function(jQ) {
 
         // now initialize optional modules
 
-        if (requiresModule(".type-slider.type-embla-slider")) {
+        if (requiresModule(".use-embla-slider")) {
             try {
                 import(
                     /* webpackChunkName: "mercury-slider" */

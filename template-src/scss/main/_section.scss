@@ -22,7 +22,7 @@
 // Icon box formatter
 
 .type-iconbox {
-    @include box-colors($main-theme, true);
+    @include set-box-colors($main-theme);
 
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
@@ -93,7 +93,7 @@
 // Image / text flip animation, see https://davidwalsh.name/css-flip#ieflip
 
 .imageflip {
-    @include box-colors($body-bg, true);
+    @include set-box-colors($body-bg);
 
     color: var(--#{$prefix}body-color);
 
@@ -184,7 +184,7 @@
     }
 
     &.color-white {
-        @include box-colors($body-bg);
+        @include set-box-colors($body-bg);
 
         .text-section {
             border: 1px solid var(--#{$prefix}body-color);
@@ -192,11 +192,11 @@
     }
 
     &.color-grey {
-        @include box-colors($grey-lighter);
+        @include set-box-colors($grey-lighter);
     }
 
     &.color-theme {
-        @include box-colors($main-theme);
+        @include set-box-colors($main-theme);
 
         .image-section .heading .text-heading {
             background-color: rgba(var(--#{$prefix}main-theme-rgb), .75);

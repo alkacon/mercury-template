@@ -12,7 +12,7 @@ HTML for the boxes is using Mercury Tiles.
 -->
 
 <!-- Links -->
-<div id="linkcolors" class="subelement row-tile tile-margin-2 template-info sample link-colors">
+<div id="linkcolors" class="subelement row tile-margin-2 template-info sample link-colors">
 <div class="tile-col col-md-6 col-lg-4">
 
 <div class="bo-1 bo-grey links-$(name) $(background)">
@@ -30,7 +30,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 
 <!-- Theme dependent text color -->
-<div id="themetextcolor" class="subelement row-tile tile-margin-2 template-info sample text-colors">
+<div id="themetextcolor" class="subelement row tile-margin-2 template-info sample text-colors">
 <div class="tile-col col-md-6 col-lg-4">
 
 <div class="bo-1 bo-grey text-$(name) $(background)">
@@ -46,7 +46,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 
 <!-- Extended colored text options -->
-<div id="extendtextcolor" class="subelement row-tile tile-margin-2 template-info sample many-colors">
+<div id="extendtextcolor" class="subelement row tile-margin-2 template-info sample many-colors">
 <div class="tile-col col-md-6 col-lg-4">
 
 <div class="bo-1 bo-grey text-$(name) $(background)">

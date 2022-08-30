@@ -173,10 +173,10 @@
                 li::before,
                 li::after,
                 a {
-                    color: check-text-color($fh-meta-bg-color, $fh-meta-color);
+                    color: get-text-color($fh-meta-bg-color, $fh-meta-color);
                 }
                 a:hover {
-                    color: check-text-color($fh-meta-bg-color, $fh-meta-hover-color);
+                    color: get-text-color($fh-meta-bg-color, $fh-meta-hover-color);
                 }
             }
         }
@@ -335,7 +335,7 @@
                     display: block;
 
                     @include add-bg-color($fh-title-bg-color) {
-                        color: check-text-color($fh-title-bg-color, $fh-title-color);
+                        color: get-text-color($fh-title-bg-color, $fh-title-color);
                     }
                     @include make-container();
                     @include media-breakpoint-up(sm) {
@@ -448,7 +448,7 @@
                 }
 
                 > .h-title {
-                    color: check-text-color($fh-header-bg-color, $fh-title-color);
+                    color: get-text-color($fh-header-bg-color, $fh-title-color);
                     background-color: transparent;
                 }
             }
@@ -601,13 +601,13 @@
                             background-color: $fh-nav-bg-color;
                             padding-top: $nav-header-ver-padding;
                             .nav-main-items > li > a {
-                                $color-nav-text: check-text-color($fh-nav-bg-color, $nav-header-text);
+                                $color-nav-text: get-text-color($fh-nav-bg-color, $nav-header-text);
                                 color: $color-nav-text;
                                 &::after {
                                     color: $color-nav-text;
                                 }
                                 &:hover {
-                                    $color-nav-hover: check-text-color($fh-nav-bg-color, $nav-header-text-hover);
+                                    $color-nav-hover: get-text-color($fh-nav-bg-color, $nav-header-text-hover);
                                     color: $color-nav-hover;
                                     &::after {
                                         color: $color-nav-hover;
@@ -1278,7 +1278,7 @@
             @include add-bg-color($fh-title-bg-color) {
                 padding-top: $bh-header-padding-small;
                 .h-title {
-                    color: check-text-color($fh-title-bg-color, $fh-title-color);
+                    color: get-text-color($fh-title-bg-color, $fh-title-color);
                 }
             }
         }
@@ -1304,7 +1304,7 @@
 
                 .h-title {
                     width: 100%;
-                    color: check-text-color($fh-header-bg-color, $fh-title-color);
+                    color: get-text-color($fh-header-bg-color, $fh-title-color);
                 }
             }
         }

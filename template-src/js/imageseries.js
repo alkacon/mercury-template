@@ -31,6 +31,7 @@ var m_autoLoadSeries = [];
 // all image galleries that have been initialized as object
 var m_galleries = {};
 
+
 function openPhotoSwipe(index, id) {
 
     var options = {
@@ -60,6 +61,7 @@ function openPhotoSwipe(index, id) {
     photoSwipe.init();
 }
 
+
 function handleAutoLoaders() {
     if (m_autoLoadSeries != null) {
         for (var i=0; i<m_autoLoadSeries.length; i++) {
@@ -74,7 +76,6 @@ function handleAutoLoaders() {
 
 
 function render(imageSeries, page) {
-
     // disable the image series 'more' button
     var $moreButton = imageSeries.element.find(".more");
     $moreButton.off("click");
@@ -143,6 +144,7 @@ function render(imageSeries, page) {
     }
 }
 
+
 function collect(imageSeries) {
 
     imageSeries.template = decodeURIComponent(imageSeries.template);
@@ -176,6 +178,7 @@ function collect(imageSeries) {
     render(imageSeries, 0);
 }
 
+
 function initImageSeries($elements) {
 
     // initialize image series with values from data attributes
@@ -201,6 +204,7 @@ function initImageSeries($elements) {
         jQ(window).on('scroll', handleAutoLoaders).resize(handleAutoLoaders);
     }
 }
+
 
 function initZoomers($elements) {
 

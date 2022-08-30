@@ -24,7 +24,7 @@
 
 <c:set var="rotationTime"           value="${setting.rotationTime.isSet ? setting.rotationTime.toInteger : 0}" />
 <c:set var="autoPlay"               value="${rotationTime > 0}" />
-<c:set var="transition"             value="${setting.transition.toString}" />
+<c:set var="transition"             value="${setting.transition.validate(['swipe','direct','parallax','scale'],'direct').toString}" />
 <c:set var="transitionSpeed"        value="${setting.transitionSpeed.toInteger}" />
 <c:set var="marginClass"            value="${' '}${setting.marginClass.toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
@@ -41,9 +41,6 @@
 
 <c:set var="sliderType"             value="${setting.sliderType.value}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
-
-<%-- note: only transitions 'scale' and 'parallax' currently use the param --%>
-<c:set var="transitionParam"        value="${transition eq 'scale' ? 2 : 0.75}" />
 
 <c:choose>
     <c:when test="${sliderType eq 'logo'}">
@@ -81,15 +78,22 @@
         <c:set var="animationTarget" value="${empty setEffect ? '' : ' effect-box'}" />
     </c:when>
     <c:otherwise>
+
     <%-- Hero slider (default) --%>
         <c:set var="isHeroSlider" value="${true}" />
+        <c:set var="marginClass" value="${' tr-'.concat(transition)}" />
+        <c:if test="${transition eq 'direct'}">
+            <c:set var="transitionSpeed" value="${100}" />
+        </c:if>
+        <%-- note: only transitions 'scale' and 'parallax' currently use the param --%>
+        <c:set var="transitionParam" value="${transition eq 'parallax' ? 0.75 : 2.0}" />
         <c:set var="visibleSlidesXL" value="${1}" />
         <c:set var="visibleSlidesXS" value="${1}" />
         <c:set var="adoptRatioToScreen" value="${not (imageRatioXL eq imageRatioXS)}" />
     </c:otherwise>
 </c:choose>
 
-<div class="element type-slider${justOneSlide ? '' : ' type-embla-slider'}${isHeroSlider ? ' hero-slider ' : ' logo-slider '}pivot pivot-full${setCssWrapper123}${' '}${textDisplay}" <%--
+<div class="element type-slider${justOneSlide ? ' just-one-slide' : ' use-embla-slider'}${isHeroSlider ? ' hero-slider ' : ' logo-slider '}pivot pivot-full${setCssWrapper123}${' '}${textDisplay}" <%--
 --%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
 --%>><mercury:nl />
 

@@ -15,75 +15,49 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-@function lookup-text-color($bg-color, $text-color) {
-    $colors: map-get($match-text-bg-colors, $bg-color);
-    @if ($colors != null) {
-        // @debug "Matching #{$text-color} on #{$bg-color} to #{$colors}";
-        @if (index($colors, $text-color) != null) {
-            // @debug "Found #{$text-color} in #{$colors}";
-            @return $text-color;
+@function get-color($var-name, $default, $bg-map) {
+    @if ($bg-map != null) {
+        $value: map-get($bg-map, $var-name);
+        @if ($value != null) {
+            @return $value;
         }
+        @if ($default != null) {
+            @return $default;
+        }
+        @return var(--#{$prefix}#{$var-name});
     }
-    @return null;
-}
-
-@function get-link-colors($bg-color, $text-color: $text-dark, $l-color: $link-color, $lh-color: $link-hover-color, $contrast-threshold: 2.5) {
-    @if (($bg-color == transparent) or ($bg-color == none)) {
-        // if no background color is set, no need to set any color
-        @return ($l-color, $lh-color);
-    } @else if (map-get($match-text-bg-colors, $bg-color) != null) {
-        // if we have a predefined color match, use this
-        $colors: map-get($match-text-bg-colors, $bg-color);
-        $li-color: nth($colors, conditional-value(length($colors) > 1, 2, 1));
-        $lih-color: nth($colors, conditional-value(length($colors) > 2, 3, 1));
-        @return ($li-color, $lih-color);
-    } @else {
-        $lid-color: get-accent-color($text-color, 20%);
-        $contrast-l: contrast($bg-color, $l-color);
-        $contrast-lh: contrast($bg-color, $lh-color);
-        $li-color: conditional-value($contrast-l > $contrast-threshold, $l-color, $lid-color);
-        $lih-color:  conditional-value($li-color == $lid-color, $text-color, conditional-value($contrast-lh > $contrast-threshold, $lh-color, $text-color));
-        @return ($li-color, $lih-color);
-    }
+    @return $default;
 }
 
 // Calculates the best color for text based on the background.
-// This should be used if the text color is NOT configurable by a variable, but the background color is.
-@function get-text-color($bg-color, $dark-color: $text-dark, $light-color: $text-light) {
+// The secound parameter is required only in case the prefered text color a "special" color, not the configured default or light or dark text
+// The result MUST NOT be a CSS variable
+@function get-text-color($bg-color, $text-color: null) {
+    $color-map: map-get($theme-matched-colors, $bg-color);
     @if (($bg-color == transparent) or ($bg-color == none)) {
-        // if no background color is set, just use the body text color
-        @return $body-color;
-    } @else if (map-get($match-text-bg-colors, $bg-color) != null) {
-        // if we have a predefined color match, use this
-        $colors: map-get($match-text-bg-colors, $bg-color);
-        @return nth($colors, 1);
-    } @else {
-        // check the lightness of the background and return either light or dark text
-        @if (lightness($bg-color) > $text-lightness-threshold) {
-            @return $dark-color; // light background, dark text
-        } @else {
-            @return $light-color; // dark background, light text
-        }
+        // Check 1: if no background color is set, use the body text color
+        @return get-color("body-color", $body-color, $color-map);
     }
-}
-
-// Checks if a text color is suitable for a given background color.
-// This should be used where BOTH the text color and the background color are configurable by a variable,
-// to ensure that the text color is visible on the background.
-@function check-text-color($bg-color, $text-color: $body-color, $default-bg-color: $body-bg, $contrast-threshold: $text-contrast-threshold, $dark-color: $text-dark, $light-color: $text-light) {
-    @if (($bg-color == transparent) or ($bg-color == none)) {
-        // if no background color is set, just use the body text color
-        @return $body-color;
-    } @else {
-        // check the contrast of the background and the text
+    @if ($text-color != null) {
+        // Check 2: if a text color preference is given, check the contrast against the background
         $contrast: contrast($bg-color, $text-color);
-        @if ($contrast > $contrast-threshold) {
+        @if ($contrast > $text-contrast-threshold) {
             // contrast is ok, return text color
             @return $text-color;
         }
-        // contrast not ok, return a matching text color
-        @return get-text-color($bg-color, $dark-color, $light-color); // not enough difference in contrast, use default
     }
+    @if (map-get($theme-matched-colors, $bg-color) != null) {
+        // Check 3: if we have a predefined color match, use this
+        $text-color: get-color("body-color", $body-color, $color-map);
+        @if ($text-color != null) {
+            @return $text-color;
+        }
+    }
+    // Check 4: return either light or dark text defpending on the lightness of the background
+    @if (lightness($bg-color) > $text-lightness-threshold) {
+        @return $text-dark; // light background, dark text
+    }
+    @return $text-light; // dark background, light text
 }
 
 // Calculates an accent color for the given base color

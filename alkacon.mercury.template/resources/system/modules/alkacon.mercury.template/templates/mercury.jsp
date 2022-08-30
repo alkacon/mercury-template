@@ -48,40 +48,48 @@
 <mercury:load-plugins group="js-defer" />
 <mercury:load-plugins group="template-head-includes" type="jsp-nocache" />
 
-<%-- Common CSS and theme CSS --%>
-<c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
-<link href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>" rel="stylesheet"><%----%>
-<mercury:nl />
-<link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
-<mercury:nl />
-
-<%-- Preload Fork Awesome --%>
-<link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
-
-<%-- Include custom CSS / JS if allowed --%>
-<c:if test="${allowTemplateMods}">
-    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
-        <link href="<mercury:link-resource resource='${resourcePath}'/>" rel="stylesheet"><mercury:nl />
-    </mercury:load-resource>
-    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
-        <script src="<mercury:link-resource resource='${resourcePath}'/>" defer></script><mercury:nl />
-    </mercury:load-resource>
-</c:if>
-
-<%-- Add favicon --%>
 <c:choose>
-    <c:when test="${empty cms.plugins['favicon']}">
+    <c:when test="${empty cms.plugins['custom-css']}">
+        <%-- Use default CSS configuration --%>
+        <%-- Common CSS and theme CSS --%>
+        <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
+        <link href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>" rel="stylesheet"><%----%>
+        <mercury:nl />
+        <link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
+        <mercury:nl />
+        <%-- Preload Fork Awesome --%>
+        <link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
+        <%-- Include additional CSS / JS if allowed --%>
+        <c:if test="${allowTemplateMods}">
+            <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
+                <link href="<mercury:link-resource resource='${resourcePath}'/>" rel="stylesheet"><mercury:nl />
+            </mercury:load-resource>
+            <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
+                <script src="<mercury:link-resource resource='${resourcePath}'/>" defer></script><mercury:nl />
+            </mercury:load-resource>
+        </c:if>
+    </c:when>
+    <c:otherwise>
+        <%-- Use custom CSS plugin --%>
+        <mercury:load-plugins group="custom-css" type="jsp-nocache" />
+    </c:otherwise>
+</c:choose>
+
+<c:choose>
+    <c:when test="${empty cms.plugins['custom-favicon']}">
+        <%-- Use default favicon configuration --%>
         <c:set var="faviconPath" value="${empty contentPropertiesSearch['mercury.favicon'] ? '/favicon.png' : contentPropertiesSearch['mercury.favicon']}" />
         <c:if test="${not (cms.vfs.existsResource[faviconPath] and cms.vfs.readResource[faviconPath].isImage)}">
             <c:set var="faviconPath">/system/modules/alkacon.mercury.theme/img/favicon.png</c:set>
         </c:if>
         <c:set var="favIconImage" value="${cms.vfs.readResource[faviconPath].toImage.scaleRatio['1-1']}" />
-        <link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}"><%----%>
-        <link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}"><%----%>
+        <link rel="apple-touch-icon" sizes="180x180" href="${favIconImage.scaleWidth[180]}"><mercury:nl />
+        <link rel="icon" type="image/png" sizes="32x32" href="${favIconImage.scaleWidth[32]}"><mercury:nl />
         <link rel="icon" type="image/png" sizes="16x16" href="${favIconImage.scaleWidth[16]}"><mercury:nl />
     </c:when>
     <c:otherwise>
-        <mercury:load-plugins group="favicon" type="jsp-nocache" />
+        <%-- Use custom favicon plugin --%>
+        <mercury:load-plugins group="custom-favicon" type="jsp-nocache" />
     </c:otherwise>
 </c:choose>
 

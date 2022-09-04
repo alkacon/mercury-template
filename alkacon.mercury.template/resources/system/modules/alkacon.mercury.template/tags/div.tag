@@ -2,17 +2,26 @@
     display-name="link"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
-    description="Adds an optional div wrapper around a body" %>
+    description="Adds either one or two optional div wrapper(s) around a body." %>
 
 
 <%@ attribute name="css" type="java.lang.String" required="false"
-    description="Optional CSS classes added to the generated div tag" %>
+    description="Optional CSS classes added to the 1st (outer) generated div tag." %>
 
 <%@ attribute name="style" type="java.lang.String" required="false"
-    description="Optional CSS inline styles added to the generated div tag" %>
+    description="Optional CSS inline styles added to the 1st (outer) generated div tag." %>
 
 <%@ attribute name="attr" type="java.lang.String" required="false"
-    description="Optional attribute(s) added directly to the generated div tag." %>
+    description="Optional attribute(s) added directly to the 1st (outer) generated div tag." %>
+
+<%@ attribute name="css2" type="java.lang.String" required="false"
+    description="Optional CSS classes added to the optional 2nd (inner) generated div tag." %>
+
+<%@ attribute name="style2" type="java.lang.String" required="false"
+    description="Optional CSS inline styles added to the optional 2nd (inner) generated div tag." %>
+
+<%@ attribute name="attr2" type="java.lang.String" required="false"
+    description="Optional attribute(s) added directly to the optional 2nd (inner) generated div tag." %>
 
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="Can be used to defer the decision to actually create the markup around the body to the calling element.
@@ -36,7 +45,20 @@
                 <c:if test="${not empty style}">${' '}style="${style}"</c:if>
                 <c:if test="${not empty attr}">${' '}${attr}</c:if>
             ${'>'}
-                ${body}
+                <c:choose>
+                    <c:when test="${not empty css2 or not empty style2 or not empty attr2}">
+                        ${'<div'}
+                            <c:if test="${not empty css2}">${' '}class="${css2}"</c:if>
+                            <c:if test="${not empty style2}">${' '}style="${style2}"</c:if>
+                            <c:if test="${not empty attr2}">${' '}${attr2}</c:if>
+                        ${'>'}
+                            ${body}
+                        ${'</div>'}
+                    </c:when>
+                    <c:otherwise>
+                         ${body}
+                    </c:otherwise>
+                </c:choose>
             ${'</div>'}
         </c:when>
 

@@ -26,6 +26,8 @@ html {
     &.opencms-page-editor {
         // in OpenCms page editor, add a top padding to move the content below the toolbar
         padding-top: $opencms-toolbar-height;
+        // CSS smooth scrolling conflicts with page editor drag & drop
+        scroll-behavior: auto;
     }
 
     *,

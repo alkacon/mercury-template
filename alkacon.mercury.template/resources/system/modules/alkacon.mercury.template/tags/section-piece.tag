@@ -140,6 +140,36 @@
 
 <c:choose>
 <c:when test="${showHeading or showText or showVisual or showLink}">
+
+    <c:if test="${showVisual and empty markupVisual}">
+        <c:set var="visualFromImage">
+            <c:set var="showImageLink"  value="${empty showImageLink ? false : showImageLink}" />
+            <c:set var="showImageZoom" value="${empty showImageZoom ? true : showImageZoom}" />
+            <mercury:link
+                link="${link}"
+                test="${showImageLink}"
+                attr="${showLink or linkHeading ? 'tabindex=\"-1\"' : ''}"
+                setTitle="${true}" >
+                <mercury:image-animated
+                    image="${image}"
+                    ratio="${imageRatio}"
+                    setTitle="${not showImageLink}"
+                    showCopyright="${showImageCopyright}"
+                    showImageZoom="${showImageZoom and not showImageLink}"
+                    ade="${ade}">
+                    <c:set var="imageSubtext">
+                        <c:if test="${showImageSubtitle and not empty imageTitle}">
+                            <div class="subtitle"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
+                        </c:if>
+                    </c:set>
+                    <c:set var="emptyImage" value="${empty imageBean}" />
+                    <c:set var="imageOri" value="${' '.concat(imageOrientation)}" />
+                </mercury:image-animated>
+            </mercury:link>
+            <c:out value="${imageSubtext}" escapeXml="false" />
+        </c:set>
+    </c:if>
+
     <mercury:piece
         cssWrapper="${cssWrapper}"
         attrWrapper="${attrWrapper}"
@@ -199,31 +229,8 @@
 
         <jsp:attribute name="visual">
             <c:choose>
-                <c:when test="${showVisual and empty markupVisual}">
-                    <c:set var="showImageLink"  value="${empty showImageLink ? false : showImageLink}" />
-                    <c:set var="showImageZoom" value="${empty showImageZoom ? true : showImageZoom}" />
-                    <mercury:link
-                        link="${link}"
-                        test="${showImageLink}"
-                        attr="${showLink or linkHeading ? 'tabindex=\"-1\"' : ''}"
-                        setTitle="${true}" >
-                        <mercury:image-animated
-                            image="${image}"
-                            ratio="${imageRatio}"
-                            setTitle="${not showImageLink}"
-                            showCopyright="${showImageCopyright}"
-                            showImageZoom="${showImageZoom and not showImageLink}"
-                            ade="${ade}">
-                            <c:set var="imageSubtext">
-                                <c:if test="${showImageSubtitle and not empty imageTitle}">
-                                    <div class="subtitle"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
-                                </c:if>
-                            </c:set>
-                            <c:set var="emptyImage" value="${empty imageBean}" />
-                            <c:set var="imageOri" value="${' '.concat(imageOrientation)}" />
-                        </mercury:image-animated>
-                    </mercury:link>
-                    <c:out value="${imageSubtext}" escapeXml="false" />
+                <c:when test="${not empty visualFromImage}">
+                    <c:out value="${visualFromImage}" escapeXml="false" />
                 </c:when>
                 <c:when test="${showVisual}">
                     <jsp:invoke fragment="markupVisual"/>

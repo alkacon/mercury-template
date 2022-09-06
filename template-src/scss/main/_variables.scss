@@ -240,9 +240,9 @@ $overflow-z-index:                  5 !default;                     // Used by e
 
 
 // Bootstrap container sizes
-// Note: These values are also hardcoded in image-srcset.tag
+// Note: These values are used in image-srcset.tag, if changed a sitemap attribute can be used to align these
 
-$prefix:                            'my-'; // prefix for the generated CSS variables
+$prefix:                            'my-' !default; // prefix for the generated CSS variables
 
 $grid-breakpoints: (
     xs: 0,
@@ -615,15 +615,21 @@ $tab-text-transform:                none !default;
 $tab-header-font-size:              $h4-font-size !default;
 $tab-header-line-height:            $h4-font-size * 1.2 !default;
 
-$accordion-text-transform:          none !default;
-$accordion-header-font-size:        $h3-font-size !default;
-$accordion-header-font-size-md:     $h4-font-size !default;
-$accordion-header-line-height:      1.2 !default;
-$accordion-body-padding:            var(--#{$prefix}box-padding-sm);
-$accordion-margin-bottom:           var(--#{$prefix}spacer-sm) !default;
-$accordion-toggle-arrows:           true !default;
-$accordion-border-radius:           var(--#{$prefix}border-radius) !default;
-$accordion-panel-shadow:            $panel-shadow !default;
+$ac-text-transform:                 none !default;
+$ac-header-font-size:               $h3-font-size !default;
+$ac-header-font-size-md:            $h4-font-size !default;
+$ac-header-line-height:             1.2 !default;
+$ac-header-padding:                 var(--#{$prefix}spacer-sm) var(--#{$prefix}box-padding) !default; // horizontal padding should match horizontal $ac-body-padding
+$ac-body-padding:                   var(--#{$prefix}box-padding-sm) var(--#{$prefix}box-padding) !default;
+$ac-body-bg:                        transparent !default;
+$ac-toggle-arrows:                  true !default;
+$ac-panel-shadow:                   $panel-shadow !default;
+$ac-border-radius:                  var(--#{$prefix}border-radius) !default;
+$ac-border-color:                   var(--#{$prefix}grey-light) !default;
+$ac-border:                         1px solid var(--#{$prefix}ac-border-color) !default;
+$ac-body-margin-top:                conditional-value($ac-border == none, 0, -1px) !default; // should match the border width from $ac-border
+$ac-margin-between:                 var(--#{$prefix}spacer-sm) !default;
+$ac-border-radius-expand-adjust:    (($ac-body-margin-top == 0) or ($ac-body-margin-top == -1px)) !default;
 
 
 // Slider

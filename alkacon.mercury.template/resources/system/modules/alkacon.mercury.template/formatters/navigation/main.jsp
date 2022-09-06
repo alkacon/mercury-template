@@ -137,8 +137,8 @@
             <c:if test="${isTopLevel}">
 
                 <c:if test="${empty navTarget and not fn:startsWith(navElem.info, '#')}">
-	                <mercury:set-content-disposition name="${fn:toLowerCase(fn:trim(navElem.info))}" suffix="" setFilenameOnly="${true}"/>
-	                <c:set var="menuType" value="${menuType.concat(contentDispositionFilename)}" />
+                    <mercury:set-content-disposition name="${fn:toLowerCase(fn:trim(navElem.info))}" suffix="" setFilenameOnly="${true}"/>
+                    <c:set var="menuType" value="${menuType.concat(contentDispositionFilename)}" />
                 </c:if>
 
                 <c:set var="megaMenuVfsPath" value="${navElem.resourceName}mega.menu" />
@@ -253,10 +253,6 @@
             ${metaLinksHtml}
         </c:if>
 
-        <c:if test="${not empty navPluginHtml}">
-            ${navPluginHtml}
-        </c:if>
-
         <c:if test="${not empty searchPageUri}">
             <li id="nav-main-search" class="expand"><%----%>
                 <a href="${searchPageUri}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
@@ -278,6 +274,10 @@
                     </li><%----%>
                 </ul><%----%>
             </li><%----%>
+        </c:if>
+
+        <c:if test="${not empty navPluginHtml}">
+            ${navPluginHtml}
         </c:if>
 
         <mercury:nl />

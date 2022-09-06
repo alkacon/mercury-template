@@ -130,12 +130,20 @@
 <%-- Page information transfers OpenCms state information to JavaScript --%>
 <mercury:pageinfo contentPropertiesSearch="${contentPropertiesSearch}" />
 
-<%-- Include custom foot if allowed --%>
-<c:if test="${allowTemplateIncludes}">
-    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.foot']}">
-        <cms:include file="${resourcePath}" cacheable="false" /><mercury:nl />
-    </mercury:load-resource>
-</c:if>
+<c:choose>
+    <c:when test="${empty cms.plugins['custom-body']}">
+        <%-- Include custom foot if allowed --%>
+        <c:if test="${allowTemplateIncludes}">
+            <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.foot']}">
+                <cms:include file="${resourcePath}" cacheable="false" /><mercury:nl />
+            </mercury:load-resource>
+        </c:if>
+    </c:when>
+    <c:otherwise>
+        <%-- Use custom body plugin --%>
+        <mercury:load-plugins group="custom-body" type="jsp-nocache" />
+    </c:otherwise>
+</c:choose>
 
 <%-- Privacy policy banner markup --%>
 <mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />

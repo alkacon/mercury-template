@@ -21,19 +21,23 @@
 
 .variant-tabs,
 .accordion {
-    --#{$prefix}ac-header-base: var(--#{$prefix}highlight-fg-color);
-    --#{$prefix}ac-header-base-bg: var(--#{$prefix}highlight-color);
-    --#{$prefix}ac-header-theme: var(--#{$prefix}main-theme-fg);
-    --#{$prefix}ac-header-theme-bg: var(--#{$prefix}main-theme);
+    --#{$prefix}ac-header: var(--#{$prefix}highlight-fg-color);
+    --#{$prefix}ac-header-bg: var(--#{$prefix}highlight-color);
+    --#{$prefix}ac-header-active: var(--#{$prefix}main-theme-fg);
+    --#{$prefix}ac-header-active-bg: var(--#{$prefix}main-theme);
     --#{$prefix}ac-header-hover: var(--#{$prefix}main-theme-hover-fg);
     --#{$prefix}ac-header-hover-bg: var(--#{$prefix}main-theme-hover);
+    --#{$prefix}ac-header-padding: #{$ac-header-padding};
 
-    --#{$prefix}ac-border-radius: #{$accordion-border-radius};
-    --#{$prefix}ac-body-padding: #{$accordion-body-padding};
-    --#{$prefix}ac-margin-bottom: #{$accordion-margin-bottom};
+    --#{$prefix}ac-body-padding: #{$ac-body-padding};
+    --#{$prefix}ac-body-margin-top: #{$ac-body-margin-top};
+    --#{$prefix}ac-body-bg: #{$ac-body-bg};
 
-    --#{$prefix}ac-border-color: var(--#{$prefix}grey-light);
-    --#{$prefix}ac-border: 1px solid var(--#{$prefix}ac-border-color);
+    --#{$prefix}ac-margin-bottom: #{$ac-margin-between};
+
+    --#{$prefix}ac-border-radius: #{$ac-border-radius};
+    --#{$prefix}ac-border-color: #{$ac-border-color};
+    --#{$prefix}ac-border: #{$ac-border};
 }
 
 // Tabs
@@ -65,9 +69,9 @@
         position: relative;
 
         > .tab-toggle {
-            font-size: $accordion-header-font-size;
-            line-height: $accordion-header-line-height;
-            text-transform: $accordion-text-transform;
+            font-size: $ac-header-font-size;
+            line-height: $ac-header-line-height;
+            text-transform: $ac-text-transform;
             // note: for small screens, tabs are formatted like accordions, hence use these variables here
             display: block;
             position: relative;
@@ -83,13 +87,13 @@
             @include use-hyphens-headings;
             @include round-corners(var(--#{$prefix}ac-border-radius), true);
 
-            color: var(--#{$prefix}ac-header-base);
-            background-color: var(--#{$prefix}ac-header-base-bg);
+            color: var(--#{$prefix}ac-header);
+            background-color: var(--#{$prefix}ac-header-bg);
 
             &.active {
-                color: var(--#{$prefix}ac-header-theme);
-                background-color: var(--#{$prefix}ac-header-theme-bg);
-                border-color: var(--#{$prefix}ac-header-theme-bg);
+                color: var(--#{$prefix}ac-header-active);
+                background-color: var(--#{$prefix}ac-header-active-bg);
+                border-color: var(--#{$prefix}ac-header-active-bg);
             }
 
             &:hover {
@@ -171,9 +175,7 @@
     overflow-wrap: anywhere;
     word-break: break-word;
     margin-bottom: var(--#{$prefix}ac-margin-bottom);
-    box-shadow: $accordion-panel-shadow;
-    border: var(--#{$prefix}ac-border);
-    @include round-corners(var(--#{$prefix}ac-border-radius), true);
+    box-shadow: $ac-panel-shadow;
 
     &:last-of-type {
         margin-bottom: 0;
@@ -181,32 +183,42 @@
 
     .acco-header {
         margin: 0;
-        font-size: $accordion-header-font-size;
-        @if ($accordion-header-font-size-md != $accordion-header-font-size) {
+        font-size: $ac-header-font-size;
+        @if ($ac-header-font-size-md != $ac-header-font-size) {
             @include media-breakpoint-down(lg) {
-                font-size: $accordion-header-font-size-md;
+                font-size: $ac-header-font-size-md;
             }
         }
         @include use-hyphens-headings;
-        line-height: $accordion-header-line-height;
-        text-transform: $accordion-text-transform;
+        line-height: $ac-header-line-height;
+        text-transform: $ac-text-transform;
 
         > .acco-toggle {
-            overflow: hidden;
             text-overflow: ellipsis;
             border: none;
             width: 100%;
             text-align: inherit;
             display: block;
-            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
-            color: var(--#{$prefix}ac-header-base);
-            background-color: var(--#{$prefix}ac-header-base-bg);
+            border: var(--#{$prefix}ac-border);
+            padding: var(--#{$prefix}ac-header-padding);
+            text-decoration: none;
+            @include round-corners(var(--#{$prefix}ac-border-radius), true);
 
-            &:focus,
+            color: var(--#{$prefix}ac-header);
+            background-color: var(--#{$prefix}ac-header-bg);
+
+            &[aria-expanded="true"] {
+                color: var(--#{$prefix}ac-header-active);
+                background-color: var(--#{$prefix}ac-header-active-bg);
+                @if ($ac-border-radius-expand-adjust) {
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+
             &:hover {
-                color: var(--#{$prefix}ac-header-theme);
-                background-color: var(--#{$prefix}ac-header-theme-bg);
-                text-decoration: none;
+                color: var(--#{$prefix}ac-header-hover);
+                background-color: var(--#{$prefix}ac-header-hover-bg);
             }
         }
     }
@@ -223,9 +235,20 @@
     }
 
     .acco-body {
+        background-color: var(--#{$prefix}ac-body-bg);
         border-top: var(--#{$prefix}ac-border);
-        overflow: hidden;
         padding: var(--#{$prefix}ac-body-padding);
+        border: var(--#{$prefix}ac-border);
+        margin-top: var(--#{$prefix}ac-body-margin-top);
+        @include round-corners(var(--#{$prefix}ac-border-radius), true);
+
+        @if ($ac-border-radius-expand-adjust) {
+            &.collapsing,
+            &.show {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
 
         @include piece-bottom-margin;
         > .piece:last-of-type {
@@ -238,7 +261,7 @@
         margin-bottom: var(--#{$prefix}headings-margin-bottom);
     }
 
-    @if ($accordion-toggle-arrows) {
+    @if ($ac-toggle-arrows) {
         .acco-header > .acco-toggle {
             padding-right: calc(3 * var(--#{$prefix}spacer));
         }

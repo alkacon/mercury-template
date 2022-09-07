@@ -143,7 +143,7 @@
     </c:if>
 
     <c:if test="${not empty copyright}">
-        <div class="image-copyright" aria-hidden="true"><%----%>
+        <div class="copyright image-copyright" aria-hidden="true"><%----%>
             ${copyright}
         </div><%----%>
     </c:if>

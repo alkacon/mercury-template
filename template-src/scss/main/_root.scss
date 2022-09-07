@@ -33,13 +33,13 @@
 
     --#{$prefix}link-color: #{$link-color};
     --#{$prefix}link-hover-color: #{$link-hover-color};
-    --#{$prefix}link-fg-color: #{get-text-color($link-color)};
-    --#{$prefix}link-hover-fg-color: #{get-text-color($link-hover-color)};
+    --#{$prefix}link-fg-color: #{$link-fg-color};
+    --#{$prefix}link-fg-hover-color: #{$link-fg-hover-color};
 
     --#{$prefix}main-theme: #{$main-theme};
     --#{$prefix}main-theme-hover: #{$main-theme-hover};
-    --#{$prefix}main-theme-fg: #{get-text-color($main-theme)};
-    --#{$prefix}main-theme-hover-fg: #{get-text-color($main-theme-hover)};
+    --#{$prefix}main-theme-fg: #{$main-theme-fg};
+    --#{$prefix}main-theme-hover-fg: #{$main-theme-hover-fg};
 
     --#{$prefix}headings-color: #{$headings-color};
 
@@ -56,12 +56,12 @@
     }
 
     --#{$prefix}highlight-color: #{$highlight-color};
-    --#{$prefix}highlight-fg-color: #{get-text-color($highlight-color)};
+    --#{$prefix}highlight-fg-color: #{$highlight-fg-color};
     --#{$prefix}highlight-border-color: #{$highlight-border-color};
-    --#{$prefix}highlight-border-fg-color: #{get-text-color($highlight-border-color)};
+    --#{$prefix}highlight-border-fg-color: #{$highlight-border-fg-color};
 
     --#{$prefix}disabled-color: #{$disabled-color};
-    --#{$prefix}disabled-fg-color: #{get-text-color($disabled-color)};
+    --#{$prefix}disabled-fg-color: #{$disabled-fg-color};
 
     --#{$prefix}grey-lighter: #{$grey-lighter};
     --#{$prefix}grey-light: #{$grey-light};
@@ -89,8 +89,8 @@
         --#{$prefix}btn-hover-bg: var(--#{$prefix}main-theme-hover);
         --#{$prefix}btn-hover-fg: var(--#{$prefix}main-theme-hover-fg);
     }
-    --#{$prefix}btn-border: var(--#{$prefix}btn-fg);
-    --#{$prefix}btn-hover-border: var(--#{$prefix}btn-hover-fg);
+    --#{$prefix}btn-border: #{$btn-border};
+    --#{$prefix}btn-hover-border: #{$btn-hover-border};
 
     // fonts
     @if ($font-family-headings != $font-family-base) {
@@ -116,6 +116,7 @@
     // border radius
     --#{$prefix}border-radius: #{$default-border-radius};
     --#{$prefix}btn-border-radius: #{$btn-border-radius};
+    --#{$prefix}image-border-radius: #{$image-border-radius};
 
     // margins
     --#{$prefix}box-padding: #{$box-padding};
@@ -139,7 +140,9 @@
         --#{$prefix}headings-margin-bottom: var(--#{$prefix}p-margin);
     }
 
-    // copyright
+}
+
+.copyright {
     --#{$prefix}copyright-padding: #{$copyright-padding};
     --#{$prefix}copyright-font-size: #{$copyright-font-size};
     --#{$prefix}copyright-color: #{$copyright-color};

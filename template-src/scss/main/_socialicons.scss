@@ -75,7 +75,7 @@
             }
 
             font-size: $social-links-size;
-            @include round-corners($social-links-border-radius);
+            border-radius: $social-links-border-radius;
 
             * {
                 color: $social-links-color;

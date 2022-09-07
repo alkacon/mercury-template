@@ -81,7 +81,8 @@ aside img {
             height: 100%;
         }
 
-        > .image-copyright {
+        > .copyright.image-copyright { // must have both selectors here in order to make the rule more important
+            position: absolute;
             @include image-copyright;
         }
     }

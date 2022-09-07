@@ -47,7 +47,7 @@
     line-height: $form-line-height;
     font-family: var(--#{$prefix}form-font-family);
     border: $form-border;
-    @include round-corners(var(--#{$prefix}border-radius));
+    border-radius: var(--#{$prefix}border-radius);
     @include use-hyphens-text;
     @if ($form-text-color != inherit) {
         color: $form-text-color;
@@ -158,7 +158,7 @@
         outline: none;
         border-width: 1px;
         border-style: solid;
-        @include round-corners(var(--#{$prefix}form-input-border-radius));
+        border-radius: var(--#{$prefix}form-input-border-radius);
         background-color: $form-input-background;
         appearance: none;
 
@@ -506,7 +506,7 @@
     }
 
     .checkbox i {
-        @include round-corners(var(--#{$prefix}form-input-border-radius));
+        border-radius: var(--#{$prefix}form-input-border-radius);
     }
 
     // error state
@@ -572,7 +572,7 @@
             background-color: $form-captcha-background;
             margin-bottom: var(--#{$prefix}spacer);
             border: $form-captcha-border;
-            @include round-corners(var(--#{$prefix}form-input-border-radius));
+            border-radius: var(--#{$prefix}form-input-border-radius);
             overflow: hidden;
 
             img {

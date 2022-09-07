@@ -123,7 +123,7 @@
             flex-direction: column;
             justify-content: center;
             border: 1px solid var(--#{$prefix}cs-border-color);
-            @include round-corners(var(--#{$prefix}cs-border-radius));
+            border-radius: var(--#{$prefix}cs-border-radius);
             text-align: center;
             overflow: hidden;
 
@@ -196,8 +196,8 @@ table.submissions {
 
     .book-msg {
         background-color: var(--#{$prefix}highlight-color);;
+        border-radius: var(--#{$prefix}cs-border-radius);
         font-weight: normal;
-        @include round-corners(var(--#{$prefix}cs-border-radius));
 
         + .oct-meta-info {
             margin-left: 10px;

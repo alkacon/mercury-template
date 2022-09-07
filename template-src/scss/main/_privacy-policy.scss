@@ -517,7 +517,7 @@
             }
 
             i {
-                @include round-corners(var(--#{$prefix}btn-border-radius));
+                border-radius: var(--#{$prefix}btn-border-radius);
                 position: relative;
                 display: block;
                 width: 20px;
@@ -590,7 +590,7 @@ html.keyboard-nav {
     // must set this because some elements (e.g. OSM) add another class that changes the font
     font: $font-weight-base #{$cookie-notice-font-size-mobile} / #{$line-height-base} $font-family-base;
 
-    @include round-corners(var(--#{$prefix}border-radius));
+    border-radius: var(--#{$prefix}border-radius);
     @include use-hyphens-text;
 
     @include media-breakpoint-up(lg) {

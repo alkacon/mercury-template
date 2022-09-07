@@ -27,10 +27,10 @@
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
 
-    overflow: hidden;
     padding: var(--#{$prefix}box-padding);
 
-    @include round-corners(var(--#{$prefix}border-radius));
+    border-radius: var(--#{$prefix}border-radius);
+    overflow: hidden;
 
     &.oc-drag-element {
         // in edit mode allow overflow, otherwise edit points may not be visible (e.g. for lists)
@@ -72,7 +72,10 @@
 
     .text-#{""+$color-name} {
         @if ($color-name != "default") {
-            @include set-text-color($text-color);
+            color: $text-color;
+            *:not(a):not(span) {
+                color: $text-color;
+            }
         } @else {
             @extend .text-dark;
         }
@@ -108,7 +111,7 @@
     .bo-#{$line-size}  {
         border: #{$line-size}px solid $border-default-color;
         padding: calc(#{$box-padding} - #{$line-size}px);
-        @include round-corners($default-border-radius);
+        border-radius: var(--#{$prefix}border-radius);
     }
 }
 

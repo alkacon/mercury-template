@@ -15,6 +15,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+// Boostrap class prefix
+
+$prefix:                            'my-' !default; // prefix for the generated CSS variables
+
 // Features - disable what is not needed to keep the generated CSS small
 
 $feature-use-flexible-header:       true !default; // use flexible header from _header.scss
@@ -207,7 +211,13 @@ $code-color:                        $black !default;
 $focus-outline-color:               $main-theme-hover !default;
 $highlight-color:                   $grey-lighter !default;
 $highlight-border-color:            $grey-light !default;
+$highlight-fg-color:                get-text-color($highlight-color) !default;
+$highlight-border-fg-color:         get-text-color($highlight-border-color) !default;
 $disabled-color:                    $grey-light !default;
+$disabled-fg-color:                 get-text-color($disabled-color) !default;
+
+$main-theme-fg:                     get-text-color($main-theme);
+$main-theme-hover-fg:               get-text-color($main-theme-hover);
 
 $image-bg-color:                    #f6f6f6 !default;
 
@@ -215,6 +225,8 @@ $link-color:                        $main-theme !default;
 $link-decoration:                   none !default;
 $link-hover-color:                  $main-theme-hover !default;
 $link-hover-decoration:             underline !default;
+$link-fg-color:                     get-text-color($link-color) !default;
+$link-fg-hover-color:               get-text-color($link-hover-color) !default;
 
 $headings-color:                    $text-dark !default;
 $intro-headings-color:              $main-theme !default;
@@ -229,6 +241,7 @@ $default-transition-time:           0.33s !default; // default timing for animat
 
 $default-border-radius:             0 !default;
 $copyright-border-radius:           floor($default-border-radius * 0.5) !default;
+$image-border-radius:               var(--#{$prefix}border-radius) !default;
 $focus-outline-border-radius:       $copyright-border-radius !default;
 
 // OpenCms default Z-index for edit points
@@ -241,8 +254,6 @@ $overflow-z-index:                  5 !default;                     // Used by e
 
 // Bootstrap container sizes
 // Note: These values are used in image-srcset.tag, if changed a sitemap attribute can be used to align these
-
-$prefix:                            'my-' !default; // prefix for the generated CSS variables
 
 $grid-breakpoints: (
     xs: 0,
@@ -306,6 +317,8 @@ $btn-min-width:                     0 !default;
 $btn-line-height:                   $line-height-base !default;
 $btn-font-size:                     $font-size-base !default;
 $btn-xs-font-size:                  1.2rem !default;
+$btn-border:                        var(--#{$prefix}btn-fg) !default;
+$btn-hover-border:                  var(--#{$prefix}btn-hover-fg) !default;
 
 $btn-bg:                            $main-theme !default;
 $btn-fg:                            get-text-color($btn-bg) !default;

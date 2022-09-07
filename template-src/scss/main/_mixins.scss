@@ -27,27 +27,8 @@
         outline-width: 2px;
         outline-offset: -2px;
     }
-    @include round-corners($focus-outline-border-radius);
+    border-radius: $focus-outline-border-radius;
     z-index: $above-oc-z-index + 500000; // well above OpenCms edit points AND menu dropdowns
-}
-
-// Sets the text color for all elements but 'a' and 'span'
-@mixin set-text-color($text-color) {
-    color: $text-color;
-    *:not(a):not(span) {
-        color: $text-color;
-    }
-}
-
-// Add round corners
-@mixin round-corners($radius, $overflow:false, $setZero:false) {
-    @if ($setZero or ($radius != 0)) {
-        border-radius: $radius;
-    }
-    @if ($overflow == true) {
-        overflow: hidden;
-        z-index: $overflow-z-index;
-    }
 }
 
 // Basic image overlay
@@ -88,10 +69,6 @@
         border-top-right-radius: $copyright-border-radius;
     }
 }
-
-@mixin image-overlay-var {
-}
-
 
 // Image overlay for copyright notices
 @mixin image-copyright {
@@ -143,7 +120,6 @@
 
 // Reset animation transition effects and shadows
 @mixin effect-box-reset {
-
     box-shadow: none;
     transition-property: transform, box-shadow, transform-origin;
     transition-duration: $transition-timing;
@@ -274,7 +250,7 @@
     @if ($btn-line-height != $line-height-base) {
         line-height: $btn-line-height;
     }
-    @include round-corners(var(--#{$prefix}btn-border-radius));
+    border-radius: var(--#{$prefix}btn-border-radius);
     @include button-color($btn-disabled);
 }
 

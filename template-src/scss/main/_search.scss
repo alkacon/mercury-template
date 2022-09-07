@@ -90,7 +90,7 @@
         font-weight: var(--#{$prefix}body-font-weight);
         font-size: 60%;
         padding: 0.2rem 0.75rem;
-        @include round-corners(var(--#{$prefix}btn-border-radius));
+        border-radius: var(--#{$prefix}btn-border-radius);
         color: $search-badge-color;
         @if ($search-badge-background != transparent) {
             background: $search-badge-background;

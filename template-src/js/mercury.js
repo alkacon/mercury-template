@@ -326,7 +326,7 @@ var Mercury = function(jQ) {
         if (isNotEmpty(gridInfo)) {
             jQ.extend(m_gridInfo, JSON.parse(gridInfo));
         }
-        if (DEBUG) console.info("Mercury screen xs max:" + m_gridInfo.xsMax + " xl min:" + m_gridInfo.xlMin  + " desktop head nav min:" + m_gridInfo.navDeskMin);
+        if (DEBUG) console.info("Mercury screen xs max:" + m_gridInfo.xsMax + " xxl min:" + m_gridInfo.xxlMin  + " desktop head nav min:" + m_gridInfo.navDeskMin);
         if (DEBUG) console.info("Mercury fixed header nav setting: " + m_gridInfo.navFixHeader);
 
         m_gridInfo.currentSize = function() {
@@ -342,8 +342,11 @@ var Mercury = function(jQ) {
             if (m_windowWidth <= this.lgMax) {
                 return "lg";
             }
-            if (m_windowWidth >= this.xlMin) {
+            if (m_windowWidth <= this.xlMax) {
                 return "xl";
+            }
+            if (m_windowWidth >= this.xxlMin) {
+                return "xxl";
             }
             return "unknown";
         }

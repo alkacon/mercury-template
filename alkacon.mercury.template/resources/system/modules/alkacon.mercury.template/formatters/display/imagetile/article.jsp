@@ -99,7 +99,7 @@
             <h2 class="title"><c:out value="${title}" /></h2><%----%>
             <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
-        <c:if test="${showImageCopyright}"><div class="square-copyright">${copyright}</div></c:if>
+        <c:if test="${showImageCopyright}"><div class="copyright">${copyright}</div></c:if>
     </mercury:link>
 
     </div><%----%>

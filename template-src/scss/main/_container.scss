@@ -235,13 +235,13 @@ $oct-edit-infos:
 
 // Noise overlay for containers and markers
 
-.oct-meta::after,
-.oct-meta-info::after,
-.container-box::after,
-.oct-alert::after {
-    @include noise-image;
-    content: ' ';
-}
+// .oct-meta::after,
+// .oct-meta-info::after,
+// .container-box::after,
+// .oct-alert::after {
+//     @include noise-image;
+//     content: ' ';
+// }
 
 // Model group marker
 
@@ -357,7 +357,7 @@ $oct-edit-infos:
     color: get-text-color($online-warn-color);
     overflow: hidden;
     padding: $con-margin;
-    @include round-corners($default-border-radius);
+    border-radius: $default-border-radius;
 
     > .head {
         font-family: $font-family-headings;

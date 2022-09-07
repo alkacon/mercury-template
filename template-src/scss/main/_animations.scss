@@ -38,7 +38,7 @@
                 }
                 &:hover {
                     > .visual .effect-box {
-                        @include round-corners(var(--#{$prefix}border-radius));
+                        border-radius: var(--#{$prefix}image-border-radius);
                     }
                 }
             }
@@ -56,7 +56,7 @@
 
                 &:hover {
                     z-index: #{$overflow-z-index + 1};
-                    @include round-corners(var(--#{$prefix}border-radius));
+                    border-radius: var(--#{$prefix}image-border-radius);
 
                     > .visual .subtitle,
                     > .body {
@@ -177,12 +177,9 @@ html.desktop .effect-rotate {
 
     // limit the effect to the borders of this box
     .image-src-box {
+        border-radius: var(--#{$prefix}image-border-radius);
         overflow: hidden;
         z-index: $overflow-z-index;
-    }
-
-    .image-src-box {
-        @include round-corners(var(--#{$prefix}border-radius), true);
     }
 }
 

@@ -32,7 +32,10 @@
     display: flex;
     flex-direction: column;
 
-    @include round-corners($iconbox-border-radius, true);
+    border-radius: $iconbox-border-radius;
+    overflow: hidden;
+    z-index: $overflow-z-index;
+
     @include colored-a(inherit, var(--#{$prefix}link-color));
 
     &:only-child {
@@ -152,7 +155,7 @@
     }
 
     .text-section {
-        @include round-corners(var(--#{$prefix}border-radius));
+        border-radius: var(--#{$prefix}image-border-radius);
         padding: var(--#{$prefix}box-padding);
         height: 100%; // works because .flipper has the height fixed with padding-bottom
         overflow: auto; // shows scrollbars on demand
@@ -174,8 +177,8 @@
             z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
 
             .text-heading {
-                @include round-corners(var(--#{$prefix}border-radius));
                 @include use-hyphens-headings(true);
+                border-radius: var(--#{$prefix}image-border-radius);
                 background-color: rgba(var(--#{$prefix}highlight-color-rgb), .75);
                 padding: var(--#{$prefix}box-padding-sm);
                 margin-bottom: 0;

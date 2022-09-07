@@ -105,7 +105,7 @@
             <h2 class="title"><c:out value="${title}" /></h2><%----%>
             <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
-        <c:if test="${not isAudio and showImageCopyright}"><div class="square-copyright">&copy; ${copyright}</div></c:if>
+        <c:if test="${not isAudio and showImageCopyright}"><div class="copyright">&copy; ${copyright}</div></c:if>
     </jsp:attribute>
 
 </mercury:media-box>

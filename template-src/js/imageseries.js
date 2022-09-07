@@ -212,8 +212,8 @@ function initZoomers($elements) {
     var imageSrc = [];
     var indexCount = -1;
 
-    const winWidth  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    const winHeight = window.innerHeight|| document.documentElement.clientHeight||  document.body.clientHeight;
+    const winWidth  = window.innerWidth  || document.documentElement.clientWidth  || document.body.clientWidth;
+    const winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
     $elements.each(function(){
 
@@ -222,7 +222,7 @@ function initZoomers($elements) {
 
         var imageData = $this.data("imagezoom");
         if (typeof imageData.src !== 'undefined') {
-            if (DEBUG) console.info("Image zoom element found with direct path=" + imageData.src);
+            // if (DEBUG) console.info("Image zoom element found with direct path=" + imageData.src);
             addClick = ($this.closest('a').length == 0);
         } else if ($this.is("a")) {
             imageData.src = $this.attr("href");
@@ -269,7 +269,7 @@ function initZoomers($elements) {
                 });
             }
 
-            if (DEBUG) console.info("Image zoom element added path=" + imageData.src + ", index=" + imageData.index);
+            // if (DEBUG) console.info("Image zoom element added path=" + imageData.src + ", index=" + imageData.index);
         }
     });
 

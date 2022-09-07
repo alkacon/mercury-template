@@ -83,7 +83,9 @@
             float: left;
             width: 100%;
             margin-bottom: var(--#{$prefix}sm-ver-spacer);
-            @include round-corners(var(--#{$prefix}sm-border-radius), true);
+            border-radius: var(--#{$prefix}sm-border-radius);
+            overflow: hidden;
+            z-index: $overflow-z-index;
 
             > a {
                 color: var(--#{$prefix}sm-hover-color);

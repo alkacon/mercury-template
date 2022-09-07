@@ -102,7 +102,9 @@
        @include media-breakpoint-up(md) {
             border: $nav-side-border;
             box-shadow: $panel-shadow;
-            @include round-corners($nav-side-border-radius, true);
+            border-radius: $nav-side-border-radius;
+            overflow: hidden;
+            z-index: $overflow-z-index;
         }
     }
 

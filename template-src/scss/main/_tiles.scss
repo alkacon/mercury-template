@@ -100,7 +100,9 @@ $sq-heights-xl:    () !default;
     width: 100%;
     padding: 0 0 100% 0 !important; // !important because the "padding-bottom: 100%" is what makes the squares square
     .content {
-        @include round-corners(var(--#{$prefix}border-radius), true);
+        border-radius: var(--#{$prefix}border-radius);
+        overflow: hidden;
+        z-index: $overflow-z-index;
     }
 }
 
@@ -484,7 +486,9 @@ $sq-margin: 20px;
 
 .content-box {
     position: relative;
-    @include round-corners(var(--#{$prefix}border-radius), true);
+    border-radius: var(--#{$prefix}border-radius);
+    overflow: hidden;
+    z-index: $overflow-z-index;
 }
 
 .tile-col {
@@ -511,8 +515,7 @@ $sq-margin: 20px;
 
 .tile-col.element .copyright,
 .tile-col.freefloat .copyright,
-.square-col .square-copyright {
-    // selector must not be named 'image-copyright' here, otherwise there will be problems for image flipping tiles
+.list-entry .square-col .copyright {
     @include image-copyright;
     color: $square-overlay-text-color;
     text-shadow: $square-overlay-text-shadow;

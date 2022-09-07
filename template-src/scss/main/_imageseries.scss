@@ -81,7 +81,7 @@ $imageseries-square-margin: 2px !default;
     .square-col {
         .content {
             // must always set this because this may reset tile rounding
-            @include round-corners(var(--#{$prefix}border-radius));
+            border-radius: var(--#{$prefix}image-border-radius);
         }
         .copyright {
             @include image-copyright;
@@ -244,7 +244,7 @@ a .effect-box .zoomer {
 .zoom-overlay .zoom-icon,
 .image-src-box,
 .image-src-box > img {
-    border-radius: var(--#{$prefix}border-radius);
+    border-radius: var(--#{$prefix}image-border-radius);
 }
 
 // remove rounded corners in wide area images

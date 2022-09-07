@@ -85,7 +85,9 @@
             border: var(--#{$prefix}ac-border);
 
             @include use-hyphens-headings;
-            @include round-corners(var(--#{$prefix}ac-border-radius), true);
+            border-radius: var(--#{$prefix}ac-border-radius);
+            overflow: hidden;
+            z-index: $overflow-z-index;
 
             color: var(--#{$prefix}ac-header);
             background-color: var(--#{$prefix}ac-header-bg);
@@ -202,7 +204,9 @@
             border: var(--#{$prefix}ac-border);
             padding: var(--#{$prefix}ac-header-padding);
             text-decoration: none;
-            @include round-corners(var(--#{$prefix}ac-border-radius), true);
+            border-radius: var(--#{$prefix}ac-border-radius);
+            overflow: hidden;
+            z-index: $overflow-z-index;
 
             color: var(--#{$prefix}ac-header);
             background-color: var(--#{$prefix}ac-header-bg);
@@ -240,7 +244,9 @@
         padding: var(--#{$prefix}ac-body-padding);
         border: var(--#{$prefix}ac-border);
         margin-top: var(--#{$prefix}ac-body-margin-top);
-        @include round-corners(var(--#{$prefix}ac-border-radius), true);
+        border-radius: var(--#{$prefix}ac-border-radius);
+        overflow: hidden;
+        z-index: $overflow-z-index;
 
         @if ($ac-border-radius-expand-adjust) {
             &.collapsing,

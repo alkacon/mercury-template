@@ -154,7 +154,7 @@
     }
 
     .content {
-        @include round-corners(var(--#{$prefix}border-radius));
+        border-radius: var(--#{$prefix}image-border-radius);
         position: absolute;
         top: 0;
         left: 0;
@@ -304,7 +304,7 @@
         background-color: $audio-player-bg;
         padding: $audio-player-spacing;
         font-size: $audio-player-font-size;
-        @include round-corners($audio-player-border-radius);
+        border-radius: $audio-player-border-radius;
 
         .audio-headline {
             margin-bottom: $audio-player-spacing;
@@ -315,7 +315,7 @@
             display: block;
             margin-bottom: $audio-player-spacing;
             border: $audio-player-progress-border;
-            @include round-corners($audio-player-border-radius);
+            border-radius: $audio-player-border-radius;
 
             .progress-bar {
                 // overwrite bootstrap standards
@@ -366,10 +366,12 @@
     }
 }
 
-.square-col > .content .audio-player .copyright{
-    position: relative;
-    > div {
-        @include image-copyright;
+.square-col > .content .audio-player {
+    .copyright {
+        position: relative;
+        > div {
+            @include image-copyright;
+        }
     }
 }
 
@@ -388,8 +390,7 @@
     position: relative;
     cursor: pointer;
     margin-bottom: var(--#{$prefix}element-margin);
-
-    @include round-corners(var(--#{$prefix}border-radius));
+    border-radius: var(--#{$prefix}image-border-radius);
 
     .oa-heading,
     .oa-notice {

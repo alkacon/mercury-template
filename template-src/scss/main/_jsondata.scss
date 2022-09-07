@@ -59,18 +59,25 @@
             content: 'xl';
         }
     }
+    @include media-breakpoint-up(xxl) {
+        &::before {
+            content: 'xxl';
+        }
+    }
 
     &::after {
         display: none;
         content: '{' +
             '"xsMax":0, ' +
             '"smMin":' + breakpoint-min(sm) + ', ' +
-            '"smMax":' + breakpoint-max(sm) + ', ' +
+            '"smMax":' + breakpoint-max(md) + ', ' +
             '"mdMin":' + breakpoint-min(md) + ', ' +
-            '"mdMax":' + breakpoint-max(md) + ', ' +
+            '"mdMax":' + breakpoint-max(lg) + ', ' +
             '"lgMin":' + breakpoint-min(lg) + ', ' +
-            '"lgMax":' + breakpoint-max(lg) + ', ' +
+            '"lgMax":' + breakpoint-max(xl) + ', ' +
             '"xlMin":' + breakpoint-min(xl) + ', ' +
+            '"xlMax":' + breakpoint-max(xxl) + ', ' +
+            '"xxlMin":' + breakpoint-min(xxl) + ', ' +
             '"bhTogTop":' + '"' + $bh-nav-mobile-toggle-top + '",' +
             '"navMobMax":' + breakpoint-mobile-max() + ', ' +
             '"navDeskMin":' + breakpoint-desktop-min() + ', ' +

@@ -62,7 +62,7 @@ $slider-opacity-active: 1 !default;
         position: relative;
         overflow: hidden;
         // must set round corner here in case a custom bg color for caption has been set
-        @include round-corners(var(--#{$prefix}slider-slide-border-radius), false);
+        border-radius: var(--#{$prefix}slider-slide-border-radius);
 
         &.custom .caption {
             // custom colored caption
@@ -109,7 +109,7 @@ $slider-opacity-active: 1 !default;
                 }
                 strong,
                 small {
-                    @include round-corners(var(--#{$prefix}slider-caption-border-radius), false);
+                    border-radius: var(--#{$prefix}slider-caption-border-radius);
                 }
             }
         }
@@ -121,7 +121,9 @@ $slider-opacity-active: 1 !default;
 
     .slide-container,
     .slide-wrapper {
-        @include round-corners(var(--#{$prefix}slider-slide-border-radius), true);
+        border-radius: var(--#{$prefix}slider-slide-border-radius);
+        overflow: hidden;
+        z-index: $overflow-z-index;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -134,7 +136,9 @@ $slider-opacity-active: 1 !default;
             position: absolute;
             max-width: calc(100% - (2 * var(--#{$prefix}spacer-xl)));
             background-color: rgb(var(--#{$prefix}slider-bg), $slider-background-opacity);
-            @include round-corners(var(--#{$prefix}slider-caption-border-radius), true);
+            border-radius: var(--#{$prefix}slider-caption-border-radius);
+            overflow: hidden;
+            z-index: $overflow-z-index;
 
             &.bottom {
                 bottom: var(--#{$prefix}spacer-xl);

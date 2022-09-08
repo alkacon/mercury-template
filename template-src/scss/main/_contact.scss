@@ -20,6 +20,8 @@
  */
 
 .type-contact {
+    --#{$prefix}contact-spacer-x: #{$contact-spacer-x};
+    --#{$prefix}contact-spacer-y: #{$contact-spacer-y};
 
     @if $use-hyphens {
         overflow-wrap: anywhere;
@@ -35,8 +37,8 @@
     .note,
     .mail,
     .vcard {
-        margin-top: var(--#{$prefix}margin-sm);
-        margin-bottom: var(--#{$prefix}margin-sm);
+        margin-top: var(--#{$prefix}contact-spacer-y);
+        margin-bottom: var(--#{$prefix}contact-spacer-y);
     }
 
     .mail {
@@ -46,12 +48,12 @@
     }
 
     > * > .image-src-box {
-        // this will not add bottom margin if piece grid is used
-        margin-bottom: var(--#{$prefix}margin);
+        // this will only add bottom margin if piece grid is not used
+        margin-bottom: calc(2 * var(--#{$prefix}contact-spacer-y));;
     }
 
     .contactlink {
-        margin-top: var(--#{$prefix}margin-sm);
+        margin-top: var(--#{$prefix}contact-spacer-y);
     }
 
     &.compact {
@@ -97,7 +99,7 @@
         word-break: normal;
 
         > span {
-            padding-right: var(--#{$prefix}spacer-sm);
+            padding-right: var(--#{$prefix}contact-spacer-x);
             display: table-cell;
 
             &.icon-label {
@@ -115,12 +117,12 @@
     }
 
     .only-icon {
-        padding-left: var(--#{$prefix}spacer-sm);
+        padding-left: var(--#{$prefix}contact-spacer-x);
     }
 
     .fa {
-       margin-right: var(--#{$prefix}spacer-sm);
-       width: calc(2 * var(--#{$prefix}spacer));
+       margin-right: var(--#{$prefix}contact-spacer-x);
+       width: calc(4 * var(--#{$prefix}contact-spacer-x));
     }
 
     .img-responsive {
@@ -130,7 +132,7 @@
     .note {
         > * {
             // add margins for all elements in text piece
-            margin-bottom: var(--#{$prefix}p-margin);
+            margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
             &:last-child {
                 // last element in text must not add margin
                 margin-bottom: 0;

@@ -125,7 +125,7 @@
     --#{$prefix}element-margin: #{$default-margin};
     --#{$prefix}element-margin-sm: calc(0.5 * var(--#{$prefix}element-margin));
 
-    --#{$prefix}p-margin: #{$paragraph-margin-bottom};
+    --#{$prefix}paragraph-margin-bottom: #{$paragraph-margin-bottom};
     --#{$prefix}margin: #{$text-flow-margin};
     --#{$prefix}margin-xl: calc(2 * var(--#{$prefix}margin));
     --#{$prefix}margin-sm: calc(0.5 * var(--#{$prefix}margin));
@@ -137,7 +137,7 @@
     @if ($headings-margin-bottom != $paragraph-margin-bottom) {
         --#{$prefix}headings-margin-bottom: #{$headings-margin-bottom};
     } @else {
-        --#{$prefix}headings-margin-bottom: var(--#{$prefix}p-margin);
+        --#{$prefix}headings-margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
     }
 
 }

@@ -200,6 +200,7 @@ $spacer:                            $default-margin-small !default; // spacing m
 $paragraph-margin-bottom:           $default-margin-small !default; // margin used at the end of paragraphs
 $text-flow-margin:                  $paragraph-margin-bottom !default; // margin to separate text, can be top or bottom
 $headings-margin-bottom:            $paragraph-margin-bottom !default; // margin below <hx> elements
+$intro-headings-margin-bottom:      round($paragraph-margin-bottom * 25) * 0.01 !default; // margin below intro headings
 
 // Text and page colors
 
@@ -332,10 +333,11 @@ $iconbox-border-radius:             $default-border-radius !default;
 $colored-row-color:                 $highlight-color !default;
 $section-subtitle-size:             13px !default;
 
-$piece-gutter-width:                $grid-gutter-width !default;
-$piece-text-to-link-margin:         var(--#{$prefix}p-margin) !default;
-$piece-visual-last-margin-top:      var(--#{$prefix}margin) !default;
 $piece-desktop-breakpoint:          md !default;
+$piece-gutter-x:                    $grid-gutter-width !default;
+$piece-text-to-link-margin:         var(--#{$prefix}paragraph-margin-bottom) !default;
+$piece-visual-last-margin-top:      var(--#{$prefix}paragraph-margin-bottom) !default;
+$piece-visual-margin-bottom:        var(--#{$prefix}paragraph-margin-bottom) !default;
 
 $use-hyphens:                       true !default; // enable hyphenation / word breaks (not all browsers support this)
 $piece-hyphens:                     $use-hyphens !default; // enable hyphenation / word breaks specially in piece
@@ -615,11 +617,22 @@ $teaser-btn-compact-light-padding:  0 $btn-padding !default;
 $teaser-info-color:                 var(--#{$prefix}body-color) !default; // color of additional teaser infos, e.g. the date
 
 
+// Detail pages
+$detail-visual-spacer-x:            var(--#{$prefix}spacer) !default;
+$detail-visual-spacer-y:            var(--#{$prefix}spacer) !default;
+$detail-content-spacer-y:           var(--#{$prefix}element-margin) !default;
+
 // Event calendar sheet
 
 $calendar-sheet-width:              165px !default;
 $calendar-sheet-bar-width:          80% !default;
 $calendar-sheet-bar-height:         15px  !default;
+
+
+// Contacts
+
+$contact-spacer-x:                  calc(0.5 * var(--#{$prefix}spacer)) !default;
+$contact-spacer-y:                  calc(0.5 * var(--#{$prefix}spacer)) !default;
 
 
 // Tabs and accordions

@@ -22,18 +22,28 @@
 <c:set var="plugins" value="${cms.plugins[group]}" />
 
 <c:forEach var="plugin" items="${plugins}">
+    <c:set var="versionDate" value="" />
+    <c:if test="${(type eq 'css') or (type eq 'js-defer') or (type eq 'js-async')}">
+        <c:set var="path" value="${plugin.path}" />
+        <c:if test="${not empty path}">
+            <c:set var="res" value="${cms.wrap[path].toResource}" />
+            <c:if test="${not empty res}">
+                <c:set var="versionDate" value="?ver=${res.dateLastModified}" />
+            </c:if>
+        </c:if>
+    </c:if>
     <c:choose>
         <c:when test="${type eq 'jsp-nocache'}">
             <cms:include file="${plugin.path}" cacheable="false" />
         </c:when>
         <c:when test="${type eq 'css'}">
-            <link href="${plugin.link}" rel="stylesheet"><mercury:nl />
+            <link href="${plugin.link}${versionDate}" rel="stylesheet"><mercury:nl />
         </c:when>
         <c:when test="${type eq 'js-defer'}">
-            <script defer src="${plugin.link}"></script><mercury:nl />
+            <script defer src="${plugin.link}${versionDate}"></script><mercury:nl />
         </c:when>
         <c:when test="${type eq 'js-async'}">
-            <script async src="${plugin.link}"></script><mercury:nl />
+            <script async src="${plugin.link}${versionDate}"></script><mercury:nl />
         </c:when>
     </c:choose>
 </c:forEach>

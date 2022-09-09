@@ -119,20 +119,14 @@
     --#{$prefix}image-border-radius: #{$image-border-radius};
 
     // margins
-    --#{$prefix}box-padding: #{$box-padding};
-    --#{$prefix}box-padding-sm: calc(0.5 * var(--#{$prefix}box-padding));
+    --#{$prefix}default-margin: #{$default-margin};
+    --#{$prefix}default-margin-small: #{$default-margin-small};
+    --#{$prefix}default-margin-verysmall: #{$default-margin-verysmall};
 
-    --#{$prefix}element-margin: #{$default-margin};
-    --#{$prefix}element-margin-sm: calc(0.5 * var(--#{$prefix}element-margin));
+    --#{$prefix}element-margin: #{$element-margin};
+    --#{$prefix}box-padding: #{$box-padding};
 
     --#{$prefix}paragraph-margin-bottom: #{$paragraph-margin-bottom};
-    --#{$prefix}margin: #{$text-flow-margin};
-    --#{$prefix}margin-xl: calc(2 * var(--#{$prefix}margin));
-    --#{$prefix}margin-sm: calc(0.5 * var(--#{$prefix}margin));
-
-    --#{$prefix}spacer: #{$spacer};
-    --#{$prefix}spacer-xl: calc(2 * var(--#{$prefix}spacer));
-    --#{$prefix}spacer-sm: calc(0.5 * var(--#{$prefix}spacer));
 
     @if ($headings-margin-bottom != $paragraph-margin-bottom) {
         --#{$prefix}headings-margin-bottom: #{$headings-margin-bottom};

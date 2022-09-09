@@ -468,7 +468,7 @@ $sq-margin: 20px;
 // Table cell needed for alignment of content inside square
 
 .square-col {
-    .table {
+    .table-square {
         display: table;
         height: 100%;
         width: 100%;
@@ -503,7 +503,7 @@ $sq-margin: 20px;
         background: $tile-overlay-bg-color;
 
         .piece {
-            margin: var(--#{$prefix}spacer);
+            margin: var(--#{$prefix}default-margin-small);
         }
 
         h1, h2, h3, h4, div.body, a.piece-text-link {
@@ -527,7 +527,7 @@ $sq-margin: 20px;
     .text-overlay {
         position: absolute;
         bottom: 0;
-        padding: var(--#{$prefix}spacer) var(--#{$prefix}spacer-xl);
+        padding: var(--#{$prefix}default-margin-small) var(--#{$prefix}default-margin);
         background: $square-overlay-bg-color;
         width: 100%;
         z-index: $overflow-z-index;
@@ -557,7 +557,7 @@ $sq-margin: 20px;
         .heading + .body,
         h2 + h3,
         div.teaser-date + h2 {
-            margin-top: var(--#{$prefix}spacer-sm);
+            margin-top: var(--#{$prefix}default-margin-verysmall);
         }
     }
     a:hover {
@@ -602,7 +602,7 @@ $sq-margin: 20px;
     }
 
     &.min-height-px .text-overlay {
-        min-height: calc(#{2 * $square-overlay-h2-size * $square-overlay-line-height} + var(--#{$prefix}spacer));
+        min-height: calc(#{2 * $square-overlay-h2-size * $square-overlay-line-height} + var(--#{$prefix}default-margin-small));
     }
 
     @include media-breakpoint-up(md) {
@@ -614,7 +614,7 @@ $sq-margin: 20px;
 
         &.square-large {
             .text-overlay {
-                padding: var(--#{$prefix}spacer-xl);
+                padding: var(--#{$prefix}default-margin);
                 h2 {
                     font-size: 2.0rem;
                 }
@@ -649,7 +649,7 @@ $sq-margin: 20px;
             }
             &.square-large {
                 .text-overlay {
-                    padding: var(--#{$prefix}spacer) var(--#{$prefix}spacer-xl);
+                    padding: var(--#{$prefix}default-margin-small) var(--#{$prefix}default-margin);
                     min-height: 18.5%;
                 }
             }

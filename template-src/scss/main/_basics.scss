@@ -170,29 +170,39 @@ a {
     }
 }
 
+%linked-headings {
+    @if ($linked-headings-color != unset) {
+        color: var(--#{$prefix}linked-headings-color);
+    }
+    @if ($linked-headings-decoration != unset) {
+        text-decoration: $linked-headings-decoration;
+    }
+}
+
+%linked-headings-hover {
+    @if ($linked-headings-hover-color != unset) {
+        color: var(--#{$prefix}linked-headings-hover-color);
+    }
+    @if ($linked-headings-hover-decoration != unset) {
+        text-decoration: $linked-headings-hover-decoration;
+    }
+}
+
 a {
     h1, h2, h3, h4, h5, h6 {
-        @if ($linked-headings-color != inherit) {
-            color: var(--#{$prefix}linked-headings-color);
-        }
-        text-decoration: $linked-headings-decoration;
+        @extend %linked-headings;
     }
     &:hover {
         h1, h2, h3, h4, h5, h6 {
-            @if ($linked-headings-hover-color != inherit) {
-                color: var(--#{$prefix}linked-headings-hover-color);
-            }
-            text-decoration: $linked-headings-hover-decoration;
+            @extend %linked-headings-hover;
         }
     }
 }
 h1, h2, h3, h4, h5, h6 {
     a {
-        color: var(--#{$prefix}linked-headings-color);
-        text-decoration: $linked-headings-decoration;
+        @extend %linked-headings;
         &:hover {
-            color: var(--#{$prefix}linked-headings-hover-color);
-            text-decoration: $linked-headings-hover-decoration;
+            @extend %linked-headings-hover;
         }
     }
 }

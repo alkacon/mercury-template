@@ -354,7 +354,7 @@
     }
 
     .subtitle {
-        margin-top: var(--#{$prefix}spacer-sm);
+        margin-top: var(--#{$prefix}default-margin-verysmall);
         line-height: 1.15;
         font-style: italic;
         font-size: $section-subtitle-size;
@@ -514,10 +514,10 @@
     &::before {
         font-family: ForkAwesome;
         content: "\f02b";
-        padding-right: var(--#{$prefix}spacer-sm);
+        padding-right: var(--#{$prefix}default-margin-verysmall);
     }
     @if ($add-box) {
-        padding: var(--#{$prefix}spacer-sm);
+        padding: var(--#{$prefix}default-margin-verysmall);
         border-radius: $list-category-radius;
         background-color: $grey-lighter;
         @if ($add-hover) {

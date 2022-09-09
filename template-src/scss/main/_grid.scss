@@ -19,15 +19,9 @@
  * Source file: _grid.scss
  */
 
-.row-tile,
 .row-square,
 .row-12 {
     @include clearfix;
-}
-
-.row-tile {
-    @include make-row();
-    flex-direction: row;
 }
 
 .row-12,
@@ -86,10 +80,11 @@
             --#{$prefix}gutter-x: #{2 * $space}px;
             --#{$prefix}gutter-y: #{2 * $space}px;
             @if ($space < 10) {
-                // on small screens very small bottom spacing looks wrong,
-                // therefore we adjust depending on the tile margin
+                // on mobile screens very small bottom spacing looks "wrong",
+                // therefore we adjust if the tile margin is smaller then 10
                 @include media-breakpoint-down(md) {
-                    --#{$prefix}gutter-y: var(--#{$prefix}spacer);
+                    --#{$prefix}gutter-x: calc(0.5 * var(--#{$prefix}element-margin));
+                    --#{$prefix}gutter-y: calc(0.5 * var(--#{$prefix}element-margin));
                 }
             }
 
@@ -97,39 +92,6 @@
             > .tile-col {
                 margin-bottom: 0;
             }
-        }
-
-        &.row-tile {
-            margin-left: -#{$space}px;
-            margin-right: -#{$space}px;
-            padding-bottom: #{$grid-gutter-width - (2px * $space)};
-
-            .tile-col {
-                padding-left: #{$space}px;
-                padding-right: #{$space}px;
-
-                // tile bottom spacing:
-                @if ($space > 10) {
-                    // bottom spacing of 20 or more is ok on small screens
-                    margin-bottom: #{2 * $space}px;
-                } @else if ($space > 0) {
-                    // on mobile devices very small bottom spacing looks wrong,
-                    // therefore we adjust depending on the configured tile margin
-                    margin-bottom: var(--#{$prefix}spacer);
-                    @include media-breakpoint-up(md) {
-                        margin-bottom: #{2 * $space}px;
-                    }
-                } @else {
-                    // if 0 is set no bottom spacing is usually expected even on small screens
-                    margin-bottom: 0;
-                }
-            }
-        }
-
-        &.row-tile > .container-box {
-            // fix margins and size for container boxes in tile rows
-            margin-left: #{$space}px;
-            margin-right: #{$space}px;
         }
     }
 }

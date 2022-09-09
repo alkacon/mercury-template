@@ -90,14 +90,14 @@ $slider-opacity-active: 1 !default;
             }
             strong {
                 background-color: rgb(var(--#{$prefix}slider-caption-top), $slider-background-opacity);
-                padding-top: var(--#{$prefix}spacer-sm);
-                padding-bottom: var(--#{$prefix}spacer-sm);
+                padding-top: var(--#{$prefix}default-margin-verysmall);
+                padding-bottom: var(--#{$prefix}default-margin-verysmall);
             }
             small {
                 background-color: rgb(var(--#{$prefix}slider-caption-sub), $slider-background-opacity);
                 padding-top: 2px;
                 padding-bottom: 2px;
-                margin-top: var(--#{$prefix}spacer-sm);
+                margin-top: var(--#{$prefix}default-margin-verysmall);
                 &:nth-of-type(2) {
                     margin-top: 0;
                 }
@@ -134,17 +134,17 @@ $slider-opacity-active: 1 !default;
         .caption {
             padding: $slider-caption-padding;
             position: absolute;
-            max-width: calc(100% - (2 * var(--#{$prefix}spacer-xl)));
+            max-width: calc(100% - (2 * var(--#{$prefix}default-margin)));
             background-color: rgb(var(--#{$prefix}slider-bg), $slider-background-opacity);
             border-radius: var(--#{$prefix}slider-caption-border-radius);
             overflow: hidden;
             z-index: $overflow-z-index;
 
             &.bottom {
-                bottom: var(--#{$prefix}spacer-xl);
+                bottom: var(--#{$prefix}default-margin);
             }
             &.top {
-                top: var(--#{$prefix}spacer-xl);
+                top: var(--#{$prefix}default-margin);
             }
             &.middle {
                 top: 50%;
@@ -152,10 +152,10 @@ $slider-opacity-active: 1 !default;
             }
 
             &.left {
-                left: var(--#{$prefix}spacer-xl);
+                left: var(--#{$prefix}default-margin);
             }
             &.right {
-                right: var(--#{$prefix}spacer-xl);
+                right: var(--#{$prefix}default-margin);
                 text-align: right;
             }
             &.center {
@@ -179,7 +179,7 @@ $slider-opacity-active: 1 !default;
             small {
                 display: block;
                 margin: 0;
-                padding: 0 var(--#{$prefix}spacer);
+                padding: 0 var(--#{$prefix}default-margin-small);
                 color: var(--#{$prefix}slider-fg);
                 text-shadow: $slider-text-shadow;
                 font-family: var(--#{$prefix}font-family-headings);
@@ -194,7 +194,7 @@ $slider-opacity-active: 1 !default;
             }
 
             strong + .subcaption small:first-of-type {
-                margin-top: var(--#{$prefix}spacer-sm);
+                margin-top: var(--#{$prefix}default-margin-verysmall);
             }
 
             small {
@@ -291,7 +291,7 @@ $slider-opacity-active: 1 !default;
                         strong {
                             display: block;
                             width: 100%;
-                            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+                            padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
                             background-color: rgb(var(--#{$prefix}slider-caption-top));
                         }
                         strong, small {
@@ -336,7 +336,7 @@ $slider-opacity-active: 1 !default;
                 }
                 .subcaption {
                     display: block;
-                    padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+                    padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
                 }
             }
         }
@@ -358,13 +358,13 @@ $slider-opacity-active: 1 !default;
             margin-right: 0;
         }
         .mw-sm .slide-wrapper {
-            margin-right: var(--#{$prefix}spacer);
+            margin-right: var(--#{$prefix}default-margin-small);
         }
         .mw-md .slide-wrapper {
-            margin-right: var(--#{$prefix}spacer-xl);
+            margin-right: var(--#{$prefix}default-margin);
         }
         .mw-lg .slide-wrapper {
-            margin-right: calc(2 * var(--#{$prefix}spacer-xl));
+            margin-right: calc(2 * var(--#{$prefix}default-margin));
         }
         .slide-wrapper {
             flex: 0 0 100%;

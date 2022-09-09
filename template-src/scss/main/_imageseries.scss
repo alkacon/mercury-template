@@ -118,8 +118,8 @@ html.noscript .type-imageseries .series {
     .caption-wrapper {
         text-align: center;
         border-radius: var(--#{$prefix}border-radius);
-        max-width: calc(100% - (2 * var(--#{$prefix}spacer)));
-        padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+        max-width: calc(100% - (2 * var(--#{$prefix}default-margin-small)));
+        padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
         background-color: rgba(0, 0, 0, 0.5);
     }
 

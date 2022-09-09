@@ -30,7 +30,7 @@
         max-height: 100vh;
 
         > div:not(:last-of-type) {
-            margin-bottom: var(--#{$prefix}margin);
+            margin-bottom: var(--#{$prefix}default-margin-small);
         }
     }
 
@@ -85,7 +85,7 @@
             flex-grow: 1;
 
             label {
-                margin-right: var(--#{$prefix}spacer-xl);
+                margin-right: var(--#{$prefix}default-margin);
                 margin-bottom: 0;
                 padding-left: 30px;
                 cursor: pointer;
@@ -145,7 +145,7 @@
             }
 
             &:last-of-type {
-                margin-left: var(--#{$prefix}spacer-xl);
+                margin-left: var(--#{$prefix}default-margin);
             }
         }
 
@@ -197,7 +197,7 @@
             display: inline;
             margin: 0;
             + li {
-                margin-left: var(--#{$prefix}spacer-xl);
+                margin-left: var(--#{$prefix}default-margin);
             }
         }
         a {
@@ -225,7 +225,7 @@
 
             .options {
                 flex-grow: initial;
-                margin-bottom: var(--#{$prefix}spacer);
+                margin-bottom: var(--#{$prefix}default-margin-small);
             }
         }
 
@@ -283,7 +283,7 @@
         }
 
         .links {
-            margin-bottom: var(--#{$prefix}spacer);
+            margin-bottom: var(--#{$prefix}default-margin-small);
         }
     }
 
@@ -294,13 +294,13 @@
                 display: flex;
                 flex-direction: column;
                 label + label {
-                    margin-top: var(--#{$prefix}spacer);
+                    margin-top: var(--#{$prefix}default-margin-small);
                 }
             }
         }
 
         .message {
-            margin-bottom: var(--#{$prefix}margin-sm) !important;
+            margin-bottom: var(--#{$prefix}default-margin-verysmall) !important;
         }
 
         .buttons {
@@ -359,7 +359,7 @@
     display: flex;
 
     + .pp-toggle {
-        margin-top: var(--#{$prefix}spacer-xl);
+        margin-top: var(--#{$prefix}default-margin);
     }
 
     .toggle-label {
@@ -384,7 +384,7 @@
         align-items: center;
         font-size: 18px;
         line-height: 1;
-        margin-left: var(--#{$prefix}spacer-xl);
+        margin-left: var(--#{$prefix}default-margin);
     }
 
     .toggle-box {
@@ -477,7 +477,7 @@
 
         .toggle-text {
             margin-left: 0;
-            margin-bottom: var(--#{$prefix}margin);
+            margin-bottom: var(--#{$prefix}default-margin-small);
         }
 
         .toggle-label {
@@ -487,12 +487,12 @@
 }
 
 .pp-element {
-    margin-top: var(--#{$prefix}margin-xl);
+    margin-top: var(--#{$prefix}default-margin);
 }
 
 #pp-matomo-jst {
     > div + div {
-        margin-top: var(--#{$prefix}margin);
+        margin-top: var(--#{$prefix}default-margin-small);
     }
     .jst-msg {
         > * {
@@ -506,7 +506,7 @@
         label.checkbox {
             display: flex;
             align-items: center;
-            gap: var(--#{$prefix}spacer);
+            gap: var(--#{$prefix}default-margin-small);
             font-weight: $font-weight-bold;
             margin-bottom: 0;
             cursor: pointer;
@@ -605,7 +605,7 @@ html.keyboard-nav {
     .cookie-header,
     .cookie-message,
     .cookie-switch {
-        margin-bottom: var(--#{$prefix}margin);
+        margin-bottom: var(--#{$prefix}default-margin-small);
     }
 
     .cookie-footer {
@@ -660,7 +660,7 @@ html.keyboard-nav {
             border-top: none;
 
             .btn + .btn {
-                margin-left: var(--#{$prefix}spacer-xl);
+                margin-left: var(--#{$prefix}default-margin);
             }
         }
     }

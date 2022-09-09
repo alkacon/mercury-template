@@ -6,6 +6,7 @@
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
@@ -28,10 +29,18 @@
     <c:set var="title"      value="${value.Title}" />
     <c:set var="preface"    value="${value.Preface}" />
 
+    <c:if test="${cms.isEditMode}">
+        <fmt:setLocale value="${cms.locale}" />
+        <cms:bundle basename="alkacon.mercury.template.messages">
+            <c:set var="badge"><wbr><span class="list-badge oct-meta-info" title="<fmt:message key="type.m-decoy.name" />"><span class="fa fa-external-link-square"></span></span></c:set>
+        </cms:bundle>
+    </c:if>
+
     <mercury:teaser-piece
         cssWrapper="type-decoy${setCssWrapper}${setEffect}${invalidDecoy ? ' disabled' : ''}"
         intro="${setShowIntro ? intro : null}"
         headline="${title}"
+        headlineSuffix="${badge}"
         preface="${preface}"
         date="${value.Date.toInstanceDate}"
         paraText="${value.Text}"

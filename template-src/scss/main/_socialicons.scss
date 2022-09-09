@@ -98,7 +98,7 @@
     .share_text {
         display: none;
         text-align: left;
-        padding-right: var(--#{$prefix}spacer);
+        padding-right: var(--#{$prefix}default-margin-small);
         font-size: var(--#{$prefix}body-font-size);
         font-family: var(--#{$prefix}btn-font-family);
         font-weight: $btn-font-weight;

@@ -181,7 +181,7 @@ table.submissions {
     }
 
     td {
-        padding-bottom: var(--#{$prefix}spacer-sm);
+        padding-bottom: var(--#{$prefix}default-margin-verysmall);
         vertical-align: top;
     }
 }
@@ -230,7 +230,7 @@ table.submissions {
 
 .accordion .book-info {
     .oct-meta-info {
-        margin-right: var(--#{$prefix}spacer-sm);
+        margin-right: var(--#{$prefix}default-margin-small);
 
         &:last-of-type {
             margin-right: 0;

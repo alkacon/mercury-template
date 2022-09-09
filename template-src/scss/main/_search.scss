@@ -32,7 +32,7 @@
     }
 
     .show-more {
-        margin-top: var(--#{$prefix}margin);
+        margin-top: var(--#{$prefix}default-margin-small);
     }
 
     .search-results-header {
@@ -67,10 +67,10 @@
     }
 
     .search-result-heading {
-        margin-bottom: var(--#{$prefix}margin-sm);
+        margin-bottom: var(--#{$prefix}default-margin-verysmall);
 
         .result-title {
-            margin-right: var(--#{$prefix}spacer);
+            margin-right: var(--#{$prefix}default-margin-small);
             vertical-align: middle;
         }
 
@@ -79,8 +79,8 @@
         }
 
         + .search-result-date {
-            margin-top: calc(-1 * var(--#{$prefix}margin-sm));
-            margin-bottom: var(--#{$prefix}margin-sm);
+            margin-top: calc(-1 * var(--#{$prefix}default-margin-verysmall));
+            margin-bottom: var(--#{$prefix}default-margin-verysmall);
             color: $search-datelastmod-color;
         }
     }

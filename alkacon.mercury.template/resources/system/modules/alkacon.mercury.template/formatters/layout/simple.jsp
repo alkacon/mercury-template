@@ -237,6 +237,57 @@
             </c:when>
             <c:when test="${useTile}">
                 <%-- Generate tile row --%>
+                <c:choose>
+                    <c:when test="${true}"><%-- Disable the choices below - these are experimental --%></c:when>
+                    <c:when test="${tileCss eq 'tile-col col-6 col-md-4 col-lg-3 col-xl-2'}">
+                        <c:set var="tileMargin" value="row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-6 col-md-4 col-xl-2'}">
+                        <c:set var="tileMargin" value="row-cols-2 row-cols-md-3 row-cols-xl-6 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-6 col-lg-3'}">
+                        <c:set var="tileMargin" value="row-cols-2 row-cols-lg-4 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-6'}">
+                        <c:set var="tileMargin" value="row-cols-2 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-md-6 col-lg-3'}">
+                        <c:set var="tileMargin" value="row-cols-1 row-cols-md-2 row-cols-lg-4 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-md-6 col-lg-4 col-xl-3'}">
+                        <c:set var="tileMargin" value="row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-md-6 col-xl-3'}">
+                        <c:set var="tileMargin" value="row-cols-1 row-cols-md-2 row-cols-xl-4 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-md-6 col-xl-4'}">
+                        <c:set var="tileMargin" value="row-cols-1 row-cols-md-2 row-cols-xl-3 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-lg-4'}">
+                        <c:set var="tileMargin" value="row-cols-1 row-cols-lg-3 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-md-6'}">
+                        <c:set var="tileMargin" value="row-cols-1 row-cols-md-2 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-lg-6'}">
+                        <c:set var="tileMargin" value="row-cols-1 row-cols-lg-2 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                    <c:when test="${tileCss eq 'tile-col col-12'}">
+                        <c:set var="tileMargin" value="row-cols-1 ${tileMargin}" />
+                        <c:set var="tileCss"    value="tile-col col" />
+                    </c:when>
+                </c:choose>
                 <c:set target="${valueMap}" property="Type"     value="tile"/>
                 <c:set target="${valueMap}" property="Css"      value="${'row '}${tileMargin}${cssWrapper}" />
                 <c:set target="${params}"   property="tilegrid" value="${tileCss}" />

@@ -173,14 +173,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            padding: var(--#{$prefix}box-padding-sm);
+            padding: calc(0.5 * var(--#{$prefix}box-padding));
             z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
 
             .text-heading {
                 @include use-hyphens-headings(true);
                 border-radius: var(--#{$prefix}image-border-radius);
                 background-color: rgba(var(--#{$prefix}highlight-color-rgb), .75);
-                padding: var(--#{$prefix}box-padding-sm);
+                padding: calc(0.5 * var(--#{$prefix}box-padding));
                 margin-bottom: 0;
             }
         }

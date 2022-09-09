@@ -196,9 +196,8 @@ $default-margin:                    2.0rem !default;
 $default-margin-small:              round($default-margin * 50) * 0.01 !default;   // 1.0 rem
 $default-margin-verysmall:          round($default-margin * 25) * 0.01 !default;   // 0.5 rem
 
-$spacer:                            $default-margin-small !default; // spacing mostly used for decorative purposes
+$element-margin:                    $default-margin !default;
 $paragraph-margin-bottom:           $default-margin-small !default; // margin used at the end of paragraphs
-$text-flow-margin:                  $paragraph-margin-bottom !default; // margin to separate text, can be top or bottom
 $headings-margin-bottom:            $paragraph-margin-bottom !default; // margin below <hx> elements
 $intro-headings-margin-bottom:      round($paragraph-margin-bottom * 25) * 0.01 !default; // margin below intro headings
 
@@ -231,9 +230,9 @@ $link-fg-hover-color:               get-text-color($link-hover-color) !default;
 
 $headings-color:                    $text-dark !default;
 $intro-headings-color:              $main-theme !default;
-$linked-headings-color:             inherit !default;
+$linked-headings-color:             unset !default;
 $linked-headings-hover-color:       conditional-value($linked-headings-color != $link-color, $linked-headings-color, $link-hover-color) !default;
-$linked-headings-decoration:        none !default;
+$linked-headings-decoration:        unset !default;
 $linked-headings-hover-decoration:  $linked-headings-decoration !default;
 
 $default-transition-time:           0.33s !default; // default timing for animation effects
@@ -530,12 +529,12 @@ $nav-toggle-size-with-border:       $nav-toggle-size + 2*$nav-toggle-border-widt
 
 // Breadcrumbs
 
-$nav-breadcrumb-space:              var(--#{$prefix}spacer-sm) !default; // spacing base between breadcrumbs
+$nav-breadcrumb-space:              var(--#{$prefix}default-margin-verysmall) !default; // spacing base between breadcrumbs
 $nav-breadcrumb-space-left:         calc(0.8 * #{$nav-breadcrumb-space}) !default; // spacing after breadcrumb before separator
 $nav-breadcrumb-space-right:        calc(1.5 * #{$nav-breadcrumb-space}) !default; // spacing after separator before breadcrumb
 $nav-breadcrumb-bg-color:           none !default; // background color for breadcrumbs
-$nav-breadcrumb-padding:            var(--#{$prefix}spacer-sm) 0 0 0 !default; // padding around breadcrumbs
-$nav-breadcrumb-colored-padding:    var(--#{$prefix}spacer) 0 !default; // padding if breadcrumbs background is colored
+$nav-breadcrumb-padding:            var(--#{$prefix}default-margin-verysmall) 0 0 0 !default; // padding around breadcrumbs
+$nav-breadcrumb-colored-padding:    var(--#{$prefix}default-margin-small) 0 !default; // padding if breadcrumbs background is colored
 $nav-breadcrumb-text-color:         get-text-color($nav-breadcrumb-bg-color, $nav-header-text) !default; // text color of breadcrumbs
 $nav-breadcrumb-text-hover-color:   get-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
 $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs
@@ -618,9 +617,10 @@ $teaser-info-color:                 var(--#{$prefix}body-color) !default; // col
 
 
 // Detail pages
-$detail-visual-spacer-x:            var(--#{$prefix}spacer) !default;
-$detail-visual-spacer-y:            var(--#{$prefix}spacer) !default;
+$detail-visual-spacer-x:            var(--#{$prefix}default-margin-small) !default;
+$detail-visual-spacer-y:            var(--#{$prefix}default-margin-small) !default;
 $detail-content-spacer-y:           var(--#{$prefix}element-margin) !default;
+
 
 // Event calendar sheet
 
@@ -631,8 +631,8 @@ $calendar-sheet-bar-height:         15px  !default;
 
 // Contacts
 
-$contact-spacer-x:                  calc(0.5 * var(--#{$prefix}spacer)) !default;
-$contact-spacer-y:                  calc(0.5 * var(--#{$prefix}spacer)) !default;
+$contact-spacer-x:                  calc(0.5 * var(--#{$prefix}default-margin-small)) !default;
+$contact-spacer-y:                  calc(0.5 * var(--#{$prefix}default-margin-small)) !default;
 
 
 // Tabs and accordions
@@ -645,8 +645,8 @@ $ac-text-transform:                 none !default;
 $ac-header-font-size:               $h3-font-size !default;
 $ac-header-font-size-md:            $h4-font-size !default;
 $ac-header-line-height:             1.2 !default;
-$ac-header-padding:                 var(--#{$prefix}spacer-sm) var(--#{$prefix}box-padding) !default; // horizontal padding should match horizontal $ac-body-padding
-$ac-body-padding:                   var(--#{$prefix}box-padding-sm) var(--#{$prefix}box-padding) !default;
+$ac-header-padding:                 var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small) !default; // horizontal padding should match horizontal $ac-body-padding
+$ac-body-padding:                   var(--#{$prefix}default-margin-small) !default;
 $ac-body-bg:                        transparent !default;
 $ac-toggle-arrows:                  true !default;
 $ac-panel-shadow:                   $panel-shadow !default;
@@ -654,7 +654,7 @@ $ac-border-radius:                  var(--#{$prefix}border-radius) !default;
 $ac-border-color:                   var(--#{$prefix}grey-light) !default;
 $ac-border:                         1px solid var(--#{$prefix}ac-border-color) !default;
 $ac-body-margin-top:                conditional-value($ac-border == none, 0, -1px) !default; // should match the border width from $ac-border
-$ac-margin-between:                 var(--#{$prefix}spacer-sm) !default;
+$ac-margin-between:                 var(--#{$prefix}default-margin-verysmall) !default;
 $ac-border-radius-expand-adjust:    (($ac-body-margin-top == 0) or ($ac-body-margin-top == -1px)) !default;
 
 
@@ -662,7 +662,7 @@ $ac-border-radius-expand-adjust:    (($ac-body-margin-top == 0) or ($ac-body-mar
 
 $slider-slide-border-radius:        var(--#{$prefix}border-radius) !default;
 $slider-caption-border-radius:      var(--#{$prefix}border-radius) !default;
-$slider-caption-padding:            var(--#{$prefix}spacer-sm) 0 !default;
+$slider-caption-padding:            var(--#{$prefix}default-margin-verysmall) 0 !default;
 $slider-text-shadow:                1px 1px 1px rgba(#333, .5) !default;
 $logo-slider-paddings:              (10) !default;
 $slider-background-opacity:         0.75 !default;
@@ -768,7 +768,8 @@ $form-input-background:             $body-bg !default;
 $form-captcha-background:           $white !default;
 $form-captcha-border:               1px dashed $grey-light !default;
 $form-input-border-radius:          $btn-border-radius !default;  // will inherit btn-border-radius css var if not different
-
+$form-field-spacer-y:               $default-margin;
+$form-field-spacer-x:               $default-margin * 1.5;
 
 // Search
 
@@ -782,8 +783,8 @@ $search-datelastmod-color:          $search-badge-color !default;
 
 $sitemap-font-size:                 var(--#{$prefix}body-font-size) !default;
 $sitemap-line-height:               1.3 !default;
-$sitemap-ver-padding:               var(--#{$prefix}spacer-sm) !default;
-$sitemap-hor-padding:               var(--#{$prefix}spacer) !default;
+$sitemap-ver-padding:               var(--#{$prefix}default-margin-verysmall) !default;
+$sitemap-hor-padding:               var(--#{$prefix}default-margin-small) !default;
 $sitemap-border-radius:             var(--#{$prefix}border-radius) !default;
 
 
@@ -815,7 +816,7 @@ $color-pbg-twitter:                 $color-twitter !default;
 $social-links-bg:                   var(--#{$prefix}grey) !default;
 $social-links-color:                var(--#{$prefix}body-color) !default;
 $social-links-size:                 20px !default;
-$social-links-margin:               var(--#{$prefix}spacer) !default;
+$social-links-margin:               var(--#{$prefix}default-margin-small) !default;
 $social-links-size-half:            $social-links-size * 0.5 !default;
 $social-links-box-height:           $social-links-size * 2 !default;
 $social-links-border-radius:        var(--#{$prefix}btn-border-radius) !default;
@@ -852,8 +853,8 @@ $tooltip-border-radius:             var(--#{$prefix}border-radius) !default;
 
 // Link sequence
 
-$ls-margin-list:                    calc(2.5 * var(--#{$prefix}spacer)) !default;
-$ls-margin-row:                     calc(2 * var(--#{$prefix}spacer)) !default;
+$ls-margin-list:                    calc(2.5 * var(--#{$prefix}default-margin-small)) !default;
+$ls-margin-row:                     calc(2 * var(--#{$prefix}default-margin-small)) !default;
 
 
 // Animations

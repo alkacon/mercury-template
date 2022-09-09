@@ -43,7 +43,7 @@
 // Tabs
 
 .tab-content {
-    padding: var(--#{$prefix}box-padding-sm) 0;
+    padding: var(--#{$prefix}default-margin-small) 0;
 
     > .tab-pane {
         display: none;
@@ -81,7 +81,7 @@
             margin: 0;
             width: 100%;
 
-            padding: var(--#{$prefix}spacer-sm) var(--#{$prefix}spacer);
+            padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
             border: var(--#{$prefix}ac-border);
 
             @include use-hyphens-headings;
@@ -113,8 +113,8 @@
         &:hover {
             > .tab-hash {
                 position: absolute;
-                right: calc(0.25 * var(--#{$prefix}spacer));
-                top: var(--#{$prefix}spacer-sm);
+                right: calc(0.25 * var(--#{$prefix}default-margin-small));
+                top: var(--#{$prefix}default-margin-verysmall);
                 display: block;
                 z-index: $overflow-z-index;
             }
@@ -233,8 +233,8 @@
 
     &:hover .acco-hash {
         position: absolute;
-        right: calc(4 * var(--#{$prefix}spacer));
-        top: var(--#{$prefix}spacer-sm);
+        right: calc(4 * var(--#{$prefix}default-margin-small));
+        top: var(--#{$prefix}default-margin-verysmall);
         display: block;
     }
 
@@ -258,7 +258,7 @@
 
         @include piece-bottom-margin;
         > .piece:last-of-type {
-            margin-bottom: var(--#{$prefix}spacer-sm);
+            margin-bottom: var(--#{$prefix}default-margin-verysmall);
         }
     }
 
@@ -269,7 +269,7 @@
 
     @if ($ac-toggle-arrows) {
         .acco-header > .acco-toggle {
-            padding-right: calc(3 * var(--#{$prefix}spacer));
+            padding-right: calc(3 * var(--#{$prefix}default-margin-small));
         }
 
         .acco-toggle {
@@ -284,8 +284,8 @@
                 font-style: normal;
                 line-height: inherit;
                 content: "\f078";
-                top: var(--#{$prefix}spacer-sm);
-                right: var(--#{$prefix}spacer);
+                top: var(--#{$prefix}default-margin-verysmall);
+                right: var(--#{$prefix}default-margin-small);
                 transform: rotate(-180deg) translate(0,0);
                 transition: transform .33s;
             }

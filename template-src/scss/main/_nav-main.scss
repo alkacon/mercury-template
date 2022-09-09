@@ -984,8 +984,8 @@
                 left: 0; // this will be modified by JS later
                 position: absolute;
                 margin: 0;
-                width: calc(#{container-useable-width(lg, true)} + (2 * var(--#{$prefix}spacer-xl)));
-                padding: var(--#{$prefix}spacer-xl) var(--#{$prefix}spacer-xl) 0 var(--#{$prefix}spacer-xl);
+                width: calc(#{container-useable-width(lg, true)} + (2 * var(--#{$prefix}default-margin)));
+                padding: var(--#{$prefix}default-margin) var(--#{$prefix}default-margin) 0 var(--#{$prefix}default-margin);
                 background-color: $nav-megamenu-bg;
             }
 
@@ -995,12 +995,12 @@
 
             @include media-breakpoint-up(xl) {
                 .nav-mega-menu {
-                    width: calc(#{container-useable-width(xl, true)} + 2 * var(--#{$prefix}spacer-xl));
+                    width: calc(#{container-useable-width(xl, true)} + 2 * var(--#{$prefix}default-margin));
                 }
             }
             @include media-breakpoint-up(xxl) {
                 .nav-mega-menu {
-                    width: calc(#{container-useable-width(xxl, true)} + 2 * var(--#{$prefix}spacer-xl));
+                    width: calc(#{container-useable-width(xxl, true)} + 2 * var(--#{$prefix}default-margin));
                 }
             }
         }
@@ -1036,8 +1036,8 @@
 
 #mega-menu-editor {
     background: $grey;
-    padding-top: var(--#{$prefix}spacer-xl);
-    padding-bottom: var(--#{$prefix}spacer-xl);
+    padding-top: var(--#{$prefix}default-margin);
+    padding-bottom: var(--#{$prefix}default-margin);
     height: calc(100vh - #{$opencms-toolbar-height});
 
     > .container {
@@ -1060,7 +1060,7 @@
         display: block;
         overflow: visible;
         position: static;
-        margin-left: calc(#{$grid-gutter-width-half} - var(--#{$prefix}spacer-xl));
+        margin-left: calc(#{$grid-gutter-width-half} - var(--#{$prefix}default-margin));
         animation-name: none;
     }
 }

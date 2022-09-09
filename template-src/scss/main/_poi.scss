@@ -23,7 +23,7 @@
 
     .accessible {
         line-height: 1;
-        margin-bottom: var(--#{$prefix}margin);
+        margin-bottom: var(--#{$prefix}default-margin-small);
         hyphens: initial;
     }
 

@@ -23,7 +23,7 @@
 
 <div class="square-col ${cms.element.settings.cssWrapper}">
 <div class="content ${cms.element.settings.cssWrapperInner}" ${imageBg}>
-<div class="table">
+<div class="table-square">
 <div class="table-cell">
 
     <c:if test="${value.Title.isSet}">

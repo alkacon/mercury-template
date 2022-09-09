@@ -95,12 +95,12 @@
     .intro-headline {
         @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
         line-height: $teaser-title-height;
-        margin-bottom: var(--#{$prefix}margin);
+        margin-bottom: var(--#{$prefix}default-margin-small);
     }
 
     .teaser-btn {
           &:not(:last-child) {
-            margin-right: var(--#{$prefix}margin);
+            margin-right: var(--#{$prefix}default-margin-small);
         }
         @if ($teaser-btn-def-padding != $btn-def-padding) {
             padding: $teaser-btn-def-padding;
@@ -111,7 +111,7 @@
         line-height: 1.2;
         font-size: 80%;
         color: $teaser-info-color;
-        margin-bottom: var(--#{$prefix}margin-sm);
+        margin-bottom: var(--#{$prefix}default-margin-verysmall);
     }
 
     .heading {
@@ -184,7 +184,7 @@
             margin-bottom: $list-teaser-margin-compact;
 
             .intro-headline {
-                margin-bottom: var(--#{$prefix}margin-sm);
+                margin-bottom: var(--#{$prefix}default-margin-verysmall);
                 font-size: inherit; // this way the heading will have the same size as the text
             }
 
@@ -333,11 +333,11 @@
 // Download lists
 
 @mixin dl-btn {
-    margin-top: var(--#{$prefix}margin-sm);
+    margin-top: var(--#{$prefix}default-margin-verysmall);
     min-width: 200px;
 
     .fa {
-        padding-right: var(--#{$prefix}spacer);
+        padding-right: var(--#{$prefix}default-margin-small);
     }
 }
 
@@ -380,15 +380,15 @@
     .dl-cat {
         .dl-cat-label {
             @include list-category-label(false, false);
-            margin-right: var(--#{$prefix}spacer);
+            margin-right: var(--#{$prefix}default-margin-small);
         }
     }
 
     &.dl-list-elaborate {
 
         li.list-entry {
-            padding-top: var(--#{$prefix}margin);
-            padding-bottom: var(--#{$prefix}margin);
+            padding-top: var(--#{$prefix}default-margin-small);
+            padding-bottom: var(--#{$prefix}default-margin-small);
             border-bottom: 1px solid $highlight-color;
 
             &:last-child {
@@ -405,13 +405,13 @@
         .dl-content {
             .dl-title {
                 margin-top: 0;
-                margin-bottom: var(--#{$prefix}margin-sm);
+                margin-bottom: var(--#{$prefix}default-margin-verysmall);
             }
             .dl-file {
-                margin-bottom: var(--#{$prefix}margin-sm);
+                margin-bottom: var(--#{$prefix}default-margin-verysmall);
             }
             .dl-desc {
-                margin-bottom: var(--#{$prefix}margin-sm);
+                margin-bottom: var(--#{$prefix}default-margin-verysmall);
             }
             .dl-btn {
                 @include dl-btn;
@@ -432,7 +432,7 @@
                     float: left;
                 }
                 > .dl-cat {
-                    padding-left: var(--#{$prefix}spacer-xl);
+                    padding-left: var(--#{$prefix}default-margin);
                     float: right;
                 }
             }
@@ -442,7 +442,7 @@
                 text-align: center;
                 .fa {
                     font-size: 4.0rem;
-                    margin-bottom: var(--#{$prefix}spacer-sm);
+                    margin-bottom: var(--#{$prefix}default-margin-verysmall);
                 }
                 .dl-info-text {
                     display: none;
@@ -453,7 +453,7 @@
         @include media-breakpoint-down(md) {
             .dl-info {
                 text-align: left;
-                margin-top: var(--#{$prefix}spacer-sm);
+                margin-top: var(--#{$prefix}default-margin-verysmall);
 
                 .btn-info {
                     @include button-base;
@@ -462,14 +462,14 @@
                     min-width: 50%;
                 }
                 .fa {
-                    min-width: calc(4 * var(--#{$prefix}spacer));
+                    min-width: calc(4 * var(--#{$prefix}default-margin-small));
                 }
             }
             .dl-content .dl-btn {
                 min-width: 50%;
                 text-align: left;
                 .fa {
-                    min-width: calc(4 * var(--#{$prefix}spacer));
+                    min-width: calc(4 * var(--#{$prefix}default-margin-small));
                 }
             }
             .dl-stats {
@@ -482,7 +482,7 @@
 
         .list-entries {
             border-bottom: 1px solid var(--#{$prefix}highlight-color);
-            margin-bottom: var(--#{$prefix}margin);
+            margin-bottom: var(--#{$prefix}default-margin-small);
         }
 
         li:nth-child(odd) .dl-link {
@@ -490,8 +490,8 @@
         }
 
         .dl-link {
-            padding-top: var(--#{$prefix}margin);
-            padding-bottom: var(--#{$prefix}margin);
+            padding-top: var(--#{$prefix}default-margin-small);
+            padding-bottom: var(--#{$prefix}default-margin-small);
         }
         a.dl-link:hover {
             .dl-title {
@@ -515,10 +515,10 @@
             }
         }
         .dl-type {
-            padding: 0 var(--#{$prefix}spacer);
+            padding: 0 var(--#{$prefix}default-margin-small);
         }
         .dl-dl {
-            padding-right: var(--#{$prefix}spacer);
+            padding-right: var(--#{$prefix}default-margin-small);
         }
         .dl-content {
             flex-grow: 10;
@@ -636,14 +636,14 @@
                 // assume on small screens side columns are full width
                 // on large screens button in side columns must be smaller to fit into column
                 &.previous {
-                    margin-right: var(--#{$prefix}spacer-sm);
+                    margin-right: var(--#{$prefix}default-margin-verysmall);
                 }
                 &.next {
-                    margin-left: var(--#{$prefix}spacer-sm);
+                    margin-left: var(--#{$prefix}default-margin-verysmall);
                 }
                 &.first {
                     &.gap::after {
-                        margin: 0 var(--#{$prefix}spacer-sm);
+                        margin: 0 var(--#{$prefix}default-margin-verysmall);
                     }
                 }
 
@@ -714,7 +714,7 @@
 
     button {
         padding-left: $nav-side-left-padding-step;
-        padding-right: var(--#{$prefix}spacer-xl);
+        padding-right: var(--#{$prefix}default-margin);
     }
 
     .filterbox {
@@ -902,7 +902,7 @@
 
                 li {
                     display: inline-block;
-                    padding: var(--#{$prefix}margin) 0;
+                    padding: var(--#{$prefix}default-margin-small) 0;
                     width: 16.666666%;
                     font-size: 1.2rem;
                     text-align: center;
@@ -1008,7 +1008,7 @@
         }
 
         > li > a {
-            padding: var(--#{$prefix}margin-sm) var(--#{$prefix}spacer-xl);
+            padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin);
             color: $text-dark;
             text-decoration: none;
             clear: both;
@@ -1031,14 +1031,14 @@
         }
 
         .divider {
-            margin: var(--#{$prefix}margin-sm) 0;
+            margin: var(--#{$prefix}default-margin-verysmall) 0;
         }
     }
 
     .list-option {
         position: relative;
         margin-bottom: var(--#{$prefix}element-margin);
-        margin-left: var(--#{$prefix}spacer);
+        margin-left: var(--#{$prefix}default-margin-small);
 
         &.btn.placeholder {
             // make button already occupy space without displaying anything
@@ -1051,7 +1051,7 @@
         }
 
         span {
-            margin-right: var(--#{$prefix}spacer-sm);
+            margin-right: var(--#{$prefix}default-margin-verysmall);
         }
     }
 

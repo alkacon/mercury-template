@@ -22,11 +22,11 @@
 .type-map {
 
     .mapbuttons {
-        margin-top: var(--#{$prefix}spacers);
+        margin-top: var(--#{$prefix}default-margin-smalls);
 
         .btn {
-            margin-top: var(--#{$prefix}spacer-sm);
-            margin-right: var(--#{$prefix}spacer-sm);
+            margin-top: var(--#{$prefix}default-margin-verysmall);
+            margin-right: var(--#{$prefix}default-margin-verysmall);
         }
     }
 
@@ -77,7 +77,7 @@
             font-family: var(--#{$prefix}font-family-headings);
             font-size: $map-header-size;
             font-weight: $map-header-weight;
-            margin-bottom: var(--#{$prefix}margin-sm);
+            margin-bottom: var(--#{$prefix}default-margin-verysmall);
         }
 
         .marktxt {

@@ -98,16 +98,16 @@
         }
 
         &.previous {
-            margin-right: var(--#{$prefix}spacer);
+            margin-right: var(--#{$prefix}default-margin-small);
         }
         &.next {
-            margin-left: var(--#{$prefix}spacer);
+            margin-left: var(--#{$prefix}default-margin-small);
         }
         &.first {
             &.gap::after {
                 content: "...";
                 display: inline-block;
-                margin: 0 var(--#{$prefix}spacer);
+                margin: 0 var(--#{$prefix}default-margin-small);
             }
         }
     }

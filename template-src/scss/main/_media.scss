@@ -396,7 +396,7 @@
     .oa-notice {
         color: #fff;
         text-shadow: $media-preview-text-shadow;
-        padding: 0 var(--#{$prefix}spacer-xl);
+        padding: 0 var(--#{$prefix}default-margin);
         margin: 0;
         z-index: #{$overflow-z-index + 2};
     }
@@ -443,17 +443,17 @@
         .oa-heading,
         .oa-notice {
             position: relative;
-            padding-top: var(--#{$prefix}margin);
-            padding-bottom: var(--#{$prefix}margin);
+            padding-top: var(--#{$prefix}default-margin-small);
+            padding-bottom: var(--#{$prefix}default-margin-small);
         }
         .centered {
-            top: var(--#{$prefix}margin);
+            top: var(--#{$prefix}default-margin-small);
             left: auto;
             transform: none;
         }
         .oa-icon {
             text-align: right;
-            padding-right: var(--#{$prefix}spacer-xl);
+            padding-right: var(--#{$prefix}default-margin);
         }
         &.has-icon {
             .oa-heading {
@@ -472,10 +472,10 @@
             position: absolute;
         }
         .oa-heading {
-            top: var(--#{$prefix}margin-xl);
+            top: var(--#{$prefix}default-margin);
         }
         .oa-notice {
-            bottom: var(--#{$prefix}margin);
+            bottom: var(--#{$prefix}default-margin-small);
         }
     }
 

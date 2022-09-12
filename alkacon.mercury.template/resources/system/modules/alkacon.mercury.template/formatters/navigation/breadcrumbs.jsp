@@ -83,7 +83,7 @@
                                     <cms:jsonobject>
                                         <cms:jsonvalue key="@type" value="ListItem" />
                                         <cms:jsonvalue key="position" value="${currNavPos}" />
-                                        <cms:jsonvalue key="name" value="${navText}" />
+                                        <cms:jsonvalue key="name" value="${empty navText ? navElem.title : navText}" />
                                         <cms:jsonvalue key="item" value="${cms.site.url}${navLink}" />
                                     </cms:jsonobject>
 

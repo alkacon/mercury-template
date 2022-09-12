@@ -81,7 +81,7 @@
 
     <%-- Hero slider (default) --%>
         <c:set var="isHeroSlider" value="${true}" />
-        <c:set var="marginClass" value="${' tr-'.concat(transition)}" />
+        <c:set var="marginClass" value="${marginClass}${' tr-'.concat(transition)}" />
         <c:if test="${transition eq 'direct'}">
             <c:set var="transitionSpeed" value="${100}" />
         </c:if>

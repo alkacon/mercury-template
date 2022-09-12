@@ -19,31 +19,100 @@
  * Source file: _tab.scss
  */
 
+%acco-header {
+    position: relative;
+
+    > .hash-link {
+        display: none;
+    }
+
+    &:hover {
+        > .hash-link {
+            font-size: var(--#{$prefix}body-font-size);
+            font-weight: var(--#{$prefix}body-font-weight);
+            line-height: var(--#{$prefix}body-line-height);
+
+            position: absolute;
+            right: calc(0.5 * var(--#{$prefix}at-spacing-x));
+            top: var(--#{$prefix}at-spacing-y);
+            display: block;
+            z-index: $overflow-z-index;
+        }
+    }
+}
+
+%acco-toggle {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    margin: 0;
+    padding: var(--#{$prefix}at-spacing-y) var(--#{$prefix}at-spacing-x);
+
+    font-family: $at-header-font-family;
+    font-weight: $at-header-font-weight;
+    font-size: $at-header-font-size;
+    line-height: $at-header-line-height;
+
+    text-transform: $at-text-transform;
+    text-decoration: none;
+    text-align: inherit;
+    @include use-hyphens-headings;
+
+    border: var(--#{$prefix}at-border);
+    border-radius: var(--#{$prefix}at-border-radius);
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    z-index: $overflow-z-index;
+
+    color: var(--#{$prefix}at-header);
+    background-color: var(--#{$prefix}at-header-bg);
+}
+
+%acco-toggle-active {
+    color: var(--#{$prefix}at-header-active);
+    background-color: var(--#{$prefix}at-header-active-bg);
+    border-color: var(--#{$prefix}at-header-active-bg);
+}
+
+%acco-toggle-hover {
+    color: var(--#{$prefix}at-header-hover);
+    background-color: var(--#{$prefix}at-header-hover-bg);
+    border-color: var(--#{$prefix}at-header-hover-bg);
+    text-decoration: none;
+}
+
+
 .variant-tabs,
 .accordion {
-    --#{$prefix}ac-header: var(--#{$prefix}highlight-fg-color);
-    --#{$prefix}ac-header-bg: var(--#{$prefix}highlight-color);
-    --#{$prefix}ac-header-active: var(--#{$prefix}main-theme-fg);
-    --#{$prefix}ac-header-active-bg: var(--#{$prefix}main-theme);
-    --#{$prefix}ac-header-hover: var(--#{$prefix}main-theme-hover-fg);
-    --#{$prefix}ac-header-hover-bg: var(--#{$prefix}main-theme-hover);
-    --#{$prefix}ac-header-padding: #{$ac-header-padding};
+    --#{$prefix}at-header: var(--#{$prefix}highlight-fg-color);
+    --#{$prefix}at-header-bg: var(--#{$prefix}highlight-color);
+    --#{$prefix}at-header-active: var(--#{$prefix}main-theme-fg);
+    --#{$prefix}at-header-active-bg: var(--#{$prefix}main-theme);
+    --#{$prefix}at-header-hover: var(--#{$prefix}main-theme-hover-fg);
+    --#{$prefix}at-header-hover-bg: var(--#{$prefix}main-theme-hover);
 
-    --#{$prefix}ac-body-padding: #{$ac-body-padding};
-    --#{$prefix}ac-body-margin-top: #{$ac-body-margin-top};
-    --#{$prefix}ac-body-bg: #{$ac-body-bg};
+    --#{$prefix}at-spacing-x: #{$at-spacing-x};
+    --#{$prefix}at-spacing-y: #{$at-spacing-y};
+    --#{$prefix}at-content-padding-x: #{$at-content-padding-x};
+    --#{$prefix}at-content-padding-y: #{$at-content-padding-y};
+    --#{$prefix}at-margin-between: #{$at-margin-between};
 
-    --#{$prefix}ac-margin-bottom: #{$ac-margin-between};
+    --#{$prefix}at-border-radius: #{$at-border-radius};
+    --#{$prefix}at-border-color: #{$at-border-color};
+    --#{$prefix}at-border: #{$at-border};
 
-    --#{$prefix}ac-border-radius: #{$ac-border-radius};
-    --#{$prefix}ac-border-color: #{$ac-border-color};
-    --#{$prefix}ac-border: #{$ac-border};
+    --#{$prefix}tab-content-margin-top: #{$tab-content-margin-top};
+
+    --#{$prefix}acco-body-margin-top: #{$acco-body-margin-top};
+    --#{$prefix}acco-body-bg: #{$acco-body-bg};
 }
 
 // Tabs
 
 .tab-content {
-    padding: var(--#{$prefix}default-margin-small) 0;
+    margin-top: var(--#{$prefix}tab-content-margin-top);
 
     > .tab-pane {
         display: none;
@@ -65,58 +134,22 @@
     }
 
     > li {
-        margin-bottom: var(--#{$prefix}ac-margin-bottom);
-        position: relative;
+        @extend %acco-header;
+        margin-bottom: var(--#{$prefix}at-margin-between);
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
 
         > .tab-toggle {
-            font-size: $ac-header-font-size;
-            line-height: $ac-header-line-height;
-            text-transform: $ac-text-transform;
-            // note: for small screens, tabs are formatted like accordions, hence use these variables here
-            display: block;
-            position: relative;
-            text-align: inherit;
-            font-family: var(--#{$prefix}font-family-headings);
-            font-weight: var(--#{$prefix}font-weight-headings);
-            margin: 0;
-            width: 100%;
-
-            padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
-            border: var(--#{$prefix}ac-border);
-
-            @include use-hyphens-headings;
-            border-radius: var(--#{$prefix}ac-border-radius);
-            overflow: hidden;
-            z-index: $overflow-z-index;
-
-            color: var(--#{$prefix}ac-header);
-            background-color: var(--#{$prefix}ac-header-bg);
+            @extend %acco-toggle;
 
             &.active {
-                color: var(--#{$prefix}ac-header-active);
-                background-color: var(--#{$prefix}ac-header-active-bg);
-                border-color: var(--#{$prefix}ac-header-active-bg);
+                @extend %acco-toggle-active;
             }
 
             &:hover {
-                color: var(--#{$prefix}ac-header-hover);
-                background-color: var(--#{$prefix}ac-header-hover-bg);
-                border-color: var(--#{$prefix}ac-header-hover-bg);
-                text-decoration: none;
-            }
-        }
-
-        > .tab-hash {
-            display: none;
-        }
-
-        &:hover {
-            > .tab-hash {
-                position: absolute;
-                right: calc(0.25 * var(--#{$prefix}default-margin-small));
-                top: var(--#{$prefix}default-margin-verysmall);
-                display: block;
-                z-index: $overflow-z-index;
+                @extend %acco-toggle-hover;
             }
         }
     }
@@ -142,42 +175,19 @@
     }
 }
 
-@include media-breakpoint-up(lg) {
-
-    .tab-list {
-        border-bottom: solid 2px var(--#{$prefix}main-theme);
-
-        > li {
-            float: left;
-            margin-bottom: 0;
-
-            > .tab-toggle {
-                width: auto;
-                text-transform: $tab-text-transform;
-                font-size: $tab-header-font-size;
-                line-height: $tab-header-line-height;
-                color: var(--#{$prefix}body-color);
-                background-color: transparent;
-                border: none;
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-        }
-    }
-}
-
-
 // Accordion panels
 
 .accordion {
     position: relative;
     display: flex;
     flex-direction: column;
+
     min-width: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
-    margin-bottom: var(--#{$prefix}ac-margin-bottom);
-    box-shadow: $ac-panel-shadow;
+
+    box-shadow: $acco-panel-shadow;
+    margin-bottom: var(--#{$prefix}at-margin-between);
 
     &:last-of-type {
         margin-bottom: 0;
@@ -185,80 +195,76 @@
 
     .acco-header {
         margin: 0;
-        font-size: $ac-header-font-size;
-        @if ($ac-header-font-size-md != $ac-header-font-size) {
-            @include media-breakpoint-down(lg) {
-                font-size: $ac-header-font-size-md;
-            }
-        }
-        @include use-hyphens-headings;
-        line-height: $ac-header-line-height;
-        text-transform: $ac-text-transform;
+        @extend %acco-header;
 
-        > .acco-toggle {
-            text-overflow: ellipsis;
-            border: none;
-            width: 100%;
-            text-align: inherit;
-            display: block;
-            border: var(--#{$prefix}ac-border);
-            padding: var(--#{$prefix}ac-header-padding);
-            text-decoration: none;
-            border-radius: var(--#{$prefix}ac-border-radius);
-            overflow: hidden;
-            z-index: $overflow-z-index;
+        .acco-toggle {
 
-            color: var(--#{$prefix}ac-header);
-            background-color: var(--#{$prefix}ac-header-bg);
+            @extend %acco-toggle;
 
             &[aria-expanded="true"] {
-                color: var(--#{$prefix}ac-header-active);
-                background-color: var(--#{$prefix}ac-header-active-bg);
-                @if ($ac-border-radius-expand-adjust) {
+                @extend %acco-toggle-active;
+
+                @if ($acco-border-radius-expand-adjust) {
                     border-bottom-left-radius: 0;
                     border-bottom-right-radius: 0;
                 }
             }
 
             &:hover {
-                color: var(--#{$prefix}ac-header-hover);
-                background-color: var(--#{$prefix}ac-header-hover-bg);
+                @extend %acco-toggle-hover;
+            }
+        }
+
+        @if ($acco-toggle-arrows) {
+            &:hover > .hash-link {
+                right: calc(3rem + var(--#{$prefix}at-spacing-x));
+                // 3rem should be about the size of the toggle button
+            }
+
+            .acco-toggle {
+                padding-right: calc(3rem + var(--#{$prefix}at-spacing-x));
+
+                &::after {
+                    position: absolute;
+                    display: inline-block;
+                    content: "\f078";
+                    top: var(--#{$prefix}at-spacing-y);
+                    right: var(--#{$prefix}at-spacing-x);
+                    transform: rotate(-180deg) translate(0,0);
+                    transition: transform .33s;
+
+                    font-family: ForkAwesome;
+                    font-weight: normal;
+                    font-size: inherit; // inherit size / height so that the generated icon matches the header font size
+                    font-style: normal;
+                    line-height: inherit;
+                }
+                &.collapsed::after {
+                    transform: rotate(0) translate(0,0);
+                    transition: transform 0.33s;
+                }
             }
         }
     }
 
-    .acco-hash {
-        display: none;
-    }
-
-    &:hover .acco-hash {
-        position: absolute;
-        right: calc(4 * var(--#{$prefix}default-margin-small));
-        top: var(--#{$prefix}default-margin-verysmall);
-        display: block;
-    }
-
     .acco-body {
-        background-color: var(--#{$prefix}ac-body-bg);
-        border-top: var(--#{$prefix}ac-border);
-        padding: var(--#{$prefix}ac-body-padding);
-        border: var(--#{$prefix}ac-border);
-        margin-top: var(--#{$prefix}ac-body-margin-top);
-        border-radius: var(--#{$prefix}ac-border-radius);
+        border-top: var(--#{$prefix}at-border);
+        border: var(--#{$prefix}at-border);
+        border-radius: var(--#{$prefix}at-border-radius);
+
+        background-color: var(--#{$prefix}acco-body-bg);
+        margin-top: var(--#{$prefix}acco-body-margin-top);
+        padding: var(--#{$prefix}at-content-padding-y) var(--#{$prefix}at-content-padding-x);
+
         overflow: hidden;
         z-index: $overflow-z-index;
 
-        @if ($ac-border-radius-expand-adjust) {
+        @if ($acco-border-radius-expand-adjust) {
             &.collapsing,
             &.show {
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
             }
-        }
-
-        @include piece-bottom-margin;
-        > .piece:last-of-type {
-            margin-bottom: var(--#{$prefix}default-margin-verysmall);
         }
     }
 
@@ -266,32 +272,26 @@
         @extend .h3;
         margin-bottom: var(--#{$prefix}headings-margin-bottom);
     }
+}
 
-    @if ($ac-toggle-arrows) {
-        .acco-header > .acco-toggle {
-            padding-right: calc(3 * var(--#{$prefix}default-margin-small));
-        }
+@include media-breakpoint-up(lg) {
+   .tab-list {
+        border-bottom: solid 2px var(--#{$prefix}at-header-active-bg);
 
-        .acco-toggle {
-            position: relative;
+        > li {
+            float: left;
+            margin-bottom: 0;
 
-            &::after {
-                position: absolute;
-                display: inline-block;
-                font-family: ForkAwesome;
-                font-weight: normal;
-                font-size: inherit; // inherit size / height so that the generated icon matches the header font
-                font-style: normal;
-                line-height: inherit;
-                content: "\f078";
-                top: var(--#{$prefix}default-margin-verysmall);
-                right: var(--#{$prefix}default-margin-small);
-                transform: rotate(-180deg) translate(0,0);
-                transition: transform .33s;
-            }
-            &.collapsed::after {
-                transform: rotate(0) translate(0,0);
-                transition: transform 0.33s;
+            > .tab-toggle {
+                width: auto;
+
+                // not active tabs are colored like regular text
+                color: var(--#{$prefix}body-color);
+                background-color: transparent;
+
+                border: none;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
             }
         }
     }

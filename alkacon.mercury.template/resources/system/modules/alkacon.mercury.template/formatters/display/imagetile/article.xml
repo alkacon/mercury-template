@@ -47,13 +47,13 @@
       <IncludeName><![CDATA[firstSquare.square]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[listWrapper.imageTile]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showPreface.true]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[listWrapper.imageTile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.imageTile]]></IncludeName>

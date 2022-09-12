@@ -654,25 +654,31 @@ $contact-spacer-y:                  calc(0.5 * var(--#{$prefix}default-margin-sm
 
 // Tabs and accordions
 
-$tab-text-transform:                none !default;
-$tab-header-font-size:              $h4-font-size !default;
-$tab-header-line-height:            $h4-font-size * 1.2 !default;
+$at-spacing:                        $default-margin !default;
+$at-spacing-x:                      calc(0.5 * $at-spacing) !default;
+$at-spacing-y:                      calc(0.25 * $at-spacing) !default;
+$at-margin-between:                 $at-spacing-y !default;
+$at-content-padding-x:              $at-spacing-x !default;
+$at-content-padding-y:              $at-content-padding-x !default;
 
-$ac-text-transform:                 none !default;
-$ac-header-font-size:               $h3-font-size !default;
-$ac-header-font-size-md:            $h4-font-size !default;
-$ac-header-line-height:             1.2 !default;
-$ac-header-padding:                 var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small) !default; // horizontal padding should match horizontal $ac-body-padding
-$ac-body-padding:                   var(--#{$prefix}default-margin-small) !default;
-$ac-body-bg:                        transparent !default;
-$ac-toggle-arrows:                  true !default;
-$ac-panel-shadow:                   $panel-shadow !default;
-$ac-border-radius:                  var(--#{$prefix}border-radius) !default;
-$ac-border-color:                   var(--#{$prefix}grey-light) !default;
-$ac-border:                         1px solid var(--#{$prefix}ac-border-color) !default;
-$ac-body-margin-top:                conditional-value($ac-border == none, 0, -1px) !default; // should match the border width from $ac-border
-$ac-margin-between:                 var(--#{$prefix}default-margin-verysmall) !default;
-$ac-border-radius-expand-adjust:    (($ac-body-margin-top == 0) or ($ac-body-margin-top == -1px)) !default;
+$at-header-font-size:               $h4-font-size !default;
+$at-header-font-family:             var(--#{$prefix}font-family-headings) !default;
+$at-header-font-weight:             var(--#{$prefix}font-weight-headings) !default;
+
+$at-header-line-height:             1.2 !default;
+$at-text-transform:                 none !default;
+
+$at-border-radius:                  var(--#{$prefix}border-radius) !default;
+$at-border-color:                   var(--#{$prefix}grey-light) !default;
+$at-border:                         1px solid var(--#{$prefix}at-border-color) !default;
+
+$acco-body-bg:                      transparent !default;
+$acco-toggle-arrows:                true !default;
+$acco-panel-shadow:                 $panel-shadow !default;
+$acco-body-margin-top:              conditional-value($at-border == none, 0, -1px) !default; // should match the border width from $at-border
+$acco-border-radius-expand-adjust:  (($acco-body-margin-top == 0) or ($acco-body-margin-top == -1px)) !default;
+
+$tab-content-margin-top:            calc(0.5 * $at-spacing) !default;
 
 
 // Slider

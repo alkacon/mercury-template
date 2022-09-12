@@ -26,7 +26,7 @@ $ti-margin:     0 !default;
 $ti-cols:       ((8, 8), (6, 6), (4, 4), (3, 3), (2,2)) !default;
 
 $sq-margin:     0 !default;
-$sq-margins:    (2, 20) !default;
+$sq-margins:    (0, 1, 2, 5, 10, 15, 20) !default;
 $sq-padding:    20 !default;
 
 $square-spacing:                $default-margin !default;
@@ -72,16 +72,6 @@ $sq-heights-xl:    () !default;
         @return $sq-heights-lg;
     } @else {
         @return $sq-heights-xl;
-    }
-}
-
-@mixin fix-square-container($size) {
-    @each $m in $sq-margins  {
-        $sq-min: floor((container-useable-width($size) + 2*$m) * 0.25) * 4;
-        .square-m-#{$m}-parent .container {
-            width: $sq-min;
-            padding: 0;
-        }
     }
 }
 
@@ -222,7 +212,9 @@ $sq-heights-xl:    () !default;
     padding-bottom: var(--#{$prefix}element-margin);
 }
 
-.square-m-0 .square-col .content {
+.square-m-0 .square-col .content,
+.square-m-0 .square-col .content .image-src-box,
+.square-m-0 .square-col .content .image-src-box img {
     // if these is no border between the tiles, round corners are removed
     border-radius: 0;
 }

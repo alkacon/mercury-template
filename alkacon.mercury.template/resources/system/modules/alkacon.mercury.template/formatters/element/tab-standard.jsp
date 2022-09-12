@@ -62,6 +62,7 @@
                         <c:set var="ignore" value="${tabIds.add(tabId)}" />
                         <mercury:nl />
                         <li role="presentation"><%----%>
+
                             <button <%--
                             --%>id="b_${tabId}" <%--
                             --%>class="tab-toggle${status.first ? ' active' : ''}" <%--
@@ -72,13 +73,15 @@
                             --%>data-bs-toggle="tab"><%----%>
                                 <c:out value="${tabLabel}" />
                             </button><%----%>
+
                             <c:if test="${cms.isEditMode}">
-                                <a href="#${tabId}" class="tab-hash"><%----%>
+                                <a href="#${tabId}" class="hash-link"><%----%>
                                     <span class="badge oct-meta-info"><%----%>
                                         <span class="fa fa-hashtag"></span><%----%>
                                     </span><%----%>
                                 </a><%----%>
                             </c:if>
+
                         </li><%----%>
                     </c:forEach>
 

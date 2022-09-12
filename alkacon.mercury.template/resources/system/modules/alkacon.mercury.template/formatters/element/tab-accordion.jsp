@@ -64,6 +64,7 @@
             <mercury:nl />
             <article class="accordion ${cssWrapper}"><%----%>
                 ${'<h'}${itemHsize} class="acco-header pivot"${'>'}
+
                     <button class="acco-toggle ${open ? '':'collapsed'}" <%--
                     --%>data-bs-toggle="collapse" type="button" <%--
                     --%>aria-expanded="${open}" <%--
@@ -71,15 +72,17 @@
                     --%>data-bs-target="#${itemId}"><%----%>
                         <c:out value="${tabLabel}"></c:out>
                     </button><%----%>
+
+                    <c:if test="${cms.isEditMode}">
+                        <a href="#${itemId}" class="hash-link"><%----%>
+                            <span class="badge oct-meta-info"><%----%>
+                                <span class="fa fa-hashtag"></span><%----%>
+                            </span><%----%>
+                        </a><%----%>
+                    </c:if>
+
                 ${'</h'}${itemHsize}${'>'}
 
-                <c:if test="${cms.isEditMode}">
-                    <a href="#${itemId}" class="acco-hash"><%----%>
-                        <span class="badge oct-meta-info"><%----%>
-                            <span class="fa fa-hashtag"></span><%----%>
-                        </span><%----%>
-                    </a><%----%>
-                </c:if>
 
                 <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-bs-parent=\"#'.concat(parentId).concat('\"')}><%----%>
 

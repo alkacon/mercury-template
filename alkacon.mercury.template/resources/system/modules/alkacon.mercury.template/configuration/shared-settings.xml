@@ -333,6 +333,16 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[listWrapper.imageTile]]></IncludeName>
+      <PropertyName><![CDATA[listWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[row-square square-m-10]]></Default>
+      <WidgetConfig><![CDATA[%(attribute:listWrapper.imageTile.config)]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.square]]></IncludeName>
       <PropertyName><![CDATA[imageRatio]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>
@@ -2089,13 +2099,6 @@
       <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[div]]></Default>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[listWrapper.imageTile]]></IncludeName>
-      <PropertyName><![CDATA[listWrapper]]></PropertyName>
-      <Visibility><![CDATA[parentShared]]></Visibility>
-      <Widget><![CDATA[hidden]]></Widget>
-      <Default><![CDATA[row-square square-m-20]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.imageTile]]></IncludeName>

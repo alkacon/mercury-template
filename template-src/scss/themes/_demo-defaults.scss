@@ -133,8 +133,6 @@ $map-colors: (
 
 // Tile and square settings
 
-$sq-margins:                    (0, 2, 4, 5, 10, 15, 20, 25, 50, 100) !default;
-
 $sq-heights-sm:                 ((0o5, 0.5), (2, 2)) !default;
 $sq-heights-md:                 ((0o5, 0.5), (1, 1), (1o5, 1.5), (2, 2)) !default;
 $sq-heights-lg:                 ((0o5, 0.5), (1, 1), (1o5, 1.5), (2, 2)) !default;

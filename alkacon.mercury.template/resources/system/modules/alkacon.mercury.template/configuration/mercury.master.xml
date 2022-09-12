@@ -943,5 +943,16 @@
         bg-grey:            %(key.msg.setting.bgColor.area.grey)
       ]]></Value>
     </Attribute>
+    <Attribute>
+      <Key><![CDATA[listWrapper.imageTile.config]]></Key>
+      <Value><![CDATA[
+            row-square square-m-0:   0|
+            row-square square-m-2:   4|
+            row-square square-m-5:   10|
+            row-square square-m-10:  20|
+            row-square square-m-15:  30|
+            row-square square-m-20:  40
+      ]]></Value>
+    </Attribute>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

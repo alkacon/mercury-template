@@ -57,15 +57,15 @@
         --%>aria-expanded="${open}"><%--
         --%><c:out value="${title}"></c:out>
         </button><%----%>
-    ${'</h'}${hsize}${'>'}
 
-    <c:if test="${cms.isEditMode}">
-        <a href="#${itemId}" class="acco-hash"><%----%>
-            <span class="badge oct-meta-info"><%----%>
-                <span class="fa fa-hashtag"></span><%----%>
-            </span><%----%>
-        </a><%----%>
-    </c:if>
+        <c:if test="${cms.isEditMode}">
+            <a href="#${itemId}" class="hash-link"><%----%>
+                <span class="badge oct-meta-info"><%----%>
+                    <span class="fa fa-hashtag"></span><%----%>
+                </span><%----%>
+            </a><%----%>
+        </c:if>
+    ${'</h'}${hsize}${'>'}
 
     <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-bs-parent=\"#'.concat(parentId).concat('\"')}><%----%>
         <c:if test="${not empty preface}">

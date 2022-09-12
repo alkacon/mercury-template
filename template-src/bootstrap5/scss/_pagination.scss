@@ -72,10 +72,10 @@
 
 .page-item {
   &:not(:first-child) .page-link {
-    margin-left: $pagination-margin-start;
+    margin-left: $pagination-item-margin-start;
   }
 
-  @if $pagination-margin-start == (calc($pagination-border-width * -1)) {
+  @if $pagination-item-margin-start == (calc($pagination-border-width * -1)) {
     &:first-child {
       .page-link {
         @include border-start-radius(var(--#{$prefix}pagination-border-radius));

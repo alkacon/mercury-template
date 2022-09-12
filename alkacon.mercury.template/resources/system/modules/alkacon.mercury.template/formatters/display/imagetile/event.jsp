@@ -80,7 +80,7 @@
 </c:when>
 </c:choose>
 
-<c:if test="${ratio eq '16-9'}"><c:set var="imgRatio" value="1600-920" /></c:if>
+<c:if test="${ratio eq '16-9'}"><c:set var="imgRatio" value="1600-960" /></c:if>
 <c:choose>
     <c:when test="${firstLarge}">
         <c:set var="tileClass" value="square-col square-${ratio} square-large ${minHeight}${' '}${tileClassLarge}" />

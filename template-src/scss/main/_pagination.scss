@@ -25,11 +25,11 @@
     color: var(--#{$prefix}pag-color);
     background-color: var(--#{$prefix}pag-bg);
     border: #{$pagination-border};
-    margin: var(--#{$prefix}pag-margin);
+    margin: var(--#{$prefix}pag-item-margin);
+    padding: var(--#{$prefix}pag-item-padding);
 
     text-align: center;
     text-decoration: none;
-    padding: 5px 12px;
 
     font-family: var(--#{$prefix}pag-font-family);
     font-size: var(--#{$prefix}pag-font-size);
@@ -72,13 +72,15 @@
     --#{$prefix}pag-border-radius: #{$pagination-border-radius};
     --#{$prefix}pag-border: #{$pagination-border};
 
+    --#{$prefix}pag-item-jump-spacing: #{$pagination-item-jump-spacing};
+    --#{$prefix}pag-item-margin: #{$pagination-item-margin};
+    --#{$prefix}pag-item-padding: #{$pagination-item-padding};
+
     --#{$prefix}pag-disabled-color: var(--#{$prefix}pag-border-color);
     --#{$prefix}pag-active-color: var(--#{$prefix}main-theme-fg);
     --#{$prefix}pag-active-bg-color: #{$pagination-active-color};
     --#{$prefix}pag-hover-color: var(--#{$prefix}main-theme-hover-fg);
     --#{$prefix}pag-hover-bg-color: #{$pagination-hover-color};
-
-    --#{$prefix}pag-margin: #{$pagination-margin};
 
     @if ($pagination-font-family != $font-family-base) {
         --#{$prefix}pag-font-family: #{inspect($pagination-font-family)};
@@ -98,16 +100,16 @@
         }
 
         &.previous {
-            margin-right: var(--#{$prefix}default-margin-small);
+            margin-right: var(--#{$prefix}pag-item-jump-spacing);
         }
         &.next {
-            margin-left: var(--#{$prefix}default-margin-small);
+            margin-left: var(--#{$prefix}pag-item-jump-spacing);
         }
         &.first {
             &.gap::after {
                 content: "...";
                 display: inline-block;
-                margin: 0 var(--#{$prefix}default-margin-small);
+                margin: 0 var(--#{$prefix}pag-item-jump-spacing);
             }
         }
     }

@@ -151,7 +151,7 @@
             --%>"dots": ${showDots}, <%--
             --%>"autoplay": ${autoPlay}, <%--
             --%>"transition": "${transition}", <%--
-            --%>"param": ${transitionParam}, <%--
+            --%>"param": "${transitionParam}", <%--
             --%>"delay": ${rotationTime}, <%--
             --%>"speed": ${transitionSpeed}, <%--
             --%>"pause": ${pauseOnHover}<%--

@@ -2149,13 +2149,13 @@
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[md-sm-xs]]></Default>
       <WidgetConfig><![CDATA[
-              never:            %(key.msg.option.list.appendSwitch.never)|
-              xs:               %(key.msg.option.list.appendSwitch.xs)|
-              sm-xs:            %(key.msg.option.list.appendSwitch.sm)|
-              md-sm-xs:         %(key.msg.option.list.appendSwitch.md)|
-              md-sm-xs-lg:      %(key.msg.option.list.appendSwitch.lg)|
-              md-sm-xs-lg-xl:   %(key.msg.option.list.appendSwitch.always)|
-              disable:          %(key.msg.option.list.appendSwitch.disable)
+              never:                %(key.msg.option.list.appendSwitch.never)|
+              xs:                   %(key.msg.option.list.appendSwitch.xs)|
+              sm-xs:                %(key.msg.option.list.appendSwitch.sm)|
+              md-sm-xs:             %(key.msg.option.list.appendSwitch.md)|
+              md-sm-xs-lg:          %(key.msg.option.list.appendSwitch.lg)|
+              md-sm-xs-lg-xl-xxl:   %(key.msg.option.list.appendSwitch.always)|
+              disable:              %(key.msg.option.list.appendSwitch.disable)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

@@ -26,8 +26,8 @@
     --#{$prefix}sm-hover-color: var(--#{$prefix}main-theme-fg);
     --#{$prefix}sm-hover-bg-color: var(--#{$prefix}main-theme);
 
-    --#{$prefix}sm-hor-spacer: #{$sitemap-hor-padding};
-    --#{$prefix}sm-ver-spacer: #{$sitemap-ver-padding};
+    --#{$prefix}sm-padding-y: #{$sitemap-padding-y};
+    --#{$prefix}sm-padding-x: #{$sitemap-padding-x};
     --#{$prefix}sm-border-radius: #{$sitemap-border-radius};
 
     ul,
@@ -44,7 +44,7 @@
             background-color: var(--#{$prefix}sm-bg-color);
             font-size: $sitemap-font-size;
             line-height: $sitemap-line-height;
-            padding: var(--#{$prefix}sm-ver-spacer) var(--#{$prefix}sm-hor-spacer);
+            padding: var(--#{$prefix}sm-padding-y) var(--#{$prefix}sm-padding-x);
             width: 100%;
             display: block;
             text-decoration: none;
@@ -58,7 +58,7 @@
             &.tree-toggle {
 
                 position: relative;
-                padding-right: calc(3 * var(--#{$prefix}sm-hor-spacer));
+                padding-right: calc(3 * var(--#{$prefix}sm-padding-x));
 
                 &:after {
                     position: absolute;
@@ -66,8 +66,8 @@
                     font-family: ForkAwesome;
                     font-weight: normal;
                     content: "\f078";
-                    top: var(--#{$prefix}sm-ver-spacer);
-                    right: var(--#{$prefix}sm-hor-spacer);
+                    top: var(--#{$prefix}sm-padding-y);
+                    right: var(--#{$prefix}sm-padding-x);
                     line-height: $sitemap-line-height;
                     transform: rotate(-180deg) translate(0,0);
                     transition: transform .33s;
@@ -82,7 +82,7 @@
         &.top {
             float: left;
             width: 100%;
-            margin-bottom: var(--#{$prefix}sm-ver-spacer);
+            margin-bottom: var(--#{$prefix}sm-padding-y);
             border-radius: var(--#{$prefix}sm-border-radius);
             overflow: hidden;
             z-index: $overflow-z-index;
@@ -96,15 +96,15 @@
                 content: ' ';
                 display: block;
                 float: left;
-                padding-right: var(--#{$prefix}sm-hor-spacer);
+                padding-right: var(--#{$prefix}sm-padding-x);
             }
         }
     }
 
     .sitemap-col-6 > li.top {
         @include media-breakpoint-up(lg) {
-            width: calc(50% - var(--#{$prefix}sm-hor-spacer));
-            margin-right: var(--#{$prefix}sm-hor-spacer);
+            width: calc(50% - var(--#{$prefix}sm-padding-x));
+            margin-right: var(--#{$prefix}sm-padding-x);
 
             &:nth-of-type(2n+1) {
                 clear: both;
@@ -114,16 +114,16 @@
 
     .sitemap-col-4 > li.top {
         @include media-breakpoint-only(lg) {
-            width: calc(50% - var(--#{$prefix}sm-hor-spacer));
-            margin-right: var(--#{$prefix}sm-hor-spacer);
+            width: calc(50% - var(--#{$prefix}sm-padding-x));
+            margin-right: var(--#{$prefix}sm-padding-x);
             &:nth-of-type(2n+1) {
                 clear: both;
             }
         }
 
         @include media-breakpoint-up(xl) {
-            width: calc(33.333333% - var(--#{$prefix}sm-hor-spacer));
-            margin-right: var(--#{$prefix}sm-hor-spacer);
+            width: calc(33.333333% - var(--#{$prefix}sm-padding-x));
+            margin-right: var(--#{$prefix}sm-padding-x);
             &:nth-of-type(3n+1) {
                 clear: both;
             }
@@ -132,24 +132,24 @@
 
     .sitemap-col-3 > li.top {
         @include media-breakpoint-only(md) {
-            width: calc(50% - var(--#{$prefix}sm-hor-spacer));
-            margin-right: var(--#{$prefix}sm-hor-spacer);
+            width: calc(50% - var(--#{$prefix}sm-padding-x));
+            margin-right: var(--#{$prefix}sm-padding-x);
             &:nth-of-type(2n+1) {
                 clear: both;
             }
         }
 
         @include media-breakpoint-only(lg) {
-            width: calc(33.333333% - var(--#{$prefix}sm-hor-spacer));
-            margin-right: var(--#{$prefix}sm-hor-spacer);
+            width: calc(33.333333% - var(--#{$prefix}sm-padding-x));
+            margin-right: var(--#{$prefix}sm-padding-x);
             &:nth-of-type(3n+1) {
                 clear: both;
             }
         }
 
        @include media-breakpoint-up(xl) {
-            width: calc(25% - var(--#{$prefix}sm-hor-spacer));
-            margin-right: var(--#{$prefix}sm-hor-spacer);
+            width: calc(25% - var(--#{$prefix}sm-padding-x));
+            margin-right: var(--#{$prefix}sm-padding-x);
             &:nth-of-type(4n+1) {
                 clear: both;
             }
@@ -160,25 +160,25 @@
         > ul {
             // add padding for 3nd level
             li a {
-                padding-left: calc(2 * var(--#{$prefix}sm-hor-spacer));
+                padding-left: calc(2 * var(--#{$prefix}sm-padding-x));
             }
 
             > li > ul {
                 // add padding for 4rd level
                 li a {
-                    padding-left: calc(3 * var(--#{$prefix}sm-hor-spacer));
+                    padding-left: calc(3 * var(--#{$prefix}sm-padding-x));
                 }
 
                 > li > ul {
                     // add padding for 5th level
                     li a {
-                        padding-left: calc(4 * var(--#{$prefix}sm-hor-spacer));
+                        padding-left: calc(4 * var(--#{$prefix}sm-padding-x));
                     }
 
                     > li > ul {
                         // add padding for 6th level
                         li a {
-                            padding-left: calc(5 * var(--#{$prefix}sm-hor-spacer));
+                            padding-left: calc(5 * var(--#{$prefix}sm-padding-x));
                         }
                     }
                 }

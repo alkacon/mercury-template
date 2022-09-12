@@ -47,5 +47,13 @@ $utilities: (
         around: space-around,
         evenly: space-evenly,
       )
+    ),
+    "float": (
+      responsive: true,
+      property: float,
+      values: (
+        right: right,
+        left: left,
+      )
     )
 );

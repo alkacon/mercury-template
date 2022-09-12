@@ -134,15 +134,11 @@ $map-colors: (
 // Tile and square settings
 
 $sq-margins:                    (0, 2, 4, 5, 10, 15, 20, 25, 50, 100) !default;
-$sq-cols-sm:                    ((12, 12), (6, 6)) !default;
-$sq-cols-md:                    ((12, 12), (9, 9), (6, 6), (4, 4), (3, 3)) !default;
-$sq-cols-lg:                    ((12, 12), (9, 9), (8, 8), (6, 6), (4, 4), (3, 3), (2o4, 2.4), (2,2)) !default;
-$sq-cols-xl:                    ((12, 12), (9, 9), (8, 8), (6, 6), (4, 4), (3, 3), (2o4, 2.4), (2,2)) !default;
 
 $sq-heights-sm:                 ((0o5, 0.5), (2, 2)) !default;
-$sq-heights-md:                 ((0o5, 0.5), (1o5, 1.5), (2, 2)) !default;
-$sq-heights-lg:                 ((0o5, 0.5), (1o5, 1.5), (2, 2)) !default;
-$sq-heights-xl:                 ((0o25, 0.25), (0o5, 0.5), (1o5, 1.5), (2, 2)) !default;
+$sq-heights-md:                 ((0o5, 0.5), (1, 1), (1o5, 1.5), (2, 2)) !default;
+$sq-heights-lg:                 ((0o5, 0.5), (1, 1), (1o5, 1.5), (2, 2)) !default;
+$sq-heights-xl:                 ((0o25, 0.25), (0o5, 0.5), (1, 1), (1o5, 1.5), (2, 2)) !default;
 
 $ti-cols:                       ((6, 6), (4, 4), (3, 3), (2o4, 2.4), (2,2), (1o5, 1.5)) !default;
 

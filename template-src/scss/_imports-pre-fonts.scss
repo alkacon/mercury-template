@@ -23,14 +23,14 @@
 @import "../bootstrap5/scss/functions";
 @import 'main/functions';
 
+// import mixins
+@import 'main/mixins';
+
 // import font definitions for pre-downloaded fonts
 @import 'main/font-definitions';
 
 // define the global variables
 @import 'main/variables';
-
-// import mixins
-@import 'main/mixins';
 
 // import font definitions on top
 @import 'imports-fonts';

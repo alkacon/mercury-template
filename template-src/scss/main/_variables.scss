@@ -19,6 +19,8 @@
 
 $prefix:                            'my-' !default; // prefix for the generated CSS variables
 
+$divide-precision:                  5 !default; // default precision for the Bs5 divide operation
+
 // Features - disable what is not needed to keep the generated CSS small
 
 $feature-use-flexible-header:       true !default; // use flexible header from _header.scss
@@ -57,6 +59,83 @@ $theme-colors:                        () !default;
 // If no definitions are provided, an algorithm will try to pick suitable colors based on the default background, text and link colors
 
 $theme-matched-colors:             () !default;
+
+
+// Default margins / spacing
+
+$default-margin:                    2.0rem !default;
+$default-margin-small:              round($default-margin * 50) * 0.01 !default;   // 1.0 rem
+$default-margin-verysmall:          round($default-margin * 25) * 0.01 !default;   // 0.5 rem
+
+$element-margin:                    $default-margin !default;
+$paragraph-margin-bottom:           $default-margin-small !default; // margin used at the end of paragraphs
+$headings-margin-bottom:            $paragraph-margin-bottom !default; // margin below <hx> elements
+
+$grid-gutter-width:                 30px !default;
+$grid-gutter-width-half:            $grid-gutter-width * 0.5 !default;
+$grid-row-columns:                  12 !default;
+
+@include ensure-not-css-property($default-margin);
+@include ensure-not-css-property($default-margin-small);
+@include ensure-not-css-property($default-margin-verysmall);
+@include ensure-not-css-property($element-margin);
+@include ensure-not-css-property($paragraph-margin-bottom);
+@include ensure-not-css-property($headings-margin-bottom);
+@include ensure-not-css-property($grid-gutter-width);
+
+
+// Bootstrap container sizes
+// Note: These values are used in image-srcset.tag, if changed a sitemap attribute can be used to align these
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 552px,
+    md: 764px,
+    lg: 1014px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+
+$container-max-widths: (
+    sm: 540px,
+    md: 744px,
+    lg: 992px,
+    xl: 1170px,
+   xxl: 1320px
+) !default;
+
+
+// Rounded corners
+
+$default-border-radius:             0 !default;
+$copyright-border-radius:           floor($default-border-radius * 0.5) !default;
+$image-border-radius:               var(--#{$prefix}border-radius) !default;
+$focus-outline-border-radius:       $copyright-border-radius !default;
+
+
+// Z-index for OpenCms toolbar and edit points
+
+$oc-z-index:                        100000 !default;                // OC edit points are at 100000
+$above-oc-toolbar:                  300000 !default;                // OC toolbar is at 200000
+$above-oc-z-index:                  $oc-z-index + 50000 !default;   // OC toolbar is at 200000, we want to be below this
+$overflow-z-index:                  5 !default;                     // Used by elements that require an overflow:hidden
+
+
+// Further Bootstrap variables
+$rfs-breakpoint:                    552px !default;
+
+$primary:                           $main-theme !default;
+
+$border-color:                      $grey-light !default;
+$table-accent-bg:                   $grey-lighter !default;
+
+$label-margin-bottom:               $default-margin-verysmall !default; // margin below <label> elements
+$dropdown-border-radius:            $default-border-radius !default; // BS dropdown border radius
+
+$modal-inner-padding:               1rem !default; // inner padding for modal dialog
+$zindex-modal-backdrop:             $above-oc-z-index + 1000 !default;
+$zindex-modal:                      $above-oc-z-index + 1050 !default;
+
 
 // Font definitions
 
@@ -190,17 +269,6 @@ $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use l
 $text-contrast-threshold:           2.5 !default;
 
 
-// Default margins
-
-$default-margin:                    2.0rem !default;
-$default-margin-small:              round($default-margin * 50) * 0.01 !default;   // 1.0 rem
-$default-margin-verysmall:          round($default-margin * 25) * 0.01 !default;   // 0.5 rem
-
-$element-margin:                    $default-margin !default;
-$paragraph-margin-bottom:           $default-margin-small !default; // margin used at the end of paragraphs
-$headings-margin-bottom:            $paragraph-margin-bottom !default; // margin below <hx> elements
-$intro-headings-margin-bottom:      round($paragraph-margin-bottom * 25) * 0.01 !default; // margin below intro headings
-
 // Text and page colors
 
 $text-light:                        $white !default;
@@ -236,61 +304,6 @@ $linked-headings-decoration:        unset !default;
 $linked-headings-hover-decoration:  $linked-headings-decoration !default;
 
 $default-transition-time:           0.33s !default; // default timing for animation effects
-
-// Rounded corners
-
-$default-border-radius:             0 !default;
-$copyright-border-radius:           floor($default-border-radius * 0.5) !default;
-$image-border-radius:               var(--#{$prefix}border-radius) !default;
-$focus-outline-border-radius:       $copyright-border-radius !default;
-
-// OpenCms default Z-index for edit points
-
-$oc-z-index:                        100000 !default;                // OC edit points are at 100000
-$above-oc-toolbar:                  300000 !default;                // OC toolbar is at 200000
-$above-oc-z-index:                  $oc-z-index + 50000 !default;   // OC toolbar is at 200000, we want to be below this
-$overflow-z-index:                  5 !default;                     // Used by elements that require an overflow:hidden
-
-
-// Bootstrap container sizes
-// Note: These values are used in image-srcset.tag, if changed a sitemap attribute can be used to align these
-
-$grid-breakpoints: (
-    xs: 0,
-    sm: 552px,
-    md: 764px,
-    lg: 1014px,
-    xl: 1200px,
-    xxl: 1400px
-) !default;
-
-$container-max-widths: (
-    sm: 540px,
-    md: 744px,
-    lg: 992px,
-    xl: 1170px,
-   xxl: 1320px
-) !default;
-
-
-// Bootstrap variables
-$rfs-breakpoint:                    552px !default;
-
-$grid-gutter-width:                 30px !default;
-$grid-gutter-width-half:            $grid-gutter-width * 0.5 !default;
-$grid-row-columns:                  12 !default;
-
-$primary:                           $main-theme !default;
-
-$border-color:                      $grey-light !default;
-$table-accent-bg:                   $grey-lighter !default;
-
-$label-margin-bottom:               $default-margin-verysmall !default; // margin below <label> elements
-$dropdown-border-radius:            $default-border-radius !default; // BS dropdown border radius
-
-$modal-inner-padding:               1rem !default; // inner padding for modal dialog
-$zindex-modal-backdrop:             $above-oc-z-index + 1000 !default;
-$zindex-modal:                      $above-oc-z-index + 1050 !default;
 
 
 // Drop shadow color for effects
@@ -337,6 +350,7 @@ $piece-gutter-x:                    $grid-gutter-width !default;
 $piece-text-to-link-margin:         var(--#{$prefix}paragraph-margin-bottom) !default;
 $piece-visual-last-margin-top:      var(--#{$prefix}paragraph-margin-bottom) !default;
 $piece-visual-margin-bottom:        var(--#{$prefix}paragraph-margin-bottom) !default;
+$intro-headings-margin-bottom:      calc(0.25 * var(--#{$prefix}headings-margin-bottom)) !default; // margin below intro headings
 
 $use-hyphens:                       true !default; // enable hyphenation / word breaks (not all browsers support this)
 $piece-hyphens:                     $use-hyphens !default; // enable hyphenation / word breaks specially in piece
@@ -595,9 +609,12 @@ $list-filter-background:            $btn-bg !default;
 $list-filter-hover:                 $btn-hover-bg !default;
 $list-filter-color:                 get-text-color($list-filter-background) !default;
 
+$pagination-spacing:                $default-margin !default;
+$pagination-item-jump-spacing:      calc(0.5 * $pagination-spacing) !default;
+$pagination-item-margin:            0 -1px 0 0 !default;
+$pagination-item-padding:           5px 12px !default;
 $pagination-border:                 1px solid var(--#{$prefix}pag-border-color) !default;
 $pagination-border-radius:          var(--#{$prefix}btn-border-radius) !default;
-$pagination-margin:                 0 -1px 0 0 !default;
 $pagination-hover-color:            var(--#{$prefix}main-theme-hover) !default;
 $pagination-active-color:           var(--#{$prefix}main-theme) !default;
 
@@ -747,6 +764,10 @@ $map-colors: (
 
 // Webforms
 
+$form-spacing:                      $default-margin !default;
+$form-padding-y:                    $form-spacing !default;
+$form-padding-x:                    calc(#{$form-padding-y} * 1.5) !default;
+$form-section-margin-bottom:        $form-spacing!default;
 $form-font-size:                    $font-size-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-font-size-input:              $form-font-size !default;
@@ -768,8 +789,7 @@ $form-input-background:             $body-bg !default;
 $form-captcha-background:           $white !default;
 $form-captcha-border:               1px dashed $grey-light !default;
 $form-input-border-radius:          $btn-border-radius !default;  // will inherit btn-border-radius css var if not different
-$form-field-spacer-y:               $default-margin;
-$form-field-spacer-x:               $default-margin * 1.5;
+
 
 // Search
 
@@ -781,10 +801,11 @@ $search-datelastmod-color:          $search-badge-color !default;
 
 // Sitemap
 
+$sitemap-spacing:                   $default-margin !default;
+$sitemap-padding-y:                 calc(0.25 * #{$sitemap-spacing}) !default;
+$sitemap-padding-x:                 calc(0.5 * #{$sitemap-spacing}) !default;
 $sitemap-font-size:                 var(--#{$prefix}body-font-size) !default;
 $sitemap-line-height:               1.3 !default;
-$sitemap-ver-padding:               var(--#{$prefix}default-margin-verysmall) !default;
-$sitemap-hor-padding:               var(--#{$prefix}default-margin-small) !default;
 $sitemap-border-radius:             var(--#{$prefix}border-radius) !default;
 
 
@@ -853,8 +874,8 @@ $tooltip-border-radius:             var(--#{$prefix}border-radius) !default;
 
 // Link sequence
 
-$ls-margin-list:                    calc(2.5 * var(--#{$prefix}default-margin-small)) !default;
-$ls-margin-row:                     calc(2 * var(--#{$prefix}default-margin-small)) !default;
+$ls-li-padding:                     calc(2.5 * var(--#{$prefix}paragraph-margin-bottom)) !default;
+$ls-row-spacing:                    calc(2 * var(--#{$prefix}paragraph-margin-bottom)) !default;
 
 
 // Animations

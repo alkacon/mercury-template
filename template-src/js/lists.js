@@ -589,7 +589,7 @@ function generatePagination(list, page) {
                 result.push(generatePaginationItem(p == lastShownPage ? "lastpage" : "page", false, page == p, p, messages.tp, messages.lp, "number", listId));
             }
             result.push(generatePaginationItem("next", page >= lastPage, false, page < lastPage ? page + 1 : lastPage, messages.tnp, null, "fa fa-angle-right", listId));
-            // currently, we never show the last page button.
+            // we ndo NOT show the last page button - jumping to the last page in large installations can kill SOLR
             // result.push(generatePaginationItem(null, page >= lastPage, false, lastPage, messages.tlp, null, "fa fa-angle-double-right", listId));
         } else if (list.option === 'append' && page < lastPage) {
             // show the button to append more results.
@@ -979,7 +979,8 @@ export function init(jQuery, debug) {
                 list.locked = false;
                 list.autoload = false;
                 list.notclicked = true;
-                if (list.appendSwitch.indexOf(Mercury.gridInfo().grid) >= 0) {
+                let screenSize = Mercury.gridInfo().grid == 'xxl' ? 'xl' : Mercury.gridInfo().grid;
+                if (list.appendSwitch.indexOf(screenSize) >= 0) {
                     // I think this is a cool way for checking the screen size ;)
                     list.option = "append";
                     $list.removeClass("list-paginate").addClass("list-append");

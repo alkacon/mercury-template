@@ -37,8 +37,10 @@
         --#{$prefix}form-input-border-radius: var(--#{$prefix}btn-border-radius);
     }
 
-    --#{$prefix}form-field-spacer-y: #{$form-field-spacer-y};
-    --#{$prefix}form-field-spacer-x: #{$form-field-spacer-x};
+    --#{$prefix}form-spacing: #{$form-spacing};
+    --#{$prefix}form-padding-y: #{$form-padding-y};
+    --#{$prefix}form-padding-x: #{$form-padding-x};
+    --#{$prefix}form-section-margin-bottom: #{$form-section-margin-bottom};
 
     margin: 0;
     outline: none;
@@ -63,13 +65,13 @@
 
     header {
         border-bottom: $form-border;
-        padding: var(--#{$prefix}form-field-spacer-y) var(--#{$prefix}form-field-spacer-x);
+        padding: var(--#{$prefix}form-padding-y) var(--#{$prefix}form-padding-x);
         @extend .h4;
     }
 
     fieldset {
         display: block;
-        padding: var(--#{$prefix}form-field-spacer-y) var(--#{$prefix}form-field-spacer-x);
+        padding: var(--#{$prefix}form-padding-y) var(--#{$prefix}form-padding-x);
         border: none;
 
         p:last-child {
@@ -89,14 +91,14 @@
 
     .webform_subfields,
     section {
-        margin-bottom: var(--#{$prefix}form-field-spacer-y);
+        margin-bottom: var(--#{$prefix}form-section-margin-bottom);
         &:last-child {
             margin-bottom: 0 !important;
         }
     }
     footer {
         display: block;
-        padding: var(--#{$prefix}form-field-spacer-y) var(--#{$prefix}form-field-spacer-x);
+        padding: var(--#{$prefix}form-padding-y) var(--#{$prefix}form-padding-x);
         border-top: $form-border;
     }
     footer:after {
@@ -109,11 +111,11 @@
     .label {
         display: block;
         font-weight: $form-font-weight-label;
-        margin-bottom: var(--#{$prefix}default-margin-verysmall);
+        margin-bottom: calc(0.25 * var(--#{$prefix}form-spacing));
     }
 
     .note {
-        margin-top: var(--#{$prefix}default-margin-verysmall);
+        margin-top: calc(0.25 * var(--#{$prefix}form-spacing));
         padding: 0;
         font-size: 100%;
         line-height: 1.5;
@@ -201,7 +203,7 @@
         float: none;
         height: calc(100% - 8px);
         line-height: 31px;
-        padding: 0 var(--#{$prefix}default-margin);
+        padding: 0 var(--#{$prefix}form-spacing);
         font-size: 80%;
 
         input {
@@ -570,7 +572,7 @@
     .input {
         .captcha {
             background-color: $form-captcha-background;
-            margin-bottom: var(--#{$prefix}default-margin-small);
+            margin-bottom: calc(0.5 * var(--#{$prefix}form-spacing));
             border: $form-captcha-border;
             border-radius: var(--#{$prefix}form-input-border-radius);
             overflow: hidden;
@@ -585,11 +587,11 @@
         header,
         footer,
         fieldset {
-            padding: calc(0.5 * var(--#{$prefix}form-field-spacer-y)) calc(0.5 * var(--#{$prefix}form-field-spacer-x));
+            padding: calc(0.5 * var(--#{$prefix}form-padding-y)) calc(0.5 * var(--#{$prefix}form-padding-x));
         }
 
         section {
-            margin-bottom: calc(0.5 * var(--#{$prefix}form-field-spacer-x));
+            margin-bottom: calc(0.5 * var(--#{$prefix}form-section-margin-bottom));
         }
 
         .input input,
@@ -619,7 +621,7 @@
 
         .inline-group {
             margin-right: -30px;
-            margin-bottom: calc(-1 * var(--#{$prefix}default-margin-verysmall));
+            margin-bottom: calc(-1 * calc(0.25 * var(--#{$prefix}form-spacing)));
 
             &::after {
                 content: '';
@@ -631,21 +633,21 @@
             .checkbox {
                 float: left;
                 margin-right: 30px;
-                margin-bottom: var(--#{$prefix}default-margin-verysmall);
+                margin-bottom: calc(0.25 * var(--#{$prefix}form-spacing));
             }
         }
 
         .webform_subfields fieldset {
-            padding-left: var(--#{$prefix}form-field-spacer-x);
-            padding-right: var(--#{$prefix}form-field-spacer-x);
+            padding-left: var(--#{$prefix}form-padding-x);
+            padding-right: var(--#{$prefix}form-padding-x);
         }
     }
 
     // compact spacing form layout
     &.compact {
 
-        --#{$prefix}form-field-spacer-y: calc(0.5 * #{$form-field-spacer-y});
-        --#{$prefix}form-field-spacer-x: calc(0.5 * #{$form-field-spacer-x});
+        --#{$prefix}form-padding-y: calc(0.5 * #{$form-padding-y});
+        --#{$prefix}form-padding-x: calc(0.5 * #{$form-padding-x});
 
         .input input,
         .select select,
@@ -696,7 +698,7 @@
         fieldset {
             border: none;
             padding: 0;
-            margin-bottom: var(--#{$prefix}default-margin-small);
+            margin-bottom: calc(0.5 * var(--#{$prefix}form-spacing));
         }
     }
 
@@ -751,7 +753,7 @@ html.keyboard-nav {
         display: block;
 
         .formbtn {
-            margin-bottom: var(--#{$prefix}default-margin);
+            margin-bottom: var(--#{$prefix}form-spacing);
             &:last-of-type {
                 margin-bottom: 0;
             }
@@ -783,8 +785,8 @@ html.keyboard-nav {
 
             .formbtn {
                 margin-bottom: 0;
-                margin-left: var(--#{$prefix}default-margin-small);
-                margin-right: var(--#{$prefix}default-margin-small);
+                margin-left: calc(0.5 * var(--#{$prefix}form-spacing));
+                margin-right: calc(0.5 * var(--#{$prefix}form-spacing));
                 width: auto;
 
                 &.btn,

@@ -20,10 +20,10 @@
  */
 
 %ls-icon-base {
-    padding-left: calc(var(--#{$prefix}ls-margin-list));
+    padding-left: calc(var(--#{$prefix}ls-li-padding));
     &::before {
         float: left;
-        margin-left: calc(-1 * var(--#{$prefix}ls-margin-list));
+        margin-left: calc(-1 * var(--#{$prefix}ls-li-padding));
         display: inline-block;
         line-height: $line-height-base;
     }
@@ -59,8 +59,7 @@
 }
 
 .type-linksequence {
-    --#{$prefix}ls-margin-list: #{$ls-margin-list};
-    --#{$prefix}ls-margin-row: #{$ls-margin-row};
+    --#{$prefix}ls-li-padding: #{$ls-li-padding};
 
     @if $nav-hyphens {
         hyphens: auto;
@@ -93,6 +92,8 @@
 }
 
 .ls-row {
+    --#{$prefix}ls-row-spacing: #{$ls-row-spacing};
+
     li {
         display: inline-block;
         list-style: outside none none;
@@ -103,14 +104,14 @@
         li:not(:last-child) {
             &::after {
                 content: "|";
-                margin: 0 calc(0.5 * var(--#{$prefix}ls-margin-row));
+                margin: 0 calc(0.5 * var(--#{$prefix}ls-row-spacing));
             }
         }
     }
 
     &.no-icon {
         li:not(:last-child) {
-            margin-right: var(--#{$prefix}ls-margin-row);
+            margin-right: var(--#{$prefix}ls-row-spacing);
         }
     }
 
@@ -119,10 +120,10 @@
         li {
             &::before {
                 float: none;
-                padding-right: calc(0.5 * var(--#{$prefix}ls-margin-row));
+                padding-right: calc(0.5 * var(--#{$prefix}ls-row-spacing));
             }
             + li {
-                padding-left: var(--#{$prefix}ls-margin-row);
+                padding-left: var(--#{$prefix}ls-row-spacing);
                 &::before {
                     margin-left: 0;
                 }
@@ -151,6 +152,6 @@
 
 .ls-icon + span {
     // for "icon:" display from linksequence text - see link-icon.tag
-    --#{$prefix}ls-margin-row: #{$ls-margin-row};
-    margin-left: calc(0.5 * var(--#{$prefix}ls-margin-row));
+    --#{$prefix}ls-row-spacing: #{$ls-row-spacing};
+    margin-left: calc(0.5 * var(--#{$prefix}ls-row-spacing));
 }

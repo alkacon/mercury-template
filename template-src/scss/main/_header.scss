@@ -20,7 +20,7 @@
  */
 
 @function calc-abs-col($breakpoint, $size, $max-widths: $container-max-widths, $columns: $grid-columns) {
-    @return floor(map-get($max-widths, $breakpoint) * divide($size, $columns));
+    @return floor(map-get($max-widths, $breakpoint) * divide($size, $columns, $divide-precision));
 }
 
 @function calc-abs-col-rest($breakpoint, $offset, $max-widths: $container-max-widths) {

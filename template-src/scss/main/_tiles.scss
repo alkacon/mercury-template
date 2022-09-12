@@ -25,10 +25,13 @@ $ti-margin:     0 !default;
 //                2       3       4       6
 $ti-cols:       ((8, 8), (6, 6), (4, 4), (3, 3), (2,2)) !default;
 
-$sq-maxCols:    12 !default;
 $sq-margin:     0 !default;
 $sq-margins:    (2, 20) !default;
 $sq-padding:    20 !default;
+
+$square-spacing:                $default-margin !default;
+$square-text-overlay-padding:   calc(0.5 * $square-spacing) $square-spacing !default;
+$square-paragraph-margin:       calc(0.5 * $paragraph-margin-bottom) !default;
 
 $square-overlay-h1-size:        2.0rem !default;
 $square-overlay-h2-size:        1.6rem !default;
@@ -46,23 +49,8 @@ $square-overlay-text-shadow:    1px 1px 1px #000 !default;
 // 125, 150 required by list calendar sheet
 $fix-cols:      (75, 125, 150) !default;
 
-$sq-cols-xs:       () !default;
-$sq-cols-sm:       ((12, 12), (6, 6)) !default;
-$sq-cols-md:       ((12, 12), (6, 6), (4, 4)) !default;
-$sq-cols-lg:       ((12, 12), (6, 6), (4, 4), (3, 3)) !default;
-$sq-cols-xl:       ((12, 12), (8, 8), (6, 6), (4, 4), (3, 3)) !default;
-
-@function get-square-cols($size) {
-  @if ($size == "xs") {
-     @return $sq-cols-sm;
-  } @else if ($size == "sm") {
-     @return $sq-cols-md;
-  } @else if ($size == "md") {
-     @return $sq-cols-lg;
-  } @else {
-     @return $sq-cols-xl;
-  }
-}
+// supported square col sizes
+$sq-cols-sizes:    (12, 9, 8, 6, 4, 3) !default;;
 
 //                1/6            1/4           1/3           1/2          1.5           2
 // $sq-heights: ((0o16, 0.166), (0o25, 0.25), (0o33, 0.332), (0o5, 0.5), (1o5, 1.499), (2, 2)) !default;
@@ -74,63 +62,16 @@ $sq-heights-lg:    () !default;
 $sq-heights-xl:    () !default;
 
 @function get-square-heights($size) {
-  @if ($size == "xs") {
-     @return $sq-heights-xs;
-  } @else if ($size == "sm") {
-     @return $sq-heights-sm;
-  } @else if ($size == "md") {
-     @return $sq-heights-md;
-  } @else if ($size == "lg") {
-     @return $sq-heights-lg;
-  } @else {
-     @return $sq-heights-xl;
-  }
-}
-
-// Squares
-// For the basics of this square tile solution, see
-// http://stackoverflow.com/questions/20456694/grid-of-responsive-squares
-
-// Base square definition
-
-.square-col {
-
-    float: left;
-    position: relative;
-    width: 100%;
-    padding: 0 0 100% 0 !important; // !important because the "padding-bottom: 100%" is what makes the squares square
-    .content {
-        border-radius: var(--#{$prefix}border-radius);
-        overflow: hidden;
-        z-index: $overflow-z-index;
-    }
-}
-
-.square-m-0 .square-col .content {
-    // if these is no border between the tiles, round corners are removed
-    border-radius: 0;
-}
-
-@mixin make-square-col($size)   {
-
-    @each $i, $sq-i in get-square-cols($size) {
-        $sq-width: divide(100%, divide($sq-maxCols, $sq-i));
-
-        .square-#{$size}-#{$i} {
-           // creates the media query square versions like .square-lg-5 etc.
-            width: $sq-width;
-            padding-bottom: $sq-width !important;
-
-            @each $h, $sq-h in get-square-heights($size) {
-                @if ($h != 99) {
-                    &-h-#{$h} {
-                        // allows adjustments of square height
-                        width: $sq-width;
-                        padding-bottom: #{$sq-width * $sq-h} !important;
-                    }
-                }
-            }
-        }
+    @if ($size =="xs") {
+        @return $sq-heights-xs;
+    } @else if ($size =="sm") {
+        @return $sq-heights-sm;
+    } @else if ($size =="md") {
+        @return $sq-heights-md;
+    } @else if ($size =="lg") {
+        @return $sq-heights-lg;
+    } @else {
+        @return $sq-heights-xl;
     }
 }
 
@@ -140,99 +81,6 @@ $sq-heights-xl:    () !default;
         .square-m-#{$m}-parent .container {
             width: $sq-min;
             padding: 0;
-        }
-    }
-}
-
-// Required inner square class, the "position: absolute" does the trick
-
-.square-col .content {
-
-    position: absolute !important; // !important because otherwise OpenCms ADE will mix up the grid
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    overflow: auto; // show overflow content with scrolling
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: $overflow-z-index;
-}
-
-.square-col-list .square-col {
-    // special "image tile" list adjustments
-    .content {
-        overflow: hidden; // no overflow to be shown on lists of type .square-col-list
-
-        .list-badge {
-            // position of event series badges in this list
-            position: absolute;
-            display: inline-block;
-            padding: 2px 4px;
-            top: 5px;
-            right: 5px;
-            text-shadow: none;
-
-            &::after {
-                // remove noise image background
-                content: none;
-            }
-        }
-    }
-
-    &.square-small {
-        .preface {
-            // special handling of preface text in small image tiles
-            @include media-breakpoint-up(md) {
-                display: none; // in md tiles are col-6 but are to small to show the preface text
-            }
-            @include media-breakpoint-up(lg) {
-                display: block; // in lg tiles are still col-6 and large enough to show the text
-            }
-            @include media-breakpoint-up(xl) {
-                display: none; // in xl the tiles are col-3/4 and to small to show the preface text
-            }
-        }
-    }
-}
-
-
-// Allows to set the margin in the squares
-
-@each $m in $sq-margins  {
-    .square-m-#{$m} {
-        .square-col .content {
-            height: calc(100% - #{$m * 2}px);
-            width:  calc(100% - #{$m * 2}px);
-            margin: #{$m}px;
-        }
-
-        &.row-square {
-            margin-left: -#{$m}px;
-            margin-right: -#{$m}px;
-            padding-bottom: #{$grid-gutter-width - (2px * $m)};
-        }
-    }
-}
-
-// Fixed with columns base
-
-.fixcol {
-    float: left;
-    position: relative;
-    min-height: 1px;
-    padding-right: $grid-gutter-width-half;
-    padding-left: $grid-gutter-width-half;
-    width: 100%;
-}
-
-
-// extend the fixed with column as base responsive instance
-@each $i in $fix-cols {
-    @each $size in map-keys($grid-breakpoints) {
-        .fixcol-#{$size}-#{$i},
-        .fixcol-#{$size}-#{$i}-rest {
-            @extend .fixcol;
         }
     }
 }
@@ -259,215 +107,91 @@ $sq-heights-xl:    () !default;
         }
     }
 }
-
-
-// xs screen size squares
-@include make-square-col(xs);
-
-// xs screen size fixcols
-@include make-fixcol(xs);
-
-@include media-breakpoint-up(sm) {
-
-    // sm screen size squares
-    @include make-square-col(sm);
-    @include fix-square-container(sm);
-
-    // sm screen size fixcols
-    @include make-fixcol(sm);
+@function calc-square-height($cols) {
+    @return calc(
+        (100% - 2 * var(--#{$prefix}sq-margin)) * divide($cols, 12, $divide-precision) * var(--#{$prefix}sq-ratio)
+        + 2 * divide($cols, 12, $divide-precision) * var(--#{$prefix}sq-ratio) * var(--#{$prefix}sq-margin)
+    );
+    // the +0.5px at the end make sure that small elements flow correctly around large elements
 }
 
-@include media-breakpoint-up(md) {
+@mixin make-square-col($size)   {
 
-    // md screen size squares
-    @include make-square-col(md);
-    @include fix-square-container(md);
-
-    // md screen size fixcols
-    @include make-fixcol(md);
-}
-
-@include media-breakpoint-up(lg) {
-
-    // lg screen size squares
-    @include make-square-col(lg);
-    @include fix-square-container(lg);
-
-    // lg screen size fixcols
-    @include make-fixcol(lg);
-}
-
-@include media-breakpoint-up(xl) {
-
-    // xl screen size squares
-    @include make-square-col(xl);
-    @include fix-square-container(xl);
-
-    // xl screen size fixcols
-    @include make-fixcol(xl);
-}
-
-// hand optimized specials for 4x3 and 16x9 square tiles
-$ratio4-3: 0.75; // =300/400;
-$ratio16-9: divide(900, 1670); // this gives better results than 9/16
-$sq-margin: 20px;
-
-@function calc-square-height($container, $margin, $ratio, $cols, $just:false) {
-
-    $width: ($container + 2*$margin) * divide($cols, 12);
-    $height: (($width - ($margin *2)) * $ratio) + ($margin *  2);
-    @if ($just) {
-         @return $height - ($height % 2);
-    }
-    @return floor($height);
-}
-
-
-
-.square-col.square-16-9 {
-    &.square-xs-12 {
-        padding-bottom: calc(56.25% + 20px) !important; // assuming m-20 on tiles here
-    }
-}
-
-.square-col.square-4-3 {
-    &.square-xs-12 {
-        padding-bottom: calc(75% + 10px) !important; // assuming m-20 on tiles here
-    }
-}
-
-.list-content.square-col-list .square-item-20 {
-    // this is used by square image tile lists
-    // make sure in XS the box does not extend over the container width
-    margin-left: -0.5 * $grid-gutter-width !important;
-    margin-right: -0.5 * $grid-gutter-width !important;
-    margin-top: -20px !important;
-    margin-bottom: 20px !important;
-
-    @include media-breakpoint-up(md) {
-        margin-left: -20px !important;
-        margin-right: -20px !important;
-    }
-}
-
-@include media-breakpoint-only(md) {
-    .square-col.square-4-3 {
-        &.square-xs-12,
-        &.square-md-12 {
-            padding-bottom: calc-square-height(container-useable-width(md), $sq-margin, $ratio4-3, 12) !important;
-        }
-        &.square-md-6 {
-            padding-bottom: calc-square-height(container-useable-width(md), $sq-margin, $ratio4-3, 6) !important;
+    @each $col-size in $sq-cols-sizes {
+        .square-#{$size}-#{$col-size} {
+           // creates the media query square versions like .square-lg-5 etc.
+            width: #{100% * divide($col-size, $grid-columns, $divide-precision)};
+            padding-bottom: calc-square-height($col-size) !important;
         }
     }
-    .square-col.square-16-9 {
-        &.square-xs-12,
-        &.square-md-12 {
-            padding-bottom: calc-square-height(container-useable-width(md), $sq-margin, $ratio16-9, 12) !important;
-        }
-        &.square-md-6 {
-            padding-bottom: calc-square-height(container-useable-width(md), $sq-margin, $ratio16-9, 6) !important;
-        }
-        &.square-md-4 {
-            padding-bottom: calc-square-height(container-useable-width(md), $sq-margin, $ratio16-9, 4) !important;
+
+    @each $h, $sq-h in get-square-heights($size) {
+        .square-#{$size}-h-#{$h} {
+            // allows adjustments of square height
+            --#{$prefix}sq-ratio: #{$sq-h};
         }
     }
+
 }
 
-@include media-breakpoint-only(lg) {
-    .square-col.square-4-3 {
-        &.square-xs-12,
-        &.square-md-12,
-        &.square-lg-12 {
-            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio4-3, 12) !important;
-        }
-        &.square-md-6,
-        &.square-lg-6 {
-            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio4-3, 6) !important;
-        }
-    }
-    .square-col.square-16-9 {
-        &.square-xs-12,
-        &.square-md-12,
-        &.square-lg-12 {
-            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 12) !important;
-        }
-        &.square-lg-8 {
-            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 4) * 2 !important;
-        }
-        &.square-md-6,
-        &.square-lg-6 {
-            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 6) !important;
-        }
-        &.square-md-4,
-        &.square-lg-4 {
-            padding-bottom: calc-square-height(container-useable-width(lg), $sq-margin, $ratio16-9, 4) !important;
-        }
-    }
-}
+// Squares
+// For the basics of this square tile solution, see
+// http://stackoverflow.com/questions/20456694/grid-of-responsive-squares
 
-@include media-breakpoint-up(xl) {
-    .square-col.square-4-3 {
-        &.square-md-12,
-        &.square-lg-12,
-        &.square-xl-12 {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 12) !important;
-        }
-        &.square-md-8,
-        &.square-lg-8,
-        &.square-xl-8 {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 8, true) !important;
-        }
-        &.square-md-6,
-        &.square-lg-6,
-        &.square-xl-6 {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 6, true) !important;
-        }
-        &.square-md-4,
-        &.square-lg-4,
-        &.square-xl-4  {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 8, true) * 0.5 !important;
-        }
-        &.square-md-3,
-        &.square-lg-3,
-        &.square-xl-3  {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio4-3, 6, true) * 0.5 !important;
-        }
-    }
-    .square-col.square-16-9 {
-        &.square-md-12,
-        &.square-lg-12,
-        &.square-xl-12 {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio16-9, 12) !important;
-        }
-        &.square-md-8,
-        &.square-lg-8,
-        &.square-xl-8 {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio16-9, 4) * 2 !important;
-        }
-        &.square-md-6,
-        &.square-lg-6,
-        &.square-xl-6 {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio16-9, 3) * 2 !important;
-        }
-        &.square-md-4,
-        &.square-lg-4,
-        &.square-xl-4  {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio16-9, 4) !important;
-        }
-        &.square-md-3,
-        &.square-lg-3,
-        &.square-xl-3  {
-            padding-bottom: calc-square-height(container-useable-width(xl), $sq-margin, $ratio16-9, 3) !important;
-        }
-    }
-}
-
-
-// Table needed for alignment of content inside square
-// Table cell needed for alignment of content inside square
+// Base square definition
 
 .square-col {
+    --#{$prefix}sq-ratio: 1;
+
+    float: left;
+    position: relative;
+    width: 100%;
+    padding-bottom: calc-square-height(12) !important;
+
+    .content {
+        position: absolute !important; // !important because otherwise OpenCms ADE will mix up the grid
+        overflow: auto; // show overflow content with scrolling
+        z-index: $overflow-z-index;
+        border-radius: var(--#{$prefix}border-radius);
+
+        height: calc(100% - 2 * var(--#{$prefix}sq-margin));
+        width:  calc(100% - 2 * var(--#{$prefix}sq-margin));
+        margin: var(--#{$prefix}sq-margin);
+
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include media-breakpoint-up(md) {
+            .effect-box {
+                height: 100%;
+
+                .image-src-box {
+                    padding-bottom: unset !important;
+                    height: 100%;
+
+                    img {
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    &.square-1-1 {
+        --#{$prefix}sq-ratio: 1;
+    }
+
+    &.square-16-9 {
+        --#{$prefix}sq-ratio: #{divide(960, 1600, $divide-precision)}; // this gives better results in case of small elements with margins
+    }
+
+    &.square-4-3 {
+        --#{$prefix}sq-ratio: #{divide(3, 4, $divide-precision)};
+    }
+
+    // Table needed for alignment of content inside square
+    // Table cell needed for alignment of content inside square
     .table-square {
         display: table;
         height: 100%;
@@ -484,6 +208,130 @@ $sq-margin: 20px;
     }
 }
 
+// Allows to set the margin in the squares
+
+@each $m in $sq-margins  {
+    .square-m-#{$m} {
+        --#{$prefix}sq-margin: #{$m}px;
+    }
+}
+
+.square-col-list ul.list-entries.row-square,
+.row-square {
+    margin: calc(-1 * var(--#{$prefix}sq-margin));
+    padding-bottom: var(--#{$prefix}element-margin);
+}
+
+.square-m-0 .square-col .content {
+    // if these is no border between the tiles, round corners are removed
+    border-radius: 0;
+}
+
+.square-col-list {
+    .square-col {
+        // special "image tile" list adjustments
+        .content {
+            overflow: hidden; // no overflow to be shown on lists of type .square-col-list
+
+            .list-badge {
+                // position of event series badges in this list
+                position: absolute;
+                display: inline-block;
+                padding: 2px 4px;
+                top: 5px;
+                right: 5px;
+                text-shadow: none;
+
+                &::after {
+                    // remove noise image background
+                    content: none;
+                }
+            }
+        }
+
+        &.square-small {
+            .preface {
+                // special handling of preface text in small image tiles
+                @include media-breakpoint-up(md) {
+                    display: none; // in md tiles are col-6 but are to small to show the preface text
+                }
+                @include media-breakpoint-up(lg) {
+                    display: block; // in lg tiles are still col-6 and large enough to show the text
+                }
+                @include media-breakpoint-up(xl) {
+                    display: none; // in xl the tiles are col-3/4 and to small to show the preface text
+                }
+            }
+        }
+    }
+}
+
+// Fixed with columns base
+
+.fixcol {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: $grid-gutter-width-half;
+    padding-left: $grid-gutter-width-half;
+    width: 100%;
+}
+
+
+// extend the fixed with column as base responsive instance
+@each $i in $fix-cols {
+    @each $size in map-keys($grid-breakpoints) {
+        .fixcol-#{$size}-#{$i},
+        .fixcol-#{$size}-#{$i}-rest {
+            @extend .fixcol;
+        }
+    }
+}
+
+
+// xs screen size squares
+@include make-square-col(xs);
+
+// xs screen size fixcols
+@include make-fixcol(xs);
+
+@include media-breakpoint-up(sm) {
+
+    // sm screen size squares
+    @include make-square-col(sm);
+
+    // sm screen size fixcols
+    @include make-fixcol(sm);
+}
+
+@include media-breakpoint-up(md) {
+
+    // md screen size squares
+    @include make-square-col(md);
+
+    // md screen size fixcols
+    @include make-fixcol(md);
+}
+
+@include media-breakpoint-up(lg) {
+
+    // lg screen size squares
+    @include make-square-col(lg);
+
+    // lg screen size fixcols
+    @include make-fixcol(lg);
+}
+
+@include media-breakpoint-up(xl) {
+
+    // xl screen size squares
+    @include make-square-col(xl);
+
+    // xl screen size fixcols
+    @include make-fixcol(xl);
+}
+
+
 .content-box {
     position: relative;
     border-radius: var(--#{$prefix}border-radius);
@@ -492,6 +340,8 @@ $sq-margin: 20px;
 }
 
 .tile-col {
+    position: relative;
+
     .full-overlay {
         position: absolute;
         height: 100%;
@@ -524,13 +374,18 @@ $sq-margin: 20px;
 
 .tile-col,
 .square-col {
+
+    --#{$prefix}square-text-overlay-padding: #{$square-text-overlay-padding};
+    --#{$prefix}square-paragraph-margin: #{$square-paragraph-margin};
+
     .text-overlay {
         position: absolute;
         bottom: 0;
-        padding: var(--#{$prefix}default-margin-small) var(--#{$prefix}default-margin);
+        padding: var(--#{$prefix}square-text-overlay-padding);
         background: $square-overlay-bg-color;
         width: 100%;
         z-index: $overflow-z-index;
+        @include use-hyphens-text();
 
         h1, h2, h3, h4, div {
             color: $square-overlay-text-color;
@@ -557,11 +412,14 @@ $sq-margin: 20px;
         .heading + .body,
         h2 + h3,
         div.teaser-date + h2 {
-            margin-top: var(--#{$prefix}default-margin-verysmall);
+            margin-top: var(--#{$prefix}square-paragraph-margin);
         }
     }
     a:hover {
         text-decoration: none;
+        h1, h2, h3, h4, h5, h6 {
+            text-decoration: none;
+        }
     }
 
     @include media-breakpoint-down(md) {
@@ -614,7 +472,6 @@ $sq-margin: 20px;
 
         &.square-large {
             .text-overlay {
-                padding: var(--#{$prefix}default-margin);
                 h2 {
                     font-size: 2.0rem;
                 }
@@ -649,7 +506,6 @@ $sq-margin: 20px;
             }
             &.square-large {
                 .text-overlay {
-                    padding: var(--#{$prefix}default-margin-small) var(--#{$prefix}default-margin);
                     min-height: 18.5%;
                 }
             }

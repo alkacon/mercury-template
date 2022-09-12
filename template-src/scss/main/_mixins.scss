@@ -354,7 +354,7 @@
     }
 
     .subtitle {
-        margin-top: var(--#{$prefix}default-margin-verysmall);
+        margin-top: calc(0.5 * var(--#{$prefix}paragraph-margin-bottom));
         line-height: 1.15;
         font-style: italic;
         font-size: $section-subtitle-size;
@@ -549,6 +549,15 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+@mixin ensure-not-css-property($value) {
+    // Ensures a SCSS variable is NOT set as a CSS varianble / custom property
+    $check: ""+#{$value};
+    @if (null != str-index($check, "--")) {
+        @error "SCSS variable value '#{$check}' must NOT contain a CSS custom property.";
+    }
+}
+
 
 @mixin set-box-color-defaults($bg-map: null) {
 

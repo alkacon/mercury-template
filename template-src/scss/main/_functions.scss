@@ -415,7 +415,7 @@ $linear-channel-values:
   $backLum: luminance($back) + .05;
   $foreLum: luminance($front) + .05;
 
-  @return divide(max($backLum, $foreLum), min($backLum, $foreLum));
+  @return divide(max($backLum, $foreLum), min($backLum, $foreLum), $divide-precision);
 }
 
 // Optimized encoding an SVG for use in a data uri

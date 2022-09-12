@@ -40,7 +40,7 @@
     @if ($cols < 12) {
         @return calc(
             (100% + var(--#{$prefix}gutter-x))
-            * #{divide($cols, $grid-columns)}
+            * #{divide($cols, $grid-columns, $divide-precision)}
             - (0.5 * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
         );
     } @else {
@@ -52,7 +52,7 @@
     @if ($cols < 12) {
         @return calc(
             (100% + var(--#{$prefix}gutter-x))
-            * #{divide($cols, $grid-columns)}
+            * #{divide($cols, $grid-columns, $divide-precision)}
             - var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
         );
     } @else {

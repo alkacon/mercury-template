@@ -76,6 +76,7 @@
         <c:set var="initparams" value="${initparams}&facet_parent-folders=${param['facet_parent-folders']}" />
        </c:if>
     <c:if test="${not empty initparams}">
+        <c:set var="initparams">${initparams.replace("'","&#39;")}</c:set>
         <c:set var="initparams" value="reloaded${initparams}" />
     </c:if>
 

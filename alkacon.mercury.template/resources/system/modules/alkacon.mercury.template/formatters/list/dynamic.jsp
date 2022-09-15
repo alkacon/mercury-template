@@ -121,6 +121,7 @@
             <c:set var="initparams" value="${initparams}&radius=${param['radius']}" />
         </c:if>
         <c:if test="${not empty initparams}">
+            <c:set var="initparams">${initparams.replace("'","&#39;")}</c:set>
             <c:set var="initparams" value="reloaded${initparams}" />
         </c:if>
 

@@ -46,7 +46,7 @@
 <mercury:load-plugins group="css" />
 <mercury:load-plugins group="js-async" />
 <mercury:load-plugins group="js-defer" />
-<mercury:load-plugins group="template-head-includes" type="jsp-nocache" />
+<mercury:load-plugins group="template-head-includes" type="jsp" />
 
 <c:choose>
     <c:when test="${empty cms.plugins['custom-css']}">
@@ -71,7 +71,7 @@
     </c:when>
     <c:otherwise>
         <%-- Use custom CSS plugin --%>
-        <mercury:load-plugins group="custom-css" type="jsp-nocache" />
+        <mercury:load-plugins group="custom-css" type="jsp" />
     </c:otherwise>
 </c:choose>
 
@@ -89,7 +89,7 @@
     </c:when>
     <c:otherwise>
         <%-- Use custom favicon plugin --%>
-        <mercury:load-plugins group="custom-favicon" type="jsp-nocache" />
+        <mercury:load-plugins group="custom-favicon" type="jsp" />
     </c:otherwise>
 </c:choose>
 
@@ -141,7 +141,7 @@
     </c:when>
     <c:otherwise>
         <%-- Use custom body plugin --%>
-        <mercury:load-plugins group="custom-body" type="jsp-nocache" />
+        <mercury:load-plugins group="custom-body" type="jsp" />
     </c:otherwise>
 </c:choose>
 

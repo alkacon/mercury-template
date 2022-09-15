@@ -27,7 +27,7 @@ var DEBUG;
 "use strict";
 
 //                      2     4   6   8   10
-const massTable = [1,20,14,11,8,6,4,4,2,2,1];
+const massTable = [1,20,14,11,7,6,4,4,2,2,1];
 const getMass = (speed) => {
     if ((speed > 9) || (speed < 1)) return 1;
     return massTable[speed];

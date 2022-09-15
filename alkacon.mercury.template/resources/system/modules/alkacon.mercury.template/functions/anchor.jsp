@@ -13,6 +13,10 @@
 
 
 <c:set var="anchor" value="${fn:trim(cms.element.setting.anchor)}" />
+<c:if test="${not empty anchor}">
+    <mercury:set-content-disposition name="${anchor}" suffix="" />
+    <c:set var="anchor" value="${contentDispositionFilename}" />
+</c:if>
 
 <mercury:nl />
 
@@ -25,7 +29,8 @@
         <jsp:attribute name="text">
             <c:choose>
                 <c:when test="${not empty anchor}">
-                    <fmt:message key="msg.page.anchor" /> #${anchor}<%----%>
+                    <fmt:message key="msg.page.anchor" /><%----%>
+                    ${' '}<a href="<cms:link>${cms.requestContext.uri}#${anchor}</cms:link>">#${anchor}</a><%----%>
                     <div id="${anchor}" class="oct-anchor-set"></div><%----%>
                 </c:when>
                 <c:otherwise>

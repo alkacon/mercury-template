@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The Burger variant generates a "Hamburger" menu for the main header navigation.]]></description>
-		<version>13.0.4</version>
+		<version>13.0.5</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -385,6 +385,10 @@
 			<datecreated>Tue, 30 Aug 2022 08:19:53 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[uri;locale;params]]></value>
+				</property>
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>

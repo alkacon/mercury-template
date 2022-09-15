@@ -33,6 +33,9 @@
         </c:if>
     </c:if>
     <c:choose>
+        <c:when test="${type eq 'jsp'}">
+            <cms:include file="${plugin.path}" />
+        </c:when>
         <c:when test="${type eq 'jsp-nocache'}">
             <cms:include file="${plugin.path}" cacheable="false" />
         </c:when>

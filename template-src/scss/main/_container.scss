@@ -292,10 +292,15 @@ $oct-edit-infos:
 
 // Container / editor elements background
 @mixin oct-meta-bg {
+    --#{$prefix}link-color: #{$con-text-col-light};
+    --#{$prefix}link-hover-color: #{$con-text-col-light};
     border-radius: 4px !important;
     color: $con-text-col-light !important;
     background-color: $con-col-orange !important;
     background: linear-gradient(166deg, lighten($con-col-orange, 5%) 0%, darken($con-col-orange, 5%) 100%) !important;
+    a:hover {
+        text-decoration: underline;
+    }
 }
 
 .oct-meta-info {

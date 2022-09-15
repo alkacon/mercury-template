@@ -156,6 +156,12 @@ var Mercury = function(jQ) {
         return null;
     }
 
+    function getDebug() {
+        // returns the DEBUG level as integer
+        if (VERBOSE) return 2;
+        if (DEBUG) return 1;
+        return 0;
+    }
 
     function getLocale() {
 
@@ -1052,6 +1058,7 @@ var Mercury = function(jQ) {
         addUpdateCallback: addUpdateCallback,
         calcRatio: calcRatio,
         debounce: debounce,
+        debug: getDebug,
         device: device,
         getCssJsonData: getCssJsonData,
         getInfo: getInfo,

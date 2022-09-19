@@ -28,14 +28,11 @@ $pswp__root-z-index:        $above-oc-toolbar !default;
 // import the photswipe distribution CSS
 @import '../../plugins/photoswipe/photoswipe';
 
-// Note: This value must be available in _tiles.scss $sq-margins.
-// This value is currently also hardcoded as "square-m-2" in the imageseries formatter JSP as css class.
 $imageseries-square-margin: 2px !default;
 
 // Image series base classes
 
 .type-imageseries {
-
     &.element {
         .images {
             font-weight: $font-weight-bold;
@@ -48,6 +45,8 @@ $imageseries-square-margin: 2px !default;
         position: relative;
 
         > .images {
+            --#{$prefix}sq-margin: #{$imageseries-square-margin}px;
+
             margin-top: -1 * $imageseries-square-margin;
             margin-bottom: -1 * $imageseries-square-margin;
         }

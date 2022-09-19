@@ -95,6 +95,22 @@
     z-index: #{$overflow-z-index + 2};
 }
 
+@mixin copyright-subtitle {
+    .copyright {
+        position: relative;
+        > div {
+             @include image-copyright;
+        }
+    }
+
+    .subtitle {
+        margin-top: calc(0.5 * var(--#{$prefix}paragraph-margin-bottom));
+        line-height: 1.15;
+        font-style: italic;
+        font-size: $section-subtitle-size;
+    }
+}
+
 // Clearfix that is ::before not ::after
 @mixin clearfix-before {
     &::before {
@@ -105,7 +121,7 @@
 }
 
 // Generate lead text
-@mixin text-lead() {
+@mixin text-lead {
     @if ($line-height-lead != $line-height-base) {
         line-height: $line-height-lead;
     }
@@ -126,20 +142,6 @@
     transition-timing-function: $easeInOutSine;
     transition-delay: 0s;
     z-index: #{$overflow-z-index - 1};
-}
-
-
-// White noise image for backgrounds
-@mixin noise-image {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-repeat: repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAHlBMVEUAAAD///////////////////////////////////8kfJuVAAAACnRSTlMAIgQNCB4bERUYt5wRYgAAA+ZJREFUOMt9lEtT2lAYhr9zciHZnXMSSNjlBJFml0Cx7S7gBd1BQMFdAmp1lwTsZReKqN0laK3+205nOp1OZ9p/8M7zzPMCnhKUUE0svfCVk46oyvXpt4ArM5CuzrRwzyrTnIrukkDg+WRYW76zIeozWVAlRKO945nz6uDkEIkVGAUDOHgR3swn5uohb3po1tQtL6SfUc/9CC2yRQYo+JLAHBqINeiqBHn3zDFB1W1r15BDJiOUbyF5jY+3/cHUrMFClHitfRtmrGK6DQulG2Y6SDfG0FhosaPssV1rbcFL1oFveqeWlCMXcrcYEtTrXpJUU3WkPwiBI/rZggKJh4i+FYSujc83JFzeEPDKo/mpDi6OqZ2YbqyK291ifUBrDLno6YWCSoCIZILGohC3SbSR9gce/6RUvwCCRmj164nh+wFrTS4UxKMVTsEAb9q9b9Y2qYd7vid+zxmiLrkK3TMguO0lfkGGr09u1pvOWBAAleY3lgZ/kCoRoEltIuSVreVyBNFlPzfq6HLBbeqrJEe5pLLv7nMP5H9NgOpVUfGJRL5Ymb5ulRS+f7YqrfLkCfY7GerK5J5W6PUtKn9EbzqFR0RSBVHTJ7ojnuIdJFDitd6FboaE8gyB1m8mERY5eTk+EUj4GuPpqH5d8zCACJr9xlJaMwBUtc1BKArgWeIY7HMLF92tonQJ9Tz1M1brB4FlHLnwNr5VE87ueubbR4hzZZGiO1LscBUQ5OIhPnGfoSMWXigMzAx8RnkPIJ7hDHaooS4kwNsBOLp9RD5kGBTlvDUTPC0X9zXYVfMO53Y5JSiAXU5dEjvKaZJo6zM0kMiF2XiVxwaQDhxjvHzsAuwsM36nbk8V2ClttYBsLQRy9BlZVEPykyAfuIpDdXIRgetNqb3XidzolhoQ7nZvxqUhBwTwhJcXcmWtorRfuesyrkOhQhX6BeBHs45FphhEu44Ogc8PkTJ63Rlw6AkM7A+N0zvh9c0D0wp/IL63wY5qwP9VHTThhp6GXBR6lSogxkB9wMR3Awa/HfIOILyJY5dGUBsa+n+2+ePg/mDoElOfWPsfrsbuRpRpmjTnYD8nUvtYRA2S8qRVCX3J7S87HulB+TsyhBF7YwmZaCWErMLbqYyLFOD5hchsblKSjR34Wlbf99U4ZiSx4eyxPTwEFJVvVV88qB+Wrm3f+SkNZMG3tuvdcfD3MUBZ8nbdaWVvZIJuRcqSRsYkpONYA3XnsXzUPmlKmEiUlF41LCXdmM0hh19krQgL5KJULKdNwu54XN6HT5jKeN1wz6WpTCnH/mRbtockvocqqrDz9qch46kTvqqEv0v7AUw2CT/ylENXAAAAAElFTkSuQmCC);
 }
 
 // color transition effect, should be used for :hover elements
@@ -342,22 +344,6 @@
 @mixin piece-bottom-margin($margin-bottom: var(--#{$prefix}element-margin))  {
     > .piece:not(:last-of-type) {
         margin-bottom: $margin-bottom;
-    }
-}
-
-@mixin copyright-subtitle {
-    .copyright {
-        position: relative;
-        > div {
-             @include image-copyright;
-        }
-    }
-
-    .subtitle {
-        margin-top: calc(0.5 * var(--#{$prefix}paragraph-margin-bottom));
-        line-height: 1.15;
-        font-style: italic;
-        font-size: $section-subtitle-size;
     }
 }
 

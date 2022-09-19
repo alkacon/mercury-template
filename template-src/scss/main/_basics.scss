@@ -299,6 +299,13 @@ html.opencms-page-editor {
         }
     }
 }
+html.opencms-editor-active {
+    .anchor-link-parent:hover {
+        .anchor-link {
+            display: none;
+        }
+    }
+}
 
 // Basic Print support
 @media print {

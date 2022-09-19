@@ -132,6 +132,7 @@ $slider-opacity-active: 1 !default;
 
     .slide-wrapper {
         .caption {
+            @include use-hyphens-headings;
             padding: $slider-caption-padding;
             position: absolute;
             max-width: calc(100% - (2 * var(--#{$prefix}default-margin)));

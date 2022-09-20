@@ -14,7 +14,7 @@
 
 <c:set var="anchor" value="${fn:trim(cms.element.setting.anchor)}" />
 <c:if test="${not empty anchor}">
-    <mercury:set-content-disposition name="${anchor}" suffix="" />
+    <mercury:set-content-disposition name="${anchor}" suffix="" setFilenameOnly="${true}" />
     <c:set var="anchor" value="${contentDispositionFilename}" />
 </c:if>
 

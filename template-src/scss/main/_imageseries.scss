@@ -45,7 +45,7 @@ $imageseries-square-margin: 2px !default;
         position: relative;
 
         > .images {
-            --#{$prefix}sq-margin: #{$imageseries-square-margin}px;
+            --#{$prefix}sq-margin: #{$imageseries-square-margin};
 
             margin-top: -1 * $imageseries-square-margin;
             margin-bottom: -1 * $imageseries-square-margin;

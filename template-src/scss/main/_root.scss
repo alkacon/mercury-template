@@ -43,10 +43,10 @@
 
     --#{$prefix}headings-color: #{$headings-color};
 
-    @if ($linked-headings-color != inherit) {
+    @if ($linked-headings-color != unset) {
         --#{$prefix}linked-headings-color: #{$linked-headings-color};
     }
-    @if ($linked-headings-hover-color != inherit) {
+    @if ($linked-headings-hover-color != unset) {
         --#{$prefix}linked-headings-hover-color: #{$linked-headings-hover-color};
     }
     @if ($intro-headings-color != $main-theme) {

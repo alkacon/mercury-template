@@ -21,12 +21,9 @@ import Masonry from 'masonry-layout';
 
 "use strict";
 
-// the global objects that must be passed to this module
-var DEBUG;
-
 function createMasonryList(listId) {
 
-    if (DEBUG) console.info("MasonryList.createMasonryList(" + listId + ")");
+    if (Mercury.debug()) console.info("MasonryList.createMasonryList(" + listId + ")");
 
     return new Masonry('#' + listId + " .list-entries", {
         itemSelector: '.tile-col',
@@ -36,18 +33,17 @@ function createMasonryList(listId) {
 
 /****** Exported functions ******/
 
-export function init(jQuery, debug) {
+export function init() {
 
-    DEBUG = debug;
-    if (DEBUG) console.info("MasonryList.init()");
+    if (Mercury.debug()) console.info("MasonryList.init()");
 
     const listElements = document.querySelectorAll('.masonry-list .list-dynamic');
-    if (DEBUG) console.info("MasonryList.init() .masonry-list .list-dynamic elements found: " + listElements.length);
+    if (Mercury.debug()) console.info("MasonryList.init() .masonry-list .list-dynamic elements found: " + listElements.length);
 
     [].forEach.call(listElements, (listElement, i) => {
         listElement.addEventListener("list:loaded", function(e) {
             const listId = e.target.getAttribute('id');
-            if (DEBUG) console.info("MasonryList.init() 'list:loaded' event caught for: " + listId);
+            if (Mercury.debug()) console.info("MasonryList.init() 'list:loaded' event caught for: " + listId);
             createMasonryList(listId);
         });
     });

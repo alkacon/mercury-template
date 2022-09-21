@@ -373,7 +373,7 @@ function redrawMap(mapId, event) {
 
     // called if map is in a tab or accordion after being revealed
     var $parentElement;
-    if (event.namespace == "bs.tab") {
+    if (event.type == "shown.bs.tab") {
         var target = jQ(event.target).attr("data-bs-target");
         $parentElement = jQ(target);
     } else {

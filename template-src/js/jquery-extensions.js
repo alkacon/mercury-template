@@ -45,7 +45,7 @@ jQuery.fn.visible = function( partial ) {
     var compareBottom = partial === true ? _top : _bottom;
 
     return ((compareTop >= Mercury.windowScrollTop()) &&
-            (compareBottom - 100 <= (Mercury.windowScrollTop() + Mercury.windowHeight())));
+            (compareBottom - 100 <= (Mercury.windowScrollTop() + window.innerHeight)));
 };
 
 

@@ -286,8 +286,8 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
             }
 
             // calculate the spinner position in context to the visible list part
-            var scrollTop = jQ(window).scrollTop();
-            var windowHeight = jQ(window).height();
+            var scrollTop = Mercury.windowScrollTop();
+            var windowHeight = window.innerHeight;
             var elementTop = list.$element.offset().top;
             var offsetTop = scrollTop > elementTop ? (elementTop - scrollTop) * -1 : 0;
             var elementHeight = list.$element.outerHeight(true);

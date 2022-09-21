@@ -21,42 +21,40 @@
  * Callbacks to update the OpenCms edit points when the screen element change.
  */
 
-export function _OpenCmsReinitEditButtons(DEBUG) {
+export function _OpenCmsReinitEditButtons() {
 
-    if (DEBUG) console.info('OpenCmsReinitEditButtons() called!');
+    if (Mercury.debug()) console.info('OpenCmsReinitEditButtons() called!');
     if (typeof opencms != 'undefined' && typeof opencms.reinitializeEditButtons === 'function') {
         opencms.reinitializeEditButtons();
-    } else if (DEBUG) {
+    } else if (Mercury.debug()) {
         console.info('OpenCmsReinitEditButtons(): Edit button re-init function not available!');
     }
 }
 
 
-export function _OpenCmsInit(jQuery, DEBUG) {
+export function _OpenCmsInit() {
 
     // accordion
-    jQuery('.accordion, .collapse').on('shown.bs.collapse', function() {
-
-        if (DEBUG) console.info('Event handler .accordion(shown.bs.collapse) triggered!');
-        _OpenCmsReinitEditButtons(DEBUG);
-    })
-
-    jQuery('.accordion, .collapse').on('hidden.bs.collapse', function() {
-
-        if (DEBUG) console.info('Event handler .accordion(hidden.bs.collapse) triggered!');
-        _OpenCmsReinitEditButtons(DEBUG);
-    })
+    document.querySelectorAll('.accordion .collapse').forEach(function(el) {
+        el.addEventListener('shown.bs.collapse', event => {
+            if (Mercury.debug()) console.info('Event handler accordion(shown.bs.collapse) triggered!');
+            _OpenCmsReinitEditButtons();
+        });
+        el.addEventListener('hidden.bs.collapse', event => {
+            if (Mercury.debug()) console.info('Event handler accordion(hidden.bs.collapse) triggered!');
+            _OpenCmsReinitEditButtons();
+        });
+    });
 
     // tabs
-    jQuery('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
-
-        if (DEBUG) console.info('Event handler a[data-bs-toggle=tab](shown.bs.tab) triggered!');
-        _OpenCmsReinitEditButtons(DEBUG);
-    })
-
-    jQuery('a[data-bs-toggle="tab"]').on('hidden.bs.tab', function(e) {
-
-        if (DEBUG) console.info('Event handler a[data-bs-toggle=tab](hidden.bs.tab) triggered!');
-        _OpenCmsReinitEditButtons(DEBUG);
-    })
+    document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(function(el) {
+        el.addEventListener('shown.bs.tab', event => {
+            if (Mercury.debug()) console.info('Event handler tab(shown.bs.tab) triggered!');
+            _OpenCmsReinitEditButtons();
+        });
+        el.addEventListener('hidden.bs.tab', event => {
+            if (Mercury.debug()) console.info('Event handler tab(hidden.bs.tab) triggered!');
+            _OpenCmsReinitEditButtons();
+        });
+    });
 }

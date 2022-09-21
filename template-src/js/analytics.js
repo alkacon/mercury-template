@@ -23,17 +23,13 @@ window._paq = window._paq || [];
 
 "use strict";
 
-// the global objects that must be passed to this module
-var jQ;
-var DEBUG;
-
 var m_googleInitialized = false;
 var m_piwikInitialized = false;
 var m_matomoInitialized = false;
 
 function addGoogleAnalytics(analyticsId) {
 
-    if (DEBUG) console.info("Analytics.addGoogleAnalytics() initializing Google analytics using id: " + analyticsId);
+    if (Mercury.debug()) console.info("Analytics.addGoogleAnalytics() initializing Google analytics using id: " + analyticsId);
 
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -55,7 +51,7 @@ function addPiwik(piwikData) {
     if (piwikData.url.endsWith("/")) {
         piwikData.url = piwikData.url.substring(0, piwikData.url.length - 1);
     }
-    if (DEBUG) console.info("Analytics.addPiwik() initializing Piwik using url: " + piwikData.url + " and id: " + piwikData.id);
+    if (Mercury.debug()) console.info("Analytics.addPiwik() initializing Piwik using url: " + piwikData.url + " and id: " + piwikData.id);
 
     // see: https://developer.piwik.org/guides/tracking-javascript-guide
     if (piwikData.setDocumentTitle == "true"){
@@ -89,7 +85,7 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
     if (matomoData.url.endsWith("/")) {
         matomoData.url = matomoData.url.substring(0, matomoData.url.length - 1);
     }
-    if (DEBUG) console.info("Analytics.addMatomo() Initializing Matomo using url: " + matomoData.url + " and id: " + matomoData.id + " - Cookie Consent: " + userAllowedStatisticalCookies + " - JS Tracking: " + matomoData.jst+ " - DNT: " + matomoData.dnt);
+    if (Mercury.debug()) console.info("Analytics.addMatomo() Initializing Matomo using url: " + matomoData.url + " and id: " + matomoData.id + " - Cookie Consent: " + userAllowedStatisticalCookies + " - JS Tracking: " + matomoData.jst+ " - DNT: " + matomoData.dnt);
 
     // see: https://developer.matomo.org/guides/tracking-javascript-guide
     if (matomoData.setDocumentTitle == "true"){
@@ -121,7 +117,7 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
     m_matomoInitialized = true;
     $(".matomo-goal").each(function(index, element) {
         var goal = location.pathname;
-        if (DEBUG) console.info('Initializing Matomo goal: ' + goal);
+        if (Mercury.debug()) console.info('Initializing Matomo goal: ' + goal);
         _paq.push(['setDocumentTitle', document.title + ' [' + goal + ']']);
         _paq.push(['trackPageView']);
     })
@@ -129,12 +125,9 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
 
 /****** Exported functions ******/
 
-export function init(jQuery, debug) {
+export function init() {
 
-    jQ = jQuery;
-    DEBUG = debug;
-
-    if (DEBUG) console.info("Analytics.init()");
+    if (Mercury.debug()) console.info("Analytics.init()");
 
     var userAllowedStatisticalCookies = PrivacyPolicy.cookiesAcceptedStatistical();
 
@@ -149,7 +142,7 @@ export function init(jQuery, debug) {
                     googleAnalyticsId = "UA-" + googleAnalyticsId;
                 }
             }
-            if (DEBUG) {
+            if (Mercury.debug()) {
                 if (googleAnalyticsId != null) {
                     // Goggle analytics ID is read in pageinfo tag and stored in JavaScript via main script init()
                     console.info("Analytics.init() Google analytic ID is: " + googleAnalyticsId);
@@ -166,65 +159,61 @@ export function init(jQuery, debug) {
 
         if (! m_piwikInitialized) {
             // initialize Piwik / Matomo Analytics (only if it has not been initialized already for this page)
-            jQ('#template-info').each(function(){
-
-                var $element = jQ(this);
-                var piwikData = null;
-                if (typeof $element.data("piwik") != 'undefined') {
-                    piwikData = $element.data("piwik");
+            document.querySelectorAll('#template-info').forEach(function(element){
+                let piwikData = null;
+                if ("piwik" in element.dataset) {
+                    piwikData = JSON.parse(element.dataset["piwik"]);
                 }
                 if (piwikData != null) {
-                    if (DEBUG) console.info("Analytics.init() Piwik data found:");
-                    if (DEBUG) jQ.each(piwikData, function( key, value ) { console.info( "- " + key + ": " + value ); });
+                    if (Mercury.debug()) console.info("Analytics.init() Piwik data found:");
+                    if (Mercury.debug()) for (const [key, value] of Object.entries(piwikData)) { console.info( "- " + key + ": " + value ) };
                     if (typeof piwikData.id != 'undefined') {
                         if (Mercury.isOnlineProject()) {
                             // only enable Piwik in the online project when ID and URL is set
                             addPiwik(piwikData);
                         } else {
-                            if (DEBUG) console.info("Analytics.init() Piwik NOT initialized because not in the ONLINE project!");
+                            if (Mercury.debug()) console.info("Analytics.init() Piwik NOT initialized because not in the ONLINE project!");
                         }
                     } else {
-                        if (DEBUG) console.info("Analytics.init() Piwik ID (property 'piwik.id') not set!");
+                        if (Mercury.debug()) console.info("Analytics.init() Piwik ID (property 'piwik.id') not set!");
                     }
                 } else {
-                    if (DEBUG) console.info("Analytics.init() Piwik URL (property 'piwik.url') not set!");
+                    if (Mercury.debug()) console.info("Analytics.init() Piwik URL (property 'piwik.url') not set!");
                 }
             });
         }
 
     } else {
-        if (DEBUG) console.info("Analytics.init() Statistical cookies not accepted - Google / Piwik analytics disabled!");
+        if (Mercury.debug()) console.info("Analytics.init() Statistical cookies not accepted - Google / Piwik analytics disabled!");
     }
 
     if (! m_matomoInitialized) {
         // initialize Matomo Analytics (only if it has not been initialized already for this page)
-        jQ('#template-info').each(function(){
-
-            var $element = jQ(this);
-            var matomoData = null;
-            if (typeof $element.data("matomo") !== 'undefined') {
-                matomoData = $element.data("matomo");
+        document.querySelectorAll('#template-info').forEach(function(element){
+            let matomoData = null;
+            if ("matomo" in element.dataset) {
+                matomoData = JSON.parse(element.dataset["matomo"]);
             }
             if (matomoData != null) {
-                if (DEBUG) console.info("Analytics.init() Matomo data found:");
-                if (DEBUG) jQ.each(matomoData, function( key, value ) { console.info( "- " + key + ": " + value ); });
+                if (Mercury.debug()) console.info("Analytics.init() Matomo data found:");
+                if (Mercury.debug()) for (const [key, value] of Object.entries(matomoData)) { console.info( "- " + key + ": " + value ) };
                 if (userAllowedStatisticalCookies || matomoData.jst) {
                     if ((typeof matomoData.id !== 'undefined') && (typeof matomoData.url !== 'undefined')) {
                         if (Mercury.isOnlineProject()) {
                             // only enable Matomo in the online project when ID and URL is set
                                 addMatomo(matomoData, userAllowedStatisticalCookies);
                         } else {
-                            if (DEBUG) console.info("Analytics.init() Matomo NOT initialized because not in the ONLINE project!");
+                            if (Mercury.debug()) console.info("Analytics.init() Matomo NOT initialized because not in the ONLINE project!");
                         }
                     } else {
-                        if (DEBUG && (typeof matomoData.id === 'undefined')) console.info("Analytics.init() Matomo ID (property 'matomo.id') not set!");
-                        if (DEBUG && (typeof matomoData.url === 'undefined')) console.info("Analytics.init() Matomo URL (property 'matomo.url') not set!");
+                        if (Mercury.debug() && (typeof matomoData.id === 'undefined')) console.info("Analytics.init() Matomo ID (property 'matomo.id') not set!");
+                        if (Mercury.debug() && (typeof matomoData.url === 'undefined')) console.info("Analytics.init() Matomo URL (property 'matomo.url') not set!");
                     }
                 } else {
-                    if (DEBUG) console.info("Analytics.init() Statistical cookies not accepted AND tracking by JavaScript not enabled - Matomo analytics disabled!");
+                    if (Mercury.debug()) console.info("Analytics.init() Statistical cookies not accepted AND tracking by JavaScript not enabled - Matomo analytics disabled!");
                 }
             } else {
-                if (DEBUG) console.info("Analytics.init() Matomo properties 'matomo.url' and 'matomo.id' not set!");
+                if (Mercury.debug()) console.info("Analytics.init() Matomo properties 'matomo.url' and 'matomo.id' not set!");
             }
         });
     }

@@ -49,20 +49,18 @@
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
 
-    &.bg-highlight {
-        background-color: var(--#{$prefix}highlight-color);
-    }
+    &.bg-highlight,
     &.bg-switch:nth-of-type(even) {
-        background-color: var(--#{$prefix}highlight-color);
+        @include set-box-colors($highlight-color);
     }
     &.bg-theme {
-        background-color: var(--#{$prefix}main-theme);
+        @include set-box-colors($main-theme);
     }
     &.bg-grey-light {
-        background-color: var(--#{$prefix}grey-light);
+        @include set-box-colors($grey-light);
     }
     &.bg-grey {
-        background-color: var(--#{$prefix}grey);
+        @include set-box-colors($grey);
     }
 }
 

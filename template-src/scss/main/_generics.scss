@@ -22,7 +22,7 @@
 // Colored backgrounds
 
 .box {
-    @include set-box-colors($highlight-color);
+    @include set-box-colors($highlight-color, true, true);
 
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
@@ -61,7 +61,7 @@
         }
     }
 
-    .color-#{""+$color} {
+    .color-#{""+$color}:not(.imageflip) {
         @include change-colors($value);
     }
 }

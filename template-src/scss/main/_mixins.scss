@@ -544,68 +544,118 @@
     }
 }
 
+// $set-default: if TRUE, then output all variables
+//               if FALSE, then only output a variable in case the variable has been explicitly set OR it is required because of bg / fg contrast
+@mixin set-box-color-defaults($bg-map: null, $set-default: true) {
 
-@mixin set-box-color-defaults($bg-map: null) {
-
-    --#{$prefix}btn-bg:                             #{get-color("btn-bg",                       var(--#{$prefix}link-color),                    $bg-map)};
-    --#{$prefix}btn-fg:                             #{get-color("btn-fg",                       var(--#{$prefix}link-fg-color),                 $bg-map)};
+    @if ($set-default or (has-color("btn-bg", $bg-map))) {
+        --#{$prefix}btn-bg:                         #{get-color("btn-bg",                       var(--#{$prefix}link-color),                    $bg-map)};
+    }
+    $btn-bg-val: get-color-val("btn-bg", $bg-map);
+    @if ($set-default or ($btn-bg-val != null) or has-color("btn-fg", $bg-map)) {
+        $btn-fg-def: conditional-value($btn-bg-val != null, get-text-color($btn-bg-val), var(--#{$prefix}link-fg-color));
+        --#{$prefix}btn-fg:                         #{get-color("btn-fg",                       #{$btn-fg-def},                                 $bg-map)};
+    }
 
     // btn hover colors: if btn bg/fg has NOT been customized, base default hover colors on link colors, otherwise on customized btn colors
-    @if (get-color("btn-bg", none, $bg-map) == none) {
-        --#{$prefix}btn-hover-bg:                   #{get-color("btn-hover-bg",                 var(--#{$prefix}link-hover-color),              $bg-map)};
-    } @else {
+    @if (has-color("btn-bg", $bg-map)) {
         --#{$prefix}btn-hover-bg:                   #{get-color("btn-hover-bg",                 var(--#{$prefix}btn-bg),                        $bg-map)};
-    }
-    @if (get-color("btn-fg", none, $bg-map) == none) {
-        --#{$prefix}btn-hover-fg:                   #{get-color("btn-hover-fg",                 var(--#{$prefix}link-hover-fg-color),           $bg-map)};
     } @else {
-        --#{$prefix}btn-hover-fg:                   #{get-color("btn-hover-fg",                 var(--#{$prefix}btn-fg),                        $bg-map)};
+        @if ($set-default or has-color("btn-hover-bg", $bg-map)) {
+            --#{$prefix}btn-hover-bg:               #{get-color("btn-hover-bg",                 var(--#{$prefix}link-hover-color),              $bg-map)};
+        }
+    }
+    $btn-hover-bg-val: get-color-val("btn-hover-bg", $bg-map);
+    @if (($btn-hover-bg-val != null) or has-color("btn-fg", $bg-map)) {
+        $btn-hover-fg-def: conditional-value($btn-hover-bg-val != null, get-text-color($btn-hover-bg-val), var(--#{$prefix}btn-fg));
+        --#{$prefix}btn-hover-fg:                   #{get-color("btn-hover-fg",                 #{$btn-hover-fg-def},                           $bg-map)};
+    } @else {
+        @if ($set-default or has-color("btn-hover-fg", $bg-map)) {
+            --#{$prefix}btn-hover-fg:               #{get-color("btn-hover-fg",                 var(--#{$prefix}link-hover-fg-color),           $bg-map)};
+        }
     }
 
-    --#{$prefix}main-theme:                         #{get-color("main-theme",                   var(--#{$prefix}link-color),                    $bg-map)};
-    --#{$prefix}main-theme-fg:                      #{get-color("main-theme-fg",                var(--#{$prefix}link-fg-color),                 $bg-map)};
-    --#{$prefix}main-theme-hover:                   #{get-color("main-theme-hover",             var(--#{$prefix}link-hover-color),              $bg-map)};
-    --#{$prefix}main-theme-hover-fg:                #{get-color("main-theme-hover-fg",          var(--#{$prefix}link-hover-fg-color),           $bg-map)};
+    @if ($set-default or has-color("main-theme", $bg-map)) {
+        --#{$prefix}main-theme:                     #{get-color("main-theme",                   var(--#{$prefix}link-color),                    $bg-map)};
+    }
+    $main-theme-val: get-color-val("main-theme", $bg-map);
+    @if ($set-default or ($main-theme-val != null) or has-color("main-theme-fg", $bg-map)) {
+        $main-theme-fg-def: conditional-value($main-theme-val != null, get-text-color($main-theme-val), var(--#{$prefix}link-fg-color));
+        --#{$prefix}main-theme-fg:                  #{get-color("main-theme-fg",                #{$main-theme-fg-def},                         $bg-map)};
+    }
+    @if ($set-default or has-color("main-theme-hover", $bg-map)) {
+        --#{$prefix}main-theme-hover:               #{get-color("main-theme-hover",             var(--#{$prefix}link-hover-color),              $bg-map)};
+    }
+    $main-theme-hover-val: get-color-val("main-theme-hover", $bg-map);
+    @if ($set-default or ($main-theme-hover-val != null) or has-color("main-theme-hover-fg", $bg-map)) {
+        $main-theme-hover-fg-def: conditional-value($main-theme-hover-val != null, get-text-color($main-theme-hover-val), var(--#{$prefix}link-hover-fg-color));
+        --#{$prefix}main-theme-hover-fg:            #{get-color("main-theme-hover-fg",          #{$main-theme-hover-fg-def},                   $bg-map)};
+    }
 
-    --#{$prefix}headings-color:                     #{get-color("headings-color",               var(--#{$prefix}body-color),                    $bg-map)};
-    --#{$prefix}intro-headings-color:               #{get-color("intro-headings-color",         var(--#{$prefix}headings-color),                $bg-map)};
-    @if ($linked-headings-color != inherit) {
+    @if ($set-default or has-color("headings-color", $bg-map)) {
+        --#{$prefix}headings-color:                 #{get-color("headings-color",               var(--#{$prefix}body-color),                    $bg-map)};
+    }
+    @if (has-color("headings-color", $bg-map)) {
+        --#{$prefix}intro-headings-color:           #{get-color("intro-headings-color",         var(--#{$prefix}headings-color),                $bg-map)};
+    } @else {
+        @if ($set-default or has-color("intro-headings-color", $bg-map)) {
+            --#{$prefix}intro-headings-color:      #{get-color("intro-headings-color",          var(--#{$prefix}body-color),                    $bg-map)};
+        }
+    }
+    @if (($linked-headings-color != unset) and ($set-default or has-color("inked-headings-color", $bg-map))) {
         --#{$prefix}linked-headings-color:          #{get-color("linked-headings-color",        var(--#{$prefix}link-color),                    $bg-map)};
     }
-    @if ($linked-headings-hover-color != inherit) {
+    @if (($linked-headings-hover-color != unset) and ($set-default or has-color("inked-headings-hover-color", $bg-map))) {
         --#{$prefix}linked-headings-hover-color:    #{get-color("linked-headings-hover-color",  var(--#{$prefix}link-hover-color),              $bg-map)};
     }
 
-    --#{$prefix}highlight-color:                    #{get-color("highlight-color",              rgb(var(--#{$prefix}highlight-color-rgb),0.25), $bg-map)};
-    --#{$prefix}highlight-fg-color:                 #{get-color("highlight-fg-color",           var(--#{$prefix}body-color),                    $bg-map)};
-    --#{$prefix}highlight-border-color:             #{get-color("highlight-border-color",       var(--#{$prefix}body-color),                    $bg-map)};
-    --#{$prefix}highlight-border-fg-color:          #{get-color("highlight-border-fg-color",    var(--#{$prefix}body-bg),                       $bg-map)};
+    @if ($set-default or has-color("highlight-color", $bg-map)) {
+        --#{$prefix}highlight-color:                #{get-color("highlight-color",              rgb(var(--#{$prefix}highlight-color-rgb),0.25), $bg-map)};
+    }
+    @if ($set-default or has-color("highlight-fg-color", $bg-map)) {
+        --#{$prefix}highlight-fg-color:             #{get-color("highlight-fg-color",           var(--#{$prefix}body-color),                    $bg-map)};
+    }
+    @if ($set-default or has-color("highlight-border-color", $bg-map)) {
+        --#{$prefix}highlight-border-color:         #{get-color("highlight-border-color",       var(--#{$prefix}body-color),                    $bg-map)};
+    }
+    @if ($set-default or has-color("highlight-border-fg-color", $bg-map)) {
+        --#{$prefix}highlight-border-fg-color:      #{get-color("highlight-border-fg-color",    var(--#{$prefix}body-bg),                       $bg-map)};
+    }
 }
 
-@mixin set-box-colors($bg-color, $set-defaults: true) {
+@mixin set-box-colors($bg-color, $include-defaults: true, $set-all-defaults: false) {
 
     $bg-map: map-get($theme-matched-colors, $bg-color);
 
-    $fg-color: null;
+    $fg-color: get-text-color($bg-color);
     $li-color: null;
     $li-hover-color: null;
 
     @if ($bg-map != null) {
         // we have a custom configuration
-        $fg-color: get-color("body-color", get-text-color($bg-color), $bg-map);
-        $li-color: get-color("link-color", $fg-color, $bg-map);
-        $li-hover-color: get-color("link-hover-color", $li-color, $bg-map);
-    } @else {
-        // no custom configuration: base values on global default colors
-        $fg-color: get-text-color($bg-color);
+        $fg-color: get-color("body-color", $fg-color, $bg-map);
+        @if (has-color("link-color", $bg-map)) {
+            $li-color: get-color("link-color", $fg-color, $bg-map);
+        }
+        @if (has-color("link-hover-color", $bg-map)) {
+            $li-hover-color: get-color("link-hover-color", $fg-color, $bg-map);
+        }
+    }
+    @if (($li-color == null) or ($li-hover-color)) {
         $lid-color: get-accent-color($fg-color, 20%);
         $contrast-l: contrast($bg-color, $link-color);
         $contrast-lh: contrast($bg-color, $link-hover-color);
-        $li-color: conditional-value($contrast-l > $text-contrast-threshold, $link-color, $lid-color);
-        $li-hover-color: conditional-value($li-color == $lid-color, $fg-color, conditional-value($contrast-lh > $text-contrast-threshold, $link-hover-color, $fg-color));
-        @debug "set-box-colors() no color match found for bg: #{$bg-color} - using fg: #{$fg-color} li: #{$li-color} li-hover: #{$li-hover-color}";
+        @if ($li-color == null) {
+            $li-color: conditional-value($contrast-l > $text-contrast-threshold, $link-color, $lid-color);
+        }
+        @if ($li-hover-color == null) {
+            $li-hover-color: conditional-value($li-color == $lid-color, $fg-color, conditional-value($contrast-lh > $text-contrast-threshold, $link-hover-color, $fg-color));
+        }
     }
     $li-fg-color: get-color("link-fg-color", #{get-text-color($li-color)}, $bg-map);
+    @if (not has-color("bg-color", $bg-map)) {
+        @debug "set-box-colors() no color match found for bg: #{$bg-color} - using fg: #{$fg-color} li: #{$li-color} li-hover: #{$li-hover-color}";
+    }
 
     --#{$prefix}body-bg:                            #{$bg-color};
     --#{$prefix}body-color:                         #{$fg-color};
@@ -621,8 +671,8 @@
         --#{$prefix}link-hover-fg-color:            #{get-color("link-hover-fg-color",          #{get-text-color($li-color)},           $bg-map)};
     }
 
-    @if ($set-defaults) {
-        @include set-box-color-defaults($bg-map);
+    @if ($include-defaults) {
+        @include set-box-color-defaults($bg-map, $set-all-defaults);
     }
 }
 

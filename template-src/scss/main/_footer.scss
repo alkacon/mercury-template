@@ -50,10 +50,10 @@
         color: var(--#{$prefix}body-color);
         background-color: var(--#{$prefix}body-bg);
 
-        @if ($linked-headings-color != inherit) {
+        @if ($linked-headings-color != unset) {
             --#{$prefix}linked-headings-color: var(--#{$prefix}link-color);
         }
-        @if ($linked-headings-hover-color != inherit) {
+        @if ($linked-headings-hover-color != unset) {
             --#{$prefix}linked-headings-hover-color: var(--#{$prefix}link-hover-color);
         }
     }

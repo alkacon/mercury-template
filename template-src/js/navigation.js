@@ -130,7 +130,7 @@ function initMegaMenu() {
             // calculate left position from the .nav-main-container
             var $megaMenu = $megaMenuItem.find('.nav-mega-menu');
             var $menuContainer = $megaMenuItem.closest('.nav-main-container');
-            var posLeft = -1 * ($menuContainer.offset().left - ((Mercury.windowWidth() - $megaMenu.outerWidth()) / 2));
+            var posLeft = -1 * ($menuContainer.offset().left - ((window.innerWidth - $megaMenu.outerWidth()) / 2));
             if (DEBUG) console.info("MegaMenu: Setting position top=" + posTop + " left=" + posLeft);
             // set the position
             $megaMenu.css('top', posTop + 'px');
@@ -216,7 +216,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
             $submenu.children("[aria-expanded]").attr('aria-expanded', true);
             if ($submenu.parent().hasClass("nav-main-items")) {
                 // this is a toplevel menu entry
-                if ($targetmenu.offset().left + $targetmenu.outerWidth() > Mercury.windowWidth()) {
+                if ($targetmenu.offset().left + $targetmenu.outerWidth() > window.innerWidth) {
                     // this menu must open left
                     $submenu.addClass("open-left");
                 } else {
@@ -229,7 +229,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
                 if (openRight || (openLeft && ($submenu.offset().left - $targetmenu.outerWidth() <= 0))) {
                     // we have opened left too far, open to the right again
                     $submenu.addClass("open-right");
-                } else if (openLeft || ($targetmenu.offset().left + $targetmenu.outerWidth() > Mercury.windowWidth())) {
+                } else if (openLeft || ($targetmenu.offset().left + $targetmenu.outerWidth() > window.innerWidth)) {
                     // this menu must open left, the right corner is outside window
                     $submenu.addClass("open-left");
                     var $parent = $submenu.parent();

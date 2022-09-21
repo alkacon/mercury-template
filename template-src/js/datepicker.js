@@ -22,17 +22,11 @@ import { German } from "flatpickr/dist/l10n/de.js"
 
 "use strict";
 
-//the global objects that must be passed to this module
-var jQ;
-var DEBUG;
-
 /****** Exported functions ******/
 
-export function init(jQuery, debug, locale) {
+export function init() {
 
-    jQ = jQuery;
-    DEBUG = debug;
-    locale = locale || "en";
+    let locale = Mercury.getLocale();
     if (locale != "en") {
         locale = locale.substr(0, 2).toLowerCase();
         if (locale == "de") {
@@ -42,11 +36,11 @@ export function init(jQuery, debug, locale) {
 
     if (DEBUG) console.info("DatePicker.init()");
 
-    var $datepickers = jQ('.datepicker');
-    if (DEBUG) console.info("DatePicker.init() .datepicker elements found: " + $datepickers.length);
-    $datepickers.each(function() {
-        var $datepicker = jQ(this);
-        var config = $datepicker.data("datepicker");
-        flatpickr($datepicker, config);
+    const datepickers = document.querySelectorAll(".datepicker");
+    if (DEBUG) console.info("DatePicker.init() .datepicker elements found: " + datepickers.length);
+
+    datepickers.forEach(function(datepicker) {
+        const config = JSON.parse(datepicker.dataset["datepicker"]);
+        flatpickr(datepicker, config);
     });
 }

@@ -18,35 +18,29 @@
  */
 
 // the global objects that must be passed to this module
-var jQ;
-var DEBUG;
-var VERBOSE;
 
 "use strict";
 
-var m_$parallaxElements;
+var m_parallaxElements;
 
 // function to be called whenever the window is scrolled or resized
 function update(){
     var scrollTop = Mercury.windowScrollTop();
 
-    m_$parallaxElements.each(function(){
-        var $element = jQ(this);
+    m_parallaxElements.forEach(function(element){
 
-        var backgroundImage = $element.css("background-image");
+        var backgroundImage = getComputedStyle(element)["background-image"];
         if (backgroundImage == 'none') {
             return;
         }
 
         var offset = 0;
-        var elementTop = $element.offset().top;
-        var elementHeight = $element.outerHeight(true);
+        var elementTop = Mercury.position.offset(element).top;
+        var elementHeight = element.getBoundingClientRect().height;
         var elementBottom = elementTop + elementHeight;
         var elementScrollTop = elementTop - scrollTop;
         var elementScrollBottom = elementBottom - scrollTop;
-        var windowHeight = Mercury.windowHeight();
-
-        var effectType = $element.data("parallax").effect;
+        var windowHeight = window.innerHeight;
 
         // Check if element is to small for parallax effect
         if (elementHeight <= 1) {
@@ -58,95 +52,50 @@ function update(){
             return;
         }
 
-        if (VERBOSE) console.info("Parallax elementTop: " + elementTop + " elementBottom: " + elementBottom);
-        if (VERBOSE) console.info("Parallax elementScrollTop: " + elementScrollTop + " elementScrollBottom: " + elementScrollBottom);
+        if (Mercury.debug() == 2) console.info("Parallax elementTop: " + elementTop + " elementBottom: " + elementBottom);
+        if (Mercury.debug() == 2) console.info("Parallax elementScrollTop: " + elementScrollTop + " elementScrollBottom: " + elementScrollBottom);
 
-        if (effectType == 1) {
-            // This effect assumes there is a full size background image.
-            // The background is slightly shifted up while the bottom of the
-            // element is not in view. Once the bottom is in view,
-            // or the screen top is reached, the shift effect stops.
-            var elementBottomOffset = 0;
+        // This effect assumes there is a full size background image.
+        // The background is slightly shifted up while the bottom of the
+        // element is not in view. Once the bottom is in view,
+        // or the screen top is reached, the shift effect stops.
+        var elementBottomOffset = 0;
 
-            if (elementHeight <= windowHeight) {
-                elementBottomOffset = elementScrollBottom - windowHeight;
-            } else {
-                elementBottomOffset = elementScrollTop;
-            }
-
-            if (elementBottomOffset > 0) {
-                // The bottom is not in view
-                offset = Math.round(Math.abs(elementBottomOffset) * 0.5);
-
-                if (VERBOSE) console.info(
-                    "Parallax elementHeight: " +  elementHeight +
-                    " windowHeight: " + windowHeight +
-                    " offset: " + offset +
-                    " elementScrollTop: " + elementScrollTop);
-
-            }
-        } else if (effectType == 2) {
-            // Initially developed for the blog visual.
-            // This effect assumes there is a full size background image
-            // near the screen top (directly under the main navigation).
-            // The image should have standard 'photo' 4:3 or 3:2 format.
-            // Initially only the upper part of the image is seen (about 400px).
-            // When scolling, the image starts shiftig up faster then the scroll
-            // and reveals the lower part originally hidden.
-
-            if (elementScrollTop < 0) {
-                 offset = Math.round(elementScrollTop * 2);
-            }
-        } else if (effectType == 3) {
-            // Also developed for the blog visual.
-            // This effect assumes there is a full size background image
-            // near the screen top (directly under the main navigation).
-            // The image should have standard 'photo' 4:3 or 3:2 format.
-            // When scolling, the image starts shiftig very slow
-            // and reveals some of the lower part originally hidden.
-
-            offset = Math.round(elementScrollTop * 0.33);
+        if (elementHeight <= windowHeight) {
+            elementBottomOffset = elementScrollBottom - windowHeight;
+        } else {
+            elementBottomOffset = elementScrollTop;
         }
-        $element.css('background-position', "50% " + offset + "px");
-    });
-}
 
-function initParallaxInt() {
+        if (elementBottomOffset > 0) {
+            // The bottom is not in view
+            offset = Math.round(Math.abs(elementBottomOffset) * 0.5);
 
-    // initialize parallax sections with values from data attributes
-    m_$parallaxElements.each(function(){
+            if (Mercury.debug() == 2) console.info(
+                "Parallax elementHeight: " +  elementHeight +
+                " windowHeight: " + windowHeight +
+                " offset: " + offset +
+                " elementScrollTop: " + elementScrollTop);
 
-        var $element = jQ(this);
-        var effectType = 1;
-
-        // the following data attribute can to be attached to the div
-        // <div class="effect-parallax-bg" data-prallax='{"effect":1}' >
-        if (typeof $element.data("parallax") != 'undefined') {
-            if (typeof $element.data("parallax").effect != 'undefined') {
-                effectType = $element.data("parallax").effect;
-            }
         }
-        $element.data("parallax", { effect: effectType } );
+
+        element.style.backgroundPosition = ("50% " + offset + "px");
     });
 }
 
 /****** Exported functions ******/
 
-export function initParallax(jQuery, debug, verbose) {
+export function initParallax() {
 
-    jQ = jQuery;
-    DEBUG = debug;
-    VERBOSE = verbose;
-
-    m_$parallaxElements = jQuery('.effect-parallax-bg');
-    if (DEBUG) {
+    m_parallaxElements = document.querySelectorAll('.effect-parallax-bg');
+    if (Mercury.debug()) {
         console.info("Parallax.init()");
-        console.info("Parallax.init() .effect-parallax-bg elements found: " + m_$parallaxElements.length);
+        console.info("Parallax.init() .effect-parallax-bg elements found: " + m_parallaxElements.length);
     }
 
-    if (m_$parallaxElements.length > 0) {
-        initParallaxInt();
-        jQ(window).on('scroll', update).resize(update);
+    if (m_parallaxElements.length > 0) {
+        window.addEventListener('scroll', update);
+        window.addEventListener('resize', update);
         update();
     }
 }

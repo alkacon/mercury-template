@@ -17,12 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 import EmblaCarousel from 'embla-carousel';
 import EmblaClassNames from 'embla-carousel-class-names';
-
-// the global objects that must be passed to this module
-var DEBUG;
 
 "use strict";
 
@@ -103,7 +99,7 @@ function AutoplayMod(userOptions) {
     let timer = 0;
 
     function init(embla) {
-        if (DEBUG) console.info("Slider.init() AutoplayMod.init()");
+        if (Mercury.debug()) console.info("Slider.init() AutoplayMod.init()");
         carousel = embla;
         options = optionsHandler.atMedia(self.options);
         interaction = options.stopOnInteraction ? destroy : stop;
@@ -235,7 +231,7 @@ const checkAutoplay = (embla, sliderBox, autoplay) => () => {
     sliderBox.classList.remove('all-in-view');
     embla.scrollTo(0, true);
     const slides = embla.slidesNotInView().length;
-    if (DEBUG) console.info("Slider.checkAutoplay() Slides not in view: " + slides) ;
+    if (Mercury.debug()) console.info("Slider.checkAutoplay() Slides not in view: " + slides) ;
     if (slides > 0) {
         embla.reInit({active: true});
         if (autoplay) autoplay.play();
@@ -247,7 +243,7 @@ const checkAutoplay = (embla, sliderBox, autoplay) => () => {
 
 function initEmblaSliders(sliders) {
 
-    [].forEach.call(sliders, (slider, i) => {
+    sliders.forEach((slider) => {
 
         const sliderBox = slider.querySelector('.slider-box');
         const options = JSON.parse(sliderBox.dataset.slider);
@@ -309,13 +305,12 @@ function initEmblaSliders(sliders) {
 
 /****** Exported functions ******/
 
-export function init(jQuery, debug) {
+export function init() {
 
-    DEBUG = debug;
-    if (DEBUG) console.info("Slider.init()");
+    if (Mercury.debug()) console.info("Slider.init()");
 
     let sliders = document.querySelectorAll('.use-embla-slider');
-    if (DEBUG) console.info("Slider.init() .use-embla-slider elements found: " + sliders.length);
+    if (Mercury.debug()) console.info("Slider.init() .use-embla-slider elements found: " + sliders.length);
     if (sliders.length > 0) {
         initEmblaSliders(sliders);
     }

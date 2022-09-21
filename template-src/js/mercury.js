@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import jQuery                       from 'jquery';
+import jQuery from 'jquery';
 
 // import 'bootstrap/js/dist/alert';
 // import 'bootstrap/js/dist/button';
@@ -32,16 +32,16 @@ import 'bootstrap/js/dist/tab';
 // import 'bootstrap/js/dist/toast';
 import 'bootstrap/js/dist/tooltip';
 
-import jsDevice                     from 'current-device';
-import fitVids                      from 'fitvids';
-Object.assign(lazySizes.cfg,        { init:false }); // otherwise device based configuration will not work
-import lazySizes                    from 'lazysizes';
+import jsDevice from 'current-device';
+import fitVids from 'fitvids';
+Object.assign(lazySizes.cfg, { init: false }); // otherwise device based configuration will not work
+import lazySizes from 'lazysizes';
 
-import * as DynamicListElemements   from './lists.js';
-import * as NavigationElements      from './navigation.js';
-import * as CommentElements         from './comments.js';
-import * as AnalyticElements        from './analytics.js';
-import * as PrivacyPolicy           from './privacy-policy.js';
+import * as DynamicListElemements from './lists.js';
+import * as NavigationElements from './navigation.js';
+import * as CommentElements from './comments.js';
+import * as AnalyticElements from './analytics.js';
+import * as PrivacyPolicy from './privacy-policy.js';
 
 import './jquery-extensions.js';
 import './unobfuscate.js';
@@ -51,51 +51,24 @@ import { _OpenCmsReinitEditButtons, _OpenCmsInit } from './opencms-callbacks.js'
 // Module implemented using the "revealing module pattern", see
 // https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript
 // https://www.christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
-var Mercury = function(jQ) {
+var Mercury = function (jQ) {
 
     "use strict";
 
-    var VERBOSE = false || (getParameter("jsverbose") != null);
-    var DEBUG = VERBOSE || (getParameter("jsdebug") != null);
+    let VERBOSE = false || (getParameter("jsverbose") != null);
+    let DEBUG = VERBOSE || (getParameter("jsdebug") != null);
 
     // container for information passed from CSS to JavaScript
-    var m_info = {};
+    let m_info = {};
+
+    // the grid size when the page was loaded
+    let m_gridInfo = {};
 
     // the color theme passed from CSS to JavaScript
     var m_theme = null;
 
-    // the grid size when the page was loaded
-    var m_gridInfo = {};
-
-    // the current window
-    var m_$window = jQ(window);
-
-    // height of current window
-    var m_windowHeight = m_$window.height();
-
-    // width of current window
-    var m_windowWidth = m_$window.width();
-
     // element update callback functions
     var m_updateCallbacks = [];
-
-    // attach event listener to window resize event (debounced)
-    m_$window.resize(debounce(function() {
-        m_windowHeight = m_$window.height();
-        m_windowWidth = m_$window.width();
-
-        if (DEBUG) console.info("Mercury current grid size: " + m_gridInfo.currentSize());
-    }, 50));
-
-
-    function windowHeight() {
-        return m_windowHeight;
-    }
-
-
-    function windowWidth() {
-        return m_windowWidth;
-    }
 
 
     function toolbarHeight() {
@@ -104,9 +77,20 @@ var Mercury = function(jQ) {
 
 
     function windowScrollTop() {
-        return m_$window.scrollTop();
+        return document.documentElement.scrollTop;
     }
 
+    const position = {
+
+        offset: function(el) {
+            const box = el.getBoundingClientRect();
+            const docElem = document.documentElement;
+            return {
+                top: box.top + window.pageYOffset - docElem.clientTop,
+                left: box.left + window.pageXOffset - docElem.clientLeft
+            };
+        }
+    }
 
     function device() {
         // returns information about the current device
@@ -119,9 +103,9 @@ var Mercury = function(jQ) {
         // debounce function to optimize JavaScript events
         // see https://davidwalsh.name/javascript-debounce-function
         var timeout;
-        return function() {
+        return function () {
             var context = this, args = arguments;
-            var later = function() {
+            var later = function () {
                 timeout = null;
                 if (!immediate) func.apply(context, args);
             };
@@ -135,10 +119,10 @@ var Mercury = function(jQ) {
 
     function addInfo(info) {
 
-        jQ.extend(m_info, info);
+        m_info = { ...m_info, ...info };
 
         if (DEBUG) console.info("Mercury info extended to:");
-        if (DEBUG) jQ.each(m_info, function( key, value ) { console.info( "- " + key + ": " + value ); });
+        if (DEBUG) for (const [key, value] of Object.entries(m_info)) { console.info("- " + key + ": " + value) };
     }
 
 
@@ -156,7 +140,12 @@ var Mercury = function(jQ) {
         return null;
     }
 
-    function getDebug() {
+    /**
+     * Returns the Mercury debug level.
+     *
+     * @returns 0 if debug mode if off, 1 if normal debug mode is on, and 2 if verbose debug mode is on.
+     */
+    function debug() {
         // returns the DEBUG level as integer
         if (VERBOSE) return 2;
         if (DEBUG) return 1;
@@ -183,7 +172,7 @@ var Mercury = function(jQ) {
         // checks if the argument variable is of type string and has a length > 0
         var result = false;
         if ((typeof string === "string") && (string.trim().length > 0)) {
-           result = true;
+            result = true;
         }
         return result;
     }
@@ -215,7 +204,7 @@ var Mercury = function(jQ) {
 
     function getParameter(key) {
         key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
-        var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+        var match = location.search.match(new RegExp("[?&]" + key + "=([^&]+)(&|$)"));
         return match && decodeURIComponent(match[1].replace(/\+/g, " "));
     }
 
@@ -233,7 +222,7 @@ var Mercury = function(jQ) {
         var selector = after ? '::after' : '::before';
         var data = null;
         if (element) {
-            if (window.getComputedStyle && window.getComputedStyle(element, selector) ) {
+            if (window.getComputedStyle && window.getComputedStyle(element, selector)) {
                 data = window.getComputedStyle(element, selector);
                 data = data.content;
             }
@@ -249,26 +238,17 @@ var Mercury = function(jQ) {
     }
 
 
-    function getCssDataFromJQuery($element, after) {
-        var element = $element.get(0);
-        return getCssDataFromElement(element, after);
-    }
-
-
     function initInfo() {
         // the CSS template stores JSON encoded information for the JavaScript
         // in the HTML elements with the ID #template-info
         // initialize info sections with values from data attributes
-        jQ('#template-info').each(function() {
-            var $element = jQ(this);
-            if (typeof $element.data("info") !== "undefined") {
-                var $info = $element.data("info");
-                addInfo($info);
-            }
-            m_theme = getCssJsonData($element.attr('id'));
-            if (DEBUG) console.info("Mercury theme JSON: " + getThemeJSON("main-theme", []));
-        });
-
+        let element = document.querySelector("#template-info");
+        if (element.dataset["info"] != null) {
+            const $info = JSON.parse(element.dataset["info"]);
+            addInfo($info);
+        }
+        m_theme = getCssJsonData(element.getAttribute("id"));
+        if (DEBUG) console.info("Mercury theme JSON: " + getThemeJSON("main-theme", []));
         initGridInfo();
     }
 
@@ -330,58 +310,58 @@ var Mercury = function(jQ) {
         gridInfo = gridInfo.replace(new RegExp('px', 'g'), '');
         if (DEBUG) console.info("Mercury grid info: [" + gridInfo + "]");
         if (isNotEmpty(gridInfo)) {
-            jQ.extend(m_gridInfo, JSON.parse(gridInfo));
+            m_gridInfo = { ...m_gridInfo, ...JSON.parse(gridInfo) };
         }
-        if (DEBUG) console.info("Mercury screen xs max:" + m_gridInfo.xsMax + " xxl min:" + m_gridInfo.xxlMin  + " desktop head nav min:" + m_gridInfo.navDeskMin);
+        if (DEBUG) console.info("Mercury screen xs max:" + m_gridInfo.xsMax + " xxl min:" + m_gridInfo.xxlMin + " desktop head nav min:" + m_gridInfo.navDeskMin);
         if (DEBUG) console.info("Mercury fixed header nav setting: " + m_gridInfo.navFixHeader);
 
-        m_gridInfo.currentSize = function() {
-            if (m_windowWidth <= this.xsMax) {
+        m_gridInfo.currentSize = function () {
+            if (window.innerWidth <= this.xsMax) {
                 return "xs";
             }
-            if (m_windowWidth <= this.smMax) {
+            if (window.innerWidth <= this.smMax) {
                 return "sm";
             }
-            if (m_windowWidth <= this.mdMax) {
+            if (window.innerWidth <= this.mdMax) {
                 return "md";
             }
-            if (m_windowWidth <= this.lgMax) {
+            if (window.innerWidth <= this.lgMax) {
                 return "lg";
             }
-            if (m_windowWidth <= this.xlMax) {
+            if (window.innerWidth <= this.xlMax) {
                 return "xl";
             }
-            if (m_windowWidth >= this.xxlMin) {
+            if (window.innerWidth >= this.xxlMin) {
                 return "xxl";
             }
             return "unknown";
         }
 
-        m_gridInfo.navType = function() {
-            if (m_windowWidth <= this.navMobMax) {
+        m_gridInfo.navType = function () {
+            if (window.innerWidth <= this.navMobMax) {
                 return "mobile";
             }
-            if (m_windowWidth >= this.navDeskMin) {
+            if (window.innerWidth >= this.navDeskMin) {
                 return "desktop";
             }
             return "unknown";
         }
 
-        m_gridInfo.isMaxXs = function() { return m_windowWidth <= this.xsMax };
-        m_gridInfo.isMaxSm = function() { return m_windowWidth <= this.smMax };
-        m_gridInfo.isMaxMd = function() { return m_windowWidth <= this.mdMax };
-        m_gridInfo.isMaxLg = function() { return m_windowWidth <= this.lgMax };
+        m_gridInfo.isMaxXs = function () { return window.innerWidth <= this.xsMax };
+        m_gridInfo.isMaxSm = function () { return window.innerWidth <= this.smMax };
+        m_gridInfo.isMaxMd = function () { return window.innerWidth <= this.mdMax };
+        m_gridInfo.isMaxLg = function () { return window.innerWidth <= this.lgMax };
 
-        m_gridInfo.isMinSm = function() { return m_windowWidth >= this.smMin };
-        m_gridInfo.isMinMd = function() { return m_windowWidth >= this.mdMin };
-        m_gridInfo.isMinLg = function() { return m_windowWidth >= this.lgMin };
-        m_gridInfo.isMinXl = function() { return m_windowWidth >= this.xlMin };
+        m_gridInfo.isMinSm = function () { return window.innerWidth >= this.smMin };
+        m_gridInfo.isMinMd = function () { return window.innerWidth >= this.mdMin };
+        m_gridInfo.isMinLg = function () { return window.innerWidth >= this.lgMin };
+        m_gridInfo.isMinXl = function () { return window.innerWidth >= this.xlMin };
 
-        m_gridInfo.forceMobileNav = function() { return (this.navDeskMin < 5) };
-        m_gridInfo.getNavFixHeader = function() { return (this.navFixHeader) };
-        m_gridInfo.isDesktopNav = function() { return (!m_gridInfo.forceMobileNav()) && (m_windowWidth >= this.navDeskMin) };
-        m_gridInfo.isMobileNav = function() { return (m_gridInfo.forceMobileNav()) || (m_windowWidth < this.navDeskMin) };
-        m_gridInfo.navPos = function() { return this.navMobPos };
+        m_gridInfo.forceMobileNav = function () { return (this.navDeskMin < 5) };
+        m_gridInfo.getNavFixHeader = function () { return (this.navFixHeader) };
+        m_gridInfo.isDesktopNav = function () { return (!m_gridInfo.forceMobileNav()) && (window.innerWidth >= this.navDeskMin) };
+        m_gridInfo.isMobileNav = function () { return (m_gridInfo.forceMobileNav()) || (window.innerWidth < this.navDeskMin) };
+        m_gridInfo.navPos = function () { return this.navMobPos };
     }
 
 
@@ -415,15 +395,15 @@ var Mercury = function(jQ) {
         form.setAttribute("method", method);
         form.setAttribute("action", path);
 
-        for(var key in params) {
-            if(params.hasOwnProperty(key)) {
+        for (var key in params) {
+            if (params.hasOwnProperty(key)) {
                 var hiddenField = document.createElement("input");
                 hiddenField.setAttribute("type", "hidden");
                 hiddenField.setAttribute("name", key);
                 hiddenField.setAttribute("value", params[key]);
 
                 form.appendChild(hiddenField);
-             }
+            }
         }
 
         document.body.appendChild(form);
@@ -439,15 +419,15 @@ var Mercury = function(jQ) {
     function initJavaScriptMarker() {
         // adds a CSS class "hasscript" to the document body so CSS can react if JS is available or not
         // when initially loaded, the page has the class "noscript" attached
-        jQ(document.documentElement).removeClass("noscript");
-        jQ(document.documentElement).addClass("hasscript");
+        document.documentElement.classList.remove("noscript");
+        document.documentElement.classList.add("hasscript");
     }
 
 
     function initFitVids() {
         // set video widths using the fidVids plugin
         fitVids({
-            players: [ 'iframe[src*="slideshare.net"]', 'iframe[src*="medien-tube.de"]', 'iframe[src*="domradio.de"]' ],
+            players: ['iframe[src*="slideshare.net"]', 'iframe[src*="medien-tube.de"]', 'iframe[src*="domradio.de"]'],
             ignore: ['.type-media .content iframe'] // ignore all media elements
         });
     }
@@ -455,75 +435,12 @@ var Mercury = function(jQ) {
 
     function initTabAccordion(callback) {
         // add handler for elements hidden in accordions and tabs
-        jQ('.accordion, .collapse').on('shown.bs.collapse', callback);
-        jQ('button[data-bs-toggle="tab"]').on('shown.bs.tab', callback);
-    }
-
-
-    // Affix elements, restricted to a parent container
-    var m_affixElements = [];
-
-    // Update Affix elements
-    function updateAffix() {
-        if (VERBOSE) console.info("Affix: update, m_affixElements=" + m_affixElements.length);
-        for (var i=0; i<m_affixElements.length; i++) {
-            var th = toolbarHeight();
-            var affix = m_affixElements[i];
-            var $element = affix.$element;
-            var $parent =  affix.$parent;
-            var topOffset = affix.top;
-            var topOffsetFixed = affix.topFixed;
-            var pHeight = $parent.outerHeight(true);
-            var eHeight = $element.outerHeight(true);
-            var docHeight = jQ(document).height();
-            var scrollTop = m_$window.scrollTop();
-            var top = $parent.offset().top - th + topOffset - topOffsetFixed;
-            var bottom = top + (pHeight - eHeight) - topOffset;
-
-            if (VERBOSE) console.info("Affix: docHeight=" + docHeight + " pHeight=" +  pHeight + " eHeight=" +  eHeight + " top=" + top + " bottom=" + bottom + " scrollTop=" + scrollTop);
-
-            var isFixedTop = scrollTop > top;
-            var isFixedBottom = isFixedTop && (scrollTop >= bottom);
-
-            if (VERBOSE) console.info("Affix isFixed=" + (isFixedTop || isFixedBottom) + " isFixedTop=" + isFixedTop + " isFixedBottom=" + isFixedBottom);
-            if (isFixedBottom) {
-                $element.removeClass("affix affix-top").addClass("affix-bottom");
-                $element.css("top", pHeight - eHeight);
-            } else if (isFixedTop) {
-                $element.removeClass("affix-top affix-bottom").addClass("affix");
-                $element.css("top", th + topOffsetFixed);
-            } else {
-                $element.removeClass("affix-bottom affix").addClass("affix-top");
-                $element.css("top", topOffset);
-            }
-        }
-    }
-
-    // Init Affix elements
-    function initAffixes() {
-        var $affixes = jQ('.affix-parent .affix-box');
-        if (DEBUG) console.info("Mercury.initAffixes() .affix-parent .affix-box elements found: " + $affixes.length);
-        $affixes.each(function() {
-            var $element = jQ(this);
-            var $parent = $element.parents(".affix-parent").first();
-            var affix = {};
-            affix.$element = $element;
-            affix.$parent = $parent;
-            var topCss = $element.css("top");
-            if (typeof topCss !== "undefined") { topCss = topCss.match(/-?\d+/) } else { topCss = "0" };
-            var options = getCssDataFromJQuery($element);
-            var data = parseJson(options);
-            if (typeof data.topFixed === "undefined" ) { data.topFixed = 0 };
-            if (VERBOSE) console.info("Affix: css JSON data is=" + options + " topFixed=" + data.topFixed);
-            affix.top = parseInt(topCss, 10);
-            affix.topFixed = data.topFixed;
-            m_affixElements.push(affix);
-            if (VERBOSE) console.info("Affix: added top=" + affix.top + " topFixed=" + affix.topFixed);
+        document.querySelectorAll('.accordion .collapse').forEach(function (el) {
+            el.addEventListener('shown.bs.collapse', callback);
         });
-        if (m_affixElements.length > 0) {
-            m_$window.on('scroll resize', function() { updateAffix() }); // can not use debouce, will be to "jaggy"
-            updateAffix(true);
-        }
+        document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(function (el) {
+            el.addEventListener('shown.bs.tab', callback);
+        });
     }
 
 
@@ -534,12 +451,12 @@ var Mercury = function(jQ) {
 
         initFitVids();
         // in case a dynamic list contains audio elements, make sure the required audio script is available
-        loadAudioScript(function() { initMedia(parent) });
+        loadAudioScript(function () { initMedia(parent) });
         initOnclickActivation(parent);
         initTooltips(parent);
 
         // run registered update callbacks
-        for (var i=0; i < m_updateCallbacks.length; i++) {
+        for (var i = 0; i < m_updateCallbacks.length; i++) {
             try {
                 if (DEBUG) console.info("Mercury.update() running callback: " + m_updateCallbacks[i].name);
                 m_updateCallbacks[i](jQ, DEBUG, parent);
@@ -572,14 +489,14 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-audio" */
-                    "./audio.js").then( function ( AudioData ) {
-                    if (DEBUG) console.info("Mercury.loadAudioScript() - Audio script was loaded!");
-                    AudioData.init(jQ, DEBUG);
-                    window.AudioData = AudioData;
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-                });
+                    "./audio.js").then(function (AudioData) {
+                        if (DEBUG) console.info("Mercury.loadAudioScript() - Audio script was loaded!");
+                        AudioData.init(jQ, DEBUG);
+                        window.AudioData = AudioData;
+                        if (typeof callback === "function") {
+                            callback();
+                        }
+                    });
             } catch (err) {
                 console.warn("Mercury.loadAudioScript() error", err);
             }
@@ -594,7 +511,7 @@ var Mercury = function(jQ) {
 
     function initLazyImageLoading() {
         // initialize lazy loading of images using the lazySizes plugin
-        var lazySizesCfg = { init:true };
+        var lazySizesCfg = { init: true };
         if (device().desktop()) {
             lazySizesCfg.expFactor = 2.0; // load elements "not so near" for desktop
             lazySizesCfg.loadMode = 3; // load elements "not so near" for desktop
@@ -617,8 +534,8 @@ var Mercury = function(jQ) {
         const tooltipList = [...tooltips].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         */
         var $tooltips = jQ(selector);
-        if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " +  $tooltips.length);
-            if ($tooltips.length > 0) {
+        if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " + $tooltips.length);
+        if ($tooltips.length > 0) {
             $tooltips.tooltip({
                 container: 'body',
                 placement: 'top',
@@ -640,14 +557,14 @@ var Mercury = function(jQ) {
         if (isEditMode() && (typeof $element.data("placeholder") !== "undefined")) {
             // add the hide element class
             $element.addClass("placeholder");
-            if (! $element.hasClass("error")) {
+            if (!$element.hasClass("error")) {
                 // .placeholder.error class should NOT call the callback
-                jQ($element).on("click",function(event) {
+                jQ($element).on("click", function (event) {
                     // remove handler and remove class when clicked
                     jQ(event.currentTarget).off("click")
-                        jQ(event.currentTarget).removeClass("placeholder");
-                        callback(event);
-                    }
+                    jQ(event.currentTarget).removeClass("placeholder");
+                    callback(event);
+                }
                 );
             }
             return true;
@@ -672,7 +589,7 @@ var Mercury = function(jQ) {
         } else {
             var $piece = $element.parents(".effect-piece").first();
             $piece.removeClass("effect-raise effect-shadow effect-rotate effect-box");
-            var $mediaBox =  $element.parents(".media-box.removable");
+            var $mediaBox = $element.parents(".media-box.removable");
             if ($mediaBox.length > 0) {
                 $mediaBox.removeClass().css("padding-bottom", "").addClass("media-box-removed");
                 $mediaBox.find(".content").removeClass().addClass("content-removed")
@@ -687,7 +604,7 @@ var Mercury = function(jQ) {
     function registerRevealFunttion($element, template, isMedia, autoplay) {
         // adds a placeholder that has to be clicked in edit mode in order to reveal the template
         // mostly used for JavaScripts that contact external servers which may not be wanted in edit mode
-        var revealFunction = function() {
+        var revealFunction = function () {
             // first we create a finction that revelas the template when clicked
             revalOnClickTemplate($element, template, isMedia, autoplay);
         };
@@ -705,9 +622,9 @@ var Mercury = function(jQ) {
             revalOnClickTemplate(data.$element, data.template, data.isMedia);
         } else {
             PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
-            function() {
-                revalOnClickTemplate(data.$element, cata.template, cata.isMedia);
-            });
+                function () {
+                    revalOnClickTemplate(data.$element, cata.template, cata.isMedia);
+                });
         }
     }
 
@@ -715,7 +632,7 @@ var Mercury = function(jQ) {
     function initOnclickTemplates(selector, isMedia) {
         var $onclickTemplates = jQ(selector);
         if (DEBUG) console.info("Mercury.initOnclickTemplates(): " + selector + " elements found: " + $onclickTemplates.length);
-        $onclickTemplates.each(function() {
+        $onclickTemplates.each(function () {
 
             var $element = jQ(this);
             var data = $element.data("preview");
@@ -744,11 +661,11 @@ var Mercury = function(jQ) {
                     registerRevealFunttion($element, template, isMedia, !isEditMode());
                 } else {
                     // this element has a preview template that has to be clicked before the external content is shown
-                    if (! $element.hasClass("reveal-registered")) {
+                    if (!$element.hasClass("reveal-registered")) {
                         // only attach event listerners once, important for dynamic lists
                         $element.addClass("reveal-registered");
                         $element.on("click", data, checkOnClickTemplateCookies);
-                        $element.on("keydown", data, function(e) {
+                        $element.on("keydown", data, function (e) {
                             if (e.which == 13) { checkOnClickTemplateCookies(e); }
                         });
                     }
@@ -785,7 +702,7 @@ var Mercury = function(jQ) {
         // this way it can be ensured that the required page functions are already initialized when the additional JS is executed
         var $initScripts = jQ('.mercury-initscript');
         if (DEBUG) console.info("Mercury.initScripts() .mercury-initscript elements found: " + $initScripts.length);
-        $initScripts.each(function() {
+        $initScripts.each(function () {
 
             var $element = jQ(this);
             if (typeof $element.data("script") !== "undefined") {
@@ -800,7 +717,7 @@ var Mercury = function(jQ) {
     function initFunctions() {
         // calls all init() functions that have registered
         var _functions = window.mercury.getInitFunctions();
-        for (var i=0; i < _functions.length; i++) {
+        for (var i = 0; i < _functions.length; i++) {
             try {
                 var initFunction = _functions[i];
                 if (DEBUG) console.info("Mercury executing init function: " + initFunction.name);
@@ -825,7 +742,7 @@ var Mercury = function(jQ) {
             initAfterCss();
         } else {
             m_cssTimer += 50;
-            setTimeout(function() { waitForCss() }, 50);
+            setTimeout(function () { waitForCss() }, 50);
         }
     }
 
@@ -840,12 +757,6 @@ var Mercury = function(jQ) {
             initInfo();
         } catch (err) {
             console.warn("Mercury.initInfo() error", err);
-        }
-
-        try {
-            initAffixes();
-        } catch (err) {
-            console.warn("Mercury.initAffixes() error", err);
         }
 
         try {
@@ -881,7 +792,7 @@ var Mercury = function(jQ) {
         }
 
         try {
-            AnalyticElements.init(jQ, DEBUG);
+            AnalyticElements.init();
         } catch (err) {
             console.warn("Analytics.init() error", err);
         }
@@ -892,9 +803,9 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-slider" */
-                    "./slider.js").then( function ( SliderSlick ) {
-                    SliderSlick.init(jQ, DEBUG);
-                });
+                    "./slider.js").then(function (SliderSlick) {
+                        SliderSlick.init();
+                    });
             } catch (err) {
                 console.warn("Slider.init() error", err);
             }
@@ -902,17 +813,17 @@ var Mercury = function(jQ) {
 
         if (requiresModule(".map-osm")) {
             try {
-                 import(
+                import(
                     /* webpackChunkName: "mercury-map-osm" */
-                    "./map-osm.js").then( function ( OsmMap ) {
-                       OsmMap.init(jQ, DEBUG);
-                       window.OsmMap = OsmMap;
-                       window.dispatchEvent(new CustomEvent("load-module-map-osm", {
-                           detail: OsmMap
-                       }));
-                 });
+                    "./map-osm.js").then(function (OsmMap) {
+                        OsmMap.init(jQ, DEBUG);
+                        window.OsmMap = OsmMap;
+                        window.dispatchEvent(new CustomEvent("load-module-map-osm", {
+                            detail: OsmMap
+                        }));
+                    });
             } catch (err) {
-                 console.warn("OsmMap.init() error", err);
+                console.warn("OsmMap.init() error", err);
             }
         }
 
@@ -920,23 +831,23 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-map-google" */
-                    "./map-google.js").then( function ( GoogleMap ) {
-                    window.GoogleMap = GoogleMap;
-                    let response = GoogleMap.init(jQ, DEBUG);
-                    if (response) {
-                        response.then(function(event) {
+                    "./map-google.js").then(function (GoogleMap) {
+                        window.GoogleMap = GoogleMap;
+                        let response = GoogleMap.init(jQ, DEBUG);
+                        if (response) {
+                            response.then(function (event) {
+                                window.dispatchEvent(new CustomEvent("load-module-map-google", {
+                                    detail: GoogleMap
+                                }));
+                            });
+                        } else { // Google map was loaded already
                             window.dispatchEvent(new CustomEvent("load-module-map-google", {
                                 detail: GoogleMap
                             }));
-                        });
-                    } else { // Google map was loaded already
-                        window.dispatchEvent(new CustomEvent("load-module-map-google", {
-                            detail: GoogleMap
-                        }));
-                    }
-                });
+                        }
+                    });
             } catch (err) {
-                 console.warn("GoogleMap.init() error", err);
+                console.warn("GoogleMap.init() error", err);
             }
         }
 
@@ -944,9 +855,9 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-masonry-list" */
-                    "./lists-masonry.js").then( function ( MasonryList ) {
-                    MasonryList.init(jQ, DEBUG);
-                });
+                    "./lists-masonry.js").then(function (MasonryList) {
+                        MasonryList.init(jQ, DEBUG);
+                    });
             } catch (err) {
                 console.warn("MasonryList.init() error", err);
             }
@@ -956,9 +867,9 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-datepicker" */
-                    "./datepicker.js").then( function ( DatePicker ) {
-                    DatePicker.init(jQ, DEBUG, getLocale());
-                });
+                    "./datepicker.js").then(function (DatePicker) {
+                        DatePicker.init();
+                    });
             } catch (err) {
                 console.warn("DatePicker.init() error", err);
             }
@@ -968,10 +879,10 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-imageseries" */
-                    "./imageseries.js").then( function ( ImageSeries ) {
-                    ImageSeries.init(jQ, DEBUG);
-                    window.ImageSeries = ImageSeries;
-                });
+                    "./imageseries.js").then(function (ImageSeries) {
+                        ImageSeries.init(jQ, DEBUG);
+                        window.ImageSeries = ImageSeries;
+                    });
             } catch (err) {
                 console.warn("ImageSeries.init() error", err);
             }
@@ -981,9 +892,9 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-shariff" */
-                    "shariff/dist/shariff.min.js").then( function(Shariff) {
-                    if (DEBUG) console.info("Shariff module loaded!");
-                });
+                    "shariff/dist/shariff.min.js").then(function (Shariff) {
+                        if (DEBUG) console.info("Shariff module loaded!");
+                    });
             } catch (err) {
                 console.warn("Shariff.init() error", err);
             }
@@ -993,9 +904,9 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-tools" */
-                    "./parallax.js").then( function( TemplateTools ) {
-                    TemplateTools.initParallax(jQ, DEBUG, VERBOSE);
-                });
+                    "./parallax.js").then(function (TemplateTools) {
+                        TemplateTools.initParallax();
+                    });
             } catch (err) {
                 console.warn("Parallax.init() error", err);
             }
@@ -1005,9 +916,9 @@ var Mercury = function(jQ) {
             try {
                 import(
                     /* webpackChunkName: "mercury-tools" */
-                    "./csssampler.js").then( function( TemplateTools ) {
-                    TemplateTools.initCssSampler(jQ, DEBUG);
-                });
+                    "./csssampler.js").then(function (TemplateTools) {
+                        TemplateTools.initCssSampler(jQ, DEBUG);
+                    });
             } catch (err) {
                 console.warn("CssSampler.init() error", err);
             }
@@ -1027,7 +938,7 @@ var Mercury = function(jQ) {
         }
 
         // add event listeners for Bootstrap elements
-        _OpenCmsInit(jQ, DEBUG)
+        _OpenCmsInit(DEBUG)
     }
 
 
@@ -1058,7 +969,7 @@ var Mercury = function(jQ) {
         addUpdateCallback: addUpdateCallback,
         calcRatio: calcRatio,
         debounce: debounce,
-        debug: getDebug,
+        debug: debug,
         device: device,
         getCssJsonData: getCssJsonData,
         getInfo: getInfo,
@@ -1072,12 +983,11 @@ var Mercury = function(jQ) {
         initTabAccordion: initTabAccordion,
         isEditMode: isEditMode,
         isOnlineProject: isOnlineProject,
+        position: position,
         post: post,
         scrollToAnchor: scrollToAnchor,
         toolbarHeight: toolbarHeight,
         update: update,
-        windowHeight: windowHeight,
-        windowWidth: windowWidth,
         windowScrollTop: windowScrollTop
     }
 
@@ -1086,11 +996,11 @@ var Mercury = function(jQ) {
 
 //webpack: setting the public path for the exported modules that are dynamically loaded
 //see https://webpack.js.org/guides/public-path/
-__webpack_public_path__ = function() {
+__webpack_public_path__ = function () {
     return __scriptPath.replace("/mercury.js", "/");
 }();
 
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     Mercury.init();
 });

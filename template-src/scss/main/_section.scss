@@ -21,9 +21,12 @@
 
 // Icon box formatter
 
-.type-iconbox {
-    @include set-box-colors($main-theme);
+.type-iconbox,
+.imageflip {
+    @include set-box-colors($main-theme, true, true);
+}
 
+.type-iconbox {
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
 
@@ -96,8 +99,6 @@
 // Image / text flip animation, see https://davidwalsh.name/css-flip#ieflip
 
 .imageflip {
-    @include set-box-colors($body-bg);
-
     color: var(--#{$prefix}body-color);
 
     perspective: 1000px;
@@ -199,7 +200,7 @@
     }
 
     &.color-theme {
-        @include set-box-colors($main-theme);
+        // @include set-box-colors($main-theme); - not required because the default is set to $main-theme
 
         .image-section .heading .text-heading {
             background-color: rgba(var(--#{$prefix}main-theme-rgb), .75);

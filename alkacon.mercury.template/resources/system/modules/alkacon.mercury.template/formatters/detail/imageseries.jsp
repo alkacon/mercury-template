@@ -196,8 +196,7 @@
         <div id="${id}" class="series" data-imageseries='${dataSeries.compact}'><%----%>
         <mercury:nl />
 
-            <%-- TODO: Remove the 'square-m-2' in a future version when all CSS has been newly created --%>
-            <div class="images square-m-2 clearfix"></div><%----%>
+            <div class="images clearfix"></div><%----%>
 
             <div class="spinner"><%----%>
                 <div class="spinnerInnerBox"><i class="fa fa-spinner"></i></div><%----%>

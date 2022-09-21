@@ -641,7 +641,7 @@
             $li-hover-color: get-color("link-hover-color", $fg-color, $bg-map);
         }
     }
-    @if (($li-color == null) or ($li-hover-color)) {
+    @if (($li-color == null) or ($li-hover-color == null)) {
         $lid-color: get-accent-color($fg-color, 20%);
         $contrast-l: contrast($bg-color, $link-color);
         $contrast-lh: contrast($bg-color, $link-hover-color);

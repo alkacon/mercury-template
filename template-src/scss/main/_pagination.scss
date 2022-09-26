@@ -42,21 +42,21 @@
 }
 
 @mixin pagination-item-hover {
-    color: var(--#{$prefix}pag-hover-color);
+    color: var(--#{$prefix}pag-hover-fg-color);
     background: var(--#{$prefix}pag-hover-bg-color);
     border-color: var(--#{$prefix}pag-hover-bg-color);
 }
 
 @mixin pagination-item-active {
-    color: var(--#{$prefix}pag-active-color);
+    color: var(--#{$prefix}pag-active-fg-color);
     background-color: var(--#{$prefix}pag-active-bg-color);
     border-color: var(--#{$prefix}pag-active-bg-color);
 }
 
 @mixin pagination-item-disabled {
-    color: var(--#{$prefix}pag-disabled-color);
+    color: var(--#{$prefix}pag-disabled-fg-color);
     background-color: var(--#{$prefix}pag-bg);
-    border-color: var(--#{$prefix}pag-disabled-color);
+    border-color: var(--#{$prefix}pag-disabled-fg-color);
     cursor: $cursor-disabled;
 }
 
@@ -68,7 +68,7 @@
     --#{$prefix}pag-font-size: var(--#{$prefix}body-font-size);
     --#{$prefix}pag-line-height: var(--#{$prefix}body-line-height);
 
-    --#{$prefix}pag-border-color: var(--#{$prefix}highlight-border-color);
+    --#{$prefix}pag-border-color: #{$pagination-border-color};
     --#{$prefix}pag-border-radius: #{$pagination-border-radius};
     --#{$prefix}pag-border: #{$pagination-border};
 
@@ -76,11 +76,11 @@
     --#{$prefix}pag-item-margin: #{$pagination-item-margin};
     --#{$prefix}pag-item-padding: #{$pagination-item-padding};
 
-    --#{$prefix}pag-disabled-color: var(--#{$prefix}pag-border-color);
-    --#{$prefix}pag-active-color: var(--#{$prefix}main-theme-fg);
-    --#{$prefix}pag-active-bg-color: #{$pagination-active-color};
-    --#{$prefix}pag-hover-color: var(--#{$prefix}main-theme-hover-fg);
-    --#{$prefix}pag-hover-bg-color: #{$pagination-hover-color};
+    --#{$prefix}pag-disabled-fg-color: #{$pagination-disabled-fg-color};
+    --#{$prefix}pag-active-fg-color: #{$pagination-active-fg-color};
+    --#{$prefix}pag-active-bg-color: #{$pagination-active-bg-color};
+    --#{$prefix}pag-hover-fg-color: #{$pagination-hover-fg-color};
+    --#{$prefix}pag-hover-bg-color: #{$pagination-hover-bg-color};
 
     @if ($pagination-font-family != $font-family-base) {
         --#{$prefix}pag-font-family: #{inspect($pagination-font-family)};

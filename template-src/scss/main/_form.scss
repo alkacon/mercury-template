@@ -646,8 +646,10 @@
     // compact spacing form layout
     &.compact {
 
-        --#{$prefix}form-padding-y: calc(0.5 * #{$form-padding-y});
-        --#{$prefix}form-padding-x: calc(0.5 * #{$form-padding-x});
+        --#{$prefix}form-spacing: #{$form-compact-spacing};
+        --#{$prefix}form-padding-y: #{$form-compact-padding-y};
+        --#{$prefix}form-padding-x: #{$form-compact-padding-x};
+        --#{$prefix}form-section-margin-bottom: #{$form-compact-section-margin-bottom};
 
         .input input,
         .select select,

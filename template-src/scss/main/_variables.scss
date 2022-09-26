@@ -110,8 +110,6 @@ $container-max-widths: (
 $default-border-radius:             0 !default;
 $copyright-border-radius:           floor($default-border-radius * 0.5) !default;
 $image-border-radius:               var(--#{$prefix}border-radius) !default;
-$focus-outline-border-radius:       $copyright-border-radius !default;
-
 
 // Z-index for OpenCms toolbar and edit points
 
@@ -344,13 +342,14 @@ $section-border-radius:             $default-border-radius !default;
 $iconbox-border-radius:             $default-border-radius !default;
 $colored-row-color:                 $highlight-color !default;
 $section-subtitle-size:             13px !default;
+$section-subtitle-margin-top:       calc(0.5 * var(--#{$prefix}paragraph-margin-bottom)) !default;
 
 $piece-desktop-breakpoint:          md !default;
 $piece-gutter-x:                    $grid-gutter-width !default;
 $piece-text-to-link-margin:         var(--#{$prefix}paragraph-margin-bottom) !default;
 $piece-visual-last-margin-top:      var(--#{$prefix}paragraph-margin-bottom) !default;
 $piece-visual-margin-bottom:        var(--#{$prefix}paragraph-margin-bottom) !default;
-$intro-headings-margin-bottom:      calc(0.25 * var(--#{$prefix}headings-margin-bottom)) !default; // margin below intro headings
+$intro-headings-margin-bottom:      calc(0.25 * var(--#{$prefix}paragraph-margin-bottom)) !default; // margin below intro headings
 
 $use-hyphens:                       true !default; // enable hyphenation / word breaks (not all browsers support this)
 $piece-hyphens:                     $use-hyphens !default; // enable hyphenation / word breaks specially in piece
@@ -613,10 +612,14 @@ $pagination-spacing:                $default-margin !default;
 $pagination-item-jump-spacing:      calc(0.5 * $pagination-spacing) !default;
 $pagination-item-margin:            0 -1px 0 0 !default;
 $pagination-item-padding:           5px 12px !default;
-$pagination-border:                 1px solid var(--#{$prefix}pag-border-color) !default;
+$pagination-border-color:           var(--#{$prefix}highlight-border-color) !default;
+$pagination-border:                 1px solid $pagination-border-color !default;
 $pagination-border-radius:          var(--#{$prefix}btn-border-radius) !default;
-$pagination-hover-color:            var(--#{$prefix}main-theme-hover) !default;
-$pagination-active-color:           var(--#{$prefix}main-theme) !default;
+$pagination-disabled-fg-color:      var(--#{$prefix}pag-border-color) !default;
+$pagination-active-fg-color:        var(--#{$prefix}main-theme-fg) !default;
+$pagination-active-bg-color:        var(--#{$prefix}main-theme) !default;
+$pagination-hover-fg-color:         var(--#{$prefix}main-theme-hover-fg) !default;
+$pagination-hover-bg-color:         var(--#{$prefix}main-theme-hover) !default;
 
 $list-teaser-margin:                calc(2 * var(--#{$prefix}element-margin)) !default;
 $list-teaser-margin-compact:        var(--#{$prefix}element-margin) !default;
@@ -632,6 +635,8 @@ $teaser-btn-compact-padding:        $btn-sm-padding !default;
 $teaser-btn-compact-light-padding:  0 $btn-padding !default;
 $teaser-info-color:                 var(--#{$prefix}body-color) !default; // color of additional teaser infos, e.g. the date
 
+$teaser-headings-margin-bottom:     var(--#{$prefix}paragraph-margin-bottom) !default;
+$teaser-date-margin-bottom:         calc(0.5 * var(--#{$prefix}paragraph-margin-bottom)) !default;
 
 // Detail pages
 $detail-visual-spacer-x:            var(--#{$prefix}default-margin-small) !default;
@@ -774,6 +779,10 @@ $form-spacing:                      $default-margin !default;
 $form-padding-y:                    $form-spacing !default;
 $form-padding-x:                    calc(#{$form-padding-y} * 1.5) !default;
 $form-section-margin-bottom:        $form-spacing!default;
+$form-compact-spacing:              $default-margin-small !default;
+$form-compact-padding-y:            $form-compact-spacing !default;
+$form-compact-padding-x:            $form-compact-padding-y !default;
+$form-compact-section-margin-bottom:  $form-compact-spacing !default;
 $form-font-size:                    $font-size-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-font-size-input:              $form-font-size !default;

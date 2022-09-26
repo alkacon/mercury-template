@@ -95,7 +95,7 @@
     .intro-headline {
         @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
         line-height: $teaser-title-height;
-        margin-bottom: var(--#{$prefix}headings-margin-bottom);
+        margin-bottom: $teaser-headings-margin-bottom;
     }
 
     .teaser-btn {
@@ -111,7 +111,7 @@
         line-height: 1.2;
         font-size: 80%;
         color: $teaser-info-color;
-        margin-bottom: calc(0.5 * var(--#{$prefix}paragraph-margin-bottom));
+        margin-bottom: $teaser-date-margin-bottom;
     }
 
     .heading {

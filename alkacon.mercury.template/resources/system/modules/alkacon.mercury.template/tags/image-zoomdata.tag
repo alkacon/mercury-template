@@ -33,7 +33,8 @@
         <c:if test="${not empty title}"><div class="title">${title}</div></c:if>
         <c:if test="${not empty copyright}"><div class="copyright">${copyright}</div></c:if>
     </c:set>
-    <c:set var="dataImagezoom">data-imagezoom='{ "width": ${width}, "height": ${height}<%----%>
+    <%-- Note: Both "width" and "w" given, so that older templates can also use this tag --%>
+    <c:set var="dataImagezoom">data-imagezoom='{ "width": ${width}, "height": ${height}, "w": ${width}, "h": ${height}<%----%>
         <c:if test="${not empty caption}">, "caption": "${cms:encode(caption)}"</c:if>
         <c:if test="${not empty src}">, "src": "${src}"</c:if> }'<%----%>
     </c:set>

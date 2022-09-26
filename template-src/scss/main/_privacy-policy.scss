@@ -151,21 +151,21 @@
 
         .btn-accept {
             @include button-color-setvars($policy-banner-accept-button-color, $policy-banner-accept-hover-color);
-            @if ($policy-banner-save-button-color == $policy-banner-background) {
-                border-color: $policy-banner-accept-button-color;
+            @if ($policy-banner-accept-button-color == $policy-banner-background) {
+                border-color: get-text-color($policy-banner-accept-button-color);
             }
         }
 
         .btn-save {
             @include button-color-setvars($policy-banner-save-button-color, $policy-banner-save-hover-color);
-            &:focus {
-                background-color: $policy-banner-save-button-color;
-                color: get-text-color($policy-banner-save-button-color);
-            }
-            &:hover {
-                background-color: $policy-banner-save-hover-color;
-                color: get-text-color($policy-banner-save-hover-color);
-            }
+            // &:focus {
+            //     background-color: $policy-banner-save-button-color;
+            //     color: get-text-color($policy-banner-save-button-color);
+            // }
+            // &:hover {
+            //     background-color: $policy-banner-save-hover-color;
+            //     color: get-text-color($policy-banner-save-hover-color);
+            // }
             @if ($policy-banner-save-button-color == $policy-banner-background) {
                 border-color: get-text-color($policy-banner-save-button-color);
             }
@@ -179,6 +179,8 @@
         font-size: 2.5rem;
         line-height: 1;
         padding: 5px 8px;
+        min-width: auto;
+        border: none;
         &:not(:hover):not(:focus) {
             background-color: transparent;
         }

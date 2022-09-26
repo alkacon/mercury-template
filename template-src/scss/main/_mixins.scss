@@ -27,7 +27,6 @@
         outline-width: 2px;
         outline-offset: -2px;
     }
-    border-radius: $focus-outline-border-radius;
     z-index: $above-oc-z-index + 500000; // well above OpenCms edit points AND menu dropdowns
 }
 
@@ -104,7 +103,7 @@
     }
 
     .subtitle {
-        margin-top: calc(0.5 * var(--#{$prefix}paragraph-margin-bottom));
+        margin-top: $section-subtitle-margin-top;
         line-height: 1.15;
         font-style: italic;
         font-size: $section-subtitle-size;
@@ -161,14 +160,15 @@
 @mixin button-color-setvars($btn-bg, $btn-hover-bg) {
     --#{$prefix}btn-fg: #{get-text-color($btn-bg)};
     --#{$prefix}btn-bg: #{$btn-bg};
-    @if ($btn-border-style != none) {
-        border-color: var(--#{$prefix}btn-border);
-    }
-    &:focus,
-    &:hover {
-        --#{$prefix}btn-fg: #{get-text-color($btn-hover-bg)};
-        --#{$prefix}btn-bg: #{$btn-hover-bg};
-    }
+    --#{$prefix}btn-hover-fg: #{get-text-color($btn-hover-bg)};
+    --#{$prefix}btn-hover-bg: #{$btn-hover-bg};
+    // @if ($btn-border-style != none) {
+    //     border-color: var(--#{$prefix}btn-border);
+    // &:focus,
+    // &:hover {
+    //         border-color: var(--#{$prefix}btn-border);
+    //     }
+    // }
 }
 
 // Colored buttons with hover effects

@@ -45,7 +45,10 @@
 @each $color, $value in $theme-colors {
 
     .box-#{""+$color} {
-        @include set-box-colors($value);
+        @if ("body" != ""+$color) {
+            // special case: box-body colors are defined with the :root element
+            @include set-box-colors($value);
+        }
 
         &.transparent {
             background-color: rgb(var(--#{$prefix}body-bg-rgb), 0.7);

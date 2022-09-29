@@ -19,26 +19,21 @@
  * Source file: _root.scss
  */
 
-:root {
-
-    // body
-    --#{$prefix}body-font-family: #{inspect($font-family-base)};
-    --#{$prefix}body-font-size:  #{$font-size-base};
-    --#{$prefix}body-font-weight: #{$font-weight-base};
-    --#{$prefix}body-line-height: #{$line-height-base};
-
+:root,
+.box-body {
     // colors
-    --#{$prefix}body-color: #{$body-color};
     --#{$prefix}body-bg: #{$body-bg};
+    --#{$prefix}body-color: #{$body-color};
+    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
     --#{$prefix}link-color: #{$link-color};
     --#{$prefix}link-hover-color: #{$link-hover-color};
     --#{$prefix}link-fg-color: #{$link-fg-color};
-    --#{$prefix}link-fg-hover-color: #{$link-fg-hover-color};
+    --#{$prefix}link-hover-fg-color: #{$link-hover-fg-color};
 
     --#{$prefix}main-theme: #{$main-theme};
-    --#{$prefix}main-theme-hover: #{$main-theme-hover};
     --#{$prefix}main-theme-fg: #{$main-theme-fg};
+    --#{$prefix}main-theme-hover: #{$main-theme-hover};
     --#{$prefix}main-theme-hover-fg: #{$main-theme-hover-fg};
 
     --#{$prefix}headings-color: #{$headings-color};
@@ -60,20 +55,6 @@
     --#{$prefix}highlight-border-color: #{$highlight-border-color};
     --#{$prefix}highlight-border-fg-color: #{$highlight-border-fg-color};
 
-    --#{$prefix}disabled-color: #{$disabled-color};
-    --#{$prefix}disabled-fg-color: #{$disabled-fg-color};
-
-    --#{$prefix}grey-lighter: #{$grey-lighter};
-    --#{$prefix}grey-light: #{$grey-light};
-    --#{$prefix}grey: #{$grey};
-
-    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
-    --#{$prefix}main-theme-rgb: #{to-rgb($main-theme)};
-    --#{$prefix}highlight-color-rgb: #{to-rgb($highlight-color)};
-
-    --#{$prefix}nav-toggle-bg: #{$nav-toggle-bg};
-    --#{$prefix}nav-toggle-fg: #{$nav-toggle-fg};
-
     // buttons
     @if ($btn-bg != $main-theme) {
         --#{$prefix}btn-bg: #{$btn-bg};
@@ -91,6 +72,27 @@
     }
     --#{$prefix}btn-border: #{$btn-border};
     --#{$prefix}btn-hover-border: #{$btn-hover-border};
+}
+
+:root {
+    // body
+    --#{$prefix}body-font-family: #{inspect($font-family-base)};
+    --#{$prefix}body-font-size:  #{$font-size-base};
+    --#{$prefix}body-font-weight: #{$font-weight-base};
+    --#{$prefix}body-line-height: #{$line-height-base};
+
+    --#{$prefix}disabled-color: #{$disabled-color};
+    --#{$prefix}disabled-fg-color: #{$disabled-fg-color};
+
+    --#{$prefix}grey-lighter: #{$grey-lighter};
+    --#{$prefix}grey-light: #{$grey-light};
+    --#{$prefix}grey: #{$grey};
+
+    --#{$prefix}main-theme-rgb: #{to-rgb($main-theme)};
+    --#{$prefix}highlight-color-rgb: #{to-rgb($highlight-color)};
+
+    --#{$prefix}nav-toggle-bg: #{$nav-toggle-bg};
+    --#{$prefix}nav-toggle-fg: #{$nav-toggle-fg};
 
     // fonts
     @if ($font-family-headings != $font-family-base) {

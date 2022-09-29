@@ -292,7 +292,7 @@ $link-decoration:                   none !default;
 $link-hover-color:                  $main-theme-hover !default;
 $link-hover-decoration:             underline !default;
 $link-fg-color:                     get-text-color($link-color) !default;
-$link-fg-hover-color:               get-text-color($link-hover-color) !default;
+$link-hover-fg-color:               get-text-color($link-hover-color) !default;
 
 $headings-color:                    $text-dark !default;
 $intro-headings-color:              $main-theme !default;

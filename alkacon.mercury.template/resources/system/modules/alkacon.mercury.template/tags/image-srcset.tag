@@ -143,7 +143,7 @@ image-srcset using fullwidth!
             ${bb.setGridSize(2, bsMwMd)}
             ${bb.setGridSize(3, bsMwLg)}
             ${bb.setGridSize(4, bsBpXl)}
-            ${bb.setGridSize(5, maxScaleWidth)}
+            ${bb.setGridSize(5, bsBpXxl)}
         </c:when>
         <c:otherwise>
             <%-- ###### Calculate image size based on column width ###### --%>
@@ -195,6 +195,7 @@ fullwidth: ${fullwidth eq true}
 ib.vfsUri: ${ib.vfsUri}
 ib.scaler.width: ${ib.scaler.width}
 ib.scaler.height: ${ib.scaler.height}
+ib.ratio: ${ib.ratio}
 ib.scaler.pixelCount: ${ib.scaler.pixelCount}
 
 
@@ -299,8 +300,8 @@ scaleGapStep: ${scaleGapStep}
                 <c:if test="${maxScaleWidth > 2 * (largestWidth + 3 * scaleGapStep)}">
                     <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 3 * scaleGapStep]}" />
                 </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[ib.scaler.width]}" />
             </c:if>
+            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[ib.scaler.width]}" />
         </c:if>
     </c:if>
 

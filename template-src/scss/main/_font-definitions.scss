@@ -65,6 +65,7 @@ $fonts-preloaded-default: (
     "Titillium Web":            (join("Titillium Web",           $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Ubuntu":                   (join("Ubuntu",                  $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
     "Ubuntu Condensed":         (join("Ubuntu Condensed",        $font-family-sans-serif),  (400: (normal))),
+    "Work Sans":                (join("Work Sans",               $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Yanone Kaffeesatz":        (join("Yanone Kaffeesatz",       $font-family-sans-serif),  (300: (normal),         400: (normal),         700: (normal))),
     "SFMono-Regular":           ((                               $font-family-monospace),   (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "-apple-system":            ((                               $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),

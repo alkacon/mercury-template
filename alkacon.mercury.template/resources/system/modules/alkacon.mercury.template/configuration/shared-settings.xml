@@ -2945,6 +2945,20 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[xsCols.layout]]></IncludeName>
+      <PropertyName><![CDATA[xsCols]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.xsCols)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.xsCols.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[%(stringtemplate:showXsCols)]]></Widget>
+      <Default><![CDATA[0]]></Default>
+      <WidgetConfig><![CDATA[
+            0: %(key.msg.setting.xsCols.0)|
+            6: %(key.msg.setting.xsCols.6)|
+            12: %(key.msg.setting.xsCols.12)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[headerPosition.layout]]></IncludeName>
       <PropertyName><![CDATA[headerPosition]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.header.position)]]></DisplayName>

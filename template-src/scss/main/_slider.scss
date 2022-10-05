@@ -26,6 +26,7 @@ $slider-button-size: 40px !default;
 $slider-dot-size: 20px !default;
 $slider-opacity-inactive: 0.5 !default;
 $slider-opacity-active: 1 !default;
+$slider-text-below-breakpoint: md !default;
 
 .type-slider {
 
@@ -256,7 +257,7 @@ $slider-opacity-active: 1 !default;
     }
 
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down($slider-text-below-breakpoint) {
         &.text-below-on-xs {
 
             .slider-dots {

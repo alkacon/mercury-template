@@ -6,6 +6,25 @@ The Mercury Template is a complete, modular template for [OpenCms](http://opencm
 
 ### Release history ###
 
+**Version 14** - October 11, 2022:
+
+This version updates the underlying Bootstrap framework to 5.2 and provides incremental improvements to several other features. Mercury 14 should be largely backward compatible with the 13 version.
+
+* Updated for OpenCms 14.
+* Bootstrap updated to 5.2.
+* SCSS / CSS now makes use of CSS variables (custom properties).
+* New dynamic function "Search slot".
+* Page in tabs and accordions can new directly be opened with a hash-URL (#).
+* Flexible content now uses source code editor based on CodeMirror.
+* Cookie-free page request statistic collection support when using Matomo.
+* Cookie banner can now be closed with an "x" without consenting to anything.
+* Decoys in lists show a special marker in the page editor.
+* Simple layout rows with 3-3-3-3 or 2-2-2-2-2-2 now can show either one or two columns in XS screens.
+* Improved options for lists using image tile teasers.
+* New font option "Work Sans".
+* Updated the Slider element to use the jQuery free Embla slider, also adding some new element settings.
+* Updated PhotoSipe to the lasted, jQuery free version.
+
 **Version 13** - April 13, 2022:
 
 This update adds the 'Burger' variant for the Mercury template and provides incremental improvements to several other features. Mercury 13 should be largely backward compatible with the 12 version.

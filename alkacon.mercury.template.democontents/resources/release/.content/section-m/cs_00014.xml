@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Release Notes for OpenCms 14]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/743]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-documentation/issues/16]]></target>
+        </link>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link5" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
+        </link>
+      </links>
+      <content><![CDATA[<p>October 11, 2022: OpenCms 14 provides XML schema versioning with automatic content rewrite. This version also supports 2 factor authentication (2FA) in the user workplace login. In the form editor, a source code widget is available as replacement for multi-line text input fields. The Mercury template CSS has been updated to Bootstrap 5.2 and the Mercury JavaScript has dropped some jQuery dependencies. The OpenCms documentation website has been overhauled with an improved layout and new content (this is still a work in progress).</p>
+<h2>Major new features of OpenCms 14</h2>
+<ul>
+<li>XML schema versioning with automatic content rewrite</li>
+<li>Support for 2 factor authentication (2FA) in the user workplace login</li>
+<li>Source code widget for the form editor based on CodeMirror</li>
+<li>Mercury template: Updated to use Bootstrap 5.2, dropped some jQuery dependencies</li>
+<li>Improved the documentation website (work in progress)</li>
+</ul>
+<h2>Further improvements in OpenCms 14</h2>
+<ul>
+<li>Page editor: The "add content" dialog now shows the site and text filters directly on the the result page</li>
+<li>Page editor: HTML marker <code>html.opencms-editor-active</code> is added in case the user is actively editing</li>
+<li>Form editor: CSS can now be configured with the sitemap attribute <code>template.editor.css</code></li>
+<li>JSP API: Added <code>cms.readAttributeOrProperty</code> allows to read either attribute or property</li>
+<li>JSP API: Added <code>cms.functionDetailPageExact</code> returning <code>null</code> in case the requested detail page is not configured</li>
+<li>Websites app: Alias redirects can now be configured as 301, 302 or direct display</li>
+<li>User preferences: Locale selection now lists locales configured for the VFS first</li>
+<li>Shell: New commands <code>createOU</code> and <code>addResourceToOU</code> to create / modify OUs</li>
+<li>The delete resource dialog now provides editing options for conflicting resources</li>
+<li>Improved use of <code>&lt;script&gt;</code> tags in page editor and workplace</li>
+<li>Better handling of errors during file import</li>
+<li>Support for setting the start project when using HTTP Basic authentication</li>
+<li>Added configurable option to control which user settings are applied when using HTTP Basic authentication</li>
+<li>Added configurable upload restrictions for target folders and upload-able file types</li>
+<li>Master sitemap: "Content element configuration &gt; Availability" is now optional with inheritance</li>
+</ul>
+<h2>Issues fixed in OpenCms 14</h2>
+<ul>
+<li>Sitemap editor: Redirects require reload before fully editable</li>
+<li>Accounts app: User language selection does not show the available workplace locales</li>
+<li>Accounts app: Information on institution, zip code, address and city can't be removed anymore</li>
+<li>Form editor: Problems when changing the link target of an existing link with a hash fragment</li>
+<li>Form editor: Help texts wrongly positioned</li>
+<li>Form editor: Fixed problem with 'column' layout (github issue <a class="external" href="%(link0)">#743</a>&nbsp;)</li>
+<li>Page / form editor: Percent-encoded ampersands do not work correctly in links</li>
+<li>Page editor: Adding a new content element via drag&amp;drop does not default to the last used formatter</li>
+<li>Page editor: Edit point function symbol not displayed for all users</li>
+<li>Page editor: Page not scrolling on element drag&amp;drop when <code>scroll-behavior: smooth</code> CSS is present</li>
+<li>Translation Tool: Improved scrolling behavior with filter</li>
+<li>Sessions app: Empty login message causes error during startup</li>
+<li>Source search app: URL is sometimes escaped too often</li>
+<li>XML content schemas: Using ampersands in values for the <code>&lt;xsd:appinfo&gt;</code> element in XSDs causes errors</li>
+<li>Sitemap editor: Issue when creating function detail pages without function detail container</li>
+<li>Password reset dialog: Email address is checked case-sensitive during password reset</li>
+<li>Documentation: Fixed broken burger menu (github issue <a class="external" href="%(link1)">#16</a>)</li>
+</ul>
+<h2>General OpenCms features</h2>
+<ul>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
+<li>The form based editor allows editing of structured content in a well defined form mask.</li>
+<li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
+<li>Responsive "Mercury" default template based on Bootstrap 4 with many features.</li>
+<li>Headless API for accessing content as JSON from external applications.</li>
+<li>Content creation for mobile devices with preview and device specific content control.</li>
+<li>Structured contents can be defined using a simple XML schema.</li>
+<li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
+<li>Link management for all internal resources with broken link detection.</li>
+<li>Integrated image scaling and cropping.</li>
+<li>SEO features with automatic sitemap.xml generation and page alias support.</li>
+<li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
+<li>Allows management of multiple websites within one installation.</li>
+<li>Contents can be served dynamically or exported to static HTML files.</li>
+<li>File access to the OpenCms content repository over a shared network / SMB drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
+<li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
+<li>Extensions can be added through a flexible module system.</li>
+<li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
+<li>JSP integration for dynamic functionality in templates, dynamic forms etc.</li>
+<li>... and many more</li>
+</ul>
+<h3>Backward compatibility</h3>
+<p>OpenCms 14.0 is backward compatible with all 13.0, 12.0, 11.0, 10.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 14.0.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 14.0. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link2)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
+<h3>Compatibility with Java versions, servlet containers and databases</h3>
+<p>OpenCms 14.0 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9 and 8.5. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<h3>Regarding version numbers and build tags</h3>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link3)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms sources from Git, please check out branch <span class="label label-cyan">master</span>. This release is tagged <span class="label label-cyan">build_14_0_0</span>.</p>
+<h3>How you can help</h3>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link4)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link5)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

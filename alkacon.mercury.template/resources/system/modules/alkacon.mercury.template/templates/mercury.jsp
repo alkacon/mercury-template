@@ -59,21 +59,22 @@
         <mercury:nl />
         <%-- Preload Fork Awesome --%>
         <link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
-        <%-- Include additional CSS / JS if allowed --%>
-        <c:if test="${allowTemplateMods}">
-            <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
-                <link href="<mercury:link-resource resource='${resourcePath}'/>" rel="stylesheet"><mercury:nl />
-            </mercury:load-resource>
-            <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
-                <script src="<mercury:link-resource resource='${resourcePath}'/>" defer></script><mercury:nl />
-            </mercury:load-resource>
-        </c:if>
     </c:when>
     <c:otherwise>
         <%-- Use custom CSS plugin --%>
         <mercury:load-plugins group="custom-css" type="jsp" />
     </c:otherwise>
 </c:choose>
+
+<%-- Include additional CSS / JS if allowed --%>
+<c:if test="${allowTemplateMods}">
+    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
+        <link href="<mercury:link-resource resource='${resourcePath}'/>" rel="stylesheet"><mercury:nl />
+    </mercury:load-resource>
+    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
+        <script src="<mercury:link-resource resource='${resourcePath}'/>" defer></script><mercury:nl />
+    </mercury:load-resource>
+</c:if>
 
 <c:choose>
     <c:when test="${empty cms.plugins['custom-favicon']}">
@@ -130,20 +131,15 @@
 <%-- Page information transfers OpenCms state information to JavaScript --%>
 <mercury:pageinfo contentPropertiesSearch="${contentPropertiesSearch}" />
 
-<c:choose>
-    <c:when test="${empty cms.plugins['custom-body']}">
-        <%-- Include custom foot if allowed --%>
-        <c:if test="${allowTemplateIncludes}">
-            <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.foot']}">
-                <cms:include file="${resourcePath}" cacheable="false" /><mercury:nl />
-            </mercury:load-resource>
-        </c:if>
-    </c:when>
-    <c:otherwise>
-        <%-- Use custom body plugin --%>
-        <mercury:load-plugins group="custom-body" type="jsp" />
-    </c:otherwise>
-</c:choose>
+<%-- Load custom body plugins --%>
+<mercury:load-plugins group="custom-body" type="jsp" />
+
+<%-- Include custom foot if allowed --%>
+<c:if test="${allowTemplateIncludes}">
+     <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.foot']}">
+         <cms:include file="${resourcePath}" cacheable="false" /><mercury:nl />
+     </mercury:load-resource>
+</c:if>
 
 <%-- Privacy policy banner markup --%>
 <mercury:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />

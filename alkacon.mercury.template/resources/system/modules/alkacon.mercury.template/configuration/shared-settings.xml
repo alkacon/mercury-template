@@ -2571,6 +2571,7 @@
       <Default><![CDATA[swipe]]></Default>
       <WidgetConfig><![CDATA[
         swipe:      %(key.msg.setting.slider.transition.swipe)|
+        fade:       %(key.msg.setting.slider.transition.fade)|
         parallax:   %(key.msg.setting.slider.transition.parallax)|
         scale:      %(key.msg.setting.slider.transition.scale)|
         direct:     %(key.msg.setting.slider.transition.direct)

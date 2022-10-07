@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>13.0.8</version>
+		<version>13.0.9</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -16233,6 +16233,23 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>release/.content/section-m/cs_00014.xml</source>
+			<destination>release/.content/section-m/cs_00014.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>eaf8ed5b-4630-11ed-8f50-0242ac11002b</uuidstructure>
+			<uuidresource>eaf8ed5c-4630-11ed-8f50-0242ac11002b</uuidresource>
+			<datecreated>Fri, 07 Oct 2022 11:12:23 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 14: Release Notes for OpenCms 14]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>release/opencms-10.0.0-notes</destination>
 			<type>folder</type>
 			<uuidstructure>f4ef6adb-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -16711,6 +16728,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 13]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/opencms-14.0-notes</destination>
+			<type>folder</type>
+			<uuidstructure>b30b2615-4630-11ed-8f50-0242ac11002b</uuidstructure>
+			<datecreated>Fri, 07 Oct 2022 11:10:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.03125]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[OpenCms 14]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 14]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/opencms-14.0-notes/index.html</source>
+			<destination>release/opencms-14.0-notes/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>b311198a-4630-11ed-8f50-0242ac11002b</uuidstructure>
+			<uuidresource>b311198b-4630-11ed-8f50-0242ac11002b</uuidresource>
+			<datecreated>Fri, 07 Oct 2022 11:10:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 14]]></value>
 				</property>
 			</properties>
 			<relations/>

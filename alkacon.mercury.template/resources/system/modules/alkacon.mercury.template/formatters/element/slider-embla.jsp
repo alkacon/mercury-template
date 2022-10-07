@@ -24,7 +24,7 @@
 
 <c:set var="rotationTime"           value="${setting.rotationTime.isSet ? setting.rotationTime.toInteger : 0}" />
 <c:set var="autoPlay"               value="${rotationTime > 0}" />
-<c:set var="transition"             value="${setting.transition.validate(['swipe','direct','parallax','scale'],'direct').toString}" />
+<c:set var="transition"             value="${setting.transition.validate(['swipe','fade','direct','parallax','scale'],'direct').toString}" />
 <c:set var="transitionSpeed"        value="${setting.transitionSpeed.toInteger}" />
 <c:set var="marginClass"            value="${' '}${setting.marginClass.toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
@@ -82,6 +82,8 @@
     <%-- Hero slider (default) --%>
         <c:set var="isHeroSlider" value="${true}" />
         <c:set var="marginClass" value="${marginClass}${' tr-'.concat(transition)}" />
+        <c:set var="transitionSpeedClass" value="${transitionSpeed <  4 ? ' sp-slow' : ' sp-medium'}" />
+        <c:set var="transitionSpeedClass" value="${transitionSpeed <  8 ? transitionSpeedClass : ' sp-fast'}" />
         <c:if test="${transition eq 'direct'}">
             <c:set var="transitionSpeed" value="${100}" />
         </c:if>
@@ -159,7 +161,7 @@
     --%></c:set>
     </c:if>
 
-    <div class="slider-box${customClass}${marginClass}"${customVars}${sliderData}><mercury:nl/>
+    <div class="slider-box${customClass}${marginClass}${transitionSpeedClass}"${customVars}${sliderData}><mercury:nl/>
     <div class="slide-definitions${logoRows}"><mercury:nl/>
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">

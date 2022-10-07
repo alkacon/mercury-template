@@ -253,14 +253,21 @@ function initEmblaSliders(sliders) {
         options.speed = options.speed || 4;
         options.inViewThreshold = (options.type == 'logo' ? 0.75 : 0);
 
-        let plugins = [EmblaClassNames({ selected: 'slide-active', draggable: '', dragging: ''})];
-        const autoplay = options.autoplay ? AutoplayMod({ delay: options.delay, stopOnMouseEnter: options.pause, speed: options.speed }) : null;
+        let plugins = [EmblaClassNames({
+            selected: 'slide-active',
+            dragging: 'is-dragging', draggable: ''
+        })];
+        const autoplay = options.autoplay ? AutoplayMod({
+            delay: options.delay,
+            stopOnMouseEnter: options.pause,
+            speed: options.speed
+        }) : null;
         if (autoplay !=  null) {
             plugins.push(autoplay);
         }
 
-        sliderBox.classList.add('slider-initialized');
         const embla = EmblaCarousel({root: sliderBox, container: sliderBox.querySelector('.slide-definitions')}, options, plugins);
+        sliderBox.classList.add('slider-initialized');
 
         if (options.arrows) {
             const prevBtn = slider.querySelector(".prev-btn");
@@ -273,21 +280,32 @@ function initEmblaSliders(sliders) {
             const dotsArray = generateDotBtns(dots, embla);
             const setSelectedDotBtn = selectDotBtn(dotsArray, embla);
             setupDotBtns(dotsArray, embla, autoplay);
-            embla.on("init", setSelectedDotBtn);
-            embla.on("select", setSelectedDotBtn);
+            embla
+                .on("init", setSelectedDotBtn)
+                .on("select", setSelectedDotBtn);
         }
 
         if (options.transition == 'scale' || options.transition == 'parallax') {
             const transitionParam = options.param || (options.transition == 'scale' ? 2.0 : 0.75);
             const applyTransition = slideTransition(embla, options.transition == 'scale' ? scaleTransition : parallaxTransition, transitionParam);
-            embla.on("init", applyTransition);
-            embla.on("scroll", applyTransition);
+            embla
+                .on("init", applyTransition)
+                .on("scroll", applyTransition);
+        } else if (options.transition == 'fade') {
+            embla
+                .on("init", function() { sliderBox.classList.add('slider-initialized') })
+                .on("reInit", function() { sliderBox.classList.add('slider-initialized') })
+                .on("resize", function() {
+                    sliderBox.classList.remove('slider-initialized');
+                    embla.reInit();
+                });
         }
 
         if (options.type == 'logo') {
             const setAutoPlay = checkAutoplay(embla, sliderBox, autoplay);
-            embla.on("init", setAutoPlay);
-            embla.on("resize", setAutoPlay);
+            embla
+                .on("init", setAutoPlay)
+                .on("resize", setAutoPlay);
         }
 
         sliderBox.addEventListener('keydown', (event) => {

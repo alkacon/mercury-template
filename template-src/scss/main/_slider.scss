@@ -383,6 +383,50 @@ $slider-text-below-breakpoint: md !default;
                 }
             }
         }
+
+        .tr-fade:not(.is-dragging) {
+            &.slider-initialized {
+                .slide-definitions {
+                    transform: none !important;
+                    display: grid;
+                }
+
+                .slide-wrapper {
+                    transform: none !important;
+                    grid-row: 1;
+                    grid-column: 1;
+                    opacity: 0;
+                    z-index: 1;
+                    transition: opacity 2s;
+
+                    &.slide-active {
+                        opacity: 1;
+                        z-index: 10;
+                        transition: opacity 1.5s;
+                    }
+                }
+            }
+
+            &.sp-slow {
+                .slide-wrapper {
+                    transition: opacity 2.5s;
+
+                    &.slide-active {
+                        transition: opacity 3s;
+                    }
+                }
+            }
+
+            &.sp-fast {
+                .slide-wrapper {
+                    transition: opacity 1s;
+
+                    &.slide-active {
+                        transition: opacity 0.75s;
+                    }
+                }
+            }
+        }
     }
 
     &.logo-slider {

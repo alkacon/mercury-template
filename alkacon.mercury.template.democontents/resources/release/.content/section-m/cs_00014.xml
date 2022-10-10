@@ -25,7 +25,7 @@
           <query><![CDATA[state=open]]></query>
         </link>
       </links>
-      <content><![CDATA[<p>October 11, 2022: OpenCms 14 provides XML schema versioning with automatic content rewrite. This version also supports 2 factor authentication (2FA) in the user workplace login. In the form editor, a source code widget is available as replacement for multi-line text input fields. The Mercury template CSS has been updated to Bootstrap 5.2 and the Mercury JavaScript has dropped some jQuery dependencies. The OpenCms documentation website has been overhauled with an improved layout and new content (this is still a work in progress).</p>
+      <content><![CDATA[<p><em>October 11, 2022:</em> OpenCms 14 provides XML schema versioning with automatic content rewrite. This version also supports 2 factor authentication (2FA) in the user workplace login. In the form editor, a source code widget is available as replacement for multi-line text input fields. The Mercury template CSS has been updated to Bootstrap 5.2 and the Mercury JavaScript has dropped some jQuery dependencies. The OpenCms documentation website has been overhauled with an improved layout and new content (this is still a work in progress).</p>
 <h2>Major new features of OpenCms 14</h2>
 <ul>
 <li>XML schema versioning with automatic content rewrite</li>
@@ -98,10 +98,10 @@
 <li>... and many more</li>
 </ul>
 <h3>Backward compatibility</h3>
-<p>OpenCms 14.0 is backward compatible with all 13.0, 12.0, 11.0, 10.5 and 10.0 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 14.0.</p>
-<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 14.0. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link2)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
+<p>OpenCms 14 is backward compatible with all 13, 12, 11, 10.5 and 10 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 14.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 14. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link2)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
-<p>OpenCms 14.0 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>OpenCms 14 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
 <p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9 and 8.5. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
 <p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>

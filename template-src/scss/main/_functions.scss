@@ -142,6 +142,10 @@
     }
 }
 
+// check if default buttons are using outline borders
+@function button-use-outline-border() {
+    @return ($btn-border != none) and (($btn-bg == $body-bg) or ($btn-bg == transparent));
+}
 
 // Functions to calculate the contrast difference of two colors
 // See https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796

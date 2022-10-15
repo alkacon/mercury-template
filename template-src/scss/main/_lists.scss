@@ -395,7 +395,7 @@
         li.list-entry {
             padding-top: var(--#{$prefix}default-margin-small);
             padding-bottom: var(--#{$prefix}default-margin-small);
-            border-bottom: 1px solid $highlight-color;
+            border-bottom: 1px solid var(--#{$prefix}highlight-color);
 
             &:last-child {
                 padding-bottom: 0;
@@ -718,6 +718,8 @@
 
 .type-list-filter {
 
+    @include button-reset-outline-border;
+
     button {
         padding-left: $nav-side-left-padding-step;
         padding-right: var(--#{$prefix}default-margin);
@@ -726,7 +728,7 @@
     .filterbox {
         border-radius: $list-border-radius;
         margin-bottom: var(--#{$prefix}element-margin);
-        background-color: $body-bg;
+        background-color: var(--#{$prefix}body-bg);
 
         &:last-of-type {
             margin-bottom: 0;
@@ -878,12 +880,13 @@
             }
 
             button.year {
+                border: none;
                 color: $text-dark;
-                background-color: $grey-lighter;
+                background-color: var(--#{$prefix}grey-lighter);
                 padding-left: calc(#{$nav-side-left-padding-step} - 1px);
 
                 &:hover {
-                    background-color: $grey-light;
+                    background-color: var(--#{$prefix}grey-light);
                 }
 
                 &::before {
@@ -948,7 +951,7 @@
                     }
 
                     &:hover {
-                        background-color: $grey-lighter;
+                        background-color: var(--#{$prefix}grey-lighter);
                         transition: background-color 0.33s;
 
                         .li-count {
@@ -995,7 +998,6 @@
             }
         }
     }
-
 
     .dropdown-menu {
         padding: 0;

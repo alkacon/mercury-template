@@ -967,6 +967,7 @@ $border-styles:                     () !default;
 
 // Further variables used by generics
 $box-padding:                       20px !default;
+$box-force-full-buttons:            false !default;
 
 // Spaces used for margins and paddings
 $margins-paddings:                  (0, 5, 10, 20, 30, 40) !default;

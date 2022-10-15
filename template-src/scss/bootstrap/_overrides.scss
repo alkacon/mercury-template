@@ -57,3 +57,6 @@ $utilities: (
       )
     )
 );
+
+// Bootstrap color variables that are reset to Mercury colors
+$table-border-color:            var(--#{$prefix}highlight-color);

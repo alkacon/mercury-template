@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.2</version>
+		<version>14.0.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -281,6 +281,35 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury default values for attributes]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/configuration/individual.contacts.master.xml</source>
+			<destination>system/modules/alkacon.mercury.template/configuration/individual.contacts.master.xml</destination>
+			<type>sitemap_master_config</type>
+			<uuidstructure>cfb3c1b6-4cb1-11ed-978e-0242ac11002b</uuidstructure>
+			<uuidresource>cfb3c1b7-4cb1-11ed-978e-0242ac11002b</uuidresource>
+			<datecreated>Sat, 15 Oct 2022 17:50:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury enables individual contact information]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[true]]></value>
 				</property>
 			</properties>
 			<relations/>

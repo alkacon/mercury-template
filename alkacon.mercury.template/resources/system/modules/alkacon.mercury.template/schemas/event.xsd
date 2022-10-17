@@ -2,6 +2,7 @@
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/image.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/teaser-data.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
@@ -28,7 +29,9 @@
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
+            <xsd:element name="VirtualLocation" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="Kind" type="OpenCmsString" />
             <xsd:element name="Booking" type="OpenCmsBooking" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
@@ -61,6 +64,9 @@
                 <searchsetting element="Type">
                     <solrfield targetfield="event-type" sourcefield="*_s" />
                 </searchsetting>
+                <searchsetting element="Kind">
+                    <solrfield targetfield="event-kind" sourcefield="*_s" />
+                </searchsetting>
             </searchsettings>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
             <parameters>
@@ -79,6 +85,15 @@
                         !% (%content.value.("Dates").toDateSeries.first.startInstance.format.("dd.MM.yy")%)%!
                     !%%endif%%!
                     !%%if (content.value.("Type").isSet)%, %content.value.("Type")%%endif%%!
+                !%]]></param>
+                <param name="eventKind"><![CDATA[%!
+                    !%%if (content.value.("VirtualLocation").isSet || content.value.("AddressChoice").isSet)%%!
+                        !%mixed%!
+                    !%%elseif (content.value.("VirtualLocation").isSet)%%!
+                        !%online%!
+                    !%%else%%!
+                        !%presence%!
+                    !%%endif%%!
                 !%]]></param>
                 <param name="detailPageUrl"><![CDATA[%!
                     !%%if (content.value.("Title").isSet)%%content.value.("Title")%%endif%%!
@@ -143,12 +158,17 @@
                 </Setting>
                 <Setting>
                     <PropertyName>AddressChoice</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.AddressChoice)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.AddressChoice.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.Event.AddressChoice)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Event.AddressChoice.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>AddressChoice/Address/Coord</PropertyName>
                     <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>VirtualLocation</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Event.VirtualLocation)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Event.VirtualLocation.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>LocationNote</PropertyName>
@@ -156,6 +176,14 @@
                     <Description><![CDATA[%(key.label.LocationNote.help)]]></Description>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Kind</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Event.Kind)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Event.Kind.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(stringtemplate:eventKind)]]></Default>
+                    <Visibility>hidden</Visibility>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

@@ -208,19 +208,51 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
-    // special margin adjustments for section pieces
+    // special adjustments for type-section content pieces that re not "boxed"
     &.element.type-section:not(.box) {
+        // margin adjustments
         &.only-heading {
             // if piece element has only a header, set margin the same height as normally used by the headers
             margin-bottom: var(--#{$prefix}headings-margin-bottom);
         }
+
         &.only-text,
         &.phb:not(.phl) {
+
             // if a text-only piece element fowllows a text-only piece element, reduce top margin
             // goal: make text from 2nd element apperar as if it belongs to first element
-            + .piece.element.type-section:not(.box) {
+            +.piece.element.type-section:not(.box) {
                 &.only-text {
                     margin-top: calc(var(--#{$prefix}paragraph-margin-bottom) - var(--#{$prefix}element-margin));
+                }
+            }
+        }
+    }
+
+     // special adjustments for paragraphs or type-section content pieces
+     &.paragraph,
+     &.element.type-section {
+        @if ($piece-btn-white-space == normal) {
+            // buttons in sections that break long text
+            .btn {
+                white-space: normal;
+                hyphens: auto;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                text-align: left;
+
+                &.btn-block {
+                    text-align: center;
+                }
+            }
+        }
+
+        @if ($piece-text-link-decoration != $link-decoration) {
+            // links may be underlined different in section piece
+            .text a {
+                text-decoration: $piece-text-link-decoration;
+                &:hover {
+                    text-decoration: $piece-text-link-hover-decoration
                 }
             }
         }

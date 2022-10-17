@@ -231,6 +231,7 @@
     user-select: none;
     box-shadow: none;
     border: $btn-border-style; // must be set even if 'none' because user agent may apply border to <button> elements
+    text-decoration: none;
 
     font-family: var(--#{$prefix}btn-font-family);
 
@@ -268,7 +269,12 @@
         border: none;
     }
     @if ($btn-white-space != normal) {
+        white-space: $btn-white-space;
+    } @else {
         white-space: normal;
+        hyphens: auto;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
     @if ($btn-text-transform != none) {
         text-transform: none;

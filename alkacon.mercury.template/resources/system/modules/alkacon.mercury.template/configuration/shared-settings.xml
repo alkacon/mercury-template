@@ -1232,6 +1232,7 @@
       <Default><![CDATA[0]]></Default>
       <WidgetConfig><![CDATA[
             0:       %(key.msg.setting.keyVisualOption.title-image-text)|
+            10:      %(key.msg.setting.keyVisualOption.title-text-image)|
             1:       %(key.msg.setting.keyVisualOption.image-title-text)|
             4:       %(key.msg.setting.keyVisualOption.sideImageLeft)|
             5:       %(key.msg.setting.keyVisualOption.sideImageRight)|

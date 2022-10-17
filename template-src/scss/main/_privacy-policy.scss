@@ -137,6 +137,7 @@
 
     .buttons {
         .btn {
+            border: none;
             font-size: 1.8rem;
             min-width: $policy-banner-button-min-width;
             @if ($policy-banner-save-button-color == $policy-banner-background) {

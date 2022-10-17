@@ -19,6 +19,8 @@
 
 import jsCookies from 'js-cookie';
 
+import Modal from 'bootstrap/js/dist/modal';
+
 // the global objects that must be passed to this module
 var jQ;
 var DEBUG;
@@ -519,8 +521,8 @@ export function createExternalElementModal(heading, message, footer, callbackAcc
                             createExternalElementToggle(heading, message, footer, true) +
                     '</div>' +
                     '<div class=\"modal-footer\">' +
-                        '<button type=\"button\" class=\"btn btn-sm btn-dismiss\" data-dismiss=\"modal\">' + m_policy.btDis + '</button>' +
-                        '<button type=\"button\" class=\"btn btn-sm btn-accept\" data-dismiss=\"modal\">' + m_policy.btAcc + '</button>' +
+                        '<button type=\"button\" class=\"btn btn-sm btn-dismiss\" data-bs-dismiss=\"modal\">' + m_policy.btDis + '</button>' +
+                        '<button type=\"button\" class=\"btn btn-sm btn-accept\" data-bs-dismiss=\"modal\">' + m_policy.btAcc + '</button>' +
                     '</div>'
                 '</div>' +
             '</div>' +
@@ -537,22 +539,18 @@ export function createExternalElementModal(heading, message, footer, callbackAcc
         var $btnAccept = jQ(".btn-accept", $modalHolder);
         var $toggleCheckbox = jQ(".toggle-check", $modalHolder);
 
+        const myModal = new Modal("#" + modalId, {
+            backdrop: 'static',
+            focus: true,
+            keyboard: true
+        });
+
         $btnAccept.on("click", function() {
             setPrivacyCookiesExternal(true);
             callbackAccept();
         });
-        $toggleCheckbox.change(function() {
-            setPrivacyCookiesExternal(true);
-            callbackAccept();
-            jQ("#" + modalId).modal('hide');
-        });
 
-        jQ("#" + modalId).modal({
-            backdrop: 'static',
-            show: true,
-            focus: true,
-            keyboard: true
-        });
+        myModal.show();
     }
 }
 

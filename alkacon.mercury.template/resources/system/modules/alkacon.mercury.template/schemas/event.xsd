@@ -46,6 +46,7 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <handler class="alkacon.mercury.template.CmsEventContentHandler" />
             <resourcebundles>
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>

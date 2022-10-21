@@ -18,7 +18,9 @@
  */
 
 import EmblaCarousel from 'embla-carousel';
+import emblaCarouselAutoplay from 'embla-carousel-autoplay';
 import EmblaClassNames from 'embla-carousel-class-names';
+import { param } from 'jquery';
 
 "use strict";
 
@@ -248,10 +250,18 @@ function initEmblaSliders(sliders) {
         const sliderBox = slider.querySelector('.slider-box');
         const options = JSON.parse(sliderBox.dataset.slider);
 
+        let startIndex = 0;
+        if (options.transition == 'timed') {
+            let timeDiff = Math.abs(Date.now() - parseInt(options.param));
+            startIndex =  Math.floor(timeDiff / options.delay) % options.slides;
+            if (Mercury.debug()) console.info("Slider.initEmblaSliders() Timed slider - Showing slide: " + startIndex + " - Server time: " + options.param + " - Client time: " + Date.now());
+        }
+
         options.loop = true;
         options.align = 'start';
         options.speed = options.speed || 4;
-        options.inViewThreshold = (options.type == 'logo' ? 0.75 : 0);
+        options.inViewThreshold = (options.transition == 'logo' ? 0.75 : 0);
+        options.startIndex = startIndex;
 
         let plugins = [EmblaClassNames({
             selected: 'slide-active',
@@ -299,9 +309,7 @@ function initEmblaSliders(sliders) {
                     sliderBox.classList.remove('slider-initialized');
                     embla.reInit();
                 });
-        }
-
-        if (options.type == 'logo') {
+        } else if (options.transition == 'logo') {
             const setAutoPlay = checkAutoplay(embla, sliderBox, autoplay);
             embla
                 .on("init", setAutoPlay)

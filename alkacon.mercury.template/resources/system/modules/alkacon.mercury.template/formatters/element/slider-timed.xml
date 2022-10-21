@@ -2,17 +2,16 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-slider.formatter.hero)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-slider.formatter.timed)]]></NiceName>
     <Type><![CDATA[m-slider]]></Type>
-    <Key><![CDATA[m/element/slider-hero]]></Key>
-    <KeyAlias><![CDATA[m/element/slider-slick-hero]]></KeyAlias>
+    <Key><![CDATA[m/element/slider-timed]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-embla.jsp]]></target>
         <uuid>0b1ade57-21e9-11ed-a9d9-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Rank><![CDATA[1500]]></Rank>
+    <Rank><![CDATA[1400]]></Rank>
     <Match>
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
@@ -48,16 +47,7 @@
       <IncludeName><![CDATA[imageRatioLarge.slider.hero]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[rotationTime.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[marginClass.slider]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[transition.slider]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[transitionSpeed.slider]]></IncludeName>
+      <IncludeName><![CDATA[rotationTime.timed]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textDisplay.slider]]></IncludeName>
@@ -72,16 +62,16 @@
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[isDraggable.true]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showArrows.true]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showDots.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pauseOnHover.true]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[sliderType.slider.hero]]></IncludeName>
+      <IncludeName><![CDATA[sliderType.slider.timed]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

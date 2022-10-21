@@ -23,6 +23,7 @@
 <c:set var="justOneSlide"           value="${content.valueList.Image.size() < 2}" />
 
 <c:set var="rotationTime"           value="${setting.rotationTime.isSet ? setting.rotationTime.toInteger : 0}" />
+<c:set var="rotationTime"           value="${rotationTime < 0 ? 0 : rotationTime}" />
 <c:set var="autoPlay"               value="${rotationTime > 0}" />
 <c:set var="transition"             value="${setting.transition.validate(['swipe','fade','direct','parallax','scale'],'direct').toString}" />
 <c:set var="transitionSpeed"        value="${setting.transitionSpeed.toInteger}" />
@@ -33,6 +34,7 @@
 <c:set var="showArrows"             value="${setting.showArrows.toBoolean}" />
 <c:set var="pauseOnHover"           value="${setting.pauseOnHover.toBoolean}" />
 <c:set var="showDots"               value="${setting.showDots.toBoolean}" />
+<c:set var="isDraggable"            value="${setting.isDraggable.useDefault('true').toBoolean}" />
 <c:set var="visibleSlideSetting"    value="${setting.visibleSlides.toString}" />
 <c:set var="textDisplay"            value="${setting.textDisplay.toString}" />
 
@@ -69,7 +71,7 @@
         </c:choose>
         <c:set var="isHeroSlider" value="${false}" />
         <c:set var="marginClass" value=" lm-10" />
-        <c:set var="transition" value="swipe" />
+        <c:set var="transition" value="logo" />
         <c:set var="cssgutter" value="20" />
         <c:set var="showDots" value="${false}" />
         <c:set var="pauseOnHover" value="${false}" />
@@ -77,8 +79,22 @@
         <c:set var="animationTrigger" value="${empty setEffect ? '' : ' '.concat(setEffect)}" />
         <c:set var="animationTarget" value="${empty setEffect ? '' : ' effect-box'}" />
     </c:when>
+    <c:when test="${sliderType eq 'timed'}">
+    <%-- Type-varying hero image slider --%>
+        <c:set var="isHeroSlider" value="${true}" />
+        <c:set var="marginClass" value=" tr-timed" />
+        <c:set var="transition" value="timed" />
+        <c:set var="autoPlay" value="${false}" />
+        <c:set var="rotationTime" value="${rotationTime < 500 ? 500 : rotationTime}" />
+        <c:set var="rotationTime" value="${rotationTime * 60}" />
+        <c:set var="transitionSpeedClass" value="" />
+        <c:set var="transitionSpeed" value="${100}" />
+        <c:set var="transitionParam" value="${content.resource.dateReleased eq 0 ? content.resource.dateLastModified : content.resource.dateReleased}" />
+        <c:set var="visibleSlidesXL" value="${1}" />
+        <c:set var="visibleSlidesXS" value="${1}" />
+        <c:set var="adoptRatioToScreen" value="${not (imageRatioXL eq imageRatioXS)}" />
+    </c:when>
     <c:otherwise>
-
     <%-- Hero slider (default) --%>
         <c:set var="isHeroSlider" value="${true}" />
         <c:set var="marginClass" value="${marginClass}${' tr-'.concat(transition)}" />
@@ -87,7 +103,6 @@
         <c:if test="${transition eq 'direct'}">
             <c:set var="transitionSpeed" value="${100}" />
         </c:if>
-        <%-- note: only transitions 'scale' and 'parallax' currently use the param --%>
         <c:set var="transitionParam" value="${transition eq 'parallax' ? 0.75 : 2.0}" />
         <c:set var="visibleSlidesXL" value="${1}" />
         <c:set var="visibleSlidesXS" value="${1}" />
@@ -148,14 +163,15 @@
     <c:if test="${not justOneSlide}">
         <c:set var="sliderData">${' '}<%--
         --%>data-slider='{<%--
-            --%>"type": "${sliderType}", <%--
+            --%>"transition": "${transition}", <%--
+            --%>"autoplay": ${autoPlay}, <%--
+            --%>"delay": ${rotationTime}, <%--
+            --%>"param": "${transitionParam}", <%--
+            --%>"speed": ${transitionSpeed}, <%--
+            --%>"slides": ${content.valueList.Image.size()}, <%--
+            --%>"draggable": ${isDraggable}, <%--
             --%>"arrows": ${showArrows}, <%--
             --%>"dots": ${showDots}, <%--
-            --%>"autoplay": ${autoPlay}, <%--
-            --%>"transition": "${transition}", <%--
-            --%>"param": "${transitionParam}", <%--
-            --%>"delay": ${rotationTime}, <%--
-            --%>"speed": ${transitionSpeed}, <%--
             --%>"pause": ${pauseOnHover}<%--
         --%>}'<%--
     --%></c:set>

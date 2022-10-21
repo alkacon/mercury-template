@@ -1032,6 +1032,14 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[isDraggable.true]]></IncludeName>
+      <PropertyName><![CDATA[isDraggable]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.isDraggable)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.isDraggable.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[rotationTime.default]]></IncludeName>
       <PropertyName><![CDATA[rotationTime]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.slider.rotationTime)]]></DisplayName>
@@ -1049,6 +1057,23 @@
         10000:  10 %(key.msg.setting.slider.rotationTime.secs)|
         15000:  15 %(key.msg.setting.slider.rotationTime.secs)|
         20000:  20 %(key.msg.setting.slider.rotationTime.secs)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[rotationTime.timed]]></IncludeName>
+      <PropertyName><![CDATA[rotationTime]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.rotationTime)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.rotationTime.timed.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[5000]]></Default>
+      <WidgetConfig><![CDATA[
+        1000:   1 %(key.msg.setting.slider.rotationTime.min)|
+        3000:   3 %(key.msg.setting.slider.rotationTime.mins)|
+        5000:   5 %(key.msg.setting.slider.rotationTime.mins)|
+        10000:  10 %(key.msg.setting.slider.rotationTime.mins)|
+        15000:  15 %(key.msg.setting.slider.rotationTime.mins)|
+        30000:  30 %(key.msg.setting.slider.rotationTime.mins)|
+        60000:  60 %(key.msg.setting.slider.rotationTime.mins)
       ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -2675,6 +2700,13 @@
       <Visibility><![CDATA[element]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[logo]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[sliderType.slider.timed]]></IncludeName>
+      <PropertyName><![CDATA[sliderType]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[timed]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatioSmall.slider.hero]]></IncludeName>

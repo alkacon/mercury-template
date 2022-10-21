@@ -526,6 +526,12 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/slider-timed.xml]]></target>
+          <uuid>5a0429dc-51c6-11ed-993a-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/tab-standard.xml]]></target>
           <uuid>d2b09d1d-60b1-491b-a63d-c2b8c7676925</uuid>
         </link>

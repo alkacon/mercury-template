@@ -416,14 +416,6 @@ var Mercury = function (jQ) {
     }
 
 
-    function initJavaScriptMarker() {
-        // adds a CSS class "hasscript" to the document body so CSS can react if JS is available or not
-        // when initially loaded, the page has the class "noscript" attached
-        document.documentElement.classList.remove("noscript");
-        document.documentElement.classList.add("hasscript");
-    }
-
-
     function initFitVids() {
         // set video widths using the fidVids plugin
         fitVids({
@@ -947,11 +939,6 @@ var Mercury = function (jQ) {
         if (DEBUG) console.info("Mercury.init() - Modularized version");
         window.Mercury = Mercury;
 
-        try {
-            initJavaScriptMarker();
-        } catch (err) {
-            console.warn("Mercury.initJavaScriptMarker() error", err);
-        }
         try {
             initLazyImageLoading();
         } catch (err) {

@@ -384,6 +384,14 @@ $slider-text-below-breakpoint: md !default;
             }
         }
 
+        .tr-timed {
+            &:not(.slider-initialized) {
+                * {
+                    visibility: hidden;
+                }
+            }
+        }
+
         .tr-fade:not(.is-dragging) {
             &.slider-initialized {
                 .slide-definitions {
@@ -579,5 +587,20 @@ html.keyboard-nav .type-slider  .slider-box,
 
     .slider-dots {
         opacity: $slider-opacity-active;
+    }
+}
+
+html.noscript {
+    .use-embla-slider {
+
+        &.hero-slider {
+            .tr-timed {
+                &:not(.slider-initialized) {
+                    * {
+                        visibility: visible;
+                    }
+                }
+            }
+        }
     }
 }

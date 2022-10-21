@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.8</version>
+		<version>14.0.10</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -3510,6 +3510,35 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Logo carousel slider]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/slider-timed.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/slider-timed.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>5a0429dc-51c6-11ed-993a-0242ac11002b</uuidstructure>
+			<uuidresource>5a0429dd-51c6-11ed-993a-0242ac11002b</uuidresource>
+			<datecreated>Sat, 22 Oct 2022 04:59:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Timed hero image]]></value>
 				</property>
 				<property>
 					<name>locale</name>

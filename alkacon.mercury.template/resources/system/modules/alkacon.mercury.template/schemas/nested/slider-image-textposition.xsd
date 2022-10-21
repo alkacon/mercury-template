@@ -25,7 +25,7 @@
                     <PropertyName>Top</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImageTextPosition.Top)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImageTextPosition.Top.help)]]></Description>
-                    <Widget>selectcombo</Widget>
+                    <Widget>select</Widget>
                     <Default>bottom</Default>
                     <WidgetConfig><![CDATA[
                         bottom:%(key.msg.option.slider.pos.bottom)|
@@ -39,7 +39,7 @@
                     <PropertyName>Left</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImageTextPosition.Left)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImageTextPosition.Left.help)]]></Description>
-                    <Widget>selectcombo</Widget>
+                    <Widget>select</Widget>
                     <Default>right</Default>
                     <WidgetConfig><![CDATA[
                         right:%(key.msg.option.slider.pos.right)|

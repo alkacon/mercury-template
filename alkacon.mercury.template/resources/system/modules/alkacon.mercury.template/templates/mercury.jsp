@@ -28,7 +28,7 @@
 
 <%-- Special CSS in case JavaScript is disabled --%>
 <noscript><style>html.noscript .hide-noscript { display: none !important; }</style></noscript>
-
+<script>document.documentElement.classList.remove("noscript");document.documentElement.classList.add("hasscript");</script>
 <script><%-- Static JavaScript that provides a 'mercury.ready()' method for additional scripts
 --%>mercury=function(){var n=function(){var n=[];return{ready:function(t){n.push(t)},load:function(t){n.push(t)},getInitFunctions:function(){return n}}}(),t=function(t){if("function"!=typeof t)return n;n.ready(t)};return t.getInitFunctions=function(){return n.getInitFunctions()},t.load=function(n){this(n)},t.ready=function(n){this(n)},t}();<%--
 --%>var __isOnline=${cms.isOnlineProject},<%--

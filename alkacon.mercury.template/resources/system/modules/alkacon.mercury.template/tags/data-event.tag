@@ -85,11 +85,14 @@
         </mercury:image-vars>
     </c:if>
 
-    <mercury:location-vars data="${value.AddressChoice}" createJsonLd="${true}">
+    <mercury:location-vars data="${value.AddressChoice}" onlineUrl="${value.VirtualLocation}" createJsonLd="${true}">
         <cms:jsonvalue key="location" value="${locJsonLd}" />
+        <cms:jsonvalue key="eventAttendanceMode" value="${locAttendanceMode}" />
     </mercury:location-vars>
 </cms:jsonobject>
 
-<mercury:nl />
-<script type="application/ld+json">${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}</script><%----%>
+<mercury:nl /><%----%>
+<script type="application/ld+json">
+    ${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}
+</script><%----%>
 <mercury:nl />

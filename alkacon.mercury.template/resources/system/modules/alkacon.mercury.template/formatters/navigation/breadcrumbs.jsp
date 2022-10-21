@@ -126,7 +126,9 @@
                     <cms:jsonvalue key="@type" value="BreadcrumbList" />
                     <cms:jsonvalue key="itemListElement" value="${breadCrumbJson.json}" />
                 </cms:jsonobject>
-                <script type="application/ld+json">${jsonLd.compact}</script><%----%>
+                <script type="application/ld+json"><%----%>
+                    ${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}
+                </script><%----%>
                 <mercury:nl />
             </c:if>
 

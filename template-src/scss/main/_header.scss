@@ -1069,6 +1069,9 @@
                     }
                 }
                 @include media-breakpoint-up(lg) {
+                    .h-logo {
+                        @include make-abs-col(lg, $logo-size);
+                    }
                     &.header-isfixed {
                         &.fix-compact {
                             .h-logo {
@@ -1090,6 +1093,18 @@
                         &.fix-overlay {
                             .nav-main-container {
                                 max-width: calc(100% - #{calc-abs-col(xl, $logo-size)});
+                            }
+                        }
+                    }
+                }
+                @include media-breakpoint-up(xxl) {
+                    .h-logo {
+                        @include make-abs-col(xxl, $logo-size);
+                    }
+                    &.header-isfixed {
+                        &.fix-overlay {
+                            .nav-main-container {
+                                max-width: calc(100% - #{calc-abs-col(xxl, $logo-size)});
                             }
                         }
                     }

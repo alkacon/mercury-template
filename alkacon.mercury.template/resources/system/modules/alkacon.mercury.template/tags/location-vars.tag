@@ -6,9 +6,12 @@
 
 
 <%@ attribute name="data" type="java.lang.Object" required="true"
-    description="The location to read. Can be a either a POI content access wrapper,
+    description="The location to use. Can be a either a POI content access wrapper,
     a VFS path to a POI that should be read OR
     a manual nested content address wrapper." %>
+
+<%@ attribute name="onlineUrl" type="java.lang.Object" required="false"
+    description="An object that containt the online URL location to use." %>
 
 <%@ attribute name="addMapInfo" type="java.lang.Boolean" required="false"
     description="If true, data for a location map is generated as well." %>
@@ -28,6 +31,10 @@
     description="A JSON-LD object created for the location.
     This will only be created if the attribute createJsonLd has been set to ''true'." %>
 
+<%@ variable name-given="locAttendanceMode" declare="true"
+    description="A String that will hold the information about the attendance mode.
+    This will only be created if the attribute createJsonLd has been set to ''true'." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -38,6 +45,7 @@
 <jsp:useBean id="locData" class="java.util.HashMap" />
 
 <c:if test="${empty test or test}">
+
     <c:choose>
         <c:when test="${data.getClass().simpleName eq 'CmsJspContentAccessBean'}">
             <%-- POI content has been passed --%>
@@ -59,6 +67,25 @@
                     <c:set target="${locData}" property="name" value="${adr.value.Name.toString}" />
                 </c:when>
             </c:choose>
+        </c:when>
+    </c:choose>
+
+    <c:choose>
+        <c:when test="${cms:isWrapper(onlineUrl)}">
+            <c:choose>
+                <c:when test="${onlineUrl.isSet and onlineUrl.value.URI.isSet}">
+                    <c:set var="targetUrl" value="${onlineUrl.value.URI.toLink}" />
+                </c:when>
+                <c:when test="${onlineUrl.isSet and
+                    ((onlineUrl.typeName == 'OpenCmsVfsFile') or
+                    (onlineUrl.typeName == 'OpenCmsVarLink') or
+                    (onlineUrl.typeName == 'OpenCmsString'))}">
+                        <c:set var="targetUrl" value="${onlineUrl.toLink}" />
+                </c:when>
+            </c:choose>
+        </c:when>
+        <c:when test="${not empty onlineUrl}">
+            <c:set var="targetUrl" value="${onlineUrl.toString()}" />
         </c:when>
     </c:choose>
 
@@ -106,47 +133,74 @@
         </c:if>
         <c:set target="${locData}" property="addressMarkup" value="${addressMarkup}" />
     </c:if>
-</c:if>
 
-<c:if test="${createJsonLd and ((not empty locData.name) or (not empty locData.streetAddress))}">
-    <cms:jsonobject var="locJsonLd" mode="object">
-        <cms:jsonvalue key="@type" value="Place" />
-        <c:if test="${not empty locData.name}">
-            <cms:jsonvalue key="name" value="${locData.name}" />
-        </c:if>
-        <c:if test="${not empty locData.streetAddress}">
-            <cms:jsonobject key="address" mode="object">
-                <cms:jsonvalue key="@type" value="PostalAddress" />
-                <c:set var="street" value="${locData.streetAddress}" />
-                <c:if test="${not empty locData.ExtendedAddress}">
-                    <c:set var="street" value="${street}${empty street ? '' : ' '}${locData.ExtendedAddress}" />
+    <c:if test="${createJsonLd}">
+        <c:if test="${(not empty locData.name) or (not empty locData.streetAddress)}">
+            <cms:jsonobject var="locJsonLdPlace" mode="object">
+                <cms:jsonvalue key="@type" value="Place" />
+                <c:if test="${not empty locData.name}">
+                    <cms:jsonvalue key="name" value="${locData.name}" />
                 </c:if>
-                <cms:jsonvalue key="streetAddress" value="${street}" />
-                <c:if test="${not empty locData.postalCode}">
-                    <cms:jsonvalue key="postalCode" value="${locData.postalCode}" />
-                </c:if>
-                <c:if test="${not empty locData.locality}">
-                    <cms:jsonvalue key="addressLocality" value="${locData.locality}" />
-                </c:if>
-                <c:if test="${not empty locData.region}">
-                    <cms:jsonvalue key="addressRegion" value="${locData.region}" />
-                </c:if>
-                <c:if test="${not empty locData.country}">
-                    <cms:jsonvalue key="addressCountry" value="${locData.country}" />
-                </c:if>
-                <c:if test="${(not empty locData.lat) and (not empty locData.lng)}">
-                    <cms:jsonobject key="areaServed" mode="object">
-                        <cms:jsonvalue key="@type" value="Place" />
-                        <cms:jsonobject key="geo" mode="object">
-                            <cms:jsonvalue key="@type" value="GeoCoordinates" />
-                            <cms:jsonvalue key="latitude" value="${locData.lat}" />
-                            <cms:jsonvalue key="longitude" value="${locData.lng}" />
-                        </cms:jsonobject>
+                <c:if test="${not empty locData.streetAddress}">
+                    <cms:jsonobject key="address" mode="object">
+                        <cms:jsonvalue key="@type" value="PostalAddress" />
+                        <c:set var="street" value="${locData.streetAddress}" />
+                        <c:if test="${not empty locData.ExtendedAddress}">
+                            <c:set var="street" value="${street}${empty street ? '' : ' '}${locData.ExtendedAddress}" />
+                        </c:if>
+                        <cms:jsonvalue key="streetAddress" value="${street}" />
+                        <c:if test="${not empty locData.postalCode}">
+                            <cms:jsonvalue key="postalCode" value="${locData.postalCode}" />
+                        </c:if>
+                        <c:if test="${not empty locData.locality}">
+                            <cms:jsonvalue key="addressLocality" value="${locData.locality}" />
+                        </c:if>
+                        <c:if test="${not empty locData.region}">
+                            <cms:jsonvalue key="addressRegion" value="${locData.region}" />
+                        </c:if>
+                        <c:if test="${not empty locData.country}">
+                            <cms:jsonvalue key="addressCountry" value="${locData.country}" />
+                        </c:if>
+                        <c:if test="${(not empty locData.lat) and (not empty locData.lng)}">
+                            <cms:jsonobject key="areaServed" mode="object">
+                                <cms:jsonvalue key="@type" value="Place" />
+                                <cms:jsonobject key="geo" mode="object">
+                                    <cms:jsonvalue key="@type" value="GeoCoordinates" />
+                                    <cms:jsonvalue key="latitude" value="${locData.lat}" />
+                                    <cms:jsonvalue key="longitude" value="${locData.lng}" />
+                                </cms:jsonobject>
+                            </cms:jsonobject>
+                        </c:if>
                     </cms:jsonobject>
                 </c:if>
             </cms:jsonobject>
         </c:if>
-    </cms:jsonobject>
+
+        <c:if test="${not empty targetUrl}">
+            <cms:jsonobject var="locJsonLdUrl" mode="object">
+                <cms:jsonvalue key="@type" value="VirtualLocation" />
+                <cms:jsonvalue key="url" value="${targetUrl}" />
+            </cms:jsonobject>
+        </c:if>
+
+        <c:choose>
+            <c:when test="${not empty locJsonLdPlace and not empty locJsonLdUrl}">
+                <cms:jsonarray var="locJsonLd" mode="object">
+                    <cms:jsonvalue value="${locJsonLdPlace}" />
+                    <cms:jsonvalue value="${locJsonLdUrl}" />
+                </cms:jsonarray>
+                <c:set var="locAttendanceMode"  value="https://schema.org/MixedEventAttendanceMode" />
+            </c:when>
+            <c:when test="${not empty locJsonLdPlace}">
+                <c:set var="locJsonLd" value="${locJsonLdPlace}" />
+                <c:set var="locAttendanceMode"  value="https://schema.org/OfflineEventAttendanceMode" />
+            </c:when>
+            <c:when test="${not empty locJsonLdUrl}">
+                <c:set var="locJsonLd" value="${locJsonLdUrl}" />
+                <c:set var="locAttendanceMode"  value="https://schema.org/OnlineEventAttendanceMode" />
+            </c:when>
+        </c:choose>
+    </c:if>
 </c:if>
 
 <jsp:doBody/>

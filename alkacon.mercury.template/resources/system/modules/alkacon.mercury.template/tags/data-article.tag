@@ -86,9 +86,10 @@
 
     <%-- Publisher is mandatory. According to schema.org, person is possible but not accepted by Google --%>
     <cms:jsonvalue key="publisher" value="${empty organization ? author : organization}" />
-
 </cms:jsonobject>
 
 <mercury:nl />
-<script type="application/ld+json">${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}</script><%----%>
+<script type="application/ld+json"><%----%>
+    ${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}
+</script><%----%>
 <mercury:nl />

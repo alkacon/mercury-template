@@ -733,17 +733,19 @@ $togglebox-slider-margin:           2px !default;
 $togglebox-disabled-color:          $disabled-color !default;
 $togglebox-slider-color:            $grey-light !default;
 
-$cookie-notice-bg-color:            $grey-lighter !default;
-$cookie-notice-color:               get-text-color($cookie-notice-bg-color) !default;
+$cookie-notice-bg-color:            var(--#{$prefix}highlight-color) !default;
+$cookie-notice-color:               var(--#{$prefix}highlight-fg-color) !default;
 $cookie-notice-alt-color:           $cookie-notice-color !default;
 $cookie-notice-font-size-mobile:    14px !default;
 $cookie-notice-font-size-desktop:   $font-size-base !default;
-$cookie-notice-small-font-size:     85% !default;
 $cookie-notice-large-font-size:     125% !default;
+$cookie-notice-small-font-size:     85% !default;
+$cookie-notice-tiny-font-size:      12px !default;
 $cookie-notice-togglebox-width:     150px !default;
 $cookie-notice-togglebox-height:    20px !default;
 
-$element-hide-bg-color:             $cookie-notice-bg-color !default;
+$placeholder-bg-color:              var(--#{$prefix}highlight-color) !default;
+$placeholder-border-color:          var(--#{$prefix}highlight-border-color) !default;
 
 
 // POI accessible icons

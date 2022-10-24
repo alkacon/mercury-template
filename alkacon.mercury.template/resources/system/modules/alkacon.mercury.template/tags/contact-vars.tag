@@ -30,6 +30,12 @@
 <%@ variable name-given="valAddress" declare="true"
     description="The address to display for the contact." %>
 
+<%@ variable name-given="valLinkToRelated" declare="true"
+    description="The link to the organization (for persons) or to the contact person (for organizations)." %>
+
+<%@ variable name-given="kindModern" declare="true"
+    description="If true, these contact vars are based on content type 'm-organization' or 'm-person'." %>
+
 <%@ variable name-given="kindCss" declare="true"
     description="CSS selector added to the generated div to identify the contact type (person or organization)." %>
 
@@ -59,6 +65,7 @@
         <c:set var="setShowName"            value="${false}" />
         <c:set var="setShowPosition"        value="${false}" />
         <c:set var="setShowOrganization"    value="${true}" />
+        <c:set var="kindModern"             value="${true}" />
     </c:when>
     <c:when test="${content.typeName eq 'm-person'}">
         <c:set var="valKind"                value="pers" />
@@ -66,6 +73,7 @@
         <c:set var="setShowName"            value="${true}" />
         <c:set var="setShowPosition"        value="${showPosition}" />
         <c:set var="setShowOrganization"    value="${false}" />
+        <c:set var="kindModern"             value="${true}" />
     </c:when>
     <c:otherwise>
         <c:set var="valKind"                value="${value.Kind.isSet ? value.Kind.toString : 'pers'}" />
@@ -73,6 +81,7 @@
         <c:set var="setShowName"            value="${valKind eq 'org' ? showOrganization : true}" />
         <c:set var="setShowPosition"        value="${showPosition and setShowName}" />
         <c:set var="setShowOrganization"    value="${valKind eq 'org' ? true : showOrganization}" />
+        <c:set var="kindModern"             value="${false}" />
     </c:otherwise>
 </c:choose>
 
@@ -93,6 +102,7 @@
         <c:set var="managerContent"     value="${cms.vfs.readXml[value.LinkToManager]}" />
         <c:set var="valName"            value="${managerContent.value.Name}" />
         <c:set var="valPosition"        value="${managerContent.value.Position}" />
+        <c:set var="valLinkToRelated"><cms:link baseUri="${cms.requestContext.uri}">${value.LinkToManager}</cms:link></c:set>
         <c:set var="setShowName"        value="${true}" />
         <c:set var="setShowPosition"    value="${true}" />
     </c:if>
@@ -100,6 +110,7 @@
         <%-- If this is true, the content must be of type 'm-person' --%>
         <c:set var="orgContent"         value="${cms.vfs.readXml[value.LinkToOrganization]}" />
         <c:set var="valOrganization"    value="${orgContent.value.Organization}" />
+        <c:set var="valLinkToRelated"><cms:link baseUri="${cms.requestContext.uri}">${value.LinkToOrganization}</cms:link></c:set>
         <c:set var="setShowOrganization" value="${true}" />
         <c:if test="${not value.Contact.value.AddressChoice.isSet}">
             <c:set var="valAddress"     value="${orgContent.value.Contact.value.AddressChoice}" />

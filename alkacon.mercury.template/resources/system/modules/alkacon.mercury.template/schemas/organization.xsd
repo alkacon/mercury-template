@@ -21,11 +21,11 @@
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
             <xsd:element name="LinkToParentOrganization" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="LinkToManager" type="OpenCmsVfsFile" minOccurs="0" />
-            <xsd:element name="OrgType" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Contact" type="OpenCmsContactItem" />
             <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="Link" type="OpenCmsNestedLink" minOccurs="0" />
+            <xsd:element name="OrgType" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
@@ -94,13 +94,6 @@
                     <WidgetConfig>selectabletypes=m-organization</WidgetConfig>
                 </Setting>
                 <Setting>
-                    <PropertyName>OrgType</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Contact.Org.OrgType)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Contact.Org.OrgType.help)]]></Description>
-                    <Widget>%(attribute:organization.type.widget:string)</Widget>
-                    <WidgetConfig>%(attribute:organization.type.values)</WidgetConfig>
-                </Setting>
-                <Setting>
                     <PropertyName>Contact</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Contact.Contact)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Contact.help)]]></Description>
@@ -125,6 +118,14 @@
                     <PropertyName>Link</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Link)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Link.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>OrgType</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Contact.Org.OrgType)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Contact.Org.OrgType.help)]]></Description>
+                    <Widget><![CDATA[%(attribute:organization.type.widget:string)]]></Widget>
+                    <Default><![CDATA[%(attribute:organization.type.default)]]></Default>
+                    <WidgetConfig><![CDATA[%(attribute:organization.type.value)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

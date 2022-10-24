@@ -10,10 +10,6 @@
       <TypeName><![CDATA[m-organization]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
     </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-contact]]></TypeName>
-      <Disabled><![CDATA[add]]></Disabled>
-    </ResourceType>
     <UseFormatterKeys>true</UseFormatterKeys>
     <AddFormatters>
       <AddFormatter>
@@ -30,6 +26,12 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/organization-ext.xml]]></target>
+          <uuid>607bc394-529d-11ed-993a-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/organization-compact.xml]]></target>
           <uuid>92878acf-73af-11ec-b443-0242ac11002b</uuid>
         </link>
@@ -42,6 +44,18 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/organization-masonry.xml]]></target>
+          <uuid>8c3896a6-55df-11ed-8bae-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/organization-text-tile.xml]]></target>
+          <uuid>9a7a2f8e-55df-11ed-8bae-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/person-compact.xml]]></target>
           <uuid>89abc7eb-73af-11ec-b443-0242ac11002b</uuid>
         </link>
@@ -50,6 +64,18 @@
         <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/person-elaborate.xml]]></target>
           <uuid>9bb05c43-73af-11ec-b443-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/person-masonry.xml]]></target>
+          <uuid>914b6aaa-55df-11ed-8bae-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/person-text-tile.xml]]></target>
+          <uuid>a0285932-55df-11ed-8bae-0242ac11002b</uuid>
         </link>
       </AddFormatter>
     </AddFormatters>

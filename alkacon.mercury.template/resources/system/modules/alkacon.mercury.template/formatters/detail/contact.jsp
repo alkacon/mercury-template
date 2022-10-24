@@ -19,7 +19,8 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 
-<c:set var="showOrganization"       value="${setting.showOrganization.toBoolean}" />
+<c:set var="showOrganization"       value="${setting.showOrganization.toBoolean or (setting.showOrganization.toString eq 'link')}" />
+<c:set var="showOrganizationLink"   value="${showOrganization and (setting.showOrganization.toString eq 'link')}" />
 <c:set var="showPosition"           value="${setting.showPosition.toBoolean}" />
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
@@ -41,6 +42,8 @@
 <c:set var="labelOption"            value="${setting.labels.toString}" />
 <c:set var="linkOption"             value="${setting.linkOption.toString}" />
 
+<c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
+
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? ' compact ' : ''}" />
 
 <c:set var="hsizeTitle"             value="${hsize}" />
@@ -52,9 +55,16 @@
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
 
+<c:set var="cssWrappers"            value="detail-page type-contact ${kindModern ? null : kindCss}${compactLayout}${setCssWrapperAll}" />
+
+<c:if test="${kindModern}">
+<mercury:nl />
+<div class="${cssWrappers}"><%----%>
+</c:if>
+
 <mercury:nl />
 <mercury:section-piece
-    cssWrapper="detail-page type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
+    cssWrapper="${kindModern ? kindCss : cssWrappers}"
     pieceLayout="${pieceLayout}"
     attrWrapper="${kindAttr}"
     heading="${showTitle ? value.Title : null}"
@@ -69,7 +79,7 @@
                 kind="${valKind}"
                 link="${value.Link}"
                 linkOption="${linkOption eq 'imageOverlay' ? 'imageOverlay' : ''}"
-                name="${valName}"
+                name="${valKind eq 'org' ? null : valName}"
                 organization="${valOrganization}"
                 hsize="${hsize}"
                 image="${value.Image}"
@@ -93,6 +103,7 @@
             data="${value.Contact}"
             address="${valAddress}"
             labelOption="${labelOption}"
+            linkToRelated="${showOrganizationLink ? valLinkToRelated : null}"
             hsize="${hsize}"
             showName="${setShowName}"
             showPosition="${setShowPosition}"
@@ -106,9 +117,15 @@
             showVcard="${showVcard}"
         />
     </jsp:attribute>
-</mercury:section-piece>
-</mercury:contact-vars>
 
+</mercury:section-piece>
+
+<c:if test="${kindModern}">
+    <mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
+    </div><%----%>
+</c:if>
+
+</mercury:contact-vars>
 </mercury:setting-defaults>
 
 </cms:formatter>

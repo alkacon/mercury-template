@@ -139,4 +139,10 @@
             }
         }
     }
+
+    .suborg-list {
+        .teaser:last-of-type {
+            margin-bottom: 0;
+        }
+    }
 }

@@ -42,6 +42,7 @@ m_bannerData.togglesInitialized = false;
 
 var m_policy = {};
 m_policy.loaded = false;
+m_policy.unavailable = false;
 
 
 function initBannerData() {
@@ -58,6 +59,9 @@ function initBannerData() {
                 m_bannerData.$bannerElement = $privacyBanner;
                 m_bannerData.initialized = true;
                 m_bannerData.togglesInitialized = false;
+                if (m_bannerData.fallback) {
+                    m_bannerData.fallback = window.atob(m_bannerData.fallback)
+                }
             }
         }
     }
@@ -91,6 +95,7 @@ function loadPolicy(callback) {
             }
         }, "json").fail(function() {
             if (DEBUG) console.info("PrivacyPolicy: Failed to load policy data!");
+            m_policy.unavailable = true;
             initExternalElements(true);
         });
     }
@@ -452,6 +457,10 @@ function initExternalElements(showMessage) {
                             if ((toggleHeight / parentHeight) < 1.5) {
                                 // toggle is not 1.5 times higher than the presized original - enlarge parent and show toggle directly
                                 $presizedParent.addClass("enlarged");
+                            } else if (policyIsUnavailable()) {
+                                // no policy no available, add special CSS class, do not add modal
+                                $presizedParent.addClass("enlarged");
+                                $element.addClass("cookie-tiny-font");
                             } else {
                                 // toggle is much higher than the presized original - keep parent size, show notice and add modal dialog to element
                                 addModal = true;
@@ -474,14 +483,20 @@ function initExternalElements(showMessage) {
                     }
 
                     if (! addModal) {
-                        var $toggleCheckbox = jQ(".toggle-check", $element);
-                        // only allow element activation in case technical cookies have already been accepted
-                        $toggleCheckbox.prop('checked', false);
-                        $toggleCheckbox.change(function() {
-                            enableExternalElements();
-                        });
-                        if (!cookiesAcceptedTechnical()) {
-                            $toggleCheckbox.prop('disabled', true);
+                        if (policyIsUnavailable()) {
+                            $element.on("click", function() {
+                                checkRedirectToPolicyPage();
+                            });
+                        } else {
+                            var $toggleCheckbox = jQ(".toggle-check", $element);
+                            // only allow element activation in case technical cookies have already been accepted
+                            $toggleCheckbox.prop('checked', false);
+                            $toggleCheckbox.change(function() {
+                                enableExternalElements();
+                            });
+                            if (!cookiesAcceptedTechnical()) {
+                                $toggleCheckbox.prop('disabled', true);
+                            }
                         }
                     }
 
@@ -495,12 +510,23 @@ function initExternalElements(showMessage) {
     }
 }
 
+function policyIsUnavailable() {
+    return m_policy.unavailable;
+}
+
+function checkRedirectToPolicyPage() {
+    if (policyIsUnavailable()) {
+        window.location.href = m_bannerData.fallback;
+    }
+}
+
 /****** Exported functions ******/
 
 export function createExternalElementModal(heading, message, footer, callbackAccept) {
 
     if (! cookiesAcceptedTechnical()) {
         // if the banner has not been confirmed do NOT add the modal dialog on click
+        checkRedirectToPolicyPage();
         return;
     }
 

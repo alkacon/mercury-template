@@ -14,6 +14,9 @@
     description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
+<%@ attribute name="imageTitle" type="java.lang.String" required="false"
+    description="If provided, use this title for the image, otherwise generate a title frm the contact names." %>
+
 <%@ attribute name="link" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact link." %>
 
@@ -25,6 +28,9 @@
 
 <%@ attribute name="organization" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact organization." %>
+
+<%@ attribute name="linkToRelated" type="java.lang.String" required="false"
+    description="Link to the parent organization (for persons) or the contact persion (for organizations)." %>
 
 <%@ attribute name="description" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact description." %>
@@ -129,7 +135,7 @@
 
 <c:if test="${not empty link}">
     <c:choose>
-        <c:when test="${linkOption eq 'button'}">
+        <c:when test="${not empty linkOption and fn:contains(linkOption, 'button')}">
             <c:set var="showLinkAsButton" value="${true}" />
         </c:when>
         <c:when test="${linkOption eq 'text'}">
@@ -140,6 +146,9 @@
 
 <%-- #### Contact exposed as 'Person' or 'Organization', see http://schema.org/ #### --%>
 <c:choose>
+    <c:when test="${showImage and (not empty imageTitle)}">
+         <c:set var="imgtitle" value="${imageTitle eq 'none' ? null : imageTitle}" />
+    </c:when>
     <c:when test="${showImage and (not empty name)}">
         <c:set var="persontxtname">
             <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
@@ -202,7 +211,9 @@
                         <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
                         <div itemprop="employee" itemscope itemtype="http://schema.org/Person"><%----%>
                             <c:if test="${showName}">
-                                <div class="h${hsize + 1} org">${personname}</div><%----%>
+                                <div class="h${hsize + 1} org"><%----%>
+                                    <mercury:link link="${linkToRelated}">${personname}</mercury:link>
+                                </div><%----%>
                             </c:if>
                             <c:if test="${showPosition}"><%----%>
                                 <div class="pos" itemprop="description" class="title"><%----%>
@@ -224,7 +235,9 @@
                         </c:if>
                     </c:if>
                     <c:if test="${showOrganization}">
-                        <div class="org" itemprop="worksFor">${organization}</div><%----%>
+                        <div class="org" itemprop="worksFor"><%----%>
+                            <mercury:link link="${linkToRelated}">${organization}</mercury:link>
+                        </div><%----%>
                     </c:if>
                 </c:otherwise>
             </c:choose>
@@ -403,7 +416,18 @@
             </c:if>
 
             <c:if test="${showLinkAsButton}">
-                <mercury:link link="${link}" css="contactlink btn btn-sm" attr="${linkattr}" newWin="${websiteNewWin}" />
+            <c:choose>
+                <c:when test="${linkOption eq 'button-lg'}">
+                    <c:set var="btnClass" value="btn" />
+                </c:when>
+                <c:when test="${linkOption eq 'button-full'}">
+                    <c:set var="btnClass" value="btn btn-block" />
+                </c:when>
+                <c:otherwise>
+                    <c:set var="btnClass" value="btn btn-sm" />
+                </c:otherwise>
+            </c:choose>
+                <mercury:link link="${link}" css="contactlink ${btnClass}" attr="${linkattr}" newWin="${websiteNewWin}" />
             </c:if>
 
         </div><%----%>

@@ -21,7 +21,8 @@
 
 <c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? ' compact' : ''}" />
 
-<c:set var="showOrganization"       value="${setting.showOrganization.toBoolean}" />
+<c:set var="showOrganization"       value="${setting.showOrganization.toBoolean or (setting.showOrganization.toString eq 'link')}" />
+<c:set var="showOrganizationLink"   value="${showOrganization and (setting.showOrganization.toString eq 'link')}" />
 <c:set var="showPosition"           value="${setting.showPosition.toBoolean}" />
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
@@ -66,7 +67,7 @@
             <mercury:contact
                 kind="${valKind}"
                 image="${value.Image}"
-                name="${valName}"
+                name="${valKind eq 'org' ? null : valName}"
                 organization="${valOrganization}"
                 imageRatio="${setRatio}"
                 hsize="${hsize}"
@@ -86,6 +87,7 @@
             data="${value.Contact}"
             address="${valAddress}"
             labelOption="${labelOption}"
+            linkToRelated="${showOrganizationLink ? valLinkToRelated : null}"
             hsize="${hsize}"
             showName="${setShowName}"
             showPosition="${setShowPosition}"

@@ -600,6 +600,16 @@ html.keyboard-nav {
         font-size: $cookie-notice-font-size-desktop;
     }
 
+    &.cookie-tiny-font {
+        justify-content: flex-start;
+        font-size: $cookie-notice-tiny-font-size;
+        cursor: pointer;
+
+        .cookie-message {
+            margin-bottom: 0;
+        }
+    }
+
     .cookie-header {
         @include heading-base;
         font-size: $cookie-notice-large-font-size;

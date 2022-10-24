@@ -73,19 +73,19 @@
       <IncludeName><![CDATA[showAddress.contact]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showOrganization.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showOrganization.contact]]></IncludeName>
+      <IncludeName><![CDATA[showTitle.contact.false]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showTitle.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
+      <IncludeName><![CDATA[showDescription.contact.false]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPhone.contact]]></IncludeName>

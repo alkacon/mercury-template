@@ -2,23 +2,25 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-contact.formatter.teaser.masonry)]]></NiceName>
-    <Type><![CDATA[m-contact]]></Type>
-    <Key><![CDATA[m/display/contact-masonry]]></Key>
+    <NiceName><![CDATA[%(key.type.m-organization.formatter.teaser.text-tile)]]></NiceName>
+    <Type><![CDATA[m-person]]></Type>
+    <Key><![CDATA[m/display/person-text-tile]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact.jsp]]></target>
         <uuid>3f90a2c4-74b4-11ea-8d2f-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Rank><![CDATA[16000]]></Rank>
+    <Rank><![CDATA[18000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[masonry]]></ContainerType>
+        <ContainerType><![CDATA[tile]]></ContainerType>
+        <ContainerType><![CDATA[text-tile]]></ContainerType>
         <ContainerType><![CDATA[contact]]></ContainerType>
+        <ContainerType><![CDATA[person]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[teaser-masonry contact-teaser]]></Display>
+    <Display><![CDATA[teaser-text-tile contact-teaser]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
@@ -50,7 +52,7 @@
       <IncludeName><![CDATA[visualOption.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
@@ -105,9 +107,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[requiredCssWrapper.textTile]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[listCssWrapper.masonry]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

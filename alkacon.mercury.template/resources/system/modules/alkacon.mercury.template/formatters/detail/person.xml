@@ -67,13 +67,16 @@
       <IncludeName><![CDATA[showAddress.contact]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showOrganization.organization]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[containerType.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPosition.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showOrganization.organization]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showTitle.contact]]></IncludeName>
@@ -94,7 +97,7 @@
       <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showVcard.contact]]></IncludeName>

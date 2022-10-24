@@ -2,9 +2,9 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-contact.formatter.teaser.masonry)]]></NiceName>
-    <Type><![CDATA[m-contact]]></Type>
-    <Key><![CDATA[m/display/contact-masonry]]></Key>
+    <NiceName><![CDATA[%(key.type.m-organization.formatter.teaser.masonry)]]></NiceName>
+    <Type><![CDATA[m-organization]]></Type>
+    <Key><![CDATA[m/display/organization-masonry]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/contact.jsp]]></target>
@@ -71,10 +71,10 @@
       <IncludeName><![CDATA[showAddress.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showOrganization.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
+      <IncludeName><![CDATA[showOrganization.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPosition.contact]]></IncludeName>

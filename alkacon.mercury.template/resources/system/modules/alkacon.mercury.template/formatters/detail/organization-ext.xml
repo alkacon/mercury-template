@@ -2,17 +2,16 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-organization.formatter.detail)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-organization.formatter.detail.extended)]]></NiceName>
     <Type><![CDATA[m-organization]]></Type>
-    <Key><![CDATA[m/detail/organization]]></Key>
-    <KeyAlias><![CDATA[m/contact/organization]]></KeyAlias>
+    <Key><![CDATA[m/detail/organization-extended]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/contact.jsp]]></target>
-        <uuid>bea1f1dd-7411-4ac6-a40b-e581d88bed99</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/organization-ext.jsp]]></target>
+        <uuid>607a6400-529d-11ed-993a-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Rank><![CDATA[45000]]></Rank>
+    <Rank><![CDATA[44000]]></Rank>
     <Match>
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
@@ -24,6 +23,15 @@
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
     <Detail>true</Detail>
+    <Plugin>
+      <Group><![CDATA[css]]></Group>
+      <Target>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/osmviewer/map.css]]></target>
+          <uuid>bb1e189e-24ab-11e9-bcf4-0242ac11002b</uuid>
+        </link>
+      </Target>
+    </Plugin>
     <IncludeSettings>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
@@ -46,16 +54,10 @@
       <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[hsize.3]]></IncludeName>
+      <IncludeName><![CDATA[hsize.detailWith0]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[effect.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[linkOption.contact]]></IncludeName>
@@ -64,31 +66,28 @@
       <IncludeName><![CDATA[labels.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showAddress.contact]]></IncludeName>
+      <IncludeName><![CDATA[showTitle.contact.ext]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showOrganization.person]]></IncludeName>
+      <IncludeName><![CDATA[showDescription.contact.ext]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapLayout.contact]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapSizeDesktop.contact]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapRatio.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapZoom.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[containerType.detail]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[compactLayout.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showTitle.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showPhone.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showWebsite.contact]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showEmail.contact]]></IncludeName>
+      <IncludeName><![CDATA[showLinkedOrgs.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageZoom.false]]></IncludeName>
@@ -99,5 +98,26 @@
     <Setting>
       <IncludeName><![CDATA[showVcard.contact]]></IncludeName>
     </Setting>
+    <MetaMapping>
+      <Key><![CDATA[ogTitle]]></Key>
+      <Element><![CDATA[Organization]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogDescription]]></Key>
+      <Element><![CDATA[Description]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogImage]]></Key>
+      <Element><![CDATA[Image/Image]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogType]]></Key>
+      <Element><![CDATA[none]]></Element>
+      <Order><![CDATA[5000]]></Order>
+      <Default><![CDATA[website]]></Default>
+    </MetaMapping>
   </NewFormatter>
 </NewFormatters>

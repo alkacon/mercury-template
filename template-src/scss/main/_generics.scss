@@ -23,7 +23,16 @@
 
 .box {
     @include set-box-colors($highlight-color, true, true);
+}
 
+.box-inner {
+    --#{$prefix}body-bg:                            var(--#{$prefix}highlight-color);
+    --#{$prefix}body-color:                         var(--#{$prefix}highlight-fg-color);
+    --#{$prefix}body-bg-rgb:                        var(--#{$prefix}highlight-color-rgb);
+}
+
+.box,
+.box-inner {
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
 

@@ -23,7 +23,7 @@
 
 .placeholder {
     position: relative;
-    background-color: $element-hide-bg-color;
+    background-color: $placeholder-bg-color;
 
     &::after {
         position: absolute;
@@ -40,6 +40,10 @@
         transform: translate(-50%, -50%);
         text-align: center;
     }
+}
+
+.box .placeholder {
+    border: 1px solid $placeholder-border-color;
 }
 
 .opencms-page-editor .placeholder {

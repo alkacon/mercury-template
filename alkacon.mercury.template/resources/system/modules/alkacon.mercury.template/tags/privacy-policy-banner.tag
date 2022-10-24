@@ -24,9 +24,11 @@
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <c:set var="policyfile" value="${empty contentPropertiesSearch['mercury.privacy.policy'] ? 'none' : contentPropertiesSearch['mercury.privacy.policy']}" />
-<c:set var="hideBanner" value="${contentPropertiesSearch['mercury.privacy.policy.nobanner'] eq 'true'}" />
 
 <c:if test="${not empty policyfile and policyfile ne 'none'}">
+
+    <c:set var="hideBanner" value="${contentPropertiesSearch['mercury.privacy.policy.nobanner'] eq 'true'}" />
+    <c:set var="fallbackPage" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.privacy.policy.fallback']}" />
 
     <c:if test="${not fn:startsWith(policyfile, '/')}">
         <c:set var="subSitePolicy" value="${cms.subSitePath.concat('.content/').concat(policyfile)}" />
@@ -44,6 +46,10 @@
         <cms:jsonvalue key="root" value="${rootBase64}" />
         <c:if test="${hideBanner}">
             <cms:jsonvalue key="display" value="0" />
+        </c:if>
+        <c:if test="${not empty fallbackPage}">
+            <c:set var="fallbackBase64"><mercury:obfuscate text="${fallbackPage}" type="base64"/></c:set>
+            <cms:jsonvalue key="fallback" value="${fallbackBase64}" />
         </c:if>
     </cms:jsonobject>
 

@@ -842,6 +842,15 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showImageZoom.false]]></IncludeName>
+      <PropertyName><![CDATA[showImageZoom]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageZoom)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageZoom.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
       <PropertyName><![CDATA[showImageCopyright]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showImageCopyright)]]></DisplayName>
@@ -849,6 +858,15 @@
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageCopyright.false]]></IncludeName>
+      <PropertyName><![CDATA[showImageCopyright]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showImageCopyright)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showImageCopyright.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
@@ -1600,9 +1618,11 @@
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[button]]></Default>
       <WidgetConfig><![CDATA[
-        button:         %(key.msg.setting.linkOption.button)|
-        text:           %(key.msg.setting.linkOption.text)|
-        none:           %(key.msg.setting.linkOption.none)
+            button-lg:      %(key.msg.setting.linkOption.button)|
+            button-full:    %(key.msg.setting.linkOption.button-full)|
+            button:         %(key.msg.setting.linkOption.button-sm)|
+            text:           %(key.msg.setting.linkOption.text)|
+            none:           %(key.msg.setting.linkOption.none)
       ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -2436,6 +2456,29 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showTitle.contact.false]]></IncludeName>
+      <PropertyName><![CDATA[showTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showTitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showTitle.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showTitle.contact.ext]]></IncludeName>
+      <PropertyName><![CDATA[showTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showTitle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showTitle.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[true]]></Default>
+      <WidgetConfig><![CDATA[
+        true:   %(key.msg.setting.contact.showTitle.above)|
+        below:  %(key.msg.setting.contact.showTitle.below)|
+        false:  %(key.msg.setting.contact.showTitle.false)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[linkTarget.contact]]></IncludeName>
       <PropertyName><![CDATA[linkTarget]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.linkTarget)]]></DisplayName>
@@ -2497,6 +2540,15 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showLinkedOrgs.contact]]></IncludeName>
+      <PropertyName><![CDATA[showLinkedOrgs]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showLinkedOrgs)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showLinkedOrgs.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showAddInfo.contact]]></IncludeName>
       <PropertyName><![CDATA[showAddInfo]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showAddInfo)]]></DisplayName>
@@ -2515,13 +2567,32 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showOrganization.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[showOrganization]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganizationPerson)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showOrganizationPerson.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[false]]></Default>
+      <WidgetConfig><![CDATA[
+        true:   %(key.msg.setting.contact.showRelated.true)|
+        link:   %(key.msg.setting.contact.showRelated.link)|
+        false:  %(key.msg.setting.contact.showRelated.false)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showOrganization.organization]]></IncludeName>
       <PropertyName><![CDATA[showOrganization]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showOrganization)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.showOrganization.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[checkbox]]></Widget>
+      <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[true]]></Default>
+      <WidgetConfig><![CDATA[
+        true:   %(key.msg.setting.contact.showRelated.true)|
+        link:   %(key.msg.setting.contact.showRelated.link)|
+        false:  %(key.msg.setting.contact.showRelated.false)
+      ]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showOrganization.person]]></IncludeName>
@@ -2529,8 +2600,71 @@
       <DisplayName><![CDATA[%(key.msg.setting.contact.showPerson)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.showPerson.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[checkbox]]></Widget>
+      <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[true]]></Default>
+      <WidgetConfig><![CDATA[
+        true:   %(key.msg.setting.contact.showRelated.true)|
+        link:   %(key.msg.setting.contact.showRelated.link)|
+        false:  %(key.msg.setting.contact.showRelated.false)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapZoom.contact]]></IncludeName>
+      <PropertyName><![CDATA[mapZoom]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.map.zoom)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.map.zoom.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[15]]></Default>
+      <WidgetConfig><![CDATA[
+        firstMarker:%(key.msg.setting.map.zoom.firstPoi)|
+        20:20|19:19|18:18|17:17|16:16|15:15|14:14|13:13|12:12|11:11|10:10|9:9|8:8|7:7|6:6|5:5|4:4|3:3|2:2|1:1
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapLayout.contact]]></IncludeName>
+      <PropertyName><![CDATA[mapLayout]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.mapLayout)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.mapLayout.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[6]]></Default>
+      <WidgetConfig><![CDATA[
+            0:      %(key.msg.setting.pieceLayout.0)|
+           10:      %(key.msg.setting.pieceLayout.10)|
+            1:      %(key.msg.setting.pieceLayout.1)|
+            2:      %(key.msg.setting.pieceLayout.2)|
+            3:      %(key.msg.setting.pieceLayout.3)|
+            4:      %(key.msg.setting.pieceLayout.4)|
+            5:      %(key.msg.setting.pieceLayout.5)|
+            6:      %(key.msg.setting.pieceLayout.6)|
+            7:      %(key.msg.setting.pieceLayout.7)|
+            8:      %(key.msg.setting.pieceLayout.8)|
+            9:      %(key.msg.setting.pieceLayout.9)|
+           -1:      %(key.msg.setting.mapLayout.hidemap)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapSizeDesktop.contact]]></IncludeName>
+      <PropertyName><![CDATA[mapSizeDesktop]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.mapSizeDesktop)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.mapSizeDesktop.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[99]]></Default>
+      <WidgetConfig><![CDATA[
+            99:     %(key.msg.setting.visualOption.piece.default)|
+            1:      %(key.msg.setting.visualOption.1)|
+            2:      %(key.msg.setting.visualOption.2)|
+            3:      %(key.msg.setting.visualOption.3)|
+            4:      %(key.msg.setting.visualOption.4)|
+            5:      %(key.msg.setting.visualOption.5)|
+            6:      %(key.msg.setting.visualOption.6)|
+            7:      %(key.msg.setting.visualOption.7)|
+            8:      %(key.msg.setting.visualOption.8)|
+            9:      %(key.msg.setting.visualOption.9)|
+            10:      %(key.msg.setting.visualOption.10)|
+            11:      %(key.msg.setting.visualOption.11)|
+            12:      %(key.msg.setting.visualOption.12)
+        ]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[schemaKind.contact]]></IncludeName>
@@ -2551,6 +2685,29 @@
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDescription.contact.false]]></IncludeName>
+      <PropertyName><![CDATA[showDescription]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showDescription.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDescription.contact.ext]]></IncludeName>
+      <PropertyName><![CDATA[showDescription]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showDescription.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[below]]></Default>
+      <WidgetConfig><![CDATA[
+        true:   %(key.msg.setting.contact.showDescription.above)|
+        below:  %(key.msg.setting.contact.showDescription.below)|
+        false:  %(key.msg.setting.contact.showDescription.false)
+      ]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showPhone.contact]]></IncludeName>

@@ -222,7 +222,6 @@ a:focus .zoom-overlay .zoom-icon,
 .effect-box {
     .zoomer {
         position: relative;
-        cursor: zoom-in;
         z-index: 1; // required so that floating text divs after the image are not hiding the zoom button
 
         &::after {
@@ -233,17 +232,31 @@ a:focus .zoom-overlay .zoom-icon,
     }
 }
 
-a .effect-box .zoomer {
-    cursor: pointer;
-    &::after {
-        content: "";
-    }
-}
-
 .zoom-overlay .zoom-icon,
 .image-src-box,
 .image-src-box > img {
     border-radius: var(--#{$prefix}image-border-radius);
+}
+
+.effect-box {
+    .zoomer {
+        img {
+            cursor: zoom-in;
+        }
+    }
+}
+
+a {
+    .effect-box {
+        .zoomer {
+            img {
+                cursor: pointer;
+            }
+        }
+        &::after {
+            content: "";
+        }
+    }
 }
 
 // remove rounded corners in wide area images

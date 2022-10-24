@@ -18,6 +18,7 @@
     <xsd:complexType name="OpenCmsContact">
         <xsd:sequence>
             <xsd:element name="Organization" type="OpenCmsString" />
+            <xsd:element name="OrgType" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
             <xsd:element name="LinkToParentOrganization" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="LinkToManager" type="OpenCmsVfsFile" minOccurs="0" />
@@ -69,6 +70,15 @@
                     <DisplayName><![CDATA[%(key.label.Contact.Org.Organization)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Org.Organization.help)]]></Description>
                     <Widget>string</Widget>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                </Setting>
+                <Setting>
+                    <PropertyName>OrgType</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Contact.Org.OrgType)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Contact.Org.OrgType.help)]]></Description>
+                    <Widget>alkacon.mercury.template.content.CmsOrgTypeSelectWidget</Widget>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>

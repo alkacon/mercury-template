@@ -48,6 +48,15 @@
     This can occur in case the form is intended to be used for event bookings,
     but has been placed on a page directly, i.e. is not shown on the event detail page." %>
 
+<%@ variable name-given="formBookingHasFinalRegistrationDate" declare="true"
+    description="Whether there is a final registration date configured in the booking info." %>
+
+<%@ variable name-given="formBookingFinalRegistrationDateStr" declare="true"
+    description="The formatted final registration date." %>
+
+<%@ variable name-given="formBookingRegistrationClosed" declare="true"
+    description="Whether the registration is closed." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -144,6 +153,17 @@
     (booking.value.MailTo.isSet or formXml.value.MailTo.isSet) and
     (booking.value.MailFrom.isSet or formXml.value.MailFrom.isSet)
 }" />
+
+<c:set var="formBookingHasFinalRegistrationDate" value="${booking.value.FinalRegistrationDate.isSet}" />
+<jsp:useBean id="now" class="java.util.Date" /> 
+<c:set var="formBookingRegistrationClosed" value="${
+    formBookingHasFinalRegistrationDate and booking.value.FinalRegistrationDate.toDate < now
+}" />
+<c:if test="${formBookingHasFinalRegistrationDate}">
+    <jsp:useBean id="registrationDateBean" class="org.opencms.jsp.util.CmsJspInstanceDateBean" />
+    <c:set var="ignore" value="${registrationDateBean.init(booking.value.FinalRegistrationDate.toDate, cms.locale)}" />
+    <c:set var="formBookingFinalRegistrationDateStr" value="${registrationDateBean.formatShort}" />
+</c:if>
 
 <%-- ###### Set adminLink that directs to the page where the form subscriptions are managed. ###### --%>
 <c:set var="adminDetailPageContent" value="${not empty formBookingXml ? formBookingXml : formXml}" />

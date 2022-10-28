@@ -56,10 +56,21 @@
                         </a><%----%>
                     </div><%----%>
                 </c:if>
-                <c:if test="${not empty formCssWrapper}">
-                    ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
-                </c:if>
-                ${form.createFormHandler(pageContext).createForm()}
+                <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" /><%-- The form handler sets the X-Oc-Webform request header to 'YES'. --%>
+                <c:choose>
+                    <c:when test="${formBookingRegistrationClosed}">
+                        <div class="oct-alert oct-alert-warning">
+                            <h3 class="webform_registrationclosed_headline"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></h3>
+                            <p class="webform_registrationclosed_text"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.text" /></p>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+	                    <c:if test="${not empty formCssWrapper}">
+	                        ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
+	                    </c:if>
+                        ${formHandler.createForm()}
+                    </c:otherwise>
+                </c:choose>
             </c:otherwise>
 
         </c:choose>

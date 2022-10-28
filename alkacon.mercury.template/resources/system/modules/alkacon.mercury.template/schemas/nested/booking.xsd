@@ -20,6 +20,7 @@
             <xsd:element name="MaxRegularDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="MaxWaitlistDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="NumOtherDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="FinalRegistrationDate" type="OpenCmsDateTime" minOccurs="0" maxOccurs="1" />
             <xsd:element name="KeepDays" type="OpenCmsString" minOccurs="0"  />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
@@ -80,6 +81,10 @@
                     <DisplayName><![CDATA[%(key.label.Booking.NumOtherDatasets)]]></DisplayName>
                     <Widget>string</Widget>
                     <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>FinalRegistrationDate</PropertyName>
+                    <DisplayName>%(key.label.Booking.FinalRegistrationDate)</DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>KeepDays</PropertyName>

@@ -41,6 +41,20 @@
             <c:when test="${style eq 'simple'}">
                 <%-- ###### Simple booking overview - places available / no places available only ###### --%>
                 <c:choose>
+                    <c:when test="${formBookingHasFinalRegistrationDate and not status.fullyBooked}">
+                        <c:choose>
+                            <c:when test="${formBookingRegistrationClosed}">
+                                <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="bookMsg">
+                                    <fmt:message key="msg.page.form.bookingstatus.registrationClosesOn">
+                                        <fmt:param>${formBookingFinalRegistrationDateStr}</fmt:param>
+                                    </fmt:message>
+                                </c:set>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:when>
                     <c:when test="${status.fullyBooked}">
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.none" /></c:set>
                     </c:when>
@@ -55,6 +69,20 @@
             <c:otherwise>
                 <%-- ###### More details booking overview - more then / less then X places available ###### --%>
                 <c:choose>
+                    <c:when test="${formBookingHasFinalRegistrationDate and not status.fullyBooked}">
+                        <c:choose>
+                            <c:when test="${formBookingRegistrationClosed}">
+                                <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="bookMsg">
+                                    <fmt:message key="msg.page.form.bookingstatus.registrationClosesOn">
+                                        <fmt:param>${formBookingFinalRegistrationDateStr}</fmt:param>
+                                    </fmt:message>
+                                </c:set>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:when>
                     <c:when test="${empty numRemainingSubmissions}">
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places" /></c:set>
                     </c:when>

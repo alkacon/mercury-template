@@ -24,6 +24,9 @@
     description="The title for the form.
     If not set, this is calculated from the provided form and booking contents." %>
 
+<%@ attribute name="dateFormat" type="java.lang.String" required="false"
+    description="The date format used to display the final registration date." %>
+
 
 <%@ variable name-given="form" declare="true"
     description="The initilized webform." %>
@@ -62,6 +65,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- ###### Initialize the webform ###### --%>
@@ -162,7 +166,11 @@
 <c:if test="${formBookingHasFinalRegistrationDate}">
     <jsp:useBean id="registrationDateBean" class="org.opencms.jsp.util.CmsJspInstanceDateBean" />
     <c:set var="ignore" value="${registrationDateBean.init(booking.value.FinalRegistrationDate.toDate, cms.locale)}" />
-    <c:set var="formBookingFinalRegistrationDateStr" value="${registrationDateBean.formatShort}" />
+    <c:set var="ignore" value="${registrationDateBean.setWholeDay(true)}" />
+    <c:set var="dateFormat" value="${dateFormat eq 'none' ? 'fmt-LONG-DATE-TIME' : dateFormat}" />
+    <c:set var="formBookingFinalRegistrationDateStr">
+        <mercury:instancedate date="${registrationDateBean}" format="${dateFormat}" />
+    </c:set>
 </c:if>
 
 <%-- ###### Set adminLink that directs to the page where the form subscriptions are managed. ###### --%>

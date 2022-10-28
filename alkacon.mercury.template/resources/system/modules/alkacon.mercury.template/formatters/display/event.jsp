@@ -55,6 +55,7 @@
         <mercury:webform-booking-status
             bookingContent="${content}"
             style="${bookingOption}"
+            dateFormat="${setDateFormat}"
         />
     </c:set>
     <c:set var="isBookable" value="${not empty bookingMarkup}" />

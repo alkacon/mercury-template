@@ -12,6 +12,9 @@
 <%@ attribute name="style" type="java.lang.String" required="false"
     description="The style of the booking status." %>
 
+<%@ attribute name="dateFormat" type="java.lang.String" required="false"
+    description="The date format used to display the final registration date." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -24,7 +27,8 @@
 
     <mercury:webform-vars
         webform="${bookingContent.value.Booking.value.Webform.toString}"
-        bookingInfo="${bookingContent}">
+        bookingInfo="${bookingContent}"
+        dateFormat="${dateFormat}">
 
     <fmt:setLocale value="${cms.locale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">
@@ -41,22 +45,11 @@
             <c:when test="${style eq 'simple'}">
                 <%-- ###### Simple booking overview - places available / no places available only ###### --%>
                 <c:choose>
-                    <c:when test="${formBookingHasFinalRegistrationDate and not status.fullyBooked}">
-                        <c:choose>
-                            <c:when test="${formBookingRegistrationClosed}">
-                                <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
-                            </c:when>
-                            <c:otherwise>
-                                <c:set var="bookMsg">
-                                    <fmt:message key="msg.page.form.bookingstatus.registrationClosesOn">
-                                        <fmt:param>${formBookingFinalRegistrationDateStr}</fmt:param>
-                                    </fmt:message>
-                                </c:set>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:when>
                     <c:when test="${status.fullyBooked}">
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.none" /></c:set>
+                    </c:when>
+                    <c:when test="${formBookingHasFinalRegistrationDate and formBookingRegistrationClosed}">
+                        <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
                     </c:when>
                     <c:when test="${status.onlyWaitlist}">
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist" /></c:set>
@@ -66,22 +59,26 @@
                     </c:otherwise>
                 </c:choose>
             </c:when>
+            <c:when test="${style eq 'date' and formBookingHasFinalRegistrationDate and not status.fullyBooked}">
+                <%-- ###### Final registration date overview - shown only if not fully booked ###### --%>
+                <c:choose>
+                    <c:when test="${formBookingRegistrationClosed}">
+                        <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="bookMsg">
+                            <fmt:message key="msg.page.form.bookingstatus.registrationClosesOn">
+                                <fmt:param>${formBookingFinalRegistrationDateStr}</fmt:param>
+                            </fmt:message>
+                        </c:set>
+                    </c:otherwise>
+                </c:choose>
+            </c:when>
             <c:otherwise>
                 <%-- ###### More details booking overview - more then / less then X places available ###### --%>
                 <c:choose>
-                    <c:when test="${formBookingHasFinalRegistrationDate and not status.fullyBooked}">
-                        <c:choose>
-                            <c:when test="${formBookingRegistrationClosed}">
-                                <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
-                            </c:when>
-                            <c:otherwise>
-                                <c:set var="bookMsg">
-                                    <fmt:message key="msg.page.form.bookingstatus.registrationClosesOn">
-                                        <fmt:param>${formBookingFinalRegistrationDateStr}</fmt:param>
-                                    </fmt:message>
-                                </c:set>
-                            </c:otherwise>
-                        </c:choose>
+                    <c:when test="${formBookingHasFinalRegistrationDate and formBookingRegistrationClosed and not status.fullyBooked}">
+                        <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
                     </c:when>
                     <c:when test="${empty numRemainingSubmissions}">
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places" /></c:set>

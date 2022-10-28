@@ -158,7 +158,8 @@
       <WidgetConfig><![CDATA[
             none:       %(key.msg.setting.bookingOption.none)|
             simple:     %(key.msg.setting.bookingOption.simple)|
-            places:     %(key.msg.setting.bookingOption.places)
+            places:     %(key.msg.setting.bookingOption.places)|
+            date:       %(key.msg.setting.bookingOption.date)
         ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -171,7 +172,8 @@
       <WidgetConfig><![CDATA[
             none:       %(key.msg.setting.bookingOption.none)|
             simple:     %(key.msg.setting.bookingOption.simple)|
-            places:     %(key.msg.setting.bookingOption.places)
+            places:     %(key.msg.setting.bookingOption.places)|
+            date:       %(key.msg.setting.bookingOption.date)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

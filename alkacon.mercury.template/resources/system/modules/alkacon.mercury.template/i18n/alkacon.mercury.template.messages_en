@@ -853,6 +853,7 @@ msg.setting.bookingOption.help=<p>Shows information about the booking state for 
 msg.setting.bookingOption.none=Disabled
 msg.setting.bookingOption.places=Show information about the number of free places
 msg.setting.bookingOption.simple=Show only "bookable" or "booked out"
+msg.setting.bookingOption.date=Show final registration date (if there are free places)
 msg.setting.buttonText=Button label
 msg.setting.buttonText.help=<p>Sets an individual label on the button that is used to show a list entry.</p>\n<p>If 'none' is set, the button is not shown at all.</p>\n<p>If this is not set (left empty), a default text is used that varies by list entry type.</p>
 msg.setting.colWidth=Row width

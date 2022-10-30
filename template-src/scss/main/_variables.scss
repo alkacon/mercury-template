@@ -662,6 +662,13 @@ $contact-spacer-y:                  calc(0.5 * var(--#{$prefix}default-margin-sm
 
 // Tabs and accordions
 
+$at-header:                         var(--#{$prefix}highlight-fg-color) !default;
+$at-header-bg:                      var(--#{$prefix}highlight-color) !default;
+$at-header-active:                  var(--#{$prefix}main-theme-fg) !default;
+$at-header-active-bg:               var(--#{$prefix}main-theme) !default;
+$at-header-hover:                   var(--#{$prefix}main-theme-hover-fg) !default;
+$at-header-hover-bg:                var(--#{$prefix}main-theme-hover) !default;
+
 $at-spacing:                        $default-margin !default;
 $at-spacing-x:                      calc(0.5 * $at-spacing) !default;
 $at-spacing-y:                      calc(0.25 * $at-spacing) !default;

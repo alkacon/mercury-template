@@ -86,12 +86,12 @@
 
 .variant-tabs,
 .accordion {
-    --#{$prefix}at-header: var(--#{$prefix}highlight-fg-color);
-    --#{$prefix}at-header-bg: var(--#{$prefix}highlight-color);
-    --#{$prefix}at-header-active: var(--#{$prefix}main-theme-fg);
-    --#{$prefix}at-header-active-bg: var(--#{$prefix}main-theme);
-    --#{$prefix}at-header-hover: var(--#{$prefix}main-theme-hover-fg);
-    --#{$prefix}at-header-hover-bg: var(--#{$prefix}main-theme-hover);
+    --#{$prefix}at-header: #{$at-header};
+    --#{$prefix}at-header-bg: #{$at-header-bg};
+    --#{$prefix}at-header-active: #{$at-header-active};
+    --#{$prefix}at-header-active-bg: #{$at-header-active-bg};
+    --#{$prefix}at-header-hover: #{$at-header-hover};
+    --#{$prefix}at-header-hover-bg: #{$at-header-hover-bg};
 
     --#{$prefix}at-spacing-x: #{$at-spacing-x};
     --#{$prefix}at-spacing-y: #{$at-spacing-y};
@@ -248,7 +248,7 @@
     }
 
     .acco-body {
-        border-top: var(--#{$prefix}at-border);
+        // border-top: var(--#{$prefix}at-border);
         border: var(--#{$prefix}at-border);
         border-radius: var(--#{$prefix}at-border-radius);
 

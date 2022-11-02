@@ -88,6 +88,9 @@
     --#{$prefix}grey-light: #{$grey-light};
     --#{$prefix}grey: #{$grey};
 
+    --#{$prefix}text-dark: #{$text-dark};
+    --#{$prefix}text-light: #{$text-light};
+
     --#{$prefix}main-theme-rgb: #{to-rgb($main-theme)};
     --#{$prefix}highlight-color-rgb: #{to-rgb($highlight-color)};
 

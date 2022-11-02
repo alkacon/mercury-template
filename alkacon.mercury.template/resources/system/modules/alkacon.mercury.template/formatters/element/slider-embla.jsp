@@ -41,7 +41,8 @@
 <c:set var="bgColorHead"            value="${setting.textColorHead.isSet and not (setting.textColorHead eq 'css') ? setting.textColorHead.toString : ''}" />
 <c:set var="bgColorSub"             value="${setting.textColorSub.isSet and not (setting.textColorSub eq 'css') ? setting.textColorSub.toString : ''}" />
 
-<c:set var="sliderType"             value="${setting.sliderType.value}" />
+<c:set var="sliderType"             value="${setting.sliderType.toString}" />
+<c:set var="sliderType"             value="${not autoPlay and sliderType eq 'timed' ? 'hero' : sliderType}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:choose>

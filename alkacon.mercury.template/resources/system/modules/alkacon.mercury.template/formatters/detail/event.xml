@@ -45,6 +45,9 @@
       <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[keyPieceOrigin.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[pieceLayout.detail]]></IncludeName>
     </Setting>
     <Setting>

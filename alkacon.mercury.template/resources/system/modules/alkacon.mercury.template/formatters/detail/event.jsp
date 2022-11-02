@@ -35,6 +35,7 @@
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
 <c:set var="showiCalendar"          value="${setting.iCalendarShowLink.toBoolean}" />
+<c:set var="showImageFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -50,7 +51,7 @@
 <c:set var="intro"                  value="${value.Intro}" />
 <c:set var="title"                  value="${value.Title}" />
 <c:set var="preface"                value="${value.Preface}" />
-<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : firstParagraph.value.Image}" />
+<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : (showImageFromParagraph ? firstParagraph.value.Image : null)}" />
 <c:set var="locationNote"           value="${value.LocationNote}" />
 <c:set var="type"                   value="${value.Type}" />
 <c:set var="performer"              value="${value.Performer}" />
@@ -198,7 +199,7 @@
                     cssWrapper="${setCssWrapperParagraphs}"
                     pieceLayout="${pieceLayout}"
                     heading="${paragraph.value.Caption}"
-                    image="${(status.first and not value.Image.value.Image.isSet) ? null : paragraph.value.Image}"
+                    image="${(status.first and showImageFromParagraph and not value.Image.value.Image.isSet) ? null : paragraph.value.Image}"
                     text="${paragraph.value.Text}"
                     link="${paragraph.value.Link}"
                     showImageZoom="${showImageZoom}"

@@ -22,8 +22,8 @@
 // Calendar sheet base
 
 .calendar-sheet {
-    --#{$prefix}cs-color: var(--#{$prefix}highlight-fg-color);
-    --#{$prefix}cs-bg-color: var(--#{$prefix}highlight-color);
+    --#{$prefix}cs-color: var(--#{$prefix}text-dark);
+    --#{$prefix}cs-bg-color: var(--#{$prefix}grey-lighter);
     --#{$prefix}cs-border-color: var(--#{$prefix}grey-light);
 
     --#{$prefix}cs-bar-height: #{$calendar-sheet-bar-height};

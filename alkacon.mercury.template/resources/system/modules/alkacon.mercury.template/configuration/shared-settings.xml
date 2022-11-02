@@ -1028,6 +1028,18 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[keyPieceOrigin.detail]]></IncludeName>
+      <PropertyName><![CDATA[keyPieceOrigin]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.keyPieceOrigin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.keyPieceOrigin.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[subsitute]]></Default>
+      <WidgetConfig><![CDATA[
+        subsitute:  %(key.msg.setting.keyPieceOrigin.subsitute)|
+        none:       %(key.msg.setting.keyPieceOrigin.none)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showArrows.true]]></IncludeName>
       <PropertyName><![CDATA[showArrows]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.slider.showArrows)]]></DisplayName>
@@ -1076,7 +1088,9 @@
         8000:   8 %(key.msg.setting.slider.rotationTime.secs)|
         10000:  10 %(key.msg.setting.slider.rotationTime.secs)|
         15000:  15 %(key.msg.setting.slider.rotationTime.secs)|
-        20000:  20 %(key.msg.setting.slider.rotationTime.secs)
+        20000:  20 %(key.msg.setting.slider.rotationTime.secs)|
+        30000:  30 %(key.msg.setting.slider.rotationTime.secs)|
+        60000:  60 %(key.msg.setting.slider.rotationTime.secs)
       ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -1085,13 +1099,18 @@
       <DisplayName><![CDATA[%(key.msg.setting.slider.rotationTime)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.slider.rotationTime.timed.help)]]></Description>
       <Widget><![CDATA[selectcombo]]></Widget>
-      <Default><![CDATA[5000]]></Default>
+      <Default><![CDATA[3000]]></Default>
       <WidgetConfig><![CDATA[
+        0:      %(key.msg.setting.slider.rotationTime.none)|
         1000:   1 %(key.msg.setting.slider.rotationTime.min)|
+        2000:   2 %(key.msg.setting.slider.rotationTime.mins)|
         3000:   3 %(key.msg.setting.slider.rotationTime.mins)|
+        4000:   4 %(key.msg.setting.slider.rotationTime.mins)|
         5000:   5 %(key.msg.setting.slider.rotationTime.mins)|
+        8000:   8 %(key.msg.setting.slider.rotationTime.mins)|
         10000:  10 %(key.msg.setting.slider.rotationTime.mins)|
         15000:  15 %(key.msg.setting.slider.rotationTime.mins)|
+        20000:  20 %(key.msg.setting.slider.rotationTime.mins)|
         30000:  30 %(key.msg.setting.slider.rotationTime.mins)|
         60000:  60 %(key.msg.setting.slider.rotationTime.mins)
       ]]></WidgetConfig>

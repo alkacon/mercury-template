@@ -31,6 +31,7 @@
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
+<c:set var="showImageFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -47,7 +48,7 @@
 <c:set var="intro"                  value="${value.Intro}" />
 <c:set var="title"                  value="${value.Title}" />
 <c:set var="preface"                value="${value.Preface}" />
-<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : firstParagraph.value.Image}" />
+<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : (showImageFromParagraph ? firstParagraph.value.Image : null)}" />
 <c:set var="author"                 value="${value.Author}" />
 
 <c:set var="showAuthor"             value="${author.isSet and setting.showAuthor.toBoolean}" />
@@ -114,7 +115,7 @@
                                 <c:set var="authorName" value="${authorContent.value.Name.value}" />
                                 <div><%--
                                 --%>${authorName.Title.isSet ? authorName.Title.toString.concat(' ') : ''}<%--
-                                --%>${authorName.FirstName.isSet ? authorName.FirstName.toString.concat(' ') : ''}<%-- 
+                                --%>${authorName.FirstName.isSet ? authorName.FirstName.toString.concat(' ') : ''}<%--
                                 --%>${authorName.MiddleName.isSet ? authorName.MiddleName.toString.concat(' ') : ''}<%--
                                 --%>${authorName.LastName.isSet ? authorName.LastName.toString.concat(' ') : ''}<%--
                                 --%>${authorName.Suffix.isSet ? authorName.Suffix.toString.concat(' ') : ''}<%--
@@ -142,7 +143,7 @@
                 cssWrapper="${setCssWrapperParagraphs}"
                 pieceLayout="${pieceLayout}"
                 heading="${paragraph.value.Caption}"
-                image="${(status.first and not value.Image.value.Image.isSet) ? null : paragraph.value.Image}"
+                image="${(status.first and showImageFromParagraph and not value.Image.value.Image.isSet) ? null : paragraph.value.Image}"
                 text="${paragraph.value.Text}"
                 link="${paragraph.value.Link}"
                 showImageZoom="${showImageZoom}"

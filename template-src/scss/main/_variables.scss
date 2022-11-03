@@ -687,8 +687,10 @@ $at-border-radius:                  var(--#{$prefix}border-radius) !default;
 $at-border-color:                   var(--#{$prefix}grey-light) !default;
 $at-border:                         1px solid var(--#{$prefix}at-border-color) !default;
 
+
 $acco-body-bg:                      transparent !default;
 $acco-toggle-arrows:                true !default;
+$acco-arrow-icon:                   "\f078" !default;
 $acco-panel-shadow:                 $panel-shadow !default;
 $acco-body-margin-top:              conditional-value($at-border == none, 0, -1px) !default; // should match the border width from $at-border
 $acco-border-radius-expand-adjust:  (($acco-body-margin-top == 0) or ($acco-body-margin-top == -1px)) !default;

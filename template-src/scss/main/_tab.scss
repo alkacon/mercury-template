@@ -35,7 +35,7 @@
             position: absolute;
             right: calc(0.5 * var(--#{$prefix}at-spacing-x));
             top: var(--#{$prefix}at-spacing-y);
-            display: block;
+            display: flex;
             z-index: $overflow-z-index;
         }
     }
@@ -217,6 +217,8 @@
 
         @if ($acco-toggle-arrows) {
             &:hover > .hash-link {
+                top: 50%;
+                transform: translateY(-50%);
                 right: calc(3rem + var(--#{$prefix}at-spacing-x));
                 // 3rem should be about the size of the toggle button
             }
@@ -225,10 +227,13 @@
                 padding-right: calc(3rem + var(--#{$prefix}at-spacing-x));
 
                 &::after {
+                    content: $acco-arrow-icon;
                     position: absolute;
-                    display: inline-block;
-                    content: "\f078";
-                    top: var(--#{$prefix}at-spacing-y);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    top: 0;
+                    height: 100%;
                     right: var(--#{$prefix}at-spacing-x);
                     transform: rotate(-180deg) translate(0,0);
                     transition: transform .33s;
@@ -237,7 +242,7 @@
                     font-weight: normal;
                     font-size: inherit; // inherit size / height so that the generated icon matches the header font size
                     font-style: normal;
-                    line-height: inherit;
+                    line-height: 100%;
                 }
                 &.collapsed::after {
                     transform: rotate(0) translate(0,0);

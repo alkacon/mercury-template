@@ -782,24 +782,17 @@
         .btn.li-label,
         .nav-side li > a + a {
             &::after {
-                position: absolute;
-                display: inline-block;
-                font-family: ForkAwesome;
-                right: 0;
+                @include toggle-arrow-open-after;
                 width: $nav-handle-right-padding;
-                content: "\f078";
-                font-weight: normal;
-                text-align: center;
-                transform: rotate(-180deg);
-                transition: transform $nav-animation-time;
+                right: 0;
             }
             &.collapsed::after {
-                transform: rotate(0);
+                @include toggle-arrow-closed-after;
             }
         }
         .nav-side li > a + a {
             &::after {
-                content: "\f107";
+                content: $toggle-alternate-icon;
             }
         }
 
@@ -969,34 +962,26 @@
 .type-list-sortoptions {
 
     .dropdown-toggle {
-        padding: $btn-padding #{$btn-padding * 4} $btn-padding #{$btn-padding * 2};
+        padding: $btn-padding #{$btn-padding * 6} $btn-padding #{$btn-padding * 2};
 
         &::after {
-            position: absolute;
-            display: inline-block;
-            font-family: ForkAwesome;
-            font-weight: normal;
-            content: "\f078";
+            @include toggle-arrow-open-after(true);
             right: $btn-h-padding;
-            transition: $nav-animation-time;
-            margin: 0;
             border: none;
-            width: auto;
-            height: auto;
+            vertical-align: auto;
+            margin: 0;
+        }
+
+        &.show {
+            &::after {
+                @include toggle-arrow-closed-after(true);
+            }
         }
     }
 
     .btn-group {
         display: flex;
         justify-content: flex-end;
-
-        .list-option.show {
-            .dropdown-toggle {
-                &::after {
-                    transform: rotate(-180deg) translate(0,0);
-                }
-            }
-        }
     }
 
     .dropdown-menu {
@@ -1056,10 +1041,6 @@
                 content: "";
                 background-color: transparent;
             }
-        }
-
-        span {
-            margin-right: var(--#{$prefix}default-margin-verysmall);
         }
     }
 

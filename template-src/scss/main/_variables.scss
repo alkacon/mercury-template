@@ -660,6 +660,14 @@ $contact-spacer-x:                  calc(0.5 * var(--#{$prefix}default-margin-sm
 $contact-spacer-y:                  calc(0.5 * var(--#{$prefix}default-margin-small)) !default;
 
 
+// Toggle arrows
+
+$toggle-transition-time:            $default-transition-time !default;
+$toggle-arrow-icon:                 "\f078" !default;
+$toggle-alternate-icon:             "\f107" !default;
+$toggle-open-rotation:              -180deg !default;
+
+
 // Tabs and accordions
 
 $at-header:                         var(--#{$prefix}highlight-fg-color) !default;

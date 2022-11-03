@@ -72,18 +72,24 @@
 }
 
 
-// Button with a toggle symbol, e.g. for boostrap collapses
-// Used also by DISQUS function
+// Generic toggle buttons, e.g. used by boostrap collapses and comments functions
 
 .btn-toggle {
-    span.fa {
-        line-height: inherit;
-        transition: transform 0.33s;
+    display: block;
+    width: 100%;
+    text-align: left;
+    position: relative;
+
+    &::after {
+        @include toggle-arrow-open-after(true);
+        right: $btn-h-padding;
     }
 
-    &[aria-expanded=true] span.fa, // for boostrap collapses
-    span.fa.open { // for DISQUS function
-        transform: rotate(-180deg);
+    &[aria-expanded=true], // for boostrap collapses
+    &.open { // for comment function
+        &::after {
+            @include toggle-arrow-closed-after(true);
+        }
     }
 }
 

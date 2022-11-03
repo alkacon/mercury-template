@@ -62,9 +62,8 @@
         </c:choose>
 
         <c:if test="${clickToLoad}">
-            <button type="button" class="btn-toggle btn-block btn" ><%----%>
-                <span class="pull-left"><fmt:message key="msg.page.comments" /></span><%----%>
-                <span class="fa fa-chevron-down pull-right"></span><%----%>
+            <button type="button" class="btn-toggle btn" ><%----%>
+                <fmt:message key="msg.page.comments" /><%----%>
             </button><%----%>
         </c:if>
 

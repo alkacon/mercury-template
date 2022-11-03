@@ -61,20 +61,11 @@
                 padding-right: calc(3 * var(--#{$prefix}sm-padding-x));
 
                 &:after {
-                    position: absolute;
-                    display: inline-block;
-                    font-family: ForkAwesome;
-                    font-weight: normal;
-                    content: "\f078";
-                    top: var(--#{$prefix}sm-padding-y);
+                    @include toggle-arrow-open-after;
                     right: var(--#{$prefix}sm-padding-x);
-                    line-height: $sitemap-line-height;
-                    transform: rotate(-180deg) translate(0,0);
-                    transition: transform .33s;
                 }
                 &.collapsed:after {
-                    transform: rotate(0) translate(0,0);
-                    transition: transform 0.33s;
+                    @include toggle-arrow-closed-after;
                 }
             }
         }

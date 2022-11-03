@@ -227,26 +227,11 @@
                 padding-right: calc(3rem + var(--#{$prefix}at-spacing-x));
 
                 &::after {
-                    content: $acco-arrow-icon;
-                    position: absolute;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    top: 0;
-                    height: 100%;
+                    @include toggle-arrow-open-after;
                     right: var(--#{$prefix}at-spacing-x);
-                    transform: rotate(-180deg) translate(0,0);
-                    transition: transform .33s;
-
-                    font-family: ForkAwesome;
-                    font-weight: normal;
-                    font-size: inherit; // inherit size / height so that the generated icon matches the header font size
-                    font-style: normal;
-                    line-height: 100%;
                 }
                 &.collapsed::after {
-                    transform: rotate(0) translate(0,0);
-                    transition: transform 0.33s;
+                    @include toggle-arrow-closed-after;
                 }
             }
         }

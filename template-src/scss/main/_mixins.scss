@@ -532,14 +532,31 @@
     }
 }
 
-@mixin awesome-icons() {
+@mixin awesome-icons($line-height: inherit, $font-size: inherit) {
     // Adds font definitions required to switch to ForkAwesome font
     font-family: ForkAwesome;
-    font-size: inherit;
-    line-height: inherit;
+    font-size: $font-size;
+    line-height: $line-height;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin toggle-arrow-open-after($reverse: false) {
+    @include awesome-icons(1);
+    content: $toggle-arrow-icon;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    height: 100%;
+    transform: rotate(conditional-value($reverse, 0, $toggle-open-rotation));
+    transition: transform $toggle-transition-time;
+}
+
+@mixin toggle-arrow-closed-after($reverse: false) {
+    transform: rotate(conditional-value($reverse, $toggle-open-rotation, 0));
 }
 
 @mixin ensure-not-css-property($value) {

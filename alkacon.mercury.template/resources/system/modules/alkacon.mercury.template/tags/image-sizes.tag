@@ -90,7 +90,7 @@ ${bootstrapGridData}
                 <c:set var="bsMwMd"  value="${bsGrid.getInt('mw-md')}" />
                 <c:set var="bsMwLg"  value="${bsGrid.getInt('mw-lg')}" />
                 <c:set var="bsMwXl"  value="${bsGrid.getInt('mw-xl')}" />
-                <c:set var="bsMwXl"  value="${bsGrid.getInt('mw-xxl')}" />
+                <c:set var="bsMwXxl" value="${bsGrid.getInt('mw-xxl')}" />
                 <c:set var="bsStatus">Source: JSON</c:set>
             </c:catch>
             <c:choose>

@@ -70,6 +70,10 @@
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
     description="Controls if and how the link is displayed. Default is 'button'." %>
 
+<%@ attribute name="suppressLinks" type="java.lang.Boolean" required="false"
+    description="Controls if links are generated, or if a markup is generated without actual links. Default is 'false'.
+    This can be used in case the entire section is to be contained in one link." %>
+
 <%@ attribute name="textAlignment" type="java.lang.String" required="false"
     description="Controls the alignment of the text elements. Default is left aligned." %>
 
@@ -143,8 +147,8 @@
 
     <c:if test="${showVisual and empty markupVisual}">
         <c:set var="visualFromImage">
-            <c:set var="showImageLink"  value="${empty showImageLink ? false : showImageLink}" />
-            <c:set var="showImageZoom" value="${empty showImageZoom ? true : showImageZoom}" />
+            <c:set var="showImageLink"  value="${empty showImageLink or suppressLinks ? false : showImageLink}" />
+            <c:set var="showImageZoom" value="${suppressLinks ? false : (empty showImageZoom ? true : showImageZoom)}" />
             <mercury:link
                 link="${link}"
                 test="${showImageLink}"
@@ -198,7 +202,7 @@
                     </c:if>
                 </c:if>
                 <c:choose>
-                    <c:when test="${linkHeading}">
+                    <c:when test="${linkHeading and not suppressLinks}">
                         <mercury:heading
                             level="${hsize}"
                             suffix="${anchorLinkSuffix}"
@@ -266,7 +270,7 @@
                         <c:set var="linkCss" value="btn piece-btn" />
                     </c:otherwise>
                 </c:choose>
-                <mercury:link link="${link}" css="${linkCss}"/>
+                <mercury:link link="${link}" css="${linkCss}" createSpan="${suppressLinks}" />
             </c:if>
         </jsp:attribute>
 

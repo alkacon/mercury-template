@@ -646,6 +646,12 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/linkbox.xml]]></target>
+          <uuid>9c2fe085-5e93-11ed-bb3c-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/imageflip.xml]]></target>
           <uuid>d0282fe5-6345-433d-8b56-125c55d1a927</uuid>
         </link>

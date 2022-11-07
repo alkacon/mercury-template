@@ -1663,6 +1663,21 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[linkOption.linkBox]]></IncludeName>
+      <PropertyName><![CDATA[linkOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.linkOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[button]]></Default>
+      <WidgetConfig><![CDATA[
+            button:         %(key.msg.setting.linkOption.button)|
+            button-full:    %(key.msg.setting.linkOption.button-full)|
+            button-sm:      %(key.msg.setting.linkOption.button-sm)|
+            text:           %(key.msg.setting.linkOption.text)|
+            none:           %(key.msg.setting.linkOption.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[linkOption.tile]]></IncludeName>
       <PropertyName><![CDATA[linkOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.linkOption)]]></DisplayName>

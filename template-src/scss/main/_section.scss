@@ -96,6 +96,11 @@
     }
 }
 
+.type-linkbox {
+    flex-grow: 1;
+    @include text-tile(false);
+}
+
 // Image / text flip animation, see https://davidwalsh.name/css-flip#ieflip
 
 .imageflip {

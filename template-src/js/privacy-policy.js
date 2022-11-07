@@ -516,7 +516,9 @@ function policyIsUnavailable() {
 
 function checkRedirectToPolicyPage() {
     if (policyIsUnavailable()) {
-        window.location.href = m_bannerData.fallback;
+        if ((typeof m_bannerData !== "undefined") && (typeof m_bannerData.fallback !== "undefined"))  {
+            window.location.href = m_bannerData.fallback;
+        }
     }
 }
 

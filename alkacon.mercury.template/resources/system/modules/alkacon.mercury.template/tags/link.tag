@@ -45,6 +45,9 @@
     description="If 'true', a button with onlick action will be gernerated instead of an a href link.
     This is only supported if there is no body content in this tag." %>
 
+<%@ attribute name="createSpan" type="java.lang.Boolean" required="false"
+    description="If 'true', a span will be gernerated instead of an a href link." %>
+
 <%@ attribute name="noExternalMarker" type="java.lang.Boolean" required="false"
     description="If 'true', no external marker CSS will be added to links pointing to an external server." %>
 
@@ -158,6 +161,13 @@
                                 <c:if test="${not empty linkTitle}">${' '}title="${linkTitle}"</c:if>
                             ${'>'}
                         </c:when>
+                        <c:when test="${createSpan}">
+                            ${'<span'}
+                                <c:if test="${not empty css}">${' '}class="${css}"</c:if>
+                                <c:if test="${not empty style}">${' '}style="${style}"</c:if>
+                                <c:if test="${not empty linkTitle}">${' '}title="${linkTitle}"</c:if>
+                            ${'>'}
+                        </c:when>
                         <c:otherwise>
                             ${'<a href=\"'}${targetLink}${'\"'}
                                 <c:if test="${not empty css}">${' '}class="${css}"</c:if>
@@ -190,6 +200,9 @@
                     <c:choose>
                         <c:when test="${createButton}">
                             ${'</button>'}
+                        </c:when>
+                        <c:when test="${createSpan}">
+                            ${'</span>'}
                         </c:when>
                         <c:otherwise>
                             ${'</a>'}

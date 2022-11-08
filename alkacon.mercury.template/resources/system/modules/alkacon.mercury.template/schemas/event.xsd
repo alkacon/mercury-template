@@ -31,7 +31,6 @@
             <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
             <xsd:element name="VirtualLocation" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
-            <xsd:element name="Kind" type="OpenCmsString" />
             <xsd:element name="Booking" type="OpenCmsBooking" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
@@ -46,7 +45,6 @@
 
     <xsd:annotation>
         <xsd:appinfo>
-            <handler class="alkacon.mercury.template.CmsEventContentHandler" />
             <resourcebundles>
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>
@@ -64,9 +62,9 @@
             <searchsettings containerPageOnly="false">
                 <searchsetting element="Type">
                     <solrfield targetfield="event-type" sourcefield="*_s" />
-                </searchsetting>
-                <searchsetting element="Kind">
-                    <solrfield targetfield="event-kind" sourcefield="*_s" />
+                    <solrfield targetfield="event-kind" sourcefield="*_s">
+                        <mapping type="dynamic" class="alkacon.mercury.template.CmsMacroSearchFieldMapping">%(stringtemplate:eventKind)</mapping>
+                    </solrfield>
                 </searchsetting>
             </searchsettings>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
@@ -88,7 +86,7 @@
                     !%%if (content.value.("Type").isSet)%, %content.value.("Type")%%endif%%!
                 !%]]></param>
                 <param name="eventKind"><![CDATA[%!
-                    !%%if (content.value.("VirtualLocation").isSet || content.value.("AddressChoice").isSet)%%!
+                    !%%if (content.value.("VirtualLocation").isSet && content.value.("AddressChoice").isSet)%%!
                         !%mixed%!
                     !%%elseif (content.value.("VirtualLocation").isSet)%%!
                         !%online%!
@@ -177,14 +175,6 @@
                     <Description><![CDATA[%(key.label.LocationNote.help)]]></Description>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
-                </Setting>
-                <Setting>
-                    <PropertyName>Kind</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Event.Kind)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Event.Kind.help)]]></Description>
-                    <Widget>string</Widget>
-                    <Default><![CDATA[%(stringtemplate:eventKind)]]></Default>
-                    <Visibility>hidden</Visibility>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

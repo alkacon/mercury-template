@@ -149,6 +149,19 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[kindOption.default]]></IncludeName>
+      <PropertyName><![CDATA[kindOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.kindOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.kindOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[online]]></Default>
+      <WidgetConfig><![CDATA[
+            none:       %(key.msg.setting.kindOption.none)|
+            online:     %(key.msg.setting.kindOption.online)|
+            all:        %(key.msg.setting.kindOption.all)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
       <PropertyName><![CDATA[bookingOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.bookingOption)]]></DisplayName>

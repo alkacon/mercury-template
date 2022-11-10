@@ -23,6 +23,7 @@
 
 .calendar-sheet {
     --#{$prefix}cs-color: var(--#{$prefix}text-dark);
+    --#{$prefix}cs-accent-color: var(--#{$prefix}main-theme-base);
     --#{$prefix}cs-bg-color: var(--#{$prefix}grey-lighter);
     --#{$prefix}cs-border-color: var(--#{$prefix}grey-light);
 
@@ -46,7 +47,7 @@
     > .day-number {
         font-size: 24px;
         font-weight: $font-weight-bold;
-        color: var(--#{$prefix}main-theme);
+        color: var(--#{$prefix}cs-accent-color);
         line-height: 30px;
     }
 }
@@ -61,7 +62,7 @@
     }
 
     .calendar-sheet {
-        border-bottom: 2px solid var(--#{$prefix}main-theme);
+        border-bottom: 2px solid var(--#{$prefix}cs-accent-color);
         display: inline-block;
         width: 100%;
         padding: 10px 0;
@@ -136,7 +137,7 @@
                 height: var(--#{$prefix}cs-bar-height);
                 border-bottom: none;
                 margin: 0;
-                background-color: var(--#{$prefix}main-theme);
+                background-color: var(--#{$prefix}cs-accent-color);
                 width: var(--#{$prefix}cs-bar-width);
             }
             & > span {
@@ -195,21 +196,25 @@ table.submissions {
     }
 
     .book-msg {
-        background-color: var(--#{$prefix}highlight-color);;
-        border-radius: var(--#{$prefix}cs-border-radius);
+        background-color: var(--#{$prefix}grey-lighter);
+        color: var(--#{$prefix}text-dark);
+    }
+
+    .book-msg,
+    .oct-meta-info {
+        border-radius: var(--#{$prefix}border-radius);
         font-weight: normal;
 
-        + .oct-meta-info {
-            margin-left: 10px;
+        &:not(.last-child) {
+            margin-right: var(--#{$prefix}ws-margin);
         }
     }
 }
 
-
 .detail-page .book-info {
 
-    .oct-meta-info,
-    .book-msg {
+    .book-msg,
+    .oct-meta-info {
         padding: $btn-def-padding;
     }
 }
@@ -219,22 +224,13 @@ table.submissions {
 
     font-size: 80%;
     line-height: 1.2;
-    margin: 8px 0;
+    margin-top: 8px;
 
-    .oct-meta-info,
-    .book-msg {
+    .book-msg,
+    .oct-meta-info {
         display: inline-block;
         padding: 1px 8px;
-    }
-}
-
-.accordion .book-info {
-    .oct-meta-info {
-        margin-right: var(--#{$prefix}default-margin-small);
-
-        &:last-of-type {
-            margin-right: 0;
-        }
+        margin-bottom: 8px;
     }
 }
 
@@ -244,9 +240,5 @@ table.submissions {
             content: "\A";
             white-space: pre;
         }
-    }
-    .oct-meta-info {
-        margin-top: 5px;
-        margin-left: 0;
     }
 }

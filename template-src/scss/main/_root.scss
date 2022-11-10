@@ -84,6 +84,8 @@
     --#{$prefix}disabled-color: #{$disabled-color};
     --#{$prefix}disabled-fg-color: #{$disabled-fg-color};
 
+    --#{$prefix}main-theme-base: #{$main-theme};
+
     --#{$prefix}grey-lighter: #{$grey-lighter};
     --#{$prefix}grey-light: #{$grey-light};
     --#{$prefix}grey: #{$grey};
@@ -129,6 +131,7 @@
     --#{$prefix}default-margin-verysmall: #{$default-margin-verysmall};
 
     --#{$prefix}element-margin: #{$element-margin};
+    --#{$prefix}ws-margin: #{$ws-margin};
     --#{$prefix}box-padding: #{$box-padding};
 
     --#{$prefix}paragraph-margin-bottom: #{$paragraph-margin-bottom};

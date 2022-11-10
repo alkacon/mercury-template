@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.27</version>
+		<version>14.0.29</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7586,6 +7586,27 @@
 			<uuidstructure>ef72f988-0c8b-493a-a6aa-db729fdd6d55</uuidstructure>
 			<uuidresource>ed6ff286-7b7d-4212-9cf5-2fb1123d768a</uuidresource>
 			<datecreated>Thu, 10 Jan 2019 12:45:23 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates event booking information]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/event-kind.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/event-kind.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>3f99f22e-6010-11ed-bc09-0242ac11002b</uuidstructure>
+			<uuidresource>3f99f22f-6010-11ed-bc09-0242ac11002b</uuidresource>
+			<datecreated>Wed, 09 Nov 2022 09:24:02 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>

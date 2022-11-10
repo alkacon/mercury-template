@@ -15,6 +15,9 @@
 <%@ attribute name="dateFormat" type="java.lang.String" required="false"
     description="The date format used to display the final registration date." %>
 
+<%@ attribute name="noDivWrapper" type="java.lang.Boolean" required="false"
+    description="If 'true, the outer div wrapper is omitted from the returned markup." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -120,7 +123,7 @@
             </c:otherwise>
         </c:choose>
 
-        <div class="book-info"><%----%>
+        <mercury:div css="book-info" test="${not noDivWrapper}">
             <span class="book-msg">${bookMsg}</span><%----%>
             <c:if test="${cms.isEditMode and form.userCanManage}">
                 <span class="oct-meta-info"><%----%>
@@ -130,20 +133,20 @@
                     </fmt:message>
                 </span><%----%>
             </c:if>
-        </div><%----%>
+        </mercury:div>
         <mercury:nl />
 
     </c:when>
     <c:otherwise>
 
-        <div class="book-info"><%----%>
+         <mercury:div css="book-info" test="${not noDivWrapper}">
             <span class="book-msg"><fmt:message key="msg.page.form.remaining.places" /></span><%----%>
             <c:if test="${cms.isEditMode and form.userCanManage}">
             <span class="oct-meta-info"><%----%>
                 <fmt:message key="msg.page.form.bookingstatus.places.unlimited" />
             </span><%----%>
             </c:if>
-        </div><%----%>
+        </mercury:div>
         <mercury:nl />
 
     </c:otherwise>

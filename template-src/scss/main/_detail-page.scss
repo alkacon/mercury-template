@@ -66,8 +66,7 @@
                         margin-bottom: 0;
                     }
                 }
-                .locname + .address,
-                .address + .adressInfo {
+                .locdata > *:not(:first-child) {
                     margin-top: var(--#{$prefix}detail-visual-spacer-y);
                 }
             }

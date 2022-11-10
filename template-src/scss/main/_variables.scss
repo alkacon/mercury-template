@@ -68,6 +68,7 @@ $default-margin-small:              round($default-margin * 50) * 0.01 !default;
 $default-margin-verysmall:          round($default-margin * 25) * 0.01 !default;   // 0.5 rem
 
 $element-margin:                    $default-margin !default;
+$ws-margin:                         1.0rem !default;
 $paragraph-margin-bottom:           $default-margin-small !default; // margin used at the end of paragraphs
 $headings-margin-bottom:            $paragraph-margin-bottom !default; // margin below <hx> elements
 

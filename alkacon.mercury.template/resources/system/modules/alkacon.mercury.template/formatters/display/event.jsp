@@ -21,6 +21,7 @@
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <c:set var="bookingOption"          value="${setting.bookingOption.useDefault('none').toString}" />
+<c:set var="kindOption"             value="${setting.kindOption.isSetNotNone ? setting.kindOption.useDefault('online').toString : null}" />
 <c:set var="showBtnOnlyForBooking"  value="${setting.showButtonOnlyForBooking.toBoolean}" />
 <c:set var="instancedate"           value="${param.instancedate}" />
 <c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />
@@ -56,6 +57,7 @@
             bookingContent="${content}"
             style="${bookingOption}"
             dateFormat="${setDateFormat}"
+            noDivWrapper="${true}"
         />
     </c:set>
     <c:set var="isBookable" value="${not empty bookingMarkup}" />
@@ -77,6 +79,24 @@
     </c:choose>
 </c:if>
 
+<c:if test="${not empty kindOption}">
+    <c:set var="eventKind"><mercury:event-kind content="${content}"/></c:set>
+    <c:set var="showEventKind" value="${kindOption eq 'all' ? true : (eventKind eq 'online' or eventKind eq 'mixed')}" />
+</c:if>
+
+<c:if test="${(not empty bookingMarkup) or showEventKind}">
+    <c:set var="labelMarkup">
+        <div class="book-info"><%----%>
+            <c:if test="${showEventKind}">
+                <span class="book-msg kind-msg kind-${eventKind}"><fmt:message key="msg.page.event.kind.${eventKind}" /></span><%----%>
+            </c:if>
+            <c:if test="${not empty bookingMarkup}">
+                ${bookingMarkup}
+            </c:if>
+        </div><%----%>
+    </c:set>
+</c:if>
+
 <c:set var="link"><cms:link baseUri="${pageUri}">${content.filename}?instancedate=${instancedate}</cms:link></c:set>
 <c:set var="intro"   value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
 <c:set var="title"   value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
@@ -92,7 +112,7 @@
     date="${date}"
     paraCaption="${paragraph.value.Caption}"
     paraText="${paragraph.value.Text}"
-    preTextMarkup="${bookingMarkup}"
+    preTextMarkup="${labelMarkup}"
     groupId="${groupId}"
     noLinkOnVisual="${setShowCalendar}"
     pieceLayout="${setPieceLayout}"

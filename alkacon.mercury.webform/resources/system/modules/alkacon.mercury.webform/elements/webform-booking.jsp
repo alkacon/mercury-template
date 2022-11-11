@@ -24,7 +24,7 @@
             <mercury:webform-booking-status
                 bookingContent="${bookingContent}"
                 style="${bookingOption}"
-                hideRegistrationClosed="${true}"
+                hideFullOrClosed="${true}"
             />
         </div><%----%>
     </c:if>

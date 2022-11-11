@@ -18,8 +18,8 @@
 <%@ attribute name="noDivWrapper" type="java.lang.Boolean" required="false"
     description="If 'true, the outer div wrapper is omitted from the returned markup." %>
 
-<%@ attribute name="hideRegistrationClosed" type="java.lang.Boolean" required="false"
-    description="If 'true, do not show the 'registration closed' message." %>
+<%@ attribute name="hideFullOrClosed" type="java.lang.Boolean" required="false"
+    description="If 'true, do not show the 'registration closed' or 'fully booked' messages." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -52,15 +52,19 @@
                 <%-- ###### Simple booking overview - places available / no places available only ###### --%>
                 <c:choose>
                     <c:when test="${status.fullyBooked}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.none" /></c:set>
+                        <c:if test="${not hideFullOrClosed}">
+                            <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.none" /></c:set>
+                        </c:if>
                     </c:when>
                     <c:when test="${formBookingHasFinalRegistrationDate and formBookingRegistrationClosed}">
-                        <c:if test="${not hideRegistrationClosed}">
+                        <c:if test="${not hideFullOrClosed}">
                             <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
                         </c:if>
                     </c:when>
                     <c:when test="${status.onlyWaitlist}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist" /></c:set>
+                        <c:if test="${not hideFullOrClosed}">
+                            <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist" /></c:set>
+                        </c:if>
                     </c:when>
                     <c:otherwise>
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places" /></c:set>
@@ -71,7 +75,7 @@
                 <%-- ###### Final registration date overview - shown only if not fully booked ###### --%>
                 <c:choose>
                     <c:when test="${formBookingRegistrationClosed}">
-                        <c:if test="${not hideRegistrationClosed}">
+                        <c:if test="${not hideFullOrClosed}">
                             <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
                         </c:if>
                     </c:when>
@@ -88,7 +92,7 @@
                 <%-- ###### More details booking overview - more then / less then X places available ###### --%>
                 <c:choose>
                     <c:when test="${formBookingHasFinalRegistrationDate and formBookingRegistrationClosed and not status.fullyBooked}">
-                        <c:if test="${not hideRegistrationClosed}">
+                        <c:if test="${not hideFullOrClosed}">
                             <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
                         </c:if>
                     </c:when>
@@ -110,23 +114,15 @@
                             <fmt:param>5</fmt:param>
                         </fmt:message></c:set>
                     </c:when>
-                    <c:when test="${numRemainingWaitlistSubmissions >= 10}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist.morethan">
-                            <fmt:param>10</fmt:param>
-                        </fmt:message></c:set>
-                    </c:when>
-                    <c:when test="${numRemainingWaitlistSubmissions >= 5}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist.morethan">
-                            <fmt:param>5</fmt:param>
-                        </fmt:message></c:set>
-                    </c:when>
-                    <c:when test="${numRemainingWaitlistSubmissions > 0}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist.lessthan">
-                            <fmt:param>5</fmt:param>
-                        </fmt:message></c:set>
+                    <c:when test="${status.onlyWaitlist}">
+                        <c:if test="${not hideFullOrClosed}">
+                            <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist" /></c:set>
+                        </c:if>
                     </c:when>
                     <c:otherwise>
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.none" /></c:set>
+                        <c:if test="${not hideFullOrClosed}">
+                            <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.none" /></c:set>
+                        </c:if>
                     </c:otherwise>
                 </c:choose>
             </c:otherwise>

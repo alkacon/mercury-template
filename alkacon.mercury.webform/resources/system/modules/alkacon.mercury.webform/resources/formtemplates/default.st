@@ -493,16 +493,16 @@ $confirmfields:{$!
 
 fullybooked(headline,text) ::= <<
 $! ###### FULLYBOOKED page hint of the form ###### !$
-<div class="oct-alert oct-alert-warning">
-$!  !$<h3 class="webform_fullybooked_headline">$headline$</h3>
-$!  !$<p class="webform_fullybooked_text">$text$</p>
+<div class="online-warn">
+$!  !$<div class="webform_fullybooked_headline warn-head h2">$headline$</div>
+$!  !$<div class="webform_fullybooked_text warn-text">$text$</div>
 </div>
 >>
 
 waitlist_notification(message) ::= <<
 $! ###### wait list notification used by the FORM template ###### !$
-<div class="oct-alert oct-alert-warning">
-$!  !$$message$
+<div class="online-warn">
+$!  !$<div class="webform_fullybooked_headline warn-head h2">$message$</div>
 </div>
 >>
 

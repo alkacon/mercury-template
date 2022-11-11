@@ -363,6 +363,14 @@ $oct-edit-infos:
     overflow: hidden;
     padding: var(--#{$prefix}box-padding);
     border-radius: var(--#{$prefix}border-radius);
+
+    .warn-head {
+        margin-bottom: 0;
+
+        + .warn-text {
+            margin-top: var(--#{$prefix}headings-margin-bottom);
+        }
+    }
 }
 
 .presized .placeholder {

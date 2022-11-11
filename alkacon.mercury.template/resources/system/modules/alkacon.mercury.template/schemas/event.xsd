@@ -62,7 +62,7 @@
             <searchsettings containerPageOnly="false">
                 <searchsetting element="Type">
                     <solrfield targetfield="event-type" sourcefield="*_s" />
-                    <solrfield targetfield="event-kind" sourcefield="*_s">
+                    <solrfield targetfield="event-kind" sourcefield="*_mvs">
                         <mapping type="dynamic" class="alkacon.mercury.template.CmsMacroSearchFieldMapping">%(stringtemplate:eventKind)</mapping>
                     </solrfield>
                 </searchsetting>
@@ -86,9 +86,9 @@
                     !%%if (content.value.("Type").isSet)%, %content.value.("Type")%%endif%%!
                 !%]]></param>
                 <param name="eventKind"><![CDATA[%!
-                    !%%if (content.value.("VirtualLocation").isSet && content.value.("AddressChoice").isSet)%%!
+                    !%%if (content.value.("VirtualLocation").isSet && content.value.("VirtualLocation").value.("URI").isSet && content.value.("AddressChoice").isSet)%%!
                         !%mixed%!
-                    !%%elseif (content.value.("VirtualLocation").isSet)%%!
+                    !%%elseif (content.value.("VirtualLocation").isSet && content.value.("VirtualLocation").value.("URI").isSet)%%!
                         !%online%!
                     !%%else%%!
                         !%presence%!

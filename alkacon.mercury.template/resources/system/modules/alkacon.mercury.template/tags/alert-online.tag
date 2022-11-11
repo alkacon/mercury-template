@@ -39,10 +39,10 @@ ${addNoscriptTags ? '<noscript>' : ''}
         </cms:bundle>
     </c:if>
     <c:if test="${not empty head}">
-        <div class="head"><jsp:invoke fragment="head" /></div><%----%>
+        <div class="warn-head h2"><jsp:invoke fragment="head" /></div><%----%>
     </c:if>
     <c:if test="${not empty text}">
-        <div class="text"><jsp:invoke fragment="text" /></div><%----%>
+        <div class="warn-text"><jsp:invoke fragment="text" /></div><%----%>
     </c:if>
 </div><%----%>
 

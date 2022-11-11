@@ -18,6 +18,9 @@
 <%@ attribute name="noDivWrapper" type="java.lang.Boolean" required="false"
     description="If 'true, the outer div wrapper is omitted from the returned markup." %>
 
+<%@ attribute name="hideRegistrationClosed" type="java.lang.Boolean" required="false"
+    description="If 'true, do not show the 'registration closed' message." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -52,7 +55,9 @@
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.none" /></c:set>
                     </c:when>
                     <c:when test="${formBookingHasFinalRegistrationDate and formBookingRegistrationClosed}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                        <c:if test="${not hideRegistrationClosed}">
+                            <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                        </c:if>
                     </c:when>
                     <c:when test="${status.onlyWaitlist}">
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places.waitlist" /></c:set>
@@ -66,7 +71,9 @@
                 <%-- ###### Final registration date overview - shown only if not fully booked ###### --%>
                 <c:choose>
                     <c:when test="${formBookingRegistrationClosed}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                        <c:if test="${not hideRegistrationClosed}">
+                            <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                        </c:if>
                     </c:when>
                     <c:otherwise>
                         <c:set var="bookMsg">
@@ -81,7 +88,9 @@
                 <%-- ###### More details booking overview - more then / less then X places available ###### --%>
                 <c:choose>
                     <c:when test="${formBookingHasFinalRegistrationDate and formBookingRegistrationClosed and not status.fullyBooked}">
-                        <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                        <c:if test="${not hideRegistrationClosed}">
+                            <c:set var="bookMsg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></c:set>
+                        </c:if>
                     </c:when>
                     <c:when test="${empty numRemainingSubmissions}">
                         <c:set var="bookMsg"><fmt:message key="msg.page.form.remaining.places" /></c:set>
@@ -124,7 +133,9 @@
         </c:choose>
 
         <mercury:div css="book-info" test="${not noDivWrapper}">
-            <span class="book-msg">${bookMsg}</span><%----%>
+            <c:if test="${not empty bookMsg}">
+                <span class="book-msg">${bookMsg}</span><%----%>
+            </c:if>
             <c:if test="${cms.isEditMode and form.userCanManage}">
                 <span class="oct-meta-info"><%----%>
                     <fmt:message key="msg.page.form.submissions.overview">

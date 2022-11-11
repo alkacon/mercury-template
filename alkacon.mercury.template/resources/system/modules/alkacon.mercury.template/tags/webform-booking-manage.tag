@@ -69,6 +69,14 @@
                 </c:choose>
            </td><%----%>
         </tr><%----%>
+
+        <c:if test="${formBookingHasFinalRegistrationDate}">
+            <tr><%----%>
+               <td><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline"/>:</td><%----%>
+               <td>${formBookingFinalRegistrationDateStr}</td><%----%>
+            </tr><%----%>
+        </c:if>
+
         <tr><%----%>
            <td><fmt:message key="msg.page.form.bookingstatus.places.label"/>:</td><%----%>
            <td><%----%>
@@ -124,7 +132,6 @@
         </td><%----%>
         </tr><%----%>
         </table><%----%>
-        <mercury:nl />
 
         <c:if test="${not empty form.submissions}">
 

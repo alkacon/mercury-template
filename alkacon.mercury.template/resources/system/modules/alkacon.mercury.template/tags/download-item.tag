@@ -27,7 +27,7 @@
     description="The description of the download resource.
     Not required in case a CmsResource is provided - in this case the information can be read from the resource properties." %>
 
-<%@ attribute name="resCoypright" type="java.lang.String" required="false"
+<%@ attribute name="resCopyright" type="java.lang.String" required="false"
     description="The copyright of the download resource.
     Not required in case a CmsResource is provided - in this case the information can be read from the resource properties." %>
 

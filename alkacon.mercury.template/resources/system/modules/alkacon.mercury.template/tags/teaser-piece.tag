@@ -145,7 +145,7 @@
 </c:choose>
 <c:set var="sizeDesktop"        value="${not empty sizeDesktop ? sizeDesktop : (((pieceLayout > 1) and (pieceLayout != 10)) ? 4 : 12)}" />
 <c:set var="buttonText"         value="${buttonText eq '-' ? null : buttonText}" /><%-- Allows to have a "none" default but still use the value from the content by setting '-' as button text. --%>
-<c:set var="showButton"         value="${buttonText ne 'none'}" />
+<c:set var="showButton"         value="${(buttonText ne 'none') and (linkOption ne 'none')}" />
 <c:set var="addButtonDiv"       value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
 <c:set var="dateOnTop"          value="${empty dateOnTop ? false : dateOnTop}" />
 

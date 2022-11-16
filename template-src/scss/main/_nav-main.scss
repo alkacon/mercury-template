@@ -89,7 +89,7 @@
                             display: inline-block;
                             font-family: ForkAwesome;
                             font-weight: normal;
-                            content: "\f107";
+                            content: "\f107"; // fa-angle-down
                             font-size: round($nav-font-size * 1.75);
                             right: $nav-mobile-box-right;
                             transform: rotate(0);
@@ -857,7 +857,7 @@
                     font-family: ForkAwesome;
                     right: round(($nav-menu-hor-padding - 2px) * 0.5);
                     font-size: $nav-font-size;
-                    content: "\f105"; // right arrow for default large screens
+                    content: "\f105"; // fa-angle-right - right arrow for default large screens
                     font-weight: normal;
                 }
 

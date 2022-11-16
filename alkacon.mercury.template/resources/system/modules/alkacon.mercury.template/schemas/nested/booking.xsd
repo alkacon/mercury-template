@@ -86,7 +86,7 @@
                     <PropertyName>FinalRegistrationDate</PropertyName>
                     <DisplayName>%(key.label.Booking.FinalRegistrationDate)</DisplayName>
                     <Widget>datetime</Widget>
-                    <WidgetConfig>{fixedTime: "25:59"}</WidgetConfig>
+                    <WidgetConfig>{fixedTime: "23:59"}</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>KeepDays</PropertyName>

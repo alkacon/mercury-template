@@ -85,23 +85,23 @@
             }
 
             .date::before {
-                content: "\f133";
+                content: "\f133"; // fa-calendar-o
             }
 
             .person::before {
-                content: "\f2c0";
+                content: "\f2c0"; // fa-user-o (ForkAwesome only)
             }
 
             .location::before {
-                content: "\f041";
+                content: "\f041"; // fa-map-marker
             }
 
             .images::before {
-                content: "\f03e";
+                content: "\f03e"; // fa-picture-o
             }
 
             .type::before {
-                content: "\f05a";
+                content: "\f05a"; // fa-info-circle
             }
         }
 

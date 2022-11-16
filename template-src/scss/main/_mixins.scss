@@ -505,7 +505,7 @@
 
     &::before {
         font-family: ForkAwesome;
-        content: "\f02b";
+        content: "\f02b"; // fa-tag
         padding-right: var(--#{$prefix}default-margin-verysmall);
     }
     @if ($add-box) {

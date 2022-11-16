@@ -32,7 +32,8 @@
         <c:forEach var="linkPart" items="${linkParts}">
             <c:choose>
                 <c:when test="${fn:startsWith(linkPart, 'icon:')}">
-                    <c:set var="linkIcon"><span class="ls-icon fa fa-${fn:substringAfter(linkPart, 'icon:')}"></span></c:set>
+                    <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon:')}" />
+                    <c:set var="linkIcon"><mercury:icon-select iconName="${iconClass}" tagName="span" cssWrapper="ls-icon" /></c:set>
                 </c:when>
                 <c:when test="${fn:startsWith(linkPart, 'id:')}">
                     <c:set var="linkAttr">id="${fn:substringAfter(linkPart, 'id:')}"</c:set>
@@ -53,7 +54,8 @@
         </c:if>
     </c:when>
     <c:when test="${fn:startsWith(linkText, 'icon:')}">
-        <c:set var="linkIcon"><span class="ls-icon fa fa-${fn:substringAfter(linkText, 'icon:')}"></span></c:set>
+        <c:set var="iconClass" value="${fn:substringAfter(linkText, 'icon:')}" />
+        <c:set var="linkIcon"><mercury:icon-select iconName="${iconClass}" tagName="span" cssWrapper="ls-icon" /></c:set>
     </c:when>
     <c:otherwise>
          <c:set var="linkMessage" value="${linkText}" />

@@ -5,8 +5,8 @@
     <Title><![CDATA[Article Teaser vs. Detail - Comparison of the output]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>The<em> Article</em> element is displayed in lists as well as on detail pages. </p>
-<p>This page demonstrates the similarity of the output from the <em>Elaborate article teaser</em> and the <em>Article detail view</em> formatters. For most of the elements on this page, the content as well as the element settings are set so that the result is almost identical. Normally the output would be quite different, as displayed in first two elements shown. </p>
+      <content><![CDATA[<p>The<em> Article</em> element is displayed in lists as well as on detail pages.</p>
+<p>This page demonstrates the similarity of the output from the <em>Elaborate article teaser</em> and the <em>Article detail view</em> formatters. For most of the elements on this page, the content as well as the element settings are set so that the result is almost identical. Normally the output would be quite different, as displayed in first two elements shown.</p>
 <p>The detail view formatter also uses a more generous spacing after the heading and the image.</p>]]></content>
     </Text>
     <Image>

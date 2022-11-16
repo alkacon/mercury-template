@@ -931,6 +931,10 @@
       <Value/>
     </Attribute>
     <Attribute>
+      <Key><![CDATA[mercuryIconFontConfig]]></Key>
+      <Value><![CDATA[awesomeFullAndBootstrap]]></Value>
+    </Attribute>
+    <Attribute>
       <Key><![CDATA[selectOrCombo]]></Key>
       <Value><![CDATA[selectcombo]]></Value>
     </Attribute>

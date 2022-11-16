@@ -51,14 +51,11 @@
 <c:choose>
     <c:when test="${empty cms.plugins['custom-css']}">
         <%-- Use default CSS configuration --%>
-        <%-- Common CSS and theme CSS --%>
-        <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
-        <link href="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/css/base.min.css:bf8f6ace-feab-11e8-aee0-0242ac11002b)'/>" rel="stylesheet"><%----%>
-        <mercury:nl />
-        <link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
-        <mercury:nl />
-        <%-- Preload Fork Awesome --%>
-        <link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/</cms:link>forkawesome-webfont.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin>
+        <mercury:load-icons>
+            <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
+            <link href="<mercury:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
+            <mercury:nl />
+        </mercury:load-icons>
     </c:when>
     <c:otherwise>
         <%-- Use custom CSS plugin --%>

@@ -75,7 +75,7 @@
                     --%>alt="%(titleAttr)"<%--
                     --%>class="lazyload"><%--
                 --%><span class="zoom-icon"><%--
-                    --%><span class="fa fa-search"></span><%--
+                    --%><mercury:icon-select iconName="search" tagName="span" useCase="imageseries-zoom" /></span><%--
                --%></span><%--
             --%></span><%--
             --%><c:if test="${showImageListCopyright}"><%--
@@ -199,7 +199,9 @@
             <div class="images clearfix"></div><%----%>
 
             <div class="spinner"><%----%>
-                <div class="spinnerInnerBox"><i class="fa fa-spinner"></i></div><%----%>
+                <div class="spinnerInnerBox"><%----%>
+                    <mercury:icon-select iconName="spinner" tagName="i" cssWrapper="spinner-icon" useCase="imageseries-spinner" />
+                </div><%----%>
             </div><%----%>
 
             <button class="btn btn-append more blur-focus"><%----%>

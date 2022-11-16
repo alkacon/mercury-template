@@ -140,6 +140,10 @@
     }
 }
 
+.sr-only {
+    @extend .visually-hidden;
+}
+
 /* Required from BS4 type.scss which we did not include */
 
 small,

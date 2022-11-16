@@ -110,7 +110,7 @@
                 input + i::after {
                     position: absolute;
                     opacity: 0;
-                    content: '\f00c';
+                    content: "\f00c"; // fa-check
                     top: -4px;
                     left: -1px;
                     font-size: 23px;
@@ -544,7 +544,7 @@
                     color: $form-radio-checked-color;
                     position: absolute;
                     z-index: 10;
-                    content: '\f00c';
+                    content: '\f00c'; // fa-check
                     top: -5px;
                     left: -1px;
                     font-size: 23px;

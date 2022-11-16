@@ -29,7 +29,7 @@
     // see https://css-tricks.com/making-sass-talk-to-javascript-with-json/
     &::before {
         display: none;
-        content: '{#{$themeJSON}}';
+        content: "{#{$themeJSON}}";
     }
 }
 
@@ -37,31 +37,31 @@
 
     &::before {
         display: none;
-        content: 'xs';
+        content: "xs";
     }
     @include media-breakpoint-up(sm) {
         &::before {
-            content: 'sm';
+            content: "sm";
         }
     }
     @include media-breakpoint-up(md) {
         &::before {
-            content: 'md';
+            content: "md";
         }
     }
     @include media-breakpoint-up(lg) {
         &::before {
-            content: 'lg';
+            content: "lg";
         }
     }
     @include media-breakpoint-up(xl) {
         &::before {
-            content: 'xl';
+            content: "xl";
         }
     }
     @include media-breakpoint-up(xxl) {
         &::before {
-            content: 'xxl';
+            content: "xxl";
         }
     }
 

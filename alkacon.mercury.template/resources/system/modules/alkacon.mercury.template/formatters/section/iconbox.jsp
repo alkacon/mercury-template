@@ -20,12 +20,12 @@
 
 <mercury:nl />
 <div class="element type-iconbox pivot${setCssWrapperAll}"><%----%>
-<mercury:nl />
 
     <mercury:link link="${value.Link}" setTitle="${true}" css="icon-link">
         <mercury:heading level="${hsize}" text="${value.Title}" css="icon-title" ade="${ade}" />
         <c:if test="${iconClass ne 'none'}">
-            <div class="icon-image fa fa-${iconClass}" aria-hidden="true" role="presentation"></div><%----%>
+            <mercury:icon-select iconName="${iconClass}" tagName="div" cssWrapper="icon-image" />
+            <mercury:nl />
         </c:if>
         <c:if test="${value.Text.isSet}">
             <div class="icon-text" ${ade ? content.rdfa.Text : ''}>${value.Text}</div><%----%>

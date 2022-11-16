@@ -130,7 +130,7 @@
 
             &::before {
                 display: block;
-                content: '';
+                content: "";
                 position: absolute;
                 top: 0;
                 left: calc(0.5 * (100% - var(--#{$prefix}cs-bar-width)));

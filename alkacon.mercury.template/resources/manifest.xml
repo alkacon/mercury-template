@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.37</version>
+		<version>14.0.41</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7702,6 +7702,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/icon-select.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/icon-select.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>77e81bd5-672e-11ed-892e-0242ac11002b</uuidstructure>
+			<uuidresource>77e81bd6-672e-11ed-892e-0242ac11002b</uuidresource>
+			<datecreated>Fri, 18 Nov 2022 10:47:59 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Selects and renders an icon from different icon sets]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/idgen.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/idgen.tag</destination>
 			<type>jsp</type>
@@ -8275,6 +8292,23 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/load-icons.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/load-icons.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>836c0dd7-65a1-11ed-892e-0242ac11002b</uuidstructure>
+			<uuidresource>836c0dd8-65a1-11ed-892e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 16 Nov 2022 11:26:28 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Loads icon fonts]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -313,6 +313,7 @@ html.keyboard-nav .piece {
 
     .piece {
 
+        &.full.only-visual,
         &.phv {
             // required for floating layouts, for example the detail page key visual
             // this makes sure a piece with an image will NOT float around a previous key visual image aligned left or right

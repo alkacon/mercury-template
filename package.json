@@ -59,7 +59,10 @@
   "scripts": {
     "dist": "npm-run-all css js",
     "css": "npm run --silent cssg:all --xsrcdir=template-src/scss/themes --xbuilddir=build/npm --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
-    "cssg:all": "npm-run-all cssg:clean cssg:sass cssg:plugins cssg:postcss cssg:minify cssg:deploy",
+    "cssi:icons-awesomeFull":    "sass --source-map --embed-sources --stop-on-error template-src/fork-awesome/scss-full/fork-awesome.scss $npm_config_xbuilddir/1_processed/fork-awesome-full.css",
+    "cssi:icons-awesomeReduced": "sass --source-map --embed-sources --stop-on-error template-src/fork-awesome/scss-reduced/fork-awesome.scss $npm_config_xbuilddir/1_processed/fork-awesome-reduced.css",
+    "cssi:icons-bootstrap":      "sass --source-map --embed-sources --stop-on-error template-src/bootstrap5-icons/font/bootstrap-icons.scss $npm_config_xbuilddir/1_processed/bootstrap-icons.css",
+    "cssg:all": "npm-run-all cssg:clean cssg:sass cssi:* cssg:postcss cssg:minify cssg:deploy",
     "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $npm_config_xbuilddir/1_processed/base.css template-src/fork-awesome/css/fork-awesome.css",
     "cssg:clean": "del-cli $npm_config_xbuilddir/1_processed/* $npm_config_xbuilddir/2_postcssed/* $npm_config_xbuilddir/3_minified/*",
     "cssg:sass": "sass --source-map --embed-sources --stop-on-error $npm_config_xsrcdir:$npm_config_xbuilddir/1_processed",

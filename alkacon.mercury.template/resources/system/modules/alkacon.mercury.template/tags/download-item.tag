@@ -126,7 +126,7 @@
         <c:when test="${resSuffix eq 'TXT'}">
             <c:set var="icon">fa-file-text-o</c:set>
         </c:when>
-        <c:when test="${fn:startsWith(mimeType, 'image')}">
+        <c:when test="${fn:startsWith(mimeType, 'image') or resSuffix eq 'AI' or resSuffix eq 'EPS'}">
             <c:set var="icon">fa-file-image-o</c:set>
         </c:when>
         <c:when test="${fn:startsWith(mimeType, 'video')}">

@@ -102,7 +102,7 @@
         border-top: $form-border;
     }
     footer:after {
-        content: '';
+        content: "";
         display: table;
         clear: both;
     }
@@ -231,7 +231,7 @@
 
             &::before,
             &::after {
-                content: '';
+                content: "";
                 position: absolute;
                 right: 10px;
                 border-right: 5px solid transparent;
@@ -325,7 +325,7 @@
             border-radius: 50%;
         }
         input + i::after {
-            content: '';
+            content: "";
             top: 4px;
             left: 4px;
             width: 10px;
@@ -336,7 +336,7 @@
 
     .checkbox {
         input + i::after {
-            content: '\f00c';
+            content: "\f00c"; // fa-check
             top: -5px;
             left: -1px;
             font-size: 23px;
@@ -369,14 +369,14 @@
                 background-color: var(--#{$prefix}form-radio-checked-color);
             }
             &:checked + i::after {
-                content: 'ON';
+                content: "ON";
                 text-align: right;
                 color: var(--#{$prefix}form-radio-checked-color);
             }
         }
 
         i {
-            content: '';
+            content: "";
             position: absolute;
             top: 4px;
             right: 0;
@@ -389,7 +389,7 @@
             background-color: $form-input-background;
 
             &::before {
-                content: '';
+                content: "";
                 position: absolute;
                 z-index: 1;
                 top: 4px;
@@ -404,7 +404,7 @@
             }
 
             &::after {
-                content: 'OFF';
+                content: "OFF";
                 position: absolute;
                 top: 3px;
                 right: 8px;
@@ -527,7 +527,7 @@
             color: $form-error-text-color;
             &::before {
                 @include awesome-icons();
-                content: "\f071";
+                content: "\f071"; // fa-exclamation-triangle
                 margin-right: 10px;
             }
         }
@@ -625,7 +625,7 @@
             margin-bottom: calc(-1 * calc(0.25 * var(--#{$prefix}form-spacing)));
 
             &::after {
-                content: '';
+                content: "";
                 display: table;
                 clear: both;
             }

@@ -143,7 +143,7 @@
         &.placeholder {
             cursor: auto;
             &::after {
-                content: "\f04b";
+                content: "\f04b"; // fa-play
             }
         }
     }

@@ -28,7 +28,7 @@
         &.initial-load {
             opacity: 0.5;
             &::after {
-                content: ' ';
+                content: " ";
                 position: absolute;
                 z-index: 10;
                 display: block;
@@ -807,7 +807,7 @@
             }
 
             .btn.li-label:before {
-                content: "\f02c";
+                content: "\f02c"; // fa-tags
             }
 
             ul {
@@ -847,7 +847,7 @@
             padding: 0;
 
             .btn.li-label:before {
-                content: "\f115";
+                content: "\f115"; // fa-folder-open-o
             }
 
             .nav-side {
@@ -869,7 +869,7 @@
         &.archive {
 
             .btn.li-label:before {
-                content: "\f133";
+                content: "\f133"; // fa-calendar-o
             }
 
             button.year {
@@ -883,7 +883,7 @@
                 }
 
                 &::before {
-                    content: "\f133";
+                    content: "\f133"; // fa-calendar-o
                 }
                 &::after {
                     width: calc(#{$nav-handle-right-padding} - 2px);

@@ -29,6 +29,8 @@
 <c:set var="title"              value="${value.Title}" />
 <c:set var="image"              value="${value.Image}" />
 
+<mercury:list-badge var="badge" type="decoy" test="${cms.isEditMode}" />
+
 <c:if test="${showPreface}">
     <c:set var="preface"        value="${value.Preface}" />
     <c:set var="minHeight" value="min-height show-preface" />
@@ -101,7 +103,7 @@
 
         <div class="text-overlay"><%----%>
             <c:if test="${not empty dateStr}"><div class="teaser-date">${dateStr}</div></c:if>
-            <h2 class="title"><c:out value="${title}" /></h2><%----%>
+            <h2 class="title"><c:out value="${title}" />${badge}</h2><%----%>
             <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
         <c:if test="${showImageCopyright}"><div class="copyright">${copyright}</div></c:if>

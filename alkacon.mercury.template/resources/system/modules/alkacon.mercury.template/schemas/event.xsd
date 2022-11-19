@@ -62,8 +62,8 @@
             <searchsettings containerPageOnly="false">
                 <searchsetting element="Type">
                     <solrfield targetfield="event-type" sourcefield="*_s" />
-                    <solrfield targetfield="event-kind" sourcefield="*_s">
-                        <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:eventKind)</mapping>
+                    <solrfield targetfield="event-kind" sourcefield="*_mvs">
+                        <mapping type="dynamic" class="alkacon.mercury.template.CmsMacroSearchFieldMapping">%(stringtemplate:eventKind)</mapping>
                     </solrfield>
                 </searchsetting>
             </searchsettings>

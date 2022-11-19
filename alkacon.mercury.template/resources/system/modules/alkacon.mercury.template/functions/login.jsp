@@ -83,13 +83,13 @@
                 <fieldset><%----%>
                     <section><%----%>
                         <label class="input ${loginError ? 'state-error' : ''}"><%----%>
-                            <span class="icon-prepend fa fa-user"></span><%----%>
+                            <mercury:icon-display icon="user" tag="span" cssWrapper="icon-prepend" use="login" />
                             <input type="text" id="loginName" name="loginName" placeholder="<fmt:message key="msg.page.login.username" />"/><%----%>
                         </label><%----%>
                     </section><%----%>
                     <section><%----%>
                         <label class="input ${loginError ? 'state-error' : ''}"><%----%>
-                            <span class="icon-prepend fa fa-lock"></span><%----%>
+                            <mercury:icon-display icon="lock" tag="span" cssWrapper="icon-prepend" use="login" />
                             <input type="password" id="loginPassword" name="loginPassword" placeholder="<fmt:message key="msg.page.login.password" />"/><%----%>
                         </label><%----%>
                         <c:if test="${loginError}">
@@ -110,7 +110,7 @@
                     <section><%----%>
                         <label for="loginName" class="label"><fmt:message key="msg.page.login.loggedin" />:</label><%----%>
                         <div class="input"><%----%>
-                            <span class="icon-prepend fa fa-user"></span><%----%>
+                            <mercury:icon-display icon="user" tag="span" cssWrapper="icon-prepend" use="login" />
                             <input type="text" id="loginName" name="loginName" value="${cms.requestContext.currentUser.fullName}"/><%----%>
                         </div><%----%>
                     </section><%----%>

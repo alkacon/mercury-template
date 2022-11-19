@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.41</version>
+		<version>14.0.46</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7681,6 +7681,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/icon-display.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/icon-display.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>77e81bd5-672e-11ed-892e-0242ac11002b</uuidstructure>
+			<uuidresource>77e81bd6-672e-11ed-892e-0242ac11002b</uuidresource>
+			<datecreated>Fri, 18 Nov 2022 10:47:59 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays icons from different icon sets]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/icon-prefix.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/icon-prefix.tag</destination>
 			<type>jsp</type>
@@ -7696,23 +7713,6 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/tags/icon-select.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/icon-select.tag</destination>
-			<type>jsp</type>
-			<uuidstructure>77e81bd5-672e-11ed-892e-0242ac11002b</uuidstructure>
-			<uuidresource>77e81bd6-672e-11ed-892e-0242ac11002b</uuidresource>
-			<datecreated>Fri, 18 Nov 2022 10:47:59 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Selects and renders an icon from different icon sets]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8080,6 +8080,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays a HTML href link]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/list-badge.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/list-badge.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>32fc8277-67ee-11ed-892e-0242ac11002b</uuidstructure>
+			<uuidresource>32fc8278-67ee-11ed-892e-0242ac11002b</uuidresource>
+			<datecreated>Sat, 19 Nov 2022 09:40:27 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays a list badge]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -27,16 +27,7 @@
 <c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />
 <c:set var="date"                   value="${seriesInfo.instanceInfo.get(instancedate)}" />
 
-<c:if test="${cms.isEditMode}">
-    <c:choose>
-        <c:when test="${seriesInfo.isSeries}">
-            <c:set var="badge"><wbr><span class="list-badge oct-meta-info" title="<fmt:message key="msg.page.dateseries.series"><fmt:param>${seriesInfo.title}</fmt:param></fmt:message>"><span class="fa fa-refresh"></span></span></c:set>
-        </c:when>
-        <c:when test="${seriesInfo.isExtractedDate}">
-            <c:set var="badge"><wbr><span class="list-badge oct-meta-info" title="<fmt:message key="msg.page.dateseries.extracted"><fmt:param>${seriesInfo.parentSeries.title}</fmt:param></fmt:message>"><span class="fa fa-scissors"></span></span></c:set>
-        </c:when>
-    </c:choose>
-</c:if>
+<mercury:list-badge var="badge" seriesInfo="${seriesInfo}" test="${cms.isEditMode}" />
 
 <c:if test="${setShowCalendar}">
     <c:set var="groupId">event-<fmt:formatDate value='${date.start}' pattern='d-MM-yyyy' type='date' /></c:set>

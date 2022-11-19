@@ -29,12 +29,7 @@
     <c:set var="title"      value="${value.Title}" />
     <c:set var="preface"    value="${value.Preface}" />
 
-    <c:if test="${cms.isEditMode}">
-        <fmt:setLocale value="${cms.locale}" />
-        <cms:bundle basename="alkacon.mercury.template.messages">
-            <c:set var="badge"><wbr><span class="list-badge oct-meta-info" title="<fmt:message key="type.m-decoy.name" />"><span class="fa fa-external-link-square"></span></span></c:set>
-        </cms:bundle>
-    </c:if>
+    <mercury:list-badge var="badge" type="decoy" test="${cms.isEditMode}" />
 
     <mercury:teaser-piece
         cssWrapper="type-decoy${setCssWrapper}${setEffect}${invalidDecoy ? ' disabled' : ''}"

@@ -76,7 +76,7 @@
                     <c:if test="${cms.isEditMode}">
                         <a href="#${itemId}" class="hash-link"><%----%>
                             <span class="badge oct-meta-info"><%----%>
-                                <span class="fa fa-hashtag"></span><%----%>
+                                <mercury:icon-display icon="hashtag" tag="span" use="tab-acco" />
                             </span><%----%>
                         </a><%----%>
                     </c:if>

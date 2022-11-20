@@ -44,7 +44,7 @@
                 --%><fmt:message key="msg.page.dateseries.series"><fmt:param>${seriesInfo.title}</fmt:param></fmt:message><%--
                 --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
                 --%>"><%----%>
-                    <mercury:icon-display icon="refresh" tag="span" use="list-badge" />
+                    <mercury:icon icon="refresh" tag="span" use="list-badge" />
                     ${empty markup ? '' : ' '.concat(markup)}
                 </span><%----%>
             </c:set>
@@ -56,7 +56,7 @@
                 --%><fmt:message key="msg.page.dateseries.extracted"><fmt:param>${seriesInfo.parentSeries.title}</fmt:param></fmt:message><%--
                 --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
                 --%>"><%----%>
-                    <mercury:icon-display icon="scissors" tag="span" use="list-badge" />
+                    <mercury:icon icon="scissors" tag="span" use="list-badge" />
                     ${empty markup ? '' : ' '.concat(markup)}
                 </span><%----%>
             </c:set>
@@ -68,7 +68,7 @@
                 --%><fmt:message key="type.m-decoy.name" /><%--
                 --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
                 --%>"><%----%>
-                     <mercury:icon-display icon="external-link-square" tag="span" use="list-badge" />
+                     <mercury:icon icon="external-link-square" tag="span" use="list-badge" />
                      ${empty markup ? '' : ' '.concat(markup)}
                 </span><%----%>
             </c:set>

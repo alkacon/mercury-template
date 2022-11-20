@@ -44,40 +44,40 @@
             <c:if test="${value.Facilities.value.WheelchairAccess.toBoolean}">
                 <div title="<fmt:message key='label.Facility.WheelchairAccess' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
-                        <mercury:icon-display icon="wheelchair" tag="span" use="poi" />
+                        <mercury:icon icon="wheelchair" tag="span" use="poi" />
                      </span><%----%>
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.HearingImpaired.toBoolean}">
                 <div title="<fmt:message key='label.Facility.HearingImpaired' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
-                        <mercury:icon-display icon="assistive-listening-systems" tag="span" use="poi" />
+                        <mercury:icon icon="assistive-listening-systems" tag="span" use="poi" />
                     </span><%----%>
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.LowVision.toBoolean}">
                 <div title="<fmt:message key='label.Facility.LowVision' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
-                        <mercury:icon-display icon="low-vision" tag="span" use="poi" />
+                        <mercury:icon icon="low-vision" tag="span" use="poi" />
                     </span><%----%>
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.PublicRestrooms.toBoolean}">
                 <div title="<fmt:message key='label.Facility.PublicRestrooms' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner"><%----%>
-                        <mercury:icon-display icon="male" tag="span" use="poi" />
-                        <mercury:icon-display icon="female" tag="span" use="poi" />
+                        <mercury:icon icon="male" tag="span" use="poi" />
+                        <mercury:icon icon="female" tag="span" use="poi" />
                     </span><%----%>
                 </div><%----%>
             </c:if>
             <c:if test="${value.Facilities.value.PublicRestroomsAccessible.toBoolean}">
                 <div title="<fmt:message key='label.Facility.PublicRestroomsAccessible' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
                     <span class="acc-inner acc-wc"><%----%>
-                        <mercury:icon-display icon="wheelchair" tag="span" use="poi" />
+                        <mercury:icon icon="wheelchair" tag="span" use="poi" />
                     </span><%----%>
                     <span class="acc-add acc-wc"><%----%>
-                        <mercury:icon-display icon="male" tag="span" use="poi" />
-                        <mercury:icon-display icon="female" tag="span" use="poi" />
+                        <mercury:icon icon="male" tag="span" use="poi" />
+                        <mercury:icon icon="female" tag="span" use="poi" />
                     </span><%----%>
                 </div><%----%>
             </c:if>

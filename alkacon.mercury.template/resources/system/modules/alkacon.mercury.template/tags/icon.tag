@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="icon-display"
+    display-name="icon"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Displays icons from different icon sets." %>

@@ -60,7 +60,7 @@
                                                     --%>/><%----%>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <mercury:icon-display icon="${navImage}" tag="i" use="breadcrumbs" />
+                                                    <mercury:icon icon="${navImage}" tag="i" use="breadcrumbs" />
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:set>

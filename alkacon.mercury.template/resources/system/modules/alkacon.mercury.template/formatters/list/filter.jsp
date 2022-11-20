@@ -118,7 +118,7 @@
                         <input type="hidden" name="${search.controller.common.config.reloadedParam}" /><%----%>
                         <label for="${fieldId}" class="input"><%----%>
                             <span class="sr-only"><c:out value="${searchLabel}" /></span><%----%>
-                            <mercury:icon-display icon="search" tag="span" cssWrapper="icon-prepend" use="list-filter" />
+                            <mercury:icon icon="search" tag="span" cssWrapper="icon-prepend" use="list-filter" />
                             <input <%--
                             --%>name="${search.controller.common.config.queryParam}" <%--
                             --%>id="${fieldId}" <%--

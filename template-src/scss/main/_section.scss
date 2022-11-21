@@ -99,6 +99,32 @@
 .type-linkbox {
     flex-grow: 1;
     @include text-tile(false);
+
+    > a {
+        &,
+        &:focus,
+        &:hover {
+            color: var(--#{$prefix}body-color);
+            text-decoration: none;
+        }
+        &:hover {
+            span.piece-text-link {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .linkbox-link,
+    .linkbox-content.piece.full,
+    .linkbox-content.piece.full .body {
+        display: flex;
+        flex-basis: auto;
+        flex-direction: column;
+        flex-grow: 100000;
+    }
+    .linkbox-content.piece.full .heading  {
+        flex-grow: 1;
+    }
 }
 
 // Image / text flip animation, see https://davidwalsh.name/css-flip#ieflip

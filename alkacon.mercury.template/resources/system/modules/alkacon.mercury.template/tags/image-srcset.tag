@@ -389,6 +389,7 @@ scaleGapStep: ${scaleGapStep}
 
 <c:choose>
     <c:when test="${isSvg}">
+        <c:set var="inlineSvg" value="${ib.resource.property['image.svg.inline']}" />
         <c:set var="srcurl"><cms:link>${ib.vfsUri}</cms:link></c:set>
         <c:set var="attrImage">role="img"<c:if test="${not empty attrImage}">${' '}${attrImage}</c:if></c:set>
     </c:when>
@@ -401,23 +402,43 @@ scaleGapStep: ${scaleGapStep}
     </c:otherwise>
 </c:choose>
 
-<mercury:image-lazyload
-    srcUrl="${srcurl}"
-    srcSet="${srcset}"
-    srcSetSizes="${srcSetSizes}"
-    width="${ib.scaler.width}"
-    height="${ib.scaler.height}"
-    heightPercentage="${ib.ratioHeightPercentage}"
-    lazyLoad="${useLazyLoading}"
-    noScript="${useNoScript}"
-    alt="${alt}"
-    title="${title}"
-    copyright="${copyright}"
-    cssImage="${cssImage}"
-    cssWrapper="${cssWrapper}"
-    attrImage="${attrImage}"
-    attrWrapper="${attrWrapper}"
-    zoomData="${zoomData}"
-/>
+<c:choose>
+    <c:when test="${not empty inlineSvg}">
+        <c:set var="cssImage" value="${empty cssImage ? '' : cssImage.concat(' ').concat(inlineSvg)}" />
+        <mercury:image-svg-inline
+            imagebean="${ib}"
+            width="${ib.scaler.width}"
+            height="${ib.scaler.height}"
+            heightPercentage="${ib.ratioHeightPercentage}"
+            title="${title}"
+            copyright="${copyright}"
+            cssImage="${cssImage}"
+            cssWrapper="${cssWrapper}"
+            attrImage="${attrImage}"
+            attrWrapper="${attrWrapper}"
+            zoomData="${zoomData}"
+        />
+    </c:when>
+    <c:otherwise>
+        <mercury:image-lazyload
+            srcUrl="${srcurl}"
+            srcSet="${srcset}"
+            srcSetSizes="${srcSetSizes}"
+            width="${ib.scaler.width}"
+            height="${ib.scaler.height}"
+            heightPercentage="${ib.ratioHeightPercentage}"
+            lazyLoad="${useLazyLoading}"
+            noScript="${useNoScript}"
+            alt="${alt}"
+            title="${title}"
+            copyright="${copyright}"
+            cssImage="${cssImage}"
+            cssWrapper="${cssWrapper}"
+            attrImage="${attrImage}"
+            attrWrapper="${attrWrapper}"
+            zoomData="${zoomData}"
+        />
+    </c:otherwise>
+</c:choose>
 
 </mercury:list-element-status>

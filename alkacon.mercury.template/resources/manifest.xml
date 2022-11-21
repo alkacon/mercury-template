@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.48</version>
+		<version>14.0.49</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7848,6 +7848,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Generates source set data for an image]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/image-svg-inline.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/image-svg-inline.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>7a4a55dd-699c-11ed-8f66-0242ac11002b</uuidstructure>
+			<uuidresource>7a4a55de-699c-11ed-8f66-0242ac11002b</uuidresource>
+			<datecreated>Mon, 21 Nov 2022 13:00:30 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Inlines an SVG image]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

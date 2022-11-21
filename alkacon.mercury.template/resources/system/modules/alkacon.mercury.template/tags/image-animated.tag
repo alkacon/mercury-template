@@ -128,7 +128,7 @@
             alt="${empty alt ? imageTitle : alt}"
             title="${setTitle ? (showCopyright ? imageTitle : imageTitleCopyright) : null}"
             copyright="${showCopyright ? imageCopyrightHtml : null}"
-            cssImage="${empty effectWrapper ? '' : 'animated '}${cssImage}"
+            cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
             cssWrapper="${showImageZoom ? 'zoomer' : ''}"
             attrImage="${attrImage}"
             attrWrapper="${imageDndAttr}"

@@ -39,7 +39,7 @@
     description="'title' atttribute to set on the generated img tag." %>
 
 <%@ attribute name="copyright" type="java.lang.String" required="false"
-    description="Copyright infotmation to display as an image overlay.
+    description="Copyright information to display as an image overlay.
     If this is emtpy, no copyright overlay will be displayed." %>
 
 <%@ attribute name="cssImage" type="java.lang.String" required="false"
@@ -106,7 +106,7 @@
 
 <mercury:nl />
 <mercury:padding-box
-    cssWrapper="image-src-box ${cssWrapper}"
+    cssWrapper="image-src-box${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
     width="${width}"
@@ -115,7 +115,7 @@
     <img ${attributes}<%----%>
         <c:if test="${not empty width}">${' '}width="${width}"</c:if>
         <c:if test="${not empty height}">${' '}height="${height}"</c:if>
-        <c:if test="${not empty cssImage or not empty cssImageLazy}">${' '}class="${cssImage}${' '}${cssImageLazy}"</c:if>
+        <c:if test="${not empty cssImage or not empty cssImageLazy}">${' '}class="${cssImage}${empty cssImage or empty cssImageLazy ? '' : ' '}${cssImageLazy}"</c:if>
         <c:if test="${true}">${' '}alt="${alt}"</c:if><%-- Always provide an alt, even if it's empty --%>
         <c:if test="${not empty title and (title ne alt)}">${' '}title="${title}"</c:if>
         <c:if test="${not empty attrImage}">${' '}${attrImage}</c:if>

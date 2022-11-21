@@ -64,7 +64,8 @@ aside img {
 .image-src-box {
     width: 100%;
 
-    img {
+    img,
+    .img {
         width: 100%;
     }
 
@@ -74,7 +75,8 @@ aside img {
         display: block;
         // padding-bottom is calculated according to ratio and rendered as inline style in HTML
 
-        img {
+        img,
+        .img {
             position: absolute;
             top: 0;
             left: 0;
@@ -85,5 +87,21 @@ aside img {
             position: absolute;
             @include image-copyright;
         }
+    }
+}
+
+// Inline SVG images
+.svg-inline.img {
+     > svg {
+        width: 100%;
+        height: auto;
+    }
+
+    &.fill-body-color > svg {
+        fill: var(--#{$prefix}body-color);
+    }
+
+    &.fill-theme-color > svg {
+        fill: var(--#{$prefix}main-theme);
     }
 }

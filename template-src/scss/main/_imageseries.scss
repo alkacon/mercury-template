@@ -249,7 +249,8 @@ a:focus .zoom-overlay .zoom-icon,
 a {
     .effect-box {
         .zoomer {
-            img {
+            img,
+            .img {
                 cursor: pointer;
             }
         }

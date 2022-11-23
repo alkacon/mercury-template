@@ -28,6 +28,7 @@ import alkacon.mercury.webform.captcha.CmsCaptchaStore;
 import alkacon.mercury.webform.captcha.CmsCaptchaToken;
 
 import org.opencms.flex.CmsFlexController;
+import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.json.JSONException;
 import org.opencms.jsp.CmsJspActionElement;
@@ -136,6 +137,7 @@ public class CmsCaptchaField extends A_CmsField {
                 tokenId = UUID.randomUUID().toString();
                 LOG.debug(tokenId + ": Created a new random token ID.");
             }
+            tokenId = CmsEncoder.escapeXml(tokenId);
             String hiddenInput = "<input type=\"hidden\" id=\""
                 + C_PARAM_CAPTCHA_TOKEN_ID
                 + "\" name=\""

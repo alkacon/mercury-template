@@ -1508,6 +1508,7 @@ public class CmsFormHandler extends CmsJspActionElement {
                 if (tokenId.isEmpty()) {
                     tokenId = UUID.randomUUID().toString();
                 }
+                tokenId = CmsEncoder.escapeXml(tokenId);
                 if (captchaField.getCaptchaSettings().isMathField()) {
                     TextCaptchaService service = (TextCaptchaService)CmsCaptchaServiceCache.getSharedInstance().getCaptchaService(
                         captchaField.getCaptchaSettings(),

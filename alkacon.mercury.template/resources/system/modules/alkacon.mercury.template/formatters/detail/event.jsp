@@ -56,7 +56,8 @@
 <c:set var="type"                   value="${value.Type}" />
 <c:set var="performer"              value="${value.Performer}" />
 
-<c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet)}" />
+<c:set var="hasVirtualLocation"     value="${value.VirtualLocation.value.URI.isSet}" />
+<c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet or hasVirtualLocation)}" />
 <c:set var="showType"               value="${type.isSet}" />
 <c:set var="showPerformer"          value="${performerOption ne 'none'}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
@@ -154,7 +155,7 @@
                         <div class="info location"><%----%>
                             <span class="sr-only"><fmt:message key="msg.page.sr.location" /></span><%----%>
                             <div class="locdata"><%----%>
-                                <c:if test="${value.VirtualLocation.isSet}">
+                                <c:if test="${hasVirtualLocation}">
                                      <div class="onlineInfo"><%----%>
                                         <mercury:link link="${value.VirtualLocation}" text="${value.VirtualLocation.value.URI.isSet ? value.VirtualLocation.value.URI.toLink : ''}" noExternalMarker="${true}" />
                                      </div><%----%>

@@ -14,7 +14,7 @@
     description="An fragment that is appended to the generated link, provided the link does not contain a fragment already." %>
 
 <%@ attribute name="text" type="java.lang.String" required="false"
-    description="Text shown in the link ONLY if body of tag is empty.
+    description="Text shown in the link ONLY if body of tag is empty and no text is set in the provided XML content node.
     Defaults to the 'Text' value of the provided XML content node if not set." %>
 
 <%@ attribute name="forceText" type="java.lang.String" required="false"

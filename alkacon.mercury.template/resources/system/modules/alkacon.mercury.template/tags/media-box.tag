@@ -75,7 +75,7 @@
         <c:if test="${not isAudio}">
             <div class="centered icon"><%----%>
                 <c:if test="${icon ne 'none'}">
-                    <mercury:icon icon="${icon}" tag="span" use="media-box" />
+                    <mercury:icon icon="${icon}" tag="span" inline="${true}" />
                 </c:if>
                 <c:if test="${caseDynamicListNoscript or caseStandardElement}">
                     <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${caseStandardElement}" />

@@ -180,7 +180,7 @@
             <%-- ###### Compact / Minimal display format ###### --%>
             <div class="dl-teaser dl-teaser-compact${showFileName ? ' dl-show-file' : ''}${showDescription ? ' dl-show-desc' : ''}">
                 <a href="${resLink}" class="dl-link dl-link-disp" target="_blank" rel="noopener" rel="noopener" title="<fmt:message key="msg.page.display"/>"><%----%>
-                    <mercury:icon icon="${icon}" tag="span" cssWrapper="dl-type" use="download-item" />
+                    <mercury:icon icon="${icon}" tag="span" cssWrapper="dl-type" />
                     <span class="dl-content"><%----%>
                         <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
                         <c:if test="${showFileName and not empty resTitle}">
@@ -205,7 +205,7 @@
                             <span class="dl-size"><span>${resSize}</span></span><%----%>
                             <span class="dl-date"><span>${resDateStr}</span></span><%----%>
                         </span><%----%>
-                        <mercury:icon icon="cloud-download" tag="span" cssWrapper="dl-dl" use="download-item" />
+                        <mercury:icon icon="cloud-download" tag="span" cssWrapper="dl-dl" />
                     </a><%----%>
                 </c:if>
             </div><%----%>
@@ -244,7 +244,7 @@
                             <div class="dl-desc">${resDescription}</div><%----%>
                         </c:if>
                         <a href="${resLink}" download class="btn dl-btn"><%----%>
-                            <mercury:icon icon="cloud-download" tag="span" use="download-item" />
+                            <mercury:icon icon="cloud-download" tag="span" />
                             <fmt:message key="msg.page.download"/><%----%>
                         </a><%----%>
                     </div><%----%>

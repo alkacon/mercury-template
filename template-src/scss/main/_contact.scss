@@ -120,6 +120,7 @@
         padding-left: var(--#{$prefix}contact-spacer-x);
     }
 
+    .ico,
     .fa {
        margin-right: var(--#{$prefix}contact-spacer-x);
        width: calc(4 * var(--#{$prefix}contact-spacer-x));

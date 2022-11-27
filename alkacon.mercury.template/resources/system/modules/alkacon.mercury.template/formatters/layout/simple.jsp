@@ -174,21 +174,22 @@
     <c:when test="${variant eq '3-3-3-3'}">
         <%-- lr_00010 --%>
         <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
-        <c:set var="xsCols"             value="${setting.xsCols.toInteger eq 6 ? 'col-6' : 'col-md-6'}" />
+        <c:set var="twoXsCols"          value="${setting.xsCols.toInteger eq 6}" />
+        <c:set var="xsCols"             value="${twoXsCols ? 'col-6' : 'col-md-6'}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? ' order-4 order-md-3 order-lg-1' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? (twoXsCols ? ' order-3' :' order-4).concat( order-md-3 order-lg-1') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
             <c:set target="${valueMap}" property="Type"         value="element"/>
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? ' order-3 order-md-4 order-lg-2' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? (twoXsCols ? ' order-4' :' order-3).concat( order-md-4 order-lg-2') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol1"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? ' order-2 order-md-1 order-lg-3' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? (twoXsCols ? ' order-1' :' order-2).concat( order-md-1 order-lg-3') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol2"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? ' order-1 order-md-2 order-lg-4' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseOrder ? (twoXsCols ? ' order-2' :' order-1).concat( order-md-2 order-lg-4') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol2'}" />
             <mercury:nl />
         </div><%----%>
@@ -196,27 +197,28 @@
     <c:when test="${variant eq '2-2-2-2-2-2'}">
         <%-- lr_00011 --%>
         <c:set var="colCss"             value="${setting.useFlex.toBoolean ? ' flex-col' : ''}" />
-        <c:set var="xsCols"             value="${setting.xsCols.toInteger eq 12 ? 'col-12' : 'col-6'}" />
+        <c:set var="twoXsCols"          value="${setting.xsCols.toInteger ne 12}" />
+        <c:set var="xsCols"             value="${twoXsCols ? 'col-6' : 'col-12'}" />
         <div class="row${cssWrapper}"><%----%>
             <c:set target="${valueMap}" property="Type"         value="${mainDetailType}"/>
             <c:set target="${valueMap}" property="Name"         value="maincol"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-5 order-md-4 order-xl-1' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? (twoXsCols ? ' order-5' : ' order-6').concat(' order-md-4 order-xl-1') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${isMainDetail}" />
             <c:set target="${valueMap}" property="Type"         value="element"/>
             <c:set target="${valueMap}" property="Name"         value="sidecol"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-6 order-md-5 order-xl-2' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? (twoXsCols ? ' order-6' : ' order-5').concat(' order-md-5 order-xl-2') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'sidecol'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol1"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-3 order-md-6 order-xl-3' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? (twoXsCols ? ' order-3' : ' order-4').concat(' order-md-6 order-xl-3') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol1'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol2"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-4 order-md-1 order-xl-4' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? (twoXsCols ? ' order-4' : ' order-3').concat(' order-md-1 order-xl-4') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol2'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol3"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-1 order-md-2 order-xl-5' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? (twoXsCols ? ' order-1' : ' order-2').concat(' order-md-2 order-xl-5') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol3'}" />
             <c:set target="${valueMap}" property="Name"         value="addcol4"/>
-            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? ' order-2 order-md-3 order-xl-6' : ''}" />
+            <c:set target="${valueMap}" property="Css"          value="${xsCols} col-md-4 col-xl-2${colCss}${reverseOrder ? (twoXsCols ? ' order-2' : ' order-1').concat(' order-md-3 order-xl-6') : ''}" />
             <mercury:container value="${valueMap}" title="${value.Title}" detailView="${detailContainer eq 'addcol4'}" />
             <mercury:nl />
         </div><%----%>

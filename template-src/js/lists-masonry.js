@@ -40,11 +40,11 @@ export function init() {
     const listElements = document.querySelectorAll('.masonry-list .list-dynamic');
     if (Mercury.debug()) console.info("MasonryList.init() .masonry-list .list-dynamic elements found: " + listElements.length);
 
-    [].forEach.call(listElements, (listElement, i) => {
+    for (const listElement of listElements) {
         listElement.addEventListener("list:loaded", function(e) {
             const listId = e.target.getAttribute('id');
             if (Mercury.debug()) console.info("MasonryList.init() 'list:loaded' event caught for: " + listId);
             createMasonryList(listId);
         });
-    });
+    }
 }

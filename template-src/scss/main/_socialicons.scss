@@ -104,6 +104,7 @@
         font-weight: $btn-font-weight;
     }
 
+    .ico,
     .fa,
     .fas,
     .fab {
@@ -111,6 +112,14 @@
         line-height: #{$social-links-box-height - 2*$social-links-border-width};
         text-align: center;
         font-size: $social-links-size;
+    }
+
+    .ico-svg {
+        line-height: 1;
+        height: #{$social-links-box-height - 2*$social-links-border-width};
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .bgi {
@@ -151,8 +160,13 @@
 @mixin social-icons-verbose {
     a {
         width: initial;
+        display: flex;
+
         .share_text {
             display: inline;
+
+            display: flex;
+            align-items: center;
         }
     }
 }

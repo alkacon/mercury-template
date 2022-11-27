@@ -105,3 +105,15 @@ aside img {
         fill: var(--#{$prefix}main-theme);
     }
 }
+
+.ico-svg {
+    display: inline-block;
+    line-height: 1;
+
+    > svg {
+        vertical-align: bottom;
+        fill: currentColor;
+        height: 1em;
+        width: auto;
+    }
+}

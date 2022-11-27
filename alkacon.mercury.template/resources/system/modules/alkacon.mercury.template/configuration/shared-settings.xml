@@ -1584,7 +1584,7 @@
       <PropertyName><![CDATA[iconClass]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.iconClass)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.iconClass.help)]]></Description>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[caret-right]]></Default>
       <WidgetConfig><![CDATA[
         none:%(key.msg.icon.none)|
@@ -1594,9 +1594,12 @@
         angle-right:%(key.msg.icon.angle)|
         angle-double-right:%(key.msg.icon.angle-double)|
         chevron-right:%(key.msg.icon.chevron)|
+        chevron-circle-right:%(key.msg.icon.chevron-circle)|
         arrow-right:%(key.msg.icon.arrow)|
+        arrow-circle-right:%(key.msg.icon.arrow-circle)|
         hand-o-right:%(key.msg.icon.hand)|
         info:%(key.msg.icon.info)|
+        info-circle:%(key.msg.icon.info-circle)|
         check:%(key.msg.icon.check)|
         globe:%(key.msg.icon.globe)|
         file-text-o:%(key.msg.icon.document)|

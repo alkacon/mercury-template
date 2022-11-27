@@ -33,7 +33,7 @@
             <c:choose>
                 <c:when test="${fn:startsWith(linkPart, 'icon:')}">
                     <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon:')}" />
-                    <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" use="link-icon" /></c:set>
+                    <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" inline="${true}" /></c:set>
                 </c:when>
                 <c:when test="${fn:startsWith(linkPart, 'id:')}">
                     <c:set var="linkAttr">id="${fn:substringAfter(linkPart, 'id:')}"</c:set>
@@ -55,7 +55,7 @@
     </c:when>
     <c:when test="${fn:startsWith(linkText, 'icon:')}">
         <c:set var="iconClass" value="${fn:substringAfter(linkText, 'icon:')}" />
-        <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" use="link-icon" /></c:set>
+        <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" inline="${true}" /></c:set>
     </c:when>
     <c:otherwise>
          <c:set var="linkMessage" value="${linkText}" />

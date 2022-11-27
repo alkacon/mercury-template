@@ -48,7 +48,7 @@
                 test="${not empty image}"
                 setTitle="${false}"
                 showCopyright="${setShowCopyright}">
-                <mercury:icon icon="picture-o" tag="span" cssWrapper="centered" use="list-visual" />
+                <mercury:icon icon="picture-o" tag="span" cssWrapper="centered" inline="${false}" />
             </mercury:image-animated>
         </c:if>
     </jsp:attribute>

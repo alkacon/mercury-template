@@ -342,7 +342,7 @@
     margin-top: var(--#{$prefix}default-margin-verysmall);
     min-width: 200px;
 
-    .fa {
+    .ico {
         padding-right: var(--#{$prefix}default-margin-small);
     }
 }
@@ -446,7 +446,7 @@
             .dl-info {
                 margin-top: var(--#{$prefix}p-spacer);
                 text-align: center;
-                .fa {
+                .ico {
                     font-size: 4.0rem;
                     margin-bottom: var(--#{$prefix}default-margin-verysmall);
                 }
@@ -467,14 +467,14 @@
                     text-align: left;
                     min-width: 50%;
                 }
-                .fa {
+                .ico {
                     min-width: calc(4 * var(--#{$prefix}default-margin-small));
                 }
             }
             .dl-content .dl-btn {
                 min-width: 50%;
                 text-align: left;
-                .fa {
+                .ico {
                     min-width: calc(4 * var(--#{$prefix}default-margin-small));
                 }
             }
@@ -516,7 +516,7 @@
                flex-grow: 10;
                width: 100%;
             }
-            .fa {
+            .ico {
                 font-size: 2.0rem;
             }
         }
@@ -552,7 +552,7 @@
         }
         .dl-show-file {
             .dl-link {
-                .fa {
+                .ico {
                     padding-top: 0.4rem;
                     font-size: 2.5rem;
                 }
@@ -578,7 +578,7 @@
                     justify-content: flex-start;
                     padding-top: 0;
                     padding-bottom: 1rem;
-                    .fa {
+                    .ico {
                         padding-top: 0;
                         font-size: 1.8rem;
                     }

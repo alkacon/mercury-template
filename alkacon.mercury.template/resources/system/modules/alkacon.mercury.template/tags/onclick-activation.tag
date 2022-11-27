@@ -88,7 +88,7 @@
             </c:if>
             <c:if test="${not empty icon and icon ne 'none'}">
                 <div class="oa-icon centered"><%----%>
-                    <mercury:icon icon="${icon}" tag="span" use="onclick-activation" />
+                    <mercury:icon icon="${icon}" tag="span" inline="${true}" />
                     <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
                 </div><%----%>
             </c:if>

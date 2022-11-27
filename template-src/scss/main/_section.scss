@@ -73,6 +73,8 @@
         // no rem based font size here, we want the icon to be same size over all devices
         flex-grow: 2;
         font-size: 32px;
+        display: flex;
+        justify-content: center;
     }
 
     .icon-link {

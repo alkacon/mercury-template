@@ -42,6 +42,7 @@ import * as NavigationElements from './navigation.js';
 import * as CommentElements from './comments.js';
 import * as AnalyticElements from './analytics.js';
 import * as PrivacyPolicy from './privacy-policy.js';
+import * as Icons from './icons.js';
 
 import './jquery-extensions.js';
 import './unobfuscate.js';
@@ -762,6 +763,14 @@ var Mercury = function (jQ) {
             update();
         } catch (err) {
             console.warn("Mercury.update() error", err);
+        }
+
+        if (getInfo("iconConfig") != null) {
+            try {
+                Icons.init(getInfo("iconConfig"), getInfo("fullIcons"));
+            } catch (err) {
+                console.warn("Icons.init() error", err);
+            }
         }
 
         try {

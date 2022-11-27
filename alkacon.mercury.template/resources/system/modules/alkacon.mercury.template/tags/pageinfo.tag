@@ -66,6 +66,14 @@
 <%-- OpenCms project --%>
 <c:set var ="project" value="${cms.isOnlineProject ? 'online' : 'offline'}" />
 
+<%-- Icon configuration --%>
+<c:if test="${cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString eq 'awesomeReduced'}">
+    <c:set var="iconConfig"><cms:link>/system/modules/alkacon.mercury.theme/icons/fa/at.svg</cms:link></c:set>
+    <c:set var="iconConfigBase64"><mercury:obfuscate text="${iconConfig}" type="base64"/></c:set>
+    <c:set var="fullIcons"><mercury:link-resource resource='/system/modules/alkacon.mercury.theme/css/fork-awesome-full.min.css'/></c:set>
+    <c:set var="fullIconsBase64"><mercury:obfuscate text="${fullIcons}" type="base64"/></c:set>
+</c:if>
+
 <mercury:nl/>
 <div id="template-info" data-info='{<%--
     --%><c:if test="${not empty googleApiKey}">"googleApiKey":"${googleApiKey}",</c:if><%--
@@ -74,6 +82,8 @@
     --%><c:if test="${not empty osmApiKey}">"osmSpriteUrl":"<%= CmsWorkplace.getStaticResourceUri("/osm/sprite") %>",</c:if><%--
     --%><c:if test="${not empty osmApiKey and not empty osmStyleUrl}">"osmStyleUrl":"${osmStyleUrl}",</c:if><%--
     --%><c:if test="${not empty googleApiKeyWorkplace}">"googleApiKeyWorkplace":"${googleApiKeyWorkplace}",</c:if><%--
+    --%><c:if test="${not empty iconConfigBase64}">"iconConfig":"${iconConfigBase64}",</c:if><%--
+    --%><c:if test="${not empty fullIconsBase64}">"fullIcons":"${fullIconsBase64}",</c:if><%--
     --%>"editMode":"${cms.isEditMode}",<%--
     --%>"project":"${project}",<%--
     --%>"context":"<cms:link>/</cms:link>",<%--

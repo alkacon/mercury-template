@@ -350,9 +350,9 @@ $oct-edit-infos:
         font-family: $font-family-gui !important;
         padding: 4px 8px !important;
         display: inline-block;
-
+        > .ico,
         > .fa {
-            margin-right: 5px;
+            margin-right: var(--#{$prefix}ws-margin);
         }
     }
 }

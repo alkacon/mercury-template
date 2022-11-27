@@ -87,11 +87,14 @@
 
         .icon {
             color: #fff;
-            text-shadow: $media-preview-icon-shadow;
+            text-shadow: $media-preview-icon-shadow; // fa-can-be-removed
             font-size: 16px;
             text-align: center;
             z-index: #{$overflow-z-index + 1};
 
+            svg {
+                filter: drop-shadow(1px 1px 1px #000) drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
+            }
             span {
                 opacity: 0.7;
                 display: block;
@@ -345,6 +348,7 @@
                     justify-content: center;
                     align-items: center;
 
+                    > .ico,
                     > .fa {
                         cursor: pointer;
                     }

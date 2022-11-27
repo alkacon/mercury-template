@@ -10,25 +10,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="configuredSet" value="${cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString}" />
-
-<c:choose>
-    <c:when test="${configuredSet eq 'awesomeReduced'}">
-        <c:set var="loadAwesomeReduced" value="${true}" />
-    </c:when>
-    <c:when test="${configuredSet eq 'bootstrap'}">
-        <c:set var="loadAwesomeReduced" value="${true}" />
-        <c:set var="loadBootstrap" value="${true}" />
-    </c:when>
-    <c:when test="${configuredSet eq 'awesomeFullAndBootstrap'}">
-        <c:set var="loadAwesomeReduced" value="${false}" />
-        <c:set var="loadBootstrap" value="${true}" />
-    </c:when>
-    <c:otherwise>
-        <%-- awesomeFull --%>
-        <c:set var="loadAwesomeReduced" value="${false}" />
-    </c:otherwise>
-</c:choose>
+<c:set var="loadAwesomeReduced" value="${cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString eq 'awesomeReduced'}" />
 
 <%-- Include icon CSS --%>
 <c:choose>
@@ -43,12 +25,6 @@
 </c:choose>
 <mercury:nl />
 
-<c:if test="${loadBootstrap}">
-    <%-- Load Bootstrap icon CSS--%>
-    <link href="<mercury:link-resource resource='/system/modules/alkacon.mercury.theme/css/bootstrap-icons.min.css'/>" rel="stylesheet"><%----%>
-    <mercury:nl />
-</c:if>
-
 <jsp:doBody />
 
 <%--
@@ -62,19 +38,11 @@
 <c:choose>
     <c:when test="${loadAwesomeReduced}">
         <%-- Preload reduced Fork Awesome font --%>
-        <link href="/system/modules/alkacon.mercury.theme/fonts/forkawesome-reduced.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin><%----%>
+        <link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/forkawesome-reduced.woff2</cms:link>?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin><%----%>
     </c:when>
     <c:otherwise>
         <%-- Preload full Fork Awesome font --%>
-        <link href="/system/modules/alkacon.mercury.theme/fonts/forkawesome-full.woff2?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin><%----%>
+        <link href="<cms:link>/system/modules/alkacon.mercury.theme/fonts/forkawesome-full.woff2</cms:link>?v=1.1.7" rel="preload" as="font" type="font/woff2" crossorigin><%----%>
     </c:otherwise>
 </c:choose>
 <mercury:nl />
-
-<c:if test="${loadBootstrap}">
-    <%-- Preload Bootstrap icon font --%>
-        <link href="/system/modules/alkacon.mercury.theme/fonts/bootstrap-icons.woff2?24e3eb84d0bcaf83d77f904c78ac1f47" rel="preload" as="font" type="font/woff2" crossorigin><%----%>
-    <mercury:nl />
-</c:if>
-
-

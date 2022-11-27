@@ -201,7 +201,7 @@
             <%-- ####### Animated list spinner ######## --%>
             <div class="list-spinner hide-noscript"><%----%>
                 <div class="spinnerInnerBox"><%----%>
-                    <mercury:icon icon="spinner" tag="span" use="list-spinner" />
+                    <mercury:icon icon="spinner" tag="span" cssWrapper="spinner-icon" inline="${false}" />
                 </div><%----%>
             </div><%----%>
             <mercury:nl />

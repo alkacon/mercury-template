@@ -24,7 +24,7 @@
     <mercury:link link="${value.Link}" setTitle="${true}" css="icon-link">
         <mercury:heading level="${hsize}" text="${value.Title}" css="icon-title" ade="${ade}" />
         <c:if test="${iconClass ne 'none'}">
-            <mercury:icon icon="${iconClass}" tag="div" cssWrapper="icon-image" use="iconbox" />
+            <mercury:icon icon="${iconClass}" tag="div" cssWrapper="icon-image" inline="${true}" />
             <mercury:nl />
         </c:if>
         <c:if test="${value.Text.isSet}">

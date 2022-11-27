@@ -20,9 +20,11 @@
  */
 
 .type-map {
+    --#{$prefix}map-popup-color: #{$map-popup-color};
+    --#{$prefix}map-popup-bg: #{$map-popup-bg};
 
     .mapbuttons {
-        margin-top: var(--#{$prefix}default-margin-smalls);
+        margin-top: var(--#{$prefix}default-margin-small);
 
         .btn {
             margin-top: var(--#{$prefix}default-margin-verysmall);
@@ -69,7 +71,7 @@
     }
 
     .map-marker {
-        color: var(--#{$prefix}body-color);
+        color: var(--#{$prefix}map-popup-color);
         font-size: $map-text-size;
         font-weight: $map-text-weight;
 
@@ -101,12 +103,35 @@
 }
 
 .map-osm {
-    .mapboxgl-map {
-        color: var(--#{$prefix}body-color);
+
+    .mapboxgl-map,
+    .mapboxgl-popup-content {
+        color: var(--#{$prefix}map-popup-color);
+        background-color: var(--#{$prefix}map-popup-bg);
         font-family: var(--#{$prefix}body-font-family);
         font-weight: var(--#{$prefix}body-font-weight);
         font-size: 1.0rem;
         line-height: 1.2;
+    }
+
+    .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+        border-bottom-color: var(--#{$prefix}map-popup-bg);
+    }
+
+    .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+        border-top-color: var(--#{$prefix}map-popup-bg);
+    }
+
+    .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+        border-right-color: var(--#{$prefix}map-popup-bg);
+    }
+
+    .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+        border-left-color: var(--#{$prefix}map-popup-bg);
     }
 
     .mapboxgl-marker {
@@ -119,6 +144,7 @@
     }
 
     .mapboxgl-popup-close-button {
+        color: var(--#{$prefix}map-popup-color);
         font-size: 20px;
         &:hover {
             background-color: $white;

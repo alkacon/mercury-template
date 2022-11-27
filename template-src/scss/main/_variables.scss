@@ -556,9 +556,9 @@ $nav-breadcrumb-text-color:         get-text-color($nav-breadcrumb-bg-color, $na
 $nav-breadcrumb-text-hover-color:   get-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
 $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs
 $nav-breadcrumb-image-size:         round($nav-breadcrumb-font-size * 80) * 0.01 !default; // image height / width for the breadcrumbs
-$nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
 $nav-breadcrumb-separator-color:    conditional-value($nav-breadcrumb-bg-color == none, $grey, $nav-breadcrumb-text-color) !default; // color of breadcrumbs separator
-$nav-breadcrumb-separator-font:     ForkAwesome !default; // font-family for breadcrumbs separator
+$nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
+$nav-breadcrumb-separator-font:     ForkAwesome !default; // font-family for breadcrumb seperator - NOTE: Sometimes you may want to use a 'standard' font with a seperator like '/' or '|', hence this is configurable
 
 
 // Side navigation - mirrors the main navigation by default, and allows to use different colors if required.
@@ -780,6 +780,8 @@ $map-label-color:                   $main-theme !default;
 $map-center-color:                  $main-theme !default;
 $map-cluster-color:                 $main-theme-hover !default;
 $map-hide-buttons-if-not-visible:   false !default;
+$map-popup-color:                   $text-dark !default;
+$map-popup-bg:                      $white !default;
 
 
 // Map colors (for marker groups)

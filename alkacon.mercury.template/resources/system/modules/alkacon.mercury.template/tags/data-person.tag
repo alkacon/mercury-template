@@ -1,8 +1,8 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="data-organization"
+    display-name="data-person"
     body-content="empty"
     trimDirectiveWhitespaces="true"
-    description="Generates schema.org data for organizations." %>
+    description="Generates schema.org data for persons." %>
 
 
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"
@@ -10,6 +10,9 @@
 
 <%@ attribute name="locData" type="java.util.Map" required="true"
     description="Location data as given by location-vars.tag."%>
+
+<%@ attribute name="organization" type="java.lang.String" required="false"
+    description="The name of the organization this person belongs to."%>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -44,18 +47,23 @@
 </c:if>
 
 <%--
-# JSON-LD generation for Mercury organization.
-# See: https://schema.org/Organization
+# JSON-LD generation for Mercury persons.
+# See: https://schema.org/Person
 --%>
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
-    <cms:jsonvalue key="@type" value="Organization" />
-    <cms:jsonvalue key="name" value="${value.Organization.toString}" />
+    <cms:jsonvalue key="@type" value="Person" />
+    <cms:jsonvalue key="honorificPrefix" value="${value.Name.value.Title.toString}" />
+    <cms:jsonvalue key="givenName" value="${value.Name.value.FirstName.toString}" />
+    <cms:jsonvalue key="additionalName" value="${value.Name.value.MiddleName.toString}" />
+    <cms:jsonvalue key="familyName" value="${value.Name.value.LastName.toString}" />
+    <cms:jsonvalue key="jobTitle" value="${value.Position.toString}" />
     <cms:jsonvalue key="url" value="${websiteURL}" />
     <cms:jsonvalue key="image" value="${image}" />
     <cms:jsonvalue key="telephone" value="${telephone}" />
     <cms:jsonvalue key="email" value="${email}" />
     <cms:jsonvalue key="faxNumber" value="${faxNumber}" />
+    <cms:jsonvalue key="memberOf" value="${organization}" />
     <c:if test="${not empty locData}">
         <cms:jsonobject key="address">
             <cms:jsonvalue key="@type" value="PostalAddress" />

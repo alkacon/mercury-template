@@ -67,7 +67,7 @@
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
 
-<mercury:location-vars data="${valAddress}" addMapInfo="true" >
+<mercury:location-vars data="${valAddress}" addMapInfo="true">
 
 <mercury:nl />
 <div class="detail-page type-contact${setCssWrapper}"><%----%>

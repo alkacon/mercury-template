@@ -125,6 +125,15 @@
     </div><%----%>
 </c:if>
 
+<mercury:location-vars data="${valAddress}" addMapInfo="true">
+    <c:if test="${valKind eq 'pers'}">
+        <mercury:data-person content="${content}" locData="${locData}" organization="${valOrganization}"/>
+    </c:if>
+    <c:if test="${valKind eq 'org'}">
+        <mercury:data-organization content="${content}" locData="${locData}" />
+    </c:if>
+</mercury:location-vars>
+
 </mercury:contact-vars>
 </mercury:setting-defaults>
 

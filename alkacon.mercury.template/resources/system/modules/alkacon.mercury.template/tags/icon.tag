@@ -41,8 +41,9 @@
 
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
-<c:set var="reducedIcons"   value="${cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString eq 'awesomeReduced'}" />
-<c:set var="inline"         value="${inline and (reducedIcons or fn:startsWith(icon, 'bi-'))}" />
+<c:set var="selectedIcons"  value="${fn:contains(cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString, 'Selection')}" />
+<c:set var="noInline"       value="${fn:startsWith(icon, 'ni-')}" />
+<c:set var="inline"         value="${inline and selectedIcons and (not noInline)}" />
 
 
 <c:choose>
@@ -69,6 +70,10 @@
             <c:set var="iconClass" value="ico ico-svg ico-missing" />
             <c:set var="iconRes" value="${cms.vfs.readResource['/system/modules/alkacon.mercury.theme/icons/fa/question-circle.svg']}" />
         </c:if>
+    </c:when>
+    <c:when test="${noInline}">
+        <c:set var="iconName" value="${fn:substringAfter(icon, 'ni-')}" />
+        <c:set var="iconClass" value="ico fa fa-${iconName} ico-font" />
     </c:when>
     <c:when test="${fn:startsWith(icon, 'fa-')}">
         <c:set var="iconClass" value="ico fa ${icon}" />

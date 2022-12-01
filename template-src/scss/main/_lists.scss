@@ -773,7 +773,7 @@
             }
 
             &::before {
-                font-family: ForkAwesome;
+                @include icon-font();
                 font-weight: normal;
                 padding-right: $btn-h-padding;
             }
@@ -807,7 +807,7 @@
             }
 
             .btn.li-label:before {
-                content: "\f02c"; // fa-tags
+                content: "\f02c"; // mercury:icon - fa-tags
             }
 
             ul {
@@ -847,7 +847,7 @@
             padding: 0;
 
             .btn.li-label:before {
-                content: "\f115"; // fa-folder-open-o
+                content: "\f115"; // mercury:icon - fa-folder-open-o
             }
 
             .nav-side {
@@ -869,7 +869,7 @@
         &.archive {
 
             .btn.li-label:before {
-                content: "\f133"; // fa-calendar-o
+                content: "\f133"; // mercury:icon - fa-calendar-o
             }
 
             button.year {
@@ -883,7 +883,7 @@
                 }
 
                 &::before {
-                    content: "\f133"; // fa-calendar-o
+                    content: "\f133"; // mercury:icon - fa-calendar-o
                 }
                 &::after {
                     width: calc(#{$nav-handle-right-padding} - 2px);

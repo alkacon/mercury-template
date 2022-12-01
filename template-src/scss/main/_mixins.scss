@@ -504,8 +504,8 @@
     font-family: var(--#{$prefix}btn-font-family);
 
     &::before {
-        font-family: ForkAwesome;
-        content: "\f02b"; // fa-tag
+        @include icon-font();
+        content: "\f02b"; // mercury:icon - fa-tag
         padding-right: var(--#{$prefix}default-margin-verysmall);
     }
     @if ($add-box) {
@@ -532,19 +532,17 @@
     }
 }
 
-@mixin awesome-icons($line-height: inherit, $font-size: inherit) {
-    // Adds font definitions required to switch to ForkAwesome font
+@mixin icon-font() {
     font-family: ForkAwesome;
-    font-size: $font-size;
-    line-height: $line-height;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 @mixin toggle-arrow-open-after($reverse: false) {
-    @include awesome-icons(1);
+    @include icon-font();
     content: $toggle-arrow-icon;
+    line-height: 1;
     position: absolute;
     display: flex;
     justify-content: center;

@@ -10,3 +10,15 @@
   font-style: normal;
   font-display: auto;
 }
+
+// Backward compatibility - Make font selector "FontAwesome" also available in full set
+@font-face {
+  font-family: 'FontAwesome';
+  src:
+    url('#{$fa-font-path}/forkawesome-full.woff2?v=#{$fa-version}') format('woff2'),
+    url('#{$fa-font-path}/forkawesome-full.woff?v=#{$fa-version}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+

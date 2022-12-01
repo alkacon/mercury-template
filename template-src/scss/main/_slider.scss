@@ -394,6 +394,8 @@ $slider-text-below-breakpoint: md !default;
 
         .tr-fade:not(.is-dragging) {
             &.slider-initialized {
+                z-index: 0;
+
                 .slide-definitions {
                     transform: none !important;
                     display: grid;

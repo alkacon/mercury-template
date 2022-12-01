@@ -75,7 +75,7 @@
                     --%>alt="%(titleAttr)"<%--
                     --%>class="lazyload"><%--
                 --%><span class="zoom-icon"><%--
-                    --%><mercury:icon icon="search" tag="span" inline="${false}" /></span><%--
+                    --%><mercury:icon icon="search" tag="span" /></span><%--
                --%></span><%--
             --%></span><%--
             --%><c:if test="${showImageListCopyright}"><%--
@@ -200,7 +200,7 @@
 
             <div class="spinner"><%----%>
                 <div class="spinnerInnerBox"><%----%>
-                    <mercury:icon icon="spinner" tag="i" cssWrapper="spinner-icon" inline="${false}" />
+                    <mercury:icon icon="spinner" tag="i" cssWrapper="spinner-icon" />
                 </div><%----%>
             </div><%----%>
 

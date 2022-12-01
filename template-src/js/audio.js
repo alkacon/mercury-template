@@ -108,13 +108,13 @@ function initAudio($audioData, aP) {
 
         sound.on('play', function() {
             if (DEBUG) console.info("Audio: play event for [" + src + "]");
-            sound.$playPauseButton.removeClass("fa-play").addClass("fa-pause");
+            sound.$playPauseButton.removeClass("fa-play").addClass("fa-pause"); // mercury:icon
             updateProgress(sound);
         });
 
         sound.on('pause', function() {
             if (DEBUG) console.info("Audio: pause event for [" + src + "]");
-            sound.$playPauseButton.removeClass("fa-pause").addClass("fa-play");
+            sound.$playPauseButton.removeClass("fa-pause").addClass("fa-play"); // mercury:icon
             updateProgress(sound);
         });
 
@@ -126,13 +126,13 @@ function initAudio($audioData, aP) {
 
         sound.on('stop', function() {
             if (DEBUG) console.info("Audio: stop event for [" + src + "]");
-            sound.$playPauseButton.removeClass("fa-pause").addClass("fa-play");
+            sound.$playPauseButton.removeClass("fa-pause").addClass("fa-play"); // mercury:icon
             updateProgress(sound);
         });
 
         sound.on('end', function() {
             if (DEBUG) console.info("Audio: end event for [" + src + "]");
-            sound.$playPauseButton.removeClass("fa-pause").addClass("fa-play");
+            sound.$playPauseButton.removeClass("fa-pause").addClass("fa-play"); // mercury:icon
             updateProgress(sound);
         });
     });

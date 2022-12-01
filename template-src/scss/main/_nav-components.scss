@@ -160,12 +160,12 @@
                 // add caret labels to menus that have submenus
                 &[aria-controls] {
                     &::after {
+                        @include icon-font();
+                        content: "\f107"; // mercury:icon - fa-angle-down
                         position: absolute;
                         display: inline-block;
-                        font-family: ForkAwesome;
                         right: 0;
                         width: $nav-handle-right-padding;
-                        content: "\f107"; // fa-angle-down
                         font-weight: normal;
                         text-align: center;
                         transform: rotate(0) translate(0px, 0px);

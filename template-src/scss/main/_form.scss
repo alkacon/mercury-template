@@ -336,12 +336,12 @@
 
     .checkbox {
         input + i::after {
-            content: "\f00c"; // fa-check
+            @include icon-font();
+            content: "\f00c"; // mercury:icon - fa-check
             top: -5px;
             left: -1px;
             font-size: 23px;
             line-height: 23px;
-            font-family: ForkAwesome;
             font-weight: normal;
             text-align: center;
         }
@@ -422,13 +422,13 @@
     // icons
     .icon-append,
     .icon-prepend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: absolute;
-        width: 29px;
-        line-height: inherit;
-        text-align: center;
-        margin-top: 3px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        width: 34px;
+        height: calc(100% - 6px);
+        top: 3px;
 
         &.ico-svg > svg {
             vertical-align: middle;
@@ -436,15 +436,13 @@
     }
 
     .icon-append {
-        right: 5px;
-        padding-left: 3px;
+        right: 0;
         border-left-width: 1px;
         border-left-style: solid;
     }
 
     .icon-prepend {
-        left: 5px;
-        padding-right: 3px;
+        left: 0;
         border-right-width: 1px;
         border-right-style: solid;
     }
@@ -467,11 +465,19 @@
         .icon-prepend {
             border-bottom-width: 1px;
             border-bottom-style: solid;
+            align-self: unset;
+            top: 3px;
+            width: 31px;
+            height: 31px;
         }
         .icon-append {
+            padding-right: 0;
+            right: 3px;
             border-bottom-left-radius: var(--#{$prefix}form-input-border-radius);
         }
         .icon-prepend {
+            padding-left: 0;
+            left: 3px;
             border-bottom-right-radius: var(--#{$prefix}form-input-border-radius);
         }
     }
@@ -530,8 +536,8 @@
         .note-error {
             color: $form-error-text-color;
             &::before {
-                @include awesome-icons();
-                content: "\f071"; // fa-exclamation-triangle
+                @include icon-font();
+                content: "\f071"; // mercury:icon - fa-exclamation-triangle
                 margin-right: 10px;
             }
         }

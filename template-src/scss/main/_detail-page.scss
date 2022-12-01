@@ -73,10 +73,10 @@
 
             .info {
                 &::before {
+                    @include icon-font();
                     vertical-align: top;
                     display: inline-block;
                     width: 2.5rem;
-                    font-family: ForkAwesome;
                     padding-right: var(--#{$prefix}detail-visual-spacer-x);
                 }
                 > div {
@@ -85,23 +85,23 @@
             }
 
             .date::before {
-                content: "\f133"; // fa-calendar-o
+                content: "\f133"; // mercury:icon - fa-calendar-o
             }
 
             .person::before {
-                content: "\f2c0"; // fa-user-o (ForkAwesome only)
+                content: "\f2c0"; // mercury:icon - fa-user-o
             }
 
             .location::before {
-                content: "\f041"; // fa-map-marker
+                content: "\f041"; // mercury:icon - fa-map-marker
             }
 
             .images::before {
-                content: "\f03e"; // fa-picture-o
+                content: "\f03e"; // mercury:icon - fa-picture-o
             }
 
             .type::before {
-                content: "\f05a"; // fa-info-circle
+                content: "\f05a"; // mercury:icon - fa-info-circle
             }
         }
 

@@ -26,7 +26,7 @@
     <div class="${empty css ? '' : css.concat(' ')}oct-meta"><%----%>
         <div class="marker"><%----%>
             <c:if test="${not empty icon}">
-                <mercury:icon icon="${icon}" tag="span" inline="${true}" />
+                <mercury:icon icon="${icon}" tag="span" />
             </c:if>
             <jsp:invoke fragment="text" />
         </div><%----%>

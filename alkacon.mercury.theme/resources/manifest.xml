@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>14.0.26</version>
+		<version>14.0.29</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -97,24 +97,48 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/css/bootstrap-icons.min.css</source>
-			<destination>system/modules/alkacon.mercury.theme/css/bootstrap-icons.min.css</destination>
+			<source>system/modules/alkacon.mercury.theme/css/awesome-selection.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/awesome-selection.min.css</destination>
 			<type>plain</type>
-			<uuidstructure>d392055f-6667-11ed-892e-0242ac11002b</uuidstructure>
-			<uuidresource>d3920560-6667-11ed-892e-0242ac11002b</uuidresource>
-			<datecreated>Thu, 17 Nov 2022 11:06:03 GMT</datecreated>
+			<uuidstructure>fbef2911-6fd7-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>fbef2912-6fd7-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:21:35 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/css/bootstrap-icons.min.css.map</source>
-			<destination>system/modules/alkacon.mercury.theme/css/bootstrap-icons.min.css.map</destination>
+			<source>system/modules/alkacon.mercury.theme/css/awesome-selection.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/awesome-selection.min.css.map</destination>
 			<type>plain</type>
-			<uuidstructure>d3d241b2-6667-11ed-892e-0242ac11002b</uuidstructure>
-			<uuidresource>d3d241b3-6667-11ed-892e-0242ac11002b</uuidresource>
-			<datecreated>Thu, 17 Nov 2022 11:06:03 GMT</datecreated>
+			<uuidstructure>fc199473-6fd7-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>fc199474-6fd7-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:21:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/bootstrap-selection.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/bootstrap-selection.min.css</destination>
+			<type>plain</type>
+			<uuidstructure>fc43d8c5-6fd7-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>fc43d8c6-6fd7-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:21:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/bootstrap-selection.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/bootstrap-selection.min.css.map</destination>
+			<type>plain</type>
+			<uuidstructure>fc68c5e7-6fd7-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>fc68c5e8-6fd7-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:21:36 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>
@@ -162,30 +186,6 @@
 			<type>plain</type>
 			<uuidstructure>43f941a6-65c3-11ed-892e-0242ac11002b</uuidstructure>
 			<uuidresource>43f941a7-65c3-11ed-892e-0242ac11002b</uuidresource>
-			<datecreated>Wed, 16 Nov 2022 15:28:05 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/css/fork-awesome-reduced.min.css</source>
-			<destination>system/modules/alkacon.mercury.theme/css/fork-awesome-reduced.min.css</destination>
-			<type>plain</type>
-			<uuidstructure>4423d418-65c3-11ed-892e-0242ac11002b</uuidstructure>
-			<uuidresource>4423d419-65c3-11ed-892e-0242ac11002b</uuidresource>
-			<datecreated>Wed, 16 Nov 2022 15:28:05 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/css/fork-awesome-reduced.min.css.map</source>
-			<destination>system/modules/alkacon.mercury.theme/css/fork-awesome-reduced.min.css.map</destination>
-			<type>plain</type>
-			<uuidstructure>4448e84a-65c3-11ed-892e-0242ac11002b</uuidstructure>
-			<uuidresource>4448e84b-65c3-11ed-892e-0242ac11002b</uuidresource>
 			<datecreated>Wed, 16 Nov 2022 15:28:05 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
@@ -254,6 +254,74 @@
 				<property>
 					<name>export</name>
 					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/awesome-selection.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/awesome-selection.woff</destination>
+			<type>plain</type>
+			<uuidstructure>8f50f551-6fd8-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>8f50f552-6fd8-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:25:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Fork Awesome Icons - Selection (woff)]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/awesome-selection.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/awesome-selection.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>8f51dfb4-6fd8-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>8f51dfb5-6fd8-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:25:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Fork Awesome Icons - Selection (woff2)]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/bootstrap-selection.woff</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/bootstrap-selection.woff</destination>
+			<type>plain</type>
+			<uuidstructure>3869569c-6fd8-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>3869569d-6fd8-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:23:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Bootstrap Icons - Selection (woff)]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/fonts/bootstrap-selection.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/bootstrap-selection.woff2</destination>
+			<type>plain</type>
+			<uuidstructure>386a19ef-6fd8-11ed-ae5a-0242ac11002b</uuidstructure>
+			<uuidresource>386a19f0-6fd8-11ed-ae5a-0242ac11002b</uuidresource>
+			<datecreated>Tue, 29 Nov 2022 11:23:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Bootstrap Icons - Selection (woff2)]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -1274,40 +1342,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Fork Awesome Icons - Full (.woff2)]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/forkawesome-reduced.woff</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/forkawesome-reduced.woff</destination>
-			<type>plain</type>
-			<uuidstructure>d0caddee-65c2-11ed-892e-0242ac11002b</uuidstructure>
-			<uuidresource>d0caddef-65c2-11ed-892e-0242ac11002b</uuidresource>
-			<datecreated>Wed, 16 Nov 2022 15:24:51 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Fork Awesome Icons - Reduced (.woff)]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/forkawesome-reduced.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/forkawesome-reduced.woff2</destination>
-			<type>plain</type>
-			<uuidstructure>d0cb5321-65c2-11ed-892e-0242ac11002b</uuidstructure>
-			<uuidresource>d0cb5322-65c2-11ed-892e-0242ac11002b</uuidresource>
-			<datecreated>Wed, 16 Nov 2022 15:24:51 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Fork Awesome Icons - Reduced (.woff2)]]></value>
 				</property>
 			</properties>
 			<relations/>

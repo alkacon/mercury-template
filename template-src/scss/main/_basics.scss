@@ -210,8 +210,8 @@ h1, h2, h3, h4, h5, h6 {
 @if ($link-external-icon) {
 
     a.external:after {
-        font-family: ForkAwesome;
-        content: " \f08e"; // fa-external-link
+        @include icon-font();
+        content: " \f08e"; // mercury:icon - fa-external-link
         margin-left: 2px;
     }
 
@@ -271,13 +271,13 @@ html.opencms-page-editor {
 
 #keyboard-toggle {
     &::after {
-         @include awesome-icons();
-         margin-left: 1rem;
-         content: "\f096"; // fa-square-o
+        @include icon-font();
+        margin-left: 1rem;
+        content: "\f096"; // mercury:icon - fa-square-o
     }
     &[aria-checked="true"] {
         &::after {
-            content: "\f046"; //  fa-check-square-o
+            content: "\f046"; // mercury:icon - fa-check-square-o
         }
     }
 }

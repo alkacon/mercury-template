@@ -29,7 +29,7 @@
         <c:forEach var="paragraph" items="${paragraphs}" varStatus="status">
             <c:set var="link" value="${paragraph.value.Link}" />
             <mercury:nl />
-            <li class="fa-${icon}"><%----%>
+            <li class="fa-${icon}"><%-- mercury:icon --%>
                 <mercury:link link="${link}" newWin="true" />
             </li><%----%>
         </c:forEach>

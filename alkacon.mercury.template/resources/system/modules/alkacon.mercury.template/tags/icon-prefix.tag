@@ -34,7 +34,7 @@
             <c:if test="${not showText and empty iconLabel}">
                 <c:set var="iconLabel" value="${textLabel}" />
             </c:if>
-            <mercury:icon icon="${icon}" tag="span" ariaLabel="${iconLabel}" inline="${true}" />
+            <mercury:icon icon="${icon}" tag="span" ariaLabel="${iconLabel}" />
         </c:if>
         <c:if test="${showText}">
             ${textLabel}

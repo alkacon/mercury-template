@@ -91,7 +91,7 @@
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}'${' '}<%--
                             --%>title='<fmt:message key="msg.page.list.pagination.previous.title"/>'><%--
                                 --%><span class="sr-only"><fmt:message key="msg.page.list.pagination.previous.title" /></span><%----%>
-                                    <mercury:icon icon="angle-left" tag="span" inline="${false}" />
+                                    <mercury:icon icon="angle-left" tag="span" />
                             </a><%----%>
                         </li><%----%>
                     </c:if>
@@ -136,7 +136,7 @@
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}'${' '}<%--
                             --%>title='<fmt:message key="msg.page.list.pagination.next.title"/>'><%--
                                 --%><span class="sr-only"><fmt:message key="msg.page.list.pagination.next.title" /></span><%----%>
-                                    <mercury:icon icon="angle-right" tag="span" inline="${false}" />
+                                    <mercury:icon icon="angle-right" tag="span" />
                             </a><%----%>
                         </li><%----%>
                     </c:if>

@@ -26,6 +26,7 @@
     background-color: $placeholder-bg-color;
 
     &::after {
+        @include icon-font();
         position: absolute;
         display: block;
         bottom: 0;
@@ -33,7 +34,6 @@
         top: 50%;
         width: 50px;
         height: 50px;
-        font-family: ForkAwesome;
         font-weight: normal;
         font-size: 40px;
         color: transparentize($black, 0.5);

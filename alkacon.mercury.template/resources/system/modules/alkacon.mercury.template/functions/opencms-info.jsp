@@ -21,7 +21,7 @@
 <div class="element type-opencms-info pivot ${cssWrapper}"><%----%>
 
     <div class="float-left mr-10"><%----%>
-        <mercury:icon icon="info-circle" tag="span" cssWrapper="fs-36" inline="${true}" />
+        <mercury:icon icon="info-circle" tag="span" cssWrapper="fs-36" />
     </div><%----%>
 
     <h2><%----%>

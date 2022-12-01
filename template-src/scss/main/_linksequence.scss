@@ -32,12 +32,9 @@
 %ls-icon-custom {
     @extend %ls-icon-base;
     &::before {
-        font-family: ForkAwesome;
+        @include icon-font();
         font-size: inherit;
         line-height: inherit;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
     }
 }
 
@@ -153,5 +150,5 @@
 .ls-icon + span {
     // for "icon:" display from linksequence text - see link-icon.tag
     --#{$prefix}ls-row-spacing: #{$ls-row-spacing};
-    margin-left: calc(0.5 * var(--#{$prefix}ls-row-spacing));
+    margin-left: var(--#{$prefix}ws-margin);
 }

@@ -103,12 +103,12 @@
         }
 
         &::after {
+            @include icon-font();
             width: $nav-toggle-size;
             line-height: floor($nav-toggle-size * 0.95); // fa-angle-up symbol has too much white space on top
-            content: "\f106"; // fa-angle-up
+            content: "\f106"; // mercury:icon - fa-angle-up
             position: absolute;
             text-align: center;
-            font-family: ForkAwesome;
         }
 
         @include media-breakpoint-down(md) {

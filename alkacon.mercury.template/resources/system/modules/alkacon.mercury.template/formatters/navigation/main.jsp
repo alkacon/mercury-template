@@ -256,7 +256,7 @@
         <c:if test="${not empty searchPageUri}">
             <li id="nav-main-search" class="expand"><%----%>
                 <a href="${searchPageUri}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
-                    <mercury:icon icon="search" tag="span" cssWrapper="search search-btn" inline="${false}" />
+                    <mercury:icon icon="search" tag="span" cssWrapper="search search-btn" />
                 </a><%----%>
                 <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>
                     <li><%----%>

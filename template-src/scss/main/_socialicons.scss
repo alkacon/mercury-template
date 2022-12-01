@@ -22,18 +22,12 @@
 // Default social icon style, grey and boxed
 
 .social-icons {
-    // shariff 3 uses Font Awesome 5 while Mercury uses ForkAwesome
+    // shariff 3 uses Font Awesome 5 while Mercury uses Font (Fork) Awesome 4
     .fas,
     .fab {
+        @include icon-font(); // mercury:icon
         display: inline-block;
-        font-family: ForkAwesome;
         font-size: inherit;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    .fa-linkedin-in:before {
-        content: "\f0e1"; // fa-linkedin
     }
 }
 

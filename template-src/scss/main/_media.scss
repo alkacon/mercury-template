@@ -87,7 +87,7 @@
 
         .icon {
             color: #fff;
-            text-shadow: $media-preview-icon-shadow; // fa-can-be-removed
+            text-shadow: $media-preview-icon-shadow;
             font-size: 16px;
             text-align: center;
             z-index: #{$overflow-z-index + 1};
@@ -146,7 +146,7 @@
         &.placeholder {
             cursor: auto;
             &::after {
-                content: "\f04b"; // fa-play
+                content: "\f04b"; // mercury:icon - fa-play
             }
         }
     }

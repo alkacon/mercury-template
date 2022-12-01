@@ -48,11 +48,11 @@
     <c:when test="${linksequenceType eq 'ls-navigation'}">
         <c:set var="ulWrapper">class="nav-side"</c:set>
         <c:if test="${listBulletStyle eq 'custom-icon'}">
-            <c:set var="aWrapper">fa-${iconClass}</c:set>
+            <c:set var="aWrapper">fa-${iconClass}</c:set><%-- mercury:icon --%>
         </c:if>
     </c:when>
     <c:when test="${listBulletStyle eq 'custom-icon'}">
-        <c:set var="liWrapper">class="fa-${iconClass}"</c:set>
+        <c:set var="liWrapper">class="fa-${iconClass}"</c:set><%-- mercury:icon --%>
     </c:when>
 </c:choose>
 

@@ -108,14 +108,14 @@
                 }
 
                 input + i::after {
+                    @include icon-font();
+                    content: "\f00c"; // mercury:icon - fa-check
                     position: absolute;
                     opacity: 0;
-                    content: "\f00c"; // fa-check
                     top: -4px;
                     left: -1px;
                     font-size: 23px;
                     line-height: 23px;
-                    font-family: ForkAwesome;
                     font-weight: normal;
                     text-align: center;
                 }
@@ -541,15 +541,15 @@
                 border-color: $form-radio-checked-border-color;
 
                 &::after {
+                    @include icon-font();
+                    content: '\f00c'; // mercury:icon - fa-check
                     color: $form-radio-checked-color;
                     position: absolute;
                     z-index: 10;
-                    content: '\f00c'; // fa-check
                     top: -5px;
                     left: -1px;
                     font-size: 23px;
                     line-height: 23px;
-                    font-family: ForkAwesome;
                     font-weight: normal;
                     text-align: center;
                     overflow: visible;

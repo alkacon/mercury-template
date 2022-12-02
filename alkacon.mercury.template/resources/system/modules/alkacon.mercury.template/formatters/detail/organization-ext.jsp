@@ -119,7 +119,6 @@
 <mercury:section-piece
     cssWrapper="subelement ${kindCss}${setCssWrapper2}"
     pieceLayout="${pieceLayout}"
-    attrWrapper="${kindAttr}"
     heading="${showTitleAbove ? value.Title : null}"
     hsize="${hsizeTitle}"
     sizeDesktop="${setSizeDesktop}"

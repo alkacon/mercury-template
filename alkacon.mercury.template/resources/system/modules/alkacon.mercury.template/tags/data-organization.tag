@@ -24,7 +24,7 @@
 # See: https://schema.org/Organization
 --%>
 <cms:jsonobject var="jsonLd">
-    <cms:jsonvalue key="@context" value="http://schema.org" />
+    <cms:jsonvalue key="@context" value="https://schema.org" />
     <cms:jsonvalue key="@type" value="Organization" />
     <cms:jsonvalue key="name" value="${not empty strOrgName ? strOrgName : null}" />
     <cms:jsonvalue key="url" value="${not empty strWebsiteUrl ? strWebsiteUrl : null}" />

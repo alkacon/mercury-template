@@ -88,11 +88,9 @@
 <c:choose>
     <c:when test="${valKind eq 'org'}">
         <c:set var="kindCss" value="contact-org" />
-        <c:set var="kindAttr">itemscope itemtype="https://schema.org/Organization"</c:set>
     </c:when>
     <c:otherwise>
         <c:set var="kindCss" value="contact-pers" />
-        <c:set var="kindAttr">itemscope itemtype="http://schema.org/Person"</c:set>
     </c:otherwise>
 </c:choose>
 

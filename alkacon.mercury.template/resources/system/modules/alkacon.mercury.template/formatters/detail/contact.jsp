@@ -66,7 +66,6 @@
 <mercury:section-piece
     cssWrapper="${kindModern ? kindCss : cssWrappers}"
     pieceLayout="${pieceLayout}"
-    attrWrapper="${kindAttr}"
     heading="${showTitle ? value.Title : null}"
     hsize="${hsizeTitle}"
     sizeDesktop="${setSizeDesktop}"

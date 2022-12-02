@@ -178,7 +178,6 @@
     showCopyright="${showImageCopyright}"
     ratio="${imageRatio}"
     cssImage="photo"
-    attrImage='itemprop="image"'
     showImageZoom="${showImageZoom}"
     >
 
@@ -189,15 +188,15 @@
             <c:if test="${showName}">
                 <c:set var="personname">
                     <c:if test="${name.value.Title.isSet}">
-                        <span itemprop="honorificPrefix">${name.value.Title}${' '}</span><%----%>
+                        <span>${name.value.Title}${' '}</span><%----%>
                     </c:if>
-                    <span itemprop="givenName"> ${name.value.FirstName}</span><%----%>
+                    <span> ${name.value.FirstName}</span><%----%>
                     <c:if test="${name.value.MiddleName.isSet}">
-                        <span itemprop="additionalName"> ${name.value.MiddleName}</span><%----%>
+                        <span> ${name.value.MiddleName}</span><%----%>
                     </c:if>
-                    <span itemprop="familyName"> ${name.value.LastName}</span><%----%>
+                    <span> ${name.value.LastName}</span><%----%>
                     <c:if test="${name.value.Suffix.isSet}">
-                        <span itemprop="honorificSuffix"> ${name.value.Suffix}</span><%----%>
+                        <span> ${name.value.Suffix}</span><%----%>
                     </c:if>
                 </c:set>
             </c:if>
@@ -205,18 +204,18 @@
             <c:choose>
                 <c:when test="${kind eq 'org'}">
                     <c:if test="${showOrganization}">
-                        <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
+                        <mercury:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
                     </c:if>
                     <c:if test="${showOrganization and (showName or showPosition)}">
                         <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
-                        <div itemprop="employee" itemscope itemtype="http://schema.org/Person"><%----%>
+                        <div><%----%>
                             <c:if test="${showName}">
                                 <div class="h${hsize + 1} org"><%----%>
                                     <mercury:link link="${linkToRelated}">${personname}</mercury:link>
                                 </div><%----%>
                             </c:if>
                             <c:if test="${showPosition}"><%----%>
-                                <div class="pos" itemprop="description" class="title"><%----%>
+                                <div class="pos" class="title"><%----%>
                                     ${position}
                                 </div><%----%>
                             </c:if>
@@ -225,17 +224,17 @@
                 </c:when>
                 <c:otherwise>
                     <c:if test="${showName}">
-                        <mercury:heading level="${hsize}" css="fn n" attr="itemprop='name'" suffix="${nameSuffix}" ade="${false}">
+                        <mercury:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}">
                             <jsp:attribute name="markupText">${personname}</jsp:attribute>
                         </mercury:heading>
                         <c:if test="${showPosition}">
-                            <div class="h${hsize + 1} pos" itemprop="description" class="title"><%----%>
+                            <div class="h${hsize + 1} pos" class="title"><%----%>
                                 ${position}
                             </div><%----%>
                         </c:if>
                     </c:if>
                     <c:if test="${showOrganization}">
-                        <div class="org" itemprop="worksFor"><%----%>
+                        <div class="org"><%----%>
                             <mercury:link link="${linkToRelated}">${organization}</mercury:link>
                         </div><%----%>
                     </c:if>
@@ -247,24 +246,22 @@
 
                     <c:set var="animatedAddress" value="${not showAddressAlways}" />
                     <div class="${animatedAddress ? 'clickme-showme adr-p' : 'adr-p'}"><%----%>
-                        <div class="adr ${animatedAddress ? 'clickme' : ''}" <%--
-                        --%>itemprop="address" itemscope <%--
-                        --%>itemtype="http://schema.org/PostalAddress"><%----%>
-                            <div itemprop="streetAddress" class="street-address">${locData.streetAddress}</div><%----%>
+                        <div class="adr ${animatedAddress ? 'clickme' : ''}"><%----%>
+                            <div class="street-address">${locData.streetAddress}</div><%----%>
                             <c:if test="${not empty locData.extendedAddress}">
-                                <div itemprop="streetAddress" class="extended-address">${locData.extendedAddress}</div><%----%>
+                                <div class="extended-address">${locData.extendedAddress}</div><%----%>
                             </c:if>
                             <div><%----%>
-                                <span itemprop="postalCode" class="postal-code">${locData.postalCode}</span>${' '}<%----%>
-                                <span itemprop="addressLocality" class="locality">${locData.locality}</span><%----%>
+                                <span class="postal-code">${locData.postalCode}</span>${' '}<%----%>
+                                <span class="locality">${locData.locality}</span><%----%>
                             </div><%----%>
                             <c:if test="${(not empty locData.region) or (not empty locData.country)}">
                                 <div><%----%>
                                     <c:if test="${not empty locData.region}">
-                                        <span itemprop="addressRegion" class="region">${locData.region}${' '}</span><%----%>
+                                        <span class="region">${locData.region}${' '}</span><%----%>
                                     </c:if>
                                     <c:if test="${not empty locData.country}">
-                                        <span itemprop="addressCountry" class="country-name">${locData.country}</span><%----%>
+                                        <span class="country-name">${locData.country}</span><%----%>
                                     </c:if>
                                 </div><%----%>
                             </c:if>
@@ -302,7 +299,7 @@
                         </mercury:icon-prefix>
                         <span><%----%>
                             <a href="tel:${fn:replace(data.value.Phone, ' ','')}" ${data.rdfa.Phone}><%----%>
-                                <span itemprop="telephone" class="tel">${data.value.Phone}</span><%----%>
+                                <span class="tel">${data.value.Phone}</span><%----%>
                             </a><%----%>
                         </span><%----%>
                     </div><%----%>
@@ -314,7 +311,7 @@
                         </mercury:icon-prefix>
                         <span><%----%>
                             <a href="tel:${fn:replace(data.value.Mobile, ' ','')}" ${data.rdfa.Mobile}><%----%>
-                                <span itemprop="telephone" class="tel">${data.value.Mobile}</span><%----%>
+                                <span class="tel">${data.value.Mobile}</span><%----%>
                             </a><%----%>
                         </span><%----%>
                     </div><%----%>
@@ -326,7 +323,7 @@
                         </mercury:icon-prefix>
                         <span><%----%>
                             <a href="tel:${fn:replace(data.value.Fax, ' ','')}" ${data.rdfa.Fax}><%----%>
-                                <span itemprop="faxNumber" class="tel">${data.value.Fax}</span><%----%>
+                                <span class="tel">${data.value.Fax}</span><%----%>
                             </a><%----%>
                         </span><%----%>
                     </div><%----%>
@@ -348,7 +345,6 @@
                 </div><%----%>
             </c:if>
 
-            <c:set var="linkattr">itemprop="url"</c:set>
             <c:if test="${showWebsite}">
 
                 <c:set var="websiteLink" value="${data.value.Website}" />
@@ -389,21 +385,19 @@
                             </mercury:icon-prefix>
                         </c:if>
                         <span><%----%>
-                             <mercury:link link="${data.value.Website}" attr="${linkattr}" newWin="${websiteNewWin}">${websiteURL}</mercury:link><%----%>
+                             <mercury:link link="${data.value.Website}" newWin="${websiteNewWin}">${websiteURL}</mercury:link><%----%>
                         </span><%----%>
                     </div><%----%>
                 </c:if>
-
-                <c:set var="linkattr" value="" />
             </c:if>
 
             <c:if test="${showDescription}">
-                <div itemprop="description" class="note">${description}</div><%----%>
+                <div class="note">${description}</div><%----%>
             </c:if>
 
             <c:if test="${showLinkAsText}">
                 <div class="contactlink"><%----%>
-                    <mercury:link link="${link}" css="piece-text-link" attr="${linkattr}" newWin="${websiteNewWin}" />
+                    <mercury:link link="${link}" css="piece-text-link" newWin="${websiteNewWin}" />
                 </div><%----%>
             </c:if>
 
@@ -427,7 +421,7 @@
                     <c:set var="btnClass" value="btn btn-sm" />
                 </c:otherwise>
             </c:choose>
-                <mercury:link link="${link}" css="contactlink ${btnClass}" attr="${linkattr}" newWin="${websiteNewWin}" />
+                <mercury:link link="${link}" css="contactlink ${btnClass}" newWin="${websiteNewWin}" />
             </c:if>
 
         </div><%----%>

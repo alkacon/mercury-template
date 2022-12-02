@@ -28,12 +28,16 @@
     description="A map that contains the data read for the location as properties." %>
 
 <%@ variable name-given="locJsonLd" declare="true"
-    description="A JSON-LD object created for the location.
-    This will only be created if the attribute createJsonLd has been set to ''true'." %>
+    description="A JSON-LD object created for the location of type 'place'.
+    This will only be created if the attribute createJsonLd has been set to 'true'." %>
+
+<%@ variable name-given="adrJsonLd" declare="true"
+    description="A JSON-LD object created for the address of the location.
+    This will only be created if the attribute createJsonLd has been set to 'true'." %>
 
 <%@ variable name-given="locAttendanceMode" declare="true"
     description="A String that will hold the information about the attendance mode.
-    This will only be created if the attribute createJsonLd has been set to ''true'." %>
+    This will only be created if the attribute createJsonLd has been set to 'true'." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -136,42 +140,47 @@
 
     <c:if test="${createJsonLd}">
         <c:if test="${(not empty locData.name) or (not empty locData.streetAddress)}">
+
+            <c:if test="${not empty locData.streetAddress}">
+                <cms:jsonobject var="adrJsonLd" mode="object">
+                    <cms:jsonvalue key="@type" value="PostalAddress" />
+                    <c:set var="street" value="${locData.streetAddress}" />
+                    <c:if test="${not empty locData.ExtendedAddress}">
+                        <c:set var="street" value="${street}${empty street ? '' : ' '}${locData.ExtendedAddress}" />
+                    </c:if>
+                    <cms:jsonvalue key="streetAddress" value="${street}" />
+                    <c:if test="${not empty locData.postalCode}">
+                        <cms:jsonvalue key="postalCode" value="${locData.postalCode}" />
+                    </c:if>
+                    <c:if test="${not empty locData.locality}">
+                        <cms:jsonvalue key="addressLocality" value="${locData.locality}" />
+                    </c:if>
+                    <c:if test="${not empty locData.region}">
+                        <cms:jsonvalue key="addressRegion" value="${locData.region}" />
+                    </c:if>
+                    <c:if test="${not empty locData.country}">
+                        <cms:jsonvalue key="addressCountry" value="${locData.country}" />
+                    </c:if>
+                    <c:if test="${(not empty locData.lat) and (not empty locData.lng)}">
+                        <cms:jsonobject key="areaServed" mode="object">
+                            <cms:jsonvalue key="@type" value="Place" />
+                            <cms:jsonobject key="geo" mode="object">
+                                <cms:jsonvalue key="@type" value="GeoCoordinates" />
+                                <cms:jsonvalue key="latitude" value="${locData.lat}" />
+                                <cms:jsonvalue key="longitude" value="${locData.lng}" />
+                            </cms:jsonobject>
+                        </cms:jsonobject>
+                    </c:if>
+                </cms:jsonobject>
+            </c:if>
+
             <cms:jsonobject var="locJsonLdPlace" mode="object">
                 <cms:jsonvalue key="@type" value="Place" />
                 <c:if test="${not empty locData.name}">
                     <cms:jsonvalue key="name" value="${locData.name}" />
                 </c:if>
                 <c:if test="${not empty locData.streetAddress}">
-                    <cms:jsonobject key="address" mode="object">
-                        <cms:jsonvalue key="@type" value="PostalAddress" />
-                        <c:set var="street" value="${locData.streetAddress}" />
-                        <c:if test="${not empty locData.ExtendedAddress}">
-                            <c:set var="street" value="${street}${empty street ? '' : ' '}${locData.ExtendedAddress}" />
-                        </c:if>
-                        <cms:jsonvalue key="streetAddress" value="${street}" />
-                        <c:if test="${not empty locData.postalCode}">
-                            <cms:jsonvalue key="postalCode" value="${locData.postalCode}" />
-                        </c:if>
-                        <c:if test="${not empty locData.locality}">
-                            <cms:jsonvalue key="addressLocality" value="${locData.locality}" />
-                        </c:if>
-                        <c:if test="${not empty locData.region}">
-                            <cms:jsonvalue key="addressRegion" value="${locData.region}" />
-                        </c:if>
-                        <c:if test="${not empty locData.country}">
-                            <cms:jsonvalue key="addressCountry" value="${locData.country}" />
-                        </c:if>
-                        <c:if test="${(not empty locData.lat) and (not empty locData.lng)}">
-                            <cms:jsonobject key="areaServed" mode="object">
-                                <cms:jsonvalue key="@type" value="Place" />
-                                <cms:jsonobject key="geo" mode="object">
-                                    <cms:jsonvalue key="@type" value="GeoCoordinates" />
-                                    <cms:jsonvalue key="latitude" value="${locData.lat}" />
-                                    <cms:jsonvalue key="longitude" value="${locData.lng}" />
-                                </cms:jsonobject>
-                            </cms:jsonobject>
-                        </c:if>
-                    </cms:jsonobject>
+                    <cms:jsonvalue key="address" value="${adrJsonLd}" />
                 </c:if>
             </cms:jsonobject>
         </c:if>
@@ -201,6 +210,8 @@
             </c:when>
         </c:choose>
     </c:if>
+
 </c:if>
+
 
 <jsp:doBody/>

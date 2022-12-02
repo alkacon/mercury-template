@@ -119,19 +119,19 @@
 
 </mercury:section-piece>
 
+<c:choose>
+    <c:when test="${valKind eq 'org'}">
+        <mercury:data-organization content="${content}" />
+    </c:when>
+    <c:otherwise>
+        <mercury:data-person content="${content}" />
+    </c:otherwise>
+</c:choose>
+
 <c:if test="${kindModern}">
     <mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
     </div><%----%>
 </c:if>
-
-<mercury:location-vars data="${valAddress}" addMapInfo="true">
-    <c:if test="${valKind eq 'pers'}">
-        <mercury:data-person content="${content}" locData="${locData}" valOrganization="${valOrganization}"/>
-    </c:if>
-    <c:if test="${valKind eq 'org'}">
-        <mercury:data-organization content="${content}" locData="${locData}" />
-    </c:if>
-</mercury:location-vars>
 
 </mercury:contact-vars>
 </mercury:setting-defaults>

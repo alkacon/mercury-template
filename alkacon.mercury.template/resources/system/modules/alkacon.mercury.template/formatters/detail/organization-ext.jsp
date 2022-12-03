@@ -237,7 +237,7 @@
     </c:if>
 </c:if>
 
-<mercury:data-organization content="${content}" addressJsonLd="${adrJsonLd}" />
+<mercury:data-organization content="${content}" showAddress="${true}" showPerson="${false}" addressJsonLd="${adrJsonLd}" />
 
 </div><%----%>
 <mercury:nl />

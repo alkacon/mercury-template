@@ -1,6 +1,8 @@
 // Variables
 // --------------------------
 
+$prefix:              "my-" !default; // prefix for the generated CSS variables
+
 $fa-font-path:        "../fonts" !default;
 $fa-font-size-base:   14px !default;
 $fa-line-height-base: 1 !default;

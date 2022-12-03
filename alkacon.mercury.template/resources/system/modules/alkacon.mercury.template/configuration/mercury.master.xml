@@ -1006,7 +1006,7 @@
     </Attribute>
     <Attribute>
       <Key><![CDATA[mercuryIconFontConfig]]></Key>
-      <Value><![CDATA[awesomeFull]]></Value>
+      <Value><![CDATA[awesomeSelection]]></Value>
     </Attribute>
     <Attribute>
       <Key><![CDATA[selectOrCombo]]></Key>

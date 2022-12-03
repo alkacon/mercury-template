@@ -121,10 +121,10 @@
 
 <c:choose>
     <c:when test="${valKind eq 'org'}">
-        <mercury:data-organization content="${content}" />
+        <mercury:data-organization content="${content}" showAddress="${showAddress or showAddressAlways}" showPerson="${setting.showOrganization.toBoolean}" />
     </c:when>
     <c:otherwise>
-        <mercury:data-person content="${content}" />
+        <mercury:data-person content="${content}" showAddress="${showAddress or showAddressAlways}" showOrganization="${setting.showOrganization.toString}" />
     </c:otherwise>
 </c:choose>
 

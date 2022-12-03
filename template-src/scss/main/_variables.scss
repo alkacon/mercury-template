@@ -558,7 +558,7 @@ $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the
 $nav-breadcrumb-image-size:         round($nav-breadcrumb-font-size * 80) * 0.01 !default; // image height / width for the breadcrumbs
 $nav-breadcrumb-separator-color:    conditional-value($nav-breadcrumb-bg-color == none, $grey, $nav-breadcrumb-text-color) !default; // color of breadcrumbs separator
 $nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
-$nav-breadcrumb-separator-font:     ForkAwesome !default; // font-family for breadcrumb seperator - NOTE: Sometimes you may want to use a 'standard' font with a seperator like '/' or '|', hence this is configurable
+$nav-breadcrumb-separator-font:     var(--#{$prefix}icon-font-family) !default; // font-family for breadcrumb seperator - NOTE: Sometimes you may want to use a 'standard' font with a seperator like '/' or '|', hence this is configurable
 
 
 // Side navigation - mirrors the main navigation by default, and allows to use different colors if required.

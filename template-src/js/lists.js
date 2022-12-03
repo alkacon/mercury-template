@@ -577,7 +577,7 @@ function generatePagination(list, page) {
             }
             result.push('<ul class="pagination">');
             // previous page and first page
-            result.push(generatePaginationItem("previous", page <= 1, false, page <= 1 ? 1 : page -1, messages.tpp, null, "fa fa-angle-left", listId)); // mercury:icon
+            result.push(generatePaginationItem("previous", page <= 1, false, page <= 1 ? 1 : page -1, messages.tpp, null, "ico fa fa-angle-left", listId)); // mercury:icon
             if (firstShownPage > 1) {
                 var liClassesFirstPage = "first";
                 if (firstShownPage > 2) {
@@ -588,7 +588,7 @@ function generatePagination(list, page) {
             for (var p = firstShownPage; p <= lastShownPage; p++) {
                 result.push(generatePaginationItem(p == lastShownPage ? "lastpage" : "page", false, page == p, p, messages.tp, messages.lp, "number", listId));
             }
-            result.push(generatePaginationItem("next", page >= lastPage, false, page < lastPage ? page + 1 : lastPage, messages.tnp, null, "fa fa-angle-right", listId)); // mercury:icon
+            result.push(generatePaginationItem("next", page >= lastPage, false, page < lastPage ? page + 1 : lastPage, messages.tnp, null, "ico fa fa-angle-right", listId)); // mercury:icon
         } else if (list.option === 'append' && page < lastPage) {
             // show the button to append more results.
             result.push('<div class="list-append-position" data-dynamic="false">');

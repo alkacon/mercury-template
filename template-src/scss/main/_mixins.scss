@@ -533,7 +533,7 @@
 }
 
 @mixin icon-font() {
-    font-family: ForkAwesome;
+    font-family: var(--#{$prefix}icon-font-family);
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

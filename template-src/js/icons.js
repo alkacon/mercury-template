@@ -35,10 +35,10 @@ function replaceIcons(svgData, faElements, iconName) {
 
 function loadIcons(faElements) {
     for (const faEl of faElements) {
-        if (!faEl.classList.contains("ico-font")) {
+        if (!faEl.classList.contains("ico")) {
             if ("none" != window.getComputedStyle(faEl, '::before').content) {
                 // this icon is part of the reduced awesome font, no need to load SVG
-                faEl.classList.add("ico", "ico-font");
+                faEl.classList.add("ico");
             } else {
                 const faClIter = faEl.classList.values();
                 for (const faClass of faClIter) {
@@ -83,17 +83,17 @@ function mutateIcons(mutations) {
     for (const { addedNodes } of mutations) {
         for (const node of addedNodes) {
             if (!node.tagName) continue;
-            if (node.classList.contains('fa') || node.classList.contains('fab') || node.classList.contains('fas')) {
+            if ((node.classList.contains('fa') || node.classList.contains('fab') || node.classList.contains('fas')) && !node.classList.contains('ico')) {
                 faElements.push(node);
             } else if (node.firstElementChild) {
                 faElements.push(...node.getElementsByClassName('fa'));
-                faElements.push(...node.getElementsByClassName('fas'));
                 faElements.push(...node.getElementsByClassName('fab'));
+                faElements.push(...node.getElementsByClassName('fas'));
             }
         }
     }
     if (faElements.length > 0) {
-        if (Mercury.debug()) console.info("Icons.mutateIcons: ".concat(faElements.length).concat(" fa-* elements found after mutation!"));
+        if (Mercury.debug()) console.info("Icons.mutateIcons: ".concat(faElements.length).concat(" .fa/.fab/.fas elements found after mutation!"));
     }
     loadIcons(faElements);
 }
@@ -105,12 +105,12 @@ export function init(iconPath, fullIcons) {
     ICON_FOLDER = window.atob(iconPath).slice(0, -6);
     if (Mercury.debug()) console.info("Icons.init() source: ".concat(ICON_FOLDER));
 
-    const faElements = document.querySelectorAll("[class*='fa '][class*=' fa-']:not(.ico-font),[class*='fab fa-']:not(.ico-font),[class*='fas fa-']:not(.ico-font)");
+    const faElements = document.querySelectorAll(".fa:not(.ico)");
 
     if ((faElements.length > 80) && (fullIcons != null)) {
         // using 80 bevause of calendar lists
 
-        if (Mercury.debug()) console.info("Icons.init: Using font - ".concat(faElements.length).concat(" fa-* elements found after page load!"));
+        if (Mercury.debug()) console.info("Icons.init: Using font - ".concat(faElements.length).concat(" .fa:not(.ico) elements found after page load!"));
         const head = document.getElementsByTagName("HEAD")[0];
         const link = document.createElement("link");
         link.rel = "stylesheet";
@@ -121,7 +121,7 @@ export function init(iconPath, fullIcons) {
     } else {
 
         if (faElements.length > 0) {
-            if (Mercury.debug()) console.info("Icons.init: ".concat(faElements.length).concat(" fa-* elements found after page load!"));
+            if (Mercury.debug()) console.info("Icons.init: ".concat(faElements.length).concat(" .fa:not(.ico) elements found after page load!"));
             loadIcons(faElements);
         }
 

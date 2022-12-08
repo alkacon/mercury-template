@@ -404,7 +404,7 @@ scaleGapStep: ${scaleGapStep}
 
 <c:choose>
     <c:when test="${not empty inlineSvg}">
-        <c:set var="cssImage" value="${empty cssImage ? '' : cssImage.concat(' ').concat(inlineSvg)}" />
+        <c:set var="cssImage" value="${empty cssImage ? inlineSvg : cssImage.concat(' ').concat(inlineSvg)}" />
         <mercury:image-svg-inline
             imagebean="${ib}"
             width="${ib.scaler.width}"

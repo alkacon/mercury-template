@@ -78,6 +78,9 @@
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
     description="Controls if and how the link is displayed. Default is 'button'." %>
 
+<%@ attribute name="linkNewWin" type="java.lang.Boolean" required="false"
+    description="Controls if links are opened in a new browser window." %>
+
 <%@ attribute name="buttonText" type="java.lang.String" required="false"
     description="An optional button label used on the link button, or 'none' which means no link button will be shown.
     HTML in this will be escaped." %>
@@ -221,6 +224,7 @@
         <c:if test="${not empty headline or not empty intro}">
             <mercury:link
                 link="${link}"
+                newWin="${linkNewWin}"
                 test="${linkHeadline}">
 
                 <mercury:intro-headline
@@ -242,6 +246,7 @@
         </c:if>
         <mercury:link
             link="${link}"
+            newWin="${linkNewWin}"
             title="${linkHeadline ? null : linkTitle}"
             attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
@@ -300,6 +305,7 @@
 
                 <mercury:link
                     link="${link}"
+                    newWin="${linkNewWin}"
                     title="${linkHeadline ? null : linkTitle}"
                     css='uncolored'
                     attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
@@ -344,6 +350,7 @@
                     </c:choose>
                     <mercury:link
                         link="${link}"
+                        newWin="${linkNewWin}"
                         css="${linkCss}"
                         text="${buttonText}"
                         forceText="${forceText}"

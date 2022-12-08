@@ -1605,6 +1605,10 @@
         file-text-o:%(key.msg.icon.document)|
         file-pdf-o:%(key.msg.icon.pdf)|
         folder-o:%(key.msg.icon.folder)|
+        facebook-square:%(key.msg.icon.facebook-official)|
+        twitter:%(key.msg.icon.twitter)|
+        instagram:%(key.msg.icon.instagram)|
+        youtube-square:%(key.msg.icon.youtube)|
         link:%(key.msg.icon.link)|
         external-link:%(key.msg.icon.external-link)|
         external-link-square:%(key.msg.icon.external-link-square)|

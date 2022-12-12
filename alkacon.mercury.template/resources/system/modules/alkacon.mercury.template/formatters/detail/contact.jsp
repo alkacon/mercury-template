@@ -64,7 +64,7 @@
 
 <mercury:nl />
 <mercury:section-piece
-    cssWrapper="${kindModern ? kindCss : cssWrappers}"
+    cssWrapper="paragraph ${kindModern ? kindCss : cssWrappers}"
     pieceLayout="${pieceLayout}"
     heading="${showTitle ? value.Title : null}"
     hsize="${hsizeTitle}"

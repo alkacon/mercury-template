@@ -861,7 +861,7 @@ public class CmsSelectWidgetXmlcontentType extends CmsSelectWidget {
                             configuration));
                 }
 
-                m_displayOptionMacro = value;
+                m_displayOptionMacro = CmsMacroResolver.formatMacro(value);
                 displayMacroFound = true;
             } else if (CONFIGURATION_OPTION_SORT_MACRO.equals(key)) {
                 if (sortMacroFound) {
@@ -871,7 +871,7 @@ public class CmsSelectWidgetXmlcontentType extends CmsSelectWidget {
                             key,
                             configuration));
                 }
-                m_sortMacro = value;
+                m_sortMacro = CmsMacroResolver.formatMacro(value);
                 sortMacroFound = true;
 
             } else if (CONFIGURATION_RESOURCETYPENAME.equals(key)) {

@@ -682,6 +682,24 @@ var Mercury = function (jQ) {
     }
 
 
+    function initFunctions() {
+        // calls all init() functions that have registered
+        // the idea is that additional JavaScrips are started from here rather then registering their own "window.onload" event
+        // this way it can be ensured that the required page functions are already initialized when the additional JS is executed
+        var _functions = window.mercury.getInitFunctions();
+        if (DEBUG) console.info("Mercury init function found: " + _functions.length);
+        for (var i = 0; i < _functions.length; i++) {
+            try {
+                var initFunction = _functions[i];
+                if (VERBOSE) console.info("Mercury executing init function:\n" + initFunction.toString());
+                initFunction(jQ, DEBUG);
+            } catch (err) {
+                console.warn("Mercury.initFunctions() error", err);
+            }
+        }
+    }
+
+
     function addInit(initFunction) {
         // add a function to the template script init process
         if (DEBUG) console.info("Mercury added init function: " + initFunction.name);
@@ -691,8 +709,6 @@ var Mercury = function (jQ) {
 
     function initScripts() {
         // register additional JavaScripts to the template init process
-        // the idea is that additional JavaScrips are started from here rather then registering their own "window.onload" event
-        // this way it can be ensured that the required page functions are already initialized when the additional JS is executed
         var $initScripts = jQ('.mercury-initscript');
         if (DEBUG) console.info("Mercury.initScripts() .mercury-initscript elements found: " + $initScripts.length);
         $initScripts.each(function () {
@@ -704,21 +720,6 @@ var Mercury = function (jQ) {
                 addInit(window[script]);
             }
         });
-    }
-
-
-    function initFunctions() {
-        // calls all init() functions that have registered
-        var _functions = window.mercury.getInitFunctions();
-        for (var i = 0; i < _functions.length; i++) {
-            try {
-                var initFunction = _functions[i];
-                if (DEBUG) console.info("Mercury executing init function: " + initFunction.name);
-                initFunction(jQ, DEBUG);
-            } catch (err) {
-                console.warn("Mercury.initFunctions() error", err);
-            }
-        }
     }
 
 

@@ -30,16 +30,17 @@
 <c:set var="headingOption"      value="${setting.headingOption.toString}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
-<c:set var="boxWrapper"         value="${fn:contains(setCssWrapperAll, 'box') ? '' : ' box'}" />
+<%-- Note regarding css wrappers: Apply wrappers 2 and 3 to the .piece inner div --%>
+<c:set var="boxWrapper"         value="${fn:contains(setCssWrapper, 'box') ? '' : ' box'}" />
 
 <mercury:nl />
-<div class="element type-linkbox${boxWrapper}${setCssWrapperAll}"><%----%>
+<div class="element type-linkbox${boxWrapper}${setCssWrapper}${setEffect}${setCssVisibility}"><%----%>
 <mercury:nl />
 
 <mercury:link link="${value.Link}" testFailTag="span" css="linkbox-link">
 
 <mercury:section-piece
-    cssWrapper="linkbox-content"
+    cssWrapper="linkbox-content${setCssWrapper2}${setCssWrapper3}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"

@@ -437,7 +437,7 @@ export function init(jQuery, debug) {
                             $mapElement.removeClass('placeholder');
                         }
                         // add redraw handler for maps hidden in accordions and tabs
-                        Mercury.initTabAccordion(function(event) { redrawMap(mapData.id, event) });
+                        Mercury.initTabAccordion($mapElement[0], function(event) { redrawMap(mapData.id, event) });
                     }
                 });
 

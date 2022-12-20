@@ -166,12 +166,15 @@
          margin-bottom: calc(-1 * var(--#{$prefix}element-margin));
     }
 }
-.acco-body > div > .element,
-.tab-pane > div > .element {
-    // tabs that directly contain elements:
-    // remove bottom margin from the last element in the tab
-    &:last-child {
-         margin-bottom: 0;
+.acco-body > div,
+.tab-pane > div {
+        > .element,
+        > .detail-page {
+        // tabs that directly contain elements:
+        // remove bottom margin from the last element in the tab
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 

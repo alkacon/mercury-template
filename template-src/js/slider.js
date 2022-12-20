@@ -257,6 +257,14 @@ function initEmblaSliders(sliders) {
             if (Mercury.debug()) console.info("Slider.initEmblaSliders() Timed slider - Showing slide: " + startIndex + " - Server time: " + options.param + " - Client time: " + Date.now());
         }
 
+        if ((options.transition == 'fade') && (sliderBox.closest('.accordion .collapse') || sliderBox.closest('.tabs-parent'))) {
+            if (Mercury.debug()) console.info("Slider.initEmblaSliders() Fade effect not supported in tabs or accordions, using 'direct' instead");
+            options.transition = 'direct';
+            options.speed = 100;
+            sliderBox.classList.remove('tr-fade');
+            sliderBox.classList.add('tr-direct');
+        }
+
         options.loop = true;
         options.align = 'start';
         options.speed = options.speed || 4;
@@ -265,7 +273,8 @@ function initEmblaSliders(sliders) {
 
         let plugins = [EmblaClassNames({
             selected: 'slide-active',
-            dragging: 'is-dragging', draggable: ''
+            dragging: 'is-dragging',
+            draggable: ''
         })];
         const autoplay = options.autoplay ? AutoplayMod({
             delay: options.delay,
@@ -326,6 +335,8 @@ function initEmblaSliders(sliders) {
                     break;
             }
         });
+
+        Mercury.initTabAccordion( sliderBox, embla.reInit );
     });
 }
 

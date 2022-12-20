@@ -426,14 +426,18 @@ var Mercury = function (jQ) {
     }
 
 
-    function initTabAccordion(callback) {
+    function initTabAccordion(element, callback) {
         // add handler for elements hidden in accordions and tabs
-        document.querySelectorAll('.accordion .collapse').forEach(function (el) {
-            el.addEventListener('shown.bs.collapse', callback);
-        });
-        document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(function (el) {
-            el.addEventListener('shown.bs.tab', callback);
-        });
+        let accoEl = element.closest('.accordion .collapse');
+        if (accoEl != null) {
+            accoEl.addEventListener('shown.bs.collapse', callback );
+        }
+        let tabEl = element.closest('.tabs-parent');
+        if (tabEl != null) {
+            tabEl.querySelectorAll('button[data-bs-toggle="tab"]').forEach(function(tab) {
+                tab.addEventListener('shown.bs.tab', callback );
+            });
+        }
     }
 
 

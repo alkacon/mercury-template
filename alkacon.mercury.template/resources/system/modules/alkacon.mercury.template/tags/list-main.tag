@@ -67,6 +67,10 @@
     multiDayRangeFacet="${multiDayRangeFacet}"
 />
 
+<c:set var="categories">${config.value.Category}</c:set>
+<c:set var="postCreateHandler">org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${categories}</c:set>
+<cms:enable-list-add types="${config.valueList.TypesToCollect}" postCreateHandler="${postCreateHandler}" />
+
 <c:if test="${search.numFound > 0}">
 
     <%-- ####### The sort option bar ######## --%>
@@ -93,8 +97,6 @@
     <c:set var="listEntryTag" value="${not empty settings.listEntryTag ? settings.listEntryTag : 'li' }" />
 
     <c:set var="currentResult" value="${search.start - 1}" />
-
-    <c:set var="categories">${config.value.Category}</c:set>
 
     <c:if test="${not ajaxCall}">
         <cms:jsonobject var="listGeneratedJson" mode="wrapper" scope="request" />

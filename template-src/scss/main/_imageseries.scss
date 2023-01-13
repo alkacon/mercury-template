@@ -19,16 +19,18 @@
  * Source file: _imageseries.scss
  */
 
-$pswp-title-size:           1.8rem !default;
-$pswp-copyright-size:       1.1rem !default;
-$pswp-title-height:         $headings-line-height !default;
-
-$pswp__root-z-index:        $above-oc-toolbar !default;
+$pswp-title-size:                   1.8rem !default;
+$pswp-copyright-size:               1.1rem !default;
+$pswp-title-height:                 $headings-line-height !default;
+$pswp__root-z-index:                $above-oc-toolbar !default;
 
 // import the photswipe distribution CSS
 @import '../../plugins/photoswipe/photoswipe';
 
-$imageseries-square-margin: 2px !default;
+$imageseries-square-margin:         2px !default;
+$imageseries-slide-border-size:     0px !default;
+$imageseries-slide-border-color:    var(--#{$prefix}grey) !default;
+$imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
 
 // Image series base classes
 
@@ -40,19 +42,9 @@ $imageseries-square-margin: 2px !default;
     }
 
     > .series {
-        margin-left: -1 * $imageseries-square-margin;
-        margin-right: -1 * $imageseries-square-margin;
         position: relative;
 
-        > .images {
-            --#{$prefix}sq-margin: #{$imageseries-square-margin};
-
-            margin-top: -1 * $imageseries-square-margin;
-            margin-bottom: -1 * $imageseries-square-margin;
-        }
-
         > button.btn {
-
             margin-top: 2 * $imageseries-square-margin;
             margin-left: $imageseries-square-margin;
             margin-right: $imageseries-square-margin;
@@ -60,8 +52,55 @@ $imageseries-square-margin: 2px !default;
         }
 
         .imagedata {
-
             display: none;
+        }
+    }
+
+    &.square-list,
+    &.slide-list {
+        > .series {
+            margin-left: -1 * $imageseries-square-margin;
+            margin-right: -1 * $imageseries-square-margin;
+
+            > .images {
+                --#{$prefix}sq-margin: #{$imageseries-square-margin};
+
+                margin-top: -1 * $imageseries-square-margin;
+                margin-bottom: -1 * $imageseries-square-margin;
+            }
+        }
+    }
+
+    &.slide-list {
+        .image-col {
+            .wrapper {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+                border: $imageseries-slide-border-size solid $imageseries-slide-border-color;
+                border-radius: var(--#{$prefix}image-border-radius);
+            }
+            .zoom-overlay {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $imageseries-slide-bgcolor;
+            }
+            img {
+                object-fit: contain;
+                height: 100%;
+                width: 100%;
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &.masonry-list {
+        .row.images {
+            margin-bottom: 0;
         }
     }
 
@@ -77,13 +116,22 @@ $imageseries-square-margin: 2px !default;
         }
     }
 
-    .square-col {
+    .image-col {
         .content {
             // must always set this because this may reset tile rounding
             border-radius: var(--#{$prefix}image-border-radius);
         }
         .copyright {
             @include image-copyright;
+        }
+    }
+
+    .tile-col {
+        display: flex;
+
+        .zoom {
+            position: relative;
+            width: 100%;
         }
     }
 
@@ -171,7 +219,7 @@ $zoomer-fg:             $black !default;
 $zoomer-overlay-size:   35px !default;
 $zoomer-icon:           "\f002" !default; // magifying glass
 
-a:focus .zoom-overlay .zoom-icon,
+html.keyboard-nav a:focus .zoom-overlay .zoom-icon,
 .zoom:hover .zoom-overlay .zoom-icon {
     opacity: 1;
     transform: scale(1);
@@ -183,7 +231,6 @@ a:focus .zoom-overlay .zoom-icon,
     cursor: zoom-in;
     position: relative;
     display: block;
-    height: 100%;
     width: 100%;
     transition: all 0.1s ease-in-out 0s;
 
@@ -216,6 +263,10 @@ a:focus .zoom-overlay .zoom-icon,
             color: $zoom-fg;
         }
     }
+}
+
+.square-col .zoom-overlay {
+    height: 100%;
 }
 
 .effect-piece,

@@ -142,6 +142,9 @@ function render(imageSeries, page) {
         imageSeries.loaded = true;
         $moreButton.finish().fadeOut(1000);
     }
+
+    // trigger "imageseries:loaded" event
+    jQ('#' + imageSeries.id)[0].dispatchEvent(new CustomEvent("imageseries:loaded", { bubbles: true, cancelable: true }));
 }
 
 

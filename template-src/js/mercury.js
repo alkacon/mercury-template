@@ -857,6 +857,19 @@ var Mercury = function (jQ) {
             }
         }
 
+        if (requiresModule(".type-imageseries, [data-imagezoom]")) {
+            try {
+                import(
+                    /* webpackChunkName: "mercury-imageseries" */
+                    "./imageseries.js").then(function (ImageSeries) {
+                        ImageSeries.init(jQ, DEBUG);
+                        window.ImageSeries = ImageSeries;
+                    });
+            } catch (err) {
+                console.warn("ImageSeries.init() error", err);
+            }
+        }
+
         if (requiresModule(".masonry-list")) {
             try {
                 import(
@@ -878,19 +891,6 @@ var Mercury = function (jQ) {
                     });
             } catch (err) {
                 console.warn("DatePicker.init() error", err);
-            }
-        }
-
-        if (requiresModule(".type-imageseries, [data-imagezoom]")) {
-            try {
-                import(
-                    /* webpackChunkName: "mercury-imageseries" */
-                    "./imageseries.js").then(function (ImageSeries) {
-                        ImageSeries.init(jQ, DEBUG);
-                        window.ImageSeries = ImageSeries;
-                    });
-            } catch (err) {
-                console.warn("ImageSeries.init() error", err);
             }
         }
 

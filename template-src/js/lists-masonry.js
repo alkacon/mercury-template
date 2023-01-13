@@ -21,11 +21,10 @@ import Masonry from 'masonry-layout';
 
 "use strict";
 
-function createMasonryList(listId) {
+function createMasonryList(listId, listSelector) {
 
     if (Mercury.debug()) console.info("MasonryList.createMasonryList(" + listId + ")");
-
-    return new Masonry('#' + listId + " .list-entries", {
+    return new Masonry('#' + listId + listSelector, {
         itemSelector: '.tile-col',
         percentPosition: true
     });
@@ -39,12 +38,19 @@ export function init() {
 
     const listElements = document.querySelectorAll('.masonry-list .list-dynamic');
     if (Mercury.debug()) console.info("MasonryList.init() .masonry-list .list-dynamic elements found: " + listElements.length);
-
     for (const listElement of listElements) {
         listElement.addEventListener("list:loaded", function(e) {
             const listId = e.target.getAttribute('id');
-            if (Mercury.debug()) console.info("MasonryList.init() 'list:loaded' event caught for: " + listId);
-            createMasonryList(listId);
+            createMasonryList(listId, " .list-entries");
+        });
+    }
+
+    const imageseriesElements = document.querySelectorAll('.masonry-list .series');
+    if (Mercury.debug()) console.info("MasonryList.init() .masonry-list .series elements found: " + imageseriesElements.length);
+    for (const listElement of imageseriesElements) {
+        listElement.addEventListener("imageseries:loaded", function(e) {
+            const listId = e.target.getAttribute('id');
+            createMasonryList(listId, " .images");
         });
     }
 }

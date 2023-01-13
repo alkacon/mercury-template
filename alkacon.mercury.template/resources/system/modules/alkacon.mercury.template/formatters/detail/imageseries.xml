@@ -44,6 +44,9 @@
       <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageSeriesDisplay.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageSeriesCss.default]]></IncludeName>
     </Setting>
     <Setting>
@@ -81,9 +84,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageSeriesListCopyright.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[autoLoad.false]]></IncludeName>
     </Setting>
     <MetaMapping>
       <Key><![CDATA[ogTitleMeta]]></Key>

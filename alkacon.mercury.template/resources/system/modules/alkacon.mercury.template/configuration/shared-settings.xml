@@ -1511,6 +1511,19 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageSeriesDisplay.default]]></IncludeName>
+      <PropertyName><![CDATA[imageSeriesDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.imageseries.display)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageseries.display.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[square]]></Default>
+      <WidgetConfig><![CDATA[
+        square:                                       %(key.msg.setting.imageseries.display.square)|
+        slide:                                        %(key.msg.setting.imageseries.display.slide)|
+        masonry:                                      %(key.msg.setting.imageseries.display.masonry)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageSeriesCss.default]]></IncludeName>
       <PropertyName><![CDATA[imageSeriesCss]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.imageseries.css)]]></DisplayName>

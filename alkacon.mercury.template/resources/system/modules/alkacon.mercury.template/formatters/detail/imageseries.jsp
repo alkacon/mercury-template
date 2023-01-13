@@ -24,6 +24,7 @@
 
 <c:set var="imageSeriesCss"         value="${setting.imageSeriesCss.toString}" />
 <c:set var="imageSeriesSortOrder"   value="${setting.imageSeriesSortOrder.toString}" />
+<c:set var="imageSeriesDisplay"     value="${setting.imageSeriesDisplay.toString}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="titleOption"            value="${setting.titleOption.toString}" />
 <c:set var="pageSize"               value="${setting.pageSize.useDefault('12').toInteger}" />
@@ -39,7 +40,7 @@
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
 <c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
 
-<c:set var="id"><mercury:idgen prefix='imgal' uuid='${cms.element.instanceId}' /></c:set>
+<c:set var="id"><mercury:idgen prefix='imgser' uuid='${cms.element.instanceId}' /></c:set>
 <c:set var="date">
     <mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
 </c:set>
@@ -53,7 +54,6 @@
 <c:set var="showPreface"            value="${setting.showPreface.toBoolean}" />
 <c:set var="showIntro"              value="${titleOption ne 'none'}" />
 
-
 <c:set var="text"                   value="${value.Text}" />
 <c:set var="showText"               value="${setting.showText.toBoolean}" />
 <c:set var="detailPage"             value="${cms.detailRequest}" />
@@ -63,24 +63,51 @@
     <mercury:heading text="${value.Preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface}" />
 </c:set>
 
+<c:choose>
+    <c:when test="${imageSeriesDisplay eq 'slide'}">
+        <c:set var="elementCss"             value=" slide-list" />
+        <c:set var="rowCss"                 value="" />
+        <c:set var="addBorderWrapper"       value="${true}" />
+        <c:set var="tileAttrs">class="image-col square-col ${imageSeriesCss} comein zoom"</c:set>
+        <c:set var="overlayAttrs">class="zoom-overlay"</c:set>
+    </c:when>
+    <c:when test="${imageSeriesDisplay eq 'masonry'}">
+        <c:set var="elementCss"             value=" masonry-list" />
+        <c:set var="rowCss"                 value=" row tile-margin-2" />
+        <c:set var="imageSeriesCss"         value="${fn:replace(imageSeriesCss, 'square-xs-', 'col-')}" />
+        <c:set var="imageSeriesCss"         value="${fn:replace(imageSeriesCss, 'square-', 'col-')}" />
+        <c:set var="tileAttrs">class="image-col tile-col ${imageSeriesCss} zoom"</c:set>
+        <c:set var="overlayAttrs">class="zoom-overlay image-src-box presized" style="padding-bottom: %(heightPercentage)%"</c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="elementCss"             value=" square-list" />
+        <c:set var="rowCss"                 value="" />
+        <c:set var="squareImagesOnly"       value="${true}" />
+        <c:set var="tileAttrs">class="image-col square-col ${imageSeriesCss} comein zoom"</c:set>
+        <c:set var="overlayAttrs">class="zoom-overlay image-src-box" style="padding-bottom: 100%"</c:set>
+    </c:otherwise>
+</c:choose>
+
 <c:set var="template"><%--
---%><div class="square-col ${imageSeriesCss} comein zoom"><%--
+--%><div ${tileAttrs}><%--
     --%><a class="zoom imageseries" href="%(src)" title="%(titleAttr)"><%--
         --%><span class="content"><%--
-            --%><span class="zoom-overlay image-src-box" style="padding-bottom: 100%"><%--
-                --%><img src="%(squareSrc)" <%--
-                    --%>srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" <%--
-                    --%>data-srcset="%(tileSrcSet)" <%--
-                    --%>data-sizes="auto" <%--
-                    --%>alt="%(titleAttr)"<%--
-                    --%>class="lazyload"><%--
-                --%><span class="zoom-icon"><%--
-                    --%><mercury:icon icon="search" tag="span" /></span><%--
-               --%></span><%--
-            --%></span><%--
-            --%><c:if test="${showImageListCopyright}"><%--
-                --%><span class="copyright">%(copyright)</span><%--
-            --%></c:if><%--
+            --%><c:if test="${addBorderWrapper}"><span class="wrapper"></c:if><%--
+                --%><span ${overlayAttrs}><%--
+                    --%><img src="%(squareSrc)" <%--
+                        --%>srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" <%--
+                        --%>data-srcset="%(tileSrcSet)" <%--
+                        --%>data-sizes="auto" <%--
+                        --%>alt="%(titleAttr)"<%--
+                        --%>class="lazyload"><%--
+                    --%><span class="zoom-icon"><%--
+                        --%><mercury:icon icon="search" tag="span" /></span><%--
+                    --%></span><%--
+                    --%><c:if test="${showImageListCopyright}"><%--
+                        --%><span class="copyright">%(copyright)</span><%--
+                    --%></c:if><%--
+                --%></span><%--
+            --%><c:if test="${addBorderWrapper}"></span></c:if><%--
         --%></span><%--
     --%></a><%--
 --%></div>
@@ -148,7 +175,7 @@
 </c:if>
 
 <mercury:nl />
-<div class="detail-page type-imageseries${setCssWrapper123}"><%----%>
+<div class="detail-page type-imageseries${elementCss}${setCssWrapper123}"><%----%>
 <mercury:nl />
 
 <c:if test="${(not empty titleMarkup) or showDate or showImageCount}">
@@ -196,7 +223,7 @@
         <div id="${id}" class="series" data-imageseries='${dataSeries.compact}'><%----%>
         <mercury:nl />
 
-            <div class="images clearfix"></div><%----%>
+            <div class="images clearfix${rowCss}"></div><%----%>
 
             <div class="spinner"><%----%>
                 <div class="spinnerInnerBox"><%----%>
@@ -241,30 +268,38 @@
                                     <c:set var="imageBean" value="${imageBean.scaleWidth[maxWidth]}" />
                                 </c:if>
 
-                                <%-- Calculate the square tile image --%>
-                                <c:set var="squareImage" value="${imageBean.scaleRatio['1-1']}" />
+                                <c:choose>
+                                    <c:when test="${squareImagesOnly}">
+                                        <c:set var="outputImage" value="${imageBean.scaleRatio['1-1']}" />
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set var="outputImage" value="${imageBean}" />
+                                        <c:set var="heightPercentage" value="${outputImage.ratioHeightPercentage}" />
+                                    </c:otherwise>
+                                </c:choose>
 
                                 <%-- Generate the srcSet - make sure the requested image size can actually be generated --%>
                                 <c:set var="tileSrcSet">
                                     <c:forEach var="w" begin="200" end="800" step="200" varStatus="status">
-                                        <c:set var="currentSrc" value="${squareImage.scaleWidth[w].srcUrl}"/>
+                                        <c:set var="currentSrc" value="${outputImage.scaleWidth[w].srcUrl}"/>
                                         <c:if test="${not empty currentSrc and not status.first}">, </c:if>
                                         <c:if test="${not empty currentSrc}">${currentSrc}${' '}${w}w</c:if>
                                     </c:forEach>
                                 </c:set>
                                 <c:if test="${empty tileSrcSet}">
-                                    <c:set var="tileSrcSet">${squareImage.srcUrl}</c:set>
+                                    <c:set var="tileSrcSet">${outputImage.srcUrl}</c:set>
                                 </c:if>
 
                                 <%-- Finally generate the output for the image list element --%>
                                 <cms:jsonobject var="dataImage">
                                     <cms:jsonvalue key="src" value="${imageBean.srcUrl}" />
-                                    <cms:jsonvalue key="squareSrc" value="${squareImage.srcUrl}" />
+                                    <cms:jsonvalue key="squareSrc" value="${outputImage.srcUrl}" />
                                     <cms:jsonvalue key="tileSrcSet" value="${tileSrcSet}" />
                                     <cms:jsonvalue key="size" value="w:${imageBean.scaler.width},h:${imageBean.scaler.height}" />
                                     <cms:jsonvalue key="caption" value="${caption}" />
                                     <cms:jsonvalue key="copyright" value="${listCopyright}" />
                                     <cms:jsonvalue key="titleAttr" value="${fn:replace(titleAttr, '\"', '')}" />
+                                    <cms:jsonvalue key="heightPercentage" value="${fn:replace(heightPercentage, '%', '')}" />
                                 </cms:jsonobject>
                                 <li data-image='${dataImage.compact}'></li><%----%>
                                 <mercury:nl />

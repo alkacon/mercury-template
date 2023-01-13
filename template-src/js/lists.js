@@ -479,7 +479,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
         list.$entries.animate({'min-height': "0px"}, 500);
     }
 
-    // trigger "listLoaded" event
+    // trigger "list:loaded" event
     jQ('#' + list.id)[0].dispatchEvent(new CustomEvent("list:loaded", { bubbles: true, cancelable: true }));
 
     // fade out the spinner

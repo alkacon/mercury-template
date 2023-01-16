@@ -2,6 +2,7 @@
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/slider-image-textposition.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
 
     <xsd:element name="SliderImageData" type="OpenCmsSliderImageData" />
 
@@ -22,6 +23,7 @@
             <xsd:element name="TitleLine2" type="OpenCmsString" />
             <xsd:element name="Copyright" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Position" type="OpenCmsSliderImageTextPosition" minOccurs="0" />
+            <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
     </xsd:complexType>
@@ -88,6 +90,15 @@
                     <PropertyName>Position</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImage.Position)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.Position.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Availability</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Availability/Expiration</PropertyName>
+                    <Default><![CDATA[%(currenttime)]]></Default>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

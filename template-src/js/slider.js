@@ -245,16 +245,32 @@ const checkAutoplay = (embla, sliderBox, autoplay) => () => {
 
 function initEmblaSliders(sliders) {
 
+    const clientTime = Date.now();
     sliders.forEach((slider) => {
 
         const sliderBox = slider.querySelector('.slider-box');
         const options = JSON.parse(sliderBox.dataset.slider);
 
+        const slides = slider.querySelectorAll('.slide-wrapper');
+        var slideCount = slides.length;
+        if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slides found: " + slideCount);
+        slides.forEach((slide) => {
+            const dateRelease = slide.dataset.release != null ? parseInt(slide.dataset.release) : Number.MIN_VALUE;
+            const dateExpiration = slide.dataset.expiration != null ? parseInt(slide.dataset.expiration) : Number.MAX_VALUE;
+            if (((clientTime < dateRelease) || (clientTime > dateExpiration)) && (slideCount > 1)) {
+                if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slide removed - release=" + dateRelease + " expiration=" + dateExpiration + " time=" + clientTime);
+                slide.parentNode.removeChild(slide);
+                slideCount--;
+            }
+        });
+        options.slides = slideCount;
+        if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slides valid: " + options.slides);
+
         let startIndex = 0;
         if (options.transition == 'timed') {
-            let timeDiff = Math.abs(Date.now() - parseInt(options.param));
+            let timeDiff = Math.abs(clientTime - parseInt(options.param));
             startIndex =  Math.floor(timeDiff / options.delay) % options.slides;
-            if (Mercury.debug()) console.info("Slider.initEmblaSliders() Timed slider - Showing slide: " + startIndex + " - Server time: " + options.param + " - Client time: " + Date.now());
+            if (Mercury.debug()) console.info("Slider.initEmblaSliders() Timed slider - Showing slide: " + startIndex + " of " + options.slides + " - Server time: " + options.param + " - Client time: " + clientTime);
         }
 
         if ((options.transition == 'fade') && (sliderBox.closest('.accordion .collapse') || sliderBox.closest('.tabs-parent'))) {

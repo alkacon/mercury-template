@@ -18,6 +18,9 @@
     description="Height of the target image in percentage relative to the target image width.
     Required for box size calculation." %>
 
+<%@ attribute name="alt" type="java.lang.String" required="false"
+    description="'alt' atttribute to set on the generated SVG tag." %>
+
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="'title' atttribute to set on the generated SVG tag." %>
 
@@ -56,8 +59,10 @@
     width="${width}"
     height="${height}">
 
+    <c:set var="svgTitle" value="${empty alt ? title : alt}" />
+
     <span class="svg-inline img${empty cssImage ? '' : ' '.concat(cssImage)}"
-        <c:if test="${not empty title and (title ne alt)}">${' '}title="${title}"</c:if>
+        <c:if test="${not empty svgTitle}">${' '}title="${svgTitle}"</c:if>
         <c:if test="${not empty attrImage}">${' '}${attrImage}</c:if>
         <c:if test="${not empty zoomData}">
             <fmt:setLocale value="${cms.locale}" />

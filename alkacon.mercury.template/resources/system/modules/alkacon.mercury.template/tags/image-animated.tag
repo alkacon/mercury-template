@@ -19,7 +19,7 @@
     description="Text used in the image 'alt' and 'title' attributes."%>
 
 <%@ attribute name="alt" type="java.lang.String" required="false"
-    description="Text used in the image 'alt'attribute." %>
+    description="Text used in the image 'alt' attribute." %>
 
 <%@ attribute name="setTitle" type="java.lang.Boolean" required="false"
     description="If 'true' a 'title' attribute is added to the generated image tag.
@@ -77,6 +77,8 @@
 <%@ variable name-given="imageCopyrightHtml" declare="true" %>
 <%@ variable name-given="imageTitle" declare="true" %>
 <%@ variable name-given="imageTitleCopyright" declare="true" %>
+<%@ variable name-given="imageDescription" declare="true" %>
+<%@ variable name-given="imageDescriptionCopyright" declare="true" %>
 <%@ variable name-given="imageWidth" declare="true" %>
 <%@ variable name-given="imageHeight" declare="true" %>
 <%@ variable name-given="imageOrientation" declare="true" %>
@@ -125,8 +127,8 @@
         <mercury:image-srcset
             imagebean="${imageBean}"
             sizes="${sizes}"
-            alt="${empty alt ? imageTitle : alt}"
-            title="${setTitle ? (showCopyright ? imageTitle : imageTitleCopyright) : null}"
+            alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
+            title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
             copyright="${showCopyright ? imageCopyrightHtml : null}"
             cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
             cssWrapper="${showImageZoom ? 'zoomer' : ''}"

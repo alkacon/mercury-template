@@ -410,6 +410,7 @@ scaleGapStep: ${scaleGapStep}
             width="${ib.scaler.width}"
             height="${ib.scaler.height}"
             heightPercentage="${ib.ratioHeightPercentage}"
+            alt="${alt}"
             title="${title}"
             copyright="${copyright}"
             cssImage="${cssImage}"

@@ -19,6 +19,9 @@
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="CSS wrapper added to the generated tag." %>
 
+<%@ attribute name="attrWrapper" type="java.lang.String" required="false"
+    description="Attribute(s) to add on the generated tag." %>
+
 <%@ attribute name="inline" type="java.lang.Boolean" required="false"
     description="Controls if the icon should be inlined as SVG,
     or rendered from an icon font (the default)." %>
@@ -84,6 +87,7 @@
 </c:choose>
 
 <${tag}${' '}<%--
+--%>${empty attrWrapper ? '' : attrWrapper.concat(' ')}<%--
 --%>class="<c:out value="${empty cssWrapper ? '' : cssWrapper.concat(' ')}${iconClass}" escapeXml="${true}" />"<%--
 --%>${empty ariaLabel ? '' : ' aria-label=\"'.concat(ariaLabel).concat('\" role=\"img\"')}<%--
 --%>${ariaHidden ? ' aria-hidden=\"true\"' : ''}<%--

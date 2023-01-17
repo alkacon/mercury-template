@@ -98,7 +98,7 @@
                         --%>srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" <%--
                         --%>data-srcset="%(tileSrcSet)" <%--
                         --%>data-sizes="auto" <%--
-                        --%>alt="%(titleAttr)"<%--
+                        --%>alt="%(alt)"<%--
                         --%>class="lazyload"><%--
                     --%><span class="zoom-icon"><%--
                         --%><mercury:icon icon="search" tag="span" /></span><%--
@@ -253,12 +253,12 @@
                                     <c:if test="${not empty zoomCopyright}"><div class="copyright">${imageCopyrightHtml}</div></c:if>
                                 </c:set>
 
-                                <%-- Title attribute for a href tag can not contain any HTML markup--%>
-                                <c:set var="titleAttr">
-                                    <c:if test="${not empty title}">${title}</c:if>
-                                    <c:if test="${not empty title || not empty zoomCopyright}"> </c:if>
-                                    <c:if test="${not empty zoomCopyright}">${zoomCopyright}</c:if>
-                                </c:set>
+                                <%-- Title attribute for a href tag --%>
+                                <c:set var="titleAttr" value="${empty title ? '' : title}${showImageListCopyright ? '' : ' '.concat(zoomCopyright)}" />
+                                <c:set var="titleAttr">${fn:replace(titleAttr, '"', '\'')}</c:set>
+
+                                <%-- Alt attribute for img tag --%>
+                                <c:set var="altAttr" value="${empty imageDescription ? imageTitle : imageDescription}" />
 
                                 <c:set var="maxWidth" value="${1200}" />
 
@@ -298,7 +298,8 @@
                                     <cms:jsonvalue key="size" value="w:${imageBean.scaler.width},h:${imageBean.scaler.height}" />
                                     <cms:jsonvalue key="caption" value="${caption}" />
                                     <cms:jsonvalue key="copyright" value="${listCopyright}" />
-                                    <cms:jsonvalue key="titleAttr" value="${fn:replace(titleAttr, '\"', '')}" />
+                                    <cms:jsonvalue key="titleAttr" value="${titleAttr}" />
+                                    <cms:jsonvalue key="alt" value="${altAttr}" />
                                     <cms:jsonvalue key="heightPercentage" value="${fn:replace(heightPercentage, '%', '')}" />
                                 </cms:jsonobject>
                                 <li data-image='${dataImage.compact}'></li><%----%>

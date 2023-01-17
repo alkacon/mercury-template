@@ -240,6 +240,7 @@
                                 <mercury:image-simple
                                     image="${image}"
                                     ratio="${imageRatioXS}"
+                                    externalCopyright="${showImageCopyright}"
                                     title="${image.value.SuperTitle.toString()}">
                                         <c:set var="copyright" value="${imageCopyrightHtml}" />
                                 </mercury:image-simple>
@@ -267,6 +268,7 @@
                                     <mercury:image-simple
                                         image="${image}"
                                         ratio="${imageRatioSM}"
+                                        externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
                                 </div><mercury:nl/>
                             </cms:addparams>
@@ -277,6 +279,7 @@
                                     <mercury:image-simple
                                         image="${image}"
                                         ratio="${imageRatioMD}"
+                                        externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
                                 </div><mercury:nl/>
                             </cms:addparams>
@@ -287,6 +290,7 @@
                                     <mercury:image-simple
                                         image="${image}"
                                         ratio="${imageRatioLG}"
+                                        externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
                                 </div><mercury:nl/>
                             </cms:addparams>
@@ -297,6 +301,7 @@
                                     <mercury:image-simple
                                         image="${image}"
                                         ratio="${imageRatioXL}"
+                                        externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
                                 </div><mercury:nl/>
                             </cms:addparams>

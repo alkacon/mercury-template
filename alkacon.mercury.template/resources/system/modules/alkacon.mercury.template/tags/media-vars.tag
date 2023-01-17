@@ -99,11 +99,11 @@
     <c:when test="${content.value.MediaContent.value.YouTube.isSet}">
         <c:set var="isYouTube" value="${true}" />
     </c:when>
-    <c:when test="${content.value.MediaContent.value.SoundCloud.isSet}">
-        <c:set var="isSoundCloud" value="${true}" />
-    </c:when>
     <c:when test="${content.value.MediaContent.value.Video.isSet}">
         <c:set var="isVideo" value="${true}" />
+    </c:when>
+    <c:when test="${content.value.MediaContent.value.SoundCloud.isSet}">
+        <c:set var="isSoundCloud" value="${true}" />
     </c:when>
     <c:when test="${content.value.MediaContent.value.Audio.isSet}">
         <c:set var="isAudio" value="${true}" />
@@ -171,43 +171,13 @@
                 <mercury:image-lazyload
                     srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
                     srcSet="${srcSet}"
-                    alt="${placeholderMessage} - ${content.value.Title}"
+                    alt="${content.value.Title}"
                     cssImage="animated"
                     noScript="${caseStandardElement}"
                     lazyLoad="${not caseDynamicListNoscript}"
                 />
             </c:set>
        </c:if>
-    </c:when>
-
-    <c:when test="${isSoundCloud}">
-        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.soundcloud" /></c:set>
-        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.soundcloud" /></c:set>
-        <c:set var="soundCloudTrackId" value="${content.value.MediaContent.value.SoundCloud.value.SoundCloudTrackId}" />
-        <c:set var="template"><%--
-            --%><iframe width="100%" height="100%" scrolling="no" style="border: none;" allow="autoplay" <%--
-            --%>src="https://w.soundcloud.com/player/?url=<%--
-                --%>https%3A//api.soundcloud.com/tracks/${soundCloudTrackId}&<%--
-                    --%>auto_play=true&<%--
-                    --%>color=%23XXcolor-main-themeXX&<%--
-                    --%>buying=false&<%--
-                    --%>sharing=true&<%--
-                    --%>show_user=true&<%--
-                    --%>hide_related=true&<%--
-                    --%>show_comments=false&<%--
-                    --%>show_reposts=false&<%--
-                    --%>show_teaser=false&<%--
-                    --%>visual=true"><%--
-        --%></iframe><%----%>
-        </c:set>
-        <c:choose>
-            <c:when test="${content.value.MediaContent.value.SoundCloud.value.Icon.isSet}">
-                <c:set var="icon" value="${content.value.MediaContent.value.SoundCloud.value.Icon}" />
-            </c:when>
-            <c:otherwise>
-                <c:set var="icon" value="soundcloud" />
-            </c:otherwise>
-        </c:choose>
     </c:when>
 
     <c:when test="${isVideo}">
@@ -285,6 +255,36 @@
             </c:otherwise>
         </c:choose>
         <c:set var="cssClass" value="video" />
+    </c:when>
+
+    <c:when test="${isSoundCloud}">
+        <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.soundcloud" /></c:set>
+        <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.soundcloud" /></c:set>
+        <c:set var="soundCloudTrackId" value="${content.value.MediaContent.value.SoundCloud.value.SoundCloudTrackId}" />
+        <c:set var="template"><%--
+            --%><iframe width="100%" height="100%" scrolling="no" style="border: none;" allow="autoplay" <%--
+            --%>src="https://w.soundcloud.com/player/?url=<%--
+                --%>https%3A//api.soundcloud.com/tracks/${soundCloudTrackId}&<%--
+                    --%>auto_play=true&<%--
+                    --%>color=%23XXcolor-main-themeXX&<%--
+                    --%>buying=false&<%--
+                    --%>sharing=true&<%--
+                    --%>show_user=true&<%--
+                    --%>hide_related=true&<%--
+                    --%>show_comments=false&<%--
+                    --%>show_reposts=false&<%--
+                    --%>show_teaser=false&<%--
+                    --%>visual=true"><%--
+        --%></iframe><%----%>
+        </c:set>
+        <c:choose>
+            <c:when test="${content.value.MediaContent.value.SoundCloud.value.Icon.isSet}">
+                <c:set var="icon" value="${content.value.MediaContent.value.SoundCloud.value.Icon}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="icon" value="soundcloud" />
+            </c:otherwise>
+        </c:choose>
     </c:when>
 
     <c:when test="${isAudio}">

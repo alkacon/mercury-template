@@ -55,9 +55,9 @@
         <div class="audio-controls"><%----%>
             <div class="audio-pos">${date}</div><%----%>
             <div class="audio-buttons"><%----%>
-                <mercury:icon icon="stop" tag="div" cssWrapper="audio-stop" ariaLabel="Stop" />
-                <mercury:icon icon="play" tag="div" cssWrapper="audio-play" ariaLabel="Play" />
-                <mercury:icon icon="forward" tag="div" cssWrapper="audio-skip" ariaLabel="Skip" />
+                <mercury:icon icon="stop" tag="div" cssWrapper="audio-stop" attrWrapper='tabindex="0" role="button" aria-label="Stop"' />
+                <mercury:icon icon="play" tag="div" cssWrapper="audio-play" attrWrapper='tabindex="0" role="button" aria-label="Play"' />
+                <mercury:icon icon="forward" tag="div" cssWrapper="audio-skip" attrWrapper='tabindex="0" role="button" aria-label="Skip"' />
             </div><%----%>
             <div class="audio-length">${length}</div><%----%>
         </div>

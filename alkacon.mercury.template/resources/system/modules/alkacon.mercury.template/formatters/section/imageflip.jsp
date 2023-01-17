@@ -37,12 +37,9 @@
 <c:set var="flipColor"              value="${setting.flipColor.toString}" />
 <c:set var="flipTitle"              value="${setting.flipTitle.useDefault('on-text').toString}" />
 
-<c:set var="title"                  value="${value.Title.toString}" />
-
 <mercury:image-vars
     image="${value.Image}"
     ratio="${ratio}"
-    title="${title}"
     ade="${false}">
 
 <c:set var="imageSide">
@@ -51,7 +48,7 @@
             imagebean="${imageBean}"
             cssWrapper="img-responsive"
             copyright="${showImageCopyright ? imageCopyrightHtml : null}"
-            alt="${title}"
+            alt="${empty imageDescription ? imageTitle : imageDescription}"
         />
         <c:if test="${not empty flipTitle and (flipTitle ne 'on-text')}">
             <div class="heading"><%----%>

@@ -156,7 +156,12 @@
                     <c:choose>
                         <c:when test="${isAudio}">
                             <c:if test="${not empty image}">
-                                <mercury:image-animated image="${image}" ratio="${usedRatio}" title="${content.value.Title}" />
+                                <mercury:image-animated
+                                    image="${image}"
+                                    ratio="${usedRatio}"
+                                    showCopyright="${false}"
+                                    setTitle="${false}"
+                                />
                             </c:if>
                             <mercury:audio-player
                                 audioUri="${content.value.MediaContent.value.Audio.value.Data.toLink}"
@@ -175,7 +180,6 @@
                                     <mercury:image-animated
                                         image="${image}"
                                         ratio="${usedRatio}"
-                                        alt="${placeholderMessage} - ${content.value.Title}"
                                         showCopyright="${showCopyright}"
                                         setTitle="${false}"
                                     />

@@ -12,6 +12,11 @@
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="Text used in the image 'alt' and 'title' attributes."%>
 
+<%@ attribute name="externalCopyright" type="java.lang.Boolean" required="false"
+    description="If 'true' the copyright information of the image does not need to be included becasue it will be provided in the external markup around the image.
+    If 'false' the copyright information will be appended to the 'title' attribute.
+    Default is 'false' if not provided." %>
+
 <%@ attribute name="ratio" type="java.lang.String" required="false"
     description="Can be used to scale the image in a specific ratio,
     Allowed valued are: '1-1', '4-3', '3-2', '16-9', '2-1' and '2,35-1'" %>
@@ -66,9 +71,9 @@
 
     <mercury:image-srcset
         imagebean="${imageBean}"
-        alt="${imageTitle}"
+        alt="${empty imageDescription ? imageTitle : imageDescription}"
         sizes="${sizes}"
-        title="${imageTitleCopyright}"
+        title="${externalCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)}"
         lazyLoad="${lazyLoad}"
         noScript="${noScript}"
         attrWrapper="${imageDndAttr}"

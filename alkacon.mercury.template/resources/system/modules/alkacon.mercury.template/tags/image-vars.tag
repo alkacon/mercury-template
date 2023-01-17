@@ -56,8 +56,14 @@
 <%@ variable name-given="imageTitle" declare="true"
     description="The title of the image." %>
 
+<%@ variable name-given="imageDescription" declare="true"
+    description="The description of the image." %>
+
 <%@ variable name-given="imageTitleCopyright" declare="true"
     description="The combination of title and copyright." %>
+
+<%@ variable name-given="imageDescriptionCopyright" declare="true"
+    description="The combination of description and copyright." %>
 
 <%@ variable name-given="imageWidth" declare="true"
     description="The width of the image in pixel." %>
@@ -88,6 +94,9 @@
 <c:set var="imageCopyright" value="" />
 <c:set var="imageCopyrightHtml" value="" />
 <c:set var="imageTitle" value="" />
+<c:set var="imageTitleCopyright" value="" />
+<c:set var="imageDescription" value="" />
+<c:set var="imageDescriptionCopyright" value="" />
 <c:set var="imageWidth" value="" />
 <c:set var="imageHeight" value="" />
 <c:set var="imageOrientation" value="" />
@@ -185,7 +194,11 @@
             <c:set var="imageTitle"><cms:property name="Title" file="${imageUnscaledLink}" locale="${cms.locale}" default="" /></c:set>
         </c:otherwise>
     </c:choose>
-    <c:set var="imageTitleCopyright">${fn:replace(imageTitle, '"', '')}</c:set>
+
+    <%--
+        Set the image description from the property.
+    --%>
+    <c:set var="imageDescription"><cms:property name="Description" file="${imageUnscaledLink}" locale="${cms.locale}" default="" /></c:set>
 
     <%--
         Add copyright symbol. Make sure &copy; is replaced
@@ -218,7 +231,13 @@
                 <c:set var="imageTitleCopyright">${imageCopyright}</c:set>
             </c:otherwise>
         </c:choose>
+        <c:set var="imageDescriptionCopyright">${imageDescription}${' '}${imageCopyright}</c:set>
     </c:if>
+
+    <c:set var="imageTitle">${fn:replace(imageTitle, '"', '\'')}</c:set>
+    <c:set var="imageDescription">${fn:replace(imageDescription, '"', '\'')}</c:set>
+    <c:set var="imageTitleCopyright">${fn:replace(imageTitleCopyright, '"', '\'')}</c:set>
+    <c:set var="imageDescriptionCopyright">${fn:replace(imageDescriptionCopyright, '"', '\'')}</c:set>
 
     <c:if test="${createJsonLd}">
         <cms:jsonobject var="imageJsonLd" mode="object">

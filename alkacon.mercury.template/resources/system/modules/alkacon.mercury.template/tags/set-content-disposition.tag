@@ -22,7 +22,6 @@
     description="The filename set for the content disposition." %>
 
 <%
-
     String name = (String)getJspContext().getAttribute("name");
     String suffix = (String)getJspContext().getAttribute("suffix");
     Boolean setFilenameOnly = (Boolean)getJspContext().getAttribute("setFilenameOnly");

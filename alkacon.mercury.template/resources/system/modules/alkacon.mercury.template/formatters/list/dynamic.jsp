@@ -59,6 +59,8 @@
 <mercury:nl />
 <div class="element type-dynamic-list list-content ${settings.listCssWrapper}${' '}${settings.listPaginationPosition}${' '}${settings.listDisplay}${' '}${settings.cssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
 <mercury:nl />
+    <cms:enable-list-add types="${content.valueList.TypesToCollect}" 
+        postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}" />
 
     <%-- ####### Check if list formatters are compatible ######## --%>
     <mercury:list-compatibility

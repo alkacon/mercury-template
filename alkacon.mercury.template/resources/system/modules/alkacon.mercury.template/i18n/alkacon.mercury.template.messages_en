@@ -684,6 +684,7 @@ msg.page.list.facet.category.label=Filter by category
 msg.page.list.facet.folder.all=All folders
 msg.page.list.newentry=Create a new "{0}" ({1}) using the edit point.
 msg.page.list.newentry.binary=Upload documents using the edit point.
+msg.page.list.newentry.listadd=Use the "+" button on the list to create new contents.
 msg.page.list.optionusage.text=You must place the same list on this page again using the dynamic list formatter.
 msg.page.list.optionusage.title=Sort options bar for the "{0}" list
 msg.page.list.pagination.first.title=First page

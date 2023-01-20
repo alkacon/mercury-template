@@ -226,6 +226,7 @@
             <c:if test="${cms.isEditMode}">
                 <mercury:list-types types="${content.valueList.TypesToCollect}" var="types" uploadFolder="${cms.getBinaryUploadFolder(content)}" />
                 <c:if test="${not empty types}">
+                    <div class="list-editbox" style="display: none;" ><%----%>
                     <mercury:alert type="warning">
                         <jsp:attribute name="head">
                             <fmt:message key="msg.page.list.empty" />
@@ -234,6 +235,7 @@
                             <fmt:message key="msg.page.list.newentry.listadd" />
                         </jsp:attribute>
                     </mercury:alert>
+                    </div>
                 </c:if>
             </c:if>
         </div><%----%>

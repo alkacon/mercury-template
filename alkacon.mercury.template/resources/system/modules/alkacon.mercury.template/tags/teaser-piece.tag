@@ -345,7 +345,7 @@
                         </c:when>
                         <c:otherwise>
                             <%-- default is 'button' --%>
-                            <c:set var="linkCss" value="btn piece-btn" />
+                            <c:set var="linkCss" value="btn piece-btn teaser-btn" />
                         </c:otherwise>
                     </c:choose>
                     <mercury:link

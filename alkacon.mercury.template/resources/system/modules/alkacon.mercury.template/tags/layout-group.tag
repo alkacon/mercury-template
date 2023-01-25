@@ -64,8 +64,10 @@
         <c:set var="showConfigElement"          value="${cms.isEditMode and ((cms.element.modelGroup and cms.modelGroupElement) or (not cms.element.modelGroup))}" />
         <c:set var="configElement">
             <c:if test="${showConfigElement}">
+                <c:set var="headerConfigTypeName"><fmt:message key="function.header-config" /></c:set>
                 <mercury:container
                     type="header-config"
+                    typeName="${headerConfigTypeName}"
                     name="header-config"
                     title="${value.Title}"
                 />
@@ -157,8 +159,10 @@
 
                 <c:if test="${showMetaAside}">
                     <c:set var="logoElement">
+                        <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
                         <mercury:container
                             type="image-minimal"
+                            typeName="${sectionTypeName}"
                             name="header-image"
                             css="h-logo p-xs-12 p-lg-${logoCols}"
                             title="${value.Title}"
@@ -173,8 +177,10 @@
                 <c:set var="metaLinkElement">
                     <c:if test="${showMeta}">
                         <mercury:div css="h-meta" test="${not showMetaAside}">
+                            <c:set var="linksequenceTypeName"><fmt:message key="type.m-linksequence.name" /></c:set>
                             <mercury:container
                                 type="linksequence-header"
+                                typeName="${linksequenceTypeName}"
                                 name="header-linksequence"
                                 css="${not showMetaAside ? 'co-lg-xl' : 'h-meta'}"
                                 title="${value.Title}"
@@ -190,8 +196,10 @@
 
                 <c:if test="${not showMetaAside}">
                     <c:set var="logoElement">
+                        <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
                         <mercury:container
                             type="image-minimal"
+                            typeName="${sectionTypeName}"
                             name="header-image"
                             css="${logoHidden ? 'h-logo' : 'h-logo p-xs-12 p-lg-'.concat(logoCols)}"
                             title="${value.Title}"
@@ -227,8 +235,10 @@
                 <c:set var="navBarElement">
                      <div class="h-nav"><%----%>
                         <mercury:div css="co-lg-xl" test="${not showNavAside}">
+                            <c:set var="navTypeName"><fmt:message key="type.m-navigation.name" /></c:set>
                             <mercury:container
                                 type="nav-main"
+                                typeName="${navTypeName}"
                                 name="header-nav-main"
                                 css="nav-main-container"
                                 title="${value.Title}"
@@ -262,8 +272,10 @@
                 <c:set var="breadcrumbElement">
                     <c:if test="${showBreadcrumbs and ((not empty cms.elementsInContainers['breadcrumbs']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="h-bc"><%----%>
+                            <c:set var="navTypeName"><fmt:message key="type.m-navigation.name" /></c:set>
                             <mercury:container
                                 type="nav-breadcrumbs"
+                                typeName="${navTypeName}"
                                 name="header-breadcrumbs"
                                 css="container"
                                 title="${value.Title}"

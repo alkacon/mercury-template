@@ -198,7 +198,7 @@
                     <c:set var="headingId"><mercury:translate-name name="${fn:trim(heading)}" />-${fn:substringBefore(cms.element.instanceId, '-')}</c:set>
                     <c:if test="${addHeadingAnchorlink}">
                         <c:set var="anchorLinkSuffix"><a class="anchor-link" href="#${headingId}"></a></c:set>
-                         <c:set var="headingCss" value="piece-heading anchor-link-parent" />
+                        <c:set var="headingCss" value="piece-heading anchor-link-parent" />
                     </c:if>
                 </c:if>
                 <c:choose>

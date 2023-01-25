@@ -10,6 +10,9 @@
 <%@ attribute name="css" type="java.lang.String" required="false"
     description="Optional CSS classes to attach to the heading." %>
 
+<%@ attribute name="attr" type="java.lang.String" required="false"
+    description="Attribute(s) to add directly to the generated tag." %>
+
 <%@ attribute name="showJsWarning" type="java.lang.Boolean" required="false"
     description="Controls a default 'JavsScript is required' message is shown as head. Default is 'false'." %>
 
@@ -31,7 +34,7 @@
 
 ${addNoscriptTags ? '<noscript>' : ''}
 
-<div class="online-warn <c:if test="${not empty css}">${' '}${css}</c:if>"><%----%>
+<div class="online-warn${empty css ? '' : ' '.concat(css)}"${empty attr ? '' : ' '.concat(attr)}><%----%>
     <c:if test="${showJsWarning}">
         <fmt:setLocale value="${cms.locale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">

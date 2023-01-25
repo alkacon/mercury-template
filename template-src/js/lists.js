@@ -275,6 +275,7 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
             if (reloadEntries) {
                 // hide the "no results found" message during search
                 list.$editbox.hide();
+                list.$pagination.show();
             } else {
                 // fade out the load more button
                 list.$element.find('.btn-append').addClass("fadeOut");

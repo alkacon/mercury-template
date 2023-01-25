@@ -59,7 +59,9 @@
 <mercury:nl />
 <div class="element type-dynamic-list list-content ${settings.listCssWrapper}${' '}${settings.listPaginationPosition}${' '}${settings.listDisplay}${' '}${settings.cssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
 <mercury:nl />
-    <cms:enable-list-add types="${content.valueList.TypesToCollect}" 
+
+    <cms:enable-list-add
+        types="${content.valueList.TypesToCollect}"
         postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}" />
 
     <%-- ####### Check if list formatters are compatible ######## --%>
@@ -222,22 +224,14 @@
                 <mercury:nl />
             </c:if>
 
-            <%-- ####### Boxes to create new entries in case of empty result ######## --%>
-            <c:if test="${cms.isEditMode}">
-                <mercury:list-types types="${content.valueList.TypesToCollect}" var="types" uploadFolder="${cms.getBinaryUploadFolder(content)}" />
-                <c:if test="${not empty types}">
-                    <div class="list-editbox" style="display: none;" ><%----%>
-                    <mercury:alert type="warning">
-                        <jsp:attribute name="head">
-                            <fmt:message key="msg.page.list.empty" />
-                        </jsp:attribute>
-                        <jsp:attribute name="text">
-                            <fmt:message key="msg.page.list.newentry.listadd" />
-                        </jsp:attribute>
-                    </mercury:alert>
-                    </div>
-                </c:if>
-            </c:if>
+            <%-- ####### Displays notice in case of empty list result ######## --%>
+            <mercury:list-messages
+                search="${search}"
+                types="${content.valueList.TypesToCollect}"
+                uploadFolder="${cms.getBinaryUploadFolder(content)}"
+                dynamic="${true}"
+                reloaded="${not empty param.reloaded}"
+            />
         </div><%----%>
         <mercury:nl />
     </c:if>

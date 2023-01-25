@@ -57,7 +57,7 @@ var Mercury = function (jQ) {
     "use strict";
 
     let VERBOSE = false || (getParameter("jsverbose") != null);
-    let DEBUG = VERBOSE || (getParameter("jsdebug") != null);
+    let DEBUG = VERBOSE || (getParameter("jsdebug") != null) || PrivacyPolicy.hasCookie("jsdebug");
 
     // container for information passed from CSS to JavaScript
     let m_info = {};
@@ -949,6 +949,11 @@ var Mercury = function (jQ) {
 
 
     function init() {
+        if (getParameter("jsdebugperm") != null) {
+            PrivacyPolicy.setCookie("jsdebug", "true");
+            DEBUG = true;
+        }
+
         // main init function - called from jQuery(document).ready() - see below in this script
         if (DEBUG) console.info("Mercury.init() - Modularized version");
         window.Mercury = Mercury;

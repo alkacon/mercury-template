@@ -85,10 +85,12 @@
                     --#{$prefix}gutter-y: calc(0.5 * var(--#{$prefix}element-margin));
                 }
             }
-
             margin-bottom: var(--#{$prefix}element-margin);
             > .tile-col {
                 margin-bottom: 0;
+            }
+            ~ .list-editbox {
+                margin-top: #{2 * $space}px;
             }
         }
     }

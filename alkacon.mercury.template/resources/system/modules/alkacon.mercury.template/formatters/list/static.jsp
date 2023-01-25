@@ -57,20 +57,11 @@
                 />
             ${'</'}${listTag}${'>'}
 
-            <%-- ####### Boxes to create new entries in case of empty result ######## --%>
-            <c:if test="${cms.isEditMode and (search.numFound == 0)}">
-                <mercury:list-types types="${content.valueList.TypesToCollect}" var="types" uploadFolder="${cms.getBinaryUploadFolder(content)}" />
-                <c:if test="${not empty types}">
-                    <mercury:alert type="warning">
-                        <jsp:attribute name="head">
-                            <fmt:message key="msg.page.list.empty" />
-                        </jsp:attribute>
-                        <jsp:attribute name="text">
-                            <fmt:message key="msg.page.list.newentry.listadd" />
-                        </jsp:attribute>
-                    </mercury:alert>
-                </c:if>
-            </c:if>
+            <%-- ####### Displays notice in case of empty list result ######## --%>
+            <mercury:list-messages
+                search="${search}"
+                types="${content.valueList.TypesToCollect}"
+                uploadFolder="${cms.getBinaryUploadFolder(content)}" />
 
         </div><%----%>
         <mercury:nl />

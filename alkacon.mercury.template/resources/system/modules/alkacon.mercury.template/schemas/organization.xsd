@@ -57,6 +57,9 @@
                 <searchsetting element="GalleryTitle" searchcontent="false">
                     <solrfield targetfield="disptitle" sourcefield="*_sort" />
                 </searchsetting>
+                <searchsetting element="LinkToParentOrganization" searchcontent="false">
+                    <solrfield targetfield="linktoparent" sourcefield="*_s" />
+                </searchsetting>
             </searchsettings>
             <parameters>
                 <param name="galleryTitle"><![CDATA[%!

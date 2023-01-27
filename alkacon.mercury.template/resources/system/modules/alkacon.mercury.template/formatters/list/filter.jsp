@@ -47,6 +47,8 @@
     <c:set var="foldersResp"    value="${folderVal.contains('op-')}" />
     <c:set var="showFolders"    value="${(foldersOpen || foldersResp || setting.showfolders.toString eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) > 0}" />
 
+    <c:set var="showDirectLink" value="${cms.isEditMode and 'true' eq cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.list.filter.directlink']}" />
+
     <c:set var="combine"        value="${setting.combine.toBoolean}" />
 
     <c:set var="targetUri"      value="${setting.targetUri.toString}" />
@@ -449,6 +451,15 @@
                     ${archiveHtml}
                 </div><%----%>
 
+            </div><%----%>
+            <mercury:nl />
+        </c:if>
+        
+        <c:if test="${showDirectLink}">
+            <div class="directlink"><%----%>
+                <mercury:link link="${cms.requestContext.uri}" css="btn btn-block oct-meta-info external" newWin="${true}">
+                    <fmt:message key="msg.page.list.directlink.label" />
+                </mercury:link>
             </div><%----%>
             <mercury:nl />
         </c:if>

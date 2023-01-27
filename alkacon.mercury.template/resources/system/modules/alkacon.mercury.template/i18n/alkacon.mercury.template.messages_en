@@ -678,6 +678,7 @@ msg.page.layout.type.element=Element
 msg.page.layout.type.row=Layout row
 msg.page.layout.type.template=Base container
 msg.page.linksequence.languages=Language
+msg.page.list.directlink.label=Direct link to the filtered list
 msg.page.list.empty=No contents found for this list\!
 msg.page.list.empty.online=No results found
 msg.page.list.facet.category.all=All

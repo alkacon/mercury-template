@@ -233,6 +233,7 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
         for (var i=0; i<listGroup.length; i++) {
             updateInnerList(listGroup[i].id, searchStateParameters, true);
         }
+        updateDirectLink(filter, searchStateParameters);
     } else {
         var archive = m_archiveFilters[filterId];
         // list is not on this page, check filter target attribute
@@ -246,6 +247,23 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
             console.error("Lists.listFilter() Unable to load list!\nNo dynamic list found on the page and property 'mercury.list' not set.");
         }
     }
+}
+
+/**
+ * Updates the direct link for a changed search state.
+ *
+ * @param {Object} filter the filter 
+ * @param {string} searchStateParameters the search state paramters
+ */
+function updateDirectLink(filter, searchStateParameters) {
+    if (!filter.$directlink) {
+        return;
+    }
+    var link = filter.$directlink.find("a");
+    if (!link) {
+        return;
+    }
+    link.attr("href", "?" + searchStateParameters);
 }
 
 /**
@@ -1057,6 +1075,7 @@ export function init(jQuery, debug) {
                 filter.id = $archiveFilter.attr("id");
                 filter.elementId = $archiveFilter.data("id");
                 filter.$textsearch = $archiveFilter.find("#textsearch_" + filter.id);
+                filter.$directlink = $archiveFilter.find(".directlink");
 
                 // unfold categories if on desktop and responsive setting is used
                 var $collapses = $archiveFilter.find('#cats_' + filter.id + ', #folder_' + filter.id  + ', #arch_' + filter.id);

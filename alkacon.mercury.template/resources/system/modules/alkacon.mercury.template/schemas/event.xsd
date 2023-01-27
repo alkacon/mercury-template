@@ -65,6 +65,9 @@
                     <solrfield targetfield="event-kind" sourcefield="*_s">
                         <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:eventKind)</mapping>
                     </solrfield>
+                    <solrfield targetfield="bookable" sourcefield="*_b">
+                        <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:bookable)</mapping>
+                    </solrfield>
                 </searchsetting>
             </searchsettings>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
@@ -92,6 +95,13 @@
                         !%online%!
                     !%%else%%!
                         !%presence%!
+                    !%%endif%%!
+                !%]]></param>
+                <param name="bookable"><![CDATA[%!
+                    !%%if (content.value.("Booking").isSet && content.value.("Booking").value.("Webform").isSet)%%!
+                        !%true%!
+                    !%%else%%!
+                        !%false%!
                     !%%endif%%!
                 !%]]></param>
                 <param name="detailPageUrl"><![CDATA[%!

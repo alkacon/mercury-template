@@ -19,7 +19,7 @@
 <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio}" />
 <c:set var="tileContainer"      value="${setting.tileContainer.toString}" />
-<c:set var="fullOverlay"        value="${setting.fullOverlay.toBoolean}" />
+<c:set var="fullOverlayOption"  value="${setting.fullOverlay.toString}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 <c:set var="linkOption"         value="${setting.linkOption.toString}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
@@ -27,14 +27,28 @@
 <c:set var="useAsElement"       value="${tileContainer eq 'element'}" />
 <c:set var="ade"                value="${cms.isEditMode}" />
 
-<c:set var="linkFullTile"       value="${value.Link.isSet and (not fullOverlay) and (linkOption ne 'hide')}" />
+<c:choose>
+    <c:when test="${fullOverlayOption eq 'boxbg'}">
+        <c:set var="fullOverlay"        value="${true}" />
+        <c:set var="fullOverlayCss"     value="full-overlay boxbg-overlay" />
+    </c:when>
+    <c:when test="${fullOverlayOption eq 'true'}">
+        <c:set var="fullOverlay"        value="${true}" />
+        <c:set var="fullOverlayCss"     value="full-overlay" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="fullOverlay"        value="${false}" />
+    </c:otherwise>
+</c:choose>
+
+<c:set var="linkFullTile"       value="${value.Link.isSet and (not (fullOverlay and (linkOption ne 'none'))) and (linkOption ne 'hide')}" />
 
 <c:choose>
     <c:when test="${useAsElement}">
         <c:set var="tileClass"          value="element tile-col" />
     </c:when>
     <c:otherwise>
-        <c:set var="tileCss"            value="${empty param.tilegrid ? 'tile-col col-sm-6 col-lg-3' : param.tilegrid}" />
+        <c:set var="tileCss"            value="${empty param.tilegrid ? 'tile-col col-12' : param.tilegrid}" />
         <c:set var="tileCss"            value="${tileCss.concat(' freefloat')}" />
         <c:set var="tileClass"          value="${tileCss} min-height-px" />
         <c:set var="tileClass"          value="${tileClass}${fullOverlay ? ' f-o' : ' t-o'}" />
@@ -87,7 +101,7 @@
             </c:set>
 
             <c:if test="${not empty tileText}">
-                <div class="${fullOverlay ? 'full-overlay' : 'text-overlay'}"><%----%>
+                <div class="${fullOverlay ? fullOverlayCss : 'text-overlay'}"><%----%>
                     ${tileText}
                 </div><%----%>
             </c:if>

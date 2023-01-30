@@ -57,7 +57,7 @@
       <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
+      <IncludeName><![CDATA[fullOverlay.tile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>

@@ -1636,12 +1636,17 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[fullOverlay.false]]></IncludeName>
+      <IncludeName><![CDATA[fullOverlay.tile]]></IncludeName>
       <PropertyName><![CDATA[fullOverlay]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.fullOverlay)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.fullOverlay.help)]]></Description>
-      <Widget><![CDATA[checkbox]]></Widget>
+      <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[false]]></Default>
+      <WidgetConfig><![CDATA[
+            false:          %(key.msg.setting.fullOverlay.false)|
+            true:           %(key.msg.setting.fullOverlay.true)|
+            boxbg:          %(key.msg.setting.fullOverlay.boxbg)
+      ]]></WidgetConfig>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textOption.fixed.none]]></IncludeName>

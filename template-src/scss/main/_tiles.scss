@@ -342,15 +342,27 @@ $sq-heights-xl:    () !default;
         left: 0;
         z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
         overflow: auto; // shows scrollbars on demand
-        background: $tile-overlay-bg-color;
 
-        .piece {
-            margin: var(--#{$prefix}default-margin-small);
+        &:not(.boxbg-overlay) {
+            background: $tile-overlay-bg-color;
+            h1, h2, h3, h4, div.body, a.piece-text-link {
+                color: $square-overlay-text-color;
+                text-shadow: $square-overlay-text-shadow;
+            }
         }
 
-        h1, h2, h3, h4, div.body, a.piece-text-link {
-            color: $square-overlay-text-color;
-            text-shadow: $square-overlay-text-shadow;
+        &.boxbg-overlay {
+            .piece {
+                color: var(--#{$prefix}text-dark);
+                background-color: rgba(var(--#{$prefix}highlight-color-rgb), .75);
+                display: inline-block;
+                padding: calc(0.5 * var(--#{$prefix}box-padding));
+                border-radius: var(--#{$prefix}image-border-radius);
+            }
+        }
+
+        .piece {
+            margin: calc(0.5 * var(--#{$prefix}box-padding));
         }
     }
 }

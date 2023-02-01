@@ -30,10 +30,6 @@
         description="The type assigned to the container, e.g. 'element' or 'image-simple'.
         The type will be used to select the formatter that is used to render a content in the container." %>
 
-<%@attribute name="typeName" type="java.lang.String" required="false"
-        description="The type name to display in the generated preview container box.
-        If not provided this will be identical to 'type'." %>
-
 <%@attribute name="role" type="java.lang.String" required="false"
         description="Role for the container." %>
 
@@ -82,8 +78,6 @@
 <c:set var="postMarkup"     value="${not empty value.PostMarkup ? value.PostMarkup.toString() : null}" />
 <c:set var="parameters"     value="${empty parameters ? (not empty value.Parameters ? value.Parameters : null) : parameters}" />
 
-<c:set var="typeName"       value="${empty typeName ? (not empty value.typeName ? value.typeName.toString() : type) : typeName}" />
-
 <c:set var="variant"        value="${cms:isWrapper(value.Name) ? 'complex' : 'simple'}" />
 <c:set var="parent_role"    value="${cms.container.param}" />
 
@@ -91,24 +85,6 @@
 <c:if test="${not empty preMarkup}">${preMarkup}</c:if>
 
 <c:choose>
-
-    <c:when test="${showDetailOnly}">
-        <%--
-            If the container is shown only on detail pages, the container tag later would
-            not generate any output on a page that is not a detail page.
-            Therefore we insert a placeholder in this case.
-        --%>
-        <div class="${css}"><%----%>
-            <mercury:container-box
-                label="${title}${not hideName and not empty name ? ' - '.concat(name) : ''}"
-                boxType="detail-placeholder"
-                cssWrapper="attachment"
-                type="${typeName}"
-                emptyHeading="${emptyHeading}"
-                hideParentType="${hideParentType}"
-            />
-        </div>
-    </c:when>
 
     <c:when test="${maxElements != '0'}">
         <%--
@@ -162,7 +138,7 @@
                 label="${title}${not hideName and not empty name ? ' - '.concat(name) : ''}"
                 boxType="container-box"
                 role="${role}"
-                type="${typeName}"
+                type="${type}"
                 detailView="${detailView}"
                 emptyHeading="${emptyHeading}"
                 hideParentType="${hideParentType}"

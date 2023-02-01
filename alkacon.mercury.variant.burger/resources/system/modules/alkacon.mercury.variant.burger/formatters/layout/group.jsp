@@ -29,7 +29,7 @@
         <c:set var="configElement">
             <c:if test="${showConfigElement}">
                  <c:set var="headerConfigTypeName"><fmt:message key="function.header-config" /></c:set>
-                <mercury:container type="header-config" typeName="${headerConfigTypeName}" name="header-config" title="${value.Title}" />
+                <mercury:container type="header-config" name="header-config" title="${value.Title}" />
             </c:if>
         </c:set>
 
@@ -99,7 +99,6 @@
                         <div class="h-meta"><%----%>
                             <mercury:container
                                 type="linksequence-header"
-                                typeName="${linksequenceTypeName}"
                                 name="header-linksequence"
                                 css="container"
                                 title="${value.Title}"
@@ -117,7 +116,6 @@
                     <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
                     <mercury:container
                         type="image-minimal"
-                        typeName="${sectionTypeName}"
                         name="header-image"
                         css="${logoHidden ? 'h-logo' : 'h-logo p-xs-12 p-lg-'.concat(logoCols)}"
                         title="${value.Title}"
@@ -236,7 +234,6 @@
                     <div class="h-nav" id="nav-toggle-group"><%----%>
                         <mercury:container
                             type="nav-main"
-                            typeName="${navTypeName}"
                             name="header-nav-main"
                             css="nav-main-container"
                             title="${value.Title}"

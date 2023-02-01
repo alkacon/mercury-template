@@ -257,7 +257,7 @@ function initEmblaSliders(sliders) {
         slides.forEach((slide) => {
             const dateRelease = slide.dataset.release != null ? parseInt(slide.dataset.release) : Number.MIN_VALUE;
             const dateExpiration = slide.dataset.expiration != null ? parseInt(slide.dataset.expiration) : Number.MAX_VALUE;
-            if (((clientTime < dateRelease) || (clientTime > dateExpiration)) && (slideCount > 1)) {
+            if (((clientTime < dateRelease) || (clientTime >= dateExpiration)) && (slideCount > 1)) {
                 if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slide removed - release=" + dateRelease + " expiration=" + dateExpiration + " time=" + clientTime);
                 slide.parentNode.removeChild(slide);
                 slideCount--;
@@ -265,6 +265,11 @@ function initEmblaSliders(sliders) {
         });
         options.slides = slideCount;
         if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slides valid: " + options.slides);
+        if (options.slides <= 1) {
+            options.draggable = false;
+            options.autoplay = false;
+            options.transition = 'direct';
+        }
 
         let startIndex = 0;
         if (options.transition == 'timed') {
@@ -307,17 +312,26 @@ function initEmblaSliders(sliders) {
         if (options.arrows) {
             const prevBtn = slider.querySelector(".prev-btn");
             const nextBtn = slider.querySelector(".next-btn");
-            setupPrevNextBtns(prevBtn, nextBtn, embla, autoplay);
+            if (options.slides > 1) {
+                setupPrevNextBtns(prevBtn, nextBtn, embla, autoplay);
+            } else {
+                prevBtn.remove();
+                nextBtn.remove();
+            }
         }
 
         if (options.dots) {
             const dots = slider.querySelector(".slider-dots");
-            const dotsArray = generateDotBtns(dots, embla);
-            const setSelectedDotBtn = selectDotBtn(dotsArray, embla);
-            setupDotBtns(dotsArray, embla, autoplay);
-            embla
-                .on("init", setSelectedDotBtn)
-                .on("select", setSelectedDotBtn);
+            if (options.slides > 1) {
+                const dotsArray = generateDotBtns(dots, embla);
+                const setSelectedDotBtn = selectDotBtn(dotsArray, embla);
+                setupDotBtns(dotsArray, embla, autoplay);
+                embla
+                    .on("init", setSelectedDotBtn)
+                    .on("select", setSelectedDotBtn);
+            } else {
+                dots.remove();
+            }
         }
 
         if (options.transition == 'scale' || options.transition == 'parallax') {

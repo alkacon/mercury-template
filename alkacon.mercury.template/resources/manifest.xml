@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.87</version>
+		<version>14.0.97</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6488,18 +6488,6 @@
 					<value><![CDATA[Nested XSD for contact name]]></value>
 				</property>
 			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/schemas/nested/costs.xsd</source>
-			<destination>system/modules/alkacon.mercury.template/schemas/nested/costs.xsd</destination>
-			<type>plain</type>
-			<uuidstructure>1fc4db40-9e5f-11ed-93f1-0242ac11002b</uuidstructure>
-			<uuidresource>1fc4db41-9e5f-11ed-93f1-0242ac11002b</uuidresource>
-			<datecreated>Fri, 27 Jan 2023 16:24:51 GMT</datecreated>
-			<flags>0</flags>
-			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>

@@ -81,6 +81,14 @@
         </c:when>
         <c:otherwise>
             <c:set var="variant" value="special" />
+            <c:set var="ci" value="${cms.getContainerTypeInfo(type)}" />
+            <c:set var="cels" value="${ci.allowedElements}" />
+            <c:if test="${(cels.size() > 0) and (cels.size() <= 3)}">
+                <c:set var="type" value="" />
+                <c:forEach var="el" items="${cels}" varStatus="status">
+                    <c:set var="type" value="${type}${status.count > 1 ? ', ' : ''}${el.niceName}" />
+                </c:forEach>
+            </c:if>
         </c:otherwise>
     </c:choose>
 

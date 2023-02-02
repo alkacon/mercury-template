@@ -15,7 +15,6 @@
             <xsd:element name="Label" type="OpenCmsString" />
             <xsd:element name="Price" type="OpenCmsString" />
             <xsd:element name="Currency" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="LinkToPaymentService" type="OpenCmsVarLink" minOccurs="0" maxOccurs="1" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -42,7 +41,7 @@
                     <DisplayName><![CDATA[%(key.label.Costs.Price)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Costs.Price.help)]]></Description>
                     <Widget>string</Widget>
-                    <RuleRegex>^\d+$</RuleRegex>
+                    <RuleRegex>^\d+(,\d{1,2})?$</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.Price)]]></Error>
                     <Search>false</Search>
@@ -60,14 +59,6 @@
                     <RuleRegex>^[A-Z]{3}$</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.Currency)]]></Error>
-                    <Search>false</Search>
-                    <Display>singleline</Display>
-                </Setting>
-                <Setting>
-                    <PropertyName>LinkToPaymentService</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Costs.LinkToPaymentService)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Costs.LinkToPaymentService.help)]]></Description>
-                    <Widget>file</Widget>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

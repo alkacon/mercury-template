@@ -6555,6 +6555,18 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/costs.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/costs.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>1fc4db40-9e5f-11ed-93f1-0242ac11002b</uuidstructure>
+			<uuidresource>1fc4db41-9e5f-11ed-93f1-0242ac11002b</uuidresource>
+			<datecreated>Fri, 27 Jan 2023 16:24:51 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/email.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/email.xsd</destination>
 			<type>plain</type>
@@ -6840,6 +6852,18 @@
 					<value><![CDATA[Nested XSD for navigation root]]></value>
 				</property>
 			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/note.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/note.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>77a9cdd9-a30e-11ed-bb3e-0242ac11002b</uuidstructure>
+			<uuidresource>77a9cdda-a30e-11ed-bb3e-0242ac11002b</uuidresource>
+			<datecreated>Thu, 02 Feb 2023 15:30:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>

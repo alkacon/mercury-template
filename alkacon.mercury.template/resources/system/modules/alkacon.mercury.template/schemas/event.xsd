@@ -8,6 +8,7 @@
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address-choice.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/booking.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/note.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/costs.xsd" />
 
@@ -28,8 +29,9 @@
             <xsd:element name="Performer" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
-            <xsd:element name="Costs" type="OpenCmsCosts" minOccurs="0" maxOccurs="10" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
+            <xsd:element name="Costs" type="OpenCmsCosts" minOccurs="0" maxOccurs="10" />
+            <xsd:element name="LinkToPaymentService" type="OpenCmsVarLink" minOccurs="0" maxOccurs="1" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
             <xsd:element name="VirtualLocation" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
@@ -41,6 +43,7 @@
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
             <xsd:element name="DetailPageUrl" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Note" type="OpenCmsNote" minOccurs="0" maxOccurs="20" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
     </xsd:complexType>
@@ -56,6 +59,9 @@
                 <tab element="Booking" collapse="false" name="%(key.tab.Booking)" />
                 <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
                 <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
+                <tab element="Note" collapse="false" name="%(key.tab.Notes)">
+                    <description><![CDATA[%(key.tab.Notes.description)]]></description>
+                </tab>
             </tabs>
             <mappings>
                 <mapping element="Availability/Release" mapto="attribute:datereleased" />
@@ -163,14 +169,21 @@
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>Paragraph</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Paragraph)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Paragraph.help)]]></Description>
+                </Setting>
+                <Setting>
                     <PropertyName>Costs</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Costs)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Costs.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>Paragraph</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Paragraph)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Paragraph.help)]]></Description>
+                    <PropertyName>LinkToPaymentService</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Costs.LinkToPaymentService)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Costs.LinkToPaymentService.help)]]></Description>
+                    <Widget>file</Widget>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>AddressChoice</PropertyName>
@@ -219,6 +232,11 @@
                 <Setting>
                     <PropertyName>Booking</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Booking)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>Note</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Note)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Note.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Order</PropertyName>

@@ -137,7 +137,7 @@
             <cms:param name="ajaxList">${ajaxCall}</cms:param>
         </cms:display>
 
-        <c:if test="${not empty listEntryWrapper}"></${listEntryTag}></c:if>
+        <c:if test="${not empty listEntryWrapper}"></${listEntryTag}><mercury:nl /></c:if>
 
     </c:forEach>
 

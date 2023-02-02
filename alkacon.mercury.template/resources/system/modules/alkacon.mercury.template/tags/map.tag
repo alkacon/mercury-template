@@ -38,6 +38,10 @@
 <%@ attribute name="disableEditModePlaceholder" type="java.lang.Boolean" required="false"
     description="If set, disables the map placeholder in edit mode." %>
 
+<%@ attribute name="cssPath" type="java.lang.String" required="false"
+    description="Path the map CSS file that must be loaded by JavaScript.
+    This is required in case the map is displayed in a list." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -158,6 +162,10 @@
     <c:if test="${not empty markerList}">
         <cms:jsonvalue key="markers" value="${markerList}" />
     </c:if>
+    <c:if test="${isOsm}">
+        <c:set var="cssPath"><mercury:link-resource resource="/system/modules/alkacon.mercury.template/osmviewer/map.css" /></c:set>
+        <cms:jsonvalue key="css" value="${cssPath}" />
+    </c:if>
 </cms:jsonobject>
 
 <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.map-${provider}" />
@@ -176,19 +184,18 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">
                 <c:choose>
-                    <c:when test="${noApiKey}">
-                        data-placeholder='<fmt:message key="msg.page.map.${provider}.nokey" />' <%----%>
-                    </c:when>
-                    <c:otherwise>
-                        data-placeholder='<fmt:message key="msg.page.placeholder.map.${provider}" />' <%----%>
-                    </c:otherwise>
+                    <c:when test="${noApiKey}"><%--
+                    --%> data-placeholder='<fmt:message key="msg.page.map.${provider}.nokey" />' <%--
+                --%></c:when>
+                    <c:otherwise><%--
+                    --%> data-placeholder='<fmt:message key="msg.page.placeholder.map.${provider}" />' <%--
+                --%></c:otherwise>
                 </c:choose>
             </cms:bundle>
         </c:if>
     ${'>'}
     <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
     ${'</div>'}
-    <mercury:nl />
 
 </mercury:padding-box>
 

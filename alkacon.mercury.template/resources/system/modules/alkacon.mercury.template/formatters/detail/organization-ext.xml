@@ -23,15 +23,6 @@
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
     <Detail>true</Detail>
-    <Plugin>
-      <Group><![CDATA[css]]></Group>
-      <Target>
-        <link internal="true" type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/osmviewer/map.css]]></target>
-          <uuid>bb1e189e-24ab-11e9-bcf4-0242ac11002b</uuid>
-        </link>
-      </Target>
-    </Plugin>
     <IncludeSettings>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>

@@ -71,6 +71,8 @@ var Mercury = function (jQ) {
     // element update callback functions
     var m_updateCallbacks = [];
 
+    // additional CSS files loaded
+    var m_addCss = [];
 
     function toolbarHeight() {
         return isEditMode() ? 52 : 0;
@@ -82,7 +84,6 @@ var Mercury = function (jQ) {
     }
 
     const position = {
-
         offset: function(el) {
             const box = el.getBoundingClientRect();
             const docElem = document.documentElement;
@@ -119,42 +120,48 @@ var Mercury = function (jQ) {
 
 
     function addInfo(info) {
-
         m_info = { ...m_info, ...info };
-
         if (DEBUG) console.info("Mercury info extended to:");
         if (DEBUG) for (const [key, value] of Object.entries(m_info)) { console.info("- " + key + ": " + value) };
     }
 
 
     function hasInfo(key) {
-
         return key in m_info;
     }
 
 
     function getInfo(key) {
-
         if ((key in m_info) && (m_info[key] != "none")) {
             return m_info[key];
         }
         return null;
     }
 
-    /**
-     * Returns the Mercury debug level.
-     *
-     * @returns 0 if debug mode if off, 1 if normal debug mode is on, and 2 if verbose debug mode is on.
-     */
+
     function debug() {
         // returns the DEBUG level as integer
+        // returns 0 if debug mode if off, 1 if normal debug mode is on, and 2 if verbose debug mode is on
         if (VERBOSE) return 2;
         if (DEBUG) return 1;
         return 0;
     }
 
-    function getLocale() {
 
+    function loadCss(addCss) {
+        if (! m_addCss.includes(addCss)) {
+            if (DEBUG) console.info("Mercury.loadCss(): " + addCss);
+            const head = document.getElementsByTagName("HEAD")[0];
+            const link = document.createElement("link");
+            link.href = addCss;
+            link.rel = "stylesheet";
+            head.appendChild(link);
+            m_addCss.push(addCss);
+        }
+    }
+
+
+    function getLocale() {
         var locale = getInfo("locale");
         return (typeof locale !== "undefined") ? locale : "en";
     }
@@ -989,6 +996,7 @@ var Mercury = function (jQ) {
         initTabAccordion: initTabAccordion,
         isEditMode: isEditMode,
         isOnlineProject: isOnlineProject,
+        loadCss: loadCss,
         position: position,
         post: post,
         scrollToAnchor: scrollToAnchor,

@@ -108,15 +108,9 @@ export function init(iconPath, fullIcons) {
     const faElements = document.querySelectorAll(".fa:not(.ico)");
 
     if ((faElements.length > 80) && (fullIcons != null)) {
-        // using 80 bevause of calendar lists
-
+        // using 80 because of calendar lists
         if (Mercury.debug()) console.info("Icons.init: Using font - ".concat(faElements.length).concat(" .fa:not(.ico) elements found after page load!"));
-        const head = document.getElementsByTagName("HEAD")[0];
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.type = "text/css";
-        link.href = window.atob(fullIcons);
-        head.appendChild(link);
+        Mercury.loadCss(window.atob(fullIcons));
 
     } else {
 

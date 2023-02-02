@@ -89,6 +89,10 @@ function getFeatureGraphic(mapId) {
 
 function showSingleMap(mapData) {
 
+    if (mapData.css) {
+        Mercury.loadCss(mapData.css);
+    }
+
     if (!m_maps[mapData.id]) {
 
         var $typeParent = jQ("#" + mapData.id).closest("*[class*='type-map']");

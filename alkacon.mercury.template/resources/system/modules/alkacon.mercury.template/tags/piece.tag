@@ -266,8 +266,6 @@
     </c:set>
 </c:if>
 
-
-<mercury:nl />
 ${'<'}${pieceTag}${' '}
     ${'class=\"'}
         ${empty cssWrapper ? '' : cssWrapper.concat(' ')}

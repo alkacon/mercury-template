@@ -2,28 +2,26 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-poi.formatter.element)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-poi.formatter.teaser.elaborate)]]></NiceName>
     <Type><![CDATA[m-poi]]></Type>
-    <Key><![CDATA[m/detail/poi]]></Key>
-    <KeyAlias><![CDATA[m/element/poi]]></KeyAlias>
-    <KeyAlias><![CDATA[m/contact/poi]]></KeyAlias>
+    <Key><![CDATA[m/display/poi-elaborate]]></Key>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/poi.jsp]]></target>
-        <uuid>bc38c5f6-8c7d-4355-9d3a-f756faeb857a</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi.jsp]]></target>
+        <uuid>b53b55f1-a23e-11ed-b729-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Rank><![CDATA[3000]]></Rank>
+    <Rank><![CDATA[20000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[contact]]></ContainerType>
         <ContainerType><![CDATA[poi]]></ContainerType>
       </Types>
     </Match>
+    <Display><![CDATA[teaser-elaborate contact-teaser]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
-    <Preview>true</Preview>
     <IncludeSettings>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
@@ -34,22 +32,22 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+      <IncludeName><![CDATA[listDisplay.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
+      <IncludeName><![CDATA[pieceLayout.elaborate]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[keyPieceLayout.poi]]></IncludeName>
+      <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
+      <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
+      <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[mapRatio.default]]></IncludeName>
@@ -61,22 +59,25 @@
       <IncludeName><![CDATA[showMap.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showLocation.true]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showDescription.true]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[showFacilities.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageSubtitle.true]]></IncludeName>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
+      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.default]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

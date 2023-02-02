@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-poi.formatter.teaser.compact)]]></NiceName>
+    <Type><![CDATA[m-poi]]></Type>
+    <Key><![CDATA[m/display/poi-compact]]></Key>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi.jsp]]></target>
+        <uuid>b53b55f1-a23e-11ed-b729-0242ac11002b</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[19000]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[contact]]></ContainerType>
+        <ContainerType><![CDATA[poi]]></ContainerType>
+      </Types>
+    </Match>
+    <Display><![CDATA[teaser-compact contact-teaser]]></Display>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listDisplay.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showFacilities.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.default]]></IncludeName>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

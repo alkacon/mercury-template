@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.97</version>
+		<version>14.0.102</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -2343,6 +2343,69 @@
 				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/poi-compact.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/poi-compact.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>c1114605-a23e-11ed-b729-0242ac11002b</uuidstructure>
+			<uuidresource>c1114606-a23e-11ed-b729-0242ac11002b</uuidresource>
+			<datecreated>Wed, 01 Feb 2023 14:43:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Compact POI teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/poi-elaborate.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/poi-elaborate.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>cb421199-a23e-11ed-b729-0242ac11002b</uuidstructure>
+			<uuidresource>cb42119a-a23e-11ed-b729-0242ac11002b</uuidresource>
+			<datecreated>Wed, 01 Feb 2023 14:43:30 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Elaborate POI teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/poi.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/poi.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>b53b55f1-a23e-11ed-b729-0242ac11002b</uuidstructure>
+			<uuidresource>b53b55f2-a23e-11ed-b729-0242ac11002b</uuidresource>
+			<datecreated>Wed, 01 Feb 2023 14:42:53 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale;params=(cssgrid)]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

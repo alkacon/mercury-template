@@ -504,6 +504,18 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi-compact.xml]]></target>
+          <uuid>c1114605-a23e-11ed-b729-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi-elaborate.xml]]></target>
+          <uuid>cb421199-a23e-11ed-b729-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/contact.xml]]></target>
           <uuid>6f8b18ad-dd65-46d9-a3a5-767a3b8cb808</uuid>
         </link>

@@ -1,0 +1,78 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="CostsData" type="OpenCmsCostsData"/>
+
+    <xsd:complexType name="OpenCmsCostsData">
+        <xsd:sequence>
+            <xsd:element name="Costs" type="OpenCmsCosts" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsCosts">
+        <xsd:sequence>
+            <xsd:element name="Label" type="OpenCmsString" />
+            <xsd:element name="Price" type="OpenCmsString" />
+            <xsd:element name="Currency" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="LinkToPaymentService" type="OpenCmsVarLink" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Label</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Costs.Label)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Costs.Label.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>.+</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>Price</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Costs.Price)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Costs.Price.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^\d+$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Price)]]></Error>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>Currency</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Costs.Currency)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Costs.Currency.help)]]></Description>
+                    <Widget>combo</Widget>
+                    <WidgetConfig><![CDATA[
+                        EUR|
+                        USD
+                    ]]></WidgetConfig>
+                    <RuleRegex>^[A-Z]{3}$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Currency)]]></Error>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkToPaymentService</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Costs.LinkToPaymentService)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Costs.LinkToPaymentService.help)]]></Description>
+                    <Widget>file</Widget>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

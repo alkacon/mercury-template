@@ -9,6 +9,7 @@
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address-choice.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/booking.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/costs.xsd" />
 
     <xsd:element name="EventData" type="OpenCmsEventData" />
 
@@ -27,6 +28,7 @@
             <xsd:element name="Performer" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
+            <xsd:element name="Costs" type="OpenCmsCosts" minOccurs="0" maxOccurs="10" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
             <xsd:element name="VirtualLocation" type="OpenCmsNestedLink" minOccurs="0" />
@@ -129,18 +131,6 @@
                     <Search>listtitle</Search>
                 </Setting>
                 <Setting>
-                    <PropertyName>Preface</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Preface)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Preface.help)]]></Description>
-                    <Widget>textarea</Widget>
-                    <WidgetConfig>3|proportional</WidgetConfig>
-                </Setting>
-                <Setting>
-                    <PropertyName>Image</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Image.help)]]></Description>
-                </Setting>
-                <Setting>
                     <PropertyName>Dates</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Event.Dates)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Event.Dates.help)]]></Description>
@@ -159,6 +149,23 @@
                     <DisplayName><![CDATA[%(key.label.Event.Performer)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Event.Performer.help)]]></Description>
                     <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>Preface</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Preface)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Preface.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>3|proportional</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Image.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>Costs</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Costs)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Costs.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Paragraph</PropertyName>

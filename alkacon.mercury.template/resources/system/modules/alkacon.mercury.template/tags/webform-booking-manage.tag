@@ -164,10 +164,11 @@
             <mercury:nl />
             <div class=list-box><%----%>
                 <div class="list-entries accordion-items" id="${id}"><%----%>
-                    <c:forEach var="submission" items="${form.submissions}" varStatus="status">
+                    <c:forEach var="submission" items="${form.submissions}" varStatus="stat">
                         <cms:display value="${submission.structureId}" editable="true" delete="true">
-                           <cms:param name="index" value="${status.index}"/>
+                           <cms:param name="index" value="${stat.index}"/>
                            <cms:param name="id" value="${id}" />
+                           <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                         </cms:display>
                     </c:forEach>
                 </div><%----%>

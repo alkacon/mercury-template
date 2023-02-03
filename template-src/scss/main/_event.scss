@@ -187,6 +187,19 @@ table.submissions {
     }
 }
 
+.submission-actions .buttons {
+    text-align: right;
+}
+
+.submission-actions .buttons button {
+    margin-left: var(--#{$prefix}default-margin-verysmall);
+}
+
+.submission-actions > button {
+    float: right;
+    margin-left: var(--#{$prefix}default-margin-verysmall);
+}
+
 // Event booking status information
 
 .book-info {

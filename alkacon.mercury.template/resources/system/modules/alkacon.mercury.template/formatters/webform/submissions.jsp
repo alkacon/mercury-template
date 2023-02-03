@@ -59,6 +59,65 @@
         <mercury:nl />
 
         <div id="${itemId}" class="acco-body collapse" data-bs-parent="#${parentId}"><%----%>
+            <div class="submission-actions">
+                <c:if test="${not submissionsDialogDeclared}">
+                <script>
+                    class SubmissionsDialog {
+                        constructor(action, itemId, uuid) {
+                            const button = document.getElementById(action + "_button_" + itemId);
+                            const dialog = document.getElementById(action + "_dialog_" + itemId);
+                            const params = new URLSearchParams(location.search);
+                            const formmanage = params.get("formmanage");
+                            button.addEventListener("click", () =>  { dialog.showModal(); });
+                            dialog.addEventListener("close", () => {
+                                if (dialog.returnValue == "confirm") {
+                                    location.href = "?formmanage=" + formmanage + "&action=" + action + "&uuid=" + uuid;
+                                }
+                            });
+                        }
+                    }
+                </script>
+                </c:if>
+                <c:set var="submissionsDialogDeclared" value="${true}" scope="request" />
+                <c:if test="${not bean.cancelled}">
+                    <button id="cancel_button_${itemId}" class="btn oct-meta-info btn-xs"><%----%>
+                        <fmt:message key="msg.page.form.submission.action.cancel" />
+                    </button><%----%>
+                    <dialog id="cancel_dialog_${itemId}"><%----%>
+                        <form method="dialog"><%----%>
+                            <h3><fmt:message key="msg.page.form.submission.ask.cancel" /></h3><%----%>
+                            <div class="buttons"><%----%>
+                                <button value="cancel" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                </button><%----%>
+                                <button value="confirm" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.confirm.cancel" />
+                                </button><%----%>
+                            </div><%----%>
+                        </form><%----%>
+                    </dialog><%----%>
+                    <script>new SubmissionsDialog("cancel", "${itemId}", "${content.id}")</script><%----%>
+                </c:if>
+                <c:if test="${not bean.cancelled and bean.waitlist and param.fullyBooked eq 'false'}">
+                    <button id="add_button_${itemId}" class="btn oct-meta-info btn-xs"><%----%>
+                        <fmt:message key="msg.page.form.submission.action.add" />
+                    </button><%----%>
+                    <dialog id="add_dialog_${itemId}"><%----%>
+                        <form method="dialog"><%----%>
+                            <h3><fmt:message key="msg.page.form.submission.ask.add" /></h3><%----%>
+                            <div class="buttons"><%----%>
+                                <button value="cancel" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                </button><%----%>
+                                <button value="confirm" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.confirm.add" />
+                                </button><%----%>
+                            </div><%----%>
+                        </form><%----%>
+                    </dialog><%----%>
+                    <script>new SubmissionsDialog("add", "${itemId}", "${content.id}")</script><%----%>
+                </c:if>
+            </div><%----%>
             <table class="submissions"><%----%>
                 <c:forEach var="data" items="${bean.data}">
                     <tr><%----%>

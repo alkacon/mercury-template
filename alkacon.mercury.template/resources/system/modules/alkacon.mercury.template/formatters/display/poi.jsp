@@ -25,6 +25,7 @@
 <c:set var="mapRatio"               value="${setting.mapRatio.toString}" />
 <c:set var="mapZoom"                value="${setting.mapZoom.toString}" />
 <c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
+<c:set var="showGeoInfo"            value="${setting.showGeoInfo.toBoolean}" />
 
 <c:set var="title"                  value="${value.Title}" />
 
@@ -76,6 +77,19 @@
     </c:set>
 </c:if>
 
+<c:if test="${showGeoInfo and value.Coord.isSet}">
+    <c:set var="geoInfo">
+        <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
+        <jsp:setProperty name="coordBean" property="wrappedValue" value="${value.Coord}" />
+        <div class="geoinfo"><%----%>
+            Lat: ${coordBean.lat.toString()}
+            Lng: ${coordBean.lng.toString()}
+            Zoom: ${coordBean.zoom}
+        </div><%----%>
+        <mercury:nl />
+    </c:set>
+</c:if>
+
 <mercury:teaser-piece
     cssWrapper="type-poi${setCssWrapper}${setEffect}"
     headline="${title}"
@@ -85,6 +99,7 @@
     teaserType="${displayType}"
     link="${linkToDetail}"
     linkOption="${setLinkOption}"
+    noLinkOnVisual="${true}"
     buttonText="${setButtonText}"
     hsize="${setHsize}">
 
@@ -133,6 +148,7 @@
             </c:if>
         </div><%----%>
         <mercury:nl />
+        ${geoInfo}
         ${accessibleFacilities}
     </jsp:attribute>
 

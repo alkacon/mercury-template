@@ -1025,12 +1025,28 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showGeoInfo.false]]></IncludeName>
+      <PropertyName><![CDATA[showGeoInfo]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showGeoInfo)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showGeoInfo.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showFacilities.true]]></IncludeName>
       <PropertyName><![CDATA[showFacilities]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showFacilities)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.showFacilities.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showFacilities.false]]></IncludeName>
+      <PropertyName><![CDATA[showFacilities]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showFacilities)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showFacilities.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showCombinedDownloads.true]]></IncludeName>

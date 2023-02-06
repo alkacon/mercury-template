@@ -38,7 +38,10 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showFacilities.true]]></IncludeName>
+      <IncludeName><![CDATA[showFacilities.false]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showGeoInfo.false]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>

@@ -37,9 +37,6 @@ var m_mapData = [];
 // API key for accessing the map data
 var m_apiKey;
 
-// map styling
-var m_mapStyle = [];
-
 function getPuempel(color) {
 
   var strokeColor = tinycolor(color).darken(20);
@@ -416,14 +413,7 @@ export function init(jQuery, debug) {
 
         if (m_apiKey != null || Mercury.hasInfo("osmStyleUrl")) {
 
-            // initialize map style from JSON stored in CSS
-            m_mapStyle = Mercury.getThemeJSON("map-style", []);
-
             if (PrivacyPolicy.cookiesAcceptedExternal()) {
-
-                m_maps = {};
-                m_mapData = [];
-                m_mapStyle = [];
 
                 // initialize map sections with values from data attributes
                 $mapElements.each(function() {

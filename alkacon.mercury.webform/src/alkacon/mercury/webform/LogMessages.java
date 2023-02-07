@@ -49,10 +49,12 @@ public final class LogMessages extends A_CmsMessageBundle {
     public static final String ERR_READING_UGC_CONFIG_FAILED_0 = "ERR_READING_UGC_CONFIG_FAILED_0";
 
     /** Name of the used resource bundle. */
-    private static final String BUNDLE_NAME = "alkacon.mercury.webform.log.messages";
+    private static final String BUNDLE_NAME = "alkacon.mercury.webform.log_messages";
 
     /** Static instance member. */
     private static final I_CmsMessageBundle INSTANCE = new LogMessages();
+
+    public static final String GUI_FORMDATA_HEADING_1 = "GUI_FORMDATA_HEADING_1";
 
     /**
     * Hides the public constructor for this utility class.<p>

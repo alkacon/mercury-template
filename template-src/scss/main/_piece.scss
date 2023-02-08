@@ -294,9 +294,12 @@ html.keyboard-nav .piece {
         // .flex-col makes single columns in a row use the complete available height
         // a col-6 column must use the complete available height in small screens
         // for columns that are not col-6, same height is not required since the columns will be stacked upon each other in small screens
-        > .piece.full:only-child {
-            flex-grow: 1;
-            @include text-tile(false);
+        > .piece.full,
+        > .box {
+            &:only-child {
+                flex-grow: 1;
+                @include text-tile(false);
+            }
         }
     }
 }
@@ -305,9 +308,12 @@ html.keyboard-nav .piece {
 
     .flex-col {
         // .flex-col makes single columns in a row use the complete available height
-        > .piece.full:only-child {
-            flex-grow: 1;
-            @include text-tile(false);
+        > .piece.full,
+        > .box {
+            &:only-child {
+                flex-grow: 1;
+                @include text-tile(false);
+            }
         }
     }
 

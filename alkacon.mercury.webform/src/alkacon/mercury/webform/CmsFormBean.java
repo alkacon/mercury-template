@@ -85,6 +85,21 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
     }
 
     /**
+     * Creates a form data handler.
+     * @param context the current page context
+     * @param formHandler the form handler
+     * @return the created form handler, or <code>null</code> if creation fails
+     */
+    public CmsFormDataHandler createFormDataHandler(PageContext context, CmsFormHandler formHandler) {
+
+        return new CmsFormDataHandler(
+            context,
+            (HttpServletRequest)context.getRequest(),
+            (HttpServletResponse)context.getResponse(),
+            formHandler);
+    }
+
+    /**
     * Creates the form handler.
     *
     * @param context the current page context.

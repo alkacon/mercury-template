@@ -43,6 +43,9 @@ public class CmsFormDataBean {
     /** The XPATH to store the waitlist notification flag. */
     public static final String PATH_WAITLIST_NOTIFICATION = "WaitlistNotification[1]";
 
+    /** The XPATH to store the date when the user was moved up from the waiting list. */
+    public static final String PATH_WAITLIST_MOVE_UP_DATE = "WaitlistMoveUpDate[1]";
+
     /** The XPATH to store the configuration mail sent information. */
     public static final String PATH_CONFIRMATION_MAIL_SENT = "ConfirmationMailSent[1]";
 
@@ -219,6 +222,15 @@ public class CmsFormDataBean {
             m_isWaitlist = Boolean.valueOf(value.getStringValue(null));
         }
         return m_isWaitlist.booleanValue();
+    }
+
+    /**
+     * Returns a flag, indicating if the user was moved up from the wait list.
+     * @return a flag, indicating if the user was moved up from the wait list
+     */
+    public boolean isWaitlistMovedUp() {
+
+        return m_content.getValue(PATH_WAITLIST_MOVE_UP_DATE, CmsLocaleManager.MASTER_LOCALE) != null;
     }
 
     /**

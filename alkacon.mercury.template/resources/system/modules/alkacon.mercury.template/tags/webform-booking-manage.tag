@@ -162,6 +162,30 @@
                 </div><%----%>
             </div><%----%>
             <mercury:nl />
+            <c:if test="${not empty param.action and not empty param.uuid}">
+                <c:set var="formDataHandler" value="${form.createFormDataHandler(pageContext, status)}" />
+                <c:choose>
+                    <c:when test="${param.action eq 'cancel'}">
+                        <c:set var="result" value="${formDataHandler.cancelRegistration(param.uuid)}" />
+                    </c:when>
+                    <c:when test="${param.action eq 'add'}">
+                        <c:set var="result" value="${formDataHandler.moveUpFromWaitingList(param.uuid)}" />
+                    </c:when>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${not empty formDataHandler.error}">
+                        <div class="submissions-action-error">
+                            <fmt:message key="${formDataHandler.error}" />
+                        </div><%----%>
+                    </c:when>
+                    <c:when test="${not empty formDataHandler.info}">
+                        <div class="submissions-action-info">
+                            <fmt:message key="${formDataHandler.info}" />
+                        </div><%----%>
+                    </c:when>
+                </c:choose>
+            </c:if>
+            <mercury:nl />
             <div class=list-box><%----%>
                 <div class="list-entries accordion-items" id="${id}"><%----%>
                     <c:forEach var="submission" items="${form.submissions}" varStatus="stat">

@@ -17,6 +17,7 @@
             <xsd:element name="ConfirmationMailSent" type="OpenCmsBoolean" />
             <xsd:element name="RegistrationMailSent" type="OpenCmsBoolean" />
             <xsd:element name="WaitlistNotification" type="OpenCmsBoolean" />
+            <xsd:element name="WaitlistMoveUpDate" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Cancelled" type="OpenCmsBoolean" />
             <xsd:element name="TitleMapping" type="OpenCmsString" />
             <xsd:element name="DeletionDate" type="OpenCmsDateTime" minOccurs="0" />
@@ -58,6 +59,10 @@
                 <Setting>
                     <PropertyName>WaitlistNotification</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistNotification)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>WaitlistMoveUpDate</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistMoveUpDate)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>Cancelled</PropertyName>

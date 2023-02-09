@@ -163,7 +163,8 @@
             </div><%----%>
             <mercury:nl />
             <c:if test="${not empty param.action and not empty param.uuid}">
-                <c:set var="formDataHandler" value="${form.createFormDataHandler(pageContext, status)}" />
+                <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" />
+                <c:set var="formDataHandler" value="${form.createFormDataHandler(pageContext, formHandler)}" />
                 <c:choose>
                     <c:when test="${param.action eq 'cancel'}">
                         <c:set var="result" value="${formDataHandler.cancelRegistration(param.uuid)}" />
@@ -174,12 +175,12 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${not empty formDataHandler.error}">
-                        <div class="submissions-action-error">
+                        <div class="submissions-action-error"><%----%>
                             <fmt:message key="${formDataHandler.error}" />
                         </div><%----%>
                     </c:when>
                     <c:when test="${not empty formDataHandler.info}">
-                        <div class="submissions-action-info">
+                        <div class="submissions-action-info"><%----%>
                             <fmt:message key="${formDataHandler.info}" />
                         </div><%----%>
                     </c:when>

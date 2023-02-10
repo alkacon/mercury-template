@@ -70,7 +70,7 @@
                     --%>aria-expanded="${open}" <%--
                     --%>aria-controls="${itemId}"<%--
                     --%>data-bs-target="#${itemId}"><%----%>
-                        <c:out value="${tabLabel}"></c:out>
+                        <mercury:out value="${tabLabel}" lenientEscaping="${true}" />
                     </button><%----%>
 
                     <c:if test="${cms.isEditMode}">

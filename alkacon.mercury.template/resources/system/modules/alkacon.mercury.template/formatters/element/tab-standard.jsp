@@ -71,7 +71,7 @@
                             --%>aria-controls="${tabId}" <%--
                             --%>data-bs-target="#${tabId}" <%--
                             --%>data-bs-toggle="tab"><%----%>
-                                <c:out value="${tabLabel}" />
+                                <mercury:out value="${tabLabel}" lenientEscaping="${true}" />
                             </button><%----%>
 
                             <c:if test="${cms.isEditMode}">

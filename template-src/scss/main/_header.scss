@@ -73,7 +73,7 @@
                 }
             }
 
-            #{conditional-value($nav-setting-fixheader != false, ".sticky.csssetting", ".sticky.default")},
+            #{if($nav-setting-fixheader != false, ".sticky.csssetting", ".sticky.default")},
             .sticky.always,
             .sticky.upscroll {
                 // this requires JavaScript found in script-navigation.js to work properly
@@ -95,7 +95,7 @@
         html.opencms-page-editor {
             // fix head below toolbar in edit mode
             .area-header#{$selector} {
-                #{conditional-value($nav-setting-fixheader != false, ".sticky.csssetting", ".sticky.default")},
+                #{if($nav-setting-fixheader != false, ".sticky.csssetting", ".sticky.default")},
                 .sticky.always,
                 .sticky.upscroll {
                     > .isfixed {
@@ -1174,8 +1174,8 @@
 
 @mixin mobile-menu-globals($logo-position) {
 
-    $toggle-position: conditional-value($logo-position == left, right, left);
-    $position-selector: conditional-value($logo-position == left, "lp-l", "lp-r");
+    $toggle-position: if($logo-position == left, right, left);
+    $position-selector: if($logo-position == left, "lp-l", "lp-r");
 
     header.bh.#{$position-selector} {
         // nav menu is hidden

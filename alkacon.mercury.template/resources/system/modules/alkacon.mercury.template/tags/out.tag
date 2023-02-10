@@ -12,6 +12,9 @@
     Default is 'true'.
     If this is 'false' then this tag is identical to c:out." %>
 
+<%@ attribute name="lenientEscaping" type="java.lang.Boolean" required="false"
+    description="If this is 'true', then escapeXml is NOT enforced if the sitemap attribute 'template.lenient.escaping' is set to 'true'." %>
+
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -26,7 +29,8 @@ public String replaceHtmlCodes(String text) {
 }
 %>
 
-<c:set var="escapeXml" value="${empty escapeXml or escapeXml ? true : false}" />
+<c:set var="lenientEscaping" value="${lenientEscaping ? cms.sitemapConfig.attribute['template.lenient.escaping'].toBoolean : false}" />
+<c:set var="escapeXml" value="${empty escapeXml or escapeXml ? not lenientEscaping : false}" />
 <%
    String value = (String)getJspContext().getAttribute("value");
    Boolean escapeXml = (Boolean)getJspContext().getAttribute("escapeXml");

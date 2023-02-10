@@ -118,19 +118,27 @@
 // see https://css-tricks.com/snippets/sass/strip-unit-function/
 @function strip-unit($number) {
     @if type-of($number) == 'number' and not unitless($number) {
-        @return $number / ($number * 0 + 1);
+        @return divide($number, $number * 0 + 1);
     }
 
     @return $number;
 }
 
-// Can be used to set a value based on a condition
-@function conditional-value($condition, $trueval, $falseval) {
-    @if ($condition) {
-        @return $trueval;
-    } @else {
-        @return $falseval;
+// responsive font sizing
+// adapted from https://css-tricks.com/snippets/css/fluid-typography/
+@mixin fluid-font-size($font-size-large, $font-size-small, $bp-name-large: xs, $bp-name-small: none) {
+
+    $min-vw: if($bp-name-small == none, 375px, map-get($grid-breakpoints, $bp-name-small)); // default 375px is iPhone SE size
+    $max-vw: map-get($grid-breakpoints, $bp-name-large);
+
+    @if unit($font-size-small) == rem {
+        $font-size-small: strip-unit($font-size-small) * $font-rem-base-mobile-size;
     }
+    @if unit($font-size-large) == rem {
+        $font-size-large: strip-unit($font-size-large) * $font-rem-base-mobile-size;
+    }
+
+    font-size: calc(#{$font-size-small} + #{strip-unit($font-size-large - $font-size-small)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
 }
 
 // add two values directly if comparable, or with calc otherwiese

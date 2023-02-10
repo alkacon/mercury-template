@@ -549,12 +549,12 @@
     align-items: center;
     top: 0;
     height: 100%;
-    transform: rotate(conditional-value($reverse, 0, $toggle-open-rotation));
+    transform: rotate(if($reverse, 0, $toggle-open-rotation));
     transition: transform $toggle-transition-time;
 }
 
 @mixin toggle-arrow-closed-after($reverse: false) {
-    transform: rotate(conditional-value($reverse, $toggle-open-rotation, 0));
+    transform: rotate(if($reverse, $toggle-open-rotation, 0));
 }
 
 @mixin ensure-not-css-property($value) {
@@ -586,7 +586,7 @@
     }
     $main-theme-val: get-color-val("main-theme", $bg-map);
     @if ($set-default or ($main-theme-val != null) or has-color("main-theme-fg", $bg-map)) {
-        $main-theme-fg-def: conditional-value($main-theme-val != null, get-text-color($main-theme-val), var(--#{$prefix}link-fg-color));
+        $main-theme-fg-def: if($main-theme-val != null, get-text-color($main-theme-val), var(--#{$prefix}link-fg-color));
         --#{$prefix}main-theme-fg:                  #{get-color("main-theme-fg",                #{$main-theme-fg-def},                         $bg-map)};
     }
     @if ($set-default or has-color("main-theme-hover", $bg-map)) {
@@ -594,7 +594,7 @@
     }
     $main-theme-hover-val: get-color-val("main-theme-hover", $bg-map);
     @if ($set-default or ($main-theme-hover-val != null) or has-color("main-theme-hover-fg", $bg-map)) {
-        $main-theme-hover-fg-def: conditional-value($main-theme-hover-val != null, get-text-color($main-theme-hover-val), var(--#{$prefix}link-hover-fg-color));
+        $main-theme-hover-fg-def: if($main-theme-hover-val != null, get-text-color($main-theme-hover-val), var(--#{$prefix}link-hover-fg-color));
         --#{$prefix}main-theme-hover-fg:            #{get-color("main-theme-hover-fg",          #{$main-theme-hover-fg-def},                   $bg-map)};
     }
 

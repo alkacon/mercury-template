@@ -298,7 +298,7 @@ $link-hover-fg-color:               get-text-color($link-hover-color) !default;
 $headings-color:                    $text-dark !default;
 $intro-headings-color:              $main-theme !default;
 $linked-headings-color:             unset !default;
-$linked-headings-hover-color:       conditional-value($linked-headings-color != $link-color, $linked-headings-color, $link-hover-color) !default;
+$linked-headings-hover-color:       if($linked-headings-color != $link-color, $linked-headings-color, $link-hover-color) !default;
 $linked-headings-decoration:        unset !default;
 $linked-headings-hover-decoration:  $linked-headings-decoration !default;
 
@@ -556,7 +556,7 @@ $nav-breadcrumb-text-color:         get-text-color($nav-breadcrumb-bg-color, $na
 $nav-breadcrumb-text-hover-color:   get-text-color($nav-breadcrumb-bg-color, $nav-header-text-hover) !default; // hover color of breadcrumb links
 $nav-breadcrumb-font-size:          $font-size-sm !default; // font size for the breadcrumbs
 $nav-breadcrumb-image-size:         round($nav-breadcrumb-font-size * 80) * 0.01 !default; // image height / width for the breadcrumbs
-$nav-breadcrumb-separator-color:    conditional-value($nav-breadcrumb-bg-color == none, $grey, $nav-breadcrumb-text-color) !default; // color of breadcrumbs separator
+$nav-breadcrumb-separator-color:    if($nav-breadcrumb-bg-color == none, $grey, $nav-breadcrumb-text-color) !default; // color of breadcrumbs separator
 $nav-breadcrumb-separator:          "\f0da" !default; // separator char between breadcrumbs
 $nav-breadcrumb-separator-font:     var(--#{$prefix}icon-font-family) !default; // font-family for breadcrumb seperator - NOTE: Sometimes you may want to use a 'standard' font with a seperator like '/' or '|', hence this is configurable
 
@@ -573,7 +573,7 @@ $nav-side-font-size:                $font-size-base !default;
 $nav-side-border:                   1px solid $nav-border !default;
 $nav-side-boxed:                    false !default; // true/false: show border around sidebar navigation
 $nav-side-left-padding-step:        $grid-gutter-width-half !default;
-$nav-side-left-padding-start:       conditional-value($nav-side-boxed == true, $nav-side-left-padding-step, 2px) !default;
+$nav-side-left-padding-start:       if($nav-side-boxed == true, $nav-side-left-padding-step, 2px) !default;
 $nav-side-right-padding:            30px !default;
 $nav-side-ver-padding:              6px !default;
 $nav-side-padding:                  $nav-side-ver-padding $nav-side-right-padding $nav-side-ver-padding $nav-side-left-padding-start !default;
@@ -701,7 +701,7 @@ $acco-body-bg:                      transparent !default;
 $acco-toggle-arrows:                true !default;
 $acco-arrow-icon:                   "\f078" !default;
 $acco-panel-shadow:                 $panel-shadow !default;
-$acco-body-margin-top:              conditional-value($at-border == none, 0, -1px) !default; // should match the border width from $at-border
+$acco-body-margin-top:              if($at-border == none, 0, -1px) !default; // should match the border width from $at-border
 $acco-border-radius-expand-adjust:  (($acco-body-margin-top == 0) or ($acco-body-margin-top == -1px)) !default;
 
 $tab-content-margin-top:            calc(0.5 * $at-spacing) !default;

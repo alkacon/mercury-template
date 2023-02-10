@@ -68,6 +68,16 @@
                             </jsp:attribute>
                         </mercury:alert-online>
                     </c:when>
+                    <c:when test="${cms.wrap[formXml.file].propertySearch['mercury.form.disabled'] eq 'true'}">
+                        <mercury:alert-online>
+                            <jsp:attribute name="head">
+                                <fmt:message key="msg.page.form.disabled.headline" />
+                            </jsp:attribute>
+                            <jsp:attribute name="text">
+                                <fmt:message key="msg.page.form.disabled.text" />
+                            </jsp:attribute>
+                        </mercury:alert-online>
+                    </c:when>
                     <c:otherwise>
                         <c:if test="${not empty formCssWrapper}">
                             ${form.addExtraConfig("formCssWrapper", formCssWrapper)}

@@ -2,7 +2,7 @@
     display-name="icalendar-vars"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
-    description="Extracts iCalendar information from an event content and sets a series of variables for quick acess." %>
+    description="Collects iCalendar information from an event content and sets a series of variables for quick acess." %>
 
 
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="true"

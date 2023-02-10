@@ -72,6 +72,9 @@
                         <c:if test="${not empty formCssWrapper}">
                             ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
                         </c:if>
+                        <mercury:icalendar-vars content="${formBookingXml}">
+                        ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
+                        </mercury:icalendar-vars>
                         ${formHandler.createForm()}
                     </c:otherwise>
                 </c:choose>

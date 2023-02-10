@@ -21,6 +21,7 @@
             <xsd:element name="ConfirmationMailFromName" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationMailSubject" type="OpenCmsString" />
             <xsd:element name="ConfirmationMailText" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="ConfirmationMailICalLinkEnabled" type="OpenCmsBoolean" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -84,6 +85,12 @@
                     <Description><![CDATA[%(key.msg.label.form.WebForm.MailText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigMail:%(param:editorConfigMail))]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailICalLinkEnabled</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailICalLinkEnabled)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailICalLinkEnabled.help)]]></Description>
+                    <Default>false</Default>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

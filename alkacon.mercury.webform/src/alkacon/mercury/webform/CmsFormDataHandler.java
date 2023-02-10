@@ -427,6 +427,12 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             macroResolver.addMacro(
                 CmsFormHandler.MACRO_PREFIX_VALUE + formDataField.getLabel(),
                 formDataField.getValue());
+            if (!m_formHandler.getFormConfiguration().getMailType().equals(CmsForm.MAILTYPE_HTML)) {
+                formDataString.append(formDataField.getLabel());
+                formDataString.append("\t\t");
+                formDataString.append(formDataField.getValue());
+                formDataString.append("\n");
+            }
         }
         try {
             if (action.equals(ACTION_CANCEL)) {

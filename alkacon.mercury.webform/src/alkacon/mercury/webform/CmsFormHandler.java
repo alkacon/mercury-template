@@ -36,6 +36,7 @@ import alkacon.mercury.webform.fields.CmsTextField;
 import alkacon.mercury.webform.fields.I_CmsField;
 import alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml;
 import alkacon.mercury.webform.mail.A_CmsFormMail;
+import alkacon.mercury.webform.mail.CmsFormMailICalInfo;
 import alkacon.mercury.webform.mail.CmsFormMailRegisterAdmin;
 import alkacon.mercury.webform.mail.CmsFormMailRegisterUser;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateCheckPage;
@@ -247,6 +248,9 @@ public class CmsFormHandler extends CmsJspActionElement {
 
     /** For the case of bookable events, this is the end time of the event, otherwise null. */
     private Long m_endTime;
+
+    /** The iCalendar information. */
+    private CmsFormMailICalInfo m_iCalInfo;
 
     /**
      * Empty constructor, be sure to call one of the available initialization methods afterwards.<p>
@@ -655,6 +659,15 @@ public class CmsFormHandler extends CmsJspActionElement {
     public String getFormConfirmationText() {
 
         return m_macroResolver.resolveMacros(getFormConfiguration().getFormConfirmationText());
+    }
+
+    /**
+     * Returns the iCalendar information.
+     * @return the iCalendar information
+     */
+    public CmsFormMailICalInfo getICalInfo() {
+
+        return m_iCalInfo;
     }
 
     /**
@@ -1125,6 +1138,18 @@ public class CmsFormHandler extends CmsJspActionElement {
         }
 
         return data.isUgcConfigured() || !getErrors().containsKey(ERROR_REGISTRATION_SENT);
+    }
+
+    /**
+     * Sets the iCalendar information.
+     * @param link the iCalendar link
+     * @param fileName the ICS download file name
+     * @param label the label of the download button
+     */
+    public void setICalInfo(String link, String fileName, String label) {
+
+        String absoluteLink = OpenCms.getLinkManager().getServerLink(getCmsObject(), "/");
+        m_iCalInfo = new CmsFormMailICalInfo(absoluteLink + link, fileName, label);
     }
 
     /**

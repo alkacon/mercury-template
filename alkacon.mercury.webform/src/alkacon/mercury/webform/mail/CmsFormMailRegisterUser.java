@@ -63,7 +63,16 @@ public class CmsFormMailRegisterUser extends A_CmsFormMailUser {
 
         String mailSubject = m_macroResolver.resolveMacros(
             m_form.getMailSubjectPrefix() + m_form.getConfirmationMailSubject());
-        sendMail(mailSubject, getMailBody());
+        sendMail(mailSubject, createMailBody());
+    }
+
+    /**
+     * @see alkacon.mercury.webform.mail.A_CmsFormMail#getMailReceiver()
+     */
+    @Override
+    protected String getMailReceiver() {
+
+        return m_form.getConfirmationMailEmail();
     }
 
     /**

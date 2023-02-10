@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.107</version>
+		<version>14.0.109</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7721,6 +7721,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays a HTML heading with a specified level]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/icalendar-vars.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/icalendar-vars.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>d13601f9-a918-11ed-bc0e-0242ac11002b</uuidstructure>
+			<uuidresource>d13601fa-a918-11ed-bc0e-0242ac11002b</uuidresource>
+			<datecreated>Fri, 10 Feb 2023 07:59:17 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Collects iCalendar information from an event content]]></value>
 				</property>
 			</properties>
 			<relations/>

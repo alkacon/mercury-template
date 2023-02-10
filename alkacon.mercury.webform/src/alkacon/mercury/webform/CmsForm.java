@@ -146,6 +146,9 @@ public class CmsForm {
     /** Configuration node name for the confirmation mail text node. */
     public static final String NODE_CONFIRMATIONMAILTEXT = "ConfirmationMailText";
 
+    /** Configuration node name for the confirmation mail iCalender link node. */
+    public static final String NODE_CONFIRMATIONMAILICALLINKENABLED = "ConfirmationMailICalLinkEnabled";
+
     /** Configuration node name for the date. */
     public static final String NODE_DATE = "Date";
 
@@ -371,6 +374,9 @@ public class CmsForm {
 
     /** configuration value. */
     protected String m_confirmationMailTextPlain;
+
+    /** configuration value. */
+    protected boolean m_confirmationMailICalLinkEnabled;
 
     /** Stores the form dynamic input fields. */
     protected List<I_CmsField> m_dynaFields;
@@ -1386,6 +1392,16 @@ public class CmsForm {
     }
 
     /**
+     * Returns if the optional iCalender link in the confirmation mail is enabled.<p>
+     *
+     * @return true if the optional iCalender link in the confirmation mail is enabled, otherwise false
+     */
+    public boolean isConfirmationMailICalLinkEnabled() {
+
+        return m_confirmationMailICalLinkEnabled;
+    }
+
+    /**
      * Returns if the confirmation mail if optional, i.e. selectable by the form submitter.<p>
      *
      * @return true if the confirmation mail if optional, i.e. selectable by the form submitter, otherwise false
@@ -1810,6 +1826,12 @@ public class CmsForm {
                 confirmationMailText,
                 cms.getRequestContext().getEncoding());
             setConfirmationMailTextPlain(confirmationMailText);
+            // get the confirmation mail enabled flag
+            setConfirmationMailICalLinkEnabled(
+                Boolean.parseBoolean(
+                    configParser.getConfigurationValue(
+                        pathPrefix + CmsForm.NODE_CONFIRMATIONMAILICALLINKENABLED,
+                        Boolean.FALSE.toString())));
 
             // get the confirmation mail field index number
             String confirmationField = configParser.getConfigurationValue(
@@ -2191,6 +2213,11 @@ public class CmsForm {
     protected void setConfirmationMailFromName(String confirmationMailFromName) {
 
         m_confirmationMailFromName = confirmationMailFromName;
+    }
+
+    protected void setConfirmationMailICalLinkEnabled(boolean confirmationMailICalLinkEnabled) {
+
+        m_confirmationMailICalLinkEnabled = confirmationMailICalLinkEnabled;
     }
 
     /**

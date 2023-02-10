@@ -506,7 +506,7 @@ $!  !$<div class="webform_fullybooked_headline warn-head h2">$message$</div>
 </div>
 >>
 
-htmlemail(mailcss,mailtext,errorheadline,errors) ::= <<
+htmlemail(mailcss,mailtext,errorheadline,errors,icalinfo) ::= <<
 $! ###### HTML email for the form ###### !$
 <html><head>
 <style type="text/css">
@@ -531,6 +531,9 @@ $endif$
 </style>
 </head><body>
 $mailtext$
+$if(icalinfo)$
+$!  !$<p><a href="$icalinfo.link$" download="$icalinfo.fileName$">$icalinfo.label$</a></p>
+$endif$
 $if(errorheadline)$
 $!  !$<h1>$errorheadline$</h1>
 $!  !$<p>

@@ -64,7 +64,24 @@ public class CmsFormMailMoveUpUser extends A_CmsFormMailUser {
         String mailPrefix = CmsFormMailMessages.get().container(CmsFormMailMessages.MAIL_PREFIX_MOVEDUP).key(
             m_cms.getRequestContext().getLocale());
         String mailSubject = m_macroResolver.resolveMacros(mailPrefix + " " + m_form.getConfirmationMailSubject());
-        sendMail(mailSubject, getMailBody());
+        sendMail(mailSubject, createMailBody());
+    }
+
+    /**
+     * @see alkacon.mercury.webform.mail.A_CmsFormMail#getMailReceiver()
+     */
+    @Override
+    protected String getMailReceiver() {
+
+        String emailFieldName = m_form.getConfirmationMailFieldDbLabel();
+        String mailReceiver = null;
+        for (CmsFormDataField field : m_formDataFields) {
+            if (field.getLabel().equals(emailFieldName)) {
+                mailReceiver = field.getValue();
+                break;
+            }
+        }
+        return mailReceiver;
     }
 
     /**
@@ -86,6 +103,6 @@ public class CmsFormMailMoveUpUser extends A_CmsFormMailUser {
 
         String mailText = CmsFormMailMessages.get().container(CmsFormMailMessages.INFO_MOVEDUP_USER).key(
             m_cms.getRequestContext().getLocale());
-        return mailText;
+        return mailText + "\n\n%(formdata)";
     }
 }

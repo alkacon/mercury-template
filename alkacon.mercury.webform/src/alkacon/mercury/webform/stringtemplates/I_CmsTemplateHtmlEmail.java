@@ -33,5 +33,6 @@ public interface I_CmsTemplateHtmlEmail {
     final String ATTR_ERROR_HEADLINE = "errorheadline";
     /** Attribute that contains the list of configuration errors. */
     final String ATTR_ERRORS = "errors";
-
+    /** Attribute that contains iCalendat information. */
+    final String ATTR_ICAL_INFO = "icalinfo";
 }

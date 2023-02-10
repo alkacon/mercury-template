@@ -66,7 +66,7 @@ public class CmsFormMailMoveUpAdmin extends A_CmsFormMailAdmin {
         String mailPrefix = CmsFormMailMessages.get().container(CmsFormMailMessages.MAIL_PREFIX_MOVEDUP).key(
             m_cms.getRequestContext().getLocale());
         String mailSubject = m_macroResolver.resolveMacros(mailPrefix + " " + m_form.getMailSubject());
-        sendMail(mailSubject, getMailBody(), attachements);
+        sendMail(mailSubject, createMailBody(), attachements);
     }
 
     /**
@@ -97,6 +97,6 @@ public class CmsFormMailMoveUpAdmin extends A_CmsFormMailAdmin {
 
         String mailText = CmsFormMailMessages.get().container(CmsFormMailMessages.INFO_MOVEDUP_ADMIN).key(
             m_cms.getRequestContext().getLocale());
-        return mailText;
+        return mailText + "\n\n%(formdata)";
     }
 }

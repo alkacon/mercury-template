@@ -64,7 +64,7 @@ public class CmsFormMailRegisterAdmin extends A_CmsFormMailAdmin {
     public void sendMail(Map<String, FileItem> fileUploads) throws AddressException, EmailException {
 
         String mailSubject = m_macroResolver.resolveMacros(m_form.getMailSubjectPrefix() + m_form.getMailSubject());
-        sendMail(mailSubject, getMailBody(), fileUploads);
+        sendMail(mailSubject, createMailBody(), fileUploads);
     }
 
     /**

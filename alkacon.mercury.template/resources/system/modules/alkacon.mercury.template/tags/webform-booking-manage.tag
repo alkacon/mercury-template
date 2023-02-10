@@ -164,6 +164,9 @@
             <mercury:nl />
             <c:if test="${not empty param.action and not empty param.uuid}">
                 <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" />
+                <mercury:icalendar-vars content="${formBookingXml}">
+                ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
+                </mercury:icalendar-vars>
                 <c:set var="formDataHandler" value="${form.createFormDataHandler(pageContext, formHandler)}" />
                 <c:choose>
                     <c:when test="${param.action eq 'cancel'}">

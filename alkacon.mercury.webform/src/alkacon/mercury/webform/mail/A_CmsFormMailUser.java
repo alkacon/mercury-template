@@ -65,23 +65,6 @@ public abstract class A_CmsFormMailUser extends A_CmsFormMail {
     public abstract void sendMail() throws AddressException, EmailException;
 
     /**
-     * @see alkacon.mercury.webform.mail.A_CmsFormMail#getMailReceiver()
-     */
-    @Override
-    protected String getMailReceiver() {
-
-        String emailFieldName = m_form.getConfirmationMailFieldDbLabel();
-        String mailReceiver = null;
-        for (CmsFormDataField field : m_formDataFields) {
-            if (field.getLabel().equals(emailFieldName)) {
-                mailReceiver = field.getValue();
-                break;
-            }
-        }
-        return mailReceiver;
-    }
-
-    /**
     * Internal mail send function.
     * @param mailSubject the mail subject
     * @param mailBody the mail body

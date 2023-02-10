@@ -138,7 +138,7 @@ public abstract class A_CmsFormMail {
      * Creates the mail body.
      * @return the mail body
      */
-    protected String getMailBody() {
+    protected String createMailBody() {
 
         StringBuffer formDataString = new StringBuffer(m_formDataString);
         String mailCss = null;
@@ -192,6 +192,10 @@ public abstract class A_CmsFormMail {
             sTemplate.setAttribute(I_CmsTemplateHtmlEmail.ATTR_MAIL_TEXT, mailText);
             sTemplate.setAttribute(I_CmsTemplateHtmlEmail.ATTR_ERROR_HEADLINE, errorHeadline);
             sTemplate.setAttribute(I_CmsTemplateHtmlEmail.ATTR_ERRORS, m_form.getConfigurationErrors());
+            if (((this instanceof CmsFormMailRegisterUser) || (this instanceof CmsFormMailMoveUpUser))
+                && m_form.isConfirmationMailICalLinkEnabled()) {
+                sTemplate.setAttribute(I_CmsTemplateHtmlEmail.ATTR_ICAL_INFO, m_formHandler.getICalInfo());
+            }
             return sTemplate.toString();
         } else {
             StringBuffer result = new StringBuffer(mailText);
@@ -203,6 +207,14 @@ public abstract class A_CmsFormMail {
                 for (int k = 0; k < m_form.getConfigurationErrors().size(); k++) {
                     result.append(m_form.getConfigurationErrors().get(k));
                     result.append("\n");
+                }
+            }
+            if (((this instanceof CmsFormMailRegisterUser) || (this instanceof CmsFormMailMoveUpUser))
+                && m_form.isConfirmationMailICalLinkEnabled()) {
+                if (m_formHandler.getICalInfo() != null) {
+                    String iCalLabel = m_formHandler.getICalInfo().getLabel();
+                    String iCalLink = m_formHandler.getICalInfo().getLink();
+                    result.append("\n\n" + iCalLabel + ": " + iCalLink);
                 }
             }
             return result.toString();

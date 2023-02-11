@@ -234,8 +234,7 @@
     <c:otherwise>
         <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
         <%-- "pvl" means "piece visual last". --%>
-        <%-- "plo-x" contains the selected piece layout option, where x is the pieceLayout number. --%>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${' plo-'.concat(pieceLayout)}" />
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
     </c:otherwise>
 </c:choose>
 

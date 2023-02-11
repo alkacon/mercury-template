@@ -24,18 +24,21 @@
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
-<c:set var="bookingOption"          value="${setting.bookingOption.toString}" />
-<c:set var="performerOption"        value="${setting.performerOption.toString}" />
+<c:set var="pieceLayoutAlternating" value="${setting.pieceLayoutAlternating.toBoolean}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
+<c:set var="imageRatioParagraphs"   value="${setting.imageRatioParagraphs}" />
 <c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
-<c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
+<c:set var="useVisualFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
+
+<c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
+<c:set var="bookingOption"          value="${setting.bookingOption.toString}" />
+<c:set var="performerOption"        value="${setting.performerOption.toString}" />
 <c:set var="showiCalendar"          value="${setting.iCalendarShowLink.toBoolean}" />
-<c:set var="showImageFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -51,7 +54,8 @@
 <c:set var="intro"                  value="${value.Intro}" />
 <c:set var="title"                  value="${value.Title}" />
 <c:set var="preface"                value="${value.Preface}" />
-<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : (showImageFromParagraph ? firstParagraph.value.Image : null)}" />
+<c:set var="useVisualFromParagraph" value="${useVisualFromParagraph and not value.Image.value.Image.isSet and firstParagraph.value.Image.isSet}" />
+<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : (useVisualFromParagraph ? firstParagraph.value.Image : null)}" />
 <c:set var="locationNote"           value="${value.LocationNote}" />
 <c:set var="type"                   value="${value.Type}" />
 <c:set var="performer"              value="${value.Performer}" />
@@ -200,12 +204,17 @@
 
     <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
         <div class="detail-content"><%----%>
-            <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
+            <mercury:paragraphs-alternating
+                paragraphs="${paragraphsContent}"
+                baseLayout="${pieceLayout}"
+                layoutAlternating="${pieceLayoutAlternating}"
+                skipFirstParagraphImage="${useVisualFromParagraph}">
                 <mercury:section-piece
                     cssWrapper="${setCssWrapperParagraphs}"
-                    pieceLayout="${pieceLayout}"
+                    pieceLayout="${paragraphLayout}"
                     heading="${paragraph.value.Caption}"
-                    image="${(status.first and showImageFromParagraph and not value.Image.value.Image.isSet) ? null : paragraph.value.Image}"
+                    image="${status.first and useVisualFromParagraph ? null : paragraph.value.Image}"
+                    imageRatio="${imageRatioParagraphs}"
                     text="${paragraph.value.Text}"
                     link="${paragraph.value.Link}"
                     showImageZoom="${showImageZoom}"
@@ -215,7 +224,7 @@
                     ade="${ade}"
                     emptyWarning="${not status.first}"
                 />
-            </c:forEach>
+            </mercury:paragraphs-alternating>
             <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
         </div><%----%>
         <mercury:nl />

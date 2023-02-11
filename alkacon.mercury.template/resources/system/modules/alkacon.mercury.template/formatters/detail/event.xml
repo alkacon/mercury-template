@@ -48,7 +48,16 @@
       <IncludeName><![CDATA[keyPieceOrigin.detail]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[keyPieceimageRatio.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[pieceLayout.detail]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceLayoutAlternating.detail]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatioParagraphs.detail]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
@@ -61,9 +70,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[imageRatio.detail]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>

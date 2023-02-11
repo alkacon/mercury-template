@@ -36,8 +36,7 @@
     description="The tag to generate. Defaults to 'div' if not provided." %>
 
 <%@ attribute name="pieceClass" type="java.lang.String" required="false"
-    description="The class to generate. Defaults to 'piece' if not provided.
-    If this is set a special css selector 'plo-x' will be added to the generated markup where x is the pieceLayout number." %>
+    description="The class to generate. Defaults to 'piece' if not provided." %>
 
 <%@ attribute name="heading" type="java.lang.Object" required="false"
     description="The optional section heading." %>

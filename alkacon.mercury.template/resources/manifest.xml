@@ -8830,6 +8830,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/paragraphs-alternating.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/paragraphs-alternating.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>45aec2b4-a9e1-11ed-a370-0242ac11002b</uuidstructure>
+			<uuidresource>45aec2b5-a9e1-11ed-a370-0242ac11002b</uuidresource>
+			<datecreated>Sat, 11 Feb 2023 07:54:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Helper for lists of paragraphs with alternating images]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/paragraphs.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/paragraphs.tag</destination>
 			<type>jsp</type>

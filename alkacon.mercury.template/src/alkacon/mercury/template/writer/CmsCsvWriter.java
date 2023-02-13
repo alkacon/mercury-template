@@ -59,6 +59,16 @@ public class CmsCsvWriter extends A_CmsWriter {
     }
 
     /**
+     * @see alkacon.mercury.template.writer.A_CmsWriter#addRowHeadline(java.lang.String)
+     */
+    @Override
+    public void addRowHeadline(String headline) {
+
+        m_csv.append(esc("#" + headline)).append(sep());
+        m_csv.append(nl());
+    }
+
+    /**
      * @see java.lang.Object#toString()
      */
     @Override

@@ -53,6 +53,12 @@ public abstract class A_CmsWriter {
     abstract public void addRow(String... values);
 
     /**
+     * Adds a headline row to a table.
+     * @param headline the headline to add
+     */
+    abstract public void addRowHeadline(String headline);
+
+    /**
      * Starts a new table for given column names.
      * @param columnNames the columnNames
      */

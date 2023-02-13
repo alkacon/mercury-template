@@ -33,10 +33,13 @@ import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.jsp.util.A_CmsJspCustomContextBean;
+import org.opencms.jsp.util.CmsJspContentAccessBean;
+import org.opencms.jsp.util.CmsJspContentAccessValueWrapper;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.util.CmsStringUtil;
+import org.opencms.widgets.serialdate.CmsSerialDateValue;
 import org.opencms.xml.I_CmsXmlDocument;
 import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
@@ -110,7 +113,10 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     protected static final String KEY_REMAININGSUBMISSIONS_WAITLIST_2 = "msg.page.form.bookingstatus.remainingsubmissions.waitlist.2";
 
     /** Constant for message key. */
-    protected static final String KEY_SUBMISSIONDATA_HEADLINE = "msg.page.form.bookingstatus.submissiondata.heading";
+    protected static final String KEY_SUBMISSIONDATA_HEADING = "msg.page.form.bookingstatus.submissiondata.heading";
+
+    /** Constant for message key. */
+    protected static final String KEY_STATUS = "msg.page.form.status.submission";
 
     /** Constant for message key. */
     protected static final String KEY_STATUS_CANCELLED = "msg.page.form.status.submission.cancelled";
@@ -122,10 +128,70 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     protected static final String KEY_STATUS_CONFIRMED = "msg.page.form.status.submission.confirmed";
 
     /** Constant for message key. */
+    protected static final String KEY_STATUS_MOVEDUP = "msg.page.form.status.submission.movedup";
+
+    /** Constant for message key. */
+    protected static final String KEY_STATUS_REGISTERED = "msg.page.form.status.submission.registered";
+
+    /** Constant for message key. */
     //protected static final String KEY_STATUS_MAILED = "msg.page.form.status.submission.mailed";
 
     /** Constant for message key. */
     protected static final String KEY_STATUS_CHANGED = "msg.page.form.status.submission.changed";
+
+    /** Constant for message key. */
+    protected static final String KEY_DATE_REGISTERED = "msg.page.form.date.submission.registered";
+
+    /** Constant for message key. */
+    protected static final String KEY_DATE_STATUSCHANGED = "msg.page.form.date.submission.statuschanged";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDATA_HEADLINE = "msg.page.form.bookingstatus.eventdata.headline";
+
+    /** Constant for message key. */
+    protected static final String KEY_BOOKINGDATA_HEADLINE = "msg.page.form.bookingstatus.bookingdata.headline";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDATA_TITLE = "msg.page.form.bookingstatus.eventdata.title";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDATA_LOCATION = "msg.page.form.bookingstatus.eventdata.location";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_STREETADDRESS = "label.StreetAddress";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_EXTENDEDADDRESS = "label.ExtendedAddress";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_POSTALCODE = "label.PostalCode";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_LOCALITY = "label.Locality";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_REGION = "label.Region";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_COUNTRY = "label.Country";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_COORD = "label.Poi.Coord";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_DATE = "label.Date";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_FINALREGISTRATION = "label.Booking.FinalRegistrationDate";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_PERFORMER = "label.Event.Performer";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_COSTS = "label.Costs";
+
+    /** Constant for message key. */
+    protected static final String KEY_EVENTDETAIL_NOTE = "label.Note";
 
     /** Configuration node name for the value. */
     public static final String NODE_EXPORT = "DBExport";
@@ -138,6 +204,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
 
     /** Configuration node name for the value. */
     public static final String NODE_EXPORT_CONFIG_FIELD = "ConfigField";
+
+    /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_CONFIG_EVENT_INFORMATION = "ConfigEventInformation";
 
     /** Configuration node name for the value. */
     public static final String NODE_EXPORT_CONFIG_OVERVIEW_INFORMATION = "ConfigOverviewInformation";
@@ -196,6 +265,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     /** List of fields to rename or merge during export. */
     private Map<String, String> m_exportConfigFieldRename = new HashMap<String, String>();
 
+    /** Flag indicating whether to export event information. */
+    private boolean m_exportConfigEventInformation = true;
+
     /** Flag indicating whether to export overview information. */
     private boolean m_exportConfigOverviewInformation = true;
 
@@ -204,6 +276,12 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
 
     /** The form to export submissions for. */
     protected CmsFormBean m_form;
+
+    /** Map containing event location data. */
+    protected Map<String, String> m_locData;
+
+    /** The event content. */
+    protected CmsJspContentAccessBean m_eventContent;
 
     /** The form's title. */
     protected String m_formTitle;
@@ -234,13 +312,22 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
      * Initializes this export bean.
      * @param form the form to export data for.
      * @param formTitle the form title to print in the export.
+     * @param locData map containing location information
+     * @param eventContent event content bean
      * @param locale the locale to export the data in.
      */
-    public void init(CmsFormBean form, String formTitle, Locale locale) {
+    public void init(
+        CmsFormBean form,
+        String formTitle,
+        Map<String, String> locData,
+        CmsJspContentAccessBean eventContent,
+        Locale locale) {
 
         m_form = form;
         m_formTitle = formTitle;
         m_messages = new CmsMessages(BUNDLE_NAME, locale);
+        m_locData = locData;
+        m_eventContent = eventContent;
         initExportConfigConfig(locale);
         initExportConfigAdd(locale);
         initExportConfigFieldIgnore(locale);
@@ -280,6 +367,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 }
             }
         }
+        columnNames.put(m_messages.key(KEY_STATUS), Integer.valueOf(columnNames.size()));
+        columnNames.put(m_messages.key(KEY_DATE_REGISTERED), Integer.valueOf(columnNames.size()));
+        columnNames.put(m_messages.key(KEY_DATE_STATUSCHANGED), Integer.valueOf(columnNames.size()));
         if (m_exportConfigAddCancelled) {
             columnNames.put(m_messages.key(KEY_STATUS_CANCELLED), Integer.valueOf(columnNames.size()));
         }
@@ -303,7 +393,8 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
      */
     protected A_CmsWriter export(A_CmsWriter writer) {
 
-        writeMetadata(writer);
+        writeEventInformation(writer);
+        writeOverviewInformation(writer);
         writeData(writer);
         return writer;
     }
@@ -339,6 +430,29 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             } else {
                 merged.put(key, value);
             }
+        }
+        if (formData.isWaitlistMovedUp()) {
+            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_MOVEDUP));
+        } else if (formData.isWaitlist()) {
+            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_WAITLIST));
+        } else if (formData.isCancelled()) {
+            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_CANCELLED));
+        } else {
+            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_REGISTERED));
+        }
+        merged.put(
+            m_messages.key(KEY_DATE_REGISTERED),
+            m_messages.getDateTime(formData.getDateRegistered(), DateFormat.LONG));
+        if (formData.getDateCancelled() != null) {
+            merged.put(
+                m_messages.key(KEY_DATE_STATUSCHANGED),
+                m_messages.getDateTime(formData.getDateCancelled(), DateFormat.LONG));
+        } else if (formData.getDateMovedUp() != null) {
+            merged.put(
+                m_messages.key(KEY_DATE_STATUSCHANGED),
+                m_messages.getDateTime(formData.getDateMovedUp(), DateFormat.LONG));
+        } else {
+            merged.put(m_messages.key(KEY_DATE_STATUSCHANGED), "");
         }
         if (m_exportConfigAddCancelled) {
             merged.put(m_messages.key(KEY_STATUS_CANCELLED), asString(formData.isCancelled()));
@@ -421,6 +535,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         String pathPrefix = NODE_EXPORT + "/" + NODE_EXPORT_CONFIG_FIELD;
         I_CmsXmlDocument formConfig = m_form.getFormConfig();
         if (formConfig.hasValue(NODE_EXPORT, locale) && formConfig.hasValue(pathPrefix, locale)) {
+            String prefixEventInformation = pathPrefix + "/" + NODE_EXPORT_CONFIG_EVENT_INFORMATION;
+            String configEventInformation = formConfig.getValue(prefixEventInformation, locale).getStringValue(cms);
+            m_exportConfigEventInformation = Boolean.valueOf(configEventInformation).booleanValue();
             String prefixOverviewInformation = pathPrefix + "/" + NODE_EXPORT_CONFIG_OVERVIEW_INFORMATION;
             String configOverviewInformation = formConfig.getValue(prefixOverviewInformation, locale).getStringValue(
                 cms);
@@ -491,19 +608,109 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     }
 
     /**
-     * Writes the submission metadata to the export file writer.
+     * Writes event information to the export file writer.
      * @param writer the export file writer
      */
-    private void writeMetadata(A_CmsWriter writer) {
+    private void writeEventInformation(A_CmsWriter writer) {
+
+        if (!m_exportConfigEventInformation) {
+            return;
+        }
+        writeHeadline(writer);
+        writer.addRowHeadline(m_messages.key(KEY_EVENTDATA_HEADLINE));
+        String titleValue = m_eventContent.getValue().get("Title").getToString();
+        writer.addRow(m_messages.key(KEY_EVENTDATA_TITLE), titleValue);
+        writer.addRow(m_messages.key(KEY_EVENTDATA_LOCATION), m_locData.get("name"));
+        writer.addRow(m_messages.key(KEY_EVENTDETAIL_STREETADDRESS), m_locData.get("streetAddress"));
+        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(m_locData.get("extendedAddress"))) {
+            writer.addRow(m_messages.key(KEY_EVENTDETAIL_EXTENDEDADDRESS), m_locData.get("extendedAddress"));
+        }
+        String postalCode = m_locData.get("postalCode") != null ? m_locData.get("postalCode") + " " : "";
+        writer.addRow(
+            m_messages.key(KEY_EVENTDETAIL_POSTALCODE) + "/" + m_messages.key(KEY_EVENTDETAIL_LOCALITY),
+            postalCode + m_locData.get("locality"));
+        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(m_locData.get("region"))) {
+            writer.addRow(m_messages.key(KEY_EVENTDETAIL_REGION), m_locData.get("region"));
+        }
+        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(m_locData.get("country"))) {
+            writer.addRow(m_messages.key(KEY_EVENTDETAIL_COUNTRY), m_locData.get("country"));
+        }
+        if ((m_locData.get("lat") != null) && (m_locData.get("lng") != null)) {
+            String coords = m_locData.get("lat") + "," + m_locData.get("lng");
+            writer.addRow(m_messages.key(KEY_EVENTDETAIL_COORD), coords);
+        }
+        if (m_eventContent.getValue().get("Dates") != null) {
+            CmsSerialDateValue serialDateValue = new CmsSerialDateValue(
+                m_eventContent.getValue().get("Dates").getToString());
+            String startDate = m_messages.getDateTime(serialDateValue.getStart(), DateFormat.LONG);
+            String endDate = null;
+            if (serialDateValue.getEnd() != null) {
+                endDate = m_messages.getDateTime(serialDateValue.getEnd(), DateFormat.LONG);
+                String dateValue = startDate + " - " + endDate;
+                writer.addRow(m_messages.key(KEY_EVENTDETAIL_DATE), dateValue);
+            } else {
+                writer.addRow(m_messages.key(KEY_EVENTDETAIL_DATE), startDate);
+            }
+        }
+        CmsJspContentAccessValueWrapper booking = m_eventContent.getValue().get("Booking");
+        if ((booking != null) && (booking.getValue().get("FinalRegistrationDate") != null)) {
+            String finalRegistrationDate = m_messages.getDateTime(
+                booking.getValue().get("FinalRegistrationDate").getToDate(),
+                DateFormat.LONG);
+            writer.addRow(m_messages.key(KEY_EVENTDETAIL_FINALREGISTRATION), finalRegistrationDate);
+        }
+        CmsJspContentAccessValueWrapper performerValue = m_eventContent.getValue().get("Performer");
+        String performer = performerValue != null ? performerValue.getToString() : "";
+        writer.addRow(m_messages.key(KEY_EVENTDETAIL_PERFORMER), performer);
+        if (m_eventContent.getValueList().get("Costs") != null) {
+            for (CmsJspContentAccessValueWrapper costsValue : m_eventContent.getValueList().get("Costs")) {
+                try {
+                    String label = costsValue.getValue().get("Label").getToString();
+                    String price = costsValue.getValue().get("Price").getToString();
+                    String currency = costsValue.getValue().get("Currency").getToString();
+                    writer.addRow(m_messages.key(KEY_EVENTDETAIL_COSTS), label + ": " + currency + " " + price);
+                } catch (IllegalArgumentException e) {
+                    writer.addRow(m_messages.key(KEY_EVENTDETAIL_COSTS), "");
+                }
+            }
+        }
+        if (m_eventContent.getValueList().get("Note") != null) {
+            for (CmsJspContentAccessValueWrapper noteValue : m_eventContent.getValueList().get("Note")) {
+                CmsJspContentAccessValueWrapper noteTitleValue = noteValue.getValue().get("Title");
+                CmsJspContentAccessValueWrapper noteTextValue = noteValue.getValue().get("Text");
+                String noteTitle = noteTitleValue != null ? noteTitleValue.getToString() : "";
+                String noteText = noteTextValue != null ? noteTextValue.getToString() : "";
+                writer.addRow(m_messages.key(KEY_EVENTDETAIL_NOTE), noteTitle + ": " + noteText);
+            }
+        }
+        writer.addRow();
+    }
+
+    /**
+     * Writes the headline to the export file writer.
+     * @param writer the export file writer
+     */
+    private void writeHeadline(A_CmsWriter writer) {
+
+        writer.addRowHeadline(m_messages.key(KEY_HEADLINE_1, m_formTitle));
+        writer.addRow(m_messages.key(KEY_EXPORT_DATE_0), m_messages.getDateTime(new Date(), DateFormat.LONG));
+        writer.addRow();
+    }
+
+    /**
+     * Writes the booking overview information to the export file writer.
+     * @param writer the export file writer
+     */
+    private void writeOverviewInformation(A_CmsWriter writer) {
 
         if (!m_exportConfigOverviewInformation) {
             return;
         }
+        if (!m_exportConfigEventInformation) {
+            writeHeadline(writer);
+        }
+        writer.addRowHeadline(m_messages.key(KEY_BOOKINGDATA_HEADLINE));
         CmsSubmissionStatus status = m_form.getSubmissionStatus();
-        writer.addRow(m_messages.key(KEY_HEADLINE_1, m_formTitle));
-        writer.addRow();
-        writer.addRow(m_messages.key(KEY_EXPORT_DATE_0), m_messages.getDateTime(new Date(), DateFormat.LONG));
-        writer.addRow();
         String submissionsValue = m_messages.key(
             KEY_SUBMISSIONS_STATUS_3,
             Integer.valueOf(status.getNumTotalSubmissions()),
@@ -543,7 +750,6 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         }
         writer.addRow(m_messages.key(KEY_FREEPLACES_LABEL), freeplacesValue);
         writer.addRow();
-        writer.addRow(m_messages.key(KEY_SUBMISSIONDATA_HEADLINE));
-        writer.addRow();
+        writer.addRowHeadline(m_messages.key(KEY_SUBMISSIONDATA_HEADING));
     }
 }

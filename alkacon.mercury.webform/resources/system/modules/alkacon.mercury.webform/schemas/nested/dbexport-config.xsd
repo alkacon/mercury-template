@@ -12,6 +12,7 @@
 
     <xsd:complexType name="OpenCmsWebFormDatabaseExportConfig">
         <xsd:sequence>
+            <xsd:element name="ConfigEventInformation" type="OpenCmsBoolean" />
             <xsd:element name="ConfigOverviewInformation" type="OpenCmsBoolean" />
             <xsd:element name="ConfigCancelled" type="OpenCmsBoolean" />
         </xsd:sequence>
@@ -22,6 +23,12 @@
         <xsd:appinfo>
             <resourcebundle name="alkacon.mercury.webform.messages" />
             <FieldSettings>
+                <Setting>
+                    <PropertyName>ConfigEventInformation</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.ConfigEventInformation)]]></DisplayName>
+                    <Default><![CDATA[true]]></Default>
+                    <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
+                </Setting>
                 <Setting>
                     <PropertyName>ConfigOverviewInformation</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.ConfigOverviewInformation)]]></DisplayName>

@@ -19,11 +19,13 @@
 
 package alkacon.mercury.webform;
 
+import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsLocaleManager;
 import org.opencms.util.CmsMacroResolver;
 import org.opencms.xml.I_CmsXmlDocument;
 import org.opencms.xml.types.I_CmsXmlContentValue;
 
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -142,6 +144,39 @@ public class CmsFormDataBean {
             }
         }
         return m_data;
+    }
+
+    /**
+     * Returns the date when this registration was cancelled or null if not cancelled.
+     * @return the date when this registration was cancelled or null if not cancelled
+     */
+    public Date getDateCancelled() {
+
+        long expires = m_content.getFile().getDateExpired();
+        if (expires == CmsResource.DATE_EXPIRED_DEFAULT) {
+            return null;
+        } else {
+            return new Date(expires);
+        }
+    }
+
+    /**
+     * Returns the date when the user did move up from the wating list or null if not moved up.
+     * @return the date when the user did move up from the wating list or null if not moved up
+     */
+    public Date getDateMovedUp() {
+
+        I_CmsXmlContentValue movedUp = m_content.getValue(PATH_WAITLIST_MOVE_UP_DATE, CmsLocaleManager.MASTER_LOCALE);
+        return movedUp == null ? null : new Date(Long.parseLong(movedUp.getStringValue(null)));
+    }
+
+    /**
+     * Returns the registration date.
+     * @return the registration date
+     */
+    public Date getDateRegistered() {
+
+        return new Date(m_content.getFile().getDateCreated());
     }
 
     /**

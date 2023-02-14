@@ -18,7 +18,7 @@
         <ContainerType><![CDATA[poi]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[teaser-elaborate contact-teaser]]></Display>
+    <Display><![CDATA[static:teaser-elaborate]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>

@@ -187,7 +187,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
     var eventMouseenter = event.type == "mouseenter";
     var eventMouseleave = event.type == "mouseleave";
     var eventKeydown = (event.type == "keydown" && ((event.which == 13) || (event.which == 32))); // limit keydown to enter and space
-    var eventTouchstart = event.type == "touchstart";
+    var eventTouch = event.type == "touchend";
     var eventClick = event.type == "click";
 
     var expanded = $submenu.hasClass("ed");
@@ -209,7 +209,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
         if (VERBOSE) console.info("Navigation.toggleMenu, isDesktopNav=true eventMouseenter=" + eventMouseenter + " eventMouseleave=" + eventMouseleave, $submenu ,$menuToggle);
         // desktop navigation
         var $targetmenu = jQ("#" + targetmenuId).first();
-        if (!expanded && (eventMouseenter || eventKeydown || eventTouchstart)) {
+        if (!expanded && (eventMouseenter || eventKeydown || eventTouch)) {
             stopEventPropagation = true;
             resetMenu($menuToggle);
             $submenu.addClass("ed");
@@ -239,7 +239,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
                     }
                 }
             }
-        } else if (expanded && (eventMouseleave || eventKeydown || eventTouchstart)) {
+        } else if (expanded && (eventMouseleave || eventKeydown || eventTouch)) {
             if (eventMouseleave) {
                 // only close open menu if this is NOT a top level menu (top level menu has separate timeout)
                 if (!$submenu.parent().hasClass("nav-main-items")) {
@@ -255,7 +255,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
                 $submenu.children("[aria-expanded]").attr('aria-expanded', false);
             }
         }
-    } else if (eventTouchstart || eventClick) {
+    } else if (eventTouch || eventClick) {
         // mobile navigation
         stopEventPropagation = true;
         resetMenu($menuToggle);

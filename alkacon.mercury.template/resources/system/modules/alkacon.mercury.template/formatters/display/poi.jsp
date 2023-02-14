@@ -82,9 +82,7 @@
         <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
         <jsp:setProperty name="coordBean" property="wrappedValue" value="${value.Coord}" />
         <div class="geoinfo"><%----%>
-            Lat: ${coordBean.lat.toString()}
-            Lng: ${coordBean.lng.toString()}
-            Zoom: ${coordBean.zoom}
+            GPS: ${coordBean.lat.toString()}, ${coordBean.lng.toString()}
         </div><%----%>
         <mercury:nl />
     </c:set>

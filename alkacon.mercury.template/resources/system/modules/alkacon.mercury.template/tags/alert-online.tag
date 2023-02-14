@@ -34,7 +34,7 @@
 
 ${addNoscriptTags ? '<noscript>' : ''}
 
-<div class="online-warn${empty css ? '' : ' '.concat(css)}"${empty attr ? '' : ' '.concat(attr)}><%----%>
+<div class="online-warn box${empty css ? '' : ' '.concat(css)}"${empty attr ? '' : ' '.concat(attr)}><%----%>
     <c:if test="${showJsWarning}">
         <fmt:setLocale value="${cms.locale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">

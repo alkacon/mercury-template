@@ -23,6 +23,7 @@
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
+    <Detail>true</Detail>
     <Preview>true</Preview>
     <IncludeSettings>
       <link type="WEAK">

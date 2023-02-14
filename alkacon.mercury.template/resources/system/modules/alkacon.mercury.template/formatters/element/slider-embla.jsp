@@ -328,16 +328,16 @@
 
                     <div class="caption ${posTop}${' '}${posLeft}"><%----%>
                         <c:if test="${image.value.SuperTitle.isSet}">
-                            <strong ${textStyle}>${image.value.SuperTitle}</strong><%----%>
+                            <strong ${textStyle}><mercury:out value="${image.value.SuperTitle}" lenientEscaping="${true}" /></strong><%----%>
                         </c:if>
                         <c:if test="${image.value.TitleLine1.isSet or image.value.TitleLine2.isSet}">
                             <div class="subcaption"><%----%>
                                 <c:if test="${image.value.TitleLine1.isSet}">
-                                    <small ${textStyle}>${image.value.TitleLine1}</small><%----%>
+                                    <small ${textStyle}><mercury:out value="${image.value.TitleLine1}" lenientEscaping="${true}" /></small><%----%>
                                 </c:if>
                                 <c:if test="${image.value.TitleLine2.isSet}">
                                     <%-- br needed here for "custom" CSS setting when subcaption has different color --%>
-                                    <br><small ${textStyle}>${image.value.TitleLine2}</small><%----%>
+                                    <br><small ${textStyle}><mercury:out value="${image.value.TitleLine2}" lenientEscaping="${true}" /></small><%----%>
                                 </c:if>
                             </div><%----%>
                         </c:if>

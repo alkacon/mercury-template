@@ -24,6 +24,7 @@ public String replaceHtmlCodes(String text) {
     String result = text;
     if (result != null) {
         result = result.replace("&shy;", "\u00ad");
+        result = result.replace("&nbsp;", "\u00a0");
     }
     return result;
 }

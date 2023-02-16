@@ -353,6 +353,7 @@ $piece-btn-white-space:             $btn-white-space !default;
 $piece-text-to-link-margin:         var(--#{$prefix}paragraph-margin-bottom) !default;
 $piece-visual-last-margin-top:      var(--#{$prefix}paragraph-margin-bottom) !default;
 $piece-visual-margin-bottom:        var(--#{$prefix}paragraph-margin-bottom) !default;
+$piece-headings-margin-bottom:      var(--#{$prefix}headings-margin-bottom) !default;
 $intro-headings-margin-bottom:      calc(0.25 * var(--#{$prefix}paragraph-margin-bottom)) !default; // margin below intro headings
 
 $use-hyphens:                       true !default; // enable hyphenation / word breaks (not all browsers support this)
@@ -882,6 +883,15 @@ $social-links-size-half:            $social-links-size * 0.5 !default;
 $social-links-box-height:           $social-links-size * 2 !default;
 $social-links-border-radius:        var(--#{$prefix}btn-border-radius) !default;
 $social-links-border-width:         0 !default;
+
+
+// Layout rows
+
+$row-paddings: (
+    small:        50px,
+    medium:       100px,
+    large:        200px
+) !default; // used in settings of layout area "Area - One row"
 
 
 // Map to generate the social icon styles from

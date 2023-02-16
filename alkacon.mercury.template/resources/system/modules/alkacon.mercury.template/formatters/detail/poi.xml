@@ -79,5 +79,31 @@
     <Setting>
       <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
     </Setting>
+    <MetaMapping>
+      <Key><![CDATA[ogTitle]]></Key>
+      <Element><![CDATA[Title]]></Element>
+      <Order><![CDATA[3500]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogDescriptionAlt]]></Key>
+      <Element><![CDATA[Paragraph/Text]]></Element>
+      <Order><![CDATA[3500]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogDescriptionAltCaption]]></Key>
+      <Element><![CDATA[Paragraph/Caption]]></Element>
+      <Order><![CDATA[3500]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogImageAlt]]></Key>
+      <Element><![CDATA[Paragraph/Image/Image]]></Element>
+      <Order><![CDATA[3500]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogType]]></Key>
+      <Element><![CDATA[none]]></Element>
+      <Order><![CDATA[3500]]></Order>
+      <Default><![CDATA[article]]></Default>
+    </MetaMapping>
   </NewFormatter>
 </NewFormatters>

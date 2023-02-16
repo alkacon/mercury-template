@@ -64,6 +64,18 @@
     }
 }
 
+// paddings used in settings of layout area "Area - One row"
+@each $pad-name, $pad-size in $row-paddings {
+    .padded-#{$pad-name} {
+        padding-top: $pad-size;
+        padding-bottom: calc(#{$pad-size} - var(--#{$prefix}element-margin));
+
+        .row-12.box {
+            margin-bottom: var(--#{$prefix}element-margin);
+        }
+    }
+}
+
 .area-content.colored-row + .area-content:not(.colored-row) {
     margin-top: var(--#{$prefix}element-margin);
 }

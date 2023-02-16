@@ -104,8 +104,17 @@ $imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
         }
     }
 
-    > .detail-visual + .series {
-        margin-top: var(--#{$prefix}element-margin);
+    &.detail-page {
+        > .detail-content,
+        > .series {
+            margin-top: var(--#{$prefix}detail-content-spacer-y);
+        }
+        > .detail-visual.no-info  {
+            + .detail-content,
+            + .series {
+                margin-top: 0;
+            }
+        }
     }
 
     .effect-box {

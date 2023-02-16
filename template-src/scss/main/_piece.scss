@@ -71,6 +71,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     --#{$prefix}visual-last-margin-top: #{$piece-visual-last-margin-top};
     --#{$prefix}visual-margin-bottom: #{$piece-visual-margin-bottom};
     --#{$prefix}text-to-link-margin: #{$piece-text-to-link-margin};
+    --#{$prefix}piece-headings-margin-bottom: #{$piece-headings-margin-bottom};
     --#{$prefix}intro-headings-margin-bottom: #{$intro-headings-margin-bottom};
 
     display: block;
@@ -199,6 +200,10 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
                     // last element in text must not add margin
                     margin-bottom: 0;
                 }
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                margin-bottom: var(--#{$prefix}piece-headings-margin-bottom);
             }
         }
         + .link, // link may also be a sibling to the body
@@ -392,6 +397,10 @@ html.keyboard-nav .piece {
                 > .visual {
                     float: left;
                     margin-right: var(--#{$prefix}gutter-x);
+                }
+                > .body ul {
+                    display: flex;
+                    flex-direction: column;
                 }
             }
 

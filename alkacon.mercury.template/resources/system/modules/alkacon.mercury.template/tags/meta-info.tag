@@ -146,7 +146,7 @@ to find a sentence end.
 <c:set var="solcalImageMaxWidth" value="${2400}" />
 <c:if test="${not empty fbimage}">
     <cms:scaleImage var="imgBean" src="${fbimage}">
-        <c:if test="${not empty imgBean}">
+        <c:if test="${not empty imgBean and not fn:endsWith(imgBean.vfsUri, '.svg')}">
             <c:set var="fbSet" value="true" />
             <c:set target="${imgBean}" property="quality" value="${85}" />
             <c:set var="ib" value="${imgBean.scaleRatio['191-100']}" />
@@ -275,7 +275,7 @@ to find a sentence end.
 <%-- Twitter images must not be smaller then 300x157 and not be larger then 4096x4096 --%>
 <c:if test="${not empty twimage}">
     <cms:scaleImage var="imgBean" src="${twimage}">
-        <c:if test="${not empty imgBean}">
+        <c:if test="${not empty imgBean and not fn:endsWith(imgBean.vfsUri, '.svg')}">
             <c:set var="twSet" value="true" />
             <c:set target="${imgBean}" property="quality" value="${85}" />
             <c:choose>

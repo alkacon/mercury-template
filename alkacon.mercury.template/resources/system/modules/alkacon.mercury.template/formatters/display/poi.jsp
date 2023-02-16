@@ -81,9 +81,9 @@
     <c:set var="geoInfo">
         <jsp:useBean id="coordBean" class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
         <jsp:setProperty name="coordBean" property="wrappedValue" value="${value.Coord}" />
-        <div class="geoinfo"><%----%>
+        <p class="geoinfo"><%----%>
             GPS: ${coordBean.lat.toString()}, ${coordBean.lng.toString()}
-        </div><%----%>
+        </p><%----%>
         <mercury:nl />
     </c:set>
 </c:if>
@@ -123,31 +123,37 @@
     </jsp:attribute>
 
     <jsp:attribute name="markupBody">
-        <div class="adr" <%--
-        --%>itemprop="address" itemscope <%--
-        --%>itemtype="http://schema.org/PostalAddress"><%----%>
-            <div itemprop="streetAddress" class="street-address" ${value.Address.value.StreetAddress.rdfaAttr}>${value.Address.value.StreetAddress}</div><%----%>
-            <c:if test="${value.Address.value.ExtendedAddress.isSet}">
-                <div itemprop="streetAddress" class="extended-address" ${value.Address.value.ExtendedAddress.rdfaAttr}>${value.Address.value.ExtendedAddress}</div><%----%>
-            </c:if>
-            <div><%----%>
-                <span itemprop="postalCode" class="postal-code" ${value.Address.value.PostalCode.rdfaAttr}>${value.Address.value.PostalCode}</span>${' '}<%----%>
-                <span itemprop="addressLocality" class="locality" ${value.Address.value.Locality.rdfaAttr}>${value.Address.value.Locality}</span><%----%>
-            </div><%----%>
-            <c:if test="${value.Address.value.Region.isSet or value.Address.value.Country.isSet}">
+        <mercury:link
+            link="${linkToDetail}"
+            css='uncolored'
+            attr="${'tabindex=\"-1\"'}"
+            test="${true}">
+
+            <p class="adr"><%----%>
+                <div itemprop="streetAddress" class="street-address">${value.Address.value.StreetAddress}</div><%----%>
+                <c:if test="${value.Address.value.ExtendedAddress.isSet}">
+                    <div class="extended-address">${value.Address.value.ExtendedAddress}</div><%----%>
+                </c:if>
                 <div><%----%>
-                    <c:if test="${value.Address.value.Region.isSet}">
-                        <span itemprop="addressRegion" class="region" ${value.Address.value.Region.rdfaAttr}>${value.Address.value.Region}</span>${' '}<%----%>
-                    </c:if>
-                    <c:if test="${value.Address.value.Country.isSet}">
-                        <span itemprop="addressCountry" class="country-name" ${value.Address.value.Country.rdfaAttr}>${value.Address.value.Country}</span><%----%>
-                    </c:if>
+                    <span class="postal-code">${value.Address.value.PostalCode}</span>${' '}<%----%>
+                    <span class="locality">${value.Address.value.Locality}</span><%----%>
                 </div><%----%>
-            </c:if>
-        </div><%----%>
-        <mercury:nl />
-        ${geoInfo}
-        ${accessibleFacilities}
+                <c:if test="${value.Address.value.Region.isSet or value.Address.value.Country.isSet}">
+                    <div><%----%>
+                        <c:if test="${value.Address.value.Region.isSet}">
+                            <span class="region">${value.Address.value.Region}</span>${' '}<%----%>
+                        </c:if>
+                        <c:if test="${value.Address.value.Country.isSet}">
+                            <span class="country-name">${value.Address.value.Country}</span><%----%>
+                        </c:if>
+                    </div><%----%>
+                </c:if>
+            </p><%----%>
+            <mercury:nl />
+            ${geoInfo}
+            ${accessibleFacilities}
+
+        </mercury:link>
     </jsp:attribute>
 
 </mercury:teaser-piece>

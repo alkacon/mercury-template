@@ -179,7 +179,7 @@
 <mercury:nl />
 
 <c:if test="${(not empty titleMarkup) or showDate or showImageCount}">
-    <div class="detail-visual piece full${setCssWrapperKeyPiece}"><%----%>
+    <div class="detail-visual pivot${showDate or showImageCount ? '' : ' no-info'}${setCssWrapperKeyPiece}"><%----%>
         <div class="heading"><%----%>
             ${titleMarkup}
         </div><%----%>

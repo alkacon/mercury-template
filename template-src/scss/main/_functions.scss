@@ -126,19 +126,19 @@
 
 // responsive font sizing
 // adapted from https://css-tricks.com/snippets/css/fluid-typography/
-@mixin fluid-font-size($font-size-large, $font-size-small, $bp-name-large: xs, $bp-name-small: none) {
+@function fluid-size($size-large, $size-small, $bp-large: xs, $bp-small: none) {
 
-    $min-vw: if($bp-name-small == none, 375px, map-get($grid-breakpoints, $bp-name-small)); // default 375px is iPhone SE size
-    $max-vw: map-get($grid-breakpoints, $bp-name-large);
+    $min-vw: if($bp-small == none, 375px, map-get($grid-breakpoints, $bp-small)); // default 375px is iPhone SE size
+    $max-vw: map-get($grid-breakpoints, $bp-large);
 
-    @if unit($font-size-small) == rem {
-        $font-size-small: strip-unit($font-size-small) * $font-rem-base-mobile-size;
+    @if unit($size-small) == rem {
+        $size-small: strip-unit($size-small) * $font-rem-base-mobile-size;
     }
-    @if unit($font-size-large) == rem {
-        $font-size-large: strip-unit($font-size-large) * $font-rem-base-mobile-size;
+    @if unit($size-large) == rem {
+        $size-large: strip-unit($size-large) * $font-rem-base-mobile-size;
     }
 
-    font-size: calc(#{$font-size-small} + #{strip-unit($font-size-large - $font-size-small)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+    @return calc(#{$size-small} + #{strip-unit($size-large - $size-small)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
 }
 
 // add two values directly if comparable, or with calc otherwiese

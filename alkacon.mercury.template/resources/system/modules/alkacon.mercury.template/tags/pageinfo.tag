@@ -90,8 +90,10 @@
     --%>"project":"${project}",<%--
     --%>"context":"<cms:link>/</cms:link>",<%--
     --%>"locale":"${cms.locale}"<%--
---%>}'${empty matomoData ? '' : ' '.concat(matomoData)}<%--
---%>${empty piwikData ? '' : ' '.concat(piwikData)}><%----%>
+--%>}'<%--
+--%>${empty matomoData ? '' : ' '.concat(matomoData)}<%--
+--%>${empty piwikData ? '' : ' '.concat(piwikData)}<%--
+--%>><%----%>
 <mercury:nl/>
 
 <div id="template-grid-info"></div><%----%>

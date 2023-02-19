@@ -100,6 +100,12 @@
 }
 
 @include media-breakpoint-up(md) {
+
+    ol,
+    ul {
+        padding-left: 40px;
+    }
+
     @include responsive-invisibility('.hidden-md-lg-xl');
     @include responsive-invisibility('.hidden-md-up');
     @include responsive-invisibility-showineditor('.hide-md-lg-xl');
@@ -177,11 +183,4 @@ small,
 
 .flex-fill {
     flex: 1 1 auto!important;
-}
-
-/* Variable adjustments for Boosttrap 5 */
-
-ol,
-ul {
-    padding-left: 40px;
 }

@@ -82,6 +82,7 @@
 <%@ variable name-given="imageWidth" declare="true" %>
 <%@ variable name-given="imageHeight" declare="true" %>
 <%@ variable name-given="imageOrientation" declare="true" %>
+<%@ variable name-given="imageIsSvg" declare="true" %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -134,6 +135,7 @@
             cssWrapper="${showImageZoom ? 'zoomer' : ''}"
             attrImage="${attrImage}"
             attrWrapper="${imageDndAttr}"
+            isSvg="${imageIsSvg}"
             zoomData="${zoomData}"
             noScript="${noScript}"
         />

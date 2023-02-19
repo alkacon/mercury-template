@@ -27,6 +27,7 @@
     --#{$prefix}cs-bg-color: var(--#{$prefix}grey-lighter);
     --#{$prefix}cs-border-color: var(--#{$prefix}grey-light);
 
+    --#{$prefix}cs-side-margin: #{$calendar-sheet-side-margin};
     --#{$prefix}cs-bar-height: #{$calendar-sheet-bar-height};
     --#{$prefix}cs-bar-width: #{$calendar-sheet-bar-width};
 }
@@ -68,13 +69,13 @@
         padding: 10px 0;
 
         .day-name {
-            margin-right: calc(0.5 * var(--#{$prefix}gutter-x));
+            margin-right: calc(0.5 * var(--#{$prefix}cs-side-margin));
             float: right;
         }
 
         .month-year,
         .day-number {
-            margin-left: calc(0.5 * var(--#{$prefix}gutter-x));
+            margin-left: calc(0.5 * var(--#{$prefix}cs-side-margin));
             float: left;
         }
 

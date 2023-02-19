@@ -25,6 +25,7 @@
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="pieceLayoutAlternating" value="${setting.pieceLayoutAlternating.toBoolean}" />
+<c:set var="pieceLayoutSizeDesktop" value="${setting.pieceLayoutSizeDesktop.useDefault('99').toInteger}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
 <c:set var="imageRatioParagraphs"   value="${setting.imageRatioParagraphs}" />
@@ -148,6 +149,7 @@
             <mercury:section-piece
                 cssWrapper="${setCssWrapperParagraphs}"
                 pieceLayout="${paragraphLayout}"
+                sizeDesktop="${pieceLayoutSizeDesktop}"
                 heading="${paragraph.value.Caption}"
                 image="${status.first and useVisualFromParagraph ? null : paragraph.value.Image}"
                 imageRatio="${imageRatioParagraphs}"

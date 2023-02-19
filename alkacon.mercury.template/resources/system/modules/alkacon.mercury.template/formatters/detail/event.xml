@@ -57,6 +57,9 @@
       <IncludeName><![CDATA[pieceLayoutAlternating.detail]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[pieceLayoutSizeDesktop.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatioParagraphs.detail]]></IncludeName>
     </Setting>
     <Setting>

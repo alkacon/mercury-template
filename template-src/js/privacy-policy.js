@@ -325,7 +325,7 @@ function initMatomoJstControl() {
             }
         } else {
              $matomoJstControl.hide();
-             if (DEBUG) console.info("PrivacyPolicy: Matomo JS tracking options not displayed, cookies are accrepted.");
+             if (DEBUG) console.info("PrivacyPolicy: Matomo JS tracking options not displayed, cookies are accepted.");
         }
     }
 }

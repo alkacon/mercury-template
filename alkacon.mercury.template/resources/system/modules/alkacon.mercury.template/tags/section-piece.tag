@@ -167,6 +167,7 @@
                     </c:set>
                     <c:set var="emptyImage" value="${empty imageBean}" />
                     <c:set var="imageOri" value="${' '.concat(imageOrientation)}" />
+                    <c:set var="hasIconImage" value="${imageIsSvg and fn:startsWith(imageBean.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}" />
                 </mercury:image-animated>
             </mercury:link>
             <c:out value="${imageSubtext}" escapeXml="false" />
@@ -174,7 +175,7 @@
     </c:if>
 
     <mercury:piece
-        cssWrapper="${cssWrapper}"
+        cssWrapper="${cssWrapper}${hasIconImage ? ' pmv' : ''}"
         attrWrapper="${attrWrapper}"
         pieceLayout="${pieceLayout}"
         sizeDesktop="${sizeDesktop}"

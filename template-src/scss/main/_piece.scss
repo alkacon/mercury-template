@@ -113,7 +113,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     &.pvl {
-        // piece visual last - however, there still may be a link behind the visual
+        // (p)iece (v)isual (l)ast - however, there still may be a link behind the visual
         > .visual {
             margin-bottom: 0;
             + .link {
@@ -129,7 +129,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     &.paj {
-        // piece align justify
+        // (p)iece (a)lign (j)ustify
         .heading > .piece-heading,
         > .visual > .subtitle,
         > .body + .link,
@@ -140,7 +140,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     &.pac {
-        // piece align centered
+        // (p)iece (a)lign (c)entered
         .heading > .piece-heading,
         > .visual > .subtitle,
         > .body + .link,
@@ -151,7 +151,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     &.par {
-        // piece align right
+        // (p)iece (a)lign (r)ight
         .heading > .piece-heading,
         .heading > .piece-heading-link,
         > .visual > .subtitle,
@@ -159,6 +159,13 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         > .body .link,
         > .body .text {
             text-align: right;
+        }
+    }
+
+    &.pmv {
+        // (p)iece (m)inimum (v)isual - set width to 32px for icons
+        > .visual {
+            min-width: 32px;
         }
     }
 
@@ -292,10 +299,11 @@ html.keyboard-nav .piece {
     }
 }
 
-.col-6,
-.col-md-6,
-.col-lg-6 {
-    &.flex-col {
+// .col-6,
+// .col-md-6,
+// .col-lg-6 {
+//  &.flex-col {
+    .flex-col {
         // .flex-col makes single columns in a row use the complete available height
         // a col-6 column must use the complete available height in small screens
         // for columns that are not col-6, same height is not required since the columns will be stacked upon each other in small screens
@@ -303,6 +311,7 @@ html.keyboard-nav .piece {
             flex-grow: 1;
         }
         > .piece.full,
+        > .type-contact.box,
         > .pivot.box {
             &:only-child {
                 display: flex;
@@ -311,24 +320,25 @@ html.keyboard-nav .piece {
             }
         }
     }
-}
+// }
 
 @include media-breakpoint-up($piece-desktop-breakpoint) {
 
-    .flex-col {
-        // .flex-col makes single columns in a row use the complete available height
-        > .piece.flex {
-            flex-grow: 1;
-        }
-        > .piece.full,
-        > .pivot.box {
-            &:only-child {
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1;
-            }
-        }
-    }
+    // .flex-col {
+    //     // .flex-col makes single columns in a row use the complete available height
+    //     > .piece.flex {
+    //         flex-grow: 1;
+    //     }
+    //     > .piece.full,
+    //     > .type-contact.box,
+    //     > .pivot.box {
+    //         &:only-child {
+    //             display: flex;
+    //             flex-direction: column;
+    //             flex-grow: 1;
+    //         }
+    //     }
+    // }
 
     .piece {
 
@@ -412,7 +422,7 @@ html.keyboard-nav .piece {
             }
         }
 
-        @each  $piece-col-size in $piece-cols {
+        @each $piece-col-size in $piece-cols {
             // generate size variations for the visual column
             &.p-md-#{""+$piece-col-size} {
                 &.flex {

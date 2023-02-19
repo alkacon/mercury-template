@@ -41,6 +41,10 @@
     description="Generate noscript tags for lazy loading images or not?
     Default is 'true'." %>
 
+<%@ attribute name="isSvg" type="java.lang.Boolean" required="false"
+    description="Can be set if the type of the image is known as SVG in advance.
+    If this is NOT set, then the type is determined from the image name." %>
+
 <%@ attribute name="cssImage" type="java.lang.String" required="false"
     description="'class' atttribute to set directly on the generated img tag."%>
 
@@ -95,7 +99,7 @@ SVG placeholder image, background image and image sizing
 <c:set var="ib" value="${imagebean}" />
 
 <c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not caseDynamicListNoscript}" />
-<c:set var="isSvg" value="${fn:endsWith(ib.vfsUri, '.svg')}" />
+<c:set var="isSvg" value="${empty isSvg ? fn:endsWith(ib.vfsUri, '.svg') : isSvg}" />
 <c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not caseDynamicListNoscript and not isSvg}" />
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
 <c:set var="useSizes" value="${not empty sizes}" />
@@ -212,7 +216,7 @@ Max width XXL: ${bb.getGridSize(5)} - Size XXL: ${bb.sizeXxl}
 <c:forEach var="grid" items="${paramValues.cssgrid}">
 grid: ${grid}
 </c:forEach>
- -->
+-->
     </c:if>
 
     <c:if test="${ib.scaler.width > maxScaleWidth}">
@@ -389,7 +393,16 @@ scaleGapStep: ${scaleGapStep}
 
 <c:choose>
     <c:when test="${isSvg}">
-        <c:set var="inlineSvg" value="${ib.resource.property['image.svg.inline']}" />
+        <c:choose>
+            <c:when test="${fn:startsWith(ib.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}">
+                <c:set var="inlineSvgProp" value="ico-svg ico-img" />
+                <c:set var="inlineSvg" value="${true}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="inlineSvgProp" value="${ib.resource.property['image.svg.inline']}" />
+                <c:set var="inlineSvg" value="${not empty inlineSvgProp}" />
+            </c:otherwise>
+        </c:choose>
         <c:set var="srcurl"><cms:link>${ib.vfsUri}</cms:link></c:set>
         <c:set var="attrImage">role="img"<c:if test="${not empty attrImage}">${' '}${attrImage}</c:if></c:set>
     </c:when>
@@ -403,8 +416,8 @@ scaleGapStep: ${scaleGapStep}
 </c:choose>
 
 <c:choose>
-    <c:when test="${not empty inlineSvg}">
-        <c:set var="cssImage" value="${empty cssImage ? inlineSvg : cssImage.concat(' ').concat(inlineSvg)}" />
+    <c:when test="${inlineSvg}">
+        <c:set var="cssImage" value="${empty cssImage ? inlineSvgProp : cssImage.concat(' ').concat(inlineSvgProp)}" />
         <mercury:image-svg-inline
             imagebean="${ib}"
             width="${ib.scaler.width}"

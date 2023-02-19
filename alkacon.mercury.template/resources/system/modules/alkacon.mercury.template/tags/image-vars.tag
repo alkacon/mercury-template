@@ -82,6 +82,9 @@
     description="A JSON-LD object created for the image.
     This will only be created if the attribute 'createJsonLd' has been set to ''true'." %>
 
+<%@ variable name-given="imageIsSvg" declare="true"
+    description="Will be set to 'true' in case the image type is SVG.
+    The type is determined from the image name." %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -101,6 +104,7 @@
 <c:set var="imageHeight" value="" />
 <c:set var="imageOrientation" value="" />
 <c:set var="imageDndAttr" value="" />
+<c:set var="imageIsSvg" value="${false}" />
 
 <c:choose>
     <c:when test="${cms:isWrapper(image)}">
@@ -155,6 +159,7 @@
     <c:set var="imageUrl" value="${imageBean.srcUrl}" />
     <c:set var="imageWidth" value="${imageBean.scaler.width}" />
     <c:set var="imageHeight" value="${imageBean.scaler.height}" />
+    <c:set var="imageIsSvg" value="${fn:endsWith(imageBean.vfsUri, '.svg')}" />
 
     <c:choose>
         <c:when test="${imageWidth > (imageHeight * 1.1)}">

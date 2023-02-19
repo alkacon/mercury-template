@@ -39,11 +39,15 @@ $square-overlay-h3-size:        1.2rem !default;
 $square-overlay-h4-size:        $square-overlay-h3-size !default;
 $square-overlay-text-size:      1.2rem !default;
 $square-overlay-line-height:    1.2 !default;
-$tile-overlay-bg-color:         rgba(0, 0, 0, 0.15) !default;
+
 $square-overlay-bg-color:       rgba(0, 0, 0, 0.65) !default;
 $square-overlay-bg-color-xs:    #272727 !default;
 $square-overlay-text-color:     $white !default;
 $square-overlay-text-shadow:    1px 1px 1px #000 !default;
+
+$tile-overlay-bg-color:         rgba(0, 0, 0, 0.15) !default;
+$tile-overlay-text-color:       $square-overlay-text-color !default;
+$tile-overlay-text-shadow:      $square-overlay-text-shadow !default;
 
 // 75 required by list download display formatter
 // 125, 150 required by list calendar sheet
@@ -344,10 +348,10 @@ $sq-heights-xl:    () !default;
         overflow: auto; // shows scrollbars on demand
 
         &:not(.boxbg-overlay) {
-            background: $tile-overlay-bg-color;
+            background-color: $tile-overlay-bg-color;
             h1, h2, h3, h4, div.body, a.piece-text-link {
-                color: $square-overlay-text-color;
-                text-shadow: $square-overlay-text-shadow;
+                color: $tile-overlay-text-color;
+                text-shadow: $tile-overlay-text-shadow;
             }
         }
 
@@ -370,10 +374,10 @@ $sq-heights-xl:    () !default;
 .tile-col.element .copyright,
 .tile-col.freefloat .copyright,
 .list-entry .square-col .copyright {
+    --#{$prefix}copyright-color: #{$square-overlay-text-color};
+    --#{$prefix}copyright-bg-color: transparent;
+    --#{$prefix}copyright-text-shadow: #{$square-overlay-text-shadow};
     @include image-copyright;
-    color: $square-overlay-text-color;
-    text-shadow: $square-overlay-text-shadow;
-    background-color: transparent;
 }
 
 .tile-col,
@@ -386,7 +390,7 @@ $sq-heights-xl:    () !default;
         position: absolute;
         bottom: 0;
         padding: var(--#{$prefix}square-text-overlay-padding);
-        background: $square-overlay-bg-color;
+        background-color: $square-overlay-bg-color;
         width: 100%;
         z-index: $overflow-z-index;
         @include use-hyphens-text();

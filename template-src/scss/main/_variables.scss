@@ -654,7 +654,7 @@ $detail-content-spacer-y:           var(--#{$prefix}element-margin) !default;
 $calendar-sheet-width:              165px !default;
 $calendar-sheet-bar-width:          80% !default;
 $calendar-sheet-bar-height:         15px  !default;
-
+$calendar-sheet-side-margin:        calc(0.5 * var(--#{$prefix}gutter-x)) !default;
 
 // Contacts
 

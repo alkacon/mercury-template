@@ -78,6 +78,7 @@
     border-radius: var(--#{$prefix}copyright-border-radius);
     text-align: var(--#{$prefix}copyright-pos-right, right);
     right: var(--#{$prefix}copyright-pos-right, 0);
+    text-shadow: var(--#{$prefix}copyright-text-shadow, none);
     @include image-overlay;
 }
 

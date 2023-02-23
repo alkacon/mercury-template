@@ -49,6 +49,8 @@ public class CmsStyleInliner {
 
     /**
      * Inlines the provided styles in the given HTML and returns the resulting HTML.
+     * Styles including ':' are ignored.
+     *
      * @param html the HTML to inline styles for.
      * @param css reader for the styles to inline.
      * @param removeClasses flag, indicating if class attribures should be removed after inlining styles.
@@ -58,6 +60,23 @@ public class CmsStyleInliner {
      * @throws IOException
      */
     public static String inlineStyles(String html, Reader css, boolean removeClasses) throws IOException {
+
+        return CmsStyleInliner.inlineStyles(html, css, removeClasses, true);
+    }
+
+    /**
+     * Inlines the provided styles in the given HTML and returns the resulting HTML.
+     * @param html the HTML to inline styles for.
+     * @param css reader for the styles to inline.
+     * @param removeClasses flag, indicating if class attribures should be removed after inlining styles.
+     * @param ignoreColonSelectors flag, indicating that selectors containing ':' should be ignored.
+     *
+     * @return the HTML with styles inlined.
+     *
+     * @throws IOException
+     */
+    public static String inlineStyles(String html, Reader css, boolean removeClasses, boolean ignoreColonSelectors)
+    throws IOException {
 
         Document document = Jsoup.parse(html);
         CSSOMParser parser = new CSSOMParser(new SACParserCSS3());
@@ -72,7 +91,7 @@ public class CmsStyleInliner {
                 CSSStyleRule styleRule = (CSSStyleRule)item;
                 String cssSelector = styleRule.getSelectorText();
                 //Skip rules with meta-selectors since they can't be inlined.
-                if (cssSelector.contains(":")) {
+                if (ignoreColonSelectors && cssSelector.contains(":")) {
                     continue;
                 }
                 Elements elements = document.select(cssSelector);

@@ -26,50 +26,7 @@
 <fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
 <fmt:message var="extFootDef" key="msg.page.privacypolicy.external.footer" />
 
-<c:set var="linkImprintUri" value="${value.LinkImprint.value.URI.toLink}" />
-<c:if test="${empty linkImprintUri}">
-    <c:set var="linkImprintUri" value="${cms.functionDetailPageExact['Imprint']}" />
-    <c:if test="${not fn:startsWith(linkImprintUri, '/') and not fn:startsWith(linkImprintUri, 'http')}">
-        <c:set var="linkImprintUri" value="${null}" />
-    </c:if>
-</c:if>
-<c:if test="${not empty linkImprintUri}">
-    <c:set var="hasLinks" value="${true}" />
-    <c:set var="linkImprintText" value="${value.LinkImprint.value.Text.toString}" />
-    <c:if test="${empty linkImprintText}">
-        <fmt:message var="linkImprintText" key="msg.page.privacypolicy.link.imprint" />
-    </c:if>
-</c:if>
-
-<c:set var="linkPolicyUri" value="${value.LinkPolicy.value.URI.toLink}" />
-<c:if test="${empty linkPolicyUri}">
-    <c:set var="linkPolicyUri" value="${cms.functionDetailPageExact['Datenschutz']}" />
-    <c:if test="${not fn:startsWith(linkPolicyUri, '/') and not fn:startsWith(linkPolicyUri, 'http')}">
-        <c:set var="linkPolicyUri" value="${null}" />
-    </c:if>
-</c:if>
-<c:if test="${not empty linkPolicyUri}">
-    <c:set var="hasLinks" value="${true}" />
-    <c:set var="linkPolicyText" value="${value.LinkPolicy.value.Text.toString}" />
-    <c:if test="${empty linkPolicyText}">
-        <fmt:message var="linkPolicyText" key="msg.page.privacypolicy.link.policy" />
-    </c:if>
-</c:if>
-
-<c:set var="linkLegalUri" value="${value.LinkLegal.value.URI.toLink}" />
-<c:if test="${empty linkLegalUri}">
-    <c:set var="linkLegalUri" value="${cms.functionDetailPageExact['Rechtliche Hinweise']}" />
-    <c:if test="${not fn:startsWith(linkLegalUri, '/') and not fn:startsWith(linkLegalUri, 'http')}">
-        <c:set var="linkLegalUri" value="${null}" />
-    </c:if>
-</c:if>
-<c:if test="${not empty linkLegalUri}">
-    <c:set var="hasLinks" value="${true}" />
-    <c:set var="linkLegalText" value="${value.LinkLegal.value.Text.toString}" />
-    <c:if test="${empty linkLegalText}">
-        <fmt:message var="linkLegalText" key="msg.page.privacypolicy.link.legal" />
-    </c:if>
-</c:if>
+<mercury:privacy-policy-vars setPolicyLinks="${true}" content="${content}">
 
 <c:if test="${showBanner}">
     <c:set var="bannerHtml">
@@ -100,17 +57,17 @@
                     </div><%----%>
                 </form><%----%>
                 <button class="btn btn-close" tabindex="0" title="<fmt:message key="msg.page.privacypolicy.btn-close" />">&#x2715</button><%----%>
-                <c:if test="${hasLinks and value.ShowLinks.useDefault('true').toBoolean}">
+                <c:if test="${hasPolicyLinks and value.ShowLinks.useDefault('true').toBoolean}">
                     <div class="links"><%----%>
                         <ul><%----%>
-                            <c:if test="${not empty linkImprintUri}">
-                                <li><a href="${linkImprintUri}">${linkImprintText}</a></li><%----%>
+                            <c:if test="${not empty policyLinkImprint}">
+                                <li><a href="${policyLinkImprint}">${policyTextImprint}</a></li><%----%>
                             </c:if>
-                            <c:if test="${not empty linkPolicyUri}">
-                                <li><a href="${linkPolicyUri}">${linkPolicyText}</a></li><%----%>
+                            <c:if test="${not empty policyLinkPolicy}">
+                                <li><a href="${policyLinkPolicy}">${policyTextPolicy}</a></li><%----%>
                             </c:if>
-                            <c:if test="${not empty linkLegalUri}">
-                                <li><a href="${linkLegalUri}">${linkLegalText}</a></li><%----%>
+                            <c:if test="${not empty policyLinkLegal}">
+                                <li><a href="${policyLinkLegal}">${policyTextLegal}</a></li><%----%>
                             </c:if>
                         </ul><%----%>
                     </div><%----%>
@@ -135,20 +92,20 @@
     <cms:jsonvalue key="togLEx"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></cms:jsonvalue>
     <cms:jsonvalue key="btAcc"><fmt:message key="msg.page.privacypolicy.button.modal.accept" /></cms:jsonvalue>
     <cms:jsonvalue key="btDis"><fmt:message key="msg.page.privacypolicy.button.modal.dismiss" /></cms:jsonvalue>
-    <c:if test="${not empty linkImprintUri}">
-        <cms:jsonvalue key="lImp" value="${linkImprintUri}" />
-        <cms:jsonvalue key="lImpTxt" value="${linkImprintText}" />
+    <c:if test="${not empty policyLinkImprint}">
+        <cms:jsonvalue key="lImp" value="${policyLinkImprint}" />
+        <cms:jsonvalue key="lImpTxt" value="${policyTextImprint}" />
     </c:if>
-    <c:if test="${not empty linkPolicyUri}">
-        <cms:jsonvalue key="lPol" value="${linkPolicyUri}" />
-        <cms:jsonvalue key="lPolTxt" value="${linkPolicyText}" />
+    <c:if test="${not empty policyLinkPolicy}">
+        <cms:jsonvalue key="lPol" value="${policyLinkPolicy}" />
+        <cms:jsonvalue key="lPolTxt" value="${policyTextPolicy}" />
     </c:if>
-    <c:if test="${not empty linkLegalUri}">
-        <cms:jsonvalue key="lLeg" value="${linkLegalUri}" />
-        <cms:jsonvalue key="lLegTxt" value="${linkLegalText}" />
+    <c:if test="${not empty policyLinkLegal}">
+        <cms:jsonvalue key="lLeg" value="${policyLinkLegal}" />
+        <cms:jsonvalue key="lLegTxt" value="${policyTextLegal}" />
     </c:if>
     <c:if test="${DEBUG}">
-        <cms:jsonvalue key="_dbgShowLinks" value="${hasLinks and value.ShowLinks.useDefault('true').toBoolean}" />
+        <cms:jsonvalue key="_dbgShowLinks" value="${hasPolicyLinks and value.ShowLinks.useDefault('true').toBoolean}" />
         <cms:jsonvalue key="_dbgPath" value="${param.path}" />
         <cms:jsonvalue key="_dbgPolicyFile" value="${content.filename}" />
     </c:if>
@@ -156,5 +113,6 @@
 
 <%----%>${DEBUG ? policy.verbose : policy.compact}<%----%>
 
+</mercury:privacy-policy-vars>
 </cms:bundle>
 </cms:formatter>

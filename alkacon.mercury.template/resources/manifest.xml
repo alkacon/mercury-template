@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.125</version>
+		<version>14.0.127</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7973,7 +7973,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Reads an image from the VFS and sets a series of variables for quick acesss]]></value>
+					<value><![CDATA[Reads an image from the VFS and sets a series of variables for quick access]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -8557,7 +8557,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Reads a media content and sets a series of variables for quick acesss]]></value>
+					<value><![CDATA[Reads a media content and sets a series of variables for quick access]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8959,6 +8959,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays the 'privacy policy' settings]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/privacy-policy-vars.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/privacy-policy-vars.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>e1d8e2e4-b9b5-11ed-b562-0242ac11002b</uuidstructure>
+			<uuidresource>e1d8e2e5-b9b5-11ed-b562-0242ac11002b</uuidresource>
+			<datecreated>Fri, 03 Mar 2023 11:23:54 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Reads the policy content and sets a series of variables for quick access]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

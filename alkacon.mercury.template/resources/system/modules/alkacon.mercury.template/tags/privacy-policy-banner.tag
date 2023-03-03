@@ -23,25 +23,20 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:set var="policyfile" value="${empty contentPropertiesSearch['mercury.privacy.policy'] ? 'none' : contentPropertiesSearch['mercury.privacy.policy']}" />
+<mercury:privacy-policy-vars locatePolicyFile="${true}" contentPropertiesSearch="${contentPropertiesSearch}">
 
-<c:if test="${not empty policyfile and policyfile ne 'none'}">
+<c:if test="${not empty policyFile}">
 
     <c:set var="hideBanner" value="${contentPropertiesSearch['mercury.privacy.policy.nobanner'] eq 'true'}" />
     <c:set var="fallbackPage" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.privacy.policy.fallback']}" />
 
-    <c:if test="${not fn:startsWith(policyfile, '/')}">
-        <c:set var="subSitePolicy" value="${cms.subSitePath.concat('.content/').concat(policyfile)}" />
-        <c:set var="sitePolicy" value="${'/.content/'.concat(policyfile)}" />
-        <c:set var="policyfile" value="${cms.vfs.exists[subSitePolicy] ? subSitePolicy : sitePolicy}" />
-    </c:if>
-    <c:set var="policyfileBase64"><mercury:obfuscate text="${policyfile}" type="base64"/></c:set>
+    <c:set var="policyFileBase64"><mercury:obfuscate text="${policyFile}" type="base64"/></c:set>
     <c:set var="uriBase64"><mercury:obfuscate text="${contentUri}" type="base64"/></c:set>
     <c:set var="rootBase64"><mercury:obfuscate text="${cms.requestContext.siteRoot}" type="base64"/></c:set>
 
     <%-- Generate banner data JSON --%>
     <cms:jsonobject var="bannerData">
-        <cms:jsonvalue key="policy" value="${policyfileBase64}" />
+        <cms:jsonvalue key="policy" value="${policyFileBase64}" />
         <cms:jsonvalue key="page" value="${uriBase64}" />
         <cms:jsonvalue key="root" value="${rootBase64}" />
         <c:if test="${hideBanner}">
@@ -69,6 +64,8 @@
     <mercury:nl />
 
 </c:if>
+
+</mercury:privacy-policy-vars>
 
 </cms:bundle>
 

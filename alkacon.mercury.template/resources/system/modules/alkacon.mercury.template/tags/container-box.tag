@@ -147,21 +147,23 @@
         </div><%----%>
         <div class="text capital"><%----%>
             <div class="main">${label}</div><%----%>
-            <div class="small"><%----%>
-                <c:choose>
-                    <c:when test="${not hideParentType and not empty cms.container.type}">
-                        <fmt:message key="msg.page.layout.infor">
-                            <fmt:param><mercury:container-name type="${parentType}" /></fmt:param>
-                            <fmt:param><mercury:container-name type="${type}" /></fmt:param>
-                        </fmt:message>
-                    </c:when>
-                    <c:otherwise>
-                        <fmt:message key="msg.page.layout.for">
-                            <fmt:param><mercury:container-name type="${type}" /></fmt:param>
-                        </fmt:message>
-                    </c:otherwise>
-                </c:choose>
-            </div><%----%>
+            <c:if test="${type ne 'none'}">
+                <div class="small"><%----%>
+                    <c:choose>
+                        <c:when test="${not hideParentType and not empty cms.container.type}">
+                            <fmt:message key="msg.page.layout.infor">
+                                <fmt:param><mercury:container-name type="${parentType}" /></fmt:param>
+                                <fmt:param><mercury:container-name type="${type}" /></fmt:param>
+                            </fmt:message>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message key="msg.page.layout.for">
+                                <fmt:param><mercury:container-name type="${type}" /></fmt:param>
+                            </fmt:message>
+                        </c:otherwise>
+                    </c:choose>
+                </div><%----%>
+            </c:if>
         </div><%----%>
     </div><%----%>
 

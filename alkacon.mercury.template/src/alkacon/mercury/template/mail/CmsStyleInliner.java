@@ -121,6 +121,8 @@ public class CmsStyleInliner {
             }
         }
 
+        document.outputSettings().prettyPrint(true);
+        document.outputSettings().indentAmount(0);
         return document.html();
     }
 }

@@ -18,9 +18,7 @@
  */
 
 import EmblaCarousel from 'embla-carousel';
-import emblaCarouselAutoplay from 'embla-carousel-autoplay';
 import EmblaClassNames from 'embla-carousel-class-names';
-import { param } from 'jquery';
 
 "use strict";
 
@@ -302,7 +300,7 @@ function initEmblaSliders(sliders) {
             stopOnMouseEnter: options.pause,
             speed: options.speed
         }) : null;
-        if (autoplay !=  null) {
+        if (autoplay != null) {
             plugins.push(autoplay);
         }
 

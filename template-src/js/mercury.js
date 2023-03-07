@@ -437,16 +437,21 @@ var Mercury = function (jQ) {
         // add handler for elements hidden in accordions and tabs
         let accoEl = element.closest('.accordion .collapse');
         if (accoEl != null) {
-            accoEl.addEventListener('shown.bs.collapse', callback );
+            accoEl.addEventListener('shown.bs.collapse', callback);
         }
+        // add handler for elements hidden in tabs
         let tabEl = element.closest('.tabs-parent');
         if (tabEl != null) {
             tabEl.querySelectorAll('button[data-bs-toggle="tab"]').forEach(function(tab) {
-                tab.addEventListener('shown.bs.tab', callback );
+                tab.addEventListener('shown.bs.tab', callback);
             });
         }
+        // add handler for elements hidden in the sticky header
+        let headerEl = element.closest('.header-group.sticky .head');
+        if (headerEl != null) {
+            headerEl.addEventListener('header:notfixed', callback);
+        }
     }
-
 
     function update(parent) {
         // called by Ajax methods to update dynamic template elements

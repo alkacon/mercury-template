@@ -530,11 +530,13 @@ function updateFixed(resize) {
                     m_fixedHeader.$header.removeClass('header-notfixed').addClass('header-isfixed');
                     m_fixedHeader.height = m_fixedHeader.$element.height();
                     m_checkScrollTop = 999999999999;
+                    m_fixedHeader.$element[0].dispatchEvent(new CustomEvent("header:isfixed", { bubbles: true, cancelable: true }));
                 }
             }
         } else if (!fixHeader && m_fixedHeader.isFixed) {
             // header should not be fixed, but is
             resetFixedHeader();
+            m_fixedHeader.$element[0].dispatchEvent(new CustomEvent("header:notfixed", { bubbles: true, cancelable: true }));
         }
         if (!m_fixedHeader.isFixed) {
             // add class to identify a header that has been scrolled but is not fixed yet

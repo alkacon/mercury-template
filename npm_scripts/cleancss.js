@@ -19,18 +19,19 @@
 
 'use strict';
 
-var argv = require('minimist')(process.argv.slice(2));
-var fs = require('fs');
-var path = require('path');
-var glob = require("glob");
-var CleanCSS = require('clean-css');
-var lineBreak = require('os').EOL;
+const argv = require('minimist')(process.argv.slice(2));
+const fs = require('fs');
+const path = require('path');
+const { globSync } = require('glob')
+const CleanCSS = require('clean-css');
+const lineBreak = require('os').EOL;
 
 // options used by clean-css
-var cleanCssOptions = {
+const cleanCssOptions = {
     compatibility : '*', //  (default) - Internet Explorer 10+ compatibility mode
     level : '1',
     rebase : true,
+    rebaseTo : '',
     sourceMap : true,
     sourceMapInlineSources : true
 };
@@ -56,13 +57,12 @@ function cleanCss(inputDir, outputDir) {
     // set the rebase path, this is required otherwise the source map file is not found
     cleanCssOptions.rebaseTo = outputDir;
     ensureDir(cleanCssOptions.rebaseTo);
-    glob(inputDir, function(err, files) {
-        for (var i = 0; i < files.length; i++) {
-            var f = files[i];
-            var o = path.normalize(outputDir + '/' + path.basename(f, '.css') + '.min.css');
-            cleanCssMinify(cleanCssOptions, [ f ], o);
-        }
-    });
+    const files = globSync(inputDir);
+    for (var i = 0; i < files.length; i++) {
+        var f = files[i];
+        var o = path.normalize(outputDir + '/' + path.basename(f, '.css') + '.min.css');
+        cleanCssMinify(cleanCssOptions, [ f ], o);
+    }
 }
 
 function cleanCssMinify(options, inputFile, outputFile) {

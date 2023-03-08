@@ -20,11 +20,15 @@
 <%@ attribute name="height" type="java.lang.Integer" required="true"
     description="Height of the target image. Required for box size calculation." %>
 
+<%@ attribute name="imageBean" type="org.opencms.jsp.util.CmsJspImageBean" required="false"
+    description="The image bean for the image. Used in case recalculation of the image size is required." %>
+
 
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:if test="${(not empty width) and (not empty height)}">
@@ -33,6 +37,18 @@
         <c:if test="${not empty title}"><div class="title">${title}</div></c:if>
         <c:if test="${not empty copyright}"><div class="copyright">${copyright}</div></c:if>
     </c:set>
+    <c:if test="${not empty imageBean and ((width > 2500) or (height > 2500))}">
+        <%-- The image may be to large for the image scaler, check this and if so use a smaller image --%>
+        <mercury:image-sizes>
+            <c:if test="${(width > maxScaleWidth) or (height > maxScaleWidth)}">
+                <c:set var="scale" value="${width > height ? (maxScaleWidth / width) : (maxScaleWidth / height)}" />
+                <c:set var="scaledImage" value="${imageBean.scaleWidth[cms.wrap[width * scale].mathFloor]}" />
+                <c:set var="src" value="${scaledImage.srcUrl}" />
+                <c:set var="width" value="${imageBean.scaler.width}" />
+                <c:set var="height" value="${imageBean.scaler.height}" />
+            </c:if>
+        </mercury:image-sizes>
+    </c:if>
     <%-- Note: Both "width" and "w" given, so that older templates can also use this tag --%>
     <c:set var="dataImagezoom">data-imagezoom='{ "width": ${width}, "height": ${height}, "w": ${width}, "h": ${height}<%----%>
         <c:if test="${not empty caption}">, "caption": "${cms:encode(caption)}"</c:if>

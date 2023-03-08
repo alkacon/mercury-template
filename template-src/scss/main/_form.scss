@@ -739,13 +739,14 @@ html.keyboard-nav {
 // stuff around the form itself
 
 .type-webform  {
+    --#{$prefix}form-spacing: #{$form-spacing};
 
     .form-header {
-        margin-bottom: var(--#{$prefix}element-margin);
+        margin-bottom: var(--#{$prefix}form-spacing);
     }
 
     .form-footer {
-        margin-top: var(--#{$prefix}element-margin);
+        margin-top: var(--#{$prefix}form-spacing);
 
         > p:last-of-type {
             margin-bottom: 0;
@@ -814,7 +815,7 @@ html.keyboard-nav {
     .checkpage {
         // checkpage (optional confirmation page from webform) requires some special formatting
         .correctaction {
-            margin-bottom: var(--#{$prefix}element-margin);
+            margin-bottom: var(--#{$prefix}form-spacing);
         }
 
         @include media-breakpoint-up(md) {

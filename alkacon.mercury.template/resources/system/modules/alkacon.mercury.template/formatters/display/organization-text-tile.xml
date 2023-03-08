@@ -46,10 +46,7 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[titleOption.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[visualOption.tile]]></IncludeName>
+      <IncludeName><![CDATA[visualOption.contact]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>

@@ -74,4 +74,13 @@ h6 {
     font-size: $h6-font-size;
 }
 
+#tinymce {
+    * {
+        margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+    }
+
+    >:last-child {
+        margin-bottom: 0;
+    }
+}
 

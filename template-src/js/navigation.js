@@ -187,7 +187,7 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
     var eventMouseenter = event.type == "mouseenter";
     var eventMouseleave = event.type == "mouseleave";
     var eventKeydown = (event.type == "keydown" && ((event.which == 13) || (event.which == 32))); // limit keydown to enter and space
-    var eventTouch = event.type == "touchend";
+    var eventTouch = event.type == (Mercury.gridInfo().isDesktopNav() ? "touchstart" : "touchend");
     var eventClick = event.type == "click";
 
     var expanded = $submenu.hasClass("ed");

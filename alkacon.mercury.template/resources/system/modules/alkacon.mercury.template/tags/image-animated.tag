@@ -117,10 +117,11 @@
         <c:set var="zoomData">
             <mercury:image-zoomdata
                 src="${imageUrl}"
-                title="${imageTitle}"
+                title="${empty imageDescription ? imageTitle : imageDescription}"
                 copyright="${imageCopyrightHtml}"
                 height="${imageHeight}"
                 width="${imageWidth}"
+                imageBean="${imageBean}"
             />
         </c:set>
     </c:if>

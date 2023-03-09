@@ -60,7 +60,7 @@
 <div class="element type-linksequence pivot ${linksequenceType}${' '}${listBulletStyle}${addCssWrapper}${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" id="auto" />
 
     <c:if test="${value.Text.isSet}">
         <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>

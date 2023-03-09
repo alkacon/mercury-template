@@ -15,6 +15,7 @@
 
 <%@ variable name-given="setting"           declare="true" variable-class="java.util.Map" %>
 <%@ variable name-given="inList"            declare="true" variable-class="java.lang.Boolean" %>
+<%@ variable name-given="setTeaserClass"    declare="true" %>
 <%@ variable name-given="setCssWrapper"     declare="true" %>
 <%@ variable name-given="setCssWrapperRequired" declare="true" %>
 <%@ variable name-given="setCssWrapperAll"  declare="true" %>
@@ -40,6 +41,7 @@
 
 <c:set var="setting"                        value="${cms.element.setting}" />
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
+<c:set var="setTeaserClass"                 value="${setting.teaserClass.isSetNotNone ? setting.teaserClass.toString : 'teaser'}" />
 <c:set var="setCssWrapper"                  value="${inList ? ' in-list' : (setting.cssWrapper.isSetNotNone ? ' no-list '.concat(setting.cssWrapper.toString) : ' no-list')}" />
 <c:set var="setCssWrapperRequired"          value="${setting.requiredCssWrapper.isSetNotNone ? ' '.concat(setting.requiredCssWrapper.toString) : null}" />
 <c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
@@ -74,21 +76,35 @@
 
 <c:set var="paragraph"                      value="${content.valueList.Paragraph['0']}" />
 
-<c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
-<c:if test="${setting.listDetailLinkOverride.toBoolean}">
-    <c:set var="propertyDetailLink" value="${content.resource.property['mercury.detail.link']}" />
-    <c:if test="${not empty propertyDetailLink and cms.vfs.exists[propertyDetailLink]}">
-        <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${propertyDetailLink}</cms:link></c:set>
-    </c:if>
+<c:if test="${not inList and not empty param.tilegrid}">
+    <%-- Required if 'tile' list elements are used directly on the page in special 'tile' rows --%>
+    ${'<div class=\"'}teaser-tile ${param.tilegrid}${'\" />'}
+</c:if>
+
+<c:choose>
+    <c:when test="${cms.sitemapConfig.attribute['mercury.detailpage.category'].toBoolean}">
+        <c:set var="catDetailPage" value="${null}" />
+        <c:forEach var="cat" items="${content.resource.categories.topItems}">
+            <c:if test="${empty catDetailPage}">
+                <c:set var="catDetailPage" value="${cms.functionDetailPageExact['category:'.concat(cat.path)]}" />
+            </c:if>
+        </c:forEach>
+        <c:set var="linkToDetail"><cms:link baseUri="${pageUri}" detailPage="${catDetailPage}">${content.filename}</cms:link></c:set>
+    </c:when>
+    <c:when test="${setting.listDetailLinkOverride.toBoolean}">
+        <c:set var="propertyDetailLink" value="${content.resource.property['mercury.detail.link']}" />
+        <c:if test="${not empty propertyDetailLink and cms.vfs.exists[propertyDetailLink]}">
+            <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${propertyDetailLink}</cms:link></c:set>
+        </c:if>
+    </c:when>
+</c:choose>
+
+<c:if test="${empty linkToDetail}">
+    <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
 </c:if>
 
 <c:if test="${setting.dateFormatAddTime.toBoolean and fn:startsWith(setDateFormat, 'fmt-') and not fn:endsWith(setDateFormat, '-TIME')}">
     <c:set var="setDateFormat" value="${setDateFormat}-TIME" />
-</c:if>
-
-<c:if test="${not inList and not empty param.tilegrid}">
-    <%-- Required if 'tile' list elements are used directly on the page in special 'tile' rows --%>
-    ${'<div class=\"'}teaser-tile ${param.tilegrid}${'\" />'}
 </c:if>
 
 <jsp:doBody/>

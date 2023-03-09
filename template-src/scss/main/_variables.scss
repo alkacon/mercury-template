@@ -612,6 +612,7 @@ $list-side-intro-color:             $list-side-headings-color !default; // color
 $list-filter-background:            $btn-bg !default;
 $list-filter-hover:                 $btn-hover-bg !default;
 $list-filter-color:                 get-text-color($list-filter-background) !default;
+$list-teaser-format-inlist-only:    false !default;
 
 $pagination-spacing:                $default-margin !default;
 $pagination-item-jump-spacing:      calc(0.5 * $pagination-spacing) !default;

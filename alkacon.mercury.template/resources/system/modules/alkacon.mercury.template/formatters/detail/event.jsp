@@ -40,6 +40,7 @@
 <c:set var="bookingOption"          value="${setting.bookingOption.toString}" />
 <c:set var="performerOption"        value="${setting.performerOption.toString}" />
 <c:set var="showiCalendar"          value="${setting.iCalendarShowLink.toBoolean}" />
+<c:set var="showCosts"              value="${setting.showCosts.toBoolean and not empty content.valueList.Costs}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -202,6 +203,33 @@
         </jsp:attribute>
 
     </mercury:piece>
+
+    <c:if test="${showCosts}"><%----%>
+        <div class="detail-content event-costs"><%----%>
+
+            <fmt:message key="msg.page.event.costs" var="costHeading" />
+            <mercury:heading level="${hsize+1}" text="${costHeading}" css="ev-cost-heading" />
+
+            <div class="cost-table"><%----%>
+                <c:forEach var="costs" items="${content.valueList.Costs}">
+                    <div class="ct-category"><%----%>
+                        <div class="ct-price"><%----%>
+                            <fmt:formatNumber value="${costs.value.Price.toFloat}" currencyCode="${costs.value.Currency}" type="currency"/>
+                        </div><%----%>
+                        <div class="ct-class"><%----%>
+                            <c:out value="${costs.value.Label}" />
+                        </div><%----%>
+                        <c:if test="${costs.value.LinkToPaymentService.isSet}">
+                            <div class="ct-link"><%----%>
+                                <mercury:link link="${costs.value.LinkToPaymentService}" />
+                            </div><%----%>
+                        </c:if>
+                    </div><%----%>
+                </c:forEach>
+            </div><%----%>
+        </div><%----%>
+        <mercury:nl />
+    </c:if>
 
     <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
         <div class="detail-content"><%----%>

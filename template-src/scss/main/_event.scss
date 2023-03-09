@@ -256,3 +256,38 @@ table.submissions {
         }
     }
 }
+
+// Event consts
+
+.cost-table {
+    .ct-category {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+    }
+
+    .ct-price {
+        font-weight: var(--#{$prefix}font-weight-bold);
+    }
+
+    @include media-breakpoint-up(lg) {
+
+        .ct-category {
+            flex-direction: row;
+            margin-bottom: calc(0.5 * var(--#{$prefix}paragraph-margin-bottom));
+        }
+
+        .ct-class,
+        .ct-link {
+            padding-left: var(--#{$prefix}ws-margin);
+        }
+
+        .ct-price {
+            font-weight: var(--#{$prefix}font-weight-bold);
+        }
+
+        .ct-class {
+            width: 50%;
+        }
+    }
+}

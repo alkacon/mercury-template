@@ -32,6 +32,7 @@
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
+            <xsd:element name="NavPathRes" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
@@ -152,6 +153,13 @@
                     <Error><![CDATA[%(key.msg.error.Order)]]></Error>
                     <Search>listorder</Search>
                     <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>NavPathRes</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.NavPathRes)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.NavPathRes.help)]]></Description>
+                    <Search>false</Search>
+                    <Visibility>ROLE.ROOT_ADMIN</Visibility>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

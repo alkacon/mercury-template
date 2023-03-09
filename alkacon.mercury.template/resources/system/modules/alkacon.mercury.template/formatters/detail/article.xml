@@ -133,6 +133,11 @@
       <Order><![CDATA[5000]]></Order>
     </MetaMapping>
     <MetaMapping>
+      <Key><![CDATA[navPathRes]]></Key>
+      <Element><![CDATA[NavPathRes]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
       <Key><![CDATA[ogIntro]]></Key>
       <Element><![CDATA[Intro]]></Element>
       <Order><![CDATA[5000]]></Order>

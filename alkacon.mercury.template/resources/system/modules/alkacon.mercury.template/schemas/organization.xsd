@@ -129,7 +129,6 @@
                     <Widget><![CDATA[%(attribute:organization.type.widget:string)]]></Widget>
                     <Default><![CDATA[%(attribute:organization.type.default)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:organization.type.widgetConfig)]]></WidgetConfig>
-                    <Visibility><![CDATA[%(attribute:organization.type.visibility:hidden)]]></Visibility>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

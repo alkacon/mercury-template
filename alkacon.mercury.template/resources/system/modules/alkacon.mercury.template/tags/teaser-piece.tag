@@ -8,6 +8,9 @@
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' selectors to add to the generated teaser tag." %>
 
+<%@ attribute name="teaserClass" type="java.lang.String" required="false"
+    description="Main CSS class used to identify the generated element. By default this is 'teaser'." %>
+
 <%@ attribute name="attrWrapper" type="java.lang.String" required="false"
     description="Attributes to add to the generated div surrounding section." %>
 
@@ -132,7 +135,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-
+<c:set var="teaserClass"        value="${empty teaserClass ? 'teaser' : teaserClass}" />
 <c:set var="pieceLayout"        value="${empty pieceLayout ? 6 : pieceLayout}" />
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}" />
 <c:choose>
@@ -206,7 +209,7 @@
 </c:if>
 
 <mercury:piece
-    cssWrapper="teaser${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
+    cssWrapper="${teaserClass}${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
     attrWrapper="${attrWrapper}"
     pieceLayout="${pieceLayout}"
     sizeDesktop="${sizeDesktop}"

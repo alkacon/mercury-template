@@ -39,11 +39,6 @@ html {
     font-size: $font-rem-base-desktop-size;
 }
 
-body#tinymce {
-    padding-right: 5px !important;
-    padding-left: 5px !important;
-}
-
 h1, h2, h3, h4, h5, h6 {
     @include heading-base;
     color: var(--#{$prefix}headings-color);
@@ -74,12 +69,16 @@ h6 {
     font-size: $h6-font-size;
 }
 
-#tinymce {
-    * {
+body#tinymce {
+
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+
+    > * {
         margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
     }
 
-    >:last-child {
+    > :last-child {
         margin-bottom: 0;
     }
 }

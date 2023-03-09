@@ -21,6 +21,7 @@
 <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : value.Preface}" />
 
 <mercury:teaser-piece
+    teaserClass="${setTeaserClass}"
     cssWrapper="type-article${setCssWrapper}${setEffect}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"

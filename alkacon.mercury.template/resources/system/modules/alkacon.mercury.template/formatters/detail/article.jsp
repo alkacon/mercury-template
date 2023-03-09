@@ -100,7 +100,7 @@
         <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
 
         <c:if test="${showDate or showAuthor}">
-            <div class="visual-info ${not showAuthor ? 'right' : ''}"><%----%>
+            <div class="visual-info ${not showAuthor ? 'right date-only' : ''}"><%----%>
                 <c:if test="${showDate}">
                     <div class="info date"><%----%>
                         <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>

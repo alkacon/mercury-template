@@ -90,28 +90,18 @@
         <cms:jsonvalue key="eventAttendanceMode" value="${locAttendanceMode}" />
     </mercury:location-vars>
     
-    <c:if test="${value.Costs.isSet or value.LinkToPaymentService.isSet}">
-        <c:choose>
-            <c:when test="${value.Costs.isSet}">
-                <cms:jsonarray key="offers">
-                <c:forEach var="costs" items="${content.valueList.Costs}">
-                    <cms:jsonobject>
-                        <cms:jsonvalue key="@type" value="Offer" />
-                        <cms:jsonvalue key="description" value="${costs.value.Label.toString}" />
-                        <cms:jsonvalue key="price" value="${costs.value.Price.toString}" />
-                        <cms:jsonvalue key="priceCurrency" value="${costs.value.Currency.isSet ? costs.value.Currency.toString : null}" />
-                        <cms:jsonvalue key="url" value="${value.LinkToPaymentService.isSet ? value.LinkToPaymentService.toString : null}" />
-                    </cms:jsonobject>
-                </c:forEach>
-                </cms:jsonarray>
-            </c:when>
-            <c:otherwise>
-                <cms:jsonobject key="offers">
-                    <cms:jsonvalue key="@type" value="Offer" />
-                    <cms:jsonvalue key="url" value="${value.LinkToPaymentService.isSet ? value.LinkToPaymentService.toString : null}" />
-                </cms:jsonobject>
-            </c:otherwise>
-        </c:choose>
+    <c:if test="${value.Costs.isSet}">
+        <cms:jsonarray key="offers">
+        <c:forEach var="costs" items="${content.valueList.Costs}">
+            <cms:jsonobject>
+                <cms:jsonvalue key="@type" value="Offer" />
+                <cms:jsonvalue key="description" value="${costs.value.Label.toString}" />
+                <cms:jsonvalue key="price" value="${costs.value.Price.toString}" />
+                <cms:jsonvalue key="priceCurrency" value="${costs.value.Currency.isSet ? costs.value.Currency.toString : null}" />
+                <cms:jsonvalue key="url" value="${costs.value.LinkToPaymentService.isSet ? costs.value.LinkToPaymentService.toString : null}" />
+            </cms:jsonobject>
+        </c:forEach>
+        </cms:jsonarray>
     </c:if>
 </cms:jsonobject>
 

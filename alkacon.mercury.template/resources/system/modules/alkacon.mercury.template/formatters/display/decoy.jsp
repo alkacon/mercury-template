@@ -32,6 +32,7 @@
     <mercury:list-badge var="badge" type="decoy" test="${cms.isEditMode}" />
 
     <mercury:teaser-piece
+        teaserClass="${setTeaserClass}"
         cssWrapper="type-decoy${setCssWrapper}${setEffect}${invalidDecoy ? ' disabled' : ''}"
         intro="${setShowIntro ? intro : null}"
         headline="${title}"

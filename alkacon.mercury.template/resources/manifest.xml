@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.132</version>
+		<version>14.0.140</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6562,7 +6562,12 @@
 			<uuidresource>1fc4db41-9e5f-11ed-93f1-0242ac11002b</uuidresource>
 			<datecreated>Fri, 27 Jan 2023 16:24:51 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for event consts]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -6863,7 +6868,12 @@
 			<uuidresource>77a9cdda-a30e-11ed-bb3e-0242ac11002b</uuidresource>
 			<datecreated>Thu, 02 Feb 2023 15:30:05 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for Event notes]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

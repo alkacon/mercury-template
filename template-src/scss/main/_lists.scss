@@ -92,26 +92,28 @@
         }
     }
 
-    .intro-headline {
-        @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
-        line-height: $teaser-title-height;
-        margin-bottom: $teaser-headings-margin-bottom;
-    }
-
-    .teaser-btn {
-          &:not(:last-child) {
-            margin-right: var(--#{$prefix}default-margin-small);
+    @if (not $list-teaser-format-inlist-only) {
+        .intro-headline {
+            @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
+            line-height: $teaser-title-height;
+            margin-bottom: $teaser-headings-margin-bottom;
         }
-        @if ($teaser-btn-def-padding != $btn-def-padding) {
-            padding: $teaser-btn-def-padding;
-        }
-    }
 
-    .teaser-date {
-        line-height: 1.2;
-        font-size: 80%;
-        color: $teaser-info-color;
-        margin-bottom: $teaser-date-margin-bottom;
+        .teaser-btn {
+            &:not(:last-child) {
+                margin-right: var(--#{$prefix}default-margin-small);
+            }
+            @if ($teaser-btn-def-padding != $btn-def-padding) {
+                padding: $teaser-btn-def-padding;
+            }
+        }
+
+        .teaser-date {
+            line-height: 1.2;
+            font-size: 80%;
+            color: $teaser-info-color;
+            margin-bottom: $teaser-date-margin-bottom;
+        }
     }
 
     .heading {
@@ -156,6 +158,30 @@
         &.teaser-compact {
             // compact teaser elements have a reduced bottom margin
             margin-bottom: $list-teaser-margin-compact;
+        }
+
+        @if ($list-teaser-format-inlist-only) {
+            .intro-headline {
+                @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
+                line-height: $teaser-title-height;
+                margin-bottom: $teaser-headings-margin-bottom;
+            }
+
+            .teaser-btn {
+                &:not(:last-child) {
+                    margin-right: var(--#{$prefix}default-margin-small);
+                }
+                @if ($teaser-btn-def-padding != $btn-def-padding) {
+                    padding: $teaser-btn-def-padding;
+                }
+            }
+
+            .teaser-date {
+                line-height: 1.2;
+                font-size: 80%;
+                color: $teaser-info-color;
+                margin-bottom: $teaser-date-margin-bottom;
+            }
         }
     }
 

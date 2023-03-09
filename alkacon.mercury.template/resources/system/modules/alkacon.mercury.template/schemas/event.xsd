@@ -30,12 +30,12 @@
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
-            <xsd:element name="Costs" type="OpenCmsCosts" minOccurs="0" maxOccurs="10" />
-            <xsd:element name="LinkToPaymentService" type="OpenCmsVarLink" minOccurs="0" maxOccurs="1" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
             <xsd:element name="VirtualLocation" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="Booking" type="OpenCmsBooking" minOccurs="0" />
+            <xsd:element name="Costs" type="OpenCmsCosts" minOccurs="0" maxOccurs="10" />
+            <xsd:element name="Note" type="OpenCmsNote" minOccurs="0" maxOccurs="20" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
@@ -43,7 +43,6 @@
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
             <xsd:element name="DetailPageUrl" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="Note" type="OpenCmsNote" minOccurs="0" maxOccurs="20" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
     </xsd:complexType>
@@ -57,11 +56,11 @@
                 <tab element="Intro" collapse="false" name="%(key.tab.Event)" />
                 <tab element="AddressChoice" collapse="false" name="%(key.tab.Location)" />
                 <tab element="Booking" collapse="false" name="%(key.tab.Booking)" />
-                <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
-                <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
                 <tab element="Note" collapse="false" name="%(key.tab.Notes)">
                     <description><![CDATA[%(key.tab.Notes.description)]]></description>
                 </tab>
+                <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
+                <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
             <mappings>
                 <mapping element="Availability/Release" mapto="attribute:datereleased" />
@@ -177,13 +176,6 @@
                     <PropertyName>Costs</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Costs)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Costs.help)]]></Description>
-                </Setting>
-                <Setting>
-                    <PropertyName>LinkToPaymentService</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Costs.LinkToPaymentService)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Costs.LinkToPaymentService.help)]]></Description>
-                    <Widget>file</Widget>
-                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>AddressChoice</PropertyName>

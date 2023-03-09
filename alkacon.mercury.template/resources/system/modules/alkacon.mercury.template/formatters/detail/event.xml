@@ -96,6 +96,9 @@
       <IncludeName><![CDATA[showLocation.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showCosts.true]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showCombinedDownloads.true]]></IncludeName>
     </Setting>
     <Setting>

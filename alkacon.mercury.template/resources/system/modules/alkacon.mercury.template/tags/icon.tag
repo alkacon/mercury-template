@@ -44,7 +44,7 @@
 
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
-<c:set var="selectedIcons"  value="${fn:contains(cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString, 'Selection')}" />
+<c:set var="selectedIcons"  value="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
 <c:set var="noInline"       value="${fn:startsWith(icon, 'no-')}" />
 <c:set var="inline"         value="${inline and selectedIcons and (not noInline)}" />
 

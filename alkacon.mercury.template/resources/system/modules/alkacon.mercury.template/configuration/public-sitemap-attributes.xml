@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AttributeEditorConfigurations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/attr_editor_config.xsd">
+  <AttributeEditorConfiguration language="en">
+    <Setting>
+      <PropertyName><![CDATA[mercury.iconFont.config]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.attribute.iconFont)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.attribute.iconFont.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <WidgetConfig><![CDATA[
+              awesomeSelection:       %(key.msg.attribute.iconFont.awesomeSelection)|
+              awesomeFull:            %(key.msg.attribute.iconFont.awesomeFull)|
+              bootstrapSelection:     %(key.msg.attribute.iconFont.bootstrapSelection)
+        ]]></WidgetConfig>
+    </Setting>
+  </AttributeEditorConfiguration>
+</AttributeEditorConfigurations>

@@ -117,7 +117,8 @@
         <c:set var="zoomData">
             <mercury:image-zoomdata
                 src="${imageUrl}"
-                title="${empty imageDescription ? imageTitle : imageDescription}"
+                title="${imageTitle}"
+                alt="${empty imageDescription ? imageTitle : imageDescription}"
                 copyright="${imageCopyrightHtml}"
                 height="${imageHeight}"
                 width="${imageWidth}"

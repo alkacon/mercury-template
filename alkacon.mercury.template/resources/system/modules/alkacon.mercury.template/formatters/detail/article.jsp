@@ -150,6 +150,7 @@
                 cssWrapper="${setCssWrapperParagraphs}"
                 pieceLayout="${paragraphLayout}"
                 sizeDesktop="${pieceLayoutSizeDesktop}"
+                sizeMobile="${12}"
                 heading="${paragraph.value.Caption}"
                 image="${status.first and useVisualFromParagraph ? null : paragraph.value.Image}"
                 imageRatio="${imageRatioParagraphs}"

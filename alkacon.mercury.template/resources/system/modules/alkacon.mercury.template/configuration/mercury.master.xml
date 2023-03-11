@@ -1017,7 +1017,7 @@
       <Value/>
     </Attribute>
     <Attribute>
-      <Key><![CDATA[mercuryIconFontConfig]]></Key>
+      <Key><![CDATA[mercury.iconFont.config]]></Key>
       <Value><![CDATA[awesomeSelection]]></Value>
     </Attribute>
     <Attribute>

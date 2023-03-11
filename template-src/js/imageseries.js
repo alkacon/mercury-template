@@ -163,6 +163,7 @@ function collect(imageSeries) {
             imageData.id = imageSeries.id;
             imageData.index = index;
             imageData.title = decodeURIComponent(imageData.caption);
+            imageData.alt = decodeURIComponent(imageData.alt);
             imageData.page = 0;
 
             // calculate image width and height by parsing the property string
@@ -242,6 +243,9 @@ function initZoomers($elements) {
             imageData.id = "imagezoom";
             if (typeof imageData.caption !== 'undefined') {
                 imageData.title = decodeURIComponent(imageData.caption);
+            }
+            if (typeof imageData.alt !== 'undefined') {
+                imageData.alt = decodeURIComponent(imageData.alt);
             }
             if (existingIndex < 0) {
                 images.push(imageData);

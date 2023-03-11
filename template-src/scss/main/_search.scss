@@ -74,7 +74,8 @@
             vertical-align: middle;
         }
 
-        a:hover .search-badge {
+        a:hover {
+            // test decoration underline has issues when vertical-align: middle is set, so disable
             text-decoration: none;
         }
 

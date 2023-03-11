@@ -55,13 +55,15 @@
 <c:set var="showIntro"              value="${titleOption ne 'none'}" />
 
 <c:set var="text"                   value="${value.Text}" />
-<c:set var="showText"               value="${setting.showText.toBoolean}" />
+<c:set var="showText"               value="${setting.showText.toBoolean and text.isSet}" />
 <c:set var="detailPage"             value="${cms.detailRequest}" />
 
 <c:set var="titleMarkup">
     <mercury:intro-headline intro="${showIntro ? value.Intro : null}" headline="${value.Title}" level="${hsize}" ade="${ade}" />
     <mercury:heading text="${value.Preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface}" />
 </c:set>
+
+<c:set var="showVisual"             value="${(not empty titleMarkup) or showDate or showImageCount}" />
 
 <c:choose>
     <c:when test="${imageSeriesDisplay eq 'slide'}">
@@ -72,10 +74,13 @@
         <c:set var="overlayAttrs">class="zoom-overlay"</c:set>
     </c:when>
     <c:when test="${imageSeriesDisplay eq 'masonry'}">
+        <c:set var="showMasonryList"        value="${false}" /><%-- Experimental feature to display landscape images larger, works as exected, however results are poor --%>
         <c:set var="elementCss"             value=" masonry-list" />
         <c:set var="rowCss"                 value=" row tile-margin-2" />
         <c:set var="imageSeriesCss"         value="${fn:replace(imageSeriesCss, 'square-xs-', 'col-')}" />
         <c:set var="imageSeriesCss"         value="${fn:replace(imageSeriesCss, 'square-', 'col-')}" />
+        <c:set var="imageSeriesCssOriginal" value="${imageSeriesCss}" />
+        <c:set var="imageSeriesCssEnlarged" value="${fn:replace(fn:replace(fn:replace(fn:replace(imageSeriesCss, '-6', '-12'), '-4', '-6'), '-3', '-6'), '-2', '-4')}" />
         <c:set var="tileAttrs">class="image-col tile-col ${imageSeriesCss} zoom"</c:set>
         <c:set var="overlayAttrs">class="zoom-overlay image-src-box presized" style="padding-bottom: %(heightPercentage)%"</c:set>
     </c:when>
@@ -89,7 +94,7 @@
 </c:choose>
 
 <c:set var="template"><%--
---%><div ${tileAttrs}><%--
+--%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}><%--
     --%><a class="zoom imageseries" href="%(src)" title="%(titleAttr)"><%--
         --%><span class="content"><%--
             --%><c:if test="${addBorderWrapper}"><span class="wrapper"></c:if><%--
@@ -175,10 +180,12 @@
 </c:if>
 
 <mercury:nl />
-<div class="detail-page type-imageseries${elementCss}${setCssWrapper123}"><%----%>
+<div class="detail-page type-imageseries${showVisual or showText ? '' : ' only-series'}${elementCss}${setCssWrapper123}"><%----%>
 <mercury:nl />
+<!--
+-->
 
-<c:if test="${(not empty titleMarkup) or showDate or showImageCount}">
+<c:if test="${showVisual}">
     <div class="detail-visual pivot${showDate or showImageCount ? '' : ' no-info'}${setCssWrapperKeyPiece}"><%----%>
         <div class="heading"><%----%>
             ${titleMarkup}
@@ -202,7 +209,7 @@
     <mercury:nl />
 </c:if>
 
-<c:if test="${showText and text.isSet}">
+<c:if test="${showText}">
     <div class="detail-content pivot${setCssWrapperParagraphs}" ${ade ? text.rdfaAttr : ''}><%----%>
         ${text}
     </div><%----%>
@@ -301,6 +308,17 @@
                                     <cms:jsonvalue key="titleAttr" value="${titleAttr}" />
                                     <cms:jsonvalue key="alt" value="${altAttr}" />
                                     <cms:jsonvalue key="heightPercentage" value="${fn:replace(heightPercentage, '%', '')}" />
+                                    <c:if test="${showMasonryList}">
+                                        <c:choose>
+                                            <c:when test="${imageBean.scaler.width > (imageBean.scaler.height * 1.1)}">
+                                                <c:set var="imageSeriesCss" value="${imageSeriesCssEnlarged}" />
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:set var="imageSeriesCss" value="${imageSeriesCssOriginal}" />
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <cms:jsonvalue key="tileAttrs" value="class=\"image-col tile-col ${imageSeriesCss} zoom\"" />
+                                    </c:if>
                                 </cms:jsonobject>
                                 <li data-image='${dataImage.compact}'></li><%----%>
                                 <mercury:nl />

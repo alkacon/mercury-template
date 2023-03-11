@@ -10,6 +10,9 @@
 <%@ attribute name="copyright" type="java.lang.String" required="false"
     description="The copyright to display with the zoomed image." %>
 
+<%@ attribute name="alt" type="java.lang.String" required="false"
+    description="The alt text to display with the zoomed image." %>
+
 <%@ attribute name="src" type="java.lang.String" required="false"
     description="Image source to use for the zoom.
     If not set, the 'src' attribute of the image tag will be used." %>
@@ -52,6 +55,7 @@
     <%-- Note: Both "width" and "w" given, so that older templates can also use this tag --%>
     <c:set var="dataImagezoom">data-imagezoom='{ "width": ${width}, "height": ${height}, "w": ${width}, "h": ${height}<%----%>
         <c:if test="${not empty caption}">, "caption": "${cms:encode(caption)}"</c:if>
+        <c:if test="${not empty alt}">, "alt": "${cms:encode(alt)}"</c:if>
         <c:if test="${not empty src}">, "src": "${src}"</c:if> }'<%----%>
     </c:set>
 </c:if>

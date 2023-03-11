@@ -67,10 +67,10 @@
 <c:set var ="project" value="${cms.isOnlineProject ? 'online' : 'offline'}" />
 
 <%-- Icon configuration --%>
-<c:if test="${fn:contains(cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString, 'Selection')}">
+<c:if test="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}">
     <c:set var="iconConfig"><cms:link>/system/modules/alkacon.mercury.theme/icons/fa/at.svg</cms:link></c:set>
     <c:set var="iconConfigBase64"><mercury:obfuscate text="${iconConfig}" type="base64"/></c:set>
-    <c:if test="${fn:contains(cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString, 'awesome')}">
+    <c:if test="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'awesome')}">
         <c:set var="fullIcons"><mercury:link-resource resource='/system/modules/alkacon.mercury.theme/css/awesome-full.min.css'/></c:set>
         <c:set var="fullIconsBase64"><mercury:obfuscate text="${fullIcons}" type="base64"/></c:set>
     </c:if>

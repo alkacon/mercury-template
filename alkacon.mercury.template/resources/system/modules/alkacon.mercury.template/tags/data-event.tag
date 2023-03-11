@@ -13,6 +13,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
@@ -89,16 +90,16 @@
         <cms:jsonvalue key="location" value="${locJsonLd}" />
         <cms:jsonvalue key="eventAttendanceMode" value="${locAttendanceMode}" />
     </mercury:location-vars>
-    
+
     <c:if test="${value.Costs.isSet}">
         <cms:jsonarray key="offers">
         <c:forEach var="costs" items="${content.valueList.Costs}">
             <cms:jsonobject>
                 <cms:jsonvalue key="@type" value="Offer" />
                 <cms:jsonvalue key="description" value="${costs.value.Label.toString}" />
-                <cms:jsonvalue key="price" value="${costs.value.Price.toString}" />
+                <cms:jsonvalue key="price" value="${fn:replace(costs.value.Price.toString, ',', '.')}" />
                 <cms:jsonvalue key="priceCurrency" value="${costs.value.Currency.isSet ? costs.value.Currency.toString : null}" />
-                <cms:jsonvalue key="url" value="${costs.value.LinkToPaymentService.isSet ? costs.value.LinkToPaymentService.toString : null}" />
+                <cms:jsonvalue key="url" value="${costs.value.LinkToPaymentService.value.URI.isSet ? costs.value.LinkToPaymentService.value.URI.toLink : null}" />
             </cms:jsonobject>
         </c:forEach>
         </cms:jsonarray>

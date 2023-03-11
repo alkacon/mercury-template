@@ -115,6 +115,11 @@ $imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
                 margin-top: 0;
             }
         }
+        &.only-series {
+            > .series {
+                margin-top: 0;
+            }
+        }
     }
 
     .effect-box {

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.140</version>
+		<version>14.0.148</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -310,6 +310,31 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/configuration/public-sitemap-attributes.xml</source>
+			<destination>system/modules/alkacon.mercury.template/configuration/public-sitemap-attributes.xml</destination>
+			<type>attr_editor_config</type>
+			<uuidstructure>82958d53-bfdd-11ed-9f05-0242ac11002b</uuidstructure>
+			<uuidresource>82958d54-bfdd-11ed-9f05-0242ac11002b</uuidresource>
+			<datecreated>Sat, 11 Mar 2023 07:22:41 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury public sitemap attribute configuration]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
 				</property>
 			</properties>
 			<relations/>

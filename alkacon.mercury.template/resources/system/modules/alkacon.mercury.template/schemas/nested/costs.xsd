@@ -43,7 +43,7 @@
                     <DisplayName><![CDATA[%(key.label.Costs.Price)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Costs.Price.help)]]></Description>
                     <Widget>string</Widget>
-                    <RuleRegex>^\d+(\.\d{1,2})?$</RuleRegex>
+                    <RuleRegex>^\d+((\.|\,)\d{1,2})?$</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.Price)]]></Error>
                     <Search>false</Search>

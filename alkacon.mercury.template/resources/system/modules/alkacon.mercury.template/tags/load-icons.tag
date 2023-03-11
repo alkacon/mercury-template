@@ -10,7 +10,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="version"            value="my-1" />
-<c:set var="fontConfig"         value="${cms.sitemapConfig.attribute['mercuryIconFontConfig'].toString}" />
+<c:set var="fontConfig"         value="${cms.sitemapConfig.attribute['mercury.iconFont.config'].toString}" />
 
 <%-- Include icon CSS --%>
 <c:choose>

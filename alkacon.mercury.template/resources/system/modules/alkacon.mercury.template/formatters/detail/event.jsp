@@ -214,7 +214,8 @@
                 <c:forEach var="costs" items="${content.valueList.Costs}">
                     <div class="ct-category"><%----%>
                         <div class="ct-price"><%----%>
-                            <fmt:formatNumber value="${costs.value.Price.toFloat}" currencyCode="${costs.value.Currency}" type="currency"/>
+                            <c:set var="priceVal" value="${fn:replace(costs.value.Price.toString, ',', '.')}" />
+                            <fmt:formatNumber value="${cms.wrap[priceVal].toFloat}" currencyCode="${costs.value.Currency}" type="currency"/>
                         </div><%----%>
                         <div class="ct-class"><%----%>
                             <c:out value="${costs.value.Label}" />

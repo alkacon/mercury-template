@@ -16,10 +16,7 @@
 
     <c:if test="${form.userCanManage}">
 
-        <c:set var="configuredExportBean" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
-        <c:if test="${empty configuredExportBean}">
-            <c:set var="configuredExportBean" value="alkacon.mercury.webform.CmsExportBeanExcel" />
-        </c:if>
+        <c:set var="configuredExportBean" value="${not empty param.exportBean ? param.exportBean : 'alkacon.mercury.webform.CmsExportBeanExcel'}" />
         <c:set var="exportBean" value="${cms.getBean(configuredExportBean)}" />
 
         ${exportBean.init(form, formTitle, locData, formBookingXml, cms.locale)}

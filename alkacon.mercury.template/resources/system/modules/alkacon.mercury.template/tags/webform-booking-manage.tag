@@ -144,8 +144,10 @@
                     <div class="subelement clearfix"><%----%>
                         <c:set var="formId">${formXml.file.structureId}</c:set>
                         <c:set var="bookingId">${formBookingXml.file.structureId}</c:set>
-                        <c:set var="csvLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}</cms:link></c:set>
-                        <c:set var="excelLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}</cms:link></c:set>
+                        <c:set var="csvExportBean" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.csv']}" />
+                        <c:set var="excelExportBean" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
+                        <c:set var="csvLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}&exportBean=${csvExportBean}</cms:link></c:set>
+                        <c:set var="excelLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}&exportBean=${excelExportBean}</cms:link></c:set>
                         <div class="pull-right"><%----%>
                             <small class="mr-5">
                                 <fmt:message key="msg.page.form.label.submissions.export" />

@@ -504,6 +504,20 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     }
 
     /**
+     * Writes the submission data to the export file writer.
+     * @param writer the export file writer
+     */
+    protected void writeData(A_CmsWriter writer) {
+
+        List<CmsFormDataBean> formDataBeans = readFormDataBeans();
+        Collections.reverse(formDataBeans);
+        writer.addTable(collectColumnNames(formDataBeans));
+        for (CmsFormDataBean formDataBean : formDataBeans) {
+            writer.addTableRow(getData(formDataBean));
+        }
+    }
+
+    /**
      * Reads the system fields to add configuration from the form content.
      * @param locale the locale
      */
@@ -596,20 +610,6 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 String renameFieldNew = m_form.getFormConfig().getValue(pathRenameFieldNew, locale).getStringValue(cms);
                 m_exportConfigFieldRename.put(renameFieldOrig, renameFieldNew);
             }
-        }
-    }
-
-    /**
-     * Writes the submission data to the export file writer.
-     * @param writer the export file writer
-     */
-    private void writeData(A_CmsWriter writer) {
-
-        List<CmsFormDataBean> formDataBeans = readFormDataBeans();
-        Collections.reverse(formDataBeans);
-        writer.addTable(collectColumnNames(formDataBeans));
-        for (CmsFormDataBean formDataBean : formDataBeans) {
-            writer.addTableRow(getData(formDataBean));
         }
     }
 

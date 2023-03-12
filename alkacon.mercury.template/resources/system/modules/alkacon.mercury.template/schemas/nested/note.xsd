@@ -13,7 +13,7 @@
     <xsd:complexType name="OpenCmsNote">
         <xsd:sequence>
             <xsd:element name="Title" type="OpenCmsString" />
-            <xsd:element name="Text" type="OpenCmsString" />
+            <xsd:element name="Text" type="OpenCmsString" minOccurs="1" maxOccurs="50"/>
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>

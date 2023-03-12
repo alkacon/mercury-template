@@ -48,6 +48,7 @@ public class CmsExportBeanCsv extends A_CmsExportBean {
      * Returns a safe export file name.
      * @return the file name
      */
+    @Override
     public String getSafeFileName() {
 
         return super.getSafeFileNameNoSuffix() + ".csv";

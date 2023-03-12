@@ -296,6 +296,12 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     abstract public A_CmsWriter export();
 
     /**
+     * Returns a safe file name optimized for file download.
+     * @return the optimized file name
+     */
+    abstract public String getSafeFileName();
+
+    /**
      * Returns a safe export file name with no suffix.
      * @return the export file name
      */

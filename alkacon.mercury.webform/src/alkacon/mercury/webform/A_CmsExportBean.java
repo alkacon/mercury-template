@@ -677,10 +677,11 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         if (m_eventContent.getValueList().get("Note") != null) {
             for (CmsJspContentAccessValueWrapper noteValue : m_eventContent.getValueList().get("Note")) {
                 CmsJspContentAccessValueWrapper noteTitleValue = noteValue.getValue().get("Title");
-                CmsJspContentAccessValueWrapper noteTextValue = noteValue.getValue().get("Text");
                 String noteTitle = noteTitleValue != null ? noteTitleValue.getToString() : "";
-                String noteText = noteTextValue != null ? noteTextValue.getToString() : "";
-                writer.addRow(m_messages.key(KEY_EVENTDETAIL_NOTE), noteTitle + ": " + noteText);
+                for (CmsJspContentAccessValueWrapper noteTextValue : noteValue.getValueList().get("Text")) {
+                    String noteText = noteTextValue != null ? noteTextValue.getToString() : "";
+                    writer.addRow(m_messages.key(KEY_EVENTDETAIL_NOTE), noteTitle + ": " + noteText);
+                }
             }
         }
         writer.addRow();

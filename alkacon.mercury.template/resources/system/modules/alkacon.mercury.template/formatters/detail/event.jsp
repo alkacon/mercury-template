@@ -214,8 +214,14 @@
                 <c:forEach var="costs" items="${content.valueList.Costs}">
                     <div class="ct-category"><%----%>
                         <div class="ct-price"><%----%>
-                            <c:set var="priceVal" value="${fn:replace(costs.value.Price.toString, ',', '.')}" />
-                            <fmt:formatNumber value="${cms.wrap[priceVal].toFloat}" currencyCode="${costs.value.Currency}" type="currency"/>
+                            <c:set var="priceVal" value="${cms.wrap[fn:replace(costs.value.Price.toString, ',', '.')].toFloat}" />
+                            <c:set var="currencyVal" value="${empty costs.value.Currency ? 'EUR' : costs.value.Currency}" />
+                            <c:catch var ="formatException">
+                                <fmt:formatNumber value="${priceVal}" currencyCode="${currencyVal}" type="currency" />
+                            </c:catch>
+                            <c:if test="${not empty formatException}">
+                                <fmt:formatNumber value="${priceVal}" currencyCode="EUR" type="currency" />
+                            </c:if>
                         </div><%----%>
                         <div class="ct-class"><%----%>
                             <c:out value="${costs.value.Label}" />

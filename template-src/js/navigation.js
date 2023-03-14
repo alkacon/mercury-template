@@ -136,6 +136,15 @@ function initMegaMenu() {
             $megaMenu.css('top', posTop + 'px');
             $megaMenu.css('left', posLeft + 'px');
         });
+        let headerEl = $megaMenuItem.closest('.header-group.sticky .head')[0];
+        if (headerEl != null) {
+            headerEl.addEventListener('header:notfixed', (e) => {
+                $megaMenuItem.removeClass("ed");
+            });
+            headerEl.addEventListener('header:isfixed', (e) => {
+                $megaMenuItem.removeClass("ed");
+            });
+        }
     });
 
     jQ(document).on('click', '.nav-main-container .nav-mega-menu', function(e) {

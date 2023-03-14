@@ -448,15 +448,15 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         }
         merged.put(
             m_messages.key(KEY_DATE_REGISTERED),
-            m_messages.getDateTime(formData.getDateRegistered(), DateFormat.LONG));
+            m_messages.getDateTime(formData.getDateRegistered(), DateFormat.SHORT));
         if (formData.getDateCancelled() != null) {
             merged.put(
                 m_messages.key(KEY_DATE_STATUSCHANGED),
-                m_messages.getDateTime(formData.getDateCancelled(), DateFormat.LONG));
+                m_messages.getDateTime(formData.getDateCancelled(), DateFormat.SHORT));
         } else if (formData.getDateMovedUp() != null) {
             merged.put(
                 m_messages.key(KEY_DATE_STATUSCHANGED),
-                m_messages.getDateTime(formData.getDateMovedUp(), DateFormat.LONG));
+                m_messages.getDateTime(formData.getDateMovedUp(), DateFormat.SHORT));
         } else {
             merged.put(m_messages.key(KEY_DATE_STATUSCHANGED), "");
         }
@@ -648,10 +648,10 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         if (m_eventContent.getValue().get("Dates") != null) {
             CmsSerialDateValue serialDateValue = new CmsSerialDateValue(
                 m_eventContent.getValue().get("Dates").getToString());
-            String startDate = m_messages.getDateTime(serialDateValue.getStart(), DateFormat.LONG);
+            String startDate = m_messages.getDateTime(serialDateValue.getStart(), DateFormat.SHORT);
             String endDate = null;
             if (serialDateValue.getEnd() != null) {
-                endDate = m_messages.getDateTime(serialDateValue.getEnd(), DateFormat.LONG);
+                endDate = m_messages.getDateTime(serialDateValue.getEnd(), DateFormat.SHORT);
                 String dateValue = startDate + " - " + endDate;
                 writer.addRow(m_messages.key(KEY_EVENTDETAIL_DATE), dateValue);
             } else {
@@ -662,7 +662,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         if ((booking != null) && (booking.getValue().get("FinalRegistrationDate") != null)) {
             String finalRegistrationDate = m_messages.getDateTime(
                 booking.getValue().get("FinalRegistrationDate").getToDate(),
-                DateFormat.LONG);
+                DateFormat.SHORT);
             writer.addRow(m_messages.key(KEY_EVENTDETAIL_FINALREGISTRATION), finalRegistrationDate);
         }
         CmsJspContentAccessValueWrapper performerValue = m_eventContent.getValue().get("Performer");
@@ -700,7 +700,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     private void writeHeadline(A_CmsWriter writer) {
 
         writer.addRowHeadline(m_messages.key(KEY_HEADLINE_1, m_formTitle));
-        writer.addRow(m_messages.key(KEY_EXPORT_DATE_0), m_messages.getDateTime(new Date(), DateFormat.LONG));
+        writer.addRow(m_messages.key(KEY_EXPORT_DATE_0), m_messages.getDateTime(new Date(), DateFormat.SHORT));
         writer.addRow();
     }
 

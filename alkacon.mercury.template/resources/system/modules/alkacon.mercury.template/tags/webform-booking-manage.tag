@@ -144,20 +144,36 @@
                     <div class="subelement clearfix"><%----%>
                         <c:set var="formId">${formXml.file.structureId}</c:set>
                         <c:set var="bookingId">${formBookingXml.file.structureId}</c:set>
-                        <c:set var="csvExportBean" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.csv']}" />
-                        <c:set var="excelExportBean" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
-                        <c:set var="csvLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}&exportBean=${csvExportBean}</cms:link></c:set>
-                        <c:set var="excelLink"><cms:link>/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}&exportBean=${excelExportBean}</cms:link></c:set>
+                        <c:set var="csvLink">/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}</c:set>
+                        <c:set var="excelLink">/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}</c:set>
+                        <c:set var="csvExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.csv']}" />
+                        <c:set var="excelExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
                         <div class="pull-right"><%----%>
                             <small class="mr-5">
                                 <fmt:message key="msg.page.form.label.submissions.export" />
                             </small><%----%>
-                            <mercury:link link="${csvLink}" css="btn btn-xs oct-meta-info mr-5">
+                            <c:set var="link"><cms:link>${csvLink}</cms:link></c:set>
+                            <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
                                 <fmt:message key="msg.page.form.button.submissions.csv" />
                             </mercury:link><%----%>
-                            <mercury:link link="${excelLink}" css="btn btn-xs oct-meta-info">
+                            <c:set var="link"><cms:link>${excelLink}</cms:link></c:set>
+                            <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
                                 <fmt:message key="msg.page.form.button.submissions.excel" />
                             </mercury:link><%----%>
+                            <c:if test="${not empty csvExportConfig}">
+                                <c:set var="csvExportBean" value="${fn:substringBefore(csvExportConfig, ':')}" />
+                                <c:set var="csvExportLabel" value="${fn:substringAfter(csvExportConfig, ':')}" />
+                                <c:set var="additionalCsvLink" value="${csvLink}&exportBean=${csvExportBean}" />
+                                <c:set var="link"><cms:link>${additionalCsvLink}</cms:link></c:set>
+                                <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${csvExportLabel}</mercury:link><%----%>
+                            </c:if>
+                            <c:if test="${not empty excelExportConfig}">
+                                <c:set var="excelExportBean" value="${fn:substringBefore(excelExportConfig, ':')}" />
+                                <c:set var="excelExportLabel" value="${fn:substringAfter(excelExportConfig, ':')}" />
+                                <c:set var="additionaExcelLink" value="${excelLink}&exportBean=${excelExportBean}" />
+                                <c:set var="link"><cms:link>${additionaExcelLink}</cms:link></c:set>
+                                <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${excelExportLabel}</mercury:link><%----%>
+                            </c:if>
                         </div><%----%>
                     </div><%----%>
                     <mercury:nl />

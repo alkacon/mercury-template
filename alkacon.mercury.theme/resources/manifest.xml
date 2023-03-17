@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>14.0.71</version>
+		<version>14.0.73</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -50081,7 +50081,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[automobile, car]]></value>
+					<value><![CDATA[car, automobile]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50186,7 +50186,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[bank, institution, university]]></value>
+					<value><![CDATA[university, bank, institution]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50331,7 +50331,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-0, battery-empty]]></value>
+					<value><![CDATA[battery-empty, battery-0]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50352,7 +50352,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-1, battery-quarter]]></value>
+					<value><![CDATA[battery-quarter, battery-1]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50373,7 +50373,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-2, battery-half]]></value>
+					<value><![CDATA[battery-half, battery-2]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50394,7 +50394,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-3, battery-three-quarters]]></value>
+					<value><![CDATA[battery-three-quarters, battery-3]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50415,7 +50415,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery, battery-full, battery-4]]></value>
+					<value><![CDATA[battery-full, battery, battery-4]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50435,7 +50435,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-0, battery-empty]]></value>
+					<value><![CDATA[battery-empty, battery-0]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50455,7 +50455,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery, battery-full, battery-4]]></value>
+					<value><![CDATA[battery-full, battery, battery-4]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50475,7 +50475,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-2, battery-half]]></value>
+					<value><![CDATA[battery-half, battery-2]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50495,7 +50495,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-1, battery-quarter]]></value>
+					<value><![CDATA[battery-quarter, battery-1]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50515,7 +50515,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery-3, battery-three-quarters]]></value>
+					<value><![CDATA[battery-three-quarters, battery-3]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50535,7 +50535,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[battery, battery-full, battery-4]]></value>
+					<value><![CDATA[battery-full, battery, battery-4]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -50892,7 +50892,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[bitcoin, btc]]></value>
+					<value><![CDATA[btc, bitcoin]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -51227,7 +51227,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[bitcoin, btc]]></value>
+					<value><![CDATA[btc, bitcoin]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -51458,7 +51458,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cab, taxi]]></value>
+					<value><![CDATA[taxi, cab]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -51667,7 +51667,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[automobile, car]]></value>
+					<value><![CDATA[car, automobile]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -52360,7 +52360,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[chain, link]]></value>
+					<value><![CDATA[link, chain]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -52885,7 +52885,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[close, remove, times]]></value>
+					<value><![CDATA[times, close, remove]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -52989,7 +52989,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cny, jpy, rmb, yen]]></value>
+					<value><![CDATA[jpy, cny, rmb, yen]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -53304,7 +53304,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[community, group, users]]></value>
+					<value><![CDATA[users, community, group]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -53430,7 +53430,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[copy, files-o]]></value>
+					<value><![CDATA[files-o, copy]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -53682,7 +53682,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cut, scissors]]></value>
+					<value><![CDATA[scissors, cut]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -53724,7 +53724,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[dashboard, tachometer]]></value>
+					<value><![CDATA[tachometer, dashboard]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -53849,7 +53849,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[dedent, outdent]]></value>
+					<value><![CDATA[outdent, dedent]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -54101,7 +54101,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[dollar, usd]]></value>
+					<value><![CDATA[usd, dollar]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -54185,7 +54185,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[drivers-license-o, id-card-o]]></value>
+					<value><![CDATA[id-card-o, drivers-license-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -54206,7 +54206,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[drivers-license, id-card]]></value>
+					<value><![CDATA[id-card, drivers-license]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -54290,7 +54290,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[edit, pencil-square-o]]></value>
+					<value><![CDATA[pencil-square-o, edit]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -54961,7 +54961,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fa, font-awesome]]></value>
+					<value><![CDATA[font-awesome, fa]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -55149,7 +55149,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[feed, rss]]></value>
+					<value><![CDATA[rss, feed]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -55359,7 +55359,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[file-movie-o, file-video-o]]></value>
+					<value><![CDATA[file-video-o, file-movie-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -55544,7 +55544,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[file-movie-o, file-video-o]]></value>
+					<value><![CDATA[file-video-o, file-movie-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -55626,7 +55626,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[copy, files-o]]></value>
+					<value><![CDATA[files-o, copy]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -56002,7 +56002,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[fa, font-awesome]]></value>
+					<value><![CDATA[font-awesome, fa]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -56732,7 +56732,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[gittip, gratipay]]></value>
+					<value><![CDATA[gratipay, gittip]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57128,7 +57128,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[gittip, gratipay]]></value>
+					<value><![CDATA[gratipay, gittip]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57169,7 +57169,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[community, group, users]]></value>
+					<value><![CDATA[users, community, group]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57295,7 +57295,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hand-grab-o, hand-rock-o]]></value>
+					<value><![CDATA[hand-rock-o, hand-grab-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57483,7 +57483,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hand-grab-o, hand-rock-o]]></value>
+					<value><![CDATA[hand-rock-o, hand-grab-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57920,7 +57920,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hourglass-1, hourglass-start]]></value>
+					<value><![CDATA[hourglass-start, hourglass-1]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57941,7 +57941,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hourglass-2, hourglass-half]]></value>
+					<value><![CDATA[hourglass-half, hourglass-2]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57962,7 +57962,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hourglass-3, hourglass-end]]></value>
+					<value><![CDATA[hourglass-end, hourglass-3]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -57982,7 +57982,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hourglass-3, hourglass-end]]></value>
+					<value><![CDATA[hourglass-end, hourglass-3]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58002,7 +58002,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hourglass-2, hourglass-half]]></value>
+					<value><![CDATA[hourglass-half, hourglass-2]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58043,7 +58043,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[hourglass-1, hourglass-start]]></value>
+					<value><![CDATA[hourglass-start, hourglass-1]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58189,7 +58189,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[drivers-license-o, id-card-o]]></value>
+					<value><![CDATA[id-card-o, drivers-license-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58209,7 +58209,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[drivers-license, id-card]]></value>
+					<value><![CDATA[id-card, drivers-license]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58251,7 +58251,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[image, photo, picture-o]]></value>
+					<value><![CDATA[picture-o, image, photo]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58460,7 +58460,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[bank, institution, university]]></value>
+					<value><![CDATA[university, bank, institution]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58502,7 +58502,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[intersex, transgender]]></value>
+					<value><![CDATA[transgender, intersex]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -58648,7 +58648,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cny, jpy, rmb, yen]]></value>
+					<value><![CDATA[jpy, cny, rmb, yen]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59108,7 +59108,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[life-bouy, life-buoy, life-ring, life-saver, life-support]]></value>
+					<value><![CDATA[life-ring, life-bouy, life-buoy, life-saver, life-support]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59128,7 +59128,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[life-bouy, life-buoy, life-ring, life-saver, life-support]]></value>
+					<value><![CDATA[life-ring, life-bouy, life-buoy, life-saver, life-support]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59148,7 +59148,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[life-bouy, life-buoy, life-ring, life-saver, life-support]]></value>
+					<value><![CDATA[life-ring, life-bouy, life-buoy, life-saver, life-support]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59168,7 +59168,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[life-bouy, life-buoy, life-ring, life-saver, life-support]]></value>
+					<value><![CDATA[life-ring, life-bouy, life-buoy, life-saver, life-support]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59230,7 +59230,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[chain, link]]></value>
+					<value><![CDATA[link, chain]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59628,7 +59628,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[mail-forward, share]]></value>
+					<value><![CDATA[share, mail-forward]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59649,7 +59649,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[mail-reply-all, reply-all]]></value>
+					<value><![CDATA[reply-all, mail-reply-all]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -59670,7 +59670,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[mail-reply, reply]]></value>
+					<value><![CDATA[reply, mail-reply]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -60989,7 +60989,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[dedent, outdent]]></value>
+					<value><![CDATA[outdent, dedent]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -61302,7 +61302,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[edit, pencil-square-o]]></value>
+					<value><![CDATA[pencil-square-o, edit]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -61407,7 +61407,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[phone-volume, volume-control-phone]]></value>
+					<value><![CDATA[volume-control-phone, phone-volume]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -61448,7 +61448,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[image, photo, picture-o]]></value>
+					<value><![CDATA[picture-o, image, photo]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -61489,7 +61489,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[image, photo, picture-o]]></value>
+					<value><![CDATA[picture-o, image, photo]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62244,7 +62244,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ra, rebel, resistance]]></value>
+					<value><![CDATA[rebel, ra, resistance]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62327,7 +62327,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ra, rebel, resistance]]></value>
+					<value><![CDATA[rebel, ra, resistance]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62473,7 +62473,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[close, remove, times]]></value>
+					<value><![CDATA[times, close, remove]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62555,7 +62555,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[mail-reply-all, reply-all]]></value>
+					<value><![CDATA[reply-all, mail-reply-all]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62575,7 +62575,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[mail-reply, reply]]></value>
+					<value><![CDATA[reply, mail-reply]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62616,7 +62616,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ra, rebel, resistance]]></value>
+					<value><![CDATA[rebel, ra, resistance]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62657,7 +62657,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cny, jpy, rmb, yen]]></value>
+					<value><![CDATA[jpy, cny, rmb, yen]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62720,7 +62720,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[rotate-left, undo]]></value>
+					<value><![CDATA[undo, rotate-left]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62802,7 +62802,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[feed, rss]]></value>
+					<value><![CDATA[rss, feed]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -62985,7 +62985,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cut, scissors]]></value>
+					<value><![CDATA[scissors, cut]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -63318,7 +63318,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[mail-forward, share]]></value>
+					<value><![CDATA[share, mail-forward]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -64586,7 +64586,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[star-half-empty, star-half-full, star-half-o]]></value>
+					<value><![CDATA[star-half-o, star-half-empty, star-half-full]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -64606,7 +64606,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[star-half-empty, star-half-full, star-half-o]]></value>
+					<value><![CDATA[star-half-o, star-half-empty, star-half-full]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -64626,7 +64626,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[star-half-empty, star-half-full, star-half-o]]></value>
+					<value><![CDATA[star-half-o, star-half-empty, star-half-full]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -65150,7 +65150,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[life-bouy, life-buoy, life-ring, life-saver, life-support]]></value>
+					<value><![CDATA[life-ring, life-bouy, life-buoy, life-saver, life-support]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -65253,7 +65253,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[dashboard, tachometer]]></value>
+					<value><![CDATA[tachometer, dashboard]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -65336,7 +65336,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cab, taxi]]></value>
+					<value><![CDATA[taxi, cab]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -66002,7 +66002,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[times-rectangle-o, window-close-o]]></value>
+					<value><![CDATA[window-close-o, times-rectangle-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -66023,7 +66023,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[times-rectangle, window-close]]></value>
+					<value><![CDATA[window-close, times-rectangle]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -66043,7 +66043,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[close, remove, times]]></value>
+					<value><![CDATA[times, close, remove]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -66311,7 +66311,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[intersex, transgender]]></value>
+					<value><![CDATA[transgender, intersex]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -66707,7 +66707,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[rotate-left, undo]]></value>
+					<value><![CDATA[undo, rotate-left]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -66769,7 +66769,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[bank, institution, university]]></value>
+					<value><![CDATA[university, bank, institution]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -66955,7 +66955,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[dollar, usd]]></value>
+					<value><![CDATA[usd, dollar]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -67143,7 +67143,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[community, group, users]]></value>
+					<value><![CDATA[users, community, group]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -67370,7 +67370,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[video-camera]]></value>
+					<value><![CDATA[video-camera, video]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -67390,7 +67390,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[video-camera]]></value>
+					<value><![CDATA[video-camera, video]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -67514,7 +67514,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[phone-volume, volume-control-phone]]></value>
+					<value><![CDATA[volume-control-phone, phone-volume]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -67826,7 +67826,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[times-rectangle-o, window-close-o]]></value>
+					<value><![CDATA[window-close-o, times-rectangle-o]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -67846,7 +67846,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[times-rectangle, window-close]]></value>
+					<value><![CDATA[window-close, times-rectangle]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -68282,7 +68282,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[cny, jpy, rmb, yen]]></value>
+					<value><![CDATA[jpy, cny, rmb, yen]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>

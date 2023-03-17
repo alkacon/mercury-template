@@ -92,5 +92,5 @@
 --%>${empty ariaLabel ? '' : ' aria-label=\"'.concat(ariaLabel).concat('\" role=\"img\"')}<%--
 --%>${ariaHidden ? ' aria-hidden=\"true\"' : ''}<%--
 --%>><%----%>
-    <c:if test="${inline}"><c:out value="${iconRes.content}" escapeXml="${false}" /></c:if>
+    <c:if test="${inline}"><c:out value="${fn:replace(iconRes.content, 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" /></c:if>
 </${tag}><%----%>

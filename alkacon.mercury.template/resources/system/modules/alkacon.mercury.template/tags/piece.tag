@@ -189,6 +189,7 @@
     </cms:addparams>
 </c:if>
 <c:set var="showVisual"     value="${not empty pieceVisual}" />
+<c:set var="visualLast"     value="${visualLast and showVisual}" />
 
 <c:if test="${not showVisual}">
     <%-- If there is no visual and we get 'full' piece, make sure the div structure for does not use inline heading or link. --%>
@@ -231,10 +232,15 @@
         <c:set var="pieceFeatureMarker" value=" only-link" />
         <c:set var="onlyLink" value="${true}" />
     </c:when>
+    <c:when test="${showBody and not showHeading and (not showVisual or visualLast)}">
+        <%-- "pnh" means "piece no heading". --%>
+        <%-- "pnm" means (next) "piece needs margin". --%>
+        <c:set var="pieceFeatureMarker" value="${visualLast ? ' phv pvl': ''}${' phb pnh'}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
+    </c:when>
     <c:otherwise>
         <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
         <%-- "pvl" means "piece visual last". --%>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}" />
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
     </c:otherwise>
 </c:choose>
 

@@ -221,6 +221,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     }
 
     // special adjustments for type-section content pieces that re not "boxed"
+    // NOTE: This is NOT done for 'paragraph' because contents with multiple paragraphs are not used like sections to create text pages
     &.element.type-section:not(.box) {
         // margin adjustments
         &.only-heading {
@@ -229,12 +230,13 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
 
         &.only-text,
-        &.phb:not(.phl) {
+        &.phb:not(.pnm) {
 
-            // if a text-only piece element fowllows a text-only piece element, reduce top margin
+            // if a piece element that starts with text follows a text-only piece element, reduce top margin
             // goal: make text from 2nd element apperar as if it belongs to first element
             +.piece.element.type-section:not(.box) {
-                &.only-text {
+                &.only-text,
+                &.pnh {
                     margin-top: calc(var(--#{$prefix}paragraph-margin-bottom) - var(--#{$prefix}element-margin));
                 }
             }

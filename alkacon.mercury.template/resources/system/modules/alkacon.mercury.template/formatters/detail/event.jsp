@@ -216,7 +216,7 @@
                         <div class="ct-price"><%----%>
                             <c:set var="priceVal" value="${cms.wrap[fn:replace(costs.value.Price.toString, ',', '.')].toFloat}" />
                             <c:set var="currencyVal" value="${empty costs.value.Currency ? 'EUR' : costs.value.Currency}" />
-                            <c:catch var ="formatException">
+                            <c:catch var="formatException">
                                 <fmt:formatNumber value="${priceVal}" currencyCode="${currencyVal}" type="currency" />
                             </c:catch>
                             <c:if test="${not empty formatException}">

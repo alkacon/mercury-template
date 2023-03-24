@@ -19,6 +19,7 @@
 
 package alkacon.mercury.webform;
 
+import org.opencms.file.CmsFile;
 import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsLocaleManager;
 import org.opencms.util.CmsMacroResolver;
@@ -42,17 +43,26 @@ public class CmsFormDataBean {
     /** The XPATH to store the title mapping. */
     public static final String PATH_TITLEMAPPING = "TitleMapping[1]";
 
-    /** The XPATH to store the waitlist notification flag. */
-    public static final String PATH_WAITLIST_NOTIFICATION = "WaitlistNotification[1]";
-
-    /** The XPATH to store the date when the user was moved up from the waiting list. */
-    public static final String PATH_WAITLIST_MOVE_UP_DATE = "WaitlistMoveUpDate[1]";
-
     /** The XPATH to store the configuration mail sent information. */
     public static final String PATH_CONFIRMATION_MAIL_SENT = "ConfirmationMailSent[1]";
 
     /** The XPATH to store the registration mail sent information. */
     public static final String PATH_REGISTRATION_MAIL_SENT = "RegistrationMailSent[1]";
+
+    /** The XPATH to store the waitlist notification flag. */
+    public static final String PATH_WAITLIST_NOTIFICATION = "WaitlistNotification[1]";
+
+    /** The XPATH to store the move-up mail sent information. */
+    public static final String PATH_MOVE_UP_MAIL_SENT = "MoveUpMailSent[1]";
+
+    /** The XPATH to store the cancel mail sent information. */
+    public static final String PATH_CANCEL_MAIL_SENT = "CancelMailSent[1]";
+
+    /** The XPATH to store the date when the user was moved up from the waiting list. */
+    public static final String PATH_WAITLIST_MOVE_UP_DATE = "WaitlistMoveUpDate[1]";
+
+    /** The XPATH to store the date when the user registration was cancelled. */
+    public static final String PATH_CANCEL_DATE = "CancelDate[1]";
 
     /** The path to the "Cancelled" flag. */
     public static final String PATH_CANCELLED = "Cancelled[1]";
@@ -86,6 +96,15 @@ public class CmsFormDataBean {
 
     /** Flag, indicating if a registration mail is sent. */
     private Boolean m_isRegistrationMailSent;
+
+    /** Flag, indicating if a waitlist notification mail is sent. */
+    private Boolean m_isWaitlistNotificationSent;
+
+    /** Flag, indicating if a move-up mail is sent. */
+    private Boolean m_isMoveUpMailSent;
+
+    /** Flag, indicating if a cancel mail is sent. */
+    private Boolean m_isCancelMailSent;
 
     /**
      * Constructor for wrapping the plain CmsXmlContent of a form data content.
@@ -161,8 +180,8 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns the date when the user did move up from the wating list or null if not moved up.
-     * @return the date when the user did move up from the wating list or null if not moved up
+     * Returns the date when the user did move up from the wait list or null if not moved up.
+     * @return the date when the user did move up from the wait list or null if not moved up
      */
     public Date getDateMovedUp() {
 
@@ -177,6 +196,15 @@ public class CmsFormDataBean {
     public Date getDateRegistered() {
 
         return new Date(m_content.getFile().getDateCreated());
+    }
+
+    /**
+     * Returns the file of this form data bean.
+     * @return the file of this form data bean
+     */
+    public CmsFile getFile() {
+
+        return m_content.getFile();
     }
 
     /**
@@ -202,6 +230,23 @@ public class CmsFormDataBean {
             m_isCancelled = Boolean.valueOf(value.getStringValue(null));
         }
         return m_isCancelled.booleanValue();
+    }
+
+    /**
+     * Returns a flag, indicating if a cancel mail was sent.
+     * @return a flag, indicating if a cancel mail was sent.
+     */
+    public boolean isCancelMailSent() {
+
+        if (null == m_isCancelMailSent) {
+            I_CmsXmlContentValue value = m_content.getValue(PATH_CANCEL_MAIL_SENT, CmsLocaleManager.MASTER_LOCALE);
+            if (value == null) {
+                m_isCancelMailSent = Boolean.FALSE;
+            } else {
+                m_isCancelMailSent = Boolean.valueOf(value.getStringValue(null));
+            }
+        }
+        return m_isCancelMailSent.booleanValue();
     }
 
     /**
@@ -232,6 +277,23 @@ public class CmsFormDataBean {
     }
 
     /**
+     * Returns a flag, indicating if a move-up mail was sent.
+     * @return a flag, indicating if a move-up mail was sent.
+     */
+    public boolean isMoveUpMailSent() {
+
+        if (null == m_isMoveUpMailSent) {
+            I_CmsXmlContentValue value = m_content.getValue(PATH_MOVE_UP_MAIL_SENT, CmsLocaleManager.MASTER_LOCALE);
+            if (value == null) {
+                m_isMoveUpMailSent = Boolean.FALSE;
+            } else {
+                m_isMoveUpMailSent = Boolean.valueOf(value.getStringValue(null));
+            }
+        }
+        return m_isMoveUpMailSent.booleanValue();
+    }
+
+    /**
      * Returns a flag, indicating if a confirmation mail was sent.
      * @return a flag, indicating if a confirmation mail was sent.
      */
@@ -247,14 +309,20 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns a flag, indicating if a waitlist notification was sent/shown.
-     * @return a flag, indicating if a waitlist notification was sent/shown.
+     * Returns a flag, indicating if this is a waitlist candidate.
+     * @return a flag, indicating if this is a waitlist candidate
      */
     public boolean isWaitlist() {
 
         if (null == m_isWaitlist) {
-            I_CmsXmlContentValue value = m_content.getValue(PATH_WAITLIST_NOTIFICATION, CmsLocaleManager.MASTER_LOCALE);
-            m_isWaitlist = Boolean.valueOf(value.getStringValue(null));
+            if (isWaitlistMovedUp()) {
+                m_isWaitlist = Boolean.FALSE;
+            } else {
+                I_CmsXmlContentValue value = m_content.getValue(
+                    PATH_WAITLIST_NOTIFICATION,
+                    CmsLocaleManager.MASTER_LOCALE);
+                m_isWaitlist = Boolean.valueOf(value.getStringValue(null));
+            }
         }
         return m_isWaitlist.booleanValue();
     }
@@ -266,6 +334,19 @@ public class CmsFormDataBean {
     public boolean isWaitlistMovedUp() {
 
         return m_content.getValue(PATH_WAITLIST_MOVE_UP_DATE, CmsLocaleManager.MASTER_LOCALE) != null;
+    }
+
+    /**
+     * Returns a flag, indicating if a waitlist notification mail was sent.
+     * @return a flag, indicating if a waitlist notification mail was sent
+     */
+    public boolean isWaitlistNotificationSent() {
+
+        if (null == m_isWaitlistNotificationSent) {
+            I_CmsXmlContentValue value = m_content.getValue(PATH_WAITLIST_NOTIFICATION, CmsLocaleManager.MASTER_LOCALE);
+            m_isWaitlistNotificationSent = Boolean.valueOf(value.getStringValue(null));
+        }
+        return m_isWaitlistNotificationSent.booleanValue();
     }
 
     /**

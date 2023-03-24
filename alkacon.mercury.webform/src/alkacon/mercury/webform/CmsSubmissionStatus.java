@@ -19,6 +19,7 @@
 
 package alkacon.mercury.webform;
 
+import org.opencms.db.CmsResourceState;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
@@ -35,11 +36,11 @@ import java.util.List;
 /** Class that encapsulates the submission status of a form. */
 public class CmsSubmissionStatus {
 
-    /** The maximally allowed regular submissions. <code>null</code> for unlimited submissions. */
-    private Integer m_maxRegularSubmissions;
+    /** The maximum number of regular places, <code>null</code> if not limited. */
+    private Integer m_maxRegularPlaces;
 
-    /** The maximal number of submissions on the waitlist. Defaults to 0. */
-    private int m_maxWaitlistSubmissions;
+    /** The maximal number of available waitlist places, defaults to 0. */
+    private int m_maxWaitlistPlaces;
 
     /** The number of submissions that are not made via the form (specified in the form's configuration content). */
     private int m_numOtherSubmissions;
@@ -52,6 +53,9 @@ public class CmsSubmissionStatus {
 
     /** The list of candidates currently waiting for a regular participant place. */
     private List<CmsFormDataBean> m_waitlistCandidates = new ArrayList<>();
+
+    /** The list of submissions marked as cancelled by the event administrator. */
+    private List<CmsFormDataBean> m_cancelledSubmissions = new ArrayList<>();
 
     /** The CmsObject to use for status requests. */
     private CmsObject m_cms;
@@ -72,30 +76,81 @@ public class CmsSubmissionStatus {
     throws CmsException {
 
         if (null != ugcConfig) {
-            m_maxRegularSubmissions = ugcConfig.getMaxRegularDataSets();
-            m_maxWaitlistSubmissions = ugcConfig.getMaxWaitlistDataSets();
+            m_maxRegularPlaces = ugcConfig.getMaxRegularDataSets();
+            m_maxWaitlistPlaces = ugcConfig.getMaxWaitlistDataSets();
             m_numOtherSubmissions = ugcConfig.getNumOtherDataSets();
             m_cms = CmsWebformModuleAction.getAdminCms(cms);
             readSubmissionResources(ugcConfig);
+            readExpiredSubmissionResources(ugcConfig);
         } // else keep default values.
+    }
+
+    /**
+     * Returns the list of cancelled submissions.
+     * @return the list of cancelled submissions
+     */
+    public List<CmsFormDataBean> getCancelledSubmissions() {
+
+        return m_cancelledSubmissions;
+    }
+
+    /**
+     * Returns whether there are free participant places.
+     * @return whether there are free participant places
+     */
+    public boolean getHasFreeParticipantPlaces() {
+
+        if (getMaxRegularSubmissions() == null) {
+            return true;
+        }
+        return getNumParticipants() < getMaxRegularSubmissions().intValue();
+    }
+
+    /**
+     * Returns the maximum number of regular places, <code>null</code> if not limited.
+     * @return the maximum number of regular places, <code>null</code> if not limited
+     */
+    public Integer getMaxRegularPlaces() {
+
+        return m_maxRegularPlaces;
     }
 
     /**
      * Returns the number of regular submissions that are allowed. <code>null</code> means unlimited.
      * @return the number of regular submissions that are allowed. <code>null</code> means unlimited.
      */
+    @Deprecated
     public Integer getMaxRegularSubmissions() {
 
-        return m_maxRegularSubmissions;
+        return m_maxRegularPlaces;
+    }
+
+    /**
+     * Returns the maximum number of available waitlist places.
+     * @return the maximum number of available waitlist places
+     */
+    public int getMaxWaitlistPlaces() {
+
+        return m_maxWaitlistPlaces;
     }
 
     /**
      * Returns the number of waitlist submissions that are allowed.
      * @return the number of waitlist submissions that are allowed.
      */
+    @Deprecated
     public int getMaxWaitlistSubmissions() {
 
-        return m_maxWaitlistSubmissions;
+        return m_maxWaitlistPlaces;
+    }
+
+    /**
+     * Returns the number of cancelled submissions.
+     * @return the number of cancelled submissions
+     */
+    public int getNumCancelledSubmissions() {
+
+        return m_cancelledSubmissions.size();
     }
 
     /**
@@ -113,10 +168,10 @@ public class CmsSubmissionStatus {
      */
     public int getNumMoveUpPlaces() {
 
-        if (m_maxRegularSubmissions == null) {
+        if (m_maxRegularPlaces == null) {
             return 0;
         } else {
-            return m_maxRegularSubmissions.intValue() - getNumParticipants();
+            return m_maxRegularPlaces.intValue() - getNumParticipants();
         }
     }
 
@@ -131,7 +186,7 @@ public class CmsSubmissionStatus {
 
     /**
      * Returns the number of regular participants, either registered via a regular submission or moved up from the
-     * waitlist.
+     * waitlist, or manually set "other" submissions.
      * @return the number of regular participants
      */
     public int getNumParticipants() {
@@ -147,8 +202,8 @@ public class CmsSubmissionStatus {
      */
     public Integer getNumRemainingRegularSubmissions() {
 
-        return m_maxRegularSubmissions != null
-        ? Integer.valueOf(Math.max(m_maxRegularSubmissions.intValue() - getNumTotalSubmissions(), 0))
+        return m_maxRegularPlaces != null
+        ? Integer.valueOf(Math.max(m_maxRegularPlaces.intValue() - getNumTotalSubmissions(), 0))
         : null;
     }
 
@@ -158,13 +213,10 @@ public class CmsSubmissionStatus {
      */
     public int getNumRemainingWaitlistSubmissions() {
 
-        if ((m_maxRegularSubmissions == null)
-            || ((m_maxRegularSubmissions.intValue() - getNumTotalSubmissions()) >= 0)) {
-            return m_maxWaitlistSubmissions;
+        if ((m_maxRegularPlaces == null) || ((m_maxRegularPlaces.intValue() - getNumTotalSubmissions()) >= 0)) {
+            return m_maxWaitlistPlaces;
         } else {
-            return Math.max(
-                0,
-                m_maxWaitlistSubmissions - (getNumTotalSubmissions() - m_maxRegularSubmissions.intValue()));
+            return Math.max(0, m_maxWaitlistPlaces - (getNumTotalSubmissions() - m_maxRegularPlaces.intValue()));
         }
     }
 
@@ -187,13 +239,40 @@ public class CmsSubmissionStatus {
     }
 
     /**
+     * Returns the list of participants, either registered via a regular submission or moved up from the waitlist.
+     * @return the list of participants, either registered via a regular submission or moved up from the waitlist
+     */
+    public List<CmsFormDataBean> getParticipants() {
+
+        return m_participants;
+    }
+
+    /**
+     * Returns the list of candidates currently waiting for a regular participant place.
+     * @return the list of candidates currently waiting for a regular participant place
+     */
+    public List<CmsFormDataBean> getWaitlistCandidates() {
+
+        return m_waitlistCandidates;
+    }
+
+    /**
      * Returns a flag, indicating that no submissions are possible anymore (not even on the waitlist).
      * @return a flag, indicating that no submissions are possible anymore (not even on the waitlist).
      */
     public boolean isFullyBooked() {
 
-        return (null != m_maxRegularSubmissions)
-            && ((m_maxRegularSubmissions.intValue() + m_maxWaitlistSubmissions) <= getNumTotalSubmissions());
+        return (null != m_maxRegularPlaces)
+            && ((m_maxRegularPlaces.intValue() + m_maxWaitlistPlaces) <= getNumTotalSubmissions());
+    }
+
+    /**
+     * Returns whether there is a unlimited number of participant places.
+     * @return whether there is a unlimited number of participant places
+     */
+    public boolean isHasUnlimitedPlaces() {
+
+        return m_maxRegularPlaces == null;
     }
 
     /**
@@ -202,15 +281,42 @@ public class CmsSubmissionStatus {
      */
     public boolean isOnlyWaitlist() {
 
-        return (null != m_maxRegularSubmissions)
-            && (m_maxRegularSubmissions.intValue() <= getNumTotalSubmissions())
+        return (null != m_maxRegularPlaces)
+            && (m_maxRegularPlaces.intValue() <= getNumTotalSubmissions())
             && !isFullyBooked();
     }
 
     /**
+     * Reads the resources with the submitted data that are cancelled (i.e. expired)
+     * @param ugcConfig ugcConfig the ugc configuration, containing information on  which data has to be read
+     * @throws CmsException thrown if reading the resources fails
+     */
+    private void readExpiredSubmissionResources(CmsUgcConfiguration ugcConfig) throws CmsException {
+
+        if (ugcConfig.getContentParentFolder() != null) {
+            List<CmsResource> resources = m_cms.readResources(
+                ugcConfig.getContentParentFolder(),
+                CmsResourceFilter.IGNORE_EXPIRATION.addRequireType(
+                    OpenCms.getResourceManager().getResourceType(ugcConfig.getResourceType())),
+                false);
+            if (resources != null) {
+                for (CmsResource resource : resources) {
+                    CmsFile file = m_cms.readFile(resource);
+                    CmsXmlContent content = CmsXmlContentFactory.unmarshal(m_cms, file);
+                    CmsFormDataBean bean = new CmsFormDataBean(content);
+                    if (!resource.getState().equals(CmsResourceState.STATE_DELETED)
+                        && resource.isExpired(System.currentTimeMillis())) {
+                        m_cancelledSubmissions.add(bean);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Reads the resources with the submitted data that are not cancelled (i.e. expired).
-     * @param ugcConfig the ugc configuration, containing information on  which data has to be read.
-     * @throws CmsException thrown if reading fails.
+     * @param ugcConfig the ugc configuration, containing information on  which data has to be read
+     * @throws CmsException thrown if reading the resources fails
      */
     private void readSubmissionResources(CmsUgcConfiguration ugcConfig) throws CmsException {
 
@@ -235,5 +341,4 @@ public class CmsSubmissionStatus {
             }
         }
     }
-
 }

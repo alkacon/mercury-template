@@ -17,6 +17,8 @@
             <xsd:element name="ConfirmationMailSent" type="OpenCmsBoolean" />
             <xsd:element name="RegistrationMailSent" type="OpenCmsBoolean" />
             <xsd:element name="WaitlistNotification" type="OpenCmsBoolean" />
+            <xsd:element name="MoveUpMailSent" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="CancelMailSent" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="WaitlistMoveUpDate" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Cancelled" type="OpenCmsBoolean" />
             <xsd:element name="TitleMapping" type="OpenCmsString" />
@@ -51,18 +53,32 @@
                 <Setting>
                     <PropertyName>ConfirmationMailSent</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.ConfirmationMailSent)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.ConfirmationMailSent.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>RegistrationMailSent</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.RegistrationMailSent)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.RegistrationMailSent.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>WaitlistNotification</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistNotification)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistNotification.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MoveUpMailSent</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.MoveUpMailSent)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.MoveUpMailSent.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>CancelMailSent</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.CancelMailSent)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.CancelMailSent.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>WaitlistMoveUpDate</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistMoveUpDate)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistMoveUpDate.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Cancelled</PropertyName>

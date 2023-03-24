@@ -183,7 +183,13 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 return false;
             }
             boolean mailSent = sendMail(bean, ACTION_CANCEL);
-            if (!mailSent) {
+            if (mailSent) {
+                boolean updated1 = updateContent(clone, content, CmsFormDataBean.PATH_CANCEL_MAIL_SENT, "true");
+                if (!updated1) {
+                    setError(ERROR_INTERNAL);
+                    return false;
+                }
+            } else {
                 setError(ERROR_SENDING_MAIL_FAILED);
                 return false;
             }
@@ -260,23 +266,24 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 setError(ERROR_ALREADY_FULLY_BOOKED);
                 return false;
             }
-            boolean updated1 = updateContent(clone, content, CmsFormDataBean.PATH_WAITLIST_NOTIFICATION, "false");
-            if (!updated1) {
-                setError(ERROR_INTERNAL);
-                return false;
-            }
             long now = (new Date()).getTime();
-            boolean updated2 = updateContent(
+            boolean updated1 = updateContent(
                 clone,
                 content,
                 CmsFormDataBean.PATH_WAITLIST_MOVE_UP_DATE,
                 String.valueOf(now));
-            if (!updated2) {
+            if (!updated1) {
                 setError(ERROR_INTERNAL);
                 return false;
             }
             boolean mailSent = sendMail(bean, ACTION_MOVEUP);
-            if (!mailSent) {
+            if (mailSent) {
+                boolean updated2 = updateContent(clone, content, CmsFormDataBean.PATH_MOVE_UP_MAIL_SENT, "true");
+                if (!updated2) {
+                    setError(ERROR_INTERNAL);
+                    return false;
+                }
+            } else {
                 setError(ERROR_SENDING_MAIL_FAILED);
                 return false;
             }
@@ -464,6 +471,7 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             }
         } catch (AddressException | EmailException e) {
             LOG.error(e.getLocalizedMessage(), e);
+            return false;
         }
         return true;
     }

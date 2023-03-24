@@ -53,21 +53,35 @@
 
         <table class="subelement submissions"><%----%>
         <tr><%----%>
-           <td><fmt:message key="msg.page.form.bookingstatus.submissions.label"/>:</td><%----%>
-           <td><%----%>
-                <c:choose>
-                <c:when test="${status.numTotalSubmissions == status.numFormSubmissions}">
-                     ${status.numTotalSubmissions}
-                </c:when>
-                <c:otherwise>
-                    <fmt:message key="msg.page.form.bookingstatus.submissions.status.3">
-                        <fmt:param>${status.numTotalSubmissions}</fmt:param>
-                        <fmt:param>${status.numFormSubmissions}</fmt:param>
-                        <fmt:param>${status.numOtherSubmissions}</fmt:param>
+            <td><fmt:message key="msg.page.form.bookingstatus.participant.label" />:</td><%----%>
+            <c:choose>
+            <c:when test="${status.hasUnlimitedPlaces}">
+                <td>${status.numParticipants} (<fmt:message key="msg.page.form.bookingstatus.places.unlimited" />)</td><%----%>
+            </c:when>
+            <c:otherwise>
+                <td><%----%>
+                    <fmt:message key="msg.page.form.submissions.overview">
+                        <fmt:param>${status.numParticipants}</fmt:param>
+                        <fmt:param>${status.maxRegularPlaces}</fmt:param>
                     </fmt:message>
-                </c:otherwise>
-                </c:choose>
-           </td><%----%>
+                </td><%----%>
+            </c:otherwise>
+            </c:choose>
+        </tr><%----%>
+        <c:if test="${not status.hasUnlimitedPlaces}">
+        <tr><%----%>
+            <td><fmt:message key="msg.page.form.bookingstatus.waitlist.label" />:</td><%----%>
+            <td><%----%>
+                <fmt:message key="msg.page.form.submissions.overview">
+                    <fmt:param>${status.numWaitlistCandidates}</fmt:param>
+                    <fmt:param>${status.maxWaitlistPlaces}</fmt:param>
+                </fmt:message>
+            </td><%----%>
+        </tr><%----%>
+        </c:if>
+        <tr><%----%>
+            <td><fmt:message key="msg.page.form.bookingstatus.cancelledSubmissions.label" />:</td><%----%>
+            <td>${status.numCancelledSubmissions}</td><%----%>
         </tr><%----%>
 
         <c:if test="${formBookingHasFinalRegistrationDate}">
@@ -76,111 +90,25 @@
                <td>${formBookingFinalRegistrationDateStr}</td><%----%>
             </tr><%----%>
         </c:if>
-
-        <tr><%----%>
-           <td><fmt:message key="msg.page.form.bookingstatus.places.label"/>:</td><%----%>
-           <td><%----%>
-                <c:choose>
-                <c:when test="${empty status.maxRegularSubmissions}">
-                     <fmt:message key="msg.page.form.bookingstatus.places.unlimited"/>
-                </c:when>
-                <c:otherwise>
-                    <c:choose>
-                    <c:when test="${status.maxWaitlistSubmissions == 0}">
-                        <fmt:message key="msg.page.form.bookingstatus.maxsubmission.nowaitlist.1">
-                            <fmt:param>${status.maxRegularSubmissions}</fmt:param>
-                        </fmt:message>
-                    </c:when>
-                    <c:otherwise>
-                        <fmt:message key="msg.page.form.bookingstatus.maxsubmission.waitlist.2">
-                            <fmt:param>${status.maxRegularSubmissions}</fmt:param>
-                            <fmt:param>${status.maxWaitlistSubmissions}</fmt:param>
-                        </fmt:message>
-                    </c:otherwise>
-                    </c:choose>
-                </c:otherwise>
-            </c:choose>
-           </td><%----%>
-        </tr><tr><%----%>
-        <td><fmt:message key="msg.page.form.bookingstatus.freeplaces.label"/>:</td><%----%>
-        <td><%----%>
-            <c:choose>
-            <c:when test="${status.fullyBooked}">
-                <fmt:message key="msg.page.form.bookingstatus.fullybooked"/>
-            </c:when>
-            <c:when test="${status.onlyWaitlist}">
-                <fmt:message key="msg.page.form.bookingstatus.onlywaitlist.1">
-                    <fmt:param>${status.numRemainingWaitlistSubmissions}</fmt:param>
-                </fmt:message>
-            </c:when>
-            <c:otherwise>
-                <c:choose>
-                <c:when test="${status.maxWaitlistSubmissions == 0}">
-                    <fmt:message key="msg.page.form.bookingstatus.remainingsubmissions.nowaitlist.1">
-                        <fmt:param>${status.numRemainingRegularSubmissions}</fmt:param>
-                    </fmt:message>
-                </c:when>
-                <c:otherwise>
-                    <fmt:message key="msg.page.form.bookingstatus.remainingsubmissions.waitlist.2">
-                        <fmt:param>${status.numRemainingRegularSubmissions}</fmt:param>
-                        <fmt:param>${status.numRemainingWaitlistSubmissions}</fmt:param>
-                    </fmt:message>
-                </c:otherwise>
-                </c:choose>
-            </c:otherwise>
-            </c:choose>
-        </td><%----%>
-        </tr><%----%>
         </table><%----%>
+        <mercury:nl />
+        <c:if test="${status.numMoveUpPlaces gt 0 and status.numWaitlistCandidates gt 0}">
+            <div class="subelement oct-meta-info severe box"><%----%>
+                <fmt:message key="msg.page.bookingmanage.info.moveupcandidates">
+                    <fmt:param>${status.numMoveUpPlaces}</fmt:param>
+                </fmt:message>
+            </div><%----%>
+        </c:if>
+        <c:if test="${status.fullyBooked}">
+            <div class="subelement oct-meta-info severe"><%----%>
+                <fmt:message key="msg.page.form.remaining.places.none" /><%----%>
+            </div><%----%>
+        </c:if>
 
         <c:if test="${not empty form.submissions}">
 
-            <div class="row"><%----%>
-                <div class="col-sm-6"><%----%>
-                    <c:set var="id"><mercury:idgen prefix="wf" uuid="${cms.element.id}" /></c:set>
-                    <h3><fmt:message key="msg.page.form.bookingstatus.submissiondata.heading"/></h3><%----%>
-                </div><%----%>
-                <div class="col-sm-6"><%----%>
-                    <div class="subelement clearfix"><%----%>
-                        <c:set var="formId">${formXml.file.structureId}</c:set>
-                        <c:set var="bookingId">${formBookingXml.file.structureId}</c:set>
-                        <c:set var="csvLink">/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}</c:set>
-                        <c:set var="excelLink">/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}</c:set>
-                        <c:set var="csvExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.csv']}" />
-                        <c:set var="excelExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
-                        <div class="pull-right"><%----%>
-                            <small class="mr-5">
-                                <fmt:message key="msg.page.form.label.submissions.export" />
-                            </small><%----%>
-                            <c:set var="link"><cms:link>${csvLink}</cms:link></c:set>
-                            <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
-                                <fmt:message key="msg.page.form.button.submissions.csv" />
-                            </mercury:link><%----%>
-                            <c:set var="link"><cms:link>${excelLink}</cms:link></c:set>
-                            <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
-                                <fmt:message key="msg.page.form.button.submissions.excel" />
-                            </mercury:link><%----%>
-                            <c:if test="${not empty csvExportConfig}">
-                                <c:set var="csvExportBean" value="${fn:substringBefore(csvExportConfig, ':')}" />
-                                <c:set var="csvExportLabel" value="${fn:substringAfter(csvExportConfig, ':')}" />
-                                <c:set var="additionalCsvLink" value="${csvLink}&exportBean=${csvExportBean}" />
-                                <c:set var="link"><cms:link>${additionalCsvLink}</cms:link></c:set>
-                                <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${csvExportLabel}</mercury:link><%----%>
-                            </c:if>
-                            <c:if test="${not empty excelExportConfig}">
-                                <c:set var="excelExportBean" value="${fn:substringBefore(excelExportConfig, ':')}" />
-                                <c:set var="excelExportLabel" value="${fn:substringAfter(excelExportConfig, ':')}" />
-                                <c:set var="additionaExcelLink" value="${excelLink}&exportBean=${excelExportBean}" />
-                                <c:set var="link"><cms:link>${additionaExcelLink}</cms:link></c:set>
-                                <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${excelExportLabel}</mercury:link><%----%>
-                            </c:if>
-                        </div><%----%>
-                    </div><%----%>
-                    <mercury:nl />
-                </div><%----%>
-            </div><%----%>
-            <mercury:nl />
-            <c:if test="${not empty param.action and not empty param.uuid}">
+            <c:choose>
+            <c:when test="${not empty param.action and not empty param.uuid}">
                 <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" />
                 <mercury:icalendar-vars content="${formBookingXml}">
                 ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
@@ -206,21 +134,128 @@
                         </div><%----%>
                     </c:when>
                 </c:choose>
-            </c:if>
-            <mercury:nl />
-            <div class=list-box><%----%>
-                <div class="list-entries accordion-items" id="${id}"><%----%>
-                    <c:forEach var="submission" items="${form.submissions}" varStatus="stat">
-                        <cms:display value="${submission.structureId}" editable="true" delete="true">
-                           <cms:param name="index" value="${stat.index}"/>
-                           <cms:param name="id" value="${id}" />
-                           <cms:param name="fullyBooked" value="${status.fullyBooked}" />
-                        </cms:display>
-                    </c:forEach>
+                <div class="subelement"><%----%>
+                    <a class="btn btn-block oct-meta-info" href="<cms:link>${adminLink}?formmanage=${param.formmanage}</cms:link>"><%----%>
+                        <fmt:message key="msg.page.form.button.submissions.manage" />
+                    </a><%----%>
+                </div><%----%>
+            </c:when>
+            <c:otherwise>
+            <c:set var="id1"><mercury:idgen prefix="wf1" uuid="${cms.element.id}" /></c:set>
+            <div class="subelement"><%----%>
+                <h3><%----%>
+                    <c:choose>
+                        <c:when test="${status.hasUnlimitedPlaces}">
+                            <fmt:message key="msg.page.form.bookingstatus.participant.label" /> (${status.numParticipants})<%----%>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message key="msg.page.form.bookingstatus.participant.label" /> (${status.numParticipants}/${status.maxRegularPlaces})<%----%>
+                        </c:otherwise>
+                    </c:choose>
+                </h3><%----%>
+                <div class=list-box><%----%>
+                    <div class="list-entries accordion-items" id="${id1}"><%----%>
+                        <c:forEach var="dataBean" items="${status.participants}" varStatus="stat">
+                            <cms:display value="${dataBean.file.structureId}" editable="true" delete="true">
+                               <cms:param name="index" value="${stat.index}"/>
+                               <cms:param name="id" value="${id1}" />
+                               <cms:param name="fullyBooked" value="${status.fullyBooked}" />
+                               <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                            </cms:display>
+                        </c:forEach>
+                        <c:forEach var="otherParticipant" begin="1" end="${status.numOtherSubmissions}">
+                            <div class="accordion"><%----%>
+                                <div class="acco-header"><%----%>
+                                    <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${id1}" href="#other${id1}${otherParticipant}"><%----%>
+                                        <div><fmt:message key="msg.page.form.bookingstatus.reservedplace.label" /></div><%----%>
+                                    </a><%----%>
+                                </div><%----%>
+                                <div id="other${id1}${otherParticipant}" class="acco-body collapse" data-bs-parent="#${id1}"><%----%>
+                                    <fmt:message key="msg.page.bookingmanage.info.reservedplace" /><%----%>
+                                </div><%----%>
+                            </div><%----%>
+                        </c:forEach>
+                    </div><%----%>
                 </div><%----%>
             </div><%----%>
             <mercury:nl />
-
+            
+            <c:if test="${status.numWaitlistCandidates gt 0}">
+                <c:set var="id2"><mercury:idgen prefix="wf2" uuid="${cms.element.id}" /></c:set>
+                <div class="subelement"><%----%>
+                    <h3><fmt:message key="msg.page.form.bookingstatus.waitlist.label" /> (${status.numWaitlistCandidates}/${status.maxWaitlistPlaces})</h3><%----%>
+                    <div class=list-box><%----%>
+                        <div class="list-entries accordion-items" id="${id2}"><%----%>
+                            <c:forEach var="dataBean" items="${status.waitlistCandidates}" varStatus="stat">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="true">
+                                   <cms:param name="index" value="${stat.index}"/>
+                                   <cms:param name="id" value="${id2}" />
+                                   <cms:param name="fullyBooked" value="${status.fullyBooked}" />
+                                   <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                                </cms:display>
+                            </c:forEach>
+                        </div><%----%>
+                    </div><%----%>
+                </div>
+            </c:if>
+            <c:if test="${status.numCancelledSubmissions gt 0}">
+                <c:set var="id3"><mercury:idgen prefix="wf3" uuid="${cms.element.id}" /></c:set>
+                <div class="subelement"><%----%>
+                    <h3><fmt:message key="msg.page.form.bookingstatus.cancelledSubmissions.label" /> (${status.numCancelledSubmissions})</h3><%----%>
+                    <div class=list-box><%----%>
+                        <div class="list-entries accordion-items" id="${id3}"><%----%>
+                            <c:forEach var="dataBean" items="${status.cancelledSubmissions}" varStatus="stat">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="true">
+                                   <cms:param name="index" value="${stat.index}"/>
+                                   <cms:param name="id" value="${id3}" />
+                                   <cms:param name="fullyBooked" value="${status.fullyBooked}" />
+                                   <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                                </cms:display>
+                            </c:forEach>
+                        </div><%----%>
+                    </div><%----%>
+               </div><%----%>
+           </c:if>
+           <mercury:nl />
+           <div class="subelement"><%----%>
+               <h3><fmt:message key="msg.page.form.bookingstatus.export.label" /></h3><%----%>
+               <c:set var="formId">${formXml.file.structureId}</c:set>
+               <c:set var="bookingId">${formBookingXml.file.structureId}</c:set>
+               <c:set var="csvLink">/system/modules/alkacon.mercury.webform/elements/formdata.csv?f=${formId}&b=${bookingId}&__locale=${cms.locale}</c:set>
+               <c:set var="excelLink">/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}</c:set>
+               <c:set var="csvExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.csv']}" />
+               <c:set var="excelExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
+               <div class="pull-right"><%----%>
+                   <span class="mr-5"><%----%>
+                       <fmt:message key="msg.page.form.label.submissions.export" />
+                   </span><%----%>
+                   <c:set var="link"><cms:link>${csvLink}</cms:link></c:set>
+                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
+                       <fmt:message key="msg.page.form.button.submissions.csv" />
+                   </mercury:link><%----%>
+                   <c:set var="link"><cms:link>${excelLink}</cms:link></c:set>
+                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
+                       <fmt:message key="msg.page.form.button.submissions.excel" />
+                   </mercury:link><%----%>
+                   <c:if test="${not empty csvExportConfig}">
+                       <c:set var="csvExportBean" value="${fn:substringBefore(csvExportConfig, ':')}" />
+                       <c:set var="csvExportLabel" value="${fn:substringAfter(csvExportConfig, ':')}" />
+                       <c:set var="additionalCsvLink" value="${csvLink}&exportBean=${csvExportBean}" />
+                       <c:set var="link"><cms:link>${additionalCsvLink}</cms:link></c:set>
+                       <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${csvExportLabel}</mercury:link><%----%>
+                   </c:if>
+                   <c:if test="${not empty excelExportConfig}">
+                       <c:set var="excelExportBean" value="${fn:substringBefore(excelExportConfig, ':')}" />
+                       <c:set var="excelExportLabel" value="${fn:substringAfter(excelExportConfig, ':')}" />
+                       <c:set var="additionaExcelLink" value="${excelLink}&exportBean=${excelExportBean}" />
+                       <c:set var="link"><cms:link>${additionaExcelLink}</cms:link></c:set>
+                       <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${excelExportLabel}</mercury:link><%----%>
+                   </c:if>
+               </div><%----%>
+            </div><%----%>
+            <mercury:nl />
+            </c:otherwise>
+            </c:choose>
         </c:if>
     </div><%----%>
     <mercury:nl />

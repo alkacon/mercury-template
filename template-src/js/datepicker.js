@@ -34,13 +34,14 @@ export function init() {
         }
     }
 
-    if (DEBUG) console.info("DatePicker.init()");
+    if (Mercury.debug()) console.info("DatePicker.init()");
 
     const datepickers = document.querySelectorAll(".datepicker");
-    if (DEBUG) console.info("DatePicker.init() .datepicker elements found: " + datepickers.length);
+    if (Mercury.debug()) console.info("DatePicker.init() .datepicker elements found: " + datepickers.length);
 
     datepickers.forEach(function(datepicker) {
-        const config = JSON.parse(datepicker.dataset["datepicker"]);
-        flatpickr(datepicker, config);
+        const config = datepicker.dataset["datepicker"] ? datepicker.dataset["datepicker"] : "{}";
+        if (Mercury.debug()) console.info("DatePicker config: " + config);
+        flatpickr(datepicker, JSON.parse(config));
     });
 }

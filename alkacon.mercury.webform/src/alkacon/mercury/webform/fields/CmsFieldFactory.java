@@ -81,6 +81,9 @@ public final class CmsFieldFactory {
         registerFieldType(CmsSelectionField.getStaticType(), CmsSelectionField.class.getName());
         registerFieldType(CmsEmailSelectionField.getStaticType(), CmsEmailSelectionField.class.getName());
         registerFieldType(CmsTextField.getStaticType(), CmsTextField.class.getName());
+        registerFieldType(CmsDateField.getStaticType(), CmsDateField.class.getName());
+        registerFieldType(CmsTimeField.getStaticType(), CmsTimeField.class.getName());
+        registerFieldType(CmsDateTimeField.getStaticType(), CmsDateTimeField.class.getName());
         registerFieldType(CmsTextareaField.getStaticType(), CmsTextareaField.class.getName());
         registerFieldType(CmsEmptyField.getStaticType(), CmsEmptyField.class.getName());
         registerFieldType(CmsPrivacyField.getStaticType(), CmsPrivacyField.class.getName());

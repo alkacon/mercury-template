@@ -21,7 +21,7 @@
     </FormConfirmation>
     <FormCaptcha>
       <FieldLabel><![CDATA[Captcha als Sicherheitsoption]]></FieldLabel>
-      <Preset><![CDATA[/system/modules/org.opencms.apollo.template.webform/captcha/alkacon-dict-de.captchapreset]]></Preset>
+      <Preset><![CDATA[/system/modules/alkacon.mercury.webform/captcha/alkacon-dict-de.captchapreset]]></Preset>
     </FormCaptcha>
     <OptionalFormConfiguration>
       <ShowCheck>true</ShowCheck>
@@ -67,6 +67,12 @@
       <FieldLabel><![CDATA[Checkbox (multiple)]]></FieldLabel>
       <FieldMandatory>false</FieldMandatory>
       <FieldDefault><![CDATA[confirm1:Ich habe dies ausgewählt|confirm2*:Ich habe das ausgewählt|confirm3*:Ich habe was anderes ausgewählt]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[datetime]]></FieldType>
+      <FieldLabel><![CDATA[Datum und Uhrzeit]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=calendar|position=append|placeholder=Bitte wählen Sie Datum und Uhrzeit aus]]></FieldParams>
     </InputField>
     <InputField>
       <FieldType><![CDATA[paging]]></FieldType>
@@ -300,6 +306,12 @@
       <FieldLabel><![CDATA[Checkbox (multiple)]]></FieldLabel>
       <FieldMandatory>false</FieldMandatory>
       <FieldDefault><![CDATA[confirm1:I have checked this|confirm2*:I have checked that|confirm3*:I have checked either|confirm4:I have checked nothing]]></FieldDefault>
+    </InputField>
+    <InputField>
+      <FieldType><![CDATA[datetime]]></FieldType>
+      <FieldLabel><![CDATA[Date and time]]></FieldLabel>
+      <FieldMandatory>false</FieldMandatory>
+      <FieldParams><![CDATA[icon=calendar|position=append|placeholder=Please select a date and time]]></FieldParams>
     </InputField>
     <InputField>
       <FieldType><![CDATA[paging]]></FieldType>

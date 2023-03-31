@@ -44,6 +44,9 @@
                         email:${key.form.field.type.email}|
                         empty:${key.form.field.type.empty}|
                         password:${key.form.field.type.password}|
+                        date:${key.form.field.type.date}|
+                        time:${key.form.field.type.time}|
+                        datetime:${key.form.field.type.datetime}|
                         paging:${key.form.field.type.paging}|
                         parameter:${key.form.field.type.parameter}|
                         email_select:${key.form.field.type.email_select}

@@ -36,9 +36,6 @@
                     <Mapping>
                         <MapTo>property:Title</MapTo>
                     </Mapping>
-                    <Mapping>
-                        <MapTo>urlName</MapTo>
-                    </Mapping>
                 </Setting>
                 <Setting>
                     <PropertyName>Root</PropertyName>

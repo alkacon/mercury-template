@@ -96,10 +96,6 @@
                        <MapTo>property:Title</MapTo>
                        <UseDefault>true</UseDefault>
                     </Mapping>
-                    <Mapping>
-                        <MapTo>urlName</MapTo>
-                        <UseDefault>true</UseDefault>
-                    </Mapping>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

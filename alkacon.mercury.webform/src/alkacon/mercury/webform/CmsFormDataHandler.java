@@ -184,7 +184,8 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             }
             boolean mailSent = sendMail(bean, ACTION_CANCEL);
             if (mailSent) {
-                boolean updated1 = updateContent(clone, content, CmsFormDataBean.PATH_CANCEL_MAIL_SENT, "true");
+                String sent = String.valueOf(m_formHandler.getFormConfiguration().isConfirmationMailEnabled());
+                boolean updated1 = updateContent(clone, content, CmsFormDataBean.PATH_CANCEL_MAIL_SENT, sent);
                 if (!updated1) {
                     setError(ERROR_INTERNAL);
                     return false;
@@ -278,6 +279,7 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             }
             boolean mailSent = sendMail(bean, ACTION_MOVEUP);
             if (mailSent) {
+                String sent = String.valueOf(m_formHandler.getFormConfiguration().isConfirmationMailEnabled());
                 boolean updated2 = updateContent(clone, content, CmsFormDataBean.PATH_MOVE_UP_MAIL_SENT, "true");
                 if (!updated2) {
                     setError(ERROR_INTERNAL);

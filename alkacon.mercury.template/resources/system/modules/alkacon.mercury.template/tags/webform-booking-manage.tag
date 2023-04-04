@@ -100,16 +100,16 @@
             </div><%----%>
         </c:if>
         <c:if test="${status.fullyBooked}">
-            <div class="subelement oct-meta-info severe"><%----%>
+            <div class="subelement oct-meta-info severe box"><%----%>
                 <fmt:message key="msg.page.form.remaining.places.none" /><%----%>
             </div><%----%>
         </c:if>
 
         <c:if test="${not empty form.submissions}">
 
+            <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" />
             <c:choose>
             <c:when test="${not empty param.action and not empty param.uuid}">
-                <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" />
                 <mercury:icalendar-vars content="${formBookingXml}">
                 ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
                 </mercury:icalendar-vars>
@@ -161,6 +161,7 @@
                                <cms:param name="id" value="${id1}" />
                                <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                               <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
                             </cms:display>
                         </c:forEach>
                         <c:forEach var="otherParticipant" begin="1" end="${status.numOtherSubmissions}">
@@ -192,6 +193,7 @@
                                    <cms:param name="id" value="${id2}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                    <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                                   <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>
@@ -210,6 +212,7 @@
                                    <cms:param name="id" value="${id3}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                    <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                                   <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>

@@ -74,6 +74,11 @@
                         <form method="dialog"><%----%>
                             <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
                             <div><fmt:message key="msg.page.form.submission.ask.cancel"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                            <c:if test="${param.confirmationMailEnabled eq 'false'}">
+                                <div class="subelement oct-meta-info box">
+                                    <fmt:message key="msg.page.form.submission.confirmationmail.not.enabled" />
+                                </div>
+                            </c:if>
                             <div class="buttons"><%----%>
                                 <button value="cancel" class="btn"><%----%>
                                     <fmt:message key="msg.page.form.submission.dialog.cancel" />
@@ -94,6 +99,11 @@
                         <form method="dialog"><%----%>
                             <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3>
                             <div><fmt:message key="msg.page.form.submission.ask.add"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                            <c:if test="${param.confirmationMailEnabled eq 'false'}">
+                                <div class="subelement oct-meta-info box">
+                                    <fmt:message key="msg.page.form.submission.confirmationmail.not.enabled" />
+                                </div>
+                            </c:if>
                             <div class="buttons"><%----%>
                                 <button value="cancel" class="btn"><%----%>
                                     <fmt:message key="msg.page.form.submission.dialog.cancel" />

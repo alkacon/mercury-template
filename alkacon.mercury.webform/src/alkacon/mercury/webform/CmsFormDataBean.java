@@ -85,25 +85,28 @@ public class CmsFormDataBean {
     /** The resolved title. */
     private String m_title;
 
-    /** Flag, indicating if the registration was cancelled. */
+    /** Whether this submission is in cancelled state. */
     private Boolean m_isCancelled;
 
-    /** Flag, indicating if the registration was for the waitlist. */
+    /** Whether this submission is in waitlist state. */
     private Boolean m_isWaitlist;
 
-    /** Flag, indicating if a confirmation mail is sent. */
+    /** Whether this submission is in waitlist moved-up state. */
+    private Boolean m_isWaitlistMovedUp;
+
+    /** Whether a confirmation mail was sent. */
     private Boolean m_isConfirmationMailSent;
 
-    /** Flag, indicating if a registration mail is sent. */
+    /** Whether a registration mail was sent. */
     private Boolean m_isRegistrationMailSent;
 
-    /** Flag, indicating if a waitlist notification mail is sent. */
-    private Boolean m_isWaitlistNotificationSent;
+    /** Whether a waitlist notification mail was sent. */
+    private Boolean m_isWaitlistNotification;
 
-    /** Flag, indicating if a move-up mail is sent. */
+    /** Whether a move-up mail was sent. */
     private Boolean m_isMoveUpMailSent;
 
-    /** Flag, indicating if a cancel mail is sent. */
+    /** Whether a cancel mail was sent. */
     private Boolean m_isCancelMailSent;
 
     /**
@@ -220,8 +223,8 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns a flag, indicating if the submission/registration was cancelled.
-     * @return a flag, indicating if the submission/registration was cancelled.
+     * Returns whether this submission is in cancelled state.
+     * @return whether this submission is in cancelled state
      */
     public boolean isCancelled() {
 
@@ -233,8 +236,8 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns a flag, indicating if a cancel mail was sent.
-     * @return a flag, indicating if a cancel mail was sent.
+     * Whether a cancel mail was sent.
+     * @return whether a cancel mail was sent
      */
     public boolean isCancelMailSent() {
 
@@ -262,8 +265,8 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns a flag, indicating if a confirmation mail was sent.
-     * @return a flag, indicating if a confirmation mail was sent.
+     * Whether a confirmation mail was sent.
+     * @return whether a confirmation mail was sent
      */
     public boolean isConfirmationMailSent() {
 
@@ -277,8 +280,8 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns a flag, indicating if a move-up mail was sent.
-     * @return a flag, indicating if a move-up mail was sent.
+     * Whether a move-up mail was sent.
+     * @return whether a move-up mail was sent
      */
     public boolean isMoveUpMailSent() {
 
@@ -294,28 +297,29 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns a flag, indicating if a confirmation mail was sent.
-     * @return a flag, indicating if a confirmation mail was sent.
+     * Whether a registration mail was sent. This is the case if the confirmation mail flag is true and
+     * the waitlist notification flag is false.
+     * @return whether a registration mail was sent
      */
     public boolean isRegistrationMailSent() {
 
-        if (null == m_isRegistrationMailSent) {
-            I_CmsXmlContentValue value = m_content.getValue(
-                PATH_REGISTRATION_MAIL_SENT,
-                CmsLocaleManager.MASTER_LOCALE);
-            m_isRegistrationMailSent = Boolean.valueOf(value.getStringValue(null));
+        if (m_isWaitlistNotification == null) {
+            I_CmsXmlContentValue value = m_content.getValue(PATH_WAITLIST_NOTIFICATION, CmsLocaleManager.MASTER_LOCALE);
+            m_isWaitlistNotification = Boolean.valueOf(value.getStringValue(null));
         }
         return m_isRegistrationMailSent.booleanValue();
     }
 
     /**
-     * Returns a flag, indicating if this is a waitlist candidate.
-     * @return a flag, indicating if this is a waitlist candidate
+     * Whether this submission is in waitlist state.
+     * @return whether this submission is in waitlist state
      */
     public boolean isWaitlist() {
 
         if (null == m_isWaitlist) {
-            if (isWaitlistMovedUp()) {
+            if (isCancelled()) {
+                m_isWaitlist = Boolean.FALSE;
+            } else if (isWaitlistMovedUp()) {
                 m_isWaitlist = Boolean.FALSE;
             } else {
                 I_CmsXmlContentValue value = m_content.getValue(
@@ -328,25 +332,35 @@ public class CmsFormDataBean {
     }
 
     /**
-     * Returns a flag, indicating if the user was moved up from the wait list.
-     * @return a flag, indicating if the user was moved up from the wait list
+     * Whether this submission is in waitlist moved-up state.
+     * @return whether this submission is in waitlist moved-up state
      */
     public boolean isWaitlistMovedUp() {
 
-        return m_content.getValue(PATH_WAITLIST_MOVE_UP_DATE, CmsLocaleManager.MASTER_LOCALE) != null;
+        if (m_isWaitlistMovedUp == null) {
+            if (isCancelled()) {
+                m_isWaitlistMovedUp = Boolean.FALSE;
+            } else if (m_content.getValue(PATH_WAITLIST_MOVE_UP_DATE, CmsLocaleManager.MASTER_LOCALE) != null) {
+                m_isWaitlistMovedUp = Boolean.TRUE;
+            } else {
+                m_isWaitlistMovedUp = Boolean.FALSE;
+            }
+        }
+        return m_isWaitlistMovedUp.booleanValue();
     }
 
     /**
-     * Returns a flag, indicating if a waitlist notification mail was sent.
-     * @return a flag, indicating if a waitlist notification mail was sent
+     * Whether a waitlist notification mail was sent. This is the case if the confirmation mail flag is true
+     * and the waitlist notification flag is true.
+     * @return whether a waitlist notification mail was sent
      */
     public boolean isWaitlistNotificationSent() {
 
-        if (null == m_isWaitlistNotificationSent) {
+        if (m_isWaitlistNotification == null) {
             I_CmsXmlContentValue value = m_content.getValue(PATH_WAITLIST_NOTIFICATION, CmsLocaleManager.MASTER_LOCALE);
-            m_isWaitlistNotificationSent = Boolean.valueOf(value.getStringValue(null));
+            m_isWaitlistNotification = Boolean.valueOf(value.getStringValue(null));
         }
-        return m_isWaitlistNotificationSent.booleanValue();
+        return isConfirmationMailSent() && m_isWaitlistNotification.booleanValue();
     }
 
     /**

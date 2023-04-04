@@ -205,7 +205,7 @@
     </mercury:piece>
 
     <c:if test="${showCosts}"><%----%>
-        <div class="detail-content event-costs"><%----%>
+        <div class="detail-content event-costs pivot"><%----%>
 
             <fmt:message key="msg.page.event.costs" var="costHeading" />
             <mercury:heading level="${hsize+1}" text="${costHeading}" css="ev-cost-heading" />

@@ -619,7 +619,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
      */
     private void writeEventInformation(A_CmsWriter writer) {
 
-        if (!m_exportConfigEventInformation) {
+        if (!m_exportConfigEventInformation || (m_eventContent == null)) {
             return;
         }
         writeHeadline(writer);

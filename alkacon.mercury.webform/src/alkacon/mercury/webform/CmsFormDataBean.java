@@ -303,9 +303,11 @@ public class CmsFormDataBean {
      */
     public boolean isRegistrationMailSent() {
 
-        if (m_isWaitlistNotification == null) {
+        if ((m_isWaitlistNotification == null) || (m_isRegistrationMailSent == null)) {
             I_CmsXmlContentValue value = m_content.getValue(PATH_WAITLIST_NOTIFICATION, CmsLocaleManager.MASTER_LOCALE);
             m_isWaitlistNotification = Boolean.valueOf(value.getStringValue(null));
+            m_isRegistrationMailSent = Boolean.valueOf(
+                (isConfirmationMailSent() == true) && (m_isWaitlistNotification == Boolean.FALSE));
         }
         return m_isRegistrationMailSent.booleanValue();
     }

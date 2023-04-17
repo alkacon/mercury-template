@@ -83,7 +83,7 @@
     </c:if>
 
     <mercury:nl />
-    <div class="element type-list-filter ${cssWrapper}" <%--
+    <div class="element type-list-filter pivot ${cssWrapper}" <%--
     --%>id="${filterId}" <%--
     --%>data-id="${elementId}" <%--
     --%>data-filter='{<%--
@@ -454,7 +454,7 @@
             </div><%----%>
             <mercury:nl />
         </c:if>
-        
+
         <c:if test="${showDirectLink}">
             <div class="directlink"><%----%>
                 <mercury:link link="${cms.requestContext.uri}" css="btn btn-block oct-meta-info external" newWin="${true}">

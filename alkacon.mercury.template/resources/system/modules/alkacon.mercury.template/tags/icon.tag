@@ -44,15 +44,23 @@
 
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
-<c:set var="selectedIcons"  value="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
-<c:set var="noInline"       value="${fn:startsWith(icon, 'no-')}" />
-<c:set var="inline"         value="${inline and selectedIcons and (not noInline)}" />
+<c:set var="isBootstrap"    value="${fn:startsWith(icon, 'bi-')}" />
 
+<c:choose>
+    <c:when test="${isBootstrap}">
+        <c:set var="inline"         value="${true}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="selectedIcons"  value="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
+        <c:set var="noInline"       value="${fn:startsWith(icon, 'no-')}" />
+        <c:set var="inline"         value="${inline and selectedIcons and (not noInline)}" />
+    </c:otherwise>
+</c:choose>
 
 <c:choose>
     <c:when test="${inline}">
         <c:choose>
-            <c:when test="${fn:startsWith(icon, 'bi-')}">
+            <c:when test="${isBootstrap}">
                 <c:set var="iconFile" value="${fn:substringAfter(icon, 'bi-')}" />
                 <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/bi/${iconFile}.svg" />
                 <c:set var="iconName" value="ico-${icon}" />
@@ -86,6 +94,7 @@
     </c:otherwise>
 </c:choose>
 
+<!-- isBooststrap: ${isBootstrap} - iconPath: ${iconPath} -->
 <${tag}${' '}<%--
 --%>${empty attrWrapper ? '' : attrWrapper.concat(' ')}<%--
 --%>class="<c:out value="${empty cssWrapper ? '' : cssWrapper.concat(' ')}${iconClass}" escapeXml="${true}" />"<%--

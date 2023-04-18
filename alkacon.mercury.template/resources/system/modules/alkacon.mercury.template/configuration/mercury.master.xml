@@ -931,6 +931,12 @@
       <DisplayName><![CDATA[%(key.msg.property.mercury.theme)]]></DisplayName>
       <Widget><![CDATA[string]]></Widget>
     </Property>
+    <AttributeEditorConfig>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/public-sitemap-attributes.xml]]></target>
+        <uuid>82958d53-bfdd-11ed-9f05-0242ac11002b</uuid>
+      </link>
+    </AttributeEditorConfig>
     <Attribute>
       <Key><![CDATA[template.variant]]></Key>
       <Value><![CDATA[default]]></Value>

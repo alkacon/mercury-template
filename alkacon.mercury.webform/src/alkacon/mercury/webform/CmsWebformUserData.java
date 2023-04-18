@@ -99,7 +99,6 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.configuration.I_CmsConfigurationParameterHandler#addConfigurationParameter(java.lang.String, java.lang.String)
      */
-    @Override
     public void addConfigurationParameter(String paramName, String paramValue) {
 
         m_config.add(paramName, paramValue);
@@ -108,7 +107,6 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#appendInfoHtml(org.opencms.file.CmsObject, org.opencms.jsp.userdata.CmsUserDataRequestType, java.util.List, org.jsoup.nodes.Element)
      */
-    @Override
     public void appendInfoHtml(CmsObject cms, CmsUserDataRequestType reqType, List<CmsUser> user, Element element) {
 
         // do nothing
@@ -117,7 +115,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#appendlInfoForEmail(org.opencms.file.CmsObject, java.lang.String, java.util.List, org.jsoup.nodes.Element)
      */
-    @Override
+
     public void appendlInfoForEmail(
         CmsObject currentCms,
         String emailParam,
@@ -167,7 +165,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.configuration.I_CmsConfigurationParameterHandler#getConfiguration()
      */
-    @Override
+
     public CmsParameterConfiguration getConfiguration() {
 
         return m_config;
@@ -176,7 +174,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.configuration.I_CmsConfigurationParameterHandler#initConfiguration()
      */
-    @Override
+
     public void initConfiguration() {
 
         // do nothing
@@ -185,7 +183,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#initialize(org.opencms.file.CmsObject)
      */
-    @Override
+
     public void initialize(CmsObject cms) {
 
         try {
@@ -200,7 +198,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#matchesUser(org.opencms.file.CmsObject, org.opencms.jsp.userdata.CmsUserDataRequestType, org.opencms.file.CmsUser)
      */
-    @Override
+
     public boolean matchesUser(CmsObject cms, CmsUserDataRequestType reqType, CmsUser user) {
 
         return false;

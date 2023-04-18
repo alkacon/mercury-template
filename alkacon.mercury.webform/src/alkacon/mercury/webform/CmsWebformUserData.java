@@ -41,6 +41,7 @@ import org.opencms.search.fields.CmsSearchField;
 import org.opencms.search.solr.CmsSolrIndex;
 import org.opencms.search.solr.CmsSolrQuery;
 import org.opencms.search.solr.CmsSolrResultList;
+import org.opencms.util.CmsStringUtil;
 import org.opencms.xml.CmsXmlUtils;
 import org.opencms.xml.content.CmsXmlContent;
 import org.opencms.xml.content.CmsXmlContentFactory;
@@ -59,6 +60,7 @@ import java.util.stream.Stream;
 
 import javax.mail.internet.InternetAddress;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 
 import org.jsoup.nodes.Element;
@@ -97,6 +99,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.configuration.I_CmsConfigurationParameterHandler#addConfigurationParameter(java.lang.String, java.lang.String)
      */
+    @Override
     public void addConfigurationParameter(String paramName, String paramValue) {
 
         m_config.add(paramName, paramValue);
@@ -105,35 +108,43 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#appendInfoHtml(org.opencms.file.CmsObject, org.opencms.jsp.userdata.CmsUserDataRequestType, java.util.List, org.jsoup.nodes.Element)
      */
+    @Override
     public void appendInfoHtml(CmsObject cms, CmsUserDataRequestType reqType, List<CmsUser> user, Element element) {
 
         // do nothing
     }
 
     /**
-     * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#appendlInfoForEmail(org.opencms.file.CmsObject, java.lang.String, org.jsoup.nodes.Element)
+     * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#appendlInfoForEmail(org.opencms.file.CmsObject, java.lang.String, java.util.List, org.jsoup.nodes.Element)
      */
-    public void appendlInfoForEmail(CmsObject currentCms, String email, Element element) {
+    @Override
+    public void appendlInfoForEmail(
+        CmsObject currentCms,
+        String emailParam,
+        List<String> searchStrings,
+        Element element) {
 
-        // prevent accidental matches on non-email fields for erroneous user inputs
-        try {
-            InternetAddress addr = new InternetAddress(email);
-            addr.validate();
-        } catch (Exception e) {
-            LOG.info(e.getLocalizedMessage(), e);
-            return;
+        final String email = CmsStringUtil.isEmptyOrWhitespaceOnly(emailParam) ? null : emailParam;
+        if (email != null) {
+            try {
+                InternetAddress addr = new InternetAddress(email);
+                addr.validate();
+            } catch (Exception e) {
+                LOG.info(e.getLocalizedMessage(), e);
+                return;
+            }
         }
 
         try {
             CmsObject cms = OpenCms.initCmsObject(m_cms);
             // search resources (offline)
-            Set<CmsResource> allResources = searchCandidateResourcesForEmail(email);
+            Set<CmsResource> allResources = searchCandidateResourcesForEmail(email, searchStrings);
             for (CmsResource resource : allResources) {
                 try {
                     // unmarshal resource (online)
                     CmsXmlContent content = CmsXmlContentFactory.unmarshal(cms, cms.readFile(resource));
                     Map<String, String> dataEntries = readValues(content);
-                    if (dataEntries.values().stream().anyMatch(val -> email.equals(val.trim()))) {
+                    if (matchContent(email, searchStrings, dataEntries)) {
                         String title = LogMessages.get().getBundle(currentCms.getRequestContext().getLocale()).key(
                             LogMessages.GUI_FORMDATA_HEADING_1,
                             content.getFile().getRootPath());
@@ -156,6 +167,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.configuration.I_CmsConfigurationParameterHandler#getConfiguration()
      */
+    @Override
     public CmsParameterConfiguration getConfiguration() {
 
         return m_config;
@@ -164,6 +176,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.configuration.I_CmsConfigurationParameterHandler#initConfiguration()
      */
+    @Override
     public void initConfiguration() {
 
         // do nothing
@@ -172,6 +185,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#initialize(org.opencms.file.CmsObject)
      */
+    @Override
     public void initialize(CmsObject cms) {
 
         try {
@@ -186,6 +200,7 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
     /**
      * @see org.opencms.jsp.userdata.I_CmsUserDataDomain#matchesUser(org.opencms.file.CmsObject, org.opencms.jsp.userdata.CmsUserDataRequestType, org.opencms.file.CmsUser)
      */
+    @Override
     public boolean matchesUser(CmsObject cms, CmsUserDataRequestType reqType, CmsUser user) {
 
         return false;
@@ -200,6 +215,30 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
 
         String typesStr = m_config.getString(PARAM_TYPES, DEFAULT_TYPES);
         return Stream.of(typesStr.split(",")).map(type -> type.trim()).collect(Collectors.toList());
+    }
+
+    /**
+     * Helper function to check if a content matches the given search parameters.
+     *
+     * @param email the email
+     * @param searchFilters the additional search strings
+     * @param dataValues the key-value pairs from the content
+     * @return true if the content matches the search parameters
+     */
+    private boolean matchContent(String email, List<String> searchFilters, Map<String, String> dataValues) {
+
+        // use exact match (minus whitespace) for email and substring match for all other search filters
+        if (email != null) {
+            if (dataValues.values().stream().anyMatch(val -> email.equals(val.trim()))) {
+                return true;
+            }
+        }
+        for (String searchString : searchFilters) {
+            if (!dataValues.values().stream().anyMatch(val -> StringUtils.containsIgnoreCase(val, searchString))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -238,32 +277,57 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
      * We filter out these false positives later.
      *
      * @param email the email address to search for
+     * @param searchStrings the other search strings
      * @return the set of resources which have been found
      * @throws Exception if something goes wrong
      */
-    private Set<CmsResource> searchCandidateResourcesForEmail(String email) throws Exception {
+    private Set<CmsResource> searchCandidateResourcesForEmail(String email, List<String> searchStrings)
+    throws Exception {
 
         CmsObject cms = OpenCms.initCmsObject(m_cms);
-        Map<String, String[]> params = new HashMap<>();
-        CmsSolrQuery query = new CmsSolrQuery(cms, params);
-        query.addFilterQuery(CmsSearchField.FIELD_CONTENT, Arrays.asList(email), true, true);
-        query.addFilterQuery(CmsSearchField.FIELD_TYPE, getTypesToRead(), false, false);
-        query.removeExpiration();
-        // use offline index, since expired resources are not indexed in the online index! We still use a CmsObject in the Online project, since the offline
-        // and online contents should be identical.
-        CmsSolrIndex index = (CmsSolrIndex)OpenCms.getSearchManager().getIndex(CmsSolrIndex.DEFAULT_INDEX_NAME_OFFLINE);
-        final int pageSize = 400;
-        query.setRows(Integer.valueOf(pageSize));
-        int page = 0;
-        CmsSolrResultList res = null;
-        Set<CmsResource> searchResources = new HashSet<>();
-        do {
-            query.setStart(Integer.valueOf(page * pageSize));
-            res = index.search(cms, query, true, null, true, CmsResourceFilter.IGNORE_EXPIRATION);
-            searchResources.addAll(res);
-            page += 1;
-        } while (res.size() > 0);
 
-        return searchResources;
+        // we can only use a Solr query if we have an email address but no additional search strings,
+        // in other cases we have to read all the form data resources
+
+        if ((email != null) && (searchStrings.size() == 0)) {
+            Map<String, String[]> params = new HashMap<>();
+            CmsSolrQuery query = new CmsSolrQuery(cms, params);
+            query.addFilterQuery(CmsSearchField.FIELD_CONTENT, Arrays.asList(email), true, true);
+            query.addFilterQuery(CmsSearchField.FIELD_TYPE, getTypesToRead(), false, false);
+            query.removeExpiration();
+            // use offline index, since expired resources are not indexed in the online index! We still use a CmsObject in the Online project, since the offline
+            // and online contents should be identical.
+            CmsSolrIndex index = (CmsSolrIndex)OpenCms.getSearchManager().getIndex(
+                CmsSolrIndex.DEFAULT_INDEX_NAME_OFFLINE);
+            final int pageSize = 400;
+            query.setRows(Integer.valueOf(pageSize));
+            int page = 0;
+            CmsSolrResultList res = null;
+            Set<CmsResource> searchResources = new HashSet<>();
+            do {
+                query.setStart(Integer.valueOf(page * pageSize));
+                res = index.search(cms, query, true, null, true, CmsResourceFilter.IGNORE_EXPIRATION);
+                searchResources.addAll(res);
+                page += 1;
+            } while (res.size() > 0);
+            return searchResources;
+        } else {
+            cms.getRequestContext().setSiteRoot("");
+            Set<CmsResource> resources = new HashSet<>();
+            for (String type : getTypesToRead()) {
+                if (OpenCms.getResourceManager().hasResourceType(type)) {
+                    CmsResourceFilter filter = CmsResourceFilter.IGNORE_EXPIRATION.addRequireType(
+                        OpenCms.getResourceManager().getResourceType(type));
+                    try {
+                        List<CmsResource> typeResources = cms.readResources("/", filter, true);
+                        resources.addAll(typeResources);
+                    } catch (Exception e) {
+                        LOG.warn(e.getLocalizedMessage(), e);
+                    }
+
+                }
+            }
+            return resources;
+        }
     }
 }

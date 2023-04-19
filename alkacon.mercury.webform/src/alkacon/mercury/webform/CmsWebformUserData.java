@@ -225,18 +225,25 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
      */
     private boolean matchContent(String email, List<String> searchFilters, Map<String, String> dataValues) {
 
-        // use exact match (minus whitespace) for email and substring match for all other search filters
+        // - use exact match (minus whitespace) for email and substring match for all other search filters
+        // - using case insensitive matching for email is fine, because email addresses that only differ in case are equivalent
         if (email != null) {
-            if (dataValues.values().stream().anyMatch(val -> email.equals(val.trim()))) {
+            if (dataValues.values().stream().anyMatch(val -> email.equalsIgnoreCase(val.trim()))) {
                 return true;
             }
         }
-        for (String searchString : searchFilters) {
-            if (!dataValues.values().stream().anyMatch(val -> StringUtils.containsIgnoreCase(val, searchString))) {
-                return false;
+
+        if (searchFilters.size() > 0) {
+            for (String searchString : searchFilters) {
+                if (!dataValues.values().stream().anyMatch(val -> StringUtils.containsIgnoreCase(val, searchString))) {
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
+
+        // if email doesn't match and there are no search filters, we shouldn't get any results
+        return false;
     }
 
     /**

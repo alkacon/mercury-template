@@ -146,8 +146,9 @@ public class CmsWebformUserData implements I_CmsUserDataDomain {
                         String title = LogMessages.get().getBundle(currentCms.getRequestContext().getLocale()).key(
                             LogMessages.GUI_FORMDATA_HEADING_1,
                             content.getFile().getRootPath());
-                        element.appendElement("h2").text(title);
-                        Element dl = element.appendElement("dl");
+                        Element div = element.appendElement("div");
+                        div.appendElement("h2").text(title);
+                        Element dl = div.appendElement("dl");
                         for (Map.Entry<String, String> entry : dataEntries.entrySet()) {
                             dl.appendElement("dt").text(entry.getKey());
                             dl.appendElement("dd").text(entry.getValue());

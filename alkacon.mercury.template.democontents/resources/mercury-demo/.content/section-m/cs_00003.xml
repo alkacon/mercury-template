@@ -5,14 +5,14 @@
     <Title><![CDATA[Responsiv]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Mächtiges <strong>Mercury Template</strong>, basierend auf Bootstrap 4.</p>]]></content>
+      <content><![CDATA[<p>Mächtiges <strong>Mercury Template</strong>, basierend auf Bootstrap 5.</p>]]></content>
     </Text>
   </ContentSection>
   <ContentSection language="en">
     <Title><![CDATA[Responsive]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Powerful, Bootstrap 4 based <strong>Mercury Template</strong>.</p>]]></content>
+      <content><![CDATA[<p>Powerful, Bootstrap 5 based <strong>Mercury Template</strong>.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

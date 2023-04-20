@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>14.0.163</version>
+		<version>15.0.0</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -21,7 +21,7 @@
 		<userinstalled/>
 		<dateinstalled/>
 		<dependencies>
-			<dependency name="org.opencms.base" version="11.0.1"/>
+			<dependency name="org.opencms.base" version="14.0.0"/>
 		</dependencies>
 		<exportpoints>
 			<exportpoint uri="/system/modules/alkacon.mercury.template/tags/" destination="WEB-INF/tags/mercury/"/>

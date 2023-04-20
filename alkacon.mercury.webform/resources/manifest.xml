@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>14.0.14</version>
+		<version>15.0.0</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -21,7 +21,7 @@
 		<userinstalled/>
 		<dateinstalled/>
 		<dependencies>
-			<dependency name="alkacon.mercury.template" version="14.0.0"/>
+			<dependency name="alkacon.mercury.template" version="15.0.0"/>
 		</dependencies>
 		<exportpoints>
 			<exportpoint uri="/system/modules/alkacon.mercury.webform/classes/" destination="WEB-INF/classes/"/>

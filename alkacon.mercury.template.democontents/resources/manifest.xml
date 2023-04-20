@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>14.0.2</version>
+		<version>15.0.0</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -50,9 +50,9 @@ This module also creates a set of demo users during the import.]]></description>
 		<userinstalled/>
 		<dateinstalled/>
 		<dependencies>
-			<dependency name="alkacon.mercury.template" version="14.0.0"/>
-			<dependency name="alkacon.mercury.theme" version="14.0.0"/>
-			<dependency name="alkacon.mercury.webform" version="14.0.0"/>
+			<dependency name="alkacon.mercury.template" version="15.0.0"/>
+			<dependency name="alkacon.mercury.theme" version="15.0.0"/>
+			<dependency name="alkacon.mercury.webform" version="15.0.0"/>
 		</dependencies>
 		<exportpoints/>
 		<resources>
@@ -5682,7 +5682,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<uuidstructure>f3ae5fc1-3a95-11e9-bd84-0242ac11002b</uuidstructure>
 			<uuidresource>f3ae5fc2-3a95-11e9-bd84-0242ac11002b</uuidresource>
 			<datecreated>Sat, 25 Oct 2014 15:55:41 GMT</datecreated>
-			<dateexpired>Tue, 01 Jan 2019 11:00:00 GMT</dateexpired>
 			<flags>0</flags>
 			<properties>
 				<property>
@@ -16250,6 +16249,23 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>release/.content/section-m/cs_00015.xml</source>
+			<destination>release/.content/section-m/cs_00015.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>f044e1cd-df5a-11ed-b71d-0242ac11002b</uuidstructure>
+			<uuidresource>f044e1ce-df5a-11ed-b71d-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Apr 2023 09:08:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 15: Release Notes for OpenCms 15]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>release/opencms-10.0.0-notes</destination>
 			<type>folder</type>
 			<uuidstructure>f4ef6adb-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -16768,6 +16784,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 14]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/opencms-15.0-notes</destination>
+			<type>folder</type>
+			<uuidstructure>cf2284ef-df5a-11ed-b71d-0242ac11002b</uuidstructure>
+			<datecreated>Thu, 20 Apr 2023 09:07:43 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.015625]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[OpenCms 15]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 15]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/opencms-15.0-notes/index.html</source>
+			<destination>release/opencms-15.0-notes/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>cf24f5f4-df5a-11ed-b71d-0242ac11002b</uuidstructure>
+			<uuidresource>cf24f5f5-df5a-11ed-b71d-0242ac11002b</uuidresource>
+			<datecreated>Thu, 20 Apr 2023 09:07:43 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 15]]></value>
 				</property>
 			</properties>
 			<relations/>

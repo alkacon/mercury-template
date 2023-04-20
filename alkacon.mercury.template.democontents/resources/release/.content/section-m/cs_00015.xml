@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Release Notes for OpenCms 15]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pull/752]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pull/753]]></target>
+        </link>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pull/766]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/751]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/760]]></target>
+        </link>
+        <link name="link5" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/761]]></target>
+        </link>
+        <link name="link6" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+        <link name="link7" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+        <link name="link8" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link9" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
+        </link>
+      </links>
+      <content><![CDATA[<p><em>April 25, 2023:</em> OpenCms 15 provides role-based control to restrict who is allowed to update the sitemap configuration, including an editor for modifying selected sitemap attributes by any content manager. In the "Add content" dialog, content types that are not supported in the current page can now be hidden instead of shown disabled. The new launchpad app "Person data search" reveals personal user data stored in the VFS. WebDAV support for native MacOS has been improved. The Mercury template adds more than 1800 optional icons from the Bootstrap collection and numerous further enhancements.</p>
+<h2>Major new features of OpenCms 15</h2>
+<ul>
+<li>Restrict write access to sitemap .config file to a configured role</li>
+<li>Added configurable sitemap attribute editor for all content managers</li>
+<li>In the "Add content" dialog, content types that are not supported in the current page can now be hidden instead of</li>
+<li>shown disabled</li>
+<li>Lauchpad app "Person data search" reveals personal user data stored in the VFS</li>
+<li>Improved native WebDAV support for macOS</li>
+<li>Lists now allow to add new elements without existing elements</li>
+<li>Optimize gallery dialog now features a context menu that allows to rename, replace or delete images</li>
+<li>Results from the "Source search" app can now be exported to a CSV file</li>
+</ul>
+<h2>Further improvements in OpenCms 15</h2>
+<ul>
+<li>Sitemap: More options for creating contents via new-dialog and lists</li>
+<li>Form Editor: Active tab is remembered when language is switched</li>
+<li>Form editor: Allow calendar widget for dates without time</li>
+<li>Page editor: Recent and favorites options reflect sitemap settings</li>
+<li>Page editor: Added editable "Description" field to image gallery selection dialog</li>
+<li>Page editor: Improved HTML/CSS in element setting dialog</li>
+<li>Page editor: Show functions that do not fit on the current page as disabled / hide them</li>
+<li>Page editor: Speed up loading of Vaadin widgets by reusing the iframe</li>
+<li>Page / Form editor: Improved CSS formatting options for tooltip help texts</li>
+<li>TinyMCE: Allow to pass a JSON configuration</li>
+<li>TinyMCE: Added option to set the CSS path for WYSIWYG editor in the template JSP code</li>
+<li>JSP API: EL functions that provide information about the editor capabilities / options</li>
+<li>JSP API: Added "cachable=false" option to cms:container tag</li>
+<li>JSP API: Allow to render named container X of page A in code</li>
+<li>Lists: Added simplified rule syntax to specify complex SOLR filter queries</li>
+<li>XML: Added "visible" option for &lt;Visibility&gt; schema config node</li>
+<li>CmsShell: Added "reindexResources" command</li>
+<li>Pull request #752 improved error handling during XML validation (<a class="external" href="%(link0)">github</a>)</li>
+<li>Pull request #753 added WYSIWYG editor option 'link_default_protocol' which is passed to TinyMCE (<a class="external" href="%(link1)">github</a>)</li>
+<li>Pull request #766 added option for showing full groups names to multi-group selector widge (<a class="external" href="%(link2)">github</a>)</li>
+<li>Updated multiple dependency libs that contained security vulnerabilities</li>
+</ul>
+<h2>Issues fixed in OpenCms 15</h2>
+<ul>
+<li>Source search app: Replacing result with empty string or only whitespace not possible</li>
+<li>Codemirror editor not usable in iPad</li>
+<li>XML: Schema macros not always resolved as expected</li>
+<li>Form editor: Disabled select default is not displayed correctly</li>
+<li>Form editor: Calendar widget did interpret two-digit year numbers literally</li>
+<li>Form editor: Category widget did not work correctly when category paths where substrings of the subsite path</li>
+<li>Page editor: Edit points mess up the page layout with Bootstrap "row-cols"</li>
+<li>Page editor: Z-Index for "disabled" overlay is too low</li>
+<li>Page editor: Pointer events for edit point do "bubble"</li>
+<li>Page editor: Attachment container elements could get removed when editing their settings</li>
+<li>Page editor: Editing copied model groups simultaneously lead to issues</li>
+<li>Page editor: For long notification messages the scroll bar did not work</li>
+<li>Sitemap editor: "Switch Site" dialog in did not work anymore</li>
+<li>Element settings: Help icon after formatter selection did not show description</li>
+<li>Workplace: GWT context menu has wrong position after the first click</li>
+<li>Workplace: HTML tags sometimes shown in "title" attribute for editor components</li>
+<li>Workplace: Removing site selection by clicking on "x" did not work in gallery view</li>
+<li>JSP API: UGC did not work if scripts where loaded with "defer"</li>
+<li>JSP API: "cms:link" detailPage parameter did not work as expected</li>
+<li>JSP API: &lt;x:transform&gt; tag in JSPs erroneously deleted attributes</li>
+<li>Fixed issue where dots '.' in the detail page title leads to bad detail page URLs</li>
+<li>Fixed issue with context menu replace function and file translations</li>
+<li>Fixed issue #751 with missing list pagination when maxReturnedResults is -1 (<a class="external" href="%(link3)">github</a>)</li>
+<li>Fixed issue #760 with missing scrollbar in multi-group selector widget (<a class="external" href="%(link4)">github</a>)</li>
+<li>Fixed issue #761 where creating a bookmark in the shared folder causes an error (<a class="external" href="%(link5)">github</a>)</li>
+</ul>
+<h2>General OpenCms features</h2>
+<ul>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
+<li>The form based editor allows editing of structured content in a well defined form mask.</li>
+<li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
+<li>Responsive "Mercury" default template based on Bootstrap 5 with many features.</li>
+<li>Headless API for accessing content as JSON from external applications.</li>
+<li>Content creation for mobile devices with preview and device specific content control.</li>
+<li>Structured contents can be defined using a simple XML schema.</li>
+<li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
+<li>Link management for all internal resources with broken link detection.</li>
+<li>Integrated image scaling and cropping.</li>
+<li>SEO features with automatic sitemap.xml generation and page alias support.</li>
+<li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
+<li>Allows management of multiple websites within one installation.</li>
+<li>Contents can be served dynamically or exported to static HTML files.</li>
+<li>File access to the OpenCms content repository over a shared network / SMB drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
+<li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
+<li>Extensions can be added through a flexible module system.</li>
+<li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
+<li>JSP integration for dynamic functionality in templates, dynamic forms etc.</li>
+<li>... and many more</li>
+</ul>
+<h3>Backward compatibility</h3>
+<p>OpenCms 15 is backward compatible with all 14,13, 12, 11, 10.5 and 10 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 15.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 15. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link6)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
+<h3>Compatibility with Java versions, servlet containers and databases</h3>
+<p>OpenCms 15 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9 and 8.5. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<h3>Regarding version numbers and build tags</h3>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link7)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms sources from Git, please check out branch <span class="label label-cyan">master</span>. This release is tagged <span class="label label-cyan">build_15_0_0</span>.</p>
+<h3>How you can help</h3>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link8)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link9)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

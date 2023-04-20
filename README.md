@@ -2,9 +2,28 @@
 
 ### A full-featured, customizable, great looking responsive template for OpenCms ###
 
-The Mercury Template is a complete, modular template for [OpenCms](http://opencms.org). It is based on Bootstrap 4 and allows you to create simple or advanced grid-layouts with drag & drop. It packs a ton of CSS features and JavaScript plugins that have carefully been integrated to be simple to use for the content manager. And it ships with all Java and SASS sources so you can fully customize it for your unique requirements.
+The Mercury Template is a complete, modular template for [OpenCms](http://opencms.org). It is based on Bootstrap 5 and allows you to create simple or advanced grid-layouts with drag & drop. It packs a ton of CSS features and JavaScript plugins that have carefully been integrated to be simple to use for the content manager. And it ships with all Java and SASS sources so you can fully customize it for your unique requirements.
 
 ### Release history ###
+
+**Version 15** - April 25, 2023:
+
+This version provides incremental improvements. Mercury 15 should be largely backward compatible with the 14 version.
+
+* Updated for OpenCms 15.
+* Bootstrap updated to 5.2.3.
+* Improvements / bug fixes in SCSS / CSS.
+* Integrated over 1800 [Bootstrap icons](https://icons.getbootstrap.com/).
+* Events now feature an optional link to mark them as online or mixed events.
+* Events now feature an optional cost table.
+* Image series can now displayed as square images, slides or in masonry layout.
+* Images in a slider now have an optional relase and expiration date.
+* New "Link box" formatter for the content section.
+* The "Image tile" formatter for the content section has more options for letter placement.
+* Places / POI can now be displayed in lists.
+* Advanced options to output sections in article and event detail pages.
+* If an image has a description property, this is now used as "alt" text instead of the title.
+* All NPM dependencies have been updated to a recent version.
 
 **Version 14** - October 11, 2022:
 
@@ -23,7 +42,7 @@ This version updates the underlying Bootstrap framework to 5.2 and provides incr
 * Improved options for lists using image tile teasers.
 * New font option "Work Sans".
 * Updated the Slider element to use the jQuery free Embla slider, also adding some new element settings.
-* Updated PhotoSipe to the lasted, jQuery free version.
+* Updated PhotoSwipe to the lasted, jQuery free version.
 
 **Version 13** - April 13, 2022:
 

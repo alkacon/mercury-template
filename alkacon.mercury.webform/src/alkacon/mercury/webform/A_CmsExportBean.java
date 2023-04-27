@@ -556,8 +556,12 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         I_CmsXmlDocument formConfig = m_form.getFormConfig();
         if (formConfig.hasValue(NODE_EXPORT, locale) && formConfig.hasValue(pathPrefix, locale)) {
             String prefixEventInformation = pathPrefix + "/" + NODE_EXPORT_CONFIG_EVENT_INFORMATION;
-            String configEventInformation = formConfig.getValue(prefixEventInformation, locale).getStringValue(cms);
-            m_exportConfigEventInformation = Boolean.valueOf(configEventInformation).booleanValue();
+            if (formConfig.hasValue(prefixEventInformation, locale)) {
+                String configEventInformation = formConfig.getValue(prefixEventInformation, locale).getStringValue(cms);
+                m_exportConfigEventInformation = Boolean.valueOf(configEventInformation).booleanValue();
+            } else {
+                m_exportConfigEventInformation = true;
+            }
             String prefixOverviewInformation = pathPrefix + "/" + NODE_EXPORT_CONFIG_OVERVIEW_INFORMATION;
             String configOverviewInformation = formConfig.getValue(prefixOverviewInformation, locale).getStringValue(
                 cms);

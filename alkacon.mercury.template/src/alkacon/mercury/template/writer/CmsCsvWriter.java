@@ -84,6 +84,9 @@ public class CmsCsvWriter extends A_CmsWriter {
      */
     private String esc(String value) {
 
+        if (value == null) {
+            return "\"\"";
+        }
         value = value.replace("\"", "\"\"");
         return '"' + value + '"';
     }

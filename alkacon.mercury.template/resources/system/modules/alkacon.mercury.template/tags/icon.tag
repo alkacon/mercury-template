@@ -94,7 +94,6 @@
     </c:otherwise>
 </c:choose>
 
-<!-- isBooststrap: ${isBootstrap} - iconPath: ${iconPath} -->
 <${tag}${' '}<%--
 --%>${empty attrWrapper ? '' : attrWrapper.concat(' ')}<%--
 --%>class="<c:out value="${empty cssWrapper ? '' : cssWrapper.concat(' ')}${iconClass}" escapeXml="${true}" />"<%--

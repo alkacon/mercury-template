@@ -59,27 +59,11 @@
 
 <c:choose>
     <c:when test="${inline}">
-        <c:choose>
-            <c:when test="${isBootstrap}">
-                <c:set var="iconFile" value="${fn:substringAfter(icon, 'bi-')}" />
-                <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/bi/${iconFile}.svg" />
-                <c:set var="iconName" value="ico-${icon}" />
-            </c:when>
-            <c:when test="${fn:startsWith(icon, 'fa-')}">
-                <c:set var="iconFile" value="${fn:substringAfter(icon, 'fa-')}" />
-                <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/fa/${iconFile}.svg" />
-                <c:set var="iconName" value="ico-${icon}" />
-            </c:when>
-            <c:otherwise>
-                <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/fa/${icon}.svg" />
-                <c:set var="iconName" value="ico-fa-${icon}" />
-            </c:otherwise>
-        </c:choose>
+        <mercury:icon-resource icon="${icon}" setFallback="${true}" />
         <c:set var="iconClass" value="ico ico-svg ico-inline ${iconName}" />
-        <c:set var="iconRes" value="${cms.vfs.readResource[iconPath]}" />
-        <c:if test="${empty iconRes}">
+        <c:set var="iconRes" value="${iconResource}" />
+        <c:if test="${not iconIsValid}">
             <c:set var="iconClass" value="ico ico-svg ico-missing" />
-            <c:set var="iconRes" value="${cms.vfs.readResource['/system/modules/alkacon.mercury.theme/icons/fa/question-circle.svg']}" />
         </c:if>
     </c:when>
     <c:when test="${noInline}">

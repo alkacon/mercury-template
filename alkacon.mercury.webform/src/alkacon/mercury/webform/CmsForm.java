@@ -324,6 +324,9 @@ public class CmsForm {
     /** Special key in the dynamic configuration to overwrite the form id. */
     public static final String CONFIG_KEY_FORM_ID = "formid";
 
+    /** Contact ID request parameter. */
+    public static final String REQUEST_PARAM_CONTACTID = "contactid";
+
     /** The webform action class name. */
     protected String m_actionClass;
 
@@ -834,6 +837,22 @@ public class CmsForm {
     public String getConfirmationMailTextPlain() {
 
         return m_confirmationMailTextPlain;
+    }
+
+    /**
+     * Returns the contact ID request parameter.<p>
+     *
+     * @return the contact ID request parameter
+     */
+    public String getContactId() {
+
+        if (m_parameterMap.containsKey(REQUEST_PARAM_CONTACTID)) {
+            String[] values = m_parameterMap.get(REQUEST_PARAM_CONTACTID);
+            if ((values != null) && (values.length > 0)) {
+                return values[0];
+            }
+        }
+        return null;
     }
 
     /**

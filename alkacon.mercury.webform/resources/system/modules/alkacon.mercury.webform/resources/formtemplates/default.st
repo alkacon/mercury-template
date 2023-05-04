@@ -14,7 +14,7 @@ $if(waitlistmessage)$$waitlist_notification(waitlistmessage)$$endif$
 <form$!
    !$ name="emailform$formconfig.configId$"$!
    !$ id="emailform$formconfig.configId$"$!
-   !$ action="$formuri$#emailform$formconfig.configId$"$!
+   !$ action="$formuri$$if(formconfig.contactId)$?contactid=$formconfig.contactId$$endif$#emailform$formconfig.configId$"$!
    !$ method="post"$!
    !$ class="styled-form$if(errormessage)$ state-error$endif$$if(formconfig.extraConfig.formCssWrapper)$ $formconfig.extraConfig.formCssWrapper$$endif$"$enctype$$!
 !$>
@@ -57,7 +57,7 @@ $!  !$<div class="formbtn-row">
 $!      !$<input type="submit" value="$prevbutton$" name="back$formconfig.configId$" id="back_$formconfig.configId$" class="btn formbtn prevbutton" />
     $endif$
     $if(resetbutton)$
-$!      !$<a href="$formuri$" class="btn formbtn resetbutton">$resetbutton$</a>
+$!      !$<a href="$formuri$$if(formconfig.contactId)$?contactid=$formconfig.contactId$$endif$" class="btn formbtn resetbutton">$resetbutton$</a>
     $endif$
 $!      !$<input type="submit" value="$submitbutton$" id="submit_$formconfig.configId$" class="btn formbtn submitbutton" />
 $!  !$</div>
@@ -512,7 +512,7 @@ $!  !$</form>
 $endif$
 
 $!  !$<footer class="formbtn-row">
-$!  !$<form id="webformdisplayvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$" class="formbtn correctaction" onsubmit="return updateAction('webformdisplayvalues$formconfig.configId$');">
+$!  !$<form id="webformdisplayvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$$if(formconfig.contactId)$?contactid=$formconfig.contactId$$endif$" class="formbtn correctaction" onsubmit="return updateAction('webformdisplayvalues$formconfig.configId$');">
 $!  !$<div style="display: none;">
 $!      !$<input type="hidden" name="formsubmit" value="$formconfig.configId$" />
 $!      !$<input type="hidden" name="formaction$formconfig.configId$" value="correct" />
@@ -520,7 +520,7 @@ $!      !$$hiddenfields$
 $!  !$</div>
 $!  !$<input type="submit" value="$correctbutton$" class="btn submitbutton"/>
 $!  !$</form>
-$!  !$<form id="webformconfirmvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$" class="formbtn submitaction" onsubmit="return runConfirmValues();">
+$!  !$<form id="webformconfirmvalues$formconfig.configId$" method="post" enctype="multipart/form-data" action="$formuri$$if(formconfig.contactId)$?contactid=$formconfig.contactId$$endif$" class="formbtn submitaction" onsubmit="return runConfirmValues();">
 $!  !$<div style="display: none;">
 $!      !$<input type="hidden" name="formsubmit" value="$formconfig.configId$" />
 $!      !$<input type="hidden" name="formaction$formconfig.configId$" value="confirmed" />

@@ -30,12 +30,41 @@
 
 <fmt:setLocale value="${cms.locale}"/>
 <cms:bundle basename="alkacon.mercury.template.messages">
+<mercury:webform-vars
+    webform="${webform}"
+    bookingInfo="${bookingInfo}"
+    formId="${formId}">
 
-    <mercury:webform-vars
-        webform="${webform}"
-        bookingInfo="${bookingInfo}"
-        formId="${formId}">
+    <c:if test="${not empty param.contactid}">
+        <c:choose>
+            <c:when test="${contactException == null and not empty contactEmail}">
+                <div class="subelement type-webform-contactform pivot"><%----%>
+                    <p><%----%>
+                        <fmt:message key="msg.page.contact.form.head">
+                            <fmt:param>${contactName}</fmt:param>
+                        </fmt:message>
+                    </p><%----%>
+                </div><%----%>
+            </c:when>
+            <c:otherwise>
+                <mercury:alert-online>
+                    <jsp:attribute name="head">
+                        <fmt:message key="msg.page.contact.submission.exception.head"/>
+                    </jsp:attribute>
+                    <jsp:attribute name="text">
+                        <fmt:message key="msg.page.contact.submission.exception.text"/>
+                    </jsp:attribute>
+                </mercury:alert-online>
+                <c:if test="${cms.isEditMode and not empty contactException.message}">
+                    <div class="subelement oct-meta-info severe box"><%----%>
+                        <p>${contactException.message}</p><%----%>
+                    </div><%----%>
+                </c:if>
+            </c:otherwise>
+        </c:choose>
+    </c:if>
 
+    <c:if test="${empty param.contactid or not empty contactEmail}">
         <c:choose>
 
             <c:when test="${include}">
@@ -91,7 +120,7 @@
             </c:otherwise>
 
         </c:choose>
+    </c:if>
 
-    </mercury:webform-vars>
-
+</mercury:webform-vars>
 </cms:bundle>

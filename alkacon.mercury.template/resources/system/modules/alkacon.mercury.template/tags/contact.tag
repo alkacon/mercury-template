@@ -171,6 +171,10 @@
     </c:when>
 </c:choose>
 
+<%-- ### Link to a contact form replacing the obfuscated email ### --%>
+<c:set var="contactForm" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.contact.form']}" />
+
+
 <mercury:image-animated
     image="${image}"
     test="${showImage}"
@@ -333,14 +337,30 @@
             <c:if test="${showEmail}">
                 <div class="${showMinLabels ? 'mail' : 'mail tablerow'}" ${data.rdfa.Email}><%----%>
                     <c:if test="${not showMinLabels}">
-                        <mercury:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                            <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
-                        </mercury:icon-prefix>
+                        <c:choose>
+                            <c:when test="${not empty contactForm}">
+                                <mercury:icon-prefix icon="bi-pencil" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                                    <jsp:attribute name="text"><fmt:message key="msg.page.contact"/></jsp:attribute>
+                                </mercury:icon-prefix>
+                            </c:when>
+                            <c:otherwise>
+                                <mercury:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                                    <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
+                                </mercury:icon-prefix>
+                            </c:otherwise>
+                        </c:choose>
                     </c:if>
                     <span><%----%>
-                        <mercury:email email="${data.value.Email}">
-                            <jsp:attribute name="placeholder"><fmt:message key="msg.page.contact.obfuscatedemail"/></jsp:attribute>
-                        </mercury:email>
+                        <c:choose>
+                            <c:when test="${not empty contactForm}">
+                                <a href="<cms:link>${contactForm}?contactid=${cms.element.id}</cms:link>"><fmt:message key="msg.page.contact.form"/></a>
+                            </c:when>
+                            <c:otherwise>
+                                <mercury:email email="${data.value.Email}">
+                                    <jsp:attribute name="placeholder"><fmt:message key="msg.page.contact.obfuscatedemail"/></jsp:attribute>
+                                </mercury:email>
+                            </c:otherwise>
+                        </c:choose>
                     </span><%----%>
                 </div><%----%>
             </c:if>

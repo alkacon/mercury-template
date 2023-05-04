@@ -2,6 +2,7 @@
     display-name="webform-vars"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
+    import="org.opencms.file.*, org.opencms.main.*, org.opencms.util.*"
     description="Initializes a Webform." %>
 
 
@@ -60,6 +61,15 @@
 <%@ variable name-given="formBookingRegistrationClosed" declare="true"
     description="Whether the registration is closed." %>
 
+<%@ variable name-given="contactName" declare="true"
+    description="The contact name, available if a contactid request parameter is given." %>
+
+<%@ variable name-given="contactEmail" declare="true"
+    description="The contact email, available if a contactid request parameter is given." %>
+
+<%@ variable name-given="contactException" declare="true"
+    description="Contact exception, thrown if reading the contact content by means of a given contactid request parameter fails." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -79,6 +89,7 @@
 </c:choose>
 <c:set var="formBean" value='${cms.getBean("alkacon.mercury.webform.CmsFormBean")}' />
 <c:set var="form" value="${formBean.setForm(formXml.rawContent)}"/>
+
 
 <%-- ###### Check if booking information has been provided ###### --%>
 <c:choose>
@@ -132,6 +143,37 @@
         <c:set var="dateSeries" value="${formBookingXml.value.Dates.toDateSeries}" />
         ${form.adjustConfigValue("macro:event.time", dateSeries.last.formatShort)}
         ${form.adjustConfigValue("EndTime", dateSeries.last.end.time)}
+    </c:if>
+</c:if>
+
+<%-- ###### Check if contact ID request parameter is set, if so, read contact content and adjust form configuration. ###### --%>
+<c:if test="${not empty param.contactid}">
+    <c:catch var="contactException">
+        <c:set var="contactUid" value="${cms:convertUUID(param.contactid)}" />
+        <c:set var="contactContent" value="${cms.vfs.xml[contactUid]}" />
+        <c:set var="contactValue" value="${contactContent.value}" />
+        <c:set var="contactValidEmail" value="${(not empty contactValue.Contact) and (not empty contactValue.Contact.value.Email) and (not empty contactValue.Contact.value.Email.value.Email)}" />
+        <c:if test="${contactValidEmail}">
+            <c:set var="contactEmail" value="${contactValue.Contact.value.Email.value.Email}" />
+        </c:if>
+        <c:set var="name" value="${contactValue.Name}" />
+        <c:if test="${not empty name}">
+            <c:set var="contactName">
+                <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
+                ${name.value.FirstName}${' '}
+                <c:if test="${name.value.MiddleName.isSet}">${name.value.MiddleName}${' '}</c:if>
+                ${name.value.LastName}
+                <c:if test="${name.value.Suffix.isSet}">${' '}${name.value.Suffix}</c:if>
+            </c:set>
+        </c:if>
+        <c:set var="contactForm">
+            ${cms.site.url}${cms.requestContext.uri}?contactid=${param.contactid}
+        </c:set>
+    </c:catch>
+    <c:if test="${contactException == null and contactValidEmail}">
+        ${form.adjustConfigValue("MailTo", contactEmail)}
+        ${form.adjustConfigValue("macro:contact.name", contactName)}
+        ${form.adjustConfigValue("macro:contact.form", contactForm)}
     </c:if>
 </c:if>
 

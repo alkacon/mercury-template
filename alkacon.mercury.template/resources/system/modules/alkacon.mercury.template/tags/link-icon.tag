@@ -49,7 +49,7 @@
                 </c:otherwise>
             </c:choose>
         </c:forEach>
-        <c:if test="${not empty linkMessage}">
+        <c:if test="${not empty linkMessage and (resultMap == null)}">
             <c:set var="linkMessage"><span>${linkMessage}</span></c:set>
         </c:if>
     </c:when>
@@ -71,6 +71,7 @@
                     "link": link,
                     "message": linkMessage,
                     "icon": linkIcon,
+                    "iconClass": iconClass,
                     "title": linkTitle,
                     "css": cssWrapper,
                     "attr": linkAttr

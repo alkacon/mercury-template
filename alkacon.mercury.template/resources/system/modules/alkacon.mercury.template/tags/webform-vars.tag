@@ -2,7 +2,6 @@
     display-name="webform-vars"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
-    import="org.opencms.file.*, org.opencms.main.*, org.opencms.util.*"
     description="Initializes a Webform." %>
 
 

@@ -12,9 +12,8 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-
 <cms:secureparams />
-<mercury:init-messages>
+<mercury:init-messages reload="true">
 <fmt:setLocale value="${cms.locale}"/>
 <cms:bundle basename="alkacon.mercury.template.messages">
 <mercury:setting-defaults>
@@ -64,14 +63,28 @@
 <c:when test="${not empty exception or empty content}">
 
 <div class="subelement">
-    <mercury:alert-online>
-        <jsp:attribute name="head">
-            <fmt:message key="msg.page.contact.notfound.exception.head"/>
-        </jsp:attribute>
-        <jsp:attribute name="text">
-            <fmt:message key="msg.page.contact.notfound.exception.text"/>
-        </jsp:attribute>
-    </mercury:alert-online>
+    <c:choose>
+        <c:when test="${cms.isEditMode}">
+            <mercury:alert type="warning">
+                <jsp:attribute name="head">
+                    <fmt:message key="function.contact"/>
+                </jsp:attribute>
+                <jsp:attribute name="text">
+                    <fmt:message key="function.contact.help"/>
+                </jsp:attribute>
+            </mercury:alert>
+        </c:when>
+        <c:otherwise>
+            <mercury:alert-online>
+                <jsp:attribute name="head">
+                    <fmt:message key="msg.page.contact.notfound.exception.head"/>
+                </jsp:attribute>
+                <jsp:attribute name="text">
+                    <fmt:message key="msg.page.contact.notfound.exception.text"/>
+                </jsp:attribute>
+            </mercury:alert-online>
+        </c:otherwise>
+    </c:choose>
 </div>
 
 </c:when>
@@ -84,7 +97,7 @@
 
 <c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
 <c:set var="hsize"                  value="${showTitle and value.Title.isSet ? hsize + 1 : hsize}" />
-<c:set var="cssWrappers"            value="element type-contact-function ${kindModern ? null : kindCss}${compactLayout}${setCssWrapperAll}" />
+<c:set var="cssWrappers"            value="element type-contact ${kindModern ? null : kindCss}${compactLayout}${setCssWrapperAll}" />
 
 <c:if test="${kindModern}">
 <mercury:nl />

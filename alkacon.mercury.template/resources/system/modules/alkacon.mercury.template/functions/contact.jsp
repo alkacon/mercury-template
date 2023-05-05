@@ -15,6 +15,8 @@
 
 <cms:secureparams />
 <mercury:init-messages>
+<fmt:setLocale value="${cms.locale}"/>
+<cms:bundle basename="alkacon.mercury.template.messages">
 <mercury:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
@@ -59,11 +61,19 @@
 
 
 <c:choose>
-<c:when test="${not empty exception}">
-<div>Invalid request.</div>
-</c:when>
-<c:when test="${empty content}">
-<div>Content not found.</div>
+<c:when test="${not empty exception or empty content}">
+
+<div class="subelement">
+    <mercury:alert-online>
+        <jsp:attribute name="head">
+            <fmt:message key="msg.page.contact.notfound.exception.head"/>
+        </jsp:attribute>
+        <jsp:attribute name="text">
+            <fmt:message key="msg.page.contact.notfound.exception.text"/>
+        </jsp:attribute>
+    </mercury:alert-online>
+</div>
+
 </c:when>
 <c:otherwise>
 
@@ -74,7 +84,7 @@
 
 <c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
 <c:set var="hsize"                  value="${showTitle and value.Title.isSet ? hsize + 1 : hsize}" />
-<c:set var="cssWrappers"            value="detail-page type-contact ${kindModern ? null : kindCss}${compactLayout}${setCssWrapperAll}" />
+<c:set var="cssWrappers"            value="element type-contact-function ${kindModern ? null : kindCss}${compactLayout}${setCssWrapperAll}" />
 
 <c:if test="${kindModern}">
 <mercury:nl />
@@ -139,7 +149,6 @@
 </mercury:section-piece>
 
 <c:if test="${kindModern}">
-    <mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
     </div><%----%>
 </c:if>
 
@@ -150,4 +159,5 @@
 
 
 </mercury:setting-defaults>
+</cms:bundle>
 </mercury:init-messages>

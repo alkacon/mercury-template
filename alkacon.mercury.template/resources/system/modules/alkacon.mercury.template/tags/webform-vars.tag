@@ -155,16 +155,17 @@
         <c:if test="${contactValidEmail}">
             <c:set var="contactEmail" value="${contactValue.Contact.value.Email.value.Email}" />
         </c:if>
-        <c:set var="name" value="${contactValue.Name}" />
-        <c:if test="${not empty name}">
-            <c:set var="contactName">
+        <mercury:contact-vars content="${contactContent}">
+            <c:set var="name" value="${valName}" />
+            <c:set var="personname">
                 <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
                 ${name.value.FirstName}${' '}
                 <c:if test="${name.value.MiddleName.isSet}">${name.value.MiddleName}${' '}</c:if>
                 ${name.value.LastName}
                 <c:if test="${name.value.Suffix.isSet}">${' '}${name.value.Suffix}</c:if>
             </c:set>
-        </c:if>
+            <c:set var="contactName" value="${valKind eq 'org' ? valOrganization : personname}" />
+        </mercury:contact-vars>
         <c:set var="contactForm">
             ${cms.site.url}${cms.requestContext.uri}?contactid=${param.contactid}
         </c:set>

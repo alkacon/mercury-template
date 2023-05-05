@@ -818,6 +818,12 @@
     </Function>
     <Function>
       <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/contact.xml]]></target>
+        <uuid>fe1deea7-eb32-11ed-b7dc-0242ac11002b</uuid>
+      </link>
+    </Function>
+    <Function>
+      <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/functions/disqus.xml]]></target>
         <uuid>96933da3-e1c4-4aee-9e19-b8d250efe747</uuid>
       </link>

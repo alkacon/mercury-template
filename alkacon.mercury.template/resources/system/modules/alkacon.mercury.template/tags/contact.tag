@@ -32,6 +32,9 @@
 <%@ attribute name="linkToRelated" type="java.lang.String" required="false"
     description="Link to the parent organization (for persons) or the contact persion (for organizations)." %>
 
+<%@ attribute name="linkToContactForm" type="java.lang.String" required="false"
+    description="Link to the contact form." %>
+
 <%@ attribute name="description" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact description." %>
 
@@ -171,8 +174,8 @@
     </c:when>
 </c:choose>
 
-<%-- ### Link to a contact form replacing the obfuscated email ### --%>
-<c:set var="contactForm" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.contact.form']}" />
+<%-- ### Show a link to a contact form replacing the obfuscated email ### --%>
+<c:set var="showContactForm" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.contact.form'] eq 'true'}" />
 
 
 <mercury:image-animated
@@ -338,7 +341,7 @@
                 <div class="${showMinLabels ? 'mail' : 'mail tablerow'}" ${data.rdfa.Email}><%----%>
                     <c:if test="${not showMinLabels}">
                         <c:choose>
-                            <c:when test="${not empty contactForm}">
+                            <c:when test="${showContactForm}">
                                 <mercury:icon-prefix icon="bi-pencil" showText="${showTextLabels}" showIcon="${showIconLabels}">
                                     <jsp:attribute name="text"><fmt:message key="msg.page.contact"/></jsp:attribute>
                                 </mercury:icon-prefix>
@@ -352,8 +355,8 @@
                     </c:if>
                     <span><%----%>
                         <c:choose>
-                            <c:when test="${not empty contactForm}">
-                                <a href="<cms:link>${contactForm}?contactid=${cms.element.id}</cms:link>"><fmt:message key="msg.page.contact.form"/></a>
+                            <c:when test="${showContactForm}">
+                                <a href="${linkToContactForm}"><fmt:message key="msg.page.contact.form"/></a>
                             </c:when>
                             <c:otherwise>
                                 <mercury:email email="${data.value.Email}">

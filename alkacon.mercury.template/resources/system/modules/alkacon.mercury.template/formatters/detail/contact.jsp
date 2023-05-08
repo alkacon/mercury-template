@@ -49,6 +49,8 @@
 <c:set var="hsizeTitle"             value="${hsize}" />
 <c:set var="hsize"                  value="${showTitle and value.Title.isSet ? hsize + 1 : hsize}" />
 
+<c:set var="linkToContactForm"><cms:link>${content.filename}</cms:link></c:set>
+
 
 <mercury:contact-vars
     content="${content}"
@@ -103,6 +105,7 @@
             address="${valAddress}"
             labelOption="${labelOption}"
             linkToRelated="${showOrganizationLink ? valLinkToRelated : null}"
+            linkToContactForm="${linkToContactForm}"
             hsize="${hsize}"
             showName="${setShowName}"
             showPosition="${setShowPosition}"

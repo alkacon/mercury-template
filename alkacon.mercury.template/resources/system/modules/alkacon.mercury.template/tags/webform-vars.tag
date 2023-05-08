@@ -60,14 +60,14 @@
 <%@ variable name-given="formBookingRegistrationClosed" declare="true"
     description="Whether the registration is closed." %>
 
+<%@ variable name-given="isContactDetail" declare="true"
+    description="Whether this is a contact detail request." %>
+
 <%@ variable name-given="contactName" declare="true"
     description="The contact name, available if a contactid request parameter is given." %>
 
 <%@ variable name-given="contactEmail" declare="true"
     description="The contact email, available if a contactid request parameter is given." %>
-
-<%@ variable name-given="contactException" declare="true"
-    description="Contact exception, thrown if reading the contact content by means of a given contactid request parameter fails." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -145,11 +145,18 @@
     </c:if>
 </c:if>
 
-<%-- ###### Check if contact ID request parameter is set, if so, read contact content and adjust form configuration. ###### --%>
-<c:if test="${not empty param.contactid}">
-    <c:catch var="contactException">
-        <c:set var="contactUid" value="${cms:convertUUID(param.contactid)}" />
-        <c:set var="contactContent" value="${cms.vfs.xml[contactUid]}" />
+<%-- ###### Check whether this is a contact detail page request, if so, adjust form configuration with contact data. ###### --%>
+<c:set var="showContactForm" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.contact.form'] eq 'true'}" />
+<c:if test="${showContactForm}">
+    <c:set var="detailContent"                  value="${cms.detailContent}" />
+    <c:if test="${not empty detailContent}">
+        <c:set var="isOrgDetail"                value="${detailContent.typeName eq 'm-organization'}" />
+        <c:set var="isPersDetail"               value="${detailContent.typeName eq 'm-person'}" />
+        <c:set var="isLegacyDetail"             value="${detailContent.typeName eq 'm-contact'}" />
+        <c:set var="isContactDetail"            value="${isOrgDetail or isPersDetail or isLegacyDetail}" />
+    </c:if>
+    <c:if test="${isContactDetail}">
+        <c:set var="contactContent" value="${cms.vfs.xml[detailContent.structureId]}" />
         <c:set var="contactValue" value="${contactContent.value}" />
         <c:set var="contactValidEmail" value="${(not empty contactValue.Contact) and (not empty contactValue.Contact.value.Email) and (not empty contactValue.Contact.value.Email.value.Email)}" />
         <c:if test="${contactValidEmail}">
@@ -166,14 +173,12 @@
             </c:set>
             <c:set var="contactName" value="${valKind eq 'org' ? valOrganization : personname}" />
         </mercury:contact-vars>
-        <c:set var="contactForm">
-            ${cms.site.url}${cms.requestContext.uri}?contactid=${param.contactid}
-        </c:set>
-    </c:catch>
-    <c:if test="${contactException == null and contactValidEmail}">
-        ${form.adjustConfigValue("MailTo", contactEmail)}
-        ${form.adjustConfigValue("macro:contact.name", contactName)}
-        ${form.adjustConfigValue("macro:contact.form", contactForm)}
+        <c:set var="contactForm">${cms.site.url}${cms.requestContext.uri}</c:set>
+        <c:if test="${contactValidEmail}">
+            ${form.adjustConfigValue("MailTo", contactEmail)}
+            ${form.adjustConfigValue("macro:contact.name", contactName)}
+            ${form.adjustConfigValue("macro:contact.form", contactForm)}
+        </c:if>
     </c:if>
 </c:if>
 

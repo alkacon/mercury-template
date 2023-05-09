@@ -36,7 +36,7 @@
     formId="${formId}">
 
     <c:if test="${isContactForm and cms.isEditMode}">
-        <div class="${empty contactEmail ? 'box' : 'subelement'}">
+        <div class="subelement">
             <span class="oct-meta-info">
                 <fmt:message key="msg.setting.formModus" />: <fmt:message key="msg.setting.formModus.contact" />
             </span>
@@ -51,7 +51,7 @@
             </p><%----%>
         </div><%----%>
     </c:if>
-    <c:if test="${isContactForm and empty contactEmail}">
+    <c:if test="${isContactForm and empty contactEmail and not cms.isEditMode}">
         <mercury:alert-online>
             <jsp:attribute name="head">
                 <fmt:message key="msg.page.contact.notfound.exception.head"/>
@@ -62,7 +62,7 @@
         </mercury:alert-online>
     </c:if>
 
-    <c:if test="${not isContactForm or not empty contactEmail}">
+    <c:if test="${not isContactForm or not empty contactEmail or cms.isEditMode}">
         <c:choose>
             <c:when test="${include}">
                 <%-- ###### Include the form from a separate file ###### --%>

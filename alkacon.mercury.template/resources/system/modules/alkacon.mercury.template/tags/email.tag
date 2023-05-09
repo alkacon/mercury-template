@@ -14,6 +14,9 @@
 <%@ attribute name="css" type="java.lang.String" required="false"
     description="CSS class added to the a tag surrounding the email address."%>
 
+<%@ attribute name="linkToDetail" fragment="true" required="true"
+    description="Link to the detail page in the case the 'mercury.contact.form' sitemap attribute is set." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
@@ -23,6 +26,10 @@
 </c:if>
 
 <c:choose>
+    <c:when test="${cms.sitemapConfig.attribute['mercury.contact.form'].toBoolean}">
+        <jsp:invoke fragment="linkToDetail" var="href" />
+        <jsp:invoke fragment="placeholder" var="address" />
+    </c:when>
     <c:when test="${email.value.ObfuscateEmail.stringValue}">
         <c:set var="obfuscate" value="true" />
         <c:set var="href">javascript:unobfuscateString('<mercury:obfuscate text="${email.value.Email}"/>', true);</c:set>

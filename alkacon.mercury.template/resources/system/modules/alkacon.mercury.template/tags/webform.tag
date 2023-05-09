@@ -35,7 +35,14 @@
     bookingInfo="${bookingInfo}"
     formId="${formId}">
 
-    <c:if test="${isContactDetail and not empty contactEmail}">
+    <c:if test="${isContactForm and cms.isEditMode}">
+        <div class="${empty contactEmail ? 'box' : 'subelement'}">
+            <span class="oct-meta-info">
+                <fmt:message key="msg.setting.formModus" />: <fmt:message key="msg.setting.formModus.contact" />
+            </span>
+        </div>
+    </c:if>
+    <c:if test="${isContactForm and not empty contactEmail}">
         <div class="subelement type-webform-contactform pivot"><%----%>
             <p><%----%>
                 <fmt:message key="msg.page.contact.form.head">
@@ -44,73 +51,71 @@
             </p><%----%>
         </div><%----%>
     </c:if>
+    <c:if test="${isContactForm and empty contactEmail}">
+        <mercury:alert-online>
+            <jsp:attribute name="head">
+                <fmt:message key="msg.page.contact.notfound.exception.head"/>
+            </jsp:attribute>
+            <jsp:attribute name="text">
+                <fmt:message key="msg.page.contact.notfound.exception.text"/>
+            </jsp:attribute>
+        </mercury:alert-online>
+    </c:if>
 
-    <c:choose>
-        <c:when test="${not isContactDetail or not empty contactEmail}">
-            <c:choose>
-                <c:when test="${include}">
-                    <%-- ###### Include the form from a separate file ###### --%>
-                    <cms:include file="/system/modules/alkacon.mercury.webform/elements/webform-included.jsp">
-                        <cms:param name="content"       value="${formXml.id}" />
-                        <cms:param name="bookingInfo"   value="${not empty formBookingXml ? formBookingXml.id : ''}" />
-                        <cms:param name="formId"        value="${formId}" />
-                    </cms:include>
-                </c:when>
-                <c:otherwise>
-                    <%-- ###### Generate the form ###### --%>
-                    <c:if test="${formBookingPossible and form.userCanManage and cms.isEditMode}">
-                        <div class="subelement"><%----%>
-                            <a class="btn btn-block oct-meta-info" href="<cms:link>${adminLink}?formmanage=${formId.hashCode()}</cms:link>"><%----%>
-                                <fmt:message key="msg.page.form.button.submissions.manage" />
-                            </a><%----%>
-                        </div><%----%>
-                    </c:if>
-                    <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" /><%-- The form handler sets the X-Oc-Webform request header to 'YES'. --%>
-                    <c:choose>
-                        <c:when test="${formBookingRegistrationClosed}">
-                            <mercury:alert-online>
-                                <jsp:attribute name="head">
-                                    <fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" />
-                                </jsp:attribute>
-                                <jsp:attribute name="text">
-                                    <fmt:message key="msg.page.form.bookingstatus.registrationClosed.text" />
-                                </jsp:attribute>
-                            </mercury:alert-online>
-                        </c:when>
-                        <c:when test="${cms.wrap[formXml.file].propertySearch['mercury.form.disabled'] eq 'true'}">
-                            <mercury:alert-online>
-                                <jsp:attribute name="head">
-                                    <fmt:message key="msg.page.form.disabled.headline" />
-                                </jsp:attribute>
-                                <jsp:attribute name="text">
-                                    <fmt:message key="msg.page.form.disabled.text" />
-                                </jsp:attribute>
-                            </mercury:alert-online>
-                        </c:when>
-                        <c:otherwise>
-                            <c:if test="${not empty formCssWrapper}">
-                                ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
-                            </c:if>
-                            <mercury:icalendar-vars content="${formBookingXml}">
-                            ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
-                            </mercury:icalendar-vars>
-                            ${formHandler.createForm()}
-                        </c:otherwise>
-                    </c:choose>
-                </c:otherwise>
-            </c:choose>
-        </c:when>
-        <c:otherwise>
-            <mercury:alert-online>
-                <jsp:attribute name="head">
-                    <fmt:message key="msg.page.contact.notfound.exception.head"/>
-                </jsp:attribute>
-                <jsp:attribute name="text">
-                    <fmt:message key="msg.page.contact.notfound.exception.text"/>
-                </jsp:attribute>
-            </mercury:alert-online>
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${not isContactForm or not empty contactEmail}">
+        <c:choose>
+            <c:when test="${include}">
+                <%-- ###### Include the form from a separate file ###### --%>
+                <cms:include file="/system/modules/alkacon.mercury.webform/elements/webform-included.jsp">
+                    <cms:param name="content"       value="${formXml.id}" />
+                    <cms:param name="bookingInfo"   value="${not empty formBookingXml ? formBookingXml.id : ''}" />
+                    <cms:param name="formId"        value="${formId}" />
+                </cms:include>
+            </c:when>
+            <c:otherwise>
+                <%-- ###### Generate the form ###### --%>
+                <c:if test="${formBookingPossible and form.userCanManage and cms.isEditMode}">
+                    <div class="subelement"><%----%>
+                        <a class="btn btn-block oct-meta-info" href="<cms:link>${adminLink}?formmanage=${formId.hashCode()}</cms:link>"><%----%>
+                            <fmt:message key="msg.page.form.button.submissions.manage" />
+                        </a><%----%>
+                    </div><%----%>
+                </c:if>
+                <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" /><%-- The form handler sets the X-Oc-Webform request header to 'YES'. --%>
+                <c:choose>
+                    <c:when test="${formBookingRegistrationClosed}">
+                        <mercury:alert-online>
+                            <jsp:attribute name="head">
+                                <fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" />
+                            </jsp:attribute>
+                            <jsp:attribute name="text">
+                                <fmt:message key="msg.page.form.bookingstatus.registrationClosed.text" />
+                            </jsp:attribute>
+                        </mercury:alert-online>
+                    </c:when>
+                    <c:when test="${cms.wrap[formXml.file].propertySearch['mercury.form.disabled'] eq 'true'}">
+                        <mercury:alert-online>
+                            <jsp:attribute name="head">
+                                <fmt:message key="msg.page.form.disabled.headline" />
+                            </jsp:attribute>
+                            <jsp:attribute name="text">
+                                <fmt:message key="msg.page.form.disabled.text" />
+                            </jsp:attribute>
+                        </mercury:alert-online>
+                    </c:when>
+                    <c:otherwise>
+                        <c:if test="${not empty formCssWrapper}">
+                            ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
+                        </c:if>
+                        <mercury:icalendar-vars content="${formBookingXml}">
+                        ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
+                        </mercury:icalendar-vars>
+                        ${formHandler.createForm()}
+                    </c:otherwise>
+                </c:choose>
+            </c:otherwise>
+        </c:choose>
+    </c:if>
 
 </mercury:webform-vars>
 </cms:bundle>

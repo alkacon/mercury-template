@@ -222,6 +222,18 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[formModus.default]]></IncludeName>
+      <PropertyName><![CDATA[formModus]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.formModus)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.formModus.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:       %(key.msg.setting.formModus.none)|
+            contact:    %(key.msg.setting.formModus.contact)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
       <PropertyName><![CDATA[imageRatio]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.imageRatio)]]></DisplayName>

@@ -32,8 +32,8 @@
 <%@ attribute name="linkToRelated" type="java.lang.String" required="false"
     description="Link to the parent organization (for persons) or the contact persion (for organizations)." %>
 
-<%@ attribute name="linkToContactForm" type="java.lang.String" required="false"
-    description="Link to the contact form." %>
+<%@ attribute name="linkToDetail" type="java.lang.String" required="false"
+    description="Link to the detail page." %>
 
 <%@ attribute name="description" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact description." %>
@@ -173,9 +173,6 @@
         <c:set var="imgtitle" value="${organization}" />
     </c:when>
 </c:choose>
-
-<%-- ### Show a link to a contact form replacing the obfuscated email ### --%>
-<c:set var="showContactForm" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.contact.form'] eq 'true'}" />
 
 
 <mercury:image-animated
@@ -340,30 +337,15 @@
             <c:if test="${showEmail}">
                 <div class="${showMinLabels ? 'mail' : 'mail tablerow'}" ${data.rdfa.Email}><%----%>
                     <c:if test="${not showMinLabels}">
-                        <c:choose>
-                            <c:when test="${showContactForm}">
-                                <mercury:icon-prefix icon="bi-pencil" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                                    <jsp:attribute name="text"><fmt:message key="msg.page.contact"/></jsp:attribute>
-                                </mercury:icon-prefix>
-                            </c:when>
-                            <c:otherwise>
-                                <mercury:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                                    <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
-                                </mercury:icon-prefix>
-                            </c:otherwise>
-                        </c:choose>
+                        <mercury:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                            <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
+                        </mercury:icon-prefix>
                     </c:if>
                     <span><%----%>
-                        <c:choose>
-                            <c:when test="${showContactForm}">
-                                <a href="${linkToContactForm}"><fmt:message key="msg.page.contact.form"/></a>
-                            </c:when>
-                            <c:otherwise>
-                                <mercury:email email="${data.value.Email}">
-                                    <jsp:attribute name="placeholder"><fmt:message key="msg.page.contact.obfuscatedemail"/></jsp:attribute>
-                                </mercury:email>
-                            </c:otherwise>
-                        </c:choose>
+                        <mercury:email email="${data.value.Email}">
+                            <jsp:attribute name="placeholder"><fmt:message key="msg.page.contact.obfuscatedemail"/></jsp:attribute>
+                            <jsp:attribute name="linkToDetail">${linkToDetail}</jsp:attribute>
+                        </mercury:email>
                     </span><%----%>
                 </div><%----%>
             </c:if>

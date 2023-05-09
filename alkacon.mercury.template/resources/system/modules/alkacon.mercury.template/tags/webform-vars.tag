@@ -60,14 +60,18 @@
 <%@ variable name-given="formBookingRegistrationClosed" declare="true"
     description="Whether the registration is closed." %>
 
-<%@ variable name-given="isContactDetail" declare="true"
-    description="Whether this is a contact detail request." %>
+<%@ variable name-given="showContactForm" declare="true"
+    description="Whether the attribute or property 'mercury.contact.form' is set, indicating that
+    this is maybe." %>
+
+<%@ variable name-given="isContactForm" declare="true"
+    description="Whether this is a dynamic contact form" %>
 
 <%@ variable name-given="contactName" declare="true"
-    description="The contact name, available if a contactid request parameter is given." %>
+    description="The contact name, in the case of a dynamic contact form." %>
 
 <%@ variable name-given="contactEmail" declare="true"
-    description="The contact email, available if a contactid request parameter is given." %>
+    description="The contact email, in the case of a dynamic contact form." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -145,9 +149,9 @@
     </c:if>
 </c:if>
 
-<%-- ###### Check whether this is a contact detail page request, if so, adjust form configuration with contact data. ###### --%>
-<c:set var="showContactForm" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.contact.form'] eq 'true'}" />
-<c:if test="${showContactForm}">
+<%-- ###### Check whether this is a dynamic contact form, if so, adjust form configuration with contact data. ###### --%>
+<c:set var="isContactForm" value="${cms.element.setting.formModus.toString eq 'contact'}" />
+<c:if test="${isContactForm}">
     <c:set var="detailContent"                  value="${cms.detailContent}" />
     <c:if test="${not empty detailContent}">
         <c:set var="isOrgDetail"                value="${detailContent.typeName eq 'm-organization'}" />

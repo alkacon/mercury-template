@@ -41,5 +41,8 @@
     <Setting>
       <IncludeName><![CDATA[formCssWrapper.default]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[formModus.default]]></IncludeName>
+    </Setting>
   </NewFormatter>
 </NewFormatters>

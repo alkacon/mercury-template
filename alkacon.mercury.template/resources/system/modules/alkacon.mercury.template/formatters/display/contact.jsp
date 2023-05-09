@@ -88,7 +88,7 @@
             address="${valAddress}"
             labelOption="${labelOption}"
             linkToRelated="${showOrganizationLink ? valLinkToRelated : null}"
-            linkToContactForm="${linkToDetail}"
+            linkToDetail="${linkToDetail}"
             hsize="${hsize}"
             showName="${setShowName}"
             showPosition="${setShowPosition}"

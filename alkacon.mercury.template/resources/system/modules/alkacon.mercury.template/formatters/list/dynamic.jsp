@@ -49,6 +49,8 @@
 %>
 <%-- The ajax link to use with the parameters containing the settings. --%>
 <c:set var="ajaxlink"><%= CmsRequestUtil.appendParameters("/system/modules/alkacon.mercury.template/elements/list-ajax.jsp", settingsParameterMap, true) %></c:set>
+<%-- The ajax link to use for facet count adjustment. --%>
+<c:set var="ajaxFacetCountLink">/system/modules/alkacon.mercury.template/elements/list-facet-ajax.jsp?siteRoot=${cms:encode(siteRoot)}</c:set>
 
 <mercury:init-messages reload="true">
 
@@ -92,6 +94,7 @@
         </c:if>
 
         <c:set var="ajaxlink"><cms:link>${ajaxlink}</cms:link></c:set>
+        <c:set var="ajaxFacetCountLink"><cms:link>${ajaxFacetCountLink}</cms:link></c:set>
         <c:set var="instanceId"><mercury:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
         <c:set var="elementId"><mercury:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
         <c:set var="isLoadAll" value="${wrappedSettings.loadAll.toBoolean}" />
@@ -131,6 +134,7 @@
 
         <cms:jsonobject var="listData">
             <cms:jsonvalue key="ajax" value="${ajaxlink}" />
+            <cms:jsonvalue key="ajaxCount" value="${ajaxFacetCountLink}" />
             <cms:jsonvalue key="loadAll" value="${isLoadAll}" />
             <cms:jsonvalue key="teaser" value="${settings.teaserlength}" />
             <cms:jsonvalue key="path" value="${cms.element.sitePath}" />

@@ -20,6 +20,8 @@
 <%@ attribute name="multiDayRangeFacet" type="java.lang.Boolean" required="false"
     description="Whether the range facet shall return all days of a multi-day event or the start day only." %>
 
+<%@ attribute name="facetConfig" type="java.lang.String" required="false"
+    description="If provided, we overwrite the facet config. We do not return results, but only use this to determine the facet counts." %>
 
 <%@ variable name-given="search" scope="AT_END" declare="true" variable-class="org.opencms.jsp.search.result.I_CmsSearchResultWrapper"
     description="The results of the search" %>
@@ -44,6 +46,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 
 <c:set var="multiDay" value="${not empty multiDayRangeFacet and multiDayRangeFacet eq true}" />
+<c:set var="isFacetCountQuery" value="${not empty facetConfig}"/>
 <c:set var="categoryFacetField">category_exact</c:set>
 <c:set var="rangeFacetField">instancedate</c:set>
 <c:set var="folderFacetField">parent-folders</c:set>
@@ -75,6 +78,7 @@
         "coordinates": "${param.coordinates}",
         "radius" : "${param.radius}"
     }
+    <c:if test="${isFacetCountQuery}">, ${facetConfig}</c:if>
 }
 </c:set>
 

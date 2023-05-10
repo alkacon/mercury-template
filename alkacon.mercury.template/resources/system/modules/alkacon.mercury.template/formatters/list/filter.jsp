@@ -90,6 +90,7 @@
         --%>"search":"${showSearch}", <%--
         --%>"categories":"${showCategories}", <%--
         --%>"archive":"${showArchive}", <%--
+        --%>"folders":"${showFolders}", <%--
         --%>"searchstatebase":"${search.controller.common.config.reloadedParam}", <%--
         --%>"catparamkey":"${categoryFacetController.config.paramKey}", <%--
         --%>"archiveparamkey":"${rangeFacetController.config.paramKey}", <%--

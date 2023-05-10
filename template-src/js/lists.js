@@ -312,7 +312,11 @@ function updateDirectLink(filter, searchStateParameters) {
     if (!link) {
         return;
     }
-    link.attr("href", "?" + searchStateParameters);
+    var url = link.attr("href");
+    if (url && url.indexOf("?") >= 0) {
+        url = url.substring(0, url.indexOf("?"));
+    }
+    link.attr("href", url + "?" + searchStateParameters);
 }
 
 /**

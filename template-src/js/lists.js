@@ -219,7 +219,8 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
             // unless filters should be combined
             // TODO: Is there any uncombinable filter at all presently?
             var currentFolder = "";
-            if (removeOthers && (removeAllFilters || !fi.combinable || fi.id == filterId)) {
+            // if triggerId is null, we have a changed query string and this means always to reset all filters.
+            if (removeOthers && (removeAllFilters || !fi.combinable || fi.id == filterId || triggerId == null)) {
                 var $elactive = fi.$element.find(".active");
                 $elactive.removeClass("active");
                 // clear folder filter
@@ -1073,8 +1074,9 @@ export function archiveFilter(id, triggerId) {
  */
 export function archiveSearch(id, searchStateParameters) {
     var filter = m_archiveFilters[id];
-    // if filters of other filter elements should be combined with that one - get the other filters that are set
-    var additionalFilters = filter.combine ? getAdditionalFilterParams(filter) : "";
+    // we do never combine the text search when we change the search word. This should reset all other filters always.
+    //var additionalFilters = filter.combine ? getAdditionalFilterParams(filter) : "";
+    var additionalFilters= "&reloaded";
     listFilter(filter.elementId, null, filter.id, searchStateParameters + encodeURIComponent(filter.$textsearch.val()) + additionalFilters, true);
 }
 

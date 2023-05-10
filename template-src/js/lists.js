@@ -225,6 +225,7 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
                 // clear folder filter
                 var $current = fi.$element.find("li.currentpage").each(function() {
                     var $c = $(this);
+                    $c.children().trigger("blur");
                     $c.removeClass("currentpage");
                     $c.parentsUntil("ul.list-group").removeClass("currentpage");
                     var folderPath = this.getAttribute('data-value');

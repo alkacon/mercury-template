@@ -342,10 +342,7 @@
                         </mercury:icon-prefix>
                     </c:if>
                     <span><%----%>
-                        <mercury:email email="${data.value.Email}">
-                            <jsp:attribute name="placeholder"><fmt:message key="msg.page.contact.obfuscatedemail"/></jsp:attribute>
-                            <jsp:attribute name="linkToDetail">${linkToDetail}</jsp:attribute>
-                        </mercury:email>
+                        <mercury:email email="${data.value.Email}" linkToForm="${linkToDetail}" />
                     </span><%----%>
                 </div><%----%>
             </c:if>

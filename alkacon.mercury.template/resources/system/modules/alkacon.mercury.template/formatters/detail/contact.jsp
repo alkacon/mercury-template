@@ -51,7 +51,6 @@
 
 <c:set var="linkToDetail"><cms:link>${content.filename}</cms:link></c:set>
 
-
 <mercury:contact-vars
     content="${content}"
     showPosition="${showPosition}"

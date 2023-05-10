@@ -103,19 +103,36 @@ var m_flagScrollToAnchor = true;
  * @param {*} filter
  * @param {string} elId id of the element the search state parameters should be calculated for.
  * @param {boolean} resetActive flag, indicating if other active filters should be reset.
+ * @param {boolean} countVersion flag, indicating if the state has to be calculated for the count calculation.
  * @returns {string} the search state parameters corresponding to the filter action.
  */
-function calculateStateParameter(filter, elId, resetActive) {
+function calculateStateParameter(filter, elId, resetActive, countVersion = false) {
     var $el = $( '#' + elId);
     var value = $el.data("value")
-    var paramkey = elId.indexOf('cat_') == 0 ? (resetActive && $el.hasClass("active") ? '' : filter.catparamkey) : elId.indexOf('folder_') == 0 ? filter.folderparamkey : resetActive && $el.hasClass("active") ? '' : filter.archiveparamkey;
+    var paramkey = 
+            elId.indexOf('cat_') == 0 
+                ? (resetActive && $el.hasClass("active") 
+                    ? ''
+                    : (countVersion 
+                        ? 'facet_' + encodeURIComponent(filter.id + '_c')
+                        : filter.catparamkey))
+            : elId.indexOf('folder_') == 0 
+                ? (resetActive && $el.hasClass("currentpage") 
+                    ? ''
+                    :  (countVersion 
+                        ?'facet_' + encodeURIComponent(filter.id + '_f')
+                        : filter.folderparamkey))
+            : (resetActive && $el.hasClass("active") 
+                    ? ''
+                    : (countVersion 
+                        ? 'facet_' + encodeURIComponent(filter.id + '_a')
+                        : filter.archiveparamkey));
     var stateParameter =
         typeof paramkey !== 'undefined' && paramkey != '' && typeof value !== 'undefined' && value != ''
             ? '&' + paramkey + '=' + encodeURIComponent(value)
             : '';
     return stateParameter;
 }
-
 
 /**
  * Splits the request parameters in a key-value map.
@@ -144,7 +161,6 @@ function getAdditionalFilterParams(filter) {
     if (typeof filterGroup !== 'undefined') {
         for (var i=0; i<filterGroup.length; i++) {
             var fi = filterGroup[i];
-            //TODO: Query
             if (fi.combinable && fi.id != filter.id) {
                 var query = fi.$textsearch.val();
                 if(typeof query !== 'undefined' && query != '') {
@@ -154,6 +170,17 @@ function getAdditionalFilterParams(filter) {
                     var p = calculateStateParameter(fi, this.id, false);
                     params += p;
                 });
+                // Folder is a bit tricky, here currenpage is on
+                // each item, with a parent folder of the clicked on
+                // but only the clicked one should be set
+                // so we only take the parameter with the longest path
+                // into account
+                var pageP = "";
+                fi.$element.find("li.currentpage").each( function() {
+                    var p = calculateStateParameter(fi, this.id, false);
+                    if(p.length > pageP.length) pageP = p;
+                });
+                params += pageP;
             }
         }
     }
@@ -179,6 +206,10 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
     var filter = m_archiveFilters[filterId]
     var removeAllFilters = !(filter && filter.combine);
     if ((triggerId != "SORT") && (typeof filterGroup !== "undefined")) {
+        // We have more than one filter element, so we can combine them and have to adjust counts
+        // I.e., if in one filter element we click a category
+        // the facet counts in the other filter elements decrease
+        var adjustCounts = filterGroup.length > 1;
         // potentially the same filter may be on the same page
         // here we make sure to reset them all
         var triggeredWasActive = triggerId != null && jQ("#" + triggerId).hasClass("active");
@@ -186,22 +217,35 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
             var fi = filterGroup[i];
             // remove all active / highlighted filters
             // unless filters should be combined
+            // TODO: Is there any uncombinable filter at all presently?
+            var currentFolder = "";
             if (removeOthers && (removeAllFilters || !fi.combinable || fi.id == filterId)) {
                 var $elactive = fi.$element.find(".active");
                 $elactive.removeClass("active");
+                // clear folder filter
+                var $current = fi.$element.find("li.currentpage").each(function() {
+                    var $c = $(this);
+                    $c.removeClass("currentpage");
+                    $c.parentsUntil("ul.list-group").removeClass("currentpage");
+                    var folderPath = this.getAttribute('data-value');
+                    if(folderPath && folderPath.length > currentFolder.length) currentFolder = folderPath;
+                });
                 // clear text input if wanted
                 if (triggerId != fi.$textsearch.id) {
                     fi.$textsearch.val('');
                 }
             }
             if (triggerId != null) {
-                fi.$element.find(".currentpage").removeClass("currentpage");
                 var $current = fi.$element.find("#" + triggerId).first();
                 if (DEBUG) console.info("Lists.listFilter() Current has class active? : " + $current.hasClass("active") + " - " + $current.attr("class"));
-                // activate / highlight clicked filter
+                // activate clicked folder filter, if it wasn't the highlighted before
                 if (triggerId.indexOf("folder_") == 0) {
-                    $current.addClass("currentpage");
-                    $current.parentsUntil("ul.list-group").addClass("currentpage");
+                    var folderElem = document.getElementById(triggerId);
+                    var elemValue = folderElem.getAttribute('data-value');
+                    if(currentFolder !== elemValue) {
+                        $current.addClass("currentpage");
+                        $current.parentsUntil("ul.list-group").addClass("currentpage");
+                    }
                 } else if (triggeredWasActive){
                     $current.removeClass("active");
                 } else {
@@ -232,6 +276,9 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
         // required list is an element on this page
         for (var i=0; i<listGroup.length; i++) {
             updateInnerList(listGroup[i].id, searchStateParameters, true);
+        }
+        if (adjustCounts) {
+                updateFilterCounts(listGroup[0].id, filterGroup, filter);
         }
         updateDirectLink(filter, searchStateParameters);
     } else {
@@ -827,6 +874,167 @@ function handleAutoLoaders() {
     }
 }
 
+/**
+ * Updates the counts on list filters.
+ * Search is performed on the server and results are returned according to the state parameters.
+ *
+ * @param {sting} id id of the list to update.
+ * @param {ListFilter[]} filterGroup the list filters to update.
+ * @param {ListFilter} filter the filter that has changed.
+ * @param {string} searchStateParameters the search state parameters to pass for the filter updates.
+ * @returns {void}
+ */
+function updateFilterCounts(id, filterGroup, filter) {
+    if (DEBUG) console.info("Lists.updateFilterCounts() called with filterGroup, filter, searchStateParameters:");
+    var list = m_lists[id];
+    if ((list.ajaxCount == null)) {
+        if (DEBUG) console.warn("Lists.updateFilterCounts() does not support updates since no AJAX link for count updates is provided.");
+    } else {
+        var params = "&reloaded";
+        for(var i=0; i < filterGroup.length; i++) {
+            var fi = filterGroup[i];
+            if (fi.combinable) {
+                var query = fi.$textsearch.val();
+                if(typeof query !== 'undefined' && query != '') {
+                    params += '&' + fi.$textsearch.attr('name') + '=' + encodeURIComponent(query);
+                }
+                fi.$element.find(".active").each( function() {
+                    var p = calculateStateParameter(fi, this.id, false, true);
+                    params += p;
+                });
+                var pageP = "";
+                fi.$element.find("li.currentpage").each( function() {
+                    var p = calculateStateParameter(fi, this.id, false, true);
+                    if(p.length > pageP.length) pageP = p;
+                });
+                params += pageP;
+
+                // Tell which filters are shown in the current filter element
+                if (fi.search == 'true') params += '&s=' + encodeURIComponent(fi.id);
+                if (fi.categories == 'true') params += '&c=' + encodeURIComponent(fi.id);
+                if (fi.archive == 'true') params += '&a=' + encodeURIComponent(fi.id);
+                if (fi.folders == 'true') params += '&f=' + encodeURIComponent(fi.id);
+            }
+        }
+        jQ.get(buildAjaxCountLink(list, params), function(ajaxCountJson) {
+            replaceFilterCounts(filterGroup, ajaxCountJson)
+        }, "json");
+    }
+}
+
+/**
+ * Generates the AJAX link to call to retrieve the item counts for filters for the
+ * provided state.
+ *
+ * @param {List} list the list to generate the link for.
+ * @param {string} searchStateParameters the search state parameters to pass with the link.
+ * @returns {string} the AJAX link.
+ */
+function buildAjaxCountLink(list, searchStateParameters) {
+
+    if (DEBUG) console.info("Lists.buildAjaxCountLink() called - searchStateParameters='" + searchStateParameters + "'");
+
+    var params = "contentpath=" + list.path
+        + "&sitepath="
+        + list.sitepath
+        + "&subsite="
+        + list.subsite
+        + "&__locale="
+        + list.locale;
+
+    if (list.$facets.length != 0) {
+        // The first option is only used by the old lists. NG lists use the settings.
+        //params = params + "&facets=" + list.$facets.data("facets");
+        //params = params + list.$facets.data("settings");
+    }
+    return list.ajaxCount + (list.ajaxCount.indexOf('?') >= 0 ? '&' : '?') + params + searchStateParameters;
+}
+
+/**
+ * Updates the counts on list filters.
+ * Callback after the counts are returned from the server.
+ *
+ * @param {ListFilter[]} filterGroup the list filters to update.
+ * @param {Object} ajaxCountJson the new counts of the filters.
+ * @returns {void}
+ */
+function replaceFilterCounts(filterGroup, ajaxCountJson) {
+    if(DEBUG) console.info("Lists.buildAjaxCountLink() called with ajaxCountJson", ajaxCountJson);
+    filterGroup.forEach((filter) => {
+        var elementFacets = ajaxCountJson[filter.id];
+        var archiveFilter = elementFacets['a'];
+        var categoryFilter = elementFacets['c'];
+        var folderFilter = elementFacets['f'];
+        if(null != archiveFilter) {
+            var $el = filter.$element.find('.archive');
+            $el.find('li[data-value]').each(function(_, li) {
+                var val = li.getAttribute('data-value');
+                var count = archiveFilter[val];
+                if(null == count) count = '0';
+                var countSpan = li.querySelector('.li-count');
+                var currentCount = countSpan.textContent;
+                if (count != currentCount) {
+                    if(count == '0') {
+                        var a = li.querySelector('a');
+                        a.setAttribute('style','pointer-events:none;');
+                        li.setAttribute('data-onclick', li.getAttribute('onclick'));
+                        li.removeAttribute('onclick');
+                        li.setAttribute('tabindex', '-1');
+                    } else if (currentCount == '0') {
+                        var a = li.querySelector('a');
+                        a.removeAttribute('style');
+                        li.setAttribute('onclick', li.getAttribute('data-onclick'));
+                        li.removeAttribute('data-onclick');
+                        li.setAttribute('tabindex', '0');
+                    }
+                    countSpan.textContent = count;
+                }
+            });
+        }
+        if(null != categoryFilter) {
+            var $catEl = filter.$element.find('.categories');
+            $catEl.find('li[data-value]').each(function(_, li) {
+                var val = li.getAttribute('data-value');
+                var count = categoryFilter[val];
+                if(null == count) count = '0';
+                var countSpan = li.querySelector('.li-count');
+                var currentCount = countSpan.textContent;
+                if (count != currentCount) {
+                    if(count == '0') {
+                        var a = li.querySelector('a');
+                        a.setAttribute('style','pointer-events:none;');
+                        a.setAttribute('tabindex', '-1');
+                    } else if (currentCount == '0') {
+                        var a = li.querySelector('a');
+                        a.removeAttribute('style');
+                        a.setAttribute('tabindex', '0');
+                    }
+                    countSpan.textContent = count;
+                }
+            });
+        }
+        if(null != folderFilter) {
+            var $catEl = filter.$element.find('.folders');
+            $catEl.find('li[data-value]').each(function(_, li) {
+                var val = li.getAttribute('data-value');
+                var count = folderFilter[val];
+                var shouldDisable = (null == count || count == '0');
+                var a = li.querySelector('a');
+                var isDisabled = a.getAttribute('tabindex') == '-1';
+                if (isDisabled != shouldDisable) {
+                    if(shouldDisable) {
+                        a.setAttribute('style','pointer-events:none;');
+                        a.setAttribute('tabindex', '-1');
+                    } else {
+                        a.removeAttribute('style');
+                        a.setAttribute('tabindex', '0');
+                    }
+                }
+            });
+        }
+    })
+}
+
 /****** Exported functions ******/
 
 /**
@@ -859,7 +1067,7 @@ export function archiveFilter(id, triggerId) {
 /**
  * Applies an query filter to the list.
  *
- * @param {string} idthe id of the list the filter belongs to.
+ * @param {string} id the id of the list the filter belongs to.
  * @param {string} triggerId the id of the HTML element that triggered the filter action.
  */
 export function archiveSearch(id, searchStateParameters) {

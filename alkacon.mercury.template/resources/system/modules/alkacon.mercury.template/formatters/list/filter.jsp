@@ -458,7 +458,7 @@
 
         <c:if test="${showDirectLink}">
             <div class="directlink"><%----%>
-                <mercury:link link="${cms.requestContext.uri}" css="btn btn-block oct-meta-info external" newWin="${true}">
+                <mercury:link link="${cms.site.url}${cms.requestContext.uri}" css="btn btn-block oct-meta-info external" newWin="${true}">
                     <fmt:message key="msg.page.list.directlink.label" />
                 </mercury:link>
             </div><%----%>

@@ -33,7 +33,8 @@
     <c:set var="categoriesOpen" value="${categoryVal eq 'opened'}" />
     <c:set var="categoriesResp" value="${categoryVal.contains('op-')}" />
     <c:set var="showCategories" value="${(categoriesOpen || categoriesResp || categoryVal eq 'closed') and not empty categoryFacetResult and cms:getListSize(categoryFacetResult.values) > 0}" />
-    <c:set var="showCatCount"   value="${setting.showCatCount.useDefault('true').toBoolean}" />
+    <c:set var="showCatCount"   value="${not fn:contains(setting.showCatCount.useDefault('true').toString, 'false')}" />
+    <c:set var="showAllOption"  value="${not fn:contains(setting.showCatCount.useDefault('true').toString, 'hide-all')}" />
 
     <c:set var="archiveLabel"   value="${setting.archivelabel.toString}" />
     <c:set var="archiveVal"     value="${setting.showarchive.toString}" />
@@ -52,9 +53,6 @@
     <c:set var="combine"        value="${setting.combine.toBoolean}" />
 
     <c:set var="targetUri"      value="${setting.targetUri.toString}" />
-
-    <%-- This setting is supported, but currently not shown in the dialog to reduce the number of options. --%>
-    <c:set var="showAllOption"  value="${setting.showalloption.useDefault('true').toBoolean}" />
 
     <c:set var="elementId"><mercury:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
     <c:set var="filterId"><mercury:idgen prefix="la" uuid="${cms.element.instanceId}" /></c:set>

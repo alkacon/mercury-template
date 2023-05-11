@@ -2560,7 +2560,9 @@
       <Default><![CDATA[true]]></Default>
       <WidgetConfig><![CDATA[
               true:           %(key.msg.option.show)|
-              false:          %(key.msg.option.hide)
+              false:          %(key.msg.option.hide)|
+              true-hide-all:  %(key.msg.setting.list.showCatCount.true-hide-all)|
+              false-hide-all: %(key.msg.setting.list.showCatCount.false-hide-all)|
         ]]></WidgetConfig>
     </Setting>
     <Setting>

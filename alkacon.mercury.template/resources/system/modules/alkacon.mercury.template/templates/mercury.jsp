@@ -101,26 +101,34 @@
 
 
 <jsp:attribute name="middle">
-<c:set var="cssgutter" value="${empty contentPropertiesSearch['mercury.css.gutter'] ? '#' : contentPropertiesSearch['mercury.css.gutter']}" />
-<cms:container
-    name="mercury-page"
-    type="area"
-    editableby="ROLE.DEVELOPER">
+<c:choose>
+    <c:when test="${empty cms.plugins['custom-page-container']}">
+        <c:set var="cssgutter" value="${empty contentPropertiesSearch['mercury.css.gutter'] ? '#' : contentPropertiesSearch['mercury.css.gutter']}" />
+        <cms:container
+            name="mercury-page"
+            type="area"
+            editableby="ROLE.DEVELOPER">
 
-    <cms:param name="cssgrid" value="#" />
-    <cms:param name="cssgutter" value="${cssgutter}" />
-    <cms:param name="cssgutterbase" value="${cssgutter}" />
+            <cms:param name="cssgrid" value="#" />
+            <cms:param name="cssgutter" value="${cssgutter}" />
+            <cms:param name="cssgutterbase" value="${cssgutter}" />
 
-    <c:set var="message"><fmt:message key="msg.page.layout.topContainer" /></c:set>
-    <mercury:container-box
-        label="${message}"
-        boxType="container-box"
-        type="area"
-        role="ROLE.DEVELOPER"
-    />
+            <c:set var="message"><fmt:message key="msg.page.layout.topContainer" /></c:set>
+            <mercury:container-box
+                label="${message}"
+                boxType="container-box"
+                type="area"
+                role="ROLE.DEVELOPER"
+            />
 
-</cms:container>
-<mercury:nl/>
+        </cms:container>
+        <mercury:nl/>
+    </c:when>
+    <c:otherwise>
+        <%-- Use custom main container plugin --%>
+        <mercury:load-plugins group="custom-page-container" type="jsp" />
+    </c:otherwise>
+</c:choose>
 </jsp:attribute>
 
 

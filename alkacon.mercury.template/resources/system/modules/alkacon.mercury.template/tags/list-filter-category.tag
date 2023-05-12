@@ -105,7 +105,7 @@
 
                 <c:if test="${blacklistFilter != isMatchedByFilter}">
                     <c:if test="${showAllOption}">
-                        <li id="cat_${categoryFilterId}" data-param="" class="levelAll"><%----%>
+                        <li id="cat_${categoryFilterId}" data-param="" class="enabled levelAll"><%----%>
                             <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
                                  --%>'${categoryFilterId}', <%--
                                  --%>'cat_${categoryFilterId}', <%--
@@ -121,7 +121,7 @@
                     </c:if>
 
                     <c:set var="currentLevel" value="${fn:length(fn:split(value.name, '/'))}" />
-                    <li id="${catId}" data-value="${value.name}" class="level${currentLevel}${active ? ' active' : ''}"><%----%>
+                    <li id="${catId}" data-value="${value.name}" class="enabled level${currentLevel}${active ? ' active' : ''}"><%----%>
                         <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
                             --%>'${categoryFilterId}', <%--
                             --%>'${catId}'<%--

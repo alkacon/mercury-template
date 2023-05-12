@@ -210,7 +210,7 @@
                         <%-- If multiple folders are present, prepend an "all" folder. --%>
                         <c:if test="${hasMultiplePaths}">
                             <c:set var="folderId">folder_${filterId}_0</c:set>
-                            <c:out escapeXml='false' value='<li id="${folderId}" data-param="" class="currentpage">' />
+                            <c:out escapeXml='false' value='<li id="${folderId}" data-param="" class="currentpage enabled">' />
                                 <c:set var="onclick">onclick="DynamicList.archiveFilter(<%--
                                                 --%>'${filterId}', <%--
                                                 --%>'${folderId}'<%--
@@ -260,7 +260,7 @@
 
                                 <%-- There has been an item before - show it. --%>
                                 <c:otherwise>
-                                    <c:set var="liAttrs">id="${folderId}" data-value="${previousFolder}" ${isCurrentPage ? ' class="currentpage"' : ''}</c:set>
+                                    <c:set var="liAttrs">id="${folderId}" data-value="${previousFolder}" ${isCurrentPage ? ' class="currentpage enabled"' : 'class="enabled"'}</c:set>
                                     <c:out escapeXml='false' value='<li ${liAttrs}>' />
                                     <a ${onclick} href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>" class="nav-label">${label}</a><%----%>
                                     <mercury:nl />
@@ -340,7 +340,7 @@
 
                         <%-- Check, if some item has been rendered at all and, if yes, if some nesting levels have to be closed. --%>
                         <c:if test="${not empty startFolderPath}">
-                            <li id="${folderId}" data-value="${previousFolder}"${isCurrentPage ? ' class=\"currentpage\"' : ''}><%----%>
+                            <li id="${folderId}" data-value="${previousFolder}"${isCurrentPage ? ' class="currentpage enabled"' : ' class="enabled"'}><%----%>
                                 <a ${onclick} href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>" class="nav-label">${label}</a><%----%>
                             </li><%----%>
                             <c:if test="${previousDeps > startDeps}">
@@ -398,7 +398,7 @@
                         </c:otherwise>
                     </c:choose>
                     <c:forEach var="facetItem" items="${rangeFacet.counts}" varStatus="status">
-                        <c:set var="active">${rangeFacetController.state.isChecked[facetItem.value] ? ' class="active"' : ''}</c:set>
+                        <c:set var="active">${rangeFacetController.state.isChecked[facetItem.value] ? ' class="active enabled"' : ' class="enabled"'}</c:set>
                         <fmt:parseDate var="fDate" pattern="yyyy-MM-dd'T'HH:mm:ss'Z'" value="${facetItem.value}" timeZone="UTC"/>
                         <c:set var="currYear"><fmt:formatDate value="${fDate}" pattern="yyyy" /></c:set>
                         <c:set var="activeYear" value="${currYear eq showedYear}" />

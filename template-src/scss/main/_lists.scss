@@ -865,6 +865,23 @@
                             content: ")";
                         }
                     }
+
+                    &.disabled {
+                        a {
+                            pointer-events: none;
+                            cursor: default;
+                        }
+
+                        .li-count {
+                            display: none;
+                        }
+
+                        .li-entry {
+                            color: var(--#{$prefix}grey);
+                            background-color: var(--#{$prefix}body-bg);
+                            border: 1px solid var(--#{$prefix}grey-light);
+                        }
+                    }
                 }
             }
         }
@@ -882,11 +899,21 @@
                 margin-left: 0;
                 margin-right: 0;
 
-                li > a {
-                    padding-right: $nav-handle-right-padding;
-                    + a {
-                        padding-left: 0;
-                        padding-right: 0;
+                li {
+                    > a {
+                        padding-right: $nav-handle-right-padding;
+                        + a {
+                            padding-left: 0;
+                            padding-right: 0;
+                        }
+                    }
+
+                    &.disabled {
+                        a {
+                            pointer-events: none;
+                            cursor: default;
+                            color: var(--#{$prefix}grey);
+                        }
                     }
                 }
             }
@@ -938,7 +965,7 @@
                     font-family: var(--#{$prefix}btn-font-family);
 
                     a {
-                        color: $text-dark;
+                        color: var(--#{$prefix}text-dark);
 
                         &:hover {
                             text-decoration: none;
@@ -975,6 +1002,21 @@
 
                         .li-count {
                             display: block;
+                        }
+                    }
+
+                    &.disabled {
+                        a {
+                            pointer-events: none;
+                            cursor: default;
+                        }
+
+                        .li-count {
+                            display: none;
+                        }
+
+                        .li-entry {
+                            color: var(--#{$prefix}grey);
                         }
                     }
                 }

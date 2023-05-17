@@ -828,6 +828,8 @@
         }
 
         &.categories {
+            --#{$prefix}icon-margin: 2.4rem;
+
             > div {
                 padding: $grid-gutter-width-half;
             }
@@ -842,23 +844,35 @@
                 list-style: outside none none;
 
                 li {
-                    margin-top: 2px;
+                    margin-top: 0.4rem;
+                    &:first-child {
+                        margin-top: 0;
+                    }
 
                     a {
                         cursor: pointer;
+                        @include list-category-label(true, true);
+
+                        padding-left: var(--#{$prefix}icon-margin);
+                        line-height: 1.2;
+                        text-decoration: none;
+
+                        &::before {
+                            display: inline-block;
+                            margin-left: calc(-1 * var(--#{$prefix}icon-margin));
+                            width: var(--#{$prefix}icon-margin);
+                            padding-left: $btn-padding;
+                            padding-right: 0;
+                        }
                     }
 
                     &.active a {
                         font-weight: $font-weight-bold;
                     }
 
-                    .li-entry {
-                        @include list-category-label(true, true);
-                    }
-
                     .li-count {
                         &::before {
-                            padding-left: 4px;
+                            padding-left: 0.4rem;
                             content: "(";
                         }
                         &::after {
@@ -870,16 +884,14 @@
                         a {
                             pointer-events: none;
                             cursor: default;
+
+                            color: var(--#{$prefix}grey);
+                            background-color: var(--#{$prefix}body-bg);
+                            border: 1px solid var(--#{$prefix}grey-light);
                         }
 
                         .li-count {
                             display: none;
-                        }
-
-                        .li-entry {
-                            color: var(--#{$prefix}grey);
-                            background-color: var(--#{$prefix}body-bg);
-                            border: 1px solid var(--#{$prefix}grey-light);
                         }
                     }
                 }

@@ -42,10 +42,16 @@
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="The heading markup will only be generated if this evaluates to 'true'." %>
 
+<%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
+    description="Similar to c:out escapeXml. Default is 'true'." %>
+
+
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+
+<c:set var="escapeXml" value="${empty escapeXml or escapeXml ? true : false}" />
 
 <c:if test="${((not empty intro) or (not empty headline)) and (empty test or test)}">
 
@@ -60,7 +66,7 @@
                 <span class="intro"><%----%>
                     <c:set var="adeIntro" value="${ade and cms:isWrapper(intro)}" />
                     ${adeIntro ? '<span '.concat(intro.rdfaAttr).concat('>') : ''}
-                        <mercury:out value="${intro}" />
+                        <mercury:out value="${intro}" escapeXml="${escapeXml}" />
                     ${adeIntro ? '</span>' : ''}
                     <span class="sr-only">:</span><%----%>
                 </span><%----%>
@@ -70,7 +76,7 @@
                     <c:set var="adeHeadline" value="${ade and cms:isWrapper(headline)}" />
                     ${prefix}
                     ${adeHeadline ? '<span '.concat(headline.rdfaAttr).concat('>') : ''}
-                        <mercury:out value="${headline}" />
+                        <mercury:out value="${headline}" escapeXml="${escapeXml}" />
                     ${adeHeadline ? '</span>' : ''}
                     ${suffix}
                 </span><%----%>

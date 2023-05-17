@@ -78,10 +78,16 @@
       <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[containerType.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[performerOption.detail]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[containerType.detail]]></IncludeName>
+      <IncludeName><![CDATA[showLocation.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showEventType.true]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
@@ -91,9 +97,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showLocation.true]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showCosts.true]]></IncludeName>

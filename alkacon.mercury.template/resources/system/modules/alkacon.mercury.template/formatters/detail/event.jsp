@@ -37,6 +37,7 @@
 <c:set var="useVisualFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
 
 <c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
+<c:set var="showType"               value="${setting.showType.toBoolean}" />
 <c:set var="bookingOption"          value="${setting.bookingOption.toString}" />
 <c:set var="performerOption"        value="${setting.performerOption.toString}" />
 <c:set var="showiCalendar"          value="${setting.iCalendarShowLink.toBoolean}" />
@@ -64,7 +65,7 @@
 
 <c:set var="hasVirtualLocation"     value="${value.VirtualLocation.value.URI.isSet}" />
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet or hasVirtualLocation)}" />
-<c:set var="showType"               value="${type.isSet}" />
+<c:set var="showType"               value="${showType and type.isSet}" />
 <c:set var="showPerformer"          value="${performerOption ne 'none'}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />

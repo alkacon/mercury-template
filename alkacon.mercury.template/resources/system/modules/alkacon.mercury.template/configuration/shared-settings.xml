@@ -1071,6 +1071,14 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showEventType.true]]></IncludeName>
+      <PropertyName><![CDATA[showType]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showEventType)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showEventType.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showLocation.true]]></IncludeName>
       <PropertyName><![CDATA[showLocation]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showLocation)]]></DisplayName>

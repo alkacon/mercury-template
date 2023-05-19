@@ -3,6 +3,7 @@
     buffer="none"
     session="false"
     trimDirectiveWhitespaces="true"%>
+<%@page import="org.opencms.main.OpenCms" %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,9 +17,13 @@
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 
 <c:set var="currentSite"            value="${cms.vfs.readSubsiteFor(cms.requestContext.uri)}" />
-
 <c:if test="${cms.detailRequest}">
     <c:set var="sourceSite"         value="${cms.vfs.readSubsiteFor(cms.detailContent.sitePath)}" />
+</c:if>
+<c:set var="sharedFolder"           value="${OpenCms.getSiteManager().getSharedFolder()}" />
+<c:if test="${fn:startsWith(sourceSite.rootPath, sharedFolder)}">
+    <c:set var="sourceSiteProp"     value="${cms.vfs.readProperties[sourceSite.rootPath]['mercury.sourcesite']}" />
+    <c:set var="sourceSite"         value="${cms.vfs.readSubsiteFor(sourceSiteProp)}" />
 </c:if>
 
 <fmt:setLocale value="${cms.locale}" />

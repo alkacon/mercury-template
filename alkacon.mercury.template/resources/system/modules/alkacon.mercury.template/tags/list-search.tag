@@ -50,6 +50,7 @@
 <c:set var="categoryFacetField">category_exact</c:set>
 <c:set var="rangeFacetField">instancedate</c:set>
 <c:set var="folderFacetField">parent-folders</c:set>
+<c:set var="coordinatesField">geocoords_loc</c:set>
 <c:choose>
     <c:when test="${multiDay eq true}">
         <c:set var="instancedaterangefield">instancedaterange_${cms.locale}_dr</c:set>
@@ -72,12 +73,14 @@
     "pagesize" : "${pageSize}",
     "pagenavlength" : 5,
     "additionalrequestparams" : [
-        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dcalendarday}${instancedaterangefield}:(%(value))" }
+        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dcalendarday}${instancedaterangefield}:(%(value))" },
+        { "param" : "coordinates", "solrquery" : "sfield=${coordinatesField}&pt=${param.coordinates}&d=${param.radius}" }
     ],
     "geofilter" : {
         "coordinates": "${param.coordinates}",
         "radius" : "${param.radius}"
     }
+    <c:if test="${not empty param.coordinates}">, "sortoptions" : [{"solrvalue" : "geodist() asc" }]</c:if>
     <c:if test="${isFacetCountQuery}">, ${facetConfig}</c:if>
 }
 </c:set>

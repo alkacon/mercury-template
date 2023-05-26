@@ -135,6 +135,7 @@
             <cms:param name="nglist">true</cms:param>
             <cms:param name="noscriptList">${noscriptCall}</cms:param>
             <cms:param name="ajaxList">${ajaxCall}</cms:param>
+            <cms:param name="_geodist_">${result.fields['_geodist_']}</cms:param>
         </cms:display>
 
         <c:if test="${not empty listEntryWrapper}"></${listEntryTag}><mercury:nl /></c:if>

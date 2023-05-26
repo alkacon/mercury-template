@@ -51,6 +51,9 @@
 <c:set var="rangeFacetField">instancedate</c:set>
 <c:set var="folderFacetField">parent-folders</c:set>
 <c:set var="coordinatesField">geocoords_loc</c:set>
+<c:set var="isSortGeodist" value="${not empty param.geodist and not empty param.coordinates}" />
+<c:set var="geodistAdditionalParams">{ "param" : "coordinates", "solrquery" : "sfield=${coordinatesField}&pt=${param.coordinates}&d=${param.radius}&fl=_geodist_:geodist()" }</c:set>
+<c:set var="geodistSortOptions">"sortoptions" : [{"solrvalue" : "geodist() asc" }]</c:set>
 <c:choose>
     <c:when test="${multiDay eq true}">
         <c:set var="instancedaterangefield">instancedaterange_${cms.locale}_dr</c:set>
@@ -73,14 +76,14 @@
     "pagesize" : "${pageSize}",
     "pagenavlength" : 5,
     "additionalrequestparams" : [
-        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dcalendarday}${instancedaterangefield}:(%(value))" },
-        { "param" : "coordinates", "solrquery" : "sfield=${coordinatesField}&pt=${param.coordinates}&d=${param.radius}" }
+        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dcalendarday}${instancedaterangefield}:(%(value))" }
+        <c:if test="${isSortGeodist}">, ${geodistAdditionalParams}</c:if>
     ],
     "geofilter" : {
         "coordinates": "${param.coordinates}",
         "radius" : "${param.radius}"
     }
-    <c:if test="${not empty param.coordinates}">, "sortoptions" : [{"solrvalue" : "geodist() asc" }]</c:if>
+    <c:if test="${isSortGeodist}">, ${geodistSortOptions}</c:if>
     <c:if test="${isFacetCountQuery}">, ${facetConfig}</c:if>
 }
 </c:set>

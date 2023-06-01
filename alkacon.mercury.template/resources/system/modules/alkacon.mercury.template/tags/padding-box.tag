@@ -57,6 +57,9 @@
                 <c:set var="paddingStyle">style="padding-bottom: ${cms:mathCeil((height / width) * 100000) / 1000}%;"</c:set>
             </c:if>
         </c:when>
+        <c:when test="${heightPercentage eq '0'}">
+            <c:set var="cssWrapper">${cssWrapper} original-size</c:set>
+        </c:when>
         <c:otherwise>
             <c:set var="cssWrapper">${cssWrapper} presized</c:set>
             <c:set var="paddingStyle">style="padding-bottom: ${heightPercentage};"</c:set>

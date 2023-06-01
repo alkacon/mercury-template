@@ -67,10 +67,25 @@ aside img {
     img,
     .img {
         width: 100%;
+
+        &.external {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &.presized,
+    &.original-size {
+        position: relative;
+
+        > .copyright.image-copyright { // must have both selectors here in order to make the rule more important
+            position: absolute;
+            @include image-copyright;
+        }
     }
 
     &.presized {
-        position: relative;
+
         height: 0;
         display: block;
         // padding-bottom is calculated according to ratio and rendered as inline style in HTML
@@ -82,10 +97,13 @@ aside img {
             left: 0;
             height: 100%;
         }
+    }
 
-        > .copyright.image-copyright { // must have both selectors here in order to make the rule more important
-            position: absolute;
-            @include image-copyright;
+    &.original-size {
+
+        img,
+        .img {
+            height: auto;
         }
     }
 }

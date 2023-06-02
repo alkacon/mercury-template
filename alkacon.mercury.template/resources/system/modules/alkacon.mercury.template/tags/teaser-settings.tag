@@ -81,23 +81,12 @@
     ${'<div class=\"'}teaser-tile ${param.tilegrid}${'\" />'}
 </c:if>
 
-<c:choose>
-    <c:when test="${cms.sitemapConfig.attribute['mercury.detailpage.category'].toBoolean}">
-        <c:set var="catDetailPage" value="${null}" />
-        <c:forEach var="cat" items="${content.resource.categories.topItems}">
-            <c:if test="${empty catDetailPage}">
-                <c:set var="catDetailPage" value="${cms.functionDetailPageExact['category:'.concat(cat.path)]}" />
-            </c:if>
-        </c:forEach>
-        <c:set var="linkToDetail"><cms:link baseUri="${pageUri}" detailPage="${catDetailPage}">${content.filename}</cms:link></c:set>
-    </c:when>
-    <c:when test="${setting.listDetailLinkOverride.toBoolean}">
-        <c:set var="propertyDetailLink" value="${content.resource.property['mercury.detail.link']}" />
-        <c:if test="${not empty propertyDetailLink and cms.vfs.exists[propertyDetailLink]}">
-            <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${propertyDetailLink}</cms:link></c:set>
-        </c:if>
-    </c:when>
-</c:choose>
+<c:if test="${setting.listDetailLinkOverride.toBoolean}">
+    <c:set var="propertyDetailLink" value="${content.resource.property['mercury.detail.link']}" />
+    <c:if test="${not empty propertyDetailLink and cms.vfs.exists[propertyDetailLink]}">
+        <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${propertyDetailLink}</cms:link></c:set>
+    </c:if>
+</c:if>
 
 <c:if test="${empty linkToDetail}">
     <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>

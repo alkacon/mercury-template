@@ -269,26 +269,37 @@ table.submissions {
     .ct-price {
         font-weight: var(--#{$prefix}font-weight-bold);
     }
+}
 
-    @include media-breakpoint-up(lg) {
+@include media-breakpoint-up(lg) {
+
+    .event-costs {
+        display: flow-root;
+        width: 100%;
+    }
+
+    .cost-table {
+        display: table;
 
         .ct-category {
-            flex-direction: row;
+            display: table-row;
             margin-bottom: calc(0.5 * var(--#{$prefix}paragraph-margin-bottom));
         }
 
-        .ct-class,
-        .ct-link {
-            padding-left: var(--#{$prefix}ws-margin);
-        }
-
         .ct-price {
-            width: 10%;
+            display: table-cell;
             font-weight: var(--#{$prefix}font-weight-bold);
         }
 
         .ct-class {
+            display: table-cell;
             width: 50%;
+            padding-left: var(--#{$prefix}ws-margin);
+        }
+
+        .ct-link {
+            display: table-cell;
+            padding-left: var(--#{$prefix}ws-margin);
         }
     }
 }

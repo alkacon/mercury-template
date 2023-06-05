@@ -72,6 +72,8 @@
             }
 
             .info {
+                display: flex;
+
                 &::before {
                     @include icon-font();
                     vertical-align: top;
@@ -139,7 +141,8 @@
 
     .detail-visual {
         // .detail-visual has no bottom margin, add top margin to first detail-content or attachment container
-        + .detail-content {
+        + .detail-content,
+        + .detail-addition {
             margin-top: var(--#{$prefix}detail-content-spacer-y);
         }
         + .attachment-container {

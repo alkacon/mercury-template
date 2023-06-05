@@ -15,7 +15,29 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+@import "../bootstrap5/scss/mixins/banner";
+@include bsBanner("- included in part with Mercury -");
+
+$enable-caret:                false !default;
+$enable-rounded:              false !default;
+$enable-shadows:              false !default;
+$enable-gradients:            false !default;
+$enable-transitions:          true !default;
+$enable-reduced-motion:       true !default;
+$enable-smooth-scroll:        true !default;
+$enable-grid-classes:         true !default;
+$enable-container-classes:    true !default;
+$enable-cssgrid:              false !default;
+$enable-button-pointers:      true !default;
+$enable-rfs:                  false !default;
+$enable-validation-icons:     false !default;
+$enable-negative-margins:     false !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities:  true !default;
+$enable-dark-mode:            false !default;
+
 @import "../bootstrap5/scss/variables";
+@import "../bootstrap5/scss/variables-dark";
 @import "../bootstrap5/scss/maps";
 @import "../bootstrap5/scss/mixins";
 @import "../bootstrap5/scss/utilities";

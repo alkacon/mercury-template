@@ -33,6 +33,8 @@
         --#{$prefix}headings-color: #{$foot-top-header-color};
         --#{$prefix}link-color: #{$foot-top-link-color};
         --#{$prefix}link-hover-color: #{$foot-top-link-hover-color};
+        --#{$prefix}link-color-rgb: #{to-rgb($foot-top-link-color)};
+        --#{$prefix}link-hover-color-rgb: #{to-rgb($foot-top-link-hover-color)};
     }
 
     .subfoot {
@@ -41,6 +43,8 @@
         --#{$prefix}headings-color: #{$foot-sub-header-color};
         --#{$prefix}link-color: #{$foot-sub-link-color};
         --#{$prefix}link-hover-color: #{$foot-sub-link-hover-color};
+        --#{$prefix}link-color-rgb: #{to-rgb($foot-sub-link-color)};
+        --#{$prefix}link-hover-color-rgb: #{to-rgb($foot-sub-link-hover-color)};
     }
 
     .topfoot,

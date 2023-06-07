@@ -27,7 +27,9 @@
     --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
     --#{$prefix}link-color: #{$link-color};
+    --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
     --#{$prefix}link-hover-color: #{$link-hover-color};
+    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
     --#{$prefix}link-fg-color: #{$link-fg-color};
     --#{$prefix}link-hover-fg-color: #{$link-hover-fg-color};
 

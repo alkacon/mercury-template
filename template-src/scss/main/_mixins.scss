@@ -744,7 +744,9 @@
     --#{$prefix}body-color:                         #{$fg-color};
     --#{$prefix}body-bg-rgb:                        #{to-rgb($bg-color)};
     --#{$prefix}link-color:                         #{$li-color};
+    --#{$prefix}link-color-rgb:                     #{to-rgb($li-color)};
     --#{$prefix}link-hover-color:                   #{$li-hover-color};
+    --#{$prefix}link-hover-color-rgb:               #{to-rgb($li-hover-color)};
     --#{$prefix}link-fg-color:                      #{$li-fg-color};
 
     @if (get-color("link-fg-color", none, $bg-map) == none) {

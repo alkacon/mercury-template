@@ -35,13 +35,6 @@
     bookingInfo="${bookingInfo}"
     formId="${formId}">
 
-    <c:if test="${isContactForm and cms.isEditMode}">
-        <div class="subelement">
-            <span class="oct-meta-info">
-                <fmt:message key="msg.setting.formModus" />: <fmt:message key="msg.setting.formModus.contact" />
-            </span>
-        </div>
-    </c:if>
     <c:if test="${isContactForm and not empty contactEmail}">
         <div class="subelement type-webform-contactform pivot"><%----%>
             <p><%----%>
@@ -107,9 +100,12 @@
                         <c:if test="${not empty formCssWrapper}">
                             ${form.addExtraConfig("formCssWrapper", formCssWrapper)}
                         </c:if>
-                        <mercury:icalendar-vars content="${formBookingXml}">
-                        ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
-                        </mercury:icalendar-vars>
+                        <c:if test="${not empty formBookingXml}">
+                            <mercury:icalendar-vars content="${formBookingXml}">
+                            ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
+                            </mercury:icalendar-vars>
+                            ${formHandler.setEventConfiguration(formBookingXml.filename)}
+                        </c:if>
                         ${formHandler.createForm()}
                     </c:otherwise>
                 </c:choose>

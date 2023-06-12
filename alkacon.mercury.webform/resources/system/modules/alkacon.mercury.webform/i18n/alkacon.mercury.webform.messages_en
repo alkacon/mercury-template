@@ -262,6 +262,7 @@ msg.label.form.WebFormDataSet.ConfirmationMailSent.help=Whether a confirmation m
 msg.label.form.WebFormDataSet.Data=Field data
 msg.label.form.WebFormDataSet.DeletionDate=Deletion date
 msg.label.form.WebFormDataSet.DeletionDate.help=The date on which this resource should be deleted.  
+msg.label.form.WebFormDataSet.Event=Event configuration
 msg.label.form.WebFormDataSet.Form=Form configuration
 msg.label.form.WebFormDataSet.MoveUpMailSent=Move-up mail sent
 msg.label.form.WebFormDataSet.MoveUpMailSent.help=Whether a move-up mail was sent to the participant

@@ -40,6 +40,9 @@ public class CmsFormDataBean {
     /** The XPath to store the form configuration in. */
     public static final String PATH_FORM = "Form[1]";
 
+    /** The XPath to store the event configuration in. */
+    public static final String PATH_EVENT = "Event[1]";
+
     /** The XPATH to store the title mapping. */
     public static final String PATH_TITLEMAPPING = "TitleMapping[1]";
 

@@ -262,6 +262,7 @@ msg.label.form.WebFormDataSet.ConfirmationMailSent.help=Zeigt an, ob eine Bestä
 msg.label.form.WebFormDataSet.Data=Felddaten
 msg.label.form.WebFormDataSet.DeletionDate=Löschdatum
 msg.label.form.WebFormDataSet.DeletionDate.help=Das Datum, an dem diese Datei gelöscht werden sollte. 
+msg.label.form.WebFormDataSet.Event=Veranstaltungs-Konfiguration
 msg.label.form.WebFormDataSet.Form=Formular-Konfiguration
 msg.label.form.WebFormDataSet.MoveUpMailSent=Nachrück-Mail gesendet
 msg.label.form.WebFormDataSet.MoveUpMailSent.help=Zeigt an, ob eine Nachrück-Mail an den Teilnehmer gesendet wurde.

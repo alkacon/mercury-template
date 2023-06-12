@@ -252,6 +252,9 @@ public class CmsFormHandler extends CmsJspActionElement {
     /** The iCalendar information. */
     private CmsFormMailICalInfo m_iCalInfo;
 
+    /** The resource path of the event configuration. */
+    private String m_eventConfiguration;
+
     /**
      * Empty constructor, be sure to call one of the available initialization methods afterwards.<p>
      *
@@ -1138,6 +1141,15 @@ public class CmsFormHandler extends CmsJspActionElement {
         }
 
         return data.isUgcConfigured() || !getErrors().containsKey(ERROR_REGISTRATION_SENT);
+    }
+
+    /**
+     * Sets the resource path of the event configuration.
+     * @param path the resource path of the event configuration
+     */
+    public void setEventConfiguration(String path) {
+
+        m_eventConfiguration = path;
     }
 
     /**
@@ -2048,6 +2060,9 @@ public class CmsFormHandler extends CmsJspActionElement {
         Map<String, String> result = new HashMap<>();
         CmsForm form = getFormConfiguration();
         result.put(CmsFormDataBean.PATH_FORM, form.getConfigUri());
+        if (m_eventConfiguration != null) {
+            result.put(CmsFormDataBean.PATH_EVENT, m_eventConfiguration);
+        }
         List<I_CmsField> formFields = getFormConfiguration().getAllFields(false, true, true);
         int entryNum = 1;
         for (I_CmsField field : formFields) {

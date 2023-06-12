@@ -14,6 +14,7 @@
     <xsd:complexType name="OpenCmsWebFormDataSet">
         <xsd:sequence>
             <xsd:element name="Form" type="OpenCmsVfsFile" />
+            <xsd:element name="Event" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="ConfirmationMailSent" type="OpenCmsBoolean" />
             <xsd:element name="RegistrationMailSent" type="OpenCmsBoolean" />
             <xsd:element name="WaitlistNotification" type="OpenCmsBoolean" />
@@ -49,6 +50,10 @@
                 <Setting>
                     <PropertyName>Form</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.Form)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>Event</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.Event)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>ConfirmationMailSent</PropertyName>

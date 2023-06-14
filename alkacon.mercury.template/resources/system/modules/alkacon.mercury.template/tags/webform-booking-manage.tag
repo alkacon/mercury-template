@@ -121,6 +121,12 @@
                     <c:when test="${param.action eq 'add'}">
                         <c:set var="result" value="${formDataHandler.moveUpFromWaitingList(param.uuid)}" />
                     </c:when>
+                    <c:when test="${param.action eq 'delete'}">
+                        <c:set var="result" value="${formDataHandler.deleteSubmission(param.uuid)}" />
+                    </c:when>
+                    <c:when test="${param.action eq 'deleteAll'}">
+                        <c:set var="result" value="${formDataHandler.deleteAllSubmissions(param.uuid)}" />
+                    </c:when>
                 </c:choose>
                 <c:choose>
                     <c:when test="${not empty formDataHandler.error}">
@@ -156,7 +162,7 @@
                 <div class=list-box><%----%>
                     <div class="list-entries accordion-items" id="${id1}"><%----%>
                         <c:forEach var="dataBean" items="${status.participants}" varStatus="stat">
-                            <cms:display value="${dataBean.file.structureId}" editable="true" delete="true">
+                            <cms:display value="${dataBean.file.structureId}" editable="true" delete="false">
                                <cms:param name="index" value="${stat.index}"/>
                                <cms:param name="id" value="${id1}" />
                                <cms:param name="fullyBooked" value="${status.fullyBooked}" />
@@ -188,7 +194,7 @@
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id2}"><%----%>
                             <c:forEach var="dataBean" items="${status.waitlistCandidates}" varStatus="stat">
-                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="true">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="false">
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id2}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
@@ -207,7 +213,7 @@
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id3}"><%----%>
                             <c:forEach var="dataBean" items="${status.cancelledSubmissions}" varStatus="stat">
-                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="true">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="false">
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id3}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
@@ -256,6 +262,28 @@
                    </c:if>
                </div><%----%>
             </div><%----%>
+            <mercury:nl />
+            <c:if test="${not empty bookingId}">
+                <div class="submission-actions subelement">
+                    <h3><fmt:message key="msg.page.form.bookingstatus.delete.label" /></h3><%----%>
+                    <p><fmt:message key="msg.page.form.label.submissions.deleteAll" /><button id="deleteAll_button_${bookingId}" class="btn btn-xs oct-meta-info ml-5"><fmt:message key="msg.page.form.submission.action.deleteAll" /></button><%----%></p>
+                    <dialog id="deleteAll_dialog_${bookingId}"><%----%>
+                        <form method="dialog"><%----%>
+                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
+                            <div><fmt:message key="msg.page.form.submission.ask.deleteAll" /></div><%----%>
+                            <div class="buttons"><%----%>
+                                <button value="cancel" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                </button><%----%>
+                                <button value="confirm" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.confirm.deleteAll" />
+                                </button><%----%>
+                            </div><%----%>
+                        </form><%----%>
+                    </dialog><%----%>
+                    <script>new SubmissionsDialog("deleteAll", "${bookingId}", "${bookingId}")</script><%----%>
+                </div>
+            </c:if>
             <mercury:nl />
             </c:otherwise>
             </c:choose>

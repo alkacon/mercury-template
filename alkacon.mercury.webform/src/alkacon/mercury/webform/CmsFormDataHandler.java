@@ -38,12 +38,15 @@ import org.opencms.file.CmsObject;
 import org.opencms.file.CmsProject;
 import org.opencms.file.CmsResource;
 import org.opencms.file.CmsResourceFilter;
+import org.opencms.file.types.I_CmsResourceType;
 import org.opencms.i18n.CmsLocaleManager;
 import org.opencms.jsp.CmsJspActionElement;
 import org.opencms.lock.CmsLockUtil;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
+import org.opencms.relations.CmsRelation;
+import org.opencms.relations.CmsRelationFilter;
 import org.opencms.util.CmsMacroResolver;
 import org.opencms.util.CmsUUID;
 import org.opencms.xml.content.CmsXmlContent;
@@ -106,6 +109,12 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     private final static String INFO_SUCCESS_CANCELLED_REGISTRATION = "msg.page.bookingmanage.info.successcancelregistration";
 
     /** A message key. */
+    private final static String INFO_SUCCESS_DELETED_SUBMISSION = "msg.page.bookingmanage.info.successdeletesubmission";
+
+    /** A message key. */
+    private final static String INFO_SUCCESS_DELETED_ALL_SUBMISSIONS = "msg.page.bookingmanage.info.successdeleteallsubmissions";
+
+    /** A message key. */
     private final static String INFO_SUCCESS_WAITLIST_MOVED_UP = "msg.page.bookingmanage.info.successwaitlistmoveup";
 
     /** A message key. */
@@ -155,31 +164,37 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             project = createProject(clone);
             if (project == null) {
                 setError(ERROR_INTERNAL);
+                deleteProject(clone, project);
                 return false;
             }
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
+                deleteProject(clone, project);
                 return false;
             }
             boolean locked = lockResource(clone, resource);
             if (!locked) {
                 setError(ERROR_LOCKING_FAILED);
+                deleteProject(clone, project);
                 return false;
             }
             CmsXmlContent content = readContent(clone, resource);
             if (content == null) {
                 setError(ERROR_INTERNAL);
+                deleteProject(clone, project);
                 return false;
             }
             CmsFormDataBean bean = new CmsFormDataBean(content);
             if (bean.isCancelled()) {
                 setError(ERROR_ALREADY_CANCELLED);
+                deleteProject(clone, project);
                 return false;
             }
             boolean updated = updateContent(clone, content, CmsFormDataBean.PATH_CANCELLED, "true");
             if (!updated) {
                 setError(ERROR_INTERNAL);
+                deleteProject(clone, project);
                 return false;
             }
             boolean mailSent = sendMail(bean, ACTION_CANCEL);
@@ -188,22 +203,119 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 boolean updated1 = updateContent(clone, content, CmsFormDataBean.PATH_CANCEL_MAIL_SENT, sent);
                 if (!updated1) {
                     setError(ERROR_INTERNAL);
+                    deleteProject(clone, project);
                     return false;
                 }
             } else {
                 setError(ERROR_SENDING_MAIL_FAILED);
+                deleteProject(clone, project);
                 return false;
             }
             boolean published = publishProject(clone);
             if (!published) {
                 setError(ERROR_PUBLISHING_FAILED);
+                deleteProject(clone, project);
                 return false;
             }
-            deleteProject(clone, project);
             setInfo(INFO_SUCCESS_CANCELLED_REGISTRATION);
         } catch (CmsException e) {
             setError(ERROR_INTERNAL);
             LOG.error(e.getLocalizedMessage(), e);
+            deleteProject(clone, project);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * On request, deletes all submissions.
+     * @param paramUuid the UUID of the form data content
+     * @return whether deleting the submission was successful
+     */
+    public boolean deleteAllSubmissions(String paramUuid) {
+
+        CmsObject clone = null;
+        boolean success = true;
+        try {
+            clone = OpenCms.initCmsObject(getCmsObject());
+            CmsResource event = readResource(clone, paramUuid);
+            if (event == null) {
+                setError(ERROR_RESOURCE_NOT_FOUND);
+                success = false;
+            }
+            CmsRelationFilter relationFilter = CmsRelationFilter.relationsToStructureId(new CmsUUID(paramUuid));
+            if (relationFilter != null) {
+                List<CmsRelation> relationsToResource = clone.readRelations(relationFilter);
+                for (CmsRelation relation : relationsToResource) {
+                    I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(
+                        CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
+                    CmsResource relatedResource = null;
+                    try {
+                        relatedResource = relation.getSource(clone, CmsResourceFilter.ALL.addRequireType(resourceType));
+                    } catch (CmsException e) {
+                        // resource does not exist in online project, nothing to do
+                    }
+                    if (relatedResource != null) {
+                        boolean deleted = deleteSubmission(relatedResource.getStructureId().toString());
+                        if (!deleted) {
+                            success = false;
+                            break;
+                        }
+                    }
+                }
+            } else {
+                setError(ERROR_INTERNAL);
+                success = false;
+            }
+        } catch (CmsException e) {
+            setError(ERROR_INTERNAL);
+            LOG.error(e.getLocalizedMessage(), e);
+            success = false;
+        }
+        setInfo(INFO_SUCCESS_DELETED_ALL_SUBMISSIONS);
+        return success;
+    }
+
+    /**
+     * On request, deletes a submission.
+     * @param paramUuid the UUID of the form data content
+     * @return whether deleting the submission was successful
+     */
+    public boolean deleteSubmission(String paramUuid) {
+
+        CmsObject clone = null;
+        CmsProject project = null;
+        try {
+            clone = OpenCms.initCmsObject(getCmsObject());
+            project = createProject(clone);
+            if (project == null) {
+                setError(ERROR_INTERNAL);
+                return false;
+            }
+            CmsResource resource = readResource(clone, paramUuid);
+            if (resource == null) {
+                setError(ERROR_RESOURCE_NOT_FOUND);
+                deleteProject(clone, project);
+                return false;
+            }
+            boolean locked = lockResource(clone, resource);
+            if (!locked) {
+                setError(ERROR_LOCKING_FAILED);
+                deleteProject(clone, project);
+                return false;
+            }
+            clone.deleteResource(resource, CmsResource.DELETE_REMOVE_SIBLINGS);
+            boolean published = publishProject(clone);
+            if (!published) {
+                setError(ERROR_PUBLISHING_FAILED);
+                deleteProject(clone, project);
+                return false;
+            }
+            setInfo(INFO_SUCCESS_DELETED_SUBMISSION);
+        } catch (CmsException e) {
+            setError(ERROR_INTERNAL);
+            LOG.error(e.getLocalizedMessage(), e);
+            deleteProject(clone, project);
             return false;
         }
         return true;
@@ -246,25 +358,30 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
+                deleteProject(clone, project);
                 return false;
             }
             boolean locked = lockResource(clone, resource);
             if (!locked) {
                 setError(ERROR_LOCKING_FAILED);
+                deleteProject(clone, project);
                 return false;
             }
             CmsXmlContent content = readContent(clone, resource);
             if (content == null) {
                 setError(ERROR_INTERNAL);
+                deleteProject(clone, project);
                 return false;
             }
             CmsFormDataBean bean = new CmsFormDataBean(content);
             if (bean.isWaitlistMovedUp()) {
                 setError(ERROR_ALREADY_MOVED_UP);
+                deleteProject(clone, project);
                 return false;
             }
             if (m_submissionStatus.isFullyBooked()) {
                 setError(ERROR_ALREADY_FULLY_BOOKED);
+                deleteProject(clone, project);
                 return false;
             }
             long now = (new Date()).getTime();
@@ -275,30 +392,34 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 String.valueOf(now));
             if (!updated1) {
                 setError(ERROR_INTERNAL);
+                deleteProject(clone, project);
                 return false;
             }
             boolean mailSent = sendMail(bean, ACTION_MOVEUP);
             if (mailSent) {
                 String sent = String.valueOf(m_formHandler.getFormConfiguration().isConfirmationMailEnabled());
-                boolean updated2 = updateContent(clone, content, CmsFormDataBean.PATH_MOVE_UP_MAIL_SENT, "true");
+                boolean updated2 = updateContent(clone, content, CmsFormDataBean.PATH_MOVE_UP_MAIL_SENT, sent);
                 if (!updated2) {
                     setError(ERROR_INTERNAL);
+                    deleteProject(clone, project);
                     return false;
                 }
             } else {
                 setError(ERROR_SENDING_MAIL_FAILED);
+                deleteProject(clone, project);
                 return false;
             }
             boolean published = publishProject(clone);
             if (!published) {
                 setError(ERROR_PUBLISHING_FAILED);
+                deleteProject(clone, project);
                 return false;
             }
-            deleteProject(clone, project);
             setInfo(INFO_SUCCESS_WAITLIST_MOVED_UP);
         } catch (CmsException e) {
             setError(ERROR_INTERNAL);
             LOG.error(e.getLocalizedMessage(), e);
+            deleteProject(clone, project);
             return false;
         }
         return true;
@@ -328,18 +449,28 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     }
 
     /**
-     * Deletes the temporary project.
+     * Asynchronously deletes the temporary project.
      * @param clone the CMS clone
      * @param project the project
      */
     private void deleteProject(CmsObject clone, CmsProject project) {
 
-        try {
-            OpenCms.getPublishManager().waitWhileRunning();
-            clone.deleteProject(project.getId());
-        } catch (CmsException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        }
+        Thread thread = new Thread() {
+
+            @Override
+            public void run() {
+
+                try {
+                    OpenCms.getPublishManager().waitWhileRunning();
+                    if ((clone != null) && (project != null)) {
+                        clone.deleteProject(project.getId());
+                    }
+                } catch (CmsException e) {
+                    LOG.error(e.getLocalizedMessage(), e);
+                }
+            }
+        };
+        thread.start();
     }
 
     /**

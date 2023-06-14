@@ -116,6 +116,26 @@
                     </dialog><%----%>
                     <script>new SubmissionsDialog("add", "${itemId}", "${content.id}")</script><%----%>
                 </c:if>
+                <c:if test="${bean.cancelled}">
+                    <button id="delete_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
+                        <fmt:message key="msg.page.form.submission.action.delete" />
+                    </button><%----%>
+                    <dialog id="delete_dialog_${itemId}"><%----%>
+                        <form method="dialog"><%----%>
+                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3>
+                            <div><fmt:message key="msg.page.form.submission.ask.delete"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                            <div class="buttons"><%----%>
+                                <button value="cancel" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                </button><%----%>
+                                <button value="confirm" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.confirm.delete" />
+                                </button><%----%>
+                            </div><%----%>
+                        </form><%----%>
+                    </dialog><%----%>
+                    <script>new SubmissionsDialog("delete", "${itemId}", "${content.id}")</script><%----%>
+                </c:if>
             </div><%----%>
             <table class="submissions"><%----%>
                 <c:forEach var="data" items="${bean.data}">

@@ -610,6 +610,7 @@ msg.page.bookingLink=To the registration
 msg.page.bookingmanage.error.alreadycancelled=The booking data are already cancelled.
 msg.page.bookingmanage.error.alreadyfullybooked=The event is already fully booked.
 msg.page.bookingmanage.error.alreadymovedup=The user has already been moved up from the waiting list.
+msg.page.bookingmanage.error.forbidden=The requested action is not allowed.
 msg.page.bookingmanage.error.internal=Internal error when updating the booking data.
 msg.page.bookingmanage.error.lockingfailed=Error when locking the booking data.
 msg.page.bookingmanage.error.publishingfailed=Publishing the updated booking data failed.

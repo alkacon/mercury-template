@@ -100,6 +100,9 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     private final static String ERROR_ALREADY_MOVED_UP = "msg.page.bookingmanage.error.alreadymovedup";
 
     /** A message key. */
+    private final static String ERROR_FORBIDDEN = "msg.page.bookingmanage.error.forbidden";
+
+    /** A message key. */
     private final static String ERROR_SENDING_MAIL_FAILED = "msg.page.bookingmanage.error.sendingmailfailed";
 
     /** A message key. */
@@ -157,6 +160,9 @@ public class CmsFormDataHandler extends CmsJspActionElement {
      */
     public boolean cancelRegistration(String paramUuid) {
 
+        if (getCmsObject().getRequestContext().getCurrentProject().isOnlineProject()) {
+            return false;
+        }
         CmsObject clone = null;
         CmsProject project = null;
         try {
@@ -170,6 +176,14 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
+                deleteProject(clone, project);
+                return false;
+            }
+            I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
+            I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
+                CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
+            if (!resourceType.equals(formDataType)) {
+                setError(ERROR_FORBIDDEN);
                 deleteProject(clone, project);
                 return false;
             }
@@ -234,6 +248,9 @@ public class CmsFormDataHandler extends CmsJspActionElement {
      */
     public boolean deleteAllSubmissions(String paramUuid) {
 
+        if (getCmsObject().getRequestContext().getCurrentProject().isOnlineProject()) {
+            return false;
+        }
         CmsObject clone = null;
         boolean success = true;
         try {
@@ -243,36 +260,50 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 setError(ERROR_RESOURCE_NOT_FOUND);
                 success = false;
             }
-            CmsRelationFilter relationFilter = CmsRelationFilter.relationsToStructureId(new CmsUUID(paramUuid));
-            if (relationFilter != null) {
-                List<CmsRelation> relationsToResource = clone.readRelations(relationFilter);
-                for (CmsRelation relation : relationsToResource) {
-                    I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(
-                        CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
-                    CmsResource relatedResource = null;
-                    try {
-                        relatedResource = relation.getSource(clone, CmsResourceFilter.ALL.addRequireType(resourceType));
-                    } catch (CmsException e) {
-                        // resource does not exist in online project, nothing to do
-                    }
-                    if (relatedResource != null) {
-                        boolean deleted = deleteSubmission(relatedResource.getStructureId().toString());
-                        if (!deleted) {
-                            success = false;
-                            break;
+            if (success) {
+                I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(event);
+                I_CmsResourceType eventType = OpenCms.getResourceManager().getResourceType("m-event");
+                if (!resourceType.equals(eventType)) {
+                    setError(ERROR_FORBIDDEN);
+                    success = false;
+                }
+                if (success) {
+                    CmsRelationFilter relationFilter = CmsRelationFilter.relationsToStructureId(new CmsUUID(paramUuid));
+                    if (relationFilter != null) {
+                        List<CmsRelation> relationsToResource = clone.readRelations(relationFilter);
+                        I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
+                            CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
+                        for (CmsRelation relation : relationsToResource) {
+                            CmsResource relatedResource = null;
+                            try {
+                                relatedResource = relation.getSource(
+                                    clone,
+                                    CmsResourceFilter.ALL.addRequireType(formDataType));
+                            } catch (CmsException e) {
+                                // resource does not exist in online project, nothing to do
+                            }
+                            if (relatedResource != null) {
+                                boolean deleted = deleteSubmission(relatedResource.getStructureId().toString());
+                                if (!deleted) {
+                                    success = false;
+                                    break;
+                                }
+                            }
                         }
+                    } else {
+                        setError(ERROR_INTERNAL);
+                        success = false;
                     }
                 }
-            } else {
-                setError(ERROR_INTERNAL);
-                success = false;
             }
         } catch (CmsException e) {
             setError(ERROR_INTERNAL);
             LOG.error(e.getLocalizedMessage(), e);
             success = false;
         }
-        setInfo(INFO_SUCCESS_DELETED_ALL_SUBMISSIONS);
+        if (success) {
+            setInfo(INFO_SUCCESS_DELETED_ALL_SUBMISSIONS);
+        }
         return success;
     }
 
@@ -283,6 +314,9 @@ public class CmsFormDataHandler extends CmsJspActionElement {
      */
     public boolean deleteSubmission(String paramUuid) {
 
+        if (getCmsObject().getRequestContext().getCurrentProject().isOnlineProject()) {
+            return false;
+        }
         CmsObject clone = null;
         CmsProject project = null;
         try {
@@ -295,6 +329,14 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
+                deleteProject(clone, project);
+                return false;
+            }
+            I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
+            I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
+                CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
+            if (!resourceType.equals(formDataType)) {
+                setError(ERROR_FORBIDDEN);
                 deleteProject(clone, project);
                 return false;
             }
@@ -346,6 +388,9 @@ public class CmsFormDataHandler extends CmsJspActionElement {
      */
     public boolean moveUpFromWaitingList(String paramUuid) {
 
+        if (getCmsObject().getRequestContext().getCurrentProject().isOnlineProject()) {
+            return false;
+        }
         CmsObject clone = null;
         CmsProject project = null;
         try {
@@ -358,6 +403,14 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
+                deleteProject(clone, project);
+                return false;
+            }
+            I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
+            I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
+                CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
+            if (!resourceType.equals(formDataType)) {
+                setError(ERROR_FORBIDDEN);
                 deleteProject(clone, project);
                 return false;
             }

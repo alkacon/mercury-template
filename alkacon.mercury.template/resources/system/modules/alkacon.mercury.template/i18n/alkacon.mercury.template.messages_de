@@ -610,6 +610,7 @@ msg.page.bookingLink=Zur Anmeldung
 msg.page.bookingmanage.error.alreadycancelled=Die Anmeldung ist bereits storniert.
 msg.page.bookingmanage.error.alreadyfullybooked=Die Veranstaltung ist bereits ausgebucht.
 msg.page.bookingmanage.error.alreadymovedup=Der Nutzer ist bereits von der Warteliste nachgerückt.
+msg.page.bookingmanage.error.forbidden=Die Aktion ist nicht erlaubt.
 msg.page.bookingmanage.error.internal=Interner Serverfehler beim ändern der Daten.
 msg.page.bookingmanage.error.lockingfailed=Die Anmeldedaten konnten nicht gelocked werden.
 msg.page.bookingmanage.error.publishingfailed=Das Publizieren der geänderten Anmeldedaten schlug fehl.

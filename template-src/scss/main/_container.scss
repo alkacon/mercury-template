@@ -294,6 +294,8 @@ $oct-edit-infos:
 @mixin oct-meta-bg {
     --#{$prefix}link-color: #{$con-text-col-light};
     --#{$prefix}link-hover-color: #{$con-text-col-light};
+    --#{$prefix}link-color-rgb: #{to-rgb($con-text-col-light)};
+    --#{$prefix}link-hover-color-rgb: #{to-rgb($con-text-col-light)};
     border-radius: 4px !important;
     color: $con-text-col-light !important;
     background-color: $con-col-orange !important;

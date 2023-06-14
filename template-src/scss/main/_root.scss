@@ -32,6 +32,7 @@
     --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
     --#{$prefix}link-fg-color: #{$link-fg-color};
     --#{$prefix}link-hover-fg-color: #{$link-hover-fg-color};
+    --#{$prefix}link-opacity: 1.0;
 
     --#{$prefix}main-theme: #{$main-theme};
     --#{$prefix}main-theme-fg: #{$main-theme-fg};

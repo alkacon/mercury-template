@@ -177,7 +177,7 @@
             </c:set>
             <c:set var="contactName" value="${valKind eq 'org' ? valOrganization : personname}" />
         </mercury:contact-vars>
-        <c:set var="contactForm">${cms.site.url}${cms.requestContext.uri}</c:set>
+        <c:set var="contactForm">${detailContent.onlineLink}</c:set>
         <c:if test="${contactValidEmail}">
             ${form.adjustConfigValue("MailTo", contactEmail)}
             ${form.adjustConfigValue("macro:contact.name", contactName)}

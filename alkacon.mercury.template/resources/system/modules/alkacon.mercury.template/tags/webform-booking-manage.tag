@@ -105,7 +105,7 @@
             </div><%----%>
         </c:if>
 
-        <c:if test="${not empty form.submissions}">
+        <c:if test="${not empty form.submissions or status.numOtherSubmissions gt 0}">
 
             <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" />
             <c:choose>
@@ -263,7 +263,7 @@
                </div><%----%>
             </div><%----%>
             <mercury:nl />
-            <c:if test="${not empty bookingId}">
+            <c:if test="${not empty bookingId and not empty form.submissions}">
                 <div class="submission-actions subelement">
                     <h3><fmt:message key="msg.page.form.bookingstatus.delete.label" /></h3><%----%>
                     <p><fmt:message key="msg.page.form.label.submissions.deleteAll" /><button id="deleteAll_button_${bookingId}" class="btn btn-xs oct-meta-info ml-5"><fmt:message key="msg.page.form.submission.action.deleteAll" /></button><%----%></p>

@@ -23,7 +23,9 @@
 <c:set var="sharedFolder"           value="${OpenCms.getSiteManager().getSharedFolder()}" />
 <c:if test="${fn:startsWith(sourceSite.rootPath, sharedFolder)}">
     <c:set var="sourceSiteProp"     value="${cms.vfs.readProperties[sourceSite.rootPath]['mercury.sourcesite']}" />
-    <c:set var="sourceSite"         value="${cms.vfs.readSubsiteFor(sourceSiteProp)}" />
+    <c:if test="${not empty sourceSiteProp}">
+        <c:set var="sourceSite"         value="${cms.vfs.readSubsiteFor(sourceSiteProp)}" />
+    </c:if>
 </c:if>
 
 <fmt:setLocale value="${cms.locale}" />

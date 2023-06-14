@@ -45,7 +45,7 @@
                         title="${metaMap.title}"
                         css="${metaMap.css}"
                         attr="${metaMap.attr}"
-                        forceText="${metaMap.icon}${metaMap.message}" />
+                        forceText="${metaMap.icon}<span>${metaMap.message}</span>" />
                 </li><%----%>
             </c:set>
         </c:otherwise>

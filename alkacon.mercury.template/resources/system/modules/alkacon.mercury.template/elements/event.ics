@@ -10,17 +10,21 @@
 
 <cms:secureparams />
 
-<c:set var="uid" value="${cms:convertUUID(param.id)}" />
-<c:set var="content" value="${cms.vfs.xml[uid]}" />
-<c:set var="value" value="${content.value}" />
+<c:set var="paramId" value="${param.id}" />
+<c:set var="isValidUUID"><%= org.opencms.util.CmsUUID.isValidUUID((String)pageContext.getAttribute("paramId")) %></c:set>
 
+<c:if test="${isValidUUID}">
 
-<c:set var="seriesInfo" value="${value.Dates.toDateSeries}" />
-<c:set var="date" value="${seriesInfo.instanceInfo.get(param.instancedate)}" />
-<c:set var="dateStart" value="${date.start.time}" />
-<c:set var ="dateEnd" value="" />
+<c:set var="uid"            value="${cms:convertUUID(paramId)}" />
+<c:set var="content"        value="${cms.vfs.xml[uid]}" />
+<c:set var="value"          value="${content.value}" />
+
+<c:set var="seriesInfo"     value="${value.Dates.toDateSeries}" />
+<c:set var="date"           value="${seriesInfo.instanceInfo.get(param.instancedate)}" />
+<c:set var="dateStart"      value="${date.start.time}" />
+<c:set var ="dateEnd"       value="" />
 <c:if test="${date.end.time > 0 and (date.start ne date.end)}">
-    <c:set var ="dateEnd" value="${date.end.time}" />
+    <c:set var ="dateEnd"   value="${date.end.time}" />
 </c:if>
 
 <c:set var="location" value="" />
@@ -72,3 +76,5 @@
     image="${imageValue}"
     url="${param.url}"
 />
+
+</c:if>

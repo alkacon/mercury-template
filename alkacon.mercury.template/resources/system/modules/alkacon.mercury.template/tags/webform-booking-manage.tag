@@ -44,65 +44,67 @@
         </div><%----%>
         <mercury:nl />
 
-        <h3><%----%>
-            <fmt:message key="msg.page.form.bookingstatus.headline.1">
-                <fmt:param>${formTitle}</fmt:param>
-            </fmt:message>
-        </h3><%----%>
-        <mercury:nl />
+        <c:if test="${empty param.action and empty param.uuid}">
+            <h3><%----%>
+                <fmt:message key="msg.page.form.bookingstatus.headline.1">
+                    <fmt:param>${formTitle}</fmt:param>
+                </fmt:message>
+            </h3><%----%>
+            <mercury:nl />
 
-        <table class="subelement submissions"><%----%>
-        <tr><%----%>
-            <td><fmt:message key="msg.page.form.bookingstatus.participant.label" />:</td><%----%>
-            <c:choose>
-            <c:when test="${status.hasUnlimitedPlaces}">
-                <td>${status.numParticipants} (<fmt:message key="msg.page.form.bookingstatus.places.unlimited" />)</td><%----%>
-            </c:when>
-            <c:otherwise>
+            <table class="subelement submissions"><%----%>
+            <tr><%----%>
+                <td><fmt:message key="msg.page.form.bookingstatus.participant.label" />:</td><%----%>
+                <c:choose>
+                <c:when test="${status.hasUnlimitedPlaces}">
+                    <td>${status.numParticipants} (<fmt:message key="msg.page.form.bookingstatus.places.unlimited" />)</td><%----%>
+                </c:when>
+                <c:otherwise>
+                    <td><%----%>
+                        <fmt:message key="msg.page.form.submissions.overview">
+                            <fmt:param>${status.numParticipants}</fmt:param>
+                            <fmt:param>${status.maxRegularPlaces}</fmt:param>
+                        </fmt:message>
+                    </td><%----%>
+                </c:otherwise>
+                </c:choose>
+            </tr><%----%>
+            <c:if test="${not status.hasUnlimitedPlaces}">
+            <tr><%----%>
+                <td><fmt:message key="msg.page.form.bookingstatus.waitlist.label" />:</td><%----%>
                 <td><%----%>
                     <fmt:message key="msg.page.form.submissions.overview">
-                        <fmt:param>${status.numParticipants}</fmt:param>
-                        <fmt:param>${status.maxRegularPlaces}</fmt:param>
+                        <fmt:param>${status.numWaitlistCandidates}</fmt:param>
+                        <fmt:param>${status.maxWaitlistPlaces}</fmt:param>
                     </fmt:message>
                 </td><%----%>
-            </c:otherwise>
-            </c:choose>
-        </tr><%----%>
-        <c:if test="${not status.hasUnlimitedPlaces}">
-        <tr><%----%>
-            <td><fmt:message key="msg.page.form.bookingstatus.waitlist.label" />:</td><%----%>
-            <td><%----%>
-                <fmt:message key="msg.page.form.submissions.overview">
-                    <fmt:param>${status.numWaitlistCandidates}</fmt:param>
-                    <fmt:param>${status.maxWaitlistPlaces}</fmt:param>
-                </fmt:message>
-            </td><%----%>
-        </tr><%----%>
-        </c:if>
-        <tr><%----%>
-            <td><fmt:message key="msg.page.form.bookingstatus.cancelledSubmissions.label" />:</td><%----%>
-            <td>${status.numCancelledSubmissions}</td><%----%>
-        </tr><%----%>
-
-        <c:if test="${formBookingHasFinalRegistrationDate}">
-            <tr><%----%>
-               <td><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline"/>:</td><%----%>
-               <td>${formBookingFinalRegistrationDateStr}</td><%----%>
             </tr><%----%>
-        </c:if>
-        </table><%----%>
-        <mercury:nl />
-        <c:if test="${status.numMoveUpPlaces gt 0 and status.numWaitlistCandidates gt 0}">
-            <div class="subelement oct-meta-info severe box"><%----%>
-                <fmt:message key="msg.page.bookingmanage.info.moveupcandidates">
-                    <fmt:param>${status.numMoveUpPlaces}</fmt:param>
-                </fmt:message>
-            </div><%----%>
-        </c:if>
-        <c:if test="${status.fullyBooked}">
-            <div class="subelement oct-meta-info severe box"><%----%>
-                <fmt:message key="msg.page.form.remaining.places.none" /><%----%>
-            </div><%----%>
+            </c:if>
+            <tr><%----%>
+                <td><fmt:message key="msg.page.form.bookingstatus.cancelledSubmissions.label" />:</td><%----%>
+                <td>${status.numCancelledSubmissions}</td><%----%>
+            </tr><%----%>
+    
+            <c:if test="${formBookingHasFinalRegistrationDate}">
+                <tr><%----%>
+                   <td><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline"/>:</td><%----%>
+                   <td>${formBookingFinalRegistrationDateStr}</td><%----%>
+                </tr><%----%>
+            </c:if>
+            </table><%----%>
+            <mercury:nl />
+            <c:if test="${status.numMoveUpPlaces gt 0 and status.numWaitlistCandidates gt 0}">
+                <div class="subelement oct-meta-info severe box"><%----%>
+                    <fmt:message key="msg.page.bookingmanage.info.moveupcandidates">
+                        <fmt:param>${status.numMoveUpPlaces}</fmt:param>
+                    </fmt:message>
+                </div><%----%>
+            </c:if>
+            <c:if test="${status.fullyBooked}">
+                <div class="subelement oct-meta-info severe box"><%----%>
+                    <fmt:message key="msg.page.form.remaining.places.none" /><%----%>
+                </div><%----%>
+            </c:if>
         </c:if>
 
         <c:if test="${not empty form.submissions or status.numOtherSubmissions gt 0}">
@@ -130,12 +132,12 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${not empty formDataHandler.error}">
-                        <div class="submissions-action-error"><%----%>
+                        <div class="submissions-action-error h3"><%----%>
                             <fmt:message key="${formDataHandler.error}" />
                         </div><%----%>
                     </c:when>
                     <c:when test="${not empty formDataHandler.info}">
-                        <div class="submissions-action-info"><%----%>
+                        <div class="submissions-action-info h3"><%----%>
                             <fmt:message key="${formDataHandler.info}" />
                         </div><%----%>
                     </c:when>

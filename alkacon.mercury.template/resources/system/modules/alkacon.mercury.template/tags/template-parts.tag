@@ -38,7 +38,8 @@ Case 3: Mega menu display request
 --%>
 
 <c:set var="megaMenuAjaxRequest"    value="${param.megamenu eq 'true'}" />
-<c:set var="megaMenuUri"            value="${fn:endsWith(cms.requestContext.uri, 'mega.menu')}" />
+<c:set var="megaMenuFile"           value="${cms.sitemapConfig.attribute['template.mega.menu.filename'].isSetNotNone ? cms.sitemapConfig.attribute['template.mega.menu.filename'] : 'mega.menu'}" />
+<c:set var="megaMenuUri"            value="${fn:endsWith(cms.requestContext.uri, megaMenuFile)}" />
 <c:set var="megaMenuDisplayRequest" value="${megaMenuUri and megaMenuAjaxRequest}" />
 <c:set var="megaMenuEditorRequest"  value="${megaMenuUri and not megaMenuAjaxRequest and not cms.isOnlineProject}" />
 

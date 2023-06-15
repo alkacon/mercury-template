@@ -15,6 +15,7 @@
     <Match>
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
         <ContainerType><![CDATA[media]]></ContainerType>
       </Types>
     </Match>

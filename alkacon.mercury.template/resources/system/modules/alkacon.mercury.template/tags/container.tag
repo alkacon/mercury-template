@@ -114,6 +114,13 @@
             </c:if>
         </c:if>
 
+        <c:set var="type" value="${
+            detailView
+            and (type eq 'element')
+            and cms.sitemapConfig.attribute['template.detailview.element.container'].isSetNotNone
+            ? cms.sitemapConfig.attribute['template.detailview.element.container']
+            : type}" />
+
         <cms:container
             name="${name}"
             type="${type}"

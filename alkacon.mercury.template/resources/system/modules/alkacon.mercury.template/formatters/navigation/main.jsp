@@ -142,7 +142,8 @@
                     <c:set var="menuType" value="${menuType.concat(contentDispositionFilename)}" />
                 </c:if>
 
-                <c:set var="megaMenuVfsPath" value="${navElem.resourceName}mega.menu" />
+                <c:set var="megaMenuFile" value="${cms.sitemapConfig.attribute['template.mega.menu.filename'].isSetNotNone ? cms.sitemapConfig.attribute['template.mega.menu.filename'] : 'mega.menu'}" />
+                <c:set var="megaMenuVfsPath" value="${navElem.resourceName}${megaMenuFile}" />
                 <c:if test="${navElem.navigationLevel}">
                     <%-- ###### Path correction needed if navLevel ###### --%>
                     <c:set var="megaMenuVfsPath" value="${fn:replace(megaMenuVfsPath, navElem.fileName, '')}" />

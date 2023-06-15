@@ -15,6 +15,7 @@
     <Match>
       <Types>
         <ContainerType><![CDATA[imageseries]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
         <ContainerType><![CDATA[element]]></ContainerType>
       </Types>
     </Match>

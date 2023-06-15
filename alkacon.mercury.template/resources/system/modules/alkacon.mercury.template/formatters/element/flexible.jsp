@@ -27,7 +27,8 @@
 
     <mercury:onclick-activation
         data="${value.OnclickActivation}"
-        requireExternalCookies="${value.RequireCookies.toBoolean}">
+        requireExternalCookies="${value.RequireCookies.toBoolean}"
+        requireReload="${value.RequireReload.toBoolean}">
 
         ${value.Code}
 

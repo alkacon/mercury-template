@@ -216,7 +216,7 @@ function replaceLinkMacros(text) {
 
 function resetTemplateScript(forceInit) {
 
-    forceInit = forceInit || (jQ(".external-cookie-notice.force-init").length > 0);
+    forceInit = forceInit || (jQ(".external-cookie-notice.force-init").length > 0) || (jQ("[data-force-init]").length > 0);
     if (DEBUG) console.info("PrivacyPolicy: Resetting template script, force=" + forceInit);
     if (forceInit) {
         location.reload();

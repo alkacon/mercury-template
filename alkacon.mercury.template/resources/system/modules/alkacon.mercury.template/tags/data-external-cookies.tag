@@ -19,6 +19,9 @@
 <%@ attribute name="modal" type="java.lang.Boolean" required="false"
     description="Controls if the data attibute is generated for a modal dialog." %>
 
+<%@ attribute name="reload" type="java.lang.Boolean" required="false"
+    description="Controls if the page should be reloaded in case the cookie consent is given from the element inline confirmation dialog." %>
+
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="Can be used to defer the decision to actually create the cookie data to the calling element.
     If not set or 'true', the cookie data from this tag is generated and returned.
@@ -43,7 +46,7 @@
                 <cms:jsonvalue key="footer" value="${footer}" />
             </c:if>
         </cms:jsonobject>
-        <%----%>${' '}${modal ? 'data-modal-external-cookies' : 'data-external-cookies'}='${cookieData.compact}'${' '}<%----%>
+        <%----%>${' '}${modal ? 'data-modal-external-cookies' : 'data-external-cookies'}='${cookieData.compact}'${reload ? ' data-force-init="true"': ''}${' '}<%----%>
     </c:when>
     <c:otherwise>
         <%----%>${' '}<%----%>

@@ -16,6 +16,10 @@
     description="If 'true' consent to external cookies is required to activate this element.
     In this case a modal dialog will be displayed, asking the user to confirm the use of external cookies." %>
 
+<%@ attribute name="requireReload" type="java.lang.Boolean" required="false"
+    description="If 'true' AND consent to external cookies is required to activate this element from 'requireExternalCookies',
+    then the page must be reloaded in case the cookie consent is given from the element inline cookie confirmation dialog." %>
+
 <%@ attribute name="cookieMessage" type="java.lang.String" required="false"
     description="The message to show in the 'activate cookies' modal dialog." %>
 
@@ -70,7 +74,7 @@
         --%>class="onclick-activation ${cssWrapper}" <%--
         --%><c:if test="${not empty cssStyle}">style="${cssStyle}" </c:if><%--
         --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
-        --%><c:if test="${requireExternalCookies}"><mercury:data-external-cookies modal="${true}" message="${cookieMessage}" /></c:if><%--
+        --%><c:if test="${requireExternalCookies}"><mercury:data-external-cookies modal="${true}" reload="${requireReload}" message="${cookieMessage}" /></c:if><%--
         --%>><%----%>
             <c:if test="${not empty image}">
                 <cms:addparams>
@@ -104,7 +108,7 @@
         <div <%--
             --%>class="onclick-activation ensure-external-cookies ${cssWrapper}" <%--
             --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
-            --%><mercury:data-external-cookies modal="${false}" message="${cookieMessage}" /><%--
+            --%><mercury:data-external-cookies modal="${false}" reload="${requireReload}" message="${cookieMessage}" /><%--
         --%>></div><%----%>
         <mercury:nl />
     </c:when>

@@ -23,7 +23,7 @@
 <c:set var="sharedFolder"           value="${OpenCms.getSiteManager().getSharedFolder()}" />
 <c:set var="isSharedFolder"         value="${fn:startsWith(sourceSite.rootPath, sharedFolder)}" />
 <c:if test="${isSharedFolder}">
-    <c:set var="sourceSiteProp"     value="${cms.vfs.readProperties[sourceSite.rootPath]['mercury.sourcesite']}" />
+    <c:set var="sourceSiteProp"     value="${cms.vfs.propertySearch[sourceSite.rootPath]['mercury.sourcesite']}" />
     <c:set var="sourceSite"         value="${empty sourceSiteProp ? '' : cms.vfs.readSubsiteFor(sourceSiteProp)}" />
 </c:if>
 

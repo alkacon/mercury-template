@@ -21,11 +21,10 @@
     <c:set var="sourceSite"         value="${cms.vfs.readSubsiteFor(cms.detailContent.sitePath)}" />
 </c:if>
 <c:set var="sharedFolder"           value="${OpenCms.getSiteManager().getSharedFolder()}" />
-<c:if test="${fn:startsWith(sourceSite.rootPath, sharedFolder)}">
+<c:set var="isSharedFolder"         value="${fn:startsWith(sourceSite.rootPath, sharedFolder)}" />
+<c:if test="${isSharedFolder}">
     <c:set var="sourceSiteProp"     value="${cms.vfs.readProperties[sourceSite.rootPath]['mercury.sourcesite']}" />
-    <c:if test="${not empty sourceSiteProp}">
-        <c:set var="sourceSite"         value="${cms.vfs.readSubsiteFor(sourceSiteProp)}" />
-    </c:if>
+    <c:set var="sourceSite"         value="${empty sourceSiteProp ? '' : cms.vfs.readSubsiteFor(sourceSiteProp)}" />
 </c:if>
 
 <fmt:setLocale value="${cms.locale}" />
@@ -41,6 +40,13 @@
                 <fmt:param><a href="${cms.vfs.link[sourceSite.rootPath]}">${sourceSiteName}</a></fmt:param>
             </fmt:message>
         </div><%----%>
+    </c:when>
+    <c:when test="${isSharedFolder and empty sourceSite and cms.isEditMode}">
+        <mercury:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
+            <jsp:attribute name="text">
+                <fmt:message key="msg.page.sourcesite.shared" />
+            </jsp:attribute>
+        </mercury:alert-meta>
     </c:when>
     <c:when test="${empty sourceSite and cms.isEditMode}">
         <mercury:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">

@@ -898,6 +898,7 @@ msg.page.shariff.mailSubject=Interessante Webseite
 msg.page.slider.pagination.dots=Seite *slideIndex* von *slideTotal*
 msg.page.sourcesite.other=Quelle\: {0}
 msg.page.sourcesite.same=Inhalt gehört zu dieser Site
+msg.page.sourcesite.shared=Inhalt liegt im "Gemeinsamen Verzeichnis"
 msg.page.sourcesite.unknown=Platzhalter für Ursprungs-Site
 msg.page.sr.by=Von\:
 msg.page.sr.date=Datum\:

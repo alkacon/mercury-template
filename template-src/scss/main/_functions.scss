@@ -57,21 +57,43 @@
     }
     @if ($text-color != null) {
         // Check 2: if a text color preference is given, check the contrast against the background
-        $contrast: contrast($bg-color, $text-color);
-        @if ($contrast > $text-contrast-threshold) {
-            // contrast is ok, return text color
-            @return $text-color;
+        @if ($text-use-w3c-contrast) {
+            @if (check-w3c-contrast($text-color, $bg-color)) {
+                @return $text-color;
+            }
+        } @else {
+            $contrast: contrast($bg-color, $text-color);
+            @if ($contrast > $text-contrast-threshold) {
+                // contrast is ok, return text color
+                @return $text-color;
+            }
         }
     }
     @if (has-color("body-color", $color-map)) {
         // Check 3: if we have a predefined color match, use this
         @return get-color-val("body-color", $color-map);
     }
-    // Check 4: return either light or dark text defpending on the lightness of the background
-    @if (lightness($bg-color) > $text-lightness-threshold) {
-        @return $text-dark; // light background, dark text
+    // Check 4: return either light or dark text depending on the lightness of the background
+    @if ($text-use-w3c-contrast) {
+        @if (check-w3c-contrast($text-light, $bg-color)) {
+            @return $text-light;
+        }
+        @if (check-w3c-contrast($text-dark, $bg-color)) {
+            @return $text-dark;
+        }
+        @if (check-w3c-contrast($white, $bg-color)) {
+            @return $white;
+        }
+        @if (check-w3c-contrast($black, $bg-color)) {
+            @return $black;
+        }
+        @return $white;
+    } @else {
+        @if (lightness($bg-color) > $text-lightness-threshold) {
+            @return $text-dark; // light background, dark text
+        }
+        @return $text-light; // dark background, light text
     }
-    @return $text-light; // dark background, light text
 }
 
 // Calculates an accent color for the given base color
@@ -156,7 +178,8 @@
 }
 
 // Functions to calculate the contrast difference of two colors
-// See https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+// See https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796 (link broken)
+// See https://sgom.es/posts/2016-12-21-using-sass-to-automatically-pick-text-colors/
 
 // Precomputed linear color channel values, for use in contrast calculations.
 // See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
@@ -427,6 +450,7 @@ $linear-channel-values:
   1;
 
 
+// Functions to calculate the contrast difference of two colors (see above)
 // Calculate the luminance for a color.
 @function luminance($color) {
   $red: nth($linear-channel-values, red($color) + 1);
@@ -436,12 +460,30 @@ $linear-channel-values:
   @return .2126 * $red + .7152 * $green + .0722 * $blue;
 }
 
+// Functions to calculate the contrast difference of two colors (see above)
 // Calculate the contrast ratio between two colors.
 @function contrast($back, $front) {
   $backLum: luminance($back) + .05;
   $foreLum: luminance($front) + .05;
 
   @return divide(max($backLum, $foreLum), min($backLum, $foreLum), $divide-precision);
+}
+
+
+// See: https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797
+// See https://www.w3.org/TR/AERT/#color-contrast
+// Function to mimic W3C color difference test
+@function check-w3c-contrast($foreground, $background) {
+    $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
+    $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
+    $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
+    $sum-rgb: $r + $g + $b;
+
+    @if $sum-rgb < 500 {
+        @return false;
+    } @else {
+        @return true;
+    }
 }
 
 // Optimized encoding an SVG for use in a data uri

@@ -264,6 +264,8 @@ $lead-font-size-mobile:             round($lead-font-size * 9) * 0.1 !default;
 
 
 // Controls the lightness threshold where the text is switched
+$text-use-w3c-contrast:             false !default; // if true, then lightness-threshold and contrast-threshold are ignored
+
 $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
 $text-contrast-threshold:           2.5 !default;
 
@@ -589,13 +591,13 @@ $foot-line-height-mobile:           max(1.8, $line-height-base) !default;
 $foot-top-bg-color:                 $black !default;
 $foot-top-text-color:               get-text-color($foot-top-bg-color) !default;
 $foot-top-header-color:             $foot-top-text-color !default;
-$foot-top-link-color:               get-accent-color($foot-top-text-color, 10%) !default;
+$foot-top-link-color:               get-text-color($foot-top-bg-color, get-accent-color($foot-top-text-color, 10%)) !default;
 $foot-top-link-hover-color:         $foot-top-link-color !default;
 
 $foot-sub-bg-color:                 $foot-top-bg-color !default;
 $foot-sub-text-color:               get-text-color($foot-sub-bg-color) !default;
 $foot-sub-header-color:             $foot-sub-text-color !default;
-$foot-sub-link-color:               get-accent-color($foot-sub-text-color, 10%) !default;
+$foot-sub-link-color:               get-text-color($foot-sub-bg-color, get-accent-color($foot-sub-text-color, 10%)) !default;
 $foot-sub-link-hover-color:         $foot-sub-link-color !default;
 
 

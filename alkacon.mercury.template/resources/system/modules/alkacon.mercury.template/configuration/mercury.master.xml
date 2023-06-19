@@ -7,62 +7,179 @@
     <ResourceType>
       <TypeName><![CDATA[m-section]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[section-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[cs_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1000]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView/>
+      <CopyInModels>true</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-article]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[article-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[a_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1050]]></Order>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-decoy]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[decoy-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[de_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1100]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-event]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[event-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[ev_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1150]]></Order>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-imageseries]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[imageseries-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[imgseries_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1200]]></Order>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-media]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-person]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[media-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[media_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1250]]></Order>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-organization]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[organization-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[org_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1290]]></Order>
+      <ElementView/>
+      <CopyInModels>true</CopyInModels>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-person]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[person-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[per_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1295]]></Order>
+      <ElementView/>
+      <CopyInModels>true</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-contact]]></TypeName>
       <Disabled><![CDATA[add]]></Disabled>
+      <Folder>
+        <Name><![CDATA[contact-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[ci_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1300]]></Order>
+      <ElementView/>
+      <CopyInModels>true</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-poi]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[poi-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[poi_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1350]]></Order>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-map]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-faq]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-job]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[map-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[map_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1400]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView/>
+      <CopyInModels>true</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-linksequence]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[linksequence-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[ls_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1450]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView/>
+      <CopyInModels>true</CopyInModels>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-faq]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[faq-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[faq_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1500]]></Order>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-job]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[job-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[job_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1550]]></Order>
+      <ElementView/>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-slider]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[slider-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[slider_%(number).xml]]></NamePattern>
+      <Order><![CDATA[1600]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView/>
+      <CopyInModels>true</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[listconfig]]></TypeName>
@@ -71,6 +188,7 @@
         <Name><![CDATA[list-m]]></Name>
       </Folder>
       <NamePattern><![CDATA[list_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2000]]></Order>
       <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
@@ -80,48 +198,61 @@
       </ElementView>
     </ResourceType>
     <ResourceType>
-      <TypeName><![CDATA[m-flexible]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
-    </ResourceType>
-    <ResourceType>
       <TypeName><![CDATA[m-metainfo]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[metainfo-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[meta_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2050]]></Order>
       <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>true</CopyInModels>
+      <ElementDeleteMode><![CDATA[askDelete]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
-      <TypeName><![CDATA[m-tab]]></TypeName>
+      <TypeName><![CDATA[m-navigation]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[navigation-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[nav_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2100]]></Order>
       <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-webform]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[webform-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[wf_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2150]]></Order>
       <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-webform-data]]></TypeName>
       <Disabled><![CDATA[add]]></Disabled>
       <DetailPagesDisabled>true</DetailPagesDisabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-navigation]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-sitemap]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-shariff]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[modelgroup]]></TypeName>
-      <Disabled><![CDATA[false]]></Disabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
@@ -130,8 +261,88 @@
       </ElementView>
     </ResourceType>
     <ResourceType>
+      <TypeName><![CDATA[m-tab]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[tab-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[tab_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2200]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>true</CopyInModels>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-flexible]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[flexible-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[fc_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2250]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>true</CopyInModels>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-sitemap]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[sitemap-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[sitemap_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2300]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-shariff]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[shariff-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[shariff_%(number).xml]]></NamePattern>
+      <Order><![CDATA[2350]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+    </ResourceType>
+    <ResourceType>
       <TypeName><![CDATA[function_config]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Order><![CDATA[2900]]></Order>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
+          <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
+        </link>
+      </ElementView>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[modelgroup]]></TypeName>
+      <Disabled><![CDATA[false]]></Disabled>
+      <Order><![CDATA[2950]]></Order>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
@@ -142,26 +353,97 @@
     <ResourceType>
       <TypeName><![CDATA[m-layout-row-simple]]></TypeName>
       <Disabled><![CDATA[create]]></Disabled>
-    </ResourceType>
-    <ResourceType>
-      <TypeName><![CDATA[m-layout-area-simple]]></TypeName>
-      <Disabled><![CDATA[create]]></Disabled>
+      <Folder>
+        <Name><![CDATA[layout-row-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[lr_%(number).xml]]></NamePattern>
+      <Order><![CDATA[3000]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
+          <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-layout-group-simple]]></TypeName>
       <Disabled><![CDATA[create]]></Disabled>
+      <Folder>
+        <Name><![CDATA[layout-group-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[lg_%(number).xml]]></NamePattern>
+      <Order><![CDATA[3100]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
+          <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+    </ResourceType>
+    <ResourceType>
+      <TypeName><![CDATA[m-layout-area-simple]]></TypeName>
+      <Disabled><![CDATA[create]]></Disabled>
+      <Folder>
+        <Name><![CDATA[layout-area-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[la_%(number).xml]]></NamePattern>
+      <Order><![CDATA[3200]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
+          <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-layout-row-complex]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[layout-row-custom-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[clr_%(number).xml]]></NamePattern>
+      <Order><![CDATA[3300]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
+          <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-layout-area-complex]]></TypeName>
       <Disabled><![CDATA[false]]></Disabled>
+      <Folder>
+        <Name><![CDATA[layout-area-custom-m]]></Name>
+      </Folder>
+      <NamePattern><![CDATA[cla_%(number).xml]]></NamePattern>
+      <Order><![CDATA[3400]]></Order>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <ElementView>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
+          <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
+        </link>
+      </ElementView>
+      <CopyInModels>false</CopyInModels>
+      <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-privacypolicy]]></TypeName>
       <Disabled><![CDATA[add]]></Disabled>
+      <ElementView/>
     </ResourceType>
     <UseFormatterKeys>true</UseFormatterKeys>
     <RemoveAllFormatters>true</RemoveAllFormatters>

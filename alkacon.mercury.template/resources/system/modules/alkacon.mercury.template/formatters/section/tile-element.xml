@@ -16,6 +16,7 @@
       <Types>
         <ContainerType><![CDATA[tile-element]]></ContainerType>
         <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>

@@ -24,6 +24,9 @@
 <c:set var="isSharedFolder"         value="${fn:startsWith(sourceSite.rootPath, sharedFolder)}" />
 <c:if test="${isSharedFolder}">
     <c:set var="sourceSiteProp"     value="${cms.vfs.propertySearch[sourceSite.rootPath]['mercury.sourcesite']}" />
+    <c:if test="${not empty sourceSiteProp and fn:startsWith(sourceSiteProp, currentSite.rootPath)}">
+        <c:set var="sourceSiteProp" value="/${fn:substringAfter(sourceSiteProp, currentSite.rootPath)}" />
+    </c:if>
     <c:set var="sourceSite"         value="${empty sourceSiteProp ? '' : cms.vfs.readSubsiteFor(sourceSiteProp)}" />
 </c:if>
 
@@ -35,6 +38,7 @@
     <c:when test="${(not empty sourceSite) and not (currentSite eq sourceSite)}">
         <c:set var="sourceSiteProps" value="${cms.vfs.readProperties[sourceSite]}" />
         <c:set var="sourceSiteName" value="${not empty sourceSiteProps['mercury.sitename'] ? sourceSiteProps['mercury.sitename'] : sourceSiteProps['Title'] }" />
+        <!-- sourceSiteProp: ${sourceSiteProp} -->
         <div class="element type-sourcesite pivot ${cssWrapper}"><%----%>
             <fmt:message key="msg.page.sourcesite.other">
                 <fmt:param><a href="${cms.vfs.link[sourceSite.rootPath]}">${sourceSiteName}</a></fmt:param>

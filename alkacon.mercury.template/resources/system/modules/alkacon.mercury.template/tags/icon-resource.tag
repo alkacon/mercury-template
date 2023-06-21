@@ -36,12 +36,16 @@
 
 
 <c:set var="icon"           value="${fn:trim(icon)}" />
-<c:set var="isBootstrap"    value="${fn:startsWith(icon, 'bi-')}" />
 
 <c:choose>
-    <c:when test="${isBootstrap}">
+    <c:when test="${fn:startsWith(icon, 'bi-')}">
         <c:set var="iconFile" value="${fn:substringAfter(icon, 'bi-')}" />
         <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/bi/${iconFile}.svg" />
+        <c:set var="iconName" value="ico-${icon}" />
+    </c:when>
+    <c:when test="${fn:startsWith(icon, 'fi-')}">
+        <c:set var="iconFile" value="${fn:substringAfter(icon, 'fi-')}" />
+        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/fi/${iconFile}.svg" />
         <c:set var="iconName" value="ico-${icon}" />
     </c:when>
     <c:when test="${fn:startsWith(icon, 'fa-')}">
@@ -57,6 +61,6 @@
 <c:set var="iconResource" value="${cms.vfs.readResource[iconPath]}" />
 <c:set var="iconIsValid" value="${not empty iconResource}" />
 <c:if test="${setFallback and not iconIsValid}">
-    <c:set var="iconRes" value="${cms.vfs.readResource['/system/modules/alkacon.mercury.theme/icons/fa/question-circle.svg']}" />
+    <c:set var="iconResource" value="${cms.vfs.readResource['/system/modules/alkacon.mercury.theme/icons/fa/question-circle.svg']}" />
 </c:if>
 

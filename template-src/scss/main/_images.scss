@@ -124,14 +124,20 @@ aside img {
     }
 }
 
+.ico-img,
 .ico-svg {
     display: inline-block;
     line-height: 1;
+}
 
-    > svg {
-        vertical-align: bottom;
-        fill: currentColor;
-        height: 1em;
-        width: auto;
-    }
+.ico-img > img {
+    vertical-align: bottom;
+    height: 1em;
+    width: auto;
+}
+.ico-svg > svg {
+    vertical-align: bottom;
+    fill: currentColor;
+    height: 1em;
+    width: auto;
 }

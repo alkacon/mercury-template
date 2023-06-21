@@ -57,34 +57,26 @@
     }
     @if ($text-color != null) {
         // Check 2: if a text color preference is given, check the contrast against the background
-        @if ($text-use-w3c-contrast) {
-            @if (check-w3c-contrast($text-color, $bg-color)) {
-                @return $text-color;
-            }
-        } @else {
-            $contrast: contrast($bg-color, $text-color);
-            @if ($contrast > $text-contrast-threshold) {
-                // contrast is ok, return text color
-                @return $text-color;
-            }
+        @if (check-contrast($bg-color, $text-color)) {
+            @return $text-color;
         }
     }
     @if (has-color("body-color", $color-map)) {
         // Check 3: if we have a predefined color match, use this
         @return get-color-val("body-color", $color-map);
     }
-    // Check 4: return either light or dark text depending on the lightness of the background
-    @if ($text-use-w3c-contrast) {
-        @if (check-w3c-contrast($text-light, $bg-color)) {
+    // Check 4: return either light or dark text depending on the background
+    @if ($text-use-wcag-contrast) {
+        @if (check-wcag-contrast($bg-color, $text-light)) {
             @return $text-light;
         }
-        @if (check-w3c-contrast($text-dark, $bg-color)) {
+        @if (check-wcag-contrast($bg-color, $text-dark)) {
             @return $text-dark;
         }
-        @if (check-w3c-contrast($white, $bg-color)) {
+        @if (check-wcag-contrast($bg-color, $white)) {
             @return $white;
         }
-        @if (check-w3c-contrast($black, $bg-color)) {
+        @if (check-wcag-contrast($bg-color, $black)) {
             @return $black;
         }
         @return $white;
@@ -97,11 +89,12 @@
 }
 
 // Calculates an accent color for the given base color
-// In case the base color is  dark, a lighter color is returned, otherwise a darker color
+// In case the base color is dark, a lighter color is returned, otherwise a darker color
 @function get-accent-color($color, $percentage: 25%) {
-    $accent-color: lighten($color, $percentage);
+
+    $accent-color: scale-color($color, $lightness: $percentage);
     @if (lightness($accent-color) > 95) {
-        $accent-color: darken($color, $percentage);
+        $accent-color: scale-color($color, $lightness: -1 * $percentage);
     }
     @return $accent-color;
 }
@@ -178,6 +171,7 @@
 }
 
 // Functions to calculate the contrast difference of two colors
+// See https://css-tricks.com/programming-sass-to-create-accessible-color-combinations/
 // See https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796 (link broken)
 // See https://sgom.es/posts/2016-12-21-using-sass-to-automatically-pick-text-colors/
 
@@ -449,9 +443,9 @@ $linear-channel-values:
   .9911020971138298
   1;
 
-
 // Functions to calculate the contrast difference of two colors (see above)
 // Calculate the luminance for a color.
+// See https://www.w3.org/TR/WCAG/#dfn-relative-luminance
 @function luminance($color) {
   $red: nth($linear-channel-values, red($color) + 1);
   $green: nth($linear-channel-values, green($color) + 1);
@@ -462,27 +456,34 @@ $linear-channel-values:
 
 // Functions to calculate the contrast difference of two colors (see above)
 // Calculate the contrast ratio between two colors.
-@function contrast($back, $front) {
-  $backLum: luminance($back) + .05;
-  $foreLum: luminance($front) + .05;
+// See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
+@function contrast($bg-color, $fg-color) {
+  $bg-lum: luminance($bg-color) + .05;
+  $fg-lum: luminance($fg-color) + .05;
 
-  @return divide(max($backLum, $foreLum), min($backLum, $foreLum), $divide-precision);
+  @return divide(max($bg-lum, $fg-lum), min($bg-lum, $fg-lum), 10);
 }
 
+// Check if there is sufficient contrast ratio between two colors according to the W3C WCAG rules.
+// See https://www.w3.org/TR/WCAG/#dfn-relative-luminance
+// See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
+// See https://www.w3.org/WAI/WCAG21/Understanding/conformance#conformance-requirements
+// See https://css-tricks.com/programming-sass-to-create-accessible-color-combinations/
+@function check-wcag-contrast($bg-color, $fg-color, $level: $wacg-conformance-level) {
+    $targetContrast: 4.5;
+    @if $level == "AAA" {
+      $targetContrast: 7;
+    }
+    $colorContrast: contrast($bg-color, $fg-color);
+    @debug "check-wcag-contrast() bg: #{$bg-color} fg: #{$fg-color} contrast: #{$colorContrast} check: #{$colorContrast >= $targetContrast}";
+    @return $colorContrast >= $targetContrast;
+}
 
-// See: https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797
-// See https://www.w3.org/TR/AERT/#color-contrast
-// Function to mimic W3C color difference test
-@function check-w3c-contrast($foreground, $background) {
-    $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
-    $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
-    $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
-    $sum-rgb: $r + $g + $b;
-
-    @if $sum-rgb < 500 {
-        @return false;
+@function check-contrast($bg-color, $fg-color) {
+    @if ($text-use-wcag-contrast) {
+        @return check-wcag-contrast($bg-color, $fg-color);
     } @else {
-        @return true;
+        @return (contrast($bg-color, $fg-color) > $text-contrast-threshold);
     }
 }
 

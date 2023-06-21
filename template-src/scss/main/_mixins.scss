@@ -708,23 +708,18 @@
     } @else {
         // if a body (fg) color is not defined for a background color, then first calculate the body (fg) color - the result will be either light or dark text
         $fg-color: get-text-color($bg-color);
-        $li-fallback-color: get-text-color($bg-color, get-accent-color($fg-color, 20%));
+        $li-fallback-color: get-accent-color($fg-color, 20%);
+        @if ($text-use-wcag-contrast) {
+            $li-fallback-color: get-text-color($bg-color, $li-fallback-color);
+        }
         $li-color: get-color-val("link-color", $bg-map);
         @if ($li-color == null) {
-            @if ($text-use-w3c-contrast) {
-                @if (check-w3c-contrast($link-color, $bg-color)) {
-                    $li-color: $link-color;
-                } @else {
-                    $li-color: $li-fallback-color;
-                }
+            @if check-contrast($bg-color, $link-color) {
+                // the default $link-color is usable on the background
+                $li-color: $link-color;
             } @else {
-                @if (contrast($bg-color, $link-color) > $text-contrast-threshold) {
-                    // the default $link-color is usable on the background
-                    $li-color: $link-color;
-                } @else {
-                    // use a calculated fallback color based on the body (fg) color for the links
-                    $li-color: $li-fallback-color;
-                }
+                // use a calculated fallback color based on the body (fg) color for the links
+                $li-color: $li-fallback-color;
             }
         }
         $li-hover-color: get-color-val("link-hover-color", $bg-map);
@@ -733,20 +728,12 @@
                 // the default $link-color has been replaced by the fallback color, use the default body (fg) color as link hover color
                 $li-hover-color: $fg-color;
             } @else {
-                @if ($text-use-w3c-contrast) {
-                    @if (check-w3c-contrast($link-hover-color, $bg-color)) {
-                        $li-hover-color: $link-hover-color;
-                    } @else {
-                        $li-hover-color: $fg-color;
-                    }
+                @if check-contrast($bg-color, $link-hover-color) {
+                    // the default $link-hover-color is usable on the background
+                    $li-hover-color: $link-hover-color;
                 } @else {
-                    @if(contrast($bg-color, $link-hover-color) > $text-contrast-threshold) {
-                        // the default $link-hover-color is usable on the background
-                        $li-hover-color: $link-hover-color;
-                    } @else {
-                        // use the default body (fg) color as link hover color
-                        $li-hover-color: $fg-color;
-                    }
+                    // use the default body (fg) color as link hover color
+                    $li-hover-color: $fg-color;
                 }
             }
         }

@@ -45,10 +45,15 @@
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
 <c:set var="isBootstrap"    value="${fn:startsWith(icon, 'bi-')}" />
+<c:set var="isFlag"         value="${fn:startsWith(icon, 'fi-')}" />
 
 <c:choose>
     <c:when test="${isBootstrap}">
         <c:set var="inline"         value="${true}" />
+    </c:when>
+    <c:when test="${isFlag}">
+        <c:set var="imgsrc"         value="${true}" />
+        <c:set var="inline"         value="${false}" />
     </c:when>
     <c:otherwise>
         <c:set var="selectedIcons"  value="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
@@ -61,10 +66,29 @@
     <c:when test="${inline}">
         <mercury:icon-resource icon="${icon}" setFallback="${true}" />
         <c:set var="iconClass" value="ico ico-svg ico-inline ${iconName}" />
-        <c:set var="iconRes" value="${iconResource}" />
         <c:if test="${not iconIsValid}">
-            <c:set var="iconClass" value="ico ico-svg ico-missing" />
+            <c:set var="iconClass" value="${iconClass} ico-missing" />
         </c:if>
+        <c:set var="iconMarkup">
+            <c:out value="${fn:replace(iconResource.content, 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" />
+        </c:set>
+    </c:when>
+    <c:when test="${imgsrc}">
+        <mercury:icon-resource icon="${icon}" setFallback="${true}" />
+        <c:set var="iconClass" value="ico ico-img ${iconName}" />
+        <c:choose>
+            <c:when test="${not iconIsValid}">
+                <c:set var="iconClass" value="ico ico-svg ico-inline ${iconName} ico-missing" />
+                <c:set var="iconMarkup">
+                    <c:out value="${fn:replace(iconResource.content, 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" />
+                </c:set>
+            </c:when>
+            <c:otherwise>
+                <c:set var="iconMarkup">
+                    <img src="${iconResource.sitePath}" height="480" width="640"><%-- height and width can be static as long as only flag icons are used --%>
+                </c:set>
+            </c:otherwise>
+        </c:choose>
     </c:when>
     <c:when test="${noInline}">
         <c:set var="iconName" value="${fn:substringAfter(icon, 'no-')}" />
@@ -84,5 +108,5 @@
 --%>${empty ariaLabel ? '' : ' aria-label=\"'.concat(ariaLabel).concat('\" role=\"img\"')}<%--
 --%>${ariaHidden ? ' aria-hidden=\"true\"' : ''}<%--
 --%>><%----%>
-    <c:if test="${inline}"><c:out value="${fn:replace(iconRes.content, 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" /></c:if>
+    <c:if test="${not empty iconMarkup}">${iconMarkup}</c:if>
 </${tag}><%----%>

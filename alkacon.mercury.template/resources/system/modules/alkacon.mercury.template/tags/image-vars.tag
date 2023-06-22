@@ -132,6 +132,11 @@
         <c:set var="imageBean" value="${image}" />
         <c:set var="imageLink" value="${image.srcUrl}" />
     </c:when>
+    <c:when test="${image['class'].simpleName eq 'CmsJspResourceWrapper'}">
+        <c:set var="isXmlContent" value="${false}" />
+        <c:set var="imageBean" value="${image.toImage}" />
+        <c:set var="imageLink" value="${imageBean.srcUrl}" />
+    </c:when>
     <c:when test="${image['class'].simpleName eq 'String'}">
         <c:set var="isXmlContent" value="${false}" />
         <cms:scaleImage var="imageBean" src="${image}"/>
@@ -156,10 +161,17 @@
     </c:if>
 
     <c:set var="imageUnscaledLink" value="${imageBean.vfsUri}" />
-    <c:set var="imageUrl" value="${imageBean.srcUrl}" />
+    <c:set var="imageIsSvg" value="${fn:endsWith(imageBean.vfsUri, '.svg')}" />
+    <c:choose>
+        <c:when test="${imageIsSvg}">
+            <c:set var="imageUrl" value="${imageBean.resource.link}" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="imageUrl" value="${imageBean.srcUrl}" />
+        </c:otherwise>
+    </c:choose>
     <c:set var="imageWidth" value="${imageBean.scaler.width}" />
     <c:set var="imageHeight" value="${imageBean.scaler.height}" />
-    <c:set var="imageIsSvg" value="${fn:endsWith(imageBean.vfsUri, '.svg')}" />
 
     <c:choose>
         <c:when test="${imageWidth > (imageHeight * 1.1)}">

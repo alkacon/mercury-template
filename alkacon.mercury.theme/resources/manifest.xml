@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>15.0.26</version>
+		<version>15.0.28</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -68398,7 +68398,7 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi</destination>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf</destination>
 			<type>folder</type>
 			<uuidstructure>ec0d2e0e-100d-11ee-a544-0242ac11002b</uuidstructure>
 			<datecreated>Wed, 21 Jun 2023 08:30:47 GMT</datecreated>
@@ -68406,15 +68406,15 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Flag icons]]></value>
+					<value><![CDATA[National flag icons]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ac.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ac.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ac.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ac.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f38718-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f38719-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68438,8 +68438,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ad.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ad.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ad.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ad.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f4bf9c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f4bf9d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68463,8 +68463,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ae.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ae.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ae.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ae.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f5f720-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f5f721-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68488,8 +68488,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/af.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/af.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/af.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/af.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f6ba74-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f6ba75-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68513,8 +68513,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ag.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ag.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ag.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ag.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f77dc8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f77dc9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68538,8 +68538,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ai.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ai.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ai.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ai.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f8411c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f8411d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68563,8 +68563,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/al.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/al.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/al.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/al.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f8dd60-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f8dd61-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68588,8 +68588,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/am.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/am.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/am.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/am.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4f979a4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4f979a5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68613,8 +68613,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ao.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ao.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ao.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ao.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fa15e8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fa15e9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68638,8 +68638,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/aq.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/aq.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/aq.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/aq.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fab22c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fab22d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68663,8 +68663,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ar.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ar.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ar.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ar.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fb7580-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fb7581-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68688,8 +68688,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/as.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/as.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/as.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/as.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fc11c4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fc11c5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68713,8 +68713,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/at.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/at.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/at.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/at.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fcae08-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fcae09-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68738,8 +68738,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/au.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/au.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/au.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/au.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fd4a4c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fd4a4d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68763,8 +68763,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/aw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/aw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/aw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/aw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fde690-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fde691-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68788,8 +68788,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ax.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ax.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ax.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ax.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fe82d4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fe82d5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68813,8 +68813,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/az.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/az.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/az.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/az.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4fef808-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4fef809-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68838,8 +68838,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ba.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ba.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ba.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ba.svg</destination>
 			<type>image</type>
 			<uuidstructure>d4ff6d3c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d4ff6d3d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68863,8 +68863,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bb.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bb.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bb.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bb.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5000980-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5000981-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68888,8 +68888,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bd.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bd.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bd.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bd.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5007eb4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5007eb5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68913,8 +68913,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/be.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/be.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/be.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/be.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5011af8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5011af9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68938,8 +68938,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d501902c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d501902d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68963,8 +68963,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5020560-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5020561-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -68988,8 +68988,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bh.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bh.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bh.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bh.svg</destination>
 			<type>image</type>
 			<uuidstructure>d502a1a4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d502a1a5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69013,8 +69013,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bi.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bi.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bi.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bi.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50364f8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50364f9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69038,8 +69038,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bj.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bj.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bj.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bj.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5044f5c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5044f5d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69063,8 +69063,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bl.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bl.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bl.svg</destination>
 			<type>image</type>
 			<uuidstructure>d504eba0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d504eba1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69088,8 +69088,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50587e4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50587e5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69113,8 +69113,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5064b38-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5064b39-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69138,8 +69138,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bo.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bo.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bo.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bo.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5075cac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5075cad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69163,8 +69163,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bq.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bq.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bq.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bq.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5082000-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5082001-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69188,8 +69188,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/br.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/br.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/br.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/br.svg</destination>
 			<type>image</type>
 			<uuidstructure>d508bc44-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d508bc45-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69213,8 +69213,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bs.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bs.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bs.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bs.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5093178-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5093179-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69238,8 +69238,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bt.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bt.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bt.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bt.svg</destination>
 			<type>image</type>
 			<uuidstructure>d509a6ac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d509a6ad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69263,8 +69263,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bv.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bv.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bv.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50a42f0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50a42f1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69288,8 +69288,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50adf34-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50adf35-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69313,8 +69313,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/by.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/by.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/by.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/by.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50b7b78-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50b7b79-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69338,8 +69338,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/bz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/bz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/bz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/bz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50bf0ac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50bf0ad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69363,8 +69363,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ca.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ca.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ca.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ca.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50c65e0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50c65e1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69388,8 +69388,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cc.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cc.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cc.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50d0224-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50d0225-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69413,8 +69413,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cd.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cd.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cd.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cd.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50d9e68-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50d9e69-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69438,8 +69438,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cefta.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cefta.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cefta.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cefta.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50e3aac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50e3aad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69463,8 +69463,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50ed6f0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50ed6f1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69488,8 +69488,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50f4c24-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50f4c25-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69513,8 +69513,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ch.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ch.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ch.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ch.svg</destination>
 			<type>image</type>
 			<uuidstructure>d50fc158-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d50fc159-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69538,8 +69538,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ci.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ci.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ci.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ci.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5105d9c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5105d9d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69563,8 +69563,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ck.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ck.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ck.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ck.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51120f0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51120f1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69588,8 +69588,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cl.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cl.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cl.svg</destination>
 			<type>image</type>
 			<uuidstructure>d511bd34-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d511bd35-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69613,8 +69613,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5125978-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5125979-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69638,8 +69638,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d512ceac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d512cead-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69663,8 +69663,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/co.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/co.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/co.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/co.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51343e0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51343e1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69688,8 +69688,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cp.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cp.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cp.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cp.svg</destination>
 			<type>image</type>
 			<uuidstructure>d513b914-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d513b915-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69713,8 +69713,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5145558-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5145559-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69738,8 +69738,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d514f19c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d514f19d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69763,8 +69763,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cv.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cv.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cv.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51566d0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51566d1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69788,8 +69788,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d515dc04-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d515dc05-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69813,8 +69813,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cx.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cx.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cx.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cx.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5165138-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5165139-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69838,8 +69838,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cy.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cy.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cy.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cy.svg</destination>
 			<type>image</type>
 			<uuidstructure>d516ed7c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d516ed7d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69863,8 +69863,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/cz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/cz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/cz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/cz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51789c0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51789c1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69888,8 +69888,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/de.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/de.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/de.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/de.svg</destination>
 			<type>image</type>
 			<uuidstructure>d517fef4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d517fef5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69913,8 +69913,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/dg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/dg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/dg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/dg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5187428-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5187429-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69938,8 +69938,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/dj.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/dj.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/dj.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/dj.svg</destination>
 			<type>image</type>
 			<uuidstructure>d519106c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d519106d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69963,8 +69963,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/dk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/dk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/dk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/dk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51985a0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51985a1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -69988,8 +69988,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/dm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/dm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/dm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/dm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51a21e4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51a21e5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70013,8 +70013,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/do.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/do.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/do.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/do.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51ae538-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51ae539-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70038,8 +70038,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/dz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/dz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/dz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/dz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51ba88c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51ba88d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70063,8 +70063,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ea.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ea.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ea.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ea.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51c6ae0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51c6ae1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70088,8 +70088,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ec.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ec.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ec.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ec.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51d5544-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51d5545-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70113,8 +70113,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ee.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ee.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ee.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ee.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51df188-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51df189-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70138,8 +70138,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/eg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/eg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/eg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/eg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51e8dcc-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51e8dcd-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70163,8 +70163,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/eh.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/eh.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/eh.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/eh.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51f2a10-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51f2a11-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70188,8 +70188,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/er.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/er.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/er.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/er.svg</destination>
 			<type>image</type>
 			<uuidstructure>d51fc654-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d51fc655-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70213,8 +70213,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/es-ct.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/es-ct.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/es-ct.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/es-ct.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5203b88-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5203b89-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70238,8 +70238,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/es-ga.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/es-ga.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/es-ga.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/es-ga.svg</destination>
 			<type>image</type>
 			<uuidstructure>d520b0bc-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d520b0bd-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70263,8 +70263,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/es-pv.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/es-pv.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/es-pv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/es-pv.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5214d00-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5214d01-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70288,8 +70288,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/es.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/es.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/es.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/es.svg</destination>
 			<type>image</type>
 			<uuidstructure>d521e944-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d521e945-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70313,8 +70313,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/et.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/et.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/et.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/et.svg</destination>
 			<type>image</type>
 			<uuidstructure>d522d3a8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d522d3a9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70338,8 +70338,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/eu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/eu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/eu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/eu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52396fc-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52396fd-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70363,8 +70363,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/fi.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/fi.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/fi.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/fi.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5245a50-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5245a51-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70388,8 +70388,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/fj.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/fj.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/fj.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/fj.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52544b4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52544b5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70413,8 +70413,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/fk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/fk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/fk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/fk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5265628-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5265629-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70438,8 +70438,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/fm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/fm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/fm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/fm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d527408c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d527408d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70463,8 +70463,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/fo.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/fo.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/fo.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/fo.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5282af0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5282af1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70488,8 +70488,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/fr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/fr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/fr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/fr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d528ee44-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d528ee45-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70513,8 +70513,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ga.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ga.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ga.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ga.svg</destination>
 			<type>image</type>
 			<uuidstructure>d529d8a8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d529d8a9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70538,8 +70538,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gb-eng.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gb-eng.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gb-eng.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gb-eng.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52ac30c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52ac30d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70563,8 +70563,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gb-nir.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gb-nir.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gb-nir.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gb-nir.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52bad70-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52bad71-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70588,8 +70588,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gb-sct.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gb-sct.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gb-sct.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gb-sct.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52c97d4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52c97d5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70613,8 +70613,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gb-wls.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gb-wls.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gb-wls.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gb-wls.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52d8238-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52d8239-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70638,8 +70638,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gb.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gb.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gb.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gb.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52e458c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52e458d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70663,8 +70663,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gd.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gd.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gd.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gd.svg</destination>
 			<type>image</type>
 			<uuidstructure>d52f2ff0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d52f2ff1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70688,8 +70688,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ge.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ge.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ge.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ge.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5301a54-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5301a55-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70713,8 +70713,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d530dda8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d530dda9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70738,8 +70738,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d531c80c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d531c80d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70763,8 +70763,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gh.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gh.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gh.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gh.svg</destination>
 			<type>image</type>
 			<uuidstructure>d532b270-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d532b271-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70788,8 +70788,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gi.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gi.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gi.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gi.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53375c4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53375c5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70813,8 +70813,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gl.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gl.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gl.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5346028-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5346029-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70838,8 +70838,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d535237c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d535237d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70863,8 +70863,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5360de0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5360de1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70888,8 +70888,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gp.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gp.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gp.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gp.svg</destination>
 			<type>image</type>
 			<uuidstructure>d536f844-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d536f845-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70913,8 +70913,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gq.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gq.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gq.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gq.svg</destination>
 			<type>image</type>
 			<uuidstructure>d537bb98-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d537bb99-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70938,8 +70938,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d538a5fc-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d538a5fd-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70963,8 +70963,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gs.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gs.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gs.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gs.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5399060-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5399061-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -70988,8 +70988,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gt.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gt.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gt.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gt.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53ac8e4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53ac8e5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71013,8 +71013,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53bb348-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53bb349-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71038,8 +71038,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53c9dac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53c9dad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71063,8 +71063,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/gy.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/gy.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/gy.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/gy.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53d6100-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53d6101-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71088,8 +71088,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/hk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/hk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/hk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/hk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53e4b64-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53e4b65-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71113,8 +71113,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/hm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/hm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/hm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/hm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53f0eb8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53f0eb9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71138,8 +71138,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/hn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/hn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/hn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/hn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d53ff91c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d53ff91d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71163,8 +71163,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/hr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/hr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/hr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/hr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d540e380-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d540e381-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71188,8 +71188,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ht.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ht.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ht.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ht.svg</destination>
 			<type>image</type>
 			<uuidstructure>d541f4f4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d541f4f5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71213,8 +71213,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/hu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/hu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/hu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/hu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d542df58-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d542df59-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71238,8 +71238,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ic.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ic.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ic.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ic.svg</destination>
 			<type>image</type>
 			<uuidstructure>d543a2ac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d543a2ad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71263,8 +71263,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/id.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/id.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/id.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/id.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5448d10-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5448d11-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71288,8 +71288,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ie.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ie.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ie.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ie.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5455064-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5455065-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71313,8 +71313,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/il.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/il.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/il.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/il.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5463ac8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5463ac9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71338,8 +71338,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/im.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/im.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/im.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/im.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5480f8c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5480f8d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71363,8 +71363,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/in.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/in.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/in.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/in.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54884c0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54884c1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71388,8 +71388,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/io.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/io.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/io.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/io.svg</destination>
 			<type>image</type>
 			<uuidstructure>d548f9f4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d548f9f5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71413,8 +71413,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/iq.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/iq.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/iq.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/iq.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5499638-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5499639-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71438,8 +71438,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ir.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ir.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ir.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ir.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54a327c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54a327d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71463,8 +71463,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/is.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/is.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/is.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/is.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54acec0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54acec1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71488,8 +71488,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/it.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/it.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/it.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/it.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54b43f4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54b43f5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71513,8 +71513,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/je.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/je.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/je.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/je.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54bb928-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54bb929-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71538,8 +71538,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/jm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/jm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/jm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/jm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54c556c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54c556d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71563,8 +71563,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/jo.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/jo.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/jo.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/jo.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54cf1b0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54cf1b1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71588,8 +71588,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/jp.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/jp.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/jp.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/jp.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54d8df4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54d8df5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71613,8 +71613,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ke.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ke.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ke.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ke.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54e5148-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54e5149-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71638,8 +71638,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/kg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/kg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/kg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/kg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54eed8c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54eed8d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71663,8 +71663,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/kh.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/kh.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/kh.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/kh.svg</destination>
 			<type>image</type>
 			<uuidstructure>d54f88d0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d54f88d1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71688,8 +71688,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ki.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ki.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ki.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ki.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5502514-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5502515-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71713,8 +71713,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/km.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/km.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/km.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/km.svg</destination>
 			<type>image</type>
 			<uuidstructure>d550e868-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d550e869-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71738,8 +71738,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/kn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/kn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/kn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/kn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55184ac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55184ad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71763,8 +71763,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/kp.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/kp.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/kp.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/kp.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55220f0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55220f1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71788,8 +71788,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/kr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/kr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/kr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/kr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d552bd34-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d552bd35-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71813,8 +71813,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/kw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/kw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/kw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/kw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5538088-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5538089-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71838,8 +71838,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ky.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ky.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ky.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ky.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5541ccc-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5541ccd-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71863,8 +71863,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/kz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/kz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/kz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/kz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d554b910-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d554b911-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71888,8 +71888,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/la.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/la.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/la.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/la.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5552e44-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5552e45-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71913,8 +71913,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/lb.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/lb.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/lb.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/lb.svg</destination>
 			<type>image</type>
 			<uuidstructure>d555a378-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d555a379-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71938,8 +71938,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/lc.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/lc.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/lc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/lc.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55618ac-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55618ad-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71963,8 +71963,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/li.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/li.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/li.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/li.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55666d0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55666d1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -71988,8 +71988,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/LICENSE</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/LICENSE</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/LICENSE</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/LICENSE</destination>
 			<type>plain</type>
 			<uuidstructure>f300a824-1018-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>f300a825-1018-11ee-a544-0242ac11002b</uuidresource>
@@ -72005,8 +72005,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/lk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/lk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/lk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/lk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d556dc04-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d556dc05-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72030,8 +72030,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/lr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/lr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/lr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/lr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5575138-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5575139-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72055,8 +72055,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ls.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ls.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ls.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ls.svg</destination>
 			<type>image</type>
 			<uuidstructure>d557c66c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d557c66d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72080,8 +72080,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/lt.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/lt.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/lt.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/lt.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5583ba0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5583ba1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72105,8 +72105,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/lu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/lu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/lu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/lu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55889c4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55889c5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72130,8 +72130,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/lv.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/lv.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/lv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/lv.svg</destination>
 			<type>image</type>
 			<uuidstructure>d558fef8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d558fef9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72155,8 +72155,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ly.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ly.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ly.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ly.svg</destination>
 			<type>image</type>
 			<uuidstructure>d559742c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d559742d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72180,8 +72180,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ma.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ma.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ma.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ma.svg</destination>
 			<type>image</type>
 			<uuidstructure>d559e960-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d559e961-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72205,8 +72205,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mc.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mc.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mc.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55a3784-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55a3785-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72230,8 +72230,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/md.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/md.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/md.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/md.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55aacb8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55aacb9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72255,8 +72255,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/me.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/me.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/me.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/me.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55b21ec-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55b21ed-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72280,8 +72280,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55b9720-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55b9721-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72305,8 +72305,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55c0c54-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55c0c55-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72330,8 +72330,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mh.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mh.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mh.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mh.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55c8188-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55c8189-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72355,8 +72355,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55cf6bc-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55cf6bd-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72380,8 +72380,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ml.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ml.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ml.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ml.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55d44e0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55d44e1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72405,8 +72405,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55dba14-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55dba15-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72430,8 +72430,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55e2f48-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55e2f49-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72455,8 +72455,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mo.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mo.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mo.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mo.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55ea47c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55ea47d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72480,8 +72480,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mp.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mp.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mp.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mp.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55f19b0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55f19b1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72505,8 +72505,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mq.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mq.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mq.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mq.svg</destination>
 			<type>image</type>
 			<uuidstructure>d55f8ee4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d55f8ee5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72530,8 +72530,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5600418-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5600419-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72555,8 +72555,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ms.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ms.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ms.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ms.svg</destination>
 			<type>image</type>
 			<uuidstructure>d560523c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d560523d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72580,8 +72580,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mt.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mt.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mt.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mt.svg</destination>
 			<type>image</type>
 			<uuidstructure>d560c770-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d560c771-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72605,8 +72605,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5613ca4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5613ca5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72630,8 +72630,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mv.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mv.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mv.svg</destination>
 			<type>image</type>
 			<uuidstructure>d561b1d8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d561b1d9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72655,8 +72655,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d562270c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d562270d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72680,8 +72680,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mx.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mx.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mx.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mx.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5629c40-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5629c41-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72705,8 +72705,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/my.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/my.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/my.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/my.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5631174-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5631175-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72730,8 +72730,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/mz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/mz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/mz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/mz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d563adb8-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d563adb9-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72755,8 +72755,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/na.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/na.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/na.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/na.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56422ec-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56422ed-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72780,8 +72780,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/nc.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/nc.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/nc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/nc.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5649820-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5649821-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72805,8 +72805,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ne.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ne.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ne.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ne.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5650d54-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5650d55-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72830,8 +72830,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/nf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/nf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/nf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/nf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5658288-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5658289-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72855,8 +72855,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ng.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ng.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ng.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ng.svg</destination>
 			<type>image</type>
 			<uuidstructure>d565f7bc-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d565f7bd-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72880,8 +72880,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ni.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ni.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ni.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ni.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5666cf0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5666cf1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72905,8 +72905,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/nl.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/nl.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/nl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/nl.svg</destination>
 			<type>image</type>
 			<uuidstructure>d566e224-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d566e225-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72930,8 +72930,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/no.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/no.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/no.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/no.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5675758-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5675759-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72955,8 +72955,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/np.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/np.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/np.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/np.svg</destination>
 			<type>image</type>
 			<uuidstructure>d567cc8c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d567cc8d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -72980,8 +72980,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/nr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/nr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/nr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/nr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56841c0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56841c1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73005,8 +73005,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/nu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/nu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/nu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/nu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d568b6f4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d568b6f5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73030,8 +73030,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/nz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/nz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/nz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/nz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5695338-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5695339-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73055,8 +73055,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/om.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/om.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/om.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/om.svg</destination>
 			<type>image</type>
 			<uuidstructure>d569c86c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d569c86d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73080,8 +73080,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pa.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pa.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pa.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pa.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56a64b0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56a64b1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73105,8 +73105,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pe.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pe.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pe.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pe.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56b2804-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56b2805-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73130,8 +73130,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56beb58-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56beb59-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73155,8 +73155,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56c879c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56c879d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73180,8 +73180,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ph.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ph.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ph.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ph.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56d23e0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56d23e1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73205,8 +73205,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56d9914-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56d9915-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73230,8 +73230,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pl.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pl.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pl.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56e0e48-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56e0e49-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73255,8 +73255,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56eaa8c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56eaa8d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73280,8 +73280,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56f45d0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56f45d1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73305,8 +73305,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d56fe214-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d56fe215-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73330,8 +73330,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ps.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ps.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ps.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ps.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5705748-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5705749-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73355,8 +73355,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pt.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pt.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pt.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pt.svg</destination>
 			<type>image</type>
 			<uuidstructure>d570cc7c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d570cc7d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73380,8 +73380,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/pw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/pw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57141b0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57141b1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73405,8 +73405,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/py.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/py.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/py.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/py.svg</destination>
 			<type>image</type>
 			<uuidstructure>d571ddf4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d571ddf5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73430,8 +73430,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/qa.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/qa.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/qa.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/qa.svg</destination>
 			<type>image</type>
 			<uuidstructure>d572a148-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d572a149-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73455,8 +73455,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/re.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/re.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/re.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/re.svg</destination>
 			<type>image</type>
 			<uuidstructure>d573167c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d573167d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73480,8 +73480,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/README.md</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/README.md</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/README.md</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/README.md</destination>
 			<type>plain</type>
 			<uuidstructure>6c34ff4c-1029-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>6c34ff4d-1029-11ee-a544-0242ac11002b</uuidresource>
@@ -73497,8 +73497,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ro.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ro.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ro.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ro.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5738bb0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5738bb1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73522,8 +73522,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/rs.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/rs.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/rs.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/rs.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57427f4-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57427f5-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73547,8 +73547,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ru.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ru.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ru.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ru.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5753968-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5753969-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73572,8 +73572,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/rw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/rw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/rw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/rw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d575ae9c-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d575ae9d-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73597,8 +73597,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sa.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sa.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sa.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sa.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57671f0-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57671f1-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73622,8 +73622,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sb.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sb.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sb.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sb.svg</destination>
 			<type>image</type>
 			<uuidstructure>d576e725-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d576e726-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73647,8 +73647,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sc.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sc.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sc.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5775c59-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5775c5a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73672,8 +73672,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sd.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sd.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sd.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sd.svg</destination>
 			<type>image</type>
 			<uuidstructure>d577d18d-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d577d18e-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73697,8 +73697,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/se.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/se.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/se.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/se.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5786dd1-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5786dd2-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73722,8 +73722,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5790a15-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5790a16-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73747,8 +73747,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sh.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sh.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sh.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sh.svg</destination>
 			<type>image</type>
 			<uuidstructure>d579a659-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d579a65a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73772,8 +73772,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/si.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/si.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/si.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/si.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57a1b8d-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57a1b8e-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73797,8 +73797,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sj.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sj.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sj.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sj.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57a90c1-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57a90c2-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73822,8 +73822,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57b2d05-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57b2d06-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73847,8 +73847,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sl.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sl.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sl.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57bc949-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57bc94a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73872,8 +73872,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57c3e7d-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57c3e7e-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73897,8 +73897,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57cb3b1-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57cdac2-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73922,8 +73922,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/so.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/so.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/so.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/so.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57d4ff5-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57d4ff6-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73947,8 +73947,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57dc529-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57dc52a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73972,8 +73972,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ss.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ss.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ss.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ss.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57e616d-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57e616e-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -73997,8 +73997,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/st.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/st.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/st.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/st.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57ed6a1-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57ed6a2-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74022,8 +74022,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sv.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sv.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sv.svg</destination>
 			<type>image</type>
 			<uuidstructure>d57f72e5-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d57f72e6-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74047,8 +74047,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sx.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sx.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sx.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sx.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5800f29-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5800f2a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74072,8 +74072,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sy.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sy.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sy.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sy.svg</destination>
 			<type>image</type>
 			<uuidstructure>d580ab6d-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d580ab6e-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74097,8 +74097,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/sz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/sz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58147b1-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58147b2-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74122,8 +74122,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ta.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ta.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ta.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ta.svg</destination>
 			<type>image</type>
 			<uuidstructure>d581bce5-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d581bce6-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74147,8 +74147,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tc.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tc.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tc.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5825929-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d582592a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74172,8 +74172,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/td.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/td.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/td.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/td.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5836a9d-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5836a9e-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74197,8 +74197,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5845501-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5845502-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74222,8 +74222,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d584ca35-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d584ca36-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74247,8 +74247,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/th.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/th.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/th.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/th.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5853f69-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5853f6a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74272,8 +74272,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tj.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tj.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tj.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tj.svg</destination>
 			<type>image</type>
 			<uuidstructure>d585dbad-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d585dbae-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74297,8 +74297,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58650e1-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58650e2-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74322,8 +74322,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tl.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tl.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tl.svg</destination>
 			<type>image</type>
 			<uuidstructure>d586ed25-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d586ed26-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74347,8 +74347,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d587b079-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d587b07a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74372,8 +74372,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58873cd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58873ce-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74397,8 +74397,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/to.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/to.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/to.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/to.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5893721-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5893722-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74422,8 +74422,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tr.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tr.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tr.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tr.svg</destination>
 			<type>image</type>
 			<uuidstructure>d589fa75-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d589fa76-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74447,8 +74447,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tt.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tt.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tt.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tt.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58a6fa9-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58a6faa-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74472,8 +74472,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tv.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tv.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tv.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58ae4dd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58ae4de-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74497,8 +74497,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58ba831-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58ba832-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74522,8 +74522,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/tz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/tz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/tz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/tz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58c6b85-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58c6b86-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74547,8 +74547,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ua.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ua.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ua.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ua.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58d07c9-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58d07ca-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74572,8 +74572,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ug.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ug.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ug.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ug.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58d7cfd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58d7cfe-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74597,8 +74597,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/um.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/um.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/um.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/um.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58df231-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58df232-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74622,8 +74622,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/un.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/un.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/un.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/un.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58e8e75-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58e8e76-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74647,7 +74647,7 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/us.svg</destination>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/us.svg</destination>
 			<type>image</type>
 			<uuidstructure>918516bd-1015-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58df232-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74671,8 +74671,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/uy.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/uy.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/uy.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/uy.svg</destination>
 			<type>image</type>
 			<uuidstructure>d58fc6fd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d58fc6fe-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74696,8 +74696,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/uz.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/uz.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/uz.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/uz.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5903c31-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5903c32-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74721,8 +74721,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/va.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/va.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/va.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/va.svg</destination>
 			<type>image</type>
 			<uuidstructure>d590d875-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d590d876-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74746,8 +74746,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/vc.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/vc.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/vc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/vc.svg</destination>
 			<type>image</type>
 			<uuidstructure>d59174b9-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d59174ba-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74771,8 +74771,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ve.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ve.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ve.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ve.svg</destination>
 			<type>image</type>
 			<uuidstructure>d59210fd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d59210fe-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74796,8 +74796,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/vg.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/vg.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/vg.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/vg.svg</destination>
 			<type>image</type>
 			<uuidstructure>d592ad41-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d592ad42-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74821,8 +74821,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/vi.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/vi.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/vi.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/vi.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5932275-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5932276-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74846,8 +74846,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/vn.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/vn.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/vn.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/vn.svg</destination>
 			<type>image</type>
 			<uuidstructure>d59397a9-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d59397aa-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74871,8 +74871,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/vu.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/vu.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/vu.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/vu.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5940cdd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5940cde-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74896,8 +74896,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/wf.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/wf.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/wf.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/wf.svg</destination>
 			<type>image</type>
 			<uuidstructure>d594a821-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d594a822-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74921,8 +74921,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ws.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ws.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ws.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ws.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5954465-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5954466-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74946,8 +74946,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/xk.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/xk.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/xk.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/xk.svg</destination>
 			<type>image</type>
 			<uuidstructure>d595b999-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d595b99a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74971,8 +74971,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/xx.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/xx.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/xx.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/xx.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5962ecd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5962ece-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -74996,8 +74996,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/ye.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/ye.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/ye.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/ye.svg</destination>
 			<type>image</type>
 			<uuidstructure>d596a401-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d596a402-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -75021,8 +75021,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/yt.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/yt.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/yt.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/yt.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5976755-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5976756-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -75046,8 +75046,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/za.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/za.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/za.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/za.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5980399-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d598039a-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -75071,8 +75071,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/zm.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/zm.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/zm.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/zm.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5989fdd-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5989fde-100e-11ee-a544-0242ac11002b</uuidresource>
@@ -75096,8 +75096,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/fi/zw.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/fi/zw.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/zw.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/zw.svg</destination>
 			<type>image</type>
 			<uuidstructure>d5993c21-100e-11ee-a544-0242ac11002b</uuidstructure>
 			<uuidresource>d5993c22-100e-11ee-a544-0242ac11002b</uuidresource>

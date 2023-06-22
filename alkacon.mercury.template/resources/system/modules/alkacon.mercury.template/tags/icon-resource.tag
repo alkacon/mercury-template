@@ -43,9 +43,9 @@
         <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/bi/${iconFile}.svg" />
         <c:set var="iconName" value="ico-${icon}" />
     </c:when>
-    <c:when test="${fn:startsWith(icon, 'fi-')}">
-        <c:set var="iconFile" value="${fn:substringAfter(icon, 'fi-')}" />
-        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/fi/${iconFile}.svg" />
+    <c:when test="${fn:startsWith(icon, 'nf-')}">
+        <c:set var="iconFile" value="${fn:substringAfter(icon, 'nf-')}" />
+        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/nf/${iconFile}.svg" />
         <c:set var="iconName" value="ico-${icon}" />
     </c:when>
     <c:when test="${fn:startsWith(icon, 'fa-')}">

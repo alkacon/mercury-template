@@ -45,7 +45,7 @@
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
 <c:set var="isBootstrap"    value="${fn:startsWith(icon, 'bi-')}" />
-<c:set var="isFlag"         value="${fn:startsWith(icon, 'fi-')}" />
+<c:set var="isFlag"         value="${fn:startsWith(icon, 'nf-')}" />
 
 <c:choose>
     <c:when test="${isBootstrap}">
@@ -85,7 +85,7 @@
             </c:when>
             <c:otherwise>
                 <c:set var="iconMarkup">
-                    <img src="${iconResource.sitePath}" height="480" width="640"><%-- height and width can be static as long as only flag icons are used --%>
+                    <mercury:image-direct image="${iconResource}" />
                 </c:set>
             </c:otherwise>
         </c:choose>

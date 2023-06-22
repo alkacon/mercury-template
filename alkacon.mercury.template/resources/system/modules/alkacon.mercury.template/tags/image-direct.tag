@@ -62,7 +62,7 @@
     --%><c:if test="${not empty width or not empty imageWidth}">${' '}width="${empty width ? imageWidth : width}"</c:if>
         <c:if test="${not empty height or not empty imageHeight}">${' '}height="${empty height ? imageHeight : height}"</c:if>
         <c:if test="${not empty cssImage}">${' '}class="${cssImage}"</c:if>
-        <c:if test="${not empty imageTitle}">${' '}alt="${imageTitle}"</c:if>
+        <c:if test="${not empty imageTitle}">${' '}alt="${empty imageDescription ? imageTitle : imageDescription}"</c:if>
         <c:if test="${not empty imageTitleCopyright and (imageTitleCopyright ne imageTitle)}">${' '}title="${imageTitleCopyright}"</c:if><%--
 --%>><%----%>
 

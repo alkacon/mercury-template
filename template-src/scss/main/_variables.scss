@@ -264,12 +264,18 @@ $lead-font-size-mobile:             round($lead-font-size * 9) * 0.1 !default;
 
 
 // Controls the lightness threshold where the text is switched
-$text-use-wcag-contrast:            false !default; // if true, then lightness-threshold and contrast-threshold are ignored
-$wacg-conformance-level:            "AA" !default; // can be "AA" or "AAA"
-
 $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
 $text-contrast-threshold:           2.5 !default;
 
+$text-use-wcag-contrast:            false !default; // if true, then $text-contrast-threshold is set to predefined values and $text-lightness-threshold is ignored
+$wacg-conformance-level:            "AA" !default; // if this is not set to "AAA" then "AA" is assumed, see https://www.w3.org/WAI/WCAG21/Understanding/conformance#conformance-requirements
+@if $text-use-wcag-contrast {
+    @if $wacg-conformance-level == "AAA" {
+        $text-contrast-threshold: 7;
+    } @else {
+        $text-contrast-threshold: 4.5;
+    }
+}
 
 // Text and page colors
 

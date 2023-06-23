@@ -79,13 +79,13 @@ $fonts-preloaded: map-merge($fonts-preloaded-default, $fonts-preloaded-custom);
 
 @function has-preloaded-font($name) {
     $font-name: quote(nth($name, 1));
-    @return map-has-key($fonts-preloaded, $font-name);
+    @return map-has-key-safe($fonts-preloaded, $font-name);
 }
 
 
 @function get-font-family($name) {
     $font-name: quote(nth($name, 1));
-    @if (map-has-key($fonts-preloaded, $font-name)) {
+    @if (map-has-key-safe($fonts-preloaded, $font-name)) {
         $font-def: map-get($fonts-preloaded, $font-name);
         $font-list: nth($font-def, 1);
         @return $font-list;
@@ -140,10 +140,10 @@ $fonts-preloaded: map-merge($fonts-preloaded-default, $fonts-preloaded-custom);
         @return default;
     }
     $font-name: quote(nth($name, 1));
-    @if (map-has-key($fonts-preloaded, $font-name)) {
+    @if (map-has-key-safe($fonts-preloaded, $font-name)) {
         $font-def: map-get($fonts-preloaded, $font-name);
         $font-weights: nth($font-def, 2);
-        @if (map-has-key($font-weights, $weight)) {
+        @if (map-has-key-safe($font-weights, $weight)) {
             @return $weight;
         }
         $font-weights: map-keys($font-weights);
@@ -161,7 +161,7 @@ $fonts-preloaded: map-merge($fonts-preloaded-default, $fonts-preloaded-custom);
 @function get-font-style($name, $weight, $style) {
     // assuming $name and $weight have already been checked with get-font-family() and get-font-weight()
     $font-name: quote(nth($name, 1));
-    @if (map-has-key($fonts-preloaded, $font-name)) {
+    @if (map-has-key-safe($fonts-preloaded, $font-name)) {
         $font-def: map-get($fonts-preloaded, $font-name);
         $font-weights: nth($font-def, 2);
         // assuming here that get-font-weight() was used on the $weight variable before

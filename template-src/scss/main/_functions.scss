@@ -15,32 +15,34 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-@function get-color($var-name, $default, $bg-map) {
+// Returns the key from a map, or null in case either the map or the key is not defined
+@function map-get-safe($map, $key) {
+    @if (($map != null) and ($key != null)) {
+        @return map-get($map, $key);
+    }
+    @return null;
+}
+
+// Checks if a map is not null and has a value for the given key
+@function map-has-key-safe($map, $key) {
+    @return map-get-safe($map, $key) != null;
+}
+
+// Returns a color from the background color map in case a match is found
+// In case no match is found, it will return the provideed $default
+// In case the map is not null but no match is found and the $default is null, it will return a CSS variable with the color name
+@function get-color($color-name, $default, $bg-map) {
     @if ($bg-map != null) {
-        $value: map-get($bg-map, $var-name);
+        $value: map-get($bg-map, $color-name);
         @if ($value != null) {
             @return $value;
         }
         @if ($default != null) {
             @return $default;
         }
-        @return var(--#{$prefix}#{$var-name});
+        @return var(--#{$prefix}#{$color-name});
     }
     @return $default;
-}
-
-@function get-color-val($var-name, $bg-map) {
-    @if ($bg-map != null) {
-        @return map-get($bg-map, $var-name);
-    }
-    @return null;
-}
-
-@function has-color($var-name, $bg-map) {
-    @if ($bg-map != null) {
-        @return null != map-get($bg-map, $var-name);
-    }
-    @return false;
 }
 
 // Calculates the best color for text based on the background.
@@ -52,8 +54,8 @@
     }
     $color-map: map-get($theme-matched-colors, $bg-color);
     @if (($bg-color == transparent) or ($bg-color == none)) {
-        // Check 1: if no background color is set, use the body text color
-        @return get-color("body-color", $body-color, $color-map);
+        // Check 1: if no background color is set, use the default body text color
+        @return get-color("body-color", $body-color, $color-map); // note: result can NOT be CSS varaible since the default $body-color will not be null
     }
     @if ($text-color != null) {
         // Check 2: if a text color preference is given, check the contrast against the background
@@ -61,22 +63,22 @@
             @return $text-color;
         }
     }
-    @if (has-color("body-color", $color-map)) {
+    @if (map-has-key-safe($color-map, "body-color")) {
         // Check 3: if we have a predefined color match, use this
-        @return get-color-val("body-color", $color-map);
+        @return map-get($color-map, "body-color");
     }
     // Check 4: return either light or dark text depending on the background
     @if ($text-use-wcag-contrast) {
-        @if (check-wcag-contrast($bg-color, $text-light)) {
+        @if (check-contrast($bg-color, $text-light)) {
             @return $text-light;
         }
-        @if (check-wcag-contrast($bg-color, $text-dark)) {
+        @if (check-contrast($bg-color, $text-dark)) {
             @return $text-dark;
         }
-        @if (check-wcag-contrast($bg-color, $white)) {
+        @if (check-contrast($bg-color, $white)) {
             @return $white;
         }
-        @if (check-wcag-contrast($bg-color, $black)) {
+        @if (check-contrast($bg-color, $black)) {
             @return $black;
         }
         @return $white;
@@ -469,22 +471,10 @@ $linear-channel-values:
 // See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 // See https://www.w3.org/WAI/WCAG21/Understanding/conformance#conformance-requirements
 // See https://css-tricks.com/programming-sass-to-create-accessible-color-combinations/
-@function check-wcag-contrast($bg-color, $fg-color, $level: $wacg-conformance-level) {
-    $targetContrast: 4.5;
-    @if $level == "AAA" {
-      $targetContrast: 7;
-    }
-    $colorContrast: contrast($bg-color, $fg-color);
-    @debug "check-wcag-contrast() bg: #{$bg-color} fg: #{$fg-color} contrast: #{$colorContrast} check: #{$colorContrast >= $targetContrast}";
-    @return $colorContrast >= $targetContrast;
-}
-
 @function check-contrast($bg-color, $fg-color) {
-    @if ($text-use-wcag-contrast) {
-        @return check-wcag-contrast($bg-color, $fg-color);
-    } @else {
-        @return (contrast($bg-color, $fg-color) > $text-contrast-threshold);
-    }
+    $colorContrast: contrast($bg-color, $fg-color);
+    // @debug "check-contrast() bg: #{$bg-color} fg: #{$fg-color} contrast: #{$colorContrast} threshold: #{$text-contrast-threshold} check result: #{$colorContrast >= $text-contrast-threshold}";
+    @return $colorContrast >= $text-contrast-threshold;
 }
 
 // Optimized encoding an SVG for use in a data uri

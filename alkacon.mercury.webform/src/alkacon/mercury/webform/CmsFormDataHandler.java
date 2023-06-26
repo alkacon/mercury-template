@@ -35,7 +35,6 @@ import alkacon.mercury.webform.mail.CmsFormMailMoveUpUser;
 import org.opencms.db.CmsResourceState;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
-import org.opencms.file.CmsProject;
 import org.opencms.file.CmsResource;
 import org.opencms.file.CmsResourceFilter;
 import org.opencms.file.types.I_CmsResourceType;
@@ -63,7 +62,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
 
@@ -120,9 +118,6 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     /** A message key. */
     private final static String INFO_SUCCESS_WAITLIST_MOVED_UP = "msg.page.bookingmanage.info.successwaitlistmoveup";
 
-    /** A message key. */
-    private final static String INFO_MOVE_UP_CANDIDATES = "msg.page.bookingmanage.info.moveupcandidates";
-
     /** Contains error information for the manager. */
     private String m_error;
 
@@ -164,19 +159,11 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             return false;
         }
         CmsObject clone = null;
-        CmsProject project = null;
         try {
             clone = OpenCms.initCmsObject(getCmsObject());
-            project = createProject(clone);
-            if (project == null) {
-                setError(ERROR_INTERNAL);
-                deleteProject(clone, project);
-                return false;
-            }
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
-                deleteProject(clone, project);
                 return false;
             }
             I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
@@ -184,31 +171,26 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
             if (!resourceType.equals(formDataType)) {
                 setError(ERROR_FORBIDDEN);
-                deleteProject(clone, project);
                 return false;
             }
             boolean locked = lockResource(clone, resource);
             if (!locked) {
                 setError(ERROR_LOCKING_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
             CmsXmlContent content = readContent(clone, resource);
             if (content == null) {
                 setError(ERROR_INTERNAL);
-                deleteProject(clone, project);
                 return false;
             }
             CmsFormDataBean bean = new CmsFormDataBean(content);
             if (bean.isCancelled()) {
                 setError(ERROR_ALREADY_CANCELLED);
-                deleteProject(clone, project);
                 return false;
             }
             boolean updated = updateContent(clone, content, CmsFormDataBean.PATH_CANCELLED, "true");
             if (!updated) {
                 setError(ERROR_INTERNAL);
-                deleteProject(clone, project);
                 return false;
             }
             boolean mailSent = sendMail(bean, ACTION_CANCEL);
@@ -217,25 +199,21 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 boolean updated1 = updateContent(clone, content, CmsFormDataBean.PATH_CANCEL_MAIL_SENT, sent);
                 if (!updated1) {
                     setError(ERROR_INTERNAL);
-                    deleteProject(clone, project);
                     return false;
                 }
             } else {
                 setError(ERROR_SENDING_MAIL_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
-            boolean published = publishProject(clone);
+            boolean published = publishResource(clone, clone.getSitePath(resource));
             if (!published) {
                 setError(ERROR_PUBLISHING_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
             setInfo(INFO_SUCCESS_CANCELLED_REGISTRATION);
         } catch (CmsException e) {
             setError(ERROR_INTERNAL);
             LOG.error(e.getLocalizedMessage(), e);
-            deleteProject(clone, project);
             return false;
         }
         return true;
@@ -318,18 +296,11 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             return false;
         }
         CmsObject clone = null;
-        CmsProject project = null;
         try {
             clone = OpenCms.initCmsObject(getCmsObject());
-            project = createProject(clone);
-            if (project == null) {
-                setError(ERROR_INTERNAL);
-                return false;
-            }
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
-                deleteProject(clone, project);
                 return false;
             }
             I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
@@ -337,27 +308,23 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
             if (!resourceType.equals(formDataType)) {
                 setError(ERROR_FORBIDDEN);
-                deleteProject(clone, project);
                 return false;
             }
             boolean locked = lockResource(clone, resource);
             if (!locked) {
                 setError(ERROR_LOCKING_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
             clone.deleteResource(resource, CmsResource.DELETE_REMOVE_SIBLINGS);
-            boolean published = publishProject(clone);
+            boolean published = publishResource(clone, clone.getSitePath(resource));
             if (!published) {
                 setError(ERROR_PUBLISHING_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
             setInfo(INFO_SUCCESS_DELETED_SUBMISSION);
         } catch (CmsException e) {
             setError(ERROR_INTERNAL);
             LOG.error(e.getLocalizedMessage(), e);
-            deleteProject(clone, project);
             return false;
         }
         return true;
@@ -392,18 +359,11 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             return false;
         }
         CmsObject clone = null;
-        CmsProject project = null;
         try {
             clone = OpenCms.initCmsObject(getCmsObject());
-            project = createProject(clone);
-            if (project == null) {
-                setError(ERROR_INTERNAL);
-                return false;
-            }
             CmsResource resource = readResource(clone, paramUuid);
             if (resource == null) {
                 setError(ERROR_RESOURCE_NOT_FOUND);
-                deleteProject(clone, project);
                 return false;
             }
             I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
@@ -411,30 +371,25 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
             if (!resourceType.equals(formDataType)) {
                 setError(ERROR_FORBIDDEN);
-                deleteProject(clone, project);
                 return false;
             }
             boolean locked = lockResource(clone, resource);
             if (!locked) {
                 setError(ERROR_LOCKING_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
             CmsXmlContent content = readContent(clone, resource);
             if (content == null) {
                 setError(ERROR_INTERNAL);
-                deleteProject(clone, project);
                 return false;
             }
             CmsFormDataBean bean = new CmsFormDataBean(content);
             if (bean.isWaitlistMovedUp()) {
                 setError(ERROR_ALREADY_MOVED_UP);
-                deleteProject(clone, project);
                 return false;
             }
             if (m_submissionStatus.isFullyBooked()) {
                 setError(ERROR_ALREADY_FULLY_BOOKED);
-                deleteProject(clone, project);
                 return false;
             }
             long now = (new Date()).getTime();
@@ -445,7 +400,6 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 String.valueOf(now));
             if (!updated1) {
                 setError(ERROR_INTERNAL);
-                deleteProject(clone, project);
                 return false;
             }
             boolean mailSent = sendMail(bean, ACTION_MOVEUP);
@@ -454,76 +408,24 @@ public class CmsFormDataHandler extends CmsJspActionElement {
                 boolean updated2 = updateContent(clone, content, CmsFormDataBean.PATH_MOVE_UP_MAIL_SENT, sent);
                 if (!updated2) {
                     setError(ERROR_INTERNAL);
-                    deleteProject(clone, project);
                     return false;
                 }
             } else {
                 setError(ERROR_SENDING_MAIL_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
-            boolean published = publishProject(clone);
+            boolean published = publishResource(clone, clone.getSitePath(resource));
             if (!published) {
                 setError(ERROR_PUBLISHING_FAILED);
-                deleteProject(clone, project);
                 return false;
             }
             setInfo(INFO_SUCCESS_WAITLIST_MOVED_UP);
         } catch (CmsException e) {
             setError(ERROR_INTERNAL);
             LOG.error(e.getLocalizedMessage(), e);
-            deleteProject(clone, project);
             return false;
         }
         return true;
-    }
-
-    /**
-     * Creates and initializes a temporary project.
-     * @param clone the CMS clone
-     * @return the temporary project
-     */
-    private CmsProject createProject(CmsObject clone) {
-
-        CmsProject project = null;
-        try {
-            String randomKey = RandomStringUtils.randomAlphanumeric(6);
-            project = clone.createProject(
-                "Form data manage project " + randomKey,
-                "Form data manage project",
-                OpenCms.getDefaultUsers().getGroupAdministrators(),
-                OpenCms.getDefaultUsers().getGroupAdministrators(),
-                CmsProject.PROJECT_TYPE_TEMPORARY);
-            clone.getRequestContext().setCurrentProject(project);
-        } catch (CmsException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        }
-        return project;
-    }
-
-    /**
-     * Asynchronously deletes the temporary project.
-     * @param clone the CMS clone
-     * @param project the project
-     */
-    private void deleteProject(CmsObject clone, CmsProject project) {
-
-        Thread thread = new Thread() {
-
-            @Override
-            public void run() {
-
-                try {
-                    OpenCms.getPublishManager().waitWhileRunning();
-                    if ((clone != null) && (project != null)) {
-                        clone.deleteProject(project.getId());
-                    }
-                } catch (CmsException e) {
-                    LOG.error(e.getLocalizedMessage(), e);
-                }
-            }
-        };
-        thread.start();
     }
 
     /**
@@ -544,14 +446,15 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     }
 
     /**
-     * Publishes the updated form data content.
+     * Publishes a resource.
      * @param clone the CMS clone
-     * @return whether the form data content was successfully published
+     * @param resourceName the resource name
+     * @return whether the resource was successfully published
      */
-    private boolean publishProject(CmsObject clone) {
+    private boolean publishResource(CmsObject clone, String resourceName) {
 
         try {
-            OpenCms.getPublishManager().publishProject(clone);
+            OpenCms.getPublishManager().publishResource(clone, resourceName);
             return true;
         } catch (Exception e) {
             LOG.error(e.getLocalizedMessage(), e);

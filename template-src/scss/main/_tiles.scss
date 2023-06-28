@@ -106,7 +106,6 @@ $sq-heights-xl:    () !default;
         (100% - 2 * var(--#{$prefix}sq-margin)) * divide($cols, 12, $divide-precision) * var(--#{$prefix}sq-ratio)
         + 2 * divide($cols, 12, $divide-precision) * var(--#{$prefix}sq-ratio) * var(--#{$prefix}sq-margin)
     );
-    // the +0.5px at the end make sure that small elements flow correctly around large elements
 }
 
 @mixin make-square-col($size)   {
@@ -182,6 +181,10 @@ $sq-heights-xl:    () !default;
 
     &.square-4-3 {
         --#{$prefix}sq-ratio: #{divide(3, 4, $divide-precision)};
+    }
+
+    &.clear-row {
+        clear: both;
     }
 
     // Table needed for alignment of content inside square

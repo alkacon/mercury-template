@@ -61,13 +61,16 @@
 <c:choose>
     <c:when test="${firstSquare eq 'firstOnlyLarge'}">
         <c:set var="firstLarge" value="${(param.resultPage eq 1) and (param.resultOnPage eq 1)}" />
+        <c:set var="addClear" value="${squareGrid eq '4' ? (param.resultInList eq 6) : (param.resultInList eq 4)}" />
     </c:when>
     <c:when test="${firstSquare eq 'firstOnPageLarge'}">
         <c:set var="firstLarge" value="${param.resultOnPage eq 1}" />
+        <c:set var="addClear" value="${firstLarge ? true : (squareGrid eq '4' ? (param.resultOnPage eq 6) : (param.resultOnPage eq 4))}" />
     </c:when>
     <c:when test="${firstSquare eq 'firstOnPageFlip'}">
         <c:set var="firstLarge" value="${param.resultOnPage eq 1}" />
         <c:set var="firstOnPageFlip" value="${(param.resultPage % 2) eq 0}" />
+        <c:set var="addClear" value="${firstLarge ? true : (squareGrid eq '4' ? (param.resultOnPage eq 6) : (param.resultOnPage eq 4))}" />
     </c:when>
 </c:choose>
 
@@ -83,6 +86,9 @@
         <c:set var="tileClass" value="square-col square-${ratio} square-small ${minHeight}${' '}${tileClassSmall}" />
     </c:otherwise>
 </c:choose>
+<c:if test="${addClear}">
+    <c:set var="tileClass" value="${tileClass} clear-row" />
+</c:if>
 
 <c:set var="isAudio"    value="${value.MediaContent.value.Audio.isSet}" />
 <c:set var="isFlexible" value="${value.MediaContent.value.Flexible.isSet}" />

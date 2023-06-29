@@ -75,13 +75,23 @@
         @if (check-contrast($bg-color, $text-dark)) {
             @return $text-dark;
         }
-        @if (check-contrast($bg-color, $white)) {
+        @if (($text-light != $white) and check-contrast($bg-color, $white)) {
             @return $white;
         }
-        @if (check-contrast($bg-color, $black)) {
+        @if (($text-dark != $black) and check-contrast($bg-color, $black)) {
             @return $black;
         }
-        @return $white;
+        // no text color with sufficient contrast avaiable
+        $contrastWhite: contrast($bg-color, $white);
+        $contrastBlack: contrast($bg-color, $black);
+        $result: $white;
+        $resultContast: $contrastWhite;
+        @if ($contrastBlack > $contrastWhite) {
+            $result: $black;
+            $resultContast: $contrastBlack;
+        }
+        @warn "get-text-color(#{$bg-color}, #{$text-color}): Unable to find text color with contrast ratio #{$text-contrast-threshold} - using #{$result} with contrast ratio #{$resultContast}!";
+        @return $result;
     } @else {
         @if (lightness($bg-color) > $text-lightness-threshold) {
             @return $text-dark; // light background, dark text

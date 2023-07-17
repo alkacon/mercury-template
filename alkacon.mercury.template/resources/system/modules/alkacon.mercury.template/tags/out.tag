@@ -5,7 +5,7 @@
     description="Alternative to c:out with support for special chars." %>
 
 <%@ attribute name="value" type="java.lang.String" required="true"
-    description="The String to outout." %>
+    description="The String to output." %>
 
 <%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
     description="Similar to c:out escapeXml.

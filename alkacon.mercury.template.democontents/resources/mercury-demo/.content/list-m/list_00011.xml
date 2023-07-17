@@ -13,11 +13,6 @@
     <Category/>
     <CategoryMode><![CDATA[OR]]></CategoryMode>
     <SortOrder><![CDATA[DATE_ASC]]></SortOrder>
-    <DateRestriction>
-      <PastFuture>
-        <Direction><![CDATA[future]]></Direction>
-      </PastFuture>
-    </DateRestriction>
     <ShowExpired>true</ShowExpired>
   </ListConfig>
 </ListConfigs>

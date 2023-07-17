@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
@@ -46,7 +47,8 @@
         This is currently only implemented for list pages.
     --%>
     <c:if test="${isListPage and param.page ne '1'}">
-        <c:set var="canonicalParams" value="?page=${param.page}" />
+        <c:set var="pageNum" value="${cms.wrap[param.page].toInteger}" />
+        <c:set var="canonicalParams" value="${empty pageNum ? null : '?page='.concat(pageNum)}" />
     </c:if>
 
     <%--

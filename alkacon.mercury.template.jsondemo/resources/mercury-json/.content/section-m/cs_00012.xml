@@ -8,7 +8,7 @@
         <link name="link0" internal="true" type="A">
           <target><![CDATA[/system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-demo/&wrapper=false]]></query>
+          <query><![CDATA[uri=demo12]]></query>
         </link>
       </links>
       <content><![CDATA[<p>Sites are available below the <em>/sites/</em> folder. For example, the Mercury demo site <em>/mercury-demo/</em> is accessible as a sub-site of the default site <em>/sites/default/</em>.</p>

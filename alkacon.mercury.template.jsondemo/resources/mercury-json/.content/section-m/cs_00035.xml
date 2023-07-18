@@ -6,10 +6,11 @@
     <Text name="Text0">
       <links>
         <link name="link0" internal="false" type="A">
-          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/headless-json-api/]]></target>
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/interfaces/headless-json-api/]]></target>
+          <anchor><![CDATA[configuration-27865a81]]></anchor>
         </link>
       </links>
-      <content><![CDATA[<p>Please note that the links in the example(s) below only work if the JSON API is <a href="%(link0)">enabled</a>.</p>]]></content>
+      <content><![CDATA[<p>Please note that the links in the example(s) below only work if the JSON API is <a href="%(link0)" target="_blank" rel="noopener">enabled</a>.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

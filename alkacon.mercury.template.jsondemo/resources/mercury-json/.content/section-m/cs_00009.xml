@@ -14,7 +14,7 @@
           <uuid>c5d2466c-04b0-11ec-a85e-0242ac11002b</uuid>
         </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/headless-json-api/]]></target>
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/interfaces/headless-json-api/]]></target>
         </link>
         <link name="link3" internal="false" type="A">
           <target><![CDATA[https://github.com/alkacon/mercury-json/]]></target>

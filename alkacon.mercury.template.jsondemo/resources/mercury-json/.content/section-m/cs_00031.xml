@@ -8,7 +8,7 @@
         <link name="link0" internal="true" type="A">
           <target><![CDATA[/system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <query><![CDATA[uri=/json/sites/default/mercury-json/demo-3/page-editor/index.html]]></query>
+          <query><![CDATA[uri=demo31]]></query>
         </link>
       </links>
       <content><![CDATA[<p>Element settings such as the sizes and the visibility of texts and headings are part of the JSON page response.</p>

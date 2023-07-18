@@ -12,11 +12,10 @@
         <link name="link1" internal="true" type="A">
           <target><![CDATA[/system/modules/alkacon.mercury.template.jsondemo/elements/jsonapi.jsp]]></target>
           <uuid>b717e858-041e-11ec-a85e-0242ac11002b</uuid>
-          <anchor><![CDATA[!explorer/9c8c654b-0503-11ec-bbda-0242ac11002b!!/sites/default!!/mercury-demo/.content/!!]]></anchor>
-          <query><![CDATA[uri=/workplace]]></query>
+          <query><![CDATA[uri=demo14]]></query>
         </link>
         <link name="link2" internal="false" type="A">
-          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/more-opencms-features/headless-json-api/]]></target>
+          <target><![CDATA[https://documentation.opencms.org/opencms-documentation/interfaces/headless-json-api/]]></target>
         </link>
         <link name="link3" internal="false" type="A">
           <target><![CDATA[https://github.com/alkacon/mercury-json/]]></target>

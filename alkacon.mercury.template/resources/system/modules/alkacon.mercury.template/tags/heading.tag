@@ -63,16 +63,21 @@
         <c:set var="escapeXml"      value="${empty escapeXml ? true : escapeXml}" />
         <c:set var="addTabindex"    value="${empty tabindex ? ((level >= 1) and (level <=4)) : tabindex}" />
 
-        <c:if test="${id eq 'auto' and not empty text}">
+        <c:if test="${(id eq 'auto') and (not empty text)}">
             <c:set var="addId"          value="${cms.sitemapConfig.attribute['template.section.add.heading.id'].toBoolean}" />
             <c:set var="addAnchorlink"  value="${cms.sitemapConfig.attribute['template.section.add.heading.anchorlink'].toBoolean}" />
-            <c:if test="${addId or addAnchorlink}">
-                <c:set var="id"><mercury:translate-name name="${fn:trim(text)}" />-${fn:substringBefore(cms.element.instanceId, '-')}</c:set>
-                <c:if test="${addAnchorlink and empty suffix}">
-                    <c:set var="suffix"><a class="anchor-link" href="#${id}"></a></c:set>
-                    <c:set var="css" value="piece-heading anchor-link-parent ${css}" />
-                </c:if>
-            </c:if>
+            <c:choose>
+                <c:when test="${addId or addAnchorlink}">
+                    <c:set var="id"><mercury:translate-name name="${fn:trim(text)}" />-${fn:substringBefore(cms.element.instanceId, '-')}</c:set>
+                    <c:if test="${addAnchorlink and empty suffix}">
+                        <c:set var="suffix"><a class="anchor-link" href="#${id}"></a></c:set>
+                        <c:set var="css" value="piece-heading anchor-link-parent ${css}" />
+                    </c:if>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="id" value="${null}" />
+                </c:otherwise>
+            </c:choose>
         </c:if>
 
         <c:choose>

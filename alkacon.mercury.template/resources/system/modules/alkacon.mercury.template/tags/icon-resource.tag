@@ -16,6 +16,9 @@
 <%@ attribute name="setFallback" type="java.lang.Boolean" required="false"
     description="If 'true' a default icon (question mark) is returned in case the requested icon is not found." %>
 
+<%@ attribute name="fromImage" type="java.lang.Boolean" required="false"
+    description="If 'true', then do NOT use an icon from a default font but treat the 'icon' parameter as path to an image resource." %>
+
 
 <%@ variable name-given="iconResource" scope="AT_END" declare="true" variable-class="org.opencms.jsp.CmsJspResourceWrapper"
     description="The icon resource that has been found." %>
@@ -38,6 +41,10 @@
 <c:set var="icon"           value="${fn:trim(icon)}" />
 
 <c:choose>
+    <c:when test="${fromImage}">
+        <c:set var="iconPath" value="${icon}" />
+        <c:set var="iconName" value="ico-from-image" />
+    </c:when>
     <c:when test="${fn:startsWith(icon, 'bi-')}">
         <c:set var="iconFile" value="${fn:substringAfter(icon, 'bi-')}" />
         <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/bi/${iconFile}.svg" />

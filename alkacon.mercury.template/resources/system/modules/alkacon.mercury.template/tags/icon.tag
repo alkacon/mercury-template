@@ -26,6 +26,9 @@
     description="Controls if the icon should be inlined as SVG,
     or rendered from an icon font (the default)." %>
 
+<%@ attribute name="fromImage" type="java.lang.Boolean" required="false"
+    description="If 'true', then do NOT use an icon from a default font but treat the 'icon' parameter as path to an image resource." %>
+
 <%@ attribute name="ariaLabel" required="false"
     description="The aria-label attribute to add to the generated tag.
     In case this is set, an attribut 'role=img' is also added.
@@ -48,6 +51,9 @@
 <c:set var="isFlag"         value="${fn:startsWith(icon, 'nf-')}" />
 
 <c:choose>
+    <c:when test="${fromImage}">
+        <c:set var="inline"         value="${false}" />
+    </c:when>
     <c:when test="${isBootstrap}">
         <c:set var="inline"         value="${true}" />
     </c:when>
@@ -73,8 +79,8 @@
             <c:out value="${fn:replace(iconResource.content, 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" />
         </c:set>
     </c:when>
-    <c:when test="${imgsrc}">
-        <mercury:icon-resource icon="${icon}" setFallback="${true}" />
+    <c:when test="${fromImage or imgsrc}">
+        <mercury:icon-resource icon="${icon}" setFallback="${true}" fromImage="${fromImage}" />
         <c:set var="iconClass" value="ico ico-img ${iconName}" />
         <c:choose>
             <c:when test="${not iconIsValid}">

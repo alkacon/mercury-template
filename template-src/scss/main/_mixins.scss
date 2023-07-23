@@ -749,7 +749,7 @@
     // link-hover-color $(li-hover-color) --> the hover color for links, by default also used for button backgrounds
     // link-fg-color ($li-fg-color) --> the text color if link color used for the background, by default used for buttons where (btn-bg = link-color and (btn-fg = link-fg-color)
 
-    @if (not map-has-key-safe($bg-map, "bg-color")) {
+    @if (false and not map-has-key-safe($bg-map, "bg-color")) {
         @debug "set-box-colors() no color match found for bg: #{$bg-color} - using fg: #{$fg-color} li: #{$li-color} li-hover: #{$li-hover-color}";
     }
 

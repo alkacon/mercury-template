@@ -89,9 +89,9 @@
                     (onlineUrl.typeName == 'OpenCmsString'))}">
                         <c:set var="targetUrl" value="${onlineUrl.toLink}" />
                 </c:when>
-                <c:otherwise>
+                <c:when test="${not empty fallbackOnlineUrl}">
                     <c:set var="targetUrl" value="${fallbackOnlineUrl}" />
-                </c:otherwise>
+                </c:when>
             </c:choose>
         </c:when>
         <c:when test="${not empty onlineUrl}">

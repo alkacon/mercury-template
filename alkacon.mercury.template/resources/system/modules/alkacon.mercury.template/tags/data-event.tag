@@ -35,12 +35,12 @@
         <c:set var="preface"    value="${value['MetaInfo/Description']}" />
     </c:when>
     <c:otherwise>
-        <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : value.Paragraph.value.Text)}" />
+        <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : '')}" />
     </c:otherwise>
 </c:choose>
 <c:set var="image"      value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : value.Paragraph.value.Image)}" />
 
-<c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
+<c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link>?instancedate=${date.start.time}</c:set>
 
 <%--
 # JSON-LD Generation for Mercury event.
@@ -61,11 +61,17 @@
     </cms:jsonvalue>
 
     <c:if test="${not empty date}">
+        <c:set var="pattern">
+            <c:choose>
+                <c:when test="${date.wholeDay}">yyyy-MM-dd</c:when>
+                <c:otherwise>yyyy-MM-dd'T'HH:mm:ssXXX</c:otherwise>
+            </c:choose>
+        </c:set>
         <c:if test="${not empty date.start}">
-            <cms:jsonvalue key="startDate"><fmt:formatDate value="${date.start}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+            <cms:jsonvalue key="startDate"><fmt:formatDate value="${date.start}" pattern="${pattern}" /></cms:jsonvalue>
         </c:if>
         <c:if test="${not empty date.end and not (date.end eq date.start)}">
-            <cms:jsonvalue key="endDate"><fmt:formatDate value="${date.end}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+            <cms:jsonvalue key="endDate"><fmt:formatDate value="${date.end}" pattern="${pattern}" /></cms:jsonvalue>
         </c:if>
     </c:if>
 
@@ -86,9 +92,10 @@
         </mercury:image-vars>
     </c:if>
 
-    <mercury:location-vars data="${value.AddressChoice}" onlineUrl="${value.VirtualLocation}" createJsonLd="${true}">
+    <mercury:location-vars data="${value.AddressChoice}" onlineUrl="${value.VirtualLocation}" fallbackOnlineUrl="${url}" createJsonLd="${true}">
         <cms:jsonvalue key="location" value="${locJsonLd}" />
         <cms:jsonvalue key="eventAttendanceMode" value="${locAttendanceMode}" />
+        <cms:jsonvalue key="eventStatus" value="https://schema.org/EventScheduled" />
     </mercury:location-vars>
 
     <c:if test="${value.Costs.isSet}">

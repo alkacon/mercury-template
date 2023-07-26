@@ -13,6 +13,9 @@
 <%@ attribute name="onlineUrl" type="java.lang.Object" required="false"
     description="An object that containt the online URL location to use." %>
 
+<%@ attribute name="fallbackOnlineUrl" type="java.lang.String" required="false"
+    description="Fallback URL that is used in the case of a virtual location with no online URL given." %>
+
 <%@ attribute name="addMapInfo" type="java.lang.Boolean" required="false"
     description="If true, data for a location map is generated as well." %>
 
@@ -86,6 +89,9 @@
                     (onlineUrl.typeName == 'OpenCmsString'))}">
                         <c:set var="targetUrl" value="${onlineUrl.toLink}" />
                 </c:when>
+                <c:otherwise>
+                    <c:set var="targetUrl" value="${fallbackOnlineUrl}" />
+                </c:otherwise>
             </c:choose>
         </c:when>
         <c:when test="${not empty onlineUrl}">

@@ -46,6 +46,9 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper2.tile]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[visualOption.contact]]></IncludeName>
     </Setting>
     <Setting>

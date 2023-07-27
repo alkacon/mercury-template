@@ -19,7 +19,7 @@
 <c:set var="title"   value="${value.Question}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-faq${setCssWrapper}${setEffect}"
+    cssWrapper="type-faq${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     date="${value.Date.toInstanceDate}"

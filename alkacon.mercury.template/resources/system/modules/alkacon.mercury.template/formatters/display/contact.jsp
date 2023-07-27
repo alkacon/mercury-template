@@ -49,7 +49,7 @@
 <c:set var="linkTarget"             value="${(setLinkOption ne 'none') and (linkTarget ne 'none') ? (linkTarget eq 'detail' ? linkToDetail : value.Link) : null}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapper}${setEffect}"
+    cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     attrWrapper="${kind}"
     headline="${showTitle ? title : null}"
     pieceLayout="${setPieceLayout}"

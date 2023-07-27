@@ -89,7 +89,7 @@
 </c:if>
 
 <mercury:teaser-piece
-    cssWrapper="type-poi${setCssWrapper}${setEffect}"
+    cssWrapper="type-poi${setCssWrapperAll}"
     headline="${title}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"

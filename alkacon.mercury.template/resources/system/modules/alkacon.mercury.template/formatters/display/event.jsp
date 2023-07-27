@@ -94,7 +94,7 @@
 <c:set var="preface" value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : value.Preface}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-event${setShowCalendar ? ' calendar-sheet-piece ' : ' '}${setCssWrapper}${setEffect}"
+    cssWrapper="type-event${setShowCalendar ? ' calendar-sheet-piece ' : ' '}${setCssWrapperAll}"
     gridOption="${setShowCalendar and smallCalendarSheet ? ' fixed' : ''}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"

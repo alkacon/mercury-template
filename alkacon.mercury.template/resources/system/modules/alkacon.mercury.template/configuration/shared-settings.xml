@@ -27,6 +27,12 @@
       <Widget><![CDATA[hidden]]></Widget>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper2.tile]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapper2]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
       <PropertyName><![CDATA[cssWrapper3]]></PropertyName>
       <Visibility><![CDATA[element]]></Visibility>

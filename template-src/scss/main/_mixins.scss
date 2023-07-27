@@ -606,7 +606,7 @@
         --#{$prefix}intro-headings-color:           #{get-color("intro-headings-color",         var(--#{$prefix}headings-color),                $bg-map)};
     } @else {
         @if ($set-default or map-has-key-safe($bg-map, "intro-headings-color")) {
-            --#{$prefix}intro-headings-color:       #{get-color("intro-headings-color",          var(--#{$prefix}body-color),                   $bg-map)};
+            --#{$prefix}intro-headings-color:       #{get-color("intro-headings-color",          var(--#{$prefix}main-theme),                   $bg-map)};
         }
     }
     @if (($linked-headings-color != unset) and ($set-default or map-has-key-safe($bg-map, "inked-headings-color"))) {

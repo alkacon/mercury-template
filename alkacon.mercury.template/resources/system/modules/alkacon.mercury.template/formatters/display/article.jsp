@@ -22,7 +22,7 @@
 
 <mercury:teaser-piece
     teaserClass="${setTeaserClass}"
-    cssWrapper="type-article${setCssWrapper}${setEffect}"
+    cssWrapper="type-article${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"

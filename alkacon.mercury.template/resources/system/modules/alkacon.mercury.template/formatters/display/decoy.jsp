@@ -33,7 +33,7 @@
 
     <mercury:teaser-piece
         teaserClass="${setTeaserClass}"
-        cssWrapper="type-decoy${setCssWrapper}${setEffect}${invalidDecoy ? ' disabled' : ''}"
+        cssWrapper="type-decoy${setCssWrapperAll}${invalidDecoy ? ' disabled' : ''}"
         intro="${setShowIntro ? intro : null}"
         headline="${title}"
         headlineSuffix="${badge}"

@@ -24,7 +24,7 @@
 <c:set var="isFlexible" value="${value.MediaContent.value.Flexible.isSet}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-media${isAudio ? ' audio ' : ' '}${setCssWrapper}${setEffect}"
+    cssWrapper="type-media${isAudio ? ' audio ' : ' '}${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"

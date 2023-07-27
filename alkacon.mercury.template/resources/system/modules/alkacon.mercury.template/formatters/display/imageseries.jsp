@@ -21,7 +21,7 @@
 <c:set var="preface" value="${value.Preface}" />
 
 <mercury:teaser-piece
-    cssWrapper="type-imageseries${setCssWrapper}${setEffect}"
+    cssWrapper="type-imageseries${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
     preface="${preface}"

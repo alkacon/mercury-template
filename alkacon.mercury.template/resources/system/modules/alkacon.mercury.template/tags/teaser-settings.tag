@@ -17,6 +17,8 @@
 <%@ variable name-given="inList"            declare="true" variable-class="java.lang.Boolean" %>
 <%@ variable name-given="setTeaserClass"    declare="true" %>
 <%@ variable name-given="setCssWrapper"     declare="true" %>
+<%@ variable name-given="setCssWrapper2"    declare="true" %>
+<%@ variable name-given="setCssWrapper3"    declare="true" %>
 <%@ variable name-given="setCssWrapperRequired" declare="true" %>
 <%@ variable name-given="setCssWrapperAll"  declare="true" %>
 <%@ variable name-given="setEffect"         declare="true" %>
@@ -43,6 +45,8 @@
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
 <c:set var="setTeaserClass"                 value="${setting.teaserClass.isSetNotNone ? setting.teaserClass.toString : 'teaser'}" />
 <c:set var="setCssWrapper"                  value="${inList ? ' in-list' : (setting.cssWrapper.isSetNotNone ? ' no-list '.concat(setting.cssWrapper.toString) : ' no-list')}" />
+<c:set var="setCssWrapper2"                 value="${setting.cssWrapper2.isSetNotNone ? ' '.concat(setting.cssWrapper2.toString) : null}" />
+<c:set var="setCssWrapper3"                 value="${setting.cssWrapper3.isSetNotNone ? ' '.concat(setting.cssWrapper3.toString) : null}" />
 <c:set var="setCssWrapperRequired"          value="${setting.requiredCssWrapper.isSetNotNone ? ' '.concat(setting.requiredCssWrapper.toString) : null}" />
 <c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
@@ -72,7 +76,9 @@
 </c:choose>
 
 <c:set var="setCssWrapper"                  value="${setCssWrapper}${setCssWrapperRequired}" />
-<c:set var="setCssWrapperAll"               value="${setCssWrapper}${setEffect}" />
+<c:set var="setCssWrapper12"                value="${setCssWrapper}${setCssWrapper2}" />
+<c:set var="setCssWrapper123"               value="${setCssWrapper12}${setCssWrapper3}" />
+<c:set var="setCssWrapperAll"               value="${setCssWrapper123}${setEffect}" />
 
 <c:set var="paragraph"                      value="${content.valueList.Paragraph['0']}" />
 

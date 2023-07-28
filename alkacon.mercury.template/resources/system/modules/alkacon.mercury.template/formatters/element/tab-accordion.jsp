@@ -30,11 +30,6 @@
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="parentId"><mercury:idgen prefix="a" uuid="${cms.element.instanceId}" /></c:set>
-<c:set var="param_parts"        value="${fn:split(cms.container.param, '#')}" />
-<c:set var="parent_role"        value="${param_parts[0]}" />
-<c:set var="parent_classes"     value="${param_parts[1]}" />
-
-
 
 <c:choose>
     <c:when test="${containerType eq 'row'}">

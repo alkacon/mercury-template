@@ -276,7 +276,7 @@ function initEmblaSliders(sliders) {
             if (Mercury.debug()) console.info("Slider.initEmblaSliders() Timed slider - Showing slide: " + startIndex + " of " + options.slides + " - Server time: " + options.param + " - Client time: " + clientTime);
         }
 
-        if ((options.transition == 'fade') && (sliderBox.closest('.accordion .collapse') || sliderBox.closest('.tabs-parent'))) {
+        if ((options.transition == 'fade') && (sliderBox.closest('.accordion .collapse, .collapse-parent .collapse') || sliderBox.closest('.tabs-parent'))) {
             if (Mercury.debug()) console.info("Slider.initEmblaSliders() Fade effect not supported in tabs or accordions, using 'direct' instead");
             options.transition = 'direct';
             options.speed = 100;

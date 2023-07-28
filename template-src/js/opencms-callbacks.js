@@ -35,7 +35,7 @@ export function _OpenCmsReinitEditButtons() {
 export function _OpenCmsInit() {
 
     // accordion
-    document.querySelectorAll('.accordion .collapse').forEach(function(el) {
+    document.querySelectorAll('.accordion .collapse, .collapse-parent .collapse').forEach(function(el) {
         el.addEventListener('shown.bs.collapse', event => {
             if (Mercury.debug()) console.info('Event handler accordion(shown.bs.collapse) triggered!');
             _OpenCmsReinitEditButtons();

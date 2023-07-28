@@ -29,9 +29,6 @@
 <c:set var="showTabs"               value="${showSingleTab or (content.valueList.TabEntry.size() ne 1)}" />
 
 <c:set var="itemId"><mercury:idgen prefix="t" uuid="${cms.element.instanceId}" /></c:set>
-<c:set var="param_parts"            value="${fn:split(cms.container.param, '#')}" />
-<c:set var="parent_role"            value="${param_parts[0]}" />
-<c:set var="parent_classes"         value="${param_parts[1]}" />
 
 <c:choose>
     <c:when test="${containerType eq 'row'}">

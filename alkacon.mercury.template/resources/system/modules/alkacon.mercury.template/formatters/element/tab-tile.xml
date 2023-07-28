@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
+  <NewFormatter language="en">
+    <NiceName><![CDATA[%(key.type.m-tab.formatter.tile)]]></NiceName>
+    <Type><![CDATA[m-tab]]></Type>
+    <Key><![CDATA[m/element/tab-tile]]></Key>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/tab-tile.jsp]]></target>
+        <uuid>b70c2f5c-2c87-11ee-a93c-0242ac11002b</uuid>
+      </link>
+    </Jsp>
+    <Rank><![CDATA[400]]></Rank>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
+        <ContainerType><![CDATA[tabs]]></ContainerType>
+      </Types>
+    </Match>
+    <AutoEnabled>false</AutoEnabled>
+    <SearchContent>true</SearchContent>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[containerType.tab]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[itemsSmall]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.itemsSmall)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.itemsSmall.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[1]]></Default>
+      <WidgetConfig><![CDATA[
+        12:         %(key.msg.setting.tab.items.1)|
+        6:          %(key.msg.setting.tab.items.2)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[itemsLarge]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.itemsLarge)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.itemsLarge.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[3]]></Default>
+      <WidgetConfig><![CDATA[
+        6:          %(key.msg.setting.tab.items.2)|
+        4:          %(key.msg.setting.tab.items.3)|
+        3:          %(key.msg.setting.tab.items.4)|
+        2:          %(key.msg.setting.tab.items.6)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[rowWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[tile-margin-15]]></Default>
+      <WidgetConfig><![CDATA[
+        tile-margin-2:   4|
+        tile-margin-5:   10|
+        tile-margin-10:  20|
+        tile-margin-15:  30
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[showButton]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.showButton)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.showButton.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+  </NewFormatter>
+</NewFormatters>

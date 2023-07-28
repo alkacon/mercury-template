@@ -32,10 +32,6 @@ $slider-text-below-breakpoint: md !default;
 
     --#{$prefix}slider-slide-border-radius: #{$slider-slide-border-radius};
     --#{$prefix}slider-caption-border-radius: #{$slider-caption-border-radius};
-    --#{$prefix}slider-bg: var(--#{$prefix}main-theme-rgb);
-    --#{$prefix}slider-fg: var(--#{$prefix}main-theme-fg);
-    --#{$prefix}slider-caption-top: var(--#{$prefix}slider-bg);
-    --#{$prefix}slider-caption-sub: var(--#{$prefix}slider-bg);
 
     &.hero-slider {
         // make sure not visible slides are hidden while loading
@@ -64,6 +60,10 @@ $slider-text-below-breakpoint: md !default;
         overflow: hidden;
         // must set round corner here in case a custom bg color for caption has been set
         border-radius: var(--#{$prefix}slider-slide-border-radius);
+        --#{$prefix}slider-bg: #{to-rgb($main-theme)};
+        --#{$prefix}slider-fg: #{$main-theme-fg};
+        --#{$prefix}slider-caption-top: var(--#{$prefix}slider-bg);
+        --#{$prefix}slider-caption-sub: var(--#{$prefix}slider-bg);
 
         &.custom .caption {
             // custom colored caption

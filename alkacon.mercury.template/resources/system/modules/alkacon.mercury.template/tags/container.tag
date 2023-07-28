@@ -110,7 +110,7 @@
             <c:set var="gridParam" value="${parameters['cssgrid']}" />
             <%-- Merge CSS of container with manually passed cssgrid parameter --%>
             <c:if test="${not empty gridParam}">
-                <c:set var="cssGrid" value="${cssGrid}${' '}${gridParam}" />
+                <c:set var="cssGrid" value="${cssGrid}${empty cssGrid ? '' : ' '}${gridParam}" />
             </c:if>
         </c:if>
 
@@ -135,7 +135,9 @@
             param="${role}">
 
             <c:forEach var="entry" items="${parameters}">
-                <cms:param name="${entry.key}"  value="${entry.value}" />
+                <c:if test="${entry.key ne 'cssgrid'}">
+                    <cms:param name="${entry.key}"  value="${entry.value}" />
+                </c:if>
             </c:forEach>
             <%-- Overwrite cssgrid after the loop with merged value --%>
             <cms:param name="cssgrid"  value="${cssGrid}" />

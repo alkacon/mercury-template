@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>15.0.55</version>
+		<version>15.0.58</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -3737,6 +3737,56 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Tab as tabs]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/tab-tile.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/tab-tile.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>b70c2f5c-2c87-11ee-a93c-0242ac11002b</uuidstructure>
+			<uuidresource>b70c2f5d-2c87-11ee-a93c-0242ac11002b</uuidresource>
+			<datecreated>Thu, 27 Jul 2023 14:13:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[container-element;locale]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/tab-tile.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/tab-tile.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>bd96ae40-2c87-11ee-a93c-0242ac11002b</uuidstructure>
+			<uuidresource>bd96ae41-2c87-11ee-a93c-0242ac11002b</uuidresource>
+			<datecreated>Thu, 27 Jul 2023 14:13:20 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Tab as image tile accordion]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -8951,6 +9001,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/parse-color.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/parse-color.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>ba643b93-239a-11ed-84a9-0242ac11002b</uuidstructure>
+			<uuidresource>ba643b94-239a-11ed-84a9-0242ac11002b</uuidresource>
+			<datecreated>Wed, 24 Aug 2022 10:51:37 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Parses hex colors to RGB]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/parse-multipart.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/parse-multipart.tag</destination>
 			<type>jsp</type>
@@ -8962,27 +9033,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Parses multipart request data]]></value>
-				</property>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/tags/parseColor.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/parseColor.tag</destination>
-			<type>jsp</type>
-			<uuidstructure>ba643b93-239a-11ed-84a9-0242ac11002b</uuidstructure>
-			<uuidresource>ba643b94-239a-11ed-84a9-0242ac11002b</uuidresource>
-			<datecreated>Wed, 24 Aug 2022 10:51:37 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Parses hex colors to RGB]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

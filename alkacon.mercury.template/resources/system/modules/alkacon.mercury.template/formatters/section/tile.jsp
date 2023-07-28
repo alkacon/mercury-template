@@ -25,7 +25,9 @@
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="textAlignment"      value="${setting.textAlignment.useDefault('pal').toString}" />
 <c:set var="useAsElement"       value="${tileContainer eq 'element'}" />
-<c:set var="ade"                value="${cms.isEditMode}" />
+<c:set var="disableAde"         value="${setting.disableAde.useDefault('false').toBoolean}" />
+
+<c:set var="ade"                value="${cms.isEditMode and not disableAde}" />
 
 <c:choose>
     <c:when test="${fullOverlayOption eq 'boxbg'}">

@@ -131,13 +131,13 @@
 
     <c:set var="customVars" value="" />
     <c:if test="${value.TextBackgroundColor.isSet}">
-        <c:set var="rgbVal"><mercury:parseColor value="${value.TextBackgroundColor}" /></c:set>
+        <c:set var="rgbVal"><mercury:parse-color value="${value.TextBackgroundColor}" /></c:set>
         <c:if test="${not rgbVal}">
             <c:set var="customVars">--my-slider-bg:${rgbVal};</c:set>
         </c:if>
     </c:if>
     <c:if test="${value.TextColor.isSet}">
-        <c:set var="rgbVal"><mercury:parseColor value="${value.TextColor}" /></c:set>
+        <c:set var="rgbVal"><mercury:parse-color value="${value.TextColor}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <%-- text color must nor be RGB, we use this as check for valid values --%>
             <c:set var="customVars">${customVars}--my-slider-fg:${value.TextColor};</c:set>
@@ -145,14 +145,14 @@
     </c:if>
     <c:if test="${not empty bgColorHead}">
         <c:set var="customClass" value=" custom" />
-        <c:set var="rgbVal"><mercury:parseColor value="${bgColorHead}" /></c:set>
+        <c:set var="rgbVal"><mercury:parse-color value="${bgColorHead}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <c:set var="customVars">${customVars}--my-slider-caption-top:${rgbVal};</c:set>
         </c:if>
     </c:if>
     <c:if test="${not empty bgColorSub}">
         <c:set var="customClass" value=" custom" />
-        <c:set var="rgbVal"><mercury:parseColor value="${bgColorSub}" /></c:set>
+        <c:set var="rgbVal"><mercury:parse-color value="${bgColorSub}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <c:set var="customVars">${customVars}--my-slider-caption-sub:${rgbVal};</c:set>
         </c:if>

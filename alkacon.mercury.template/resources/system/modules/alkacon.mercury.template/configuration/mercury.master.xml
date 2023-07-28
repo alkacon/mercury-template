@@ -912,6 +912,12 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/tab-tile.xml]]></target>
+          <uuid>bd96ae40-2c87-11ee-a93c-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/layout/area-simple.xml]]></target>
           <uuid>595e6ce8-35f4-41db-a0e3-babf5f844d4d</uuid>
         </link>

@@ -3630,5 +3630,12 @@
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[disableAde.false]]></IncludeName>
+      <PropertyName><![CDATA[disableAde]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
   </SettingsConfig>
 </SettingsConfigs>

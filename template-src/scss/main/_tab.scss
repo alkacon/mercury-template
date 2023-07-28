@@ -168,8 +168,8 @@
 }
 .acco-body > div,
 .tab-pane > div {
-        > .element,
-        > .detail-page {
+    > .element,
+    > .detail-page {
         // tabs that directly contain elements:
         // remove bottom margin from the last element in the tab
         &:last-child {
@@ -285,6 +285,186 @@
                 border: none;
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
+            }
+        }
+    }
+}
+
+// (Image) tile accordions
+
+.variant-tile-accordion {
+
+    .tile-accordion.row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    span.ta-trigger {
+        display: block;
+        position: relative;
+    }
+
+    div.ta-target {
+        &.collapsing {
+            transition: none;
+        }
+
+        .detail-page:last-child,
+        .element:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &.show-button {
+        span.ta-trigger {
+            &::after {
+                @include icon-font();
+                content: $toggle-arrow-icon;
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                line-height: 1;
+                font-size: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                color: var(--#{$prefix}main-theme-fg);
+                background-color: var(--#{$prefix}main-theme);
+                border-radius: var(--#{$prefix}btn-border-radius);
+                width: 40px;
+                height: 40px;
+                top: calc(0.5 * var(--#{$prefix}gutter-y));
+                transition: height .33s, top .33s;
+            }
+            &.collapsed::after {
+                height: 0;
+                top: -40px;
+            }
+        }
+    }
+
+    &.hide-button {
+        div.ta-target {
+            &.collapsing {
+                transition: height .1s;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        span.col-6 {
+            &:nth-of-type(n+1) {
+                order: 10;
+            }
+            &:nth-of-type(n+3) {
+                order: 30;
+            }
+            &:nth-of-type(n+5) {
+                order: 50;
+            }
+            &:nth-of-type(n+7) {
+                order: 70;
+            }
+            &:nth-of-type(n+9) {
+                order: 90;
+            }
+            &:nth-of-type(n+11) {
+                order: 110;
+            }
+        }
+        div.target-6 {
+            &:nth-of-type(n+1) {
+                order: 20;
+            }
+            &:nth-of-type(n+3) {
+                order: 40;
+            }
+            &:nth-of-type(n+5) {
+                order: 60;
+            }
+            &:nth-of-type(n+7) {
+                order: 80;
+            }
+            &:nth-of-type(n+9) {
+                order: 100;
+            }
+            &:nth-of-type(n+11) {
+                order: 120;
+            }
+        }
+    }
+    @include media-breakpoint-up(md) {
+        span.col-md-3 {
+            &:nth-of-type(n+1) {
+                order: 10;
+            }
+            &:nth-of-type(n+5) {
+                order: 30;
+            }
+            &:nth-of-type(n+9) {
+                order: 50;
+            }
+        }
+        div.target-md-3 {
+            &:nth-of-type(n+1) {
+                order: 20;
+            }
+            &:nth-of-type(n+5) {
+                order: 40;
+            }
+            &:nth-of-type(n+9) {
+                order: 60;
+            }
+        }
+
+        span.col-lg-2,
+        span.col-md-4 {
+            &:nth-of-type(n+1) {
+                order: 10;
+            }
+            &:nth-of-type(n+4) {
+                order: 30;
+            }
+            &:nth-of-type(n+7) {
+                order: 50;
+            }
+            &:nth-of-type(n+10) {
+                order: 70;
+            }
+        }
+
+        div.target-lg-2,
+        div.target-md-4 {
+            &:nth-of-type(n+1) {
+                order: 20;
+            }
+            &:nth-of-type(n+4) {
+                order: 40;
+            }
+            &:nth-of-type(n+7) {
+                order: 60;
+            }
+            &:nth-of-type(n+10) {
+                order: 80;
+            }
+        }
+    }
+    @include media-breakpoint-up(lg) {
+        span.col-lg-2 {
+            &:nth-of-type(n+1) {
+                order: 10;
+            }
+            &:nth-of-type(n+7) {
+                order: 30;
+            }
+        }
+        div.target-lg-2 {
+            &:nth-of-type(n+1) {
+                order: 20;
+            }
+            &:nth-of-type(n+7) {
+                order: 40;
             }
         }
     }

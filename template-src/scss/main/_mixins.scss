@@ -583,7 +583,13 @@
 @mixin set-box-color-defaults($bg-map: null, $set-default: true) {
 
     @if ($set-default or map-has-key-safe($bg-map, "main-theme")) {
-        --#{$prefix}main-theme:                     #{get-color("main-theme",                   var(--#{$prefix}link-color),                    $bg-map)};
+        $main-theme-color:                            get-color("main-theme",                   var(--#{$prefix}link-color),                    $bg-map);
+        --#{$prefix}main-theme:                     #{$main-theme-color};
+        @if type-of($main-theme-color) != color {
+            --#{$prefix}main-theme-rgb:             #{get-color("main-theme-rgb",               var(--#{$prefix}link-color-rgb),                $bg-map)};
+          } @else {
+            --#{$prefix}main-theme-rgb:             #{to-rgb($main-theme-color)};
+          }
     }
     $main-theme-val: map-get-safe($bg-map, "main-theme");
     @if ($set-default or ($main-theme-val != null) or map-has-key-safe($bg-map, "main-theme-fg")) {

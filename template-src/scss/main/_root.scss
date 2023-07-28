@@ -35,6 +35,7 @@
     --#{$prefix}link-opacity: 1.0;
 
     --#{$prefix}main-theme: #{$main-theme};
+    --#{$prefix}main-theme-rgb: #{to-rgb($main-theme)};
     --#{$prefix}main-theme-fg: #{$main-theme-fg};
     --#{$prefix}main-theme-hover: #{$main-theme-hover};
     --#{$prefix}main-theme-hover-fg: #{$main-theme-hover-fg};
@@ -54,6 +55,7 @@
     }
 
     --#{$prefix}highlight-color: #{$highlight-color};
+    --#{$prefix}highlight-color-rgb: #{to-rgb($highlight-color)};
     --#{$prefix}highlight-fg-color: #{$highlight-fg-color};
     --#{$prefix}highlight-border-color: #{$highlight-border-color};
     --#{$prefix}highlight-border-fg-color: #{$highlight-border-fg-color};
@@ -96,9 +98,6 @@
 
     --#{$prefix}text-dark: #{$text-dark};
     --#{$prefix}text-light: #{$text-light};
-
-    --#{$prefix}main-theme-rgb: #{to-rgb($main-theme)};
-    --#{$prefix}highlight-color-rgb: #{to-rgb($highlight-color)};
 
     --#{$prefix}nav-toggle-bg: #{$nav-toggle-bg};
     --#{$prefix}nav-toggle-fg: #{$nav-toggle-fg};

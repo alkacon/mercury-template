@@ -435,7 +435,7 @@ var Mercury = function (jQ) {
 
     function initTabAccordion(element, callback) {
         // add handler for elements hidden in accordions and tabs
-        let accoEl = element.closest('.accordion .collapse');
+        let accoEl = element.closest('.accordion .collapse, .collapse-parent .collapse');
         if (accoEl != null) {
             accoEl.addEventListener('shown.bs.collapse', callback);
         }

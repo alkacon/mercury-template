@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="out"
+    display-name="parse-color"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Parses hex colors to RGB." %>
@@ -35,6 +35,8 @@
        } catch (Exception e) {
            // ignore
        }
+   } else if ("transparent".equals(value.trim())) {
+        result = "255, 255, 255, 0";
    }
    getJspContext().setAttribute("result", result);
 %>

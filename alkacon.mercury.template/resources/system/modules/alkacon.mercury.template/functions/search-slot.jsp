@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<cms:secureparams />
+<cms:secureparams replaceInvalid="Bad parameter" />
 <mercury:init-messages>
 
 <fmt:setLocale value="${cms.locale}" />

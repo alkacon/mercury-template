@@ -12,7 +12,7 @@
 
 
 <mercury:init-messages>
-<cms:secureparams />
+<cms:secureparams replaceInvalid="Bad parameter" />
 
 <cms:formatter var="content">
 

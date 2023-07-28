@@ -38,7 +38,6 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<cms:secureparams />
 
 <fmt:setLocale value="${locale}" />
 <fmt:setTimeZone var="utcTime" value="UTC" />

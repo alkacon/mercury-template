@@ -7,7 +7,8 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<cms:secureparams />
+
+<cms:secureparams replaceInvalid="Bad parameter" />
 
 <c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
 <%-- Note: Using c:out to XML escape the parameters again, since the transmission was base64 encoded so cms:secureparams has no effect --%>

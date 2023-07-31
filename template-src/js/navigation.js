@@ -649,6 +649,17 @@ function initAccordionScroll() {
             doScrollToAnchor($tab, -5);
         }
     })
+    jQ('.collapse-target').on('shown.bs.collapse', function() {
+        var $tar = $(this);
+        setTimeout(function () {
+            // must wait for animation to finish before calculating the anchor position
+            var $tab = $tar.find('.collapse-container');
+            if (! $tab.visible()) {
+                var $tac = $tar.prev('.collapse-trigger').find('.text-overlay').first();
+                doScrollToAnchor($tac, -5);
+            }
+        }, 330);
+    })
 }
 
 // auto-scroll to and open a regular tab
@@ -722,7 +733,7 @@ function doScrollToAnchor($anchor, offset) {
                 if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") is a tab!");
                 openTabFromHash($anchor);
                 return;
-            } else if ($anchor.hasClass('acco-body')) {
+            } else if ($anchor.hasClass('acco-body') || $anchor.hasClass('collapse-target')) {
                 if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") is a collapse!");
                 $anchor.collapse("show");
                 return;

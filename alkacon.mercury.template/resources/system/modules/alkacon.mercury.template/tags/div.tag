@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="link"
+    display-name="div"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
     description="Adds either one or two optional div wrapper(s) around a body." %>

@@ -30,6 +30,14 @@
 <c:set var="itemsLarge"             value="${setting.itemsLarge.toInteger}" />
 <c:set var="rowWrapper"             value="${setting.rowWrapper.toString}" />
 <c:set var="showButton"             value="${setting.showButton.toBoolean}" />
+<c:set var="showBorder"             value="${setting.showBorder.toBoolean}" />
+
+<c:set var="tileImageRatio"         value="${setting.imageRatio.toString}" />
+<c:set var="tileFullOverlay"        value="${setting.fullOverlay.toString}" />
+<c:set var="tileTextOption"         value="${setting.textOption.toString}" />
+<c:set var="tileShowImageCopyright" value="${setting.showImageCopyright.toString}" />
+<c:set var="tileTextAlignment"      value="${setting.textAlignment.useDefault('pal').toString}" />
+<c:set var="tileEffect"             value="${setting.effect.toString}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
@@ -46,8 +54,9 @@
     </c:otherwise>
 </c:choose>
 
-
-
+<c:if test="${rowWrapper eq 'tile-margin-0'}">
+    <c:set var="showBorder"           value="${false}" />
+</c:if>
 
 <jsp:useBean id="triggerMap"        class="java.util.HashMap" />
 
@@ -63,10 +72,21 @@
 </c:choose>
 
 <mercury:nl />
-<div class="element type-tab variant-tile-accordion${showButton ? ' show-button' : ' hide-button'}${setCssWrapperAll}"><%----%>
+<div class="element type-tab variant-tile-accordion${showButton ? ' show-button' : ' hide-button'}${showBorder ? ' show-border' : ''}${setCssWrapper123}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
+
+    <mercury:alert test="${cms.isEditMode and content.valueList.TabEntry.size() > 12}" type="warning">
+        <jsp:attribute name="head">
+            <fmt:message key="msg.error.tab.itemcount.head" />
+        </jsp:attribute>
+        <jsp:attribute name="text">
+            <fmt:message key="msg.error.tab.itemcount.text">
+                <fmt:param>${content.valueList.TabEntry.size()}</fmt:param>
+            </fmt:message>
+        </jsp:attribute>
+    </mercury:alert>
 
     <div class="tile-accordion collapse-parent row ${rowWrapper}" id="${parentId}"><%----%>
 
@@ -74,38 +94,52 @@
 
             <c:set var="open"               value="${firstOpen and status.first}" />
             <c:set var="itemId"             value="${parentId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" />
-            <c:set var="itemHsize"          value="${hsize > 0 ? hsize + 1 : 2}" />
 
             <mercury:nl />
 
-            <span class="ta-trigger ${triggerColCss}${open ? '':' collapsed'}" <%--
+            <span class="collapse-trigger ${triggerColCss}${open ? '':' collapsed'}" <%--
                 --%>data-bs-toggle="collapse" type="button" <%--
                 --%>aria-expanded="${open}" <%--
                 --%>aria-controls="${itemId}"<%--
                 --%>data-bs-target="#${itemId}"><%----%>
+                <c:if test="${cms.isEditMode}">
+                    <a href="#${itemId}" class="hash-link"><%----%>
+                        <span class="badge oct-meta-info"><%----%>
+                            <mercury:icon icon="hashtag" tag="span" />
+                        </span><%----%>
+                    </a><%----%>
+                </c:if>
                 <mercury:container
-                    title="Kachel ${status.count}"
-                    css="ta-container"
+                    title="${tabEntry.value.Label}"
+                    css="collapse-trigger-container"
                     name="${tabEntry.value.Id}-tile"
                     hideName="${true}"
                     hideParentType="${true}"
-                    type="tile"
+                    type="tab-tile"
                     maxElements="${2}"
                     value="${triggerMap}"
                     settings="${{
-                        'cssWrapper':       'ta-trigger-item',
-                        'cssWrapper2':      '',
-                        'cssWrapper3':      '',
-                        'linkOption':       'hide',
-                        'disableAde':       'true'
+                        'cssWrapper':           'collapse-trigger-item',
+                        'cssWrapper2':          '',
+                        'cssWrapper3':          '',
+                        'cssVisibility':        'always',
+                        'hsize':                '7',
+                        'textOption':           'none',
+                        'linkOption':           'hide',
+                        'disableAde':           'true',
+                        'effect':               tileEffect,
+                        'imageRatio':           tileImageRatio,
+                        'fullOverlay':          tileFullOverlay,
+                        'textAlignment':        tileTextAlignment,
+                        'showImageCopyright':   tileShowImageCopyright
                     }}"
                 />
             </span><%----%>
 
-            <div id="${itemId}" class="ta-target collapse ${targetColCss}${' '}${open ? 'show' : ''}" data-bs-parent="#${parentId}"><%----%>
+            <div id="${itemId}" class="collapse-target acco-body collapse ${targetColCss}${' '}${open ? 'show' : ''}" data-bs-parent="#${parentId}"><%----%>
                 <mercury:container
                     title="${msg}"
-                    css="ta-container"
+                    css="collapse-container"
                     name="${tabEntry.value.Id}"
                     hideName="${true}"
                     hideParentType="${true}"

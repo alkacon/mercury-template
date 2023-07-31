@@ -11,7 +11,7 @@
     description="An object that contains the link." %>
 
 <%@ attribute name="fragment" type="java.lang.Object" required="false"
-    description="An fragment that is appended to the generated link, provided the link does not contain a fragment already." %>
+    description="A fragment (anchor) that is appended to the generated link, provided the link does not contain a fragment already." %>
 
 <%@ attribute name="text" type="java.lang.String" required="false"
     description="Text shown in the link ONLY if body of tag is empty and no text is set in the provided XML content node.

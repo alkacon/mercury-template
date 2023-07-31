@@ -182,8 +182,6 @@
 <mercury:nl />
 <div class="detail-page type-imageseries${showVisual or showText ? '' : ' only-series'}${elementCss}${setCssWrapper123}"><%----%>
 <mercury:nl />
-<!--
--->
 
 <c:if test="${showVisual}">
     <div class="detail-visual pivot${showDate or showImageCount ? '' : ' no-info'}${setCssWrapperKeyPiece}"><%----%>

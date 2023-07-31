@@ -15,6 +15,7 @@
     <Match>
       <Types>
         <ContainerType><![CDATA[tile]]></ContainerType>
+        <ContainerType><![CDATA[tab-tile]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>

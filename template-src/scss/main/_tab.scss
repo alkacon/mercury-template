@@ -298,14 +298,40 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        margin-bottom: 0;
     }
 
-    span.ta-trigger {
+    .collapse-trigger {
         display: block;
         position: relative;
+
+        .text-overlay {
+            display: flex;
+            align-items: center;
+            .piece {
+                width: 100%;
+            }
+        }
+
+        .piece-heading {
+            font-size: $at-tile-header-font-size;
+            @include heading-base;
+        }
+
+        .hash-link {
+            display: none;
+            z-index: #{$overflow-z-index + 20};
+            position: absolute;
+            top: 15px;
+            left: calc(15px + 0.5 * var(--#{$prefix}gutter-x));
+        }
+
+        &:hover > .hash-link {
+            display: block;
+        }
     }
 
-    div.ta-target {
+    .collapse-target {
         &.collapsing {
             transition: none;
         }
@@ -317,7 +343,7 @@
     }
 
     &.show-button {
-        span.ta-trigger {
+        .collapse-trigger {
             &::after {
                 @include icon-font();
                 content: $toggle-arrow-icon;
@@ -326,28 +352,48 @@
                 justify-content: center;
                 align-items: center;
                 line-height: 1;
-                font-size: 20px;
                 margin-left: auto;
                 margin-right: auto;
                 color: var(--#{$prefix}main-theme-fg);
                 background-color: var(--#{$prefix}main-theme);
                 border-radius: var(--#{$prefix}btn-border-radius);
-                width: 40px;
-                height: 40px;
+                font-size: $at-tile-button-font-size;
+                width: $at-tile-button-size;
+                height: $at-tile-button-size;
+                overflow: hidden;
                 top: calc(0.5 * var(--#{$prefix}gutter-y));
                 transition: height .33s, top .33s;
             }
             &.collapsed::after {
                 height: 0;
-                top: -40px;
+                top: -1 * $at-tile-button-size;
             }
         }
     }
 
     &.hide-button {
-        div.ta-target {
+        .collapse-target {
             &.collapsing {
                 transition: height .1s;
+            }
+        }
+    }
+
+    &.show-border {
+        .collapse-trigger {
+            .content-box {
+                outline-width: 0;
+                transition: outline-width .33s;
+            }
+            &[aria-expanded="true"] {
+                .content-box {
+                    outline: $at-tile-outline-width solid var(--#{$prefix}main-theme);
+                }
+            }
+            &::after {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                top: 0;
             }
         }
     }
@@ -372,6 +418,9 @@
             &:nth-of-type(n+11) {
                 order: 110;
             }
+            &:nth-of-type(n+13) {
+                order: 130;
+            }
         }
         div.target-6 {
             &:nth-of-type(n+1) {
@@ -392,6 +441,9 @@
             &:nth-of-type(n+11) {
                 order: 120;
             }
+            &:nth-of-type(n+13) {
+                order: 140;
+            }
         }
     }
     @include media-breakpoint-up(md) {
@@ -405,6 +457,9 @@
             &:nth-of-type(n+9) {
                 order: 50;
             }
+            &:nth-of-type(n+13) {
+                order: 70;
+            }
         }
         div.target-md-3 {
             &:nth-of-type(n+1) {
@@ -415,6 +470,9 @@
             }
             &:nth-of-type(n+9) {
                 order: 60;
+            }
+            &:nth-of-type(n+13) {
+                order: 80;
             }
         }
 
@@ -432,6 +490,9 @@
             &:nth-of-type(n+10) {
                 order: 70;
             }
+            &:nth-of-type(n+13) {
+                order: 90;
+            }
         }
 
         div.target-lg-2,
@@ -448,6 +509,9 @@
             &:nth-of-type(n+10) {
                 order: 80;
             }
+            &:nth-of-type(n+13) {
+                order: 100;
+            }
         }
     }
     @include media-breakpoint-up(lg) {
@@ -458,6 +522,9 @@
             &:nth-of-type(n+7) {
                 order: 30;
             }
+            &:nth-of-type(n+13) {
+                order: 50;
+            }
         }
         div.target-lg-2 {
             &:nth-of-type(n+1) {
@@ -465,6 +532,9 @@
             }
             &:nth-of-type(n+7) {
                 order: 40;
+            }
+            &:nth-of-type(n+13) {
+                order: 60;
             }
         }
     }

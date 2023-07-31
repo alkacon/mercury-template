@@ -11,6 +11,7 @@
         <uuid>b70c2f5c-2c87-11ee-a93c-0242ac11002b</uuid>
       </link>
     </Jsp>
+    <Description><![CDATA[%(key.type.m-tab.formatter.tile.help)]]></Description>
     <Rank><![CDATA[400]]></Rank>
     <Match>
       <Types>
@@ -41,54 +42,41 @@
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[itemsSmall.tab]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[itemsLarge.tab]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[rowWrapper.tab]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[containerType.tab]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.imageflip]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+      <Default><![CDATA[pac]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.rotate-only]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[fullOverlay.tab]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[firstOpen.true]]></IncludeName>
     </Setting>
     <Setting>
-      <PropertyName><![CDATA[itemsSmall]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.tab.itemsSmall)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.tab.itemsSmall.help)]]></Description>
-      <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[1]]></Default>
-      <WidgetConfig><![CDATA[
-        12:         %(key.msg.setting.tab.items.1)|
-        6:          %(key.msg.setting.tab.items.2)
-      ]]></WidgetConfig>
+      <IncludeName><![CDATA[showButton.tab]]></IncludeName>
     </Setting>
     <Setting>
-      <PropertyName><![CDATA[itemsLarge]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.tab.itemsLarge)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.tab.itemsLarge.help)]]></Description>
-      <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[3]]></Default>
-      <WidgetConfig><![CDATA[
-        6:          %(key.msg.setting.tab.items.2)|
-        4:          %(key.msg.setting.tab.items.3)|
-        3:          %(key.msg.setting.tab.items.4)|
-        2:          %(key.msg.setting.tab.items.6)
-      ]]></WidgetConfig>
+      <IncludeName><![CDATA[showBorder.tab]]></IncludeName>
     </Setting>
     <Setting>
-      <PropertyName><![CDATA[rowWrapper]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
-      <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[tile-margin-15]]></Default>
-      <WidgetConfig><![CDATA[
-        tile-margin-2:   4|
-        tile-margin-5:   10|
-        tile-margin-10:  20|
-        tile-margin-15:  30
-      ]]></WidgetConfig>
-    </Setting>
-    <Setting>
-      <PropertyName><![CDATA[showButton]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.tab.showButton)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.tab.showButton.help)]]></Description>
-      <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[true]]></Default>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

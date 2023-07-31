@@ -60,7 +60,7 @@
         padding: 10px;
         text-align: center;
         background-color: $con-col-orange;
-        color: get-text-color($con-col-orange);
+        color: $con-text-col-light;
     }
 
     &.error::before {

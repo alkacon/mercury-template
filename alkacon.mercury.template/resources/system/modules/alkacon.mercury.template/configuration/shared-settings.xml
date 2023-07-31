@@ -504,6 +504,19 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[effect.rotate-only]]></IncludeName>
+      <PropertyName><![CDATA[effect]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.effect.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:                           %(key.msg.setting.effect.none)|
+            effect-rotate:                  %(key.msg.setting.effect.rotate)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.section.text-image]]></IncludeName>
       <PropertyName><![CDATA[effect]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.effect)]]></DisplayName>
@@ -877,6 +890,63 @@
             element:            %(key.msg.setting.containerType.element)|
             row:                %(key.msg.setting.containerType.row)
         ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[itemsSmall.tab]]></IncludeName>
+      <PropertyName><![CDATA[itemsSmall]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.itemsSmall)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.itemsSmall.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[12]]></Default>
+      <WidgetConfig><![CDATA[
+        12:         1|
+        6:          2
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[itemsLarge.tab]]></IncludeName>
+      <PropertyName><![CDATA[itemsLarge]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.itemsLarge)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.itemsLarge.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[3]]></Default>
+      <WidgetConfig><![CDATA[
+        6:          2|
+        4:          3|
+        3:          4|
+        2:          6
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[rowWrapper.tab]]></IncludeName>
+      <PropertyName><![CDATA[rowWrapper]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tileCssMargin.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[tile-margin-15]]></Default>
+      <WidgetConfig><![CDATA[
+        tile-margin-0:   0|
+        tile-margin-2:   4|
+        tile-margin-5:   10|
+        tile-margin-10:  20|
+        tile-margin-15:  30
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showButton.tab]]></IncludeName>
+      <PropertyName><![CDATA[showButton]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.showButton)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.showButton.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showBorder.tab]]></IncludeName>
+      <PropertyName><![CDATA[showBorder]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.showBorder)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.showBorder.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[containerType.detail]]></IncludeName>
@@ -1771,7 +1841,19 @@
       <Default><![CDATA[false]]></Default>
       <WidgetConfig><![CDATA[
             false:          %(key.msg.setting.fullOverlay.false)|
-            true:           %(key.msg.setting.fullOverlay.true)|
+            boxbg:          %(key.msg.setting.fullOverlay.boxbg)|
+            true:           %(key.msg.setting.fullOverlay.true)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[fullOverlay.tab]]></IncludeName>
+      <PropertyName><![CDATA[fullOverlay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.fullOverlay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.fullOverlay.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[false]]></Default>
+      <WidgetConfig><![CDATA[
+            false:          %(key.msg.setting.fullOverlay.false)|
             boxbg:          %(key.msg.setting.fullOverlay.boxbg)
       ]]></WidgetConfig>
     </Setting>

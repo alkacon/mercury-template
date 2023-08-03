@@ -30,7 +30,8 @@ $sq-margins:    (0, 1, 2, 5, 10, 15, 20) !default;
 $sq-padding:    20 !default;
 
 $square-spacing:                $default-margin !default;
-$square-text-overlay-padding:   calc(0.5 * $square-spacing) $square-spacing !default;
+$square-text-overlay-padding-v: calc(0.5 * $square-spacing) !default;
+$square-text-overlay-padding-h: $square-spacing !default;
 $square-paragraph-margin:       calc(0.5 * $paragraph-margin-bottom) !default;
 
 $square-overlay-h1-size:        2.0rem !default;
@@ -386,13 +387,14 @@ $sq-heights-xl:    () !default;
 .tile-col,
 .square-col {
 
-    --#{$prefix}square-text-overlay-padding: #{$square-text-overlay-padding};
+    --#{$prefix}square-text-overlay-padding-v: #{$square-text-overlay-padding-v};
+    --#{$prefix}square-text-overlay-padding-h: #{$square-text-overlay-padding-h};
     --#{$prefix}square-paragraph-margin: #{$square-paragraph-margin};
 
     .text-overlay {
         position: absolute;
         bottom: 0;
-        padding: var(--#{$prefix}square-text-overlay-padding);
+        padding: var(--#{$prefix}square-text-overlay-padding-v) var(--#{$prefix}square-text-overlay-padding-h);
         background-color: $square-overlay-bg-color;
         width: 100%;
         z-index: $overflow-z-index;

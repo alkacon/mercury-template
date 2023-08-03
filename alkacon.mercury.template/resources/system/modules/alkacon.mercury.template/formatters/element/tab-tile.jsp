@@ -27,7 +27,6 @@
 <c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 <c:set var="itemsSmall"             value="${setting.itemsSmall.toInteger}" />
 <c:set var="itemsLarge"             value="${setting.itemsLarge.toInteger}" />
-<c:set var="itemsLarge"             value="${setting.itemsLarge.toInteger}" />
 <c:set var="rowWrapper"             value="${setting.rowWrapper.toString}" />
 <c:set var="showButton"             value="${setting.showButton.toBoolean}" />
 <c:set var="showBorder"             value="${setting.showBorder.toBoolean}" />

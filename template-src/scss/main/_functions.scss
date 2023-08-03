@@ -168,6 +168,22 @@
     @return calc(#{$size-small} + #{strip-unit($size-large - $size-small)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
 }
 
+// responsive font sizing based on the container size
+// IMPORTANT: The parent container must have containt: inline-size set!
+// Also make sure to fall back to a static size in case the calculation goes bad
+@function fluid-size-container($size-large, $size-small, $max-px, $min-px, $container-width: 100cqw) {
+
+    @if unit($size-small) == rem {
+        $size-small: strip-unit($size-small) * $font-rem-base-mobile-size;
+    }
+    @if unit($size-large) == rem {
+        $size-large: strip-unit($size-large) * $font-rem-base-mobile-size;
+    }
+
+    $fsc-box-factor: clamp(0px, calc((#{$container-width} - #{$min-px}) / #{strip-unit($max-px - $min-px)}), 1px);
+    @return calc(#{$size-small} + #{strip-unit($size-large - $size-small)} * #{$fsc-box-factor});
+}
+
 // add two values directly if comparable, or with calc otherwiese
 @function add-values($value1, $value2) {
     @if comparable($value1, $value2) {

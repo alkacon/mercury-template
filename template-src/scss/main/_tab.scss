@@ -308,14 +308,16 @@
         .text-overlay {
             display: flex;
             align-items: center;
+            container-type: inline-size;
             .piece {
                 width: 100%;
             }
         }
 
         .piece-heading {
-            font-size: $at-tile-header-font-size;
             @include heading-base;
+            font-size: $at-tile-header-font-size-static;
+            font-size: #{fluid-size-container(22px, 10px, 300px, 100px, calc(100cqw + 2 * var(--#{$prefix}square-text-overlay-padding-h)))};
         }
 
         .hash-link {
@@ -511,6 +513,53 @@
             }
             &:nth-of-type(n+13) {
                 order: 100;
+            }
+        }
+
+        span.col-md-6 {
+            &:nth-of-type(n+1) {
+                order: 10;
+            }
+            &:nth-of-type(n+3) {
+                order: 30;
+            }
+            &:nth-of-type(n+5) {
+                order: 50;
+            }
+            &:nth-of-type(n+7) {
+                order: 70;
+            }
+            &:nth-of-type(n+9) {
+                order: 90;
+            }
+            &:nth-of-type(n+11) {
+                order: 110;
+            }
+            &:nth-of-type(n+13) {
+                order: 130;
+            }
+        }
+        div.target-md-6 {
+            &:nth-of-type(n+1) {
+                order: 20;
+            }
+            &:nth-of-type(n+3) {
+                order: 40;
+            }
+            &:nth-of-type(n+5) {
+                order: 60;
+            }
+            &:nth-of-type(n+7) {
+                order: 80;
+            }
+            &:nth-of-type(n+9) {
+                order: 100;
+            }
+            &:nth-of-type(n+11) {
+                order: 120;
+            }
+            &:nth-of-type(n+13) {
+                order: 140;
             }
         }
     }

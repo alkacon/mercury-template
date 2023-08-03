@@ -710,7 +710,7 @@ $at-border:                         1px solid var(--#{$prefix}at-border-color) !
 $at-tile-button-size:               40px !default;
 $at-tile-button-font-size:          round($at-tile-button-size * 0.5) !default;
 $at-tile-outline-width:             4px !default;
-$at-tile-header-font-size:          $h4-font-size-mobile !default;
+$at-tile-header-font-size-static:   $h4-font-size-mobile !default;
 
 $acco-body-bg:                      transparent !default;
 $acco-toggle-arrows:                true !default;

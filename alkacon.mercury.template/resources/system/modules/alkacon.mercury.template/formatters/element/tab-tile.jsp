@@ -108,31 +108,22 @@
                         </span><%----%>
                     </a><%----%>
                 </c:if>
-                <mercury:container
-                    title="${tabEntry.value.Label}"
-                    css="collapse-trigger-container"
-                    name="${tabEntry.value.Id}-tile"
-                    hideName="${true}"
-                    hideParentType="${true}"
-                    type="tab-tile"
-                    maxElements="${2}"
-                    value="${triggerMap}"
-                    settings="${{
-                        'cssWrapper':           'collapse-trigger-item',
-                        'cssWrapper2':          '',
-                        'cssWrapper3':          '',
-                        'cssVisibility':        'always',
-                        'hsize':                '7',
-                        'textOption':           'none',
-                        'linkOption':           'hide',
-                        'disableAde':           'true',
-                        'effect':               tileEffect,
-                        'imageRatio':           tileImageRatio,
-                        'fullOverlay':          tileFullOverlay,
-                        'textAlignment':        tileTextAlignment,
-                        'showImageCopyright':   tileShowImageCopyright
-                    }}"
+
+                <mercury:tile-col
+                    tileWrapper="trigger-item tile-col col-12 freefloat"
+                    boxWrapper="${tileEffect}"
+                    overlayWrapper="${tileFullOverlay}"
+                    heading="${tabEntry.value.Label}"
+                    hsize="${7}"
+                    image="${tabEntry.value.Image}"
+                    imageRatio="${tileImageRatio}"
+                    textAlignment="${tileTextAlignment}"
+                    showImageCopyright="${tileShowImageCopyright}"
+                    textOption="none"
+                    linkOption="hide"
+                    ade="${false}"
                 />
+
             </span><%----%>
 
             <div id="${itemId}" class="collapse-target acco-body collapse ${targetColCss}${' '}${open ? 'show' : ''}" data-bs-parent="#${parentId}"><%----%>

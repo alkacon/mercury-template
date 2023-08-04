@@ -305,19 +305,30 @@
         display: block;
         position: relative;
 
+        .trigger-item {
+            container: tile-col / inline-size;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
         .text-overlay {
             display: flex;
             align-items: center;
-            container-type: inline-size;
             .piece {
                 width: 100%;
+            }
+            @container tile-col (max-width: 150px) {
+                --#{$prefix}square-text-overlay-padding-h: 1rem;
             }
         }
 
         .piece-heading {
             @include heading-base;
             font-size: $at-tile-header-font-size-static;
-            font-size: #{fluid-size-container(22px, 10px, 300px, 100px, calc(100cqw + 2 * var(--#{$prefix}square-text-overlay-padding-h)))};
+            @container tile-col (min-width: 0px) {
+                font-size: #{fluid-size-container(22px, 10px, 300px, 100px)};
+            }
         }
 
         .hash-link {
@@ -345,31 +356,29 @@
     }
 
     &.show-button {
-        .collapse-trigger {
-            &::after {
-                @include icon-font();
-                content: $toggle-arrow-icon;
-                display: flex;
-                position: relative;
-                justify-content: center;
-                align-items: center;
-                line-height: 1;
-                margin-left: auto;
-                margin-right: auto;
-                color: var(--#{$prefix}main-theme-fg);
-                background-color: var(--#{$prefix}main-theme);
-                border-radius: var(--#{$prefix}btn-border-radius);
-                font-size: $at-tile-button-font-size;
-                width: $at-tile-button-size;
-                height: $at-tile-button-size;
-                overflow: hidden;
-                top: calc(0.5 * var(--#{$prefix}gutter-y));
-                transition: height .33s, top .33s;
-            }
-            &.collapsed::after {
-                height: 0;
-                top: -1 * $at-tile-button-size;
-            }
+        .trigger-item::after {
+            @include icon-font();
+            content: $toggle-arrow-icon;
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--#{$prefix}main-theme-fg);
+            background-color: var(--#{$prefix}main-theme);
+            border-radius: var(--#{$prefix}btn-border-radius);
+            font-size: $at-tile-button-font-size;
+            width: $at-tile-button-size;
+            height: $at-tile-button-size;
+            overflow: hidden;
+            top: calc(0.5 * var(--#{$prefix}gutter-y));
+            transition: height .33s, top .33s;
+        }
+        .collapsed .trigger-item::after {
+            height: 0;
+            top: -1 * $at-tile-button-size;
         }
     }
 
@@ -384,19 +393,19 @@
     &.show-border {
         .collapse-trigger {
             .content-box {
-                outline-width: 0;
-                transition: outline-width .33s;
+                outline: $at-tile-outline-width solid var(--#{$prefix}main-theme);
+                transition: outline-width .2s;
             }
-            &[aria-expanded="true"] {
+            &.collapsed {
                 .content-box {
-                    outline: $at-tile-outline-width solid var(--#{$prefix}main-theme);
+                    outline-width: 0;
                 }
             }
-            &::after {
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-                top: 0;
-            }
+        }
+        .trigger-item::after {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            top: 0;
         }
     }
 

@@ -171,13 +171,16 @@
 // responsive font sizing based on the container size
 // IMPORTANT: The parent container must have containt: inline-size set!
 // Also make sure to fall back to a static size in case the calculation goes bad
-@function fluid-size-container($size-large, $size-small, $max-px, $min-px, $container-width: 100cqw) {
+@function fluid-size-container($size-large, $size-small, $max-px, $min-px: 0, $container-width: 100cqi) {
 
     @if unit($size-small) == rem {
         $size-small: strip-unit($size-small) * $font-rem-base-mobile-size;
     }
     @if unit($size-large) == rem {
         $size-large: strip-unit($size-large) * $font-rem-base-mobile-size;
+    }
+    @if $min-px == 0 {
+        $min-px: $max-px - 0.1px;
     }
 
     $fsc-box-factor: clamp(0px, calc((#{$container-width} - #{$min-px}) / #{strip-unit($max-px - $min-px)}), 1px);

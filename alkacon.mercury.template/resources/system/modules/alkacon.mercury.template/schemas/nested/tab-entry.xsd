@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/image.xsd"/>
 
     <xsd:element name="TabEntryData" type="OpenCmsTabEntryData"/>
 
@@ -14,6 +15,7 @@
         <xsd:sequence>
             <xsd:element name="Label" type="OpenCmsString" />
             <xsd:element name="Id" type="OpenCmsString" />
+            <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -39,6 +41,11 @@
                     <Description>%(key.label.Tab.Id.help)</Description>
                     <Widget>display</Widget>
                     <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>Image</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Image.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

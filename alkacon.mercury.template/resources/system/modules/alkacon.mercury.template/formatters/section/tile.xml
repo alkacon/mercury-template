@@ -15,7 +15,6 @@
     <Match>
       <Types>
         <ContainerType><![CDATA[tile]]></ContainerType>
-        <ContainerType><![CDATA[tab-tile]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>
@@ -62,9 +61,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[disableAde.false]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

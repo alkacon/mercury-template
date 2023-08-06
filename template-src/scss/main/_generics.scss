@@ -21,8 +21,21 @@
 
 // Colored backgrounds
 
-.box {
+.box,
+.box-high {
     @include set-box-colors($highlight-color, true, true);
+}
+
+.box-body {
+    @extend .box-body-base;
+}
+
+.box-theme{
+    @include set-box-colors($main-theme);
+}
+
+.box-dark {
+    @include set-box-colors($darkbg-color);
 }
 
 .box-inner {
@@ -54,8 +67,8 @@
 @each $color, $value in $theme-colors {
 
     .box-#{""+$color} {
-        @if ("body" != ""+$color) {
-            // special case: box-body colors are defined with the :root element
+        @if (("high" != ""+$color) and ("body" != ""+$color) and ("theme" != ""+$color) and ("dark" != ""+$color)) {
+            // special case: these are already defind by default (see above)
             @include set-box-colors($value);
         }
 

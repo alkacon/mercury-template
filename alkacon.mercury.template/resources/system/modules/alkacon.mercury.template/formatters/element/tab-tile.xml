@@ -54,6 +54,12 @@
       <IncludeName><![CDATA[containerType.tab]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textBgColor.tab]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[btnBgColor.tab]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatio.imageflip]]></IncludeName>
     </Setting>
     <Setting>

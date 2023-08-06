@@ -89,7 +89,7 @@
         &.row {
             --#{$prefix}gutter-x: #{2 * $space}px;
             --#{$prefix}gutter-y: #{2 * $space}px;
-            @if ($space < 10) {
+            @if (($space > 0) and ($space < 10)) {
                 // on mobile screens very small bottom spacing looks "wrong",
                 // therefore we adjust if the tile margin is smaller then 10
                 @include media-breakpoint-down(md) {

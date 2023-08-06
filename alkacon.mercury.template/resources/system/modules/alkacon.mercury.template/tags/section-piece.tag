@@ -67,7 +67,14 @@
     description="Controls if the tag body text is displayed or not. Default is 'Display as normal text'." %>
 
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
-    description="Controls if and how the link is displayed. Default is 'button'." %>
+    description="Controls if and how the link is displayed. Possible values are:
+    'button':           Display a regular size link button.
+    'button-sm':        Display a small size link button.
+    'button-full':      Display a link button that is as wide as it's parent element.
+    'text':             Display the link as text, not as button.
+    'heading':          Link the heading, do not display a separate link button or text.
+    'none' / 'false':   Do not display / use the link at all.
+    Default is 'button'." %>
 
 <%@ attribute name="suppressLinks" type="java.lang.Boolean" required="false"
     description="Controls if links are generated, or if a markup is generated without actual links. Default is 'false'.
@@ -137,7 +144,7 @@
 <c:set var="showVisualMobile"   value="${empty image and empty markupVisual ? false : (empty sizeMobile ? true : sizeMobile != 0)}" />
 <c:set var="showVisual"         value="${showVisualDesktop or showVisualMobile}" />
 <c:set var="showHeading"        value="${empty heading or (hsize < 1) ? false : (empty headingOption ? true : (headingOption ne 'none'))}" />
-<c:set var="showLinkOption"     value="${empty linkOption or linkHeading ? true : (linkOption ne 'none') and (linkOption ne 'false') }" />
+<c:set var="showLinkOption"     value="${empty linkOption or linkHeading ? true : (linkOption ne 'none') and (linkOption ne 'false')}" />
 <c:set var="showLink"           value="${empty link or linkHeading ? false : showLinkOption}" />
 <c:set var="defaultText"        value="${showText and empty markupText}" />
 

@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>15.0.2</version>
+		<version>15.0.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -11909,6 +11909,23 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Tabs / Accordion: Accordion demo content]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/tab-m/tab_00004.xml</source>
+			<destination>mercury-demo/.content/tab-m/tab_00004.xml</destination>
+			<type>m-tab</type>
+			<uuidstructure>3bf7a1f6-350f-11ee-bc19-0242ac11002b</uuidstructure>
+			<uuidresource>3bf7a1f7-350f-11ee-bc19-0242ac11002b</uuidresource>
+			<datecreated>Mon, 07 Aug 2023 10:43:24 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Tabs / Accordion: Image tile accordion demo content]]></value>
 				</property>
 			</properties>
 			<relations/>

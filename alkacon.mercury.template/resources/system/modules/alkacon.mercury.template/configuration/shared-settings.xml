@@ -949,6 +949,34 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textBgColor.tab]]></IncludeName>
+      <PropertyName><![CDATA[textBgColor]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textBgColor)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.textBgColor.help)]]></Description>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[box-theme]]></Default>
+      <WidgetConfig><![CDATA[
+        box-high:       %(key.msg.setting.cssWrapper.color.highlight)|
+        box-theme:      %(key.msg.setting.cssWrapper.color.theme)|
+        box-body:       %(key.msg.setting.cssWrapper.color.body)|
+        box-dark:       %(key.msg.setting.cssWrapper.color.dark)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[btnBgColor.tab]]></IncludeName>
+      <PropertyName><![CDATA[btnBgColor]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.tab.btnBgColor)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.tab.btnBgColor.help)]]></Description>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[box-dark]]></Default>
+      <WidgetConfig><![CDATA[
+        box-high:       %(key.msg.setting.cssWrapper.color.highlight)|
+        box-theme:      %(key.msg.setting.cssWrapper.color.theme)|
+        box-body:       %(key.msg.setting.cssWrapper.color.body)|
+        box-dark:       %(key.msg.setting.cssWrapper.color.dark)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[containerType.detail]]></IncludeName>
       <PropertyName><![CDATA[containerType]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.containerType.attachments)]]></DisplayName>
@@ -1840,9 +1868,9 @@
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[false]]></Default>
       <WidgetConfig><![CDATA[
-            false:          %(key.msg.setting.fullOverlay.false)|
-            boxbg:          %(key.msg.setting.fullOverlay.boxbg)|
-            true:           %(key.msg.setting.fullOverlay.true)
+            boxbg:          %(key.msg.setting.fullOverlay.top)|
+            false:          %(key.msg.setting.fullOverlay.bottom)|
+            true:           %(key.msg.setting.fullOverlay.overlay)
       ]]></WidgetConfig>
     </Setting>
     <Setting>
@@ -1851,10 +1879,11 @@
       <DisplayName><![CDATA[%(key.msg.setting.fullOverlay)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.tab.fullOverlay.help)]]></Description>
       <Widget><![CDATA[select]]></Widget>
-      <Default><![CDATA[false]]></Default>
+      <Default><![CDATA[below]]></Default>
       <WidgetConfig><![CDATA[
-            false:          %(key.msg.setting.fullOverlay.false)|
-            boxbg:          %(key.msg.setting.fullOverlay.boxbg)
+            top:          %(key.msg.setting.fullOverlay.top)|
+            bottom:       %(key.msg.setting.fullOverlay.bottom)|
+            below:        %(key.msg.setting.fullOverlay.below)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

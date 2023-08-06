@@ -34,14 +34,34 @@
     </c:otherwise>
 </c:choose>
 
+<c:choose>
+    <c:when test="${fullOverlayOption eq 'boxbg'}">
+        <c:set var="linkFullTile"       value="${linkOption eq 'none'}" />
+        <c:set var="linkOption"         value="${linkOption eq 'hide' ? 'false' : linkOption}" />
+        <c:set var="overlayWrapper"     value="full-overlay boxbg-overlay" />
+    </c:when>
+    <c:when test="${fullOverlayOption eq 'true'}">
+        <c:set var="linkFullTile"       value="${linkOption eq 'none'}" />
+        <c:set var="linkOption"         value="${linkOption eq 'hide' ? 'false' : linkOption}" />
+        <c:set var="overlayWrapper"     value="full-overlay" />
+    </c:when>
+    <c:otherwise>
+        <%-- fullOverlayOption should be 'false' --%>
+        <c:set var="linkFullTile"       value="${true}" />
+        <c:set var="linkOption"         value="false" />
+        <c:set var="overlayWrapper"     value="text-overlay" />
+    </c:otherwise>
+</c:choose>
+
 <mercury:tile-col
     heading="${value.Title}"
     image="${value.Image}"
     text="${value.Text}"
     link="${value.Link}"
+    linkFullTile="${linkFullTile}"
     tileWrapper="${tileClass}"
     boxWrapper="${setCssWrapperAll}"
-    overlayWrapper="${fullOverlayOption}"
+    overlayWrapper="${overlayWrapper}"
     hsize="${hsize}"
     imageRatio="${imageRatio}"
     showImageCopyright="${showImageCopyright}"

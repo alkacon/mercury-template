@@ -163,13 +163,6 @@
     --#{$prefix}btn-bg: #{$btn-bg};
     --#{$prefix}btn-hover-fg: #{get-text-color($btn-hover-bg)};
     --#{$prefix}btn-hover-bg: #{$btn-hover-bg};
-    // @if ($btn-border-style != none) {
-    //     border-color: var(--#{$prefix}btn-border);
-    // &:focus,
-    // &:hover {
-    //         border-color: var(--#{$prefix}btn-border);
-    //     }
-    // }
 }
 
 // Colored buttons with hover effects
@@ -790,5 +783,5 @@
     --#{$prefix}main-theme-fg: #{$fg-color};
 
     --#{$prefix}btn-bg: var(--#{$prefix}main-theme);
-    --#{$prefix}btn-fg: #{get-text-color($theme-color)};
+    --#{$prefix}btn-fg: var(--#{$prefix}main-theme-fg);
 }

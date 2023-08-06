@@ -31,6 +31,8 @@
 <c:set var="showButton"             value="${setting.showButton.toBoolean}" />
 <c:set var="showBorder"             value="${setting.showBorder.toBoolean}" />
 
+<c:set var="tileTextBgColor"        value="${setting.textBgColor.toString}" />
+<c:set var="tileBtnBgColor"         value="${setting.btnBgColor.toString}" />
 <c:set var="tileImageRatio"         value="${setting.imageRatio.toString}" />
 <c:set var="tileFullOverlay"        value="${setting.fullOverlay.toString}" />
 <c:set var="tileTextOption"         value="${setting.textOption.toString}" />
@@ -57,6 +59,20 @@
     <c:set var="showBorder"           value="${false}" />
 </c:if>
 
+<c:choose>
+    <c:when test="${tileFullOverlay eq 'top'}">
+        <c:set var="overlayWrapper"     value="full-overlay boxbg-overlay" />
+    </c:when>
+    <c:when test="${tileFullOverlay eq 'bottom'}">
+        <c:set var="overlayWrapper"     value="text-overlay" />
+    </c:when>
+    <c:otherwise>
+        <%-- tileFullOverlay should be 'below' --%>
+        <c:set var="overlayWrapper"     value="text-overlay" />
+        <c:set var="textBelow"          value="${true}" />
+    </c:otherwise>
+</c:choose>
+
 <jsp:useBean id="triggerMap"        class="java.util.HashMap" />
 
 <c:set target="${triggerMap}" property="Parameters"  value="${{'cssgrid': triggerColCss}}" />
@@ -71,7 +87,7 @@
 </c:choose>
 
 <mercury:nl />
-<div class="element type-tab variant-tile-accordion${showButton ? ' show-button' : ' hide-button'}${showBorder ? ' show-border' : ''}${setCssWrapper123}"><%----%>
+<div class="element type-tab variant-tile-accordion${showButton ? ' show-button' : ' hide-button'}${showBorder ? ' show-border' : ''}${textBelow ? ' text-below' : ''}${setCssWrapper123}"><%----%>
 <mercury:nl />
 
     <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
@@ -96,7 +112,7 @@
 
             <mercury:nl />
 
-            <span class="collapse-trigger ${triggerColCss}${open ? '':' collapsed'}" <%--
+            <span class="collapse-trigger ${tileBtnBgColor}${' '}${triggerColCss}${open ? '':' collapsed'}" <%--
                 --%>data-bs-toggle="collapse" type="button" <%--
                 --%>aria-expanded="${open}" <%--
                 --%>aria-controls="${itemId}"<%--
@@ -112,7 +128,7 @@
                 <mercury:tile-col
                     tileWrapper="trigger-item tile-col col-12 freefloat"
                     boxWrapper="${tileEffect}"
-                    overlayWrapper="${tileFullOverlay}"
+                    overlayWrapper="${overlayWrapper}${' '}${tileTextBgColor}"
                     heading="${tabEntry.value.Label}"
                     hsize="${7}"
                     image="${tabEntry.value.Image}"

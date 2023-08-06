@@ -35,8 +35,12 @@
 <%@ attribute name="textOption" type="java.lang.String" required="false"
     description="Controls if the tag body text is displayed or not. Default is 'Display as normal text'." %>
 
+<%@ attribute name="linkFullTile" type="java.lang.Boolean" required="false"
+    description="Controls if the complete tile is linked. Default is 'true'." %>
+
 <%@ attribute name="linkOption" type="java.lang.String" required="false"
-    description="Controls if and how the link is displayed. Default is 'hide'." %>
+    description="Controls if and how the link in the text is displayed. Default is 'none'.
+    If 'linkFullTile' is 'true' then this is always 'none'." %>
 
 <%@ attribute name="imageRatio" type="java.lang.String" required="false"
     description="Can be used to scale the image in a specific ratio. Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
@@ -55,30 +59,16 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:choose>
-    <c:when test="${overlayWrapper eq 'boxbg'}">
-        <c:set var="fullOverlay"        value="${true}" />
-        <c:set var="fullOverlayCss"     value="full-overlay boxbg-overlay" />
-    </c:when>
-    <c:when test="${overlayWrapper eq 'true'}">
-        <c:set var="fullOverlay"        value="${true}" />
-        <c:set var="fullOverlayCss"     value="full-overlay" />
-    </c:when>
-    <c:otherwise>
-        <c:set var="fullOverlay"        value="${false}" />
-    </c:otherwise>
-</c:choose>
-
-<c:set var="linkFullTile"       value="${empty linkFullTile or linkFullTile}" />
-<c:set var="linkOption"         value="${empty linkOption ? 'hide' : linkOption}" />
-<c:set var="linkFullTile"       value="${(linkOption ne 'hide') and link.isSet and (not (fullOverlay and (linkOption ne 'none')))}" />
+<c:set var="linkFullTile"               value="${(empty linkFullTile or linkFullTile) and (not empty link)}" />
+<c:set var="linkOption"                 value="${empty linkOption or linkFullTile ? 'none' : linkOption}" />
+<c:set var="text"                       value="${linkFullTile and fn:contains(text.toString, 'href') ? fn:trim(cms:stripHtml(text.toString)) : text}" />
 
 <mercury:nl />
 <div class="${tileWrapper}"><%----%>
 
     <div class="content-box ${boxWrapper}"><%----%>
 
-        <mercury:link link="${value.Link}" test="${linkFullTile}">
+        <mercury:link link="${link}" test="${linkFullTile}">
 
             <c:choose>
                 <c:when test="${not empty image}">
@@ -107,7 +97,7 @@
                     text="${text}"
                     link="${link}"
                     hsize="${hsize}"
-                    linkOption="${fullOverlay and (linkOption ne 'hide') ? linkOption : 'none'}"
+                    linkOption="${linkOption}"
                     textOption="${textOption}"
                     ade="${ade and not linkFullTile}"
                     emptyWarning="${false}"
@@ -115,7 +105,7 @@
             </c:set>
 
             <c:if test="${not empty tileText}">
-                <div class="${fullOverlay ? fullOverlayCss : 'text-overlay'}"><%----%>
+                <div class="${overlayWrapper}"><%----%>
                     ${tileText}
                 </div><%----%>
             </c:if>

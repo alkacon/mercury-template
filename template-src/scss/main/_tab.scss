@@ -302,14 +302,23 @@
     }
 
     .collapse-trigger {
-        display: block;
+        display: flex;
         position: relative;
 
-        .trigger-item {
+        .tile-col {
             container: tile-col / inline-size;
             display: flex;
             flex-direction: column;
             z-index: 1;
+        }
+
+        .text-overlay,
+        .boxbg-overlay {
+            --#{$prefix}square-text-overlay-fg-shadow: none;
+            --#{$prefix}square-text-overlay-bg-opacity: 0.75;
+            --#{$prefix}square-text-overlay-bg: var(--#{$prefix}body-bg);
+            --#{$prefix}square-text-overlay-bg-rgb: var(--#{$prefix}body-bg-rgb);
+            --#{$prefix}square-text-overlay-fg: var(--#{$prefix}body-color);
         }
 
         .text-overlay {
@@ -325,6 +334,7 @@
 
         .piece-heading {
             @include heading-base;
+            overflow: visible;
             font-size: $at-tile-header-font-size-static;
             @container tile-col (min-width: 0px) {
                 font-size: #{fluid-size-container(22px, 10px, 300px, 100px)};
@@ -336,7 +346,7 @@
             z-index: #{$overflow-z-index + 20};
             position: absolute;
             top: 15px;
-            left: calc(15px + 0.5 * var(--#{$prefix}gutter-x));
+            right: calc(15px + 0.5 * var(--#{$prefix}gutter-x));
         }
 
         &:hover > .hash-link {
@@ -345,6 +355,9 @@
     }
 
     .collapse-target {
+        margin-top: max(var(--#{$prefix}gutter-y), 10px);
+        margin-bottom: calc(10 * clamp(0px, calc(10px - var(--#{$prefix}gutter-y)), 1px));
+
         &.collapsing {
             transition: none;
         }
@@ -356,29 +369,43 @@
     }
 
     &.show-button {
-        .trigger-item::after {
+        .collapse-trigger .trigger-item::after {
             @include icon-font();
             content: $toggle-arrow-icon;
             display: flex;
-            position: relative;
+            position: absolute;
             justify-content: center;
             align-items: center;
             line-height: 1;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--#{$prefix}main-theme-fg);
-            background-color: var(--#{$prefix}main-theme);
-            border-radius: var(--#{$prefix}btn-border-radius);
+            color: var(--#{$prefix}body-color);
+            background-color: var(--#{$prefix}body-bg);
             font-size: $at-tile-button-font-size;
             width: $at-tile-button-size;
             height: $at-tile-button-size;
-            overflow: hidden;
-            top: calc(0.5 * var(--#{$prefix}gutter-y));
-            transition: height .33s, top .33s;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: var(--#{$prefix}image-border-radius);
+            border-bottom-right-radius: var(--#{$prefix}image-border-radius);
+            bottom: -1 * $at-tile-button-size;
+            transition: bottom .33s, opacity .33s;
+            transform: translateX(-50%);
+            left: 50%;
+            opacity: 1;
         }
-        .collapsed .trigger-item::after {
-            height: 0;
-            top: -1 * $at-tile-button-size;
+        .collapse-trigger.collapsed .trigger-item::after {
+            bottom: 0;
+            opacity: 0;
+        }
+        .collapse-target {
+            &::before {
+                display: flex;
+                content: '';
+                height: 0;
+                transition: height .33s;
+            }
+            &.show::before {
+                height: calc(#{$at-tile-button-size});
+            }
         }
     }
 
@@ -393,7 +420,7 @@
     &.show-border {
         .collapse-trigger {
             .content-box {
-                outline: $at-tile-outline-width solid var(--#{$prefix}main-theme);
+                outline: $at-tile-outline-width solid var(--#{$prefix}body-bg);
                 transition: outline-width .2s;
             }
             &.collapsed {
@@ -402,10 +429,29 @@
                 }
             }
         }
-        .trigger-item::after {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            top: 0;
+    }
+
+    &.text-below {
+        .collapse-trigger {
+            .text-overlay {
+                --#{$prefix}square-text-overlay-bg-opacity: 1;
+                position: relative;
+                flex-grow: 1;
+            }
+
+            .content-box {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+
+                .effect-box {
+                    .image-src-box,
+                    .image-src-box img {
+                        border-bottom-left-radius: 0;
+                        border-bottom-right-radius: 0;
+                    }
+                }
+            }
         }
     }
 

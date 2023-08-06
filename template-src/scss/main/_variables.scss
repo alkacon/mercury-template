@@ -291,6 +291,7 @@ $highlight-fg-color:                get-text-color($highlight-color) !default;
 $highlight-border-fg-color:         get-text-color($highlight-border-color) !default;
 $disabled-color:                    $grey-light !default;
 $disabled-fg-color:                 get-text-color($disabled-color) !default;
+$darkbg-color:                      #222 !default;
 
 $main-theme-fg:                     get-text-color($main-theme);
 $main-theme-hover-fg:               get-text-color($main-theme-hover);

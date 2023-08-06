@@ -41,7 +41,10 @@ $square-overlay-h4-size:        $square-overlay-h3-size !default;
 $square-overlay-text-size:      1.2rem !default;
 $square-overlay-line-height:    1.2 !default;
 
-$square-overlay-bg-color:       rgba(0, 0, 0, 0.65) !default;
+$square-overlay-bg-color:       #000 !default;
+$square-overlay-bg-opacity:     0.65 !default;
+$square-overlay-boxbg-opacity:  0.75 !default;
+
 $square-overlay-bg-color-xs:    #272727 !default;
 $square-overlay-text-color:     $white !default;
 $square-overlay-text-shadow:    1px 1px 1px #000 !default;
@@ -342,6 +345,14 @@ $sq-heights-xl:    () !default;
 .tile-col {
     position: relative;
 
+    .boxbg-overlay {
+        --#{$prefix}square-text-overlay-bg: #{$highlight-color};
+        --#{$prefix}square-text-overlay-bg-rgb: #{to-rgb($highlight-color)};
+        --#{$prefix}square-text-overlay-fg: #{$highlight-fg-color};
+        --#{$prefix}square-text-overlay-bg-opacity: #{$square-overlay-boxbg-opacity};
+        --#{$prefix}square-text-overlay-fg-shadow: none;
+    }
+
     .full-overlay {
         position: absolute;
         height: 100%;
@@ -361,8 +372,9 @@ $sq-heights-xl:    () !default;
 
         &.boxbg-overlay {
             .piece {
-                color: var(--#{$prefix}text-dark);
-                background-color: rgba(var(--#{$prefix}highlight-color-rgb), .75);
+                color: var(--#{$prefix}square-text-overlay-fg);
+                background-color: rgba(var(--#{$prefix}square-text-overlay-bg-rgb), var(--#{$prefix}square-text-overlay-bg-opacity));
+
                 display: inline-block;
                 padding: calc(0.5 * var(--#{$prefix}box-padding));
                 border-radius: var(--#{$prefix}image-border-radius);
@@ -387,6 +399,11 @@ $sq-heights-xl:    () !default;
 .tile-col,
 .square-col {
 
+    --#{$prefix}square-text-overlay-bg: #{$square-overlay-bg-color};
+    --#{$prefix}square-text-overlay-bg-rgb: #{to-rgb($square-overlay-bg-color)};
+    --#{$prefix}square-text-overlay-bg-opacity: #{$square-overlay-bg-opacity};
+    --#{$prefix}square-text-overlay-fg: #{$square-overlay-text-color};
+    --#{$prefix}square-text-overlay-fg-shadow: #{$square-overlay-text-shadow};
     --#{$prefix}square-text-overlay-padding-v: #{$square-text-overlay-padding-v};
     --#{$prefix}square-text-overlay-padding-h: #{$square-text-overlay-padding-h};
     --#{$prefix}square-paragraph-margin: #{$square-paragraph-margin};
@@ -395,14 +412,15 @@ $sq-heights-xl:    () !default;
         position: absolute;
         bottom: 0;
         padding: var(--#{$prefix}square-text-overlay-padding-v) var(--#{$prefix}square-text-overlay-padding-h);
-        background-color: $square-overlay-bg-color;
+        background-color: rgba(var(--#{$prefix}square-text-overlay-bg-rgb), var(--#{$prefix}square-text-overlay-bg-opacity, 1));
+        text-decoration: none;
         width: 100%;
         z-index: $overflow-z-index;
         @include use-hyphens-text();
 
         h1, h2, h3, h4, div {
-            color: $square-overlay-text-color;
-            text-shadow: $square-overlay-text-shadow;
+            color: var(--#{$prefix}square-text-overlay-fg);
+            text-shadow: var(--#{$prefix}square-text-overlay-fg-shadow);
             line-height: $square-overlay-line-height;
             margin: 0;
         }
@@ -467,7 +485,9 @@ $sq-heights-xl:    () !default;
             }
 
             .text-overlay {
-                background: $square-overlay-bg-color-xs;
+                --#{$prefix}square-text-overlay-bg: #{$square-overlay-bg-color-xs};
+                --#{$prefix}square-text-overlay-bg-rgb: #{to-rgb($square-overlay-bg-color-xs)};
+                --#{$prefix}square-text-overlay-bg-opacity: 1;
             }
         }
     }

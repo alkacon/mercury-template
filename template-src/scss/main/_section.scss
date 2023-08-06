@@ -233,10 +233,9 @@
     }
 
     &.color-theme {
-        // @include set-box-colors($main-theme); - not required because the default is set to $main-theme
-
+        // set-box-colors($main-theme) is not required because the default is set to $main-theme
         .image-section .heading .text-heading {
-            background-color: rgba(var(--#{$prefix}main-theme-rgb), .75);
+            background-color: rgba(var(--#{$prefix}body-bg-rgb), .75);
         }
     }
 }

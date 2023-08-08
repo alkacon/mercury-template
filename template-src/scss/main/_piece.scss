@@ -301,46 +301,25 @@ html.keyboard-nav .piece {
     }
 }
 
-// .col-6,
-// .col-md-6,
-// .col-lg-6 {
-//  &.flex-col {
-    .flex-col {
-        // .flex-col makes single columns in a row use the complete available height
-        // a col-6 column must use the complete available height in small screens
-        // for columns that are not col-6, same height is not required since the columns will be stacked upon each other in small screens
-        > .piece.flex {
+.flex-col {
+    // .flex-col makes single columns in a row use the complete available height
+    // a col-6 column must use the complete available height in small screens
+    // for columns that are not col-6, same height is not required since the columns will be stacked upon each other in small screens
+    > .piece.flex {
+        flex-grow: 1;
+    }
+    > .piece.full,
+    > .type-contact.box,
+    > .pivot.box {
+        &:only-child {
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
         }
-        > .piece.full,
-        > .type-contact.box,
-        > .pivot.box {
-            &:only-child {
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1;
-            }
-        }
     }
-// }
+}
 
 @include media-breakpoint-up($piece-desktop-breakpoint) {
-
-    // .flex-col {
-    //     // .flex-col makes single columns in a row use the complete available height
-    //     > .piece.flex {
-    //         flex-grow: 1;
-    //     }
-    //     > .piece.full,
-    //     > .type-contact.box,
-    //     > .pivot.box {
-    //         &:only-child {
-    //             display: flex;
-    //             flex-direction: column;
-    //             flex-grow: 1;
-    //         }
-    //     }
-    // }
 
     .piece {
 

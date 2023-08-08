@@ -11,7 +11,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<cms:secureparams replaceInvalid="Bad parameter" />
+<cms:secureparams replaceInvalid="bad_param" />
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />

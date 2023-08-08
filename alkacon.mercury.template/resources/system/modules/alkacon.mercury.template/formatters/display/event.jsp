@@ -11,7 +11,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<cms:secureparams replaceInvalid="Bad parameter" />
+<cms:secureparams replaceInvalid="bad_param" />
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">

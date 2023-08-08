@@ -381,6 +381,14 @@
     flex-grow: 0; // no growing in masonry lists
 }
 
+@include media-breakpoint-down($piece-desktop-breakpoint) {
+    .mobile-reduced {
+        .teaser-text {
+            display: none;
+        }
+    }
+}
+
 // Download lists
 
 @mixin dl-btn {

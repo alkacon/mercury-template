@@ -27,7 +27,7 @@
     <c:set var="loginproject" value="${loginou eq '/' ? '' : loginou}${loginproject}"/>
 </c:if>
 
-<cms:secureparams replaceInvalid="Bad parameter" />
+<cms:secureparams replaceInvalid="bad_param" />
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 

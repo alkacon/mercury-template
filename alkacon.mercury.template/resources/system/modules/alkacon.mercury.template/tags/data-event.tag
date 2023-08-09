@@ -35,7 +35,7 @@
         <c:set var="preface"    value="${value['MetaInfo/Description']}" />
     </c:when>
     <c:otherwise>
-        <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : '')}" />
+        <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : null)}" />
     </c:otherwise>
 </c:choose>
 <c:set var="image"      value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : value.Paragraph.value.Image)}" />

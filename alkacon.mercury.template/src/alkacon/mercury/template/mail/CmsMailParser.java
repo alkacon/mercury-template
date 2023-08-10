@@ -21,16 +21,26 @@ package alkacon.mercury.template.mail;
 
 import org.opencms.file.CmsObject;
 import org.opencms.jsp.parse.A_CmsConfiguredHtmlParser;
+import org.opencms.main.CmsException;
+import org.opencms.main.CmsLog;
 import org.opencms.util.I_CmsHtmlNodeVisitor;
 import org.opencms.util.I_CmsMacroResolver;
 
+import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.logging.Log;
+
+import org.htmlparser.util.ParserException;
 
 /**
  * Configured HTML parser for link replacements in mails.
  *
  */
 public class CmsMailParser extends A_CmsConfiguredHtmlParser {
+
+    /** The log object for this class. */
+    private static final Log LOG = CmsLog.getLog(CmsMailParser.class);
 
     /** The context to use for performing the replacements. */
     private CmsObject m_cms;
@@ -62,6 +72,47 @@ public class CmsMailParser extends A_CmsConfiguredHtmlParser {
         m_replacements = replacementMap;
         m_macroResolver = macroResolver;
         m_absoluteLinks = absoluteLinks;
+    }
+
+    /**
+     * Returns the result of subsequent parsing to the &lt;cms:parse&lt; tag implementation.<p>
+     *
+     * @param encoding the encoding to use for parsing
+     * @param html the html content to parse
+     * @param noAutoCloseTags a list of upper case tag names for which parsing / visiting should not correct missing closing tags.
+     *
+     * @return the result of subsequent parsing to the &lt;cms:parse&lt; tag implementation
+     *
+     * @throws ParserException if something goes wrong at parsing
+     * @throws CmsException if something goes wrong at accessing OpenCms core functionality
+    */
+    @Override
+    public String doParse(String html, String encoding, List<String> noAutoCloseTags)
+    throws ParserException, CmsException {
+
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Original HTML:");
+            LOG.debug(html);
+        }
+        String adjustedHtml = html.replaceAll(
+            "<!--\\[(.+?)\\]>",
+            "<div class=\"__mso_conditional_start__\"><!-- $1 -->");
+        adjustedHtml = adjustedHtml.replaceAll(
+            "<!\\[(.+?)\\]-->",
+            "<div class=\"__mso_conditional_end__\"><!-- $1 -->");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Adjusted HTML:");
+            LOG.debug(html);
+        }
+        String parsedHtml = super.doParse(adjustedHtml, encoding, noAutoCloseTags);
+        parsedHtml = parsedHtml.replaceAll("<div class=\"__mso_conditional_start__\"><!-- (.+?) -->", "<!--[$1]>");
+        parsedHtml = parsedHtml.replaceAll("<div class=\"__mso_conditional_end__\"><!-- (.+?) -->", "<![$1]-->");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Parsed HTML:");
+            LOG.debug(html);
+        }
+        return parsedHtml;
+
     }
 
     /**

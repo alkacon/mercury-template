@@ -48,13 +48,16 @@
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
 <c:set var="isBootstrap"    value="${fn:startsWith(icon, 'bi-')}" />
+<c:set var="isFaBrand"      value="${fn:startsWith(icon, 'fab-')}" />
+<c:set var="isFaSolid"      value="${fn:startsWith(icon, 'fas-')}" />
+<c:set var="isFaRegular"    value="${fn:startsWith(icon, 'far-')}" />
 <c:set var="isFlag"         value="${fn:startsWith(icon, 'nf-')}" />
 
 <c:choose>
     <c:when test="${fromImage}">
         <c:set var="inline"         value="${false}" />
     </c:when>
-    <c:when test="${isBootstrap}">
+    <c:when test="${isBootstrap or isFaBrand or isFaSolid or isFaRegular}">
         <c:set var="inline"         value="${true}" />
     </c:when>
     <c:when test="${isFlag}">

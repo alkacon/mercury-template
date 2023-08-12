@@ -84,6 +84,8 @@
                         facebook:%(key.msg.icon.facebook)|
                         twitter:%(key.msg.icon.twitter)|
                         twitter-square:%(key.msg.icon.twitter-square)|
+                        fab-x-twitter:%(key.msg.icon.x-twitter)|
+                        fab-square-x-twitter:%(key.msg.icon.x-twitter-square)|
                         calendar:%(key.msg.icon.calendar)|
                         slideshare:%(key.msg.icon.slideshare)|
                         music:%(key.msg.icon.music)|

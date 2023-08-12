@@ -51,6 +51,8 @@
                         facebook:%(key.msg.icon.facebook)|
                         twitter:%(key.msg.icon.twitter)|
                         twitter-square:%(key.msg.icon.twitter-square)|
+                        fab-x-twitter:%(key.msg.icon.x-twitter)|
+                        fab-square-x-twitter:%(key.msg.icon.x-twitter-square)|
                         power-off:%(key.msg.icon.power-off)|
                         bullseye:%(key.msg.icon.bullseye)|
                         none:%(key.msg.icon.none)

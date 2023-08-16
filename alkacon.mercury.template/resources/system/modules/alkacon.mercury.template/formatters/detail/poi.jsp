@@ -92,8 +92,9 @@
     <c:choose>
         <c:when test="${param.showmap == null}">
             <c:set var="linkMarkup">
-                <c:set var="originalQuery"><c:out value="${pageContext.request.queryString}" /></c:set>
-                <a class="btn" href="${cms.requestContext.uri}?${originalQuery}${empty originalQuery ? '' : '&'}showmap#${poiId}" data-bs-toggle="map"><%----%>
+                <c:set var="pageLink" value="${cms.detailRequest ? cms.detailContent.sitePath : cms.requestContext.uri}" />
+                <c:set var="queryString"><c:out value="${pageContext.request.queryString}" /></c:set>
+                <a class="btn" href="${cms.wrap[pageLink].toLink}?${queryString}${empty queryString ? '' : '&'}showmap#${poiId}" data-bs-toggle="map"><%----%>
                     <fmt:message key="msg.page.poi.showmap" />
                 </a><%----%>
             </c:set>

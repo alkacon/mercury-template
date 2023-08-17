@@ -211,16 +211,31 @@
                     <c:if test="${showTitle}">
                         <c:set var="imageElements" value="${cms.elementsInContainers['header-image']}" />
                         <c:if test="${not empty imageElements}">
-                            <c:set var="imagecontent" value="${imageElements.get(0).toXml}" />
-                            <c:choose>
-                                <c:when test="${cms.detailRequest and not empty cms.meta.ogTitle}">
-                                    <c:set var="pagetitle" value="${cms.meta.ogTitle}" />
-                                </c:when>
-                                <c:otherwise>
-                                    <c:set var="pagetitle" value="${cms.title}" />
-                                </c:otherwise>
-                            </c:choose>
-                            <c:set var="pageTitle" value="${fn:replace(imagecontent.value.Title.resolveMacros, '%(cms.title)', pagetitle)}" />
+                            <c:set var="imageContent" value="${imageElements.get(0).toXml}" />
+                            <c:set var="pageTitle" value="${imageContent.value.Title.resolveMacros}" />
+                            <c:if test="${fn:contains(pageTitle, '%(cms.title)')}">
+                                <c:choose>
+                                   <c:when test="${cms.detailRequest and not empty cms.meta.ogTitle}">
+                                        <c:set var="rval" value="${cms.meta.ogTitle}" />
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set var="rval" value="${cms.title}" />
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:set var="pageTitle" value="${fn:replace(pageTitle, '%(cms.title)', rval)}" />
+                            </c:if>
+                            <c:if test="${fn:contains(pageTitle, '%(cms.subSiteTitle)')}">
+                                <c:set var="cS"        value="${cms.vfs.readSubsiteFor(cms.requestContext.uri)}" />
+                                <c:set var="cSP"       value="${cms.vfs.readProperties[cS]}" />
+                                <c:set var="rval"      value="${not empty cSP['mercury.sitename'] ? cSP['mercury.sitename'] : cSP['Title'] }" />
+                                <c:set var="pageTitle" value="${fn:replace(pageTitle, '%(cms.subSiteTitle)', rval)}" />
+                            </c:if>
+                            <c:if test="${fn:contains(pageTitle, '%(cms.siteTitle)')}">
+                                <c:set var="cS"        value="${cms.vfs.readSubsiteFor('/')}" />
+                                <c:set var="cSP"       value="${cms.vfs.readProperties[cS]}" />
+                                <c:set var="rval"      value="${not empty cSP['mercury.sitename'] ? cSP['mercury.sitename'] : cSP['Title'] }" />
+                                <c:set var="pageTitle" value="${fn:replace(pageTitle, '%(cms.siteTitle)', rval)}" />
+                            </c:if>
                             <mercury:div css="h-title" test="${not showTitleAside}">
                                 <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="${not showTitleAside ? 'co-lg-xl' : 'h-title'}" />
                             </mercury:div>

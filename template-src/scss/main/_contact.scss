@@ -146,4 +146,12 @@
             margin-bottom: 0;
         }
     }
+
+    .piece.full {
+        // do NOT center visual in case the full width is not used
+        > .visual {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
 }

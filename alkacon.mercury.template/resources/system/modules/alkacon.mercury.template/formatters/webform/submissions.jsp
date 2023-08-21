@@ -45,98 +45,100 @@
         <mercury:nl />
 
         <div id="${itemId}" class="acco-body collapse" data-bs-parent="#${parentId}"><%----%>
-            <div class="submission-actions subelement"><%----%>
-                <c:if test="${not submissionsDialogDeclared}">
-                <mercury:nl />
-                <script><%--
-                --%>class SubmissionsDialog {<%--
-                    --%>constructor(action, itemId, uuid) {<%--
-                        --%>const button = document.getElementById(action + "_button_" + itemId);<%--
-                        --%>const dialog = document.getElementById(action + "_dialog_" + itemId);<%--
-                        --%>const params = new URLSearchParams(location.search);<%--
-                        --%>const formmanage = params.get("formmanage");<%--
-                        --%>button.addEventListener("click", () =>  { dialog.showModal(); });<%--
-                        --%>dialog.addEventListener("close", () => {<%--
-                            --%>if (dialog.returnValue == "confirm") {<%--
-                                --%>location.href = "?formmanage=" + formmanage + "&action=" + action + "&uuid=" + uuid;<%--
-                            --%>}<%--
-                        --%>});<%--
+            <c:if test="${param.hasBooking}">
+                <div class="submission-actions subelement"><%----%>
+                    <c:if test="${not submissionsDialogDeclared}">
+                    <mercury:nl />
+                    <script><%--
+                    --%>class SubmissionsDialog {<%--
+                        --%>constructor(action, itemId, uuid) {<%--
+                            --%>const button = document.getElementById(action + "_button_" + itemId);<%--
+                            --%>const dialog = document.getElementById(action + "_dialog_" + itemId);<%--
+                            --%>const params = new URLSearchParams(location.search);<%--
+                            --%>const formmanage = params.get("formmanage");<%--
+                            --%>button.addEventListener("click", () =>  { dialog.showModal(); });<%--
+                            --%>dialog.addEventListener("close", () => {<%--
+                                --%>if (dialog.returnValue == "confirm") {<%--
+                                    --%>location.href = "?formmanage=" + formmanage + "&action=" + action + "&uuid=" + uuid;<%--
+                                --%>}<%--
+                            --%>});<%--
+                        --%>}<%--
                     --%>}<%--
-                --%>}<%--
-            --%></script><%----%>
-                </c:if>
-                <c:set var="submissionsDialogDeclared" value="${true}" scope="request" />
-                <c:if test="${not bean.cancelled}">
-                    <button id="cancel_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
-                        <fmt:message key="msg.page.form.submission.action.cancel" />
-                    </button><%----%>
-                    <dialog id="cancel_dialog_${itemId}"><%----%>
-                        <form method="dialog"><%----%>
-                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
-                            <div><fmt:message key="msg.page.form.submission.ask.cancel"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
-                            <c:if test="${param.confirmationMailEnabled eq 'false'}">
-                                <div class="subelement oct-meta-info box">
-                                    <fmt:message key="msg.page.form.submission.confirmationmail.not.enabled" />
-                                </div>
-                            </c:if>
-                            <div class="buttons"><%----%>
-                                <button value="cancel" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
-                                </button><%----%>
-                                <button value="confirm" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.confirm.cancel" />
-                                </button><%----%>
-                            </div><%----%>
-                        </form><%----%>
-                    </dialog><%----%>
-                    <script>new SubmissionsDialog("cancel", "${itemId}", "${content.id}")</script><%----%>
-                </c:if>
-                <c:if test="${not bean.cancelled and bean.waitlist and param.hasFreeParticipantPlaces eq 'true'}">
-                    <button id="add_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
-                        <fmt:message key="msg.page.form.submission.action.add" />
-                    </button><%----%>
-                    <dialog id="add_dialog_${itemId}"><%----%>
-                        <form method="dialog"><%----%>
-                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3>
-                            <div><fmt:message key="msg.page.form.submission.ask.add"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
-                            <c:if test="${param.confirmationMailEnabled eq 'false'}">
-                                <div class="subelement oct-meta-info box">
-                                    <fmt:message key="msg.page.form.submission.confirmationmail.not.enabled" />
-                                </div>
-                            </c:if>
-                            <div class="buttons"><%----%>
-                                <button value="cancel" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
-                                </button><%----%>
-                                <button value="confirm" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.confirm.add" />
-                                </button><%----%>
-                            </div><%----%>
-                        </form><%----%>
-                    </dialog><%----%>
-                    <script>new SubmissionsDialog("add", "${itemId}", "${content.id}")</script><%----%>
-                </c:if>
-                <c:if test="${bean.cancelled}">
-                    <button id="delete_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
-                        <fmt:message key="msg.page.form.submission.action.delete" />
-                    </button><%----%>
-                    <dialog id="delete_dialog_${itemId}"><%----%>
-                        <form method="dialog"><%----%>
-                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3>
-                            <div><fmt:message key="msg.page.form.submission.ask.delete"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
-                            <div class="buttons"><%----%>
-                                <button value="cancel" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
-                                </button><%----%>
-                                <button value="confirm" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.confirm.delete" />
-                                </button><%----%>
-                            </div><%----%>
-                        </form><%----%>
-                    </dialog><%----%>
-                    <script>new SubmissionsDialog("delete", "${itemId}", "${content.id}")</script><%----%>
-                </c:if>
-            </div><%----%>
+                --%></script><%----%>
+                    </c:if>
+                    <c:set var="submissionsDialogDeclared" value="${true}" scope="request" />
+                    <c:if test="${not bean.cancelled}">
+                        <button id="cancel_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
+                            <fmt:message key="msg.page.form.submission.action.cancel" />
+                        </button><%----%>
+                        <dialog id="cancel_dialog_${itemId}"><%----%>
+                            <form method="dialog"><%----%>
+                                <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
+                                <div><fmt:message key="msg.page.form.submission.ask.cancel"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                                <c:if test="${param.confirmationMailEnabled eq 'false'}">
+                                    <div class="subelement oct-meta-info box">
+                                        <fmt:message key="msg.page.form.submission.confirmationmail.not.enabled" />
+                                    </div>
+                                </c:if>
+                                <div class="buttons"><%----%>
+                                    <button value="cancel" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                    </button><%----%>
+                                    <button value="confirm" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.confirm.cancel" />
+                                    </button><%----%>
+                                </div><%----%>
+                            </form><%----%>
+                        </dialog><%----%>
+                        <script>new SubmissionsDialog("cancel", "${itemId}", "${content.id}")</script><%----%>
+                    </c:if>
+                    <c:if test="${not bean.cancelled and bean.waitlist and param.hasFreeParticipantPlaces eq 'true'}">
+                        <button id="add_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
+                            <fmt:message key="msg.page.form.submission.action.add" />
+                        </button><%----%>
+                        <dialog id="add_dialog_${itemId}"><%----%>
+                            <form method="dialog"><%----%>
+                                <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3>
+                                <div><fmt:message key="msg.page.form.submission.ask.add"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                                <c:if test="${param.confirmationMailEnabled eq 'false'}">
+                                    <div class="subelement oct-meta-info box">
+                                        <fmt:message key="msg.page.form.submission.confirmationmail.not.enabled" />
+                                    </div>
+                                </c:if>
+                                <div class="buttons"><%----%>
+                                    <button value="cancel" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                    </button><%----%>
+                                    <button value="confirm" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.confirm.add" />
+                                    </button><%----%>
+                                </div><%----%>
+                            </form><%----%>
+                        </dialog><%----%>
+                        <script>new SubmissionsDialog("add", "${itemId}", "${content.id}")</script><%----%>
+                    </c:if>
+                    <c:if test="${bean.cancelled}">
+                        <button id="delete_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
+                            <fmt:message key="msg.page.form.submission.action.delete" />
+                        </button><%----%>
+                        <dialog id="delete_dialog_${itemId}"><%----%>
+                            <form method="dialog"><%----%>
+                                <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3>
+                                <div><fmt:message key="msg.page.form.submission.ask.delete"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                                <div class="buttons"><%----%>
+                                    <button value="cancel" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                    </button><%----%>
+                                    <button value="confirm" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.confirm.delete" />
+                                    </button><%----%>
+                                </div><%----%>
+                            </form><%----%>
+                        </dialog><%----%>
+                        <script>new SubmissionsDialog("delete", "${itemId}", "${content.id}")</script><%----%>
+                    </c:if>
+                </div><%----%>
+            </c:if>
             <table class="submissions"><%----%>
                 <c:forEach var="data" items="${bean.data}">
                     <tr><%----%>

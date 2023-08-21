@@ -164,12 +164,13 @@
                 <div class=list-box><%----%>
                     <div class="list-entries accordion-items" id="${id1}"><%----%>
                         <c:forEach var="dataBean" items="${status.participants}" varStatus="stat">
-                            <cms:display value="${dataBean.file.structureId}" editable="true" delete="false">
+                            <cms:display value="${dataBean.file.structureId}" editable="true" delete="${empty formBookingXml}">
                                <cms:param name="index" value="${stat.index}"/>
                                <cms:param name="id" value="${id1}" />
                                <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
                                <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
+                               <cms:param name="hasBooking" value="${not empty formBookingXml}" />
                             </cms:display>
                         </c:forEach>
                         <c:forEach var="otherParticipant" begin="1" end="${status.numOtherSubmissions}">
@@ -196,12 +197,13 @@
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id2}"><%----%>
                             <c:forEach var="dataBean" items="${status.waitlistCandidates}" varStatus="stat">
-                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="false">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="${empty formBookingXml}">
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id2}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                    <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
                                    <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
+                                   <cms:param name="hasBooking" value="${not empty formBookingXml}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>
@@ -215,12 +217,13 @@
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id3}"><%----%>
                             <c:forEach var="dataBean" items="${status.cancelledSubmissions}" varStatus="stat">
-                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="false">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="${empty formBookingXml}">
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id3}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                    <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
                                    <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
+                                   <cms:param name="hasBooking" value="${not empty formBookingXml}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>
@@ -265,7 +268,7 @@
                </div><%----%>
             </div><%----%>
             <mercury:nl />
-            <c:if test="${not empty bookingId and not empty form.submissions}">
+            <c:if test="${not empty formBookingXml and not empty form.submissions}">
                 <div class="submission-actions subelement">
                     <h3><fmt:message key="msg.page.form.bookingstatus.delete.label" /></h3><%----%>
                     <p><fmt:message key="msg.page.form.label.submissions.deleteAll" /><button id="deleteAll_button_${bookingId}" class="btn btn-xs oct-meta-info ml-5"><fmt:message key="msg.page.form.submission.action.deleteAll" /></button><%----%></p>

@@ -1789,6 +1789,7 @@ type.list.formatter.facets=Dynamic list\: Sort options bar
 type.list.formatter.filter=Dynamic list\: Content filters
 type.list.formatter.static=Static list
 type.m-article.description=An article for news or blogs that consists of several paragraphs with optional images, author, date and categories.
+type.m-article.description.formatter=<p><strong>Article</strong> are suited to create news, messages or blogs entries.</p>
 type.m-article.formatter.detail.image=Article detail view
 type.m-article.formatter.detail.parallax=Article detail view with parallax option
 type.m-article.formatter.teaser=article teaser

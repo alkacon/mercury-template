@@ -140,6 +140,7 @@
 </mercury:piece>
 
 <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
+    <c:set var="pHsize" value="${hsize >= 0 ? hsize + 1 : (hsize >= -7 ? -1 * hsize : 0)}" />
     <div class="detail-content"><%----%>
         <mercury:paragraphs-alternating
             paragraphs="${paragraphsContent}"
@@ -159,7 +160,7 @@
                 showImageZoom="${showImageZoom}"
                 showImageSubtitle="${showImageSubtitle}"
                 showImageCopyright="${showImageCopyright}"
-                hsize="${hsize + 1}"
+                hsize="${pHsize}"
                 ade="${ade}"
                 emptyWarning="${not status.first}"
             />

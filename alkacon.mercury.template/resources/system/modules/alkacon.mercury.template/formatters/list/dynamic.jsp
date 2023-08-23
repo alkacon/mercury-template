@@ -64,7 +64,8 @@
 
     <cms:enable-list-add
         types="${content.valueList.TypesToCollect}"
-        postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}" />
+        postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}" 
+        uploadFolder="${cms.getBinaryUploadFolder(content)}" />
 
     <%-- ####### Check if list formatters are compatible ######## --%>
     <mercury:list-compatibility

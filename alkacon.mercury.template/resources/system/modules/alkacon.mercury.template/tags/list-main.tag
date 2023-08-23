@@ -69,7 +69,7 @@
 
 <c:set var="categories">${config.value.Category}</c:set>
 <c:set var="postCreateHandler">org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${categories}</c:set>
-<cms:enable-list-add types="${config.valueList.TypesToCollect}" postCreateHandler="${postCreateHandler}" />
+<cms:enable-list-add types="${config.valueList.TypesToCollect}" postCreateHandler="${postCreateHandler}" uploadFolder="${cms.getBinaryUploadFolder(config)}" />
 
 <c:if test="${search.numFound > 0}">
 

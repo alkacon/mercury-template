@@ -11,6 +11,7 @@
         <uuid>246c35d5-4b50-4c20-9853-ce60e5ce3715</uuid>
       </link>
     </Jsp>
+    <Description><![CDATA[%(key.type.ugc_config.description.formatter)]]></Description>
     <Rank><![CDATA[900]]></Rank>
     <Match>
       <Types>

@@ -11,6 +11,7 @@
         <uuid>83ef3908-fade-4e65-bd95-2f0ff1a5b168</uuid>
       </link>
     </Jsp>
+    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.general.description.section)]]></Description>
     <Rank><![CDATA[10510]]></Rank>
     <Match>
       <Types>

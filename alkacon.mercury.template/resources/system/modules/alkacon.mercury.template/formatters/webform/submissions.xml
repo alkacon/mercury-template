@@ -11,6 +11,7 @@
         <uuid>f2223f04-343e-4426-b1a3-56bed12b617a</uuid>
       </link>
     </Jsp>
+    <Description><![CDATA[%(key.type.m-webform-data.description.formatter)]]></Description>
     <Rank><![CDATA[1000]]></Rank>
     <Match>
       <Types>

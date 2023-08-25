@@ -12,6 +12,7 @@
         <uuid>0b1ade57-21e9-11ed-a9d9-0242ac11002b</uuid>
       </link>
     </Jsp>
+    <Description><![CDATA[%(key.type.m-slider.description.formatter)]]></Description>
     <Rank><![CDATA[1450]]></Rank>
     <Match>
       <Types>

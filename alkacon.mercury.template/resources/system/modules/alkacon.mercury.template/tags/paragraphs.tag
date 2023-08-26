@@ -67,48 +67,38 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:if test="${not empty paragraphs}">
-    <c:set var="paragraph" value="${paragraphs.get(0)}" />
     <c:set var="textOption" value="${((empty showText) or showText) ? 'default' : 'none'}" />
     <c:set var="linkOption" value="${empty linkOption ? 'button' : linkOption}" />
-    <c:choose>
-        <c:when test="${cms:isWrapper(paragraph)}">
-            <mercury:paragraph-split
-                paragraphs="${paragraphs}"
-                splitFirst="${false}"
-                splitDownloads="${splitDownloads}">
-                <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
-                    <mercury:section-piece
-                        heading="${paragraph.value.Caption}"
-                        pieceLayout="${pieceLayout}"
-                        sizeMobile="${sizeMobile}"
-                        sizeDesktop="${sizeDesktop}"
-                        image="${paragraph.value.Image}"
-                        text="${paragraph.value.Text}"
-                        link="${paragraph.value.Link}"
-                        cssWrapper="${cssWrapper}"
-                        hsize="${hsize}"
-                        imageRatio="${imageRatio}"
-                        textOption="${textOption}"
-                        linkOption="${linkOption}"
-                        showImageCopyright="${showImageCopyright}"
-                        showImageSubtitle="${showImageSubtitle}"
-                        showImageZoom="${showImageZoom}"
-                        showImageLink="${showImageLink}"
-                        ade="${ade}"
-                    />
-                </c:forEach>
-                <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" />
-            </mercury:paragraph-split>
-        </c:when>
-        <c:when test="${paragraph.getClass().getSimpleName() eq 'HashMap'}">
+
+    <mercury:paragraph-split
+        paragraphs="${paragraphs}"
+        splitFirst="${false}"
+        splitDownloads="${splitDownloads}">
+        <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
+            <c:choose>
+                <c:when test="${cms:isWrapper(paragraph)}">
+                    <c:set var="valCaption" value="${paragraph.value.Caption}" />
+                    <c:set var="valImage" value="${paragraph.value.Image}" />
+                    <c:set var="valText" value="${paragraph.value.Text}" />
+                    <c:set var="valLink" value="${paragraph.value.Link}" />
+                    <c:set var="valAde" value="${ade}" />
+                </c:when>
+                <c:when test="${paragraph.getClass().getSimpleName() eq 'HashMap'}">
+                    <c:set var="valCaption" value="${paragraph.Caption}" />
+                    <c:set var="valImage" value="${paragraph.Image}" />
+                    <c:set var="valText" value="${paragraph.Text}" />
+                    <c:set var="valLink" value="${paragraph.Link}" />
+                    <c:set var="valAde" value="${false}" />
+                </c:when>
+            </c:choose>
             <mercury:section-piece
-                heading="${paragraph.Caption}"
+                heading="${valCaption}"
                 pieceLayout="${pieceLayout}"
                 sizeMobile="${sizeMobile}"
                 sizeDesktop="${sizeDesktop}"
-                image="${paragraph.Image}"
-                text="${paragraph.Text}"
-                link="${paragraph.Link}"
+                image="${valImage}"
+                text="${valText}"
+                link="${valLink}"
                 cssWrapper="${cssWrapper}"
                 hsize="${hsize}"
                 imageRatio="${imageRatio}"
@@ -118,8 +108,10 @@
                 showImageSubtitle="${showImageSubtitle}"
                 showImageZoom="${showImageZoom}"
                 showImageLink="${showImageLink}"
-                ade="${ade}"
+                ade="${valAde}"
             />
-        </c:when>
-    </c:choose>
+        </c:forEach>
+        <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" />
+    </mercury:paragraph-split>
+
 </c:if>

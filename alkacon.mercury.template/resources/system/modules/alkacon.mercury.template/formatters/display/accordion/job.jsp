@@ -12,10 +12,17 @@
 <mercury:init-messages>
 <cms:formatter var="content" val="value">
 
+<c:set var="paragraphs" value="${[]}" />
+<c:if test="${not empty value.Type}">
+    <c:set var="ignore" value="${paragraphs.add({'Caption': value.Type})}" />
+</c:if>
+<c:set var="ignore" value="${paragraphs.addAll(content.valueList.Introduction)}" />
+<c:set var="ignore" value="${paragraphs.addAll(content.valueList.Text)}" />
+
 <mercury:teaser-accordion
     title="${value.Title}"
     cssWrapper="type-job"
-    paragraphs="${content.valueList.Text}"
+    paragraphs="${paragraphs}"
     contentId="${content.id}"
 />
 

@@ -74,6 +74,7 @@
         <mercury:paragraphs
             pieceLayout="${9}"
             paragraphs="${paragraphs}"
+            cssWrapper="paragraph"
             splitDownloads="${false}"
             hsize="${hsize + 1}"
             imageRatio="${imageRatio}"

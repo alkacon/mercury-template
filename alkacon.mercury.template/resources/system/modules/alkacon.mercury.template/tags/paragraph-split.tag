@@ -41,6 +41,7 @@
         </c:when>
         <c:when test="${
             splitDownloads and
+            cms:isWrapper(paragraph) and
             (not paragraph.value.Caption.isSet or (empty paragraphsDownload)) and
             not paragraph.value.Text.isSet and
             not paragraph.value.Image.isSet and
@@ -49,10 +50,11 @@
             <c:set var="ignore" value="${paragraphsDownload.add(paragraph)}" />
         </c:when>
         <c:when test="${
-            paragraph.value.Caption.isSet or
+            cms:isWrapper(paragraph) and
+            (paragraph.value.Caption.isSet or
             paragraph.value.Text.isSet or
             paragraph.value.Image.isSet or
-            paragraph.value.Link.value.URI.isSet}">
+            paragraph.value.Link.value.URI.isSet)}">
             <%-- This paragraph has some content and is not a download link --%>
             <c:set var="ignore" value="${paragraphsContent.addAll(paragraphsDownload)}" />
             <%-- Clear download list, because all downloads must all be in the LAST paragraphs --%>
@@ -62,6 +64,9 @@
                 <%-- Fill firstParagraph even if it is not split from rest of paragraphs --%>
                 <c:set var="firstParagraph" value="${paragraph}" />
             </c:if>
+        </c:when>
+        <c:when test="${not cms:isWrapper(paragraph)}">
+            <c:set var="ignore" value="${paragraphsContent.add(paragraph)}" />
         </c:when>
     </c:choose>
 

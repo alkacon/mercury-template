@@ -12,11 +12,16 @@
 <mercury:init-messages>
 <cms:formatter var="content" val="value">
 
+<c:set var="paragraphs" value="${[{
+    'Caption': value.Preface,
+    'Image': value.Image
+}]}" />
+<c:set var="ignore" value="${paragraphs.addAll(content.valueList.Paragraph)}" />
+
 <mercury:teaser-accordion
     title="${value.Title}"
     cssWrapper="type-article"
-    preface="${value.Preface}"
-    paragraphs="${content.valueList.Paragraph}"
+    paragraphs="${paragraphs}"
     contentId="${content.id}"
 />
 

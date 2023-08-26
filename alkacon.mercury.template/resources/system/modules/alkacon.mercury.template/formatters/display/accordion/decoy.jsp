@@ -12,16 +12,16 @@
 <mercury:init-messages>
 <cms:formatter var="content" val="value">
 
-<c:set var="paragraph" value="${{
+<c:set var="paragraphs" value="${[{
     'Text': value.Preface,
     'Image': value.Image,
     'Link': value.Link
-}}" />
+}]}" />
 
 <mercury:teaser-accordion
     title="${value.Title}"
     cssWrapper="type-decoy"
-    paragraphs="${[paragraph]}"
+    paragraphs="${paragraphs}"
     contentId="${content.id}"
 />
 

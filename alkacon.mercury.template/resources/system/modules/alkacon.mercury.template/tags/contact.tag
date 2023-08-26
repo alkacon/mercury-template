@@ -352,14 +352,14 @@
                 <c:set var="websiteLink" value="${data.value.Website}" />
                 <c:choose>
                     <c:when test="${websiteLink.isSet and websiteLink.value.URI.isSet}">
-                        <c:set var="websiteURL" value="${websiteLink.value.Text.isSet ? websiteLink.value.Text.toString : websiteLink.value.URI.toLink}" />
+                        <c:set var="websiteURL" value="${websiteLink.value.Text.isSet ? websiteLink.value.Text.toString : websiteLink.value.URI.toLink.toString}" />
                         <c:set var="websiteNewWin" value="${websiteNewWin or websiteLink.value.NewWindow.toBoolean}" />
                         <c:if test="${websiteLink.value.Text.isSet}">
                             <c:set var="websiteTitle" value="${websiteLink.value.Text.toString}" />
                         </c:if>
                     </c:when>
                     <c:when test="${websiteLink.isSet}">
-                         <c:set var="websiteURL" value="${websiteLink.toLink}" />
+                         <c:set var="websiteURL" value="${websiteLink.toLink.toString}" />
                     </c:when>
                 </c:choose>
 

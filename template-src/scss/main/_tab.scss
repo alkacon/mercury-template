@@ -259,6 +259,9 @@
                 border-top-right-radius: 0;
             }
         }
+
+        // teaser-accordion tag places piece divs directly in the acco-body
+        @include piece-bottom-margin;
     }
 
     .sub-header {

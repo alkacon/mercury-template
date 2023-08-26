@@ -14,7 +14,7 @@
       </link>
     </Jsp>
     <Description><![CDATA[%(key.type.m-poi.description.formatter) %(key.type.general.description.detail)]]></Description>
-    <Rank><![CDATA[3000]]></Rank>
+    <Rank><![CDATA[45000]]></Rank>
     <Match>
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>

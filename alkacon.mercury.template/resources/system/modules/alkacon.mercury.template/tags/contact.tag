@@ -358,7 +358,7 @@
                             <c:set var="websiteTitle" value="${websiteLink.value.Text.toString}" />
                         </c:if>
                     </c:when>
-                    <c:when test="${websiteLink.isSet}">
+                    <c:when test="${websiteLink.isSet and not empty websiteLink.toString}">
                          <c:set var="websiteURL" value="${websiteLink.toLink.toString}" />
                     </c:when>
                 </c:choose>

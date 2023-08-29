@@ -38,6 +38,9 @@
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>
             <searchsettings containerPageOnly="true"/>
+            <parameters>
+                <param name="unusedcontentfinder">exclude</param>
+            </parameters>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Title</PropertyName>

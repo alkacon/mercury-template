@@ -1026,19 +1026,19 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/imageflip.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/imageflip-element.xml]]></target>
           <uuid>d0282fe5-6345-433d-8b56-125c55d1a927</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/square.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/square-rowtile.xml]]></target>
           <uuid>2cb23f51-8108-4c3d-858a-e0cafae44d6c</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/tile.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/tile-rowtile.xml]]></target>
           <uuid>61b96360-be4f-4f40-97d8-02a46e0e3bfb</uuid>
         </link>
       </AddFormatter>
@@ -1050,7 +1050,7 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/imageflip-tile.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/imageflip-rowtile.xml]]></target>
           <uuid>c1d8fdb7-6bdc-4551-bde3-866ec55e5e59</uuid>
         </link>
       </AddFormatter>

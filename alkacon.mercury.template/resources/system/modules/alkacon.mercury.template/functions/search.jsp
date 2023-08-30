@@ -31,10 +31,21 @@
 <c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
 <c:set var="showDateLastModified"   value="${dateFormat ne 'none'}" />
 <c:set var="slotText"               value="${setting.slotText.toString}" />
+<c:set var="slotButton"             value="${setting.slotButton.toString}" />
 
 <c:if test="${empty slotText}">
     <c:set var="slotText"><fmt:message key='msg.page.search.enterquery' /></c:set>
 </c:if>
+
+<c:choose>
+    <c:when test="${empty slotButton}">
+        <c:set var="slotButton"><fmt:message key="msg.page.search.submit" /></c:set>
+    </c:when>
+    <c:when test="${fn:startsWith(slotButton, 'icon:')}">
+        <c:set var="icon" value="${fn:substringAfter(slotButton, 'icon:')}" />
+        <c:set var="slotButton"><mercury:icon icon="${icon}" tag="span" cssWrapper="icon-image" inline="${true}" /></c:set>
+    </c:when>
+</c:choose>
 
 <c:set var="showFacets"             value="${numFacetItems != 0}" />
 
@@ -168,7 +179,7 @@
                         <input id="searchFormQuery" name="${common.config.queryParam}" <%--
                             --%>value="${escapedQuery}" class="form-control" type="text" autocomplete="off" <%--
                             --%>placeholder="<c:out value="${slotText}" />" /><%----%>
-                        <button class="btn btn-submit-search" type="submit"><fmt:message key="msg.page.search.submit" /></button><%----%>
+                        <button class="btn btn-submit-search" type="submit">${slotButton}</button><%----%>
                     </div><%----%>
                 </section><%----%>
             </div><%----%>

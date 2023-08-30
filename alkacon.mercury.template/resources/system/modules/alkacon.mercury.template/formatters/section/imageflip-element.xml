@@ -2,21 +2,23 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-section.formatter.imageflip-tile)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-section.formatter.imageflip)]]></NiceName>
     <Type><![CDATA[m-section]]></Type>
-    <Key><![CDATA[m/section/imageflip-tile]]></Key>
+    <Key><![CDATA[m/section/imageflip-element]]></Key>
+    <KeyAlias><![CDATA[m/section/imageflip]]></KeyAlias>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/imageflip.jsp]]></target>
         <uuid>83ef3908-fade-4e65-bd95-2f0ff1a5b168</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.general.description.section)]]></Description>
-    <Rank><![CDATA[10510]]></Rank>
+    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.m-section.description.formatter.imageflip)]]></Description>
+    <Rank><![CDATA[17000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[tile]]></ContainerType>
-        <ContainerType><![CDATA[imageflip-tile]]></ContainerType>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
+        <ContainerType><![CDATA[section]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>
@@ -30,6 +32,12 @@
     </IncludeSettings>
     <Setting>
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
@@ -54,9 +62,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[doNotFlip.false]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[isTile.fixed.true]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

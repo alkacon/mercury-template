@@ -2,22 +2,21 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-section.formatter.imageflip)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-section.formatter.tile)]]></NiceName>
     <Type><![CDATA[m-section]]></Type>
-    <Key><![CDATA[m/section/imageflip]]></Key>
+    <Key><![CDATA[m/section/tile-rowtile]]></Key>
+    <KeyAlias><![CDATA[m/section/tile]]></KeyAlias>
     <Jsp>
       <link type="WEAK">
-        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/imageflip.jsp]]></target>
-        <uuid>83ef3908-fade-4e65-bd95-2f0ff1a5b168</uuid>
+        <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/section/tile.jsp]]></target>
+        <uuid>198ae09a-a0af-47b9-832b-8ed1bc7c4c9f</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.general.description.section)]]></Description>
-    <Rank><![CDATA[19500]]></Rank>
+    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.m-section.description.formatter.tile-element) %(key.type.general.description.tile-row)]]></Description>
+    <Rank><![CDATA[9000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[element]]></ContainerType>
-        <ContainerType><![CDATA[m-element]]></ContainerType>
-        <ContainerType><![CDATA[section]]></ContainerType>
+        <ContainerType><![CDATA[tile]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>
@@ -42,25 +41,28 @@
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[flipTitle.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.imageflip]]></IncludeName>
+      <IncludeName><![CDATA[textOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[effect.imageflip]]></IncludeName>
+      <IncludeName><![CDATA[linkOption.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[flipColor.grey]]></IncludeName>
+      <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[fullOverlay.tile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showTextFirst.false]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[doNotFlip.false]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

@@ -36,5 +36,8 @@
     <Setting>
       <IncludeName><![CDATA[slotText.default]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[slotButton.default]]></IncludeName>
+    </Setting>
   </FunctionConfig>
 </FunctionConfigs>

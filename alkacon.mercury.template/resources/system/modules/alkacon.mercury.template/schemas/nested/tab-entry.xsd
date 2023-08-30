@@ -40,12 +40,14 @@
                     <DisplayName>%(key.label.Tab.Id)</DisplayName>
                     <Description>%(key.label.Tab.Id.help)</Description>
                     <Widget>display</Widget>
+                    <Search>false</Search>
                     <Synchronization>true</Synchronization>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Image)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Image.help)]]></Description>
+                    <Search>false</Search>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

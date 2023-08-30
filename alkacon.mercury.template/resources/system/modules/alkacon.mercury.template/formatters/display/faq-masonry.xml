@@ -12,7 +12,7 @@
       </link>
     </Jsp>
     <Description><![CDATA[%(key.type.m-faq.description.formatter) %(key.type.general.description.teaser.masonry) %(key.type.general.description.teaser.list-only)]]></Description>
-    <Rank><![CDATA[18000]]></Rank>
+    <Rank><![CDATA[17000]]></Rank>
     <Match>
       <Types>
         <ContainerType><![CDATA[masonry]]></ContainerType>

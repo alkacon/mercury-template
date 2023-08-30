@@ -12,7 +12,7 @@
         <uuid>cca8d42a-827a-11ec-90e1-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-map.description.formatter)]]></Description>
+    <Description><![CDATA[%(key.type.m-map.description.formatter.google)]]></Description>
     <Rank><![CDATA[1000]]></Rank>
     <Match>
       <Types>

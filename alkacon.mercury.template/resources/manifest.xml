@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>15.0.112</version>
+		<version>15.0.118</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -4578,7 +4578,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Minimal image from section]]></value>
+					<value><![CDATA[Minimal image section]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -4614,8 +4614,37 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/section/imageflip-tile.xml</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/section/imageflip-tile.xml</destination>
+			<source>system/modules/alkacon.mercury.template/formatters/section/imageflip-element.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/section/imageflip-element.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>d0282fe5-6345-433d-8b56-125c55d1a927</uuidstructure>
+			<uuidresource>7343a3ad-68b8-4110-95b7-3ccab6f563db</uuidresource>
+			<datecreated>Wed, 07 Nov 2018 08:23:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Section as image / text flipping card in element container]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/section/imageflip-rowtile.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/section/imageflip-rowtile.xml</destination>
 			<type>formatter_config</type>
 			<uuidstructure>c1d8fdb7-6bdc-4551-bde3-866ec55e5e59</uuidstructure>
 			<uuidresource>e49470b9-3f94-4b1a-b6b1-c2e884b4a1b0</uuidresource>
@@ -4624,7 +4653,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Image text fillip card as tile]]></value>
+					<value><![CDATA[Section as image / text flipping card in tile row]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -4658,35 +4687,6 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/section/imageflip.xml</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/section/imageflip.xml</destination>
-			<type>formatter_config</type>
-			<uuidstructure>d0282fe5-6345-433d-8b56-125c55d1a927</uuidstructure>
-			<uuidresource>7343a3ad-68b8-4110-95b7-3ccab6f563db</uuidresource>
-			<datecreated>Wed, 07 Nov 2018 08:23:26 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Section as image / text flipping card]]></value>
-				</property>
-				<property>
-					<name>locale</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -4760,6 +4760,35 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/section/square-rowtile.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/section/square-rowtile.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>2cb23f51-8108-4c3d-858a-e0cafae44d6c</uuidstructure>
+			<uuidresource>ab70f441-c8f9-452b-87a1-7ed573c64124</uuidresource>
+			<datecreated>Wed, 18 May 2016 10:13:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Section as square image in tile row]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/formatters/section/square.jsp</source>
 			<destination>system/modules/alkacon.mercury.template/formatters/section/square.jsp</destination>
 			<type>jsp</type>
@@ -4775,35 +4804,6 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/section/square.xml</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/section/square.xml</destination>
-			<type>formatter_config</type>
-			<uuidstructure>2cb23f51-8108-4c3d-858a-e0cafae44d6c</uuidstructure>
-			<uuidresource>ab70f441-c8f9-452b-87a1-7ed573c64124</uuidresource>
-			<datecreated>Wed, 18 May 2016 10:13:12 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Square element]]></value>
-				</property>
-				<property>
-					<name>locale</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -4866,7 +4866,24 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Section as tile for element container]]></value>
+					<value><![CDATA[Section as tile in element container]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/section/tile-rowtile.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/section/tile-rowtile.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>61b96360-be4f-4f40-97d8-02a46e0e3bfb</uuidstructure>
+			<uuidresource>a4a963f0-cad1-4073-b093-e796ebc97e71</uuidresource>
+			<datecreated>Sat, 26 Jan 2019 12:16:51 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Section as tile in tile row]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -4888,23 +4905,6 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/formatters/section/tile.xml</source>
-			<destination>system/modules/alkacon.mercury.template/formatters/section/tile.xml</destination>
-			<type>formatter_config</type>
-			<uuidstructure>61b96360-be4f-4f40-97d8-02a46e0e3bfb</uuidstructure>
-			<uuidresource>a4a963f0-cad1-4073-b093-e796ebc97e71</uuidresource>
-			<datecreated>Sat, 26 Jan 2019 12:16:51 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Section as tile]]></value>
 				</property>
 			</properties>
 			<relations/>

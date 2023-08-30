@@ -3639,6 +3639,13 @@
       <Widget><![CDATA[string]]></Widget>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[slotButton.default]]></IncludeName>
+      <PropertyName><![CDATA[slotButton]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.slotButton)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.slotButton.help)]]></Description>
+      <Widget><![CDATA[string]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showTypeBadge.search]]></IncludeName>
       <PropertyName><![CDATA[showTypeBadge]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.search.showTypeBadge)]]></DisplayName>

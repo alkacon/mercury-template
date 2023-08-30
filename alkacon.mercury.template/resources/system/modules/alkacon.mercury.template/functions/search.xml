@@ -43,6 +43,9 @@
       <IncludeName><![CDATA[slotText.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[slotButton.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[searchscope.search]]></IncludeName>
     </Setting>
     <Setting>

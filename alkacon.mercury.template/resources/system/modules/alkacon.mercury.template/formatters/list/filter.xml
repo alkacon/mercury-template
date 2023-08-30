@@ -11,7 +11,7 @@
         <uuid>27941448-def0-4cdd-8f30-cbe088d79bf4</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.list.description.formatter) %(key.type.list.filter.description.formatter)]]></Description>
+    <Description><![CDATA[%(key.type.list.description.formatter) %(key.type.list.description.formatter.filter)]]></Description>
     <Rank><![CDATA[2750]]></Rank>
     <Match>
       <Types>

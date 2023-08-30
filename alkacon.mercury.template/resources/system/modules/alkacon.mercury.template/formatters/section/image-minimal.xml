@@ -11,8 +11,8 @@
         <uuid>35a1a301-bf5f-4ac1-892c-fd6bdef114d1</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.general.description.section)]]></Description>
-    <Rank><![CDATA[19260]]></Rank>
+    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.m-section.description.formatter.image-minimal)]]></Description>
+    <Rank><![CDATA[5000]]></Rank>
     <Match>
       <Types>
         <ContainerType><![CDATA[header-visual]]></ContainerType>

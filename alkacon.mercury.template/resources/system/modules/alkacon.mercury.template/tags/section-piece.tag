@@ -272,6 +272,9 @@
                     <c:when test="${linkOption eq 'text'}">
                         <c:set var="linkCss" value="piece-text-link" />
                     </c:when>
+                    <c:when test="${fn:startsWith(linkOption, 'custom=')}">
+                        <c:set var="linkCss" value="${fn:substringAfter(linkOption, 'custom=')}" />
+                    </c:when>
                     <c:otherwise>
                         <%-- default is 'button' --%>
                         <c:set var="linkCss" value="btn piece-btn" />

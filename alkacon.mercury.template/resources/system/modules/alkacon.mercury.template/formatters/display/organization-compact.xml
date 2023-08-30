@@ -12,7 +12,7 @@
       </link>
     </Jsp>
     <Description><![CDATA[%(key.type.m-organization.description.formatter) %(key.type.general.description.teaser.compact.in-list) %(key.type.general.description.teaser.contact)]]></Description>
-    <Rank><![CDATA[19000]]></Rank>
+    <Rank><![CDATA[21000]]></Rank>
     <Match>
       <Types>
         <ContainerType><![CDATA[contact]]></ContainerType>

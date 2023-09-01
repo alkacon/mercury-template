@@ -52,8 +52,8 @@
                         </label><%----%>
                     </div><%----%>
                     <div class="buttons"><%----%>
-                        <button class="btn btn-save" type="submit" tabindex="0">${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}</button><%----%>
-                        <button class="btn btn-accept" type="submit" tabindex="0">${value.AcceptAllButtonText.isSet ? value.AcceptAllButtonText : btnAcceptDef}</button><%----%>
+                        <button class="btn btn-save" type="button" tabindex="0">${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}</button><%----%>
+                        <button class="btn btn-accept" type="button" tabindex="0">${value.AcceptAllButtonText.isSet ? value.AcceptAllButtonText : btnAcceptDef}</button><%----%>
                     </div><%----%>
                 </form><%----%>
                 <button class="btn btn-close" tabindex="0" title="<fmt:message key="msg.page.privacypolicy.btn-close" />">&#x2715</button><%----%>

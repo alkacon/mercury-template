@@ -34,6 +34,14 @@
 --%>var __isOnline=${cms.isOnlineProject},<%--
 --%>__scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)</cms:link>"<%--
 --%></script>
+
+<%-- Include additional JS if allowed - must be done before Mercury JS is loaded in order to be able to catch my.init events --%>
+<c:if test="${allowTemplateMods}">
+    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
+        <script src="<mercury:link-resource resource='${resourcePath}'/>" defer></script><mercury:nl />
+    </mercury:load-resource>
+</c:if>
+
 <%-- Load the main JavaScript in async mode --%>
 <script async src="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
 
@@ -63,13 +71,10 @@
     </c:otherwise>
 </c:choose>
 
-<%-- Include additional CSS / JS if allowed --%>
+<%-- Include additional CSS if allowed - must be done after Mercury CSS us loaded so that the custom CSS order is higher --%>
 <c:if test="${allowTemplateMods}">
     <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
         <link href="<mercury:link-resource resource='${resourcePath}'/>" rel="stylesheet"><mercury:nl />
-    </mercury:load-resource>
-    <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
-        <script src="<mercury:link-resource resource='${resourcePath}'/>" defer></script><mercury:nl />
     </mercury:load-resource>
 </c:if>
 

@@ -78,7 +78,6 @@ var Mercury = function (jQ) {
         return isEditMode() ? 52 : 0;
     }
 
-
     function windowScrollTop() {
         return document.documentElement.scrollTop;
     }
@@ -956,9 +955,11 @@ var Mercury = function (jQ) {
         }
 
         // add event listeners for Bootstrap elements
-        _OpenCmsInit(DEBUG)
-    }
+        _OpenCmsInit(DEBUG);
 
+        // fire custom "init is complete" event
+        window.dispatchEvent(new CustomEvent("my.init.complete"));
+    }
 
     function init() {
         if (getParameter("jsdebugperm") != null) {
@@ -976,6 +977,7 @@ var Mercury = function (jQ) {
             console.warn("Mercury.initLazyImageLoading() error", err);
         }
 
+        window.dispatchEvent(new CustomEvent("my.init"));
         waitForCss();
     }
 

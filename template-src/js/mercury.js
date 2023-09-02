@@ -698,11 +698,12 @@ var Mercury = function (jQ) {
 
 
     function initFunctions() {
-        // calls all init() functions that have registered
-        // the idea is that additional JavaScrips are started from here rather then registering their own "window.onload" event
-        // this way it can be ensured that the required page functions are already initialized when the additional JS is executed
+        // calls all init() functions that have registered using mercury.ready(...)
+        // this is required for external scripts that need to use the jQuery instance from Mercury
+        // these scripts should not register their own "$(document).ready(...)" event
+        // the reason being that Mercury loads jQuery as an asset, and therefore jQuery may not available before Mercury is ready anyway
         var _functions = window.mercury.getInitFunctions();
-        if (DEBUG) console.info("Mercury init function found: " + _functions.length);
+        if (DEBUG) console.info("Mercury init functions found: " + _functions.length);
         for (var i = 0; i < _functions.length; i++) {
             try {
                 var initFunction = _functions[i];
@@ -723,7 +724,7 @@ var Mercury = function (jQ) {
 
 
     function initScripts() {
-        // register additional JavaScripts to the template init process
+        // register additional JavaScripts to the template init process {#see initFunctions()}
         var $initScripts = jQ('.mercury-initscript');
         if (DEBUG) console.info("Mercury.initScripts() .mercury-initscript elements found: " + $initScripts.length);
         $initScripts.each(function () {
@@ -947,6 +948,7 @@ var Mercury = function (jQ) {
         } catch (err) {
             console.warn("Mercury.initScripts() error", err);
         }
+
         try {
             // this must come last
             initFunctions();
@@ -954,14 +956,17 @@ var Mercury = function (jQ) {
             console.warn("Mercury.initFunctions() error", err);
         }
 
+        // fire "mercury.ready" event for scripts that do not need jQuery
+        window.setTimeout(function() {
+            window.dispatchEvent(new CustomEvent("mercury.ready"));
+        }, 500);
+
         // add event listeners for Bootstrap elements
         _OpenCmsInit(DEBUG);
-
-        // fire custom "init is complete" event
-        window.dispatchEvent(new CustomEvent("my.init.complete"));
     }
 
     function init() {
+
         if (getParameter("jsdebugperm") != null) {
             PrivacyPolicy.setCookie("jsdebug", "true");
             DEBUG = true;
@@ -977,7 +982,6 @@ var Mercury = function (jQ) {
             console.warn("Mercury.initLazyImageLoading() error", err);
         }
 
-        window.dispatchEvent(new CustomEvent("my.init"));
         waitForCss();
     }
 

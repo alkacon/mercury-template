@@ -227,7 +227,6 @@ function resetTemplateScript(forceInit) {
             $externalElements.parent(".presized.enlarged").removeClass("enlarged");
             $externalElements.removeClass("external-cookie-notice modal-cookie-notice");
             Mercury.init();
-            window.dispatchEvent(new CustomEvent("my.policy.reinit", { detail: { bannerData : m_bannerData }}));
         }
         activatePrivacyToggle();
     }

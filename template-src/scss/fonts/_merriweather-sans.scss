@@ -1,64 +1,84 @@
 @if require-font('Merriweather Sans') {
 
-/* merriweather-sans-300 - latin-ext_latin */
+/* merriweather-sans-300 - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Merriweather Sans';
   font-style: normal;
   font-weight: 300;
-  font-display: swap;
-  src: local('Merriweather Sans Light'), local('MerriweatherSans-Light'),
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* merriweather-sans-300italic - latin-ext_latin */
+/* merriweather-sans-300italic - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Merriweather Sans';
   font-style: italic;
   font-weight: 300;
-  font-display: swap;
-  src: local('Merriweather Sans Light Italic'), local('MerriweatherSans-LightItalic'),
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-300italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* merriweather-sans-regular - latin-ext_latin */
+/* merriweather-sans-regular - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Merriweather Sans';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
-  src: local('Merriweather Sans'), local('MerriweatherSans-Regular'),
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* merriweather-sans-italic - latin-ext_latin */
+/* merriweather-sans-italic - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Merriweather Sans';
   font-style: italic;
   font-weight: 400;
-  font-display: swap;
-  src: local('Merriweather Sans Italic'), local('MerriweatherSans-Italic'),
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* merriweather-sans-700italic - latin-ext_latin */
+/* merriweather-sans-500 - latin_latin-ext */
 @font-face {
+  font-display: swap;
+  font-family: 'Merriweather Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* merriweather-sans-500italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
   font-family: 'Merriweather Sans';
   font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Merriweather Sans Bold Italic'), local('MerriweatherSans-BoldItalic'),
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-weight: 500;
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* merriweather-sans-700 - latin-ext_latin */
+/* merriweather-sans-600 - latin_latin-ext */
 @font-face {
+  font-display: swap;
+  font-family: 'Merriweather Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* merriweather-sans-600italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Merriweather Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* merriweather-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
   font-family: 'Merriweather Sans';
   font-style: normal;
   font-weight: 700;
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* merriweather-sans-700italic - latin_latin-ext */
+@font-face {
   font-display: swap;
-  src: local('Merriweather Sans Bold'), local('MerriweatherSans-Bold'),
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/merriweather-sans-v10-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: 'Merriweather Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../fonts/merriweather-sans-v26-latin_latin-ext-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 } // end @if

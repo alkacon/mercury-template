@@ -1,83 +1,84 @@
 @if require-font('Literata') {
 
+/* literata-300 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Literata';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/literata-v35-latin_latin-ext-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* literata-300italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Literata';
+  font-style: italic;
+  font-weight: 300;
+  src: url('../fonts/literata-v35-latin_latin-ext-300italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 /* literata-regular - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* literata-italic - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: italic;
   font-weight: 400;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* literata-500 - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: normal;
   font-weight: 500;
-  font-display: swap;  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* literata-500italic - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: italic;
   font-weight: 500;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-500italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-500italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* literata-600 - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: normal;
   font-weight: 600;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* literata-600italic - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: italic;
   font-weight: 600;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-600italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-600italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* literata-700 - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* literata-700italic - latin_latin-ext */
 @font-face {
+  font-display: swap;
   font-family: 'Literata';
   font-style: italic;
   font-weight: 700;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/literata-v3-latin_latin-ext-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/literata-v3-latin_latin-ext-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/literata-v35-latin_latin-ext-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 } // end @if

@@ -5,33 +5,27 @@
 
 /* yanone-kaffeesatz-300 */
 @font-face {
+  font-display: swap;
   font-family: 'Yanone Kaffeesatz';
   font-style: normal;
   font-weight: 300;
-  font-display: swap;
-  src: local('YanoneKaffeesatz-Light'),
-       url('../fonts/yanone-kaffeesatz-light.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/yanone-kaffeesatz-light.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/yanone-kaffeesatz-light.woff2') format('woff2') /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 /* yanone-kaffeesatz-regular */
 @font-face {
+  font-display: swap;
   font-family: 'Yanone Kaffeesatz';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
-  src: local('YanoneKaffeesatz-Regular'),
-       url('../fonts/yanone-kaffeesatz-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/yanone-kaffeesatz-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/yanone-kaffeesatz-regular.woff2') format('woff2') /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 /* yanone-kaffeesatz-bold */
 @font-face {
+  font-display: swap;
   font-family: 'Yanone Kaffeesatz';
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
-  src: local('YanoneKaffeesatz-Bold'),
-       url('../fonts/yanone-kaffeesatz-bold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/yanone-kaffeesatz-bold.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/yanone-kaffeesatz-bold.woff2') format('woff2') /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 
 }

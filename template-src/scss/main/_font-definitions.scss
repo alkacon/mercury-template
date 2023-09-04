@@ -16,7 +16,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 // Download of Google web fonts:
-// https://google-webfonts-helper.herokuapp.com/fonts
+// https://google-webfonts-helper.herokuapp.com/fonts or
+// https://gwfh.mranftl.com/fonts
 //
 // If available, download fonts in the following weights:
 // 300 400 [normal] 500 600 700 [bold]
@@ -41,12 +42,12 @@ $fonts-preloaded-default: (
     "IBM Plex Sans Condensed":  (join("IBM Plex Sans Condensed", $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "IBM Plex Serif":           (join("IBM Plex Serif",          $font-family-serif),       (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Lato":                     (join("Lato",                    $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
-    "Literata":                 (join("Literata",                $font-family-serif),       (400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Literata":                 (join("Literata",                $font-family-serif),       (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Merriweather":             (join("Merriweather",            $font-family-serif),       (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
-    "Merriweather Sans":        (join("Merriweather Sans",       $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
+    "Merriweather Sans":        (join("Merriweather Sans",       $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Montserrat":               (join("Montserrat",              $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
-    "Noto Sans":                (join("Noto Sans",               $font-family-sans-serif),  (400: (normal, italic), 700: (normal, italic))),
-    "Noto Serif":               (join("Noto Serif",              $font-family-serif),       (400: (normal, italic), 700: (normal, italic))),
+    "Noto Sans":                (join("Noto Sans",               $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Noto Serif":               (join("Noto Serif",              $font-family-serif),       (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Open Sans":                (join("Open Sans",               $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Open Sans Condensed":      (join("Open Sans Condensed",     $font-family-sans-serif),  (300: (normal, italic), 700: (normal))),
     "Oswald":                   (join("Oswald",                  $font-family-sans-serif),  (300: (normal),         400: (normal),         500: (normal),         600: (normal),         700: (normal))),
@@ -61,7 +62,7 @@ $fonts-preloaded-default: (
     "Roboto":                   (join("Roboto",                  $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
     "Roboto_Condensed":         (join("Roboto Condensed",        $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 700: (normal, italic))),
     "Roboto Slab":              (join("Roboto Slab",             $font-family-serif),       (300: (normal),         400: (normal),         700: (normal))),
-    "Source Sans Pro":          (join("Source Sans Pro",         $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
+    "Source Sans Pro":          (join("Source Sans Pro",         $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Titillium Web":            (join("Titillium Web",           $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 600: (normal, italic), 700: (normal, italic))),
     "Ubuntu":                   (join("Ubuntu",                  $font-family-sans-serif),  (300: (normal, italic), 400: (normal, italic), 500: (normal, italic), 700: (normal, italic))),
     "Ubuntu Condensed":         (join("Ubuntu Condensed",        $font-family-sans-serif),  (400: (normal))),

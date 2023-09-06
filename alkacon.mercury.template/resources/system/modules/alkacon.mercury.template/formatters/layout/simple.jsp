@@ -308,13 +308,13 @@
     </c:when>
     <c:when test="${variant eq 'area-one-row'}">
         <%-- la_00001 --%>
-        <c:set var="bgImage" value="${setting.bgImage.toLink}" />
+        <c:set var="bgImage" value="${setting.bgImage.toLink.link}" />
         <c:set var="bgSpacing" value="${setting.bgSpacing.isSetNotNone ? setting.bgSpacing.toString : null}" />
         <c:set var="bgColor" value="${setting.bgColor.isSetNotNone ? setting.bgColor.toString : null}" />
 
         <c:if test="${not empty bgImage}">
              <c:set var="styleAttr">background-image: url('${bgImage}');</c:set>
-             <c:set var="cssWrapper">${cssWrapper}${' '}colored-row effect-parallax-bg</c:set>
+             <c:set var="cssWrapper">${cssWrapper}${' '}effect-parallax-bg</c:set>
         </c:if>
         <c:if test="${not empty bgSpacing}">
              <c:set var="cssWrapper">${cssWrapper}${' '}${bgSpacing}</c:set>

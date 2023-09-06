@@ -376,6 +376,8 @@ $piece-hyphens-text-xs:             $piece-hyphens-text !default; // enable hyph
 $piece-hyphens-text-md:             $piece-hyphens-text !default; // enable hyphenation for MS, LG and XL
 $nav-hyphens:                       $use-hyphens !default; // enable hyphenation / word breaks specially in navigation
 
+$icon-box-fix-heading-size:         true !default; // fix size of headings in icon boxes?
+$icon-box-use-colored-a:            false !default; // use hover color for linked icon box text?
 
 // Copyright
 

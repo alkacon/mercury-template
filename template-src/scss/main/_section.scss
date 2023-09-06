@@ -39,7 +39,11 @@
     overflow: hidden;
     z-index: $overflow-z-index;
 
-    @include colored-a(inherit, var(--#{$prefix}link-color));
+    @if ($icon-box-use-colored-a) {
+        @include colored-a(inherit, var(--#{$prefix}link-color));
+    } @else {
+        @include colored-a(inherit, none);
+    }
 
     &:only-child {
         flex-grow: 1;
@@ -50,8 +54,10 @@
         color: inherit;
         flex-grow: 1;
         margin-bottom: var(--#{$prefix}box-padding);
-        font-size: $h4-font-size;
         line-height: $headings-line-height;
+        @if ($icon-box-fix-heading-size) {
+            font-size: $h4-font-size;
+        }
         @include use-hyphens-headings(true);
     }
 
@@ -90,10 +96,11 @@
         }
     }
 
-    @include media-breakpoint-up(md) {
-        .icon-title {
-            font-size: $h3-font-size;
-            line-height: $headings-line-height;
+    @if ($icon-box-fix-heading-size) {
+        @include media-breakpoint-up(md) {
+            .icon-title {
+                font-size: $h3-font-size;
+            }
         }
     }
 }

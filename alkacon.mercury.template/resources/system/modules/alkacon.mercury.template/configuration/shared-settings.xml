@@ -2296,6 +2296,7 @@
             teaser-tile tile-col col-md-6 col-xl-3:                 %(key.msg.setting.tileCss.md6-xl3)|
             teaser-tile tile-col col-md-6 col-lg-3:                 %(key.msg.setting.tileCss.md6-lg3)|
             teaser-tile tile-col col-md-6 col-lg-4:                 %(key.msg.setting.tileCss.md6-lg4)|
+            teaser-tile tile-col col-lg-4:                          %(key.msg.setting.tileCss.lg4)|
             teaser-tile tile-col col-lg-6:                          %(key.msg.setting.tileCss.lg6)|
             teaser-tile tile-col col-md-6:                          %(key.msg.setting.tileCss.md6)|
             teaser-tile tile-col col-12:                            %(key.msg.setting.tileCss.xs12)

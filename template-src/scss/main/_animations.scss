@@ -289,16 +289,3 @@ html.desktop .effect-rotate {
     position: fixed;
     bottom: 80px;
 }
-
-
-// parallax background effect with background cover image
-.effect-parallax-bg {
-
-    background-image: none;
-    background-position: 50% 0;
-    background-size: cover;
-    background-clip: border-box;
-    background-origin: border-box;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}

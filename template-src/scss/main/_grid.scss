@@ -40,10 +40,6 @@
 
 // colored layout areas
 .colored-row {
-    display: flex;
-    flex-direction: column;
-    padding-top: var(--#{$prefix}element-margin);
-
     @include set-box-color-defaults();
 
     color: var(--#{$prefix}body-color);
@@ -62,6 +58,24 @@
     &.bg-grey {
         @include set-box-colors($grey);
     }
+}
+
+.colored-row,
+.effect-parallax-bg {
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--#{$prefix}element-margin);
+}
+
+// rows with parallax background effect using a background cover image
+.effect-parallax-bg {
+    background-image: none;
+    background-position: 50% 0;
+    background-size: cover;
+    background-clip: border-box;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 // paddings used in settings of layout area "Area - One row"

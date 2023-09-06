@@ -21,13 +21,25 @@
 
 .element,
 .subelement,
-.default-margin {
-    @include clearfix;
-
+.default-margin,
+.element-margin {
     margin-bottom: var(--#{$prefix}element-margin);
+}
+
+.element,
+.subelement {
+    @include clearfix;
 
     &.no-default-margin {
         margin-bottom: 0;
+    }
+
+    &.default-margin-small {
+        margin-bottom: var(--#{$prefix}default-margin-small);
+    }
+
+    &.default-margin-verysmall {
+        margin-bottom: var(--#{$prefix}default-margin-verysmall);
     }
 }
 

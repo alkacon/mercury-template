@@ -13,7 +13,7 @@
         <uuid>bc38c5f6-8c7d-4355-9d3a-f756faeb857a</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-poi.description.formatter) %(key.type.general.description.detail)]]></Description>
+    <Description><![CDATA[%(key.type.m-poi.description.formatter) %(key.type.general.description.detail.direct)]]></Description>
     <Rank><![CDATA[45000]]></Rank>
     <Match>
       <Types>

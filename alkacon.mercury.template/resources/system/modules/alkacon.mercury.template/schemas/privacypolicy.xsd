@@ -39,7 +39,7 @@
             </resourcebundles>
             <searchsettings containerPageOnly="true"/>
             <parameters>
-                <parameter name="unusedcontentfinder">exclude</parameter>
+                <param name="unusedcontentfinder">exclude</param>
             </parameters>
             <FieldSettings>
                 <Setting>

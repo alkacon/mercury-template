@@ -72,6 +72,27 @@
     }
 }
 
+.box {
+    &.box-ratio-1-1 {
+        min-height: 100cqw;
+    }
+    &.box-ration-4-3 {
+        min-height: #{100cqw * divide(3, 4, $divide-precision)};
+    }
+    &.box-ratio-3-2 {
+        min-height: #{100cqw * divide(2, 3, $divide-precision)};
+    }
+    &.box-ratio-16-9 {
+        min-height: #{100cqw * divide(9, 16, $divide-precision)};
+    }
+    &.box-ratio-35-45 {
+        min-height: #{100cqw * divide(45, 35, $divide-precision)};
+    }
+    &.box-ratio-2-3 {
+        min-height: #{100cqw * divide(3, 2, $divide-precision)};
+    }
+}
+
 @each $color, $value in $theme-colors {
 
     .box-#{""+$color} {

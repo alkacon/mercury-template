@@ -408,6 +408,23 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[boxRatio.default]]></IncludeName>
+      <PropertyName><![CDATA[boxRatio]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.boxRatio)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.boxRatio.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:   %(key.msg.setting.boxRatio.none)|
+            1-1:    %(key.msg.setting.imageRatio.1-1)|
+            4-3:    %(key.msg.setting.imageRatio.4-3)|
+            3-2:    %(key.msg.setting.imageRatio.3-2)|
+            16-9:   %(key.msg.setting.imageRatio.16-9)|
+            35-45:  %(key.msg.setting.imageRatio.35-45)|
+            2-3:    %(key.msg.setting.imageRatio.2-3)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listWrapper.imageTile]]></IncludeName>
       <PropertyName><![CDATA[listWrapper]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.tileCssMargin)]]></DisplayName>

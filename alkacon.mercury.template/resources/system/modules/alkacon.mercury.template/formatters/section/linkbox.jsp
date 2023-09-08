@@ -26,6 +26,7 @@
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageLink"      value="${setting.showImageLink.toBoolean}" />
 <c:set var="textAlignment"      value="${setting.textAlignment.toString}" />
+<c:set var="boxRatio"           value="${setting.boxRatio.isSetNotNone ? setting.boxRatio.toString : null}" />
 
 <c:set var="headingOption"      value="${setting.headingOption.toString}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
@@ -36,7 +37,7 @@
 <c:set var="boxWrapper"         value="${fn:contains(setCssWrapper, 'box') ? '' : ' box'}" />
 
 <mercury:nl />
-<div class="element type-linkbox${hasLink ? ' fully-linked' : ''}${boxWrapper}${setCssWrapper}${setEffect}${setCssVisibility}"><%----%>
+<div class="element type-linkbox${hasLink ? ' fully-linked' : ''}${boxWrapper}${setCssWrapper}${not empty boxRatio ? ' box-ratio-'.concat(boxRatio) : ''}${setEffect}${setCssVisibility}"><%----%>
 <mercury:nl />
 
 <mercury:link link="${value.Link}" testFailTag="span" css="linkbox-link">

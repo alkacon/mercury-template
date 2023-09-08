@@ -59,12 +59,12 @@
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <mercury:nl />
-<div class="element type-dynamic-list list-content ${settings.listCssWrapper}${' '}${settings.listPaginationPosition}${' '}${settings.listDisplay}${' '}${settings.cssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
+<div class="element type-dynamic-list list-content ${settings.listCssWrapper}${' '}${settings.appendSwitch != 'disable' ? settings.listPaginationPosition : 'pagination-disabled'}${' '}${settings.listDisplay}${' '}${settings.cssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
 <mercury:nl />
 
     <cms:enable-list-add
         types="${content.valueList.TypesToCollect}"
-        postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}" 
+        postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}"
         uploadFolder="${cms.getBinaryUploadFolder(content)}" />
 
     <%-- ####### Check if list formatters are compatible ######## --%>

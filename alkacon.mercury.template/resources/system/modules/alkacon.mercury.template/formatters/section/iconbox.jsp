@@ -21,7 +21,7 @@
 <c:set var="ade"                    value="${not hasLink and cms.isEditMode}"/>
 
 <mercury:nl />
-<div class="element type-iconbox pivot${setCssWrapperAll}"><%----%>
+<div class="element type-iconbox pivot${hasLink ? ' fully-linked' : ''}${setCssWrapperAll}"><%----%>
 
     <mercury:link link="${value.Link}" setTitle="${true}" css="icon-link">
         <mercury:heading level="${hsize}" text="${value.Title}" css="icon-title" ade="${ade}" />

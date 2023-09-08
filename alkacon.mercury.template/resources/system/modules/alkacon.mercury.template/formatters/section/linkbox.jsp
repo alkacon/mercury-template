@@ -30,11 +30,13 @@
 <c:set var="headingOption"      value="${setting.headingOption.toString}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
+<c:set var="hasLink"            value="${value.Link.isSet and value.Link.value.URI.isSet}"/>
+
 <%-- Note regarding css wrappers: Apply wrappers 2 and 3 to the .piece inner div --%>
 <c:set var="boxWrapper"         value="${fn:contains(setCssWrapper, 'box') ? '' : ' box'}" />
 
 <mercury:nl />
-<div class="element type-linkbox${boxWrapper}${setCssWrapper}${setEffect}${setCssVisibility}"><%----%>
+<div class="element type-linkbox${hasLink ? ' fully-linked' : ''}${boxWrapper}${setCssWrapper}${setEffect}${setCssVisibility}"><%----%>
 <mercury:nl />
 
 <mercury:link link="${value.Link}" testFailTag="span" css="linkbox-link">

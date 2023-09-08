@@ -5197,6 +5197,35 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>mercury-demo/index.html</source>
+			<destination>mercury-demo/index.html</destination>
+			<type>htmlredirect</type>
+			<uuidstructure>f5908d34-3a95-11e9-bd84-0242ac11002b</uuidstructure>
+			<uuidresource>f5908d35-3a95-11e9-bd84-0242ac11002b</uuidresource>
+			<datecreated>Wed, 16 Sep 2015 11:00:01 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Redirect to first page in navigation]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>search.exclude</name>
+					<value><![CDATA[all]]></value>
+				</property>
+				<property type="shared">
+					<name>template-elements</name>
+					<value><![CDATA[/system/modules/org.opencms.ade.sitemap/pages/redirect-detail.jsp]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>mercury-demo/.content</destination>
 			<type>content_folder</type>
 			<uuidstructure>f3a6be7b-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -18298,35 +18327,6 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Link to: /overview/]]></value>
-				</property>
-				<property>
-					<name>locale-available</name>
-					<value><![CDATA[en]]></value>
-				</property>
-				<property>
-					<name>search.exclude</name>
-					<value><![CDATA[all]]></value>
-				</property>
-				<property type="shared">
-					<name>template-elements</name>
-					<value><![CDATA[/system/modules/org.opencms.ade.sitemap/pages/redirect-detail.jsp]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>mercury-demo/index.html</source>
-			<destination>mercury-demo/index.html</destination>
-			<type>htmlredirect</type>
-			<uuidstructure>f5908d34-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f5908d35-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Wed, 16 Sep 2015 11:00:01 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Redirect to first page in navigation]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>

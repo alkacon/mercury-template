@@ -361,6 +361,8 @@ $sq-heights-xl:    () !default;
         left: 0;
         z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
         overflow: auto; // shows scrollbars on demand
+        display: flex;  // required otherwise text alignment 'center' and 'right' will not work with short headings
+        flex-direction: column;
 
         &:not(.boxbg-overlay) {
             background-color: $tile-overlay-bg-color;

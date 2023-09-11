@@ -412,7 +412,7 @@
       <PropertyName><![CDATA[boxRatio]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.boxRatio)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.boxRatio.help)]]></Description>
-      <Widget><![CDATA[select]]></Widget>
+      <Widget><![CDATA[hidden]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:   %(key.msg.setting.boxRatio.none)|

@@ -134,6 +134,17 @@
     .linkbox-content.piece.full .heading  {
         flex-grow: 1;
     }
+
+    &.valign-center {
+        .linkbox-link,
+        .linkbox-content.piece.full {
+            justify-content: center;
+        }
+        .linkbox-content.piece.full .body,
+        .linkbox-content.piece.full .heading {
+            flex-grow: initial;
+        }
+    }
 }
 
 // Image / text flip animation, see https://davidwalsh.name/css-flip#ieflip

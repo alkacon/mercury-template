@@ -412,7 +412,7 @@
       <PropertyName><![CDATA[boxRatio]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.boxRatio)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.boxRatio.help)]]></Description>
-      <Widget><![CDATA[hidden]]></Widget>
+      <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[none]]></Default>
       <WidgetConfig><![CDATA[
             none:   %(key.msg.setting.boxRatio.none)|
@@ -826,6 +826,18 @@
             pac:                %(key.msg.setting.textAlignment.center)|
             par:                %(key.msg.setting.textAlignment.right)|
             paj:                %(key.msg.setting.textAlignment.justify)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[verticalAlignment.default]]></IncludeName>
+      <PropertyName><![CDATA[verticalAlignment]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.verticalAlignment)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.verticalAlignment.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:             %(key.msg.setting.verticalAlignment.none)|
+            center:           %(key.msg.setting.verticalAlignment.center)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

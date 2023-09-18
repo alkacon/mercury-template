@@ -55,6 +55,9 @@
       <IncludeName><![CDATA[boxRatio.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[verticalAlignment.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.section.text-only]]></IncludeName>
     </Setting>
     <Setting>

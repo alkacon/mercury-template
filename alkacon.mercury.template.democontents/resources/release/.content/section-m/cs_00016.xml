@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Release Notes for OpenCms 16]]></Title>
+    <Text name="Text0">
+      <links>
+        <link name="link0" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/769]]></target>
+        </link>
+        <link name="link1" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pull/773]]></target>
+        </link>
+        <link name="link2" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pull/767]]></target>
+        </link>
+        <link name="link3" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/763]]></target>
+        </link>
+        <link name="link4" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/764]]></target>
+        </link>
+        <link name="link5" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/772]]></target>
+        </link>
+        <link name="link6" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues/779]]></target>
+        </link>
+        <link name="link7" internal="false" type="A">
+          <target><![CDATA[http://www.alkacon.com/contact/]]></target>
+        </link>
+        <link name="link8" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+        <link name="link9" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/pulls]]></target>
+        </link>
+        <link name="link10" internal="false" type="A">
+          <target><![CDATA[https://github.com/alkacon/opencms-core/issues]]></target>
+          <query><![CDATA[state=open]]></query>
+        </link>
+      </links>
+      <content><![CDATA[<p><em>October 2, 2023</em>: OpenCms 16 brings the new app "Unused contents" that allows to find and delete content that is not actively used on any container page. It is now possible to select between several individual detail pages in the same website based on categories of the detail content. The gallery dialog in the editor has been improved with additional filter and grouping options, so that content managers can find relevant content faster. It can now be enforced that all content managers must set a new password after the next login. The default Mercury template brings several new features, for example the "Image tile display" formatter for the "Tabs / accordion" element.</p>
+<h2>Major new features of OpenCms 16</h2>
+<ul>
+<li>New app to find "Unused contents"</li>
+<li>Category based detail pages</li>
+<li>Grouping of galleries in the "Galleries" tab of the gallery dialog</li>
+<li>Search for sites in the site selector on the "Folders" tab of the gallery dialog</li>
+<li>Search for types in the "Create new resource" dialog in the explorer</li>
+<li>Option to force all users to set a new password after login</li>
+</ul>
+<h2>Further improvements in OpenCms 16</h2>
+<ul>
+<li>Page editor: The element settings dialog layout has been improved</li>
+<li>Page editor: The gallery dialog layout has been slightly improved</li>
+<li>Workplace: The "Projects" app now allows filtering by OU</li>
+<li>Workplace: Temporary instead of permanent redirects are used in the offline project for "HTML redirect" resources</li>
+<li>Lists: "cms:display" for "binary" resources now supports adding new files with [+] on the list</li>
+<li>JSP API: Extension of the "cms:link" tag to support "var" and "type" attributes</li>
+<li>JSP API: OpenCms link object for the EL</li>
+<li>JSP API: Added "replaceInvalid" option to "cms:secureparams" to replace invalid parameters with a default text</li>
+<li>JSP API: Several shortcut methods have been added to the "CmsJspStandardContextBean"</li>
+<li>Configuration: The element setting configuration now allows alternatives for values and property names</li>
+<li>A possible update to Tomcat 10 has been evaluated</li>
+<li>Pull request #769 implemented support for putting detail contents of different types in the same folder (<a class="external" href="%(link0)" target="_self">github</a>)</li>
+<li>Pull request #773 added updated Spanish localization provided by rgaviras (<a class="external" href="%(link1)" target="_self">github</a>)</li>
+<li>Pull request #767 added support for Apple Wallet .pkpass files (<a class="external" href="%(link2)" target="_self">github</a>)</li>
+</ul>
+<h2>Issues fixed in OpenCms 16</h2>
+<ul>
+<li>Security: Fixed issues in several dependencies by bumping the affected dependencies to the latest version</li>
+<li>Security: Fixed issue with the Solr Handler related to the qt parameter</li>
+<li>Workplace: After "Undo changes" on a detail page element, the wait screen did sometimes not close</li>
+<li>Workplace: The "About" dialog did not correctly display for users without role "Workplace User"</li>
+<li>Workplace: The "Rename" option for images was shown in the gallery dialog even if user has no permissions for this action</li>
+<li>XML: Content correction did not correct empty nested contents</li>
+<li>Configuration: ResourceType configuration for "modelgroup" did ignore the order</li>
+<li>Configuration: Content storage location for detail containers in storage mode "with page" did not work as expected</li>
+<li>Search: Offline indexing results on module update during setup were sometimes incorrect</li>
+<li>Caching: Incorrect caching for "Password reset" state was used for user lists</li>
+<li>Caching: Container page caching did not take user permissions on container elements into account</li>
+<li>Fixed issue with multiple OpenCms instances in one Tomcat all writing to the same log file</li>
+<li>Fixed XSS issue with HTML-valued properties in the explorer</li>
+<li>Fixed XSS issue with HTML in the gallery search field</li>
+<li>Fixed issue #763 with XSS in module info dialog (<a class="external" href="%(link3)" target="_self">github</a>)</li>
+<li>Fixed issue #764 where a filter query "search_exclude:false" would be set multiple times in CmsSolrQuery objects (<a class="external" href="%(link4)" target="_self">github</a>)</li>
+<li>Fixed issue #772 in the "Show online" function for detail pages (<a class="external" href="%(link5)" target="_self">github</a>)</li>
+<li>Fixed issue #779 with broken calendar widget in Czech locale (<a class="external" href="%(link6)" target="_self">github</a>)</li>
+</ul>
+<h2>General OpenCms features</h2>
+<ul>
+<li>The page editor allows WYSIWYG inline editing of web pages and arrangement of content by drag &amp; drop.</li>
+<li>The form based editor allows editing of structured content in a well defined form mask.</li>
+<li>The sitemap editor allows to create new pages and re-arrange the navigation tree by drag &amp; drop.</li>
+<li>Responsive "Mercury" default template based on Bootstrap 5 with many features.</li>
+<li>Headless API for accessing content as JSON from external applications.</li>
+<li>Content creation for mobile devices with preview and device specific content control.</li>
+<li>Structured contents can be defined using a simple XML schema.</li>
+<li>Easy to use "Online / Offline" workflow, changes must be approved before they become visible.</li>
+<li>Link management for all internal resources with broken link detection.</li>
+<li>Integrated image scaling and cropping.</li>
+<li>SEO features with automatic sitemap.xml generation and page alias support.</li>
+<li>Full featured user management that supports the concept of "Organizational Units" (OUs).</li>
+<li>Allows management of multiple websites within one installation.</li>
+<li>Contents can be served dynamically or exported to static HTML files.</li>
+<li>File access to the OpenCms content repository over a shared network / SMB drive.</li>
+<li>CMIS and WebDAV access to the OpenCms content repository.</li>
+<li>Integrates Apache SOLR for powerful content searching and noSQL like queries.</li>
+<li>Full text search for web pages as well as in office documents like PDF, MS Office and Open Office.</li>
+<li>Extensions can be added through a flexible module system.</li>
+<li>The "time warp" feature allows to view resources which are expired or not yet released.</li>
+<li>JSP integration for dynamic functionality in templates, dynamic forms etc.</li>
+<li>... and many more</li>
+</ul>
+<h3>Backward compatibility</h3>
+<p>OpenCms 16 is backward compatible with all 15, 14, 13, 12, 11, 10.5 and 10 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 16.</p>
+<p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 16. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link7)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
+<h3>Compatibility with Java versions, servlet containers and databases</h3>
+<p>OpenCms 16 has been written and tested for Java 11 and Java 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
+<p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9 and 8.5. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
+<h3>Regarding version numbers and build tags</h3>
+<p>The main OpenCms Git repository is available on Github at <a href="%(link8)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>
+<p>In case you want to get the most current OpenCms sources from Git, please check out branch <span class="label label-cyan">master</span>. This release is tagged <span class="label label-cyan">build_16_0_0</span>.</p>
+<h3>How you can help</h3>
+<p>Contributions to the OpenCms core development are most welcome. <a href="%(link9)" target="_blank" rel="noopener noreferrer">Please send us your pull requests directly on GitHub.</a></p>
+<p>Please report issues found in OpenCms using <a href="%(link10)" target="_blank" rel="noopener noreferrer">our GitHub issue tracker</a>.</p>
+<p>Thank you for using OpenCms and have fun with OpenCms :-)</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

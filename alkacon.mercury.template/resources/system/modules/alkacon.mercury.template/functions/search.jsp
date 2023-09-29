@@ -179,7 +179,7 @@
                         <input id="searchFormQuery" name="${common.config.queryParam}" <%--
                             --%>value="${escapedQuery}" class="form-control" type="text" autocomplete="off" <%--
                             --%>placeholder="<c:out value="${slotText}" />" /><%----%>
-                        <button class="btn btn-submit-search" type="submit">${slotButton}</button><%----%>
+                        <button class="btn btn-submit-search" type="submit" title="<fmt:message key="msg.page.search" />">${slotButton}</button><%----%>
                     </div><%----%>
                 </section><%----%>
             </div><%----%>

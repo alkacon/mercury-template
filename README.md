@@ -6,6 +6,23 @@ The Mercury Template is a complete, modular template for [OpenCms](http://opencm
 
 ### Release history ###
 
+**Version 16** - October 2, 2023:
+
+This version provides incremental improvements. Mercury 16 should be largely backward compatible with the 15 version.
+
+* Updated for OpenCms 16.
+* New "Image tile display" formatter for the "Tabs / Accordion" element.
+* New "Search slot" function to display a full text search input anywhere on a page.
+* For the "Dynamic list", several content filters on the same page are now combined.
+* Option to generate contact forms instead of email links for person and organization.
+* Option to hide the text of list teasers on mobile displays.
+* Added an icon collection with 267 national flags.
+* Added the open source Font Awesome icon collections "Brand", "Solid" and "Regular".
+* Updated all included Google fonts to a recent version.
+* Bootstrap updated to 5.3.2.
+* jQuery updated to 3.7.1.
+* All NPM dependencies have been updated to a recent version.
+
 **Version 15** - April 25, 2023:
 
 This version provides incremental improvements. Mercury 15 should be largely backward compatible with the 14 version.

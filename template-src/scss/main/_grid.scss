@@ -38,6 +38,18 @@
     }
 }
 
+// rows with background
+.row-has-background {
+    // note: not all template variants have the 'row-has-background' selector
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--#{$prefix}element-margin);
+}
+
+.row-has-background + .area-content:not(.row-has-background) {
+    margin-top: var(--#{$prefix}element-margin);
+}
+
 // colored layout areas
 .colored-row {
     @include set-box-color-defaults();
@@ -58,13 +70,6 @@
     &.bg-grey {
         @include set-box-colors($grey);
     }
-}
-
-.colored-row,
-.effect-parallax-bg {
-    display: flex;
-    flex-direction: column;
-    padding-top: var(--#{$prefix}element-margin);
 }
 
 // rows with parallax background effect using a background cover image
@@ -89,11 +94,6 @@
         }
     }
 }
-
-.area-content.colored-row + .area-content:not(.colored-row) {
-    margin-top: var(--#{$prefix}element-margin);
-}
-
 
 // left/right margins for tile rows
 @each $space in $list-tile-spacers {

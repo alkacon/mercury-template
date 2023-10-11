@@ -35,6 +35,34 @@ $grey:                              #aaa !default;
 $grey-dark:                         #888 !default;
 $black:                             #000 !default;
 
+
+// Editor GUI / element containers and markers
+//
+// The colors for the element containers are considered "system" colors.
+// These should NOT be changed in the theme!
+
+$con-col-cyan:                      #1bb39a !default;
+$con-col-blue:                      #144382 !default;
+$con-col-blue-light:                #2197db !default;
+$con-col-blue-steel-light:          #e8f3f8 !default;
+$con-col-orange:                    #ffa826 !default;
+$con-col-orange-hover:              #ffbf3f !default;
+$con-col-orange-light:              #ffe5bf !default;
+$con-col-red-orange-light:          #ffdac7 !default;
+$con-col-red-light:                 #ff264a !default;
+$con-col-red-lighter:               #ffe3e7 !default;
+$con-col-darker-red-light:          #ffc9d2 !default;
+$con-col-red:                       #b31b34 !default;
+$con-col-red-dark:                  #8b1528 !default;
+$con-col-purple:                    #eed2ee !default;
+$con-col-green-light:               #effab4 !default;
+
+$con-text-col-dark:                 #444 !default;
+$con-text-col-grey:                 #7f8691 !default;
+$con-text-col-light:                #fff !default;
+
+$con-margin:                        20px !default;
+
 // Theme colors to be used
 // This is a list of lists in the following format:
 // (
@@ -59,7 +87,21 @@ $theme-colors:                        () !default;
 // If no definitions are provided, an algorithm will try to pick suitable colors based on the default background, text and link colors
 
 $theme-matched-colors:             () !default;
-
+$theme-matched-defaults:           (
+    $con-col-orange: (
+        "body-color": $white,
+        "link-color": $con-text-col-dark
+    ),
+    $con-col-cyan: (
+        "body-color": $white,
+        "link-color": $con-text-col-dark
+    ),
+    $con-col-red-light: (
+        "body-color": $white,
+        "link-color": $con-text-col-dark
+    )
+);
+$theme-matched-colors-merged:      map-merge($theme-matched-colors, $theme-matched-defaults);
 
 // Default margins / spacing
 
@@ -292,6 +334,7 @@ $highlight-border-fg-color:         get-text-color($highlight-border-color) !def
 $disabled-color:                    $grey-light !default;
 $disabled-fg-color:                 get-text-color($disabled-color) !default;
 $darkbg-color:                      #222 !default;
+$online-warn-color:                 $highlight-color !default;
 
 $main-theme-fg:                     get-text-color($main-theme);
 $main-theme-hover-fg:               get-text-color($main-theme-hover);
@@ -961,35 +1004,6 @@ $effect-static-border:              1px solid $grey-light !default;
 $transition-timing:                 $default-transition-time !default; // default timing used for :hover and other transitions
 $transition-function:               ease; // default timing function used for :hover and other transitions
 
-
-// Editor GUI / element containers and markers */
-//
-// The colors for the element containers are considered "system" colors.
-// They should not change if the theme has another color configured, e.g. another orange.
-
-$con-col-cyan:                      #1bb39a !default;
-$con-col-blue:                      #144382 !default;
-$con-col-blue-light:                #2197db !default;
-$con-col-blue-steel-light:          #e8f3f8 !default;
-$con-col-orange:                    #ffa826 !default;
-$con-col-orange-hover:              #ffbf3f !default;
-$con-col-orange-light:              #ffe5bf !default;
-$con-col-red-orange-light:          #ffdac7 !default;
-$con-col-red-light:                 #ff264a !default;
-$con-col-red-lighter:               #ffe3e7 !default;
-$con-col-darker-red-light:          #ffc9d2 !default;
-$con-col-red:                       #b31b34 !default;
-$con-col-red-dark:                  #8b1528 !default;
-$con-col-purple:                    #eed2ee !default;
-$con-col-green-light:               #effab4 !default;
-
-$con-text-col-dark:                 #555 !default;
-$con-text-col-grey:                 #7f8691 !default;
-$con-text-col-light:                #fff !default;
-
-$con-margin:                        20px !default;
-
-$online-warn-color:                 $highlight-color !default;
 
 // Disabled background-image, used for model group editor and elsewhere to mark "disabled" elements
 $disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(0,0,0,0.1) 10px,rgba(0,0,0,0.1) 20px);

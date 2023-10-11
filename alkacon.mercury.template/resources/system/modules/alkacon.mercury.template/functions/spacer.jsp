@@ -29,7 +29,7 @@
     </c:if>
 </c:if>
 
-<div class="spacer pivot ${spaceMobile ne 'none' ? ' space-'.concat(spaceMobile) : '' }${spaceDesktop ne 'mobile' ? ' space-lg-'.concat(spaceDesktop) : '' }${not empty spaceColor ? ' '.concat(spaceColor) : ''}${editClass}"${editStyle}><%----%>
+<div class="type-spacer pivot ${spaceMobile ne 'none' ? ' space-'.concat(spaceMobile) : '' }${spaceDesktop ne 'mobile' ? ' space-lg-'.concat(spaceDesktop) : '' }${not empty spaceColor ? ' '.concat(spaceColor) : ''}${editClass}"${editStyle}><%----%>
 </div><%----%>
 <mercury:nl />
 

@@ -26,11 +26,23 @@
     @include set-box-colors($highlight-color, true, true);
 }
 
+.box-oct-warning {
+    @include set-box-colors($con-col-orange);
+}
+
+.box-oct-error {
+    @include set-box-colors($con-col-red-light);
+}
+
+.box-oct-info {
+    @include set-box-colors($con-col-cyan);
+}
+
 .box-body {
     @extend .box-body-base;
 }
 
-.box-theme{
+.box-theme {
     @include set-box-colors($main-theme);
 }
 
@@ -288,6 +300,67 @@
     .mv-neg-#{$space},
     .mb-neg-#{$space} {
         margin-bottom: -#{$rem-space} !important;
+    }
+}
+
+.mt-sm {
+    margin-top: var(--#{$prefix}default-margin-small);
+}
+.mb-sm {
+    margin-bottom: var(--#{$prefix}default-margin-small);
+}
+.mt-md {
+    margin-top: var(--#{$prefix}default-margin);
+}
+.mt-md {
+    margin-bottom: var(--#{$prefix}default-margin);
+}
+
+// Custom spacers (for function element)
+
+.type-spacer {
+    background-color: var(--#{$prefix}body-bg);
+    &.space-xs {
+        padding-bottom: var(--#{$prefix}default-margin-verysmall);
+    }
+    &.space-sm {
+        padding-bottom: var(--#{$prefix}default-margin-small);
+    }
+    &.space-md {
+        padding-bottom: var(--#{$prefix}default-margin);
+    }
+    &.space-lg {
+        padding-bottom: calc(2 * var(--#{$prefix}default-margin));
+    }
+    &.space-xl {
+        padding-bottom: calc(4 * var(--#{$prefix}default-margin));
+    }
+
+    @include media-breakpoint-up(lg) {
+        &.space-lg-none {
+            padding-bottom: 0;
+        }
+        &.space-lg-xs {
+            padding-bottom: var(--#{$prefix}default-margin-verysmall);
+        }
+        &.space-lg-sm {
+            padding-bottom: var(--#{$prefix}default-margin-small);
+        }
+        &.space-lg-md {
+            padding-bottom: var(--#{$prefix}default-margin);
+        }
+        &.space-lg-lg {
+            padding-bottom: calc(2 * var(--#{$prefix}default-margin));
+        }
+        &.space-lg-xl {
+            padding-bottom: calc(4 * var(--#{$prefix}default-margin));
+        }
+    }
+}
+
+.opencms-page-editor {
+    .type-spacer {
+        background-image: repeating-linear-gradient(90deg,rgba(0,0,0,.1),rgba(0,0,0,.1) 1px,transparent 1px,transparent 20px)
     }
 }
 

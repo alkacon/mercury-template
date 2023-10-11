@@ -79,6 +79,9 @@
     <Setting>
       <IncludeName><![CDATA[showLocation.true]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showMetaSummary.true]]></IncludeName>
+    </Setting>
     <MetaMapping>
       <Key><![CDATA[ogTitleMeta]]></Key>
       <Element><![CDATA[MetaInfo/Title]]></Element>

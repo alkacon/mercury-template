@@ -691,10 +691,10 @@
 
 @mixin set-box-colors($bg-color, $include-defaults: true, $set-all-defaults: false) {
 
-    $bg-map: map-get($theme-matched-colors, $bg-color);
+    $bg-map: map-get($theme-matched-colors-merged, $bg-color);
 
     @if (($bg-color == $body-bg) and ($bg-map != null)) {
-        @warn "A box color match for the default page body color #{$body-bg} is set in $theme-matched-colors. This may lead to unpredicted results."
+        @warn "A box color match for the default page body color #{$body-bg} is set in $theme-matched-colors-merged. This may lead to unpredicted results."
     }
 
     $li-color: null;

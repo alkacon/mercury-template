@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/monetary-amount.xsd" />
 
     <xsd:element name="JobMetaInfoData" type="OpenCmsJobMetaInfoData"/>
 
@@ -14,7 +15,8 @@
         <xsd:sequence>
             <xsd:element name="EmploymentType" type="OpenCmsString" minOccurs="0" maxOccurs="5"  />
             <xsd:element name="ValidThrough" type="OpenCmsDateTime" minOccurs="0" />
-            <xsd:element name="BaseSalary" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="BaseSalary" type="OpenCmsMonetaryAmount" minOccurs="0" />
+            <xsd:element name="HiringOrganization" type="OpenCmsVfsFile" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -29,15 +31,15 @@
                     <Widget><![CDATA[selectcombo]]></Widget>
                     <Default><![CDATA[none]]></Default>
                     <WidgetConfig><![CDATA[
-                        none:%(key.msg.job.employmentType.none)|
-                        FULL_TIME:%(key.msg.job.employmentType.FULL_TIME)|
-                        PART_TIME:%(key.msg.job.employmentType.PART_TIME)|
-                        CONTRACTOR:%(key.msg.job.employmentType.CONTRACTOR)|
-                        TEMPORARY:%(key.msg.job.employmentType.TEMPORARY)|
-                        INTERN:%(key.msg.job.employmentType.INTERN)|
-                        VOLUNTEER:%(key.msg.job.employmentType.VOLUNTEER)|
-                        PER_DIEM:%(key.msg.job.employmentType.PER_DIEM)|
-                        OTHER:%(key.msg.job.employmentType.OTHER)
+                        none:       %(key.msg.job.employmentType.none)|
+                        FULL_TIME:  %(key.msg.job.employmentType.FULL_TIME)|
+                        PART_TIME:  %(key.msg.job.employmentType.PART_TIME)|
+                        CONTRACTOR: %(key.msg.job.employmentType.CONTRACTOR)|
+                        TEMPORARY:  %(key.msg.job.employmentType.TEMPORARY)|
+                        INTERN:     %(key.msg.job.employmentType.INTERN)|
+                        VOLUNTEER:  %(key.msg.job.employmentType.VOLUNTEER)|
+                        PER_DIEM:   %(key.msg.job.employmentType.PER_DIEM)|
+                        OTHER:      %(key.msg.job.employmentType.OTHER)
                     ]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
@@ -47,14 +49,20 @@
                     <Description><![CDATA[%(key.label.Job.ValidThrough.help)]]></Description>
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime + 31536000000)]]></Default>
+                    <WidgetConfig>{fixedTime: "23:59"}</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>BaseSalary</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Job.BaseSalary)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Job.BaseSalary.help)]]></Description>
-                    <Widget>textarea</Widget>
-                    <WidgetConfig>6</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>HiringOrganization</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Job.HiringOrganization)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Job.HiringOrganization.help)]]></Description>
+                    <Widget>file</Widget>
+                    <WidgetConfig>selectabletypes=m-organization</WidgetConfig>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

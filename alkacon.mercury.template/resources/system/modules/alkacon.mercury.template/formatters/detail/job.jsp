@@ -29,6 +29,7 @@
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
+<c:set var="showMetaSummary"        value="${setting.showMetaSummary.toBoolean}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -149,6 +150,8 @@
             </div><%----%>
         </c:if>
 
+        <mercury:data-job content="${content}" showSummary="${showMetaSummary}" />
+
         <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 1)}" />
 
         <c:if test="${firstParagraph.value.Text.isSet}">
@@ -167,7 +170,6 @@
 </mercury:piece>
 
 <c:if test="${not empty paragraphsContent}">
-
     <div class="detail-content"><%----%>
         <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
             <mercury:section-piece
@@ -187,11 +189,9 @@
         </c:forEach>
     </div><%----%>
     <mercury:nl />
-
 </c:if>
 
 <mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
-<mercury:data-job content="${content}" />
 
 </div><%----%>
 <mercury:nl />

@@ -18,6 +18,12 @@
 <%@ attribute name="showPerson" type="java.lang.Boolean" required="false"
     description="Include the employee information in the output." %>
 
+<%@ attribute name="showContactAndImage" type="java.lang.Boolean" required="false"
+    description="Include the phone number, fax number, amail address and image in the ourput. The default for this is 'true'." %>
+
+<%@ attribute name="useSameAsUrl" type="java.lang.Boolean" required="false"
+    description="Include the URL of the organization as 'sameAs' instead of 'url' property in the generated JSON."  %>
+
 <%@ attribute name="persContent" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="false"
     description="A content access bean of type m-person.
     If provided the 'employee' information will be generated from this content.
@@ -28,7 +34,7 @@
     If this is set to 'true', no output is written, only the object is generated and stored in the variable.
     Default is 'false' if not provided." %>
 
-<%@ variable name-given="orgJsonLd" scope="AT_END" declare="true" variable-class="org.opencms.jsp.util.CmsJspJsonWrapper"
+<%@ variable name-given="orgJsonLd" scope="AT_END" declare="true" variable-class="org.opencms.json.JSONObject"
     description="A JSON-LD object created for the organization.
     This will only be created if the attribute 'storeOrgJsonLdObject' has been set to 'true'." %>
 
@@ -41,6 +47,7 @@
 
 <c:set var="value"                  value="${content.value}" />
 <c:set var="contact"                value="${content.value.Contact.value}" />
+<c:set var="showContactAndImage"    value="${empty showContactAndImage or showContactAndImage}" />
 
 <c:choose>
     <c:when test="${content.typeName eq 'm-contact'}">
@@ -75,14 +82,14 @@
     <cms:jsonvalue key="@type"          value="Organization" />
 
     <cms:jsonvalue key="name"           value="${content.value.Organization.toString}" />
+    <cms:jsonvalue key="${useSameAsUrl ? 'sameAs' : 'url'}" value="${strWebsiteUrl}" />
 
-    <cms:jsonvalue key="telephone"      value="${contact.Phone.isSet ? contact.Phone.toString : (contact.Mobile.isSet ? contact.Mobile.toString : null)}" />
-    <cms:jsonvalue key="faxNumber"      value="${contact.Fax.isSet ? contact.Fax.toString : null}" />
-
-    <cms:jsonvalue key="email"          value="${contact.Email.value.Email.isSet and not contact.Email.value.ObfuscateEmail.toBoolean ? contact.Email.value.Email.toString : null}" />
-
-    <cms:jsonvalue key="url"            value="${strWebsiteUrl}" />
-    <cms:jsonvalue key="image"          value="${strImageUrl}" />
+    <c:if test="${showContactAndImage}">
+        <cms:jsonvalue key="telephone"      value="${contact.Phone.isSet ? contact.Phone.toString : (contact.Mobile.isSet ? contact.Mobile.toString : null)}" />
+        <cms:jsonvalue key="faxNumber"      value="${contact.Fax.isSet ? contact.Fax.toString : null}" />
+        <cms:jsonvalue key="email"          value="${contact.Email.value.Email.isSet and not contact.Email.value.ObfuscateEmail.toBoolean ? contact.Email.value.Email.toString : null}" />
+        <cms:jsonvalue key="image"          value="${strImageUrl}" />
+    </c:if>
 
     <c:if test="${showAddress}">
          <%-- Do not include address here. Reason: This will be called from data-person where the address is already included. --%>
@@ -99,7 +106,7 @@
 
 <c:choose>
     <c:when test="${storeOrgJsonLdObject}">
-        <c:set var="orgJsonLd" value="${jsonLd}" />
+        <c:set var="orgJsonLd" value="${jsonLd.json}" />
     </c:when>
     <c:otherwise>
         <script type="application/ld+json"><%----%>

@@ -314,6 +314,11 @@ $oct-edit-infos:
         background-color: $con-col-red !important;
         background: linear-gradient(166deg, lighten($con-col-red, 5%) 0%, darken($con-col-red, 5%) 100%) !important;
     }
+
+    &.padded {
+        margin-top: 10px;
+        padding: 10px;
+    }
 }
 
 .btn.oct-meta-info {

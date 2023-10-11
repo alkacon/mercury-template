@@ -1,0 +1,89 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="MonetaryAmountData" type="OpenCmsMonetaryAmountData"/>
+
+    <xsd:complexType name="OpenCmsMonetaryAmountData">
+        <xsd:sequence>
+            <xsd:element name="MonetaryAmount" type="OpenCmsMonetaryAmount" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsMonetaryAmount">
+        <xsd:sequence>
+            <xsd:element name="MinValue" type="OpenCmsString" />
+            <xsd:element name="MaxValue" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="UnitText" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Currency" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>MinValue</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MonetaryAmount.MinValue)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MonetaryAmount.Value.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^[1-9]\d*$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.needPositiveNumber)]]></Error>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>MaxValue</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MonetaryAmount.MaxValue)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MonetaryAmount.Value.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^[1-9]\d*$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.needPositiveNumber)]]></Error>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>UnitText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MonetaryAmount.UnitText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MonetaryAmount.UnitText.help)]]></Description>
+                    <Widget><![CDATA[select]]></Widget>
+                    <Default><![CDATA[YEAR]]></Default>
+                    <WidgetConfig><![CDATA[
+                        YEAR:   %(key.msg.quantitativeValue.year)|
+                        MONTH:  %(key.msg.quantitativeValue.month)|
+                        WEEK:   %(key.msg.quantitativeValue.week)|
+                        DAY:    %(key.msg.quantitativeValue.day)|
+                        HOUR:   %(key.msg.quantitativeValue.hour)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>Currency</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Costs.Currency)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Costs.Currency.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <Default><![CDATA[EUR]]></Default>
+                    <WidgetConfig><![CDATA[
+                        EUR:    Euro €|
+                        USD:    US-Dollar $|
+                        GBP:    Britisches Pfund £|
+                        CHF:    Schweizer Franken
+                    ]]></WidgetConfig>
+                    <RuleRegex>^[A-Z]{3}$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Currency)]]></Error>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

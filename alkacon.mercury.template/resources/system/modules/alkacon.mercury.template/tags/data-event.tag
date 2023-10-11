@@ -105,7 +105,7 @@
                 <cms:jsonvalue key="@type" value="Offer" />
                 <cms:jsonvalue key="description" value="${costs.value.Label.toString}" />
                 <cms:jsonvalue key="price" value="${fn:replace(costs.value.Price.toString, ',', '.')}" />
-                <cms:jsonvalue key="priceCurrency" value="${costs.value.Currency.isSet ? costs.value.Currency.toString : null}" />
+                <cms:jsonvalue key="priceCurrency" value="${costs.value.Currency.isSet ? costs.value.Currency.toString : 'EUR'}" />
                 <cms:jsonvalue key="url" value="${costs.value.LinkToPaymentService.value.URI.isSet ? costs.value.LinkToPaymentService.value.URI.toLink : null}" />
             </cms:jsonobject>
         </c:forEach>

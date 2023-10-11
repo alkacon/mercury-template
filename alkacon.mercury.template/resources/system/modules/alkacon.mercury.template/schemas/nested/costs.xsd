@@ -56,9 +56,9 @@
                     <Widget>selectcombo</Widget>
                     <Default><![CDATA[EUR]]></Default>
                     <WidgetConfig><![CDATA[
-                        EUR:    Euro|
-                        USD:    US-Dollar|
-                        GBP:    Britisches Pfund|
+                        EUR:    Euro €|
+                        USD:    US-Dollar $|
+                        GBP:    Britisches Pfund £|
                         CHF:    Schweizer Franken
                     ]]></WidgetConfig>
                     <RuleRegex>^[A-Z]{3}$</RuleRegex>

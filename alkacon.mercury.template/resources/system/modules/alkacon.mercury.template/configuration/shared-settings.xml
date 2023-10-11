@@ -1220,6 +1220,14 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showMetaSummary.true]]></IncludeName>
+      <PropertyName><![CDATA[showMetaSummary]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showMetaSummary)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showMetaSummary.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showCosts.true]]></IncludeName>
       <PropertyName><![CDATA[showCosts]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showCosts)]]></DisplayName>

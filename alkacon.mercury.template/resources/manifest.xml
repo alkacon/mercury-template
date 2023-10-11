@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>16.0.5</version>
+		<version>16.0.11</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6969,6 +6969,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/monetary-amount.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/monetary-amount.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>180fb60f-68eb-11ee-86ef-0242ac11002b</uuidstructure>
+			<uuidresource>180fb610-68eb-11ee-86ef-0242ac11002b</uuidresource>
+			<datecreated>Thu, 12 Oct 2023 10:35:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for monetary amount (schema.org)]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/navigation-collection.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/navigation-collection.xsd</destination>
 			<type>plain</type>
@@ -7660,6 +7677,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Generates schema.org data jobs]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/data-meta-check.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/data-meta-check.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>8b29af8b-69c6-11ee-86ef-0242ac11002b</uuidstructure>
+			<uuidresource>8b29af8c-69c6-11ee-86ef-0242ac11002b</uuidresource>
+			<datecreated>Fri, 13 Oct 2023 12:46:35 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays meta informations in edit mode]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

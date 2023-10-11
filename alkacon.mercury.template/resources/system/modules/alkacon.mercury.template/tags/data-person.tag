@@ -24,7 +24,7 @@
     If this is set to 'true', no output is written, only the object is generated and stored in the variable.
     Default is 'false' if not provided." %>
 
-<%@ variable name-given="persJsonLd" scope="AT_END" declare="true" variable-class="org.opencms.jsp.util.CmsJspJsonWrapper"
+<%@ variable name-given="persJsonLd" scope="AT_END" declare="true" variable-class="org.opencms.json.JSONObject"
     description="A JSON-LD object created for the person.
     This will only be created if the attribute 'storePersJsonLdObject' has been set to 'true'." %>
 

@@ -23,13 +23,13 @@
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Date" type="OpenCmsDateTime" />
             <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MetaInfoJob" type="OpenCmsJobMetaInfo" minOccurs="0" />
             <xsd:element name="Introduction" type="OpenCmsParagraph" />
             <xsd:element name="Text" type="OpenCmsParagraph"  minOccurs="0" maxOccurs="100" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
-            <xsd:element name="MetaInfoJob" type="OpenCmsJobMetaInfo" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
@@ -77,6 +77,7 @@
                     <Description><![CDATA[%(key.label.Job.Date.help)]]></Description>
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime)]]></Default>
+                    <WidgetConfig>{fixedTime: "00:00"}</WidgetConfig>
                     <Search>listdate</Search>
                     <Synchronization>true</Synchronization>
                 </Setting>
@@ -85,6 +86,11 @@
                     <DisplayName><![CDATA[%(key.label.Job.Type)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Job.Type.help)]]></Description>
                     <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>MetaInfoJob</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Job)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Job.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Introduction</PropertyName>
@@ -125,11 +131,6 @@
                     <PropertyName>MetaInfo</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MetaInfo)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.help)]]></Description>
-                </Setting>
-                <Setting>
-                    <PropertyName>MetaInfoJob</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MetaInfo.Additional)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.MetaInfo.Additional.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Availability</PropertyName>

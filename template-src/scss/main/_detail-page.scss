@@ -260,3 +260,35 @@ html.opencms-page-editor {
         background-image: $disabled-bg;
     }
 }
+
+// meta information display (currently used for jobs only)
+.meta-info-check {
+    &.mi-valid {
+        .ico {
+            color: $con-col-cyan;
+        }
+    }
+    &.mi-invalid {
+        &.mi-required {
+            .mi-notice,
+            .ico {
+                color: $con-col-red;
+            }
+        }
+        &.mi-optional {
+            .mi-notice,
+            .ico {
+                color: $con-col-orange;
+            }
+        }
+    }
+    .ico {
+        min-width: calc(2 * var(--#{$prefix}ws-margin));
+    }
+    .mi-label {
+        font-weight: var(--#{$prefix}font-weight-bold);
+    }
+    .mi-notice {
+        margin-left: var(--#{$prefix}ws-margin);
+    }
+}

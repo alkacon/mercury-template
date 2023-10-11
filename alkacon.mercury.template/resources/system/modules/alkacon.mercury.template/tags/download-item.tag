@@ -88,7 +88,7 @@
         <c:set var="resTitle"           value="${empty resTitle ? propertiesLocale['Title'] : resTitle}" />
         <c:set var="resDescription"     value="${empty resDescription ? propertiesLocale['Description'] : resDescription}" />
         <c:set var="resCopyright"       value="${empty resCopyright ? propertiesLocale['Copyright'] : resCopyright}" />
-        <c:set var="resDate"            value="${empty resDate ? res.dateLastModified : resDate}" />
+        <c:set var="resDate"            value="${empty resDate ? (res.dateReleased != 0 ? res.dateReleased : res.dateLastModified) : resDate}" />
     </c:when>
     <c:otherwise>
         <%

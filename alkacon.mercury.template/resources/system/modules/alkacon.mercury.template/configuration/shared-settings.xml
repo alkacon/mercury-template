@@ -3758,6 +3758,52 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[spaceMobile.default]]></IncludeName>
+      <PropertyName><![CDATA[spaceMobile]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.spaceMobile)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.spaceMobile.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[md]]></Default>
+      <WidgetConfig><![CDATA[
+            xs: %(key.msg.setting.space.xs)|
+            sm: %(key.msg.setting.space.sm)|
+            md: %(key.msg.setting.space.md)|
+            lg: %(key.msg.setting.space.lg)|
+            xl: %(key.msg.setting.space.xl)|
+            none: %(key.msg.setting.space.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[spaceDesktop.default]]></IncludeName>
+      <PropertyName><![CDATA[spaceDesktop]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.spaceDesktop)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.spaceDesktop.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[mobile]]></Default>
+      <WidgetConfig><![CDATA[
+            mobile: %(key.msg.setting.space.mobile)|
+            xs: %(key.msg.setting.space.xs)|
+            sm: %(key.msg.setting.space.sm)|
+            md: %(key.msg.setting.space.md)|
+            lg: %(key.msg.setting.space.lg)|
+            xl: %(key.msg.setting.space.xl)|
+            none: %(key.msg.setting.space.none)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[spaceColor.default]]></IncludeName>
+      <PropertyName><![CDATA[spaceColor]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.spaceColor)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.spaceColor.help)]]></Description>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <WidgetConfig><![CDATA[
+        box-high:       %(key.msg.setting.cssWrapper.color.highlight)|
+        box-theme:      %(key.msg.setting.cssWrapper.color.theme)|
+        box-body:       %(key.msg.setting.cssWrapper.color.body)|
+        box-dark:       %(key.msg.setting.cssWrapper.color.dark)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[wallsioRemoveMargin.default]]></IncludeName>
       <PropertyName><![CDATA[wallsioRemoveMargin]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.wallsioRemoveMargin)]]></DisplayName>

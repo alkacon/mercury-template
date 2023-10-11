@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FunctionConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.containerpage/schemas/function-v2.xsd">
+  <FunctionConfig language="en">
+    <NiceName><![CDATA[%(key.function.spacer)]]></NiceName>
+    <Key><![CDATA[m/functions/spacer]]></Key>
+    <Jsp>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/functions/spacer.jsp]]></target>
+        <uuid>498b1864-680d-11ee-998f-0242ac11002b</uuid>
+      </link>
+    </Jsp>
+    <Description><![CDATA[%(key.function.spacer.help)]]></Description>
+    <Match>
+      <Types>
+        <ContainerType><![CDATA[area]]></ContainerType>
+        <ContainerType><![CDATA[row]]></ContainerType>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
+      </Types>
+    </Match>
+    <StrictContainers>true</StrictContainers>
+    <IncludeSettings>
+      <link type="WEAK">
+        <target><![CDATA[/system/modules/alkacon.mercury.template/configuration/shared-settings.xml]]></target>
+        <uuid>77009936-87a5-42b3-86ff-90252ede0593</uuid>
+      </link>
+    </IncludeSettings>
+    <Setting>
+      <IncludeName><![CDATA[spaceMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[spaceDesktop.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[spaceColor.default]]></IncludeName>
+    </Setting>
+  </FunctionConfig>
+</FunctionConfigs>

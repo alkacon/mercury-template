@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>16.0.0</version>
+		<version>16.0.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -5795,6 +5795,52 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[true]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/spacer.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/functions/spacer.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>498b1864-680d-11ee-998f-0242ac11002b</uuidstructure>
+			<uuidresource>498b1865-680d-11ee-998f-0242ac11002b</uuidresource>
+			<datecreated>Wed, 11 Oct 2023 08:07:57 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[never]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/functions/spacer.xml</source>
+			<destination>system/modules/alkacon.mercury.template/functions/spacer.xml</destination>
+			<type>function_config</type>
+			<uuidstructure>4e89a118-680d-11ee-998f-0242ac11002b</uuidstructure>
+			<uuidresource>4e89a119-680d-11ee-998f-0242ac11002b</uuidresource>
+			<datecreated>Wed, 11 Oct 2023 08:08:05 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Spacer between elements]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
 				</property>
 			</properties>
 			<relations/>

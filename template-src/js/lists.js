@@ -390,6 +390,11 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
                 if (!isNaN(pageFromParam) && pageFromParam > 1) {
                     page = pageFromParam;
                 }
+                if(list.loadAll) {
+                    const params = new URLSearchParams(searchStateParameters);
+                    params.delete('page');
+                    searchStateParameters = params.toString();
+                }
             }
             if (DEBUG) console.info("Lists.updateInnerList() showing page " + page);
 
@@ -481,7 +486,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     // initial list load:
     // entries are already there, if there are no groups in the result we can skip the reload
     // but never skip if all items are displayed
-    var skipInitialLoad = list.initialLoad && !hasGroups && !list.loadAll;
+    var skipInitialLoad = list.initialLoad && !hasGroups && !list.loadAll && page == 1;
     list.initialLoad = false;
     if (DEBUG && skipInitialLoad) console.info("Lists.generateListHtml() Skipping initial reload for list=" + list.id);
 
@@ -584,6 +589,28 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
             }
         }
     }
+
+    updateURLPageMarker(list,page);
+}
+
+/**
+ * Replaces the current URL by setting an url parameter keeping the current page of the list.
+ * @param {List} list the list to update the page data for.
+ * @param {number} page the new current page.
+ */
+function updateURLPageMarker(list, page) {
+    if (DEBUG) console.info("Lists.updateURLPageMarker() called");
+    const currentUrl = new URL(window.location.href);
+    const currentParams = currentUrl.searchParams;
+    const paramName = 'p_' + list.elementId;
+    if(page > 1) {
+        currentParams.set(paramName, page);
+    } else if (currentParams.has(paramName)) {
+        currentParams.delete(paramName);
+    }
+    // We could either use pushState or replaceState.
+    // It depends if each page switch should be kept in the history
+    window.history.replaceState({}, null, currentUrl.toString());
 }
 
 /**
@@ -607,6 +634,9 @@ function updatePageData(list, page) {
     if (pageData.end > pageData.found) {
         pageData.end = pageData.found;
     }
+
+    updateURLPageMarker(list,page);
+
     if (null != list.paginationCallback) {
         list.paginationCallback(pageData);
     }
@@ -1110,6 +1140,7 @@ export function switchPage(id, page) {
     if (!paginationString.empty) {
         jQ(paginationString).appendTo(list.$pagination);
     }
+
     // there may be media elements in the list
     Mercury.update('#' + list.id);
     if (! list.$element.visible()) {
@@ -1186,6 +1217,7 @@ export function init(jQuery, debug) {
     var $listElements = jQ('.list-dynamic');
     if (DEBUG) console.info("Lists.init() .list-dynamic elements found: " + $listElements.length);
 
+    const urlParams = (new URL(window.location.href)).searchParams;
     if ($listElements.length > 0 ) {
         $listElements.each(function() {
 
@@ -1252,6 +1284,10 @@ export function init(jQuery, debug) {
             if (typeof list.initparams !== "undefined") {
                 initParams = list.initparams;
                 if (DEBUG) console.info("Lists.init() Data init params - " + initParams);
+            }
+            const pageParam = 'p_' + list.elementId;
+            if(urlParams.has(pageParam)) {
+                initParams = 'page=' + urlParams.get(pageParam) + (initParams == '' ? '' : ('&' + initParams));
             }
             // load the initial list
             updateInnerList(list.id, initParams, true);

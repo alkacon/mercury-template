@@ -326,9 +326,10 @@ function updateDirectLink(filter, searchStateParameters) {
  * @param {string} id the lists id.
  * @param {string} searchStateParameters the search state parameters.
  * @param {boolean} reloadEntries flag, indicating if the shown list entries should be reloaded (in contrast to appending new ones only).
+ * @param {boolean} isInitialLoad flag, indicating if this is the first load for the list after the page was originally loaded.
  * @returns {void}
  */
-function updateInnerList(id, searchStateParameters, reloadEntries) {
+function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad = false) {
     searchStateParameters = searchStateParameters || "";
     reloadEntries = reloadEntries || false;
 
@@ -398,13 +399,46 @@ function updateInnerList(id, searchStateParameters, reloadEntries) {
             }
             if (DEBUG) console.info("Lists.updateInnerList() showing page " + page);
 
-            jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
-                generateListHtml(list, reloadEntries, ajaxListHtml, page)
-            }, "html");
+            const shouldLoadMultiplePages = isInitialLoad && !list.reloadEntries && page > 1 && !list.loadAll;
+            if (shouldLoadMultiplePages) {
+                const params = new URLSearchParams(searchStateParameters);
+                loadMultiplePages(list, ajaxOptions, params, 1, page);
+            } else {
+                jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
+                    generateListHtml(list, reloadEntries, ajaxListHtml, page)
+                }, "html");
+            }
         }
     }
 }
 
+/**
+ * Loads all pages from the current to the last one.
+ * This function should only be used for a list with append as option that does not load all entries at once
+ * but initially should load more than the first page.
+ *
+ * @param {List} list the list to generate the link for.
+ * @param {string} ajaxOptions the ajax options to pass with the link as parameters.
+ * @param {URLSearchParams} searchStateParameters the search state parameters to pass with the link.
+ * @param {number} currentPage the page to load next
+ * @param {number} lastPage the last page to load
+ * @param {number} lastHeight the current height of the list
+ * @returns {string} the AJAX link.
+ */
+function loadMultiplePages(list, ajaxOptions, searchStateParameters, currentPage, lastPage, lastHeight = 0) {
+    if(currentPage <= lastPage) {
+        searchStateParameters.set('page', currentPage);
+        jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters.toString()), function(ajaxListHtml) {
+            generateListHtml(list, false, ajaxListHtml, currentPage);
+            if(list.pageData && list.pageData.pages && list.pageData.pages > currentPage && currentPage < lastPage) {
+                lastHeight = list.$element.height();
+                loadMultiplePages(list, ajaxOptions, searchStateParameters, currentPage+1, lastPage, lastHeight);
+            } else {
+                Mercury.scrollToAnchor(list.$element, lastHeight - 20);
+            }
+        }, "html");
+    }
+}
 /**
  * Generates the AJAX link to call to retrieve the list entries and pagination for the
  * provided state.
@@ -1290,7 +1324,7 @@ export function init(jQuery, debug) {
                 initParams = 'page=' + urlParams.get(pageParam) + (initParams == '' ? '' : ('&' + initParams));
             }
             // load the initial list
-            updateInnerList(list.id, initParams, true);
+            updateInnerList(list.id, initParams, true, true);
         });
 
         if (m_autoLoadLists.length > 0) {

@@ -99,7 +99,7 @@
     <MetaMapping>
       <Key><![CDATA[Robots]]></Key>
       <Element><![CDATA[MetaInfo/Robots]]></Element>
-      <Order><![CDATA[4900]]></Order>
+      <Order><![CDATA[4800]]></Order>
     </MetaMapping>
     <MetaMapping>
       <Key><![CDATA[ogIntroTeaser]]></Key>

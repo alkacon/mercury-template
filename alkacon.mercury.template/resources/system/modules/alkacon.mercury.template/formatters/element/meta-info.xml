@@ -39,6 +39,11 @@
       <Order><![CDATA[9000]]></Order>
     </MetaMapping>
     <MetaMapping>
+      <Key><![CDATA[Robots]]></Key>
+      <Element><![CDATA[Robots]]></Element>
+      <Order><![CDATA[9000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
       <Key><![CDATA[ogImage]]></Key>
       <Element><![CDATA[Image]]></Element>
       <Order><![CDATA[9000]]></Order>

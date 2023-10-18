@@ -15,6 +15,7 @@
             <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Description" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Keywords" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Robots" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -41,6 +42,20 @@
                     <Description><![CDATA[%(key.label.MetaInfo.Detail.Keywords.help)]]></Description>
                     <Widget>textarea</Widget>
                     <WidgetConfig>4|proportional</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Robots</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Robots)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Robots.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <Default><![CDATA[index, follow]]></Default>
+                    <WidgetConfig><![CDATA[
+                        index, follow:%(key.label.MetaInfo.Robots.all)|
+                        noindex, nofollow:%(key.label.MetaInfo.Robots.none)|
+                        index, nofollow:%(key.label.MetaInfo.Robots.nofollow)|
+                        noindex, follow:%(key.label.MetaInfo.Robots.noindex)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

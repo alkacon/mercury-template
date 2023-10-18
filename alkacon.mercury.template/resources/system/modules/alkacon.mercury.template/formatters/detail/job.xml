@@ -103,6 +103,11 @@
       <Order><![CDATA[4600]]></Order>
     </MetaMapping>
     <MetaMapping>
+      <Key><![CDATA[Robots]]></Key>
+      <Element><![CDATA[MetaInfo/Robots]]></Element>
+      <Order><![CDATA[4900]]></Order>
+    </MetaMapping>
+    <MetaMapping>
       <Key><![CDATA[ogIntroTeaser]]></Key>
       <Element><![CDATA[TeaserData/TeaserIntro]]></Element>
       <Order><![CDATA[4600]]></Order>

@@ -66,6 +66,15 @@ to find a sentence end.
     </c:otherwise>
 </c:choose>
 
+<c:choose>
+    <c:when test="${not empty cms.meta.Robots}">
+        <c:set var="pagerobots"><mercury:meta-value text="${cms.meta.Robots}" /></c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="pagerobots">index, follow</c:set>
+    </c:otherwise>
+</c:choose>
+
 <%-- ###### Default page meta infos ###### --%>
 
 <meta charset="${cms.requestContext.encoding}">
@@ -74,7 +83,7 @@ to find a sentence end.
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <c:if test="${not empty pagedesc}"><meta name="description" content="${pagedesc}">${nl}</c:if>
 <c:if test="${not empty pagekeywords}"><meta name="keywords" content="${pagekeywords}">${nl}</c:if>
-<meta name="robots" content="index, follow">
+<meta name="robots" content="${pagerobots}">
 <meta name="revisit-after" content="7 days">
 
 <%-- ###### Facebook open graph meta infos ###### --%>

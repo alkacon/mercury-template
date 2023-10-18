@@ -48,7 +48,7 @@
         <c:set var="compatibilityKey" value="${type.contentValue.formatterId}_displayType" />
         <c:set var="configuredGroup" value="${settings[compatibilityKey]}" />
 
-        <c:if test="${fn:contains(configuredGroup,':')}">
+        <c:if test="${(not empty customType) or fn:contains(configuredGroup,':')}">
             <c:set var="configuredList" value="${fn:substringBefore(configuredGroup, ':')}" />
             <c:set var="configuredGroup" value="${fn:substringAfter(configuredGroup, ':')}" />
             <c:if test="${requiredListType ne configuredList}">

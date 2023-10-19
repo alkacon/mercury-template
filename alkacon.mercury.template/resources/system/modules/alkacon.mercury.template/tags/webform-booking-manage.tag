@@ -152,25 +152,32 @@
             <c:otherwise>
             <c:set var="id1"><mercury:idgen prefix="wf1" uuid="${cms.element.id}" /></c:set>
             <div class="subelement"><%----%>
-                <h3><%----%>
-                    <c:choose>
-                        <c:when test="${status.hasUnlimitedPlaces}">
-                            <fmt:message key="msg.page.form.bookingstatus.participant.label" /> (${status.numParticipants})<%----%>
-                        </c:when>
-                        <c:otherwise>
-                            <fmt:message key="msg.page.form.bookingstatus.participant.label" /> (${status.numParticipants}/${status.maxRegularPlaces})<%----%>
-                        </c:otherwise>
-                    </c:choose>
-                </h3><%----%>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3><%----%>
+                            <c:choose>
+                                <c:when test="${status.hasUnlimitedPlaces}">
+                                    <fmt:message key="msg.page.form.bookingstatus.participant.label" /> (${status.numParticipants})<%----%>
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:message key="msg.page.form.bookingstatus.participant.label" /> (${status.numParticipants}/${status.maxRegularPlaces})<%----%>
+                                </c:otherwise>
+                            </c:choose>
+                        </h3><%----%>
+                    </div>
+                    <div class="acco-item-select col-md-6"><%----%>
+                        <a href="#" class="btn btn-xs oct-meta-info acco-item-select-start">
+                            <fmt:message key="msg.page.form.submission.select" />
+                        </a><%----%>
+                        <a href="#" class="btn btn-xs oct-meta-info acco-item-select-all">
+                            <fmt:message key="msg.page.form.submission.select.all" />
+                        </a><%----%>
+                        <a href="#" class="btn btn-xs oct-meta-info acco-item-select-none">
+                            <fmt:message key="msg.page.form.submission.select.none" />
+                        </a><%----%>
+                    </div><%----%>
+                </div>
                 <div class=list-box><%----%>
-                    <c:if test="${not hasBooking}">
-                        <div class="form-check">
-                            <input class="form-check-input acco-item-check-all" type="checkbox" checked>
-                            <label class="form-check-label">
-                                <fmt:message key="msg.page.form.submission.select.all" />
-                            </label>
-                        </div>
-                    </c:if>
                     <div class="list-entries accordion-items" id="${id1}"><%----%>
                         <c:forEach var="dataBean" items="${status.participants}" varStatus="stat">
                             <cms:display value="${dataBean.file.structureId}" editable="true" delete="${not hasBooking}">
@@ -183,7 +190,7 @@
                             </cms:display>
                         </c:forEach>
                         <c:forEach var="otherParticipant" begin="1" end="${status.numOtherSubmissions}">
-                            <div class="accordion acco-items-check"><%----%>
+                            <div class="accordion"><%----%>
                                 <div class="acco-header"><%----%>
                                     <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${id1}" href="#other${id1}${otherParticipant}"><%----%>
                                         <div><fmt:message key="msg.page.form.bookingstatus.reservedplace.label" /></div><%----%>
@@ -247,19 +254,10 @@
                <c:set var="excelLink">/system/modules/alkacon.mercury.webform/elements/formdata.xlsx?f=${formId}&b=${bookingId}&__locale=${cms.locale}</c:set>
                <c:set var="csvExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.csv']}" />
                <c:set var="excelExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
-               <div class="pull-right"><%----%>
-                   <c:choose>
-                       <c:when test="${hasBooking}">
-                           <span class="mr-5"><%----%>
-                               <fmt:message key="msg.page.form.label.submissions.export" />
-                           </span><%----%>
-                       </c:when>
-                       <c:otherwise>
-                           <span class="mr-5"><%----%>
-                               <fmt:message key="msg.page.form.label.submissions.selected.export" />
-                           </span><%----%>
-                       </c:otherwise>
-                   </c:choose>
+               <div><%----%>
+                   <span class="mr-5"><%----%>
+                       <fmt:message key="msg.page.form.label.submissions.export" />
+                   </span><%----%>
                    <c:set var="link"><cms:link>${csvLink}</cms:link></c:set>
                    <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5 btn-export-csv">
                        <fmt:message key="msg.page.form.button.submissions.csv" />

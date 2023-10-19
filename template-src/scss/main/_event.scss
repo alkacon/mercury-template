@@ -248,15 +248,54 @@ table.submissions {
     }
 }
 
-.accordion.acco-items-check {
+.formdata-manage {
 
-    .acco-item-check {
-        position: absolute;
-        z-index: calc($overflow-z-index + 1);
+    .acco-header {
+
+        .acco-toggle {
+            padding-right: calc(6rem + var(--my-at-spacing-x)) !important;
+        }
     }
 
-    .acco-toggle {
-        padding-left: calc(2 * var(--#{$prefix}at-spacing-x)) !important;
+    .acco-item-select {
+        text-align: right;
+    }
+
+    .acco-item-select > a {
+        margin-left: var(--#{$prefix}default-margin-verysmall);
+        margin-bottom: var(--#{$prefix}default-margin-verysmall);
+        vertical-align: bottom;
+    }
+
+    .acco-item-select-all, .acco-item-select-none {
+        display: none;
+    }
+
+    .acco-item-check-wrapper {
+        line-height: 1;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        height: 100%;
+        right: calc(3rem + var(--#{$prefix}at-spacing-x));
+        z-index: calc($overflow-z-index + 20);
+    }
+    
+    .acco-item-check {
+        scale: 1.4;
+        display: none;
+    }
+}
+
+@include media-breakpoint-up(md) {
+
+    .formdata-manage {
+    
+        .acco-item-select {
+            margin-top: 2rem;
+        }
     }
 }
 

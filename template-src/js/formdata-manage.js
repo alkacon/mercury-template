@@ -55,26 +55,27 @@ class SubmissionsSelect {
     constructor(element) {
         this.m_buttonExportCsv = element.querySelector(".btn-export-csv");
         this.m_buttonExportExcel = element.querySelector(".btn-export-excel");
-        this.m_checkAll = element.querySelector(".acco-item-check-all");
+        this.m_itemSelectStart = element.querySelector(".acco-item-select-start");
+        this.m_itemSelectAll = element.querySelector(".acco-item-select-all");
+        this.m_itemSelectNone = element.querySelector(".acco-item-select-none");
         this.m_checkbox = element.querySelectorAll(".acco-item-check");
-        const valid = this.m_buttonExportCsv && this.m_buttonExportExcel && this.m_checkAll && this.m_checkbox;
+        const valid = this.m_buttonExportCsv && this.m_buttonExportExcel
+                && this.m_itemSelectStart && this.m_itemSelectAll && this.m_itemSelectNone;
         if (valid) {
             this.m_buttonExportCsv.addEventListener("click", (event) => this.onExport(event) );
             this.m_buttonExportExcel.addEventListener("click", (event) => this.onExport(event) );
-            this.m_checkAll.addEventListener("change", (event) => this.onCheckAll(event) );
+            this.m_itemSelectStart.addEventListener("click", (event) => this.onSelectStart(event) );
+            this.m_itemSelectAll.addEventListener("click", (event) => this.onSelectAll(event) );
+            this.m_itemSelectNone.addEventListener("click", (event) => this.onSelectNone(event) );
+            this.m_itemSelectAll.style.display = "none";
+            this.m_itemSelectNone.style.display = "none";
         }
     }
 
     /**
-     * Checks or unchecks all chechboxes.
-     * @param check whether to check or uncheck
+     * Creates and configures a HTTP client.
+     * @param url The URL to configure the HTTP client for
      */
-    checkAll(check) {
-        this.m_checkbox.forEach(checkbox => {
-            checkbox.checked = check;
-        });
-    }
-    
     createHttpRequest(url) {
         const httpRequest = new XMLHttpRequest();
         httpRequest.open("POST", url, true);
@@ -97,11 +98,32 @@ class SubmissionsSelect {
     }
 
     /**
-     * Check all handler.
-     * @param event the event
+     * Select start handler.
      */
-    onCheckAll(event) {
-        this.checkAll(event.target.checked);
+    onSelectStart(event) {
+        event.preventDefault();
+        this.m_itemSelectStart.style.display = "none";
+        this.m_itemSelectAll.style.display = "inline-block";
+        this.m_itemSelectNone.style.display = "inline-block";
+        this.m_checkbox.forEach(checkbox => {
+            checkbox.style.display = "inline-block";
+        });
+    }
+
+    /**
+     * Select all handler.
+     */
+    onSelectAll(event) {
+        event.preventDefault();
+        this.selectAll(true);
+    }
+
+    /**
+     * Select none handler.
+     */
+    onSelectNone(event) {
+        event.preventDefault();
+        this.selectAll(false);
     }
 
     /**
@@ -114,6 +136,8 @@ class SubmissionsSelect {
         const httpRequest = this.createHttpRequest(event.target.href);
         const requestData = this.m_checkbox.length == ids.length ? "" : "formdata=" + ids.join(",");
         httpRequest.send(requestData);
+        console.log(httpRequest);
+        console.log(requestData);
         httpRequest.onload = function onload() {
             const type = this.getResponseHeader("Content-Type");
             const disp = this.getResponseHeader("Content-Disposition");
@@ -134,6 +158,16 @@ class SubmissionsSelect {
             };
             reader.readAsDataURL(blob);
         }
+    }
+
+    /**
+     * Checks or unchecks all chechboxes.
+     * @param check whether to check or uncheck
+     */
+    selectAll(check) {
+        this.m_checkbox.forEach(checkbox => {
+            checkbox.checked = check;
+        });
     }
 }
 

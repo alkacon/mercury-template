@@ -22,9 +22,6 @@
         <div class="acco-header"><%----%>
             <c:set var="parentId" value="${cms.element.settings.id}" />
             <c:set var="itemId" value="${parentId}_${cms.element.settings.index}" />
-            <c:if test="${not param.hasBooking}">
-                <input type="checkbox" class="form-check-input acco-item-check" value="${content.id}" checked><%----%>
-            </c:if>
             <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${parentId}" href="#${itemId}"><%----%>
                 <div><%----%>
                     <c:choose>
@@ -44,6 +41,12 @@
                     </div><%----%>
                 </c:if>
             </a><%----%>
+            <div class="acco-item-check-wrapper"><%----%>
+                <input type="checkbox"
+                       class="form-check-input acco-item-check"
+                       value="${content.id}"
+                       ${bean.cancelled ? '' : 'checked'}>&nbsp;<%----%>
+            </div><%----%>
         </div><%----%>
         <mercury:nl />
 

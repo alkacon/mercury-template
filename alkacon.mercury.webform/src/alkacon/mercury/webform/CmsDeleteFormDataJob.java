@@ -41,7 +41,6 @@ import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -69,57 +68,40 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
     /** Key for the types parameter. */
     public static final String PARAM_TYPES = "types";
 
-    /** The default resource types to read. */
+    /** The resource type to read. */
     public static final String DEFAULT_TYPES = CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA + "," + "a-formdata";
-
-    /** The default folder to read. */
-    public static final String DEFAULT_FOLDER = "/";
-
-    /** The process id. */
-    private String m_pid;
-
-    /** The resource types to read. */
-    private List<String> m_types;
-
-    /** The folder to read. */
-    private String m_folder;
 
     /**
      * @see org.opencms.scheduler.I_CmsScheduledJob#launch(org.opencms.file.CmsObject, java.util.Map)
      */
     public String launch(CmsObject cms, Map<String, String> parameters) throws Exception {
 
-        String randomKey = RandomStringUtils.randomAlphanumeric(6);
-        m_pid = "[" + randomKey + "] ";
-        LOG.info(m_pid + "Parsing parameters for CmsDeleteFormDataJob");
-        parseJobParams(parameters);
-        LOG.info(m_pid + "Starting CmsDeleteFormDataJob");
-        List<CmsResource> resourcesToDelete = collectResources(cms);
-        if (resourcesToDelete.size() == 0) {
-            LOG.info(m_pid + "nothing to delete, exiting...");
-            return "";
+        String typesStr = parameters.get(PARAM_TYPES);
+        if (typesStr == null) {
+            typesStr = DEFAULT_TYPES;
         }
-        deleteResources(cms, resourcesToDelete);
-        return "";
-    }
-
-    /**
-     * Collects all resources that are delete candidates.
-     * @param cms the job's CMS object
-     * @return the collected delete candidates
-     */
-    private List<CmsResource> collectResources(CmsObject cms) {
-
-        List<CmsResource> resourcesToDelete = new ArrayList<CmsResource>();
-        for (String type : m_types) {
+        String randomKey = RandomStringUtils.randomAlphanumeric(6);
+        String p = "[" + randomKey + "] ";
+        LOG.info(p + "Starting CmsDeleteFormDataJob");
+        String folder = parameters.get(PARAM_ROOT_FOLDER);
+        if (folder == null) {
+            folder = "/";
+        }
+        List<CmsResource> resourcesToDelete = new ArrayList<>();
+        for (String type : typesStr.split(",")) {
+            if (!OpenCms.getResourceManager().hasResourceType(type)) {
+                LOG.info(p + "skipping resource type " + type + " because it doesn't exist.");
+                continue;
+            }
             try {
                 List<CmsResource> resources = cms.readResources(
-                    m_folder,
+                    folder,
                     CmsResourceFilter.IGNORE_EXPIRATION.addRequireType(
                         OpenCms.getResourceManager().getResourceType(type)));
-                LOG.info(m_pid + "Found " + resources.size() + " form data resources for type " + type);
+                LOG.info(p + "Found " + resources.size() + " form data resources for type " + type);
+
                 for (CmsResource resource : resources) {
-                    LOG.debug(m_pid + "Processing " + resource.getRootPath());
+                    LOG.debug(p + "Processing " + resource.getRootPath());
                     try {
                         CmsXmlContent content = CmsXmlContentFactory.unmarshal(cms, cms.readFile(resource));
                         long deletionDate = Long.MAX_VALUE;
@@ -129,38 +111,29 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
                                     CmsFormDataBean.PATH_DELETION_DATE,
                                     locale);
                                 deletionDate = Long.parseLong(deletionDateVal.getStringValue(cms));
-                                LOG.info(m_pid + " Deletion date: " + new Date(deletionDate));
+                                LOG.info(p + " Deletion date: " + new Date(deletionDate));
                                 break;
                             }
                         }
                         if (deletionDate < System.currentTimeMillis()) {
                             resourcesToDelete.add(resource);
-                            LOG.info(m_pid + "Adding resource " + resource.getRootPath() + " to deletion list.");
+                            LOG.info(p + "Adding resource " + resource.getRootPath() + " to deletion list.");
                         }
                     } catch (Exception e) {
-                        LOG.error(m_pid + e.getLocalizedMessage(), e);
+                        LOG.error(p + e.getLocalizedMessage(), e);
                     }
                 }
             } catch (Exception e) {
-                LOG.error(m_pid + e.getLocalizedMessage(), e);
+                LOG.error(p + e.getLocalizedMessage(), e);
             }
         }
-        return resourcesToDelete;
-    }
-
-    /**
-     * Deletes all resources that are delete candidates. If all resources of a
-     * folder are deleted, delete the folder as well.
-     * @param cms the CMS object
-     * @param resources the delete candidate resources
-     * @return whether deleting the resources was successful
-     */
-    private void deleteResources(CmsObject cms, List<CmsResource> resources) {
-
+        if (resourcesToDelete.size() == 0) {
+            LOG.info(p + "nothing to delete, exiting...");
+        }
         try {
             CmsObject cmsClone = OpenCms.initCmsObject(cms);
             CmsProject tempProject = cms.createProject(
-                "Form data deletion project " + m_pid,
+                "Form data deletion project " + randomKey,
                 "Form data deletion project",
                 OpenCms.getDefaultUsers().getGroupAdministrators(),
                 OpenCms.getDefaultUsers().getGroupAdministrators(),
@@ -168,16 +141,16 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
             cmsClone.getRequestContext().setCurrentProject(tempProject);
             Set<String> parentFolders = new HashSet<>();
             boolean hasChanges = false;
-            for (CmsResource resource : resources) {
+            for (CmsResource resource : resourcesToDelete) {
                 try {
-                    LOG.info(m_pid + "deleting " + resource.getRootPath());
+                    LOG.info(p + "deleting " + resource.getRootPath());
                     parentFolders.add(CmsResource.getParentFolder(resource.getRootPath()));
                     CmsLockUtil.ensureLock(cmsClone, resource);
                     cmsClone.deleteResource(resource, CmsResource.DELETE_PRESERVE_SIBLINGS);
                     hasChanges = true;
                 } catch (Exception e) {
                     // Errors when deleting individual resources shouldn't keep other resources from being deleted
-                    LOG.error(m_pid + e.getLocalizedMessage(), e);
+                    LOG.error(p + e.getLocalizedMessage(), e);
                 }
             }
             for (String parentFolder : parentFolders) {
@@ -188,22 +161,22 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
                         false);
                     // If all files in folder have the state 'deleted'
                     if (filesInFolder.size() == 0) {
-                        LOG.info(m_pid + "deleting empty folder " + parentFolder);
+                        LOG.info(p + "deleting empty folder " + parentFolder);
                         CmsResource folderRes = cms.readResource(parentFolder, CmsResourceFilter.IGNORE_EXPIRATION);
                         try {
                             CmsLockUtil.ensureLock(cmsClone, folderRes);
                             cmsClone.deleteResource(folderRes, CmsResource.DELETE_PRESERVE_SIBLINGS);
                             hasChanges = true;
                         } catch (Exception e) {
-                            LOG.error(m_pid + e.getLocalizedMessage(), e);
+                            LOG.error(p + e.getLocalizedMessage(), e);
                         }
                     }
                 } catch (Exception e) {
-                    LOG.error(m_pid + e.getLocalizedMessage(), e);
+                    LOG.error(p + e.getLocalizedMessage(), e);
                 }
             }
             if (hasChanges) {
-                LOG.info(m_pid + "publishing changes...");
+                LOG.info(p + "publishing changes...");
                 OpenCms.getPublishManager().publishProject(cmsClone);
             } else {
                 cmsClone = null;
@@ -214,41 +187,9 @@ public class CmsDeleteFormDataJob implements I_CmsScheduledJob {
                 }
             }
         } catch (Exception e) {
-            LOG.error(m_pid + e.getLocalizedMessage(), e);
+            LOG.error(p + e.getLocalizedMessage(), e);
         }
+        return "";
     }
 
-    /**
-     * Parses and initializes the job's parameters.
-     * @param parameters the job's parameters
-     */
-    private void parseJobParams(Map<String, String> parameters) {
-
-        String typesParam = parameters.get(PARAM_TYPES);
-        String types[];
-        if (typesParam != null) {
-            if (typesParam.contains(",")) {
-                types = typesParam.split(",");
-            } else {
-                types = new String[1];
-                types[0] = typesParam;
-            }
-            m_types = new ArrayList<String>();
-            for (String type : types) {
-                if (OpenCms.getResourceManager().hasResourceType(type)) {
-                    m_types.add(type);
-                } else {
-                    LOG.info(m_pid + "skipping resource type " + type + " because it doesn't exist.");
-                }
-            }
-        } else {
-            m_types = Arrays.asList(DEFAULT_TYPES.split(","));
-        }
-        String folderParam = parameters.get(PARAM_ROOT_FOLDER);
-        if (folderParam != null) {
-            m_folder = folderParam;
-        } else {
-            m_folder = DEFAULT_FOLDER;
-        }
-    }
 }

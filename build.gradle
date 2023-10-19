@@ -3,7 +3,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
 buildscript {
     dependencies {
-        classpath group: "org.opencms", name: "opencms-gradle-plugin", version: "2.3"
+        classpath group: "org.opencms", name: "opencms-gradle-plugin", version: "2.+"
     }
     repositories {
         mavenLocal()
@@ -24,3 +24,5 @@ ocDependencies {
 
 // see the output of `./gradlew opencmsPluginDescription` for documentation of the plugin
 apply plugin: 'org.opencms.modules'
+
+

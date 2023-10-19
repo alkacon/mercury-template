@@ -942,6 +942,18 @@ var Mercury = function (jQ) {
             }
         }
 
+        if (requiresModule(".formdata-manage")) {
+            try {
+                import(
+                    /* webpackChunkName: "mercury-formdata-manage" */
+                    "./formdata-manage.js").then(function (FormdataManage) {
+                        FormdataManage.init();
+                    });
+            } catch (err) {
+                console.warn("FormdataManage.init() error", err);
+            }
+        }
+
         try {
             // this must come directly before initFunctions()
             initScripts();

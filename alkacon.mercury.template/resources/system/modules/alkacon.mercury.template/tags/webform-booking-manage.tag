@@ -11,7 +11,7 @@
     This can be an XML content or a CmsResource representing a form, or a path to a form XML configuration." %>
 
 <%@ attribute name="bookingInfo" type="java.lang.Object" required="false"
-    description="For booking forms, an object thet points to the additional booking settings.
+    description="For booking forms, an object that points to the additional booking settings.
     This can be an XML content or a path to a XML configuration that contains booking information." %>
 
 
@@ -26,16 +26,17 @@
 
 <mercury:webform-vars
     webform="${webform}"
-    bookingInfo="${bookingInfo}" >
+    bookingInfo="${bookingInfo}">
 
 <c:if test="${form.userCanManage and not cms.isOnlineProject}">
 
     <c:set var="status" value="${form.submissionStatus}" />
+    <c:set var="hasBooking" value="${not empty formBookingXml}" />
     <fmt:setLocale value="${cms.locale}"/>
     <cms:bundle basename="alkacon.mercury.template.messages">
 
     <mercury:nl />
-    <div class="subelement"><%----%>
+    <div class="subelement formdata-manage"><%----%>
 
         <div class="subelement"><%----%>
             <mercury:link link="${adminLink}" css="btn btn-block oct-meta-info">
@@ -162,19 +163,27 @@
                     </c:choose>
                 </h3><%----%>
                 <div class=list-box><%----%>
+                    <c:if test="${not hasBooking}">
+                        <div class="form-check">
+                            <input class="form-check-input acco-item-check-all" type="checkbox" checked>
+                            <label class="form-check-label">
+                                <fmt:message key="msg.page.form.submission.select.all" />
+                            </label>
+                        </div>
+                    </c:if>
                     <div class="list-entries accordion-items" id="${id1}"><%----%>
                         <c:forEach var="dataBean" items="${status.participants}" varStatus="stat">
-                            <cms:display value="${dataBean.file.structureId}" editable="true" delete="${empty formBookingXml}">
+                            <cms:display value="${dataBean.file.structureId}" editable="true" delete="${not hasBooking}">
                                <cms:param name="index" value="${stat.index}"/>
                                <cms:param name="id" value="${id1}" />
                                <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
                                <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
-                               <cms:param name="hasBooking" value="${not empty formBookingXml}" />
+                               <cms:param name="hasBooking" value="${hasBooking}" />
                             </cms:display>
                         </c:forEach>
                         <c:forEach var="otherParticipant" begin="1" end="${status.numOtherSubmissions}">
-                            <div class="accordion"><%----%>
+                            <div class="accordion acco-items-check"><%----%>
                                 <div class="acco-header"><%----%>
                                     <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${id1}" href="#other${id1}${otherParticipant}"><%----%>
                                         <div><fmt:message key="msg.page.form.bookingstatus.reservedplace.label" /></div><%----%>
@@ -189,7 +198,6 @@
                 </div><%----%>
             </div><%----%>
             <mercury:nl />
-            
             <c:if test="${status.numWaitlistCandidates gt 0}">
                 <c:set var="id2"><mercury:idgen prefix="wf2" uuid="${cms.element.id}" /></c:set>
                 <div class="subelement"><%----%>
@@ -197,18 +205,18 @@
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id2}"><%----%>
                             <c:forEach var="dataBean" items="${status.waitlistCandidates}" varStatus="stat">
-                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="${empty formBookingXml}">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="${not hasBooking}">
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id2}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                    <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
                                    <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
-                                   <cms:param name="hasBooking" value="${not empty formBookingXml}" />
+                                   <cms:param name="hasBooking" value="${hasBooking}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>
                     </div><%----%>
-                </div>
+                </div><%----%>
             </c:if>
             <c:if test="${status.numCancelledSubmissions gt 0}">
                 <c:set var="id3"><mercury:idgen prefix="wf3" uuid="${cms.element.id}" /></c:set>
@@ -217,13 +225,13 @@
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id3}"><%----%>
                             <c:forEach var="dataBean" items="${status.cancelledSubmissions}" varStatus="stat">
-                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="${empty formBookingXml}">
+                                <cms:display value="${dataBean.file.structureId}" editable="true" delete="${not hasBooking}">
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id3}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
                                    <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
                                    <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
-                                   <cms:param name="hasBooking" value="${not empty formBookingXml}" />
+                                   <cms:param name="hasBooking" value="${hasBooking}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>
@@ -240,15 +248,24 @@
                <c:set var="csvExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.csv']}" />
                <c:set var="excelExportConfig" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['webform.exportbean.excel']}" />
                <div class="pull-right"><%----%>
-                   <span class="mr-5"><%----%>
-                       <fmt:message key="msg.page.form.label.submissions.export" />
-                   </span><%----%>
+                   <c:choose>
+                       <c:when test="${hasBooking}">
+                           <span class="mr-5"><%----%>
+                               <fmt:message key="msg.page.form.label.submissions.export" />
+                           </span><%----%>
+                       </c:when>
+                       <c:otherwise>
+                           <span class="mr-5"><%----%>
+                               <fmt:message key="msg.page.form.label.submissions.selected.export" />
+                           </span><%----%>
+                       </c:otherwise>
+                   </c:choose>
                    <c:set var="link"><cms:link>${csvLink}</cms:link></c:set>
-                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
+                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5 btn-export-csv">
                        <fmt:message key="msg.page.form.button.submissions.csv" />
                    </mercury:link><%----%>
                    <c:set var="link"><cms:link>${excelLink}</cms:link></c:set>
-                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">
+                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5 btn-export-excel">
                        <fmt:message key="msg.page.form.button.submissions.excel" />
                    </mercury:link><%----%>
                    <c:if test="${not empty csvExportConfig}">
@@ -268,11 +285,15 @@
                </div><%----%>
             </div><%----%>
             <mercury:nl />
-            <c:if test="${not empty formBookingXml and not empty form.submissions}">
-                <div class="submission-actions subelement">
+            <c:if test="${hasBooking and not empty form.submissions}">
+                <div class="submission-actions subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.delete.label" /></h3><%----%>
                     <p><fmt:message key="msg.page.form.label.submissions.deleteAll" /><button id="deleteAll_button_${bookingId}" class="btn btn-xs oct-meta-info ml-5"><fmt:message key="msg.page.form.submission.action.deleteAll" /></button><%----%></p>
-                    <dialog id="deleteAll_dialog_${bookingId}"><%----%>
+                    <dialog id="deleteAll_dialog_${bookingId}"
+                                class="submissions-dialog"
+                                data-action="deleteAll"
+                                data-item-id="${bookingId}"
+                                data-content-id="${bookingId}"><%----%>
                         <form method="dialog"><%----%>
                             <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
                             <div><fmt:message key="msg.page.form.submission.ask.deleteAll" /></div><%----%>
@@ -286,8 +307,7 @@
                             </div><%----%>
                         </form><%----%>
                     </dialog><%----%>
-                    <script>new SubmissionsDialog("deleteAll", "${bookingId}", "${bookingId}")</script><%----%>
-                </div>
+                </div><%----%>
             </c:if>
             <mercury:nl />
             </c:otherwise>

@@ -248,6 +248,18 @@ table.submissions {
     }
 }
 
+.accordion.acco-items-check {
+
+    .acco-item-check {
+        position: absolute;
+        z-index: calc($overflow-z-index + 1);
+    }
+
+    .acco-toggle {
+        padding-left: calc(2 * var(--#{$prefix}at-spacing-x)) !important;
+    }
+}
+
 .tile-col .book-info {
     .book-msg {
         &::after {

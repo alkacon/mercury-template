@@ -19,7 +19,14 @@
         <c:set var="configuredExportBean" value="${not empty param.exportBean ? param.exportBean : 'alkacon.mercury.webform.CmsExportBeanExcel'}" />
         <c:set var="exportBean" value="${cms.getBean(configuredExportBean)}" />
 
-        ${exportBean.init(form, formTitle, locData, formBookingXml, cms.locale)}
+        <c:choose>
+            <c:when test="${empty param.formdata}">
+                ${exportBean.init(form, formTitle, locData, formBookingXml, cms.locale)}
+            </c:when>
+            <c:otherwise>
+                ${exportBean.init(form, formTitle, locData, formBookingXml, cms.locale, param.formdata)}
+            </c:otherwise>
+        </c:choose>
 
     </c:if>
 

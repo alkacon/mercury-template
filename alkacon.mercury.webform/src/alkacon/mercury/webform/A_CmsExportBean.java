@@ -48,6 +48,7 @@ import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -283,6 +284,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     /** The event content. */
     protected CmsJspContentAccessBean m_eventContent;
 
+    /** The list of form-data IDs to export. */
+    protected List<String> m_formdataIds;
+
     /** The form's title. */
     protected String m_formTitle;
 
@@ -329,11 +333,39 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         CmsJspContentAccessBean eventContent,
         Locale locale) {
 
+        init(form, formTitle, locData, eventContent, locale, null);
+    }
+
+    /**
+     * Initializes this export bean.
+     * @param form the form to export data for.
+     * @param formTitle the form title to print in the export.
+     * @param locData map containing location information
+     * @param eventContent event content bean
+     * @param locale the locale to export the data in.
+     * @param formdataIds comma separated list of form-data IDs to export
+     */
+    public void init(
+        CmsFormBean form,
+        String formTitle,
+        Map<String, String> locData,
+        CmsJspContentAccessBean eventContent,
+        Locale locale,
+        String formdataIds) {
+
         m_form = form;
         m_formTitle = formTitle;
         m_messages = new CmsMessages(BUNDLE_NAME, locale);
         m_locData = locData;
         m_eventContent = eventContent;
+        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(formdataIds)) {
+            if (formdataIds.contains(",")) {
+                m_formdataIds = Arrays.asList(formdataIds.split(","));
+            } else {
+                m_formdataIds = new ArrayList<String>();
+                m_formdataIds.add(formdataIds);
+            }
+        }
         initExportConfigConfig(locale);
         initExportConfigAdd(locale);
         initExportConfigFieldIgnore(locale);
@@ -484,7 +516,17 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
 
         CmsObject cms = getCmsObject();
         List<CmsFormDataBean> formDataBeans = new ArrayList<CmsFormDataBean>();
-        for (CmsResource submission : m_form.getSubmissions()) {
+        List<CmsResource> submissions = m_form.getSubmissions();
+        if (m_formdataIds != null) {
+            List<CmsResource> filtered = new ArrayList<CmsResource>();
+            for (CmsResource submission : submissions) {
+                if (m_formdataIds.contains(submission.getStructureId().toString())) {
+                    filtered.add(submission);
+                }
+            }
+            submissions = filtered;
+        }
+        for (CmsResource submission : submissions) {
             try {
                 I_CmsXmlDocument formDataXml;
                 formDataXml = CmsXmlContentFactory.unmarshal(cms, cms.readFile(submission));

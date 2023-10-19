@@ -17,8 +17,15 @@
 
         <c:set var="configuredExportBean" value="${not empty param.exportBean ? param.exportBean : 'alkacon.mercury.webform.CmsExportBeanCsv'}" />
         <c:set var="exportBean" value="${cms.getBean(configuredExportBean)}" />
+        <c:choose>
+            <c:when test="${empty param.formdata}">
+                ${exportBean.init(form, formTitle, locData, formBookingXml, cms.locale)}
+            </c:when>
+            <c:otherwise>
+                ${exportBean.init(form, formTitle, locData, formBookingXml, cms.locale, param.formdata)}
+            </c:otherwise>
+        </c:choose>
 
-        ${exportBean.init(form, formTitle, locData, formBookingXml, cms.locale)}
         ${exportBean.export().toString()}
 
     </c:if>

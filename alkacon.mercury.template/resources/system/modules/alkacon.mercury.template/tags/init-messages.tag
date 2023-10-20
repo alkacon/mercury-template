@@ -60,7 +60,7 @@
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
         <cms:formatter var="content" val="value">
-            <mercury:alert type="error" css="${css}">
+            <mercury:alert type="error" css="oct-reload ${css}">
                 <jsp:attribute name="head">
                     ${cms.reloadMarker}
                     <fmt:message key="msg.page.mustReload" />

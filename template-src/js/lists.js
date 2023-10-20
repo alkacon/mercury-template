@@ -1142,7 +1142,7 @@ function initScrollPositionTracking() {
         const spInt = parseInt(sp);
         if(DEBUG) console.info('Lists: init scroll position for ' + spInt);
         if (spInt) {
-            window.scrollTo(0,spInt);
+            window.scrollTo({top: spInt, left: 0, behavior: 'smooth'});
         }
     }
 

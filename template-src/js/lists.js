@@ -68,6 +68,10 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {number} found the total number of results.
  * @property {number} start the first result to show on the page.
  * @property {number} end the last result to show on the page.
+ * 
+ * @typedef {Object} InitWaitCallBackHandler Handler to keep track of initialization and trigger an callback when initialization finishes.
+ * @property {() => void} wait start waiting for an initialization action
+ * @property {() => void} ready stop waiting for an initialization action.
  *
  * @callback PaginationCallback
  * @param {PageData} pageData the current state of the list pagination.
@@ -327,9 +331,12 @@ function updateDirectLink(filter, searchStateParameters) {
  * @param {string} searchStateParameters the search state parameters.
  * @param {boolean} reloadEntries flag, indicating if the shown list entries should be reloaded (in contrast to appending new ones only).
  * @param {boolean} isInitialLoad flag, indicating if this is the first load for the list after the page was originally loaded.
+ * @param {InitWaitCallBackHandler} waitHandler optionally to keep an initialization action waiting till the list is updated.
  * @returns {void}
  */
-function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad = false) {
+function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad = false, waitHandler = undefined) {
+
+    if(waitHandler) waitHandler.wait();
     searchStateParameters = searchStateParameters || "";
     reloadEntries = reloadEntries || false;
 
@@ -399,16 +406,18 @@ function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad
             }
             if (DEBUG) console.info("Lists.updateInnerList() showing page " + page);
 
-            const shouldLoadMultiplePages = isInitialLoad && !list.reloadEntries && page > 1 && !list.loadAll;
+            const shouldLoadMultiplePages = isInitialLoad && !list.reloadEntries && page > 1 && list.option === 'append' && !list.loadAll;
             if (shouldLoadMultiplePages) {
                 const params = new URLSearchParams(searchStateParameters);
-                loadMultiplePages(list, ajaxOptions, params, 1, page);
+                loadMultiplePages(list, ajaxOptions, params, 1, page, waitHandler);
             } else {
+                if(waitHandler) waitHandler.wait();
                 jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
-                    generateListHtml(list, reloadEntries, ajaxListHtml, page)
+                    generateListHtml(list, reloadEntries, ajaxListHtml, page, true, waitHandler);
                 }, "html");
             }
         }
+        if(waitHandler) waitHandler.ready();
     }
 }
 
@@ -422,19 +431,17 @@ function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad
  * @param {URLSearchParams} searchStateParameters the search state parameters to pass with the link.
  * @param {number} currentPage the page to load next
  * @param {number} lastPage the last page to load
- * @param {number} lastHeight the current height of the list
+ * @param {InitWaitCallBackHandler} waitHandler optional init wait handler.
  * @returns {string} the AJAX link.
  */
-function loadMultiplePages(list, ajaxOptions, searchStateParameters, currentPage, lastPage, lastHeight = 0) {
+function loadMultiplePages(list, ajaxOptions, searchStateParameters, currentPage, lastPage, waitHandler) {
     if(currentPage <= lastPage) {
         searchStateParameters.set('page', currentPage);
+        if(waitHandler) waitHandler.wait();
         jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters.toString()), function(ajaxListHtml) {
-            generateListHtml(list, false, ajaxListHtml, currentPage);
+            generateListHtml(list, false, ajaxListHtml, currentPage, true, waitHandler);
             if(list.pageData && list.pageData.pages && list.pageData.pages > currentPage && currentPage < lastPage) {
-                lastHeight = list.$element.height();
-                loadMultiplePages(list, ajaxOptions, searchStateParameters, currentPage+1, lastPage, lastHeight);
-            } else {
-                Mercury.scrollToAnchor(list.$element, lastHeight - 20);
+                loadMultiplePages(list, ajaxOptions, searchStateParameters, currentPage+1, lastPage);
             }
         }, "html");
     }
@@ -484,9 +491,11 @@ function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
  * @param {boolean} reloadEntries flag, indicating if the current results should be reloaded/replaced.
  * @param {string} listHtml the list HTML as received from the server.
  * @param {number} page the number of the result page to show.
+ * @param {boolean} isInitialLoad flag, indicating if the generation happens during the initial page load.
+ * @param {InitWaitCallBackHandler} waitHandler optional init wait handler.
  * @returns {void}
 */
-function generateListHtml(list, reloadEntries, listHtml, page) {
+function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = false, waitHandler = undefined) {
     if (DEBUG) console.info("Lists.generateListHtml() called");
 
     var $result = jQ(listHtml);
@@ -615,7 +624,7 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     // there may be media elements in the list
     Mercury.update('#' + list.id);
 
-    if (resultData.reloaded == "true" && reloadEntries) {
+    if (resultData.reloaded == "true" && reloadEntries && !isInitialLoad) {
         if (! list.$element.visible()) {
             if (DEBUG) console.info("Lists.generateListHtml() Scrolling to anchor");
             if (m_flagScrollToAnchor) {
@@ -625,6 +634,8 @@ function generateListHtml(list, reloadEntries, listHtml, page) {
     }
 
     updateURLPageMarker(list,page);
+    // We have to wait till Animations finished.
+    if(waitHandler) setTimeout(waitHandler.ready, 750);
 }
 
 /**
@@ -1115,6 +1126,68 @@ function replaceFilterCounts(filterGroup, ajaxCountJson) {
     })
 }
 
+const scrollListener = () => {
+    const scrollPos = window.scrollY;
+    if(DEBUG) console.log("Lists scrollListener: scrolled to " + scrollPos);
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('_sp', scrollPos);
+    window.history.replaceState({}, null, currentUrl.toString());
+};
+
+function initScrollPositionTracking() {
+    const url = new URL(window.location.href);
+    let spInt = undefined;
+    if (url.searchParams.has('_sp')) {
+        const sp = url.searchParams.get('_sp');
+        const spInt = parseInt(sp);
+        if(DEBUG) console.info('Lists: init scroll position for ' + spInt);
+        if (spInt) {
+            window.scrollTo(0,spInt);
+        }
+    }
+
+    window.addEventListener("scroll", scrollListener);
+}
+
+/**
+ * Returns an init wait callback handler that will trigger the
+ * provided callback when initialization is finished.
+ * @param {() => void} callback the callback to trigger when initialization is finished.
+ * @returns {InitWaitCallBackHandler} the callback handler that will trigger the provided callback after initialization.
+ */
+function getInitWaitCallBackHandler(callback) {
+    let counter = 0;
+    return {
+        wait: () => {
+            counter++;
+            if(DEBUG) console.info('Lists init wait callback handler: increase counter to:' + counter);
+        },
+        ready: () => {
+            counter--;
+            if(DEBUG) console.info('Lists init wait callback handler: decrease counter to:' + counter);
+            if(counter <= 0) {
+                if(DEBUG) console.info('Lists init wait callback handler: calling init wait callback.');
+                callback();
+            }
+        }
+    }
+}
+
+/**
+ * Handler for dom changes.
+ * We need to find out when the content editor is closed and
+ * a reload trigger is placed in the page.
+ * If this is the case, we have to prevent scroll tracking to
+ * keep the former scroll position until the page is reloaded.
+ * 
+ * @param {[MutationRecord]} m the list of dom mutations.
+ */
+function onDomChange(m) {
+    if(m.find((mr) => mr.target.classList && mr.target.classList.contains('oct-reload'))) {
+        window.removeEventListener("scroll", scrollListener);
+    }
+}
+
 /****** Exported functions ******/
 
 /**
@@ -1246,6 +1319,35 @@ export function init(jQuery, debug) {
     jQ = jQuery;
     DEBUG = debug;
 
+    const waitHandler = getInitWaitCallBackHandler(initScrollPositionTracking);
+    waitHandler.wait();
+
+    if(Mercury.isEditMode()) {
+        if(DEBUG) console.info("Lists.init() - observing DOM, since we are in edit mode.");
+        const observeDOM = (function(){
+            const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+        
+            return function( obj, callback ){
+            if( !obj || obj.nodeType !== 1 ) return; 
+        
+            if( MutationObserver ){
+                // define a new observer
+                const mutationObserver = new MutationObserver(callback)
+        
+                // have the observer observe for changes in children
+                mutationObserver.observe( obj, { childList:true, subtree:true })
+                return mutationObserver
+            }
+            
+            // browser support fallback
+            else if( window.addEventListener ){
+                obj.addEventListener('DOMNodeInserted', callback, false)
+                obj.addEventListener('DOMNodeRemoved', callback, false)
+            }
+            }
+        })();
+        observeDOM(document.body, onDomChange);
+    }
     if (DEBUG) console.info("Lists.init()");
 
     var $listElements = jQ('.list-dynamic');
@@ -1324,7 +1426,7 @@ export function init(jQuery, debug) {
                 initParams = 'page=' + urlParams.get(pageParam) + (initParams == '' ? '' : ('&' + initParams));
             }
             // load the initial list
-            updateInnerList(list.id, initParams, true, true);
+            updateInnerList(list.id, initParams, true, true, waitHandler);
         });
 
         if (m_autoLoadLists.length > 0) {
@@ -1417,6 +1519,9 @@ export function init(jQuery, debug) {
 
         });
     }
+
+    waitHandler.ready();
+
 }
 
 export function setFlagScrollToAnchor(flagScrollToAnchor) {

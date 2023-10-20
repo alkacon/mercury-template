@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>16.0.2</version>
+		<version>16.0.3</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -114426,6 +114426,30 @@
 			<uuidstructure>f9bbfb29-33b7-11eb-88b9-0242ac11002b</uuidstructure>
 			<uuidresource>f9bbfb2a-33b7-11eb-88b9-0242ac11002b</uuidresource>
 			<datecreated>Tue, 01 Dec 2020 09:31:22 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-formdata-manage.js</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-formdata-manage.js</destination>
+			<type>plain</type>
+			<uuidstructure>dfc1d94a-6f3f-11ee-8139-0242ac11002b</uuidstructure>
+			<uuidresource>dfc1d94b-6f3f-11ee-8139-0242ac11002b</uuidresource>
+			<datecreated>Fri, 20 Oct 2023 11:57:42 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/js/mercury-formdata-manage.js.map</source>
+			<destination>system/modules/alkacon.mercury.theme/js/mercury-formdata-manage.js.map</destination>
+			<type>plain</type>
+			<uuidstructure>e01eed6c-6f3f-11ee-8139-0242ac11002b</uuidstructure>
+			<uuidresource>e01eed6d-6f3f-11ee-8139-0242ac11002b</uuidresource>
+			<datecreated>Fri, 20 Oct 2023 11:57:42 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

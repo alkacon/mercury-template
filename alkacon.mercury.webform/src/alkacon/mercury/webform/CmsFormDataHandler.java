@@ -32,25 +32,15 @@ import alkacon.mercury.webform.mail.CmsFormMailCancelUser;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpAdmin;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpUser;
 
-import org.opencms.db.CmsPublishList;
-import org.opencms.db.CmsResourceState;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
-import org.opencms.file.CmsResourceFilter;
 import org.opencms.file.types.I_CmsResourceType;
 import org.opencms.i18n.CmsLocaleManager;
-import org.opencms.jsp.CmsJspActionElement;
-import org.opencms.lock.CmsLockUtil;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
-import org.opencms.publish.CmsPublishManager;
-import org.opencms.relations.CmsRelation;
-import org.opencms.relations.CmsRelationFilter;
-import org.opencms.report.CmsLogReport;
 import org.opencms.util.CmsMacroResolver;
-import org.opencms.util.CmsUUID;
 import org.opencms.xml.content.CmsXmlContent;
 import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
@@ -58,7 +48,6 @@ import org.opencms.xml.types.I_CmsXmlContentValue;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map.Entry;
 
 import javax.mail.internet.AddressException;
@@ -72,25 +61,16 @@ import org.apache.commons.mail.EmailException;
 /**
  * Action class for managing form data.
  */
-public class CmsFormDataHandler extends CmsJspActionElement {
+public class CmsFormDataHandler extends A_CmsFormDataHandler {
 
     /** The log object for this class. */
-    static final Log LOG = CmsLog.getLog(CmsFormDataHandler.class);
+    private static final Log LOG = CmsLog.getLog(CmsFormDataHandler.class);
 
     /** Action name. */
     private final static String ACTION_CANCEL = "cancel";
 
     /** Action name. */
     private final static String ACTION_MOVEUP = "moveup";
-
-    /** A message key. */
-    private final static String ERROR_RESOURCE_NOT_FOUND = "msg.page.bookingmanage.error.resourcenotfound";
-
-    /** A message key. */
-    private final static String ERROR_INTERNAL = "msg.page.bookingmanage.error.internal";
-
-    /** A message key. */
-    private final static String ERROR_LOCKING_FAILED = "msg.page.bookingmanage.error.lockingfailed";
 
     /** A message key. */
     private final static String ERROR_ALREADY_CANCELLED = "msg.page.bookingmanage.error.alreadycancelled";
@@ -102,31 +82,13 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     private final static String ERROR_ALREADY_MOVED_UP = "msg.page.bookingmanage.error.alreadymovedup";
 
     /** A message key. */
-    private final static String ERROR_FORBIDDEN = "msg.page.bookingmanage.error.forbidden";
-
-    /** A message key. */
     private final static String ERROR_SENDING_MAIL_FAILED = "msg.page.bookingmanage.error.sendingmailfailed";
-
-    /** A message key. */
-    private final static String ERROR_PUBLISHING_FAILED = "msg.page.bookingmanage.error.publishingfailed";
 
     /** A message key. */
     private final static String INFO_SUCCESS_CANCELLED_REGISTRATION = "msg.page.bookingmanage.info.successcancelregistration";
 
     /** A message key. */
-    private final static String INFO_SUCCESS_DELETED_SUBMISSION = "msg.page.bookingmanage.info.successdeletesubmission";
-
-    /** A message key. */
-    private final static String INFO_SUCCESS_DELETED_ALL_SUBMISSIONS = "msg.page.bookingmanage.info.successdeleteallsubmissions";
-
-    /** A message key. */
     private final static String INFO_SUCCESS_WAITLIST_MOVED_UP = "msg.page.bookingmanage.info.successwaitlistmoveup";
-
-    /** Contains error information for the manager. */
-    private String m_error;
-
-    /** Contains information for the manager. */
-    private String m_info;
 
     /** The form handler. */
     private CmsFormHandler m_formHandler;
@@ -224,83 +186,6 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     }
 
     /**
-     * On request, deletes all submissions.
-     * @param paramUuid the UUID of the form data content
-     * @return whether deleting the submission was successful
-     */
-    public boolean deleteAllSubmissions(String paramUuid) {
-
-        if (getCmsObject().getRequestContext().getCurrentProject().isOnlineProject()) {
-            return false;
-        }
-        CmsObject clone = null;
-        boolean success = true;
-        try {
-            clone = OpenCms.initCmsObject(getCmsObject());
-            CmsResource event = readResource(clone, paramUuid);
-            if (event == null) {
-                setError(ERROR_RESOURCE_NOT_FOUND);
-                success = false;
-            }
-            if (success) {
-                I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(event);
-                I_CmsResourceType eventType = OpenCms.getResourceManager().getResourceType("m-event");
-                if (!resourceType.equals(eventType)) {
-                    setError(ERROR_FORBIDDEN);
-                    success = false;
-                }
-                if (success) {
-                    CmsRelationFilter relationFilter = CmsRelationFilter.relationsToStructureId(new CmsUUID(paramUuid));
-                    if (relationFilter != null) {
-                        List<CmsRelation> relationsToResource = clone.readRelations(relationFilter);
-                        I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
-                            CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
-                        List<CmsResource> publishList = new ArrayList<CmsResource>();
-                        for (CmsRelation relation : relationsToResource) {
-                            CmsResource relatedResource = null;
-                            try {
-                                relatedResource = relation.getSource(
-                                    clone,
-                                    CmsResourceFilter.ALL.addRequireType(formDataType));
-                            } catch (CmsException e) {
-                                // resource does not exist in online project, nothing to do
-                            }
-                            if (relatedResource != null) {
-                                boolean deleted = deleteSubmission(relatedResource.getStructureId().toString(), false);
-                                if (!deleted) {
-                                    success = false;
-                                    break;
-                                } else {
-                                    CmsResource publishResource = clone.readResource(
-                                        relatedResource.getStructureId(),
-                                        CmsResourceFilter.ALL);
-                                    publishList.add(publishResource);
-                                }
-                            }
-                        }
-                        boolean published = publishResources(clone, publishList);
-                        if (!published) {
-                            setError(ERROR_INTERNAL);
-                            success = false;
-                        }
-                    } else {
-                        setError(ERROR_INTERNAL);
-                        success = false;
-                    }
-                }
-            }
-        } catch (CmsException e) {
-            setError(ERROR_INTERNAL);
-            LOG.error(e.getLocalizedMessage(), e);
-            success = false;
-        }
-        if (success) {
-            setInfo(INFO_SUCCESS_DELETED_ALL_SUBMISSIONS);
-        }
-        return success;
-    }
-
-    /**
      * On request, deletes a submission.
      * @param paramUuid the UUID of the form data content
      * @return whether deleting the submission was successful
@@ -308,24 +193,6 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     public boolean deleteSubmission(String paramUuid) {
 
         return deleteSubmission(paramUuid, true);
-    }
-
-    /**
-     * Returns the error message.
-     * @return the error message
-     */
-    public String getError() {
-
-        return m_error;
-    }
-
-    /**
-     * Returns the info message.
-     * @return the info message
-     */
-    public String getInfo() {
-
-        return m_info;
     }
 
     /**
@@ -409,110 +276,6 @@ public class CmsFormDataHandler extends CmsJspActionElement {
     }
 
     /**
-     * Deletes a submission and optionally publishes the deleted resource.
-     * @param paramUuid the UUID of the form data content
-     * @param publish whether to publish the form data content
-     * @return whether deleting the submission was successful
-     */
-    private boolean deleteSubmission(String paramUuid, boolean publish) {
-
-        if (getCmsObject().getRequestContext().getCurrentProject().isOnlineProject()) {
-            return false;
-        }
-        CmsObject clone = null;
-        try {
-            clone = OpenCms.initCmsObject(getCmsObject());
-            CmsResource resource = readResource(clone, paramUuid);
-            if (resource == null) {
-                setError(ERROR_RESOURCE_NOT_FOUND);
-                return false;
-            }
-            I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
-            I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
-                CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
-            if (!resourceType.equals(formDataType)) {
-                setError(ERROR_FORBIDDEN);
-                return false;
-            }
-            boolean locked = lockResource(clone, resource);
-            if (!locked) {
-                setError(ERROR_LOCKING_FAILED);
-                return false;
-            }
-            clone.deleteResource(resource, CmsResource.DELETE_REMOVE_SIBLINGS);
-            if (publish) {
-                boolean published = publishResource(clone, clone.getSitePath(resource));
-                if (!published) {
-                    setError(ERROR_PUBLISHING_FAILED);
-                    return false;
-                }
-            }
-            setInfo(INFO_SUCCESS_DELETED_SUBMISSION);
-        } catch (CmsException e) {
-            setError(ERROR_INTERNAL);
-            LOG.error(e.getLocalizedMessage(), e);
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Ensures that the form data resource is locked.
-     * @param clone the CMS clone
-     * @param resource the resource
-     * @return whether the form data resource was successfully locked
-     */
-    private boolean lockResource(CmsObject clone, CmsResource resource) {
-
-        try {
-            CmsLockUtil.ensureLock(clone, resource);
-            return true;
-        } catch (CmsException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-            return false;
-        }
-    }
-
-    /**
-     * Publishes a resource.
-     * @param clone the CMS clone
-     * @param resourceName the resource name
-     * @return whether the resource was successfully published
-     */
-    private boolean publishResource(CmsObject clone, String resourceName) {
-
-        try {
-            OpenCms.getPublishManager().publishResource(clone, resourceName);
-            return true;
-        } catch (Exception e) {
-            LOG.error(e.getLocalizedMessage(), e);
-            return false;
-        }
-    }
-
-    /**
-     * Publishes a list of resources.
-     * @param clone the CMS clone
-     * @param resources the list of resources
-     * @return whether the list of resources was successfully published
-     */
-    private boolean publishResources(CmsObject clone, List<CmsResource> resources) {
-
-        try {
-            CmsPublishManager publishManager = OpenCms.getPublishManager();
-            CmsPublishList publishList = publishManager.getPublishListAll(clone, resources, false, true);
-            publishManager.publishProject(
-                clone,
-                new CmsLogReport(Locale.ENGLISH, CmsFormDataHandler.class),
-                publishList);
-            return true;
-        } catch (Exception e) {
-            LOG.error(e.getLocalizedMessage(), e);
-            return false;
-        }
-    }
-
-    /**
      * Reads and unmarshals the form data resource.
      * @param clone the CMS clone
      * @param resource the resource
@@ -528,31 +291,6 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             LOG.error(e.getLocalizedMessage(), e);
         }
         return content;
-    }
-
-    /**
-     * Checks whether the form data content exists and is not deleted.
-     * @param clone the CMS clone
-     * @param paramUuid the UUID of the form data content
-     * @return whether the form data content exists and is not deleted
-     */
-    private CmsResource readResource(CmsObject clone, String paramUuid) {
-
-        CmsUUID uuid = new CmsUUID(paramUuid);
-        if (!clone.existsResource(uuid, CmsResourceFilter.ALL)) {
-            return null;
-        }
-        CmsResource resource = null;
-        try {
-            resource = clone.readResource(uuid, CmsResourceFilter.ALL);
-            if (resource.getState() == CmsResourceState.STATE_DELETED) {
-                return null;
-            }
-        } catch (CmsException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-            return null;
-        }
-        return resource;
     }
 
     /**
@@ -613,24 +351,6 @@ public class CmsFormDataHandler extends CmsJspActionElement {
             return false;
         }
         return true;
-    }
-
-    /**
-     * Sets the error message.
-     * @param key the error key
-     */
-    private void setError(String key) {
-
-        m_error = key;
-    }
-
-    /**
-     * Sets the info message.
-     * @param key the info key
-     */
-    private void setInfo(String key) {
-
-        m_info = key;
     }
 
     /**

@@ -286,24 +286,32 @@
             <c:if test="${hasBooking and not empty form.submissions}">
                 <div class="submission-actions subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.delete.label" /></h3><%----%>
-                    <p><fmt:message key="msg.page.form.label.submissions.deleteAll" /><button id="deleteAll_button_${bookingId}" class="btn btn-xs oct-meta-info ml-5"><fmt:message key="msg.page.form.submission.action.deleteAll" /></button><%----%></p>
-                    <dialog id="deleteAll_dialog_${bookingId}"
-                                class="submissions-dialog"
-                                data-action="deleteAll"
-                                data-item-id="${bookingId}"
-                                data-content-id="${bookingId}"><%----%>
-                        <form method="dialog"><%----%>
-                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
-                            <div><fmt:message key="msg.page.form.submission.ask.deleteAll" /></div><%----%>
-                            <div class="buttons"><%----%>
-                                <button value="cancel" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
-                                </button><%----%>
-                                <button value="confirm" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.confirm.deleteAll" />
-                                </button><%----%>
-                            </div><%----%>
-                        </form><%----%>
+                    <p><%----%>
+                        <fmt:message key="msg.page.form.label.submissions.delete" />
+                        <button id="deleteAll_button_${bookingId}"
+                                class="btn btn-xs oct-meta-info ml-5 submissions-dialog-delete-button"><%----%>
+                            <fmt:message key="msg.page.form.submission.action.deleteAll" />
+                        </button><%----%>
+                    </p><%----%>
+                    <c:set var="deleteLink">
+                        <cms:link>/system/modules/alkacon.mercury.webform/elements/formdata-manage.jsp</cms:link>
+                    </c:set>
+                    <dialog class="submissions-dialog-delete"
+                            data-action="${deleteLink}?uuid=${bookingId}"><%----%>
+                        <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
+                        <div class="delete-all"><fmt:message key="msg.page.form.submission.ask.deleteAll" /></div><%----%>
+                        <div class="delete-selected"><fmt:message key="msg.page.form.submission.ask.deleteSelected" /></div><%----%>
+                        <div class="delete-response"><%----%>
+                            <div>&nbsp;</div><%----%>
+                        </div><%----%>
+                        <div class="buttons"><%----%>
+                            <button value="cancel" class="btn button-cancel"><%----%>
+                                <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                            </button><%----%>
+                            <button value="confirm" class="btn button-confirm"><%----%>
+                                <fmt:message key="msg.page.form.submission.confirm.deleteAll" />
+                            </button><%----%>
+                        </div><%----%>
                     </dialog><%----%>
                 </div><%----%>
             </c:if>

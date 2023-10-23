@@ -639,27 +639,38 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
 }
 
 /**
- * Replaces the current URL by setting an url parameter keeping the current page of the list.
+ * Replaces the current URL by setting an url parameter keeping the current page of the list in edit mode.
+ * Otherwise replacing the parameters value in the history state to allow to directly set the page again when using history back.
+ * 
  * @param {List} list the list to update the page data for.
  * @param {number} page the new current page.
  */
 function updateURLPageMarker(list, page) {
     if (DEBUG) console.info("Lists.updateURLPageMarker() called");
-    const currentUrl = new URL(window.location.href);
-    const currentParams = currentUrl.searchParams;
     const paramName = 'p_' + list.elementId;
-    if(page > 1) {
-        currentParams.set(paramName, page);
-    } else if (currentParams.has(paramName)) {
-        currentParams.delete(paramName);
+    if(Mercury.isEditMode()) {
+        const currentUrl = new URL(window.location.href);
+        const currentParams = currentUrl.searchParams;    
+        if(page > 1) {
+            currentParams.set(paramName, page);
+        } else if (currentParams.has(paramName)) {
+            currentParams.delete(paramName);
+        }    
+        // We could either use pushState or replaceState.
+        // It depends if each page switch should be kept in the history
+        window.history.replaceState(window.history.state, null, currentUrl.toString());
+    } else {
+        const state = window.history.state ? window.history.state : {};
+        if(page > 1) {
+            state[paramName] = page.toString();
+        } else if (state[paramName]) {
+            delete state[paramName];
+        }
+        window.history.replaceState(state, null, window.location.href);
     }
-    // We could either use pushState or replaceState.
-    // It depends if each page switch should be kept in the history
-    window.history.replaceState({}, null, currentUrl.toString());
 }
 
 /**
- *
  * @param {List} list the list to update the page data for.
  * @param {number} page the new current page.
  */
@@ -681,7 +692,6 @@ function updatePageData(list, page) {
     }
 
     updateURLPageMarker(list,page);
-
     if (null != list.paginationCallback) {
         list.paginationCallback(pageData);
     }
@@ -1126,26 +1136,55 @@ function replaceFilterCounts(filterGroup, ajaxCountJson) {
     })
 }
 
+/**
+ * The callback for scroll events that tracks the current scroll position.
+ * @type {() => void}
+ */
 const scrollListener = () => {
     const scrollPos = window.scrollY;
-    if(DEBUG) console.log("Lists scrollListener: scrolled to " + scrollPos);
-    const currentUrl = new URL(window.location.href);
-    currentUrl.searchParams.set('_sp', scrollPos);
-    window.history.replaceState({}, null, currentUrl.toString());
+    if(DEBUG) console.log("Lists.scrollListener: scrolled to " + scrollPos);
+    if(Mercury.isEditMode()) {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('_sp', scrollPos);
+        window.history.replaceState(window.history.state, null, currentUrl.toString());
+    } else {
+        const state = window.history.state ? window.history.state : {};
+        if(DEBUG) console.log('Lists.scrollListener: pulled state', state);
+        state.sp = scrollPos;
+        if(DEBUG) console.log('Lists.scrollListener: pushed state', state);
+        window.history.replaceState(state, null, window.history.url)
+    }
 };
 
+/**
+ * Initializes scroll position tracking.
+ * The function should be called if all dynamic page loading has finished.
+ * It directly scrolls to the latest tracked scroll position (if any) and starts
+ * tracking positions again.
+ */
 function initScrollPositionTracking() {
-    const url = new URL(window.location.href);
+    /**
+     * @type {Object}
+     */
+    if(DEBUG) console.info('Lists.initScrollPositionTracking() called');
     let spInt = undefined;
-    if (url.searchParams.has('_sp')) {
-        const sp = url.searchParams.get('_sp');
-        const spInt = parseInt(sp);
-        if(DEBUG) console.info('Lists: init scroll position for ' + spInt);
-        if (spInt) {
-            window.scrollTo({top: spInt, left: 0, behavior: 'smooth'});
+    if(Mercury.isEditMode()) {
+        const url = new URL(window.location.href);
+        if (url.searchParams.has('_sp')) {
+            const sp = url.searchParams.get('_sp');
+            spInt = parseInt(sp);
         }
+    } else {
+        const state = window.history.state;
+        if(DEBUG) console.log('Lists.initScrollPositionTracking: pulled state', state);
+        if (state && state.sp) {
+            const sp = state.sp;
+            spInt = parseInt(sp);
+        }   
     }
-
+    if (spInt && !isNaN(spInt) && spInt > 0) {
+        window.scrollTo(0, spInt);
+    }
     window.addEventListener("scroll", scrollListener);
 }
 
@@ -1422,8 +1461,20 @@ export function init(jQuery, debug) {
                 if (DEBUG) console.info("Lists.init() Data init params - " + initParams);
             }
             const pageParam = 'p_' + list.elementId;
-            if(urlParams.has(pageParam)) {
-                initParams = 'page=' + urlParams.get(pageParam) + (initParams == '' ? '' : ('&' + initParams));
+            let pageStr = undefined;
+            if(Mercury.isEditMode()) {
+                if(urlParams.has(pageParam)) {
+                    pageStr = urlParams.get(pageParam);
+                }
+            } else {
+                const state = window.history.state ? window.history.state : {};
+                pageStr = state[pageParam];
+            }
+            if(pageStr) {
+                const page = parseInt(pageStr);
+                if(!isNaN(page) && page > 1) {
+                    initParams = 'page=' + page + (initParams == '' ? '' : ('&' + initParams));
+                }
             }
             // load the initial list
             updateInnerList(list.id, initParams, true, true, waitHandler);

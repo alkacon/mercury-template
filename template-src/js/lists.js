@@ -68,7 +68,7 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {number} found the total number of results.
  * @property {number} start the first result to show on the page.
  * @property {number} end the last result to show on the page.
- * 
+ *
  * @typedef {Object} InitWaitCallBackHandler Handler to keep track of initialization and trigger an callback when initialization finishes.
  * @property {() => void} wait start waiting for an initialization action
  * @property {() => void} ready stop waiting for an initialization action.
@@ -113,22 +113,22 @@ var m_flagScrollToAnchor = true;
 function calculateStateParameter(filter, elId, resetActive, countVersion = false) {
     var $el = $( '#' + elId);
     var value = $el.data("value")
-    var paramkey = 
-            elId.indexOf('cat_') == 0 
-                ? (resetActive && $el.hasClass("active") 
+    var paramkey =
+            elId.indexOf('cat_') == 0
+                ? (resetActive && $el.hasClass("active")
                     ? ''
-                    : (countVersion 
+                    : (countVersion
                         ? 'facet_' + encodeURIComponent(filter.id + '_c')
                         : filter.catparamkey))
-            : elId.indexOf('folder_') == 0 
-                ? (resetActive && $el.hasClass("currentpage") 
+            : elId.indexOf('folder_') == 0
+                ? (resetActive && $el.hasClass("currentpage")
                     ? ''
-                    :  (countVersion 
+                    :  (countVersion
                         ?'facet_' + encodeURIComponent(filter.id + '_f')
                         : filter.folderparamkey))
-            : (resetActive && $el.hasClass("active") 
+            : (resetActive && $el.hasClass("active")
                     ? ''
-                    : (countVersion 
+                    : (countVersion
                         ? 'facet_' + encodeURIComponent(filter.id + '_a')
                         : filter.archiveparamkey));
     var stateParameter =
@@ -305,7 +305,7 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
 /**
  * Updates the direct link for a changed search state.
  *
- * @param {Object} filter the filter 
+ * @param {Object} filter the filter
  * @param {string} searchStateParameters the search state paramters
  */
 function updateDirectLink(filter, searchStateParameters) {
@@ -599,8 +599,10 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
         list.$entries.animate({'min-height': "0px"}, 500);
     }
 
-    // trigger "list:loaded" event
-    jQ('#' + list.id)[0].dispatchEvent(new CustomEvent("list:loaded", { bubbles: true, cancelable: true }));
+    setTimeout(function() {
+        // trigger "list:loaded" event with a short delay, so that other lists have a change to initialize as well
+        jQ('#' + list.id)[0].dispatchEvent(new CustomEvent("list:loaded", { bubbles: true, cancelable: true }));
+    }, 100);
 
     // fade out the spinner
     list.$spinner.fadeOut(250);
@@ -641,7 +643,7 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
 /**
  * Replaces the current URL by setting an url parameter keeping the current page of the list in edit mode.
  * Otherwise replacing the parameters value in the history state to allow to directly set the page again when using history back.
- * 
+ *
  * @param {List} list the list to update the page data for.
  * @param {number} page the new current page.
  */
@@ -650,12 +652,12 @@ function updateURLPageMarker(list, page) {
     const paramName = 'p_' + list.elementId;
     if(Mercury.isEditMode()) {
         const currentUrl = new URL(window.location.href);
-        const currentParams = currentUrl.searchParams;    
+        const currentParams = currentUrl.searchParams;
         if(page > 1) {
             currentParams.set(paramName, page);
         } else if (currentParams.has(paramName)) {
             currentParams.delete(paramName);
-        }    
+        }
         // We could either use pushState or replaceState.
         // It depends if each page switch should be kept in the history
         window.history.replaceState(window.history.state, null, currentUrl.toString());
@@ -1180,7 +1182,7 @@ function initScrollPositionTracking() {
         if (state && state.sp) {
             const sp = state.sp;
             spInt = parseInt(sp);
-        }   
+        }
     }
     if (spInt && !isNaN(spInt) && spInt > 0) {
         window.scrollTo(0, spInt);
@@ -1218,7 +1220,7 @@ function getInitWaitCallBackHandler(callback) {
  * a reload trigger is placed in the page.
  * If this is the case, we have to prevent scroll tracking to
  * keep the former scroll position until the page is reloaded.
- * 
+ *
  * @param {[MutationRecord]} m the list of dom mutations.
  */
 function onDomChange(m) {
@@ -1365,19 +1367,19 @@ export function init(jQuery, debug) {
         if(DEBUG) console.info("Lists.init() - observing DOM, since we are in edit mode.");
         const observeDOM = (function(){
             const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-        
+
             return function( obj, callback ){
-            if( !obj || obj.nodeType !== 1 ) return; 
-        
+            if( !obj || obj.nodeType !== 1 ) return;
+
             if( MutationObserver ){
                 // define a new observer
                 const mutationObserver = new MutationObserver(callback)
-        
+
                 // have the observer observe for changes in children
                 mutationObserver.observe( obj, { childList:true, subtree:true })
                 return mutationObserver
             }
-            
+
             // browser support fallback
             else if( window.addEventListener ){
                 obj.addEventListener('DOMNodeInserted', callback, false)

@@ -233,14 +233,18 @@
         <c:set var="onlyLink" value="${true}" />
     </c:when>
     <c:when test="${showBody and not showHeading and (not showVisual or visualLast)}">
-        <%-- "pvl" means "piece visual last". --%>
-        <%-- "pnh" means "piece no heading". --%>
-        <%-- "pnm" means (next) "piece needs margin". --%>
-        <c:set var="pieceFeatureMarker" value="${visualLast ? ' phv pvl': ''}${' phb pnh'}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
+        <c:set var="pieceFeatureMarker" value="${visualLast ? ' phv pvl': ' pnv'}${' phb pnh'}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
     </c:when>
+    <%-- "phv" means "piece has visual". --%>
+    <%-- "pnv" means "piece (has) no visual". --%>
+    <%-- "phh" means "piece has heading". --%>
+    <%-- "pnh" means "piece (has) no heading". --%>
+    <%-- "phl" means "piece has link". --%>
+    <%-- "phb" means "piece has body". --%>
+    <%-- "pvl" means "piece visual last". --%>
+    <%-- "pnm" means "(next) piece needs margin". --%>
     <c:otherwise>
-        <%-- "phh" means "piece has heading", "phv" means "piece has visual" and so on... --%>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ''}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
+        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ' pnv'}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
     </c:otherwise>
 </c:choose>
 

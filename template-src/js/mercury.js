@@ -829,6 +829,18 @@ var Mercury = function (jQ) {
             }
         }
 
+        if (requiresModule(".masonry-list")) {
+            try {
+                import(
+                    /* webpackChunkName: "mercury-masonry-list" */
+                    "./lists-masonry.js").then(function (MasonryList) {
+                        MasonryList.init(jQ, DEBUG);
+                    });
+            } catch (err) {
+                console.warn("MasonryList.init() error", err);
+            }
+        }
+
         if (requiresModule(".map-osm")) {
             try {
                 import(
@@ -879,18 +891,6 @@ var Mercury = function (jQ) {
                     });
             } catch (err) {
                 console.warn("ImageSeries.init() error", err);
-            }
-        }
-
-        if (requiresModule(".masonry-list")) {
-            try {
-                import(
-                    /* webpackChunkName: "mercury-masonry-list" */
-                    "./lists-masonry.js").then(function (MasonryList) {
-                        MasonryList.init(jQ, DEBUG);
-                    });
-            } catch (err) {
-                console.warn("MasonryList.init() error", err);
             }
         }
 

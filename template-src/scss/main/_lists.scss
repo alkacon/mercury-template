@@ -335,6 +335,9 @@
 
         &.box {
             padding: 0 0 var(--#{$prefix}box-padding) 0;
+            &.pnv {
+                padding-top: var(--#{$prefix}box-padding);
+            }
             > *:not(.visual) {
                 padding: 0 var(--#{$prefix}box-padding);
             }

@@ -294,7 +294,7 @@ table.submissions {
     .formdata-manage {
     
         .acco-item-select {
-            margin-top: 2rem;
+            margin-top: var(--#{$prefix}default-margin-small);
         }
     }
 }

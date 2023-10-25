@@ -147,7 +147,27 @@
     <c:otherwise>
 
          <mercury:div css="book-info" test="${not noDivWrapper}">
-            <span class="book-msg"><fmt:message key="msg.page.form.remaining.places" /></span><%----%>
+            <c:choose>
+                <c:when test="${style eq 'date' and formBookingHasFinalRegistrationDate}">
+                    <c:choose>
+                        <c:when test="${formBookingRegistrationClosed}">
+                            <c:if test="${not hideFullOrClosed}">
+                                <span class="book-msg"><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline" /></span>
+                            </c:if>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="book-msg">
+                                <fmt:message key="msg.page.form.bookingstatus.registrationClosesOn">
+                                    <fmt:param>${formBookingFinalRegistrationDateStr}</fmt:param>
+                                </fmt:message>
+                            </span>
+                        </c:otherwise>
+                    </c:choose>
+                </c:when>
+                <c:otherwise>
+                    <span class="book-msg"><fmt:message key="msg.page.form.remaining.places" /></span><%----%>
+                </c:otherwise>
+            </c:choose>
             <c:if test="${cms.isEditMode and form.userCanManage}">
             <span class="oct-meta-info"><%----%>
                 <fmt:message key="msg.page.form.bookingstatus.places.unlimited" />

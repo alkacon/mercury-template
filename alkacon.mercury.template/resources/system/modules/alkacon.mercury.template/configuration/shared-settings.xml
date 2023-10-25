@@ -1220,6 +1220,19 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showMap.event]]></IncludeName>
+      <PropertyName><![CDATA[showMap]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showMap)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showMap.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+        onload:%(key.msg.setting.showMap.onload)|
+        onclick:%(key.msg.setting.showMap.onclick)|
+        none:%(key.msg.setting.showMap.none)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showMetaSummary.true]]></IncludeName>
       <PropertyName><![CDATA[showMetaSummary]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showMetaSummary)]]></DisplayName>

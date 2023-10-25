@@ -37,6 +37,7 @@
 <c:set var="useVisualFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
 
 <c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
+<c:set var="setShowMap"             value="${setting.showMap.toString eq 'onload' ? 'true' : (setting.showMap.toString eq 'onclick' ? 'onclick' : 'false')}" />
 <c:set var="showType"               value="${setting.showType.toBoolean}" />
 <c:set var="bookingOption"          value="${setting.bookingOption.toString}" />
 <c:set var="performerOption"        value="${setting.performerOption.toString}" />
@@ -65,6 +66,8 @@
 
 <c:set var="hasVirtualLocation"     value="${value.VirtualLocation.value.URI.isSet}" />
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet or hasVirtualLocation)}" />
+<c:set var="showMap"                value="${setShowMap ne 'false' and not hasVirtualLocation and not empty locData.lat}" />
+
 <c:set var="showType"               value="${showType and type.isSet}" />
 <c:set var="showPerformer"          value="${performerOption ne 'none'}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
@@ -201,6 +204,7 @@
             </c:if>
 
             <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 1)}" />
+
         </jsp:attribute>
 
     </mercury:piece>
@@ -266,6 +270,28 @@
             <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
         </div><%----%>
         <mercury:nl />
+    </c:if>
+
+    <c:if test="${showMap}">
+        <mercury:nl/>
+        <div class="detail-addition ser-poi"><%----%>
+            <jsp:useBean id="params" class="java.util.HashMap" />
+            <c:set target="${params}" property="mapRatio" value="16-9" />
+            <c:set target="${params}" property="hsize" value="${hsize+1}" />
+            <c:set target="${params}" property="showLocation" value="${true}" />
+            <c:set target="${params}" property="showMap" value="${setShowMap}" />
+            <c:set target="${params}" property="showDescription" value="${false}" />
+            <c:set target="${params}" property="showImageZoom" value="${showImageZoom}" />
+            <c:set target="${params}" property="showImageSubtitle" value="${showImageSubtitle}" />
+            <c:set target="${params}" property="showImageCopyright" value="${showImageCopyright}" />
+            <c:set target="${params}" property="showCombinedDownloads" value="${true}" />
+            <mercury:display
+                formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/detail/poi.xml:08d2a739-0286-492b-a3d4-d302dd64d3f6)"
+                file="${value.AddressChoice.value.PoiLink.stringValue}"
+                settings="${params}"
+            />
+        </div><%----%>
+        <mercury:nl/>
     </c:if>
 
     <c:if test="${showiCalendar}">

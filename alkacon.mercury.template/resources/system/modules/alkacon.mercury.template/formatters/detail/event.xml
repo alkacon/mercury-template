@@ -89,6 +89,9 @@
       <IncludeName><![CDATA[showLocation.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showMap.event]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showEventType.true]]></IncludeName>
     </Setting>
     <Setting>

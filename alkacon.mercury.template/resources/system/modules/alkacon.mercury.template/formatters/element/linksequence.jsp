@@ -70,9 +70,7 @@
         <c:when test="${not emptyLinkSequence}">
             <ul ${ulWrapper}><%----%>
                 <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
-                    <li ${liWrapper}><%----%>
-                        <mercury:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" />
-                    </li><%----%>
+                    <mercury:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" addLi="ls-li${not empty liWrapper ? ' '.conact(liWrapper) : ''}" />
                 </c:forEach>
             </ul><%----%>
         </c:when>

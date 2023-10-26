@@ -15,6 +15,9 @@
 <%@ attribute name="addSpan" type="java.lang.String" required="false"
     description="If provided, adds a SPAN tag around the generated href tag with a class containing the argument value." %>
 
+<%@ attribute name="addLi" type="java.lang.String" required="false"
+    description="If provided, adds an LI tag around the generated href tag with a class containing the argument value." %>
+
 <%@ attribute name="resultMap" type="java.util.HashMap" required="false"
     description="If provided, store the results in this map and do NOT generate any HTML output." %>
 
@@ -43,6 +46,7 @@
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'class:')}">
             <c:set var="cssWrapper">${fn:substringAfter(linkPart, 'class:')}</c:set>
+            <c:set var="addLi" value="${empty addLi ? 'li-'.concat(cssWrapper) : addLi.concat(' li-').concat(cssWrapper)}" />
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'title:')}">
             <c:set var="linkTitle">${fn:substringAfter(linkPart, 'title:')}</c:set>
@@ -75,17 +79,17 @@
         </c:set>
     </c:when>
     <c:otherwise>
-        <mercury:link
-            link="${link}"
-            title="${linkTitle}"
-            css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}"
-            attr="${linkAttr}">
-
-            ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
-            ${linkIcon}${linkMessage}
-            ${empty addSpan ? '' : '</span>'}
-
-        </mercury:link>
+        ${empty addLi ? '' : '<li class=\"'.concat(addLi).concat('\">')}
+            <mercury:link
+                link="${link}"
+                title="${linkTitle}"
+                css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}"
+                attr="${linkAttr}">
+                    ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
+                        ${linkIcon}${linkMessage}
+                    ${empty addSpan ? '' : '</span>'}
+            </mercury:link>
+        ${empty addLi ? '' : '</li>'}
     </c:otherwise>
 </c:choose>
 

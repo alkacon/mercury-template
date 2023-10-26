@@ -50,11 +50,14 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  *
  * @typedef {Object.<string, List[]>} ListArrayMap Object holding only list arrays as property values.
  *
+ * @typedef {Object.<string, HTMLElement[]>} ResetButtonsPerList Object holding list resource ids as properties and the reset buttons map as value.
+ *
  * @typedef {Object} ListFilter Wrapper for a list's filter.
  * @property {JQuery<HTMLElement>} $element the HTML element of the filter.
  * @property {string} id the id attribute of the filter HTML element.
  * @property {string} elementId the id of the list element the filter belongs to.
  * @property {?JQuery<HTMLElement>} $textsearch  the search form of the filter (for full text search).
+ * @property {boolean} hasResetButtons flag, indicating if the filter has reset buttons shown.
  * @property {string} initparams the initial search state parameters to apply on first load of the list.
 
  * @typedef {Object.<string, ListFilter>} ListFilterMap Object holding only list filters as property values.
@@ -101,6 +104,9 @@ var m_autoLoadLists = [];
 
 /** @type {boolean} flag indicating whether to scroll to the list head on filter or on page change. */
 var m_flagScrollToAnchor = true;
+
+/** @type {ResetButtonsPerList} reset buttons to display per list. */
+var m_listResetButtons = {};
 
 /**
  * Calculates the search state parameters.
@@ -217,6 +223,8 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
         // potentially the same filter may be on the same page
         // here we make sure to reset them all
         var triggeredWasActive = triggerId != null && jQ("#" + triggerId).hasClass("active");
+        // check if reset buttons need to be shown.
+        var hasResetButtons = m_listResetButtons[id] != undefined;
         for (var i=0; i<filterGroup.length; i++) {
             var fi = filterGroup[i];
             // remove all active / highlighted filters
@@ -283,8 +291,8 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
         for (var i=0; i<listGroup.length; i++) {
             updateInnerList(listGroup[i].id, searchStateParameters, true);
         }
-        if (adjustCounts) {
-                updateFilterCounts(listGroup[0].id, filterGroup, filter);
+        if (adjustCounts || hasResetButtons) {
+          updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup, filter);
         }
         updateDirectLink(filter, searchStateParameters);
     } else {
@@ -977,42 +985,160 @@ function handleAutoLoaders() {
  * @param {string} searchStateParameters the search state parameters to pass for the filter updates.
  * @returns {void}
  */
-function updateFilterCounts(id, filterGroup, filter) {
-    if (DEBUG) console.info("Lists.updateFilterCounts() called with filterGroup, filter, searchStateParameters:");
-    var list = m_lists[id];
-    if ((list.ajaxCount == null)) {
-        if (DEBUG) console.warn("Lists.updateFilterCounts() does not support updates since no AJAX link for count updates is provided.");
-    } else {
-        var params = "&reloaded";
-        for(var i=0; i < filterGroup.length; i++) {
-            var fi = filterGroup[i];
-            if (fi.combinable) {
-                var query = fi.$textsearch.val();
-                if(typeof query !== 'undefined' && query != '') {
-                    params += '&' + fi.$textsearch.attr('name') + '=' + encodeURIComponent(query);
-                }
-                fi.$element.find(".active").each( function() {
-                    var p = calculateStateParameter(fi, this.id, false, true);
-                    params += p;
-                });
-                var pageP = "";
-                fi.$element.find("li.currentpage").each( function() {
-                    var p = calculateStateParameter(fi, this.id, false, true);
-                    if(p.length > pageP.length) pageP = p;
-                });
-                params += pageP;
-
-                // Tell which filters are shown in the current filter element
-                if (fi.search == 'true') params += '&s=' + encodeURIComponent(fi.id);
-                if (fi.categories == 'true') params += '&c=' + encodeURIComponent(fi.id);
-                if (fi.archive == 'true') params += '&a=' + encodeURIComponent(fi.id);
-                if (fi.folders == 'true') params += '&f=' + encodeURIComponent(fi.id);
-            }
+function updateFilterCountsAndResetButtons(id, filterGroup, filter) {
+  if (DEBUG)
+    console.info(
+      "Lists.updateFilterCountsAndResetButtons() called with filterGroup, filter, searchStateParameters:"
+    );
+  var list = m_lists[id];
+  /** @type {HTMLElement[]} */
+  const resetButtons = [];
+  const updateCounts = list.ajaxCount != undefined;
+  const updateResets = m_listResetButtons[list.elementId] != undefined;
+  if (!updateCounts) {
+    if (DEBUG)
+      console.warn(
+        "Lists.updateFilterCountsAndResetButtons() does not support updates since no AJAX link for count updates is provided."
+      );
+  }
+  if (!updateResets) {
+    if (DEBUG)
+      console.warn(
+        "Lists.updateFilterCountsAndResetButtons() does not need to update reset buttons."
+      );
+  }
+  if (updateCounts || updateResets) {
+    var params = "&reloaded";
+    for (var i = 0; i < filterGroup.length; i++) {
+      var fi = filterGroup[i];
+      if (fi.combinable) {
+        var query = fi.$textsearch.val();
+        if (typeof query !== "undefined" && query != "") {
+          if (updateCounts)
+            params +=
+              "&" +
+              fi.$textsearch.attr("name") +
+              "=" +
+              encodeURIComponent(query);
+          if (updateResets)
+            resetButtons.push(generateInputFieldResetButton(fi.id));
         }
-        jQ.get(buildAjaxCountLink(list, params), function(ajaxCountJson) {
-            replaceFilterCounts(filterGroup, ajaxCountJson)
-        }, "json");
+        fi.$element.find(".active").each(function () {
+          if (updateCounts) {
+            var p = calculateStateParameter(fi, this.id, false, true);
+            params += p;
+          }
+          if (updateResets) {
+            resetButtons.push(generateResetButton(this));
+          }
+        });
+        var pageP = "";
+        var checkedElement = undefined;
+        fi.$element.find("li.currentpage").each(function () {
+          var p = calculateStateParameter(fi, this.id, false, true);
+          if (p.length > pageP.length) {
+            pageP = p;
+            checkedElement = this;
+          }
+        });
+        if (updateCounts) {
+          params += pageP;
+        }
+        if (updateResets && checkedElement != undefined) {
+          resetButtons.push(generateResetButton(checkedElement));
+        }
+
+        if(updateCounts) {
+          // Tell which filters are shown in the current filter element
+          if (fi.search == "true") params += "&s=" + encodeURIComponent(fi.id);
+          if (fi.categories == "true")
+            params += "&c=" + encodeURIComponent(fi.id);
+          if (fi.archive == "true") params += "&a=" + encodeURIComponent(fi.id);
+          if (fi.folders == "true") params += "&f=" + encodeURIComponent(fi.id);
+        }
+      }
     }
+    if(updateCounts) {
+      jQ.get(
+        buildAjaxCountLink(list, params),
+        function (ajaxCountJson) {
+          replaceFilterCounts(filterGroup, ajaxCountJson);
+        },
+        "json"
+      );
+    }
+    if(updateResets) {
+      updateResetButtons(list.elementId, resetButtons);
+    }
+  }
+}
+
+/**
+ * @param {HTMLElement} filterField
+ * @param {string} label
+ * @returns {HTMLElement} the reset button
+ */
+function generateResetButton(filterField) {
+  /** @type {HTMLElement} */
+  const result = document.createElement("button");
+  const id = filterField.id;
+  const type = id.startsWith('folder_') 
+    ? 'folders' 
+    : (id.startsWith('y_') 
+        ? 'archive' 
+        : (id.startsWith('cat_') ? 'categories' : undefined))
+  result.classList.add("resetbutton");
+  if(type != undefined) result.classList.add(type);
+  result.id = "reset_" + id;
+  const label = filterField.getAttribute('data-label');
+  let onclick = filterField.getAttribute('onclick');
+  if(!onclick) onclick = filterField.getAttribute('data-onclick');
+  if(!onclick) onclick = filterField.firstChild.getAttribute('onclick');
+  result.setAttribute('onclick', onclick);
+  result.textContent = label ? label : id;
+  return result;
+}
+
+/**
+ * @param {string} archiveId
+ * @param {string} label
+ * @returns {HTMLElement} the reset button
+ */
+function generateInputFieldResetButton(archiveId) {
+  /** @type {HTMLElement} */
+  const result = document.createElement("button");
+  result.classList.add("reset-button");
+  result.classList.add("textsearch");
+  result.id = "reset_textsearch_" + archiveId;
+  const form = document.getElementById('queryform_' + archiveId)
+  const submitAction = form.getAttribute('onsubmit');
+  const inputField = document.getElementById('textsearch_' + archiveId);
+  const labelPlain = inputField.getAttribute('data-label');
+  const label = labelPlain ? labelPlain.replace('%(query)', inputField.value) : inputField.value;
+  let onclick = "document.getElementById('textsearch_" + archiveId + "').value = ''; " + submitAction;
+  result.setAttribute('onclick', onclick);
+  result.textContent = label;
+  return result;
+}
+
+
+
+/**
+ * 
+ * @param {string} id 
+ * @param {ResetButtonsMap} resetButtons 
+ */
+function updateResetButtons(id, resetButtons) {
+  m_listResetButtons[id] = resetButtons;
+  const filters = m_archiveFilterGroups[id];
+  filters.forEach((filter) => {
+    /** @type {HTMLElement} */
+    const buttons = document.getElementById('resetbuttons_' + filter.id);
+    if(buttons != undefined) {
+      buttons.textContent = '';
+      resetButtons.forEach((button) => buttons.appendChild(button.cloneNode(true)));
+    }
+  });
 }
 
 /**
@@ -1052,7 +1178,7 @@ function buildAjaxCountLink(list, searchStateParameters) {
  * @returns {void}
  */
 function replaceFilterCounts(filterGroup, ajaxCountJson) {
-    if(DEBUG) console.info("Lists.buildAjaxCountLink() called with ajaxCountJson", ajaxCountJson);
+    if(DEBUG) console.info("Lists.replaceFilterCounts() called with ajaxCountJson", ajaxCountJson);
     filterGroup.forEach((filter) => {
         var elementFacets = ajaxCountJson[filter.id];
         var archiveFilter = elementFacets['a'];
@@ -1071,15 +1197,12 @@ function replaceFilterCounts(filterGroup, ajaxCountJson) {
                 }
                 if (isDisabled && count !== '0' || !isDisabled && count === '0') { // enabled / disable
                     if(count === '0') {
-                        var a = li.querySelector('a');
-                        //a.setAttribute('style','pointer-events:none;');
                         li.setAttribute('data-onclick', li.getAttribute('onclick'));
                         li.removeAttribute('onclick');
                         li.setAttribute('tabindex', '-1');
                         li.classList.remove('enabled');
                         li.classList.add('disabled');
                     } else  {
-                        //var a = li.querySelector('a');
                         li.setAttribute('onclick', li.getAttribute('data-onclick'));
                         li.removeAttribute('data-onclick');
                         li.setAttribute('tabindex', '0');
@@ -1525,6 +1648,7 @@ export function init(jQuery, debug) {
                 filter.id = $archiveFilter.attr("id");
                 filter.elementId = $archiveFilter.data("id");
                 filter.$textsearch = $archiveFilter.find("#textsearch_" + filter.id);
+                filter.hasResetButtons = $archiveFilter.find("#resetbuttons_" + filter.id).length > 0;
                 filter.$directlink = $archiveFilter.find(".directlink");
 
                 // unfold categories if on desktop and responsive setting is used
@@ -1552,6 +1676,11 @@ export function init(jQuery, debug) {
                     m_archiveFilterGroups[filter.elementId] = [filter];
                 }
 
+                if (filter.hasResetButtons && m_listResetButtons[filter.elementId] == undefined) {
+                  // tell list, that it has to track reset buttons
+                  m_listResetButtons[filter.elementId] = [];
+                }
+                
                 // attach key listeners for keyboard support
                 $archiveFilter.find("li > a").on("keydown", function(e) {
                     if (e.type == "keydown" && (e.which == 13 || e.which == 32)) {

@@ -121,7 +121,7 @@
                     </c:if>
 
                     <c:set var="currentLevel" value="${fn:length(fn:split(value.name, '/'))}" />
-                    <li id="${catId}" data-value="${value.name}" class="enabled level${currentLevel}${active ? ' active' : ''}"><%----%>
+                    <li id="${catId}" data-value="${value.name}" class="enabled level${currentLevel}${active ? ' active' : ''}" data-label="${label.replace('"','&quot')}"><%----%>
                         <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
                             --%>'${categoryFilterId}', <%--
                             --%>'${catId}'<%--

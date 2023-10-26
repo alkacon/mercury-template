@@ -27,6 +27,7 @@
 
     <c:set var="searchLabel"    value="${setting.searchlabel.toString}" />
     <c:set var="showSearch"     value="${setting.showsearch.toBoolean}" />
+    <c:set var="showReset"     value="${setting.showresetbutton.toBoolean}" />
 
     <c:set var="categoryLabel"  value="${setting.headline.toString}" />
     <c:set var="categoryVal"    value="${setting.showcategories.toString}" />
@@ -86,6 +87,7 @@
     --%>data-id="${elementId}" <%--
     --%>data-filter='{<%--
         --%>"search":"${showSearch}", <%--
+        --%>"reset":"${showReset}", <%--
         --%>"categories":"${showCategories}", <%--
         --%>"archive":"${showArchive}", <%--
         --%>"folders":"${showFolders}", <%--
@@ -104,6 +106,7 @@
             <c:if test="${empty searchLabel}">
                 <c:set var="searchLabel"><fmt:message key="msg.page.search.inlist" /></c:set>
             </c:if>
+            <c:set var="searchResetLabel"><fmt:message key="msg.page.search.inlist.resetlabel" /></c:set>
             <div class="filterbox search"><%----%>
             <mercury:nl />
 
@@ -125,11 +128,18 @@
                             --%>id="${fieldId}" <%--
                             --%>type="text" <%--
                             --%>value="${escapedQuery}" <%--
+                            --%>data-label="${fn:replace(searchResetLabel,'"','&quot;')}" <%--
                             --%>placeholder="<c:out value="${searchLabel}" />"><%----%>
                         </label><%----%>
                 </form><%----%>
             </div><%----%>
             <mercury:nl />
+        </c:if>
+
+        <c:if test="${showReset}">
+        <div id="resetbuttons_${filterId}" class="resetbuttons">
+            <!-- Filled dynamically via JavaScript. -->
+        </div>
         </c:if>
 
         <c:if test="${showCategories}">
@@ -260,7 +270,7 @@
 
                                 <%-- There has been an item before - show it. --%>
                                 <c:otherwise>
-                                    <c:set var="liAttrs">id="${folderId}" data-value="${previousFolder}" ${isCurrentPage ? ' class="currentpage enabled"' : 'class="enabled"'}</c:set>
+                                    <c:set var="liAttrs">id="${folderId}" data-value="${previousFolder}" ${isCurrentPage ? ' class="currentpage enabled"' : 'class="enabled"'} data-label="${label.replace('"','&quot;')}"</c:set>
                                     <c:out escapeXml='false' value='<li ${liAttrs}>' />
                                     <a ${onclick} href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>" class="nav-label">${label}</a><%----%>
                                     <mercury:nl />
@@ -431,7 +441,7 @@
                         <c:set var="yearHtml">
                             ${yearHtml}
                             <mercury:nl />
-                            <li id="${monthId}" ${active} tabindex="0" data-value="${facetItem.value}" onclick="DynamicList.archiveFilter(<%--
+                            <li id="${monthId}" ${active} tabindex="0" data-value="${facetItem.value}" data-label="${currMonth}${' '}${currYear}" onclick="DynamicList.archiveFilter(<%--
                                     --%>'${filterId}', <%--
                                 --%>'${monthId}'<%--
                                 --%>); return false;"><%----%>

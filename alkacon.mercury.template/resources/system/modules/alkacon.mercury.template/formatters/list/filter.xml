@@ -40,6 +40,9 @@
       <IncludeName><![CDATA[searchlabel.filter]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showresetbutton.filter]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showcategories.filter]]></IncludeName>
     </Setting>
     <Setting>

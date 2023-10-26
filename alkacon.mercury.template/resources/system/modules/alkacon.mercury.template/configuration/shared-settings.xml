@@ -2633,6 +2633,18 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showresetbutton.filter]]></IncludeName>
+      <PropertyName><![CDATA[showresetbutton]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.list.showResetButton)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.list.showResetButton.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[false]]></Default>
+      <WidgetConfig><![CDATA[
+              false:          %(key.msg.option.hide)|
+              true:           %(key.msg.option.show)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showarchive.filter]]></IncludeName>
       <PropertyName><![CDATA[showarchive]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.list.showCalendarFilter)]]></DisplayName>

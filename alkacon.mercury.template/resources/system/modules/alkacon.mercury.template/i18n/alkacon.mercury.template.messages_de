@@ -1615,6 +1615,7 @@ msg.setting.showLink.help=Legt fest ob der Link aus diesem Inhalt angezeigt wird
 msg.setting.showLocation=Zeige Adresse
 msg.setting.showLocation.help=<p>Legt fest, ob die im Inhalt angegebene Adresse angezeigt wird.</p>
 msg.setting.showMap=Zeige Karte
+msg.setting.showMap.event.help=<p>Bei Veranstaltungen wird die Karte einschließlich <em>Adressangaben</em> und Angaben zur <em>Barrierefreiheit</em> unterhalb der Veranstaltungsbeschreibung angezeigt und zwar <em>zusätzlich</em> zur Adresse im oberen Bereich. Um die Adresse im oberen Bereich ein- oder auszublenden, verwenden Sie die Einstellung <em>Zeige Adresse</em>.</p>
 msg.setting.showMap.help=<p>Legt fest, ob die im Inhalt spezifizierte Karte angezeigt wird.</p>
 msg.setting.showMap.none=Karte nicht anzeigen
 msg.setting.showMap.onclick=Karte optional nach Klick anzeigen

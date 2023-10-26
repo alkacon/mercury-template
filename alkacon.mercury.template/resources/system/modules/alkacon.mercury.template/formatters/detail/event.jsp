@@ -66,7 +66,7 @@
 
 <c:set var="hasVirtualLocation"     value="${value.VirtualLocation.value.URI.isSet}" />
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet or hasVirtualLocation)}" />
-<c:set var="showMap"                value="${setShowMap ne 'false' and not hasVirtualLocation and not empty locData.lat}" />
+<c:set var="showMap"                value="${setShowMap ne 'false' and not hasVirtualLocation}" />
 
 <c:set var="showType"               value="${showType and type.isSet}" />
 <c:set var="showPerformer"          value="${performerOption ne 'none'}" />
@@ -275,16 +275,13 @@
     <c:if test="${showMap}">
         <mercury:nl/>
         <div class="detail-addition ser-poi"><%----%>
-            <jsp:useBean id="params" class="java.util.HashMap" />
-            <c:set target="${params}" property="mapRatio" value="16-9" />
-            <c:set target="${params}" property="hsize" value="${hsize+1}" />
-            <c:set target="${params}" property="showLocation" value="${true}" />
-            <c:set target="${params}" property="showMap" value="${setShowMap}" />
-            <c:set target="${params}" property="showDescription" value="${false}" />
-            <c:set target="${params}" property="showImageZoom" value="${showImageZoom}" />
-            <c:set target="${params}" property="showImageSubtitle" value="${showImageSubtitle}" />
-            <c:set target="${params}" property="showImageCopyright" value="${showImageCopyright}" />
-            <c:set target="${params}" property="showCombinedDownloads" value="${true}" />
+            <c:set var="params" value="${{
+                'mapRatio': '16-9',
+                'hsize': hsize+1,
+                'showLocation': true,
+                'showMap': setShowMap,
+                'showDescription': false
+            }}" />
             <mercury:display
                 formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/detail/poi.xml:08d2a739-0286-492b-a3d4-d302dd64d3f6)"
                 file="${value.AddressChoice.value.PoiLink.stringValue}"

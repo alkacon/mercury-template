@@ -1616,6 +1616,7 @@ msg.setting.showLocation=Show address
 msg.setting.showLocation.help=<p>Controls if the address or location specified in this content is shown.</p>
 msg.setting.showMap=Show map
 msg.setting.showMap.help=<p>Controls if the map specified in this content is shown.</p>
+msg.setting.showMap.event.help=<p>In the case of events, the map is shown <em>below</em> the event description including address and accessibility information. The map is shown <em>in addition</em> to the address information in the upper area. In order to show or hide the address information in the upper area, use the <em>Show address</em> setting.</p>
 msg.setting.showMap.none=Hide the map
 msg.setting.showMap.onclick=Show the map optionally after click
 msg.setting.showMap.onload=Show the map 

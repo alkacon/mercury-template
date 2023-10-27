@@ -58,8 +58,9 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {string} elementId the id of the list element the filter belongs to.
  * @property {?JQuery<HTMLElement>} $textsearch  the search form of the filter (for full text search).
  * @property {boolean} hasResetButtons flag, indicating if the filter has reset buttons shown.
+ * @property {string} resetbuttontitle the (locale specific) title attribute for reset buttons.
  * @property {string} initparams the initial search state parameters to apply on first load of the list.
-
+ *
  * @typedef {Object.<string, ListFilter>} ListFilterMap Object holding only list filters as property values.
  *
  * @typedef {Object.<string, ListFilter[]>} ListFilterArrayMap Object holding only list filters as property values.
@@ -292,7 +293,7 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
             updateInnerList(listGroup[i].id, searchStateParameters, true);
         }
         if (adjustCounts || hasResetButtons) {
-          updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup, filter);
+          updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
         }
         updateDirectLink(filter, searchStateParameters);
     } else {
@@ -981,11 +982,9 @@ function handleAutoLoaders() {
  *
  * @param {sting} id id of the list to update.
  * @param {ListFilter[]} filterGroup the list filters to update.
- * @param {ListFilter} filter the filter that has changed.
- * @param {string} searchStateParameters the search state parameters to pass for the filter updates.
  * @returns {void}
  */
-function updateFilterCountsAndResetButtons(id, filterGroup, filter) {
+function updateFilterCountsAndResetButtons(id, filterGroup) {
   if (DEBUG)
     console.info(
       "Lists.updateFilterCountsAndResetButtons() called with filterGroup, filter, searchStateParameters:"
@@ -1021,7 +1020,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup, filter) {
               "=" +
               encodeURIComponent(query);
           if (updateResets)
-            resetButtons.push(generateInputFieldResetButton(fi.id));
+            resetButtons.push(generateInputFieldResetButton(fi.id, fi.resetbuttontitle));
         }
         fi.$element.find(".active").each(function () {
           if (updateCounts) {
@@ -1029,7 +1028,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup, filter) {
             params += p;
           }
           if (updateResets) {
-            resetButtons.push(generateResetButton(this));
+            resetButtons.push(generateResetButton(this, fi.resetbuttontitle));
           }
         });
         var pageP = "";
@@ -1045,7 +1044,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup, filter) {
           params += pageP;
         }
         if (updateResets && checkedElement != undefined) {
-          resetButtons.push(generateResetButton(checkedElement));
+          resetButtons.push(generateResetButton(checkedElement, fi.resetbuttontitle));
         }
 
         if(updateCounts) {
@@ -1075,17 +1074,17 @@ function updateFilterCountsAndResetButtons(id, filterGroup, filter) {
 
 /**
  * @param {HTMLElement} filterField
- * @param {string} label
+ * @param {string} titleAttr
  * @returns {HTMLElement} the reset button
  */
-function generateResetButton(filterField) {
+function generateResetButton(filterField, titleAttr) {
   /** @type {HTMLElement} */
   const result = document.createElement("button");
   const id = filterField.id;
-  const type = id.startsWith('folder_') 
-    ? 'folders' 
-    : (id.startsWith('y_') 
-        ? 'archive' 
+  const type = id.startsWith('folder_')
+    ? 'folders'
+    : (id.startsWith('y_')
+        ? 'archive'
         : (id.startsWith('cat_') ? 'categories' : undefined))
   result.classList.add("resetbutton");
   if(type != undefined) result.classList.add(type);
@@ -1095,19 +1094,20 @@ function generateResetButton(filterField) {
   if(!onclick) onclick = filterField.getAttribute('data-onclick');
   if(!onclick) onclick = filterField.firstChild.getAttribute('onclick');
   result.setAttribute('onclick', onclick);
+  if(titleAttr) result.setAttribute('title', titleAttr);
   result.textContent = label ? label : id;
   return result;
 }
 
 /**
  * @param {string} archiveId
- * @param {string} label
+ * @param {string} titleAttr
  * @returns {HTMLElement} the reset button
  */
-function generateInputFieldResetButton(archiveId) {
+function generateInputFieldResetButton(archiveId, titleAttr) {
   /** @type {HTMLElement} */
   const result = document.createElement("button");
-  result.classList.add("reset-button");
+  result.classList.add("resetbutton");
   result.classList.add("textsearch");
   result.id = "reset_textsearch_" + archiveId;
   const form = document.getElementById('queryform_' + archiveId)
@@ -1117,6 +1117,7 @@ function generateInputFieldResetButton(archiveId) {
   const label = labelPlain ? labelPlain.replace('%(query)', inputField.value) : inputField.value;
   let onclick = "document.getElementById('textsearch_" + archiveId + "').value = ''; " + submitAction;
   result.setAttribute('onclick', onclick);
+  if(titleAttr) result.setAttribute('title', titleAttr);
   result.textContent = label;
   return result;
 }
@@ -1124,9 +1125,9 @@ function generateInputFieldResetButton(archiveId) {
 
 
 /**
- * 
- * @param {string} id 
- * @param {ResetButtonsMap} resetButtons 
+ *
+ * @param {string} id
+ * @param {ResetButtonsMap} resetButtons
  */
 function updateResetButtons(id, resetButtons) {
   m_listResetButtons[id] = resetButtons;
@@ -1680,7 +1681,7 @@ export function init(jQuery, debug) {
                   // tell list, that it has to track reset buttons
                   m_listResetButtons[filter.elementId] = [];
                 }
-                
+
                 // attach key listeners for keyboard support
                 $archiveFilter.find("li > a").on("keydown", function(e) {
                     if (e.type == "keydown" && (e.which == 13 || e.which == 32)) {

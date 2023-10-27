@@ -81,6 +81,8 @@
         <c:set var="initparams" value="reloaded${initparams}" />
     </c:if>
 
+    <c:set var="resetButtonTitle"><fmt:message key="msg.page.list.resetbutton.title" /></c:set>
+
     <mercury:nl />
     <div class="element type-list-filter pivot ${cssWrapper}" <%--
     --%>id="${filterId}" <%--
@@ -96,7 +98,8 @@
         --%>"archiveparamkey":"${rangeFacetController.config.paramKey}", <%--
         --%>"folderparamkey":"${folderFacetController.config.paramKey}", <%--
         --%>"combinable": true, <%--
-        --%>"combine": ${combine}<%--
+        --%>"combine": ${combine},<%--
+        --%>"resetbuttontitle": "${resetButtonTitle}"<%--_
         --%><c:if test="${not empty targetUri}">, "target":"<cms:link>${targetUri}</cms:link>"</c:if><%--
         --%><c:if test="${not empty initparams}">, "initparams":"${initparams}"</c:if><%--
         --%>}'><%----%>
@@ -137,9 +140,8 @@
         </c:if>
 
         <c:if test="${showReset}">
-        <div id="resetbuttons_${filterId}" class="resetbuttons">
-            <!-- Filled dynamically via JavaScript. -->
-        </div>
+            <%-- IMPORTANT: The div must really be empty. Otherwise CSS style :empty does not match. --%>
+            <div id="resetbuttons_${filterId}" class="filterbox resetbuttons"><%-- Filled dynamically via JavaScript. --%></div>
         </c:if>
 
         <c:if test="${showCategories}">

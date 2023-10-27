@@ -19,7 +19,6 @@
  */
 
 .list-content {
-
     .list-box {
         position: relative;
         display: flex;
@@ -232,7 +231,6 @@
 @if ($list-side-adjust) {
     aside .list-content,
     .list-content.list-aside {
-
         .teaser {
             // make buttons in side grey so that they don't distract from main content
             .teaser-btn:not(:hover) {
@@ -264,7 +262,7 @@
                         @include font-size-responsive(
                             // the intro heading should be the same in all variations: 65% percent of the reduced teaser title font size
                             round($teaser-title-size-mobile * 9) * 0.1 * 0.65,
-                            round($teaser-title-size * 9 ) * 0.1 * 0.65
+                            round($teaser-title-size * 9) * 0.1 * 0.65
                         )
                     }
                 }
@@ -300,7 +298,6 @@
         @extend %paginationSmall;
     }
 }
-
 
 // Tiling teasers with flex box layout
 
@@ -414,7 +411,6 @@
 }
 
 .download-list {
-
     a:hover {
         text-decoration: none;
         .dl-content {
@@ -457,7 +453,6 @@
     }
 
     &.dl-list-elaborate {
-
         li.list-entry {
             padding-top: var(--#{$prefix}default-margin-small);
             padding-bottom: var(--#{$prefix}default-margin-small);
@@ -489,7 +484,6 @@
                 @include dl-btn;
             }
         }
-
 
         .dl-stats {
             .dl-type::after {
@@ -551,7 +545,6 @@
     }
 
     &.dl-list-compact {
-
         .list-entries {
             border-bottom: 1px solid var(--#{$prefix}highlight-color);
             margin-bottom: var(--#{$prefix}default-margin-small);
@@ -579,8 +572,8 @@
         .dl-link {
             display: flex;
             &.dl-link-disp {
-               flex-grow: 10;
-               width: 100%;
+                flex-grow: 10;
+                width: 100%;
             }
             .ico {
                 font-size: 2.0rem;
@@ -750,7 +743,6 @@
     .list-dynamic:not(.list-paginate) {
         // button append loading
         .list-pagination {
-
             @include media-breakpoint-up(lg) {
                 display: flex;
                 justify-content: center;
@@ -783,7 +775,6 @@
 // List archive filter menu
 
 .type-list-filter {
-
     @include button-reset-outline-border;
 
     button {
@@ -795,6 +786,10 @@
         border-radius: $list-border-radius;
         margin-bottom: var(--#{$prefix}element-margin);
         background-color: var(--#{$prefix}body-bg);
+
+        &:empty {
+            margin-bottom: 0;
+        }
 
         &:last-of-type {
             margin-bottom: 0;
@@ -972,7 +967,6 @@
         }
 
         &.archive {
-
             .btn.li-label:before {
                 content: "\f133"; // mercury:icon - fa-calendar-o
             }
@@ -1074,13 +1068,58 @@
                 }
             }
         }
+
+        &.resetbuttons {
+            display: flex;
+            flex-direction: column;
+            flex-basis: content;
+            --#{$prefix}filter-btn-size: #{$filter-btn-size};
+            .resetbutton {
+                display: flex;
+                border: none;
+                border-radius: var(--#{$prefix}border-radius);
+                background: inherit;
+                font-weight: var(--#{$prefix}font-weight-bold);
+                margin: 0;
+                margin-bottom: var(--#{$prefix}default-margin-small);
+                padding: 0;
+                text-align: left;
+                align-items: center;
+
+                &:before {
+                    @include icon-font;
+                    content: "\f00d";
+                    line-height: var(--#{$prefix}filter-btn-size);
+                    color: var(--#{$prefix}btn-fg);
+                    background-color: var(--#{$prefix}btn-bg);
+                    width: var(--#{$prefix}filter-btn-size);
+                    min-width: var(--#{$prefix}filter-btn-size);
+                    height: var(--#{$prefix}filter-btn-size);
+                    border-radius: 100%;
+                    margin-right: var(--#{$prefix}ws-margin);
+                    display: flex;
+                    justify-content: center;
+                }
+                &:hover,
+                &:focus {
+                    color: var(--#{$prefix}link-hover-color);
+                }
+                &:focus:before,
+                &:hover:before {
+                    color: var(--#{$prefix}link-hover-fg-color);
+                    background-color: var(--#{$prefix}link-hover-color);
+                }
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 }
 
 // List facet / sort options
 
 .type-list-sortoptions {
-
     .dropdown-toggle {
         padding: $btn-padding #{$btn-padding * 6} $btn-padding #{$btn-padding * 2};
 

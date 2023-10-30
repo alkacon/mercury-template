@@ -143,11 +143,14 @@
                 </c:if>
 
                 <c:set var="megaMenuFile" value="${cms.sitemapConfig.attribute['template.mega.menu.filename'].isSetNotNone ? cms.sitemapConfig.attribute['template.mega.menu.filename'] : 'mega.menu'}" />
-                <c:set var="megaMenuVfsPath" value="${navElem.resourceName}${megaMenuFile}" />
-                <c:if test="${navElem.navigationLevel}">
-                    <%-- ###### Path correction needed if navLevel ###### --%>
-                    <c:set var="megaMenuVfsPath" value="${fn:replace(megaMenuVfsPath, navElem.fileName, '')}" />
-                </c:if>
+                <c:choose>
+                    <c:when test="${navElem.navigationLevel}">
+                        <c:set var="megaMenuVfsPath" value="${navElem.resourceName.substring(0, navElem.resourceName.lastIndexOf('/'))}/${megaMenuFile}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="megaMenuVfsPath" value="${navElem.resourceName}${megaMenuFile}" />
+                    </c:otherwise>
+                </c:choose>
                 <c:set var="megaMenuRes" value="${cms.vfs.xml[megaMenuVfsPath]}" />
                 <c:if test="${not empty megaMenuRes}">
                     <c:set var="megaMenu" value=' data-megamenu="${megaMenuRes.resource.link}"' />

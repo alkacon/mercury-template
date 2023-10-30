@@ -52,7 +52,7 @@
         </c:if>
     </c:when>
     <c:when test="${listBulletStyle eq 'custom-icon'}">
-        <c:set var="liWrapper">class="fa-${iconClass}"</c:set><%-- mercury:icon --%>
+        <c:set var="liWrapper">fa-${iconClass}</c:set><%-- mercury:icon --%>
     </c:when>
 </c:choose>
 
@@ -70,7 +70,7 @@
         <c:when test="${not emptyLinkSequence}">
             <ul ${ulWrapper}><%----%>
                 <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
-                    <mercury:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" addLi="ls-li${not empty liWrapper ? ' '.conact(liWrapper) : ''}" />
+                    <mercury:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" addLi="ls-li${not empty liWrapper ? ' '.concat(liWrapper) : ''}" />
                 </c:forEach>
             </ul><%----%>
         </c:when>

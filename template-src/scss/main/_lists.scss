@@ -1076,25 +1076,32 @@
             --#{$prefix}filter-btn-size: #{$filter-btn-size};
             .resetbutton {
                 display: flex;
-                border: none;
-                border-radius: var(--#{$prefix}border-radius);
-                background: inherit;
-                font-weight: var(--#{$prefix}font-weight-bold);
-                margin: 0;
-                margin-bottom: var(--#{$prefix}default-margin-small);
-                padding: 0;
+                font-family: var(--#{$prefix}btn-font-family);
+                @if ($btn-text-transform != none) {
+                    text-transform: $btn-text-transform;
+                }
+                @if ($btn-font-size != $font-size-base) {
+                    font-size: $btn-font-size;
+                }
+                @if ($btn-font-weight != $font-weight-base) {
+                    font-weight: $btn-font-weight;
+                }
                 text-align: left;
                 align-items: center;
+                background: inherit;
+                margin: 0 0 var(--#{$prefix}default-margin-small) 0;
+                padding: 0;
+                border: none;
 
                 &:before {
                     @include icon-font;
                     content: "\f00d";
-                    line-height: var(--#{$prefix}filter-btn-size);
                     color: var(--#{$prefix}btn-fg);
                     background-color: var(--#{$prefix}btn-bg);
+                    height: var(--#{$prefix}filter-btn-size);
+                    line-height: var(--#{$prefix}filter-btn-size);
                     width: var(--#{$prefix}filter-btn-size);
                     min-width: var(--#{$prefix}filter-btn-size);
-                    height: var(--#{$prefix}filter-btn-size);
                     border-radius: 100%;
                     margin-right: var(--#{$prefix}ws-margin);
                     display: flex;

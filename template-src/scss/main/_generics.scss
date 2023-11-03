@@ -335,6 +335,9 @@
     &.space-xl {
         padding-bottom: calc(4 * var(--#{$prefix}default-margin));
     }
+    &.space-xxl {
+        padding-bottom: calc(8 * var(--#{$prefix}default-margin));
+    }
 
     @include media-breakpoint-up(lg) {
         &.space-lg-none {
@@ -352,8 +355,11 @@
         &.space-lg-lg {
             padding-bottom: calc(2 * var(--#{$prefix}default-margin));
         }
-        &.space-lg-xl {
+        &.space-lg-xxl {
             padding-bottom: calc(4 * var(--#{$prefix}default-margin));
+        }
+        &.space-lg-xxl {
+            padding-bottom: calc(8 * var(--#{$prefix}default-margin));
         }
     }
 }

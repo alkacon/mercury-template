@@ -1707,6 +1707,7 @@ msg.setting.space.none=Kein zusätzlicher Abstand
 msg.setting.space.sm=Klein
 msg.setting.space.xl=Sehr groß
 msg.setting.space.xs=Sehr klein
+msg.setting.space.xxl=Extra groß
 msg.setting.spaceColor=Hintergrundfarbe
 msg.setting.spaceColor.help=Legt die Hintergrundfarbe des eingefügten Abstands fest.
 msg.setting.spaceDesktop=Abstand Desktop

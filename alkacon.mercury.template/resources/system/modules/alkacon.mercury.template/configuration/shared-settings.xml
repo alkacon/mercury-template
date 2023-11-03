@@ -3803,6 +3803,7 @@
             md: %(key.msg.setting.space.md)|
             lg: %(key.msg.setting.space.lg)|
             xl: %(key.msg.setting.space.xl)|
+            xxl: %(key.msg.setting.space.xxl)|
             none: %(key.msg.setting.space.none)
         ]]></WidgetConfig>
     </Setting>
@@ -3820,6 +3821,7 @@
             md: %(key.msg.setting.space.md)|
             lg: %(key.msg.setting.space.lg)|
             xl: %(key.msg.setting.space.xl)|
+            xxl: %(key.msg.setting.space.xxl)|
             none: %(key.msg.setting.space.none)
         ]]></WidgetConfig>
     </Setting>

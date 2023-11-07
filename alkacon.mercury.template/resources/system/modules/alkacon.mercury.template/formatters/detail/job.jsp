@@ -29,6 +29,7 @@
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
+<c:set var="showType"               value="${setting.showJobType.useDefault('true').toBoolean}" />
 <c:set var="showMetaSummary"        value="${setting.showMetaSummary.toBoolean}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
@@ -54,7 +55,7 @@
 
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet)}" />
 <c:set var="showDate"               value="${not empty date}" />
-<c:set var="showType"               value="${type.isSet}" />
+<c:set var="showType"               value="${showType and type.isSet}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 
@@ -73,7 +74,6 @@
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
             <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPieceLayout == 0}" />
         </c:if>
     </jsp:attribute>
 
@@ -152,7 +152,7 @@
 
         <mercury:data-job content="${content}" showSummary="${showMetaSummary}" />
 
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 1)}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 0) or (keyPieceLayout == 1)}" />
 
         <c:if test="${firstParagraph.value.Text.isSet}">
             <div class="visual-text" ${firstParagraph.value.Text.rdfaAttr}><%----%>

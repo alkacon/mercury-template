@@ -80,6 +80,9 @@
       <IncludeName><![CDATA[showLocation.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showJobType.true]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showMetaSummary.true]]></IncludeName>
     </Setting>
     <MetaMapping>

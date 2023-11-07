@@ -161,47 +161,50 @@
 <mercury:nl />
 
 <c:if test="${showSummary and cms.isEditMode}">
-    <c:set var="parentId"><mercury:idgen prefix="-" uuid="${cms.element.instanceId}" /></c:set>
-    <c:set var="isValid" value="${hasTitle and hasDatePosted and hasDescription and hasJobLocation and hasHringOrganization}" />
-    <c:set var="hasAllOptions" value="${hasValidThrough and hasEmploymentType and hasBaseSalary}" />
-    <div class="subelement oct-meta-infos box ${isValid ? (hasAllOptions ? 'box-oct-info' : 'box-oct-warning') : 'box-oct-error'}"><%----%>
-        <div><%----%>
-            <c:choose>
-                <c:when test="${not isValid}">
-                    <div class="h3"><fmt:message key="msg.page.meta-info.options-invalid" /></div><%----%>
-                </c:when>
-                <c:when test="${not hasAllOptions}">
-                    <div class="h3"><fmt:message key="msg.page.meta-info.options-missing" /></div><%----%>
-                </c:when>
-                <c:otherwise>
-                    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfos${parentId}" aria-expanded="false" aria-controls="metaInfos${parentId}"><%----%>
-                        <fmt:message key="msg.page.meta-info.show" />
-                    </button><%----%>
-                </c:otherwise>
-            </c:choose>
-        </div><%----%>
-        <div class="collapse mt-sm${not isValid or not hasAllOptions ? ' show' : ''}" id="metaInfos${parentId}"><%----%>
-            <div class="box box-body"><%----%>
-                <mercury:data-meta-check valid="${hasTitle}" label="label.Title" />
-                <mercury:data-meta-check valid="${hasDatePosted}" label="label.Job.Date" />
-                <mercury:data-meta-check valid="${hasDescription}" label="label.Description" />
-                <mercury:data-meta-check valid="${hasJobLocation}" label="label.AddressChoice" />
-                <mercury:data-meta-check valid="${hasHringOrganization}" label="label.Job.HiringOrganization" />
-                <mercury:data-meta-check valid="${hasValidThrough}" optional="${true}" label="label.Job.ValidThrough" />
-                <mercury:data-meta-check valid="${hasEmploymentType}" optional="${true}" label="label.Job.EmploymentType" />
-                <mercury:data-meta-check valid="${hasBaseSalary}" optional="${true}" label="label.Job.BaseSalary" />
+    <fmt:setLocale value="${cms.workplaceLocale}" />
+    <cms:bundle basename="alkacon.mercury.template.messages">
+        <c:set var="parentId"><mercury:idgen prefix="-" uuid="${cms.element.instanceId}" /></c:set>
+        <c:set var="isValid" value="${hasTitle and hasDatePosted and hasDescription and hasJobLocation and hasHringOrganization}" />
+        <c:set var="hasAllOptions" value="${hasValidThrough and hasEmploymentType and hasBaseSalary}" />
+        <div class="subelement oct-meta-infos box ${isValid ? (hasAllOptions ? 'box-oct-info' : 'box-oct-warning') : 'box-oct-error'}"><%----%>
+            <div><%----%>
+                <c:choose>
+                    <c:when test="${not isValid}">
+                        <div class="h3"><fmt:message key="msg.page.meta-info.options-invalid" /></div><%----%>
+                    </c:when>
+                    <c:when test="${not hasAllOptions}">
+                        <div class="h3"><fmt:message key="msg.page.meta-info.options-missing" /></div><%----%>
+                    </c:when>
+                    <c:otherwise>
+                        <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfos${parentId}" aria-expanded="false" aria-controls="metaInfos${parentId}"><%----%>
+                            <fmt:message key="msg.page.meta-info.show" />
+                        </button><%----%>
+                    </c:otherwise>
+                </c:choose>
             </div><%----%>
-            <div class="mt-sm"><%----%>
-                <div><%----%>
-                    <button class="btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfoPre${parentId}" aria-expanded="false" aria-controls="metaInfoPre${parentId}"><%----%>
-                        <fmt:message key="msg.page.meta-info.show-json" />
-                    </button><%----%>
+            <div class="collapse mt-sm${not isValid or not hasAllOptions ? ' show' : ''}" id="metaInfos${parentId}"><%----%>
+                <div class="box box-body"><%----%>
+                    <mercury:data-meta-check valid="${hasTitle}" label="label.Title" />
+                    <mercury:data-meta-check valid="${hasDatePosted}" label="label.Job.Date" />
+                    <mercury:data-meta-check valid="${hasDescription}" label="label.Description" />
+                    <mercury:data-meta-check valid="${hasJobLocation}" label="label.AddressChoice" />
+                    <mercury:data-meta-check valid="${hasHringOrganization}" label="label.Job.HiringOrganization" />
+                    <mercury:data-meta-check valid="${hasValidThrough}" optional="${true}" label="label.Job.ValidThrough" />
+                    <mercury:data-meta-check valid="${hasEmploymentType}" optional="${true}" label="label.Job.EmploymentType" />
+                    <mercury:data-meta-check valid="${hasBaseSalary}" optional="${true}" label="label.Job.BaseSalary" />
                 </div><%----%>
-                <div class="collapse box box-body mt-sm" id="metaInfoPre${parentId}"><%----%>
-                    <pre><c:out value="${jsonLd.pretty}" /></pre><%----%>
+                <div class="mt-sm"><%----%>
+                    <div><%----%>
+                        <button class="btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfoPre${parentId}" aria-expanded="false" aria-controls="metaInfoPre${parentId}"><%----%>
+                            <fmt:message key="msg.page.meta-info.show-json" />
+                        </button><%----%>
+                    </div><%----%>
+                    <div class="collapse box box-body mt-sm" id="metaInfoPre${parentId}"><%----%>
+                        <pre><c:out value="${jsonLd.pretty}" /></pre><%----%>
+                    </div><%----%>
                 </div><%----%>
             </div><%----%>
         </div><%----%>
-    </div><%----%>
-    <mercury:nl />
+        <mercury:nl />
+    </cms:bundle>
 </c:if>

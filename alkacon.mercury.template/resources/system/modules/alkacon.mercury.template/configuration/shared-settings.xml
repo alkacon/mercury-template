@@ -1212,6 +1212,14 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showJobType.true]]></IncludeName>
+      <PropertyName><![CDATA[showJobType]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showJobType)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showJobType.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showLocation.true]]></IncludeName>
       <PropertyName><![CDATA[showLocation]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showLocation)]]></DisplayName>

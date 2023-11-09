@@ -172,6 +172,7 @@
     .detail-addition:last-of-type {
         &.element,
         &.subelement,
+        .detail-page:last-of-type,
         .element:last-of-type,
         .subelement:last-of-type {
             margin-bottom: 0;

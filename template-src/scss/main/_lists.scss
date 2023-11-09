@@ -1088,7 +1088,8 @@
                 }
                 text-align: left;
                 align-items: center;
-                background: inherit;
+                color: var(--#{$prefix}body-color);
+                background-color: var(--#{$prefix}body-bg);
                 margin: 0 0 var(--#{$prefix}default-margin-small) 0;
                 padding: 0;
                 border: none;

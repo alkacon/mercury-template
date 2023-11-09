@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>16.0.27</version>
+		<version>16.0.29</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -708,7 +708,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -1000,7 +1000,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -1108,7 +1108,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;params=(cssgrid);user]]></value>
+					<value><![CDATA[container-element;locale;uri;params=(cssgrid);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -3278,7 +3278,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[container-element;locale;uri;params=(sitepath);user]]></value>
+					<value><![CDATA[container-element;locale;params=(sitepath);user]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>
@@ -4423,6 +4423,10 @@
 			<datecreated>Thu, 12 Jul 2018 08:45:56 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[never]]></value>
+				</property>
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
@@ -5811,7 +5815,7 @@
 			<properties>
 				<property>
 					<name>cache</name>
-					<value><![CDATA[never]]></value>
+					<value><![CDATA[container-element;locale;uri]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

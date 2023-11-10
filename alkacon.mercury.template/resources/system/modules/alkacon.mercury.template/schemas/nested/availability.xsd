@@ -14,6 +14,7 @@
         <xsd:sequence>
             <xsd:element name="Release" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Expiration" type="OpenCmsDateTime" minOccurs="0" />
+            <xsd:element name="Confidential" type="OpenCmsAccessRestriction" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
     </xsd:complexType>
@@ -36,6 +37,15 @@
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime + 31536000000)]]></Default>
                     <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Confidential</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability.Confidential)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.Confidential.help)]]></Description>
+                    <Widget>accessrestriction</Widget>
+                    <WidgetConfig>{group: '%(attribute:mercury.confidential.group)'}</WidgetConfig>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

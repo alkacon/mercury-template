@@ -115,7 +115,7 @@
 
 <c:choose>
     <c:when test="${storePersJsonLdObject}">
-        <c:set var="persJsonLd" value="${jsonLd}" />
+        <c:set var="persJsonLd" value="${jsonLdd.json}" />
     </c:when>
     <c:otherwise>
         <script type="application/ld+json"><%----%>

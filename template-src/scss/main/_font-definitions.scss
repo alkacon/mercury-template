@@ -109,7 +109,7 @@ $fonts-preloaded: map-merge($fonts-preloaded-default, $fonts-preloaded-custom);
 
 
 @function get-closest-larger($list, $value) {
-    $result: 1000;
+    $result: 2000;
     @for $i from 1 through length($list) {
         $val: nth($list, $i);
         @if (($val > $value) and ($val < $result)) {
@@ -151,7 +151,7 @@ $fonts-preloaded: map-merge($fonts-preloaded-default, $fonts-preloaded-custom);
         $smaller-weight: get-closest-smaller($font-weights, $weight);
         $larger-weight: get-closest-larger($font-weights, $weight);
         $result: closest-number($weight, $smaller-weight, $larger-weight);
-        @debug "Font '#{$font-name}' has no matching weight #{$weight}, smaller is: #{$smaller-weight}, larger is: #{$larger-weight}, using: #{$result}";
+        @warn "Font '#{$font-name}' has no matching weight #{$weight}, smaller is: #{$smaller-weight}, larger is: #{$larger-weight}, using: #{$result}";
         @return $result;
     }
     @debug "Font '#{$font-name}' not found in predefined list, using #{$weight} for font-weight";

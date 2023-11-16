@@ -19,8 +19,11 @@
  * This is the Mercury template for OpenCms, created by Alkacon Software
  */
 
-// import functions
-@import "imports-functions";
+// import font definitions for pre-downloaded fonts
+@import 'main/font-definitions';
 
-// import variables and fonts
-@import 'imports-variables';
+// define the global variables
+@import 'main/variables';
+
+// import font definitions on top
+@import 'imports-fonts';

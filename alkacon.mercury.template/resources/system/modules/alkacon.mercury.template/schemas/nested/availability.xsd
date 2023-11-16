@@ -14,7 +14,7 @@
         <xsd:sequence>
             <xsd:element name="Release" type="OpenCmsDateTime" minOccurs="0" />
             <xsd:element name="Expiration" type="OpenCmsDateTime" minOccurs="0" />
-            <xsd:element name="Confidential" type="OpenCmsAccessRestriction" />
+            <xsd:element name="Confidential" type="OpenCmsAccessRestriction" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
     </xsd:complexType>

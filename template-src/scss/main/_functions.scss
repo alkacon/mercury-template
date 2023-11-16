@@ -15,6 +15,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+@use 'sass:math';
+
 // Returns the key from a map, or null in case either the map or the key is not defined
 @function map-get-safe($map, $key) {
     @if (($map != null) and ($key != null)) {
@@ -145,7 +147,7 @@
 // see https://css-tricks.com/snippets/sass/strip-unit-function/
 @function strip-unit($number) {
     @if type-of($number) == 'number' and not unitless($number) {
-        @return divide($number, $number * 0 + 1);
+        @return math.div($number, $number * 0 + 1);
     }
 
     @return $number;
@@ -166,6 +168,11 @@
     }
 
     @return calc(#{$size-small} + #{strip-unit($size-large - $size-small)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+}
+
+@function fluid-size-clamp($size-large, $size-small, $bp-large: xs, $bp-small: none) {
+
+    @return #{clamp($size-small, fluid-size($size-large, $size-small, $bp-large, $bp-small), $size-large)};
 }
 
 // responsive font sizing based on the container size
@@ -492,7 +499,7 @@ $linear-channel-values:
   $bg-lum: luminance($bg-color) + .05;
   $fg-lum: luminance($fg-color) + .05;
 
-  @return divide(max($bg-lum, $fg-lum), min($bg-lum, $fg-lum), 10);
+  @return math.div(max($bg-lum, $fg-lum), min($bg-lum, $fg-lum));
 }
 
 // Check if there is sufficient contrast ratio between two colors according to the W3C WCAG rules.

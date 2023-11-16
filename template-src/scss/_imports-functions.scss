@@ -20,7 +20,8 @@
  */
 
 // import functions
-@import "imports-functions";
+@import "../bootstrap5/scss/functions";
+@import 'main/functions';
 
-// import variables and fonts
-@import 'imports-variables';
+// import mixins
+@import 'main/mixins';

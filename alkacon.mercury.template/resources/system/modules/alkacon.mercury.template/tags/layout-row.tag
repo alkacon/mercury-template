@@ -32,6 +32,9 @@
 <%@ attribute name="breakpoint" type="java.lang.String" required="false"
     description="The breakpoint from which the containers are shown 'side by side'. Will default to 'lg' if not set." %>
 
+<%@ attribute name="colCount" type="java.lang.Integer" required="false"
+    description="Number of columns to create (only for special rowVariant 5 / 'flex-cols')." %>
+
 <%@ attribute name="reverseMobileOrder" type="java.lang.Boolean" required="false"
     description="Controls the column order is reversed on mobile devices." %>
 
@@ -62,7 +65,7 @@
 <c:set var="addContainer"               value="${not empty conCss}" />
 <c:set var="sideType"                   value="${empty sideType ? 'element' : sideType}" />
 
-<c:if test="${(rowVariant le 3) and (rowVariant ge 2)}">
+<c:if test="${(rowVariant eq 2) or (rowVariant eq 3) or (rowVariant eq 5)}">
     <c:choose>
         <c:when test="${empty breakpoint}">
             <c:set var="breakpoint"     value="-lg-" />
@@ -177,6 +180,44 @@
                 <c:set target="${valueMap}" property="Name"         value="addcol2"/>
                 <c:set target="${valueMap}" property="Css"          value="${xsCols} col-lg-3${colCss}${reverseMobileOrder ? (twoXsCols ? ' order-2' :' order-1').concat('order-md-2 order-lg-4') : ''}" />
                 <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol2'}" />
+
+            <mercury:nl />
+            </div><%----%>
+        </mercury:div>
+    </c:when>
+
+
+    <c:when test="${rowVariant == 5}">
+        <%-- 'flex-cols' - special row with number of columns defined in settings--%>
+        <c:set var="colSize"        value="${['12', '12','6','4','3','2o4','2']}" />
+        <c:set var="breakpoint"     value="${breakpoint eq '-' ? '' : breakpoint.concat(colSize[colCount])}" />
+
+        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
+            <div class="row${rowCss} col-count-${colCount}"><%----%>
+
+               <c:forEach begin="1" end="${colCount}" varStatus="status">
+                    <c:choose>
+                        <c:when test="${status.first}">
+                            <c:set var="containerName" value="maincol" />
+                            <c:set var="containerType" value="${mainType}" />
+                        </c:when>
+                        <c:when test="${status.index == 2}">
+                            <c:set var="containerName" value="sidecol" />
+                            <c:set var="containerType" value="${sideType}" />
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="containerName" value="addcol${status.count - 2}" />
+                            <c:set var="containerType" value="${sideType}" />
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:set target="${valueMap}" property="Name"         value="${containerName}"/>
+                    <c:set target="${valueMap}" property="Type"         value="${containerType}"/>
+                    <c:set target="${valueMap}" property="Css"          value="col${breakpoint} col-num-${status.count}${colCss}" />
+
+                    <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq containerName}" />
+
+                </c:forEach>
 
             <mercury:nl />
             </div><%----%>

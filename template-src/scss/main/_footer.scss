@@ -50,6 +50,7 @@
     .topfoot,
     .subfoot {
         display: flex;
+        flex-direction: column;
         padding-top: var(--#{$prefix}element-margin);
         color: var(--#{$prefix}body-color);
         background-color: var(--#{$prefix}body-bg);

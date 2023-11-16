@@ -50,6 +50,7 @@
     @include set-box-colors($darkbg-color);
 }
 
+
 .box-inner {
     --#{$prefix}body-bg:                            var(--#{$prefix}highlight-color);
     --#{$prefix}body-color:                         var(--#{$prefix}highlight-fg-color);
@@ -57,10 +58,14 @@
 }
 
 .box,
-.box-inner {
+.box-inner,
+.box-colors {
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
+}
 
+.box,
+.box-inner {
     padding: var(--#{$prefix}box-padding);
 
     &.fully-linked {

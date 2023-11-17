@@ -129,20 +129,23 @@
 <c:set var="visualLast"     value="${pieceLayout == 10 or (pieceLayout == 11)}" />
 <c:set var="linkLast"       value="${pieceLayout == 11}" />
 
+<c:set var="defSizeDesktop" value="${(empty sizeDesktop) or (sizeDesktop == 99)}" />
+<c:set var="defSizeMobile"  value="${(empty sizeMobile) or (sizeMobile == 99)}" />
+
 <c:choose>
     <c:when test="${fullWidth}">
         <c:set var="pieceIsFull"    value="${true}" />
-        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99)) ? 12 : (sizeDesktop > 12 ? 12 : (sizeDesktop < 0 ? 0 : sizeDesktop))}" />
+        <c:set var="sizeDesktop"    value="${defSizeDesktop ? 12 : (sizeDesktop > 12 ? 12 : (sizeDesktop < 0 ? 0 : sizeDesktop))}" />
     </c:when>
     <c:otherwise>
         <c:set var="pieceIsFlex"    value="${(pieceLayout == 2) or (pieceLayout == 3) or (pieceLayout == 6) or (pieceLayout == 7)}" />
         <c:set var="pieceIsFloat"   value="${not fullWidth and not pieceIsFlex}" />
         <c:set var="pieceDirection" value="${not fullWidth ? (pieceLayout % 2 == 0 ? 'left' : 'right') : ''}" />
-        <c:set var="sizeDesktop"    value="${(empty sizeDesktop or (sizeDesktop == 99) or (sizeDesktop > 12)) ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop)}" />
+        <c:set var="sizeDesktop"    value="${(defSizeDesktop or (sizeDesktop > 12)) ? 4 : (sizeDesktop < 0 ? 0 : sizeDesktop)}" />
     </c:otherwise>
 </c:choose>
 
-<c:set var="sizeMobile"     value="${(empty sizeMobile or (sizeMobile == 99) or (sizeMobile > 12)) ? (sizeDesktop < 10 ? (sizeDesktop > 3 ? 12 : sizeDesktop * 2) : 12) : (sizeMobile < 0 ? 0 : sizeMobile)}" />
+<c:set var="sizeMobile"     value="${(defSizeMobile or (sizeMobile > 12)) ? (sizeDesktop < 10 ? (sizeDesktop > 3 ? 12 : sizeDesktop * 2) : 12) : (sizeMobile < 0 ? 0 : sizeMobile)}" />
 
 <c:set var="useVisual"      value="${(sizeMobile != 0) or (sizeDesktop != 0)}" />
 
@@ -161,8 +164,14 @@
     <c:if test="${sizeMobile < 12}">
         <c:set var="gridOption" value="${'p-xs-'}${sizeMobile}" />
     </c:if>
+    <c:if test="${defSizeMobile}">
+        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dm'}" />
+    </c:if>
     <c:if test="${sizeDesktop < 12}">
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-md-'}${sizeDesktop}" />
+    </c:if>
+    <c:if test="${defSizeDesktop}">
+        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dd'}" />
     </c:if>
 </c:if>
 

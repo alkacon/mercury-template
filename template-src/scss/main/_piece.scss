@@ -303,8 +303,6 @@ html.keyboard-nav .piece {
 
 .flex-col {
     // .flex-col makes single columns in a row use the complete available height
-    container-type: inline-size;
-
     > .piece.flex {
         flex-grow: 1;
     }

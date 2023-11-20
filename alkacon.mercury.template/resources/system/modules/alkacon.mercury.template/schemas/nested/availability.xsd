@@ -29,6 +29,7 @@
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime)]]></Default>
                     <Search>false</Search>
+                    <Synchronization>strong</Synchronization>
                 </Setting>
                 <Setting>
                     <PropertyName>Expiration</PropertyName>
@@ -37,6 +38,7 @@
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime + 31536000000)]]></Default>
                     <Search>false</Search>
+                    <Synchronization>strong</Synchronization>
                 </Setting>
                 <Setting>
                     <PropertyName>Confidential</PropertyName>
@@ -46,6 +48,7 @@
                     <WidgetConfig>{group: '%(attribute:mercury.confidential.group)'}</WidgetConfig>
                     <Search>false</Search>
                     <Display>singleline</Display>
+                    <Synchronization>strong</Synchronization>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

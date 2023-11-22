@@ -309,22 +309,27 @@
 }
 
 .mt-sm {
-    margin-top: var(--#{$prefix}default-margin-small);
+    margin-top: var(--#{$prefix}default-margin-small) !important;
 }
 .mb-sm {
-    margin-bottom: var(--#{$prefix}default-margin-small);
+    margin-bottom: var(--#{$prefix}default-margin-small) !important;
 }
 .mt-md {
-    margin-top: var(--#{$prefix}default-margin);
+    margin-top: var(--#{$prefix}default-margin) !important;
 }
-.mt-md {
-    margin-bottom: var(--#{$prefix}default-margin);
+.mb-md {
+    margin-bottom: var(--#{$prefix}default-margin) !important;
 }
 
 // Custom spacers (for function element)
 
 .type-spacer {
-    background-color: var(--#{$prefix}body-bg);
+    &[class^="box-"],
+    &[class*=" box-"] {
+        // only set a background color in case a box color has been selectd, so the default is 'transparent'
+        background-color: var(--#{$prefix}body-bg);
+    }
+
     &.space-xs {
         padding-bottom: var(--#{$prefix}default-margin-verysmall);
     }

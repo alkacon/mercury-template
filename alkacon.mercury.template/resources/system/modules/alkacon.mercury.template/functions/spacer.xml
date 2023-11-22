@@ -27,10 +27,10 @@
       </link>
     </IncludeSettings>
     <Setting>
-      <IncludeName><![CDATA[spaceMobile.default]]></IncludeName>
+      <IncludeName><![CDATA[spaceDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[spaceDesktop.default]]></IncludeName>
+      <IncludeName><![CDATA[spaceMobile.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[spaceColor.default]]></IncludeName>

@@ -30,5 +30,5 @@
             </c:if>
         </c:if>
     </cms:bundle>
-    <c:out value="${date.format[format]}" />
+    <c:out value="${date.format[format]}" escapeXml="false" />
 </c:if>

@@ -39,40 +39,56 @@
 @function get-col-flex-size($cols, $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
-            (100% + var(--#{$prefix}gutter-x))
+            (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
             * #{divide($cols, $grid-columns, $divide-precision)}
             - (0.5 * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
         );
     } @else {
-        @return 100%;
+        @return var(--#{$prefix}piece-width);
     }
 }
 
 @function get-col-float-size($cols, $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
-            (100% + var(--#{$prefix}gutter-x))
+            (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
             * #{divide($cols, $grid-columns, $divide-precision)}
             - var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
+        );
+    } @else {
+        @return var(--#{$prefix}piece-width);
+    }
+}
+
+@function get-col-size-var($cols, $reduce: 0) {
+    @if ($cols < 12) {
+        @return calc(
+            (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
+            * #{divide($cols, $grid-columns, $divide-precision)}
+            - (var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
         );
     } @else {
         @return 100%;
     }
 }
 
-@mixin make-piece-col($cols, $reduce: 0) {
-    flex: 0 0 get-col-flex-size($cols, $reduce);
-}
+// @mixin make-piece-col($cols, $reduce: 0) {
+//     flex: 0 0 get-col-flex-size($cols, $reduce);
+// }
 
 $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column sizes for the piece visual
 
 .piece {
     --#{$prefix}gutter-x: #{$piece-gutter-x};
+    --#{$prefix}gutter-factor: 1;
     --#{$prefix}visual-last-margin-top: #{$piece-visual-last-margin-top};
     --#{$prefix}visual-margin-bottom: #{$piece-visual-margin-bottom};
     --#{$prefix}text-to-link-margin: #{$piece-text-to-link-margin};
     --#{$prefix}piece-headings-margin-bottom: #{$piece-headings-margin-bottom};
     --#{$prefix}intro-headings-margin-bottom: #{$intro-headings-margin-bottom};
+    --#{$prefix}piece-width: 100%;
+    --#{$prefix}piece-visual-size: var(--#{$prefix}piece-width);
+    --#{$prefix}piece-body-size: var(--#{$prefix}piece-width);
 
     display: block;
     position: relative;
@@ -272,14 +288,19 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
+    > .visual {
+        width: var( --#{$prefix}piece-visual-size);
+    }
+
     @include media-breakpoint-down($piece-desktop-breakpoint) {
 
         @each  $piece-col-size in $piece-cols {
             // generate size variations for the mobile visual column
             &.p-xs-#{""+$piece-col-size} {
-                > .visual {
-                    width: get-col-float-size($piece-col-size);
-                }
+                --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
+                // > .visual {
+                //     width: get-col-float-size($piece-col-size);
+                // }
             }
         }
 
@@ -329,13 +350,16 @@ html.keyboard-nav .piece {
         }
 
         &.flex {
+            --#{$prefix}gutter-factor: 0.5;
+
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
 
             >.heading,
             >.link {
-                @include make-piece-col(12);
+                // @include make-piece-col(12);
+                flex: auto;
             }
 
             > .heading,
@@ -348,6 +372,10 @@ html.keyboard-nav .piece {
             > .visual {
                 // in flex grid there must be no bottom margin below the visual
                 margin-bottom: 0;
+                flex: 0 0 var(--#{$prefix}piece-visual-size);
+            }
+            > .body {
+                flex: 0 0 var(--#{$prefix}piece-body-size);
             }
 
             &.right {
@@ -405,18 +433,22 @@ html.keyboard-nav .piece {
             // generate size variations for the visual column
             &.p-md-#{""+$piece-col-size} {
                 &.flex {
-                    > .visual {
-                        @include make-piece-col($piece-col-size);
-                    }
-                    > .body {
-                        @include make-piece-col($grid-columns - $piece-col-size, 1px);
-                    }
+                    --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
+                    --#{$prefix}piece-body-size: #{get-col-size-var($grid-columns - $piece-col-size, 1px)};
+
+                //     > .visual {
+                //         @include make-piece-col($piece-col-size);
+                //     }
+                //     > .body {
+                //         @include make-piece-col($grid-columns - $piece-col-size, 1px);
+                //     }
                 }
                 &.full,
                 &.float {
-                    > .visual {
-                        width: get-col-float-size($piece-col-size);
-                    }
+                    --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
+                    // > .visual {
+                    //     width: get-col-float-size($piece-col-size);
+                    // }
                 }
             }
         }
@@ -427,7 +459,8 @@ html.keyboard-nav .piece {
                 display: none;
             }
             &.flex > .body {
-                @include make-piece-col(12);
+                // @include make-piece-col(12);
+                flex: auto;
             }
         }
     }

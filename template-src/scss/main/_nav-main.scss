@@ -363,7 +363,7 @@
             padding-right: 0;
             background-color: $nav-mobile-menu-bg-color;
             // make space above the nav entries for the toggle button
-            padding-top: $grid-gutter-width + $nav-toggle-size;
+            padding-top: calc(#{$grid-gutter-width} + #{$nav-toggle-size});
             min-width: $nav-mobile-side-size;
             width: $nav-mobile-width-xs;
 
@@ -549,7 +549,7 @@
 
         .nav-main-container {
             .nav-main-group {
-                padding-top: $grid-gutter-width + $nav-toggle-size + $opencms-toolbar-height;
+                padding-top: calc(#{$grid-gutter-width} + #{$nav-toggle-size} + #{$opencms-toolbar-height});
                 &.has-sidelogo {
                     padding-top: $opencms-toolbar-height;
                 }
@@ -585,7 +585,7 @@
                 border: 0;
                 > a {
                     // sidebar padding may be different
-                    padding: $nav-mobile-line-padding $grid-gutter-width-half $nav-mobile-line-padding #{$grid-gutter-width-half + ($nav-mobile-indent * 2)};
+                    padding: $nav-mobile-line-padding $grid-gutter-width-half $nav-mobile-line-padding calc(#{$grid-gutter-width-half} + (#{$nav-mobile-indent} * 2));
                     @if ($nav-mobile-font-family != $font-family-base) {
                         font-family: $nav-mobile-font-family;
                     }

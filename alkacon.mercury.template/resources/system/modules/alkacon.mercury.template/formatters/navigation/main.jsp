@@ -145,7 +145,7 @@
                 <c:set var="megaMenuFile" value="${cms.sitemapConfig.attribute['template.mega.menu.filename'].isSetNotNone ? cms.sitemapConfig.attribute['template.mega.menu.filename'] : 'mega.menu'}" />
                 <c:choose>
                     <c:when test="${navElem.navigationLevel}">
-                        <c:set var="megaMenuVfsPath" value="${navElem.resourceName.substring(0, navElem.resourceName.lastIndexOf('/'))}/${megaMenuFile}" />
+                        <c:set var="megaMenuVfsPath" value="${navElem.resourceName.substring(0, navElem.resourceName.lastIndexOf(navElem.fileName))}${megaMenuFile}" />
                     </c:when>
                     <c:otherwise>
                         <c:set var="megaMenuVfsPath" value="${navElem.resourceName}${megaMenuFile}" />

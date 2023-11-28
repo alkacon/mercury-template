@@ -331,12 +331,12 @@
         }
 
         &.box {
-            padding: 0 0 var(--#{$prefix}box-padding) 0;
+            padding: 0 0 var(--#{$prefix}box-padding-x) 0;
             &.pnv {
-                padding-top: var(--#{$prefix}box-padding);
+                padding-top: var(--#{$prefix}box-padding-y);
             }
             > *:not(.visual) {
-                padding: 0 var(--#{$prefix}box-padding);
+                padding: 0 var(--#{$prefix}box-padding-x);
             }
             > .visual {
                 .content, // for type media

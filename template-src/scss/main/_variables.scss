@@ -1036,8 +1036,7 @@ $border-positions:                  () !default;
 $border-styles:                     () !default;
 
 // Further variables used by generics
-// $box-padding-x:                     20px !default;
-$box-padding-y:                     $box-padding-x !default;
+$box-padding:                       20px !default;
 $box-force-full-buttons:            false !default;
 
 // Spaces used for margins and paddings

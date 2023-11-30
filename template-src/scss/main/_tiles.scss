@@ -378,13 +378,13 @@ $sq-heights-xl:    () !default;
                 background-color: rgba(var(--#{$prefix}square-text-overlay-bg-rgb), var(--#{$prefix}square-text-overlay-bg-opacity));
 
                 display: inline-block;
-                padding: calc(0.5 * var(--#{$prefix}box-padding-y)) calc(0.5 * var(--#{$prefix}box-padding-x));
+                padding: calc(0.5 * var(--#{$prefix}box-padding));
                 border-radius: var(--#{$prefix}image-border-radius);
             }
         }
 
         .piece {
-            margin: calc(0.5 * var(--#{$prefix}box-padding-y)) calc(0.5 * var(--#{$prefix}box-padding-x));
+            margin: calc(0.5 * var(--#{$prefix}box-padding));
         }
     }
 }

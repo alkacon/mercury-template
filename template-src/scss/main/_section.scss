@@ -30,7 +30,7 @@
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
 
-    padding: var(--#{$prefix}box-padding-y) var(--#{$prefix}box-padding-x);
+    padding: var(--#{$prefix}box-padding);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@
     .icon-title {
         color: inherit;
         flex-grow: 1;
-        margin-bottom: var(--#{$prefix}box-padding-y);
+        margin-bottom: var(--#{$prefix}box-padding);
         line-height: $headings-line-height;
         @if ($icon-box-fix-heading-size) {
             font-size: $h4-font-size;
@@ -62,7 +62,7 @@
     }
 
     .icon-text {
-        margin-top: var(--#{$prefix}box-padding-y);
+        margin-top: var(--#{$prefix}box-padding);
         margin-bottom: 0;
         > p {
             overflow-wrap: anywhere; // dont use hyphens: auto
@@ -208,7 +208,7 @@
 
     .text-section {
         border-radius: var(--#{$prefix}image-border-radius);
-        padding: var(--#{$prefix}box-padding-y) var(--#{$prefix}box-padding-x);
+        padding: var(--#{$prefix}box-padding);
         height: 100%; // works because .flipper has the height fixed with padding-bottom
         overflow: auto; // shows scrollbars on demand
 
@@ -225,14 +225,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            padding: calc(0.5 * var(--#{$prefix}box-padding-y)) calc(0.5 * var(--#{$prefix}box-padding-x));
+            padding: calc(0.5 * var(--#{$prefix}box-padding));
             z-index: #{$overflow-z-index + 4}; // 2 above copyright z-index
 
             .text-heading {
                 @include use-hyphens-headings(true);
                 border-radius: var(--#{$prefix}image-border-radius);
                 background-color: rgba(var(--#{$prefix}highlight-color-rgb), .75);
-                padding: calc(0.5 * var(--#{$prefix}box-padding-y)) calc(0.5 * var(--#{$prefix}box-padding-x));
+                padding: calc(0.5 * var(--#{$prefix}box-padding));
                 margin-bottom: 0;
             }
         }
@@ -265,13 +265,13 @@
         .effect-flipraise.imageflip {
             &:hover {
                 .back {
-                    top: calc(-2 * var(--#{$prefix}-y));
-                    left: calc(-2 * var(--#{$prefix}box-padding-x));
+                    top: calc(-2 * var(--#{$prefix}box-padding));
+                    left: calc(-2 * var(--#{$prefix}box-padding));
                     box-shadow: 0 0 15px 0 rgba(0,0,0,0.25);
-                    width: calc(100% + (4 * var(--#{$prefix}box-padding-x)));
-                    height: calc(100% + (4 * var(--#{$prefix}box-padding-y)));
+                    width: calc(100% + (4 * var(--#{$prefix}box-padding)));
+                    height: calc(100% + (4 * var(--#{$prefix}box-padding)));
                     &.text-section {
-                        padding: var(--#{$prefix}box-padding-y) var(--#{$prefix}box-padding-x);
+                        padding: var(--#{$prefix}box-padding);
                     }
                 }
             }

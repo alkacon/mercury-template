@@ -588,7 +588,7 @@ html.keyboard-nav {
     flex-direction: column;
     justify-content: center;
     overflow: scroll !important;
-    padding: var(--#{$prefix}box-padding-y) var(--#{$prefix}box-padding-x);
+    padding: var(--#{$prefix}box-padding);
     cursor: auto;
     // must set this because some elements (e.g. OSM) add another class that changes the font
     font: $font-weight-base #{$cookie-notice-font-size-mobile} / #{$line-height-base} $font-family-base;

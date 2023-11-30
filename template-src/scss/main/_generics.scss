@@ -70,13 +70,13 @@
 
 .box,
 .box-inner {
-    padding: var(--#{$prefix}box-padding-y) var(--#{$prefix}box-padding-x);
+    padding: var(--#{$prefix}box-padding);
 
     &.fully-linked {
         // for boxed elements that are linked ffully, link icon-box or link-box, we want the complete colored space to be clickable
         padding: 0;
         > a {
-            padding: var(--#{$prefix}box-padding-y) var(--#{$prefix}box-padding-x);
+            padding: var(--#{$prefix}box-padding);
         }
     }
 

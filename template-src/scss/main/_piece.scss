@@ -36,24 +36,15 @@
 // 50. Title as image overlay (Detail page only)
 // 99. Default value for content section - treated internally as '4' (Content section only)
 
-@function get-col-flex-size($cols, $reduce: 0) {
-    @if ($cols < 12) {
-        @return calc(
-            (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
-            * #{divide($cols, $grid-columns, $divide-precision)}
-            - (0.5 * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
-        );
-    } @else {
-        @return var(--#{$prefix}piece-width);
-    }
-}
+@use 'sass:math';
 
-@function get-col-float-size($cols, $reduce: 0) {
+@function get-col-float-size($cols) {
+    // this is no longer used by piece, but still used somewhere else e.g. in search.scss
     @if ($cols < 12) {
         @return calc(
             (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
-            * #{divide($cols, $grid-columns, $divide-precision)}
-            - var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
+            * #{math.div($cols, $grid-columns)}
+            - var(--#{$prefix}gutter-x)
         );
     } @else {
         @return var(--#{$prefix}piece-width);
@@ -64,17 +55,13 @@
     @if ($cols < 12) {
         @return calc(
             (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
-            * #{divide($cols, $grid-columns, $divide-precision)}
+            * #{math.div($cols, $grid-columns)}
             - (var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
         );
     } @else {
         @return 100%;
     }
 }
-
-// @mixin make-piece-col($cols, $reduce: 0) {
-//     flex: 0 0 get-col-flex-size($cols, $reduce);
-// }
 
 $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column sizes for the piece visual
 
@@ -298,9 +285,6 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             // generate size variations for the mobile visual column
             &.p-xs-#{""+$piece-col-size} {
                 --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
-                // > .visual {
-                //     width: get-col-float-size($piece-col-size);
-                // }
             }
         }
 
@@ -381,18 +365,18 @@ html.keyboard-nav .piece {
             &.right {
                 > .visual {
                     order: 13;
-                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-left: calc(var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x));
                 }
                 > .body {
-                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-right: calc(var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x));
                 }
             }
             &.left {
                 > .visual {
-                    padding-right: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-right: calc(var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x));
                 }
                 > .body {
-                    padding-left: calc(0.5 * var(--#{$prefix}gutter-x));
+                    padding-left: calc(var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x));
                 }
             }
 
@@ -432,24 +416,9 @@ html.keyboard-nav .piece {
         @each $piece-col-size in $piece-cols {
             // generate size variations for the visual column
             &.p-md-#{""+$piece-col-size} {
-                &.flex {
-                    --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
-                    --#{$prefix}piece-body-size: #{get-col-size-var($grid-columns - $piece-col-size, 1px)};
-
-                //     > .visual {
-                //         @include make-piece-col($piece-col-size);
-                //     }
-                //     > .body {
-                //         @include make-piece-col($grid-columns - $piece-col-size, 1px);
-                //     }
-                }
-                &.full,
-                &.float {
-                    --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
-                    // > .visual {
-                    //     width: get-col-float-size($piece-col-size);
-                    // }
-                }
+                --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
+                // --#{$prefix}piece-body-size: #{get-col-size-var($grid-columns - $piece-col-size, 1px)};
+                --#{$prefix}piece-body-size: calc(var(--#{$prefix}piece-width) - var(--#{$prefix}piece-visual-size) - 1px);
             }
         }
 
@@ -459,7 +428,6 @@ html.keyboard-nav .piece {
                 display: none;
             }
             &.flex > .body {
-                // @include make-piece-col(12);
                 flex: auto;
             }
         }

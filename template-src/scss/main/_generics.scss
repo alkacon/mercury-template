@@ -26,6 +26,10 @@
     @include set-box-colors($highlight-color, true, true);
 }
 
+.box-colors {
+    @include set-box-colors($body-bg, true, true);
+}
+
 .box-oct-warning {
     @include set-box-colors($con-col-orange);
 }
@@ -175,16 +179,16 @@
     }
 }
 
-// Border base
+// // Border base
 
-@each $line-size in $border-sizes {
+// @each $line-size in $border-sizes {
 
-    .bo-#{$line-size}  {
-        border: #{$line-size}px solid $border-default-color;
-        padding: calc(#{$box-padding} - #{$line-size}px);
-        border-radius: var(--#{$prefix}border-radius);
-    }
-}
+//     .bo-#{$line-size}  {
+//         border: #{$line-size}px solid $border-default-color;
+//         padding: calc(#{$box-padding} - #{$line-size}px);
+//         border-radius: var(--#{$prefix}border-radius);
+//     }
+// }
 
 // Borders with round corners
 

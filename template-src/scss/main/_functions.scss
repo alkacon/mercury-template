@@ -155,24 +155,40 @@
 
 // responsive font sizing
 // adapted from https://css-tricks.com/snippets/css/fluid-typography/
-@function fluid-size($size-large, $size-small, $bp-large: xs, $bp-small: none) {
+@function fluid-size($size-large, $size-small, $max-vw, $min-vw: 375px, $rem-base: $font-rem-base-mobile-size) {
+    // $min-vw default 375px is iPhone SE size
+
+    @if unit($size-small) == rem {
+        $size-small: strip-unit($size-small) * $rem-base;
+    }
+    @if unit($size-large) == rem {
+        $size-large: strip-unit($size-large) * $rem-base;
+    }
+
+    @return calc(
+        #{$size-small}
+        + #{strip-unit($size-large - $size-small)}
+        * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+    );
+}
+
+// fluid size directly with clamp applied
+@function fluid-size-clamp($size-large, $size-small, $max-vw, $min-vw: 375px, $rem-base: $font-rem-base-mobile-size) {
+
+    @return #{clamp(
+        $size-small,
+        fluid-size($size-large, $size-small, $max-vw, $min-vw, $rem-base),
+        $size-large
+    )};
+}
+
+// fluid size based on BS grid breakpoints
+@function fluid-size-bp($size-large, $size-small, $bp-large: xs, $bp-small: none) {
 
     $min-vw: if($bp-small == none, 375px, map-get($grid-breakpoints, $bp-small)); // default 375px is iPhone SE size
     $max-vw: map-get($grid-breakpoints, $bp-large);
 
-    @if unit($size-small) == rem {
-        $size-small: strip-unit($size-small) * $font-rem-base-mobile-size;
-    }
-    @if unit($size-large) == rem {
-        $size-large: strip-unit($size-large) * $font-rem-base-mobile-size;
-    }
-
-    @return calc(#{$size-small} + #{strip-unit($size-large - $size-small)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
-}
-
-@function fluid-size-clamp($size-large, $size-small, $bp-large: xs, $bp-small: none) {
-
-    @return #{clamp($size-small, fluid-size($size-large, $size-small, $bp-large, $bp-small), $size-large)};
+    @return fluid-size($size-large, $size-small, $max-vw, $min-vw);
 }
 
 // responsive font sizing based on the container size

@@ -510,7 +510,7 @@ $nav-mobile-position:               right !default; // alternatives are ""left" 
 $nav-mobile-bg-color:               $nav-border !default; // background color of mobile navigation wrapper
 $nav-mobile-menu-bg-color:          $nav-head-bg !default; // background color of mobile navigation items wrapper
 $nav-mobile-logo-bg-color:          $nav-mobile-menu-bg-color !default; // background color of mobile navigation logo wrapper
-$nav-mobile-side-size:              250px + $grid-gutter-width-half !default; // size of mobile side menu for "left" and "right"
+$nav-mobile-side-size:              calc(250px + #{$grid-gutter-width-half}) !default; // size of mobile side menu for "left" and "right"
 $nav-mobile-side-content-move:      false !default; // move content when mobile side nav is shown?
 $nav-mobile-font-size:              16px !default; // font size for mobile sub-menu entries
 $nav-mobile-line-target-height:     36px !default; // line height of mobile menu nav entries

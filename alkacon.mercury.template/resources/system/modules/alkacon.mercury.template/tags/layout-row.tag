@@ -158,7 +158,17 @@
     <c:when test="${rowVariant == 4}">
         <%-- '3-3-3-3' - lr_00010 --%>
         <c:set var="twoXsCols"          value="${sideColSize == 6}" />
-        <c:set var="xsCols"             value="${twoXsCols ? 'col-6' : 'col-12 col-md-6'}" />
+        <c:choose>
+            <c:when test="${sideColSize == 6}">
+                <c:set var="xsCols"     value="col-6" />
+            </c:when>
+            <c:when test="${sideColSize == 12}">
+                 <c:set var="xsCols"    value="col-12" />
+            </c:when>
+            <c:otherwise>
+                 <c:set var="xsCols"    value="col-12 col-md-6" />
+            </c:otherwise>
+        </c:choose>
 
         <mercury:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss}"><%----%>

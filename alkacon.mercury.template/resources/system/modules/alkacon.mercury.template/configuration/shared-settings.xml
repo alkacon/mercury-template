@@ -1615,6 +1615,23 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[keyPieceSizeDesktop.detail]]></IncludeName>
+      <PropertyName><![CDATA[keyPieceSizeDesktop]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.keyPieceSizeDesktop)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.keyPieceSizeDesktop.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[99]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[keyPiecePrefacePos.detail]]></IncludeName>
+      <PropertyName><![CDATA[keyPiecePrefacePos]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.keyPiecePrefacePos)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.keyPiecePrefacePos.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
       <PropertyName><![CDATA[visualOption]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.visualOption.desktop)]]></DisplayName>

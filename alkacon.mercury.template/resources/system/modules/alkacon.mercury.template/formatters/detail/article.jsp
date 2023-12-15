@@ -23,6 +23,8 @@
 <mercury:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
+<c:set var="keyPieceSizeDesktop"    value="${setting.keyPieceSizeDesktop.useDefault('99').toInteger}" />
+<c:set var="keyPiecePrefacePos"     value="${setting.keyPiecePrefacePos.toString}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="pieceLayoutAlternating" value="${setting.pieceLayoutAlternating.toBoolean}" />
 <c:set var="pieceLayoutSizeDesktop" value="${setting.pieceLayoutSizeDesktop.useDefault('99').toInteger}" />
@@ -65,18 +67,19 @@
 <mercury:nl />
 
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
+<c:set var="keyPiecePrefacePos"     value="${empty keyPiecePrefacePos ? ((showOverlay or (keyPieceLayout == 1)) ? 'bottom' : (keyPieceLayout == 0 ? 'top' : 'middle')) : keyPiecePrefacePos}" />
 
 <mercury:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
     allowEmptyBodyColumn="${image.isSet}"
-    sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
+    sizeDesktop="${keyPieceSizeDesktop != 99 ? keyPieceSizeDesktop : ((keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6)}"
     sizeMobile="${12}">
 
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
             <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPieceLayout == 0}" />
+            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'top'}" />
         </c:if>
     </jsp:attribute>
 
@@ -97,7 +100,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'middle'}" />
 
         <c:if test="${showDate or showAuthor}">
             <div class="visual-info ${not showAuthor ? 'right date-only' : ''}"><%----%>
@@ -134,7 +137,8 @@
             </div><%----%>
         </c:if>
 
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 1)}" />
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bottom'}" />
+
     </jsp:attribute>
 
 </mercury:piece>

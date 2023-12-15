@@ -51,12 +51,16 @@
     }
 }
 
-@function get-col-size-var($cols, $reduce: 0) {
+@function get-col-size-var($cols, $adjust: 'none', $reduce: 0) {
     @if ($cols < 12) {
         @return calc(
             (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
             * #{math.div($cols, $grid-columns)}
-            - (var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')})
+            - (
+                var(--#{$prefix}gutter-factor) * var(--#{$prefix}gutter-x)
+                #{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
+            )
+            #{if($adjust != 'none', ' + ', '')}#{if($adjust != 'none', var(--#{$prefix}piece-#{$adjust}-size-adjust), '')}
         );
     } @else {
         @return 100%;
@@ -71,11 +75,14 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     --#{$prefix}visual-last-margin-top: #{$piece-visual-last-margin-top};
     --#{$prefix}visual-margin-bottom: #{$piece-visual-margin-bottom};
     --#{$prefix}text-to-link-margin: #{$piece-text-to-link-margin};
+    --#{$prefix}piece-paragraph-margin-bottom: #{$piece-paragraph-margin-bottom};
     --#{$prefix}piece-headings-margin-bottom: #{$piece-headings-margin-bottom};
     --#{$prefix}intro-headings-margin-bottom: #{$intro-headings-margin-bottom};
     --#{$prefix}piece-width: 100%;
     --#{$prefix}piece-visual-size: var(--#{$prefix}piece-width);
     --#{$prefix}piece-body-size: var(--#{$prefix}piece-width);
+    --#{$prefix}piece-visual-size-adjust: 0px;
+    --#{$prefix}piece-body-size-adjust: 0px;
 
     display: block;
     position: relative;
@@ -205,7 +212,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             > .detail-content > *,
             > * {
                 // add margins for all elements in text piece
-                margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+                margin-bottom: var(--#{$prefix}piece-paragraph-margin-bottom);
                 &:last-child {
                     // last element in text must not add margin
                     margin-bottom: 0;
@@ -240,7 +247,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             +.piece.element.type-section:not(.box) {
                 &.only-text,
                 &.pnh {
-                    margin-top: calc(var(--#{$prefix}paragraph-margin-bottom) - var(--#{$prefix}element-margin));
+                    margin-top: calc(var(--#{$prefix}piece-paragraph-margin-bottom) - var(--#{$prefix}element-margin));
                 }
             }
         }
@@ -284,7 +291,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         @each  $piece-col-size in $piece-cols {
             // generate size variations for the mobile visual column
             &.p-xs-#{""+$piece-col-size} {
-                --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
+                --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size, 'visual')};
             }
         }
 
@@ -416,10 +423,10 @@ html.keyboard-nav .piece {
         @each $piece-col-size in $piece-cols {
             // generate size variations for the visual column
             &.p-md-#{""+$piece-col-size} {
-                --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size)};
-                // --#{$prefix}piece-body-size: #{get-col-size-var($grid-columns - $piece-col-size, 1px)};
-                --#{$prefix}piece-body-size: calc(var(--#{$prefix}piece-width) - var(--#{$prefix}piece-visual-size) - 1px);
+                --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size, 'visual')};
+                // --#{$prefix}piece-body-size: #{get-col-size-var($grid-columns - $piece-col-size, 'body', 1px)};
             }
+            --#{$prefix}piece-body-size: calc(var(--#{$prefix}piece-width) - var(--#{$prefix}piece-visual-size) - 1px);
         }
 
         &.p-md-0 {

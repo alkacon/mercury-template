@@ -27,7 +27,7 @@
 
 <c:choose>
     <c:when test="${useAsElement}">
-        <c:set var="tileClass"          value="element tile-col" />
+        <c:set var="tileClass"          value="element tile-col${setCssWrapper2}" />
     </c:when>
     <c:otherwise>
         <c:set var="tileClass"          value="${empty param.tilegrid ? 'tile-col col-12' : param.tilegrid}${' '}freefloat min-height-px ${fullOverlay ? 'f-o' : 't-o'}" />
@@ -60,14 +60,14 @@
     link="${value.Link}"
     linkFullTile="${linkFullTile}"
     tileWrapper="${tileClass}"
-    boxWrapper="${setCssWrapperAll}"
+    boxWrapper="${setCssWrapper}"
     overlayWrapper="${overlayWrapper}"
     hsize="${hsize}"
     imageRatio="${imageRatio}"
     showImageCopyright="${showImageCopyright}"
     textOption="${textOption}"
     linkOption="${linkOption}"
-    textAlignment="${textAlignment}"
+    textAlignment="${textAlignment}${setCssWrapper3}"
     ade="${cms.isEditMode}"
 />
 

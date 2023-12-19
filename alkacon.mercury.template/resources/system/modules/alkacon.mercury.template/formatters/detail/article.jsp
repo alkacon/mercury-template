@@ -20,11 +20,18 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
+<c:if test="${not empty cms.plugins['detail-setting-defaults']}">
+    <c:set var="defaultSettingOutput">
+        <mercury:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
+    </c:set>
+</c:if>
+
 <mercury:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="keyPieceSizeDesktop"    value="${setting.keyPieceSizeDesktop.useDefault('99').toInteger}" />
 <c:set var="keyPiecePrefacePos"     value="${setting.keyPiecePrefacePos.toString}" />
+<c:set var="keyPieceInfoPos"        value="${setting.keyPieceInfoPos.toString}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="pieceLayoutAlternating" value="${setting.pieceLayoutAlternating.toBoolean}" />
 <c:set var="pieceLayoutSizeDesktop" value="${setting.pieceLayoutSizeDesktop.useDefault('99').toInteger}" />
@@ -62,12 +69,43 @@
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
+<c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
+
+<c:set var="keyPiecePrefacePos"     value="${empty keyPiecePrefacePos ? ((showOverlay or (keyPieceLayout == 1)) ? 'bt' : (keyPieceLayout == 0 ? 'ih' : 'tt')) : keyPiecePrefacePos}" />
+<c:set var="keyPieceInfoPos"        value="${empty keyPieceInfoPos ? 'it' : keyPieceInfoPos}" />
+
+<%-- keyPiecePrefacePos options:    bt = bottom of text / tt = top of text   / ih = in header --%>
+<%-- keyPieceInfoPos options:       ah = above heading  / bh = below heading / it = in text / ov = outside key visual --%>
+
 <mercury:nl />
 <div class="detail-page type-article layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
 <mercury:nl />
 
-<c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
-<c:set var="keyPiecePrefacePos"     value="${empty keyPiecePrefacePos ? ((showOverlay or (keyPieceLayout == 1)) ? 'bottom' : (keyPieceLayout == 0 ? 'top' : 'middle')) : keyPiecePrefacePos}" />
+${defaultSettingOutput}
+
+<c:choose>
+    <c:when test="${showDate or showAuthor}">
+        <c:set var="keyPieceInfoMarkup">
+            <div class="visual-info ${not showAuthor ? 'right date-only' : ''}"><%----%>
+                <c:if test="${showDate}">
+                    <div class="info date"><%----%>
+                        <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>
+                        <div>${datePrefix}${date}</div><%----%>
+                    </div><%----%>
+                </c:if>
+                <c:if test="${showAuthor}">
+                    <div class="info person"><%----%>
+                        <span class="sr-only"><fmt:message key="msg.page.sr.by" /></span><%----%>
+                        <div ${author.rdfaAttr}>${author}</div><%----%>
+                    </div><%----%>
+                </c:if>
+            </div><%----%>
+        </c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="keyPieceInfoPos" value="${null}" />
+    </c:otherwise>
+</c:choose>
 
 <mercury:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
@@ -78,8 +116,10 @@
 
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
+            <c:if test="${keyPieceInfoPos eq 'ah'}">${keyPieceInfoMarkup}</c:if>
             <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'top'}" />
+            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'ih'}" />
+            <c:if test="${keyPieceInfoPos eq 'bh'}">${keyPieceInfoMarkup}</c:if>
         </c:if>
     </jsp:attribute>
 
@@ -100,48 +140,16 @@
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'middle'}" />
-
-        <c:if test="${showDate or showAuthor}">
-            <div class="visual-info ${not showAuthor ? 'right date-only' : ''}"><%----%>
-                <c:if test="${showDate}">
-                    <div class="info date"><%----%>
-                        <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>
-                        <div>${datePrefix}${date}</div><%----%>
-                    </div><%----%>
-                </c:if>
-                <c:if test="${showAuthor}">
-                    <div class="info person"><%----%>
-                        <span class="sr-only"><fmt:message key="msg.page.sr.by" /></span><%----%>
-                        <c:choose>
-                            <c:when test="${author.value.Name.isSet}">
-                                <div ${author.value.Name.rdfaAttr}>${author.value.Name}</div><%----%>
-                            </c:when>
-                            <c:when test="${author.value.LinkToPerson.isSet}">
-                                <c:set var="authorContent" value="${author.value.LinkToPerson.toResource.toXml}" />
-                                <c:set var="authorName" value="${authorContent.value.Name.value}" />
-                                <div><%--
-                                --%>${authorName.Title.isSet ? authorName.Title.toString.concat(' ') : ''}<%--
-                                --%>${authorName.FirstName.isSet ? authorName.FirstName.toString.concat(' ') : ''}<%--
-                                --%>${authorName.MiddleName.isSet ? authorName.MiddleName.toString.concat(' ') : ''}<%--
-                                --%>${authorName.LastName.isSet ? authorName.LastName.toString.concat(' ') : ''}<%--
-                                --%>${authorName.Suffix.isSet ? authorName.Suffix.toString.concat(' ') : ''}<%--
-                            --%></div><%----%>
-                            </c:when>
-                            <c:otherwise>
-                                <div ${author.rdfaAttr}>${author}</div><%----%>
-                            </c:otherwise>
-                        </c:choose>
-                    </div><%----%>
-                </c:if>
-            </div><%----%>
-        </c:if>
-
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bottom'}" />
-
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'tt'}" />
+        <c:if test="${keyPieceInfoPos eq 'it'}">${keyPieceInfoMarkup}</c:if>
+        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bt'}" />
     </jsp:attribute>
 
 </mercury:piece>
+
+<c:if test="${keyPieceInfoPos eq 'ov'}">
+    <div class="pivot detail-visual-info">${keyPieceInfoMarkup}</div><%----%>
+</c:if>
 
 <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
     <c:set var="pHsize" value="${hsize >= 0 ? hsize + 1 : (hsize >= -7 ? -1 * hsize : 0)}" />

@@ -24,7 +24,6 @@
 <%@ variable name-given="setCssWrapper123"          declare="true" %>
 <%@ variable name-given="setCssWrapperAll"          declare="true" %>
 
-
 <c:set var="setting"                                value="${cms.element.setting}" />
 <c:set var="setCssWrapper"                          value="${setting.cssWrapper.isSetNotNone ? ' '.concat(setting.cssWrapper.toString) : null}" />
 <c:set var="setCssWrapper2"                         value="${setting.cssWrapper2.isSetNotNone ? ' '.concat(setting.cssWrapper2.toString) : null}" />
@@ -38,6 +37,5 @@
 <c:set var="setCssWrapper12"                        value="${setCssWrapper}${setCssWrapper2}" />
 <c:set var="setCssWrapper123"                       value="${setCssWrapper12}${setCssWrapper3}" />
 <c:set var="setCssWrapperAll"                       value="${setCssWrapper123}${setEffect}${setCssVisibility}" />
-
 
 <jsp:doBody/>

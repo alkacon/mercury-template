@@ -15,6 +15,9 @@
     description="If provided, the warning message will only be shown in case this test resolves to 'true'.
     If not provided, it defaults to a test if the page is rendered in edit mode." %>
 
+<%@ attribute name="pivot" type="java.lang.Boolean" required="false"
+    description="If 'true', then the CSS selector 'pivot' is added to the DIV generated. This is the default if not provided." %>
+
 <%@ attribute name="head" required="false" fragment="true"
     description="Markup inserted as head." %>
 
@@ -25,7 +28,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${empty test ? cms.isEditMode : test}">
-    <div class="pivot oct-alert oct-alert-${type}${' '}${css}"><%----%>
+    <div class="${empty pivot or pivot ? 'pivot ': ''}oct-alert oct-alert-${type}${' '}${css}"><%----%>
         <c:if test="${not empty head}">
             <div class="head"><jsp:invoke fragment="head" /></div><%----%>
         </c:if>

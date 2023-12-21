@@ -23,7 +23,8 @@
             <xsd:element name="LinkToOrganization" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="Contact" type="OpenCmsContactItem" />
             <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="AdditionalInfo" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" maxOccurs="2" />
             <xsd:element name="Link" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
@@ -109,6 +110,12 @@
                     <PropertyName>Title</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>AdditionalInfo</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.AdditionalInfo)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.AdditionalInfo.help)]]></Description>
                     <Widget>string</Widget>
                 </Setting>
                 <Setting>

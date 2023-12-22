@@ -17,6 +17,7 @@
 <%@ variable name-given="setCssWrapper3"            declare="true" %>
 <%@ variable name-given="setCssWrapperKeyPiece"     declare="true" %>
 <%@ variable name-given="setCssWrapperParagraphs"   declare="true" %>
+<%@ variable name-given="setCssWrapperExtra"        declare="true" %>
 <%@ variable name-given="setEffect"                 declare="true" %>
 <%@ variable name-given="setCssVisibility"          declare="true" %>
 
@@ -30,9 +31,9 @@
 <c:set var="setCssWrapper3"                         value="${setting.cssWrapper3.isSetNotNone ? ' '.concat(setting.cssWrapper3.toString) : null}" />
 <c:set var="setCssWrapperKeyPiece"                  value="${setting.cssWrapperKeyPiece.isSetNotNone ? ' '.concat(setting.cssWrapperKeyPiece.toString) : null}" />
 <c:set var="setCssWrapperParagraphs"                value="${setting.cssWrapperParagraphs.isSetNotNone ? ' paragraph '.concat(setting.cssWrapperParagraphs.toString) : ' paragraph'}" />
+<c:set var="setCssWrapperExtra"                     value="${setting.cssWrapperExtra.isSetNotNone  ? ' '.concat(setting.cssWrapperExtra.toString) : null}" />
 <c:set var="setEffect"                              value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
-<c:set var="setCssVisibility"                       value="${(setting.cssVisibility.isSetNotNone and (setting.cssVisibility.toString ne 'always'))
-                                                           ? ' '.concat(setting.cssVisibility.toString) : null}" />
+<c:set var="setCssVisibility"                       value="${(setting.cssVisibility.isSetNotNone and (setting.cssVisibility.toString ne 'always')) ? ' '.concat(setting.cssVisibility.toString) : null}" />
 
 <c:set var="setCssWrapper12"                        value="${setCssWrapper}${setCssWrapper2}" />
 <c:set var="setCssWrapper123"                       value="${setCssWrapper12}${setCssWrapper3}" />

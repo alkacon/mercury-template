@@ -225,7 +225,7 @@
             <cms:jsonvalue key="count" value="${pageSize}" />
             <cms:jsonvalue key="template" value="${cms:encode(template)}" />
         </cms:jsonobject>
-        <div id="${id}" class="series" data-imageseries='${dataSeries.compact}'><%----%>
+        <div id="${id}" class="series${setCssWrapperExtra}" data-imageseries='${dataSeries.compact}'><%----%>
         <mercury:nl />
 
             <div class="images clearfix${rowCss}"></div><%----%>

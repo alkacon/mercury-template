@@ -701,6 +701,7 @@ $teaser-headings-margin-bottom:     var(--#{$prefix}paragraph-margin-bottom) !de
 $teaser-date-margin-bottom:         calc(0.5 * var(--#{$prefix}paragraph-margin-bottom)) !default;
 
 // Detail pages
+$detail-desktop-breakpoint:         $piece-desktop-breakpoint !default;
 $detail-visual-spacer-x:            var(--#{$prefix}default-margin-small) !default;
 $detail-visual-spacer-y:            var(--#{$prefix}default-margin-small) !default;
 $detail-content-spacer-y:           var(--#{$prefix}element-margin) !default;

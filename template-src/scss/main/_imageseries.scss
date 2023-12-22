@@ -35,9 +35,14 @@ $imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
 // Image series base classes
 
 .type-imageseries {
+    --#{$prefix}is-square-margin:          #{$imageseries-square-margin};
+    --#{$prefix}is-slide-border-size:      #{$imageseries-slide-border-size};
+    --#{$prefix}is-slide-border-color:     #{$imageseries-slide-border-color};
+    --#{$prefix}is-slide-bgcolor:          #{$imageseries-slide-bgcolor};
+
     &.element {
         .images {
-            font-weight: $font-weight-bold;
+            font-weight: var(--#{$prefix}font-weight-bold);
         }
     }
 
@@ -45,10 +50,10 @@ $imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
         position: relative;
 
         > button.btn {
-            margin-top: 2 * $imageseries-square-margin;
-            margin-left: $imageseries-square-margin;
-            margin-right: $imageseries-square-margin;
-            width: calc(100% - #{2 * $imageseries-square-margin});
+            margin-top: calc(2 * var(--#{$prefix}is-square-margin));
+            margin-left: var(--#{$prefix}is-square-margin);
+            margin-right: var(--#{$prefix}is-square-margin);
+            width: calc(100% - 2 * var(--#{$prefix}is-square-margin));
         }
 
         .imagedata {
@@ -59,14 +64,14 @@ $imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
     &.square-list,
     &.slide-list {
         > .series {
-            margin-left: -1 * $imageseries-square-margin;
-            margin-right: -1 * $imageseries-square-margin;
+            margin-left: calc(-1 * var(--#{$prefix}is-square-margin));
+            margin-right: calc(-1 * var(--#{$prefix}is-square-margin));
 
             > .images {
-                --#{$prefix}sq-margin: #{$imageseries-square-margin};
+                --#{$prefix}sq-margin: #{var(--#{$prefix}is-square-margin)};
 
-                margin-top: -1 * $imageseries-square-margin;
-                margin-bottom: -1 * $imageseries-square-margin;
+                margin-top: calc(-1 * var(--#{$prefix}is-square-margin));
+                margin-bottom: calc(-1 * var(--#{$prefix}is-square-margin));
             }
         }
     }
@@ -79,14 +84,14 @@ $imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
                 width: 100%;
                 position: relative;
                 overflow: hidden;
-                border: $imageseries-slide-border-size solid $imageseries-slide-border-color;
+                border: var(--#{$prefix}is-slide-border-size) solid var(--#{$prefix}is-slide-border-color);
                 border-radius: var(--#{$prefix}image-border-radius);
             }
             .zoom-overlay {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: $imageseries-slide-bgcolor;
+                background-color: var(--#{$prefix}is-slide-bgcolor);
             }
             img {
                 object-fit: contain;

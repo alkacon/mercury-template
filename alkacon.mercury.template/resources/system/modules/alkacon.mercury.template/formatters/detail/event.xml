@@ -44,6 +44,12 @@
       <IncludeName><![CDATA[keyPieceLayout.detail]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[keyPieceSizeDesktop.detail]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[keyPiecePrefacePos.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
     </Setting>
     <Setting>

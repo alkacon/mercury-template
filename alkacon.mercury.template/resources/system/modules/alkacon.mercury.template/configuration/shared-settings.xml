@@ -39,6 +39,12 @@
       <Widget><![CDATA[hidden]]></Widget>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapperExtra.default]]></IncludeName>
+      <PropertyName><![CDATA[cssWrapperExtra]]></PropertyName>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[cssWrapperInner.default]]></IncludeName>
       <PropertyName><![CDATA[cssWrapperInner]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.cssWrapperInner)]]></DisplayName>

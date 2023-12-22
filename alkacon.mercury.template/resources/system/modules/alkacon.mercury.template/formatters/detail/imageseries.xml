@@ -40,10 +40,10 @@
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
+      <IncludeName><![CDATA[cssWrapperExtra.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
+      <IncludeName><![CDATA[cssWrapperKeyPiece.detail]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageSeriesDisplay.default]]></IncludeName>

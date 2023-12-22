@@ -179,7 +179,7 @@
         }
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up($detail-desktop-breakpoint) {
         .overlay {
             display: block;
         }

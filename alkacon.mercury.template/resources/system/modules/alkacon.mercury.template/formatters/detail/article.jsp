@@ -12,7 +12,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<cms:secureparams />
+<cms:secureparams replaceInvalid="bad_param" />
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">
@@ -20,11 +20,7 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<c:if test="${not empty cms.plugins['detail-setting-defaults']}">
-    <c:set var="defaultSettingOutput">
-        <mercury:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
-    </c:set>
-</c:if>
+<mercury:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
 
 <mercury:setting-defaults>
 
@@ -70,18 +66,22 @@
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
+<c:if test="${empty image}">
+    <c:choose>
+        <c:when test="${(keyPieceLayout >= 2) and (keyPieceLayout <= 5)}">
+            <c:set var="keyPieceLayout"  value="${0}" />
+        </c:when>
+        <c:when test="${(keyPieceLayout >= 6) and (keyPieceLayout <= 9)}">
+            <c:set var="keyPieceLayout"  value="${1}" />
+        </c:when>
+    </c:choose>
+</c:if>
 
 <c:set var="keyPiecePrefacePos"     value="${empty keyPiecePrefacePos ? ((showOverlay or (keyPieceLayout == 1)) ? 'bt' : (keyPieceLayout == 0 ? 'ih' : 'tt')) : keyPiecePrefacePos}" />
 <c:set var="keyPieceInfoPos"        value="${empty keyPieceInfoPos ? 'it' : keyPieceInfoPos}" />
 
 <%-- keyPiecePrefacePos options:    bt = bottom of text / tt = top of text   / ih = in header --%>
 <%-- keyPieceInfoPos options:       ah = above heading  / bh = below heading / it = in text / ov = outside key visual --%>
-
-<mercury:nl />
-<div class="detail-page type-article layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
-<mercury:nl />
-
-${defaultSettingOutput}
 
 <c:choose>
     <c:when test="${showDate or showAuthor}">
@@ -107,10 +107,17 @@ ${defaultSettingOutput}
     </c:otherwise>
 </c:choose>
 
+<mercury:nl />
+<div class="detail-page type-article layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
+<mercury:nl />
+
+<%-- Optional debug output generated from "detail-setting-defaults" plugin --%>
+${settingDefaultsDebug}
+
 <mercury:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
-    allowEmptyBodyColumn="${image.isSet}"
+    allowEmptyBodyColumn="${not empty image}"
     sizeDesktop="${keyPieceSizeDesktop != 99 ? keyPieceSizeDesktop : ((keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6)}"
     sizeMobile="${12}">
 

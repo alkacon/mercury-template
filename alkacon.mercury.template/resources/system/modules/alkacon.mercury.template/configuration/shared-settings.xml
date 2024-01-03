@@ -3098,6 +3098,15 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showNotice.contact]]></IncludeName>
+      <PropertyName><![CDATA[showNotice]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showNotice)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showNotice.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showDescription.contact.false]]></IncludeName>
       <PropertyName><![CDATA[showDescription]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>

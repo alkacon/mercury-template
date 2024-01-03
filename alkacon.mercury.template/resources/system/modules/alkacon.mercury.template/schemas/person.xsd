@@ -23,8 +23,8 @@
             <xsd:element name="LinkToOrganization" type="OpenCmsVfsFile" minOccurs="0" />
             <xsd:element name="Contact" type="OpenCmsContactItem" />
             <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="AdditionalInfo" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" maxOccurs="2" />
+            <xsd:element name="Notice" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="Link" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
@@ -113,14 +113,16 @@
                     <Widget>string</Widget>
                 </Setting>
                 <Setting>
-                    <PropertyName>AdditionalInfo</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.AdditionalInfo)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.AdditionalInfo.help)]]></Description>
-                    <Widget>string</Widget>
+                    <PropertyName>Notice</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Contact.Notice)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Contact.Notice.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Description)]]></DisplayName>
+                    <DisplayName><![CDATA[%(key.label.Contact.Description)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Contact.Description.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>

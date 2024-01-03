@@ -35,6 +35,9 @@
 <%@ attribute name="linkToDetail" type="java.lang.String" required="false"
     description="Link to the detail page." %>
 
+<%@ attribute name="notice" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
+    description="Value wrapper for the notice." %>
+
 <%@ attribute name="description" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact description." %>
 
@@ -59,8 +62,11 @@
 <%@ attribute name="showOrganization" type="java.lang.Boolean" required="false"
     description="Show the contact organization." %>
 
-<%@ attribute name="showDescription" type="java.lang.Boolean" required="false"
-    description="Show the contact description." %>
+<%@ attribute name="showNotice" type="java.lang.String" required="false"
+    description="Controls how the additional info is displayed. Can be either 'top', 'bottom', 'true' or 'false'. 'true' is the same as 'top'." %>
+
+<%@ attribute name="showDescription" type="java.lang.String" required="false"
+    description="Controls how the description info is displayed. Can be either 'top', 'bottom', 'true' or 'false'. 'true' is the same as 'bottom'." %>
 
 <%@ attribute name="showAddress" type="java.lang.Boolean" required="false"
     description="Show the contact address." %>
@@ -113,13 +119,19 @@
 <c:set var="showPosition"       value="${showPosition and (not empty position)}"/>
 <c:set var="showImage"          value="${showImage and (not empty image)}" />
 <c:set var="showOrganization"   value="${showOrganization and (not empty organization)}"/>
-<c:set var="showDescription"    value="${showDescription and (not empty description)}"/>
 <c:set var="showAddressAlways"  value="${showAddressAlways and (not empty data or not empty addressData)}"/>
 <c:set var="showAddress"        value="${showAddressAlways or (showAddress and (not empty data or not empty addressData))}"/>
 <c:set var="showPhone"          value="${showPhone and (not empty data)}"/>
 <c:set var="showWebsite"        value="${showWebsite and (not empty data) and (not empty data.value.Website)}"/>
 <c:set var="showEmail"          value="${showEmail and (not empty data) and (not empty data.value.Email) and (not empty data.value.Email.value.Email)}"/>
 
+<c:set var="showDesc"           value="${(not empty description) and ((showDescription eq 'true') or (showDescription eq 'top') or (showDescription eq 'bottom'))}" />
+<c:set var="showDescTop"        value="${showDesc and (showDescription eq 'top')}" />
+<c:set var="showDescBottom"     value="${showDesc and not showDescTop}" />
+
+<c:set var="showNote"           value="${(not empty notice) and ((showNotice eq 'true') or (showNotice eq 'top') or (showNotice eq 'bottom'))}" />
+<c:set var="showNoteTop"        value="${showNote and (showNotice ne 'bottom')}" />
+<c:set var="showNoteBottom"     value="${showNote and not showNoteTop}" />
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -185,7 +197,7 @@
     showImageZoom="${showImageZoom}"
     >
 
-    <c:if test="${showName or showOrganization or showDescription or showAddress or showPhone or showEmail or showLinkAsButton}">
+    <c:if test="${showName or showOrganization or showDesc or showNote or showAddress or showPhone or showEmail or showLinkAsButton}">
         <div class="text-box"><%----%>
         <mercury:nl />
 
@@ -244,6 +256,14 @@
                     </c:if>
                 </c:otherwise>
             </c:choose>
+
+            <c:if test="${showNoteTop}">
+                <div class="note">${notice}</div><%----%>
+            </c:if>
+
+            <c:if test="${showDescTop}">
+                <div class="note">${description}</div><%----%>
+            </c:if>
 
             <c:if test="${showAddress}">
                 <mercury:location-vars data="${addressData}">
@@ -393,7 +413,11 @@
                 </c:if>
             </c:if>
 
-            <c:if test="${showDescription}">
+            <c:if test="${showNoteBottom}">
+                <div class="note">${notice}</div><%----%>
+            </c:if>
+
+            <c:if test="${showDescBottom}">
                 <div class="note">${description}</div><%----%>
             </c:if>
 

@@ -49,7 +49,7 @@
 
     > * > .image-src-box {
         // this will only add bottom margin if piece grid is not used
-        margin-bottom: calc(2 * var(--#{$prefix}contact-spacer-y));;
+        margin-bottom: calc(2 * var(--#{$prefix}contact-spacer-y));
     }
 
     .contactlink {

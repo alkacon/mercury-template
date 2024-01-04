@@ -125,13 +125,15 @@
 <c:set var="showWebsite"        value="${showWebsite and (not empty data) and (not empty data.value.Website)}"/>
 <c:set var="showEmail"          value="${showEmail and (not empty data) and (not empty data.value.Email) and (not empty data.value.Email.value.Email)}"/>
 
-<c:set var="showDesc"           value="${(not empty description) and ((showDescription eq 'true') or (showDescription eq 'top') or (showDescription eq 'bottom'))}" />
-<c:set var="showDescTop"        value="${showDesc and (showDescription eq 'top')}" />
-<c:set var="showDescBottom"     value="${showDesc and not showDescTop}" />
-
+<%-- Notice is by default displayed on top of address / phone / link. Optinal placement below can be enabled by setting overrides for a template variant. --%>
 <c:set var="showNote"           value="${(not empty notice) and ((showNotice eq 'true') or (showNotice eq 'top') or (showNotice eq 'bottom'))}" />
 <c:set var="showNoteTop"        value="${showNote and (showNotice ne 'bottom')}" />
 <c:set var="showNoteBottom"     value="${showNote and not showNoteTop}" />
+
+<%-- Description is by default displayed below address / phone / link. Optinal placement on top can be enabled by setting overrides for a template variant. --%>
+<c:set var="showDesc"           value="${(not empty description) and ((showDescription eq 'true') or (showDescription eq 'top') or (showDescription eq 'bottom'))}" />
+<c:set var="showDescTop"        value="${showDesc and (showDescription eq 'top')}" />
+<c:set var="showDescBottom"     value="${showDesc and not showDescTop}" />
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -258,11 +260,11 @@
             </c:choose>
 
             <c:if test="${showNoteTop}">
-                <div class="note">${notice}</div><%----%>
+                <div class="note top notice">${notice}</div><%----%>
             </c:if>
 
             <c:if test="${showDescTop}">
-                <div class="note">${description}</div><%----%>
+                <div class="note top description">${description}</div><%----%>
             </c:if>
 
             <c:if test="${showAddress}">
@@ -414,11 +416,11 @@
             </c:if>
 
             <c:if test="${showNoteBottom}">
-                <div class="note">${notice}</div><%----%>
+                <div class="note bottom notice">${notice}</div><%----%>
             </c:if>
 
             <c:if test="${showDescBottom}">
-                <div class="note">${description}</div><%----%>
+                <div class="note bottom description">${description}</div><%----%>
             </c:if>
 
             <c:if test="${showLinkAsText}">

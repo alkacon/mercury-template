@@ -21,7 +21,7 @@
 
 <c:if test="${not empty paragraphs}">
     <mercury:nl/>
-    <div class="subelement type-linksequence ls-bullets custom-icon"><%----%>
+    <div class="paragraph-linksequence subelement pivot type-linksequence ls-bullets custom-icon"><%----%>
 
         <mercury:heading text="${paragraphs['0'].value.Caption}" level="${empty hsize ? 3 : hsize}" />
 
@@ -30,7 +30,7 @@
             <c:set var="link" value="${paragraph.value.Link}" />
             <mercury:nl />
             <li class="fa-${icon}"><%-- mercury:icon --%>
-                <mercury:link link="${link}" newWin="true" />
+                <mercury:link link="${link}" newWin="true" css="sequence-link" />
             </li><%----%>
         </c:forEach>
         <mercury:nl />

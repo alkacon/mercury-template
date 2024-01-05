@@ -38,13 +38,13 @@
 
 @use 'sass:math';
 
-@function get-col-float-size($cols) {
-    // this is no longer used by piece, but still used somewhere else e.g. in search.scss
+@function get-col-float-size($cols, $reduce: 0) {
+    // this is NO LONGER USED by piece, but still used somewhere else e.g. in search.scss
     @if ($cols < 12) {
         @return calc(
             (var(--#{$prefix}piece-width) + var(--#{$prefix}gutter-x))
             * #{math.div($cols, $grid-columns)}
-            - var(--#{$prefix}gutter-x)
+            - var(--#{$prefix}gutter-x)#{if($reduce > 0, ' + ', '')}#{if($reduce > 0, $reduce, '')}
         );
     } @else {
         @return var(--#{$prefix}piece-width);

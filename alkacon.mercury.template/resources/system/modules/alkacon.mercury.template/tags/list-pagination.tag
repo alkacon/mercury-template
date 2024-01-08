@@ -89,7 +89,8 @@
                             <a href="${empty onclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
                             --%>${currentPage > 1 ? "" : "tabindex='-1'"}${' '}<%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}'${' '}<%--
-                            --%>title='<fmt:message key="msg.page.list.pagination.previous.title"/>'><%--
+                            --%>title='<fmt:message key="msg.page.list.pagination.previous.title"/>'${' '}<%--
+                            --%>class='pag-ctrl${currentPage > 1 ? '' : ' disabled'}'><%--
                                 --%><span class="sr-only"><fmt:message key="msg.page.list.pagination.previous.title" /></span><%----%>
                                     <mercury:icon icon="angle-left" tag="span" />
                             </a><%----%>
@@ -134,7 +135,8 @@
                             <a href="${empty onclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
                             --%>${currentPage >= lastPage ? "tabindex='-1'" : ""}${' '}<%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])}'${' '}<%--
-                            --%>title='<fmt:message key="msg.page.list.pagination.next.title"/>'><%--
+                            --%>title='<fmt:message key="msg.page.list.pagination.next.title"/>'${' '}<%--
+                            --%>class='pag-ctrl${currentPage >= lastPage ? ' disabled' : ''}'><%--
                                 --%><span class="sr-only"><fmt:message key="msg.page.list.pagination.next.title" /></span><%----%>
                                     <mercury:icon icon="angle-right" tag="span" />
                             </a><%----%>

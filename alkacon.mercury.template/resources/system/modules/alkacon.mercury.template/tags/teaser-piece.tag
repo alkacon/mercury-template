@@ -154,6 +154,7 @@
 <c:set var="showButton"         value="${(buttonText ne 'none') and (linkOption ne 'none')}" />
 <c:set var="addButtonDiv"       value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
 <c:set var="dateOnTop"          value="${empty dateOnTop ? false : dateOnTop}" />
+<c:set var="textLength"         value="${empty textLength ? -1 : textLength}" />
 
 <%-- These are currently not configurable, maybe add this later --%>
 <c:set var="linkOnHeadline"     value="${true}" />
@@ -208,8 +209,29 @@
     </c:set>
 </c:if>
 
+<c:if test="${(not empty pText) and (textLength != 0)}">
+    <c:set var="textMarkup">
+        <%-- textLength of < 0 outputs the whole text --%>
+        <%-- textLength of 0 completely hides the text --%>
+        <%-- textLength of > n outputs the text trimmed down to max n chars --%>
+        <div class="teaser-text"><%----%>
+            <c:choose>
+                <c:when test="${textLength == -2}">
+                    ${pText}
+                </c:when>
+                <c:when test="${textLength < 0}">
+                    <c:out value="${pText}" />
+                </c:when>
+                <c:otherwise>
+                    <c:out value="${cms:trimToSize(pText, textLength)}" />
+                </c:otherwise>
+            </c:choose>
+        </div><%----%>
+    </c:set>
+</c:if>
+
 <mercury:piece
-    cssWrapper="${teaserClass}${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
+    cssWrapper="${teaserClass}${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty textMarkup ? ' no-text' : ''}"
     attrWrapper="${attrWrapper}"
     pieceLayout="${pieceLayout}"
     sizeDesktop="${sizeDesktop}"
@@ -271,6 +293,11 @@
                         ${dateMarkup}
                     </c:if>
 
+                    <c:if test="${not empty textMarkup}">
+                        ${textMarkup}
+                    </c:if>
+
+<c:if test="false">
                     <c:choose>
                         <c:when test="${false and not empty preface}">
                             <%-- deactivated so that preface is also cut off --%>
@@ -303,6 +330,7 @@
                             </c:if>
                         </c:when>
                     </c:choose>
+</c:if>
 
                 </c:set>
 

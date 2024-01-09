@@ -27,6 +27,9 @@
 <%@ variable name-given="isCompatible" scope="AT_END" declare="true" variable-class="java.lang.Boolean"
     description="Flag, indicating if all compatibility conditions for the list are met." %>
 
+<%@ variable name-given="listDisplayType" scope="AT_END" declare="true" variable-class="java.lang.String"
+    description="The configured list group display type, which the stored in the 'display' node of the formatter configuration." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
@@ -71,6 +74,7 @@
 </c:forEach>
 
 <c:set var="isCompatible" value="${not incompatibleGroups and not incompatibleWithList}" />
+<c:set var="listDisplayType" value="${isCompatible ? requiredGroup : null}" />
 
 <c:if test="${not isCompatible && cms.isEditMode}">
     <fmt:setLocale value="${cms.workplaceLocale}" />

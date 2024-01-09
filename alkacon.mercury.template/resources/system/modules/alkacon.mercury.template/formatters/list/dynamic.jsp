@@ -58,23 +58,35 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:nl />
-<div class="element type-dynamic-list list-content ${settings.listCssWrapper}${' '}${settings.appendSwitch != 'disable' ? settings.listPaginationPosition : 'pagination-disabled'}${' '}${settings.listDisplay}${' '}${settings.cssWrapper}${' '}${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
-<mercury:nl />
-
-    <cms:enable-list-add
-        types="${content.valueList.TypesToCollect}"
-        postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}"
-        uploadFolder="${cms.getBinaryUploadFolder(content)}" />
-
-    <%-- ####### Check if list formatters are compatible ######## --%>
+<c:set var="listCompatibilityMarkup">
+    <%-- Check if list formatters are compatible. --%>
     <mercury:list-compatibility
         settings="${settings}"
         types="${content.valueList.TypesToCollect}"
         listTitle="${value.Title}"
     />
+</c:set>
+
+<mercury:nl />
+<div class="element type-dynamic-list list-content <%--
+--%>${not empty settings.listCssWrapper ? settings.listCssWrapper.concat(' ') : ''}<%--
+--%>${not empty settings.listDisplay ? settings.listDisplay.concat(' ') : ''}<%--
+--%>${not empty settings.cssWrapper ? settings.cssWrapper.concat(' ') : ''}<%--
+--%>${not empty listDisplayType ? 'list-'.concat(listDisplayType).concat(' ') : ''}<%--
+--%>${settings.appendSwitch != 'disable' ? settings.listPaginationPosition : 'pagination-disabled'}${' '}<%--
+--%>${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
+<mercury:nl />
+
+    <c:if test="${not isCompatible}">
+        ${listCompatibilityMarkup}
+    </c:if>
 
     <c:if test="${isCompatible}">
+
+        <cms:enable-list-add
+            types="${content.valueList.TypesToCollect}"
+            postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}"
+            uploadFolder="${cms.getBinaryUploadFolder(content)}" />
 
         <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />
 
@@ -243,6 +255,7 @@
         </div><%----%>
         <mercury:nl />
     </c:if>
+
 </div><%----%>
 <mercury:nl />
 

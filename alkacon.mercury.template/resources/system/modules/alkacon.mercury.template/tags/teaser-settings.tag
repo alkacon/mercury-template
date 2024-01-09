@@ -37,6 +37,7 @@
 <%@ variable name-given="pageUri"           declare="true" %>
 <%@ variable name-given="displayType"       declare="true" %>
 <%@ variable name-given="setLinkOption"     declare="true" %>
+<%@ variable name-given="setHeadingInBody"  declare="true" variable-class="java.lang.Boolean" %>
 
 <%@ variable name-given="paragraph"         declare="true" %>
 <%@ variable name-given="linkToDetail"      declare="true" %>
@@ -61,6 +62,7 @@
 <c:set var="setSizeMobile"                  value="${setting.pieceSizeMobile.toInteger}" />
 <c:set var="setShowVisual"                  value="${setting.visualOption.toString ne 'none'}" />
 <c:set var="setLinkOption"                  value="${setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />
+<c:set var="setHeadingInBody"               value="${setting.headingInBody.toBoolean}" />
 
 <c:set var="pageUri"                        value="${setting.pageUri.toString}" />
 <c:set var="listEntryWrapper"               value="${setting.listEntryWrapper.toString}" />

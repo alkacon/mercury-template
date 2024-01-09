@@ -57,6 +57,9 @@
       <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[headingInBody.compact]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
     </Setting>
     <Setting>

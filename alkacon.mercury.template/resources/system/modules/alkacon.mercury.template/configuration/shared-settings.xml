@@ -870,6 +870,13 @@
       <Default><![CDATA[175]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[headingInBody.compact]]></IncludeName>
+      <PropertyName><![CDATA[headingInBody]]></PropertyName>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>
       <PropertyName><![CDATA[textLength]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.textLength)]]></DisplayName>

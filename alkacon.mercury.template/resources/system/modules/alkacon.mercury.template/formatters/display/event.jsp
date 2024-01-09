@@ -116,6 +116,7 @@
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
     textLength="${value['TeaserData/TeaserPreface'].isSet ? -1 : setTextLength}"
+    headingInBody="${setHeadingInBody}"
     buttonText="${setButtonText}">
 
     <jsp:attribute name="markupVisual">

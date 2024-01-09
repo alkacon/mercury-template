@@ -37,6 +37,7 @@
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
     textLength="${setTextLength}"
+    headingInBody="${setHeadingInBody}"
     buttonText="${setButtonText}">
 
     <jsp:attribute name="markupVisual">

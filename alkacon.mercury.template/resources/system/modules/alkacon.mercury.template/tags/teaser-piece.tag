@@ -115,6 +115,9 @@
 <%@ attribute name="teaserType" type="java.lang.String" required="false"
     description="Type teaser to generate. Valid values are 'teaser-compact', 'teaser-elaborate' and 'teaser-text-tile'." %>
 
+<%@ attribute name="headingInBody" type="java.lang.Boolean" required="false"
+    description="If 'true', the heading will be placed inside the body text. This allows for more flexible CSS formatting, but will break the 'piece' structure." %>
+
 <%@ attribute name="markupVisual" required="true" fragment="true"
     description="Markup shown for the visual, usually an image." %>
 
@@ -209,29 +212,59 @@
     </c:set>
 </c:if>
 
-<c:if test="${(not empty pText) and (textLength != 0)}">
-    <c:set var="textMarkup">
-        <%-- textLength of < 0 outputs the whole text --%>
-        <%-- textLength of 0 completely hides the text --%>
-        <%-- textLength of > n outputs the text trimmed down to max n chars --%>
-        <div class="teaser-text"><%----%>
-            <c:choose>
-                <c:when test="${textLength == -2}">
-                    ${pText}
-                </c:when>
-                <c:when test="${textLength < 0}">
-                    <c:out value="${pText}" />
-                </c:when>
-                <c:otherwise>
-                    <c:out value="${cms:trimToSize(pText, textLength)}" />
-                </c:otherwise>
-            </c:choose>
-        </div><%----%>
+<c:if test="${empty markupBodyOutput}">
+    <c:set var="markupTextOutput">
+
+        <c:if test="${headingInBody}">
+            <c:if test="${dateOnTop and not empty dateMarkup}">
+                ${dateMarkup}
+            </c:if>
+
+            <c:if test="${not empty headline or not empty introxw}">
+                <mercury:intro-headline
+                    intro="${intro}"
+                    headline="${headline}"
+                    prefix="${headlinePrefix}"
+                    suffix="${headlineSuffix}"
+                    level="${hsize}"
+                    tabindex="${not linkHeadline}"
+                    ade="${ade}" />
+            </c:if>
+        </c:if>
+
+        <c:if test="${not empty preTextMarkup}">
+            ${preTextMarkup}
+        </c:if>
+
+        <c:if test="${not dateOnTop and not empty dateMarkup}">
+            ${dateMarkup}
+        </c:if>
+
+        <c:if test="${(not empty pText) and (textLength != 0)}">
+            <%-- textLength of < 0 outputs the whole text --%>
+            <%-- textLength of 0 completely hides the text --%>
+            <%-- textLength of > n outputs the text trimmed down to max n chars --%>
+            <c:set var="prefaceInBody" value="${true}" />
+            <div class="teaser-text"><%----%>
+                <c:choose>
+                    <c:when test="${textLength == -2}">
+                        ${pText}
+                    </c:when>
+                    <c:when test="${textLength < 0}">
+                        <c:out value="${pText}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:out value="${cms:trimToSize(pText, textLength)}" />
+                    </c:otherwise>
+                </c:choose>
+            </div><%----%>
+        </c:if>
+
     </c:set>
 </c:if>
 
 <mercury:piece
-    cssWrapper="${teaserClass}${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${empty textMarkup ? ' no-text' : ''}"
+    cssWrapper="${teaserClass}${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${headingInBody ? ' hib' : ''}${prefaceInBody ? ' pib' : ''}"
     attrWrapper="${attrWrapper}"
     pieceLayout="${pieceLayout}"
     sizeDesktop="${sizeDesktop}"
@@ -243,25 +276,27 @@
     bodyPostMarkup="${bodyPostMarkup}">
 
     <jsp:attribute name="heading">
-        <c:if test="${dateOnTop and not empty dateMarkup}">
-            ${dateMarkup}
-        </c:if>
-        <c:if test="${not empty headline or not empty intro}">
-            <mercury:link
-                link="${link}"
-                newWin="${linkNewWin}"
-                test="${linkHeadline}">
+        <c:if test="${not headingInBody}">
+            <c:if test="${dateOnTop and not empty dateMarkup}">
+                ${dateMarkup}
+            </c:if>
+            <c:if test="${not empty headline or not empty intro}">
+                <mercury:link
+                    link="${link}"
+                    newWin="${linkNewWin}"
+                    test="${linkHeadline}">
 
-                <mercury:intro-headline
-                    intro="${intro}"
-                    headline="${headline}"
-                    prefix="${headlinePrefix}"
-                    suffix="${headlineSuffix}"
-                    level="${hsize}"
-                    tabindex="${not linkHeadline}"
-                    ade="${ade}" />
+                    <mercury:intro-headline
+                        intro="${intro}"
+                        headline="${headline}"
+                        prefix="${headlinePrefix}"
+                        suffix="${headlineSuffix}"
+                        level="${hsize}"
+                        tabindex="${not linkHeadline}"
+                        ade="${ade}" />
 
-            </mercury:link>
+                </mercury:link>
+            </c:if>
         </c:if>
     </jsp:attribute>
 
@@ -282,58 +317,6 @@
     <jsp:attribute name="text">
         <c:choose>
             <c:when test="${empty markupBodyOutput}">
-
-                <c:set var="markupTextOutput">
-
-                    <c:if test="${not empty preTextMarkup}">
-                        ${preTextMarkup}
-                    </c:if>
-
-                    <c:if test="${not dateOnTop and not empty dateMarkup}">
-                        ${dateMarkup}
-                    </c:if>
-
-                    <c:if test="${not empty textMarkup}">
-                        ${textMarkup}
-                    </c:if>
-
-<c:if test="false">
-                    <c:choose>
-                        <c:when test="${false and not empty preface}">
-                            <%-- deactivated so that preface is also cut off --%>
-                            <div class="teaser-text">
-                                <c:out value="${preface}" />
-                             </div><%----%>
-                        </c:when>
-
-                        <c:when test="${not empty pText}">
-                            <%-- textLength of < 0 outputs the whole text --%>
-                            <%-- textLength of 0 completely hides the text --%>
-                            <%-- textLength of > n outputs the text trimmed down to max n chars --%>
-                            <c:if test="${empty textLength}">
-                                <c:set var="textLength" value="-1" />
-                            </c:if>
-                            <c:if test="${textLength != 0}">
-                                <div class="teaser-text"><%----%>
-                                    <c:choose>
-                                        <c:when test="${textLength == -2}">
-                                            ${pText}
-                                        </c:when>
-                                        <c:when test="${textLength < 0}">
-                                            <c:out value="${pText}" />
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value="${cms:trimToSize(pText, textLength)}" />
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div><%----%>
-                            </c:if>
-                        </c:when>
-                    </c:choose>
-</c:if>
-
-                </c:set>
-
                 <mercury:link
                     link="${link}"
                     newWin="${linkNewWin}"
@@ -343,7 +326,6 @@
                     test="${linkOnText and not empty markupTextOutput}">
                     ${markupTextOutput}
                 </mercury:link>
-
             </c:when>
             <c:otherwise>
                 ${markupBodyOutput}

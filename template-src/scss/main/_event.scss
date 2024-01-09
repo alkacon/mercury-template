@@ -210,8 +210,8 @@ table.submissions {
     }
 
     .book-msg {
-        background-color: var(--#{$prefix}grey-lighter);
-        color: var(--#{$prefix}text-dark);
+        background-color: var(--#{$prefix}highlight-color);
+        color: var(--#{$prefix}highlight-fg-color);
     }
 
     .book-msg,
@@ -282,7 +282,7 @@ table.submissions {
         right: calc(3rem + var(--#{$prefix}at-spacing-x));
         z-index: calc($overflow-z-index + 20);
     }
-    
+
     .acco-item-check {
         scale: 1.4;
         display: none;
@@ -292,7 +292,7 @@ table.submissions {
 @include media-breakpoint-up(md) {
 
     .formdata-manage {
-    
+
         .acco-item-select {
             margin-top: var(--#{$prefix}default-margin-small);
         }

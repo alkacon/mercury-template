@@ -201,7 +201,7 @@
         ${not empty intro ? ': ' : ''}
         <mercury:out value="${headline}" />
     </c:set>
-    <c:set var="linkHeadline" value="${linkOnHeadline and (hsize > 0)}" />
+    <c:set var="linkHeadline" value="${linkOnHeadline and not headingInBody and (hsize > 0)}" />
 </c:if>
 
 <c:if test="${(not empty date) and (dateFormat ne 'none')}">
@@ -241,6 +241,7 @@
         </c:if>
 
         <c:if test="${(not empty pText) and (textLength != 0)}">
+            <%-- textLength of -2 outputs the whole text without HTML escaping --%>
             <%-- textLength of < 0 outputs the whole text --%>
             <%-- textLength of 0 completely hides the text --%>
             <%-- textLength of > n outputs the text trimmed down to max n chars --%>

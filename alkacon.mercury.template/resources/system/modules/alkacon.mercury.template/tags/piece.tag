@@ -44,7 +44,7 @@
     By default this will be calculated automatically from 'sizeDesktop' and 'sizeMobile'.
     If provided as attribute, the attribute value will be inserted instead verbatim without any further check.
     Note that if visual and body are not shown in columns, or if one of the columns is empty,
-    the pice will fall back to full width and not use the gridOption at all. " %>
+    the piece will fall back to full width and not use the gridOption at all. " %>
 
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' selectors to add to the generated piece tag." %>
@@ -60,6 +60,9 @@
 
 <%@ attribute name="cssHeading" type="java.lang.String" required="false"
     description="'class' selectors to add to the tag surrounding the heading." %>
+
+<%@ attribute name="bodyHeading" type="java.lang.Boolean" required="false"
+    description="If 'true', force the heading to be inlined in the body." %>
 
 <%@ attribute name="visual" fragment="true" required="false"
     description="Markup shown for the content piece visual." %>
@@ -125,7 +128,7 @@
 <c:set var="fullWidth"      value="${(pieceLayout <= 1) or (pieceLayout == 10) or (pieceLayout == 11)}" />
 <c:set var="inlineLink"     value="${empty inlineLink ? not fullWidth : inlineLink}" />
 
-<c:set var="inlineHeading"  value="${(pieceLayout == 1) or (pieceLayout >= 6)}" />
+<c:set var="inlineHeading"  value="${bodyHeading or (pieceLayout == 1) or (pieceLayout >= 6)}" />
 <c:set var="visualLast"     value="${pieceLayout == 10 or (pieceLayout == 11)}" />
 <c:set var="linkLast"       value="${pieceLayout == 11}" />
 
@@ -202,9 +205,10 @@
 
 <c:if test="${not showVisual}">
     <%-- If there is no visual and we get 'full' piece, make sure the div structure for does not use inline heading or link. --%>
-    <%-- These are required only in case there is a visual. --%>
+    <%-- These are usually required only in case there is a visual. --%>
+    <%-- Exception: The heading was specifically requested to be written in the body with 'bodyHeading' being true. --%>
     <c:set var="inlineLink"     value="${false}" />
-    <c:set var="inlineHeading"  value="${false}" />
+    <c:set var="inlineHeading"  value="${bodyHeading}" />
 </c:if>
 
 <c:set var="showBody"           value="${showText or (showHeading and inlineHeading) or (showLink and inlineLink)}" />
@@ -242,8 +246,11 @@
         <c:set var="onlyLink" value="${true}" />
     </c:when>
     <c:when test="${showBody and not showHeading and (not showVisual or visualLast)}">
-        <c:set var="pieceFeatureMarker" value="${visualLast ? ' phv pvl': ' pnv'}${' phb pnh'}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
+        <c:set var="pieceFeatureMarker" value=" lay-${pieceLayout}${' phb pnh'}${visualLast ? ' phv pvl': ' pnv'}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
     </c:when>
+    <c:otherwise>
+        <c:set var="pieceFeatureMarker" value=" lay-${pieceLayout}${showHeading ? ' phh': ' pnh'}${showBody ? ' phb': ''}${showVisual ? ' phv': ' pnv'}${visualLast ? ' pvl': ''}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
+    </c:otherwise>
     <%-- "phv" means "piece has visual". --%>
     <%-- "pnv" means "piece (has) no visual". --%>
     <%-- "phh" means "piece has heading". --%>
@@ -252,9 +259,6 @@
     <%-- "phb" means "piece has body". --%>
     <%-- "pvl" means "piece visual last". --%>
     <%-- "pnm" means "(next) piece needs margin". --%>
-    <c:otherwise>
-        <c:set var="pieceFeatureMarker" value="${showHeading ? ' phh': ''}${showVisual ? ' phv': ' pnv'}${visualLast ? ' pvl': ''}${showBody ? ' phb': ''}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
-    </c:otherwise>
 </c:choose>
 
 <c:if test="${showLink}">

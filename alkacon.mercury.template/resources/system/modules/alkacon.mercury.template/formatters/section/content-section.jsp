@@ -13,6 +13,8 @@
 <mercury:init-messages>
 <cms:formatter var="content" val="value">
 
+<mercury:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
+
 <mercury:setting-defaults>
 
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />

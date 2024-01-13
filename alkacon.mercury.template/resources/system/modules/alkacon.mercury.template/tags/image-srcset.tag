@@ -90,7 +90,7 @@ Noscript support
 SVG placeholder image, background image and image sizing
     In case lazy loading is active, a special combination of srcset tags is used to make sure no image is
     is loaded by the browser, see https://github.com/aFarkas/lazysizes#modern-transparent-srcset-pattern.
-    To minimize refows when loading the page, we use a technique describes here
+    To minimize reflows when loading the page, we use a technique describes here
     https://github.com/aFarkas/lazysizes#tip-specifying-image-dimensions-minimizing-reflows-and-avoiding-page-jumps
 --%>
 

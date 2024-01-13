@@ -171,6 +171,7 @@
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dm'}" />
     </c:if>
     <c:if test="${sizeDesktop < 12}">
+        <%-- Note regardin p-md breakpoint: This must always be 'md' regardless of the 'template.piece.breakpoint' sitemap attribute. --%>
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-md-'}${sizeDesktop}" />
     </c:if>
     <c:if test="${defSizeDesktop}">
@@ -194,9 +195,10 @@
 <c:set var="showLink"       value="${not empty pieceLink}" />
 
 <c:if test="${useVisual and not empty visual}">
+    <c:set var="pieceBreakpoint" value="${cms.sitemapConfig.attribute['template.piece.breakpoint'].useDefault('md').toString}" />
     <%-- It is important to make this check AFTER the body because the grid size must be 12 if there is no body. --%>
     <cms:addparams>
-        <cms:param name="cssgrid" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-md-'.concat(sizeDesktop) : '')}" />
+        <cms:param name="cssgrid" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-'.concat(pieceBreakpoint).concat('-').concat(sizeDesktop) : '')}" />
         <jsp:invoke fragment="visual" var="pieceVisual" />
     </cms:addparams>
 </c:if>

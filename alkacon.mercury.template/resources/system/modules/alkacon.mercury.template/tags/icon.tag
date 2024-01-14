@@ -47,27 +47,39 @@
 
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
-<c:set var="isBootstrap"    value="${fn:startsWith(icon, 'bi-')}" />
-<c:set var="isFaBrand"      value="${fn:startsWith(icon, 'fab-')}" />
-<c:set var="isFaSolid"      value="${fn:startsWith(icon, 'fas-')}" />
-<c:set var="isFaRegular"    value="${fn:startsWith(icon, 'far-')}" />
-<c:set var="isFlag"         value="${fn:startsWith(icon, 'nf-')}" />
-
 <c:choose>
     <c:when test="${fromImage}">
         <c:set var="inline"         value="${false}" />
     </c:when>
-    <c:when test="${isBootstrap or isFaBrand or isFaSolid or isFaRegular}">
+    <c:when test="${fn:startsWith(icon, 'cif-')}">
+        <%-- Custom icon font --%>
+        <c:set var="inline"         value="${false}" />
+        <c:set var="customFont"     value="${true}" />
+    </c:when>
+    <c:when test="${fn:startsWith(icon, 'bi-')}">
         <c:set var="inline"         value="${true}" />
     </c:when>
-    <c:when test="${isFlag}">
-        <c:set var="imgsrc"         value="${true}" />
+    <c:when test="${fn:startsWith(icon, 'fab-')}">
+        <c:set var="inline"         value="${true}" />
+    </c:when>
+    <c:when test="${fn:startsWith(icon, 'fas-')}">
+        <c:set var="inline"         value="${true}" />
+    </c:when>
+    <c:when test="${fn:startsWith(icon, 'far-')}">
+        <c:set var="inline"         value="${true}" />
+    </c:when>
+    <c:when test="${fn:startsWith(icon, 'nf-')}">
         <c:set var="inline"         value="${false}" />
+        <c:set var="imgsrc"         value="${true}" />
+    </c:when>
+    <c:when test="${fn:startsWith(icon, 'no-')}">
+        <%-- The icon font is 'fa', the icon must not be inlined. --%>
+        <c:set var="inline"         value="${false}" />
+        <c:set var="noInline"       value="${true}" />
     </c:when>
     <c:otherwise>
-        <c:set var="selectedIcons"  value="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
-        <c:set var="noInline"       value="${fn:startsWith(icon, 'no-')}" />
-        <c:set var="inline"         value="${inline and selectedIcons and (not noInline)}" />
+        <%-- The icon font is 'fa', there may or may not be an 'fa-' prefix, we will check this later. --%>
+        <c:set var="inline"         value="${inline and fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
     </c:otherwise>
 </c:choose>
 
@@ -102,6 +114,9 @@
     <c:when test="${noInline}">
         <c:set var="iconName" value="${fn:substringAfter(icon, 'no-')}" />
         <c:set var="iconClass" value="ico fa fa-${iconName}" />
+    </c:when>
+    <c:when test="${customFont}">
+        <c:set var="iconClass" value="ico cif ${icon}" />
     </c:when>
     <c:when test="${fn:startsWith(icon, 'fa-')}">
         <c:set var="iconClass" value="ico fa ${icon}" />

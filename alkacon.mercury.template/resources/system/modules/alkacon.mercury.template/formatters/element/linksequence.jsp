@@ -48,11 +48,13 @@
     <c:when test="${linksequenceType eq 'ls-navigation'}">
         <c:set var="ulWrapper">class="nav-side"</c:set>
         <c:if test="${listBulletStyle eq 'custom-icon'}">
-            <c:set var="aWrapper">fa-${iconClass}</c:set><%-- mercury:icon --%>
+            <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
+            <c:set var="aWrapper">${iconPrefix}${iconClass}</c:set><%-- mercury:icon --%>
         </c:if>
     </c:when>
     <c:when test="${listBulletStyle eq 'custom-icon'}">
-        <c:set var="liWrapper">fa-${iconClass}</c:set><%-- mercury:icon --%>
+        <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
+        <c:set var="liWrapper">${iconPrefix}${iconClass}</c:set><%-- mercury:icon --%>
     </c:when>
 </c:choose>
 

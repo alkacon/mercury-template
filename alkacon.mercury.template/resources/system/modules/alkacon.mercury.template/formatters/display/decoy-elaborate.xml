@@ -79,6 +79,9 @@
       <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[headingInBody.hidden]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
     </Setting>
     <Setting>

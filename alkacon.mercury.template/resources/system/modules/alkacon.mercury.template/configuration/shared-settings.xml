@@ -870,7 +870,7 @@
       <Default><![CDATA[175]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[headingInBody.compact]]></IncludeName>
+      <IncludeName><![CDATA[headingInBody.hidden]]></IncludeName>
       <PropertyName><![CDATA[headingInBody]]></PropertyName>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[hidden]]></Widget>

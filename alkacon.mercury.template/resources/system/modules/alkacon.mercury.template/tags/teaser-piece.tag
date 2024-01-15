@@ -141,18 +141,20 @@
 <c:set var="teaserClass"        value="${empty teaserClass ? 'teaser' : teaserClass}" />
 <c:set var="pieceLayout"        value="${empty pieceLayout ? 6 : pieceLayout}" />
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}" />
+<c:set var="headingInBody"      value="${headingInBody and ((pieceLayout le 1) or (pieceLayout ge 6))}" />
 <c:choose>
     <c:when test="${(fn:contains(teaserType, 'teaser-text-tile') or fn:contains(teaserType, 'teaser-masonry')) and not fn:contains(teaserType, '-var')}">
         <c:set var="addButtonDiv" value="${true}" />
         <c:set var="pieceLayout" value="${1}"/>
         <c:set var="sizeDesktop" value="${12}" />
         <c:set var="sizeMobile" value="${12}" />
+        <c:set var="headingInBody" value="${false}" />
     </c:when>
     <c:when test="${fn:contains(teaserType, 'teaser-compact')}">
         <c:set var="hideImage"  value="${true}"/>
     </c:when>
 </c:choose>
-<c:set var="sizeDesktop"        value="${not empty sizeDesktop ? sizeDesktop : (((pieceLayout > 1) and (pieceLayout != 10)) ? 4 : 12)}" />
+<c:set var="sizeDesktop"        value="${not empty sizeDesktop ? sizeDesktop : (((pieceLayout ge 1) and (pieceLayout != 10)) ? 4 : 12)}" />
 <c:set var="buttonText"         value="${buttonText eq '-' ? null : buttonText}" /><%-- Allows to have a "none" default but still use the value from the content by setting '-' as button text. --%>
 <c:set var="showButton"         value="${(buttonText ne 'none') and (linkOption ne 'none')}" />
 <c:set var="addButtonDiv"       value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />

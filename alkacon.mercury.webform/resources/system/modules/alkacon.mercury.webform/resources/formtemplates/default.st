@@ -406,7 +406,7 @@ $! ###### Standard LABEL for a field ###### !$
 row_start(field) ::= <<
 $! ###### Standard start row for a field ###### !$
 $if(field.showRowStart)$
-$!  !$<section>
+$!  !$<section class="form-field-$field.type$">
 $endif$
 >>
 

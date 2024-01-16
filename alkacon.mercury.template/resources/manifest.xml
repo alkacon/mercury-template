@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>16.0.76</version>
+		<version>16.0.77</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -3233,6 +3233,23 @@
 				<property>
 					<name>search.exclude</name>
 					<value><![CDATA[all]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/element/linksequence-expand.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/element/linksequence-expand.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>c75d726c-b44f-11ee-b9b0-0242ac11002b</uuidstructure>
+			<uuidresource>c75d726d-b44f-11ee-b9b0-0242ac11002b</uuidresource>
+			<datecreated>Tue, 16 Jan 2024 09:15:23 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Link sequence with expand option]]></value>
 				</property>
 			</properties>
 			<relations/>

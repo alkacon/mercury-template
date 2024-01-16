@@ -600,7 +600,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.hsize)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.hsize.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[2]]></Default>
       <WidgetConfig><![CDATA[
             1:  %(key.msg.setting.hsize.1)|
@@ -615,7 +615,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.hsize)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.hsize.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
-      <Widget><![CDATA[selectcombo]]></Widget>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[3]]></Default>
       <WidgetConfig><![CDATA[
             1:  %(key.msg.setting.hsize.1)|
@@ -3372,6 +3372,19 @@
         ls-bullets:      %(key.msg.setting.linksequence.linksequenceType.bullets)|
         ls-row:          %(key.msg.setting.linksequence.linksequenceType.row)|
         ls-navigation:   %(key.msg.setting.linksequence.linksequenceType.navigation)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[expandOption.linksequence]]></IncludeName>
+      <PropertyName><![CDATA[expandOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linksequence.expand)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.linksequence.expand.help)]]></Description>
+      <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
+      <Default><![CDATA[closed disable-lg]]></Default>
+      <WidgetConfig><![CDATA[
+        closed disable-lg:   %(key.msg.setting.linksequence.expand.closed-disable-lg)|
+        closed:              %(key.msg.setting.linksequence.expand.closed)|
+        open:                %(key.msg.setting.linksequence.expand.open)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

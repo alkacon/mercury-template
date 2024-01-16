@@ -2,17 +2,17 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-linksequence.formatter.element)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-linksequence.formatter.expand)]]></NiceName>
     <Type><![CDATA[m-linksequence]]></Type>
-    <Key><![CDATA[m/element/linksequence]]></Key>
+    <Key><![CDATA[m/element/linksequence-expand]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/linksequence.jsp]]></target>
         <uuid>8970f120-10a0-40c9-8796-4a3f5df368ac</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-linksequence.description.formatter)]]></Description>
-    <Rank><![CDATA[10000]]></Rank>
+    <Description><![CDATA[%(key.type.m-linksequence.description.formatter.expand)]]></Description>
+    <Rank><![CDATA[1000]]></Rank>
     <Match>
       <Types>
         <ContainerType><![CDATA[element]]></ContainerType>
@@ -39,10 +39,15 @@
       <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[hsize.element.0]]></IncludeName>
+      <IncludeName><![CDATA[hsize.2]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linksequenceType.linksequence]]></IncludeName>
+      <PropertyName><![CDATA[linksequenceType]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[ls-expand]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[expandOption.linksequence]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[iconClass.linksequence]]></IncludeName>

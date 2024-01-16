@@ -115,7 +115,7 @@
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}${mainColSize}${colCss}" />
                 <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
 
-                <c:set var="colOrder" value="${showSideLast ? (reverseMobileOrder ? ' order-first order'.concat(breakpoint).concat('last') : '') : (reverseMobileOrder ? ' order-first' : ' order'.concat(breakpoint).concat('first'))}" />
+                <c:set var="colOrder" value="${showSideLast ? (reverseMobileOrder ? ' order-first order'.concat(breakpoint eq '-' ? '-lg-' : breakpoint).concat('last') : '') : (reverseMobileOrder ? ' order-first' : ' order'.concat(breakpoint eq '-' ? '-lg-' : breakpoint).concat('first'))}" />
                 <c:set target="${valueMap}" property="Type"         value="${sideType}"/>
                 <c:set target="${valueMap}" property="Name"         value="sidecol"/>
                 <c:set target="${valueMap}" property="Tag"          value="${useAsideTag and (mainColSize ne 6) ? 'aside' : 'div'}" />

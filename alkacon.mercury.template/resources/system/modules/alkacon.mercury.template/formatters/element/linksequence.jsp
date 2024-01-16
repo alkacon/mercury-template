@@ -22,6 +22,7 @@
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="iconClass"              value="${setting.iconClass.useDefault('caret-right').toString}" />
 <c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
+<c:set var="expandOption"           value="${setting.expandOption.useDefault('closed disable-lg').toString}" />
 
 <c:set var="emptyLinkSequence"      value="${empty content.valueList.LinkEntry}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
@@ -52,19 +53,37 @@
             <c:set var="aWrapper">${iconPrefix}${iconClass}</c:set><%-- mercury:icon --%>
         </c:if>
     </c:when>
-    <c:when test="${listBulletStyle eq 'custom-icon'}">
-        <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
-        <c:set var="liWrapper">${iconPrefix}${iconClass}</c:set><%-- mercury:icon --%>
-    </c:when>
+    <c:otherwise>
+        <c:set var="expanding"  value="${linksequenceType eq 'ls-expand' and not emptyLinkSequence}" />
+        <c:if test="${expanding}">
+            <c:set var="elementId"><mercury:idgen prefix="ls" uuid="${cms.element.id}" /></c:set>
+            <c:set var="linksequenceType"  value="ls-bullets ls-expand" />
+            <c:set var="ulWrapper">class="expanding"</c:set>
+        </c:if>
+        <c:if test="${listBulletStyle eq 'custom-icon'}">
+            <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
+            <c:set var="liWrapper">${iconPrefix}${iconClass}</c:set><%-- mercury:icon --%>
+        </c:if>
+    </c:otherwise>
 </c:choose>
 
 <mercury:nl />
 <div class="element type-linksequence pivot ${linksequenceType}${' '}${listBulletStyle}${addCssWrapper}${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" id="auto" />
+    <c:if test="${expanding}">
+        <input type="checkbox" class="expander ${expandOption}" id="${elementId}" style="display: none;"><%----%>
+        <label for="${elementId}"><%----%>
+    </c:if>
 
-    <c:if test="${value.Text.isSet}">
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade and not expanding}" id="auto" />
+
+    <c:if test="${expanding}">
+        </label><%----%>
+        <mercury:nl />
+    </c:if>
+
+    <c:if test="${not expanding and value.Text.isSet}">
         <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>
     </c:if>
 

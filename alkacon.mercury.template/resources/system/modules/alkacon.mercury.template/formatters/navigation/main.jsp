@@ -207,7 +207,7 @@
                     --%>role="button"${' '}<%--
                     --%>aria-expanded="false"${' '}<%--
                     --%>aria-controls="${targetMenuId}"${' '}<%--
-                    --%>aria-labelledby="${parentLabelId}"<%--
+                    --%>aria-labelledby="${parentLabelId}"${' '}<%--
                     --%>title="<fmt:message key="msg.page.navigation.sublevel" />"<%--
                     --%>${'>'}&nbsp;</a><%----%>
                 </c:when>

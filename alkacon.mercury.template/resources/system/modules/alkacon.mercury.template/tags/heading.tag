@@ -58,7 +58,11 @@
 
 <c:if test="${(level > 0) and (level <= 7) and (empty test or test)}">
 
-    <c:if test="${(not empty markupText) or (not empty text)}">
+    <c:if test="${not empty markupText}">
+        <jsp:invoke fragment="markupText" var="markupTextOutput" />
+    </c:if>
+
+    <c:if test="${(not empty markupTextOutput) or (not empty text)}">
 
         <c:set var="escapeXml"      value="${empty escapeXml ? true : escapeXml}" />
         <c:set var="addTabindex"    value="${empty tabindex ? ((level >= 1) and (level <=4)) : tabindex}" />
@@ -98,8 +102,8 @@
 
             ${prefix}
             <c:choose>
-                <c:when test="${not empty markupText}">
-                    <jsp:invoke fragment="markupText" />
+                <c:when test="${not empty markupTextOutput}">
+                    ${markupTextOutput}
                 </c:when>
                 <c:when test="${not empty text}">
                     <c:set var="useAde" value="${ade and cms:isWrapper(text)}" />

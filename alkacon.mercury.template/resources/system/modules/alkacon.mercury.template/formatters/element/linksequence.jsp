@@ -18,7 +18,7 @@
 
 <mercury:setting-defaults>
 
-<c:set var="addCssWrapper"          value="${setting.addCssWrapper.isSetNotNone ? ' '.concat(setting.addCssWrapper.toString) : null}" />
+<c:set var="addCssWrapper"          value="${setting.addCssWrapper.isSetNotNone ? ' '.concat(setting.addCssWrapper.toString) : ''}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="iconClass"              value="${setting.iconClass.useDefault('caret-right').toString}" />
 <c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
@@ -56,9 +56,20 @@
     <c:otherwise>
         <c:set var="expanding"  value="${linksequenceType eq 'ls-expand' and not emptyLinkSequence}" />
         <c:if test="${expanding}">
-            <c:set var="elementId"><mercury:idgen prefix="ls" uuid="${cms.element.id}" /></c:set>
-            <c:set var="linksequenceType"  value="ls-bullets ls-expand" />
-            <c:set var="ulWrapper">class="expanding"</c:set>
+            <c:set var="open" value="${not fn:contains(expandOption, 'closed')}" />
+            <c:set var="disableLg" value="${fn:contains(expandOption, 'disable-lg')}" />
+            <c:set var="elementId"><mercury:idgen prefix="lsc" uuid="${cms.element.instanceId}" /></c:set>
+            <c:set var="linksequenceType"  value="ls-bullets ls-expand${disableLg ? ' disable-lg' : ''}" />
+            <c:set var="ulWrapper">class="collapse${open ? ' show' : ''}" id="${elementId}"</c:set>
+            <c:set var="expanderMarkup">
+                <button class="ls-toggle${open ? '':' collapsed'}" <%--
+                --%>data-bs-toggle="collapse" type="button" <%--
+                --%>aria-expanded="${open}" <%--
+                --%>aria-controls="${elementId}" <%--
+                --%>data-bs-target="#${elementId}"><%----%>
+                    <mercury:out value="${value.Title}" lenientEscaping="${true}" />
+                </button><%----%>
+            </c:set>
         </c:if>
         <c:if test="${listBulletStyle eq 'custom-icon'}">
             <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
@@ -71,17 +82,9 @@
 <div class="element type-linksequence pivot ${linksequenceType}${' '}${listBulletStyle}${addCssWrapper}${setCssWrapperAll}"><%----%>
 <mercury:nl />
 
-    <c:if test="${expanding}">
-        <input type="checkbox" class="expander ${expandOption}" id="${elementId}" style="display: none;"><%----%>
-        <label for="${elementId}"><%----%>
-    </c:if>
-
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade and not expanding}" id="auto" />
-
-    <c:if test="${expanding}">
-        </label><%----%>
-        <mercury:nl />
-    </c:if>
+    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade and not expanding}" id="${not expanding ? 'auto' : ''}" tabindex="${not expanding}">
+        <jsp:attribute name="markupText">${expanderMarkup}</jsp:attribute>
+    </mercury:heading>
 
     <c:if test="${not expanding and value.Text.isSet}">
         <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>

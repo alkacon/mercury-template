@@ -154,102 +154,57 @@
 }
 
 .ls-expand {
-    > .expander {
-        // this is the checkbox fot the expand finction
-        display: none;
+    .heading {
+        overflow: visible !important;
+        margin-bottom: 0;
 
-        ~ .expanding {
-            overflow: hidden;
-            animation-duration: 0.4s;
-            animation-fill-mode: both;
-        }
-
-        ~ label {
-            display: block;
-        }
-
-        ~ label > .heading {
-            transition: unset;
+        button {
+            @include remove-default-button-style;
             position: relative;
             cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-bottom: var(--#{$prefix}headings-margin-bottom);
+
             &::after {
                 @include toggle-arrow-open-after;
                 right: 0;
             }
-        }
 
-        &.open {
-            &:checked ~ .expanding {
-                animation-name: foldExpander;
-            }
-            &:checked ~ label > .heading {
+            &.collapsed {
                 margin-bottom: 0;
                 transition: margin-bottom 0.2s linear 0.2s;
                 &::after {
-                    transform: rotate(0);
+                    @include toggle-arrow-closed-after;
                 }
             }
         }
-        &.closed {
-            ~ .expanding {
-                max-height: 0;
-            }
-            ~ label > .heading {
-                margin-bottom: 0;
-                &::after {
-                    transform: rotate(0);
-                }
-            }
-            &:checked ~ .expanding {
-                animation-name: unfoldExpander;
-                animation-timing-function: ease-in;
-            }
-            &:checked ~ label > .heading {
-                margin-bottom: var(--#{$prefix}headings-margin-bottom);
-                transition: margin-bottom 0.2s linear;
-                &::after {
-                    transform: rotate($toggle-open-rotation);
-                }
-            }
-        }
+    }
 
-        @include media-breakpoint-up(lg) {
-            &.disable-lg {
-                ~ .expanding {
-                    max-height: none;
+    @include media-breakpoint-up(lg) {
+        &.disable-lg {
+            .collapse {
+                &:not(.show) {
+                    display: block;
                 }
-                ~ label > .heading {
+            }
+            .collapsing {
+                height: unset !important;
+                transition: none;
+            }
+            button {
+                cursor: default;
+                &::after {
+                    content: none;
+                }
+                &.collapsed {
                     margin-bottom: var(--#{$prefix}headings-margin-bottom);
-                    cursor: auto;
+                    transition: none;
                     &::after {
-                        display: none;
+                        @include toggle-arrow-closed-after;
                     }
                 }
-                &:checked ~ .expanding {
-                    animation-name: none;
-                }
-                &:checked ~ label > .heading {
-                    transition: none;
-                }
             }
         }
-    }
-}
-
-@keyframes foldExpander {
-    from {
-        max-height: 500px;
-    }
-    to {
-        max-height: 0;
-    }
-}
-
-@keyframes unfoldExpander {
-    from {
-        max-height: 0;
-    }
-    to {
-        max-height: 1000px;
     }
 }

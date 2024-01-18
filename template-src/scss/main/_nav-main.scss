@@ -232,26 +232,30 @@
         pointer-events: auto;
     }
 
-    .nav-toggle {
+    .nav-toggle-btn {
         // the button used to show / hide the nav on small screens
+        @include remove-default-button-style;
+        float: right;
         display: block;
         position: relative;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-        width: $nav-toggle-size;
-        height: $nav-toggle-size;
-        font-size: 0;
-        text-indent: -9999px;
-        box-shadow: none;
-        border-radius: $nav-border-radius;
-        border: none;
         cursor: pointer;
-        transition: background $nav-animation-time;
-        color: var(--#{$prefix}nav-toggle-fg);
-        background-color: var(--#{$prefix}nav-toggle-bg);
         z-index: $above-oc-z-index + 1; // nav toggle should be above OC edit points
-        float: right;
+
+        .nav-toggle {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            width: $nav-toggle-size;
+            height: $nav-toggle-size;
+            font-size: 0;
+            text-indent: -9999px;
+            box-shadow: none;
+            border-radius: $nav-border-radius;
+            border: none;
+            transition: background $nav-animation-time;
+            color: var(--#{$prefix}nav-toggle-fg);
+            background-color: var(--#{$prefix}nav-toggle-bg);
+        }
 
         .nav-burger {
             display: block;
@@ -312,10 +316,12 @@
 
         @if ($nav-mobile-smaller-xs-toggle != false) {
             @include media-breakpoint-down(sm) {
-                // on very small screens use a smaller button
-                // otherwise the button may become larger than the head itself
-                width: round($nav-toggle-size-xs);
-                height: round($nav-toggle-size-xs);
+                .nav-toggle {
+                    // on very small screens use a smaller button
+                    // otherwise the button may become larger than the head itself
+                    width: round($nav-toggle-size-xs);
+                    height: round($nav-toggle-size-xs);
+                }
 
                 .nav-burger {
                     top: round(0.46 * $nav-toggle-size-xs);

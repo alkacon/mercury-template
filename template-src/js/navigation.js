@@ -283,15 +283,15 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
 }
 
 function toggleHeadNavigation() {
-    var toggle = jQ('.nav-toggle');
+    var toggle = jQ('.nav-toggle-btn');
     toggle.toggleClass('active');
     var active = toggle.hasClass('active');
     toggle.attr('aria-expanded', active);
     jQ(document.documentElement).toggleClass('active-nav');
     if (active) {
-        jQ('#nav-toggle-label-close > .nav-toggle.active').focus();
+        jQ('#nav-toggle-label-close > .nav-toggle-btn.active').focus();
     } else {
-        jQ('#nav-toggle-label-open > .nav-toggle').focus();
+        jQ('#nav-toggle-label-open > .nav-toggle-btn').focus();
     }
 }
 
@@ -355,9 +355,9 @@ function initHeadNavigation() {
     m_isBurgerHeader = false || jQ('header.bh').length;
 
     // Responsive navbar toggle button
-    jQ('.nav-toggle').on('click', toggleHeadNavigation);
+    jQ('.nav-toggle-btn').on('click', toggleHeadNavigation);
     jQ('.head-overlay').click(function() {
-        jQ('.nav-toggle').removeClass('active');
+        jQ('.nav-toggle-btn').removeClass('active');
         jQ(document.documentElement).removeClass('active-nav');
     });
 
@@ -765,7 +765,7 @@ function doScrollToAnchor($anchor, offset) {
         });
         if (Mercury.gridInfo().isMobileNav()) {
             // close the mobile navigation
-            jQ('.nav-toggle').removeClass('active');
+            jQ('.nav-toggle-btn').removeClass('active');
             jQ(document.documentElement).removeClass('active-nav');
         }
     }

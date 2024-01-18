@@ -18,7 +18,7 @@
     <div class="nav-menu-toggle"><%----%>
         <span id="nav-toggle-label-close" class="nav-toggle-label"><%----%>
             <button class="nav-toggle" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
-                <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                <span class="nav-burger"><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
             </button><%----%>
         </span><%----%>
     </div><%----%>

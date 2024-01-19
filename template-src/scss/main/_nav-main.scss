@@ -458,7 +458,7 @@
         position: relative;
     }
 
-    @if (not $feature-use-burger-header) {
+    @if ($feature-header-type == 'flexible') {
 
         .nav-main-container {
 

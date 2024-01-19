@@ -184,7 +184,7 @@
 }
 
 // Flexible header with desktop menu
-@if($feature-use-flexible-header) {
+@if ($feature-header-type == 'flexible') {
 
     // Special header containers
     @if ($nav-breakpoint-sticky-header != xs) {
@@ -1234,7 +1234,7 @@
 
 
 // Header that always displays the"burger" menu
-@if ($feature-use-burger-header) {
+@if ($feature-header-type == 'burger') {
 
     @include sticky-header-globals(xs, '.fix-xs');
     @include sticky-header-globals(sm, '.fix-sm');
@@ -1809,7 +1809,7 @@
     }
 }
 
-@if($feature-use-flexible-header or $feature-use-burger-header) {
+@if (($feature-header-type == 'burger') or ($feature-header-type == 'flexible')) {
 
     .area-header {
         @if ($nav-header-margin-bottom > 0) {
@@ -1880,7 +1880,7 @@
     }
 }
 
-@if($feature-use-flexible-header) {
+@if ($feature-header-type == 'flexible') {
 
     // Deprecated "logo-left" header - CSS comes with flexible header
     .area-header {
@@ -2034,7 +2034,7 @@
     background: $fh-header-bg-color;
 }
 
-@if (not $feature-use-burger-header) {
+@if ($feature-header-type == 'flexible') {
     // sticky / fixed header
     @include sticky-header-globals($nav-breakpoint-sticky-header);
 }

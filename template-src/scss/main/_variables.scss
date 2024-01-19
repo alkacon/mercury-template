@@ -23,8 +23,10 @@ $divide-precision:                  6 !default; // default precision for the Bs5
 
 // Features - disable what is not needed to keep the generated CSS small
 
-$feature-use-flexible-header:       true !default; // use flexible header from _header.scss
-$feature-use-burger-header:         false !default; // use burger header from _header.scss (if 'true' overwrites flexible header setting - see below)
+// Header to use from _header.scss
+$feature-use-flexible-header:       true !default; // use flexible header
+$feature-use-burger-header:         false !default; // use burger header
+$feature-header-type:               if($feature-use-burger-header, 'burger', 'flexible') !default; // decide which header to use
 
 // Required default colors
 
@@ -567,9 +569,8 @@ $fh-grid-gutter-width-half:         $fh-grid-gutter-width * 0.5 !default; // hal
 
 // Burger header
 
-@if ($feature-use-burger-header) {
+@if ($feature-header-type == 'burger') {
     // set required variables to force wrap menu for desktop
-    $feature-use-flexible-header:       false !global; // burger header setting is stronger than flexible header
     $nav-breakpoint-mobile:             xxl !global;
     $nav-breakpoint-desktop:            none !global;
     $nav-breakpoint-sticky-header-size: 2 !global;

@@ -141,8 +141,10 @@
                 <c:set var="navToggleElement">
                     <div id="nav-toggle-group"><%----%>
                         <span id="nav-toggle-label"><%----%>
-                            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
-                                <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                            <button class="nav-toggle-btn" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
+                                <span class="nav-toggle"><%----%>
+                                    <span class="nav-burger"><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                                </span><%----%>
                             </button><%----%>
                         </span><%----%>
                     </div><%----%>
@@ -446,8 +448,10 @@
 
             <div id="nav-toggle-group"><%----%>
                 <span id="nav-toggle-label"><%----%>
-                    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
-                        <span><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                    <button class="nav-toggle-btn" aria-expanded="false" aria-controls="nav-toggle-group"><%----%>
+                        <span class="nav-toggle"><%----%>
+                            <span class="nav-burger"><fmt:message key="msg.page.navigation.toggle" /></span><%----%>
+                        </span><%----%>
                     </button><%----%>
                 </span><%----%>
                 <div class="head-overlay"></div><%----%>

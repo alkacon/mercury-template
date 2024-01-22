@@ -52,7 +52,7 @@ import { _OpenCmsReinitEditButtons, _OpenCmsInit } from './opencms-callbacks.js'
 // Module implemented using the "revealing module pattern", see
 // https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript
 // https://www.christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
-var Mercury = function (jQ) {
+const Mercury = function (jQ) {
 
     "use strict";
 
@@ -66,13 +66,13 @@ var Mercury = function (jQ) {
     let m_gridInfo = {};
 
     // the color theme passed from CSS to JavaScript
-    var m_theme = null;
+    let m_theme = null;
 
     // element update callback functions
-    var m_updateCallbacks = [];
+    const m_updateCallbacks = [];
 
     // additional CSS files loaded
-    var m_addCss = [];
+    const m_addCss = [];
 
     function toolbarHeight() {
         return isEditMode() ? 52 : 0;
@@ -103,14 +103,14 @@ var Mercury = function (jQ) {
     function debounce(func, wait, immediate) {
         // debounce function to optimize JavaScript events
         // see https://davidwalsh.name/javascript-debounce-function
-        var timeout;
+        let timeout;
         return function () {
-            var context = this, args = arguments;
-            var later = function () {
+            let context = this, args = arguments;
+            let later = function () {
                 timeout = null;
                 if (!immediate) func.apply(context, args);
             };
-            var callNow = immediate && !timeout;
+            let callNow = immediate && !timeout;
             clearTimeout(timeout);
             timeout = window.setTimeout(later, wait);
             if (callNow) func.apply(context, args);
@@ -161,13 +161,13 @@ var Mercury = function (jQ) {
 
 
     function getLocale() {
-        var locale = getInfo("locale");
+        const locale = getInfo("locale");
         return (typeof locale !== "undefined") ? locale : "en";
     }
 
 
     function addContext(path) {
-        var contextPath = getInfo("context");
+        let contextPath = getInfo("context");
         contextPath = ((contextPath != null) && (typeof contextPath !== "undefined")) ? contextPath : "/";
         if (DEBUG) console.info("Mercury.addContext: path=" + path + " contextPath=" + contextPath);
         path = path.startsWith("/") ? path.substr(1) : path;
@@ -177,7 +177,7 @@ var Mercury = function (jQ) {
 
     function isNotEmpty(string) {
         // checks if the argument variable is of type string and has a length > 0
-        var result = false;
+        let result = false;
         if ((typeof string === "string") && (string.trim().length > 0)) {
             result = true;
         }
@@ -197,7 +197,7 @@ var Mercury = function (jQ) {
 
     function parseJson(data) {
         // parses JSON with error handling
-        var result = {};
+        let result = {};
         if (isNotEmpty(data) && (data != "none")) {
             try {
                 result = JSON.parse(data);
@@ -211,14 +211,14 @@ var Mercury = function (jQ) {
 
     function getParameter(key) {
         key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
-        var match = location.search.match(new RegExp("[?&]" + key + "=([^&]+)(&|$)"));
+        const match = location.search.match(new RegExp("[?&]" + key + "=([^&]+)(&|$)"));
         return match && decodeURIComponent(match[1].replace(/\+/g, " "));
     }
 
 
     function getCssJsonData(elementId) {
         // reads JSON data from the CSS and returns it as an JS object
-        var data = getCssDataFromId(elementId);
+        const data = getCssDataFromId(elementId);
         if (DEBUG) console.info("Mercury data found in CSS: [" + data + "]");
         return parseJson(data);
     }
@@ -226,8 +226,8 @@ var Mercury = function (jQ) {
 
     function getCssDataFromElement(element, after) {
         // read data from ::before or ::after elements in the CSS
-        var selector = after ? '::after' : '::before';
-        var data = null;
+        const selector = after ? '::after' : '::before';
+        let data = null;
         if (element) {
             if (window.getComputedStyle && window.getComputedStyle(element, selector)) {
                 data = window.getComputedStyle(element, selector);
@@ -239,8 +239,8 @@ var Mercury = function (jQ) {
 
 
     function getCssDataFromId(elementId, after) {
-        var element = document.getElementById(elementId);
-        var data = getCssDataFromElement(element, after);
+        const element = document.getElementById(elementId);
+        const data = getCssDataFromElement(element, after);
         return data;
     }
 
@@ -249,7 +249,7 @@ var Mercury = function (jQ) {
         // the CSS template stores JSON encoded information for the JavaScript
         // in the HTML elements with the ID #template-info
         // initialize info sections with values from data attributes
-        let element = document.querySelector("#template-info");
+        const element = document.querySelector("#template-info");
         if (element.dataset["info"] != null) {
             const $info = JSON.parse(element.dataset["info"]);
             addInfo($info);
@@ -269,10 +269,10 @@ var Mercury = function (jQ) {
         // * information about the grid size (responsive breakpoints, points where the mobile nav appears)
         // * header information (stick header enabled or disabled) - note that the JS can overwrite this
         // * ...other stuff
-        var result = defaultValue; // default return color when all else fails
+        let result = defaultValue; // default return color when all else fails
         if (m_theme) {
             try {
-                var col = Object.byString(m_theme, key);
+                const col = Object.byString(m_theme, key);
                 if (typeof col !== "undefined") {
                     result = col;
                 }
@@ -313,7 +313,7 @@ var Mercury = function (jQ) {
         m_gridInfo.grid = getCssDataFromId('template-grid-info');
         if (DEBUG) console.info("Mercury grid size: " + m_gridInfo.grid);
 
-        var gridInfo = getCssDataFromId('template-grid-info', true);
+        let gridInfo = getCssDataFromId('template-grid-info', true);
         gridInfo = gridInfo.replace(new RegExp('px', 'g'), '');
         if (DEBUG) console.info("Mercury grid info: [" + gridInfo + "]");
         if (isNotEmpty(gridInfo)) {
@@ -376,15 +376,15 @@ var Mercury = function (jQ) {
         // calculates the ratio of an image based on its pixel size
         // used by some plugins (e.g. RevSlider)
         // the argument "ratio" has to have the format of the "image.size" property in OpenCms
-        var result = {};
+        let result = {};
         result.valid = false;
         if (ratio != '') {
             ratio = ratio.toString();
-            var i = ratio.indexOf('-');
+            let i = ratio.indexOf('-');
             if (i > 0) {
                 ratio = ratio.replace(',', '.');
-                var wd = parseFloat(ratio.substring(0, i));
-                var hd = parseFloat(ratio.substring(i + 1));
+                let wd = parseFloat(ratio.substring(0, i));
+                let hd = parseFloat(ratio.substring(i + 1));
                 result.wd = wd;
                 result.hd = hd;
                 result.ratio = wd / hd;
@@ -398,13 +398,13 @@ var Mercury = function (jQ) {
     function post(path, params, method) {
         method = method || "post"; // Set method to post by default if not specified.
 
-        var form = document.createElement("form");
+        const form = document.createElement("form");
         form.setAttribute("method", method);
         form.setAttribute("action", path);
 
-        for (var key in params) {
+        for (let key in params) {
             if (params.hasOwnProperty(key)) {
-                var hiddenField = document.createElement("input");
+                const hiddenField = document.createElement("input");
                 hiddenField.setAttribute("type", "hidden");
                 hiddenField.setAttribute("name", key);
                 hiddenField.setAttribute("value", params[key]);
@@ -464,7 +464,7 @@ var Mercury = function (jQ) {
         initTooltips(parent);
 
         // run registered update callbacks
-        for (var i = 0; i < m_updateCallbacks.length; i++) {
+        for (let i = 0; i < m_updateCallbacks.length; i++) {
             try {
                 if (DEBUG) console.info("Mercury.update() running callback: " + m_updateCallbacks[i].name);
                 m_updateCallbacks[i](jQ, DEBUG, parent);
@@ -490,7 +490,7 @@ var Mercury = function (jQ) {
 
     function loadAudioScript(callback) {
         // load audio script if required
-        var audioScriptRequired = requiresModule(".type-media.audio, [data-audio]");
+        const audioScriptRequired = requiresModule(".type-media.audio, [data-audio]");
         if (audioScriptRequired && ((typeof window.AudioData === "undefined") || (typeof window.AudioData.initAudioElement !== "function"))) {
             window.AudioData = false;
             if (DEBUG) console.info("Mercury.loadAudioScript() - Loading audio script...");
@@ -519,7 +519,7 @@ var Mercury = function (jQ) {
 
     function initLazyImageLoading() {
         // initialize lazy loading of images using the lazySizes plugin
-        var lazySizesCfg = { init: true };
+        const lazySizesCfg = { init: true };
         if (device().desktop()) {
             lazySizesCfg.expFactor = 2.0; // load elements "not so near" for desktop
             lazySizesCfg.loadMode = 3; // load elements "not so near" for desktop
@@ -535,13 +535,8 @@ var Mercury = function (jQ) {
     function initTooltips(parent) {
         // initialize bootstrap tooltips
         parent = parent || '';
-        var selector = parent + ' [data-bs-toggle="tooltip"]';
-        /*
-        const tooltips = document.querySelectorAll(selector);
-        if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " +  tooltips.length);
-        const tooltipList = [...tooltips].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-        */
-        var $tooltips = jQ(selector);
+        const selector = parent + ' [data-bs-toggle="tooltip"]';
+        const $tooltips = jQ(selector);
         if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " + $tooltips.length);
         if ($tooltips.length > 0) {
             $tooltips.tooltip({
@@ -586,7 +581,7 @@ var Mercury = function (jQ) {
         $element.removeClass("reveal-registered");
         $element.off("click");
         $element.off("keydown");
-        var $p = $element.parent();
+        let $p = $element.parent();
         $p.removeClass("concealed enlarged");
         $p.addClass("revealed");
         if (template == "audio") {
@@ -595,9 +590,9 @@ var Mercury = function (jQ) {
                 window.AudioData.initAudioElement($element, autoplay);
             }
         } else {
-            var $piece = $element.parents(".effect-piece").first();
+            let $piece = $element.parents(".effect-piece").first();
             $piece.removeClass("effect-raise effect-shadow effect-rotate effect-box");
-            var $mediaBox = $element.parents(".media-box.removable");
+            let $mediaBox = $element.parents(".media-box.removable");
             if ($mediaBox.length > 0) {
                 $mediaBox.removeClass().css("padding-bottom", "").addClass("media-box-removed");
                 $mediaBox.find(".content").removeClass().addClass("content-removed")
@@ -612,7 +607,7 @@ var Mercury = function (jQ) {
     function registerRevealFunttion($element, template, isMedia, autoplay) {
         // adds a placeholder that has to be clicked in edit mode in order to reveal the template
         // mostly used for JavaScripts that contact external servers which may not be wanted in edit mode
-        var revealFunction = function () {
+        const revealFunction = function () {
             // first we create a finction that revelas the template when clicked
             revalOnClickTemplate($element, template, isMedia, autoplay);
         };
@@ -624,8 +619,8 @@ var Mercury = function (jQ) {
 
 
     function checkOnClickTemplateCookies(event) {
-        var data = event.data;
-        var cookieData = data.$element.data("modal-external-cookies");
+        const data = event.data;
+        const cookieData = data.$element.data("modal-external-cookies");
         if (!cookieData || PrivacyPolicy.cookiesAcceptedExternal()) {
             revalOnClickTemplate(data.$element, data.template, data.isMedia);
         } else {
@@ -638,15 +633,15 @@ var Mercury = function (jQ) {
 
 
     function initOnclickTemplates(selector, isMedia) {
-        var $onclickTemplates = jQ(selector);
+        let $onclickTemplates = jQ(selector);
         if (DEBUG) console.info("Mercury.initOnclickTemplates(): " + selector + " elements found: " + $onclickTemplates.length);
         $onclickTemplates.each(function () {
 
-            var $element = jQ(this);
-            var data = $element.data("preview");
+            let $element = jQ(this);
+            let data = $element.data("preview");
             if (data && data.template) {
-                var template = data.template;
-                var color = getThemeJSON("main-theme");
+                let template = data.template;
+                let color = getThemeJSON("main-theme");
                 data.isMedia = isMedia;
                 data.$element = $element;
                 if (typeof color !== "undefined") {
@@ -656,7 +651,7 @@ var Mercury = function (jQ) {
                     $element.addClass("narrow");
                 }
                 // for autoplay check if element is rendered in our template - like e.g. the audio player - or from an external server
-                var noAutoPlay = (template == "audio") && (!PrivacyPolicy.cookiesAcceptedExternal() || isEditMode());
+                let noAutoPlay = (template == "audio") && (!PrivacyPolicy.cookiesAcceptedExternal() || isEditMode());
                 if ($element.hasClass("ensure-external-cookies") && !noAutoPlay) {
                     // this element requires external coodies to be accepted before it is shown
                     // if cookies are not accepted the external cookie notice will be rendered from initExternalElements() in privacy-policy.js
@@ -696,17 +691,24 @@ var Mercury = function (jQ) {
         initOnclickTemplates(parent + ' .onclick-activation', false);
     }
 
-
     function initFunctions() {
         // calls all init() functions that have registered using mercury.ready(...)
         // this is required for external scripts that need to use the jQuery instance from Mercury
         // these scripts should not register their own "$(document).ready(...)" event
         // the reason being that Mercury loads jQuery as an asset, and therefore jQuery may not available before Mercury is ready anyway
-        var _functions = window.mercury.getInitFunctions();
+        const directInit = function(initFunction) {
+            if (DEBUG) console.info("Mercury init function added after main init()!");
+            initFunction(jQ, DEBUG);
+        }
+        // replace mercury.ready() and mercury.load() so that functions that are added AFTER Merury.initFunctions() has completed are called directly
+        // this solves problems with async loaded scripts that may register an init handler after Mercury has already finished initializing
+        window.mercury.ready = directInit;
+        window.mercury.load = directInit;
+        const _functions = window.mercury.getInitFunctions();
         if (DEBUG) console.info("Mercury init functions found: " + _functions.length);
-        for (var i = 0; i < _functions.length; i++) {
+        for (let i = 0; i < _functions.length; i++) {
             try {
-                var initFunction = _functions[i];
+                const initFunction = _functions[i];
                 if (VERBOSE) console.info("Mercury executing init function:\n" + initFunction.toString());
                 initFunction(jQ, DEBUG);
             } catch (err) {
@@ -725,13 +727,13 @@ var Mercury = function (jQ) {
 
     function initScripts() {
         // register additional JavaScripts to the template init process {#see initFunctions()}
-        var $initScripts = jQ('.mercury-initscript');
+        const $initScripts = jQ('.mercury-initscript');
         if (DEBUG) console.info("Mercury.initScripts() .mercury-initscript elements found: " + $initScripts.length);
         $initScripts.each(function () {
 
-            var $element = jQ(this);
+            const $element = jQ(this);
             if (typeof $element.data("script") !== "undefined") {
-                var script = $element.data("script");
+                const script = $element.data("script");
                 if (DEBUG) console.info("initscript found:" + script);
                 addInit(window[script]);
             }
@@ -745,9 +747,9 @@ var Mercury = function (jQ) {
     }
 
 
-    var m_cssTimer = 0;
+    let m_cssTimer = 0;
     function waitForCss() {
-        var element = document.getElementById("template-info");
+        const element = document.getElementById("template-info");
         if (window.getComputedStyle(element).visibility == "hidden") {
             initAfterCss();
         } else {
@@ -1038,6 +1040,6 @@ __webpack_public_path__ = function () {
 }();
 
 
-jQuery(document).ready(function () {
+jQuery(function() {
     Mercury.init();
 });

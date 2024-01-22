@@ -62,7 +62,7 @@
       <IncludeName><![CDATA[showGroupButtons.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[mapProvider.osm]]></IncludeName>
+      <IncludeName><![CDATA[mapMarkerCluster.default]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

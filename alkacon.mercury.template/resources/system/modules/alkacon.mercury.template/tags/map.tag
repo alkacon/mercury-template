@@ -42,6 +42,9 @@
     description="Path the map CSS file that must be loaded by JavaScript.
     This is required in case the map is displayed in a list." %>
 
+<%@ attribute name="markerCluster" type="java.lang.Boolean" required="false"
+    description="Whether to cluster nearby markers." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -166,6 +169,7 @@
         <c:set var="cssPath"><mercury:link-resource resource="/system/modules/alkacon.mercury.template/osmviewer/map.css" /></c:set>
         <cms:jsonvalue key="css" value="${cssPath}" />
     </c:if>
+    <cms:jsonvalue key="markerCluster" value="${empty markerCluster ? false : markerCluster}" />
 </cms:jsonobject>
 
 <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.map-${provider}" />

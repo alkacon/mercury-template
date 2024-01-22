@@ -65,6 +65,9 @@
       <IncludeName><![CDATA[showGroupButtons.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[mapMarkerCluster.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showMapRoute.false]]></IncludeName>
     </Setting>
   </NewFormatter>

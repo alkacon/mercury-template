@@ -104,8 +104,8 @@
 
 .map-osm {
 
-    .mapboxgl-map,
-    .mapboxgl-popup-content {
+    .maplibregl-map,
+    .maplibregl-popup-content {
         color: var(--#{$prefix}map-popup-color);
         background-color: var(--#{$prefix}map-popup-bg);
         font-family: var(--#{$prefix}body-font-family);
@@ -114,36 +114,36 @@
         line-height: 1.2;
     }
 
-    .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
-    .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
-    .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    .maplibregl-popup-anchor-top .maplibregl-popup-tip,
+    .maplibregl-popup-anchor-top-left .maplibregl-popup-tip,
+    .maplibregl-popup-anchor-top-right .maplibregl-popup-tip {
         border-bottom-color: var(--#{$prefix}map-popup-bg);
     }
 
-    .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
-    .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
-    .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    .maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+    .maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,
+    .maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip {
         border-top-color: var(--#{$prefix}map-popup-bg);
     }
 
-    .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    .maplibregl-popup-anchor-left .maplibregl-popup-tip {
         border-right-color: var(--#{$prefix}map-popup-bg);
     }
 
-    .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    .maplibregl-popup-anchor-right .maplibregl-popup-tip {
         border-left-color: var(--#{$prefix}map-popup-bg);
     }
 
-    .mapboxgl-marker {
+    .maplibregl-marker {
         cursor: pointer;
     }
 
-    .mapboxgl-popup-content {
+    .maplibregl-popup-content {
         border-radius: $map-border-radius;
         padding: 10px 20px 10px 10px;
     }
 
-    .mapboxgl-popup-close-button {
+    .maplibregl-popup-close-button {
         color: var(--#{$prefix}map-popup-color);
         font-size: 20px;
         &:hover {
@@ -153,7 +153,7 @@
         }
     }
 
-    .mapboxgl-ctrl-attrib {
+    .maplibregl-ctrl-attrib {
         a {
             color: $grey-dark !important;
         }

@@ -1824,6 +1824,14 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[mapMarkerCluster.default]]></IncludeName>
+      <PropertyName><![CDATA[mapMarkerCluster]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.map.markerCluster)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.map.markerCluster.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageSeriesDisplay.default]]></IncludeName>
       <PropertyName><![CDATA[imageSeriesDisplay]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.imageseries.display)]]></DisplayName>

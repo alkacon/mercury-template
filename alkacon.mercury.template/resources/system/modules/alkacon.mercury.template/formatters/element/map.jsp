@@ -29,6 +29,7 @@
 <c:set var="showGroupButtons"       value="${setting.showGroupButtons.toBoolean}" />
 <c:set var="showMapRoute"           value="${setting.showMapRoute.toBoolean}" />
 <c:set var="mapType"                value="${setting.mapType.toString}" />
+<c:set var="mapMarkerCluster"       value="${setting.mapMarkerCluster.toBoolean}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
@@ -123,6 +124,7 @@
              markers="${markerList}"
              type="${mapType}"
              showRoute="${showMapRoute}"
+             markerCluster="${mapMarkerCluster}"
         />
 
         <c:if test="${showGroupButtons and (fn:length(markerGroups) > 1)}">

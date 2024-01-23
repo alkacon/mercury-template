@@ -364,7 +364,10 @@ function showSingleMap(mapData, filterByGroup){
     m_maps[mapId] = map;
 }
 
-export function showGeoJson(mapId, geoJson) {
+/**
+ * Loads and displays a GeoJSON file.
+ */
+export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
 
     if (DEBUG) console.info("Google update markers for map with id: " + mapId);
     let map;
@@ -373,7 +376,6 @@ export function showGeoJson(mapId, geoJson) {
     } catch (e) {
         // map data may already be loaded but not the map
     }
-
     if (!map) { // no cookie consent yet
         return;
     }
@@ -406,12 +408,11 @@ export function showGeoJson(mapId, geoJson) {
     if (centerPoint) {
         checkBounds([map.getCenter().lng(), map.getCenter().lat()]); // bounding box includes the center point
     }
-    const infoWindows = new Map();
     for (let i = 0; i < features.length; i++) {
         const feature = features[i];
         const coordinates = feature.geometry.coordinates;
+        const infoCoordinates = feature.properties.coords;
         checkBounds(coordinates);
-        const info = feature.properties.info;
         const marker = new google.maps.Marker({
             position: new google.maps.LatLng(coordinates[1], coordinates[0]),
             map: map,
@@ -420,24 +421,20 @@ export function showGeoJson(mapId, geoJson) {
         });
         markers.push(marker);
         const infoWindow = new google.maps.InfoWindow({
-            content: info,
             marker: marker,
             zIndex: i
         });
-        const key = coordinates.join(",");
-        if (!infoWindows.has(key)) {
-            infoWindows.set(key, [infoWindow]);
-        } else {
-            let contents = infoWindow.getContent();
-            contents += infoWindows.get(key)[infoWindows.get(key).length - 1].getContent();
-            infoWindow.setContent(contents);
-            infoWindows.get(key).push(infoWindow);
-        }
         marker.addListener("click", function(event) {
             if (m_maps[mapId].infoWindow) {
                 m_maps[mapId].infoWindow.close();
             }
-            infoWindow.open(map, marker);
+            const ajaxUrl = ajaxUrlMarkersInfo + "&radius=0" + "&coordinates=" + infoCoordinates;
+            fetch(ajaxUrl)
+                .then(response => response.text())
+                .then(data => {
+                    infoWindow.setContent(data);
+                    infoWindow.open(map, marker);
+                });
             m_maps[mapId].infoWindow = infoWindow;
         });
     }

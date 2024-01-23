@@ -310,7 +310,6 @@ function showSingleMapClustered(mapData, filterByGroup) {
                             }
                         });
                         map.on("click", "unclustered-point-" + group, function (e) {
-                            console.log(e);
                             const coordinates = e.features[0].geometry.coordinates.slice();
                             const info = e.features[0].properties.info;
                             const key = getKey(coordinates);
@@ -452,7 +451,7 @@ export function showMarkers(mapId, group){
     }
 }
 
-export function showGeoJson(mapId, geoJson) {
+export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
 
     if (DEBUG) console.info("OSM update markers for map with id: " + mapId);
     const map = m_maps[mapId];
@@ -472,14 +471,13 @@ export function showGeoJson(mapId, geoJson) {
         clusterMaxZoom: 12,
         clusterRadius: 25
     });
-    const infos = new Map();
     let centerPoint;
     for (let md of m_mapData) {
         if (md.id === mapId && md.markers && md.markers.length > 0) {
             centerPoint = md;
         }
     }
-    let bounds = getBoundsAndInfos(geoJson.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null), true, infos);
+    let bounds = getBoundsAndInfos(geoJson.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null), false);
     let fitted = false;
     map.on("data", function(event) {
         if (!fitted && geoJson.features && geoJson.features.length > 0) {
@@ -526,7 +524,7 @@ export function showGeoJson(mapId, geoJson) {
         const clusterId = features[0].properties.cluster_id;
         const pointCount = features[0].properties.point_count;
         map.getSource("features").getClusterLeaves(clusterId, pointCount, 0, function(error, clusterFeatures) {
-            const bounds = getBoundsAndInfos(clusterFeatures, null, null, infos);
+            const bounds = getBoundsAndInfos(clusterFeatures, null, false);
             map.fitBounds(bounds, {
                 padding: {top: 100, bottom: 100, left: 100, right: 100},
                 maxZoom: 16
@@ -535,16 +533,18 @@ export function showGeoJson(mapId, geoJson) {
 
     });
     map.on("click", "unclustered-point", function (e) {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const info = e.features[0].properties.info;
-        const key = getKey(coordinates);
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' })
+        const coordinates = e.features[0].geometry.coordinates;
+        const infoCoordinates = e.features[0].properties.coords;
+        const ajaxUrl = ajaxUrlMarkersInfo + "&radius=0" + "&coordinates=" + infoCoordinates;
+        const popup = new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' })
             .setLngLat(coordinates)
-            .setHTML(infos.get(key) ? infos.get(key) : info)
+            .setHTML("<div></div>")
             .addTo(map);
+        fetch(ajaxUrl)
+            .then(response => response.text())
+            .then(data => {
+                popup.setHTML(data);
+            });
     });
     map.on("mouseenter", "clusters", function () {
         map.getCanvas().style.cursor = "pointer";

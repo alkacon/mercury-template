@@ -29,6 +29,8 @@
 
 
 <c:set var="linkText" value="${link.value.Text}" />
+<c:set var="autoLi" value="${addLi ne 'none'}" />
+<c:set var="addLi" value="${autoLi ? addLi : null}" />
 
 <c:set var="linkParts" value="${fn:split(linkText, '||')}" />
 <c:forEach var="linkPart" items="${linkParts}">
@@ -46,7 +48,9 @@
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'class:')}">
             <c:set var="cssWrapper">${fn:substringAfter(linkPart, 'class:')}</c:set>
-            <c:set var="addLi" value="${empty addLi ? 'li-'.concat(cssWrapper) : addLi.concat(' li-').concat(cssWrapper)}" />
+            <c:if test="${autoLi}">
+                <c:set var="addLi" value="${empty addLi ? 'li-'.concat(cssWrapper) : addLi.concat(' li-').concat(cssWrapper)}" />
+            </c:if>
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'title:')}">
             <c:set var="linkTitle">${fn:substringAfter(linkPart, 'title:')}</c:set>

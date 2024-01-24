@@ -20,6 +20,9 @@
 <%@ attribute name="baseUri" type="java.lang.String" required="false"
     description="The base URI to use the sitemap configuration from. If not set the current context URI is used." %>
 
+<%@ attribute name="cacheable" type="java.lang.Boolean" required="false"
+    description="Only used in case a formatter is provided! Flag to indicate if the included file should be cacheable in the Flex Cache. Default is 'true'." %>
+
 <%@ attribute name="settings" type="java.util.Map" required="false"
     description="Settings for the display formatter." %>
 
@@ -38,6 +41,7 @@
             <cms:simpledisplay
                 value="${file}"
                 formatter="${formatter}"
+                cacheable="${empty cacheable ? true : cacheable}"
                 delete="${deleteable}"
                 editable="${editable}">
                 <c:forEach var="setting" items="${settings}">

@@ -535,7 +535,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
     map.on("click", "unclustered-point", function (e) {
         const coordinates = e.features[0].geometry.coordinates;
         const infoCoordinates = e.features[0].properties.coords;
-        const ajaxUrl = ajaxUrlMarkersInfo + "&radius=0" + "&coordinates=" + infoCoordinates;
+        const ajaxUrl = ajaxUrlMarkersInfo + "&coordinates=" + infoCoordinates;
         const popup = new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' })
             .setLngLat(coordinates)
             .setHTML("<div></div>")

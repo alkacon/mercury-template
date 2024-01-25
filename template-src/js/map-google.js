@@ -428,7 +428,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
             if (m_maps[mapId].infoWindow) {
                 m_maps[mapId].infoWindow.close();
             }
-            const ajaxUrl = ajaxUrlMarkersInfo + "&radius=0" + "&coordinates=" + infoCoordinates;
+            const ajaxUrl = ajaxUrlMarkersInfo + "&coordinates=" + infoCoordinates;
             fetch(ajaxUrl)
                 .then(response => response.text())
                 .then(data => {

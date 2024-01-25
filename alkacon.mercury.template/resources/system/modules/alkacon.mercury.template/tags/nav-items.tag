@@ -17,6 +17,9 @@
 <%@ attribute name="type" type="java.lang.String" required="true"
     description="The type of navigation to create. Valid values are 'forSite', 'forFolder' and 'breadCrumb'."%>
 
+<%@ attribute name="maxDepth" type="java.lang.Integer" required="false"
+    description="Optional maximal navigation level to generate, overriding the value from the provided content."%>
+
 
 <%@ variable name-given="navStartLevel" declare="true"
     description="The start folder level for the navigation." %>
@@ -45,7 +48,9 @@
 
 <c:set var="navStartLevel" value="${not content.value.Root.value.NavStartLevel.isSet ? 0 : content.value.Root.value.NavStartLevel.toInteger}" />
 <c:set var="navDepth" value="${(!content.value.NavDepth.isSet or content.value.NavDepth.toInteger < 0) ? 4 : content.value.NavDepth.toInteger}" />
+<c:set var="navDepth" value="${not empty maxDepth and (maxDepth >= 0) ? maxDepth : navDepth}" />
 <c:set var="endLevel" value="${navStartLevel + navDepth - 1}" />
+
 
 <c:choose>
 <c:when test="${not content.value.Root.value.NavCollection.isSet}">

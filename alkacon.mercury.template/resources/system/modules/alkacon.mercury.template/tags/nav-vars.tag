@@ -8,6 +8,9 @@
 <%@ attribute name="params" type="java.util.Map" required="true"
     description="The parameters passed to the page."%>
 
+<%@ attribute name="navPathRes" type="org.opencms.jsp.CmsJspResourceWrapper" required="false"
+    description="The resource from the URI to display the the navigation for."%>
+
 
 <%@ variable name-given="currentPageUri" declare="true"
     description="The page uri of the navigation." %>
@@ -25,6 +28,9 @@
 <%-- Check for nav path parameter and use this if it exists --%>
 
 <c:choose>
+    <c:when test="${not empty navPathRes}">
+        <%-- Skip other cases --%>
+    </c:when>
     <c:when test="${not empty params.navpath}">
         <c:set var="navPathRes"             value="${cms.vfs.resource[params.navpath]}" />
         <c:set var="navPathRes"             value="${not empty navPathRes and (navPathRes.propertySearch['mercury.navpath'] eq 'param') ? navPathRes : null}" />

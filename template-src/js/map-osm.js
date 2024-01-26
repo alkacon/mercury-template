@@ -570,7 +570,7 @@ function showMap(event){
             m_mapData[i].showPlaceholder = false;
             var mapData = m_mapData[i];
             setStyle(jQ, m_apiKey, function() {
-                mapData.markerCluster ? showSingelMshowSingleMapClustered(mapData) : showSingleMap(mapData);
+                mapData.markerCluster ? showSingleMapClustered(mapData) : showSingleMap(mapData);
             });
         }
     }

@@ -284,15 +284,19 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
 
 function toggleHeadNavigation() {
     var toggle = jQ('.nav-toggle-btn');
-    toggle.toggleClass('active');
-    var active = toggle.hasClass('active');
+    toggle.toggleClass('active-nav');
+    var active = toggle.hasClass('active-nav');
     toggle.attr('aria-expanded', active);
     jQ(document.documentElement).toggleClass('active-nav');
+    let $focusOn;
     if (active) {
-        jQ('#nav-toggle-label-close > .nav-toggle-btn.active').focus();
+        $focusOn = jQ('#nav-toggle-label-close > .nav-toggle-btn.active-nav');
+        if ($focusOn.length < 1) $focusOn = jQ('html.keyboard-nav #nav-toggle-label-close.nav-toggle-btn.active-nav');
     } else {
-        jQ('#nav-toggle-label-open > .nav-toggle-btn').focus();
+        $focusOn = jQ('#nav-toggle-label-open > .nav-toggle-btn');
+        if ($focusOn.length < 1) $focusOn = jQ('html.keyboard-nav #nav-toggle-label-open.nav-toggle-btn');
     }
+    $focusOn.focus();
 }
 
 // Elements in head navigation
@@ -357,7 +361,7 @@ function initHeadNavigation() {
     // Responsive navbar toggle button
     jQ('.nav-toggle-btn').on('click', toggleHeadNavigation);
     jQ('.head-overlay').click(function() {
-        jQ('.nav-toggle-btn').removeClass('active');
+        jQ('.nav-toggle-btn').removeClass('active-nav');
         jQ(document.documentElement).removeClass('active-nav');
     });
 
@@ -765,7 +769,7 @@ function doScrollToAnchor($anchor, offset) {
         });
         if (Mercury.gridInfo().isMobileNav()) {
             // close the mobile navigation
-            jQ('.nav-toggle-btn').removeClass('active');
+            jQ('.nav-toggle-btn').removeClass('active-nav');
             jQ(document.documentElement).removeClass('active-nav');
         }
     }

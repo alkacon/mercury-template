@@ -37,6 +37,9 @@ var m_keyboardNavPermanent = false;
 
 var $topControl = null;
 
+let m_nmc = null;
+let m_isActive = false;
+
 function removeKeyboardClass(event) {
     setKeyboardClass(false);
 }
@@ -285,11 +288,11 @@ function toggleMenu($submenu, $menuToggle, targetmenuId, event) {
 function toggleHeadNavigation() {
     var toggle = jQ('.nav-toggle-btn');
     toggle.toggleClass('active-nav');
-    var active = toggle.hasClass('active-nav');
-    toggle.attr('aria-expanded', active);
+    m_isActive = toggle.hasClass('active-nav');
+    toggle.attr('aria-expanded', m_isActive);
     jQ(document.documentElement).toggleClass('active-nav');
     let $focusOn;
-    if (active) {
+    if (m_isActive) {
         $focusOn = jQ('#nav-toggle-label-close > .nav-toggle-btn.active-nav');
         if ($focusOn.length < 1) $focusOn = jQ('html.keyboard-nav #nav-toggle-label-close.nav-toggle-btn.active-nav');
     } else {
@@ -402,9 +405,19 @@ function initHeadNavigation() {
     });
 
     // If user presses tab, add marker class to document body to enable focus highlighting
+    const $nmc = jQ('.nav-main-container');
+    if ($nmc.length > 0) m_nmc = $nmc.get(0);
     jQ(document.documentElement).on('keydown', function(e) {
         if (e.which == 9) {
             setKeyboardClass(true);
+            if (m_isActive && m_isBurgerHeader && (m_nmc != null)) {
+                // Close the burger header if the focus is outside
+                setTimeout(() => {
+                    const hasFocus = m_nmc.contains(document.activeElement);
+                    if (VERBOSE) console.info("Navigation.keydown() focus in navigation: " + hasFocus);
+                    if (! hasFocus) toggleHeadNavigation();
+                }, 100);
+            }
         }
     });
 

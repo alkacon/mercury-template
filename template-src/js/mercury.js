@@ -799,7 +799,7 @@ const Mercury = function (jQ) {
         }
 
         try {
-            DynamicListElemements.init(jQ, DEBUG);
+            DynamicListElemements.init(jQ, DEBUG, VERBOSE);
             window.DynamicList = DynamicListElemements;
         } catch (err) {
             console.warn("List.init() error", err);

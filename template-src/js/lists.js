@@ -87,6 +87,8 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
 var jQ;
 /** @type {boolean} flag, indicating if in debug mode. */
 var DEBUG;
+/** @type {boolean} flag, indicating if in verbose debug mode. */
+var VERBOSE;
 
 /** @type {ListMap} all initialized lists by unique instance id  */
 var m_lists = {};
@@ -1268,16 +1270,16 @@ function replaceFilterCounts(filterGroup, ajaxCountJson) {
  */
 const scrollListener = () => {
     const scrollPos = window.scrollY;
-    if(DEBUG) console.log("Lists.scrollListener: scrolled to " + scrollPos);
+    if(VERBOSE) console.log("Lists.scrollListener: scrolled to " + scrollPos);
     if(Mercury.isEditMode()) {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('_sp', scrollPos);
         window.history.replaceState(window.history.state, null, currentUrl.toString());
     } else {
         const state = window.history.state ? window.history.state : {};
-        if(DEBUG) console.log('Lists.scrollListener: pulled state', state);
+        if(VERBOSE) console.log('Lists.scrollListener: pulled state', state);
         state.sp = scrollPos;
-        if(DEBUG) console.log('Lists.scrollListener: pushed state', state);
+        if(VERBOSE) console.log('Lists.scrollListener: pushed state', state);
         window.history.replaceState(state, null, window.history.url)
     }
 };
@@ -1479,10 +1481,11 @@ export function injectResults(id, resultHtml, paginationCallback, pageToShow) {
  * @param {jQuery} jQuery jQuery object.
  * @param {boolean} debug a flag, determining iff in debug mode.
  */
-export function init(jQuery, debug) {
+export function init(jQuery, debug, verbose) {
 
     jQ = jQuery;
     DEBUG = debug;
+    VERBOSE = verbose;
 
     const waitHandler = getInitWaitCallBackHandler(initScrollPositionTracking);
     waitHandler.wait();

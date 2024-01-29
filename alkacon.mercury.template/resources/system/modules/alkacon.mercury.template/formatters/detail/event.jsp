@@ -71,7 +71,7 @@
 
 <c:set var="hasVirtualLocation"     value="${value.VirtualLocation.value.URI.isSet}" />
 <c:set var="showLocation"           value="${showLocation and (not empty locData or locationNote.isSet or hasVirtualLocation)}" />
-<c:set var="showMap"                value="${setShowMap ne 'false' and not hasVirtualLocation}" />
+<c:set var="showMap"                value="${setShowMap ne 'false' and not hasVirtualLocation and value.AddressChoice.value.PoiLink.isSet}" />
 
 <c:set var="showType"               value="${showType and type.isSet}" />
 <c:set var="showPerformer"          value="${performerOption ne 'none'}" />

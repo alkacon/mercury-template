@@ -40,7 +40,7 @@
             <button class="acco-toggle ${open ? '':'collapsed'}" <%--
             --%>data-bs-toggle="collapse" type="button" <%--
             --%>aria-expanded="${open}" <%--
-            --%>aria-controls="${tabId}"<%--
+            --%>aria-controls="${tabId}" <%--
             --%>data-bs-target="#${tabId}"><%----%>
                 <mercury:out value="${tabLabel}" lenientEscaping="${true}" />
             </button><%----%>

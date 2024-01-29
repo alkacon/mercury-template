@@ -88,7 +88,7 @@
                 </c:choose>
                 <c:if test="${not empty targetLink}">
                     <%-- Output of alternate language link --%>
-                    <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}" /><mercury:nl /><%----%>
+                    <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}"><mercury:nl /><%----%>
                     <c:if test="${hasRequestLocale and (targetLocale eq param.__locale)}">
                         <c:set var="canonicalURL" value="${targetLink}" />
                     </c:if>
@@ -129,7 +129,7 @@
 
     <c:if test="${renderMetaTags}">
         <%-- Output the canonical URL --%>
-        <link rel="canonical" href="${canonicalURL}" /><%----%>
+        <link rel="canonical" href="${canonicalURL}"><%----%>
         <mercury:nl />
         <mercury:nl />
 

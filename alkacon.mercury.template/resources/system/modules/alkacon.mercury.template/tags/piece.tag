@@ -171,12 +171,14 @@
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dm'}" />
     </c:if>
     <c:if test="${sizeDesktop < 12}">
-        <%-- Note regardin p-md breakpoint: This must always be 'md' regardless of the 'template.piece.breakpoint' sitemap attribute. --%>
+        <%-- Note regardin p-md breakpoint: This always uses 'md' regardless of the 'template.piece.breakpoint' sitemap attribute. --%>
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-md-'}${sizeDesktop}" />
     </c:if>
     <c:if test="${defSizeDesktop}">
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dd'}" />
     </c:if>
+    <%-- "p-dm" means "piece uses default visual size on mobile". --%>
+    <%-- "p-dd" means "piece uses default visual size on desktop". --%>
 </c:if>
 
 <c:if test="${not empty heading}">

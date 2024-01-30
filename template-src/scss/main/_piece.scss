@@ -340,6 +340,13 @@ html.keyboard-nav .piece {
             @include clearfix-before;
         }
 
+        &.par {
+            // (p)iece (a)lign (r)ight
+            &.only-link > .link {
+                text-align: right;
+            }
+        }
+
         &.flex {
             --#{$prefix}gutter-factor: 0.5;
 

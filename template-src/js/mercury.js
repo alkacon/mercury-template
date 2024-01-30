@@ -710,7 +710,7 @@ const Mercury = function (jQ) {
             try {
                 const initFunction = _functions[i];
                 if (VERBOSE) console.info("Mercury executing init function:\n" + initFunction.toString());
-                initFunction(jQ, DEBUG);
+                initFunction(jQ, DEBUG, VERBOSE);
             } catch (err) {
                 console.warn("Mercury.initFunctions() error", err);
             }

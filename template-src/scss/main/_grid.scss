@@ -101,8 +101,12 @@
     .tile-margin-#{$space} {
 
         &.row {
-            --#{$prefix}gutter-x: #{2 * $space}px;
-            --#{$prefix}gutter-y: #{2 * $space}px;
+            $unit-factor: 2;
+            @if ($list-tile-spacer-unit == rem) {
+                $unit-factor: 0.2;
+            }
+            --#{$prefix}gutter-x: #{$space * $unit-factor}#{$list-tile-spacer-unit};
+            --#{$prefix}gutter-y: #{$space * $unit-factor}#{$list-tile-spacer-unit};
             @if (($space > 0) and ($space < 10)) {
                 // on mobile screens very small bottom spacing looks "wrong",
                 // therefore we adjust if the tile margin is smaller then 10
@@ -116,7 +120,7 @@
                 margin-bottom: 0;
             }
             ~ .list-editbox {
-                margin-top: #{2 * $space}px;
+                margin-top: #{$space * $unit-factor}#{$list-tile-spacer-unit};
             }
         }
     }

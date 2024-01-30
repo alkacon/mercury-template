@@ -100,7 +100,7 @@
 
         .teaser-btn {
             &:not(:last-child) {
-                margin-right: var(--#{$prefix}default-margin-small);
+                margin-right: var(--#{$prefix}ws-margin);
             }
             @if ($teaser-btn-def-padding != $btn-def-padding) {
                 padding: $teaser-btn-def-padding;
@@ -168,7 +168,7 @@
 
             .teaser-btn {
                 &:not(:last-child) {
-                    margin-right: var(--#{$prefix}default-margin-small);
+                    margin-right: var(--#{$prefix}ws-margin);
                 }
                 @if ($teaser-btn-def-padding != $btn-def-padding) {
                     padding: $teaser-btn-def-padding;
@@ -406,7 +406,7 @@
     min-width: 200px;
 
     .ico {
-        padding-right: var(--#{$prefix}default-margin-small);
+        padding-right: var(--#{$prefix}ws-margin);
     }
 }
 
@@ -448,7 +448,7 @@
     .dl-cat {
         .dl-cat-label {
             @include list-category-label(false, false);
-            margin-right: var(--#{$prefix}default-margin-small);
+            margin-right: var(--#{$prefix}ws-margin);
         }
     }
 
@@ -498,7 +498,7 @@
                     float: left;
                 }
                 > .dl-cat {
-                    padding-left: var(--#{$prefix}default-margin);
+                    padding-left: calc(2 * var(--#{$prefix}ws-margin));
                     float: right;
                 }
             }
@@ -528,14 +528,14 @@
                     min-width: 50%;
                 }
                 .ico {
-                    min-width: calc(4 * var(--#{$prefix}default-margin-small));
+                    min-width: calc(4 * var(--#{$prefix}ws-margin));
                 }
             }
             .dl-content .dl-btn {
                 min-width: 50%;
                 text-align: left;
                 .ico {
-                    min-width: calc(4 * var(--#{$prefix}default-margin-small));
+                    min-width: calc(4 * var(--#{$prefix}ws-margin));
                 }
             }
             .dl-stats {
@@ -580,10 +580,10 @@
             }
         }
         .dl-type {
-            padding: 0 var(--#{$prefix}default-margin-small);
+            padding: 0 var(--#{$prefix}ws-margin);
         }
         .dl-dl {
-            padding-right: var(--#{$prefix}default-margin-small);
+            padding-right: var(--#{$prefix}ws-margin);
         }
         .dl-content {
             flex-grow: 10;
@@ -701,14 +701,14 @@
                 // assume on small screens side columns are full width
                 // on large screens button in side columns must be smaller to fit into column
                 &.previous {
-                    margin-right: var(--#{$prefix}default-margin-verysmall);
+                    margin-right: calc(0.5 * var(--#{$prefix}ws-margin));
                 }
                 &.next {
-                    margin-left: var(--#{$prefix}default-margin-verysmall);
+                    margin-left: calc(0.5 * var(--#{$prefix}ws-margin));
                 }
                 &.first {
                     &.gap::after {
-                        margin: 0 var(--#{$prefix}default-margin-verysmall);
+                        margin: 0 calc(0.5 * var(--#{$prefix}ws-margin));
                     }
                 }
 
@@ -775,17 +775,41 @@
 // List archive filter menu
 
 .type-list-filter {
+    --#{$prefix}filter-body-bg: #{$list-filter-body-bg};
+    --#{$prefix}filter-body-fg: #{$list-filter-body-fg};
+
+    --#{$prefix}filter-btn-bg: #{$list-filter-background};
+    --#{$prefix}filter-btn-fg: #{$list-filter-color};
+
+    --#{$prefix}filter-btn-hover-bg: #{$list-filter-hover};
+    --#{$prefix}filter-btn-hover-fg: #{$list-filter-hover-fg};
+
+    --#{$prefix}filter-border-color: #{$list-border-color};
+
+    --#{$prefix}filter-highlight-bg: #{$list-filter-highlight-bg};
+    --#{$prefix}filter-highlight-fg: #{$list-filter-highlight-fg};
+    --#{$prefix}filter-highlight-border: #{$list-filter-highlight-border};
+
+    --#{$prefix}filter-highlight-hover-bg: #{$list-filter-highlight-hover-bg};
+    --#{$prefix}filter-highlight-hover-fg: #{$list-filter-highlight-hover-fg};
+    --#{$prefix}filter-highlight-hover-border: #{$list-filter-highlight-hover-border};
+
+    --#{$prefix}filter-disabled-bg: #{$list-filter-disabled-bg};
+    --#{$prefix}filter-disabled-fg: #{$list-filter-disabled-fg};
+    --#{$prefix}filter-disabled-border: #{$list-filter-disabled-border};
+
     @include button-reset-outline-border;
 
     button {
         padding-left: $nav-side-left-padding-step;
-        padding-right: var(--#{$prefix}default-margin);
+        padding-right: $nav-handle-right-padding;
     }
 
     .filterbox {
         border-radius: $list-border-radius;
         margin-bottom: var(--#{$prefix}element-margin);
-        background-color: var(--#{$prefix}body-bg);
+        color: var(--#{$prefix}filter-body-fg);
+        background-color: var(--#{$prefix}filter-body-bg);
 
         &:empty {
             margin-bottom: 0;
@@ -800,6 +824,11 @@
         }
 
         &.search {
+            // uses form which requires changing the default colors
+            --#{$prefix}body-bg: var(--#{$prefix}filter-body-bg);
+            --#{$prefix}body-color: var(--#{$prefix}filter-body-fg);
+            --#{$prefix}highlight-color: var(--#{$prefix}filter-disabled-fg);
+
             padding: 0;
 
             .styled-form {
@@ -815,7 +844,7 @@
 
             input,
             .icon-prepend {
-                border-color: $list-border-color;
+                border-color: var(--#{$prefix}filter-border-color);
             }
         }
 
@@ -824,13 +853,12 @@
             position: relative;
             text-align: left;
             border-radius: $list-border-radius;
+            color: var(--#{$prefix}filter-btn-fg);
+            background-color: var(--#{$prefix}filter-btn-bg);
 
-            @if ($list-filter-background != $btn-bg) {
-                background: $list-filter-background;
-                color: $list-filter-color;
-                &:hover {
-                    background: $list-filter-hover;
-                }
+            &:hover {
+                color: var(--#{$prefix}filter-btn-hover-fg);
+                background-color: var(--#{$prefix}filter-btn-hover-bg);
             }
 
             &::before {
@@ -920,9 +948,9 @@
                             pointer-events: none;
                             cursor: default;
 
-                            color: var(--#{$prefix}grey);
-                            background-color: var(--#{$prefix}body-bg);
-                            border: 1px solid var(--#{$prefix}grey-light);
+                            color: var(--#{$prefix}filter-disabled-fg);
+                            background-color: var(--#{$prefix}filter-disabled-bg);
+                            border: var(--#{$prefix}filter-disabled-border);
                         }
 
                         .li-count {
@@ -972,13 +1000,15 @@
             }
 
             button.year {
-                border: none;
-                color: $text-dark;
-                background-color: var(--#{$prefix}grey-lighter);
+                color: var(--#{$prefix}filter-highlight-fg);
+                background-color: var(--#{$prefix}filter-highlight-bg);
+                border: var(--#{$prefix}filter-highlight-border);
                 padding-left: calc(#{$nav-side-left-padding-step} - 1px);
 
                 &:hover {
-                    background-color: var(--#{$prefix}grey-light);
+                    color: var(--#{$prefix}filter-highlight-hover-fg);
+                    background-color: var(--#{$prefix}filter-highlight-hover-bg);
+                    border: var(--#{$prefix}filter-highlight-hover-border);
                 }
 
                 &::before {
@@ -1003,16 +1033,16 @@
 
                 li {
                     display: inline-block;
-                    padding: var(--#{$prefix}default-margin-small) 0;
+                    padding: var(--#{$prefix}ws-margin) 0;
                     width: 16.666666%;
                     font-size: 1.2rem;
                     text-align: center;
                     cursor: pointer;
                     font-family: var(--#{$prefix}btn-font-family);
+                    background-color: var(--#{$prefix}filter-body-bg);
 
                     a {
-                        color: var(--#{$prefix}text-dark);
-
+                        color:  var(--#{$prefix}filter-highlight-fg);
                         &:hover {
                             text-decoration: none;
                         }
@@ -1043,7 +1073,8 @@
                     }
 
                     &:hover {
-                        background-color: var(--#{$prefix}grey-lighter);
+                        color:  var(--#{$prefix}filter-highlight-hover-fg);
+                        background-color: var(--#{$prefix}filter-highlight-hover-bg);
                         transition: background-color 0.33s;
 
                         .li-count {
@@ -1052,6 +1083,10 @@
                     }
 
                     &.disabled {
+                        background-color: var(--#{$prefix}filter-disabled-bg);
+                        pointer-events: none;
+                        cursor: default;
+
                         a {
                             pointer-events: none;
                             cursor: default;
@@ -1062,7 +1097,7 @@
                         }
 
                         .li-entry {
-                            color: var(--#{$prefix}grey);
+                            color: var(--#{$prefix}filter-disabled-fg);
                         }
                     }
                 }
@@ -1073,7 +1108,7 @@
             display: flex;
             flex-direction: column;
             flex-basis: content;
-            --#{$prefix}filter-btn-size: #{$filter-btn-size};
+            --#{$prefix}filter-btn-size: #{$list-filter-btn-size};
             .resetbutton {
                 display: flex;
                 font-family: var(--#{$prefix}btn-font-family);
@@ -1090,15 +1125,15 @@
                 align-items: center;
                 color: var(--#{$prefix}body-color);
                 background-color: var(--#{$prefix}body-bg);
-                margin: 0 0 var(--#{$prefix}default-margin-small) 0;
+                margin: 0 0 var(--#{$prefix}ws-margin) 0;
                 padding: 0;
                 border: none;
 
                 &:before {
                     @include icon-font;
                     content: "\f00d";
-                    color: var(--#{$prefix}btn-fg);
-                    background-color: var(--#{$prefix}btn-bg);
+                    color: var(--#{$prefix}filter-btn-fg);
+                    background-color: var(--#{$prefix}filter-btn-bg);
                     height: var(--#{$prefix}filter-btn-size);
                     line-height: var(--#{$prefix}filter-btn-size);
                     width: var(--#{$prefix}filter-btn-size);
@@ -1114,8 +1149,8 @@
                 }
                 &:focus:before,
                 &:hover:before {
-                    color: var(--#{$prefix}link-hover-fg-color);
-                    background-color: var(--#{$prefix}link-hover-color);
+                    color: var(--#{$prefix}filter-btn-hover-fg);
+                    background-color: var(--#{$prefix}filter-btn-hover-bg);
                 }
                 &:last-of-type {
                     margin-bottom: 0;
@@ -1128,6 +1163,11 @@
 // List facet / sort options
 
 .type-list-sortoptions {
+
+    &.box {
+        overflow: visible;
+    }
+
     .dropdown-toggle {
         padding: $btn-padding #{$btn-padding * 6} $btn-padding #{$btn-padding * 2};
 
@@ -1168,7 +1208,7 @@
         }
 
         > li > a {
-            padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin);
+            padding: calc(0.5 * var(--#{$prefix}ws-margin)) var(--#{$prefix}ws-margin);
             color: $text-dark;
             text-decoration: none;
             clear: both;
@@ -1191,14 +1231,14 @@
         }
 
         .divider {
-            margin: var(--#{$prefix}default-margin-verysmall) 0;
+            margin: calc(0.5 * var(--#{$prefix}ws-margin)) 0;
         }
     }
 
     .list-option {
         position: relative;
         margin-bottom: var(--#{$prefix}element-margin);
-        margin-left: var(--#{$prefix}default-margin-small);
+        margin-left: var(--#{$prefix}ws-margin);
 
         &.btn.placeholder {
             // make button already occupy space without displaying anything

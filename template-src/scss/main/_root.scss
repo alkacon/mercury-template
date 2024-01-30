@@ -23,8 +23,8 @@
 .box-body-base {
     // colors
     --#{$prefix}body-bg: #{$body-bg};
-    --#{$prefix}body-color: #{$body-color};
     --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+    --#{$prefix}body-color: #{$body-color};
 
     --#{$prefix}link-color: #{$link-color};
     --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
@@ -92,6 +92,7 @@
 
     --#{$prefix}main-theme-base: #{$main-theme};
 
+    --#{$prefix}white: #{$white};
     --#{$prefix}grey-lighter: #{$grey-lighter};
     --#{$prefix}grey-light: #{$grey-light};
     --#{$prefix}grey: #{$grey};

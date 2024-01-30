@@ -15,6 +15,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:string';
 
 // Focus outline color
 @mixin focus-outline($outside: true) {
@@ -513,10 +517,10 @@
     &::before {
         @include icon-font();
         content: "\f02b"; // mercury:icon - fa-tag
-        padding-right: var(--#{$prefix}default-margin-verysmall);
+        padding-right: var(--#{$prefix}ws-margin);
     }
     @if ($add-box) {
-        padding: var(--#{$prefix}default-margin-verysmall);
+        padding: calc(0.5 * var(--#{$prefix}ws-margin)) var(--#{$prefix}ws-margin);
         border-radius: $list-category-radius;
         background-color: var(--#{$prefix}grey-lighter);
         @if ($add-hover) {
@@ -556,12 +560,12 @@
     align-items: center;
     top: 0;
     height: 100%;
-    transform: rotate(if($reverse, 0, $toggle-open-rotation));
+    transform: rotate(if($reverse, $toggle-closed-rotation, $toggle-open-rotation));
     transition: transform $toggle-transition-time;
 }
 
 @mixin toggle-arrow-closed-after($reverse: false) {
-    transform: rotate(if($reverse, $toggle-open-rotation, 0));
+    transform: rotate(if($reverse, $toggle-open-rotation, $toggle-closed-rotation));
 }
 
 @mixin ensure-not-css-property($value) {
@@ -785,6 +789,14 @@
 
     @if ($include-defaults) {
         @include set-box-color-defaults($bg-map, $set-all-defaults);
+    }
+
+    @if ($bg-map != null) {
+        @each $map-key, $map-value in $bg-map {
+            @if (string.index($map-key, "cust-") == 1) {
+                --#{$prefix}#{$map-key}:            #{$map-value};
+            }
+        }
     }
 }
 

@@ -666,10 +666,23 @@ $list-tile-header-lines:            2 !default;
 $list-side-adjust:                  true !default; // make side lists less "prominent" - if 'false' lists in aside will be displayed like regular lists
 $list-side-headings-color:          var(--#{$prefix}body-color) !default; // color of headings in side lists
 $list-side-intro-color:             $list-side-headings-color !default; // color of intro line in side lists
-$list-filter-background:            $btn-bg !default;
-$list-filter-hover:                 $btn-hover-bg !default;
-$list-filter-color:                 get-text-color($list-filter-background) !default;
 $list-teaser-format-inlist-only:    false !default;
+$list-filter-background:            var(--#{$prefix}btn-bg) !default;
+$list-filter-color:                 var(--#{$prefix}btn-fg) !default;
+$list-filter-hover:                 var(--#{$prefix}btn-hover-bg) !default;
+$list-filter-hover-fg:              var(--#{$prefix}btn-hover-fg) !default;
+$list-filter-btn-size:              calc(0.8rem + var(--#{$prefix}body-font-size)) !default;
+$list-filter-body-bg:               var(--#{$prefix}white) !default;
+$list-filter-body-fg:               var(--#{$prefix}text-dark) !default;
+$list-filter-disabled-bg:           var(--#{$prefix}filter-body-bg) !default;
+$list-filter-disabled-fg:           var(--#{$prefix}grey) !default;
+$list-filter-disabled-border:       1px solid var(--#{$prefix}grey-lighter) !default;
+$list-filter-highlight-border:      none !default;
+$list-filter-highlight-bg:          var(--#{$prefix}grey-lighter) !default;
+$list-filter-highlight-fg:          var(--#{$prefix}text-dark)  !default;
+$list-filter-highlight-hover-bg:    var(--#{$prefix}grey-light) !default;
+$list-filter-highlight-hover-fg:    var(--#{$prefix}text-dark)  !default;
+$list-filter-highlight-hover-border: none !default;
 
 $pagination-spacing:                $default-margin !default;
 $pagination-item-jump-spacing:      calc(0.5 * $pagination-spacing) !default;
@@ -727,6 +740,7 @@ $toggle-transition-time:            $default-transition-time !default;
 $toggle-arrow-icon:                 "\f078" !default;
 $toggle-alternate-icon:             "\f107" !default;
 $toggle-open-rotation:              -180deg !default;
+$toggle-closed-rotation:            0 !default;
 
 
 // Tabs and accordions
@@ -991,10 +1005,6 @@ $ls-li-padding:                     calc(2.5 * var(--#{$prefix}paragraph-margin-
 $ls-row-spacing:                    calc(2 * var(--#{$prefix}paragraph-margin-bottom)) !default;
 
 
-// Lists and filters
-
-$filter-btn-size: calc(0.8rem + var(--#{$prefix}body-font-size)) !default;
-
 // Animations
 //
 // Variables for more variation in animation curves.
@@ -1047,6 +1057,7 @@ $margins-paddings:                  (0, 5, 10, 20, 30, 40) !default;
 
 // Spaces used for tile margins
 $list-tile-spacers:                 (0, 2, 5, 10, 15) !default;
+$list-tile-spacer-unit:             px !default;
 
 // Start of theme JSON with main colors
 $themeJSON: '"main-theme":"#{$main-theme}"';

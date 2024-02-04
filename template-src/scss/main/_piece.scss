@@ -431,7 +431,6 @@ html.keyboard-nav .piece {
             // generate size variations for the visual column
             &.p-md-#{""+$piece-col-size} {
                 --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size, 'visual')};
-                // --#{$prefix}piece-body-size: #{get-col-size-var($grid-columns - $piece-col-size, 'body', 1px)};
             }
         }
         --#{$prefix}piece-body-size: calc(var(--#{$prefix}piece-width) - var(--#{$prefix}piece-visual-size) - 1px);

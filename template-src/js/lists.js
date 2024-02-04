@@ -347,7 +347,7 @@ function updateDirectLink(filter, searchStateParameters) {
  */
 function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad = false, waitHandler = undefined) {
 
-    if(waitHandler) waitHandler.wait();
+    if (waitHandler) waitHandler.wait();
     searchStateParameters = searchStateParameters || "";
     reloadEntries = reloadEntries || false;
 
@@ -409,7 +409,7 @@ function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad
                 if (!isNaN(pageFromParam) && pageFromParam > 1) {
                     page = pageFromParam;
                 }
-                if(list.loadAll) {
+                if (list.loadAll) {
                     const params = new URLSearchParams(searchStateParameters);
                     params.delete('page');
                     searchStateParameters = params.toString();
@@ -422,13 +422,13 @@ function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad
                 const params = new URLSearchParams(searchStateParameters);
                 loadMultiplePages(list, ajaxOptions, params, 1, page, waitHandler);
             } else {
-                if(waitHandler) waitHandler.wait();
-                jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function(ajaxListHtml) {
+                if (waitHandler) waitHandler.wait();
+                jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function (ajaxListHtml) {
                     generateListHtml(list, reloadEntries, ajaxListHtml, page, true, waitHandler);
                 }, "html");
             }
         }
-        if(waitHandler) waitHandler.ready();
+        if (waitHandler) waitHandler.ready();
     }
 }
 
@@ -468,7 +468,7 @@ function loadMultiplePages(list, ajaxOptions, searchStateParameters, currentPage
  */
 function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
 
-    if (DEBUG) console.info("Lists.buildAjaxLink() called - searchStateParameters='" + searchStateParameters + "' ajaxOptions='" + ajaxOptions + "'");
+    if (DEBUG) console.info("Lists.buildAjaxLink() called searchStateParameters='" + searchStateParameters + "' ajaxOptions='" + ajaxOptions + "'");
 
     var params = "contentpath=" + list.path
         + "&instanceId="
@@ -626,7 +626,7 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
         list.notclicked = false;
         if (m_autoLoadLists.length == 1) {
             // enable scroll listener because we now have one autoloading gallery
-            jQ(window).bind('scroll', handleAutoLoaders);
+            window.addEventListener("scroll", handleAutoLoaders, { passive: true });
         }
         handleAutoLoaders();
     } else if (reloadEntries && list.autoload) {
@@ -1154,7 +1154,7 @@ function updateResetButtons(id, resetButtons) {
  */
 function buildAjaxCountLink(list, searchStateParameters) {
 
-    if (DEBUG) console.info("Lists.buildAjaxCountLink() called - searchStateParameters='" + searchStateParameters + "'");
+    if (DEBUG) console.info("Lists.buildAjaxCountLink() called searchStateParameters='" + searchStateParameters + "'");
 
     var params = "contentpath=" + list.path
         + "&sitepath="
@@ -1270,19 +1270,21 @@ function replaceFilterCounts(filterGroup, ajaxCountJson) {
  */
 const scrollListener = () => {
     const scrollPos = window.scrollY;
-    if(VERBOSE) console.log("Lists.scrollListener: scrolled to " + scrollPos);
-    if(Mercury.isEditMode()) {
+    if (VERBOSE) console.log("Lists.scrollListener: scrolled to " + scrollPos);
+    if (Mercury.isEditMode()) {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('_sp', scrollPos);
         window.history.replaceState(window.history.state, null, currentUrl.toString());
     } else {
         const state = window.history.state ? window.history.state : {};
-        if(VERBOSE) console.log('Lists.scrollListener: pulled state', state);
+        if (VERBOSE) console.log('Lists.scrollListener: pulled state', state);
         state.sp = scrollPos;
-        if(VERBOSE) console.log('Lists.scrollListener: pushed state', state);
+        if (VERBOSE) console.log('Lists.scrollListener: pushed state', state);
         window.history.replaceState(state, null, window.history.url)
     }
-};
+}
+
+let debScrollListener;
 
 /**
  * Initializes scroll position tracking.
@@ -1294,9 +1296,9 @@ function initScrollPositionTracking() {
     /**
      * @type {Object}
      */
-    if(DEBUG) console.info('Lists.initScrollPositionTracking() called');
+    if (DEBUG) console.info('Lists.initScrollPositionTracking() called');
     let spInt = undefined;
-    if(Mercury.isEditMode()) {
+    if (Mercury.isEditMode()) {
         const url = new URL(window.location.href);
         if (url.searchParams.has('_sp')) {
             const sp = url.searchParams.get('_sp');
@@ -1304,7 +1306,7 @@ function initScrollPositionTracking() {
         }
     } else {
         const state = window.history.state;
-        if(DEBUG) console.log('Lists.initScrollPositionTracking: pulled state', state);
+        if (DEBUG) console.log('Lists.initScrollPositionTracking: pulled state', state);
         if (state && state.sp) {
             const sp = state.sp;
             spInt = parseInt(sp);
@@ -1313,7 +1315,12 @@ function initScrollPositionTracking() {
     if (spInt && !isNaN(spInt) && spInt > 0) {
         window.scrollTo(0, spInt);
     }
-    window.addEventListener("scroll", scrollListener);
+
+    debScrollListener = Mercury.debounce(function() {
+        scrollListener();
+    }, 100);
+
+    window.addEventListener("scroll", debScrollListener, { passive: true });
 }
 
 /**
@@ -1327,13 +1334,13 @@ function getInitWaitCallBackHandler(callback) {
     return {
         wait: () => {
             counter++;
-            if(DEBUG) console.info('Lists init wait callback handler: increase counter to:' + counter);
+            if (VERBOSE) console.info('Lists.getInitWaitCallBackHandler() increase counter to:' + counter);
         },
         ready: () => {
             counter--;
-            if(DEBUG) console.info('Lists init wait callback handler: decrease counter to:' + counter);
-            if(counter <= 0) {
-                if(DEBUG) console.info('Lists init wait callback handler: calling init wait callback.');
+            if (VERBOSE) console.info('Lists.getInitWaitCallBackHandler() decrease counter to:' + counter);
+            if (counter <= 0) {
+                if (DEBUG) console.info('Lists.getInitWaitCallBackHandler() ready, triggering callback');
                 callback();
             }
         }
@@ -1350,8 +1357,8 @@ function getInitWaitCallBackHandler(callback) {
  * @param {[MutationRecord]} m the list of dom mutations.
  */
 function onDomChange(m) {
-    if(m.find((mr) => mr.target.classList && mr.target.classList.contains('oct-reload'))) {
-        window.removeEventListener("scroll", scrollListener);
+    if (m.find((mr) => mr.target.classList && mr.target.classList.contains('oct-reload'))) {
+        window.removeEventListener("scroll", debScrollListener, { passive: true });
     }
 }
 
@@ -1487,36 +1494,40 @@ export function init(jQuery, debug, verbose) {
     DEBUG = debug;
     VERBOSE = verbose;
 
-    const waitHandler = getInitWaitCallBackHandler(initScrollPositionTracking);
-    waitHandler.wait();
-
-    if(Mercury.isEditMode()) {
-        if(DEBUG) console.info("Lists.init() - observing DOM, since we are in edit mode.");
-        const observeDOM = (function(){
-            const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-
-            return function( obj, callback ){
-            if( !obj || obj.nodeType !== 1 ) return;
-
-            if( MutationObserver ){
-                // define a new observer
-                const mutationObserver = new MutationObserver(callback)
-
-                // have the observer observe for changes in children
-                mutationObserver.observe( obj, { childList:true, subtree:true })
-                return mutationObserver
-            }
-
-            // browser support fallback
-            else if( window.addEventListener ){
-                obj.addEventListener('DOMNodeInserted', callback, false)
-                obj.addEventListener('DOMNodeRemoved', callback, false)
-            }
-            }
-        })();
-        observeDOM(document.body, onDomChange);
-    }
     if (DEBUG) console.info("Lists.init()");
+
+    let waitHandler = undefined;
+    if (document.querySelector('.list-content') != null) {
+        waitHandler = getInitWaitCallBackHandler(initScrollPositionTracking);
+        waitHandler.wait();
+
+        if (Mercury.isEditMode()) {
+            if (DEBUG) console.info("Lists.init() observing DOM in edit mode.");
+            const observeDOM = (function () {
+                const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+                return function (obj, callback) {
+                    if (!obj || obj.nodeType !== 1) return;
+
+                    if (MutationObserver) {
+                        // define a new observer
+                        const mutationObserver = new MutationObserver(callback)
+
+                        // have the observer observe for changes in children
+                        mutationObserver.observe(obj, { childList: true, subtree: true })
+                        return mutationObserver
+                    }
+
+                    // browser support fallback
+                    else if (window.addEventListener) {
+                        obj.addEventListener('DOMNodeInserted', callback, false)
+                        obj.addEventListener('DOMNodeRemoved', callback, false)
+                    }
+                }
+            })();
+            observeDOM(document.body, onDomChange);
+        }
+    }
 
     var $listElements = jQ('.list-dynamic');
     if (DEBUG) console.info("Lists.init() .list-dynamic elements found: " + $listElements.length);
@@ -1611,7 +1622,7 @@ export function init(jQuery, debug, verbose) {
 
         if (m_autoLoadLists.length > 0) {
             // only enable scroll listener if we have at least one autoloading gallery
-            jQ(window).on('scroll', handleAutoLoaders);
+            window.addEventListener("scroll", handleAutoLoaders, { passive: true });
         }
     }
 
@@ -1705,9 +1716,7 @@ export function init(jQuery, debug, verbose) {
 
         });
     }
-
-    waitHandler.ready();
-
+    if (waitHandler) waitHandler.ready();
 }
 
 export function setFlagScrollToAnchor(flagScrollToAnchor) {

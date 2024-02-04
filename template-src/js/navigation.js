@@ -460,7 +460,8 @@ function initHeadNavigation() {
                 m_fixedHeader.getHeight = function () {
                     return this.height > 0 ? this.height : this.$element.height();
                 }
-                jQ(window).on('scroll', debUpdateFixedScroll).on('resize', debUpdateFixedResize);
+                window.addEventListener("scroll", debUpdateFixedScroll, { passive: true });
+                window.addEventListener("resize", debUpdateFixedResize, { passive: true });
                 updateFixed(true);
             } else {
                 if (DEBUG) console.info("Fixed header element found, but disabled by CSS!");
@@ -774,10 +775,10 @@ function doScrollToAnchor($anchor, offset) {
         }
         var page = $("html, body");
         // see: https://stackoverflow.com/questions/18445590/jquery-animate-stop-scrolling-when-user-scrolls-manually
-        page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+        page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function () {
             page.stop();
         });
-        page.animate({ scrollTop: Math.ceil(targetTop - Mercury.toolbarHeight()) }, 750, function(){
+        page.animate({ scrollTop: Math.ceil(targetTop - Mercury.toolbarHeight()) }, 750, function () {
             page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
         });
         if (Mercury.gridInfo().isMobileNav()) {

@@ -129,7 +129,6 @@
 <c:set var="inlineLink"     value="${empty inlineLink ? not fullWidth : inlineLink}" />
 
 <c:set var="inlineHeading"  value="${bodyHeading or (pieceLayout == 1) or (pieceLayout >= 6)}" />
-<c:set var="visualLast"     value="${pieceLayout == 10 or (pieceLayout == 11)}" />
 <c:set var="linkLast"       value="${pieceLayout == 11}" />
 
 <c:set var="defSizeDesktop" value="${(empty sizeDesktop) or (sizeDesktop == 99)}" />
@@ -205,7 +204,6 @@
     </cms:addparams>
 </c:if>
 <c:set var="showVisual"     value="${not empty pieceVisual}" />
-<c:set var="visualLast"     value="${visualLast and showVisual}" />
 
 <c:if test="${not showVisual}">
     <%-- If there is no visual and we get 'full' piece, make sure the div structure for does not use inline heading or link. --%>
@@ -221,6 +219,7 @@
     <%-- In this case there are no columns, so we revert to layout option 0 i.e. full with output. --%>
     <c:set var="pieceOption"    value="full" />
     <c:set var="gridOption"     value="" />
+    <c:set var="pieceLayout"    value="${0}" />
 </c:if>
 
 <c:choose>
@@ -233,36 +232,67 @@
 </c:choose>
 
 <c:choose>
+    <c:when test="${not showVisual}">
+        <%-- noop --%>
+    </c:when>
+    <c:when test="${pieceLayout eq 0}">
+        <%-- Heading, Image, Text, Link (full width) --%>
+        <c:set var="visualFirst"    value="${not showHeading or inlineHeading}" />
+        <c:set var="visualLast"     value="${not showBody and not allowEmptyBodyColumn and not (showLink and not inlineLink and linkLast)}" />
+    </c:when>
+    <c:when test="${pieceLayout eq 1}">
+        <%-- Image, Heading, Text, Link (full width)  --%>
+        <c:set var="visualFirst"    value="${true}" />
+        <c:set var="visualLast"     value="${false}" />
+    </c:when>
+    <c:when test="${pieceLayout eq 10}">
+        <%-- Heading, Text, Link, Image (full width)  --%>
+        <c:set var="visualFirst"    value="${false}" />
+        <c:set var="visualLast"     value="${true}" />
+    </c:when>
+    <c:when test="${pieceLayout eq 11}">
+        <%-- Heading, Text, Image, Link (full width) --%>
+        <c:set var="visualFirst"    value="${not showBody and not allowEmptyBodyColumn and not (showHeading or inlineHeading)}" />
+        <c:set var="visualLast"     value="${not (showLink and not inlineLink and linkLast)}" />
+    </c:when>
+</c:choose>
+
+<c:choose>
     <c:when test="${showHeading and not showVisual and not showBody and not showLink}">
-        <c:set var="pieceFeatureMarker" value=" only-heading" />
+        <c:set var="pieceFeatureMarker" value=" lay-0 only-heading" />
         <c:set var="onlyHeading" value="${true}" />
     </c:when>
     <c:when test="${showVisual and not showHeading and not showBody and not showLink}">
-        <c:set var="pieceFeatureMarker" value=" only-visual" />
+        <c:set var="pieceFeatureMarker" value=" lay-0 only-visual" />
         <c:set var="onlyVisual" value="${true}" />
     </c:when>
     <c:when test="${showBody and not showHeading and not showVisual and not showLink}">
-        <c:set var="pieceFeatureMarker" value=" only-text" />
+        <c:set var="pieceFeatureMarker" value=" lay-0 only-text" />
         <c:set var="onlyText" value="${true}" />
     </c:when>
     <c:when test="${showLink and not showHeading and not showVisual and not showBody}">
-        <c:set var="pieceFeatureMarker" value=" only-link" />
+        <c:set var="pieceFeatureMarker" value=" lay-0 only-link" />
         <c:set var="onlyLink" value="${true}" />
     </c:when>
-    <c:when test="${showBody and not showHeading and (not showVisual or visualLast)}">
-        <c:set var="pieceFeatureMarker" value=" lay-${pieceLayout}${' phb pnh'}${visualLast ? ' phv pvl': ' pnv'}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
-    </c:when>
     <c:otherwise>
-        <c:set var="pieceFeatureMarker" value=" lay-${pieceLayout}${showHeading ? ' phh': ' pnh'}${showBody ? ' phb': ''}${showVisual ? ' phv': ' pnv'}${visualLast ? ' pvl': ''}${showLink ? ' phl': ''}${visualLast or showLink ? ' pnm' : ''}" />
+        <%-- "phh" means "piece has heading". --%>
+        <%-- "pnh" means "piece (has) no heading". --%>
+        <%-- "phb" means "piece has body". --%>
+        <%-- "phv" means "piece has visual". --%>
+        <%-- "pnv" means "piece (has) no visual". --%>
+        <%-- "phl" means "piece has link". --%>
+        <%-- "pvf" means "piece visual first". --%>
+        <%-- "pvl" means "piece visual last". --%>
+        <%-- "pnm" means "(next) piece needs margin". --%>
+        <c:set var="pieceFeatureMarker" value=" lay-${pieceLayout}${
+            showHeading and not inlineHeading ? ' phh': ' pnh'}${
+            showBody ? ' phb': ''}${
+            showVisual ? ' phv': ' pnv'}${
+            showLink and not inlineLink ? ' phl': ''}${
+            visualFirst ? ' pvf': ''}${
+            visualLast ? ' pvl': ''}${
+            visualLast or (showLink and not inlineLink) ? ' pnm' : ''}" />
     </c:otherwise>
-    <%-- "phv" means "piece has visual". --%>
-    <%-- "pnv" means "piece (has) no visual". --%>
-    <%-- "phh" means "piece has heading". --%>
-    <%-- "pnh" means "piece (has) no heading". --%>
-    <%-- "phl" means "piece has link". --%>
-    <%-- "phb" means "piece has body". --%>
-    <%-- "pvl" means "piece visual last". --%>
-    <%-- "pnm" means "(next) piece needs margin". --%>
 </c:choose>
 
 <c:if test="${showLink}">

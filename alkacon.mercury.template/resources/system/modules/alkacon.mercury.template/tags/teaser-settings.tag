@@ -41,6 +41,7 @@
 
 <%@ variable name-given="paragraph"         declare="true" %>
 <%@ variable name-given="linkToDetail"      declare="true" %>
+<%@ variable name-given="linkNewWin"        declare="true" %>
 
 <c:set var="setting"                        value="${cms.element.setting}" />
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
@@ -53,7 +54,8 @@
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>
 <c:set var="setTextLength"                  value="${setting.textLength.toInteger}" />
-<c:set var="setHsize"                       value="${setting.hsize.toInteger}"/>
+<c:set var="setHsize"                       value="${setting.hsize.toInteger}" />
+<c:set var="setDetailLinkWin"               value="${setting.detailLinkWin.isSetNotNone ? setting.detailLinkWin.toString : 'self'}" />
 <c:set var="setButtonText"                  value="${setting.buttonText.toString}" />
 <c:set var="setShowCalendar"                value="${setting.showCalendar.toBoolean}" />
 <c:set var="setShowCopyright"               value="${setting.showImageCopyright.toBoolean}" />
@@ -99,6 +101,28 @@
 <c:if test="${empty linkToDetail}">
     <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
 </c:if>
+
+<c:set var="linkNewWin" value="${false}" />
+<c:set var="currentUrl" value="${cms.requestContext.requestMatcher.url}" />
+<c:choose>
+    <c:when test="${setDetailLinkWin eq 'blankSite'}">
+        <c:if test="${not empty linkToDetail and fn:startsWith(linkToDetail, 'http') and not fn:startsWith(linkToDetail, currentUrl)}">
+            <c:set var="linkNewWin" value="${true}" />
+        </c:if>
+    </c:when>
+    <c:when test="${setDetailLinkWin eq 'blankSubsite'}">
+        <c:if test="${not empty linkToDetail and fn:startsWith(linkToDetail, 'http') and not fn:startsWith(linkToDetail, currentUrl)}">
+            <c:set var="linkNewWin" value="${true}" />
+        </c:if>
+        <c:if test="${not linkNewWin and not empty linkToDetail}">
+            <c:set var="subsiteDetail" value="${cms.vfs.readSubsiteFor(linkToDetail)}" />
+            <c:set var="subsiteCurrent" value="${cms.vfs.readSubsiteFor(cms.requestContext.uri)}" />
+            <c:if test="${subsiteDetail ne subsiteCurrent}">
+                <c:set var="linkNewWin" value="${true}" />
+            </c:if>
+        </c:if>
+    </c:when>
+</c:choose>
 
 <c:if test="${setting.dateFormatAddTime.toBoolean and fn:startsWith(setDateFormat, 'fmt-') and not fn:endsWith(setDateFormat, '-TIME')}">
     <c:set var="setDateFormat" value="${setDateFormat}-TIME" />

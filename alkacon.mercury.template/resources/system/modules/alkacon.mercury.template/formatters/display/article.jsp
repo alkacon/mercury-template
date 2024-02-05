@@ -36,6 +36,7 @@
     teaserType="${displayType}"
     link="${linkToDetail}"
     linkOption="${setLinkOption}"
+    linkNewWin="${linkNewWin}"
     hsize="${setHsize}"
     dateFormat="${setDateFormat}"
     textLength="${value['TeaserData/TeaserPreface'].isSet ? -1 : setTextLength}"

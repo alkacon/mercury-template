@@ -2919,6 +2919,12 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[detailLinkWin.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[detailLinkWin]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[self]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[labels.contact]]></IncludeName>
       <PropertyName><![CDATA[labels]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.labels)]]></DisplayName>

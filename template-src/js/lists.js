@@ -1357,7 +1357,7 @@ function getInitWaitCallBackHandler(callback) {
  * @param {[MutationRecord]} m the list of dom mutations.
  */
 function onDomChange(m) {
-    if (m.find((mr) => mr.target.classList && mr.target.classList.contains('oct-reload'))) {
+    if (m.find((mr) => mr.target.classList && mr.target.classList.contains('org-opencms-ade-contenteditor-client-css-I_CmsLayoutBundle-I_CmsXmlEditorCss-basePanel'))) {
         window.removeEventListener("scroll", debScrollListener, { passive: true });
     }
 }

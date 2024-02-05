@@ -36,23 +36,23 @@
 <c:set var="setCssVisibility"                       value="${(setting.cssVisibility.isSetNotNone and (setting.cssVisibility.toString ne 'always')) ? ' '.concat(setting.cssVisibility.toString) : null}" />
 
 <c:if test="${fn:contains(setCssWrapper, '@')}">
-    <c:set var="cssWrappers" value="${fn:split(setCssWrapper, '@')}" />
-    <c:forEach var="cssWrapper" items="${cssWrappers}" varStatus="status">
+    <c:set var="wrappers" value="${fn:split(setCssWrapper, '@')}" />
+    <c:forEach var="wrapper" items="${wrappers}" varStatus="status">
         <c:choose>
-            <c:when test="${fn:startsWith(cssWrapper, 'kp=')}">
-                <c:set var="cssWrapper"             value="${fn:trim(fn:substringAfter(cssWrapper, 'kp='))}" />
-                <c:set var="setCssWrapperKeyPiece"  value="${setCssWrapperKeyPiece}${' '}${cssWrapper}" />
+            <c:when test="${fn:startsWith(wrapper, 'kp=')}">
+                <c:set var="wrapper"                value="${fn:trim(fn:substringAfter(wrapper, 'kp='))}" />
+                <c:set var="setCssWrapperKeyPiece"  value="${setCssWrapperKeyPiece}${' '}${wrapper}" />
             </c:when>
-            <c:when test="${fn:startsWith(cssWrapper, 'pa=')}">
-                <c:set var="cssWrapper"             value="${fn:trim(fn:substringAfter(cssWrapper, 'pa='))}" />
-                <c:set var="setCssWrapperParagraphs" value="${setCssWrapperParagraphs}${' '}${cssWrapper}" />
+            <c:when test="${fn:startsWith(wrapper, 'pa=')}">
+                <c:set var="wrapper"                 value="${fn:trim(fn:substringAfter(wrapper, 'pa='))}" />
+                <c:set var="setCssWrapperParagraphs" value="${setCssWrapperParagraphs}${' '}${wrapper}" />
             </c:when>
-            <c:when test="${fn:startsWith(cssWrapper, 'ex=')}">
-                <c:set var="cssWrapper"             value="${fn:trim(fn:substringAfter(cssWrapper, 'ex='))}" />
-                <c:set var="setCssWrapperExtra"     value="${setCssWrapperExtra}${' '}${cssWrapper}" />
+            <c:when test="${fn:startsWith(wrapper, 'ex=')}">
+                <c:set var="wrapper"                value="${fn:trim(fn:substringAfter(wrapper, 'ex='))}" />
+                <c:set var="setCssWrapperExtra"     value="${setCssWrapperExtra}${' '}${wrapper}" />
             </c:when>
             <c:otherwise>
-                <c:set var="setCssWrapper"          value="${' '}${fn:trim(cssWrapper)}" />
+                <c:set var="setCssWrapper"          value="${' '}${fn:trim(wrapper)}" />
             </c:otherwise>
         </c:choose>
     </c:forEach>

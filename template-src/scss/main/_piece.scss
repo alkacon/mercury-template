@@ -320,7 +320,7 @@ html.keyboard-nav .piece {
     }
     > .piece.full,
     > .type-contact.box,
-    > .pivot.box {
+    > .pivot:not(.piece).box {
         &:only-child {
             display: flex;
             flex-direction: column;

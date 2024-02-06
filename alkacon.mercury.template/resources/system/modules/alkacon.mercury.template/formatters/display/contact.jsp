@@ -27,6 +27,7 @@
 <c:set var="showAddress"            value="${setting.showAddress.toString eq 'true'}" />
 <c:set var="showAddressAlways"      value="${setting.showAddress.toString eq 'always'}" />
 <c:set var="showTitle"              value="${setting.showTitle.toBoolean}" />
+<c:set var="showNotice"             value="${setting.showNotice.toString}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
 <c:set var="showPhone"              value="${setting.showPhone.toBoolean}" />
 <c:set var="showWebsite"            value="${setting.showWebsite.toBoolean}" />
@@ -83,6 +84,7 @@
             name="${valName}"
             position="${valPosition}"
             organization="${valOrganization}"
+            notice="${value.Notice}"
             description="${value.Description}"
             data="${value.Contact}"
             address="${valAddress}"
@@ -95,6 +97,7 @@
             showAddress="${showAddress}"
             showAddressAlways="${showAddressAlways}"
             showOrganization="${setShowOrganization}"
+            showNotice="${showNotice}"
             showDescription="${showDescription}"
             showPhone="${showPhone}"
             showWebsite="${showWebsite}"

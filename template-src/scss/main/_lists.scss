@@ -560,7 +560,12 @@
         }
         a.dl-link:hover {
             .dl-title {
-                color: $main-theme-hover;
+                color: var(--#{$prefix}link-hover-color);
+            }
+        }
+        &.box {
+            a.dl-link:hover {
+                transition: none;
             }
         }
 

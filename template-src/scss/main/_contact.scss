@@ -56,6 +56,16 @@
         margin-top: var(--#{$prefix}contact-spacer-y);
     }
 
+    .body .text-box > * {
+        // first / last element in text-box must not add margins
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
     &.compact {
         .fn.n,
         .org,

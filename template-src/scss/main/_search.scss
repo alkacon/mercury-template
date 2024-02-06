@@ -107,6 +107,13 @@
 
         .search-query,
         .search-sort,
+        .search-results,
+        .search-facets {
+            --#{$prefix}piece-width: 100%;
+        }
+
+        .search-query,
+        .search-sort,
         .search-results {
             &.has-facets {
                 width: get-col-float-size(8);

@@ -405,6 +405,15 @@ scaleGapStep: ${scaleGapStep}
         </c:choose>
         <c:set var="srcurl"><cms:link>${ib.vfsUri}</cms:link></c:set>
         <c:set var="attrImage">role="img"<c:if test="${not empty attrImage}">${' '}${attrImage}</c:if></c:set>
+        <c:if test="${DEBUG}">
+<!--
+image-srcset SVG handling:
+
+ib.vfsUri: ${ib.vfsUri}
+inlineSvg: ${inlineSvg}
+inlineSvgProp: [${inlineSvgProp}]
+-->
+        </c:if>
     </c:when>
     <c:when test="${not empty srcset}">
         <c:set var="srcurl" value="${not empty maxImage ? maxImage.srcUrl : ib.getSrcSetMaxImage().srcUrl}" />

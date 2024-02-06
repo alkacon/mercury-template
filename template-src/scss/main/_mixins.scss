@@ -510,8 +510,7 @@
     display: inline-block;
     line-height: 1;
     font-size: $font-size-sm;
-    color: var(--#{$prefix}text-dark);
-
+    color: var(--#{$prefix}body-color);
     font-family: var(--#{$prefix}btn-font-family);
 
     &::before {
@@ -522,6 +521,7 @@
     @if ($add-box) {
         padding: calc(0.5 * var(--#{$prefix}ws-margin)) var(--#{$prefix}ws-margin);
         border-radius: $list-category-radius;
+        color: var(--#{$prefix}text-dark);
         background-color: var(--#{$prefix}grey-lighter);
         @if ($add-hover) {
             &:hover {

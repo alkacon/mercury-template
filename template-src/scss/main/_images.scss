@@ -122,6 +122,14 @@ aside img {
     &.fill-theme-color > svg {
         fill: var(--#{$prefix}main-theme);
     }
+
+    &.fill-highlight-color > svg {
+        fill: var(--#{$prefix}highlight-color);
+    }
+
+    &.fill-headings-color > svg {
+        fill: var(--#{$prefix}headings-color);
+    }
 }
 
 .ico-img,

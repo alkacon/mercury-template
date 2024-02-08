@@ -150,9 +150,7 @@
 
         font-weight: $form-font-weight-input;
         font-size: $form-font-size-input;
-        @if ($form-label-color != inherit) {
-            color: $form-label-color;
-        }
+        color: $form-label-color; // must always set the color because on the iphone the selects will otherwise have system color
         display: block;
         box-sizing: border-box;
         width: 100%;

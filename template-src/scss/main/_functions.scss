@@ -153,17 +153,21 @@
     @return $number;
 }
 
+@function ensure-px($number, $rem-base: $font-rem-base-mobile-size) {
+    @if unit($number) == rem {
+        @return strip-unit($number) * $rem-base;
+    }
+
+    @return $number;
+}
+
 // responsive font sizing
 // adapted from https://css-tricks.com/snippets/css/fluid-typography/
 @function fluid-size($size-large, $size-small, $max-vw, $min-vw: 375px, $rem-base: $font-rem-base-mobile-size) {
     // $min-vw default 375px is iPhone SE size
 
-    @if unit($size-small) == rem {
-        $size-small: strip-unit($size-small) * $rem-base;
-    }
-    @if unit($size-large) == rem {
-        $size-large: strip-unit($size-large) * $rem-base;
-    }
+    $size-small: ensure-px($size-small, $rem-base);
+    $size-large: ensure-px($size-large, $rem-base);
 
     @return calc(
         #{$size-small}
@@ -194,14 +198,10 @@
 // responsive font sizing based on the container size
 // IMPORTANT: The parent container must have containt: inline-size set!
 // Also make sure to fall back to a static size in case the calculation goes bad
-@function fluid-size-container($size-large, $size-small, $max-px, $min-px: 0, $rem-base-size: $font-rem-base-mobile-size, $container-width: 100cqw) {
+@function fluid-size-container($size-large, $size-small, $max-px, $min-px: 0, $rem-base: $font-rem-base-mobile-size, $container-width: 100cqw) {
 
-    @if unit($size-small) == rem {
-        $size-small: strip-unit($size-small) * $rem-base-size;
-    }
-    @if unit($size-large) == rem {
-        $size-large: strip-unit($size-large) * $rem-base-size;
-    }
+    $size-small: ensure-px($size-small, $rem-base);
+    $size-large: ensure-px($size-large, $rem-base);
     @if $min-px == 0 {
         $min-px: $max-px - 0.1px;
     }

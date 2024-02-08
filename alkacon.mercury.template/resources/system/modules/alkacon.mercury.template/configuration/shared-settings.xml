@@ -2922,7 +2922,7 @@
       <IncludeName><![CDATA[detailLinkWin.listTeaser]]></IncludeName>
       <PropertyName><![CDATA[detailLinkWin]]></PropertyName>
       <Widget><![CDATA[hidden]]></Widget>
-      <Default><![CDATA[self]]></Default>
+      <Default><![CDATA[none]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[labels.contact]]></IncludeName>

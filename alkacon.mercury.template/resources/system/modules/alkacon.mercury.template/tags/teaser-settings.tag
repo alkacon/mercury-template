@@ -26,6 +26,7 @@
 <%@ variable name-given="setRatio"          declare="true" %>
 <%@ variable name-given="setTextLength"     declare="true" variable-class="java.lang.Integer" %>
 <%@ variable name-given="setHsize"          declare="true" variable-class="java.lang.Integer" %>
+<%@ variable name-given="setLinkNewWin"     declare="true" %>
 <%@ variable name-given="setButtonText"     declare="true" %>
 <%@ variable name-given="setShowIntro"      declare="true" variable-class="java.lang.Boolean" %>
 <%@ variable name-given="setShowCalendar"   declare="true" variable-class="java.lang.Boolean" %>
@@ -41,7 +42,6 @@
 
 <%@ variable name-given="paragraph"         declare="true" %>
 <%@ variable name-given="linkToDetail"      declare="true" %>
-<%@ variable name-given="linkNewWin"        declare="true" %>
 
 <c:set var="setting"                        value="${cms.element.setting}" />
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
@@ -55,7 +55,7 @@
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>
 <c:set var="setTextLength"                  value="${setting.textLength.toInteger}" />
 <c:set var="setHsize"                       value="${setting.hsize.toInteger}" />
-<c:set var="setDetailLinkWin"               value="${setting.detailLinkWin.isSetNotNone ? setting.detailLinkWin.toString : 'self'}" />
+<c:set var="setDetailLinkWin"               value="${setting.detailLinkWin.isSetNotNone ? setting.detailLinkWin.toString : null}" />
 <c:set var="setButtonText"                  value="${setting.buttonText.toString}" />
 <c:set var="setShowCalendar"                value="${setting.showCalendar.toBoolean}" />
 <c:set var="setShowCopyright"               value="${setting.showImageCopyright.toBoolean}" />
@@ -102,26 +102,19 @@
     <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
 </c:if>
 
-<c:set var="linkNewWin" value="${false}" />
-<c:set var="currentUrl" value="${cms.requestContext.requestMatcher.url}" />
 <c:choose>
-    <c:when test="${setDetailLinkWin eq 'blankSite'}">
-        <c:if test="${not empty linkToDetail and fn:startsWith(linkToDetail, 'http') and not fn:startsWith(linkToDetail, currentUrl)}">
-            <c:set var="linkNewWin" value="${true}" />
-        </c:if>
-    </c:when>
-    <c:when test="${setDetailLinkWin eq 'blankSubsite'}">
-        <c:if test="${not empty linkToDetail and fn:startsWith(linkToDetail, 'http') and not fn:startsWith(linkToDetail, currentUrl)}">
-            <c:set var="linkNewWin" value="${true}" />
-        </c:if>
-        <c:if test="${not linkNewWin and not empty linkToDetail}">
-            <c:set var="subsiteDetail" value="${cms.vfs.readSubsiteFor(linkToDetail)}" />
-            <c:set var="subsiteCurrent" value="${cms.vfs.readSubsiteFor(cms.requestContext.uri)}" />
-            <c:if test="${subsiteDetail ne subsiteCurrent}">
-                <c:set var="linkNewWin" value="${true}" />
-            </c:if>
-        </c:if>
-    </c:when>
+<c:when test="${setDetailLinkWin eq null}">
+    <c:set var="setLinkNewWin" value="${false}" />
+</c:when>
+<c:when test="${setDetailLinkWin eq 'blankSite' and cms.isLinkToDifferentSite(linkToDetail)}">
+    <c:set var="setLinkNewWin" value="${true}" />
+</c:when>
+<c:when test="${setDetailLinkWin eq 'blankSubsite' and cms.isLinkToDifferentSubSite(linkToDetail)}">
+    <c:set var="setLinkNewWin" value="${true}" />
+</c:when>
+<c:otherwise>
+    <c:set var="setLinkNewWin" value="${false}" />
+</c:otherwise>
 </c:choose>
 
 <c:if test="${setting.dateFormatAddTime.toBoolean and fn:startsWith(setDateFormat, 'fmt-') and not fn:endsWith(setDateFormat, '-TIME')}">

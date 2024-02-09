@@ -21,20 +21,33 @@
 
 .styled-form {
 
-    @if ($form-font-family != $font-family-base) {
-        --#{$prefix}form-font-family: #{inspect($form-font-family)};
-    } @else {
-        --#{$prefix}form-font-family: var(--#{$prefix}body-font-family);
-    }
-    @if ($form-radio-checked-color != $main-theme) {
-        --#{$prefix}form-radio-checked-color: #{$form-radio-checked-color};
-    } @else {
-        --#{$prefix}form-radio-checked-color: var(--#{$prefix}main-theme);
-    }
+    --#{$prefix}form-text-color: #{$form-text-color};
+    --#{$prefix}form-background-color: #{$form-background};
+    --#{$prefix}form-input-color: #{$form-input-color};
+    --#{$prefix}form-input-background-color: #{$form-input-background};
+    --#{$prefix}form-placeholder-color: #{$form-placeholder-color};
+    --#{$prefix}form-border-color: #{$form-border-color};
+    --#{$prefix}form-icon-color: #{$form-icon-color};
+    --#{$prefix}form-label-color: #{$form-label-color};
+    --#{$prefix}form-captcha-background-color: #{$form-captcha-background};
+
+    --#{$prefix}form-radio-checked-color: #{$form-radio-checked-color};
+    --#{$prefix}form-radio-checked-border-color: #{$form-radio-checked-border-color};
+    --#{$prefix}form-radio-unchecked-color: #{$form-radio-unchecked-color};
+    --#{$prefix}form-radio-unchecked-border-color: #{$form-radio-unchecked-border-color};
+
+    --#{$prefix}form-error-background-color: #{$form-error-background};
+    --#{$prefix}form-error-text-color: #{$form-error-text-color};
+
     @if ($form-input-border-radius != $btn-border-radius) {
         --#{$prefix}form-input-border-radius: #{$form-input-border-radius};
     } @else {
         --#{$prefix}form-input-border-radius: var(--#{$prefix}btn-border-radius);
+    }
+    @if ($form-font-family != $font-family-base) {
+        --#{$prefix}form-font-family: #{inspect($form-font-family)};
+    } @else {
+        --#{$prefix}form-font-family: var(--#{$prefix}body-font-family);
     }
 
     --#{$prefix}form-spacing: #{$form-spacing};
@@ -50,13 +63,9 @@
     font-family: var(--#{$prefix}form-font-family);
     border: $form-border;
     border-radius: var(--#{$prefix}border-radius);
+    color: var(--#{$prefix}form-text-color);
+    background: var(--#{$prefix}form-background-color);
     @include use-hyphens-text;
-    @if ($form-text-color != inherit) {
-        color: $form-text-color;
-    }
-    @if ($form-background != transparent) {
-        background: $form-background;
-    }
 
     &.element,
     &.subelement {
@@ -139,7 +148,7 @@
 
     input.datepicker:not([value*="."]):not([value*="/"]):not([value*="-"]) + input.datepicker.flatpickr-mobile {
         &::before {
-            color: $form-placeholder-color;
+            color: var(--#{$prefix}form-placeholder-color);
             content:attr(placeholder);
         }
     }
@@ -150,7 +159,7 @@
 
         font-weight: $form-font-weight-input;
         font-size: $form-font-size-input;
-        color: $form-label-color; // must always set the color because on the iphone the selects will otherwise have system color
+        color: var(--#{$prefix}form-label-color);
         display: block;
         box-sizing: border-box;
         width: 100%;
@@ -159,13 +168,14 @@
         border-width: 1px;
         border-style: solid;
         border-radius: var(--#{$prefix}form-input-border-radius);
-        background-color: $form-input-background;
+        color: var(--#{$prefix}form-input-color);
+        background-color: var(--#{$prefix}form-input-background-color);
         appearance: none;
 
         &::placeholder {
             font-weight: $form-font-weight-input;
             font-size: $form-font-size-input;
-            color: $form-placeholder-color;
+            color: var(--#{$prefix}form-placeholder-color);
         }
     }
 
@@ -188,7 +198,7 @@
             padding-top: 0;
             padding-bottom: 0;
             line-height: 1;
-            border: 1px solid $form-border-color;
+            border: 1px solid var(--#{$prefix}form-border-color);
             border-left-style: none;
             white-space: nowrap;
         }
@@ -226,6 +236,7 @@
             width: 28px;
             height: 100%;
             pointer-events: none;
+            color: var(--#{$prefix}form-input-color);
 
             &::before,
             &::after {
@@ -238,11 +249,11 @@
             // generates the select arrows after the select text
             &::before {
                 top: 12px;
-                border-bottom: 5px solid $form-icon-color;;
+                border-bottom: 5px solid var(--#{$prefix}form-icon-color);
             }
             &::after {
                 bottom: 12px;
-                border-top: 5px solid $form-icon-color;
+                border-top: 5px solid var(--#{$prefix}form-icon-color);
             }
         }
         select {
@@ -279,9 +290,7 @@
     .checkbox {
         font-weight: $form-font-weight-option;
         padding-left: 35px;
-        @if ($form-label-color != inherit) {
-            color: $form-label-color;
-        }
+        color: var(--#{$prefix}form-label-color);
         cursor: pointer;
 
         &:last-child {
@@ -303,7 +312,7 @@
             outline: none;
             border-width: 1px;
             border-style: solid;
-            background-color: $form-input-background;
+            background-color: var(--#{$prefix}form-input-background-color);
         }
 
         input + i::after {
@@ -349,9 +358,8 @@
     .toggle {
         font-weight: $form-font-weight-option;
         padding-right: 70px;
-        @if ($form-label-color != inherit) {
-            color: $form-label-color;
-        }
+        color: var(--#{$prefix}form-label-color);
+
         cursor: pointer;
 
         &:last-child {
@@ -384,7 +392,7 @@
             border-width: 1px;
             border-style: solid;
             border-radius: 12px;
-            background-color: $form-input-background;
+            background-color: var(--#{$prefix}form-input-background-color);
 
             &::before {
                 content: "";
@@ -398,7 +406,7 @@
                 border-radius: 50%;
                 opacity: 1;
                 transition: right 0.2s;
-                background-color: $form-radio-unchecked-color;
+                background-color: var(--#{$prefix}form-radio-unchecked-color);
             }
 
             &::after {
@@ -412,7 +420,7 @@
                 line-height: 12px;
                 font-weight: $form-font-weight;
                 text-align: left;
-                color: $form-radio-unchecked-color;
+                color: var(--#{$prefix}form-radio-unchecked-color);
             }
         }
     }
@@ -488,12 +496,12 @@
     .checkbox i,
     .icon-append,
     .icon-prepend {
-        border-color: $form-border-color;
+        border-color: var(--#{$prefix}form-border-color);
         // transition: border-color $transition-timing $transition-function;
     }
     .icon-append,
     .icon-prepend {
-        color: $form-icon-color;
+        color: var(--#{$prefix}form-icon-color);
     }
 
     // checked state
@@ -507,12 +515,12 @@
     .checkbox,
     .toggle {
         i {
-            border-color: $form-radio-unchecked-border-color;
+            border-color: var(--#{$prefix}form-radio-unchecked-border-color);
             // transition: border-color $transition-timing $transition-function;
         }
 
         input:checked + i {
-            border-color: $form-radio-checked-border-color;
+            border-color: var(--#{$prefix}form-radio-checked-border-color);
         }
     }
 
@@ -529,10 +537,10 @@
         .checkbox.state-error i,
         .toggle.state-error i,
         .toggle.state-error input:checked + i {
-            background-color: $form-error-background;
+            background-color: var(--#{$prefix}form-error-background-color);
         }
         .note-error {
-            color: $form-error-text-color;
+            color: var(--#{$prefix}form-error-text-color);
             &::before {
                 @include icon-font();
                 content: "\f071"; // mercury:icon - fa-exclamation-triangle
@@ -568,19 +576,19 @@
         }
         &.radio {
             input:checked + i::after {
-                background-color: $form-radio-unchecked-color;
+                background-color: var(--#{$prefix}form-radio-unchecked-color);
             }
         }
         &.checkbox {
             input:checked + i::after {
-                color: $form-radio-unchecked-color;
+                color: var(--#{$prefix}form-radio-unchecked-color);
             }
         }
     }
     // captcha
     .input {
         .captcha {
-            background-color: $form-captcha-background;
+            background-color: var(--#{$prefix}form-captcha-background-color);
             margin-bottom: calc(0.5 * var(--#{$prefix}form-spacing));
             border: $form-captcha-border;
             border-radius: var(--#{$prefix}form-input-border-radius);

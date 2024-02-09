@@ -890,23 +890,25 @@ $form-font-size:                    $font-size-base !default;
 $form-line-height:                  $line-height-base !default;
 $form-font-size-input:              $form-font-size !default;
 $form-font-size-input-xs-ph:        $font-size-sm !default;
-$form-text-color:                   inherit !default;
-$form-label-color:                  $form-text-color !default;
-$form-border-color:                 $grey !default;
-$form-icon-color:                   $grey-dark !default;
-$form-placeholder-color:            $form-border-color !default;
-$form-radio-unchecked-color:        $grey-dark !default;
-$form-radio-unchecked-border-color: $form-radio-unchecked-color !default;
-$form-radio-checked-color:          $main-theme !default; // will inherit main-theme css var if not different
-$form-radio-checked-border-color:   $form-radio-unchecked-color !default;
+$form-input-border-radius:          $btn-border-radius !default;  // will inherit btn-border-radius css var if not different
+
+$form-text-color:                   var(--#{$prefix}body-color) !default;
+$form-label-color:                  var(--#{$prefix}form-text-color) !default;
+$form-border-color:                 var(--#{$prefix}grey) !default;
+$form-input-color:                  var(--#{$prefix}text-dark) !default;
+$form-input-background:             var(--#{$prefix}white) !default;
+$form-icon-color:                   var(--#{$prefix}form-input-color) !default;
+$form-placeholder-color:            var(--#{$prefix}form-border-color) !default;
+$form-radio-unchecked-color:        var(--#{$prefix}grey) !default;
+$form-radio-unchecked-border-color: var(--#{$prefix}form-border-color) !default;
+$form-radio-checked-color:          var(--#{$prefix}main-theme) !default; // will inherit main-theme css var if not different
+$form-radio-checked-border-color:   var(--#{$prefix}form-border-color) !default;
 $form-error-background:             #ffeeee !default;
 $form-error-text-color:             #bb2222 !default;
-$form-border:                       1px solid $form-border-color !default;
-$form-background:                   transparent !default;
-$form-input-background:             $body-bg !default;
-$form-captcha-background:           $white !default;
-$form-captcha-border:               1px dashed $grey-light !default;
-$form-input-border-radius:          $btn-border-radius !default;  // will inherit btn-border-radius css var if not different
+$form-border:                       1px solid var(--#{$prefix}form-border-color) !default;
+$form-background:                   var(--#{$prefix}body-bg) !default;
+$form-captcha-background:           var(--#{$prefix}white) !default; // the generated image does have a white background by default
+$form-captcha-border:               1px dashed var(--#{$prefix}form-border-color) !default;
 
 
 // Search

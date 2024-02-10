@@ -27,13 +27,13 @@
       </link>
     </IncludeSettings>
     <Setting>
+      <IncludeName><![CDATA[spaceColor.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[spaceDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[spaceMobile.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[spaceColor.default]]></IncludeName>
     </Setting>
   </FunctionConfig>
 </FunctionConfigs>

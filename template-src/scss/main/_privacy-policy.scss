@@ -85,7 +85,7 @@
             flex-grow: 1;
 
             label {
-                margin-right: var(--#{$prefix}default-margin);
+                margin-right: calc(2 * var(--#{$prefix}ws-margin));
                 margin-bottom: 0;
                 padding-left: 30px;
                 cursor: pointer;
@@ -146,7 +146,7 @@
             }
 
             &:last-of-type {
-                margin-left: var(--#{$prefix}default-margin);
+                margin-left: calc(2 * var(--#{$prefix}ws-margin));
             }
         }
 
@@ -200,7 +200,7 @@
             display: inline;
             margin: 0;
             + li {
-                margin-left: var(--#{$prefix}default-margin);
+                margin-left: calc(2 * var(--#{$prefix}ws-margin));
             }
         }
         a {
@@ -387,7 +387,7 @@
         align-items: center;
         font-size: 18px;
         line-height: 1;
-        margin-left: var(--#{$prefix}default-margin);
+        margin-left: calc(2 * var(--#{$prefix}ws-margin));
     }
 
     .toggle-box {
@@ -673,7 +673,7 @@ html.keyboard-nav {
             border-top: none;
 
             .btn + .btn {
-                margin-left: var(--#{$prefix}default-margin);
+                margin-left: calc(2 * var(--#{$prefix}ws-margin));
             }
         }
     }

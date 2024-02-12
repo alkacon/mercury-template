@@ -19,9 +19,13 @@
  * Source file: _imageseries.scss
  */
 
-$pswp-title-size:                   1.8rem !default;
-$pswp-copyright-size:               1.1rem !default;
-$pswp-title-height:                 $headings-line-height !default;
+$zoomer-title-font-family:          var(--#{$prefix}font-family-headings) !default;
+$zoomer-title-font-weight:          var(--#{$prefix}font-weight-headings) !default;
+$zoomer-title-font-size:            1.8rem !default;
+$zoomer-title-line-height:          $headings-line-height !default;
+$zoomer-copyright-font-size:        1.1rem !default;
+$zoomer-copyright-line-height:      1.2 !default;
+
 $pswp__root-z-index:                $above-oc-toolbar !default;
 
 // import the photswipe distribution CSS
@@ -31,6 +35,13 @@ $imageseries-square-margin:         2px !default;
 $imageseries-slide-border-size:     0px !default;
 $imageseries-slide-border-color:    var(--#{$prefix}grey) !default;
 $imageseries-slide-bgcolor:         var(--#{$prefix}grey-light) !default;
+
+$zoom-bg:                           rgba($black, 0.5) !default;
+$zoom-fg:                           $text-light !default;
+$zoomer-bg:                         rgba($white, 0.6) !default;
+$zoomer-fg:                         $black !default;
+$zoomer-overlay-size:               35px !default;
+$zoomer-icon:                       "\f002" !default; // magifying glass
 
 // Image series base classes
 
@@ -171,6 +182,13 @@ html.noscript .type-imageseries .series {
     --pswp-root-z-index: #{$pswp__root-z-index};
     --pswp-placeholder-bg: none;
 
+    --#{$prefix}zoomer-title-font-family: #{$zoomer-title-font-family};
+    --#{$prefix}zoomer-title-font-weight: #{$zoomer-title-font-weight};
+    --#{$prefix}zoomer-title-font-size: #{$zoomer-title-font-size};
+    --#{$prefix}zoomer-title-line-height: #{$zoomer-title-line-height};
+    --#{$prefix}zoomer-copyright-font-size: #{$zoomer-copyright-font-size};
+    --#{$prefix}zoomer-copyright-line-height: #{$zoomer-copyright-line-height};
+
     .pswp__caption {
         position: absolute;
         left: 50%;
@@ -179,29 +197,33 @@ html.noscript .type-imageseries .series {
         width: 100vw;
         display: flex;
         justify-content: center;
+
+        hyphens: auto;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
     .caption-wrapper {
         text-align: center;
         border-radius: var(--#{$prefix}border-radius);
-        max-width: calc(100% - (2 * var(--#{$prefix}default-margin-small)));
-        padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
+        max-width: calc(100% - (2 * var(--#{$prefix}ws-margin)));
+        padding: calc(0.5 * var(--#{$prefix}ws-margin)) var(--#{$prefix}ws-margin);
         background-color: rgba(0, 0, 0, 0.5);
     }
 
     .title {
         color: #eee;
-        font-family: var(--#{$prefix}font-family-headings);
-        font-weight: var(--#{$prefix}font-weight-headings);
-        font-size: $pswp-title-size;
-        line-height: $pswp-title-height;
+        font-family: var(--#{$prefix}zoomer-title-font-family);
+        font-weight: var(--#{$prefix}zoomer-title-font-weight);
+        font-size: var(--#{$prefix}zoomer-title-font-size);
+        line-height: var(--#{$prefix}zoomer-title-line-height);
         text-shadow: 1px 1px 1px #000;
     }
 
     .copyright {
         color: #eee;
-        font-size: $pswp-copyright-size;
-        line-height: 1.2;
+        font-size: var(--#{$prefix}zoomer-copyright-font-size);
+        line-height: var(--#{$prefix}zoomer-copyright-line-height);
         text-shadow: 1px 1px 1px #000;
     }
 
@@ -230,13 +252,6 @@ html.noscript .type-imageseries .series {
 }
 
 // Zoom overlay effect used by image series as well as the 'image zoom' formatter
-
-$zoom-bg:               rgba($black, 0.5) !default;
-$zoom-fg:               $text-light !default;
-$zoomer-bg:             rgba($white, 0.6) !default;
-$zoomer-fg:             $black !default;
-$zoomer-overlay-size:   35px !default;
-$zoomer-icon:           "\f002" !default; // magifying glass
 
 html.keyboard-nav a:focus .zoom-overlay .zoom-icon,
 .zoom:hover .zoom-overlay .zoom-icon {

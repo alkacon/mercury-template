@@ -23,7 +23,7 @@
 
 <c:if test="${empty test ? true : test}">
     <mercury:nl />
-    <div class="${empty css ? '' : css.concat(' ')}oct-meta"><%----%>
+    <div class="${empty css ? '' : css.concat(' ')}oct-meta pivot"><%----%>
         <div class="marker"><%----%>
             <c:if test="${not empty icon}">
                 <mercury:icon icon="${icon}" tag="span" />

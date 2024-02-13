@@ -53,7 +53,7 @@
         ul.list-entries {
             // this does not work for dynamic lists
             > .list-entry:last-of-type {
-                > .teaser {
+                > .teaser:not(.teaser-text-tile) {
                     margin-bottom: 0;
                 }
             }

@@ -72,6 +72,11 @@
     --%>,plain<%--
  --%></c:set>
 
+<c:set var="additionalTypes" value="${cms.vfs.propertySearch[cms.requestContext.uri]['search.types.additional']}"/>
+<c:if test="${not empty additionalTypes}">
+    <c:set var="types">${types},${additionalTypes}</c:set>
+</c:if>
+
 <%-- automatically determine the types to search for by the availability of detail pages. --%>
 <c:set var="adeManager" value="<%= org.opencms.main.OpenCms.getADEManager() %>" />
 <c:set var="adeConfig" value="${adeManager.lookupConfiguration(cms.vfs.cmsObject, cms.pageResource.rootPath)}" />

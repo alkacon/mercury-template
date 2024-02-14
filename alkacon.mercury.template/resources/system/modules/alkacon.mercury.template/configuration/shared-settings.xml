@@ -3383,9 +3383,10 @@
       <Widget><![CDATA[%(attribute:selectOrCombo:selectcombo)]]></Widget>
       <Default><![CDATA[ls-bullets]]></Default>
       <WidgetConfig><![CDATA[
-        ls-bullets:      %(key.msg.setting.linksequence.linksequenceType.bullets)|
-        ls-row:          %(key.msg.setting.linksequence.linksequenceType.row)|
-        ls-navigation:   %(key.msg.setting.linksequence.linksequenceType.navigation)
+        ls-bullets:         %(key.msg.setting.linksequence.linksequenceType.bullets)|
+        ls-row:             %(key.msg.setting.linksequence.linksequenceType.row)|
+        ls-row icon-last:   %(key.msg.setting.linksequence.linksequenceType.row-icon-last)|
+        ls-navigation:      %(key.msg.setting.linksequence.linksequenceType.navigation)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

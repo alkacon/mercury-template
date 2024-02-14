@@ -1433,6 +1433,7 @@ msg.setting.linksequence.linksequenceType=Darstellung
 msg.setting.linksequence.linksequenceType.bullets=Als Aufzählungspunkte
 msg.setting.linksequence.linksequenceType.navigation=Als Navigation
 msg.setting.linksequence.linksequenceType.row=In einer Reihe
+msg.setting.linksequence.linksequenceType.row-icon-last=In einer Reihe - Icon hinten
 msg.setting.linksequence.showLanguageLinks=Zeige Sprachauswahl
 msg.setting.linksequence.showLanguageLinks.description=Wenn angekreuzt, wird die Sprachauswahl angezeigt, falls die Seite in anderen Sprachen existiert.
 msg.setting.list.appendButtonText=Beschriftung für "Anhängen"

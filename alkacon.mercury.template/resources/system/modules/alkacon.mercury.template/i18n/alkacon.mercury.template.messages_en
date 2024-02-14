@@ -1433,6 +1433,7 @@ msg.setting.linksequence.linksequenceType=Display
 msg.setting.linksequence.linksequenceType.bullets=As bullet points
 msg.setting.linksequence.linksequenceType.navigation=As navigation
 msg.setting.linksequence.linksequenceType.row=In a row
+msg.setting.linksequence.linksequenceType.row-icon-last=In a row - icon last
 msg.setting.linksequence.showLanguageLinks=Show language selection
 msg.setting.linksequence.showLanguageLinks.description=If checked, the language selection is shown if a matching page is found in other languages.
 msg.setting.list.appendButtonText="Append" button label

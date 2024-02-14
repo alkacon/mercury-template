@@ -126,6 +126,37 @@
                 }
             }
         }
+        &.icon-last {
+            li {
+                &:first-of-type {
+                    padding-left: 0;
+                }
+                &::before {
+                    order: 10;
+                    padding-right: 0;
+                    margin-left: var(--#{$prefix}ws-margin);
+                }
+            }
+        }
+    }
+
+    &.icon-last {
+        ul,
+        li,
+        .ls-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .ls-item {
+            .ls-icon {
+                order: 10;
+                + span {
+                    margin-left: 0;
+                    margin-right: var(--#{$prefix}ws-margin);
+                }
+            }
+        }
     }
 }
 

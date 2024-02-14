@@ -92,13 +92,33 @@
     --#{$prefix}ls-row-spacing: #{$ls-row-spacing};
 
     li {
-        display: inline-block;
         list-style: outside none none;
         position: relative;
     }
 
+    ul,
+    li,
+    li a {
+        display: flex;
+        flex-direction: row;
+    }
+
+    ul {
+        flex-wrap: wrap;
+    }
+
+    li,
+    .ls-item {
+        flex-wrap: nowrap;
+    }
+
+    .ls-item {
+        display: flex;
+        flex-direction: row;
+    }
+
     &.line-icon {
-        li:not(:last-child) {
+        li:not(:last-of-type) {
             &::after {
                 content: "|";
                 margin: 0 calc(0.5 * var(--#{$prefix}ls-row-spacing));
@@ -107,7 +127,7 @@
     }
 
     &.no-icon {
-        li:not(:last-child) {
+        li:not(:last-of-type) {
             margin-right: var(--#{$prefix}ls-row-spacing);
         }
     }
@@ -115,12 +135,15 @@
     &.custom-icon,
     &.default-icon {
         li {
+            padding-left: 0;
             &::before {
+                display: flex;
                 float: none;
-                padding-right: calc(0.5 * var(--#{$prefix}ls-row-spacing));
+                padding-right: var(--#{$prefix}ws-margin);
+                margin-left: 0;
             }
-            + li {
-                padding-left: var(--#{$prefix}ls-row-spacing);
+            &:not(:last-of-type) {
+                padding-right: var(--#{$prefix}ls-row-spacing);
                 &::before {
                     margin-left: 0;
                 }
@@ -128,9 +151,6 @@
         }
         &.icon-last {
             li {
-                &:first-of-type {
-                    padding-left: 0;
-                }
                 &::before {
                     order: 10;
                     padding-right: 0;
@@ -141,13 +161,6 @@
     }
 
     &.icon-last {
-        ul,
-        li,
-        .ls-item {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
         .ls-item {
             .ls-icon {
                 order: 10;

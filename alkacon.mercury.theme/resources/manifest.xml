@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>16.0.54</version>
+		<version>16.0.57</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -109906,31 +109906,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/nf/ac.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/nf/ac.svg</destination>
-			<type>image</type>
-			<uuidstructure>d4f38718-100e-11ee-a544-0242ac11002b</uuidstructure>
-			<uuidresource>d4f38719-100e-11ee-a544-0242ac11002b</uuidresource>
-			<datecreated>Wed, 21 Jun 2023 08:37:18 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Description</name>
-					<value><![CDATA[Ascension Island]]></value>
-				</property>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[ac]]></value>
-				</property>
-				<property type="shared">
-					<name>image.size</name>
-					<value><![CDATA[w:640,h:480]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/nf/ad.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/nf/ad.svg</destination>
 			<type>image</type>
@@ -110171,6 +110146,31 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[ar]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:480]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/arab.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/arab.svg</destination>
+			<type>image</type>
+			<uuidstructure>40e835d8-cb56-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>40e835d9-cb56-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:29:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[League of Arab States]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[arab]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -111571,6 +111571,31 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[ea]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:480]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/eac.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/eac.svg</destination>
+			<type>image</type>
+			<uuidstructure>4104706c-cb56-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>4104706d-cb56-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:29:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[East African Community]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[eac]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -114598,6 +114623,31 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/pc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/pc.svg</destination>
+			<type>image</type>
+			<uuidstructure>4131c200-cb56-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>4131c201-cb56-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:29:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[Pacific Community]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[pc]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:480]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/nf/pe.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/nf/pe.svg</destination>
 			<type>image</type>
@@ -115230,6 +115280,81 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[sg]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:480]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sh-ac.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sh-ac.svg</destination>
+			<type>image</type>
+			<uuidstructure>413bfb34-cb56-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>413bfb35-cb56-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:29:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[Ascension Island]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[sh-ac]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:480]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sh-hl.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sh-hl.svg</destination>
+			<type>image</type>
+			<uuidstructure>413cbe88-cb56-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>413cbe89-cb56-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:29:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[Saint Helena]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[sh-hl]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:480]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/nf/sh-ta.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/nf/sh-ta.svg</destination>
+			<type>image</type>
+			<uuidstructure>413d33bc-cb56-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>413d33bd-cb56-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:29:41 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Description</name>
+					<value><![CDATA[Tristan da Cunha]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[sh-ta]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>

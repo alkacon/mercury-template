@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>16.0.52</version>
+		<version>16.0.54</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -68050,6 +68050,48 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/brave-reverse.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/brave-reverse.svg</destination>
+			<type>image</type>
+			<uuidstructure>ae628e87-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>ae628e88-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:25 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[brave-reverse]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:448,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/brave.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/brave.svg</destination>
+			<type>image</type>
+			<uuidstructure>ae632acb-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>ae632acc-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:25 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[brave]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:448,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/fab/btc.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/fab/btc.svg</destination>
 			<type>image</type>
@@ -70906,6 +70948,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/google-scholar.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/google-scholar.svg</destination>
+			<type>image</type>
+			<uuidstructure>ae92ed5f-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>ae92ed60-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[google-scholar]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:512,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/fab/google-wallet.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/fab/google-wallet.svg</destination>
 			<type>image</type>
@@ -71935,6 +71998,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/letterboxd.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/letterboxd.svg</destination>
+			<type>image</type>
+			<uuidstructure>aea4eec4-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aea4eec5-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[letterboxd]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/fab/line.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/fab/line.svg</destination>
 			<type>image</type>
@@ -72397,6 +72481,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/mintbit.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/mintbit.svg</destination>
+			<type>image</type>
+			<uuidstructure>aeae3d98-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aeae3d99-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[mintbit]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:512,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/fab/mix.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/fab/mix.svg</destination>
 			<type>image</type>
@@ -72853,6 +72958,27 @@
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:448,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/opensuse.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/opensuse.svg</destination>
+			<type>image</type>
+			<uuidstructure>aeb89ddc-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aeb89ddd-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[opensuse]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -73336,6 +73462,27 @@
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:512,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/pixiv.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/pixiv.svg</destination>
+			<type>image</type>
+			<uuidstructure>aec436a0-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aec436a1-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[pixiv]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -74119,6 +74266,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/shoelace.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/shoelace.svg</destination>
+			<type>image</type>
+			<uuidstructure>aed54da4-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aed54da5-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[shoelace]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:512,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/fab/shopify.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/fab/shopify.svg</destination>
 			<type>image</type>
@@ -74151,6 +74319,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[shopware]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:512,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/signal-messenger.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/signal-messenger.svg</destination>
+			<type>image</type>
+			<uuidstructure>aed68628-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aed68629-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[signal-messenger]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -74760,6 +74949,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[square-lastfm]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:448,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/square-letterboxd.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/square-letterboxd.svg</destination>
+			<type>image</type>
+			<uuidstructure>aee26d0c-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aee26d0d-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[square-letterboxd]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -75855,7 +76065,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:496,h:512]]></value>
+					<value><![CDATA[w:576,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -76024,6 +76234,27 @@
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:384,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/upwork.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/upwork.svg</destination>
+			<type>image</type>
+			<uuidstructure>aef9c5a0-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>aef9c5a1-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[upwork]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -76339,6 +76570,27 @@
 				<property type="shared">
 					<name>image.size</name>
 					<value><![CDATA[w:512,h:512]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/fab/webflow.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/fab/webflow.svg</destination>
+			<type>image</type>
+			<uuidstructure>af00a374-cb54-11ee-976e-0242ac11002b</uuidstructure>
+			<uuidresource>af00a375-cb54-11ee-976e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 14 Feb 2024 16:18:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[webflow]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:640,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -77193,7 +77445,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:512,h:512]]></value>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -77214,7 +77466,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:512,h:512]]></value>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -77235,7 +77487,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:512,h:512]]></value>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -80217,7 +80469,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:640,h:512]]></value>
+					<value><![CDATA[w:576,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -84978,7 +85230,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:512,h:512]]></value>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -84999,7 +85251,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:512,h:512]]></value>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -85041,7 +85293,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:512,h:512]]></value>
+					<value><![CDATA[w:448,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -104781,7 +105033,7 @@
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:640,h:512]]></value>
+					<value><![CDATA[w:576,h:512]]></value>
 				</property>
 			</properties>
 			<relations/>

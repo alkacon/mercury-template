@@ -39,6 +39,13 @@
             <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon:')}" />
             <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" inline="${true}" /></c:set>
         </c:when>
+        <c:when test="${fn:startsWith(linkPart, 'icon-last:')}">
+            <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon-last:')}" />
+            <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon icon-last" inline="${true}" /></c:set>
+            <c:if test="${not empty addSpan}">
+                <c:set var="addSpan" value="${addSpan} icon-last" />
+            </c:if>
+        </c:when>
         <c:when test="${fn:startsWith(linkPart, 'image:')}">
             <c:set var="imagePath" value="${fn:substringAfter(linkPart, 'image:')}" />
             <c:set var="linkIcon"><mercury:icon icon="${imagePath}" tag="span" cssWrapper="ls-icon" fromImage="${true}" /></c:set>

@@ -63,6 +63,30 @@
         overflow-wrap: anywhere;
         word-break: break-word;
     }
+
+    li.ls-li {
+        a:hover {
+            text-decoration: none;
+            .ls-item {
+                span:not(.ls-icon) {
+                    text-decoration: $link-hover-decoration;
+                }
+            }
+        }
+
+        .ls-item.icon-last {
+            display: inline-flex;
+            align-items: baseline;
+            flex-direction: row;
+            .ls-icon {
+                order: 10;
+                + span {
+                    margin-left: 0;
+                    margin-right: var(--#{$prefix}ws-margin);
+                }
+            }
+        }
+    }
 }
 
 .ls-bullets,
@@ -92,29 +116,9 @@
     --#{$prefix}ls-row-spacing: #{$ls-row-spacing};
 
     li {
+        display: inline-block;
         list-style: outside none none;
         position: relative;
-    }
-
-    ul,
-    li,
-    li a {
-        display: flex;
-        flex-direction: row;
-    }
-
-    ul {
-        flex-wrap: wrap;
-    }
-
-    li,
-    .ls-item {
-        flex-wrap: nowrap;
-    }
-
-    .ls-item {
-        display: flex;
-        flex-direction: row;
     }
 
     &.line-icon {
@@ -137,7 +141,6 @@
         li {
             padding-left: 0;
             &::before {
-                display: flex;
                 float: none;
                 padding-right: var(--#{$prefix}ws-margin);
                 margin-left: 0;
@@ -151,22 +154,13 @@
         }
         &.icon-last {
             li {
+                display: inline-flex;
+                align-items: baseline;
+                flex-direction: row;
                 &::before {
                     order: 10;
                     padding-right: 0;
                     margin-left: var(--#{$prefix}ws-margin);
-                }
-            }
-        }
-    }
-
-    &.icon-last {
-        .ls-item {
-            .ls-icon {
-                order: 10;
-                + span {
-                    margin-left: 0;
-                    margin-right: var(--#{$prefix}ws-margin);
                 }
             }
         }

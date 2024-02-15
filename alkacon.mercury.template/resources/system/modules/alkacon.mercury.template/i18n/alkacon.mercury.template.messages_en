@@ -245,6 +245,7 @@ label.MapCoord.Caption=Caption
 label.MapCoord.Caption.help=Displayed emphasized in the window for the marker.
 label.MapCoord.Coord=Coordinates
 label.MapCoord.Coord.help=The exact coordinates of the marker to show.
+label.MapCoord.Link.help=<p>The link for this marker.</p><p><em>Please note\:</em> External links must start with <strong>http\://</strong></p>
 label.Marker=Marker
 label.MarkerGroup=Group
 label.MarkerGroup.help=Use this option to group markers. Use the same group name for all markers that should belong to a group.

@@ -59,6 +59,12 @@
       <IncludeName><![CDATA[showDescription.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showLink.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showFacilities.false]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showGroupButtons.true]]></IncludeName>
     </Setting>
     <Setting>

@@ -245,6 +245,7 @@ label.MapCoord.Caption=Überschrift
 label.MapCoord.Caption.help=Wird im Fenster der Markierung hervorgehoben dargestellt.
 label.MapCoord.Coord=Koordinaten
 label.MapCoord.Coord.help=Die exakten Koordinaten der anzuzeigenden Markierung.
+label.MapCoord.Link.help=<p>Der Link für diese Markierung.</p><p><em>Bitte beachten\:</em> Externe Links immer mit <strong>http\://</strong> Präfix eingeben.</p>
 label.Marker=Markierung
 label.MarkerGroup=Gruppe
 label.MarkerGroup.help=Diese Option kann zur Gruppierung von Markierungen benutzt werden. Benutzen Sie den gleichen Namen für alle Markierungen, die zu einer Gruppe gehören.

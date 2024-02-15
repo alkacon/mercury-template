@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/link.xsd"/>
 
     <xsd:element name="MapCoordData" type="OpenCmsMapCoordData"/>
 
@@ -14,6 +15,7 @@
         <xsd:sequence>
             <xsd:element name="Caption" type="OpenCmsString" />
             <xsd:element name="Address" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Link" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="MarkerGroup" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Coord" type="OpenCmsString" />
         </xsd:sequence>
@@ -35,6 +37,11 @@
                     <Description><![CDATA[%(key.label.MapCoord.Address.help)]]></Description>
                     <Widget>textarea</Widget>
                     <WidgetConfig>4|proportional</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Link</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Link)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MapCoord.Link.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>MarkerGroup</PropertyName>

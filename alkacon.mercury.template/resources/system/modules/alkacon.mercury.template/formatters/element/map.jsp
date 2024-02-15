@@ -26,6 +26,8 @@
 <c:set var="pieceLayout"            value="${10}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
+<c:set var="showLink"               value="${setting.showLink.toBoolean}" />
+<c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
 <c:set var="showGroupButtons"       value="${setting.showGroupButtons.toBoolean}" />
 <c:set var="showMapRoute"           value="${setting.showMapRoute.toBoolean}" />
 <c:set var="mapType"                value="${setting.mapType.toString}" />
@@ -110,7 +112,8 @@
                 'addressMarkup': markerAddress,
                 'geocode': markerNeedsGeoCode,
                 'group': markerGroup,
-                'info': markerInfo
+                'info': markerInfo,
+                'link': marker.value.Link
             }}" />
             <c:set var="ignore" value="${markerList.add(locData)}" />
 
@@ -123,6 +126,8 @@
              zoom="${cms.element.setting.mapZoom}"
              markers="${markerList}"
              type="${mapType}"
+             showLink="${showLink}"
+             showFacilities="${showFacilities}"
              showRoute="${showMapRoute}"
              markerCluster="${mapMarkerCluster}"
         />

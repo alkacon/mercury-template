@@ -23,8 +23,14 @@
     description="The initial map zoom factor. If not set, will use '13' for OSM and '14' for Google as default.
     If set to 'firstMarker' the zoom level of the first marker will be used." %>
 
+<%@ attribute name="showFacilities" type="java.lang.Boolean" required="false"
+    description="If true, show the facility information of a marker in the info window." %>
+
+<%@ attribute name="showLink" type="java.lang.Boolean" required="false"
+    description="If true, show the link of a marker in the info window." %>
+
 <%@ attribute name="showRoute" type="java.lang.Boolean" required="false"
-    description="If true, show route option for each marker in info window.
+    description="If true, show route option for each marker in the info window.
     Currently only supported for Google maps, not OSM." %>
 
 <%@ attribute name="type" type="java.lang.String" required="false"
@@ -129,13 +135,25 @@
             </c:if>
 
             <%-- Markup for map marker info windows --%>
-            <c:set target="${marker}" property="infoMarkup"><%--
-                --%><div class="map-marker"><%--
-                --%><c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if><%--
-                --%><c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if><%--
-                --%><c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if><%--
-                --%></div><%--
-            --%></c:set>
+            <c:set target="${marker}" property="infoMarkup">
+                <div class="map-marker"><%----%>
+                    <c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if>
+                    <c:if test="${showFacilities and not empty marker.facilities}">
+                        <mercury:icons-accessible
+                            wheelchairAccess="${marker.facilities.value.WheelchairAccess.toBoolean}"
+                            hearingImpaired="${marker.facilities.value.HearingImpaired.toBoolean}"
+                            lowVision="${marker.facilities.value.LowVision.toBoolean}"
+                            publicRestrooms="${marker.facilities.value.PublicRestrooms.toBoolean}"
+                            publicRestroomsAccessible="${marker.facilities.value.PublicRestroomsAccessible.toBoolean}"
+                        />
+                    </c:if>
+                    <c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if>
+                    <c:if test="${showLink and not empty marker.link}">
+                        <mercury:link link="${marker.link}" noExternalMarker="${true}" css="marklink" />
+                    </c:if>
+                    <c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if>
+                </div><%----%>
+            </c:set>
 
             <%-- Generate the actual JSON --%>
             <cms:jsonobject>

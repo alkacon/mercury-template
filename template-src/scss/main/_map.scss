@@ -79,11 +79,24 @@
             font-family: var(--#{$prefix}font-family-headings);
             font-size: $map-header-size;
             font-weight: $map-header-weight;
-            margin-bottom: var(--#{$prefix}default-margin-verysmall);
+            margin-bottom: var(--#{$prefix}default-margin-small);
         }
 
-        .marktxt {
+        .accessible {
+            line-height: 1;
+            transform: scale(0.75);
+            transform-origin: top left;
+            margin-bottom: 0; // scale will add empty space below
+        }
+
+        .marktxt,
+        .marklink {
             line-height: 1.2;
+        }
+
+        .marklink {
+            display: block;
+            margin-top: var(--#{$prefix}default-margin-small);
         }
 
         .markroute {

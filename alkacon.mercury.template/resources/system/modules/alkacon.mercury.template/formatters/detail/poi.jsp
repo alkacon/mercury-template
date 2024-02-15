@@ -41,49 +41,14 @@
 
 <c:if test="${showFacilities and value.Facilities.isSet}">
     <c:set var="accessibleFacilities">
-        <div class="accessible"><%----%>
-            <c:if test="${value.Facilities.value.WheelchairAccess.toBoolean}">
-                <div title="<fmt:message key='label.Facility.WheelchairAccess' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
-                    <span class="acc-inner"><%----%>
-                        <mercury:icon icon="wheelchair" tag="span" />
-                     </span><%----%>
-                </div><%----%>
-            </c:if>
-            <c:if test="${value.Facilities.value.HearingImpaired.toBoolean}">
-                <div title="<fmt:message key='label.Facility.HearingImpaired' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
-                    <span class="acc-inner"><%----%>
-                        <mercury:icon icon="assistive-listening-systems" tag="span" />
-                    </span><%----%>
-                </div><%----%>
-            </c:if>
-            <c:if test="${value.Facilities.value.LowVision.toBoolean}">
-                <div title="<fmt:message key='label.Facility.LowVision' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
-                    <span class="acc-inner"><%----%>
-                        <mercury:icon icon="low-vision" tag="span" />
-                    </span><%----%>
-                </div><%----%>
-            </c:if>
-            <c:if test="${value.Facilities.value.PublicRestrooms.toBoolean}">
-                <div title="<fmt:message key='label.Facility.PublicRestrooms' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
-                    <span class="acc-inner"><%----%>
-                        <mercury:icon icon="male" tag="span" cssWrapper="acc-male" />
-                        <mercury:icon icon="female" tag="span" cssWrapper="acc-female" />
-                    </span><%----%>
-                </div><%----%>
-            </c:if>
-            <c:if test="${value.Facilities.value.PublicRestroomsAccessible.toBoolean}">
-                <div title="<fmt:message key='label.Facility.PublicRestroomsAccessible' />" tabindex="0" data-bs-toggle="tooltip" class="acc-icon"><%----%>
-                    <span class="acc-inner acc-wc"><%----%>
-                        <mercury:icon icon="wheelchair" tag="span" />
-                    </span><%----%>
-                    <span class="acc-add acc-wc"><%----%>
-                        <mercury:icon icon="male" tag="span" cssWrapper="acc-male" />
-                        <mercury:icon icon="female" tag="span" cssWrapper="acc-female" />
-                    </span><%----%>
-                </div><%----%>
-            </c:if>
-        </div><%----%>
-        <mercury:nl />
+        <mercury:icons-accessible
+            useTooltip="${true}"
+            wheelchairAccess="${value.Facilities.value.WheelchairAccess.toBoolean}"
+            hearingImpaired="${value.Facilities.value.HearingImpaired.toBoolean}"
+            lowVision="${value.Facilities.value.LowVision.toBoolean}"
+            publicRestrooms="${value.Facilities.value.PublicRestrooms.toBoolean}"
+            publicRestroomsAccessible="${value.Facilities.value.PublicRestroomsAccessible.toBoolean}"
+        />
     </c:set>
 </c:if>
 
@@ -162,6 +127,8 @@
                     zoom="${mapZoom}"
                     markers="${[locData]}"
                     subelementWrapper="poi-map"
+                    showFacilities="${true}"
+                    showLink="${true}"
                 />
             </mercury:location-vars>
             <mercury:nl />

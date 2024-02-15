@@ -103,6 +103,16 @@
         <c:set var="adr" value="${poi.value.Address}" />
         <c:set target="${locData}" property="name" value="${poi.value.Title.toString}" />
         <c:set target="${locData}" property="paragraph" value="${poi.value.Paragraph}" />
+        <c:if test="${not empty poi.valueList.Paragraph}">
+            <c:set var="poiLink" value="${poi.valueList.Paragraph.get(0).value.Link}" />
+            <c:if test="${empty poiLink}">
+                <c:set var="poiLink" value="${poi.valueList.Paragraph.get(poi.valueList.Paragraph.size() - 1).value.Link}" />
+            </c:if>
+            <c:set target="${locData}" property="link" value="${poiLink}" />
+        </c:if>
+        <c:if test="${poi.value.Facilities.isSet}">
+            <c:set target="${locData}" property="facilities" value="${poi.value.Facilities}" />
+        </c:if>
         <c:set var="coordData" value="${poi.value.Coord}" />
     </c:if>
 

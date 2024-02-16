@@ -843,6 +843,7 @@ msg.page.login.username=Name
 msg.page.map.button.show=Show {0}
 msg.page.map.button.showmarkers=Show all
 msg.page.map.google.nokey=No Google Map API key found. Unable to display the map.
+msg.page.map.link.default.text=Show website
 msg.page.map.osm.nokey=No OpenStreetMap API key found. Unable to display the map.
 msg.page.map.route=Directions to this location
 msg.page.map.route.button=Show directions

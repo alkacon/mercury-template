@@ -114,9 +114,11 @@
 
 <%-- Do costly generation of JSON only if the map can be displayed --%>
 <c:if test="${not noApiKey}">
+    <fmt:message var="linkDefaultText" key="msg.page.map.link.default.text" />
 
     <%-- Generate marker list --%>
     <cms:jsonarray var="markerList" mode="object">
+
         <c:forEach var="marker" items="${markers}" varStatus="status">
 
             <%-- Note: Route markup is supported only by Google maps --%>
@@ -139,7 +141,7 @@
                 <div class="map-marker"><%----%>
                     <c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if>
                     <c:if test="${showFacilities and not empty marker.facilities}">
-                        <mercury:icons-accessible
+                        <mercury:facility-icons
                             wheelchairAccess="${marker.facilities.value.WheelchairAccess.toBoolean}"
                             hearingImpaired="${marker.facilities.value.HearingImpaired.toBoolean}"
                             lowVision="${marker.facilities.value.LowVision.toBoolean}"
@@ -149,7 +151,7 @@
                     </c:if>
                     <c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if>
                     <c:if test="${showLink and not empty marker.link}">
-                        <mercury:link link="${marker.link}" noExternalMarker="${true}" css="marklink" />
+                        <mercury:link link="${marker.link}" noExternalMarker="${true}" css="marklink" text="${linkDefaultText}" />
                     </c:if>
                     <c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if>
                 </div><%----%>

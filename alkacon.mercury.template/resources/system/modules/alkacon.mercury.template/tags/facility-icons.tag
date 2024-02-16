@@ -1,8 +1,8 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="icons-accessible"
+    display-name="facility-icons"
     body-content="tagdependent"
     trimDirectiveWhitespaces="true"
-    description="Displays a list of accessible icons." %>
+    description="Displays a list of icons for facilities." %>
 
 
 <%@ attribute name="css" type="java.lang.String" required="false"
@@ -40,7 +40,7 @@
         <c:set var="tooltip" value=" tabindex=\"0\" data-bs-toggle=\"tooltip\"" />
     </c:if>
 
-    <div class="accessible${not empty css ? ' '.conact(css) : ''}"><%----%>
+    <div class="facility-icons${not empty css ? ' '.conact(css) : ''}"><%----%>
         <c:if test="${wheelchairAccess}">
             <div title="<fmt:message key='label.Facility.WheelchairAccess' />" class="acc-icon"${tooltip}><%----%>
                 <span class="acc-inner"><%----%>

@@ -82,8 +82,7 @@
             margin-bottom: var(--#{$prefix}default-margin-small);
         }
 
-        .accessible {
-            line-height: 1;
+        .facility-icons {
             transform: scale(0.75);
             transform-origin: top left;
             margin-bottom: 0; // scale will add empty space below
@@ -123,6 +122,9 @@
         background-color: var(--#{$prefix}map-popup-bg);
         font-family: var(--#{$prefix}body-font-family);
         font-weight: var(--#{$prefix}body-font-weight);
+    }
+
+    .maplibregl-popup-content {
         font-size: 1.0rem;
         line-height: 1.2;
     }

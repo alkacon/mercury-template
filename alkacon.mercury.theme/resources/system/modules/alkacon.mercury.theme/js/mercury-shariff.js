@@ -1,4 +1,4 @@
-(self.webpackChunkmercury_template=self.webpackChunkmercury_template||[]).push([[519],{273:function(e,t,r){var o=r(755);
+(self.webpackChunkmercury_template=self.webpackChunkmercury_template||[]).push([[708],{592:function(e,t,r){var o=r(692);
 /*!
  * shariff - v3.2.2 - Tue, 19 Sep 2023 22:37:49 GMT
  * https://github.com/heiseonline/shariff

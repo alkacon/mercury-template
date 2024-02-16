@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunkmercury_template=self.webpackChunkmercury_template||[]).push([[615],{253:function(t,i,e){
+"use strict";(self.webpackChunkmercury_template=self.webpackChunkmercury_template||[]).push([[157],{688:function(t,i,e){
 /*!
   * PhotoSwipe 5.4.3 - https://photoswipe.com
   * (c) 2023 Dmytro Semenov

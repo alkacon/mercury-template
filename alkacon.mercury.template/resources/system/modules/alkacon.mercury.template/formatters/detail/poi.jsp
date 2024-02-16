@@ -41,7 +41,7 @@
 
 <c:if test="${showFacilities and value.Facilities.isSet}">
     <c:set var="accessibleFacilities">
-        <mercury:icons-accessible
+        <mercury:facility-icons
             useTooltip="${true}"
             wheelchairAccess="${value.Facilities.value.WheelchairAccess.toBoolean}"
             hearingImpaired="${value.Facilities.value.HearingImpaired.toBoolean}"

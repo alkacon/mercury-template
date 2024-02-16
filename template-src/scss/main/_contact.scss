@@ -164,4 +164,9 @@
             margin-right: 0;
         }
     }
+
+    &.box {
+        // required because if a float layout is used the box background may not extend over the image otherwise
+        @include clearfix;
+    }
 }

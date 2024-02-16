@@ -267,18 +267,15 @@ function showSingleMapClustered(mapData, filterByGroup) {
                     map.on("mouseleave", "clusters", function () {
                         map.getCanvas().style.cursor = "";
                     });
-                    map.on("click", "clusters", function (e) {
+                    map.on("click", "clusters", async (e) => {
                         const features = map.queryRenderedFeatures(e.point, {
                             layers: ["clusters"]
                         });
                         const clusterId = features[0].properties.cluster_id;
-                        const pointCount = features[0].properties.point_count;
-                        map.getSource("localFeatures").getClusterLeaves(clusterId, pointCount, 0, function(error, clusterFeatures) {
-                            const bounds = getBoundsAndInfos(clusterFeatures, null, null, infos);
-                            map.fitBounds(bounds, {
-                                padding: {top: 100, bottom: 100, left: 100, right: 100},
-                                maxZoom: 16
-                            });
+                        const zoom = await map.getSource("localFeatures").getClusterExpansionZoom(clusterId);
+                        map.easeTo({
+                            center: features[0].geometry.coordinates,
+                            zoom
                         });
                     });
                 }
@@ -464,8 +461,8 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
             map.addImage("featureGraphic", featureGraphic);
         });
     }
-    map.addSource('features', {
-        type: 'geojson',
+    map.addSource("features", {
+        type: "geojson",
         data: geoJson,
         cluster: true,
         clusterMaxZoom: 12,
@@ -517,20 +514,16 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
             "icon-anchor": "bottom"
         }
     });
-    map.on("click", "clusters", function (e) {
+    map.on("click", "clusters", async (e) => {
         const features = map.queryRenderedFeatures(e.point, {
             layers: ["clusters"]
         });
         const clusterId = features[0].properties.cluster_id;
-        const pointCount = features[0].properties.point_count;
-        map.getSource("features").getClusterLeaves(clusterId, pointCount, 0, function(error, clusterFeatures) {
-            const bounds = getBoundsAndInfos(clusterFeatures, null, false);
-            map.fitBounds(bounds, {
-                padding: {top: 100, bottom: 100, left: 100, right: 100},
-                maxZoom: 16
-            });
+        const zoom = await map.getSource("features").getClusterExpansionZoom(clusterId);
+        map.easeTo({
+            center: features[0].geometry.coordinates,
+            zoom
         });
-
     });
     map.on("click", "unclustered-point", function (e) {
         const coordinates = e.features[0].geometry.coordinates;

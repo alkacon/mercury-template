@@ -101,9 +101,12 @@ function showSingleMap(mapData) {
             center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
             zoom: mapData.zoom,
             interactive: false,
-            maxZoom: 18
+            maxZoom: 18,
+            attributionControl: false
         });
-
+        const attributionControl = new mapgl.AttributionControl({compact:true});
+        m_maps[mapData.id].addControl(attributionControl);
+        attributionControl._container.style.display = "none";
         m_maps[mapData.id].on('mousedown', function (e) {
             this.scrollZoom.enable();
             this.dragPan.enable();
@@ -118,6 +121,8 @@ function showSingleMap(mapData) {
 
         m_maps[mapData.id].on('load', function () {
             this.addControl(new mapgl.NavigationControl());
+            attributionControl._toggleAttribution();
+            attributionControl._container.style.display = "block";
         });
     }
 
@@ -168,8 +173,12 @@ function showSingleMapClustered(mapData, filterByGroup) {
         map = new mapgl.Map({
             container: mapData.id,
             style: m_style,
-            maxZoom: 18
+            maxZoom: 18,
+            attributionControl: false
         });
+        const attributionControl = new mapgl.AttributionControl({compact:true});
+        map.addControl(attributionControl);
+        attributionControl._container.style.display = "none";
         map.on('mousedown', function (e) {
             this.scrollZoom.enable();
             this.dragPan.enable();
@@ -180,8 +189,10 @@ function showSingleMapClustered(mapData, filterByGroup) {
             this.dragPan.enable();
             this.touchZoomRotate.enable();
         });
-        map.on('load', function () {
+        map.on("load", function () {
             this.addControl(new mapgl.NavigationControl());
+            attributionControl._toggleAttribution();
+            attributionControl._container.style.display = "block";
         });
         m_maps[mapData.id] = map;
     }

@@ -129,6 +129,10 @@
     If this option is 'true', then the value of 'addHeadingId' is ignored and the ID is always generated.
     Default is 'false' if not provided." %>
 
+<%@ attribute name="piecePreMarkup" type="java.lang.String" required="false"
+    description="Markup added as a prefix inside the piece before everything else." %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -159,6 +163,7 @@
         sizeMobile="${sizeMobile}"
         pieceTag="${pieceTag}"
         pieceClass="${pieceClass}"
+        piecePreMarkup="${piecePreMarkup}"
         cssText="${showText and (textOption ne 'default') ? textOption : ''}${not empty cssText ? ' '.concat(cssText) : null}"
         attrVisual="${ade ? image.rdfaAttr : null}"
         cssVisual="rs_skip${imageOri}${not empty cssVisual ? ' '.concat(cssVisual) : null}"

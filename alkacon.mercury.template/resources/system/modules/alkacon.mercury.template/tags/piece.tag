@@ -111,10 +111,13 @@
     description="'class' selectors to add to the generated body div." %>
 
 <%@ attribute name="bodyPreMarkup" type="java.lang.String" required="false"
-    description="Markup to append before the body content." %>
+    description="Markup to add inside the body before the regular body content." %>
 
 <%@ attribute name="bodyPostMarkup" type="java.lang.String" required="false"
-    description="Markup to append after the body content." %>
+    description="Markup to add inside the body after the regular body content." %>
+
+<%@ attribute name="piecePreMarkup" type="java.lang.String" required="false"
+    description="Markup to add inside the piece before the heading, body and everything else." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -334,6 +337,8 @@ ${'<'}${pieceTag}${' '}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}
 ${'>'}
 <mercury:nl />
+
+${piecePreMarkup}
 
 <c:if test="${showHeading and not inlineHeading}">
     ${headingMarkup}

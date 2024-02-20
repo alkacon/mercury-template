@@ -130,7 +130,7 @@
     Default is 'false' if not provided." %>
 
 <%@ attribute name="piecePreMarkup" type="java.lang.String" required="false"
-    description="Markup added as a prefix inside the piece before everything else." %>
+    description="Markup to add inside the piece before the heading, body and everything else." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

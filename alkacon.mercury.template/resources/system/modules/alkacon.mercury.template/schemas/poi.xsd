@@ -3,8 +3,9 @@
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/email.xsd" />
-    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/facilities.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/teaser-data.xsd" />
 
     <xsd:element name="PoiData" type="OpenCmsPoiData" />
 
@@ -21,6 +22,7 @@
             <xsd:element name="Facilities" type="OpenCmsFacility" minOccurs="0" />
             <xsd:element name="Coord" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" minOccurs="0" maxOccurs="100" />
+            <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
@@ -79,6 +81,19 @@
                     <PropertyName>Paragraph</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Poi.Paragraph)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Poi.Paragraph.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>TeaserData</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.TeaserData)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Poi.TeaserData.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>TeaserData/TeaserIntro</PropertyName>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>TeaserData/TeaserPreface</PropertyName>
+                    <Visibility>hidden</Visibility>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

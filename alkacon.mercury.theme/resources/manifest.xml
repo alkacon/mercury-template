@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>16.0.65</version>
+		<version>16.0.66</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -4502,6 +4502,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury SVG icons]]></value>
+				</property>
+				<property>
+					<name>export</name>
+					<value><![CDATA[true]]></value>
 				</property>
 			</properties>
 			<relations/>

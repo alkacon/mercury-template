@@ -24,26 +24,22 @@
     description="'title' atttribute to set on the generated img tag."%>
 
 <%@ attribute name="copyright" type="java.lang.String" required="false"
-    description="Copyright information to display as an image overlay.
-    If this is emtpy, no copyright overlay will be displayed." %>
+    description="Copyright information to display as an image overlay. If this is emtpy, no copyright overlay will be displayed." %>
 
 <%@ attribute name="srcSet" type="java.lang.Boolean" required="false"
     description="Generate image source set data or not?"%>
 
 <%@ attribute name="sizes" type="java.lang.String" required="false"
-    description="Container sizes to create image variations for.
-    This must be a comma separated list e.g. '100,200,400,800'." %>
+    description="Sizes (width in pixel) to create image variations for. This must be a comma separated list e.g. '100,200,400,800'." %>
 
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not?"%>
 
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
-    description="Generate noscript tags for lazy loading images or not?
-    Default is 'true'." %>
+    description="Generate noscript tags for lazy loading images or not? Default is 'true'." %>
 
 <%@ attribute name="isSvg" type="java.lang.Boolean" required="false"
-    description="Can be set if the type of the image is known as SVG in advance.
-    If this is NOT set, then the type is determined from the image name." %>
+    description="Can be set if the type of the image is known as SVG in advance. If this is NOT set, then the type is determined from the image name." %>
 
 <%@ attribute name="cssImage" type="java.lang.String" required="false"
     description="'class' atttribute to set directly on the generated img tag."%>

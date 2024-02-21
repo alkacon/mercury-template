@@ -9,7 +9,7 @@
     description="The image to format. Must be a nested image content."%>
 
 <%@ attribute name="sizes" type="java.lang.String" required="false"
-    description="Container sizes to create image variations for." %>
+    description="Sizes (width in pixel) to create image variations for. This must be a comma separated list e.g. '100,200,400,800'." %>
 
 <%@ attribute name="ratio" type="java.lang.String" required="false"
     description="Can be used to scale the image in a specific ratio.
@@ -103,10 +103,10 @@
 
 <c:choose>
     <c:when test="${addEffectPiece}">
-        <c:set var="effectWrapper" value="effect-piece " />
+        <c:set var="effectWrapper" value="effect-piece" />
     </c:when>
     <c:when test="${empty addEffectBox or addEffectBox}">
-        <c:set var="effectWrapper" value="effect-box " />
+        <c:set var="effectWrapper" value="effect-box" />
     </c:when>
 </c:choose>
 
@@ -126,7 +126,7 @@
             />
         </c:set>
     </c:if>
-    <div class="${effectWrapper}${cssWrapper}" ${attrWrapper}><%----%>
+    <mercury:div css="${effectWrapper}${not empty effectWrapper and not empty cssWrapper ? ' ':''}${cssWrapper}" attr="${attrWrapper}" test="${not empty effectWrapper or not empty cssWrapper or not empty attrWrapper}">
         <mercury:image-srcset
             imagebean="${imageBean}"
             sizes="${sizes}"
@@ -144,7 +144,7 @@
         <%-- ####### JSP body inserted here ######## --%>
         <jsp:doBody/>
         <%-- ####### /JSP body inserted here ######## --%>
-    </div><%----%>
+    </mercury:div>
     <mercury:nl />
 </c:when>
 

@@ -56,7 +56,7 @@
 @mixin calendar-sheet-base {
 
     .calendar-sheet-piece {
-        .image-src-box.presized {
+        .visual .image-src-box.presized {
             padding-bottom: 0 !important;
             height: auto;
         }

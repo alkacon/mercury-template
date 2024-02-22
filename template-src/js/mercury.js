@@ -37,12 +37,12 @@ import fitVids from 'fitvids';
 Object.assign(lazySizes.cfg, { init: false }); // otherwise device based configuration will not work
 import lazySizes from 'lazysizes';
 
-import * as DynamicListElemements from './lists.js';
-import * as NavigationElements from './navigation.js';
-import * as CommentElements from './comments.js';
 import * as AnalyticElements from './analytics.js';
-import * as PrivacyPolicy from './privacy-policy.js';
+import * as CommentElements from './comments.js';
+import * as DynamicListElemements from './lists.js';
 import * as Icons from './icons.js';
+import * as NavigationElements from './navigation.js';
+import * as PrivacyPolicy from './privacy-policy.js';
 
 import './jquery-extensions.js';
 import './unobfuscate.js';

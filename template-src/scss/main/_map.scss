@@ -22,13 +22,14 @@
 .type-map {
     --#{$prefix}map-popup-color: #{$map-popup-color};
     --#{$prefix}map-popup-bg: #{$map-popup-bg};
+    --#{$prefix}map-marker-margin: #{$map-marker-margin};
 
     .mapbuttons {
-        margin-top: var(--#{$prefix}default-margin-small);
+        margin-top: calc(0.5 * var(--#{$prefix}element-margin));
 
         .btn {
-            margin-top: var(--#{$prefix}default-margin-verysmall);
-            margin-right: var(--#{$prefix}default-margin-verysmall);
+            margin-top: calc(0.25 * var(--#{$prefix}element-margin));
+            margin-right: var(--#{$prefix}ws-margin);
         }
     }
 
@@ -79,7 +80,7 @@
             font-family: var(--#{$prefix}font-family-headings);
             font-size: $map-header-size;
             font-weight: $map-header-weight;
-            margin-bottom: var(--#{$prefix}default-margin-small);
+            margin-bottom: var(--#{$prefix}map-marker-margin);
         }
 
         .facility-icons {
@@ -95,7 +96,7 @@
 
         .marklink {
             display: block;
-            margin-top: var(--#{$prefix}default-margin-small);
+            margin-top: var(--#{$prefix}map-marker-margin);
         }
 
         .markroute {

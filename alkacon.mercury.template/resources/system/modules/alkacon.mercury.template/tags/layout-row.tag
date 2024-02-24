@@ -378,15 +378,19 @@
 
     <c:when test="${rowVariant == 30}">
         <%-- 'area-one-row' - la_00001 --%>
-        <c:set var="bgImage"    value="${setting.bgImage.toLink}" />
         <c:set var="bgSpacing"  value="${setting.bgSpacing.isSetNotNone ? setting.bgSpacing.toString : null}" />
         <c:set var="bgColor"    value="${setting.bgColor.isSetNotNone ? setting.bgColor.toString : null}" />
 
         <c:set var="rowCss"     value="${empty rowCss ? 'container area-wide' : rowCss}" />
 
-        <c:if test="${not empty bgImage}">
-             <c:set var="styleAttr">background-image: url('${bgImage}');</c:set>
-             <c:set var="areaCss">${areaCss}${' '}effect-parallax-bg row-has-background</c:set>
+        <c:if test="${not empty setting.bgImage.toLink}">
+            <c:set var="bgImage"        value="${setting.bgImage.toImage}" />
+            <c:set var="maxImgSize"     value="${2600}" />
+            <c:if test="${bgImage.width gt maxImgSize}">
+                <c:set var="bgImage"    value="${bgImage.scaleWidth[maxImgSize]}" />
+            </c:if>
+            <c:set var="styleAttr">background-image: url('${bgImage.srcUrl}');</c:set>
+            <c:set var="areaCss">${areaCss}${' '}effect-parallax-bg row-has-background</c:set>
         </c:if>
         <c:if test="${not empty bgSpacing}">
              <c:set var="areaCss">${areaCss}${' '}${bgSpacing}</c:set>

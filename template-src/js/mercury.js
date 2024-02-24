@@ -87,8 +87,8 @@ const Mercury = function (jQ) {
             const box = el.getBoundingClientRect();
             const docElem = document.documentElement;
             return {
-                top: box.top + window.pageYOffset - docElem.clientTop,
-                left: box.left + window.pageXOffset - docElem.clientLeft
+                top: box.top + window.scrollY - docElem.clientTop,
+                left: box.left + window.scrollX - docElem.clientLeft
             };
         }
     }
@@ -920,7 +920,7 @@ const Mercury = function (jQ) {
             }
         }
 
-        if (requiresModule(".effect-parallax-bg")) {
+        if (requiresModule(".effect-parallax-bg, .effect-parallax-bg-div > img")) {
             try {
                 import(
                     /* webpackChunkName: "mercury-tools" */

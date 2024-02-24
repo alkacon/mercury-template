@@ -74,6 +74,7 @@
 
 // rows with parallax background effect using a background cover image
 .effect-parallax-bg {
+    padding-top: 0; // required to remove padding from ".row-has-background"
     background-image: none;
     background-position: 50% 0;
     background-size: cover;
@@ -81,6 +82,12 @@
     background-origin: border-box;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    @supports (-webkit-touch-callout: none) {
+        // CSS specific to iOS devices as parallax scrollig will not work here
+        background-position: 50% 50% !important;
+        background-attachment: scroll;
+    }
 }
 
 // paddings used in settings of layout area "Area - One row"

@@ -59,6 +59,9 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[mapMarkerCluster.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showDescription.true]]></IncludeName>
     </Setting>
     <Setting>
@@ -69,9 +72,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showGroupButtons.true]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[mapMarkerCluster.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showMapRoute.false]]></IncludeName>

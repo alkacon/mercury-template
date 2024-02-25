@@ -1829,7 +1829,7 @@
       <DisplayName><![CDATA[%(key.msg.setting.map.markerCluster)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.map.markerCluster.help)]]></Description>
       <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[false]]></Default>
+      <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageSeriesDisplay.default]]></IncludeName>

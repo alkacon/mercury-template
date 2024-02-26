@@ -23,7 +23,8 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:if test="${cms.isEditMode}">
+<c:set var="isTypesSupported" value="${true}" />
+
 
 <fmt:setLocale value="${cms.workplaceLocale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -52,11 +53,8 @@
     </c:if>
 </c:forEach>
 
-<c:set var="isTypesSupported" value="${true}" />
 <c:if test="${not empty invalidTypes}">
     <c:set var="isTypesSupported" value="${false}" />
-    <c:if test="">
-    </c:if>
     <mercury:alert type="warning">
         <jsp:attribute name="head">
             <fmt:message key="msg.error.list.wrongType.head" />
@@ -82,5 +80,3 @@
 </c:if>
 
 </cms:bundle>
-
-</c:if>

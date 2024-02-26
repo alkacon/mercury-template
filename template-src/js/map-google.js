@@ -462,13 +462,15 @@ function showMap(event){
     // called by click on hidden map element in edit mode
     if (DEBUG) {console.log("GoogleMap show map with id: " + event.currentTarget.id);}
     var mapToShow= event.currentTarget;
-
     for(var i=0; i<m_mapData.length;i++){
         if(m_mapData[i].id == mapToShow.id){
             m_mapData[i].showPlaceholder=false;
             showSingleMap(m_mapData[i]);
         }
     }
+    window.dispatchEvent(new CustomEvent("map-placeholder-click", {
+        detail: GoogleMap
+    }));
 }
 
 /****** Exported functions ******/

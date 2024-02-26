@@ -578,6 +578,9 @@ function showMap(event){
             });
         }
     }
+    window.dispatchEvent(new CustomEvent("map-placeholder-click", {
+        detail: OsmMap
+    }));
 }
 
 function redrawMap(mapId, event) {

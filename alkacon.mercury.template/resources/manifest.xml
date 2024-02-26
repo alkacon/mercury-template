@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>16.0.121</version>
+		<version>16.0.118</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -8698,6 +8698,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Generates the sort option bar for the dynamic list]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/list-supported-types.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/list-supported-types.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>1e70e32f-d49e-11ee-9872-0242ac11002b</uuidstructure>
+			<uuidresource>1e70e330-d49e-11ee-9872-0242ac11002b</uuidresource>
+			<datecreated>Mon, 26 Feb 2024 11:56:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Checks if the types used in a list match a given restriction]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

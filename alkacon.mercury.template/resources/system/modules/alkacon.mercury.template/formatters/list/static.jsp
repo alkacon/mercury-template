@@ -24,8 +24,8 @@
     <mercury:list-compatibility
         settings="${settings}"
         types="${content.valueList.TypesToCollect}"
+        listType="static"
         listTitle="${value.Title}"
-        isStaticList="true"
     />
 </c:set>
 

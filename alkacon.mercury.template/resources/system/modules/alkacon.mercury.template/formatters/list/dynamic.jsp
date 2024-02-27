@@ -63,6 +63,7 @@
     <mercury:list-compatibility
         settings="${settings}"
         types="${content.valueList.TypesToCollect}"
+        listType="dynamic"
         listTitle="${value.Title}"
     />
 </c:set>

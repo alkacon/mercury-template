@@ -342,11 +342,9 @@ function showSingleMap(mapData, filterByGroup){
     
                 // attach event listener that shows info window to marker
                 // see http://you.arenot.me/2010/06/29/google-maps-api-v3-0-multiple-markers-multiple-infowindows/
-                if (group !== "centerpoint") {
-                    marker.addListener('click', function() {
-                        showInfo(this.mapId, this.index);
-                    });
-                }
+                marker.addListener('click', function() {
+                    showInfo(this.mapId, this.index);
+                });
                 idx++;
             }
         }

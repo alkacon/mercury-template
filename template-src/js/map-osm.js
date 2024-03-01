@@ -151,7 +151,7 @@ function showSingleMap(mapData) {
             });
 
             markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
-            if (marker.info.length > 0 && group !== "centerpoint"){
+            if (marker.info.length > 0){
                 markerObject.setPopup(new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' }).setHTML(marker.info));
             }
             markerObject.addTo(m_maps[mapData.id]);

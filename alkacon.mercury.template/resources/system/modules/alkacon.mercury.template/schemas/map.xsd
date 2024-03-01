@@ -69,7 +69,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>MapCoord</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Marker))]]></DisplayName>
+                    <DisplayName><![CDATA[%(key.label.Marker)]]></DisplayName>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

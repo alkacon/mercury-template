@@ -241,6 +241,7 @@
     <c:when test="${pieceLayout eq 0}">
         <%-- Heading, Image, Text, Link (full width) --%>
         <c:set var="visualFirst"    value="${not showHeading or inlineHeading}" />
+        <c:set var="linkLast"       value="${showLink and not ((showBody or allowEmptyBodyColumn) and inlineLink)}" />
         <c:set var="visualLast"     value="${not showBody and not allowEmptyBodyColumn and not (showLink and not inlineLink and linkLast)}" />
     </c:when>
     <c:when test="${pieceLayout eq 1}">

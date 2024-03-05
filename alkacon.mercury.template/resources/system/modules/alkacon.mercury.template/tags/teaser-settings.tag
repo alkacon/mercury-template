@@ -63,7 +63,8 @@
 <c:set var="setSizeDesktop"                 value="${setting.pieceSizeDesktop.toInteger}" />
 <c:set var="setSizeMobile"                  value="${setting.pieceSizeMobile.toInteger}" />
 <c:set var="setShowVisual"                  value="${setting.visualOption.toString ne 'none'}" />
-<c:set var="setLinkOption"                  value="${setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />
+<c:set var="paramLinkOption"                value="${setting.paramLinkOption}" />
+<c:set var="setLinkOption"                  value="${paramLinkOption.isSet ? paramLinkOption.toString : setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />
 <c:set var="setHeadingInBody"               value="${setting.headingInBody.toBoolean}" />
 
 <c:set var="pageUri"                        value="${setting.pageUri.toString}" />

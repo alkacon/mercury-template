@@ -32,7 +32,7 @@
 <c:choose>
     <c:when test="${isDetailRequest}">
         <%-- This is a standard request to a detail page --%>
-        <c:set var="isRequestToMatchingPage"         value="${cms.detailContentId eq content.file.structureId}" />
+        <c:set var="isRequestToMatchingPage"         value="${cms.detailContentId eq content.file.structureId and (empty cms.container or not cms.container.detailOnly)}" />
         <c:set var="isDetailOnly"                    value="${true}" />
     </c:when>
     <c:otherwise>

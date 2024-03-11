@@ -206,7 +206,7 @@
     <c:set var="linkHeadline" value="${linkOnHeadline and not headingInBody and (hsize > 0)}" />
 </c:if>
 
-<c:if test="${(not empty date) and (dateFormat ne 'none')}">
+<c:if test="${(not empty date) and date.isSet and (dateFormat ne 'none')}">
     <c:set var="dateMarkup">
         <div class="teaser-date"><%----%>
             <mercury:instancedate date="${date}" format="${dateFormat}" />

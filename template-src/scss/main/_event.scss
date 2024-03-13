@@ -159,6 +159,8 @@
     @include calendar-sheet-base();
 
     .calendar-sheet-piece.piece.flex {
+        --#{$prefix}piece-visual-size: 100%;
+        --#{$prefix}piece-body-size: 100%;
         > .visual,
         > .body {
             padding-left: 0;

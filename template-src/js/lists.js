@@ -1184,82 +1184,84 @@ function replaceFilterCounts(filterGroup, ajaxCountJson) {
     if(DEBUG) console.info("Lists.replaceFilterCounts() called with ajaxCountJson", ajaxCountJson);
     filterGroup.forEach((filter) => {
         var elementFacets = ajaxCountJson[filter.id];
-        var archiveFilter = elementFacets['a'];
-        var categoryFilter = elementFacets['c'];
-        var folderFilter = elementFacets['f'];
-        if(null != archiveFilter) {
-            var $el = filter.$element.find('.archive');
-            $el.find('li[data-value]').each(function(_, li) {
-                var val = li.getAttribute('data-value');
-                var count = archiveFilter[val];
-                if(null == count) count = '0';
-                var countSpan = li.querySelector('.li-count');
-                var isDisabled = li.classList.contains('disabled');
-                if(countSpan != undefined && countSpan.textContent !== count) { // change the count
-                    countSpan.textContent = count;
-                }
-                if (isDisabled && count !== '0' || !isDisabled && count === '0') { // enabled / disable
-                    if(count === '0') {
-                        li.setAttribute('data-onclick', li.getAttribute('onclick'));
-                        li.removeAttribute('onclick');
-                        li.setAttribute('tabindex', '-1');
-                        li.classList.remove('enabled');
-                        li.classList.add('disabled');
-                    } else  {
-                        li.setAttribute('onclick', li.getAttribute('data-onclick'));
-                        li.removeAttribute('data-onclick');
-                        li.setAttribute('tabindex', '0');
-                        li.classList.remove('disabled');
-                        li.classList.add('enabled');
+        if (undefined !== elementFacets && null !== elementFacets) {
+            var archiveFilter = elementFacets['a'];
+            var categoryFilter = elementFacets['c'];
+            var folderFilter = elementFacets['f'];
+            if(null != archiveFilter) {
+                var $el = filter.$element.find('.archive');
+                $el.find('li[data-value]').each(function(_, li) {
+                    var val = li.getAttribute('data-value');
+                    var count = archiveFilter[val];
+                    if(null == count) count = '0';
+                    var countSpan = li.querySelector('.li-count');
+                    var isDisabled = li.classList.contains('disabled');
+                    if(countSpan != undefined && countSpan.textContent !== count) { // change the count
+                        countSpan.textContent = count;
                     }
-                }
-            });
-        }
-        if(null != categoryFilter) {
-            var $catEl = filter.$element.find('.categories');
-            $catEl.find('li[data-value]').each(function(_, li) {
-                var val = li.getAttribute('data-value');
-                var count = categoryFilter[val];
-                if(null == count) count = '0';
-                var countSpan = li.querySelector('.li-count');
-                var isDisabled = li.classList.contains('disabled');
-                if(countSpan != undefined && countSpan.textContent !== count) { // change the count
-                    countSpan.textContent = count;
-                }
-                if (isDisabled && count !== '0' || !isDisabled && count === '0') { // enabled / disable
-                    var a = li.querySelector('a');
-                    if(count == '0') {
-                        a.setAttribute('tabindex', '-1');
-                        li.classList.remove('enabled');
-                        li.classList.add('disabled');
-                    } else {
-                        a.setAttribute('tabindex', '0');
-                        li.classList.remove('disabled');
-                        li.classList.add('enabled');
+                    if (isDisabled && count !== '0' || !isDisabled && count === '0') { // enabled / disable
+                        if(count === '0') {
+                            li.setAttribute('data-onclick', li.getAttribute('onclick'));
+                            li.removeAttribute('onclick');
+                            li.setAttribute('tabindex', '-1');
+                            li.classList.remove('enabled');
+                            li.classList.add('disabled');
+                        } else  {
+                            li.setAttribute('onclick', li.getAttribute('data-onclick'));
+                            li.removeAttribute('data-onclick');
+                            li.setAttribute('tabindex', '0');
+                            li.classList.remove('disabled');
+                            li.classList.add('enabled');
+                        }
                     }
-                }
-            });
-        }
-        if(null != folderFilter) {
-            var $catEl = filter.$element.find('.folders');
-            $catEl.find('li[data-value]').each(function(_, li) {
-                var val = li.getAttribute('data-value');
-                var count = folderFilter[val];
-                var shouldDisable = (null == count || count == '0');
-                var isDisabled = li.classList.contains('disabled');
-                if (isDisabled != shouldDisable) {
-                    var a = li.querySelector('a');
-                    if(shouldDisable) {
-                        a.setAttribute('tabindex', '-1');
-                        li.classList.remove('enabled');
-                        li.classList.add('disabled');
-                    } else {
-                        a.setAttribute('tabindex', '0');
-                        li.classList.remove('disabled');
-                        li.classList.add('enabled');
+                });
+            }
+            if(null != categoryFilter) {
+                var $catEl = filter.$element.find('.categories');
+                $catEl.find('li[data-value]').each(function(_, li) {
+                    var val = li.getAttribute('data-value');
+                    var count = categoryFilter[val];
+                    if(null == count) count = '0';
+                    var countSpan = li.querySelector('.li-count');
+                    var isDisabled = li.classList.contains('disabled');
+                    if(countSpan != undefined && countSpan.textContent !== count) { // change the count
+                        countSpan.textContent = count;
                     }
-                }
-            });
+                    if (isDisabled && count !== '0' || !isDisabled && count === '0') { // enabled / disable
+                        var a = li.querySelector('a');
+                        if(count == '0') {
+                            a.setAttribute('tabindex', '-1');
+                            li.classList.remove('enabled');
+                            li.classList.add('disabled');
+                        } else {
+                            a.setAttribute('tabindex', '0');
+                            li.classList.remove('disabled');
+                            li.classList.add('enabled');
+                        }
+                    }
+                });
+            }
+            if(null != folderFilter) {
+                var $catEl = filter.$element.find('.folders');
+                $catEl.find('li[data-value]').each(function(_, li) {
+                    var val = li.getAttribute('data-value');
+                    var count = folderFilter[val];
+                    var shouldDisable = (null == count || count == '0');
+                    var isDisabled = li.classList.contains('disabled');
+                    if (isDisabled != shouldDisable) {
+                        var a = li.querySelector('a');
+                        if(shouldDisable) {
+                            a.setAttribute('tabindex', '-1');
+                            li.classList.remove('enabled');
+                            li.classList.add('disabled');
+                        } else {
+                            a.setAttribute('tabindex', '0');
+                            li.classList.remove('disabled');
+                            li.classList.add('enabled');
+                        }
+                    }
+                });
+            }
         }
     })
 }

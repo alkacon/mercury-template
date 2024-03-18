@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="section"
+    display-name="section-piece"
     body-content="tagdependent"
     trimDirectiveWhitespaces="true"
     description="Displays a content section like a paragraph." %>
@@ -155,8 +155,21 @@
 <c:choose>
 <c:when test="${showHeading or showText or showVisual or showLink}">
 
+    <c:if test="${showVisual and empty markupVisual}">
+        <%-- To set the visual css wrapper, the image orientation must be known. Also check if the image is from the icon folder. --%>
+        <mercury:image-vars
+            image="${image}"
+            ratio="${imageRatio}"
+            ade="${false}">
+                <c:set var="showVisual" value="${not empty imageBean}" />
+                <c:set var="isIconImage" value="${imageIsSvg and fn:startsWith(imageBean.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}" />
+                <c:set var="visualOrientation" value="${' '.concat(imageOrientation)}" />
+        </mercury:image-vars>
+    </c:if>
+
+    <%-- pmv class: (p)iece (m)inimum (v)isual - set width to 32px for icons --%>
     <mercury:piece
-        cssWrapper="${cssWrapper}${hasIconImage ? ' pmv' : ''}"
+        cssWrapper="${cssWrapper}${isIconImage ? ' pmv' : ''}"
         attrWrapper="${attrWrapper}"
         pieceLayout="${pieceLayout}"
         sizeDesktop="${sizeDesktop}"
@@ -166,7 +179,7 @@
         piecePreMarkup="${piecePreMarkup}"
         cssText="${showText and (textOption ne 'default') ? textOption : ''}${not empty cssText ? ' '.concat(cssText) : null}"
         attrVisual="${ade ? image.rdfaAttr : null}"
-        cssVisual="rs_skip${imageOri}${not empty cssVisual ? ' '.concat(cssVisual) : null}"
+        cssVisual="rs_skip${visualOrientation}${not empty cssVisual ? ' '.concat(cssVisual) : null}"
         textAlignment="${textAlignment}"
         attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
         cssBody="${defaultText ? 'default' :_null}"
@@ -215,6 +228,7 @@
 
         <jsp:attribute name="visual">
             <%-- Note: It is important set the image inside the attribute, because otherwise the cssgrid for the image size is not calculated correctly. --%>
+            <%-- However, to set the visual css wrapper, the image orientation must be known - hence the image vars must be read above. --%>
             <c:choose>
                 <c:when test="${showVisual and empty markupVisual}">
                     <c:set var="showImageLink"  value="${empty showImageLink or suppressLinks ? false : showImageLink}" />
@@ -236,9 +250,6 @@
                                     <div class="subtitle"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
                                 </c:if>
                             </c:set>
-                            <c:set var="emptyImage" value="${empty imageBean}" />
-                            <c:set var="imageOri" value="${' '.concat(imageOrientation)}" />
-                            <c:set var="hasIconImage" value="${imageIsSvg and fn:startsWith(imageBean.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}" />
                         </mercury:image-animated>
                     </mercury:link>
                     <c:out value="${imageSubtext}" escapeXml="false" />

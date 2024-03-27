@@ -37,13 +37,13 @@
                     <Search>false</Search>
                 </Setting>
                 <Setting>
-                	<PropertyName>Services</PropertyName>
-                	<DisplayName><![CDATA[%(key.label.Shariff.Services)]]></DisplayName>
+                    <PropertyName>Services</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Shariff.Services)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Shariff.Services.help)]]></Description>
                     <Widget>multiselect</Widget>
                     <Default>twitter,facebook</Default>
                     <WidgetConfig><![CDATA[
-                        twitter:Twitter|
+                        twitter:X (Twitter)|
                         facebook:Facebook|
                         linkedin:LinkedIn|
                         xing:Xing|
@@ -54,7 +54,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>MailConfig</PropertyName>
-                	<DisplayName><![CDATA[%(key.label.Shariff.MailConfig)]]></DisplayName>
+                    <DisplayName><![CDATA[%(key.label.Shariff.MailConfig)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Shariff.MailConfig.help)]]></Description>
                 </Setting>
                 <Setting>

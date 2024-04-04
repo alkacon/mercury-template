@@ -1174,7 +1174,7 @@
     }
 
     .dropdown-toggle {
-        padding: $btn-padding #{$btn-padding * 6} $btn-padding #{$btn-padding * 2};
+        padding: $btn-padding #{$btn-h-padding * 3} $btn-padding $btn-h-padding;
 
         &::after {
             @include toggle-arrow-open-after(true);
@@ -1200,7 +1200,7 @@
         padding: 0;
         border-radius: 0;
         font-size: $font-size-base;
-        color: $text-dark;
+        color: var(--#{$prefix}body-color);
         min-width: 16rem;
         font-weight: $font-weight-base;
         box-shadow: $nav-shadow;
@@ -1210,11 +1210,13 @@
             animation-duration: $nav-animation-time;
             animation-fill-mode: both;
             transform-origin: top;
+            min-width: 100%;
         }
 
         > li > a {
-            padding: calc(0.5 * var(--#{$prefix}ws-margin)) var(--#{$prefix}ws-margin);
-            color: $text-dark;
+            padding: $btn-def-padding;
+            background-color: var(--#{$prefix}body-bg);
+            color: var(--#{$prefix}body-color);
             text-decoration: none;
             clear: both;
             display: block;
@@ -1222,7 +1224,8 @@
             line-height: 1.4;
 
             &:hover {
-                background-color: $grey-light;
+                color: var(--#{$prefix}btn-fg);
+                background-color: var(--#{$prefix}btn-bg);
             }
         }
 
@@ -1230,8 +1233,8 @@
             > a,
             > a:hover,
             > a:focus {
-                color: get-text-color($main-theme);
-                background-color: $main-theme;
+                color: var(--#{$prefix}btn-fg);
+                background-color: var(--#{$prefix}btn-bg);
             }
         }
 

@@ -6,7 +6,7 @@ The Mercury Template is a complete, modular template for [OpenCms](http://opencm
 
 ### Release history ###
 
-**Version 17** - April9 , 2024:
+**Version 17** - April 9 , 2024:
 
 * Updated for OpenCms 17.
 * "Job posting" allows to set detailed SEO meta information for employment type, salary and more.

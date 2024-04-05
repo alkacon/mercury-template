@@ -1,9 +1,10 @@
 /bin/
 /node_modules
-/.gradle
-/.sass-cache/
 /build/
 /output/
+/.gradle
+/.sass-cache/
+/.vscode/
 /module-export.sh
 *.ignore.txt
 .DS_Store

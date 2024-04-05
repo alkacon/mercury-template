@@ -38,7 +38,7 @@
         </link>
       </links>
       <content><![CDATA[<p><em>April 9, 2024</em>: OpenCms 17 gives content managers the new app "Date search" to find content that has been changed in a certain time range. The "Websites" app allows to easily export the content of a complete site for archiving, directly from the list of configured sites. An option has been added to hide "sensitive" content in the Offline project that will only become public for all content managers when the "availability" date is reached. The default Mercury template has been further improved, e.g. with SEO optimized job postings, a "spacer" function and marker clusters for maps. OpenCms 17 has also been tested and certified using Java 17 LTS and 21 LTS, while keeping compatibility with Java 8 LTS and Java 11 LTS.</p>
-<p><em>Please note that OpenCms 17 will be the last major OpenCms release that keeps Java 8 compatbility. Future OpenCms Versions will require at least Java 11.</em></p>
+<p><em>Please note that OpenCms 17 will be the last major OpenCms release that keeps Java 8 compatibility. Future OpenCms Versions will require at least Java 11.</em></p>
 <h2>Major new features of OpenCms 17</h2>
 <ul>
 <li>New app "Date search" to find contents changed in a date range.</li>
@@ -63,9 +63,9 @@
 <li>Configuration: Add filter options for two select widgets in master sitemap configuration.</li>
 <li>Build using Gradle 8.</li>
 <li>Localization: Added french workplace localization.</li>
-<li>Pull request #792 extended shell with multiple classes. (<a class="external" href="%(link0)" target="_self">github</a>)</li>
-<li>Pull request #784 Remove unnecessary logs to the Servlet Container. (<a class="external" href="%(link1)" target="_self">github</a>)</li>
-<li>Pull request #794 Code review. (<a class="external" href="%(link2)" target="_self">github</a>)</li>
+<li>Pull request #792 extended shell with multiple classes (<a class="external" href="%(link0)" target="_self">github</a>).</li>
+<li>Pull request #784 Remove unnecessary logs to the Servlet Container (<a class="external" href="%(link1)" target="_self">github</a>).</li>
+<li>Pull request #794 Code review (<a class="external" href="%(link2)" target="_self">github</a>).</li>
 </ul>
 <h2>Issues fixed in OpenCms 17</h2>
 <ul>
@@ -84,9 +84,9 @@
 <li>Fixed issue when configuring a serial date for monthly events.</li>
 <li>Fixed issue with NPE in element setting dialog for formatters that do not fit the container.</li>
 <li>Fixed issue with incorrect detail page link generated for contents in a foreign site.</li>
-<li>Fixed issue !#782 where CmsShell command "replaceModuleFromDefault" didn't work. (<a class="external" href="%(link3)" target="_self">github</a>)</li>
-<li>Fixed issue !#796 with data view widget. (<a class="external" href="%(link4)" target="_self">github</a>)</li>
-<li>Fixed issue !#768 with detail-only pages not being properly unlocked on logout. (<a class="external" href="%(link5)" target="_self">github</a>)</li>
+<li>Fixed issue !#782 where CmsShell command "replaceModuleFromDefault" didn't work (<a class="external" href="%(link3)" target="_self">github</a>).</li>
+<li>Fixed issue !#796 with data view widget (<a class="external" href="%(link4)" target="_self">github</a>).</li>
+<li>Fixed issue !#768 with detail-only pages not being properly unlocked on logout (<a class="external" href="%(link5)" target="_self">github</a>).</li>
 </ul>
 <h2>General OpenCms features</h2>
 <ul>
@@ -114,11 +114,12 @@
 <li>... and many more</li>
 </ul>
 <h3>Backward compatibility</h3>
-<p>OpenCms 17 is backward compatible with all 16, 15, 14, 13, 12, 11, 10.5 and 10 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 17.</p>
+<p>OpenCms 17 is backward compatible with all 16, 15, 14, 13, 12, 11 and 10 versions. Templates and other OpenCms developed code from these versions should work mostly "out of the box" with version 17.</p>
 <p><span class="label label-red">Notice for users of Alkacon OCEE</span> Users of Alkacon OCEE require a new OCEE version for OpenCms 17. The update is free for Alkacon customers with a valid OCEE subscription. <a href="%(link6)" target="_blank" rel="noopener">Please contact Alkacon</a> to receive the new version.</p>
 <h3>Compatibility with Java versions, servlet containers and databases</h3>
-<p>OpenCms 17 has been written and tested for Java 21, 17, 11 and 8. We have tested with ORACLEs JDK as well as OpenJDK. OpenCms should run with all compliant JVMs.</p>
-<p>We have tested this release on the Tomcat servlet engine, which we recommend. OpenCms works "out of the box" with Tomcat 9 and 8.5. Others have reported deploying OpenCms successfully on other servlet containers like JBoss, WildFly, WebLogic, WebSphere, GlassFish and Resin.</p>
+<p>OpenCms 17 is compatible with Java 21, 17, 11 and 8.</p>
+<p><em>Please note that OpenCms 17 will be the last major OpenCms release that keeps Java 8 compatibility. Future OpenCms Versions will require at least Java 11.</em></p>
+<p>OpenCms 17 requires a Java Servlet 4.0 compatible web container. We have tested this release using Jetty and Tomcat. It works "out of the box" with Jetty 12 or Tomcat 9. Others have reported deploying OpenCms successfully on other web servlet containers like WildFly, GlassFish, WebLogic, WebSphere and Resin.</p>
 <p>On the database side, we provide support for MySQL, MariaDB, Oracle, PostgreSQL, MS SQL Server, DB2 and HSQLDB.</p>
 <h3>Regarding version numbers and build tags</h3>
 <p>The main OpenCms Git repository is available on Github at <a href="%(link7)" target="_blank" rel="noopener noreferrer">github.com/alkacon/opencms-core</a>.</p>

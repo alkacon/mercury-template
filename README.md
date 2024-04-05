@@ -6,6 +6,24 @@ The Mercury Template is a complete, modular template for [OpenCms](http://opencm
 
 ### Release history ###
 
+**Version 17** - April9 , 2024:
+
+* Updated for OpenCms 17.
+* "Job posting" allows to set detailed SEO meta information for employment type, salary and more.
+* New "Spacer" dynamic function to add customizable spacing between elements.
+* The "Map" now supports clustering nearby markers.
+* The "Map" marker info popups can now optionally display a link and the facility icons.
+* The "Event" now can now optionally show a map for the event location.
+* New "Link sequence" formatter with fold / unfold option.
+* The "Dynamic list" now returns to the last page and scroll position when using the browser "back" button.
+* Combined list filters for a "Dynamic list" are displayed more prominently and can easier be removed.
+* Selected individual "Form" data sets for CSV or Excel export.
+* Individual icons in link sequences can be placed behind the text using "icon-last".
+* "Person" and "Organization" have an additional field "Notice".
+* Option to set "robots" meta information for individual pages.
+* Updated all icon sets.
+* All NPM dependencies have been updated to a recent version.
+
 **Version 16** - October 2, 2023:
 
 This version provides incremental improvements. Mercury 16 should be largely backward compatible with the 15 version.
@@ -34,7 +52,7 @@ This version provides incremental improvements. Mercury 15 should be largely bac
 * Events now feature an optional link to mark them as online or mixed events.
 * Events now feature an optional cost table.
 * Image series can now displayed as square images, slides or in masonry layout.
-* Images in a slider now have an optional relase and expiration date.
+* Images in a slider now have an optional reelease and expiration date.
 * New "Link box" formatter for the content section.
 * The "Image tile" formatter for the content section has more options for letter placement.
 * Places / POI can now be displayed in lists.
@@ -66,7 +84,7 @@ This version updates the underlying Bootstrap framework to 5.2 and provides incr
 This update adds the 'Burger' variant for the Mercury template and provides incremental improvements to several other features. Mercury 13 should be largely backward compatible with the 12 version.
 
 * Updated for OpenCms 13.
-* Added the 'Burger' template variant that displays a buger menu for all display sizes.
+* Added the 'Burger' template variant that displays a burger menu for all display sizes.
 * Greatly improved the accessibility of template.
 * Added a 'skip to content' link for screen readers.
 * Added automatic tab indexing for all headings on a page.
@@ -166,7 +184,7 @@ For the technical minded here are some more background facts about Mercury:
 
 The rest of this page deals explains the technical process of how to customize the template from source. This is required only if you require full control of all aspects of the HTML / CSS being generated.
 
-### Structure of the repository source files  ###
+### Structure of the repository source files ###
 
 The Mercury template source code is available on [GitHub](https://github.com/alkacon/mercury-template).
 
@@ -180,7 +198,7 @@ The CSS themes are generated from the resources under `./template-src/scss`.
 
 The JavaScript is generated from the resources under `./template-src/js`.
 
-### Building the Mercury CSS and JavaScript  ###
+### Building the Mercury CSS and JavaScript ###
 
 To customize the template, you can add or change files under `template-src` and then use SASS / npm to compile the sources and place the results in the *alkacon.mercury.theme* module.
 
@@ -252,5 +270,3 @@ GNU Affero General Public License for more details.
 
 See [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/) for the
 full text of the GNU Affero General Public License.
-
-

@@ -136,11 +136,11 @@ class SubmissionsDialogDelete {
         const requestData = "";
         client.send(requestData);
         client.onload = function() {
-            self.m_response.setHTML(this.responseText);
+            self.m_response.innerHTML = this.responseText;
             location.href = "?reload";
         }
         client.onerror = function() {
-            self.m_response.setHTML(this.responseText);
+            self.m_response.innerHTML = this.responseText;
         }
     }
 
@@ -154,11 +154,11 @@ class SubmissionsDialogDelete {
         const requestData = ids.length == 0 ? "" : "formdata=" + ids.join(",");
         client.send(requestData);
         client.onload = function() {
-            self.m_response.setHTML(this.responseText);
+            self.m_response.innerHTML = this.responseText;
             location.href = "?reload";
         }
         client.onerror = function() {
-            self.m_response.setHTML(this.responseText);
+            self.m_response.innerHTML = this.responseText;
         }
     }
 

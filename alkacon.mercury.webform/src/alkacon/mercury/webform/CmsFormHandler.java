@@ -1337,8 +1337,14 @@ public class CmsFormHandler extends CmsJspActionElement {
         // set the necessary attributes to use in the string template
         String formUri = getCmsObject().getRequestContext().getUri();
         if (CmsJspStandardContextBean.getInstance(getRequest()).isDetailRequest()) {
-            formUri = CmsJspStandardContextBean.getInstance(getRequest()).getDetailContentSitePath();
+            CmsLinkManager linkManager = OpenCms.getLinkManager();
+            formUri = linkManager.substituteLinkForUnknownTarget(
+                getCmsObject(),
+                CmsJspStandardContextBean.getInstance(getRequest()).getDetailContentSitePath(),
+                null,
+                false);
         }
+
         sTemplate.setAttribute(
             I_CmsTemplateCheckPage.ATTR_FORM_URI,
             OpenCms.getLinkManager().substituteLink(getCmsObject(), formUri));

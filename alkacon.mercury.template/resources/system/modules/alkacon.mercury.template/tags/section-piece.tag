@@ -54,8 +54,11 @@
     description="The heading level of the section heading." %>
 
 <%@ attribute name="imageRatio" type="java.lang.String" required="false"
-    description="Can be used to scale the image in a specific ratio,
+    description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
+
+<%@ attribute name="imageRatioXs" type="java.lang.String" required="false"
+    description="Image ratio for small screens." %>
 
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' selectors to add to the generated div surrounding the section." %>
@@ -241,6 +244,7 @@
                         <mercury:image-animated
                             image="${image}"
                             ratio="${imageRatio}"
+                            ratioXs="${imageRatioXs}"
                             setTitle="${not showImageLink}"
                             showCopyright="${showImageCopyright}"
                             showImageZoom="${showImageZoom and not showImageLink}"

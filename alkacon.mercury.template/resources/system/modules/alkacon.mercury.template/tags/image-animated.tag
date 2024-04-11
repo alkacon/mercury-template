@@ -15,6 +15,9 @@
     description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
+<%@ attribute name="ratioXs" type="java.lang.String" required="false"
+    description="Image ratio for small screens." %>
+
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="Text used in the image 'alt' and 'title' attributes."%>
 
@@ -101,6 +104,9 @@
 <c:set var="test" value="${empty test ? true : test}" />
 <c:set var="setTitle" value="${empty setTitle ? true : setTitle}" />
 
+<c:set var="ratioXs" value="${(empty ratioXs) or ('desk' eq ratioXs) ? ratio : ratioXs}" />
+<c:set var="adoptRatioToScreen" value="${(not empty ratioXs) and (ratio ne ratioXs)}" />
+
 <c:choose>
     <c:when test="${addEffectPiece}">
         <c:set var="effectWrapper" value="effect-piece" />
@@ -113,34 +119,75 @@
 <c:choose>
 
 <c:when test="${not empty imageBean and test}">
-    <c:if test="${showImageZoom}">
-        <c:set var="zoomData">
-            <mercury:image-zoomdata
-                src="${imageUrl}"
-                title="${imageTitle}"
-                alt="${empty imageDescription ? imageTitle : imageDescription}"
-                copyright="${imageCopyrightHtml}"
-                height="${imageHeight}"
-                width="${imageWidth}"
-                imageBean="${imageBean}"
-            />
-        </c:set>
-    </c:if>
     <mercury:div css="${effectWrapper}${not empty effectWrapper and not empty cssWrapper ? ' ':''}${cssWrapper}" attr="${attrWrapper}" test="${not empty effectWrapper or not empty cssWrapper or not empty attrWrapper}">
-        <mercury:image-srcset
-            imagebean="${imageBean}"
-            sizes="${sizes}"
-            alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
-            title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
-            copyright="${showCopyright ? imageCopyrightHtml : null}"
-            cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
-            cssWrapper="${showImageZoom ? 'zoomer' : ''}"
-            attrImage="${attrImage}"
-            attrWrapper="${imageDndAttr}"
-            isSvg="${imageIsSvg}"
-            zoomData="${zoomData}"
-            noScript="${noScript}"
-        />
+        <c:choose>
+            <c:when test="${showImageZoom and (adoptRatioToScreen or imageIsSvg)}">
+                <c:set var="zoomData">
+                    <mercury:image-zoomdata
+                        src="${imageUnscaledBean.srcUrl}"
+                        title="${imageTitle}"
+                        alt="${empty imageDescription ? imageTitle : imageDescription}"
+                        copyright="${imageCopyrightHtml}"
+                        height="${imageUnscaledBean.scaler.height}"
+                        width="${imageUnscaledBean.scaler.width}"
+                        imageBean="${imageUnscaledBean}"
+                    />
+                </c:set>
+            </c:when>
+            <c:when test="${showImageZoom}">
+                <c:set var="zoomData">
+                    <mercury:image-zoomdata
+                        src="${imageUrl}"
+                        title="${imageTitle}"
+                        alt="${empty imageDescription ? imageTitle : imageDescription}"
+                        copyright="${imageCopyrightHtml}"
+                        height="${imageHeight}"
+                        width="${imageWidth}"
+                        imageBean="${imageBean}"
+                    />
+                </c:set>
+            </c:when>
+        </c:choose>
+        <c:if test="${adoptRatioToScreen}">
+            <c:set var="mobileWrapper" value="hidden-lg hidden-xl hidden-xxl" />
+            <cms:addparams>
+                <cms:param name="cssgrid">${mobileWrapper}</cms:param>
+                <mercury:image-srcset
+                    imagebean="${ratioXs eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioXs]}"
+                    sizes="${sizes}"
+                    alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
+                    title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                    copyright="${showCopyright ? imageCopyrightHtml : null}"
+                    cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
+                    cssWrapper="${mobileWrapper}${showImageZoom ? ' zoomer' : ''}"
+                    attrImage="${attrImage}"
+                    attrWrapper="${imageDndAttr}"
+                    isSvg="${imageIsSvg}"
+                    zoomData="${zoomData}"
+                    noScript="${noScript}"
+                />
+            </cms:addparams>
+        </c:if>
+        <cms:addparams>
+            <c:if test="${adoptRatioToScreen}">
+                <c:set var="desktopWrapper" value="hidden-xs hidden-sm hidden-md${showImageZoom ? ' ' : ''}" />
+                <cms:param name="cssgrid">${desktopWrapper}</cms:param>
+            </c:if>
+            <mercury:image-srcset
+                imagebean="${imageBean}"
+                sizes="${sizes}"
+                alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
+                title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                copyright="${showCopyright ? imageCopyrightHtml : null}"
+                cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
+                cssWrapper="${desktopWrapper}${showImageZoom ? 'zoomer' : ''}"
+                attrImage="${attrImage}"
+                attrWrapper="${imageDndAttr}"
+                isSvg="${imageIsSvg}"
+                zoomData="${zoomData}"
+                noScript="${noScript}"
+            />
+        </cms:addparams>
         <%-- ####### JSP body inserted here ######## --%>
         <jsp:doBody/>
         <%-- ####### /JSP body inserted here ######## --%>

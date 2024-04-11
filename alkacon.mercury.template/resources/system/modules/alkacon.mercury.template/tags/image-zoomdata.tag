@@ -40,17 +40,31 @@
         <c:if test="${not empty title}"><div class="title">${title}</div></c:if>
         <c:if test="${not empty copyright}"><div class="copyright">${copyright}</div></c:if>
     </c:set>
-    <c:if test="${not empty imageBean and ((width > 2500) or (height > 2500))}">
-        <%-- The image may be to large for the image scaler, check this and if so use a smaller image --%>
-        <mercury:image-sizes>
-            <c:if test="${(width > maxScaleWidth) or (height > maxScaleWidth)}">
-                <c:set var="scale" value="${width > height ? (maxScaleWidth / width) : (maxScaleWidth / height)}" />
-                <c:set var="scaledImage" value="${imageBean.scaleWidth[cms.wrap[width * scale].mathFloor]}" />
-                <c:set var="src" value="${scaledImage.srcUrl}" />
-                <c:set var="width" value="${imageBean.scaler.width}" />
-                <c:set var="height" value="${imageBean.scaler.height}" />
-            </c:if>
-        </mercury:image-sizes>
+    <c:if test="${not empty imageBean}">
+        <c:set var="imageIsSvg" value="${fn:endsWith(imageBean.vfsUri, '.svg')}" />
+        <c:choose>
+            <c:when test="${imageIsSvg}">
+                <c:set var="src" value="${imageBean.resource.link}" />
+                <c:set var="minSvgWidth" value="${500}" />
+                <c:if test="${width lt minSvgWidth}">
+                    <c:set var="scale" value="${width / height}" />
+                    <c:set var="width" value="${minSvgWidth}" />
+                    <c:set var="height" value="${cms.wrap[height * scale].mathFloor}" />
+                </c:if>
+            </c:when>
+            <c:when test="${(width gt 2500) or (height gt 2500)}">
+                <%-- The image may be to large for the image scaler, check this and if so use a smaller image --%>
+                <mercury:image-sizes>
+                    <c:if test="${(width gt maxScaleWidth) or (height gt maxScaleWidth)}">
+                        <c:set var="scale" value="${width gt height ? (maxScaleWidth / width) : (maxScaleWidth / height)}" />
+                        <c:set var="scaledImage" value="${imageBean.scaleWidth[cms.wrap[width * scale].mathFloor]}" />
+                        <c:set var="src" value="${scaledImage.srcUrl}" />
+                        <c:set var="width" value="${imageBean.scaler.width}" />
+                        <c:set var="height" value="${imageBean.scaler.height}" />
+                    </c:if>
+                </mercury:image-sizes>
+            </c:when>
+        </c:choose>
     </c:if>
     <%-- Note: Both "width" and "w" given, so that older templates can also use this tag --%>
     <c:set var="dataImagezoom">data-imagezoom='{ "width": ${width}, "height": ${height}, "w": ${width}, "h": ${height}<%----%>

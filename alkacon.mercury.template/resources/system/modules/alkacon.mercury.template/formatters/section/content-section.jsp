@@ -22,6 +22,7 @@
 <c:set var="sizeMobile"         value="${setting.sizeMobile.isSetNotNone ? setting.sizeMobile.toInteger : null}" />
 <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio.toString}" />
+<c:set var="imageRatioXs"       value="${setting.imageRatioXs.toString}" />
 <c:set var="linkOption"         value="${setting.linkOption.toString}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
@@ -45,6 +46,7 @@
     link="${value.Link}"
     hsize="${hsize}"
     imageRatio="${imageRatio}"
+    imageRatioXs="${imageRatioXs}"
     textOption="${textOption}"
     textAlignment="${textAlignment}"
     linkOption="${linkOption}"

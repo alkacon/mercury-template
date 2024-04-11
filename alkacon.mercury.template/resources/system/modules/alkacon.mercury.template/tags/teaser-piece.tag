@@ -141,7 +141,7 @@
 <c:set var="teaserClass"        value="${empty teaserClass ? 'teaser' : teaserClass}" />
 <c:set var="pieceLayout"        value="${empty pieceLayout ? 6 : pieceLayout}" />
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}" />
-<c:set var="headingInBody"      value="${headingInBody and ((pieceLayout le 1) or (pieceLayout ge 6))}" />
+<c:set var="headingInBody"      value="${headingInBody and ((pieceLayout eq 1) or (pieceLayout ge 6))}" />
 <c:choose>
     <c:when test="${(fn:contains(teaserType, 'teaser-text-tile') or fn:contains(teaserType, 'teaser-masonry')) and not fn:contains(teaserType, '-var')}">
         <c:set var="addButtonDiv" value="${true}" />

@@ -71,6 +71,7 @@
                 name="${valKind eq 'org' ? null : valName}"
                 organization="${valOrganization}"
                 imageRatio="${setRatio}"
+                imageRatioXs="${setRatioXs}"
                 hsize="${hsize}"
                 showImageCopyright="${setShowCopyright}"
                 showImage="${true}"

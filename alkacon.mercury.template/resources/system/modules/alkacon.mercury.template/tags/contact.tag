@@ -14,6 +14,9 @@
     description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
+<%@ attribute name="imageRatioXs" type="java.lang.String" required="false"
+    description="Image ratio for small screens." %>
+
 <%@ attribute name="imageTitle" type="java.lang.String" required="false"
     description="If provided, use this title for the image, otherwise generate a title frm the contact names." %>
 
@@ -195,9 +198,9 @@
     title="${imgtitle}"
     showCopyright="${showImageCopyright}"
     ratio="${imageRatio}"
+    ratioXs="${imageRatioXs}"
     cssImage="photo"
-    showImageZoom="${showImageZoom}"
-    >
+    showImageZoom="${showImageZoom}">
 
     <c:if test="${showName or showOrganization or showDesc or showNote or showAddress or showPhone or showEmail or showLinkAsButton}">
         <div class="text-box"><%----%>

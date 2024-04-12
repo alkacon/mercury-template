@@ -49,6 +49,9 @@
       <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>
     </Setting>
     <Setting>
@@ -59,9 +62,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[titleOption.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.default]]></IncludeName>

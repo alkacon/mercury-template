@@ -35,7 +35,8 @@
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="imageRatio"             value="${setting.imageRatio.toString}" />
-<c:set var="showImage"              value="${(imageRatio ne 'no-img') and value.Image.value.Image.isSet}" />
+<c:set var="imageRatioXs"           value="${setting.imageRatioXs.toString}" />
+<c:set var="showImage"              value="${value.Image.value.Image.isSet and not ((imageRatio eq 'no-img') and ((imageRatioXs eq 'no-img') or (imageRatioXs eq 'desk')))}" />
 
 <c:set var="setSizeDesktop"         value="${setting.pieceSizeDesktop.toInteger}" />
 <c:set var="setSizeMobile"          value="${setting.pieceSizeMobile.toInteger}" />
@@ -85,6 +86,7 @@
                 hsize="${hsize}"
                 image="${value.Image}"
                 imageRatio="${imageRatio}"
+                imageRatioXs="${imageRatioXs}"
                 showImage="${true}"
                 showImageZoom="${showImageZoom}"
                 showImageCopyright="${showImageCopyright}"

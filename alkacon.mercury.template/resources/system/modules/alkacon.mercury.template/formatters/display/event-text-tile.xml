@@ -67,7 +67,10 @@
       <IncludeName><![CDATA[showCalendar.false]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.textTile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>

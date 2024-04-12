@@ -51,6 +51,12 @@
       <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>
       <Default><![CDATA[-1]]></Default>
     </Setting>
@@ -62,9 +68,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[titleOption.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.default]]></IncludeName>

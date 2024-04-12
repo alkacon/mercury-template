@@ -24,6 +24,7 @@
 <%@ variable name-given="setEffect"         declare="true" %>
 <%@ variable name-given="setDateFormat"     declare="true" %>
 <%@ variable name-given="setRatio"          declare="true" %>
+<%@ variable name-given="setRatioXs"        declare="true" %>
 <%@ variable name-given="setTextLength"     declare="true" variable-class="java.lang.Integer" %>
 <%@ variable name-given="setHsize"          declare="true" variable-class="java.lang.Integer" %>
 <%@ variable name-given="setLinkNewWin"     declare="true" %>
@@ -53,6 +54,7 @@
 <c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>
+<c:set var="setRatioXs"                     value="${setting.imageRatioXs.toString}"/>
 <c:set var="setTextLength"                  value="${setting.textLength.toInteger}" />
 <c:set var="setHsize"                       value="${setting.hsize.toInteger}" />
 <c:set var="setDetailLinkWin"               value="${setting.detailLinkWin.isSetNotNone ? setting.detailLinkWin.toString : null}" />

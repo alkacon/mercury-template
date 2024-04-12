@@ -173,7 +173,8 @@
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dm'}" />
     </c:if>
     <c:if test="${sizeDesktop < 12}">
-        <%-- Note regardin p-md breakpoint: This always uses 'md' regardless of the 'template.piece.breakpoint' sitemap attribute. --%>
+        <%-- Note regardin p-md breakpoint: This always uses the string 'md' regardless of the 'template.piece.breakpoint' sitemap attribute. --%>
+        <%-- However, since this is no selector used by bootstrap, in your CSS you can modify the behaviour to actually use a differnt breakpoint e.g. 'lg', even if the markup uses 'p-md'. --%>
         <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-md-'}${sizeDesktop}" />
     </c:if>
     <c:if test="${defSizeDesktop}">

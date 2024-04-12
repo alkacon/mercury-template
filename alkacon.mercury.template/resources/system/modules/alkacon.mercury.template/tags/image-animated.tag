@@ -122,6 +122,7 @@
     <mercury:div css="${effectWrapper}${not empty effectWrapper and not empty cssWrapper ? ' ':''}${cssWrapper}" attr="${attrWrapper}" test="${not empty effectWrapper or not empty cssWrapper or not empty attrWrapper}">
         <c:choose>
             <c:when test="${showImageZoom and (adoptRatioToScreen or imageIsSvg)}">
+                <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
                 <c:set var="zoomData">
                     <mercury:image-zoomdata
                         src="${imageUnscaledBean.srcUrl}"
@@ -135,6 +136,7 @@
                 </c:set>
             </c:when>
             <c:when test="${showImageZoom}">
+                <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
                 <c:set var="zoomData">
                     <mercury:image-zoomdata
                         src="${imageUrl}"
@@ -149,9 +151,8 @@
             </c:when>
         </c:choose>
         <c:if test="${adoptRatioToScreen}">
-            <c:set var="mobileWrapper" value="hidden-lg hidden-xl hidden-xxl" />
             <cms:addparams>
-                <cms:param name="cssgrid">${mobileWrapper}</cms:param>
+                <cms:param name="cssgrid" value="hidden-lg hidden-xl hidden-xxl" />
                 <mercury:image-srcset
                     imagebean="${ratioXs eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioXs]}"
                     sizes="${sizes}"
@@ -159,7 +160,7 @@
                     title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
                     copyright="${showCopyright ? imageCopyrightHtml : null}"
                     cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
-                    cssWrapper="${mobileWrapper}${showImageZoom ? ' zoomer' : ''}"
+                    cssWrapper="${showImageZoom ? 'zoomer' : ''} hidden-lg-up"
                     attrImage="${attrImage}"
                     attrWrapper="${imageDndAttr}"
                     isSvg="${imageIsSvg}"
@@ -170,8 +171,8 @@
         </c:if>
         <cms:addparams>
             <c:if test="${adoptRatioToScreen}">
-                <c:set var="desktopWrapper" value="hidden-xs hidden-sm hidden-md${showImageZoom ? ' ' : ''}" />
-                <cms:param name="cssgrid">${desktopWrapper}</cms:param>
+                <c:set var="desktopWrapper" value=" hidden-xs-sm-md" />
+                <cms:param name="cssgrid" value="hidden-xs hidden-sm hidden-md" />
             </c:if>
             <mercury:image-srcset
                 imagebean="${imageBean}"
@@ -180,7 +181,7 @@
                 title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
                 copyright="${showCopyright ? imageCopyrightHtml : null}"
                 cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
-                cssWrapper="${desktopWrapper}${showImageZoom ? 'zoomer' : ''}"
+                cssWrapper="${showImageZoom ? 'zoomer' : ''}${desktopWrapper}"
                 attrImage="${attrImage}"
                 attrWrapper="${imageDndAttr}"
                 isSvg="${imageIsSvg}"

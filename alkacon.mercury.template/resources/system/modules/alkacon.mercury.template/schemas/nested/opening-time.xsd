@@ -1,0 +1,41 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/opening-time-range.xsd" />
+
+    <xsd:element name="OpeningTimeData" type="OpenCmsOpeningTimeData" />
+
+    <xsd:complexType name="OpenCmsOpeningTimeData">
+        <xsd:sequence>
+            <xsd:element name="OpeningTime" type="OpenCmsOpeningTime" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsOpeningTime">
+        <xsd:choice minOccurs="1" maxOccurs="3">
+            <xsd:element name="OpenCloseTimeRange" type="OpenCmsOpeningTimeRange" minOccurs="0" />
+            <xsd:element name="OpenCloseLabel" type="OpenCmsString" minOccurs="0" />
+        </xsd:choice>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>OpenCloseTimeRange</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.OpenCloseTimeRange)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Poi.OpenCloseTimeRange.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>OpenCloseLabel</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.OpenCloseLabel)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Poi.OpenCloseLabel.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <WidgetConfig><![CDATA[all-day-closed:%(key.msg.option.allDayClosed)|all-day-opened:%(key.msg.option.allDayOpened)]]></WidgetConfig>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>17.0.6</version>
+		<version>17.0.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7075,6 +7075,74 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/opening-days.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/opening-days.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>05845440-f804-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>05845441-f804-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Apr 2024 13:04:25 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for opening days]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/opening-hours.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/opening-hours.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>f7c3b5da-f740-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>f7c3b5db-f740-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Wed, 10 Apr 2024 13:48:10 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for opening hours]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/opening-time-range.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/opening-time-range.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>cf29289f-f805-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>cf2928a0-f805-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Thu, 11 Apr 2024 13:17:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for opening time ranges]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/opening-time.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/opening-time.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>faa731ac-f741-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>faa731ad-f741-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Wed, 10 Apr 2024 13:55:24 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for opening times]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd</destination>
 			<type>plain</type>
@@ -7300,6 +7368,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Transformation for flexible]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/transformations/poi.xslt</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/transformations/poi.xslt</destination>
+			<type>plain</type>
+			<uuidstructure>cd189f20-f8a1-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>cd189f21-f8a1-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Fri, 12 Apr 2024 07:53:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Transformation for poi]]></value>
 				</property>
 			</properties>
 			<relations/>

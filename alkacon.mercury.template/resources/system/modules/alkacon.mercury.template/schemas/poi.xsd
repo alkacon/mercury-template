@@ -1,9 +1,12 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xsd:schema version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/address.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/availability.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/email.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/facilities.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/meta-info-detail.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/opening-hours.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/paragraph.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/teaser-data.xsd" />
 
@@ -13,6 +16,7 @@
         <xsd:sequence>
             <xsd:element name="Poi" type="OpenCmsPoi" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
+        <xsd:attribute name="version" type="xsd:int" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="OpenCmsPoi">
@@ -21,9 +25,15 @@
             <xsd:element name="Address" type="OpenCmsAddress" />
             <xsd:element name="Facilities" type="OpenCmsFacility" minOccurs="0" />
             <xsd:element name="Coord" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="OpeningHours" type="OpenCmsOpeningHours" minOccurs="0" />
+            <xsd:element name="Intro" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Paragraph" type="OpenCmsParagraph" minOccurs="0" maxOccurs="100" />
+            <xsd:element name="LinkedContentData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
+            <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
+            <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
@@ -31,14 +41,20 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <versiontransformation>/system/modules/alkacon.mercury.template/schemas/transformations/poi.xslt</versiontransformation>
             <resourcebundles>
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>
             <tabs>
                 <tab element="Title" collapse="false" name="%(key.tab.Poi)" />
-                <tab element="Paragraph" collapse="false" name="%(key.tab.AddInfo)" />
+                <tab element="Intro" collapse="false" name="%(key.tab.AddInfo)" />
+                <tab element="TeaserData" collapse="false" name="%(key.tab.MetaData)" />
                 <tab element="Category" collapse="false" name="%(key.tab.Availability)" />
             </tabs>
+            <mappings>
+                <mapping element="Availability/Release" mapto="attribute:datereleased" />
+                <mapping element="Availability/Expiration" mapto="attribute:dateexpired" />
+            </mappings>
             <searchsettings containerPageOnly="false" />
             <FieldSettings>
                 <Setting>
@@ -50,6 +66,7 @@
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
+                    <Search>listtitle</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Address</PropertyName>
@@ -78,22 +95,42 @@
                     <Search>listgeocoords</Search>
                 </Setting>
                 <Setting>
+                    <PropertyName>OpeningHours</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.OpeningHours)]]></DisplayName>
+                </Setting>
+                <Setting>
+                    <PropertyName>Intro</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Intro.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
                     <PropertyName>Paragraph</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Poi.Paragraph)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Poi.Paragraph.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>LinkedContentData</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Poi.LinkedContentData)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Poi.LinkedContentData.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkedContentData/TeaserIntro</PropertyName>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkedContentData/TeaserPreface</PropertyName>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
                     <PropertyName>TeaserData</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Poi.TeaserData)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Poi.TeaserData.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.TeaserData)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.TeaserData.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>TeaserData/TeaserIntro</PropertyName>
-                    <Visibility>hidden</Visibility>
-                </Setting>
-                <Setting>
-                    <PropertyName>TeaserData/TeaserPreface</PropertyName>
-                    <Visibility>hidden</Visibility>
+                    <PropertyName>MetaInfo</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Detail.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>
@@ -102,6 +139,22 @@
                     <Widget>category</Widget>
                     <WidgetConfig>onlyleafs=false</WidgetConfig>
                     <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Order</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Widget>string</Widget>
+                    <RuleRegex>^[-+]?\d+$</RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.Order)]]></Error>
+                    <Search>listorder</Search>
+                    <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>Availability</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

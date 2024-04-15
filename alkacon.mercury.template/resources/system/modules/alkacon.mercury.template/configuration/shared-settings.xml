@@ -1737,6 +1737,19 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[poiDisplayOption.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[poiDisplayOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.poi.displayOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.poi.displayOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[textaddr]]></Default>
+      <WidgetConfig><![CDATA[
+            textaddr:         %(key.msg.setting.poi.displayOption.textaddr)|
+            addr:             %(key.msg.setting.poi.displayOption.addr)|
+            text:             %(key.msg.setting.poi.displayOption.text)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[keyPieceSizeDesktop.detail]]></IncludeName>
       <PropertyName><![CDATA[keyPieceSizeDesktop]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.keyPieceSizeDesktop)]]></DisplayName>

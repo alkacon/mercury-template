@@ -2,24 +2,25 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-poi.formatter.teaser.compact)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-poi.formatter.teaser.elaborate-alt)]]></NiceName>
     <Type><![CDATA[m-poi]]></Type>
-    <Key><![CDATA[m/display/poi-compact]]></Key>
+    <Key><![CDATA[m/display/poi-elaborate-alt]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi.jsp]]></target>
         <uuid>b53b55f1-a23e-11ed-b729-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-poi.description.formatter) %(key.type.general.description.teaser.compact) %(key.type.general.description.teaser.list-only)]]></Description>
+    <Description><![CDATA[%(key.type.m-poi.description.formatter) %(key.type.general.description.teaser.elaborate) %(key.type.general.description.teaser.list-only)]]></Description>
     <Rank><![CDATA[21000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[contact]]></ContainerType>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
         <ContainerType><![CDATA[poi]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[teaser-compact]]></Display>
+    <Display><![CDATA[teaser-elaborate]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
@@ -36,7 +37,19 @@
       <IncludeName><![CDATA[listDisplay.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[textLength.compact]]></IncludeName>
+      <IncludeName><![CDATA[pieceLayout.elaborate]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
@@ -48,13 +61,10 @@
       <IncludeName><![CDATA[titleOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showFacilities.false]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showGeoInfo.false]]></IncludeName>
+      <IncludeName><![CDATA[effect.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
@@ -63,10 +73,13 @@
       <IncludeName><![CDATA[detailLinkWin.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[headingInBody.hidden]]></IncludeName>
+      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[buttonText.default]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[headingInBody.hidden]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>

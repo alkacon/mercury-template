@@ -2,24 +2,25 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-poi.formatter.teaser.compact)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-poi.formatter.teaser.text-tile)]]></NiceName>
     <Type><![CDATA[m-poi]]></Type>
-    <Key><![CDATA[m/display/poi-compact]]></Key>
+    <Key><![CDATA[m/display/poi-text-tile]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi.jsp]]></target>
         <uuid>b53b55f1-a23e-11ed-b729-0242ac11002b</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-poi.description.formatter) %(key.type.general.description.teaser.compact) %(key.type.general.description.teaser.list-only)]]></Description>
-    <Rank><![CDATA[21000]]></Rank>
+    <Description><![CDATA[%(key.type.m-poi.description.formatter) %(key.type.general.description.teaser.text-tile) %(key.type.general.description.teaser.list-only)]]></Description>
+    <Rank><![CDATA[18000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[contact]]></ContainerType>
+        <ContainerType><![CDATA[tile]]></ContainerType>
+        <ContainerType><![CDATA[text-tile]]></ContainerType>
         <ContainerType><![CDATA[poi]]></ContainerType>
       </Types>
     </Match>
-    <Display><![CDATA[teaser-compact]]></Display>
+    <Display><![CDATA[teaser-text-tile]]></Display>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
@@ -36,7 +37,13 @@
       <IncludeName><![CDATA[listDisplay.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[textLength.compact]]></IncludeName>
+      <IncludeName><![CDATA[textLength.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listEntryWrapper.tile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[listWrapper.tile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
@@ -45,16 +52,19 @@
       <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssWrapper2.tile]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[titleOption.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
+      <IncludeName><![CDATA[visualOption.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showFacilities.false]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.textTile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showGeoInfo.false]]></IncludeName>
+      <IncludeName><![CDATA[effect.tile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[linkOption.listTeaser]]></IncludeName>
@@ -63,22 +73,16 @@
       <IncludeName><![CDATA[detailLinkWin.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[headingInBody.hidden]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[buttonText.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listEntryMinHeight.125]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listWrapper.default]]></IncludeName>
+      <IncludeName><![CDATA[listEntryMinHeight.0]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[listCssWrapper.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[listEntryWrapper.default]]></IncludeName>
+      <IncludeName><![CDATA[requiredCssWrapper.textTile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[poiDisplayOption.listTeaser]]></IncludeName>

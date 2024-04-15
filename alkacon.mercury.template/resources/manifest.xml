@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>17.0.12</version>
+		<version>17.0.6</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -2416,6 +2416,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/poi-elaborate-alt.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/poi-elaborate-alt.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>097a615b-fb29-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>097a615c-fb29-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Mon, 15 Apr 2024 13:06:56 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Elaborate POI teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/formatters/display/poi-elaborate.xml</source>
 			<destination>system/modules/alkacon.mercury.template/formatters/display/poi-elaborate.xml</destination>
 			<type>formatter_config</type>
@@ -2426,7 +2447,49 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Elaborate POI teaser]]></value>
+					<value><![CDATA[Elaborate POI teaser (with map in static list)]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/poi-masonry.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/poi-masonry.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>c80709bf-faf5-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>c80709c0-faf5-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Mon, 15 Apr 2024 07:00:02 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Masonry POI teaser]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/formatters/display/poi-text-tile.xml</source>
+			<destination>system/modules/alkacon.mercury.template/formatters/display/poi-text-tile.xml</destination>
+			<type>formatter_config</type>
+			<uuidstructure>dc2fdda3-faf5-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>dc2fdda4-faf5-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Mon, 15 Apr 2024 07:00:36 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Text tile POI teaser]]></value>
 				</property>
 				<property>
 					<name>locale</name>

@@ -36,12 +36,12 @@
     <% loginBean.init(pageContext, request, response); %>
 
     <c:choose>
-        <c:when test="${(param.action eq 'login') and (not empty param.loginName) and (not empty param.loginPassword)}">
+        <c:when test="${(param.action eq 'login') and (not empty param.username) and (not empty param.password)}">
             <c:set var="loginpage"      value="${empty loginpage ? (empty cms.pageResource.property['login-start'] ? cms.requestContext.uri : cms.pageResource.property['login-start']) : loginpage}" />
             <c:set var="loginresource"  value="${empty param.requestedResource ? loginpage : param.requestedResource}" />
             <c:set var="loginuri"       value="${cms.requestContext.siteRoot}${loginresource}" />
-            <c:set var="loginuser"      value="${param.loginName}"/>
-            <c:set var="loginpassword"  value="${param.loginPassword}"/>
+            <c:set var="loginuser"      value="${param.username}"/>
+            <c:set var="loginpassword"  value="${param.password}"/>
             <c:choose>
                 <c:when test="${not empty loginou}">
                     <c:set var="loginprincipal" value="${loginou eq '/' ? '' : loginou}${loginuser}"/>
@@ -84,13 +84,13 @@
                     <section><%----%>
                         <label class="input ${loginError ? 'state-error' : ''}"><%----%>
                             <mercury:icon icon="user-o" tag="span" cssWrapper="icon-prepend" />
-                            <input type="text" id="loginName" name="loginName" placeholder="<fmt:message key="msg.page.login.username" />"/><%----%>
+                            <input type="text" id="username" name="username" placeholder="<fmt:message key="msg.page.login.username" />"/><%----%>
                         </label><%----%>
                     </section><%----%>
                     <section><%----%>
                         <label class="input ${loginError ? 'state-error' : ''}"><%----%>
                             <mercury:icon icon="lock" tag="span" cssWrapper="icon-prepend" />
-                            <input type="password" id="loginPassword" name="loginPassword" placeholder="<fmt:message key="msg.page.login.password" />"/><%----%>
+                            <input type="password" id="password" name="password" placeholder="<fmt:message key="msg.page.login.password" />"/><%----%>
                         </label><%----%>
                         <c:if test="${loginError}">
                             <em><fmt:message key="msg.page.login.failed" /></em><%----%>
@@ -108,10 +108,10 @@
                 </header><%----%>
                 <fieldset><%----%>
                     <section><%----%>
-                        <label for="loginName" class="label"><fmt:message key="msg.page.login.loggedin" />:</label><%----%>
+                        <label for="username" class="label"><fmt:message key="msg.page.login.loggedin" />:</label><%----%>
                         <div class="input"><%----%>
                             <mercury:icon icon="user-o" tag="span" cssWrapper="icon-prepend" />
-                            <input type="text" id="loginName" name="loginName" value="${cms.requestContext.currentUser.fullName}"/><%----%>
+                            <input type="text" id="username" name="username" value="${cms.requestContext.currentUser.fullName}"/><%----%>
                         </div><%----%>
                     </section><%----%>
                 </fieldset><%----%>

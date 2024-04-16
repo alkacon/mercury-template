@@ -33,7 +33,9 @@
 <c:set var="pieceLayoutSizeDesktop" value="${setting.pieceLayoutSizeDesktop.useDefault('99').toInteger}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
+<c:set var="imageRatioXs"           value="${setting.imageRatioXs}" />
 <c:set var="imageRatioParagraphs"   value="${setting.imageRatioParagraphs}" />
+<c:set var="imageRatioParagraphsXs" value="${setting.imageRatioParagraphsXs}" />
 <c:set var="containerType"          value="${setting.containerType.useDefault('m-element').toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
@@ -223,6 +225,7 @@ ${settingDefaultsDebug}
             showOverlay="${showOverlay}"
             effect="${setEffect}"
             imageRatio="${imageRatio}"
+            imageRatioXs="${imageRatioXs}"
             showImageSubtitle="${showImageSubtitle}"
             showImageZoom="${showImageZoom}"
             showImageCopyright="${showImageCopyright}"
@@ -295,6 +298,7 @@ ${settingDefaultsDebug}
                 heading="${paragraph.value.Caption}"
                 image="${status.first and useVisualFromParagraph ? null : paragraph.value.Image}"
                 imageRatio="${imageRatioParagraphs}"
+                imageRatioXs="${imageRatioParagraphsXs}"
                 text="${paragraph.value.Text}"
                 link="${paragraph.value.Link}"
                 showImageZoom="${showImageZoom}"

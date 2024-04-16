@@ -201,6 +201,7 @@
 
 <c:if test="${useVisual and not empty visual}">
     <c:set var="pieceBreakpoint" value="${cms.sitemapConfig.attribute['template.piece.breakpoint'].useDefault('md').toString}" />
+    <c:set var="pieceBreakpoint" value="${empty pieceBreakpoint ? 'md' : pieceBreakpoint}" />
     <%-- It is important to make this check AFTER the body because the grid size must be 12 if there is no body. --%>
     <cms:addparams>
         <cms:param name="cssgrid" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-'.concat(pieceBreakpoint).concat('-').concat(sizeDesktop) : '')}" />

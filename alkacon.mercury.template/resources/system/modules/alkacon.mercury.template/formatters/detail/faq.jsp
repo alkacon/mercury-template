@@ -10,7 +10,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<cms:secureparams />
+
+<cms:secureparams replaceInvalid="bad_param" />
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value">
@@ -25,11 +26,15 @@
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
-<c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
+<c:set var="imageRatioXs"           value="${setting.imageRatioXs}" />
+<c:set var="imageRatioParagraphs"   value="${setting.imageRatioParagraphs}" />
+<c:set var="imageRatioParagraphsXs" value="${setting.imageRatioParagraphsXs}" />
+<c:set var="containerType"          value="${setting.containerType.useDefault('m-element').toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
+<c:set var="useVisualFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -44,7 +49,7 @@
     <mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
 </c:set>
 <c:set var="title"                  value="${value.Question}" />
-<c:set var="image"                  value="${firstParagraph.value.Image}" />
+<c:set var="image"                  value="${useVisualFromParagraph ? firstParagraph.value.Image : null}" />
 <c:set var="link"                   value="${firstParagraph.value.Link}" />
 
 <c:set var="showDate"               value="${not empty date}" />
@@ -76,6 +81,7 @@
             showOverlay="${showOverlay}"
             effect="${setEffect}"
             imageRatio="${imageRatio}"
+            imageRatioXs="${imageRatioXs}"
             showImageSubtitle="${showImageSubtitle}"
             showImageZoom="${showImageZoom}"
             showImageCopyright="${showImageCopyright}"
@@ -100,20 +106,22 @@
 </mercury:piece>
 
 <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
-
+    <c:set var="pHsize" value="${hsize >= 0 ? hsize + 1 : (hsize >= -7 ? -1 * hsize : 0)}" />
     <div class="detail-content"><%----%>
         <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
             <mercury:section-piece
                 cssWrapper="${setCssWrapperParagraphs}"
                 pieceLayout="${pieceLayout}"
                 heading="${paragraph.value.Caption}"
-                image="${(status.first and not value.Image.value.Image.isSet) ? null : paragraph.value.Image}"
+                image="${status.first and useVisualFromParagraph ? null : paragraph.value.Image}"
+                imageRatio="${imageRatioParagraphs}"
+                imageRatioXs="${imageRatioParagraphsXs}"
                 text="${paragraph.value.Text}"
                 link="${paragraph.value.Link}"
                 showImageZoom="${showImageZoom}"
                 showImageSubtitle="${showImageSubtitle}"
                 showImageCopyright="${showImageCopyright}"
-                hsize="${hsize + 1}"
+                hsize="${pHsize}"
                 ade="${ade}"
                 emptyWarning="${not status.first}"
             />

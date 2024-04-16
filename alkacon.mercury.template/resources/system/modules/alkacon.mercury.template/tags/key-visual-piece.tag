@@ -20,8 +20,11 @@
     description="Markup used for the heading if an overlay is generated." %>
 
 <%@ attribute name="imageRatio" type="java.lang.String" required="true"
-    description="Can be used to scale the image in a specific ratio,
+    description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
+
+<%@ attribute name="imageRatioXs" type="java.lang.String" required="false"
+    description="Image ratio for small screens." %>
 
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
     description="Generate noscript tags for lazy loading images or not?
@@ -66,7 +69,8 @@
         showCopyright="${showImageCopyright}"
         showImageZoom="${showImageZoom}"
         noScript="${noScript}"
-        ratio="${imageRatio}" >
+        ratio="${imageRatio}"
+        ratioXs="${imageRatioXs}" >
 
         <div class="visual-darken"></div><%----%>
         <div class="visual-overlay"><%----%>
@@ -95,7 +99,8 @@
                 showCopyright="${showImageCopyright}"
                 showImageZoom="${showImageZoom}"
                 noScript="${noScript}"
-                ratio="${imageRatio}" >
+                ratio="${imageRatio}"
+                ratioXs="${imageRatioXs}" >
 
                 <c:if test="${showImageSubtitle and not empty imageTitle}">
                     <c:set var="visualSubtitle" value="${imageTitle}" />

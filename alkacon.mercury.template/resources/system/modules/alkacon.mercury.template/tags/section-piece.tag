@@ -251,7 +251,7 @@
                             ade="${ade}">
                             <c:set var="imageSubtext">
                                 <c:if test="${showImageSubtitle and not empty imageTitle}">
-                                    <div class="subtitle"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
+                                    <div class="subtitle${imageRatioXs eq 'no-img' ? ' hidden-xs-sm' : ''}"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
                                 </c:if>
                             </c:set>
                         </mercury:image-animated>

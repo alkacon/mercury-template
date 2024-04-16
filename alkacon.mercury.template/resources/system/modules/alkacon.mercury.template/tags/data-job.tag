@@ -166,7 +166,7 @@
         <c:set var="parentId"><mercury:idgen prefix="-" uuid="${cms.element.instanceId}" /></c:set>
         <c:set var="isValid" value="${hasTitle and hasDatePosted and hasDescription and hasJobLocation and hasHringOrganization}" />
         <c:set var="hasAllOptions" value="${hasValidThrough and hasEmploymentType and hasBaseSalary}" />
-        <div class="subelement oct-meta-infos box ${isValid ? (hasAllOptions ? 'box-oct-info' : 'box-oct-warning') : 'box-oct-error'}"><%----%>
+        <div class="subelement oct-meta-infos hidden-xs-sm box ${isValid ? (hasAllOptions ? 'box-oct-info' : 'box-oct-warning') : 'box-oct-error'}"><%----%>
             <div><%----%>
                 <c:choose>
                     <c:when test="${not isValid}">
@@ -176,7 +176,7 @@
                         <div class="h3"><fmt:message key="msg.page.meta-info.options-missing" /></div><%----%>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfos${parentId}" aria-expanded="false" aria-controls="metaInfos${parentId}"><%----%>
+                        <button class="btn btn-wrap" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfos${parentId}" aria-expanded="false" aria-controls="metaInfos${parentId}"><%----%>
                             <fmt:message key="msg.page.meta-info.show" />
                         </button><%----%>
                     </c:otherwise>
@@ -195,7 +195,7 @@
                 </div><%----%>
                 <div class="mt-sm"><%----%>
                     <div><%----%>
-                        <button class="btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfoPre${parentId}" aria-expanded="false" aria-controls="metaInfoPre${parentId}"><%----%>
+                        <button class="btn btn-sm btn-wrap" type="button" data-bs-toggle="collapse" data-bs-target="#metaInfoPre${parentId}" aria-expanded="false" aria-controls="metaInfoPre${parentId}"><%----%>
                             <fmt:message key="msg.page.meta-info.show-json" />
                         </button><%----%>
                     </div><%----%>

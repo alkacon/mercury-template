@@ -320,10 +320,10 @@
 // Font size REM rebasing, usually on the HTML element
 @mixin rem-base {
     @if ($font-rem-base-mobile-size != $font-rem-base-desktop-size) {
-        @include media-breakpoint-down(lg) {
+        @include media-breakpoint-down($font-rem-base-breakpoint) {
             font-size: $font-rem-base-mobile-size;  // font size for rem units in mobile
         }
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up($font-rem-base-breakpoint) {
             font-size: $font-rem-base-desktop-size;  // font size for rem units in desktop
         }
     } @else {

@@ -18,6 +18,9 @@
 <%@ attribute name="ratioXs" type="java.lang.String" required="false"
     description="Image ratio for small screens." %>
 
+<%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
+    description="Use lazy loading or not? Default is 'true'."%>
+
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="Text used in the image 'alt' and 'title' attributes."%>
 
@@ -123,38 +126,40 @@
                 </c:when>
             </c:choose>
 
+            <c:choose>
+                <c:when test="${showImageZoom and (adoptRatioToScreen or imageIsSvg)}">
+                    <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
+                    <c:set var="zoomDataWrapper">
+                        <mercury:image-zoomdata
+                            src="${imageUnscaledBean.srcUrl}"
+                            title="${imageTitle}"
+                            alt="${empty imageDescription ? imageTitle : imageDescription}"
+                            copyright="${imageCopyrightHtml}"
+                            height="${imageUnscaledBean.scaler.height}"
+                            width="${imageUnscaledBean.scaler.width}"
+                            imageBean="${imageUnscaledBean}"
+                        />
+                    </c:set>
+                    <%-- Set the wrapper to the surrounding div, saving some bytes in page size --%>
+                    <c:set var="attrWrapper" value="${empty attrWrapper ? zoomDataWrapper : attrWrapper.concat(' ').concat(zoomDataWrapper)}" />
+                </c:when>
+                <c:when test="${showImageZoom}">
+                    <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
+                    <c:set var="zoomData">
+                        <mercury:image-zoomdata
+                            src="${imageUrl}"
+                            title="${imageTitle}"
+                            alt="${empty imageDescription ? imageTitle : imageDescription}"
+                            copyright="${imageCopyrightHtml}"
+                            height="${imageHeight}"
+                            width="${imageWidth}"
+                            imageBean="${imageBean}"
+                        />
+                    </c:set>
+                </c:when>
+            </c:choose>
 
             <mercury:div css="${effectWrapper}${not empty effectWrapper and not empty cssWrapper ? ' ':''}${cssWrapper}" attr="${attrWrapper}" test="${not empty effectWrapper or not empty cssWrapper or not empty attrWrapper}">
-                <c:choose>
-                    <c:when test="${showImageZoom and (adoptRatioToScreen or imageIsSvg)}">
-                        <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
-                        <c:set var="zoomData">
-                            <mercury:image-zoomdata
-                                src="${imageUnscaledBean.srcUrl}"
-                                title="${imageTitle}"
-                                alt="${empty imageDescription ? imageTitle : imageDescription}"
-                                copyright="${imageCopyrightHtml}"
-                                height="${imageUnscaledBean.scaler.height}"
-                                width="${imageUnscaledBean.scaler.width}"
-                                imageBean="${imageUnscaledBean}"
-                            />
-                        </c:set>
-                    </c:when>
-                    <c:when test="${showImageZoom}">
-                        <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
-                        <c:set var="zoomData">
-                            <mercury:image-zoomdata
-                                src="${imageUrl}"
-                                title="${imageTitle}"
-                                alt="${empty imageDescription ? imageTitle : imageDescription}"
-                                copyright="${imageCopyrightHtml}"
-                                height="${imageHeight}"
-                                width="${imageWidth}"
-                                imageBean="${imageBean}"
-                            />
-                        </c:set>
-                    </c:when>
-                </c:choose>
                 <c:if test="${adoptRatioToScreen}">
                     <%-- Note: The 'template.piece.breakpoint' sitemap attribute is NOT used here on purpose.
                         So far all use cases indicate treating the 'MD' size like a desktop (large) screen provides the best results. --%>
@@ -168,6 +173,7 @@
                             <mercury:image-srcset
                                 imagebean="${ratioXs eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioXs]}"
                                 sizes="${sizes}"
+                                lazyLoad="${lazyLoad}"
                                 alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
                                 title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
                                 copyright="${showCopyright ? imageCopyrightHtml : null}"
@@ -176,7 +182,6 @@
                                 attrImage="${attrImage}"
                                 attrWrapper="${imageDndAttr}"
                                 isSvg="${imageIsSvg}"
-                                zoomData="${zoomData}"
                                 noScript="${noScript}"
                             />
                         </cms:addparams>
@@ -190,6 +195,7 @@
                         <mercury:image-srcset
                             imagebean="${imageBean}"
                             sizes="${sizes}"
+                            lazyLoad="${lazyLoad}"
                             alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
                             title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
                             copyright="${showCopyright ? imageCopyrightHtml : null}"

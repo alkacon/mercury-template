@@ -182,6 +182,8 @@
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">
 
+        <c:set var="lazyLoad" value="${not isHeroSlider or not status.first}" />
+
         <c:set var="posLeft" value="${image.value.Position.value.Left.isSet ? image.value.Position.value.Left.toString : defPosLeft}" />
         <c:set var="posTop" value="${image.value.Position.value.Top.isSet ? image.value.Position.value.Top.toString : defPosTop}" />
         <c:set var="posTop" value="${'center' eq posTop ? 'middle' : posTop}" />
@@ -239,6 +241,7 @@
                             <div class="slide-xs ${adoptRatioToScreen ? 'visible-xs' : ''}"><%----%>
                                 <mercury:image-simple
                                     image="${image}"
+                                    lazyLoad="${lazyLoad}"
                                     ratio="${imageRatioXS}"
                                     externalCopyright="${showImageCopyright}"
                                     title="${image.value.SuperTitle.toString()}">
@@ -267,6 +270,7 @@
                                 <div class="slide-sm visible-sm"><%----%>
                                     <mercury:image-simple
                                         image="${image}"
+                                        lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioSM}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
@@ -278,6 +282,7 @@
                                 <div class="slide-md visible-md"><%----%>
                                     <mercury:image-simple
                                         image="${image}"
+                                        lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioMD}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
@@ -289,6 +294,7 @@
                                 <div class="slide-lg visible-lg"><%----%>
                                     <mercury:image-simple
                                         image="${image}"
+                                        lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioLG}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
@@ -300,6 +306,7 @@
                                 <div class="slide-xl visible-xl"><%----%>
                                     <mercury:image-simple
                                         image="${image}"
+                                        lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioXL}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
@@ -351,7 +358,7 @@
         </div><%----%>
         <mercury:nl />
 
-        <c:set var="isHiddenSlide" value="${isHeroSlider && (status.count >= 1)}" />
+        <c:set var="isHiddenSlide" value="${isHeroSlider}" />
     </c:forEach>
     </div><%----%>
 

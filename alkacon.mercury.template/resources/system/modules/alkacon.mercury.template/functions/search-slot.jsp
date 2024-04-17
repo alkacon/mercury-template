@@ -61,7 +61,6 @@
         <%-- NOTE: We assume the reload and the query parameter (reloaded/q) are not changed via configuration for the search function. --%>
         <form<%--
             --%> id="search-slot-form"<%--
-            --%> role="form"<%--
             --%> class="styled-form no-border"<%--
             --%> action="${searchPageUri}"<%--
             --%>><%----%>

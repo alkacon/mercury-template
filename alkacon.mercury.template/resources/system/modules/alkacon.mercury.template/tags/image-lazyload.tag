@@ -25,8 +25,7 @@
     Required for box size calculation." %>
 
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
-    description="Use lazy loading or not?
-    Default is 'true'." %>
+    description="Use lazy loading or not? Default is 'true'."%>
 
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
     description="Generate noscript tags for lazy loading images or not?
@@ -66,13 +65,14 @@
 
 
 <c:set var="useNoScript" value="${empty noScript ? true : noScript}" />
+<c:set var="useJsLazyLoading" value="${false}" />
 <c:set var="useLazyLoading" value="${empty lazyLoad ? true : lazyLoad}" />
 <c:set var="useSrcSet" value="${not empty srcSet}" />
 <c:set var="emptyImg" value="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
 
 <%-- ###### Set img tag options depending on use case ###### --%>
 <c:choose>
-    <c:when test="${useSrcSet and useLazyLoading}">
+    <c:when test="${useSrcSet and useJsLazyLoading}">
         <c:set var="attributes"><%--
         --%>src="${srcUrl}" <%-- Note: src Required for IE 10, because of no srcset support in IE 10.
         --%>srcset="${emptyImg}" <%--
@@ -80,7 +80,7 @@
         --%>data-srcset="${srcSet}"</c:set>
         <c:set var="cssImageLazy" value="lazyload" />
     </c:when>
-    <c:when test="${not useSrcSet and useLazyLoading}">
+    <c:when test="${not useSrcSet and useJsLazyLoading}">
         <c:set var="attributes"><%--
         --%>src="${emptyImg}" <%--
         --%>data-src="${srcUrl}"</c:set>
@@ -88,13 +88,16 @@
     </c:when>
     <c:when test="${useSrcSet}">
         <c:set var="attributes"><%--
-        --%>src="${srcUrl}" <%--
+        --%>src="${srcUrl}"<%--
+        --%>${useLazyLoading ? ' loading=\"lazy\"' : ''} <%--
         --%>sizes="${srcSetSizes}" <%--
         --%>srcset="${srcSet}"</c:set>
         <c:set var="useNoScript" value="${false}" />
     </c:when>
     <c:otherwise>
-        <c:set var="attributes">src="${srcUrl}"</c:set>
+        <c:set var="attributes"><%--
+        --%>src="${srcUrl}"<%--
+        --%>${useLazyLoading ? ' loading=\"lazy\"' : ''}</c:set>
         <c:set var="useNoScript" value="${false}" />
     </c:otherwise>
 </c:choose>

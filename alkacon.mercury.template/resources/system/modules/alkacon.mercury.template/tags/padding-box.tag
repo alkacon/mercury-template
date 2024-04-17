@@ -73,7 +73,6 @@
         <mercury:nl />
     </c:if>
     </div><%----%>
-    <mercury:nl />
 
 </c:when>
 <c:otherwise>

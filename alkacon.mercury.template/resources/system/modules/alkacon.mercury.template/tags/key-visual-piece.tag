@@ -26,9 +26,11 @@
 <%@ attribute name="imageRatioXs" type="java.lang.String" required="false"
     description="Image ratio for small screens." %>
 
+<%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
+    description="Use lazy loading or not? Default is 'false', because we assume a key visual is most likely 'above the fold'."%>
+
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
-    description="Generate noscript tags for lazy loading images or not?
-    Default is 'true'." %>
+    description="Generate noscript tags for lazy loading images or not? Default is 'true'." %>
 
 <%@ attribute name="effect" type="java.lang.String" required="false"
     description="'class' atttributes to add to the key visual div for effects." %>
@@ -58,11 +60,13 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="effect" value="${(empty effect) or (effect eq 'none') ? '' : effect}" />
+<c:set var="lazyLoad" value="${empty lazyLoad ? false : lazyLoad}" /><%-- assume that the key visual is "above the fold" by default --%>
 
 <c:choose>
 <c:when test="${showOverlay and image.value.Image.isSet}">
     <mercury:image-animated
         image="${image}"
+        lazyLoad="${lazyLoad}"
         cssWrapper="overlay ${effect} "
         addEffectPiece="${true}"
         ade="${ade}"
@@ -93,6 +97,7 @@
         <c:otherwise>
             <mercury:image-animated
                 image="${image}"
+                lazyLoad="${lazyLoad}"
                 cssWrapper="${effect}"
                 addEffectPiece="${true}"
                 ade="${ade}"

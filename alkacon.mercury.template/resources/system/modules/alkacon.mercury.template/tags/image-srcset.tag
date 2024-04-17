@@ -33,7 +33,7 @@
     description="Sizes (width in pixel) to create image variations for. This must be a comma separated list e.g. '100,200,400,800'." %>
 
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
-    description="Use lazy loading or not?"%>
+    description="Use lazy loading or not? Default is 'true'."%>
 
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
     description="Generate noscript tags for lazy loading images or not? Default is 'true'." %>
@@ -74,9 +74,8 @@ SrcSet support
     For this case we generate a set of size reduced version based on the width from the original image.
     We also keep track if "hidden-xs" BS classes are used.
 Lazy loading support
-    Support for lazy loading of images based on the great 'Lazysizes' script.
-    See https://github.com/aFarkas/lazysizes.
-    Obviously this requires JavaScript to be enabled.
+    Support for lazy loading of images using the native browser <img loading="lazy"> functionality.
+    Not longer based on the great 'Lazysizes' script (see https://github.com/aFarkas/lazysizes).
 Noscript support
     Support for generating <noscript> tags in case lazy loading is active.
     This will add a <noscript> element with a standed im tag.
@@ -94,7 +93,7 @@ SVG placeholder image, background image and image sizing
 
 <c:set var="ib" value="${imagebean}" />
 
-<c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not caseDynamicListNoscript}" />
+<c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not (param.lazyLoad eq 'false') and not caseDynamicListNoscript}" />
 <c:set var="isSvg" value="${empty isSvg ? fn:endsWith(ib.vfsUri, '.svg') : isSvg}" />
 <c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not caseDynamicListNoscript and not isSvg}" />
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
@@ -221,14 +220,14 @@ grid: ${grid}
 
     <c:if test="${useSrcSet and bb.isInitialized}">
 
-        <c:if test="${not useLazyLoading}">
+        <c:if test="${true}">
             <%-- ###### Calculate the sizes (if we are lazy loading the script will do this for us) ###### --%>
             <c:set var="srcSetSizes"><%--
-            --%>(min-width: ${bsMwXxl}px) ${bb.sizeXxl}px, <%--
-            --%>(min-width: ${bsMwXl}px) ${bb.sizeXl}px, <%--
-            --%>(min-width: ${bsMwLg}px) ${bb.sizeLg}px, <%--
-            --%>(min-width: ${bsMwMd}px) ${bb.sizeMd}px, <%--
-            --%>(min-width: ${bsMwSm}px) ${bb.sizeSm}px, <%--
+            --%><c:if test="${bb.sizeXxl gt 0}">(min-width: ${bsMwXxl}px) ${bb.sizeXxl}px, </c:if><%--
+            --%><c:if test="${bb.sizeXl gt 0}">(min-width: ${bsMwXl}px) ${bb.sizeXl}px, </c:if><%--
+            --%><c:if test="${bb.sizeLg gt 0}">(min-width: ${bsMwLg}px) ${bb.sizeLg}px, </c:if><%--
+            --%><c:if test="${bb.sizeMd gt 0}">(min-width: ${bsMwMd}px) ${bb.sizeMd}px, </c:if><%--
+            --%><c:if test="${bb.sizeSm gt 0}">(min-width: ${bsMwSm}px) ${bb.sizeSm}px, </c:if><%--
             --%>100vw</c:set>
         </c:if>
 

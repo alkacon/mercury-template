@@ -22,7 +22,7 @@
     Allowed valued are: '1-1', '4-3', '3-2', '16-9', '2-1' and '2,35-1'" %>
 
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
-    description="Use lazy loading or not?"%>
+    description="Use lazy loading or not? Default is 'true'."%>
 
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
     description="Generate noscript tags for lazy loading images?"%>

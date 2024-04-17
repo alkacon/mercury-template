@@ -41,13 +41,13 @@
                         </c:otherwise>
                     </c:choose>
                 </div><%----%>
-                <div class="hours-times">
+                <div class="hours-times"><%----%>
                     <c:forEach var="openingTime" items="${openingHour.valueList.OpeningTime}">
-                        <div class="hours-time">
+                        <div class="hours-time"><%----%>
                             <c:if test="${openingTime.value.Opens.isSet or openingTime.value.Closes.isSet}">
                                 <span><%----%>
                                     <span class="hours-opens">${openingTime.value.Opens}</span><%----%>
-                                    <span>-</span><%----%>
+                                    <span> - </span><%----%>
                                     <span class="hours-closes">${openingTime.value.Closes}</span><%----%>
                                 </span><%----%>
                             </c:if>
@@ -69,9 +69,9 @@
                                     </c:otherwise>
                                 </c:choose>
                             </c:if>
-                        </div>
+                        </div><%----%>
                     </c:forEach>
-                </div>
+                </div><%----%>
             </div><%----%>
         </c:forEach>
     </div><%----%>

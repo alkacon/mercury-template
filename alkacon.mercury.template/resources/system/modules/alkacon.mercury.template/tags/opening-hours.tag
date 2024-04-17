@@ -76,6 +76,6 @@
         </c:forEach>
     </div><%----%>
     <c:if test="${not empty content.value.OpeningNote}">
-        <div class="hours-note">${value.OpeningHours.value.OpeningNote}</div><%----%>
+        <div class="hours-note">${content.value.OpeningNote}</div><%----%>
     </c:if>
 </div>

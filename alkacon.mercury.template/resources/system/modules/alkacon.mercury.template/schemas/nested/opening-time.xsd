@@ -1,7 +1,6 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
-    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/opening-time-range.xsd" />
 
     <xsd:element name="OpeningTimeData" type="OpenCmsOpeningTimeData" />
 
@@ -12,10 +11,11 @@
     </xsd:complexType>
 
     <xsd:complexType name="OpenCmsOpeningTime">
-        <xsd:choice minOccurs="1" maxOccurs="3">
-            <xsd:element name="OpenCloseTimeRange" type="OpenCmsOpeningTimeRange" minOccurs="0" />
+        <xsd:sequence>
+            <xsd:element name="Opens" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Closes" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="OpenCloseLabel" type="OpenCmsString" minOccurs="0" />
-        </xsd:choice>
+        </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
     </xsd:complexType>
 
@@ -23,14 +23,25 @@
         <xsd:appinfo>
             <FieldSettings>
                 <Setting>
-                    <PropertyName>OpenCloseTimeRange</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Poi.OpenCloseTimeRange)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Poi.OpenCloseTimeRange.help)]]></Description>
+                    <PropertyName>Opens</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours.Opens)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.Opens.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default>09:00</Default>
+                    <Display>column</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>Closes</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours.Closes)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.Closes.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default>17:00</Default>
+                    <Display>column</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>OpenCloseLabel</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Poi.OpenCloseLabel)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Poi.OpenCloseLabel.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours.OpenCloseLabel)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.OpenCloseLabel.help)]]></Description>
                     <Widget>selectcombo</Widget>
                     <WidgetConfig><![CDATA[all-day-closed:%(key.msg.option.allDayClosed)|all-day-opened:%(key.msg.option.allDayOpened)]]></WidgetConfig>
                 </Setting>

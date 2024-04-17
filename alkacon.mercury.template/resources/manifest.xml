@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>17.0.19</version>
+		<version>17.0.9</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7138,8 +7138,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/schemas/nested/opening-days.xsd</source>
-			<destination>system/modules/alkacon.mercury.template/schemas/nested/opening-days.xsd</destination>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/opening-hour.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/opening-hour.xsd</destination>
 			<type>plain</type>
 			<uuidstructure>05845440-f804-11ee-9ae2-0242ac11002b</uuidstructure>
 			<uuidresource>05845441-f804-11ee-9ae2-0242ac11002b</uuidresource>
@@ -7166,23 +7166,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Nested XSD for opening hours]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
-			<source>system/modules/alkacon.mercury.template/schemas/nested/opening-time-range.xsd</source>
-			<destination>system/modules/alkacon.mercury.template/schemas/nested/opening-time-range.xsd</destination>
-			<type>plain</type>
-			<uuidstructure>cf29289f-f805-11ee-9ae2-0242ac11002b</uuidstructure>
-			<uuidresource>cf2928a0-f805-11ee-9ae2-0242ac11002b</uuidresource>
-			<datecreated>Thu, 11 Apr 2024 13:17:12 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Nested XSD for opening time ranges]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9188,6 +9171,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Reveals an element after the user clicks on a preview]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/opening-hours.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/opening-hours.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>223fec0f-fcc7-11ee-9ae2-0242ac11002b</uuidstructure>
+			<uuidresource>223fec10-fcc7-11ee-9ae2-0242ac11002b</uuidresource>
+			<datecreated>Wed, 17 Apr 2024 14:31:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays opening hours]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

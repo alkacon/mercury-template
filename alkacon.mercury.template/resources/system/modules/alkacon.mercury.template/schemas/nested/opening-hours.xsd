@@ -1,7 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
-    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/opening-days.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/opening-hour.xsd" />
 
     <xsd:element name="OpeningHoursData" type="OpenCmsOpeningHoursData" />
 
@@ -13,7 +13,7 @@
 
     <xsd:complexType name="OpenCmsOpeningHours">
         <xsd:sequence>
-            <xsd:element name="OpeningDays" type="OpenCmsOpeningDays" maxOccurs="10" />
+            <xsd:element name="OpeningHour" type="OpenCmsOpeningHour" maxOccurs="10" />
             <xsd:element name="OpeningNote" type="OpenCmsHtml" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
@@ -23,14 +23,17 @@
         <xsd:appinfo>
             <FieldSettings>
                 <Setting>
-                    <PropertyName>OpeningDays</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Poi.OpeningDays)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Poi.OpeningDays.help)]]></Description>
+                    <PropertyName>OpeningHour</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours.OpeningHour)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.OpeningHour.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>OpeningNote</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Poi.OpeningNote)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Poi.OpeningNote.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours.Note)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.Note.help)]]></Description>
+                    <Widget>html</Widget>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Display>wide</Display>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

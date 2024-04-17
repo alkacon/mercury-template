@@ -1,0 +1,42 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/opening-time.xsd" />
+
+    <xsd:element name="OpeningHourData" type="OpenCmsOpeningHourData" />
+
+    <xsd:complexType name="OpenCmsOpeningHourData">
+        <xsd:sequence>
+            <xsd:element name="OpeningHour" type="OpenCmsOpeningHour" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsOpeningHour">
+        <xsd:sequence>
+            <xsd:element name="DaysOfWeek" type="OpenCmsString" />
+            <xsd:element name="OpeningTime" type="OpenCmsOpeningTime" minOccurs="1" maxOccurs="3"/>
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>DaysOfWeek</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours.DaysOfWeek)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.DaysOfWeek.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <Default>1</Default>
+                    <WidgetConfig><![CDATA[1:%(key.msg.weekday1)|2:%(key.msg.weekday2)|3:%(key.msg.weekday3)|4:%(key.msg.weekday4)|5:%(key.msg.weekday5)|6:%(key.msg.weekday6)|7:%(key.msg.weekday7)|1-5:%(key.msg.weekday1)-%(key.msg.weekday5)|6+7:%(key.msg.weekday6) & %(key.msg.weekday7)]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>OpeningTime</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours.OpeningTime)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.OpeningTime.help)]]></Description>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

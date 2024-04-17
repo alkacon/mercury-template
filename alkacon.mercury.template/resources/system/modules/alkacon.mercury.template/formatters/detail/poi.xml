@@ -73,6 +73,9 @@
       <IncludeName><![CDATA[showFacilities.true]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showOpeningHours.true]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
@@ -81,6 +84,56 @@
     <Setting>
       <IncludeName><![CDATA[showImageZoom.true]]></IncludeName>
     </Setting>
+    <MetaMapping>
+      <Key><![CDATA[ogTitleMeta]]></Key>
+      <Element><![CDATA[MetaInfo/Title]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogDescriptionMeta]]></Key>
+      <Element><![CDATA[MetaInfo/Description]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogImageMeta]]></Key>
+      <Element><![CDATA[MetaInfo/Image]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[Keywords]]></Key>
+      <Element><![CDATA[MetaInfo/Keywords]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[Robots]]></Key>
+      <Element><![CDATA[MetaInfo/Robots]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogIntroTeaser]]></Key>
+      <Element><![CDATA[TeaserData/TeaserIntro]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogTitleTeaser]]></Key>
+      <Element><![CDATA[TeaserData/TeaserTitle]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogDescriptionTeaser]]></Key>
+      <Element><![CDATA[TeaserData/TeaserPreface]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogImageTeaser]]></Key>
+      <Element><![CDATA[TeaserData/TeaserImage]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
+      <Key><![CDATA[ogIntro]]></Key>
+      <Element><![CDATA[Intro]]></Element>
+      <Order><![CDATA[5000]]></Order>
+    </MetaMapping>
     <MetaMapping>
       <Key><![CDATA[ogTitle]]></Key>
       <Element><![CDATA[Title]]></Element>

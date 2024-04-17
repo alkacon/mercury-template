@@ -97,7 +97,8 @@
                 </Setting>
                 <Setting>
                     <PropertyName>OpeningHours</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Poi.OpeningHours)]]></DisplayName>
+                    <DisplayName><![CDATA[%(key.label.OpeningHours)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.OpeningHours.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Intro</PropertyName>

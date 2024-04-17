@@ -1490,6 +1490,14 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showOpeningHours.true]]></IncludeName>
+      <PropertyName><![CDATA[showOpeningHours]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showOpeningHours)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showOpeningHours.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showCombinedDownloads.true]]></IncludeName>
       <PropertyName><![CDATA[showCombinedDownloads]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showCombinedDownloads)]]></DisplayName>

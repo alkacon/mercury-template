@@ -13,8 +13,8 @@
 
 <c:set var="preview"                value="${empty pageContext.request.getAttribute('ATTR_TEMPLATE_BEAN')}" />
 
-<cms:secureparams />
-<mercury:init-messages reload="${showMap and not preview}">
+<cms:secureparams replaceInvalid="bad_param" />
+<mercury:init-messages reload="${param.showmap ne null and not preview}">
 
 <cms:formatter var="content" val="value" rdfa="rdfa">
 
@@ -33,11 +33,14 @@
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
+<c:set var="showOpeningHours"       value="${setting.showOpeningHours.toBoolean}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
+
+<c:set var="openingHours"           value="${value.OpeningHours}" />
 
 <c:if test="${showFacilities and value.Facilities.isSet}">
     <c:set var="accessibleFacilities">
@@ -83,7 +86,7 @@
 
     <jsp:attribute name="heading">
         <div class="poi-head"><%----%>
-            <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" />
+            <mercury:intro-headline intro="${value.Intro}" headline="${value.Title}" level="${hsize}" ade="${ade}"/>
             ${accessibleFacilities}
         </div><%----%>
     </jsp:attribute>
@@ -146,6 +149,15 @@
     </jsp:attribute>
 
 </mercury:piece>
+
+<c:if test="${showOpeningHours and openingHours.isSet}"><%----%>
+    <div class="detail-content"><%----%>
+        <fmt:message key="msg.page.openingHours" var="hoursHeading" />
+        <mercury:heading level="${hsize+1}" text="${hoursHeading}" css="hours-heading" />
+        <mercury:opening-hours content="${value.OpeningHours}" />
+    </div><%----%>
+    <mercury:nl />
+</c:if>
 
 <c:if test="${showDescription}">
     <div class="detail-content"><%----%>

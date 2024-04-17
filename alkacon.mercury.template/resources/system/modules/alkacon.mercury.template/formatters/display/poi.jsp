@@ -11,7 +11,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<cms:secureparams />
+<cms:secureparams replaceInvalid="bad_param" />
 <mercury:init-messages>
 
 <cms:formatter var="content" val="value" rdfa="rdfa">

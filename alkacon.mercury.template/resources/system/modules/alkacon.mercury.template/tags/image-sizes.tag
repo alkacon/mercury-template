@@ -4,10 +4,17 @@
     trimDirectiveWhitespaces="true"
     description="Sets the image sizes for the Bootstrap grid." %>
 
+<%@ attribute name="initBootstrapBean" type="java.lang.Boolean" required="false"
+    description="Initialize the bootstrap bean. Default is 'false' if not provided." %>
+
+<%@ attribute name="gridWrapper" type="java.lang.String" required="false"
+    description="Optional Bootstrap wrapper CSS that will be included in the calculated grid." %>
+
+<%@ attribute name="useGutter" type="java.lang.Integer" required="false"
+    description="Bootstrap grid gutter adjustment. Default is '0' if not provided." %>
 
 <%@ attribute name="debug" type="java.lang.Boolean" required="false"
-    description="Enables debug output.
-    Default is 'false' if not provided." %>
+    description="Enables debug output. Default is 'false' if not provided." %>
 
 
 <%@ variable name-given="bsGutter" declare="true" %>
@@ -25,6 +32,11 @@
 <%@ variable name-given="bsMwXl" declare="true" %>
 <%@ variable name-given="bsMwXxl" declare="true" %>
 
+<%@ variable name-given="bb" declare="true" variable-class="alkacon.mercury.template.CmsJspBootstrapBean" %>
+<%@ variable name-given="bbInitialized" declare="true" variable-class="java.lang.Boolean" %>
+<%@ variable name-given="bbFullWidth" declare="true" variable-class="java.lang.Boolean" %>
+<%@ variable name-given="bbSrcSetSizes" declare="true" %>
+
 
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -38,7 +50,7 @@
 <c:set var="bootstrapGrid" value="${cms.sitemapConfig.attribute['template.bootstrap.grid'].toString}" />
 <c:set var="bootstrapGridEmpty" value="${empty bootstrapGrid}" />
 <c:set var="bootstrapGrid" value="${bootstrapGridEmpty ? 'template.bootstrap.grid.default' : bootstrapGrid}" />
-<c:set var="clearCache"    value="${DEBUG or cms.sitemapConfig.attribute['template.clearCache'].toBoolean}" />
+<c:set var="clearCache"    value="${(DEBUG and false) or cms.sitemapConfig.attribute['template.clearCache'].toBoolean}" />
 
 
 <c:if test="${empty applicationScope.bootstrapCache or clearCache}">
@@ -189,4 +201,122 @@ Max width XXL: ${bsMwXxl}
 -->
 </c:if>
 
-<jsp:doBody/>
+<c:choose>
+    <c:when test="${initBootstrapBean}">
+
+        <jsp:useBean id="bb" class="alkacon.mercury.template.CmsJspBootstrapBean">
+
+            <c:forEach var="grid" items="${paramValues.cssgrid}">
+                <c:if test="${fn:contains(grid, 'fullwidth')}">
+                    <c:set var="bbFullWidth" value="${true}" />
+                </c:if>
+            </c:forEach>
+
+            <c:choose>
+                <c:when test="${bbFullWidth}">
+                    <%-- ###### Assume all images are full screen ###### --%>
+<c:if test="${DEBUG}">
+<!--
+image-sizes using fullwidth!
+-->
+</c:if>
+                    ${bb.setGutter(0)}
+                    ${bb.setGridSize(0, bsMwXs)}
+                    ${bb.setGridSize(1, bsMwSm)}
+                    ${bb.setGridSize(2, bsMwMd)}
+                    ${bb.setGridSize(3, bsMwLg)}
+                    ${bb.setGridSize(4, bsBpXl)}
+                    ${bb.setGridSize(5, bsBpXxl)}
+                </c:when>
+                <c:otherwise>
+                    <%-- ###### Calculate image size based on column width ###### --%>
+                    <c:set var="gutter" value="${param.cssgutter}" />
+                    <c:set var="gutterAdjust" value="${0}" />
+                    <c:choose>
+                        <c:when test="${not empty gutter and gutter ne '#'}">
+                            <%-- ###### A custom gutter has been set, adjust  gutter in bean ###### --%>
+                            <c:set var="bsGutter" value="${cms:toNumber(gutter, bsGutter)}" />
+                            <c:if test="${gutter ne param.cssgutterbase}">
+                                <%-- ###### Special case: Gutter has been changed in template (e.g. logo slider does this).
+                                            Adjust size of total width accordingly otherwise calulation is incorrect. ###### --%>
+                                <c:set var="gutterBaseInt" value="${cms:toNumber(param.cssgutterbase, -1)}" />
+                                <c:if test="${gutterBaseInt gt 0}">
+                                    <c:set var="gutterAdjust" value="${gutterBaseInt - bsGutter}" />
+                                </c:if>
+                            </c:if>
+<c:if test="${DEBUG}">
+<!--
+image-sizes gutter adjust:
+
+param.cssgutter: [${param.cssgutter}]
+bsGutter: ${bsGutter}
+gutterAdjust: ${gutterAdjust}
+-->
+</c:if>
+                        </c:when>
+                        <c:when test="${not empty useGutter}">
+                            <c:set var="bsGutter" value="${useGutter}" />
+<c:if test="${DEBUG}">
+<!--
+image-sizes gutter adjust:
+
+bsGutter: ${bsGutter}
+gutterAdjust: ${gutterAdjust}
+-->
+</c:if>
+                        </c:when>
+                    </c:choose>
+                    ${bb.setGutter(bsGutter)}
+                    ${bb.setGridSize(0, bsMwXs - gutterAdjust)}
+                    ${bb.setGridSize(1, bsMwSm - gutterAdjust)}
+                    ${bb.setGridSize(2, bsMwMd - gutterAdjust)}
+                    ${bb.setGridSize(3, bsMwLg - gutterAdjust)}
+                    ${bb.setGridSize(4, bsMwXl - gutterAdjust)}
+                    ${bb.setGridSize(5, bsMwXxl - gutterAdjust)}
+                </c:otherwise>
+            </c:choose>
+
+            ${bb.setCssArray(paramValues.cssgrid)}
+            <c:set var="ignore" value="${not empty gridWrapper ? bb.addLayer(gridWrapper) : ''}" />
+            <c:set var="bbInitialized" value="${bb.isInitialized}" />
+
+<c:if test="${DEBUG}">
+<!--
+image-sizes calculated grid values::
+
+Gutter: ${bb.gutter}
+Max width XS: ${bb.getGridSize(0)} - Size XS: ${bb.sizeXs}
+Max width SM: ${bb.getGridSize(1)} - Size SM: ${bb.sizeSm}
+Max width MD: ${bb.getGridSize(2)} - Size MD: ${bb.sizeMd}
+Max width LG: ${bb.getGridSize(3)} - Size LG: ${bb.sizeLg}
+Max width XL: ${bb.getGridSize(4)} - Size XL: ${bb.sizeXl}
+Max width XXL: ${bb.getGridSize(5)} - Size XXL: ${bb.sizeXxl}
+<mercury:nl />
+<c:forEach var="grid" items="${paramValues.cssgrid}">
+grid: ${grid}
+</c:forEach>
+gridWrapper: ${gridWrapper}
+bbInitialized: ${bbInitialized}
+-->
+</c:if>
+
+            <c:if test="${bbInitialized}">
+                <%-- ###### Calculate the source set sizes ###### --%>
+                <c:set var="bbSrcSetSizes"><%--
+                --%><c:if test="${bb.sizeXxl gt 0}">(min-width: ${bsMwXxl}px) ${bb.sizeXxl}px, </c:if><%--
+                --%><c:if test="${bb.sizeXl gt 0}">(min-width: ${bsMwXl}px) ${bb.sizeXl}px, </c:if><%--
+                --%><c:if test="${bb.sizeLg gt 0}">(min-width: ${bsMwLg}px) ${bb.sizeLg}px, </c:if><%--
+                --%><c:if test="${bb.sizeMd gt 0}">(min-width: ${bsMwMd}px) ${bb.sizeMd}px, </c:if><%--
+                --%><c:if test="${bb.sizeSm gt 0}">(min-width: ${bsMwSm}px) ${bb.sizeSm}px, </c:if><%--
+                --%>100vw</c:set>
+            </c:if>
+
+            <jsp:doBody/>
+        </jsp:useBean>
+
+    </c:when>
+    <c:otherwise>
+        <jsp:doBody/>
+    </c:otherwise>
+</c:choose>
+

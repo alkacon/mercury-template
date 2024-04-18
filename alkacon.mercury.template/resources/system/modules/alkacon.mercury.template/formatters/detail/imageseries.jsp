@@ -58,6 +58,8 @@
 <c:set var="showText"               value="${setting.showText.toBoolean and text.isSet}" />
 <c:set var="detailPage"             value="${cms.detailRequest}" />
 
+<c:set var="useBrowserLazyLoad"     value="${true}" />
+
 <c:set var="titleMarkup">
     <mercury:intro-headline intro="${showIntro ? value.Intro : null}" headline="${value.Title}" level="${hsize}" ade="${ade}" />
     <mercury:heading text="${value.Preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface}" />
@@ -93,30 +95,71 @@
     </c:otherwise>
 </c:choose>
 
-<c:set var="template"><%--
---%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}><%--
-    --%><a class="zoom imageseries" href="%(src)" title="%(titleAttr)"><%--
-        --%><span class="content"><%--
-            --%><c:if test="${addBorderWrapper}"><span class="wrapper"></c:if><%--
-                --%><span ${overlayAttrs}><%--
-                    --%><img src="%(squareSrc)" <%--
-                        --%>srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" <%--
-                        --%>data-srcset="%(tileSrcSet)" <%--
-                        --%>data-sizes="auto" <%--
-                        --%>alt="%(alt)"<%--
-                        --%>class="lazyload"><%--
-                    --%><span class="zoom-icon"><%--
-                        --%><mercury:icon icon="search" tag="span" /></span><%--
+<mercury:nl />
+<div class="detail-page type-imageseries${showVisual or showText ? '' : ' only-series'}${elementCss}${setCssWrapper123}"><%----%>
+<mercury:nl />
+
+<c:choose>
+    <c:when test="${useBrowserLazyLoad}">
+        <mercury:image-sizes
+            initBootstrapBean="${true}"
+            gridWrapper="${imageSeriesCss}"
+            useGutter="${0}"
+            debug="${false}">
+            <%-- useGutter 0 will make source set images larger,
+                 this is not 100% precise but the bootstrrap bean can not deal with the reduced tile margin gutter in the series --%>
+            <c:set var="template"><%--
+            --%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}><%--
+                --%><a class="zoom imageseries" href="%(src)" title="%(titleAttr)"><%--
+                    --%><span class="content"><%--
+                        --%><c:if test="${addBorderWrapper}"><span class="wrapper"></c:if><%--
+                            --%><span ${overlayAttrs}><%--
+                                --%><img src="%(squareSrc)" <%--
+                                    --%>srcset="%(tileSrcSet)" <%--
+                                    --%>sizes="${bbSrcSetSizes}" <%--
+                                    --%>loading="lazy" <%--
+                                    --%>alt="%(alt)"><%--
+                                --%><span class="zoom-icon"><%--
+                                    --%><mercury:icon icon="search" tag="span" /></span><%--
+                                --%></span><%--
+                                --%><c:if test="${showImageListCopyright}"><%--
+                                    --%><span class="copyright">%(copyright)</span><%--
+                                --%></c:if><%--
+                            --%></span><%--
+                        --%><c:if test="${addBorderWrapper}"></span></c:if><%--
                     --%></span><%--
-                    --%><c:if test="${showImageListCopyright}"><%--
-                        --%><span class="copyright">%(copyright)</span><%--
-                    --%></c:if><%--
+                --%></a><%--
+            --%></div>
+            </c:set>
+        </mercury:image-sizes>
+    </c:when>
+    <c:otherwise>
+        <c:set var="template"><%--
+        --%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}><%--
+            --%><a class="zoom imageseries" href="%(src)" title="%(titleAttr)"><%--
+                --%><span class="content"><%--
+                    --%><c:if test="${addBorderWrapper}"><span class="wrapper"></c:if><%--
+                        --%><span ${overlayAttrs}><%--
+                            --%><img src="%(squareSrc)" <%--
+                                --%>srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" <%--
+                                --%>data-srcset="%(tileSrcSet)" <%--
+                                --%>data-sizes="auto" <%--
+                                --%>alt="%(alt)"<%--
+                                --%>class="lazyload"><%--
+                            --%><span class="zoom-icon"><%--
+                                --%><mercury:icon icon="search" tag="span" /></span><%--
+                            --%></span><%--
+                            --%><c:if test="${showImageListCopyright}"><%--
+                                --%><span class="copyright">%(copyright)</span><%--
+                            --%></c:if><%--
+                        --%></span><%--
+                    --%><c:if test="${addBorderWrapper}"></span></c:if><%--
                 --%></span><%--
-            --%><c:if test="${addBorderWrapper}"></span></c:if><%--
-        --%></span><%--
-    --%></a><%--
---%></div>
-</c:set>
+            --%></a><%--
+        --%></div>
+        </c:set>
+    </c:otherwise>
+</c:choose>
 
 <%-- ###### Create the list of images to display ###### --%>
 <jsp:useBean id="imageList" class="java.util.ArrayList" />
@@ -178,10 +221,6 @@
         </c:if>
     </cms:search>
 </c:if>
-
-<mercury:nl />
-<div class="detail-page type-imageseries${showVisual or showText ? '' : ' only-series'}${elementCss}${setCssWrapper123}"><%----%>
-<mercury:nl />
 
 <c:if test="${showVisual}">
     <div class="detail-visual pivot${showDate or showImageCount ? '' : ' no-info'}${setCssWrapperKeyPiece}"><%----%>

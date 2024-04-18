@@ -15,6 +15,7 @@
       <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-article]]></TypeName>
@@ -27,6 +28,7 @@
       <ElementView/>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-decoy]]></TypeName>
@@ -40,6 +42,7 @@
       <ElementView/>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-event]]></TypeName>
@@ -52,6 +55,7 @@
       <ElementView/>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-imageseries]]></TypeName>
@@ -63,6 +67,7 @@
       <Order><![CDATA[1200]]></Order>
       <ElementView/>
       <CopyInModels>false</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-media]]></TypeName>
@@ -75,6 +80,7 @@
       <ElementView/>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-organization]]></TypeName>
@@ -86,6 +92,7 @@
       <Order><![CDATA[1290]]></Order>
       <ElementView/>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-person]]></TypeName>
@@ -97,6 +104,7 @@
       <Order><![CDATA[1295]]></Order>
       <ElementView/>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-contact]]></TypeName>
@@ -108,6 +116,7 @@
       <Order><![CDATA[1300]]></Order>
       <ElementView/>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-poi]]></TypeName>
@@ -120,6 +129,7 @@
       <ElementView/>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-map]]></TypeName>
@@ -132,6 +142,7 @@
       <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-linksequence]]></TypeName>
@@ -144,6 +155,7 @@
       <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-faq]]></TypeName>
@@ -156,6 +168,7 @@
       <ElementView/>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-job]]></TypeName>
@@ -168,6 +181,7 @@
       <ElementView/>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-slider]]></TypeName>
@@ -180,6 +194,7 @@
       <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[listconfig]]></TypeName>
@@ -196,6 +211,7 @@
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-metainfo]]></TypeName>
@@ -214,6 +230,7 @@
       </ElementView>
       <CopyInModels>true</CopyInModels>
       <ElementDeleteMode><![CDATA[askDelete]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-navigation]]></TypeName>
@@ -248,6 +265,7 @@
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-webform-data]]></TypeName>
@@ -259,6 +277,7 @@
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-tab]]></TypeName>
@@ -276,6 +295,7 @@
         </link>
       </ElementView>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-flexible]]></TypeName>
@@ -293,6 +313,7 @@
         </link>
       </ElementView>
       <CopyInModels>true</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-sitemap]]></TypeName>
@@ -310,6 +331,7 @@
         </link>
       </ElementView>
       <CopyInModels>false</CopyInModels>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-shariff]]></TypeName>
@@ -421,6 +443,7 @@
       </ElementView>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-layout-area-complex]]></TypeName>
@@ -439,6 +462,7 @@
       </ElementView>
       <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+      <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-privacypolicy]]></TypeName>

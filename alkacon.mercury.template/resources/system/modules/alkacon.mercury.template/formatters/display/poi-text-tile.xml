@@ -61,7 +61,7 @@
       <IncludeName><![CDATA[visualOption.tile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.textTile]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>

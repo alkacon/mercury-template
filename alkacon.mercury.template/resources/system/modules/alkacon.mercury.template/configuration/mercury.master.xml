@@ -792,13 +792,13 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi-elaborate.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi-elaborate-alt.xml]]></target>
           <uuid>097a615b-fb29-11ee-9ae2-0242ac11002b</uuid>
         </link>
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
-          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi-static.xml]]></target>
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/display/poi-elaborate.xml]]></target>
           <uuid>cb421199-a23e-11ed-b729-0242ac11002b</uuid>
         </link>
       </AddFormatter>

@@ -86,16 +86,28 @@ aside img {
 
     &.presized {
 
-        height: 0;
-        display: block;
-        // padding-bottom is calculated according to ratio and rendered as inline style in HTML
+        &:not(.use-ratio) {
+            height: 0;
+            display: block;
+            // padding-bottom is calculated according to ratio and rendered as inline style in HTML
 
-        img,
-        .img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
+            img,
+            .img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+            }
+        }
+        &.use-ratio {
+            aspect-ratio: auto;
+            width: 100%;
+            height: auto;
+
+            img,
+            .img {
+                height: auto;
+            }
         }
     }
 

@@ -93,202 +93,204 @@ SVG placeholder image, background image and image sizing
 
 <c:set var="ib" value="${imagebean}" />
 
-<c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not (param.lazyLoad eq 'false') and not caseDynamicListNoscript}" />
+<c:set var="aboveTheFold" value="${param.lazyLoad eq 'false'}" />
+<c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not aboveTheFold}" />
+<c:set var="useJsLazyLoading" value="${useLazyLoading and not caseDynamicListNoscript}" /><%-- This will finally be set after the Bootstrap grid config has been read --%>
 <c:set var="isSvg" value="${empty isSvg ? fn:endsWith(ib.vfsUri, '.svg') : isSvg}" />
-<c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not caseDynamicListNoscript and not isSvg}" />
+<c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not isSvg and not caseDynamicListNoscript}" />
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
 <c:set var="useSizes" value="${not empty sizes}" />
 
 <%-- ###### Enable / disable output for debug purposes if required by setting DEBUG="${true}" ###### --%>
 <c:set var="DEBUG" value="${false}" />
 
-<c:if test="${DEBUG}">
-<!--
+<mercury:comment test="${DEBUG}">
 image-srcset parameters:
 
-isSvg=${isSvg}
-useSizes=${useSizes}
-useLazyLoading=${useLazyLoading}
-useSrcSet=${useSrcSet}
-useNoScript=${useNoScript}
--->
-</c:if>
+isSvg: ${isSvg}
+useSizes: ${useSizes}
+useLazyLoading: ${useLazyLoading}
+aboveTheFold: ${aboveTheFold}
+useSrcSet: ${useSrcSet}
+useNoScript: ${useNoScript}
+</mercury:comment>
 
 <c:if test="${not isSvg}">
 
     <mercury:image-sizes debug="${DEBUG}" initBootstrapBean="${not useSizes}">
 
-    <c:choose>
-    <c:when test="${not useSizes}">
+        <c:set var="useJsLazyLoading" value="${useJsLazyLoading and bsLazyLoadJs}" />
+        <c:set var="sizeXsMax" value="${bb.getGridSize(0) - bb.gutter}" />
 
-<!--
-image-srcset srcSet base image settings:
+        <c:choose>
+            <c:when test="${not useSizes}">
 
-bbFullWidth: ${bbFullWidth eq true}
-ib.vfsUri: ${ib.vfsUri}
-ib.scaler.width: ${ib.scaler.width}
-ib.scaler.height: ${ib.scaler.height}
-ib.ratio: ${ib.ratio}
-ib.scaler.pixelCount: ${ib.scaler.pixelCount}
--->
+                <mercury:comment test="${DEBUG}">
+                    image-srcset srcSet base image settings:
 
-        <c:if test="${ib.scaler.width > maxScaleWidth}">
-            <c:set var="ib" value="${ib.scaleWidth[maxScaleWidth]}" />
-        </c:if>
+                    bbFullWidth: ${bbFullWidth eq true}
+                    ib.vfsUri: ${ib.vfsUri}
+                    ib.scaler.width: ${ib.scaler.width}
+                    ib.scaler.height: ${ib.scaler.height}
+                    ib.ratio: ${ib.ratio}
+                    ib.scaler.pixelCount: ${ib.scaler.pixelCount}
+                    useJsLazyLoading: ${useJsLazyLoading}
+                    useSrcSet and bbInitialized: ${useSrcSet and bbInitialized}
+                </mercury:comment>
 
-        <c:if test="${useSrcSet and bbInitialized}">
+                <c:if test="${ib.scaler.width > maxScaleWidth}">
+                    <c:set var="ib" value="${ib.scaleWidth[maxScaleWidth]}" />
+                </c:if>
 
-            <c:set var="srcSetSizes" value="${bbSrcSetSizes}" />
-            <c:set var="sizeXsMax" value="${bb.getGridSize(0) - bb.gutter}" />
+                <c:if test="${useSrcSet and bbInitialized}">
 
-            <%-- ###### Calculate size based on the current bootstrap grid. ###### --%>
-            <c:if test="${bb.sizeXs > 0}">
-                <c:if test="${maxScaleWidth > (2 * bb.sizeXs)}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXs]}" />
+                    <c:set var="srcSetSizes" value="${bbSrcSetSizes}" />
+
+                    <%-- ###### Calculate size based on the current bootstrap grid. ###### --%>
+                    <c:if test="${bb.sizeXs > 0}">
+                        <c:if test="${maxScaleWidth > (2 * bb.sizeXs)}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXs]}" />
+                        </c:if>
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXs]}" />
+                        <c:set var="largestWidth" value="${bb.sizeXs}" />
+                    </c:if>
+                    <c:if test="${bb.sizeSm > 0}">
+                        <c:if test="${maxScaleWidth > (2 * bb.sizeSm)}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeSm]}" />
+                        </c:if>
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeSm]}" />
+                        <c:set var="largestWidth" value="${bb.sizeSm}" />
+                    </c:if>
+                    <c:if test="${bb.sizeMd > 0}">
+                        <c:if test="${maxScaleWidth > (2 * bb.sizeMd)}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeMd]}" />
+                        </c:if>
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeMd]}" />
+                        <c:set var="largestWidth" value="${bb.sizeMd}" />
+                    </c:if>
+                    <c:if test="${bb.sizeLg > 0}">
+                        <c:if test="${maxScaleWidth > (2 * bb.sizeLg)}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeLg]}" />
+                        </c:if>
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeLg]}" />
+                        <c:set var="largestWidth" value="${bb.sizeLg}" />
+                    </c:if>
+                    <c:if test="${bb.sizeXl > 0}">
+                        <c:if test="${maxScaleWidth > (2 * bb.sizeXl)}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXl]}" />
+                        </c:if>
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXl]}" />
+                        <c:set var="largestWidth" value="${bb.sizeXl}" />
+                    </c:if>
+                    <c:if test="${bb.sizeXxl > 0}">
+                        <c:if test="${maxScaleWidth > (2 * bb.sizeXxl)}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXxl]}" />
+                        </c:if>
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXxl]}" />
+                        <c:set var="largestWidth" value="${bb.sizeXxl}" />
+                    </c:if>
+                    <c:if test="${bbFullWidth}">
+                        <%-- Add size variations to avoid offering only one very large image for full screen backgrounds --%>
+                        <c:set var="scaleGapStep" value="${Math.round((ib.scaler.width - largestWidth) / 4)}" />
+                        <mercury:comment test="${DEBUG}">
+                            image-srcset optimizing for full width:
+
+                            ib.scaler.width: ${ib.scaler.width}
+                            largest width: ${largestWidth}
+                            scaleGapStep: ${scaleGapStep}
+                        </mercury:comment>
+                        <c:if test="${scaleGapStep > 100}">
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + scaleGapStep]}" />
+                            <c:if test="${maxScaleWidth > 2 * (largestWidth + scaleGapStep)}">
+                                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * (largestWidth + scaleGapStep)]}" />
+                            </c:if>
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 2 * scaleGapStep]}" />
+                            <c:if test="${maxScaleWidth > 2 * (largestWidth + 2 * scaleGapStep)}">
+                                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 2 * scaleGapStep]}" />
+                            </c:if>
+                            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 3 * scaleGapStep]}" />
+                            <c:if test="${maxScaleWidth > 2 * (largestWidth + 3 * scaleGapStep)}">
+                                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 3 * scaleGapStep]}" />
+                            </c:if>
+                        </c:if>
+                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[ib.scaler.width]}" />
+                    </c:if>
                 </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXs]}" />
-                <c:set var="largestWidth" value="${bb.sizeXs}" />
-            </c:if>
-            <c:if test="${bb.sizeSm > 0}">
-                <c:if test="${maxScaleWidth > (2 * bb.sizeSm)}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeSm]}" />
+
+                <c:if test="${useSrcSet and (useLazyLoading or bbInitialized)}" >
+                    <%-- ###### Lazy loading will generate the sizes attribute by JS ###### --%>
+                    <%-- ###### Otherwise we get the grid sizes information from the bean ###### --%>
+                    <c:if test="${not bbInitialized or (bb.sizeXs >= sizeXsMax)}">
+                        <%-- ###### Add size based versions for large images ###### --%>
+                        ${ib.addSrcSetWidthVariants(640, maxScaleWidth)}
+                    </c:if>
                 </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeSm]}" />
-                <c:set var="largestWidth" value="${bb.sizeSm}" />
-            </c:if>
-            <c:if test="${bb.sizeMd > 0}">
-                <c:if test="${maxScaleWidth > (2 * bb.sizeMd)}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeMd]}" />
-                </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeMd]}" />
-                <c:set var="largestWidth" value="${bb.sizeMd}" />
-            </c:if>
-            <c:if test="${bb.sizeLg > 0}">
-                <c:if test="${maxScaleWidth > (2 * bb.sizeLg)}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeLg]}" />
-                </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeLg]}" />
-                <c:set var="largestWidth" value="${bb.sizeLg}" />
-            </c:if>
-            <c:if test="${bb.sizeXl > 0}">
-                <c:if test="${maxScaleWidth > (2 * bb.sizeXl)}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXl]}" />
-                </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXl]}" />
-                <c:set var="largestWidth" value="${bb.sizeXl}" />
-            </c:if>
-            <c:if test="${bb.sizeXxl > 0}">
-                <c:if test="${maxScaleWidth > (2 * bb.sizeXxl)}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXxl]}" />
-                </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[bb.sizeXxl]}" />
-                <c:set var="largestWidth" value="${bb.sizeXxl}" />
-            </c:if>
-            <c:if test="${bbFullWidth}">
-                <%-- Add size variations to avoid offering only one very large image for full screen backgrounds --%>
-                <c:set var="scaleGapStep" value="${Math.round((ib.scaler.width - largestWidth) / 4)}" />
+
                 <c:if test="${DEBUG}">
-<!--
-image-srcset optimizing for full width:
-
-ib.scaler.width: ${ib.scaler.width}
-largest width: ${largestWidth}
-scaleGapStep: ${scaleGapStep}
--->
+                    <c:set var="attrImage">${attrImage} data-grid-classes="${bb.css}" data-grid-size="${bb}"</c:set>
                 </c:if>
-                <c:if test="${scaleGapStep > 100}">
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + scaleGapStep]}" />
-                    <c:if test="${maxScaleWidth > 2 * (largestWidth + scaleGapStep)}">
-                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * (largestWidth + scaleGapStep)]}" />
+
+            </c:when>
+            <c:otherwise>
+
+                <c:set var="maxSize" value="${0}" />
+                <c:set var="sizeList" value="${fn:split(sizes, ',')}" />
+                <mercury:comment test="${DEBUG}">
+                    sizes: [${sizes}] ib.width: ${ib.width}
+                </mercury:comment>
+                <c:forEach var="sizeStr" items="${sizeList}">
+                    <c:set var="sizeInt" value="${cms.wrap[sizeStr].toInteger}" />
+                    <mercury:comment test="${DEBUG}">
+                        adding sizeInt: ${sizeInt} sizeIntx2: ${sizeInt * 2}
+                    </mercury:comment>
+                    <c:set var="sizeTwice" value="${(sizeInt * 2) > ib.width ?  ib.width : sizeInt * 2}" />
+                    <c:set var="sizeOnce" value="${sizeInt > ib.width ?  ib.width : sizeInt}" />
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[sizeTwice]}" />
+                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[sizeOnce]}" />
+                    <c:if test="${sizeOnce > maxSize}">
+                        <c:set var="maxSize" value="${sizeOnce}" />
+                        <c:set var="maxImage" value="${ib.scaleWidth[maxSize]}" />
+                        <mercury:comment test="${DEBUG}">
+                            using maxImage: ${maxSize}
+                        </mercury:comment>
                     </c:if>
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 2 * scaleGapStep]}" />
-                    <c:if test="${maxScaleWidth > 2 * (largestWidth + 2 * scaleGapStep)}">
-                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 2 * scaleGapStep]}" />
-                    </c:if>
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 3 * scaleGapStep]}" />
-                    <c:if test="${maxScaleWidth > 2 * (largestWidth + 3 * scaleGapStep)}">
-                        <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + 3 * scaleGapStep]}" />
-                    </c:if>
-                </c:if>
-                <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[ib.scaler.width]}" />
-            </c:if>
+                </c:forEach>
+
+            </c:otherwise>
+        </c:choose>
+
+        <c:if test="${useSrcSet and (useLazyLoading or useSizes or bbInitialized)}" >
+            <%-- ###### Set quality higher for smaller images to avoid blur ###### --%>
+            <c:forEach var="vb" items="${ib.srcSetMap.values()}">
+                <c:set var="pixels" value="${vb.scaler.width * vb.scaler.height}" />
+                <c:choose>
+                    <c:when test="${pixels <= 10000}"><%-- 100 x 100 --%>
+                        <c:set target="${vb}" property="quality" value="${95}" />
+                    </c:when>
+                    <c:when test="${pixels <= 40000}"><%-- 200 x 200 --%>
+                        <c:set target="${vb}" property="quality" value="${90}" />
+                    </c:when>
+                    <c:when test="${pixels <= 90000}"><%-- 300 x 300 --%>
+                        <c:set target="${vb}" property="quality" value="${85}" />
+                    </c:when>
+                    <c:when test="${pixels <= 160000}"><%-- 400 x 400 --%>
+                        <c:set target="${vb}" property="quality" value="${80}" />
+                    </c:when>
+                    <%-- Otherwise default quality will be used --%>
+                </c:choose>
+            </c:forEach>
+            <c:choose>
+                <c:when test="${ib.srcSetMap.size() == 1}">
+                    <c:set var="ib" value="${ib.getSrcSetMaxImage()}" />
+                </c:when>
+                <c:when test="${ib.srcSetMap.size() > 1}">
+                    <%-- ###### We only need a srcSet if we have more then one image variation ###### --%>
+                    <c:set var="srcset" value="${ib.srcSet}" />
+                </c:when>
+            </c:choose>
         </c:if>
-
-        <c:if test="${useSrcSet and (useLazyLoading or bbInitialized)}" >
-            <%-- ###### Lazy loading will generate the sizes attribute by JS ###### --%>
-            <%-- ###### Otherwise we get the grid sizes information from the bean ###### --%>
-            <c:if test="${not bbInitialized or (bb.sizeXs >= sizeXsMax)}">
-                <%-- ###### Add size based versions for large images ###### --%>
-                ${ib.addSrcSetWidthVariants(640, maxScaleWidth)}
-            </c:if>
-        </c:if>
-
-        <c:if test="${DEBUG}">
-            <c:set var="attrImage">${attrImage} data-grid-classes="${bb.css}" data-grid-size="${bb}"</c:set>
-        </c:if>
-
-    </c:when>
-    <c:otherwise>
-
-        <c:set var="maxSize" value="${0}" />
-        <c:set var="sizeList" value="${fn:split(sizes, ',')}" />
-        <c:if test="${DEBUG}">
-            <!-- sizes:[${sizes}] ib.width:${ib.width} -->
-        </c:if>
-        <c:forEach var="sizeStr" items="${sizeList}">
-            <c:set var="sizeInt" value="${cms.wrap[sizeStr].toInteger}" />
-            <c:if test="${DEBUG}">
-                <!-- adding sizeInt:${sizeInt} sizeIntx2:${sizeInt * 2} -->
-            </c:if>
-            <c:set var="sizeTwice" value="${(sizeInt * 2) > ib.width ?  ib.width : sizeInt * 2}" />
-            <c:set var="sizeOnce" value="${sizeInt > ib.width ?  ib.width : sizeInt}" />
-            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[sizeTwice]}" />
-            <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[sizeOnce]}" />
-            <c:if test="${sizeOnce > maxSize}">
-                <c:set var="maxSize" value="${sizeOnce}" />
-                <c:set var="maxImage" value="${ib.scaleWidth[maxSize]}" />
-                <c:if test="${DEBUG}">
-                    <!-- using maxImage:${maxSize} -->
-                </c:if>
-            </c:if>
-        </c:forEach>
-
-    </c:otherwise>
-    </c:choose>
 
     </mercury:image-sizes>
-
-
-    <c:if test="${useSrcSet and (useLazyLoading or useSizes or bbInitialized)}" >
-        <%-- ###### Set quality higher for smaller images to avoid blur ###### --%>
-        <c:forEach var="vb" items="${ib.srcSetMap.values()}">
-            <c:set var="pixels" value="${vb.scaler.width * vb.scaler.height}" />
-            <c:choose>
-                <c:when test="${pixels <= 10000}"><%-- 100 x 100 --%>
-                    <c:set target="${vb}" property="quality" value="${95}" />
-                </c:when>
-                <c:when test="${pixels <= 40000}"><%-- 200 x 200 --%>
-                    <c:set target="${vb}" property="quality" value="${90}" />
-                </c:when>
-                <c:when test="${pixels <= 90000}"><%-- 300 x 300 --%>
-                    <c:set target="${vb}" property="quality" value="${85}" />
-                </c:when>
-                <c:when test="${pixels <= 160000}"><%-- 400 x 400 --%>
-                    <c:set target="${vb}" property="quality" value="${80}" />
-                </c:when>
-                <%-- Otherwise default quality will be used --%>
-            </c:choose>
-        </c:forEach>
-        <c:choose>
-            <c:when test="${ib.srcSetMap.size() == 1}">
-                <c:set var="ib" value="${ib.getSrcSetMaxImage()}" />
-            </c:when>
-            <c:when test="${ib.srcSetMap.size() > 1}">
-                <%-- ###### We only need a srcSet if we have more then one image variation ###### --%>
-                <c:set var="srcset" value="${ib.srcSet}" />
-            </c:when>
-        </c:choose>
-    </c:if>
 
 </c:if>
 
@@ -306,15 +308,13 @@ scaleGapStep: ${scaleGapStep}
         </c:choose>
         <c:set var="srcurl"><cms:link>${ib.vfsUri}</cms:link></c:set>
         <c:set var="attrImage">role="img"<c:if test="${not empty attrImage}">${' '}${attrImage}</c:if></c:set>
-        <c:if test="${DEBUG}">
-<!--
-image-srcset SVG handling:
+        <mercury:comment test="${DEBUG}">
+            image-srcset SVG handling:
 
-ib.vfsUri: ${ib.vfsUri}
-inlineSvg: ${inlineSvg}
-inlineSvgProp: [${inlineSvgProp}]
--->
-        </c:if>
+            ib.vfsUri: ${ib.vfsUri}
+            inlineSvg: ${inlineSvg}
+            inlineSvgProp: [${inlineSvgProp}]
+        </mercury:comment>
     </c:when>
     <c:when test="${not empty srcset}">
         <c:set var="srcurl" value="${not empty maxImage ? maxImage.srcUrl : ib.getSrcSetMaxImage().srcUrl}" />
@@ -352,6 +352,7 @@ inlineSvgProp: [${inlineSvgProp}]
             height="${ib.scaler.height}"
             heightPercentage="${ib.ratioHeightPercentage}"
             lazyLoad="${useLazyLoading}"
+            lazyLoadJs="${useJsLazyLoading}"
             noScript="${useNoScript}"
             alt="${alt}"
             title="${title}"
@@ -361,6 +362,7 @@ inlineSvgProp: [${inlineSvgProp}]
             attrImage="${attrImage}"
             attrWrapper="${attrWrapper}"
             zoomData="${zoomData}"
+            debug="${DEBUG}"
         />
     </c:otherwise>
 </c:choose>

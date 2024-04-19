@@ -34,6 +34,8 @@ import 'bootstrap/js/dist/tooltip';
 
 import jsDevice from 'current-device';
 import fitVids from 'fitvids';
+Object.assign(lazySizes.cfg, { init: false }); // otherwise device based configuration will not work
+import lazySizes from 'lazysizes';
 
 import * as AnalyticElements from './analytics.js';
 import * as CommentElements from './comments.js';
@@ -514,6 +516,22 @@ const Mercury = function (jQ) {
         }
     }
 
+
+    function initLazyImageLoading() {
+        // initialize lazy loading of images using the lazySizes plugin
+        const lazySizesCfg = { init: true };
+        if (device().desktop()) {
+            lazySizesCfg.expFactor = 2.0; // load elements "not so near" for desktop
+            lazySizesCfg.loadMode = 3; // load elements "not so near" for desktop
+        } else {
+            lazySizesCfg.loadMode = 1; // only load visible elements for mobile
+        }
+        // see https://github.com/aFarkas/lazysizes/issues/410
+        Object.assign(lazySizes.cfg, lazySizesCfg);
+        lazySizes.init();
+    }
+
+
     function initTooltips(parent) {
         // initialize bootstrap tooltips
         parent = parent || '';
@@ -971,6 +989,12 @@ const Mercury = function (jQ) {
         // main init function - called from jQuery(document).ready() - see below in this script
         if (DEBUG) console.info("Mercury.init() - Modularized version");
         window.Mercury = Mercury;
+
+        try {
+            initLazyImageLoading();
+        } catch (err) {
+            console.warn("Mercury.initLazyImageLoading() error", err);
+        }
 
         waitForCss();
     }

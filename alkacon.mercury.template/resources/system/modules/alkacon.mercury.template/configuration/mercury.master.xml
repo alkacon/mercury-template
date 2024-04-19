@@ -12,8 +12,8 @@
       </Folder>
       <NamePattern><![CDATA[cs_%(number).xml]]></NamePattern>
       <Order><![CDATA[1000]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>true</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
@@ -26,8 +26,8 @@
       <NamePattern><![CDATA[a_%(number).xml]]></NamePattern>
       <Order><![CDATA[1050]]></Order>
       <ElementView/>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -38,10 +38,10 @@
       </Folder>
       <NamePattern><![CDATA[de_%(number).xml]]></NamePattern>
       <Order><![CDATA[1100]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -53,8 +53,8 @@
       <NamePattern><![CDATA[ev_%(number).xml]]></NamePattern>
       <Order><![CDATA[1150]]></Order>
       <ElementView/>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -78,8 +78,8 @@
       <NamePattern><![CDATA[media_%(number).xml]]></NamePattern>
       <Order><![CDATA[1250]]></Order>
       <ElementView/>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -127,8 +127,8 @@
       <NamePattern><![CDATA[poi_%(number).xml]]></NamePattern>
       <Order><![CDATA[1350]]></Order>
       <ElementView/>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -139,8 +139,8 @@
       </Folder>
       <NamePattern><![CDATA[map_%(number).xml]]></NamePattern>
       <Order><![CDATA[1400]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>true</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
@@ -152,8 +152,8 @@
       </Folder>
       <NamePattern><![CDATA[ls_%(number).xml]]></NamePattern>
       <Order><![CDATA[1450]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>true</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
@@ -166,8 +166,8 @@
       <NamePattern><![CDATA[faq_%(number).xml]]></NamePattern>
       <Order><![CDATA[1500]]></Order>
       <ElementView/>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -179,8 +179,8 @@
       <NamePattern><![CDATA[job_%(number).xml]]></NamePattern>
       <Order><![CDATA[1550]]></Order>
       <ElementView/>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -191,8 +191,8 @@
       </Folder>
       <NamePattern><![CDATA[slider_%(number).xml]]></NamePattern>
       <Order><![CDATA[1600]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView/>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>true</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
@@ -204,13 +204,13 @@
       </Folder>
       <NamePattern><![CDATA[list_%(number).xml]]></NamePattern>
       <Order><![CDATA[2000]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -221,15 +221,15 @@
       </Folder>
       <NamePattern><![CDATA[meta_%(number).xml]]></NamePattern>
       <Order><![CDATA[2050]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
-      <CopyInModels>true</CopyInModels>
       <ElementDeleteMode><![CDATA[askDelete]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>true</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -240,15 +240,15 @@
       </Folder>
       <NamePattern><![CDATA[nav_%(number).xml]]></NamePattern>
       <Order><![CDATA[2100]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[askKeep]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>false</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-webform]]></TypeName>
@@ -258,25 +258,25 @@
       </Folder>
       <NamePattern><![CDATA[wf_%(number).xml]]></NamePattern>
       <Order><![CDATA[2150]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-webform-data]]></TypeName>
       <Disabled><![CDATA[add]]></Disabled>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -287,13 +287,13 @@
       </Folder>
       <NamePattern><![CDATA[tab_%(number).xml]]></NamePattern>
       <Order><![CDATA[2200]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>true</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
@@ -305,13 +305,13 @@
       </Folder>
       <NamePattern><![CDATA[fc_%(number).xml]]></NamePattern>
       <Order><![CDATA[2250]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>true</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
@@ -323,13 +323,13 @@
       </Folder>
       <NamePattern><![CDATA[sitemap_%(number).xml]]></NamePattern>
       <Order><![CDATA[2300]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
@@ -341,13 +341,13 @@
       </Folder>
       <NamePattern><![CDATA[shariff_%(number).xml]]></NamePattern>
       <Order><![CDATA[2350]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/advanced.xml]]></target>
           <uuid>2fcbabc9-d6fd-4274-9e0c-4732a6e13769</uuid>
         </link>
       </ElementView>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
       <CopyInModels>false</CopyInModels>
     </ResourceType>
     <ResourceType>
@@ -380,15 +380,15 @@
       </Folder>
       <NamePattern><![CDATA[lr_%(number).xml]]></NamePattern>
       <Order><![CDATA[3000]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
           <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
         </link>
       </ElementView>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>false</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-layout-group-simple]]></TypeName>
@@ -398,15 +398,15 @@
       </Folder>
       <NamePattern><![CDATA[lg_%(number).xml]]></NamePattern>
       <Order><![CDATA[3100]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
           <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
         </link>
       </ElementView>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>false</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-layout-area-simple]]></TypeName>
@@ -416,15 +416,15 @@
       </Folder>
       <NamePattern><![CDATA[la_%(number).xml]]></NamePattern>
       <Order><![CDATA[3200]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
           <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
         </link>
       </ElementView>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>false</CopyInModels>
     </ResourceType>
     <ResourceType>
       <TypeName><![CDATA[m-layout-row-complex]]></TypeName>
@@ -434,15 +434,15 @@
       </Folder>
       <NamePattern><![CDATA[clr_%(number).xml]]></NamePattern>
       <Order><![CDATA[3300]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
           <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
         </link>
       </ElementView>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>
@@ -453,15 +453,15 @@
       </Folder>
       <NamePattern><![CDATA[cla_%(number).xml]]></NamePattern>
       <Order><![CDATA[3400]]></Order>
-      <DetailPagesDisabled>true</DetailPagesDisabled>
       <ElementView>
         <link internal="true" type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/elementviews/template.xml]]></target>
           <uuid>fff4b5f1-5d6b-4220-86b9-ece3579bda69</uuid>
         </link>
       </ElementView>
-      <CopyInModels>false</CopyInModels>
       <ElementDeleteMode><![CDATA[alwaysKeep]]></ElementDeleteMode>
+      <DetailPagesDisabled>true</DetailPagesDisabled>
+      <CopyInModels>false</CopyInModels>
       <CheckReuse>true</CheckReuse>
     </ResourceType>
     <ResourceType>

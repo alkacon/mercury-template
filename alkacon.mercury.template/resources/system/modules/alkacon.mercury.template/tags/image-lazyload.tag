@@ -27,6 +27,9 @@
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not? Default is 'true'."%>
 
+<%@ attribute name="lazyLoadJs" type="java.lang.Boolean" required="false"
+    description="true: lazy loading with JS / false: lazy loading using native browser suppoer ? Default is 'false'."%>
+
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
     description="Generate noscript tags for lazy loading images or not?
     Default is 'true'." %>
@@ -56,6 +59,9 @@
 <%@ attribute name="zoomData" type="java.lang.String" required="false"
     description="Zoom data attribute added directly to the generated image tag." %>
 
+<%@ attribute name="debug" type="java.lang.Boolean" required="false"
+    description="Enables debug output. Default is 'false' if not provided." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
@@ -65,10 +71,11 @@
 
 
 <c:set var="useNoScript" value="${empty noScript ? true : noScript}" />
-<c:set var="useJsLazyLoading" value="${false}" />
+<c:set var="useJsLazyLoading" value="${empty lazyLoadJs ? false : lazyLoadJs}" />
 <c:set var="useLazyLoading" value="${empty lazyLoad ? true : lazyLoad}" />
 <c:set var="useSrcSet" value="${not empty srcSet}" />
 <c:set var="emptyImg" value="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+<c:set var="DEBUG" value="${debug}" />
 
 <%-- ###### Set img tag options depending on use case ###### --%>
 <c:choose>
@@ -86,7 +93,7 @@
         --%>data-src="${srcUrl}"</c:set>
         <c:set var="cssImageLazy" value="lazyload" />
     </c:when>
-    <c:when test="${useSrcSet}">
+    <c:when test="${useSrcSet and not empty srcSetSizes}">
         <c:set var="attributes"><%--
         --%>src="${srcUrl}"<%--
         --%>${useLazyLoading ? ' loading=\"lazy\"' : ''} <%--
@@ -102,6 +109,15 @@
     </c:otherwise>
 </c:choose>
 
+<mercury:comment test="${DEBUG}">
+    image-lazyload:
+
+    useLazyLoading: ${useLazyLoading}
+    useJsLazyLoading: ${useJsLazyLoading}
+    useSrcSet: ${useSrcSet}
+    useNoScript: ${useNoScript}
+</mercury:comment>
+
 <c:if test="${useNoScript}">
     <%-- ###### Two image tags will be generated in case <noscript> is used, hide the first one with CSS ###### --%>
     <c:set var="cssImageLazy" value="${cssImageLazy} hide-noscript" />
@@ -112,6 +128,7 @@
     cssWrapper="image-src-box${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
+    useAspectRatio="${(not empty width) and (not empty height)}"
     width="${width}"
     height="${height}">
 

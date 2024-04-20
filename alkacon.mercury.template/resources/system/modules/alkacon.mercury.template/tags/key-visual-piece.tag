@@ -60,7 +60,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="effect" value="${(empty effect) or (effect eq 'none') ? '' : effect}" />
-<c:set var="lazyLoad" value="${empty lazyLoad ? false : lazyLoad}" /><%-- assume that the key visual is "above the fold" by default --%>
+<c:set var="lazyLoad" value="${empty lazyLoad or lazyLoad}" />
 
 <c:choose>
 <c:when test="${showOverlay and image.value.Image.isSet}">

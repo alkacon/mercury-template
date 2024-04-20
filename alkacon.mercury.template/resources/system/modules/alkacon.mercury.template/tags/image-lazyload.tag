@@ -76,6 +76,7 @@
 <c:set var="useSrcSet" value="${not empty srcSet}" />
 <c:set var="noPaddingBox" value="${zoomData eq 'nobox'}" />
 <c:set var="zoomData" value="${noPaddingBox ? null : zoomData}" />
+<c:set var="hasWidthHeight" value="${(width gt 0) and (height gt 0)}" />
 <c:set var="DEBUG" value="${debug}" />
 
 <c:set var="emptyImg" value="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
@@ -127,7 +128,7 @@
     <c:set var="cssImageLazy" value="${cssImageLazy} hide-noscript" />
 </c:if>
 
-<c:if test="${noPaddingBox and (width gt 0) and (height gt 0)}">
+<c:if test="${noPaddingBox and hasWidthHeight}">
     <c:set var="styleAttr">style="aspect-ratio: ${width} / ${height};"</c:set>
     <c:set var="attrImage" value="${empty attrImage ? styleAttr : attrImage.concat(' ').concat(styleAttr)}" />
 </c:if>
@@ -139,6 +140,7 @@
     heightPercentage="${heightPercentage}"
     width="${width}"
     height="${height}"
+    useAspectRatio="${hasWidthHeight}"
     test="${not noPaddingBox}">
 
     <img ${attributes}<%----%>

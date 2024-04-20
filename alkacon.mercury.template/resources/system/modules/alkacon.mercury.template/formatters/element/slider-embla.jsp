@@ -182,7 +182,8 @@
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">
 
-        <c:set var="lazyLoad" value="${not isHeroSlider or not status.first}" />
+        <c:set var="lazyLoad" value="${true or not isHeroSlider or not status.first}" />
+        <%-- Tests show that if the first slide is NOT lazy loaded then there are multiple size versions of the slider image requested --%>
 
         <c:set var="posLeft" value="${image.value.Position.value.Left.isSet ? image.value.Position.value.Left.toString : defPosLeft}" />
         <c:set var="posTop" value="${image.value.Position.value.Top.isSet ? image.value.Position.value.Top.toString : defPosTop}" />

@@ -308,7 +308,7 @@ Max width XXL: ${bsMwXxl}
             <c:if test="${srcSet and bbInitialized}">
                 <%-- ###### Calculate the source set sizes ###### --%>
                 <c:set var="bbSrcSetSizes"><%--
-                --%><c:if test="${lazyLoad}">auto, </c:if><%--
+                --%><c:if test="${lazyLoad and not bsLazyLoadJs}">auto, </c:if><%--
                 --%><c:if test="${bb.sizeXxl gt 0}">(min-width: ${bsMwXxl}px) ${bb.sizeXxl}px, </c:if><%--
                 --%><c:if test="${bb.sizeXl gt 0}">(min-width: ${bsMwXl}px) ${bb.sizeXl}px, </c:if><%--
                 --%><c:if test="${bb.sizeLg gt 0}">(min-width: ${bsMwLg}px) ${bb.sizeLg}px, </c:if><%--

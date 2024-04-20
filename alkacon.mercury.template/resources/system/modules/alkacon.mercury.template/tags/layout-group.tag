@@ -161,19 +161,16 @@
                 <c:if test="${showMetaAside}">
                     <c:set var="logoElement">
                         <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
-                        <cms:addparams>
-                            <cms:param name="lazyLoad" value="false" />
-                            <mercury:container
-                                type="image-minimal"
-                                name="header-image"
-                                css="h-logo p-xs-12 p-lg-${logoCols}"
-                                title="${value.Title}"
-                                settings="${{
-                                    'cssWrapper':       'header-image',
-                                    'showImageLink':    'true'
-                                }}"
-                            />
-                        </cms:addparams>
+                        <mercury:container
+                            type="image-minimal"
+                            name="header-image"
+                            css="h-logo p-xs-12 p-lg-${logoCols}"
+                            title="${value.Title}"
+                            settings="${{
+                                'cssWrapper':       'header-image',
+                                'showImageLink':    'true'
+                            }}"
+                        />
                     </c:set>
                 </c:if>
 
@@ -199,19 +196,16 @@
                 <c:if test="${not showMetaAside}">
                     <c:set var="logoElement">
                         <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
-                        <cms:addparams>
-                            <cms:param name="lazyLoad" value="false" />
-                            <mercury:container
-                                type="image-minimal"
-                                name="header-image"
-                                css="${logoHidden ? 'h-logo' : 'h-logo p-xs-12 p-lg-'.concat(logoCols)}"
-                                title="${value.Title}"
-                                settings="${{
-                                    'cssWrapper':       logoHidden ? 'no-image' : 'header-image',
-                                    'showImageLink':    'true'
-                                }}"
-                            />
-                        </cms:addparams>
+                        <mercury:container
+                            type="image-minimal"
+                            name="header-image"
+                            css="${logoHidden ? 'h-logo' : 'h-logo p-xs-12 p-lg-'.concat(logoCols)}"
+                            title="${value.Title}"
+                            settings="${{
+                                'cssWrapper':       logoHidden ? 'no-image' : 'header-image',
+                                'showImageLink':    'true'
+                            }}"
+                        />
                     </c:set>
                 </c:if>
 
@@ -471,19 +465,16 @@
                     <div class="container"><%----%>
                         <div class="row"><%----%>
 
-                            <cms:addparams>
-                                <cms:param name="lazyLoad" value="false" />
-                                <mercury:container
-                                    type="image-minimal"
-                                    name="header-image"
-                                    css="col col-head-logo"
-                                    title="${value.Title}"
-                                    settings="${{
-                                        'cssWrapper':       'header-image',
-                                        'showImageLink':    'true'
-                                    }}"
-                                />
-                            </cms:addparams>
+                            <mercury:container
+                                type="image-minimal"
+                                name="header-image"
+                                css="col col-head-logo"
+                                title="${value.Title}"
+                                settings="${{
+                                    'cssWrapper':       'header-image',
+                                    'showImageLink':    'true'
+                                }}"
+                            />
 
                             <div class="col col-head-info"><%----%>
                                 <mercury:container

@@ -93,7 +93,7 @@ SVG placeholder image, background image and image sizing
 
 <c:set var="ib" value="${imagebean}" />
 
-<c:set var="aboveTheFold" value="${param.lazyLoad eq 'false'}" />
+<c:set var="aboveTheFold" value="${false}" /><%-- Setting this currently leads to loading for more images from srcset than required --%>
 <c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not aboveTheFold}" />
 <c:set var="useJsLazyLoading" value="${useLazyLoading and not caseDynamicListNoscript}" /><%-- This will finally be set after the Bootstrap grid config has been read --%>
 <c:set var="isSvg" value="${empty isSvg ? fn:endsWith(ib.vfsUri, '.svg') : isSvg}" />

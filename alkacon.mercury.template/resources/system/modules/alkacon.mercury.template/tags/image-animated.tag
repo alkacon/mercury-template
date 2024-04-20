@@ -116,57 +116,61 @@
 
             <c:set var="setTitle" value="${empty setTitle ? true : setTitle}" />
             <c:set var="adoptRatioToScreen" value="${(not empty ratioXs) and (ratio ne ratioXs)}" />
+            <c:set var="noTitleCopyright" value="${alt eq 'nocopy'}" />
+            <c:set var="alt" value="${noTitleCopyright ? null : alt}" />
 
             <c:choose>
                 <c:when test="${addEffectPiece}">
-                    <c:set var="effectWrapper" value="effect-piece" />
+                    <c:set var="effectWrapper" value="image-src-box presized use-ratio ${showImageZoom ? 'zoomer ' : ''}effect-piece" />
                 </c:when>
-                <c:when test="${empty addEffectBox or addEffectBox}">
-                    <c:set var="effectWrapper" value="effect-box" />
-                </c:when>
+                <c:otherwise>
+                    <c:set var="effectWrapper" value="image-src-box presized use-ratio ${showImageZoom ? 'zoomer ' : ''}effect-box" />
+                </c:otherwise>
             </c:choose>
 
-            <c:choose>
-                <c:when test="${showImageZoom and (adoptRatioToScreen or imageIsSvg)}">
-                    <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
-                    <c:set var="zoomDataWrapper">
-                        <mercury:image-zoomdata
-                            src="${imageUnscaledBean.srcUrl}"
-                            title="${imageTitle}"
-                            alt="${empty imageDescription ? imageTitle : imageDescription}"
-                            copyright="${imageCopyrightHtml}"
-                            height="${imageUnscaledBean.scaler.height}"
-                            width="${imageUnscaledBean.scaler.width}"
-                            imageBean="${imageUnscaledBean}"
-                        />
-                    </c:set>
-                    <%-- Set the wrapper to the surrounding div, saving some bytes in page size --%>
-                    <c:set var="attrWrapper" value="${empty attrWrapper ? zoomDataWrapper : attrWrapper.concat(' ').concat(zoomDataWrapper)}" />
-                </c:when>
-                <c:when test="${showImageZoom}">
-                    <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
-                    <c:set var="zoomData">
-                        <mercury:image-zoomdata
-                            src="${imageUrl}"
-                            title="${imageTitle}"
-                            alt="${empty imageDescription ? imageTitle : imageDescription}"
-                            copyright="${imageCopyrightHtml}"
-                            height="${imageHeight}"
-                            width="${imageWidth}"
-                            imageBean="${imageBean}"
-                        />
-                    </c:set>
-                </c:when>
-            </c:choose>
+            <c:if test="${showImageZoom}">
+                <c:choose>
+                    <c:when test="${adoptRatioToScreen or imageIsSvg}">
+                        <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
+                        <c:set var="zoomDataWrapper">
+                            <mercury:image-zoomdata
+                                src="${imageUnscaledBean.srcUrl}"
+                                title="${imageTitle}"
+                                alt="${empty imageDescription ? imageTitle : imageDescription}"
+                                copyright="${imageCopyrightHtml}"
+                                height="${imageUnscaledBean.scaler.height}"
+                                width="${imageUnscaledBean.scaler.width}"
+                                imageBean="${imageUnscaledBean}"
+                            />
+                        </c:set>
+                    </c:when>
+                    <c:otherwise>
+                        <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
+                        <c:set var="zoomData">
+                            <mercury:image-zoomdata
+                                src="${imageUrl}"
+                                title="${imageTitle}"
+                                alt="${empty imageDescription ? imageTitle : imageDescription}"
+                                copyright="${imageCopyrightHtml}"
+                                height="${imageHeight}"
+                                width="${imageWidth}"
+                                imageBean="${imageBean}"
+                            />
+                        </c:set>
+                    </c:otherwise>
+                </c:choose>
+                <%-- Set the wrapper to the surrounding div, saving some bytes in page size --%>
+                <c:set var="attrWrapper" value="${empty attrWrapper ? zoomDataWrapper : attrWrapper.concat(' ').concat(zoomDataWrapper)}" />
+            </c:if>
 
-            <mercury:div css="${effectWrapper}${not empty effectWrapper and not empty cssWrapper ? ' ':''}${cssWrapper}" attr="${attrWrapper}" test="${not empty effectWrapper or not empty cssWrapper or not empty attrWrapper}">
+            <div class="${effectWrapper}${empty cssWrapper ? '':' '}${cssWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
                 <c:if test="${adoptRatioToScreen}">
                     <%-- Note: The 'template.piece.breakpoint' sitemap attribute is NOT used here on purpose.
                         So far all use cases indicate treating the 'MD' size like a desktop (large) screen provides the best results. --%>
                     <c:set var="mobileGrid"     value="hidden-md hidden-lg hidden-xl hidden-xxl" />
-                    <c:set var="mobileWrapper"  value=" hidden-md-up" />
+                    <c:set var="mobileWrapper"  value="hidden-md-up " />
                     <c:set var="desktopGrid"    value="hidden-xs hidden-sm" />
-                    <c:set var="desktopWrapper" value=" hidden-xs-sm" />
+                    <c:set var="desktopWrapper" value="hidden-xs-sm " />
                     <c:if test="${not hideMobile}">
                         <cms:addparams>
                             <cms:param name="cssgrid" value="${mobileGrid}" />
@@ -175,13 +179,11 @@
                                 sizes="${sizes}"
                                 lazyLoad="${lazyLoad}"
                                 alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
-                                title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
-                                copyright="${showCopyright ? imageCopyrightHtml : null}"
-                                cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
-                                cssWrapper="${showImageZoom ? 'zoomer' : ''}${mobileWrapper}"
+                                title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                                cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                                 attrImage="${attrImage}"
-                                attrWrapper="${imageDndAttr}"
                                 isSvg="${imageIsSvg}"
+                                zoomData="nobox"
                                 noScript="${noScript}"
                             />
                         </cms:addparams>
@@ -197,22 +199,24 @@
                             sizes="${sizes}"
                             lazyLoad="${lazyLoad}"
                             alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
-                            title="${setTitle ? (showCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
-                            copyright="${showCopyright ? imageCopyrightHtml : null}"
-                            cssImage="${empty effectWrapper ? '' : 'animated'}${not empty effectWrapper and not empty cssImage ? ' ' : ''}${cssImage}"
-                            cssWrapper="${showImageZoom ? 'zoomer' : ''}${desktopWrapper}"
+                            title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                            cssImage="${desktopWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
-                            attrWrapper="${imageDndAttr}"
                             isSvg="${imageIsSvg}"
-                            zoomData="${zoomData}"
+                            zoomData="nobox"
                             noScript="${noScript}"
                         />
                     </cms:addparams>
                 </c:if>
+                <c:if test="${showCopyright and not empty imageCopyrightHtml}">
+                    <div class="copyright image-copyright" aria-hidden="true"><%----%>
+                        ${imageCopyrightHtml}
+                    </div><%----%>
+                </c:if>
                 <%-- ####### JSP body inserted here ######## --%>
                 <jsp:doBody/>
                 <%-- ####### /JSP body inserted here ######## --%>
-            </mercury:div>
+            </div><%----%>
             <mercury:nl />
         </c:when>
 

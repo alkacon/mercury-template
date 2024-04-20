@@ -74,8 +74,12 @@
 <c:set var="useJsLazyLoading" value="${empty lazyLoadJs ? false : lazyLoadJs}" />
 <c:set var="useLazyLoading" value="${empty lazyLoad ? true : lazyLoad}" />
 <c:set var="useSrcSet" value="${not empty srcSet}" />
-<c:set var="emptyImg" value="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+<c:set var="noPaddingBox" value="${zoomData eq 'nobox'}" />
+<c:set var="zoomData" value="${noPaddingBox ? null : zoomData}" />
 <c:set var="DEBUG" value="${debug}" />
+
+<c:set var="emptyImg" value="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+
 
 <%-- ###### Set img tag options depending on use case ###### --%>
 <c:choose>
@@ -123,14 +127,19 @@
     <c:set var="cssImageLazy" value="${cssImageLazy} hide-noscript" />
 </c:if>
 
+<c:if test="${noPaddingBox and (width gt 0) and (height gt 0)}">
+    <c:set var="styleAttr">style="aspect-ratio: ${width} / ${height};"</c:set>
+    <c:set var="attrImage" value="${empty attrImage ? styleAttr : attrImage.concat(' ').concat(styleAttr)}" />
+</c:if>
+
 <mercury:nl />
 <mercury:padding-box
     cssWrapper="image-src-box${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
-    useAspectRatio="${(not empty width) and (not empty height)}"
     width="${width}"
-    height="${height}">
+    height="${height}"
+    test="${not noPaddingBox}">
 
     <img ${attributes}<%----%>
         <c:if test="${not empty width}">${' '}width="${width}"</c:if>

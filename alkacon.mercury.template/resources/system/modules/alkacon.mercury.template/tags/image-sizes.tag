@@ -16,6 +16,9 @@
 <%@ attribute name="srcSet" type="java.lang.Boolean" required="false"
     description="Generate image source set data or not? Default is 'true' if not provided." %>
 
+<%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
+    description="Use lazy loading or not? Default is 'false'."%>
+
 <%@ attribute name="debug" type="java.lang.Boolean" required="false"
     description="Enables debug output. Default is 'false' if not provided." %>
 
@@ -305,6 +308,7 @@ Max width XXL: ${bsMwXxl}
             <c:if test="${srcSet and bbInitialized}">
                 <%-- ###### Calculate the source set sizes ###### --%>
                 <c:set var="bbSrcSetSizes"><%--
+                --%><c:if test="${lazyLoad}">auto, </c:if><%--
                 --%><c:if test="${bb.sizeXxl gt 0}">(min-width: ${bsMwXxl}px) ${bb.sizeXxl}px, </c:if><%--
                 --%><c:if test="${bb.sizeXl gt 0}">(min-width: ${bsMwXl}px) ${bb.sizeXl}px, </c:if><%--
                 --%><c:if test="${bb.sizeLg gt 0}">(min-width: ${bsMwLg}px) ${bb.sizeLg}px, </c:if><%--

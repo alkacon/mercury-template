@@ -102,6 +102,7 @@
             <mercury:image-animated
                 image="${image}"
                 ratio="${imgRatio}"
+                alt="${showImageCopyright ? 'nocopy' : null}"
                 title="${title}">
                 <c:set var="copyright" value="${imageCopyrightHtml}" />
             </mercury:image-animated>

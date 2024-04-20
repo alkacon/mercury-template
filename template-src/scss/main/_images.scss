@@ -87,10 +87,9 @@ aside img {
     &.presized {
 
         &:not(.use-ratio) {
+            // padding-bottom is calculated according to ratio and set as inline style in HTML
             height: 0;
             display: block;
-            // padding-bottom is calculated according to ratio and rendered as inline style in HTML
-
             img,
             .img {
                 position: absolute;
@@ -100,6 +99,7 @@ aside img {
             }
         }
         &.use-ratio {
+            // aspect-ratio is set as inline style in HTML
             aspect-ratio: auto;
             width: 100%;
             height: auto;

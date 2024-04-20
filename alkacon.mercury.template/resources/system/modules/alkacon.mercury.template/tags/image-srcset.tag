@@ -99,7 +99,7 @@ SVG placeholder image, background image and image sizing
 <c:set var="isSvg" value="${empty isSvg ? fn:endsWith(ib.vfsUri, '.svg') : isSvg}" />
 <c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not isSvg and not caseDynamicListNoscript}" />
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
-<c:set var="useSizes" value="${not empty sizes}" />
+<c:set var="customSizes" value="${not empty sizes}" />
 
 <%-- ###### Enable / disable output for debug purposes if required by setting DEBUG="${true}" ###### --%>
 <c:set var="DEBUG" value="${false}" />
@@ -108,7 +108,7 @@ SVG placeholder image, background image and image sizing
 image-srcset parameters:
 
 isSvg: ${isSvg}
-useSizes: ${useSizes}
+customSizes: ${customSizes}
 useLazyLoading: ${useLazyLoading}
 aboveTheFold: ${aboveTheFold}
 useSrcSet: ${useSrcSet}
@@ -117,13 +117,13 @@ useNoScript: ${useNoScript}
 
 <c:if test="${not isSvg}">
 
-    <mercury:image-sizes debug="${DEBUG}" initBootstrapBean="${not useSizes}">
+    <mercury:image-sizes debug="${DEBUG}" lazyLoad="${useLazyLoading}" initBootstrapBean="${not customSizes}">
 
         <c:set var="useJsLazyLoading" value="${useJsLazyLoading and bsLazyLoadJs}" />
         <c:set var="sizeXsMax" value="${bb.getGridSize(0) - bb.gutter}" />
 
         <c:choose>
-            <c:when test="${not useSizes}">
+            <c:when test="${not customSizes}">
 
                 <mercury:comment test="${DEBUG}">
                     image-srcset srcSet base image settings:
@@ -259,7 +259,7 @@ useNoScript: ${useNoScript}
             </c:otherwise>
         </c:choose>
 
-        <c:if test="${useSrcSet and (useLazyLoading or useSizes or bbInitialized)}" >
+        <c:if test="${useSrcSet and (useLazyLoading or customSizes or bbInitialized)}" >
             <%-- ###### Set quality higher for smaller images to avoid blur ###### --%>
             <c:forEach var="vb" items="${ib.srcSetMap.values()}">
                 <c:set var="pixels" value="${vb.scaler.width * vb.scaler.height}" />

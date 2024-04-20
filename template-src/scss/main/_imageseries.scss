@@ -305,6 +305,7 @@ html.keyboard-nav a:focus .zoom-overlay .zoom-icon,
 
 .effect-piece,
 .effect-box {
+    &.zoomer,
     .zoomer {
         position: relative;
         z-index: 1; // required so that floating text divs after the image are not hiding the zoom button
@@ -324,6 +325,7 @@ html.keyboard-nav a:focus .zoom-overlay .zoom-icon,
 }
 
 .effect-box {
+    &.zoomer,
     .zoomer {
         img {
             cursor: zoom-in;
@@ -333,6 +335,7 @@ html.keyboard-nav a:focus .zoom-overlay .zoom-icon,
 
 a {
     .effect-box {
+        &.zoomer,
         .zoomer {
             img,
             .img {

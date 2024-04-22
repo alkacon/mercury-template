@@ -41,36 +41,34 @@
                         </c:otherwise>
                     </c:choose>
                 </div><%----%>
-                <div class="hours-times"><%----%>
-                    <c:forEach var="openingTime" items="${openingHour.valueList.OpeningTime}">
-                        <div class="hours-time"><%----%>
-                            <c:if test="${openingTime.value.Opens.isSet or openingTime.value.Closes.isSet}">
-                                <span><%----%>
-                                    <span class="hours-opens">${openingTime.value.Opens}</span><%----%>
-                                    <span> - </span><%----%>
-                                    <span class="hours-closes">${openingTime.value.Closes}</span><%----%>
-                                </span><%----%>
-                            </c:if>
-                            <c:if test="${openingTime.value.OpenCloseLabel.isSet}">
-                                <c:set var="label" value="${openingTime.value.OpenCloseLabel}" />
-                                <c:choose>
-                                    <c:when test="${label eq 'all-day-opened'}">
-                                        <span><%----%>
-                                            <fmt:message key="msg.option.allDayOpened" />
-                                        </span><%----%>
-                                    </c:when>
-                                    <c:when test="${label eq 'all-day-closed'}">
-                                        <span><%----%>
-                                            <fmt:message key="msg.option.allDayClosed" />
-                                        </span><%----%>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <span class="hours-label">${label}</span><%----%>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:if>
-                        </div><%----%>
-                    </c:forEach>
+                <div class="hours-openings"><%----%>
+                    <div class="hours-times"><%----%>
+                        <c:forEach var="openingTime" items="${openingHour.valueList.OpeningTime}">
+                            <div class="hours-time"><%----%>
+                                <c:if test="${openingTime.value.Opens.isSet or openingTime.value.Closes.isSet}">
+                                    <div class="hours-timerange"><%----%>
+                                        <span class="hours-opens">${openingTime.value.Opens}</span><%----%>
+                                        <span> - </span><%----%>
+                                        <span class="hours-closes">${openingTime.value.Closes}</span><%----%>
+                                    </div><%----%>
+                                </c:if>
+                                <c:if test="${openingTime.value.OpenCloseLabel.isSet}">
+                                    <c:set var="label" value="${openingTime.value.OpenCloseLabel}" />
+                                    <div class="hours-label"><%----%>
+                                        <c:choose>
+                                            <c:when test="${label eq 'all-day-opened'}">
+                                                <fmt:message key="msg.option.allDayOpened" />
+                                            </c:when>
+                                            <c:when test="${label eq 'all-day-closed'}">
+                                                <fmt:message key="msg.option.allDayClosed" />
+                                            </c:when>
+                                            <c:otherwise>${label}</c:otherwise>
+                                        </c:choose>
+                                    </div><%----%>
+                                </c:if>
+                            </div><%----%>
+                        </c:forEach>
+                    </div><%----%>
                 </div><%----%>
             </div><%----%>
         </c:forEach>

@@ -19,26 +19,67 @@
  * Source file: _opening-hours.scss
  */
  
-.opening-hours {
+ .hours-table {
 
-    .hours-table {
-        display: table;
-        margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
-    }
-    
+     margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+
     .hours-hr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hours-time {
         display: table-row;
     }
-    
-    .hours-days, .hours-times {
+
+    .hours-timerange, .hours-label {
         display: table-cell;
     }
-    
-    .hours-times {
-        padding-left: var(--#{$prefix}gutter-x);
-    }
-    
+
     .hours-time > *:first-child {
-        padding-right: 0.6rem;
+        padding-right: var(--#{$prefix}gutter-x);
+    }
+
+    .hours-days {
+        font-weight: var(--my-font-weight-bold);
+    }
+}
+
+ @include media-breakpoint-up(md) {
+
+    .opening-hours {
+
+        .hours-table {
+            display: table;
+            margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+        }
+
+        .hours-hr {
+            display: table-row;
+        }
+
+        .hours-days, .hours-openings {
+            display: table-cell;
+        }
+
+        .hours-days {
+            font-weight: var(--my-font-weight-bold);
+        }
+
+        .hours-times {
+            display: table;
+        }
+
+        .hours-time {
+            display: table-row;
+        }
+
+        .hours-timerange, .hours-label {
+            display: table-cell;
+        }
+
+        .hours-time > * {
+            padding-left: var(--#{$prefix}gutter-x);
+        }
     }
 }

@@ -73,6 +73,8 @@
     hsize="${hsizeTitle}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
+    imageRatio="${imageRatio}"
+    imageRatioXs="${imageRatioXs}"
     ade="${false}">
 
     <jsp:attribute name="markupVisual">

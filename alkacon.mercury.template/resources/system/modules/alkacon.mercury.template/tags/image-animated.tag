@@ -115,22 +115,34 @@
         <c:when test="${not empty imageBean and test}">
 
             <c:set var="setTitle" value="${empty setTitle ? true : setTitle}" />
-            <c:set var="adoptRatioToScreen" value="${(not empty ratioXs) and (ratio ne ratioXs)}" />
             <c:set var="noTitleCopyright" value="${alt eq 'nocopy'}" />
             <c:set var="alt" value="${noTitleCopyright ? null : alt}" />
 
+            <c:set var="adaptRatioToScreen" value="${ratio ne ratioXs}" />
+            <c:if test="${adaptRatioToScreen}">
+                <%-- Note: The 'template.piece.breakpoint' sitemap attribute is NOT used here on purpose.
+                    So far all use cases indicate treating the 'MD' size like a desktop (large) screen provides the best results. --%>
+                <c:set var="mobileGrid"     value="hidden-md hidden-lg hidden-xl hidden-xxl" />
+                <c:set var="mobileWrapper"  value="hidden-md-up " />
+                <c:set var="desktopGrid"    value="hidden-xs hidden-sm" />
+                <c:set var="desktopWrapper" value="hidden-xs-sm " />
+            </c:if>
+            <c:if test="${hideMobile or hideDesktop}">
+                <c:set var="hideWrapper"    value="${hideMobile ? desktopWrapper : (hideDesktop ? mobileWrapper : '')}" />
+            </c:if>
+
             <c:choose>
                 <c:when test="${addEffectPiece}">
-                    <c:set var="effectWrapper" value="image-src-box presized use-ratio ${showImageZoom ? 'zoomer ' : ''}effect-piece" />
+                    <c:set var="imageWrapper" value="image-src-box presized use-ratio ${hideWrapper}${showImageZoom ? 'zoomer ' : ''}effect-piece" />
                 </c:when>
                 <c:otherwise>
-                    <c:set var="effectWrapper" value="image-src-box presized use-ratio ${showImageZoom ? 'zoomer ' : ''}effect-box" />
+                    <c:set var="imageWrapper" value="image-src-box presized use-ratio ${hideWrapper}${showImageZoom ? 'zoomer ' : ''}effect-box" />
                 </c:otherwise>
             </c:choose>
 
             <c:if test="${showImageZoom}">
                 <c:choose>
-                    <c:when test="${adoptRatioToScreen or imageIsSvg}">
+                    <c:when test="${imageIsSvg or (adaptRatioToScreen and (hideDesktop eq hideMobile))}">
                         <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
                         <c:set var="zoomDataWrapper">
                             <mercury:image-zoomdata
@@ -163,35 +175,27 @@
                 <c:set var="attrWrapper" value="${empty attrWrapper ? zoomDataWrapper : attrWrapper.concat(' ').concat(zoomDataWrapper)}" />
             </c:if>
 
-            <div class="${effectWrapper}${empty cssWrapper ? '':' '}${cssWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
-                <c:if test="${adoptRatioToScreen}">
-                    <%-- Note: The 'template.piece.breakpoint' sitemap attribute is NOT used here on purpose.
-                        So far all use cases indicate treating the 'MD' size like a desktop (large) screen provides the best results. --%>
-                    <c:set var="mobileGrid"     value="hidden-md hidden-lg hidden-xl hidden-xxl" />
-                    <c:set var="mobileWrapper"  value="hidden-md-up " />
-                    <c:set var="desktopGrid"    value="hidden-xs hidden-sm" />
-                    <c:set var="desktopWrapper" value="hidden-xs-sm " />
-                    <c:if test="${not hideMobile}">
-                        <cms:addparams>
-                            <cms:param name="cssgrid" value="${mobileGrid}" />
-                            <mercury:image-srcset
-                                imagebean="${ratioXs eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioXs]}"
-                                sizes="${sizes}"
-                                lazyLoad="${lazyLoad}"
-                                alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
-                                title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
-                                cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
-                                attrImage="${attrImage}"
-                                isSvg="${imageIsSvg}"
-                                zoomData="nobox"
-                                noScript="${noScript}"
-                            />
-                        </cms:addparams>
-                    </c:if>
+            <div class="${imageWrapper}${empty cssWrapper ? '':' '}${cssWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
+                <c:if test="${adaptRatioToScreen and not hideMobile}">
+                    <cms:addparams>
+                        <cms:param name="cssgrid" value="${mobileGrid}" />
+                        <mercury:image-srcset
+                            imagebean="${ratioXs eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioXs]}"
+                            sizes="${sizes}"
+                            lazyLoad="${lazyLoad}"
+                            alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
+                            title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                            cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
+                            attrImage="${attrImage}"
+                            isSvg="${imageIsSvg}"
+                            zoomData="nobox"
+                            noScript="${noScript}"
+                        />
+                    </cms:addparams>
                 </c:if>
                  <c:if test="${not hideDesktop}">
                     <cms:addparams>
-                        <c:if test="${adoptRatioToScreen}">
+                        <c:if test="${adaptRatioToScreen}">
                             <cms:param name="cssgrid" value="${desktopGrid}" />
                         </c:if>
                         <mercury:image-srcset

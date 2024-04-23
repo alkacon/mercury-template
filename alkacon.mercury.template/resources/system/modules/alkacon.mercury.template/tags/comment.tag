@@ -4,13 +4,15 @@
     trimDirectiveWhitespaces="true"
     description="Outputs an optional HTML comment." %>
 
-<%@ attribute name="test" type="java.lang.Boolean" required="true"
+<%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="Output the comment in the body or not?" %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
+
+<c:set var="test"  value="${empty test or test}" />
 
 <%
 Boolean testParam = (Boolean)(getJspContext().getAttribute("test"));

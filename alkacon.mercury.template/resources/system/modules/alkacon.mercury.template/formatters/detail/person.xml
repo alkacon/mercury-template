@@ -51,10 +51,10 @@
       <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeDesktop.contact]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.allowHide]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeMobile.contact]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeMobile.allowHide]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.3]]></IncludeName>

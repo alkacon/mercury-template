@@ -41,25 +41,6 @@
     }
 }
 
-@mixin pagination-item-hover {
-    color: var(--#{$prefix}pag-hover-fg-color);
-    background: var(--#{$prefix}pag-hover-bg-color);
-    border-color: var(--#{$prefix}pag-hover-bg-color);
-}
-
-@mixin pagination-item-active {
-    color: var(--#{$prefix}pag-active-fg-color);
-    background-color: var(--#{$prefix}pag-active-bg-color);
-    border-color: var(--#{$prefix}pag-active-bg-color);
-}
-
-@mixin pagination-item-disabled {
-    color: var(--#{$prefix}pag-disabled-fg-color);
-    background-color: var(--#{$prefix}pag-bg);
-    border-color: var(--#{$prefix}pag-disabled-fg-color);
-    cursor: $cursor-disabled;
-}
-
 .pagination {
 
     --#{$prefix}pag-bg: var(--#{$prefix}body-bg);
@@ -129,19 +110,27 @@
     > li > a,
     > li.active > a {
         &:hover {
-            @include pagination-item-hover;
+            color: var(--#{$prefix}pag-hover-fg-color);
+            background: var(--#{$prefix}pag-hover-bg-color);
+            border-color: var(--#{$prefix}pag-hover-bg-color);
         }
     }
 
     > li.active > a {
-        @include pagination-item-active;
+        color: var(--#{$prefix}pag-active-fg-color);
+        background-color: var(--#{$prefix}pag-active-bg-color);
+        border-color: var(--#{$prefix}pag-active-bg-color);
     }
 
     > .disabled {
+        cursor: $cursor-disabled;
         > a,
         > a:hover,
         > a:focus {
-            @include pagination-item-disabled;
+            color: var(--#{$prefix}pag-disabled-fg-color);
+            background-color: var(--#{$prefix}pag-bg);
+            border-color: var(--#{$prefix}pag-disabled-fg-color);
+            pointer-events: none;
         }
     }
 }

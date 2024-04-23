@@ -147,6 +147,8 @@
 <c:set var="linkHeading"        value="${empty linkOption or empty link ? false : (linkOption eq 'heading')}" />
 <c:set var="hsize"              value="${empty hsize ? 2 : (hsize < 1 ? (linkHeading ? 3 : hsize) : hsize)}" />
 <c:set var="showText"           value="${empty text and empty markupText ? false : (empty textOption ? true : (textOption ne 'none'))}" />
+<c:set var="sizeDesktop"        value="${imageRatio eq 'no-img' ? 0 : sizeDesktop}" />
+<c:set var="sizeMobile"         value="${imageRatioXs eq 'no-img' ? 0 : ((sizeMobile == 99) and (sizeDesktop == 0) ? 12 : sizeMobile)}" />
 <c:set var="showVisualDesktop"  value="${empty image and empty markupVisual ? false : (empty sizeDesktop ? true : sizeDesktop != 0)}" />
 <c:set var="showVisualMobile"   value="${empty image and empty markupVisual ? false : (empty sizeMobile ? true : sizeMobile != 0)}" />
 <c:set var="showVisual"         value="${showVisualDesktop or showVisualMobile}" />
@@ -162,7 +164,7 @@
         <%-- To set the visual css wrapper, the image orientation must be known. Also check if the image is from the icon folder. --%>
         <mercury:image-vars
             image="${image}"
-            ratio="${imageRatio}"
+            ratio="${showVisualDesktop ? imageRatio : imageRatioXs}"
             ade="${false}">
                 <c:set var="showVisual" value="${not empty imageBean}" />
                 <c:set var="isIconImage" value="${imageIsSvg and fn:startsWith(imageBean.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}" />
@@ -251,7 +253,7 @@
                             ade="${ade}">
                             <c:set var="imageSubtext">
                                 <c:if test="${showImageSubtitle and not empty imageTitle}">
-                                    <div class="subtitle${imageRatioXs eq 'no-img' ? ' hidden-xs-sm' : ''}"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
+                                    <div class="subtitle"${showImageLink ? '' : ' aria-hidden=\"true\"'}>${imageTitle}</div><%----%>
                                 </c:if>
                             </c:set>
                         </mercury:image-animated>

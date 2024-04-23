@@ -148,7 +148,7 @@
 <c:set var="hsize"              value="${empty hsize ? 2 : (hsize < 1 ? (linkHeading ? 3 : hsize) : hsize)}" />
 <c:set var="showText"           value="${empty text and empty markupText ? false : (empty textOption ? true : (textOption ne 'none'))}" />
 <c:set var="sizeDesktop"        value="${imageRatio eq 'no-img' ? 0 : sizeDesktop}" />
-<c:set var="sizeMobile"         value="${imageRatioXs eq 'no-img' ? 0 : ((sizeMobile == 99) and (sizeDesktop == 0) ? 12 : sizeMobile)}" />
+<c:set var="sizeMobile"         value="${imageRatioXs eq 'no-img' ? 0 : ((sizeDesktop == 0) and (sizeMobile == 99)  ? 12 : sizeMobile)}" />
 <c:set var="showVisualDesktop"  value="${empty image and empty markupVisual ? false : (empty sizeDesktop ? true : sizeDesktop != 0)}" />
 <c:set var="showVisualMobile"   value="${empty image and empty markupVisual ? false : (empty sizeMobile ? true : sizeMobile != 0)}" />
 <c:set var="showVisual"         value="${showVisualDesktop or showVisualMobile}" />

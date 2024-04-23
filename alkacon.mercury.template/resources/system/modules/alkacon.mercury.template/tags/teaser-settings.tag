@@ -62,8 +62,8 @@
 <c:set var="setShowCalendar"                value="${setting.showCalendar.toBoolean}" />
 <c:set var="setShowCopyright"               value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="setPieceLayout"                 value="${inList ? setting.pieceLayoutList.toInteger : setting.pieceLayout.toInteger}" />
-<c:set var="setSizeDesktop"                 value="${setting.pieceSizeDesktop.toInteger}" />
-<c:set var="setSizeMobile"                  value="${setting.pieceSizeMobile.toInteger}" />
+<c:set var="setSizeDesktop"                 value="${setRatio eq 'no-img' ? 0 : setting.pieceSizeDesktop.toInteger}" />
+<c:set var="setSizeMobile"                  value="${setRatioXs eq 'no-img' ? 0 : ((setSizeDesktop == 0) and (setting.pieceSizeMobile.toInteger == 99) ? 12 : setting.pieceSizeMobile.toInteger)}" />
 <c:set var="setShowVisual"                  value="${setting.visualOption.toString ne 'none'}" />
 <c:set var="paramLinkOption"                value="${setting.paramLinkOption}" />
 <c:set var="setLinkOption"                  value="${paramLinkOption.isSet ? paramLinkOption.toString : setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />

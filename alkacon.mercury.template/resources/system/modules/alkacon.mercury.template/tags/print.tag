@@ -40,8 +40,7 @@ if (test) {
 
     boolean isComment = getBoolean("comment", false);
     boolean isJs = getBoolean("script", false);
-    String defDel = isJs ? "" : "\n";
-    String del = getString("delimiter", defDel);
+    String del = getString("delimiter", isJs ? "" : "\n");
     boolean compact = !"\n".equals(del);
 
     %><jsp:doBody var="body" /><%

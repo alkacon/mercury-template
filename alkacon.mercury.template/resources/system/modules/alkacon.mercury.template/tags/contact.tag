@@ -18,7 +18,7 @@
     description="Image ratio for small screens." %>
 
 <%@ attribute name="imageTitle" type="java.lang.String" required="false"
-    description="If provided, use this title for the image, otherwise generate a title frm the contact names." %>
+    description="If provided, use this title for the image, otherwise generate a title from the contact name." %>
 
 <%@ attribute name="link" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact link." %>
@@ -169,7 +169,7 @@
     <c:when test="${showImage and (not empty imageTitle)}">
          <c:set var="imgtitle" value="${imageTitle eq 'none' ? null : imageTitle}" />
     </c:when>
-    <c:when test="${showImage and (not empty name)}">
+    <c:when test="${showImage and (name ne null) and name.isSet}">
         <c:set var="persontxtname">
             <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
             ${name.value.FirstName}${' '}
@@ -178,7 +178,7 @@
             <c:if test="${name.value.Suffix.isSet}">${' '}${name.value.Suffix}</c:if>
         </c:set>
         <c:choose>
-            <c:when test="${kind eq 'person'}">
+            <c:when test="${kind eq 'pers'}">
                 <c:set var="imgtitle" value="${persontxtname}" />
             </c:when>
             <c:when test="${kind eq 'org'}">
@@ -190,7 +190,6 @@
         <c:set var="imgtitle" value="${organization}" />
     </c:when>
 </c:choose>
-
 
 <mercury:image-animated
     image="${image}"

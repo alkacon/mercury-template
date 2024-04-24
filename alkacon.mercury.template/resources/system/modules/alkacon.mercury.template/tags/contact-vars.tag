@@ -39,9 +39,6 @@
 <%@ variable name-given="kindCss" declare="true"
     description="CSS selector added to the generated div to identify the contact type (person or organization)." %>
 
-<%@ variable name-given="kindAttr" declare="true"
-    description="Attribute for schema.org added to the generated div to identify the contact type (person or organization)." %>
-
 <%@ variable name-given="setShowOrganization" declare="true" %>
 <%@ variable name-given="setShowPosition" declare="true" %>
 <%@ variable name-given="setShowName" declare="true" %>

@@ -158,7 +158,7 @@
                     </c:when>
                     <c:otherwise>
                         <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
-                        <c:set var="zoomData">
+                        <c:set var="zoomDataWrapper">
                             <mercury:image-zoomdata
                                 src="${imageUrl}"
                                 title="${imageTitle}"

@@ -303,12 +303,20 @@ html.keyboard-nav a:focus .zoom-overlay .zoom-icon,
     height: 100%;
 }
 
-.effect-piece,
-.effect-box {
-    &.zoomer,
-    .zoomer {
+.zoom-overlay .zoom-icon,
+.image-src-box,
+.image-src-box > img {
+    border-radius: var(--#{$prefix}image-border-radius);
+}
+
+.image-src-box {
+    &.zoomer {
         position: relative;
         z-index: 1; // required so that floating text divs after the image are not hiding the zoom button
+
+        > img {
+            cursor: zoom-in;
+        }
 
         &::after {
             @include icon-font();
@@ -318,27 +326,10 @@ html.keyboard-nav a:focus .zoom-overlay .zoom-icon,
     }
 }
 
-.zoom-overlay .zoom-icon,
-.image-src-box,
-.image-src-box > img {
-    border-radius: var(--#{$prefix}image-border-radius);
-}
-
-.effect-box {
-    &.zoomer,
-    .zoomer {
-        img {
-            cursor: zoom-in;
-        }
-    }
-}
-
 a {
-    .effect-box {
-        &.zoomer,
-        .zoomer {
-            img,
-            .img {
+    .image-src-box{
+        &.zoomer {
+            > img {
                 cursor: pointer;
             }
         }

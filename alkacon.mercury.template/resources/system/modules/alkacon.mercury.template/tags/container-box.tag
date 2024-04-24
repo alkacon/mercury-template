@@ -77,6 +77,7 @@
         <c:when test="${fn:containsIgnoreCase(type, 'element')}">
             <c:set var="variant" value="element" />
             <c:set var="niceName"><fmt:message key="msg.page.layout.type.element"/></c:set>
+            <c:set var="type" value="${fn:replace(type, 'm-', '')}" />
             <c:set var="type" value="${fn:replace(type, 'element', niceName)}" />
         </c:when>
         <c:otherwise>

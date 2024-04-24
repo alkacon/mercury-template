@@ -29,11 +29,37 @@
 <%-- Special CSS in case JavaScript is disabled --%>
 <noscript><style>html.noscript .hide-noscript { display: none !important; }</style></noscript>
 <script>document.documentElement.classList.remove("noscript");document.documentElement.classList.add("hasscript");</script>
-<script><%-- Static JavaScript that provides a 'mercury.ready()' method for additional scripts
---%>mercury=function(){var n=function(){var n=[];return{ready:function(t){n.push(t)},load:function(t){n.push(t)},getInitFunctions:function(){return n}}}(),t=function(t){if("function"!=typeof t)return n;n.ready(t)};return t.getInitFunctions=function(){return n.getInitFunctions()},t.load=function(n){this(n)},t.ready=function(n){this(n)},t}();<%--
---%>var __isOnline=${cms.isOnlineProject},<%--
---%>__scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)</cms:link>"<%--
---%></script>
+<%-- Static JavaScript that provides a 'mercury.ready()' method for additional scripts --%>
+<mercury:print script="${true}">
+<script>
+mercury = function(){
+    var n=function(){
+        var n=[];
+        return{
+            ready: function(t){
+                n.push(t)
+            },
+            getInitFunctions: function(){
+                return n
+            }
+        }
+    }(),
+    t=function(t){
+        if("function"!=typeof t) return n;
+        n.ready(t)
+    };
+    return t.getInitFunctions=function(){
+        return n.getInitFunctions()
+    },
+    t.ready=function(n){
+        this(n)
+    },
+    t
+}();
+var __isOnline=${cms.isOnlineProject},
+    __scriptPath="<cms:link>%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)</cms:link>"
+</script>
+</mercury:print>
 
 <%-- Load the main JavaScript in async mode --%>
 <script async src="<mercury:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>

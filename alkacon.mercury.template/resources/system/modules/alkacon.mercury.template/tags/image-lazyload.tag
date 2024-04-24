@@ -114,14 +114,14 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:comment test="${DEBUG}">
+<mercury:print comment="${true}" test="${DEBUG}">
     image-lazyload:
 
     useLazyLoading: ${useLazyLoading}
     useJsLazyLoading: ${useJsLazyLoading}
     useSrcSet: ${useSrcSet}
     useNoScript: ${useNoScript}
-</mercury:comment>
+</mercury:print>
 
 <c:if test="${useNoScript}">
     <%-- ###### Two image tags will be generated in case <noscript> is used, hide the first one with CSS ###### --%>

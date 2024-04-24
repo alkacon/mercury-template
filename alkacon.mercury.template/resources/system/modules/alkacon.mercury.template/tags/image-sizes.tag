@@ -64,20 +64,20 @@
 
 <c:if test="${empty applicationScope.bootstrapCache or clearCache}">
    <c:set var="bootstrapCache" value="${cms:jsonToMap(leer)}" scope="application" />
-   <mercury:comment test="${DEBUG and forceClearCache}">
+   <mercury:print comment="${true}" test="${DEBUG and forceClearCache}">
         image-sizes FORCED clearCache!
-    </mercury:comment>
+    </mercury:print>
 </c:if>
 
 <c:set var="bootstrapGridData" value="${applicationScope.bootstrapCache[bootstrapGrid]}" />
 
 <c:choose>
     <c:when test="${not empty bootstrapGridData}">
-        <mercury:comment test="${DEBUG}">
+        <mercury:print comment="${true}" test="${DEBUG}">
             image-sizes using cached data:
 
             ${bootstrapGridData}
-        </mercury:comment>
+        </mercury:print>
 
         <c:set var="bsGutter" value="${bootstrapGridData['bsGutter']}" />
         <c:set var="maxScaleWidth"  value="${bootstrapGridData['maxScaleWidth']}" />
@@ -119,21 +119,21 @@
             </c:catch>
             <c:choose>
                 <c:when test="${empty jsonException}">
-                    <mercury:comment test="${DEBUG}">
+                    <mercury:print comment="${true}" test="${DEBUG}">
                         image-sizes parsing sitemap attribute data:
                         ${bootstrapGrid}
 
                         image-sizes parsed JSON:
                         ${bsGrid}
-                    </mercury:comment>
+                    </mercury:print>
                 </c:when>
                 <c:otherwise>
                     <mercury:log message="image-sizes: Error processing \'${bootstrapGrid}\' - \'${jsonException.message}\'" channel="error" />
-                    <mercury:comment test="${DEBUG}">
+                    <mercury:print comment="${true}" test="${DEBUG}">
                         <c:set var="bsStatus">Error: ${jsonException.message}</c:set>
                         Exception parsing bootstrap sitemap attribute data - using default values!:
                         ${jsonException.message}
-                    </mercury:comment>
+                    </mercury:print>
                 </c:otherwise>
             </c:choose>
         </c:if>
@@ -178,16 +178,16 @@
 
         <c:set target="${applicationScope.bootstrapCache}" property="${bootstrapGrid}" value="${dataMap}" />
 
-        <mercury:comment test="${DEBUG}">
+        <mercury:print comment="${true}" test="${DEBUG}">
             image-sizes writing data to cache:
 
             ${dataMap}
-        </mercury:comment>
+        </mercury:print>
 
     </c:otherwise>
 </c:choose>
 
-<mercury:comment test="${DEBUG}">
+<mercury:print comment="${true}" test="${DEBUG}">
 image-sizes result:
 
 Gutter: ${bsGutter}
@@ -207,7 +207,7 @@ Max width MD: ${bsMwMd}
 Max width LG: ${bsMwLg}
 Max width XL: ${bsMwXl}
 Max width XXL: ${bsMwXxl}
-</mercury:comment>
+</mercury:print>
 
 <c:choose>
     <c:when test="${initBootstrapBean}">
@@ -224,9 +224,9 @@ Max width XXL: ${bsMwXxl}
 
                 <c:when test="${bbFullWidth}">
                     <%-- ###### Assume all images are full screen ###### --%>
-                    <mercury:comment test="${DEBUG}">
+                    <mercury:print comment="${true}" test="${DEBUG}">
                         image-sizes using fullwidth!
-                    </mercury:comment>
+                    </mercury:print>
                     ${bb.setGutter(0)}
                     ${bb.setGridSize(0, bsMwXs)}
                     ${bb.setGridSize(1, bsMwSm)}
@@ -253,22 +253,22 @@ Max width XXL: ${bsMwXxl}
                                     <c:set var="gutterAdjust" value="${gutterBaseInt - bsGutter}" />
                                 </c:if>
                             </c:if>
-                            <mercury:comment test="${DEBUG}">
+                            <mercury:print comment="${true}" test="${DEBUG}">
                                 image-sizes gutter adjust:
 
                                 param.cssgutter: [${param.cssgutter}]
                                 bsGutter: ${bsGutter}
                                 gutterAdjust: ${gutterAdjust}
-                            </mercury:comment>
+                            </mercury:print>
                         </c:when>
                         <c:when test="${not empty gutter}">
                             <c:set var="bsGutter" value="${gutter}" />
-                            <mercury:comment test="${DEBUG}">
+                            <mercury:print comment="${true}" test="${DEBUG}">
                                 image-sizes gutter adjust:
 
                                 bsGutter: ${bsGutter}
                                 gutterAdjust: ${gutterAdjust}
-                            </mercury:comment>
+                            </mercury:print>
                         </c:when>
                     </c:choose>
 
@@ -287,7 +287,7 @@ Max width XXL: ${bsMwXxl}
             <c:set var="ignore" value="${not empty gridWrapper ? bb.addLayer(gridWrapper) : ''}" />
             <c:set var="bbInitialized" value="${bb.isInitialized}" />
 
-            <mercury:comment test="${DEBUG}">
+            <mercury:print comment="${true}" test="${DEBUG}">
                 image-sizes calculated grid values::
 
                 Gutter: ${bb.gutter}
@@ -303,7 +303,7 @@ Max width XXL: ${bsMwXxl}
                 </c:forEach>
                 gridWrapper: ${gridWrapper}
                 bbInitialized: ${bbInitialized}
-            </mercury:comment>
+            </mercury:print>
 
             <c:if test="${srcSet and bbInitialized}">
                 <%-- ###### Calculate the source set sizes ###### --%>
@@ -315,11 +315,11 @@ Max width XXL: ${bsMwXxl}
                 --%><c:if test="${bb.sizeMd gt 0}">(min-width: ${bsMwMd}px) ${bb.sizeMd}px, </c:if><%--
                 --%><c:if test="${bb.sizeSm gt 0}">(min-width: ${bsMwSm}px) ${bb.sizeSm}px, </c:if><%--
                 --%>100vw</c:set>
-                <mercury:comment test="${DEBUG}">
+                <mercury:print comment="${true}" test="${DEBUG}">
                     image-sizes calculated grid sizes:
 
                     bbSrcSetSizes: ${bbSrcSetSizes}
-                </mercury:comment>
+                </mercury:print>
             </c:if>
 
             <jsp:doBody/>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>17.0.25</version>
+		<version>17.0.31</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7620,27 +7620,6 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/tags/comment.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/comment.tag</destination>
-			<type>jsp</type>
-			<uuidstructure>0cf9e67e-fe40-11ee-a1fd-0242ac11002b</uuidstructure>
-			<uuidresource>0cf9e67f-fe40-11ee-a1fd-0242ac11002b</uuidresource>
-			<datecreated>Fri, 19 Apr 2024 11:29:14 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Outputs an optional HTML comment]]></value>
-				</property>
-				<property type="shared">
-					<name>export</name>
-					<value><![CDATA[false]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>system/modules/alkacon.mercury.template/tags/contact-vars.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/contact-vars.tag</destination>
 			<type>jsp</type>
@@ -9395,6 +9374,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Displays a piece of content]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/print.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/print.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>0cf9e67e-fe40-11ee-a1fd-0242ac11002b</uuidstructure>
+			<uuidresource>0cf9e67f-fe40-11ee-a1fd-0242ac11002b</uuidresource>
+			<datecreated>Fri, 19 Apr 2024 11:29:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Print text to the page with optimized white spaces]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

@@ -149,6 +149,9 @@
         + .detail-content,
         + .detail-addition {
             margin-top: var(--#{$prefix}detail-content-spacer-y);
+            &:empty {
+                margin-top: 0;
+            }
         }
         + .attachment-container {
             margin-top: var(--#{$prefix}element-margin);

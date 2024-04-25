@@ -18,68 +18,101 @@
 /**********
  * Source file: _opening-hours.scss
  */
- 
- .hours-table {
 
-     margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+$hours-spacing: $piece-gutter-x !default;
 
-    .hours-hr {
-        display: flex;
-        flex-direction: column;
-    }
+.opening-hours {
+    --#{$prefix}hours-spacing: #{$hours-spacing};
 
-    .hours-time {
-        display: table-row;
-    }
-
-    .hours-timerange, .hours-label {
-        display: table-cell;
-    }
-
-    .hours-time > *:first-child {
-        padding-right: var(--#{$prefix}gutter-x);
-    }
-
-    .hours-days {
-        font-weight: var(--my-font-weight-bold);
-    }
-}
-
- @include media-breakpoint-up(md) {
-
-    .opening-hours {
-
-        .hours-table {
-            display: table;
-            margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
-        }
+    .hours-table {
+        margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
 
         .hours-hr {
-            display: table-row;
-        }
-
-        .hours-days, .hours-openings {
-            display: table-cell;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
         }
 
         .hours-days {
             font-weight: var(--my-font-weight-bold);
         }
+    }
+}
 
-        .hours-times {
+@include media-breakpoint-up(sm) {
+    .opening-hours {
+        .hours-table {
             display: table;
-        }
 
-        .hours-time {
-            display: table-row;
-        }
+            .hours-time {
+                display: table-row;
+            }
 
-        .hours-timerange, .hours-label {
-            display: table-cell;
-        }
+            .hours-label,
+            .hours-timerange {
+                display: table-cell;
+            }
 
-        .hours-time > * {
-            padding-left: var(--#{$prefix}gutter-x);
+            .hours-timerange {
+                padding-right: var(--#{$prefix}hours-spacing);
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up($piece-desktop-breakpoint) {
+
+    .hours-heading {
+        // this makes sure the opeing hours table will NOT float around a previous key visual image aligned left or right
+        @include clearfix-before;
+    }
+
+    .opening-hours {
+        .hours-table {
+            .hours-hr {
+                display: table-row;
+                margin-bottom: 0;
+            }
+
+            .hours-days,
+            .hours-openings {
+                display: table-cell;
+            }
+
+            .hours-times {
+                display: table;
+            }
+
+            .hours-days {
+                padding-right: var(--#{$prefix}hours-spacing);
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    // layout breakpoint for aside col is hardcoded in JSP
+    .area-narrow {
+        .opening-hours {
+            .hours-table {
+                .hours-hr {
+                    display: flex;
+                    margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+                }
+
+                .hours-days,
+                .hours-openings,
+                .hours-label,
+                .hours-timerange,
+                .hours-times {
+                    display: block;
+                }
+
+                .hours-days,
+                .hours-timerange {
+                    padding-right: 0;
+                }
+            }
         }
     }
 }

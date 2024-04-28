@@ -35,7 +35,7 @@
 <c:set var="imageRatio"             value="${setting.imageRatio}" />
 <c:set var="imageRatioLg"           value="${setting.imageRatioLg}" />
 <c:set var="imageRatioParagraphs"   value="${setting.imageRatioParagraphs}" />
-<c:set var="imageRatioParagraphsXs" value="${setting.imageRatioParagraphsXs}" />
+<c:set var="imageRatioParagraphsLg" value="${setting.imageRatioParagraphsLg}" />
 <c:set var="containerType"          value="${setting.containerType.useDefault('m-element').toString}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
@@ -298,7 +298,7 @@ ${settingDefaultsDebug}
                 heading="${paragraph.value.Caption}"
                 image="${status.first and useVisualFromParagraph ? null : paragraph.value.Image}"
                 imageRatio="${imageRatioParagraphs}"
-                imageRatioLg="${imageRatioParagraphsXs}"
+                imageRatioLg="${imageRatioParagraphsLg}"
                 text="${paragraph.value.Text}"
                 link="${paragraph.value.Link}"
                 showImageZoom="${showImageZoom}"

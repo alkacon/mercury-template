@@ -164,7 +164,7 @@
         <%-- To set the visual css wrapper, the image orientation must be known. Also check if the image is from the icon folder. --%>
         <mercury:image-vars
             image="${image}"
-            ratio="${showVisualDesktop ? imageRatioLg : imageRatio}"
+            ratio="${showVisualMobile ? imageRatio : imageRatioLg}"
             ade="${false}">
                 <c:set var="showVisual" value="${not empty imageBean}" />
                 <c:set var="isIconImage" value="${imageIsSvg and fn:startsWith(imageBean.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}" />

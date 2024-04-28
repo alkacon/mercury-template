@@ -74,7 +74,7 @@
       <IncludeName><![CDATA[imageRatioParagraphs.sizeMobile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatioParagraphs.sizeDeskzop]]></IncludeName>
+      <IncludeName><![CDATA[imageRatioParagraphs.sizeDesktop]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>

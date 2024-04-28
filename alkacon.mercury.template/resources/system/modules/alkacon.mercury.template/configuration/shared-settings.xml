@@ -551,7 +551,7 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatioParagraphs.sizeDesktop]]></IncludeName>
-      <PropertyName><![CDATA[imageRatioParagraphsXs]]></PropertyName>
+      <PropertyName><![CDATA[imageRatioParagraphsLg]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.imageRatioParagraphs.large)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.imageRatio.large.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>

@@ -36,10 +36,10 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[firstOpen.true]]></IncludeName>

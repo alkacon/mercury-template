@@ -44,7 +44,7 @@
       <IncludeName><![CDATA[pieceLayout.onlyInlineHeadings]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
+      <IncludeName><![CDATA[piece.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[hsize.detailWith0]]></IncludeName>

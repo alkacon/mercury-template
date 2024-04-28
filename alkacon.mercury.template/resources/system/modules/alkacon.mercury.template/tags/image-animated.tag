@@ -15,8 +15,8 @@
     description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
-<%@ attribute name="ratioXs" type="java.lang.String" required="false"
-    description="Image ratio for small screens." %>
+<%@ attribute name="ratioLg" type="java.lang.String" required="false"
+    description="Image ratio for large screens." %>
 
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not? Default is 'true'."%>
@@ -99,15 +99,15 @@
 
 <c:set var="test"           value="${empty test ? true : test}" />
 
-<c:set var="ratioXs"        value="${(empty ratioXs) or ('desk' eq ratioXs) ? ratio : ratioXs}" />
-<c:set var="hideDesktop"    value="${ratio eq 'no-img'}" />
-<c:set var="hideMobile"     value="${ratioXs eq 'no-img'}" />
+<c:set var="ratioLg"        value="${(empty ratioLg) or ('desk' eq ratioLg) ? ratio : ratioLg}" />
+<c:set var="hideMobile"     value="${ratio eq 'no-img'}" />
+<c:set var="hideDesktop"    value="${ratioLg eq 'no-img'}" />
 
 <c:set var="test"           value="${test and not (hideDesktop and hideMobile)}" />
 
 <mercury:image-vars
     image="${image}"
-    ratio="${hideDesktop ? ratioXs : ratio}"
+    ratio="${hideMobile ? ratioLg : ratio}"
     title="${title}"
     ade="${empty ade ? false : ade}">
 
@@ -118,7 +118,7 @@
             <c:set var="noTitleCopyright" value="${alt eq 'nocopy'}" />
             <c:set var="alt" value="${noTitleCopyright ? null : alt}" />
 
-            <c:set var="adaptRatioToScreen" value="${ratio ne ratioXs}" />
+            <c:set var="adaptRatioToScreen" value="${ratio ne ratioLg}" />
             <c:if test="${adaptRatioToScreen}">
                 <%-- Note: The 'template.piece.breakpoint' sitemap attribute is NOT used here on purpose.
                     So far all use cases indicate treating the 'MD' size like a desktop (large) screen provides the best results. --%>
@@ -176,16 +176,16 @@
             </c:if>
 
             <div class="${imageWrapper}${empty cssWrapper ? '':' '}${cssWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
-                <c:if test="${adaptRatioToScreen and not hideMobile}">
+                <c:if test="${adaptRatioToScreen and not hideDesktop}">
                     <cms:addparams>
-                        <cms:param name="cssgrid" value="${mobileGrid}" />
+                        <cms:param name="cssgrid" value="${desktopGrid}" />
                         <mercury:image-srcset
-                            imagebean="${ratioXs eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioXs]}"
+                            imagebean="${ratioLg eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioLg]}"
                             sizes="${sizes}"
                             lazyLoad="${lazyLoad}"
                             alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
                             title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
-                            cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
+                            cssImage="${desktopWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
                             isSvg="${imageIsSvg}"
                             zoomData="nobox"
@@ -193,10 +193,10 @@
                         />
                     </cms:addparams>
                 </c:if>
-                 <c:if test="${not hideDesktop}">
+                 <c:if test="${not hideMobile}">
                     <cms:addparams>
                         <c:if test="${adaptRatioToScreen}">
-                            <cms:param name="cssgrid" value="${desktopGrid}" />
+                            <cms:param name="cssgrid" value="${mobileGrid}" />
                         </c:if>
                         <mercury:image-srcset
                             imagebean="${imageBean}"
@@ -204,7 +204,7 @@
                             lazyLoad="${lazyLoad}"
                             alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
                             title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
-                            cssImage="${desktopWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
+                            cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
                             isSvg="${imageIsSvg}"
                             zoomData="nobox"

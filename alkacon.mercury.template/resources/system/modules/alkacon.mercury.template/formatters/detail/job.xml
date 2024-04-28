@@ -59,16 +59,16 @@
       <IncludeName><![CDATA[dateFormat.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[keyPieceimageRatio.sizeDesktop]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[keyPieceimageRatio.sizeMobile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatioParagraphs.sizeDesktop]]></IncludeName>
+      <IncludeName><![CDATA[keyPieceimageRatio.sizeDesktop]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatioParagraphs.sizeMobile]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatioParagraphs.sizeDesktop]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>

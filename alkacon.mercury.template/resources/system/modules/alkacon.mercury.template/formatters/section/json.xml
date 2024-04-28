@@ -49,10 +49,10 @@
       <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
+      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
+      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.default]]></IncludeName>

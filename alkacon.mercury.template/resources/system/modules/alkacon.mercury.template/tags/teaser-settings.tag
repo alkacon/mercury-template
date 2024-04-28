@@ -24,7 +24,7 @@
 <%@ variable name-given="setEffect"         declare="true" %>
 <%@ variable name-given="setDateFormat"     declare="true" %>
 <%@ variable name-given="setRatio"          declare="true" %>
-<%@ variable name-given="setRatioXs"        declare="true" %>
+<%@ variable name-given="setRatioLg"        declare="true" %>
 <%@ variable name-given="setTextLength"     declare="true" variable-class="java.lang.Integer" %>
 <%@ variable name-given="setHsize"          declare="true" variable-class="java.lang.Integer" %>
 <%@ variable name-given="setLinkNewWin"     declare="true" %>
@@ -54,7 +54,7 @@
 <c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>
-<c:set var="setRatioXs"                     value="${setting.imageRatioXs.toString}"/>
+<c:set var="setRatioLg"                     value="${setting.imageRatioLg.toString}"/>
 <c:set var="setTextLength"                  value="${setting.textLength.toInteger}" />
 <c:set var="setHsize"                       value="${setting.hsize.toInteger}" />
 <c:set var="setDetailLinkWin"               value="${setting.detailLinkWin.isSetNotNone ? setting.detailLinkWin.toString : null}" />
@@ -62,8 +62,8 @@
 <c:set var="setShowCalendar"                value="${setting.showCalendar.toBoolean}" />
 <c:set var="setShowCopyright"               value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="setPieceLayout"                 value="${inList ? setting.pieceLayoutList.toInteger : setting.pieceLayout.toInteger}" />
-<c:set var="setSizeDesktop"                 value="${setRatio eq 'no-img' ? 0 : setting.pieceSizeDesktop.toInteger}" />
-<c:set var="setSizeMobile"                  value="${setRatioXs eq 'no-img' ? 0 : ((setSizeDesktop == 0) and (setting.pieceSizeMobile.toInteger == 99) ? 12 : setting.pieceSizeMobile.toInteger)}" />
+<c:set var="setSizeDesktop"                 value="${setRatioLg eq 'no-img' ? 0 : setting.pieceSizeDesktop.toInteger}" />
+<c:set var="setSizeMobile"                  value="${setRatio eq 'no-img' ? 0 : ((setSizeDesktop == 0) and (setting.pieceSizeMobile.toInteger == 99) ? 12 : setting.pieceSizeMobile.toInteger)}" />
 <c:set var="setShowVisual"                  value="${setting.visualOption.toString ne 'none'}" />
 <c:set var="paramLinkOption"                value="${setting.paramLinkOption}" />
 <c:set var="setLinkOption"                  value="${paramLinkOption.isSet ? paramLinkOption.toString : setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />

@@ -43,10 +43,16 @@
       <IncludeName><![CDATA[pieceLayout.all]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceSizeDesktop.default]]></IncludeName>
+      <IncludeName><![CDATA[piece.sizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pieceSizeMobile.default]]></IncludeName>
+      <IncludeName><![CDATA[piece.sizeDesktop.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>
@@ -59,12 +65,6 @@
     </Setting>
     <Setting>
       <IncludeName><![CDATA[titleOption.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.default]]></IncludeName>

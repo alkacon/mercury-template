@@ -14,8 +14,8 @@
     description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
-<%@ attribute name="imageRatioXs" type="java.lang.String" required="false"
-    description="Image ratio for small screens." %>
+<%@ attribute name="imageRatioLg" type="java.lang.String" required="false"
+    description="Image ratio for large screens." %>
 
 <%@ attribute name="imageTitle" type="java.lang.String" required="false"
     description="If provided, use this title for the image, otherwise generate a title from the contact name." %>
@@ -197,7 +197,7 @@
     title="${imgtitle}"
     showCopyright="${showImageCopyright}"
     ratio="${imageRatio}"
-    ratioXs="${imageRatioXs}"
+    ratioLg="${imageRatioLg}"
     cssImage="photo"
     showImageZoom="${showImageZoom}">
 

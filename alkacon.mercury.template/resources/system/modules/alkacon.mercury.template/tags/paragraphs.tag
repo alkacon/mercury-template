@@ -40,8 +40,8 @@
     description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
-<%@ attribute name="imageRatioXs" type="java.lang.String" required="false"
-    description="Image ratio for small screens." %>
+<%@ attribute name="imageRatioLg" type="java.lang.String" required="false"
+    description="Image ratio for large screens." %>
 
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' atttributes to add to the generated div surrounding section." %>
@@ -105,7 +105,7 @@
                 cssWrapper="${cssWrapper}"
                 hsize="${hsize}"
                 imageRatio="${imageRatio}"
-                imageRatioXs="${imageRatioXs}"
+                imageRatioLg="${imageRatioLg}"
                 textOption="${textOption}"
                 linkOption="${linkOption}"
                 showImageCopyright="${showImageCopyright}"

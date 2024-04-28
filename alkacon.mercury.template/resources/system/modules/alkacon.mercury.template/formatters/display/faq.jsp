@@ -45,7 +45,7 @@
             <mercury:image-animated
                 image="${image}"
                 ratio="${setRatio}"
-                ratioXs="${setRatioXs}"
+                ratioLg="${setRatioLg}"
                 test="${not empty image}"
                 setTitle="${false}"
                 showCopyright="${setShowCopyright}"

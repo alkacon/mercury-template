@@ -6,16 +6,16 @@
 
 
 <%@ attribute name="comment" type="java.lang.Boolean" required="false"
-    description="If true, treat the body as HTML comment. Add comment markers before / after the text output and use a default delimiter of '\n'. " %>
+    description="If true, treat the body as HTML comment. Add comment markers before / after the text output and use a default delimiter of '\n'. Default is 'false'." %>
 
 <%@ attribute name="script" type="java.lang.Boolean" required="false"
-    description="If true, treat the body as JavaScript. Set a default delimiter of ''. " %>
+    description="If true, treat the body as JavaScript. Set a default delimiter of ''. Default is 'false'." %>
 
 <%@ attribute name="delimiter" type="java.lang.String" required="false"
     description="Line breaks in the output will be replaced by this delimiter. Default is '\n'." %>
 
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
-    description="Output the text in the body or not?" %>
+    description="Output the text in the body or not? Default is 'true'." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -23,17 +23,18 @@
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%!
+
 public boolean getBoolean(String attr, boolean def) {
-    Boolean av = (Boolean)getJspContext().getAttribute(attr);
-    return (null == av) ? def : av.booleanValue();
+    Boolean v = (Boolean)getJspContext().getAttribute(attr);
+    return (null == v) ? def : v.booleanValue();
 }
 public String getString(String attr, String def) {
-    String sv = (String)getJspContext().getAttribute(attr);
-    return (null == sv) ? def : sv;
+    String v = (String)getJspContext().getAttribute(attr);
+    return (null == v) ? def : v;
 }
-%>
 
-<%
+%><%
+
 boolean test = getBoolean("test", true);
 
 if (test) {
@@ -61,12 +62,3 @@ if (test) {
     getJspContext().getOut().println(output);
 }
 %>
-
-<%--
-            if (
-            (!compact || (line.length() > 0)) &&
-            !((i == lines.size() && (line.length() == 0)))
-        ) {
-            output = output.concat(line).concat(del);
-        }
-    --%>

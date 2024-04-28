@@ -35,7 +35,7 @@
 <c:set var="setting"            value="${cms.element.setting}" />
 <c:set var="hsize"              value="${setting.hsize.isSet ? setting.hsize.toInteger : 3}" />
 <c:set var="imageRatio"         value="${setting.imageRatio.isSet ? setting.imageRatio.toString : null}"/>
-<c:set var="imageRatioXs"       value="${setting.imageRatioXs.isSet ? setting.imageRatioXs.toString : null}"/>
+<c:set var="imageRatioLg"       value="${setting.imageRatioLg.isSet ? setting.imageRatioLg.toString : null}"/>
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
@@ -79,7 +79,7 @@
             splitDownloads="${false}"
             hsize="${hsize + 1}"
             imageRatio="${imageRatio}"
-            imageRatioXs="${imageRatioXs}"
+            imageRatioLg="${imageRatioLg}"
             showImageZoom="${showImageZoom}"
             showImageCopyright="${showImageCopyright}"
             showImageSubtitle="${showImageSubtitle}"

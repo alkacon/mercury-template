@@ -55,16 +55,16 @@
       <IncludeName><![CDATA[textAlignment.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[visualOption.sizeMobile.piece]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
+      <IncludeName><![CDATA[visualOption.piece]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.section.text-image]]></IncludeName>

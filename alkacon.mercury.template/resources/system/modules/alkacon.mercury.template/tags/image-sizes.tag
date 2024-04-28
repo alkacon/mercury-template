@@ -52,7 +52,7 @@
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
 <%-- ###### Enable / disable output for debug purposes if required by setting DEBUG="${true}" ###### --%>
-<c:set var="DEBUG" value="${debug}" />
+<c:set var="DEBUG" value="${false or debug}" />
 
 <c:set var="bootstrapGrid"          value="${cms.sitemapConfig.attribute['template.bootstrap.grid'].toString}" />
 <c:set var="bootstrapGridEmpty"     value="${empty bootstrapGrid}" />

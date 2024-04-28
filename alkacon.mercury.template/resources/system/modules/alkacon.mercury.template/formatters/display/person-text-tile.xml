@@ -53,10 +53,10 @@
       <IncludeName><![CDATA[visualOption.contact]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeDesktop.textTile]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeMobile.textTile]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[effect.tile]]></IncludeName>

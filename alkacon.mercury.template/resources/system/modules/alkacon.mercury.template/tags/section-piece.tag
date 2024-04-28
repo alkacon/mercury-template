@@ -57,8 +57,8 @@
     description="Can be used to scale the image in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
 
-<%@ attribute name="imageRatioXs" type="java.lang.String" required="false"
-    description="Image ratio for small screens." %>
+<%@ attribute name="imageRatioLg" type="java.lang.String" required="false"
+    description="Image ratio for large screens." %>
 
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' selectors to add to the generated div surrounding the section." %>
@@ -147,8 +147,8 @@
 <c:set var="linkHeading"        value="${empty linkOption or empty link ? false : (linkOption eq 'heading')}" />
 <c:set var="hsize"              value="${empty hsize ? 2 : (hsize < 1 ? (linkHeading ? 3 : hsize) : hsize)}" />
 <c:set var="showText"           value="${empty text and empty markupText ? false : (empty textOption ? true : (textOption ne 'none'))}" />
-<c:set var="sizeDesktop"        value="${imageRatio eq 'no-img' ? 0 : sizeDesktop}" />
-<c:set var="sizeMobile"         value="${imageRatioXs eq 'no-img' ? 0 : ((sizeDesktop == 0) and (sizeMobile == 99)  ? 12 : sizeMobile)}" />
+<c:set var="sizeDesktop"        value="${imageRatioLg eq 'no-img' ? 0 : sizeDesktop}" />
+<c:set var="sizeMobile"         value="${imageRatio eq 'no-img' ? 0 : ((sizeDesktop == 0) and (sizeMobile == 99)  ? 12 : sizeMobile)}" />
 <c:set var="showVisualDesktop"  value="${empty image and empty markupVisual ? false : (empty sizeDesktop ? true : sizeDesktop != 0)}" />
 <c:set var="showVisualMobile"   value="${empty image and empty markupVisual ? false : (empty sizeMobile ? true : sizeMobile != 0)}" />
 <c:set var="showVisual"         value="${showVisualDesktop or showVisualMobile}" />
@@ -164,7 +164,7 @@
         <%-- To set the visual css wrapper, the image orientation must be known. Also check if the image is from the icon folder. --%>
         <mercury:image-vars
             image="${image}"
-            ratio="${showVisualDesktop ? imageRatio : imageRatioXs}"
+            ratio="${showVisualDesktop ? imageRatioLg : imageRatio}"
             ade="${false}">
                 <c:set var="showVisual" value="${not empty imageBean}" />
                 <c:set var="isIconImage" value="${imageIsSvg and fn:startsWith(imageBean.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}" />
@@ -246,7 +246,7 @@
                         <mercury:image-animated
                             image="${image}"
                             ratio="${imageRatio}"
-                            ratioXs="${imageRatioXs}"
+                            ratioLg="${imageRatioLg}"
                             setTitle="${not showImageLink}"
                             showCopyright="${showImageCopyright}"
                             showImageZoom="${showImageZoom and not showImageLink}"

@@ -35,8 +35,8 @@
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageCopyright"     value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="imageRatio"             value="${setting.imageRatio.toString}" />
-<c:set var="imageRatioXs"           value="${setting.imageRatioXs.toString}" />
-<c:set var="showImage"              value="${value.Image.value.Image.isSet and not ((imageRatio eq 'no-img') and ((imageRatioXs eq 'no-img') or (imageRatioXs eq 'desk')))}" />
+<c:set var="imageRatioLg"           value="${setting.imageRatioLg.toString}" />
+<c:set var="showImage"              value="${value.Image.value.Image.isSet and not ((imageRatio eq 'no-img') and ((imageRatioLg eq 'no-img') or (imageRatioLg eq 'desk')))}" />
 
 <c:set var="setSizeDesktop"         value="${setting.pieceSizeDesktop.toInteger}" />
 <c:set var="setSizeMobile"          value="${setting.pieceSizeMobile.toInteger}" />
@@ -74,7 +74,7 @@
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
     imageRatio="${imageRatio}"
-    imageRatioXs="${imageRatioXs}"
+    imageRatioLg="${imageRatioLg}"
     ade="${false}">
 
     <jsp:attribute name="markupVisual">
@@ -88,7 +88,7 @@
                 hsize="${hsize}"
                 image="${value.Image}"
                 imageRatio="${imageRatio}"
-                imageRatioXs="${imageRatioXs}"
+                imageRatioLg="${imageRatioLg}"
                 showImage="${true}"
                 showImageZoom="${showImageZoom}"
                 showImageCopyright="${showImageCopyright}"

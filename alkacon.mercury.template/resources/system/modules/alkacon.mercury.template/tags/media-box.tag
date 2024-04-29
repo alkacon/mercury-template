@@ -9,8 +9,11 @@
     description="The media content to use." %>
 
 <%@ attribute name="ratio" type="java.lang.String" required="true"
-    description="Can be used to scale the media in a specific ratio,
+    description="Can be used to scale the media in a specific ratio.
     Example values are: '1-1', '4-3', '3-2', '16-9', '2-1', '2,35-1' or 3-1." %>
+
+<%@ attribute name="ratioLg" type="java.lang.String" required="false"
+    description="Media ratio for large screens." %>
 
 <%@ attribute name="showPrefaceAsSubtitle" type="java.lang.Boolean" required="false"
     description="Controls if the preface is displayed as subtitle below the media. Default is 'false'." %>
@@ -116,10 +119,11 @@
     </c:set>
 
     <mercury:padding-box
-        cssWrapper="${cssWrapper}media-box${not autoPlay ? ' '.concat(effect) : ''}${isFlexible ? ' removable' : ''}"
+        cssWrapper="${cssWrapper}media-box${not autoPlay ? (effect.startsWith(' ') ? effect : ' '.concat(effect)) : ''}${isFlexible ? ' removable' : ''}"
         height="${height}"
         width="${width}"
         ratio="${usedRatio}"
+        ratioLg="${ratioLg}"
         test="${addPaddingBox}">
 
         <c:set var="previewBgColor" value="${not empty flexibleType and empty image ? ' pbg-'.concat(flexibleType) : ''}" />

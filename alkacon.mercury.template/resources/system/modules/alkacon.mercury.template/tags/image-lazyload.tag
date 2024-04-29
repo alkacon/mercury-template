@@ -77,7 +77,9 @@
 <c:set var="noPaddingBox" value="${zoomData eq 'nobox'}" />
 <c:set var="zoomData" value="${noPaddingBox ? null : zoomData}" />
 <c:set var="hasWidthHeight" value="${(width gt 0) and (height gt 0)}" />
-<c:set var="DEBUG" value="${debug}" />
+<c:set var="alt">${fn:replace(alt, '"', '\'')}</c:set>
+<c:set var="title">${fn:replace(title, '"', '\'')}</c:set>
+<c:set var="DEBUG" value="${false or debug}" />
 
 <c:set var="emptyImg" value="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
 

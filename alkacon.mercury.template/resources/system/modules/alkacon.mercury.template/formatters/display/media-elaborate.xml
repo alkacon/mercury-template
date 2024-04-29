@@ -49,7 +49,10 @@
       <IncludeName><![CDATA[piece.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[imageRatio.default]]></IncludeName>
+      <IncludeName><![CDATA[imageRatio.sizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[imageRatio.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[textLength.elaborate]]></IncludeName>

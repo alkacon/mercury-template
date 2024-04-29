@@ -218,6 +218,12 @@
         height: initial;
         &:not(.enlarged) {
             padding-bottom: 100%;
+            &.presized-vars {
+                padding-bottom: var(--#{$prefix}presized-padding);
+                @include media-breakpoint-up($piece-desktop-breakpoint) {
+                    padding-bottom: var(--#{$prefix}presized-padding-lg);
+                }
+            }
             overflow: hidden;
         }
         &.enlarged {

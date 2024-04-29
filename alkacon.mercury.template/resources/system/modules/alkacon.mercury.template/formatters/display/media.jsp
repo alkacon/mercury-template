@@ -50,6 +50,7 @@
             <mercury:media-box
                 content="${content}"
                 ratio="${setRatio}"
+                ratioLg="${setRatioLg}"
                 link="${isFlexible ? linkToDetail : ''}"
                 showMediaTime="${true}"
                 showCopyright="${setShowCopyright}"

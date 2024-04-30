@@ -51,7 +51,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<%-- ###### Enable / disable output for debug purposes if required by setting DEBUG="${true}" ###### --%>
+<%-- Enable / disable output for debug purposes if required by setting DEBUG="${true}" --%>
 <c:set var="DEBUG" value="${false or debug}" />
 
 <c:set var="bootstrapGrid"          value="${cms.sitemapConfig.attribute['template.bootstrap.grid'].toString}" />
@@ -102,7 +102,7 @@
                 <c:set var="bsGrid" value="${cms:parseJson(bootstrapGrid)}" />
                 <c:set var="bsGutter" value="${bsGrid.getInt('gutter')}" />
                 <c:set var="maxScaleWidth" value="${bsGrid.getInt('max-scale')}" />
-                <c:set var="bsLazyLoadJs" value="${bsGrid.getBoolean('bsLazyLoadJs')}" />
+                <c:set var="bsLazyLoadJs" value="${bsGrid.has('bsLazyLoadJs') ? bsGrid.getBoolean('bsLazyLoadJs') : false}" />
                 <c:set var="bsBpXs"  value="${bsGrid.getInt('bp-xs')}" />
                 <c:set var="bsBpSm"  value="${bsGrid.getInt('bp-sm')}" />
                 <c:set var="bsBpMd"  value="${bsGrid.getInt('bp-md')}" />
@@ -223,7 +223,7 @@ Max width XXL: ${bsMwXxl}
             <c:choose>
 
                 <c:when test="${bbFullWidth}">
-                    <%-- ###### Assume all images are full screen ###### --%>
+                    <%-- Assume all images are full screen --%>
                     <mercury:print comment="${true}" test="${DEBUG}">
                         image-sizes using fullwidth!
                     </mercury:print>
@@ -234,20 +234,22 @@ Max width XXL: ${bsMwXxl}
                     ${bb.setGridSize(3, bsMwLg)}
                     ${bb.setGridSize(4, bsBpXl)}
                     ${bb.setGridSize(5, bsBpXxl)}
+                    <%-- Use JS lazy loading in case of 'full width' columns as long as 'sizes: auto' is not widley supported in browsers --%>
+                    <c:set var="bsLazyLoadJs" value="${true}" />
                 </c:when>
 
                 <c:otherwise>
-                    <%-- ###### Calculate image size based on column width ###### --%>
+                    <%-- Calculate image size based on column width --%>
                     <c:set var="gutterParam" value="${param.cssgutter}" />
                     <c:set var="gutterAdjust" value="${0}" />
 
                     <c:choose>
                         <c:when test="${not empty gutterParam and gutterParam ne '#'}">
-                            <%-- ###### A custom gutter has been set, adjust gutter in bean ###### --%>
+                            <%-- A custom gutter has been set, adjust gutter in bean --%>
                             <c:set var="bsGutter" value="${cms:toNumber(gutterParam, bsGutter)}" />
                             <c:if test="${gutterParam ne param.cssgutterbase}">
-                                <%-- ###### Special case: Gutter has been changed in template (e.g. logo slider does this).
-                                            Adjust size of total width accordingly otherwise calulation is incorrect. ###### --%>
+                                <%-- Special case: Gutter has been changed in template (e.g. logo slider does this).
+                                     Adjust size of total width accordingly otherwise calulation is incorrect. --%>
                                 <c:set var="gutterBaseInt" value="${cms:toNumber(param.cssgutterbase, -1)}" />
                                 <c:if test="${gutterBaseInt gt 0}">
                                     <c:set var="gutterAdjust" value="${gutterBaseInt - bsGutter}" />
@@ -306,7 +308,7 @@ Max width XXL: ${bsMwXxl}
             </mercury:print>
 
             <c:if test="${srcSet and bbInitialized}">
-                <%-- ###### Calculate the source set sizes ###### --%>
+                <%-- Calculate the source set sizes --%>
                 <c:set var="bbSrcSetSizes"><%--
                 --%><c:if test="${lazyLoad and not bsLazyLoadJs}">auto, </c:if><%--
                 --%><c:if test="${bb.sizeXxl gt 0}">(min-width: ${bsMwXxl}px) ${bb.sizeXxl}px, </c:if><%--

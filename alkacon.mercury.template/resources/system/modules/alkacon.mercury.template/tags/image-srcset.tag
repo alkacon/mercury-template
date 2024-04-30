@@ -35,6 +35,9 @@
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not? Default is 'true'."%>
 
+<%@ attribute name="addPaddingBox" type="java.lang.Boolean" required="false"
+    description="Add a padding box (div with class 'presized') around the image? If 'true' the box will be added when needed. If 'false' no box will be added. Default is 'true'."%>
+
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
     description="Generate noscript tags for lazy loading images or not? Default is 'true'." %>
 
@@ -353,6 +356,7 @@ useNoScript: ${useNoScript}
             heightPercentage="${ib.ratioHeightPercentage}"
             lazyLoad="${useLazyLoading}"
             lazyLoadJs="${useJsLazyLoading}"
+            addPaddingBox="${addPaddingBox}"
             noScript="${useNoScript}"
             alt="${alt}"
             title="${title}"

@@ -17,9 +17,6 @@
 <%@ attribute name="ratioLg" type="java.lang.String" required="false"
     description="Image ratio for large screens." %>
 
-<%@ attribute name="useAspectRatio" type="java.lang.Boolean" required="false"
-    description="Generate padding-box using 'aspect-ratio' instead of 'padding-bottom'." %>
-
 <%@ attribute name="defaultRatio" type="java.lang.String" required="false"
     description="Alternative default ratio to use" %>
 
@@ -44,19 +41,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
 
-<%--
-Please note that currently not all combinations of attributes are supported:
-* 'ratio' is ignored if 'width' AND 'height' are set.
-* 'ratioLg' is not supported when 'useAspectRatio' is true.
---%>
-
 <c:choose>
 <c:when test="${empty test or test}">
 
     <jsp:doBody var="body" />
 
     <c:choose>
-        <c:when test="${useAspectRatio or empty heightPercentage}">
+        <c:when test="${empty heightPercentage}">
             <c:set var="ratio" value="${(not empty defaultRatio) and ((empty ratio) or (ratio eq 'none')) ? defaultRatio : ratio}" />
 
             <c:if test="${(empty width or empty height) and (not empty ratio) and (ratio ne 'none')}">
@@ -73,10 +64,6 @@ Please note that currently not all combinations of attributes are supported:
 
             <c:if test="${not empty width and not empty height}">
                 <c:choose>
-                    <c:when test="${useAspectRatio}">
-                        <c:set var="cssWrapper">${cssWrapper} presized use-ratio</c:set>
-                        <c:set var="styleAttr">style="aspect-ratio: ${width} / ${height};"</c:set>
-                    </c:when>
                     <c:when test="${useDesktopRatio}">
                         <c:set var="cssWrapper">${cssWrapper} presized presized-vars</c:set>
                         <c:set var="styleAttr">

@@ -30,6 +30,9 @@
 <%@ attribute name="lazyLoadJs" type="java.lang.Boolean" required="false"
     description="true: lazy loading with JS / false: lazy loading using native browser suppoer ? Default is 'false'."%>
 
+<%@ attribute name="addPaddingBox" type="java.lang.Boolean" required="false"
+    description="Add a padding box (div with class 'presized') around the image? If 'true' the box will be added when needed. If 'false' no box will be added. Default is 'true'."%>
+
 <%@ attribute name="noScript" type="java.lang.Boolean" required="false"
     description="Generate noscript tags for lazy loading images or not?
     Default is 'true'." %>
@@ -71,11 +74,9 @@
 
 
 <c:set var="useNoScript" value="${empty noScript ? true : noScript}" />
-<c:set var="useJsLazyLoading" value="${empty lazyLoadJs ? false : lazyLoadJs}" />
+<c:set var="useJsLazyLoading" value="${false or lazyLoadJs}" />
 <c:set var="useLazyLoading" value="${empty lazyLoad ? true : lazyLoad}" />
 <c:set var="useSrcSet" value="${not empty srcSet}" />
-<c:set var="noPaddingBox" value="${zoomData eq 'nobox'}" />
-<c:set var="zoomData" value="${noPaddingBox ? null : zoomData}" />
 <c:set var="hasWidthHeight" value="${(width gt 0) and (height gt 0)}" />
 <c:set var="alt">${fn:replace(alt, '"', '\'')}</c:set>
 <c:set var="title">${fn:replace(title, '"', '\'')}</c:set>
@@ -130,7 +131,7 @@
     <c:set var="cssImageLazy" value="${cssImageLazy} hide-noscript" />
 </c:if>
 
-<c:if test="${noPaddingBox and hasWidthHeight}">
+<c:if test="${(addPaddingBox eq false) and hasWidthHeight}">
     <c:set var="styleAttr">style="aspect-ratio: ${width} / ${height};"</c:set>
     <c:set var="attrImage" value="${empty attrImage ? styleAttr : attrImage.concat(' ').concat(styleAttr)}" />
 </c:if>
@@ -142,8 +143,7 @@
     heightPercentage="${heightPercentage}"
     width="${width}"
     height="${height}"
-    useAspectRatio="${hasWidthHeight}"
-    test="${not noPaddingBox}">
+    test="${addPaddingBox}">
 
     <img ${attributes}<%----%>
         <c:if test="${not empty width}">${' '}width="${width}"</c:if>

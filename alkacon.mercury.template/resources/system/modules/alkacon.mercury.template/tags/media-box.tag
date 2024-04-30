@@ -163,6 +163,7 @@
                                 <mercury:image-animated
                                     image="${image}"
                                     ratio="${usedRatio}"
+                                    ratioLg="${ratioLg}"
                                     showCopyright="${false}"
                                     setTitle="${false}"
                                 />
@@ -184,6 +185,7 @@
                                     <mercury:image-animated
                                         image="${image}"
                                         ratio="${usedRatio}"
+                                        ratioLg="${ratioLg}"
                                         showCopyright="${showCopyright}"
                                         setTitle="${false}"
                                     />

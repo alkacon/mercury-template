@@ -36,6 +36,8 @@
             <c:set var="smallCalendarSheet" value="${true}" />
         </c:when>
         <c:otherwise>
+            <%-- calendar sheet in mobile does NOT use the ratio anyway, so setRatio for the calendar sheet must always use the desktop ratio if available --%>
+            <c:set var="setRatio" value="${not empty setRatioLg ? setRatioLg : setRatio}" />
             <c:set var="setRatio" value="${setRatio eq 'none' ? '4-3' : setRatio}" />
         </c:otherwise>
     </c:choose>

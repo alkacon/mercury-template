@@ -188,7 +188,7 @@
                             cssImage="${desktopWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
                             isSvg="${imageIsSvg}"
-                            zoomData="nobox"
+                            addPaddingBox="${false}"
                             noScript="${noScript}"
                         />
                     </cms:addparams>
@@ -207,7 +207,7 @@
                             cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
                             isSvg="${imageIsSvg}"
-                            zoomData="nobox"
+                            addPaddingBox="${false}"
                             noScript="${noScript}"
                         />
                     </cms:addparams>

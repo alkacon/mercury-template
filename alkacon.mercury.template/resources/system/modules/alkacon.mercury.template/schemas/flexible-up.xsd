@@ -45,7 +45,7 @@
                     <DisplayName><![CDATA[%(key.label.Code)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Code.help)]]></Description>
                     <Widget>sourcecode</Widget>
-                    <WidgetConfig>12</WidgetConfig>
+                    <WidgetConfig>{"height":200}</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

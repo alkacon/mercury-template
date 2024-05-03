@@ -70,7 +70,6 @@ var __isOnline=${cms.isOnlineProject},
 
 <cms:enable-ade />
 
-<mercury:load-plugins group="css" />
 <mercury:load-plugins group="js-async" />
 <mercury:load-plugins group="js-defer" />
 <mercury:load-plugins group="template-head-includes" type="jsp" />
@@ -90,7 +89,10 @@ var __isOnline=${cms.isOnlineProject},
     </c:otherwise>
 </c:choose>
 
-<%-- Include additional CSS / JS if allowed --%>
+<%-- Include CSS from plugins after main Mercury CSS --%>
+<mercury:load-plugins group="css" />
+
+<%-- Include additional CSS / JS from Mercury template modifications (if allowed) --%>
 <c:if test="${allowTemplateMods}">
     <mercury:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
         <link href="<mercury:link-resource resource='${resourcePath}'/>" rel="stylesheet"><mercury:nl />

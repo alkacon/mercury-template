@@ -138,7 +138,7 @@
 
 <mercury:nl />
 <mercury:padding-box
-    cssWrapper="image-src-box${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"
+    cssWrapper="${empty cssWrapper ? '' : cssWrapper.concat(' ')}image-src-box"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
     width="${width}"

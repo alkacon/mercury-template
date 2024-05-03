@@ -13,7 +13,7 @@
 		<import-site>/sites/default</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template JSON demo contents and formatters.]]></description>
-		<version>17.0.0</version>
+		<version>17.0.1</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1889,7 +1889,12 @@
 			<uuidstructure>aa937fdc-2776-11ec-a282-0242ac11002b</uuidstructure>
 			<datecreated>Thu, 07 Oct 2021 13:58:36 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[JSON demo elements]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
@@ -1916,7 +1921,12 @@
 			<uuidstructure>f16f01c4-00e4-11ec-8018-0242ac11002b</uuidstructure>
 			<datecreated>Thu, 19 Aug 2021 11:59:44 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[JSON demo formatters]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

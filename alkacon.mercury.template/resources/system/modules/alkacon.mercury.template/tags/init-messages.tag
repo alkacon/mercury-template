@@ -21,7 +21,6 @@
 <%@ variable name-given="nl" declare="true"
     description="A variable holding a newline / line break to use in JSP for output formatting." %>
 
-<c:set var="nl" value="<%= \"\n\" %>" />
 
 <c:if test="${cms.element.inMemoryOnly or (reload and cms.edited)}">
     <c:set var="type" value="${cms.element.resourceTypeName}" />
@@ -85,3 +84,5 @@
         <%-- ####### /JSP body inserted here ######## --%>
     </c:otherwise>
 </c:choose>
+
+<c:set var="nl" value="<%= \"\n\" %>" />

@@ -152,6 +152,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
     &.pac {
         // (p)iece (a)lign (c)entered
         .heading > .piece-heading,
+        > .heading + .link,
         > .visual > .subtitle,
         > .body + .link,
         > .body .link,
@@ -164,6 +165,7 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         // (p)iece (a)lign (r)ight
         .heading > .piece-heading,
         .heading > .piece-heading-link,
+        > .heading + .link,
         > .visual > .subtitle,
         > .body + .link,
         > .body .link,
@@ -191,6 +193,11 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
             &:hover {
                 text-decoration: none;
             }
+        }
+        + .link {
+            // link may be a sibling to the heading
+            // add margin between body / text and link
+            margin-top: var(--#{$prefix}text-to-link-margin);
         }
         &:last-child {
             // if the heading is the last child of the piece, don't add the bottom margin

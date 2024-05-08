@@ -13,7 +13,7 @@
     description="Text used in the image 'alt' and 'title' attributes."%>
 
 <%@ attribute name="externalCopyright" type="java.lang.Boolean" required="false"
-    description="If 'true' the copyright information of the image does not need to be included becasue it will be provided in the external markup around the image.
+    description="If 'true' the copyright information of the image does not need to be included because it will be provided in the external markup around the image.
     If 'false' the copyright information will be appended to the 'title' attribute.
     Default is 'false' if not provided." %>
 

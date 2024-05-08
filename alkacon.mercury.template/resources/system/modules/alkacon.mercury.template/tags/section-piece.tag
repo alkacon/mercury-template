@@ -186,10 +186,10 @@
         attrVisual="${ade ? image.rdfaAttr : null}"
         cssVisual="rs_skip${visualOrientation}${not empty cssVisual ? ' '.concat(cssVisual) : null}"
         textAlignment="${textAlignment}"
-        attrBody="${ade and showLinkOption and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
-        cssBody="${defaultText ? 'default' :_null}"
+        attrBody="${ade and showLinkOption and cms:isWrapper(link) and (empty link or (link.exists and not link.isSet)) ? link.rdfaAttr : null}"
+        cssBody="${defaultText ? 'default' : null}"
         attrText="${ade ? text.rdfaAttr : null}"
-        attrLink="${ade ? link.rdfaAttr : null}">
+        attrLink="${ade and cms:isWrapper(link) ? link.rdfaAttr : null}">
 
         <jsp:attribute name="heading">
             <c:if test="${showHeading}">

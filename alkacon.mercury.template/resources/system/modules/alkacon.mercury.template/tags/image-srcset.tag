@@ -35,6 +35,9 @@
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not? Default is 'true'."%>
 
+<%@ attribute name="lazyLoadAutoSizes" type="java.lang.Boolean" required="false"
+    description="false (default): use lazy loading with 'sizes' being calculated from the bootstrap bean. true: use lazy loading and require 'sizes: auto' to work - this will (for now) use JavaScript instead of native browser support."%>
+
 <%@ attribute name="addPaddingBox" type="java.lang.Boolean" required="false"
     description="Add a padding box (div with class 'presized') around the image? If 'true' the box will be added when needed. If 'false' no box will be added. Default is 'true'."%>
 
@@ -98,13 +101,13 @@ SVG placeholder image, background image and image sizing
 
 <c:set var="aboveTheFold" value="${false}" /><%-- Setting this currently leads to loading for more images from srcset than required --%>
 <c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not aboveTheFold}" />
-<c:set var="useJsLazyLoading" value="${useLazyLoading and not caseDynamicListNoscript}" /><%-- This will finally be set after the Bootstrap grid config has been read --%>
+<c:set var="useJsLazyLoading" value="${(lazyLoadAutoSizes or useLazyLoading) and not caseDynamicListNoscript}" /><%-- This will finally be set after the Bootstrap grid config has been read --%>
 <c:set var="isSvg" value="${empty isSvg ? fn:endsWith(ib.vfsUri, '.svg') : isSvg}" />
 <c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not isSvg and not caseDynamicListNoscript}" />
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
 <c:set var="customSizes" value="${not empty sizes}" />
 
-<%-- ###### Enable / disable output for debug purposes if required by setting DEBUG="${true}" ###### --%>
+<%-- Enable / disable output for debug purposes if required by setting DEBUG="${true}" --%>
 <c:set var="DEBUG" value="${false}" />
 
 <mercury:print comment="${true}" test="${DEBUG}">
@@ -113,6 +116,7 @@ image-srcset parameters:
 isSvg: ${isSvg}
 customSizes: ${customSizes}
 useLazyLoading: ${useLazyLoading}
+useJsLazyLoading: ${useJsLazyLoading}
 aboveTheFold: ${aboveTheFold}
 useSrcSet: ${useSrcSet}
 useNoScript: ${useNoScript}
@@ -122,8 +126,12 @@ useNoScript: ${useNoScript}
 
     <mercury:image-sizes debug="${DEBUG}" lazyLoad="${useLazyLoading}" initBootstrapBean="${not customSizes}">
 
-        <c:set var="useJsLazyLoading" value="${useJsLazyLoading and bsLazyLoadJs}" />
+        <c:set var="useJsLazyLoading" value="${useJsLazyLoading and (lazyLoadAutoSizes or bsLazyLoadJs)}" />
         <c:set var="sizeXsMax" value="${bb.getGridSize(0) - bb.gutter}" />
+
+        <c:if test="${useSrcSet and bbInitialized}">
+            <c:set var="srcSetSizes" value="${bbSrcSetSizes}" />
+        </c:if>
 
         <c:choose>
             <c:when test="${not customSizes}">
@@ -147,9 +155,7 @@ useNoScript: ${useNoScript}
 
                 <c:if test="${useSrcSet and bbInitialized}">
 
-                    <c:set var="srcSetSizes" value="${bbSrcSetSizes}" />
-
-                    <%-- ###### Calculate size based on the current bootstrap grid. ###### --%>
+                    <%-- Calculate size based on the current bootstrap grid. --%>
                     <c:if test="${bb.sizeXs > 0}">
                         <c:if test="${maxScaleWidth > (2 * bb.sizeXs)}">
                             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[2 * bb.sizeXs]}" />
@@ -221,10 +227,10 @@ useNoScript: ${useNoScript}
                 </c:if>
 
                 <c:if test="${useSrcSet and (useLazyLoading or bbInitialized)}" >
-                    <%-- ###### Lazy loading will generate the sizes attribute by JS ###### --%>
-                    <%-- ###### Otherwise we get the grid sizes information from the bean ###### --%>
+                    <%-- Lazy loading will generate the sizes attribute by JS --%>
+                    <%-- Otherwise we get the grid sizes information from the bean --%>
                     <c:if test="${not bbInitialized or (bb.sizeXs >= sizeXsMax)}">
-                        <%-- ###### Add size based versions for large images ###### --%>
+                        <%-- Add size based versions for large images --%>
                         ${ib.addSrcSetWidthVariants(640, maxScaleWidth)}
                     </c:if>
                 </c:if>
@@ -236,34 +242,38 @@ useNoScript: ${useNoScript}
             </c:when>
             <c:otherwise>
 
-                <c:set var="maxSize" value="${0}" />
+                <c:set var="maxImageWidth" value="${0}" />
                 <c:set var="sizeList" value="${fn:split(sizes, ',')}" />
                 <mercury:print comment="${true}" test="${DEBUG}">
-                    sizes: [${sizes}] ib.width: ${ib.width}
+                    custom sizes: [${sizes}]
+                    ib.width: ${ib.width}
+                    ib.height: ${ib.height}
                 </mercury:print>
                 <c:forEach var="sizeStr" items="${sizeList}">
                     <c:set var="sizeInt" value="${cms.wrap[sizeStr].toInteger}" />
-                    <mercury:print comment="${true}" test="${DEBUG}">
-                        adding sizeInt: ${sizeInt} sizeIntx2: ${sizeInt * 2}
-                    </mercury:print>
                     <c:set var="sizeTwice" value="${(sizeInt * 2) > ib.width ?  ib.width : sizeInt * 2}" />
                     <c:set var="sizeOnce" value="${sizeInt > ib.width ?  ib.width : sizeInt}" />
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[sizeTwice]}" />
-                    <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[sizeOnce]}" />
-                    <c:if test="${sizeOnce > maxSize}">
-                        <c:set var="maxSize" value="${sizeOnce}" />
-                        <c:set var="maxImage" value="${ib.scaleWidth[maxSize]}" />
-                        <mercury:print comment="${true}" test="${DEBUG}">
-                            using maxImage: ${maxSize}
-                        </mercury:print>
+                    <c:set var="scaleTwice" value="${ib.scaleWidth[sizeTwice]}" />
+                    <c:set var="scaleOnce" value="${ib.scaleWidth[sizeOnce]}" />
+                    <mercury:print comment="${true}" test="${DEBUG}">
+                        adding sizeOnce: ${sizeOnce}
+                        adding sizeTwice: ${sizeTwice}
+                    </mercury:print>
+                    <c:set target="${ib}" property="srcSets" value="${scaleTwice}" />
+                    <c:set target="${ib}" property="srcSets" value="${scaleOnce}" />
+                    <c:if test="${sizeOnce > maxImageWidth}">
+                        <c:set var="maxImageWidth" value="${sizeOnce}" />
+                        <c:set var="maxImage" value="${ib.scaleWidth[maxImageWidth]}" />
                     </c:if>
                 </c:forEach>
-
+                <mercury:print comment="${true}" test="${DEBUG}">
+                    using maxImageWidth: ${maxImageWidth}
+                </mercury:print>
             </c:otherwise>
         </c:choose>
 
         <c:if test="${useSrcSet and (useLazyLoading or customSizes or bbInitialized)}" >
-            <%-- ###### Set quality higher for smaller images to avoid blur ###### --%>
+            <%-- Set quality higher for smaller images to avoid blur --%>
             <c:forEach var="vb" items="${ib.srcSetMap.values()}">
                 <c:set var="pixels" value="${vb.scaler.width * vb.scaler.height}" />
                 <c:choose>
@@ -287,7 +297,7 @@ useNoScript: ${useNoScript}
                     <c:set var="ib" value="${ib.getSrcSetMaxImage()}" />
                 </c:when>
                 <c:when test="${ib.srcSetMap.size() > 1}">
-                    <%-- ###### We only need a srcSet if we have more then one image variation ###### --%>
+                    <%-- We only need a srcSet if we have more then one image variation --%>
                     <c:set var="srcset" value="${ib.srcSet}" />
                 </c:when>
             </c:choose>

@@ -28,7 +28,7 @@
     description="Use lazy loading or not? Default is 'true'."%>
 
 <%@ attribute name="lazyLoadJs" type="java.lang.Boolean" required="false"
-    description="true: lazy loading with JS / false: lazy loading using native browser suppoer ? Default is 'false'."%>
+    description="false (default): lazy loading using native browser support. true: lazy loading with JavaScript."%>
 
 <%@ attribute name="addPaddingBox" type="java.lang.Boolean" required="false"
     description="Add a padding box (div with class 'presized') around the image? If 'true' the box will be added when needed. If 'false' no box will be added. Default is 'true'."%>
@@ -84,8 +84,7 @@
 
 <c:set var="emptyImg" value="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
 
-
-<%-- ###### Set img tag options depending on use case ###### --%>
+<%-- Set img tag options depending on use case --%>
 <c:choose>
     <c:when test="${useSrcSet and useJsLazyLoading}">
         <c:set var="attributes"><%--
@@ -123,11 +122,13 @@
     useLazyLoading: ${useLazyLoading}
     useJsLazyLoading: ${useJsLazyLoading}
     useSrcSet: ${useSrcSet}
+    srcSetSizes: ${srcSetSizes}
+    empty srcSetSizes: ${empty srcSetSizes}
     useNoScript: ${useNoScript}
 </mercury:print>
 
 <c:if test="${useNoScript}">
-    <%-- ###### Two image tags will be generated in case <noscript> is used, hide the first one with CSS ###### --%>
+    <%-- Two image tags will be generated in case <noscript> is used, hide the first one with CSS --%>
     <c:set var="cssImageLazy" value="${cssImageLazy} hide-noscript" />
 </c:if>
 

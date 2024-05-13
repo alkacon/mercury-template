@@ -21,6 +21,9 @@
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not? Default is 'true'."%>
 
+<%@ attribute name="lazyLoadAutoSizes" type="java.lang.Boolean" required="false"
+    description="false (default): use lazy loading with 'sizes' being calculated from the bootstrap bean. true: use lazy loading and require 'sizes: auto' to work - this will (for now) use JavaScript instead of native browser support."%>
+
 <%@ attribute name="title" type="java.lang.String" required="false"
     description="Text used in the image 'alt' and 'title' attributes."%>
 
@@ -74,7 +77,7 @@
     Otherwise everything is ignored and just the body of the tag is returned. "%>
 
 
-<%-- ####### These variables are actually set in the mercury:image-vars tag included ####### --%>
+<%-- These variables are actually set in the mercury:image-vars tag included --%>
 <%@ variable name-given="imageBean" declare="true" variable-class="org.opencms.jsp.util.CmsJspImageBean" %>
 <%@ variable name-given="imageLink" declare="true" %>
 <%@ variable name-given="imageUnscaledLink" declare="true" %>
@@ -176,24 +179,7 @@
             </c:if>
 
             <div class="${imageWrapper}${empty cssWrapper ? '':' '}${cssWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
-                <c:if test="${adaptRatioToScreen and not hideDesktop}">
-                    <cms:addparams>
-                        <cms:param name="cssgrid" value="${desktopGrid}" />
-                        <mercury:image-srcset
-                            imagebean="${ratioLg eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioLg]}"
-                            sizes="${sizes}"
-                            lazyLoad="${lazyLoad}"
-                            alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
-                            title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
-                            cssImage="${desktopWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
-                            attrImage="${attrImage}"
-                            isSvg="${imageIsSvg}"
-                            addPaddingBox="${false}"
-                            noScript="${noScript}"
-                        />
-                    </cms:addparams>
-                </c:if>
-                 <c:if test="${not hideMobile}">
+                <c:if test="${not hideMobile}">
                     <cms:addparams>
                         <c:if test="${adaptRatioToScreen}">
                             <cms:param name="cssgrid" value="${mobileGrid}" />
@@ -202,9 +188,28 @@
                             imagebean="${imageBean}"
                             sizes="${sizes}"
                             lazyLoad="${lazyLoad}"
+                            lazyLoadAutoSizes="${lazyLoadAutoSizes}"
                             alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
                             title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
                             cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
+                            attrImage="${attrImage}"
+                            isSvg="${imageIsSvg}"
+                            addPaddingBox="${false}"
+                            noScript="${noScript}"
+                        />
+                    </cms:addparams>
+                </c:if>
+                <c:if test="${adaptRatioToScreen and not hideDesktop}">
+                    <cms:addparams>
+                        <cms:param name="cssgrid" value="${desktopGrid}" />
+                        <mercury:image-srcset
+                            imagebean="${ratioLg eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioLg]}"
+                            sizes="${sizes}"
+                            lazyLoad="${lazyLoad}"
+                            lazyLoadAutoSizes="${lazyLoadAutoSizes}"
+                            alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
+                            title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                            cssImage="${desktopWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
                             isSvg="${imageIsSvg}"
                             addPaddingBox="${false}"
@@ -217,16 +222,16 @@
                         ${imageCopyrightHtml}
                     </div><%----%>
                 </c:if>
-                <%-- ####### JSP body inserted here ######## --%>
+                <%-- JSP body inserted here --%>
                 <jsp:doBody/>
-                <%-- ####### /JSP body inserted here ######## --%>
+                <%-- /JSP body inserted here --%>
             </div><%----%>
             <mercury:nl />
         </c:when>
 
         <c:otherwise>
             <c:if test="${cms.isEditMode and test}">
-                <%-- ###### No image: Output warning in offline version ###### --%>
+                <%-- No image: Output warning in offline version --%>
                 <fmt:setLocale value="${cms.workplaceLocale}" />
                 <cms:bundle basename="alkacon.mercury.template.messages">
                     <mercury:alert type="warning">
@@ -239,9 +244,9 @@
                     </mercury:alert>
                 </cms:bundle>
             </c:if>
-            <%-- ####### JSP body inserted here ######## --%>
+            <%-- JSP body inserted here --%>
             <jsp:doBody/>
-            <%-- ####### /JSP body inserted here ######## --%>
+            <%-- /JSP body inserted here --%>
         </c:otherwise>
 
     </c:choose>

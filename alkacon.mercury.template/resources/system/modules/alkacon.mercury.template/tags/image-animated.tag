@@ -178,7 +178,7 @@
                 <c:set var="attrWrapper" value="${empty attrWrapper ? zoomDataWrapper : attrWrapper.concat(' ').concat(zoomDataWrapper)}" />
             </c:if>
 
-            <div class="${imageWrapper}${empty cssWrapper ? '':' '}${cssWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
+            <div class="${cssWrapper}${empty cssWrapper ? '':' '}${imageWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
                 <c:if test="${not hideMobile}">
                     <cms:addparams>
                         <c:if test="${adaptRatioToScreen}">

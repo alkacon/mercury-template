@@ -91,6 +91,7 @@ var __isOnline=${cms.isOnlineProject},
 
 <%-- Include CSS from plugins after main Mercury CSS --%>
 <mercury:load-plugins group="css" />
+<mercury:load-plugins group="css-inline" />
 
 <%-- Include additional CSS / JS from Mercury template modifications (if allowed) --%>
 <c:if test="${allowTemplateMods}">

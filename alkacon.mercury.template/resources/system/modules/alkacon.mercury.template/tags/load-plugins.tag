@@ -42,6 +42,9 @@
         <c:when test="${type eq 'css'}">
             <link href="${plugin.link}${versionDate}" rel="stylesheet"><mercury:nl />
         </c:when>
+        <c:when test="${type eq 'css-inline'}">
+            <style>${cms.wrap[plugin.path].toResource.content}</style><mercury:nl />
+        </c:when>
         <c:when test="${type eq 'js-defer'}">
             <script defer src="${plugin.link}${versionDate}"></script><mercury:nl />
         </c:when>

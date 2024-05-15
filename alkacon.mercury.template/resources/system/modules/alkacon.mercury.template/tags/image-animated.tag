@@ -5,7 +5,7 @@
     description="Displays a responsive image with optional animation effects." %>
 
 
-<%@ attribute name="image" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="true"
+<%@ attribute name="image" type="java.lang.Object" required="true"
     description="The image to format. Must be a nested image content."%>
 
 <%@ attribute name="sizes" type="java.lang.String" required="false"

@@ -223,6 +223,10 @@
                     <Description><![CDATA[%(key.msg.label.form.WebForm.DBExport.help)]]></Description>
                 </Setting>
             </FieldSettings>
+            <visibilities>
+                <visibility element="MailReplyTo" class="alkacon.mercury.webform.CmsFormEmptyFieldVisibilityHandler" />
+                <visibility element="OptionalConfirmationMail/ConfirmationMailReplyTo" class="alkacon.mercury.webform.CmsFormEmptyFieldVisibilityHandler" />
+            </visibilities>
         </xsd:appinfo>
     </xsd:annotation>
 

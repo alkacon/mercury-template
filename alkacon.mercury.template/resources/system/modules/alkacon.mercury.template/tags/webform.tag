@@ -120,31 +120,31 @@
                             </c:when>
                             <c:otherwise>
                                 <mercury:alert-online>
+                                    <jsp:attribute name="text">
+                                        <p><fmt:message key="msg.page.form.mailconfigerror.online" /></p>
+                                    </jsp:attribute>
+                                </mercury:alert-online>
+                                <mercury:alert type="error" test="${cms.isEditMode}">
                                     <jsp:attribute name="head">
                                         <fmt:message key="msg.page.form.mailconfigerror.headline" />
                                     </jsp:attribute>
                                     <jsp:attribute name="text">
-                                        <p><fmt:message key="msg.page.form.mailconfigerror.online" /></p>
-                                        <mercury:alert-meta test="${cms.isEditMode}">
-                                            <jsp:attribute name="text">
-                                                <c:choose>
-                                                    <c:when test="${useDkimMailHost and not validDkimDomains}">
-                                                        <fmt:message key="msg.page.form.mailconfigerror.dkimdomains" />
-                                                    </c:when>
-                                                    <c:when test="${useDkimMailHost and not validDkimMailFrom}">
-                                                        <fmt:message key="msg.page.form.mailconfigerror.dkimmailfrom">
-                                                            <fmt:param>${dkimMailFrom}</fmt:param>
-                                                            <fmt:param>${dkimDomains}</fmt:param>
-                                                        </fmt:message>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <fmt:message key="msg.page.form.mailconfigerror.mailhost" />
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </jsp:attribute>
-                                        </mercury:alert-meta>
+                                        <c:choose>
+                                            <c:when test="${useDkimMailHost and not validDkimDomains}">
+                                                <fmt:message key="msg.page.form.mailconfigerror.dkimdomains" />
+                                            </c:when>
+                                            <c:when test="${useDkimMailHost and not validDkimMailFrom}">
+                                                <fmt:message key="msg.page.form.mailconfigerror.dkimmailfrom">
+                                                    <fmt:param>${dkimMailFrom}</fmt:param>
+                                                    <fmt:param>${dkimDomains}</fmt:param>
+                                                </fmt:message>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <fmt:message key="msg.page.form.mailconfigerror.mailhost" />
+                                            </c:otherwise>
+                                        </c:choose>
                                     </jsp:attribute>
-                                </mercury:alert-online>
+                                </mercury:alert>
                             </c:otherwise>
                         </c:choose>
                     </c:otherwise>

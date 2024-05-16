@@ -25,7 +25,7 @@
 <c:set var="delimiter" value="${empty delimiter ? '_' : delimiter}" />
 
 <c:if test="${translate}">
-    <c:set var="prefix"><m:translate-name name="${fn:trim(prefix)}" /></c:set>
+    <c:set var="prefix"><m:translate-name name="${fn:trim(prefix)}" allowSlash="${false}" /></c:set>
 </c:if>
 
 <c:out value="${prefix}${delimiter}${fn:substringBefore(uuid, '-')}" />

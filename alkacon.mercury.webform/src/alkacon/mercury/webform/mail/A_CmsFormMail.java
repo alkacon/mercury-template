@@ -30,13 +30,17 @@ package alkacon.mercury.webform.mail;
 import alkacon.mercury.webform.CmsForm;
 import alkacon.mercury.webform.CmsFormDataField;
 import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.CmsFormMailSettings;
 import alkacon.mercury.webform.I_CmsFormMessages;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmail;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmailFields;
 
 import org.opencms.file.CmsObject;
+import org.opencms.file.CmsResource;
 import org.opencms.mail.CmsHtmlMail;
 import org.opencms.mail.CmsSimpleMail;
+import org.opencms.main.CmsException;
+import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.util.CmsByteArrayDataSource;
 import org.opencms.util.CmsMacroResolver;
@@ -54,6 +58,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
 
 import org.antlr.stringtemplate.StringTemplate;
@@ -62,6 +67,9 @@ import org.antlr.stringtemplate.StringTemplate;
  * Abstract form mail.
  */
 public abstract class A_CmsFormMail {
+
+    /** The log object for this class. */
+    private static final Log LOG = CmsLog.getLog(A_CmsFormMail.class);
 
     /** The form handler. */
     protected final CmsFormHandler m_formHandler;
@@ -104,9 +112,15 @@ public abstract class A_CmsFormMail {
         m_macroResolver = m_formHandler.getMacroResolver();
         m_formDataFields = formDataFields;
         m_formDataString = formDataString;
-        m_htmlMail = new CmsHtmlMail();
+        CmsResource resource = getResource();
+        if (resource != null) {
+            m_htmlMail = new CmsHtmlMail(CmsFormMailSettings.getInstance().getMailHost(m_cms, resource));
+            m_simpleMail = new CmsSimpleMail(CmsFormMailSettings.getInstance().getMailHost(m_cms, resource));
+        } else {
+            m_htmlMail = new CmsHtmlMail();
+            m_simpleMail = new CmsSimpleMail();
+        }
         m_htmlMail.setCharset(m_cms.getRequestContext().getEncoding());
-        m_simpleMail = new CmsSimpleMail();
         m_simpleMail.setCharset(m_cms.getRequestContext().getEncoding());
     }
 
@@ -238,6 +252,21 @@ public abstract class A_CmsFormMail {
      * @return the configured mail text as plain text
      */
     protected abstract String getMailTextPlain();
+
+    /**
+     * Returns the form configuration resource.
+     * @return the form configuration resource
+     */
+    protected CmsResource getResource() {
+
+        CmsResource resource = null;
+        try {
+            resource = m_cms.readResource(m_form.getConfigUri());
+        } catch (CmsException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return resource;
+    }
 
     /**
      * Returns whether this form mail is configured as an HTML mail.

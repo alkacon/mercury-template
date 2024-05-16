@@ -29,7 +29,9 @@ package alkacon.mercury.webform.mail;
 
 import alkacon.mercury.webform.CmsFormDataField;
 import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.CmsFormMailSettings;
 
+import org.opencms.file.CmsResource;
 import org.opencms.util.CmsStringUtil;
 
 import java.util.List;
@@ -93,7 +95,13 @@ public abstract class A_CmsFormMailAdmin extends A_CmsFormMail {
      */
     protected void setAddresses() throws AddressException, EmailException {
 
-        String mailFrom = m_macroResolver.resolveMacros(m_form.getMailFrom());
+        String mailFrom = null;
+        CmsResource resource = getResource();
+        if ((resource != null) && CmsFormMailSettings.getInstance().useDkimMailHost(m_cms, resource)) {
+            mailFrom = CmsFormMailSettings.getInstance().getAttributeDkimMailFrom(m_cms);
+        } else {
+            mailFrom = m_macroResolver.resolveMacros(m_form.getMailFrom());
+        }
         String mailFromName = m_macroResolver.resolveMacros(m_form.getMailFromName());
         String mailReplyTo = m_macroResolver.resolveMacros(m_form.getMailReplyTo());
         String mailTo = m_macroResolver.resolveMacros(getMailReceiver());
@@ -108,10 +116,16 @@ public abstract class A_CmsFormMailAdmin extends A_CmsFormMail {
                 m_simpleMail.setFrom(mailFrom);
             }
         }
+        String mailFromAsReplyTo = m_macroResolver.resolveMacros(m_form.getMailFrom());
         if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
             m_htmlMail.addReplyTo(mailReplyTo);
             m_simpleMail.addReplyTo(mailReplyTo);
-        }
+        } else if ((resource != null)
+            && CmsFormMailSettings.getInstance().useDkimMailHost(m_cms, resource)
+            && CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromAsReplyTo)) {
+                m_htmlMail.addReplyTo(mailFromAsReplyTo);
+                m_simpleMail.addReplyTo(mailFromAsReplyTo);
+            }
         m_htmlMail.setTo(createInternetAddresses(mailTo));
         m_simpleMail.setTo(createInternetAddresses(mailTo));
         if (mailCC.size() > 0) {

@@ -119,6 +119,56 @@ public class CmsPreconfiguredMail implements I_CmsPreconfiguredMail {
     }
 
     /**
+     * @see alkacon.mercury.template.mail.I_CmsPreconfiguredMail#sendTo(java.lang.String, java.util.Map, java.lang.String)
+     */
+    public void sendTo(String recipient, Map<String, String> recipientSpecificMacros, String senderEmail)
+    throws EmailException {
+
+        CmsHtmlMail mail = m_mailHost == null ? new CmsHtmlMail() : new CmsHtmlMail(m_mailHost);
+        try {
+            String senderName = m_mailConfig.getSenderName();
+            String senderReplyTo = m_mailConfig.getSenderReplyTo();
+            if (senderReplyTo == null) {
+                senderReplyTo = m_mailConfig.getSenderAddress();
+            }
+            if (CmsStringUtil.isEmptyOrWhitespaceOnly(senderEmail)) {
+                senderEmail = mail.getFromAddress().getAddress();
+            }
+            if (CmsStringUtil.isEmptyOrWhitespaceOnly(senderName)) {
+                mail.setFrom(senderEmail);
+                if (!CmsStringUtil.isEmptyOrWhitespaceOnly(senderReplyTo)) {
+                    mail.addReplyTo(senderReplyTo);
+                }
+            } else {
+                mail.setFrom(senderEmail, senderName);
+                if (!CmsStringUtil.isEmptyOrWhitespaceOnly(senderReplyTo)) {
+                    mail.addReplyTo(senderReplyTo, senderName);
+                }
+            }
+            mail.setSubject(
+                null != recipientSpecificMacros
+                ? resolveReceipientSpecificMacros(m_mailConfig.getSubject(), recipientSpecificMacros)
+                : m_mailConfig.getSubject());
+            mail.setCharset(m_mailConfig.getEncoding());
+            mail.addTo(recipient);
+
+            mail.setHtmlMsg(
+                null != recipientSpecificMacros
+                ? resolveReceipientSpecificMacros(m_mailConfig.getContent(), recipientSpecificMacros)
+                : m_mailConfig.getContent());
+            // send the mail
+            mail.send();
+        } catch (EmailException e) {
+            if (LOG.isWarnEnabled()) {
+                LOG.warn(
+                    "Failed to send mail with subject \"" + m_mailConfig.getSubject() + "\" to \"" + recipient + "\".",
+                    e);
+            }
+            throw e;
+        }
+    }
+
+    /**
      * Resolves the provided macros in the mail's content.
      * Other macros are kept.
      *

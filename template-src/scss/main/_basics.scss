@@ -20,12 +20,12 @@
  */
 
 html {
-    height: 100vh;                          // set viewport constraint
-    min-height: 100%;                       // enforce height
+    --my-toolbar-height: 0px;
 
     &.opencms-page-editor {
         // in OpenCms page editor, add a top padding to move the content below the toolbar
-        padding-top: $opencms-toolbar-height;
+        --my-toolbar-height: #{$opencms-toolbar-height};
+        padding-top: var(--my-toolbar-height);
         // CSS smooth scrolling conflicts with page editor drag & drop
         scroll-behavior: auto;
     }
@@ -34,17 +34,11 @@ html {
     .btn,
     .dropdown > a,
     .dropdown-menu > a {
-        // remove default focus from
+        // remove default focus
         &:focus {
             outline: none;
             box-shadow: none;
         }
-    }
-
-    .dropdown-menu {
-        // reset some boostrap options
-        box-shadow: $nav-shadow;
-        z-index: $above-oc-z-index + 1;
     }
 
     &.keyboard-nav {
@@ -64,14 +58,19 @@ html {
         }
     }
 
+    &.mercury-page {
+        height: 100vh;                          // set viewport constraint
+        min-height: 100%;                       // enforce height
+
+        #mercury-page {
+            min-height: 100vh;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+    }
+
     // rem based font adjustment is done in mixin
     @include rem-base;
-}
-
-#mercury-page {
-    min-height: 100vh;
-    max-width: 100vw;
-    overflow: hidden;
 }
 
 .default-font {

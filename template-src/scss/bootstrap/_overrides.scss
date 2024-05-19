@@ -61,3 +61,7 @@ $utilities: (
 
 // Bootstrap color variables that are reset to Mercury colors
 $table-border-color:            var(--#{$prefix}highlight-color);
+
+// Bootstrap dropdown adjustments
+$zindex-dropdown:               $above-oc-z-index + 1;
+$dropdown-box-shadow:           $nav-shadow;

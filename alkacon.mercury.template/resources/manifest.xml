@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>17.0.69</version>
+		<version>17.0.71</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -8943,6 +8943,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Writes a message to the OpenCms Log]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/macro-resolver.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/macro-resolver.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>8a1da82b-1687-11ef-9592-0242ac11002b</uuidstructure>
+			<uuidresource>8a1da82c-1687-11ef-9592-0242ac11002b</uuidresource>
+			<datecreated>Mon, 20 May 2024 09:01:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Provides an OpenCms macro resolver]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

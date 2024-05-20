@@ -14,7 +14,7 @@
     description="Bootstrap grid gutter to use. If not provided use the configured default, usually 30." %>
 
 <%@ attribute name="srcSet" type="java.lang.Boolean" required="false"
-    description="Generate image source set data or not? Default is 'true' if not provided." %>
+    description="Generate image source set data or not? Default is the value of 'initBootstrapBean', i.e. 'false' if both attributes are not provided." %>
 
 <%@ attribute name="lazyLoad" type="java.lang.Boolean" required="false"
     description="Use lazy loading or not? Default is 'false'."%>

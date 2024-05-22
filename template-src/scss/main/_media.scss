@@ -26,6 +26,13 @@
         }
     }
 
+    .piece.full {
+        .visual.size-limited {
+            margin-left: 0;
+        }
+    }
+
+
     @include media-breakpoint-down(md) {
         &.text-below-on-xs {
             &.square-col .preview .image-src-box {

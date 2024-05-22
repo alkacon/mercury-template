@@ -53,6 +53,13 @@
 
 <c:set var="isAudio"                value="${value.MediaContent.value.Audio.isSet}" />
 
+<c:if test="${fn:contains(imageRatio, '#')}">
+    <c:set var="maxImageSize" value="${fn:substringAfter(imageRatio, '#')}" />
+    <c:set var="attrVisual">style="max-width:${maxImageSize}px;"</c:set>
+    <c:set var="cssVisual" value="size-limited" />
+    <c:set var="imageRatio" value="${fn:substringBefore(imageRatio, '#')}" />
+</c:if>
+
 <mercury:nl />
 <div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
 <mercury:nl />
@@ -61,6 +68,8 @@
 
 <mercury:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
+    attrVisual="${attrVisual}"
+    cssVisual="${cssVisual}"
     pieceLayout="${keyPieceLayout}"
     sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
     sizeMobile="${12}">

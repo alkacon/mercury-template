@@ -32,9 +32,9 @@
             </c:if>
         </c:if>
     </c:if>
-    <c:if test="${empty breakpoints and ((type eq 'css') or (type eq 'css-inline'))}">
+    <c:if test="${empty macroResolver and ((type eq 'css') or (type eq 'css-inline'))}">
         <%-- Initialize a macro resolver for CSS media queries. --%>
-        <m:macro-resolver var="breakpoints" cms="${cms.vfs.cmsObject}" />
+        <m:macro-resolver var="macroResolver" cms="${cms.vfs.cmsObject}" addBreakpoints="${true}" />
     </c:if>
     <c:choose>
         <c:when test="${type eq 'jsp'}">
@@ -46,13 +46,13 @@
         <c:when test="${type eq 'css'}">
             <c:set var="mediaAttr" value="${plugin.attributes['media']}" />
             <c:if test="${not empty mediaAttr}">
-                <c:set var="mediaQuery" value="media=\"(${breakpoints.resolveMacros(mediaAttr)})\" " />
+                <c:set var="mediaQuery" value="media=\"(${macroResolver.resolveMacros(mediaAttr)})\" " />
             </c:if>
             <link rel="stylesheet" ${mediaQuery}href="${plugin.link}${versionDate}"><m:nl />
             <c:set var="inlineAttr" value="${plugin.attributes['inline']}" />
             <c:if test="${not empty inlineAttr}">
                 <m:print delimiter="">
-                    <style>${breakpoints.resolveMacros(inlineAttr)}</style>
+                    <style>${macroResolver.resolveMacros(inlineAttr)}</style>
                 </m:print>
             </c:if>
         </c:when>

@@ -155,9 +155,22 @@ aside img {
     height: 1em;
     width: auto;
 }
+
 .ico-svg > svg {
     vertical-align: bottom;
     fill: currentColor;
     height: 1em;
     width: auto;
+}
+
+.copyright {
+    --#{$prefix}copyright-padding: #{$copyright-padding};
+    --#{$prefix}copyright-font-size: #{$copyright-font-size};
+    --#{$prefix}copyright-color: #{$copyright-color};
+    --#{$prefix}copyright-bg-color: #{$copyright-bg-color};
+    --#{$prefix}copyright-opacity: #{$copyright-opacity};
+    --#{$prefix}copyright-pos-right: initial;
+    --#{$prefix}copyright-border-radius: #{$copyright-border-radius} 0 0 0;
+    --#{$prefix}copyright-font-family: var(--#{$prefix}body-font-family);
+    --#{$prefix}copyright-text-shadow: none;
 }

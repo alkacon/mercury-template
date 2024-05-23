@@ -59,6 +59,9 @@
     <c:when test="${fn:startsWith(icon, 'bi-')}">
         <c:set var="inline"         value="${true}" />
     </c:when>
+    <c:when test="${fn:startsWith(icon, 'my-')}">
+        <c:set var="inline"         value="${true}" />
+    </c:when>
     <c:when test="${fn:startsWith(icon, 'fab-')}">
         <c:set var="inline"         value="${true}" />
     </c:when>

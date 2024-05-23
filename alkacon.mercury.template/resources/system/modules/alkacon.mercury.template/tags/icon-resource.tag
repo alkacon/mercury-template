@@ -39,40 +39,24 @@
 
 
 <c:set var="icon"           value="${fn:trim(icon)}" />
+<c:set var="iconSet"        value="${fn:substringBefore(icon, '-')}" />
+<c:set var="iconFile"       value="${fn:substringAfter(icon, '-')}" />
 
 <c:choose>
     <c:when test="${fromImage}">
         <c:set var="iconPath" value="${icon}" />
         <c:set var="iconName" value="ico-from-image" />
     </c:when>
-    <c:when test="${fn:startsWith(icon, 'bi-')}">
-        <c:set var="iconFile" value="${fn:substringAfter(icon, 'bi-')}" />
-        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/bi/${iconFile}.svg" />
-        <c:set var="iconName" value="ico-${icon}" />
-    </c:when>
-    <c:when test="${fn:startsWith(icon, 'fa-')}">
-        <c:set var="iconFile" value="${fn:substringAfter(icon, 'fa-')}" />
-        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/fa/${iconFile}.svg" />
-        <c:set var="iconName" value="ico-${icon}" />
-    </c:when>
-    <c:when test="${fn:startsWith(icon, 'fab-')}">
-        <c:set var="iconFile" value="${fn:substringAfter(icon, 'fab-')}" />
-        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/fab/${iconFile}.svg" />
-        <c:set var="iconName" value="ico-${icon}" />
-    </c:when>
-    <c:when test="${fn:startsWith(icon, 'fas-')}">
-        <c:set var="iconFile" value="${fn:substringAfter(icon, 'fas-')}" />
-        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/fas/${iconFile}.svg" />
-        <c:set var="iconName" value="ico-${icon}" />
-    </c:when>
-    <c:when test="${fn:startsWith(icon, 'far-')}">
-        <c:set var="iconFile" value="${fn:substringAfter(icon, 'far-')}" />
-        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/far/${iconFile}.svg" />
-        <c:set var="iconName" value="ico-${icon}" />
-    </c:when>
-    <c:when test="${fn:startsWith(icon, 'nf-')}">
-        <c:set var="iconFile" value="${fn:substringAfter(icon, 'nf-')}" />
-        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/nf/${iconFile}.svg" />
+    <c:when test="${
+            (iconSet eq 'bi') or
+            (iconSet eq 'fa') or
+            (iconSet eq 'my') or
+            (iconSet eq 'fab') or
+            (iconSet eq 'fas') or
+            (iconSet eq 'far') or
+            (iconSet eq 'nf')
+        }">
+        <c:set var="iconPath" value="/system/modules/alkacon.mercury.theme/icons/${iconSet}/${iconFile}.svg" />
         <c:set var="iconName" value="ico-${icon}" />
     </c:when>
     <c:otherwise>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>17.0.16</version>
+		<version>17.0.17</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -110246,8 +110246,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/icons/my/trash-20.svg</source>
-			<destination>system/modules/alkacon.mercury.theme/icons/my/trash-20.svg</destination>
+			<source>system/modules/alkacon.mercury.theme/icons/my/trash.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/my/trash.svg</destination>
 			<type>image</type>
 			<uuidstructure>2b2f32f0-190c-11ef-ae89-0242ac11002b</uuidstructure>
 			<uuidresource>2b2f32f1-190c-11ef-ae89-0242ac11002b</uuidresource>
@@ -110256,7 +110256,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[trash-20]]></value>
+					<value><![CDATA[trash]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>17.0.15</version>
+		<version>17.0.16</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -109910,6 +109910,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/my/accessible-wc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/my/accessible-wc.svg</destination>
+			<type>image</type>
+			<uuidstructure>d1eb3efa-1c3e-11ef-8739-0242ac11002b</uuidstructure>
+			<uuidresource>d1eb3efb-1c3e-11ef-8739-0242ac11002b</uuidresource>
+			<datecreated>Mon, 27 May 2024 15:36:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[accessible-wc]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:32,h:32]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.theme/icons/my/cut.svg</source>
 			<destination>system/modules/alkacon.mercury.theme/icons/my/cut.svg</destination>
 			<type>image</type>
@@ -110257,6 +110278,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[wand]]></value>
+				</property>
+				<property type="shared">
+					<name>image.size</name>
+					<value><![CDATA[w:32,h:32]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/icons/my/wc.svg</source>
+			<destination>system/modules/alkacon.mercury.theme/icons/my/wc.svg</destination>
+			<type>image</type>
+			<uuidstructure>d1ec777e-1c3e-11ef-8739-0242ac11002b</uuidstructure>
+			<uuidresource>d1ec777f-1c3e-11ef-8739-0242ac11002b</uuidresource>
+			<datecreated>Mon, 27 May 2024 15:36:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[wc]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>

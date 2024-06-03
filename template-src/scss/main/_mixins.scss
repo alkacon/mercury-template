@@ -649,7 +649,7 @@
 
     $btn-bg-val: map-get-safe($bg-map, "btn-bg");
     @if ($btn-bg-val != null) {
-        --#{$prefix}btn-bg:                         #{map-get-safe($bg-map, "btn-bg")};
+        --#{$prefix}btn-bg:                         #{$btn-bg-val};
     } @else if ($set-default and $btn-use-border) {
         --#{$prefix}btn-bg:                         var(--#{$prefix}body-bg);
     } @else if ($set-default) {
@@ -659,7 +659,7 @@
     @if (map-has-key-safe($bg-map, "btn-fg")) {
         --#{$prefix}btn-fg:                         #{map-get-safe($bg-map, "btn-fg")};
     } @else if ($btn-bg-val != null) {
-        --#{$prefix}btn-fg:                         get-text-color($btn-bg-val);
+        --#{$prefix}btn-fg:                         #{get-text-color($btn-bg-val)};
     } @else if ($set-default and $btn-use-border) {
         --#{$prefix}btn-fg:                         var(--#{$prefix}link-color);
     } @else if ($set-default) {
@@ -681,7 +681,7 @@
     @if (map-has-key-safe($bg-map, "btn-hover-fg")) {
         --#{$prefix}btn-hover-fg:                   #{map-get-safe($bg-map, "btn-hover-fg")};
     } @else if ($btn-hover-bg-val != null) {
-        --#{$prefix}btn-hover-fg:                   get-text-color($btn-hover-bg-val);
+        --#{$prefix}btn-hover-fg:                   #{get-text-color($btn-hover-bg-val)};
     } @else if (map-has-key-safe($bg-map, "btn-fg")) {
         --#{$prefix}btn-hover-fg:                   var(--#{$prefix}btn-fg);
     } @else if ($set-default and $btn-use-border) {
@@ -773,6 +773,7 @@
     --#{$prefix}body-bg:                            #{$bg-color};
     --#{$prefix}body-bg-rgb:                        #{to-rgb($bg-color)};
     --#{$prefix}body-color:                         #{$fg-color};
+    --#{$prefix}body-color-rgb:                     #{to-rgb($fg-color)};
     --#{$prefix}link-color:                         #{$li-color};
     --#{$prefix}link-color-rgb:                     #{to-rgb($li-color)};
     --#{$prefix}link-hover-color:                   #{$li-hover-color};

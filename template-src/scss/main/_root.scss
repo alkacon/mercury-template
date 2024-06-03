@@ -25,6 +25,7 @@
     --#{$prefix}body-bg: #{$body-bg};
     --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
     --#{$prefix}body-color: #{$body-color};
+    --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
 
     --#{$prefix}link-color: #{$link-color};
     --#{$prefix}link-color-rgb: #{to-rgb($link-color)};

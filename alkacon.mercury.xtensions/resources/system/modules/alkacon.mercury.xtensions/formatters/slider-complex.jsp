@@ -8,10 +8,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 <cms:formatter var="content" val="value">
 
 <c:set var="setting"                value="${cms.element.setting}" />
@@ -33,7 +33,7 @@
         data-init="false"
         data-ext="<cms:link>/system/modules/alkacon.mercury.xtensions/revolution-slider/extensions/</cms:link>" >
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="head" ade="${false}" />
+    <m:heading level="${hsize}" text="${value.Title}" css="head" ade="${false}" />
 
     <div class="fullwidthbanner-container">
 
@@ -45,13 +45,13 @@
                     <li data-transition="${slide.value.Transition.isSet ? slide.value.Transition : slTransition}" <%--
                     --%><c:if test="${slide.value.Link.isSet}"> data-link="<cms:link>${slide.value.Link}</cms:link>"${(slide.value.NewWin.isSet and slide.value.NewWin eq 'true')?' data-target="_blank"':''}</c:if>>
 
-                        <mercury:image-vars image="${slide}">
+                        <m:image-vars image="${slide}">
                             <img src="<cms:link>/system/modules/alkacon.mercury.xtensions/revolution-slider/assets/coloredbg.png</cms:link>" <%--
                             --%>data-lazyload="<cms:link>${imageLink}</cms:link>" <%--
                             --%>alt="${imageTitle}" <%--
                             --%>title="${imageTitle}"<%--
                             --%>/>
-                        </mercury:image-vars>
+                        </m:image-vars>
 
                         <c:forEach var="item" items="${slide.valueList.Layer}" varStatus="statusCaption">
                             <c:choose>
@@ -115,7 +115,7 @@
                          --%></${tagtype}>
                         </c:forEach>
 
-                        <mercury:image-vars image="${slide}" escapeCopyright="${false}">
+                        <m:image-vars image="${slide}" escapeCopyright="${false}">
                             <c:if test="${showImageCopyright and not empty imageCopyrightHtml}">
                                 <div class="tp-caption caption copyright" <%--
                                 --%>data-x="left" <%--
@@ -127,7 +127,7 @@
                                     --%>${imageCopyrightHtml}<%--
                             --%></div>
                             </c:if>
-                        </mercury:image-vars>
+                        </m:image-vars>
 
                     </li>
                 </c:forEach>
@@ -139,4 +139,4 @@
 
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

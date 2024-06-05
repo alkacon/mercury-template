@@ -9,17 +9,17 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value" rdfa="rdfa">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:teaser-settings content="${content}">
+<m:teaser-settings content="${content}">
 
 <c:set var="intro"      value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
 <c:set var="title"      value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
@@ -39,7 +39,7 @@
 
     <c:if test="${showFacilities and value.Facilities.isSet}">
         <c:set var="accessibleFacilities">
-            <mercury:facility-icons
+            <m:facility-icons
                 useTooltip="${true}"
                 wheelchairAccess="${value.Facilities.value.WheelchairAccess.toBoolean}"
                 hearingImpaired="${value.Facilities.value.HearingImpaired.toBoolean}"
@@ -57,11 +57,11 @@
             <p class="geoinfo"><%----%>
                 GPS: ${coordBean.lat.toString()}, ${coordBean.lng.toString()}
             </p><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:set>
     </c:if>
 
-    <mercury:teaser-piece
+    <m:teaser-piece
         cssWrapper="type-poi${setCssWrapperAll}"
         headline="${title}"
         pieceLayout="${setPieceLayout}"
@@ -76,9 +76,9 @@
 
         <jsp:attribute name="markupVisual">
             <c:if test="${showMap and value.Coord.isSet}">
-                <mercury:location-vars data="${content}" addMapInfo="true" >
-                    <c:set var="id"><mercury:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
-                    <mercury:map
+                <m:location-vars data="${content}" addMapInfo="true" >
+                    <c:set var="id"><m:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
+                    <m:map
                         provider="auto"
                         id="${id}"
                         ratio="${mapRatio}"
@@ -86,17 +86,17 @@
                         markers="${[locData]}"
                         subelementWrapper="poi-map"
                     />
-                </mercury:location-vars>
+                </m:location-vars>
             </c:if>
-            <mercury:alert test="${cms.isEditMode and showMap and not value.Coord.isSet}" type="warning">
+            <m:alert test="${cms.isEditMode and showMap and not value.Coord.isSet}" type="warning">
                 <jsp:attribute name="head">
                     <fmt:message key="msg.page.poi.nomap" />
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </jsp:attribute>
 
         <jsp:attribute name="markupBody">
-            <mercury:link
+            <m:link
                 link="${linkToDetail}"
                 css='uncolored'
                 attr="${'tabindex=\"-1\"'}"
@@ -122,19 +122,19 @@
                         </div><%----%>
                     </c:if>
                 </p><%----%>
-                <mercury:nl />
+                <m:nl />
                 ${geoInfo}
                 ${accessibleFacilities}
 
-            </mercury:link>
+            </m:link>
         </jsp:attribute>
 
-    </mercury:teaser-piece>
+    </m:teaser-piece>
 </c:if>
 
 <c:if test="${not displayAddressMarkup}">
 
-    <mercury:teaser-piece
+    <m:teaser-piece
         teaserClass="${setTeaserClass}"
         cssWrapper="type-poi${setCssWrapperAll}"
         intro="${setShowIntro ? intro : null}"
@@ -160,7 +160,7 @@
         <jsp:attribute name="markupVisual">
             <c:if test="${setShowVisual}">
                 <c:set var="image" value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (paragraph.value.Image.isSet ? paragraph.value.Image : null)}" />
-                <mercury:image-animated
+                <m:image-animated
                     image="${image}"
                     ratio="${setRatio}"
                     ratioLg="${setRatioLg}"
@@ -171,12 +171,12 @@
             </c:if>
         </jsp:attribute>
 
-    </mercury:teaser-piece>
+    </m:teaser-piece>
 </c:if>
 
-</mercury:teaser-settings>
+</m:teaser-settings>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

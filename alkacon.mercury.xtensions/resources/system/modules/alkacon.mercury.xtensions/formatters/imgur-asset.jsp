@@ -8,10 +8,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
@@ -31,7 +31,7 @@
 <c:set var="imageLink"              value="${image.value.Id}" />
 <c:set var="imageTitleCopyright"    value="${image.value.Title}" />
 
-<mercury:piece
+<m:piece
     cssWrapper="element type-imgur-section piece ${cssWrapper}${' '}${effect}"
     pieceLayout="${1}">
 
@@ -39,10 +39,10 @@
         <c:if test="${showImageSubtitle}">
             <c:choose>
                 <c:when test="${not useImgurTitle}">
-                    <mercury:heading level="${hsize}" text="${value.Title}" css="subtitle" ade="${false}" />
+                    <m:heading level="${hsize}" text="${value.Title}" css="subtitle" ade="${false}" />
                 </c:when>
                 <c:otherwise>
-                    <mercury:heading level="${hsize}" text="${value.Item.value.Title}" css="subtitle" ade="${false}" />
+                    <m:heading level="${hsize}" text="${value.Item.value.Title}" css="subtitle" ade="${false}" />
                 </c:otherwise>
             </c:choose>
         </c:if>
@@ -55,28 +55,28 @@
                     <div class="image-src-box"><%----%>
                         <img src="${imageLink}" alt="${imageTitleCopyright}" class="animated" ><%----%>
                     </div><%----%>
-                    <mercury:nl />
+                    <m:nl />
                     <c:if test="${showImageCopyright}">
                         <div class="copyright"><%----%>
                             <div class="text">Courtesy of Imgur</div><%----%>
                         </div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </c:if>
                 </div><%----%>
-                <mercury:nl />
+                <m:nl />
             </c:when>
             <c:otherwise>
                 <c:if test="${cms.isEditMode}">
                     <fmt:setLocale value="${cms.workplaceLocale}" />
                     <cms:bundle basename="alkacon.mercury.template.messages">
-                        <mercury:alert type="warning">
+                        <m:alert type="warning">
                             <jsp:attribute name="head">
                                 <fmt:message key="msg.page.noImage" />
                             </jsp:attribute>
                             <jsp:attribute name="text">
                                 <fmt:message key="msg.page.noImage.hint" />
                             </jsp:attribute>
-                        </mercury:alert>
+                        </m:alert>
                     </cms:bundle>
                 </c:if>
             </c:otherwise>
@@ -102,15 +102,15 @@
 
     <jsp:attribute name="link">
         <c:if test="${showLink}">
-            <mercury:link link="${value.Item.value.Data}" css="btn" newWin="${true}" >
+            <m:link link="${value.Item.value.Data}" css="btn" newWin="${true}" >
                 <fmt:message key="msg.page.imgur-section.link" />
-            </mercury:link>
+            </m:link>
         </c:if>
     </jsp:attribute>
 
-</mercury:piece>
+</m:piece>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

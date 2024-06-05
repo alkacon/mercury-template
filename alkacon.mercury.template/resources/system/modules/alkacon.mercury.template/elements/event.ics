@@ -6,7 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
 
@@ -28,7 +28,7 @@
 </c:if>
 
 <c:set var="location" value="" />
-<mercury:location-vars data="${value.AddressChoice}">
+<m:location-vars data="${value.AddressChoice}">
 <c:if test="${not empty locData}">
     <c:set var="location">
         <c:if test="${not empty locData.name}">${locData.name},${" "}</c:if>
@@ -40,9 +40,9 @@
         <c:if test="${value.LocationNote.isSet}">,${" "}${value.LocationNote}</c:if>
     </c:set>
 </c:if>
-</mercury:location-vars>
+</m:location-vars>
 
-<mercury:paragraph-split
+<m:paragraph-split
     paragraphs="${content.valueList.Paragraph}"
     splitFirst="${false}"
     splitDownloads="${false}">
@@ -63,9 +63,9 @@
         </c:when>
     </c:choose>
 
-</mercury:paragraph-split>
+</m:paragraph-split>
 
-<mercury:icalendar
+<m:icalendar
     content="${content}"
     locale="${cms.locale}"
     title="${value.Title.stringValue}"

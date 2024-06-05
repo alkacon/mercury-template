@@ -28,7 +28,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <jsp:doBody var="template" />
@@ -50,10 +50,10 @@
                 <c:set var="bottomPadding" value="${cms:mathRound((height / width) * 10000000) / 100000}" />
             </c:when>
             <c:when test="${not empty image}">
-                <mercury:image-vars image="${image}">
+                <m:image-vars image="${image}">
                     <c:set var="width" value="${imageWidth}" />
                     <c:set var="height" value="${imageHeight}" />
-                </mercury:image-vars>
+                </m:image-vars>
             </c:when>
         </c:choose>
 
@@ -69,17 +69,17 @@
             </c:set>
         </c:if>
 
-        <mercury:nl />
+        <m:nl />
         <div <%--
         --%>class="onclick-activation ${cssWrapper}" <%--
         --%><c:if test="${not empty cssStyle}">style="${cssStyle}" </c:if><%--
         --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
-        --%><c:if test="${requireExternalCookies}"><mercury:data-external-cookies modal="${true}" reload="${requireReload}" message="${cookieMessage}" /></c:if><%--
+        --%><c:if test="${requireExternalCookies}"><m:data-external-cookies modal="${true}" reload="${requireReload}" message="${cookieMessage}" /></c:if><%--
         --%>><%----%>
             <c:if test="${not empty image}">
                 <cms:addparams>
                     <cms:param name="cssgrid" value="col-xs-12" />
-                    <mercury:image-animated
+                    <m:image-animated
                         image="${image}"
                         ratio="${ratio}"
                         title="${not empty heading ? heading : (not empty notice ? notice : null)}"
@@ -92,25 +92,25 @@
             </c:if>
             <c:if test="${not empty icon and icon ne 'none'}">
                 <div class="oa-icon centered"><%----%>
-                    <mercury:icon icon="${icon}" tag="span" inline="${true}" />
-                    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+                    <m:icon icon="${icon}" tag="span" inline="${true}" />
+                    <m:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
                 </div><%----%>
             </c:if>
             <c:if test="${not empty notice}">
                 <div class="oa-notice"><c:out value="${notice}" escapeXml="true" /></div><%----%>
             </c:if>
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:when>
 
     <c:when test="${!cms.isEditMode and requireExternalCookies}">
-        <mercury:nl />
+        <m:nl />
         <div <%--
             --%>class="onclick-activation ensure-external-cookies ${cssWrapper}" <%--
             --%>data-preview='{"template":"${cms:encode(template)}"}'<%--
-            --%><mercury:data-external-cookies modal="${false}" reload="${requireReload}" message="${cookieMessage}" /><%--
+            --%><m:data-external-cookies modal="${false}" reload="${requireReload}" message="${cookieMessage}" /><%--
         --%>></div><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:when>
 
     <c:otherwise>

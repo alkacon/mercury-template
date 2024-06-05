@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.locale}" />
@@ -17,11 +17,11 @@
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 
-<mercury:nl/>
+<m:nl/>
 <div class="element type-opencms-info pivot ${cssWrapper}"><%----%>
 
     <div class="float-left mr-10"><%----%>
-        <mercury:icon icon="info-circle" tag="span" cssWrapper="fs-36" />
+        <m:icon icon="info-circle" tag="span" cssWrapper="fs-36" />
     </div><%----%>
 
     <h2><%----%>
@@ -47,6 +47,6 @@
     </div><%----%>
 
 </div><%----%>
-<mercury:nl/>
+<m:nl/>
 
 </cms:bundle>

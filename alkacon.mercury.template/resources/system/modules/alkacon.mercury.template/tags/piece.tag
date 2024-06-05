@@ -124,7 +124,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="pieceTag"       value="${empty pieceTag ? 'div' : pieceTag}" />
@@ -306,7 +306,7 @@
         <div class="link${empty cssLink ? '' : ' '.concat(cssLink)}"${empty attrLink ? '' : ' '.concat(attrLink)}><%----%>
             ${pieceLink}
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:set>
 </c:if>
 
@@ -315,7 +315,7 @@
         <div class="visual${empty cssVisual ? '' : ' '.concat(cssVisual)}"${empty attrVisual ? '' : ' '.concat(attrVisual)}><%----%>
             ${pieceVisual}
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:set>
 </c:if>
 
@@ -324,7 +324,7 @@
         <div class="heading${empty cssHeading ? '' : ' '.concat(cssHeading)}"${empty attrHeading ? '' : ' '.concat(attrHeading)}><%----%>
             ${pieceHeading}
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:set>
 </c:if>
 
@@ -339,7 +339,7 @@ ${'<'}${pieceTag}${' '}
     ${'\"'}
     ${empty attrWrapper ? '' : ' '.concat(attrWrapper)}
 ${'>'}
-<mercury:nl />
+<m:nl />
 
 ${piecePreMarkup}
 
@@ -361,14 +361,14 @@ ${piecePreMarkup}
             <div class="text${empty cssText ? '' : ' '.concat(cssText)}"${empty attrText ? '' : ' '.concat(attrText)}><%----%>
                 ${pieceText}
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
         <c:if test="${showLink and inlineLink}">
             ${linkMarkup}
         </c:if>
         ${bodyPostMarkup}
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </c:if>
 
 <c:if test="${showLink and not inlineLink and not linkLast}">
@@ -385,4 +385,4 @@ ${piecePreMarkup}
 
 
 ${'</'}${pieceTag}${'>'}
-<mercury:nl />
+<m:nl />

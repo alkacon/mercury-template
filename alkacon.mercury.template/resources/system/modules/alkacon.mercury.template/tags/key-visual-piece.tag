@@ -57,14 +57,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="effect" value="${(empty effect) or (effect eq 'none') ? '' : effect}" />
 <c:set var="lazyLoad" value="${empty lazyLoad or lazyLoad}" />
 
 <c:choose>
 <c:when test="${showOverlay and image.value.Image.isSet}">
-    <mercury:image-animated
+    <m:image-animated
         image="${image}"
         lazyLoad="${lazyLoad}"
         cssWrapper="overlay ${effect} "
@@ -84,7 +84,7 @@
             <c:set var="visualSubtitle" value="${imageTitle}" />
         </c:if>
 
-    </mercury:image-animated>
+    </m:image-animated>
     <c:if test="${not empty visualSubtitle}">
         <div class="subtitle rs_skip" aria-hidden="true">${visualSubtitle}</div><%----%>
     </c:if>
@@ -95,7 +95,7 @@
             <jsp:invoke fragment="markupImage"/>
         </c:when>
         <c:otherwise>
-            <mercury:image-animated
+            <m:image-animated
                 image="${image}"
                 lazyLoad="${lazyLoad}"
                 cssWrapper="${effect}"
@@ -110,7 +110,7 @@
                 <c:if test="${showImageSubtitle and not empty imageTitle}">
                     <c:set var="visualSubtitle" value="${imageTitle}" />
                 </c:if>
-            </mercury:image-animated>
+            </m:image-animated>
         </c:otherwise>
     </c:choose>
     <c:if test="${not empty visualSubtitle}">

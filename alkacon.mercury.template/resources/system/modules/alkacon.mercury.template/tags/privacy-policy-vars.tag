@@ -22,7 +22,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%@ variable name-given="policyFile"                declare="true" %>
@@ -48,7 +48,7 @@
 <c:if test="${locatePolicyFile or (setPolicyLinks and empty policyContent)}">
 
     <c:if test="${empty contentPropertiesSearch}">
-        <%-- Do not use contentUri for properties, always read from the request context URI. This is identical to the mercury:content-properties.tag --%>
+        <%-- Do not use contentUri for properties, always read from the request context URI. This is identical to the m:content-properties.tag --%>
         <c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[policyBaseUri]}" />
     </c:if>
 

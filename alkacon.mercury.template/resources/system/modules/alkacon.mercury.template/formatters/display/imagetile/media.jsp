@@ -8,11 +8,11 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
@@ -34,7 +34,7 @@
     <c:set var="minHeight"      value="min-height show-preface" />
 </c:if>
 
-<mercury:media-vars content="${content}" ratio="${ratio}">
+<m:media-vars content="${content}" ratio="${ratio}">
 
 <c:set var="imgRatio" value="${ratio}" />
 
@@ -43,7 +43,7 @@
 </c:if>
 
 <c:if test="${dateFormat.isSetNotNone and value.Date.isSet}">
-    <c:set var="dateStr"><mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat.toString}" /></c:set>
+    <c:set var="dateStr"><m:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat.toString}" /></c:set>
     <c:if test="${empty minHeight}"><c:set var="minHeight" value="min-height" /></c:if>
 </c:if>
 
@@ -94,8 +94,8 @@
 <c:set var="isFlexible" value="${value.MediaContent.value.Flexible.isSet}" />
 <c:set var="linkToDetail"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
 
-<mercury:nl />
-<mercury:media-box
+<m:nl />
+<m:media-box
     cssWrapper="type-media${isAudio ? ' audio ' : ' '}text-below-on-xs ${tileClass}"
     content="${content}"
     ratio="${imgRatio}"
@@ -114,10 +114,10 @@
         <c:if test="${not isAudio and showImageCopyright}"><div class="copyright">&copy; ${copyright}</div></c:if>
     </jsp:attribute>
 
-</mercury:media-box>
-<mercury:nl />
+</m:media-box>
+<m:nl />
 
-</mercury:media-vars>
+</m:media-vars>
 </cms:bundle>
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

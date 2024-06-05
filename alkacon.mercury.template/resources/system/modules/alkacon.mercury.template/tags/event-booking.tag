@@ -32,7 +32,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="bookingFormId"          value="${cms.element.id.toString()}" />
 <c:set var="bookingFormIdHash"      value="${bookingFormId.hashCode()}" />
@@ -66,7 +66,7 @@
     <c:when test="${showBookingsList}">
         <%-- ###### Booking form action: Display list of submissions ###### --%>
         <div class="element pivot type-webform-manage"><%----%>
-            <mercury:webform-booking-manage
+            <m:webform-booking-manage
                 webform="${content.value.Booking.value.Webform}"
                 bookingInfo="${content}"
             />
@@ -75,7 +75,7 @@
     <c:when test="${showBookingsFormResult}">
         <%-- ###### Booking form action: Display posted form ###### --%>
         <div class="subelement pivot type-webform"><%----%>
-            <mercury:webform
+            <m:webform
                 webform="${content.value.Booking.value.Webform}"
                 bookingInfo="${content}"
                 formId="${bookingFormId}"

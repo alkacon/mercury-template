@@ -7,10 +7,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 
@@ -34,7 +34,7 @@
 </c:if>
 
 <c:if test="${dateFormat.isSetNotNone and value.Date.isSet}">
-    <c:set var="dateStr"><mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat.toString}" /></c:set>
+    <c:set var="dateStr"><m:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat.toString}" /></c:set>
     <c:if test="${empty minHeight}"><c:set var="minHeight" value="min-height" /></c:if>
 </c:if>
 
@@ -86,20 +86,20 @@
 
 <c:set var="link"><cms:link baseUri="${baseUri}">${content.filename}</cms:link></c:set>
 
-<mercury:nl />
+<m:nl />
 <div class="type-article text-below-on-xs ${tileClass}${' '}${effect}"><%----%>
     <div class="content"><%----%>
 
-    <mercury:link link="${link}">
+    <m:link link="${link}">
         <cms:addparams>
             <cms:param name="cssgrid" value="${tileClass}" />
-            <mercury:image-animated
+            <m:image-animated
                 image="${image}"
                 ratio="${imgRatio}"
                 alt="${showImageCopyright ? 'nocopy' : null}"
                 title="${title}">
                 <c:set var="copyright" value="${imageCopyrightHtml}" />
-            </mercury:image-animated>
+            </m:image-animated>
         </cms:addparams>
 
         <div class="text-overlay"><%----%>
@@ -108,14 +108,14 @@
             <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
         <c:if test="${showImageCopyright}"><div class="copyright">${copyright}</div></c:if>
-    </mercury:link>
+    </m:link>
 
     </div><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>
 
 

@@ -21,13 +21,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <fmt:setLocale value="${cms.locale}" />
 
-<mercury:nl />
+<m:nl />
 <div class="effect-box ${css}"><%----%>
-    <mercury:padding-box
+    <m:padding-box
         cssWrapper="image-src-box rs_skip"
         attrWrapper="aria-hidden=\"true\""
         ratio="${ratio}"
@@ -39,7 +39,7 @@
             <span class="day-number"><fmt:formatDate value="${date}" pattern="d" type="date" /></span><%----%>
             <span class="month-year"><fmt:formatDate value="${date}" pattern="MMM yyyy" type="date" /></span><%----%>
         </div><%----%>
-    </mercury:padding-box>
+    </m:padding-box>
     <span class="sr-only"><fmt:message key="msg.page.sr.date" />${' '}<fmt:formatDate value="${date}" type="date" dateStyle="LONG" /></span><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />

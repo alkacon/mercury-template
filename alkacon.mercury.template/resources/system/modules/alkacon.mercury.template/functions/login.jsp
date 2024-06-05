@@ -10,9 +10,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="cssWrapper"             value="${setCssWrapperAll}" />
 <c:set var="loginproject"           value="${setting.loginproject.isSet ? setting.loginproject.toString : 'Online'}" />
@@ -21,7 +21,7 @@
 <c:set var="formCssWrapper"         value="${setting.formCssWrapper}" />
 
 <%-- Must close setting tag here because the loginBean uses inline code --%>
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 <c:if test="${not empty loginou and 'Online' ne loginproject}">
     <c:set var="loginproject" value="${loginou eq '/' ? '' : loginou}${loginproject}"/>
@@ -48,7 +48,7 @@
                     <c:set var="ignore" value="${loginBean.login(loginprincipal, loginpassword, loginproject, loginresource)}" />
                 </c:when>
                 <c:otherwise>
-                    <mercury:findorgunit uri="${loginuri}">
+                    <m:findorgunit uri="${loginuri}">
                         <c:set var="success" value="${false}" />
                         <c:forEach var="ou" items="${parentOUs}">
                             <c:if test="${not success}">
@@ -57,7 +57,7 @@
                                 <c:set var="success" value="${loginBean.loggedIn}" />
                             </c:if>
                         </c:forEach>
-                    </mercury:findorgunit>
+                    </m:findorgunit>
                 </c:otherwise>
             </c:choose>
         </c:when>
@@ -69,7 +69,7 @@
 
 <c:set var="loginError" value="${not loginBean.loginSuccess}" />
 
-<mercury:nl/>
+<m:nl/>
 <div class="element type-login-form pivot${cssWrapper}"><%----%>
 
     <form class="styled-form ${formCssWrapper}" target="_self" method="post"><%----%>
@@ -83,13 +83,13 @@
                 <fieldset><%----%>
                     <section><%----%>
                         <label class="input ${loginError ? 'state-error' : ''}"><%----%>
-                            <mercury:icon icon="user-o" tag="span" cssWrapper="icon-prepend" />
+                            <m:icon icon="user-o" tag="span" cssWrapper="icon-prepend" />
                             <input type="text" id="username" name="username" placeholder="<fmt:message key="msg.page.login.username" />"/><%----%>
                         </label><%----%>
                     </section><%----%>
                     <section><%----%>
                         <label class="input ${loginError ? 'state-error' : ''}"><%----%>
-                            <mercury:icon icon="lock" tag="span" cssWrapper="icon-prepend" />
+                            <m:icon icon="lock" tag="span" cssWrapper="icon-prepend" />
                             <input type="password" id="password" name="password" placeholder="<fmt:message key="msg.page.login.password" />"/><%----%>
                         </label><%----%>
                         <c:if test="${loginError}">
@@ -110,7 +110,7 @@
                     <section><%----%>
                         <label for="username" class="label"><fmt:message key="msg.page.login.loggedin" />:</label><%----%>
                         <div class="input"><%----%>
-                            <mercury:icon icon="user-o" tag="span" cssWrapper="icon-prepend" />
+                            <m:icon icon="user-o" tag="span" cssWrapper="icon-prepend" />
                             <input type="text" id="username" name="username" value="${cms.requestContext.currentUser.fullName}"/><%----%>
                         </div><%----%>
                     </section><%----%>
@@ -123,7 +123,7 @@
         </c:choose>
     </form><%----%>
 </div><%----%>
-<mercury:nl/>
+<m:nl/>
 
 </cms:bundle>
 

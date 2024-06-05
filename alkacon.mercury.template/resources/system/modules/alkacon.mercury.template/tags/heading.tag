@@ -53,7 +53,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:if test="${(level > 0) and (level <= 7) and (empty test or test)}">
@@ -72,7 +72,7 @@
             <c:set var="addAnchorlink"  value="${cms.sitemapConfig.attribute['template.section.add.heading.anchorlink'].toBoolean}" />
             <c:choose>
                 <c:when test="${addId or addAnchorlink}">
-                    <c:set var="id"><mercury:translate-name name="${fn:trim(text)}" />-${fn:substringBefore(cms.element.instanceId, '-')}</c:set>
+                    <c:set var="id"><m:translate-name name="${fn:trim(text)}" />-${fn:substringBefore(cms.element.instanceId, '-')}</c:set>
                     <c:if test="${addAnchorlink and empty suffix}">
                         <c:set var="suffix"><a class="anchor-link" href="#${id}"></a></c:set>
                         <c:set var="css" value="piece-heading anchor-link-parent ${css}" />
@@ -108,7 +108,7 @@
                 <c:when test="${not empty text}">
                     <c:set var="useAde" value="${ade and cms:isWrapper(text)}" />
                     <c:if test="${useAde}"><span${' '}${text.rdfaAttr}></c:if>
-                    <mercury:out value="${text}" escapeXml="${escapeXml}" />
+                    <m:out value="${text}" escapeXml="${escapeXml}" />
                     <c:if test="${useAde}"></span></c:if>
                 </c:when>
             </c:choose>
@@ -122,7 +122,7 @@
                  ${'</h'}${level}${'>'}
             </c:otherwise>
         </c:choose>
-        <mercury:nl />
+        <m:nl />
     </c:if>
 
 </c:if>

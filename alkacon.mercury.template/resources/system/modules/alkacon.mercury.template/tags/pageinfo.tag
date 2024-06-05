@@ -14,7 +14,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- Google Maps API key --%>
@@ -69,14 +69,14 @@
 <%-- Icon configuration --%>
 <c:if test="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}">
     <c:set var="iconConfig"><cms:link>/system/modules/alkacon.mercury.theme/icons/fa/at.svg</cms:link></c:set>
-    <c:set var="iconConfigBase64"><mercury:obfuscate text="${iconConfig}" type="base64"/></c:set>
+    <c:set var="iconConfigBase64"><m:obfuscate text="${iconConfig}" type="base64"/></c:set>
     <c:if test="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'awesome')}">
-        <c:set var="fullIcons"><mercury:link-resource resource='/system/modules/alkacon.mercury.theme/css/awesome-full.min.css'/></c:set>
-        <c:set var="fullIconsBase64"><mercury:obfuscate text="${fullIcons}" type="base64"/></c:set>
+        <c:set var="fullIcons"><m:link-resource resource='/system/modules/alkacon.mercury.theme/css/awesome-full.min.css'/></c:set>
+        <c:set var="fullIconsBase64"><m:obfuscate text="${fullIcons}" type="base64"/></c:set>
     </c:if>
 </c:if>
 
-<mercury:nl/>
+<m:nl/>
 <div id="template-info" data-info='{<%--
     --%><c:if test="${not empty googleApiKey}">"googleApiKey":"${googleApiKey}",</c:if><%--
     --%><c:if test="${not empty googleAnalyticsId}">"googleAnalyticsId":"${googleAnalyticsId}",</c:if><%--
@@ -94,12 +94,12 @@
 --%>${empty matomoData ? '' : ' '.concat(matomoData)}<%--
 --%>${empty piwikData ? '' : ' '.concat(piwikData)}<%--
 --%>><%----%>
-<mercury:nl/>
+<m:nl/>
 
 <div id="template-grid-info"></div><%----%>
 
 </div><%----%>
-<mercury:nl/>
+<m:nl/>
 
 <div id="topcontrol" tabindex="0"></div>
 

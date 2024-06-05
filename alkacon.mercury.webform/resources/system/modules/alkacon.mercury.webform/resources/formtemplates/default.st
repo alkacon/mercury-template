@@ -216,7 +216,7 @@ $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=man
 <div class="input$if(errormessage)$ state-error$endif$">
 $!  !$$if(field.parameters)$
 $!      !$$if(field.parameters.icon)$
-$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! mercury:icon !$
+$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
 $!  !$<input type="password" name="$field.name$" id="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
@@ -309,7 +309,7 @@ $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=man
 <div class="input$if(errormessage)$ state-error$endif$">
 $!  !$$if(field.parameters)$
 $!      !$$if(field.parameters.icon)$
-$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! mercury:icon !$
+$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
 $!  !$<input type="text" id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
@@ -328,7 +328,7 @@ $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=man
 <div class="input$if(errormessage)$ state-error$endif$">
 $!  !$$if(field.parameters)$
 $!      !$$if(field.parameters.icon)$
-$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! mercury:icon !$
+$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
 $!  !$<input type="text" class="datepicker" data-datepicker="{}" id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
@@ -347,7 +347,7 @@ $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=man
 <div class="input$if(errormessage)$ state-error$endif$">
 $!  !$$if(field.parameters)$
 $!      !$$if(field.parameters.icon)$
-$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! mercury:icon !$
+$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
 $!  !$<input type="text" class="datepicker" data-datepicker='{"noCalendar":true,"enableTime":true}' id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
@@ -366,7 +366,7 @@ $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=man
 <div class="input$if(errormessage)$ state-error$endif$">
 $!  !$$if(field.parameters)$
 $!      !$$if(field.parameters.icon)$
-$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! mercury:icon !$
+$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
 $!  !$<input type="text" class="datepicker" data-datepicker='{"enableTime":true,"dateFormat":"Y-m-d H:i"}' id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
@@ -385,7 +385,7 @@ $row_start(field=field)$
 <div class="textarea$if(errormessage)$ state-error$endif$">
 $!  !$$if(field.parameters)$
 $!      !$$if(field.parameters.icon)$
-$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! mercury:icon !$
+$!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
 $!  !$<textarea cols="50" rows="$if(field.parameters.rows)$$field.parameters.rows$$else$5$endif$" id="$field.name$" name="$field.name$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$ $attributes$>$field.valueEscaped$</textarea>

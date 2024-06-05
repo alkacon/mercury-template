@@ -8,15 +8,15 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:init-messages>
+<m:init-messages>
 <cms:secureparams replaceInvalid="bad_param" />
 
 <cms:formatter var="content">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <div class="element type-webform${setCssWrapperAll} pivot">
 
@@ -26,14 +26,14 @@
     <c:choose>
     <%-- ###### Manage form entries ###### --%>
     <c:when test="${(not empty param.formmanage) and (param.formmanage eq fid)}">
-        <mercury:webform-booking-manage
+        <m:webform-booking-manage
             webform="${content}"
             bookingInfo="${cms.element.setting.bookingInfo}"
         />
     </c:when>
     <c:otherwise>
         <%-- ###### Display form for submission ###### --%>
-        <mercury:webform
+        <m:webform
             webform="${content}"
             bookingInfo="${cms.element.setting.bookingInfo}"
             formCssWrapper="${cms.element.setting.formCssWrapper}"
@@ -44,8 +44,8 @@
 
 </div>
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>
 

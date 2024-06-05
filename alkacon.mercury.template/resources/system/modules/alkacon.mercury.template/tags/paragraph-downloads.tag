@@ -15,27 +15,27 @@
     description="The heading level of the title displayed above the download list." %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="icon" value="${empty icon ? 'cloud-download' : icon}" />
 
 <c:if test="${not empty paragraphs}">
-    <mercury:nl/>
+    <m:nl/>
     <div class="paragraph-linksequence subelement pivot type-linksequence ls-bullets custom-icon"><%----%>
 
-        <mercury:heading text="${paragraphs['0'].value.Caption}" level="${empty hsize ? 3 : hsize}" />
+        <m:heading text="${paragraphs['0'].value.Caption}" level="${empty hsize ? 3 : hsize}" />
 
         <ul><%----%>
         <c:forEach var="paragraph" items="${paragraphs}" varStatus="status">
             <c:set var="link" value="${paragraph.value.Link}" />
-            <mercury:nl />
-            <li class="fa-${icon}"><%-- mercury:icon --%>
-                <mercury:link link="${link}" newWin="true" css="sequence-link" />
+            <m:nl />
+            <li class="fa-${icon}"><%-- m:icon --%>
+                <m:link link="${link}" newWin="true" css="sequence-link" />
             </li><%----%>
         </c:forEach>
-        <mercury:nl />
+        <m:nl />
         </ul><%----%>
 
     </div><%----%>
-    <mercury:nl/>
+    <m:nl/>
 </c:if>

@@ -32,7 +32,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="value"                  value="${content.value}" />
@@ -63,7 +63,7 @@
 <c:if test="${(showOrg and (value.LinkToOrganization.isSet or not empty orgContent)) or (showAddress and showOrgLink and not value.Contact.value.AddressChoice.isSet)}">
     <c:set var="orgContent"         value="${empty orgContent ? cms.vfs.readXml[value.LinkToOrganization] : orgContent}" />
     <c:if test="${showOrg}">
-        <mercury:data-organization content="${orgContent}" storeOrgJsonLdObject="${true}" showAddress="${false}" showPerson="${false}" />
+        <m:data-organization content="${orgContent}" storeOrgJsonLdObject="${true}" showAddress="${false}" showPerson="${false}" />
     </c:if>
     <c:if test="${not value.Contact.value.AddressChoice.isSet}">
         <c:set var="valAddress"     value="${orgContent.value.Contact.value.AddressChoice}" />
@@ -95,9 +95,9 @@
     <cms:jsonvalue key="image"              value="${strImageUrl}" />
 
     <c:if test="${showAddress}">
-        <mercury:location-vars data="${valAddress}" addMapInfo="${true}" createJsonLd="${true}" >
+        <m:location-vars data="${valAddress}" addMapInfo="${true}" createJsonLd="${true}" >
             <cms:jsonvalue key="address" value="${adrJsonLd}" />
-        </mercury:location-vars>
+        </m:location-vars>
     </c:if>
 
     <c:if test="${showOrg}">

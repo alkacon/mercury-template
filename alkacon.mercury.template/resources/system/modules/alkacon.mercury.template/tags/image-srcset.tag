@@ -67,7 +67,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%--
@@ -95,7 +95,7 @@ SVG placeholder image, background image and image sizing
     https://github.com/aFarkas/lazysizes#tip-specifying-image-dimensions-minimizing-reflows-and-avoiding-page-jumps
 --%>
 
-<mercury:list-element-status>
+<m:list-element-status>
 
 <c:set var="ib" value="${imagebean}" />
 
@@ -110,7 +110,7 @@ SVG placeholder image, background image and image sizing
 <%-- Enable / disable output for debug purposes if required by setting DEBUG="${true}" --%>
 <c:set var="DEBUG" value="${false}" />
 
-<mercury:print comment="${true}" test="${DEBUG}">
+<m:print comment="${true}" test="${DEBUG}">
 image-srcset parameters:
 
 isSvg: ${isSvg}
@@ -120,11 +120,11 @@ useJsLazyLoading: ${useJsLazyLoading}
 aboveTheFold: ${aboveTheFold}
 useSrcSet: ${useSrcSet}
 useNoScript: ${useNoScript}
-</mercury:print>
+</m:print>
 
 <c:if test="${not isSvg}">
 
-    <mercury:image-sizes debug="${DEBUG}" lazyLoad="${useLazyLoading}" initBootstrapBean="${not customSizes}">
+    <m:image-sizes debug="${DEBUG}" lazyLoad="${useLazyLoading}" initBootstrapBean="${not customSizes}">
 
         <c:set var="useJsLazyLoading" value="${useJsLazyLoading and (lazyLoadAutoSizes or bsLazyLoadJs)}" />
         <c:set var="sizeXsMax" value="${bb.getGridSize(0) - bb.gutter}" />
@@ -136,7 +136,7 @@ useNoScript: ${useNoScript}
         <c:choose>
             <c:when test="${not customSizes}">
 
-                <mercury:print comment="${true}" test="${DEBUG}">
+                <m:print comment="${true}" test="${DEBUG}">
                     image-srcset srcSet base image settings:
 
                     bbFullWidth: ${bbFullWidth eq true}
@@ -147,7 +147,7 @@ useNoScript: ${useNoScript}
                     ib.scaler.pixelCount: ${ib.scaler.pixelCount}
                     useJsLazyLoading: ${useJsLazyLoading}
                     useSrcSet and bbInitialized: ${useSrcSet and bbInitialized}
-                </mercury:print>
+                </m:print>
 
                 <c:if test="${ib.scaler.width > maxScaleWidth}">
                     <c:set var="ib" value="${ib.scaleWidth[maxScaleWidth]}" />
@@ -201,13 +201,13 @@ useNoScript: ${useNoScript}
                     <c:if test="${bbFullWidth}">
                         <%-- Add size variations to avoid offering only one very large image for full screen backgrounds --%>
                         <c:set var="scaleGapStep" value="${Math.round((ib.scaler.width - largestWidth) / 4)}" />
-                        <mercury:print comment="${true}" test="${DEBUG}">
+                        <m:print comment="${true}" test="${DEBUG}">
                             image-srcset optimizing for full width:
 
                             ib.scaler.width: ${ib.scaler.width}
                             largest width: ${largestWidth}
                             scaleGapStep: ${scaleGapStep}
-                        </mercury:print>
+                        </m:print>
                         <c:if test="${scaleGapStep > 100}">
                             <c:set target="${ib}" property="srcSets" value="${ib.scaleWidth[largestWidth + scaleGapStep]}" />
                             <c:if test="${maxScaleWidth > 2 * (largestWidth + scaleGapStep)}">
@@ -244,21 +244,21 @@ useNoScript: ${useNoScript}
 
                 <c:set var="maxImageWidth" value="${0}" />
                 <c:set var="sizeList" value="${fn:split(sizes, ',')}" />
-                <mercury:print comment="${true}" test="${DEBUG}">
+                <m:print comment="${true}" test="${DEBUG}">
                     custom sizes: [${sizes}]
                     ib.width: ${ib.width}
                     ib.height: ${ib.height}
-                </mercury:print>
+                </m:print>
                 <c:forEach var="sizeStr" items="${sizeList}">
                     <c:set var="sizeInt" value="${cms.wrap[sizeStr].toInteger}" />
                     <c:set var="sizeTwice" value="${(sizeInt * 2) > ib.width ?  ib.width : sizeInt * 2}" />
                     <c:set var="sizeOnce" value="${sizeInt > ib.width ?  ib.width : sizeInt}" />
                     <c:set var="scaleTwice" value="${ib.scaleWidth[sizeTwice]}" />
                     <c:set var="scaleOnce" value="${ib.scaleWidth[sizeOnce]}" />
-                    <mercury:print comment="${true}" test="${DEBUG}">
+                    <m:print comment="${true}" test="${DEBUG}">
                         adding sizeOnce: ${sizeOnce}
                         adding sizeTwice: ${sizeTwice}
-                    </mercury:print>
+                    </m:print>
                     <c:set target="${ib}" property="srcSets" value="${scaleTwice}" />
                     <c:set target="${ib}" property="srcSets" value="${scaleOnce}" />
                     <c:if test="${sizeOnce > maxImageWidth}">
@@ -266,9 +266,9 @@ useNoScript: ${useNoScript}
                         <c:set var="maxImage" value="${ib.scaleWidth[maxImageWidth]}" />
                     </c:if>
                 </c:forEach>
-                <mercury:print comment="${true}" test="${DEBUG}">
+                <m:print comment="${true}" test="${DEBUG}">
                     using maxImageWidth: ${maxImageWidth}
-                </mercury:print>
+                </m:print>
             </c:otherwise>
         </c:choose>
 
@@ -303,7 +303,7 @@ useNoScript: ${useNoScript}
             </c:choose>
         </c:if>
 
-    </mercury:image-sizes>
+    </m:image-sizes>
 
 </c:if>
 
@@ -321,13 +321,13 @@ useNoScript: ${useNoScript}
         </c:choose>
         <c:set var="srcurl"><cms:link>${ib.vfsUri}</cms:link></c:set>
         <c:set var="attrImage">role="img"<c:if test="${not empty attrImage}">${' '}${attrImage}</c:if></c:set>
-        <mercury:print comment="${true}" test="${DEBUG}">
+        <m:print comment="${true}" test="${DEBUG}">
             image-srcset SVG handling:
 
             ib.vfsUri: ${ib.vfsUri}
             inlineSvg: ${inlineSvg}
             inlineSvgProp: [${inlineSvgProp}]
-        </mercury:print>
+        </m:print>
     </c:when>
     <c:when test="${not empty srcset}">
         <c:set var="srcurl" value="${not empty maxImage ? maxImage.srcUrl : ib.getSrcSetMaxImage().srcUrl}" />
@@ -341,7 +341,7 @@ useNoScript: ${useNoScript}
 <c:choose>
     <c:when test="${inlineSvg}">
         <c:set var="cssImage" value="${empty cssImage ? inlineSvgProp : cssImage.concat(' ').concat(inlineSvgProp)}" />
-        <mercury:image-svg-inline
+        <m:image-svg-inline
             imagebean="${ib}"
             width="${ib.scaler.width}"
             height="${ib.scaler.height}"
@@ -357,7 +357,7 @@ useNoScript: ${useNoScript}
         />
     </c:when>
     <c:otherwise>
-        <mercury:image-lazyload
+        <m:image-lazyload
             srcUrl="${srcurl}"
             srcSet="${srcset}"
             srcSetSizes="${srcSetSizes}"
@@ -381,4 +381,4 @@ useNoScript: ${useNoScript}
     </c:otherwise>
 </c:choose>
 
-</mercury:list-element-status>
+</m:list-element-status>

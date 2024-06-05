@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -23,24 +23,24 @@
     <c:set var="disqusSite"><cms:property name="disqus.site" file="search" default=""/></c:set>
 </c:if>
 
-<mercury:nl/>
+<m:nl/>
 <div class="element type-comments comments-disqus pivot ${cssWrapper}"><%----%>
 
 <c:choose>
     <c:when test="${cms.edited}">
         <div>${cms.enableReload}</div><%----%>
-        <mercury:alert type="error" css="box-noheight">
+        <m:alert type="error" css="box-noheight">
             <jsp:attribute name="head">
                 <fmt:message key="msg.page.comments.edited" />
             </jsp:attribute>
-        </mercury:alert>
+        </m:alert>
     </c:when>
     <c:when test="${empty disqusSite and cms.isEditMode}">
-        <mercury:alert type="warning" css="box-noheight">
+        <m:alert type="warning" css="box-noheight">
             <jsp:attribute name="head">
                 <fmt:message key="msg.page.disqus.notset" />
             </jsp:attribute>
-        </mercury:alert>
+        </m:alert>
     </c:when>
     <c:when test="${empty disqusSite}">
         <!-- <fmt:message key="msg.page.disqus.notset" /> --><%----%>
@@ -80,18 +80,18 @@
         <div id="disqus_thread" <%--
         --%><c:if test="${clickToLoad}">style="display: none;" </c:if><%--
             --%>data-comments='${commentsData.compact}'<%--
-            --%><mercury:data-external-cookies message="${cookieMessage}" /><%--
+            --%><m:data-external-cookies message="${cookieMessage}" /><%--
         --%>></div><%----%>
 
-            <mercury:alert-online showJsWarning="${true}" >
+            <m:alert-online showJsWarning="${true}" >
                 <jsp:attribute name="text">
                     <fmt:message key="msg.page.noscript.comments" />
                 </jsp:attribute>
-            </mercury:alert-online>
+            </m:alert-online>
     </c:otherwise>
 </c:choose>
 
 </div><%----%>
-<mercury:nl/>
+<m:nl/>
 
 </cms:bundle>

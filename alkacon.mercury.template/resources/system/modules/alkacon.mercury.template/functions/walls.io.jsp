@@ -10,7 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.locale}" />
@@ -79,22 +79,22 @@
     --%>mercury.ready(init${htmlId});<%--
     --%></script><%----%>
 
-        <mercury:alert-online showJsWarning="${true}" >
+        <m:alert-online showJsWarning="${true}" >
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.noscript.wallsio" />
             </jsp:attribute>
-        </mercury:alert-online>
+        </m:alert-online>
 
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 
 </c:when>
 <c:when test="${cms.isEditMode}">
-    <mercury:alert type="error">
+    <m:alert type="error">
         <jsp:attribute name="head">
             <fmt:message key="msg.page.wallsio.noURL" />
         </jsp:attribute>
-    </mercury:alert>
+    </m:alert>
 </c:when>
 </c:choose>
 

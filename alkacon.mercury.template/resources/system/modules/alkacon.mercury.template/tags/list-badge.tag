@@ -29,7 +29,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:if test="${empty test or test}">
 
@@ -44,7 +44,7 @@
                 --%><fmt:message key="msg.page.dateseries.series"><fmt:param>${seriesInfo.title}</fmt:param></fmt:message><%--
                 --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
                 --%>"><%----%>
-                    <mercury:icon icon="refresh" tag="span" />
+                    <m:icon icon="refresh" tag="span" />
                     ${empty markup ? '' : ' '.concat(markup)}
                 </span><%----%>
             </c:set>
@@ -56,7 +56,7 @@
                 --%><fmt:message key="msg.page.dateseries.extracted"><fmt:param>${seriesInfo.parentSeries.title}</fmt:param></fmt:message><%--
                 --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
                 --%>"><%----%>
-                    <mercury:icon icon="scissors" tag="span" />
+                    <m:icon icon="scissors" tag="span" />
                     ${empty markup ? '' : ' '.concat(markup)}
                 </span><%----%>
             </c:set>
@@ -68,7 +68,7 @@
                 --%><fmt:message key="type.m-decoy.name" /><%--
                 --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
                 --%>"><%----%>
-                     <mercury:icon icon="external-link-square" tag="span" />
+                     <m:icon icon="external-link-square" tag="span" />
                      ${empty markup ? '' : ' '.concat(markup)}
                 </span><%----%>
             </c:set>

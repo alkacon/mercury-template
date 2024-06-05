@@ -26,12 +26,12 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:if test="${bookingContent.value.Booking.value.Webform.isSet}">
 
-    <mercury:webform-vars
+    <m:webform-vars
         webform="${bookingContent.value.Booking.value.Webform.toString}"
         bookingInfo="${bookingContent}"
         dateFormat="${dateFormat}">
@@ -128,7 +128,7 @@
             </c:otherwise>
         </c:choose>
 
-        <mercury:div css="book-info" test="${not noDivWrapper}">
+        <m:div css="book-info" test="${not noDivWrapper}">
             <c:if test="${not empty bookMsg}">
                 <span class="book-msg">${bookMsg}</span><%----%>
             </c:if>
@@ -140,13 +140,13 @@
                     </fmt:message>
                 </span><%----%>
             </c:if>
-        </mercury:div>
-        <mercury:nl />
+        </m:div>
+        <m:nl />
 
     </c:when>
     <c:otherwise>
 
-         <mercury:div css="book-info" test="${not noDivWrapper}">
+         <m:div css="book-info" test="${not noDivWrapper}">
             <c:choose>
                 <c:when test="${style eq 'date' and formBookingHasFinalRegistrationDate}">
                     <c:choose>
@@ -173,14 +173,14 @@
                 <fmt:message key="msg.page.form.bookingstatus.places.unlimited" />
             </span><%----%>
             </c:if>
-        </mercury:div>
-        <mercury:nl />
+        </m:div>
+        <m:nl />
 
     </c:otherwise>
     </c:choose>
 
 
     </cms:bundle>
-    </mercury:webform-vars>
+    </m:webform-vars>
 
 </c:if>

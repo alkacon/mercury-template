@@ -22,7 +22,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%--
 There are 3 use cases:
@@ -59,7 +59,7 @@ Case 3: Mega menu display request
                     editableby="ROLE.DEVELOPER">
                     <cms:param name="cssgrid" value="#" />
                     <c:set var="message"><fmt:message key="msg.page.layout.megaMenu.container" /></c:set>
-                    <mercury:container-box
+                    <m:container-box
                         label="${message}"
                         boxType="container-box"
                         type="row"
@@ -74,14 +74,14 @@ Case 3: Mega menu display request
                     <div id="mega-menu-editor">
                         <div class="container">
                             <c:if test="${cms.isEditMode}">
-                                <mercury:alert type="editor">
+                                <m:alert type="editor">
                                     <jsp:attribute name="head">
                                         <fmt:message key="msg.page.layout.megaMenu.editor" />
                                     </jsp:attribute>
                                     <jsp:attribute name="text">
                                         ${cms.requestContext.folderUri}
                                     </jsp:attribute>
-                                </mercury:alert>
+                                </m:alert>
                             </c:if>
                             <div class="nav-main-container">
                                 <div class="nav-main-group">

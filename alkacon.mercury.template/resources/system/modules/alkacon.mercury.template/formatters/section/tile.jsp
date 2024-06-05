@@ -8,13 +8,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:init-messages>
+<m:init-messages>
 <cms:formatter var="content" val="value">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="hsize"              value="${setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio}" />
@@ -53,7 +53,7 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:tile-col
+<m:tile-col
     heading="${value.Title}"
     image="${value.Image}"
     text="${value.Text}"
@@ -71,7 +71,7 @@
     ade="${cms.isEditMode}"
 />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

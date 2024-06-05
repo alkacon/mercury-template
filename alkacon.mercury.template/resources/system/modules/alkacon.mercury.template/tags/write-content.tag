@@ -24,7 +24,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%
     try {
@@ -62,13 +62,13 @@
                 <fmt:param>${writeException}</fmt:param>
             </fmt:message>
         </c:set>
-        <mercury:alert type="error">
+        <m:alert type="error">
             <jsp:attribute name="head">
                 <fmt:message key="msg.error.filewrite.head" />
             </jsp:attribute>
             <jsp:attribute name="text">
                 <c:out value="${errorMsg}" escapeXml="false" />
             </jsp:attribute>
-        </mercury:alert>
+        </m:alert>
     </cms:bundle>
 </c:if>

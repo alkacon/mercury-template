@@ -8,15 +8,15 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 
@@ -112,10 +112,10 @@
 </c:choose>
 
 <div class="element type-slider${justOneSlide ? ' just-one-slide' : ' use-embla-slider'}${isHeroSlider ? ' hero-slider ' : ' logo-slider '}pivot pivot-full${setCssWrapper123}${' '}${textDisplay}" <%--
---%>id="<mercury:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
---%>><mercury:nl />
+--%>id="<m:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
+--%>><m:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
+    <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
     <c:choose>
         <c:when test="${value.Position.exists}">
@@ -131,13 +131,13 @@
 
     <c:set var="customVars" value="" />
     <c:if test="${value.TextBackgroundColor.isSet}">
-        <c:set var="rgbVal"><mercury:parse-color value="${value.TextBackgroundColor}" /></c:set>
+        <c:set var="rgbVal"><m:parse-color value="${value.TextBackgroundColor}" /></c:set>
         <c:if test="${not rgbVal}">
             <c:set var="customVars">--my-slider-bg:${rgbVal};</c:set>
         </c:if>
     </c:if>
     <c:if test="${value.TextColor.isSet}">
-        <c:set var="rgbVal"><mercury:parse-color value="${value.TextColor}" /></c:set>
+        <c:set var="rgbVal"><m:parse-color value="${value.TextColor}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <%-- text color must nor be RGB, we use this as check for valid values --%>
             <c:set var="customVars">${customVars}--my-slider-fg:${value.TextColor};</c:set>
@@ -145,14 +145,14 @@
     </c:if>
     <c:if test="${not empty bgColorHead}">
         <c:set var="customClass" value=" custom" />
-        <c:set var="rgbVal"><mercury:parse-color value="${bgColorHead}" /></c:set>
+        <c:set var="rgbVal"><m:parse-color value="${bgColorHead}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <c:set var="customVars">${customVars}--my-slider-caption-top:${rgbVal};</c:set>
         </c:if>
     </c:if>
     <c:if test="${not empty bgColorSub}">
         <c:set var="customClass" value=" custom" />
-        <c:set var="rgbVal"><mercury:parse-color value="${bgColorSub}" /></c:set>
+        <c:set var="rgbVal"><m:parse-color value="${bgColorSub}" /></c:set>
         <c:if test="${not empty rgbVal}">
             <c:set var="customVars">${customVars}--my-slider-caption-sub:${rgbVal};</c:set>
         </c:if>
@@ -177,8 +177,8 @@
     --%></c:set>
     </c:if>
 
-    <div class="slider-box${customClass}${marginClass}${transitionSpeedClass}"${customVars}${sliderData}><mercury:nl/>
-    <div class="slide-definitions${logoRows}"><mercury:nl/>
+    <div class="slider-box${customClass}${marginClass}${transitionSpeedClass}"${customVars}${sliderData}><m:nl/>
+    <div class="slide-definitions${logoRows}"><m:nl/>
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">
 
@@ -209,7 +209,7 @@
 
         <c:set var="slideLink" value="" />
         <c:if test="${image.value.Link.isSet}">
-            <c:set var="slideLink"><mercury:link-opencms targetLink="${image.value.Link.toLink}" /></c:set>
+            <c:set var="slideLink"><m:link-opencms targetLink="${image.value.Link.toLink}" /></c:set>
         </c:if>
 
         <c:set var="dateRelease" value="${image.value.Availability.value.Release.isSet ? image.value.Availability.value.Release.toString : null}" />
@@ -222,11 +222,11 @@
              </c:set>
         </c:if>
 
-        <mercury:nl />
+        <m:nl />
 
         <div class="slide-wrapper${isHeroSlider ? '' : ' col'}${isHiddenSlide ? ' hide-noscript rs_skip' : ' slide-active'}${' '}${animationTrigger}"${not empty validRange ? ' '.concat(validRange) : '' }><%----%>
             <div class="slide-container"><%----%>
-                <div class="visual${animationTarget}"><mercury:nl/>
+                <div class="visual${animationTarget}"><m:nl/>
 
                     ${not empty slideLink ?
                         '<a href="'
@@ -240,22 +240,22 @@
                             <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl hidden-xxl' : cssgridCols}</cms:param>
                             <cms:param name="cssgutter">${not empty cssgutter ? cssgutter : '#'}</cms:param>
                             <div class="slide-xs ${adoptRatioToScreen ? 'visible-xs' : ''}"><%----%>
-                                <mercury:image-simple
+                                <m:image-simple
                                     image="${image}"
                                     lazyLoad="${lazyLoad}"
                                     ratio="${imageRatioXS}"
                                     externalCopyright="${showImageCopyright}"
                                     title="${image.value.SuperTitle.toString()}">
                                         <c:set var="copyright" value="${imageCopyrightHtml}" />
-                                </mercury:image-simple>
-                            </div><mercury:nl/>
+                                </m:image-simple>
+                            </div><m:nl/>
                         </cms:addparams>
 
                         <c:if test="${adoptRatioToScreen}">
 
-                            <mercury:image-vars image="${image}" ratio="${imageRatioXL}">
+                            <m:image-vars image="${image}" ratio="${imageRatioXL}">
                                 <c:set var="ibLg" value="${imageBean}" />
-                            </mercury:image-vars>
+                            </m:image-vars>
 
                             <c:set var="ibXs" value="${ibLg.scaleRatio[imageRatioXS]}" />
                             <c:set var="w" value="${ibLg.scaler.width}" />
@@ -269,49 +269,49 @@
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-lg hidden-md hidden-xs</cms:param>
                                 <div class="slide-sm visible-sm"><%----%>
-                                    <mercury:image-simple
+                                    <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioSM}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
-                                </div><mercury:nl/>
+                                </div><m:nl/>
                             </cms:addparams>
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-lg hidden-sm hidden-xs</cms:param>
                                 <div class="slide-md visible-md"><%----%>
-                                    <mercury:image-simple
+                                    <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioMD}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
-                                </div><mercury:nl/>
+                                </div><m:nl/>
                             </cms:addparams>
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-xs hidden-sm hidden-md</cms:param>
                                 <div class="slide-lg visible-lg"><%----%>
-                                    <mercury:image-simple
+                                    <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioLG}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
-                                </div><mercury:nl/>
+                                </div><m:nl/>
                             </cms:addparams>
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-lg hidden-xs hidden-sm hidden-md</cms:param>
                                 <div class="slide-xl visible-xl"><%----%>
-                                    <mercury:image-simple
+                                    <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
                                         ratio="${imageRatioXL}"
                                         externalCopyright="${showImageCopyright}"
                                         title="${image.value.SuperTitle.toString()}" />
-                                </div><mercury:nl/>
+                                </div><m:nl/>
                             </cms:addparams>
 
                         </c:if>
@@ -319,9 +319,9 @@
                     ${not empty slideLink ? '</a>':'</span>'}
 
                     <c:if test="${showImageCopyright and (not empty copyright)}">
-                        <div class="copyright rs_skip" aria-hidden="true">${copyright}</div><mercury:nl/>
+                        <div class="copyright rs_skip" aria-hidden="true">${copyright}</div><m:nl/>
                     </c:if>
-                </div><mercury:nl/>
+                </div><m:nl/>
 
                 <c:if test="${not (sliderType eq 'logo')
                     and (image.value.SuperTitle.isSet || image.value.TitleLine1.isSet || image.value.TitleLine2.isSet)}">
@@ -336,16 +336,16 @@
 
                     <div class="caption ${posTop}${' '}${posLeft}"><%----%>
                         <c:if test="${image.value.SuperTitle.isSet}">
-                            <strong ${textStyle}><mercury:out value="${image.value.SuperTitle}" lenientEscaping="${true}" /></strong><%----%>
+                            <strong ${textStyle}><m:out value="${image.value.SuperTitle}" lenientEscaping="${true}" /></strong><%----%>
                         </c:if>
                         <c:if test="${image.value.TitleLine1.isSet or image.value.TitleLine2.isSet}">
                             <div class="subcaption"><%----%>
                                 <c:if test="${image.value.TitleLine1.isSet}">
-                                    <small ${textStyle}><mercury:out value="${image.value.TitleLine1}" lenientEscaping="${true}" /></small><%----%>
+                                    <small ${textStyle}><m:out value="${image.value.TitleLine1}" lenientEscaping="${true}" /></small><%----%>
                                 </c:if>
                                 <c:if test="${image.value.TitleLine2.isSet}">
                                     <%-- br needed here for "custom" CSS setting when subcaption has different color --%>
-                                    <br><small ${textStyle}><mercury:out value="${image.value.TitleLine2}" lenientEscaping="${true}" /></small><%----%>
+                                    <br><small ${textStyle}><m:out value="${image.value.TitleLine2}" lenientEscaping="${true}" /></small><%----%>
                                 </c:if>
                             </div><%----%>
                         </c:if>
@@ -353,11 +353,11 @@
 
                     ${not empty slideLink ? '</a>':'</span>'}
 
-                    <mercury:nl />
+                    <m:nl />
                 </c:if>
             </div><%----%>
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
 
         <c:set var="isHiddenSlide" value="${isHeroSlider}" />
     </c:forEach>
@@ -383,11 +383,11 @@
     </div><%----%>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

@@ -8,22 +8,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 <cms:formatter var="content" val="value">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="cssWrapper"             value="${setCssWrapperAll}${' '}${setting.theme}${' '}${setting.orientation}${' '}${setting.verbose}${' '}${setting.shape}" />
 
-<mercury:nl />
+<m:nl />
 <div class="element type-shariff pivot social-icons${fn:replace(cssWrapper, 'default', '')}"><%----%>
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
+    <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
     <c:set var="services">[&quot;${fn:replace(value.Services, ',', '&quot;,&quot;')}&quot;]</c:set>
     <c:set var="mailAttrs" value="" />
@@ -54,10 +54,10 @@
     <div class="shariff" data-services="${services}" data-lang="${lang}" ${mailAttrs}></div><%----%>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

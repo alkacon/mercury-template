@@ -9,20 +9,20 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
+<m:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="keyPieceSizeDesktop"    value="${setting.keyPieceSizeDesktop.useDefault('99').toInteger}" />
@@ -47,13 +47,13 @@
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
 <c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
 
-<mercury:paragraph-split
+<m:paragraph-split
     paragraphs="${content.valueList.Paragraph}"
     splitFirst="${false}"
     splitDownloads="${showCombinedDownloads}">
 
 <c:set var="date">
-    <mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
+    <m:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
 </c:set>
 <c:set var="intro"                  value="${value.Intro}" />
 <c:set var="title"                  value="${value.Title}" />
@@ -109,14 +109,14 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:nl />
+<m:nl />
 <div class="detail-page type-article layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
-<mercury:nl />
+<m:nl />
 
 <%-- Optional debug output generated from "detail-setting-defaults" plugin --%>
 ${settingDefaultsDebug}
 
-<mercury:piece
+<m:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
     allowEmptyBodyColumn="${not empty image}"
@@ -126,14 +126,14 @@ ${settingDefaultsDebug}
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
             <c:if test="${keyPieceInfoPos eq 'ah'}">${keyPieceInfoMarkup}</c:if>
-            <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'ih'}" />
+            <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
+            <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'ih'}" />
             <c:if test="${keyPieceInfoPos eq 'bh'}">${keyPieceInfoMarkup}</c:if>
         </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="visual">
-        <mercury:key-visual-piece
+        <m:key-visual-piece
             image="${image}"
             showOverlay="${showOverlay}"
             effect="${setEffect}"
@@ -144,18 +144,18 @@ ${settingDefaultsDebug}
             showImageCopyright="${showImageCopyright}"
             ade="${ade}">
             <jsp:attribute name="markupHeading">
-                <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
+                <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
             </jsp:attribute>
-        </mercury:key-visual-piece>
+        </m:key-visual-piece>
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'tt'}" />
+        <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'tt'}" />
         <c:if test="${keyPieceInfoPos eq 'it'}">${keyPieceInfoMarkup}</c:if>
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bt'}" />
+        <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bt'}" />
     </jsp:attribute>
 
-</mercury:piece>
+</m:piece>
 
 <c:if test="${keyPieceInfoPos eq 'ov'}">
     <div class="pivot detail-visual-info">${keyPieceInfoMarkup}</div><%----%>
@@ -164,12 +164,12 @@ ${settingDefaultsDebug}
 <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
     <c:set var="pHsize" value="${hsize >= 0 ? hsize + 1 : (hsize >= -7 ? -1 * hsize : 0)}" />
     <div class="detail-content"><%----%>
-        <mercury:paragraphs-alternating
+        <m:paragraphs-alternating
             paragraphs="${paragraphsContent}"
             baseLayout="${pieceLayout}"
             layoutAlternating="${pieceLayoutAlternating}"
             skipFirstParagraphImage="${useVisualFromParagraph}">
-            <mercury:section-piece
+            <m:section-piece
                 cssWrapper="${setCssWrapperParagraphs}"
                 pieceLayout="${paragraphLayout}"
                 sizeDesktop="${pieceLayoutSizeDesktop}"
@@ -187,24 +187,24 @@ ${settingDefaultsDebug}
                 ade="${ade}"
                 emptyWarning="${not status.first}"
             />
-        </mercury:paragraphs-alternating>
-        <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
+        </m:paragraphs-alternating>
+        <m:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 
 </c:if>
 
-<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
-<mercury:data-article content="${content}" />
+<m:container-attachment content="${content}" name="attachments" type="${containerType}" />
+<m:data-article content="${content}" />
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:paragraph-split>
+</m:paragraph-split>
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

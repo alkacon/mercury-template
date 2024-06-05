@@ -9,19 +9,19 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="preview"                value="${empty pageContext.request.getAttribute('ATTR_TEMPLATE_BEAN')}" />
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages reload="${param.showmap ne null and not preview}">
+<m:init-messages reload="${param.showmap ne null and not preview}">
 
 <cms:formatter var="content" val="value" rdfa="rdfa">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
@@ -44,7 +44,7 @@
 
 <c:if test="${showFacilities and value.Facilities.isSet}">
     <c:set var="accessibleFacilities">
-        <mercury:facility-icons
+        <m:facility-icons
             useTooltip="${true}"
             wheelchairAccess="${value.Facilities.value.WheelchairAccess.toBoolean}"
             hearingImpaired="${value.Facilities.value.HearingImpaired.toBoolean}"
@@ -56,7 +56,7 @@
 </c:if>
 
 <c:if test="${showMapOnClick and value.Coord.isSet}">
-    <c:set var="poiId"><mercury:idgen prefix='poi' uuid='${cms.element.id}' /></c:set>
+    <c:set var="poiId"><m:idgen prefix='poi' uuid='${cms.element.id}' /></c:set>
     <c:choose>
         <c:when test="${param.showmap == null}">
             <c:set var="linkMarkup">
@@ -73,11 +73,11 @@
     </c:choose>
 </c:if>
 
-<mercury:nl />
+<m:nl />
 <div class="detail-page type-poi layout-${keyPieceLayout}${setCssWrapper123}"${empty poiId ? '' : ' '.concat('id=\"').concat(poiId).concat('\"')}><%----%>
-<mercury:nl />
+<m:nl />
 
-<mercury:piece
+<m:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
     allowEmptyBodyColumn="${true}"
@@ -86,7 +86,7 @@
 
     <jsp:attribute name="heading">
         <div class="poi-head"><%----%>
-            <mercury:intro-headline intro="${value.Intro}" headline="${value.Title}" level="${hsize}" ade="${ade}"/>
+            <m:intro-headline intro="${value.Intro}" headline="${value.Title}" level="${hsize}" ade="${ade}"/>
             ${accessibleFacilities}
         </div><%----%>
     </jsp:attribute>
@@ -115,15 +115,15 @@
                     </div><%----%>
                 </c:if>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="visual">
         <c:if test="${showMap and not preview and value.Coord.isSet}">
-            <c:set var="id"><mercury:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
-            <mercury:location-vars data="${content}" addMapInfo="true" >
-                <mercury:map
+            <c:set var="id"><m:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
+            <m:location-vars data="${content}" addMapInfo="true" >
+                <m:map
                     provider="auto"
                     id="${id}"
                     ratio="${mapRatio}"
@@ -133,35 +133,35 @@
                     showFacilities="${true}"
                     showLink="${true}"
                 />
-            </mercury:location-vars>
-            <mercury:nl />
+            </m:location-vars>
+            <m:nl />
         </c:if>
 
-        <mercury:alert test="${cms.isEditMode and showMap and not value.Coord.isSet}" type="warning">
+        <m:alert test="${cms.isEditMode and showMap and not value.Coord.isSet}" type="warning">
             <jsp:attribute name="head">
                 <fmt:message key="msg.page.poi.nomap" />
             </jsp:attribute>
-        </mercury:alert>
+        </m:alert>
     </jsp:attribute>
 
     <jsp:attribute name="link">
         ${linkMarkup}
     </jsp:attribute>
 
-</mercury:piece>
+</m:piece>
 
 <c:if test="${showOpeningHours and openingHours.isSet}"><%----%>
     <div class="detail-content"><%----%>
         <fmt:message key="msg.page.openingHours" var="hoursHeading" />
-        <mercury:heading level="${hsize+1}" text="${hoursHeading}" css="hours-heading" />
-        <mercury:opening-hours content="${value.OpeningHours}" />
+        <m:heading level="${hsize+1}" text="${hoursHeading}" css="hours-heading" />
+        <m:opening-hours content="${value.OpeningHours}" />
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </c:if>
 
 <c:if test="${showDescription}">
     <div class="detail-content"><%----%>
-        <mercury:paragraphs
+        <m:paragraphs
             cssWrapper="${setCssWrapperParagraphs}"
             paragraphs="${content.valueList.Paragraph}"
             pieceLayout="${pieceLayout}"
@@ -176,11 +176,11 @@
 </c:if>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

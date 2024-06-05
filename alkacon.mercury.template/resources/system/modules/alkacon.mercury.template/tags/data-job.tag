@@ -15,7 +15,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%-- Using the same logic as the elaborate display teaser --%>
 <c:set var="value"              value="${content.value}" />
@@ -97,15 +97,15 @@
     </c:if>
 
     <c:if test="${image.isSet}">
-        <mercury:image-vars image="${image}" createJsonLd="${true}">
+        <m:image-vars image="${image}" createJsonLd="${true}">
             <cms:jsonvalue key="image" value="${imageJsonLd}" />
-        </mercury:image-vars>
+        </m:image-vars>
     </c:if>
 
-    <mercury:location-vars data="${value.AddressChoice}" createJsonLd="${true}">
+    <m:location-vars data="${value.AddressChoice}" createJsonLd="${true}">
         <cms:jsonvalue key="jobLocation" value="${locJsonLd}" />
         <c:set var="hasJobLocation" value="${(not empty locJsonLd) and (not empty locJsonLd.opt('address'))}" />
-    </mercury:location-vars>
+    </m:location-vars>
 
     <c:if test="${value['MetaInfoJob/EmploymentType'].isSet}">
         <cms:jsonarray key="employmentType">
@@ -142,28 +142,28 @@
 
     <c:choose>
         <c:when test="${value['MetaInfoJob/HiringOrganization'].isSet}">
-            <mercury:data-organization content="${value['MetaInfoJob/HiringOrganization'].toResource.toXml}" showContactAndImage="${false}" useSameAsUrl="${true}" storeOrgJsonLdObject="${true}" />
+            <m:data-organization content="${value['MetaInfoJob/HiringOrganization'].toResource.toXml}" showContactAndImage="${false}" useSameAsUrl="${true}" storeOrgJsonLdObject="${true}" />
             <cms:jsonvalue key="hiringOrganization" value="${orgJsonLd}" />
             <c:set var="hasHringOrganization" value="${(not empty orgJsonLd) and (not empty orgJsonLd.opt('name'))}" />
         </c:when>
         <c:otherwise>
-            <mercury:data-organization-vars content="${content}">
+            <m:data-organization-vars content="${content}">
                 <cms:jsonvalue key="hiringOrganization" value="${orgJsonLd}" />
                 <c:set var="hasHringOrganization" value="${(not empty orgJsonLd) and (not empty orgJsonLd.opt('name'))}" />
-            </mercury:data-organization-vars>
+            </m:data-organization-vars>
         </c:otherwise>
     </c:choose>
 </cms:jsonobject>
 
 
-<mercury:nl />
+<m:nl />
 <script type="application/ld+json">${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}</script><%----%>
-<mercury:nl />
+<m:nl />
 
 <c:if test="${showSummary and cms.isEditMode}">
     <fmt:setLocale value="${cms.workplaceLocale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">
-        <c:set var="parentId"><mercury:idgen prefix="-" uuid="${cms.element.instanceId}" /></c:set>
+        <c:set var="parentId"><m:idgen prefix="-" uuid="${cms.element.instanceId}" /></c:set>
         <c:set var="isValid" value="${hasTitle and hasDatePosted and hasDescription and hasJobLocation and hasHringOrganization}" />
         <c:set var="hasAllOptions" value="${hasValidThrough and hasEmploymentType and hasBaseSalary}" />
         <div class="subelement oct-meta-infos hidden-xs-sm box ${isValid ? (hasAllOptions ? 'box-oct-info' : 'box-oct-warning') : 'box-oct-error'}"><%----%>
@@ -184,14 +184,14 @@
             </div><%----%>
             <div class="collapse mt-sm${not isValid or not hasAllOptions ? ' show' : ''}" id="metaInfos${parentId}"><%----%>
                 <div class="box box-body"><%----%>
-                    <mercury:data-meta-check valid="${hasTitle}" label="label.Title" />
-                    <mercury:data-meta-check valid="${hasDatePosted}" label="label.Job.Date" />
-                    <mercury:data-meta-check valid="${hasDescription}" label="label.Description" />
-                    <mercury:data-meta-check valid="${hasJobLocation}" label="label.AddressChoice" />
-                    <mercury:data-meta-check valid="${hasHringOrganization}" label="label.Job.HiringOrganization" />
-                    <mercury:data-meta-check valid="${hasValidThrough}" optional="${true}" label="label.Job.ValidThrough" />
-                    <mercury:data-meta-check valid="${hasEmploymentType}" optional="${true}" label="label.Job.EmploymentType" />
-                    <mercury:data-meta-check valid="${hasBaseSalary}" optional="${true}" label="label.Job.BaseSalary" />
+                    <m:data-meta-check valid="${hasTitle}" label="label.Title" />
+                    <m:data-meta-check valid="${hasDatePosted}" label="label.Job.Date" />
+                    <m:data-meta-check valid="${hasDescription}" label="label.Description" />
+                    <m:data-meta-check valid="${hasJobLocation}" label="label.AddressChoice" />
+                    <m:data-meta-check valid="${hasHringOrganization}" label="label.Job.HiringOrganization" />
+                    <m:data-meta-check valid="${hasValidThrough}" optional="${true}" label="label.Job.ValidThrough" />
+                    <m:data-meta-check valid="${hasEmploymentType}" optional="${true}" label="label.Job.EmploymentType" />
+                    <m:data-meta-check valid="${hasBaseSalary}" optional="${true}" label="label.Job.BaseSalary" />
                 </div><%----%>
                 <div class="mt-sm"><%----%>
                     <div><%----%>
@@ -205,6 +205,6 @@
                 </div><%----%>
             </div><%----%>
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
     </cms:bundle>
 </c:if>

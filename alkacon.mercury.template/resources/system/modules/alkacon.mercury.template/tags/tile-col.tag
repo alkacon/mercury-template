@@ -56,41 +56,41 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="linkFullTile"               value="${(empty linkFullTile or linkFullTile) and (not empty link)}" />
 <c:set var="linkOption"                 value="${empty linkOption or linkFullTile ? 'none' : linkOption}" />
 <c:set var="text"                       value="${linkFullTile and fn:contains(text.toString, 'href') ? fn:trim(cms:stripHtml(text.toString)) : text}" />
 
-<mercury:nl />
+<m:nl />
 <div class="${tileWrapper}"><%----%>
 
     <div class="content-box ${boxWrapper}"><%----%>
 
-        <mercury:link link="${link}" test="${linkFullTile}">
+        <m:link link="${link}" test="${linkFullTile}">
 
             <c:choose>
                 <c:when test="${not empty image}">
                     <cms:addparams>
                         <cms:param name="cssgrid" value="${tileClass}" />
-                        <mercury:image-animated
+                        <m:image-animated
                             image="${image}"
                             ratio="${imageRatio}"
                             addEffectBox="${true}"
                             ade="${ade and not linkFullTile}"
                             title="${heading}">
                             <c:set var="imageCopyright" value="${imageCopyrightHtml}" scope="request" />
-                        </mercury:image-animated>
+                        </m:image-animated>
                     </cms:addparams>
                 </c:when>
                 <c:otherwise>
-                    <mercury:padding-box ratio="${imageRatio}" defaultRatio="4-3" />
+                    <m:padding-box ratio="${imageRatio}" defaultRatio="4-3" />
                 </c:otherwise>
             </c:choose>
 
             <c:set var="tileText">
-                <mercury:section-piece
+                <m:section-piece
                     cssWrapper="${textAlignment}"
                     heading="${heading}"
                     pieceLayout="${1}"
@@ -114,8 +114,8 @@
                 <div class="copyright">${imageCopyright}</div><%----%>
             </c:if>
 
-        </mercury:link>
+        </m:link>
 
     </div><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />

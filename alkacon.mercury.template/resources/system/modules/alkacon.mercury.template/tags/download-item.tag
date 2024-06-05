@@ -66,7 +66,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%
@@ -180,9 +180,9 @@
             <%-- ###### Compact / Minimal display format ###### --%>
             <div class="dl-teaser dl-teaser-compact${showFileName ? ' dl-show-file' : ''}${showDescription ? ' dl-show-desc' : ''}">
                 <a href="${resLink}" class="dl-link dl-link-disp" target="_blank" rel="noopener" rel="noopener" title="<fmt:message key="msg.page.display"/>"><%----%>
-                    <mercury:icon icon="${icon}" tag="span" cssWrapper="dl-type" />
+                    <m:icon icon="${icon}" tag="span" cssWrapper="dl-type" />
                     <span class="dl-content"><%----%>
-                        <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
+                        <m:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
                         <c:if test="${showFileName and not empty resTitle}">
                             <div class="dl-file">${resName}</div><%----%>
                         </c:if>
@@ -205,11 +205,11 @@
                             <span class="dl-size"><span>${resSize}</span></span><%----%>
                             <span class="dl-date"><span>${resDateStr}</span></span><%----%>
                         </span><%----%>
-                        <mercury:icon icon="cloud-download" tag="span" cssWrapper="dl-dl" />
+                        <m:icon icon="cloud-download" tag="span" cssWrapper="dl-dl" />
                     </a><%----%>
                 </c:if>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
 
         </c:when>
         <c:otherwise>
@@ -234,9 +234,9 @@
                                 <div class="dl-date">${resDateStr}</div><%----%>
                             </c:otherwise>
                         </c:choose>
-                        <mercury:link link="${resLink}" title="${title}" css="dl-link" >
-                            <mercury:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
-                        </mercury:link>
+                        <m:link link="${resLink}" title="${title}" css="dl-link" >
+                            <m:heading level="${hsize}" text="${title}" css="dl-title" ade="${false}" />
+                        </m:link>
                         <c:if test="${showFileName and not empty resTitle}">
                             <div class="dl-file"><a href="${resLink}"><c:out value="${resName}" /></a></div><%----%>
                         </c:if>
@@ -244,7 +244,7 @@
                             <div class="dl-desc">${resDescription}</div><%----%>
                         </c:if>
                         <a href="${resLink}" download class="btn dl-btn"><%----%>
-                            <mercury:icon icon="cloud-download" tag="span" />
+                            <m:icon icon="cloud-download" tag="span" />
                             <fmt:message key="msg.page.download"/><%----%>
                         </a><%----%>
                     </div><%----%>
@@ -259,7 +259,7 @@
                     </div><%----%>
                 </div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
 
         </c:otherwise>
     </c:choose>

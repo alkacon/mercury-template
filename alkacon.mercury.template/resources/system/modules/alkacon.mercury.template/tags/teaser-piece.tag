@@ -136,7 +136,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="teaserClass"        value="${empty teaserClass ? 'teaser' : teaserClass}" />
 <c:set var="pieceLayout"        value="${empty pieceLayout ? 6 : pieceLayout}" />
@@ -199,9 +199,9 @@
 
 <c:if test="${not empty headline or not empty intro}">
     <c:set var="linkTitle">
-        <mercury:out value="${intro}" />
+        <m:out value="${intro}" />
         ${not empty intro ? ': ' : ''}
-        <mercury:out value="${headline}" />
+        <m:out value="${headline}" />
     </c:set>
     <c:set var="linkHeadline" value="${linkOnHeadline and not headingInBody and (hsize > 0)}" />
 </c:if>
@@ -209,7 +209,7 @@
 <c:if test="${(not empty date) and date.isSet and (dateFormat ne 'none')}">
     <c:set var="dateMarkup">
         <div class="teaser-date"><%----%>
-            <mercury:instancedate date="${date}" format="${dateFormat}" />
+            <m:instancedate date="${date}" format="${dateFormat}" />
         </div><%----%>
     </c:set>
 </c:if>
@@ -223,7 +223,7 @@
             </c:if>
 
             <c:if test="${not empty headline or not empty introxw}">
-                <mercury:intro-headline
+                <m:intro-headline
                     intro="${intro}"
                     headline="${headline}"
                     prefix="${headlinePrefix}"
@@ -266,7 +266,7 @@
     </c:set>
 </c:if>
 
-<mercury:piece
+<m:piece
     cssWrapper="${teaserClass}${' '}${teaserType}${empty cssWrapper ? '' : ' '.concat(cssWrapper)}${headingInBody ? ' hib' : ''}${prefaceInBody ? ' pib' : ''}"
     attrWrapper="${attrWrapper}"
     pieceLayout="${pieceLayout}"
@@ -284,12 +284,12 @@
                 ${dateMarkup}
             </c:if>
             <c:if test="${not empty headline or not empty intro}">
-                <mercury:link
+                <m:link
                     link="${link}"
                     newWin="${linkNewWin}"
                     test="${linkHeadline}">
 
-                    <mercury:intro-headline
+                    <m:intro-headline
                         intro="${intro}"
                         headline="${headline}"
                         prefix="${headlinePrefix}"
@@ -298,7 +298,7 @@
                         tabindex="${not linkHeadline}"
                         ade="${ade}" />
 
-                </mercury:link>
+                </m:link>
             </c:if>
         </c:if>
     </jsp:attribute>
@@ -307,20 +307,20 @@
         <c:if test="${not hideImage}">
             <jsp:invoke fragment="markupVisual" var="markupVisualOutput" />
         </c:if>
-        <mercury:link
+        <m:link
             link="${link}"
             newWin="${linkNewWin}"
             title="${linkHeadline ? null : linkTitle}"
             attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
             ${markupVisualOutput}
-        </mercury:link>
+        </m:link>
     </jsp:attribute>
 
     <jsp:attribute name="text">
         <c:choose>
             <c:when test="${empty markupBodyOutput}">
-                <mercury:link
+                <m:link
                     link="${link}"
                     newWin="${linkNewWin}"
                     title="${linkHeadline ? null : linkTitle}"
@@ -328,7 +328,7 @@
                     attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
                     test="${linkOnText and not empty markupTextOutput}">
                     ${markupTextOutput}
-                </mercury:link>
+                </m:link>
             </c:when>
             <c:otherwise>
                 ${markupBodyOutput}
@@ -364,7 +364,7 @@
                             <c:set var="linkCss" value="btn piece-btn teaser-btn" />
                         </c:otherwise>
                     </c:choose>
-                    <mercury:link
+                    <m:link
                         link="${link}"
                         newWin="${linkNewWin}"
                         css="${linkCss}"
@@ -380,5 +380,5 @@
         </c:choose>
     </jsp:attribute>
 
-</mercury:piece>
+</m:piece>
 

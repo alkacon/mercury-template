@@ -39,7 +39,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:choose>
 <c:when test="${empty test or test}">
@@ -67,12 +67,12 @@
                     <c:when test="${useDesktopRatio}">
                         <c:set var="cssWrapper">${cssWrapper} presized presized-vars</c:set>
                         <c:set var="styleAttr">
-                            <mercury:print script="${true}">
+                            <m:print script="${true}">
                                 style="
                                 --my-presized-padding: ${cms:mathCeil((height / width) * 100000) / 1000}%;
                                 --my-presized-padding-lg: ${cms:mathCeil((heightLg / widthLg) * 100000) / 1000}%;
                                 "
-                            </mercury:print>
+                            </m:print>
                          </c:set>
                     </c:when>
                     <c:otherwise>
@@ -93,9 +93,9 @@
 
     <div class="${cssWrapper}" ${styleAttr}${' '}${attrWrapper}><%----%>
     <c:if test="${not empty body}">
-        <mercury:nl />
+        <m:nl />
         ${body}
-        <mercury:nl />
+        <m:nl />
     </c:if>
     </div><%----%>
 

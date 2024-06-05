@@ -8,12 +8,12 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages>
+<m:init-messages>
 <cms:formatter var="content" val="value">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />
 <c:set var="sizeDesktop"        value="${setting.visualOption.toInteger}" />
@@ -37,13 +37,13 @@
 <%-- Note regarding css wrappers: Apply wrappers 2 and 3 to the .piece inner div --%>
 <c:set var="boxWrapper"         value="${fn:contains(setCssWrapper, 'box') ? '' : ' box'}" />
 
-<mercury:nl />
+<m:nl />
 <div class="element type-linkbox${hasLink ? ' fully-linked' : ''}${boxWrapper}${setCssWrapper}${not empty boxRatio ? ' box-ratio-'.concat(boxRatio) : ''}${not empty verticalAlignment ? ' valign-'.concat(verticalAlignment) : ''}${setEffect}${setCssVisibility}"><%----%>
-<mercury:nl />
+<m:nl />
 
-<mercury:link link="${value.Link}" testFailTag="span" css="linkbox-link">
+<m:link link="${value.Link}" testFailTag="span" css="linkbox-link">
 
-<mercury:section-piece
+<m:section-piece
     cssWrapper="linkbox-content adjust-headings${setCssWrapper2}${setCssWrapper3}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
@@ -68,12 +68,12 @@
     emptyWarning="${true}"
 />
 
-</mercury:link>
+</m:link>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

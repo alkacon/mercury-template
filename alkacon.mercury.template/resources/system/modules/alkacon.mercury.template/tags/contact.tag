@@ -112,7 +112,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="addressData"        value="${empty address ? data.value.AddressChoice : address}"/>
@@ -191,7 +191,7 @@
     </c:when>
 </c:choose>
 
-<mercury:image-animated
+<m:image-animated
     image="${image}"
     test="${showImage}"
     title="${imgtitle}"
@@ -203,7 +203,7 @@
 
     <c:if test="${showName or showOrganization or showDesc or showNote or showAddress or showPhone or showEmail or showLinkAsButton}">
         <div class="text-box"><%----%>
-        <mercury:nl />
+        <m:nl />
 
             <c:if test="${showName}">
                 <c:set var="personname">
@@ -224,14 +224,14 @@
             <c:choose>
                 <c:when test="${kind eq 'org'}">
                     <c:if test="${showOrganization}">
-                        <mercury:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
+                        <m:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
                     </c:if>
                     <c:if test="${showOrganization and (showName or showPosition)}">
                         <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
                         <div><%----%>
                             <c:if test="${showName}">
                                 <div class="h${hsize + 1} org"><%----%>
-                                    <mercury:link link="${linkToRelated}">${personname}</mercury:link>
+                                    <m:link link="${linkToRelated}">${personname}</m:link>
                                 </div><%----%>
                             </c:if>
                             <c:if test="${showPosition}"><%----%>
@@ -244,9 +244,9 @@
                 </c:when>
                 <c:otherwise>
                     <c:if test="${showName}">
-                        <mercury:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}">
+                        <m:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}">
                             <jsp:attribute name="markupText">${personname}</jsp:attribute>
-                        </mercury:heading>
+                        </m:heading>
                         <c:if test="${showPosition}">
                             <div class="h${hsize + 1} pos" class="title"><%----%>
                                 ${position}
@@ -255,7 +255,7 @@
                     </c:if>
                     <c:if test="${showOrganization}">
                         <div class="org"><%----%>
-                            <mercury:link link="${linkToRelated}">${organization}</mercury:link>
+                            <m:link link="${linkToRelated}">${organization}</m:link>
                         </div><%----%>
                     </c:if>
                 </c:otherwise>
@@ -270,7 +270,7 @@
             </c:if>
 
             <c:if test="${showAddress}">
-                <mercury:location-vars data="${addressData}">
+                <m:location-vars data="${addressData}">
 
                     <c:set var="animatedAddress" value="${not showAddressAlways}" />
                     <div class="${animatedAddress ? 'clickme-showme adr-p' : 'adr-p'}"><%----%>
@@ -298,7 +298,7 @@
                             <div class="addresslink showme"><%----%>
                                 <c:choose>
                                     <c:when test="${showIconLabels}">
-                                        <mercury:icon-prefix icon="home" showText="${true}" showIcon="${true}">
+                                        <m:icon-prefix icon="home" showText="${true}" showIcon="${true}">
                                             <jsp:attribute name="text">
                                                 <span class="${showTextLabels ? 'with-text' : 'only-icon'}"><a><%----%>
                                                     <fmt:message key="msg.setting.contact.showAddress"/>
@@ -307,7 +307,7 @@
                                             <jsp:attribute name="icontitle">
                                                 <fmt:message key="msg.setting.contact.showAddress"/>
                                             </jsp:attribute>
-                                        </mercury:icon-prefix>
+                                        </m:icon-prefix>
                                     </c:when>
                                     <c:otherwise>
                                         <a class="adr"><fmt:message key="msg.setting.contact.showAddress"/></a><%----%>
@@ -316,15 +316,15 @@
                             </div><%----%>
                         </c:if>
                     </div><%----%>
-                </mercury:location-vars>
+                </m:location-vars>
             </c:if>
 
             <c:if test="${showPhone}">
                 <c:if test="${data.value.Phone.isSet}">
                     <div class="phone tablerow"><%----%>
-                        <mercury:icon-prefix icon="phone" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                        <m:icon-prefix icon="phone" showText="${showTextLabels}" showIcon="${showIconLabels}">
                             <jsp:attribute name="text"><fmt:message key="msg.page.contact.phone"/></jsp:attribute>
-                        </mercury:icon-prefix>
+                        </m:icon-prefix>
                         <span><%----%>
                             <a href="tel:${fn:replace(data.value.Phone, ' ','')}" ${data.rdfa.Phone}><%----%>
                                 <span class="tel">${data.value.Phone}</span><%----%>
@@ -334,9 +334,9 @@
                 </c:if>
                 <c:if test="${data.value.Mobile.isSet}">
                     <div class="mobile tablerow"><%----%>
-                        <mercury:icon-prefix icon="mobile" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                        <m:icon-prefix icon="mobile" showText="${showTextLabels}" showIcon="${showIconLabels}">
                             <jsp:attribute name="text"><fmt:message key="msg.page.contact.mobile"/></jsp:attribute>
-                        </mercury:icon-prefix>
+                        </m:icon-prefix>
                         <span><%----%>
                             <a href="tel:${fn:replace(data.value.Mobile, ' ','')}" ${data.rdfa.Mobile}><%----%>
                                 <span class="tel">${data.value.Mobile}</span><%----%>
@@ -346,9 +346,9 @@
                 </c:if>
                 <c:if test="${data.value.Fax.isSet}">
                     <div class="fax tablerow"><%----%>
-                        <mercury:icon-prefix icon="fax" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                        <m:icon-prefix icon="fax" showText="${showTextLabels}" showIcon="${showIconLabels}">
                             <jsp:attribute name="text"><fmt:message key="msg.page.contact.fax"/></jsp:attribute>
-                        </mercury:icon-prefix>
+                        </m:icon-prefix>
                         <span><%----%>
                             <a href="tel:${fn:replace(data.value.Fax, ' ','')}" ${data.rdfa.Fax}><%----%>
                                 <span class="tel">${data.value.Fax}</span><%----%>
@@ -361,12 +361,12 @@
             <c:if test="${showEmail}">
                 <div class="${showMinLabels ? 'mail' : 'mail tablerow'}" ${data.rdfa.Email}><%----%>
                     <c:if test="${not showMinLabels}">
-                        <mercury:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                        <m:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
                             <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
-                        </mercury:icon-prefix>
+                        </m:icon-prefix>
                     </c:if>
                     <span><%----%>
-                        <mercury:email email="${data.value.Email}" linkToForm="${linkToDetail}" />
+                        <m:email email="${data.value.Email}" linkToForm="${linkToDetail}" />
                     </span><%----%>
                 </div><%----%>
             </c:if>
@@ -406,12 +406,12 @@
                     </c:if>
                     <div class="${showMinLabels ? 'website' : 'website tablerow'}"><%----%>
                          <c:if test="${not showMinLabels}">
-                            <mercury:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                            <m:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">
                                 <jsp:attribute name="text"><fmt:message key="msg.page.contact.website"/></jsp:attribute>
-                            </mercury:icon-prefix>
+                            </m:icon-prefix>
                         </c:if>
                         <span><%----%>
-                             <mercury:link link="${data.value.Website}" newWin="${websiteNewWin}">${websiteURL}</mercury:link><%----%>
+                             <m:link link="${data.value.Website}" newWin="${websiteNewWin}">${websiteURL}</m:link><%----%>
                         </span><%----%>
                     </div><%----%>
                 </c:if>
@@ -427,7 +427,7 @@
 
             <c:if test="${showLinkAsText}">
                 <div class="contactlink"><%----%>
-                    <mercury:link link="${link}" css="piece-text-link" newWin="${websiteNewWin}" />
+                    <m:link link="${link}" css="piece-text-link" newWin="${websiteNewWin}" />
                 </div><%----%>
             </c:if>
 
@@ -451,13 +451,13 @@
                     <c:set var="btnClass" value="btn btn-sm" />
                 </c:otherwise>
             </c:choose>
-                <mercury:link link="${link}" css="contactlink ${btnClass}" newWin="${websiteNewWin}" />
+                <m:link link="${link}" css="contactlink ${btnClass}" newWin="${websiteNewWin}" />
             </c:if>
 
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
 
     </c:if>
-</mercury:image-animated>
+</m:image-animated>
 
 </cms:bundle>

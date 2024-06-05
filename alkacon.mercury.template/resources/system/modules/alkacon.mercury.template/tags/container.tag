@@ -65,7 +65,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="name"           value="${empty name ? (not empty value.Name ? value.Name.toString() : null) : name}" />
@@ -81,7 +81,7 @@
 <c:set var="variant"        value="${cms:isWrapper(value.Name) ? 'complex' : 'simple'}" />
 <c:set var="parent_role"    value="${cms.container.param}" />
 
-<mercury:nl />
+<m:nl />
 <c:if test="${not empty preMarkup}">${preMarkup}</c:if>
 
 <c:choose>
@@ -140,7 +140,7 @@
             <%-- Overwrite cssgrid after the loop with merged value --%>
             <cms:param name="cssgrid"  value="${cssGrid}" />
 
-            <mercury:container-box
+            <m:container-box
                 cssWrapper="${variant}"
                 label="${title}${not hideName and not empty name ? ' - '.concat(name) : ''}"
                 boxType="container-box"

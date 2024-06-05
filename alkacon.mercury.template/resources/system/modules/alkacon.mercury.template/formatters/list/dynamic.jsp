@@ -12,10 +12,10 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%-- Add parameters to AJAX request, specially the containerpage id and the element instance id to restore settings --%>
-<%-- NOTE: Scriptlet is not allowed inside mercury:init-messages - thus do the conversion here. --%>
+<%-- NOTE: Scriptlet is not allowed inside m:init-messages - thus do the conversion here. --%>
 <c:set var="settings" value="${cms.element.settings}" />
 <c:set var="wrappedSettings" value="${cms.element.setting}" />
 <%-- Get the id of the container page the list is on. --%>
@@ -52,7 +52,7 @@
 <%-- The ajax link to use for facet count adjustment. --%>
 <c:set var="ajaxFacetCountLink">/system/modules/alkacon.mercury.template/elements/list-facet-ajax.jsp?siteRoot=${cms:encode(siteRoot)}</c:set>
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
 <cms:formatter var="content" val="value" locale="en">
 <fmt:setLocale value="${cms.locale}" />
@@ -60,7 +60,7 @@
 
 <c:set var="listCompatibilityMarkup">
     <%-- Check if list formatters are compatible. --%>
-    <mercury:list-compatibility
+    <m:list-compatibility
         settings="${settings}"
         types="${content.valueList.TypesToCollect}"
         listType="dynamic"
@@ -68,7 +68,7 @@
     />
 </c:set>
 
-<mercury:nl />
+<m:nl />
 <div class="element type-dynamic-list list-content <%--
 --%>${not empty settings.listCssWrapper ? settings.listCssWrapper.concat(' ') : ''}<%--
 --%>${not empty settings.listDisplay ? settings.listDisplay.concat(' ') : ''}<%--
@@ -76,7 +76,7 @@
 --%>${not empty listDisplayType ? 'list-'.concat(listDisplayType).concat(' ') : ''}<%--
 --%>${settings.appendSwitch != 'disable' ? settings.listPaginationPosition : 'pagination-disabled'}${' '}<%--
 --%>${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
-<mercury:nl />
+<m:nl />
 
     <c:if test="${not isCompatible}">
         ${listCompatibilityMarkup}
@@ -89,7 +89,7 @@
             postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}"
             uploadFolder="${cms.getBinaryUploadFolder(content)}" />
 
-        <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />
+        <m:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />
 
         <c:set var="count" value="${wrappedSettings.itemsPerPage.isSet ? wrappedSettings.itemsPerPage : 5}" />
         <c:set var="listTag" value="${wrappedSettings.listTag.isSet ? wrappedSettings.listTag : 'ul' }" />
@@ -109,8 +109,8 @@
 
         <c:set var="ajaxlink"><cms:link>${ajaxlink}</cms:link></c:set>
         <c:set var="ajaxFacetCountLink"><cms:link>${ajaxFacetCountLink}</cms:link></c:set>
-        <c:set var="instanceId"><mercury:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
-        <c:set var="elementId"><mercury:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
+        <c:set var="instanceId"><m:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
+        <c:set var="elementId"><m:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
         <c:set var="isLoadAll" value="${wrappedSettings.loadAll.toBoolean}" />
 
         <c:set var="initparams" value="" />
@@ -194,10 +194,10 @@
             --%>id="${instanceId}" <%--
             --%>data-id="${elementId}" <%--
             --%>data-list='${listData}'<%--
-        --%>><mercury:nl />
+        --%>><m:nl />
 
             <c:if test="${not cms.isOnlineProject}">
-                <mercury:list-search
+                <m:list-search
                     config="${content}"
                     subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
                     count="0"
@@ -208,7 +208,7 @@
             <c:set var="listWrapper" value="${settings.listWrapper}" />
             <c:set var="listWrapper" value="${fn:replace(listWrapper, 'row-tile', 'row')}" />
             ${'<'}${listTag} class="list-entries ${listWrapper}" ${minHeightCss}${'>'}
-                <mercury:list-main
+                <m:list-main
                     elementId="${elementId}"
                     instanceId="${instanceId}"
                     config="${content}"
@@ -221,32 +221,32 @@
                     subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
                 />
             ${'</'}${listTag}${'>'}
-            <mercury:nl />
+            <m:nl />
 
             <%-- ####### Animated list spinner ######## --%>
             <div class="list-spinner hide-noscript"><%----%>
                 <div class="spinnerInnerBox"><%----%>
-                    <mercury:icon icon="spinner" tag="span" cssWrapper="spinner-icon" />
+                    <m:icon icon="spinner" tag="span" cssWrapper="spinner-icon" />
                 </div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
 
             <%-- ####### List pagination ######## --%>
             <c:if test="${settings.appendSwitch != 'disable'}">
                 <div class="list-pagination pivot ${settings.listPaginationWrapper}"><%----%>
                     <noscript><%----%>
-                        <mercury:list-pagination
+                        <m:list-pagination
                             search="${search}"
                             singleStep="false"
                             onclickAction=""
                         />
                     </noscript><%----%>
                 </div><%----%>
-                <mercury:nl />
+                <m:nl />
             </c:if>
 
             <%-- ####### Displays notice in case of empty list result ######## --%>
-            <mercury:list-messages
+            <m:list-messages
                 search="${search}"
                 types="${content.valueList.TypesToCollect}"
                 uploadFolder="${cms.getBinaryUploadFolder(content)}"
@@ -254,13 +254,13 @@
                 reloaded="${not empty param.reloaded}"
             />
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:if>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

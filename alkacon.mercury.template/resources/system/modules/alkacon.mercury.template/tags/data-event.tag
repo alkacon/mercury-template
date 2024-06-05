@@ -15,7 +15,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- Using the same logic as the elaborate display teaser --%>
@@ -87,16 +87,16 @@
     </c:if>
 
     <c:if test="${image.isSet}">
-        <mercury:image-vars image="${image}" createJsonLd="${true}">
+        <m:image-vars image="${image}" createJsonLd="${true}">
             <cms:jsonvalue key="image" value="${imageJsonLd}" />
-        </mercury:image-vars>
+        </m:image-vars>
     </c:if>
 
-    <mercury:location-vars data="${value.AddressChoice}" onlineUrl="${value.VirtualLocation}" fallbackOnlineUrl="${url}" createJsonLd="${true}">
+    <m:location-vars data="${value.AddressChoice}" onlineUrl="${value.VirtualLocation}" fallbackOnlineUrl="${url}" createJsonLd="${true}">
         <cms:jsonvalue key="location" value="${locJsonLd}" />
         <cms:jsonvalue key="eventAttendanceMode" value="${locAttendanceMode}" />
         <cms:jsonvalue key="eventStatus" value="https://schema.org/EventScheduled" />
-    </mercury:location-vars>
+    </m:location-vars>
 
     <c:if test="${value.Costs.isSet}">
         <cms:jsonarray key="offers">
@@ -113,8 +113,8 @@
     </c:if>
 </cms:jsonobject>
 
-<mercury:nl /><%----%>
+<m:nl /><%----%>
 <script type="application/ld+json">
     ${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}
 </script><%----%>
-<mercury:nl />
+<m:nl />

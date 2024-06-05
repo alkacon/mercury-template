@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -18,12 +18,12 @@
 
 <c:set var="date">
     <c:set var="dateFormat"><fmt:message key="msg.setting.dateFormat.SHORT.format" /></c:set>
-    <mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
+    <m:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
 </c:set>
 
 <c:set var="themeUri"><cms:link>/system/modules/alkacon.mercury.theme/</cms:link></c:set>
 
-<mercury:paragraph-split
+<m:paragraph-split
     paragraphs="${content.valueList.Paragraph}"
     splitFirst="${false}"
     splitDownloads="${false}">
@@ -110,22 +110,22 @@
 <body>
 
     <div class="head clearfix">
-        <mercury:image-vars image="${image}">
+        <m:image-vars image="${image}">
             <c:if test="${not empty imageBean}">
                 <div class="visual">
                     <img ${imageBean.scaleWidth[350].imgSrc} />
                 </div>
             </c:if>
-        </mercury:image-vars>
+        </m:image-vars>
 
         <div class="title">
-            <mercury:intro-headline
+            <m:intro-headline
                 intro="${value.Intro}"
                 headline="${value.Title}"
                 level="${2}"
                 ade="${false}"
             />
-            <mercury:heading
+            <m:heading
                 text="${value.Preface}"
                 level="${3}"
             />
@@ -148,13 +148,13 @@
 
         <div class="paragraph clearfix">
             <c:set var="pimage" value="${(status.first and not value.Image.value.Image.isSet) ? null : paragraph.value.Image}" />
-            <mercury:image-vars image="${pimage}">
+            <m:image-vars image="${pimage}">
                 <c:if test="${not empty imageBean}">
                     <div class="image">
                         <img ${imageBean.scaleWidth[250].imgSrc} />
                     </div>
                 </c:if>
-            </mercury:image-vars>
+            </m:image-vars>
 
             <c:if test="${paragraph.value.Caption.isSet}">
                 <div class="caption">
@@ -170,7 +170,7 @@
 
             <c:if test="${paragraph.value.Link.exists}">
                 <div class="link">
-                    <mercury:link link="${paragraph.value.Link}" />
+                    <m:link link="${paragraph.value.Link}" />
                 </div>
             </c:if>
         </div>
@@ -180,6 +180,6 @@
 </body>
 </html>
 
-</mercury:paragraph-split>
+</m:paragraph-split>
 </cms:contentload>
 </cms:bundle>

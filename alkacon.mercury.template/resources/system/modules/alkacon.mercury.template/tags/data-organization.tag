@@ -42,7 +42,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="value"                  value="${content.value}" />
@@ -68,7 +68,7 @@
 
 <c:if test="${showPerson and (value.LinkToManager.isSet or not empty persContent)}">
     <c:set var="persContent" value="${empty persContent ? cms.vfs.readXml[value.LinkToManager] : persContent}" />
-    <mercury:data-person content="${persContent}" storePersJsonLdObject="${true}" showAddress="${false}" showOrganization="${false}" />
+    <m:data-person content="${persContent}" storePersJsonLdObject="${true}" showAddress="${false}" showOrganization="${false}" />
 </c:if>
 
 <%--
@@ -93,9 +93,9 @@
 
     <c:if test="${showAddress}">
          <%-- Do not include address here. Reason: This will be called from data-person where the address is already included. --%>
-        <mercury:location-vars data="${contact.AddressChoice}" addMapInfo="${true}" createJsonLd="${true}" test="${empty addressJsonLd}" >
+        <m:location-vars data="${contact.AddressChoice}" addMapInfo="${true}" createJsonLd="${true}" test="${empty addressJsonLd}" >
             <cms:jsonvalue key="address" value="${empty addressJsonLd ? adrJsonLd : addressJsonLd}" />
-        </mercury:location-vars>
+        </m:location-vars>
     </c:if>
 
     <c:if test="${showPerson and not empty persJsonLd}">

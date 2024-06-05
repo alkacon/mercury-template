@@ -31,7 +31,7 @@
     description="Height of the target image set in the generated img tag.
     Will overwrite the height read from the image file." %>
 
-<%-- ####### These variables are actually set in the mercury:image-vars tag included ####### --%>
+<%-- ####### These variables are actually set in the m:image-vars tag included ####### --%>
 <%@ variable name-given="imageBean" declare="true" variable-class="org.opencms.jsp.util.CmsJspImageBean" %>
 <%@ variable name-given="imageLink" declare="true" %>
 <%@ variable name-given="imageUnscaledLink" declare="true" %>
@@ -47,10 +47,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:image-vars
+<m:image-vars
     image="${image}"
     ratio="${ratio}"
     title="${title}"
@@ -72,4 +72,4 @@
 <jsp:doBody/>
 <%-- ####### /JSP body inserted here ######## --%>
 
-</mercury:image-vars>
+</m:image-vars>

@@ -9,12 +9,12 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
 
-<mercury:set-siteroot siteRoot="${param.siteroot}" sitePath="${param.sitepath}" />
+<m:set-siteroot siteRoot="${param.siteroot}" sitePath="${param.sitepath}" />
 
 <fmt:setLocale value="${param.loc}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -51,7 +51,7 @@
 
     ${'<'}${listTag} class="list-entries ${settings.listWrapper}${'\">'}
         <%-- ####### List entries ######## --%>
-        <mercury:list-main
+        <m:list-main
             elementId="${param.elementId}"
             instanceId="${param.instanceId}"
             config="${conf}"
@@ -80,14 +80,14 @@
                         </c:otherwise>
                     </c:choose>
                 </c:set>
-                <mercury:list-loadbutton
+                <m:list-loadbutton
                     search="${search}"
                     label="${label}"
                     onclickAction='DynamicList.update("${param.instanceId}", "$(LINK)", "false")'
                 />
             </c:when>
             <c:otherwise>
-                <mercury:list-pagination
+                <m:list-pagination
                     search="${search}"
                     singleStep="true"
                     onclickAction='DynamicList.update("${param.instanceId}", "$(LINK)", "true")'

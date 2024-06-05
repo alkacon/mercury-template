@@ -8,17 +8,17 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
@@ -62,20 +62,20 @@
 <c:set var="hsizeTitle"             value="${showTitleAbove ? hsize : hsize + 1}" />
 <c:set var="hsize"                  value="${showTitleAbove ? hsize + 1 : hsize}" />
 
-<mercury:contact-vars
+<m:contact-vars
     content="${content}"
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
 
-<mercury:location-vars data="${valAddress}" addMapInfo="${true}" createJsonLd="${true}">
+<m:location-vars data="${valAddress}" addMapInfo="${true}" createJsonLd="${true}">
 
-<mercury:nl />
+<m:nl />
 <div class="detail-page type-contact${setCssWrapper}"><%----%>
-<mercury:nl />
+<m:nl />
 
 <c:set var="imageMarkup">
     <c:if test="${showImage}">
-        <mercury:contact
+        <m:contact
             kind="${valKind}"
             image="${value.Image}"
             organization="${valOrganization}"
@@ -93,8 +93,8 @@
 <c:set var="mapMarkup">
     <c:set var="hasCoords" value="${valAddress.isSet and (valAddress.value.Address.value.Coord.isSet or valAddress.value.PoiLink.isSet)}" />
     <c:if test="${showMap and hasCoords}">
-        <c:set var="id"><mercury:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
-        <mercury:map
+        <c:set var="id"><m:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
+        <m:map
             provider="auto"
             id="${id}"
             ratio="${mapRatio}"
@@ -102,13 +102,13 @@
             markers="${[locData]}"
             subelementWrapper="poi-map"
         />
-        <mercury:nl />
+        <m:nl />
     </c:if>
-    <mercury:alert test="${showMap and cms.isEditMode and not hasCoords}" type="warning">
+    <m:alert test="${showMap and cms.isEditMode and not hasCoords}" type="warning">
         <jsp:attribute name="head">
             <fmt:message key="msg.page.poi.nomap" />
         </jsp:attribute>
-    </mercury:alert>
+    </m:alert>
 </c:set>
 
 <%-- If no map is there, additional info can be included in the first section --%>
@@ -116,7 +116,7 @@
 <c:set var="singleLink" value="${not value.Description.isSet and not value.Title.isSet and value.Link.isSet}" />
 
 <%-- first section displays organization address and logo  --%>
-<mercury:section-piece
+<m:section-piece
     cssWrapper="subelement ${kindCss}${setCssWrapper2}"
     pieceLayout="${pieceLayout}"
     heading="${showTitleAbove ? value.Title : null}"
@@ -130,7 +130,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="markupText">
-        <mercury:contact
+        <m:contact
             kind="${valKind}"
             link="${showMapSection and not singleLink ? null: value.Link}"
             linkOption="${linkOption}"
@@ -165,15 +165,15 @@
                 <fmt:message var="parentInstitutionDefault" key="msg.page.institution.parent" />
                 <c:set var="parentInstitution" value="${cms.sitemapConfig.attribute['msg.page.institution.parent']}" />
                 <span>${empty parentInstitution ? parentInstitutionDefault : parentInstitution}</span> <%----%>
-                <mercury:link link="${linkToParent}">
+                <m:link link="${linkToParent}">
                     ${parent.value.Organization}
-                </mercury:link>
+                </m:link>
             </div><%----%>
         </c:if>
 
     </jsp:attribute>
 
-</mercury:section-piece>
+</m:section-piece>
 
 <%-- second section displays map and additional text --%>
 <c:if test="${showMapSection}">
@@ -186,7 +186,7 @@
             <c:set var="valDescription" value="${value.Description}" />
         </c:otherwise>
     </c:choose>
-    <mercury:section-piece
+    <m:section-piece
         cssWrapper="subelement"
         cssVisual="map-visual"
         pieceLayout="${mapLayout}"
@@ -201,10 +201,10 @@
         <jsp:attribute name="markupVisual">
             ${mapMarkup}
         </jsp:attribute>
-    </mercury:section-piece>
+    </m:section-piece>
 </c:if>
 
-<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
+<m:container-attachment content="${content}" name="attachments" type="${containerType}" />
 
 <c:if test="${showLinkedOrgs}">
     <c:set var="suborgs" value="${content.resource.getIncomingRelations(content.typeName)}" />
@@ -212,9 +212,9 @@
         <c:set var="buttonText" value="${cms.sitemapConfig.attribute['geosearch.marker.button.text']}" />
         <c:set var="institutionText" value="${cms.sitemapConfig.attribute['msg.page.institutions']}" />
         <fmt:message var="institutionTextDefault" key="msg.page.institutions" />
-        <mercury:nl />
+        <m:nl />
         <div class="suborgs pivot"><%----%>
-            <mercury:heading level="${showTitleAbove ? hsize : hsize + 1}" text="${empty institutionText ? institutionTextDefault : institutionText}" />
+            <m:heading level="${showTitleAbove ? hsize : hsize + 1}" text="${empty institutionText ? institutionTextDefault : institutionText}" />
             <div class="suborg-list box-inner"><%----%>
                 <c:forEach var="res" items="${suborgs}">
                     <cms:simpledisplay
@@ -233,19 +233,19 @@
                 </c:forEach>
             </div><%----%>
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:if>
 </c:if>
 
-<mercury:data-organization content="${content}" showAddress="${true}" showPerson="${false}" addressJsonLd="${adrJsonLd}" />
+<m:data-organization content="${content}" showAddress="${true}" showPerson="${false}" addressJsonLd="${adrJsonLd}" />
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:location-vars>
-</mercury:contact-vars>
-</mercury:setting-defaults>
+</m:location-vars>
+</m:contact-vars>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

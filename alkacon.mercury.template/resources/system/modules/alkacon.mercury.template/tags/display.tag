@@ -31,7 +31,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:catch var="displayException">
@@ -76,25 +76,25 @@
         </c:set>
         <c:if test="${false}">
             <%-- Enable logging manually here if required --%>
-            <mercury:log message="${errorMsg}" exception="${displayException}" channel="error" />
+            <m:log message="${errorMsg}" exception="${displayException}" channel="error" />
         </c:if>
         <c:choose>
             <c:when test="${cms.isEditMode}">
-                <mercury:alert type="error">
+                <m:alert type="error">
                     <jsp:attribute name="head">
                         <fmt:message key="msg.error.display.head" />
                     </jsp:attribute>
                     <jsp:attribute name="text">
                         <c:out value="${errorMsg}" escapeXml="false" />
                     </jsp:attribute>
-                </mercury:alert>
+                </m:alert>
             </c:when>
             <c:otherwise>
-                <!--<mercury:nl />
+                <!--<m:nl />
                 <fmt:message key="msg.error.display.head" />
-                <mercury:nl />
+                <m:nl />
                 <c:out value="${errorMsg}" escapeXml="false" />
-                <mercury:nl />--><mercury:nl />
+                <m:nl />--><m:nl />
             </c:otherwise>
         </c:choose>
     </cms:bundle>

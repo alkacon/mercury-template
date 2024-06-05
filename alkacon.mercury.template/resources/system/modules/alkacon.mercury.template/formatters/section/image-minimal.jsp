@@ -8,9 +8,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 <cms:formatter var="content" val="value">
 
 <c:set var="setting"                value="${cms.element.setting}" />
@@ -30,25 +30,25 @@
         <%-- ###### No image: Output warning in offline version ###### --%>
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
-            <mercury:alert type="warning">
+            <m:alert type="warning">
                 <jsp:attribute name="head">
                     <fmt:message key="msg.page.noImage" />
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </cms:bundle>
     </c:when>
     <c:otherwise>
-        <mercury:link
+        <m:link
             link="${value.Link}"
             test="${showImageLink and not (cms.isEditMode and cms.modelGroupPage)}"
             setTitle="${true}"
             css="imglink" >
 
-            <mercury:image-simple image="${value.Image}" cssWrapper="${cssWrapper}" />
+            <m:image-simple image="${value.Image}" cssWrapper="${cssWrapper}" />
 
-        </mercury:link>
+        </m:link>
     </c:otherwise>
 </c:choose>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

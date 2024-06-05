@@ -8,11 +8,11 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
@@ -24,12 +24,12 @@
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 
-<mercury:teaser-accordion
+<m:teaser-accordion
     title="${value.Title}"
     contentId="${content.id}"
     cssWrapper="type-media">
 
-    <mercury:section-piece
+    <m:section-piece
         pieceLayout="${9}"
         sizeDesktop="${6}"
         sizeMobile="${12}"
@@ -41,16 +41,16 @@
         ade="${false}">
 
         <jsp:attribute name="markupVisual">
-            <mercury:media-box
+            <m:media-box
                 content="${content}"
                 ratio="${empty imageRatio ? '4-3' : imageRatio}"
                 showCopyright="${showImageCopyright}"
                 showMediaTime="${true}" />
         </jsp:attribute>
 
-    </mercury:section-piece>
+    </m:section-piece>
 
-</mercury:teaser-accordion>
+</m:teaser-accordion>
 </cms:bundle>
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

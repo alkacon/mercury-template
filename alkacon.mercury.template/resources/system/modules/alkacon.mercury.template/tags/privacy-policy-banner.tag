@@ -15,7 +15,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:if test="${not cms.isEditMode}">
@@ -23,16 +23,16 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:privacy-policy-vars locatePolicyFile="${true}" contentPropertiesSearch="${contentPropertiesSearch}">
+<m:privacy-policy-vars locatePolicyFile="${true}" contentPropertiesSearch="${contentPropertiesSearch}">
 
 <c:if test="${not empty policyFile}">
 
     <c:set var="hideBanner" value="${contentPropertiesSearch['mercury.privacy.policy.nobanner'] eq 'true'}" />
     <c:set var="fallbackPage" value="${cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.privacy.policy.fallback']}" />
 
-    <c:set var="policyFileBase64"><mercury:obfuscate text="${policyFile}" type="base64"/></c:set>
-    <c:set var="uriBase64"><mercury:obfuscate text="${contentUri}" type="base64"/></c:set>
-    <c:set var="rootBase64"><mercury:obfuscate text="${cms.requestContext.siteRoot}" type="base64"/></c:set>
+    <c:set var="policyFileBase64"><m:obfuscate text="${policyFile}" type="base64"/></c:set>
+    <c:set var="uriBase64"><m:obfuscate text="${contentUri}" type="base64"/></c:set>
+    <c:set var="rootBase64"><m:obfuscate text="${cms.requestContext.siteRoot}" type="base64"/></c:set>
 
     <%-- Generate banner data JSON --%>
     <cms:jsonobject var="bannerData">
@@ -43,14 +43,14 @@
             <cms:jsonvalue key="display" value="0" />
         </c:if>
         <c:if test="${not empty fallbackPage}">
-            <c:set var="fallbackBase64"><mercury:obfuscate text="${fallbackPage}" type="base64"/></c:set>
+            <c:set var="fallbackBase64"><m:obfuscate text="${fallbackPage}" type="base64"/></c:set>
             <cms:jsonvalue key="fallback" value="${fallbackBase64}" />
         </c:if>
     </cms:jsonobject>
 
     <div id="privacy-policy-placeholder"></div><%----%>
     <div id="privacy-policy-banner" class="pp-banner" data-banner='${bannerData.compact}'></div><%----%>
-    <mercury:nl />
+    <m:nl />
 
     <noscript><%----%>
         <div id="privacy-policy-banner-noscript" class="pp-banner"><%----%>
@@ -61,11 +61,11 @@
             </div><%----%>
         </div><%----%>
     </noscript><%----%>
-    <mercury:nl />
+    <m:nl />
 
 </c:if>
 
-</mercury:privacy-policy-vars>
+</m:privacy-policy-vars>
 
 </cms:bundle>
 

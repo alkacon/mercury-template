@@ -78,7 +78,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- ###### Initialize the webform ###### --%>
@@ -166,7 +166,7 @@
         <c:if test="${contactValidEmail}">
             <c:set var="contactEmail" value="${contactValue.Contact.value.Email.value.Email}" />
         </c:if>
-        <mercury:contact-vars content="${contactContent}">
+        <m:contact-vars content="${contactContent}">
             <c:set var="name" value="${valName}" />
             <c:set var="personname">
                 <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
@@ -176,7 +176,7 @@
                 <c:if test="${name.value.Suffix.isSet}">${' '}${name.value.Suffix}</c:if>
             </c:set>
             <c:set var="contactName" value="${valKind eq 'org' ? valOrganization : personname}" />
-        </mercury:contact-vars>
+        </m:contact-vars>
         <c:set var="contactForm">${detailContent.onlineLink}</c:set>
         <c:if test="${contactValidEmail}">
             ${form.adjustConfigValue("MailTo", contactEmail)}
@@ -210,7 +210,7 @@
 }" />
 
 <c:set var="formBookingHasFinalRegistrationDate" value="${booking.value.FinalRegistrationDate.isSet}" />
-<jsp:useBean id="now" class="java.util.Date" /> 
+<jsp:useBean id="now" class="java.util.Date" />
 <c:set var="formBookingRegistrationClosed" value="${
     formBookingHasFinalRegistrationDate and booking.value.FinalRegistrationDate.toDate < now
 }" />
@@ -220,7 +220,7 @@
     <c:set var="ignore" value="${registrationDateBean.setWholeDay(true)}" />
     <c:set var="dateFormat" value="${dateFormat eq 'none' ? 'fmt-LONG-DATE-TIME' : dateFormat}" />
     <c:set var="formBookingFinalRegistrationDateStr">
-        <mercury:instancedate date="${registrationDateBean}" format="${dateFormat}" />
+        <m:instancedate date="${registrationDateBean}" format="${dateFormat}" />
     </c:set>
 </c:if>
 

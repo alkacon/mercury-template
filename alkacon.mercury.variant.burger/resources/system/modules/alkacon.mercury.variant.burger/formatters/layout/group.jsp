@@ -8,7 +8,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.locale}" />
@@ -16,7 +16,7 @@
 
 <cms:formatter var="content" val="value">
 
-<mercury:layout-group
+<m:layout-group
     content="${content}"
     useAdditionalVariant="${value.Variant eq 'head-flex-bc'}">
 
@@ -29,7 +29,7 @@
         <c:set var="configElement">
             <c:if test="${showConfigElement}">
                  <c:set var="headerConfigTypeName"><fmt:message key="function.header-config" /></c:set>
-                <mercury:container type="header-config" name="header-config" title="${value.Title}" />
+                <m:container type="header-config" name="header-config" title="${value.Title}" />
             </c:if>
         </c:set>
 
@@ -97,7 +97,7 @@
                     <c:if test="${showMeta}">
                         <c:set var="linksequenceTypeName"><fmt:message key="type.m-linksequence.name" /></c:set>
                         <div class="h-meta"><%----%>
-                            <mercury:container
+                            <m:container
                                 type="linksequence-header"
                                 name="header-linksequence"
                                 css="container"
@@ -114,7 +114,7 @@
 
                 <c:set var="logoElement">
                     <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
-                    <mercury:container
+                    <m:container
                         type="image-minimal"
                         name="header-image"
                         css="${logoHidden ? 'h-logo' : 'h-logo p-xs-12 p-lg-'.concat(logoCols)}"
@@ -159,7 +159,7 @@
                             </c:when>
                         </c:choose>
 
-                        <mercury:image-vars image="${imageContent.value.Image}">
+                        <m:image-vars image="${imageContent.value.Image}">
                             <c:if test="${not empty imageHeight}">
                                 <c:set var="ir" value="${imageHeight / imageWidth}" />
                                 <c:choose>
@@ -177,11 +177,11 @@
                                     </c:otherwise>
                                 </c:choose>
                             </c:if>
-                        </mercury:image-vars>
+                        </m:image-vars>
                     </c:if>
                     <c:if test="${not empty pageTitle}">
                         <c:set var="titleElement">
-                            <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="h-title" />
+                            <m:heading level="${7}" ade="false" text="${pageTitle}" css="h-title" />
                         </c:set>
                     </c:if>
                 </c:if>
@@ -191,12 +191,12 @@
                         <div class="h-ac hidden-fixed"><%----%>
                             <div class="h-ac-co ${acHasPageSize ? 'container p-xs-12' : ''}"><%----%>
                                 <c:if test="${(showTitle eq 'ac-title') and not empty pageTitle}">
-                                    <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="h-ac-title container" />
+                                    <m:heading level="${7}" ade="false" text="${pageTitle}" css="h-ac-title container" />
                                 </c:if>
                                 <c:if test="${not acHasPageSize}">
                                     <c:set var="acParams" value="${{'cssgrid': 'fullwidth'}}" />
                                 </c:if>
-                                <mercury:container
+                                <m:container
                                     type="row"
                                     name="header-container"
                                     parameters="${acParams}"
@@ -213,7 +213,7 @@
                         <div class="h-bc"><%----%>
                             <c:set var="navContentPath" value="${navgationElements.get(0).sitePath}" />
                             <div class="container"><%----%>
-                                <mercury:display
+                                <m:display
                                     file="${navContentPath}"
                                     formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/navigation/breadcrumbs.xml:944e72a0-4e06-11e9-bf9f-0242ac11002b)"
                                     settings="${{
@@ -224,15 +224,15 @@
                                 />
                             </div>
                         </div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </c:if>
                 </c:set>
 
                 <c:set var="navElement">
-                    <mercury:nl />
+                    <m:nl />
                     <c:set var="navTypeName"><fmt:message key="type.m-navigation.name" /></c:set>
                     <div class="h-nav" id="nav-toggle-group"><%----%>
-                        <mercury:container
+                        <m:container
                             type="nav-main"
                             name="header-nav-main"
                             css="nav-main-container"
@@ -243,14 +243,14 @@
                                 'configVariant':    'burger'
                             }}"
                         />
-                        <mercury:nl />
+                        <m:nl />
                         <div class="head-overlay"></div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </div><%----%>
-                    <mercury:nl />
+                    <m:nl />
                 </c:set>
 
-                <mercury:nl />
+                <m:nl />
                 <header class="area-header bh header-notfixed <%----%>
                     ${logoAlignment}${' '}
                     ${logoSize}${' '}
@@ -266,7 +266,7 @@
                     ${addBottomMargin ? ' has-margin' : ' no-margin'}
                     ${cssWrapper}
                     ${not empty addCssWrapper ? ' '.concat(addCssWrapper) : ''}"><%----%>
-                    <mercury:nl />
+                    <m:nl />
 
                     ${configElement}
 
@@ -274,7 +274,7 @@
 
                         <div class="head notfixed"><%----%>
 
-                            <mercury:nl />
+                            <m:nl />
 
                             <%--
                                 Attention: The order in which the containers have been created above
@@ -323,40 +323,40 @@
                         </div><%----%>
 
                     </div><%----%>
-                    <mercury:nl />
+                    <m:nl />
 
                     ${breadcrumbElement}
 
                     ${navElement}
 
                 </header><%----%>
-                <mercury:nl />
+                <m:nl />
 
             </c:when>
 
             <c:when test="${showConfigElement}">
                 <fmt:setLocale value="${cms.workplaceLocale}" />
-                <mercury:nl />
+                <m:nl />
                 <header class="area-header fh title-center">
 
                     ${configElement}
 
-                    <mercury:alert type="warning">
+                    <m:alert type="warning">
                         <jsp:attribute name="head">
                             <fmt:message key="msg.page.header.no-config" />
                         </jsp:attribute>
                         <jsp:attribute name="text">
                             <fmt:message key="msg.page.header.no-config.help" />
                         </jsp:attribute>
-                    </mercury:alert>
+                    </m:alert>
 
                 </header>
-                <mercury:nl />
+                <m:nl />
             </c:when>
 
             <c:when test="${cms.isEditMode}">
                 <fmt:setLocale value="${cms.workplaceLocale}" />
-                <mercury:alert type="error">
+                <m:alert type="error">
                     <jsp:attribute name="head">
                         ${cms.reloadMarker}
                         <fmt:message key="msg.page.mustReload" />
@@ -364,14 +364,14 @@
                     <jsp:attribute name="text">
                         <fmt:message key="msg.page.mustReload.hint2" />
                     </jsp:attribute>
-                </mercury:alert>
+                </m:alert>
             </c:when>
 
         </c:choose>
 
     </jsp:attribute>
 
-</mercury:layout-group>
+</m:layout-group>
 
 </cms:formatter>
 </cms:bundle>

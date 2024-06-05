@@ -9,7 +9,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%@ attribute name="renderMetaTags" type="java.lang.Boolean" required="true"
@@ -88,7 +88,7 @@
                 </c:choose>
                 <c:if test="${not empty targetLink}">
                     <%-- Output of alternate language link --%>
-                    <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}"><mercury:nl /><%----%>
+                    <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}"><m:nl /><%----%>
                     <c:if test="${hasRequestLocale and (targetLocale eq param.__locale)}">
                         <c:set var="canonicalURL" value="${targetLink}" />
                     </c:if>
@@ -130,14 +130,14 @@
     <c:if test="${renderMetaTags}">
         <%-- Output the canonical URL --%>
         <link rel="canonical" href="${canonicalURL}"><%----%>
-        <mercury:nl />
-        <mercury:nl />
+        <m:nl />
+        <m:nl />
 
         <c:if test="${not empty hreflangURLs}">
             <%-- Output the hreflang links --%>
             ${hreflangURLs}
-            <mercury:nl />
-            <mercury:nl />
+            <m:nl />
+            <m:nl />
         </c:if>
     </c:if>
 

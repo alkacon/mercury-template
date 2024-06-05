@@ -5,22 +5,22 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
 
-<c:set var="policyfile"><mercury:obfuscate text="${param.policy}" type="base64dec" /></c:set>
+<c:set var="policyfile"><m:obfuscate text="${param.policy}" type="base64dec" /></c:set>
 <%-- Note: Using c:out to XML escape the parameters again, since the transmission was base64 encoded so cms:secureparams has no effect --%>
 <c:set var="policyfile"><c:out value="${policyfile}"/></c:set>
-<c:set var="page"><mercury:obfuscate text="${param.page}" type="base64dec" /></c:set>
+<c:set var="page"><m:obfuscate text="${param.page}" type="base64dec" /></c:set>
 <c:set var="page"><c:out value="${page}"/></c:set>
-<c:set var="siteRoot"><mercury:obfuscate text="${param.root}" type="base64dec" /></c:set>
+<c:set var="siteRoot"><m:obfuscate text="${param.root}" type="base64dec" /></c:set>
 <c:set var="siteRoot"><c:out value="${siteRoot}"/></c:set>
 <c:set var="isMercury" value="${empty param.template or (param.template eq 'mercury')}" />
 
 <c:if test="${not empty policyfile and not empty siteRoot}">
-    <mercury:set-siteroot siteRoot="${siteRoot}" />
+    <m:set-siteroot siteRoot="${siteRoot}" />
     <c:set var="policyRes" value="${cms.vfs.readResource[policyfile]}" />
     <c:if test="${(not empty policyRes) and isMercury and (policyRes.typeName ne 'm-privacypolicy')}">
         <%-- policy file is not of the required type, try to find matching type --%>
@@ -35,7 +35,7 @@
         <cms:addparams>
             <cms:param name="template" value="mercury" />
             <cms:param name="path" value="${page}" />
-            <mercury:display
+            <m:display
                 file="${policyfile}"
                 baseUri="${page}"
             />

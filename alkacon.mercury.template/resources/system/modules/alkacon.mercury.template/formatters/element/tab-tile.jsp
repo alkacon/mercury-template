@@ -9,17 +9,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.workplaceLocale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="visualOption"           value="${setting.visualOption.toString}" />
@@ -42,7 +42,7 @@
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<c:set var="parentId"><mercury:idgen prefix="a" uuid="${cms.element.instanceId}" /></c:set>
+<c:set var="parentId"><m:idgen prefix="a" uuid="${cms.element.instanceId}" /></c:set>
 
 <c:choose>
     <c:when test="${itemsLarge eq 2}">
@@ -86,13 +86,13 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:nl />
+<m:nl />
 <div class="element type-tab variant-tile-accordion${showButton ? ' show-button' : ' hide-button'}${showBorder ? ' show-border' : ''}${textBelow ? ' text-below' : ''}${setCssWrapper123}"><%----%>
-<mercury:nl />
+<m:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
+    <m:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
 
-    <mercury:alert test="${cms.isEditMode and content.valueList.TabEntry.size() > 12}" type="warning">
+    <m:alert test="${cms.isEditMode and content.valueList.TabEntry.size() > 12}" type="warning">
         <jsp:attribute name="head">
             <fmt:message key="msg.error.tab.itemcount.head" />
         </jsp:attribute>
@@ -101,7 +101,7 @@
                 <fmt:param>${content.valueList.TabEntry.size()}</fmt:param>
             </fmt:message>
         </jsp:attribute>
-    </mercury:alert>
+    </m:alert>
 
     <div class="tile-accordion collapse-parent row ${rowWrapper}" id="${parentId}"><%----%>
 
@@ -110,7 +110,7 @@
             <c:set var="open"               value="${firstOpen and status.first}" />
             <c:set var="itemId"             value="${parentId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}" />
 
-            <mercury:nl />
+            <m:nl />
 
             <span class="collapse-trigger ${tileBtnBgColor}${' '}${triggerColCss}${open ? '':' collapsed'}" <%--
                 --%>data-bs-toggle="collapse" type="button" <%--
@@ -120,12 +120,12 @@
                 <c:if test="${cms.isEditMode}">
                     <a href="#${itemId}" class="hash-link"><%----%>
                         <span class="badge oct-meta-info"><%----%>
-                            <mercury:icon icon="hashtag" tag="span" />
+                            <m:icon icon="hashtag" tag="span" />
                         </span><%----%>
                     </a><%----%>
                 </c:if>
 
-                <mercury:tile-col
+                <m:tile-col
                     tileWrapper="trigger-item tile-col col-12 freefloat"
                     boxWrapper="${tileEffect}"
                     overlayWrapper="${overlayWrapper}${' '}${tileTextBgColor}"
@@ -143,7 +143,7 @@
             </span><%----%>
 
             <div id="${itemId}" class="collapse-target acco-body collapse ${targetColCss}${' '}${open ? 'show' : ''}" data-bs-parent="#${parentId}"><%----%>
-                <mercury:container
+                <m:container
                     title="${msg}"
                     css="collapse-container"
                     name="${tabEntry.value.Id}"
@@ -153,18 +153,18 @@
                 />
             </div><%----%>
 
-            <mercury:nl />
+            <m:nl />
 
         </c:forEach>
 
     </div><%----%>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

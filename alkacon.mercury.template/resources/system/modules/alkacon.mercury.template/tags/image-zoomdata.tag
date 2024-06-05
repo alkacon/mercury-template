@@ -31,7 +31,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:if test="${(not empty width) and (not empty height)}">
@@ -54,7 +54,7 @@
             </c:when>
             <c:when test="${(width gt 2500) or (height gt 2500)}">
                 <%-- The image may be to large for the image scaler, check this and if so use a smaller image --%>
-                <mercury:image-sizes>
+                <m:image-sizes>
                     <c:if test="${(width gt maxScaleWidth) or (height gt maxScaleWidth)}">
                         <c:set var="scale" value="${width gt height ? (maxScaleWidth / width) : (maxScaleWidth / height)}" />
                         <c:set var="scaledImage" value="${imageBean.scaleWidth[cms.wrap[width * scale].mathFloor]}" />
@@ -62,7 +62,7 @@
                         <c:set var="width" value="${imageBean.scaler.width}" />
                         <c:set var="height" value="${imageBean.scaler.height}" />
                     </c:if>
-                </mercury:image-sizes>
+                </m:image-sizes>
             </c:when>
         </c:choose>
     </c:if>

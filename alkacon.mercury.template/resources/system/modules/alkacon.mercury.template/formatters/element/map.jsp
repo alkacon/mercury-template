@@ -9,18 +9,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
 <cms:formatter var="content" val="value">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="provider"               value="${setting.mapProvider.validate(['osm','google'],'google').toString}" />
 <c:set var="pieceLayout"            value="${10}" />
@@ -55,7 +55,7 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:section-piece
+<m:section-piece
     cssWrapper="element type-map map-${provider}${setCssWrapperAll}"
     cssVisual="map-visual"
     pieceLayout="${pieceLayout}"
@@ -66,7 +66,7 @@
 
     <jsp:attribute name="markupVisual">
 
-        <c:set var="id"><mercury:idgen prefix='map' uuid='${cms.element.instanceId}' /></c:set>
+        <c:set var="id"><m:idgen prefix='map' uuid='${cms.element.instanceId}' /></c:set>
 
         <%-- Collects all map marker groups found, this is a Map since we can not add elements to lists in EL --%>
         <jsp:useBean id="markerGroups"  class="java.util.LinkedHashMap" />
@@ -74,7 +74,7 @@
         <jsp:useBean id="coordBean"     class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
 
         <c:forEach var="poi" items="${content.valueList.MapPoi}" varStatus="status">
-            <mercury:location-vars data="${poi.value.PoiLink}" addMapInfo="true" >
+            <m:location-vars data="${poi.value.PoiLink}" addMapInfo="true" >
 
                 <c:if test="${not empty locData}">
                     <c:set var="markerGroup" value="${poi.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(poi.value.MarkerGroup)}" />
@@ -84,7 +84,7 @@
                     <c:set var="ignore" value="${markerList.add(locData)}" />
                 </c:if>
 
-            </mercury:location-vars>
+            </m:location-vars>
         </c:forEach>
 
         <c:forEach var="marker" items="${content.valueList.MapCoord}" varStatus="status">
@@ -119,7 +119,7 @@
 
         </c:forEach>
 
-        <mercury:map
+        <m:map
              provider="${provider}"
              id="${id}"
              ratio="${cms.element.setting.mapRatio}"
@@ -137,25 +137,25 @@
                 <button class="btn btn-sm" onclick="${jsMapObj}.showMarkers('${id}','showall');"><%----%>
                     <fmt:message key="msg.page.map.button.showmarkers" />
                 </button><%----%>
-                <mercury:nl />
+                <m:nl />
                 <c:forEach var="markerGroup" items="${markerGroups}">
                     <button class="btn btn-sm blur-focus" onclick="${jsMapObj}.showMarkers('${id}', '${cms:encode(markerGroup.key)}');"><%----%>
                         <fmt:message key="msg.page.map.button.show">
                             <fmt:param><c:out value="${markerGroup.key}" /></fmt:param>
                         </fmt:message>
                     </button><%----%>
-                    <mercury:nl />
+                    <m:nl />
                 </c:forEach>
             </div><%----%>
         </c:if>
 
     </jsp:attribute>
 
-</mercury:section-piece>
+</m:section-piece>
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

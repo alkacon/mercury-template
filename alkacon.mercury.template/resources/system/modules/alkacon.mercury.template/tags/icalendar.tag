@@ -36,7 +36,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${locale}" />
@@ -63,7 +63,7 @@
 </c:if>
 
 <c:set var="fullname">${title}-<fmt:formatDate value="${cms:convertDate(dateStart)}" pattern="yyyy-MM-dd" /></c:set>
-<mercury:set-content-disposition name="${fullname}" suffix=".ics" />
+<m:set-content-disposition name="${fullname}" suffix=".ics" />
 
 BEGIN:VCALENDAR
 PRODID:${cms.requestContext.requestMatcher}

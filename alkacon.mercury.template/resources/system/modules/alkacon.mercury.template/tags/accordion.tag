@@ -30,10 +30,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-    <mercury:nl />
+    <m:nl />
     <article class="accordion${not empty cssWrapper ? ' '.concat(cssWrapper) : ''}"><%----%>
         ${'<h'}${tabHsize} class="acco-header pivot"${'>'}
 
@@ -42,13 +42,13 @@
             --%>aria-expanded="${open}" <%--
             --%>aria-controls="${tabId}" <%--
             --%>data-bs-target="#${tabId}"><%----%>
-                <mercury:out value="${tabLabel}" lenientEscaping="${true}" />
+                <m:out value="${tabLabel}" lenientEscaping="${true}" />
             </button><%----%>
 
             <c:if test="${cms.isEditMode}">
                 <a href="#${tabId}" class="hash-link"><%----%>
                     <span class="badge oct-meta-info"><%----%>
-                        <mercury:icon icon="hashtag" tag="span" />
+                        <m:icon icon="hashtag" tag="span" />
                     </span><%----%>
                 </a><%----%>
             </c:if>
@@ -62,5 +62,5 @@
 
         </div><%----%>
     </article><%----%>
-    <mercury:nl />
+    <m:nl />
 

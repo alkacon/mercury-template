@@ -8,15 +8,15 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages>
+<m:init-messages>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="slotText"       value="${setting.slotText.toString}" />
 <c:set var="slotButton"     value="${setting.slotButton.toString}" />
@@ -31,12 +31,12 @@
     </c:when>
     <c:when test="${fn:startsWith(slotButton, 'icon:')}">
         <c:set var="icon" value="${fn:substringAfter(slotButton, 'icon:')}" />
-        <c:set var="slotButton"><mercury:icon icon="${icon}" tag="span" cssWrapper="icon-image" inline="${true}" /></c:set>
+        <c:set var="slotButton"><m:icon icon="${icon}" tag="span" cssWrapper="icon-image" inline="${true}" /></c:set>
     </c:when>
 </c:choose>
 
 <div class="element type-search-slot pivot${setCssWrapperAll}"><%----%>
-    <mercury:nl/>
+    <m:nl/>
 
     <c:set var="searchPageUri" value="${cms.functionDetailPageExact['Search page']}" />
     <c:if test="${not fn:startsWith(searchPageUri, '/')}">
@@ -45,11 +45,11 @@
 
     <c:choose>
     <c:when test="${empty searchPageUri and cms.isEditMode}">
-        <mercury:alert type="warning">
+        <m:alert type="warning">
             <jsp:attribute name="head">
                 <fmt:message key="msg.page.search.nofunction" />
             </jsp:attribute>
-        </mercury:alert>
+        </m:alert>
     </c:when>
     <c:when test="${empty searchPageUri and not cms.isEditMode}">
         <!-- <fmt:message key="msg.page.search.nofunction" /> --><%----%>
@@ -82,15 +82,15 @@
                 </div><%----%>
 
         </form><%----%>
-        <mercury:nl />
+        <m:nl />
 
     </c:otherwise>
     </c:choose>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
-</mercury:init-messages>
+</m:init-messages>

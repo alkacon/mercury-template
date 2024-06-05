@@ -10,7 +10,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="setting"                value="${cms.element.setting}" />
@@ -33,7 +33,7 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:nl />
+<m:nl />
 <c:choose>
     <c:when test="${(not empty sourceSite) and not (currentSite eq sourceSite)}">
         <c:set var="sourceSiteProps" value="${cms.vfs.readProperties[sourceSite]}" />
@@ -45,30 +45,30 @@
         </div><%----%>
     </c:when>
     <c:when test="${isSharedFolder and empty sourceSite and cms.isEditMode}">
-        <mercury:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
+        <m:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.sourcesite.shared" />
             </jsp:attribute>
-        </mercury:alert-meta>
+        </m:alert-meta>
     </c:when>
     <c:when test="${empty sourceSite and cms.isEditMode}">
-        <mercury:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
+        <m:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.sourcesite.unknown" />
             </jsp:attribute>
-        </mercury:alert-meta>
+        </m:alert-meta>
     </c:when>
     <c:when test="${cms.isEditMode}">
-        <mercury:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
+        <m:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.sourcesite.same" />
             </jsp:attribute>
-        </mercury:alert-meta>
+        </m:alert-meta>
     </c:when>
     <c:otherwise>
         <!-- <fmt:message key="msg.page.sourcesite.same" />  --><%----%>
     </c:otherwise>
 </c:choose>
-<mercury:nl />
+<m:nl />
 
 </cms:bundle>

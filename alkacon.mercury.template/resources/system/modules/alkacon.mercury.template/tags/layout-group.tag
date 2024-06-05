@@ -31,7 +31,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <fmt:setLocale value="${cms.workplaceLocale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -48,7 +48,7 @@
 
 <c:if test="${(isSideGroup and isSideContainer) or (not isSideGroup and not isSideContainer)}">
 
-<mercury:container-box label="${value.Title}" boxType="model-start" />
+<m:container-box label="${value.Title}" boxType="model-start" />
 
 <c:choose>
 
@@ -65,7 +65,7 @@
         <c:set var="configElement">
             <c:if test="${showConfigElement}">
                 <c:set var="headerConfigTypeName"><fmt:message key="function.header-config" /></c:set>
-                <mercury:container
+                <m:container
                     type="header-config"
                     name="header-config"
                     title="${value.Title}"
@@ -148,7 +148,7 @@
                             </button><%----%>
                         </span><%----%>
                     </div><%----%>
-                    <mercury:nl />
+                    <m:nl />
                 </c:set>
 
                 <%--
@@ -161,7 +161,7 @@
                 <c:if test="${showMetaAside}">
                     <c:set var="logoElement">
                         <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
-                        <mercury:container
+                        <m:container
                             type="image-minimal"
                             name="header-image"
                             css="h-logo p-xs-12 p-lg-${logoCols}"
@@ -176,9 +176,9 @@
 
                 <c:set var="metaLinkElement">
                     <c:if test="${showMeta}">
-                        <mercury:div css="h-meta" test="${not showMetaAside}">
+                        <m:div css="h-meta" test="${not showMetaAside}">
                             <c:set var="linksequenceTypeName"><fmt:message key="type.m-linksequence.name" /></c:set>
-                            <mercury:container
+                            <m:container
                                 type="linksequence-header"
                                 name="header-linksequence"
                                 css="${not showMetaAside ? 'co-lg-xl' : 'h-meta'}"
@@ -189,14 +189,14 @@
                                     'hsize' :           '0'
                                 }}"
                             />
-                        </mercury:div>
+                        </m:div>
                     </c:if>
                 </c:set>
 
                 <c:if test="${not showMetaAside}">
                     <c:set var="logoElement">
                         <c:set var="sectionTypeName"><fmt:message key="type.m-section.name" /></c:set>
-                        <mercury:container
+                        <m:container
                             type="image-minimal"
                             name="header-image"
                             css="${logoHidden ? 'h-logo' : 'h-logo p-xs-12 p-lg-'.concat(logoCols)}"
@@ -238,18 +238,18 @@
                                 <c:set var="rval"      value="${not empty cSP['mercury.sitename'] ? cSP['mercury.sitename'] : cSP['Title'] }" />
                                 <c:set var="pageTitle" value="${fn:replace(pageTitle, '%(cms.siteTitle)', rval)}" />
                             </c:if>
-                            <mercury:div css="h-title" test="${not showTitleAside}">
-                                <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="${not showTitleAside ? 'co-lg-xl' : 'h-title'}" />
-                            </mercury:div>
+                            <m:div css="h-title" test="${not showTitleAside}">
+                                <m:heading level="${7}" ade="false" text="${pageTitle}" css="${not showTitleAside ? 'co-lg-xl' : 'h-title'}" />
+                            </m:div>
                         </c:if>
                     </c:if>
                 </c:set>
 
                 <c:set var="navBarElement">
                      <div class="h-nav"><%----%>
-                        <mercury:div css="co-lg-xl" test="${not showNavAside}">
+                        <m:div css="co-lg-xl" test="${not showNavAside}">
                             <c:set var="navTypeName"><fmt:message key="type.m-navigation.name" /></c:set>
-                            <mercury:container
+                            <m:container
                                 type="nav-main"
                                 name="header-nav-main"
                                 css="nav-main-container"
@@ -259,25 +259,25 @@
                                     'configVariant':    'default'
                                 }}"
                             />
-                        </mercury:div>
+                        </m:div>
                     </div><%----%>
-                    <mercury:nl />
+                    <m:nl />
                 </c:set>
 
                 <c:if test="${showAddContainer}">
                     <c:set var="addContainerElement">
-                        <mercury:div css="h-ac" test="${acHasPageSize}">
+                        <m:div css="h-ac" test="${acHasPageSize}">
                             <c:if test="${not acHasPageSize}">
                                 <c:set var="acParams" value="${{'cssgrid': 'fullwidth'}}" />
                             </c:if>
-                            <mercury:container
+                            <m:container
                                 type="row"
                                 name="header-container"
                                 parameters="${acParams}"
                                 css="${acHasPageSize ? (acOnMobile ? 'container' : 'co-lg-xl p-xs-12') : 'h-ac'}"
                                 title="${value.Title}"
                             />
-                        </mercury:div>
+                        </m:div>
                     </c:set>
                 </c:if>
 
@@ -285,7 +285,7 @@
                     <c:if test="${showBreadcrumbs and ((not empty cms.elementsInContainers['breadcrumbs']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="h-bc"><%----%>
                             <c:set var="navTypeName"><fmt:message key="type.m-navigation.name" /></c:set>
-                            <mercury:container
+                            <m:container
                                 type="nav-breadcrumbs"
                                 name="header-breadcrumbs"
                                 css="container"
@@ -293,11 +293,11 @@
                                 settings="${noWrapper}"
                             />
                         </div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </c:if>
                 </c:set>
 
-                <mercury:nl />
+                <m:nl />
                 <header class="area-header fh header-notfixed <%----%>
                     ${logoAlignment}${' '}
                     ${logoSize}${' '}
@@ -317,7 +317,7 @@
                     ${addBottomMargin ? ' has-margin' : ' no-margin'}
                     ${cssWrapper}
                     ${not empty addCssWrapper ? ' '.concat(addCssWrapper) : ''}"><%----%>
-                    <mercury:nl />
+                    <m:nl />
 
                     ${configElement}
 
@@ -327,7 +327,7 @@
 
                         <div class="head notfixed"><%----%>
                             <div class="head-overlay"></div><%----%>
-                            <mercury:nl />
+                            <m:nl />
 
                             <%--
                                 Attention: The order in which the containers have been created above
@@ -370,37 +370,37 @@
 
                         </div><%----%>
                     </div><%----%>
-                    <mercury:nl />
+                    <m:nl />
 
                     ${breadcrumbElement}
 
                 </header><%----%>
-                <mercury:nl />
+                <m:nl />
 
             </c:when>
 
             <c:when test="${showConfigElement}">
-                <mercury:nl />
+                <m:nl />
                 <header class="area-header fh title-center">
 
                     ${configElement}
 
-                    <mercury:alert type="warning">
+                    <m:alert type="warning">
                         <jsp:attribute name="head">
                             <fmt:message key="msg.page.header.no-config" />
                         </jsp:attribute>
                         <jsp:attribute name="text">
                             <fmt:message key="msg.page.header.no-config.help" />
                         </jsp:attribute>
-                    </mercury:alert>
+                    </m:alert>
 
                 </header>
-                <mercury:nl />
+                <m:nl />
             </c:when>
 
             <c:when test="${cms.isEditMode}">
 
-                <mercury:alert type="error">
+                <m:alert type="error">
                     <jsp:attribute name="head">
                         ${cms.reloadMarker}
                         <fmt:message key="msg.page.mustReload" />
@@ -408,7 +408,7 @@
                     <jsp:attribute name="text">
                         <fmt:message key="msg.page.mustReload.hint2" />
                     </jsp:attribute>
-                </mercury:alert>
+                </m:alert>
 
             </c:when>
         </c:choose>
@@ -442,9 +442,9 @@
             </c:when>
         </c:choose>
 
-        <mercury:nl />
+        <m:nl />
         <header class="area-header logo-left${cssWrapper}"><%----%>
-            <mercury:nl />
+            <m:nl />
 
             <div id="nav-toggle-group"><%----%>
                 <span id="nav-toggle-label"><%----%>
@@ -456,16 +456,16 @@
                 </span><%----%>
                 <div class="head-overlay"></div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
 
             <div class="header-group ${fixHeader}"><%----%>
                 <div class="head notfixed"><%----%>
 
-                    <mercury:nl />
+                    <m:nl />
                     <div class="container"><%----%>
                         <div class="row"><%----%>
 
-                            <mercury:container
+                            <m:container
                                 type="image-minimal"
                                 name="header-image"
                                 css="col col-head-logo"
@@ -477,7 +477,7 @@
                             />
 
                             <div class="col col-head-info"><%----%>
-                                <mercury:container
+                                <m:container
                                     type="linksequence"
                                     name="header-linksequence"
                                     css="header-links-bg"
@@ -502,11 +502,11 @@
                                         </c:otherwise>
                                     </c:choose>
                                     <c:set var="pageTitle" value="${fn:replace(imagecontent.value.Title.resolveMacros, '%(cms.title)', pagetitle)}" />
-                                    <mercury:heading level="${7}" ade="false" text="${pageTitle}" css="header-title hidden-fixed" />
+                                    <m:heading level="${7}" ade="false" text="${pageTitle}" css="header-title hidden-fixed" />
                                 </c:if>
 
                                 <c:if test="${not showNavBarFullWith}">
-                                    <mercury:container
+                                    <m:container
                                         type="nav-main"
                                         name="navbar"
                                         css="nav-main-container"
@@ -515,15 +515,15 @@
                                 </c:if>
 
                             </div><%----%>
-                            <mercury:nl />
+                            <m:nl />
 
                         </div><%----%>
                     </div><%----%>
-                    <mercury:nl />
+                    <m:nl />
 
                     <c:if test="${showNavBarFullWith and ((not empty cms.elementsInContainers['header-visual-top']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                         <div class="visual-top-bg"><%----%>
-                            <mercury:container
+                            <m:container
                                 type="header-visual"
                                 name="header-visual-top"
                                 css="container"
@@ -534,13 +534,13 @@
                                 }}"
                             />
                         </div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </c:if>
 
                     <c:if test="${showTopVisual}">
                         <div class="nav-main-bg pull-up-fixed"><%----%>
                             <div class="container"><%----%>
-                                <mercury:container
+                                <m:container
                                     type="nav-main"
                                     name="navbar"
                                     css="nav-main-container"
@@ -548,35 +548,35 @@
                                 />
                             </div><%----%>
                         </div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </c:if>
 
                 </div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
 
             <c:if test="${showBreadcrumbs and ((not empty cms.elementsInContainers['breadcrumbs']) or cms.modelGroupElement or not cms.element.modelGroup)}">
                 <div class="breadcrumbs-bg">
-                    <mercury:container
+                    <m:container
                         type="nav-breadcrumbs"
                         name="breadcrumbs"
                         css="container"
                         title="${value.Title}"
                     />
                 </div>
-                <mercury:nl />
+                <m:nl />
             </c:if>
 
         </header><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:when>
 
     <c:when test="${variant eq 'foot-v1'}">
-        <mercury:nl />
+        <m:nl />
         <footer class="area-foot${cssWrapper}"><%----%>
 
             <div class="topfoot"><%----%>
-                <mercury:container
+                <m:container
                     type="row"
                     name="topfoot"
                     css="container area-wide"
@@ -584,7 +584,7 @@
                 />
             </div><%----%>
             <div class="subfoot no-external"><%----%>
-                <mercury:container
+                <m:container
                     type="row"
                     name="subfoot"
                     css="container area-wide"
@@ -593,15 +593,15 @@
             </div><%----%>
 
         </footer><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:when>
 
     <c:when test="${variant eq 'foot-v2'}">
-        <mercury:nl />
+        <m:nl />
         <footer class="area-foot${cssWrapper}"><%----%>
 
             <div class="subfoot no-external"><%----%>
-                <mercury:container
+                <m:container
                     type="row"
                     name="subfoot"
                     css="container area-wide"
@@ -610,22 +610,22 @@
             </div><%----%>
 
         </footer><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:when>
 
     <c:when test="${variant eq 'side-group'}">
-        <mercury:nl />
-            <mercury:container
+        <m:nl />
+            <m:container
                 type="element"
                 name="side-group"
                 css="side-group"
                 title="${value.Title}"
             />
-        <mercury:nl />
+        <m:nl />
     </c:when>
 
     <c:otherwise>
-        <mercury:alert type="error">
+        <m:alert type="error">
             <jsp:attribute name="head">
                 <fmt:message key="msg.page.layout.group.nomatch.title">
                     <fmt:param>${value.Title}</fmt:param>
@@ -634,12 +634,12 @@
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.layout.group.nomatch.text" />
             </jsp:attribute>
-        </mercury:alert>
+        </m:alert>
     </c:otherwise>
 
 </c:choose>
 
-<mercury:container-box label="${value.Title}" boxType="model-end" />
+<m:container-box label="${value.Title}" boxType="model-end" />
 
 </c:if>
 

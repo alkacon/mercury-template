@@ -8,14 +8,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
-<mercury:teaser-settings content="${content}">
+<m:teaser-settings content="${content}">
 
 <c:set var="title"                  value="${value.Title}" />
 
@@ -42,14 +42,14 @@
 <c:set var="hsize"                  value="${showTitle and title.isSet ? hsizeTitle + 1 : hsizeTitle}" />
 
 
-<mercury:contact-vars
+<m:contact-vars
     content="${content}"
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
 
 <c:set var="linkTarget"             value="${(setLinkOption ne 'none') and (linkTarget ne 'none') ? (linkTarget eq 'detail' ? linkToDetail : value.Link) : null}" />
 
-<mercury:teaser-piece
+<m:teaser-piece
     cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     attrWrapper="${kind}"
     headline="${showTitle ? title : null}"
@@ -65,7 +65,7 @@
 
     <jsp:attribute name="markupVisual">
         <c:if test="${setShowVisual}">
-            <mercury:contact
+            <m:contact
                 kind="${valKind}"
                 image="${value.Image}"
                 name="${valKind eq 'org' ? null : valName}"
@@ -80,7 +80,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="markupBody">
-        <mercury:contact
+        <m:contact
             kind="${valKind}"
             name="${valName}"
             position="${valPosition}"
@@ -108,9 +108,9 @@
         />
     </jsp:attribute>
 
-</mercury:teaser-piece>
-</mercury:contact-vars>
+</m:teaser-piece>
+</m:contact-vars>
 
-</mercury:teaser-settings>
+</m:teaser-settings>
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

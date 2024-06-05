@@ -19,15 +19,15 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:nl />
+<m:nl />
 <div class="element type-privacy-policy pp-settings pivot ${cssWrapper}"><%----%>
-<mercury:nl />
+<m:nl />
 
 <div class="pp-toggle pp-toggle-technical animated"><%----%>
     <input id="cookies-accepted-technical" type="checkbox" class="toggle-check" checked disabled><%----%>
@@ -42,7 +42,7 @@
     </label><%----%>
     <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.technical" /></div><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 <div class="pp-toggle pp-toggle-external animated"><%----%>
     <input id="cookies-accepted-external" type="checkbox" class="toggle-check optional"><%----%>
@@ -57,7 +57,7 @@
     </label><%----%>
     <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></div><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 <div class="pp-toggle pp-toggle-statistical animated"><%----%>
     <input id="cookies-accepted-statistical" type="checkbox" class="toggle-check optional"><%----%>
@@ -72,7 +72,7 @@
     </label><%----%>
     <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></div><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 <c:if test="${not empty contentPropertiesSearch and not empty policyFile and policyFile ne 'none'}">
     <c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
@@ -123,12 +123,12 @@
                 </div><%----%>
             </c:otherwise>
         </c:choose>
-        <mercury:nl />
+        <m:nl />
 
     </c:if>
 </c:if>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 </cms:bundle>

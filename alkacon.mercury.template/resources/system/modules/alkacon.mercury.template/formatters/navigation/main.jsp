@@ -8,9 +8,9 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages>
+<m:init-messages>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -37,8 +37,8 @@
 
 <nav class="nav-main-group ${logoImage.value.Image.isSet ? 'has-sidelogo ' : ''}${cssWrapper}"><%----%>
 
-    <mercury:nav-vars params="${param}">
-    <mercury:nav-items
+    <m:nav-vars params="${param}">
+    <m:nav-items
         type="forSite"
         content="${content}"
         currentPageFolder="${currentPageFolder}"
@@ -55,21 +55,21 @@
             <c:otherwise>
                 <div class="nav-main-mobile-logo"><%----%>
                     <c:if test="${(cssWrapper ne 'no-image') and (not empty logoImage)}">
-                        <mercury:link
+                        <m:link
                             link="${logoContent.value.Link}"
                             test="${showImageLink}"
                             testFailTag="div"
                             setTitle="${true}"
                             css="mobile-logolink" >
-                            <mercury:image-simple
+                            <m:image-simple
                                 image="${logoImage}"
                                 sizes="100,200,400,800"
                                 cssWrapper="img-responsive"
                             />
-                        </mercury:link>
+                        </m:link>
                     </c:if>
                 </div><%----%>
-                <mercury:nl />
+                <m:nl />
             </c:otherwise>
         </c:choose>
 
@@ -90,9 +90,9 @@
                             <li id="nav-main-addition" class="expand hidden-lg-up"><%----%>
                                 <a href="#" aria-controls="nav_nav-main-addition" id="label_nav-main-addition">${metaLinksContent.value.Title}</a><%----%>
                                 <ul class="nav-menu" id="nav_nav-main-addition" aria-labelledby="label_nav-main-addition"><%----%>
-                                    <mercury:nl />
+                                    <m:nl />
                                     <c:forEach var="link" items="${metaLinksContent.valueList.LinkEntry}" varStatus="status">
-                                         <li><mercury:link-icon link="${link}" /></li><mercury:nl />
+                                         <li><m:link-icon link="${link}" /></li><m:nl />
                                     </c:forEach>
                                 </ul><%----%>
                             </li><%----%>
@@ -103,12 +103,12 @@
         </c:if>
 
         <c:set var="navPluginHtml">
-            <mercury:load-plugins group="nav-main-additions" type="jsp-nocache" />
+            <m:load-plugins group="nav-main-additions" type="jsp-nocache" />
         </c:set>
 
-        <mercury:nl />
+        <m:nl />
         <ul class="nav-main-items ${textDisplay}${' '}${not empty sidelogohtml ? 'hassidelogo ' : ''}${showSearch ? 'has-search' : 'no-search'}"><%----%>
-        <mercury:nl />
+        <m:nl />
 
         <c:if test="${not empty metaLinksHtml and (metaLinks ne 'bottom')}">
             ${metaLinksHtml}
@@ -138,7 +138,7 @@
 
                 <c:if test="${empty navTarget and not fn:startsWith(navElem.info, '#')}">
                     <%-- Append navInfo as CSS class, make sure this contains no invalid characters by running it through file translation --%>
-                    <mercury:set-content-disposition name="${fn:toLowerCase(fn:trim(navElem.info))}" suffix="" setFilenameOnly="${true}"/>
+                    <m:set-content-disposition name="${fn:toLowerCase(fn:trim(navElem.info))}" suffix="" setFilenameOnly="${true}"/>
                     <c:set var="menuType" value="${menuType.concat(contentDispositionFilename)}" />
                 </c:if>
 
@@ -168,7 +168,7 @@
             <c:set var="hasMegaMenu" value="${not empty megaMenu}" />
 
             <c:if test="${startSubMenu or hasMegaMenu}">
-                <c:set var="instanceId"><mercury:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
+                <c:set var="instanceId"><m:idgen prefix="" uuid="${cms.element.instanceId}" /></c:set>
                 <c:set var="parentLabelId">label${instanceId}_${i}</c:set>
                 <c:set var="targetMenuId">nav${instanceId}_${i}</c:set>
                 <c:if test="${startSubMenu}">
@@ -261,7 +261,7 @@
         <c:if test="${not empty searchPageUri}">
             <li id="nav-main-search" class="expand"><%----%>
                 <a href="${searchPageUri}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
-                    <mercury:icon icon="search" tag="span" cssWrapper="search search-btn" />
+                    <m:icon icon="search" tag="span" cssWrapper="search search-btn" />
                 </a><%----%>
                 <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>
                     <li><%----%>
@@ -285,15 +285,15 @@
             ${navPluginHtml}
         </c:if>
 
-        <mercury:nl />
+        <m:nl />
         </ul><%----%>
-        <mercury:nl />
+        <m:nl />
 
-    </mercury:nav-items>
-    </mercury:nav-vars>
+    </m:nav-items>
+    </m:nav-vars>
 
 </nav><%----%>
 
 </cms:formatter>
 </cms:bundle>
-</mercury:init-messages>
+</m:init-messages>

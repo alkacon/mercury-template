@@ -26,13 +26,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:if test="${empty test or test}">
 
     <div class="meta-info-check${valid ? ' mi-valid' : ' mi-invalid'}${optional ? ' mi-optional' : ' mi-required'}${empty css ? '' : ' '.concat(css)}"><%----%>
-        <mercury:icon icon="${valid ? 'fa-check-square' : (optional ? 'fa-info-circle' : 'fa-warning')}" inline="${true}" tag="span" /><%----%>
+        <m:icon icon="${valid ? 'fa-check-square' : (optional ? 'fa-info-circle' : 'fa-warning')}" inline="${true}" tag="span" /><%----%>
         <span class="mi-label"><%----%>
             <fmt:message key="${label}" />
         </span><%----%>

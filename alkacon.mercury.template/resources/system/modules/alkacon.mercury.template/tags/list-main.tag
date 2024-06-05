@@ -55,11 +55,11 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- ####### Perform the search ################ --%>
-<mercury:list-search
+<m:list-search
     config="${config}"
     subsite="${subsite}"
     count="${count}"
@@ -74,7 +74,7 @@
 <c:if test="${search.numFound > 0}">
 
     <%-- ####### The sort option bar ######## --%>
-    <mercury:list-sort-option-bar
+    <m:list-sort-option-bar
         elementId="${elementId}"
         searchresult="${search}"
         settings="${settings}"
@@ -138,16 +138,16 @@
             <cms:param name="_geodist_">${result.fields['_geodist_']}</cms:param>
         </cms:display>
 
-        <c:if test="${not empty listEntryWrapper}"></${listEntryTag}><mercury:nl /></c:if>
+        <c:if test="${not empty listEntryWrapper}"></${listEntryTag}><m:nl /></c:if>
 
     </c:forEach>
 
     <c:if test="${not empty listGeneratedJson}">
         <cms:jsonvalue key="listid" value="${instanceId}" target="${listGeneratedJson}" />
         <cms:jsonvalue key="resultTotal" value="${search.numFound}" target="${listGeneratedJson}" />
-        <mercury:nl />
+        <m:nl />
         <script type="application/ld+json">${cms.isOnlineProject ? listGeneratedJson.compact : listGeneratedJson.pretty}</script><%----%>
-        <mercury:nl />
+        <m:nl />
     </c:if>
 
     </cms:addparams>

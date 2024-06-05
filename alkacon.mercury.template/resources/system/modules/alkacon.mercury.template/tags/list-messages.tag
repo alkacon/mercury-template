@@ -25,32 +25,32 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury"%>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury"%>
 
 <c:choose>
     <c:when test="${(dynamic and reloaded) or ((dynamic or (search.numFound == 0)) and not (cms.isEditMode and (search.numFound == 0)))}">
         <%-- A dynamic list MUST contain a hidden notice box. The notice will be activated by JavaScript if required. --%>
         <%-- If the list was reloaded then we assume there was a filter applied and we don't want to display the "add new" in edit mode. --%>
-        <mercury:alert-online css="list-editbox pivot" attr="${dynamic ? 'style=\"display: none;\"' : null}">
+        <m:alert-online css="list-editbox pivot" attr="${dynamic ? 'style=\"display: none;\"' : null}">
             <jsp:attribute name="text">
                 <fmt:message key="msg.page.list.empty.online" />
             </jsp:attribute>
-        </mercury:alert-online>
+        </m:alert-online>
     </c:when>
     <c:when test="${cms.isEditMode and (search.numFound == 0)}">
         <%-- We are in edit mode and have no results. --%>
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
-            <mercury:list-types var="createTypes" types="${types}" uploadFolder="${uploadFolder}" />
+            <m:list-types var="createTypes" types="${types}" uploadFolder="${uploadFolder}" />
             <c:if test="${not empty createTypes}">
-                <mercury:alert type="warning" css="list-editbox">
+                <m:alert type="warning" css="list-editbox">
                     <jsp:attribute name="head">
                         <fmt:message key="msg.page.list.empty" />
                     </jsp:attribute>
                     <jsp:attribute name="text">
                         <fmt:message key="msg.page.list.newentry.listadd" />
                     </jsp:attribute>
-                </mercury:alert>
+                </m:alert>
             </c:if>
         </cms:bundle>
     </c:when>

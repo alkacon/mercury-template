@@ -48,11 +48,11 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:nl />
-<mercury:padding-box
+<m:nl />
+<m:padding-box
     cssWrapper="image-src-box ${cssWrapper}"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
@@ -85,4 +85,4 @@
         </div><%----%>
     </c:if>
 
-</mercury:padding-box>
+</m:padding-box>

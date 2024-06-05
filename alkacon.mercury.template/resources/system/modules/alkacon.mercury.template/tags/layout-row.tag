@@ -57,7 +57,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <jsp:useBean id="valueMap"              class="java.util.HashMap" />
@@ -89,15 +89,15 @@
 
     <c:when test="${rowVariant == 1}">
         <%-- '12' - lr_00001 - 1 column row --%>
-        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
-            <mercury:div test="${not empty rowCss}" css="row${rowCss}">
+        <m:div test="${addContainer}" css="${conCss}" css2="container">
+            <m:div test="${not empty rowCss}" css="row${rowCss}">
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCss}" />
                 <c:set target="${valueMap}" property="Parameters"   value="${{'cssgrid': 'col-xs-12'}}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
-            </mercury:div>
-        </mercury:div>
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
+            </m:div>
+        </m:div>
     </c:when>
 
 
@@ -107,51 +107,51 @@
         <c:set var="sideColSize"        value="${(sideColSize < 3) or (sideColSize > 6) ? 6 : sideColSize}" />
         <c:set var="mainColSize"        value="${12 - sideColSize}" />
 
-        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
+        <m:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss}"><%----%>
 
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}${mainColSize}${colCss}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
 
                 <c:set var="colOrder" value="${showSideLast ? (reverseMobileOrder ? ' order-first order'.concat(breakpoint eq '-' ? '-lg-' : breakpoint).concat('last') : '') : (reverseMobileOrder ? ' order-first' : ' order'.concat(breakpoint eq '-' ? '-lg-' : breakpoint).concat('first'))}" />
                 <c:set target="${valueMap}" property="Type"         value="${sideType}"/>
                 <c:set target="${valueMap}" property="Name"         value="sidecol"/>
                 <c:set target="${valueMap}" property="Tag"          value="${useAsideTag and (mainColSize ne 6) ? 'aside' : 'div'}" />
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}${sideColSize}${colCss}${colOrder}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
 
-            <mercury:nl />
+            <m:nl />
             </div><%----%>
-        </mercury:div>
+        </m:div>
     </c:when>
 
 
     <c:when test="${rowVariant == 3}">
         <%-- '4-4-4' - lr_00009 --%>
-        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
+        <m:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss}"><%----%>
 
                 <c:set var="colOrder" value="${reverseMobileOrder ? ' order-last order'.concat(breakpoint).concat('first') : ''}" />
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}4${colCss}${colOrder}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
 
                 <c:set target="${valueMap}" property="Type"         value="${sideType}"/>
                 <c:set target="${valueMap}" property="Name"         value="sidecol"/>
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}4${colCss}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
 
                 <c:set var="colOrder" value="${reverseMobileOrder ? ' order-first order'.concat(breakpoint).concat('last') : ''}" />
                 <c:set target="${valueMap}" property="Name"         value="addcol1"/>
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}4${colCss}${colOrder}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol1'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol1'}" />
 
-            <mercury:nl />
+            <m:nl />
             </div><%----%>
-        </mercury:div>
+        </m:div>
     </c:when>
 
 
@@ -173,30 +173,30 @@
         </c:choose>
         <c:set var="twoXsCols"          value="${(sideColSize == 6) or ((sideColSize lt 0) and fn:contains(colCssMod, 'col-6 '))}" />
 
-        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
+        <m:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss}"><%----%>
 
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-3' :' order-4').concat('order-md-3 order-lg-1') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
 
                 <c:set target="${valueMap}" property="Type"         value="${sideType}"/>
                 <c:set target="${valueMap}" property="Name"         value="sidecol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-4' :' order-3').concat('order-md-4 order-lg-2') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
 
                 <c:set target="${valueMap}" property="Name"         value="addcol1"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-1' :' order-2').concat('order-md-1 order-lg-3') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol1'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol1'}" />
 
                 <c:set target="${valueMap}" property="Name"         value="addcol2"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-2' :' order-1').concat('order-md-2 order-lg-4') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol2'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol2'}" />
 
-            <mercury:nl />
+            <m:nl />
             </div><%----%>
-        </mercury:div>
+        </m:div>
     </c:when>
 
 
@@ -205,7 +205,7 @@
         <c:set var="colSize"        value="${['12', '12','6','4','3','2o4','2']}" />
         <c:set var="breakpoint"     value="${breakpoint eq '-' ? '' : breakpoint.concat(colSize[colCount])}" />
 
-        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
+        <m:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss} col-count-${colCount}"><%----%>
 
                <c:forEach begin="1" end="${colCount}" varStatus="status">
@@ -228,13 +228,13 @@
                     <c:set target="${valueMap}" property="Type"         value="${containerType}"/>
                     <c:set target="${valueMap}" property="Css"          value="col${breakpoint} col-num-${status.count}${colCss}" />
 
-                    <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq containerName}" />
+                    <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq containerName}" />
 
                 </c:forEach>
 
-            <mercury:nl />
+            <m:nl />
             </div><%----%>
-        </mercury:div>
+        </m:div>
     </c:when>
 
 
@@ -253,38 +253,38 @@
         </c:choose>
         <c:set var="twoXsCols"          value="${(sideColSize == 0) or (sideColSize == 6) or ((sideColSize lt 0) and fn:contains(colCssMod, 'col-6 '))}" />
 
-        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
+        <m:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss}"><%----%>
 
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-5' : ' order-6').concat(' order-md-4 order-xl-1') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
 
                 <c:set target="${valueMap}" property="Type"         value="${sideType}"/>
                 <c:set target="${valueMap}" property="Name"         value="sidecol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-6' : ' order-5').concat(' order-md-5 order-xl-2') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
 
                 <c:set target="${valueMap}" property="Name"         value="addcol1"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-3' : ' order-4').concat(' order-md-6 order-xl-3') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol1'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol1'}" />
 
                 <c:set target="${valueMap}" property="Name"         value="addcol2"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-4' : ' order-3').concat(' order-md-1 order-xl-4') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol2'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol2'}" />
 
                 <c:set target="${valueMap}" property="Name"         value="addcol3"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-1' : ' order-2').concat(' order-md-2 order-xl-5') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol3'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol3'}" />
 
                 <c:set target="${valueMap}" property="Name"         value="addcol4"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-2' : ' order-1').concat(' order-md-3 order-xl-6') : ''}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol4'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol4'}" />
 
-            <mercury:nl />
+            <m:nl />
             </div><%----%>
-        </mercury:div>
+        </m:div>
     </c:when>
 
 
@@ -372,20 +372,20 @@
 
         <c:set target="${valueMap}" property="Name"             value="maincol"/>
         <c:set target="${valueMap}" property="Parameters"       value="${params}" />
-        <mercury:container value="${valueMap}" title="${title}" detailView="${false}" />
+        <m:container value="${valueMap}" title="${title}" detailView="${false}" />
     </c:when>
 
 
     <c:when test="${rowVariant == 13}">
         <%-- 'adjust' - lr_00013 - 1 column row with adjustable with --%>
-        <mercury:div test="${addContainer}" css="${conCss}" css2="container">
+        <m:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss}"><%----%>
                 <c:set target="${valueMap}" property="Type"     value="${mainType}"/>
                 <c:set target="${valueMap}" property="Name"     value="maincol"/>
                 <c:set target="${valueMap}" property="Css"      value="col-lg-${sideColSize + 1 le 12 ? sideColSize + 1 : 12} col-xl-${sideColSize}" />
-                <mercury:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
+                <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
             </div><%----%>
-        </mercury:div>
+        </m:div>
     </c:when>
 
 
@@ -429,9 +429,9 @@
             <c:set target="${valueMap}" property="Name"             value="main" />
             <c:set target="${valueMap}" property="Tag"              value="div" />
             <c:set target="${valueMap}" property="Css"              value="${rowCss}" />
-            <mercury:container value="${valueMap}" title="${title}" />
+            <m:container value="${valueMap}" title="${title}" />
 
-            <mercury:nl />
+            <m:nl />
         </main><%----%>
     </c:when>
 
@@ -449,15 +449,15 @@
                     <c:set target="${valueMap}" property="Name"             value="main" />
                     <c:set target="${valueMap}" property="Tag"              value="div" />
                     <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '8' : '9'}${asideOnTop ? ' order-last' : ''}${asideFirst ? ' order-lg-last ' : ' '}area-wide" />
-                    <mercury:container value="${valueMap}" title="${title}" />
+                    <m:container value="${valueMap}" title="${title}" />
 
                     <c:set target="${valueMap}" property="Type"             value="element, side-group"/>
                     <c:set target="${valueMap}" property="Name"             value="aside"/>
                     <c:set target="${valueMap}" property="Tag"              value="aside" />
                     <c:set target="${valueMap}" property="Css"              value="col-lg-${asideWide ? '4' : '3'}${asideOnTop ? ' order-first'.concat(asideFirst ? '' : ' order-lg-last') : ''}${asideFirst ? ' order-lg-first ' : ' '}area-narrow" />
-                    <mercury:container value="${valueMap}" title="${title}" />
+                    <m:container value="${valueMap}" title="${title}" />
 
-                    <mercury:nl />
+                    <m:nl />
                 </div><%----%>
             </div><%----%>
         </main><%----%>
@@ -471,7 +471,7 @@
         <c:set target="${valueMap}" property="Tag"              value="div" />
         <c:set target="${valueMap}" property="Css"              value="${areaCss}" />
         <c:set target="${valueMap}" property="Parameters"       value="${{'cssgrid': 'fullwidth'}}" />
-        <mercury:container value="${valueMap}" title="${title}" />
+        <m:container value="${valueMap}" title="${title}" />
     </c:when>
 
 </c:choose>

@@ -9,14 +9,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
-<mercury:teaser-settings content="${content}">
+<m:teaser-settings content="${content}">
 
 <c:set var="invalidDecoy"   value="${not value.Link.value.URI.isSet}" />
 
@@ -29,9 +29,9 @@
     <c:set var="title"      value="${value.Title}" />
     <c:set var="preface"    value="${value.Preface}" />
 
-    <mercury:list-badge var="badge" type="decoy" test="${cms.isEditMode}" />
+    <m:list-badge var="badge" type="decoy" test="${cms.isEditMode}" />
 
-    <mercury:teaser-piece
+    <m:teaser-piece
         teaserClass="${setTeaserClass}"
         cssWrapper="type-decoy${setCssWrapperAll}${invalidDecoy ? ' disabled' : ''}"
         intro="${setShowIntro ? intro : null}"
@@ -56,7 +56,7 @@
         <jsp:attribute name="markupVisual">
             <c:if test="${setShowVisual}">
                 <c:set var="image"   value="${value.Image}" />
-                <mercury:image-animated
+                <m:image-animated
                     image="${image}"
                     ratio="${setRatio}"
                     ratioLg="${setRatioLg}"
@@ -67,10 +67,10 @@
             </c:if>
         </jsp:attribute>
 
-    </mercury:teaser-piece>
+    </m:teaser-piece>
 </c:otherwise>
 </c:choose>
 
-</mercury:teaser-settings>
+</m:teaser-settings>
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

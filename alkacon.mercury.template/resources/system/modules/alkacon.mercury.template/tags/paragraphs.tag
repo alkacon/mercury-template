@@ -67,13 +67,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:if test="${not empty paragraphs}">
     <c:set var="textOption" value="${((empty showText) or showText) ? 'default' : 'none'}" />
     <c:set var="linkOption" value="${empty linkOption ? 'button' : linkOption}" />
 
-    <mercury:paragraph-split
+    <m:paragraph-split
         paragraphs="${paragraphs}"
         splitFirst="${false}"
         splitDownloads="${splitDownloads}">
@@ -94,7 +94,7 @@
                     <c:set var="valAde" value="${false}" />
                 </c:when>
             </c:choose>
-            <mercury:section-piece
+            <m:section-piece
                 heading="${valCaption}"
                 pieceLayout="${pieceLayout}"
                 sizeMobile="${sizeMobile}"
@@ -115,7 +115,7 @@
                 ade="${valAde}"
             />
         </c:forEach>
-        <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" />
-    </mercury:paragraph-split>
+        <m:paragraph-downloads paragraphs="${paragraphsDownload}" />
+    </m:paragraph-split>
 
 </c:if>

@@ -56,12 +56,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
-<mercury:content-properties>
+<m:content-properties>
 
 <%-- OSM API key --%>
 <c:set var="osmApiKey" value="${contentPropertiesSearch['osm.apikey']}" />
@@ -141,7 +141,7 @@
                 <div class="map-marker"><%----%>
                     <c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if>
                     <c:if test="${showFacilities and not empty marker.facilities}">
-                        <mercury:facility-icons
+                        <m:facility-icons
                             wheelchairAccess="${marker.facilities.value.WheelchairAccess.toBoolean}"
                             hearingImpaired="${marker.facilities.value.HearingImpaired.toBoolean}"
                             lowVision="${marker.facilities.value.LowVision.toBoolean}"
@@ -151,7 +151,7 @@
                     </c:if>
                     <c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if>
                     <c:if test="${showLink and not empty marker.link}">
-                        <mercury:link link="${marker.link}" noExternalMarker="${true}" css="marklink" text="${linkDefaultText}" />
+                        <m:link link="${marker.link}" noExternalMarker="${true}" css="marklink" text="${linkDefaultText}" />
                     </c:if>
                     <c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if>
                 </div><%----%>
@@ -186,7 +186,7 @@
         <cms:jsonvalue key="markers" value="${markerList}" />
     </c:if>
     <c:if test="${isOsm}">
-        <c:set var="cssPath"><mercury:link-resource resource="/system/modules/alkacon.mercury.template/osmviewer/map.css" /></c:set>
+        <c:set var="cssPath"><m:link-resource resource="/system/modules/alkacon.mercury.template/osmviewer/map.css" /></c:set>
         <cms:jsonvalue key="css" value="${cssPath}" />
     </c:if>
     <cms:jsonvalue key="markerCluster" value="${empty markerCluster ? false : markerCluster}" />
@@ -196,14 +196,14 @@
 
 <c:if test="${not empty subelementWrapper}">
 ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
-<mercury:nl />
+<m:nl />
 </c:if>
 
-<mercury:padding-box ratio="${ratio}">
+<m:padding-box ratio="${ratio}">
 
     ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
     --%>data-map='${mapData.compact}'<%--
-    --%><mercury:data-external-cookies message="${cookieMessage}" test="${not noApiKey}" /><%--
+    --%><m:data-external-cookies message="${cookieMessage}" test="${not noApiKey}" /><%--
     --%><c:if test="${cms.isEditMode and not disableEditModePlaceholder}">
             <fmt:setLocale value="${cms.workplaceLocale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">
@@ -218,14 +218,14 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
             </cms:bundle>
         </c:if>
     ${'>'}
-    <mercury:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
+    <m:alert-online showJsWarning="${true}" addNoscriptTags="${true}" />
     ${'</div>'}
 
-</mercury:padding-box>
+</m:padding-box>
 
 <c:if test="${not empty subelementWrapper}">
 ${'</div>'}
 </c:if>
 
-</mercury:content-properties>
+</m:content-properties>
 </cms:bundle>

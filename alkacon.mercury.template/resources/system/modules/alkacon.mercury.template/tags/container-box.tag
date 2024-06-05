@@ -42,7 +42,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.workplaceLocale}" />
@@ -153,13 +153,13 @@
                     <c:choose>
                         <c:when test="${not hideParentType and not empty cms.container.type}">
                             <fmt:message key="msg.page.layout.infor">
-                                <fmt:param><mercury:container-name type="${parentType}" /></fmt:param>
-                                <fmt:param><mercury:container-name type="${type}" /></fmt:param>
+                                <fmt:param><m:container-name type="${parentType}" /></fmt:param>
+                                <fmt:param><m:container-name type="${type}" /></fmt:param>
                             </fmt:message>
                         </c:when>
                         <c:otherwise>
                             <fmt:message key="msg.page.layout.for">
-                                <fmt:param><mercury:container-name type="${type}" /></fmt:param>
+                                <fmt:param><m:container-name type="${type}" /></fmt:param>
                             </fmt:message>
                         </c:otherwise>
                     </c:choose>

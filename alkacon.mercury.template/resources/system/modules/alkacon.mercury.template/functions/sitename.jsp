@@ -7,7 +7,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="setting"                value="${cms.element.setting}" />
@@ -18,7 +18,7 @@
 <c:set var="currentSiteProps"       value="${cms.vfs.readProperties[currentSite]}" />
 <c:set var="sitename"               value="${not empty currentSiteProps['mercury.sitename'] ? currentSiteProps['mercury.sitename'] : currentSiteProps['Title'] }" />
 
-<mercury:section-piece
+<m:section-piece
     cssWrapper="element type-sitename pivot ${cssWrapper}"
     pieceLayout="${0}"
     heading="${sitename}"

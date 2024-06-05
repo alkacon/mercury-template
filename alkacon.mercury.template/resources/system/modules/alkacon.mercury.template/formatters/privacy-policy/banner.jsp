@@ -8,7 +8,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
@@ -26,7 +26,7 @@
 <fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
 <fmt:message var="extFootDef" key="msg.page.privacypolicy.external.footer" />
 
-<mercury:privacy-policy-vars setPolicyLinks="${true}" content="${content}">
+<m:privacy-policy-vars setPolicyLinks="${true}" content="${content}">
 
 <c:if test="${showBanner}">
     <c:set var="bannerHtml">
@@ -113,6 +113,6 @@
 
 <%----%>${DEBUG ? policy.verbose : policy.compact}<%----%>
 
-</mercury:privacy-policy-vars>
+</m:privacy-policy-vars>
 </cms:bundle>
 </cms:formatter>

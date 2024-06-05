@@ -8,15 +8,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
@@ -33,7 +33,7 @@
 <c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
 
 <c:set var="date">
-    <mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
+    <m:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
 </c:set>
 <c:set var="intro"                  value="${value.Intro}" />
 <c:set var="title"                  value="${value.Title}" />
@@ -60,13 +60,13 @@
     <c:set var="imageRatio" value="${fn:substringBefore(imageRatio, '#')}" />
 </c:if>
 
-<mercury:nl />
+<m:nl />
 <div class="detail-page type-media ${isAudio ? 'audio ' : ''}layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
-<mercury:nl />
+<m:nl />
 
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
-<mercury:piece
+<m:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     attrVisual="${attrVisual}"
     cssVisual="${cssVisual}"
@@ -76,13 +76,13 @@
 
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
-            <mercury:intro-headline intro="${showIntro ? value.Intro : null}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface and keyPieceLayout <= 1}" />
+            <m:intro-headline intro="${showIntro ? value.Intro : null}" headline="${title}" level="${hsize}" ade="${ade}"/>
+            <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface and keyPieceLayout <= 1}" />
         </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="visual">
-        <mercury:key-visual-piece
+        <m:key-visual-piece
             image="${image}"
             effect="${setEffect}"
             showOverlay="${showOverlay}"
@@ -92,10 +92,10 @@
             showImageCopyright="${showImageCopyright}"
             ade="${ade}">
             <jsp:attribute name="markupHeading">
-                <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
+                <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
             </jsp:attribute>
             <jsp:attribute name="markupImage">
-                <mercury:media-box
+                <m:media-box
                     content="${content}"
                     effect="${setEffect}"
                     ratio="${imageRatio}"
@@ -110,27 +110,27 @@
                     autoPlay="${autoPlay}"
                 />
             </jsp:attribute>
-        </mercury:key-visual-piece>
+        </m:key-visual-piece>
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface and not showOverlay and (keyPieceLayout > 1)}" />
+        <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showPreface and not showOverlay and (keyPieceLayout > 1)}" />
 
         <c:if test="${showText and not showTextDetailContent}">
             <div class="detail-content" ${ade ? text.rdfaAttr : ''}><%----%>
                 ${text}
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
 
     </jsp:attribute>
 
-</mercury:piece>
+</m:piece>
 
 <c:if test="${showTextDetailContent}">
 
     <div class="detail-content"><%----%>
-        <mercury:section-piece
+        <m:section-piece
             cssWrapper="${setCssWrapperParagraphs}"
             pieceLayout="${1}"
             text="${text}"
@@ -138,16 +138,16 @@
             ade="${ade}"
         />
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 
 </c:if>
 
-<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
+<m:container-attachment content="${content}" name="attachments" type="${containerType}" />
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

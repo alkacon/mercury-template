@@ -6,13 +6,13 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 <cms:formatter var="content" val="value">
 
-<mercury:teaser-accordion
+<m:teaser-accordion
     title="${value.Question}"
     cssWrapper="type-faq"
     paragraphs="${content.valueList.Paragraph}"
@@ -33,13 +33,13 @@
         <cms:jsonvalue key="name" value="${value.Question}" />
         <c:set var="answerText">
             <c:if test="${not empty value.Paragraph.value.Caption}">
-                <mercury:heading level="${1}" text="${value.Paragraph.value.Caption}" />
+                <m:heading level="${1}" text="${value.Paragraph.value.Caption}" />
             </c:if>
             <c:if test="${not empty value.Paragraph.value.Text}">
                 ${value.Paragraph.value.Text}
             </c:if>
             <c:if test="${not empty value.Paragraph.value.Link}">
-                <mercury:link link="${value.Paragraph.value.Link}" noExternalMarker="${true}" newWin="${false}" />
+                <m:link link="${value.Paragraph.value.Link}" noExternalMarker="${true}" newWin="${false}" />
             </c:if>
         </c:set>
         <cms:jsonobject key="acceptedAnswer">
@@ -50,4 +50,4 @@
 </c:if>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

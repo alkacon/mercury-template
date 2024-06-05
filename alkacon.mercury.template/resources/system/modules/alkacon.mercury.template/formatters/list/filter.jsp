@@ -8,16 +8,16 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
 <cms:formatter var="content" val="value" locale="en">
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
     <%-- We just want to load facet metadata here, no actual results, so the count is 0 --%>
-    <mercury:list-search
+    <m:list-search
         config="${content}"
         count="0"
     />
@@ -55,8 +55,8 @@
 
     <c:set var="targetUri"      value="${setting.targetUri.toString}" />
 
-    <c:set var="elementId"><mercury:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
-    <c:set var="filterId"><mercury:idgen prefix="la" uuid="${cms.element.instanceId}" /></c:set>
+    <c:set var="elementId"><m:idgen prefix="le" uuid="${cms.element.id}" /></c:set>
+    <c:set var="filterId"><m:idgen prefix="la" uuid="${cms.element.instanceId}" /></c:set>
 
     <c:if test="${empty targetUri}">
         <c:set var="targetUri" value="${cms.vfs.propertySearch[cms.requestContext.uri]['mercury.list']}" />
@@ -83,7 +83,7 @@
 
     <c:set var="resetButtonTitle"><fmt:message key="msg.page.list.resetbutton.title" /></c:set>
 
-    <mercury:nl />
+    <m:nl />
     <div class="element type-list-filter pivot ${cssWrapper}" <%--
     --%>id="${filterId}" <%--
     --%>data-id="${elementId}" <%--
@@ -103,7 +103,7 @@
         --%><c:if test="${not empty targetUri}">, "target":"<cms:link>${targetUri}</cms:link>"</c:if><%--
         --%><c:if test="${not empty initparams}">, "initparams":"${initparams}"</c:if><%--
         --%>}'><%----%>
-        <mercury:nl />
+        <m:nl />
 
         <c:if test="${showSearch}">
             <c:if test="${empty searchLabel}">
@@ -111,7 +111,7 @@
             </c:if>
             <c:set var="searchResetLabel"><fmt:message key="msg.page.search.inlist.resetlabel" /></c:set>
             <div class="filterbox search"><%----%>
-            <mercury:nl />
+            <m:nl />
 
                 <form class="styled-form bo-none" id="queryform_${filterId}" onsubmit="DynamicList.archiveSearch(<%--
                     --%>'${filterId}', <%--
@@ -125,7 +125,7 @@
                         <input type="hidden" name="${search.controller.common.config.reloadedParam}" /><%----%>
                         <label for="${fieldId}" class="input"><%----%>
                             <span class="sr-only"><c:out value="${searchLabel}" /></span><%----%>
-                            <mercury:icon icon="search" tag="span" cssWrapper="icon-prepend" inline="${false}" />
+                            <m:icon icon="search" tag="span" cssWrapper="icon-prepend" inline="${false}" />
                             <input <%--
                             --%>name="${search.controller.common.config.queryParam}" <%--
                             --%>id="${fieldId}" <%--
@@ -136,7 +136,7 @@
                         </label><%----%>
                 </form><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
 
         <c:if test="${showReset}">
@@ -150,7 +150,7 @@
             </c:if>
 
             <div class="filterbox categories"><%----%>
-            <mercury:nl />
+            <m:nl />
 
                 <%-- get the currently checked item - if not present it's just empty. --%>
                 <c:set var="checkedItem" value="${categoryFacetController.state.checkedEntries[0]}"/>
@@ -166,7 +166,7 @@
                 --%><c:out value="${categoryLabel}" /><%--
              --%></button><%----%>
                 <div id="cats_${filterId}" class="collapse${categoriesOpen ? ' show' : ''}${categoriesResp ? ' '.concat(categoryVal) : ''}"><%----%>
-                    <mercury:list-filter-category
+                    <m:list-filter-category
                         search="${search}"
                         facetValues="${categoryFacetResult.values}"
                         facetController="${categoryFacetController}"
@@ -180,7 +180,7 @@
                     />
                 </div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
 
         <c:if test="${showFolders}">
@@ -188,7 +188,7 @@
                 <c:set var="folderLabel"><fmt:message key="msg.page.folders" /></c:set>
             </c:if>
             <div class="filterbox folders"><%----%>
-            <mercury:nl />
+            <m:nl />
 
                 <%-- get the currently checked item - if not present it's just empty. --%>
                 <c:set var="checkedItem" value="${folderFacetController.state.checkedEntries[0]}"/>
@@ -212,13 +212,13 @@
                     <c:set var="checkedEntries" value="${folderFacetController.state.checkedEntries}" />
 
                     <c:set var="foldersOpen" value="${foldersOpen || foldersResp}"/>
-                    <c:set var="collapseIdPrefix"><mercury:idgen prefix="nav" uuid="${cms.element.instanceId}" /></c:set>
+                    <c:set var="collapseIdPrefix"><m:idgen prefix="nav" uuid="${cms.element.instanceId}" /></c:set>
 
                     <%-- Start building the HTML for the folder facet items.
                          It has to be exactly like the HTML for the side navigation.
                     --%>
                     <ul class="nav-side"><%----%>
-                        <mercury:nl />
+                        <m:nl />
                         <%-- If multiple folders are present, prepend an "all" folder. --%>
                         <c:if test="${hasMultiplePaths}">
                             <c:set var="folderId">folder_${filterId}_0</c:set>
@@ -275,7 +275,7 @@
                                     <c:set var="liAttrs">id="${folderId}" data-value="${previousFolder}" ${isCurrentPage ? ' class="currentpage enabled"' : 'class="enabled"'} data-label="${label.replace('"','&quot;')}"</c:set>
                                     <c:out escapeXml='false' value='<li ${liAttrs}>' />
                                     <a ${onclick} href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>" class="nav-label">${label}</a><%----%>
-                                    <mercury:nl />
+                                    <m:nl />
 
                                     <c:choose>
                                     <%-- The current item will be from a completely different folder than the previous one.
@@ -301,7 +301,7 @@
                                         --%>data-bs-target="#${collapseId}"  <%--
                                         --%>aria-controls="${collapseId}" <%--
                                         --%>aria-expanded="${foldersOpen || isCurrentPage}">&nbsp;</a><%----%>
-                                        <mercury:nl />
+                                        <m:nl />
                                         <c:set var="collapseIn" value="${foldersOpen || isCurrentPage ? ' show' : ''}" />
                                         <c:out escapeXml='false' value='<ul class="collapse${collapseIn}" id="${collapseId}">' />
                                     </c:when>
@@ -369,7 +369,7 @@
                     </ul><%----%>
                 </div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
 
         <c:if test="${showArchive}">
@@ -381,7 +381,7 @@
             <%-- Open the facet if it has a checked entry independent of the according element setting. --%>
             <c:set var="archiveOpen" value="${archiveOpen || not empty checkedItem}"/>
             <div class="filterbox archive"><%----%>
-            <mercury:nl />
+            <m:nl />
 
                 <button type="button" <%--
                 --%>class="btn btn-block li-label ${archiveOpen ? '' : 'collapsed'}" <%--
@@ -442,7 +442,7 @@
                         <c:set var="monthId">${yearId}${currMonth}</c:set>
                         <c:set var="yearHtml">
                             ${yearHtml}
-                            <mercury:nl />
+                            <m:nl />
                             <li id="${monthId}" ${active} tabindex="0" data-value="${facetItem.value}" data-label="${currMonth}${' '}${currYear}" onclick="DynamicList.archiveFilter(<%--
                                     --%>'${filterId}', <%--
                                 --%>'${monthId}'<%--
@@ -463,20 +463,20 @@
                 </div><%----%>
 
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
 
         <c:if test="${showDirectLink}">
             <div class="directlink"><%----%>
-                <mercury:link link="${cms.site.url}${cms.requestContext.uri}" css="btn btn-block oct-meta-info external" newWin="${true}">
+                <m:link link="${cms.site.url}${cms.requestContext.uri}" css="btn btn-block oct-meta-info external" newWin="${true}">
                     <fmt:message key="msg.page.list.directlink.label" />
-                </mercury:link>
+                </m:link>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:if>
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

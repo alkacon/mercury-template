@@ -8,18 +8,18 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
@@ -43,10 +43,10 @@
 <c:set var="firstParagraph"         value="${value.Introduction}" />
 <c:set var="paragraphsContent"      value="${content.valueList.Text}" />
 
-<mercury:location-vars data="${value.AddressChoice}" test="${showLocation}">
+<m:location-vars data="${value.AddressChoice}" test="${showLocation}">
 
 <c:set var="date">
-    <mercury:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
+    <m:instancedate date="${value.Date.toInstanceDate}" format="${dateFormat}" />
 </c:set>
 
 <c:set var="intro"                  value="${value.Intro}" />
@@ -63,13 +63,13 @@
 <c:set var="ade"                    value="${cms.isEditMode}" />
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 
-<mercury:nl />
+<m:nl />
 <div class="detail-page type-job layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
-<mercury:nl />
+<m:nl />
 
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 
-<mercury:piece
+<m:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
     sizeDesktop="${(keyPieceLayout < 2 || keyPieceLayout == 10) ? 12 : 6}"
@@ -77,12 +77,12 @@
 
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
-            <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
+            <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
         </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="visual">
-        <mercury:key-visual-piece
+        <m:key-visual-piece
             image="${image}"
             showOverlay="${showOverlay}"
             effect="${setEffect}"
@@ -93,13 +93,13 @@
             showImageCopyright="${showImageCopyright}"
             ade="${ade}">
             <jsp:attribute name="markupHeading">
-                <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
+                <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
             </jsp:attribute>
-        </mercury:key-visual-piece>
+        </m:key-visual-piece>
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
+        <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${not showOverlay and (keyPieceLayout > 1)}" />
 
         <c:if test="${showDate or showLocation or showType}">
             <div class="visual-info ${not showLocation ? 'right' : ''}"><%----%>
@@ -117,7 +117,7 @@
                         </div><%----%>
                     </c:if>
                 </div><%----%>
-                <mercury:nl />
+                <m:nl />
                 <c:if test="${showLocation}">
                     <div class="info location"><%----%>
                         <span class="sr-only"><fmt:message key="msg.page.sr.location" /></span><%----%>
@@ -149,15 +149,15 @@
                             <div class="adressInfo" ${ade ? loocationNote.rdfaAttr : ''}>${locationNote}</div><%----%>
                         </c:if>
                         </div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </div><%----%>
                 </c:if>
             </div><%----%>
         </c:if>
 
-        <mercury:data-job content="${content}" showSummary="${showMetaSummary}" />
+        <m:data-job content="${content}" showSummary="${showMetaSummary}" />
 
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 0) or (keyPieceLayout == 1)}" />
+        <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${showOverlay or (keyPieceLayout == 0) or (keyPieceLayout == 1)}" />
 
         <c:if test="${firstParagraph.value.Text.isSet}">
             <div class="visual-text" ${firstParagraph.value.Text.rdfaAttr}><%----%>
@@ -167,17 +167,17 @@
 
         <c:if test="${link.isSet}">
             <div class="visual-link"><%----%>
-                <mercury:link link="${link}" css="btn"/>
+                <m:link link="${link}" css="btn"/>
             </div><%----%>
         </c:if>
 
     </jsp:attribute>
-</mercury:piece>
+</m:piece>
 
 <c:if test="${not empty paragraphsContent}">
     <div class="detail-content"><%----%>
         <c:forEach var="paragraph" items="${paragraphsContent}" varStatus="status">
-            <mercury:section-piece
+            <m:section-piece
                 cssWrapper="${setCssWrapperParagraphs}"
                 pieceLayout="${pieceLayout}"
                 heading="${paragraph.value.Caption}"
@@ -195,18 +195,18 @@
             />
         </c:forEach>
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </c:if>
 
-<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
+<m:container-attachment content="${content}" name="attachments" type="${containerType}" />
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:location-vars>
+</m:location-vars>
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

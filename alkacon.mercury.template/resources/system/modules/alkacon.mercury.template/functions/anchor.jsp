@@ -9,23 +9,23 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="anchor" value="${fn:trim(cms.element.setting.anchor)}" />
 <c:if test="${not empty anchor}">
-    <mercury:set-content-disposition name="${anchor}" suffix="" setFilenameOnly="${true}" />
+    <m:set-content-disposition name="${anchor}" suffix="" setFilenameOnly="${true}" />
     <c:set var="anchor" value="${contentDispositionFilename}" />
 </c:if>
 
-<mercury:nl />
+<m:nl />
 
 <c:choose>
 <c:when test="${cms.isEditMode}">
     <fmt:setLocale value="${cms.workplaceLocale}" />
     <cms:bundle basename="alkacon.mercury.template.messages">
 
-    <mercury:alert-meta icon="bookmark">
+    <m:alert-meta icon="bookmark">
         <jsp:attribute name="text">
             <c:choose>
                 <c:when test="${not empty anchor}">
@@ -38,7 +38,7 @@
                 </c:otherwise>
             </c:choose>
         </jsp:attribute>
-    </mercury:alert-meta>
+    </m:alert-meta>
 
     </cms:bundle>
 </c:when>
@@ -52,4 +52,4 @@
 </c:otherwise>
 </c:choose>
 
-<mercury:nl />
+<m:nl />

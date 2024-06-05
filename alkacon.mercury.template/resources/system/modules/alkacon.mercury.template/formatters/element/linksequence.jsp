@@ -8,15 +8,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="addCssWrapper"          value="${setting.addCssWrapper.isSetNotNone ? ' '.concat(setting.addCssWrapper.toString) : ''}" />
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
@@ -50,7 +50,7 @@
         <c:set var="ulWrapper">class="nav-side"</c:set>
         <c:if test="${listBulletStyle eq 'custom-icon'}">
             <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
-            <c:set var="aWrapper">${iconPrefix}${iconClass}</c:set><%-- mercury:icon --%>
+            <c:set var="aWrapper">${iconPrefix}${iconClass}</c:set><%-- m:icon --%>
         </c:if>
     </c:when>
     <c:otherwise>
@@ -58,7 +58,7 @@
         <c:if test="${expanding}">
             <c:set var="open" value="${not fn:contains(expandOption, 'closed')}" />
             <c:set var="disableLg" value="${fn:contains(expandOption, 'disable-lg')}" />
-            <c:set var="elementId"><mercury:idgen prefix="lsc" uuid="${cms.element.instanceId}" /></c:set>
+            <c:set var="elementId"><m:idgen prefix="lsc" uuid="${cms.element.instanceId}" /></c:set>
             <c:set var="linksequenceType"  value="ls-bullets ls-expand${disableLg ? ' disable-lg' : ''}" />
             <c:set var="ulWrapper">class="collapse${open ? ' show' : ''}" id="${elementId}"</c:set>
             <c:set var="expanderMarkup">
@@ -67,24 +67,24 @@
                 --%>aria-expanded="${open}" <%--
                 --%>aria-controls="${elementId}" <%--
                 --%>data-bs-target="#${elementId}"><%----%>
-                    <mercury:out value="${value.Title}" lenientEscaping="${true}" />
+                    <m:out value="${value.Title}" lenientEscaping="${true}" />
                 </button><%----%>
             </c:set>
         </c:if>
         <c:if test="${listBulletStyle eq 'custom-icon'}">
             <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
-            <c:set var="liWrapper">${iconPrefix}${iconClass}</c:set><%-- mercury:icon --%>
+            <c:set var="liWrapper">${iconPrefix}${iconClass}</c:set><%-- m:icon --%>
         </c:if>
     </c:otherwise>
 </c:choose>
 
-<mercury:nl />
+<m:nl />
 <div class="element type-linksequence pivot ${linksequenceType}${' '}${listBulletStyle}${addCssWrapper}${setCssWrapperAll}"><%----%>
-<mercury:nl />
+<m:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade and not expanding}" id="${not expanding ? 'auto' : ''}" tabindex="${not expanding}">
+    <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade and not expanding}" id="${not expanding ? 'auto' : ''}" tabindex="${not expanding}">
         <jsp:attribute name="markupText">${expanderMarkup}</jsp:attribute>
-    </mercury:heading>
+    </m:heading>
 
     <c:if test="${not expanding and value.Text.isSet}">
         <div class="text-box" ${value.Text.rdfaAttr}>${value.Text}</div><%----%>
@@ -94,7 +94,7 @@
         <c:when test="${not emptyLinkSequence}">
             <ul ${ulWrapper}><%----%>
                 <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
-                    <mercury:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" addLi="ls-li${not empty liWrapper ? ' '.concat(liWrapper) : ''}" />
+                    <m:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" addLi="ls-li${not empty liWrapper ? ' '.concat(liWrapper) : ''}" />
                 </c:forEach>
             </ul><%----%>
         </c:when>
@@ -104,10 +104,10 @@
     </c:choose>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

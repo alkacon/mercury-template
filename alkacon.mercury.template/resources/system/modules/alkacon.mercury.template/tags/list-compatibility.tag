@@ -38,7 +38,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="compatibleWithList" value="${true}" />
@@ -90,7 +90,7 @@
     <cms:bundle basename="alkacon.mercury.template.messages">
         <c:choose>
             <c:when test="${not compatibleWithList}">
-                <mercury:alert type="warning">
+                <m:alert type="warning">
                     <jsp:attribute name="head">
                         <fmt:message key="msg.error.list.wrongType.head" />
                     </jsp:attribute>
@@ -99,10 +99,10 @@
                             <fmt:param>${listTitle}</fmt:param>
                         </fmt:message>
                     </jsp:attribute>
-                </mercury:alert>
+                </m:alert>
         </c:when>
         <c:otherwise>
-                <mercury:alert type="warning">
+                <m:alert type="warning">
                     <jsp:attribute name="head">
                         <fmt:message key="msg.error.list.wrongType.head" />
                     </jsp:attribute>
@@ -111,7 +111,7 @@
                             <fmt:param>${listTitle}</fmt:param>
                         </fmt:message>
                     </jsp:attribute>
-                </mercury:alert>
+                </m:alert>
         </c:otherwise>
         </c:choose>
     </cms:bundle>

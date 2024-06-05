@@ -16,15 +16,15 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="nl" value="<%= \"\n\" %>" />
 
 <c:set var="hasAltDesc" value="${(not empty cms.meta.ogDescriptionAlt) or (not empty cms.meta.ogDescriptionAltCaption)}" />
 <c:set var="hasAltDescAndCaption" value="${hasAltDesc and (not empty cms.meta.ogDescriptionAlt) and (not empty cms.meta.ogDescriptionAltCaption)}" />
 
-<c:set var="pagetitle"><mercury:meta-title addIntro="${false}" /></c:set>
-<c:set var="pagetitle"><mercury:meta-value text="${pagetitle}" keepHtml="${true}" /></c:set>
+<c:set var="pagetitle"><m:meta-title addIntro="${false}" /></c:set>
+<c:set var="pagetitle"><m:meta-value text="${pagetitle}" keepHtml="${true}" /></c:set>
 <c:set var="titleprefix" value="${contentPropertiesSearch['mercury.title.prefix']}" />
 <c:set var="titleprefix" value="${(empty titleprefix) or (titleprefix eq 'none') or (not empty cms.meta.ogTitle and not cms.detailRequest) ? null : titleprefix}" />
 <c:set var="titlesuffix" value="${contentPropertiesSearch['mercury.title.suffix'] eq 'none' ? null : contentPropertiesSearch['mercury.title.suffix']}" />
@@ -41,34 +41,34 @@ to find a sentence end.
 --%>
 <c:choose>
     <c:when test="${not empty cms.meta.ogDescriptionMeta}">
-        <c:set var="pagedesc"><mercury:meta-value text="${cms.meta.ogDescriptionMeta}" keepHtml="${true}" /></c:set>
+        <c:set var="pagedesc"><m:meta-value text="${cms.meta.ogDescriptionMeta}" keepHtml="${true}" /></c:set>
     </c:when>
     <c:when test="${not empty cms.meta.ogDescriptionTeaser}">
-        <c:set var="pagedesc"><mercury:meta-value text="${cms.meta.ogDescriptionTeaser}" keepHtml="${true}" trim="${175}" /></c:set>
+        <c:set var="pagedesc"><m:meta-value text="${cms.meta.ogDescriptionTeaser}" keepHtml="${true}" trim="${175}" /></c:set>
     </c:when>
     <c:when test="${not empty cms.meta.ogDescription}">
-        <c:set var="pagedesc"><mercury:meta-value text="${cms.meta.ogDescription}" trim="${175}" /></c:set>
+        <c:set var="pagedesc"><m:meta-value text="${cms.meta.ogDescription}" trim="${175}" /></c:set>
     </c:when>
     <c:when test="${hasAltDesc}">
-        <c:set var="pagedesc"><mercury:meta-value text="${cms.meta.ogDescriptionAltCaption}${hasAltDescAndCaption ? ' - ' : ''}${cms.meta.ogDescriptionAlt}" trim="${175}" /></c:set>
+        <c:set var="pagedesc"><m:meta-value text="${cms.meta.ogDescriptionAltCaption}${hasAltDescAndCaption ? ' - ' : ''}${cms.meta.ogDescriptionAlt}" trim="${175}" /></c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="pagedesc"><mercury:meta-value text="${contentPropertiesSearch['Description']}" trim="${175}" /></c:set>
+        <c:set var="pagedesc"><m:meta-value text="${contentPropertiesSearch['Description']}" trim="${175}" /></c:set>
     </c:otherwise>
 </c:choose>
 
 <c:choose>
     <c:when test="${not empty cms.meta.Keywords}">
-        <c:set var="pagekeywords"><mercury:meta-value text="${cms.meta.Keywords}" /></c:set>
+        <c:set var="pagekeywords"><m:meta-value text="${cms.meta.Keywords}" /></c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="pagekeywords"><mercury:meta-value text="${contentPropertiesSearch['Keywords']}" /></c:set>
+        <c:set var="pagekeywords"><m:meta-value text="${contentPropertiesSearch['Keywords']}" /></c:set>
     </c:otherwise>
 </c:choose>
 
 <c:choose>
     <c:when test="${not empty cms.meta.Robots}">
-        <c:set var="pagerobots"><mercury:meta-value text="${cms.meta.Robots}" /></c:set>
+        <c:set var="pagerobots"><m:meta-value text="${cms.meta.Robots}" /></c:set>
     </c:when>
     <c:otherwise>
         <c:set var="pagerobots">index, follow</c:set>
@@ -105,26 +105,26 @@ to find a sentence end.
 </c:choose>
 <c:if test="${not empty fbtitle}">
     <c:set var="fbSet" value="true" />
-    <c:set var="fbtitle"><mercury:meta-title title="${fbtitle}" addIntro="${fbintro}" trim="${75}" /></c:set>
-    <c:set var="fbtitle"><mercury:meta-value text="${fbtitle}" keepHtml="${true}" /></c:set>
+    <c:set var="fbtitle"><m:meta-title title="${fbtitle}" addIntro="${fbintro}" trim="${75}" /></c:set>
+    <c:set var="fbtitle"><m:meta-value text="${fbtitle}" keepHtml="${true}" /></c:set>
     <meta property="og:title" content="${fbtitle}">
 </c:if>
 
 <c:choose>
     <c:when test="${not empty cms.meta.fbDescription}">
-        <c:set var="fbdesc"><mercury:meta-value text="${cms.meta.fbDescription}" keepHtml="${true}" /></c:set>
+        <c:set var="fbdesc"><m:meta-value text="${cms.meta.fbDescription}" keepHtml="${true}" /></c:set>
     </c:when>
     <c:when test="${not empty cms.meta.ogDescriptionMeta}">
-        <c:set var="fbdesc"><mercury:meta-value text="${cms.meta.ogDescriptionMeta}" keepHtml="${true}" /></c:set>
+        <c:set var="fbdesc"><m:meta-value text="${cms.meta.ogDescriptionMeta}" keepHtml="${true}" /></c:set>
     </c:when>
     <c:when test="${not empty cms.meta.ogDescriptionTeaser}">
-        <c:set var="fbdesc"><mercury:meta-value text="${cms.meta.ogDescriptionTeaser}" trim="${400}" keepHtml="${true}" /></c:set>
+        <c:set var="fbdesc"><m:meta-value text="${cms.meta.ogDescriptionTeaser}" trim="${400}" keepHtml="${true}" /></c:set>
     </c:when>
     <c:when test="${not empty cms.meta.ogDescription}">
-        <c:set var="fbdesc"><mercury:meta-value text="${cms.meta.ogDescription}" trim="${400}" /></c:set>
+        <c:set var="fbdesc"><m:meta-value text="${cms.meta.ogDescription}" trim="${400}" /></c:set>
     </c:when>
     <c:when test="${hasAltDesc}">
-        <c:set var="fbdesc"><mercury:meta-value text="${cms.meta.ogDescriptionAltCaption}${hasAltDescAndCaption ? ' - ' : ''}${cms.meta.ogDescriptionAlt}" trim="${400}" /></c:set>
+        <c:set var="fbdesc"><m:meta-value text="${cms.meta.ogDescriptionAltCaption}${hasAltDescAndCaption ? ' - ' : ''}${cms.meta.ogDescriptionAlt}" trim="${400}" /></c:set>
     </c:when>
 </c:choose>
 <c:if test="${not empty fbdesc}">
@@ -203,7 +203,7 @@ to find a sentence end.
 
 <c:choose>
     <c:when test="${not empty cms.meta.fbUrl}">
-        <c:set var="fburl"><mercury:link-opencms targetLink="${cms.meta.fbUrl}" /></c:set>
+        <c:set var="fburl"><m:link-opencms targetLink="${cms.meta.fbUrl}" /></c:set>
     </c:when>
     <c:when test="${fbSet}">
         <c:set var="fburl">${canonicalURL}</c:set>
@@ -241,7 +241,7 @@ to find a sentence end.
 
 <c:choose>
     <c:when test="${not empty cms.meta.twDescription}">
-        <c:set var="twdesc"><mercury:meta-value text="${cms.meta.twDescription}" /></c:set>
+        <c:set var="twdesc"><m:meta-value text="${cms.meta.twDescription}" /></c:set>
     </c:when>
     <%-- Twitter reuses facebook og:decription if no special Twitter description is set --%>
 </c:choose>

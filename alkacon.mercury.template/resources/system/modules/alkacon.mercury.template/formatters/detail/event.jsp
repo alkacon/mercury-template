@@ -9,20 +9,20 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
+<m:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="keyPieceSizeDesktop"    value="${setting.keyPieceSizeDesktop.useDefault('99').toInteger}" />
@@ -55,12 +55,12 @@
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
 <c:set var="dateFormat"             value="${empty datePrefix ? dateFormat : fn:substringAfter(dateFormat, '|')}" />
 
-<mercury:paragraph-split
+<m:paragraph-split
     paragraphs="${content.valueList.Paragraph}"
     splitFirst="${false}"
     splitDownloads="${showCombinedDownloads}">
 
-<mercury:location-vars data="${value.AddressChoice}" test="${showLocation}">
+<m:location-vars data="${value.AddressChoice}" test="${showLocation}">
 
 <c:set var="intro"                  value="${value.Intro}" />
 <c:set var="title"                  value="${value.Title}" />
@@ -80,7 +80,7 @@
 <c:set var="showOverlay"            value="${keyPieceLayout == 50}" />
 <c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />
 <c:set var="date">
-    <mercury:instancedate date="${seriesInfo.instanceInfo.get(param.instancedate)}" format="${dateFormat}" />
+    <m:instancedate date="${seriesInfo.instanceInfo.get(param.instancedate)}" format="${dateFormat}" />
 </c:set>
 <c:set var="showDate"               value="${not empty date}" />
 <c:set var="ade"                    value="${cms.isEditMode and (empty cms.detailContentId or (not empty date) and (seriesInfo.isExtractedDate or seriesInfo.isSingleDate))}" />
@@ -143,14 +143,14 @@
                         </div><%----%>
                     </c:if>
                 </div><%----%>
-                <mercury:nl />
+                <m:nl />
                 <c:if test="${showLocation}">
                     <div class="info location"><%----%>
                         <span class="sr-only"><fmt:message key="msg.page.sr.location" /></span><%----%>
                         <div class="locdata"><%----%>
                             <c:if test="${hasVirtualLocation}">
                                     <div class="onlineInfo"><%----%>
-                                    <mercury:link link="${value.VirtualLocation}" text="${value.VirtualLocation.value.URI.isSet ? value.VirtualLocation.value.URI.toLink : ''}" noExternalMarker="${true}" />
+                                    <m:link link="${value.VirtualLocation}" text="${value.VirtualLocation.value.URI.isSet ? value.VirtualLocation.value.URI.toLink : ''}" noExternalMarker="${true}" />
                                     </div><%----%>
                             </c:if>
                             <c:if test="${not empty locData}">
@@ -180,7 +180,7 @@
                                 <div class="adressInfo" ${ade ? loocationNote.rdfaAttr : ''}>${locationNote}</div><%----%>
                             </c:if>
                         </div><%----%>
-                        <mercury:nl />
+                        <m:nl />
                     </div><%----%>
                 </c:if>
             </div><%----%>
@@ -191,19 +191,19 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:nl />
+<m:nl />
 <div class="detail-page type-event layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
-<mercury:nl />
+<m:nl />
 
 <%-- Optional debug output generated from "detail-setting-defaults" plugin --%>
 ${settingDefaultsDebug}
 
-<mercury:event-booking
+<m:event-booking
     content="${content}"
     bookingOption="${bookingOption}"
     test="${seriesInfo.isExtractedDate or seriesInfo.isSingleDate}">
 
-<mercury:piece
+<m:piece
     cssWrapper="detail-visual${setCssWrapperKeyPiece}"
     pieceLayout="${keyPieceLayout}"
     allowEmptyBodyColumn="${not empty image}"
@@ -213,14 +213,14 @@ ${settingDefaultsDebug}
     <jsp:attribute name="heading">
         <c:if test="${not showOverlay}">
             <c:if test="${keyPieceInfoPos eq 'ah'}">${keyPieceInfoMarkup}</c:if>
-            <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
-            <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'ih'}" />
+            <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}" ade="${ade}"/>
+            <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'ih'}" />
             <c:if test="${keyPieceInfoPos eq 'bh'}">${keyPieceInfoMarkup}</c:if>
         </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="visual">
-        <mercury:key-visual-piece
+        <m:key-visual-piece
             image="${image}"
             showOverlay="${showOverlay}"
             effect="${setEffect}"
@@ -231,18 +231,18 @@ ${settingDefaultsDebug}
             showImageCopyright="${showImageCopyright}"
             ade="${ade}">
             <jsp:attribute name="markupHeading">
-                <mercury:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
+                <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
             </jsp:attribute>
-        </mercury:key-visual-piece>
+        </m:key-visual-piece>
     </jsp:attribute>
 
     <jsp:attribute name="text">
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'tt'}" />
+        <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'tt'}" />
         <c:if test="${keyPieceInfoPos eq 'it'}">${keyPieceInfoMarkup}</c:if>
-        <mercury:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bt'}" />
+        <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bt'}" />
     </jsp:attribute>
 
-</mercury:piece>
+</m:piece>
 
 <c:if test="${keyPieceInfoPos eq 'ov'}">
     <div class="pivot detail-visual-info">${keyPieceInfoMarkup}</div><%----%>
@@ -252,7 +252,7 @@ ${settingDefaultsDebug}
     <div class="detail-content event-costs pivot"><%----%>
 
         <fmt:message key="msg.page.event.costs" var="costHeading" />
-        <mercury:heading level="${hsize+1}" text="${costHeading}" css="ev-cost-heading" />
+        <m:heading level="${hsize+1}" text="${costHeading}" css="ev-cost-heading" />
 
         <div class="cost-table"><%----%>
             <c:forEach var="costs" items="${content.valueList.Costs}">
@@ -272,25 +272,25 @@ ${settingDefaultsDebug}
                     </div><%----%>
                     <c:if test="${costs.value.LinkToPaymentService.isSet}">
                         <div class="ct-link"><%----%>
-                            <mercury:link link="${costs.value.LinkToPaymentService}" />
+                            <m:link link="${costs.value.LinkToPaymentService}" />
                         </div><%----%>
                     </c:if>
                 </div><%----%>
             </c:forEach>
         </div><%----%>
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </c:if>
 
 <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">
     <c:set var="pHsize" value="${hsize >= 0 ? hsize + 1 : (hsize >= -7 ? -1 * hsize : 0)}" />
     <div class="detail-content"><%----%>
-        <mercury:paragraphs-alternating
+        <m:paragraphs-alternating
             paragraphs="${paragraphsContent}"
             baseLayout="${pieceLayout}"
             layoutAlternating="${pieceLayoutAlternating}"
             skipFirstParagraphImage="${useVisualFromParagraph}">
-            <mercury:section-piece
+            <m:section-piece
                 cssWrapper="${setCssWrapperParagraphs}"
                 pieceLayout="${paragraphLayout}"
                 sizeDesktop="${pieceLayoutSizeDesktop}"
@@ -308,14 +308,14 @@ ${settingDefaultsDebug}
                 ade="${ade}"
                 emptyWarning="${not status.first}"
             />
-        </mercury:paragraphs-alternating>
-        <mercury:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
+        </m:paragraphs-alternating>
+        <m:paragraph-downloads paragraphs="${paragraphsDownload}" hsize="${hsize + 1}" />
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </c:if>
 
 <c:if test="${showMap}">
-    <mercury:nl/>
+    <m:nl/>
     <div class="detail-addition ser-poi"><%----%>
         <c:set var="params" value="${{
             'mapRatio': '16-9',
@@ -324,25 +324,25 @@ ${settingDefaultsDebug}
             'showMap': setShowMap,
             'showDescription': false
         }}" />
-        <mercury:display
+        <m:display
             formatter="%(link.weak:/system/modules/alkacon.mercury.template/formatters/detail/poi.xml:08d2a739-0286-492b-a3d4-d302dd64d3f6)"
             file="${value.AddressChoice.value.PoiLink.stringValue}"
             settings="${params}"
         />
     </div><%----%>
-    <mercury:nl/>
+    <m:nl/>
 </c:if>
 
 <c:if test="${showiCalendar}">
-    <mercury:icalendar-vars content="${content}">
+    <m:icalendar-vars content="${content}">
         <div class="detail-addition element pivot ical-link"><%----%>
             <a class="btn" download="${iCalFileName}" href="${iCalLink}">${iCalLabel}</a><%----%>
         </div><%----%>
-    </mercury:icalendar-vars>
-    <mercury:nl />
+    </m:icalendar-vars>
+    <m:nl />
 </c:if>
 
-<mercury:container-attachment content="${content}" name="attachments" type="${containerType}" />
+<m:container-attachment content="${content}" name="attachments" type="${containerType}" />
 
 <c:if test="${showBookingForm}">
     <cms:include file="/system/modules/alkacon.mercury.webform/elements/webform-booking.jsp">
@@ -353,19 +353,19 @@ ${settingDefaultsDebug}
     </cms:include>
 </c:if>
 
-<mercury:data-event content="${content}" date="${value.Dates.toDateSeries.instanceInfo.get(param.instancedate)}" />
+<m:data-event content="${content}" date="${value.Dates.toDateSeries.instanceInfo.get(param.instancedate)}" />
 
-</mercury:event-booking>
+</m:event-booking>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:location-vars>
-</mercury:paragraph-split>
+</m:location-vars>
+</m:paragraph-split>
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

@@ -8,9 +8,9 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
 <cms:formatter var="content" val="value" locale="en">
 <fmt:setLocale value="${cms.locale}" />
@@ -21,7 +21,7 @@
 
 <c:set var="listCompatibilityMarkup">
     <%-- Check if list formatters are compatible. --%>
-    <mercury:list-compatibility
+    <m:list-compatibility
         settings="${settings}"
         types="${content.valueList.TypesToCollect}"
         listType="static"
@@ -29,14 +29,14 @@
     />
 </c:set>
 
-<mercury:nl />
+<m:nl />
 <div class="element type-static-list list-content <%--
 --%>${not empty settings.listCssWrapper ? settings.listCssWrapper.concat(' ') : ''}<%--
 --%>${not empty settings.listDisplay ? settings.listDisplay.concat(' ') : ''}<%--
 --%>${not empty settings.cssWrapper ? settings.cssWrapper.concat(' ') : ''}<%--
 --%>${not empty listDisplayType ? 'list-'.concat(listDisplayType).concat(' ') : ''}<%--
 --%>${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
-<mercury:nl />
+<m:nl />
 
     <c:if test="${not isCompatible}">
         ${listCompatibilityMarkup}
@@ -44,19 +44,19 @@
 
     <c:if test="${isCompatible}">
 
-        <mercury:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />
+        <m:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />
 
         <c:set var="listWrapper" value="${settings.listWrapper}${' '}${settings.requiredListWrapper}" />
         <c:set var="listWrapper" value="${fn:replace(listWrapper, 'row-tile', 'row')}" />
         <c:set var="listTag" value="${wrappedSettings.listTag.isSet ? wrappedSettings.listTag : 'ul' }" />
-        <c:set var="instanceId"><mercury:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
+        <c:set var="instanceId"><m:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
 
         <div class="list-box ${settings.listBoxWrapper}"><%----%>
-        <mercury:nl />
+        <m:nl />
 
             <%-- ####### List entries ######## --%>
             ${'<'}${listTag} class="list-entries ${listWrapper}" id="${instanceId}"${'>'}
-                <mercury:list-main
+                <m:list-main
                     instanceId="${instanceId}"
                     config="${content}"
                     count="${wrappedSettings.itemsPerPage.isEmpty ? 5 : wrappedSettings.itemsPerPage.toInteger}"
@@ -69,19 +69,19 @@
             ${'</'}${listTag}${'>'}
 
             <%-- ####### Displays notice in case of empty list result ######## --%>
-            <mercury:list-messages
+            <m:list-messages
                 search="${search}"
                 types="${content.valueList.TypesToCollect}"
                 uploadFolder="${cms.getBinaryUploadFolder(content)}" />
 
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
 
     </c:if>
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

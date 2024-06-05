@@ -8,9 +8,9 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages>
+<m:init-messages>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -31,7 +31,7 @@
 
 <div class="type-spacer pivot${spaceMobile ne 'none' ? ' space-'.concat(spaceMobile) : '' }${spaceDesktop ne 'mobile' ? ' space-lg-'.concat(spaceDesktop) : '' }${not empty spaceColor ? ' '.concat(spaceColor) : ''}${editClass}"${editStyle}><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 </cms:bundle>
-</mercury:init-messages>
+</m:init-messages>

@@ -8,10 +8,10 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.locale}" />
@@ -39,11 +39,11 @@
 <c:if test="${dateFormat.isSetNotNone}">
     <c:set var="seriesInfo" value="${value.Dates.toDateSeries}" />
     <c:set var="date" value="${seriesInfo.instanceInfo.get(param.instancedate)}" />
-    <c:set var="dateStr"><mercury:instancedate date="${date}" format="${dateFormat.toString}" /></c:set>
+    <c:set var="dateStr"><m:instancedate date="${date}" format="${dateFormat.toString}" /></c:set>
     <c:if test="${empty minHeight}"><c:set var="minHeight" value="min-height" /></c:if>
 </c:if>
 
-<mercury:list-badge var="badge" seriesInfo="${seriesInfo}" test="${cms.isEditMode}" />
+<m:list-badge var="badge" seriesInfo="${seriesInfo}" test="${cms.isEditMode}" />
 
 <c:set var="imgRatio" value="${ratio}" />
 
@@ -95,20 +95,20 @@
 </c:if>
 <c:set var="link"><cms:link baseUri="${baseUri}">${content.filename}${linkParameters}</cms:link></c:set>
 
-<mercury:nl />
+<m:nl />
 <div class="type-event text-below-on-xs ${tileClass}${' '}${effect}"><%----%>
     <div class="content"><%----%>
 
-    <mercury:link link="${link}">
+    <m:link link="${link}">
         <cms:addparams>
             <cms:param name="cssgrid" value="${tileClass}" />
-            <mercury:image-animated
+            <m:image-animated
                 image="${image}"
                 ratio="${imgRatio}"
                 alt="${showImageCopyright ? 'nocopy' : null}"
                 title="${title}">
                 <c:set var="copyright" value="${imageCopyrightHtml}" />
-            </mercury:image-animated>
+            </m:image-animated>
         </cms:addparams>
 
         <div class="text-overlay"><%----%>
@@ -117,15 +117,15 @@
             <c:if test="${not empty preface}"><h3 class="preface"><c:out value="${preface}" /></h3></c:if>
         </div><%----%>
         <c:if test="${showImageCopyright}"><div class="copyright">${copyright}</div></c:if>
-    </mercury:link>
+    </m:link>
 
     </div><%----%>
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>
 
 

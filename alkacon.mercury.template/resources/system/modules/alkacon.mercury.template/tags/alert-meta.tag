@@ -18,20 +18,20 @@
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:if test="${empty test ? true : test}">
-    <mercury:nl />
+    <m:nl />
     <div class="${empty css ? '' : css.concat(' ')}oct-meta pivot"><%----%>
         <div class="marker"><%----%>
             <c:if test="${not empty icon}">
-                <mercury:icon icon="${icon}" tag="span" />
+                <m:icon icon="${icon}" tag="span" />
             </c:if>
             <jsp:invoke fragment="text" />
         </div><%----%>
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </c:if>
 
 

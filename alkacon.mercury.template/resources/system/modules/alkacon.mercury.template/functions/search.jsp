@@ -8,17 +8,17 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
-<c:set var="id"><mercury:idgen prefix="" uuid="${cms.element.id}" /></c:set>
+<c:set var="id"><m:idgen prefix="" uuid="${cms.element.id}" /></c:set>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="searchSubsite"          value="${setting.searchscope.toString eq 'subsite'}" />
 <c:set var="searchForEmptyQuery"    value="${setting.searchForEmptyQuery.toBoolean}" />
@@ -43,7 +43,7 @@
     </c:when>
     <c:when test="${fn:startsWith(slotButton, 'icon:')}">
         <c:set var="icon" value="${fn:substringAfter(slotButton, 'icon:')}" />
-        <c:set var="slotButton"><mercury:icon icon="${icon}" tag="span" cssWrapper="icon-image" inline="${true}" /></c:set>
+        <c:set var="slotButton"><m:icon icon="${icon}" tag="span" cssWrapper="icon-image" inline="${true}" /></c:set>
     </c:when>
 </c:choose>
 
@@ -151,9 +151,9 @@
 <%-- short cut to access the controller for common search settings --%>
 <c:set var="common" value="${controllers.common}" />
 
-<mercury:nl/>
+<m:nl/>
 <div class="element type-search pivot${setCssWrapperAll}"><%----%>
-    <mercury:nl/>
+    <m:nl/>
 
     <%-- The search form --%>
     <%-- search action: link to the current page --%>
@@ -173,7 +173,7 @@
         <c:set var="hasSortOptions" value="${cms:getListSize(controllers.sorting.config.sortOptions) > 0}" />
         <c:set var="hasFacets" value="${(cms:getListSize(search.fieldFacets) > 0) or (not empty search.facetQuery)}" />
 
-        <mercury:nl/>
+        <m:nl/>
         <div class="search-result-row"><%----%>
 
             <%-- Search query --%>
@@ -188,12 +188,12 @@
                     </div><%----%>
                 </section><%----%>
             </div><%----%>
-            <mercury:nl/>
+            <m:nl/>
 
             <%-- Search facets --%>
             <c:if test="${hasFacets}">
                 <%-- Facets --%>
-                <mercury:nl/>
+                <m:nl/>
                 <div class="search-facets"><%----%>
                 <div class="type-list-filter"><%----%>
 
@@ -210,7 +210,7 @@
                             --%>${facetController.config.label}<%--
                          --%></button><%----%>
                             <div id="qf${id}" class="collapse show"><%----%>
-                                <mercury:nl/>
+                                <m:nl/>
                                 <c:forEach var="entry" items="${facetController.config.queryList}" varStatus="status">
                                     <c:if test="${not empty search.facetQuery[entry.query]}">
                                         <label class="checkbox"> <input type="checkbox" <%--
@@ -221,14 +221,14 @@
                                             --%><i></i><%--
                                             --%>${entry.label} (${search.facetQuery[entry.query]})<%--
                                         --%></label><%----%>
-                                        <mercury:nl/>
+                                        <m:nl/>
                                     </c:if>
                                 </c:forEach>
                             </div><%----%>
                         </div><%----%>
                     </c:if>
 
-                    <mercury:nl/>
+                    <m:nl/>
                     <c:set var="fieldFacetControllers" value="${controllers.fieldFacets}" />
                     <c:forEach var="facet" items="${search.fieldFacets}" varStatus="status">
                         <c:set var="facetController" value="${fieldFacetControllers.fieldFacetController[facet.name]}" />
@@ -244,9 +244,9 @@
                                 --%>data-bs-toggle="collapse"><%--
                                 --%>${facetController.config.label}<%--
                              --%></button><%----%>
-                                <mercury:nl/>
+                                <m:nl/>
                                 <div id="ff${id}_${status.index}" class="collapse show"><%----%>
-                                    <mercury:nl/>
+                                    <m:nl/>
                                     <c:forEach var="facetItem" items="${facet.values}">
                                         <c:choose>
                                             <c:when test='${facet.name eq "type"}'>
@@ -279,12 +279,12 @@
                                             --%><i></i><%--
                                             --%>${label} (${facetItem.count})<%--
                                     --%></label><%----%>
-                                        <mercury:nl/>
+                                        <m:nl/>
                                     </c:forEach>
 
                                     <%-- Show option to show more facet entries --%>
                                     <c:if test="${not empty facetController.config.limit && cms:getListSize(facet.values) ge facetController.config.limit}">
-                                        <mercury:nl/>
+                                        <m:nl/>
                                         <div class="show-more"><%----%>
                                             <c:choose>
                                             <c:when test="${facetController.state.useLimit}">
@@ -299,12 +299,12 @@
                                     </c:if>
                                 </div><%----%>
                             </div><%----%>
-                            <mercury:nl/>
+                            <m:nl/>
                         </c:if>
                     </c:forEach>
                 </div><%----%>
                 </div><%----%>
-                <mercury:nl/>
+                <m:nl/>
             </c:if>
 
             <c:if test="${hasSortOptions}">
@@ -314,17 +314,17 @@
                         <div class="select"><%----%>
                             <%-- Display select box with sort options where the currently chosen option is selected --%>
                             <select name="${sort.config.sortParam}" class="form-control" onchange="submitSearchForm()"><%----%>
-                            <mercury:nl/>
+                            <m:nl/>
                                 <c:forEach var="option" items="${sort.config.sortOptions}">
                                     <option value="${option.paramValue}" ${sort.state.checkSelected[option]?"selected":""}>${option.label}</option><%----%>
-                                    <mercury:nl/>
+                                    <m:nl/>
                                 </c:forEach>
                             </select><%----%>
                             <i></i><%----%>
                     </div><%----%>
                     </section>
                 </div>
-                <mercury:nl/>
+                <m:nl/>
             </c:if>
 
             <%-- Search results --%>
@@ -364,12 +364,12 @@
                                 <div class="search-suggestion"><%----%>
                                     <h3 tabindex="0"><fmt:message key="msg.page.search.didyoumean_0" /></h3><%----%>
                                     <ul><%----%>
-                                        <mercury:nl/>
+                                        <m:nl/>
                                         <c:forEach var="alternative" items="${suggestion.alternatives}" varStatus="status">
                                             <li><%----%>
                                                 <a href='<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[alternative]}</cms:link>'>${alternative} (${suggestion.alternativeFrequencies[status.index]})</a><%----%>
                                             </li><%----%>
-                                            <mercury:nl/>
+                                            <m:nl/>
                                         </c:forEach>
                                     </ul><%----%>
                                 </div>
@@ -402,7 +402,7 @@
                                 </fmt:message>
                             </div><%----%>
                         </div><%----%>
-                        <mercury:nl/>
+                        <m:nl/>
 
                         <%-- show search results --%>
                         <c:forEach var="searchResult" items="${search.searchResults}">
@@ -440,14 +440,14 @@
                                         <c:out value="${showTypeBadge ? typeName : ''}" escapeXml="${false}" />
                                     </a><%----%>
                                 </h4><%----%>
-                                <mercury:nl/>
+                                <m:nl/>
 
                                 <c:if test="${showDateLastModified}">
                                     <div class="search-result-date"><%----%>
                                         <c:out value="${empty datePrefix ? '' : datePrefix.concat(' ')}" />
-                                        <mercury:instancedate date="${cms.wrap[searchResult.dateFields['lastmodified']].toInstanceDate}" format="${dateFormat}"/>
+                                        <m:instancedate date="${cms.wrap[searchResult.dateFields['lastmodified']].toInstanceDate}" format="${dateFormat}"/>
                                     </div><%----%>
-                                    <mercury:nl/>
+                                    <m:nl/>
                                 </c:if>
 
                                 <c:if test="${showExcerpt}">
@@ -475,15 +475,15 @@
                                             </c:otherwise>
                                         </c:choose>
                                     </div><%----%>
-                                    <mercury:nl/>
+                                    <m:nl/>
                                 </c:if>
 
                             </div><%----%>
-                            <mercury:nl/>
+                            <m:nl/>
                         </c:forEach>
 
                         <c:set var="onclickAction"><cms:link>${cms.requestContext.uri}?$(LINK)</cms:link></c:set>
-                        <mercury:list-pagination
+                        <m:list-pagination
                             search="${search}"
                             singleStep="true"
                             onclickAction='window.location.href="${onclickAction}"'
@@ -491,11 +491,11 @@
                     </c:otherwise>
                 </c:choose>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
 
         </div><%----%>
     </form><%----%>
-    <mercury:nl />
+    <m:nl />
 
     <script type="text/javascript"><%--
     --%>var searchForm = document.forms["search-form"];<%--
@@ -503,12 +503,12 @@
         --%>searchForm.submit();<%--
     --%>}<%--
     --%></script><%----%>
-    <mercury:nl />
+    <m:nl />
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
-</mercury:init-messages>
+</m:init-messages>

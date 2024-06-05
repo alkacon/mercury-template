@@ -88,7 +88,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="width" value="${cms:mathRound(cms:toNumber(fn:substringBefore(ratio, '-'), 4))}" />
@@ -113,7 +113,7 @@
     </c:when>
 </c:choose>
 
-<mercury:list-element-status>
+<m:list-element-status>
 
 <c:if test="${content.value.Image.isSet}">
     <c:set var="image" value="${content.value.Image}" />
@@ -134,7 +134,7 @@
         <c:set var="cookieMessage"><fmt:message key="msg.page.privacypolicy.message.media.youtube" /></c:set>
         <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.youtube" /></c:set>
         <c:set var="youTubeId" value="${content.value.MediaContent.value.YouTube.value.YouTubeId}" />
-        <c:set var="defaultPreview"><mercury:attribute-schema-param param="mercuryYouTubePreviewDefault" /></c:set>
+        <c:set var="defaultPreview"><m:attribute-schema-param param="mercuryYouTubePreviewDefault" /></c:set>
         <c:set var="youTubePreviewImg" value="${content.value.MediaContent.value.YouTube.value.YouTubePreview.isSet
             ? content.value.MediaContent.value.YouTube.value.YouTubePreview
             : defaultPreview}"
@@ -168,7 +168,7 @@
                 <c:if test="${not (youTubePreviewImg eq 'hqdefault.jpg')}">
                     <c:set var="srcSet" value="${srcSet}, https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg} 640w" />
                 </c:if>
-                <mercury:image-lazyload
+                <m:image-lazyload
                     srcUrl="https://img.youtube.com/vi/${youTubeId}/${youTubePreviewImg}"
                     srcSet="${srcSet}"
                     alt="${content.value.Title}"
@@ -233,7 +233,7 @@
                 <c:set var="srcSet"><%--
                 --%>${fn:replace(videoPreviewImg, 'webimage', 'thul')} 250w, <%--
                 --%>${videoPreviewImg} 800w</c:set>
-                <mercury:image-lazyload
+                <m:image-lazyload
                     srcUrl="${videoPreviewImg}"
                     srcSet="${srcSet}"
                     alt="${content.value.Title}"
@@ -321,7 +321,7 @@
 
 </cms:bundle>
 
-</mercury:list-element-status>
+</m:list-element-status>
 
 
 <jsp:doBody/>

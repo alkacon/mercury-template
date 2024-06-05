@@ -49,7 +49,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%-- Enable / disable output for debug purposes if required by setting DEBUG="${true}" --%>
 <c:set var="DEBUG" value="${false or debug}" />
@@ -64,20 +64,20 @@
 
 <c:if test="${empty applicationScope.bootstrapCache or clearCache}">
    <c:set var="bootstrapCache" value="${cms:jsonToMap(leer)}" scope="application" />
-   <mercury:print comment="${true}" test="${DEBUG and forceClearCache}">
+   <m:print comment="${true}" test="${DEBUG and forceClearCache}">
         image-sizes FORCED clearCache!
-    </mercury:print>
+    </m:print>
 </c:if>
 
 <c:set var="bootstrapGridData" value="${applicationScope.bootstrapCache[bootstrapGrid]}" />
 
 <c:choose>
     <c:when test="${not empty bootstrapGridData}">
-        <mercury:print comment="${true}" test="${DEBUG}">
+        <m:print comment="${true}" test="${DEBUG}">
             image-sizes using cached data:
 
             ${bootstrapGridData}
-        </mercury:print>
+        </m:print>
 
         <c:set var="bsGutter" value="${bootstrapGridData['bsGutter']}" />
         <c:set var="maxScaleWidth"  value="${bootstrapGridData['maxScaleWidth']}" />
@@ -119,21 +119,21 @@
             </c:catch>
             <c:choose>
                 <c:when test="${empty jsonException}">
-                    <mercury:print comment="${true}" test="${DEBUG}">
+                    <m:print comment="${true}" test="${DEBUG}">
                         image-sizes parsing sitemap attribute data:
                         ${bootstrapGrid}
 
                         image-sizes parsed JSON:
                         ${bsGrid}
-                    </mercury:print>
+                    </m:print>
                 </c:when>
                 <c:otherwise>
-                    <mercury:log message="image-sizes: Error processing \'${bootstrapGrid}\' - \'${jsonException.message}\'" channel="error" />
-                    <mercury:print comment="${true}" test="${DEBUG}">
+                    <m:log message="image-sizes: Error processing \'${bootstrapGrid}\' - \'${jsonException.message}\'" channel="error" />
+                    <m:print comment="${true}" test="${DEBUG}">
                         <c:set var="bsStatus">Error: ${jsonException.message}</c:set>
                         Exception parsing bootstrap sitemap attribute data - using default values!:
                         ${jsonException.message}
-                    </mercury:print>
+                    </m:print>
                 </c:otherwise>
             </c:choose>
         </c:if>
@@ -178,16 +178,16 @@
 
         <c:set target="${applicationScope.bootstrapCache}" property="${bootstrapGrid}" value="${dataMap}" />
 
-        <mercury:print comment="${true}" test="${DEBUG}">
+        <m:print comment="${true}" test="${DEBUG}">
             image-sizes writing data to cache:
 
             ${dataMap}
-        </mercury:print>
+        </m:print>
 
     </c:otherwise>
 </c:choose>
 
-<mercury:print comment="${true}" test="${DEBUG}">
+<m:print comment="${true}" test="${DEBUG}">
 image-sizes result:
 
 Gutter: ${bsGutter}
@@ -207,7 +207,7 @@ Max width MD: ${bsMwMd}
 Max width LG: ${bsMwLg}
 Max width XL: ${bsMwXl}
 Max width XXL: ${bsMwXxl}
-</mercury:print>
+</m:print>
 
 <c:choose>
     <c:when test="${initBootstrapBean}">
@@ -224,9 +224,9 @@ Max width XXL: ${bsMwXxl}
 
                 <c:when test="${bbFullWidth}">
                     <%-- Assume all images are full screen --%>
-                    <mercury:print comment="${true}" test="${DEBUG}">
+                    <m:print comment="${true}" test="${DEBUG}">
                         image-sizes using fullwidth!
-                    </mercury:print>
+                    </m:print>
                     ${bb.setGutter(0)}
                     ${bb.setGridSize(0, bsMwXs)}
                     ${bb.setGridSize(1, bsMwSm)}
@@ -255,22 +255,22 @@ Max width XXL: ${bsMwXxl}
                                     <c:set var="gutterAdjust" value="${gutterBaseInt - bsGutter}" />
                                 </c:if>
                             </c:if>
-                            <mercury:print comment="${true}" test="${DEBUG}">
+                            <m:print comment="${true}" test="${DEBUG}">
                                 image-sizes gutter adjust:
 
                                 param.cssgutter: [${param.cssgutter}]
                                 bsGutter: ${bsGutter}
                                 gutterAdjust: ${gutterAdjust}
-                            </mercury:print>
+                            </m:print>
                         </c:when>
                         <c:when test="${not empty gutter}">
                             <c:set var="bsGutter" value="${gutter}" />
-                            <mercury:print comment="${true}" test="${DEBUG}">
+                            <m:print comment="${true}" test="${DEBUG}">
                                 image-sizes gutter adjust:
 
                                 bsGutter: ${bsGutter}
                                 gutterAdjust: ${gutterAdjust}
-                            </mercury:print>
+                            </m:print>
                         </c:when>
                     </c:choose>
 
@@ -289,7 +289,7 @@ Max width XXL: ${bsMwXxl}
             <c:set var="ignore" value="${not empty gridWrapper ? bb.addLayer(gridWrapper) : ''}" />
             <c:set var="bbInitialized" value="${bb.isInitialized}" />
 
-            <mercury:print comment="${true}" test="${DEBUG}">
+            <m:print comment="${true}" test="${DEBUG}">
                 image-sizes calculated grid values::
 
                 Gutter: ${bb.gutter}
@@ -299,13 +299,13 @@ Max width XXL: ${bsMwXxl}
                 Max width LG: ${bb.getGridSize(3)} - Size LG: ${bb.sizeLg}
                 Max width XL: ${bb.getGridSize(4)} - Size XL: ${bb.sizeXl}
                 Max width XXL: ${bb.getGridSize(5)} - Size XXL: ${bb.sizeXxl}
-                <mercury:nl />
+                <m:nl />
                 <c:forEach var="grid" items="${paramValues.cssgrid}">
                 grid: ${grid}
                 </c:forEach>
                 gridWrapper: ${gridWrapper}
                 bbInitialized: ${bbInitialized}
-            </mercury:print>
+            </m:print>
 
             <c:if test="${srcSet and bbInitialized}">
                 <%-- Calculate the source set sizes --%>
@@ -317,11 +317,11 @@ Max width XXL: ${bsMwXxl}
                 --%><c:if test="${bb.sizeMd gt 0}">(min-width: ${bsMwMd}px) ${bb.sizeMd}px, </c:if><%--
                 --%><c:if test="${bb.sizeSm gt 0}">(min-width: ${bsMwSm}px) ${bb.sizeSm}px, </c:if><%--
                 --%>100vw</c:set>
-                <mercury:print comment="${true}" test="${DEBUG}">
+                <m:print comment="${true}" test="${DEBUG}">
                     image-sizes calculated grid sizes:
 
                     bbSrcSetSizes: ${bbSrcSetSizes}
-                </mercury:print>
+                </m:print>
             </c:if>
 
             <jsp:doBody/>

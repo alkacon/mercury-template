@@ -32,7 +32,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- Acquire search result --%>
@@ -74,7 +74,7 @@
             --%>><%--
             --%><span>${label}</span><%--
             --%></button><%----%>
-            <mercury:nl />
+            <m:nl />
             <c:out value='<ul class="list-optionlist dropdown-menu">' escapeXml='false' />
     </c:set>
 
@@ -92,7 +92,7 @@
                         <fmt:message key="msg.page.list.sort.${sortOption.label}" />
                     </a><%----%>
                 </li><%----%>
-                <mercury:nl />
+                <m:nl />
             </c:if>
         </c:forEach>
     </c:set>

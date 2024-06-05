@@ -22,7 +22,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <fmt:setLocale value="${cms.locale}" />
@@ -41,7 +41,7 @@
         <fmt:message var="text" key="msg.page.contact.obfuscatedemail"/>
     </c:when>
     <c:when test="${obfuscate}">
-        <c:set var="href">javascript:unobfuscateString('<mercury:obfuscate text="${email.value.Email}"/>', true);</c:set>
+        <c:set var="href">javascript:unobfuscateString('<m:obfuscate text="${email.value.Email}"/>', true);</c:set>
         <fmt:message var="text" key="msg.page.contact.obfuscatedemail" />
     </c:when>
     <c:otherwise>

@@ -19,21 +19,21 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="search" value="${searchresult}" />
 <c:set var="showfacets">${settings.showfacetcategory}${settings.showsortdate}${settings.showsortorder}${settings.showsorttitle}</c:set>
 <c:if test='${fn:contains(showfacets,"true")}'>
-    <mercury:nl />
+    <m:nl />
     <div class="list-options"><%----%>
-    <mercury:nl />
+    <m:nl />
         <div class="btn-group"><%----%>
 
             <%-- ####### Sort by title ######## --%>
             <c:if test="${settings.showsorttitle}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.sort.title.label" /></c:set>
-                <mercury:list-sort-button
+                <m:list-sort-button
                     elementId="${elementId}"
                     searchresult="${search}"
                     label="${buttonLabel}"
@@ -44,7 +44,7 @@
             <%-- ####### Sort by date ######## --%>
             <c:if test="${settings.showsortdate}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.sort.date.label" /></c:set>
-                <mercury:list-sort-button
+                <m:list-sort-button
                     elementId="${elementId}"
                     searchresult="${search}"
                     label="${buttonLabel}"
@@ -55,7 +55,7 @@
             <%-- ####### Sort by order ######## --%>
             <c:if test="${settings.showsortorder}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.sort.order.label" /></c:set>
-                <mercury:list-sort-button
+                <m:list-sort-button
                     elementId="${elementId}"
                     searchresult="${search}"
                     label="${buttonLabel}"
@@ -67,7 +67,7 @@
             <c:if test="${settings.showfacetcategory}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.facet.category.label" /></c:set>
                 <c:set var="noSelection"><fmt:message key="msg.page.list.facet.category.all" /></c:set>
-                <mercury:list-sort-category
+                <m:list-sort-category
                     elementId="${elementId}"
                     field="category_exact"
                     label="${buttonLabel}"
@@ -79,5 +79,5 @@
 
         </div><%----%>
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 </c:if>

@@ -8,14 +8,14 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<mercury:init-messages>
+<m:init-messages>
 <cms:formatter var="content" val="value">
 
-<mercury:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
+<m:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />
 <c:set var="sizeDesktop"        value="${setting.visualOption.toInteger}" />
@@ -33,7 +33,7 @@
 <c:set var="headingOption"      value="${setting.headingOption.toString}" />
 <c:set var="textOption"         value="${setting.textOption.toString}" />
 
-<mercury:section-piece
+<m:section-piece
     cssWrapper="element type-section${setCssWrapperAll}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
@@ -58,7 +58,7 @@
     emptyWarning="${true}"
 />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

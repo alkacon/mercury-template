@@ -42,7 +42,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
@@ -88,7 +88,7 @@
 
 <c:choose>
     <c:when test="${inline}">
-        <mercury:icon-resource icon="${icon}" setFallback="${true}" />
+        <m:icon-resource icon="${icon}" setFallback="${true}" />
         <c:set var="iconClass" value="ico ico-svg ico-inline ${iconName}" />
         <c:if test="${not iconIsValid}">
             <c:set var="iconClass" value="${iconClass} ico-missing" />
@@ -98,7 +98,7 @@
         </c:set>
     </c:when>
     <c:when test="${fromImage or imgsrc}">
-        <mercury:icon-resource icon="${icon}" setFallback="${true}" fromImage="${fromImage}" />
+        <m:icon-resource icon="${icon}" setFallback="${true}" fromImage="${fromImage}" />
         <c:set var="iconClass" value="ico ico-img ${iconName}" />
         <c:choose>
             <c:when test="${not iconIsValid}">
@@ -109,7 +109,7 @@
             </c:when>
             <c:otherwise>
                 <c:set var="iconMarkup">
-                    <mercury:image-direct image="${iconResource}" />
+                    <m:image-direct image="${iconResource}" />
                 </c:set>
             </c:otherwise>
         </c:choose>

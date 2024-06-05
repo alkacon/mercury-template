@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -27,24 +27,24 @@
 <c:choose>
 <c:when test="${not loadCounter}">
 
-    <mercury:nl/>
+    <m:nl/>
     <div class="element type-comments comments-hvyor-talk pivot ${cssWrapper}"><%----%>
 
     <c:choose>
         <c:when test="${cms.edited}">
             <div>${cms.enableReload}</div><%----%>
-            <mercury:alert type="error" css="box-noheight">
+            <m:alert type="error" css="box-noheight">
                 <jsp:attribute name="head">
                     <fmt:message key="msg.page.comments.edited" />
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </c:when>
         <c:when test="${empty hyvorTalkSite and cms.isEditMode}">
-            <mercury:alert type="warning" css="box-noheight">
+            <m:alert type="warning" css="box-noheight">
                 <jsp:attribute name="head">
                     <fmt:message key="msg.page.hyvor-talk.notset" />
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </c:when>
         <c:when test="${empty hyvorTalkSite}">
             <!-- <fmt:message key="msg.page.hyvor-talk.notset" /> --><%----%>
@@ -85,19 +85,19 @@
             <div id="hyvor-talk-view" <%--
             --%><c:if test="${clickToLoad}">style="display: none;" </c:if><%--
                 --%>data-comments='${commentsData.compact}'<%--
-                --%><mercury:data-external-cookies message="${cookieMessage}" /><%--
+                --%><m:data-external-cookies message="${cookieMessage}" /><%--
             --%>></div><%----%>
 
-                <mercury:alert-online showJsWarning="${true}" >
+                <m:alert-online showJsWarning="${true}" >
                     <jsp:attribute name="text">
                         <fmt:message key="msg.page.noscript.comments" />
                     </jsp:attribute>
-                </mercury:alert-online>
+                </m:alert-online>
         </c:otherwise>
     </c:choose>
 
     </div><%----%>
-    <mercury:nl/>
+    <m:nl/>
 
 </c:when>
 <c:otherwise>
@@ -105,18 +105,18 @@
     <c:choose>
         <c:when test="${cms.edited}">
             <div>${cms.enableReload}</div><%----%>
-            <mercury:alert type="error" css="box-noheight">
+            <m:alert type="error" css="box-noheight">
                 <jsp:attribute name="head">
                     <fmt:message key="msg.page.comments.edited" />
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </c:when>
         <c:when test="${empty hyvorTalkSite and cms.isEditMode}">
-            <mercury:alert type="warning" css="box-noheight">
+            <m:alert type="warning" css="box-noheight">
                 <jsp:attribute name="head">
                     <fmt:message key="msg.page.hyvor-talk.notset" />
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </c:when>
         <c:when test="${empty hyvorTalkSite}">
             <!-- <fmt:message key="msg.page.hyvor-talk.notset" /> --><%----%>
@@ -169,11 +169,11 @@
             --%><script async type="text/javascript" src="//talk.hyvor.com/web-api/count/"></script><%----%>
 
                 <c:if test="${cms.isEditMode}">
-                    <mercury:alert type="warning" css="box-noheight">
+                    <m:alert type="warning" css="box-noheight">
                         <jsp:attribute name="head">
                              <fmt:message key="msg.page.comments.loadCounter" />
                         </jsp:attribute>
-                    </mercury:alert>
+                    </m:alert>
                 </c:if>
 
             </div><%----%>

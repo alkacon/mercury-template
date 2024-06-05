@@ -25,7 +25,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="linkText" value="${link.value.Text}" />
@@ -37,18 +37,18 @@
     <c:choose>
         <c:when test="${fn:startsWith(linkPart, 'icon:')}">
             <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon:')}" />
-            <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" inline="${true}" /></c:set>
+            <c:set var="linkIcon"><m:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" inline="${true}" /></c:set>
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'icon-last:')}">
             <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon-last:')}" />
-            <c:set var="linkIcon"><mercury:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon icon-last" inline="${true}" /></c:set>
+            <c:set var="linkIcon"><m:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon icon-last" inline="${true}" /></c:set>
             <c:if test="${not empty addSpan}">
                 <c:set var="addSpan" value="${addSpan} icon-last" />
             </c:if>
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'image:')}">
             <c:set var="imagePath" value="${fn:substringAfter(linkPart, 'image:')}" />
-            <c:set var="linkIcon"><mercury:icon icon="${imagePath}" tag="span" cssWrapper="ls-icon" fromImage="${true}" /></c:set>
+            <c:set var="linkIcon"><m:icon icon="${imagePath}" tag="span" cssWrapper="ls-icon" fromImage="${true}" /></c:set>
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'id:')}">
             <c:set var="linkAttr">id="${fn:substringAfter(linkPart, 'id:')}"</c:set>
@@ -91,7 +91,7 @@
     </c:when>
     <c:otherwise>
         ${empty addLi ? '' : '<li class=\"'.concat(addLi).concat('\">')}
-            <mercury:link
+            <m:link
                 link="${link}"
                 title="${linkTitle}"
                 css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}"
@@ -99,7 +99,7 @@
                     ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
                         ${linkIcon}${linkMessage}
                     ${empty addSpan ? '' : '</span>'}
-            </mercury:link>
+            </m:link>
         ${empty addLi ? '' : '</li>'}
     </c:otherwise>
 </c:choose>

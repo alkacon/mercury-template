@@ -7,7 +7,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="version"            value="my-1" />
 <c:set var="fontConfig"         value="${cms.sitemapConfig.attribute['mercury.iconFont.config'].toString}" />
@@ -31,17 +31,17 @@
     </c:otherwise>
 </c:choose>
 
-<link href="<mercury:link-resource resource='${cssPath}'/>" rel="stylesheet"><%----%>
-<mercury:nl />
+<link href="<m:link-resource resource='${cssPath}'/>" rel="stylesheet"><%----%>
+<m:nl />
 
 <jsp:doBody />
 
 <%-- Preload the icon fonts. --%>
 <link href="<cms:link>${fontPath}</cms:link>?v=${version}" rel="preload" as="font" type="font/woff2" crossorigin><%----%>
-<mercury:nl />
+<m:nl />
 <%--
-    NOTE: It is NOT possible to use <mercury:link-resource /> here for preloading fonts!
+    NOTE: It is NOT possible to use <m:link-resource /> here for preloading fonts!
     This is because the path WITH PARAMETERS given in the CSS must exactly match the preload path.
-    <mercury:link-resource /> would append a parameter hash value based on the date last modified, which is NOT what is in the CSS.
+    <m:link-resource /> would append a parameter hash value based on the date last modified, which is NOT what is in the CSS.
     Therefore the preload would fail!
 --%>

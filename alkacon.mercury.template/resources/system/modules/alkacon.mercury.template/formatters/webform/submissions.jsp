@@ -8,7 +8,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:formatter var="content">
@@ -48,7 +48,7 @@
                        ${bean.cancelled ? '' : 'checked'}>&nbsp;<%----%>
             </div><%----%>
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
 
         <div id="${itemId}" class="acco-body collapse" data-bs-parent="#${parentId}"><%----%>
             <div class="submission-actions subelement"><%----%>
@@ -176,10 +176,10 @@
                 </tr><%----%>
             </table><%----%>
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
 
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 
     </cms:bundle>
 

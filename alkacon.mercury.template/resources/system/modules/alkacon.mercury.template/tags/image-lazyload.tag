@@ -70,7 +70,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="useNoScript" value="${empty noScript ? true : noScript}" />
@@ -116,7 +116,7 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:print comment="${true}" test="${DEBUG}">
+<m:print comment="${true}" test="${DEBUG}">
     image-lazyload:
 
     useLazyLoading: ${useLazyLoading}
@@ -125,7 +125,7 @@
     srcSetSizes: ${srcSetSizes}
     empty srcSetSizes: ${empty srcSetSizes}
     useNoScript: ${useNoScript}
-</mercury:print>
+</m:print>
 
 <c:if test="${useNoScript}">
     <%-- Two image tags will be generated in case <noscript> is used, hide the first one with CSS --%>
@@ -137,8 +137,8 @@
     <c:set var="attrImage" value="${empty attrImage ? styleAttr : attrImage.concat(' ').concat(styleAttr)}" />
 </c:if>
 
-<mercury:nl />
-<mercury:padding-box
+<m:nl />
+<m:padding-box
     cssWrapper="${empty cssWrapper ? '' : cssWrapper.concat(' ')}image-src-box"
     attrWrapper="${attrWrapper}"
     heightPercentage="${heightPercentage}"
@@ -165,7 +165,7 @@
 --%>><%----%>
 
     <c:if test="${useNoScript}">
-        <mercury:nl />
+        <m:nl />
         <noscript><%----%>
             <img src=${'\"'}${srcUrl}${'\"'}<%----%>
                 <c:if test="${not empty width}">${' '}width="${width}"</c:if>
@@ -182,4 +182,4 @@
         </div><%----%>
     </c:if>
 
-</mercury:padding-box>
+</m:padding-box>

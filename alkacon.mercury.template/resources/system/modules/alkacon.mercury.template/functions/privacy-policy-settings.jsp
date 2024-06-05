@@ -9,9 +9,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury"%>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury"%>
 
-<mercury:content-properties>
+<m:content-properties>
     <c:set var="policyfile" value="${empty contentPropertiesSearch['mercury.privacy.policy'] ? 'none' : contentPropertiesSearch['mercury.privacy.policy']}" />
 
     <c:choose>
@@ -25,7 +25,7 @@
 
     <c:choose>
         <c:when test="${not empty policyfile and cms.vfs.exists[policyfile]}">
-            <mercury:privacy-policy-settings
+            <m:privacy-policy-settings
                 cssWrapper="${cms.element.settings.cssWrapper}"
                 policyFile="${policyfile}"
                 contentPropertiesSearch="${contentPropertiesSearch}"
@@ -34,12 +34,12 @@
         <c:otherwise>
             <fmt:setLocale value="${cms.locale}" />
             <cms:bundle basename="alkacon.mercury.template.messages">
-                <mercury:alert type="warning">
+                <m:alert type="warning">
                     <jsp:attribute name="head">
                         <fmt:message key="msg.page.policyfile.missing" />
                     </jsp:attribute>
-                </mercury:alert>
+                </m:alert>
             </cms:bundle>
         </c:otherwise>
     </c:choose>
-</mercury:content-properties>
+</m:content-properties>

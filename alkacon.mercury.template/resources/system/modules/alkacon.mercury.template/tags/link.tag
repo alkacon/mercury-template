@@ -66,7 +66,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:choose>
@@ -131,7 +131,7 @@
                     <c:if test="${(not empty fragment) and (not fn:contains(targetLink, '#'))}">
                         <c:set var="targetLink" value="${targetLink}#${fragment}" />
                     </c:if>
-                    <c:set var="targetLink"><mercury:link-opencms targetLink="${targetLink}" /></c:set>
+                    <c:set var="targetLink"><m:link-opencms targetLink="${targetLink}" /></c:set>
 
                     <c:set var="createButton" value="${createButton and empty body}" />
                     <c:if test="${empty body and not internal and not noExternalMarker}">

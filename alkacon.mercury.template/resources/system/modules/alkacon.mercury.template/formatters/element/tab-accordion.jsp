@@ -9,17 +9,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 <fmt:setLocale value="${cms.workplaceLocale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="visualOption"           value="${setting.visualOption.toString}" />
@@ -30,7 +30,7 @@
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
 <c:set var="tabHsize"               value="${hsize > 0 ? hsize + 1 : 2}" />
-<c:set var="parentId"><mercury:idgen prefix="a" uuid="${cms.element.instanceId}" /></c:set>
+<c:set var="parentId"><m:idgen prefix="a" uuid="${cms.element.instanceId}" /></c:set>
 
 <c:choose>
     <c:when test="${containerType eq 'row'}">
@@ -41,17 +41,17 @@
     </c:otherwise>
 </c:choose>
 
-<mercury:nl />
+<m:nl />
 <div class="element type-tab variant-accordion${setCssWrapperAll}"><%----%>
-<mercury:nl />
+<m:nl />
 
-    <mercury:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
+    <m:heading level="${hsize}" text="${value.Title}" ade="${ade}" css="heading pivot" />
 
     <div class="accordion-items" id="${parentId}"><%----%>
 
         <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
 
-            <mercury:accordion
+            <m:accordion
                 cssWrapper="${cssWrapper}"
                 parentId="${parentId}"
                 tabId="${parentId}_${fn:replace(tabEntry.value.Id, 'tab-', '')}"
@@ -60,7 +60,7 @@
                 open="${firstOpen and status.first}"
                 multipleOpen="${multipleOpen}">
 
-                <mercury:container
+                <m:container
                     title="${msg}"
                     name="${tabEntry.value.Id}"
                     hideName="${true}"
@@ -68,18 +68,18 @@
                     type="${containerType}"
                 />
 
-            </mercury:accordion>
+            </m:accordion>
 
         </c:forEach>
 
     </div><%----%>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:bundle>
 </cms:formatter>
 
-</mercury:init-messages>
+</m:init-messages>

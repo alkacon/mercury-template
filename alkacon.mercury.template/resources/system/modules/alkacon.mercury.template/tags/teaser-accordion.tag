@@ -30,7 +30,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="setting"            value="${cms.element.setting}" />
 <c:set var="hsize"              value="${setting.hsize.isSet ? setting.hsize.toInteger : 3}" />
@@ -42,12 +42,12 @@
 <c:set var="open"               value="${setting.firstOpen.toBoolean and (setting.index.toInteger == 0)}" />
 <c:set var="multipleOpen"       value="${setting.multipleOpen.toBoolean}" />
 <c:set var="parentId"           value="${not empty accordionId ? accordionId : setting.listid.toString}" />
-<c:set var="contentId"><mercury:idgen prefix="" uuid="${not empty contentId ? contentId : cms.element.instanceId}" />${empty instancedate ? '' : '_'.concat(fn:replace(instancedate.hashCode(), '-', ''))}</c:set>
+<c:set var="contentId"><m:idgen prefix="" uuid="${not empty contentId ? contentId : cms.element.instanceId}" />${empty instancedate ? '' : '_'.concat(fn:replace(instancedate.hashCode(), '-', ''))}</c:set>
 <c:set var="itemId"             value="a${parentId}${contentId}" />
 
-<mercury:nl />
+<m:nl />
 <article class="accordion ${cssWrapper}"><%----%>
-<mercury:nl />
+<m:nl />
 
     ${'<h'}${hsize} class="acco-header pivot"${'>'}
         <button type="button" <%--
@@ -62,7 +62,7 @@
         <c:if test="${cms.isEditMode}">
             <a href="#${itemId}" class="hash-link"><%----%>
                 <span class="badge oct-meta-info"><%----%>
-                    <mercury:icon icon="hashtag" tag="span" />
+                    <m:icon icon="hashtag" tag="span" />
                 </span><%----%>
             </a><%----%>
         </c:if>
@@ -70,9 +70,9 @@
 
     <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-bs-parent=\"#'.concat(parentId).concat('\"')}><%----%>
         <c:if test="${not empty preface}">
-             <mercury:heading text="${preface}" level="${7}" css="sub-header pivot" ade="${false}" />
+             <m:heading text="${preface}" level="${7}" css="sub-header pivot" ade="${false}" />
         </c:if>
-        <mercury:paragraphs
+        <m:paragraphs
             pieceLayout="${9}"
             paragraphs="${paragraphs}"
             cssWrapper="paragraph"
@@ -88,7 +88,7 @@
         <jsp:doBody />
     </div><%----%>
 
-<mercury:nl />
+<m:nl />
 </article><%----%>
-<mercury:nl />
+<m:nl />
 

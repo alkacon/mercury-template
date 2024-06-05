@@ -6,13 +6,13 @@
 <%@page import="alkacon.mercury.webform.CmsExportBeanExcel" %>
 <%@page import="alkacon.mercury.template.writer.CmsExcelWriter" %>
 
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${not cms.isOnlineProject}">
 
-    <mercury:webform-vars webform="${param.f}" bookingInfo="${param.b}">
-    <mercury:location-vars data="${formBookingXml.value.AddressChoice}">
+    <m:webform-vars webform="${param.f}" bookingInfo="${param.b}">
+    <m:location-vars data="${formBookingXml.value.AddressChoice}">
 
     <c:if test="${form.userCanManage}">
 
@@ -30,8 +30,8 @@
 
     </c:if>
 
-    </mercury:location-vars>
-    </mercury:webform-vars>
+    </m:location-vars>
+    </m:webform-vars>
     <%
         CmsExportBeanExcel exportBean = (CmsExportBeanExcel)pageContext.getAttribute("exportBean");
         if (exportBean != null) {

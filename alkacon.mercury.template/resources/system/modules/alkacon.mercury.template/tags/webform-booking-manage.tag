@@ -19,12 +19,12 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- ###### Generate the management overview ###### --%>
 
-<mercury:webform-vars
+<m:webform-vars
     webform="${webform}"
     bookingInfo="${bookingInfo}">
 
@@ -35,15 +35,15 @@
     <fmt:setLocale value="${cms.locale}"/>
     <cms:bundle basename="alkacon.mercury.template.messages">
 
-    <mercury:nl />
+    <m:nl />
     <div class="subelement formdata-manage"><%----%>
 
         <div class="subelement"><%----%>
-            <mercury:link link="${adminLink}" css="btn btn-block oct-meta-info">
+            <m:link link="${adminLink}" css="btn btn-block oct-meta-info">
                 <fmt:message key="msg.page.form.button.submissions.back" />
-            </mercury:link>
+            </m:link>
         </div><%----%>
-        <mercury:nl />
+        <m:nl />
 
         <c:if test="${empty param.action and empty param.uuid}">
             <h3><%----%>
@@ -51,7 +51,7 @@
                     <fmt:param>${formTitle}</fmt:param>
                 </fmt:message>
             </h3><%----%>
-            <mercury:nl />
+            <m:nl />
 
             <table class="subelement submissions"><%----%>
             <tr><%----%>
@@ -85,7 +85,7 @@
                 <td><fmt:message key="msg.page.form.bookingstatus.cancelledSubmissions.label" />:</td><%----%>
                 <td>${status.numCancelledSubmissions}</td><%----%>
             </tr><%----%>
-    
+
             <c:if test="${formBookingHasFinalRegistrationDate}">
                 <tr><%----%>
                    <td><fmt:message key="msg.page.form.bookingstatus.registrationClosed.headline"/>:</td><%----%>
@@ -93,7 +93,7 @@
                 </tr><%----%>
             </c:if>
             </table><%----%>
-            <mercury:nl />
+            <m:nl />
             <c:if test="${status.numMoveUpPlaces gt 0 and status.numWaitlistCandidates gt 0}">
                 <div class="subelement oct-meta-info severe box"><%----%>
                     <fmt:message key="msg.page.bookingmanage.info.moveupcandidates">
@@ -113,9 +113,9 @@
             <c:set var="formHandler" value="${form.createFormHandler(pageContext)}" />
             <c:choose>
             <c:when test="${not empty param.action and not empty param.uuid}">
-                <mercury:icalendar-vars content="${formBookingXml}">
+                <m:icalendar-vars content="${formBookingXml}">
                 ${formHandler.setICalInfo(iCalLink, iCalFileName, iCalLabel)}
-                </mercury:icalendar-vars>
+                </m:icalendar-vars>
                 <c:set var="formDataHandler" value="${form.createFormDataHandler(pageContext, formHandler)}" />
                 <c:choose>
                     <c:when test="${param.action eq 'cancel'}">
@@ -150,7 +150,7 @@
                 </div><%----%>
             </c:when>
             <c:otherwise>
-            <c:set var="id1"><mercury:idgen prefix="wf1" uuid="${cms.element.id}" /></c:set>
+            <c:set var="id1"><m:idgen prefix="wf1" uuid="${cms.element.id}" /></c:set>
             <div class="subelement"><%----%>
                 <div class="row">
                     <div class="col-md-6">
@@ -204,9 +204,9 @@
                     </div><%----%>
                 </div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
             <c:if test="${status.numWaitlistCandidates gt 0}">
-                <c:set var="id2"><mercury:idgen prefix="wf2" uuid="${cms.element.id}" /></c:set>
+                <c:set var="id2"><m:idgen prefix="wf2" uuid="${cms.element.id}" /></c:set>
                 <div class="subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.waitlist.label" /> (${status.numWaitlistCandidates}/${status.maxWaitlistPlaces})</h3><%----%>
                     <div class=list-box><%----%>
@@ -226,7 +226,7 @@
                 </div><%----%>
             </c:if>
             <c:if test="${status.numCancelledSubmissions gt 0}">
-                <c:set var="id3"><mercury:idgen prefix="wf3" uuid="${cms.element.id}" /></c:set>
+                <c:set var="id3"><m:idgen prefix="wf3" uuid="${cms.element.id}" /></c:set>
                 <div class="subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.cancelledSubmissions.label" /> (${status.numCancelledSubmissions})</h3><%----%>
                     <div class=list-box><%----%>
@@ -245,7 +245,7 @@
                     </div><%----%>
                </div><%----%>
            </c:if>
-           <mercury:nl />
+           <m:nl />
            <div class="subelement"><%----%>
                <h3><fmt:message key="msg.page.form.bookingstatus.export.label" /></h3><%----%>
                <c:set var="formId">${formXml.file.structureId}</c:set>
@@ -259,30 +259,30 @@
                        <fmt:message key="msg.page.form.label.submissions.export" />
                    </span><%----%>
                    <c:set var="link"><cms:link>${csvLink}</cms:link></c:set>
-                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5 btn-export-csv">
+                   <m:link link="${link}" css="btn btn-xs oct-meta-info mr-5 btn-export-csv">
                        <fmt:message key="msg.page.form.button.submissions.csv" />
-                   </mercury:link><%----%>
+                   </m:link><%----%>
                    <c:set var="link"><cms:link>${excelLink}</cms:link></c:set>
-                   <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5 btn-export-excel">
+                   <m:link link="${link}" css="btn btn-xs oct-meta-info mr-5 btn-export-excel">
                        <fmt:message key="msg.page.form.button.submissions.excel" />
-                   </mercury:link><%----%>
+                   </m:link><%----%>
                    <c:if test="${not empty csvExportConfig}">
                        <c:set var="csvExportBean" value="${fn:substringBefore(csvExportConfig, ':')}" />
                        <c:set var="csvExportLabel" value="${fn:substringAfter(csvExportConfig, ':')}" />
                        <c:set var="additionalCsvLink" value="${csvLink}&exportBean=${csvExportBean}" />
                        <c:set var="link"><cms:link>${additionalCsvLink}</cms:link></c:set>
-                       <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${csvExportLabel}</mercury:link><%----%>
+                       <m:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${csvExportLabel}</m:link><%----%>
                    </c:if>
                    <c:if test="${not empty excelExportConfig}">
                        <c:set var="excelExportBean" value="${fn:substringBefore(excelExportConfig, ':')}" />
                        <c:set var="excelExportLabel" value="${fn:substringAfter(excelExportConfig, ':')}" />
                        <c:set var="additionaExcelLink" value="${excelLink}&exportBean=${excelExportBean}" />
                        <c:set var="link"><cms:link>${additionaExcelLink}</cms:link></c:set>
-                       <mercury:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${excelExportLabel}</mercury:link><%----%>
+                       <m:link link="${link}" css="btn btn-xs oct-meta-info mr-5">${excelExportLabel}</m:link><%----%>
                    </c:if>
                </div><%----%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
             <c:if test="${hasBooking and not empty form.submissions}">
                 <div class="submission-actions subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.delete.label" /></h3><%----%>
@@ -315,14 +315,14 @@
                     </dialog><%----%>
                 </div><%----%>
             </c:if>
-            <mercury:nl />
+            <m:nl />
             </c:otherwise>
             </c:choose>
         </c:if>
     </div><%----%>
-    <mercury:nl />
+    <m:nl />
 
     </cms:bundle>
 </c:if>
 
-</mercury:webform-vars>
+</m:webform-vars>

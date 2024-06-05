@@ -23,7 +23,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:if test="${((not empty icon) and ('none' ne icon)) or (not empty text)}">
 
@@ -34,7 +34,7 @@
             <c:if test="${not showText and empty iconLabel}">
                 <c:set var="iconLabel" value="${textLabel}" />
             </c:if>
-            <mercury:icon icon="${icon}" tag="span" ariaLabel="${iconLabel}" />
+            <m:icon icon="${icon}" tag="span" ariaLabel="${iconLabel}" />
         </c:if>
         <c:if test="${showText}">
             ${textLabel}

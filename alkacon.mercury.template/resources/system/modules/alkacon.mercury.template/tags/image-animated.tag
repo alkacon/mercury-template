@@ -77,7 +77,7 @@
     Otherwise everything is ignored and just the body of the tag is returned. "%>
 
 
-<%-- These variables are actually set in the mercury:image-vars tag included --%>
+<%-- These variables are actually set in the m:image-vars tag included --%>
 <%@ variable name-given="imageBean" declare="true" variable-class="org.opencms.jsp.util.CmsJspImageBean" %>
 <%@ variable name-given="imageLink" declare="true" %>
 <%@ variable name-given="imageUnscaledLink" declare="true" %>
@@ -98,7 +98,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="test"           value="${empty test ? true : test}" />
 
@@ -108,7 +108,7 @@
 
 <c:set var="test"           value="${test and not (hideDesktop and hideMobile)}" />
 
-<mercury:image-vars
+<m:image-vars
     image="${image}"
     ratio="${hideMobile ? ratioLg : ratio}"
     title="${title}"
@@ -148,7 +148,7 @@
                     <c:when test="${imageIsSvg or (adaptRatioToScreen and (hideDesktop eq hideMobile))}">
                         <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
                         <c:set var="zoomDataWrapper">
-                            <mercury:image-zoomdata
+                            <m:image-zoomdata
                                 src="${imageUnscaledBean.srcUrl}"
                                 title="${imageTitle}"
                                 alt="${empty imageDescription ? imageTitle : imageDescription}"
@@ -162,7 +162,7 @@
                     <c:otherwise>
                         <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
                         <c:set var="zoomDataWrapper">
-                            <mercury:image-zoomdata
+                            <m:image-zoomdata
                                 src="${imageUrl}"
                                 title="${imageTitle}"
                                 alt="${empty imageDescription ? imageTitle : imageDescription}"
@@ -184,7 +184,7 @@
                         <c:if test="${adaptRatioToScreen}">
                             <cms:param name="cssgrid" value="${mobileGrid}" />
                         </c:if>
-                        <mercury:image-srcset
+                        <m:image-srcset
                             imagebean="${imageBean}"
                             sizes="${sizes}"
                             lazyLoad="${lazyLoad}"
@@ -202,7 +202,7 @@
                 <c:if test="${adaptRatioToScreen and not hideDesktop}">
                     <cms:addparams>
                         <cms:param name="cssgrid" value="${desktopGrid}" />
-                        <mercury:image-srcset
+                        <m:image-srcset
                             imagebean="${ratioLg eq 'none' ? imageUnscaledBean : imageBean.scaleRatio[ratioLg]}"
                             sizes="${sizes}"
                             lazyLoad="${lazyLoad}"
@@ -226,7 +226,7 @@
                 <jsp:doBody/>
                 <%-- /JSP body inserted here --%>
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:when>
 
         <c:otherwise>
@@ -234,14 +234,14 @@
                 <%-- No image: Output warning in offline version --%>
                 <fmt:setLocale value="${cms.workplaceLocale}" />
                 <cms:bundle basename="alkacon.mercury.template.messages">
-                    <mercury:alert type="warning">
+                    <m:alert type="warning">
                         <jsp:attribute name="head">
                             <fmt:message key="msg.page.noImage" />
                         </jsp:attribute>
                         <jsp:attribute name="text">
                             <fmt:message key="msg.page.noImage.hint" />
                         </jsp:attribute>
-                    </mercury:alert>
+                    </m:alert>
                 </cms:bundle>
             </c:if>
             <%-- JSP body inserted here --%>
@@ -251,4 +251,4 @@
 
     </c:choose>
 
-</mercury:image-vars>
+</m:image-vars>

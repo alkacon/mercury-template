@@ -8,14 +8,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
-<mercury:teaser-settings content="${content}">
+<m:teaser-settings content="${content}">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -27,7 +27,7 @@
 <c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />
 <c:set var="date"                   value="${seriesInfo.instanceInfo.get(instancedate)}" />
 
-<mercury:list-badge var="badge" seriesInfo="${seriesInfo}" test="${cms.isEditMode}" />
+<m:list-badge var="badge" seriesInfo="${seriesInfo}" test="${cms.isEditMode}" />
 
 <c:if test="${setShowCalendar}">
     <c:set var="groupId">event-<fmt:formatDate value='${date.start}' pattern='d-MM-yyyy' type='date' /></c:set>
@@ -46,7 +46,7 @@
 <%-- Show the booking status if the event is bookable --%>
 <c:if test="${(seriesInfo.isSingleDate or seriesInfo.isExtractedDate) and ((bookingOption ne 'none') or showBtnOnlyForBooking)}">
     <c:set var="bookingMarkup">
-        <mercury:webform-booking-status
+        <m:webform-booking-status
             bookingContent="${content}"
             style="${bookingOption}"
             dateFormat="${setDateFormat}"
@@ -73,7 +73,7 @@
 </c:if>
 
 <c:if test="${not empty kindOption}">
-    <c:set var="eventKind"><mercury:event-kind content="${content}"/></c:set>
+    <c:set var="eventKind"><m:event-kind content="${content}"/></c:set>
     <c:set var="showEventKind" value="${kindOption eq 'all' ? true : (eventKind eq 'online' or eventKind eq 'mixed')}" />
 </c:if>
 
@@ -95,7 +95,7 @@
 <c:set var="title"   value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
 <c:set var="preface" value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : value.Preface}" />
 
-<mercury:teaser-piece
+<m:teaser-piece
     cssWrapper="type-event${setShowCalendar ? ' calendar-sheet-piece ' : ' '}${setCssWrapperAll}"
     gridOption="${setShowCalendar and smallCalendarSheet ? ' fixed' : ''}"
     intro="${setShowIntro ? intro : null}"
@@ -126,11 +126,11 @@
         <c:if test="${setShowVisual}">
             <c:choose>
                 <c:when test="${setShowCalendar}">
-                    <mercury:calendar-sheet date="${date.start}" ratio="${setRatio}"/>
+                    <m:calendar-sheet date="${date.start}" ratio="${setRatio}"/>
                 </c:when>
                 <c:otherwise>
                     <c:set var="image" value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : (paragraph.value.Image.isSet ? paragraph.value.Image : null))}" />
-                    <mercury:image-animated
+                    <m:image-animated
                         image="${image}"
                         ratio="${setRatio}"
                         ratioLg="${setRatioLg}"
@@ -143,10 +143,10 @@
         </c:if>
     </jsp:attribute>
 
-</mercury:teaser-piece>
+</m:teaser-piece>
 
 </cms:bundle>
 
-</mercury:teaser-settings>
+</m:teaser-settings>
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

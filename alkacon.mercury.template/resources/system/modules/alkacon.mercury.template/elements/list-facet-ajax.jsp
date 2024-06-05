@@ -15,12 +15,12 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <cms:secureparams replaceInvalid="bad_param" />
 
-<mercury:set-siteroot siteRoot="${param.siteroot}" sitePath="${param.sitepath}" />
+<m:set-siteroot siteRoot="${param.siteroot}" sitePath="${param.sitepath}" />
 
 <fmt:setLocale value="${cms.locale}" />
 
@@ -147,7 +147,7 @@
         <c:set var="facetConfig">${facetConfig}, "rangefacets" : ${rangeFacets}</c:set>
     </c:if>
     <%-- ####### Perform the search ################ --%>
-    <mercury:list-search
+    <m:list-search
         config="${conf}"
         subsite="${param.subsite}"
         count="0"

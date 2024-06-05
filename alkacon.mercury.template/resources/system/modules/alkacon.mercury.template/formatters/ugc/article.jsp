@@ -8,7 +8,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%@page import="java.lang.String"%>
 <%@page import="org.opencms.file.CmsResource"%>
@@ -20,7 +20,7 @@
  --%>
 <% pageContext.setAttribute("backlink", CmsResource.getFolderPath("/mercury-demo/blog/articles/")); %>
 
-<mercury:init-messages reload="true">
+<m:init-messages reload="true">
 
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
@@ -29,14 +29,14 @@
 
 <div class="element type-ugc-form">
     <c:set var="errorHead"></c:set>
-    <mercury:alert-online css="disp-n ugc-error">
+    <m:alert-online css="disp-n ugc-error">
         <jsp:attribute name="head">
             <fmt:message key="msg.error.ugc.validation" />
         </jsp:attribute>
         <jsp:attribute name="text">
             ${'<!-- filled automatically via JavaScript -->'}
         </jsp:attribute>
-    </mercury:alert-online>
+    </m:alert-online>
 
     <cms:ugc var="ugcId" editId="${param.fileId}" configPath="${content.filename}" />
     <div id="postFormLoading" style="display: none"></div>
@@ -142,4 +142,4 @@
 
 </cms:formatter>
 </cms:bundle>
-</mercury:init-messages>
+</m:init-messages>

@@ -12,7 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- Using the same logic as the elaborate display teaser --%>
@@ -66,9 +66,9 @@
     </c:if>
 
     <c:if test="${image.isSet}">
-        <mercury:image-vars image="${image}" createJsonLd="${true}">
+        <m:image-vars image="${image}" createJsonLd="${true}">
             <cms:jsonvalue key="image" value="${imageJsonLd}" />
-        </mercury:image-vars>
+        </m:image-vars>
     </c:if>
 
     <cms:jsonobject var="author" mode="object">
@@ -80,16 +80,16 @@
     </cms:jsonobject>
     <cms:jsonvalue key="author" value="${author}" />
 
-    <mercury:data-organization-vars content="${content}" logoAsImageObject="${true}">
+    <m:data-organization-vars content="${content}" logoAsImageObject="${true}">
         <c:set var="organization" value="${orgJsonLd}" />
-    </mercury:data-organization-vars>
+    </m:data-organization-vars>
 
     <%-- Publisher is mandatory. According to schema.org, person is possible but not accepted by Google --%>
     <cms:jsonvalue key="publisher" value="${empty organization ? author : organization}" />
 </cms:jsonobject>
 
-<mercury:nl />
+<m:nl />
 <script type="application/ld+json"><%----%>
     ${cms.isOnlineProject ? jsonLd.compact : jsonLd.pretty}
 </script><%----%>
-<mercury:nl />
+<m:nl />

@@ -39,7 +39,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="onlyLeafs"          value="${empty onlyLeafs ? false : onlyLeafs}" />
 <c:set var="displayCatPath"     value="${empty displayCatPath ? false : displayCatPath}" />
@@ -48,9 +48,9 @@
 <c:set var="onlyLeafs"          value="${empty onlyLeafs ? false : onlyLeafs}" />
 <c:set var="targetUri"          value="${empty targetUri ? cms.requestContext.uri : targetUri}" />
 
-<mercury:nl />
+<m:nl />
 <ul><%----%>
-<mercury:nl />
+<m:nl />
 
     <%-- BEGIN: Calculate category filters --%>
     <c:set var="catFilters" value="${not empty catfilter ? fn:replace(catfilter,' ','') : ''}" />
@@ -85,7 +85,7 @@
                 <c:forEach var="category" items="${cms.readPathCategories[value.name]}" varStatus="status">
                     <c:if test="${displayCatPath or status.last}">
                         <c:set var="label">${label}${category.title}</c:set>
-                        <c:set var="catId"><mercury:idgen prefix="cat_${categoryFilterId}" uuid="${category.id}" /></c:set>
+                        <c:set var="catId"><m:idgen prefix="cat_${categoryFilterId}" uuid="${category.id}" /></c:set>
                     </c:if>
                     <c:set var="catCompareLabel">${catCompareLabel}${category.title}</c:set>
                     <c:if test="${not status.last}">
@@ -116,7 +116,7 @@
                                  </span><%----%>
                              </a><%----%>
                         </li><%----%>
-                        <mercury:nl />
+                        <m:nl />
                         <c:set var="showAllOption" value="${false}" />
                     </c:if>
 
@@ -134,11 +134,11 @@
                             </span><%----%>
                         </a><%----%>
                     </li><%----%>
-                    <mercury:nl />
+                    <m:nl />
                 </c:if>
             </c:if>
         </c:if>
     </c:forEach>
 </ul><%----%>
-<mercury:nl />
+<m:nl />
 

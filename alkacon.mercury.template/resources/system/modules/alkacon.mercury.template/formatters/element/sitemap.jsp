@@ -9,14 +9,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <cms:secureparams />
-<mercury:init-messages>
+<m:init-messages>
 
 <cms:formatter var="content" val="value">
 
-<mercury:setting-defaults>
+<m:setting-defaults>
 
 <c:set var="hsize"                  value="${setting.hsize.toInteger}" />
 <c:set var="showDescription"        value="${setting.showDescription.toBoolean}" />
@@ -26,10 +26,10 @@
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
-<mercury:nl />
+<m:nl />
 <div class="element type-sitemap pivot${setCssWrapperAll}"><%----%>
 
-    <mercury:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
+    <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
     <c:if test="${showDescription and value.Description.isSet}">
         <div ${ade ? value.Description.rdfaAttr : ''}>${value.Description}</div>
@@ -80,7 +80,7 @@
     <c:if test="${navLength >= 0}">
 
         <div class="clearfix"><%----%>
-            <mercury:nl />
+            <m:nl />
             <ul class="sitemap-col-${cols}"><%----%>
                 <c:forEach var="i" begin="0" end="${navLength}" >
 
@@ -96,7 +96,7 @@
                     <c:choose>
                         <c:when test="${startSubNav}">
                             <%-- Output the start of a new sub-navigation level --%>
-                            <c:set var="collapseId"><mercury:idgen prefix="nav" uuid="${cms.element.instanceId}" />_${i}</c:set>
+                            <c:set var="collapseId"><m:idgen prefix="nav" uuid="${cms.element.instanceId}" />_${i}</c:set>
                             <a href="#${collapseId}" <%--
                             --%>class="tree-toggle ${openCurrent ? '' : 'collapsed'}" <%--
                             --%>data-bs-toggle="collapse" <%--
@@ -129,9 +129,9 @@
     </c:if>
 
 </div><%----%>
-<mercury:nl />
+<m:nl />
 
-</mercury:setting-defaults>
+</m:setting-defaults>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

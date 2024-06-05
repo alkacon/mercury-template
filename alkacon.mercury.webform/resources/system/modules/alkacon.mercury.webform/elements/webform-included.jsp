@@ -5,10 +5,10 @@
     trimDirectiveWhitespaces="true"%>
 
 
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:webform
+<m:webform
     webform="${param.content}"
     bookingInfo="${param.bookingInfo}"
     formId="${param.formId}"

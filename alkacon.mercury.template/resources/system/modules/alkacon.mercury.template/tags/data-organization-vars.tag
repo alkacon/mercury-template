@@ -20,14 +20,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="orgName" value="${cms.readAttributeOrProperty[content.resource.sitePath]['site.organization']}" />
 <c:if test="${not empty orgName}">
     <c:choose>
         <c:when test="${cms.vfs.exists[orgName]}">
-            <mercury:data-organization content="${cms.wrap[orgName].toResource.toXml}" showContactAndImage="${false}" useSameAsUrl="${true}" storeOrgJsonLdObject="${true}" />
+            <m:data-organization content="${cms.wrap[orgName].toResource.toXml}" showContactAndImage="${false}" useSameAsUrl="${true}" storeOrgJsonLdObject="${true}" />
         </c:when>
         <c:otherwise>
             <cms:jsonobject var="orgJsonLd" mode="object">

@@ -41,7 +41,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- ####### Acquire search var ######## --%>
@@ -96,7 +96,7 @@
             --%>><%--
             --%>${buttonLabel}<%--
             --%></button><%----%>
-            <mercury:nl />
+            <m:nl />
             <c:out value='<ul class="list-optionlist dropdown-menu">' escapeXml='false' />
         </c:set>
 
@@ -157,7 +157,7 @@
                             items="${cms.readPathCategories[value.name]}" varStatus="status">
                             <c:if test="${displayCatPath or status.last}">
                                 <c:set var="label">${label}${category.title}</c:set>
-                                <c:set var="catId"><mercury:idgen prefix="cat" uuid="${category.id}" /></c:set>
+                                <c:set var="catId"><m:idgen prefix="cat" uuid="${category.id}" /></c:set>
                             </c:if>
                             <c:set var="catCompareLabel">${catCompareLabel}${category.title}</c:set>
                             <c:if test="${not status.last}">

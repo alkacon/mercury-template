@@ -16,7 +16,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <%@ variable name-given="nl" declare="true"
     description="A variable holding a newline / line break to use in JSP for output formatting." %>
@@ -40,26 +40,26 @@
     <c:when test="${cms.element.inMemoryOnly and not cms.element.historyContent}">
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
-            <mercury:alert type="warning" css="new-element ${css}">
+            <m:alert type="warning" css="new-element ${css}">
                 <jsp:attribute name="head">
                     <fmt:message key="msg.page.newElement">
                         <fmt:param>
-                            <mercury:workplace-message locale="${cms.workplaceLocale}" key="${typeKey}" />
+                            <m:workplace-message locale="${cms.workplaceLocale}" key="${typeKey}" />
                         </fmt:param>
                     </fmt:message>
                 </jsp:attribute>
                 <jsp:attribute name="text">
-                    <mercury:workplace-message locale="${cms.workplaceLocale}" key="${descKey}" /><br>
+                    <m:workplace-message locale="${cms.workplaceLocale}" key="${descKey}" /><br>
                     <div class="small"><fmt:message key="msg.page.newElement.hint" /></div><%----%>
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </cms:bundle>
     </c:when>
     <c:when test="${reload and cms.edited}">
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
         <cms:formatter var="content" val="value">
-            <mercury:alert type="error" css="oct-reload ${css}">
+            <m:alert type="error" css="oct-reload ${css}">
                 <jsp:attribute name="head">
                     ${cms.reloadMarker}
                     <fmt:message key="msg.page.mustReload" />
@@ -68,13 +68,13 @@
                     <div><%----%>
                     <fmt:message key="msg.page.mustReload.hint1">
                         <fmt:param>
-                            <mercury:workplace-message locale="${cms.workplaceLocale}" key="${typeKey}" />
+                            <m:workplace-message locale="${cms.workplaceLocale}" key="${typeKey}" />
                         </fmt:param>
                     </fmt:message>
                     </div><%----%>
                     <div class="small"><fmt:message key="msg.page.mustReload.hint2" /></div><%----%>
                 </jsp:attribute>
-            </mercury:alert>
+            </m:alert>
         </cms:formatter>
         </cms:bundle>
     </c:when>

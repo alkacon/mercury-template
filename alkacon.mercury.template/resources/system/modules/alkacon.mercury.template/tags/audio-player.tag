@@ -30,7 +30,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- Generate audio data JSON --%>
@@ -55,9 +55,9 @@
         <div class="audio-controls"><%----%>
             <div class="audio-pos">${date}</div><%----%>
             <div class="audio-buttons"><%----%>
-                <mercury:icon icon="stop" tag="div" cssWrapper="audio-stop" attrWrapper='tabindex="0" role="button" aria-label="Stop"' />
-                <mercury:icon icon="play" tag="div" cssWrapper="audio-play" attrWrapper='tabindex="0" role="button" aria-label="Play"' />
-                <mercury:icon icon="forward" tag="div" cssWrapper="audio-skip" attrWrapper='tabindex="0" role="button" aria-label="Skip"' />
+                <m:icon icon="stop" tag="div" cssWrapper="audio-stop" attrWrapper='tabindex="0" role="button" aria-label="Stop"' />
+                <m:icon icon="play" tag="div" cssWrapper="audio-play" attrWrapper='tabindex="0" role="button" aria-label="Play"' />
+                <m:icon icon="forward" tag="div" cssWrapper="audio-skip" attrWrapper='tabindex="0" role="button" aria-label="Skip"' />
             </div><%----%>
             <div class="audio-length">${length}</div><%----%>
         </div>

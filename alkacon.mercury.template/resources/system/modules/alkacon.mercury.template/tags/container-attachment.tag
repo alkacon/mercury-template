@@ -26,7 +26,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="isDetailRequest" value="${cms.detailRequest}" />
 <c:choose>
@@ -66,7 +66,7 @@
         <c:when test="${not isDetailRequest and isDetailPageEditMode}">
             <%-- Render a placeholder in the editor in case the configured detail page of the content is edited --%>
             <div class="${cssWrapper}"><%----%>
-                <mercury:container-box
+                <m:container-box
                     label="${name}"
                     boxType="detail-placeholder"
                     cssWrapper="attachment"
@@ -74,7 +74,7 @@
                     hideParentType="${true}"
                 />
             </div><%----%>
-            <mercury:nl />
+            <m:nl />
         </c:when>
 
         <c:when test="${isDetailRequest and isRequestToMatchingPage}">
@@ -87,7 +87,7 @@
                 detailonly="${isDetailOnly}"
                 editableby="${role}"
                 maxElements="${maxElements}" >
-                <mercury:container-box
+                <m:container-box
                     label="${name}"
                     boxType="container-box"
                     cssWrapper="attachment"

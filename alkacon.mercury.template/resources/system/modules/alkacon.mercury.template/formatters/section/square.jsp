@@ -8,13 +8,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
-<%@ taglib prefix="mercury" tagdir="/WEB-INF/tags/mercury" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<mercury:init-messages>
+<m:init-messages>
 <cms:formatter var="content" val="value">
 
-<mercury:image-vars image="${value.Image}">
+<m:image-vars image="${value.Image}">
 
 <c:set var="imageBg" value="" />
 <c:if test="${not empty imageUrl}">
@@ -37,7 +37,7 @@
             </div>
             <c:if test="${value.Link.exists}">
                 <p ${content.rdfa.Link}>
-                    <mercury:link link="${value.Link}" css="btn btn-sm" setTitle="false"/>
+                    <m:link link="${value.Link}" css="btn btn-sm" setTitle="false"/>
                 </p>
             </c:if>
         </div>
@@ -48,7 +48,7 @@
 </div>
 </div>
 
-</mercury:image-vars>
+</m:image-vars>
 
 </cms:formatter>
-</mercury:init-messages>
+</m:init-messages>

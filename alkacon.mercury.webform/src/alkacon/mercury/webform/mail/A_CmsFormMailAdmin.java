@@ -27,6 +27,7 @@
 
 package alkacon.mercury.webform.mail;
 
+import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
 import alkacon.mercury.webform.CmsFormDataField;
 import alkacon.mercury.webform.CmsFormHandler;
 import alkacon.mercury.webform.CmsFormMailSettings;
@@ -98,7 +99,12 @@ public abstract class A_CmsFormMailAdmin extends A_CmsFormMail {
         String mailFrom = null;
         CmsResource resource = getResource();
         if ((resource != null) && CmsFormMailSettings.getInstance().useDkimMailHost(m_cms, resource)) {
-            mailFrom = CmsFormMailSettings.getInstance().getAttributeDkimMailFrom(m_cms);
+            String dkimMailFrom = CmsFormMailSettings.getInstance().getAttributeDkimMailFrom(m_cms);
+            if (dkimMailFrom.equals(A_CmsDkimMailSettings.SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT)) {
+                mailFrom = ""; // use the sender address configured in opencms-system.xml
+            } else {
+                mailFrom = dkimMailFrom;
+            }
         } else {
             mailFrom = m_macroResolver.resolveMacros(m_form.getMailFrom());
         }

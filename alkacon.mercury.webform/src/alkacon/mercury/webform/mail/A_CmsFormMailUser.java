@@ -27,6 +27,7 @@
 
 package alkacon.mercury.webform.mail;
 
+import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
 import alkacon.mercury.webform.CmsFormDataField;
 import alkacon.mercury.webform.CmsFormHandler;
 import alkacon.mercury.webform.CmsFormMailSettings;
@@ -92,7 +93,12 @@ public abstract class A_CmsFormMailUser extends A_CmsFormMail {
         String mailFrom = null;
         CmsResource resource = getResource();
         if ((resource != null) && CmsFormMailSettings.getInstance().useDkimMailHost(m_cms, resource)) {
-            mailFrom = CmsFormMailSettings.getInstance().getAttributeDkimMailFrom(m_cms);
+            String dkimMailFrom = CmsFormMailSettings.getInstance().getAttributeDkimMailFrom(m_cms);
+            if (dkimMailFrom.equals(A_CmsDkimMailSettings.SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT)) {
+                mailFrom = ""; // use the sender address configured in opencms-system.xml
+            } else {
+                mailFrom = dkimMailFrom;
+            }
         } else {
             mailFrom = m_macroResolver.resolveMacros(m_form.getConfirmationMailFrom());
             if (CmsStringUtil.isEmptyOrWhitespaceOnly(mailFrom)) {
@@ -112,12 +118,14 @@ public abstract class A_CmsFormMailUser extends A_CmsFormMail {
             mailFromAsReplyTo = m_macroResolver.resolveMacros(m_form.getMailFrom());
         }
         if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailTo)) {
-            if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
-                m_htmlMail.setFrom(mailFrom, mailFromName);
-                m_simpleMail.setFrom(mailFrom, mailFromName);
-            } else {
-                m_htmlMail.setFrom(mailFrom);
-                m_simpleMail.setFrom(mailFrom);
+            if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFrom)) {
+                if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
+                    m_htmlMail.setFrom(mailFrom, mailFromName);
+                    m_simpleMail.setFrom(mailFrom, mailFromName);
+                } else {
+                    m_htmlMail.setFrom(mailFrom);
+                    m_simpleMail.setFrom(mailFrom);
+                }
             }
             if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
                 m_htmlMail.addReplyTo(mailReplyTo);

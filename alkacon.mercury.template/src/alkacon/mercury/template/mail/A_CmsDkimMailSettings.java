@@ -40,6 +40,9 @@ import org.opencms.util.CmsStringUtil;
  */
 public abstract class A_CmsDkimMailSettings implements I_CmsDkimMailSettings {
 
+    /** Sitemap attribute value that denotes to use the default sender address configured in opencms-system.xml. */
+    public static final String SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT = "default";
+
     /**
      * @see alkacon.mercury.template.mail.I_CmsDkimMailSettings#getMailHost(org.opencms.file.CmsObject, org.opencms.file.CmsResource)
      */
@@ -77,18 +80,22 @@ public abstract class A_CmsDkimMailSettings implements I_CmsDkimMailSettings {
         boolean valid = false;
         String mailFromDkim = getAttributeDkimMailFrom(cms);
         String dkimDomains = getAttributeDkimDomains(cms);
-        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(dkimDomains)
+
+        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromDkim)
+            && mailFromDkim.equals(SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT)) {
+            return true;
+        } else if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(dkimDomains)
             && CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromDkim)) {
-            String[] domains = dkimDomains.split("\\s+");
-            for (String domain : domains) {
-                if ((domain != null) && mailFromDkim.endsWith(domain)) {
-                    valid = true;
+                String[] domains = dkimDomains.split("\\s+");
+                for (String domain : domains) {
+                    if ((domain != null) && mailFromDkim.endsWith(domain)) {
+                        valid = true;
+                    }
                 }
+                return valid;
+            } else {
+                return false;
             }
-            return valid;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -117,7 +124,7 @@ public abstract class A_CmsDkimMailSettings implements I_CmsDkimMailSettings {
     }
 
     /**
-     * Returns the DKIM mail from sitemap attribute value for the given context.
+     * Returns the DKIM mail from sitemap attribute value for the given context and resource.
      * @param cms the context
      * @param resource the resource
      * @param attrMailFromDkim mailfrom DKIM attribute name

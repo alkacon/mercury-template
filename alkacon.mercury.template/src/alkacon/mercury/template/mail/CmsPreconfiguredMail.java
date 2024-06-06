@@ -125,14 +125,15 @@ public class CmsPreconfiguredMail implements I_CmsPreconfiguredMail {
     throws EmailException {
 
         CmsHtmlMail mail = m_mailHost == null ? new CmsHtmlMail() : new CmsHtmlMail(m_mailHost);
+        if ((senderEmail != null)
+            && senderEmail.equals(A_CmsDkimMailSettings.SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT)) {
+            senderEmail = m_mailHost.getMailfrom();
+        }
         try {
             String senderName = m_mailConfig.getSenderName();
             String senderReplyTo = m_mailConfig.getSenderReplyTo();
-            if (senderReplyTo == null) {
+            if (CmsStringUtil.isEmptyOrWhitespaceOnly(senderReplyTo)) {
                 senderReplyTo = m_mailConfig.getSenderAddress();
-            }
-            if (CmsStringUtil.isEmptyOrWhitespaceOnly(senderEmail)) {
-                senderEmail = mail.getFromAddress().getAddress();
             }
             if (CmsStringUtil.isEmptyOrWhitespaceOnly(senderName)) {
                 mail.setFrom(senderEmail);

@@ -8949,6 +8949,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/macro-resolver.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/macro-resolver.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>8a1da82b-1687-11ef-9592-0242ac11002b</uuidstructure>
+			<uuidresource>8a1da82c-1687-11ef-9592-0242ac11002b</uuidresource>
+			<datecreated>Mon, 20 May 2024 09:01:26 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Provides an OpenCms macro resolver]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/map.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/map.tag</destination>
 			<type>jsp</type>

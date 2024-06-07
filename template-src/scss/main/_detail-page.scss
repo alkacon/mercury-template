@@ -144,7 +144,7 @@
         }
     }
 
-    .detail-visual {
+    .detail-visual:not(.only-heading) {
         // .detail-visual has no bottom margin, add top margin to first detail-content or attachment container
         + .detail-content,
         + .detail-addition {

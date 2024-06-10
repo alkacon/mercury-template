@@ -69,7 +69,7 @@ public abstract class A_CmsDkimMailSettings implements I_CmsDkimMailSettings {
      */
     public boolean validDkimDomains(CmsObject cms) {
 
-        return CmsStringUtil.isNotEmptyOrWhitespaceOnly(getAttributeDkimDomains(cms));
+        return true;
     }
 
     /**
@@ -80,22 +80,21 @@ public abstract class A_CmsDkimMailSettings implements I_CmsDkimMailSettings {
         boolean valid = false;
         String mailFromDkim = getAttributeDkimMailFrom(cms);
         String dkimDomains = getAttributeDkimDomains(cms);
-
-        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromDkim)
-            && mailFromDkim.equals(SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT)) {
+        if (CmsStringUtil.isEmptyOrWhitespaceOnly(dkimDomains)) {
             return true;
-        } else if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(dkimDomains)
-            && CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromDkim)) {
-                String[] domains = dkimDomains.split("\\s+");
-                for (String domain : domains) {
-                    if ((domain != null) && mailFromDkim.endsWith(domain)) {
-                        valid = true;
-                    }
+        } else if (mailFromDkim.equals(SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT)) {
+            return true;
+        } else if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromDkim)) {
+            String[] domains = dkimDomains.split("\\s+");
+            for (String domain : domains) {
+                if ((domain != null) && mailFromDkim.endsWith(domain)) {
+                    valid = true;
                 }
-                return valid;
-            } else {
-                return false;
             }
+            return valid;
+        } else {
+            return false;
+        }
     }
 
     /**

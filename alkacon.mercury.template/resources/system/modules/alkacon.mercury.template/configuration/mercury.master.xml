@@ -918,6 +918,12 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/detail/poi-article.xml]]></target>
+          <uuid>67840e67-06cb-11ef-9046-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/shariff.xml]]></target>
           <uuid>cde17907-8ecb-4615-ae50-e753421605c2</uuid>
         </link>

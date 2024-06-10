@@ -2143,6 +2143,7 @@ type.m-person.name=Person
 type.m-person.title=New person
 type.m-poi.description=A place or "point of interest" with optional images and texts as well as a map.
 type.m-poi.description.formatter=<p>A <em>place / POI</em> ("point of interest") shows address information with optional images and texts as well as a map.</p>
+type.m-poi.formatter.article=Place detail view (like article)
 type.m-poi.formatter.element=Place detail view
 type.m-poi.formatter.teaser=place in list
 type.m-poi.formatter.teaser.compact=Compact place teaser

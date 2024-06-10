@@ -1417,14 +1417,6 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showMap.true]]></IncludeName>
-      <PropertyName><![CDATA[showMap]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.showMap)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.showMap.help)]]></Description>
-      <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[true]]></Default>
-    </Setting>
-    <Setting>
       <IncludeName><![CDATA[showLink.true]]></IncludeName>
       <PropertyName><![CDATA[showLink]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showLink)]]></DisplayName>
@@ -1476,6 +1468,23 @@
         onclick:%(key.msg.setting.showMap.onclick)|
         none:%(key.msg.setting.showMap.none)
       ]]></WidgetConfig>
+      <ValueTranslation><![CDATA[
+          onload: true|
+          none: false
+      ]]></ValueTranslation>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showMap.true]]></IncludeName>
+      <PropertyName><![CDATA[showMap]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.showMap)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.showMap.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[true]]></Default>
+      <ValueTranslation><![CDATA[
+          true: onload|
+          true: onclick|
+          false: none
+      ]]></ValueTranslation>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showMetaSummary.true]]></IncludeName>

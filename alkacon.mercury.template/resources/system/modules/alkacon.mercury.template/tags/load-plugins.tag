@@ -44,6 +44,7 @@
             <cms:include file="${plugin.path}" cacheable="false" />
         </c:when>
         <c:when test="${type eq 'css'}">
+            <c:set var="mediaQuery" value="${null}" />
             <c:set var="mediaAttr" value="${plugin.attributes['media']}" />
             <c:if test="${not empty mediaAttr}">
                 <c:set var="mediaQuery" value="media=\"(${macroResolver.resolveMacros(mediaAttr)})\" " />

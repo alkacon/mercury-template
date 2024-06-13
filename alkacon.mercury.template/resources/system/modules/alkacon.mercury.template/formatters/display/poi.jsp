@@ -27,7 +27,7 @@
 
 <c:set var="displayAddressMarkup"   value="${fn:startsWith(param.displayType, 'static:')}" />
 <c:set var="displayAddressMarkup"   value="${displayAddressMarkup or setting.poiDisplayOption.toString eq 'addr'}" />
-<c:set var="displayAddressMarkup"   value="${displayAddressMarkup or (setting.poiDisplayOption.toString eq 'textaddr' and empty preface and empty paragraph.value.Text)}" />
+<c:set var="displayAddressMarkup"   value="${displayAddressMarkup or (setting.poiDisplayOption.toString eq 'textaddr' and empty preface and not paragraph.isSet)}" />
 
 <c:if test="${displayAddressMarkup}">
 

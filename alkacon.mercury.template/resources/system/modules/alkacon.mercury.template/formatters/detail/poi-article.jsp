@@ -181,10 +181,6 @@ ${settingDefaultsDebug}
 </m:paragraph-split>
 
 
-<m:container-attachment content="${content}" name="attachments" type="${containerType}" cssWrapper="subelement"/>
-<m:nl />
-
-
 <c:if test="${showOpeningHours and openingHours.isSet}"><%----%>
     <div class="detail-content"><%----%>
         <fmt:message key="msg.page.openingHours" var="hoursHeading" />
@@ -242,7 +238,7 @@ ${settingDefaultsDebug}
 </cms:bundle>
 
 <m:piece
-    cssWrapper="detail-visual ${setCssWrapperKeyPiece}"
+    cssWrapper="detail-content ${setCssWrapperKeyPiece}"
     attrWrapper="${empty poiId ? '' : ' '.concat('id=\"').concat(poiId).concat('\"')}"
     pieceLayout="${2}"
     allowEmptyBodyColumn="${true}"
@@ -281,6 +277,10 @@ ${settingDefaultsDebug}
     </jsp:attribute>
 
 </m:piece>
+
+
+<m:container-attachment content="${content}" name="attachments" type="${containerType}" cssWrapper="subelement"/>
+<m:nl />
 
 
 </div><%----%>

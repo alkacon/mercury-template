@@ -31,13 +31,13 @@
     </c:otherwise>
 </c:choose>
 
-<link href="<m:link-resource resource='${cssPath}'/>" rel="stylesheet"><%----%>
+<link rel="stylesheet" href="<m:link-resource resource='${cssPath}'/>"><%----%>
 <m:nl />
 
 <jsp:doBody />
 
 <%-- Preload the icon fonts. --%>
-<link href="<cms:link>${fontPath}</cms:link>?v=${version}" rel="preload" as="font" type="font/woff2" crossorigin><%----%>
+<link rel="preload" as="font" type="font/woff2" href="<cms:link>${fontPath}</cms:link>?v=${version}" crossorigin><%----%>
 <m:nl />
 <%--
     NOTE: It is NOT possible to use <m:link-resource /> here for preloading fonts!

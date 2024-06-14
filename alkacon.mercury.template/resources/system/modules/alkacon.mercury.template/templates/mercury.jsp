@@ -79,7 +79,7 @@ var __isOnline=${cms.isOnlineProject},
         <%-- Use default CSS configuration --%>
         <m:load-icons>
             <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
-            <link href="<m:link-resource resource='${cssTheme}'/>" rel="stylesheet"><%----%>
+            <link rel="stylesheet" href="<m:link-resource resource='${cssTheme}'/>"><%----%>
             <m:nl />
         </m:load-icons>
     </c:when>
@@ -96,7 +96,7 @@ var __isOnline=${cms.isOnlineProject},
 <%-- Include additional CSS / JS from Mercury template modifications (if allowed) --%>
 <c:if test="${allowTemplateMods}">
     <m:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
-        <link href="<m:link-resource resource='${resourcePath}'/>" rel="stylesheet"><m:nl />
+        <link rel="stylesheet" href="<m:link-resource resource='${resourcePath}'/>"><m:nl />
     </m:load-resource>
     <m:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
         <script src="<m:link-resource resource='${resourcePath}'/>" defer></script><m:nl />

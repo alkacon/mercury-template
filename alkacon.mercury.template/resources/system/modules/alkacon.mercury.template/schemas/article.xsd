@@ -96,7 +96,7 @@
                 <Setting>
                     <PropertyName>Paragraph</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Paragraph)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Paragraph.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Paragraph.help) %(key.label.Paragraph.multiple.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Author</PropertyName>

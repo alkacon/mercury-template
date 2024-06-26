@@ -108,7 +108,7 @@ SVG placeholder image, background image and image sizing
 <c:set var="customSizes" value="${not empty sizes}" />
 
 <%-- Enable / disable output for debug purposes if required by setting DEBUG="${true}" --%>
-<c:set var="DEBUG" value="${false}" />
+<c:set var="DEBUG" value="${param.imgScrSetDebug eq '1'}" />
 
 <m:print comment="${true}" test="${DEBUG}">
 image-srcset parameters:

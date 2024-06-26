@@ -200,11 +200,19 @@
 <c:set var="showLink"       value="${not empty pieceLink}" />
 
 <c:if test="${useVisual and not empty visual}">
-    <c:set var="pieceBreakpoint" value="${cms.sitemapConfig.attribute['template.piece.breakpoint'].useDefault('md').toString}" />
-    <c:set var="pieceBreakpoint" value="${empty pieceBreakpoint ? 'md' : pieceBreakpoint}" />
-    <%-- It is important to make this check AFTER the body because the grid size must be 12 if there is no body. --%>
+    <c:choose>
+        <c:when test="${not showHeading and not showText and not showLink}">
+            <%-- Check if there are any text elements, if not the grid size must be 12. --%>
+            <c:set var="cssgridVidual" value="col-xs-12 only-visual" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="pieceBreakpoint" value="${cms.sitemapConfig.attribute['template.piece.breakpoint'].useDefault('md').toString}" />
+            <c:set var="pieceBreakpoint" value="${empty pieceBreakpoint ? 'md' : pieceBreakpoint}" />
+             <c:set var="cssgridVidual" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-'.concat(pieceBreakpoint).concat('-').concat(sizeDesktop) : '')}" />
+        </c:otherwise>
+    </c:choose>
     <cms:addparams>
-        <cms:param name="cssgrid" value="${'col-xs-'.concat(sizeMobile).concat(sizeDesktop < 12 ? ' col-'.concat(pieceBreakpoint).concat('-').concat(sizeDesktop) : '')}" />
+        <cms:param name="cssgrid" value="${cssgridVidual}" />
         <jsp:invoke fragment="visual" var="pieceVisual" />
     </cms:addparams>
 </c:if>

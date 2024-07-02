@@ -36,6 +36,7 @@
                     <DisplayName><![CDATA[%(key.label.Note.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Note.Text.help)]]></Description>
                     <Widget>textarea</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

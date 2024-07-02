@@ -85,7 +85,7 @@
                     <DisplayName><![CDATA[%(key.label.Preface)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Preface.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>3|proportional</WidgetConfig>
+                    <WidgetConfig>3|proportional|typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>MediaContent</PropertyName>

@@ -36,7 +36,7 @@
                     <DisplayName><![CDATA[%(key.label.MapCoord.Address)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MapCoord.Address.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>4|proportional</WidgetConfig>
+                    <WidgetConfig>4|proportional|typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Link</PropertyName>

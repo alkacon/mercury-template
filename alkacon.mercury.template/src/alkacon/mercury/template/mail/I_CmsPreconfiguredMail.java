@@ -39,13 +39,4 @@ public interface I_CmsPreconfiguredMail {
      */
     void sendTo(String recepient, Map<String, String> receipientSpecificMacros) throws EmailException;
 
-    /**
-     * Sends the mail with an overwrite sender address.
-     * @param recipient the recipient email address
-     * @param receipientSpecificMacros map from macros to replacements, that are specific for the recipient
-     * @param senderEmail the overwrite sender address
-     * @throws EmailException if sending the mail fails
-     */
-    void sendTo(String recipient, Map<String, String> receipientSpecificMacros, String senderEmail)
-    throws EmailException;
 }

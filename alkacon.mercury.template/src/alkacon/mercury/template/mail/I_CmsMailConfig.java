@@ -19,6 +19,8 @@
 
 package alkacon.mercury.template.mail;
 
+import org.opencms.mail.CmsMailHost;
+
 /** Interface for a fully configured email, where only the receipient is not yet known. */
 public interface I_CmsMailConfig {
 
@@ -33,6 +35,12 @@ public interface I_CmsMailConfig {
      * @return the emails content encoding.
      */
     String getEncoding();
+
+    /**
+     * Returns the mail host.
+     * @return the mail host.
+     */
+    CmsMailHost getMailHost();
 
     /**
      * Returns the email address of the emails sender.

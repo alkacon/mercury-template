@@ -95,22 +95,22 @@
 
 .box {
     &.box-ratio-1-1 {
-        min-height: 100cqw;
+        aspect-ratio: 1 / 1;
     }
-    &.box-ration-4-3 {
-        min-height: #{100cqw * divide(3, 4, $divide-precision)};
+    &.box-ratio-4-3 {
+        aspect-ratio: 4 / 3;
     }
     &.box-ratio-3-2 {
-        min-height: #{100cqw * divide(2, 3, $divide-precision)};
+        aspect-ratio: 3 / 2;
     }
     &.box-ratio-16-9 {
-        min-height: #{100cqw * divide(9, 16, $divide-precision)};
+        aspect-ratio: 16 / 9;
     }
     &.box-ratio-35-45 {
-        min-height: #{100cqw * divide(45, 35, $divide-precision)};
+        aspect-ratio: 35 / 45;
     }
     &.box-ratio-2-3 {
-        min-height: #{100cqw * divide(3, 2, $divide-precision)};
+        aspect-ratio: 2 / 3;
     }
 }
 

@@ -63,11 +63,11 @@
 </c:if>
 
 <c:set var="fullname">${title}-<fmt:formatDate value="${cms:convertDate(dateStart)}" pattern="yyyy-MM-dd" /></c:set>
-<m:set-content-disposition name="${fullname}" suffix=".ics" />
+<m:set-content-disposition name="${fullname}" suffix=".ics" /><%--
 
-BEGIN:VCALENDAR
-PRODID:${cms.requestContext.requestMatcher}
+--%>BEGIN:VCALENDAR
 VERSION:2.0
+PRODID:${cms.requestContext.requestMatcher}
 BEGIN:VEVENT
 UID:${content.file.structureId}-${dateStart}-${locale}
 DTSTAMP:<fmt:formatDate value="${cms:convertDate(content.file.dateCreated)}" pattern="yyyyMMdd'T'HHmmss'Z'" timeZone="${utcTime}" />

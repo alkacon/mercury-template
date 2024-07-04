@@ -8,7 +8,7 @@ $! ###### Main input form ###### !$
 
 $if(formconfig.formText)$
 $! --- show form header text --- !$
-$!  !$<div class="form-header">$formconfig.formText$</div>
+$!  !$<div class="form-text form-header">$formconfig.formText$</div>
 $endif$
 $if(waitlistmessage)$$waitlist_notification(waitlistmessage)$$endif$
 <form$!
@@ -38,7 +38,7 @@ $!  !$$fields$
 $if(formconfig.formMiddleText)$
 $! --- show form middle text --- !$
 $!  !$<fieldset>
-$!      !$$formconfig.formMiddleText$
+$!      !$<div class="form-text form-middle">$formconfig.formMiddleText$</div>
 $!  !$</fieldset>
 $endif$
 
@@ -46,7 +46,7 @@ $endif$
 
 $if(mandatorymessage)$
 $! --- show mandatory note --- !$
-$!  !$<section><div class="note">$mandatorymessage$</div></section>
+$!  !$<section><div class="form-text note">$mandatorymessage$</div></section>
 $endif$
 
 $! --- show submit, reset and previous button --- !$
@@ -73,7 +73,7 @@ $endif$
 
 $if(formconfig.formFooterText)$
 $! --- show form footer text --- !$
-$!  !$<div class="form-footer">$formconfig.formFooterText$</div>
+$!  !$<div class="form-text form-footer">$formconfig.formFooterText$</div>
 $endif$
 
 >>
@@ -538,7 +538,7 @@ $!  !$</footer>
 
 confirmationpage(formconfig,confirmtext,confirmfields) ::= <<
 $! ###### CONFIRMATION page of the form ###### !$
-$confirmtext$
+<div class="form-text form-confirm">$confirmtext$</div>
 <table class="webform-input table table-responsive table-bordered table-striped matomo-goal">
 $confirmfields:{$!
     !$<tr>$!

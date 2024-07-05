@@ -98,7 +98,7 @@
                 <c:if test="${showAuthor}">
                     <div class="info person"><%----%>
                         <span class="sr-only"><fmt:message key="msg.page.sr.by" /></span><%----%>
-                        <div ${author.rdfaAttr}>${author}</div><%----%>
+                        <div ${author.rdfaAttr}><m:out value="${author}" lenientEscaping="${true}" /></div><%----%>
                     </div><%----%>
                 </c:if>
             </div><%----%>

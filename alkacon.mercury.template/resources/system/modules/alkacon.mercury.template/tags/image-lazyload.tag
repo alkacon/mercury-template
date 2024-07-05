@@ -150,8 +150,8 @@
         <c:if test="${not empty width}">${' '}width="${width}"</c:if>
         <c:if test="${not empty height}">${' '}height="${height}"</c:if>
         <c:if test="${not empty cssImage or not empty cssImageLazy}">${' '}class="${cssImage}${empty cssImage or empty cssImageLazy ? '' : ' '}${cssImageLazy}"</c:if>
-        <c:if test="${true}">${' '}alt="${alt}"</c:if><%-- Always provide an alt, even if it's empty --%>
-        <c:if test="${not empty title and (title ne alt)}">${' '}title="${title}"</c:if>
+        <c:if test="${true}">${' '}alt="<m:out value="${alt}" lenientEscaping="${true}" />"</c:if><%-- Always provide an alt, even if it's empty --%>
+        <c:if test="${not empty title and (title ne alt)}">${' '}title="<m:out value="${title}" lenientEscaping="${true}" />"</c:if>
         <c:if test="${not empty attrImage}">${' '}${attrImage}</c:if>
         <c:if test="${not empty zoomData}">
             <fmt:setLocale value="${cms.locale}" />
@@ -171,15 +171,15 @@
                 <c:if test="${not empty width}">${' '}width="${width}"</c:if>
                 <c:if test="${not empty height}">${' '}height="${height}"</c:if>
                 <c:if test="${not empty cssImage}">${' '}class="${cssImage}"</c:if>
-                <c:if test="${true}">${' '}alt="${alt}"</c:if><%--
+                <c:if test="${true}">${' '}alt="<m:out value="${alt}" lenientEscaping="${true}" />"</c:if>
         --%>><%----%>
         </noscript><%----%>
     </c:if>
 
     <c:if test="${not empty copyright}">
-        <div class="copyright image-copyright" aria-hidden="true"><%----%>
-            ${copyright}
-        </div><%----%>
+        <div class="copyright image-copyright" aria-hidden="true">
+            <m:out value="${copyright}" lenientEscaping="${true}" />
+        </div>
     </c:if>
 
 </m:padding-box>

@@ -8,9 +8,8 @@
     description="The String to output." %>
 
 <%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
-    description="Similar to c:out escapeXml.
-    Default is 'true'.
-    If this is 'false' then this tag is identical to c:out." %>
+    description="Similar to c:out escapeXml, the difference being that even if 'true' (the default), the char '&' is NOT escaped to '&amp;'.
+    Otherwise this is identical to c:out." %>
 
 <%@ attribute name="lenientEscaping" type="java.lang.Boolean" required="false"
     description="If this is 'true', then escapeXml is NOT enforced if the sitemap attribute 'template.lenient.escaping' is set to 'true'." %>
@@ -19,14 +18,53 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%!
-//
-public String replaceHtmlCodes(String text) {
-    String result = text;
-    if (result != null) {
-        result = result.replace("&shy;", "\u00ad");
-        result = result.replace("&nbsp;", "\u00a0");
+
+// see: https://github.com/apache/tomcat/blob/main/java/org/apache/jasper/tagplugins/jstl/Util.java
+
+public static final int HIGHEST_SPECIAL = '>';
+public static char[][] specialCharactersRepresentation = new char[HIGHEST_SPECIAL + 1][];
+static {
+    // specialCharactersRepresentation['&'] = "&amp;".toCharArray();
+    specialCharactersRepresentation['<'] = "&lt;".toCharArray();
+    specialCharactersRepresentation['>'] = "&gt;".toCharArray();
+    specialCharactersRepresentation['"'] = "&#034;".toCharArray();
+    specialCharactersRepresentation['\''] = "&#039;".toCharArray();
+}
+
+public static String doEscapeXml(String buffer) {
+    int start = 0;
+    int length = buffer.length();
+    char[] arrayBuffer = buffer.toCharArray();
+    StringBuffer escapedBuffer = null;
+
+    for (int i = 0; i < length; i++) {
+        char c = arrayBuffer[i];
+        if (c <= HIGHEST_SPECIAL) {
+            char[] escaped = specialCharactersRepresentation[c];
+            if (escaped != null) {
+                // create StringBuffer to hold escaped xml string
+                if (start == 0) {
+                    escapedBuffer = new StringBuffer(length + 5);
+                }
+                // add unescaped portion
+                if (start < i) {
+                    escapedBuffer.append(arrayBuffer,start,i-start);
+                }
+                start = i + 1;
+                // add escaped xml
+                escapedBuffer.append(escaped);
+            }
+        }
     }
-    return result;
+    // no xml escaping was necessary
+    if (start == 0) {
+        return buffer;
+    }
+    // add rest of unescaped portion
+    if (start < length) {
+        escapedBuffer.append(arrayBuffer,start,length-start);
+    }
+    return escapedBuffer.toString();
 }
 %>
 
@@ -35,12 +73,9 @@ public String replaceHtmlCodes(String text) {
 <%
    String value = (String)getJspContext().getAttribute("value");
    Boolean escapeXml = (Boolean)getJspContext().getAttribute("escapeXml");
-   String outText = value;
-   if (escapeXml.booleanValue()) {
-       outText = replaceHtmlCodes(value);
-   }
+   String outText = escapeXml.booleanValue() ? doEscapeXml(value) : value;
    getJspContext().setAttribute("outText", outText);
 %>
-<c:out value="${outText}" escapeXml="${escapeXml}" />
+<c:out value="${outText}" escapeXml="${false}" />
 
 

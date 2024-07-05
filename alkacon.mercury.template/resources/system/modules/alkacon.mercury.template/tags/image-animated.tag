@@ -219,7 +219,7 @@
                 </c:if>
                 <c:if test="${showCopyright and not empty imageCopyrightHtml}">
                     <div class="copyright image-copyright" aria-hidden="true"><%----%>
-                        ${imageCopyrightHtml}
+                        <m:out value="${imageCopyrightHtml}" lenientEscaping="${true}" />
                     </div><%----%>
                 </c:if>
                 <%-- JSP body inserted here --%>

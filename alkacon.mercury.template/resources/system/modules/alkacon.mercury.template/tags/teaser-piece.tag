@@ -187,7 +187,6 @@
     </c:when>
 </c:choose>
 
-
 <c:if test="${not empty groupId}">
     <c:set var="bodyPreMarkup">
         ${preGroupMarkup}
@@ -195,7 +194,6 @@
     </c:set>
     <c:set var="bodyPostMarkup">${'</div>'}</c:set>
 </c:if>
-
 
 <c:if test="${not empty headline or not empty intro}">
     <c:set var="linkTitle">

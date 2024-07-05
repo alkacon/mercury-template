@@ -42,6 +42,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-map.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>

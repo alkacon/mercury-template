@@ -111,6 +111,7 @@
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Notice</PropertyName>

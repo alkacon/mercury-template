@@ -48,6 +48,7 @@
                     <Description><![CDATA[%(key.label.PrivacyPolicy.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-privacypolicy.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <RuleRegex><![CDATA[.+]]></RuleRegex>
                     <RuleType><![CDATA[error]]></RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -66,6 +67,7 @@
                     <Description><![CDATA[%(key.label.PrivacyPolicy.AcceptAllButtonText.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.msg.page.privacypolicy.button.banner.accept)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
@@ -74,6 +76,7 @@
                     <Description><![CDATA[%(key.label.PrivacyPolicy.SaveButtonText.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.msg.page.privacypolicy.button.banner.save)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
@@ -82,6 +85,7 @@
                     <Description><![CDATA[%(key.label.PrivacyPolicy.ExternalTitle.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.msg.page.privacypolicy.external.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>ExternalFooter</PropertyName>

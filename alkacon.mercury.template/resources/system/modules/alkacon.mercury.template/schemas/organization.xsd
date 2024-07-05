@@ -74,6 +74,7 @@
                     <DisplayName><![CDATA[%(key.label.Contact.Org.Organization)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Org.Organization.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -111,6 +112,7 @@
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Notice</PropertyName>

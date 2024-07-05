@@ -31,6 +31,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <!-- Widget>DisplayWidget</Widget -->
                     <Default><![CDATA[%(key.type.m-layout-simple.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <RuleRegex><![CDATA[.+]]></RuleRegex>
                     <RuleType><![CDATA[error]]></RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>

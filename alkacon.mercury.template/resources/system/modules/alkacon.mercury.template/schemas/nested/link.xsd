@@ -27,6 +27,7 @@
                     <DisplayName><![CDATA[%(key.label.NestedLink.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.NestedLink.Text.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Display>singleline</Display>
                 </Setting>
                 <Setting>

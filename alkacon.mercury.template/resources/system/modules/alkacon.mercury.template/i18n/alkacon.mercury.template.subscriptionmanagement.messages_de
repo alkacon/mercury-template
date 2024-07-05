@@ -1,5 +1,5 @@
-GUI_FAILED_SENDING_CONFIRM_SUBSCRIPTION_MAIL_2=Die E-Mail zur Bestätigung der Anmeldung zu "{1}" konnte nicht an "{0}" gesendet werden.
-GUI_FAILED_SENDING_CONFIRM_UNSUBSCRIPTION_MAIL_2=Die E-Mail zur Bestätigung der Abmeldung zu "{1}" konnte nicht an "{0}" gesendet werden.
-GUI_FAILED_SUBSCRIPTION_ACTIVATION_FOR_2=Die Anmeldung von "{0}" zu "{1}" konnte nicht aktiviert werden.
-GUI_FAILED_UNSUBSCRIPTION_FOR_2="{0}" konnte nicht von "{1}" abgemeldet werden.
+GUI_FAILED_SENDING_CONFIRM_SUBSCRIPTION_MAIL_2=Die E-Mail zur Bestätigung der Anmeldung zu „{1}“ konnte nicht an „{0}“ gesendet werden.
+GUI_FAILED_SENDING_CONFIRM_UNSUBSCRIPTION_MAIL_2=Die E-Mail zur Bestätigung der Abmeldung zu „{1}“ konnte nicht an „{0}“ gesendet werden.
+GUI_FAILED_SUBSCRIPTION_ACTIVATION_FOR_2=Die Anmeldung von „{0}“ zu „{1}“ konnte nicht aktiviert werden.
+GUI_FAILED_UNSUBSCRIPTION_FOR_2=„{0}“ konnte nicht von „{1}“ abgemeldet werden.
 GUI_INVALID_PARAMETERS_0=Die An-/Abmeldeaktion konnte nicht ausgeführt werden, da eine unzulässige Anfrage gesendet wurde.

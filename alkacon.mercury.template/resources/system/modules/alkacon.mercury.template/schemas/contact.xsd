@@ -109,12 +109,14 @@
                     <DisplayName><![CDATA[%(key.label.Contact.Organization)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Organization.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Position</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Contact.Position)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Position.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>
@@ -135,6 +137,7 @@
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>

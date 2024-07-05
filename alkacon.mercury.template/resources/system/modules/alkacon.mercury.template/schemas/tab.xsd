@@ -34,6 +34,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-tab.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>TabEntry</PropertyName>

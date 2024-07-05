@@ -64,6 +64,7 @@
                     <Description><![CDATA[%(key.label.Poi.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-poi.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -105,6 +106,7 @@
                     <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Intro.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Date</PropertyName>

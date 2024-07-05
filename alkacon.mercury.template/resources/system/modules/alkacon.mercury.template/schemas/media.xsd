@@ -68,6 +68,7 @@
                     <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Intro.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Title</PropertyName>
@@ -75,6 +76,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-media.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -121,6 +123,7 @@
                     <DisplayName><![CDATA[%(key.label.Copyright)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Media.Copyright.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

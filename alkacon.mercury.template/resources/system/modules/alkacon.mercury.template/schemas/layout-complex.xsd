@@ -35,6 +35,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-layout-row-complex.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <RuleRegex><![CDATA[.+]]></RuleRegex>
                     <RuleType><![CDATA[error]]></RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>

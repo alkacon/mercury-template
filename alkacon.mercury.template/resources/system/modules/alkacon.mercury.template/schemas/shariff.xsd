@@ -34,6 +34,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-shariff.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

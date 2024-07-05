@@ -32,6 +32,7 @@
                     <DisplayName><![CDATA[%(key.label.ExtendedAddress.Name)]]></DisplayName>
                     <Description><![CDATA[%(key.label.ExtendedAddress.Name.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>StreetAddress</PropertyName>

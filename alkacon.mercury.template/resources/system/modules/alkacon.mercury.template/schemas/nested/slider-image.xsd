@@ -62,6 +62,7 @@
                     <DisplayName><![CDATA[%(key.label.SliderImage.SuperTitle)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.SuperTitle.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Display>singleline</Display>
                 </Setting>
                 <Setting>
@@ -69,6 +70,7 @@
                     <DisplayName><![CDATA[%(key.label.SliderImage.TitleLine1)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.TitleLine1.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Display>singleline</Display>
                 </Setting>
                 <Setting>
@@ -76,6 +78,7 @@
                     <DisplayName><![CDATA[%(key.label.SliderImage.TitleLine2)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.TitleLine2.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Display>singleline</Display>
                 </Setting>
                 <Setting>
@@ -83,6 +86,7 @@
                     <DisplayName><![CDATA[%(key.label.Copyright)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Copyright.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Search>false</Search>
                     <Display>singleline</Display>
                 </Setting>

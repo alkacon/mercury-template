@@ -29,6 +29,7 @@
                     <DisplayName><![CDATA[%(key.label.Note.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Note.Title.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

@@ -54,6 +54,7 @@
                     <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Intro.help)]]></Description>
                     <Widget>string</Widget>
+                    <WidgetConfig>typography</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Title</PropertyName>
@@ -61,6 +62,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-imageseries.title)]]></Default>
+                    <WidgetConfig>typography</WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>

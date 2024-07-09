@@ -810,3 +810,19 @@
     --#{$prefix}btn-bg: var(--#{$prefix}main-theme);
     --#{$prefix}btn-fg: var(--#{$prefix}main-theme-fg);
 }
+
+@mixin mercuryBanner($showLicense) {
+    @if ($showLicense) {
+    /*!
+     * The Mercury Template (https://mercury-template.opencms.org/) - Copyright Alkacon Software GmbH & Co. KG
+     * Licensed under the GNU Affero General Public License (https://www.gnu.org/licenses/).
+     *
+     */
+    } @else {
+    /*!
+     *
+     * The Mercury Template (https://mercury-template.opencms.org/) - Copyright Alkacon Software GmbH & Co. KG
+     *
+     */
+    }
+}

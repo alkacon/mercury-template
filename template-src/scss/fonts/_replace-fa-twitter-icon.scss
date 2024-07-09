@@ -1,0 +1,18 @@
+@if ($font-replace-fa-twitter-icon == true) {
+
+    /* replace the old "twitter" icon from font awesome with the "x" icon using an inline font */
+    @font-face {
+        // this is a font that just contains the "x" icon at position /f099 - same place the twitter icon uses in font awesome
+        // see https://hellogreg.github.io/woff2base/ to generate Base64 inline src from a Woff2 font file
+        font-family: 'x';
+        src: url(data:application/octet-stream;base64,d09GMgABAAAAAAH4AAsAAAAAA/QAAAGqAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAVBEICoEAgRgBNgIkAxQLDAAEIAWCPgcgGz8DyK4G7OYDYRkhJyqqeGZ/w7wMX87uQh2lEcRfvrOv/NK1pDUMYJAqnUAKH0c0oBH5mtL5oKI5Z+8+BApVUiAHqFrrK319+Mu9349ugh7Q1mjs8bvdWoKhZwWcaHaZ8AHZa5y2/fJ/PNFsx4PBeMCvEnkJdBdhEGIYZ3ESjQJNKQuA05PZbbQHVbauC6poQk7vWEVq0wc8sh6vrABdYmHPBXy1NIy2vGiIFwgA2ANkpC0ESskS9wIjKWNk/mqjgTwtumVACQCCOuZABUZQYQnOABwBCCKW3csgfcIfv2bCsM/ZG3Ew4D0OAHD+hDtz5v5Wv6LKP8bvvY825b8t3AHdFuRLiH8tBALPt3NpJif+B3wAbJ4rT0KtDwMGBFpsowD5xX8HtQAAt1BAQNWKAQkAAGb+CCAIAkgSJwTIZIMAhXwQoCo4AT2yR4CRSRKlkiFGCVM7w5ktBf4i0pEQM4csdzNucJ/GS4aqo4s5OnHtbCkMKr3BPfy51hhNjO0isHBscF/6inEUC6vdf4K3jqydrTOFjdlijhbOmDXF0oOiYGWnYmdnS0UZAAAA);
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .fa.fa-twitter,
+    .fab.fa-twitter {
+        font-family: 'x' !important;
+    }
+
+}

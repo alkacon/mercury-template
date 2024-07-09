@@ -80,3 +80,5 @@ $enable-dark-mode:            false !default;
 @import "../bootstrap5/scss/utilities/api";
 
 @import "bootstrap/adjustments";
+
+@include mercuryBanner(false);

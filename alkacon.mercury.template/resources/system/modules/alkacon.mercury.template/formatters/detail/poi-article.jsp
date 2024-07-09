@@ -180,35 +180,6 @@ ${settingDefaultsDebug}
 
 </m:paragraph-split>
 
-
-<c:if test="${showOpeningHours and openingHours.isSet}"><%----%>
-    <div class="detail-content"><%----%>
-        <fmt:message key="msg.page.openingHours" var="hoursHeading" />
-        <m:heading level="${hsize+1}" text="${hoursHeading}" css="hours-heading" />
-        <m:opening-hours content="${value.OpeningHours}" />
-    </div><%----%>
-    <m:nl />
-</c:if>
-
-
-<cms:bundle basename="alkacon.mercury.bistuemer.trier.messages">
-
-<c:if test="${showFacilities}">
-    <div class="detail-content"><%----%>
-        <fmt:message key="msg.page.facilities" var="facilitiesHeading" />
-        <m:heading level="${hsize+1}" text="${facilitiesHeading}" css="facilities-heading" />
-        <m:facility-icons
-            useTooltip="${true}"
-            wheelchairAccess="${value.Facilities.value.WheelchairAccess.toBoolean}"
-            hearingImpaired="${value.Facilities.value.HearingImpaired.toBoolean}"
-            lowVision="${value.Facilities.value.LowVision.toBoolean}"
-            publicRestrooms="${value.Facilities.value.PublicRestrooms.toBoolean}"
-            publicRestroomsAccessible="${value.Facilities.value.PublicRestroomsAccessible.toBoolean}"
-        />
-    </div><%----%>
-    <m:nl />
-</c:if>
-
 <c:if test="${showLocation}">
     <div class="adr detail-content"><%----%>
         <fmt:message key="msg.page.address" var="addressHeading" />
@@ -235,7 +206,30 @@ ${settingDefaultsDebug}
     <m:nl />
 </c:if>
 
-</cms:bundle>
+<c:if test="${showOpeningHours and openingHours.isSet}"><%----%>
+    <div class="detail-content"><%----%>
+        <fmt:message key="msg.page.openingHours" var="hoursHeading" />
+        <m:heading level="${hsize+1}" text="${hoursHeading}" css="hours-heading" />
+        <m:opening-hours content="${value.OpeningHours}" />
+    </div><%----%>
+    <m:nl />
+</c:if>
+
+<c:if test="${showFacilities}">
+    <div class="detail-content"><%----%>
+        <fmt:message key="msg.page.facilities" var="facilitiesHeading" />
+        <m:heading level="${hsize+1}" text="${facilitiesHeading}" css="facilities-heading" />
+        <m:facility-icons
+            useTooltip="${true}"
+            wheelchairAccess="${value.Facilities.value.WheelchairAccess.toBoolean}"
+            hearingImpaired="${value.Facilities.value.HearingImpaired.toBoolean}"
+            lowVision="${value.Facilities.value.LowVision.toBoolean}"
+            publicRestrooms="${value.Facilities.value.PublicRestrooms.toBoolean}"
+            publicRestroomsAccessible="${value.Facilities.value.PublicRestroomsAccessible.toBoolean}"
+        />
+    </div><%----%>
+    <m:nl />
+</c:if>
 
 <m:piece
     cssWrapper="detail-content ${setCssWrapperKeyPiece}"

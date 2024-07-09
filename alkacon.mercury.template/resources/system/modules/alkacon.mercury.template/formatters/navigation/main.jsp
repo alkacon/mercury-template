@@ -200,15 +200,13 @@
                     <a href="${navLink}"${navTarget}${' '}<%--
                     --%>id="${parentLabelId}"${' '}<%--
                     --%>class="nav-label"${' '}<%--
-                    --%>title="<fmt:message key="msg.page.navigation.showpage" />"<%--
                     --%>${'>'}${navText}</a><%----%>
 
                     <a href="${navLink}"${navTarget}${' '}<%--
                     --%>role="button"${' '}<%--
                     --%>aria-expanded="false"${' '}<%--
                     --%>aria-controls="${targetMenuId}"${' '}<%--
-                    --%>aria-labelledby="${parentLabelId}"${' '}<%--
-                    --%>title="<fmt:message key="msg.page.navigation.sublevel" />"<%--
+                    --%>aria-label="<fmt:message key="msg.page.navigation.sublevel.further"><fmt:param>${navText}</fmt:param></fmt:message>"<%--
                     --%>${'>'}&nbsp;</a><%----%>
                 </c:when>
 
@@ -219,7 +217,7 @@
                     --%>role="button"${' '}<%--
                     --%>aria-expanded="false"${' '}<%--
                     --%>aria-controls="${targetMenuId}"${' '}<%--
-                    --%>title="<fmt:message key="msg.page.navigation.sublevel" />"<%--
+                    --%>aria-label="<fmt:message key="msg.page.navigation.sublevel.toggle"><fmt:param>${navText}</fmt:param></fmt:message>"<%--
                     --%>${'>'}${navText}</a><%----%>
                 </c:when>
 
@@ -230,17 +228,16 @@
                         <%-- mega menu requires aria-controls - will be removed by JavaScript if mega menu is not displayed in mobile --%>
                         aria-controls="${targetMenuId}"${' '}<%----%>
                     </c:if>
-                    <%----%>title="<fmt:message key="msg.page.navigation.showpage" />"<%--
-                    --%>${'>'}${navText}</a><%----%>
+                    <%----%>${'>'}${navText}</a><%----%>
                 </c:otherwise>
             </c:choose>
 
             <c:choose>
                 <c:when test="${startSubMenu}">
-                   <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-labelledby="${parentLabelId}">${nl}' escapeXml="false" />
+                   <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-label="${navText}">${nl}' escapeXml="false" />
                 </c:when>
                 <c:when test="${hasMegaMenu}">
-                   <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-labelledby="${parentLabelId}"></ul>' escapeXml="false" />
+                   <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-label="${navText}"></ul>' escapeXml="false" />
                 </c:when>
             </c:choose>
 

@@ -78,8 +78,7 @@
                             image="${image}"
                             ratio="${imageRatio}"
                             addEffectBox="${true}"
-                            ade="${ade and not linkFullTile}"
-                            title="${heading}">
+                            ade="${ade and not linkFullTile}">
                             <c:set var="imageCopyright" value="${imageCopyrightHtml}" scope="request" />
                         </m:image-animated>
                     </cms:addparams>

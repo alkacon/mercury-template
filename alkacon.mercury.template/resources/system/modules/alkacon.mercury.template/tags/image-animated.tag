@@ -120,6 +120,8 @@
             <c:set var="setTitle" value="${empty setTitle ? true : setTitle}" />
             <c:set var="noTitleCopyright" value="${alt eq 'nocopy'}" />
             <c:set var="alt" value="${noTitleCopyright ? null : alt}" />
+            <c:set var="imgAlt" value="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}" />
+            <c:set var="imgTitle" value="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}" />
 
             <c:set var="adaptRatioToScreen" value="${ratio ne ratioLg}" />
             <c:if test="${adaptRatioToScreen}">
@@ -189,8 +191,8 @@
                             sizes="${sizes}"
                             lazyLoad="${lazyLoad}"
                             lazyLoadAutoSizes="${lazyLoadAutoSizes}"
-                            alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
-                            title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                            alt="${imgAlt}"
+                            title="${imgTitle}"
                             cssImage="${mobileWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
                             isSvg="${imageIsSvg}"
@@ -207,8 +209,8 @@
                             sizes="${sizes}"
                             lazyLoad="${lazyLoad}"
                             lazyLoadAutoSizes="${lazyLoadAutoSizes}"
-                            alt="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}"
-                            title="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}"
+                            alt="${imgAlt}"
+                            title="${imgTitle}"
                             cssImage="${desktopWrapper}animated${not empty cssImage ? ' ' : ''}${cssImage}"
                             attrImage="${attrImage}"
                             isSvg="${imageIsSvg}"

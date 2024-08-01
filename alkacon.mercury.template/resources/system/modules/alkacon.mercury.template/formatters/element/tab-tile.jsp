@@ -113,7 +113,7 @@
             <m:nl />
 
             <span class="collapse-trigger ${tileBtnBgColor}${' '}${triggerColCss}${open ? '':' collapsed'}" <%--
-                --%>data-bs-toggle="collapse" type="button" <%--
+                --%>data-bs-toggle="collapse" type="button" role="button" <%--
                 --%>aria-expanded="${open}" <%--
                 --%>aria-controls="${itemId}"<%--
                 --%>data-bs-target="#${itemId}"><%----%>

@@ -824,24 +824,24 @@ $policy-banner-save-hover-color:    $policy-banner-accept-hover-color !default;
 $policy-banner-button-min-width:    100px !default;
 $policy-banner-opacity:             0.95 !default;
 
-$togglebox-height:                  40px !default;
-$togglebox-width:                   200px !default;
+$togglebox-height:                  4rem !default;
+$togglebox-width:                   20rem !default;
 $togglebox-border-color:            $text-dark !default;
-$togglebox-border-size:             1px !default;
-$togglebox-slider-margin:           2px !default;
+$togglebox-border-size:             0.1rem !default;
+$togglebox-slider-margin:           0.2rem !default;
 $togglebox-disabled-color:          $disabled-color !default;
 $togglebox-slider-color:            $grey-light !default;
 
 $cookie-notice-bg-color:            var(--#{$prefix}highlight-color) !default;
 $cookie-notice-color:               var(--#{$prefix}highlight-fg-color) !default;
 $cookie-notice-alt-color:           $cookie-notice-color !default;
-$cookie-notice-font-size-mobile:    14px !default;
+$cookie-notice-font-size-mobile:    1.2rem !default;
 $cookie-notice-font-size-desktop:   $font-size-base !default;
 $cookie-notice-large-font-size:     125% !default;
 $cookie-notice-small-font-size:     85% !default;
-$cookie-notice-tiny-font-size:      12px !default;
-$cookie-notice-togglebox-width:     150px !default;
-$cookie-notice-togglebox-height:    20px !default;
+$cookie-notice-tiny-font-size:      1.2rem !default;
+$cookie-notice-togglebox-width:     15rem !default;
+$cookie-notice-togglebox-height:    2rem !default;
 
 $placeholder-bg-color:              var(--#{$prefix}highlight-color) !default;
 $placeholder-border-color:          var(--#{$prefix}highlight-border-color) !default;

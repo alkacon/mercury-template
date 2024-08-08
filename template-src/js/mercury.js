@@ -598,6 +598,10 @@ const Mercury = function (jQ) {
                 $mediaBox.find(".content").removeClass().addClass("content-removed")
             }
             $element.remove();
+            let color = getThemeJSON("main-theme");
+            if (typeof color !== "undefined") {
+                template = template.replace("XXcolor-main-themeXX", color.substring(1));
+            }
             $p.append(decodeURIComponent(template));
             initFitVids();
         }

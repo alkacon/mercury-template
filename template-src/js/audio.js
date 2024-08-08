@@ -60,8 +60,10 @@ function initAudio($audioData, aP) {
             src: [src],
             autoplay: autoplay,
             preload: autoplay ? true : "metadata",
-            html5: true
+            html5: false // setting this to 'true' will lead to issues in webkit
         });
+
+        howlerAudios[$audioElement.get(0)] = sound;
 
         sound.$audiopos = $audioElement.find('.audio-pos');
         sound.$audiolength = $audioElement.find('.audio-length');
@@ -190,6 +192,12 @@ export function init(jQuery, debug) {
     if (DEBUG) console.info("Audio.init()");
 
     Howler.unload();
+}
+
+const howlerAudios = {};
+
+export function getHowlerAudio(element) {
+    return howlerAudios[element];
 }
 
 export function initAudioElement($element, autoplay) {

@@ -45,6 +45,12 @@
 <%@ attribute name="autoPlay" type="java.lang.Boolean" required="false"
     description="Controls if the media is directly played without clicking on the element first. Default is 'false'." %>
 
+<%@ attribute name="minimalDisplay" type="java.lang.Boolean" required="false"
+    description="ONLY FOR AUDIO PLAYER! Controls if only the audio player is rendered without anything else . Default is 'false'." %>
+
+<%@ attribute name="mediaAttrs" type="java.lang.String" required="false"
+    description="Additional attributes that will be appended to the generated media element." %>
+
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="'class' selectors to add to the generated piece tag." %>
 
@@ -63,11 +69,12 @@
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<m:media-vars content="${content}" ratio="${ratio}" autoPlay="${autoPlay}">
+<m:media-vars content="${content}" ratio="${ratio}" autoPlay="${autoPlay}" mediaAttrs="${mediaAttrs}">
 
     <c:set var="addPaddingBox"      value="${not (isAudio and empty image)}" />
     <c:set var="addPlaceholder"     value="${autoPlay and not empty placeholderMessage}" />
     <c:set var="effect"             value="${(empty effect) or (effect eq 'none') ? ' effect-box' : effect.concat(' effect-piece')}" />
+    <c:set var="minimalDisplay"     value="${minimalDisplay and isAudio}" />
     <c:set var="cssWrapper"         value="${(empty cssWrapper) or (cssWrapper eq 'none') ? '' : cssWrapper.concat(' ')}" />
 
     <c:if test="${not empty markupBottomText and not isAudio}">
@@ -85,7 +92,7 @@
                 </c:if>
             </div><%----%>
         </c:if>
-        <c:if test="${showTitleOverlay}">
+        <c:if test="${showTitleOverlay and not minimalDisplay}">
             <c:set var="hsize" value="${empty hsize ? 2 : hsize}" />
             <c:set var="introHeadline">
                 <m:intro-headline
@@ -124,7 +131,7 @@
         width="${width}"
         ratio="${usedRatio}"
         ratioLg="${ratioLg}"
-        test="${addPaddingBox}">
+        test="${addPaddingBox and not minimalDisplay}">
 
         <c:set var="previewBgColor" value="${not empty flexibleType and empty image ? ' pbg-'.concat(flexibleType) : ''}" />
 
@@ -159,7 +166,7 @@
                 <div ${previewAttrs} tabindex="0" title="${placeholderMessage}"><%----%>
                     <c:choose>
                         <c:when test="${isAudio}">
-                            <c:if test="${not empty image}">
+                            <c:if test="${not empty image and not minimalDisplay}">
                                 <m:image-animated
                                     image="${image}"
                                     ratio="${usedRatio}"
@@ -177,7 +184,9 @@
                                 copyright="${showCopyright ? copyright : null}"
                                 autoPlay="${autoPlay}"
                             />
-                            ${markupVisualOverlay}
+                            <c:if test="${not minimalDisplay}">
+                                ${markupVisualOverlay}
+                            </c:if>
                         </c:when>
                         <c:when test="${not empty link or not autoPlay}">
                             <c:choose>

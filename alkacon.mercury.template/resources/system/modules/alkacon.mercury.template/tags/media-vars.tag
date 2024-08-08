@@ -15,6 +15,9 @@
 <%@ attribute name="autoPlay" type="java.lang.Boolean" required="false"
     description="Controls if the media is directly played without clicking on the element first. Default is 'false'." %>
 
+<%@ attribute name="mediaAttrs" type="java.lang.String" required="false"
+    description="Additional attributes that will be appended to the generated media element." %>
+
 
 <%@ variable name-given="image" declare="true"
     description="The optional image of the media file, as set in the content." %>
@@ -144,9 +147,11 @@
             : youTubePreviewImg}"
         />
         <c:set var="template"><%--
-        --%><iframe src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
-            --%>autoplay=1&rel=0&iv_load_policy=3&modestbranding=1" <%--
-            --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen><%--
+        --%><iframe class="youtube-video" src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
+            --%>autoplay=1&rel=0&iv_load_policy=3&fs=0&enablejsapi=1" <%--
+            --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen<%--
+            --%>${empty mediaAttrs ? '' : ' '.concat(mediaAttrs)}<%--
+            --%>${'>'}<%--
         --%></iframe><%----%>
         </c:set>
         <c:choose>
@@ -218,11 +223,12 @@
                 </c:when>
                 <c:otherwise>
                     <video <%--
-                        --%>class="fitin" <%--
+                        --%>class="html-video fitin" <%--
                         --%>controls <%--
                         --%>autoplay <%--
                         --%>preload="auto" <%--
                         --%>src="${videoSrc}" <%--
+                        --%>${empty mediaAttrs ? '' : mediaAttrs.concat(' ')}<%--
                         --%><c:if test="${not empty videoPreviewImg}">poster="${videoPreviewImg}"></c:if><%----%>
                     </video><%----%>
                 </c:otherwise>
@@ -262,8 +268,9 @@
         <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.soundcloud" /></c:set>
         <c:set var="soundCloudTrackId" value="${content.value.MediaContent.value.SoundCloud.value.SoundCloudTrackId}" />
         <c:set var="template"><%--
-            --%><iframe width="100%" height="100%" scrolling="no" style="border: none;" allow="autoplay" <%--
-            --%>src="https://w.soundcloud.com/player/?url=<%--
+            --%><iframe class="soundcloud-audio" width="100%" height="100%" scrolling="no" style="border: none;" allow="autoplay"<%--
+            --%>${empty mediaAttrs ? '' : ' '.concat(mediaAttrs)}<%--
+            --%>${' '}src="https://w.soundcloud.com/player/?url=<%--
                 --%>https%3A//api.soundcloud.com/tracks/${soundCloudTrackId}&<%--
                     --%>auto_play=true&<%--
                     --%>color=%23XXcolor-main-themeXX&<%--

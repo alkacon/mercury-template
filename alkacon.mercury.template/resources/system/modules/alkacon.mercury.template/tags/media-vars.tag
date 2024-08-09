@@ -148,7 +148,7 @@
         />
         <c:set var="template"><%--
         --%><iframe class="youtube-video" src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
-            --%>autoplay=1&rel=0&iv_load_policy=3&fs=0&enablejsapi=1" <%--
+            --%>autoplay=1&rel=0&iv_load_policy=3&fs=0&enablejsapi=1${autoPlay ? '&mute=1':''}" <%--
             --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen<%--
             --%>${empty mediaAttrs ? '' : ' '.concat(mediaAttrs)}<%--
             --%>${'>'}<%--
@@ -225,7 +225,7 @@
                     <video <%--
                         --%>class="html-video fitin" <%--
                         --%>controls <%--
-                        --%>autoplay <%--
+                        --%>autoplay ${autoPlay ? 'playsinline muted ':''}<%--
                         --%>preload="auto" <%--
                         --%>src="${videoSrc}" <%--
                         --%>${empty mediaAttrs ? '' : mediaAttrs.concat(' ')}<%--

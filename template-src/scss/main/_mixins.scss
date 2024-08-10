@@ -512,11 +512,6 @@
     color: var(--#{$prefix}body-color);
     font-family: var(--#{$prefix}btn-font-family);
 
-    &::before {
-        @include icon-font();
-        content: "\f02b"; // mercury:icon - fa-tag
-        padding-right: var(--#{$prefix}ws-margin);
-    }
     @if ($add-box) {
         padding: calc(0.5 * var(--#{$prefix}ws-margin)) var(--#{$prefix}ws-margin);
         border-radius: $list-category-radius;
@@ -528,6 +523,12 @@
                 transition: background-color 0.33s;
             }
         }
+    }
+
+    &::before {
+        content: "\f02b"; // mercury:icon - fa-tag
+        padding-right: var(--#{$prefix}ws-margin);
+        @include icon-font();
     }
 }
 

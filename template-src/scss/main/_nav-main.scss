@@ -814,10 +814,10 @@
             position: relative;
 
             > a {
-                @include nav-menu-link;
                 padding: $nav-menu-padding;
                 border: none;
                 border-bottom: $nav-menu-entry-border-bottom;
+                @include nav-menu-link;
             }
 
             &:last-child > a {

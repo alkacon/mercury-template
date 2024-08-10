@@ -40,9 +40,9 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    @include heading-base;
     color: var(--#{$prefix}headings-color);
     margin-bottom: var(--#{$prefix}headings-margin-bottom);
+    @include heading-base;
 }
 
 h1 {

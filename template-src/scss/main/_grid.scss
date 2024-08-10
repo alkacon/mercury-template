@@ -112,6 +112,7 @@
             @if ($list-tile-spacer-unit == rem) {
                 $unit-factor: 0.2;
             }
+            margin-bottom: var(--#{$prefix}element-margin);
             --#{$prefix}gutter-x: #{$space * $unit-factor}#{$list-tile-spacer-unit};
             --#{$prefix}gutter-y: #{$space * $unit-factor}#{$list-tile-spacer-unit};
             @if (($space > 0) and ($space < 10)) {
@@ -122,7 +123,6 @@
                     --#{$prefix}gutter-y: calc(0.5 * var(--#{$prefix}element-margin));
                 }
             }
-            margin-bottom: var(--#{$prefix}element-margin);
             > .tile-col {
                 margin-bottom: 0;
             }

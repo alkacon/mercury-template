@@ -709,15 +709,15 @@
                 order: 20;
                 width: 100%;
 
+                @if ($fh-ac-bg-color != none) {
+                    background-color: $fh-ac-bg-color;
+                }
+
                 > div,
                 .co-lg-xl > div {
                     > .element { // using '.element:last-of-type' would be better, but causes "jumps" on editor loading
                         margin-bottom: 0;
                     }
-                }
-
-                @if ($fh-ac-bg-color != none) {
-                    background-color: $fh-ac-bg-color;
                 }
             }
 

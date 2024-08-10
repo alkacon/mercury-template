@@ -225,13 +225,13 @@
         height: initial;
         &:not(.enlarged) {
             padding-bottom: 100%;
+            overflow: hidden;
             &.presized-vars {
                 padding-bottom: var(--#{$prefix}presized-padding);
                 @include media-breakpoint-up($piece-desktop-breakpoint) {
                     padding-bottom: var(--#{$prefix}presized-padding-lg);
                 }
             }
-            overflow: hidden;
         }
         &.enlarged {
             padding-bottom: 0 !important;

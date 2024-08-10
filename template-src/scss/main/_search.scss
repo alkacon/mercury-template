@@ -36,8 +36,8 @@
     }
 
     .search-results-header {
-        @include clearfix;
         margin-bottom: var(--#{$prefix}default-margin);
+        @include clearfix;
     }
 
 

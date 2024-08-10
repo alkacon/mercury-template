@@ -500,12 +500,12 @@
         margin-top: var(--#{$prefix}default-margin-small);
     }
     .jst-msg {
+        @include use-hyphens-text;
         > * {
             &:last-child {
                 margin-bottom: 0;
             }
         }
-        @include use-hyphens-text;
     }
     .jst-btn {
         label.checkbox {

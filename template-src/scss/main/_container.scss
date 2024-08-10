@@ -361,10 +361,10 @@ $oct-edit-infos:
     }
 
     > .marker {
-        @include oct-meta-bg();
         font-family: $font-family-gui !important;
         padding: 4px 8px !important;
         display: inline-block;
+        @include oct-meta-bg();
         > .ico,
         > .fa {
             margin-right: var(--#{$prefix}ws-margin);

@@ -93,17 +93,17 @@
 
     @if (not $list-teaser-format-inlist-only) {
         .intro-headline {
-            @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
             line-height: $teaser-title-height;
             margin-bottom: $teaser-headings-margin-bottom;
+            @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
         }
 
         .teaser-btn {
-            &:not(:last-child) {
-                margin-right: var(--#{$prefix}ws-margin);
-            }
             @if ($teaser-btn-def-padding != $btn-def-padding) {
                 padding: $teaser-btn-def-padding;
+            }
+            &:not(:last-child) {
+                margin-right: var(--#{$prefix}ws-margin);
             }
         }
 
@@ -161,9 +161,9 @@
 
         @if ($list-teaser-format-inlist-only) {
             .intro-headline {
-                @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
                 line-height: $teaser-title-height;
                 margin-bottom: $teaser-headings-margin-bottom;
+                @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
             }
 
             .teaser-btn {
@@ -447,8 +447,8 @@
 
     .dl-cat {
         .dl-cat-label {
-            @include list-category-label(false, false);
             margin-right: var(--#{$prefix}ws-margin);
+            @include list-category-label(false, false);
         }
     }
 
@@ -523,9 +523,13 @@
 
                 .btn-info {
                     @include button-base;
-                    @include dl-btn;
-                    text-align: left;
-                    min-width: 50%;
+                    & {
+                        @include dl-btn;
+                        & {
+                            text-align: left;
+                            min-width: 50%;
+                        }
+                    }
                 }
                 .ico {
                     min-width: calc(4 * var(--#{$prefix}ws-margin));
@@ -921,9 +925,11 @@
                         cursor: pointer;
                         @include list-category-label(true, true);
 
-                        padding-left: var(--#{$prefix}icon-margin);
-                        line-height: 1.2;
-                        text-decoration: none;
+                        & {
+                            padding-left: var(--#{$prefix}icon-margin);
+                            line-height: 1.2;
+                            text-decoration: none;
+                        }
 
                         &::before {
                             display: inline-block;

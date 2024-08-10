@@ -261,11 +261,12 @@ html.desktop .effect-rotate {
     position: absolute;
     transform: translateY(-50%);
     z-index: 1000;
+    left: 50%;
+
     &, a &  {
         color: $white;
     }
 
-    left: 50%;
     .spinner-icon {
         animation: spinner 1s infinite;
         animation-timing-function: steps(4, end);

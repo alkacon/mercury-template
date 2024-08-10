@@ -339,6 +339,7 @@ html.keyboard-nav .piece {
 @include media-breakpoint-up($piece-desktop-breakpoint) {
 
     .piece {
+        --#{$prefix}piece-body-size: calc(var(--#{$prefix}piece-width) - var(--#{$prefix}piece-visual-size) - 1px);
 
         &.full.only-visual,
         &.phv {
@@ -440,7 +441,6 @@ html.keyboard-nav .piece {
                 --#{$prefix}piece-visual-size: #{get-col-size-var($piece-col-size, 'visual')};
             }
         }
-        --#{$prefix}piece-body-size: calc(var(--#{$prefix}piece-width) - var(--#{$prefix}piece-visual-size) - 1px);
 
         &.p-md-0 {
             // visual is hidden from md, but visible in xs, sm
@@ -488,6 +488,7 @@ a .intro-headline {
 //// only known usage: newsletterconfig-detail-formatter.jsp
 .element {
     .body-text {
+        @include use-hyphens-text;
         > * {
             // add margins for all elements in text piece
             margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
@@ -496,6 +497,5 @@ a .intro-headline {
                 margin-bottom: 0;
             }
         }
-        @include use-hyphens-text;
     }
 }

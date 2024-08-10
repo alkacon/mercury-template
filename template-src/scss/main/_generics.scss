@@ -71,6 +71,8 @@
 .box,
 .box-inner {
     padding: var(--#{$prefix}box-padding);
+    border-radius: var(--#{$prefix}border-radius);
+    overflow: hidden;
 
     &.fully-linked {
         // for boxed elements that are linked ffully, link icon-box or link-box, we want the complete colored space to be clickable
@@ -79,9 +81,6 @@
             padding: var(--#{$prefix}box-padding);
         }
     }
-
-    border-radius: var(--#{$prefix}border-radius);
-    overflow: hidden;
 
     &.oc-drag-element {
         // in edit mode allow overflow, otherwise edit points may not be visible (e.g. for lists)

@@ -22,6 +22,9 @@
 html {
     --my-toolbar-height: 0px;
 
+    // rem based font adjustment is done in mixin
+    @include rem-base;
+
     &.opencms-page-editor {
         // in OpenCms page editor, add a top padding to move the content below the toolbar
         --my-toolbar-height: #{$opencms-toolbar-height};
@@ -68,9 +71,6 @@ html {
             overflow: hidden;
         }
     }
-
-    // rem based font adjustment is done in mixin
-    @include rem-base;
 }
 
 .default-font {

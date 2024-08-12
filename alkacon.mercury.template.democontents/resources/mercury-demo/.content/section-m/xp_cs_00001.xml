@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Target placement — Nested container end at the same position]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>In the — example — below there is an element that generated another container (the tab) nested in a regular row container. The arrow markers at the bottom are displayed overlapping at the exact same position.</p>
+<p><em>In this case, the markers should be "moved" up / down. The marker from the outer container (row) should be below the marker from the inner (tab) container.</em></p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

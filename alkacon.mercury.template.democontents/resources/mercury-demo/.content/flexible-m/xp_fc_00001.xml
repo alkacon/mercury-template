@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FlexibleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/flexible.xsd" version="1">
+  <Flexible language="en">
+    <Title><![CDATA[Very small red element]]></Title>
+    <Code><![CDATA[<div style="font-size: 8px; max-height: 10px; color:red;">
+This is a very small element!
+</div>]]></Code>
+  </Flexible>
+</FlexibleData>

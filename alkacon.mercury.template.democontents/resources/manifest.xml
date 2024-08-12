@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>17.0.1</version>
+		<version>17.0.5</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -7738,6 +7738,23 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>mercury-demo/.content/flexible-m/xp_fc_00001.xml</source>
+			<destination>mercury-demo/.content/flexible-m/xp_fc_00001.xml</destination>
+			<type>m-flexible</type>
+			<uuidstructure>58e8c299-5656-11ef-81bd-0242ac11002b</uuidstructure>
+			<uuidresource>58e8c29a-5656-11ef-81bd-0242ac11002b</uuidresource>
+			<datecreated>Fri, 09 Aug 2024 13:50:33 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Placement: Very small red element]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>mercury-demo/.content/imageseries-m</destination>
 			<type>folder</type>
 			<uuidstructure>f3e0e161-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -8050,6 +8067,23 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 2 Cols (4 - 4) [Narrow push / pull]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/layout-row-custom-m/xp_clr_00001.xml</source>
+			<destination>mercury-demo/.content/layout-row-custom-m/xp_clr_00001.xml</destination>
+			<type>m-layout-row-complex</type>
+			<uuidstructure>9c33ef08-5764-11ef-81bd-0242ac11002b</uuidstructure>
+			<uuidresource>9c33ef09-5764-11ef-81bd-0242ac11002b</uuidresource>
+			<datecreated>Sat, 10 Aug 2024 22:05:10 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nest row]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -11343,6 +11377,74 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>mercury-demo/.content/section-m/xp_cs_00001.xml</source>
+			<destination>mercury-demo/.content/section-m/xp_cs_00001.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>8533986f-5653-11ef-81bd-0242ac11002b</uuidstructure>
+			<uuidresource>85339870-5653-11ef-81bd-0242ac11002b</uuidresource>
+			<datecreated>Fri, 09 Aug 2024 13:30:18 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Placement: Target placement — Nested container end at the same position]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/xp_cs_00002.xml</source>
+			<destination>mercury-demo/.content/section-m/xp_cs_00002.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>b5b58bed-5654-11ef-81bd-0242ac11002b</uuidstructure>
+			<uuidresource>b5b58bee-5654-11ef-81bd-0242ac11002b</uuidresource>
+			<datecreated>Fri, 09 Aug 2024 13:38:49 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Placement: Target placement — Negative CSS margins]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/xp_cs_00003.xml</source>
+			<destination>mercury-demo/.content/section-m/xp_cs_00003.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>68af6aac-5655-11ef-81bd-0242ac11002b</uuidstructure>
+			<uuidresource>68af6aad-5655-11ef-81bd-0242ac11002b</uuidresource>
+			<datecreated>Fri, 09 Aug 2024 13:43:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Placement: Target placement — very small elements]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/section-m/xp_cs_00004.xml</source>
+			<destination>mercury-demo/.content/section-m/xp_cs_00004.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>2d735acb-5766-11ef-81bd-0242ac11002b</uuidstructure>
+			<uuidresource>2d735acc-5766-11ef-81bd-0242ac11002b</uuidresource>
+			<datecreated>Sat, 10 Aug 2024 22:16:23 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Placement: Target placement — nested container]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>mercury-demo/.content/shariff-m</destination>
 			<type>folder</type>
 			<uuidstructure>f456fc24-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -13983,6 +14085,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Flex Blog]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>mercury-demo/demos/placement</destination>
+			<type>folder</type>
+			<uuidstructure>3437ef9b-5653-11ef-81bd-0242ac11002b</uuidstructure>
+			<datecreated>Fri, 09 Aug 2024 13:28:03 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.00390625]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[Placement]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Placement]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/demos/placement/index.html</source>
+			<destination>mercury-demo/demos/placement/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>343d6de0-5653-11ef-81bd-0242ac11002b</uuidstructure>
+			<uuidresource>343d6de1-5653-11ef-81bd-0242ac11002b</uuidresource>
+			<datecreated>Fri, 09 Aug 2024 13:28:03 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Placement]]></value>
 				</property>
 			</properties>
 			<relations/>

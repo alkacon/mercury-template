@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Target placement — nested container]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Using multiple nested (custom) rows, the example below takes highlights the challenges that need to be solved when placing the "target markers".</p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

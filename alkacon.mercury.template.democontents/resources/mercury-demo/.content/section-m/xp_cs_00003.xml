@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentSectionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/section.xsd">
+  <ContentSection language="en">
+    <Title><![CDATA[Target placement — very small elements]]></Title>
+    <Text name="Text0">
+      <links/>
+      <content><![CDATA[<p>Here some small elements are placed between larger elements. This seems to work fine.</p>
+<p>However, there is an issue with the placement of the [+] button on top of "Meta-Infos".&nbsp;</p>
+<p><em>All buttons in a container&nbsp;should be placed on the same vertical line! </em><em>This does not apply to containers that float horizontally.</em></p>]]></content>
+    </Text>
+  </ContentSection>
+</ContentSectionData>

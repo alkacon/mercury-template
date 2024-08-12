@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LayoutComplexData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/layout-complex.xsd">
+  <LayoutComplex language="en">
+    <Title><![CDATA[Nest row]]></Title>
+    <Container>
+      <Name><![CDATA[nest]]></Name>
+      <Type><![CDATA[row,element,nest,nast]]></Type>
+    </Container>
+  </LayoutComplex>
+</LayoutComplexData>

@@ -124,12 +124,12 @@
             <%-- Note: Route markup is supported only by Google maps --%>
             <c:if test="${showRoute}">
                 <c:set target="${marker}" property="routeMarkup"><%--
-                --%><div class="markroute"><%--
+                --%><div class="marker-route"><%--
                     --%><div class="head"><fmt:message key="msg.page.map.route" /></div><%--
                     --%><div class="message"><fmt:message key="msg.page.map.start" /></div><%--
                     --%><form action="https://maps.google.com/maps" method="get" target="_blank" rel="noopener"><%--
                         --%><input type="text" class="form-control" size="15" maxlength="60" name="saddr" value="" /><%--
-                        --%><input value="<fmt:message key="msg.page.map.route.button" />" type="submit" class="btn btn-xs"><%--
+                        --%><input value="<fmt:message key="msg.page.map.route.button" />" type="submit" class="btn"><%--
                         --%><input type="hidden" name="daddr" value="${marker.lat},${marker.lng}"/><%--
                     --%></form><%--
                 --%></div><%--
@@ -138,23 +138,36 @@
 
             <%-- Markup for map marker info windows --%>
             <c:set target="${marker}" property="infoMarkup">
-                <div class="map-marker"><%----%>
-                    <c:if test="${not empty marker.name}"><div class="markhead">${marker.name}</div></c:if>
-                    <c:if test="${showFacilities and not empty marker.facilities}">
-                        <m:facility-icons
-                            wheelchairAccess="${marker.facilities.value.WheelchairAccess.toBoolean}"
-                            hearingImpaired="${marker.facilities.value.HearingImpaired.toBoolean}"
-                            lowVision="${marker.facilities.value.LowVision.toBoolean}"
-                            publicRestrooms="${marker.facilities.value.PublicRestrooms.toBoolean}"
-                            publicRestroomsAccessible="${marker.facilities.value.PublicRestroomsAccessible.toBoolean}"
-                        />
-                    </c:if>
-                    <c:if test="${not empty marker.addressMarkup}"><div class="marktxt">${marker.addressMarkup}</div></c:if>
-                    <c:if test="${showLink and not empty marker.link}">
-                        <m:link link="${marker.link}" noExternalMarker="${true}" css="marklink" text="${linkDefaultText}" />
-                    </c:if>
-                    <c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if>
-                </div><%----%>
+
+                <c:set var="hasLink" value="${showLink and not empty marker.link}" />
+                <m:teaser-piece
+                    teaserClass="map-marker"
+                    headline="${marker.name}"
+                    pieceLayout="${1}"
+                    link="${hasLink ? marker.link : null}"
+                    linkOnHeadline="${false}"
+                    linkOption="text"
+                    buttonText="${linkDefaultText}"
+                    hsize="${3}">
+                    <jsp:attribute name="markupBody">
+                        <div class="marker-text"><%----%>
+
+                            <c:if test="${not empty marker.addressMarkup}"><div class="marker-adr">${marker.addressMarkup}</div></c:if>
+                            <c:if test="${showFacilities and not empty marker.facilities}">
+                                <m:facility-icons
+                                    wheelchairAccess="${marker.facilities.value.WheelchairAccess.toBoolean}"
+                                    hearingImpaired="${marker.facilities.value.HearingImpaired.toBoolean}"
+                                    lowVision="${marker.facilities.value.LowVision.toBoolean}"
+                                    publicRestrooms="${marker.facilities.value.PublicRestrooms.toBoolean}"
+                                    publicRestroomsAccessible="${marker.facilities.value.PublicRestroomsAccessible.toBoolean}"
+                                />
+                            </c:if>
+
+                        </div><%----%>
+                        <c:if test="${not empty marker.routeMarkup}">${marker.routeMarkup}</c:if>
+                    </jsp:attribute>
+                    <jsp:attribute name="markupVisual"></jsp:attribute>
+                </m:teaser-piece>
             </c:set>
 
             <%-- Generate the actual JSON --%>

@@ -26,16 +26,19 @@
 <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : null}" />
 
 <c:set var="displayAddressMarkup"   value="${fn:startsWith(param.displayType, 'static:')}" />
-<c:set var="displayAddressMarkup"   value="${displayAddressMarkup or setting.poiDisplayOption.toString eq 'addr'}" />
-<c:set var="displayAddressMarkup"   value="${displayAddressMarkup or (setting.poiDisplayOption.toString eq 'textaddr' and empty preface and not paragraph.isSet)}" />
+<c:set var="displayAddressMarkup"   value="${displayAddressMarkup or (setting.poiDisplayOption.toString eq 'addr')}" />
+<c:set var="displayAddressMarkup"   value="${displayAddressMarkup or ((setting.poiDisplayOption.toString eq 'textaddr') and (empty preface) and (not paragraph.isSet))}" />
 
-<c:if test="${displayAddressMarkup}">
+<c:choose>
+<c:when test="${displayAddressMarkup}">
 
     <c:set var="showMap"                value="${setting.showMap.toBoolean}" />
     <c:set var="mapRatio"               value="${setting.mapRatio.toString}" />
     <c:set var="mapZoom"                value="${setting.mapZoom.toString}" />
     <c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
     <c:set var="showGeoInfo"            value="${setting.showGeoInfo.toBoolean}" />
+    <c:set var="showGeoInfo"            value="${setting.showGeoInfo.toBoolean}" />
+    <c:set var="isMapMarker"            value="${setting.cssWrapper.toString eq 'map-marker'}" />
 
     <c:if test="${showFacilities and value.Facilities.isSet}">
         <c:set var="accessibleFacilities">
@@ -69,7 +72,8 @@
         sizeMobile="${setSizeMobile}"
         teaserType="${displayType}"
         link="${linkToDetail}"
-        linkOption="${setLinkOption}"
+        linkOnHeadline="${not isMapMarker}"
+        linkOption="${not isMapMarker ? setLinkOption : 'text'}"
         noLinkOnVisual="${true}"
         buttonText="${setButtonText}"
         hsize="${setHsize}">
@@ -96,13 +100,15 @@
         </jsp:attribute>
 
         <jsp:attribute name="markupBody">
+
             <m:link
                 link="${linkToDetail}"
-                css='uncolored'
-                attr="${'tabindex=\"-1\"'}"
-                test="${true}">
+                css="${not isMapMarker ? 'uncolored' : 'marker-text'}"
+                attr="${not isMapMarker ? 'tabindex=\"-1\"' : ''}"
+                test="${not isMapMarker}"
+                testFailTag="div">
 
-                <p class="adr"><%----%>
+                <div class="adr"><%----%>
                     <div itemprop="streetAddress" class="street-address">${value.Address.value.StreetAddress}</div><%----%>
                     <c:if test="${value.Address.value.ExtendedAddress.isSet}">
                         <div class="extended-address">${value.Address.value.ExtendedAddress}</div><%----%>
@@ -121,7 +127,7 @@
                             </c:if>
                         </div><%----%>
                     </c:if>
-                </p><%----%>
+                </div><%----%>
                 <m:nl />
                 ${geoInfo}
                 ${accessibleFacilities}
@@ -130,9 +136,9 @@
         </jsp:attribute>
 
     </m:teaser-piece>
-</c:if>
+</c:when>
 
-<c:if test="${not displayAddressMarkup}">
+<c:otherwise>
 
     <m:teaser-piece
         teaserClass="${setTeaserClass}"
@@ -172,7 +178,8 @@
         </jsp:attribute>
 
     </m:teaser-piece>
-</c:if>
+</c:otherwise>
+</c:choose>
 
 </m:teaser-settings>
 

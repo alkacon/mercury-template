@@ -84,6 +84,9 @@
 <%@ attribute name="linkNewWin" type="java.lang.Boolean" required="false"
     description="Controls if links are opened in a new browser window." %>
 
+<%@ attribute name="linkOnHeadline" type="java.lang.Boolean" required="false"
+    description="If 'true', the link will be also added to the headline. Default is 'true'." %>
+
 <%@ attribute name="buttonText" type="java.lang.String" required="false"
     description="An optional button label used on the link button, or 'none' which means no link button will be shown.
     HTML in this will be escaped." %>
@@ -162,7 +165,7 @@
 <c:set var="textLength"         value="${empty textLength ? -1 : textLength}" />
 
 <%-- These are currently not configurable, maybe add this later --%>
-<c:set var="linkOnHeadline"     value="${true}" />
+<c:set var="linkOnHeadline"     value="${empty linkOnHeadline ? true : linkOnHeadline}" />
 <c:set var="linkOnText"         value="${true}" />
 <c:set var="useButton"          value="${false}" />
 
@@ -220,7 +223,7 @@
                 ${dateMarkup}
             </c:if>
 
-            <c:if test="${not empty headline or not empty introxw}">
+            <c:if test="${not empty headline or not empty intro}">
                 <m:intro-headline
                     intro="${intro}"
                     headline="${headline}"

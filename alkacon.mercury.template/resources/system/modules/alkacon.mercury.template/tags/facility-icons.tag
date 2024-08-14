@@ -43,42 +43,27 @@
     <div class="facility-icons${not empty css ? ' '.conact(css) : ''}"><%----%>
         <c:if test="${wheelchairAccess}">
             <div title="<fmt:message key='label.Facility.WheelchairAccess' />" class="acc-icon"${tooltip}><%----%>
-                <span class="acc-inner"><%----%>
-                    <m:icon icon="wheelchair" tag="span" />
-                    </span><%----%>
+                <m:icon icon="fa-wheelchair" tag="span" />
             </div><%----%>
         </c:if>
         <c:if test="${hearingImpaired}">
             <div title="<fmt:message key='label.Facility.HearingImpaired' />" class="acc-icon"${tooltip}><%----%>
-                <span class="acc-inner"><%----%>
-                    <m:icon icon="assistive-listening-systems" tag="span" />
-                </span><%----%>
+                <m:icon icon="fa-assistive-listening-systems" tag="span" />
             </div><%----%>
         </c:if>
         <c:if test="${lowVision}">
             <div title="<fmt:message key='label.Facility.LowVision' />" class="acc-icon"${tooltip}><%----%>
-                <span class="acc-inner"><%----%>
-                    <m:icon icon="low-vision" tag="span" />
-                </span><%----%>
+                <m:icon icon="fa-low-vision" tag="span" />
             </div><%----%>
         </c:if>
         <c:if test="${publicRestrooms}">
             <div title="<fmt:message key='label.Facility.PublicRestrooms' />" class="acc-icon"${tooltip}><%----%>
-                <span class="acc-inner"><%----%>
-                    <m:icon icon="male" tag="span" cssWrapper="acc-male" />
-                    <m:icon icon="female" tag="span" cssWrapper="acc-female" />
-                </span><%----%>
+                <m:icon icon="my-wc" tag="span" />
             </div><%----%>
         </c:if>
         <c:if test="${publicRestroomsAccessible}">
             <div title="<fmt:message key='label.Facility.PublicRestroomsAccessible' />" class="acc-icon"${tooltip}><%----%>
-                <span class="acc-inner acc-wc"><%----%>
-                    <m:icon icon="wheelchair" tag="span" />
-                </span><%----%>
-                <span class="acc-add acc-wc"><%----%>
-                    <m:icon icon="male" tag="span" cssWrapper="acc-male" />
-                    <m:icon icon="female" tag="span" cssWrapper="acc-female" />
-                </span><%----%>
+                <m:icon icon="my-accessible-wc" tag="span" />
             </div><%----%>
         </c:if>
     </div><%----%>

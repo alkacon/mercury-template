@@ -22,6 +22,9 @@
 .type-map {
     --#{$prefix}map-popup-color: #{$map-popup-color};
     --#{$prefix}map-popup-bg: #{$map-popup-bg};
+    --#{$prefix}map-header-size: #{$map-header-size};
+    --#{$prefix}map-font-size: #{$map-text-size};
+    --#{$prefix}map-font-weight: #{$map-text-weight};
     --#{$prefix}map-marker-margin: #{$map-marker-margin};
 
     .mapbuttons {
@@ -71,45 +74,71 @@
         }
     }
 
-    .map-marker {
+    .map-marker:not(.nothing) {
+        // not(.nothing) rule is just added to make this selector very strong
         color: var(--#{$prefix}map-popup-color);
-        font-size: $map-text-size;
-        font-weight: $map-text-weight;
+        font-size: var(--#{$prefix}map-font-size);
+        font-weight: var(--#{$prefix}map-font-weight);
+        line-height: 1.2;
+        margin-bottom: 0;
 
-        .markhead {
-            font-family: var(--#{$prefix}font-family-headings);
-            font-size: $map-header-size;
-            font-weight: $map-header-weight;
-            margin-bottom: var(--#{$prefix}map-marker-margin);
+        .heading,
+        .text {
+            > a {
+                &,
+                &:focus,
+                &:hover {
+                    color: var(--#{$prefix}map-popup-color);
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .marker-text {
+            // it is important to keep this 'generic' name since the marker info may be generated from teaser data
+            display: flex;
+            flex-direction: column;
+            font-weight: var(--#{$prefix}map-font-weight) !important;
+        }
+
+        h1 {
+            font-size: calc(1.4 * var(--#{$prefix}map-header-size));
+        }
+
+        h2 {
+            font-size: calc(1.2 * var(--#{$prefix}map-header-size));
+        }
+
+        h3 {
+            font-size: var(--#{$prefix}map-header-size);
+        }
+
+        h4 {
+            font-size: calc(0.9 * var(--#{$prefix}map-header-size));
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.1;
+            margin-bottom: var(--#{$prefix}default-margin-verysmall);
         }
 
         .facility-icons {
+            order: -1;
             transform: scale(0.75);
             transform-origin: top left;
             margin-bottom: 0; // scale will add empty space below
         }
 
-        .marktxt,
-        .marklink {
-            line-height: 1.2;
-        }
-
-        .marklink {
-            display: block;
-            margin-top: var(--#{$prefix}map-marker-margin);
-        }
-
-        .markroute {
-            .head {
-                margin-top: 5px;
-            }
-            .btn {
-                margin-top: 5px;
+        .marker-route {
+            .head,
+            form {
+                margin-top: var(--#{$prefix}default-margin-verysmall);
             }
             .form-control {
-                margin-top: 5px;
-                height: 27px;
-                padding: 3px 6px;
+                padding: calc(#{$btn-padding} - 1px);
+                margin-right: var(--#{$prefix}ws-margin);
+                border: 1px solid $form-border-color;
+                border-radius: $form-input-border-radius;
             }
         }
     }
@@ -173,6 +202,24 @@
         a {
             color: $grey-dark !important;
         }
+    }
+}
+
+.map-google {
+    .gm-style-iw-chr {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        button {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+    }
+    .gm-style-iw-d {
+        padding-top: 12px;
+        padding-right: 12px;
     }
 }
 

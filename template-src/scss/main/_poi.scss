@@ -52,52 +52,12 @@
             margin-right: 0;
         }
 
-        .acc-inner {
+        .ico {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
-            display: flex;
-        }
-
-        .acc-wc {
-            &.acc-inner {
-                transform: translateX(-50%) translateY(-50%) scale(0.85);
-                top: 60%;
-                left: 38%;
-            }
-            &.acc-add {
-                position: absolute;
-                display: flex;
-                top: 55%;
-                left: 40%;
-                transform: translateX(-20%) translateY(-90%) scale(0.6);
-            }
-        }
-
-        .ico {
             font-weight: normal;
-        }
-
-        .acc-male {
-            position: relative;
-            margin: 0 1px 0 2px;
-            font-weight: normal;
-
-            &::after {
-                display: block;
-                content: "";
-                border-right: 1px solid var(--#{$prefix}main-theme-fg);
-                position: absolute;
-                height: 100%;
-                bottom: 0;
-                right: -2px;
-            }
-        }
-
-        .acc-female {
-            font-weight: normal;
-            transform: scale(0.85, 1);
         }
     }
 }

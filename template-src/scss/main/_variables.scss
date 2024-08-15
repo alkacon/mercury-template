@@ -863,7 +863,7 @@ $map-cluster-color:                 $main-theme-hover !default;
 $map-hide-buttons-if-not-visible:   false !default;
 $map-popup-color:                   $text-dark !default;
 $map-popup-bg:                      $white !default;
-$map-marker-margin:                 var(--#{$prefix}default-margin-verysmall) !default;
+$map-marker-padding:                var(--#{$prefix}default-margin-verysmall) !default;
 
 
 // Map colors (for marker groups)

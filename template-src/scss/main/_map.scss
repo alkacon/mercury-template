@@ -25,7 +25,7 @@
     --#{$prefix}map-header-size: #{$map-header-size};
     --#{$prefix}map-font-size: #{$map-text-size};
     --#{$prefix}map-font-weight: #{$map-text-weight};
-    --#{$prefix}map-marker-margin: #{$map-marker-margin};
+    --#{$prefix}map-marker-padding: #{$map-marker-padding};
 
     .mapbuttons {
         margin-top: calc(0.5 * var(--#{$prefix}element-margin));
@@ -76,50 +76,23 @@
 
     .map-marker:not(.nothing) {
         // not(.nothing) rule is just added to make this selector very strong
+        display: block;
         color: var(--#{$prefix}map-popup-color);
         font-size: var(--#{$prefix}map-font-size);
         font-weight: var(--#{$prefix}map-font-weight);
         line-height: 1.2;
-        margin-bottom: 0;
+        padding: var(--#{$prefix}map-marker-padding) !important;
+        margin: 0 !important;
 
-        .heading,
-        .text {
-            > a {
-                &,
-                &:focus,
-                &:hover {
-                    color: var(--#{$prefix}map-popup-color);
-                    text-decoration: none;
-                }
-            }
-        }
-
-        .marker-text {
-            // it is important to keep this 'generic' name since the marker info may be generated from teaser data
-            display: flex;
-            flex-direction: column;
-            font-weight: var(--#{$prefix}map-font-weight) !important;
-        }
-
-        h1 {
-            font-size: calc(1.4 * var(--#{$prefix}map-header-size));
-        }
-
-        h2 {
-            font-size: calc(1.2 * var(--#{$prefix}map-header-size));
-        }
-
-        h3 {
-            font-size: var(--#{$prefix}map-header-size);
-        }
-
-        h4 {
-            font-size: calc(0.9 * var(--#{$prefix}map-header-size));
-        }
-
-        h1, h2, h3, h4 {
+        h3, .h3, h4, .h4 {
             line-height: 1.1;
-            margin-bottom: var(--#{$prefix}default-margin-verysmall);
+            font-size: var(--#{$prefix}map-header-size);
+            color: var(--#{$prefix}map-popup-color);
+            margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+        }
+
+        h4, .h4 {
+            font-size: calc(0.9 * var(--#{$prefix}map-header-size));
         }
 
         .facility-icons {
@@ -129,8 +102,14 @@
             margin-bottom: 0; // scale will add empty space below
         }
 
+        .text-box { // currrently only available in case formatter is used
+            > div + div {
+                margin-top: var(--#{$prefix}paragraph-margin-bottom);
+            }
+        }
+
         .marker-route {
-            .head,
+            margin-top: var(--#{$prefix}paragraph-margin-bottom);
             form {
                 margin-top: var(--#{$prefix}default-margin-verysmall);
             }

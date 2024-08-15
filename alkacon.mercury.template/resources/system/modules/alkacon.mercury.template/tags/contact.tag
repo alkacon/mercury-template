@@ -107,6 +107,9 @@
 <%@ attribute name="nameSuffix" type="java.lang.String" required="false"
     description="Suffix for the name. HTML in this will NOT be escaped." %>
 
+<%@ attribute name="addTextBox" type="java.lang.Boolean" required="false"
+    description="Generate a div class='text-box' wrapper around the generated output. Default is 'true'. " %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -116,6 +119,7 @@
 
 
 <c:set var="addressData"        value="${empty address ? data.value.AddressChoice : address}"/>
+<c:set var="addTextBox"         value="${empty addTextBox ? true : addTextBox}"/>
 
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}"/>
 <c:set var="showName"           value="${showName and (not empty name)}"/>
@@ -202,7 +206,7 @@
     showImageZoom="${showImageZoom}">
 
     <c:if test="${showName or showOrganization or showDesc or showNote or showAddress or showPhone or showEmail or showLinkAsButton}">
-        <div class="text-box"><%----%>
+        <c:if test="${addTextBox}"><div class="text-box"></c:if>
         <m:nl />
 
             <c:if test="${showName}">
@@ -454,7 +458,7 @@
                 <m:link link="${link}" css="contactlink ${btnClass}" newWin="${websiteNewWin}" />
             </c:if>
 
-        </div><%----%>
+        <c:if test="${addTextBox}"></div></c:if>
         <m:nl />
 
     </c:if>

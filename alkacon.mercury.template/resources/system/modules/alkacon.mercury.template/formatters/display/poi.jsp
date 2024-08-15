@@ -37,7 +37,6 @@
     <c:set var="mapZoom"                value="${setting.mapZoom.toString}" />
     <c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
     <c:set var="showGeoInfo"            value="${setting.showGeoInfo.toBoolean}" />
-    <c:set var="showGeoInfo"            value="${setting.showGeoInfo.toBoolean}" />
     <c:set var="isMapMarker"            value="${setting.cssWrapper.toString eq 'map-marker'}" />
 
     <c:if test="${showFacilities and value.Facilities.isSet}">

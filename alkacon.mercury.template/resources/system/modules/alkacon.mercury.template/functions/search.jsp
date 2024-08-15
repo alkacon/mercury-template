@@ -25,6 +25,7 @@
 <c:set var="numFacetItems"          value="${empty setting.numFacetItems.toInteger ? 10 : setting.numFacetItems.toInteger}" />
 <c:set var="pageSize"               value="${empty setting.pageSize.toInteger ? 10 : setting.pageSize.toInteger}" />
 <c:set var="showTypeBadge"          value="${setting.showTypeBadge.useDefault('true').toBoolean}" />
+<c:set var="showTopBadge"           value="${setting.showTopBadge.useDefault('false').toBoolean}" />
 <c:set var="showExcerpt"            value="${setting.showExcerpt.useDefault('true').toBoolean}" />
 <c:set var="dateFormat"             value="${setting.dateFormat.useDefault('none').toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -105,13 +106,13 @@
     <c:set var="typesRestriction">${typesRestriction}${status.first ? '' : ' OR '}${fn:trim(type)}</c:set>
 </c:forEach>
 
-<c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,lastmodified,${cms.locale}_excerpt,id,path,mercury.detail.link_dprop</c:set>
+<c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,lastmodified,${cms.locale}_excerpt,id,path,mercury.detail.link_dprop,description_${cms.locale},search.boost_mvs</c:set>
 <c:set var="config">
     {
         "searchforemptyquery" : ${searchForEmptyQuery},
-        "querymodifier" :       "{!type=edismax qf=\"content_${cms.locale} Title_dprop Description_dprop\"}%(query)",
+        "querymodifier" :       "{!type=edismax qf=\"content_${cms.locale} Title_dprop Description_dprop Description.html_dprop keywords_${cms.locale} description_${cms.locale}\"}(%(query))",
         "escapequerychars" :    true,
-        "extrasolrparams" :     "fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields}",
+        "extrasolrparams" :     "bq=search.boost_mvs:always^10&bq=(search.boost_mvs:keywords AND keywords_${cms.locale}:(%(query)))^10&fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields}",
         "pagesize" :            ${pageSize},
         "pagenavlength" :       5,
         "sortoptions" :         [ { "label" : "<fmt:message key='msg.page.search.sort.score.desc'/>", "solrvalue" : "score desc" }
@@ -433,11 +434,26 @@
                                     </c:if>
                                 </c:if>
 
+                                <c:if test="${showTopBadge}">
+                                    <c:set var="boostValues" value='${searchResult.multiValuedFields["search.boost_mvs"]}' />
+                                    <c:choose>
+                                    <c:when test='${not empty boostValues && (boostValues.contains("keywords") || boostValues.contains("always"))}'>
+                                        <c:set var="topBadge">
+                                            <span class="search-badge">TOP</span>
+                                        </c:set>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set var="topBadge"></c:set>
+                                    </c:otherwise>
+                                    </c:choose>
+                                </c:if>
+
                                 <h4 class="search-result-heading"><%----%>
                                     <c:set var="resultLink" value="${empty searchResult.fields['mercury.detail.link_dprop'] ? searchResult.fields['path'] : searchResult.fields['mercury.detail.link_dprop']}" />
                                     <a href='<cms:link>${resultLink}</cms:link>'><%----%>
                                         <span class="result-title">${title}</span><%----%>
                                         <c:out value="${showTypeBadge ? typeName : ''}" escapeXml="${false}" />
+                                        <c:out value="${showTopBadge ? topBadge : ''}" escapeXml="${false}" />
                                     </a><%----%>
                                 </h4><%----%>
                                 <m:nl/>
@@ -452,28 +468,31 @@
 
                                 <c:if test="${showExcerpt}">
                                     <div class="search-result-text"><%----%>
-                                        <%-- if highlighting is returned - show it; otherwise show content_en (up to 250 characters) --%>
-                                        <c:choose>
-                                            <c:when test="${not empty search.highlighting and not empty common.state.query}">
-                                                <%-- To avoid destroying the HTML, if the highlighted snippet contains unbalanced tag, use the htmlConverter for cleaning the HTML. --%>
-                                                <c:set var="highlightSnippet" value='${
-                                                    search.highlighting
-                                                        [searchResult.fields["id"]]
-                                                        [search.controller.highlighting.config.hightlightField]
-                                                        [0]
-                                                    }'
-                                                />
-                                                <c:if test="${not empty highlightSnippet}">
-                                                    ${fn:replace(fn:replace(cms:stripHtml(highlightSnippet), '$$hl.begin$$', '<strong>'), '$$hl.end$$', '</strong>')}${' ...'}
-                                                </c:if>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:set var="localeContentField">${cms.locale}_excerpt</c:set>
-                                                <c:if test="${not empty searchResult.fields[localeContentField]}">
-                                                    ${cms:trimToSize(cms:stripHtml(searchResult.fields[localeContentField]), 250)}
-                                                </c:if>
-                                            </c:otherwise>
-                                        </c:choose>
+                                        <%-- if description is given, use it. --%>
+                                        <c:set var="localeDescriptionField">description_${cms.locale}</c:set>
+                                        <c:set var="excerpt">${searchResult.fields[localeDescriptionField]}</c:set>
+                                        <%-- otherwise if highlighting is returned - show it --%>
+                                        <c:if test="${empty excerpt and not empty search.highlighting and not empty common.state.query}">
+                                            <%-- To avoid destroying the HTML, if the highlighted snippet contains unbalanced tag, use the htmlConverter for cleaning the HTML. --%>
+                                            <c:set var="highlightSnippet" value='${
+                                                search.highlighting
+                                                    [searchResult.fields["id"]]
+                                                    [search.controller.highlighting.config.hightlightField]
+                                                    [0]
+                                                }'
+                                            />
+                                            <c:if test="${not empty highlightSnippet}">
+                                                <c:set var="excerpt">${fn:replace(fn:replace(cms:stripHtml(highlightSnippet), '$$hl.begin$$', '<strong>'), '$$hl.end$$', '</strong>')}${' ...'}</c:set>
+                                            </c:if>
+                                        </c:if>
+                                        <%-- otherwise show the excerpt (up to 250 characters) --%>
+                                        <c:if test="${empty excerpt}">
+                                            <c:set var="localeContentField">${cms.locale}_excerpt</c:set>
+                                            <c:if test="${not empty searchResult.fields[localeContentField]}">
+                                                <c:set var="excerpt">${cms:trimToSize(cms:stripHtml(searchResult.fields[localeContentField]), 250)}</c:set>
+                                            </c:if>
+                                        </c:if>
+                                        ${excerpt}
                                     </div><%----%>
                                     <m:nl/>
                                 </c:if>

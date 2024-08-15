@@ -22,6 +22,7 @@
             <xsd:element name="Keywords" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="CanonicalURL" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Robots" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="SearchBoost" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -33,7 +34,17 @@
             <resourcebundles>
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>
-            <searchsettings containerPageOnly="true" />
+            <searchsettings containerPageOnly="true">
+                <searchsetting element="Description" searchcontent="false">
+                    <solrfield targetfield="description" addto="page" />
+                </searchsetting>
+                <searchsetting element="Keywords" searchcontent="false">
+                    <solrfield targetfield="keywords" addto="page" />
+                </searchsetting>
+                <searchsetting element="SearchBoost" searchcontent="false">
+                    <solrfield targetfield="search.boost" addto="page" locale="none" sourcefield="_mvs"/>
+                </searchsetting>
+            </searchsettings>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Title</PropertyName>
@@ -48,7 +59,6 @@
                     <Description><![CDATA[%(key.label.MetaInfo.Description.help)]]></Description>
                     <Widget>textarea</Widget>
                     <WidgetConfig>5|proportional</WidgetConfig>
-                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>
@@ -75,7 +85,6 @@
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Keywords)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Keywords.help)]]></Description>
                     <Widget>string</Widget>
-                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>CanonicalURL</PropertyName>
@@ -97,6 +106,18 @@
                         noindex, follow:%(key.label.MetaInfo.Robots.noindex)
                     ]]></WidgetConfig>
                     <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>SearchBoost</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.SearchBoost)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.SearchBoost.help)]]></Description>
+                    <Widget>select</Widget>
+                    <Default><![CDATA[none]]></Default>
+                    <WidgetConfig><![CDATA[
+                        none:%(key.label.MetaInfo.SearchBoost.none)|
+                        keywords:%(key.label.MetaInfo.SearchBoost.keywords)|
+                        always:%(key.label.MetaInfo.SearchBoost.always)|
+                    ]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

@@ -4046,6 +4046,14 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showTopBadge.search]]></IncludeName>
+      <PropertyName><![CDATA[showTopBadge]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.showTopBadge)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.showTopBadge.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showExcerpt.search]]></IncludeName>
       <PropertyName><![CDATA[showExcerpt]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.search.showExcerpt)]]></DisplayName>

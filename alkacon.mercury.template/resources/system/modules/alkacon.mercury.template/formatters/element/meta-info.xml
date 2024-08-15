@@ -20,7 +20,7 @@
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>
-    <SearchContent>false</SearchContent>
+    <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
     <AlwaysApplyMetaMappings>true</AlwaysApplyMetaMappings>
     <MetaMapping>

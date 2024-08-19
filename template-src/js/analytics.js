@@ -17,9 +17,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Required by Piwik, needs to be in the global JavaScript context, not in the module context
-// Will always be inserted even if no Piwik is used, but this should not hurt
+// Required by Matomo/Piwik, needs to be in the global JavaScript context, not in the module context
+// Will always be inserted even if no Matomo/Piwik is used, but this should not hurt
 window._paq = window._paq || [];
+window._ppas = window._ppas || [];
 
 "use strict";
 
@@ -55,22 +56,22 @@ function addPiwik(piwikData) {
 
     // see: https://developer.piwik.org/guides/tracking-javascript-guide
     if (piwikData.setDocumentTitle == "true"){
-        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        _ppas.push(["setDocumentTitle", document.domain + "/" + document.title]);
     }
     if (typeof piwikData.setCookieDomain != 'undefined'){
-        _paq.push(["setCookieDomain", piwikData.setCookieDomain]);
+        _ppas.push(["setCookieDomain", piwikData.setCookieDomain]);
     }
     if (typeof piwikData.setDomains != 'undefined'){
-        _paq.push(["setDomains", piwikData.setDomains]);
+        _ppas.push(["setDomains", piwikData.setDomains]);
     }
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
+    _ppas.push(['trackPageView']);
+    _ppas.push(['enableLinkTracking']);
     (function() {
         var u="//" + piwikData.url + "/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', '' + piwikData.id]);
+        _ppas.push(['setTrackerUrl', u+'ppms.php']);
+        _ppas.push(['setSiteId', '' + piwikData.id]);
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'ppas.js'; s.parentNode.insertBefore(g,s);
     })();
     m_piwikInitialized = true;
 }

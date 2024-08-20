@@ -93,7 +93,7 @@
 
     <c:if test="${showAddress}">
          <%-- Do not include address here. Reason: This will be called from data-person where the address is already included. --%>
-        <m:location-vars data="${contact.AddressChoice}" addMapInfo="${true}" createJsonLd="${true}" test="${empty addressJsonLd}" >
+        <m:location-vars data="${contact.AddressChoice}" createJsonLd="${true}" test="${empty addressJsonLd}" >
             <cms:jsonvalue key="address" value="${empty addressJsonLd ? adrJsonLd : addressJsonLd}" />
         </m:location-vars>
     </c:if>

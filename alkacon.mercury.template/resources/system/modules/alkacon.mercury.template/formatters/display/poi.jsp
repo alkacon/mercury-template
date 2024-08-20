@@ -79,17 +79,17 @@
 
         <jsp:attribute name="markupVisual">
             <c:if test="${showMap and value.Coord.isSet}">
-                <m:location-vars data="${content}" addMapInfo="true" >
+                <m:map-marker-vars content="${content}" showFacilities="${showFacilities}">
                     <c:set var="id"><m:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
                     <m:map
                         provider="auto"
                         id="${id}"
                         ratio="${mapRatio}"
                         zoom="${mapZoom}"
-                        markers="${[locData]}"
+                        markers="${[markerData]}"
                         subelementWrapper="poi-map"
                     />
-                </m:location-vars>
+                </m:map-marker-vars>
             </c:if>
             <m:alert test="${cms.isEditMode and showMap and not value.Coord.isSet}" type="warning">
                 <jsp:attribute name="head">

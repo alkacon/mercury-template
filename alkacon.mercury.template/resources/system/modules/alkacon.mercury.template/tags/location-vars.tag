@@ -16,9 +16,6 @@
 <%@ attribute name="fallbackOnlineUrl" type="java.lang.String" required="false"
     description="Fallback URL that is used in the case of a virtual location with no online URL given." %>
 
-<%@ attribute name="addMapInfo" type="java.lang.Boolean" required="false"
-    description="If true, data for a location map is generated as well." %>
-
 <%@ attribute name="test" type="java.lang.Boolean" required="false"
     description="If provided and false, the location data is not collected." %>
 
@@ -47,11 +44,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-
-<jsp:useBean id="locData" class="java.util.HashMap" />
 
 <c:if test="${empty test or test}">
+
+    <jsp:useBean id="locData" class="java.util.HashMap" />
 
     <c:choose>
         <c:when test="${data.getClass().simpleName eq 'CmsJspContentAccessBean'}">
@@ -135,25 +133,6 @@
         <c:set target="${locData}" property="geocode" value="${false}" />
     </c:if>
 
-    <c:if test="${addMapInfo and (not empty locData.streetAddress)}">
-        <c:set var="addressMarkup">${locData.streetAddress}</c:set>
-        <c:if test="${not empty locData.extendedAddress}">
-            <c:set var="addressMarkup">${addressMarkup}<br>${locData.extendedAddress}</c:set>
-        </c:if>
-        <c:set var="addressMarkup">${addressMarkup}<br>${locData.postalCode}</c:set>
-        <c:set var="addressMarkup">${addressMarkup}${' '}${locData.locality}</c:set>
-        <c:if test="${(not empty locData.region) or (not empty locData.country)}">
-            <c:set var="addressMarkup">${addressMarkup}<br></c:set>
-            <c:if test="${(not empty locData.region)}">
-                <c:set var="addressMarkup">${addressMarkup}${locData.region}</c:set>
-            </c:if>
-            <c:if test="${(not empty locData.country)}">
-                <c:set var="addressMarkup">${addressMarkup}${' '}${locData.country}</c:set>
-            </c:if>
-        </c:if>
-        <c:set target="${locData}" property="addressMarkup" value="${addressMarkup}" />
-    </c:if>
-
     <c:if test="${createJsonLd}">
         <c:if test="${(not empty locData.name) or (not empty locData.streetAddress)}">
 
@@ -228,6 +207,5 @@
     </c:if>
 
 </c:if>
-
 
 <jsp:doBody/>

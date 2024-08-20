@@ -122,18 +122,18 @@
     <jsp:attribute name="visual">
         <c:if test="${showMap and not preview and value.Coord.isSet}">
             <c:set var="id"><m:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
-            <m:location-vars data="${content}" addMapInfo="true" >
+            <m:map-marker-vars content="${content}" showFacilities="${showFacilities}">
                 <m:map
                     provider="auto"
                     id="${id}"
                     ratio="${mapRatio}"
                     zoom="${mapZoom}"
-                    markers="${[locData]}"
+                    markers="${[markerData]}"
                     subelementWrapper="poi-map"
                     showFacilities="${true}"
                     showLink="${true}"
                 />
-            </m:location-vars>
+            </m:map-marker-vars>
             <m:nl />
         </c:if>
 

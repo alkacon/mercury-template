@@ -74,8 +74,7 @@
         }
     }
 
-    .map-marker:not(.nothing) {
-        // not(.nothing) rule is just added to make this selector very strong
+    .map-marker.type-contact {
         display: block;
         color: var(--#{$prefix}map-popup-color);
         font-size: var(--#{$prefix}map-font-size);
@@ -88,34 +87,30 @@
             line-height: 1.1;
             font-size: var(--#{$prefix}map-header-size);
             color: var(--#{$prefix}map-popup-color);
-            margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
         }
 
         h4, .h4 {
-            font-size: calc(0.9 * var(--#{$prefix}map-header-size));
+            font-size: var(--#{$prefix}map-font-size);
+        }
+
+        > div + div {
+            margin-top: var(--#{$prefix}contact-spacer-y);
         }
 
         .facility-icons {
-            order: -1;
-            transform: scale(0.75);
-            transform-origin: top left;
-            margin-bottom: 0; // scale will add empty space below
-        }
-
-        .text-box { // currrently only available in case formatter is used
-            > div + div {
-                margin-top: var(--#{$prefix}paragraph-margin-bottom);
-            }
+            --#{$prefix}acc-icon-size: calc(0.75 * #{$acc-icon-size});
+            --#{$prefix}acc-font-size: calc(0.75 * #{$acc-font-size});
+            --#{$prefix}acc-margin: calc(0.75 * var(--#{$prefix}ws-margin));
         }
 
         .marker-route {
             margin-top: var(--#{$prefix}paragraph-margin-bottom);
             form {
-                margin-top: var(--#{$prefix}default-margin-verysmall);
+                margin-top: var(--#{$prefix}contact-spacer-y);
             }
             .form-control {
                 padding: calc(#{$btn-padding} - 1px);
-                margin-right: var(--#{$prefix}ws-margin);
+                margin-right: calc(0.5 * var(--#{$prefix}ws-margin));
                 border: 1px solid $form-border-color;
                 border-radius: $form-input-border-radius;
             }
@@ -164,7 +159,7 @@
 
     .maplibregl-popup-content {
         border-radius: $map-border-radius;
-        padding: 10px 20px 10px 10px;
+        padding: 10px;
     }
 
     .maplibregl-popup-close-button {

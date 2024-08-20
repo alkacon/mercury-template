@@ -4,6 +4,7 @@
     trimDirectiveWhitespaces="true"
     description="Displays contact information from the given content with support for schema.org annotation." %>
 
+
 <%@ attribute name="kind" type="java.lang.String" required="false"
     description="The contact kind. Default is 'person'." %>
 
@@ -47,7 +48,10 @@
 <%@ attribute name="data" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Value wrapper for the contact data that includes address, telephone etc. From nested schema type contact-data." %>
 
-<%@ attribute name="address" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
+<%@ attribute name="locData" type="java.util.Map" required="false"
+    description="A map containing the precalculated location data." %>
+
+<%@ attribute name="address" type="java.lang.Object" required="false"
     description="Value wrapper for the contact data that includes the address (or link a to a POI). From nested schema type address." %>
 
 <%@ attribute name="hsize" type="java.lang.Integer" required="false"
@@ -70,6 +74,9 @@
 
 <%@ attribute name="showDescription" type="java.lang.String" required="false"
     description="Controls how the description info is displayed. Can be either 'top', 'bottom', 'true' or 'false'. 'true' is the same as 'bottom'." %>
+
+<%@ attribute name="showFacilities" type="java.lang.Boolean" required="false"
+    description="If true, show the facility information for the place / address (if available)." %>
 
 <%@ attribute name="showAddress" type="java.lang.Boolean" required="false"
     description="Show the contact address." %>
@@ -126,8 +133,8 @@
 <c:set var="showPosition"       value="${showPosition and (not empty position)}"/>
 <c:set var="showImage"          value="${showImage and (not empty image)}" />
 <c:set var="showOrganization"   value="${showOrganization and (not empty organization)}"/>
-<c:set var="showAddressAlways"  value="${showAddressAlways and (not empty data or not empty addressData)}"/>
-<c:set var="showAddress"        value="${showAddressAlways or (showAddress and (not empty data or not empty addressData))}"/>
+<c:set var="showAddressAlways"  value="${showAddressAlways and (not empty data or not empty addressData or not empty locData)}"/>
+<c:set var="showAddress"        value="${showAddressAlways or (showAddress and (not empty data or not empty addressData or not empty locData))}"/>
 <c:set var="showPhone"          value="${showPhone and (not empty data)}"/>
 <c:set var="showWebsite"        value="${showWebsite and (not empty data) and (not empty data.value.Website)}"/>
 <c:set var="showEmail"          value="${showEmail and (not empty data) and (not empty data.value.Email) and (not empty data.value.Email.value.Email)}"/>
@@ -209,16 +216,20 @@
         <c:if test="${addTextBox}"><div class="text-box"></c:if>
         <m:nl />
 
-            <c:if test="${showName}">
+            <c:if test="${showName and (kind ne 'poi')}">
                 <c:set var="personname">
                     <c:if test="${name.value.Title.isSet}">
                         <span>${name.value.Title}${' '}</span><%----%>
                     </c:if>
-                    <span> ${name.value.FirstName}</span><%----%>
+                    <c:if test="${name.value.FirstName.isSet}">
+                        <span> ${name.value.FirstName}</span><%----%>
+                    </c:if>
                     <c:if test="${name.value.MiddleName.isSet}">
                         <span> ${name.value.MiddleName}</span><%----%>
                     </c:if>
-                    <span> ${name.value.LastName}</span><%----%>
+                    <c:if test="${name.value.LastName.isSet}">
+                        <span> ${name.value.LastName}</span><%----%>
+                    </c:if>
                     <c:if test="${name.value.Suffix.isSet}">
                         <span> ${name.value.Suffix}</span><%----%>
                     </c:if>
@@ -232,18 +243,23 @@
                     </c:if>
                     <c:if test="${showOrganization and (showName or showPosition)}">
                         <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
-                        <div><%----%>
+                        <div class="subfn"><%----%>
                             <c:if test="${showName}">
                                 <div class="h${hsize + 1} org"><%----%>
                                     <m:link link="${linkToRelated}">${personname}</m:link>
                                 </div><%----%>
                             </c:if>
                             <c:if test="${showPosition}"><%----%>
-                                <div class="pos" class="title"><%----%>
+                                <div class="pos"><%----%>
                                     ${position}
                                 </div><%----%>
                             </c:if>
                         </div><%----%>
+                    </c:if>
+                </c:when>
+                <c:when test="${kind eq 'poi'}">
+                    <c:if test="${showName}">
+                        <m:heading level="${hsize}" css="fn n" text="${name}" suffix="${nameSuffix}" ade="${false}" />
                     </c:if>
                 </c:when>
                 <c:otherwise>
@@ -252,7 +268,7 @@
                             <jsp:attribute name="markupText">${personname}</jsp:attribute>
                         </m:heading>
                         <c:if test="${showPosition}">
-                            <div class="h${hsize + 1} pos" class="title"><%----%>
+                            <div class="h${hsize + 1} pos subfn"><%----%>
                                 ${position}
                             </div><%----%>
                         </c:if>
@@ -273,20 +289,34 @@
                 <div class="note top description">${description}</div><%----%>
             </c:if>
 
-            <c:if test="${showAddress}">
-                <m:location-vars data="${addressData}">
+            <c:if test="${showAddress or showFacilities}">
+                <c:if test="${empty locData}">
+                    <m:location-vars data="${addressData}">
+                        <c:set var="markerData" value="${locData}" />
+                    </m:location-vars>
+                    <c:set var="locData" value="${markerData}" />
+                </c:if>
 
+                <c:if test="${showAddress}">
                     <c:set var="animatedAddress" value="${not showAddressAlways}" />
-                    <div class="${animatedAddress ? 'clickme-showme adr-p' : 'adr-p'}"><%----%>
+                    <m:div test="${animatedAddress}" css="clickme-showme">
                         <div class="adr ${animatedAddress ? 'clickme' : ''}"><%----%>
-                            <div class="street-address">${locData.streetAddress}</div><%----%>
+                            <c:if test="${not empty locData.streetAddress}">
+                                <div class="street-address">${locData.streetAddress}</div><%----%>
+                            </c:if>
                             <c:if test="${not empty locData.extendedAddress}">
                                 <div class="extended-address">${locData.extendedAddress}</div><%----%>
                             </c:if>
-                            <div><%----%>
-                                <span class="postal-code">${locData.postalCode}</span>${' '}<%----%>
-                                <span class="locality">${locData.locality}</span><%----%>
-                            </div><%----%>
+                            <c:if test="${(not empty locData.postalCode) or (not empty locData.locality)}">
+                                <div><%----%>
+                                    <c:if test="${not empty locData.postalCode}">
+                                        <span class="postal-code">${locData.postalCode}</span>${' '}<%----%>
+                                    </c:if>
+                                    <c:if test="${not empty locData.locality}">
+                                        <span class="locality">${locData.locality}</span><%----%>
+                                    </c:if>
+                                </div><%----%>
+                            </c:if>
                             <c:if test="${(not empty locData.region) or (not empty locData.country)}">
                                 <div><%----%>
                                     <c:if test="${not empty locData.region}">
@@ -319,8 +349,18 @@
                                 </c:choose>
                             </div><%----%>
                         </c:if>
-                    </div><%----%>
-                </m:location-vars>
+                    </m:div>
+                </c:if>
+
+                <c:if test="${showFacilities and (not empty locData.facilities)}">
+                    <m:facility-icons
+                        wheelchairAccess="${locData.facilities.value.WheelchairAccess.toBoolean}"
+                        hearingImpaired="${locData.facilities.value.HearingImpaired.toBoolean}"
+                        lowVision="${locData.facilities.value.LowVision.toBoolean}"
+                        publicRestrooms="${locData.facilities.value.PublicRestrooms.toBoolean}"
+                        publicRestroomsAccessible="${locData.facilities.value.PublicRestroomsAccessible.toBoolean}"
+                    />
+                </c:if>
             </c:if>
 
             <c:if test="${showPhone}">

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>17.0.121</version>
+		<version>17.0.138</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -9020,8 +9020,8 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.template/tags/map-marker-info.tag</source>
-			<destination>system/modules/alkacon.mercury.template/tags/map-marker-info.tag</destination>
+			<source>system/modules/alkacon.mercury.template/tags/map-marker-vars.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/map-marker-vars.tag</destination>
 			<type>jsp</type>
 			<uuidstructure>921fb43c-5ae0-11ef-9d61-0242ac11002b</uuidstructure>
 			<uuidresource>921fb43d-5ae0-11ef-9d61-0242ac11002b</uuidresource>
@@ -9030,7 +9030,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Generates a marker info window for use on maps]]></value>
+					<value><![CDATA[Collects marker and location data for use in map info windows]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

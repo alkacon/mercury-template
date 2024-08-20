@@ -95,7 +95,7 @@
     <cms:jsonvalue key="image"              value="${strImageUrl}" />
 
     <c:if test="${showAddress}">
-        <m:location-vars data="${valAddress}" addMapInfo="${true}" createJsonLd="${true}" >
+        <m:location-vars data="${valAddress}" createJsonLd="${true}" >
             <cms:jsonvalue key="address" value="${adrJsonLd}" />
         </m:location-vars>
     </c:if>

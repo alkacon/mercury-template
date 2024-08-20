@@ -150,7 +150,7 @@ function setInfo(results, status, infoWindow) {
     }
     // replace content in info window
     var infoContent = infoWindow.getContent();
-    infoContent = infoContent.replace("<div class='geoAdr'></div>", addressFound);
+    infoContent = infoContent.replace("<!-- replace-with-geoadr -->", addressFound);
     infoWindow.setContent(infoContent);
 }
 
@@ -323,10 +323,10 @@ function showSingleMap(mapData, filterByGroup){
                     mapId: mapId,
                     geocode: point.geocode
                 });
-    
+
                 // add marker to marker map
                 markers.push(marker);
-    
+
                 // initialize info window
                 var infoWindow = new google.maps.InfoWindow({
                     content: marker.info,
@@ -334,12 +334,12 @@ function showSingleMap(mapData, filterByGroup){
                     geocode: point.geocode,
                     index: idx
                 });
-    
+
                 // add marker to marker map
                 infoWindows.push(infoWindow);
-    
+
                 if (DEBUG) console.info("GoogleMap attaching Event lister: " + p + " to map id " + mapId);
-    
+
                 // attach event listener that shows info window to marker
                 // see http://you.arenot.me/2010/06/29/google-maps-api-v3-0-multiple-markers-multiple-infowindows/
                 marker.addListener('click', function() {

@@ -36,17 +36,20 @@
     line-height: 1;
     margin-bottom: var(--#{$prefix}default-margin-small);
     hyphens: initial;
+    --#{$prefix}acc-icon-size: #{$acc-icon-size};
+    --#{$prefix}acc-font-size: #{$acc-font-size};
+    --#{$prefix}acc-margin: var(--#{$prefix}ws-margin);
 
     .acc-icon {
         position: relative;
-        width: $acc-icon-size;
-        padding: 0 0 $acc-icon-size 0!important;
+        width: var(--#{$prefix}acc-icon-size);
+        padding: 0 0 var(--#{$prefix}acc-icon-size) 0!important;
         display: inline-block;
         color: var(--#{$prefix}main-theme-fg);
         background-color: var(--#{$prefix}main-theme);
         border-radius: var(--#{$prefix}border-radius);
-        margin-right: 10px;
-        font-size: $h3-font-size;
+        margin-right: var(--#{$prefix}acc-margin);
+        font-size: var(--#{$prefix}acc-font-size);
 
         &:last-of-type {
             margin-right: 0;
@@ -58,6 +61,8 @@
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
             font-weight: normal;
+            margin-right: 0;
+            width: auto;
         }
     }
 }

@@ -46,6 +46,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <c:set var="value"                  value="${content.value}" />
@@ -72,7 +73,18 @@
         <c:set var="setShowOrganization"    value="${false}" />
         <c:set var="kindModern"             value="${true}" />
     </c:when>
+    <c:when test="${content.typeName eq 'm-poi'}">
+        <c:set var="valKind"                value="poi" />
+        <c:set var="valName"                value="${value.Title}" />
+        <c:set var="valAddress"             value="${content}" />
+        <c:set var="useLinkedContent"       value="${false}" />
+        <c:set var="setShowName"            value="${true}" />
+        <c:set var="setShowPosition"        value="${false}" />
+        <c:set var="setShowOrganization"    value="${false}" />
+        <c:set var="kindModern"             value="${true}" />
+    </c:when>
     <c:otherwise>
+        <%-- Content must be of type 'm-contact' --%>
         <c:set var="valKind"                value="${value.Kind.isSet ? value.Kind.toString : 'pers'}" />
         <c:set var="useLinkedContent"       value="${false}" />
         <c:set var="setShowName"            value="${valKind eq 'org' ? showOrganization : true}" />
@@ -85,6 +97,9 @@
 <c:choose>
     <c:when test="${valKind eq 'org'}">
         <c:set var="kindCss" value="contact-org" />
+    </c:when>
+    <c:when test="${valKind eq 'poi'}">
+        <c:set var="kindCss" value="contact-poi" />
     </c:when>
     <c:otherwise>
         <c:set var="kindCss" value="contact-pers" />

@@ -67,7 +67,7 @@
     showPosition="${showPosition}"
     showOrganization="${showOrganization}">
 
-<m:location-vars data="${valAddress}" addMapInfo="${true}" createJsonLd="${true}">
+<m:location-vars data="${valAddress}" createJsonLd="${true}">
 
 <m:nl />
 <div class="detail-page type-contact${setCssWrapper}"><%----%>
@@ -94,14 +94,16 @@
     <c:set var="hasCoords" value="${valAddress.isSet and (valAddress.value.Address.value.Coord.isSet or valAddress.value.PoiLink.isSet)}" />
     <c:if test="${showMap and hasCoords}">
         <c:set var="id"><m:idgen prefix='poimap' uuid='${cms.element.instanceId}' /></c:set>
-        <m:map
-            provider="auto"
-            id="${id}"
-            ratio="${mapRatio}"
-            zoom="${mapZoom}"
-            markers="${[locData]}"
-            subelementWrapper="poi-map"
-        />
+        <m:map-marker-vars address="${valAddress}">
+            <m:map
+                provider="auto"
+                id="${id}"
+                ratio="${mapRatio}"
+                zoom="${mapZoom}"
+                markers="${[markerData]}"
+                subelementWrapper="poi-map"
+            />
+        </m:map-marker-vars>
         <m:nl />
     </c:if>
     <m:alert test="${showMap and cms.isEditMode and not hasCoords}" type="warning">

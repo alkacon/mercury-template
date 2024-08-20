@@ -29,7 +29,7 @@
 <c:set var="showLink"               value="${setting.showLink.toBoolean}" />
 <c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
 <c:set var="showGroupButtons"       value="${setting.showGroupButtons.toBoolean}" />
-<c:set var="showMapRoute"           value="${setting.showMapRoute.toBoolean}" />
+<c:set var="showRoute"              value="${setting.showMapRoute.toBoolean}" />
 <c:set var="mapType"                value="${setting.mapType.toString}" />
 <c:set var="mapMarkerCluster"       value="${setting.mapMarkerCluster.toBoolean}" />
 
@@ -74,49 +74,28 @@
         <jsp:useBean id="coordBean"     class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
 
         <c:forEach var="poi" items="${content.valueList.MapPoi}" varStatus="status">
-            <m:location-vars data="${poi.value.PoiLink}" addMapInfo="true" >
-
-                <c:if test="${not empty locData}">
+            <m:map-marker-vars content="${cms.vfs.readXml[poi.value.PoiLink]}" showLink="${showLink}" showFacilities="${showFacilities}" showRoute="${showRoute}">
+                <c:if test="${not empty markerData}">
                     <c:set var="markerGroup" value="${poi.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(poi.value.MarkerGroup)}" />
                     <c:set target="${markerGroups}" property="${markerGroup}" value="used"/>
 
-                    <c:set target="${locData}" property="group" value="${markerGroup}" />
-                    <c:set var="ignore" value="${markerList.add(locData)}" />
+                    <c:set target="${markerData}" property="group" value="${markerGroup}" />
+                    <c:set var="ignore" value="${markerList.add(markerData)}" />
                 </c:if>
-
-            </m:location-vars>
+            </m:map-marker-vars>
         </c:forEach>
 
         <c:forEach var="marker" items="${content.valueList.MapCoord}" varStatus="status">
-            <jsp:setProperty name="coordBean" property="wrappedValue" value="${marker.value.Coord.stringValue}" />
 
-            <c:set var="markerGroup" value="${marker.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(marker.value.MarkerGroup)}" />
-            <c:set target="${markerGroups}" property="${markerGroup}" value="used"/>
+            <m:map-marker-vars marker="${marker}" showLink="${showLink}" showFacilities="${showFacilities}" showRoute="${showRoute}">
+                <c:if test="${not empty markerData}">
+                    <c:set var="markerGroup" value="${marker.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(marker.value.MarkerGroup)}" />
+                    <c:set target="${markerGroups}" property="${markerGroup}" value="used"/>
 
-            <c:choose>
-                <c:when test="${not marker.value.Address.isEmptyOrWhitespaceOnly}">
-                     <c:set var="markerAddress" value="${cms:escapeHtml(fn:trim(marker.value.Address))}" />
-                     <c:set var="markerNeedsGeoCode" value="false" />
-                </c:when>
-                <c:otherwise>
-                     <%-- This will be replaced by Google GeoCoder in JavaScript --%>
-                     <c:set var="markerAddress"><div class="geoAdr"></div></c:set>
-                     <c:set var="markerNeedsGeoCode" value="true" />
-                </c:otherwise>
-            </c:choose>
-
-            <c:set var="locData" value="${{
-                'name': marker.value.Caption.isEmptyOrWhitespaceOnly ? '' : fn:trim(marker.value.Caption),
-                'lat': coordBean.lat,
-                'lng': coordBean.lng,
-                'addressMarkup': markerAddress,
-                'geocode': markerNeedsGeoCode,
-                'group': markerGroup,
-                'info': markerInfo,
-                'link': marker.value.Link
-            }}" />
-            <c:set var="ignore" value="${markerList.add(locData)}" />
-
+                    <c:set target="${markerData}" property="group" value="${markerGroup}" />
+                    <c:set var="ignore" value="${markerList.add(markerData)}" />
+                </c:if>
+            </m:map-marker-vars>
         </c:forEach>
 
         <m:map
@@ -128,7 +107,7 @@
              type="${mapType}"
              showLink="${showLink}"
              showFacilities="${showFacilities}"
-             showRoute="${showMapRoute}"
+             showRoute="${showRoute}"
              markerCluster="${mapMarkerCluster}"
         />
 

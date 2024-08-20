@@ -20,9 +20,9 @@
             <xsd:element name="Facebook" type="OpenCmsSocialFacebook" minOccurs="0" />
             <xsd:element name="Twitter" type="OpenCmsSocialTwitter" minOccurs="0" />
             <xsd:element name="Keywords" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="SearchBoost" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="CanonicalURL" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Robots" type="OpenCmsString" minOccurs="0" />
-            <xsd:element name="SearchBoost" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -87,6 +87,18 @@
                     <Widget>string</Widget>
                 </Setting>
                 <Setting>
+                    <PropertyName>SearchBoost</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.SearchBoost)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.SearchBoost.help)]]></Description>
+                    <Widget>select</Widget>
+                    <Default><![CDATA[none]]></Default>
+                    <WidgetConfig><![CDATA[
+                        none:%(key.label.MetaInfo.SearchBoost.none)|
+                        keywords:%(key.label.MetaInfo.SearchBoost.keywords)|
+                        always:%(key.label.MetaInfo.SearchBoost.always)|
+                    ]]></WidgetConfig>
+                </Setting>
+                <Setting>
                     <PropertyName>CanonicalURL</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MetaInfo.CanonicalURL)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.CanonicalURL.help)]]></Description>
@@ -106,18 +118,6 @@
                         noindex, follow:%(key.label.MetaInfo.Robots.noindex)
                     ]]></WidgetConfig>
                     <Search>false</Search>
-                </Setting>
-                <Setting>
-                    <PropertyName>SearchBoost</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MetaInfo.SearchBoost)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.MetaInfo.SearchBoost.help)]]></Description>
-                    <Widget>select</Widget>
-                    <Default><![CDATA[none]]></Default>
-                    <WidgetConfig><![CDATA[
-                        none:%(key.label.MetaInfo.SearchBoost.none)|
-                        keywords:%(key.label.MetaInfo.SearchBoost.keywords)|
-                        always:%(key.label.MetaInfo.SearchBoost.always)|
-                    ]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

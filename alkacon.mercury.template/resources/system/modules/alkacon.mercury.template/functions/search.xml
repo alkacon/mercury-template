@@ -62,8 +62,5 @@
     <Setting>
       <IncludeName><![CDATA[searchForEmptyQuery.search]]></IncludeName>
     </Setting>
-    <Setting>
-      <IncludeName><![CDATA[showTopBadge.search]]></IncludeName>
-    </Setting>
   </FunctionConfig>
 </FunctionConfigs>

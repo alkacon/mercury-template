@@ -434,6 +434,8 @@
                                     </c:if>
                                 </c:if>
 
+                                <%-- This feature has to be activated and the prepared setting shared setting 'showTopBadge.search' must be added to the function configuration. --%>
+                                <%--
                                 <c:if test="${showTopBadge}">
                                     <c:set var="boostValues" value='${searchResult.multiValuedFields["search.boost_mvs"]}' />
                                     <c:choose>
@@ -447,6 +449,7 @@
                                     </c:otherwise>
                                     </c:choose>
                                 </c:if>
+                                --%>
 
                                 <h4 class="search-result-heading"><%----%>
                                     <c:set var="resultLink" value="${empty searchResult.fields['mercury.detail.link_dprop'] ? searchResult.fields['path'] : searchResult.fields['mercury.detail.link_dprop']}" />

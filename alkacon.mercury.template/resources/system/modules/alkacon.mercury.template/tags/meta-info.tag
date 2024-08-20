@@ -53,7 +53,7 @@ to find a sentence end.
         <c:set var="pagedesc"><m:meta-value text="${cms.meta.ogDescriptionAltCaption}${hasAltDescAndCaption ? ' - ' : ''}${cms.meta.ogDescriptionAlt}" trim="${175}" /></c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="pagedesc"><m:meta-value text="${contentPropertiesSearch['Description']}" trim="${175}" /></c:set>
+        <c:set var="pagedesc"><m:meta-value text="${cms.pageResource.propertyDescription}" trim="${175}" /></c:set>
     </c:otherwise>
 </c:choose>
 
@@ -62,7 +62,7 @@ to find a sentence end.
         <c:set var="pagekeywords"><m:meta-value text="${cms.meta.Keywords}" /></c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="pagekeywords"><m:meta-value text="${contentPropertiesSearch['Keywords']}" /></c:set>
+        <c:set var="pagekeywords"><m:meta-value text="${cms.pageResource.propertyKeywords}" /></c:set>
     </c:otherwise>
 </c:choose>
 

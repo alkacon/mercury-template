@@ -101,6 +101,16 @@
         white-space: nowrap;
         display: inline-block;
         vertical-align: middle;
+
+        &:has(+ .search-badge) {
+            margin-right: var(--#{$prefix}default-margin-verysmall);
+        }
+
+        &.badge-top {
+            font-weight: var(--#{$prefix}font-weight-bold);
+            color: inherit;
+            border-color: inherit;
+        }
     }
 
     @include media-breakpoint-up(lg) {

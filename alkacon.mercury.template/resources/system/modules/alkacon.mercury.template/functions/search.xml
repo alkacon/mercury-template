@@ -57,6 +57,9 @@
       <IncludeName><![CDATA[showTypeBadge.search]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showTopBadge.search]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showExcerpt.search]]></IncludeName>
     </Setting>
     <Setting>

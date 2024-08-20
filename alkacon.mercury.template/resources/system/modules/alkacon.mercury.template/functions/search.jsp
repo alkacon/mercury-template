@@ -429,19 +429,18 @@
                                     </c:choose>
                                     <c:if test="${not empty typeName}">
                                         <c:set var="typeName">
-                                            <span class="search-badge">${typeName}</span>
+                                            <span class="search-badge badge-typ">${typeName}</span>
                                         </c:set>
                                     </c:if>
                                 </c:if>
 
                                 <%-- This feature has to be activated and the prepared setting shared setting 'showTopBadge.search' must be added to the function configuration. --%>
-                                <%--
                                 <c:if test="${showTopBadge}">
                                     <c:set var="boostValues" value='${searchResult.multiValuedFields["search.boost_mvs"]}' />
                                     <c:choose>
                                     <c:when test='${not empty boostValues && (boostValues.contains("keywords") || boostValues.contains("always"))}'>
                                         <c:set var="topBadge">
-                                            <span class="search-badge">TOP</span>
+                                            <span class="search-badge badge-top"><fmt:message key="msg.page.search.type.topresult" /></span>
                                         </c:set>
                                     </c:when>
                                     <c:otherwise>
@@ -449,14 +448,13 @@
                                     </c:otherwise>
                                     </c:choose>
                                 </c:if>
-                                --%>
 
                                 <h4 class="search-result-heading"><%----%>
                                     <c:set var="resultLink" value="${empty searchResult.fields['mercury.detail.link_dprop'] ? searchResult.fields['path'] : searchResult.fields['mercury.detail.link_dprop']}" />
                                     <a href='<cms:link>${resultLink}</cms:link>'><%----%>
                                         <span class="result-title">${title}</span><%----%>
-                                        <c:out value="${showTypeBadge ? typeName : ''}" escapeXml="${false}" />
                                         <c:out value="${showTopBadge ? topBadge : ''}" escapeXml="${false}" />
+                                        <c:out value="${showTypeBadge ? typeName : ''}" escapeXml="${false}" />
                                     </a><%----%>
                                 </h4><%----%>
                                 <m:nl/>

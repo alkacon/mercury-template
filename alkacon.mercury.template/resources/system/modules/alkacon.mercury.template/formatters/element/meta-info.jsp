@@ -22,7 +22,7 @@
 
         <m:alert-meta icon="share-alt">
             <jsp:attribute name="text">
-                <fmt:message key="msg.page.metainfo.marker" />
+                <fmt:message key="${value.SearchBoost.isSetNotNone ? 'msg.page.metainfo.marker.search' : 'msg.page.metainfo.marker'}" />
             </jsp:attribute>
         </m:alert-meta>
 

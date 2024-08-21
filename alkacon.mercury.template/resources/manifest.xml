@@ -7805,6 +7805,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/costs.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/costs.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>57a09c0d-5ef0-11ef-b999-0242ac11002b</uuidstructure>
+			<uuidresource>57a09c0e-5ef0-11ef-b999-0242ac11002b</uuidresource>
+			<datecreated>Tue, 20 Aug 2024 12:33:02 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays cost data in form of a responsive table]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/data-article.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/data-article.tag</destination>
 			<type>jsp</type>

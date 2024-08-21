@@ -18,8 +18,12 @@
 
 <c:choose>
     <c:when test="${valKind eq 'org'}">
-        <c:set var="fullname">${value.Organization}</c:set>
-        <c:set var="kind">organization</c:set>
+        <c:set var="fullname" value="${value.Organization}" />
+        <c:set var="kind" value="organization" />
+    </c:when>
+    <c:when test="${valKind eq 'poi'}">
+        <c:set var="fullname" value="${value.Title}" />
+        <c:set var="kind" value="location" />
     </c:when>
     <c:otherwise>
         <c:set var="fullname">
@@ -29,7 +33,7 @@
             ${value.Name.value.LastName}${' '}
             ${value.Name.value.Suffix}
         </c:set>
-        <c:set var="kind">individual</c:set>
+        <c:set var="kind" value="individual" />
     </c:otherwise>
 </c:choose>
 
@@ -57,7 +61,11 @@ ORG;CHARSET=utf-8:${value.Organization}
 </c:if><%--
 
 --%>
-<m:location-vars data="${value.Contact.value.AddressChoice}">
+
+<c:if test="${value.Position.isSet}">
+TITLE;CHARSET=utf-8:${value.Position}
+</c:if>
+<m:location-vars data="${valKind ne 'poi' ? value.Contact.value.AddressChoice : content}">
 
 ADR;CHARSET=utf-8;type=WORK:;;${locData.streetAddress}${';'}
 ${locData.locality}${';'}
@@ -66,9 +74,6 @@ ${locData.postalCode}${';'}
 ${locData.country}
 
 </m:location-vars>
-<c:if test="${value.Position.isSet}">
-TITLE;CHARSET=utf-8:${value.Position}
-</c:if>
 
 <c:if test="${value.Image.isSet}">
 <m:image-vars image="${value.Image}">
@@ -78,32 +83,32 @@ PHOTO;TYPE=JPEG:${cms.requestContext.requestMatcher}<cms:link>${imageLink}</cms:
 </m:image-vars>
 </c:if>
 
-<c:if test="${value.Contact.value.Phone.isSet}">
+<c:if test="${not empty value.Contact.value.Phone}">
 TEL;type=WORK;type=VOICE:${value.Contact.value.Phone}
 </c:if>
 
-<c:if test="${value.Contact.value.Mobile.isSet}">
+<c:if test="${not empty value.Contact.value.Mobile}">
 TEL;type=CELL;type=VOICE:${value.Contact.value.Mobile}
 </c:if>
 
-<c:if test="${value.Contact.value.Fax.isSet}">
+<c:if test="${not empty value.Contact.value.Fax}">
 TEL;type=WORK;type=FAX:${value.Contact.value.Fax}
 </c:if>
 
-<c:if test="${value.Contact.value.Website.isSet}">
+<c:if test="${not empty value.Contact.value.Website}">
 URL:${value.Contact.value.Website}
 </c:if>
 
-<c:if test="${value.Contact.value.Email.value.Email.isSet}">
+<c:if test="${not empty value.Contact.value.Email and not empty value.Contact.value.Email.value.Email}">
 EMAIL;type=INTERNET;type=WORK:${value.Contact.value.Email.value.Email}
 </c:if>
 
-<c:if test="${value.Description.isSet}">
+<c:if test="${not empty value.Description}">
 NOTE;CHARSET=utf-8:${cms:escapeJavaScript(cms:stripHtml(value.Description))}
 </c:if>
 
 <c:choose>
-    <c:when test="${value.Kind eq 'org'}">
+    <c:when test="${valKind eq 'org'}">
 X-ABShowAs:COMPANY
     </c:when>
     <c:otherwise>

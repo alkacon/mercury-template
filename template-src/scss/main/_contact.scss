@@ -36,6 +36,7 @@
     .pos,
     .note,
     .mail,
+    .facility-icons,
     .vcard {
         margin-top: var(--#{$prefix}contact-spacer-y);
         margin-bottom: var(--#{$prefix}contact-spacer-y);
@@ -75,15 +76,22 @@
 
         .fn.n {
             font-weight: $font-weight-bold;
+            &:has( + .pos) {
+                margin-bottom: 0;
+            }
+            + .pos {
+                margin-top: 0;
+            }
         }
 
         .fn,
         .org,
         .adr,
         .title,
-        .pos,
+        // .pos,
         .note,
         .contactlink:not(.btn),
+        .facility-icons,
         .mail {
             margin-top: 0;
             margin-bottom: 0;

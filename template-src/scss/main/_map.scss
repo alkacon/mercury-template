@@ -103,8 +103,11 @@
             --#{$prefix}acc-margin: calc(0.75 * var(--#{$prefix}ws-margin));
         }
 
+        .link,
         .marker-route {
             margin-top: var(--#{$prefix}paragraph-margin-bottom);
+        }
+        .marker-route {
             form {
                 margin-top: var(--#{$prefix}contact-spacer-y);
             }

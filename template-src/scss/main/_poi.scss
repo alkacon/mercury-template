@@ -34,7 +34,8 @@
 .facility-icons {
     // may also be used outsie poi, e.g. in a map
     line-height: 1;
-    margin-bottom: var(--#{$prefix}default-margin-small);
+    margin-top: var(--#{$prefix}paragraph-margin-bottom);
+    margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
     hyphens: initial;
     --#{$prefix}acc-icon-size: #{$acc-icon-size};
     --#{$prefix}acc-font-size: #{$acc-font-size};

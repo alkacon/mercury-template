@@ -66,6 +66,9 @@
                 <mapping element="Availability/Release" mapto="attribute:datereleased" />
                 <mapping element="Availability/Expiration" mapto="attribute:dateexpired" />
             </mappings>
+            <geomapping>
+                <link>AddressChoice/PoiLink</link>
+            </geomapping>
             <searchsettings containerPageOnly="false">
                 <searchsetting element="Type">
                     <solrfield targetfield="event-type" sourcefield="*_s" />
@@ -185,10 +188,6 @@
                     <Description><![CDATA[%(key.label.Event.AddressChoice.help)]]></Description>
                 </Setting>
                 <Setting>
-                    <PropertyName>AddressChoice/Address/Coord</PropertyName>
-                    <Visibility>hidden</Visibility>
-                </Setting>
-                <Setting>
                     <PropertyName>VirtualLocation</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Event.VirtualLocation)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Event.VirtualLocation.help)]]></Description>
@@ -269,6 +268,10 @@
                        <MapTo>property:Title</MapTo>
                        <UseDefault>true</UseDefault>
                     </Mapping>
+                </Setting>
+                <Setting>
+                    <PropertyName>AddressChoice/Address/Coord</PropertyName>
+                    <Search>listgeocoords</Search>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

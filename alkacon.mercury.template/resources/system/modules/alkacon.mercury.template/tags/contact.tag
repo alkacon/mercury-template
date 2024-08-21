@@ -51,6 +51,9 @@
 <%@ attribute name="locData" type="java.util.Map" required="false"
     description="A map containing the precalculated location data." %>
 
+<%@ attribute name="linkToWebsite" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
+    description="Value wrapper for the website link. If not set, this will be read from the 'data'." %>
+
 <%@ attribute name="address" type="java.lang.Object" required="false"
     description="Value wrapper for the contact data that includes the address (or link a to a POI). From nested schema type address." %>
 
@@ -136,7 +139,7 @@
 <c:set var="showAddressAlways"  value="${showAddressAlways and (not empty data or not empty addressData or not empty locData)}"/>
 <c:set var="showAddress"        value="${showAddressAlways or (showAddress and (not empty data or not empty addressData or not empty locData))}"/>
 <c:set var="showPhone"          value="${showPhone and (not empty data)}"/>
-<c:set var="showWebsite"        value="${showWebsite and (not empty data) and (not empty data.value.Website)}"/>
+<c:set var="showWebsite"        value="${showWebsite and ((not empty data) and (not empty data.value.Website) or (not empty linkToWebsite))}"/>
 <c:set var="showEmail"          value="${showEmail and (not empty data) and (not empty data.value.Email) and (not empty data.value.Email.value.Email)}"/>
 
 <%-- Notice is by default displayed on top of address / phone / link. Optinal placement below can be enabled by setting overrides for a template variant. --%>
@@ -212,296 +215,291 @@
     cssImage="photo"
     showImageZoom="${showImageZoom}">
 
-    <c:if test="${showName or showOrganization or showDesc or showNote or showAddress or showPhone or showEmail or showLinkAsButton}">
-        <c:if test="${addTextBox}"><div class="text-box"></c:if>
-        <m:nl />
+    <c:if test="${addTextBox}"><div class="text-box"></c:if>
+    <m:nl />
 
-            <c:if test="${showName and (kind ne 'poi')}">
-                <c:set var="personname">
-                    <c:if test="${name.value.Title.isSet}">
-                        <span>${name.value.Title}${' '}</span><%----%>
-                    </c:if>
-                    <c:if test="${name.value.FirstName.isSet}">
-                        <span> ${name.value.FirstName}</span><%----%>
-                    </c:if>
-                    <c:if test="${name.value.MiddleName.isSet}">
-                        <span> ${name.value.MiddleName}</span><%----%>
-                    </c:if>
-                    <c:if test="${name.value.LastName.isSet}">
-                        <span> ${name.value.LastName}</span><%----%>
-                    </c:if>
-                    <c:if test="${name.value.Suffix.isSet}">
-                        <span> ${name.value.Suffix}</span><%----%>
-                    </c:if>
-                </c:set>
+    <c:if test="${showName and (kind ne 'poi')}">
+        <c:set var="personname">
+            <c:if test="${name.value.Title.isSet}">
+                <span>${name.value.Title}${' '}</span><%----%>
             </c:if>
+            <c:if test="${name.value.FirstName.isSet}">
+                <span> ${name.value.FirstName}</span><%----%>
+            </c:if>
+            <c:if test="${name.value.MiddleName.isSet}">
+                <span> ${name.value.MiddleName}</span><%----%>
+            </c:if>
+            <c:if test="${name.value.LastName.isSet}">
+                <span> ${name.value.LastName}</span><%----%>
+            </c:if>
+            <c:if test="${name.value.Suffix.isSet}">
+                <span> ${name.value.Suffix}</span><%----%>
+            </c:if>
+        </c:set>
+    </c:if>
 
-            <c:choose>
-                <c:when test="${kind eq 'org'}">
-                    <c:if test="${showOrganization}">
-                        <m:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
-                    </c:if>
-                    <c:if test="${showOrganization and (showName or showPosition)}">
-                        <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
-                        <div class="subfn"><%----%>
-                            <c:if test="${showName}">
-                                <div class="h${hsize + 1} org"><%----%>
-                                    <m:link link="${linkToRelated}">${personname}</m:link>
-                                </div><%----%>
-                            </c:if>
-                            <c:if test="${showPosition}"><%----%>
-                                <div class="pos"><%----%>
-                                    ${position}
-                                </div><%----%>
-                            </c:if>
-                        </div><%----%>
-                    </c:if>
-                </c:when>
-                <c:when test="${kind eq 'poi'}">
+    <c:choose>
+        <c:when test="${kind eq 'org'}">
+            <c:if test="${showOrganization}">
+                <m:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
+            </c:if>
+            <c:if test="${showOrganization and (showName or showPosition)}">
+                <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
+                <div class="subfn"><%----%>
                     <c:if test="${showName}">
-                        <m:heading level="${hsize}" css="fn n" text="${name}" suffix="${nameSuffix}" ade="${false}" />
-                    </c:if>
-                </c:when>
-                <c:otherwise>
-                    <c:if test="${showName}">
-                        <m:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}">
-                            <jsp:attribute name="markupText">${personname}</jsp:attribute>
-                        </m:heading>
-                        <c:if test="${showPosition}">
-                            <div class="h${hsize + 1} pos subfn"><%----%>
-                                ${position}
-                            </div><%----%>
-                        </c:if>
-                    </c:if>
-                    <c:if test="${showOrganization}">
-                        <div class="org"><%----%>
-                            <m:link link="${linkToRelated}">${organization}</m:link>
+                        <div class="h${hsize + 1} org"><%----%>
+                            <m:link link="${linkToRelated}">${personname}</m:link>
                         </div><%----%>
                     </c:if>
-                </c:otherwise>
-            </c:choose>
-
-            <c:if test="${showNoteTop}">
-                <div class="note top notice">${notice}</div><%----%>
-            </c:if>
-
-            <c:if test="${showDescTop}">
-                <div class="note top description">${description}</div><%----%>
-            </c:if>
-
-            <c:if test="${showAddress or showFacilities}">
-                <c:if test="${empty locData}">
-                    <m:location-vars data="${addressData}">
-                        <c:set var="markerData" value="${locData}" />
-                    </m:location-vars>
-                    <c:set var="locData" value="${markerData}" />
-                </c:if>
-
-                <c:if test="${showAddress}">
-                    <c:set var="animatedAddress" value="${not showAddressAlways}" />
-                    <m:div test="${animatedAddress}" css="clickme-showme">
-                        <div class="adr ${animatedAddress ? 'clickme' : ''}"><%----%>
-                            <c:if test="${not empty locData.streetAddress}">
-                                <div class="street-address">${locData.streetAddress}</div><%----%>
-                            </c:if>
-                            <c:if test="${not empty locData.extendedAddress}">
-                                <div class="extended-address">${locData.extendedAddress}</div><%----%>
-                            </c:if>
-                            <c:if test="${(not empty locData.postalCode) or (not empty locData.locality)}">
-                                <div><%----%>
-                                    <c:if test="${not empty locData.postalCode}">
-                                        <span class="postal-code">${locData.postalCode}</span>${' '}<%----%>
-                                    </c:if>
-                                    <c:if test="${not empty locData.locality}">
-                                        <span class="locality">${locData.locality}</span><%----%>
-                                    </c:if>
-                                </div><%----%>
-                            </c:if>
-                            <c:if test="${(not empty locData.region) or (not empty locData.country)}">
-                                <div><%----%>
-                                    <c:if test="${not empty locData.region}">
-                                        <span class="region">${locData.region}${' '}</span><%----%>
-                                    </c:if>
-                                    <c:if test="${not empty locData.country}">
-                                        <span class="country-name">${locData.country}</span><%----%>
-                                    </c:if>
-                                </div><%----%>
-                            </c:if>
+                    <c:if test="${showPosition}"><%----%>
+                        <div class="pos"><%----%>
+                            ${position}
                         </div><%----%>
-                        <c:if test="${animatedAddress}">
-                            <div class="addresslink showme"><%----%>
-                                <c:choose>
-                                    <c:when test="${showIconLabels}">
-                                        <m:icon-prefix icon="home" showText="${true}" showIcon="${true}">
-                                            <jsp:attribute name="text">
-                                                <span class="${showTextLabels ? 'with-text' : 'only-icon'}"><a><%----%>
-                                                    <fmt:message key="msg.setting.contact.showAddress"/>
-                                                </a></span><%----%>
-                                            </jsp:attribute>
-                                            <jsp:attribute name="icontitle">
-                                                <fmt:message key="msg.setting.contact.showAddress"/>
-                                            </jsp:attribute>
-                                        </m:icon-prefix>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a class="adr"><fmt:message key="msg.setting.contact.showAddress"/></a><%----%>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div><%----%>
-                        </c:if>
-                    </m:div>
-                </c:if>
-
-                <c:if test="${showFacilities and (not empty locData.facilities)}">
-                    <m:facility-icons
-                        wheelchairAccess="${locData.facilities.value.WheelchairAccess.toBoolean}"
-                        hearingImpaired="${locData.facilities.value.HearingImpaired.toBoolean}"
-                        lowVision="${locData.facilities.value.LowVision.toBoolean}"
-                        publicRestrooms="${locData.facilities.value.PublicRestrooms.toBoolean}"
-                        publicRestroomsAccessible="${locData.facilities.value.PublicRestroomsAccessible.toBoolean}"
-                    />
-                </c:if>
-            </c:if>
-
-            <c:if test="${showPhone}">
-                <c:if test="${data.value.Phone.isSet}">
-                    <div class="phone tablerow"><%----%>
-                        <m:icon-prefix icon="phone" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                            <jsp:attribute name="text"><fmt:message key="msg.page.contact.phone"/></jsp:attribute>
-                        </m:icon-prefix>
-                        <span><%----%>
-                            <a href="tel:${fn:replace(data.value.Phone, ' ','')}" ${data.rdfa.Phone}><%----%>
-                                <span class="tel">${data.value.Phone}</span><%----%>
-                            </a><%----%>
-                        </span><%----%>
-                    </div><%----%>
-                </c:if>
-                <c:if test="${data.value.Mobile.isSet}">
-                    <div class="mobile tablerow"><%----%>
-                        <m:icon-prefix icon="mobile" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                            <jsp:attribute name="text"><fmt:message key="msg.page.contact.mobile"/></jsp:attribute>
-                        </m:icon-prefix>
-                        <span><%----%>
-                            <a href="tel:${fn:replace(data.value.Mobile, ' ','')}" ${data.rdfa.Mobile}><%----%>
-                                <span class="tel">${data.value.Mobile}</span><%----%>
-                            </a><%----%>
-                        </span><%----%>
-                    </div><%----%>
-                </c:if>
-                <c:if test="${data.value.Fax.isSet}">
-                    <div class="fax tablerow"><%----%>
-                        <m:icon-prefix icon="fax" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                            <jsp:attribute name="text"><fmt:message key="msg.page.contact.fax"/></jsp:attribute>
-                        </m:icon-prefix>
-                        <span><%----%>
-                            <a href="tel:${fn:replace(data.value.Fax, ' ','')}" ${data.rdfa.Fax}><%----%>
-                                <span class="tel">${data.value.Fax}</span><%----%>
-                            </a><%----%>
-                        </span><%----%>
-                    </div><%----%>
-                </c:if>
-            </c:if>
-
-            <c:if test="${showEmail}">
-                <div class="${showMinLabels ? 'mail' : 'mail tablerow'}" ${data.rdfa.Email}><%----%>
-                    <c:if test="${not showMinLabels}">
-                        <m:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                            <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
-                        </m:icon-prefix>
                     </c:if>
-                    <span><%----%>
-                        <m:email email="${data.value.Email}" linkToForm="${linkToDetail}" />
-                    </span><%----%>
                 </div><%----%>
             </c:if>
+        </c:when>
+        <c:when test="${kind eq 'poi'}">
+            <c:if test="${showName}">
+                <m:heading level="${hsize}" css="fn n" text="${name}" suffix="${nameSuffix}" ade="${false}" />
+            </c:if>
+        </c:when>
+        <c:otherwise>
+            <c:if test="${showName}">
+                <m:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}">
+                    <jsp:attribute name="markupText">${personname}</jsp:attribute>
+                </m:heading>
+                <c:if test="${showPosition}">
+                    <div class="h${hsize + 1} pos subfn"><%----%>
+                        ${position}
+                    </div><%----%>
+                </c:if>
+            </c:if>
+            <c:if test="${showOrganization}">
+                <div class="org"><%----%>
+                    <m:link link="${linkToRelated}">${organization}</m:link>
+                </div><%----%>
+            </c:if>
+        </c:otherwise>
+    </c:choose>
 
-            <c:if test="${showWebsite}">
+    <c:if test="${showNoteTop}">
+        <div class="note top notice">${notice}</div><%----%>
+    </c:if>
 
-                <c:set var="websiteLink" value="${data.value.Website}" />
+    <c:if test="${showDescTop}">
+        <div class="note top description">${description}</div><%----%>
+    </c:if>
+
+    <c:if test="${showAddress or showFacilities}">
+        <c:if test="${empty locData}">
+            <m:location-vars data="${addressData}">
+                <c:set var="markerData" value="${locData}" />
+            </m:location-vars>
+            <c:set var="locData" value="${markerData}" />
+        </c:if>
+
+        <c:if test="${showAddress}">
+            <c:set var="animatedAddress" value="${not showAddressAlways}" />
+            <m:div test="${animatedAddress}" css="clickme-showme adr-p">
+                <div class="adr ${animatedAddress ? 'clickme' : ''}"><%----%>
+                    <c:if test="${not empty locData.streetAddress}">
+                        <div class="street-address">${locData.streetAddress}</div><%----%>
+                    </c:if>
+                    <c:if test="${not empty locData.extendedAddress}">
+                        <div class="extended-address">${locData.extendedAddress}</div><%----%>
+                    </c:if>
+                    <c:if test="${(not empty locData.postalCode) or (not empty locData.locality)}">
+                        <div><%----%>
+                            <c:if test="${not empty locData.postalCode}">
+                                <span class="postal-code">${locData.postalCode}</span>${' '}<%----%>
+                            </c:if>
+                            <c:if test="${not empty locData.locality}">
+                                <span class="locality">${locData.locality}</span><%----%>
+                            </c:if>
+                        </div><%----%>
+                    </c:if>
+                    <c:if test="${(not empty locData.region) or (not empty locData.country)}">
+                        <div><%----%>
+                            <c:if test="${not empty locData.region}">
+                                <span class="region">${locData.region}${' '}</span><%----%>
+                            </c:if>
+                            <c:if test="${not empty locData.country}">
+                                <span class="country-name">${locData.country}</span><%----%>
+                            </c:if>
+                        </div><%----%>
+                    </c:if>
+                </div><%----%>
+                <c:if test="${animatedAddress}">
+                    <div class="addresslink showme"><%----%>
+                        <c:choose>
+                            <c:when test="${showIconLabels}">
+                                <m:icon-prefix icon="home" showText="${true}" showIcon="${true}">
+                                    <jsp:attribute name="text">
+                                        <span class="${showTextLabels ? 'with-text' : 'only-icon'}"><a><%----%>
+                                            <fmt:message key="msg.setting.contact.showAddress"/>
+                                        </a></span><%----%>
+                                    </jsp:attribute>
+                                    <jsp:attribute name="icontitle">
+                                        <fmt:message key="msg.setting.contact.showAddress"/>
+                                    </jsp:attribute>
+                                </m:icon-prefix>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="adr"><fmt:message key="msg.setting.contact.showAddress"/></a><%----%>
+                            </c:otherwise>
+                        </c:choose>
+                    </div><%----%>
+                </c:if>
+            </m:div>
+        </c:if>
+
+        <c:if test="${showFacilities and (not empty locData.facilities)}">
+            <m:facility-icons
+                wheelchairAccess="${locData.facilities.value.WheelchairAccess.toBoolean}"
+                hearingImpaired="${locData.facilities.value.HearingImpaired.toBoolean}"
+                lowVision="${locData.facilities.value.LowVision.toBoolean}"
+                publicRestrooms="${locData.facilities.value.PublicRestrooms.toBoolean}"
+                publicRestroomsAccessible="${locData.facilities.value.PublicRestroomsAccessible.toBoolean}"
+            />
+        </c:if>
+    </c:if>
+
+    <c:if test="${showPhone}">
+        <c:if test="${data.value.Phone.isSet}">
+            <div class="phone tablerow"><%----%>
+                <m:icon-prefix icon="phone" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                    <jsp:attribute name="text"><fmt:message key="msg.page.contact.phone"/></jsp:attribute>
+                </m:icon-prefix>
+                <span><%----%>
+                    <a href="tel:${fn:replace(data.value.Phone, ' ','')}" ${data.rdfa.Phone}><%----%>
+                        <span class="tel">${data.value.Phone}</span><%----%>
+                    </a><%----%>
+                </span><%----%>
+            </div><%----%>
+        </c:if>
+        <c:if test="${data.value.Mobile.isSet}">
+            <div class="mobile tablerow"><%----%>
+                <m:icon-prefix icon="mobile" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                    <jsp:attribute name="text"><fmt:message key="msg.page.contact.mobile"/></jsp:attribute>
+                </m:icon-prefix>
+                <span><%----%>
+                    <a href="tel:${fn:replace(data.value.Mobile, ' ','')}" ${data.rdfa.Mobile}><%----%>
+                        <span class="tel">${data.value.Mobile}</span><%----%>
+                    </a><%----%>
+                </span><%----%>
+            </div><%----%>
+        </c:if>
+        <c:if test="${data.value.Fax.isSet}">
+            <div class="fax tablerow"><%----%>
+                <m:icon-prefix icon="fax" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                    <jsp:attribute name="text"><fmt:message key="msg.page.contact.fax"/></jsp:attribute>
+                </m:icon-prefix>
+                <span><%----%>
+                    <a href="tel:${fn:replace(data.value.Fax, ' ','')}" ${data.rdfa.Fax}><%----%>
+                        <span class="tel">${data.value.Fax}</span><%----%>
+                    </a><%----%>
+                </span><%----%>
+            </div><%----%>
+        </c:if>
+    </c:if>
+
+    <c:if test="${showEmail}">
+        <div class="${showMinLabels ? 'mail' : 'mail tablerow'}" ${data.rdfa.Email}><%----%>
+            <c:if test="${not showMinLabels}">
+                <m:icon-prefix icon="envelope-o" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                    <jsp:attribute name="text"><fmt:message key="msg.page.contact.email"/></jsp:attribute>
+                </m:icon-prefix>
+            </c:if>
+            <span><%----%>
+                <m:email email="${data.value.Email}" linkToForm="${linkToDetail}" />
+            </span><%----%>
+        </div><%----%>
+    </c:if>
+
+    <c:if test="${showWebsite}">
+        <c:set var="websiteLink" value="${empty linkToWebsite ? data.value.Website : linkToWebsite}" />
+        <c:choose>
+            <c:when test="${websiteLink.isSet and websiteLink.value.URI.isSet}">
+                <c:set var="websiteURL" value="${websiteLink.value.Text.isSet ? websiteLink.value.Text.toString : websiteLink.value.URI.toLink.toString}" />
+                <c:set var="websiteNewWin" value="${websiteNewWin or websiteLink.value.NewWindow.toBoolean}" />
+                <c:if test="${websiteLink.value.Text.isSet}">
+                    <c:set var="websiteTitle" value="${websiteLink.value.Text.toString}" />
+                </c:if>
+            </c:when>
+            <c:when test="${websiteLink.isSet and not empty websiteLink.toString}">
+                    <c:set var="websiteURL" value="${websiteLink.toLink.toString}" />
+            </c:when>
+        </c:choose>
+        <c:if test="${not empty websiteURL}">
+            <c:if test="${not websiteLink.value.Text.isSet}">
+                <c:if test="${fn:startsWith(websiteURL, '/')}">
+                    <c:set var="websiteURL" value="${cms.site.url}${websiteURL}" />
+                </c:if>
+                <c:if test="${fn:endsWith(websiteURL, '/')}">
+                    <c:set var="websiteURL" value="${fn:substring(websiteURL, 0, fn:length(websiteURL)-1)}"/>
+                </c:if>
                 <c:choose>
-                    <c:when test="${websiteLink.isSet and websiteLink.value.URI.isSet}">
-                        <c:set var="websiteURL" value="${websiteLink.value.Text.isSet ? websiteLink.value.Text.toString : websiteLink.value.URI.toLink.toString}" />
-                        <c:set var="websiteNewWin" value="${websiteNewWin or websiteLink.value.NewWindow.toBoolean}" />
-                        <c:if test="${websiteLink.value.Text.isSet}">
-                            <c:set var="websiteTitle" value="${websiteLink.value.Text.toString}" />
-                        </c:if>
+                    <c:when test="${fn:startsWith(websiteURL, 'https://')}">
+                        <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'https://'))}" />
                     </c:when>
-                    <c:when test="${websiteLink.isSet and not empty websiteLink.toString}">
-                         <c:set var="websiteURL" value="${websiteLink.toLink.toString}" />
+                    <c:when test="${fn:startsWith(websiteURL, 'http://')}">
+                        <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'http://'))}" />
                     </c:when>
                 </c:choose>
-
-                <c:if test="${not empty websiteURL}">
-                    <c:if test="${not websiteLink.value.Text.isSet}">
-                        <c:if test="${fn:startsWith(websiteURL, '/')}">
-                            <c:set var="websiteURL" value="${cms.site.url}${websiteURL}" />
-                        </c:if>
-                        <c:if test="${fn:endsWith(websiteURL, '/')}">
-                            <c:set var="websiteURL" value="${fn:substring(websiteURL, 0, fn:length(websiteURL)-1)}"/>
-                        </c:if>
-                        <c:choose>
-                            <c:when test="${fn:startsWith(websiteURL, 'https://')}">
-                                <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'https://'))}" />
-                            </c:when>
-                            <c:when test="${fn:startsWith(websiteURL, 'http://')}">
-                                <c:set var="websiteURL" value="${fn:trim(fn:substringAfter(websiteURL, 'http://'))}" />
-                            </c:when>
-                        </c:choose>
-                    </c:if>
-                    <div class="${showMinLabels ? 'website' : 'website tablerow'}"><%----%>
-                         <c:if test="${not showMinLabels}">
-                            <m:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">
-                                <jsp:attribute name="text"><fmt:message key="msg.page.contact.website"/></jsp:attribute>
-                            </m:icon-prefix>
-                        </c:if>
-                        <span><%----%>
-                             <m:link link="${data.value.Website}" newWin="${websiteNewWin}">${websiteURL}</m:link><%----%>
-                        </span><%----%>
-                    </div><%----%>
+            </c:if>
+            <div class="${showMinLabels ? 'website' : 'website tablerow'}"><%----%>
+                    <c:if test="${not showMinLabels}">
+                    <m:icon-prefix icon="globe" showText="${showTextLabels}" showIcon="${showIconLabels}">
+                        <jsp:attribute name="text"><fmt:message key="msg.page.contact.website"/></jsp:attribute>
+                    </m:icon-prefix>
                 </c:if>
-            </c:if>
-
-            <c:if test="${showNoteBottom}">
-                <div class="note bottom notice">${notice}</div><%----%>
-            </c:if>
-
-            <c:if test="${showDescBottom}">
-                <div class="note bottom description">${description}</div><%----%>
-            </c:if>
-
-            <c:if test="${showLinkAsText}">
-                <div class="contactlink"><%----%>
-                    <m:link link="${link}" css="piece-text-link" newWin="${websiteNewWin}" />
-                </div><%----%>
-            </c:if>
-
-            <c:if test="${showVcard}">
-                <div class="vcard"><%----%>
-                    <a href="<cms:link>/system/modules/alkacon.mercury.template/elements/contact-vcf.jsp?id=${cms.element.id}</cms:link>"><%----%>
-                        <fmt:message key="msg.page.contact.vcard.download"/>
-                    </a><%----%>
-                </div><%----%>
-            </c:if>
-
-            <c:if test="${showLinkAsButton}">
-            <c:choose>
-                <c:when test="${linkOption eq 'button-lg'}">
-                    <c:set var="btnClass" value="btn" />
-                </c:when>
-                <c:when test="${linkOption eq 'button-full'}">
-                    <c:set var="btnClass" value="btn btn-block" />
-                </c:when>
-                <c:otherwise>
-                    <c:set var="btnClass" value="btn btn-sm" />
-                </c:otherwise>
-            </c:choose>
-                <m:link link="${link}" css="contactlink ${btnClass}" newWin="${websiteNewWin}" />
-            </c:if>
-
-        <c:if test="${addTextBox}"></div></c:if>
-        <m:nl />
-
+                ${showMinLabels ? '' : '<span>'}
+                        <m:link link="${websiteLink}" newWin="${websiteNewWin}">${websiteURL}</m:link><%----%>
+                ${showMinLabels ? '' : '</span>'}
+            </div><%----%>
+        </c:if>
     </c:if>
+
+    <c:if test="${showNoteBottom}">
+        <div class="note bottom notice">${notice}</div><%----%>
+    </c:if>
+
+    <c:if test="${showDescBottom}">
+        <div class="note bottom description">${description}</div><%----%>
+    </c:if>
+
+    <c:if test="${showLinkAsText}">
+        <div class="contactlink"><%----%>
+            <m:link link="${link}" css="piece-text-link" newWin="${websiteNewWin}" />
+        </div><%----%>
+    </c:if>
+
+    <c:if test="${showVcard}">
+        <div class="vcard"><%----%>
+            <a href="<cms:link>/system/modules/alkacon.mercury.template/elements/contact-vcf.jsp?id=${cms.element.id}</cms:link>"><%----%>
+                <fmt:message key="msg.page.contact.vcard.download"/>
+            </a><%----%>
+        </div><%----%>
+    </c:if>
+
+    <c:if test="${showLinkAsButton}">
+        <c:choose>
+            <c:when test="${linkOption eq 'button-lg'}">
+                <c:set var="btnClass" value="btn" />
+            </c:when>
+            <c:when test="${linkOption eq 'button-full'}">
+                <c:set var="btnClass" value="btn btn-block" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="btnClass" value="btn btn-sm" />
+            </c:otherwise>
+        </c:choose>
+        <m:link link="${link}" css="contactlink ${btnClass}" newWin="${websiteNewWin}" />
+    </c:if>
+
+    <c:if test="${addTextBox}"></div><m:nl /></c:if>
+
 </m:image-animated>
 
 </cms:bundle>

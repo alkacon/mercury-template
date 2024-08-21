@@ -52,7 +52,7 @@
 <m:teaser-piece
     cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     attrWrapper="${kind}"
-    headline="${showTitle ? title : null}"
+    headline="${showTitle and (valName ne title) ? title : null}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
@@ -92,6 +92,7 @@
             labelOption="${labelOption}"
             linkToRelated="${showOrganizationLink ? valLinkToRelated : null}"
             linkToDetail="${linkToDetail}"
+            linkToWebsite="${valLinkToWebsite}"
             hsize="${hsize}"
             showName="${setShowName}"
             showPosition="${setShowPosition}"

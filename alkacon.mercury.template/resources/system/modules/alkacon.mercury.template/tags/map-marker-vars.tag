@@ -14,6 +14,9 @@
 <%@ attribute name="marker" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
     description="Use this to generate the marker info for a marker directly entered in a map." %>
 
+<%@ attribute name="geocoords" type="java.lang.String" required="false"
+    description="The geo coordinates the search has returned for this marker." %>
+
 <%@ attribute name="cssWrapper" type="java.lang.String" required="false"
     description="Optional CSS wrapper classes added to the generated marker info div." %>
 
@@ -25,6 +28,8 @@
 
 <%@ attribute name="showRoute" type="java.lang.Boolean" required="false"
     description="If true, show route option in the marker info window. Currently only supported for Google maps, not OSM. Default is 'false'." %>
+
+
 
 
 <%@ variable name-given="markerData" declare="true"
@@ -41,20 +46,34 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
+<c:set var="useContentTypes" value="${[
+    'm-poi',
+    'm-person',
+    'm-organization',
+    'm-contact'
+]}" />
+
+<c:if test="${not empty content and not fn:contains(useContentTypes, content.typeName)}">
+    <c:set var="address" value="${content.value.AddressChoice}" />
+    <c:set var="content" value="${null}" />
+</c:if>
+
 <c:choose>
     <c:when test="${not empty content}">
 
         <%-- Generate the marker info for a content element of type 'm-poi', 'm-person', 'm-organization' or 'm-contact' --%>
         <c:set var="value"                  value="${content.value}" />
         <c:set var="showPosition"           value="${true}" />
-        <c:set var="showOrganization"       value="${true}" />
+        <c:set var="showOrganization"       value="${false}" />
         <c:set var="showNotice"             value="top" />
         <c:set var="showDescription"        value="top" />
         <c:set var="showPhone"              value="${true}" />
         <c:set var="showWebsite"            value="${true}" />
         <c:set var="showEmail"              value="${true}" />
         <c:set var="labelOption"            value="label-min" />
-        <c:set var="linkOption"             value="text" />
+        <c:set var="linkOption"             value="${cms.formatterSettingDefault['m/display/person-compact']['linkOption']}" />
+        <c:set var="linkTarget"             value="${cms.sitemapConfig.attribute['geosearch.marker.link.target']}" />
+        <c:set var="buttonText"             value="${cms.sitemapConfig.attribute['geosearch.marker.button.text']}" />
 
         <m:contact-vars
             content="${content}"
@@ -85,6 +104,7 @@
                         showAddressAlways="${true}"
                         data="${value.Contact}"
                         locData="${locData}"
+                        linkToWebsite="${valLinkToWebsite}"
 
                         showFacilities="${showFacilities}"
                         showNotice="${showNotice}"
@@ -102,19 +122,8 @@
         </m:contact-vars>
 
         <c:if test="${showLink or (empty showLink)}">
-            <c:if test="${empty link}">
-                <c:set var="pageUri"  value="${cms.requestContext.folderUri}" />
-                <c:set var="link"><cms:link baseUri="${pageUri}">${content.filename}</cms:link></c:set>
-                <c:set var="isDetailLink" value="${true}" />
-            </c:if>
-            <c:if test="${content.typeName eq 'm-poi'}">
-                <c:if test="${not empty content.valueList.Paragraph}">
-                    <c:set var="link" value="${content.valueList.Paragraph.get(0).value.Link}" />
-                    <c:if test="${empty link}">
-                        <c:set var="link" value="${content.valueList.Paragraph.get(content.valueList.Paragraph.size() - 1).value.Link}" />
-                    </c:if>
-                </c:if>
-            </c:if>
+            <c:set var="linkToDetail"><cms:link baseUri="${cms.requestContext.folderUri}">${content.filename}</cms:link></c:set>
+            <c:set var="link" value="${(linkOption ne 'none') and (linkTarget ne 'none') ? (linkTarget eq 'detail' ? linkToDetail : value.Link) : null}" />
         </c:if>
 
     </c:when>
@@ -125,20 +134,22 @@
 
             <c:set var="markerHeading">
                 <c:if test="${not empty locData.name}">
-                    <h3 class="fn n">${locData.name}</h3>
+                    <h3 class="fn n">${locData.name}</h3><%----%>
                 </c:if>
             </c:set>
 
             <c:set var="markerText">
                 <m:contact
+                    kind="poi"
                     locData="${locData}"
                     addTextBox="${false}"
                     showAddressAlways="${true}"
                     showFacilities="${showFacilities}"
+                    labelOption="label-min"
                 />
             </c:set>
 
-            <%-- Address does not have a link --%>
+            <%-- Address only node does not require a detail page link --%>
 
             <c:set var="markerData" value="${locData}" />
         </m:location-vars>
@@ -151,16 +162,19 @@
         <jsp:setProperty name="coordBean" property="wrappedValue" value="${marker.value.Coord.stringValue}" />
 
         <c:if test="${(coordBean.lat != 0) and (coordBean.lng != 0)}">
+
             <c:if test="${not empty marker.value.Caption}">
-                <c:set var="markerHeading"><h3 class="fn n">${marker.value.Caption}</h3></c:set>
+                <c:set var="markerHeading">
+                    <h3 class="fn n">${marker.value.Caption}</h3><%----%>
+                </c:set>
             </c:if>
 
             <c:set var="markerText">
                 <div class="adr"><%----%>
                     <c:choose>
                         <c:when test="${not empty marker.value.Address}">
-                                ${cms:escapeHtml(fn:trim(marker.value.Address))}
-                        <c:set var="markerNeedsGeoCode" value="false" />
+                            ${cms:escapeHtml(fn:trim(marker.value.Address))}
+                            <c:set var="markerNeedsGeoCode" value="false" />
                         </c:when>
                         <c:otherwise>
                             <%-- This will be replaced by Google GeoCoder in JavaScript --%>
@@ -169,9 +183,16 @@
                         </c:otherwise>
                     </c:choose>
                 </div><%----%>
+                <m:contact
+                    kind="poi"
+                    addTextBox="${false}"
+                    linkToWebsite="${marker.value.Link}"
+                    showWebsite="${showLink}"
+                    labelOption="label-min"
+                />
             </c:set>
 
-            <c:set var="link" value="${showLink ? marker.value.Link : null}" />
+            <%-- Direct marker does not require a detail page link --%>
 
             <c:set var="markerData" value="${{
                 'lat': coordBean.lat,
@@ -181,6 +202,19 @@
         </c:if>
 
     </c:when>
+    <c:otherwise>
+       <c:if test="${not empty geocoords}">
+            <c:set var="markerHeading">
+                <h3 class="fn n"><fmt:message key="msg.page.map.info.empty" /></h3><%----%>
+            </c:set>
+
+            <c:set var="geocos" value="${fn:split(geocoords, ',')}" />
+            <c:set var="markerData" value="${{
+                'lat': geocos[1],
+                'lng': geocos[0]
+            }}" />
+        </c:if>
+    </c:otherwise>
 </c:choose>
 
 <c:if test="${not empty markerData}">
@@ -192,6 +226,7 @@
                 link="${link}"
                 css="piece-text-link"
                 text="${linkDefaultText}"
+                forceText="${buttonText}"
                 noExternalMarker="${true}" />
         </c:set>
     </c:if>

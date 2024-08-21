@@ -31,7 +31,10 @@
     description="The address to display for the contact." %>
 
 <%@ variable name-given="valLinkToRelated" declare="true"
-    description="The link to the organization (for persons) or to the contact person (for organizations)." %>
+    description="The link to the organization (for persons) or to the contact person (for organizations). Empty for POI." %>
+
+<%@ variable name-given="valLinkToWebsite" declare="true"
+    description="The link to the contact website. For person / organizations this is 'content.value.Contact.value.Website', for poi this is 'content.value.Link'." %>
 
 <%@ variable name-given="kindModern" declare="true"
     description="If true, these contact vars are based on content type 'm-organization' or 'm-person'." %>
@@ -55,6 +58,7 @@
 <c:set var="valPosition"            value="${value.Position}" />
 <c:set var="valOrganization"        value="${value.Organization}" />
 <c:set var="valAddress"             value="${value.Contact.value.AddressChoice}" />
+<c:set var="valLinkToWebsite"       value="${value.Contact.value.Website}" />
 
 <c:choose>
     <c:when test="${content.typeName eq 'm-organization'}">
@@ -77,6 +81,14 @@
         <c:set var="valKind"                value="poi" />
         <c:set var="valName"                value="${value.Title}" />
         <c:set var="valAddress"             value="${content}" />
+        <c:set var="valLinkToWebsite"       value="${
+            not empty content.valueList.Paragraph ?
+                (not empty content.valueList.Paragraph.get(0).value.Link ?
+                    content.valueList.Paragraph.get(0).value.Link :
+                    content.valueList.Paragraph.get(content.valueList.Paragraph.size() - 1).value.Link
+                ) :
+                null
+        }" />
         <c:set var="useLinkedContent"       value="${false}" />
         <c:set var="setShowName"            value="${true}" />
         <c:set var="setShowPosition"        value="${false}" />

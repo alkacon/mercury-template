@@ -21,15 +21,18 @@
     description="Optional CSS wrapper classes added to the generated marker info div." %>
 
 <%@ attribute name="showLink" type="java.lang.Boolean" required="false"
-    description="Controls if the link is displayed. Default is 'true'." %>
+    description="Controls if the link is displayed. Default is 'true'.
+    There are actually 2 type of links that can be displayed: The link to a website, and the link to a detail page.
+    If 'false', then NONE of these links is rendered.
+    If 'true' then the following applies:
+    In case a 'marker' is rendered, this controls the link to the website.
+    In case a 'content' is rendered, this controls the link to the detail page." %>
 
 <%@ attribute name="showFacilities" type="java.lang.Boolean" required="false"
     description="If true, show the facility information in the marker info window. Default is 'false'." %>
 
 <%@ attribute name="showRoute" type="java.lang.Boolean" required="false"
     description="If true, show route option in the marker info window. Currently only supported for Google maps, not OSM. Default is 'false'." %>
-
-
 
 
 <%@ variable name-given="markerData" declare="true"
@@ -52,6 +55,8 @@
     'm-organization',
     'm-contact'
 ]}" />
+
+<c:set var="showFacilities"                 value="${empty showFacilities ? cms.sitemapConfig.attribute['geosearch.marker.show.facilities'].toBoolean : showFacilities}" />
 
 <c:if test="${not empty content and not fn:contains(useContentTypes, content.typeName)}">
     <c:set var="address" value="${content.value.AddressChoice}" />
@@ -104,7 +109,7 @@
                         showAddressAlways="${true}"
                         data="${value.Contact}"
                         locData="${locData}"
-                        linkToWebsite="${valLinkToWebsite}"
+                        linkToWebsite="${empty showLink or showLink ? valLinkToWebsite : null}"
 
                         showFacilities="${showFacilities}"
                         showNotice="${showNotice}"
@@ -121,7 +126,7 @@
             </m:location-vars>
         </m:contact-vars>
 
-        <c:if test="${showLink or (empty showLink)}">
+        <c:if test="${showLink or empty showLink}">
             <c:set var="linkToDetail"><cms:link baseUri="${cms.requestContext.folderUri}">${content.filename}</cms:link></c:set>
             <c:set var="link" value="${(linkOption ne 'none') and (linkTarget ne 'none') ? (linkTarget eq 'detail' ? linkToDetail : value.Link) : null}" />
         </c:if>

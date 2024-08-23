@@ -16,12 +16,12 @@
 <%@ attribute name="fallbackOnlineUrl" type="java.lang.String" required="false"
     description="Fallback URL that is used in the case of a virtual location with no online URL given." %>
 
-<%@ attribute name="test" type="java.lang.Boolean" required="false"
-    description="If provided and false, the location data is not collected." %>
-
 <%@ attribute name="createJsonLd" type="java.lang.Boolean" required="false"
     description="Controls if a JSON-LD object is created for the location and stored in the variable 'locJsonLd'.
     Default is 'false' if not provided." %>
+
+<%@ attribute name="test" type="java.lang.Boolean" required="false"
+    description="If provided and false, the location data is not collected and no JSON is generated." %>
 
 
 <%@ variable name-given="locData" declare="true"

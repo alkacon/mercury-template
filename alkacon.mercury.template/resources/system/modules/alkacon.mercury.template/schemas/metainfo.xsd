@@ -35,6 +35,15 @@
                 <propertybundle name="alkacon.mercury.template.messages" />
             </resourcebundles>
             <searchsettings containerPageOnly="true">
+                <!-- We simulate the disptitle mapping, but mapping to page. This let's the title from the content on the page win. -->
+                <searchsetting element="Title" searchcontent="false">
+                    <solrfield targetfield="disptitle" sourcefield="*_sort" addto="page">
+                        <mapping type="item" class="org.opencms.search.fields.CmsMacroResolvingSearchFieldMapping"/>
+                    </solrfield>
+                    <solrfield targetfield="disptitle" sourcefield="*_sort" addto="page" locale="none">
+                        <mapping type="item" class="org.opencms.search.fields.CmsMacroResolvingSearchFieldMapping"/>
+                    </solrfield>
+                </searchsetting>
                 <searchsetting element="Description" searchcontent="false">
                     <solrfield targetfield="description" addto="page" />
                 </searchsetting>
@@ -51,7 +60,6 @@
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Title.help)]]></Description>
                     <Widget>string</Widget>
-                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>

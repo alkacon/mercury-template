@@ -92,6 +92,7 @@
 </c:choose>
 <c:set var="formBean" value='${cms.getBean("alkacon.mercury.webform.CmsFormBean")}' />
 <c:set var="form" value="${formBean.setForm(formXml.rawContent)}"/>
+<c:set var="keepEmptyMacros" value="${cms.sitemapConfig.attribute['webform.keepemptymacros'] ne 'false'}" />
 
 
 <%-- ###### Check if booking information has been provided ###### --%>
@@ -135,13 +136,26 @@
      <c:if test="${booking.value.KeepDays.isSet}">
         ${form.adjustConfigValue("DBConfig/KeepDays", booking.value.KeepDays.toString)}
     </c:if>
-    <c:if test="${booking.value.Note.isSet}">
-        ${form.adjustConfigValue("macro:event.note", booking.value.Note.toString)}
-    </c:if>
-    <c:if test="${formBookingXml.value.Type.isSet}">
-        ${form.adjustConfigValue("macro:eventtype", formBookingXml.value.Type.toString)}
-        ${form.adjustConfigValue("macro:event.type", formBookingXml.value.Type.toString)}
-    </c:if>
+    <c:choose>
+        <c:when test="${booking.value.Note.isSet}">
+            ${form.adjustConfigValue("macro:event.note", booking.value.Note.toString)}
+        </c:when>
+        <c:otherwise>
+            <c:if test="${not keepEmptyMacros}">${form.adjustConfigValue("macro:event.note", '')}</c:if>
+        </c:otherwise>
+    </c:choose>
+    <c:choose>
+        <c:when test="${formBookingXml.value.Type.isSet}">
+            ${form.adjustConfigValue("macro:eventtype", formBookingXml.value.Type.toString)}
+            ${form.adjustConfigValue("macro:event.type", formBookingXml.value.Type.toString)}
+        </c:when>
+        <c:otherwise>
+            <c:if test="${not keepEmptyMacros}">
+                ${form.adjustConfigValue("macro:eventtype", '')}
+                ${form.adjustConfigValue("macro:event.type", '')}
+            </c:if>
+        </c:otherwise>
+    </c:choose>
     <c:if test="${formBookingXml.value.Dates.isSet}">
         <c:set var="dateSeries" value="${formBookingXml.value.Dates.toDateSeries}" />
         ${form.adjustConfigValue("macro:event.time", dateSeries.last.formatShort)}

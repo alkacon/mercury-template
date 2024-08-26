@@ -827,3 +827,81 @@
      */
     }
 }
+
+@mixin contact-base {
+    --#{$prefix}contact-spacer-x: #{$contact-spacer-x};
+    --#{$prefix}contact-spacer-y: #{$contact-spacer-y};
+
+    @if $use-hyphens {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    .fn.n,
+    .org,
+    .adr,
+    .title,
+    .pos,
+    .note.top,
+    .mail,
+    .facility-icons {
+        margin-top: var(--#{$prefix}contact-spacer-y);
+        margin-bottom: var(--#{$prefix}contact-spacer-y);
+    }
+
+    .contactlink,
+    .link,
+    .note.bottom,
+    .website,
+    .vcard {
+        margin-top: var(--#{$prefix}paragraph-margin-bottom);
+        margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
+    }
+
+    .org {
+        &:has(+ .pos) {
+            margin-bottom: 0;
+        }
+        + .pos {
+            margin-top: 0;
+        }
+    }
+
+    .fn.n {
+        --#{$prefix}piece-headings-margin-bottom: var(--#{$prefix}contact-spacer-y);
+        margin-top: 0;
+    }
+
+    .tablerow {
+        display: table-row;
+        hyphens: none;
+        overflow-wrap: normal;
+        word-break: normal;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        > span {
+            padding-right: var(--#{$prefix}contact-spacer-x);
+            display: table-cell;
+        }
+    }
+
+    .website,
+    .mail {
+        a {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+    }
+
+    .mail {
+        // make sure emails are NOT changed with "-" when line break is inserted
+        hyphenate-character: " ";
+        -webkit-hyphenate-character: " ";
+    }
+
+    > div:last-of-type {
+        margin-bottom: 0;
+    }
+}

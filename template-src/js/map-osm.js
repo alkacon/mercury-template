@@ -37,6 +37,12 @@ var m_mapData = [];
 // API key for accessing the map data
 var m_apiKey;
 
+// Max Zoom to use
+const m_maxZoom = 19;
+const m_clusterMaxZoom = 17;
+const m_clusterRadius = 25;
+const m_clusterCircleRadius = 25;
+
 function getPuempel(color) {
 
   var strokeColor = tinycolor(color).darken(20);
@@ -61,7 +67,7 @@ function getClusterGraphic() {
     const strokeColor = tinycolor(color).darken(20);
     return {
         'circle-color': color,
-        'circle-radius': 20,
+        'circle-radius': m_clusterCircleRadius,
         'circle-stroke-width': 2,
         'circle-stroke-color': strokeColor.toString()
     }
@@ -101,7 +107,7 @@ function showSingleMap(mapData) {
             center: [parseFloat(mapData.centerLng), parseFloat(mapData.centerLat)],
             zoom: mapData.zoom,
             interactive: false,
-            maxZoom: 18,
+            maxZoom: m_maxZoom,
             attributionControl: false
         });
         const attributionControl = new mapgl.AttributionControl({compact:true});
@@ -173,7 +179,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
         map = new mapgl.Map({
             container: mapData.id,
             style: m_style,
-            maxZoom: 18,
+            maxZoom: m_maxZoom,
             attributionControl: false
         });
         const attributionControl = new mapgl.AttributionControl({compact:true});
@@ -260,10 +266,11 @@ function showSingleMapClustered(mapData, filterByGroup) {
                         type: 'geojson',
                         data: map.geojson,
                         cluster: true,
-                        clusterMaxZoom: 15,
-                        clusterRadius: 25
+                        clusterMaxZoom: m_clusterMaxZoom,
+                        clusterRadius: m_clusterRadius
                     });
                 }
+
                 if (!map.getLayer("clusters")) {
                     map.addLayer({
                         id: "clusters",
@@ -290,21 +297,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                         });
                     });
                 }
-                if (!map.getLayer("cluster-count")) {
-                    map.addLayer({
-                        id: "cluster-count",
-                        type: "symbol",
-                        source: "localFeatures",
-                        filter: ["has", "point_count"],
-                        layout: {
-                            "text-field": "{point_count_abbreviated}",
-                            "text-size": 14
-                        },
-                        paint: {
-                            "text-color": getClusterGraphicTextColor().toString(),
-                        }
-                    });
-                }
+
                 for (let group in groups) {
                     if (!map.getLayer("unclustered-point-" + group)) {
                         map.addLayer({
@@ -316,7 +309,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                                 "icon-image": "featureGraphic" + group,
                                 "icon-anchor": "bottom"
                             }
-                        });
+                        }, "clusters");
                         map.on("click", "unclustered-point-" + group, function (e) {
                             const coordinates = e.features[0].geometry.coordinates.slice();
                             const info = e.features[0].properties.info;
@@ -337,6 +330,23 @@ function showSingleMapClustered(mapData, filterByGroup) {
                         });
                     }
                 }
+
+                if (!map.getLayer("cluster-count")) {
+                    map.addLayer({
+                        id: "cluster-count",
+                        type: "symbol",
+                        source: "localFeatures",
+                        filter: ["has", "point_count"],
+                        layout: {
+                            "text-field": "{point_count_abbreviated}",
+                            "text-size": 14
+                        },
+                        paint: {
+                            "text-color": getClusterGraphicTextColor().toString(),
+                        }
+                    });
+                }
+
                 if (!fitted && map.geojson.features && map.geojson.features.length > 0) {
                     map.fitBounds(bounds, {
                         padding: {top: 100, bottom: 100, left: 100, right: 100},
@@ -476,8 +486,8 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
         type: "geojson",
         data: geoJson,
         cluster: true,
-        clusterMaxZoom: 12,
-        clusterRadius: 25
+        clusterMaxZoom: m_clusterMaxZoom,
+        clusterRadius: m_clusterRadius
     });
     let centerPoint;
     for (let md of m_mapData) {

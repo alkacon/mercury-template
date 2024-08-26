@@ -311,6 +311,18 @@
     }
 }
 
+.mt-pm {
+    margin-top: var(--#{$prefix}paragraph-margin-bottom) !important;
+}
+.mb-pm {
+    margin-bottom: var(--#{$prefix}paragraph-margin-bottom) !important;
+}
+.mt-xs {
+    margin-top: var(--#{$prefix}default-margin-verysmall-bottom) !important;
+}
+.mb-xs {
+    margin-bottom: var(--#{$prefix}default-margin-verysmall-bottom) !important;
+}
 .mt-sm {
     margin-top: var(--#{$prefix}default-margin-small) !important;
 }

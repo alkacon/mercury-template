@@ -20,32 +20,15 @@
  */
 
 .type-contact {
-    --#{$prefix}contact-spacer-x: #{$contact-spacer-x};
-    --#{$prefix}contact-spacer-y: #{$contact-spacer-y};
 
-    @if $use-hyphens {
-        overflow-wrap: anywhere;
-        word-break: break-word;
-        hyphens: auto;
-    }
+    @include contact-base;
 
-    .fn,
-    .org,
-    .adr,
-    .title,
-    .pos,
-    .note,
-    .mail,
-    .facility-icons,
-    .vcard {
-        margin-top: var(--#{$prefix}contact-spacer-y);
-        margin-bottom: var(--#{$prefix}contact-spacer-y);
-    }
-
-    .mail {
-        // make sure emails are NOT changed with "-" when line break is inserted
-        hyphenate-character: " ";
-        -webkit-hyphenate-character: " ";
+    .tablerow {
+        > span {
+            &.icon-label {
+                white-space: nowrap;
+            }
+        }
     }
 
     > * > .image-src-box {
@@ -67,6 +50,38 @@
         }
     }
 
+    .title {
+        font-style: italic;
+    }
+
+    .only-icon {
+        padding-left: var(--#{$prefix}contact-spacer-x);
+    }
+
+    .ico,
+    .fa {
+       margin-right: var(--#{$prefix}contact-spacer-x);
+       width: calc(4 * var(--#{$prefix}contact-spacer-x));
+    }
+
+    .img-responsive {
+        width: 100%;
+    }
+
+    .suborg-list {
+        .teaser:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    .piece.full {
+        // do NOT center visual in case the full width is not used
+        > .visual {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
     &.compact {
         .fn.n,
         .org,
@@ -84,69 +99,30 @@
             }
         }
 
-        .fn,
+        .fn.n,
         .org,
-        .adr,
+        .pos,
         .title,
-        // .pos,
-        .note,
-        .contactlink:not(.btn),
-        .facility-icons,
-        .mail {
+        .mail,
+        .facility-icons {
             margin-top: 0;
             margin-bottom: 0;
         }
 
+        .note.bottom,
+        .contactlink,
+        .link,
+        .website,
         .vcard {
-            margin-bottom: 0;
+            margin-top: var(--#{$prefix}contact-spacer-y);
+            margin-bottom: var(--#{$prefix}contact-spacer-y);
         }
-    }
 
-    .fn {
-        --#{$prefix}piece-headings-margin-bottom: var(--#{$prefix}contact-spacer-y);
-        margin-top: 0;
-    }
-
-    .title {
-        font-style: italic;
-    }
-
-    .tablerow {
-        display: table-row;
-        hyphens: none;
-        overflow-wrap: normal;
-        word-break: normal;
-
-        > span {
-            padding-right: var(--#{$prefix}contact-spacer-x);
-            display: table-cell;
-
-            &.icon-label {
-                white-space: nowrap;
+        .note {
+            > * {
+                margin-bottom:  var(--#{$prefix}contact-spacer-y);
             }
         }
-
-        &.website,
-        &.mail {
-            a {
-                overflow-wrap: anywhere;
-                word-break: break-word;
-            }
-        }
-    }
-
-    .only-icon {
-        padding-left: var(--#{$prefix}contact-spacer-x);
-    }
-
-    .ico,
-    .fa {
-       margin-right: var(--#{$prefix}contact-spacer-x);
-       width: calc(4 * var(--#{$prefix}contact-spacer-x));
-    }
-
-    .img-responsive {
-        width: 100%;
     }
 
     .note {
@@ -157,20 +133,6 @@
                 // last element in text must not add margin
                 margin-bottom: 0;
             }
-        }
-    }
-
-    .suborg-list {
-        .teaser:last-of-type {
-            margin-bottom: 0;
-        }
-    }
-
-    .piece.full {
-        // do NOT center visual in case the full width is not used
-        > .visual {
-            margin-left: 0;
-            margin-right: 0;
         }
     }
 

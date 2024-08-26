@@ -238,7 +238,7 @@
 
     <c:set var="markerInfoMarkup">
 
-        <div class="map-marker type-contact${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"><%----%>
+        <div class="map-marker${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"><%----%>
             <c:if test="${not empty markerHeading}">
                 <div class="heading"><%----%>
                     ${markerHeading}

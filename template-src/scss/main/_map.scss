@@ -74,7 +74,7 @@
         }
     }
 
-    .map-marker.type-contact {
+    .map-marker {
         display: block;
         color: var(--#{$prefix}map-popup-color);
         font-size: var(--#{$prefix}map-font-size);
@@ -82,6 +82,8 @@
         line-height: 1.2;
         padding: var(--#{$prefix}map-marker-padding) !important;
         margin: 0 !important;
+
+        @include contact-base;
 
         h3, .h3, h4, .h4 {
             line-height: 1.1;
@@ -93,14 +95,17 @@
             font-size: var(--#{$prefix}map-font-size);
         }
 
-        > div + div {
-            margin-top: var(--#{$prefix}contact-spacer-y);
-        }
-
         .facility-icons {
             --#{$prefix}acc-icon-size: calc(0.75 * #{$acc-icon-size});
             --#{$prefix}acc-font-size: calc(0.75 * #{$acc-font-size});
             --#{$prefix}acc-margin: calc(0.75 * var(--#{$prefix}ws-margin));
+        }
+
+        .link,
+        .website {
+            > a {
+                font-weight: $map-link-font-weight;
+            }
         }
 
         .link,
@@ -168,6 +173,7 @@
     .maplibregl-popup-close-button {
         color: var(--#{$prefix}map-popup-color);
         font-size: 20px;
+        padding-inline: 10px;
         &:hover {
             background-color: $white;
             opacity: 0.8;

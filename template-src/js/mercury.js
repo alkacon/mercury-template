@@ -991,7 +991,7 @@ const Mercury = function (jQ) {
         }
 
         // main init function - called from jQuery(document).ready() - see below in this script
-        if (DEBUG) console.info("Mercury.init() - Modularized version");
+        if (DEBUG) console.info("Mercury.init() - Modularized version [24-09]");
         window.Mercury = Mercury;
 
         try {

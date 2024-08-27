@@ -38,10 +38,10 @@ var m_mapData = [];
 var m_apiKey;
 
 // Max Zoom to use
-const m_maxZoom = 19;
-const m_clusterMaxZoom = 17;
-const m_clusterRadius = 25;
-const m_clusterCircleRadius = 25;
+const m_maxZoom = 18;
+const m_clusterMaxZoom = 15;
+const m_clusterRadius = 23;
+const m_clusterCircleRadius = 24;
 
 function getPuempel(color) {
 
@@ -306,6 +306,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                             source: "localFeatures",
                             filter: ["==", "group", group],
                             layout: {
+                                "icon-allow-overlap": true,
                                 "icon-image": "featureGraphic" + group,
                                 "icon-anchor": "bottom"
                             }
@@ -338,6 +339,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                         source: "localFeatures",
                         filter: ["has", "point_count"],
                         layout: {
+                            "icon-allow-overlap": false,
                             "text-field": "{point_count_abbreviated}",
                             "text-size": 14
                         },
@@ -518,6 +520,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
         source: "features",
         filter: ["has", "point_count"],
         layout: {
+            "icon-allow-overlap": false,
             "text-field": "{point_count_abbreviated}",
             "text-size": 14
         },
@@ -531,6 +534,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
         source: "features",
         filter: ["!", ["has", "point_count"]],
         layout: {
+            "icon-allow-overlap": true,
             "icon-image": "featureGraphic",
             "icon-anchor": "bottom"
         }

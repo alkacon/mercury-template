@@ -1,12 +1,12 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="nav-items"
+    display-name="nav-vars"
     body-content="scriptless"
     trimDirectiveWhitespaces="true"
     description="Sets data that controls how a navigation is build." %>
 
 
 <%@ attribute name="params" type="java.util.Map" required="true"
-    description="The parameters passed to the page."%>
+    description="The JSP parameters passed to the page."%>
 
 <%@ attribute name="navPathRes" type="org.opencms.jsp.CmsJspResourceWrapper" required="false"
     description="The resource from the URI to display the the navigation for."%>
@@ -31,7 +31,7 @@
     <c:when test="${not empty navPathRes}">
         <%-- Skip other cases --%>
     </c:when>
-    <c:when test="${not empty params.navpath}">
+    <c:when test="${not empty param and not empty params.navpath}">
         <c:set var="navPathRes"             value="${cms.vfs.resource[params.navpath]}" />
         <c:set var="navPathRes"             value="${not empty navPathRes and (navPathRes.propertySearch['mercury.navpath'] eq 'param') ? navPathRes : null}" />
     </c:when>

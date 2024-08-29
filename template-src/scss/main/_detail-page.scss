@@ -241,10 +241,6 @@
                 flex-direction: row;
                 justify-content: space-between;
 
-                &.right {
-                    justify-content: flex-end;
-                }
-
                 > div + div {
                     margin-top: 0;
                 }
@@ -256,6 +252,13 @@
                 .infogroup,
                 .date {
                     order: 10;
+                }
+            }
+            &:not(.pnv) {
+                .visual-info {
+                    &.right {
+                        justify-content: flex-end;
+                    }
                 }
             }
         }

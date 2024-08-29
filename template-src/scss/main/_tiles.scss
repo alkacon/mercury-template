@@ -41,12 +41,13 @@ $square-overlay-h4-size:        $square-overlay-h3-size !default;
 $square-overlay-text-size:      1.2rem !default;
 $square-overlay-line-height:    1.2 !default;
 
-$square-overlay-bg-color:       #000 !default;
 $square-overlay-bg-opacity:     0.65 !default;
 $square-overlay-boxbg-opacity:  0.75 !default;
 
-$square-overlay-bg-color-xs:    #272727 !default;
-$square-overlay-text-color:     $white !default;
+$square-overlay-bg-color:       #000 !default;
+$square-overlay-text-color:     get-text-color($square-overlay-bg-color) !default;
+$square-overlay-bg-color-xs:    $square-overlay-bg-color !default;
+$square-overlay-text-color-xs:  get-text-color($square-overlay-bg-color-xs) !default;
 $square-overlay-text-shadow:    1px 1px 1px #000 !default;
 
 $tile-overlay-bg-color:         rgba(0, 0, 0, 0.3) !default;
@@ -119,6 +120,9 @@ $sq-heights-xl:    () !default;
            // creates the media query square versions like .square-lg-5 etc.
             width: #{100% * divide($col-size, $grid-columns, $divide-precision)};
             padding-bottom: calc-square-height($col-size) !important;
+            &:only-of-type {
+                width: 100%;
+            }
         }
     }
 
@@ -221,6 +225,9 @@ $sq-heights-xl:    () !default;
 .row-square {
     margin: calc(-1 * var(--#{$prefix}sq-margin));
     padding-bottom: var(--#{$prefix}element-margin);
+    &:last-of-type {
+        padding-bottom: 0;
+    }
 }
 
 .square-m-0 .square-col .content,
@@ -487,6 +494,7 @@ $sq-heights-xl:    () !default;
             }
 
             .text-overlay {
+                --#{$prefix}square-text-overlay-fg: #{$square-overlay-text-color-xs};
                 --#{$prefix}square-text-overlay-bg: #{$square-overlay-bg-color-xs};
                 --#{$prefix}square-text-overlay-bg-rgb: #{to-rgb($square-overlay-bg-color-xs)};
                 --#{$prefix}square-text-overlay-bg-opacity: 1;

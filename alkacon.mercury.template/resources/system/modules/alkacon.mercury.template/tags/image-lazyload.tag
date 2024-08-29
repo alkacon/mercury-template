@@ -171,7 +171,7 @@
                 <c:if test="${not empty width}">${' '}width="${width}"</c:if>
                 <c:if test="${not empty height}">${' '}height="${height}"</c:if>
                 <c:if test="${not empty cssImage}">${' '}class="${cssImage}"</c:if>
-                <c:if test="${true}">${' '}alt="<m:out value="${alt}" lenientEscaping="${true}" />"</c:if>
+                <c:if test="${true}">${' '}alt="<m:out value="${alt}" lenientEscaping="${true}" />"</c:if><%--
         --%>><%----%>
         </noscript><%----%>
     </c:if>

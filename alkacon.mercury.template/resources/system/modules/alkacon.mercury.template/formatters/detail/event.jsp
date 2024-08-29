@@ -249,7 +249,7 @@ ${settingDefaultsDebug}
 </c:if>
 
 <c:if test="${showCosts}">
-    <m:costs content="${content}" hsize="${hsize}" />
+    <m:costs content="${content}" hsize="${hsize+1}" />
 </c:if>
 
 <c:if test="${not empty paragraphsContent or not empty paragraphsDownload}">

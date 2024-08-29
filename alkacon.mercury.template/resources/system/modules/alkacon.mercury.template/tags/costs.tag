@@ -28,13 +28,11 @@
 <div class="detail-content event-costs pivot"><%----%>
 
     <fmt:message key="msg.page.event.costs" var="costsHeading" />
-    <m:heading level="${hsize+1}" text="${costsHeading}" css="ev-cost-heading" />
+    <m:heading level="${hsize}" text="${costsHeading}" css="ev-cost-heading" />
 
     <div class="cost-table"><%----%>
         <c:choose>
-            <c:when test="${showLabelOnly}">
-                <div>${content.value.Costs.value.Label}</div>
-            </c:when>
+            <c:when test="${showLabelOnly}">${content.value.Costs.value.Label}</c:when>
             <c:otherwise>
                 <c:forEach var="costs" items="${content.valueList.Costs}">
                     <div class="ct-category"><%----%>

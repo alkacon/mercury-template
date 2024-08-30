@@ -48,6 +48,9 @@
     showOrganization="${showOrganization}">
 
 <c:set var="linkTarget"             value="${(setLinkOption ne 'none') and (linkTarget ne 'none') ? (linkTarget eq 'detail' ? linkToDetail : value.Link) : null}" />
+<c:set var="image"                  value="${value.Image.isSet ? value.Image : (value.Paragraph.value.Image.isSet ? value.Paragraph.value.Image : null)}" />
+<c:set var="description"            value="${value.Description.isSet ? value.Description : (value.Paragraph.value.Text.isSet ? value.Paragraph.value.Text : null)}" />
+
 
 <m:teaser-piece
     cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
@@ -67,7 +70,7 @@
         <c:if test="${setShowVisual}">
             <m:contact
                 kind="${valKind}"
-                image="${value.Image}"
+                image="${image}"
                 name="${valKind eq 'org' ? null : valName}"
                 organization="${valOrganization}"
                 imageRatio="${setRatio}"
@@ -86,7 +89,7 @@
             position="${valPosition}"
             organization="${valOrganization}"
             notice="${value.Notice}"
-            description="${value.Description}"
+            description="${description}"
             data="${value.Contact}"
             address="${valAddress}"
             labelOption="${labelOption}"

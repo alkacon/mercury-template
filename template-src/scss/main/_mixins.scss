@@ -829,8 +829,6 @@
 }
 
 @mixin contact-base {
-    --#{$prefix}contact-spacer-x: #{$contact-spacer-x};
-    --#{$prefix}contact-spacer-y: #{$contact-spacer-y};
 
     @if $use-hyphens {
         overflow-wrap: anywhere;
@@ -882,7 +880,7 @@
         margin-bottom: 0;
 
         > span {
-            padding-right: var(--#{$prefix}contact-spacer-x);
+            padding-right: var(--#{$prefix}ws-margin);
             display: table-cell;
         }
     }

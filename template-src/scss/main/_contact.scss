@@ -21,6 +21,8 @@
 
 .type-contact {
 
+    --#{$prefix}contact-spacer-y: #{$contact-spacer-y};
+
     @include contact-base;
 
     .tablerow {
@@ -55,13 +57,13 @@
     }
 
     .only-icon {
-        padding-left: var(--#{$prefix}contact-spacer-x);
+        padding-left: var(--#{$prefix}ws-margin);
     }
 
     .ico,
     .fa {
-       margin-right: var(--#{$prefix}contact-spacer-x);
-       width: calc(4 * var(--#{$prefix}contact-spacer-x));
+       margin-right: var(--#{$prefix}ws-margin);
+       width: calc(4 * var(--#{$prefix}ws-margin));
     }
 
     .img-responsive {

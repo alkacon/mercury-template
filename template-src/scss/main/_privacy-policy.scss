@@ -591,6 +591,7 @@ html.keyboard-nav {
     justify-content: center;
     overflow: scroll !important;
     padding: var(--#{$prefix}box-padding);
+    scrollbar-width: none;
     cursor: auto;
     // must set this because some elements (e.g. OSM) add another class that changes the font
     font: $font-weight-base #{$cookie-notice-font-size-mobile} / #{$line-height-base} $font-family-base;

@@ -862,8 +862,8 @@ $map-hide-buttons-if-not-visible:   false !default;
 $map-popup-color:                   $text-dark !default;
 $map-popup-bg:                      $white !default;
 $map-link-font-weight:              var(--#{$prefix}font-weight-bold) !default;
-$map-marker-padding:                var(--#{$prefix}default-margin-verysmall) !default;
-
+$map-marker-padding:                0.5rem !default; // Markers should NOT depend on default margins
+$map-marker-spacer-y:               $map-marker-padding !default;
 
 // Map colors (for marker groups)
 

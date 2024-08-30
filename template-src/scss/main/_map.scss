@@ -26,6 +26,7 @@
     --#{$prefix}map-font-size: #{$map-text-size};
     --#{$prefix}map-font-weight: #{$map-text-weight};
     --#{$prefix}map-marker-padding: #{$map-marker-padding};
+    --#{$prefix}map-marker-spacer-y: #{$map-marker-spacer-y};
 
     .mapbuttons {
         margin-top: calc(0.5 * var(--#{$prefix}element-margin));
@@ -75,6 +76,8 @@
     }
 
     .map-marker {
+        --#{$prefix}contact-spacer-y: var(--#{$prefix}map-marker-spacer-y);
+
         display: block;
         color: var(--#{$prefix}map-popup-color);
         font-size: var(--#{$prefix}map-font-size);

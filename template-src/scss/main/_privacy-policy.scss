@@ -359,13 +359,15 @@
     }
 }
 
+.type-privacy-policy {
+    > div + div {
+        margin-top: calc(2 * var(--#{$prefix}paragraph-margin-bottom));
+    }
+}
+
 .pp-toggle {
     position: relative;
     display: flex;
-
-    + .pp-toggle {
-        margin-top: var(--#{$prefix}default-margin);
-    }
 
     .toggle-label {
         display: block;
@@ -492,7 +494,10 @@
 }
 
 .pp-element {
-    margin-top: var(--#{$prefix}default-margin);
+    padding: var(--#{$prefix}box-padding);
+    border-radius: var(--#{$prefix}border-radius);
+    color: var(--#{$prefix}highlight-fg-color);
+    background-color: var(--#{$prefix}highlight-color);
 }
 
 #pp-matomo-jst {

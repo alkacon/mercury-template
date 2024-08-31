@@ -31,6 +31,7 @@
         outline-width: 2px;
         outline-offset: -2px;
     }
+    box-shadow: none;
     z-index: $above-oc-z-index + 500000; // well above OpenCms edit points AND menu dropdowns
 }
 

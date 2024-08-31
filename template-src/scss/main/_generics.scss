@@ -418,33 +418,3 @@
         }
     }
 }
-
-html {
-    // opencms inserted controls in mouse mode should not get the focus
-    .opencms,
-    .opencms * {
-        &:focus {
-            outline: none;
-            box-shadow: none;
-        }
-    }
-
-    // opencms inserted controls in keyboard mode can get the focus
-    &.keyboard-nav .opencms,
-    &.keyboard-nav .opencms * {
-        &:focus {
-            outline-color: $focus-outline-color;
-            outline-width: 3px;
-            outline-style: solid;
-            outline-offset: -2px;
-            box-shadow: none;
-        }
-    }
-
-    // hide selected elements if JS is available
-    &.hasscript {
-        .hide-hasscript {
-            display: none;
-        }
-    }
-}

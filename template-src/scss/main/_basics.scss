@@ -44,6 +44,15 @@ html {
         }
     }
 
+    // opencms edit points in mouse mode should not get the focus
+    .opencms,
+    .opencms * {
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
     &.keyboard-nav {
         *:not(.mce-edit-focus),
         .dropdown > a,
@@ -53,12 +62,22 @@ html {
                 @include focus-outline();
             }
         }
+
         .media-box,
         .focus-within {
             &:focus-within {
                 @include focus-outline(true);
             }
         }
+
+        .opencms,
+        .opencms * {
+            &:focus {
+                // opencms inserted controls in keyboard mode will get the focus because of strong :not(...) rule from above
+                outline-offset: -2px;
+            }
+        }
+
     }
 
     &.mercury-page {
@@ -69,6 +88,13 @@ html {
             min-height: 100vh;
             max-width: 100vw;
             overflow: hidden;
+        }
+    }
+
+    // hide selected elements if JS is available
+    &.hasscript {
+        .hide-hasscript {
+            display: none;
         }
     }
 }

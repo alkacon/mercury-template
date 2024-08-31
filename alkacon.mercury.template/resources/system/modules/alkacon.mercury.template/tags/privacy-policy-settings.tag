@@ -94,7 +94,7 @@
 
         <c:choose>
             <c:when test="${not cms.isOnlineProject}">
-                <div class="pp-element box not-online"><%----%>
+                <div class="pp-element not-online"><%----%>
                     <fmt:message key="msg.page.privacypolicy.Matomo.notonline" />
                 </div><%----%>
             </c:when>
@@ -111,7 +111,7 @@
                         <cms:jsonvalue key="dnttext">${policyRes.value.MatomoPolicy.value.DntText.isSet ? policyRes.value.MatomoPolicy.value.DntText : DntText}</cms:jsonvalue>
                     </c:if>
                 </cms:jsonobject>
-                <div id="pp-matomo-jst" class="pp-element box" data-jst='${matomoJst.compact}'><%----%>
+                <div id="pp-matomo-jst" class="pp-element" data-jst='${matomoJst.compact}'><%----%>
                     <div class="jst-msg"></div><%----%>
                     <div class="jst-btn"><%----%>
                         <label for="pp-matomo-optout" class="checkbox"><%----%>

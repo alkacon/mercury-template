@@ -99,7 +99,7 @@
                     <DisplayName><![CDATA[%(key.label.MetaInfo.SearchBoost)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.SearchBoost.help)]]></Description>
                     <Widget>select</Widget>
-                    <Default><![CDATA[none]]></Default>
+                    <Default><![CDATA[keywords]]></Default>
                     <WidgetConfig><![CDATA[
                         none:%(key.label.MetaInfo.SearchBoost.none)|
                         keywords:%(key.label.MetaInfo.SearchBoost.keywords)|

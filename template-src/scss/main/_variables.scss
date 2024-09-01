@@ -936,7 +936,7 @@ $sitemap-border-radius:             var(--#{$prefix}border-radius) !default;
 
 $color-facebook:                    #4267b2 !default;
 $color-youtube:                     #ff0000 !default;
-$color-twitter:                     #00acee !default;
+$color-x:                           #000000 !default;
 $color-github:                      #777777 !default;
 $color-xing:                        #026466 !default;
 $color-rss:                         #ee802f !default;
@@ -952,7 +952,7 @@ $color-slideshare:                  #e98325 !default;
 
 $color-pbg-default:                 $black !default;
 $color-pbg-facebook:                $color-facebook !default;
-$color-pbg-twitter:                 $color-twitter !default;
+$color-pbg-twitter:                 $color-x !default;
 
 
 // Social links / Shariff
@@ -981,7 +981,7 @@ $row-paddings: (
 $social-links:
     (facebook, $color-facebook),
     (youtube, $color-youtube),
-    (twitter, $color-twitter),
+    (twitter, $color-x),
     (github, $color-github),
     (xing, $color-xing),
     (rss, $color-rss),

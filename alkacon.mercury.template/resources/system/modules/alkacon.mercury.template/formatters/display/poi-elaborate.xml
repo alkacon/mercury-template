@@ -54,7 +54,7 @@
       <IncludeName><![CDATA[mapRatio.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[mapZoom.default]]></IncludeName>
+      <IncludeName><![CDATA[mapZoom.fromCoords]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showMap.true]]></IncludeName>

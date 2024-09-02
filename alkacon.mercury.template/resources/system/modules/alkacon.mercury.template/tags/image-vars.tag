@@ -70,9 +70,11 @@
     description="The combination of description and copyright." %>
 
 <%@ variable name-given="imageWidth" declare="true"
+    variable-class="java.lang.Integer"
     description="The width of the image in pixel." %>
 
 <%@ variable name-given="imageHeight" declare="true"
+    variable-class="java.lang.Integer"
     description="The height of the image in pixel." %>
 
 <%@ variable name-given="imageOrientation" declare="true"

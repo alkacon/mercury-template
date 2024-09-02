@@ -19,6 +19,9 @@
 <%@ attribute name="ratio" type="java.lang.String" required="false"
     description="The display ratio of the map, e.g. '1-1' or '16-9'" %>
 
+<%@ attribute name="ratioLg" type="java.lang.String" required="false"
+    description="Map ratio for large screens." %>
+
 <%@ attribute name="zoom" type="java.lang.String" required="false"
     description="The initial map zoom factor. If not set, will use '13' for OSM and '14' for Google as default.
     If set to 'firstMarker' the zoom level of the first marker will be used." %>
@@ -83,14 +86,14 @@
     </c:choose>
 </c:if>
 
-<c:set var="isOsm" value="${not (provider eq 'google')}" />
-
-<c:set var="apiKey" value="${isOsm ? osmApiKey : googleApiKey}" />
-<c:set var="noApiKey" value="${empty apiKey or (apiKey eq 'none')}" />
-<c:set var="ratio" value="${empty ratio ? '16-9' : ratio}" />
-<c:set var="showRoute" value="${showRoute and not isOsm}" />
-<c:set var="type" value="${isOsm ? null : type}" />
-<c:set var="disableEditModePlaceholder" value="${disableEditModePlaceholder eq true ? true : false}" />
+<c:set var="isOsm"          value="${not (provider eq 'google')}" />
+<c:set var="type"           value="${isOsm ? null : type}" />
+<c:set var="apiKey"         value="${isOsm ? osmApiKey : googleApiKey}" />
+<c:set var="noApiKey"       value="${empty apiKey or (apiKey eq 'none')}" />
+<c:set var="ratio"          value="${empty ratio ? '16-9' : ratio}" />
+<c:set var="ratioLg"        value="${(empty ratioLg) or ('desk' eq ratioLg) ? ratio : ratioLg}" />
+<c:set var="showRoute"      value="${showRoute and not isOsm}" />
+<c:set var="disableEditModePlaceholder" value="${disableEditModePlaceholder eq true}" />
 
 <%-- Set zoom level --%>
 <c:choose>
@@ -206,6 +209,7 @@
 <cms:jsonobject var="mapData">
     <cms:jsonvalue key="zoom" value="${zoom}" />
     <cms:jsonvalue key="ratio" value="${ratio}" />
+    <cms:jsonvalue key="ratioLg" value="${ratioLg}" />
     <cms:jsonvalue key="geocoding" value="true" />
     <cms:jsonvalue key="centerLat" value="${centerLat}" />
     <cms:jsonvalue key="centerLng" value="${centerLng}" />
@@ -229,7 +233,7 @@ ${'<'}div class="${subelementWrapper} type-map map-${provider}"${'>'}
 <m:nl />
 </c:if>
 
-<m:padding-box ratio="${ratio}">
+<m:padding-box ratio="${ratio}" ratioLg="${ratioLg}" test="${ratio ne 'no-ratio'}">
 
     ${'<'}div id="${id}" class="mapwindow placeholder${noApiKey ? ' error' : ''}" <%--
     --%>data-map='${mapData.compact}'<%--

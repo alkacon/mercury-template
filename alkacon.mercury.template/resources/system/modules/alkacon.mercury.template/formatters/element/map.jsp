@@ -32,6 +32,9 @@
 <c:set var="showRoute"              value="${setting.showMapRoute.toBoolean}" />
 <c:set var="mapType"                value="${setting.mapType.toString}" />
 <c:set var="mapMarkerCluster"       value="${setting.mapMarkerCluster.toBoolean}" />
+<c:set var="mapRatio"               value="${setting.mapRatio.toString}" />
+<c:set var="mapRatioLg"             value="${setting.mapRatioLg.toString}" />
+<c:set var="mapZoom"                value="${setting.mapZoom.toString}" />
 
 <c:set var="ade"                    value="${cms.isEditMode}" />
 
@@ -99,16 +102,17 @@
         </c:forEach>
 
         <m:map
-             provider="${provider}"
-             id="${id}"
-             ratio="${cms.element.setting.mapRatio}"
-             zoom="${cms.element.setting.mapZoom}"
-             markers="${markerList}"
-             type="${mapType}"
-             showLink="${showLink}"
-             showFacilities="${showFacilities}"
-             showRoute="${showRoute}"
-             markerCluster="${mapMarkerCluster}"
+            provider="${provider}"
+            id="${id}"
+            ratio="${mapRatio}"
+            ratioLg="${mapRatioLg}"
+            zoom="${mapZoom}"
+            markers="${markerList}"
+            type="${mapType}"
+            showLink="${showLink}"
+            showFacilities="${showFacilities}"
+            showRoute="${showRoute}"
+            markerCluster="${mapMarkerCluster}"
         />
 
         <c:if test="${showGroupButtons and (fn:length(markerGroups) > 1)}">

@@ -853,8 +853,8 @@ $acc-font-size:                     $h3-font-size !default;
 // OSM maps / Google maps
 
 $map-border-radius:                 var(--#{$prefix}border-radius) !default;
-$map-text-size:                     1.4rem !default;
-$map-header-size:                   1.8rem !default;
+$map-text-size:                     14px !default; // the map marker css should not use rem, because on mobile devices the markers get to large otherwise
+$map-header-size:                   18px !default;
 $map-label-color:                   $main-theme !default;
 $map-center-color:                  $main-theme !default;
 $map-cluster-color:                 $main-theme-hover !default;
@@ -862,7 +862,7 @@ $map-hide-buttons-if-not-visible:   false !default;
 $map-popup-color:                   $text-dark !default;
 $map-popup-bg:                      $white !default;
 $map-link-font-weight:              var(--#{$prefix}font-weight-bold) !default;
-$map-marker-padding:                0.5rem !default; // Markers should NOT depend on default margins
+$map-marker-padding:                5px !default; // map markers should NOT depend on default margins and not use rem
 $map-marker-spacer-y:               $map-marker-padding !default;
 
 // Map colors (for marker groups)

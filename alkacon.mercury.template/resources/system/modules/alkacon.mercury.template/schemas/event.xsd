@@ -35,7 +35,7 @@
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="Booking" type="OpenCmsBooking" minOccurs="0" />
             <xsd:element name="Costs" type="OpenCmsCosts" minOccurs="0" maxOccurs="10" />
-            <xsd:element name="Note" type="OpenCmsNote" minOccurs="0" maxOccurs="20" />
+            <xsd:element name="Note" type="OpenCmsNote" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />

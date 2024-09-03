@@ -471,13 +471,21 @@ export function showMarkers(mapId, group){
     }
 }
 
-export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
+export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count) {
 
-    if (DEBUG) console.info("OSM update markers for map with id: " + mapId);
+    count = count || 0;
+    if (DEBUG && (count == 0)) console.info("OsmMap.showGeoJson() update markers for map id: " + mapId);
     const map = m_maps[mapId];
-    if (!map) { // no cookie consent yet
+    if (!map || !map.isStyleLoaded()) {
+        if (DEBUG) console.info("OsmMap.showGeoJson() waiting (" + count + ") for map id: " + mapId);
+        if (count <= 10) {
+            setTimeout(function() {
+                showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, ++count);
+            }, 200);
+        }
         return;
     }
+    if (DEBUG && (count > 0)) console.info("OsmMap.showGeoJson() styles loaded, proceeding with map id: " + mapId);
     if (!map.hasImage("featureGraphic")) {
         const featureGraphic = getFeatureGraphic(mapId);
         featureGraphic.addEventListener("load", function() {
@@ -652,7 +660,7 @@ export function init(jQuery, debug) {
                         }
                         mapData.id = $mapElement.attr("id");
                         mapData.showPlaceholder = Mercury.initPlaceholder($mapElement, showMap);
-                        if (DEBUG) console.info("OSM map found with id: " + mapData.id);
+                        if (DEBUG) console.info("OsmMap.init() map found with id: " + mapData.id);
                         m_mapData.push(mapData);
                         if (!mapData.showPlaceholder) {
                             $mapElement.removeClass('placeholder');

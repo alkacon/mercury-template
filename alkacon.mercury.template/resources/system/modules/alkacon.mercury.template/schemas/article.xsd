@@ -118,7 +118,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(currentuser.email)]]></Default>
                     <RuleRegex>([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-])+(\.[A-Za-z]{2,})</RuleRegex>
-                    <RuleType>error</RuleType>
+                    <RuleType>warning</RuleType>
                     <Error><![CDATA[%(key.msg.error.mail.invalid)]]></Error>
                     <Search>false</Search>
                 </Setting>

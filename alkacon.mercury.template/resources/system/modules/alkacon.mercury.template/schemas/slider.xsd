@@ -43,7 +43,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-slider.title)]]></Default>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>TextColor</PropertyName>

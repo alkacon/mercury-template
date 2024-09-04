@@ -1334,6 +1334,10 @@
       <Value><![CDATA[formatselect,table,source]]></Value>
     </Attribute>
     <Attribute>
+      <Key><![CDATA[stringConfigTypo]]></Key>
+      <Value><![CDATA[typography]]></Value>
+    </Attribute>
+    <Attribute>
       <Key><![CDATA[mercuryYouTubePreviewDefault]]></Key>
       <Value><![CDATA[hqdefault.jpg]]></Value>
     </Attribute>

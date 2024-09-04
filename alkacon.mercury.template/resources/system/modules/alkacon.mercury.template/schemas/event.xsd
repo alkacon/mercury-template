@@ -126,7 +126,7 @@
                     <PropertyName>Intro</PropertyName>
                     <Description><![CDATA[%(key.label.Intro.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Title</PropertyName>
@@ -134,7 +134,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-event.title)]]></Default>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -188,6 +188,10 @@
                     <Description><![CDATA[%(key.label.Event.AddressChoice.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>AddressChoice/Address/Coord</PropertyName>
+                    <Search>listgeocoords</Search>
+                </Setting>
+                <Setting>
                     <PropertyName>VirtualLocation</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Event.VirtualLocation)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Event.VirtualLocation.help)]]></Description>
@@ -234,7 +238,7 @@
                 <Setting>
                     <PropertyName>Order</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Order.help)%(key.label.NotShownOnPage.help)]]></Description>
                     <Widget>string</Widget>
                     <RuleRegex>^[-+]?\d+$</RuleRegex>
                     <RuleType>error</RuleType>
@@ -268,10 +272,6 @@
                        <MapTo>property:Title</MapTo>
                        <UseDefault>true</UseDefault>
                     </Mapping>
-                </Setting>
-                <Setting>
-                    <PropertyName>AddressChoice/Address/Coord</PropertyName>
-                    <Search>listgeocoords</Search>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

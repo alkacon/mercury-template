@@ -34,7 +34,7 @@
                     <Description><![CDATA[%(key.label.Caption.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.msg.default.new.Caption)]]></Default>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <Display>wide</Display>
                 </Setting>
                 <Setting>

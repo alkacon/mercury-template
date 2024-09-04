@@ -29,8 +29,8 @@
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
-            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="DetailPageUrl" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required" />
     </xsd:complexType>
@@ -109,14 +109,14 @@
                     <DisplayName><![CDATA[%(key.label.Contact.Organization)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Organization.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Position</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Contact.Position)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Contact.Position.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>
@@ -133,11 +133,15 @@
                     <Visibility>hidden</Visibility>
                 </Setting>
                 <Setting>
+                    <PropertyName>Contact/AddressChoice/Address/Coord</PropertyName>
+                    <Search>listgeocoords</Search>
+                </Setting>
+                <Setting>
                     <PropertyName>Title</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>
@@ -166,13 +170,26 @@
                 <Setting>
                     <PropertyName>Order</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Order.help)%(key.label.NotShownOnPage.help)]]></Description>
                     <Widget>string</Widget>
                     <RuleRegex>^[-+]?\d+$</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.Order)]]></Error>
                     <Search>listorder</Search>
                     <Synchronization>true</Synchronization>
+                </Setting>
+                <Setting>
+                    <PropertyName>DetailPageUrl</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.DetailPageUrl)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.DetailPageUrl.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(value:Name/FirstName) %(value:Name/MiddleName) %(value:Name/LastName) %(value:Organization)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                        <MapTo>urlName</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>
@@ -191,23 +208,6 @@
                         <MapTo>property:Title</MapTo>
                         <UseDefault>true</UseDefault>
                     </Mapping>
-                </Setting>
-                <Setting>
-                    <PropertyName>DetailPageUrl</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.DetailPageUrl)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.DetailPageUrl.help)]]></Description>
-                    <Widget>string</Widget>
-                    <Default><![CDATA[%(value:Name/FirstName) %(value:Name/MiddleName) %(value:Name/LastName) %(value:Organization)]]></Default>
-                    <DefaultResolveMacros>false</DefaultResolveMacros>
-                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
-                    <Mapping>
-                        <MapTo>urlName</MapTo>
-                        <UseDefault>true</UseDefault>
-                    </Mapping>
-                </Setting>
-                <Setting>
-                    <PropertyName>Contact/AddressChoice/Address/Coord</PropertyName>
-                    <Search>listgeocoords</Search>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

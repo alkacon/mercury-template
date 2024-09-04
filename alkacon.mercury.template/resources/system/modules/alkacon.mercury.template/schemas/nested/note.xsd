@@ -29,7 +29,7 @@
                     <DisplayName><![CDATA[%(key.label.Note.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Note.Title.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
                 <Setting>
@@ -37,7 +37,7 @@
                     <DisplayName><![CDATA[%(key.label.Note.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Note.Text.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

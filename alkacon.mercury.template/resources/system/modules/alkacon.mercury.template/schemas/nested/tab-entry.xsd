@@ -31,7 +31,7 @@
                     <DisplayName>%(key.label.Tab.Label)</DisplayName>
                     <Description>%(key.label.Tab.Label.help)</Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>

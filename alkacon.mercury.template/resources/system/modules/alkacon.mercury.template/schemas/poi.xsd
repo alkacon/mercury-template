@@ -64,7 +64,7 @@
                     <Description><![CDATA[%(key.label.Poi.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-poi.title)]]></Default>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -89,7 +89,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Coord</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Poi.Coord)]]></DisplayName>
+                    <DisplayName><![CDATA[%(key.label.Coord)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Poi.Coord.help)]]></Description>
                     <Widget>location</Widget>
                     <Default>lat:51.163409,lng:10.447721,zoom:6,type:'roadmap',mode:'dynamic'</Default>
@@ -106,7 +106,7 @@
                     <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Intro.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Date</PropertyName>
@@ -156,7 +156,7 @@
                 <Setting>
                     <PropertyName>Order</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Order.help)%(key.label.NotShownOnPage.help)]]></Description>
                     <Widget>string</Widget>
                     <RuleRegex>^[-+]?\d+$</RuleRegex>
                     <RuleType>error</RuleType>

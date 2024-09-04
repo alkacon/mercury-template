@@ -25,7 +25,7 @@
             <xsd:element name="Type" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MetaInfoJob" type="OpenCmsJobMetaInfo" minOccurs="0" />
             <xsd:element name="Introduction" type="OpenCmsParagraph" />
-            <xsd:element name="Text" type="OpenCmsParagraph"  minOccurs="0" maxOccurs="100" />
+            <xsd:element name="Text" type="OpenCmsParagraph" minOccurs="0" maxOccurs="100" />
             <xsd:element name="AddressChoice" type="OpenCmsAddressChoice" minOccurs="0" />
             <xsd:element name="LocationNote" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
@@ -59,7 +59,7 @@
                     <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Intro.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Title</PropertyName>
@@ -67,7 +67,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-job.title)]]></Default>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -142,7 +142,7 @@
                 <Setting>
                     <PropertyName>Order</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Order.help)%(key.label.NotShownOnPage.help)]]></Description>
                     <Widget>string</Widget>
                     <RuleRegex>^[-+]?\d+$</RuleRegex>
                     <RuleType>error</RuleType>

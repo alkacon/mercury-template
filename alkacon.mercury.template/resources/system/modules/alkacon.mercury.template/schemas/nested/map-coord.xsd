@@ -30,7 +30,7 @@
                     <DisplayName><![CDATA[%(key.label.MapCoord.Caption)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MapCoord.Caption.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Address</PropertyName>

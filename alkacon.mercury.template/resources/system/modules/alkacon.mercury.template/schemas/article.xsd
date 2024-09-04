@@ -24,7 +24,7 @@
             <xsd:element name="Date" type="OpenCmsDateTime" />
             <xsd:element name="Preface" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Image" type="OpenCmsNestedImage" minOccurs="0" />
-            <xsd:element name="Paragraph" type="OpenCmsParagraph" minOccurs="1" maxOccurs="100" />
+            <xsd:element name="Paragraph" type="OpenCmsParagraph" maxOccurs="100" />
             <xsd:element name="Author" type="OpenCmsString" />
             <xsd:element name="AuthorMail" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
@@ -60,7 +60,7 @@
                     <DisplayName><![CDATA[%(key.label.Intro)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Intro.help)]]></Description>
                     <Widget>string</Widget>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Title</PropertyName>
@@ -68,7 +68,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-article.title)]]></Default>
-                    <WidgetConfig>typography</WidgetConfig>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -148,7 +148,7 @@
                 <Setting>
                     <PropertyName>Order</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Order)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Order.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Order.help)%(key.label.NotShownOnPage.help)]]></Description>
                     <Widget>string</Widget>
                     <RuleRegex>^[-+]?\d+$</RuleRegex>
                     <RuleType>error</RuleType>
@@ -166,7 +166,7 @@
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>
                     <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)%(key.label.NotShownOnPage.help)]]></Description>
                     <Widget>string</Widget>
                     <Default><![CDATA[%(value:Title)]]></Default>
                     <DefaultResolveMacros>false</DefaultResolveMacros>

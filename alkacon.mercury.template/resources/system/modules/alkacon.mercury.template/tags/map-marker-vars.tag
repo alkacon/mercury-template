@@ -96,6 +96,7 @@
                         showName="${true}"
                         showOrganization="${setShowOrganization}"
                         showPosition="${setShowPosition}"
+                        escapeXml="${false}"
                     />
                 </c:set>
                 <c:set var="markerText">
@@ -110,7 +111,6 @@
                         data="${value.Contact}"
                         locData="${locData}"
                         linkToWebsite="${empty showLink or showLink ? valLinkToWebsite : null}"
-
                         showFacilities="${showFacilities}"
                         showNotice="${showNotice}"
                         showDescription="${showDescription}"
@@ -119,10 +119,10 @@
                         showEmail="${showEmail}"
                         labelOption="${labelOption}"
                         linkOption="${linkOption}"
+                        escapeXml="${false}"
                     />
                 </c:set>
                 <c:set var="markerData" value="${locData}" />
-
             </m:location-vars>
         </m:contact-vars>
 
@@ -151,6 +151,7 @@
                     showAddressAlways="${true}"
                     showFacilities="${showFacilities}"
                     labelOption="label-min"
+                    escapeXml="${false}"
                 />
             </c:set>
 
@@ -194,6 +195,7 @@
                     linkToWebsite="${marker.value.Link}"
                     showWebsite="${showLink}"
                     labelOption="label-min"
+                    escapeXml="${false}"
                 />
             </c:set>
 
@@ -248,9 +250,9 @@
                 ${markerText}
             </c:if>
             <c:if test="${not empty markerLink}">
-            <div class="link"><%----%>
-                ${markerLink}
-            </div><%----%>
+                <div class="link"><%----%>
+                    ${markerLink}
+                </div><%----%>
             </c:if>
             <c:if test="${showRoute and (not empty markerData.lat) and (not empty markerData.lng)}">
                 <%-- Note: Route markup is supported only by Google maps --%>

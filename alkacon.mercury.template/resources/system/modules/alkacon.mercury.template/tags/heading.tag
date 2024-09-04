@@ -36,8 +36,7 @@
     If both attributes 'markupText' and 'text' are provided, only the 'markupText' will be displayed." %>
 
 <%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
-    description="Controls if the heading text is XML escaped.
-    Default is 'true' if not provided." %>
+    description="Controls if the heading text is XML escaped. Default is 'true' if not provided." %>
 
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Enables advanced direct edit for the generated heading.

@@ -120,6 +120,9 @@
 <%@ attribute name="addTextBox" type="java.lang.Boolean" required="false"
     description="Generate a div class='text-box' wrapper around the generated output. Default is 'true'. " %>
 
+<%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
+    description="Controls if the generated text in headings is XML escaped. Default is 'true' if not provided." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -141,6 +144,7 @@
 <c:set var="showPhone"          value="${showPhone and (not empty data)}"/>
 <c:set var="showWebsite"        value="${showWebsite and ((not empty data) and (not empty data.value.Website) or (not empty linkToWebsite))}"/>
 <c:set var="showEmail"          value="${showEmail and (not empty data) and (not empty data.value.Email) and (not empty data.value.Email.value.Email)}"/>
+<c:set var="escapeXml"          value="${empty escapeXml ? true : escapeXml}" />
 
 <%-- Notice is by default displayed on top of address / phone / link. Optinal placement below can be enabled by setting overrides for a template variant. --%>
 <c:set var="showNote"           value="${(not empty notice) and ((showNotice eq 'true') or (showNotice eq 'top') or (showNotice eq 'bottom'))}" />
@@ -186,9 +190,9 @@
     <c:when test="${showImage and (name ne null) and name.isSet}">
         <c:set var="persontxtname">
             <c:if test="${name.value.Title.isSet}">${name.value.Title}${' '}</c:if>
-            ${name.value.FirstName}${' '}
+            <c:if test="${name.value.FirstName.isSet}">${name.value.FirstName}${' '}</c:if>
             <c:if test="${name.value.MiddleName.isSet}">${name.value.MiddleName}${' '}</c:if>
-            ${name.value.LastName}
+            <c:if test="${name.value.LastName.isSet}">${name.value.LastName}${' '}</c:if>
             <c:if test="${name.value.Suffix.isSet}">${' '}${name.value.Suffix}</c:if>
         </c:set>
         <c:choose>
@@ -241,7 +245,7 @@
     <c:choose>
         <c:when test="${kind eq 'org'}">
             <c:if test="${showOrganization}">
-                <m:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" />
+                <m:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" escapeXml="${escapeXml}" />
             </c:if>
             <c:if test="${showOrganization and (showName or showPosition)}">
                 <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
@@ -261,12 +265,12 @@
         </c:when>
         <c:when test="${kind eq 'poi'}">
             <c:if test="${showName}">
-                <m:heading level="${hsize}" css="fn n" text="${name}" suffix="${nameSuffix}" ade="${false}" />
+                <m:heading level="${hsize}" css="fn n" text="${name}" suffix="${nameSuffix}" ade="${false}"  escapeXml="${escapeXml}" />
             </c:if>
         </c:when>
         <c:otherwise>
             <c:if test="${showName}">
-                <m:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}">
+                <m:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}" escapeXml="${escapeXml}">
                     <jsp:attribute name="markupText">${personname}</jsp:attribute>
                 </m:heading>
                 <c:if test="${showPosition}">

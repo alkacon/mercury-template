@@ -146,36 +146,20 @@
             </c:choose>
 
             <c:if test="${showImageZoom}">
-                <c:choose>
-                    <c:when test="${imageIsSvg or (adaptRatioToScreen and (hideDesktop eq hideMobile))}">
-                        <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
-                        <c:set var="zoomDataWrapper">
-                            <m:image-zoomdata
-                                src="${imageUnscaledBean.srcUrl}"
-                                title="${imageTitle}"
-                                alt="${empty imageDescription ? imageTitle : imageDescription}"
-                                copyright="${imageCopyrightHtml}"
-                                height="${imageUnscaledBean.scaler.height}"
-                                width="${imageUnscaledBean.scaler.width}"
-                                imageBean="${imageUnscaledBean}"
-                            />
-                        </c:set>
-                    </c:when>
-                    <c:otherwise>
-                        <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming. --%>
-                        <c:set var="zoomDataWrapper">
-                            <m:image-zoomdata
-                                src="${imageUrl}"
-                                title="${imageTitle}"
-                                alt="${empty imageDescription ? imageTitle : imageDescription}"
-                                copyright="${imageCopyrightHtml}"
-                                height="${imageHeight}"
-                                width="${imageWidth}"
-                                imageBean="${imageBean}"
-                            />
-                        </c:set>
-                    </c:otherwise>
-                </c:choose>
+                <%-- Use original image proportions (without ratio applied) for image zooming in case there are different mobile / desktop ratios, or the image is an SVG. --%>
+                <%-- Bitmap image and mobile / desktop ratio is the same, apply ratio for image zooming if not disabled in sitemap attribute. --%>
+                <c:set var="zoomFull" value="${imageIsSvg or (adaptRatioToScreen and (hideDesktop eq hideMobile)) or cms.sitemapConfig.attribute['template.imageZoom.full'].toBoolean}" />
+                <c:set var="zoomDataWrapper">
+                    <m:image-zoomdata
+                        src="${zoomFull ? imageUnscaledBean.srcUrl : imageUrl}"
+                        title="${imageTitle}"
+                        alt="${empty imageDescription ? imageTitle : imageDescription}"
+                        copyright="${imageCopyrightHtml}"
+                        height="${zoomFull ? imageUnscaledBean.scaler.height : imageHeight}"
+                        width="${zoomFull ? imageUnscaledBean.scaler.width : imageWidth}"
+                        imageBean="${imageBean}"
+                    />
+                </c:set>
                 <%-- Set the wrapper to the surrounding div, saving some bytes in page size --%>
                 <c:set var="attrWrapper" value="${empty attrWrapper ? zoomDataWrapper : attrWrapper.concat(' ').concat(zoomDataWrapper)}" />
             </c:if>

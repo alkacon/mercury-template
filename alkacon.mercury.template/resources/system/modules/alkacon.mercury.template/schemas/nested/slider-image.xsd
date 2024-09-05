@@ -45,7 +45,7 @@
                 <Setting>
                     <PropertyName>Link</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Link)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Link.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Link.Slider.help)%(key.label.Link.External.help)]]></Description>
                     <Widget>file</Widget>
                     <Search>false</Search>
                     <Display>singleline</Display>

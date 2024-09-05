@@ -134,7 +134,7 @@
                 <Setting>
                     <PropertyName>Link</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Link)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Link.help)]]></Description>
+                    <Description><![CDATA[%(key.label.Link.Contact.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

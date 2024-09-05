@@ -53,7 +53,7 @@
                 <Setting>
                     <PropertyName>Website</PropertyName>
                     <DisplayName><![CDATA[%(key.label.ContactData.Website)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.ContactData.Website.help)]]></Description>
+                    <Description><![CDATA[%(key.label.ContactData.Website.help)%(key.label.Link.External.help)]]></Description>
                     <Widget>file</Widget>
                 </Setting>
                 <Setting>

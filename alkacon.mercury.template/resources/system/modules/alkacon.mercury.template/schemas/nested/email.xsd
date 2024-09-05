@@ -20,12 +20,19 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Email</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Email)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Email.help)]]></Description>
                     <Widget>string</Widget>
+                    <Default><![CDATA[%(currentuser.email)]]></Default>
+                    <RuleRegex><![CDATA[(([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-])+(\.[A-Za-z]{2,}))|(^ *$)]]></RuleRegex>
+                    <RuleType>warning</RuleType>
+                    <Error><![CDATA[%(key.msg.error.mail.invalid)]]></Error>
                 </Setting>
                 <Setting>
                     <PropertyName>ObfuscateEmail</PropertyName>

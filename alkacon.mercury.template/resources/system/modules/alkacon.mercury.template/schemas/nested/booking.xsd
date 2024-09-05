@@ -51,7 +51,7 @@
                     <DisplayName><![CDATA[%(key.label.Booking.MailFrom)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Booking.MailFrom.help)]]></Description>
                     <Widget>string</Widget>
-                    <RuleRegex>([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-])+(\.[A-Za-z]{2,})</RuleRegex>
+                    <RuleRegex><![CDATA[(([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-])+(\.[A-Za-z]{2,}))|(^ *$)]]></RuleRegex>
                     <RuleType>warning</RuleType>
                     <Error><![CDATA[%(key.msg.error.mail.invalid)]]></Error>
                     <Search>false</Search>
@@ -60,18 +60,13 @@
                     <PropertyName>MailFromName</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Booking.MailFromName)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Booking.MailFromName.help)]]></Description>
-                    <Widget>string</Widget>
-                    <RuleRegex>([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-])+(\.[A-Za-z]{2,})</RuleRegex>
-                    <RuleType>warning</RuleType>
-                    <Error><![CDATA[%(key.msg.error.mail.invalid)]]></Error>
-                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>MailTo</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Booking.MailTo)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Booking.MailTo.help)]]></Description>
                     <Widget>string</Widget>
-                    <RuleRegex>([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-])+(\.[A-Za-z]{2,})</RuleRegex>
+                    <RuleRegex><![CDATA[(([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-])+(\.[A-Za-z]{2,}))|(^ *$)]]></RuleRegex>
                     <RuleType>warning</RuleType>
                     <Error><![CDATA[%(key.msg.error.mail.invalid)]]></Error>
                     <Search>false</Search>

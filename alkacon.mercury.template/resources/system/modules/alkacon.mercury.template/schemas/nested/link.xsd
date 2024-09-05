@@ -33,7 +33,7 @@
                 <Setting>
                     <PropertyName>URI</PropertyName>
                     <DisplayName><![CDATA[%(key.label.NestedLink.URI)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.NestedLink.URI.help)]]></Description>
+                    <Description><![CDATA[%(key.label.NestedLink.URI.help)%(key.label.Link.External.help)]]></Description>
                     <Widget>file</Widget>
                     <IfInvalidRelation>removeParent</IfInvalidRelation>
                     <Search>false</Search>

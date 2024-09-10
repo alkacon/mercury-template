@@ -82,6 +82,8 @@
 <div class="element type-linksequence pivot ${linksequenceType}${' '}${listBulletStyle}${addCssWrapper}${setCssWrapperAll}"><%----%>
 <m:nl />
 
+    ${setElementPreMarkup}
+
     <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade and not expanding}" id="${not expanding ? 'auto' : ''}" tabindex="${not expanding}">
         <jsp:attribute name="markupText">${expanderMarkup}</jsp:attribute>
     </m:heading>

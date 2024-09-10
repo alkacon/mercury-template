@@ -41,6 +41,8 @@
 <div class="element type-linkbox${hasLink ? ' fully-linked' : ''}${boxWrapper}${setCssWrapper}${not empty boxRatio ? ' box-ratio-'.concat(boxRatio) : ''}${not empty verticalAlignment ? ' valign-'.concat(verticalAlignment) : ''}${setEffect}${setCssVisibility}"><%----%>
 <m:nl />
 
+${setElementPreMarkup}
+
 <m:link link="${value.Link}" testFailTag="span" css="linkbox-link">
 
 <m:section-piece

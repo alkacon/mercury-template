@@ -31,6 +31,7 @@
     date="${value.Date.toInstanceDate}"
     paraText="${value.Text}"
     noLinkOnVisual="${true}"
+    piecePreMarkup="${setElementPreMarkup}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"

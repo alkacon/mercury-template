@@ -14,6 +14,7 @@
 <m:init-messages>
 
 <cms:formatter var="content" val="value">
+
 <m:teaser-settings content="${content}">
 
 <c:set var="intro"      value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
@@ -29,6 +30,7 @@
     date="${value.Date.toInstanceDate}"
     paraCaption="${paragraph.value.Caption}"
     paraText="${paragraph.value.Text}"
+    piecePreMarkup="${setElementPreMarkup}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"

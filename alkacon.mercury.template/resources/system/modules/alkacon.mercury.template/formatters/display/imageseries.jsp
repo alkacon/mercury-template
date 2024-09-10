@@ -27,6 +27,7 @@
     preface="${preface}"
     date="${value.Date.toInstanceDate}"
     paraText="${value.Text}"
+    piecePreMarkup="${setElementPreMarkup}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"

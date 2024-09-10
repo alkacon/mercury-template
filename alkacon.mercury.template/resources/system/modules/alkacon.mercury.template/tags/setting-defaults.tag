@@ -25,6 +25,11 @@
 <%@ variable name-given="setCssWrapper123"          declare="true" %>
 <%@ variable name-given="setCssWrapperAll"          declare="true" %>
 
+<%@ variable name-given="setElementPreMarkup"       declare="true" %>
+<%@ variable name-given="settingDefaultsDebug"      declare="true" %>
+
+<m:load-plugins group="setting-defaults"            type="jsp-nocache" />
+
 <c:set var="setting"                                value="${cms.element.setting}" />
 <c:set var="setCssWrapper"                          value="${setting.cssWrapper.isSetNotNone ? ' '.concat(setting.cssWrapper.toString) : null}" />
 <c:set var="setCssWrapper2"                         value="${setting.cssWrapper2.isSetNotNone ? ' '.concat(setting.cssWrapper2.toString) : null}" />
@@ -34,6 +39,7 @@
 <c:set var="setCssWrapperExtra"                     value="${setting.cssWrapperExtra.isSetNotNone  ? ' '.concat(setting.cssWrapperExtra.toString) : null}" />
 <c:set var="setEffect"                              value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
 <c:set var="setCssVisibility"                       value="${(setting.cssVisibility.isSetNotNone and (setting.cssVisibility.toString ne 'always')) ? ' '.concat(setting.cssVisibility.toString) : null}" />
+<c:set var="setElementPreMarkup"                    value="${setting.elementPreMarkup.toString}" />
 
 <c:if test="${fn:contains(setCssWrapper, '@')}">
     <c:set var="wrappers" value="${fn:split(setCssWrapper, '@')}" />

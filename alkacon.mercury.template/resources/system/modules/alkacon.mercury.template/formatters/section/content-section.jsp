@@ -13,8 +13,6 @@
 <m:init-messages>
 <cms:formatter var="content" val="value">
 
-<m:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
-
 <m:setting-defaults>
 
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />
@@ -38,6 +36,7 @@
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"
+    piecePreMarkup="${setElementPreMarkup}"
     heading="${value.Title}"
     addHeadingId="${cms.sitemapConfig.attribute['template.section.add.heading.id'].toBoolean}"
     addHeadingAnchorlink="${cms.sitemapConfig.attribute['template.section.add.heading.anchorlink'].toBoolean}"

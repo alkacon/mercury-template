@@ -66,6 +66,7 @@
     <m:teaser-piece
         cssWrapper="type-poi${setCssWrapperAll}"
         headline="${title}"
+        piecePreMarkup="${setElementPreMarkup}"
         pieceLayout="${setPieceLayout}"
         sizeDesktop="${setSizeDesktop}"
         sizeMobile="${setSizeMobile}"
@@ -148,6 +149,7 @@
         date="${value.Date.toInstanceDate}"
         paraCaption="${paragraph.value.Caption}"
         paraText="${paragraph.value.Text}"
+        piecePreMarkup="${setElementPreMarkup}"
         pieceLayout="${setPieceLayout}"
         sizeDesktop="${setSizeDesktop}"
         sizeMobile="${setSizeMobile}"

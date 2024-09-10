@@ -69,16 +69,16 @@
                     <PropertyName>TitleLine1</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImage.TitleLine1)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.TitleLine1.help)]]></Description>
-                    <Widget>string</Widget>
-                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>3|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
                     <Display>singleline</Display>
                 </Setting>
                 <Setting>
                     <PropertyName>TitleLine2</PropertyName>
                     <DisplayName><![CDATA[%(key.label.SliderImage.TitleLine2)]]></DisplayName>
                     <Description><![CDATA[%(key.label.SliderImage.TitleLine2.help)]]></Description>
-                    <Widget>string</Widget>
-                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>3|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
                     <Display>singleline</Display>
                 </Setting>
                 <Setting>

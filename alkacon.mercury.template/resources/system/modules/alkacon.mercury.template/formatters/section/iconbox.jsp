@@ -23,6 +23,8 @@
 <m:nl />
 <div class="element type-iconbox pivot${hasLink ? ' fully-linked' : ''}${setCssWrapperAll}"><%----%>
 
+    ${setElementPreMarkup}
+
     <m:link link="${value.Link}" setTitle="${true}" css="icon-link">
         <m:heading level="${hsize}" text="${value.Title}" css="icon-title" ade="${ade}" />
         <c:if test="${iconClass ne 'none'}">

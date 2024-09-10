@@ -105,6 +105,7 @@
     date="${date}"
     paraCaption="${paragraph.value.Caption}"
     paraText="${paragraph.value.Text}"
+    piecePreMarkup="${setElementPreMarkup}"
     preTextMarkup="${labelMarkup}"
     groupId="${groupId}"
     noLinkOnVisual="${setShowCalendar}"

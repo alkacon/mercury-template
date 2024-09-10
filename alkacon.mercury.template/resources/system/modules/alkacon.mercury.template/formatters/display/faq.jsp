@@ -25,6 +25,7 @@
     date="${value.Date.toInstanceDate}"
     paraCaption="${paragraph.value.Caption}"
     paraText="${paragraph.value.Text}"
+    piecePreMarkup="${setElementPreMarkup}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"

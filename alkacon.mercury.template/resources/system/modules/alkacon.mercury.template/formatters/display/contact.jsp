@@ -59,6 +59,7 @@
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"
+    piecePreMarkup="${setElementPreMarkup}"
 
     teaserType="${displayType}"
     link="${linkTarget}"

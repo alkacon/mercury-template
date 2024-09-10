@@ -20,8 +20,6 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<m:load-plugins group="detail-setting-defaults" type="jsp-nocache" />
-
 <m:setting-defaults>
 
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
@@ -113,7 +111,7 @@
 <div class="detail-page type-article layout-${keyPieceLayout}${setCssWrapper123}"><%----%>
 <m:nl />
 
-<%-- Optional debug output generated from "detail-setting-defaults" plugin --%>
+<%-- Optional debug output generated from "setting-defaults" plugin --%>
 ${settingDefaultsDebug}
 
 <m:piece

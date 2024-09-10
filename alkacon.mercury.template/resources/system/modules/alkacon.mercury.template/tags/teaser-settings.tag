@@ -44,6 +44,11 @@
 <%@ variable name-given="paragraph"         declare="true" %>
 <%@ variable name-given="linkToDetail"      declare="true" %>
 
+<%@ variable name-given="setElementPreMarkup" declare="true" %>
+<%@ variable name-given="settingDefaultsDebug" declare="true" %>
+
+<m:load-plugins group="setting-defaults"    type="jsp-nocache" />
+
 <c:set var="setting"                        value="${cms.element.setting}" />
 <c:set var="inList"                         value="${setting.nglist.toBoolean}" />
 <c:set var="setTeaserClass"                 value="${setting.teaserClass.isSetNotNone ? setting.teaserClass.toString : 'teaser'}" />
@@ -68,6 +73,7 @@
 <c:set var="paramLinkOption"                value="${setting.paramLinkOption}" />
 <c:set var="setLinkOption"                  value="${paramLinkOption.isSet ? paramLinkOption.toString : setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />
 <c:set var="setHeadingInBody"               value="${setting.headingInBody.toBoolean}" />
+<c:set var="setElementPreMarkup"            value="${setting.elementPreMarkup.toString}" />
 
 <c:set var="pageUri"                        value="${setting.pageUri.toString}" />
 <c:set var="listEntryWrapper"               value="${setting.listEntryWrapper.toString}" />

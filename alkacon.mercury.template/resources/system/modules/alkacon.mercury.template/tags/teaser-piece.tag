@@ -130,6 +130,9 @@
 <%@ attribute name="markupLink" required="false" fragment="true"
     description="Markup shown for button links, replaces all default markup generation but grouping will be intact." %>
 
+<%@ attribute name="piecePreMarkup" type="java.lang.String" required="false"
+    description="Markup to add inside the piece before the heading, body and everything else." %>
+
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Controls if advanced direct edit is enabdled.
     Default is 'false' if not provided." %>
@@ -276,6 +279,7 @@
     gridOption="${gridOption}"
     inlineLink="${not addButtonDiv}"
     cssBody="${cssBody}"
+    piecePreMarkup="${piecePreMarkup}"
     bodyPreMarkup="${bodyPreMarkup}"
     bodyPostMarkup="${bodyPostMarkup}">
 

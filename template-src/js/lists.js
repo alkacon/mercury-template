@@ -1299,6 +1299,8 @@ function initScrollPositionTracking() {
      * @type {Object}
      */
     if (DEBUG) console.info('Lists.initScrollPositionTracking() called');
+    // Prevent browser scroll mechanism
+    window.history.scrollRestoration = 'manual';
     let spInt = undefined;
     if (Mercury.isEditMode()) {
         const url = new URL(window.location.href);

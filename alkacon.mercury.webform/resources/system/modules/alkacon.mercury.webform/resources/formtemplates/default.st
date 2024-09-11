@@ -331,7 +331,7 @@ $!      !$$if(field.parameters.icon)$
 $!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
-$!  !$<input type="text" class="datepicker" data-datepicker="{}" id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
+$!  !$<input type="text" class="datepicker" data-datepicker='{$if(field.parameters.dateFormat)$"dateFormat": "$field.parameters.dateFormat$"$endif$}' id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
 </div>
 $if(errormessage)$
 $!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
@@ -350,7 +350,7 @@ $!      !$$if(field.parameters.icon)$
 $!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
-$!  !$<input type="text" class="datepicker" data-datepicker='{"noCalendar":true,"enableTime":true}' id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
+$!  !$<input type="text" class="datepicker" data-datepicker='{"time_24hr": true, "noCalendar":true,"enableTime":true$if(field.parameters.dateFormat)$, "dateFormat": "$field.parameters.dateFormat$"$endif$}' id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
 </div>
 $if(errormessage)$
 $!  !$<div class="note note-error" tabindex="0">$errormessage$</div>
@@ -369,7 +369,7 @@ $!      !$$if(field.parameters.icon)$
 $!          !$<span class="icon-$if(field.parameters.position)$$field.parameters.position$$else$prepend$endif$ fa fa-$field.parameters.icon$"></span>$! m:icon !$
 $!      !$$endif$
 $!  !$$endif$
-$!  !$<input type="text" class="datepicker" data-datepicker='{"enableTime":true,"dateFormat":"Y-m-d H:i"}' id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
+$!  !$<input type="text" class="datepicker" data-datepicker='{"time_24hr": true, "enableTime":true$if(field.parameters.dateFormat)$, "dateFormat": "$field.parameters.dateFormat$"$endif$}' id="$field.name$" name="$field.name$" value="$field.valueEscaped$"$if(field.parameters)$$if(field.parameters.placeholder)$ placeholder="$field.parameters.placeholder$"$endif$$endif$/>
 </div>
 $if(errormessage)$
 $!  !$<div class="note note-error" tabindex="0">$errormessage$</div>

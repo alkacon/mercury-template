@@ -30,13 +30,15 @@
 </c:set>
 
 <m:nl />
-<div class="element type-static-list list-content <%--
---%>${not empty settings.listCssWrapper ? settings.listCssWrapper.concat(' ') : ''}<%--
---%>${not empty settings.listDisplay ? settings.listDisplay.concat(' ') : ''}<%--
---%>${not empty settings.cssWrapper ? settings.cssWrapper.concat(' ') : ''}<%--
---%>${not empty listDisplayType ? 'list-'.concat(listDisplayType).concat(' ') : ''}<%--
---%>${cms.isEditMode ? 'oc-point-T-25_L15' : ''}"><%----%>
-<m:nl />
+<m:concat var="wrappers" strings="${[
+    settings.listCssWrapper,
+    settings.listDisplay,
+    settings.cssWrapper,
+    settings.cssWrapperListOption,
+    (not empty listDisplayType ? 'list-'.concat(listDisplayType) : ''),
+    (cms.isEditMode ? 'oc-point-T-25_L15' : '')
+]}" />
+<div class="element type-static-list list-content${wrappers}"><m:nl />
 
     <c:if test="${not isCompatible}">
         ${listCompatibilityMarkup}

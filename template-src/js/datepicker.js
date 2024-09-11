@@ -27,10 +27,12 @@ import { German } from "flatpickr/dist/l10n/de.js"
 export function init() {
 
     let locale = Mercury.getLocale();
+    let isGerman = false;
     if (locale != "en") {
         locale = locale.substr(0, 2).toLowerCase();
         if (locale == "de") {
             flatpickr.localize( German );
+            isGerman = true;
         }
     }
 
@@ -42,6 +44,24 @@ export function init() {
     datepickers.forEach(function(datepicker) {
         const config = datepicker.dataset["datepicker"] ? datepicker.dataset["datepicker"] : "{}";
         if (Mercury.debug()) console.info("DatePicker config: " + config);
-        flatpickr(datepicker, JSON.parse(config));
+        const jsonConfig = JSON.parse(config);
+        if(jsonConfig.dateFormat == null) {
+            if(jsonConfig.enableTime == true) {
+                const noCalendar = jsonConfig.noCalendar == true;
+                if (isGerman) {
+                    jsonConfig.dateFormat = noCalendar ? "H:i" : "d.m.Y H:i"
+                } else {
+                    jsonConfig.dateFormat = noCalendar ? "H:i" : "Y-m-d H:i"
+                }
+            } else {
+                if (isGerman) {
+                    jsonConfig.dateFormat = "d.m.Y"
+                } else {
+                    jsonConfig.dateFormat = "Y-m-d"
+                }
+
+            }
+        }
+        flatpickr(datepicker, jsonConfig);
     });
 }

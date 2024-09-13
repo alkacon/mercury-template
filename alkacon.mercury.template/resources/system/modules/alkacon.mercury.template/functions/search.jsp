@@ -114,7 +114,7 @@
         "searchforemptyquery" : ${searchForEmptyQuery},
         "querymodifier" :       "{!type=edismax qf=\"content_${cms.locale} Title_dprop Description_dprop Description.html_dprop keywords_${cms.locale} description_${cms.locale}\"}(%(query))",
         "escapequerychars" :    true,
-        "extrasolrparams" :     "bq=search.boost_mvs:always^${boostPage}&bq=(search.boost_mvs:keywords AND keywords_${cms.locale}:(%(query)))^${boostKeywords}&fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields}",
+        "extrasolrparams" :     "bq=search.boost_mvs:always^${boostPage}&bq=(search.boost_mvs:keywords AND keywords_${cms.locale}:(%(query)))^${boostKeywords}&fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields},keywordMatch:if(gt(query({!edismax%20 qf=\"keywords_${cms.locale}\" v=\"%(query)\"},0),0.0),\"true\",\"false\")",
         "pagesize" :            ${pageSize},
         "pagenavlength" :       5,
         "sortoptions" :         [ { "label" : "<fmt:message key='msg.page.search.sort.score.desc'/>", "solrvalue" : "score desc" }
@@ -440,7 +440,7 @@
                                 <c:if test="${showTopBadge}">
                                     <c:set var="boostValues" value='${searchResult.multiValuedFields["search.boost_mvs"]}' />
                                     <c:choose>
-                                    <c:when test='${not empty boostValues && (boostValues.contains("keywords") || boostValues.contains("always"))}'>
+                                    <c:when test='${not empty boostValues && ((boostValues.contains("keywords") && (searchResult.fields["keywordMatch"] eq "true")) || boostValues.contains("always"))}'>
                                         <c:set var="topBadge">
                                             <span class="search-badge badge-top"><fmt:message key="msg.page.search.type.topresult" /></span>
                                         </c:set>

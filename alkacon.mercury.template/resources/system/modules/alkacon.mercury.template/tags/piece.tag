@@ -291,21 +291,24 @@
     <c:otherwise>
         <%-- "phh" means "piece has heading". --%>
         <%-- "pnh" means "piece (has) no heading". --%>
+        <%-- "pih" means "piece (has) inline heading". --%>
         <%-- "phb" means "piece has body". --%>
+        <%-- "phl" means "piece has link". --%>
+        <%-- "pnl" means "piece (has) no link". --%>
+        <%-- "pil" means "piece (has) inline link". --%>
         <%-- "phv" means "piece has visual". --%>
         <%-- "pnv" means "piece (has) no visual". --%>
-        <%-- "phl" means "piece has link". --%>
         <%-- "pvf" means "piece visual first". --%>
         <%-- "pvl" means "piece visual last". --%>
-        <%-- "pnm" means "(next) piece needs margin". --%>
         <c:set var="pieceFeatureMarker" value=" lay-${pieceLayout}${
-            showHeading and not inlineHeading ? ' phh': ' pnh'}${
-            showBody ? ' phb': ''}${
-            showVisual ? ' phv': ' pnv'}${
-            showLink and not inlineLink ? ' phl': ''}${
-            visualFirst ? ' pvf': ''}${
-            visualLast ? ' pvl': ''}${
-            visualLast or (showLink and not inlineLink) ? ' pnm' : ''}" />
+            showHeading ? ' phh' : ' pnh'}${
+            showHeading and inlineHeading ? ' pih' : ''}${
+            showBody ? ' phb' : ''}${
+            showLink ? ' phl' : ' pnl'}${
+            showLink and inlineLink ? ' pil' : ''}${
+            showVisual ? ' phv' : ' pnv'}${
+            visualFirst ? ' pvf' : ''}${
+            visualLast ? ' pvl' : ''}" />
     </c:otherwise>
 </c:choose>
 

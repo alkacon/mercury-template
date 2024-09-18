@@ -237,24 +237,23 @@ $piece-cols:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) !default; // supported column
         }
     }
 
-    // special adjustments for type-section content pieces that re not "boxed"
-    // NOTE: This is NOT done for 'paragraph' because contents with multiple paragraphs are not used like sections to create text pages
+    // special adjustments for type-section content pieces bottom margins
     &.element.type-section:not(.box) {
-        // margin adjustments
         &.only-heading {
             // if piece element has only a header, set margin the same height as normally used by the headers
             margin-bottom: var(--#{$prefix}headings-margin-bottom);
         }
-
+        // note .only-heading and .only-text will always be '.full' never '.flex'
         &.only-text,
-        &.phb:not(.pnm) {
-
-            // if a piece element that starts with text follows a text-only piece element, reduce top margin
+        &.phb:not(.pvl):not(.flex) {
+            // if a piece element is followed by a piece element that has no heading, reduce bottom margin
             // goal: make text from 2nd element apperar as if it belongs to first element
-            +.piece.element.type-section:not(.box) {
-                &.only-text,
-                &.pnh {
-                    margin-top: calc(var(--#{$prefix}piece-paragraph-margin-bottom) - var(--#{$prefix}element-margin));
+            &:has( + .piece.element.type-section.only-text:not(.box)),
+            &:has( + .piece.element.type-section.pnh:not(.box):not(.flex)) {
+                margin-bottom: var(--#{$prefix}piece-paragraph-margin-bottom);
+                // in case the piece has a link, the use text-to-link-margin instead of paragraph margin
+                &.phl {
+                    margin-bottom: var(--#{$prefix}text-to-link-margin);
                 }
             }
         }

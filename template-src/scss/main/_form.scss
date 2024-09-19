@@ -250,17 +250,21 @@
             }
             // generates the select arrows after the select text
             &::before {
-                top: 12px;
+                top: calc(50% - 5px - 3px);
                 border-bottom: 5px solid var(--#{$prefix}form-icon-color);
             }
             &::after {
-                bottom: 12px;
+                bottom: calc(50% - 5px - 3px);
                 border-top: 5px solid var(--#{$prefix}form-icon-color);
             }
         }
         select {
             cursor: pointer;
             padding-right: 28px;
+
+            &[disabled] {
+                color: var(--#{$prefix}form-placeholder-color);
+            }
         }
     }
     .select-multiple {

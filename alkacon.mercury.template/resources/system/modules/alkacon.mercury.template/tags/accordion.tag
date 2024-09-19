@@ -26,6 +26,9 @@
 <%@ attribute name="multipleOpen" type="java.lang.Boolean" required="false"
     description="If 'true', then this accordion can have multiple tabs open at the same time." %>
 
+<%@ attribute name="cssHeading" type="java.lang.String" required="false"
+    description="Can be used to override the CSS added in the heading. Will be 'acco-header pivot' is not provided." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -35,7 +38,7 @@
 
     <m:nl />
     <article class="accordion${not empty cssWrapper ? ' '.concat(cssWrapper) : ''}"><%----%>
-        ${'<h'}${tabHsize} class="acco-header pivot"${'>'}
+        ${'<h'}${tabHsize} class="${empty cssHeading ? 'acco-header pivot' : cssHeading}"${'>'}
 
             <button class="acco-toggle ${open ? '':'collapsed'}" <%--
             --%>data-bs-toggle="collapse" type="button" <%--

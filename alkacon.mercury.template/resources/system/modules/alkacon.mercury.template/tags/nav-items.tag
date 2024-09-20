@@ -44,142 +44,140 @@
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="nl" value="<%= \"\n\" %>" />
-
 <c:set var="navStartLevel" value="${not content.value.Root.value.NavStartLevel.isSet ? 0 : content.value.Root.value.NavStartLevel.toInteger}" />
-<c:set var="navDepth" value="${(!content.value.NavDepth.isSet or content.value.NavDepth.toInteger < 0) ? 4 : content.value.NavDepth.toInteger}" />
-<c:set var="navDepth" value="${not empty maxDepth and (maxDepth >= 0) ? maxDepth : navDepth}" />
+<c:set var="navDepth" value="${(!content.value.NavDepth.isSet or content.value.NavDepth.toInteger lt 0) ? 4 : content.value.NavDepth.toInteger}" />
+<c:set var="navDepth" value="${not empty maxDepth and (maxDepth gt 0) ? maxDepth : navDepth}" />
 <c:set var="endLevel" value="${navStartLevel + navDepth - 1}" />
 
 
 <c:choose>
-<c:when test="${not content.value.Root.value.NavCollection.isSet}">
-<%-- This is NOT a collection of different navigation start folders --%>
+    <c:when test="${not content.value.Root.value.NavCollection.isSet}">
+    <%-- This is NOT a collection of different navigation start folders --%>
 
-<c:set var="navStartFolder" value="/" />
-<c:if test="${content.value.Root.value.NavFolder.isSet}" >
-    <c:set var="navStartFolder" value="${content.value.Root.value.NavFolder.toString}" />
-    <c:choose>
-        <c:when test="${cms.vfs.existsResource[navStartFolder]}">
-            <c:set var="pathparts" value="${fn:split(navStartFolder, '/')}" />
-            <c:set var="navStartLevel">${fn:length(pathparts)}</c:set>
-            <c:set var="endLevel" value="${navStartLevel + navDepth - 1}" />
-            <c:if test="${type eq 'forSite'}">
-                <c:set var="currentPageFolder">/</c:set>
-            </c:if>
-        </c:when>
-        <c:otherwise>
-            <c:set var="navStartFolder" value="INVALID" />
-        </c:otherwise>
-    </c:choose>
-</c:if>
+        <c:set var="navStartFolder" value="/" />
+        <c:if test="${content.value.Root.value.NavFolder.isSet}" >
+            <c:set var="navStartFolder" value="${content.value.Root.value.NavFolder.toString}" />
+            <c:choose>
+                <c:when test="${cms.vfs.existsResource[navStartFolder]}">
+                    <c:set var="pathparts" value="${fn:split(navStartFolder, '/')}" />
+                    <c:set var="navStartLevel">${fn:length(pathparts)}</c:set>
+                    <c:set var="endLevel" value="${navStartLevel + navDepth - 1}" />
+                    <c:if test="${type eq 'forSite'}">
+                        <c:set var="currentPageFolder">/</c:set>
+                    </c:if>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="navStartFolder" value="INVALID" />
+                </c:otherwise>
+            </c:choose>
+        </c:if>
 
-<c:if test="${type eq 'breadCrumb'}">
-    <c:set var="navStartLevel" value="${navStartLevel + 1}" />
-</c:if>
+        <c:if test="${type eq 'breadCrumb'}">
+            <c:set var="navStartLevel" value="${navStartLevel + 1}" />
+        </c:if>
 
-<c:if test="${type eq 'rootBreadCrumb'}">
-    <c:set var="navStartLevel" value="${navStartLevel}" />
-    <c:set var="type" value="breadCrumb" />
-</c:if>
+        <c:if test="${type eq 'rootBreadCrumb'}">
+            <c:set var="navStartLevel" value="${navStartLevel}" />
+            <c:set var="type" value="breadCrumb" />
+        </c:if>
 
-<c:if test="${navStartFolder ne 'INVALID'}">
+        <c:if test="${navStartFolder ne 'INVALID'}">
 
-    <c:choose>
-        <c:when test="${type eq 'forSite'}">
-            <c:set var="pathparts" value="${fn:split(currentPageFolder, '/')}" />
-            <c:forEach var="folderName" items="${pathparts}" varStatus="status">
-                <c:if test="${status.count <= navStartLevel}">
-                    <c:set var="navStartFolder">${navStartFolder}${folderName}/</c:set>
-                </c:if>
-            </c:forEach>
-        </c:when>
-        <c:when test="${type eq 'breadCrumb'}">
-            <c:set var="endLevel" value="-1" />
-            <c:set var="navStartFolder" value="${currentPageFolder}" />
-        </c:when>
-    </c:choose>
+            <c:choose>
+                <c:when test="${type eq 'forSite'}">
+                    <c:set var="pathparts" value="${fn:split(currentPageFolder, '/')}" />
+                    <c:forEach var="folderName" items="${pathparts}" varStatus="status">
+                        <c:if test="${status.count <= navStartLevel}">
+                            <c:set var="navStartFolder">${navStartFolder}${folderName}/</c:set>
+                        </c:if>
+                    </c:forEach>
+                </c:when>
+                <c:when test="${type eq 'breadCrumb'}">
+                    <c:set var="endLevel" value="-1" />
+                    <c:set var="navStartFolder" value="${currentPageFolder}" />
+                </c:when>
+            </c:choose>
 
-    <c:set var="navBean" value="" />
-    <cms:navigation
-        type="${type}"
-        resource="${navStartFolder}"
-        startLevel="${navStartLevel}"
-        endLevel="${endLevel}"
-        locale="${cms.locale}"
-        param="true"
-        var="navBean" />
-    <c:set var="navItems" value="${navBean.items}" />
-
-</c:if>
-
-</c:when>
-<c:when test="${content.value.Root.value.NavCollection.isSet and type eq 'forSite'}">
-<%-- This IS a collation of different navigation start folders --%>
-<%-- Only the "forSite" type is supported here --%>
-
-    <c:set var="navStartLevel" value="${0}" />
-    <jsp:useBean id="navItems"  class="java.util.ArrayList" />
-    <jsp:useBean id="addItems" class="java.util.ArrayList" />
-    <c:forEach var="navCollectionFolder" items="${content.value.Root.value.NavCollection.valueList.NavCollectionFolder}">
-
-        <c:set var="navTopFolder" value="${navCollectionFolder.toResource}" />
-        <c:if test="${not empty navTopFolder}">
-            <c:set var="pathparts" value="${fn:split(navTopFolder.sitePath, '/')}" />
-            <c:set var="startLevel">${fn:length(pathparts)}</c:set>
-            <c:set var="endLevel" value="${startLevel + navDepth - 1}" />
-
-            <%-- Generate site navigation for the folder --%>
+            <c:set var="navBean" value="" />
             <cms:navigation
-                type="forSite"
-                resource="${navTopFolder.sitePath}"
-                startLevel="${startLevel}"
+                type="${type}"
+                resource="${navStartFolder}"
+                startLevel="${navStartLevel}"
                 endLevel="${endLevel}"
                 locale="${cms.locale}"
                 param="true"
                 var="navBean" />
+            <c:set var="navItems" value="${navBean.items}" />
 
-            <c:set var="addNavTopItem" value="${navTopFolder.navigation}" />
-            <c:set var="addNavSubItems" value="${navBean.items}" />
-            <c:set var="addLevel" value="${-1}" />
-
-            <c:if test="${(not empty addNavTopItem.info) and cms.exists(addNavTopItem.info)}">
-                <%-- An insertion point is set in the navInfo property of the navTopFolder, check if it exits in the collected result list --%>
-                <c:set var="checkInsertRes" value="${cms.readResource(addNavTopItem.info)}" />
-                <c:forEach var="checkNavItem" items="${navItems}" varStatus="status">
-                    <c:if test="${checkNavItem.resource.rootPath eq checkInsertRes.rootPath}">
-                        <%-- Insertion point exists, insert items of the folder after the insertion point --%>
-                        <c:set var="addLevel" value="${checkNavItem.navTreeLevel}" />
-                        <c:set var="addPosition" value="${status.count}" />
-                    </c:if>
-                </c:forEach>
-            </c:if>
-
-            <c:if test="${addLevel == -1}">
-                <%-- No insertion point set or found, insert items at the end of the navigation --%>
-                <c:set var="addLevel" value="${navStartLevel}" />
-                <c:set var="addPosition" value="${navItems.size()}" />
-            </c:if>
-
-            <%-- Collect additional nav items in a temporary list --%>
-            <c:set var="ignore" value="${addItems.clear()}" />
-            <%-- Add the top level item itself --%>
-            <c:set var="ignore" value="${addNavTopItem.setNavTreeLevel(addLevel)}" />
-            <c:set var="ignore" value="${addItems.add(addNavTopItem)}" />
-            <c:if test="${not empty addNavSubItems}">
-                <%-- Add all sub items of the top level item --%>
-                <c:set var="navTreeLevelOffset" value="${addNavSubItems[0].navTreeLevel - (addLevel + 1)}" />
-                <c:forEach var="addNavItem" items="${addNavSubItems}">
-                    <c:set var="ignore" value="${addNavItem.setNavTreeLevel(addNavItem.navTreeLevel - navTreeLevelOffset)}" />
-                    <c:set var="ignore" value="${addItems.add(addNavItem)}" />
-                </c:forEach>
-            </c:if>
-            <%-- Add collected additional nav items to the final result list --%>
-            <c:set var="ignore" value="${navItems.addAll(addPosition, addItems)}" />
         </c:if>
-    </c:forEach>
 
-</c:when>
+    </c:when>
+    <c:when test="${content.value.Root.value.NavCollection.isSet and type eq 'forSite'}">
+    <%-- This IS a collation of different navigation start folders --%>
+    <%-- Only the "forSite" type is supported here --%>
+
+        <c:set var="navStartLevel" value="${0}" />
+        <jsp:useBean id="navItems"  class="java.util.ArrayList" />
+        <jsp:useBean id="addItems" class="java.util.ArrayList" />
+        <c:forEach var="navCollectionFolder" items="${content.value.Root.value.NavCollection.valueList.NavCollectionFolder}">
+
+            <c:set var="navTopFolder" value="${navCollectionFolder.toResource}" />
+            <c:if test="${not empty navTopFolder}">
+                <c:set var="pathparts" value="${fn:split(navTopFolder.sitePath, '/')}" />
+                <c:set var="startLevel">${fn:length(pathparts)}</c:set>
+                <c:set var="endLevel" value="${startLevel + navDepth - 1}" />
+
+                <%-- Generate site navigation for the folder --%>
+                <cms:navigation
+                    type="forSite"
+                    resource="${navTopFolder.sitePath}"
+                    startLevel="${startLevel}"
+                    endLevel="${endLevel}"
+                    locale="${cms.locale}"
+                    param="true"
+                    var="navBean" />
+
+                <c:set var="addNavTopItem" value="${navTopFolder.navigation}" />
+                <c:set var="addNavSubItems" value="${navBean.items}" />
+                <c:set var="addLevel" value="${-1}" />
+
+                <c:if test="${(not empty addNavTopItem.info) and cms.exists(addNavTopItem.info)}">
+                    <%-- An insertion point is set in the navInfo property of the navTopFolder, check if it exits in the collected result list --%>
+                    <c:set var="checkInsertRes" value="${cms.readResource(addNavTopItem.info)}" />
+                    <c:forEach var="checkNavItem" items="${navItems}" varStatus="status">
+                        <c:if test="${checkNavItem.resource.rootPath eq checkInsertRes.rootPath}">
+                            <%-- Insertion point exists, insert items of the folder after the insertion point --%>
+                            <c:set var="addLevel" value="${checkNavItem.navTreeLevel}" />
+                            <c:set var="addPosition" value="${status.count}" />
+                        </c:if>
+                    </c:forEach>
+                </c:if>
+
+                <c:if test="${addLevel == -1}">
+                    <%-- No insertion point set or found, insert items at the end of the navigation --%>
+                    <c:set var="addLevel" value="${navStartLevel}" />
+                    <c:set var="addPosition" value="${navItems.size()}" />
+                </c:if>
+
+                <%-- Collect additional nav items in a temporary list --%>
+                <c:set var="ignore" value="${addItems.clear()}" />
+                <%-- Add the top level item itself --%>
+                <c:set var="ignore" value="${addNavTopItem.setNavTreeLevel(addLevel)}" />
+                <c:set var="ignore" value="${addItems.add(addNavTopItem)}" />
+                <c:if test="${not empty addNavSubItems}">
+                    <%-- Add all sub items of the top level item --%>
+                    <c:set var="navTreeLevelOffset" value="${addNavSubItems[0].navTreeLevel - (addLevel + 1)}" />
+                    <c:forEach var="addNavItem" items="${addNavSubItems}">
+                        <c:set var="ignore" value="${addNavItem.setNavTreeLevel(addNavItem.navTreeLevel - navTreeLevelOffset)}" />
+                        <c:set var="ignore" value="${addItems.add(addNavItem)}" />
+                    </c:forEach>
+                </c:if>
+                <%-- Add collected additional nav items to the final result list --%>
+                <c:set var="ignore" value="${navItems.addAll(addPosition, addItems)}" />
+            </c:if>
+        </c:forEach>
+
+    </c:when>
 </c:choose>
 
 <c:choose>
@@ -215,4 +213,7 @@
     </c:otherwise>
 
 </c:choose>
+
+<c:set var="nl" value="<%= \"\n\" %>" />
+
 

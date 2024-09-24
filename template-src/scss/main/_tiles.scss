@@ -120,9 +120,6 @@ $sq-heights-xl:    () !default;
            // creates the media query square versions like .square-lg-5 etc.
             width: #{100% * divide($col-size, $grid-columns, $divide-precision)};
             padding-bottom: calc-square-height($col-size) !important;
-            &:only-of-type {
-                width: 100%;
-            }
         }
     }
 

@@ -75,11 +75,12 @@ function setKeyboardNavPermanent(active) {
 function insertMegaMenu(path, $megaMenuParent) {
 
     // check if the mega menu structure has submenus, if so change HTML to match "no submenu" case
-    var $subMenuLink = $megaMenuParent.find("a.nav-label");
+    var $subMenuLink = $megaMenuParent.children("a.nav-label");
     if ($subMenuLink.length > 0) {
-        // this is required because otherwise the HTML/CSS for the mega menu does not work
-        var $subMenuTrigger = $megaMenuParent.find("a[aria-label]");
+        // remove 2nd link, otherwise the HTML/CSS for the mega menu may not always work correctly
+        var $subMenuTrigger = $megaMenuParent.children("a.nav-label + a[aria-label]");
         $subMenuLink.attr("aria-controls", $subMenuTrigger.attr("aria-controls"));
+        $subMenuLink.attr("aria-label", $subMenuTrigger.attr("aria-label"));
         $subMenuTrigger.remove();
     }
 

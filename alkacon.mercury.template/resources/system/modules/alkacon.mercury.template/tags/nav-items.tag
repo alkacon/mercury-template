@@ -49,7 +49,6 @@
 <c:set var="navDepth" value="${not empty maxDepth and (maxDepth gt 0) ? maxDepth : navDepth}" />
 <c:set var="endLevel" value="${navStartLevel + navDepth - 1}" />
 
-
 <c:choose>
     <c:when test="${not content.value.Root.value.NavCollection.isSet}">
     <%-- This is NOT a collection of different navigation start folders --%>
@@ -184,6 +183,7 @@
 
     <c:when test="${(navStartFolder ne 'INVALID') and not empty navItems}">
         <%-- Only output the tag body in case we have found some navigation items --%>
+        <c:set var="nl" value="<%= \"\n\" %>" />
         <jsp:doBody />
     </c:when>
 
@@ -213,7 +213,3 @@
     </c:otherwise>
 
 </c:choose>
-
-<c:set var="nl" value="<%= \"\n\" %>" />
-
-

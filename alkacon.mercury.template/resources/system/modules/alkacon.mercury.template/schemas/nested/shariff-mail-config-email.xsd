@@ -33,7 +33,7 @@
                     <DisplayName><![CDATA[%(key.label.Shariff.Body)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Shariff.Body.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>4|proportional|typography</WidgetConfig>
+                    <WidgetConfig>4|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

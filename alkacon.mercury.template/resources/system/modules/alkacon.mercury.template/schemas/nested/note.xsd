@@ -37,7 +37,7 @@
                     <DisplayName><![CDATA[%(key.label.Note.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Note.Text.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <WidgetConfig>10|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

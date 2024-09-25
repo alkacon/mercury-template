@@ -66,7 +66,7 @@
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Description)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Description.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>5|proportional</WidgetConfig>
+                    <WidgetConfig>5|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>

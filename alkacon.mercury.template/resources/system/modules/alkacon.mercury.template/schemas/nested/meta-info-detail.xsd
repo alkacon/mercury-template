@@ -34,7 +34,7 @@
                     <DisplayName><![CDATA[%(key.label.MetaInfo.Detail.Description)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MetaInfo.Detail.Description.help)]]></Description>
                     <Widget>textarea</Widget>
-                    <WidgetConfig>4|proportional</WidgetConfig>
+                    <WidgetConfig>4|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Keywords</PropertyName>

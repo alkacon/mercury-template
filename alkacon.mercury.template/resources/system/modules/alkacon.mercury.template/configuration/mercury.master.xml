@@ -1335,7 +1335,7 @@
     </Attribute>
     <Attribute>
       <Key><![CDATA[stringConfigTypo]]></Key>
-      <Value><![CDATA[typography]]></Value>
+      <Value><![CDATA[auto-typography]]></Value>
     </Attribute>
     <Attribute>
       <Key><![CDATA[mercuryYouTubePreviewDefault]]></Key>

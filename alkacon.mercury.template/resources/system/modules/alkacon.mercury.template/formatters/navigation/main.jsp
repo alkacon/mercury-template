@@ -136,7 +136,7 @@
             <c:set var="megaMenu" value="" />
             <c:if test="${isTopLevel}">
 
-                <c:if test="${empty navTarget and not fn:startsWith(navElem.info, '#')}">
+                <c:if test="${empty navTarget and not empty navElem.info and not fn:startsWith(navElem.info, '#') and not fn:startsWith(navElem.info, '/')}">
                     <%-- Append navInfo as CSS class, make sure this contains no invalid characters by running it through file translation --%>
                     <m:set-content-disposition name="${fn:toLowerCase(fn:trim(navElem.info))}" suffix="" setFilenameOnly="${true}"/>
                     <c:set var="menuType" value="${menuType.concat(contentDispositionFilename)}" />

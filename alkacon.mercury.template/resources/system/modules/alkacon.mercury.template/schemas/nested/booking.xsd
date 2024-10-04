@@ -94,11 +94,14 @@
                     <DisplayName>%(key.label.Booking.FinalRegistrationDate)</DisplayName>
                     <Widget>datetime</Widget>
                     <WidgetConfig>{fixedTime: "23:59"}</WidgetConfig>
+                    <Error><![CDATA[%(key.msg.error.dateformat.notime)]]></Error>
+                    <Search>false</Search>
                 </Setting>
                 <Setting>
                     <PropertyName>KeepDays</PropertyName>
                     <DisplayName>%(key.label.form.WebFormDatabaseConfiguration.KeepDays)</DisplayName>
                     <Description>%(key.label.form.WebFormDatabaseConfiguration.KeepDays.help)</Description>
+                    <Search>false</Search>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

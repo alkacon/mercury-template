@@ -21,6 +21,9 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <FieldSettings>
                 <Setting>
                     <PropertyName>Release</PropertyName>
@@ -28,6 +31,7 @@
                     <Description><![CDATA[%(key.label.Availability.Release.help)]]></Description>
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime)]]></Default>
+                    <Error><![CDATA[%(key.msg.error.dateformat)]]></Error>
                     <Search>false</Search>
                     <Synchronization>strong</Synchronization>
                 </Setting>
@@ -37,6 +41,7 @@
                     <Description><![CDATA[%(key.label.Availability.Expiration.help)]]></Description>
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime + 31536000000)]]></Default>
+                    <Error><![CDATA[%(key.msg.error.dateformat)]]></Error>
                     <Search>false</Search>
                     <Synchronization>strong</Synchronization>
                 </Setting>

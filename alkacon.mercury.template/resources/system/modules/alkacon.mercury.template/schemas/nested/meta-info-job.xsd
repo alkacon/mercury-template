@@ -23,6 +23,9 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <FieldSettings>
                 <Setting>
                     <PropertyName>EmploymentType</PropertyName>
@@ -50,6 +53,7 @@
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime + 31536000000)]]></Default>
                     <WidgetConfig>{fixedTime: "23:59"}</WidgetConfig>
+                    <Error><![CDATA[%(key.msg.error.dateformat.notime)]]></Error>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

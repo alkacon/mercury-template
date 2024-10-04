@@ -80,6 +80,7 @@
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime)]]></Default>
                     <WidgetConfig>{fixedTime: "00:00"}</WidgetConfig>
+                    <Error><![CDATA[%(key.msg.error.dateformat.notime)]]></Error>
                     <Search>listdate</Search>
                     <Synchronization>true</Synchronization>
                 </Setting>

@@ -6,6 +6,21 @@ The Mercury Template is a complete, modular template for [OpenCms](http://opencm
 
 ### Release history ###
 
+**Version 18** - October 8, 2024:
+
+* Updated for OpenCms 18.
+* The "Meta info" keywords can be used to boost pages in the internal search.
+* Place / POI now supports opening hours.
+* The "Map" can be displayed with a different ratio for mobile and desktop.
+* The "Media" video can be displayed in vertical "portrait" format.
+* New "Place detail view (like article)" formatter shows the description of the place above the address.
+* Images in most formatters can now be displayed with a different ratio for mobile and desktop.
+* Unwanted HTML tags such as 'frame', 'object', etc. entered in the WYSIWYG editor source code are now automatically removed.
+* Replaced all mentions of 'twitter' with 'X', including replacing the logo.
+* Support for the Piwik Pro" analytics platform.
+* Added a new set of custom 'Mercury' icons.
+* All NPM dependencies have been updated to a recent version.
+
 **Version 17** - April 9 , 2024:
 
 * Updated for OpenCms 17.

@@ -75,6 +75,7 @@
                     <Description><![CDATA[%(key.label.Date.help)]]></Description>
                     <Widget>datetime</Widget>
                     <Default><![CDATA[%(currenttime)]]></Default>
+                    <Error><![CDATA[%(key.msg.error.dateformat)]]></Error>
                     <Search>listdate</Search>
                     <Synchronization>true</Synchronization>
                 </Setting>

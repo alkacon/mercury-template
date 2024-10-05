@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>17.0.13</version>
+		<version>18.0.0</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -50,9 +50,9 @@ This module also creates a set of demo users during the import.]]></description>
 		<userinstalled/>
 		<dateinstalled/>
 		<dependencies>
-			<dependency name="alkacon.mercury.template" version="17.0.0"/>
-			<dependency name="alkacon.mercury.theme" version="17.0.0"/>
-			<dependency name="alkacon.mercury.webform" version="17.0.0"/>
+			<dependency name="alkacon.mercury.template" version="18.0.0"/>
+			<dependency name="alkacon.mercury.theme" version="18.0.0"/>
+			<dependency name="alkacon.mercury.webform" version="18.0.0"/>
 		</dependencies>
 		<exportpoints/>
 		<resources>

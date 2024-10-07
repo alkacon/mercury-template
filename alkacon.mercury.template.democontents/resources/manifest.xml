@@ -16062,6 +16062,23 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>release/.content/section-m/cs_00018.xml</source>
+			<destination>release/.content/section-m/cs_00018.xml</destination>
+			<type>m-section</type>
+			<uuidstructure>cbd2cccc-8473-11ef-8fd2-0242ac11002b</uuidstructure>
+			<uuidresource>cbd2cccd-8473-11ef-8fd2-0242ac11002b</uuidresource>
+			<datecreated>Mon, 07 Oct 2024 06:17:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 18: Release Notes for OpenCms 18]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>release/opencms-10.0.0-notes</destination>
 			<type>folder</type>
 			<uuidstructure>f4ef6adb-3a95-11e9-bd84-0242ac11002b</uuidstructure>
@@ -16700,6 +16717,46 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms 17]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<destination>release/opencms-18.0-notes</destination>
+			<type>folder</type>
+			<uuidstructure>a7aa5cba-8473-11ef-8fd2-0242ac11002b</uuidstructure>
+			<datecreated>Mon, 07 Oct 2024 06:16:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>NavPos</name>
+					<value><![CDATA[0.001953125]]></value>
+				</property>
+				<property>
+					<name>NavText</name>
+					<value><![CDATA[OpenCms 18]]></value>
+				</property>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 18]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>release/opencms-18.0-notes/index.html</source>
+			<destination>release/opencms-18.0-notes/index.html</destination>
+			<type>containerpage</type>
+			<uuidstructure>a7ae2d4f-8473-11ef-8fd2-0242ac11002b</uuidstructure>
+			<uuidresource>a7ae2d50-8473-11ef-8fd2-0242ac11002b</uuidresource>
+			<datecreated>Mon, 07 Oct 2024 06:16:14 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[OpenCms 18]]></value>
 				</property>
 			</properties>
 			<relations/>

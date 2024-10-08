@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalreminder.xsd"/>
 
     <xsd:element name="OptionalWebFormConfirmationMails" type="OpenCmsOptionalWebFormConfirmationMails"/>
 
@@ -12,16 +13,17 @@
 
     <xsd:complexType name="OpenCmsOptionalWebFormConfirmationMail">
         <xsd:sequence>
-            <xsd:element name="ConfirmationMailEnabled" type="OpenCmsBoolean" />
-            <xsd:element name="ConfirmationMailOptional" type="OpenCmsBoolean" />
-            <xsd:element name="ConfirmationCheckboxLabel" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationField" type="OpenCmsString" />
             <xsd:element name="ConfirmationMailFrom" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationMailReplyTo" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationMailFromName" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ConfirmationMailEnabled" type="OpenCmsBoolean" />
+            <xsd:element name="ConfirmationMailOptional" type="OpenCmsBoolean" />
+            <xsd:element name="ConfirmationCheckboxLabel" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="ConfirmationMailSubject" type="OpenCmsString" />
             <xsd:element name="ConfirmationMailText" type="OpenCmsHtml" minOccurs="0" />
             <xsd:element name="ConfirmationMailICalLinkEnabled" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="ReminderMail" type="OpenCmsOptionalWebFormReminderMail" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -30,22 +32,6 @@
         <xsd:appinfo>
             <resourcebundle name="alkacon.mercury.webform.messages"/>
             <FieldSettings>
-                <Setting>
-                    <PropertyName>ConfirmationMailEnabled</PropertyName>
-                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled.help)]]></Description>
-                    <Default>true</Default>
-                </Setting>
-                <Setting>
-                    <PropertyName>ConfirmationMailOptional</PropertyName>
-                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional.help)]]></Description>
-                </Setting>
-                <Setting>
-                    <PropertyName>ConfirmationCheckboxLabel</PropertyName>
-                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel)]]></DisplayName>
-                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel.help)]]></Description>
-                </Setting>
                 <Setting>
                     <PropertyName>ConfirmationField</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationField)]]></DisplayName>
@@ -75,6 +61,22 @@
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailFromName.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>ConfirmationMailEnabled</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailEnabled.help)]]></Description>
+                    <Default>true</Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationMailOptional</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailOptional.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfirmationCheckboxLabel</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationCheckboxLabel.help)]]></Description>
+                </Setting>
+                <Setting>
                     <PropertyName>ConfirmationMailSubject</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailSubject)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailSubject.help)]]></Description>
@@ -91,6 +93,11 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailICalLinkEnabled)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormConfirmationMail.ConfirmationMailICalLinkEnabled.help)]]></Description>
                     <Default>false</Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>ReminderMail</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMail)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMail.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

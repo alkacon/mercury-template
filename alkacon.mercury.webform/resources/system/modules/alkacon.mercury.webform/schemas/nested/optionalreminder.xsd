@@ -1,0 +1,51 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="OptionalWebFormReminderMails" type="OpenCmsOptionalWebFormReminderMails"/>
+
+    <xsd:complexType name="OpenCmsOptionalWebFormReminderMails">
+        <xsd:sequence>
+            <xsd:element name="OptionalWebFormReminderMail" type="OpenCmsOptionalWebFormReminderMail" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsOptionalWebFormReminderMail">
+        <xsd:sequence>
+            <xsd:element name="ReminderMailDate" type="OpenCmsDateTime" minOccurs="0" />
+            <xsd:element name="ReminderMailSubject" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="ReminderMailText" type="OpenCmsHtml" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="alkacon.mercury.webform.messages"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>ReminderMailDate</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMailDate)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMailDate.help)]]></Description>
+                    <Widget>datetime</Widget>
+                    <Default><![CDATA[%(currenttime)]]></Default>
+                    <WidgetConfig>{fixedTime: "00:00"}</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>ReminderMailSubject</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMailSubject)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMailSubject.help)]]></Description>
+                    <Widget>string</Widget>
+                </Setting>
+                <Setting>
+                    <PropertyName>ReminderMailText</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMailText)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.OptionalWebFormReminderMailText.help)]]></Description>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigMail:%(param:editorConfigMail))]]></WidgetConfig>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

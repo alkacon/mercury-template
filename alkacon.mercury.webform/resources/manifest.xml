@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>18.0.0</version>
+		<version>18.0.1</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1138,6 +1138,18 @@
 					<value><![CDATA[Nested XSD for optional release]]></value>
 				</property>
 			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/optionalreminder.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/optionalreminder.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>760dec7a-8570-11ef-bf3c-0242ac11002b</uuidstructure>
+			<uuidresource>760dec7b-8570-11ef-bf3c-0242ac11002b</uuidresource>
+			<datecreated>Tue, 08 Oct 2024 12:25:53 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
 			<relations/>
 			<accesscontrol/>
 		</file>

@@ -231,6 +231,14 @@
                     <DisplayName><![CDATA[%(key.label.Booking)]]></DisplayName>
                 </Setting>
                 <Setting>
+                    <PropertyName>Booking/ReminderMail/ReminderMailSubject</PropertyName>
+                    <Visibility><![CDATA[hidden]]></Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>Booking/ReminderMail/ReminderMailText</PropertyName>
+                    <Visibility><![CDATA[hidden]]></Visibility>
+                </Setting>
+                <Setting>
                     <PropertyName>Note</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Note)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Note.help)]]></Description>

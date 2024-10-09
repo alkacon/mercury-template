@@ -183,6 +183,16 @@
             @extend %ls-icon-line;
         }
     }
+
+    li.ls-li {
+        a:hover {
+            .ls-item {
+                span:not(.ls-icon) {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
 }
 
 .ls-icon + span {

@@ -107,7 +107,8 @@
             }
         }
 
-        .teaser-date {
+        .teaser-date,
+        .teaser-location {
             line-height: 1.2;
             font-size: 80%;
             color: $teaser-info-color;
@@ -124,6 +125,11 @@
                 text-decoration: none;
             }
         }
+    }
+
+    .teaser-location,
+    .teaser-location-inline {
+        font-weight: $font-weight-intro-headings;
     }
 
     .text {
@@ -175,7 +181,8 @@
                 }
             }
 
-            .teaser-date {
+            .teaser-date,
+            .teaser-location {
                 line-height: 1.2;
                 font-size: 80%;
                 color: $teaser-info-color;
@@ -776,9 +783,12 @@
     justify-content: flex-end;
 }
 
-.list-entries.row ~ .list-pagination {
-    // Bs5 row list do not have bottom margin, so add above pagination
-    margin-top: var(--#{$prefix}element-margin);
+.list-entries.row-square,
+.list-entries.row {
+    // Bs5 row list and square lists do not have bottom margin, so add above pagination
+    ~ .list-pagination {
+        margin-top: var(--#{$prefix}element-margin);
+    }
 }
 
 // List archive filter menu

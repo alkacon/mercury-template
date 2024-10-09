@@ -133,6 +133,12 @@
 <%@ attribute name="piecePreMarkup" type="java.lang.String" required="false"
     description="Markup to add inside the piece before the heading, body and everything else." %>
 
+<%@ attribute name="placeOption" type="java.lang.String" required="false"
+    description="Controls if and how the 'placeName' is displayed." %>
+
+<%@ attribute name="placeName" type="java.lang.String" required="false"
+    description="The location name to show with the teaser. HTML in this will be escaped." %>
+
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Controls if advanced direct edit is enabdled.
     Default is 'false' if not provided." %>
@@ -193,6 +199,23 @@
     </c:when>
 </c:choose>
 
+<c:choose>
+    <c:when test="${placeOption eq 'intro'}">
+        <%-- No check for empty placeName here because in this case the intro must be empty if the place name is empty --%>
+        <c:set var="intro" value="${placeName}" />
+    </c:when>
+    <c:when test="${not empty placeName and placeOption eq 'above'}">
+        <c:set var="placeAboveMarkup">
+            <div class="teaser-location"><m:out value="${placeName}" /></div><%----%>
+        </c:set>
+    </c:when>
+    <c:when test="${not empty placeName and placeOption eq 'prefix'}">
+        <c:set var="placeInlineMarkup">
+            <span class="teaser-location-wrapper"><span class="teaser-location-inline"><m:out value="${placeName}" /></span><span>${' / '}</span></span><%----%>
+        </c:set>
+    </c:when>
+</c:choose>
+
 <c:if test="${not empty groupId}">
     <c:set var="bodyPreMarkup">
         ${preGroupMarkup}
@@ -246,6 +269,10 @@
             ${dateMarkup}
         </c:if>
 
+        <c:if test="${not empty placeAboveMarkup}">
+            ${placeAboveMarkup}
+        </c:if>
+
         <c:if test="${(not empty pText) and (textLength != 0)}">
             <%-- textLength of -2 outputs the whole text without HTML escaping --%>
             <%-- textLength of < 0 outputs the whole text --%>
@@ -253,6 +280,9 @@
             <%-- textLength of > n outputs the text trimmed down to max n chars --%>
             <c:set var="prefaceInBody" value="${true}" />
             <div class="teaser-text"><%----%>
+                <c:if test="${not empty placeInlineMarkup}">
+                    ${placeInlineMarkup}
+                </c:if>
                 <c:choose>
                     <c:when test="${textLength == -2}">
                         ${pText}

@@ -58,6 +58,9 @@
       <IncludeName><![CDATA[detailLinkWin.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[placeOption.listTeaser]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bookingOption.default]]></IncludeName>
     </Setting>
     <Setting>

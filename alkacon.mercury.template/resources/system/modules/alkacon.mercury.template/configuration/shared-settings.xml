@@ -1890,6 +1890,20 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[placeOption.listTeaser]]></IncludeName>
+      <PropertyName><![CDATA[placeOption]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.placeOption)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.placeOption.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:             %(key.msg.setting.placeOption.none)|
+            above:            %(key.msg.setting.placeOption.above)|
+            prefix:           %(key.msg.setting.placeOption.prefix)|
+            intro:            %(key.msg.setting.placeOption.intro)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[keyPieceSizeDesktop.detail]]></IncludeName>
       <PropertyName><![CDATA[keyPieceSizeDesktop]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.keyPieceSizeDesktop)]]></DisplayName>

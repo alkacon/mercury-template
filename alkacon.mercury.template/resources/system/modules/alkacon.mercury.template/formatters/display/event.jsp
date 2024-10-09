@@ -22,7 +22,9 @@
 
 <c:set var="bookingOption"          value="${setting.bookingOption.useDefault('none').toString}" />
 <c:set var="kindOption"             value="${setting.kindOption.isSetNotNone ? setting.kindOption.useDefault('online').toString : null}" />
+<c:set var="placeOption"            value="${setting.placeOption.isSetNotNone ? setting.placeOption.toString : null }" />
 <c:set var="showBtnOnlyForBooking"  value="${setting.showButtonOnlyForBooking.toBoolean}" />
+
 <c:set var="instancedate"           value="${param.instancedate}" />
 <c:set var="seriesInfo"             value="${value.Dates.toDateSeries}" />
 <c:set var="date"                   value="${seriesInfo.instanceInfo.get(instancedate)}" />
@@ -37,7 +39,7 @@
         </c:when>
         <c:otherwise>
             <%-- calendar sheet in mobile does NOT use the ratio anyway, so setRatio for the calendar sheet must always use the desktop ratio if available --%>
-            <c:set var="setRatio" value="${not empty setRatioLg ? setRatioLg : setRatio}" />
+            <c:set var="setRatio" value="${not empty setRatioLg and setRatioLg ne 'desk' ? setRatioLg : setRatio}" />
             <c:set var="setRatio" value="${setRatio eq 'none' ? '4-3' : setRatio}" />
         </c:otherwise>
     </c:choose>
@@ -90,6 +92,24 @@
     </c:set>
 </c:if>
 
+<c:if test="${not empty placeOption}">
+    <c:set var="loc" value="${
+        value.AddressChoice.isSet and value.AddressChoice.value.PoiLink.isSet ?
+        cms.vfs.readXml[value.AddressChoice.value.PoiLink] :
+        value.AddressChoice.value.Address
+    }" />
+    <c:if test="${not empty loc}">
+        <c:choose>
+            <c:when test="${loc.value.Name.isSet}">
+                <c:set var="placeName" value="${loc.value.Name}" />
+            </c:when>
+            <c:when test="${loc.value.Title.isSet}">
+                <c:set var="placeName" value="${loc.value.Title}" />
+            </c:when>
+        </c:choose>
+    </c:if>
+</c:if>
+
 <c:set var="link"><cms:link baseUri="${pageUri}">${content.filename}?instancedate=${instancedate}</cms:link></c:set>
 <c:set var="intro"   value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />
 <c:set var="title"   value="${value['TeaserData/TeaserTitle'].isSet ? value['TeaserData/TeaserTitle'] : value.Title}" />
@@ -112,6 +132,8 @@
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setShowCalendar ? 12 : setSizeMobile}"
+    placeOption="${placeOption}"
+    placeName="${placeName}"
 
     teaserType="${displayType}"
     link="${link}"

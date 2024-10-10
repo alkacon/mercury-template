@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>18.0.3</version>
+		<version>18.0.5</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -9671,6 +9671,23 @@
 				<property type="shared">
 					<name>export</name>
 					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/set-placename.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/set-placename.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>1b7eb0f0-86f2-11ef-b54a-0242ac11002b</uuidstructure>
+			<uuidresource>1b7eb0f1-86f2-11ef-b54a-0242ac11002b</uuidresource>
+			<datecreated>Thu, 10 Oct 2024 10:26:27 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Sets the place name from either a POI link or an embedded address]]></value>
 				</property>
 			</properties>
 			<relations/>

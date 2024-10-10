@@ -1899,7 +1899,6 @@
       <WidgetConfig><![CDATA[
             none:             %(key.msg.setting.placeOption.none)|
             above:            %(key.msg.setting.placeOption.above)|
-            prefix:           %(key.msg.setting.placeOption.prefix)|
             intro:            %(key.msg.setting.placeOption.intro)
         ]]></WidgetConfig>
     </Setting>

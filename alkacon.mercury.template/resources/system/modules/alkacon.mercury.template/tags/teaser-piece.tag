@@ -206,12 +206,12 @@
     </c:when>
     <c:when test="${not empty placeName and placeOption eq 'above'}">
         <c:set var="placeAboveMarkup">
-            <div class="teaser-location"><m:out value="${placeName}" /></div><%----%>
+            <div class="teaser-place"><m:out value="${placeName}" /></div><%----%>
         </c:set>
     </c:when>
     <c:when test="${not empty placeName and placeOption eq 'prefix'}">
         <c:set var="placeInlineMarkup">
-            <span class="teaser-location-wrapper"><span class="teaser-location-inline"><m:out value="${placeName}" /></span><span>${' / '}</span></span><%----%>
+            <span class="teaser-place-inline"><m:out value="${placeName}" /></span><%----%>
         </c:set>
     </c:when>
 </c:choose>

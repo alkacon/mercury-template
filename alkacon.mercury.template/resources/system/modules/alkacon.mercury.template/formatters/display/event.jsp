@@ -92,23 +92,7 @@
     </c:set>
 </c:if>
 
-<c:if test="${not empty placeOption}">
-    <c:set var="loc" value="${
-        value.AddressChoice.isSet and value.AddressChoice.value.PoiLink.isSet ?
-        cms.vfs.readXml[value.AddressChoice.value.PoiLink] :
-        value.AddressChoice.value.Address
-    }" />
-    <c:if test="${not empty loc}">
-        <c:choose>
-            <c:when test="${loc.value.Name.isSet}">
-                <c:set var="placeName" value="${loc.value.Name}" />
-            </c:when>
-            <c:when test="${loc.value.Title.isSet}">
-                <c:set var="placeName" value="${loc.value.Title}" />
-            </c:when>
-        </c:choose>
-    </c:if>
-</c:if>
+<m:set-placename var="placeName" content="${content}" test="${not empty placeOption}" />
 
 <c:set var="link"><cms:link baseUri="${pageUri}">${content.filename}?instancedate=${instancedate}</cms:link></c:set>
 <c:set var="intro"   value="${value['TeaserData/TeaserIntro'].isSet ? value['TeaserData/TeaserIntro'] : value.Intro}" />

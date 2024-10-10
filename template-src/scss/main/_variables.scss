@@ -710,10 +710,17 @@ $teaser-title-height:               $headings-line-height !default;
 $teaser-btn-def-padding:            $btn-def-padding !default;
 $teaser-btn-compact-padding:        $btn-sm-padding !default;
 $teaser-btn-compact-light-padding:  0 $btn-padding !default;
-$teaser-info-color:                 var(--#{$prefix}body-color) !default; // color of additional teaser infos, e.g. the date
 
 $teaser-headings-margin-bottom:     var(--#{$prefix}paragraph-margin-bottom) !default;
-$teaser-date-margin-bottom:         calc(0.5 * var(--#{$prefix}paragraph-margin-bottom)) !default;
+$teaser-margin-small:               calc(0.5 * #{$paragraph-margin-bottom}) !default; // can NOT use var() here
+
+$teaser-date-color:                 var(--#{$prefix}body-color) !default; // color of additional teaser infos, e.g. the date
+$teaser-date-font-weight:           var(--#{$prefix}body-font-weight) !default;
+$teaser-date-font-size:             80% !default;
+
+$teaser-place-color:                var(--#{$prefix}intro-headings-color) !default;
+$teaser-place-font-weight:          var(--#{$prefix}font-weight-bold) !default;
+$teaser-place-font-size:            var(--#{$prefix}body-font-size) !default;
 
 // Detail pages
 $detail-desktop-breakpoint:         $piece-desktop-breakpoint !default;

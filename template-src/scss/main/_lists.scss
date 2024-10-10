@@ -80,6 +80,43 @@
 
 // Teasers - applies for teasers in lists as well as teasers placed directly on a page
 
+@mixin teaser-list-format {
+    .intro-headline {
+        line-height: $teaser-title-height;
+        margin-bottom: $teaser-headings-margin-bottom;
+        @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
+    }
+
+    .teaser-btn {
+        &:not(:last-child) {
+            margin-right: var(--#{$prefix}ws-margin);
+        }
+        @if ($teaser-btn-def-padding != $btn-def-padding) {
+            padding: $teaser-btn-def-padding;
+        }
+    }
+
+    .teaser-date,
+    .teaser-place {
+        line-height: 1.2;
+    }
+
+    .teaser-date {
+        color: $teaser-date-color;
+        font-size: $teaser-date-font-size;
+        font-weight: $teaser-date-font-weight;
+        &:has(+ .teaser-place) {
+            --#{$prefix}piece-paragraph-margin-bottom: #{$teaser-margin-small};
+        }
+    }
+
+    .teaser-place {
+        color: $teaser-place-color;
+        font-size: $teaser-place-font-size;
+        font-weight: $teaser-place-font-weight;
+    }
+}
+
 .teaser {
     margin-bottom: var(--#{$prefix}element-margin);
     @include clearfix;
@@ -92,27 +129,14 @@
     }
 
     @if (not $list-teaser-format-inlist-only) {
-        .intro-headline {
-            line-height: $teaser-title-height;
-            margin-bottom: $teaser-headings-margin-bottom;
-            @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
-        }
+        @include teaser-list-format;
+    }
 
-        .teaser-btn {
-            @if ($teaser-btn-def-padding != $btn-def-padding) {
-                padding: $teaser-btn-def-padding;
-            }
-            &:not(:last-child) {
-                margin-right: var(--#{$prefix}ws-margin);
-            }
-        }
-
-        .teaser-date,
-        .teaser-location {
-            line-height: 1.2;
-            font-size: 80%;
-            color: $teaser-info-color;
-            margin-bottom: $teaser-date-margin-bottom;
+    .teaser-place-inline {
+        color: $teaser-place-color;
+        font-weight: $teaser-place-font-weight;
+        &::after {
+            content: " / ";
         }
     }
 
@@ -125,11 +149,6 @@
                 text-decoration: none;
             }
         }
-    }
-
-    .teaser-location,
-    .teaser-location-inline {
-        font-weight: $font-weight-intro-headings;
     }
 
     .text {
@@ -166,28 +185,7 @@
         }
 
         @if ($list-teaser-format-inlist-only) {
-            .intro-headline {
-                line-height: $teaser-title-height;
-                margin-bottom: $teaser-headings-margin-bottom;
-                @include font-size-responsive($teaser-title-size-mobile, $teaser-title-size);
-            }
-
-            .teaser-btn {
-                &:not(:last-child) {
-                    margin-right: var(--#{$prefix}ws-margin);
-                }
-                @if ($teaser-btn-def-padding != $btn-def-padding) {
-                    padding: $teaser-btn-def-padding;
-                }
-            }
-
-            .teaser-date,
-            .teaser-location {
-                line-height: 1.2;
-                font-size: 80%;
-                color: $teaser-info-color;
-                margin-bottom: $teaser-date-margin-bottom;
-            }
+            @include teaser-list-format;
         }
     }
 

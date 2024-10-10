@@ -79,6 +79,11 @@
                         <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:bookable)</mapping>
                     </solrfield>
                 </searchsetting>
+                <searchsetting element="Booking/ReminderMail/TimeInterval">
+                    <solrfield targetfield="booking-reminder" sourcefield="*_b">
+                        <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:bookingReminder)</mapping>
+                    </solrfield>
+                </searchsetting>
             </searchsettings>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
             <parameters>
@@ -109,6 +114,13 @@
                 !%]]></param>
                 <param name="bookable"><![CDATA[%!
                     !%%if (content.value.("Booking").isSet && content.value.("Booking").value.("Webform").isSet)%%!
+                        !%true%!
+                    !%%else%%!
+                        !%false%!
+                    !%%endif%%!
+                !%]]></param>
+                <param name="bookingReminder"><![CDATA[%!
+                    !%%if (content.value.("Booking").isSet && content.value.("Booking").value.("ReminderMail").isSet && content.value.("Booking").value.("ReminderMail").value.("TimeInterval").isSet)%%!
                         !%true%!
                     !%%else%%!
                         !%false%!

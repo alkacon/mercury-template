@@ -1,7 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
-    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/optionalreminder.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/booking-reminder.xsd"/>
 
     <xsd:element name="BookingData" type="OpenCmsBookingData"/>
 
@@ -18,7 +18,7 @@
             <xsd:element name="MailFrom" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="MailFromName" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MailTo" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="ReminderMail" type="OpenCmsOptionalWebFormReminderMail" />
+            <xsd:element name="ReminderMail" type="OpenCmsBookingReminder" minOccurs="0" />
             <xsd:element name="MaxRegularDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="MaxWaitlistDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="NumOtherDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
@@ -75,8 +75,8 @@
                 </Setting>
                 <Setting>
                     <PropertyName>ReminderMail</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.booking.ReminderMail)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.booking.ReminderMail.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.Booking.ReminderMail)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Booking.ReminderMail.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>MaxRegularDatasets</PropertyName>

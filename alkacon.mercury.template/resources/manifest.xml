@@ -6763,6 +6763,18 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/booking-reminder.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/booking-reminder.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>67c50d73-86e3-11ef-89fe-0242ac11002b</uuidstructure>
+			<uuidresource>67c50d74-86e3-11ef-89fe-0242ac11002b</uuidresource>
+			<datecreated>Thu, 10 Oct 2024 08:41:12 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/booking.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/booking.xsd</destination>
 			<type>plain</type>

@@ -52,6 +52,9 @@ public class CmsFormDataBean {
     /** The XPATH to store the registration mail sent information. */
     public static final String PATH_REGISTRATION_MAIL_SENT = "RegistrationMailSent[1]";
 
+    /** The XPATH to store the registration mail sent information. */
+    public static final String PATH_REMINDER_MAIL_SENT = "ReminderMailSent[1]";
+
     /** The XPATH to store the waitlist notification flag. */
     public static final String PATH_WAITLIST_NOTIFICATION = "WaitlistNotification[1]";
 
@@ -102,6 +105,9 @@ public class CmsFormDataBean {
 
     /** Whether a registration mail was sent. */
     private Boolean m_isRegistrationMailSent;
+
+    /** Whether a reminder mail was sent. */
+    private Boolean m_isReminderMailSent;
 
     /** Whether a waitlist notification mail was sent. */
     private Boolean m_isWaitlistNotification;
@@ -313,6 +319,23 @@ public class CmsFormDataBean {
                 (isConfirmationMailSent() == true) && (m_isWaitlistNotification == Boolean.FALSE));
         }
         return m_isRegistrationMailSent.booleanValue();
+    }
+
+    /**
+     * Whether a reminder mail was sent.
+     * @return whether a reminder mail was sent
+     */
+    public boolean isReminderMailSent() {
+
+        if (null == m_isReminderMailSent) {
+            I_CmsXmlContentValue value = m_content.getValue(PATH_REMINDER_MAIL_SENT, CmsLocaleManager.MASTER_LOCALE);
+            if (value == null) {
+                m_isReminderMailSent = Boolean.FALSE;
+            } else {
+                m_isReminderMailSent = Boolean.valueOf(value.getStringValue(null));
+            }
+        }
+        return m_isReminderMailSent.booleanValue();
     }
 
     /**

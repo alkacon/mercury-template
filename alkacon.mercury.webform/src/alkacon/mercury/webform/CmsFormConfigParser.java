@@ -29,14 +29,34 @@ import org.opencms.xml.I_CmsXmlDocument;
 import java.util.Locale;
 import java.util.Map;
 
+/**
+ * Form configuration parser.
+ */
 public class CmsFormConfigParser {
 
-    private Map<String, String> m_dynamicConfig;
-    private I_CmsXmlDocument m_xmlConfig;
+    /** The CMS context. */
     private CmsObject m_cms;
-    private CmsMacroResolver m_resolver;
+
+    /** The form configuration. */
+    private I_CmsXmlDocument m_xmlConfig;
+
+    /** The content locale to parse. */
     private Locale m_locale;
 
+    /** The macro resolver. */
+    private CmsMacroResolver m_resolver;
+
+    /** Additional dynamic configuration. */
+    private Map<String, String> m_dynamicConfig;
+
+    /**
+     * Creates a new form configuration parser.
+     * @param cms the CMS context
+     * @param xmlConfig the XML configuration
+     * @param locale the locale
+     * @param resolver the macro resolver
+     * @param dynamicConfig additional dynamic configuration
+     */
     public CmsFormConfigParser(
         CmsObject cms,
         I_CmsXmlDocument xmlConfig,
@@ -51,6 +71,12 @@ public class CmsFormConfigParser {
         m_dynamicConfig = dynamicConfig;
     }
 
+    /**
+     * Returns the configuration value for a given path without resolving macros.
+     * @param xpath the path
+     * @param defaultValue the optional default value
+     * @return the configuration value
+     */
     public String getConfigurationValue(String xpath, String defaultValue) {
 
         String stringValue = getValueFromDynamicConfig(xpath);
@@ -60,6 +86,12 @@ public class CmsFormConfigParser {
         return null == stringValue ? defaultValue : stringValue;
     }
 
+    /**
+     * Returns the configuration value for a given path with resolving macros.
+     * @param xpath the path
+     * @param defaultValue the optional default value
+     * @return the configuration value
+     */
     public String getResolvedConfigurationValue(String xpath, String defaultValue) {
 
         String stringValue = getValueFromDynamicConfig(xpath);
@@ -70,11 +102,10 @@ public class CmsFormConfigParser {
     }
 
     /**
-     * If the given value is empty, the default value is returned, otherwise the given value is returned and if a macro resolver is given, macros in it will be resolved.<p>
-     *
+     * If the given value is empty, the default value is returned, otherwise the given value
+     * is returned and if a macro resolver is given, macros in it will be resolved.<p>
      * @param value the configuration value to check and resolve macros in
      * @param defaultValue the default value to return in case the value is empty
-     *
      * @return the checked value
      */
     protected String getResolvedValue(String value, String defaultValue) {
@@ -88,7 +119,6 @@ public class CmsFormConfigParser {
     /**
      * Returns the value from the dynamic configuration if it is not empty or whitespace only - if so, it returns null.
      * @param key the configuration option to read
-     *
      * @return If existing, the (non-whitespace-only) value of the configuration option, otherwise null
      */
     protected String getValueFromDynamicConfig(String key) {
@@ -102,5 +132,4 @@ public class CmsFormConfigParser {
         }
         return value;
     }
-
 }

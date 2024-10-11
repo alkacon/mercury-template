@@ -36,14 +36,9 @@ import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.publish.CmsPublishManager;
-import org.opencms.relations.CmsRelation;
-import org.opencms.relations.CmsRelationFilter;
 import org.opencms.report.CmsLogReport;
-import org.opencms.util.CmsStringUtil;
-import org.opencms.util.CmsUUID;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -101,7 +96,7 @@ public class CmsFormDataAjaxHandler extends A_CmsFormDataHandler {
                 setError(ERROR_FORBIDDEN);
                 return false;
             }
-            List<CmsResource> formDataResources = readFormData(clone, eventUuid, formdataUuids);
+            List<CmsResource> formDataResources = readAllFormData(clone, eventUuid, formdataUuids, this);
             List<CmsResource> publishList = new ArrayList<CmsResource>();
             for (CmsResource relatedResource : formDataResources) {
                 boolean deleted = deleteSubmission(relatedResource.getStructureId().toString(), false);
@@ -151,55 +146,5 @@ public class CmsFormDataAjaxHandler extends A_CmsFormDataHandler {
             LOG.error(e.getLocalizedMessage(), e);
             return false;
         }
-    }
-
-    /**
-     * Reads the related form data resources.
-     * @param clone the CMS clone
-     * @param eventUuid the event UUID
-     * @param formdataUuids comma separated list of form-data UUIDs
-     * @return the related form data resources
-     */
-    private List<CmsResource> readFormData(CmsObject clone, String eventUuid, String formdataUuids) {
-
-        List<CmsResource> formData = new ArrayList<CmsResource>();
-        List<String> ids = null;
-        if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(formdataUuids)) {
-            if (formdataUuids.contains(",")) {
-                ids = Arrays.asList(formdataUuids.split(","));
-            } else {
-                ids = new ArrayList<String>();
-                ids.add(formdataUuids);
-            }
-        }
-        CmsRelationFilter relationFilter = CmsRelationFilter.relationsToStructureId(new CmsUUID(eventUuid));
-        if (relationFilter != null) {
-            try {
-                List<CmsRelation> relationsToResource = clone.readRelations(relationFilter);
-                I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
-                    CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
-                for (CmsRelation relation : relationsToResource) {
-                    CmsResource relatedResource = null;
-                    try {
-                        relatedResource = relation.getSource(clone, CmsResourceFilter.ALL.addRequireType(formDataType));
-                    } catch (CmsException e) {
-                        // resource does not exist in online project, nothing to do
-                    }
-                    if (relatedResource != null) {
-                        if (ids == null) {
-                            formData.add(relatedResource);
-                        } else if (ids.contains(relatedResource.getStructureId().toString())) {
-                            formData.add(relatedResource);
-                        }
-                    }
-                }
-            } catch (CmsException e) {
-                setError(ERROR_INTERNAL);
-                LOG.error(e.getLocalizedMessage(), e);
-            }
-        } else {
-            setError(ERROR_INTERNAL);
-        }
-        return formData;
     }
 }

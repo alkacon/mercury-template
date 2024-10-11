@@ -32,18 +32,14 @@ import alkacon.mercury.webform.mail.CmsFormMailCancelUser;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpAdmin;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpUser;
 
-import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.file.types.I_CmsResourceType;
-import org.opencms.i18n.CmsLocaleManager;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.util.CmsMacroResolver;
 import org.opencms.xml.content.CmsXmlContent;
-import org.opencms.xml.content.CmsXmlContentFactory;
-import org.opencms.xml.types.I_CmsXmlContentValue;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -276,24 +272,6 @@ public class CmsFormDataHandler extends A_CmsFormDataHandler {
     }
 
     /**
-     * Reads and unmarshals the form data resource.
-     * @param clone the CMS clone
-     * @param resource the resource
-     * @return the unmarshalled form data content
-     */
-    private CmsXmlContent readContent(CmsObject clone, CmsResource resource) {
-
-        CmsXmlContent content = null;
-        try {
-            CmsFile file = clone.readFile(resource);
-            content = CmsXmlContentFactory.unmarshal(clone, file);
-        } catch (CmsException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        }
-        return content;
-    }
-
-    /**
      * Sends a mail to the administrators and, if configured, also to the user.
      * @param bean the form data bean
      * @param action the action to send the mail for
@@ -351,31 +329,5 @@ public class CmsFormDataHandler extends A_CmsFormDataHandler {
             return false;
         }
         return true;
-    }
-
-    /**
-     * For a given path and value, updates and saves the form data content.
-     * @param clone the CMS clone
-     * @param content the form data content
-     * @param path the content path
-     * @param value the value
-     * @return whether updating and saving the content was successful
-     */
-    private boolean updateContent(CmsObject clone, CmsXmlContent content, String path, String value) {
-
-        try {
-            CmsFile file = content.getFile();
-            I_CmsXmlContentValue contentValue = content.getValue(path, CmsLocaleManager.MASTER_LOCALE);
-            if (contentValue == null) {
-                contentValue = content.addValue(clone, path, CmsLocaleManager.MASTER_LOCALE, 0);
-            }
-            contentValue.setStringValue(clone, value);
-            file.setContents(content.marshal());
-            clone.writeFile(file);
-            return true;
-        } catch (Exception e) {
-            LOG.error(e.getLocalizedMessage(), e);
-            return false;
-        }
     }
 }

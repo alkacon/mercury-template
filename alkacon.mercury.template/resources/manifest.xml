@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>18.0.5</version>
+		<version>18.0.6</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6270,7 +6270,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[XSD for blog articles]]></value>
+					<value><![CDATA[XSD for articles]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6576,7 +6576,7 @@
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[XSD for points of interest]]></value>
+					<value><![CDATA[XSD for places / points of interest]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -6770,7 +6770,12 @@
 			<uuidresource>67c50d74-86e3-11ef-89fe-0242ac11002b</uuidresource>
 			<datecreated>Thu, 10 Oct 2024 08:41:12 GMT</datecreated>
 			<flags>0</flags>
-			<properties/>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for booking reminder]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

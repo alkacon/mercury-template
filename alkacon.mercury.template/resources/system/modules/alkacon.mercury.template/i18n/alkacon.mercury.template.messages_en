@@ -522,6 +522,7 @@ msg.attribute.iconFont.help=Controls which icon set is used for the system icons
 msg.default.new.Caption=New caption
 msg.default.new.Text=New text
 msg.default.tab.Label=Label
+msg.error.colorformat=The colour code must be in the correct hexadecimal format, e.g. in the form ‘#CC3300’.
 msg.error.contact.firstname=The first name has to be provided.
 msg.error.contact.lastname=The last name has to be provided
 msg.error.Currency=Please select a currency or provide a three-digit currency code.

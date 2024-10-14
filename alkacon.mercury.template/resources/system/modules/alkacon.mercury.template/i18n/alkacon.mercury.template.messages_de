@@ -522,6 +522,7 @@ msg.attribute.iconFont.help=Legt fest welche Icons für die Standard-Funktionen 
 msg.default.new.Caption=Neuer Untertitel
 msg.default.new.Text=Neuer Text
 msg.default.tab.Label=Bezeichnung
+msg.error.colorformat=Der Farbcode muss korrekt im hexadezimalen Format sein, z.B. in der Form '#CC3300'.
 msg.error.contact.firstname=Der Vorname muss ausgefüllt werden.
 msg.error.contact.lastname=Der Nachname muss ausgefüllt werden.
 msg.error.Currency=Wählen Sie eine Währung aus oder geben Sie einen dreistelligen Währungs-Code an.

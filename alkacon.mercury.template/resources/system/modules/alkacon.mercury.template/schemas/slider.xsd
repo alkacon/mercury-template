@@ -51,6 +51,7 @@
                     <Description><![CDATA[%(key.label.Slider.TextColor.help)]]></Description>
                     <Widget>colorpicker</Widget>
                     <Default><![CDATA[#333333]]></Default>
+                    <Error><![CDATA[%(key.msg.error.colorformat)]]></Error>
                 </Setting>
                 <Setting>
                     <PropertyName>TextBackgroundColor</PropertyName>
@@ -58,6 +59,7 @@
                     <Description><![CDATA[%(key.label.Slider.TextBackgroundColor.help)]]></Description>
                     <Widget>colorpicker</Widget>
                     <Default><![CDATA[#cccccc]]></Default>
+                    <Error><![CDATA[%(key.msg.error.colorformat)]]></Error>
                 </Setting>
                 <Setting>
                     <PropertyName>GalleryTitle</PropertyName>

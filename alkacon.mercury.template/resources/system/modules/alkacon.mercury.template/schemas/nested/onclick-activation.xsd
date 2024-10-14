@@ -109,6 +109,7 @@
                     <PropertyName>BgColor</PropertyName>
                     <DisplayName><![CDATA[%(key.label.oa.BgColor)]]></DisplayName>
                     <Description><![CDATA[%(key.label.oa.BgColor.help)]]></Description>
+                    <Error><![CDATA[%(key.msg.error.colorformat)]]></Error>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

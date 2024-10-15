@@ -106,7 +106,7 @@ public abstract class A_CmsFormDataHandler extends CmsJspActionElement {
      * @param resource the resource
      * @return whether the form data resource was successfully locked
      */
-    protected static boolean lockResource(CmsObject clone, CmsResource resource) {
+    public static boolean lockResource(CmsObject clone, CmsResource resource) {
 
         try {
             CmsLockUtil.ensureLock(clone, resource);
@@ -123,7 +123,7 @@ public abstract class A_CmsFormDataHandler extends CmsJspActionElement {
      * @param resourceName the resource name
      * @return whether the resource was successfully published
      */
-    protected static boolean publishResource(CmsObject clone, String resourceName) {
+    public static boolean publishResource(CmsObject clone, String resourceName) {
 
         try {
             OpenCms.getPublishManager().publishResource(clone, resourceName);
@@ -140,7 +140,7 @@ public abstract class A_CmsFormDataHandler extends CmsJspActionElement {
      * @param eventUuid the event id
      * @return the form data beans
      */
-    protected static List<CmsFormDataBean> readAllFormData(CmsObject cms, String eventUuid) {
+    public static List<CmsFormDataBean> readAllFormData(CmsObject cms, String eventUuid) {
 
         List<CmsResource> resources = readAllFormData(cms, eventUuid, null, null);
         List<CmsFormDataBean> beans = new ArrayList<CmsFormDataBean>();
@@ -161,7 +161,7 @@ public abstract class A_CmsFormDataHandler extends CmsJspActionElement {
      * @param formDataHandler Handler instance
      * @return the related form data resources
      */
-    protected static List<CmsResource> readAllFormData(
+    public static List<CmsResource> readAllFormData(
         CmsObject cms,
         String eventUuid,
         String formdataUuids,
@@ -218,7 +218,7 @@ public abstract class A_CmsFormDataHandler extends CmsJspActionElement {
      * @param resource the resource
      * @return the unmarshalled form data content
      */
-    protected static CmsXmlContent readContent(CmsObject clone, CmsResource resource) {
+    public static CmsXmlContent readContent(CmsObject clone, CmsResource resource) {
 
         CmsXmlContent content = null;
         try {
@@ -236,7 +236,7 @@ public abstract class A_CmsFormDataHandler extends CmsJspActionElement {
      * @param paramUuid the UUID of the form data content
      * @return whether the form data content exists and is not deleted
      */
-    protected static CmsResource readResource(CmsObject clone, String paramUuid) {
+    public static CmsResource readResource(CmsObject clone, String paramUuid) {
 
         CmsUUID uuid = new CmsUUID(paramUuid);
         if (!clone.existsResource(uuid, CmsResourceFilter.ALL)) {
@@ -263,7 +263,7 @@ public abstract class A_CmsFormDataHandler extends CmsJspActionElement {
      * @param value the value
      * @return whether updating and saving the content was successful
      */
-    protected static boolean updateContent(CmsObject clone, CmsXmlContent content, String path, String value) {
+    public static boolean updateContent(CmsObject clone, CmsXmlContent content, String path, String value) {
 
         try {
             CmsFile file = content.getFile();

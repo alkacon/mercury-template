@@ -48,6 +48,12 @@ public final class CmsFormMailMessages extends A_CmsMessageBundle {
     public static final String MAIL_PREFIX_MOVEDUP = "MAIL_PREFIX_MOVEDUP";
 
     /** Message constant for key in the resource bundle. */
+    public static final String MAIL_SUBJECT_REMINDER_USER = "MAIL_SUBJECT_REMINDER_USER";
+
+    /** Message constant for key in the resource bundle. */
+    public static final String MAIL_TEXT_REMINDER_USER = "MAIL_TEXT_REMINDER_USER";
+
+    /** Message constant for key in the resource bundle. */
     public static final String INFO_CANCELLED_ADMIN = "INFO_CANCELLED_ADMIN";
 
     /** Message constant for key in the resource bundle. */

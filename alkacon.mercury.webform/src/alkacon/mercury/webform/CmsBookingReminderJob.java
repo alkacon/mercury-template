@@ -27,6 +27,9 @@
 
 package alkacon.mercury.webform;
 
+import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
+import alkacon.mercury.webform.mail.CmsFormMailMessages;
+
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResourceFilter;
@@ -47,15 +50,19 @@ import org.opencms.search.solr.CmsSolrQuery;
 import org.opencms.search.solr.CmsSolrResultList;
 import org.opencms.util.CmsMacroResolver;
 import org.opencms.util.CmsStringUtil;
+import org.opencms.widgets.serialdate.CmsSerialDateBeanFactory;
+import org.opencms.widgets.serialdate.I_CmsSerialDateBean;
 import org.opencms.xml.I_CmsXmlDocument;
 import org.opencms.xml.content.CmsXmlContent;
 import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
@@ -98,11 +105,26 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         }
 
         /**
+         * Returns the content title.
+         * @param cms the CMS context
+         * @return the content title
+         */
+        String getContentTitle(CmsObject cms) {
+
+            String contentTitle = "";
+            I_CmsXmlContentValue value = m_event.getValue(PATH_EVENT_TITLE, cms.getRequestContext().getLocale());
+            if ((value != null) && CmsStringUtil.isNotEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
+                contentTitle = value.getStringValue(cms);
+            }
+            return contentTitle;
+        }
+
+        /**
          * Returns the event note.
          * @param cms the CMS context
          * @return the event note
          */
-        public String getEventNote(CmsObject cms) {
+        String getEventNote(CmsObject cms) {
 
             String eventNote = "";
             I_CmsXmlContentValue value = m_event.getValue(PATH_EVENT_NOTE, cms.getRequestContext().getLocale());
@@ -117,7 +139,7 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
          * @param cms the CMS context
          * @return the formatted event time
          */
-        public String getEventTime(CmsObject cms) {
+        String getEventTime(CmsObject cms) {
 
             I_CmsXmlContentValue value = m_event.getValue(PATH_EVENT_DATES, cms.getRequestContext().getLocale());
             CmsJspContentAccessValueWrapper wrapper = CmsJspContentAccessValueWrapper.createWrapper(
@@ -137,7 +159,7 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
          * @param cms the CMS context
          * @return the event type
          */
-        public String getEventType(CmsObject cms) {
+        String getEventType(CmsObject cms) {
 
             String eventType = "";
             I_CmsXmlContentValue value = m_event.getValue(PATH_EVENT_TYPE, cms.getRequestContext().getLocale());
@@ -148,18 +170,12 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         }
 
         /**
-         * Returns the content title.
-         * @param cms the CMS context
-         * @return the content title
+         * Returns the event file.
+         * @return the event file
          */
-        String getContentTitle(CmsObject cms) {
+        CmsFile getFile() {
 
-            String contentTitle = "";
-            I_CmsXmlContentValue value = m_event.getValue(PATH_EVENT_TITLE, cms.getRequestContext().getLocale());
-            if ((value != null) && CmsStringUtil.isNotEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
-                contentTitle = value.getStringValue(cms);
-            }
-            return contentTitle;
+            return m_event.getFile();
         }
 
         /**
@@ -211,27 +227,38 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
          */
         String getMailReplyTo(CmsObject cms) {
 
-            return ""; // TODO: implement this
+            String mailReplyTo = "";
+            String path = CmsForm.NODE_OPTIONALCONFIRMATION + "/" + CmsForm.NODE_CONFIRMATIONMAILREPLYTO;
+            mailReplyTo = m_formConfigParser.getConfigurationValue(path, "");
+            if (CmsStringUtil.isEmptyOrWhitespaceOnly(mailReplyTo)) {
+                path = CmsForm.NODE_MAILREPLYTO;
+                mailReplyTo = m_formConfigParser.getConfigurationValue(path, "");
+            }
+            return mailReplyTo;
         }
 
         /**
          * Returns the mail subject.
+         * @param cms the CMS context
          * @return the mail subject
          */
-        String getMailSubjectUser() {
+        String getMailSubjectUser(CmsObject cms) {
 
-            // TODO: default subject
-            return m_formConfigParser.getConfigurationValue(PATH_REMINDERMAILSUBJECT, null);
+            String defaultSubject = CmsFormMailMessages.get().container(
+                CmsFormMailMessages.MAIL_SUBJECT_REMINDER_USER).key(cms.getRequestContext().getLocale());
+            return m_formConfigParser.getConfigurationValue(PATH_REMINDERMAILSUBJECT, defaultSubject);
         }
 
         /**
          * Returns the mail text.
+         * @param cms the CMS context
          * @return the mail text
          */
-        String getMailTextUser() {
+        String getMailTextUser(CmsObject cms) {
 
-            // TODO: default text
-            return m_formConfigParser.getConfigurationValue(PATH_REMINDERMAILTEXT, null);
+            String defaultText = CmsFormMailMessages.get().container(CmsFormMailMessages.MAIL_TEXT_REMINDER_USER).key(
+                cms.getRequestContext().getLocale());
+            return m_formConfigParser.getConfigurationValue(PATH_REMINDERMAILTEXT, defaultText);
         }
 
         /**
@@ -263,6 +290,40 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         }
 
         /**
+         * Returns the reminder time interval.
+         * @param cms the CMS context
+         * @return the reminder time interval
+         */
+        String getReminderInterval(CmsObject cms) {
+
+            String reminderInterval = "";
+            I_CmsXmlContentValue value = m_event.getValue(
+                PATH_EVENT_REMINDER_INTERVAL,
+                cms.getRequestContext().getLocale());
+            if ((value != null) && CmsStringUtil.isNotEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
+                reminderInterval = value.getStringValue(cms);
+            }
+            return reminderInterval;
+        }
+
+        /**
+         * Returns the reminder note.
+         * @param cms the CMS context
+         * @return the reminder note
+         */
+        String getReminderNote(CmsObject cms) {
+
+            String reminderNote = "";
+            I_CmsXmlContentValue value = m_event.getValue(
+                PATH_EVENT_REMINDER_NOTE,
+                cms.getRequestContext().getLocale());
+            if ((value != null) && CmsStringUtil.isNotEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
+                reminderNote = value.getStringValue(cms);
+            }
+            return reminderNote;
+        }
+
+        /**
          * Returns the search resource
          * @return the search resource
          */
@@ -273,11 +334,48 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
 
         /**
          * Returns whether the remainder day is reached.
+         * @param cms the CMS context
          * @return whether the remainder day is reached
          */
-        boolean isReminderDayReached() {
+        boolean isReminderDayReached(CmsObject cms) {
 
-            return true; // TODO: implement this
+            boolean reached = false;
+            I_CmsXmlContentValue datesValue = m_event.getValue(PATH_EVENT_DATES, cms.getRequestContext().getLocale());
+            I_CmsXmlContentValue timeIntervalValue = m_event.getValue(
+                PATH_EVENT_REMINDER_INTERVAL,
+                cms.getRequestContext().getLocale());
+            long timeInterval = 3L;
+            if (timeIntervalValue != null) {
+                try {
+                    timeInterval = Long.parseLong(timeIntervalValue.getStringValue(cms));
+                } catch (NumberFormatException e) {
+                    LOG.error(e.getLocalizedMessage(), e);
+                }
+            }
+            if (datesValue != null) {
+                I_CmsSerialDateBean serialDate = CmsSerialDateBeanFactory.createSerialDateBean(
+                    datesValue.getStringValue(cms));
+                LOG.debug("Serial date value is " + datesValue.getStringValue(cms));
+                Date now = new Date();
+                if (!serialDate.getDates().isEmpty()) {
+                    Date startDate = serialDate.getDates().first();
+                    long diffMillis = startDate.getTime() - now.getTime();
+                    long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
+                    if (diffDays == timeInterval) {
+                        LOG.debug("Reminder day reached. " + m_searchResource.getField(FIELD_TITLE));
+                        reached = true;
+                    } else {
+                        LOG.debug(
+                            "Reminder day not yet reached, "
+                                + (diffDays - timeInterval)
+                                + " remaining. "
+                                + m_searchResource.getField(FIELD_TITLE));
+                    }
+                } else {
+                    LOG.debug("No dates configured for event.");
+                }
+            }
+            return reached;
         }
 
         /**
@@ -364,6 +462,12 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
     /** Path for the event booking webform. */
     public static final String PATH_EVENT_WEBFORM = "Booking/Webform";
 
+    /** Path for the event reminder time interval. */
+    public static final String PATH_EVENT_REMINDER_INTERVAL = "Booking/ReminderMail/TimeInterval";
+
+    /** Path for the event reminder note. */
+    public static final String PATH_EVENT_REMINDER_NOTE = "Booking/ReminderMail/Note";
+
     /** Path for the event type. */
     public static final String PATH_EVENT_TYPE = "Type";
 
@@ -381,7 +485,7 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
                 LOG.debug(
                     "Future event found with reminder mail configured: "
                         + event.getSearchResource().getField(FIELD_TITLE));
-                if (event.isReminderDayReached()) {
+                if (event.isReminderDayReached(cms)) {
                     sendReminderMails(event, cms);
                 }
             }
@@ -405,10 +509,12 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
 
         CmsMacroResolver resolver = CmsMacroResolver.newInstance();
         resolver.setKeepEmptyMacros(true);
-        resolver.addMacro(CmsForm.MACRO_CONTENT_TITLE, eventReminderData.getContentTitle(cms)); // TODO: deal with keep empty macros
-        resolver.addMacro("event.note", eventReminderData.getEventNote(cms)); // TODO: deal with keep empty macros
-        resolver.addMacro("event.type", eventReminderData.getEventType(cms)); // TODO: deal with keep empty macros
-        resolver.addMacro("event.time", eventReminderData.getEventTime(cms)); // TODO: deal with keep empty macros
+        resolver.addMacro(CmsForm.MACRO_CONTENT_TITLE, eventReminderData.getContentTitle(cms));
+        resolver.addMacro("event.note", eventReminderData.getEventNote(cms));
+        resolver.addMacro("event.type", eventReminderData.getEventType(cms));
+        resolver.addMacro("event.time", eventReminderData.getEventTime(cms));
+        resolver.addMacro("reminder.interval", eventReminderData.getReminderInterval(cms));
+        resolver.addMacro("reminder.note", eventReminderData.getReminderNote(cms));
         for (Entry<String, String> field : formDataBean.getData().entrySet()) {
             CmsFormDataField formDataField = new CmsFormDataField(field.getKey(), field.getValue());
             resolver.addMacro(formDataField.getLabel(), formDataField.getValue());
@@ -449,6 +555,45 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
     }
 
     /**
+     * Returns a offline CMS.
+     * @param cms The job's CMS object
+     * @return the offline CMS
+     */
+    private CmsObject getOfflineCms(CmsObject cms) {
+
+        CmsObject offlineCms = null;
+        try {
+            offlineCms = OpenCms.initCmsObject(cms);
+            offlineCms.getRequestContext().setSiteRoot(cms.getRequestContext().getSiteRoot());
+            offlineCms.getRequestContext().setCurrentProject(offlineCms.readProject("Offline"));
+        } catch (CmsException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return offlineCms;
+    }
+
+    /**
+     * Returns a subsite CMS useful to read sitemap attributes.
+     * @param cms the CMS to clone
+     * @param eventContent the
+     * @return the subsite CMS object
+     */
+    private CmsObject getSubsiteCms(CmsObject cms, CmsFile eventContent) {
+
+        CmsObject subsiteCms = null;
+        String siteRoot = OpenCms.getSiteManager().getSiteRoot(eventContent.getRootPath());
+        try {
+            subsiteCms = OpenCms.initCmsObject(cms);
+            subsiteCms.getRequestContext().setSiteRoot(siteRoot);
+            String sitePath = subsiteCms.getRequestContext().removeSiteRoot(eventContent.getRootPath());
+            subsiteCms.getRequestContext().setUri(sitePath);
+        } catch (CmsException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return subsiteCms;
+    }
+
+    /**
      * Sends reminder mails to all registered users of an event.
      * @param eventReminderData the event with a reminder mail configured
      * @param cms the CMS context
@@ -461,18 +606,19 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
                 if (successfullySent) {
                     CmsFile file = formDataBean.getFile();
                     if (file != null) {
-                        boolean locked = A_CmsFormDataHandler.lockResource(cms, file);
+                        CmsObject offlineCms = getOfflineCms(cms);
+                        boolean locked = A_CmsFormDataHandler.lockResource(offlineCms, file);
                         if (!locked) {
                             LOG.warn("Could not lock resource " + file.getRootPath());
                             continue;
                         }
-                        CmsXmlContent content = A_CmsFormDataHandler.readContent(cms, file);
+                        CmsXmlContent content = A_CmsFormDataHandler.readContent(offlineCms, file);
                         if (content == null) {
                             LOG.error("Could not read content for " + file.getRootPath());
                             continue;
                         }
                         boolean updated = A_CmsFormDataHandler.updateContent(
-                            cms,
+                            offlineCms,
                             content,
                             CmsFormDataBean.PATH_REMINDER_MAIL_SENT,
                             "true");
@@ -480,8 +626,9 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
                             LOG.error("Could not update content " + file.getRootPath());
                             // anyway continue to publish
                         }
-                        // TODO: make sure that formDataBean.getFile() is not a folder and / or check type
-                        boolean published = A_CmsFormDataHandler.publishResource(cms, cms.getSitePath(file));
+                        boolean published = A_CmsFormDataHandler.publishResource(
+                            offlineCms,
+                            offlineCms.getSitePath(file));
                         if (!published) {
                             LOG.error("Could not publish content " + file.getRootPath());
                         }
@@ -504,12 +651,24 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         CmsObject cms) {
 
         try {
-            // TODO: deal with DKIM mail settings
             CmsMacroResolver resolver = createMacroResolver(eventReminderData, formDataBean, cms);
-            CmsHtmlMail mail = new CmsHtmlMail(); // TODO: support simple mail?
+            CmsHtmlMail mail = new CmsHtmlMail();
             mail.setCharset(cms.getRequestContext().getEncoding());
             String mailFromName = eventReminderData.getMailFromName(cms);
             String mailFrom = eventReminderData.getMailFrom(cms);
+            String mailReplyTo = eventReminderData.getMailReplyTo(cms);
+            CmsObject subsiteCms = getSubsiteCms(cms, eventReminderData.getFile());
+            if (CmsFormMailSettings.getInstance().useDkimMailHost(subsiteCms, eventReminderData.getFile())) {
+                if (CmsStringUtil.isEmptyOrWhitespaceOnly(mailReplyTo)) {
+                    mailReplyTo = mailFrom;
+                }
+                String dkimMailFrom = CmsFormMailSettings.getInstance().getAttributeDkimMailFrom(subsiteCms);
+                if (dkimMailFrom.equals(A_CmsDkimMailSettings.SITEMAP_ATTRVALUE_DKIM_MAILFROM_DEFAULT)) {
+                    mailFrom = ""; // use the sender address configured in opencms-system.xml
+                } else {
+                    mailFrom = dkimMailFrom;
+                }
+            }
             if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFrom)) {
                 if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
                     mail.setFrom(mailFrom, mailFromName);
@@ -517,7 +676,6 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
                     mail.setFrom(mailFrom);
                 }
             }
-            String mailReplyTo = eventReminderData.getMailReplyTo(cms);
             if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailReplyTo)) {
                 if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromName)) {
                     mail.addReplyTo(mailReplyTo, mailFromName);
@@ -527,12 +685,12 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
             }
             String mailTo = eventReminderData.getMailTo(formDataBean, cms);
             mail.addTo(mailTo);
-            String subject = eventReminderData.getMailSubjectUser();
+            String subject = eventReminderData.getMailSubjectUser(cms);
             if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(subject)) {
                 subject = resolver.resolveMacros(subject);
             }
             mail.setSubject(subject);
-            String text = eventReminderData.getMailTextUser();
+            String text = eventReminderData.getMailTextUser(cms);
             if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(text)) {
                 text = resolver.resolveMacros(text);
             }

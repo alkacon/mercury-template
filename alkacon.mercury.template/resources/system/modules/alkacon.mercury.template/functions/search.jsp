@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"
     buffer="none"
     session="false"
+    import="java.util.ArrayList, java.util.Collections, java.util.stream.Collectors, org.opencms.main.OpenCms"
     trimDirectiveWhitespaces="true"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -26,6 +27,7 @@
 <c:set var="pageSize"               value="${empty setting.pageSize.toInteger ? 10 : setting.pageSize.toInteger}" />
 <c:set var="showTypeBadge"          value="${setting.showTypeBadge.useDefault('true').toBoolean}" />
 <c:set var="showTopBadge"           value="${setting.showTopBadge.useDefault('false').toBoolean}" />
+<c:set var="showSiteInfo"           value="${setting.showSiteInfo.isSetNotNone ? setting.showSiteInfo.toString : null}" />
 <c:set var="showExcerpt"            value="${setting.showExcerpt.useDefault('true').toBoolean}" />
 <c:set var="dateFormat"             value="${setting.dateFormat.useDefault('none').toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -255,12 +257,12 @@
                                             <c:when test='${facet.name eq "type"}'>
                                                 <c:set var="itemName">${facetItem.name}</c:set>
                                                 <c:choose>
-                                                <c:when test='${itemName eq "containerpage"}'>
-                                                    <c:set var="label"><fmt:message key="msg.page.search.type.containerpage" /></c:set>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <c:set var="label"><cms:label>type.${itemName}.name</cms:label></c:set>
-                                                </c:otherwise>
+                                                    <c:when test='${itemName eq "containerpage"}'>
+                                                        <c:set var="label"><fmt:message key="msg.page.search.type.containerpage" /></c:set>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:set var="label"><cms:label>type.${itemName}.name</cms:label></c:set>
+                                                    </c:otherwise>
                                                 </c:choose>
                                             </c:when>
                                             <c:when test='${facet.name eq "category_exact"}'>
@@ -290,13 +292,13 @@
                                         <m:nl/>
                                         <div class="show-more"><%----%>
                                             <c:choose>
-                                            <c:when test="${facetController.state.useLimit}">
-                                                <a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.addIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.more" /></a><%----%>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.removeIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.less" /></a><%----%>
-                                                <input type="hidden" name="${facetController.config.ignoreMaxParamKey}" /><%----%>
-                                            </c:otherwise>
+                                                <c:when test="${facetController.state.useLimit}">
+                                                    <a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.addIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.more" /></a><%----%>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.removeIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.less" /></a><%----%>
+                                                    <input type="hidden" name="${facetController.config.ignoreMaxParamKey}" /><%----%>
+                                                </c:otherwise>
                                             </c:choose>
                                         </div><%----%>
                                     </c:if>
@@ -334,6 +336,7 @@
             <div class="search-results ${hasFacets ? ' has-facets' : ' no-facets'}"><%----%>
                 <c:choose>
                     <c:when test="${not empty search.exception}">
+
                         <div class="search-exception">
                             <h3 tabindex="0"><fmt:message key="msg.page.search.failed" /></h3><%----%>
                             <p><%----%>
@@ -343,55 +346,66 @@
                                 </fmt:message>
                             </p><%----%>
                         </div><%----%>
+
                     </c:when>
                     <c:when test="${empty search.searchResults && empty search.exception}">
+
                         <c:choose>
-                        <c:when test="${not common.config.searchForEmptyQueryParam && empty common.state.query}">
-                            <div class="search-no-result"><%----%>
-                                <h3 tabindex="0"><fmt:message key="msg.page.search.noResults.enterQuery" /></h3><%----%>
-                            </div><%----%>
-                        </c:when>
-                        <c:when test="${not empty controllers.didYouMean.config}" >
-                            <c:set var="suggestion" value="${search.didYouMeanSuggestion}" />
-                            <c:choose>
-                            <c:when test="${controllers.didYouMean.config.collate && not empty search.didYouMeanCollated}">
-                                <div class="search-suggestion"><%----%>
-                                    <h3 tabindex="0"><%----%>
-                                        <fmt:message key="msg.page.search.didyoumean_1">
-                                            <fmt:param><a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[search.didYouMeanCollated]}</cms:link>">${search.didYouMeanCollated}</a></fmt:param>
-                                        </fmt:message>
-                                    </h3><%----%>
-                                </div><%----%>
-                            </c:when>
-                            <c:when test="${not controllers.didYouMean.config.collate and not empty suggestion.alternatives and cms:getListSize(suggestion.alternatives) > 0}">
-                                <div class="search-suggestion"><%----%>
-                                    <h3 tabindex="0"><fmt:message key="msg.page.search.didyoumean_0" /></h3><%----%>
-                                    <ul><%----%>
-                                        <m:nl/>
-                                        <c:forEach var="alternative" items="${suggestion.alternatives}" varStatus="status">
-                                            <li><%----%>
-                                                <a href='<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[alternative]}</cms:link>'>${alternative} (${suggestion.alternativeFrequencies[status.index]})</a><%----%>
-                                            </li><%----%>
-                                            <m:nl/>
-                                        </c:forEach>
-                                    </ul><%----%>
-                                </div>
-                            </c:when>
-                            <c:otherwise>
+                            <c:when test="${not common.config.searchForEmptyQueryParam && empty common.state.query}">
                                 <div class="search-no-result"><%----%>
-                                    <h3 tabindex="0"><fmt:message key="msg.page.search.noResult" /></h3><%----%>
+                                    <h3 tabindex="0"><fmt:message key="msg.page.search.noResults.enterQuery" /></h3><%----%>
                                 </div><%----%>
-                            </c:otherwise>
-                            </c:choose>
-                        </c:when>
+                            </c:when>
+                            <c:when test="${not empty controllers.didYouMean.config}" >
+
+                                <c:set var="suggestion" value="${search.didYouMeanSuggestion}" />
+                                <c:choose>
+                                    <c:when test="${controllers.didYouMean.config.collate && not empty search.didYouMeanCollated}">
+
+                                        <div class="search-suggestion"><%----%>
+                                            <h3 tabindex="0"><%----%>
+                                                <fmt:message key="msg.page.search.didyoumean_1">
+                                                    <fmt:param><a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[search.didYouMeanCollated]}</cms:link>">${search.didYouMeanCollated}</a></fmt:param>
+                                                </fmt:message>
+                                            </h3><%----%>
+                                        </div><%----%>
+
+                                    </c:when>
+                                    <c:when test="${not controllers.didYouMean.config.collate and not empty suggestion.alternatives and cms:getListSize(suggestion.alternatives) > 0}">
+
+                                        <div class="search-suggestion"><%----%>
+                                            <h3 tabindex="0"><fmt:message key="msg.page.search.didyoumean_0" /></h3><%----%>
+                                            <ul><%----%>
+                                                <m:nl/>
+                                                <c:forEach var="alternative" items="${suggestion.alternatives}" varStatus="status">
+                                                    <li><%----%>
+                                                        <a href='<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[alternative]}</cms:link>'>${alternative} (${suggestion.alternativeFrequencies[status.index]})</a><%----%>
+                                                    </li><%----%>
+                                                    <m:nl/>
+                                                </c:forEach>
+                                            </ul><%----%>
+                                        </div>
+
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="search-no-result"><%----%>
+                                            <h3 tabindex="0"><fmt:message key="msg.page.search.noResult" /></h3><%----%>
+                                        </div><%----%>
+                                    </c:otherwise>
+
+                                </c:choose>
+                            </c:when>
                         <c:otherwise>
+
                             <div class="search-no-result"><%----%>
                                 <h3 tabindex="0"><fmt:message key="msg.page.search.noResult" /></h3><%----%>
                             </div><%----%>
+
                         </c:otherwise>
                         </c:choose>
                     </c:when>
                     <c:otherwise>
+
                         <div class="search-results-header"><%----%>
                             <h3 class="search-results-head" tabindex="0"><%----%>
                                 <fmt:message key="msg.page.search.result.heading"/>
@@ -407,7 +421,20 @@
                         </div><%----%>
                         <m:nl/>
 
-                        <%-- show search results --%>
+                        <c:if test="${not empty showSiteInfo}">
+                            <c:choose>
+                                <c:when test="${cms.isOnlineProject}">
+                                    <%-- Can not use 'cms.isOnlineProject' as variable in scriptlet code --%>
+                                    <c:set var="subSitesInfo" value="<%= OpenCms.getADEManager().getSubsitesForSiteSelector(false).stream().filter((subRootPath) -> OpenCms.getSiteManager().getSiteForSiteRoot(subRootPath) == null).collect(Collectors.toList())%>" />
+                                </c:when>
+                                <c:otherwise>
+                                    <c:set var="subSitesInfo" value="<%= OpenCms.getADEManager().getSubsitesForSiteSelector(true).stream().filter((subRootPath) -> OpenCms.getSiteManager().getSiteForSiteRoot(subRootPath) == null).collect(Collectors.toList())%>" />
+                                </c:otherwise>
+                            </c:choose>
+                            ${subSitesInfo.sort(Collections.reverseOrder())}
+                        </c:if>
+
+                        <%-- Show search results --%>
                         <c:forEach var="searchResult" items="${search.searchResults}">
                             <div class="search-result"><%----%>
                                 <c:set var="localizedTitleField">disptitle_${cms.locale}_sort</c:set>
@@ -416,47 +443,71 @@
                                     <c:set var="title">${searchResult.fields["disptitle_sort"]}</c:set>
                                 </c:if>
 
+                                <%-- Top result badge --%>
+                                <c:if test="${showTopBadge}">
+                                    <c:set var="boostValues" value='${searchResult.multiValuedFields["search.boost_mvs"]}' />
+                                        <c:choose>
+                                        <c:when test='${not empty boostValues && ((boostValues.contains("keywords") && (searchResult.fields["keywordMatch"] eq "true")) || boostValues.contains("always"))}'>
+                                            <c:set var="topBadge">
+                                                <span class="search-badge badge-top"><fmt:message key="msg.page.search.type.topresult" /></span>
+                                            </c:set>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:set var="topBadge"></c:set>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:if>
+
+                                <%-- Type facet badge --%>
                                 <c:if test="${showTypeBadge}">
                                     <c:set var="resultType">${searchResult.fields["type"]}</c:set>
                                     <c:choose>
                                         <c:when test="${resultType eq 'containerpage'}">
-                                            <c:set var="typeName"><fmt:message key="msg.page.search.type.containerpage" /></c:set>
+                                            <c:set var="typeBadge"><fmt:message key="msg.page.search.type.containerpage" /></c:set>
                                         </c:when>
                                         <c:when test="${not empty resultType}">
-                                            <c:set var="typeName"><cms:label>type.${resultType}.name</cms:label></c:set>
+                                            <c:set var="typeBadge"><cms:label>type.${resultType}.name</cms:label></c:set>
                                         </c:when>
                                         <c:otherwise>
-                                            <c:set var="typeName" value="" />
+                                            <c:set var="typeBadge" value="" />
                                         </c:otherwise>
                                     </c:choose>
-                                    <c:if test="${not empty typeName}">
-                                        <c:set var="typeName">
-                                            <span class="search-badge badge-typ">${typeName}</span>
+                                    <c:if test="${not empty typeBadge}">
+                                        <c:set var="typeBadge">
+                                            <span class="search-badge badge-typ">${typeBadge}</span>
                                         </c:set>
                                     </c:if>
                                 </c:if>
 
-                                <%-- This feature has to be activated and the prepared setting shared setting 'showTopBadge.search' must be added to the function configuration. --%>
-                                <c:if test="${showTopBadge}">
-                                    <c:set var="boostValues" value='${searchResult.multiValuedFields["search.boost_mvs"]}' />
+                                <%-- Site title marker --%>
+                                <c:if test="${not empty showSiteInfo}">
+                                    <c:set var="siteInfoMarker" value="" />
+                                    <c:set var="rootPath" value="${searchResult.fields['path']}"/>
+                                    <c:set var="subSiteRoot" value="${subSitesInfo.stream().filter((subSitePath) -> rootPath.startsWith(subSitePath)).findFirst().orElse(null)}" />
                                     <c:choose>
-                                    <c:when test='${not empty boostValues && ((boostValues.contains("keywords") && (searchResult.fields["keywordMatch"] eq "true")) || boostValues.contains("always"))}'>
-                                        <c:set var="topBadge">
-                                            <span class="search-badge badge-top"><fmt:message key="msg.page.search.type.topresult" /></span>
-                                        </c:set>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:set var="topBadge"></c:set>
-                                    </c:otherwise>
+                                        <c:when test="${not empty subSiteRoot}">
+                                            <c:set var="siteInfoMarker" value="${cms.wrap(cms.sitePath[subSiteRoot]).toResource.propertyLocale[cms.locale]['Title']}"/>
+                                        </c:when>
+                                        <c:when test="${showSiteInfo eq 'all'}">
+                                            <c:set var="siteManager" value="<%=OpenCms.getSiteManager()%>" />
+                                            <c:set var="site" value="${siteManager.getSiteForRootPath(rootPath)}"/>
+                                            <c:if test="${not empty site}">
+                                                <c:set var="siteInfoMarker" value="${cms.wrap(cms.sitePath[site.siteRoot]).toResource.propertyLocale[cms.locale]['Title']}"/>
+                                            </c:if>
+                                        </c:when>
                                     </c:choose>
+                                    <c:if test="${not empty siteInfoMarker}">
+                                        <div class="search-result-site">${siteInfoMarker}</div><%----%>
+                                    </c:if>
                                 </c:if>
 
+                                <%-- The search result --%>
                                 <h4 class="search-result-heading"><%----%>
                                     <c:set var="resultLink" value="${empty searchResult.fields['mercury.detail.link_dprop'] ? searchResult.fields['path'] : searchResult.fields['mercury.detail.link_dprop']}" />
                                     <a href='<cms:link>${resultLink}</cms:link>'><%----%>
                                         <span class="result-title">${title}</span><%----%>
                                         <c:out value="${showTopBadge ? topBadge : ''}" escapeXml="${false}" />
-                                        <c:out value="${showTypeBadge ? typeName : ''}" escapeXml="${false}" />
+                                        <c:out value="${showTypeBadge ? typeBadge : ''}" escapeXml="${false}" />
                                     </a><%----%>
                                 </h4><%----%>
                                 <m:nl/>

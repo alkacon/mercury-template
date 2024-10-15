@@ -87,6 +87,10 @@
         }
     }
 
+    .search-result-site {
+        font-weight: var(--#{$prefix}font-weight-headings);
+    }
+
     .search-badge {
         font-family: var(--#{$prefix}body-font-family);
         font-weight: var(--#{$prefix}body-font-weight);

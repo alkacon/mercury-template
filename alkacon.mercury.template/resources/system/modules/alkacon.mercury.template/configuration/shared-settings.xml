@@ -4113,6 +4113,19 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showSiteInfo.search]]></IncludeName>
+      <PropertyName><![CDATA[showSiteInfo]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.showSiteInfo)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.showSiteInfo.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+            none:       %(key.msg.setting.search.showSiteInfo.none)|
+            subsite:    %(key.msg.setting.search.showSiteInfo.subsite)|
+            all:        %(key.msg.setting.search.showSiteInfo.all)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showSingleTab.true]]></IncludeName>
       <PropertyName><![CDATA[showSingleTab]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.showSingleTab)]]></DisplayName>

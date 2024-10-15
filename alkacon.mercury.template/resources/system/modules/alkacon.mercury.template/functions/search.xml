@@ -54,6 +54,9 @@
       <Default><![CDATA[none]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showSiteInfo.search]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showTypeBadge.search]]></IncludeName>
     </Setting>
     <Setting>

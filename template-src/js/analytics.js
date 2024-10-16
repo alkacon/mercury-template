@@ -20,7 +20,9 @@
 // Required by Matomo/Piwik, needs to be in the global JavaScript context, not in the module context
 // Will always be inserted even if no Matomo/Piwik is used, but this should not hurt
 window._paq = window._paq || [];
+window._mtm = window._mtm || [];
 window._ppas = window._ppas || [];
+
 
 "use strict";
 
@@ -88,40 +90,50 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
     }
     if (Mercury.debug()) console.info("Analytics.addMatomo() Initializing Matomo using url: " + matomoData.url + " and id: " + matomoData.id + " - Cookie Consent: " + userAllowedStatisticalCookies + " - JS Tracking: " + matomoData.jst+ " - DNT: " + matomoData.dnt);
 
-    // see: https://developer.matomo.org/guides/tracking-javascript-guide
-    if (matomoData.setDocumentTitle == "true"){
-        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-    }
-    if (typeof matomoData.setCookieDomain != 'undefined'){
-        _paq.push(["setCookieDomain", matomoData.setCookieDomain]);
-    }
-    if (typeof matomoData.setDomains != 'undefined'){
-        _paq.push(["setDomains", matomoData.setDomains]);
-    }
-    // see: https://developer.matomo.org/guides/tracking-consent
-    _paq.push(['requireCookieConsent']);
-    if (userAllowedStatisticalCookies) {
-        _paq.push(['setCookieConsentGiven']);
+    let useTagManager = matomoData.id && typeof matomoData.id === "string" && matomoData.id.startsWith("container_");
+    if (useTagManager) {
+        _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+        (function() {
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='//' + matomoData.url + '/js/' + matomoData.id + '.js'; s.parentNode.insertBefore(g,s);
+        })();
+        m_matomoInitialized = true;
     } else {
-        // this is may not be required, but make sure Matomo knows we want this
-        _paq.push(['forgetCookieConsentGiven']);
-    }
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-        var u="//" + matomoData.url + "/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '' + matomoData.id]);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-    })();
-    m_matomoInitialized = true;
-    $(".matomo-goal").each(function(index, element) {
-        var goal = location.pathname;
-        if (Mercury.debug()) console.info('Initializing Matomo goal: ' + goal);
-        _paq.push(['setDocumentTitle', document.title + ' [' + goal + ']']);
+        // see: https://developer.matomo.org/guides/tracking-javascript-guide
+        if (matomoData.setDocumentTitle == "true"){
+            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        }
+        if (typeof matomoData.setCookieDomain != 'undefined'){
+            _paq.push(["setCookieDomain", matomoData.setCookieDomain]);
+        }
+        if (typeof matomoData.setDomains != 'undefined'){
+            _paq.push(["setDomains", matomoData.setDomains]);
+        }
+        // see: https://developer.matomo.org/guides/tracking-consent
+        _paq.push(['requireCookieConsent']);
+        if (userAllowedStatisticalCookies) {
+            _paq.push(['setCookieConsentGiven']);
+        } else {
+            // this is may not be required, but make sure Matomo knows we want this
+            _paq.push(['forgetCookieConsentGiven']);
+        }
         _paq.push(['trackPageView']);
-    })
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//" + matomoData.url + "/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '' + matomoData.id]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+        m_matomoInitialized = true;
+        $(".matomo-goal").each(function(index, element) {
+            var goal = location.pathname;
+            if (Mercury.debug()) console.info('Initializing Matomo goal: ' + goal);
+            _paq.push(['setDocumentTitle', document.title + ' [' + goal + ']']);
+            _paq.push(['trackPageView']);
+        });
+    }
 }
 
 /****** Exported functions ******/

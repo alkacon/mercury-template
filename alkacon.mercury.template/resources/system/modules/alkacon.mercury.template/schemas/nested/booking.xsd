@@ -18,12 +18,12 @@
             <xsd:element name="MailFrom" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="MailFromName" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MailTo" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="ReminderMail" type="OpenCmsBookingReminder" minOccurs="0" />
             <xsd:element name="MaxRegularDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="MaxWaitlistDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="NumOtherDatasets" type="OpenCmsString" minOccurs="0" maxOccurs="1" />
             <xsd:element name="FinalRegistrationDate" type="OpenCmsDateTime" minOccurs="0" maxOccurs="1" />
             <xsd:element name="KeepDays" type="OpenCmsString" minOccurs="0"  />
+            <xsd:element name="ReminderMail" type="OpenCmsBookingReminder" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -74,11 +74,6 @@
                     <Search>false</Search>
                 </Setting>
                 <Setting>
-                    <PropertyName>ReminderMail</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Booking.ReminderMail)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Booking.ReminderMail.help)]]></Description>
-                </Setting>
-                <Setting>
                     <PropertyName>MaxRegularDatasets</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Booking.MaxRegularDatasets)]]></DisplayName>
                     <Widget>string</Widget>
@@ -109,6 +104,11 @@
                     <DisplayName>%(key.label.form.WebFormDatabaseConfiguration.KeepDays)</DisplayName>
                     <Description>%(key.label.form.WebFormDatabaseConfiguration.KeepDays.help)</Description>
                     <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>ReminderMail</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Booking.ReminderMail)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Booking.ReminderMail.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

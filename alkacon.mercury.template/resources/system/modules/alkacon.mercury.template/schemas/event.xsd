@@ -120,12 +120,17 @@
                     !%%endif%%!
                 !%]]></param>
                 <param name="bookingReminder"><![CDATA[%!
-                    !%%if (content.value.("Booking").isSet && content.value.("Booking").value.("ReminderMail").isSet && content.value.("Booking").value.("ReminderMail").value.("TimeInterval").isSet)%%!
-                        !%true%!
-                    !%%else%%!
-                        !%false%!
-                    !%%endif%%!
+					!%%if (content.value.("Booking").isSet && content.value.("Booking").value.("ReminderMail").isSet) %%!
+						!%%if (content.value.("Booking").value.("ReminderMail").value.("TimeInterval").isSet)%%!
+							!%true%!
+						!%%else%%!
+							!%false%!
+						!%%endif%%!
+					!%%else%%!
+						!%false%!
+					!%%endif%%!
                 !%]]></param>
+
                 <param name="detailPageUrl"><![CDATA[%!
                     !%%if (content.value.("Title").isSet)%%content.value.("Title")%%endif%%!
                     !%%if (! content.value.("Dates").toDateSeries.isSeries)%%!

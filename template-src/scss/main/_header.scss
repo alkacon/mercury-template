@@ -201,7 +201,7 @@
         }
 
         .co-lg-xl {
-            // container only for screen size LG And XL
+            // container only screen size LG, XL and XXL
             @include media-breakpoint-up(lg) {
                 @include make-container();
                 max-width: map-get($container-max-widths, lg);

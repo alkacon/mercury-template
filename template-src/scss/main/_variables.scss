@@ -1013,8 +1013,8 @@ $tooltip-border-radius:             var(--#{$prefix}border-radius) !default;
 
 // Link sequence
 
-$ls-li-padding:                     calc(2.5 * var(--#{$prefix}paragraph-margin-bottom)) !default;
-$ls-row-spacing:                    calc(2 * var(--#{$prefix}paragraph-margin-bottom)) !default;
+$ls-li-padding:                     calc(2.5 * var(--#{$prefix}ws-margin)) !default;
+$ls-row-spacing:                    calc(2 * var(--#{$prefix}ws-margin)) !default;
 
 
 // Animations

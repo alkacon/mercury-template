@@ -26,11 +26,11 @@
 
 <%-- Check if form captcha is required from site attribute --%>
 <c:choose>
-    <c:when test="${cms.sitemapConfig.attribute['captcha.required'] eq 'true'}">
-        <c:set var="showCaptchaWarning" value="${not formXml.value.FormCaptcha.isSet ? true : false}" />
+    <c:when test="${cms.sitemapConfig.attribute['captcha.required'].toBoolean}">
+        <c:set var="showCaptchaWarning" value="${not formXml.value.FormCaptcha.isSet}" />
     </c:when>
     <c:otherwise>
-        <c:set var="showCaptchaWarning" value="false" />
+        <c:set var="showCaptchaWarning" value="${false}" />
     </c:otherwise>
 </c:choose>
 

@@ -5,6 +5,7 @@ form.button.next=Next
 form.button.prev=Previous
 form.button.reset=Cancel
 form.button.submit=Submit
+form.captchapreset.option.useprovider=Use default Captcha provider
 form.column.both=Both
 form.column.left=Left
 form.column.right=Right

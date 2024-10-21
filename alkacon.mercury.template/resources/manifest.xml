@@ -9888,6 +9888,27 @@
 			<relations/>
 			<accesscontrol/>
 		</file>
+        <file>
+			<source>system/modules/alkacon.mercury.template/tags/webform-captcha.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/webform-captcha.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>a82fb93c-8f75-11ef-8138-0242ac11002b</uuidstructure>
+			<uuidresource>a82fb93d-8f75-11ef-8138-0242ac11002b</uuidresource>
+			<datecreated>Mon, 21 Oct 2024 06:28:16 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Checks the webform captcha presence]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
 		<file>
 			<source>system/modules/alkacon.mercury.template/tags/webform-vars.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/webform-vars.tag</destination>

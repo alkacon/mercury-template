@@ -5,6 +5,7 @@ form.button.next=Weiter
 form.button.prev=Zurück
 form.button.reset=Zurücksetzen
 form.button.submit=Senden
+form.captchapreset.option.useprovider=Verwende vorgegebenen Captcha Anbieter
 form.column.both=Beide
 form.column.left=Links
 form.column.right=Rechts

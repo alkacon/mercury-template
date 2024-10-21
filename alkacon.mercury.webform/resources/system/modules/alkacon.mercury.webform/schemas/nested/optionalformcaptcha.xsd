@@ -33,7 +33,7 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormCaptcha.Preset)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebFormCaptcha.Preset.help)]]></Description>
                     <Widget>alkacon.mercury.webform.fields.CmsSelectWidgetXmlcontentType</Widget>
-                    <WidgetConfig>folder=/system/modules/alkacon.mercury.webform/captcha/|resourcetypeName=xmlcontent|displayOptionMacro=property.Title|sortMacro=property.collector.priority|ignoreLocaleMatch=true</WidgetConfig>
+                    <WidgetConfig>folder=/system/modules/alkacon.mercury.webform/captcha/|resourcetypeName=xmlcontent|displayOptionMacro=property.Title|sortMacro=property.collector.priority|ignoreLocaleMatch=true|isCaptcha=true</WidgetConfig>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

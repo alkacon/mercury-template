@@ -24,9 +24,9 @@
     </c:otherwise>
 </c:choose>
 
-<%-- Check if form captcha is required from site attribute or property --%>
+<%-- Check if form captcha is required from site attribute --%>
 <c:choose>
-    <c:when test="${cms.readAttributeOrProperty[cms.requestContext.uri]['captcha.required'] eq 'true'}">
+    <c:when test="${cms.sitemapConfig.attribute['captcha.required'] eq 'true'}">
         <c:set var="showCaptchaWarning" value="${not formXml.value.FormCaptcha.isSet ? true : false}" />
     </c:when>
     <c:otherwise>

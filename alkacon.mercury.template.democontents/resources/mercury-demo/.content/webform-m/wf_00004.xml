@@ -213,12 +213,12 @@
       <content><![CDATA[<p>Das Alkacon OpenCms Mercury Demo Formular wurde mit folgenden Daten eingereicht:</p>]]></content>
     </MailText>
     <OptionalConfirmationMail>
-      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
-      <ConfirmationMailOptional>true</ConfirmationMailOptional>
-      <ConfirmationCheckboxLabel><![CDATA[Ich möchte eine Bestätigungs-Mail erhalten]]></ConfirmationCheckboxLabel>
       <ConfirmationField><![CDATA[Email field]]></ConfirmationField>
       <ConfirmationMailFrom><![CDATA[sampleform@alkacon.com]]></ConfirmationMailFrom>
       <ConfirmationMailFromName><![CDATA[Sample Form Bestätigungs-Mail]]></ConfirmationMailFromName>
+      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
+      <ConfirmationMailOptional>true</ConfirmationMailOptional>
+      <ConfirmationCheckboxLabel><![CDATA[Ich möchte eine Bestätigungs-Mail erhalten]]></ConfirmationCheckboxLabel>
       <ConfirmationMailSubject><![CDATA[Bestätigungsmail]]></ConfirmationMailSubject>
       <ConfirmationMailText name="ConfirmationMailText0">
         <links/>
@@ -451,12 +451,12 @@
       <content><![CDATA[<p>The Alkacon OpenCms Mercury demo webform has been submitted with the following data:</p>]]></content>
     </MailText>
     <OptionalConfirmationMail>
-      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
-      <ConfirmationMailOptional>true</ConfirmationMailOptional>
-      <ConfirmationCheckboxLabel><![CDATA[I want a confirmation mail]]></ConfirmationCheckboxLabel>
       <ConfirmationField><![CDATA[Email field]]></ConfirmationField>
       <ConfirmationMailFrom><![CDATA[sampleform@alkacon.com]]></ConfirmationMailFrom>
       <ConfirmationMailFromName><![CDATA[Sample Form Confirmation Mail]]></ConfirmationMailFromName>
+      <ConfirmationMailEnabled>true</ConfirmationMailEnabled>
+      <ConfirmationMailOptional>true</ConfirmationMailOptional>
+      <ConfirmationCheckboxLabel><![CDATA[I want a confirmation mail]]></ConfirmationCheckboxLabel>
       <ConfirmationMailSubject><![CDATA[Confirmation mail]]></ConfirmationMailSubject>
       <ConfirmationMailText name="ConfirmationMailText0">
         <links/>

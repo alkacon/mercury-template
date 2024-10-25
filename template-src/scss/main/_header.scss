@@ -583,13 +583,13 @@
                     .h-info .h-nav,
                     .h-nav .co-lg-xl {
                         // remove gutter from surrounding container
-                        padding-left: $fh-grid-gutter-width-half - $nav-header-hor-padding;
+                        padding-left: calc(#{$fh-grid-gutter-width-half} - #{$nav-header-hor-padding});
                     }
                     .nav-main-items {
                         justify-content: flex-start;
                         > li > .nav-menu {
                             // adjust dropdown menu
-                            left: $nav-header-hor-padding - $nav-menu-hor-padding;
+                            left: calc(#{$nav-header-hor-padding} - #{$nav-menu-hor-padding});
                         }
                     }
                 }
@@ -624,15 +624,15 @@
                     $fh-nav-header-reduction: 3px !default;
                     .nav-main-items > li {
                         > a {
-                            padding-left: $nav-header-hor-padding - $fh-nav-header-reduction;
-                            padding-right: $nav-header-hor-padding - $fh-nav-header-reduction;
+                            padding-left: calc(#{$nav-header-hor-padding} - #{$fh-nav-header-reduction});
+                            padding-right: calc(#{$nav-header-hor-padding} - #{$fh-nav-header-reduction});
                             &::after {
                                 right: $nav-header-arrows-right;
                             }
                         }
                         > .nav-menu {
                             // adjust dropdown menu
-                            left: $nav-header-hor-padding - $nav-menu-hor-padding - $fh-nav-header-reduction;
+                            left: calc(#{$nav-header-hor-padding} - #{$nav-menu-hor-padding} - #{$fh-nav-header-reduction});
                         }
                     }
                 }
@@ -644,9 +644,9 @@
                         .h-nav .co-lg-xl {
                             .nav-main-items > li > a {
                                 // add padding increase to the right and adjust position of arrow down
-                                padding-right: $nav-header-hor-padding + $fh-nav-header-padding-increase;
+                                padding-right: calc(#{$nav-header-hor-padding} + #{$fh-nav-header-padding-increase});
                                 &::after {
-                                    right: $nav-header-arrows-right + $fh-nav-header-padding-increase;
+                                    right: calc(#{$nav-header-arrows-right} + #{$fh-nav-header-padding-increase});
                                 }
                             }
                         }
@@ -657,11 +657,11 @@
                         .nav-main-items > li {
                             > a {
                                 // add padding increase to the left
-                                padding-left: $nav-header-hor-padding + $fh-nav-header-padding-increase;
+                                padding-left: calc(#{$nav-header-hor-padding} + #{$fh-nav-header-padding-increase});
                             }
                             > .nav-menu {
                                 // adjust dropdown menu
-                                left: $fh-nav-header-padding-increase + $nav-header-hor-padding - $nav-menu-hor-padding;
+                                left: calc(#{$fh-nav-header-padding-increase} + #{$nav-header-hor-padding} - #{$nav-menu-hor-padding});
                             }
                         }
                     }
@@ -675,7 +675,7 @@
                                 padding-left: 0;
                             }
                             > .nav-menu {
-                                left: -1 * $nav-header-hor-padding + $nav-header-hor-padding - $nav-menu-hor-padding;
+                                left: calc(-1 * #{$nav-header-hor-padding} + #{$nav-header-hor-padding} - #{$nav-menu-hor-padding});
                             }
                         }
                     }

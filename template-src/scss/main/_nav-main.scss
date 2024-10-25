@@ -1023,10 +1023,10 @@
                 background-color: $nav-text-hover;
                 color: $nav-bg-hover;
                 border-radius: $nav-border-radius;
-                right: 2px - $nav-header-hor-padding * 0.25;
+                right: calc(2px - #{$nav-header-hor-padding} * 0.25);
                 line-height: $nav-header-line-height;
-                padding-left: $nav-header-hor-padding * 0.25;
-                padding-right: $nav-header-hor-padding * 0.25;
+                padding-left: calc(#{$nav-header-hor-padding} * 0.25);
+                padding-right: calc(#{$nav-header-hor-padding} * 0.25);
                 outline: none;
             }
             &.nav-label:focus::after {

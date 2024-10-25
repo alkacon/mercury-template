@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>18.0.16</version>
+		<version>18.0.17</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -9888,7 +9888,7 @@
 			<relations/>
 			<accesscontrol/>
 		</file>
-        <file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/webform-captcha.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/webform-captcha.tag</destination>
 			<type>jsp</type>

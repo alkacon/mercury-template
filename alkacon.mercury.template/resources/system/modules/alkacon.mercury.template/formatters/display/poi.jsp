@@ -66,6 +66,7 @@
     <m:teaser-piece
         cssWrapper="type-poi${setCssWrapperAll}"
         headline="${title}"
+        headlineSuffix="${setOrderBadge}"
         piecePreMarkup="${setElementPreMarkup}"
         pieceLayout="${setPieceLayout}"
         sizeDesktop="${setSizeDesktop}"

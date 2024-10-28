@@ -40,6 +40,8 @@
 <%@ variable name-given="displayType"       declare="true" %>
 <%@ variable name-given="setLinkOption"     declare="true" %>
 <%@ variable name-given="setHeadingInBody"  declare="true" variable-class="java.lang.Boolean" %>
+<%@ variable name-given="setShowOrder"      declare="true" %>
+<%@ variable name-given="setOrderBadge"     declare="true" %>
 
 <%@ variable name-given="paragraph"         declare="true" %>
 <%@ variable name-given="linkToDetail"      declare="true" %>
@@ -74,6 +76,7 @@
 <c:set var="setLinkOption"                  value="${paramLinkOption.isSet ? paramLinkOption.toString : setting.linkOption.isSet ? setting.linkOption.toString : cms.sitemapConfig.attribute['linkOption.default'].toString}" />
 <c:set var="setHeadingInBody"               value="${setting.headingInBody.toBoolean}" />
 <c:set var="setElementPreMarkup"            value="${setting.elementPreMarkup.toString}" />
+<c:set var="setShowOrder"                   value="${inList and cms.isEditMode and cms.sitemapConfig.attribute['template.lists.showOrder'].toBoolean and content.value.Order.isSet and fn:startsWith(param.orderBy, 'ORDER')}" />
 
 <c:set var="pageUri"                        value="${setting.pageUri.toString}" />
 <c:set var="listEntryWrapper"               value="${setting.listEntryWrapper.toString}" />
@@ -128,6 +131,10 @@
 
 <c:if test="${setting.dateFormatAddTime.toBoolean and fn:startsWith(setDateFormat, 'fmt-') and not fn:endsWith(setDateFormat, '-TIME')}">
     <c:set var="setDateFormat" value="${setDateFormat}-TIME" />
+</c:if>
+
+<c:if test="${setShowOrder}">
+    <m:list-badge var="setOrderBadge" type="order" markup="${content.value.Order.toInteger}" />
 </c:if>
 
 <jsp:doBody/>

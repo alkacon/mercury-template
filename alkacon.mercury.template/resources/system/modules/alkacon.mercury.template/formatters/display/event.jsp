@@ -104,7 +104,7 @@
     gridOption="${setShowCalendar and smallCalendarSheet ? ' fixed' : ''}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
-    headlineSuffix="${badge}"
+    headlineSuffix="${badge}${setOrderBadge}"
     preface="${preface}"
     date="${date}"
     paraCaption="${paragraph.value.Caption}"

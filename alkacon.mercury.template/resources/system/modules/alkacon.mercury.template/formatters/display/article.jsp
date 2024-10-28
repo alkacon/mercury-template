@@ -26,6 +26,7 @@
     cssWrapper="type-article${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
+    headlineSuffix="${setOrderBadge}"
     preface="${preface}"
     date="${value.Date.toInstanceDate}"
     paraCaption="${paragraph.value.Caption}"

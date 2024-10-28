@@ -27,6 +27,7 @@
     cssWrapper="type-job${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
+    headlineSuffix="${setOrderBadge}"
     preface="${preface}"
     date="${value.Date.toInstanceDate}"
     paraCaption="${paragraphIntro.value.Caption.isSet ? paragraphIntro.value.Caption : paragraphText.value.Caption}"

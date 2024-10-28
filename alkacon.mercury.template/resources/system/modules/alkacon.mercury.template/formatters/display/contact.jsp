@@ -56,6 +56,7 @@
     cssWrapper="type-contact ${kindCss}${compactLayout}${setCssWrapperAll}"
     attrWrapper="${kind}"
     headline="${showTitle and (valName ne title) ? title : null}"
+    headlineSuffix="${setOrderBadge}"
     pieceLayout="${setPieceLayout}"
     sizeDesktop="${setSizeDesktop}"
     sizeMobile="${setSizeMobile}"

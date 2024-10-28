@@ -131,6 +131,7 @@
             <cms:param name="index">${status.index}</cms:param>
             <cms:param name="last">${status.last}</cms:param>
             <cms:param name="pageUri">${pageUri}</cms:param>
+            <cms:param name="orderBy">${config.value.SortOrder}</cms:param>
             <cms:param name="instancedate">${result.dateFields[instancedatefield].time}</cms:param>
             <cms:param name="nglist">true</cms:param>
             <cms:param name="noscriptList">${noscriptCall}</cms:param>

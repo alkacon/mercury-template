@@ -36,7 +36,7 @@
         cssWrapper="type-decoy${setCssWrapperAll}${invalidDecoy ? ' disabled' : ''}"
         intro="${setShowIntro ? intro : null}"
         headline="${title}"
-        headlineSuffix="${badge}"
+        headlineSuffix="${badge}${setOrderBadge}"
         preface="${preface}"
         date="${value.Date.toInstanceDate}"
         paraText="${value.Text}"

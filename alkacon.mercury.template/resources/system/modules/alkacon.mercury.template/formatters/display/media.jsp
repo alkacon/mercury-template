@@ -27,6 +27,7 @@
     cssWrapper="type-media${isAudio ? ' audio ' : ' '}${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
+    headlineSuffix="${setOrderBadge}"
     preface="${preface}"
     date="${value.Date.toInstanceDate}"
     paraText="${value.Text}"

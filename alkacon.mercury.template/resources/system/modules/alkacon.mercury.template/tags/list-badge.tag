@@ -40,9 +40,9 @@
         <c:when test="${not empty seriesInfo and seriesInfo.isSeries}">
             <c:set var="result">
                 <wbr><%----%>
-                <span class="list-badge oct-meta-info" title="<%--
+                <span class="list-badge list-badge-series oct-meta-info" title="<%--
                 --%><fmt:message key="msg.page.dateseries.series"><fmt:param>${seriesInfo.title}</fmt:param></fmt:message><%--
-                --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
+                --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%--
                 --%>"><%----%>
                     <m:icon icon="refresh" tag="span" />
                     ${empty markup ? '' : ' '.concat(markup)}
@@ -52,9 +52,9 @@
         <c:when test="${not empty seriesInfo and seriesInfo.isExtractedDate}">
             <c:set var="result">
                 <wbr><%----%>
-                <span class="list-badge oct-meta-info" title="<%--
+                <span class="list-badge list-badge-extracted-date oct-meta-info" title="<%--
                 --%><fmt:message key="msg.page.dateseries.extracted"><fmt:param>${seriesInfo.parentSeries.title}</fmt:param></fmt:message><%--
-                --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
+                --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%--
                 --%>"><%----%>
                     <m:icon icon="scissors" tag="span" />
                     ${empty markup ? '' : ' '.concat(markup)}
@@ -64,19 +64,28 @@
         <c:when test="${type eq 'decoy'}">
             <c:set var="result">
                 <wbr><%----%>
-                <span class="list-badge oct-meta-info" title="<%--
+                <span class="list-badge list-badge-decoy oct-meta-info" title="<%--
                 --%><fmt:message key="type.m-decoy.name" /><%--
-                --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%-- %>
+                --%>${empty title ? '' : ' ('.concat(title).concat(')')}<%--
                 --%>"><%----%>
                      <m:icon icon="external-link-square" tag="span" />
                      ${empty markup ? '' : ' '.concat(markup)}
                 </span><%----%>
             </c:set>
         </c:when>
+        <c:when test="${type eq 'order'}">
+            <c:set var="result">
+                <wbr><%----%>
+                <span class="list-badge list-badge-order oct-meta-info" title="<%--
+                --%><fmt:message key="label.Order" /><%--
+                --%>">${markup}
+                </span><%----%>
+            </c:set>
+        </c:when>
         <c:when test="${not empty title and not empty markup}">
             <c:set var="result">
                 <wbr><%----%>
-                <span class="list-badge oct-meta-info" title="${title}">${markup}</span><%----%>
+                <span class="list-badge list-badge-general oct-meta-info" title="${title}">${markup}</span><%----%>
             </c:set>
         </c:when>
     </c:choose>

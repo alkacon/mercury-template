@@ -22,6 +22,7 @@
     cssWrapper="type-faq${setCssWrapperAll}"
     intro="${setShowIntro ? intro : null}"
     headline="${title}"
+    headlineSuffix="${setOrderBadge}"
     date="${value.Date.toInstanceDate}"
     paraCaption="${paragraph.value.Caption}"
     paraText="${paragraph.value.Text}"

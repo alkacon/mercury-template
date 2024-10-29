@@ -62,7 +62,7 @@
     </c:otherwise>
 </c:choose>
 <c:set var="searchscope">\"${searchscope}\"</c:set>
-<c:set var="additionalScopes" value="${cms.vfs.propertySearch[cms.requestContext.uri]['search.scope.additional']}"/>
+<c:set var="additionalScopes" value="${cms.vfs.propertySearch[cms.uri()]['search.scope.additional']}"/>
 <c:if test="${not empty additionalScopes}">
     <c:forEach var="scope" items="${fn:split(additionalScopes,',')}">
         <c:set var="searchscope">${searchscope}${' OR '}\"${scope}\"</c:set>
@@ -75,7 +75,7 @@
     --%>,plain<%--
  --%></c:set>
 
-<c:set var="additionalTypes" value="${cms.vfs.propertySearch[cms.requestContext.uri]['search.types.additional']}"/>
+<c:set var="additionalTypes" value="${cms.vfs.propertySearch[cms.uri()]['search.types.additional']}"/>
 <c:if test="${not empty additionalTypes}">
     <c:set var="types">${types},${additionalTypes}</c:set>
 </c:if>
@@ -166,7 +166,7 @@
         --%> id="search-form"<%--
         --%> role="form"<%--
         --%> class="styled-form no-border"<%--
-        --%> action="<cms:link>${cms.requestContext.uri}</cms:link>"<%--
+        --%> action="<cms:link>${cms.uri()}</cms:link>"<%--
         --%>><%----%>
 
         <%-- important: send this hidden field to have proper resetting of checked facet values and pagination --%>
@@ -293,10 +293,10 @@
                                         <div class="show-more"><%----%>
                                             <c:choose>
                                                 <c:when test="${facetController.state.useLimit}">
-                                                    <a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.addIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.more" /></a><%----%>
+                                                    <a href="<cms:link>${cms.uri()}?${search.stateParameters.addIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.more" /></a><%----%>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.removeIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.less" /></a><%----%>
+                                                    <a href="<cms:link>${cms.uri()}?${search.stateParameters.removeIgnoreFacetLimit[facet.name]}</cms:link>"><fmt:message key="msg.page.search.facet.link.less" /></a><%----%>
                                                     <input type="hidden" name="${facetController.config.ignoreMaxParamKey}" /><%----%>
                                                 </c:otherwise>
                                             </c:choose>
@@ -365,7 +365,7 @@
                                         <div class="search-suggestion"><%----%>
                                             <h3 tabindex="0"><%----%>
                                                 <fmt:message key="msg.page.search.didyoumean_1">
-                                                    <fmt:param><a href="<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[search.didYouMeanCollated]}</cms:link>">${search.didYouMeanCollated}</a></fmt:param>
+                                                    <fmt:param><a href="<cms:link>${cms.uri()}?${search.stateParameters.newQuery[search.didYouMeanCollated]}</cms:link>">${search.didYouMeanCollated}</a></fmt:param>
                                                 </fmt:message>
                                             </h3><%----%>
                                         </div><%----%>
@@ -379,7 +379,7 @@
                                                 <m:nl/>
                                                 <c:forEach var="alternative" items="${suggestion.alternatives}" varStatus="status">
                                                     <li><%----%>
-                                                        <a href='<cms:link>${cms.requestContext.uri}?${search.stateParameters.newQuery[alternative]}</cms:link>'>${alternative} (${suggestion.alternativeFrequencies[status.index]})</a><%----%>
+                                                        <a href='<cms:link>${cms.uri()}?${search.stateParameters.newQuery[alternative]}</cms:link>'>${alternative} (${suggestion.alternativeFrequencies[status.index]})</a><%----%>
                                                     </li><%----%>
                                                     <m:nl/>
                                                 </c:forEach>
@@ -555,7 +555,7 @@
                             <m:nl/>
                         </c:forEach>
 
-                        <c:set var="onclickAction"><cms:link>${cms.requestContext.uri}?$(LINK)</cms:link></c:set>
+                        <c:set var="onclickAction"><cms:link>${cms.uri()}?$(LINK)</cms:link></c:set>
                         <m:list-pagination
                             search="${search}"
                             singleStep="true"

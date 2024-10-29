@@ -19,9 +19,6 @@
  * Source file: _nav-main.scss
  */
 
-// Special Navigation only variables - main settings are in _variables.scss.
-
-
 // ######################### Mobile navigation #########################
 
 @include media-breakpoint-mobile {
@@ -53,7 +50,7 @@
                 bottom: 0;
                 color: $nav-text-mobile;
                 line-height: $nav-mobile-line-height;
-                padding: $nav-mobile-line-padding $nav-mobile-indent-offset;
+                padding: $nav-mobile-line-padding var(--#{$prefix}nav-mobile-indent-offset);
                 border-bottom: $nav-mobile-border;
                 @if ($nav-mobile-font-family != $font-family-base) {
                     font-family: $nav-mobile-font-family;
@@ -194,31 +191,31 @@
 
         // left indent of sub levels
         > li > a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 2)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 2 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 4)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 4 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > ul > li a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 6)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 6 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > ul > li > ul > li a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 7)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 7 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 8)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 8 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 9)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 9 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 10)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 10 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 11)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 11 * var(--#{$prefix}nav-mobile-indent));
         }
         > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li a {
-            padding-left: #{$nav-mobile-indent-offset + ($nav-mobile-indent * 12)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-indent-offset) + 12 * var(--#{$prefix}nav-mobile-indent));
         }
     }
 
@@ -479,7 +476,7 @@
 
             .nav-main-mobile-logo {
                 display: block;
-                padding: $grid-gutter-width-half $nav-mobile-indent-offset;
+                padding: $grid-gutter-width-half var(--#{$prefix}nav-mobile-indent-offset);
                 background-color: $nav-mobile-logo-bg-color;
                 // make sure wide logos are not under the toggle button
                 @if ($nav-mobile-position == right) {
@@ -496,11 +493,11 @@
             position: fixed;
             z-index: $z-index-mobile-menu + 1; // the toggle must be above the z-index of the menu (see above)
             top: $nav-mobile-toggle-top;
-            #{$nav-mobile-position}: $nav-mobile-toggle-side;
+            #{$nav-mobile-position}: var(--#{$prefix}nav-mobile-toggle-side);
 
             @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
                 @include media-breakpoint-down(sm) {
-                    #{$nav-mobile-position}:  $nav-mobile-toggle-side-xs;
+                    #{$nav-mobile-position}: var(--#{$prefix}nav-mobile-toggle-side-xs);
                 }
             }
         }
@@ -591,7 +588,7 @@
                 border: 0;
                 > a {
                     // sidebar padding may be different
-                    padding: $nav-mobile-line-padding $grid-gutter-width-half $nav-mobile-line-padding calc(#{$grid-gutter-width-half} + (#{$nav-mobile-indent} * 2));
+                    padding: $nav-mobile-line-padding $grid-gutter-width-half $nav-mobile-line-padding calc(#{$grid-gutter-width-half} + 2 * var(--#{$prefix}nav-mobile-indent));
                     @if ($nav-mobile-font-family != $font-family-base) {
                         font-family: $nav-mobile-font-family;
                     }

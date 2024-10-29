@@ -49,7 +49,7 @@
             <c:if test="${not empty mediaAttr}">
                 <c:set var="mediaQuery" value="media=\"(${macroResolver.resolveMacros(mediaAttr)})\" " />
             </c:if>
-            <link rel="stylesheet" ${mediaQuery}href="${plugin.link}${versionDate}"><m:nl />
+            <link rel="stylesheet" ${mediaQuery}href="<cms:link>${plugin.path}${versionDate}</cms:link>"><m:nl />
             <c:set var="inlineAttr" value="${plugin.attributes['inline']}" />
             <c:if test="${not empty inlineAttr}">
                 <m:print delimiter="">
@@ -61,10 +61,10 @@
             <style>${cms.wrap[plugin.path].toResource.content}</style><m:nl />
         </c:when>
         <c:when test="${type eq 'js-defer'}">
-            <script defer src="${plugin.link}${versionDate}"></script><m:nl />
+            <script defer src="<cms:link>${plugin.path}${versionDate}</cms:link>"></script><m:nl />
         </c:when>
         <c:when test="${type eq 'js-async'}">
-            <script async src="${plugin.link}${versionDate}"></script><m:nl />
+            <script async src="<cms:link>${plugin.path}${versionDate}</cms:link>"></script><m:nl />
         </c:when>
     </c:choose>
 </c:forEach>

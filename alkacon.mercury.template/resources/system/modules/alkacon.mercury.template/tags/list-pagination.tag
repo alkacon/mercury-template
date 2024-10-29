@@ -87,7 +87,7 @@
                         <c:set var="pageNr">${previousPage}</c:set>
                         <%-- Placement of nl required to prevent visible whitespace between the li tags --%>
                         <li <m:nl />class="previous${currentPage > 1 ? '' : ' disabled'}"><%----%>
-                            <a href="${defaultOnclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
+                            <a href="${defaultOnclickAction ? cms.uri().concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
                             --%>${currentPage > 1 ? "" : "tabindex='-1'"}${' '}<%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])};return false'${' '}<%--
                             --%>title='<fmt:message key="msg.page.list.pagination.previous.title"/>'${' '}<%--
@@ -100,7 +100,7 @@
                     <c:if test="${firstShownPage > 1}">
                         <c:set var="pageNr">1</c:set>
                         <li <m:nl />class="first ${firstShownPage > 2 ? ' gap' : ''}"><%----%>
-                            <a href="${defaultOnclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
+                            <a href="${defaultOnclickAction ? cms.uri().concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
                             --%>${currentPage > 1 ? "" : "tabindex='-1'"}${' '}<%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])};return false'${' '}<%--
                             --%>title='<fmt:message key="msg.page.list.pagination.first.title"/>'><%--
@@ -114,7 +114,7 @@
                 <c:forEach var="page" begin="${firstShownPage}" end="${lastShownPage}">
                     <c:set var="pageNr">${page}</c:set>
                     <li <m:nl />class="${pageNr eq lastShownPage ? 'lastpage' : 'page'}${currentPage eq page ? ' active' : ''}"><%----%>
-                        <a href="${defaultOnclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
+                        <a href="${defaultOnclickAction ? cms.uri().concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
                         --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])};return false'${' '}<%--
                         --%>title='<c:choose>
                                 <c:when test="${currentPage eq page}">
@@ -133,7 +133,7 @@
                     <c:if test="${singleStep}">
                         <c:set var="pageNr">${nextPage}</c:set>
                         <li <m:nl />class="next${currentPage >= lastPage ? ' disabled' : ''}"><%----%>
-                            <a href="${defaultOnclickAction ? cms.requestContext.uri.concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
+                            <a href="${defaultOnclickAction ? cms.uri().concat('?').concat(stateParameterPageMap[pageNr]) : 'javascript:void(0)'}"${' '}<%--
                             --%>${currentPage >= lastPage ? "tabindex='-1'" : ""}${' '}<%--
                             --%>onclick='${fn:replace(onclickAction, "$(LINK)", stateParameterPageMap[pageNr])};return false'${' '}<%--
                             --%>title='<fmt:message key="msg.page.list.pagination.next.title"/>'${' '}<%--

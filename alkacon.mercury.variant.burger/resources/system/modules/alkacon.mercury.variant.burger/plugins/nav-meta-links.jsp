@@ -22,11 +22,12 @@
 <jsp:useBean id="metaMap" class="java.util.HashMap" />
 <c:forEach var="link" items="${reqScopeMetaLinksContent.valueList.LinkEntry}" varStatus="status">
     <m:link-icon link="${link}" resultMap="${metaMap}" />
+    <c:set var="liWrapper" value="${empty metaMap.css ? '' : ' li-'.concat(metaMap.css)}" />
     <c:choose>
         <c:when test="${metaLinksIconsOut and not empty metaMap.icon and empty metaMap.message}">
             <c:set var="metaLinksIconOnly">
                 ${metaLinksIconOnly}
-                <li><%----%>
+                <li class="nav-meta-icon${liWrapper}"><%----%>
                     <m:link
                         link="${metaMap.link}"
                         title="${metaMap.title}"
@@ -39,7 +40,7 @@
         <c:otherwise>
             <c:set var="metaLinksWithText">
                 ${metaLinksWithText}
-                <li class="nav-meta-link"><%----%>
+                <li class="nav-meta-link${liWrapper}"><%----%>
                     <m:link
                         link="${metaMap.link}"
                         title="${metaMap.title}"
@@ -64,17 +65,18 @@
     </c:set>
 </c:if>
 
-
 <c:if test="${not metaLinksOnTop}">
     <%-- If meta links are NOT on top, show icons first, i.e. do not show the text links here --%>
     ${metaLinksWithText}
     <m:nl />
 </c:if>
 
-<li class="nav-meta-icons"><ul><%----%>
-${metaLinksIconOnly}
-</ul></li><%----%>
-<m:nl />
+<c:if test="${not empty metaLinksIconOnly}">
+    <li class="nav-meta-icons"><ul><%----%>
+    ${metaLinksIconOnly}
+    </ul></li><%----%>
+    <m:nl />
+</c:if>
 
 <c:if test="${metaLinksOnTop}">
     <%-- If meta links are on top, show the text links here, after the icons --%>

@@ -183,6 +183,13 @@
     }
 }
 
+header {
+    --#{$prefix}nav-mobile-indent: #{$nav-mobile-indent};
+    --#{$prefix}nav-mobile-indent-offset: #{$nav-mobile-indent-offset};
+    --#{$prefix}nav-mobile-toggle-side: #{$nav-mobile-toggle-side};
+    --#{$prefix}nav-mobile-toggle-side-xs: #{$nav-mobile-toggle-side-xs};
+}
+
 // Flexible header with desktop menu
 @if ($feature-header-type == 'flexible') {
 
@@ -1515,7 +1522,7 @@
             // implies .lp-r, lp-l is handled below
             display: flex;
             background-color: $nav-mobile-logo-bg-color;
-            padding: $bh-header-padding $nav-mobile-indent-offset;
+            padding: $bh-header-padding var(--#{$prefix}nav-mobile-indent-offset);
 
             .nav-menu-toggle {
                 display: flex;
@@ -1572,15 +1579,15 @@
         .nav-main-items {
             // this expands the arrow links to the right so they can be touch-clicked easier
             li.expand > a::after {
-                right: $nav-mobile-toggle-side;
+                right: var(--#{$prefix}nav-mobile-toggle-side);
             }
             li.expand > a {
-                padding-right: $nav-mobile-toggle-side + $nav-mobile-box-height !important;
+                padding-right: calc(var(--#{$prefix}nav-mobile-toggle-side) + #{$nav-mobile-box-height}) !important;
             }
 
             .nav-meta-icons > ul {
                 margin: 0;
-                padding: 0 $nav-mobile-indent-offset;
+                padding: 0 var(--#{$prefix}nav-mobile-indent-offset);
                 border-bottom: $nav-mobile-border;
 
                 > li {
@@ -1604,7 +1611,7 @@
         }
 
         .nav-mega-menu .nav-side li > a {
-            padding-left: #{$nav-mobile-toggle-side + ($nav-mobile-indent * 2)};
+            padding-left: calc(var(--#{$prefix}nav-mobile-toggle-side) + var(--#{$prefix}nav-mobile-indent) * 2);
         }
 
         // hide content elements in mega menu (mega menu may be from a site using a different header type)
@@ -1614,39 +1621,43 @@
             // reduce nav menu padding on very small screens
 
             .nav-menu-header {
-                padding-left: $nav-mobile-toggle-side-xs;
-                padding-right: $nav-mobile-toggle-side-xs;
+                padding-left: var(--#{$prefix}nav-mobile-toggle-side-xs);
+                padding-right: var(--#{$prefix}nav-mobile-toggle-side-xs);
             }
 
             .nav-main-items {
                 li > a {
-                    padding-left: $nav-mobile-toggle-side-xs;
+                    padding-left: var(--#{$prefix}nav-mobile-toggle-side-xs);
                 }
                 li.expand > a::after {
-                    right: $nav-mobile-toggle-side-xs;
+                    right: var(--#{$prefix}nav-mobile-toggle-side-xs);
                 }
                 li.expand > a {
-                    padding-right: $nav-mobile-toggle-side-xs + $nav-mobile-box-height !important;
+                    padding-right: calc(var(--#{$prefix}nav-mobile-toggle-side-xs) + #{$nav-mobile-box-height}) !important;
+                }
+
+                .nav-meta-icons > ul {
+                    padding: 0 var(--#{$prefix}nav-mobile-toggle-side-xs);
                 }
             }
 
             .nav-mega-menu .nav-side li > a {
-                padding-left: #{$nav-mobile-toggle-side-xs + $nav-mobile-indent};
+                padding-left: calc(var(--#{$prefix}nav-mobile-toggle-side-xs) + var(--#{$prefix}nav-mobile-indent));
             }
 
            .nav-menu {
                 // menus below the head navbar
                 > li > a {
-                    padding-left: #{$nav-mobile-toggle-side-xs + $nav-mobile-indent};
+                    padding-left: calc(var(--#{$prefix}nav-mobile-toggle-side-xs) + var(--#{$prefix}nav-mobile-indent));
                 }
                 > li > ul > li > a {
-                    padding-left: #{$nav-mobile-toggle-side-xs + ($nav-mobile-indent * 2)};
+                    padding-left: calc(var(--#{$prefix}nav-mobile-toggle-side-xs) + var(--#{$prefix}nav-mobile-indent) * 2);
                 }
                 > li > ul > li > ul > li a {
-                    padding-left: #{$nav-mobile-toggle-side-xs + ($nav-mobile-indent * 3)};
+                    padding-left: calc(var(--#{$prefix}nav-mobile-toggle-side-xs) + var(--#{$prefix}nav-mobile-indent) * 3);
                 }
                 > li > ul > li > ul > li > ul > li a {
-                    padding-left: #{$nav-mobile-toggle-side-xs + ($nav-mobile-indent * 4)};
+                    padding-left: calc(var(--#{$prefix}nav-mobile-toggle-side-xs) + var(--#{$prefix}nav-mobile-indent) * 4);
                 }
             }
         }

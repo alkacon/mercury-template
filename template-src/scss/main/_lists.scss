@@ -88,11 +88,11 @@
     }
 
     .teaser-btn {
-        &:not(:last-child) {
-            margin-right: var(--#{$prefix}ws-margin);
-        }
         @if ($teaser-btn-def-padding != $btn-def-padding) {
             padding: $teaser-btn-def-padding;
+        }
+        &:not(:last-child) {
+            margin-right: var(--#{$prefix}ws-margin);
         }
     }
 

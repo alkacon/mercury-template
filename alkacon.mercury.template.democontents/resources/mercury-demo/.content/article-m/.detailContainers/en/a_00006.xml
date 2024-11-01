@@ -22,36 +22,6 @@
             <String><![CDATA[true]]></String>
           </Value>
         </Properties>
-        <Properties>
-          <Name><![CDATA[hsize]]></Name>
-          <Value>
-            <String><![CDATA[2]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[mapRatio]]></Name>
-          <Value>
-            <String><![CDATA[16-9]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[mapZoom]]></Name>
-          <Value>
-            <String><![CDATA[firstMarker]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showDescription]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showGroupButtons]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
       </Elements>
     </Containers>
   </AlkaconContainerPage>

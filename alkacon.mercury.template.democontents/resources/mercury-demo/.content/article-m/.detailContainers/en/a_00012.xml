@@ -29,54 +29,6 @@
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[dateFormat]]></Name>
-          <Value>
-            <String><![CDATA[fmt-SHORT]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[hsize]]></Name>
-          <Value>
-            <String><![CDATA[1]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[imageSeriesCss]]></Name>
-          <Value>
-            <String><![CDATA[square-xs-6 square-lg-3]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[pageSize]]></Name>
-          <Value>
-            <String><![CDATA[12]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showImageCopyright]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showImageCount]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showImageSubtitle]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[showPreface]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[showText]]></Name>
           <Value>
             <String><![CDATA[false]]></String>

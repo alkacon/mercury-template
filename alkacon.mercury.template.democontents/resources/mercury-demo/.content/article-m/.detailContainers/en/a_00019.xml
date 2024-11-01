@@ -29,45 +29,9 @@
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[dateFormat]]></Name>
-          <Value>
-            <String><![CDATA[fmt-SHORT]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[effect]]></Name>
-          <Value>
-            <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[hsize]]></Name>
-          <Value>
-            <String><![CDATA[3]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[imageRatio]]></Name>
-          <Value>
-            <String><![CDATA[1-1]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[itemsPerPage]]></Name>
-          <Value>
-            <String><![CDATA[6]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[listEntryWrapper]]></Name>
           <Value>
             <String><![CDATA[teaser-tile tile-col col-md-6 col-xl-4]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[listHsize]]></Name>
-          <Value>
-            <String><![CDATA[2]]></String>
           </Value>
         </Properties>
         <Properties>
@@ -80,24 +44,6 @@
           <Name><![CDATA[listWrapper]]></Name>
           <Value>
             <String><![CDATA[row-tile tile-margin-15]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[m/display/event-text-tile_bookingOption]]></Name>
-          <Value>
-            <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[m/display/event-text-tile_dateFormatAddTime]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[m/display/event-text-tile_showCalendar]]></Name>
-          <Value>
-            <String><![CDATA[false]]></String>
           </Value>
         </Properties>
         <Properties>
@@ -119,21 +65,9 @@
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[textLength]]></Name>
-          <Value>
-            <String><![CDATA[200]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[titleOption]]></Name>
           <Value>
             <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[visualOption]]></Name>
-          <Value>
-            <String><![CDATA[show]]></String>
           </Value>
         </Properties>
       </Elements>

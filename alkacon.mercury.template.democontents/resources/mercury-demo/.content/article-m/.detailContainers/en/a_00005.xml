@@ -29,33 +29,9 @@
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[dateFormat]]></Name>
-          <Value>
-            <String><![CDATA[fmt-SHORT]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[effect]]></Name>
-          <Value>
-            <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[hideTitle]]></Name>
           <Value>
             <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[hsize]]></Name>
-          <Value>
-            <String><![CDATA[3]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[imageRatio]]></Name>
-          <Value>
-            <String><![CDATA[1-1]]></String>
           </Value>
         </Properties>
         <Properties>
@@ -83,39 +59,15 @@
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[m/display/event-text-tile_bookingOption]]></Name>
-          <Value>
-            <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[m/display/event-text-tile_dateFormatAddTime]]></Name>
-          <Value>
-            <String><![CDATA[true]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[m/display/event-text-tile_showCalendar]]></Name>
           <Value>
             <String><![CDATA[true]]></String>
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[textLength]]></Name>
-          <Value>
-            <String><![CDATA[200]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[titleOption]]></Name>
           <Value>
             <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[visualOption]]></Name>
-          <Value>
-            <String><![CDATA[show]]></String>
           </Value>
         </Properties>
       </Elements>

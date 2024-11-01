@@ -23,24 +23,6 @@
           </Value>
         </Properties>
         <Properties>
-          <Name><![CDATA[dateFormat]]></Name>
-          <Value>
-            <String><![CDATA[fmt-SHORT]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[effect]]></Name>
-          <Value>
-            <String><![CDATA[none]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[hsize]]></Name>
-          <Value>
-            <String><![CDATA[3]]></String>
-          </Value>
-        </Properties>
-        <Properties>
           <Name><![CDATA[imageRatio]]></Name>
           <Value>
             <String><![CDATA[4-3]]></String>
@@ -50,24 +32,6 @@
           <Name><![CDATA[pieceLayout]]></Name>
           <Value>
             <String><![CDATA[4]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[pieceSizeDesktop]]></Name>
-          <Value>
-            <String><![CDATA[99]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[textLength]]></Name>
-          <Value>
-            <String><![CDATA[250]]></String>
-          </Value>
-        </Properties>
-        <Properties>
-          <Name><![CDATA[titleOption]]></Name>
-          <Value>
-            <String><![CDATA[showIntro]]></String>
           </Value>
         </Properties>
       </Elements>

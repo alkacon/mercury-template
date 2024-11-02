@@ -239,7 +239,7 @@
                                 <c:set var="pageTitle" value="${fn:replace(pageTitle, '%(cms.siteTitle)', rval)}" />
                             </c:if>
                             <m:div css="h-title" test="${not showTitleAside}">
-                                <m:heading level="${7}" ade="false" text="${pageTitle}" css="${not showTitleAside ? 'co-lg-xl' : 'h-title'}" />
+                                <m:heading level="${7}" text="${pageTitle}" css="${not showTitleAside ? 'co-lg-xl' : 'h-title'}" ade="${false}" decorate="${false}" />
                             </m:div>
                         </c:if>
                     </c:if>
@@ -502,7 +502,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                     <c:set var="pageTitle" value="${fn:replace(imagecontent.value.Title.resolveMacros, '%(cms.title)', pagetitle)}" />
-                                    <m:heading level="${7}" ade="false" text="${pageTitle}" css="header-title hidden-fixed" />
+                                    <m:heading level="${7}" text="${pageTitle}" css="header-title hidden-fixed" ade="${false}" decorate="${false}" />
                                 </c:if>
 
                                 <c:if test="${not showNavBarFullWith}">

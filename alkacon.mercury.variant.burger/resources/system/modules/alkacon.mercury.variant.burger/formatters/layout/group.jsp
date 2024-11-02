@@ -181,7 +181,7 @@
                     </c:if>
                     <c:if test="${not empty pageTitle}">
                         <c:set var="titleElement">
-                            <m:heading level="${7}" ade="false" text="${pageTitle}" css="h-title" />
+                            <m:heading level="${7}" text="${pageTitle}" css="h-title" ade="${false}" decorate="${false}" />
                         </c:set>
                     </c:if>
                 </c:if>
@@ -191,7 +191,7 @@
                         <div class="h-ac hidden-fixed"><%----%>
                             <div class="h-ac-co ${acHasPageSize ? 'container p-xs-12' : ''}"><%----%>
                                 <c:if test="${(showTitle eq 'ac-title') and not empty pageTitle}">
-                                    <m:heading level="${7}" ade="false" text="${pageTitle}" css="h-ac-title container" />
+                                    <m:heading level="${7}" text="${pageTitle}" css="h-ac-title container" ade="${false}" decorate="${false}" />
                                 </c:if>
                                 <c:if test="${not acHasPageSize}">
                                     <c:set var="acParams" value="${{'cssgrid': 'fullwidth'}}" />

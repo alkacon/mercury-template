@@ -70,7 +70,7 @@
 
     <div id="${itemId}" class="acco-body collapse ${open ? 'show' : ''}"${multipleOpen ? '' : ' data-bs-parent=\"#'.concat(parentId).concat('\"')}><%----%>
         <c:if test="${not empty preface}">
-             <m:heading text="${preface}" level="${7}" css="sub-header pivot" ade="${false}" />
+             <m:heading text="${preface}" level="${7}" css="sub-header pivot" ade="${false}" decorate="${false}" />
         </c:if>
         <m:paragraphs
             pieceLayout="${9}"

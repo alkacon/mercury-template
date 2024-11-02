@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>18.0.24</version>
+		<version>18.0.34</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -6294,6 +6294,23 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/decorate.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/decorate.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>1fb736f9-9785-11ef-b9d8-0242ac11002b</uuidstructure>
+			<uuidresource>1fb736fa-9785-11ef-b9d8-0242ac11002b</uuidresource>
+			<datecreated>Thu, 31 Oct 2024 12:39:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for decoration configuration]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/decoy.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/decoy.xsd</destination>
 			<type>plain</type>
@@ -6859,6 +6876,23 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Nested XSD for event consts]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/decoration-item.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/decoration-item.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>1fb6c1c6-9785-11ef-b9d8-0242ac11002b</uuidstructure>
+			<uuidresource>1fb6c1c7-9785-11ef-b9d8-0242ac11002b</uuidresource>
+			<datecreated>Thu, 31 Oct 2024 12:39:09 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for a decoration configuration item]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8039,6 +8073,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Generate debug output for elements]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/decorate.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/decorate.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>0edb5756-983c-11ef-b9d8-0242ac11002b</uuidstructure>
+			<uuidresource>0edb5757-983c-11ef-b9d8-0242ac11002b</uuidresource>
+			<datecreated>Fri, 01 Nov 2024 10:28:38 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Displays decorated text]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="DecorationData" type="OpenCmsDecorationData"/>
+
+    <xsd:complexType name="OpenCmsDecorationData">
+        <xsd:sequence>
+            <xsd:element name="Decoration" type="OpenCmsDecoration" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsDecoration">
+        <xsd:sequence>
+            <xsd:element name="name" type="OpenCmsString" />
+            <xsd:element name="markfirst" type="OpenCmsBoolean" default="true" />
+            <xsd:element name="pretextfirst" type="OpenCmsString" />
+            <xsd:element name="posttextfirst" type="OpenCmsString" />
+            <xsd:element name="pretext" type="OpenCmsString"  />
+            <xsd:element name="posttext" type="OpenCmsString" />
+            <xsd:element name="filename" type="OpenCmsVfsFile" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="org.opencms.jsp.decorator.workplace"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>name</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>markfirst</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>pretextfirst</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>posttextfirst</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>pretext</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>posttext</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>filename</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

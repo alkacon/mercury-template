@@ -546,7 +546,9 @@
                                                 <c:set var="excerpt">${cms:trimToSize(cms:stripHtml(searchResult.fields[localeContentField]), 250)}</c:set>
                                             </c:if>
                                         </c:if>
-                                        ${excerpt}
+                                        <m:decorate>
+                                            ${excerpt}
+                                        </m:decorate>
                                     </div><%----%>
                                     <m:nl/>
                                 </c:if>

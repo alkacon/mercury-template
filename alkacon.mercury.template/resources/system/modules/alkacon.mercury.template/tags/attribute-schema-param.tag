@@ -17,7 +17,7 @@ public String getParamValue() {
 
     // check sitemap attributes first
     // NOTE: if you just want to read from the sitemap attributes but do NOT need the fallback the the schema-param attributes,
-    // use the EL expression ${cms.sitemapConfig,attribute['param']} directly, not this tag!
+    // use the EL expression ${cms.sitemapConfig.attribute['param']} directly, not this tag!
     CmsJspObjectValueWrapper value = contextBean.getSitemapConfig().getAttribute().get(param);
 
     String result;

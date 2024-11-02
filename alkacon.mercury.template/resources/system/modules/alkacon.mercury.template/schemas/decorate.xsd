@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/decoration-item.xsd"/>
+
+    <xsd:element name="OpenCmsDecorationConfigData" type="OpenCmsOpenCmsDecorationConfigData"/>
+
+    <xsd:complexType name="OpenCmsOpenCmsDecorationConfigData">
+        <xsd:sequence>
+            <xsd:element name="DecorationConfig" type="OpenCmsDecorationConfig" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsDecorationConfig">
+        <xsd:sequence>
+            <xsd:element name="decoration" type="OpenCmsDecoration" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="uselocale" type="OpenCmsBoolean" minOccurs="1" default="true" />
+            <xsd:element name="exclude" type="OpenCmsString" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="class" type="OpenCmsString" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundle name="org.opencms.jsp.decoration.workplace"/>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>exclude</PropertyName>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+            </FieldSettings>
+            <mappings>
+                <mapping element="class" mapto="property:category" />
+            </mappings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+</xsd:schema>

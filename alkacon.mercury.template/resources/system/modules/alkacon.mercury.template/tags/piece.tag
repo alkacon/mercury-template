@@ -370,7 +370,9 @@ ${piecePreMarkup}
         </c:if>
         <c:if test="${showText}">
             <div class="text${empty cssText ? '' : ' '.concat(cssText)}"${empty attrText ? '' : ' '.concat(attrText)}><%----%>
-                ${pieceText}
+                <m:decorate>
+                    ${pieceText}
+                </m:decorate>
             </div><%----%>
             <m:nl />
         </c:if>

@@ -38,6 +38,10 @@
 <%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
     description="Controls if the heading text is XML escaped. Default is 'true' if not provided." %>
 
+<%@ attribute name="decorate" type="java.lang.Boolean" required="false"
+    description="Controls if decoration - if configured - is applied to the heading.
+    Default if not provided is 'false' for level 1 - 6, and 'true' for level 7 when css is 'sub-header'." %>
+
 <%@ attribute name="ade" type="java.lang.Boolean" required="false"
     description="Enables advanced direct edit for the generated heading.
     Default is 'false' if not provided." %>
@@ -55,7 +59,7 @@
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:if test="${(level > 0) and (level <= 7) and (empty test or test)}">
+<c:if test="${(level gt 0) and (level le 7) and (empty test or test)}">
 
     <c:if test="${not empty markupText}">
         <jsp:invoke fragment="markupText" var="markupTextOutput" />
@@ -64,7 +68,8 @@
     <c:if test="${(not empty markupTextOutput) or (not empty text)}">
 
         <c:set var="escapeXml"      value="${empty escapeXml ? true : escapeXml}" />
-        <c:set var="addTabindex"    value="${empty tabindex ? ((level >= 1) and (level <=4)) : tabindex}" />
+        <c:set var="addTabindex"    value="${empty tabindex ? ((level ge 1) and (level le 4)) : tabindex}" />
+        <c:set var="decorate"       value="${empty decorate ? ((level eq 7) and (css eq 'sub-header')) : decorate}" />
 
         <c:if test="${(id eq 'auto') and (not empty text)}">
             <c:set var="addId"          value="${cms.sitemapConfig.attribute['template.section.add.heading.id'].toBoolean}" />
@@ -84,7 +89,7 @@
         </c:if>
 
         <c:choose>
-            <c:when test="${level == 7}">
+            <c:when test="${level eq 7}">
                 ${'<div'}
             </c:when>
             <c:otherwise>
@@ -100,21 +105,23 @@
         ${'>'}
 
             ${prefix}
-            <c:choose>
-                <c:when test="${not empty markupTextOutput}">
-                    ${markupTextOutput}
-                </c:when>
-                <c:when test="${not empty text}">
-                    <c:set var="useAde" value="${ade and cms:isWrapper(text)}" />
-                    <c:if test="${useAde}"><span${' '}${text.rdfaAttr}></c:if>
-                    <m:out value="${text}" escapeXml="${escapeXml}" />
-                    <c:if test="${useAde}"></span></c:if>
-                </c:when>
-            </c:choose>
+            <m:decorate test="${decorate}">
+                <c:choose>
+                    <c:when test="${not empty markupTextOutput}">
+                        ${markupTextOutput}
+                    </c:when>
+                    <c:when test="${not empty text}">
+                        <c:set var="useAde" value="${ade and cms:isWrapper(text)}" />
+                        <c:if test="${useAde}"><span${' '}${text.rdfaAttr}></c:if>
+                        <m:out value="${text}" escapeXml="${escapeXml}" />
+                        <c:if test="${useAde}"></span></c:if>
+                    </c:when>
+                </c:choose>
+            </m:decorate>
             ${suffix}
 
         <c:choose>
-            <c:when test="${level == 7}">
+            <c:when test="${level eq 7}">
                 ${'</div>'}
             </c:when>
             <c:otherwise>

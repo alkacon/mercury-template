@@ -352,6 +352,10 @@
             right: calc(15px + 0.5 * var(--#{$prefix}gutter-x));
         }
 
+        .image-src-box > img {
+            border-radius: 0;
+        }
+
         &:hover > .hash-link {
             display: block;
         }
@@ -365,9 +369,12 @@
             transition: none;
         }
 
-        .detail-page:last-child,
-        .element:last-child {
-            margin-bottom: 0;
+        & > div {
+            > .detail-page:last-child,
+            > .element:last-child {
+                // tabs that directly contain elements
+                margin-bottom: 0;
+            }
         }
     }
 

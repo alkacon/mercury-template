@@ -103,7 +103,7 @@ $theme-matched-defaults:           (
         "link-color": $con-text-col-dark
     )
 );
-$theme-matched-colors-merged:      map-merge($theme-matched-colors, $theme-matched-defaults);
+$theme-matched-colors-merged:      map-merge($theme-matched-defaults, $theme-matched-colors);
 
 // Default margins / spacing
 

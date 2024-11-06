@@ -381,7 +381,7 @@
     &.show-button {
         .collapse-trigger .trigger-item::after {
             @include icon-font();
-            content: $toggle-arrow-icon;
+            content: $toggle-tile-accordion-icon;
             display: flex;
             position: absolute;
             justify-content: center;

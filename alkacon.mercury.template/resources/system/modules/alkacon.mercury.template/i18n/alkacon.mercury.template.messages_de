@@ -753,6 +753,7 @@ msg.page.form.bookingstatus.registrationClosesOn=Anmeldeschluss\: {0}
 msg.page.form.bookingstatus.registrationmail=Bestätigungsmail (Registrierung)
 msg.page.form.bookingstatus.remainingsubmissions.nowaitlist.1=Es gibt noch {0} freie Plätze
 msg.page.form.bookingstatus.remainingsubmissions.waitlist.2=Es gibt noch {0} freie Plätze und {1} Plätze auf der Warteliste.
+msg.page.form.bookingstatus.remindermail=Erinnerungs-Mail
 msg.page.form.bookingstatus.reservedplace.label=Reserviert
 msg.page.form.bookingstatus.submissiondata.heading=Liste der Anmeldungen
 msg.page.form.bookingstatus.submissions.label=Anmeldungen

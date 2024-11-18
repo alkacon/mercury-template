@@ -112,6 +112,7 @@
     <c:if test="${empty title}">
         <c:set var="title" value="${formBookingXml.value.Title}" />
     </c:if>
+    ${form.adjustConfigValue("macro:content.Title", title)}
     <c:if test="${empty dataPath}">
         <c:set var="dataPath" value="${fn:substringBefore(formBookingXml.file.rootPath, '.xml')}_data/" />
     </c:if>

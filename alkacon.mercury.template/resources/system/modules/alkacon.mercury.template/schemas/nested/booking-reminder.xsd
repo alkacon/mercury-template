@@ -39,7 +39,8 @@
                     <PropertyName>Note</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Booking.ReminderMailNote)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Booking.ReminderMailNote.help)]]></Description>
-                    <Widget>string</Widget>
+                    <Widget>HtmlWidget</Widget>
+                    <WidgetConfig><![CDATA[%(attribute:editorConfigMail:%(param:editorConfigMail))]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>
             </FieldSettings>

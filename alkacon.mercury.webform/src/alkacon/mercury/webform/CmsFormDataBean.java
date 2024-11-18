@@ -97,6 +97,9 @@ public class CmsFormDataBean {
     /** Whether this submission is in waitlist state. */
     private Boolean m_isWaitlist;
 
+    /** Whether this submission is in the registered state. */
+    private Boolean m_isRegistered;
+
     /** Whether this submission is in waitlist moved-up state. */
     private Boolean m_isWaitlistMovedUp;
 
@@ -303,6 +306,18 @@ public class CmsFormDataBean {
             }
         }
         return m_isMoveUpMailSent.booleanValue();
+    }
+
+    /**
+     * Returns whether this submission is in registered state.
+     * @return whether this submission is in registered state
+     */
+    public boolean isRegistered() {
+
+        if (null == m_isRegistered) {
+            m_isRegistered = Boolean.valueOf(!isCancelled() && !isWaitlist());
+        }
+        return m_isRegistered.booleanValue();
     }
 
     /**

@@ -172,6 +172,9 @@
                         <c:if test="${bean.cancelMailSent}">
                             <div><fmt:message key="msg.page.form.bookingstatus.cancelmail" /></div><%----%>
                         </c:if>
+                        <c:if test="${bean.reminderMailSent}">
+                            <div><fmt:message key="msg.page.form.bookingstatus.remindermail" /></div><%----%>
+                        </c:if>
                     </td><%----%>
                 </tr><%----%>
             </table><%----%>

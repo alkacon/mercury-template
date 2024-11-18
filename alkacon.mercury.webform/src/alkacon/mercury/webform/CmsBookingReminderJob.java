@@ -57,6 +57,7 @@ import org.opencms.xml.content.CmsXmlContent;
 import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -286,7 +287,14 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         List<CmsFormDataBean> getRegisteredUsers(CmsObject cms) {
 
             String uuid = m_searchResource.getField(FIELD_ID);
-            return A_CmsFormDataHandler.readAllFormData(cms, uuid);
+            List<CmsFormDataBean> all = A_CmsFormDataHandler.readAllFormData(cms, uuid);
+            List<CmsFormDataBean> registered = new ArrayList<CmsFormDataBean>();
+            for (CmsFormDataBean formDataBean : all) {
+                if (formDataBean.isRegistered()) {
+                    registered.add(formDataBean);
+                }
+            }
+            return registered;
         }
 
         /**
@@ -361,7 +369,7 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
                     Date startDate = serialDate.getDates().first();
                     long diffMillis = startDate.getTime() - now.getTime();
                     long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
-                    if (diffDays == timeInterval) {
+                    if ((diffDays > 0L) && (diffDays <= timeInterval)) {
                         LOG.debug("Reminder day reached. " + m_searchResource.getField(FIELD_TITLE));
                         reached = true;
                     } else {
